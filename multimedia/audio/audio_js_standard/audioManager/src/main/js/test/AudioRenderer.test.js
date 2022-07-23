@@ -15,44 +15,24 @@
 
 import audio from '@ohos.multimedia.audio';
 import fileio from '@ohos.fileio';
-import app from '@system.app';
 import bundle from '@ohos.bundle';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
-import featureAbility from '@ohos.ability.featureAbility'
-import ability_featureAbility from '@ohos.ability.featureAbility';
 import resourceManager from '@ohos.resourceManager';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index';
+import featureAbility from '@ohos.ability.featureAbility'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 
 describe('audioRenderer', function () {
 
     let fdRead;
-    let readpath;
+    let readPath;
     const audioManager = audio.getAudioManager();
     console.info('AudioFrameworkRenderLog: Create AudioManger Object JS Framework');
-    /*async function getPathName(){
-       // var path1 = '/data/accounts/account_0/appdata/';
-        var path1 = '/data/app/el1/bundle/public/';
-        var packageName;
-        var context = ability_featureAbility.getContext();
-        await context.getBundleName()
-            .then((data) => {
-                console.info('AudioFrameworkRenderLog: Cache directory obtained. Data: ' + data);
-                packageName = data;
-            }).catch((error) => {
-                console.error('AudioFrameworkRenderLog: Failed to obtain the cache directory. Cause:' + error.message);
-            });
-        await sleep(200);
-        var mediaDirTemp = path1 + packageName + '/' + packageName + '/assets/entry/resources/rawfile';
-       // var mediaDirTemp = path1+packageName+'/files'
-        console.info('AudioFrameworkRenderLog: Resource DIR Path : '+mediaDirTemp);
-        return mediaDirTemp;
-
-    }*/
+    let fdPath;
+    let filePath;
 
     beforeAll(async function () {
         await applyPermission();
         console.info('AudioFrameworkRenderLog: beforeAll: Prerequisites at the test suite level');
-       // mediaDir = await getPathName();
     })
 
     beforeEach(async function () {
@@ -68,22 +48,9 @@ describe('audioRenderer', function () {
         console.info('AudioFrameworkRenderLog: afterAll: Test suite-level cleanup condition');
     })
 
-    function sleep (ms) {
+    function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
-
-    async function getFileDescriptor(fileName) {
-        let fileDescriptor = undefined;
-        await resourceManager.getResourceManager().then(async (mgr) => {
-            await mgr.getRawFileDescriptor(fileName).then(value => {
-                fileDescriptor = { fd: value.fd, offset: value.offset, length: value.length };
-            }).catch(error => {
-                console.log('AudioFrameworkRenderLog:case getRawFileDescriptor err: ' + error);
-            });
-        });
-        return fileDescriptor;
-    }
-
     async function closeFileDescriptor(fileName) {
         await resourceManager.getResourceManager().then(async (mgr) => {
             await mgr.closeRawFileDescriptor(fileName).then(value => {
@@ -93,18 +60,30 @@ describe('audioRenderer', function () {
             });
         });
     }
+
     async function getFdRead(pathName, done) {
-        await getFileDescriptor(pathName).then((res) => {
-            if (res == undefined) {
-                expect().assertFail();
-                console.info('AudioFrameworkRenderLog:case error fileDescriptor undefined, open file fail');
-                done();
-            } else {
-                fdRead = res.fd;
-                console.info("AudioFrameworkRenderLog:case 0 fdRead is: " + fdRead);
-            }
+        let context = await featureAbility.getContext();
+        console.info("case0 context is  " + context);
+        await context.getFilesDir().then((data) => {
+            console.info("case1 getFilesDir is path " + data);
+            filePath = data + '/' + pathName;
+            console.info('case4 filePath is ' + filePath);
+
         })
+        fdPath = 'fd://';
+        await fileio.open(filePath).then((fdNumber) => {
+            fdPath = fdPath + '' + fdNumber;
+            fdRead = fdNumber;
+            console.info('[fileIO]case open fd success,fdPath is ' + fdPath);
+            console.info('[fileIO]case open fd success,fdRead is ' + fdRead);
+
+        }, (err) => {
+            console.info('[fileIO]case open fd failed');
+        }).catch((err) => {
+            console.info('[fileIO]case catch open fd failed');
+        });
     }
+
     async function applyPermission() {
         let appInfo = await bundle.getApplicationInfo('ohos.acts.multimedia.audio.audiomanager', 0, 100);
         let atManager = abilityAccessCtrl.createAtManager();
@@ -134,22 +113,24 @@ describe('audioRenderer', function () {
         }
     }
 
-    async function playbackPromise (AudioRendererOptions, pathName, AudioScene) {
+    async function playbackPromise(AudioRendererOptions, pathName, AudioScene) {
         var resultFlag = 'new';
         console.info('AudioFrameworkRenderLog: Promise : Audio Playback Function');
 
         var audioRen;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
-            console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
+            console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS data state: ' + Object.keys(data));
+            console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS data value: ' + JSON.stringify(data));
+
         }).catch((err) => {
-			console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
             return resultFlag;
-		});
+        });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : Path : '+pathName);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : Path : ' + pathName);
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         await audioRen.getStreamInfo().then(async function (audioParamsGet) {
             console.info('AudioFrameworkRenderLog: Renderer getStreamInfo:');
@@ -158,11 +139,11 @@ describe('audioRenderer', function () {
             console.info('AudioFrameworkRenderLog: Renderer channels:' + audioParamsGet.channels);
             console.info('AudioFrameworkRenderLog: Renderer encodingType:' + audioParamsGet.encodingType);
         }).catch((err) => {
-			console.log('AudioFrameworkRenderLog: getStreamInfo :ERROR: '+err.message);
-			resultFlag = false;
-		});
-        if (resultFlag == false){
-            console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
+            console.log('AudioFrameworkRenderLog: getStreamInfo :ERROR: ' + err.message);
+            resultFlag = false;
+        });
+        if (resultFlag == false) {
+            console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
             return resultFlag;
         }
 
@@ -172,37 +153,37 @@ describe('audioRenderer', function () {
             console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
             console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
         }).catch((err) => {
-            console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: '+err.message);
+            console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: ' + err.message);
             resultFlag = false;
         });
-        if (resultFlag == false){
-            console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
+        if (resultFlag == false) {
+            console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
             return resultFlag;
         }
 
         await audioRen.start().then(async function () {
             console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
         }).catch((err) => {
-			console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : '+err.message);
-            resultFlag=false;
-		});
-        if (resultFlag == false){
-            console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
+            console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : ' + err.message);
+            resultFlag = false;
+        });
+        if (resultFlag == false) {
+            console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
             return resultFlag;
         }
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         var bufferSize;
         await audioRen.getBufferSize().then(async function (data) {
-            console.info('AudioFrameworkRenderLog: getBufferSize :SUCCESS '+data);
-            bufferSize=data;
+            console.info('AudioFrameworkRenderLog: getBufferSize :SUCCESS ' + data);
+            bufferSize = data;
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: getBufferSize :ERROR : '+err.message);
-            resultFlag=false;
+            console.info('AudioFrameworkRenderLog: getBufferSize :ERROR : ' + err.message);
+            resultFlag = false;
         });
-        if (resultFlag == false){
-            console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
+        if (resultFlag == false) {
+            console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
             return resultFlag;
         }
 
@@ -211,65 +192,65 @@ describe('audioRenderer', function () {
         let discardHeader = new ArrayBuffer(44);
         ss.readSync(discardHeader);
         let totalSize = fileio.fstatSync(fdRead).size;
-        console.info('AudioFrameworkRenderLog:case3: File totalSize size: ' +totalSize);
-        totalSize = totalSize-44;
-        console.info('AudioFrameworkRenderLog: File size : Removing header: ' +totalSize);
+        console.info('AudioFrameworkRenderLog:case3: File totalSize size: ' + totalSize);
+        totalSize = totalSize - 44;
+        console.info('AudioFrameworkRenderLog: File size : Removing header: ' + totalSize);
         let rlen = 0;
-        while (rlen < totalSize/4) {
+        while (rlen < totalSize / 4) {
             let buf = new ArrayBuffer(bufferSize);
             rlen += ss.readSync(buf);
-            console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' +rlen);
+            console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' + rlen);
             await audioRen.write(buf);
-            if (rlen > (totalSize/2)){
+            if (rlen > (totalSize / 2)) {
                 await audioManager.getAudioScene().then(async function (data) {
-                    console.info('AudioFrameworkRenderLog:AudioFrameworkAudioScene: getAudioScene : Value : '+data);
+                    console.info('AudioFrameworkRenderLog:AudioFrameworkAudioScene: getAudioScene : Value : ' + data);
                 }).catch((err) => {
-                    console.info('AudioFrameworkRenderLog:AudioFrameworkAudioScene: getAudioScene : ERROR : '+err.message);
-                    resultFlag=false;
+                    console.info('AudioFrameworkRenderLog:AudioFrameworkAudioScene: getAudioScene : ERROR : ' + err.message);
+                    resultFlag = false;
                 });
             }
         }
         console.info('AudioFrameworkRenderLog: Renderer after read');
-    
+
         await audioRen.drain().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer drained : SUCCESS');
         }).catch((err) => {
-			console.error('AudioFrameworkRenderLog: Renderer drain: ERROR : '+err.message);
-            resultFlag=false;
-		});
-        if (resultFlag == false){
-            console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
+            console.error('AudioFrameworkRenderLog: Renderer drain: ERROR : ' + err.message);
+            resultFlag = false;
+        });
+        if (resultFlag == false) {
+            console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
             return resultFlag;
         }
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         await audioRen.stop().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer stopped : SUCCESS');
-            resultFlag=true;
-            console.info('AudioFrameworkRenderLog: resultFlagRen : '+resultFlag);
+            resultFlag = true;
+            console.info('AudioFrameworkRenderLog: resultFlagRen : ' + resultFlag);
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : '+err.message);
-            resultFlag=false;
+            console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : ' + err.message);
+            resultFlag = false;
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         await audioRen.release().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer release : SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : '+err.message);
-            resultFlag=false;
+            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : ' + err.message);
+            resultFlag = false;
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-        console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
 
         return resultFlag;
     }
 
-    async function playbackPromise_93 (AudioRendererOptions, pathName, AudioScene) {
+    async function playbackPromise_93(AudioRendererOptions, pathName, AudioScene) {
         var resultFlag = true;
         console.info('AudioFrameworkRenderLog: Promise : Audio Playback Function');
 
@@ -278,11 +259,11 @@ describe('audioRenderer', function () {
             audioRen = data;
             console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-            resultFlag=false;
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
+            resultFlag = false;
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         await audioRen.getStreamInfo().then(async function (audioParamsGet) {
             console.info('AudioFrameworkRenderLog: Renderer getStreamInfo:');
@@ -291,7 +272,7 @@ describe('audioRenderer', function () {
             console.info('AudioFrameworkRenderLog: Renderer channels:' + audioParamsGet.channels);
             console.info('AudioFrameworkRenderLog: Renderer encodingType:' + audioParamsGet.encodingType);
         }).catch((err) => {
-            console.log('AudioFrameworkRenderLog: getStreamInfo :ERROR: '+err.message);
+            console.log('AudioFrameworkRenderLog: getStreamInfo :ERROR: ' + err.message);
             resultFlag = false;
         });
 
@@ -301,33 +282,33 @@ describe('audioRenderer', function () {
             console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
             console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
         }).catch((err) => {
-            console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: '+err.message);
+            console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: ' + err.message);
             resultFlag = false;
         });
 
         await audioRen.start().then(async function () {
             console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : '+err.message);
-            resultFlag=false;
+            console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : ' + err.message);
+            resultFlag = false;
         });
 
         //let audioTime = Date.now();
         let audioTimeStart;
         /*let audioTimeEnd;
         let audioTimeMiddle;*/
-       // console.info('AudioFrameworkRenderLog: Current Time in NANOSeconds : '+audioTime);
+        // console.info('AudioFrameworkRenderLog: Current Time in NANOSeconds : '+audioTime);
 
         await audioRen.getAudioTime().then(async function (data) {
-           // audioTime = Date.now();
-            audioTimeStart = data/1000000000;//-audioTime)/1000000000;
-            console.info('AudioFrameworkRenderLog: getAudioTime : After Start : Converted: '+audioTimeStart);
+            // audioTime = Date.now();
+            audioTimeStart = data / 1000000000;//-audioTime)/1000000000;
+            console.info('AudioFrameworkRenderLog: getAudioTime : After Start : Converted: ' + audioTimeStart);
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: getAudioTime : ERROR : '+err.message);
-            resultFlag=false;
+            console.info('AudioFrameworkRenderLog: getAudioTime : ERROR : ' + err.message);
+            resultFlag = false;
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         var bufferSize = await audioRen.getBufferSize();
         console.info('AudioFrameworkRenderLog: buffer size: ' + bufferSize);
@@ -337,56 +318,56 @@ describe('audioRenderer', function () {
         let discardHeader = new ArrayBuffer(44);
         ss.readSync(discardHeader);
         let totalSize = fileio.fstatSync(fdRead).size;
-        console.info('AudioFrameworkRenderLog:case 3 : AudioFrameworkRenderLog: File totalSize size: ' +totalSize);
-        totalSize = totalSize-44;
-        console.info('AudioFrameworkRenderLog: File size : Removing header: ' +totalSize);
+        console.info('AudioFrameworkRenderLog:case 3 : AudioFrameworkRenderLog: File totalSize size: ' + totalSize);
+        totalSize = totalSize - 44;
+        console.info('AudioFrameworkRenderLog: File size : Removing header: ' + totalSize);
         let rlen = 0;
-        while (rlen < totalSize/4) {
+        while (rlen < totalSize / 4) {
             let buf = new ArrayBuffer(bufferSize);
             rlen += ss.readSync(buf);
-            console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' +rlen);
+            console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' + rlen);
             await audioRen.write(buf);
         }
         console.info('AudioFrameworkRenderLog: Renderer after read');
 
         //var gettime = audioTimeMiddle-audioTimeStart;
-        if (audioTimeStart != 0){
-            console.info('AudioFrameworkRenderLog: getAudioTime : PASS : '+audioTimeStart);
+        if (audioTimeStart != 0) {
+            console.info('AudioFrameworkRenderLog: getAudioTime : PASS : ' + audioTimeStart);
         }
-        else{
-            console.info('AudioFrameworkRenderLog: getAudioTime : FAIL : '+audioTimeStart);
-            resultFlag=false;
+        else {
+            console.info('AudioFrameworkRenderLog: getAudioTime : FAIL : ' + audioTimeStart);
+            resultFlag = false;
         }
 
         await audioRen.drain().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer drained : SUCCESS');
         }).catch((err) => {
-            console.error('AudioFrameworkRenderLog: Renderer drain: ERROR : '+err.message);
+            console.error('AudioFrameworkRenderLog: Renderer drain: ERROR : ' + err.message);
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         await audioRen.stop().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer stopped : SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : ' + err.message);
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         await audioRen.release().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer release : SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : ' + err.message);
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-        console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         return resultFlag;
     }
 
-    async function playbackPromise_94 (AudioRendererOptions, pathName, AudioScene) {
+    async function playbackPromise_94(AudioRendererOptions, pathName, AudioScene) {
         var resultFlag = true;
         console.info('AudioFrameworkRenderLog: Promise : Audio Playback Function');
 
@@ -395,11 +376,11 @@ describe('audioRenderer', function () {
             audioRen = data;
             console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-            resultFlag=false;
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
+            resultFlag = false;
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         await audioRen.getStreamInfo().then(async function (audioParamsGet) {
             console.info('AudioFrameworkRenderLog: Renderer getStreamInfo:');
@@ -408,7 +389,7 @@ describe('audioRenderer', function () {
             console.info('AudioFrameworkRenderLog: Renderer channels:' + audioParamsGet.channels);
             console.info('AudioFrameworkRenderLog: Renderer encodingType:' + audioParamsGet.encodingType);
         }).catch((err) => {
-            console.log('AudioFrameworkRenderLog: getStreamInfo :ERROR: '+err.message);
+            console.log('AudioFrameworkRenderLog: getStreamInfo :ERROR: ' + err.message);
             resultFlag = false;
         });
 
@@ -418,23 +399,23 @@ describe('audioRenderer', function () {
             console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
             console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
         }).catch((err) => {
-            console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: '+err.message);
+            console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: ' + err.message);
             resultFlag = false;
         });
 
         await audioRen.start().then(async function () {
             console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : '+err.message);
-            resultFlag=false;
+            console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : ' + err.message);
+            resultFlag = false;
         });
 
-       // let audioTime = Date.now();
+        // let audioTime = Date.now();
         let audioTimeStart;
         //let audioTimeEnd;
         //let audioTimeMiddle;
         //console.info('AudioFrameworkRenderLog: Current Time in NANOSeconds : '+audioTime);
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         var bufferSize = await audioRen.getBufferSize();
         console.info('AudioFrameworkRenderLog: buffer size: ' + bufferSize);
@@ -444,22 +425,22 @@ describe('audioRenderer', function () {
         let discardHeader = new ArrayBuffer(44);
         ss.readSync(discardHeader);
         let totalSize = fileio.fstatSync(fdRead).size;
-        console.info('AudioFrameworkRenderLog:case 3 : AudioFrameworkRenderLog: File totalSize size: ' +totalSize);
-        totalSize = totalSize-44;
-        console.info('AudioFrameworkRenderLog: File size : Removing header: ' +totalSize);
+        console.info('AudioFrameworkRenderLog:case 3 : AudioFrameworkRenderLog: File totalSize size: ' + totalSize);
+        totalSize = totalSize - 44;
+        console.info('AudioFrameworkRenderLog: File size : Removing header: ' + totalSize);
         let rlen = 0;
         var gettime = 0;
-        while (rlen < totalSize/4) {
+        while (rlen < totalSize / 4) {
             let buf = new ArrayBuffer(bufferSize);
             rlen += ss.readSync(buf);
-            console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' +rlen);
+            console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' + rlen);
             await audioRen.write(buf);
             await audioRen.getAudioTime().then(async function (data) {
-                audioTimeStart = data/1000000000;
-                console.info('AudioFrameworkRenderLog: getAudioTime : After Start : Converted: '+audioTimeStart);
+                audioTimeStart = data / 1000000000;
+                console.info('AudioFrameworkRenderLog: getAudioTime : After Start : Converted: ' + audioTimeStart);
             }).catch((err) => {
-                console.info('AudioFrameworkRenderLog: getAudioTime : ERROR : '+err.message);
-                resultFlag=false;
+                console.info('AudioFrameworkRenderLog: getAudioTime : ERROR : ' + err.message);
+                resultFlag = false;
             });
         }
         console.info('AudioFrameworkRenderLog: Renderer after read');
@@ -467,40 +448,40 @@ describe('audioRenderer', function () {
         await audioRen.drain().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer drained : SUCCESS');
         }).catch((err) => {
-            console.error('AudioFrameworkRenderLog: Renderer drain: ERROR : '+err.message);
+            console.error('AudioFrameworkRenderLog: Renderer drain: ERROR : ' + err.message);
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         await audioRen.stop().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer stopped : SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : ' + err.message);
         });
 
-        if (audioTimeStart != 0){
-            console.info('AudioFrameworkRenderLog: getAudioTime : PASS : '+audioTimeStart);
+        if (audioTimeStart != 0) {
+            console.info('AudioFrameworkRenderLog: getAudioTime : PASS : ' + audioTimeStart);
         }
-        else{
-            console.info('AudioFrameworkRenderLog: getAudioTime : FAIL : '+audioTimeStart);
-            resultFlag=false;
+        else {
+            console.info('AudioFrameworkRenderLog: getAudioTime : FAIL : ' + audioTimeStart);
+            resultFlag = false;
         }
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         await audioRen.release().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer release : SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : ' + err.message);
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-        console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         return resultFlag;
     }
 
-    async function playbackPromise_95 (AudioRendererOptions, pathName, AudioScene) {
+    async function playbackPromise_95(AudioRendererOptions, pathName, AudioScene) {
         var resultFlag = true;
         console.info('AudioFrameworkRenderLog: Promise : Audio Playback Function');
 
@@ -509,11 +490,11 @@ describe('audioRenderer', function () {
             audioRen = data;
             console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-            resultFlag=false;
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
+            resultFlag = false;
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         await audioRen.getStreamInfo().then(async function (audioParamsGet) {
             console.info('AudioFrameworkRenderLog: Renderer getStreamInfo:');
@@ -522,7 +503,7 @@ describe('audioRenderer', function () {
             console.info('AudioFrameworkRenderLog: Renderer channels:' + audioParamsGet.channels);
             console.info('AudioFrameworkRenderLog: Renderer encodingType:' + audioParamsGet.encodingType);
         }).catch((err) => {
-            console.log('AudioFrameworkRenderLog: getStreamInfo :ERROR: '+err.message);
+            console.log('AudioFrameworkRenderLog: getStreamInfo :ERROR: ' + err.message);
             resultFlag = false;
         });
 
@@ -532,20 +513,20 @@ describe('audioRenderer', function () {
             console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
             console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
         }).catch((err) => {
-            console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: '+err.message);
+            console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: ' + err.message);
             resultFlag = false;
         });
 
         await audioRen.start().then(async function () {
             console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : '+err.message);
-            resultFlag=false;
+            console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : ' + err.message);
+            resultFlag = false;
         });
 
         let audioTimeStart;
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         var bufferSize = await audioRen.getBufferSize();
         console.info('AudioFrameworkRenderLog: buffer size: ' + bufferSize);
@@ -555,14 +536,14 @@ describe('audioRenderer', function () {
         let discardHeader = new ArrayBuffer(44);
         ss.readSync(discardHeader);
         let totalSize = fileio.fstatSync(fdRead).size;
-        console.info('AudioFrameworkRenderLog:case 3 : AudioFrameworkRenderLog: File totalSize size: ' +totalSize);
-        totalSize = totalSize-44;
-        console.info('AudioFrameworkRenderLog: File size : Removing header: ' +totalSize);
+        console.info('AudioFrameworkRenderLog:case 3 : AudioFrameworkRenderLog: File totalSize size: ' + totalSize);
+        totalSize = totalSize - 44;
+        console.info('AudioFrameworkRenderLog: File size : Removing header: ' + totalSize);
         let rlen = 0;
-        while (rlen < totalSize/4) {
+        while (rlen < totalSize / 4) {
             let buf = new ArrayBuffer(bufferSize);
             rlen += ss.readSync(buf);
-            console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' +rlen);
+            console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' + rlen);
             await audioRen.write(buf);
         }
 
@@ -571,79 +552,79 @@ describe('audioRenderer', function () {
         await audioRen.drain().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer drained : SUCCESS');
         }).catch((err) => {
-            console.error('AudioFrameworkRenderLog: Renderer drain: ERROR : '+err.message);
+            console.error('AudioFrameworkRenderLog: Renderer drain: ERROR : ' + err.message);
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         await audioRen.stop().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer stopped : SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : ' + err.message);
         });
 
         await audioRen.getAudioTime().then(async function (data) {
-            audioTimeStart = data/1000000000;
-            console.info('AudioFrameworkRenderLog: getAudioTime : After Start : Converted: '+audioTimeStart);
+            audioTimeStart = data / 1000000000;
+            console.info('AudioFrameworkRenderLog: getAudioTime : After Start : Converted: ' + audioTimeStart);
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: getAudioTime : ERROR : '+err.message);
-            resultFlag=false;
+            console.info('AudioFrameworkRenderLog: getAudioTime : ERROR : ' + err.message);
+            resultFlag = false;
         });
 
-        if (audioTimeStart !=0){
-            console.info('AudioFrameworkRenderLog: getAudioTime : PASS : '+audioTimeStart);
+        if (audioTimeStart != 0) {
+            console.info('AudioFrameworkRenderLog: getAudioTime : PASS : ' + audioTimeStart);
         }
-        else{
-            console.info('AudioFrameworkRenderLog: getAudioTime : FAIL : '+audioTimeStart);
-            resultFlag=false;
+        else {
+            console.info('AudioFrameworkRenderLog: getAudioTime : FAIL : ' + audioTimeStart);
+            resultFlag = false;
         }
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         await audioRen.release().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer release : SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : ' + err.message);
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-        console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         return resultFlag;
     }
 
-    async function playbackPromise_102 (AudioRendererOptions, pathName) {
+    async function playbackPromise_102(AudioRendererOptions, pathName) {
         var resultFlag = false;
         var audioRen;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
             console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
         });
-        audioRen.on('markReach',55, (position) => {
-            console.log('AudioFrameworkTest: markReach Event is called : '+position);
+        audioRen.on('markReach', 55, (position) => {
+            console.log('AudioFrameworkTest: markReach Event is called : ' + position);
             resultFlag = true;
         })
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         await audioRen.start().then(async function () {
             console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : '+err.message);
-            resultFlag=false;
+            console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : ' + err.message);
+            resultFlag = false;
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         var bufferSize;
         await audioRen.getBufferSize().then(async function (data) {
-            console.info('AudioFrameworkRenderLog: getBufferSize :SUCCESS '+data);
-            bufferSize=data;
+            console.info('AudioFrameworkRenderLog: getBufferSize :SUCCESS ' + data);
+            bufferSize = data;
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: getBufferSize :ERROR : '+err.message);
-            resultFlag=false;
+            console.info('AudioFrameworkRenderLog: getBufferSize :ERROR : ' + err.message);
+            resultFlag = false;
         });
 
         let ss = fileio.fdopenStreamSync(fdRead, 'r');
@@ -653,14 +634,14 @@ describe('audioRenderer', function () {
         ss.readSync(discardHeader);
         console.info('AudioFrameworkRenderLog:case 2-2:AudioFrameworkRenderLog: File Path: ');
         let totalSize = fileio.fstatSync(fdRead).size;
-        console.info('AudioFrameworkRenderLog:case 3 : AudioFrameworkRenderLog: File totalSize size: ' +totalSize);
-        totalSize = totalSize-44;
-        console.info('AudioFrameworkRenderLog: File size : Removing header: ' +totalSize);
+        console.info('AudioFrameworkRenderLog:case 3 : AudioFrameworkRenderLog: File totalSize size: ' + totalSize);
+        totalSize = totalSize - 44;
+        console.info('AudioFrameworkRenderLog: File size : Removing header: ' + totalSize);
         let rlen = 0;
-        while (rlen < totalSize/4) {
+        while (rlen < totalSize / 4) {
             let buf = new ArrayBuffer(bufferSize);
             rlen += ss.readSync(buf);
-            console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' +rlen);
+            console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' + rlen);
             await audioRen.write(buf);
         }
 
@@ -669,65 +650,65 @@ describe('audioRenderer', function () {
         await audioRen.drain().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer drained : SUCCESS');
         }).catch((err) => {
-            console.error('AudioFrameworkRenderLog: Renderer drain: ERROR : '+err.message);
+            console.error('AudioFrameworkRenderLog: Renderer drain: ERROR : ' + err.message);
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         await audioRen.stop().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer stopped : SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : ' + err.message);
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         await audioRen.release().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer release : SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : ' + err.message);
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
         return resultFlag;
     }
 
-    async function playbackPromise_103 (AudioRendererOptions , pathName ) {
+    async function playbackPromise_103(AudioRendererOptions, pathName) {
         var resultFlag = false;
         var audioRen;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
             console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
         });
-        audioRen.on('markReach',55, (position) => {
-            console.log('AudioFrameworkTest: markReach Event is called : '+position);
+        audioRen.on('markReach', 55, (position) => {
+            console.log('AudioFrameworkTest: markReach Event is called : ' + position);
             audioRen.off('markReach');
-            audioRen.on('markReach',100, (position) => {
-                console.log('AudioFrameworkTest: markReach Event is called : '+position);
+            audioRen.on('markReach', 100, (position) => {
+                console.log('AudioFrameworkTest: markReach Event is called : ' + position);
                 resultFlag = true;
             });
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         await audioRen.start().then(async function () {
             console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : '+err.message);
-            resultFlag=false;
+            console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : ' + err.message);
+            resultFlag = false;
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         var bufferSize;
         await audioRen.getBufferSize().then(async function (data) {
-            console.info('AudioFrameworkRenderLog: getBufferSize :SUCCESS '+data);
-            bufferSize=data;
+            console.info('AudioFrameworkRenderLog: getBufferSize :SUCCESS ' + data);
+            bufferSize = data;
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: getBufferSize :ERROR : '+err.message);
-            resultFlag=false;
+            console.info('AudioFrameworkRenderLog: getBufferSize :ERROR : ' + err.message);
+            resultFlag = false;
         });
 
         let ss = fileio.fdopenStreamSync(fdRead, 'r');
@@ -735,14 +716,14 @@ describe('audioRenderer', function () {
         let discardHeader = new ArrayBuffer(44);
         ss.readSync(discardHeader);
         let totalSize = fileio.fstatSync(fdRead).size;
-        console.info('AudioFrameworkRenderLog:case 3 : AudioFrameworkRenderLog: File totalSize size: ' +totalSize);
-        totalSize = totalSize-44;
-        console.info('AudioFrameworkRenderLog: File size : Removing header: ' +totalSize);
+        console.info('AudioFrameworkRenderLog:case 3 : AudioFrameworkRenderLog: File totalSize size: ' + totalSize);
+        totalSize = totalSize - 44;
+        console.info('AudioFrameworkRenderLog: File size : Removing header: ' + totalSize);
         let rlen = 0;
-        while (rlen < totalSize/4) {
+        while (rlen < totalSize / 4) {
             let buf = new ArrayBuffer(bufferSize);
             rlen += ss.readSync(buf);
-            console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' +rlen);
+            console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' + rlen);
             await audioRen.write(buf);
         }
         console.info('AudioFrameworkRenderLog: Renderer after read');
@@ -750,65 +731,65 @@ describe('audioRenderer', function () {
         await audioRen.drain().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer drained : SUCCESS');
         }).catch((err) => {
-            console.error('AudioFrameworkRenderLog: Renderer drain: ERROR : '+err.message);
+            console.error('AudioFrameworkRenderLog: Renderer drain: ERROR : ' + err.message);
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         await audioRen.stop().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer stopped : SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : ' + err.message);
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         await audioRen.release().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer release : SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : ' + err.message);
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
         return resultFlag;
     }
 
-    async function playbackPromise_104 ( AudioRendererOptions , pathName ) {
+    async function playbackPromise_104(AudioRendererOptions, pathName) {
         var resultFlag = false;
         var audioRen;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
             console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
         });
-        audioRen.on('markReach',55, (position) => {
-            console.log('AudioFrameworkTest: markReach Event is called : '+position);
+        audioRen.on('markReach', 55, (position) => {
+            console.log('AudioFrameworkTest: markReach Event is called : ' + position);
             resultFlag = true;
-            audioRen.on('markReach',73, (position) => {
-                console.log('AudioFrameworkTest: markReach Event is called : '+position);
+            audioRen.on('markReach', 73, (position) => {
+                console.log('AudioFrameworkTest: markReach Event is called : ' + position);
                 resultFlag = false;
             });
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         await audioRen.start().then(async function () {
             console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : '+err.message);
-            resultFlag=false;
+            console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : ' + err.message);
+            resultFlag = false;
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         var bufferSize;
         await audioRen.getBufferSize().then(async function (data) {
-            console.info('AudioFrameworkRenderLog: getBufferSize :SUCCESS '+data);
-            bufferSize=data;
+            console.info('AudioFrameworkRenderLog: getBufferSize :SUCCESS ' + data);
+            bufferSize = data;
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: getBufferSize :ERROR : '+err.message);
-            resultFlag=false;
+            console.info('AudioFrameworkRenderLog: getBufferSize :ERROR : ' + err.message);
+            resultFlag = false;
         });
 
         let ss = fileio.fdopenStreamSync(fdRead, 'r');
@@ -816,14 +797,14 @@ describe('audioRenderer', function () {
         let discardHeader = new ArrayBuffer(44);
         ss.readSync(discardHeader);
         let totalSize = fileio.fstatSync(fdRead).size;
-        console.info('AudioFrameworkRenderLog:case 3 : AudioFrameworkRenderLog: File totalSize size: ' +totalSize);
-        totalSize = totalSize-44;
-        console.info('AudioFrameworkRenderLog: File size : Removing header: ' +totalSize);
+        console.info('AudioFrameworkRenderLog:case 3 : AudioFrameworkRenderLog: File totalSize size: ' + totalSize);
+        totalSize = totalSize - 44;
+        console.info('AudioFrameworkRenderLog: File size : Removing header: ' + totalSize);
         let rlen = 0;
-        while (rlen < totalSize/4) {
+        while (rlen < totalSize / 4) {
             let buf = new ArrayBuffer(bufferSize);
             rlen += ss.readSync(buf);
-            console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' +rlen);
+            console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' + rlen);
             await audioRen.write(buf);
         }
         console.info('AudioFrameworkRenderLog: Renderer after read');
@@ -831,62 +812,62 @@ describe('audioRenderer', function () {
         await audioRen.drain().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer drained : SUCCESS');
         }).catch((err) => {
-            console.error('AudioFrameworkRenderLog: Renderer drain: ERROR : '+err.message);
+            console.error('AudioFrameworkRenderLog: Renderer drain: ERROR : ' + err.message);
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         await audioRen.stop().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer stopped : SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : ' + err.message);
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         await audioRen.release().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer release : SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : ' + err.message);
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
         return resultFlag;
     }
 
-    async function playbackPromise_105 (AudioRendererOptions , pathName) {
+    async function playbackPromise_105(AudioRendererOptions, pathName) {
         var resultFlag = false;
         var audioRen;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
             console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
         });
-        audioRen.on('periodReach',55, (position) => {
-            console.log('AudioFrameworkTest: periodReach Event is called : '+position);
+        audioRen.on('periodReach', 55, (position) => {
+            console.log('AudioFrameworkTest: periodReach Event is called : ' + position);
             resultFlag = true;
             audioRen.off('periodReach');
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         await audioRen.start().then(async function () {
             console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : '+err.message);
-            resultFlag=false;
+            console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : ' + err.message);
+            resultFlag = false;
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         var bufferSize;
         await audioRen.getBufferSize().then(async function (data) {
-            console.info('AudioFrameworkRenderLog: getBufferSize :SUCCESS '+data);
-            bufferSize=data;
+            console.info('AudioFrameworkRenderLog: getBufferSize :SUCCESS ' + data);
+            bufferSize = data;
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: getBufferSize :ERROR : '+err.message);
-            resultFlag=false;
+            console.info('AudioFrameworkRenderLog: getBufferSize :ERROR : ' + err.message);
+            resultFlag = false;
         });
 
         let ss = fileio.fdopenStreamSync(fdRead, 'r');
@@ -894,14 +875,14 @@ describe('audioRenderer', function () {
         let discardHeader = new ArrayBuffer(44);
         ss.readSync(discardHeader);
         let totalSize = fileio.fstatSync(fdRead).size;
-        console.info('AudioFrameworkRenderLog:case 3 : AudioFrameworkRenderLog: File totalSize size: ' +totalSize);
-        totalSize = totalSize-44;
-        console.info('AudioFrameworkRenderLog: File size : Removing header: ' +totalSize);
+        console.info('AudioFrameworkRenderLog:case 3 : AudioFrameworkRenderLog: File totalSize size: ' + totalSize);
+        totalSize = totalSize - 44;
+        console.info('AudioFrameworkRenderLog: File size : Removing header: ' + totalSize);
         let rlen = 0;
-        while (rlen < totalSize/4) {
+        while (rlen < totalSize / 4) {
             let buf = new ArrayBuffer(bufferSize);
             rlen += ss.readSync(buf);
-            console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' +rlen);
+            console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' + rlen);
             await audioRen.write(buf);
         }
 
@@ -910,67 +891,67 @@ describe('audioRenderer', function () {
         await audioRen.drain().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer drained : SUCCESS');
         }).catch((err) => {
-            console.error('AudioFrameworkRenderLog: Renderer drain: ERROR : '+err.message);
+            console.error('AudioFrameworkRenderLog: Renderer drain: ERROR : ' + err.message);
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         await audioRen.stop().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer stopped : SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : ' + err.message);
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         await audioRen.release().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer release : SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : ' + err.message);
         });
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
         return resultFlag;
     }
 
-    async function playbackPromise_106 (AudioRendererOptions , pathName) {
+    async function playbackPromise_106(AudioRendererOptions, pathName) {
         var resultFlag = false;
         var audioRen;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
             console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
         });
-        audioRen.on('periodReach',55, (position) => {
-            console.log('AudioFrameworkTest: periodReach Event is called : '+position);
+        audioRen.on('periodReach', 55, (position) => {
+            console.log('AudioFrameworkTest: periodReach Event is called : ' + position);
             //            resultFlag = true;
             audioRen.off('periodReach');
-            audioRen.on('periodReach',100, (position) => {
-                console.log('AudioFrameworkTest: periodReach Event is called : '+position);
+            audioRen.on('periodReach', 100, (position) => {
+                console.log('AudioFrameworkTest: periodReach Event is called : ' + position);
                 resultFlag = true;
                 audioRen.off('periodReach');
             });
 
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         await audioRen.start().then(async function () {
             console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : '+err.message);
-            resultFlag=false;
+            console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : ' + err.message);
+            resultFlag = false;
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         var bufferSize;
         await audioRen.getBufferSize().then(async function (data) {
-            console.info('AudioFrameworkRenderLog: getBufferSize :SUCCESS '+data);
-            bufferSize=data;
+            console.info('AudioFrameworkRenderLog: getBufferSize :SUCCESS ' + data);
+            bufferSize = data;
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: getBufferSize :ERROR : '+err.message);
-            resultFlag=false;
+            console.info('AudioFrameworkRenderLog: getBufferSize :ERROR : ' + err.message);
+            resultFlag = false;
         });
 
         let ss = fileio.fdopenStreamSync(fdRead, 'r');
@@ -978,14 +959,14 @@ describe('audioRenderer', function () {
         let discardHeader = new ArrayBuffer(44);
         ss.readSync(discardHeader);
         let totalSize = fileio.fstatSync(fdRead).size;
-        console.info('AudioFrameworkRenderLog:case 3 : AudioFrameworkRenderLog: File totalSize size: ' +totalSize);
-        totalSize = totalSize-44;
-        console.info('AudioFrameworkRenderLog: File size : Removing header: ' +totalSize);
+        console.info('AudioFrameworkRenderLog:case 3 : AudioFrameworkRenderLog: File totalSize size: ' + totalSize);
+        totalSize = totalSize - 44;
+        console.info('AudioFrameworkRenderLog: File size : Removing header: ' + totalSize);
         let rlen = 0;
-        while (rlen < totalSize/4) {
+        while (rlen < totalSize / 4) {
             let buf = new ArrayBuffer(bufferSize);
             rlen += ss.readSync(buf);
-            console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' +rlen);
+            console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' + rlen);
             await audioRen.write(buf);
         }
         console.info('AudioFrameworkRenderLog: Renderer after read');
@@ -993,65 +974,65 @@ describe('audioRenderer', function () {
         await audioRen.drain().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer drained : SUCCESS');
         }).catch((err) => {
-            console.error('AudioFrameworkRenderLog: Renderer drain: ERROR : '+err.message);
+            console.error('AudioFrameworkRenderLog: Renderer drain: ERROR : ' + err.message);
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         await audioRen.stop().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer stopped : SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : ' + err.message);
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         await audioRen.release().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer release : SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : ' + err.message);
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
         return resultFlag;
     }
 
-    async function playbackPromise_107 (AudioRendererOptions, pathName) {
+    async function playbackPromise_107(AudioRendererOptions, pathName) {
         var resultFlag = false;
         var audioRen;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
             console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
         });
-        audioRen.on('periodReach',55, (position) => {
-            console.log('AudioFrameworkTest: periodReach Event is called : '+position);
+        audioRen.on('periodReach', 55, (position) => {
+            console.log('AudioFrameworkTest: periodReach Event is called : ' + position);
             resultFlag = true;
-            audioRen.on('periodReach',73, (position) => {
-                console.log('AudioFrameworkTest: periodReach Event is called : '+position);
+            audioRen.on('periodReach', 73, (position) => {
+                console.log('AudioFrameworkTest: periodReach Event is called : ' + position);
                 resultFlag = false;
             });
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         await audioRen.start().then(async function () {
             console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : '+err.message);
-            resultFlag=false;
+            console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : ' + err.message);
+            resultFlag = false;
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         var bufferSize;
         await audioRen.getBufferSize().then(async function (data) {
-            console.info('AudioFrameworkRenderLog: getBufferSize :SUCCESS '+data);
-            bufferSize=data;
+            console.info('AudioFrameworkRenderLog: getBufferSize :SUCCESS ' + data);
+            bufferSize = data;
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: getBufferSize :ERROR : '+err.message);
-            resultFlag=false;
+            console.info('AudioFrameworkRenderLog: getBufferSize :ERROR : ' + err.message);
+            resultFlag = false;
         });
 
         let ss = fileio.fdopenStreamSync(fdRead, 'r');
@@ -1059,14 +1040,14 @@ describe('audioRenderer', function () {
         let discardHeader = new ArrayBuffer(44);
         ss.readSync(discardHeader);
         let totalSize = fileio.fstatSync(fdRead).size;
-        console.info('AudioFrameworkRenderLog:case 3 : AudioFrameworkRenderLog: File totalSize size: ' +totalSize);
-        totalSize = totalSize-44;
-        console.info('AudioFrameworkRenderLog: File size : Removing header: ' +totalSize);
+        console.info('AudioFrameworkRenderLog:case 3 : AudioFrameworkRenderLog: File totalSize size: ' + totalSize);
+        totalSize = totalSize - 44;
+        console.info('AudioFrameworkRenderLog: File size : Removing header: ' + totalSize);
         let rlen = 0;
-        while (rlen < totalSize/4) {
+        while (rlen < totalSize / 4) {
             let buf = new ArrayBuffer(bufferSize);
             rlen += ss.readSync(buf);
-            console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' +rlen);
+            console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' + rlen);
             await audioRen.write(buf);
         }
         console.info('AudioFrameworkRenderLog: Renderer after read');
@@ -1074,26 +1055,26 @@ describe('audioRenderer', function () {
         await audioRen.drain().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer drained : SUCCESS');
         }).catch((err) => {
-            console.error('AudioFrameworkRenderLog: Renderer drain: ERROR : '+err.message);
+            console.error('AudioFrameworkRenderLog: Renderer drain: ERROR : ' + err.message);
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         await audioRen.stop().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer stopped : SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : ' + err.message);
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         await audioRen.release().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer release : SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : ' + err.message);
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
         return resultFlag;
     }
 
@@ -1106,11 +1087,11 @@ describe('audioRenderer', function () {
             audioRen = data;
             console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-            resultFlag=false;
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
+            resultFlag = false;
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         await audioRen.getStreamInfo().then(async function (audioParamsGet) {
             console.info('AudioFrameworkRenderLog: Renderer getStreamInfo:');
@@ -1119,7 +1100,7 @@ describe('audioRenderer', function () {
             console.info('AudioFrameworkRenderLog: Renderer channels:' + audioParamsGet.channels);
             console.info('AudioFrameworkRenderLog: Renderer encodingType:' + audioParamsGet.encodingType);
         }).catch((err) => {
-            console.log('AudioFrameworkRenderLog: getStreamInfo :ERROR: '+err.message);
+            console.log('AudioFrameworkRenderLog: getStreamInfo :ERROR: ' + err.message);
             resultFlag = false;
         });
 
@@ -1129,19 +1110,19 @@ describe('audioRenderer', function () {
             console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
             console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
         }).catch((err) => {
-            console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: '+err.message);
+            console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: ' + err.message);
             resultFlag = false;
         });
 
         await audioRen.start().then(async function () {
             console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : '+err.message);
-            resultFlag=false;
+            console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : ' + err.message);
+            resultFlag = false;
         });
 
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         var bufferSize = await audioRen.getBufferSize();
         console.info('AudioFrameworkRenderLog: buffer size: ' + bufferSize);
@@ -1151,29 +1132,29 @@ describe('audioRenderer', function () {
         let discardHeader = new ArrayBuffer(44);
         ss.readSync(discardHeader);
         let totalSize = fileio.fstatSync(fdRead).size;
-        console.info('AudioFrameworkRenderLog:case 3 : AudioFrameworkRenderLog: File totalSize size: ' +totalSize);
-        totalSize = totalSize-44;
-        console.info('AudioFrameworkRenderLog: File size : Removing header: ' +totalSize);
+        console.info('AudioFrameworkRenderLog:case 3 : AudioFrameworkRenderLog: File totalSize size: ' + totalSize);
+        totalSize = totalSize - 44;
+        console.info('AudioFrameworkRenderLog: File size : Removing header: ' + totalSize);
         let rlen = 0;
-        while (rlen < totalSize/4) {
+        while (rlen < totalSize / 4) {
             let buf = new ArrayBuffer(bufferSize);
             rlen += ss.readSync(buf);
-            console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' +rlen);
+            console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' + rlen);
             await audioRen.write(buf);
-            if (rlen > (totalSize/8)){
+            if (rlen > (totalSize / 8)) {
                 await audioManager.getAudioScene().then(async function (data) {
-                    console.info('AudioFrameworkAudioScene: getAudioScene : Value : '+data);
+                    console.info('AudioFrameworkAudioScene: getAudioScene : Value : ' + data);
                 }).catch((err) => {
-                    console.info('AudioFrameworkAudioScene: getAudioScene : ERROR : '+err.message);
-                    resultFlag=false;
+                    console.info('AudioFrameworkAudioScene: getAudioScene : ERROR : ' + err.message);
+                    resultFlag = false;
                 });
             }
-            if (rlen > (totalSize/8)){
+            if (rlen > (totalSize / 8)) {
 
                 audioRen.setRenderRate(audio.AudioRendererRate.RENDER_RATE_DOUBLE, (err) => {
                     if (err) {
-                        console.info('AudioFrameworkAudioScene: setRenderRate : RENDER_RATE_DOUBLE : ERROR : '+err.message);
-                        resultFlag=false;
+                        console.info('AudioFrameworkAudioScene: setRenderRate : RENDER_RATE_DOUBLE : ERROR : ' + err.message);
+                        resultFlag = false;
                     }
                     else {
                         console.info('AudioFrameworkRenderLog: setRenderRate : RENDER_RATE_DOUBLE : SUCCESS');
@@ -1185,272 +1166,272 @@ describe('audioRenderer', function () {
 
         audioRen.getRenderRate((err, data) => {
             if (err) {
-                console.info('AudioFrameworkAudioScene: getRenderRate : RENDER_RATE_DOUBLE : ERROR : '+err.message);
-                resultFlag=false;
+                console.info('AudioFrameworkAudioScene: getRenderRate : RENDER_RATE_DOUBLE : ERROR : ' + err.message);
+                resultFlag = false;
             }
-            else if (data == audio.AudioRendererRate.RENDER_RATE_DOUBLE){
-                console.info('AudioFrameworkRenderLog: getRenderRate : RENDER_RATE_DOUBLE : PASS : '+data);
+            else if (data == audio.AudioRendererRate.RENDER_RATE_DOUBLE) {
+                console.info('AudioFrameworkRenderLog: getRenderRate : RENDER_RATE_DOUBLE : PASS : ' + data);
             }
-            else{
-                console.info('AudioFrameworkRenderLog: getRenderRate : RENDER_RATE_DOUBLE : FAIL : '+data);
-                resultFlag=false;
+            else {
+                console.info('AudioFrameworkRenderLog: getRenderRate : RENDER_RATE_DOUBLE : FAIL : ' + data);
+                resultFlag = false;
             }
         });
 
         await audioRen.drain().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer drained : SUCCESS');
         }).catch((err) => {
-            console.error('AudioFrameworkRenderLog: Renderer drain: ERROR : '+err.message);
+            console.error('AudioFrameworkRenderLog: Renderer drain: ERROR : ' + err.message);
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         await audioRen.stop().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer stopped : SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : ' + err.message);
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         await audioRen.release().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer release : SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : ' + err.message);
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-        console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         return resultFlag;
     }
 
-    async function playbackCB (AudioRendererOptions, pathName){
+    async function playbackCB(AudioRendererOptions, pathName) {
 
-     var resultFlag = 'new';
+        var resultFlag = 'new';
 
-     console.info('AudioFrameworkRenderLog: CALLBACK : Audio Playback Function');
+        console.info('AudioFrameworkRenderLog: CALLBACK : Audio Playback Function');
 
-     var audioRen;
+        var audioRen;
 
-     audio.createAudioRenderer(AudioRendererOptions,(err, data) => {
-         if (err) {
-             console.error(`AudioFrameworkRenderLog: AudioRender Created : Error: ${err.message}`);
-             resultFlag = false;
-         }
-         else {
-             console.info('AudioFrameworkRenderLog: AudioRender Created : Success : SUCCESS');
-             audioRen = data;
-         }
-     });
-     if (resultFlag == false){
-         console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-         return resultFlag;
-     }
+        audio.createAudioRenderer(AudioRendererOptions, (err, data) => {
+            if (err) {
+                console.error(`AudioFrameworkRenderLog: AudioRender Created : Error: ${err.message}`);
+                resultFlag = false;
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: AudioRender Created : Success : SUCCESS');
+                audioRen = data;
+            }
+        });
+        if (resultFlag == false) {
+            console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
+            return resultFlag;
+        }
 
-     await sleep(100);
+        await sleep(100);
 
-     console.info('AudioFrameworkRenderLog: AudioRenderer : Path : '+pathName);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : Path : ' + pathName);
 
-     console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-     console.info('AudioFrameworkRenderLog: Callback : Audio Playback Function');
+        console.info('AudioFrameworkRenderLog: Callback : Audio Playback Function');
 
-     audioRen.start((err) => {
-         if (err) {
-             console.error(`AudioFrameworkRenderLog: Renderer start failed: Error: ${err.message}`);
-             resultFlag=false;
-         }
-         else {
-             console.info('AudioFrameworkRenderLog: Renderer started');
-         }
-     });
-     await sleep(100);
-     if (resultFlag == false){
-         console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-         return resultFlag;
-     }
-     console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        audioRen.start((err) => {
+            if (err) {
+                console.error(`AudioFrameworkRenderLog: Renderer start failed: Error: ${err.message}`);
+                resultFlag = false;
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer started');
+            }
+        });
+        await sleep(100);
+        if (resultFlag == false) {
+            console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
+            return resultFlag;
+        }
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-     var samplingRate;
-     audioRen.getStreamInfo(async (err, audioParamsGet) => {
-         await sleep(100);
-         if (err) {
-             console.log('AudioFrameworkRenderLog: getStreamInfo :ERROR: '+err.message);
-             resultFlag = false;
-         }
-         else {
-             console.info('AudioFrameworkRenderLog: Renderer getStreamInfo:');
-             console.info('AudioFrameworkRenderLog: Renderer sampleFormat:' + audioParamsGet.sampleFormat);
-             console.info('AudioFrameworkRenderLog: Renderer samplingRate:' + audioParamsGet.samplingRate);
-             console.info('AudioFrameworkRenderLog: Renderer channels:' + audioParamsGet.channels);
-             console.info('AudioFrameworkRenderLog: Renderer encodingType:' + audioParamsGet.encodingType);
-             samplingRate = audioParamsGet.samplingRate;
-         }
-     });
-     if (resultFlag == false){
-         console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-         return resultFlag;
-     }
+        var samplingRate;
+        audioRen.getStreamInfo(async (err, audioParamsGet) => {
+            await sleep(100);
+            if (err) {
+                console.log('AudioFrameworkRenderLog: getStreamInfo :ERROR: ' + err.message);
+                resultFlag = false;
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer getStreamInfo:');
+                console.info('AudioFrameworkRenderLog: Renderer sampleFormat:' + audioParamsGet.sampleFormat);
+                console.info('AudioFrameworkRenderLog: Renderer samplingRate:' + audioParamsGet.samplingRate);
+                console.info('AudioFrameworkRenderLog: Renderer channels:' + audioParamsGet.channels);
+                console.info('AudioFrameworkRenderLog: Renderer encodingType:' + audioParamsGet.encodingType);
+                samplingRate = audioParamsGet.samplingRate;
+            }
+        });
+        if (resultFlag == false) {
+            console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
+            return resultFlag;
+        }
 
-     audioRen.getRendererInfo(async (err, audioParamsGet) => {
-         await sleep(100);
-         if (err) {
-             console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: '+err.message);
-             resultFlag = false;
-         }
-         else {
-             console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
-             console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
-             console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
-             console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
-         }
-     });
-     await sleep(100);
-     if (resultFlag == false){
-         console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-         return resultFlag;
-     }
+        audioRen.getRendererInfo(async (err, audioParamsGet) => {
+            await sleep(100);
+            if (err) {
+                console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: ' + err.message);
+                resultFlag = false;
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
+                console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
+                console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
+                console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
+            }
+        });
+        await sleep(100);
+        if (resultFlag == false) {
+            console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
+            return resultFlag;
+        }
 
-     var bufferSize;
-     await audioRen.getBufferSize((err,data)=> {
-         if (err) {
-             console.info('AudioFrameworkRenderLog: getBufferSize :ERROR : '+err.message);
-             resultFlag=false;
-         }
-         else {
-             console.info('AudioFrameworkRenderLog: getBufferSize :SUCCESS '+data);
-             bufferSize=data;
-         }
-     });
-     await sleep(100);
-     if (resultFlag == false){
-         console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-         return resultFlag;
-     }
+        var bufferSize;
+        await audioRen.getBufferSize((err, data) => {
+            if (err) {
+                console.info('AudioFrameworkRenderLog: getBufferSize :ERROR : ' + err.message);
+                resultFlag = false;
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: getBufferSize :SUCCESS ' + data);
+                bufferSize = data;
+            }
+        });
+        await sleep(100);
+        if (resultFlag == false) {
+            console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
+            return resultFlag;
+        }
 
-     let ss = fileio.fdopenStreamSync(fdRead, 'r');
-     console.info('AudioFrameworkRenderLog:case 4: File Path: ' + ss);
-     let discardHeader = new ArrayBuffer(44);
-     ss.readSync(discardHeader);
-     let totalSize = fileio.fstatSync(fdRead).size;
-     let aa = fileio.fstatSync(fdRead);
-     console.log('case 6 : '+aa);
-     console.info('AudioFrameworkRenderLog: File totalSize size: ' +totalSize);
-     totalSize = totalSize-44;
-     let rlen = 0;
-     console.info('AudioFrameworkRenderLog: File size : Removing header: ' +totalSize);
-     await sleep(100);
-     //     var waitTime = (totalSize/88200);
-     var waitTime;
-     switch (samplingRate) {
-         case 44100:
-             waitTime = 45;
-             break;
-         case 8000:
-             waitTime = 60;
-             break;
-         case 32000:
-             waitTime = 45;
-             break;
-         case 64000:
-             waitTime = 45;
-             break;
-         case 96000:
-             waitTime = 45;
-             break;
-         case 11025:
-             waitTime = 45;
-             break;
-         case 12000:
-             waitTime = 45;
-             break;
-         case 16000:
-             waitTime = 45;
-             break;
-         case 22050:
-             waitTime = 45;
-             break;
-         case 24000:
-             waitTime = 45;
-             break;
-         case 48000:
-             waitTime = 45;
-             break;
-         default:
-             waitTime = 45;
-             break
-     }
+        let ss = fileio.fdopenStreamSync(fdRead, 'r');
+        console.info('AudioFrameworkRenderLog:case 4: File Path: ' + ss);
+        let discardHeader = new ArrayBuffer(44);
+        ss.readSync(discardHeader);
+        let totalSize = fileio.fstatSync(fdRead).size;
+        let aa = fileio.fstatSync(fdRead);
+        console.log('case 6 : ' + aa);
+        console.info('AudioFrameworkRenderLog: File totalSize size: ' + totalSize);
+        totalSize = totalSize - 44;
+        let rlen = 0;
+        console.info('AudioFrameworkRenderLog: File size : Removing header: ' + totalSize);
+        await sleep(100);
+        //     var waitTime = (totalSize/88200);
+        var waitTime;
+        switch (samplingRate) {
+            case 44100:
+                waitTime = 45;
+                break;
+            case 8000:
+                waitTime = 60;
+                break;
+            case 32000:
+                waitTime = 45;
+                break;
+            case 64000:
+                waitTime = 45;
+                break;
+            case 96000:
+                waitTime = 45;
+                break;
+            case 11025:
+                waitTime = 45;
+                break;
+            case 12000:
+                waitTime = 45;
+                break;
+            case 16000:
+                waitTime = 45;
+                break;
+            case 22050:
+                waitTime = 45;
+                break;
+            case 24000:
+                waitTime = 45;
+                break;
+            case 48000:
+                waitTime = 45;
+                break;
+            default:
+                waitTime = 45;
+                break
+        }
 
-     await sleep(100);
-     console.info('AudioFrameworkRenderLog: waitTime : ' +waitTime);
-     while (rlen < totalSize/10) {
-         let buf = new ArrayBuffer(bufferSize);
-         rlen += ss.readSync(buf);
-         console.info('BufferAudioFramework: bytes read from file: ' +rlen);
-         await audioRen.write(buf,(err, data) => {
-             if (err) {
-                 console.error(`AudioFrameworkRenderLog: Buff write: Error: ${err.message}`);
-                 resultFlag=false;
-             }
-             else {
-                 console.info('BufferAudioFramework: Buff write successful : ');
-                 resultFlag=true;
-             }
-         });
-         await sleep(waitTime);
-     }
-     await sleep(100);
-     if (resultFlag == false){
-         console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-         return resultFlag;
-     }
-     ss.closeSync();
-     audioRen.drain((err, state) => {
-         if (err) {
-             console.error(`AudioFrameworkRenderLog: Renderer drain failed: Error: ${err.message}`);
-             resultFlag=false;
-         }
-         else {
-             console.info('AudioFrameworkRenderLog: Renderer drained');
-         }
-     });
-     await sleep(100);
-     if (resultFlag == false){
-         console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-         return resultFlag;
-     }
-     audioRen.stop((err, state) => {
-         if (err) {
-             console.error(`AudioFrameworkRenderLog: Renderer stop failed: Error: ${err.message}`);
-             resultFlag=false;
-         }
-         else {
-             console.info('AudioFrameworkRenderLog: Renderer stopped');
-             resultFlag=true;
-             console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-         }
-     });
-     await sleep(100);
-     console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        await sleep(100);
+        console.info('AudioFrameworkRenderLog: waitTime : ' + waitTime);
+        while (rlen < totalSize / 10) {
+            let buf = new ArrayBuffer(bufferSize);
+            rlen += ss.readSync(buf);
+            console.info('BufferAudioFramework: bytes read from file: ' + rlen);
+            await audioRen.write(buf, (err, data) => {
+                if (err) {
+                    console.error(`AudioFrameworkRenderLog: Buff write: Error: ${err.message}`);
+                    resultFlag = false;
+                }
+                else {
+                    console.info('BufferAudioFramework: Buff write successful : ');
+                    resultFlag = true;
+                }
+            });
+            await sleep(waitTime);
+        }
+        await sleep(100);
+        if (resultFlag == false) {
+            console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
+            return resultFlag;
+        }
+        ss.closeSync();
+        audioRen.drain((err, state) => {
+            if (err) {
+                console.error(`AudioFrameworkRenderLog: Renderer drain failed: Error: ${err.message}`);
+                resultFlag = false;
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer drained');
+            }
+        });
+        await sleep(100);
+        if (resultFlag == false) {
+            console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
+            return resultFlag;
+        }
+        audioRen.stop((err, state) => {
+            if (err) {
+                console.error(`AudioFrameworkRenderLog: Renderer stop failed: Error: ${err.message}`);
+                resultFlag = false;
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer stopped');
+                resultFlag = true;
+                console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
+            }
+        });
+        await sleep(100);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-     if (resultFlag == false){
-         console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-         return resultFlag;
-     }
-     audioRen.release((err, state) => {
-         if (err) {
-             console.error(`AudioFrameworkRenderLog: Renderer release failed: Error: ${err.message}`);
-             resultFlag=false;
-         }
-         else {
-             console.info('AudioFrameworkRenderLog: Renderer released');
-         }
-     });
-     await sleep(100);
-     console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        if (resultFlag == false) {
+            console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
+            return resultFlag;
+        }
+        audioRen.release((err, state) => {
+            if (err) {
+                console.error(`AudioFrameworkRenderLog: Renderer release failed: Error: ${err.message}`);
+                resultFlag = false;
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer released');
+            }
+        });
+        await sleep(100);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-     return resultFlag;
+        return resultFlag;
 
     }
 
@@ -1464,32 +1445,32 @@ describe('audioRenderer', function () {
        */
     it('SUB_AUDIO_RENDERER_Play_audio_001', 0, async function (done) {
 
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
-        channels: audio.AudioChannel.CHANNEL_1,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+            channels: audio.AudioChannel.CHANNEL_1,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+        }
 
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_SPEECH,
-        usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-        rendererFlags: 1
-    }
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_SPEECH,
+            usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+            rendererFlags: 1
+        }
 
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
 
-    readpath='StarWars10s-1C-44100-2SW.wav'
-    await getFdRead(readpath, done)
-    var resultFlag = await playbackPromise(AudioRendererOptions, readpath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
-    await sleep(100);
-    console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-    expect(resultFlag).assertTrue();
-    await closeFileDescriptor(readpath);
-    done();
+        readPath = 'StarWars10s-1C-44100-2SW.wav'
+        await getFdRead(readPath, done);
+        var resultFlag = await playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        await sleep(100);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
+        expect(resultFlag).assertTrue();
+        await closeFileDescriptor(readPath);
+        done();
     })
 
     /* *
@@ -1500,7 +1481,7 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_093', 0,async function (done) {
+    it('SUB_AUDIO_RENDERER_Play_audio_093', 0, async function (done) {
 
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_24000,
@@ -1520,13 +1501,13 @@ describe('audioRenderer', function () {
             rendererInfo: AudioRendererInfo
         }
 
-        readpath='StarWars10s-2C-24000-3SW.wav'
-        await getFdRead(readpath, done)
-        var resultFlag = await playbackPromise_93(AudioRendererOptions, readpath,audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        readPath = 'StarWars10s-2C-24000-3SW.wav'
+        await getFdRead(readPath, done);
+        var resultFlag = await playbackPromise_93(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100)
-        console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
-        await closeFileDescriptor(readpath);
+        await closeFileDescriptor(readPath);
         done();
 
     })
@@ -1539,7 +1520,7 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_094', 0,async function (done) {
+    it('SUB_AUDIO_RENDERER_Play_audio_094', 0, async function (done) {
 
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_24000,
@@ -1559,13 +1540,13 @@ describe('audioRenderer', function () {
             rendererInfo: AudioRendererInfo
         }
 
-        readpath='StarWars10s-2C-24000-3SW.wav'
-        await getFdRead(readpath,done);
-        var resultFlag = await playbackPromise_94(AudioRendererOptions, readpath,audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        readPath = 'StarWars10s-2C-24000-3SW.wav'
+        await getFdRead(readPath, done);
+        var resultFlag = await playbackPromise_94(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100)
-        console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
-        await closeFileDescriptor(readpath);
+        await closeFileDescriptor(readPath);
         done();
     })
 
@@ -1577,7 +1558,7 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_095', 0,async function (done) {
+    it('SUB_AUDIO_RENDERER_Play_audio_095', 0, async function (done) {
 
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_24000,
@@ -1597,13 +1578,13 @@ describe('audioRenderer', function () {
             rendererInfo: AudioRendererInfo
         }
 
-        readpath='StarWars10s-2C-24000-3SW.wav'
-        await getFdRead(readpath,done);
-        var resultFlag = await playbackPromise_95(AudioRendererOptions, readpath,audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        readPath = 'StarWars10s-2C-24000-3SW.wav'
+        await getFdRead(readPath, done);
+        var resultFlag = await playbackPromise_95(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100)
-        console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
-        await closeFileDescriptor(readpath);
+        await closeFileDescriptor(readPath);
         done();
     })
 
@@ -1615,7 +1596,7 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_102', 0,async function (done) {
+    it('SUB_AUDIO_RENDERER_Play_audio_102', 0, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -1635,13 +1616,13 @@ describe('audioRenderer', function () {
         }
 
         //var fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
-        readpath = 'StarWars10s-2C-48000-4SW.wav'
-        await getFdRead(readpath,done);
-        var resultFlag = await playbackPromise_102(AudioRendererOptions, readpath);
+        readPath = 'StarWars10s-2C-48000-4SW.wav'
+        await getFdRead(readPath, done);
+        var resultFlag = await playbackPromise_102(AudioRendererOptions, filePath);
         await sleep(100);
-        console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
-        await closeFileDescriptor(readpath);
+        await closeFileDescriptor(readPath);
         done();
 
     })
@@ -1654,7 +1635,7 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_103', 0,async function (done) {
+    it('SUB_AUDIO_RENDERER_Play_audio_103', 0, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -1673,13 +1654,13 @@ describe('audioRenderer', function () {
             rendererInfo: AudioRendererInfo
         }
         //var fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
-        readpath = 'StarWars10s-2C-48000-4SW.wav'
-        await getFdRead(readpath,done);
-        var resultFlag = await playbackPromise_103(AudioRendererOptions, readpath);
+        readPath = 'StarWars10s-2C-48000-4SW.wav'
+        await getFdRead(readPath, done);
+        var resultFlag = await playbackPromise_103(AudioRendererOptions, filePath);
         await sleep(100)
-        console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
-        await closeFileDescriptor(readpath);
+        await closeFileDescriptor(readPath);
         done();
 
     })
@@ -1692,7 +1673,7 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_104', 0,async function (done) {
+    it('SUB_AUDIO_RENDERER_Play_audio_104', 0, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -1712,13 +1693,13 @@ describe('audioRenderer', function () {
         }
 
         //var fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
-        readpath = 'StarWars10s-2C-48000-4SW.wav';
-        await getFdRead(readpath,done);
-        var resultFlag = await playbackPromise_104(AudioRendererOptions, readpath);
+        readPath = 'StarWars10s-2C-48000-4SW.wav';
+        await getFdRead(readPath, done);
+        var resultFlag = await playbackPromise_104(AudioRendererOptions, filePath);
         await sleep(100)
-        console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
-        await closeFileDescriptor(readpath);
+        await closeFileDescriptor(readPath);
         done();
 
     })
@@ -1731,7 +1712,7 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_105', 0,async function (done) {
+    it('SUB_AUDIO_RENDERER_Play_audio_105', 0, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -1749,13 +1730,13 @@ describe('audioRenderer', function () {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
-        readpath ='StarWars10s-2C-48000-4SW.wav';
-        await getFdRead(readpath,done);
-        var resultFlag = await playbackPromise_105(AudioRendererOptions, readpath);
+        readPath = 'StarWars10s-2C-48000-4SW.wav';
+        await getFdRead(readPath, done);
+        var resultFlag = await playbackPromise_105(AudioRendererOptions, filePath);
         await sleep(100)
-        console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
-        await closeFileDescriptor(readpath);
+        await closeFileDescriptor(readPath);
         done();
 
     })
@@ -1768,7 +1749,7 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_106', 0,async function (done) {
+    it('SUB_AUDIO_RENDERER_Play_audio_106', 0, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -1787,13 +1768,13 @@ describe('audioRenderer', function () {
             rendererInfo: AudioRendererInfo
         }
         //var fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
-        readpath = 'StarWars10s-2C-48000-4SW.wav';
-        await getFdRead(readpath,done);
-        var resultFlag = await playbackPromise_106(AudioRendererOptions, readpath);
+        readPath = 'StarWars10s-2C-48000-4SW.wav';
+        await getFdRead(readPath, done);
+        var resultFlag = await playbackPromise_106(AudioRendererOptions, filePath);
         await sleep(100)
-        console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
-        await closeFileDescriptor(readpath);
+        await closeFileDescriptor(readPath);
         done();
 
     })
@@ -1806,7 +1787,7 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_107', 0,async function (done) {
+    it('SUB_AUDIO_RENDERER_Play_audio_107', 0, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -1826,13 +1807,13 @@ describe('audioRenderer', function () {
         }
 
         //var fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
-        readpath = 'StarWars10s-2C-48000-4SW.wav';
-        await getFdRead(readpath,done);
-        var resultFlag = await playbackPromise_107(AudioRendererOptions, readpath);
+        readPath = 'StarWars10s-2C-48000-4SW.wav';
+        await getFdRead(readPath, done);
+        var resultFlag = await playbackPromise_107(AudioRendererOptions, filePath);
         await sleep(100)
-        console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
-        await closeFileDescriptor(readpath);
+        await closeFileDescriptor(readPath);
         done();
     })
 
@@ -1844,34 +1825,34 @@ describe('audioRenderer', function () {
            * @tc.type      : Function
            * @tc.level     : Level 0
        */
-    it('SUB_AUDIO_RENDERER_Play_audio_002', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_8000,
-        channels: audio.AudioChannel.CHANNEL_1,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
+    it('SUB_AUDIO_RENDERER_Play_audio_002', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_8000,
+            channels: audio.AudioChannel.CHANNEL_1,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+        }
 
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_SPEECH,
-        usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-        rendererFlags: 1
-    }
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_SPEECH,
+            usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+            rendererFlags: 1
+        }
 
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
 
-    readpath='StarWars10s-1C-8000-2SW.wav'
-    await getFdRead(readpath, done)
-    var resultFlag = await playbackPromise(AudioRendererOptions, readpath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
-    await sleep(100);
-    console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
+        readPath = 'StarWars10s-1C-8000-2SW.wav'
+        await getFdRead(readPath, done);
+        var resultFlag = await playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        await sleep(100);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
 
-    expect(resultFlag).assertTrue();
-    await closeFileDescriptor(readpath);
-    done();
+        expect(resultFlag).assertTrue();
+        await closeFileDescriptor(readPath);
+        done();
     })
 
     /* *
@@ -1882,34 +1863,34 @@ describe('audioRenderer', function () {
            * @tc.type      : Function
            * @tc.level     : Level 0
        */
-    it('SUB_AUDIO_RENDERER_Play_audio_003', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_32000,
-        channels: audio.AudioChannel.CHANNEL_1,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_U8,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
+    it('SUB_AUDIO_RENDERER_Play_audio_003', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_32000,
+            channels: audio.AudioChannel.CHANNEL_1,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_U8,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+        }
 
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_SPEECH,
-        usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-        rendererFlags: 1
-    }
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_SPEECH,
+            usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+            rendererFlags: 1
+        }
 
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
 
-    readpath='StarWars10s-1C-32000-1SW.wav'
-    await getFdRead(readpath, done)
-    var resultFlag = await playbackPromise(AudioRendererOptions, readpath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
-    await sleep(100);
-    console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
+        readPath = 'StarWars10s-1C-32000-1SW.wav'
+        await getFdRead(readPath, done);
+        var resultFlag = await playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        await sleep(100);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
 
-    expect(resultFlag).assertTrue();
-    await closeFileDescriptor(readpath);
-    done();
+        expect(resultFlag).assertTrue();
+        await closeFileDescriptor(readPath);
+        done();
     })
 
     /* *
@@ -1920,33 +1901,33 @@ describe('audioRenderer', function () {
            * @tc.type      : Function
            * @tc.level     : Level 0
        */
-    it('SUB_AUDIO_RENDERER_Play_audio_004', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_64000,
-        channels: audio.AudioChannel.CHANNEL_1,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S24LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
+    it('SUB_AUDIO_RENDERER_Play_audio_004', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_64000,
+            channels: audio.AudioChannel.CHANNEL_1,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S24LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+        }
 
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_SPEECH,
-        usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-        rendererFlags: 1
-    }
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_SPEECH,
+            usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+            rendererFlags: 1
+        }
 
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
 
-    readpath='StarWars10s-1C-64000-3SW.wav'
-    await getFdRead(readpath, done)
-    var resultFlag = await playbackPromise(AudioRendererOptions, readpath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
-    await sleep(100);
-    console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-    expect(resultFlag).assertTrue();
-    await closeFileDescriptor(readpath);
-    done();
+        readPath = 'StarWars10s-1C-64000-3SW.wav'
+        await getFdRead(readPath, done);
+        var resultFlag = await playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        await sleep(100);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
+        expect(resultFlag).assertTrue();
+        await closeFileDescriptor(readPath);
+        done();
     })
 
     /* *
@@ -1957,33 +1938,33 @@ describe('audioRenderer', function () {
             * @tc.type      : Function
             * @tc.level     : Level 0
         */
-    it('SUB_AUDIO_RENDERER_Play_audio_005', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_96000,
-        channels: audio.AudioChannel.CHANNEL_1,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
+    it('SUB_AUDIO_RENDERER_Play_audio_005', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_96000,
+            channels: audio.AudioChannel.CHANNEL_1,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+        }
 
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_SPEECH,
-        usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-        rendererFlags: 1
-    }
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_SPEECH,
+            usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+            rendererFlags: 1
+        }
 
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
 
-    readpath='StarWars10s-1C-96000-4SW.wav'
-    await getFdRead(readpath, done)
-    var resultFlag = await playbackPromise(AudioRendererOptions, readpath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
-    await sleep(100);
-    console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-    expect(resultFlag).assertTrue();
-    await closeFileDescriptor(readpath);
-    done();
+        readPath = 'StarWars10s-1C-96000-4SW.wav'
+        await getFdRead(readPath, done);
+        var resultFlag = await playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        await sleep(100);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
+        expect(resultFlag).assertTrue();
+        await closeFileDescriptor(readPath);
+        done();
     })
 
     /* *
@@ -1994,33 +1975,33 @@ describe('audioRenderer', function () {
             * @tc.type      : Function
             * @tc.level     : Level 0
         */
-    it('SUB_AUDIO_RENDERER_Play_audio_006', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_11025,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_U8,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
+    it('SUB_AUDIO_RENDERER_Play_audio_006', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_11025,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_U8,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+        }
 
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_SPEECH,
-        usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-        rendererFlags: 1
-    }
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_SPEECH,
+            usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+            rendererFlags: 1
+        }
 
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
 
-    readpath='StarWars10s-2C-11025-1SW.wav'
-    await getFdRead(readpath, done)
-    var resultFlag = await playbackPromise(AudioRendererOptions, readpath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
-    await sleep(100);
-    console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-    expect(resultFlag).assertTrue();
-    await closeFileDescriptor(readpath);
-    done();
+        readPath = 'StarWars10s-2C-11025-1SW.wav'
+        await getFdRead(readPath, done);
+        var resultFlag = await playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        await sleep(100);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
+        expect(resultFlag).assertTrue();
+        await closeFileDescriptor(readPath);
+        done();
     })
 
     /* *
@@ -2031,33 +2012,33 @@ describe('audioRenderer', function () {
             * @tc.type      : Function
             * @tc.level     : Level 0
         */
-    it('SUB_AUDIO_RENDERER_Play_audio_007', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_12000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
+    it('SUB_AUDIO_RENDERER_Play_audio_007', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_12000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+        }
 
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_SPEECH,
-        usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-        rendererFlags: 1
-    }
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_SPEECH,
+            usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+            rendererFlags: 1
+        }
 
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
 
-    readpath='StarWars10s-2C-12000-2SW.wav'
-    await getFdRead(readpath, done)
-    var resultFlag = await playbackPromise(AudioRendererOptions, readpath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
-    await sleep(100);
-    console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-    expect(resultFlag).assertTrue();
-    await closeFileDescriptor(readpath);
-    done();
+        readPath = 'StarWars10s-2C-12000-2SW.wav'
+        await getFdRead(readPath, done);
+        var resultFlag = await playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        await sleep(100);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
+        expect(resultFlag).assertTrue();
+        await closeFileDescriptor(readPath);
+        done();
     })
 
     /* *
@@ -2068,33 +2049,33 @@ describe('audioRenderer', function () {
             * @tc.type      : Function
             * @tc.level     : Level 0
         */
-    it('SUB_AUDIO_RENDERER_Play_audio_011', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
+    it('SUB_AUDIO_RENDERER_Play_audio_011', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+        }
 
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_SPEECH,
-        usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-        rendererFlags: 1
-    }
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_SPEECH,
+            usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+            rendererFlags: 1
+        }
 
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
 
-    readpath='StarWars10s-2C-48000-4SW.wav'
-    await getFdRead(readpath, done)
-    var resultFlag = await playbackPromise(AudioRendererOptions, readpath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
-    await sleep(100);
-    console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-    expect(resultFlag).assertTrue();
-    await closeFileDescriptor(readpath);
-    done();
+        readPath = 'StarWars10s-2C-48000-4SW.wav'
+        await getFdRead(readPath, done);
+        var resultFlag = await playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        await sleep(100);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
+        expect(resultFlag).assertTrue();
+        await closeFileDescriptor(readPath);
+        done();
     })
 
     /* *
@@ -2105,43 +2086,43 @@ describe('audioRenderer', function () {
         * @tc.type      : Function
         * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_012', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
-        usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-    readpath='StarWars10s-2C-48000-4SW.wav'
-    await getFdRead(readpath, done)
-    playbackPromise(AudioRendererOptions, readpath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
-    await sleep(2000);
-    audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
-        if(data == true){
-            console.log('AudioFrameworkTest: Promise : isActive Media: PASS :'+data);
+    it('SUB_AUDIO_RENDERER_Play_audio_012', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else {
-            console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :'+data);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
+            usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
+            rendererFlags: 1
         }
-    });
-    await sleep(9000);
-    console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-    expect(resultFlag).assertTrue();
-    await closeFileDescriptor(readpath);
-    done();
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+        readPath = 'StarWars10s-2C-48000-4SW.wav'
+        await getFdRead(readPath, done);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        await sleep(2000);
+        audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
+            if (data == true) {
+                console.log('AudioFrameworkTest: Promise : isActive Media: PASS :' + data);
+            }
+            else {
+                console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :' + data);
+            }
+        });
+        await sleep(9000);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
+        expect(resultFlag).assertTrue();
+        await closeFileDescriptor(readPath);
+        done();
 
     })
 
@@ -2153,43 +2134,43 @@ describe('audioRenderer', function () {
         * @tc.type      : Function
         * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_013', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_SPEECH,
-        usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-    readpath='StarWars10s-2C-48000-4SW.wav'
-    await getFdRead(readpath, done)
-    playbackPromise(AudioRendererOptions, readpath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
-    await sleep(2000);
-    audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
-        if(data == true){
-            console.log('AudioFrameworkTest: Promise : isActive Media: PASS :'+data);
+    it('SUB_AUDIO_RENDERER_Play_audio_013', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else {
-            console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :'+data);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_SPEECH,
+            usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
+            rendererFlags: 1
         }
-    });
-    await sleep(9000);
-    console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-    expect(resultFlag).assertTrue();
-    await closeFileDescriptor(readpath);
-    done();
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+        readPath = 'StarWars10s-2C-48000-4SW.wav'
+        await getFdRead(readPath, done);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        await sleep(2000);
+        audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
+            if (data == true) {
+                console.log('AudioFrameworkTest: Promise : isActive Media: PASS :' + data);
+            }
+            else {
+                console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :' + data);
+            }
+        });
+        await sleep(9000);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
+        expect(resultFlag).assertTrue();
+        await closeFileDescriptor(readPath);
+        done();
     })
 
     /* *
@@ -2200,43 +2181,43 @@ describe('audioRenderer', function () {
         * @tc.type      : Function
         * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_014', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_MUSIC,
-        usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-    readpath='StarWars10s-2C-48000-4SW.wav'
-    await getFdRead(readpath, done)
-    playbackPromise(AudioRendererOptions, readpath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
-    await sleep(2000);
-    audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
-        if(data == true){
-            console.log('AudioFrameworkTest: Promise : isActive Media: PASS :'+data);
+    it('SUB_AUDIO_RENDERER_Play_audio_014', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else {
-            console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :'+data);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_MUSIC,
+            usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
+            rendererFlags: 1
         }
-    });
-    await sleep(9000);
-    console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-    expect(resultFlag).assertTrue();
-    await closeFileDescriptor(readpath);
-    done();
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+        readPath = 'StarWars10s-2C-48000-4SW.wav'
+        await getFdRead(readPath, done);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        await sleep(2000);
+        audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
+            if (data == true) {
+                console.log('AudioFrameworkTest: Promise : isActive Media: PASS :' + data);
+            }
+            else {
+                console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :' + data);
+            }
+        });
+        await sleep(9000);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
+        expect(resultFlag).assertTrue();
+        await closeFileDescriptor(readPath);
+        done();
     })
 
     /* *
@@ -2247,43 +2228,43 @@ describe('audioRenderer', function () {
         * @tc.type      : Function
         * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_015', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_MOVIE,
-        usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-    readpath='StarWars10s-2C-48000-4SW.wav'
-    await getFdRead(readpath, done)
-    playbackPromise(AudioRendererOptions, readpath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
-    await sleep(2000);
-    audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
-        if(data == true){
-            console.log('AudioFrameworkTest: Promise : isActive Media: PASS :'+data);
+    it('SUB_AUDIO_RENDERER_Play_audio_015', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else {
-            console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :'+data);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_MOVIE,
+            usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
+            rendererFlags: 1
         }
-    });
-    await sleep(9000);
-    console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-    expect(resultFlag).assertTrue();
-    await closeFileDescriptor(readpath);
-    done();
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+        readPath = 'StarWars10s-2C-48000-4SW.wav'
+        await getFdRead(readPath, done);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        await sleep(2000);
+        audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
+            if (data == true) {
+                console.log('AudioFrameworkTest: Promise : isActive Media: PASS :' + data);
+            }
+            else {
+                console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :' + data);
+            }
+        });
+        await sleep(9000);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
+        expect(resultFlag).assertTrue();
+        await closeFileDescriptor(readPath);
+        done();
 
     })
 
@@ -2295,43 +2276,43 @@ describe('audioRenderer', function () {
         * @tc.type      : Function
         * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_016', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_SONIFICATION,
-        usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-    readpath='StarWars10s-2C-48000-4SW.wav'
-    await getFdRead(readpath, done)
-    playbackPromise(AudioRendererOptions, readpath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
-    await sleep(2000);
-    audioManager.isActive(audio.AudioVolumeType.RINGTONE).then(function (data) {
-        if(data == true){
-            console.log('AudioFrameworkTest: Promise : isActive RINGTONE: PASS :'+data);
+    it('SUB_AUDIO_RENDERER_Play_audio_016', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else {
-            console.log('AudioFrameworkTest: Promise : isActive RINGTONE: FAIL :'+data);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_SONIFICATION,
+            usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
+            rendererFlags: 1
         }
-    });
-    await sleep(9000);
-    console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-    expect(resultFlag).assertTrue();
-    await closeFileDescriptor(readpath);
-    done();
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+        readPath = 'StarWars10s-2C-48000-4SW.wav'
+        await getFdRead(readPath, done);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        await sleep(2000);
+        audioManager.isActive(audio.AudioVolumeType.RINGTONE).then(function (data) {
+            if (data == true) {
+                console.log('AudioFrameworkTest: Promise : isActive RINGTONE: PASS :' + data);
+            }
+            else {
+                console.log('AudioFrameworkTest: Promise : isActive RINGTONE: FAIL :' + data);
+            }
+        });
+        await sleep(9000);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
+        expect(resultFlag).assertTrue();
+        await closeFileDescriptor(readPath);
+        done();
     })
 
     /* *
@@ -2342,43 +2323,43 @@ describe('audioRenderer', function () {
         * @tc.type      : Function
         * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_017', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_RINGTONE,
-        usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-    readpath='StarWars10s-2C-48000-4SW.wav'
-    await getFdRead(readpath, done)
-    playbackPromise(AudioRendererOptions, readpath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
-    await sleep(2000);
-    audioManager.isActive(audio.AudioVolumeType.RINGTONE).then(function (data) {
-        if(data == true){
-            console.log('AudioFrameworkTest: Promise : isActive RINGTONE: PASS :'+data);
+    it('SUB_AUDIO_RENDERER_Play_audio_017', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else {
-            console.log('AudioFrameworkTest: Promise : isActive RINGTONE: FAIL :'+data);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_RINGTONE,
+            usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
+            rendererFlags: 1
         }
-    });
-    await sleep(9000);
-    console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-    expect(resultFlag).assertTrue();
-    await closeFileDescriptor(readpath);
-    done();
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+        readPath = 'StarWars10s-2C-48000-4SW.wav'
+        await getFdRead(readPath, done);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        await sleep(2000);
+        audioManager.isActive(audio.AudioVolumeType.RINGTONE).then(function (data) {
+            if (data == true) {
+                console.log('AudioFrameworkTest: Promise : isActive RINGTONE: PASS :' + data);
+            }
+            else {
+                console.log('AudioFrameworkTest: Promise : isActive RINGTONE: FAIL :' + data);
+            }
+        });
+        await sleep(9000);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
+        expect(resultFlag).assertTrue();
+        await closeFileDescriptor(readPath);
+        done();
     })
 
     /* *
@@ -2389,43 +2370,43 @@ describe('audioRenderer', function () {
         * @tc.type      : Function
         * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_018', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
-        usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-    readpath='StarWars10s-2C-48000-4SW.wav'
-    await getFdRead(readpath, done)
-    playbackPromise(AudioRendererOptions, readpath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
-    await sleep(2000);
-    audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
-        if(data == true){
-            console.log('AudioFrameworkTest: Promise : isActive Media: PASS :'+data);
+    it('SUB_AUDIO_RENDERER_Play_audio_018', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else {
-            console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :'+data);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
+            usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
+            rendererFlags: 1
         }
-    });
-    await sleep(9000);
-    console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-    expect(resultFlag).assertTrue();
-    await closeFileDescriptor(readpath);
-    done();
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+        readPath = 'StarWars10s-2C-48000-4SW.wav'
+        await getFdRead(readPath, done);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        await sleep(2000);
+        audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
+            if (data == true) {
+                console.log('AudioFrameworkTest: Promise : isActive Media: PASS :' + data);
+            }
+            else {
+                console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :' + data);
+            }
+        });
+        await sleep(9000);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
+        expect(resultFlag).assertTrue();
+        await closeFileDescriptor(readPath);
+        done();
     })
 
     /* *
@@ -2436,43 +2417,43 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_019', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_SPEECH,
-        usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-    readpath='StarWars10s-2C-48000-4SW.wav'
-    await getFdRead(readpath, done)
-    playbackPromise(AudioRendererOptions, readpath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
-    await sleep(2000);
-    audioManager.isActive(audio.AudioVolumeType.VOICE_ASSISTANT).then(function (data) {
-        if(data == true){
-            console.log('AudioFrameworkTest: Promise : isActive VOICE_ASSISTANT: PASS :'+data);
+    it('SUB_AUDIO_RENDERER_Play_audio_019', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else {
-            console.log('AudioFrameworkTest: Promise : isActive VOICE_ASSISTANT: FAIL :'+data);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_SPEECH,
+            usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
+            rendererFlags: 1
         }
-    });
-    await sleep(9000);
-    console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-    expect(resultFlag).assertTrue();
-    await closeFileDescriptor(readpath);
-    done();
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+        readPath = 'StarWars10s-2C-48000-4SW.wav'
+        await getFdRead(readPath, done);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        await sleep(2000);
+        audioManager.isActive(audio.AudioVolumeType.VOICE_ASSISTANT).then(function (data) {
+            if (data == true) {
+                console.log('AudioFrameworkTest: Promise : isActive VOICE_ASSISTANT: PASS :' + data);
+            }
+            else {
+                console.log('AudioFrameworkTest: Promise : isActive VOICE_ASSISTANT: FAIL :' + data);
+            }
+        });
+        await sleep(9000);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
+        expect(resultFlag).assertTrue();
+        await closeFileDescriptor(readPath);
+        done();
     })
 
     /* *
@@ -2483,43 +2464,43 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_020', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_MUSIC,
-        usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-    readpath='StarWars10s-2C-48000-4SW.wav'
-    await getFdRead(readpath, done)
-    playbackPromise(AudioRendererOptions, readpath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
-    await sleep(2000);
-    audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
-        if(data == true){
-            console.log('AudioFrameworkTest: Promise : isActive Media: PASS :'+data);
+    it('SUB_AUDIO_RENDERER_Play_audio_020', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else {
-            console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :'+data);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_MUSIC,
+            usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
+            rendererFlags: 1
         }
-    });
-    await sleep(9000);
-    console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-    expect(resultFlag).assertTrue();
-    await closeFileDescriptor(readpath);
-    done();
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+        readPath = 'StarWars10s-2C-48000-4SW.wav'
+        await getFdRead(readPath, done);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        await sleep(2000);
+        audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
+            if (data == true) {
+                console.log('AudioFrameworkTest: Promise : isActive Media: PASS :' + data);
+            }
+            else {
+                console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :' + data);
+            }
+        });
+        await sleep(9000);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
+        expect(resultFlag).assertTrue();
+        await closeFileDescriptor(readPath);
+        done();
 
     })
 
@@ -2531,43 +2512,43 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_021', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_MOVIE,
-        usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-    readpath='StarWars10s-2C-48000-4SW.wav'
-    await getFdRead(readpath, done)
-    playbackPromise(AudioRendererOptions, readpath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
-    await sleep(2000);
-    audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
-        if(data == true){
-            console.log('AudioFrameworkTest: Promise : isActive Media: PASS :'+data);
+    it('SUB_AUDIO_RENDERER_Play_audio_021', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else {
-            console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :'+data);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_MOVIE,
+            usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
+            rendererFlags: 1
         }
-    });
-    await sleep(9000);
-    console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-    expect(resultFlag).assertTrue();
-    await closeFileDescriptor(readpath);
-    done();
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+        readPath = 'StarWars10s-2C-48000-4SW.wav'
+        await getFdRead(readPath, done);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        await sleep(2000);
+        audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
+            if (data == true) {
+                console.log('AudioFrameworkTest: Promise : isActive Media: PASS :' + data);
+            }
+            else {
+                console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :' + data);
+            }
+        });
+        await sleep(9000);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
+        expect(resultFlag).assertTrue();
+        await closeFileDescriptor(readPath);
+        done();
     })
 
     /* *
@@ -2578,43 +2559,43 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_022', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_SONIFICATION,
-        usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-    readpath='StarWars10s-2C-48000-4SW.wav'
-    await getFdRead(readpath, done)
-    playbackPromise(AudioRendererOptions, readpath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
-    await sleep(2000);
-    audioManager.isActive(audio.AudioVolumeType.RINGTONE).then(function (data) {
-        if(data == true){
-            console.log('AudioFrameworkTest: Promise : isActive RINGTONE: PASS :'+data);
+    it('SUB_AUDIO_RENDERER_Play_audio_022', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else {
-            console.log('AudioFrameworkTest: Promise : isActive RINGTONE: FAIL :'+data);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_SONIFICATION,
+            usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
+            rendererFlags: 1
         }
-    });
-    await sleep(9000);
-    console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-    expect(resultFlag).assertTrue();
-    await closeFileDescriptor(readpath);
-    done();
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+        readPath = 'StarWars10s-2C-48000-4SW.wav'
+        await getFdRead(readPath, done);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        await sleep(2000);
+        audioManager.isActive(audio.AudioVolumeType.RINGTONE).then(function (data) {
+            if (data == true) {
+                console.log('AudioFrameworkTest: Promise : isActive RINGTONE: PASS :' + data);
+            }
+            else {
+                console.log('AudioFrameworkTest: Promise : isActive RINGTONE: FAIL :' + data);
+            }
+        });
+        await sleep(9000);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
+        expect(resultFlag).assertTrue();
+        await closeFileDescriptor(readPath);
+        done();
     })
 
     /* *
@@ -2625,43 +2606,43 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_023', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_RINGTONE,
-        usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-    readpath='StarWars10s-2C-48000-4SW.wav'
-    await getFdRead(readpath, done)
-    playbackPromise(AudioRendererOptions, readpath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
-    await sleep(2000);
-    audioManager.isActive(audio.AudioVolumeType.RINGTONE).then(function (data) {
-        if(data == true){
-            console.log('AudioFrameworkTest: Promise : isActive RINGTONE: PASS :'+data);
+    it('SUB_AUDIO_RENDERER_Play_audio_023', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else {
-            console.log('AudioFrameworkTest: Promise : isActive RINGTONE: FAIL :'+data);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_RINGTONE,
+            usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
+            rendererFlags: 1
         }
-    });
-    await sleep(9000);
-    console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-    expect(resultFlag).assertTrue();
-    await closeFileDescriptor(readpath);
-    done();
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+        readPath = 'StarWars10s-2C-48000-4SW.wav'
+        await getFdRead(readPath, done);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        await sleep(2000);
+        audioManager.isActive(audio.AudioVolumeType.RINGTONE).then(function (data) {
+            if (data == true) {
+                console.log('AudioFrameworkTest: Promise : isActive RINGTONE: PASS :' + data);
+            }
+            else {
+                console.log('AudioFrameworkTest: Promise : isActive RINGTONE: FAIL :' + data);
+            }
+        });
+        await sleep(9000);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
+        expect(resultFlag).assertTrue();
+        await closeFileDescriptor(readPath);
+        done();
     })
 
     /* *
@@ -2672,43 +2653,43 @@ describe('audioRenderer', function () {
         * @tc.type      : Function
         * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_024', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
-        usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-    readpath='StarWars10s-2C-48000-4SW.wav'
-    await getFdRead(readpath, done)
-    playbackPromise(AudioRendererOptions, readpath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
-    await sleep(2000);
-    audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
-        if(data == true){
-            console.log('AudioFrameworkTest: Promise : isActive Media: PASS :'+data);
+    it('SUB_AUDIO_RENDERER_Play_audio_024', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else {
-            console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :'+data);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
+            usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+            rendererFlags: 1
         }
-    });
-    await sleep(9000);
-    console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-    expect(resultFlag).assertTrue();
-    await closeFileDescriptor(readpath);
-    done();
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+        readPath = 'StarWars10s-2C-48000-4SW.wav'
+        await getFdRead(readPath, done);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        await sleep(2000);
+        audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
+            if (data == true) {
+                console.log('AudioFrameworkTest: Promise : isActive Media: PASS :' + data);
+            }
+            else {
+                console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :' + data);
+            }
+        });
+        await sleep(9000);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
+        expect(resultFlag).assertTrue();
+        await closeFileDescriptor(readPath);
+        done();
     })
 
     /* *
@@ -2719,43 +2700,43 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_025', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_SPEECH,
-        usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-    readpath='StarWars10s-2C-48000-4SW.wav'
-    await getFdRead(readpath, done)
-    playbackPromise(AudioRendererOptions, readpath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
-    await sleep(2000);
-    audioManager.isActive(audio.AudioVolumeType.VOICE_CALL).then(function (data) {
-        if(data == true){
-            console.log('AudioFrameworkTest: Promise : isActive VOICE_CALL: PASS :'+data);
+    it('SUB_AUDIO_RENDERER_Play_audio_025', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else {
-            console.log('AudioFrameworkTest: Promise : isActive VOICE_CALL: FAIL :'+data);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_SPEECH,
+            usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+            rendererFlags: 1
         }
-    });
-    await sleep(9000);
-    console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-    expect(resultFlag).assertTrue();
-    await closeFileDescriptor(readpath);
-    done();
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+        readPath = 'StarWars10s-2C-48000-4SW.wav'
+        await getFdRead(readPath, done);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        await sleep(2000);
+        audioManager.isActive(audio.AudioVolumeType.VOICE_CALL).then(function (data) {
+            if (data == true) {
+                console.log('AudioFrameworkTest: Promise : isActive VOICE_CALL: PASS :' + data);
+            }
+            else {
+                console.log('AudioFrameworkTest: Promise : isActive VOICE_CALL: FAIL :' + data);
+            }
+        });
+        await sleep(9000);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
+        expect(resultFlag).assertTrue();
+        await closeFileDescriptor(readPath);
+        done();
     })
 
     /* *
@@ -2766,43 +2747,43 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_026', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_MUSIC,
-        usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-    readpath='StarWars10s-2C-48000-4SW.wav'
-    await getFdRead(readpath, done)
-    playbackPromise(AudioRendererOptions, readpath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
-    await sleep(2000);
-    audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
-        if(data == true){
-            console.log('AudioFrameworkTest: Promise : isActive Media: PASS :'+data);
+    it('SUB_AUDIO_RENDERER_Play_audio_026', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else {
-            console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :'+data);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_MUSIC,
+            usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+            rendererFlags: 1
         }
-    });
-    await sleep(9000);
-    console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-    expect(resultFlag).assertTrue();
-    await closeFileDescriptor(readpath);
-    done();
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+        readPath = 'StarWars10s-2C-48000-4SW.wav'
+        await getFdRead(readPath, done);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        await sleep(2000);
+        audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
+            if (data == true) {
+                console.log('AudioFrameworkTest: Promise : isActive Media: PASS :' + data);
+            }
+            else {
+                console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :' + data);
+            }
+        });
+        await sleep(9000);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
+        expect(resultFlag).assertTrue();
+        await closeFileDescriptor(readPath);
+        done();
     })
 
     /* *
@@ -2813,43 +2794,43 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_027', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_MOVIE,
-        usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-    readpath='StarWars10s-2C-48000-4SW.wav'
-    await getFdRead(readpath, done)
-    playbackPromise(AudioRendererOptions, readpath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
-    await sleep(2000);
-    audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
-        if(data == true){
-            console.log('AudioFrameworkTest: Promise : isActive Media: PASS :'+data);
+    it('SUB_AUDIO_RENDERER_Play_audio_027', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else {
-            console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :'+data);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_MOVIE,
+            usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+            rendererFlags: 1
         }
-    });
-    await sleep(9000);
-    console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-    expect(resultFlag).assertTrue();
-    await closeFileDescriptor(readpath);
-    done();
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+        readPath = 'StarWars10s-2C-48000-4SW.wav'
+        await getFdRead(readPath, done);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        await sleep(2000);
+        audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
+            if (data == true) {
+                console.log('AudioFrameworkTest: Promise : isActive Media: PASS :' + data);
+            }
+            else {
+                console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :' + data);
+            }
+        });
+        await sleep(9000);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
+        expect(resultFlag).assertTrue();
+        await closeFileDescriptor(readPath);
+        done();
     })
 
     /* *
@@ -2860,43 +2841,43 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_028', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_SONIFICATION,
-        usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-    readpath='StarWars10s-2C-48000-4SW.wav'
-    await getFdRead(readpath, done)
-    playbackPromise(AudioRendererOptions, readpath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
-    await sleep(2000);
-    audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
-        if(data == true){
-            console.log('AudioFrameworkTest: Promise : isActive Media: PASS :'+data);
+    it('SUB_AUDIO_RENDERER_Play_audio_028', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else {
-            console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :'+data);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_SONIFICATION,
+            usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+            rendererFlags: 1
         }
-    });
-    await sleep(9000);
-    console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-    expect(resultFlag).assertTrue();
-    await closeFileDescriptor(readpath);
-    done();
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+        readPath = 'StarWars10s-2C-48000-4SW.wav'
+        await getFdRead(readPath, done);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        await sleep(2000);
+        audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
+            if (data == true) {
+                console.log('AudioFrameworkTest: Promise : isActive Media: PASS :' + data);
+            }
+            else {
+                console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :' + data);
+            }
+        });
+        await sleep(9000);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
+        expect(resultFlag).assertTrue();
+        await closeFileDescriptor(readPath);
+        done();
     })
 
     /* *
@@ -2907,43 +2888,43 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_029', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_RINGTONE,
-        usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-    readpath='StarWars10s-2C-48000-4SW.wav'
-    await getFdRead(readpath, done)
-    playbackPromise(AudioRendererOptions, readpath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
-    await sleep(2000);
-    audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
-        if(data == true){
-            console.log('AudioFrameworkTest: Promise : isActive Media: PASS :'+data);
+    it('SUB_AUDIO_RENDERER_Play_audio_029', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else {
-            console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :'+data);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_RINGTONE,
+            usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+            rendererFlags: 1
         }
-    });
-    await sleep(9000);
-    console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-    expect(resultFlag).assertTrue();
-    await closeFileDescriptor(readpath);
-    done();
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+        readPath = 'StarWars10s-2C-48000-4SW.wav'
+        await getFdRead(readPath, done);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        await sleep(2000);
+        audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
+            if (data == true) {
+                console.log('AudioFrameworkTest: Promise : isActive Media: PASS :' + data);
+            }
+            else {
+                console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :' + data);
+            }
+        });
+        await sleep(9000);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
+        expect(resultFlag).assertTrue();
+        await closeFileDescriptor(readPath);
+        done();
     })
 
     /* *
@@ -2954,43 +2935,43 @@ describe('audioRenderer', function () {
         * @tc.type      : Function
         * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_030', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
-        usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-    readpath='StarWars10s-2C-48000-4SW.wav'
-    await getFdRead(readpath, done)
-    playbackPromise(AudioRendererOptions, readpath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
-    await sleep(2000);
-    audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
-        if(data == true){
-            console.log('AudioFrameworkTest: Promise : isActive Media: PASS :'+data);
+    it('SUB_AUDIO_RENDERER_Play_audio_030', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else {
-            console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :'+data);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
+            usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
+            rendererFlags: 1
         }
-    });
-    await sleep(9000);
-    console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-    expect(resultFlag).assertTrue();
-    await closeFileDescriptor(readpath);
-    done();
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+        readPath = 'StarWars10s-2C-48000-4SW.wav'
+        await getFdRead(readPath, done);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        await sleep(2000);
+        audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
+            if (data == true) {
+                console.log('AudioFrameworkTest: Promise : isActive Media: PASS :' + data);
+            }
+            else {
+                console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :' + data);
+            }
+        });
+        await sleep(9000);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
+        expect(resultFlag).assertTrue();
+        await closeFileDescriptor(readPath);
+        done();
 
     })
 
@@ -3002,43 +2983,43 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_031', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_SPEECH,
-        usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-    readpath='StarWars10s-2C-48000-4SW.wav'
-    await getFdRead(readpath, done)
-    playbackPromise(AudioRendererOptions, readpath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
-    await sleep(2000);
-    audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
-        if(data == true){
-            console.log('AudioFrameworkTest: Promise : isActive Media: PASS :'+data);
+    it('SUB_AUDIO_RENDERER_Play_audio_031', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else {
-            console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :'+data);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_SPEECH,
+            usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
+            rendererFlags: 1
         }
-    });
-    await sleep(9000);
-    console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-    expect(resultFlag).assertTrue();
-    await closeFileDescriptor(readpath);
-    done();
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+        readPath = 'StarWars10s-2C-48000-4SW.wav'
+        await getFdRead(readPath, done);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        await sleep(2000);
+        audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
+            if (data == true) {
+                console.log('AudioFrameworkTest: Promise : isActive Media: PASS :' + data);
+            }
+            else {
+                console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :' + data);
+            }
+        });
+        await sleep(9000);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
+        expect(resultFlag).assertTrue();
+        await closeFileDescriptor(readPath);
+        done();
 
     })
 
@@ -3050,43 +3031,43 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_032', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_MUSIC,
-        usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-    readpath='StarWars10s-2C-48000-4SW.wav'
-    await getFdRead(readpath, done)
-    playbackPromise(AudioRendererOptions, readpath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
-    await sleep(2000);
-    audioManager.isActive(audio.AudioVolumeType.RINGTONE).then(function (data) {
-        if(data == true){
-            console.log('AudioFrameworkTest: Promise : isActive RENGITONE: PASS :'+data);
+    it('SUB_AUDIO_RENDERER_Play_audio_032', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else {
-            console.log('AudioFrameworkTest: Promise : isActive RINGTONE: FAIL :'+data);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_MUSIC,
+            usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
+            rendererFlags: 1
         }
-    });
-    await sleep(9000);
-    console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-    expect(resultFlag).assertTrue();
-    await closeFileDescriptor(readpath);
-    done();
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+        readPath = 'StarWars10s-2C-48000-4SW.wav'
+        await getFdRead(readPath, done);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        await sleep(2000);
+        audioManager.isActive(audio.AudioVolumeType.RINGTONE).then(function (data) {
+            if (data == true) {
+                console.log('AudioFrameworkTest: Promise : isActive RENGITONE: PASS :' + data);
+            }
+            else {
+                console.log('AudioFrameworkTest: Promise : isActive RINGTONE: FAIL :' + data);
+            }
+        });
+        await sleep(9000);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
+        expect(resultFlag).assertTrue();
+        await closeFileDescriptor(readPath);
+        done();
 
     })
 
@@ -3098,43 +3079,43 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_033', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_MOVIE,
-        usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-    readpath='StarWars10s-2C-48000-4SW.wav'
-    await getFdRead(readpath, done)
-    playbackPromise(AudioRendererOptions, readpath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
-    await sleep(2000);
-    audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
-        if(data == true){
-            console.log('AudioFrameworkTest: Promise : isActive Media: PASS :'+data);
+    it('SUB_AUDIO_RENDERER_Play_audio_033', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else {
-            console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :'+data);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_MOVIE,
+            usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
+            rendererFlags: 1
         }
-    });
-    await sleep(9000);
-    console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-    expect(resultFlag).assertTrue();
-    await closeFileDescriptor(readpath);
-    done();
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+        readPath = 'StarWars10s-2C-48000-4SW.wav'
+        await getFdRead(readPath, done);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        await sleep(2000);
+        audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
+            if (data == true) {
+                console.log('AudioFrameworkTest: Promise : isActive Media: PASS :' + data);
+            }
+            else {
+                console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :' + data);
+            }
+        });
+        await sleep(9000);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
+        expect(resultFlag).assertTrue();
+        await closeFileDescriptor(readPath);
+        done();
 
     })
 
@@ -3146,43 +3127,43 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_034', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_SONIFICATION,
-        usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-    readpath='StarWars10s-2C-48000-4SW.wav'
-    await getFdRead(readpath, done)
-    playbackPromise(AudioRendererOptions, readpath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
-    await sleep(2000);
-    audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
-        if(data == true){
-            console.log('AudioFrameworkTest: Promise : isActive Media: PASS :'+data);
+    it('SUB_AUDIO_RENDERER_Play_audio_034', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else {
-            console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :'+data);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_SONIFICATION,
+            usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
+            rendererFlags: 1
         }
-    });
-    await sleep(9000);
-    console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-    expect(resultFlag).assertTrue();
-    await closeFileDescriptor(readpath);
-    done();
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+        readPath = 'StarWars10s-2C-48000-4SW.wav'
+        await getFdRead(readPath, done);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        await sleep(2000);
+        audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
+            if (data == true) {
+                console.log('AudioFrameworkTest: Promise : isActive Media: PASS :' + data);
+            }
+            else {
+                console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :' + data);
+            }
+        });
+        await sleep(9000);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
+        expect(resultFlag).assertTrue();
+        await closeFileDescriptor(readPath);
+        done();
     })
 
     /* *
@@ -3193,357 +3174,45 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_035', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_RINGTONE,
-        usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-    readpath='StarWars10s-2C-48000-4SW.wav'
-    await getFdRead(readpath, done)
-    playbackPromise(AudioRendererOptions, readpath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
-    await sleep(2000);
-    audioManager.isActive(audio.AudioVolumeType.RINGTONE).then(function (data) {
-        if(data == true){
-            console.log('AudioFrameworkTest: Promise : isActive RINGTONE: PASS :'+data);
+    it('SUB_AUDIO_RENDERER_Play_audio_035', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else {
-            console.log('AudioFrameworkTest: Promise : isActive RINGTONE: FAIL :'+data);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_RINGTONE,
+            usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
+            rendererFlags: 1
         }
-    });
-    await sleep(9000);
-    console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-    expect(resultFlag).assertTrue();
-    await closeFileDescriptor(readpath);
-    done();
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+        readPath = 'StarWars10s-2C-48000-4SW.wav'
+        await getFdRead(readPath, done);
+        playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        await sleep(2000);
+        audioManager.isActive(audio.AudioVolumeType.RINGTONE).then(function (data) {
+            if (data == true) {
+                console.log('AudioFrameworkTest: Promise : isActive RINGTONE: PASS :' + data);
+            }
+            else {
+                console.log('AudioFrameworkTest: Promise : isActive RINGTONE: FAIL :' + data);
+            }
+        });
+        await sleep(9000);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
+        expect(resultFlag).assertTrue();
+        await closeFileDescriptor(readPath);
+        done();
 
     })
-
-    // /* *
-    //     * @tc.number    : SUB_AUDIO_RENDERER_Play_audio_036
-    //     * @tc.name      : AudioRenderer-isStreamActive - UNKNOWN - VOICE_ASSISTANT
-    //     * @tc.desc      : AudioRenderer-isStreamActive - UNKNOWN - VOICE_ASSISTANT
-    //     * @tc.size      : MEDIUM
-    //     * @tc.type      : Function
-    //     * @tc.level     : Level 0
-    // */
-    // it('SUB_AUDIO_RENDERER_Play_audio_036', 0,async function (done) {
-    // var AudioStreamInfo = {
-    //     samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-    //     channels: audio.AudioChannel.CHANNEL_2,
-    //     sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-    //     encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    // }
-
-    // var AudioRendererInfo = {
-    //     content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
-    //     usage: audio.StreamUsage.STREAM_USAGE_VOICE_ASSISTANT,
-    //     rendererFlags: 1
-    // }
-
-    // var AudioRendererOptions = {
-    //     streamInfo: AudioStreamInfo,
-    //     rendererInfo: AudioRendererInfo
-    // }
-
-    // var resultFlag=false;
-    // playbackPromise(AudioRendererOptions, mediaDir+'/StarWars10s-2C-48000-4SW.wav', audio.AudioScene.AUDIO_SCENE_DEFAULT);
-    // await sleep(2000);
-
-    // audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
-    //     if(data == true){
-    //         console.log('AudioFrameworkTest: Promise : isActive Media: PASS :'+data);
-    //         resultFlag = true;
-    //     }
-    //     else {
-    //         console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :'+data);
-    //     }
-
-    // });
-
-    // await sleep(9000);
-
-    // console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-
-    // expect(resultFlag).assertTrue();
-
-    // done();
-
-    // })
-
-    // /* *
-    // * @tc.number    : SUB_AUDIO_RENDERER_Play_audio_037
-    // * @tc.name      : AudioRenderer-isStreamActive - SPEECH - VOICE_ASSISTANT
-    // * @tc.desc      : AudioRenderer-isStreamActive - SPEECH - VOICE_ASSISTANT
-    // * @tc.size      : MEDIUM
-    // * @tc.type      : Function
-    // * @tc.level     : Level 0
-    // */
-    // it('SUB_AUDIO_RENDERER_Play_audio_037', 0,async function (done) {
-    // var AudioStreamInfo = {
-    //     samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-    //     channels: audio.AudioChannel.CHANNEL_2,
-    //     sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-    //     encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    // }
-
-    // var AudioRendererInfo = {
-    //     content: audio.ContentType.CONTENT_TYPE_SPEECH,
-    //     usage: audio.StreamUsage.STREAM_USAGE_VOICE_ASSISTANT,
-    //     rendererFlags: 1
-    // }
-
-    // var AudioRendererOptions = {
-    //     streamInfo: AudioStreamInfo,
-    //     rendererInfo: AudioRendererInfo
-    // }
-
-    // var resultFlag=false;
-    // playbackPromise(AudioRendererOptions, mediaDir+'/StarWars10s-2C-48000-4SW.wav', audio.AudioScene.AUDIO_SCENE_DEFAULT);
-    // await sleep(2000);
-
-    // audioManager.isActive(audio.AudioVolumeType.VOICE_ASSISTANT).then(function (data) {
-    //     if(data == true){
-    //         console.log('AudioFrameworkTest: Promise : isActive VOICE_ASSISTANT: PASS :'+data);
-    //         resultFlag = true;
-    //     }
-    //     else {
-    //         console.log('AudioFrameworkTest: Promise : isActive VOICE_ASSISTANT: FAIL :'+data);
-    //     }
-
-    // });
-
-    // await sleep(9000);
-
-    // console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-
-    // expect(resultFlag).assertTrue();
-
-    // done();
-
-    // })
-
-    // /* *
-    // * @tc.number    : SUB_AUDIO_RENDERER_Play_audio_038
-    // * @tc.name      : AudioRenderer-isStreamActive - MUSIC - VOICE_ASSISTANT
-    // * @tc.desc      : AudioRenderer-isStreamActive - MUSIC - VOICE_ASSISTANT
-    // * @tc.size      : MEDIUM
-    // * @tc.type      : Function
-    // * @tc.level     : Level 0
-    // */
-    // it('SUB_AUDIO_RENDERER_Play_audio_038', 0,async function (done) {
-    // var AudioStreamInfo = {
-    //     samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-    //     channels: audio.AudioChannel.CHANNEL_2,
-    //     sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-    //     encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    // }
-
-    // var AudioRendererInfo = {
-    //     content: audio.ContentType.CONTENT_TYPE_MUSIC,
-    //     usage: audio.StreamUsage.STREAM_USAGE_VOICE_ASSISTANT,
-    //     rendererFlags: 1
-    // }
-
-    // var AudioRendererOptions = {
-    //     streamInfo: AudioStreamInfo,
-    //     rendererInfo: AudioRendererInfo
-    // }
-
-    // var resultFlag=false;
-    // playbackPromise(AudioRendererOptions, mediaDir+'/StarWars10s-2C-48000-4SW.wav', audio.AudioScene.AUDIO_SCENE_DEFAULT);
-    // await sleep(2000);
-
-    // audioManager.isActive(audio.AudioVolumeType.VOICE_ASSISTANT).then(function (data) {
-    //     if(data == true){
-    //         console.log('AudioFrameworkTest: Promise : isActive VOICE_ASSISTANT: PASS :'+data);
-    //         resultFlag = true;
-    //     }
-    //     else {
-    //         console.log('AudioFrameworkTest: Promise : isActive VOICE_ASSISTANT: FAIL :'+data);
-    //     }
-
-    // });
-
-    // await sleep(9000);
-
-    // console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-
-    // expect(resultFlag).assertTrue();
-
-    // done();
-
-    // })
-
-    // /* *
-    // * @tc.number    : SUB_AUDIO_RENDERER_Play_audio_039
-    // * @tc.name      : AudioRenderer-isStreamActive - MOVIE - VOICE_ASSISTANT
-    // * @tc.desc      : AudioRenderer-isStreamActive - MOVIE - VOICE_ASSISTANT
-    // * @tc.size      : MEDIUM
-    // * @tc.type      : Function
-    // * @tc.level     : Level 0
-    // */
-    // it('SUB_AUDIO_RENDERER_Play_audio_039', 0,async function (done) {
-    // var AudioStreamInfo = {
-    //     samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-    //     channels: audio.AudioChannel.CHANNEL_2,
-    //     sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-    //     encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    // }
-
-    // var AudioRendererInfo = {
-    //     content: audio.ContentType.CONTENT_TYPE_MOVIE,
-    //     usage: audio.StreamUsage.STREAM_USAGE_VOICE_ASSISTANT,
-    //     rendererFlags: 1
-    // }
-
-    // var AudioRendererOptions = {
-    //     streamInfo: AudioStreamInfo,
-    //     rendererInfo: AudioRendererInfo
-    // }
-
-    // var resultFlag=false;
-    // playbackPromise(AudioRendererOptions, mediaDir+'/StarWars10s-2C-48000-4SW.wav', audio.AudioScene.AUDIO_SCENE_DEFAULT);
-    // await sleep(2000);
-
-    // audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
-    //     if(data == true){
-    //         console.log('AudioFrameworkTest: Promise : isActive Media: PASS :'+data);
-    //         resultFlag = true;
-    //     }
-    //     else {
-    //         console.log('AudioFrameworkTest: Promise : isActive Media: FAIL :'+data);
-    //     }
-
-    // });
-
-    // await sleep(9000);
-
-    // console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-
-    // expect(resultFlag).assertTrue();
-
-    // done();
-
-    // })
-
-    // /* *
-    // * @tc.number    : SUB_AUDIO_RENDERER_Play_audio_040
-    // * @tc.name      : AudioRenderer-isStreamActive - SONOTIFICATION - VOICE_ASSISTANT
-    // * @tc.desc      : AudioRenderer-isStreamActive - SONOTIFICATION - VOICE_ASSISTANT
-    // * @tc.size      : MEDIUM
-    // * @tc.type      : Function
-    // * @tc.level     : Level 0
-    // */
-    // it('SUB_AUDIO_RENDERER_Play_audio_040', 0,async function (done) {
-    // var AudioStreamInfo = {
-    //     samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-    //     channels: audio.AudioChannel.CHANNEL_2,
-    //     sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-    //     encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    // }
-
-    // var AudioRendererInfo = {
-    //     content: audio.ContentType.CONTENT_TYPE_SONIFICATION,
-    //     usage: audio.StreamUsage.STREAM_USAGE_VOICE_ASSISTANT,
-    //     rendererFlags: 1
-    // }
-
-    // var AudioRendererOptions = {
-    //     streamInfo: AudioStreamInfo,
-    //     rendererInfo: AudioRendererInfo
-    // }
-
-    // var resultFlag=false;
-    // playbackPromise(AudioRendererOptions, mediaDir+'/StarWars10s-2C-48000-4SW.wav', audio.AudioScene.AUDIO_SCENE_DEFAULT);
-    // await sleep(2000);
-
-    // audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
-    //     if(data == true){
-    //         console.log('AudioFrameworkTest: Promise : isActive MEDIA: PASS :'+data);
-    //         resultFlag = true;
-    //     }
-    //     else {
-    //         console.log('AudioFrameworkTest: Promise : isActive MEDIA: FAIL :'+data);
-    //     }
-
-    // });
-
-    // await sleep(9000);
-
-    // console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-
-    // expect(resultFlag).assertTrue();
-
-    // done();
-
-    // })
-
-    // /* *
-    // * @tc.number    : SUB_AUDIO_RENDERER_Play_audio_041
-    // * @tc.name      : AudioRenderer-isStreamActive - RINGTONE - VOICE_ASSISTANT
-    // * @tc.desc      : AudioRenderer-isStreamActive - RINGTONE - VOICE_ASSISTANT
-    // * @tc.size      : MEDIUM
-    // * @tc.type      : Function
-    // * @tc.level     : Level 0
-    // */
-    // it('SUB_AUDIO_RENDERER_Play_audio_041', 0,async function (done) {
-    // var AudioStreamInfo = {
-    //     samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-    //     channels: audio.AudioChannel.CHANNEL_2,
-    //     sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-    //     encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    // }
-
-    // var AudioRendererInfo = {
-    //     content: audio.ContentType.CONTENT_TYPE_RINGTONE,
-    //     usage: audio.StreamUsage.STREAM_USAGE_VOICE_ASSISTANT,
-    //     rendererFlags: 1
-    // }
-
-    // var AudioRendererOptions = {
-    //     streamInfo: AudioStreamInfo,
-    //     rendererInfo: AudioRendererInfo
-    // }
-
-    // var resultFlag=false;
-    // playbackPromise(AudioRendererOptions, mediaDir+'/StarWars10s-2C-48000-4SW.wav', audio.AudioScene.AUDIO_SCENE_DEFAULT);
-    // await sleep(2000);
-
-    // audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
-    //     if(data == true){
-    //         console.log('AudioFrameworkTest: Promise : isActive MEDIA: PASS :'+data);
-    //         resultFlag = true;
-    //     }
-    //     else {
-    //         console.log('AudioFrameworkTest: Promise : isActive MEDIA: FAIL :'+data);
-    //     }
-
-    // });
-
-    // await sleep(9000);
-
-    // console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
-
-    // expect(resultFlag).assertTrue();
-
-    // done();
-
-    // })
 
     /* *
         * @tc.number    : SUB_AUDIO_RENDERER_Play_audio_042
@@ -3553,68 +3222,68 @@ describe('audioRenderer', function () {
         * @tc.type      : Function
         * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_042', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
-        usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-
-    var audioRen;
-    await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
-        audioRen = data;
-        console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
-    }).catch((err) => {
-        console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-        resultFlag = false;
-    });
-
-    await audioRen.getRendererInfo().then(async function (audioParamsGet) {
-        console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
-        console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
-        console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
-        console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
-        if (audioParamsGet.content == AudioRendererInfo.content){
-            console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+    it('SUB_AUDIO_RENDERER_Play_audio_042', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
+            usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
+            rendererFlags: 1
+        }
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+
+        var audioRen;
+        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+            audioRen = data;
+            console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
             resultFlag = false;
-        }
-        if (audioParamsGet.usage == AudioRendererInfo.usage){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
-            resultFlag = false;
-        }
-        if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
-            resultFlag = false;
-        }
-    }).catch((err) => {
-        console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: '+err.message);
-        resultFlag = false;
-    });
+        });
 
-    done();
+        await audioRen.getRendererInfo().then(async function (audioParamsGet) {
+            console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
+            console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
+            console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
+            console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
+            if (audioParamsGet.content == AudioRendererInfo.content) {
+                console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+                resultFlag = false;
+            }
+            if (audioParamsGet.usage == AudioRendererInfo.usage) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
+                resultFlag = false;
+            }
+            if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
+                resultFlag = false;
+            }
+        }).catch((err) => {
+            console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: ' + err.message);
+            resultFlag = false;
+        });
+
+        done();
 
     })
 
@@ -3626,70 +3295,70 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_043', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_SPEECH,
-        usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-
-    var audioRen;
-    await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
-        audioRen = data;
-        console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
-    }).catch((err) => {
-        console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-        resultFlag = false;
-    });
-
-    await audioRen.getRendererInfo().then(async function (audioParamsGet) {
-        console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
-        console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
-        console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
-        console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
-        if (audioParamsGet.content == AudioRendererInfo.content){
-            console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+    it('SUB_AUDIO_RENDERER_Play_audio_043', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_SPEECH,
+            usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
+            rendererFlags: 1
+        }
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+
+        var audioRen;
+        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+            audioRen = data;
+            console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
             resultFlag = false;
-        }
-        if (audioParamsGet.usage == AudioRendererInfo.usage){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
-            resultFlag = false;
-        }
-        if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
-            resultFlag = false;
-        }
-    }).catch((err) => {
-        console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: '+err.message);
-        resultFlag = false;
-    });
+        });
 
-    expect(resultFlag).assertTrue();
+        await audioRen.getRendererInfo().then(async function (audioParamsGet) {
+            console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
+            console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
+            console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
+            console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
+            if (audioParamsGet.content == AudioRendererInfo.content) {
+                console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+                resultFlag = false;
+            }
+            if (audioParamsGet.usage == AudioRendererInfo.usage) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
+                resultFlag = false;
+            }
+            if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
+                resultFlag = false;
+            }
+        }).catch((err) => {
+            console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: ' + err.message);
+            resultFlag = false;
+        });
 
-    done();
+        expect(resultFlag).assertTrue();
+
+        done();
 
     })
 
@@ -3701,70 +3370,70 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_044', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_MUSIC,
-        usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-
-    var audioRen;
-    await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
-        audioRen = data;
-        console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
-    }).catch((err) => {
-        console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-        resultFlag = false;
-    });
-
-    await audioRen.getRendererInfo().then(async function (audioParamsGet) {
-        console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
-        console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
-        console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
-        console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
-        if (audioParamsGet.content == AudioRendererInfo.content){
-            console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+    it('SUB_AUDIO_RENDERER_Play_audio_044', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_MUSIC,
+            usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
+            rendererFlags: 1
+        }
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+
+        var audioRen;
+        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+            audioRen = data;
+            console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
             resultFlag = false;
-        }
-        if (audioParamsGet.usage == AudioRendererInfo.usage){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
-            resultFlag = false;
-        }
-        if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
-            resultFlag = false;
-        }
-    }).catch((err) => {
-        console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: '+err.message);
-        resultFlag = false;
-    });
+        });
 
-    expect(resultFlag).assertTrue();
+        await audioRen.getRendererInfo().then(async function (audioParamsGet) {
+            console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
+            console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
+            console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
+            console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
+            if (audioParamsGet.content == AudioRendererInfo.content) {
+                console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+                resultFlag = false;
+            }
+            if (audioParamsGet.usage == AudioRendererInfo.usage) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
+                resultFlag = false;
+            }
+            if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
+                resultFlag = false;
+            }
+        }).catch((err) => {
+            console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: ' + err.message);
+            resultFlag = false;
+        });
 
-    done();
+        expect(resultFlag).assertTrue();
+
+        done();
 
     })
 
@@ -3776,70 +3445,70 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_045', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_MOVIE,
-        usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-
-    var audioRen;
-    await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
-        audioRen = data;
-        console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
-    }).catch((err) => {
-        console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-        resultFlag = false;
-    });
-
-    await audioRen.getRendererInfo().then(async function (audioParamsGet) {
-        console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
-        console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
-        console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
-        console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
-        if (audioParamsGet.content == AudioRendererInfo.content){
-            console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+    it('SUB_AUDIO_RENDERER_Play_audio_045', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_MOVIE,
+            usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
+            rendererFlags: 1
+        }
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+
+        var audioRen;
+        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+            audioRen = data;
+            console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
             resultFlag = false;
-        }
-        if (audioParamsGet.usage == AudioRendererInfo.usage){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
-            resultFlag = false;
-        }
-        if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
-            resultFlag = false;
-        }
-    }).catch((err) => {
-        console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: '+err.message);
-        resultFlag = false;
-    });
+        });
 
-    expect(resultFlag).assertTrue();
+        await audioRen.getRendererInfo().then(async function (audioParamsGet) {
+            console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
+            console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
+            console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
+            console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
+            if (audioParamsGet.content == AudioRendererInfo.content) {
+                console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+                resultFlag = false;
+            }
+            if (audioParamsGet.usage == AudioRendererInfo.usage) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
+                resultFlag = false;
+            }
+            if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
+                resultFlag = false;
+            }
+        }).catch((err) => {
+            console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: ' + err.message);
+            resultFlag = false;
+        });
 
-    done();
+        expect(resultFlag).assertTrue();
+
+        done();
 
     })
 
@@ -3851,70 +3520,70 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_046', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_SONIFICATION,
-        usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-
-    var audioRen;
-    await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
-        audioRen = data;
-        console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
-    }).catch((err) => {
-        console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-        resultFlag = false;
-    });
-
-    await audioRen.getRendererInfo().then(async function (audioParamsGet) {
-        console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
-        console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
-        console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
-        console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
-        if (audioParamsGet.content == AudioRendererInfo.content){
-            console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+    it('SUB_AUDIO_RENDERER_Play_audio_046', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_SONIFICATION,
+            usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
+            rendererFlags: 1
+        }
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+
+        var audioRen;
+        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+            audioRen = data;
+            console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
             resultFlag = false;
-        }
-        if (audioParamsGet.usage == AudioRendererInfo.usage){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
-            resultFlag = false;
-        }
-        if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
-            resultFlag = false;
-        }
-    }).catch((err) => {
-        console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: '+err.message);
-        resultFlag = false;
-    });
+        });
 
-    expect(resultFlag).assertTrue();
+        await audioRen.getRendererInfo().then(async function (audioParamsGet) {
+            console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
+            console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
+            console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
+            console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
+            if (audioParamsGet.content == AudioRendererInfo.content) {
+                console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+                resultFlag = false;
+            }
+            if (audioParamsGet.usage == AudioRendererInfo.usage) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
+                resultFlag = false;
+            }
+            if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
+                resultFlag = false;
+            }
+        }).catch((err) => {
+            console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: ' + err.message);
+            resultFlag = false;
+        });
 
-    done();
+        expect(resultFlag).assertTrue();
+
+        done();
 
     })
 
@@ -3926,70 +3595,70 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_047', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_RINGTONE,
-        usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-
-    var audioRen;
-    await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
-        audioRen = data;
-        console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
-    }).catch((err) => {
-        console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-        resultFlag = false;
-    });
-
-    await audioRen.getRendererInfo().then(async function (audioParamsGet) {
-        console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
-        console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
-        console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
-        console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
-        if (audioParamsGet.content == AudioRendererInfo.content){
-            console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+    it('SUB_AUDIO_RENDERER_Play_audio_047', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_RINGTONE,
+            usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
+            rendererFlags: 1
+        }
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+
+        var audioRen;
+        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+            audioRen = data;
+            console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
             resultFlag = false;
-        }
-        if (audioParamsGet.usage == AudioRendererInfo.usage){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
-            resultFlag = false;
-        }
-        if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
-            resultFlag = false;
-        }
-    }).catch((err) => {
-        console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: '+err.message);
-        resultFlag = false;
-    });
+        });
 
-    expect(resultFlag).assertTrue();
+        await audioRen.getRendererInfo().then(async function (audioParamsGet) {
+            console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
+            console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
+            console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
+            console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
+            if (audioParamsGet.content == AudioRendererInfo.content) {
+                console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+                resultFlag = false;
+            }
+            if (audioParamsGet.usage == AudioRendererInfo.usage) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
+                resultFlag = false;
+            }
+            if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
+                resultFlag = false;
+            }
+        }).catch((err) => {
+            console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: ' + err.message);
+            resultFlag = false;
+        });
 
-    done();
+        expect(resultFlag).assertTrue();
+
+        done();
 
     })
 
@@ -4001,70 +3670,70 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_048', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
-        usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-
-    var audioRen;
-    await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
-        audioRen = data;
-        console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
-    }).catch((err) => {
-        console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-        resultFlag = false;
-    });
-
-    await audioRen.getRendererInfo().then(async function (audioParamsGet) {
-        console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
-        console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
-        console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
-        console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
-        if (audioParamsGet.content == AudioRendererInfo.content){
-            console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+    it('SUB_AUDIO_RENDERER_Play_audio_048', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
+            usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
+            rendererFlags: 1
+        }
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+
+        var audioRen;
+        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+            audioRen = data;
+            console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
             resultFlag = false;
-        }
-        if (audioParamsGet.usage == AudioRendererInfo.usage){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
-            resultFlag = false;
-        }
-        if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
-            resultFlag = false;
-        }
-    }).catch((err) => {
-        console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: '+err.message);
-        resultFlag = false;
-    });
+        });
 
-    expect(resultFlag).assertTrue();
+        await audioRen.getRendererInfo().then(async function (audioParamsGet) {
+            console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
+            console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
+            console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
+            console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
+            if (audioParamsGet.content == AudioRendererInfo.content) {
+                console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+                resultFlag = false;
+            }
+            if (audioParamsGet.usage == AudioRendererInfo.usage) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
+                resultFlag = false;
+            }
+            if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
+                resultFlag = false;
+            }
+        }).catch((err) => {
+            console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: ' + err.message);
+            resultFlag = false;
+        });
 
-    done();
+        expect(resultFlag).assertTrue();
+
+        done();
 
     })
 
@@ -4076,70 +3745,70 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_049', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_SPEECH,
-        usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-
-    var audioRen;
-    await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
-        audioRen = data;
-        console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
-    }).catch((err) => {
-        console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-        resultFlag = false;
-    });
-
-    await audioRen.getRendererInfo().then(async function (audioParamsGet) {
-        console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
-        console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
-        console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
-        console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
-        if (audioParamsGet.content == AudioRendererInfo.content){
-            console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+    it('SUB_AUDIO_RENDERER_Play_audio_049', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_SPEECH,
+            usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
+            rendererFlags: 1
+        }
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+
+        var audioRen;
+        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+            audioRen = data;
+            console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
             resultFlag = false;
-        }
-        if (audioParamsGet.usage == AudioRendererInfo.usage){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
-            resultFlag = false;
-        }
-        if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
-            resultFlag = false;
-        }
-    }).catch((err) => {
-        console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: '+err.message);
-        resultFlag = false;
-    });
+        });
 
-    expect(resultFlag).assertTrue();
+        await audioRen.getRendererInfo().then(async function (audioParamsGet) {
+            console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
+            console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
+            console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
+            console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
+            if (audioParamsGet.content == AudioRendererInfo.content) {
+                console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+                resultFlag = false;
+            }
+            if (audioParamsGet.usage == AudioRendererInfo.usage) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
+                resultFlag = false;
+            }
+            if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
+                resultFlag = false;
+            }
+        }).catch((err) => {
+            console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: ' + err.message);
+            resultFlag = false;
+        });
 
-    done();
+        expect(resultFlag).assertTrue();
+
+        done();
 
     })
 
@@ -4151,70 +3820,70 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_050', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_MUSIC,
-        usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-
-    var audioRen;
-    await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
-        audioRen = data;
-        console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
-    }).catch((err) => {
-        console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-        resultFlag = false;
-    });
-
-    await audioRen.getRendererInfo().then(async function (audioParamsGet) {
-        console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
-        console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
-        console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
-        console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
-        if (audioParamsGet.content == AudioRendererInfo.content){
-            console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+    it('SUB_AUDIO_RENDERER_Play_audio_050', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_MUSIC,
+            usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
+            rendererFlags: 1
+        }
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+
+        var audioRen;
+        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+            audioRen = data;
+            console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
             resultFlag = false;
-        }
-        if (audioParamsGet.usage == AudioRendererInfo.usage){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
-            resultFlag = false;
-        }
-        if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
-            resultFlag = false;
-        }
-    }).catch((err) => {
-        console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: '+err.message);
-        resultFlag = false;
-    });
+        });
 
-    expect(resultFlag).assertTrue();
+        await audioRen.getRendererInfo().then(async function (audioParamsGet) {
+            console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
+            console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
+            console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
+            console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
+            if (audioParamsGet.content == AudioRendererInfo.content) {
+                console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+                resultFlag = false;
+            }
+            if (audioParamsGet.usage == AudioRendererInfo.usage) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
+                resultFlag = false;
+            }
+            if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
+                resultFlag = false;
+            }
+        }).catch((err) => {
+            console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: ' + err.message);
+            resultFlag = false;
+        });
 
-    done();
+        expect(resultFlag).assertTrue();
+
+        done();
 
     })
 
@@ -4226,70 +3895,70 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_051', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_MOVIE,
-        usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-
-    var audioRen;
-    await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
-        audioRen = data;
-        console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
-    }).catch((err) => {
-        console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-        resultFlag = false;
-    });
-
-    await audioRen.getRendererInfo().then(async function (audioParamsGet) {
-        console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
-        console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
-        console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
-        console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
-        if (audioParamsGet.content == AudioRendererInfo.content){
-            console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+    it('SUB_AUDIO_RENDERER_Play_audio_051', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_MOVIE,
+            usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
+            rendererFlags: 1
+        }
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+
+        var audioRen;
+        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+            audioRen = data;
+            console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
             resultFlag = false;
-        }
-        if (audioParamsGet.usage == AudioRendererInfo.usage){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
-            resultFlag = false;
-        }
-        if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
-            resultFlag = false;
-        }
-    }).catch((err) => {
-        console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: '+err.message);
-        resultFlag = false;
-    });
+        });
 
-    expect(resultFlag).assertTrue();
+        await audioRen.getRendererInfo().then(async function (audioParamsGet) {
+            console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
+            console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
+            console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
+            console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
+            if (audioParamsGet.content == AudioRendererInfo.content) {
+                console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+                resultFlag = false;
+            }
+            if (audioParamsGet.usage == AudioRendererInfo.usage) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
+                resultFlag = false;
+            }
+            if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
+                resultFlag = false;
+            }
+        }).catch((err) => {
+            console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: ' + err.message);
+            resultFlag = false;
+        });
 
-    done();
+        expect(resultFlag).assertTrue();
+
+        done();
 
     })
 
@@ -4301,70 +3970,70 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_052', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_SONIFICATION,
-        usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-
-    var audioRen;
-    await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
-        audioRen = data;
-        console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
-    }).catch((err) => {
-        console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-        resultFlag = false;
-    });
-
-    await audioRen.getRendererInfo().then(async function (audioParamsGet) {
-        console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
-        console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
-        console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
-        console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
-        if (audioParamsGet.content == AudioRendererInfo.content){
-            console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+    it('SUB_AUDIO_RENDERER_Play_audio_052', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_SONIFICATION,
+            usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
+            rendererFlags: 1
+        }
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+
+        var audioRen;
+        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+            audioRen = data;
+            console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
             resultFlag = false;
-        }
-        if (audioParamsGet.usage == AudioRendererInfo.usage){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
-            resultFlag = false;
-        }
-        if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
-            resultFlag = false;
-        }
-    }).catch((err) => {
-        console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: '+err.message);
-        resultFlag = false;
-    });
+        });
 
-    expect(resultFlag).assertTrue();
+        await audioRen.getRendererInfo().then(async function (audioParamsGet) {
+            console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
+            console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
+            console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
+            console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
+            if (audioParamsGet.content == AudioRendererInfo.content) {
+                console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+                resultFlag = false;
+            }
+            if (audioParamsGet.usage == AudioRendererInfo.usage) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
+                resultFlag = false;
+            }
+            if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
+                resultFlag = false;
+            }
+        }).catch((err) => {
+            console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: ' + err.message);
+            resultFlag = false;
+        });
 
-    done();
+        expect(resultFlag).assertTrue();
+
+        done();
 
     })
 
@@ -4376,70 +4045,70 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_053', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_RINGTONE,
-        usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-
-    var audioRen;
-    await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
-        audioRen = data;
-        console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
-    }).catch((err) => {
-        console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-        resultFlag = false;
-    });
-
-    await audioRen.getRendererInfo().then(async function (audioParamsGet) {
-        console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
-        console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
-        console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
-        console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
-        if (audioParamsGet.content == AudioRendererInfo.content){
-            console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+    it('SUB_AUDIO_RENDERER_Play_audio_053', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_RINGTONE,
+            usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
+            rendererFlags: 1
+        }
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+
+        var audioRen;
+        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+            audioRen = data;
+            console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
             resultFlag = false;
-        }
-        if (audioParamsGet.usage == AudioRendererInfo.usage){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
-            resultFlag = false;
-        }
-        if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
-            resultFlag = false;
-        }
-    }).catch((err) => {
-        console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: '+err.message);
-        resultFlag = false;
-    });
+        });
 
-    expect(resultFlag).assertTrue();
+        await audioRen.getRendererInfo().then(async function (audioParamsGet) {
+            console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
+            console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
+            console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
+            console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
+            if (audioParamsGet.content == AudioRendererInfo.content) {
+                console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+                resultFlag = false;
+            }
+            if (audioParamsGet.usage == AudioRendererInfo.usage) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
+                resultFlag = false;
+            }
+            if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
+                resultFlag = false;
+            }
+        }).catch((err) => {
+            console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: ' + err.message);
+            resultFlag = false;
+        });
 
-    done();
+        expect(resultFlag).assertTrue();
+
+        done();
 
     })
 
@@ -4451,70 +4120,70 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_054', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
-        usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-
-    var audioRen;
-    await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
-        audioRen = data;
-        console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
-    }).catch((err) => {
-        console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-        resultFlag = false;
-    });
-
-    await audioRen.getRendererInfo().then(async function (audioParamsGet) {
-        console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
-        console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
-        console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
-        console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
-        if (audioParamsGet.content == AudioRendererInfo.content){
-            console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+    it('SUB_AUDIO_RENDERER_Play_audio_054', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
+            usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+            rendererFlags: 1
+        }
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+
+        var audioRen;
+        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+            audioRen = data;
+            console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
             resultFlag = false;
-        }
-        if (audioParamsGet.usage == AudioRendererInfo.usage){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
-            resultFlag = false;
-        }
-        if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
-            resultFlag = false;
-        }
-    }).catch((err) => {
-        console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: '+err.message);
-        resultFlag = false;
-    });
+        });
 
-    expect(resultFlag).assertTrue();
+        await audioRen.getRendererInfo().then(async function (audioParamsGet) {
+            console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
+            console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
+            console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
+            console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
+            if (audioParamsGet.content == AudioRendererInfo.content) {
+                console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+                resultFlag = false;
+            }
+            if (audioParamsGet.usage == AudioRendererInfo.usage) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
+                resultFlag = false;
+            }
+            if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
+                resultFlag = false;
+            }
+        }).catch((err) => {
+            console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: ' + err.message);
+            resultFlag = false;
+        });
 
-    done();
+        expect(resultFlag).assertTrue();
+
+        done();
 
     })
 
@@ -4526,70 +4195,70 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_055', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_SPEECH,
-        usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-
-    var audioRen;
-    await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
-        audioRen = data;
-        console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
-    }).catch((err) => {
-        console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-        resultFlag = false;
-    });
-
-    await audioRen.getRendererInfo().then(async function (audioParamsGet) {
-        console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
-        console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
-        console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
-        console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
-        if (audioParamsGet.content == AudioRendererInfo.content){
-            console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+    it('SUB_AUDIO_RENDERER_Play_audio_055', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_SPEECH,
+            usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+            rendererFlags: 1
+        }
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+
+        var audioRen;
+        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+            audioRen = data;
+            console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
             resultFlag = false;
-        }
-        if (audioParamsGet.usage == AudioRendererInfo.usage){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
-            resultFlag = false;
-        }
-        if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
-            resultFlag = false;
-        }
-    }).catch((err) => {
-        console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: '+err.message);
-        resultFlag = false;
-    });
+        });
 
-    expect(resultFlag).assertTrue();
+        await audioRen.getRendererInfo().then(async function (audioParamsGet) {
+            console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
+            console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
+            console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
+            console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
+            if (audioParamsGet.content == AudioRendererInfo.content) {
+                console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+                resultFlag = false;
+            }
+            if (audioParamsGet.usage == AudioRendererInfo.usage) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
+                resultFlag = false;
+            }
+            if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
+                resultFlag = false;
+            }
+        }).catch((err) => {
+            console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: ' + err.message);
+            resultFlag = false;
+        });
 
-    done();
+        expect(resultFlag).assertTrue();
+
+        done();
 
     })
 
@@ -4601,70 +4270,70 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_056', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_MUSIC,
-        usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-
-    var audioRen;
-    await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
-        audioRen = data;
-        console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
-    }).catch((err) => {
-        console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-        resultFlag = false;
-    });
-
-    await audioRen.getRendererInfo().then(async function (audioParamsGet) {
-        console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
-        console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
-        console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
-        console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
-        if (audioParamsGet.content == AudioRendererInfo.content){
-            console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+    it('SUB_AUDIO_RENDERER_Play_audio_056', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_MUSIC,
+            usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+            rendererFlags: 1
+        }
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+
+        var audioRen;
+        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+            audioRen = data;
+            console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
             resultFlag = false;
-        }
-        if (audioParamsGet.usage == AudioRendererInfo.usage){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
-            resultFlag = false;
-        }
-        if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
-            resultFlag = false;
-        }
-    }).catch((err) => {
-        console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: '+err.message);
-        resultFlag = false;
-    });
+        });
 
-    expect(resultFlag).assertTrue();
+        await audioRen.getRendererInfo().then(async function (audioParamsGet) {
+            console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
+            console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
+            console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
+            console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
+            if (audioParamsGet.content == AudioRendererInfo.content) {
+                console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+                resultFlag = false;
+            }
+            if (audioParamsGet.usage == AudioRendererInfo.usage) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
+                resultFlag = false;
+            }
+            if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
+                resultFlag = false;
+            }
+        }).catch((err) => {
+            console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: ' + err.message);
+            resultFlag = false;
+        });
 
-    done();
+        expect(resultFlag).assertTrue();
+
+        done();
 
     })
 
@@ -4676,70 +4345,70 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_057', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_MOVIE,
-        usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-
-    var audioRen;
-    await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
-        audioRen = data;
-        console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
-    }).catch((err) => {
-        console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-        resultFlag = false;
-    });
-
-    await audioRen.getRendererInfo().then(async function (audioParamsGet) {
-        console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
-        console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
-        console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
-        console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
-        if (audioParamsGet.content == AudioRendererInfo.content){
-            console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+    it('SUB_AUDIO_RENDERER_Play_audio_057', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_MOVIE,
+            usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+            rendererFlags: 1
+        }
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+
+        var audioRen;
+        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+            audioRen = data;
+            console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
             resultFlag = false;
-        }
-        if (audioParamsGet.usage == AudioRendererInfo.usage){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
-            resultFlag = false;
-        }
-        if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
-            resultFlag = false;
-        }
-    }).catch((err) => {
-        console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: '+err.message);
-        resultFlag = false;
-    });
+        });
 
-    expect(resultFlag).assertTrue();
+        await audioRen.getRendererInfo().then(async function (audioParamsGet) {
+            console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
+            console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
+            console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
+            console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
+            if (audioParamsGet.content == AudioRendererInfo.content) {
+                console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+                resultFlag = false;
+            }
+            if (audioParamsGet.usage == AudioRendererInfo.usage) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
+                resultFlag = false;
+            }
+            if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
+                resultFlag = false;
+            }
+        }).catch((err) => {
+            console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: ' + err.message);
+            resultFlag = false;
+        });
 
-    done();
+        expect(resultFlag).assertTrue();
+
+        done();
 
     })
 
@@ -4751,70 +4420,70 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_058', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_SONIFICATION,
-        usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-
-    var audioRen;
-    await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
-        audioRen = data;
-        console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
-    }).catch((err) => {
-        console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-        resultFlag = false;
-    });
-
-    await audioRen.getRendererInfo().then(async function (audioParamsGet) {
-        console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
-        console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
-        console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
-        console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
-        if (audioParamsGet.content == AudioRendererInfo.content){
-            console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+    it('SUB_AUDIO_RENDERER_Play_audio_058', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_SONIFICATION,
+            usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+            rendererFlags: 1
+        }
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+
+        var audioRen;
+        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+            audioRen = data;
+            console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
             resultFlag = false;
-        }
-        if (audioParamsGet.usage == AudioRendererInfo.usage){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
-            resultFlag = false;
-        }
-        if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
-            resultFlag = false;
-        }
-    }).catch((err) => {
-        console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: '+err.message);
-        resultFlag = false;
-    });
+        });
 
-    expect(resultFlag).assertTrue();
+        await audioRen.getRendererInfo().then(async function (audioParamsGet) {
+            console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
+            console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
+            console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
+            console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
+            if (audioParamsGet.content == AudioRendererInfo.content) {
+                console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+                resultFlag = false;
+            }
+            if (audioParamsGet.usage == AudioRendererInfo.usage) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
+                resultFlag = false;
+            }
+            if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
+                resultFlag = false;
+            }
+        }).catch((err) => {
+            console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: ' + err.message);
+            resultFlag = false;
+        });
 
-    done();
+        expect(resultFlag).assertTrue();
+
+        done();
 
     })
 
@@ -4826,70 +4495,70 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_059', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_RINGTONE,
-        usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-
-    var audioRen;
-    await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
-        audioRen = data;
-        console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
-    }).catch((err) => {
-        console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-        resultFlag = false;
-    });
-
-    await audioRen.getRendererInfo().then(async function (audioParamsGet) {
-        console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
-        console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
-        console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
-        console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
-        if (audioParamsGet.content == AudioRendererInfo.content){
-            console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+    it('SUB_AUDIO_RENDERER_Play_audio_059', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_RINGTONE,
+            usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+            rendererFlags: 1
+        }
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+
+        var audioRen;
+        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+            audioRen = data;
+            console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
             resultFlag = false;
-        }
-        if (audioParamsGet.usage == AudioRendererInfo.usage){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
-            resultFlag = false;
-        }
-        if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
-            resultFlag = false;
-        }
-    }).catch((err) => {
-        console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: '+err.message);
-        resultFlag = false;
-    });
+        });
 
-    expect(resultFlag).assertTrue();
+        await audioRen.getRendererInfo().then(async function (audioParamsGet) {
+            console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
+            console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
+            console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
+            console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
+            if (audioParamsGet.content == AudioRendererInfo.content) {
+                console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+                resultFlag = false;
+            }
+            if (audioParamsGet.usage == AudioRendererInfo.usage) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
+                resultFlag = false;
+            }
+            if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
+                resultFlag = false;
+            }
+        }).catch((err) => {
+            console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: ' + err.message);
+            resultFlag = false;
+        });
 
-    done();
+        expect(resultFlag).assertTrue();
+
+        done();
 
     })
 
@@ -4901,70 +4570,70 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_060', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
-        usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-
-    var audioRen;
-    await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
-        audioRen = data;
-        console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
-    }).catch((err) => {
-        console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-        resultFlag = false;
-    });
-
-    await audioRen.getRendererInfo().then(async function (audioParamsGet) {
-        console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
-        console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
-        console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
-        console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
-        if (audioParamsGet.content == AudioRendererInfo.content){
-            console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+    it('SUB_AUDIO_RENDERER_Play_audio_060', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
+            usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
+            rendererFlags: 1
+        }
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+
+        var audioRen;
+        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+            audioRen = data;
+            console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
             resultFlag = false;
-        }
-        if (audioParamsGet.usage == AudioRendererInfo.usage){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
-            resultFlag = false;
-        }
-        if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
-            resultFlag = false;
-        }
-    }).catch((err) => {
-        console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: '+err.message);
-        resultFlag = false;
-    });
+        });
 
-    expect(resultFlag).assertTrue();
+        await audioRen.getRendererInfo().then(async function (audioParamsGet) {
+            console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
+            console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
+            console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
+            console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
+            if (audioParamsGet.content == AudioRendererInfo.content) {
+                console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+                resultFlag = false;
+            }
+            if (audioParamsGet.usage == AudioRendererInfo.usage) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
+                resultFlag = false;
+            }
+            if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
+                resultFlag = false;
+            }
+        }).catch((err) => {
+            console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: ' + err.message);
+            resultFlag = false;
+        });
 
-    done();
+        expect(resultFlag).assertTrue();
+
+        done();
 
     })
 
@@ -4976,70 +4645,70 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_061', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_SPEECH,
-        usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-
-    var audioRen;
-    await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
-        audioRen = data;
-        console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
-    }).catch((err) => {
-        console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-        resultFlag = false;
-    });
-
-    await audioRen.getRendererInfo().then(async function (audioParamsGet) {
-        console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
-        console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
-        console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
-        console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
-        if (audioParamsGet.content == AudioRendererInfo.content){
-            console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+    it('SUB_AUDIO_RENDERER_Play_audio_061', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_SPEECH,
+            usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
+            rendererFlags: 1
+        }
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+
+        var audioRen;
+        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+            audioRen = data;
+            console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
             resultFlag = false;
-        }
-        if (audioParamsGet.usage == AudioRendererInfo.usage){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
-            resultFlag = false;
-        }
-        if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
-            resultFlag = false;
-        }
-    }).catch((err) => {
-        console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: '+err.message);
-        resultFlag = false;
-    });
+        });
 
-    expect(resultFlag).assertTrue();
+        await audioRen.getRendererInfo().then(async function (audioParamsGet) {
+            console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
+            console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
+            console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
+            console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
+            if (audioParamsGet.content == AudioRendererInfo.content) {
+                console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+                resultFlag = false;
+            }
+            if (audioParamsGet.usage == AudioRendererInfo.usage) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
+                resultFlag = false;
+            }
+            if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
+                resultFlag = false;
+            }
+        }).catch((err) => {
+            console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: ' + err.message);
+            resultFlag = false;
+        });
 
-    done();
+        expect(resultFlag).assertTrue();
+
+        done();
 
     })
 
@@ -5051,70 +4720,70 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_062', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_MUSIC,
-        usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-
-    var audioRen;
-    await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
-        audioRen = data;
-        console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
-    }).catch((err) => {
-        console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-        resultFlag = false;
-    });
-
-    await audioRen.getRendererInfo().then(async function (audioParamsGet) {
-        console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
-        console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
-        console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
-        console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
-        if (audioParamsGet.content == AudioRendererInfo.content){
-            console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+    it('SUB_AUDIO_RENDERER_Play_audio_062', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_MUSIC,
+            usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
+            rendererFlags: 1
+        }
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+
+        var audioRen;
+        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+            audioRen = data;
+            console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
             resultFlag = false;
-        }
-        if (audioParamsGet.usage == AudioRendererInfo.usage){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
-            resultFlag = false;
-        }
-        if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
-            resultFlag = false;
-        }
-    }).catch((err) => {
-        console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: '+err.message);
-        resultFlag = false;
-    });
+        });
 
-    expect(resultFlag).assertTrue();
+        await audioRen.getRendererInfo().then(async function (audioParamsGet) {
+            console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
+            console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
+            console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
+            console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
+            if (audioParamsGet.content == AudioRendererInfo.content) {
+                console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+                resultFlag = false;
+            }
+            if (audioParamsGet.usage == AudioRendererInfo.usage) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
+                resultFlag = false;
+            }
+            if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
+                resultFlag = false;
+            }
+        }).catch((err) => {
+            console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: ' + err.message);
+            resultFlag = false;
+        });
 
-    done();
+        expect(resultFlag).assertTrue();
+
+        done();
 
     })
 
@@ -5126,70 +4795,70 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_063', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_MOVIE,
-        usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-
-    var audioRen;
-    await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
-        audioRen = data;
-        console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
-    }).catch((err) => {
-        console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-        resultFlag = false;
-    });
-
-    await audioRen.getRendererInfo().then(async function (audioParamsGet) {
-        console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
-        console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
-        console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
-        console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
-        if (audioParamsGet.content == AudioRendererInfo.content){
-            console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+    it('SUB_AUDIO_RENDERER_Play_audio_063', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_MOVIE,
+            usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
+            rendererFlags: 1
+        }
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+
+        var audioRen;
+        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+            audioRen = data;
+            console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
             resultFlag = false;
-        }
-        if (audioParamsGet.usage == AudioRendererInfo.usage){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
-            resultFlag = false;
-        }
-        if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
-            resultFlag = false;
-        }
-    }).catch((err) => {
-        console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: '+err.message);
-        resultFlag = false;
-    });
+        });
 
-    expect(resultFlag).assertTrue();
+        await audioRen.getRendererInfo().then(async function (audioParamsGet) {
+            console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
+            console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
+            console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
+            console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
+            if (audioParamsGet.content == AudioRendererInfo.content) {
+                console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+                resultFlag = false;
+            }
+            if (audioParamsGet.usage == AudioRendererInfo.usage) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
+                resultFlag = false;
+            }
+            if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
+                resultFlag = false;
+            }
+        }).catch((err) => {
+            console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: ' + err.message);
+            resultFlag = false;
+        });
 
-    done();
+        expect(resultFlag).assertTrue();
+
+        done();
 
     })
 
@@ -5201,70 +4870,70 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_064', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_SONIFICATION,
-        usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-
-    var audioRen;
-    await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
-        audioRen = data;
-        console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
-    }).catch((err) => {
-        console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-        resultFlag = false;
-    });
-
-    await audioRen.getRendererInfo().then(async function (audioParamsGet) {
-        console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
-        console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
-        console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
-        console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
-        if (audioParamsGet.content == AudioRendererInfo.content){
-            console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+    it('SUB_AUDIO_RENDERER_Play_audio_064', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_SONIFICATION,
+            usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
+            rendererFlags: 1
+        }
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+
+        var audioRen;
+        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+            audioRen = data;
+            console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
             resultFlag = false;
-        }
-        if (audioParamsGet.usage == AudioRendererInfo.usage){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
-            resultFlag = false;
-        }
-        if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
-            resultFlag = false;
-        }
-    }).catch((err) => {
-        console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: '+err.message);
-        resultFlag = false;
-    });
+        });
 
-    expect(resultFlag).assertTrue();
+        await audioRen.getRendererInfo().then(async function (audioParamsGet) {
+            console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
+            console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
+            console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
+            console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
+            if (audioParamsGet.content == AudioRendererInfo.content) {
+                console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+                resultFlag = false;
+            }
+            if (audioParamsGet.usage == AudioRendererInfo.usage) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
+                resultFlag = false;
+            }
+            if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
+                resultFlag = false;
+            }
+        }).catch((err) => {
+            console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: ' + err.message);
+            resultFlag = false;
+        });
 
-    done();
+        expect(resultFlag).assertTrue();
+
+        done();
 
     })
 
@@ -5276,575 +4945,72 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_065', 0,async function (done) {
-    var AudioStreamInfo = {
-        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-        channels: audio.AudioChannel.CHANNEL_2,
-        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    }
-
-    var AudioRendererInfo = {
-        content: audio.ContentType.CONTENT_TYPE_RINGTONE,
-        usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-        rendererFlags: 1
-    }
-
-    var AudioRendererOptions = {
-        streamInfo: AudioStreamInfo,
-        rendererInfo: AudioRendererInfo
-    }
-
-    var resultFlag=true;
-
-    var audioRen;
-    await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
-        audioRen = data;
-        console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
-    }).catch((err) => {
-        console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-        resultFlag = false;
-    });
-
-    await audioRen.getRendererInfo().then(async function (audioParamsGet) {
-        console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
-        console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
-        console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
-        console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
-        if (audioParamsGet.content == AudioRendererInfo.content){
-            console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+    it('SUB_AUDIO_RENDERER_Play_audio_065', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_RINGTONE,
+            usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
+            rendererFlags: 1
+        }
+
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        var resultFlag = true;
+
+        var audioRen;
+        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+            audioRen = data;
+            console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
             resultFlag = false;
-        }
-        if (audioParamsGet.usage == AudioRendererInfo.usage){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
-            resultFlag = false;
-        }
-        if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags){
-            console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
-        }
-        else{
-            console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
-            resultFlag = false;
-        }
-    }).catch((err) => {
-        console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: '+err.message);
-        resultFlag = false;
-    });
+        });
 
-    expect(resultFlag).assertTrue();
+        await audioRen.getRendererInfo().then(async function (audioParamsGet) {
+            console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
+            console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
+            console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
+            console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
+            if (audioParamsGet.content == AudioRendererInfo.content) {
+                console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
+                resultFlag = false;
+            }
+            if (audioParamsGet.usage == AudioRendererInfo.usage) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
+                resultFlag = false;
+            }
+            if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags) {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
+                resultFlag = false;
+            }
+        }).catch((err) => {
+            console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: ' + err.message);
+            resultFlag = false;
+        });
 
-    done();
+        expect(resultFlag).assertTrue();
+
+        done();
 
     })
-
-    // /* *
-    // * @tc.number    : SUB_AUDIO_RENDERER_Play_audio_066
-    // * @tc.name      : AudioRenderer-SET & GET AudioRendererInfo - Set25
-    // * @tc.desc      : AudioRenderer-SET & GET AudioRendererInfo - Set25
-    // * @tc.size      : MEDIUM
-    // * @tc.type      : Function
-    // * @tc.level     : Level 0
-    // */
-    // it('SUB_AUDIO_RENDERER_Play_audio_066', 0,async function (done) {
-    // var AudioStreamInfo = {
-    //     samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-    //     channels: audio.AudioChannel.CHANNEL_2,
-    //     sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-    //     encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    // }
-
-    // var AudioRendererInfo = {
-    //     content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
-    //     usage: audio.StreamUsage.STREAM_USAGE_VOICE_ASSISTANT,
-    //     rendererFlags: 1
-    // }
-
-    // var AudioRendererOptions = {
-    //     streamInfo: AudioStreamInfo,
-    //     rendererInfo: AudioRendererInfo
-    // }
-
-    // var resultFlag=true;
-
-    // var audioRen;
-    // await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
-    //     audioRen = data;
-    //     console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
-    // }).catch((err) => {
-    //     console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-    //     resultFlag = false;
-    // });
-
-    // await audioRen.getRendererInfo().then(async function (audioParamsGet) {
-    //     console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
-    //     console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
-    //     console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
-    //     console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
-    //     if (audioParamsGet.content == AudioRendererInfo.content){
-    //         console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
-    //     }
-    //     else{
-    //         console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
-    //         resultFlag = false;
-    //     }
-    //     if (audioParamsGet.usage == AudioRendererInfo.usage){
-    //         console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
-    //     }
-    //     else{
-    //         console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
-    //         resultFlag = false;
-    //     }
-    //     if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags){
-    //         console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
-    //     }
-    //     else{
-    //         console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
-    //         resultFlag = false;
-    //     }
-    // }).catch((err) => {
-    //     console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: '+err.message);
-    //     resultFlag = false;
-    // });
-
-    // expect(resultFlag).assertTrue();
-
-    // done();
-
-    // })
-
-    // /* *
-    // * @tc.number    : SUB_AUDIO_RENDERER_Play_audio_067
-    // * @tc.name      : AudioRenderer-SET & GET AudioRendererInfo - Set26
-    // * @tc.desc      : AudioRenderer-SET & GET AudioRendererInfo - Set26
-    // * @tc.size      : MEDIUM
-    // * @tc.type      : Function
-    // * @tc.level     : Level 0
-    // */
-    // it('SUB_AUDIO_RENDERER_Play_audio_067', 0,async function (done) {
-    // var AudioStreamInfo = {
-    //     samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-    //     channels: audio.AudioChannel.CHANNEL_2,
-    //     sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-    //     encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    // }
-
-    // var AudioRendererInfo = {
-    //     content: audio.ContentType.CONTENT_TYPE_SPEECH,
-    //     usage: audio.StreamUsage.STREAM_USAGE_VOICE_ASSISTANT,
-    //     rendererFlags: 1
-    // }
-
-    // var AudioRendererOptions = {
-    //     streamInfo: AudioStreamInfo,
-    //     rendererInfo: AudioRendererInfo
-    // }
-
-    // var resultFlag=true;
-
-    // var audioRen;
-    // await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
-    //     audioRen = data;
-    //     console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
-    // }).catch((err) => {
-    //     console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-    //     resultFlag = false;
-    // });
-
-    // await audioRen.getRendererInfo().then(async function (audioParamsGet) {
-    //     console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
-    //     console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
-    //     console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
-    //     console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
-    //     if (audioParamsGet.content == AudioRendererInfo.content){
-    //         console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
-    //     }
-    //     else{
-    //         console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
-    //         resultFlag = false;
-    //     }
-    //     if (audioParamsGet.usage == AudioRendererInfo.usage){
-    //         console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
-    //     }
-    //     else{
-    //         console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
-    //         resultFlag = false;
-    //     }
-    //     if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags){
-    //         console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
-    //     }
-    //     else{
-    //         console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
-    //         resultFlag = false;
-    //     }
-    // }).catch((err) => {
-    //     console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: '+err.message);
-    //     resultFlag = false;
-    // });
-
-    // expect(resultFlag).assertTrue();
-
-    // done();
-
-    // })
-
-    // /* *
-    // * @tc.number    : SUB_AUDIO_RENDERER_Play_audio_068
-    // * @tc.name      : AudioRenderer-SET & GET AudioRendererInfo - Set27
-    // * @tc.desc      : AudioRenderer-SET & GET AudioRendererInfo - Set27
-    // * @tc.size      : MEDIUM
-    // * @tc.type      : Function
-    // * @tc.level     : Level 0
-    // */
-    // it('SUB_AUDIO_RENDERER_Play_audio_068', 0,async function (done) {
-    // var AudioStreamInfo = {
-    //     samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-    //     channels: audio.AudioChannel.CHANNEL_2,
-    //     sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-    //     encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    // }
-
-    // var AudioRendererInfo = {
-    //     content: audio.ContentType.CONTENT_TYPE_MUSIC,
-    //     usage: audio.StreamUsage.STREAM_USAGE_VOICE_ASSISTANT,
-    //     rendererFlags: 1
-    // }
-
-    // var AudioRendererOptions = {
-    //     streamInfo: AudioStreamInfo,
-    //     rendererInfo: AudioRendererInfo
-    // }
-    // var resultFlag=true;
-
-    // var audioRen;
-    // await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
-    //     audioRen = data;
-    //     console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
-    // }).catch((err) => {
-    //     console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-    //     resultFlag = false;
-    // });
-
-    // await audioRen.getRendererInfo().then(async function (audioParamsGet) {
-    //     console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
-    //     console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
-    //     console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
-    //     console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
-    //     if (audioParamsGet.content == AudioRendererInfo.content){
-    //         console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
-    //     }
-    //     else{
-    //         console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
-    //         resultFlag = false;
-    //     }
-    //     if (audioParamsGet.usage == AudioRendererInfo.usage){
-    //         console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
-    //     }
-    //     else{
-    //         console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
-    //         resultFlag = false;
-    //     }
-    //     if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags){
-    //         console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
-    //     }
-    //     else{
-    //         console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
-    //         resultFlag = false;
-    //     }
-    // }).catch((err) => {
-    //     console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: '+err.message);
-    //     resultFlag = false;
-    // });
-
-    // expect(resultFlag).assertTrue();
-
-    // done();
-
-    // })
-
-    // /* *
-    // * @tc.number    : SUB_AUDIO_RENDERER_Play_audio_069
-    // * @tc.name      : AudioRenderer-SET & GET AudioRendererInfo - Set28
-    // * @tc.desc      : AudioRenderer-SET & GET AudioRendererInfo - Set28
-    // * @tc.size      : MEDIUM
-    // * @tc.type      : Function
-    // * @tc.level     : Level 0
-    // */
-    // it('SUB_AUDIO_RENDERER_Play_audio_069', 0,async function (done) {
-    // var AudioStreamInfo = {
-    //     samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-    //     channels: audio.AudioChannel.CHANNEL_2,
-    //     sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-    //     encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    // }
-
-    // var AudioRendererInfo = {
-    //     content: audio.ContentType.CONTENT_TYPE_MOVIE,
-    //     usage: audio.StreamUsage.STREAM_USAGE_VOICE_ASSISTANT,
-    //     rendererFlags: 1
-    // }
-
-    // var AudioRendererOptions = {
-    //     streamInfo: AudioStreamInfo,
-    //     rendererInfo: AudioRendererInfo
-    // }
-    // var resultFlag=true;
-
-    // var audioRen;
-    // await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
-    //     audioRen = data;
-    //     console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
-    // }).catch((err) => {
-    //     console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-    //     resultFlag = false;
-    // });
-
-    // await audioRen.getRendererInfo().then(async function (audioParamsGet) {
-    //     console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
-    //     console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
-    //     console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
-    //     console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
-    //     if (audioParamsGet.content == AudioRendererInfo.content){
-    //         console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
-    //     }
-    //     else{
-    //         console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
-    //         resultFlag = false;
-    //     }
-    //     if (audioParamsGet.usage == AudioRendererInfo.usage){
-    //         console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
-    //     }
-    //     else{
-    //         console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
-    //         resultFlag = false;
-    //     }
-    //     if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags){
-    //         console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
-    //     }
-    //     else{
-    //         console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
-    //         resultFlag = false;
-    //     }
-    // }).catch((err) => {
-    //     console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: '+err.message);
-    //     resultFlag = false;
-    // });
-
-    // expect(resultFlag).assertTrue();
-
-    // done();
-
-    // })
-
-    // /* *
-    // * @tc.number    : SUB_AUDIO_RENDERER_Play_audio_070
-    // * @tc.name      : AudioRenderer-SET & GET AudioRendererInfo - Set29
-    // * @tc.desc      : AudioRenderer-SET & GET AudioRendererInfo - Set29
-    // * @tc.size      : MEDIUM
-    // * @tc.type      : Function
-    // * @tc.level     : Level 0
-    // */
-    // it('SUB_AUDIO_RENDERER_Play_audio_070', 0,async function (done) {
-    // var AudioStreamInfo = {
-    //     samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-    //     channels: audio.AudioChannel.CHANNEL_2,
-    //     sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-    //     encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    // }
-
-    // var AudioRendererInfo = {
-    //     content: audio.ContentType.CONTENT_TYPE_SONIFICATION,
-    //     usage: audio.StreamUsage.STREAM_USAGE_VOICE_ASSISTANT,
-    //     rendererFlags: 1
-    // }
-
-    // var AudioRendererOptions = {
-    //     streamInfo: AudioStreamInfo,
-    //     rendererInfo: AudioRendererInfo
-    // }
-    // var resultFlag=true;
-
-    // var audioRen;
-    // await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
-    //     audioRen = data;
-    //     console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
-    // }).catch((err) => {
-    //     console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-    //     resultFlag = false;
-    // });
-
-    // await audioRen.getRendererInfo().then(async function (audioParamsGet) {
-    //     console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
-    //     console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
-    //     console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
-    //     console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
-    //     if (audioParamsGet.content == AudioRendererInfo.content){
-    //         console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
-    //     }
-    //     else{
-    //         console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
-    //         resultFlag = false;
-    //     }
-    //     if (audioParamsGet.usage == AudioRendererInfo.usage){
-    //         console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
-    //     }
-    //     else{
-    //         console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
-    //         resultFlag = false;
-    //     }
-    //     if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags){
-    //         console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
-    //     }
-    //     else{
-    //         console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
-    //         resultFlag = false;
-    //     }
-    // }).catch((err) => {
-    //     console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: '+err.message);
-    //     resultFlag = false;
-    // });
-
-    // expect(resultFlag).assertTrue();
-
-    // done();
-
-    // })
-
-    // /* *
-    // * @tc.number    : SUB_AUDIO_RENDERER_Play_audio_071
-    // * @tc.name      : AudioRenderer-SET & GET AudioRendererInfo - Set30
-    // * @tc.desc      : AudioRenderer-SET & GET AudioRendererInfo - Set30
-    // * @tc.size      : MEDIUM
-    // * @tc.type      : Function
-    // * @tc.level     : Level 0
-    // */
-    // it('SUB_AUDIO_RENDERER_Play_audio_071', 0,async function (done) {
-    // var AudioStreamInfo = {
-    //     samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-    //     channels: audio.AudioChannel.CHANNEL_2,
-    //     sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-    //     encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    // }
-
-    // var AudioRendererInfo = {
-    //     content: audio.ContentType.CONTENT_TYPE_RINGTONE,
-    //     usage: audio.StreamUsage.STREAM_USAGE_VOICE_ASSISTANT,
-    //     rendererFlags: 1
-    // }
-
-    // var AudioRendererOptions = {
-    //     streamInfo: AudioStreamInfo,
-    //     rendererInfo: AudioRendererInfo
-    // }
-    // var resultFlag=true;
-
-    // var audioRen;
-    // await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
-    //     audioRen = data;
-    //     console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
-    // }).catch((err) => {
-    //     console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-    //     resultFlag = false;
-    // });
-
-    // await audioRen.getRendererInfo().then(async function (audioParamsGet) {
-    //     console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
-    //     console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
-    //     console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
-    //     console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
-    //     if (audioParamsGet.content == AudioRendererInfo.content){
-    //         console.info('AudioFrameworkRenderLog: Renderer content type: PASS: ' + audioParamsGet.content);
-    //     }
-    //     else{
-    //         console.info('AudioFrameworkRenderLog: Renderer content type: FAIL: ' + audioParamsGet.content);
-    //         resultFlag = false;
-    //     }
-    //     if (audioParamsGet.usage == AudioRendererInfo.usage){
-    //         console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.usage);
-    //     }
-    //     else{
-    //         console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.usage);
-    //         resultFlag = false;
-    //     }
-    //     if (audioParamsGet.rendererFlags == AudioRendererInfo.rendererFlags){
-    //         console.info('AudioFrameworkRenderLog: Renderer usage type: PASS: ' + audioParamsGet.rendererFlags);
-    //     }
-    //     else{
-    //         console.info('AudioFrameworkRenderLog: Renderer usage type: FAIL: ' + audioParamsGet.rendererFlags);
-    //         resultFlag = false;
-    //     }
-    // }).catch((err) => {
-    //     console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: '+err.message);
-    //     resultFlag = false;
-    // });
-
-    // expect(resultFlag).assertTrue();
-
-    // done();
-
-    // })
-
-    // /* *
-    // * @tc.number    : SUB_AUDIO_RENDERER_Play_audio_072
-    // * @tc.name      : AudioRenderer - STATE_NEW
-    // * @tc.desc      : AudioRenderer - STATE_NEW
-    // * @tc.size      : MEDIUM
-    // * @tc.type      : Function
-    // * @tc.level     : Level 0
-    // */
-    // it('SUB_AUDIO_RENDERER_Play_audio_072', 0,async function (done) {
-    //  var AudioStreamInfo = {
-    //      samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-    //      channels: audio.AudioChannel.CHANNEL_2,
-    //      sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-    //      encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-    //  }
-
-    //  var AudioRendererInfo = {
-    //      content: audio.ContentType.CONTENT_TYPE_RINGTONE,
-    //      usage: audio.StreamUsage.STREAM_USAGE_VOICE_ASSISTANT,
-    //      rendererFlags: 1
-    //  }
-
-    //  var AudioRendererOptions = {
-    //      streamInfo: AudioStreamInfo,
-    //      rendererInfo: AudioRendererInfo
-    //  }
-    //  var resultFlag = true;
-
-    //  var audioRen;
-    //  await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
-    //      audioRen = data;
-    //      console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
-    //  }).catch((err) => {
-    //      console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-    //      resultFlag = false;
-    //  });
-
-    //  if (audioRen.state==audio.AudioState.STATE_NEW) {
-    //      console.info('AudioFrameworkRenderLog: Audio State : STATE_NEW : PASS : ' + audioRen.state);
-    //  }
-    //  else {
-    //      console.info('AudioFrameworkRenderLog: Audio State : STATE_NEW : FAIL : ' + audioRen.state);
-    //      resultFlag = false;
-    //  }
-
-    //  await audioRen.release().then(async function () {
-    //      console.info('AudioFrameworkRenderLog: Renderer release : SUCCESS');
-    //  }).catch((err) => {
-    //      console.info('AudioFrameworkRenderLog: Renderer release :ERROR : '+err.message);
-    //  });
-
-    //  expect(resultFlag).assertTrue();
-
-    //  done();
-
-    // })
 
     /* *
     * @tc.number    : SUB_AUDIO_RENDERER_Play_audio_073
@@ -5854,52 +5020,52 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_073', 0,async function (done) {
-     var AudioStreamInfo = {
-         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-         channels: audio.AudioChannel.CHANNEL_2,
-         sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-         encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-     }
+    it('SUB_AUDIO_RENDERER_Play_audio_073', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+        }
 
-     var AudioRendererInfo = {
-         content: audio.ContentType.CONTENT_TYPE_RINGTONE,
-         usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-         rendererFlags: 1
-     }
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_RINGTONE,
+            usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
+            rendererFlags: 1
+        }
 
-     var AudioRendererOptions = {
-         streamInfo: AudioStreamInfo,
-         rendererInfo: AudioRendererInfo
-     }
-     var resultFlag = true;
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+        var resultFlag = true;
 
-     var audioRen;
-     await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
-         audioRen = data;
-         console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
-     }).catch((err) => {
-         console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-         resultFlag = false;
-     });
+        var audioRen;
+        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+            audioRen = data;
+            console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
+            resultFlag = false;
+        });
 
-     if (audioRen.state==audio.AudioState.STATE_PREPARED) {
-         console.info('AudioFrameworkRenderLog: Audio State : STATE_PREPARED : PASS : ' + audioRen.state);
-     }
-     else {
-         console.info('AudioFrameworkRenderLog: Audio State : STATE_PREPARED : FAIL : ' + audioRen.state);
-         resultFlag = false;
-     }
+        if (audioRen.state == audio.AudioState.STATE_PREPARED) {
+            console.info('AudioFrameworkRenderLog: Audio State : STATE_PREPARED : PASS : ' + audioRen.state);
+        }
+        else {
+            console.info('AudioFrameworkRenderLog: Audio State : STATE_PREPARED : FAIL : ' + audioRen.state);
+            resultFlag = false;
+        }
 
-     await audioRen.release().then(async function () {
-         console.info('AudioFrameworkRenderLog: Renderer release : SUCCESS');
-     }).catch((err) => {
-         console.info('AudioFrameworkRenderLog: Renderer release :ERROR : '+err.message);
-     });
+        await audioRen.release().then(async function () {
+            console.info('AudioFrameworkRenderLog: Renderer release : SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : ' + err.message);
+        });
 
-     expect(resultFlag).assertTrue();
+        expect(resultFlag).assertTrue();
 
-     done();
+        done();
 
     })
 
@@ -5911,67 +5077,67 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_074', 0,async function (done) {
-     var AudioStreamInfo = {
-         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-         channels: audio.AudioChannel.CHANNEL_2,
-         sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-         encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-     }
+    it('SUB_AUDIO_RENDERER_Play_audio_074', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+        }
 
-     var AudioRendererInfo = {
-         content: audio.ContentType.CONTENT_TYPE_RINGTONE,
-         usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-         rendererFlags: 1
-     }
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_RINGTONE,
+            usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
+            rendererFlags: 1
+        }
 
-     var AudioRendererOptions = {
-         streamInfo: AudioStreamInfo,
-         rendererInfo: AudioRendererInfo
-     }
-     var resultFlag = true;
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+        var resultFlag = true;
 
-     var audioRen;
-     await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
-         audioRen = data;
-         console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
-     }).catch((err) => {
-         console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-         resultFlag = false;
-     });
+        var audioRen;
+        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+            audioRen = data;
+            console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
+            resultFlag = false;
+        });
 
-     await audioRen.start().then(async function () {
-         console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
-     }).catch((err) => {
-         console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : '+err.message);
-         resultFlag=false;
-     });
+        await audioRen.start().then(async function () {
+            console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : ' + err.message);
+            resultFlag = false;
+        });
 
-     await sleep(500);
+        await sleep(500);
 
-     if (audioRen.state==audio.AudioState.STATE_RUNNING) {
-         console.info('AudioFrameworkRenderLog: Audio State : STATE_RUNNING : PASS : ' + audioRen.state);
-     }
-     else {
-         console.info('AudioFrameworkRenderLog: Audio State : STATE_RUNNING : FAIL : ' + audioRen.state);
-         resultFlag = false;
-     }
+        if (audioRen.state == audio.AudioState.STATE_RUNNING) {
+            console.info('AudioFrameworkRenderLog: Audio State : STATE_RUNNING : PASS : ' + audioRen.state);
+        }
+        else {
+            console.info('AudioFrameworkRenderLog: Audio State : STATE_RUNNING : FAIL : ' + audioRen.state);
+            resultFlag = false;
+        }
 
-     await audioRen.stop().then(async function () {
-         console.info('AudioFrameworkRenderLog: Renderer stopped : SUCCESS');
-     }).catch((err) => {
-         console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : '+err.message);
-     });
+        await audioRen.stop().then(async function () {
+            console.info('AudioFrameworkRenderLog: Renderer stopped : SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : ' + err.message);
+        });
 
-     await audioRen.release().then(async function () {
-         console.info('AudioFrameworkRenderLog: Renderer release : SUCCESS');
-     }).catch((err) => {
-         console.info('AudioFrameworkRenderLog: Renderer release :ERROR : '+err.message);
-     });
+        await audioRen.release().then(async function () {
+            console.info('AudioFrameworkRenderLog: Renderer release : SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : ' + err.message);
+        });
 
-     expect(resultFlag).assertTrue();
+        expect(resultFlag).assertTrue();
 
-     done();
+        done();
 
     })
 
@@ -5983,69 +5149,69 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_075', 0,async function (done) {
-     var AudioStreamInfo = {
-         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-         channels: audio.AudioChannel.CHANNEL_2,
-         sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-         encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-     }
+    it('SUB_AUDIO_RENDERER_Play_audio_075', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+        }
 
-     var AudioRendererInfo = {
-         content: audio.ContentType.CONTENT_TYPE_RINGTONE,
-         usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-         rendererFlags: 1
-     }
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_RINGTONE,
+            usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
+            rendererFlags: 1
+        }
 
-     var AudioRendererOptions = {
-         streamInfo: AudioStreamInfo,
-         rendererInfo: AudioRendererInfo
-     }
-     var resultFlag = true;
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+        var resultFlag = true;
 
-     var audioRen;
-     await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
-         audioRen = data;
-         console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
-     }).catch((err) => {
-         console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-         resultFlag = false;
-     });
+        var audioRen;
+        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+            audioRen = data;
+            console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
+            resultFlag = false;
+        });
 
-     await audioRen.start().then(async function () {
-         console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
-     }).catch((err) => {
-         console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : '+err.message);
-         resultFlag=false;
-     });
+        await audioRen.start().then(async function () {
+            console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : ' + err.message);
+            resultFlag = false;
+        });
 
-     await sleep(500);
+        await sleep(500);
 
-     await audioRen.stop().then(async function () {
-         console.info('AudioFrameworkRenderLog: Renderer stopped : SUCCESS');
-     }).catch((err) => {
-         console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : '+err.message);
-         resultFlag=false;
-     });
-     await sleep(500);
+        await audioRen.stop().then(async function () {
+            console.info('AudioFrameworkRenderLog: Renderer stopped : SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : ' + err.message);
+            resultFlag = false;
+        });
+        await sleep(500);
 
-     if (audioRen.state==audio.AudioState.STATE_STOPPED) {
-         console.info('AudioFrameworkRenderLog: Audio State : STATE_STOPPED : PASS : ' + audioRen.state);
-     }
-     else {
-         console.info('AudioFrameworkRenderLog: Audio State : STATE_STOPPED : FAIL : ' + audioRen.state);
-         resultFlag = false;
-     }
+        if (audioRen.state == audio.AudioState.STATE_STOPPED) {
+            console.info('AudioFrameworkRenderLog: Audio State : STATE_STOPPED : PASS : ' + audioRen.state);
+        }
+        else {
+            console.info('AudioFrameworkRenderLog: Audio State : STATE_STOPPED : FAIL : ' + audioRen.state);
+            resultFlag = false;
+        }
 
-     await audioRen.release().then(async function () {
-         console.info('AudioFrameworkRenderLog: Renderer release : SUCCESS');
-     }).catch((err) => {
-         console.info('AudioFrameworkRenderLog: Renderer release :ERROR : '+err.message);
-     });
+        await audioRen.release().then(async function () {
+            console.info('AudioFrameworkRenderLog: Renderer release : SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : ' + err.message);
+        });
 
-     expect(resultFlag).assertTrue();
+        expect(resultFlag).assertTrue();
 
-     done();
+        done();
 
     })
 
@@ -6057,70 +5223,70 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_076', 0,async function (done) {
-     var AudioStreamInfo = {
-         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-         channels: audio.AudioChannel.CHANNEL_2,
-         sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-         encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-     }
+    it('SUB_AUDIO_RENDERER_Play_audio_076', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+        }
 
-     var AudioRendererInfo = {
-         content: audio.ContentType.CONTENT_TYPE_RINGTONE,
-         usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-         rendererFlags: 1
-     }
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_RINGTONE,
+            usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
+            rendererFlags: 1
+        }
 
-     var AudioRendererOptions = {
-         streamInfo: AudioStreamInfo,
-         rendererInfo: AudioRendererInfo
-     }
-     var resultFlag = true;
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+        var resultFlag = true;
 
-     var audioRen;
-     await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
-         audioRen = data;
-         console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
-     }).catch((err) => {
-         console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-         resultFlag = false;
-     });
+        var audioRen;
+        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+            audioRen = data;
+            console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
+            resultFlag = false;
+        });
 
-     await audioRen.start().then(async function () {
-         console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
-     }).catch((err) => {
-         console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : '+err.message);
-         resultFlag=false;
-     });
+        await audioRen.start().then(async function () {
+            console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : ' + err.message);
+            resultFlag = false;
+        });
 
-     await sleep(500);
+        await sleep(500);
 
-     await audioRen.stop().then(async function () {
-         console.info('AudioFrameworkRenderLog: Renderer stopped : SUCCESS');
-     }).catch((err) => {
-         console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : '+err.message);
-         resultFlag=false;
-     });
-     await sleep(500);
+        await audioRen.stop().then(async function () {
+            console.info('AudioFrameworkRenderLog: Renderer stopped : SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : ' + err.message);
+            resultFlag = false;
+        });
+        await sleep(500);
 
-     await audioRen.release().then(async function () {
-         console.info('AudioFrameworkRenderLog: Renderer release : SUCCESS');
-     }).catch((err) => {
-         console.info('AudioFrameworkRenderLog: Renderer release :ERROR : '+err.message);
-     });
-     await sleep(500);
+        await audioRen.release().then(async function () {
+            console.info('AudioFrameworkRenderLog: Renderer release : SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : ' + err.message);
+        });
+        await sleep(500);
 
-     if (audioRen.state==audio.AudioState.STATE_RELEASED) {
-         console.info('AudioFrameworkRenderLog: Audio State : STATE_RELEASED : PASS : ' + audioRen.state);
-     }
-     else {
-         console.info('AudioFrameworkRenderLog: Audio State : STATE_RELEASED : FAIL : ' + audioRen.state);
-         resultFlag = false;
-     }
+        if (audioRen.state == audio.AudioState.STATE_RELEASED) {
+            console.info('AudioFrameworkRenderLog: Audio State : STATE_RELEASED : PASS : ' + audioRen.state);
+        }
+        else {
+            console.info('AudioFrameworkRenderLog: Audio State : STATE_RELEASED : FAIL : ' + audioRen.state);
+            resultFlag = false;
+        }
 
-     expect(resultFlag).assertTrue();
+        expect(resultFlag).assertTrue();
 
-     done();
+        done();
 
     })
 
@@ -6132,78 +5298,78 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_077', 0,async function (done) {
-     var AudioStreamInfo = {
-         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-         channels: audio.AudioChannel.CHANNEL_2,
-         sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-         encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-     }
+    it('SUB_AUDIO_RENDERER_Play_audio_077', 0, async function (done) {
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+        }
 
-     var AudioRendererInfo = {
-         content: audio.ContentType.CONTENT_TYPE_RINGTONE,
-         usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-         rendererFlags: 1
-     }
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_RINGTONE,
+            usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
+            rendererFlags: 1
+        }
 
-     var AudioRendererOptions = {
-         streamInfo: AudioStreamInfo,
-         rendererInfo: AudioRendererInfo
-     }
-     var resultFlag = true;
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+        var resultFlag = true;
 
-     var audioRen;
-     await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
-         audioRen = data;
-         console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
-     }).catch((err) => {
-         console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-         resultFlag = false;
-     });
+        var audioRen;
+        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+            audioRen = data;
+            console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
+            resultFlag = false;
+        });
 
-     await audioRen.start().then(async function () {
-         console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
-     }).catch((err) => {
-         console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : '+err.message);
-         resultFlag=false;
-     });
+        await audioRen.start().then(async function () {
+            console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : ' + err.message);
+            resultFlag = false;
+        });
 
-     await sleep(500);
+        await sleep(500);
 
-     await audioRen.pause().then(async function () {
-         console.info('AudioFrameworkRenderLog: renderInstant Pause :SUCCESS ');
-     }).catch((err) => {
-         console.info('AudioFrameworkRenderLog: renderInstant Pause :ERROR : '+err.message);
-         resultFlag=false;
-     });
+        await audioRen.pause().then(async function () {
+            console.info('AudioFrameworkRenderLog: renderInstant Pause :SUCCESS ');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: renderInstant Pause :ERROR : ' + err.message);
+            resultFlag = false;
+        });
 
-     await sleep(500);
+        await sleep(500);
 
-     if (audioRen.state==audio.AudioState.STATE_PAUSED) {
-         console.info('AudioFrameworkRenderLog: Audio State : STATE_PAUSED : PASS : ' + audioRen.state);
-     }
-     else {
-         console.info('AudioFrameworkRenderLog: Audio State : STATE_PAUSED : FAIL : ' + audioRen.state);
-         resultFlag = false;
-     }
+        if (audioRen.state == audio.AudioState.STATE_PAUSED) {
+            console.info('AudioFrameworkRenderLog: Audio State : STATE_PAUSED : PASS : ' + audioRen.state);
+        }
+        else {
+            console.info('AudioFrameworkRenderLog: Audio State : STATE_PAUSED : FAIL : ' + audioRen.state);
+            resultFlag = false;
+        }
 
-     await audioRen.stop().then(async function () {
-         console.info('AudioFrameworkRenderLog: Renderer stopped : SUCCESS');
-     }).catch((err) => {
-         console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : '+err.message);
-     });
-     await sleep(500);
+        await audioRen.stop().then(async function () {
+            console.info('AudioFrameworkRenderLog: Renderer stopped : SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : ' + err.message);
+        });
+        await sleep(500);
 
-     await audioRen.release().then(async function () {
-         console.info('AudioFrameworkRenderLog: Renderer release : SUCCESS');
-     }).catch((err) => {
-         console.info('AudioFrameworkRenderLog: Renderer release :ERROR : '+err.message);
-     });
-     await sleep(500)
+        await audioRen.release().then(async function () {
+            console.info('AudioFrameworkRenderLog: Renderer release : SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : ' + err.message);
+        });
+        await sleep(500)
 
-     expect(resultFlag).assertTrue();
+        expect(resultFlag).assertTrue();
 
-     done();
+        done();
 
     })
 
@@ -6215,159 +5381,159 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_078', 0,async function (done) {
+    it('SUB_AUDIO_RENDERER_Play_audio_078', 0, async function (done) {
 
-     var AudioStreamInfo = {
-         samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-         channels: audio.AudioChannel.CHANNEL_2,
-         sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
-         encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-     }
+        var AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+        }
 
-     var AudioRendererInfo = {
-         content: audio.ContentType.CONTENT_TYPE_RINGTONE,
-         usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-         rendererFlags: 1
-     }
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_RINGTONE,
+            usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
+            rendererFlags: 1
+        }
 
-     var AudioRendererOptions = {
-         streamInfo: AudioStreamInfo,
-         rendererInfo: AudioRendererInfo
-     }
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
 
-    // var fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
-     readpath='StarWars10s-2C-48000-4SW.wav';
-     await getFdRead(readpath, done);
-     var AudioScene = audio.AudioScene.AUDIO_SCENE_DEFAULT;
+        // var fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
+        readPath = 'StarWars10s-2C-48000-4SW.wav';
+        await getFdRead(readPath, done);
+        var AudioScene = audio.AudioScene.AUDIO_SCENE_DEFAULT;
 
-     var resultFlag = true;
-     console.info('AudioFrameworkRenderLog: Promise : Audio Playback Function');
+        var resultFlag = true;
+        console.info('AudioFrameworkRenderLog: Promise : Audio Playback Function');
 
-     var audioRen;
-     await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
-         audioRen = data;
-         console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
-     }).catch((err) => {
-        console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-         resultFlag=false;
-    });
+        var audioRen;
+        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+            audioRen = data;
+            console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
+            resultFlag = false;
+        });
 
-     console.info('AudioFrameworkRenderLog: AudioRenderer : Path : '+readpath);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : Path : ' + readPath);
 
-     console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-     await audioRen.getStreamInfo().then(async function (audioParamsGet) {
-         console.info('AudioFrameworkRenderLog: Renderer getStreamInfo:');
-         console.info('AudioFrameworkRenderLog: Renderer sampleFormat:' + audioParamsGet.sampleFormat);
-         console.info('AudioFrameworkRenderLog: Renderer samplingRate:' + audioParamsGet.samplingRate);
-         console.info('AudioFrameworkRenderLog: Renderer channels:' + audioParamsGet.channels);
-         console.info('AudioFrameworkRenderLog: Renderer encodingType:' + audioParamsGet.encodingType);
-     }).catch((err) => {
-        console.log('AudioFrameworkRenderLog: getStreamInfo :ERROR: '+err.message);
-        resultFlag = false;
-    });
+        await audioRen.getStreamInfo().then(async function (audioParamsGet) {
+            console.info('AudioFrameworkRenderLog: Renderer getStreamInfo:');
+            console.info('AudioFrameworkRenderLog: Renderer sampleFormat:' + audioParamsGet.sampleFormat);
+            console.info('AudioFrameworkRenderLog: Renderer samplingRate:' + audioParamsGet.samplingRate);
+            console.info('AudioFrameworkRenderLog: Renderer channels:' + audioParamsGet.channels);
+            console.info('AudioFrameworkRenderLog: Renderer encodingType:' + audioParamsGet.encodingType);
+        }).catch((err) => {
+            console.log('AudioFrameworkRenderLog: getStreamInfo :ERROR: ' + err.message);
+            resultFlag = false;
+        });
 
-     await audioRen.getRendererInfo().then(async function (audioParamsGet) {
-         console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
-         console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
-         console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
-         console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
-     }).catch((err) => {
-         console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: '+err.message);
-         resultFlag = false;
-     });
+        await audioRen.getRendererInfo().then(async function (audioParamsGet) {
+            console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
+            console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
+            console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
+            console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
+        }).catch((err) => {
+            console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: ' + err.message);
+            resultFlag = false;
+        });
 
-     await audioRen.start().then(async function () {
-         console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
-     }).catch((err) => {
-        console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : '+err.message);
-         resultFlag=false;
-    });
+        await audioRen.start().then(async function () {
+            console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : ' + err.message);
+            resultFlag = false;
+        });
 
 
-     console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-     var bufferSize = await audioRen.getBufferSize();
-     console.info('AudioFrameworkRenderLog: buffer size: ' + bufferSize);
+        var bufferSize = await audioRen.getBufferSize();
+        console.info('AudioFrameworkRenderLog: buffer size: ' + bufferSize);
 
-     let ss = fileio.fdopenStreamSync(fdRead, 'r');
-     console.info('AudioFrameworkRenderLog:case 2:AudioFrameworkRenderLog: File Path: ' + ss);
-     let discardHeader = new ArrayBuffer(44);
-     ss.readSync(discardHeader);
-     let totalSize = fileio.fstatSync(fdRead).size;
-     console.info('AudioFrameworkRenderLog:case 3 : AudioFrameworkRenderLog: File totalSize size: ' +totalSize);
-     totalSize = totalSize-44;
-     console.info('AudioFrameworkRenderLog: File size : Removing header: ' +totalSize);
-     let rlen = 0;
-     while (rlen < totalSize/4) {
-         let buf = new ArrayBuffer(bufferSize);
-         rlen += ss.readSync(buf);
-         console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' +rlen);
-         await audioRen.write(buf);
-         if (rlen > (totalSize/8)){
-             await audioManager.getAudioScene().then(async function (data) {
-                 console.info('AudioFrameworkAudioScene: getAudioScene : Value : '+data);
-             }).catch((err) => {
-                 console.info('AudioFrameworkAudioScene: getAudioScene : ERROR : '+err.message);
-                 resultFlag=false;
-             });
-         }
-         if (rlen > (totalSize/8)){
-             await audioRen.setRenderRate(audio.AudioRendererRate.RENDER_RATE_DOUBLE).then(async function () {
-                 console.info('AudioFrameworkRenderLog: setRenderRate : RENDER_RATE_DOUBLE : SUCCESS');
-             }).catch((err) => {
-                 console.info('AudioFrameworkAudioScene: setRenderRate : RENDER_RATE_DOUBLE : ERROR : '+err.message);
-                 resultFlag=false;
-             });
-         }
-     }
+        let ss = fileio.fdopenStreamSync(fdRead, 'r');
+        console.info('AudioFrameworkRenderLog:case 2:AudioFrameworkRenderLog: File Path: ' + ss);
+        let discardHeader = new ArrayBuffer(44);
+        ss.readSync(discardHeader);
+        let totalSize = fileio.fstatSync(fdRead).size;
+        console.info('AudioFrameworkRenderLog:case 3 : AudioFrameworkRenderLog: File totalSize size: ' + totalSize);
+        totalSize = totalSize - 44;
+        console.info('AudioFrameworkRenderLog: File size : Removing header: ' + totalSize);
+        let rlen = 0;
+        while (rlen < totalSize / 4) {
+            let buf = new ArrayBuffer(bufferSize);
+            rlen += ss.readSync(buf);
+            console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' + rlen);
+            await audioRen.write(buf);
+            if (rlen > (totalSize / 8)) {
+                await audioManager.getAudioScene().then(async function (data) {
+                    console.info('AudioFrameworkAudioScene: getAudioScene : Value : ' + data);
+                }).catch((err) => {
+                    console.info('AudioFrameworkAudioScene: getAudioScene : ERROR : ' + err.message);
+                    resultFlag = false;
+                });
+            }
+            if (rlen > (totalSize / 8)) {
+                await audioRen.setRenderRate(audio.AudioRendererRate.RENDER_RATE_DOUBLE).then(async function () {
+                    console.info('AudioFrameworkRenderLog: setRenderRate : RENDER_RATE_DOUBLE : SUCCESS');
+                }).catch((err) => {
+                    console.info('AudioFrameworkAudioScene: setRenderRate : RENDER_RATE_DOUBLE : ERROR : ' + err.message);
+                    resultFlag = false;
+                });
+            }
+        }
 
-     console.info('AudioFrameworkRenderLog: Renderer after read');
-     await audioRen.getRenderRate().then(async function (data) {
-         if (data == audio.AudioRendererRate.RENDER_RATE_DOUBLE){
-             console.info('AudioFrameworkRenderLog: getRenderRate : RENDER_RATE_DOUBLE : PASS : '+data);
-         }
-         else{
-             console.info('AudioFrameworkRenderLog: getRenderRate : RENDER_RATE_DOUBLE : FAIL : '+data);
-             resultFlag=false;
-         }
-     }).catch((err) => {
-         console.info('AudioFrameworkAudioScene: getRenderRate : RENDER_RATE_DOUBLE : ERROR : '+err.message);
-         resultFlag=false;
-     });
+        console.info('AudioFrameworkRenderLog: Renderer after read');
+        await audioRen.getRenderRate().then(async function (data) {
+            if (data == audio.AudioRendererRate.RENDER_RATE_DOUBLE) {
+                console.info('AudioFrameworkRenderLog: getRenderRate : RENDER_RATE_DOUBLE : PASS : ' + data);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: getRenderRate : RENDER_RATE_DOUBLE : FAIL : ' + data);
+                resultFlag = false;
+            }
+        }).catch((err) => {
+            console.info('AudioFrameworkAudioScene: getRenderRate : RENDER_RATE_DOUBLE : ERROR : ' + err.message);
+            resultFlag = false;
+        });
 
-     await audioRen.drain().then(async function () {
-         console.info('AudioFrameworkRenderLog: Renderer drained : SUCCESS');
-     }).catch((err) => {
-        console.error('AudioFrameworkRenderLog: Renderer drain: ERROR : '+err.message);
-    });
+        await audioRen.drain().then(async function () {
+            console.info('AudioFrameworkRenderLog: Renderer drained : SUCCESS');
+        }).catch((err) => {
+            console.error('AudioFrameworkRenderLog: Renderer drain: ERROR : ' + err.message);
+        });
 
-     console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-     await audioRen.stop().then(async function () {
-         console.info('AudioFrameworkRenderLog: Renderer stopped : SUCCESS');
-     }).catch((err) => {
-         console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : '+err.message);
-     });
+        await audioRen.stop().then(async function () {
+            console.info('AudioFrameworkRenderLog: Renderer stopped : SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : ' + err.message);
+        });
 
-     console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-     await audioRen.release().then(async function () {
-         console.info('AudioFrameworkRenderLog: Renderer release : SUCCESS');
-     }).catch((err) => {
-         console.info('AudioFrameworkRenderLog: Renderer release :ERROR : '+err.message);
-     });
+        await audioRen.release().then(async function () {
+            console.info('AudioFrameworkRenderLog: Renderer release : SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : ' + err.message);
+        });
 
-     console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-     console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
 
-     await sleep(500)
+        await sleep(500)
 
-     expect(resultFlag).assertTrue();
+        expect(resultFlag).assertTrue();
 
-     await closeFileDescriptor(readpath);
-     done();
+        await closeFileDescriptor(readPath);
+        done();
 
     })
 
@@ -6379,7 +5545,7 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_079', 0,async function (done) {
+    it('SUB_AUDIO_RENDERER_Play_audio_079', 0, async function (done) {
 
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_24000,
@@ -6388,149 +5554,149 @@ describe('audioRenderer', function () {
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-     var AudioRendererInfo = {
-         content: audio.ContentType.CONTENT_TYPE_RINGTONE,
-         usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-         rendererFlags: 1
-     }
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_RINGTONE,
+            usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
+            rendererFlags: 1
+        }
 
-     var AudioRendererOptions = {
-         streamInfo: AudioStreamInfo,
-         rendererInfo: AudioRendererInfo
-     }
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
 
-     //var fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
-     readpath='StarWars10s-2C-24000-3SW.wav'
-     await getFdRead(readpath,done);
-     var AudioScene = audio.AudioScene.AUDIO_SCENE_DEFAULT;
+        //var fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
+        readPath = 'StarWars10s-2C-24000-3SW.wav'
+        await getFdRead(readPath, done);
+        var AudioScene = audio.AudioScene.AUDIO_SCENE_DEFAULT;
 
-     var resultFlag = true;
-     console.info('AudioFrameworkRenderLog: Promise : Audio Playback Function');
+        var resultFlag = true;
+        console.info('AudioFrameworkRenderLog: Promise : Audio Playback Function');
 
-     var audioRen;
-     await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
-         audioRen = data;
-         console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
-     }).catch((err) => {
-        console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-         resultFlag=false;
-    });
+        var audioRen;
+        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+            audioRen = data;
+            console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
+            resultFlag = false;
+        });
 
-     console.info('AudioFrameworkRenderLog: AudioRenderer : Path : '+readpath);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : Path : ' + readPath);
 
-     console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-     await audioRen.getStreamInfo().then(async function (audioParamsGet) {
-         console.info('AudioFrameworkRenderLog: Renderer getStreamInfo:');
-         console.info('AudioFrameworkRenderLog: Renderer sampleFormat:' + audioParamsGet.sampleFormat);
-         console.info('AudioFrameworkRenderLog: Renderer samplingRate:' + audioParamsGet.samplingRate);
-         console.info('AudioFrameworkRenderLog: Renderer channels:' + audioParamsGet.channels);
-         console.info('AudioFrameworkRenderLog: Renderer encodingType:' + audioParamsGet.encodingType);
-     }).catch((err) => {
-        console.log('AudioFrameworkRenderLog: getStreamInfo :ERROR: '+err.message);
-        resultFlag = false;
-    });
+        await audioRen.getStreamInfo().then(async function (audioParamsGet) {
+            console.info('AudioFrameworkRenderLog: Renderer getStreamInfo:');
+            console.info('AudioFrameworkRenderLog: Renderer sampleFormat:' + audioParamsGet.sampleFormat);
+            console.info('AudioFrameworkRenderLog: Renderer samplingRate:' + audioParamsGet.samplingRate);
+            console.info('AudioFrameworkRenderLog: Renderer channels:' + audioParamsGet.channels);
+            console.info('AudioFrameworkRenderLog: Renderer encodingType:' + audioParamsGet.encodingType);
+        }).catch((err) => {
+            console.log('AudioFrameworkRenderLog: getStreamInfo :ERROR: ' + err.message);
+            resultFlag = false;
+        });
 
-     await audioRen.getRendererInfo().then(async function (audioParamsGet) {
-         console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
-         console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
-         console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
-         console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
-     }).catch((err) => {
-         console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: '+err.message);
-         resultFlag = false;
-     });
+        await audioRen.getRendererInfo().then(async function (audioParamsGet) {
+            console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
+            console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
+            console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
+            console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
+        }).catch((err) => {
+            console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: ' + err.message);
+            resultFlag = false;
+        });
 
-     await audioRen.start().then(async function () {
-         console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
-     }).catch((err) => {
-        console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : '+err.message);
-         resultFlag=false;
-    });
+        await audioRen.start().then(async function () {
+            console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : ' + err.message);
+            resultFlag = false;
+        });
 
 
-     console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-     var bufferSize = await audioRen.getBufferSize();
-     console.info('AudioFrameworkRenderLog: buffer size: ' + bufferSize);
+        var bufferSize = await audioRen.getBufferSize();
+        console.info('AudioFrameworkRenderLog: buffer size: ' + bufferSize);
 
-     let ss = fileio.fdopenStreamSync(fdRead, 'r');
-     console.info('AudioFrameworkRenderLog:case 2:AudioFrameworkRenderLog: File Path: ' + ss);
-     let discardHeader = new ArrayBuffer(44);
-     ss.readSync(discardHeader);
-     let totalSize = fileio.fstatSync(fdRead).size;
-     console.info('AudioFrameworkRenderLog:case 3 : AudioFrameworkRenderLog: File totalSize size: ' +totalSize);
-     totalSize = totalSize-44;
-     console.info('AudioFrameworkRenderLog: File size : Removing header: ' +totalSize);
-     let rlen = 0;
-     while (rlen < totalSize/4) {
-         let buf = new ArrayBuffer(bufferSize);
-         rlen += ss.readSync(buf);
-         console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' + rlen);
-         await audioRen.write(buf);
-         if (rlen > (totalSize / 8)) {
-             await audioManager.getAudioScene().then(async function (data) {
-                 console.info('AudioFrameworkAudioScene: getAudioScene : Value : ' + data);
-             }).catch((err) => {
-                 console.info('AudioFrameworkAudioScene: getAudioScene : ERROR : ' + err.message);
-                 resultFlag = false;
-             });
-         }
-         if (rlen > (totalSize/8)){
-             await audioRen.setRenderRate(audio.AudioRendererRate.RENDER_RATE_HALF).then(async function () {
-                 console.info('AudioFrameworkRenderLog: setRenderRate : RENDER_RATE_HALF : SUCCESS');
-             }).catch((err) => {
-                 console.info('AudioFrameworkAudioScene: setRenderRate : RENDER_RATE_HALF : ERROR : '+err.message);
-                 resultFlag=false;
-             });
-         }
-     }
-     console.info('AudioFrameworkRenderLog: Renderer after read');
-     await audioRen.getRenderRate().then(async function (data) {
-         if (data == audio.AudioRendererRate.RENDER_RATE_HALF){
-             console.info('AudioFrameworkRenderLog: getRenderRate : RENDER_RATE_HALF : PASS : '+data);
-         }
-         else{
-             console.info('AudioFrameworkRenderLog: getRenderRate : RENDER_RATE_HALF : FAIL : '+data);
-             resultFlag=false;
-         }
-     }).catch((err) => {
-         console.info('AudioFrameworkAudioScene: getRenderRate : RENDER_RATE_HALF : ERROR : '+err.message);
-         resultFlag=false;
-     });
+        let ss = fileio.fdopenStreamSync(fdRead, 'r');
+        console.info('AudioFrameworkRenderLog:case 2:AudioFrameworkRenderLog: File Path: ' + ss);
+        let discardHeader = new ArrayBuffer(44);
+        ss.readSync(discardHeader);
+        let totalSize = fileio.fstatSync(fdRead).size;
+        console.info('AudioFrameworkRenderLog:case 3 : AudioFrameworkRenderLog: File totalSize size: ' + totalSize);
+        totalSize = totalSize - 44;
+        console.info('AudioFrameworkRenderLog: File size : Removing header: ' + totalSize);
+        let rlen = 0;
+        while (rlen < totalSize / 4) {
+            let buf = new ArrayBuffer(bufferSize);
+            rlen += ss.readSync(buf);
+            console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' + rlen);
+            await audioRen.write(buf);
+            if (rlen > (totalSize / 8)) {
+                await audioManager.getAudioScene().then(async function (data) {
+                    console.info('AudioFrameworkAudioScene: getAudioScene : Value : ' + data);
+                }).catch((err) => {
+                    console.info('AudioFrameworkAudioScene: getAudioScene : ERROR : ' + err.message);
+                    resultFlag = false;
+                });
+            }
+            if (rlen > (totalSize / 8)) {
+                await audioRen.setRenderRate(audio.AudioRendererRate.RENDER_RATE_HALF).then(async function () {
+                    console.info('AudioFrameworkRenderLog: setRenderRate : RENDER_RATE_HALF : SUCCESS');
+                }).catch((err) => {
+                    console.info('AudioFrameworkAudioScene: setRenderRate : RENDER_RATE_HALF : ERROR : ' + err.message);
+                    resultFlag = false;
+                });
+            }
+        }
+        console.info('AudioFrameworkRenderLog: Renderer after read');
+        await audioRen.getRenderRate().then(async function (data) {
+            if (data == audio.AudioRendererRate.RENDER_RATE_HALF) {
+                console.info('AudioFrameworkRenderLog: getRenderRate : RENDER_RATE_HALF : PASS : ' + data);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: getRenderRate : RENDER_RATE_HALF : FAIL : ' + data);
+                resultFlag = false;
+            }
+        }).catch((err) => {
+            console.info('AudioFrameworkAudioScene: getRenderRate : RENDER_RATE_HALF : ERROR : ' + err.message);
+            resultFlag = false;
+        });
 
-     await audioRen.drain().then(async function () {
-         console.info('AudioFrameworkRenderLog: Renderer drained : SUCCESS');
-     }).catch((err) => {
-        console.error('AudioFrameworkRenderLog: Renderer drain: ERROR : '+err.message);
-    });
+        await audioRen.drain().then(async function () {
+            console.info('AudioFrameworkRenderLog: Renderer drained : SUCCESS');
+        }).catch((err) => {
+            console.error('AudioFrameworkRenderLog: Renderer drain: ERROR : ' + err.message);
+        });
 
-     console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-     await audioRen.stop().then(async function () {
-         console.info('AudioFrameworkRenderLog: Renderer stopped : SUCCESS');
-     }).catch((err) => {
-         console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : '+err.message);
-     });
+        await audioRen.stop().then(async function () {
+            console.info('AudioFrameworkRenderLog: Renderer stopped : SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : ' + err.message);
+        });
 
-     console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-     await audioRen.release().then(async function () {
-         console.info('AudioFrameworkRenderLog: Renderer release : SUCCESS');
-     }).catch((err) => {
-         console.info('AudioFrameworkRenderLog: Renderer release :ERROR : '+err.message);
-     });
+        await audioRen.release().then(async function () {
+            console.info('AudioFrameworkRenderLog: Renderer release : SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : ' + err.message);
+        });
 
-     console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-     console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
 
-     await sleep(500)
+        await sleep(500)
 
-     expect(resultFlag).assertTrue();
+        expect(resultFlag).assertTrue();
 
-     await closeFileDescriptor(readpath);
-     done();
+        await closeFileDescriptor(readPath);
+        done();
 
     })
 
@@ -6542,7 +5708,7 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_080', 0,async function (done) {
+    it('SUB_AUDIO_RENDERER_Play_audio_080', 0, async function (done) {
 
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -6551,142 +5717,142 @@ describe('audioRenderer', function () {
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-     var AudioRendererInfo = {
-         content: audio.ContentType.CONTENT_TYPE_RINGTONE,
-         usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-         rendererFlags: 1
-     }
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_RINGTONE,
+            usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
+            rendererFlags: 1
+        }
 
-     var AudioRendererOptions = {
-         streamInfo: AudioStreamInfo,
-         rendererInfo: AudioRendererInfo
-     }
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
 
-     //var fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
-     readpath='StarWars10s-1C-44100-2SW.wav'
-     await getFdRead(readpath,done);
-     var AudioScene = audio.AudioScene.AUDIO_SCENE_DEFAULT;
+        //var fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
+        readPath = 'StarWars10s-1C-44100-2SW.wav'
+        await getFdRead(readPath, done);
+        var AudioScene = audio.AudioScene.AUDIO_SCENE_DEFAULT;
 
-     var resultFlag = true;
-     console.info('AudioFrameworkRenderLog: Promise : Audio Playback Function');
+        var resultFlag = true;
+        console.info('AudioFrameworkRenderLog: Promise : Audio Playback Function');
 
-     var audioRen;
-     await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
-         audioRen = data;
-         console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
-     }).catch((err) => {
-        console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-         resultFlag=false;
-    });
+        var audioRen;
+        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+            audioRen = data;
+            console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
+            resultFlag = false;
+        });
 
-     console.info('AudioFrameworkRenderLog: AudioRenderer : Path : '+readpath);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : Path : ' + readPath);
 
-     await audioRen.getRendererInfo().then(async function (audioParamsGet) {
-         console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
-         console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
-         console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
-         console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
-     }).catch((err) => {
-         console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: '+err.message);
-         resultFlag = false;
-     });
+        await audioRen.getRendererInfo().then(async function (audioParamsGet) {
+            console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
+            console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
+            console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
+            console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
+        }).catch((err) => {
+            console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: ' + err.message);
+            resultFlag = false;
+        });
 
-     await audioRen.start().then(async function () {
-         console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
-     }).catch((err) => {
-        console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : '+err.message);
-         resultFlag=false;
-    });
+        await audioRen.start().then(async function () {
+            console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : ' + err.message);
+            resultFlag = false;
+        });
 
 
-     console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-     var bufferSize = await audioRen.getBufferSize();
-     console.info('AudioFrameworkRenderLog: buffer size: ' + bufferSize);
+        var bufferSize = await audioRen.getBufferSize();
+        console.info('AudioFrameworkRenderLog: buffer size: ' + bufferSize);
 
-     let ss = fileio.fdopenStreamSync(fdRead, 'r');
-     console.info('AudioFrameworkRenderLog:case 2:AudioFrameworkRenderLog: File Path: ' + ss);
-     let discardHeader = new ArrayBuffer(44);
-     ss.readSync(discardHeader);
-     let totalSize = fileio.fstatSync(fdRead).size;
-     console.info('AudioFrameworkRenderLog:case 3 : AudioFrameworkRenderLog: File totalSize size: ' +totalSize);
-     totalSize = totalSize-44;
-     console.info('AudioFrameworkRenderLog: File size : Removing header: ' +totalSize);
-     let rlen = 0;
-     while (rlen < totalSize/4) {
-         let buf = new ArrayBuffer(bufferSize);
-         rlen += ss.readSync(buf);
-         console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' + rlen);
-         await audioRen.write(buf);
-         if (rlen > (totalSize / 8)) {
-             await audioManager.getAudioScene().then(async function (data) {
-                 console.info('AudioFrameworkAudioScene: getAudioScene : Value : ' + data);
-             }).catch((err) => {
-                 console.info('AudioFrameworkAudioScene: getAudioScene : ERROR : ' + err.message);
-                 resultFlag = false;
-             });
-         }
-         if (rlen > (totalSize/8)){
-             await audioRen.setRenderRate(audio.AudioRendererRate.RENDER_RATE_DOUBLE).then(async function () {
-                 console.info('AudioFrameworkRenderLog: setRenderRate : RENDER_RATE_DOUBLE : SUCCESS');
-             }).catch((err) => {
-                 console.info('AudioFrameworkAudioScene: setRenderRate : RENDER_RATE_DOUBLE : ERROR : '+err.message);
-                 resultFlag=false;
-             });
-         }
-     }
-     await audioRen.setRenderRate(audio.AudioRendererRate.RENDER_RATE_NORMAL).then(async function () {
-         console.info('AudioFrameworkRenderLog: setRenderRate : RENDER_RATE_NORMAL : SUCCESS');
-     }).catch((err) => {
-         console.info('AudioFrameworkAudioScene: setRenderRate : RENDER_RATE_NORMAL : ERROR : '+err.message);
-         resultFlag=false;
-     });
+        let ss = fileio.fdopenStreamSync(fdRead, 'r');
+        console.info('AudioFrameworkRenderLog:case 2:AudioFrameworkRenderLog: File Path: ' + ss);
+        let discardHeader = new ArrayBuffer(44);
+        ss.readSync(discardHeader);
+        let totalSize = fileio.fstatSync(fdRead).size;
+        console.info('AudioFrameworkRenderLog:case 3 : AudioFrameworkRenderLog: File totalSize size: ' + totalSize);
+        totalSize = totalSize - 44;
+        console.info('AudioFrameworkRenderLog: File size : Removing header: ' + totalSize);
+        let rlen = 0;
+        while (rlen < totalSize / 4) {
+            let buf = new ArrayBuffer(bufferSize);
+            rlen += ss.readSync(buf);
+            console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' + rlen);
+            await audioRen.write(buf);
+            if (rlen > (totalSize / 8)) {
+                await audioManager.getAudioScene().then(async function (data) {
+                    console.info('AudioFrameworkAudioScene: getAudioScene : Value : ' + data);
+                }).catch((err) => {
+                    console.info('AudioFrameworkAudioScene: getAudioScene : ERROR : ' + err.message);
+                    resultFlag = false;
+                });
+            }
+            if (rlen > (totalSize / 8)) {
+                await audioRen.setRenderRate(audio.AudioRendererRate.RENDER_RATE_DOUBLE).then(async function () {
+                    console.info('AudioFrameworkRenderLog: setRenderRate : RENDER_RATE_DOUBLE : SUCCESS');
+                }).catch((err) => {
+                    console.info('AudioFrameworkAudioScene: setRenderRate : RENDER_RATE_DOUBLE : ERROR : ' + err.message);
+                    resultFlag = false;
+                });
+            }
+        }
+        await audioRen.setRenderRate(audio.AudioRendererRate.RENDER_RATE_NORMAL).then(async function () {
+            console.info('AudioFrameworkRenderLog: setRenderRate : RENDER_RATE_NORMAL : SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkAudioScene: setRenderRate : RENDER_RATE_NORMAL : ERROR : ' + err.message);
+            resultFlag = false;
+        });
 
-     console.info('AudioFrameworkRenderLog: Renderer after read');
-     await audioRen.getRenderRate().then(async function (data) {
-         if (data == audio.AudioRendererRate.RENDER_RATE_NORMAL){
-             console.info('AudioFrameworkRenderLog: getRenderRate : RENDER_RATE_NORMAL : PASS : '+data);
-         }
-         else{
-             console.info('AudioFrameworkRenderLog: getRenderRate : RENDER_RATE_NORMAL : FAIL : '+data);
-             resultFlag=false;
-         }
-     }).catch((err) => {
-         console.info('AudioFrameworkAudioScene: getRenderRate : RENDER_RATE_NORMAL : ERROR : '+err.message);
-         resultFlag=false;
-     });
+        console.info('AudioFrameworkRenderLog: Renderer after read');
+        await audioRen.getRenderRate().then(async function (data) {
+            if (data == audio.AudioRendererRate.RENDER_RATE_NORMAL) {
+                console.info('AudioFrameworkRenderLog: getRenderRate : RENDER_RATE_NORMAL : PASS : ' + data);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: getRenderRate : RENDER_RATE_NORMAL : FAIL : ' + data);
+                resultFlag = false;
+            }
+        }).catch((err) => {
+            console.info('AudioFrameworkAudioScene: getRenderRate : RENDER_RATE_NORMAL : ERROR : ' + err.message);
+            resultFlag = false;
+        });
 
-     await audioRen.drain().then(async function () {
-         console.info('AudioFrameworkRenderLog: Renderer drained : SUCCESS');
-     }).catch((err) => {
-        console.error('AudioFrameworkRenderLog: Renderer drain: ERROR : '+err.message);
-    });
+        await audioRen.drain().then(async function () {
+            console.info('AudioFrameworkRenderLog: Renderer drained : SUCCESS');
+        }).catch((err) => {
+            console.error('AudioFrameworkRenderLog: Renderer drain: ERROR : ' + err.message);
+        });
 
-     console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-     await audioRen.stop().then(async function () {
-         console.info('AudioFrameworkRenderLog: Renderer stopped : SUCCESS');
-     }).catch((err) => {
-         console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : '+err.message);
-     });
+        await audioRen.stop().then(async function () {
+            console.info('AudioFrameworkRenderLog: Renderer stopped : SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : ' + err.message);
+        });
 
-     console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-     await audioRen.release().then(async function () {
-         console.info('AudioFrameworkRenderLog: Renderer release : SUCCESS');
-     }).catch((err) => {
-         console.info('AudioFrameworkRenderLog: Renderer release :ERROR : '+err.message);
-     });
+        await audioRen.release().then(async function () {
+            console.info('AudioFrameworkRenderLog: Renderer release : SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : ' + err.message);
+        });
 
-     console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-     console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
 
-     await sleep(500)
+        await sleep(500)
 
-     expect(resultFlag).assertTrue();
-     await closeFileDescriptor(readpath);
-     done();
+        expect(resultFlag).assertTrue();
+        await closeFileDescriptor(readPath);
+        done();
 
     })
 
@@ -6698,7 +5864,7 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_081', 0,async function (done) {
+    it('SUB_AUDIO_RENDERER_Play_audio_081', 0, async function (done) {
 
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_96000,
@@ -6707,142 +5873,142 @@ describe('audioRenderer', function () {
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-     var AudioRendererInfo = {
-         content: audio.ContentType.CONTENT_TYPE_RINGTONE,
-         usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-         rendererFlags: 1
-     }
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_RINGTONE,
+            usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
+            rendererFlags: 1
+        }
 
-     var AudioRendererOptions = {
-         streamInfo: AudioStreamInfo,
-         rendererInfo: AudioRendererInfo
-     }
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
 
-    // var fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
-     readpath='StarWars10s-1C-96000-4SW.wav'
-     await getFdRead(readpath, done);
-     var AudioScene = audio.AudioScene.AUDIO_SCENE_DEFAULT;
+        // var fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
+        readPath = 'StarWars10s-1C-96000-4SW.wav'
+        await getFdRead(readPath, done);
+        var AudioScene = audio.AudioScene.AUDIO_SCENE_DEFAULT;
 
-     var resultFlag = true;
-     console.info('AudioFrameworkRenderLog: Promise : Audio Playback Function');
+        var resultFlag = true;
+        console.info('AudioFrameworkRenderLog: Promise : Audio Playback Function');
 
-     var audioRen;
-     await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
-         audioRen = data;
-         console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
-     }).catch((err) => {
-        console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-         resultFlag=false;
-    });
+        var audioRen;
+        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+            audioRen = data;
+            console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
+            resultFlag = false;
+        });
 
-     console.info('AudioFrameworkRenderLog: AudioRenderer : Path : '+readpath);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : Path : ' + readPath);
 
-     console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
-
-
-     await audioRen.getStreamInfo().then(async function (audioParamsGet) {
-         console.info('AudioFrameworkRenderLog: Renderer getStreamInfo:');
-         console.info('AudioFrameworkRenderLog: Renderer sampleFormat:' + audioParamsGet.sampleFormat);
-         console.info('AudioFrameworkRenderLog: Renderer samplingRate:' + audioParamsGet.samplingRate);
-         console.info('AudioFrameworkRenderLog: Renderer channels:' + audioParamsGet.channels);
-         console.info('AudioFrameworkRenderLog: Renderer encodingType:' + audioParamsGet.encodingType);
-     }).catch((err) => {
-        console.log('AudioFrameworkRenderLog: getStreamInfo :ERROR: '+err.message);
-        resultFlag = false;
-    });
-
-     await audioRen.getRendererInfo().then(async function (audioParamsGet) {
-         console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
-         console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
-         console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
-         console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
-     }).catch((err) => {
-         console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: '+err.message);
-         resultFlag = false;
-     });
-
-     await audioRen.start().then(async function () {
-         console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
-     }).catch((err) => {
-        console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : '+err.message);
-         resultFlag=false;
-    });
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
 
-     console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        await audioRen.getStreamInfo().then(async function (audioParamsGet) {
+            console.info('AudioFrameworkRenderLog: Renderer getStreamInfo:');
+            console.info('AudioFrameworkRenderLog: Renderer sampleFormat:' + audioParamsGet.sampleFormat);
+            console.info('AudioFrameworkRenderLog: Renderer samplingRate:' + audioParamsGet.samplingRate);
+            console.info('AudioFrameworkRenderLog: Renderer channels:' + audioParamsGet.channels);
+            console.info('AudioFrameworkRenderLog: Renderer encodingType:' + audioParamsGet.encodingType);
+        }).catch((err) => {
+            console.log('AudioFrameworkRenderLog: getStreamInfo :ERROR: ' + err.message);
+            resultFlag = false;
+        });
 
-     var bufferSize = await audioRen.getBufferSize();
-     console.info('AudioFrameworkRenderLog: buffer size: ' + bufferSize);
+        await audioRen.getRendererInfo().then(async function (audioParamsGet) {
+            console.info('AudioFrameworkRenderLog: Renderer RendererInfo:');
+            console.info('AudioFrameworkRenderLog: Renderer content type:' + audioParamsGet.content);
+            console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
+            console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
+        }).catch((err) => {
+            console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: ' + err.message);
+            resultFlag = false;
+        });
 
-     let ss = fileio.fdopenStreamSync(fdRead, 'r');
-     console.info('AudioFrameworkRenderLog:case 2:AudioFrameworkRenderLog: File Path: ' + ss);
-     let discardHeader = new ArrayBuffer(44);
-     ss.readSync(discardHeader);
-     let totalSize = fileio.fstatSync(fdRead).size;
-     console.info('AudioFrameworkRenderLog:case 3 : AudioFrameworkRenderLog: File totalSize size: ' +totalSize);
-     totalSize = totalSize-44;
-     console.info('AudioFrameworkRenderLog: File size : Removing header: ' +totalSize);
-     let rlen = 0;
-     while (rlen < totalSize/4) {
-         let buf = new ArrayBuffer(bufferSize);
-         rlen += ss.readSync(buf);
-         console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' +rlen);
-         await audioRen.write(buf);
-         if (rlen > (totalSize/2)){
-             await audioManager.getAudioScene().then(async function (data) {
-                 console.info('AudioFrameworkAudioScene: getAudioScene : Value : '+data);
-             }).catch((err) => {
-                 console.info('AudioFrameworkAudioScene: getAudioScene : ERROR : '+err.message);
-                 resultFlag=false;
-             });
-         }
-     }
-     console.info('AudioFrameworkRenderLog: Renderer after read');
-     await audioRen.getRenderRate().then(async function (data) {
-         if (data == audio.AudioRendererRate.RENDER_RATE_NORMAL){
-             console.info('AudioFrameworkRenderLog: getRenderRate : RENDER_RATE_NORMAL : PASS : '+data);
-         }
-         else{
-             console.info('AudioFrameworkRenderLog: getRenderRate : RENDER_RATE_NORMAL : FAIL : '+data);
-             resultFlag=false;
-         }
-     }).catch((err) => {
-         console.info('AudioFrameworkAudioScene: getRenderRate : RENDER_RATE_NORMAL : ERROR : '+err.message);
-         resultFlag=false;
-     });
+        await audioRen.start().then(async function () {
+            console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : ' + err.message);
+            resultFlag = false;
+        });
 
-     await audioRen.drain().then(async function () {
-         console.info('AudioFrameworkRenderLog: Renderer drained : SUCCESS');
-     }).catch((err) => {
-        console.error('AudioFrameworkRenderLog: Renderer drain: ERROR : '+err.message);
-    });
 
-     console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-     await audioRen.stop().then(async function () {
-         console.info('AudioFrameworkRenderLog: Renderer stopped : SUCCESS');
-     }).catch((err) => {
-         console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : '+err.message);
-     });
+        var bufferSize = await audioRen.getBufferSize();
+        console.info('AudioFrameworkRenderLog: buffer size: ' + bufferSize);
 
-     console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        let ss = fileio.fdopenStreamSync(fdRead, 'r');
+        console.info('AudioFrameworkRenderLog:case 2:AudioFrameworkRenderLog: File Path: ' + ss);
+        let discardHeader = new ArrayBuffer(44);
+        ss.readSync(discardHeader);
+        let totalSize = fileio.fstatSync(fdRead).size;
+        console.info('AudioFrameworkRenderLog:case 3 : AudioFrameworkRenderLog: File totalSize size: ' + totalSize);
+        totalSize = totalSize - 44;
+        console.info('AudioFrameworkRenderLog: File size : Removing header: ' + totalSize);
+        let rlen = 0;
+        while (rlen < totalSize / 4) {
+            let buf = new ArrayBuffer(bufferSize);
+            rlen += ss.readSync(buf);
+            console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' + rlen);
+            await audioRen.write(buf);
+            if (rlen > (totalSize / 2)) {
+                await audioManager.getAudioScene().then(async function (data) {
+                    console.info('AudioFrameworkAudioScene: getAudioScene : Value : ' + data);
+                }).catch((err) => {
+                    console.info('AudioFrameworkAudioScene: getAudioScene : ERROR : ' + err.message);
+                    resultFlag = false;
+                });
+            }
+        }
+        console.info('AudioFrameworkRenderLog: Renderer after read');
+        await audioRen.getRenderRate().then(async function (data) {
+            if (data == audio.AudioRendererRate.RENDER_RATE_NORMAL) {
+                console.info('AudioFrameworkRenderLog: getRenderRate : RENDER_RATE_NORMAL : PASS : ' + data);
+            }
+            else {
+                console.info('AudioFrameworkRenderLog: getRenderRate : RENDER_RATE_NORMAL : FAIL : ' + data);
+                resultFlag = false;
+            }
+        }).catch((err) => {
+            console.info('AudioFrameworkAudioScene: getRenderRate : RENDER_RATE_NORMAL : ERROR : ' + err.message);
+            resultFlag = false;
+        });
 
-     await audioRen.release().then(async function () {
-         console.info('AudioFrameworkRenderLog: Renderer release : SUCCESS');
-     }).catch((err) => {
-         console.info('AudioFrameworkRenderLog: Renderer release :ERROR : '+err.message);
-     });
+        await audioRen.drain().then(async function () {
+            console.info('AudioFrameworkRenderLog: Renderer drained : SUCCESS');
+        }).catch((err) => {
+            console.error('AudioFrameworkRenderLog: Renderer drain: ERROR : ' + err.message);
+        });
 
-     console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-     console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
+        await audioRen.stop().then(async function () {
+            console.info('AudioFrameworkRenderLog: Renderer stopped : SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : ' + err.message);
+        });
 
-     await sleep(500)
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-     expect(resultFlag).assertTrue();
+        await audioRen.release().then(async function () {
+            console.info('AudioFrameworkRenderLog: Renderer release : SUCCESS');
+        }).catch((err) => {
+            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : ' + err.message);
+        });
 
-     await closeFileDescriptor(readpath);
-     done();
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
+
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
+
+        await sleep(500)
+
+        expect(resultFlag).assertTrue();
+
+        await closeFileDescriptor(readPath);
+        done();
 
     })
 
@@ -6854,7 +6020,7 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_113', 0,async function (done) {
+    it('SUB_AUDIO_RENDERER_Play_audio_113', 0, async function (done) {
 
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_32000,
@@ -6875,13 +6041,13 @@ describe('audioRenderer', function () {
         }
 
         //var fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
-        readpath='StarWars10s-1C-32000-1SW.wav'
-        await getFdRead(readpath,done);
-        var resultFlag = await playbackPromise_113 (AudioRendererOptions , readpath );
+        readPath = 'StarWars10s-1C-32000-1SW.wav'
+        await getFdRead(readPath, done);
+        var resultFlag = await playbackPromise_113(AudioRendererOptions, filePath);
         await sleep(100)
-        console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
-        await closeFileDescriptor(readpath);
+        await closeFileDescriptor(readPath);
         done();
     })
 
@@ -6893,7 +6059,7 @@ describe('audioRenderer', function () {
         * @tc.type      : Function
         * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_096', 0,async function (done) {
+    it('SUB_AUDIO_RENDERER_Play_audio_096', 0, async function (done) {
 
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
@@ -6915,10 +6081,10 @@ describe('audioRenderer', function () {
 
         //var fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
 
-        readpath = 'StarWars10s-2C-48000-4SW.wav';
-        await getFdRead(readpath,done);
+        readPath = 'StarWars10s-2C-48000-4SW.wav';
+        await getFdRead(readPath, done);
         var resultFlag = true;
-        console.info('AudioFrameworkRenderLog: AudioRenderer : Path : '+readpath);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : Path : ' + readPath);
 
         console.info('AudioFrameworkRenderLog: Promise : Audio Playback Function');
 
@@ -6927,37 +6093,37 @@ describe('audioRenderer', function () {
             audioRen = data;
             console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-            resultFlag=false;
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
+            resultFlag = false;
         });
 
         await audioRen.getAudioTime().then(async function (data) {
-            console.info('AudioFrameworkRenderLog: getAudioTime : Value : '+data);
-            resultFlag=true;
-            if (data > 0){
-                console.info('AudioFrameworkRenderLog: getAudioTime : PASS : '+data);
+            console.info('AudioFrameworkRenderLog: getAudioTime : Value : ' + data);
+            resultFlag = true;
+            if (data > 0) {
+                console.info('AudioFrameworkRenderLog: getAudioTime : PASS : ' + data);
             }
-            else{
-                console.info('AudioFrameworkRenderLog: getAudioTime : FAIL : '+data);
+            else {
+                console.info('AudioFrameworkRenderLog: getAudioTime : FAIL : ' + data);
             }
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: getAudioTime : ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: getAudioTime : ERROR : ' + err.message);
         });
 
         await audioRen.release().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer release : SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : ' + err.message);
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-        console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
 
         await sleep(500);
 
         expect(resultFlag).assertTrue();
-        await closeFileDescriptor(readpath);
+        await closeFileDescriptor(readPath);
         done();
 
     })
@@ -6971,7 +6137,7 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_097', 0,async function (done) {
+    it('SUB_AUDIO_RENDERER_Play_audio_097', 0, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -6996,11 +6162,11 @@ describe('audioRenderer', function () {
             audioRen = data;
             console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
             resultFlag = false;
         });
 
-        audioRen.on('stateChange',(AudioState) => {
+        audioRen.on('stateChange', (AudioState) => {
 
             console.log('AudioFrameworkTest: Volume Change Event is called');
 
@@ -7010,7 +6176,7 @@ describe('audioRenderer', function () {
                     resultFlag = true;
                     break;
                 default:
-                    console.info('AudioFrameworkTest: state : '+AudioState);
+                    console.info('AudioFrameworkTest: state : ' + AudioState);
                     break;
             }
         });
@@ -7018,7 +6184,7 @@ describe('audioRenderer', function () {
         await audioRen.release().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer release : SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : ' + err.message);
         });
         await sleep(1000);
         expect(resultFlag).assertTrue();
@@ -7035,7 +6201,7 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_098', 0,async function (done) {
+    it('SUB_AUDIO_RENDERER_Play_audio_098', 0, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -7060,11 +6226,11 @@ describe('audioRenderer', function () {
             audioRen = data;
             console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
             resultFlag = false;
         });
 
-        audioRen.on('stateChange',(AudioState) => {
+        audioRen.on('stateChange', (AudioState) => {
 
             console.log('AudioFrameworkTest: Volume Change Event is called');
 
@@ -7074,7 +6240,7 @@ describe('audioRenderer', function () {
                     resultFlag = true;
                     break;
                 default:
-                    console.info('AudioFrameworkTest: state : '+AudioState);
+                    console.info('AudioFrameworkTest: state : ' + AudioState);
                     break;
             }
         });
@@ -7082,8 +6248,8 @@ describe('audioRenderer', function () {
         await audioRen.start().then(async function () {
             console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : '+err.message);
-            resultFlag=false;
+            console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : ' + err.message);
+            resultFlag = false;
         });
 
         await sleep(500);
@@ -7091,13 +6257,13 @@ describe('audioRenderer', function () {
         await audioRen.stop().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer stopped : SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : ' + err.message);
         });
 
         await audioRen.release().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer release : SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : ' + err.message);
         });
         await sleep(1000);
 
@@ -7115,7 +6281,7 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_099', 0,async function (done) {
+    it('SUB_AUDIO_RENDERER_Play_audio_099', 0, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -7140,11 +6306,11 @@ describe('audioRenderer', function () {
             audioRen = data;
             console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
             resultFlag = false;
         });
 
-        audioRen.on('stateChange',(AudioState) => {
+        audioRen.on('stateChange', (AudioState) => {
 
             console.log('AudioFrameworkTest: Volume Change Event is called');
 
@@ -7154,7 +6320,7 @@ describe('audioRenderer', function () {
                     resultFlag = true;
                     break;
                 default:
-                    console.info('AudioFrameworkTest: state : '+AudioState);
+                    console.info('AudioFrameworkTest: state : ' + AudioState);
                     break;
             }
         });
@@ -7162,8 +6328,8 @@ describe('audioRenderer', function () {
         await audioRen.start().then(async function () {
             console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : '+err.message);
-            resultFlag=false;
+            console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : ' + err.message);
+            resultFlag = false;
         });
 
         await sleep(500);
@@ -7171,15 +6337,15 @@ describe('audioRenderer', function () {
         await audioRen.stop().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer stopped : SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : '+err.message);
-            resultFlag=false;
+            console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : ' + err.message);
+            resultFlag = false;
         });
         await sleep(500);
 
         await audioRen.release().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer release : SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : ' + err.message);
         });
         await sleep(500);
 
@@ -7197,7 +6363,7 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_100', 0,async function (done) {
+    it('SUB_AUDIO_RENDERER_Play_audio_100', 0, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -7222,11 +6388,11 @@ describe('audioRenderer', function () {
             audioRen = data;
             console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
             resultFlag = false;
         });
 
-        audioRen.on('stateChange',(AudioState) => {
+        audioRen.on('stateChange', (AudioState) => {
 
             console.log('AudioFrameworkTest: Volume Change Event is called');
 
@@ -7236,7 +6402,7 @@ describe('audioRenderer', function () {
                     resultFlag = true;
                     break;
                 default:
-                    console.info('AudioFrameworkTest: state : '+AudioState);
+                    console.info('AudioFrameworkTest: state : ' + AudioState);
                     break;
             }
         });
@@ -7244,8 +6410,8 @@ describe('audioRenderer', function () {
         await audioRen.start().then(async function () {
             console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : '+err.message);
-            resultFlag=false;
+            console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : ' + err.message);
+            resultFlag = false;
         });
 
         await sleep(500);
@@ -7253,15 +6419,15 @@ describe('audioRenderer', function () {
         await audioRen.stop().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer stopped : SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : '+err.message);
-            resultFlag=false;
+            console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : ' + err.message);
+            resultFlag = false;
         });
         await sleep(500);
 
         await audioRen.release().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer release : SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : ' + err.message);
         });
         await sleep(500);
 
@@ -7279,7 +6445,7 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_101', 0,async function (done) {
+    it('SUB_AUDIO_RENDERER_Play_audio_101', 0, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -7304,10 +6470,10 @@ describe('audioRenderer', function () {
             audioRen = data;
             console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
             resultFlag = false;
         });
-        audioRen.on('stateChange',(AudioState) => {
+        audioRen.on('stateChange', (AudioState) => {
 
             console.log('AudioFrameworkTest: Volume Change Event is called');
 
@@ -7317,15 +6483,15 @@ describe('audioRenderer', function () {
                     resultFlag = true;
                     break;
                 default:
-                    console.info('AudioFrameworkTest: state : '+AudioState);
+                    console.info('AudioFrameworkTest: state : ' + AudioState);
                     break;
             }
         });
         await audioRen.start().then(async function () {
             console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : '+err.message);
-            resultFlag=false;
+            console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : ' + err.message);
+            resultFlag = false;
         });
 
         await sleep(500);
@@ -7333,22 +6499,22 @@ describe('audioRenderer', function () {
         await audioRen.pause().then(async function () {
             console.info('AudioFrameworkRenderLog: renderInstant Pause :SUCCESS ');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: renderInstant Pause :ERROR : '+err.message);
-            resultFlag=false;
+            console.info('AudioFrameworkRenderLog: renderInstant Pause :ERROR : ' + err.message);
+            resultFlag = false;
         });
 
         await sleep(500);
         await audioRen.stop().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer stopped : SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : ' + err.message);
         });
         await sleep(500);
 
         await audioRen.release().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer release : SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : ' + err.message);
         });
         await sleep(500)
 
@@ -7426,7 +6592,7 @@ describe('audioRenderer', function () {
     * @tc.type      : Function
     * @tc.level     : Level 0
     */
-    it('SUB_AUDIO_RENDERER_Play_audio_112', 0,async function (done) {
+    it('SUB_AUDIO_RENDERER_Play_audio_112', 0, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -7451,10 +6617,10 @@ describe('audioRenderer', function () {
             audioRen = data;
             console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
             resultFlag = false;
         });
-        audioRen.on('stateChange',(AudioState) => {
+        audioRen.on('stateChange', (AudioState) => {
 
             console.log('AudioFrameworkTest: Volume Change Event is called');
 
@@ -7464,25 +6630,25 @@ describe('audioRenderer', function () {
                     resultFlag = true;
                     break;
                 default:
-                    console.info('AudioFrameworkTest: state : '+AudioState);
+                    console.info('AudioFrameworkTest: state : ' + AudioState);
                     break;
             }
         });
         await audioRen.start().then(async function () {
             console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : '+err.message);
-            resultFlag=false;
+            console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : ' + err.message);
+            resultFlag = false;
         });
 
         await sleep(2000);
 
         audioRen.pause((err) => {
             if (err) {
-                console.info('AudioFrameworkRenderLog: renderInstant Pause :ERROR : '+err.message);
-                resultFlag=false;
+                console.info('AudioFrameworkRenderLog: renderInstant Pause :ERROR : ' + err.message);
+                resultFlag = false;
             }
-            else{
+            else {
                 console.info('AudioFrameworkRenderLog: renderInstant Pause :SUCCESS ');
             }
         });
@@ -7491,14 +6657,14 @@ describe('audioRenderer', function () {
         await audioRen.stop().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer stopped : SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : ' + err.message);
         });
         await sleep(500);
 
         await audioRen.release().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer release : SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : ' + err.message);
         });
         await sleep(500)
 
@@ -7521,207 +6687,5 @@ describe('audioRenderer', function () {
         expect(audio.AudioEncodingType.ENCODING_TYPE_INVALID).assertEqual(-1);
         await sleep(50);
         done();
-    })
-
-    /*
-     * @tc.name:SetInterruptMode_001
-     * @tc.desc:SetInterruptMode mode 0 callback,is public share mode
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
-     */
-    it("SetInterruptMode_001", 0,async function (done) {
-        var audioStreamInfo = {
-            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-            channels: audio.AudioChannel.CHANNEL_1,
-            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
-            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-        }
-        var audioRendererInfo = {
-            content: audio.ContentType.CONTENT_TYPE_MUSIC,
-            usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
-            rendererFlags: 0
-        }
-        var audioRendererOptions = {
-            streamInfo: audioStreamInfo,
-            rendererInfo: audioRendererInfo
-        }
-        let audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
-        let mode = 0;
-        audioRenderer.setInterruptMode(mode,(err,data)=>{
-            if(err){
-                expect(true).assertEqual(false);
-                return done();
-            }
-            expect(true).assertEqual(true);
-            done();
-        })
-    })
-
-    /*
-     * @tc.name:SetInterruptMode_002
-     * @tc.desc:SetInterruptMode mode 1 callback,is independent mode
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
-     */
-    it("SetInterruptMode_002", 0,async function (done) {
-        var audioStreamInfo = {
-            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-            channels: audio.AudioChannel.CHANNEL_1,
-            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
-            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-        }
-        var audioRendererInfo = {
-            content: audio.ContentType.CONTENT_TYPE_MUSIC,
-            usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
-            rendererFlags: 0
-        }
-        var audioRendererOptions = {
-            streamInfo: audioStreamInfo,
-            rendererInfo: audioRendererInfo
-        }
-        let audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
-        let mode = 1;
-        audioRenderer.setInterruptMode(mode,(err,data)=>{
-            if(err){
-                expect(true).assertEqual(false);
-                return done();
-            }
-            expect(true).assertEqual(true);
-            done();
-        })
-    })
-
-    /*
-     * @tc.name:SetInterruptMode_003
-     * @tc.desc:SetInterruptMode mode 0 promise,is public share mode
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
-     */
-    it("SetInterruptMode_003", 0,async function (done) {
-        var audioStreamInfo = {
-            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-            channels: audio.AudioChannel.CHANNEL_1,
-            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
-            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-        }
-        var audioRendererInfo = {
-            content: audio.ContentType.CONTENT_TYPE_MUSIC,
-            usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
-            rendererFlags: 0
-        }
-        var audioRendererOptions = {
-            streamInfo: audioStreamInfo,
-            rendererInfo: audioRendererInfo
-        }
-        let audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
-        let mode = 0;
-        audioRenderer.setInterruptMode(mode).then(data=>{
-            expect(true).assertEqual(true);
-            done();
-        }).catch(err=>{
-            expect(true).assertEqual(false);
-            done();
-        })
-    })
-
-    /*
-        * @tc.name:SetInterruptMode_004
-        * @tc.desc:SetInterruptMode mode 1 promise,is independent mode
-        * @tc.type: FUNC
-        * @tc.require: Issue Number
-        */
-    it("SetInterruptMode_004", 0,async function (done) {
-        var audioStreamInfo = {
-            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-            channels: audio.AudioChannel.CHANNEL_1,
-            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
-            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-        }
-        var audioRendererInfo = {
-            content: audio.ContentType.CONTENT_TYPE_MUSIC,
-            usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
-            rendererFlags: 0
-        }
-        var audioRendererOptions = {
-            streamInfo: audioStreamInfo,
-            rendererInfo: audioRendererInfo
-        }
-        let audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
-        let mode = 1;
-        audioRenderer.setInterruptMode(mode).then(data=>{
-            expect(true).assertEqual(true);
-            done();
-        }).catch(err=>{
-            expect(true).assertEqual(false);
-            done();
-        })
-    })
-
-    /*
-    * @tc.name:SetInterruptMode_005
-    * @tc.desc:SetInterruptMode mode '1',will catch error with type error
-    * @tc.type: FUNC
-    * @tc.require: Issue Number
-    */
-    it("SetInterruptMode_005", 0,async function (done) {
-        var audioStreamInfo = {
-            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-            channels: audio.AudioChannel.CHANNEL_1,
-            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
-            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-        }
-        var audioRendererInfo = {
-            content: audio.ContentType.CONTENT_TYPE_MUSIC,
-            usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
-            rendererFlags: 0
-        }
-        var audioRendererOptions = {
-            streamInfo: audioStreamInfo,
-            rendererInfo: audioRendererInfo
-        }
-        let audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
-        let mode = '1';
-        try{
-            let data = await audioRenderer.setInterruptMode(mode);
-            expect(false).assertEqual(false);
-            done();
-        }catch(err){
-            expect('assertion (false) failed: type mismatch').assertEqual(err.message);
-            done();
-        }
-    })
-
-    /*
-   * @tc.name:SetInterruptMode_006
-   * @tc.desc:SetInterruptMode mode 2,will catch error with out of border
-   * @tc.type: FUNC
-   * @tc.require: Issue Number
-   */
-    it("SetInterruptMode_006", 0,async function (done) {
-        var audioStreamInfo = {
-            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-            channels: audio.AudioChannel.CHANNEL_1,
-            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
-            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-        }
-        var audioRendererInfo = {
-            content: audio.ContentType.CONTENT_TYPE_MUSIC,
-            usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
-            rendererFlags: 0
-        }
-        var audioRendererOptions = {
-            streamInfo: audioStreamInfo,
-            rendererInfo: audioRendererInfo
-        }
-        let audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
-        let mode = 2;
-        try{
-            let data = await audioRenderer.setInterruptMode(mode)
-            expect(true).assertEqual(true);
-            done();
-        }catch(err){
-            expect(err).assertEqual(undefined);
-            done();
-        }
     })
 })
