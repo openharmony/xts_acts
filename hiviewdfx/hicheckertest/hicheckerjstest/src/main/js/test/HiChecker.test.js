@@ -48,11 +48,11 @@ describe('HiCheckerTest', function () {
 
     /**
      * @tc.number 
-     * @tc.name HiCheckerTest001
+     * @tc.name DFX_DFR_Hichecker_Interface_0100
      * @tc.desc 
      */
-    it('HiCheckerTest001', 0, function () {
-        console.info('HiCheckerTest001 start');
+    it('DFX_DFR_Hichecker_Interface_0100', 0, function () {
+        console.info('DFX_DFR_Hichecker_Interface_0100 start');
         hichecker.addRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
         let tmp = hichecker.contains(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
         console.log('add rule success!');
@@ -61,11 +61,11 @@ describe('HiCheckerTest', function () {
 
     /**
      * @tc.number 
-     * @tc.name HiCheckerTest002
+     * @tc.name DFX_DFR_Hichecker_Interface_0500
      * @tc.desc 
      */
-     it('HiCheckerTest002', 0, function () {
-        console.info('HiCheckerTest002 start');
+     it('DFX_DFR_Hichecker_Interface_0500', 0, function () {
+        console.info('DFX_DFR_Hichecker_Interface_0500 start');
         hichecker.addRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS | hichecker.RULE_CHECK_SLOW_EVENT);
         hichecker.addRule(hichecker.RULE_CHECK_ABILITY_CONNECTION_LEAK | hichecker.RULE_CAUTION_PRINT_LOG);
         console.log('add rule success!');
@@ -79,11 +79,11 @@ describe('HiCheckerTest', function () {
 
     /**
      * @tc.number 
-     * @tc.name HiCheckerTest003
+     * @tc.name DFX_DFR_Hichecker_Interface_0200
      * @tc.desc 
      */
-     it('HiCheckerTest003', 0, function () {
-        console.info('HiCheckerTest003 start');
+     it('DFX_DFR_Hichecker_Interface_0200', 0, function () {
+        console.info('DFX_DFR_Hichecker_Interface_0200 start');
         hichecker.addRule(-1);
         console.log('add wrong rule!');
         expect(hichecker.contains(-1)).assertEqual(false);
@@ -97,11 +97,11 @@ describe('HiCheckerTest', function () {
 
     /**
      * @tc.number 
-     * @tc.name HiCheckerTest004
+     * @tc.name DFX_DFR_Hichecker_Interface_1200
      * @tc.desc 
      */
-     it('HiCheckerTest004', 0, function () {
-        console.info('HiCheckerTest004 start');
+     it('DFX_DFR_Hichecker_Interface_1200', 0, function () {
+        console.info('DFX_DFR_Hichecker_Interface_1200 start');
         hichecker.addRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
         expect(hichecker.contains(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS)).assertTrue();
         console.log('add rule success!');
@@ -111,11 +111,11 @@ describe('HiCheckerTest', function () {
 
     /**
      * @tc.number 
-     * @tc.name HiCheckerTest005
+     * @tc.name DFX_DFR_Hichecker_Interface_0800
      * @tc.desc 
      */
-     it('HiCheckerTest005', 0, function () {
-        console.info('HiCheckerTest005 start');
+     it('DFX_DFR_Hichecker_Interface_0800', 0, function () {
+        console.info('DFX_DFR_Hichecker_Interface_0800 start');
         hichecker.addRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS | hichecker.RULE_CHECK_SLOW_EVENT);
         hichecker.addRule(hichecker.RULE_CHECK_ABILITY_CONNECTION_LEAK | hichecker.RULE_CAUTION_PRINT_LOG);
         console.log('add rule success!');
@@ -128,11 +128,11 @@ describe('HiCheckerTest', function () {
 
     /**
      * @tc.number 
-     * @tc.name HiCheckerTest006
+     * @tc.name DFX_DFR_Hichecker_Interface_1300
      * @tc.desc 
      */
-     it('HiCheckerTest006', 0, function () {
-        console.info('HiCheckerTest006 start');
+     it('DFX_DFR_Hichecker_Interface_1300', 0, function () {
+        console.info('DFX_DFR_Hichecker_Interface_1300 start');
         hichecker.addRule(hichecker.RULE_THREAD_CHECK_SLOW_PROCESS | hichecker.RULE_CHECK_SLOW_EVENT);
         hichecker.addRule(hichecker.RULE_CHECK_ABILITY_CONNECTION_LEAK | hichecker.RULE_CAUTION_PRINT_LOG);
         console.log('add rule success!');

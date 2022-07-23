@@ -72,7 +72,7 @@ describe('HidebugJsTest', function () {
      * @tc.name      : getPss
      * @tc.desc      : Get application process proportional set size memory information
      */
-    it('DFX_DFR_Hiprofiler_Interface_0800', 0, async function (done) {
+    it('DFX_DFR_Hiprofiler_Interface_0800', 0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_0800 Test start*************');
         try {
             const times = 3;
@@ -88,7 +88,6 @@ describe('HidebugJsTest', function () {
             expect().assertFail();
         }
         console.log('************* DFX_DFR_Hiprofiler_Interface_0800 Test end*************');
-        done();
     });
 
     /*
@@ -96,7 +95,7 @@ describe('HidebugJsTest', function () {
      * @tc.name      : getSharedDirty
      * @tc.desc      : Obtains the size of the shared dirty memory of a process.
      */
-    it('DFX_DFR_Hiprofiler_Interface_1200', 0, async function (done) {
+    it('DFX_DFR_Hiprofiler_Interface_1200', 0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_1200 Test start*************');
         try {
             let dirty = hidebug.getSharedDirty();
@@ -106,7 +105,6 @@ describe('HidebugJsTest', function () {
             expect().assertFail();
         }
         console.log('************* DFX_DFR_Hiprofiler_Interface_1200 Test end*************');
-        done();
     });
 
     /*
@@ -114,7 +112,7 @@ describe('HidebugJsTest', function () {
      * @tc.name      : startProfiling with normal parameter
      * @tc.desc      : Start CPU Profiling.
      */
-    it('DFX_DFR_Hiprofiler_Interface_1600', 0, async function (done) {
+    it('DFX_DFR_Hiprofiler_Interface_1600', 0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_1600 Test start*************');
         try {
             let timestamp = Date.now();
@@ -130,7 +128,6 @@ describe('HidebugJsTest', function () {
             expect().assertFail();
         }
         console.log('************* DFX_DFR_Hiprofiler_Interface_1600 Test end*************');
-        done();
     });
 
     /*
@@ -138,7 +135,7 @@ describe('HidebugJsTest', function () {
      * @tc.name      : startProfiling repeatedly
      * @tc.desc      : Start CPU Profiling.
      */
-    it('DFX_DFR_Hiprofiler_Interface_1500', 0, async function (done) {
+    it('DFX_DFR_Hiprofiler_Interface_1500', 0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_1500 Test start*************');
         try {
             let path1 = '/data/app/el2/100/base/com.hidebug.test/files/cpuprofiler-111.json'
@@ -158,7 +155,6 @@ describe('HidebugJsTest', function () {
             expect().assertFail();
         }
         console.log('************* DFX_DFR_Hiprofiler_Interface_1500 Test end*************');
-        done();
     });
 
     /*
@@ -166,7 +162,7 @@ describe('HidebugJsTest', function () {
      * @tc.name      : startProfiling with empty parameter
      * @tc.desc      : Start CPU Profiling.
      */
-    it('DFX_DFR_Hiprofiler_Interface_1400', 0, async function (done) {
+    it('DFX_DFR_Hiprofiler_Interface_1400', 0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_1400 Test start*************');
         let path = '/data/app/el2/100/base/com.hidebug.test/files/undefined.json'
         try {
@@ -186,7 +182,6 @@ describe('HidebugJsTest', function () {
             expect().assertFail();
         }
         console.log('************* DFX_DFR_Hiprofiler_Interface_1400 Test end*************');
-        done();
     });
 
     /*
@@ -194,7 +189,7 @@ describe('HidebugJsTest', function () {
      * @tc.name      : startProfiling with overlong parameter
      * @tc.desc      : Start CPU Profiling.
      */
-    it('cDFX_DFR_Hiprofiler_Interface_1300', 0, async function (done) {
+    it('cDFX_DFR_Hiprofiler_Interface_1300', 0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_1300 Test start*************');
         let path = '/data/app/el2/100/base/com.hidebug.test/files/undefined.json'
         try {
@@ -218,7 +213,6 @@ describe('HidebugJsTest', function () {
             expect().assertFail();
         }
         console.log('************* DFX_DFR_Hiprofiler_Interface_1300 Test end*************');
-        done();
     });
 
     /*
@@ -226,7 +220,7 @@ describe('HidebugJsTest', function () {
      * @tc.name      : dumpHeapData with normal parameter
      * @tc.desc      : Dump JS Virtual Machine Heap Snapshot.
      */
-    it('DFX_DFR_Hiprofiler_Interface_0300', 0, async function (done) {
+    it('DFX_DFR_Hiprofiler_Interface_0300', 0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_0300 Test start*************');
         try {
             let timestamp = Date.now();
@@ -240,7 +234,6 @@ describe('HidebugJsTest', function () {
             expect().assertFail();
         }
         console.log('************* DFX_DFR_Hiprofiler_Interface_0300 Test end*************');
-        done();
       });
 
     /*
@@ -248,7 +241,7 @@ describe('HidebugJsTest', function () {
      * @tc.name      : dumpHeapData with empty parameter
      * @tc.desc      : Dump JS Virtual Machine Heap Snapshot.
      */
-    it('DFX_DFR_Hiprofiler_Interface_0200', 0, async function (done) {
+    it('DFX_DFR_Hiprofiler_Interface_0200', 0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_0200 Test start*************');
         let path = '/data/app/el2/100/base/com.hidebug.test/files/undefined.heapsnapshot'
         try {
@@ -266,7 +259,6 @@ describe('HidebugJsTest', function () {
             expect().assertFail();
         }
         console.log('************* DFX_DFR_Hiprofiler_Interface_0200 Test end*************');
-        done();
       });
 
     /*
@@ -274,7 +266,7 @@ describe('HidebugJsTest', function () {
      * @tc.name      : dumpHeapData with overlog parameter
      * @tc.desc      : Dump JS Virtual Machine Heap Snapshot.
      */
-    it('DFX_DFR_Hiprofiler_Interface_0100', 0, async function (done) {
+    it('DFX_DFR_Hiprofiler_Interface_0100', 0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_0100 Test start*************');
         let path = '/data/app/el2/100/base/com.hidebug.test/files/undefined.heapsnapshot'
         try {
@@ -296,7 +288,6 @@ describe('HidebugJsTest', function () {
             expect().assertFail();
         }
         console.log('************* DFX_DFR_Hiprofiler_Interface_0100 Test end*************');
-        done();
     });
 
     /*
