@@ -455,6 +455,7 @@ export default function lifecycleTest(abilityContext) {
         }).catch((error) => {
         console.error(TAG + ' start1 failed. Cause: ' + JSON.stringify(error));
       })
+      await sleep(1000);
       setTimeout(function () {
         var str1 = {
           "bundleName": "com.example.lifecycle_xts",
@@ -467,6 +468,7 @@ export default function lifecycleTest(abilityContext) {
           console.error(TAG + ' start5 failed. Cause: ' + JSON.stringify(error));
         })
       }, 500);
+      await sleep(1000);
       setTimeout(function () {
         var str2 = {
           "bundleName": "com.example.lifecycle_xts",
@@ -479,6 +481,7 @@ export default function lifecycleTest(abilityContext) {
           console.error(TAG + ' start2 failed. Cause: ' + JSON.stringify(error));
         })
       }, 1100);
+      await sleep(1000);
       setTimeout(function () {
         console.log(TAG + " listKey1 : " + JSON.stringify(globalThis.list1));
         console.log(TAG + " callbackid1 : " + JSON.stringify(globalThis.callbackid1));
@@ -492,18 +495,18 @@ export default function lifecycleTest(abilityContext) {
         }
         console.log(TAG + " listtemp is :" + JSON.stringify(listtemp));
         let exlist = listtemp;
-        expect(exlist[0]).assertEqual("MainAbility5 onAbilityCreate");
-        expect(exlist[1]).assertEqual("MainAbility5 onAbilityWindowStageCreate");
-        expect(exlist[2]).assertEqual("MainAbility5 onAbilityForeground");
-        expect(exlist[3]).assertEqual("MainAbility2 onAbilityCreate");
-        expect(exlist[4]).assertEqual("MainAbility2 onAbilityWindowStageCreate");
-        expect(exlist[5]).assertEqual("MainAbility2 onAbilityForeground");
-        expect(exlist[6]).assertEqual("MainAbility5 onAbilityBackground");
-        expect(exlist[7]).assertEqual("MainAbility5 onAbilityWindowStageDestroy");
-        expect(exlist[8]).assertEqual("MainAbility5 onAbilityDestroy");
-        expect(exlist[9]).assertEqual("MainAbility2 onAbilityBackground");
-        expect(exlist[10]).assertEqual("MainAbility2 onAbilityWindowStageDestroy");
-        expect(exlist[11]).assertEqual("MainAbility2 onAbilityDestroy");
+        expect(JSON.stringify(exlist)).assertContain("MainAbility5 onAbilityCreate");
+        expect(JSON.stringify(exlist)).assertContain("MainAbility5 onAbilityWindowStageCreate");
+        expect(JSON.stringify(exlist)).assertContain("MainAbility5 onAbilityForeground");
+        expect(JSON.stringify(exlist)).assertContain("MainAbility5 onAbilityBackground");
+        expect(JSON.stringify(exlist)).assertContain("MainAbility5 onAbilityWindowStageDestroy");
+        expect(JSON.stringify(exlist)).assertContain("MainAbility5 onAbilityDestroy");
+        expect(JSON.stringify(exlist)).assertContain("MainAbility2 onAbilityCreate");
+        expect(JSON.stringify(exlist)).assertContain("MainAbility2 onAbilityWindowStageCreate");
+        expect(JSON.stringify(exlist)).assertContain("MainAbility2 onAbilityForeground");
+        expect(JSON.stringify(exlist)).assertContain("MainAbility2 onAbilityBackground");
+        expect(JSON.stringify(exlist)).assertContain("MainAbility2 onAbilityWindowStageDestroy");
+        expect(JSON.stringify(exlist)).assertContain("MainAbility2 onAbilityDestroy");
         globalThis.applicationContext1
           .unregisterAbilityLifecycleCallback(globalThis.callbackid1, (error, data) => {
             console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +

@@ -156,12 +156,12 @@ export default function abilityTest(abilityContext) {
           }
           console.log(TAG + "listKeyTemp is :" + listKeyTemp);
           console.log(TAG + "globalThis.mainAbility4CallBackId is :" + globalThis.mainAbility4CallBackId);
-          expect(listKeyTemp[0]).assertEqual("Hap2MainAbility4 onAbilityCreate");
-          expect(listKeyTemp[1]).assertEqual("Hap2MainAbility4 onAbilityWindowStageCreate");
-          expect(listKeyTemp[2]).assertEqual("Hap2MainAbility4 onAbilityForeground");
-          expect(listKeyTemp[3]).assertEqual("Hap2MainAbility4 onAbilityBackground");
-          expect(listKeyTemp[4]).assertEqual("Hap2MainAbility4 onAbilityWindowStageDestroy");
-          expect(listKeyTemp[5]).assertEqual("Hap2MainAbility4 onAbilityDestroy");
+          expect(JSON.stringify(listKeyTemp)).assertContain("Hap2MainAbility4 onAbilityCreate");
+          expect(JSON.stringify(listKeyTemp)).assertContain("Hap2MainAbility4 onAbilityWindowStageCreate");
+          expect(JSON.stringify(listKeyTemp)).assertContain("Hap2MainAbility4 onAbilityForeground");
+          expect(JSON.stringify(listKeyTemp)).assertContain("Hap2MainAbility4 onAbilityBackground");
+          expect(JSON.stringify(listKeyTemp)).assertContain("Hap2MainAbility4 onAbilityWindowStageDestroy");
+          expect(JSON.stringify(listKeyTemp)).assertContain("Hap2MainAbility4 onAbilityDestroy");
           globalThis.ApplicationContext4
             .unregisterAbilityLifecycleCallback(globalThis.mainAbility4CallBackId, (error, data) => {
               console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
