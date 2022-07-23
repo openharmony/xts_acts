@@ -12,14 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-require('./AddAccount.test.js')
-require('./DeleteAccount.test.js')
-require('./AppAccess.test.js')
-require('./ExtraInfo.test.js')
-require('./AssociatedData.test.js')
-require('./Credential.test.js')
-require('./OAuthToken.test.js')
-require('./CreatManager.test.js')
-require('./NoPermission.test.js')
-require('./OnOff.js')
-require('./Authenticator.test.js')
+
+export default {
+    onCreate() {
+        console.info("Application onCreate");
+    },
+    onDestroy() {
+        console.info("Application onDestroy");
+    },
+};
