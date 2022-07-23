@@ -13,4 +13,7 @@
  * limitations under the License.
  */
 
-require('./webp.test.js')
+import Image_test from './webp.test.js'
+export default function testsuite() {
+    Image_test()
+}
