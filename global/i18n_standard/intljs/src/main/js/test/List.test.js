@@ -12,6 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-require('./I18n.test.js')
-require('./Intl.test.js')
-require('./Lang.test.js')
+import I18nTest from './I18n.test.js'
+import intlTest from './Intl.test.js'
+import LangTest from './Lang.test.js'
+export default function testsuite() {
+I18nTest()
+intlTest()
+LangTest()
+}
