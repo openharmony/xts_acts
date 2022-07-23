@@ -13,4 +13,7 @@
  * limitations under the License.
  */
 
-require('./BluetoothBle.test.js')
+import bluetoothhostTest from './BluetoothBle.test.js'
+export default function testsuite() {
+bluetoothhostTest()
+}
