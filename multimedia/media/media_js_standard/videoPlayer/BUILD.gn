@@ -32,7 +32,9 @@ ohos_js_hap_suite("video_player_js_hap") {
   #  subsystem_name = "xts"
 }
 ohos_js_assets("video_player_js_assets") {
-  source_dir = "./src/main/js/default"
+  js2abc = true
+  hap_profile = "./src/main/config.json"
+  source_dir = "./src/main/js"
 }
 ohos_resources("video_player_resources") {
   sources = [ "./src/main/resources" ]

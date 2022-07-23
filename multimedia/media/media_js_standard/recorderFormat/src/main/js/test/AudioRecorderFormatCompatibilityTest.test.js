@@ -17,8 +17,9 @@ import media from '@ohos.multimedia.media'
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
 import bundle from '@ohos.bundle'
 import mediaLibrary from '@ohos.multimedia.mediaLibrary'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
+export default function AudioRecorderFormatCompatibilityTest() {
 describe('AudioRecorderFormatCompatibilityTest', function () {
     const END_STATE = 0;
     const PRE_STATE = 1;
@@ -359,3 +360,4 @@ describe('AudioRecorderFormatCompatibilityTest', function () {
         audioRecorder.prepare(audioConfig);
     })
 })
+}

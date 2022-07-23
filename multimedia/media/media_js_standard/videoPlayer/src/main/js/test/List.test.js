@@ -13,7 +13,13 @@
  * limitations under the License.
  */
 
-require('./VideoPlayerFuncCallbackTest.test.js')
-require('./VideoPlayerFuncPromiseTest.test.js')
-require('./VideoPlayerAPICallbackTest.test.js')
-require('./VideoPlayerEnumTest.test.js')
+import VideoPlayerAPICallbackTest from './VideoPlayerAPICallbackTest.test.js'
+import VideoPlayerEnumTest from './VideoPlayerEnumTest.test.js'
+import VideoPlayerFuncCallbackTest from './VideoPlayerFuncCallbackTest.test.js'
+import VideoPlayerFuncPromiseTest from './VideoPlayerFuncPromiseTest.test.js'
+export default function testsuite() {
+VideoPlayerAPICallbackTest()
+VideoPlayerEnumTest()
+VideoPlayerFuncCallbackTest()
+VideoPlayerFuncPromiseTest()
+}
