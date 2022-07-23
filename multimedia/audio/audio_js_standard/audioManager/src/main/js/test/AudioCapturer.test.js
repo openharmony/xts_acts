@@ -1089,21 +1089,26 @@ describe('audioCapturer', function () {
         var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
-            audioCapCallBack.read(bufferSize, true, async (err, buffer) => {
-                if (err) {
-                    console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
-                    stateFlag = false;
-                } else {
-                    console.info('AudioFrameworkRecLog: ---------AFTER CHECK CB READ BUFFER---------');
-                    console.info('AudioFrameworkRecLog: AudioCapturer : readvalue : ' + buffer);
-                    await sleep(50);
-                    console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
-                    var number = fileio.writeSync(fd, buffer);
-                    console.info('AudioFrameworkRecLog:BufferRecLog: data written: ' + number);
-                    await sleep(100);
-                    stateFlag = true;
-                }
-            });
+            await new Promise((resolve,reject)=>{
+                audioCapCallBack.read(bufferSize, true, async (err, buffer) => {
+                    if (err) {
+                        console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
+                        stateFlag = false;
+                        reject(err);
+                    } else {
+                        console.info('AudioFrameworkRecLog: ---------AFTER CHECK CB READ BUFFER---------');
+                        console.info('AudioFrameworkRecLog: AudioCapturer : readvalue : ' + buffer);
+                        await sleep(50);
+                        console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
+                        var number = fileio.writeSync(fd, buffer);
+                        console.info('AudioFrameworkRecLog:BufferRecLog: data written: ' + number);
+                        await sleep(100);
+                        stateFlag = true;
+                        resolve();
+                    }
+                });
+            })
+         
             numBuffersToCapture--;
         }
         await sleep(1000);
@@ -2982,30 +2987,34 @@ describe('audioCapturer', function () {
         var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
-            audioCapCallBack.read(bufferSize, true, async (err, buffer) => {
-                if (err) {
-                    console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
-                    stateFlag = false;
-                } else {
-                    console.info('AudioFrameworkRecLog: ---------AFTER CHECK CB READ BUFFER---------');
-                    await audioCapCallBack.getAudioTime().then(async function (audioTime1) {
-                        console.info('AudioFrameworkRecLog: AudioCapturer getAudioTime AFTER WRITE : Success' + audioTime1);
-                        if (audioTime1 != 0) {
-                            stateFlag = true;
-                        } else {
-                            stateFlag = false;
-                        }
-                    }).catch((err) => {
-                        console.info('AudioFrameworkRecLog: AudioCapturer Created : ERROR : ' + err.message);
-                    });
-                    await sleep(50);
-                    console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
-                    var number = fileio.writeSync(fd, buffer);
-                    console.info('BufferRecLog: data written: ' + number);
-                    await sleep(100);
-                    stateFlag = true;
-                }
-            });
+            await new Promise((resolve,reject)=>{
+                audioCapCallBack.read(bufferSize, true, async (err, buffer) => {
+                    if (err) {
+                        console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
+                        stateFlag = false;
+                        reject(err);
+                    } else {
+                        console.info('AudioFrameworkRecLog: ---------AFTER CHECK CB READ BUFFER---------');
+                        await audioCapCallBack.getAudioTime().then(async function (audioTime1) {
+                            console.info('AudioFrameworkRecLog: AudioCapturer getAudioTime AFTER WRITE : Success' + audioTime1);
+                            if (audioTime1 != 0) {
+                                stateFlag = true;
+                            } else {
+                                stateFlag = false;
+                            }
+                        }).catch((err) => {
+                            console.info('AudioFrameworkRecLog: AudioCapturer Created : ERROR : ' + err.message);
+                        });
+                        await sleep(50);
+                        console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
+                        var number = fileio.writeSync(fd, buffer);
+                        console.info('AudioFrameworkRecLog:BufferRecLog: data written: ' + number);
+                        await sleep(100);
+                        stateFlag = true;
+                        resolve();
+                    }
+                });
+            })
             numBuffersToCapture--;
         }
         await sleep(3000);
@@ -3129,30 +3138,34 @@ describe('audioCapturer', function () {
         var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
-            audioCapCallBack.read(bufferSize, true, async (err, buffer) => {
-                if (err) {
-                    console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
-                    stateFlag = false;
-                } else {
-                    console.info('AudioFrameworkRecLog: ---------AFTER CHECK CB READ BUFFER---------');
-                    await audioCapCallBack.getAudioTime().then(async function (audioTime1) {
-                        console.info('AudioFrameworkRecLog: AudioCapturer getAudioTime AFTER WRITE : Success' + audioTime1);
-                        if (audioTime1 != 0) {
-                            stateFlag = true;
-                        } else {
-                            stateFlag = false;
-                        }
-                    }).catch((err) => {
-                        console.info('AudioFrameworkRecLog: AudioCapturer Created : ERROR : ' + err.message);
-                    });
-                    await sleep(50);
-                    console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
-                    var number = fileio.writeSync(fd, buffer);
-                    console.info('BufferRecLog: data written: ' + number);
-                    await sleep(100);
-                    stateFlag = true;
-                }
-            });
+            await new Promise((resolve,reject)=>{
+                audioCapCallBack.read(bufferSize, true, async (err, buffer) => {
+                    if (err) {
+                        console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
+                        stateFlag = false;
+                        reject(err);
+                    } else {
+                        console.info('AudioFrameworkRecLog: ---------AFTER CHECK CB READ BUFFER---------');
+                        await audioCapCallBack.getAudioTime().then(async function (audioTime1) {
+                            console.info('AudioFrameworkRecLog: AudioCapturer getAudioTime AFTER WRITE : Success' + audioTime1);
+                            if (audioTime1 != 0) {
+                                stateFlag = true;
+                            } else {
+                                stateFlag = false;
+                            }
+                        }).catch((err) => {
+                            console.info('AudioFrameworkRecLog: AudioCapturer Created : ERROR : ' + err.message);
+                        });
+                        await sleep(50);
+                        console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
+                        var number = fileio.writeSync(fd, buffer);
+                        console.info('AudioFrameworkRecLog:BufferRecLog: data written: ' + number);
+                        await sleep(100);
+                        stateFlag = true;
+                        resolve();
+                    }
+                });
+            })
             numBuffersToCapture--;
         }
         await sleep(3000);
@@ -4624,21 +4637,25 @@ describe('audioCapturer', function () {
         var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
-            audioCapCallBack.read(bufferSize, true, async (err, buffer) => {
-                if (err) {
-                    console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
-                    stateFlag = false;
-                } else {
-                    console.info('AudioFrameworkRecLog: ---------AFTER CHECK CB READ BUFFER---------');
-                    console.info('AudioFrameworkRecLog: AudioCapturer : readvalue : ' + buffer);
-                    await sleep(50);
-                    console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
-                    var number = fileio.writeSync(fd, buffer);
-                    console.info('BufferRecLog: data written: ' + number);
-                    await sleep(100);
-                    stateFlag = true;
-                }
-            });
+            await new Promise((resolve,reject)=>{
+                audioCapCallBack.read(bufferSize, true, async (err, buffer) => {
+                    if (err) {
+                        console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
+                        stateFlag = false;
+                        reject(err);
+                    } else {
+                        console.info('AudioFrameworkRecLog: ---------AFTER CHECK CB READ BUFFER---------');
+                        console.info('AudioFrameworkRecLog: AudioCapturer : readvalue : ' + buffer);
+                        await sleep(50);
+                        console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
+                        var number = fileio.writeSync(fd, buffer);
+                        console.info('AudioFrameworkRecLog:BufferRecLog: data written: ' + number);
+                        await sleep(100);
+                        stateFlag = true;
+                        resolve();
+                    }
+                });
+            })
             numBuffersToCapture--;
         }
         await sleep(3000);
@@ -4758,21 +4775,25 @@ describe('audioCapturer', function () {
         var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
-            audioCapCallBack.read(bufferSize, true, async (err, buffer) => {
-                if (err) {
-                    console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
-                    stateFlag = false;
-                } else {
-                    console.info('AudioFrameworkRecLog: ---------AFTER CHECK CB READ BUFFER---------');
-                    console.info('AudioFrameworkRecLog: AudioCapturer : readvalue : ' + buffer);
-                    await sleep(50);
-                    console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
-                    var number = fileio.writeSync(fd, buffer);
-                    console.info('BufferRecLog: data written: ' + number);
-                    await sleep(100);
-                    stateFlag = true;
-                }
-            });
+            await new Promise((resolve,reject)=>{
+                audioCapCallBack.read(bufferSize, true, async (err, buffer) => {
+                    if (err) {
+                        console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
+                        stateFlag = false;
+                        reject(err);
+                    } else {
+                        console.info('AudioFrameworkRecLog: ---------AFTER CHECK CB READ BUFFER---------');
+                        console.info('AudioFrameworkRecLog: AudioCapturer : readvalue : ' + buffer);
+                        await sleep(50);
+                        console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
+                        var number = fileio.writeSync(fd, buffer);
+                        console.info('AudioFrameworkRecLog:BufferRecLog: data written: ' + number);
+                        await sleep(100);
+                        stateFlag = true;
+                        resolve();
+                    }
+                });
+            })
             numBuffersToCapture--;
         }
         await sleep(3000);
@@ -4886,21 +4907,25 @@ describe('audioCapturer', function () {
         var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
-            audioCapCallBack.read(bufferSize, true, async (err, buffer) => {
-                if (err) {
-                    console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
-                    stateFlag = false;
-                } else {
-                    console.info('AudioFrameworkRecLog: ---------AFTER CHECK CB READ BUFFER---------');
-                    console.info('AudioFrameworkRecLog: AudioCapturer : readvalue : ' + buffer);
-                    await sleep(50);
-                    console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
-                    var number = fileio.writeSync(fd, buffer);
-                    console.info('BufferRecLog: data written: ' + number);
-                    await sleep(100);
-                    stateFlag = true;
-                }
-            });
+            await new Promise((resolve,reject)=>{
+                audioCapCallBack.read(bufferSize, true, async (err, buffer) => {
+                    if (err) {
+                        console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
+                        stateFlag = false;
+                        reject(err);
+                    } else {
+                        console.info('AudioFrameworkRecLog: ---------AFTER CHECK CB READ BUFFER---------');
+                        console.info('AudioFrameworkRecLog: AudioCapturer : readvalue : ' + buffer);
+                        await sleep(50);
+                        console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
+                        var number = fileio.writeSync(fd, buffer);
+                        console.info('AudioFrameworkRecLog:BufferRecLog: data written: ' + number);
+                        await sleep(100);
+                        stateFlag = true;
+                        resolve();
+                    }
+                });
+            })
             numBuffersToCapture--;
         }
         await sleep(3000);
@@ -5015,21 +5040,25 @@ describe('audioCapturer', function () {
         var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
-            audioCapCallBack.read(bufferSize, true, async (err, buffer) => {
-                if (err) {
-                    console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
-                    stateFlag = false;
-                } else {
-                    console.info('AudioFrameworkRecLog: ---------AFTER CHECK CB READ BUFFER---------');
-                    console.info('AudioFrameworkRecLog: AudioCapturer : readvalue : ' + buffer);
-                    await sleep(50);
-                    console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
-                    var number = fileio.writeSync(fd, buffer);
-                    console.info('BufferRecLog: data written: ' + number);
-                    await sleep(100);
-                    stateFlag = true;
-                }
-            });
+            await new Promise((resolve,reject)=>{
+                audioCapCallBack.read(bufferSize, true, async (err, buffer) => {
+                    if (err) {
+                        console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
+                        stateFlag = false;
+                        reject(err);
+                    } else {
+                        console.info('AudioFrameworkRecLog: ---------AFTER CHECK CB READ BUFFER---------');
+                        console.info('AudioFrameworkRecLog: AudioCapturer : readvalue : ' + buffer);
+                        await sleep(50);
+                        console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
+                        var number = fileio.writeSync(fd, buffer);
+                        console.info('AudioFrameworkRecLog:BufferRecLog: data written: ' + number);
+                        await sleep(100);
+                        stateFlag = true;
+                        resolve();
+                    }
+                });
+            })
             numBuffersToCapture--;
         }
         await sleep(3000);
@@ -5144,21 +5173,25 @@ describe('audioCapturer', function () {
         var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
-            audioCapCallBack.read(bufferSize, true, async (err, buffer) => {
-                if (err) {
-                    console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
-                    stateFlag = false;
-                } else {
-                    console.info('AudioFrameworkRecLog: ---------AFTER CHECK CB READ BUFFER---------');
-                    console.info('AudioFrameworkRecLog: AudioCapturer : readvalue : ' + buffer);
-                    await sleep(50);
-                    console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
-                    var number = fileio.writeSync(fd, buffer);
-                    console.info('BufferRecLog: data written: ' + number);
-                    await sleep(100);
-                    stateFlag = true;
-                }
-            });
+            await new Promise((resolve,reject)=>{
+                audioCapCallBack.read(bufferSize, true, async (err, buffer) => {
+                    if (err) {
+                        console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
+                        stateFlag = false;
+                        reject(err);
+                    } else {
+                        console.info('AudioFrameworkRecLog: ---------AFTER CHECK CB READ BUFFER---------');
+                        console.info('AudioFrameworkRecLog: AudioCapturer : readvalue : ' + buffer);
+                        await sleep(50);
+                        console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
+                        var number = fileio.writeSync(fd, buffer);
+                        console.info('AudioFrameworkRecLog:BufferRecLog: data written: ' + number);
+                        await sleep(100);
+                        stateFlag = true;
+                        resolve();
+                    }
+                });
+            })
             numBuffersToCapture--;
         }
         await sleep(3000);
@@ -5274,21 +5307,25 @@ describe('audioCapturer', function () {
         var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
-            audioCapCallBack.read(bufferSize, true, async (err, buffer) => {
-                if (err) {
-                    console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
-                    stateFlag = false;
-                } else {
-                    console.info('AudioFrameworkRecLog: ---------AFTER CHECK CB READ BUFFER---------');
-                    console.info('AudioFrameworkRecLog: AudioCapturer : readvalue : ' + buffer);
-                    await sleep(50);
-                    console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
-                    var number = fileio.writeSync(fd, buffer);
-                    console.info('BufferRecLog: data written: ' + number);
-                    await sleep(100);
-                    stateFlag = true;
-                }
-            });
+            await new Promise((resolve,reject)=>{
+                audioCapCallBack.read(bufferSize, true, async (err, buffer) => {
+                    if (err) {
+                        console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
+                        stateFlag = false;
+                        reject(err);
+                    } else {
+                        console.info('AudioFrameworkRecLog: ---------AFTER CHECK CB READ BUFFER---------');
+                        console.info('AudioFrameworkRecLog: AudioCapturer : readvalue : ' + buffer);
+                        await sleep(50);
+                        console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
+                        var number = fileio.writeSync(fd, buffer);
+                        console.info('AudioFrameworkRecLog:BufferRecLog: data written: ' + number);
+                        await sleep(100);
+                        stateFlag = true;
+                        resolve();
+                    }
+                });
+            })
             numBuffersToCapture--;
         }
         await sleep(3000);
@@ -5404,21 +5441,25 @@ describe('audioCapturer', function () {
         var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
-            audioCapCallBack.read(bufferSize, true, async (err, buffer) => {
-                if (err) {
-                    console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
-                    stateFlag = false;
-                } else {
-                    console.info('AudioFrameworkRecLog: ---------AFTER CHECK CB READ BUFFER---------');
-                    console.info('AudioFrameworkRecLog: AudioCapturer : readvalue : ' + buffer);
-                    await sleep(50);
-                    console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
-                    var number = fileio.writeSync(fd, buffer);
-                    console.info('BufferRecLog: data written: ' + number);
-                    await sleep(100);
-                    stateFlag = true;
-                }
-            });
+            await new Promise((resolve,reject)=>{
+                audioCapCallBack.read(bufferSize, true, async (err, buffer) => {
+                    if (err) {
+                        console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
+                        stateFlag = false;
+                        reject(err);
+                    } else {
+                        console.info('AudioFrameworkRecLog: ---------AFTER CHECK CB READ BUFFER---------');
+                        console.info('AudioFrameworkRecLog: AudioCapturer : readvalue : ' + buffer);
+                        await sleep(50);
+                        console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
+                        var number = fileio.writeSync(fd, buffer);
+                        console.info('AudioFrameworkRecLog:BufferRecLog: data written: ' + number);
+                        await sleep(100);
+                        stateFlag = true;
+                        resolve();
+                    }
+                });
+            })
             numBuffersToCapture--;
         }
         await sleep(3000);
@@ -5533,21 +5574,25 @@ describe('audioCapturer', function () {
         var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
-            audioCapCallBack.read(bufferSize, true, async (err, buffer) => {
-                if (err) {
-                    console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
-                    stateFlag = false;
-                } else {
-                    console.info('AudioFrameworkRecLog: ---------AFTER CHECK CB READ BUFFER---------');
-                    console.info('AudioFrameworkRecLog: AudioCapturer : readvalue : ' + buffer);
-                    await sleep(50);
-                    console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
-                    var number = fileio.writeSync(fd, buffer);
-                    console.info('BufferRecLog: data written: ' + number);
-                    await sleep(100);
-                    stateFlag = true;
-                }
-            });
+            await new Promise((resolve,reject)=>{
+                audioCapCallBack.read(bufferSize, true, async (err, buffer) => {
+                    if (err) {
+                        console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
+                        stateFlag = false;
+                        reject(err);
+                    } else {
+                        console.info('AudioFrameworkRecLog: ---------AFTER CHECK CB READ BUFFER---------');
+                        console.info('AudioFrameworkRecLog: AudioCapturer : readvalue : ' + buffer);
+                        await sleep(50);
+                        console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
+                        var number = fileio.writeSync(fd, buffer);
+                        console.info('AudioFrameworkRecLog:BufferRecLog: data written: ' + number);
+                        await sleep(100);
+                        stateFlag = true;
+                        resolve();
+                    }
+                });
+            })
             numBuffersToCapture--;
         }
         await sleep(3000);
@@ -5660,21 +5705,25 @@ describe('audioCapturer', function () {
         var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
-            audioCapCallBack.read(bufferSize, true, async (err, buffer) => {
-                if (err) {
-                    console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
-                    stateFlag = false;
-                } else {
-                    console.info('AudioFrameworkRecLog: ---------AFTER CHECK CB READ BUFFER---------');
-                    console.info('AudioFrameworkRecLog: AudioCapturer : readvalue : ' + buffer);
-                    await sleep(50);
-                    console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
-                    var number = fileio.writeSync(fd, buffer);
-                    console.info('BufferRecLog: data written: ' + number);
-                    await sleep(100);
-                    stateFlag = true;
-                }
-            });
+            await new Promise((resolve,reject)=>{
+                audioCapCallBack.read(bufferSize, true, async (err, buffer) => {
+                    if (err) {
+                        console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
+                        stateFlag = false;
+                        reject(err);
+                    } else {
+                        console.info('AudioFrameworkRecLog: ---------AFTER CHECK CB READ BUFFER---------');
+                        console.info('AudioFrameworkRecLog: AudioCapturer : readvalue : ' + buffer);
+                        await sleep(50);
+                        console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
+                        var number = fileio.writeSync(fd, buffer);
+                        console.info('AudioFrameworkRecLog:BufferRecLog: data written: ' + number);
+                        await sleep(100);
+                        stateFlag = true;
+                        resolve();
+                    }
+                });
+            })
             numBuffersToCapture--;
         }
         await sleep(3000);
@@ -5811,21 +5860,25 @@ describe('audioCapturer', function () {
         var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
-            audioCapCallBack.read(bufferSize, true, async (err, buffer) => {
-                if (err) {
-                    console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
-                    stateFlag = false;
-                } else {
-                    console.info('AudioFrameworkRecLog: ---------AFTER CHECK CB READ BUFFER---------');
-                    console.info('AudioFrameworkRecLog: AudioCapturer : readvalue : ' + buffer);
-                    await sleep(50);
-                    console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
-                    var number = fileio.writeSync(fd, buffer);
-                    console.info('BufferRecLog: data written: ' + number);
-                    await sleep(100);
-                    stateFlag = true;
-                }
-            });
+            await new Promise((resolve,reject)=>{
+                audioCapCallBack.read(bufferSize, true, async (err, buffer) => {
+                    if (err) {
+                        console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
+                        stateFlag = false;
+                        reject(err);
+                    } else {
+                        console.info('AudioFrameworkRecLog: ---------AFTER CHECK CB READ BUFFER---------');
+                        console.info('AudioFrameworkRecLog: AudioCapturer : readvalue : ' + buffer);
+                        await sleep(50);
+                        console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
+                        var number = fileio.writeSync(fd, buffer);
+                        console.info('AudioFrameworkRecLog:BufferRecLog: data written: ' + number);
+                        await sleep(100);
+                        stateFlag = true;
+                        resolve();
+                    }
+                });
+            })
             numBuffersToCapture--;
         }
         await sleep(3000);
@@ -5962,21 +6015,25 @@ describe('audioCapturer', function () {
         var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
-            audioCapCallBack.read(bufferSize, true, async (err, buffer) => {
-                if (err) {
-                    console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
-                    stateFlag = false;
-                } else {
-                    console.info('AudioFrameworkRecLog: ---------AFTER CHECK CB READ BUFFER---------');
-                    console.info('AudioFrameworkRecLog: AudioCapturer : readvalue : ' + buffer);
-                    await sleep(50);
-                    console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
-                    var number = fileio.writeSync(fd, buffer);
-                    console.info('BufferRecLog: data written: ' + number);
-                    await sleep(100);
-                    stateFlag = true;
-                }
-            });
+            await new Promise((resolve,reject)=>{
+                audioCapCallBack.read(bufferSize, true, async (err, buffer) => {
+                    if (err) {
+                        console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
+                        stateFlag = false;
+                        reject(err);
+                    } else {
+                        console.info('AudioFrameworkRecLog: ---------AFTER CHECK CB READ BUFFER---------');
+                        console.info('AudioFrameworkRecLog: AudioCapturer : readvalue : ' + buffer);
+                        await sleep(50);
+                        console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
+                        var number = fileio.writeSync(fd, buffer);
+                        console.info('AudioFrameworkRecLog:BufferRecLog: data written: ' + number);
+                        await sleep(100);
+                        stateFlag = true;
+                        resolve();
+                    }
+                });
+            })
             numBuffersToCapture--;
         }
         await sleep(3000);
@@ -6114,21 +6171,25 @@ describe('audioCapturer', function () {
         var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
-            audioCapCallBack.read(bufferSize, true, async (err, buffer) => {
-                if (err) {
-                    console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
-                    stateFlag = false;
-                } else {
-                    console.info('AudioFrameworkRecLog: ---------AFTER CHECK CB READ BUFFER---------');
-                    console.info('AudioFrameworkRecLog: AudioCapturer : readvalue : ' + buffer);
-                    await sleep(50);
-                    console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
-                    var number = fileio.writeSync(fd, buffer);
-                    console.info('BufferRecLog: data written: ' + number);
-                    await sleep(100);
-                    stateFlag = true;
-                }
-            });
+            await new Promise((resolve,reject)=>{
+                audioCapCallBack.read(bufferSize, true, async (err, buffer) => {
+                    if (err) {
+                        console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
+                        stateFlag = false;
+                        reject(err);
+                    } else {
+                        console.info('AudioFrameworkRecLog: ---------AFTER CHECK CB READ BUFFER---------');
+                        console.info('AudioFrameworkRecLog: AudioCapturer : readvalue : ' + buffer);
+                        await sleep(50);
+                        console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
+                        var number = fileio.writeSync(fd, buffer);
+                        console.info('AudioFrameworkRecLog:BufferRecLog: data written: ' + number);
+                        await sleep(100);
+                        stateFlag = true;
+                        resolve();
+                    }
+                });
+            })
             numBuffersToCapture--;
         }
         await sleep(3000);
