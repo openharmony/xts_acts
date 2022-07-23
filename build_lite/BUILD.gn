@@ -37,7 +37,7 @@ lite_component("acts_component") {
         "//test/xts/acts/communication_lite/lwip_hal:ActsLwipTest",
 
         #"//test/xts/acts/communication_lite/wifiservice_hal:ActsWifiServiceTest",
-        "//test/xts/acts/utils_lite/file_hal:ActsUtilsFileTest",
+        "//test/xts/acts/commonlibrary_lite/file_hal:ActsUtilsFileTest",
         "//test/xts/acts/startup_lite/syspara_hal:ActsParameterTest",
         "//test/xts/acts/iot_hardware_lite/iot_controller_hal:ActsWifiIotTest",
         "//test/xts/acts/distributeddatamgr_lite/kv_store_hal:ActsKvStoreTest",
