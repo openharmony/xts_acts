@@ -196,6 +196,49 @@ export default function requestJsunit() {
       console.log("-----------------------request_upload_0006 end-----------------------");
       done();
     })
+
+    /**
+     * @tc.name: ohos.request_request_upload
+     * @tc.desc: request_upload Method detection
+     * @tc.author: kangyuntao
+     */
+    it('request_upload_0007', 0, async function (done) {
+      console.log("-----------------------Request_test_0006 is starting-----------------------");
+      console.log("request_upload_0007 getUploadConfig() " + getUploadConfig());
+      request.upload(getUploadConfig(), (err, uploadTask) => {
+        uploadTask.remove().then((result) => {
+          if (result) {
+            console.info('Upload task removed successfully. ');
+          } else {
+            console.error('Failed to remove the upload task. ');
+          }
+        }).catch((err) => {
+          expect(true).assertEqual(true);
+          console.error('Failed to remove the upload task. Cause: ' + JSON.stringify(err));
+        });
+      })
+      console.log("-----------------------request_upload_0007 end-----------------------");
+      done();
+    })
+
+    /**
+     * @tc.name: ohos.request_request_upload
+     * @tc.desc: request_upload Method detection
+     * @tc.author: kangyuntao
+     */
+    it('request_upload_0008', 0, async function (done) {
+      console.log("-----------------------request_upload_0008 is starting-----------------------");
+      let uploadTask;
+      request.upload(getUploadConfig()).then((data) => {
+        uploadTask = data;
+        expect(uploadTask != null).assertTrue();
+      }).catch((err) => {
+        expect(true).assertTrue();
+        console.info('Failed to request the upload. Cause: ' + JSON.stringify(err));
+      })
+      console.log("-----------------------request_upload_0008 end-----------------------");
+      done();
+    })
   })
 
   function getUploadConfig() {

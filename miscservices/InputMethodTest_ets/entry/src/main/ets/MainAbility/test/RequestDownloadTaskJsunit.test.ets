@@ -335,5 +335,176 @@ export default function requestDownloadJsunit() {
       done();
     });
 
+    /**
+     * @tc.number  requestDownload_test_015
+     * @tc.name    Test The  request DownloadTask
+     * @tc.desc    Function test
+     */
+    it('requestDownload_test_015', 0, async function (done) {
+      console.info("requestDownload_test_015 start")
+      request.download(downloadConfig, (downloadTask) => {
+        console.info("downloadConfig result:" + JSON.stringify(downloadTask))
+        downloadTask.remove().then((result) => {
+          if (result) {
+            expect(result != null).assertTrue();
+            console.info('Download task removed.');
+          } else {
+            console.info('Failed to remove the download task.');
+          }
+        }).catch((err) => {
+          expect(true).assertTrue();
+          console.info('Failed to remove the download task.');
+        });
+      });
+      console.info("requestDownload_test_015 end")
+      done();
+    });
+
+    /**
+     * @tc.number  requestDownload_test_016
+     * @tc.name    Test The  request UploadTask
+     * @tc.desc    Function test
+     */
+    it('requestDownload_test_016', 0, async function (done) {
+      console.info("requestDownload_test_016 start")
+      request.download(downloadConfig, (downloadTask) => {
+        console.info("downloadConfig result:" + JSON.stringify(downloadTask))
+        downloadTask.pause().then((result) => {
+          if (result) {
+            expect(result != null).assertTrue();
+            console.info('Download task paused. ');
+          } else {
+            console.info('Failed to pause the download task. Cause:' + JSON.stringify(result));
+          }
+        }).catch((err) => {
+          expect(true).assertTrue();
+          console.info('Failed to pause the download task. Cause:' + JSON.stringify(err));
+        });
+      });
+      console.info("requestDownload_test_016 end")
+      done();
+    });
+
+    /**
+     * @tc.number  requestDownload_test_017
+     * @tc.name    Test The  request UploadTask
+     * @tc.desc    Function test
+     */
+    it('requestDownload_test_017', 0, async function (done) {
+      console.info("requestDownload_test_017 start")
+      request.download(downloadConfig, (downloadTask) => {
+        console.info("downloadConfig result:" + JSON.stringify(downloadTask))
+        downloadTask.pause((err, result)=>{
+          if(err) {
+            console.info('Failed to pause the download task. Cause:' + JSON.stringify(err));
+            expect(true).assertTrue();
+            return;
+          }
+          if (result) {
+            console.info('Download task paused. ');
+            expect(result != null).assertTrue();
+          } else {
+            console.info('Failed to pause the download task. Cause:' + JSON.stringify(result));
+          }
+        });
+      });
+      console.info("requestDownload_test_017 end")
+      done();
+    });
+
+    /**
+     * @tc.number  requestDownload_test_018
+     * @tc.name    Test The  request UploadTask
+     * @tc.desc    Function test
+     */
+    it('requestDownload_test_018', 0, async function (done) {
+      console.info("requestDownload_test_018 start")
+      request.download(downloadConfig, (downloadTask) => {
+        console.info("downloadConfig result:" + JSON.stringify(downloadTask))
+        downloadTask.resume().then((result) => {
+          if (result) {
+            expect(result != null).assertTrue();
+            console.info('Download task resumed.')
+          } else {
+            console.error('Failed to resume the download task. ');
+          }
+          console.info('Download task resumed.')
+        }).catch((err) => {
+          expect(true).assertEqual(true);
+          console.error('Failed to resume the download task. Cause:' + err);
+        });
+      });
+      console.info("requestDownload_test_018 end")
+      done();
+    });
+
+    /**
+     * @tc.number  requestDownload_test_019
+     * @tc.name    Test The  request UploadTask
+     * @tc.desc    Function test
+     */
+    it('requestDownload_test_019', 0, async function (done) {
+      console.info("requestDownload_test_019 start")
+      request.download(downloadConfig, (downloadTask) => {
+        console.info("downloadConfig result:" + JSON.stringify(downloadTask))
+        downloadTask.resume((err, result)=>{
+          if (err) {
+            expect(true).assertEqual(true);
+            console.info('Failed to resume the download task. Cause:' + err);
+            return;
+          }
+          if (result) {
+            expect(result != null).assertTrue();
+            console.info('Download task resumed.');
+          } else {
+            console.info('Failed to resume the download task.');
+          }
+        });
+      });
+      console.info("requestDownload_test_019 end")
+      done();
+    });
+
+    /**
+     * @tc.number  requestDownload_test_020
+     * @tc.name    Test The  request UploadTask
+     * @tc.desc    Function test
+     */
+    it('requestDownload_test_020', 0, async function (done) {
+      console.info("requestDownload_test_020 start")
+      request.download(downloadConfig, (downloadTask) => {
+        console.info("downloadConfig result:" + JSON.stringify(downloadTask))
+        downloadTask.query().then((downloadInfo) => {
+          expect(downloadInfo != null).assertTrue();
+          console.info('Download task queried. Data:' + JSON.stringify(downloadInfo))
+        }) .catch((err) => {
+          expect(true).assertEqual(true);
+          console.info('Failed to query the download task. Cause:' + err)
+        });
+      });
+      console.info("requestDownload_test_020 end")
+      done();
+    });
+
+    /**
+     * @tc.number  requestDownload_test_021
+     * @tc.name    Test The  request UploadTask
+     * @tc.desc    Function test
+     */
+    it('requestDownload_test_021', 0, async function (done) {
+      console.info("requestDownload_test_021 start")
+      request.download(downloadConfig, (downloadTask) => {
+        console.info("downloadConfig result:" + JSON.stringify(downloadTask))
+        downloadTask.queryMimeType().then((data) => {
+          expect(data != null).assertTrue();
+          console.info('Download task queried. Data:' + JSON.stringify(data));
+        }).catch((err) => {
+          expect(true).assertEqual(true);
+          console.error('Failed to query the download MimeType. Cause:' + JSON.stringify(err))
+        });
+      });
+      console.info("requestDownload_test_021 end")
+      done();
+    });
   })
 }
