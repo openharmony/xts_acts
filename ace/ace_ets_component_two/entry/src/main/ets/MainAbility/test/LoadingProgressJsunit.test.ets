@@ -109,5 +109,41 @@ export default function loadingProgressJsunit() {
       console.info('testLoadingProgress_600 END');
       done();
     });
+
+    it('testLoadingProgress_700', 0, async function (done) {
+      console.info('[testLoadingProgress_700] START');
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('LPOrbital');
+      let obj = JSON.parse(strJson);
+      console.info("testLoadingProgress_700 component obj is: " + JSON.stringify(obj));
+      console.log(JSON.stringify(obj.$attrs.content))
+      expect(obj.$attrs.content).assertEqual(LoadingProgressStyle.Orbital.toString())
+      console.info('testLoadingProgress_700 END');
+      done();
+    });
+
+    it('testLoadingProgress_800', 0, async function (done) {
+      console.info('[testLoadingProgress_800] START');
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('LPDefault');
+      let obj = JSON.parse(strJson);
+      console.info("testLoadingProgress_800 component obj is: " + JSON.stringify(obj));
+      console.log(JSON.stringify(obj.$attrs.content))
+      expect(obj.$attrs.content).assertEqual(LoadingProgressStyle.Default.toString())
+      console.info('testLoadingProgress_800 END');
+      done();
+    });
+
+    it('testLoadingProgress_900', 0, async function (done) {
+      console.info('[testLoadingProgress_900] START');
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('LPCircular');
+      let obj = JSON.parse(strJson);
+      console.info("testLoadingProgress_900 component obj is: " + JSON.stringify(obj));
+      console.log(JSON.stringify(obj.$attrs.content))
+      expect(obj.$attrs.content).assertEqual(LoadingProgressStyle.Circular.toString())
+      console.info('testLoadingProgress_900 END');
+      done();
+    });
   })
 }

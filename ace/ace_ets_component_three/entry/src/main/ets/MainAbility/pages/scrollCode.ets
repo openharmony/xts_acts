@@ -116,6 +116,9 @@ struct scrollCode {
         console.info(xOffset + ' ' + yOffset)
       })
       .onScrollEdge((side: Edge) => {
+        if (side==Edge.Middle) {
+          globalThis.sideMiddle = side;
+        }
         console.info('To the edge')
       })
       .onScrollEnd(() => {
