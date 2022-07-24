@@ -609,7 +609,7 @@ export default function settingUiJsunit() {
         }
     });
 
-    it('settings_get_value_034, 0, async function (done){
+    it('settings_get_value_034', 0, async function (done){
         let uri = 'dataability:///com.ohos.settingsdata.DataAbility';
         let helper = featureAbility.acquireDataAbilityHelper(uri);
 
