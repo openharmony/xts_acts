@@ -73,7 +73,11 @@ describe('AccessibleAbilityList', function () {
 				expect(item.eventTypes != undefined).assertEqual(true);
 				done();
 				console.info(item.capabilities);
-                if (item.capabilities == retrieve || item.capabilities == touchGuide || item.capabilities == keyEventObserver || item.capabilities == zoom || item.capabilities == gesture) {
+                if (item.capabilities == retrieve ||
+				item.capabilities == touchGuide ||
+				item.capabilities == keyEventObserver ||
+				item.capabilities == zoom ||
+				item.capabilities == gesture) {
                     expect(true).assertTrue();
 					done();
                 }
