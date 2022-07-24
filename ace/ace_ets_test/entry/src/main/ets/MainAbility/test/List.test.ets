@@ -17,6 +17,11 @@ import appStorageJsunit from './AppStorageJsunit.test.ets';
 import linkJsunit from './LinkJsunit.test.ets';
 import propJsunit from './PropJsunit.test.ets';
 import alphabetIndexerJsunit from './AlphabetIndexerJsunit.test.ets';
+import checkboxGroupJsunit from './CheckboxGroupJsunit.test.ets';
+import commonJsunit from './CommonJsunit.test.ets';
+import enumsWeekJsunit from './EnumsWeekJsunit.test.ets';
+import progressPageJsunit from './ProgressPageJsunit.test.ets';
+import sideBarPageJsunit from './SideBarPageJsunit.test.ets';
 import listJsunit from './ListJsunit.test.ets';
 import tabJsunit from './TabJsunit.test.ets';
 import swiperJsunit from './SwiperJsunit.test.ets';
@@ -29,6 +34,11 @@ import gridJsunit from './GridJsnuit.test.ets';
 import videoJsunit from './VideoJsunit.test.ets';
 export default function testsuite() {
   alphabetIndexerJsunit()
+  checkboxGroupJsunit()
+  commonJsunit()
+  enumsWeekJsunit()
+  progressPageJsunit()
+  sideBarPageJsunit()
   rowJsunit()
   gridJsunit()
   gridItemJsunit()

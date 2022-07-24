@@ -51,6 +51,10 @@ struct LoadingProgressExample {
         .key('LP')
         .height(this.loadingHeight)
         .color(Color.Black)
+
+      Text(''+LoadingProgressStyle.Circular).width(100).height(60).fontSize(20).key('LPCircular')
+      Text(''+LoadingProgressStyle.Default).width(100).height(60).fontSize(20).key('LPDefault')
+      Text(''+LoadingProgressStyle.Orbital).width(100).height(60).fontSize(20).key('LPOrbital')
     }.width('100%').margin({ top: 6 })
   }
 }

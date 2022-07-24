@@ -41,8 +41,17 @@ struct MouseEventExample {
           if (event.button === MouseButton.Back) {
             this.eventButton = 'Back'
           }
+          if (event.button === MouseButton.Middle) {
+            this.eventButton = 'Middle'
+          }
+          if (event.button === MouseButton.Forward) {
+            this.eventButton = 'Forward'
+          }
           if (event.button === MouseButton.None) {
             this.eventButton = 'None'
+          }
+          if (event.event.action === MouseAction.Press) {
+            this.eventAction = 'Press'
           }
           if (event.event.action === MouseAction.Release) {
             this.eventAction = 'Release'
