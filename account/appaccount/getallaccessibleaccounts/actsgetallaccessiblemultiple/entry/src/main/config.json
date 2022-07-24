@@ -24,13 +24,6 @@
       "moduleName": "entry",
       "moduleType": "entry"
     },
-    "defPermissions": [
-      {
-        "availableScope": [],
-        "grantMode": "system_grant",
-        "name": "ohos.permission.GET_ALL_APP_ACCOUNTS"
-      }
-    ],
     "reqPermissions": [
       {
         "name": "ohos.permission.GET_ALL_APP_ACCOUNTS",
