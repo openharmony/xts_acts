@@ -24,18 +24,6 @@
       "moduleName": "entry",
       "moduleType": "entry"
     },
-    "defPermissions": [
-      {
-        "availableScope": [],
-        "grantMode": "system_grant",
-        "name": "ohos.permission.MANAGE_LOCAL_ACCOUNTS"
-      },
-      {
-        "availableScope": [],
-        "grantMode": "system_grant",
-        "name": "ohos.permission.DISTRIBUTED_DATASYNC"
-      }
-    ],
     "reqPermissions": [
       {
         "name": "ohos.permission.MANAGE_LOCAL_ACCOUNTS",

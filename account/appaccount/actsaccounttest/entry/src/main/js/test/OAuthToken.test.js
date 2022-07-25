@@ -30,25 +30,22 @@ const OWNERSELF = "com.example.actsaccounttest";
 
 describe('ActsAccountOAuthToken', function () {
     function sleep(delay) {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve()
-            }, delay)
-        }).then(() => {
-            console.info(`sleep #{time} over ...`)
-        })
+        var start = (new Date()).getTime();
+        while((new Date()).getTime() - start < delay) {
+            continue;
+        }
     }
 
     beforeAll(async function (done) {
         console.debug("====>beforeAll start====");
-        await sleep(TIMEOUT);
+        sleep(TIMEOUT);
         console.debug("====>beforeAll end====");
         done();
     });
 
     beforeEach(async function (done) {
         console.debug("====>beforeAll enter====");
-        await sleep(EACHTIMEOUT);
+        sleep(EACHTIMEOUT);
         done();
     });
 
@@ -511,14 +508,15 @@ describe('ActsAccountOAuthToken', function () {
         console.debug("====>ActsAccountOAuthToken_8100 start====");
         var appAccountManager = account.createAppAccountManager();
         console.debug("====>ActsAccountOAuthToken_8100 getAllOAuthTokens start====");
-        appAccountManager.getAllOAuthTokens(limitName, OWNERSELF,(err,ArrayData)=>{
-            console.debug("====>ActsAccountOAuthToken_8100 getAllOAuthTokens err:" + JSON.stringify(err));
-            console.debug("====>ActsAccountOAuthToken_8100 getAllOAuthTokens ArrayData:" + JSON.stringify(ArrayData));
-            expect(err.code!=0).assertEqual(true);
+        appAccountManager.getAllOAuthTokens(limitName, OWNERSELF).then((ArrayData)=>{
+            console.debug("====>ActsAccountOAuthToken_8100 getAllOAuthTokens ArrayData:" + JSON.stringify(ArrayData));           
             expect(ArrayData.length).assertEqual(0);
             console.debug("====>ActsAccountOAuthToken_8100 ====");
             done();
-        });
+        }).catch((err)=>{
+            expect(err.code!=0).assertEqual(true);
+            done();
+        })
     });
     
     it('ActsAccountOAuthToken_8200', 0, async function (done) {
@@ -2458,12 +2456,14 @@ describe('ActsAccountOAuthToken', function () {
         it('ActsAccountOAuthToken_9200', 0, async function (done) {
             console.debug("====>ActsAccountOAuthToken_9200 start====");
             var appAccountManager = account.createAppAccountManager();
-            appAccountManager.getAuthenticatorCallback("test_sessionId",(err,databack)=>{
-                console.debug("====>ActsAccountOAuthToken_9200 getAuthenticatorCallback err:" + JSON.stringify(err));
-                expect(err.code!=0).assertEqual(true);
+            appAccountManager.getAuthenticatorCallback("test_sessionId").then((databack)=>{
                 expect(databack).assertEqual(undefined);
                 done();
-            });
+            }).catch((err)=>{
+                console.debug("====>ActsAccountOAuthToken_9200 getAuthenticatorCallback err:" + JSON.stringify(err));
+                expect(err.code!=0).assertEqual(true);
+                done();
+            })
         });
     
         it('ActsAccountOAuthToken_9300', 0, async function (done) {
@@ -2494,6 +2494,25 @@ describe('ActsAccountOAuthToken', function () {
             appAccountManager.getAuthenticatorInfo(OWNERSELF,(err,databack)=>{
                 console.debug("====>ActsAccountOAuthToken_9500 getAuthenticatorInfo err:" + JSON.stringify(err));
                 expect(err.code!=0).assertEqual(true);
+                expect(account.ResultCode.SUCCESS).assertEqual(0);
+                expect(account.ResultCode.ERROR_ACCOUNT_NOT_EXIST).assertEqual(10001);
+                expect(account.ResultCode.ERROR_APP_ACCOUNT_SERVICE_EXCEPTION).assertEqual(10002);
+                expect(account.ResultCode.ERROR_INVALID_PASSWORD).assertEqual(10003);
+                expect(account.ResultCode.ERROR_INVALID_REQUEST).assertEqual(10004);
+                expect(account.ResultCode.ERROR_INVALID_RESPONSE).assertEqual(10005);
+                expect(account.ResultCode.ERROR_NETWORK_EXCEPTION).assertEqual(10006);
+                expect(account.ResultCode.ERROR_OAUTH_AUTHENTICATOR_NOT_EXIST).assertEqual(10007);
+                expect(account.ResultCode.ERROR_OAUTH_CANCELED).assertEqual(10008);
+                expect(account.ResultCode.ERROR_OAUTH_LIST_TOO_LARGE).assertEqual(10009);
+                expect(account.ResultCode.ERROR_OAUTH_SERVICE_BUSY).assertEqual(10010);
+                expect(account.ResultCode.ERROR_OAUTH_SERVICE_EXCEPTION).assertEqual(10011);
+                expect(account.ResultCode.ERROR_OAUTH_SESSION_NOT_EXIST).assertEqual(10012);
+                expect(account.ResultCode.ERROR_OAUTH_TIMEOUT).assertEqual(10013);
+                expect(account.ResultCode.ERROR_OAUTH_TOKEN_NOT_EXIST).assertEqual(10014);
+                expect(account.ResultCode.ERROR_OAUTH_TOKEN_TOO_MANY).assertEqual(10015);
+                expect(account.ResultCode.ERROR_OAUTH_UNSUPPORT_ACTION).assertEqual(10016);
+                expect(account.ResultCode.ERROR_OAUTH_UNSUPPORT_AUTH_TYPE).assertEqual(10017);
+                expect(account.ResultCode.ERROR_PERMISSION_DENIED).assertEqual(10018);           
                 done();
             });
         });
@@ -2504,6 +2523,17 @@ describe('ActsAccountOAuthToken', function () {
             appAccountManager.getAuthenticatorInfo("",(err,databack)=>{
                 console.debug("====>ActsAccountOAuthToken_9600 getAuthenticatorInfo err:" + JSON.stringify(err));
                 expect(err.code!=0).assertEqual(true);
+                expect(account.Constants.ACTION_ADD_ACCOUNT_IMPLICITLY).assertEqual('addAccountImplicitly');
+                expect(account.Constants.ACTION_AUTHENTICATE).assertEqual('authenticate');
+                expect(account.Constants.KEY_NAME).assertEqual('name');
+                expect(account.Constants.KEY_OWNER).assertEqual('owner');
+                expect(account.Constants.KEY_TOKEN).assertEqual('token');
+                expect(account.Constants.KEY_ACTION).assertEqual('action');
+                expect(account.Constants.KEY_AUTH_TYPE).assertEqual('authType');
+                expect(account.Constants.KEY_SESSION_ID).assertEqual('sessionId');
+                expect(account.Constants.KEY_CALLER_PID).assertEqual('callerPid');
+                expect(account.Constants.KEY_CALLER_UID).assertEqual('callerUid');
+                expect(account.Constants.KEY_CALLER_BUNDLE_NAME).assertEqual('callerBundleName');
                 done();
             });
         });
@@ -2538,9 +2568,7 @@ describe('ActsAccountOAuthToken', function () {
             appAccountManager.addAccount("account_setOAuthTokenVisibility_name",(err,)=>{
                 console.debug("====>ActsAccountOAuthToken_9900 addAccount err:" + JSON.stringify(err));
                 expect(err.code).assertEqual(0);
-                appAccountManager.setOAuthTokenVisibility("account_setOAuthTokenVisibility_name","authType","test_BundleName",true,(err)=>{
-                    console.debug("====>ActsAccountOAuthToken_9900 setOAuthTokenVisibility err:" + JSON.stringify(err));
-                    expect(err.code).assertEqual(0);
+                appAccountManager.setOAuthTokenVisibility("account_setOAuthTokenVisibility_name","authType","test_BundleName",true).then(()=>{
                     appAccountManager.getOAuthToken("account_setOAuthTokenVisibility_name",OWNERSELF,"authType",(err,data)=>{
                         console.debug("====>ActsAccountOAuthToken_9900 getOAuthToken err:" + JSON.stringify(err));
                         console.debug("====>ActsAccountOAuthToken_9900 getOAuthToken data:" + data);
@@ -2560,7 +2588,10 @@ describe('ActsAccountOAuthToken', function () {
                             });
                         });
                     });
-                });
+                }).catch((err)=>{
+                    expect(err.code).assertEqual(0);
+                    done();
+                })
             });
         });
     
@@ -3227,13 +3258,14 @@ describe('ActsAccountOAuthToken', function () {
         it('ActsAccountOAuthToken_12700', 0, async function (done) {
             console.debug("====>ActsAccountOAuthToken_12700 start====");
             var appAccountManager = account.createAppAccountManager();
-            appAccountManager.getOAuthList("","authType",(err,dataArray)=>{
-                console.debug("====>ActsAccountOAuthToken_12700 getOAuthList err:" + JSON.stringify(err));
-                console.debug("====>ActsAccountOAuthToken_12700 getOAuthList dataArray:" + JSON.stringify(dataArray));
-                expect(err.code!=0).assertEqual(true);
+            appAccountManager.getOAuthList("","authType").then((dataArray)=>{
+                console.debug("====>ActsAccountOAuthToken_12700 getOAuthList dataArray:" + JSON.stringify(dataArray));                
                 expect(dataArray.length).assertEqual(0);
                 done();
-            });
+            }).catch((err)=>{
+                expect(err.code!=0).assertEqual(true);
+                done();
+            })
         });
     
         it('ActsAccountOAuthToken_12800', 0, async function (done) {
@@ -3337,6 +3369,8 @@ describe('ActsAccountOAuthToken', function () {
                 console.debug("====>ActsAccountOAuthToken_13200 getAuthenticatorInfo err:" + JSON.stringify(err));
                 console.debug("====>ActsAccountOAuthToken_13200 getAuthenticatorInfo dataInfo:" + JSON.stringify(dataInfo));
                 expect(err.code).assertEqual(0);
+                expect(isNaN(dataInfo.iconId)).assertFalse();
+                expect(isNaN(dataInfo.labelId)).assertFalse();
 				done();
             });
         });
@@ -3383,18 +3417,6 @@ describe('ActsAccountOAuthToken', function () {
                     done();
                 }
             });
-            done();
-        });
-it('ActsAccountOAuthToken_28500', 0, async function (done) {
-            console.debug("====>ActsAccountOAuthToken_28500 start====");
-            var appAccountManager = account.createAppAccountManager();
-            var dataInfo = await appAccountManager.getAuthenticatorInfo
-            ("com.example.actsaccountOauthtoken").catch((err)=>{
-                console.debug("====>ActsAccountOAuthToken_28500 getAuthenticatorInfo err:" + JSON.stringify(err));
-                    expect(err.code).assertEqual(0);
-            });
-                console.debug("====>ActsAccountOAuthToken_28500 getAuthenticatorInfo dataInfo:" 
-                + JSON.stringify(dataInfo));
             done();
         });
 })
