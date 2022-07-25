@@ -17,11 +17,17 @@ group("barrierfree") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "accessibilityconfig:ActsAccessibilityConfigTest",
+      "accessibilityelement:ActsAccessibilityElementTest",
+      "accessibilityevent:ActsAccessibilityEventTest",
+      "accessibilityextension:ActsAccessibilityExtensionTest",
+      "accessibilityextensioncontext:ActsAccessibilityExtensionContextTest",
       "accessibleabilitylist:ActsAccessibleAbilityListTest",
       "accessiblecaptionconfiguration:ActsAccessibleCaptionConfigurationTest",
       "accessiblecheckability:ActsAccessibleCheckAbilityTest",
       "accessibleregisterstate:ActsAccessibleRegisterStateTest",
       "accessiblesendevent:ActsAccessibleSendEventTest",
+      "targetProject/aceTest:aceTest",
     ]
   }
 }
