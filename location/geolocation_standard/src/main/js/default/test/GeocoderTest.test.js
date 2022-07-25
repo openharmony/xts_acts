@@ -322,26 +322,32 @@ describe('geolocationTest_geo1', function () {
         geolocation.getAddressesFromLocationName(geocodeRequest, (err, data) => {
             if(err){
                 switch(err){
+                    case 100:
+                        console.info("NOT_SUPPORTED"+ JSON.stringify(err));
+                        break;
                     case 101:
-                        console.info("INPUT_PARAMS_ERROR: "+ JSON.stringify(err));
+                        console.info("INPUT_PARAMS_ERROR"+ JSON.stringify(err));
                         break;
                     case 102:
-                        console.info("REVERSE_GEOCODE_ERROR: "+ JSON.stringify(err));
+                        console.info("REVERSE_GEOCODE_ERROR"+ JSON.stringify(err));
                         break;
                     case 103:
-                        console.info("GEOCODE_ERROR: "+ JSON.stringify(err));
+                        console.info("GEOCODE_ERROR"+ JSON.stringify(err));
                         break;
                     case 104:
-                        console.info("LOCATOR_ERROR: "+ JSON.stringify(err));
+                        console.info("LOCATOR_ERROR"+ JSON.stringify(err));
                         break;
                     case 105:
-                        console.info("LOCATION_SWITCH_ERROR: "+ JSON.stringify(err));
+                        console.info("LOCATION_SWITCH_ERROR"+ JSON.stringify(err));
                         break;
                     case 106:
-                        console.info("LAST_KNOWN_LOCATION_ERROR: "+ JSON.stringify(err));
+                        console.info("LAST_KNOWN_LOCATION_ERROR"+ JSON.stringify(err));
                         break;
                     case 107:
-                        console.info("LOCATION_REQUEST_TIMEOUT_ERROR: "+ JSON.stringify(err));
+                        console.info("LOCATION_REQUEST_TIMEOUT_ERROR"+ JSON.stringify(err));
+                        break;
+                    case 108:
+                        console.info("QUERY_COUNTRY_CODE_ERROR "+ JSON.stringify(err));
                         break;
                     default:
                         console.info('[lbs_js]  getAddressesFromLocationName callback err is : ' + JSON.stringify(err));
@@ -1507,7 +1513,7 @@ describe('geolocationTest_geo1', function () {
             console.info('[lbs_js] getLastLocation promise result: ' + JSON.stringify(result));
             expect(result).assertTrue();
         }).catch((error) => {
-            console.info('[lbs_js] getLastLocation promise then err: ' + JSON.stringify(result));
+            console.info('[lbs_js] getLastLocation promise result: ' + JSON.stringify(error));
             console.info('[lbs_js] not support now');
             expect(true).assertEqual(JSON.stringify(error)!=null);
         });
@@ -1653,8 +1659,8 @@ describe('geolocationTest_geo1', function () {
             console.info('sendCommand promise result:'+result);
             done();
         }).catch(error=>{
-            console.info('sendcommand promise err:'+err);
-            expect(true).assertEqual(JSON.stringify(err)!=null); 
+            console.info('sendcommand promise err:'+error);
+            expect(true).assertEqual(JSON.stringify(error)!=null); 
             done();
         })
     })
