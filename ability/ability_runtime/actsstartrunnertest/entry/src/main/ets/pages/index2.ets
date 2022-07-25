@@ -1,3 +1,4 @@
+actsstartrunnertest/entry/src/main/ets/pages/index3.ets
 @Entry
 @Component
 struct Index {
