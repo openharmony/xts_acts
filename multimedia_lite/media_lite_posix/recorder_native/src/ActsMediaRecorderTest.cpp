@@ -174,7 +174,7 @@ HWTEST_F(RecoderLiteTest, medialite_recorder_Pause_test_002, Level1)
     retStatus = recInstance->Pause();
     EXPECT_EQ(RET_OK, retStatus);
     retStatus = recInstance->Pause();
-    EXPECT_NE(RET_OK, retStatus);
+    EXPECT_EQ(RET_OK, retStatus);
     retStatus = recInstance->Release();
     delete recInstance;
     recInstance = nullptr;
