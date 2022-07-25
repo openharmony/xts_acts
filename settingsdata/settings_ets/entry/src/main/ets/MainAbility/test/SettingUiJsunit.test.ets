@@ -1177,7 +1177,7 @@ export default function settingUiJsunit() {
           return;
         })
       }catch(err){
-        console.info("[settings_get_value_111] error is:" + toString(error));
+        console.info("[settings_get_value_112] error is:" + toString(error));
         expect(true).assertTrue();
         done();
         return;
