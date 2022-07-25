@@ -28,6 +28,7 @@ group("bundlemanager") {
       "actsbmsstageetstest:ActBmsStageEtsTest",
       "actsbundlemanageretstest:ActsBundleManagerEtsTest",
       "actsbundlemanagertest:ActsBundleManagerTest",
+      "actsbundlenativetest:ActsBmsNapiEtsTest",
       "sceneProject/bmsaccesstokenfive:bmsAccessTokenTest5",
       "sceneProject/bmsaccesstokenfour:bmsAccessTokenTest4",
       "sceneProject/bmsaccesstokenone:bmsAccessTokenTest1",

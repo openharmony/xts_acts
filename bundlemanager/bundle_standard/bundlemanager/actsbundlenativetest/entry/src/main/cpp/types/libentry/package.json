@@ -1,0 +1,4 @@
+{
+  "name": "libteststring.so",
+  "types": "./index.d.ts"
+}
