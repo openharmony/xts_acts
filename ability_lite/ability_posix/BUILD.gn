@@ -27,7 +27,7 @@ hcpptest_suite("ActsAbilityMgrTest") {
     "${appexecfwk_lite_path}/frameworks/bundle_lite:bundle",
     "//base/hiviewdfx/hilog_lite/frameworks/featured:hilog_shared",
     "//foundation/communication/ipc/interfaces/innerkits/c/ipc:ipc_single",
-    "//foundation/distributeddatamgr/appdatamgr/kv_store/interfaces/inner_api/kv_store:kv_store",
+    "//foundation/distributeddatamgr/kv_store/interfaces/inner_api/kv_store:kv_store",
     "//foundation/distributedschedule/samgr_lite/samgr:samgr",
   ]
   if (enable_ohos_appexecfwk_feature_ability == true) {
