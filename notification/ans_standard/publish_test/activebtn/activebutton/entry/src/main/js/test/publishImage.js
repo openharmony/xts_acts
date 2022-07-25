@@ -67,7 +67,7 @@ describe('ActsAnsPublishImageTest', function () {
     it('ActsPublishImage_test_0300', 0, async function (done) {
         console.debug("===ActsPublishImage_test_0300===begin===>");
         BufferC = new ArrayBuffer( 4*1024* 2048);
-        optsC = {alphaType: 0, editable: true, pixelFormat: 4, scaleMode: 1, size: {height: 1024, width: 2048}}
+        optsC = {alphaType: 0, editable: true, pixelFormat: 0, scaleMode: 1, size: {height: 1024, width: 2048}}
 
         const promise_Large = image.createPixelMap(BufferC, optsC);
         promise_Large.then((data) => {
