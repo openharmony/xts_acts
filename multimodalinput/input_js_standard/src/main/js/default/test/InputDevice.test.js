@@ -328,7 +328,7 @@ describe('MultimodalInput_test', function () {
   it("MultimodalInputDevice_on_test", 0, function () {
     console.info(`MultimodalInputDevice_on_test enter`);
     let isPhysicalKeyboardExist = true;
-    inputDevice.on("changed", (data) => {
+    inputDevice.on("change", (data) => {
       console.info("type: " + data.type + ", deviceId: " + data.deviceId);
       inputDevice.getKeyboardType(data.deviceId, (err, ret) => {
         console.info("The keyboard type of the device is: " + ret);
@@ -357,7 +357,7 @@ describe('MultimodalInput_test', function () {
       expect(data).assertInstanceOf('DeviceListener');
     }
     // 单独取消listener的监听。
-    inputDevice.off("changed", listener);
+    inputDevice.off("change", listener);
     console.info(`MultimodalInputDevice_off_test exit`);
   })
   
