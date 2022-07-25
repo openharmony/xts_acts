@@ -32,7 +32,7 @@
 
 using namespace std;
 using namespace testing::ext;
-class ToolChainTest : public testing::Test {};
+class toolchaintest : public testing::Test {};
 
 volatile int t_status = 0;
 
@@ -66,7 +66,7 @@ static int runtests(const char *argvs)
     sigaddset(&set, SIGCHLD);
     sigprocmask(SIG_BLOCK, &set, nullptr);
     retfunc = signal(SIGCHLD, handler);
-    if (retfunc == SIG_ERR) {
+    if (retfunc == int(SIG_ERR)) {
         printf("signal triggering failed:%s\n", strerror(errno));
     }
     pid = start(wrap, argvs);
@@ -109,11 +109,11 @@ static int runtests(const char *argvs)
 }
 
 /**
- * @tc.name      : ToolChainTest.LibcTest
+ * @tc.name      : toolchaintest.LibcTest
  * @tc.desc      : start test
  * @tc.level     : Level 2
  */
-HWTEST_F(ToolChainTest, LibcTest, Function | MediumTest | Level3)
+static HWTEST_F(toolchaintest, LibcTest, Function | MediumTest | Level3)
 {
     int ret;
     vector<string> temp;
