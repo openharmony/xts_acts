@@ -4427,4 +4427,18 @@ describe('audioManager', function () {
         done();
     })
 
+     /* *
+             * @tc.number    : SUB_AUDIO_MANAGER_DeviceType_001
+             * @tc.name      : DeviceType - BLUETOOTH_SCO
+             * @tc.desc      : DeviceType - BLUETOOTH_SCO
+             * @tc.size      : MEDIUM
+             * @tc.type      : Function
+             * @tc.level     : Level 0
+         */
+     it('SUB_AUDIO_MANAGER_DeviceType_001', 0, async function (done) {
+        expect(audio.DeviceType.BLUETOOTH_SCO).assertEqual(7);
+        await sleep(50);
+        done();
+    })
+
 })
