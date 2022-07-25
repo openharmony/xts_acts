@@ -70,13 +70,13 @@ export default function settingUiJsunit() {
       done();
     });
 
-    it('settings_get_value_006', 0, async function () {
+    it('settings_get_value_006', 0, async function (done) {
       var name = 'settings.screen.brightness2';
       var uri = settings.getUriSync(name);
       console.info("[settings_get_value_006] uri is: " + uri);
       var helper = featureAbility.acquireDataAbilityHelper(uri);
       let obj = {
-        "aa": aa
+        aa: "aa"
       }
       try {
         let value = settings.getValueSync(helper, name, obj);
@@ -84,13 +84,13 @@ export default function settingUiJsunit() {
         expect(value).assertEqual("test getValueSync");
       } catch (err) {
         console.error("[settings_get_value_006] error = " + err);
-        expect(err == "Error: assertion (valueType == napi_string) failed: Wrong argument type. String expected.")
+        expect(err == "Error: assertion (valueType == napi_string) failed: Wrong argument[2] type. String expected.")
           .assertTrue();
       }
       done();
     });
 
-    it('settings_get_value_007', 0, async function () {
+    it('settings_get_value_007', 0, async function (done) {
       var name = 'settings.screen.brightness3';
       var uri = settings.getUriSync(name);
       console.info("[settings_get_value_007] uri is: " + uri);
@@ -261,7 +261,7 @@ export default function settingUiJsunit() {
       done();
     });
 
-    it('settings_get_value_0016', 0, async function () {
+    it('settings_get_value_0016', 0, async function (done) {
       let name = 1332;
       try {
         var uri = settings.getUriSync(name);
