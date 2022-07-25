@@ -56,7 +56,16 @@ describe('PasteBoardTest2', function () {
     */
     it('pasteboard_function_test72', 0, async function (done) {
         console.info('SUB_pasteBoard_function_JS_API_7200 start')
-        var html = "<!DOCTYPE html>\n" + "<html>\n" + "<head>\n" + "<meta charset=\"utf-8\">\n" + "<title>HTML-PASTEBOARD_HTML</title>\n" + "</head>\n" + "<body>\n" + "    <h1>HEAD</h1>\n" + "    <p></p>\n" + "</body>\n" + "</html>";
+        var html = "<!DOCTYPE html>\n"
+        + "<html>\n" + "<head>\n"
+        + "<meta charset=\"utf-8\">\n"
+        + "<title>HTML-PASTEBOARD_HTML</title>\n"
+        + "</head>\n"
+        + "<body>\n"
+        + "    <h1>HEAD</h1>\n"
+        + "    <p></p>\n"
+        + "</body>\n"
+        + "</html>";
         var pasteData = pasteboard.createHtmlData(html);
         var htmlText = pasteData.getPrimaryHtml();
         expect(htmlText != null).assertTrue();
