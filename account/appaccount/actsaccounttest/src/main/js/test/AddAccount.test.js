@@ -31,10 +31,10 @@ export default function ActsAccountAddAccount() {
             console.debug("====>creat finish====");
             appAccountManager.addAccount("account_name_callback_first", (err)=>{
                 console.debug("====>add account ActsAccountAddAccount_0100 err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.deleteAccount("account_name_callback_first", (err)=>{
                     console.debug("====>delete Account ActsAccountAddAccount_0100 err:" + JSON.stringify(err));
-                    expect(err.code).assertEqual(0);
+                    expect(err).assertEqual(undefined);
                     console.debug("====>ActsAccountAddAccount_0100 end====");
                     done();
                 });
@@ -76,10 +76,10 @@ export default function ActsAccountAddAccount() {
             console.debug("====>creat finish====");
             appAccountManager.addAccount("account_name_callback_second", "account_extraInfo_callback_second", (err)=>{
                 console.debug("====>add account ActsAccountAddAccount_0300 err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.deleteAccount("account_name_callback_second", (err)=>{
                     console.debug("====>delete Account ActsAccountAddAccount_0300 err:" + JSON.stringify(err));
-                    expect(err.code).assertEqual(0);
+                    expect(err).assertEqual(undefined);
                     console.debug("====>ActsAccountAddAccount_0300 end====");
                     done();
                 });
@@ -121,13 +121,13 @@ export default function ActsAccountAddAccount() {
             var appAccountManager = account.createAppAccountManager();
             appAccountManager.addAccount("account_name_callback_third", "account_extraInfo_callback_third", (err)=>{
                 console.debug("====>add account first time ActsAccountAddAccount_0500 err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.addAccount("account_name_callback_third", "account_extraInfo_callback_third", (err)=>{
                     console.debug("====>add account second time ActsAccountAddAccount_0500 err:" + JSON.stringify(err));
                     expect(err.code != 0).assertEqual(true);
                     appAccountManager.deleteAccount("account_name_callback_third", (err)=>{
                         console.debug("====>delete Account ActsAccountAddAccount_0500 err:" + JSON.stringify(err));
-                        expect(err.code).assertEqual(0);
+                        expect(err).assertEqual(undefined);
                         console.debug("====>ActsAccountAddAccount_0500 end====");
                         done();
                     });
@@ -292,10 +292,10 @@ export default function ActsAccountAddAccount() {
             var appAccountManager = account.createAppAccountManager();
             appAccountManager.addAccount("account_name_callback_seventh", "", (err)=>{
                 console.debug("====>add account ActsAccountAddAccount_1300 err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.deleteAccount("account_name_callback_seventh", (err)=>{
                     console.debug("====>delete Account ActsAccountAddAccount_1300 err:" + JSON.stringify(err));
-                    expect(err.code).assertEqual(0);
+                    expect(err).assertEqual(undefined);
                     console.debug("====>ActsAccountAddAccount_1300 end====");
                     done();
                 });
@@ -373,10 +373,10 @@ export default function ActsAccountAddAccount() {
             var specialStr = "#@$%^&*()_+!<>~?,./[]abcdefgABCDEFG1234567890";
             appAccountManager.addAccount(specialStr, "account_extraInfo_callback_ninth", (err)=>{
                 console.debug("====>add account ActsAccountAddAccount_1700 err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.deleteAccount(specialStr, (err)=>{
                     console.debug("====>delete Account ActsAccountAddAccount_1700 err" + JSON.stringify(err));
-                    expect(err.code).assertEqual(0);
+                    expect(err).assertEqual(undefined);
                     console.debug("====>ActsAccountAddAccount_1700 end====");
                     done();
                 });
@@ -418,10 +418,10 @@ export default function ActsAccountAddAccount() {
             var specialStr = " ";
             appAccountManager.addAccount("account_name_callback_tenth", specialStr, (err)=>{
                 console.debug("====>add account ActsAccountAddAccount_1900 err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.deleteAccount("account_name_callback_tenth", (err)=>{
                     console.debug("====>delete Account ActsAccountAddAccount_1900 err" + JSON.stringify(err));
-                    expect(err.code).assertEqual(0);
+                    expect(err).assertEqual(undefined);
                     console.debug("====>ActsAccountAddAccount_1900 end====");
                     done();
                 });
@@ -463,10 +463,10 @@ export default function ActsAccountAddAccount() {
             var specialStr = "#@$%^&*()_+!<>~?,./[]abcdefgABCDEFG1234567890";
             appAccountManager.addAccount("account_extraInfo_callback_eleventh", specialStr, (err)=>{
                 console.debug("====>add account ActsAccountAddAccount_2100 err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.deleteAccount("account_extraInfo_callback_eleventh", (err)=>{
                     console.debug("====>delete Account ActsAccountAddAccount_2100 err" + JSON.stringify(err));
-                    expect(err.code).assertEqual(0);
+                    expect(err).assertEqual(undefined);
                     console.debug("====>ActsAccountAddAccount_2100 end====");
                     done();
                 });
@@ -507,13 +507,13 @@ export default function ActsAccountAddAccount() {
             var appAccountManager = account.createAppAccountManager();
             appAccountManager.addAccount("account_name_callback_same", "account_extraInfo_callback", (err)=>{
                 console.debug("====>add account first time ActsAccountAddAccount_2300 err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.addAccount("account_name_callback_same", "account_extraInfo_callback_different", (err)=>{
                     console.debug("====>add account second time ActsAccountAddAccount_2300 err:" + JSON.stringify(err));
                     expect(err.code != 0).assertEqual(true);
                     appAccountManager.deleteAccount("account_name_callback_same", (err)=>{
                         console.debug("====>delete Account ActsAccountAddAccount_2300 err:" + JSON.stringify(err));
-                        expect(err.code).assertEqual(0);
+                        expect(err).assertEqual(undefined);
                         console.debug("====>ActsAccountAddAccount_2300 end====");
                         done();
                     });
@@ -558,10 +558,10 @@ export default function ActsAccountAddAccount() {
             var appAccountManager = account.createAppAccountManager();
             appAccountManager.addAccount(limitName, "account_extraInfo_callback", (err)=>{
                 console.debug("====>add account ActsAccountAddAccount_2500 err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.deleteAccount(limitName, (err)=>{
                     console.debug("====>delete Account ActsAccountAddAccount_2500 err:" + JSON.stringify(err));
-                    expect(err.code).assertEqual(0);
+                    expect(err).assertEqual(undefined);
                     console.debug("====>ActsAccountAddAccount_2500 end====");
                     done();
                 });
@@ -609,10 +609,10 @@ export default function ActsAccountAddAccount() {
             var appAccountManager = account.createAppAccountManager();
             appAccountManager.addAccount("account_extra_callback_limit", limitExtra, (err)=>{
                 console.debug("====>add account ActsAccountAddAccount_2700 err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.deleteAccount("account_extra_callback_limit", (err)=>{
                     console.debug("====>delete Account ActsAccountAddAccount_2700 err:" + JSON.stringify(err));
-                    expect(err.code).assertEqual(0);
+                    expect(err).assertEqual(undefined);
                     console.debug("====>ActsAccountAddAccount_2700 end====");
                     done();
                 });
