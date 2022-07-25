@@ -1,0 +1,37 @@
+{
+    "description": "Configuration for Image Tests",
+    "driver": {
+        "type": "JSUnitTest",
+        "test-timeout": "1500000",
+        "package": "ohos.acts.multimedia.image.Packing",
+		"shell-timeout": "120000"
+    },
+    "kits": [
+		{
+            "type": "PushKit",
+            "pre-push": [
+            ],
+            "push": [		
+            ]
+        },
+   
+		{
+            "type": "ShellKit",
+            "run-command": [
+                "hilog -Q pidoff"
+            ],
+            "teardown-command":[
+              
+            ]
+        },
+        
+        {
+            "test-file-name": [
+                "ActsImagePackingJsTest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        }
+    ]
+    
+}
