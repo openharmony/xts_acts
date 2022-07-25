@@ -59,22 +59,31 @@ describe('AccessibleAbilityList', function () {
 			for (let item of data) {
 				console.info(item.id);
 				expect(item.id != undefined).assertEqual(true);
+				done();
 				console.info(item.name);
 				expect(item.name != undefined).assertEqual(true);
+				done();
 				console.info(item.description);
 				expect(item.description != undefined).assertEqual(true);
+				done();
 				console.info(item.abilityTypes);
 				expect(item.abilityTypes != undefined).assertEqual(true);
+				done();
 				console.info(item.eventTypes);
 				expect(item.eventTypes != undefined).assertEqual(true);
+				done();
 				console.info(item.capabilities);
-				expect(item.capabilities != undefined).assertEqual(true);
-				console.info(item.packageName);
-				expect(item.packageName != undefined).assertEqual(true);
-				console.info(item.filterBundleNames);
-				expect(item.filterBundleNames != undefined).assertEqual(true);
+                if (item.capabilities == retrieve ||
+				item.capabilities == touchGuide ||
+				item.capabilities == keyEventObserver ||
+				item.capabilities == zoom ||
+				item.capabilities == gesture) {
+                    expect(true).assertTrue();
+					done();
+                }
 				console.info(item.bundleName);
 				expect(item.bundleName != undefined).assertEqual(true);
+				done();
 			}
             expect(Array.isArray(data)).assertEqual(true);
             done();
