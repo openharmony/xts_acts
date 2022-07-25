@@ -505,6 +505,144 @@ describe('bluetoothhostTest', function() {
         done();
     })
 
+/**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BLE_Scan_0011
+     * @tc.name testClassicStartBLEScan
+     * @tc.desc Test ClassicStartBLEScan api.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('SUB_COMMUNICATION_BLUETOOTH_BLE_Scan_0011', 0, async function (done) {
+        console.info('[bluetooth_js] BLE scan11 test start');
+        await sleep(1000);
+        await tryToEnableBt();
+        function onReceiveEvent(data)
+        {
+            console.info('[bluetooth_js] BLE scan device find result11 = '+ JSON.stringify(data));
+            expect(true).assertTrue(data.length > 0);
+        }
+        bluetooth.BLE.on("BLEDeviceFind", onReceiveEvent)
+        bluetooth.BLE.startBLEScan([{
+            serviceUuid:"00001812-0000-1000-8000-00805F9B34FB",
+            serviceUuidMask:"0000FFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF",
+            }]);
+        await sleep(1000);
+        console.info('[bluetooth_js] BLE scan off11 ');
+        bluetooth.BLE.off('BLEDeviceFind');
+        bluetooth.BLE.stopBLEScan();
+        done();
+
+    })
+
+    
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BLE_Scan_0012
+     * @tc.name testClassicStartBLEScan
+     * @tc.desc Test ClassicStartBLEScan api.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('SUB_COMMUNICATION_BLUETOOTH_BLE_Scan_0012', 0, async function (done) {
+        console.info('[bluetooth_js] BLE scan14 test start');
+        await sleep(1000);
+        await tryToEnableBt();
+        function onReceiveEvent(data)
+        {
+            console.info('[bluetooth_js] BLE scan device find result12 = '+ JSON.stringify(data));
+            expect(true).assertTrue(data.length > 0);
+        }
+        bluetooth.BLE.on("BLEDeviceFind", onReceiveEvent)
+        bluetooth.BLE.startBLEScan([{
+            serviceSolicitationUuid:"00000101-0000-1000-8000-00805F9B34FB",
+            serviceSolicitationUuidMask:"FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF",
+
+            }]);
+        await sleep(1000);
+        console.info('[bluetooth_js] BLE scan off12 ');
+        bluetooth.BLE.off('BLEDeviceFind');
+        bluetooth.BLE.stopBLEScan();
+        done();
+
+    })
+
+   /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BLE_Scan_0013
+     * @tc.name testClassicStartBLEScan
+     * @tc.desc Test ClassicStartBLEScan api.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('SUB_COMMUNICATION_BLUETOOTH_BLE_Scan_0013', 0, async function (done) {
+        console.info('[bluetooth_js] BLE scan13 test start');
+        await sleep(1000);
+        await tryToEnableBt();
+        function onReceiveEvent(data)
+        {
+            console.info('[bluetooth_js] BLE scan device find result13 = '+ JSON.stringify(data));
+            expect(true).assertTrue(data.length > 0);
+        }
+        bluetooth.BLE.on("BLEDeviceFind", onReceiveEvent)
+        const serviceDataArrayBuffer = new ArrayBuffer(1);
+        const serviceDataMaskArrayBuffer = new ArrayBuffer(1);
+        const serviceDataValue = new Uint8Array(serviceDataArrayBuffer);
+        const serviceDataMaskValue = new Uint8Array(serviceDataMaskArrayBuffer);
+        serviceDataValue[0] = '0xFF';
+        serviceDataMaskValue[0] = '0xFF';
+        bluetooth.BLE.startBLEScan([{
+            serviceData:serviceDataValue,
+            serviceDataMask:serviceDataMaskValue,
+            }]);
+        await sleep(1000);
+        console.info('[bluetooth_js] BLE scan off13 ');
+        bluetooth.BLE.off('BLEDeviceFind');
+        bluetooth.BLE.stopBLEScan();
+        done();
+
+    })
+
+   /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BLE_Scan_0014
+     * @tc.name testClassicStartBLEScan
+     * @tc.desc Test ClassicStartBLEScan api.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+      it('SUB_COMMUNICATION_BLUETOOTH_BLE_Scan_0014', 0, async function (done) {
+        console.info('[bluetooth_js] BLE scan18 test start');
+        await sleep(1000);
+        await tryToEnableBt();
+        function onReceiveEvent(data)
+        {
+            console.info('[bluetooth_js] BLE scan device find result14 = '+ JSON.stringify(data));
+            expect(true).assertTrue(data.length > 0);
+        }
+        bluetooth.BLE.on("BLEDeviceFind", onReceiveEvent)
+        const manufactureDataArrayBuffer = new ArrayBuffer(29);
+        const manufactureDataMaskArrayBuffer = new ArrayBuffer(29);
+        const manufactureDataValue = new Uint8Array(manufactureDataArrayBuffer);
+        const manufactureDataMaskValue = new Uint8Array(manufactureDataMaskArrayBuffer);
+        for (let i = 0; i < 29; i++) {
+           manufactureDataValue[i] = '0xFF';
+        }
+        for (let i = 0; i < 29; i++) {
+            manufactureDataMaskValue[i] = '0xFF';
+        }
+        bluetooth.BLE.startBLEScan([{
+            manufactureData:manufactureDataValue,
+            manufactureDataMask:manufactureDataMaskValue,
+
+            }]);
+        await sleep(1000);
+        console.info('[bluetooth_js] BLE scan off14 ');
+        bluetooth.BLE.off('BLEDeviceFind');
+        bluetooth.BLE.stopBLEScan();
+        done();
+    })
+
 
     /**
      * @tc.number SUB_COMMUNACATION_bluetooth_PAIR_DEVICE_0001
@@ -555,7 +693,7 @@ describe('bluetoothhostTest', function() {
             BOND_STATE_BONDING : 1,
             BOND_STATE_BONDED : 2
         };
-        let enable4 = bluetooth.pairDevice("00:00:00:00:00:00")
+       
         expect(BondState.BOND_STATE_INVALID == 0).assertTrue();
         expect(BondState.BOND_STATE_BONDING == 1).assertTrue();
         expect(BondState.BOND_STATE_BONDED == 2).assertTrue();
