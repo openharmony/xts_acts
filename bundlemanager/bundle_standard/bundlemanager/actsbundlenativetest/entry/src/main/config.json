@@ -1,7 +1,7 @@
 {
   "app": {
-    "bundleName": "com.example.nativetest",
-    "vendor": "example",
+    "bundleName": "com.actsbundle.napitest",
+    "vendor": "open",
     "version": {
       "code": 1000000,
       "name": "1.0.0"
@@ -14,9 +14,9 @@
   },
   "deviceConfig": {},
   "module": {
-    "package": "com.example.nativetest",
+    "package": "com.actsbundle.napitest",
     "name": ".MyApplication",
-    "mainAbility": "com.example.nativetest.MainAbility",
+    "mainAbility": "com.actsbundle.napitest.MainAbility",
 
     "deviceType": [
       "phone"

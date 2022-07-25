@@ -1,4 +1,4 @@
 {
-  "name": "libteststring.so",
-  "types": "./index.d.ts"
+    "name": "libbundlendk.so",
+    "types": "./index.d.ts"
 }

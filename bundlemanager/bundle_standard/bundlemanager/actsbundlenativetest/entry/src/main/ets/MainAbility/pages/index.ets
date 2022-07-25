@@ -1,6 +1,5 @@
-// @ts-nocheck
 /**
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -26,7 +25,7 @@ struct MyComponent {
       alignItems: ItemAlign.Center,
       justifyContent: FlexAlign.Center
     }) {
-      Text('ACE ETS TEST')
+      Text('BMS ETS TEST')
         .fontSize(50)
         .fontWeight(FontWeight.Bold)
     }
