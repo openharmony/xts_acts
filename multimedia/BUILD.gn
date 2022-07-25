@@ -30,6 +30,7 @@ group("multimedia") {
       "image/image_js_standard/imageReceiver:image_receiver_js_hap",
       "image/image_js_standard/imageWebp:image_webp_js_hap",
       "image/image_js_standard/imageYUV:image_yuv_js_hap",
+      "image/image_js_standard/image_ndk_test:image_pixelmap_ndk_hap",
       "media/media_js_standard/audioPlayer:audio_player_js_hap",
       "media/media_js_standard/audioRecorder:audio_recorder_js_hap",
       "media/media_js_standard/recorderFormat:recorder_format_js_hap",
