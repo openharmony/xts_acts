@@ -243,7 +243,6 @@ export default function applicationBundleJsunit() {
                 expect(typeof (data[i].supportedModes)).assertEqual('number');
                 expect(typeof (data[i].process)).assertEqual('string');
                 expect(typeof (data[i].metaData)).assertEqual('object');
-                expect(typeof (data[i].metadata)).assertEqual('object');
                 expect(typeof (data[i].enabled)).assertEqual('boolean');
                 expect(typeof (data[i].uid)).assertEqual('number');
                 expect(typeof (data[i].entityType)).assertEqual('string');

@@ -299,7 +299,6 @@ export default function GetabilityInfo() {
             expect(data.writePermission).assertEqual("");
             expect(data.targetAbility).assertEqual("");
             expect(data.metaData.length).assertEqual(0);
-            expect(data.metadata.length).assertEqual(0);
             checkApplicationInfo_other(data.applicationInfo);
             console.log("---checkAbilityInfo_other End---  ");
         }
@@ -320,7 +319,6 @@ export default function GetabilityInfo() {
             expect(info.process).assertEqual("com.example.third1");
             expect(info.moduleSourceDirs[0]).assertEqual("/data/app/el1/bundle/public/com.example.third1/com.example.third1.entry");
             expect(JSON.stringify(info.metaData)).assertEqual("{}");
-            expect(JSON.stringify(info.metadata)).assertEqual("{}");
             expect(info.enabled).assertEqual(true);
             expect(info.uid).assertLarger(0);
             expect(info.entityType).assertEqual("unspecified");

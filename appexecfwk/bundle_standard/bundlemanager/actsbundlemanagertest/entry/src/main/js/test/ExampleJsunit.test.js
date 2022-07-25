@@ -128,7 +128,6 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.reqPermissions.length).assertEqual(0);
             expect(datainfo.reqPermissionStates.length).assertEqual(0);
             expect(datainfo.reqPermissionDetails.length).assertEqual(0);
-            expect(datainfo.extensionAbilityInfo.length).assertEqual(0);
             expect(datainfo.appInfo.name).assertEqual(NAME1);
             expect(datainfo.appInfo.description).assertEqual(APPLICATION_DESCRIPTION);
             expect(datainfo.appInfo.descriptionId >= 0).assertTrue();

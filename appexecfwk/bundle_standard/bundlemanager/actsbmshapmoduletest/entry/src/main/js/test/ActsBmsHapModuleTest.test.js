@@ -52,10 +52,7 @@ describe('ActsBmsHapModuleTest', function () {
                 expect(hapModuleInfo.reqCapabilities.length).assertEqual(0);
                 expect(hapModuleInfo.deviceTypes[0]).assertEqual('phone');
                 expect(hapModuleInfo.mainAbilityName).assertEqual(FIRSTMAINABILITY);
-                expect(hapModuleInfo.mainElementName).assertEqual(FIRSTMAINABILITY);
                 expect(hapModuleInfo.abilityInfo.length).assertLarger(0);
-                expect(hapModuleInfo.extensionAbilityInfo.length).assertEqual(0);
-                expect(hapModuleInfo.metadata.length).assertEqual(0);
                 expect(hapModuleInfo.installationFree).assertEqual(false);
                 done();
             }
@@ -82,10 +79,8 @@ describe('ActsBmsHapModuleTest', function () {
                 expect(hapModuleInfo1.name).assertEqual(BUNDLE_NAME6);
                 expect(hapModuleInfo.moduleName).assertEqual('entry');
                 expect(hapModuleInfo.mainAbilityName).assertEqual(FIRSTMAINABILITY);
-                expect(hapModuleInfo.mainElementName).assertEqual(FIRSTMAINABILITY);
                 expect(hapModuleInfo1.moduleName).assertEqual('bmsmainabilitysecondscene');
                 expect(hapModuleInfo1.mainAbilityName).assertEqual(SECONDMAINABILITY);
-                expect(hapModuleInfo1.mainElementName).assertEqual(SECONDMAINABILITY);
                 done();
             }
         });
@@ -116,10 +111,7 @@ describe('ActsBmsHapModuleTest', function () {
                 expect(hapModuleInfo.reqCapabilities.length).assertEqual(0);
                 expect(hapModuleInfo.deviceTypes[0]).assertEqual('phone');
                 expect(hapModuleInfo.mainAbilityName).assertEqual("");
-                expect(hapModuleInfo.mainElementName).assertEqual("");
                 expect(hapModuleInfo.abilityInfo.length).assertLarger(0);
-                expect(hapModuleInfo.extensionAbilityInfo.length).assertEqual(0);
-                expect(hapModuleInfo.metadata.length).assertEqual(0);
                 expect(hapModuleInfo.installationFree).assertEqual(false);
                 done();
             }
@@ -151,10 +143,7 @@ describe('ActsBmsHapModuleTest', function () {
                 expect(hapModuleInfo.reqCapabilities.length).assertEqual(0);
                 expect(hapModuleInfo.deviceTypes[0]).assertEqual('phone');
                 expect(hapModuleInfo.mainAbilityName).assertEqual("com.example.third5.AMainAbility");
-                expect(hapModuleInfo.mainElementName).assertEqual("com.example.third5.AMainAbility");
                 expect(hapModuleInfo.abilityInfo.length).assertLarger(0);
-                expect(hapModuleInfo.extensionAbilityInfo.length).assertEqual(0);
-                expect(hapModuleInfo.metadata.length).assertEqual(0);
                 expect(hapModuleInfo.installationFree).assertEqual(false);
                 done();
             }
@@ -187,10 +176,7 @@ describe('ActsBmsHapModuleTest', function () {
                 expect(hapModuleInfo.reqCapabilities.length).assertEqual(0);
                 expect(hapModuleInfo.deviceTypes[0]).assertEqual('phone');
                 expect(hapModuleInfo.mainAbilityName).assertEqual("com.example.system1.MainAbility");
-                expect(hapModuleInfo.mainElementName).assertEqual("com.example.system1.MainAbility");
                 expect(hapModuleInfo.abilityInfo.length).assertLarger(0);
-                expect(hapModuleInfo.extensionAbilityInfo.length).assertEqual(0);
-                expect(hapModuleInfo.metadata.length).assertEqual(0);
                 expect(hapModuleInfo.installationFree).assertEqual(false);
             }
             done();
@@ -208,8 +194,6 @@ describe('ActsBmsHapModuleTest', function () {
         expect(info.reqCapabilities.length).assertEqual(0);
         expect(info.deviceTypes[0]).assertEqual('phone');
         expect(info.abilityInfo.length).assertLarger(0);
-        expect(info.extensionAbilityInfo.length).assertEqual(0);
-        expect(info.metadata.length).assertEqual(0);
         expect(info.installationFree).assertEqual(false);
     }
 })

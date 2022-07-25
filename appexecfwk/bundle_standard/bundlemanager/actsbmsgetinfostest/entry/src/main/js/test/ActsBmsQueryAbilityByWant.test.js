@@ -176,7 +176,6 @@ describe('ActsBmsQueryAbilityByWant', function () {
         expect(data.writePermission).assertEqual("");
         expect(data.targetAbility).assertEqual("");
         expect(data.metaData.length).assertEqual(0);
-        expect(data.metadata.length).assertEqual(0);
         expect(data.enabled).assertEqual(true);
     }
 
