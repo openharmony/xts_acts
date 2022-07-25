@@ -38,17 +38,16 @@ hctest_suite("ActsSamgrTest") {
     "//test/xts/tools/hctest/include",
     "//third_party/unity/src",
     "//kernel/liteos_m/kal",
-    "//foundation/distributedschedule/samgr_lite/interfaces/kits/samgr",
-    "//foundation/distributedschedule/samgr_lite/interfaces/kits/communication/broadcast",
-    "//foundation/distributedschedule/samgr_lite/samgr/adapter",
-    "//foundation/distributedschedule/samgr_lite/samgr/source",
+    "//foundation/systemabilitymgr/samgr_lite/interfaces/kits/samgr",
+    "//foundation/systemabilitymgr/samgr_lite/interfaces/kits/communication/broadcast",
+    "//foundation/systemabilitymgr/samgr_lite/samgr/adapter",
+    "//foundation/systemabilitymgr/samgr_lite/samgr/source",
     "src",
     "utils",
   ]
 
-  public_deps = [
-    "//foundation/distributedschedule/samgr_lite/samgr/adapter:samgr_adapter",
-  ]
+  public_deps =
+      [ "//foundation/systemabilitymgr/samgr_lite/samgr/adapter:samgr_adapter" ]
   defines = [ "UNITY_INCLUDE_CONFIG_H" ]
 
   cflags = [ "-Wno-error" ]

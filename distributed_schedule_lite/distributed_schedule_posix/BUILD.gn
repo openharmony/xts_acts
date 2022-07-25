@@ -28,10 +28,10 @@ hcpptest_suite("ActsDMSTest") {
     "//utils/native/lite/include",
     "//third_party/bounds_checking_function/include",
     "//foundation/communication/ipc/interfaces/innerkits/c/ipc/include",
-    "//foundation/distributedschedule/samgr_lite/interfaces/kits/registry",
-    "//foundation/distributedschedule/samgr_lite/interfaces/kits/samgr",
-    "//foundation/distributedschedule/dmsfwk_lite/include",
-    "//foundation/distributedschedule/samgr_lite/interfaces/innerkits",
+    "//foundation/systemabilitymgr/samgr_lite/interfaces/kits/registry",
+    "//foundation/systemabilitymgr/samgr_lite/interfaces/kits/samgr",
+    "//foundation/systemabilitymgr/dmsfwk_lite/include",
+    "//foundation/systemabilitymgr/samgr_lite/interfaces/innerkits",
 
     "${aafwk_lite_path}/interfaces/innerkits/abilitymgr_lite",
     "${aafwk_lite_path}/interfaces/kits/ability_lite",
@@ -44,8 +44,8 @@ hcpptest_suite("ActsDMSTest") {
   deps = [
     "${appexecfwk_lite_path}/frameworks/bundle_lite:bundle",
     "//base/hiviewdfx/hilog_lite/frameworks/featured:hilog_shared",
-    "//foundation/distributedschedule/dmsfwk_lite:dtbschedmgr",
-    "//foundation/distributedschedule/samgr_lite/samgr:samgr",
+    "//foundation/systemabilitymgr/dmsfwk_lite:dtbschedmgr",
+    "//foundation/systemabilitymgr/samgr_lite/samgr:samgr",
     "//third_party/bounds_checking_function:libsec_shared",
   ]
   cflags = [ "-Wno-error" ]
