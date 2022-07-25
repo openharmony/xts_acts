@@ -13,13 +13,12 @@
  * limitations under the License.
  */
 
-
 import audio from '@ohos.multimedia.audio';
 import fileio from '@ohos.fileio';
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index';
 
-describe('audioEventManagement', function () {
+describe('audioEM', function () {
     console.info('AudioFrameworkTest: Create AudioManger Object JS Framework');
     const audioManager = audio.getAudioManager();
     var deviceRoleValue = null;
@@ -802,6 +801,33 @@ describe('audioEventManagement', function () {
         done();
     })
 
+	/* *
+                * @tc.number    : SUB_AUDIO_MANAGER_DeviceChangeType_001
+                * @tc.name      : DeviceChangeType - CONNECT  
+                * @tc.desc      : DeviceChangeType - CONNECT  
+                * @tc.size      : MEDIUM
+                * @tc.type      : Function
+                * @tc.level     : Level 0
+            */
+    it('SUB_AUDIO_MANAGER_DeviceChangeType_001', 0, async function (done) {
+        expect(audio.DeviceChangeType.CONNECT).assertEqual(0);
+        await sleep(50);
+        done();
+    })
+	
+	/* *
+                * @tc.number    : SUB_AUDIO_MANAGER_DeviceChangeType_002
+                * @tc.name      : DeviceChangeType - DISCONNECT   
+                * @tc.desc      : DeviceChangeType - DISCONNECT   
+                * @tc.size      : MEDIUM
+                * @tc.type      : Function
+                * @tc.level     : Level 0
+            */
+    it('SUB_AUDIO_MANAGER_DeviceChangeType_002', 0, async function (done) {
+        expect(audio.DeviceChangeType.DISCONNECT).assertEqual(1);
+        await sleep(50);
+        done();
+    })
 
 
 })

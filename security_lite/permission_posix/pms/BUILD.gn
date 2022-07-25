@@ -34,17 +34,17 @@ hcpptest_suite("ActsPMSTest") {
     "//utils/native/lite/include",
     "//foundation/distributedschedule/samgr_lite/interfaces/kits/samgr",
     "//foundation/distributedschedule/samgr_lite/interfaces/kits/communication/broadcast",
-    "//base/security/permission/interfaces/innerkits/permission_lite",
-    "//base/security/permission/interfaces/kits/permission_lite",
-    "//base/security/permission/services/permission_lite/pms_base/include",
-    "//base/security/permission/services/permission_lite/pms/include",
-    "//base/security/permission/services/permission_lite/ipc_auth/include",
+    "//base/security/permission_lite/interfaces/innerkits",
+    "//base/security/permission_lite/interfaces/kits",
+    "//base/security/permission_lite/services/pms_base/include",
+    "//base/security/permission_lite/services/pms/include",
+    "//base/security/permission_lite/services/ipc_auth/include",
     "//third_party/bounds_checking_function/include/",
   ]
 
   deps = [
     "${appexecfwk_lite_path}/frameworks/bundle_lite:bundle",
-    "//base/security/permission/services/permission_lite:permission_lite",
+    "//base/security/permission_lite/services:permission_lite",
     "//build/lite/config/component/cJSON:cjson_shared",
     "//foundation/distributedschedule/samgr_lite/communication/broadcast",
     "//foundation/distributedschedule/samgr_lite/samgr:samgr",

@@ -1,19 +1,20 @@
 {
     "description": "Configuration for audioRecorder Tests",
     "driver": {
-        "type": "JSUnitTest",
+        "type": "OHJSUnitTest",
         "test-timeout": "1000000",
-        "package": "ohos.acts.multimedia.audio.recorderformat",
-        "shell-timeout": "60000"
+        "shell-timeout": "1000000",
+        "testcase-timeout": 60000,
+        "bundle-name": "ohos.acts.multimedia.audio.recorderformat",
+        "package-name": "ohos.acts.multimedia.audio.recorderformat"
     },
     "kits": [
         {
             "type": "ShellKit",
             "run-command": [
-	        "rm -rf /storage/media/100/local/files/Videos/COMPATIBILITY*"
+                "rm -rf /storage/media/100/local/files/Videos/COMPATIBILITY*"
             ],
-            "teardown-command":[
-            ]
+            "teardown-command": []
         },
         {
             "test-file-name": [

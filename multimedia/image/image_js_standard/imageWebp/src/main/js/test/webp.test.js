@@ -15,10 +15,11 @@
 
 import image from '@ohos.multimedia.image'
 import fileio from '@ohos.fileio'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
 import bundle from '@ohos.bundle'
 
+export default function Image() {
 describe('Image', function () {
     var pathJpg = '/data/storage/el2/base/files/test.jpg';
     var pathWebp = '/data/storage/el2/base/files/test_large.webp';
@@ -1086,4 +1087,4 @@ describe('Image', function () {
         let packOpts = { format: ["image/jpeg"], quality: 0 }
         packingPromise(done, 'wbp_028', packOpts)
     })
-})
+})}

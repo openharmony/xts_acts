@@ -248,14 +248,14 @@ describe('webgl1Test_webgl1', function() {
 	function initContext() {
 		console.info('initContext start');
 		// 获取canvas元素
-		const el = global.el;
-		const el2 = global.el2;
+		const canvas = global.el;
+		const canvas2 = global.el2;
 		// 获取webgl上下文
-		gl = el.getContext('webgl');
+		gl = canvas.getContext('webgl');
 		if (!gl) {
 			console.log('webgltest Failed to get the rendering context for WebGL');
 		}
-		gl2 = el2.getContext('webgl2');
+		gl2 = canvas2.getContext('webgl2');
 		if (!gl) {
 			console.log('webgltest Failed to get the rendering context for WebGL2');
 		}
@@ -1997,8 +1997,14 @@ describe('webgl1Test_webgl1', function() {
 			return;
 		}
 
-		var viewPortParameter = gl.getParameter(gl.MAX_VIEWPORT_DIMS);
+		var maxViewPortDimsParameter = gl.getParameter(gl.MAX_VIEWPORT_DIMS);
+		console.log('maxViewPortDimsParameter: ' + maxViewPortDimsParameter);
+		var viewPortParameter = gl.getParameter(gl.VIEWPORT);
 		console.log('viewPortParameter: ' + viewPortParameter);
+		var boolParameter = gl.getParameter(gl.BOOL);
+		console.log('boolParameter: ' + boolParameter);
+		var SamplerCubeParameter = gl.getParameter(gl.SAMPLER_CUBE);
+		console.log('SamplerCubeParameter: ' + SamplerCubeParameter);
 
 		const isContextLostValue = gl.isContextLost();
 		console.info("isContextLostValue: " + isContextLostValue);

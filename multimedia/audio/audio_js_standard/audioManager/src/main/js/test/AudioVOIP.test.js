@@ -22,30 +22,14 @@ import bundle from '@ohos.bundle';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 import featureAbility from '@ohos.ability.featureAbility'
 import resourceManager from '@ohos.resourceManager';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 
-describe('audioVOIP', function () {
+describe('audioVoip', function () {
     var mediaDir;
     let fdRead;
     let readpath;
-    /*async function getPathName(){
-        var path1 = '/data/app/el1/bundle/public/';
-        var packageName;
-        var context = ability_featureAbility.getContext();
-        await context.getBundleName()
-            .then((data) => {
-                console.info('AudioFrameworkRenderLog: Cache directory obtained. Data: ' + data);
-                packageName = data;
-            }).catch((error) => {
-                console.error('AudioFrameworkRenderLog: Failed to obtain the cache directory. Cause:' + error.message);
-            });
-        await sleep(200);
-        var mediaDirTemp = path1 + packageName + '/ohos.acts.multimedia.audio.audiomanager.filedescriptor/assets/entry/resources/rawfile';
-        //var mediaDirTemp = path1+packageName+'/files'
-        console.info('AudioFrameworkRenderLog: Resource DIR Path : '+mediaDirTemp);
-        return mediaDirTemp;
-    }*/
-
+    let fdPath;
+    let filePath;
     const audioManager = audio.getAudioManager();
     console.info('AudioFrameworkRenderLog: Create AudioManger Object JS Framework');
 
@@ -55,7 +39,7 @@ describe('audioVOIP', function () {
     beforeAll(async function () {
         await applyPermission();
         console.info('AudioFrameworkTest: beforeAll: Prerequisites at the test suite level');
-        mediaDir = '/data/storage/el2/base/haps/entry/cache';
+        //mediaDir = '/data/storage/el2/base/haps/entry/cache';
     })
 
     beforeEach(async function () {
@@ -71,22 +55,19 @@ describe('audioVOIP', function () {
         console.info('AudioFrameworkTest: afterAll: Test suite-level cleanup condition');
     })
 
-    function sleep (ms) {
+    function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 
-    async function getFileDescriptor(fileName) {
-        let fileDescriptor = undefined;
-        await resourceManager.getResourceManager().then(async (mgr) => {
-            await mgr.getRawFileDescriptor(fileName).then(value => {
-                fileDescriptor = { fd: value.fd, offset: value.offset, length: value.length };
-            }).catch(error => {
-                console.log('AudioFrameworkRenderLog:case getRawFileDescriptor err: ' + error);
-            });
-        });
-        return fileDescriptor;
+    async function getAbilityInfo(fileName) {
+        let context = await featureAbility.getContext();
+        console.info("case0 context is  " + context);
+        await context.getFilesDir().then((data) => {
+            console.info("case1 getFilesDir is path " + data);
+            mediaDir = data + '/' + fileName;
+            console.info('case2 mediaDir is ' + mediaDir);
+        })
     }
-
     async function closeFileDescriptor(fileName) {
         await resourceManager.getResourceManager().then(async (mgr) => {
             await mgr.closeRawFileDescriptor(fileName).then(value => {
@@ -96,17 +77,27 @@ describe('audioVOIP', function () {
             });
         });
     }
-    async function getFdRead(pathName, done) {
-        await getFileDescriptor(pathName).then((res) => {
-            if (res == undefined) {
-                expect().assertFail();
-                console.info('AudioFrameworkRenderLog:case error fileDescriptor undefined, open file fail');
-                done();
-            } else {
-                fdRead = res.fd;
-                console.info("AudioFrameworkRenderLog:case 0 fdRead is: " + fdRead);
-            }
+    async function getFdRead(pathName) {
+        let context = await featureAbility.getContext();
+        console.info("case0 context is  " + context);
+        await context.getFilesDir().then((data) => {
+            console.info("case1 getFilesDir is path " + data);
+            filePath = data + '/' + pathName;
+            console.info('case4 filePath is ' + filePath);
+
         })
+        fdPath = 'fd://';
+        await fileio.open(filePath).then((fdNumber) => {
+            fdPath = fdPath + '' + fdNumber;
+            fdRead = fdNumber;
+            console.info('[fileIO]case open fd success,fdPath is ' + fdPath);
+            console.info('[fileIO]case open fd success,fdRead is ' + fdRead);
+
+        }, (err) => {
+            console.info('[fileIO]case open fd failed');
+        }).catch((err) => {
+            console.info('[fileIO]case catch open fd failed');
+        });
     }
 
     async function applyPermission() {
@@ -138,7 +129,7 @@ describe('audioVOIP', function () {
         }
     }
 
-    async function playbackPromise (AudioRendererOptions, pathName, AudioScene) {
+    async function playbackPromise(AudioRendererOptions, pathName, AudioScene) {
         var resultFlag = 'new';
         console.info('AudioFrameworkRenderLog: Promise : Audio Playback Function');
 
@@ -147,13 +138,13 @@ describe('audioVOIP', function () {
             audioRen = data;
             console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
             return resultFlag;
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : Path : '+pathName);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : Path : ' + pathName);
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         await audioRen.getStreamInfo().then(async function (audioParamsGet) {
             console.info('AudioFrameworkRenderLog: Renderer getStreamInfo:');
@@ -162,11 +153,11 @@ describe('audioVOIP', function () {
             console.info('AudioFrameworkRenderLog: Renderer channels:' + audioParamsGet.channels);
             console.info('AudioFrameworkRenderLog: Renderer encodingType:' + audioParamsGet.encodingType);
         }).catch((err) => {
-            console.log('AudioFrameworkRenderLog: getStreamInfo :ERROR: '+err.message);
+            console.log('AudioFrameworkRenderLog: getStreamInfo :ERROR: ' + err.message);
             resultFlag = false;
         });
-        if (resultFlag == false){
-            console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
+        if (resultFlag == false) {
+            console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
             return resultFlag;
         }
 
@@ -176,37 +167,37 @@ describe('audioVOIP', function () {
             console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
             console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
         }).catch((err) => {
-            console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: '+err.message);
+            console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: ' + err.message);
             resultFlag = false;
         });
-        if (resultFlag == false){
-            console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
+        if (resultFlag == false) {
+            console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
             return resultFlag;
         }
 
         await audioRen.start().then(async function () {
             console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : '+err.message);
-            resultFlag=false;
+            console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : ' + err.message);
+            resultFlag = false;
         });
-        if (resultFlag == false){
-            console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
+        if (resultFlag == false) {
+            console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
             return resultFlag;
         }
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         var bufferSize;
         await audioRen.getBufferSize().then(async function (data) {
-            console.info('AudioFrameworkRenderLog: getBufferSize :SUCCESS '+data);
-            bufferSize=data;
+            console.info('AudioFrameworkRenderLog: getBufferSize :SUCCESS ' + data);
+            bufferSize = data;
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: getBufferSize :ERROR : '+err.message);
-            resultFlag=false;
+            console.info('AudioFrameworkRenderLog: getBufferSize :ERROR : ' + err.message);
+            resultFlag = false;
         });
-        if (resultFlag == false){
-            console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
+        if (resultFlag == false) {
+            console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
             return resultFlag;
         }
 
@@ -215,21 +206,21 @@ describe('audioVOIP', function () {
         let discardHeader = new ArrayBuffer(44);
         ss.readSync(discardHeader);
         let totalSize = fileio.fstatSync(fdRead).size;
-        console.info('AudioFrameworkRenderLog:case3: File totalSize size: ' +totalSize);
-        totalSize = totalSize-44;
-        console.info('AudioFrameworkRenderLog: File size : Removing header: ' +totalSize);
+        console.info('AudioFrameworkRenderLog:case3: File totalSize size: ' + totalSize);
+        totalSize = totalSize - 44;
+        console.info('AudioFrameworkRenderLog: File size : Removing header: ' + totalSize);
         let rlen = 0;
-        while (rlen < totalSize/4) {
+        while (rlen < totalSize / 4) {
             let buf = new ArrayBuffer(bufferSize);
             rlen += ss.readSync(buf);
-            console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' +rlen);
+            console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' + rlen);
             await audioRen.write(buf);
-            if (rlen > (totalSize/2)){
+            if (rlen > (totalSize / 2)) {
                 await audioManager.getAudioScene().then(async function (data) {
-                    console.info('AudioFrameworkRenderLog:AudioFrameworkAudioScene: getAudioScene : Value : '+data);
+                    console.info('AudioFrameworkRenderLog:AudioFrameworkAudioScene: getAudioScene : Value : ' + data);
                 }).catch((err) => {
-                    console.info('AudioFrameworkRenderLog:AudioFrameworkAudioScene: getAudioScene : ERROR : '+err.message);
-                    resultFlag=false;
+                    console.info('AudioFrameworkRenderLog:AudioFrameworkAudioScene: getAudioScene : ERROR : ' + err.message);
+                    resultFlag = false;
                 });
             }
         }
@@ -238,42 +229,42 @@ describe('audioVOIP', function () {
         await audioRen.drain().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer drained : SUCCESS');
         }).catch((err) => {
-            console.error('AudioFrameworkRenderLog: Renderer drain: ERROR : '+err.message);
-            resultFlag=false;
+            console.error('AudioFrameworkRenderLog: Renderer drain: ERROR : ' + err.message);
+            resultFlag = false;
         });
-        if (resultFlag == false){
-            console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
+        if (resultFlag == false) {
+            console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
             return resultFlag;
         }
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         await audioRen.stop().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer stopped : SUCCESS');
-            resultFlag=true;
-            console.info('AudioFrameworkRenderLog: resultFlagRen : '+resultFlag);
+            resultFlag = true;
+            console.info('AudioFrameworkRenderLog: resultFlagRen : ' + resultFlag);
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : '+err.message);
-            resultFlag=false;
+            console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : ' + err.message);
+            resultFlag = false;
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         await audioRen.release().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer release : SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : '+err.message);
-            resultFlag=false;
+            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : ' + err.message);
+            resultFlag = false;
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-        console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
 
         return resultFlag;
     }
 
-    async function recPromise (AudioCapturerOptions, fpath, AudioScene) {
+    async function recPromise(AudioCapturerOptions, fpath, AudioScene) {
 
         var resultFlag = 'new';
         console.info('AudioFrameworkRecLog: Promise : Audio Recording Function');
@@ -284,13 +275,13 @@ describe('audioVOIP', function () {
             audioCap = data;
             console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRecLog: AudioCapturer Created : ERROR : '+err.message);
+            console.info('AudioFrameworkRecLog: AudioCapturer Created : ERROR : ' + err.message);
             return resultFlag;
         });
 
-        console.info('AudioFrameworkRecLog: AudioCapturer : Path : '+fpath);
+        console.info('AudioFrameworkRecLog: AudioCapturer : Path : ' + fpath);
 
-        console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCap.state);
+        console.info('AudioFrameworkRecLog: AudioCapturer : STATE : ' + audioCap.state);
 
         await audioCap.getStreamInfo().then(async function (audioParamsGet) {
             if (audioParamsGet != undefined) {
@@ -300,16 +291,16 @@ describe('audioVOIP', function () {
                 console.info('AudioFrameworkRecLog: Capturer channels:' + audioParamsGet.channels);
                 console.info('AudioFrameworkRecLog: Capturer encodingType:' + audioParamsGet.encodingType);
             } else {
-                console.info('AudioFrameworkRecLog: audioParamsGet is : '+audioParamsGet);
+                console.info('AudioFrameworkRecLog: audioParamsGet is : ' + audioParamsGet);
                 console.info('AudioFrameworkRecLog: audioParams getStreamInfo are incorrect: ');
                 resultFlag = false;
             }
         }).catch((err) => {
-            console.log('AudioFrameworkRecLog: getStreamInfo  :ERROR: '+err.message);
+            console.log('AudioFrameworkRecLog: getStreamInfo  :ERROR: ' + err.message);
             resultFlag = false;
         });
-        if (resultFlag == false){
-            console.info('AudioFrameworkRecLog: resultFlag : '+resultFlag);
+        if (resultFlag == false) {
+            console.info('AudioFrameworkRecLog: resultFlag : ' + resultFlag);
             return resultFlag;
         }
 
@@ -318,32 +309,32 @@ describe('audioVOIP', function () {
                 console.info('AudioFrameworkRecLog: Capturer CapturerInfo:');
                 console.info('AudioFrameworkRecLog: Capturer SourceType:' + audioParamsGet.source);
                 console.info('AudioFrameworkRecLog: Capturer capturerFlags:' + audioParamsGet.capturerFlags);
-            }else {
-                console.info('AudioFrameworkRecLog: audioParamsGet is : '+audioParamsGet);
+            } else {
+                console.info('AudioFrameworkRecLog: audioParamsGet is : ' + audioParamsGet);
                 console.info('AudioFrameworkRecLog: audioParams getCapturerInfo are incorrect: ');
                 resultFlag = false;
             }
         }).catch((err) => {
-            console.log('AudioFrameworkRecLog: CapturerInfo :ERROR: '+err.message);
+            console.log('AudioFrameworkRecLog: CapturerInfo :ERROR: ' + err.message);
             resultFlag = false;
         });
-        if (resultFlag == false){
-            console.info('AudioFrameworkRecLog: resultFlag : '+resultFlag);
+        if (resultFlag == false) {
+            console.info('AudioFrameworkRecLog: resultFlag : ' + resultFlag);
             return resultFlag;
         }
 
         await audioCap.start().then(async function () {
             console.info('AudioFrameworkRecLog: Capturer started :SUCCESS ');
         }).catch((err) => {
-            console.info('AudioFrameworkRecLog: Capturer start :ERROR : '+err.message);
-            resultFlag=false;
+            console.info('AudioFrameworkRecLog: Capturer start :ERROR : ' + err.message);
+            resultFlag = false;
         });
-        if (resultFlag == false){
-            console.info('AudioFrameworkRecLog: resultFlag : '+resultFlag);
+        if (resultFlag == false) {
+            console.info('AudioFrameworkRecLog: resultFlag : ' + resultFlag);
             return resultFlag;
         }
 
-        console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCap.state);
+        console.info('AudioFrameworkRecLog: AudioCapturer : STATE : ' + audioCap.state);
 
         var bufferSize = await audioCap.getBufferSize();
         console.info('AudioFrameworkRecLog: buffer size: ' + bufferSize);
@@ -352,9 +343,9 @@ describe('audioVOIP', function () {
         if (fd !== null) {
             console.info('AudioFrameworkRecLog: file fd created');
         }
-        else{
+        else {
             console.info('AudioFrameworkRecLog: Capturer start :ERROR : ');
-            resultFlag=false;
+            resultFlag = false;
             return resultFlag;
         }
 
@@ -362,9 +353,9 @@ describe('audioVOIP', function () {
         if (fd !== null) {
             console.info('AudioFrameworkRecLog: file fd opened : Append Mode :PASS');
         }
-        else{
+        else {
             console.info('AudioFrameworkRecLog: file fd Open: Append Mode : FAILED');
-            resultFlag=false;
+            resultFlag = false;
             return resultFlag;
         }
         await sleep(100);
@@ -380,27 +371,27 @@ describe('audioVOIP', function () {
             numBuffersToCapture--;
         }
         await sleep(1000);
-        console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCap.state);
+        console.info('AudioFrameworkRecLog: AudioCapturer : STATE : ' + audioCap.state);
 
         await audioCap.stop().then(async function () {
             console.info('AudioFrameworkRecLog: Capturer stopped : SUCCESS');
-            resultFlag=true;
-            console.info('AudioFrameworkRecLog: resultFlag : '+resultFlag);
+            resultFlag = true;
+            console.info('AudioFrameworkRecLog: resultFlag : ' + resultFlag);
         }).catch((err) => {
-            console.info('AudioFrameworkRecLog: Capturer stop:ERROR : '+err.message);
-            resultFlag=false;
+            console.info('AudioFrameworkRecLog: Capturer stop:ERROR : ' + err.message);
+            resultFlag = false;
         });
 
-        console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCap.state);
+        console.info('AudioFrameworkRecLog: AudioCapturer : STATE : ' + audioCap.state);
 
         await audioCap.release().then(async function () {
             console.info('AudioFrameworkRecLog: Capturer release : SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRecLog: Capturer release :ERROR : '+err.message);
-            resultFlag=false;
+            console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
+            resultFlag = false;
         });
 
-        console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCap.state);
+        console.info('AudioFrameworkRecLog: AudioCapturer : STATE : ' + audioCap.state);
 
         return resultFlag;
 
@@ -434,13 +425,12 @@ describe('audioVOIP', function () {
             rendererInfo: AudioRendererInfo
         }
 
-        readpath = 'StarWars10s-1C-44100-2SW.wav';
-        await getFdRead(readpath,done);
-        var resultFlag = await playbackPromise(AudioRendererOptions, readpath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        await getFdRead("StarWars10s-1C-44100-2SW.wav");
+        var resultFlag = await playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
-        console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
-        await closeFileDescriptor(readpath);
+        await closeFileDescriptor(filePath);
         done();
     })
 
@@ -462,7 +452,7 @@ describe('audioVOIP', function () {
         }
 
         var AudioCapturerInfo = {
-            source: audio.SourceType.SOURCE_TYPE_MIC,
+            source: audio.SourceType.SOURCE_TYPE_VOICE_COMMUNICATION,
             capturerFlags: 1
         }
 
@@ -471,9 +461,10 @@ describe('audioVOIP', function () {
             capturerInfo: AudioCapturerInfo
         }
 
-        var resultFlag = await recPromise(AudioCapturerOptions, mediaDir+'/capture_js-44100-2C-16B.pcm', audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        await getAbilityInfo("capture_js-44100-2C-16B.pcm");
+        var resultFlag = await recPromise(AudioCapturerOptions, mediaDir, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
-        console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
         done();
     })
@@ -496,7 +487,7 @@ describe('audioVOIP', function () {
         }
 
         var AudioCapturerInfo = {
-            source: audio.SourceType.SOURCE_TYPE_MIC,
+            source: audio.SourceType.SOURCE_TYPE_VOICE_COMMUNICATION,
             capturerFlags: 1
         }
 
@@ -523,16 +514,17 @@ describe('audioVOIP', function () {
             rendererInfo: AudioRendererInfo
         }
 
-        recPromise(AudioCapturerOptions, mediaDir+'/capture_js-44100-2C-16B-2.pcm', audio.AudioScene.AUDIO_SCENE_PHONE_CHAT);
+        await getAbilityInfo("capture_js-44100-2C-16B-2.pcm");
+        recPromise(AudioCapturerOptions, mediaDir, audio.AudioScene.AUDIO_SCENE_PHONE_CHAT);
         await sleep(500);
 
         readpath = 'StarWars10s-1C-44100-2SW.wav';
-        await getFdRead(readpath,done);
+        await getFdRead(readpath);
         var resultFlag = await playbackPromise(AudioRendererOptions, readpath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
-        console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
-        await closeFileDescriptor(readpath,done);
+        await closeFileDescriptor(readpath);
         done();
     })
 

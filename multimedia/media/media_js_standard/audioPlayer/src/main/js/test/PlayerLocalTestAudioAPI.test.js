@@ -15,8 +15,9 @@
 
 import media from '@ohos.multimedia.media'
 import * as mediaTestBase from '../../../../../MediaTestBase.js';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
+export default function PlayerLocalTestAudioAPI() {
 describe('PlayerLocalTestAudioAPI', function () {
     let audioPlayer = media.createAudioPlayer();
     let loopValue = false;
@@ -741,3 +742,4 @@ describe('PlayerLocalTestAudioAPI', function () {
         done();
     })
 })
+}

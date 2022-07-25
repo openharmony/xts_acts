@@ -128,15 +128,15 @@ const props = {
         mimeType: 'audio/mpeg',
         displayName: '01.mp3',
         relativePath: 'Audios/Static01/',
-        size: '4113874',
+        size: '1958311',
         mediaType: '5',
         title: '01',
         dateTaken: '0',
-        artist: 'Richard Stoltzman/Slovak Radio Symphony Orchestra',
+        artist: '元数据测试',
         width: '0',
         height: '0',
         orientation: '0',
-        duration: '169697',
+        duration: '219600',
         albumName: 'Static01'
     },
     file: {

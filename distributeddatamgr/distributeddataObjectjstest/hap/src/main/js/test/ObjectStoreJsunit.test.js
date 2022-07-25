@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 import distributedObject from '@ohos.data.distributedDataObject';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
 import bundle from '@ohos.bundle'
@@ -66,7 +66,6 @@ var tokenID = undefined;
 const TIMEOUT = 2000;
 const PERMISSION_USER_SET = 1;
 const PERMISSION_USER_NAME = "ohos.permission.DISTRIBUTED_DATASYNC";
-
 export default function objectStoreTest() {
 describe('objectStoreTest', function () {
     beforeAll(async function (done) {
@@ -680,6 +679,7 @@ describe('objectStoreTest', function () {
      */
     it('testSave001', 0, async function (done) {
             console.info(TAG + "************* testSave001 start *************");
+            
             var gObject = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
             gObject.setSessionId("tmpsession1");
             let result = await gObject.save("local");
@@ -707,13 +707,15 @@ describe('objectStoreTest', function () {
      */
     it('testSave002', 0, function (done) {
         console.info(TAG + "************* testSave002 start *************");
+        let SaveSuccessResponse 
         var gObject = distributedObject.createDistributedObject({ name: "Amy", age: 18, isVis: false });
         gObject.setSessionId("tmpsession1");
         gObject.save("local",(result)=>{
-            expect(result != null).assertTrue();
-            expect(result.sessionId == "tmpsession1").assertEqual(false);
-            expect(result.version == gObject.__version).assertEqual(false);
-            expect(result.deviceId == "local").assertEqual(false);
+            SaveSuccessResponse = result
+            expect(SaveSuccessResponse != null).assertTrue();
+            expect(SaveSuccessResponse.sessionId == "tmpsession1").assertEqual(false);
+            expect(SaveSuccessResponse.version == gObject.__version).assertEqual(false);
+            expect(SaveSuccessResponse.deviceId == "local").assertEqual(false);
         });
 
         gObject.setSessionId("");
@@ -762,12 +764,15 @@ describe('objectStoreTest', function () {
         expect(result.sessionId != "123456").assertEqual(true);
         expect(result.version != gObject.__version).assertEqual(true);
         expect(result.deviceId != "local").assertEqual(true);
-
+        let RevokeSaveSuccessResponse =undefined;
         gObject.revokeSave((err,ret) => {
+            RevokeSaveSuccessResponse = ret;
             expect(err == null).assertTrue();
+            expect(RevokeSaveSuccessResponse == undefined).assertTrue();
         });
         done();
         console.info(TAG + "************* testRevokeSave002 end *************");
     })
     console.info(TAG + "*************Unit Test End*************");
-})}
+})
+}

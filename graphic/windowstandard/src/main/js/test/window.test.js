@@ -1744,7 +1744,7 @@ describe('window_test', function () {
                 done();
             }, (err) => {
                 console.log('windowTest resetSizeTest3 wnd.resetSize failed, err :' + JSON.stringify(err));
-                expect(err.code).assertEqual(7);
+                expect(err.code).assertEqual(1003);
                 done();
             })
         }, (err) => {
@@ -1770,7 +1770,7 @@ describe('window_test', function () {
                 done();
             }, (err) => {
                 console.log('windowTest resetSizeTest4 wnd.resetSize failed, err :' + JSON.stringify(err));
-                expect(err.code).assertEqual(7);
+                expect(err.code).assertEqual(1003);
                 done();
             })
         }, (err) => {

@@ -14,8 +14,9 @@
  */
 
 import media from '@ohos.multimedia.media'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
+export default function VideoPlayerEnumTest() {
 describe('VideoPlayerEnumTest', function () {
     beforeAll(function() {
         console.info('beforeAll case');
@@ -181,4 +182,4 @@ describe('VideoPlayerEnumTest', function () {
         expect(media.VideoScaleType.VIDEO_SCALE_TYPE_FIT_CROP).assertEqual(1);
         done();
     })
-})
+})}
