@@ -17,8 +17,8 @@ import image from '@ohos.multimedia.image'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 import { base64Image, scale2x1, translate3x1, rotate90, flipH, testBmp, testGif, crop3x3, scale1x4, setAlpha8, translate1x3 } from './testImg2'
 import { testPng, testJpg} from '../../../../../image/src/main/js/test/testImg'
-export default function Image_test() {
-describe('Image_test', function () {
+
+describe('Image', function () {
     beforeAll(async function () {
         console.info('beforeAll case');
     })
@@ -1855,4 +1855,4 @@ describe('Image_test', function () {
     it('opacityErr_008', 0, async function (done) {
         opacityErr(done, 'opacityErr_008', 2, 'callback')
     })
-})}
+})
