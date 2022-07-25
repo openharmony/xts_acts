@@ -64,9 +64,9 @@ describe('RecorderLocalTestAudioFUNC', function () {
     }
 
     function initAudioRecorder() {
-        if (typeof (audioRecorder) != 'undefined') {
+        if (audioRecorder != null) {
             audioRecorder.release();
-            audioRecorder = undefined;
+            audioRecorder = null;
         }
         audioRecorder = media.createAudioRecorder();
     }
@@ -191,7 +191,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
             case RELEASE_STATE:
                 console.info('case to release');
                 audioRecorder.release();
-                audioRecorder = undefined;
+                audioRecorder = null;
                 break;
             case ERROR_STATE:
                 console.info('case to wait error callback');
@@ -246,9 +246,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
             nextStep(mySteps,done);
         });
         audioRecorder.on('error', (err) => {
-            console.info(`case error called,errName is ${err.name}`);
             console.info(`case error called,errCode is ${err.code}`);
-            console.info(`case error called,errMessage is ${err.message}`);
             mySteps.shift();
             expect(mySteps[0]).assertEqual(ERROR_STATE);
             mySteps.shift();
