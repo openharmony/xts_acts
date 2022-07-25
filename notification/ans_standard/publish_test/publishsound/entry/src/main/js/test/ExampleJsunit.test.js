@@ -30,7 +30,7 @@ describe('ActsAnsPublishSoundTest', function () {
         var sound = data.sortingMap.sortings[hashCode].slot.sound
         console.info("=============Ans_PublishSound_0100 onConsume sound============>" + sound);
         if (timesOfOnConsume == 1){
-            expect(sound).assertEqual("file://system/etc/Light.ogg");
+            expect(sound != undefined).assertTrue();
             console.info("=============Ans_PublishSound_0100 onConsume timesOfOnConsume1============>");
         } else if (timesOfOnConsume == 2){
             expect(sound).assertEqual("sound_0100");
@@ -118,7 +118,7 @@ describe('ActsAnsPublishSoundTest', function () {
         var sound = data.sortingMap.sortings[hashCode].slot.sound
         console.info("=============Ans_PublishSound_0200 onConsume sound============>" + sound);
         if (timesOfOnConsume == 1){
-            expect(sound).assertEqual("file://system/etc/Light.ogg");
+            expect(sound!= undefined).assertTrue();
             console.info("=============Ans_PublishSound_0200 onConsume timesOfOnConsume1============>");
         } else if (timesOfOnConsume == 2){
             expect(sound).assertEqual("sound_0200");
@@ -963,6 +963,7 @@ describe('ActsAnsPublishSoundTest', function () {
         notify.addSlot({
             type:notify.SlotType.UNKNOWN_TYPE,
             sound:"sound_1100",
+            vibrationEnabled:true,
             vibrationValues:[11,0,11,0],
         });
         var notificationRequest = {
@@ -1001,6 +1002,7 @@ describe('ActsAnsPublishSoundTest', function () {
                 {
                     type:notify.SlotType.UNKNOWN_TYPE,
                     sound:"sound_1100_set",
+                    vibrationEnabled:true,
                     vibrationValues:[11,11,11,11],
                 }).then(()=>{
                 console.info("=======Ans_PublishSound_1100 publish1 then setSlotByBundle then======>");
