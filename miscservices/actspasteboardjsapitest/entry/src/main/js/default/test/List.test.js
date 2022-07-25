@@ -14,3 +14,4 @@
  */
  
 require('./PasteBoardJsunit.test.js')
+require('./PasteBoard2Jsunit.test.js')
