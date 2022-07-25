@@ -16,96 +16,140 @@ import emitter from '@ohos.events.emitter'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
 export default function EmitterTest() {
-describe('EmitterTest', function () {
-    console.info("===========EmitterTest start====================>");
+    describe('EmitterTest', function () {
+        console.info("===========EmitterTest start====================>");
 
-    var eventData = {
-        data: {
-            "id": 1,
-            "content": "message",
+        var eventData = {
+            data: {
+                "id": 1,
+                "content": "message",
+            }
         }
-    }
 
-    var InnerEventImmediate = {
-        eventId: 1,
-        priority: emitter.EventPriority.IMMEDIATE
-    }
+        var InnerEventImmediate = {
+            eventId: 1,
+            priority: emitter.EventPriority.IMMEDIATE
+        }
 
-    var InnerEventLow = {
-        eventId: 2,
-        priority: emitter.EventPriority.LOW
-    }
+        var InnerEventLow = {
+            eventId: 2,
+            priority: emitter.EventPriority.LOW
+        }
 
-    function callback(data){
-        console.info('callback success');
-        expect(data.eventId).assertEqual("message");
-    }
+        function callback(data){
+            console.info('callback success');
+            expect(data.eventId).assertEqual("message");
+        }
 
-    function callback01(data){
-        console.info('callback success');
-        expect(data.data.id).assertEqual(1);
-        expect(data.data.content).assertEqual("message");
-    }
+        function callback01(data){
+            console.info('callback success');
+            expect(data.data.id).assertEqual(1);
+            expect(data.data.content).assertEqual("message");
+        }
 
-    /*
-     * @tc.number    : EmitterOnTest
-     * @tc.name      : verify on : Check subscribe same on common ordered event
-     * @tc.desc      : Check the subscriber can receive event "EmitterOnTest" type of the interface (by Promise)
-     */
-    it('EmitterOnTest', 0, async function (done) {
-        console.info("===========EmitterOnTest====================>");
-        emitter.on(InnerEventImmediate, callback);
-        done();
+        /*
+         * @tc.number    : EmitterOnTest
+         * @tc.name      : verify on : Check subscribe same on common ordered event
+         * @tc.desc      : Check the subscriber can receive event "EmitterOnTest" type of the interface (by Promise)
+         */
+        it('EmitterOnTest', 0, async function (done) {
+            console.info("===========EmitterOnTest====================>");
+            emitter.on(InnerEventImmediate, callback);
+            done();
+        })
+
+        /*
+         * @tc.number    : EmitterOnceTest
+         * @tc.name      : verify once : Check subscribe same once common ordered event
+         * @tc.desc      : Check the subscriber can receive event "EmitterOnceTest" type of the interface (by Promise)
+         */
+        it('EmitterOnceTest', 0, async function (done){
+            console.info("===========EmitterOnceTest====================>");
+            emitter.once(InnerEventImmediate, callback);
+            done();
+        })
+
+        /*
+         * @tc.number    : EmitterEmitTest
+         * @tc.name      : verify emit : Check subscribe same emit common ordered event
+         * @tc.desc      : Check the subscriber can receive event "EmitterEmitTest" type of the interface (by Promise)
+         */
+        it('EmitterEmitTest', 0, async function (done){
+            console.info("===========EmitterEmitTest====================>");
+            emitter.once(InnerEventImmediate, callback01);
+            emitter.emit(InnerEventImmediate, eventData);
+            done();
+        })
+
+        /*
+         * @tc.number    : EmitterLowTest
+         * @tc.name      : verify low : Check subscribe same low common ordered event
+         * @tc.desc      : Check the subscriber can receive event "EmitterLowTest" type of the interface (by Promise)
+         */
+        it('EmitterLowTest', 0, async function (done){
+            console.info("===========EmitterLowTest====================>");
+            emitter.once(InnerEventLow, callback01);
+            emitter.emit(InnerEventLow,eventData);
+            done();
+        })
+
+
+        /*
+         * @tc.number    : EmitterOffTest
+         * @tc.name      : verify off : Check subscribe same off common ordered event
+         * @tc.desc      : Check the subscriber can receive event "EmitterOffTest" type of the interface (by Promise)
+         */
+        it('EmitterOffTest', 0, async function (done){
+            console.info("===========EmitterOffTest111====================>");
+            emitter.once(InnerEventLow, callback01);
+            emitter.emit(InnerEventImmediate, eventData);
+            emitter.off(1);
+            done();
+        })
+
+        /*
+         * @tc.number    : EmitterEmitTest_0100
+         * @tc.name      : verify off : Check subscribe same off common ordered event
+         * @tc.desc      : Check the subscriber can receive event "EmitterOffTest" type of the interface (by Promise)
+         */
+        it('EmitterEmitTest_0100', 0, async function (done){
+            console.info("===========EmitterEmitTest_0100====================>");
+            var eventData2 = {
+                data: {
+                    "content": "c",
+                    "id": 2,
+                }};
+            var innerEventHigh = {
+                eventId: 3,
+                priority: emitter.EventPriority.HIGH
+            };
+            emitter.once(InnerEventLow, callback01);
+            emitter.emit(innerEventHigh, eventData2);
+            expect(emitter.EventPriority.HIGH).assertEqual(1)
+            done();
+        })
+
+        /*
+        * @tc.number    : EmitterEmitTest_0200
+        * @tc.name      : verify off : emitter.EventPriority.IDLE
+        * @tc.desc      : emitter.EventPriority.IDLE
+        */
+        it('EmitterEmitTest_0200', 0, async function (done){
+            console.info("===========EmitterEmitTest_0100====================>");
+            var eventData3 = {
+                data: {
+                    "content": "d",
+                    "id": 3,
+                }};
+            var innerEventIdle = {
+                eventId: 4,
+                priority: emitter.EventPriority.IDLE
+            };
+            emitter.once(innerEventIdle, callback01);
+            emitter.emit(InnerEventImmediate, eventData3);
+            expect(emitter.EventPriority.IDLE).assertEqual(3)
+            done();
+        })
+
     })
-
-    /*
-     * @tc.number    : EmitterOnceTest
-     * @tc.name      : verify once : Check subscribe same once common ordered event
-     * @tc.desc      : Check the subscriber can receive event "EmitterOnceTest" type of the interface (by Promise)
-     */
-    it('EmitterOnceTest', 0, async function (done){
-        console.info("===========EmitterOnceTest====================>");
-        emitter.once(InnerEventImmediate, callback);
-        done();
-    })
-
-    /*
-     * @tc.number    : EmitterEmitTest
-     * @tc.name      : verify emit : Check subscribe same emit common ordered event
-     * @tc.desc      : Check the subscriber can receive event "EmitterEmitTest" type of the interface (by Promise)
-     */
-    it('EmitterEmitTest', 0, async function (done){
-        console.info("===========EmitterEmitTest====================>");
-        emitter.once(InnerEventImmediate, callback01);
-        emitter.emit(InnerEventImmediate, eventData);
-        done();
-    })
-
-    /*
-     * @tc.number    : EmitterLowTest
-     * @tc.name      : verify low : Check subscribe same low common ordered event
-     * @tc.desc      : Check the subscriber can receive event "EmitterLowTest" type of the interface (by Promise)
-     */
-    it('EmitterLowTest', 0, async function (done){
-        console.info("===========EmitterLowTest====================>");
-        emitter.once(InnerEventLow, callback01);
-        emitter.emit(InnerEventLow,eventData);
-        done();
-    })
-
-    
-    /*
-     * @tc.number    : EmitterOffTest
-     * @tc.name      : verify off : Check subscribe same off common ordered event
-     * @tc.desc      : Check the subscriber can receive event "EmitterOffTest" type of the interface (by Promise)
-     */
-    it('EmitterOffTest', 0, async function (done){
-        console.info("===========EmitterOffTest111====================>");
-        emitter.once(InnerEventLow, callback01);
-		emitter.emit(InnerEventImmediate, eventData);
-        emitter.off(1);
-        done();
-    })
-
-})
 }

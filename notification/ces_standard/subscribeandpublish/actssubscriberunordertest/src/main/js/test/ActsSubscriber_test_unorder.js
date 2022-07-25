@@ -334,6 +334,7 @@ describe("ActsSubscriberTestUnorder", async function (done) {
     console.info("===============ActsSubscriberTestUnorder_0700==========================>");
     let commonEventSubscribeInfo = {
       events: ["publish_event0700"],
+      userId:100
     };
 
     let commonEventPublishData = {
@@ -357,6 +358,7 @@ describe("ActsSubscriberTestUnorder", async function (done) {
 
     Subscriber.createSubscriber(commonEventSubscribeInfo).then((data) => {
       console.info("===============ActsSubscriberTestUnorder_0700=========createSubscriber promise");
+      expect(commonEventSubscribeInfo.userId).assertEqual(100)
       commonEventSubscriber007 = data;
       data.getSubscribeInfo().then(() => {
         console.info("===============ActsSubscriberTestUnorder_0700=========getSubscribeInfo promise");
