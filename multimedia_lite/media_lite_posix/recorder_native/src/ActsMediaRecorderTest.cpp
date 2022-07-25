@@ -244,7 +244,7 @@ HWTEST_F(RecoderLiteTest, medialite_recorder_Resume_test_002, Level1)
     retStatus = recInstance->Resume();
     EXPECT_EQ(RET_OK, retStatus);
     retStatus = recInstance->Resume();
-    EXPECT_NE(RET_OK, retStatus);
+    EXPECT_EQ(RET_OK, retStatus);
     retStatus = recInstance->Release();
     delete recInstance;
     recInstance = nullptr;
@@ -308,7 +308,7 @@ HWTEST_F(RecoderLiteTest, medialite_recorder_Stop_test_002, Level1)
     retStatus = recInstance->Stop(true);
     EXPECT_EQ(RET_OK, retStatus);
     retStatus = recInstance->Stop(true);
-    EXPECT_NE(RET_OK, retStatus);
+    EXPECT_EQ(RET_OK, retStatus);
     retStatus = recInstance->Release();
     delete recInstance;
     recInstance = nullptr;
@@ -572,7 +572,7 @@ HWTEST_F(RecoderLiteTest, medialite_recorder_SetFileSplitDuration_test_004, Leve
     retStatus = recInstance->Pause();
     EXPECT_EQ(RET_OK, retStatus);
     retStatus = recInstance->SetFileSplitDuration(type, timestamp, duration);
-    EXPECT_NE(RET_OK, retStatus);
+    EXPECT_EQ(RET_OK, retStatus);
     retStatus = recInstance->Release();
     delete recInstance;
     recInstance = nullptr;
