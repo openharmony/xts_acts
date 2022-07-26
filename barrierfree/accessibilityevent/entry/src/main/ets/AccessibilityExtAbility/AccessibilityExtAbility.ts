@@ -50,7 +50,9 @@ class AccessibilityExtAbility extends AccessibilityExtensionAbility {
         let commonEventPublishData = {
             data: 'accessibilityEvent',
             parameters: {
-                eventType: accessibilityEvent.eventType
+                eventType: accessibilityEvent.eventType,
+                haveTarget: (typeof(accessibilityEvent.target) == 'object'),
+                timeStamp: accessibilityEvent.timeStamp
             }
         }
         commonEvent.publish('accessibilityEvent', commonEventPublishData, publishCallback);
