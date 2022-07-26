@@ -19,6 +19,7 @@ let resultCode = 123;
 let bundleName = 'ohso.act.aafwk';
 let mainAbilityName = 'ohos.acts.aafwk.jsap';
 const errCode = 1;
+const errCode1 = 202;
 
 describe('ConnectAbilityTest', function () {
   
@@ -64,12 +65,10 @@ describe('ConnectAbilityTest', function () {
     * @tc.desc: StartAbility fail with error parameter.(by promise)
     */
     it("SUB_AA_JsApi_StartAbility_0300", 0, async function (done) {
-        let parameter = {
-            'StartAbilityParameter': {
-                'want': {}
-            }
+        let startAbilityParameter = {
+            'want': {}
         }
-        await featureAbility.startAbility(parameter).then((data) => {
+        await featureAbility.startAbility(startAbilityParameter).then((data) => {
             console.log('testAbility0300 data: ' + JSON.stringify(data))
             expect().assertFail()
         }).catch((error) => {
@@ -85,12 +84,10 @@ describe('ConnectAbilityTest', function () {
     * @tc.desc: StartAbility fail with error parameter.(by callback)
     */
     it("SUB_AA_JsApi_StartAbility_0400", 0, async function (done) {
-        let parameter = {
-            'StartAbilityParameter': {
-                'want': {}
-            }
+        let startAbilityParameter = {
+            'want': {}
         }
-        featureAbility.startAbility((parameter), (error, data) => {
+        featureAbility.startAbility((startAbilityParameter), (error, data) => {
             console.log('testAbility0400 data: ' + JSON.stringify(data))
             console.log('testAbility0400 error: ' + JSON.stringify(error))
             expect(errCode).assertEqual(error.code)
@@ -192,16 +189,13 @@ describe('ConnectAbilityTest', function () {
     * @tc.desc: startAbility-want configure action+entities- entities is configurd as a string.(by promise)
     */
     it("SUB_AA_JsApi_Ability_0900", 0, async function (done) {
-        let parameter = {
-            'startAbilityParameter': {
-                'want': {
-                    'bundleName': bundleName,
-                    'abilityName': mainAbilityName
-                }
-
+        let startAbilityParameter = {
+            'want': {
+                'bundleName': bundleName,
+                'abilityName': mainAbilityName
             }
         }
-        await featureAbility.startAbility(parameter).then((data) => {
+        await featureAbility.startAbility(startAbilityParameter).then((data) => {
             console.log('testAblity0900 data: ' + JSON.stringify(data))
             expect().assertFail()
         }).catch((error) => {
@@ -217,16 +211,13 @@ describe('ConnectAbilityTest', function () {
     * @tc.desc: startAbility-want configure action+entities- entities is configurd as a string.(by callback)
     */
     it("SUB_AA_JsApi_Ability_1000", 0, async function (done) {
-        let parameter = {
-            'startAbilityParameter': {
-                'want': {
-                    'bundleName': bundleName,
-                    'abilityName': mainAbilityName
-                }
-
+        let startAbilityParameter = {
+            'want': {
+                'bundleName': bundleName,
+                'abilityName': mainAbilityName
             }
         }
-        featureAbility.startAbility((parameter), (error, data) => {
+        featureAbility.startAbility((startAbilityParameter), (error, data) => {
             console.log('testAblity1000 data: ' + JSON.stringify(data))
             console.log('testAblity1000 error: ' + JSON.stringify(error))
             expect(errCode).assertEqual(error.code)
@@ -246,7 +237,7 @@ describe('ConnectAbilityTest', function () {
             expect().assertFail()
         }).catch((error) => {
             console.log('testAblity1100 error: ' + JSON.stringify(error))
-            expect(errCode).assertEqual(error.code)
+            expect(errCode1).assertEqual(error.code)
         })
         done()
     })
@@ -261,7 +252,7 @@ describe('ConnectAbilityTest', function () {
         featureAbility.startAbility(parameter, (error, data) => {
             console.log('testAblity1200 data: ' + JSON.stringify(data))
             console.log('testAblity1200 error: ' + JSON.stringify(error))
-            expect(errCode).assertEqual(error.code)
+            expect(errCode1).assertEqual(error.code)
             done();
         })
     })
@@ -277,7 +268,7 @@ describe('ConnectAbilityTest', function () {
             expect().assertFail()
         }).catch((error) => {
             console.log('testAblity1300 error: ' + JSON.stringify(error))
-            expect(errCode).assertEqual(error.code)
+            expect(errCode1).assertEqual(error.code)
         })
         done()
     })
@@ -291,7 +282,7 @@ describe('ConnectAbilityTest', function () {
         featureAbility.startAbility(undefined, (error, data) => {
             console.log('testAblity1400 data: ' + JSON.stringify(data))
             console.log('testAblity1400 error: ' + JSON.stringify(error))
-            expect(errCode).assertEqual(error.code)
+            expect(errCode1).assertEqual(error.code)
             done();
         })
     })
@@ -308,7 +299,7 @@ describe('ConnectAbilityTest', function () {
             expect.assertFail()
         }).catch((error) => {
             console.log('testAblity1500' + JSON.stringify(error));
-            expect(errCode).assertEqual(error.code)
+            expect(errCode1).assertEqual(error.code)
         })
         done()
     })
@@ -323,7 +314,7 @@ describe('ConnectAbilityTest', function () {
         featureAbility.startAbilityForResult(parameter, (error, data) => {
             console.log('testAblity1600 data: ' + JSON.stringify(data))
             console.log('testAblity1600 error: ' + JSON.stringify(error))
-            expect(errCode).assertEqual(error.code)
+            expect(errCode1).assertEqual(error.code)
             console.log('testAblity1600-1 error: ' + JSON.stringify(error))
             done();
         })
@@ -340,7 +331,7 @@ describe('ConnectAbilityTest', function () {
             expect.assertFail()
         }).catch((error) => {
             console.log('testAblity1700' + JSON.stringify(error));
-            expect(errCode).assertEqual(error.code)
+            expect(errCode1).assertEqual(error.code)
         })
         done()
     })
@@ -353,7 +344,7 @@ describe('ConnectAbilityTest', function () {
     it("SUB_AA_JsApi_Ability_1800", 0, async function (done) {
         featureAbility.startAbilityForResult(undefined, (error) => {
             console.log('testAblity1800' + JSON.stringify(error));
-            expect(errCode).assertEqual(error.code)
+            expect(errCode1).assertEqual(error.code)
             done()
         })
     })
@@ -364,19 +355,17 @@ describe('ConnectAbilityTest', function () {
     * @tc.desc: startAbilityForResult-wrong input parameter format want a layer outside.(by promise)
     */
     it("SUB_AA_JsApi_Ability_1900", 0, async function (done) {
-        let parameter = {
-            'StartAbilityParameter': {
-                'want': {
-                    'bundleName': bundleName,
-                    'abilityName': mainAbilityName,
-                    'parameters': {
-                        'key': resultCode,
-                        'terminate': true
-                    }
+        let startAbilityParameter = {
+            'want': {
+                'bundleName': bundleName,
+                'abilityName': mainAbilityName,
+                'parameters': {
+                    'key': resultCode,
+                    'terminate': true
                 }
             }
         }
-        await featureAbility.startAbilityForResult(parameter).then((data) => {
+        await featureAbility.startAbilityForResult(startAbilityParameter).then((data) => {
             console.log('testAblity1900 data: ' + JSON.stringify(data))
             expect.assertFail()
         }).catch((error) => {
@@ -392,19 +381,17 @@ describe('ConnectAbilityTest', function () {
     * @tc.desc: startAbilityForResult-wrong input parameter format want a layer outside.(by callback)
     */
     it("SUB_AA_JsApi_Ability_2000", 0, async function (done) {
-        let parameter = {
-            'StartAbilityParameter': {
-                'want': {
-                    'bundleName': bundleName,
-                    'abilityName': mainAbilityName,
-                    'parameters': {
-                        'key': resultCode,
-                        'terminate': true
-                    }
+        let startAbilityParameter = {
+            'want': {
+                'bundleName': bundleName,
+                'abilityName': mainAbilityName,
+                'parameters': {
+                    'key': resultCode,
+                    'terminate': true
                 }
             }
         }
-        featureAbility.startAbilityForResult(parameter, (error, data) => {
+        featureAbility.startAbilityForResult(startAbilityParameter, (error, data) => {
             console.log('testAblity2000' + JSON.stringify(error));
             expect(errCode).assertEqual(error.code)
             done()
