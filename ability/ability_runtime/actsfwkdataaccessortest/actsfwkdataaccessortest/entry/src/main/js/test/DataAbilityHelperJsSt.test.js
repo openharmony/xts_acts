@@ -5246,7 +5246,8 @@ describe('ActsDataAbilityHelperTest', function () {
         function onAsyncCallback0401(err) {
             expect(err.code).assertEqual(0);
             flagCallback01++;
-            waitDone("onAsyncCallback0401");
+            expect(false).assertTrue();
+            done()
         }
         function onAsyncCallback0402(err) {
             flagCallback02++;
@@ -5260,28 +5261,14 @@ describe('ActsDataAbilityHelperTest', function () {
         function onAsyncCallback0403(err) {
             expect(err.code).assertEqual(0);
             flagCallback03++;
-            waitDone("onAsyncCallback0403");
+            expect(false).assertTrue();
+            done()
         }
         function waitDone(caller) {
             console.debug("=ACTS_OnOff_0400 caller ====>" + caller);
-            if (flagCallback01 == 1 && flagCallback02 == 0 && flagCallback03 == 1) {
-                clearTimeout(currentAlertTimeout);
-                function mySetTimeout() {
-                    DAHelper.off("dataChange", dataAbilityUri, onAsyncCallback0401);
-                    DAHelper.off("dataChange", dataAbilityUri, onAsyncCallback0403);
-                    console.log('ACTS_OnOff_0400====<end');
-                    done();
-                }
-                setTimeout(mySetTimeout, gSetTimeout);
-            } else if (caller == "notifyChange") {
-                currentAlertTimeout = setTimeout(() => {
-                    console.debug('ACTS_OnOff_0400====<setTimeout false done()');
-                    expect(false).assertTrue();
-                    done();
-                }, gSetTimeout);
-            } else {
-                console.debug("=ACTS_OnOff_0400 flagCallback010203 ====>"
-                    + flagCallback01 + flagCallback02 + flagCallback03);
+            if (flagCallback01 == 0 && flagCallback02 == 0 && flagCallback03 == 0) {
+                expect("notifyChange").assertEqual(caller);
+                done()
             }
         }
         try {
