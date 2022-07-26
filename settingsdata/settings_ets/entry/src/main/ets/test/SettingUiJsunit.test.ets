@@ -70,13 +70,13 @@ export default function settingUiJsunit() {
       done();
     });
 
-    it('settings_get_value_006', 0, async function () {
+    it('settings_get_value_006', 0, async function (done) {
       var name = 'settings.screen.brightness2';
       var uri = settings.getUriSync(name);
       console.info("[settings_get_value_006] uri is: " + uri);
       var helper = featureAbility.acquireDataAbilityHelper(uri);
       let obj = {
-        "aa": aa
+        aa: "aa"
       }
       try {
         let value = settings.getValueSync(helper, name, obj);
@@ -84,13 +84,13 @@ export default function settingUiJsunit() {
         expect(value).assertEqual("test getValueSync");
       } catch (err) {
         console.error("[settings_get_value_006] error = " + err);
-        expect(err == "Error: assertion (valueType == napi_string) failed: Wrong argument type. String expected.")
+        expect(err == "Error: assertion (valueType == napi_string) failed: Wrong argument[2] type. String expected.")
           .assertTrue();
       }
       done();
     });
 
-    it('settings_get_value_007', 0, async function () {
+    it('settings_get_value_007', 0, async function (done) {
       var name = 'settings.screen.brightness3';
       var uri = settings.getUriSync(name);
       console.info("[settings_get_value_007] uri is: " + uri);
@@ -261,7 +261,7 @@ export default function settingUiJsunit() {
       done();
     });
 
-    it('settings_get_value_0016', 0, async function () {
+    it('settings_get_value_0016', 0, async function (done) {
       let name = 1332;
       try {
         var uri = settings.getUriSync(name);
@@ -586,6 +586,602 @@ export default function settingUiJsunit() {
           .assertTrue();
       }
       done();
+    });
+	
+	it('settings_get_value_033', 0, async function (done){
+        let uri = 'dataability:///com.ohos.settingsdata.DataAbility';
+        let helper = featureAbility.acquireDataAbilityHelper(uri);
+
+        let name = 'settings.screen.brightness33';
+        let value = 'brightness33'
+        try{
+            settings.setValueSync(helper, name, value);
+            settings.getValue(helper, name, ret =>{
+                console.info("[settings_get_value_033] value is: " + ret);
+                expect(ret).assertEqual(value);
+                done();
+          })
+        } catch(err){
+            console.info("[settings_get_value_033] error is: " + toString(error));
+            expect(true).assertTrue();
+            done();
+            return;
+        }
+    });
+
+    it('settings_get_value_034', 0, async function (done){
+        let uri = 'dataability:///com.ohos.settingsdata.DataAbility';
+        let helper = featureAbility.acquireDataAbilityHelper(uri);
+
+        let name = 'settings.screen.brightness34';
+        let value = 'brightness34'
+
+        try{
+            settings.setValueSync(helper, name, value);
+            settings.getValue(helper, name).then(ret =>{
+                console.info("[settings_get_value_034] value is: " + ret);
+                expect(ret).assertEqual(value);
+                done();
+            })
+        } catch(err){
+            console.info("[settings_get_value_034] error is: " + toString(error));
+            expect(true).assertTrue();
+            done();
+            return;
+        }
+    });
+
+    it('settings_get_value_035', 0, async function (done){
+        var name  = 'settings.screen.brightness35';
+        let uriPrefix = 'dataability:///com.ohos.settingsdata.DataAbility'
+        let expectValue = uriPrefix + '/' + name;
+        try{
+            settings.getURI(name).then(data => {
+                console.info("[settings_get_uri_035] uri is: " + data);
+                expect(data).assertEqual(expectValue);
+                done();
+            })
+        } catch(err){
+            console.info("[settings_get_uri_035] error is: " + toString(error));
+            expect(true).assertTrue();
+            done();
+            return;
+        }
+        });
+
+    it('settings_get_value_036', 0, async function (done){
+        var name  = 'settings.screen.brightness36';
+        let uriPrefix = 'dataability:///com.ohos.settingsdata.DataAbility'
+        let expectValue = uriPrefix + '/' + name;
+        try{
+            settings.getURI(name, (data) =>{
+                console.info("[settings_get_uri_036] uri is: " + data);
+                expect(data).assertEqual(expectValue);
+                done();
+            })
+        }catch(err){
+            console.info("[settings_get_uri_036] error is: " + toString(error));
+            expect(true).assertTrue();
+            done();
+            return;
+        }
+        });
+
+    it('settings_get_value_037',0,async function (done) {
+      var str ="settings.date.date_format"
+        expect(str).assertEqual(settings.date.DATE_FORMAT);
+      done();
+    });
+
+    it('settings_get_value_038',0,async function (done) {
+      var str ="settings.date.time_format"
+        expect(str).assertEqual(settings.date.TIME_FORMAT);
+      done();
+    });
+
+    it('settings_get_value_039',0,async function (done) {
+      var str ="settings.date.auto_gain_time"
+        expect(str).assertEqual(settings.date.AUTO_GAIN_TIME);
+      done();
+    });
+
+    it('settings_get_value_040',0,async function (done) {
+      var str ="settings.date.auto_gain_time_zone"
+        expect(str).assertEqual(settings.date.AUTO_GAIN_TIME_ZONE);
+      done();
+    });
+
+    it('settings_get_value_041',0,async function (done) {
+      var str ="settings.display.font_scale"
+        expect(str).assertEqual(settings.display.FONT_SCALE);
+      done();
+    });
+
+    it('settings_get_value_042',0,async function (done) {
+      var str ="settings.display.screen_brightness_status"
+        expect(str).assertEqual(settings.display.SCREEN_BRIGHTNESS_STATUS);
+      done();
+    });
+
+    it('settings_get_value_043',0,async function (done) {
+      var str ="settings.display.auto_screen_brightness"
+        expect(str).assertEqual(settings.display.AUTO_SCREEN_BRIGHTNESS);
+      done();
+    });
+
+    it('settings_get_value_044',0,async function (done) {
+      var int = 1
+        expect(int).assertEqual(settings.display.AUTO_SCREEN_BRIGHTNESS_MODE);
+      done();
+    });
+
+    it('settings_get_value_045',0,async function (done) {
+      var int = 0
+        expect(int).assertEqual(settings.display.MANUAL_SCREEN_BRIGHTNESS_MODE);
+      done();
+    });
+
+    it('settings_get_value_046',0,async function (done) {
+        var str ="settings.display.screen_off_timeout"
+        expect(str).assertEqual(settings.display.SCREEN_OFF_TIMEOUT);
+      done();
+    });
+
+    it('settings_get_value_047',0,async function (done) {
+      var str ="settings.display.default_screen_rotation"
+        expect(str).assertEqual(settings.display.DEFAULT_SCREEN_ROTATION);
+      done();
+    });
+
+    it('settings_get_value_048',0,async function (done) {
+      var str ="settings.display.animator_duration_scale"
+        expect(str).assertEqual(settings.display.ANIMATOR_DURATION_SCALE);
+      done();
+    });
+
+    it('settings_get_value_049',0,async function (done) {
+      var str ="settings.display.transition_animation_scale"
+        expect(str).assertEqual(settings.display.TRANSITION_ANIMATION_SCALE);
+      done();
+    });
+
+    it('settings_get_value_050',0,async function (done) {
+      var str ="settings.display.window_animation_scale"
+        expect(str).assertEqual(settings.display.WINDOW_ANIMATION_SCALE);
+      done();
+    });
+
+    it('settings_get_value_051',0,async function (done) {
+      var str = "settings.display.display_inversion_status"
+      expect(str).assertEqual(settings.display.DISPLAY_INVERSION_STATUS);
+      done();
+    });
+
+    it('settings_get_value_052',0,async function (done) {
+      var str = "settings.general.setup_wizard_finished"
+      expect(str).assertEqual(settings.general.SETUP_WIZARD_FINISHED);
+      done();
+    });
+
+    it('settings_get_value_053',0,async function (done) {
+      var str = "settings.general.end_button_action"
+      expect(str).assertEqual(settings.general.END_BUTTON_ACTION);
+      done();
+    });
+
+    it('settings_get_value_054',0,async function (done) {
+      var str = "settings.general.airplane_mode_status"
+      expect(str).assertEqual(settings.general.AIRPLANE_MODE_STATUS);
+      done();
+    });
+
+    it('settings_get_value_055',0,async function (done) {
+      var str = "settings.general.accelerometer_rotation_status"
+      expect(str).assertEqual(settings.general.ACCELEROMETER_ROTATION_STATUS);
+      done();
+    });
+
+    it('settings_get_value_056',0,async function (done) {
+      var str = "settings.general.device_provision_status"
+      expect(str).assertEqual(settings.general.DEVICE_PROVISION_STATUS);
+      done();
+    });
+
+    it('settings_get_value_057',0,async function (done) {
+      var str = "settings.general.hdc_status"
+      expect(str).assertEqual(settings.general.HDC_STATUS);
+      done();
+    });
+
+
+
+    it('settings_get_value_058',0,async function (done) {
+      var str = "settings.general.boot_counting"
+      expect(str).assertEqual(settings.general.BOOT_COUNTING);
+      done();
+    });
+
+    it('settings_get_value_059',0,async function (done) {
+      var str = "settings.general.contact_metadata_sync_status"
+      expect(str).assertEqual(settings.general.CONTACT_METADATA_SYNC_STATUS);
+      done();
+    });
+
+    it('settings_get_value_060',0,async function (done) {
+      var str = "settings.general.development_settings_status"
+      expect(str).assertEqual(settings.general.DEVELOPMENT_SETTINGS_STATUS);
+      done();
+    });
+
+    it('settings_get_value_061',0,async function (done) {
+      var str = "settings.general.device_name"
+      expect(str).assertEqual(settings.general.DEVICE_NAME);
+      done();
+    });
+
+    it('settings_get_value_062',0,async function (done) {
+      var str = "settings.general.usb_storage_status"
+      expect(str).assertEqual(settings.general.USB_STORAGE_STATUS);
+      done();
+    });
+
+    it('settings_get_value_063',0,async function (done) {
+      var str = "settings.general.debugger_waiting"
+      expect(str).assertEqual(settings.general.DEBUGGER_WAITING);
+      done();
+    });
+
+    it('settings_get_value_064',0,async function (done) {
+      var str = "settings.general.debug_app_package"
+      expect(str).assertEqual(settings.general.DEBUG_APP_PACKAGE);
+      done();
+    });
+
+    it('settings_get_value_065',0,async function (done) {
+      var str = "settings.general.accessibility_status"
+      expect(str).assertEqual(settings.general.ACCESSIBILITY_STATUS);
+      done();
+    });
+
+    it('settings_get_value_066',0,async function (done) {
+      var str = "settings.general.activated_accessibility_services"
+      expect(str).assertEqual(settings.general.ACTIVATED_ACCESSIBILITY_SERVICES);
+      done();
+    });
+
+    it('settings_get_value_067',0,async function (done) {
+      var str = "settings.general.geolocation_origins_allowed"
+      expect(str).assertEqual(settings.general.GEOLOCATION_ORIGINS_ALLOWED);
+      done();
+    });
+
+    it('settings_get_value_068',0,async function (done) {
+      var str = "settings.general.skip_use_hints"
+      expect(str).assertEqual(settings.general.SKIP_USE_HINTS);
+      done();
+    });
+
+    it('settings_get_value_069',0,async function (done) {
+      var str = "settings.general.touch_exploration_status"
+      expect(str).assertEqual(settings.general.TOUCH_EXPLORATION_STATUS);
+      done();
+    });
+
+    it('settings_get_value_070',0,async function (done) {
+      var str = "settings.input.default_input_method"
+      expect(str).assertEqual(settings.input.DEFAULT_INPUT_METHOD);
+      done();
+    });
+
+    it('settings_get_value_071',0,async function (done){
+        var str = "settings.input.activated_input_method_submode"
+        let expectValue:string=settings.input.ACTIVATED_INPUT_METHOD_SUB_MODE;
+        expect(str).assertEqual(expectValue);
+        done();
+    });
+
+
+    it('settings_get_value_072',0,async function (done){
+        var str = "settings.input.activated_input_methods"
+        expect(str).assertEqual(settings.input.ACTIVATED_INPUT_METHODS);
+        done();
+    });
+
+
+    it('settings_get_value_073',0,async function (done){
+        var str = "settings.input.selector_visibility_for_input_method"
+        expect(str).assertEqual(settings.input.SELECTOR_VISIBILITY_FOR_INPUT_METHOD);
+        done();
+    });
+
+
+    it('settings_get_value_074',0,async function (done){
+        var str = "settings.input.auto_caps_text_input"
+        expect(str).assertEqual(settings.input.AUTO_CAPS_TEXT_INPUT);
+        done();
+    });
+
+
+    it('settings_get_value_075',0,async function (done){
+        var str = "settings.input.auto_punctuate_text_input"
+        expect(str).assertEqual(settings.input.AUTO_PUNCTUATE_TEXT_INPUT);
+        done();
+    });
+
+
+    it('settings_get_value_076',0,async function (done){
+        var str = "settings.input.auto_replace_text_input"
+        expect(str).assertEqual(settings.input.AUTO_REPLACE_TEXT_INPUT);
+        done();
+    });
+
+
+    it('settings_get_value_077',0,async function (done){
+        var str = "settings.input.show_password_text_input"
+        expect(str).assertEqual(settings.input.SHOW_PASSWORD_TEXT_INPUT);
+        done();
+    });
+
+
+    it('settings_get_value_078',0,async function (done){
+        var str = "settings.network.data_roaming_status"
+        expect(str).assertEqual(settings.network.DATA_ROAMING_STATUS);
+        done();
+    });
+
+
+    it('settings_get_value_079',0,async function (done){
+        var str = "settings.network.http_proxy_cfg"
+        expect(str).assertEqual(settings.network.HTTP_PROXY_CFG);
+        done();
+    });
+
+
+    it('settings_get_value_080',0,async function (done){
+        var str = "settings.network.network_preference_usage"
+        expect(str).assertEqual(settings.network.NETWORK_PREFERENCE_USAGE);
+        done();
+    });
+
+
+    it('settings_get_value_081',0,async function (done){
+        var str = "settings.phone.rtt_calling_status"
+        expect(str).assertEqual(settings.phone.RTT_CALLING_STATUS);
+        done();
+    });
+
+
+    it('settings_get_value_082',0,async function (done){
+        var str = "settings.sound.vibrate_while_ringing"
+        expect(str).assertEqual(settings.sound.VIBRATE_WHILE_RINGING);
+        done();
+    });
+
+
+    it('settings_get_value_083',0,async function (done){
+        var str = "settings.sound.default_alarm_alert"
+        expect(str).assertEqual(settings.sound.DEFAULT_ALARM_ALERT);
+        done();
+    });
+
+
+    it('settings_get_value_084',0,async function (done){
+        var str = "settings.sound.dtmf_tone_type_while_dialing"
+        expect(str).assertEqual(settings.sound.DTMF_TONE_TYPE_WHILE_DIALING);
+        done();
+    });
+
+
+    it('settings_get_value_085',0,async function (done){
+        var str = "settings.sound.dtmf_tone_while_dialing"
+        expect(str).assertEqual(settings.sound.DTMF_TONE_WHILE_DIALING);
+        done();
+    });
+
+
+    it('settings_get_value_086',0,async function (done){
+        var str = "settings.sound.haptic_feedback_status"
+        expect(str).assertEqual(settings.sound.HAPTIC_FEEDBACK_STATUS);
+        done();
+    });
+
+
+    it('settings_get_value_087',0,async function (done){
+        var str = "settings.sound.affected_mode_ringer_streams"
+        expect(str).assertEqual(settings.sound.AFFECTED_MODE_RINGER_STREAMS);
+        done();
+    });
+
+
+    it('settings_get_value_088',0,async function (done){
+        var str = "settings.sound.affected_mute_streams"
+        expect(str).assertEqual(settings.sound.AFFECTED_MUTE_STREAMS);
+        done();
+    });
+
+
+    it('settings_get_value_089',0,async function (done){
+        var str = "settings.sound.default_notification_sound"
+        expect(str).assertEqual(settings.sound.DEFAULT_NOTIFICATION_SOUND);
+        done();
+    });
+
+
+    it('settings_get_value_090',0,async function (done){
+        var str = "settings.sound.default_ringtone"
+        expect(str).assertEqual(settings.sound.DEFAULT_RINGTONE);
+        done();
+    });
+
+    it('settings_get_value_091',0,async function (done) {
+        var str ="settings.sound.sound_effects_status"
+        expect(str).assertEqual(settings.sound.SOUND_EFFECTS_STATUS);
+      done();
+    });
+
+    it('settings_get_value_092',0,async function (done) {
+      var str ="settings.sound.vibrate_status"
+        expect(str).assertEqual(settings.sound.VIBRATE_STATUS);
+      done();
+    });
+
+    it('settings_get_value_093',0,async function (done) {
+      var str ="settings.tts.default_tts_pitch"
+        expect(str).assertEqual(settings.tts.DEFAULT_TTS_PITCH);
+      done();
+    });
+
+    it('settings_get_value_094',0,async function (done) {
+      var str ="settings.tts.default_tts_rate"
+        expect(str).assertEqual(settings.tts.DEFAULT_TTS_RATE);
+      done();
+    });
+
+    it('settings_get_value_095',0,async function (done) {
+      var str ="settings.tts.default_tts_synth"
+        expect(str).assertEqual(settings.tts.DEFAULT_TTS_SYNTH);
+      done();
+    });
+
+    it('settings_get_value_096',0,async function (done) {
+      var str ="settings.tts.enabled_tts_plugins"
+        expect(str).assertEqual(settings.tts.ENABLED_TTS_PLUGINS);
+      done();
+    });
+
+    it('settings_get_value_097',0,async function (done) {
+      var str ="settings.wireless.bluetooth_radio"
+        expect(str).assertEqual(settings.wireless.BLUETOOTH_RADIO);
+      done();
+    });
+
+    it('settings_get_value_098',0,async function (done) {
+      var str ="settings.wireless.cell_radio"
+        expect(str).assertEqual(settings.wireless.CELL_RADIO);
+      done();
+    });
+
+    it('settings_get_value_099',0,async function (done) {
+      var str ="settings.wireless.nfc_radio"
+        expect(str).assertEqual(settings.wireless.NFC_RADIO);
+      done();
+    });
+
+    it('settings_get_value_100',0,async function (done) {
+      var str ="settings.wireless.airplane_mode_radios"
+        expect(str).assertEqual(settings.wireless.AIRPLANE_MODE_RADIOS);
+      done();
+    });
+
+    it('settings_get_value_101',0,async function (done) {
+      var str ="settings.wireless.bluetooth_status"
+        expect(str).assertEqual(settings.wireless.BLUETOOTH_STATUS);
+      done();
+    });
+
+    it('settings_get_value_102',0,async function (done) {
+      var str ="settings.wireless.bluetooth_discoverability_status"
+        expect(str).assertEqual(settings.wireless.BLUETOOTH_DISCOVER_ABILITY_STATUS);
+      done();
+    });
+
+    it('settings_get_value_103',0,async function (done) {
+      var str ="settings.wireless.bluetooth_discover_timeout"
+        expect(str).assertEqual(settings.wireless.BLUETOOTH_DISCOVER_TIMEOUT);
+      done();
+    });
+
+    it('settings_get_value_104',0,async function (done) {
+      var str ="settings.wireless.wifi_dhcp_max_retry_count"
+        expect(str).assertEqual(settings.wireless.WIFI_DHCP_MAX_RETRY_COUNT);
+      done();
+    });
+
+    it('settings_get_value_105',0,async function (done) {
+      var str ="settings.wireless.wifi_to_mobile_data_awake_timeout"
+        expect(str).assertEqual(settings.wireless.WIFI_TO_MOBILE_DATA_AWAKE_TIMEOUT);
+      done();
+    });
+
+    it('settings_get_value_106',0,async function (done) {
+      var str ="settings.wireless.wifi_status"
+        expect(str).assertEqual(settings.wireless.WIFI_STATUS);
+      done();
+    });
+
+    it('settings_get_value_107',0,async function (done) {
+      var str ="settings.wireless.wifi_watchdog_status"
+        expect(str).assertEqual(settings.wireless.WIFI_WATCHDOG_STATUS);
+      done();
+    });
+
+    it('settings_get_value_108',0,async function (done) {
+      var str ="settings.wireless.wifi_radio"
+        expect(str).assertEqual(settings.wireless.WIFI_RADIO);
+      done();
+    });
+
+    it('settings_get_value_109',0,async function (done) {
+      var str ="settings.wireless.owner_lockdown_wifi_cfg"
+        expect(str).assertEqual(settings.wireless.OWNER_LOCKDOWN_WIFI_CFG);
+      done();
+    });
+
+    it('settings_get_value_110',0,async function (done) {
+      var str ="settings.wireless.owner_lockdown_wifi_cfg"
+        expect(str).assertEqual(settings.wireless.OWNER_LOCKDOWN_WIFI_CFG);
+      done();
+    });
+	
+	it('settings_get_value_111',0,async function (done) {
+      let uri = 'dataability:///com.ohos.settingsdata.DataAbility';
+      let helper = featureAbility.acquireDataAbilityHelper(uri);
+      let name = 'settings.screen.brightness111';//关键字
+      let value = 'brightness111'//值
+      try{
+        settings.setValue(helper, name, value,(data)=>{
+          console.info("[settings_get_value_111] value is:" + data);
+          settings.getValue(helper, name).then(ret => {
+            console.info("[settings_get_value_111] value is:" + ret);
+            expect(ret).assertEqual(value);
+            done();
+          })
+        });
+      }catch(err){
+        console.info("[settings_get_value_111] error is:" + toString(error));
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+    });
+
+    it('settings_get_value_112',0,async function (done) {
+      let uri = 'dataability:///com.ohos.settingsdata.DataAbility';
+      let helper = featureAbility.acquireDataAbilityHelper(uri);
+      let name = 'settings.screen.brightness112';//关键字
+      let value = 'brightness112'//值
+      try{
+        settings.setValue(helper, name, value)
+        .then((data)=>{
+          console.info("[settings_get_value_112] value is:" + data);
+          settings.getValue(helper, name).then(ret => {
+            console.info("[settings_get_value_112] value is:" + ret);
+            expect(ret).assertEqual(value);
+            done();
+          })
+        })
+        .catch((err)=>{
+          console.info("[settings_get_value_112] error is:" + toString(error));
+          expect(true).assertTrue();
+          done();
+          return;
+        })
+      }catch(err){
+        console.info("[settings_get_value_112] error is:" + toString(error));
+        expect(true).assertTrue();
+        done();
+        return;
+      }
     });
   })
 }
