@@ -48,9 +48,9 @@
                 "hilog -Q pidoff",
                 "hilog -p off",
                 "aa start -a com.ohos.photos.MainAbility -b com.ohos.photos",
-                "sleep 60",
-                "sleep 60",
-                "sleep 60"
+                "sleep 10",
+                "cem publish -e usual.event.SCREEN_OFF",
+                "sleep 10"
             ]
         },
         {
