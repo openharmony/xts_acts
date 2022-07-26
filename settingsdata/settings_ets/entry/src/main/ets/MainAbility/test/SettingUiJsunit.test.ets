@@ -1132,5 +1132,56 @@ export default function settingUiJsunit() {
         expect(str).assertEqual(settings.wireless.OWNER_LOCKDOWN_WIFI_CFG);
       done();
     });
+	
+	it('settings_get_value_111',0,async function (done) {
+      let uri = 'dataability:///com.ohos.settingsdata.DataAbility';
+      let helper = featureAbility.acquireDataAbilityHelper(uri);
+      let name = 'settings.screen.brightness111';//关键字
+      let value = 'brightness111'//值
+      try{
+        settings.setValue(helper, name, value,(data)=>{
+          console.info("[settings_get_value_111] value is:" + data);
+          settings.getValue(helper, name).then(ret => {
+            console.info("[settings_get_value_111] value is:" + ret);
+            expect(ret).assertEqual(value);
+            done();
+          })
+        });
+      }catch(err){
+        console.info("[settings_get_value_111] error is:" + toString(error));
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+    });
+
+    it('settings_get_value_112',0,async function (done) {
+      let uri = 'dataability:///com.ohos.settingsdata.DataAbility';
+      let helper = featureAbility.acquireDataAbilityHelper(uri);
+      let name = 'settings.screen.brightness112';//关键字
+      let value = 'brightness112'//值
+      try{
+        settings.setValue(helper, name, value)
+        .then((data)=>{
+          console.info("[settings_get_value_112] value is:" + data);
+          settings.getValue(helper, name).then(ret => {
+            console.info("[settings_get_value_112] value is:" + ret);
+            expect(ret).assertEqual(value);
+            done();
+          })
+        })
+        .catch((err)=>{
+          console.info("[settings_get_value_112] error is:" + toString(error));
+          expect(true).assertTrue();
+          done();
+          return;
+        })
+      }catch(err){
+        console.info("[settings_get_value_112] error is:" + toString(error));
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+    });
   })
 }
