@@ -333,6 +333,7 @@ describe('ActsOsAccountThirdPartyTest_third1', function () {
             expect(data.constraints.length > 0).assertEqual(true);
             expect(data.isVerified).assertEqual(false);
             expect(data.distributedInfo.name != null).assertEqual(true);
+            expect(data.domainInfo.domain == "").assertEqual(true);
             localId = data.localId;
             osAccountManager.getSerialNumberByOsAccountLocalId(localId, (err, serialNumber)=>{
                 console.debug("====>queryOsAccountById err:" + JSON.stringify(err));
