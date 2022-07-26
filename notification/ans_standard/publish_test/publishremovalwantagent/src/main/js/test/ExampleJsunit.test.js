@@ -93,10 +93,10 @@ describe('ActsAnsPublishRemovalWantAgentTest', function () {
      * @tc.desc: set true and get true
      */
     it('SetEnabledForUninstallApp_test_0100', 0, async function (done) {
-        await notify.setSyncNotificationEnabledForUninstallApp(
+        await notify.setSyncNotificationEnabledWithoutApp(
            100,true,async() => {
-            await notify.getSyncNotificationEnabledForUninstallApp(100, (err,data) => {
-                console.log("===>getSyncNotificationEnabledForUninstallApp===>"+err+data)
+            await notify.getSyncNotificationEnabledWithoutApp(100, (err,data) => {
+                console.log("===>getSyncNotificationEnabledWithoutApp===>"+err+data)
                 expect(data).assertEqual(true)
                 done();
             })
@@ -109,10 +109,10 @@ describe('ActsAnsPublishRemovalWantAgentTest', function () {
      * @tc.desc: set false and get false
      */
     it('SetEnabledForUninstallApp_test_0200', 0, async function (done) {
-        await notify.setSyncNotificationEnabledForUninstallApp(
+        await notify.setSyncNotificationEnabledWithoutApp(
            100,false,async() => {
-            await notify.getSyncNotificationEnabledForUninstallApp(100, (err,data) => {
-                console.log("===>getSyncNotificationEnabledForUninstallApp===>"+err+data)
+            await notify.getSyncNotificationEnabledWithoutApp(100, (err,data) => {
+                console.log("===>getSyncNotificationEnabledWithoutApp===>"+err+data)
                 expect(data).assertEqual(false)
                 done();
             })
@@ -125,17 +125,17 @@ describe('ActsAnsPublishRemovalWantAgentTest', function () {
      * @tc.desc: set true and get true
      */
     it('SetEnabledForUninstallApp_test_0300', 0, async function (done) {
-        notify.setSyncNotificationEnabledForUninstallApp(100, true).then(() => {
-            notify.getSyncNotificationEnabledForUninstallApp(100).then((data) => {
-                console.log("===>getSyncNotificationEnabledForUninstallApp===>"+data)
+        notify.setSyncNotificationEnabledWithoutApp(100, true).then(() => {
+            notify.getSyncNotificationEnabledWithoutApp(100).then((data) => {
+                console.log("===>getSyncNotificationEnabledWithoutApp===>"+data)
                 expect(data).assertEqual(true)
                 done();
             }).catch((err) => {
                 Logger.error(TAG,
-                    `===>getSyncNotificationEnabledForUninstallApp failed because ${JSON.stringify(err)}`);
+                    `===>getSyncNotificationEnabledWithoutApp failed because ${JSON.stringify(err)}`);
             });
         }).catch((err) => {
-            Logger.error(TAG, `===>setSyncNotificationEnabledForUninstallApp failed because ${JSON.stringify(err)}`);
+            Logger.error(TAG, `===>setSyncNotificationEnabledWithoutApp failed because ${JSON.stringify(err)}`);
         });
     })
 }) }
