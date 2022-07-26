@@ -54,18 +54,18 @@ export default function ActsAccountCredential() {
             console.debug("====>creat finish====");
             appAccountManager.addAccount("account_name_0100", (err)=>{
                 console.debug("====>add account ActsAccountCredential_0100 err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.setAccountCredential("account_name_0100", "credentialType1", "credential1",(err)=>{
                     console.debug("====>ActsAccountCredential_0100 setAccountCredential:" + JSON.stringify(err));
-                    expect(err.code).assertEqual(0);
+                    expect(err).assertEqual(undefined);
                     appAccountManager.getAccountCredential("account_name_0100", "credentialType1", (err,data)=>{
                         console.debug("====>getAccountCredential 0100 err:" + JSON.stringify(err));
                         console.debug("====>getAccountCredential 0100 data:" + JSON.stringify(data));
-                        expect(err.code).assertEqual(0);
+                        expect(err).assertEqual(undefined);
                         expect(data).assertEqual("credential1");
                         appAccountManager.deleteAccount("account_name_0100", (err)=>{
                             console.debug("====>delete Account 0100 err:" + JSON.stringify(err));
-                            expect(err.code).assertEqual(0);
+                            expect(err).assertEqual(undefined);
                             console.debug("====>ActsAccountCredential_0100 end====");
                             done();
                         });
@@ -125,21 +125,21 @@ export default function ActsAccountCredential() {
             console.debug("====>creat finish====");
             appAccountManager.addAccount("account_name_0300",(err)=>{
                 console.debug("====>add account ActsAccountCredential_0300 err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.setAccountCredential("account_name_0300", "credentialType3", "credential3",(err)=>{
                     console.debug("====>setAccountCredential first time 0300 err:" + JSON.stringify(err));
-                    expect(err.code).assertEqual(0);
+                    expect(err).assertEqual(undefined);
                     appAccountManager.setAccountCredential("account_name_0300", "credentialType3", "newcredential3",(err)=>{
                         console.debug("====>setAccountCredential second time 0300 err:" + JSON.stringify(err));
-                        expect(err.code).assertEqual(0);
+                        expect(err).assertEqual(undefined);
                         appAccountManager.getAccountCredential("account_name_0300", "credentialType3", (err, data)=>{
                             console.debug("====>getAccountCredential 0300 err:" + JSON.stringify(err));
                             console.debug("====>getAccountCredential 0300 data:" + JSON.stringify(data));
-                            expect(err.code).assertEqual(0);
+                            expect(err).assertEqual(undefined);
                             expect(data).assertEqual("newcredential3");
                             appAccountManager.deleteAccount("account_name_0300", (err)=>{
                                 console.debug("====>delete Account 0300 err:" + JSON.stringify(err));
-                                expect(err.code).assertEqual(0);
+                                expect(err).assertEqual(undefined);
                                 console.debug("====>ActsAccountCredential_0300 end====");
                                 done();
                             });
@@ -198,18 +198,18 @@ export default function ActsAccountCredential() {
             console.debug("====>creat finish====");
             appAccountManager.addAccount("account_name_0500",(err)=>{
                 console.debug("====>add account ActsAccountCredential_0500 err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.setAccountCredential("account_name_0500", "credentialType5", "", (err)=>{
                     console.debug("====>setAccountCredential ActsAccountCredential_0500 err:" + JSON.stringify(err));
-                    expect(err.code).assertEqual(0);
+                    expect(err).assertEqual(undefined);
                     appAccountManager.getAccountCredential("account_name_0500", "credentialType5", (err,data)=>{
                         console.debug("====>getAccountCredential ActsAccountCredential_0500 err:" + JSON.stringify(err));
                         console.debug("====>getAccountCredential ActsAccountCredential_0500 data:" + JSON.stringify(data));
-                        expect(err.code).assertEqual(0);
+                        expect(err).assertEqual(undefined);
                         expect(data).assertEqual("");
                         appAccountManager.deleteAccount("account_name_0500", (err)=>{
                             console.debug("====>delete Account ActsAccountCredential_0500 err:" + JSON.stringify(err));
-                            expect(err.code).assertEqual(0);
+                            expect(err).assertEqual(undefined);
                             console.debug("====>ActsAccountCredential_0500 end====");
                             done();
                         });
@@ -252,13 +252,13 @@ export default function ActsAccountCredential() {
             console.debug("====>creat finish====");
             appAccountManager.addAccount("account_name_0700", (err)=>{
                 console.debug("====>add account ActsAccountCredential_0700 err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.setAccountCredential("account_name_0700", "", "credential7", (err)=>{
                     console.debug("====>setAccountCredential ActsAccountCredential_0700 err:" + JSON.stringify(err));
                     expect(err.code != 0).assertEqual(true);
                     appAccountManager.deleteAccount("account_name_0700", (err)=>{
                         console.debug("====>delete Account ActsAccountCredential_0700 err:" + JSON.stringify(err));
-                        expect(err.code).assertEqual(0);
+                        expect(err).assertEqual(undefined);
                         console.debug("====>ActsAccountCredential_0700 end====");
                         done();
                     });
@@ -301,13 +301,13 @@ export default function ActsAccountCredential() {
             console.debug("====>creat finish====");
             appAccountManager.addAccount("account_name_0900", (err)=>{
                 console.debug("====>add account ActsAccountCredential_0900 err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.getAccountCredential("account_name_0900", "", (err)=>{
                     console.debug("====>getAccountCredential ActsAccountCredential_0900 err:" + JSON.stringify(err));
                     expect(err.code != 0).assertEqual(true);
                     appAccountManager.deleteAccount("account_name_0900", (err)=>{
                         console.debug("====>delete Account ActsAccountCredential_0900 err:" + JSON.stringify(err));
-                        expect(err.code).assertEqual(0);
+                        expect(err).assertEqual(undefined);
                         console.debug("====>ActsAccountCredential_0900 end====");
                         done();
                     });
@@ -351,18 +351,18 @@ export default function ActsAccountCredential() {
             console.debug("====>creat finish====");
             appAccountManager.addAccount("account_name_1100",(err)=>{
                 console.debug("====>add account ActsAccountCredential_1100 err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.setAccountCredential("account_name_1100", " ", "credential11",(err)=>{
                     console.debug("====>setAccountCredential ActsAccountCredential_1100 err:" + JSON.stringify(err));
-                    expect(err.code).assertEqual(0);
+                    expect(err).assertEqual(undefined);
                     appAccountManager.getAccountCredential("account_name_1100", " ", (err, data)=>{
                         console.debug("====>getAccountCredential 1100 err:" + JSON.stringify(err));
                         console.debug("====>getAccountCredential 1100 data:" + JSON.stringify(data));
-                        expect(err.code).assertEqual(0);
+                        expect(err).assertEqual(undefined);
                         expect(data).assertEqual("credential11");
                         appAccountManager.deleteAccount("account_name_1100", (err)=>{
                             console.debug("====>delete Account 1100 err:" + JSON.stringify(err));
-                            expect(err.code).assertEqual(0);
+                            expect(err).assertEqual(undefined);
                             console.debug("====>ActsAccountCredential_1100 end====");
                             done();
                         });
@@ -406,13 +406,13 @@ export default function ActsAccountCredential() {
             console.debug("====>creat finish====");
             appAccountManager.addAccount("account_name_1300",(err)=>{
                 console.debug("====>add account ActsAccountCredential_1300 err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.setAccountCredential("", "credentialType13", "credential13", (err)=>{
                     console.debug("====>setAccountCredential ActsAccountCredential_1300 err:" + JSON.stringify(err));
                     expect(err.code != 0).assertEqual(true);
                     appAccountManager.deleteAccount("account_name_1300", (err)=>{
                         console.debug("====>delete Account ActsAccountCredential_1300 err:" + JSON.stringify(err));
-                        expect(err.code).assertEqual(0);
+                        expect(err).assertEqual(undefined);
                         console.debug("====>ActsAccountCredential_1300 end====");
                         done();
                     });
@@ -455,13 +455,13 @@ export default function ActsAccountCredential() {
             console.debug("====>creat finish====");
             appAccountManager.addAccount("account_name_1500", (err)=>{
                 console.debug("====>add account ActsAccountCredential_1500 err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.getAccountCredential("account_name_1500", "credentialType15", (err)=>{
                     console.debug("====>getAccountCredential ActsAccountCredential_1500 err:" + JSON.stringify(err));
                     expect(err.code != 0).assertEqual(true);
                     appAccountManager.deleteAccount("account_name_1500", (err)=>{
                         console.debug("====>delete Account ActsAccountCredential_1500 err:" + JSON.stringify(err));
-                        expect(err.code).assertEqual(0);
+                        expect(err).assertEqual(undefined);
                         console.debug("====>ActsAccountCredential_1500 end====");
                         done();
                     });
@@ -507,7 +507,7 @@ export default function ActsAccountCredential() {
             console.debug("====>creat finish====");
             appAccountManager.addAccount("account_name_1700", (err)=>{
                 console.debug("====>add account ActsAccountCredential_1700 err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.setAccountCredential("account_name_1700", "credentialType17", CREDENTIALOVERSIZE, (err)=>{
                     console.debug("====>CREDENTIALOVERSIZE.length:" + JSON.stringify(CREDENTIALOVERSIZE.length));
                     expect(CREDENTIALOVERSIZE.length).assertEqual(1025);
@@ -515,7 +515,7 @@ export default function ActsAccountCredential() {
                     expect(err.code != 0).assertEqual(true);
                     appAccountManager.deleteAccount("account_name_1700", (err)=>{
                         console.debug("====>delete Account ActsAccountCredential_1700 err:" + JSON.stringify(err));
-                        expect(err.code).assertEqual(0);
+                        expect(err).assertEqual(undefined);
                         console.debug("====>ActsAccountCredential_1700 end====");
                         done();
                     });
@@ -566,7 +566,7 @@ export default function ActsAccountCredential() {
             console.debug("====>creat finish====");
             appAccountManager.addAccount("account_name_1900", (err)=>{
                 console.debug("====>add account ActsAccountCredential_1900 err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.setAccountCredential("account_name_1900", CREDENTIALTYPEOVERSIZE, "credential19", (err)=>{
                     console.debug("====>CREDENTIALTYPEOVERSIZE.length:" + JSON.stringify(CREDENTIALTYPEOVERSIZE.length));
                     expect(CREDENTIALTYPEOVERSIZE.length).assertEqual(1025);
@@ -574,7 +574,7 @@ export default function ActsAccountCredential() {
                     expect(err.code != 0).assertEqual(true);
                     appAccountManager.deleteAccount("account_name_1900", (err)=>{
                         console.debug("====>delete Account ActsAccountCredential_1900 err:" + JSON.stringify(err));
-                        expect(err.code).assertEqual(0);
+                        expect(err).assertEqual(undefined);
                         console.debug("====>ActsAccountCredential_1900 end====");
                         done();
                     });
@@ -625,14 +625,14 @@ export default function ActsAccountCredential() {
             console.debug("====>creat finish====");
             appAccountManager.addAccount("account_name_2100", (err)=>{
                 console.debug("====>add account ActsAccountCredential_2100 err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.setAccountCredential(NAMEOVERSIZE, "credentialType21", "credential21", (err)=>{
                     console.debug("====>setAccountCredential ActsAccountCredential_2100 err:" + JSON.stringify(err));
                     expect(err.code != 0).assertEqual(true);
                     appAccountManager.deleteAccount("account_name_2100", (err)=>{
                         console.debug("====>delete Account ActsAccountCredential_2100 err:" + JSON.stringify(err));
                         console.debug("====>ActsAccountCredential_2100 end====");
-                        expect(err.code).assertEqual(0);
+                        expect(err).assertEqual(undefined);
                         done();
                     });
                 });
