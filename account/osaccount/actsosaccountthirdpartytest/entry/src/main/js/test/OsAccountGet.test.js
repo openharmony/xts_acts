@@ -35,7 +35,7 @@ describe('ActsOsAccountThirdPartyTest_third1', function () {
         osAccountManager.getOsAccountLocalIdFromUid(uid, (err, localId)=>{
             console.debug("====>get localId err: " + JSON.stringify(err));
             console.debug("====>localId obtained by uid:" + localId);
-            expect(err.code).assertEqual(0);
+            expect(err).assertEqual(undefined);
             expect(localId).assertEqual(100);
             console.debug("====>ActsOsAccountGetIdFormUid_0100 end====");
             done();
@@ -76,7 +76,7 @@ describe('ActsOsAccountThirdPartyTest_third1', function () {
             console.debug("====>get localId err: " + JSON.stringify(err));
             console.debug("====>localId obtained by uid:" + localId);
             expect(err.code).assertEqual(ERR_OS_ACCOUNT_SERVICE_MANAGER_BAD_UID_ERR);
-            expect(localId).assertEqual(0);
+            expect(localId).assertEqual(undefined);
             console.debug("====>ActsOsAccountGetIdFormUid_0300 end====");
             done();
         });
@@ -116,7 +116,7 @@ describe('ActsOsAccountThirdPartyTest_third1', function () {
             console.debug("====>get localId err: " + JSON.stringify(err));
             console.debug("====>localId obtained by uid:" + localId);
             expect(err.code).assertEqual(ERR_OS_ACCOUNT_SERVICE_MANAGER_BAD_UID_ERR);
-            expect(localId).assertEqual(0);
+            expect(localId).assertEqual(undefined);
             console.debug("====>ActsOsAccountGetIdFormUid_0500 end====");
             done();
         });
@@ -154,7 +154,7 @@ describe('ActsOsAccountThirdPartyTest_third1', function () {
         osAccountManager.getOsAccountLocalIdFromProcess((err, localId)=>{
             console.debug("====>get localId err: " + JSON.stringify(err));
             console.debug("====>localId obtained by process:" + localId);
-            expect(err.code).assertEqual(0);
+            expect(err).assertEqual(undefined);
             expect(localId).assertEqual(100);
             console.debug("====>ActsOsAccountGetIdFormProcess_0100 end====");
             done();
@@ -189,7 +189,7 @@ describe('ActsOsAccountThirdPartyTest_third1', function () {
         osAccountManager.getOsAccountTypeFromProcess((err, accountType)=>{
             console.debug("====>get type err: " + JSON.stringify(err));
             console.debug("====>type obtained by process:" + JSON.stringify(accountType));
-            expect(err.code).assertEqual(0);
+            expect(err).assertEqual(undefined);
             expect(accountType.ADMIN).assertEqual(0);
             console.debug("====>ActsOsAccountGetTypeFormProcess_0100 end====");
             done();
@@ -224,7 +224,7 @@ describe('ActsOsAccountThirdPartyTest_third1', function () {
         osAccountManager.getSerialNumberByOsAccountLocalId(100, (err, serialNumber)=>{
             console.debug("====>ger serialNumber err:" + JSON.stringify(err));
             console.debug("====>get serialNumber:" + serialNumber + " by localId: 100" );
-            expect(err.code).assertEqual(0);
+            expect(err).assertEqual(undefined);
             var serialNumberStr = serialNumber.toString();
             var serialIntercept = serialNumberStr.substring(8);
             console.debug("====>truncate the last eight characters: " + serialIntercept);
@@ -232,7 +232,7 @@ describe('ActsOsAccountThirdPartyTest_third1', function () {
             osAccountManager.getOsAccountLocalIdBySerialNumber(serialNumber, (err, localId)=>{
                 console.debug("====>ger localId err:" + JSON.stringify(err));
                 console.debug("====>get localId:" + localId + " by serialNumber: " + serialNumber);
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 expect(localId).assertEqual(100);
                 console.debug("====>ActsOsAccountLocalIdSerial_0100 end====");
                 done();
@@ -274,7 +274,7 @@ describe('ActsOsAccountThirdPartyTest_third1', function () {
         osAccountManager.getSerialNumberByOsAccountLocalId(0, (err, serialNumber)=>{
             console.debug("====>ger serialNumber err:" + JSON.stringify(err));
             console.debug("====>get serialNumber:" + serialNumber + " by localId: 0" );
-            expect(err.code).assertEqual(0);
+            expect(err).assertEqual(undefined);
             var serialNumberStr = serialNumber.toString();
             var serialIntercept = serialNumberStr.substring(8);
             console.debug("====>truncate the last eight characters: " + serialIntercept);
@@ -282,7 +282,7 @@ describe('ActsOsAccountThirdPartyTest_third1', function () {
             osAccountManager.getOsAccountLocalIdBySerialNumber(serialNumber, (err, localId)=>{
                 console.debug("====>ger localId err:" + JSON.stringify(err));
                 console.debug("====>get localId:" + localId + " by serialNumber: " + serialNumber);
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 expect(localId).assertEqual(0);
                 console.debug("====>ActsOsAccountLocalIdSerial_0300 end====");
                 done();
@@ -326,7 +326,7 @@ describe('ActsOsAccountThirdPartyTest_third1', function () {
         osAccountManager.createOsAccount("osAccountNameIdSerialA", osaccount.OsAccountType.NORMAL, (err, data)=>{
             console.debug("====>create os account err: " + JSON.stringify(err));
             console.debug("====>create os account OsAccountInfo: " + JSON.stringify(data));
-            expect(err.code).assertEqual(0);
+            expect(err).assertEqual(undefined);
             expect(data.localName).assertEqual("osAccountNameIdSerialA");
             expect(data.domainInfo.accountName == "").assertEqual(true)
             expect(data.type.NORMAL).assertEqual(1);
@@ -338,15 +338,15 @@ describe('ActsOsAccountThirdPartyTest_third1', function () {
             osAccountManager.getSerialNumberByOsAccountLocalId(localId, (err, serialNumber)=>{
                 console.debug("====>queryOsAccountById err:" + JSON.stringify(err));
                 console.debug("====>get serialNumber:" + serialNumber + " by localId: " + localId);
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 osAccountManager.getOsAccountLocalIdBySerialNumber(serialNumber, (err, getlocalId)=>{
                     console.debug("====>ger localId err:" + JSON.stringify(err));
                     console.debug("====>get localId:" + getlocalId + " by serialNumber: " + serialNumber);
-                    expect(err.code).assertEqual(0);
+                    expect(err).assertEqual(undefined);
                     expect(getlocalId).assertEqual(localId);
                     osAccountManager.removeOsAccount(localId, (err)=>{
                         console.debug("====>remove localId: " + localId + " err:" + JSON.stringify(err));
-                        expect(err.code).assertEqual(0);
+                        expect(err).assertEqual(undefined);
                         console.debug("====>ActsOsAccountLocalIdSerial_0500 end====");
                         done();
                     })
@@ -395,38 +395,38 @@ describe('ActsOsAccountThirdPartyTest_third1', function () {
         osAccountManager.getCreatedOsAccountsCount((err, data)=>{
             console.debug("====>obtains the number of all os accounts created err:" + JSON.stringify(err));
             console.debug("====>obtains the number of all os accounts created data:" + data);
-            expect(err.code).assertEqual(0);
+            expect(err).assertEqual(undefined);
             obtainCount = data;
             osAccountManager.createOsAccount("osAccountNameIdSerialE", osaccount.OsAccountType.NORMAL, (err, data)=>{
                 console.debug("====>create first os account err: " + JSON.stringify(err));
                 console.debug("====>create first os account OsAccountInfo: " + JSON.stringify(data));
                 localIdFir = data.localId;
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 expect(data.localName).assertEqual("osAccountNameIdSerialE");
                 osAccountManager.createOsAccount("osAccountIdSerialF", osaccount.OsAccountType.NORMAL, (err, data)=>{
                     console.debug("====>create second os account err: " + JSON.stringify(err));
                     console.debug("====>create second os account OsAccountInfo: " + JSON.stringify(data));
                     localIdSec = data.localId;
-                    expect(err.code).assertEqual(0);
+                    expect(err).assertEqual(undefined);
                     expect(data.localName).assertEqual("osAccountIdSerialF");
                     osAccountManager.getCreatedOsAccountsCount((err, count)=>{
                         console.debug("====>obtains the number of all os accounts created err:" + JSON.stringify(err));
                         console.debug("====>obtains the number of all os accounts created count:" + count);
-                        expect(err.code).assertEqual(0);
+                        expect(err).assertEqual(undefined);
                         count = count - 2;
                         expect(count).assertEqual(obtainCount);
                         osAccountManager.removeOsAccount(localIdFir, (err)=>{
                             console.debug("====>remove localId: " + localIdFir + " err:" + JSON.stringify(err));
-                            expect(err.code).assertEqual(0);
+                            expect(err).assertEqual(undefined);
                             osAccountManager.getCreatedOsAccountsCount((err, data)=>{
                                 console.debug("====>obtains the number accounts created err:" + JSON.stringify(err));
                                 console.debug("====>obtains the number accounts created data:" + data);
-                                expect(err.code).assertEqual(0);
+                                expect(err).assertEqual(undefined);
                                 data = data - 1;
                                 expect(data).assertEqual(obtainCount);
                                 osAccountManager.removeOsAccount(localIdSec, (err)=>{
                                     console.debug("====>remove localId: " + localIdSec + " err:" + JSON.stringify(err));
-                                    expect(err.code).assertEqual(0);
+                                    expect(err).assertEqual(undefined);
                                     console.debug("====>ActsOsAccountGetCount_0100 end====");
                                     done();
                                 })
@@ -478,9 +478,9 @@ describe('ActsOsAccountThirdPartyTest_third1', function () {
         console.debug("====>ActsOsAccountQueryActivedOsAccountIds_0100 start====");
         var osAccountManager = osaccount.getAccountManager();
         osAccountManager.queryActivatedOsAccountIds((err,dataArray)=>{
-            console.info("ActsOsAccountGQueryActicedOsAccountIds_0100 err :" + JSON.stringify(err));
-            expect(err.code).assertEqual(0)
-            console.info("ActsOsAccountGQueryActicedOsAccountIds_0100 dataArray" + dataArray.length);
+            console.info("====>ActsOsAccountGQueryActicedOsAccountIds_0100 err :" + JSON.stringify(err));
+            expect(err).assertEqual(undefined)
+            console.info("====>ActsOsAccountGQueryActicedOsAccountIds_0100 dataArray" + dataArray.length);
             done();
         })
     })
@@ -488,12 +488,12 @@ describe('ActsOsAccountThirdPartyTest_third1', function () {
     it('ActsOsAccountQueryActivedOsAccountIds_0200', 0, async function (done) {
         console.debug("====>ActsOsAccountQueryActivedOsAccountIds_0200 start====");
         var osAccountManager = osaccount.getAccountManager(); 
-        osAccountManager.queryActivatedOsAccountIds().catch((err)=>{
-            console.info("====>ActsOsAccountQueryActivedOsAccountIds_0200 err " + JSON.stringify(err));
-            expect(err.code).assertEqual(0)
-            done();
-        }).then((data)=>{
+        osAccountManager.queryActivatedOsAccountIds().then((data)=>{
             console.debug("====>ActsOsAccountQueryActivedOsAccountIds_0200 data" + JSON.stringify(data))
+            done();
+        }).catch((err)=>{
+            console.info("====>ActsOsAccountQueryActivedOsAccountIds_0200 err " + JSON.stringify(err));
+            expect(err).assertEqual(undefined)
             done();
         });
     })

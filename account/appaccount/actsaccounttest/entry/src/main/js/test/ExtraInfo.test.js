@@ -53,15 +53,15 @@ describe('ActsAccountSetGetExtraInfo', function () {
         console.debug("====>creat finish====");
         appAccountManager.addAccount("account_name_callback_first", extraInfoStr, (err)=>{
             console.debug("====>add account ActsAccountSetGetExtraInfo_0100 err:" + JSON.stringify(err));
-            expect(err.code).assertEqual(0);
+            expect(err).assertEqual(undefined);
             appAccountManager.getAccountExtraInfo("account_name_callback_first", (err, data)=>{
                 console.debug("====>getAccountExtraInfo 0100 err:" + JSON.stringify(err));
                 console.debug("====>getAccountExtraInfo 0100 data:" + JSON.stringify(data));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 expect(data).assertEqual(extraInfoStr);
                 appAccountManager.deleteAccount("account_name_callback_first", (err)=>{
                     console.debug("====>delete Account 0100 err:" + JSON.stringify(err));
-                    expect(err.code).assertEqual(0);
+                    expect(err).assertEqual(undefined);
                     console.debug("====>ActsAccountSetGetExtraInfo_0100 end====");
                     done();
                 });
@@ -150,10 +150,10 @@ describe('ActsAccountSetGetExtraInfo', function () {
         console.debug("====>creat finish====");
         appAccountManager.addAccount("account_name_callback_third", "account_extrainfo_callback_third", (err)=>{
             console.debug("====>add account ActsAccountSetGetExtraInfo_0500 err:" + JSON.stringify(err));
-            expect(err.code).assertEqual(0);
+            expect(err).assertEqual(undefined);
             appAccountManager.deleteAccount("account_name_callback_third", (err)=>{
                 console.debug("====>delete Account 0500 err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.getAccountExtraInfo("account_name_callback_third", (err, data)=>{
                     console.debug("====>getAccountExtraInfo 0500 err:" + JSON.stringify(err));
                     console.debug("====>getAccountExtraInfo 0500 data:" + JSON.stringify(data));
@@ -203,15 +203,15 @@ describe('ActsAccountSetGetExtraInfo', function () {
         console.debug("====>creat finish====");
         appAccountManager.addAccount("account_name_callback_fourth", (err)=>{
             console.debug("====>add account ActsAccountSetGetExtraInfo_0700 err:" + JSON.stringify(err));
-            expect(err.code).assertEqual(0);
+            expect(err).assertEqual(undefined);
             appAccountManager.getAccountExtraInfo("account_name_callback_fourth", (err, data)=>{
                 console.debug("====>getAccountExtraInfo 0700 err:" + JSON.stringify(err));
                 console.debug("====>getAccountExtraInfo 0700 data:" + JSON.stringify(data));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 expect(data).assertEqual("");
                 appAccountManager.deleteAccount("account_name_callback_fourth", (err)=>{
                     console.debug("====>delete Account 0700 err:" + JSON.stringify(err));
-                    expect(err.code).assertEqual(0);
+                    expect(err).assertEqual(undefined);
                     console.debug("====>ActsAccountSetGetExtraInfo_0700 end====");
                     done();
                 });
@@ -300,18 +300,18 @@ describe('ActsAccountSetGetExtraInfo', function () {
         console.debug("====>creat finish====");
         appAccountManager.addAccount("account_name_callback_sixth", "account_extrainfo_callback_sixth",(err)=>{
             console.debug("====>add account ActsAccountSetGetExtraInfo_1100 err:" + JSON.stringify(err));
-            expect(err.code).assertEqual(0);
+            expect(err).assertEqual(undefined);
             appAccountManager.setAccountExtraInfo("account_name_callback_sixth", "account_extra_sixth_twice", (err)=>{
                 console.debug("====>setAccountExtraInfo 1100 err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.getAccountExtraInfo("account_name_callback_sixth", (err, data)=>{
                     console.debug("====>getAccountExtraInfo 1100 err:" + JSON.stringify(err));
                     console.debug("====>getAccountExtraInfo 1100 data:" + JSON.stringify(data));
-                    expect(err.code).assertEqual(0);
+                    expect(err).assertEqual(undefined);
                     expect(data).assertEqual("account_extra_sixth_twice");
                     appAccountManager.deleteAccount("account_name_callback_sixth", (err)=>{
                         console.debug("====>delete Account 1100 err:" + JSON.stringify(err));
-                        expect(err.code).assertEqual(0);
+                        expect(err).assertEqual(undefined);
                         console.debug("====>ActsAccountSetGetExtraInfo_1100 end====");
                         done();
                     });
@@ -360,17 +360,17 @@ describe('ActsAccountSetGetExtraInfo', function () {
         console.debug("====>creat finish====");
         appAccountManager.addAccount("account_name_callback_seventh",(err)=>{
             console.debug("====>add account ActsAccountSetGetExtraInfo_1300 err:" + JSON.stringify(err));
-            expect(err.code).assertEqual(0);
+            expect(err).assertEqual(undefined);
             appAccountManager.setAccountExtraInfo("account_name_callback_seventh", "callback_seventh", (err)=>{
                 console.debug("====>setAccountExtraInfo 1300 first time err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.setAccountExtraInfo("account_name_callback_seventh", "call_seventh_twice", (err)=>{
                     console.debug("====>setAccountExtraInfo 1300 second time err:" + JSON.stringify(err));
-                    expect(err.code).assertEqual(0);
+                    expect(err).assertEqual(undefined);
                     appAccountManager.getAccountExtraInfo("account_name_callback_seventh", (err, data)=>{
                         console.debug("====>getAccountExtraInfo 1300 err:" + JSON.stringify(err));
                         console.debug("====>getAccountExtraInfo 1300 data:" + JSON.stringify(data));
-                        expect(err.code).assertEqual(0);
+                        expect(err).assertEqual(undefined);
                         expect(data).assertEqual("call_seventh_twice");
                         appAccountManager.deleteAccount("account_name_callback_seventh", (err)=>{
                             console.debug("====>delete Account 1300 err:" + JSON.stringify(err));
@@ -436,17 +436,17 @@ describe('ActsAccountSetGetExtraInfo', function () {
         console.debug("====>creat finish====");
         appAccountManager.addAccount("account_name_callback_eighth",(err)=>{
             console.debug("====>add account ActsAccountSetGetExtraInfo_1500 err:" + JSON.stringify(err));
-            expect(err.code).assertEqual(0);
+            expect(err).assertEqual(undefined);
             appAccountManager.setAccountExtraInfo("account_name_callback_eighth", "extra_callback_eighth", (err)=>{
                 console.debug("====>setAccountExtraInfo second time err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.setAccountExtraInfo("account_name_callback_eighth", "extra_callback_eighth", (err)=>{
                     console.debug("====>setAccountExtraInfo 1500 first time err:" + JSON.stringify(err));
-                    expect(err.code).assertEqual(0);
+                    expect(err).assertEqual(undefined);
                     appAccountManager.getAccountExtraInfo("account_name_callback_eighth", (err, data)=>{
                         console.debug("====>getAccountExtraInfo 1500 err:" + JSON.stringify(err));
                         console.debug("====>getAccountExtraInfo 1500 data:" + JSON.stringify(data));
-                        expect(err.code).assertEqual(0);
+                        expect(err).assertEqual(undefined);
                         expect(data).assertEqual("extra_callback_eighth");
                         appAccountManager.deleteAccount("account_name_callback_eighth", (err)=>{
                             console.debug("====>delete Account 1500 err:" + JSON.stringify(err));
