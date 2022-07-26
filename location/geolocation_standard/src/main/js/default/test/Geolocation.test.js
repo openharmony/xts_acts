@@ -30,7 +30,6 @@ async function changedLocationMode(){
             await geolocation.requestEnableLocation().then(async(result) => {
                 await sleep(3000);
                 console.info('[lbs_js] test requestEnableLocation promise result: ' + JSON.stringify(result));
-                expect(result).assertTrue();
             }).catch((error) => {
                 console.info("[lbs_js] promise then error." + JSON.stringify(error));
                 expect().assertFail();
@@ -38,7 +37,7 @@ async function changedLocationMode(){
         }
     });
     await geolocation.isLocationEnabled().then(async(result) => {
-        console.info('[lbs_js] getLocationSwitchState result: ' + JSON.stringify(result));
+        console.info('[lbs_js] check LocationSwitchState result: ' + JSON.stringify(result));
     });
 }
 
