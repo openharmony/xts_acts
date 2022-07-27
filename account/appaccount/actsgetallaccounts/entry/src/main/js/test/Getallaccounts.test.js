@@ -32,11 +32,11 @@ describe('ActsGetAllAccounts', function () {
         var selfBundle = "com.example.actsgetallaaccounts";
         appAccountManager.addAccount("Account_this_application_callback", (err)=>{
             console.debug("====>add account 0100 err:" + JSON.stringify(err));
-            expect(err.code).assertEqual(0);
+            expect(err).assertEqual(undefined);
             appAccountManager.getAllAccounts(selfBundle, (err, data)=>{
                 console.debug("====>getAllAccounts 0100 err:" + JSON.stringify(err));
                 console.debug("====>getAllAccounts 0100 data:" + JSON.stringify(data));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 try{
                     expect(data[0].name).assertEqual("Account_this_application_callback");
                     expect(data[0].owner).assertEqual("com.example.actsgetallaaccounts");
@@ -48,7 +48,7 @@ describe('ActsGetAllAccounts', function () {
                 }
                 appAccountManager.deleteAccount("Account_this_application_callback", (err)=>{
                     console.debug("====>delete account 0100 err:" + JSON.stringify(err));
-                    expect(err.code).assertEqual(0);
+                    expect(err).assertEqual(undefined);
                     console.debug("====>ActsGetAllAccounts_0100 end====");
                     done();
                 });
@@ -121,7 +121,7 @@ describe('ActsGetAllAccounts', function () {
         appAccountManager.getAllAccounts(selfBundle, (err, data)=>{
             console.debug("====>getAllAccounts 0300 err:" + JSON.stringify(err));
             console.debug("====>getAllAccounts 0300 data:" + JSON.stringify(data));
-            expect(err.code).assertEqual(0);
+            expect(err).assertEqual(undefined);
             expect(data.length).assertEqual(0);
             console.debug("====>ActsGetAllAccounts_0300 end====");
             done();
@@ -275,12 +275,12 @@ describe('ActsGetAllAccounts', function () {
         function getAllCallback(err, data){
             console.debug("====>getAllAccounts 0900 err:" + JSON.stringify(err));
             console.debug("====>getAllAccounts 0900 data:" + JSON.stringify(data));
-            expect(err.code).assertEqual(0);
+            expect(err).assertEqual(undefined);
             expect(data[0].name).assertEqual("Account_application_callback");
             expect(data[0].owner).assertEqual("com.example.actsgetallaaccounts");
             appAccountManager.deleteAccount("Account_application_callback", (err)=>{
                 console.debug("====>delete account 0900 err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 console.debug("====>ActsGetAllAccounts_0900 end====");
                 done();
             });
@@ -373,7 +373,7 @@ describe('ActsGetAllAccounts', function () {
         function getAllCallback(err, data){
             console.debug("====>getAllAccounts 1100 err:" + JSON.stringify(err));
             console.debug("====>getAllAccounts 1100 data:" + JSON.stringify(data));
-            expect(err.code).assertEqual(0);
+            expect(err).assertEqual(undefined);
             expect(data[0].name).assertEqual("account_name_scene_single");
             expect(data[0].owner).assertEqual("com.example.actsscenegetallaccounts");
             console.debug("====>ActsGetAllAccounts_1100 end====");
@@ -479,20 +479,20 @@ describe('ActsGetAllAccounts', function () {
         var selfBundle = "com.example.actsgetallaaccounts";
         appAccountManager.addAccount("account_callback_delete", (err)=>{
             console.debug("====>add account 1500 err:" + JSON.stringify(err));
-            expect(err.code).assertEqual(0);
+            expect(err).assertEqual(undefined);
             appAccountManager.getAllAccounts(selfBundle, (err, data)=>{
                 console.debug("====>getAllAccounts 1500 err:" + JSON.stringify(err));
                 console.debug("====>getAllAccounts 1500 data:" + JSON.stringify(data));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 expect(data[0].name).assertEqual("account_callback_delete");
                 expect(data[0].owner).assertEqual("com.example.actsgetallaaccounts");
                 appAccountManager.deleteAccount("account_callback_delete", (err)=>{
                     console.debug("====>delete account 1500 err:" + JSON.stringify(err));
-                    expect(err.code).assertEqual(0);
+                    expect(err).assertEqual(undefined);
                     appAccountManager.getAllAccounts(selfBundle, (err, data)=>{
                         console.debug("====>getAllAccounts 1500 err:" + JSON.stringify(err));
                         console.debug("====>getAllAccounts 1500 data:" + JSON.stringify(data));
-                        expect(err.code).assertEqual(0);
+                        expect(err).assertEqual(undefined);
                         expect(data.length).assertEqual(0);
                         console.debug("====>ActsGetAllAccounts_1500 end====");
                         done();
@@ -569,20 +569,20 @@ describe('ActsGetAllAccounts', function () {
         var selfBundle = "com.example.actsgetallaaccounts";
         appAccountManager.addAccount("account_callback_additional", "account_extrainfo", (err)=>{
             console.debug("====>add account 1700 err:" + JSON.stringify(err));
-            expect(err.code).assertEqual(0);
+            expect(err).assertEqual(undefined);
             appAccountManager.getAllAccounts(selfBundle, (err, data)=>{
                 console.debug("====>getAllAccounts 1700 err:" + JSON.stringify(err));
                 console.debug("====>getAllAccounts 1700 data:" + JSON.stringify(data));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 expect(data[0].name).assertEqual("account_callback_additional");
                 expect(data[0].owner).assertEqual("com.example.actsgetallaaccounts");
                 appAccountManager.deleteAccount("account_callback_additional", (err)=>{
                     console.debug("====>delete account 1700 err:" + JSON.stringify(err));
-                    expect(err.code).assertEqual(0);
+                    expect(err).assertEqual(undefined);
                     appAccountManager.getAllAccounts(selfBundle, (err, data)=>{
                         console.debug("====>getAllAccounts 1700 err:" + JSON.stringify(err));
                         console.debug("====>getAllAccounts 1700 data:" + JSON.stringify(data));
-                        expect(err.code).assertEqual(0);
+                        expect(err).assertEqual(undefined);
                         expect(data.length).assertEqual(0);
                         console.debug("====>ActsGetAllAccounts_1700 end====");
                         done();
