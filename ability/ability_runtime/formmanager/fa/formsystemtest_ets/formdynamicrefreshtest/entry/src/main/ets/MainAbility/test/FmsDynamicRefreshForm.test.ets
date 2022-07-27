@@ -15,7 +15,7 @@
 
 import featureAbility from '@ohos.ability.featureAbility';
 import commonEvent from '@ohos.commonEvent';
-import { beforeEach, describe, expect, it } from 'deccjsunit/index';
+import { beforeEach, afterEach, describe, expect, it } from 'deccjsunit/index';
 
 const onAcquiredForm_Event = {
     events: ["FMS_FormOnAcquired_commonEvent"],
@@ -32,6 +32,10 @@ const onRefreshFormEvent = {
 const onSupplyEvent = {
     events: ["FMS_FormSupply_commonEvent"],
 };
+
+const unsubscribeCallback = (tcNumber) => {
+    console.info(`====>${tcNumber} unsubscribeCallback====>`);
+}
 
 const deleteForm_Event = "FMS_FormDelete_commonEvent";
 
@@ -50,6 +54,14 @@ export default function test() {
             subscriberSupply = await commonEvent.createSubscriber(onSupplyEvent);
             await sleep(1000);
         });
+
+        afterEach(async() => {
+            commonEvent.unsubscribe(subscriberOnAcquired, () => unsubscribeCallback("afterEach unsubscribe subscriberOnAcquired"));
+            commonEvent.unsubscribe(subscriberOnDeleted, () => unsubscribeCallback("afterEach unsubscribe subscriberOnDeleted"));
+            commonEvent.unsubscribe(subscriberOnRefresh, () => unsubscribeCallback("afterEach unsubscribe subscriberOnRefresh"));
+            commonEvent.unsubscribe(subscriberSupply, () => unsubscribeCallback("afterEach unsubscribe subscriberSupply"));
+            await sleep(1000);
+        })
 
         /**
          * @tc.number: FMS_timedRefresh_0100

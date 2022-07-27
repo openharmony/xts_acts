@@ -16,7 +16,7 @@
 import featureAbility from '@ohos.ability.featureAbility';
 import formHost from '@ohos.application.formHost';
 import commonEvent from '@ohos.commonEvent';
-import { beforeEach, describe, expect, it } from 'deccjsunit/index';
+import { beforeEach, afterEach, describe, expect, it } from 'deccjsunit/index';
 
 const onDeletedEvent = {
     events: [`FMS_FormOnDeleted_commonEvent`]
@@ -28,6 +28,10 @@ const onSupplyEvent = {
     events: [`FMS_FormSupply_commonEvent`]
 };
 const formOnDeleteEvent = `FMS_FormDelete_commonEvent`;
+
+const unsubscribeCallback = (tcNumber) => {
+    console.info(`====>${tcNumber} unsubscribeCallback====>`);
+}
 
 const unsubscribeOnDeletedCallback = (tcNumber, done) => {
     console.info(`${tcNumber} unsubscribeOnDeleted Callback`);
@@ -47,6 +51,10 @@ let onDeletedEventSubscriber;
 let onAcquiredEventSubscriber;
 let onSupplyEventSubscriber;
 
+function sleep(time) {
+    return new Promise((resolve)=>setTimeout(resolve,time));
+  }
+
 export default function test() {
     describe(`FmsStressTest`, () => {
 
@@ -55,6 +63,13 @@ export default function test() {
             onAcquiredEventSubscriber = await commonEvent.createSubscriber(onAcquiredEvent);
             onSupplyEventSubscriber = await commonEvent.createSubscriber(onSupplyEvent);
         });
+
+        afterEach(async() => {
+            commonEvent.unsubscribe(onDeletedEventSubscriber, () => unsubscribeCallback("afterEach unsubscribe onDeletedEventSubscriber"));
+            commonEvent.unsubscribe(onAcquiredEventSubscriber, () => unsubscribeCallback("afterEach unsubscribe onAcquiredEventSubscriber"));
+            commonEvent.unsubscribe(onSupplyEventSubscriber, () => unsubscribeCallback("afterEach unsubscribe onSupplyEventSubscriber"));
+            await sleep(1000);
+        })
 
         const subscribeDeletedEvent = (tcNumber, expectedDeletedFormAmount, done) => {
             commonEvent.subscribe(onDeletedEventSubscriber, async (err, data) => {
