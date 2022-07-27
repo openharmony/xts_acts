@@ -93,11 +93,12 @@ export default function abilityTest(abilityContext) {
           console.log(TAG + "listKeyTemp is :" + listKeyTemp);
           console.log(TAG + "globalThis.mainAbility4CallBackId is :" + globalThis.mainAbility4CallBackId);
           expect(listKeyTemp[0]).assertEqual("Hap2MainAbility3 onAbilityCreate");
-          expect(listKeyTemp[1]).assertEqual("Hap2MainAbility3 onAbilityWindowStageCreate");
+          expect(listKeyTemp[1]).assertEqual("Hap2MainAbility3 onWindowStageCreate");
           expect(listKeyTemp[2]).assertEqual("Hap2MainAbility3 onAbilityForeground");
           expect(listKeyTemp[3]).assertEqual("Hap2MainAbility3 onAbilityBackground");
-          expect(listKeyTemp[4]).assertEqual("Hap2MainAbility3 onAbilityWindowStageDestroy");
-          expect(listKeyTemp[5]).assertEqual("Hap2MainAbility3 onAbilityDestroy");
+          var transferStr0 = listKeyTemp[4] + listKeyTemp[5];
+          expect(transferStr0.indexOf("Hap2MainAbility3 onWindowStageDestroy")!=-1).assertTrue();
+          expect(transferStr0.indexOf("Hap2MainAbility3 onAbilityDestroy")!=-1).assertTrue();
           console.info(TAG + "globalThis.ApplicationContext4 is :" + JSON.stringify(globalThis.ApplicationContext4));
           globalThis.ApplicationContext4
             .unregisterAbilityLifecycleCallback(globalThis.mainAbility4CallBackId, (error, data) => {
@@ -157,11 +158,12 @@ export default function abilityTest(abilityContext) {
           console.log(TAG + "listKeyTemp is :" + listKeyTemp);
           console.log(TAG + "globalThis.mainAbility4CallBackId is :" + globalThis.mainAbility4CallBackId);
           expect(listKeyTemp[0]).assertEqual("Hap2MainAbility4 onAbilityCreate");
-          expect(listKeyTemp[1]).assertEqual("Hap2MainAbility4 onAbilityWindowStageCreate");
+          expect(listKeyTemp[1]).assertEqual("Hap2MainAbility4 onWindowStageCreate");
           expect(listKeyTemp[2]).assertEqual("Hap2MainAbility4 onAbilityForeground");
           expect(listKeyTemp[3]).assertEqual("Hap2MainAbility4 onAbilityBackground");
-          expect(listKeyTemp[4]).assertEqual("Hap2MainAbility4 onAbilityWindowStageDestroy");
-          expect(listKeyTemp[5]).assertEqual("Hap2MainAbility4 onAbilityDestroy");
+          var transferStr0 = listKeyTemp[4] + listKeyTemp[5];
+          expect(transferStr0.indexOf("Hap2MainAbility4 onWindowStageDestroy")!=-1).assertTrue();
+          expect(transferStr0.indexOf("Hap2MainAbility4 onAbilityDestroy")!=-1).assertTrue();
           globalThis.ApplicationContext4
             .unregisterAbilityLifecycleCallback(globalThis.mainAbility4CallBackId, (error, data) => {
               console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
@@ -220,17 +222,19 @@ export default function abilityTest(abilityContext) {
           console.log(TAG + "listKeyTemp is :" + listKeyTemp);
           console.log(TAG + "globalThis.mainAbility4CallBackId is :" + globalThis.mainAbility4CallBackId);
           expect(listKeyTemp[0]).assertEqual("Hap2MainAbility5 onAbilityCreate");
-          expect(listKeyTemp[1]).assertEqual("Hap2MainAbility5 onAbilityWindowStageCreate");
+          expect(listKeyTemp[1]).assertEqual("Hap2MainAbility5 onWindowStageCreate");
           expect(listKeyTemp[2]).assertEqual("Hap2MainAbility5 onAbilityForeground");
           expect(listKeyTemp[3]).assertEqual("Hap2MainAbility5 onAbilityCreate");
-          expect(listKeyTemp[4]).assertEqual("Hap2MainAbility5 onAbilityWindowStageCreate");
+          expect(listKeyTemp[4]).assertEqual("Hap2MainAbility5 onWindowStageCreate");
           expect(listKeyTemp[5]).assertEqual("Hap2MainAbility5 onAbilityForeground");
           expect(listKeyTemp[6]).assertEqual("Hap2MainAbility5 onAbilityBackground");
-          expect(listKeyTemp[7]).assertEqual("Hap2MainAbility5 onAbilityWindowStageDestroy");
-          expect(listKeyTemp[8]).assertEqual("Hap2MainAbility5 onAbilityDestroy");
+          var transferStr0 = listKeyTemp[7] + listKeyTemp[8];
+          expect(transferStr0.indexOf("Hap2MainAbility5 onWindowStageDestroy")!=-1).assertTrue();
+          expect(transferStr0.indexOf("Hap2MainAbility5 onAbilityDestroy")!=-1).assertTrue();
           expect(listKeyTemp[9]).assertEqual("Hap2MainAbility5 onAbilityBackground");
-          expect(listKeyTemp[10]).assertEqual("Hap2MainAbility5 onAbilityWindowStageDestroy");
-          expect(listKeyTemp[11]).assertEqual("Hap2MainAbility5 onAbilityDestroy");
+          var transferStr0 = listKeyTemp[10] + listKeyTemp[11];
+          expect(transferStr0.indexOf("Hap2MainAbility5 onWindowStageDestroy")!=-1).assertTrue();
+          expect(transferStr0.indexOf("Hap2MainAbility5 onAbilityDestroy")!=-1).assertTrue();
           globalThis.ApplicationContext4
             .unregisterAbilityLifecycleCallback(globalThis.mainAbility4CallBackId, (error, data) => {
               console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
@@ -293,18 +297,20 @@ export default function abilityTest(abilityContext) {
           console.log(TAG + "listKeyTemp1 is :" + listKeyTemp1);
           console.log(TAG + "globalThis.mainAbility4CallBackId is :" + globalThis.mainAbility4CallBackId);
           expect(listKeyTemp[0]).assertEqual("Hap2MainAbility6 onAbilityCreate");
-          expect(listKeyTemp[1]).assertEqual("Hap2MainAbility6 onAbilityWindowStageCreate");
+          expect(listKeyTemp[1]).assertEqual("Hap2MainAbility6 onWindowStageCreate");
           expect(listKeyTemp[2]).assertEqual("Hap2MainAbility6 onAbilityForeground");
           expect(listKeyTemp[3]).assertEqual("Hap2MainAbility6 onAbilityBackground");
-          expect(listKeyTemp[4]).assertEqual("Hap2MainAbility6 onAbilityWindowStageDestroy");
-          expect(listKeyTemp[5]).assertEqual("Hap2MainAbility6 onAbilityDestroy");
+          var transferStr0 = listKeyTemp[4] + listKeyTemp[5];
+          expect(transferStr0.indexOf("Hap2MainAbility6 onWindowStageDestroy")!=-1).assertTrue();
+          expect(transferStr0.indexOf("Hap2MainAbility6 onAbilityDestroy")!=-1).assertTrue();
 
           expect(listKeyTemp1[0]).assertEqual("Hap3MainAbility2 onAbilityCreate");
-          expect(listKeyTemp1[1]).assertEqual("Hap3MainAbility2 onAbilityWindowStageCreate");
+          expect(listKeyTemp1[1]).assertEqual("Hap3MainAbility2 onWindowStageCreate");
           expect(listKeyTemp1[2]).assertEqual("Hap3MainAbility2 onAbilityForeground");
           expect(listKeyTemp1[3]).assertEqual("Hap3MainAbility2 onAbilityBackground");
-          expect(listKeyTemp1[4]).assertEqual("Hap3MainAbility2 onAbilityWindowStageDestroy");
-          expect(listKeyTemp1[5]).assertEqual("Hap3MainAbility2 onAbilityDestroy");
+          var transferStr0 = listKeyTemp1[4] + listKeyTemp1[5];
+          expect(transferStr0.indexOf("Hap3MainAbility2 onWindowStageDestroy")!=-1).assertTrue();
+          expect(transferStr0.indexOf("Hap3MainAbility2 onAbilityDestroy")!=-1).assertTrue();
 
           globalThis.ApplicationContext4
             .unregisterAbilityLifecycleCallback(globalThis.mainAbility4CallBackId, (error, data) => {
@@ -368,18 +374,20 @@ export default function abilityTest(abilityContext) {
           console.log(TAG + "listKeyTemp1 is :" + listKeyTemp1);
           console.log(TAG + "globalThis.mainAbility4CallBackId is :" + globalThis.mainAbility4CallBackId);
           expect(listKeyTemp[0]).assertEqual("Hap2MainAbility6 onAbilityCreate");
-          expect(listKeyTemp[1]).assertEqual("Hap2MainAbility6 onAbilityWindowStageCreate");
+          expect(listKeyTemp[1]).assertEqual("Hap2MainAbility6 onWindowStageCreate");
           expect(listKeyTemp[2]).assertEqual("Hap2MainAbility6 onAbilityForeground");
           expect(listKeyTemp[3]).assertEqual("Hap2MainAbility6 onAbilityBackground");
-          expect(listKeyTemp[4]).assertEqual("Hap2MainAbility6 onAbilityWindowStageDestroy");
-          expect(listKeyTemp[5]).assertEqual("Hap2MainAbility6 onAbilityDestroy");
+          var transferStr0 = listKeyTemp[4] + listKeyTemp[5];
+          expect(transferStr0.indexOf("Hap2MainAbility6 onWindowStageDestroy")!=-1).assertTrue();
+          expect(transferStr0.indexOf("Hap2MainAbility6 onAbilityDestroy")!=-1).assertTrue();
 
           expect(listKeyTemp1[0]).assertEqual("Hap2MainAbility7 onAbilityCreate");
-          expect(listKeyTemp1[1]).assertEqual("Hap2MainAbility7 onAbilityWindowStageCreate");
+          expect(listKeyTemp1[1]).assertEqual("Hap2MainAbility7 onWindowStageCreate");
           expect(listKeyTemp1[2]).assertEqual("Hap2MainAbility7 onAbilityForeground");
           expect(listKeyTemp1[3]).assertEqual("Hap2MainAbility7 onAbilityBackground");
-          expect(listKeyTemp1[4]).assertEqual("Hap2MainAbility7 onAbilityWindowStageDestroy");
-          expect(listKeyTemp1[5]).assertEqual("Hap2MainAbility7 onAbilityDestroy");
+          var transferStr0 = listKeyTemp1[4] + listKeyTemp1[5];
+          expect(transferStr0.indexOf("Hap2MainAbility7 onWindowStageDestroy")!=-1).assertTrue();
+          expect(transferStr0.indexOf("Hap2MainAbility7 onAbilityDestroy")!=-1).assertTrue();
 
           globalThis.ApplicationContext4
             .unregisterAbilityLifecycleCallback(globalThis.mainAbility4CallBackId, (error, data) => {
@@ -517,11 +525,12 @@ export default function abilityTest(abilityContext) {
             callBackId1 = globalThis.mainAbility6CallBackId
             console.log(TAG + "callBackId1 is :" + callBackId1);
             expect(listKeyTemp[0]).assertEqual("Hap2MainAbility9 onAbilityCreate");
-            expect(listKeyTemp[1]).assertEqual("Hap2MainAbility9 onAbilityWindowStageCreate");
+            expect(listKeyTemp[1]).assertEqual("Hap2MainAbility9 onWindowStageCreate");
             expect(listKeyTemp[2]).assertEqual("Hap2MainAbility9 onAbilityForeground");
             expect(listKeyTemp[3]).assertEqual("Hap2MainAbility9 onAbilityBackground");
-            expect(listKeyTemp[4]).assertEqual("Hap2MainAbility9 onAbilityWindowStageDestroy");
-            expect(listKeyTemp[5]).assertEqual("Hap2MainAbility9 onAbilityDestroy");
+            var transferStr0 = listKeyTemp[4] + listKeyTemp[5];
+            expect(transferStr0.indexOf("Hap2MainAbility9 onWindowStageDestroy")!=-1).assertTrue();
+            expect(transferStr0.indexOf("Hap2MainAbility9 onAbilityDestroy")!=-1).assertTrue();
 
             globalThis.ApplicationContext6
               .unregisterAbilityLifecycleCallback(globalThis.mainAbility6CallBackId, (error, data) => {
@@ -568,11 +577,12 @@ export default function abilityTest(abilityContext) {
                 console.log(TAG + "callBackId2 is :" + callBackId2);
                 expect(callBackId2).assertEqual(callBackId1 + 1)
                 expect(listKeyTemp1[0]).assertEqual("Hap2MainAbility9 onAbilityCreate");
-                expect(listKeyTemp1[1]).assertEqual("Hap2MainAbility9 onAbilityWindowStageCreate");
+                expect(listKeyTemp1[1]).assertEqual("Hap2MainAbility9 onWindowStageCreate");
                 expect(listKeyTemp1[2]).assertEqual("Hap2MainAbility9 onAbilityForeground");
                 expect(listKeyTemp1[3]).assertEqual("Hap2MainAbility9 onAbilityBackground");
-                expect(listKeyTemp1[4]).assertEqual("Hap2MainAbility9 onAbilityWindowStageDestroy");
-                expect(listKeyTemp1[5]).assertEqual("Hap2MainAbility9 onAbilityDestroy");
+                var transferStr0 = listKeyTemp1[4] + listKeyTemp1[5];
+                expect(transferStr0.indexOf("Hap2MainAbility9 onWindowStageDestroy")!=-1).assertTrue();
+                expect(transferStr0.indexOf("Hap2MainAbility9 onAbilityDestroy")!=-1).assertTrue();
 
                 globalThis.ApplicationContext6
                   .unregisterAbilityLifecycleCallback(globalThis.mainAbility6CallBackId, (error, data) => {
@@ -628,11 +638,12 @@ export default function abilityTest(abilityContext) {
           console.log(TAG + "listKeyTemp is :" + listKeyTemp);
           console.log(TAG + "globalThis.mainAbility4CallBackId is :" + globalThis.mainAbility4CallBackId);
           expect(listKeyTemp[0]).assertEqual("Hap2MainAbility6 onAbilityCreate");
-          expect(listKeyTemp[1]).assertEqual("Hap2MainAbility6 onAbilityWindowStageCreate");
+          expect(listKeyTemp[1]).assertEqual("Hap2MainAbility6 onWindowStageCreate");
           expect(listKeyTemp[2]).assertEqual("Hap2MainAbility6 onAbilityForeground");
           expect(listKeyTemp[3]).assertEqual("Hap2MainAbility6 onAbilityBackground");
-          expect(listKeyTemp[4]).assertEqual("Hap2MainAbility6 onAbilityWindowStageDestroy");
-          expect(listKeyTemp[5]).assertEqual("Hap2MainAbility6 onAbilityDestroy");
+          var transferStr0 = listKeyTemp[4] + listKeyTemp[5];
+          expect(transferStr0.indexOf("Hap2MainAbility6 onWindowStageDestroy")!=-1).assertTrue();
+          expect(transferStr0.indexOf("Hap2MainAbility6 onAbilityDestroy")!=-1).assertTrue();
 
           globalThis.ApplicationContext4
             .unregisterAbilityLifecycleCallback(globalThis.mainAbility4CallBackId, (error, data) => {
@@ -740,7 +751,7 @@ export default function abilityTest(abilityContext) {
           console.log(TAG + " globalThis.mainAbility4CallBackId is :" + globalThis.mainAbility4CallBackId);
 
           expect(listKeyTemp[0]).assertEqual("Hap2MainAbility10 onAbilityCreate");
-          expect(listKeyTemp[1]).assertEqual("Hap2MainAbility10 onAbilityWindowStageCreate");
+          expect(listKeyTemp[1]).assertEqual("Hap2MainAbility10 onWindowStageCreate");
           expect(listKeyTemp[2]).assertEqual("Hap2MainAbility10 onAbilityForeground");
           expect(listKeyTemp[3]).assertEqual("Hap2MainAbility10 onAbilityBackground");
           expect(listKeyTemp[4]).assertEqual("Hap2MainAbility10 onAbilityForeground");
@@ -749,7 +760,7 @@ export default function abilityTest(abilityContext) {
           expect(listKeyTemp[7]).assertEqual("Hap2MainAbility10 onAbilityBackground");
 
           expect(listKeyTemp1[0]).assertEqual("Hap3MainAbility3 onAbilityCreate");
-          expect(listKeyTemp1[1]).assertEqual("Hap3MainAbility3 onAbilityWindowStageCreate");
+          expect(listKeyTemp1[1]).assertEqual("Hap3MainAbility3 onWindowStageCreate");
           expect(listKeyTemp1[2]).assertEqual("Hap3MainAbility3 onAbilityForeground");
           expect(listKeyTemp1[3]).assertEqual("Hap3MainAbility3 onAbilityBackground");
           expect(listKeyTemp1[4]).assertEqual("Hap3MainAbility3 onAbilityForeground");
