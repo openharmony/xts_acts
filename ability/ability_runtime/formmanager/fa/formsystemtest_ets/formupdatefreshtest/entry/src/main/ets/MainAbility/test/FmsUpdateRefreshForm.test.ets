@@ -15,7 +15,7 @@
 
 import featureAbility from "@ohos.ability.featureAbility";
 import commonEvent from '@ohos.commonEvent';
-import { beforeAll, beforeEach, describe, expect, it } from "deccjsunit/index";
+import { beforeAll, beforeEach, afterEach, describe, expect, it } from "deccjsunit/index";
 
 var onAcquiredForm_Event = {
     events: ["FMS_FormOnAcquired_commonEvent"],
@@ -30,6 +30,10 @@ var onRequestFormEvent = {
     events: ["FMS_FormOnRequest_commonEvent"],
 };
 
+const unsubscribeCallback = (tcNumber) => {
+    console.info(`====>${tcNumber} unsubscribeCallback====>`);
+}
+
 var deleteForm_Event = "FMS_FormDelete_commonEvent";
 
 
@@ -37,6 +41,10 @@ var subscriberOnAcquired;
 var subscriberOnDeleted;
 var subscriberOnRefresh;
 var subscriberOnRequest;
+
+function sleep(time) {
+    return new Promise((resolve)=>setTimeout(resolve,time));
+  }
 
 export default function test() {
     describe(`FmsUpdateRefreshFormTest`, () => {
@@ -52,6 +60,13 @@ export default function test() {
             subscriberOnRequest = await commonEvent.createSubscriber(onRequestFormEvent);
         })
 
+        afterEach(async() => {
+            commonEvent.unsubscribe(subscriberOnAcquired, () => unsubscribeCallback("afterEach unsubscribe subscriberOnAcquired"));
+            commonEvent.unsubscribe(subscriberOnDeleted, () => unsubscribeCallback("afterEach unsubscribe subscriberOnDeleted"));
+            commonEvent.unsubscribe(subscriberOnRefresh, () => unsubscribeCallback("afterEach unsubscribe subscriberOnRefresh"));
+            commonEvent.unsubscribe(subscriberOnRequest, () => unsubscribeCallback("afterEach unsubscribe subscriberOnRequest"));
+            await sleep(1000);
+        })
         /**
          * @tc.number: FMS_updateForm_0100
          * @tc.name: formID id is error(formID < 0)
