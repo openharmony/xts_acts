@@ -191,7 +191,7 @@ struct Index {
               commonEvent.publish(this.formOnDynamicRefreshEvent, commonEventPublishData, this.formOnDynamicRefreshCallBack);
             })
             .catch((error) => {
-              console.info('formsystemhost refreshForm error:' + error);
+              console.info('formsystemhost refreshForm error:' + JSON.stringify(error));
               let commonEventPublishData = {
                 data: error.code.toString(),
                 parameters: {

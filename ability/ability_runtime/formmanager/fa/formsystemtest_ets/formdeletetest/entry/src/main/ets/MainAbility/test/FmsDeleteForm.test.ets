@@ -16,7 +16,7 @@
 import featureAbility from '@ohos.ability.featureAbility';
 import commonEvent from '@ohos.commonEvent';
 import systemTime from '@ohos.systemTime';
-import { beforeEach, describe, expect, it } from 'deccjsunit/index';
+import { beforeEach, afterEach, describe, expect, it } from 'deccjsunit/index';
 
 const onAcquiredForm_Event = {
     events: ["FMS_FormOnAcquired_commonEvent"],
@@ -30,6 +30,10 @@ const onReleasedFormEvent = {
 const onSupplyEvent = {
     events: ["FMS_FormSupply_commonEvent"],
 };
+
+const unsubscribeCallback = (tcNumber) => {
+    console.info(`====>${tcNumber} unsubscribeCallback====>`);
+}
 
 const deleteForm_Event = "FMS_FormDelete_commonEvent";
 
@@ -48,6 +52,14 @@ export default function test() {
             subscriberSupply = await commonEvent.createSubscriber(onSupplyEvent);
             await sleep(1000);
         });
+
+        afterEach(async() => {
+            commonEvent.unsubscribe(subscriberOnAcquired, () => unsubscribeCallback("afterEach unsubscribe subscriberOnAcquired"));
+            commonEvent.unsubscribe(subscriberOnReleased, () => unsubscribeCallback("afterEach unsubscribe subscriberOnReleased"));
+            commonEvent.unsubscribe(subscriberOnDeleted, () => unsubscribeCallback("afterEach unsubscribe subscriberOnDeleted"));
+            commonEvent.unsubscribe(subscriberSupply, () => unsubscribeCallback("afterEach unsubscribe subscriberSupply"));
+            await sleep(1000);
+        })
 
         /**
          * @tc.number: FMS_deleteForm_0200
