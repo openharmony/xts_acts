@@ -1,0 +1,35 @@
+{
+    "description": "Configuration for aceceshi Tests",
+    "driver": {
+        "type": "OHJSUnitTest",
+        "test-timeout": "600000",
+        "bundle-name": "com.example.aacommandprintsynctest",
+        "module-name": "entry_test",
+        "shell-timeout": "600000"
+    },
+    "kits": [
+        {
+            "type": "ShellKit",
+            "run-command": [
+               " hilog -Q pidoff",
+                "hilog -Q domainoff",
+                "hilog -b D"
+            ]
+        },
+        {
+            "type": "PushKit",
+            "push": [
+                "AACommandPrintSync.hap->/data/AACommandPrintSync.hap"
+            ]
+        },
+		{
+            "test-file-name": [
+                "AACommandPrintSyncTest.hap",
+                "AACommandPrintSync.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        }
+    ]
+}
+
