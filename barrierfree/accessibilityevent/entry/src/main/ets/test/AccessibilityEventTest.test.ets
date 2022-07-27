@@ -20,7 +20,7 @@ export default function abilityTest(abilityContext) {
     let targetBundleName = 'com.example.myapplication';
     let subScriber = undefined;
     let isConnected: boolean = false;
-    let eventTypes: Array<string> = [];
+    let events: Array<any> = [];
 
     describe('AccessibilityEventTest', function () {
         beforeAll(async function (done) {
@@ -33,7 +33,7 @@ export default function abilityTest(abilityContext) {
                 } else if (data.data == 'disconnect') {
                     isConnected = false;
                 } else if (data.data == 'accessibilityEvent') {
-                    eventTypes.push(data.parameters.eventType);
+                    events.push(data.parameters);
                 }
             });
 
@@ -58,7 +58,7 @@ export default function abilityTest(abilityContext) {
 
         beforeEach(async function (done) {
             console.info(`AccessibilityEventTest: beforeEach`);
-            eventTypes.length = 0;
+            events.length = 0;
             setTimeout(done, 2000);
         })
 
@@ -86,10 +86,9 @@ export default function abilityTest(abilityContext) {
             await accessibility.sendEvent(event);
 
             setTimeout(() => {
-                let types = eventTypes;
                 let findResult = false;
-                for (let type of types) {
-                    if (type == eventType) {
+                for (let item of events) {
+                    if (item.eventType == eventType) {
                         findResult = true;
                     }
                 }
@@ -117,10 +116,9 @@ export default function abilityTest(abilityContext) {
             await accessibility.sendEvent(event);
 
             setTimeout(() => {
-                let types = eventTypes;
                 let findResult = false;
-                for (let type of types) {
-                    if (type == eventType) {
+                for (let item of events) {
+                    if (item.eventType == eventType) {
                         findResult = true;
                     }
                 }
@@ -148,10 +146,9 @@ export default function abilityTest(abilityContext) {
             await accessibility.sendEvent(event);
 
             setTimeout(() => {
-                let types = eventTypes;
                 let findResult = false;
-                for (let type of types) {
-                    if (type == eventType) {
+                for (let item of events) {
+                    if (item.eventType == eventType) {
                         findResult = true;
                     }
                 }
@@ -179,10 +176,9 @@ export default function abilityTest(abilityContext) {
             await accessibility.sendEvent(event);
 
             setTimeout(() => {
-                let types = eventTypes;
                 let findResult = false;
-                for (let type of types) {
-                    if (type == eventType) {
+                for (let item of events) {
+                    if (item.eventType == eventType) {
                         findResult = true;
                     }
                 }
@@ -210,10 +206,9 @@ export default function abilityTest(abilityContext) {
             await accessibility.sendEvent(event);
 
             setTimeout(() => {
-                let types = eventTypes;
                 let findResult = false;
-                for (let type of types) {
-                    if (type == eventType) {
+                for (let item of events) {
+                    if (item.eventType == eventType) {
                         findResult = true;
                     }
                 }
@@ -241,10 +236,9 @@ export default function abilityTest(abilityContext) {
             await accessibility.sendEvent(event);
 
             setTimeout(() => {
-                let types = eventTypes;
                 let findResult = false;
-                for (let type of types) {
-                    if (type == eventType) {
+                for (let item of events) {
+                    if (item.eventType == eventType) {
                         findResult = true;
                     }
                 }
@@ -272,10 +266,9 @@ export default function abilityTest(abilityContext) {
             await accessibility.sendEvent(event);
 
             setTimeout(() => {
-                let types = eventTypes;
                 let findResult = false;
-                for (let type of types) {
-                    if (type == eventType) {
+                for (let item of events) {
+                    if (item.eventType == eventType) {
                         findResult = true;
                     }
                 }
@@ -303,10 +296,9 @@ export default function abilityTest(abilityContext) {
             await accessibility.sendEvent(event);
 
             setTimeout(() => {
-                let types = eventTypes;
                 let findResult = false;
-                for (let type of types) {
-                    if (type == eventType) {
+                for (let item of events) {
+                    if (item.eventType == eventType) {
                         findResult = true;
                     }
                 }
@@ -365,10 +357,9 @@ export default function abilityTest(abilityContext) {
             await accessibility.sendEvent(event);
 
             setTimeout(() => {
-                let types = eventTypes;
                 let findResult = false;
-                for (let type of types) {
-                    if (type == eventType) {
+                for (let item of events) {
+                    if (item.eventType == eventType) {
                         findResult = true;
                     }
                 }
@@ -396,14 +387,75 @@ export default function abilityTest(abilityContext) {
             await accessibility.sendEvent(event);
 
             setTimeout(() => {
-                let types = eventTypes;
                 let findResult = false;
-                for (let type of types) {
-                    if (type == eventType) {
+                for (let item of events) {
+                    if (item.eventType == eventType) {
                         findResult = true;
                     }
                 }
                 console.info('AccessibilityEventTest_1100 case: ' + findResult);
+                expect(findResult).assertTrue();
+                done();
+            }, 3000);
+        })
+
+        /*
+         * @tc.number  AccessibilityEventTest_1200
+         * @tc.name    AccessibilityEventTest_1200
+         * @tc.desc    The parameter input is 'scroll', test the Ability event function,
+         *             and return void, verify existence of 'target'. 
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityEventTest_1200', 0, async function (done) {
+            console.info(`AccessibilityEventTest_1200`);
+            let eventType = 'scroll';
+            let event = new accessibility.EventInfo({});
+            event.type = eventType;
+            event.bundleName = targetBundleName;
+            event.triggerAction = 'scrollForward';
+            await accessibility.sendEvent(event);
+
+            setTimeout(() => {
+                let findResult = false;
+                for (let item of events) {
+                    console.info(`AccessibilityEventTest_1200 haveTarget: ${item.haveTarget}`);
+                    if (item.eventType == eventType && item.haveTarget) {
+                        findResult = true;
+                    }
+                }
+                console.info('AccessibilityEventTest_1200 case: ' + findResult);
+                expect(findResult).assertTrue();
+                done();
+            }, 3000);
+        })
+
+        /*
+         * @tc.number  AccessibilityEventTest_1300
+         * @tc.name    AccessibilityEventTest_1300
+         * @tc.desc    The parameter input is 'scroll', test the Ability event function,
+         *             and return void, verify existence of 'timeStamp'. 
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityEventTest_1300', 0, async function (done) {
+            console.info(`AccessibilityEventTest_1300`);
+            let eventType = 'scroll';
+            let event = new accessibility.EventInfo({});
+            event.type = eventType;
+            event.bundleName = targetBundleName;
+            event.triggerAction = 'scrollForward';
+            await accessibility.sendEvent(event);
+
+            setTimeout(() => {
+                let findResult = false;
+                for (let item of events) {
+                    console.info(`AccessibilityEventTest_1300 timeStamp: ${item.timeStamp}`);
+                    if (item.eventType == eventType && typeof(item.timeStamp) == 'number') {
+                        findResult = true;
+                    }
+                }
+                console.info('AccessibilityEventTest_1300 case: ' + findResult);
                 expect(findResult).assertTrue();
                 done();
             }, 3000);
