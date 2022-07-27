@@ -471,9 +471,9 @@ export default function applicationBundleJsunit() {
             expect(data.moduleInfos[0].moduleName).assertEqual('entry');
             expect(data.moduleInfos[0].moduleSourceDir).assertEqual(PATH + '/' + BUNDLE_NAME + '/' + BUNDLE_NAME);
             expect(data.moduleSourceDirs[0]).assertEqual(PATH + '/' + BUNDLE_NAME + '/' + BUNDLE_NAME);
-            expect(data.permissions[0]).assertEqual("ohos.permission.CHANGE_ABILITY_ENABLED_STATE");
-            expect(data.permissions[1]).assertEqual("ohos.permission.GET_BUNDLE_INFO");
-            expect(data.permissions[2]).assertEqual("ohos.permission.GET_BUNDLE_INFO_PRIVILEGED");
+            expect(data.permissions[0]).assertEqual("ohos.permission.GET_BUNDLE_INFO");
+            expect(data.permissions[1]).assertEqual("ohos.permission.GET_BUNDLE_INFO_PRIVILEGED");
+            expect(data.permissions[2]).assertEqual("ohos.permission.USE_BLUETOOTH");
             console.log(msg + ' end  ' + JSON.stringify(data));
         }
 
