@@ -309,6 +309,8 @@ describe('SecurityHuksAccessControlJsunit', function () {
         expect(4).assertEqual(huks.HuksKeyFlag.HUKS_KEY_FLAG_DERIVE_KEY);
         expect(0).assertEqual(huks.HuksKeyStorageType.HUKS_STORAGE_TEMP);
         expect(1).assertEqual(huks.HuksKeyStorageType.HUKS_STORAGE_PERSISTENT);
+        expect(0).assertEqual(huks.HuksSendType.HUKS_SEND_TYPE_ASYNC);
+        expect(1).assertEqual(huks.HuksSendType.HUKS_SEND_TYPE_SYNC);
         expect(0).assertEqual(huks.HuksTagType.HUKS_TAG_TYPE_INVALID);
         expect(268435456).assertEqual(huks.HuksTagType.HUKS_TAG_TYPE_INT);
         expect(536870912).assertEqual(huks.HuksTagType.HUKS_TAG_TYPE_UINT);

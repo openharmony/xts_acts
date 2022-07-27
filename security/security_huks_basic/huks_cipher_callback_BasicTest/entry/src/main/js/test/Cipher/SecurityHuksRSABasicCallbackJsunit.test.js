@@ -38,6 +38,7 @@ async function publicGenerateKeyFunc(srcKeyAlies, genHuksOptionsNONC) {
       expect(data.errorCode == 0).assertTrue();
       expect(data.outData == null).assertTrue();
       expect(data.properties == null).assertTrue();
+      expect(huks.getSdkVersion(genHuksOptionsNONC) != null).assertTrue();
     })
     .catch((err) => {
       console.log('test generateKey err information: ' + JSON.stringify(err));
