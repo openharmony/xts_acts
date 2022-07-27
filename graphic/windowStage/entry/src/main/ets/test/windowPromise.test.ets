@@ -1439,5 +1439,37 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'done ');
       done();
     })
+
+    /**
+     * @tc.number		SUB_WMS_GETDEFALUTDISPLAYSYNC_JSAPI_001
+     * @tc.name			Test getDefaultDisplaySYNC_Test_001
+     * @tc.desc			To test the sync function of obtaining the default display
+    */
+    it('getDefaultDisplaySync_Test_001', 0, async function (done) {
+      console.info('displayTest getDefaultDisplaySyncTest1 begin');
+      try {
+           var dsp = display.getDefaultDisplaySync();
+           console.info('displayTest getDefaultDisplaySyncTest1: ' + JSON.stringify(dsp));
+           expect(dsp.id != null).assertTrue();
+           expect(dsp.refreshRate != null).assertTrue();
+           expect(dsp.width != null).assertTrue();
+           expect(dsp.height != null).assertTrue();
+           expect(dsp.rotation != null).assertTrue();
+           expect(dsp.densityDPI != null).assertTrue();
+           expect(dsp.name).assertEqual(undefined);
+           expect(dsp.alive).assertEqual(undefined);
+           expect(dsp.state).assertEqual(undefined);
+           expect(dsp.densityPixels).assertEqual(undefined);
+           expect(dsp.scaledDensity).assertEqual(undefined);
+           expect(dsp.xDPI).assertEqual(undefined);
+           expect(dsp.yDPI).assertEqual(undefined);
+           done();
+      } catch (err) {
+        console.error('getDefaultDisplaySyncTest1 error ' + JSON.stringify(err));
+        expect.assertFail();
+        done();
+      }
+    })
+
   })
 }
