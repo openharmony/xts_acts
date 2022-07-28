@@ -39,7 +39,7 @@ export default function ProgressPageJsunit() {
         await sleep(1);
         let pages = router.getState();
         console.info("get ProgressPage state success " + JSON.stringify(pages));
-        if (!("EnumsWeek" == pages.name)) {
+        if (!("ProgressPage" == pages.name)) {
           console.info("get ProgressPage state success " + JSON.stringify(pages.name));
           let result = await router.push(options)
           console.info("push ProgressPage page success " + JSON.stringify(result));

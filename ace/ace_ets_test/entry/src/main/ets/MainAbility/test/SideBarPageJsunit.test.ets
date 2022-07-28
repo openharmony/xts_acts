@@ -39,7 +39,7 @@ export default function SideBarPageJsunit() {
         await sleep(1);
         let pages = router.getState();
         console.info("get SideBarPage state success " + JSON.stringify(pages));
-        if (!("EnumsWeek" == pages.name)) {
+        if (!("SideBarPage" == pages.name)) {
           console.info("get SideBarPage state success " + JSON.stringify(pages.name));
           let result = await router.push(options)
           console.info("push SideBarPage page success " + JSON.stringify(result));
