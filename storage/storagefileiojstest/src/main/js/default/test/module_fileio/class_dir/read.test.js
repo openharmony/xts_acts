@@ -14,7 +14,7 @@
  */
 
 import {
-  fileio, FILE_CONTENT, prepareFile, nextFileName, isString, isBoolean,
+  fileio, FILE_CONTENT, prepareFile, nextFileName, isString, isBoolean, forceRemoveDir,
   describe, it, expect,
 } from '../../Common';
 
@@ -186,6 +186,40 @@ describe('fileio_dir_read', function () {
       done();
     } catch (e) {
       console.info('fileio_dir_read_sync_name_000 has failed for ' + e);
+      expect(null).assertFail();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_DIR_READ_SYNC_NAME_0100
+   * @tc.name fileio_dir_read_sync_name_001
+   * @tc.desc Test Dir.readSync() interface. Synchronous loop reads next directory entry.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+   */
+  it('fileio_dir_read_sync_name_001', 0, async function () {
+    let dpath = await nextFileName('fileio_dir_read_sync_name_001') + 'd';
+    fileio.mkdirSync(dpath);
+    let fdpath = dpath;
+
+    try {
+      for (let i = 0; i < 10; i++) {
+        console.info('time' + i);
+        dpath = dpath + '/d' + i;
+        fileio.mkdirSync(dpath);
+      }
+      let dir = fileio.opendirSync(fdpath);
+      let dirent = dir.readSync();
+      while (dirent) {
+        fdpath = fdpath + '/' + dirent.name;
+        dir = fileio.opendirSync(fdpath);
+        dirent = dir.readSync();
+      }
+      forceRemoveDir(dpath, 10);
+    } catch (e) {
+      console.info('fileio_dir_read_sync_name_001 has failed for ' + e);
       expect(null).assertFail();
     }
   });
@@ -413,7 +447,41 @@ describe('fileio_dir_read', function () {
     }
   });
 
-  
+  /**
+   * @tc.number SUB_DF_FILEIO_DIR_READ_ASYNC_NAME_0100
+   * @tc.name fileio_dir_read_async_name_001
+   * @tc.desc Test Dir.readAsync() interface. Asynchronously loop to read next directory item.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+   */
+  it('fileio_dir_read_async_name_001', 0, async function (done) {
+    let dpath = await nextFileName('fileio_dir_read_async_name_001') + 'd';
+    fileio.mkdirSync(dpath);
+    let fdpath = dpath;
+
+    try {
+      for (let i = 0; i < 10; i++) {
+        console.info('time' + i);
+        dpath = dpath + '/d' + i;
+        fileio.mkdirSync(dpath);
+      }
+      let dir = fileio.opendirSync(fdpath);
+      let dirent = await dir.read();
+      while (dirent) {
+        fdpath = fdpath + '/' + dirent.name;
+        dir = fileio.opendirSync(fdpath);
+        dirent = await dir.read();
+      }
+      forceRemoveDir(dpath, 10);
+      done();
+    } catch (e) {
+      console.info('fileio_dir_read_async_name_001 has failed for ' + e);
+      expect(null).assertFail();
+    }
+  });
+
   /**
    * @tc.number SUB_DF_FILEIO_DIR_READ_ASYNC_ISBLOCKDEVICE_0000
    * @tc.name fileio_dir_read_async_isBlockDevice_000
