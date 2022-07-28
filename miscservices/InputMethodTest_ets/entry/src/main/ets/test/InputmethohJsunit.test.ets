@@ -97,28 +97,6 @@ export default function settingUiJsunit() {
     });
 
     /*
-     * @tc.number  inputmethod_test_switchInputMethod_001
-     * @tc.name    Test Indicates the input method which will replace the current one.
-     * @tc.desc    Function test
-     * @tc.level   2
-     */
-    it('inputmethod_test_switchInputMethod_001', 0, async function (done) {
-      console.info("************* inputmethod_test_switchInputMethod_001 Test start*************");
-      let inputMethodProperty = {
-        packageName:"com.example.kikakeyboard",
-        methodId:"ServiceExtAbility"
-      }
-      inputMethod.switchInputMethod(inputMethodProperty).then((data) => {
-        console.info("inputmethod_test_switchInputMethod_001 data:" + data)
-        expect(data).assertEqual(true);
-      }).catch((err) => {
-        console.error('inputmethod_test_switchInputMethod_001 failed because ' + JSON.stringify(err));
-      });
-      console.info("************* inputmethod_test_switchInputMethod_001 Test end*************");
-      done();
-    });
-
-    /*
      * @tc.number  inputmethod_test_switchInputMethod_002
      * @tc.name    Test Indicates the input method which will replace the current one.
      * @tc.desc    Function test
