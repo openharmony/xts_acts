@@ -269,65 +269,6 @@ export default function ApiCoverTest(abilityContext) {
     })
 
     /*
-     * @tc.number  SUB_AA_Form_provider_getFormsInfo_0100
-     * @tc.name    The provider calls the getFormsInfo interface to obtain form information.
-     * @tc.desc    Function test
-     * @tc.level   3
-     */
-    it('SUB_AA_Form_provider_getFormsInfo_0100', 0, async function (done) {
-      console.info("SUB_AA_Form_provider_getFormsInfo_0100");
-      formProvider.getFormsInfo((err, value) => {
-        console.info("formProvider::GetFormsInfoTest err: " + JSON.stringify(err));
-        console.info("formProvider::GetFormsInfoTest value: " + JSON.stringify(value));
-        if (err.code != 0) {
-          expect(0).assertEqual(2)
-        } else {
-          for(let i = 0; i < value.length; i++){
-            if(value[i].bundleName == "com.example.apicoverhaptest" && value[i].name == "widget"){
-              trueInfo = value[i]
-              console.info("formProvider::GetFormsInfoTest trueInfo: " + JSON.stringify(trueInfo));
-            }
-          }
-        }
-        checkFormInfo(trueInfo)
-        done()
-      })
-    })
-
-    /*
-     * @tc.number  SUB_AA_Form_provider_getFormsInfo_0200
-     * @tc.name    The provider calls the getFormsInfo interface to obtain form information in the module1.
-     * @tc.desc    Function test
-     * @tc.level   3
-     */
-    it('SUB_AA_Form_provider_getFormsInfo_0200', 0, async function (done) {
-      console.info("SUB_AA_Form_provider_getFormsInfo_0200");
-      const filter: FormInfo.FormInfoFilter = {
-        moduleName: "module1"
-      };
-      formProvider.getFormsInfo(filter, (err, value) => {
-        console.info("formProvider::GetFormsInfoTest err: " + JSON.stringify(err));
-        console.info("formProvider::GetFormsInfoTest value: " + JSON.stringify(value));
-        if (err.code != 0) {
-          expect(0).assertEqual(2)
-        } else {
-          if(value.length == 0){
-            expect(1).assertEqual(0)
-          }else{
-            for(let i = 0; i < value.length; i++){
-              if(value[i].bundleName == "com.example.apicoverhaptest" && value[i].name == "widget1"){
-                trueInfo = value[i]
-                console.info("formProvider::GetFormsInfoTest trueInfo: " + JSON.stringify(trueInfo));
-              }
-            }
-          }
-        }
-        checkFormInfoModule1(trueInfo)
-        done();
-      })
-    })
-
-    /*
      * @tc.number  SUB_AA_Form_provider_TestFormErr_0100
      * @tc.name    Get all FormError types.
      * @tc.desc    Function test
@@ -382,40 +323,4 @@ export default function ApiCoverTest(abilityContext) {
       done();
     });
   })
-}
-function checkFormInfoModule1(formInfo){
-  console.info("formProvider::GetFormsInfoTest value: " + JSON.stringify(formInfo));
-  expect("com.example.apicoverhaptest").assertEqual(formInfo.bundleName)
-  expect("module1").assertEqual(formInfo.moduleName)
-  expect("FormAbility").assertEqual(formInfo.abilityName)
-  expect("widget1").assertEqual(formInfo.name)
-  expect("This is a service widget.").assertEqual(formInfo.description)
-  expect(FormInfo.FormType.JS).assertEqual(formInfo.type)
-  expect(FormInfo.ColorMode.MODE_DARK).assertEqual(formInfo.colorMode)
-  expect(formInfo.isDefault).assertTrue()
-  expect(formInfo.updateEnabled).assertTrue()
-  expect(formInfo.formVisibleNotify).assertFalse()
-  expect('').assertEqual(formInfo.relatedBundleName)
-  expect("ability://xxxxx").assertEqual(formInfo.formConfigAbility)
-  expect(1).assertEqual(formInfo.updateDuration)
-  expect(2).assertEqual(formInfo.defaultDimension)
-  expect(2).assertEqual(formInfo.supportDimensions[0])
-}
-function checkFormInfo(formInfo){
-  console.info("formProvider::GetFormsInfoTest formInfo: " + JSON.stringify(formInfo));
-  expect("com.example.apicoverhaptest").assertEqual(formInfo.bundleName)
-  expect("phone").assertEqual(formInfo.moduleName)
-  expect("FormAbility").assertEqual(formInfo.abilityName)
-  expect("widget").assertEqual(formInfo.name)
-  expect("This is a service widget.").assertEqual(formInfo.description)
-  expect(FormInfo.FormType.JS).assertEqual(formInfo.type)
-  expect(FormInfo.ColorMode.MODE_AUTO).assertEqual(formInfo.colorMode)
-  expect(formInfo.isDefault).assertTrue()
-  expect(formInfo.updateEnabled).assertTrue()
-  expect(formInfo.formVisibleNotify).assertFalse()
-  expect('').assertEqual(formInfo.relatedBundleName)
-  expect("ability://xxxxx").assertEqual(formInfo.formConfigAbility)
-  expect(1).assertEqual(formInfo.updateDuration)
-  expect(2).assertEqual(formInfo.defaultDimension)
-  expect(2).assertEqual(formInfo.supportDimensions[0])
 }
