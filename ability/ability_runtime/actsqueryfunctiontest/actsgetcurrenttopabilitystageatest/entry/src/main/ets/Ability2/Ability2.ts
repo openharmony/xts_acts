@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import Ability from '@ohos.application.Ability'
-import commonEvent from '@ohos.commonevent'
+import commonEvent from '@ohos.commonEvent'
 function PublishCallBackOne() {
     console.debug("====>Publish CallBack GetCurrentTopAbility2====>");
     console.debug("====>close this context====>3====>");
