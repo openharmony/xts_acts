@@ -27,7 +27,1689 @@ export default function abilityTest(abilityContext) {
             console.info(`AccessibilityConfigTest: afterEach starts`);
             setTimeout(done, 1000);
         })
-
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_set_asyncCallback_0100
+         * @tc.name    AccessibilityConfigTest_set_asyncCallback_0100
+         * @tc.desc    Test highContrastText.set() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_set_asyncCallback_0100', 0, async function(done) {
+            console.info('AccessibilityConfigTest_set_asyncCallback_0100');
+            config.highContrastText.set(true, (err, result) => {
+                if (err.code != 0) {
+                    console.error(`AccessibilityConfigTest_set_asyncCallback_0100 has error: ${err.code}`);
+                    expect(null).assertFail();
+                    done();
+                }
+                expect(result).assertEqual(undefined);
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_set_asyncPromise_0200
+         * @tc.name    AccessibilityConfigTest_set_asyncPromise_0200
+         * @tc.desc    Test highContrastText.set() function in promise mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_set_asyncPromise_0200', 0, async function(done) {
+            console.info('AccessibilityConfigTest_set_asyncPromise_0200');
+            config.highContrastText.set(false).then((result) => {
+                console.info(`AccessibilityConfigTest_set_asyncPromise_0200 result: ${result}`);
+                expect(result).assertEqual(undefined);
+                done();
+            }).catch((err) => {
+                console.error(`AccessibilityConfigTest_set_asyncPromise_0200 has error: ${err.code}`);
+                expect(null).assertFail();
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_get_asyncCallback_0300
+         * @tc.name    AccessibilityConfigTest_get_asyncCallback_0300
+         * @tc.desc    Test highContrastText.get() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_get_asyncCallback_0300', 0, async function(done) {
+            console.info('AccessibilityConfigTest_get_asyncCallback_0300');
+            config.highContrastText.get((err, result) => {
+                if (err.code != 0) {
+                    console.error(`AccessibilityConfigTest_get_asyncCallback_0300 has error: ${err.code}`);
+                    expect(null).assertFail();
+                    done();
+                }
+                expect('boolean').assertEqual(typeof (result));
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_get_asyncPromise_0400
+         * @tc.name    AccessibilityConfigTest_get_asyncPromise_0400
+         * @tc.desc    Test highContrastText.get() function in promise mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_get_asyncPromise_0400', 0, async function(done) {
+            console.info('AccessibilityConfigTest_get_asyncPromise_0400');
+            config.highContrastText.get().then((result) => {
+                console.info(`AccessibilityConfigTest_get_asyncPromise_0400 result: ${result}`);
+                expect('boolean').assertEqual(typeof (result));
+                done();
+            }).catch((err) => {
+                console.error(`AccessibilityConfigTest_get_asyncPromise_0400 has error: ${err.code}`);
+                expect(null).assertFail();
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_on_asyncCallback_0500
+         * @tc.name    AccessibilityConfigTest_on_asyncCallback_0500
+         * @tc.desc    Test highContrastText.on() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_on_asyncCallback_0500', 0, async function(done) {
+            console.info('AccessibilityConfigTest_on_asyncCallback_0500');
+            let ret = config.highContrastText.on((data) => {});
+            expect(ret).assertEqual(undefined);
+            done();
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_off_asyncCallback_0600
+         * @tc.name    AccessibilityConfigTest_off_asyncCallback_0600
+         * @tc.desc    Test highContrastText.off() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_off_asyncCallback_0600', 0, async function(done) {
+            console.info('AccessibilityConfigTest_off_asyncCallback_0600');
+            let ret = config.highContrastText.off((data) => {});
+            expect(ret).assertEqual(undefined);
+            done();
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_set_asyncCallback_0700
+         * @tc.name    AccessibilityConfigTest_set_asyncCallback_0700
+         * @tc.desc    Test invertColor.set() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_set_asyncCallback_0700', 0, async function(done) {
+            console.info('AccessibilityConfigTest_set_asyncCallback_0700');
+            config.invertColor.set(true, (err, result) => {
+                if (err.code != 0) {
+                    console.error(`AccessibilityConfigTest_set_asyncCallback_0700 has error: ${err.code}`);
+                    expect(null).assertFail();
+                    done();
+                }
+                expect(result).assertEqual(undefined);
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_set_asyncPromise_0800
+         * @tc.name    AccessibilityConfigTest_set_asyncPromise_0800
+         * @tc.desc    Test invertColor.set() function in promise mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_set_asyncPromise_0800', 0, async function(done) {
+            console.info('AccessibilityConfigTest_set_asyncPromise_0800');
+            config.invertColor.set(false).then((result) => {
+                console.info(`AccessibilityConfigTest_set_asyncPromise_0800 result: ${result}`);
+                expect(result).assertEqual(undefined);
+                done();
+            }).catch((err) => {
+                console.error(`AccessibilityConfigTest_set_asyncPromise_0800 has error: ${err.code}`);
+                expect(null).assertFail();
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_get_asyncCallback_0900
+         * @tc.name    AccessibilityConfigTest_get_asyncCallback_0900
+         * @tc.desc    Test invertColor.get() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_get_asyncCallback_0900', 0, async function(done) {
+            console.info('AccessibilityConfigTest_get_asyncCallback_0900');
+            config.invertColor.get((err, result) => {
+                if (err.code != 0) {
+                    console.error(`AccessibilityConfigTest_get_asyncCallback_0900 has error: ${err.code}`);
+                    expect(null).assertFail();
+                    done();
+                }
+                expect('boolean').assertEqual(typeof (result));
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_get_asyncPromise_1000
+         * @tc.name    AccessibilityConfigTest_get_asyncPromise_1000
+         * @tc.desc    Test invertColor.get() function in promise mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_get_asyncPromise_1000', 0, async function(done) {
+            console.info('AccessibilityConfigTest_get_asyncPromise_1000');
+            config.invertColor.get().then((result) => {
+                console.info(`AccessibilityConfigTest_get_asyncPromise_1000 result: ${result}`);
+                expect('boolean').assertEqual(typeof (result));
+                done();
+            }).catch((err) => {
+                console.error(`AccessibilityConfigTest_get_asyncPromise_1000 has error: ${err.code}`);
+                expect(null).assertFail();
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_on_asyncCallback_1100
+         * @tc.name    AccessibilityConfigTest_on_asyncCallback_1100
+         * @tc.desc    Test invertColor.on() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_on_asyncCallback_1100', 0, async function(done) {
+            console.info('AccessibilityConfigTest_on_asyncCallback_1100');
+            let ret = config.invertColor.on((data) => {});
+            expect(ret).assertEqual(undefined);
+            done();
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_off_asyncCallback_1200
+         * @tc.name    AccessibilityConfigTest_off_asyncCallback_1200
+         * @tc.desc    Test invertColor.off() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_off_asyncCallback_1200', 0, async function(done) {
+            console.info('AccessibilityConfigTest_off_asyncCallback_1200');
+            let ret = config.invertColor.off((data) => {});
+            expect(ret).assertEqual(undefined);
+            done();
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_set_asyncCallback_1300
+         * @tc.name    AccessibilityConfigTest_set_asyncCallback_1300
+         * @tc.desc    Test contentTimeout.set() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_set_asyncCallback_1300', 0, async function(done) {
+            console.info('AccessibilityConfigTest_set_asyncCallback_1300');
+            config.contentTimeout.set(0, (err, result) => {
+                if (err.code != 0) {
+                    console.error(`AccessibilityConfigTest_set_asyncCallback_1300 has error: ${err.code}`);
+                    expect(null).assertFail();
+                    done();
+                }
+                expect(result).assertEqual(undefined);
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_set_asyncPromise_1400
+         * @tc.name    AccessibilityConfigTest_set_asyncPromise_1400
+         * @tc.desc    Test contentTimeout.set() function in promise mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_set_asyncPromise_1400', 0, async function(done) {
+            console.info('AccessibilityConfigTest_set_asyncPromise_1400');
+            config.contentTimeout.set(5000).then((result) => {
+                console.info(`AccessibilityConfigTest_set_asyncPromise_1400 result: ${result}`);
+                expect(result).assertEqual(undefined);
+                done();
+            }).catch((err) => {
+                console.error(`AccessibilityConfigTest_set_asyncPromise_1400 has error: ${err.code}`);
+                expect(null).assertFail();
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_get_asyncCallback_1500
+         * @tc.name    AccessibilityConfigTest_get_asyncCallback_1500
+         * @tc.desc    Test contentTimeout.get() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_get_asyncCallback_1500', 0, async function(done) {
+            console.info('AccessibilityConfigTest_get_asyncCallback_1500');
+            config.contentTimeout.get((err, result) => {
+                if (err.code != 0) {
+                    console.error(`AccessibilityConfigTest_get_asyncCallback_1500 has error: ${err.code}`);
+                    expect(null).assertFail();
+                    done();
+                }
+                expect('number').assertEqual(typeof (result));
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_get_asyncPromise_1600
+         * @tc.name    AccessibilityConfigTest_get_asyncPromise_1600
+         * @tc.desc    Test contentTimeout.get() function in promise mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_get_asyncPromise_1600', 0, async function(done) {
+            console.info('AccessibilityConfigTest_get_asyncPromise_1600');
+            config.contentTimeout.get().then((result) => {
+                console.info(`AccessibilityConfigTest_get_asyncPromise_1600 result: ${result}`);
+                expect('number').assertEqual(typeof (result));
+                done();
+            }).catch((err) => {
+                console.error(`AccessibilityConfigTest_get_asyncPromise_1600 has error: ${err.code}`);
+                expect(null).assertFail();
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_on_asyncCallback_1700
+         * @tc.name    AccessibilityConfigTest_on_asyncCallback_1700
+         * @tc.desc    Test contentTimeout.on() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_on_asyncCallback_1700', 0, async function(done) {
+            console.info('AccessibilityConfigTest_on_asyncCallback_1700');
+            let ret = config.contentTimeout.on((data) => {});
+            expect(ret).assertEqual(undefined);
+            done();
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_off_asyncCallback_1800
+         * @tc.name    AccessibilityConfigTest_off_asyncCallback_1800
+         * @tc.desc    Test contentTimeout.off() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_off_asyncCallback_1800', 0, async function(done) {
+            console.info('AccessibilityConfigTest_off_asyncCallback_1800');
+            let ret = config.contentTimeout.off((data) => {});
+            expect(ret).assertEqual(undefined);
+            done();
+        })
+        
+        /*
+         * @tc.number  AccessibilityConfigTest_set_asyncCallback_1900
+         * @tc.name    AccessibilityConfigTest_set_asyncCallback_1900
+         * @tc.desc    Test animationOff.set() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_set_asyncCallback_1900', 0, async function(done) {
+            console.info('AccessibilityConfigTest_set_asyncCallback_1900');
+            config.animationOff.set(true, (err, result) => {
+                if (err.code != 0) {
+                    console.error(`AccessibilityConfigTest_set_asyncCallback_1900 has error: ${err.code}`);
+                    expect(null).assertFail();
+                    done();
+                }
+                expect(result).assertEqual(undefined);
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_set_asyncPromise_2000
+         * @tc.name    AccessibilityConfigTest_set_asyncPromise_2000
+         * @tc.desc    Test animationOff.set() function in promise mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_set_asyncPromise_2000', 0, async function(done) {
+            console.info('AccessibilityConfigTest_set_asyncPromise_2000');
+            config.animationOff.set(false).then((result) => {
+                console.info(`AccessibilityConfigTest_set_asyncPromise_2000 result: ${result}`);
+                expect(result).assertEqual(undefined);
+                done();
+            }).catch((err) => {
+                console.error(`AccessibilityConfigTest_set_asyncPromise_2000 has error: ${err.code}`);
+                expect(null).assertFail();
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_get_asyncCallback_2100
+         * @tc.name    AccessibilityConfigTest_get_asyncCallback_2100
+         * @tc.desc    Test animationOff.get() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_get_asyncCallback_2100', 0, async function(done) {
+            console.info('AccessibilityConfigTest_get_asyncCallback_2100');
+            config.animationOff.get((err, result) => {
+                if (err.code != 0) {
+                    console.error(`AccessibilityConfigTest_get_asyncCallback_2100 has error: ${err.code}`);
+                    expect(null).assertFail();
+                    done();
+                }
+                expect('boolean').assertEqual(typeof (result));
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_get_asyncPromise_2200
+         * @tc.name    AccessibilityConfigTest_get_asyncPromise_2200
+         * @tc.desc    Test animationOff.get() function in promise mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_get_asyncPromise_2200', 0, async function(done) {
+            console.info('AccessibilityConfigTest_get_asyncPromise_2200');
+            config.animationOff.get().then((result) => {
+                console.info(`AccessibilityConfigTest_get_asyncPromise_2200 result: ${result}`);
+                expect('boolean').assertEqual(typeof (result));
+                done();
+            }).catch((err) => {
+                console.error(`AccessibilityConfigTest_get_asyncPromise_2200 has error: ${err.code}`);
+                expect(null).assertFail();
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_on_asyncCallback_2300
+         * @tc.name    AccessibilityConfigTest_on_asyncCallback_2300
+         * @tc.desc    Test animationOff.on() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_on_asyncCallback_2300', 0, async function(done) {
+            console.info('AccessibilityConfigTest_on_asyncCallback_2300');
+            let ret = config.animationOff.on((data) => {});
+            expect(ret).assertEqual(undefined);
+            done();
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_off_asyncCallback_2400
+         * @tc.name    AccessibilityConfigTest_off_asyncCallback_2400
+         * @tc.desc    Test animationOff.off() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_off_asyncCallback_2400', 0, async function(done) {
+            console.info('AccessibilityConfigTest_off_asyncCallback_2400');
+            let ret = config.animationOff.off((data) => {});
+            expect(ret).assertEqual(undefined);
+            done();
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_set_asyncCallback_2500
+         * @tc.name    AccessibilityConfigTest_set_asyncCallback_2500
+         * @tc.desc    Test brightnessDiscount.set() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_set_asyncCallback_2500', 0, async function(done) {
+            console.info('AccessibilityConfigTest_set_asyncCallback_2500');
+            config.brightnessDiscount.set(0.1, (err, result) => {
+                if (err.code != 0) {
+                    console.error(`AccessibilityConfigTest_set_asyncCallback_2500 has error: ${err.code}`);
+                    expect(null).assertFail();
+                    done();
+                }
+                expect(result).assertEqual(undefined);
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_set_asyncPromise_2600
+         * @tc.name    AccessibilityConfigTest_set_asyncPromise_2600
+         * @tc.desc    Test brightnessDiscount.set() function in promise mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_set_asyncPromise_2600', 0, async function(done) {
+            console.info('AccessibilityConfigTest_set_asyncPromise_2600');
+            config.brightnessDiscount.set(0.9).then((result) => {
+                console.info(`AccessibilityConfigTest_set_asyncPromise_2600 result: ${result}`);
+                expect(result).assertEqual(undefined);
+                done();
+            }).catch((err) => {
+                console.error(`AccessibilityConfigTest_set_asyncPromise_2600 has error: ${err.code}`);
+                expect(null).assertFail();
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_get_asyncCallback_2700
+         * @tc.name    AccessibilityConfigTest_get_asyncCallback_2700
+         * @tc.desc    Test brightnessDiscount.get() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_get_asyncCallback_2700', 0, async function(done) {
+            console.info('AccessibilityConfigTest_get_asyncCallback_2700');
+            config.brightnessDiscount.get((err, result) => {
+                if (err.code != 0) {
+                    console.error(`AccessibilityConfigTest_get_asyncCallback_2700 has error: ${err.code}`);
+                    expect(null).assertFail();
+                    done();
+                }
+                expect('number').assertEqual(typeof (result));
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_get_asyncPromise_2800
+         * @tc.name    AccessibilityConfigTest_get_asyncPromise_2800
+         * @tc.desc    Test brightnessDiscount.get() function in promise mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_get_asyncPromise_2800', 0, async function(done) {
+            console.info('AccessibilityConfigTest_get_asyncPromise_2800');
+            config.brightnessDiscount.get().then((result) => {
+                console.info(`AccessibilityConfigTest_get_asyncPromise_2800 result: ${result}`);
+                expect('number').assertEqual(typeof (result));
+                done();
+            }).catch((err) => {
+                console.error(`AccessibilityConfigTest_get_asyncPromise_2800 has error: ${err.code}`);
+                expect(null).assertFail();
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_on_asyncCallback_2900
+         * @tc.name    AccessibilityConfigTest_on_asyncCallback_2900
+         * @tc.desc    Test brightnessDiscount.on() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_on_asyncCallback_2900', 0, async function(done) {
+            console.info('AccessibilityConfigTest_on_asyncCallback_2900');
+            let ret = config.brightnessDiscount.on((data) => {});
+            expect(ret).assertEqual(undefined);
+            done();
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_off_asyncCallback_3000
+         * @tc.name    AccessibilityConfigTest_off_asyncCallback_3000
+         * @tc.desc    Test brightnessDiscount.off() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_off_asyncCallback_3000', 0, async function(done) {
+            console.info('AccessibilityConfigTest_off_asyncCallback_3000');
+            let ret = config.brightnessDiscount.off((data) => {});
+            expect(ret).assertEqual(undefined);
+            done();
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_set_asyncCallback_3100
+         * @tc.name    AccessibilityConfigTest_set_asyncCallback_3100
+         * @tc.desc    Test screenMagnifier.set() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_set_asyncCallback_3100', 0, async function(done) {
+            console.info('AccessibilityConfigTest_set_asyncCallback_3100');
+            config.screenMagnifier.set(true, (err, result) => {
+                if (err.code != 0) {
+                    console.error(`AccessibilityConfigTest_set_asyncCallback_3100 has error: ${err.code}`);
+                    expect(null).assertFail();
+                    done();
+                }
+                expect(result).assertEqual(undefined);
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_set_asyncPromise_3200
+         * @tc.name    AccessibilityConfigTest_set_asyncPromise_3200
+         * @tc.desc    Test screenMagnifier.set() function in promise mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_set_asyncPromise_3200', 0, async function(done) {
+            console.info('AccessibilityConfigTest_set_asyncPromise_3200');
+            config.screenMagnifier.set(false).then((result) => {
+                console.info(`AccessibilityConfigTest_set_asyncPromise_3200 result: ${result}`);
+                expect(result).assertEqual(undefined);
+                done();
+            }).catch((err) => {
+                console.error(`AccessibilityConfigTest_set_asyncPromise_3200 has error: ${err.code}`);
+                expect(null).assertFail();
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_get_asyncCallback_3300
+         * @tc.name    AccessibilityConfigTest_get_asyncCallback_3300
+         * @tc.desc    Test screenMagnifier.get() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_get_asyncCallback_3300', 0, async function(done) {
+            console.info('AccessibilityConfigTest_get_asyncCallback_3300');
+            config.screenMagnifier.get((err, result) => {
+                if (err.code != 0) {
+                    console.error(`AccessibilityConfigTest_get_asyncCallback_3300 has error: ${err.code}`);
+                    expect(null).assertFail();
+                    done();
+                }
+                expect('boolean').assertEqual(typeof (result));
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_get_asyncPromise_3400
+         * @tc.name    AccessibilityConfigTest_get_asyncPromise_3400
+         * @tc.desc    Test screenMagnifier.get() function in promise mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_get_asyncPromise_3400', 0, async function(done) {
+            console.info('AccessibilityConfigTest_get_asyncPromise_3400');
+            config.screenMagnifier.get().then((result) => {
+                console.info(`AccessibilityConfigTest_get_asyncPromise_3400 result: ${result}`);
+                expect('boolean').assertEqual(typeof (result));
+                done();
+            }).catch((err) => {
+                console.error(`AccessibilityConfigTest_get_asyncPromise_3400 has error: ${err.code}`);
+                expect(null).assertFail();
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_on_asyncCallback_3500
+         * @tc.name    AccessibilityConfigTest_on_asyncCallback_3500
+         * @tc.desc    Test screenMagnifier.on() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_on_asyncCallback_3500', 0, async function(done) {
+            console.info('AccessibilityConfigTest_on_asyncCallback_3500');
+            let ret = config.screenMagnifier.on((data) => {});
+            expect(ret).assertEqual(undefined);
+            done();
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_off_asyncCallback_3600
+         * @tc.name    AccessibilityConfigTest_off_asyncCallback_3600
+         * @tc.desc    Test screenMagnifier.off() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_off_asyncCallback_3600', 0, async function(done) {
+            console.info('AccessibilityConfigTest_off_asyncCallback_3600');
+            let ret = config.screenMagnifier.off((data) => {});
+            expect(ret).assertEqual(undefined);
+            done();
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_set_asyncCallback_3700
+         * @tc.name    AccessibilityConfigTest_set_asyncCallback_3700
+         * @tc.desc    Test audioMono.set() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_set_asyncCallback_3700', 0, async function(done) {
+            console.info('AccessibilityConfigTest_set_asyncCallback_3700');
+            config.audioMono.set(true, (err, result) => {
+                if (err.code != 0) {
+                    console.error(`AccessibilityConfigTest_set_asyncCallback_3700 has error: ${err.code}`);
+                    expect(null).assertFail();
+                    done();
+                }
+                expect(result).assertEqual(undefined);
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_set_asyncPromise_3800
+         * @tc.name    AccessibilityConfigTest_set_asyncPromise_3800
+         * @tc.desc    Test audioMono.set() function in promise mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_set_asyncPromise_3800', 0, async function(done) {
+            console.info('AccessibilityConfigTest_set_asyncPromise_3800');
+            config.audioMono.set(false).then((result) => {
+                console.info(`AccessibilityConfigTest_set_asyncPromise_3800 result: ${result}`);
+                expect(result).assertEqual(undefined);
+                done();
+            }).catch((err) => {
+                console.error(`AccessibilityConfigTest_set_asyncPromise_3800 has error: ${err.code}`);
+                expect(null).assertFail();
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_get_asyncCallback_3900
+         * @tc.name    AccessibilityConfigTest_get_asyncCallback_3900
+         * @tc.desc    Test audioMono.get() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_get_asyncCallback_3900', 0, async function(done) {
+            console.info('AccessibilityConfigTest_get_asyncCallback_3900');
+            config.audioMono.get((err, result) => {
+                if (err.code != 0) {
+                    console.error(`AccessibilityConfigTest_get_asyncCallback_3900 has error: ${err.code}`);
+                    expect(null).assertFail();
+                    done();
+                }
+                expect('boolean').assertEqual(typeof (result));
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_get_asyncPromise_4000
+         * @tc.name    AccessibilityConfigTest_get_asyncPromise_4000
+         * @tc.desc    Test audioMono.get() function in promise mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_get_asyncPromise_4000', 0, async function(done) {
+            console.info('AccessibilityConfigTest_get_asyncPromise_4000');
+            config.audioMono.get().then((result) => {
+                console.info(`AccessibilityConfigTest_get_asyncPromise_4000 result: ${result}`);
+                expect('boolean').assertEqual(typeof (result));
+                done();
+            }).catch((err) => {
+                console.error(`AccessibilityConfigTest_get_asyncPromise_4000 has error: ${err.code}`);
+                expect(null).assertFail();
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_on_asyncCallback_4100
+         * @tc.name    AccessibilityConfigTest_on_asyncCallback_4100
+         * @tc.desc    Test audioMono.on() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_on_asyncCallback_4100', 0, async function(done) {
+            console.info('AccessibilityConfigTest_on_asyncCallback_4100');
+            let ret = config.audioMono.on((data) => {});
+            expect(ret).assertEqual(undefined);
+            done();
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_off_asyncCallback_4200
+         * @tc.name    AccessibilityConfigTest_off_asyncCallback_4200
+         * @tc.desc    Test audioMono.off() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_off_asyncCallback_4200', 0, async function(done) {
+            console.info('AccessibilityConfigTest_off_asyncCallback_4200');
+            let ret = config.audioMono.off((data) => {});
+            expect(ret).assertEqual(undefined);
+            done();
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_set_asyncCallback_4300
+         * @tc.name    AccessibilityConfigTest_set_asyncCallback_4300
+         * @tc.desc    Test audioBalance.set() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_set_asyncCallback_4300', 0, async function(done) {
+            console.info('AccessibilityConfigTest_set_asyncCallback_4300');
+            config.audioBalance.set(0, (err, result) => {
+                if (err.code != 0) {
+                    console.error(`AccessibilityConfigTest_set_asyncCallback_4300 has error: ${err.code}`);
+                    expect(null).assertFail();
+                    done();
+                }
+                expect(result).assertEqual(undefined);
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_set_asyncPromise_4400
+         * @tc.name    AccessibilityConfigTest_set_asyncPromise_4400
+         * @tc.desc    Test audioBalance.set() function in promise mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_set_asyncPromise_4400', 0, async function(done) {
+            console.info('AccessibilityConfigTest_set_asyncPromise_4400');
+            config.audioBalance.set(-1).then((result) => {
+                console.info(`AccessibilityConfigTest_set_asyncPromise_4400 result: ${result}`);
+                expect(result).assertEqual(undefined);
+                done();
+            }).catch((err) => {
+                console.error(`AccessibilityConfigTest_set_asyncPromise_4400 has error: ${err.code}`);
+                expect(null).assertFail();
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_get_asyncCallback_4500
+         * @tc.name    AccessibilityConfigTest_get_asyncCallback_4500
+         * @tc.desc    Test audioBalance.get() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_get_asyncCallback_4500', 0, async function(done) {
+            console.info('AccessibilityConfigTest_get_asyncCallback_4500');
+            config.audioBalance.get((err, result) => {
+                if (err.code != 0) {
+                    console.error(`AccessibilityConfigTest_get_asyncCallback_4500 has error: ${err.code}`);
+                    expect(null).assertFail();
+                    done();
+                }
+                expect('number').assertEqual(typeof (result));
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_get_asyncPromise_4600
+         * @tc.name    AccessibilityConfigTest_get_asyncPromise_4600
+         * @tc.desc    Test audioBalance.get() function in promise mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_get_asyncPromise_4600', 0, async function(done) {
+            console.info('AccessibilityConfigTest_get_asyncPromise_4600');
+            config.audioBalance.get().then((result) => {
+                console.info(`AccessibilityConfigTest_get_asyncPromise_4600 result: ${result}`);
+                expect('number').assertEqual(typeof (result));
+                done();
+            }).catch((err) => {
+                console.error(`AccessibilityConfigTest_get_asyncPromise_4600 has error: ${err.code}`);
+                expect(null).assertFail();
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_on_asyncCallback_4700
+         * @tc.name    AccessibilityConfigTest_on_asyncCallback_4700
+         * @tc.desc    Test audioBalance.on() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_on_asyncCallback_4700', 0, async function(done) {
+            console.info('AccessibilityConfigTest_on_asyncCallback_4700');
+            let ret = config.audioBalance.on((data) => {});
+            expect(ret).assertEqual(undefined);
+            done();
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_off_asyncCallback_4800
+         * @tc.name    AccessibilityConfigTest_off_asyncCallback_4800
+         * @tc.desc    Test audioBalance.off() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_off_asyncCallback_4800', 0, async function(done) {
+            console.info('AccessibilityConfigTest_off_asyncCallback_4800');
+            let ret = config.audioBalance.off((data) => {});
+            expect(ret).assertEqual(undefined);
+            done();
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_set_asyncCallback_4900
+         * @tc.name    AccessibilityConfigTest_set_asyncCallback_4900
+         * @tc.desc    Test mouseKey.set() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_set_asyncCallback_4900', 0, async function(done) {
+            console.info('AccessibilityConfigTest_set_asyncCallback_4900');
+            config.mouseKey.set(true, (err, result) => {
+                if (err.code != 0) {
+                    console.error(`AccessibilityConfigTest_set_asyncCallback_4900 has error: ${err.code}`);
+                    expect(null).assertFail();
+                    done();
+                }
+                expect(result).assertEqual(undefined);
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_set_asyncPromise_5000
+         * @tc.name    AccessibilityConfigTest_set_asyncPromise_5000
+         * @tc.desc    Test mouseKey.set() function in promise mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_set_asyncPromise_5000', 0, async function(done) {
+            console.info('AccessibilityConfigTest_set_asyncPromise_5000');
+            config.mouseKey.set(false).then((result) => {
+                console.info(`AccessibilityConfigTest_set_asyncPromise_5000 result: ${result}`);
+                expect(result).assertEqual(undefined);
+                done();
+            }).catch((err) => {
+                console.error(`AccessibilityConfigTest_set_asyncPromise_5000 has error: ${err.code}`);
+                expect(null).assertFail();
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_get_asyncCallback_5100
+         * @tc.name    AccessibilityConfigTest_get_asyncCallback_5100
+         * @tc.desc    Test mouseKey.get() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_get_asyncCallback_5100', 0, async function(done) {
+            console.info('AccessibilityConfigTest_get_asyncCallback_5100');
+            config.mouseKey.get((err, result) => {
+                if (err.code != 0) {
+                    console.error(`AccessibilityConfigTest_get_asyncCallback_5100 has error: ${err.code}`);
+                    expect(null).assertFail();
+                    done();
+                }
+                expect('boolean').assertEqual(typeof (result));
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_get_asyncPromise_5200
+         * @tc.name    AccessibilityConfigTest_get_asyncPromise_5200
+         * @tc.desc    Test mouseKey.get() function in promise mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_get_asyncPromise_5200', 0, async function(done) {
+            console.info('AccessibilityConfigTest_get_asyncPromise_5200');
+            config.mouseKey.get().then((result) => {
+                console.info(`AccessibilityConfigTest_get_asyncPromise_5200 result: ${result}`);
+                expect('boolean').assertEqual(typeof (result));
+                done();
+            }).catch((err) => {
+                console.error(`AccessibilityConfigTest_get_asyncPromise_5200 has error: ${err.code}`);
+                expect(null).assertFail();
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_on_asyncCallback_5300
+         * @tc.name    AccessibilityConfigTest_on_asyncCallback_5300
+         * @tc.desc    Test mouseKey.on() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_on_asyncCallback_5300', 0, async function(done) {
+            console.info('AccessibilityConfigTest_on_asyncCallback_5300');
+            let ret = config.mouseKey.on((data) => {});
+            expect(ret).assertEqual(undefined);
+            done();
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_off_asyncCallback_5400
+         * @tc.name    AccessibilityConfigTest_off_asyncCallback_5400
+         * @tc.desc    Test mouseKey.off() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_off_asyncCallback_5400', 0, async function(done) {
+            console.info('AccessibilityConfigTest_off_asyncCallback_5400');
+            let ret = config.mouseKey.off((data) => {});
+            expect(ret).assertEqual(undefined);
+            done();
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_set_asyncCallback_5500
+         * @tc.name    AccessibilityConfigTest_set_asyncCallback_5500
+         * @tc.desc    Test mouseAutoClick.set() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_set_asyncCallback_5500', 0, async function(done) {
+            console.info('AccessibilityConfigTest_set_asyncCallback_5500');
+            config.mouseAutoClick.set(-1, (err, result) => {
+                if (err.code != 0) {
+                    console.error(`AccessibilityConfigTest_set_asyncCallback_5500 has error: ${err.code}`);
+                    expect(null).assertFail();
+                    done();
+                }
+                expect(result).assertEqual(undefined);
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_set_asyncPromise_5600
+         * @tc.name    AccessibilityConfigTest_set_asyncPromise_5600
+         * @tc.desc    Test mouseAutoClick.set() function in promise mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_set_asyncPromise_5600', 0, async function(done) {
+            console.info('AccessibilityConfigTest_set_asyncPromise_5600');
+            config.mouseAutoClick.set(5000).then((result) => {
+                console.info(`AccessibilityConfigTest_set_asyncPromise_5600 result: ${result}`);
+                expect(result).assertEqual(undefined);
+                done();
+            }).catch((err) => {
+                console.error(`AccessibilityConfigTest_set_asyncPromise_5600 has error: ${err.code}`);
+                expect(null).assertFail();
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_get_asyncCallback_5700
+         * @tc.name    AccessibilityConfigTest_get_asyncCallback_5700
+         * @tc.desc    Test mouseAutoClick.get() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_get_asyncCallback_5700', 0, async function(done) {
+            console.info('AccessibilityConfigTest_get_asyncCallback_5700');
+            config.mouseAutoClick.get((err, result) => {
+                if (err.code != 0) {
+                    console.error(`AccessibilityConfigTest_get_asyncCallback_5700 has error: ${err.code}`);
+                    expect(null).assertFail();
+                    done();
+                }
+                expect('number').assertEqual(typeof (result));
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_get_asyncPromise_5800
+         * @tc.name    AccessibilityConfigTest_get_asyncPromise_5800
+         * @tc.desc    Test mouseAutoClick.get() function in promise mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_get_asyncPromise_5800', 0, async function(done) {
+            console.info('AccessibilityConfigTest_get_asyncPromise_5800');
+            config.mouseAutoClick.get().then((result) => {
+                console.info(`AccessibilityConfigTest_get_asyncPromise_5800 result: ${result}`);
+                expect('number').assertEqual(typeof (result));
+                done();
+            }).catch((err) => {
+                console.error(`AccessibilityConfigTest_get_asyncPromise_5800 has error: ${err.code}`);
+                expect(null).assertFail();
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_on_asyncCallback_5900
+         * @tc.name    AccessibilityConfigTest_on_asyncCallback_5900
+         * @tc.desc    Test mouseAutoClick.on() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_on_asyncCallback_5900', 0, async function(done) {
+            console.info('AccessibilityConfigTest_on_asyncCallback_5900');
+            let ret = config.mouseAutoClick.on((data) => {});
+            expect(ret).assertEqual(undefined);
+            done();
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_off_asyncCallback_6000
+         * @tc.name    AccessibilityConfigTest_off_asyncCallback_6000
+         * @tc.desc    Test mouseAutoClick.off() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_off_asyncCallback_6000', 0, async function(done) {
+            console.info('AccessibilityConfigTest_off_asyncCallback_6000');
+            let ret = config.mouseAutoClick.off((data) => {});
+            expect(ret).assertEqual(undefined);
+            done();
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_set_asyncCallback_6100
+         * @tc.name    AccessibilityConfigTest_set_asyncCallback_6100
+         * @tc.desc    Test shortkey.set() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_set_asyncCallback_6100', 0, async function(done) {
+            console.info('AccessibilityConfigTest_set_asyncCallback_6100');
+            config.shortkey.set(true, (err, result) => {
+                if (err.code != 0) {
+                    console.error(`AccessibilityConfigTest_set_asyncCallback_6100 has error: ${err.code}`);
+                    expect(null).assertFail();
+                    done();
+                }
+                expect(result).assertEqual(undefined);
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_set_asyncPromise_6200
+         * @tc.name    AccessibilityConfigTest_set_asyncPromise_6200
+         * @tc.desc    Test shortkey.set() function in promise mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_set_asyncPromise_6200', 0, async function(done) {
+            console.info('AccessibilityConfigTest_set_asyncPromise_6200');
+            config.shortkey.set(false).then((result) => {
+                console.info(`AccessibilityConfigTest_set_asyncPromise_6200 result: ${result}`);
+                expect(result).assertEqual(undefined);
+                done();
+            }).catch((err) => {
+                console.error(`AccessibilityConfigTest_set_asyncPromise_6200 has error: ${err.code}`);
+                expect(null).assertFail();
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_get_asyncCallback_6300
+         * @tc.name    AccessibilityConfigTest_get_asyncCallback_6300
+         * @tc.desc    Test shortkey.get() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_get_asyncCallback_6300', 0, async function(done) {
+            console.info('AccessibilityConfigTest_get_asyncCallback_6300');
+            config.shortkey.get((err, result) => {
+                if (err.code != 0) {
+                    console.error(`AccessibilityConfigTest_get_asyncCallback_6300 has error: ${err.code}`);
+                    expect(null).assertFail();
+                    done();
+                }
+                expect('boolean').assertEqual(typeof (result));
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_get_asyncPromise_6400
+         * @tc.name    AccessibilityConfigTest_get_asyncPromise_6400
+         * @tc.desc    Test shortkey.get() function in promise mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_get_asyncPromise_6400', 0, async function(done) {
+            console.info('AccessibilityConfigTest_get_asyncPromise_6400');
+            config.shortkey.get().then((result) => {
+                console.info(`AccessibilityConfigTest_get_asyncPromise_6400 result: ${result}`);
+                expect('boolean').assertEqual(typeof (result));
+                done();
+            }).catch((err) => {
+                console.error(`AccessibilityConfigTest_get_asyncPromise_6400 has error: ${err.code}`);
+                expect(null).assertFail();
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_on_asyncCallback_6500
+         * @tc.name    AccessibilityConfigTest_on_asyncCallback_6500
+         * @tc.desc    Test shortkey.on() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_on_asyncCallback_6500', 0, async function(done) {
+            console.info('AccessibilityConfigTest_on_asyncCallback_6500');
+            let ret = config.shortkey.on((data) => {});
+            expect(ret).assertEqual(undefined);
+            done();
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_off_asyncCallback_6600
+         * @tc.name    AccessibilityConfigTest_off_asyncCallback_6600
+         * @tc.desc    Test shortkey.off() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_off_asyncCallback_6600', 0, async function(done) {
+            console.info('AccessibilityConfigTest_off_asyncCallback_6600');
+            let ret = config.shortkey.off((data) => {});
+            expect(ret).assertEqual(undefined);
+            done();
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_set_asyncCallback_6700
+         * @tc.name    AccessibilityConfigTest_set_asyncCallback_6700
+         * @tc.desc    Test shortkeyTarget.set() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_set_asyncCallback_6700', 0, async function(done) {
+            console.info('AccessibilityConfigTest_set_asyncCallback_6700');
+            let value = 'teststr'
+            config.shortkeyTarget.set(value, (err, result) => {
+                if (err.code != 0) {
+                    console.error(`AccessibilityConfigTest_set_asyncCallback_6700 has error: ${err.code}`);
+                    expect(null).assertFail();
+                    done();
+                }
+                expect(result).assertEqual(undefined);
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_set_asyncPromise_6800
+         * @tc.name    AccessibilityConfigTest_set_asyncPromise_6800
+         * @tc.desc    Test shortkeyTarget.set() function in promise mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_set_asyncPromise_6800', 0, async function(done) {
+            console.info('AccessibilityConfigTest_set_asyncPromise_6800');
+            let value = 'test'
+            config.shortkeyTarget.set(value).then((result) => {
+                console.info(`AccessibilityConfigTest_set_asyncPromise_6800 result: ${result}`);
+                expect(result).assertEqual(undefined);
+                done();
+            }).catch((err) => {
+                console.error(`AccessibilityConfigTest_set_asyncPromise_6800 has error: ${err.code}`);
+                expect(null).assertFail();
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_get_asyncCallback_6900
+         * @tc.name    AccessibilityConfigTest_get_asyncCallback_6900
+         * @tc.desc    Test shortkeyTarget.get() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_get_asyncCallback_6900', 0, async function(done) {
+            console.info('AccessibilityConfigTest_get_asyncCallback_6900');
+            config.shortkeyTarget.get((err, result) => {
+                if (err.code != 0) {
+                    console.error(`AccessibilityConfigTest_get_asyncCallback_6900 has error: ${err.code}`);
+                    expect(null).assertFail();
+                    done();
+                }
+                expect('string').assertEqual(typeof (result));
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_get_asyncPromise_7000
+         * @tc.name    AccessibilityConfigTest_get_asyncPromise_7000
+         * @tc.desc    Test shortkeyTarget.get() function in promise mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_get_asyncPromise_7000', 0, async function(done) {
+            console.info('AccessibilityConfigTest_get_asyncPromise_7000');
+            config.shortkeyTarget.get().then((result) => {
+                console.info(`AccessibilityConfigTest_get_asyncPromise_7000 result: ${result}`);
+                expect('string').assertEqual(typeof (result));
+                done();
+            }).catch((err) => {
+                console.error(`AccessibilityConfigTest_get_asyncPromise_7000 has error: ${err.code}`);
+                expect(null).assertFail();
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_on_asyncCallback_7100
+         * @tc.name    AccessibilityConfigTest_on_asyncCallback_7100
+         * @tc.desc    Test shortkeyTarget.on() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_on_asyncCallback_7100', 0, async function(done) {
+            console.info('AccessibilityConfigTest_on_asyncCallback_7100');
+            let ret = config.shortkeyTarget.on((data) => {});
+            expect(ret).assertEqual(undefined);
+            done();
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_off_asyncCallback_7200
+         * @tc.name    AccessibilityConfigTest_off_asyncCallback_7200
+         * @tc.desc    Test shortkeyTarget.off() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_off_asyncCallback_7200', 0, async function(done) {
+            console.info('AccessibilityConfigTest_off_asyncCallback_7200');
+            let ret = config.shortkeyTarget.off((data) => {});
+            expect(ret).assertEqual(undefined);
+            done();
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_set_asyncCallback_7300
+         * @tc.name    AccessibilityConfigTest_set_asyncCallback_7300
+         * @tc.desc    Test captions.set() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_set_asyncCallback_7300', 0, async function(done) {
+            console.info('AccessibilityConfigTest_set_asyncCallback_7300');
+            config.captions.set(true, (err, result) => {
+                if (err.code != 0) {
+                    console.error(`AccessibilityConfigTest_set_asyncCallback_7300 has error: ${err.code}`);
+                    expect(null).assertFail();
+                    done();
+                }
+                expect(result).assertEqual(undefined);
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_set_asyncPromise_7400
+         * @tc.name    AccessibilityConfigTest_set_asyncPromise_7400
+         * @tc.desc    Test captions.set() function in promise mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_set_asyncPromise_7400', 0, async function(done) {
+            console.info('AccessibilityConfigTest_set_asyncPromise_7400');
+            config.captions.set(false).then((result) => {
+                console.info(`AccessibilityConfigTest_set_asyncPromise_7400 result: ${result}`);
+                expect(result).assertEqual(undefined);
+                done();
+            }).catch((err) => {
+                console.error(`AccessibilityConfigTest_set_asyncPromise_7400 has error: ${err.code}`);
+                expect(null).assertFail();
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_get_asyncCallback_7500
+         * @tc.name    AccessibilityConfigTest_get_asyncCallback_7500
+         * @tc.desc    Test captions.get() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_get_asyncCallback_7500', 0, async function(done) {
+            console.info('AccessibilityConfigTest_get_asyncCallback_7500');
+            config.captions.get((err, result) => {
+                if (err.code != 0) {
+                    console.error(`AccessibilityConfigTest_get_asyncCallback_7500 has error: ${err.code}`);
+                    expect(null).assertFail();
+                    done();
+                }
+                expect('boolean').assertEqual(typeof (result));
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_get_asyncPromise_7600
+         * @tc.name    AccessibilityConfigTest_get_asyncPromise_7600
+         * @tc.desc    Test captions.get() function in promise mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_get_asyncPromise_7600', 0, async function(done) {
+            console.info('AccessibilityConfigTest_get_asyncPromise_7600');
+            config.captions.get().then((result) => {
+                console.info(`AccessibilityConfigTest_get_asyncPromise_7600 result: ${result}`);
+                expect('boolean').assertEqual(typeof (result));
+                done();
+            }).catch((err) => {
+                console.error(`AccessibilityConfigTest_get_asyncPromise_7600 has error: ${err.code}`);
+                expect(null).assertFail();
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_on_asyncCallback_7700
+         * @tc.name    AccessibilityConfigTest_on_asyncCallback_7700
+         * @tc.desc    Test captions.on() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_on_asyncCallback_7700', 0, async function(done) {
+            console.info('AccessibilityConfigTest_on_asyncCallback_7700');
+            let ret = config.captions.on((data) => {});
+            expect(ret).assertEqual(undefined);
+            done();
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_off_asyncCallback_7800
+         * @tc.name    AccessibilityConfigTest_off_asyncCallback_7800
+         * @tc.desc    Test captions.off() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_off_asyncCallback_7800', 0, async function(done) {
+            console.info('AccessibilityConfigTest_off_asyncCallback_7800');
+            let ret = config.captions.off((data) => {});
+            expect(ret).assertEqual(undefined);
+            done();
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_set_asyncCallback_7900
+         * @tc.name    AccessibilityConfigTest_set_asyncCallback_7900
+         * @tc.desc    Test daltonizationColorFilter.set() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_set_asyncCallback_7900', 0, async function(done) {
+            console.info('AccessibilityConfigTest_set_asyncCallback_7900');
+            let value = 'Normal';
+            config.daltonizationColorFilter.set(value, (err, result) => {
+                if (err.code != 0) {
+                    console.error(`AccessibilityConfigTest_set_asyncCallback_7900 has error: ${err.code}`);
+                    expect(null).assertFail();
+                    done();
+                }
+                expect(result).assertEqual(undefined);
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_set_asyncCallback_8000
+         * @tc.name    AccessibilityConfigTest_set_asyncCallback_8000
+         * @tc.desc    Test daltonizationColorFilter.set() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_set_asyncCallback_8000', 0, async function(done) {
+            console.info('AccessibilityConfigTest_set_asyncCallback_8000');
+            let value = 'Deuteranomaly';
+            config.daltonizationColorFilter.set(value, (err, result) => {
+                if (err.code != 0) {
+                    console.error(`AccessibilityConfigTest_set_asyncCallback_8000 has error: ${err.code}`);
+                    expect(null).assertFail();
+                    done();
+                }
+                expect(result).assertEqual(undefined);
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_set_asyncPromise_8100
+         * @tc.name    AccessibilityConfigTest_set_asyncPromise_8100
+         * @tc.desc    Test daltonizationColorFilter.set() function in promise mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_set_asyncPromise_8100', 0, async function(done) {
+            console.info('AccessibilityConfigTest_set_asyncPromise_8100');
+            let value = 'Protanomaly';
+            config.daltonizationColorFilter.set(value).then((result) => {
+                console.info(`AccessibilityConfigTest_set_asyncPromise_8100 result: ${result}`);
+                expect(result).assertEqual(undefined);
+                done();
+            }).catch((err) => {
+                console.error(`AccessibilityConfigTest_set_asyncPromise_8100 has error: ${err.code}`);
+                expect(null).assertFail();
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_set_asyncPromise_8200
+         * @tc.name    AccessibilityConfigTest_set_asyncPromise_8200
+         * @tc.desc    Test daltonizationColorFilter.set() function in promise mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_set_asyncPromise_8200', 0, async function(done) {
+            console.info('AccessibilityConfigTest_set_asyncPromise_8200');
+            let value = 'Tritanomaly';
+            config.daltonizationColorFilter.set(value).then((result) => {
+                console.info(`AccessibilityConfigTest_set_asyncPromise_8200 result: ${result}`);
+                expect(result).assertEqual(undefined);
+                done();
+            }).catch((err) => {
+                console.error(`AccessibilityConfigTest_set_asyncPromise_8200 has error: ${err.code}`);
+                expect(null).assertFail();
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_get_asyncCallback_8300
+         * @tc.name    AccessibilityConfigTest_get_asyncCallback_8300
+         * @tc.desc    Test daltonizationColorFilter.get() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_get_asyncCallback_8300', 0, async function(done) {
+            console.info('AccessibilityConfigTest_get_asyncCallback_8300');
+            config.daltonizationColorFilter.get((err, result) => {
+                if (err.code != 0) {
+                    console.error(`AccessibilityConfigTest_get_asyncCallback_8300 has error: ${err.code}`);
+                    expect(null).assertFail();
+                    done();
+                }
+                expect('string').assertEqual(typeof (result));
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_get_asyncPromise_8400
+         * @tc.name    AccessibilityConfigTest_get_asyncPromise_8400
+         * @tc.desc    Test daltonizationColorFilter.get() function in promise mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_get_asyncPromise_8400', 0, async function(done) {
+            console.info('AccessibilityConfigTest_get_asyncPromise_8400');
+            config.daltonizationColorFilter.get().then((result) => {
+                console.info(`AccessibilityConfigTest_get_asyncPromise_8400 result: ${result}`);
+                expect('string').assertEqual(typeof (result));
+                done();
+            }).catch((err) => {
+                console.error(`AccessibilityConfigTest_get_asyncPromise_8400 has error: ${err.code}`);
+                expect(null).assertFail();
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_on_asyncCallback_8500
+         * @tc.name    AccessibilityConfigTest_on_asyncCallback_8500
+         * @tc.desc    Test daltonizationColorFilter.on() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_on_asyncCallback_8500', 0, async function(done) {
+            console.info('AccessibilityConfigTest_on_asyncCallback_8500');
+            let ret = config.daltonizationColorFilter.on((data) => {});
+            expect(ret).assertEqual(undefined);
+            done();
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_off_asyncCallback_8600
+         * @tc.name    AccessibilityConfigTest_off_asyncCallback_8600
+         * @tc.desc    Test daltonizationColorFilter.off() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_off_asyncCallback_8600', 0, async function(done) {
+            console.info('AccessibilityConfigTest_off_asyncCallback_8600');
+            let ret = config.daltonizationColorFilter.off((data) => {});
+            expect(ret).assertEqual(undefined);
+            done();
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_set_asyncCallback_8700
+         * @tc.name    AccessibilityConfigTest_set_asyncCallback_8700
+         * @tc.desc    Test captionsStyle.set() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_set_asyncCallback_8700', 0, async function(done) {
+            console.info('AccessibilityConfigTest_set_asyncCallback_8700');
+            let value = {};
+            value.fontFamily = 'default';
+            value.fontScale = 10;
+            value.fontColor = 'blue';
+            value.fontEdgeType = 'none';
+            value.backgroundColor = 'blue';
+            value.windowColor = 'blue';
+    
+            config.captionsStyle.set(value, (err, result) => {
+                if (err.code != 0) {
+                    console.error(`AccessibilityConfigTest_set_asyncCallback_8700 has error: ${err.code}`);
+                    expect(null).assertFail();
+                    done();
+                }
+                expect(result).assertEqual(undefined);
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_set_asyncPromise_8800
+         * @tc.name    AccessibilityConfigTest_set_asyncPromise_8800
+         * @tc.desc    Test captionsStyle.set() function in promise mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_set_asyncPromise_8800', 0, async function(done) {
+            console.info('AccessibilityConfigTest_set_asyncPromise_8800');
+            let value = {};
+            value.fontFamily = 'default';
+            value.fontScale = 10;
+            value.fontColor = 'blue';
+            value.fontEdgeType = 'none';
+            value.backgroundColor = 'blue';
+            value.windowColor = 'blue';
+    
+            config.captionsStyle.set(value).then((result) => {
+                console.info(`AccessibilityConfigTest_set_asyncPromise_8800 result: ${result}`);
+                expect(result).assertEqual(undefined);
+                done();
+            }).catch((err) => {
+                console.error(`AccessibilityConfigTest_set_asyncPromise_8800 has error: ${err.code}`);
+                expect(null).assertFail();
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_get_asyncCallback_8900
+         * @tc.name    AccessibilityConfigTest_get_asyncCallback_8900
+         * @tc.desc    Test captionsStyle.get() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_get_asyncCallback_8900', 0, async function(done) {
+            console.info('AccessibilityConfigTest_get_asyncCallback_8900');
+            config.captionsStyle.get((err, result) => {
+                if (err.code != 0) {
+                    console.error(`AccessibilityConfigTest_get_asyncCallback_8900 has error: ${err.code}`);
+                    expect(null).assertFail();
+                    done();
+                }
+                expect('object').assertEqual(typeof (result));
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_get_asyncPromise_9000
+         * @tc.name    AccessibilityConfigTest_get_asyncPromise_9000
+         * @tc.desc    Test captionsStyle.get() function in promise mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_get_asyncPromise_9000', 0, async function(done) {
+            console.info('AccessibilityConfigTest_get_asyncPromise_9000');
+            config.captionsStyle.get().then((result) => {
+                console.info(`AccessibilityConfigTest_get_asyncPromise_9000 result: ${result}`);
+                expect('object').assertEqual(typeof (result));
+                done();
+            }).catch((err) => {
+                console.error(`AccessibilityConfigTest_get_asyncPromise_9000 has error: ${err.code}`);
+                expect(null).assertFail();
+                done();
+            });
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_on_asyncCallback_9100
+         * @tc.name    AccessibilityConfigTest_on_asyncCallback_9100
+         * @tc.desc    Test captionsStyle.on() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_on_asyncCallback_9100', 0, async function(done) {
+            console.info('AccessibilityConfigTest_on_asyncCallback_9100');
+            let ret = config.captionsStyle.on((data) => {});
+            expect(ret).assertEqual(undefined);
+            done();
+        })
+    
+        /*
+         * @tc.number  AccessibilityConfigTest_off_asyncCallback_9200
+         * @tc.name    AccessibilityConfigTest_off_asyncCallback_9200
+         * @tc.desc    Test captionsStyle.off() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_off_asyncCallback_9200', 0, async function(done) {
+            console.info('AccessibilityConfigTest_off_asyncCallback_9200');
+            let ret = config.captionsStyle.off((data) => {});
+            expect(ret).assertEqual(undefined);
+            done();
+        })
+    
         /*
          * @tc.number  AccessibilityConfigTest_enableAbility_asyncCallback_9300
          * @tc.name    AccessibilityConfigTest_enableAbility_asyncCallback_9300

@@ -77,468 +77,6 @@ export default function abilityTest(abilityContext) {
         })
 
         /*
-        * @tc.number  AccessibilityExtensionContextTest_setEventTypeFilter_asyncCallback_0100
-        * @tc.name    AccessibilityExtensionContextTest_setEventTypeFilter_asyncCallback_0100
-        * @tc.desc    The parameter input is type of event, test the setEventTypeFilter() function,
-        *             The result of setEventTypeFilter() should be boolean type
-        * @tc.size    SmallTest
-        * @tc.type    User
-        */
-        it('AccessibilityExtensionContextTest_setEventTypeFilter_asyncCallback_0100', 0, async function (done) {
-            let caseName = 'AccessibilityExtensionContextTest_setEventTypeFilter_asyncCallback_0100';
-            console.info(caseName + 'start');
-
-            if (isConnect) {
-                publishCaseExecute(caseName);
-
-                setTimeout(() => {
-                    if (caseResult != undefined) {
-                        console.info(caseName + ':' + caseResult.data);
-                        expect(passStr).assertEqual(caseResult.data);
-                        expect(caseName).assertEqual(caseResult.parameters.case);
-                    } else {
-                        console.info(caseName + ': caseResult is undefined');
-                        expect(null).assertFail();
-                    }
-                    done();
-                }, 3000);
-            } else {
-                console.error(caseName + ': extension not connected');
-                expect(null).assertFail();
-                done();
-            }
-        })
-
-        /*
-        * @tc.number  AccessibilityExtensionContextTest_setEventTypeFilter_asyncCallback_0200
-        * @tc.name    AccessibilityExtensionContextTest_setEventTypeFilter_asyncCallback_0200
-        * @tc.desc    The parameter input is type of event, test the setEventTypeFilter() function,
-        *             The result of setEventTypeFilter() should be boolean type.
-        * @tc.size    SmallTest
-        * @tc.type    User
-        */
-        it('AccessibilityExtensionContextTest_setEventTypeFilter_asyncCallback_0200', 0, async function (done) {
-            let caseName = 'AccessibilityExtensionContextTest_setEventTypeFilter_asyncCallback_0200';
-            console.info(caseName + 'start');
-
-            if (isConnect) {
-                publishCaseExecute(caseName);
-
-                setTimeout(() => {
-                    if (caseResult != undefined) {
-                        console.info(caseName + ':' + caseResult.data);
-                        expect(passStr).assertEqual(caseResult.data);
-                        expect(caseName).assertEqual(caseResult.parameters.case);
-                    } else {
-                        console.info(caseName + ': caseResult is undefined');
-                        expect(null).assertFail();
-                    }
-                    done();
-                }, 3000);
-            } else {
-                console.error(caseName + ': extension not connected');
-                expect(null).assertFail();
-                done();
-            }
-        })
-
-        /*
-        * @tc.number  AccessibilityExtensionContextTest_setEventTypeFilter_asyncCallback_0300
-        * @tc.name    AccessibilityExtensionContextTest_setEventTypeFilter_asyncCallback_0300
-        * @tc.desc    The parameter input is type of event, test the setEventTypeFilter() function,
-        *             The result of setEventTypeFilter() should be boolean type.
-        * @tc.size    SmallTest
-        * @tc.type    User
-        */
-        it('AccessibilityExtensionContextTest_setEventTypeFilter_asyncCallback_0300', 0, async function (done) {
-            let caseName = 'AccessibilityExtensionContextTest_setEventTypeFilter_asyncCallback_0300';
-            console.info(caseName + 'start');
-
-            if (isConnect) {
-                publishCaseExecute(caseName);
-
-                setTimeout(() => {
-                    if (caseResult != undefined) {
-                        console.info(caseName + ':' + caseResult.data);
-                        expect(passStr).assertEqual(caseResult.data);
-                        expect(caseName).assertEqual(caseResult.parameters.case);
-                    } else {
-                        console.info(caseName + ': caseResult is undefined');
-                        expect(null).assertFail();
-                    }
-                    done();
-                }, 3000);
-            } else {
-                console.error(caseName + ': extension not connected');
-                expect(null).assertFail();
-                done();
-            }
-        })
-
-        /*
-        * @tc.number  AccessibilityExtensionContextTest_setEventTypeFilter_asyncCallback_0400
-        * @tc.name    AccessibilityExtensionContextTest_setEventTypeFilter_asyncCallback_0400
-        * @tc.desc    The parameter input is type of event, test the setEventTypeFilter() function,
-        *             The result of setEventTypeFilter() should be boolean type.
-        * @tc.size    SmallTest
-        * @tc.type    User
-        */
-        it('AccessibilityExtensionContextTest_setEventTypeFilter_asyncCallback_0400', 0, async function (done) {
-            let caseName = 'AccessibilityExtensionContextTest_setEventTypeFilter_asyncCallback_0400';
-            console.info(caseName + 'start');
-
-            if (isConnect) {
-                publishCaseExecute(caseName);
-
-                setTimeout(() => {
-                    if (caseResult != undefined) {
-                        console.info(caseName + ':' + caseResult.data);
-                        expect(passStr).assertEqual(caseResult.data);
-                        expect(caseName).assertEqual(caseResult.parameters.case);
-                    } else {
-                        console.info(caseName + ': caseResult is undefined');
-                        expect(null).assertFail();
-                    }
-                    done();
-                }, 3000);
-            } else {
-                console.error(caseName + ': extension not connected');
-                expect(null).assertFail();
-                done();
-            }
-        })
-
-        /*
-        * @tc.number  AccessibilityExtensionContextTest_setEventTypeFilter_asyncCallback_0500
-        * @tc.name    AccessibilityExtensionContextTest_setEventTypeFilter_asyncCallback_0500
-        * @tc.desc    The parameter input is type of event, test the setEventTypeFilter() function,
-        *             The result of setEventTypeFilter() should be boolean type.
-        * @tc.size    SmallTest
-        * @tc.type    User
-        */
-        it('AccessibilityExtensionContextTest_setEventTypeFilter_asyncCallback_0500', 0, async function (done) {
-            let caseName = 'AccessibilityExtensionContextTest_setEventTypeFilter_asyncCallback_0500';
-            console.info(caseName + 'start');
-
-            if (isConnect) {
-                publishCaseExecute(caseName);
-
-                setTimeout(() => {
-                    if (caseResult != undefined) {
-                        console.info(caseName + ':' + caseResult.data);
-                        expect(passStr).assertEqual(caseResult.data);
-                        expect(caseName).assertEqual(caseResult.parameters.case);
-                    } else {
-                        console.info(caseName + ': caseResult is undefined');
-                        expect(null).assertFail();
-                    }
-                    done();
-                }, 3000);
-            } else {
-                console.error(caseName + ': extension not connected');
-                expect(null).assertFail();
-                done();
-            }
-        })
-
-        /*
-        * @tc.number  AccessibilityExtensionContextTest_setEventTypeFilter_asyncCallback_0600
-        * @tc.name    AccessibilityExtensionContextTest_setEventTypeFilter_asyncCallback_0600
-        * @tc.desc    The parameter input is type of event, test the setEventTypeFilter() function,
-        *             The result of setEventTypeFilter() should be boolean type.
-        * @tc.size    SmallTest
-        * @tc.type    User
-        */
-        it('AccessibilityExtensionContextTest_setEventTypeFilter_asyncCallback_0600', 0, async function (done) {
-            let caseName = 'AccessibilityExtensionContextTest_setEventTypeFilter_asyncCallback_0600';
-            console.info(caseName + 'start');
-
-            if (isConnect) {
-                publishCaseExecute(caseName);
-
-                setTimeout(() => {
-                    if (caseResult != undefined) {
-                        console.info(caseName + ':' + caseResult.data);
-                        expect(passStr).assertEqual(caseResult.data);
-                        expect(caseName).assertEqual(caseResult.parameters.case);
-                    } else {
-                        console.info(caseName + ': caseResult is undefined');
-                        expect(null).assertFail();
-                    }
-                    done();
-                }, 3000);
-            } else {
-                console.error(caseName + ': extension not connected');
-                expect(null).assertFail();
-                done();
-            }
-        })
-
-        /*
-        * @tc.number  AccessibilityExtensionContextTest_setEventTypeFilter_asyncCallback_0700
-        * @tc.name    AccessibilityExtensionContextTest_setEventTypeFilter_asyncCallback_0700
-        * @tc.desc    The parameter input is type of event, test the setEventTypeFilter() function,
-        *             The result of setEventTypeFilter() should be boolean type.
-        * @tc.size    SmallTest
-        * @tc.type    User
-        */
-        it('AccessibilityExtensionContextTest_setEventTypeFilter_asyncCallback_0700', 0, async function (done) {
-            let caseName = 'AccessibilityExtensionContextTest_setEventTypeFilter_asyncCallback_0700';
-            console.info(caseName + 'start');
-
-            if (isConnect) {
-                publishCaseExecute(caseName);
-
-                setTimeout(() => {
-                    if (caseResult != undefined) {
-                        console.info(caseName + ':' + caseResult.data);
-                        expect(passStr).assertEqual(caseResult.data);
-                        expect(caseName).assertEqual(caseResult.parameters.case);
-                    } else {
-                        console.info(caseName + ': caseResult is undefined');
-                        expect(null).assertFail();
-                    }
-                    done();
-                }, 3000);
-            } else {
-                console.error(caseName + ': extension not connected');
-                expect(null).assertFail();
-                done();
-            }
-        })
-
-        /*
-        * @tc.number  AccessibilityExtensionContextTest_setEventTypeFilter_asyncPromise_0800
-        * @tc.name    AccessibilityExtensionContextTest_setEventTypeFilter_asyncPromise_0800
-        * @tc.desc    The parameter input is type of event, test the setEventTypeFilter() function,
-        *             The result of setEventTypeFilter() should be boolean type.
-        * @tc.size    SmallTest
-        * @tc.type    User
-        */
-        it('AccessibilityExtensionContextTest_setEventTypeFilter_asyncPromise_0800', 0, async function (done) {
-            let caseName = 'AccessibilityExtensionContextTest_setEventTypeFilter_asyncPromise_0800';
-            console.info(caseName + 'start');
-
-            if (isConnect) {
-                publishCaseExecute(caseName);
-
-                setTimeout(() => {
-                    if (caseResult != undefined) {
-                        console.info(caseName + ':' + caseResult.data);
-                        expect(passStr).assertEqual(caseResult.data);
-                        expect(caseName).assertEqual(caseResult.parameters.case);
-                    } else {
-                        console.info(caseName + ': caseResult is undefined');
-                        expect(null).assertFail();
-                    }
-                    done();
-                }, 3000);
-            } else {
-                console.error(caseName + ': extension not connected');
-                expect(null).assertFail();
-                done();
-            }
-        })
-
-        /*
-        * @tc.number  AccessibilityExtensionContextTest_setEventTypeFilter_asyncPromise_0900
-        * @tc.name    AccessibilityExtensionContextTest_setEventTypeFilter_asyncPromise_0900
-        * @tc.desc    The parameter input is type of event, test the setEventTypeFilter() function,
-        *             The result of setEventTypeFilter() should be boolean type.
-        * @tc.size    SmallTest
-        * @tc.type    User
-        */
-        it('AccessibilityExtensionContextTest_setEventTypeFilter_asyncPromise_0900', 0, async function (done) {
-            let caseName = 'AccessibilityExtensionContextTest_setEventTypeFilter_asyncPromise_0900';
-            console.info(caseName + 'start');
-
-            if (isConnect) {
-                publishCaseExecute(caseName);
-
-                setTimeout(() => {
-                    if (caseResult != undefined) {
-                        console.info(caseName + ':' + caseResult.data);
-                        expect(passStr).assertEqual(caseResult.data);
-                        expect(caseName).assertEqual(caseResult.parameters.case);
-                    } else {
-                        console.info(caseName + ': caseResult is undefined');
-                        expect(null).assertFail();
-                    }
-                    done();
-                }, 3000);
-            } else {
-                console.error(caseName + ': extension not connected');
-                expect(null).assertFail();
-                done();
-            }
-        })
-
-        /*
-        * @tc.number  AccessibilityExtensionContextTest_setEventTypeFilter_asyncPromise_1000
-        * @tc.name    AccessibilityExtensionContextTest_setEventTypeFilter_asyncPromise_1000
-        * @tc.desc    The parameter input is type of event, test the setEventTypeFilter() function,
-        *             The result of setEventTypeFilter() should be boolean type.
-        * @tc.size    SmallTest
-        * @tc.type    User
-        */
-        it('AccessibilityExtensionContextTest_setEventTypeFilter_asyncPromise_1000', 0, async function (done) {
-            let caseName = 'AccessibilityExtensionContextTest_setEventTypeFilter_asyncPromise_1000';
-            console.info(caseName + 'start');
-
-            if (isConnect) {
-                publishCaseExecute(caseName);
-
-                setTimeout(() => {
-                    if (caseResult != undefined) {
-                        console.info(caseName + ':' + caseResult.data);
-                        expect(passStr).assertEqual(caseResult.data);
-                        expect(caseName).assertEqual(caseResult.parameters.case);
-                    } else {
-                        console.info(caseName + ': caseResult is undefined');
-                        expect(null).assertFail();
-                    }
-                    done();
-                }, 3000);
-            } else {
-                console.error(caseName + ': extension not connected');
-                expect(null).assertFail();
-                done();
-            }
-        })
-
-        /*
-        * @tc.number  AccessibilityExtensionContextTest_setEventTypeFilter_asyncPromise_1100
-        * @tc.name    AccessibilityExtensionContextTest_setEventTypeFilter_asyncPromise_1100
-        * @tc.desc    The parameter input is type of event, test the setEventTypeFilter() function,
-        *             The result of setEventTypeFilter() should be boolean type.
-        * @tc.size    SmallTest
-        * @tc.type    User
-        */
-        it('AccessibilityExtensionContextTest_setEventTypeFilter_asyncPromise_1100', 0, async function (done) {
-            let caseName = 'AccessibilityExtensionContextTest_setEventTypeFilter_asyncPromise_1100';
-            console.info(caseName + 'start');
-
-            if (isConnect) {
-                publishCaseExecute(caseName);
-
-                setTimeout(() => {
-                    if (caseResult != undefined) {
-                        console.info(caseName + ':' + caseResult.data);
-                        expect(passStr).assertEqual(caseResult.data);
-                        expect(caseName).assertEqual(caseResult.parameters.case);
-                    } else {
-                        console.info(caseName + ': caseResult is undefined');
-                        expect(null).assertFail();
-                    }
-                    done();
-                }, 3000);
-            } else {
-                console.error(caseName + ': extension not connected');
-                expect(null).assertFail();
-                done();
-            }
-        })
-
-        /*
-        * @tc.number  AccessibilityExtensionContextTest_setEventTypeFilter_asyncPromise_1200
-        * @tc.name    AccessibilityExtensionContextTest_setEventTypeFilter_asyncPromise_1200
-        * @tc.desc    The parameter input is type of event, test the setEventTypeFilter() function,
-        *             The result of setEventTypeFilter() should be boolean type.
-        * @tc.size    SmallTest
-        * @tc.type    User
-        */
-        it('AccessibilityExtensionContextTest_setEventTypeFilter_asyncPromise_1200', 0, async function (done) {
-            let caseName = 'AccessibilityExtensionContextTest_setEventTypeFilter_asyncPromise_1200';
-            console.info(caseName + 'start');
-
-            if (isConnect) {
-                publishCaseExecute(caseName);
-
-                setTimeout(() => {
-                    if (caseResult != undefined) {
-                        console.info(caseName + ':' + caseResult.data);
-                        expect(passStr).assertEqual(caseResult.data);
-                        expect(caseName).assertEqual(caseResult.parameters.case);
-                    } else {
-                        console.info(caseName + ': caseResult is undefined');
-                        expect(null).assertFail();
-                    }
-                    done();
-                }, 3000);
-            } else {
-                console.error(caseName + ': extension not connected');
-                expect(null).assertFail();
-                done();
-            }
-        })
-
-        /*
-        * @tc.number  AccessibilityExtensionContextTest_setEventTypeFilter_asyncPromise_1300
-        * @tc.name    AccessibilityExtensionContextTest_setEventTypeFilter_asyncPromise_1300
-        * @tc.desc    The parameter input is type of event, test the setEventTypeFilter() function,
-        *             The result of setEventTypeFilter() should be boolean type.
-        * @tc.size    SmallTest
-        * @tc.type    User
-        */
-        it('AccessibilityExtensionContextTest_setEventTypeFilter_asyncPromise_1300', 0, async function (done) {
-            let caseName = 'AccessibilityExtensionContextTest_setEventTypeFilter_asyncPromise_1300';
-            console.info(caseName + 'start');
-
-            if (isConnect) {
-                publishCaseExecute(caseName);
-
-                setTimeout(() => {
-                    if (caseResult != undefined) {
-                        console.info(caseName + ':' + caseResult.data);
-                        expect(passStr).assertEqual(caseResult.data);
-                        expect(caseName).assertEqual(caseResult.parameters.case);
-                    } else {
-                        console.info(caseName + ': caseResult is undefined');
-                        expect(null).assertFail();
-                    }
-                    done();
-                }, 3000);
-            } else {
-                console.error(caseName + ': extension not connected');
-                expect(null).assertFail();
-                done();
-            }
-        })
-
-        /*
-        * @tc.number  AccessibilityExtensionContextTest_setEventTypeFilter_asyncPromise_1400
-        * @tc.name    AccessibilityExtensionContextTest_setEventTypeFilter_asyncPromise_1400
-        * @tc.desc    The parameter input is type of event, test the setEventTypeFilter() function,
-        *             The result of setEventTypeFilter() should be boolean type.
-        * @tc.size    SmallTest
-        * @tc.type    User
-        */
-        it('AccessibilityExtensionContextTest_setEventTypeFilter_asyncPromise_1400', 0, async function (done) {
-            let caseName = 'AccessibilityExtensionContextTest_setEventTypeFilter_asyncPromise_1400';
-            console.info(caseName + 'start');
-
-            if (isConnect) {
-                publishCaseExecute(caseName);
-
-                setTimeout(() => {
-                    if (caseResult != undefined) {
-                        console.info(caseName + ':' + caseResult.data);
-                        expect(passStr).assertEqual(caseResult.data);
-                        expect(caseName).assertEqual(caseResult.parameters.case);
-                    } else {
-                        console.info(caseName + ': caseResult is undefined');
-                        expect(null).assertFail();
-                    }
-                    done();
-                }, 3000);
-            } else {
-                console.error(caseName + ': extension not connected');
-                expect(null).assertFail();
-                done();
-            }
-        })
-
-        /*
         * @tc.number  AccessibilityExtensionContextTest_setTargetBundleName_asyncCallback_1500
         * @tc.name    AccessibilityExtensionContextTest_setTargetBundleName_asyncCallback_1500
         * @tc.desc    The parameter input is 'com.example.accessibleformextension', 
@@ -775,6 +313,40 @@ export default function abilityTest(abilityContext) {
             }
         })
 
+
+        /*
+        * @tc.number  AccessibilityExtensionContextTest_getWindowRootElement_asyncCallback_2200
+        * @tc.name    AccessibilityExtensionContextTest_getWindowRootElement_asyncCallback_2200
+        * @tc.desc    The parameter input is null,
+        *             The result of getWindowRootElement() should be AccessibilityElement type.
+        * @tc.size    SmallTest
+        * @tc.type    User
+        */
+       it('AccessibilityExtensionContextTest_getWindowRootElement_asyncCallback_2200', 0, async function (done) {
+        let caseName = 'AccessibilityExtensionContextTest_getWindowRootElement_asyncCallback_2200';
+        console.info(caseName + 'start');
+
+        if (isConnect) {
+            publishCaseExecute(caseName);
+
+            setTimeout(() => {
+                if (caseResult != undefined) {
+                    console.info(caseName + ':' + caseResult.data);
+                    expect(passStr).assertEqual(caseResult.data);
+                    expect(caseName).assertEqual(caseResult.parameters.case);
+                } else {
+                    console.info(caseName + ': caseResult is undefined');
+                    expect(null).assertFail();
+                }
+                done();
+            }, 3000);
+        } else {
+            console.error(caseName + ': extension not connected');
+            expect(null).assertFail();
+            done();
+        }
+    })
+
         /*
         * @tc.number  AccessibilityExtensionContextTest_getWindowRootElement_asyncCallback_2300
         * @tc.name    AccessibilityExtensionContextTest_getWindowRootElement_asyncCallback_2300
@@ -819,6 +391,39 @@ export default function abilityTest(abilityContext) {
         it('AccessibilityExtensionContextTest_getWindowRootElement_asyncCallback_2400', 0, async function (done) {
             let caseName = 'AccessibilityExtensionContextTest_getWindowRootElement_asyncCallback_2400';
             console.info(caseName + 'start');
+
+            if (isConnect) {
+                publishCaseExecute(caseName);
+
+                setTimeout(() => {
+                    if (caseResult != undefined) {
+                        console.info(caseName + ':' + caseResult.data);
+                        expect(passStr).assertEqual(caseResult.data);
+                        expect(caseName).assertEqual(caseResult.parameters.case);
+                    } else {
+                        console.info(caseName + ': caseResult is undefined');
+                        expect(null).assertFail();
+                    }
+                    done();
+                }, 3000);
+            } else {
+                console.error(caseName + ': extension not connected');
+                expect(null).assertFail();
+                done();
+            }
+        })
+
+               /*
+        * @tc.number  AccessibilityExtensionContextTest_getWindowRootElement_Promise_2500
+        * @tc.name    AccessibilityExtensionContextTest_getWindowRootElement_Promise_2500
+        * @tc.desc    The parameter input is windowId, test the getWindowRootElement() function.
+        *             The result of getWindowRootElement() should be AccessibilityElement type.
+        * @tc.size    SmallTest
+        * @tc.type    User
+        */
+       it('AccessibilityExtensionContextTest_getWindowRootElement_Promise_2500', 0, async function (done) {
+        let caseName = 'AccessibilityExtensionContextTest_getWindowRootElement_Promise_2500';
+        console.info(caseName + 'start');
 
             if (isConnect) {
                 publishCaseExecute(caseName);
