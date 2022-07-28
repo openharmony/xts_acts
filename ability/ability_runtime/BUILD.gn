@@ -23,8 +23,9 @@ group("ability_runtime") {
       "actsabilitylifecyclestatenew:ActsAbilityLifecycleStateNewTest",
       "actsabilitymanageretstest:ActsAbilityManagerEtsTest",
       "actscalltest:actscalltest",
-      "actsfwkdataaccessortest:dataability",
-      "actsserviceabilityclienttest:serviceability",
+
+      #"actsfwkdataaccessortest:dataability",
+      #"actsserviceabilityclienttest:serviceability",
       "actsstserviceabilityclientcase:ActsStServiceAbilityClientCaseTest",
       "actsusers:actsusers",
       "amscontextualinforquery:amscontextualinforquery",
