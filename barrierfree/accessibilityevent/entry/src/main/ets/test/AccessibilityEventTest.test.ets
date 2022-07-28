@@ -326,10 +326,9 @@ export default function abilityTest(abilityContext) {
             await accessibility.sendEvent(event);
 
             setTimeout(() => {
-                let types = eventTypes;
                 let findResult = false;
-                for (let type of types) {
-                    if (type == eventType) {
+                for (let item of events) {
+                    if (item.eventType == eventType) {
                         findResult = true;
                     }
                 }
