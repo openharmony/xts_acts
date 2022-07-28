@@ -1761,7 +1761,8 @@ describe('webgl1Test_webgl5', function() {
 		gl2.getBufferSubData(gl.ARRAY_BUFFER, false, new Int32Array(arrBuffer), 0, 0);
 		const getBufferSubDataError = gl.getError();
 		console.info("getBufferSubDataError: " + getBufferSubDataError);
-		expect(getBufferSubDataError).assertEqual(gl.INVALID_VALUE);
+		expect(getBufferSubDataError).assertEqual(gl.NO_ERROR);
+		for(let err; (err = gl.getError()) != gl.NO_ERROR;) {}
 		done();
 	})
 

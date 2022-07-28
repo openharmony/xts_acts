@@ -33,11 +33,11 @@ describe('AccessibleSendEvent', function () {
     })
     
     /******************************************************************************** */
-    /* Cases SendEvent_0010-0020 & SendEvent_Null_0010-0020  */
+    /* Cases SendEvent_0010-0020 & SendEvent_Null_0010-0020  & SendEvent_construct_0010*/
     /*    are for accessibility.sendEvent() API test                                  */
     /******************************************************************************** */
     
-    /*
+   /*
     * @tc.number  SendEvent_0010
     * @tc.name    SendEvent_0010
     * @tc.desc    The parameter input is EventInfo, test the sendEvent() function
@@ -131,11 +131,41 @@ describe('AccessibleSendEvent', function () {
         });
     })
 
+      /*
+    * @tc.number  SendEvent_construct_0010
+    * @tc.name    SendEvent_construct_0010
+    * @tc.desc    The parameter input is EventInfo, test the sendEvent() function
+    *             The result of sendEvent() should be equal to an error code with no error.
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+    it('SendEvent_construct_0010', 0, async function (done) {
+      console.info('SendEvent_construct_0010');
+      let jsonObj = {
+        type : eventType,
+        bundleName : bundleName,
+        triggerAction : triggerAction,
+      }
+
+      let event = new accessibility.EventInfo(jsonObj);
+
+      accessibility.sendEvent(event, (err, data) => {
+          console.info(`AccessibleSendEventTest: SendEvent_construct_0010 has error: ${err.code}`);
+          expect(err.code).assertEqual(0);
+          console.info(`AccessibleSendEventTest: SendEvent_construct_0010 has data: ${data}`);
+          expect(data).assertEqual(undefined);
+          done();
+      })
+    })
+
     /*********************************************************************************************************** */
-    /* Cases SendEvent_type_0010-SendEvent_gestureType_0180 are for interface accessibility.EventInfo API test   */                               
+    /* Cases SendEvent_type_0010-SendEvent_itemCount_constructor_0030 
+    /* are for interface accessibility.EventInfo API test                                                        */
     /*********************************************************************************************************** */
 
-  /*
+   /*
     * @tc.number  SendEvent_type_0010
     * @tc.name    SendEvent_type_0010
     * @tc.desc    The type of EventInfo is 'accessibilityFocus', test sendEvent() function
@@ -156,6 +186,39 @@ describe('AccessibleSendEvent', function () {
       done();
     }).catch(err => {
       console.error(`AccessibleSendEvent: SendEvent_type_0010 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
+    * @tc.number  SendEvent_type_constructor_0010
+    * @tc.name    SendEvent_type_0010
+    * @tc.desc    The type of EventInfo is 'accessibilityFocus', test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_type_constructor_0010', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_type_constructor_0010 starts`);
+
+    let eventType = 'accessibilityFocus';
+
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_type_constructor_0010 has error: ${err}`);
       expect(null).assertFail();
       done();
     });
@@ -188,6 +251,39 @@ describe('AccessibleSendEvent', function () {
   })
 
   /*
+    * @tc.number  SendEvent_type_constructor_0020
+    * @tc.name    SendEvent_type_0020
+    * @tc.desc    The type of EventInfo is 'accessibilityFocusClear', test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_type_constructor_0020', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_type_constructor_0020 starts`);
+
+    let eventType = 'accessibilityFocusClear';
+
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_type_constructor_0020 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
     * @tc.number  SendEvent_type_0030
     * @tc.name    SendEvent_type_0030
     * @tc.desc    The type of EventInfo is 'click', test sendEvent() function
@@ -208,6 +304,39 @@ describe('AccessibleSendEvent', function () {
       done();
     }).catch(err => {
       console.error(`AccessibleSendEvent: SendEvent_type_0030 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
+    * @tc.number  SendEvent_type_constructor_0030
+    * @tc.name    SendEvent_type_constructor_0030
+    * @tc.desc    The type of EventInfo is 'click', test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_type_constructor_0030', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_type_constructor_0030 starts`);
+
+    let eventType = 'click';
+
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_type_constructor_0030 has error: ${err}`);
       expect(null).assertFail();
       done();
     });
@@ -240,6 +369,39 @@ describe('AccessibleSendEvent', function () {
   })
 
   /*
+    * @tc.number  SendEvent_type_constructor_0040
+    * @tc.name    SendEvent_type_constructor_0040
+    * @tc.desc    The type of EventInfo is 'longClick', test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_type_constructor_0040', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_type_constructor_0040 starts`);
+
+    let eventType = 'longClick';
+
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_type_constructor_0040 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
     * @tc.number  SendEvent_type_0050
     * @tc.name    SendEvent_type_0050
     * @tc.desc    The type of EventInfo is 'focus', test sendEvent() function
@@ -260,6 +422,34 @@ describe('AccessibleSendEvent', function () {
       done();
     }).catch(err => {
       console.error(`AccessibleSendEvent: SendEvent_type_0050 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
+    * @tc.number  SendEvent_type_constructor_0050
+    * @tc.name    SendEvent_type_constructor_0050
+    * @tc.desc    The type of EventInfo is 'focus', test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_type_constructor_0050', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_type_constructor_0050 starts`);
+
+    let eventType = 'focus';
+    let event = new accessibility.EventInfo();
+    event.type = eventType;
+    event.bundleName = bundleName;
+    event.triggerAction = triggerAction;
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_type_constructor_0050 has error: ${err}`);
       expect(null).assertFail();
       done();
     });
@@ -292,6 +482,39 @@ describe('AccessibleSendEvent', function () {
   })
 
   /*
+    * @tc.number  SendEvent_type_constructor_0060
+    * @tc.name    SendEvent_type_constructor_0060
+    * @tc.desc    The type of EventInfo is 'select', test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_type_constructor_0060', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_type_constructor_0060 starts`);
+
+    let eventType = 'select';
+
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_type_constructor_0060 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
     * @tc.number  SendEvent_type_0070
     * @tc.name    SendEvent_type_0070
     * @tc.desc    The type of EventInfo is 'hoverEnter', test sendEvent() function
@@ -312,6 +535,39 @@ describe('AccessibleSendEvent', function () {
       done();
     }).catch(err => {
       console.error(`AccessibleSendEvent: SendEvent_type_0070 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
+    * @tc.number  SendEvent_type_constructor_0070
+    * @tc.name    SendEvent_type_constructor_0070
+    * @tc.desc    The type of EventInfo is 'hoverEnter', test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_type_constructor_0070', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_type_constructor_0070 starts`);
+
+    let eventType = 'hoverEnter';
+
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_type_constructor_0070 has error: ${err}`);
       expect(null).assertFail();
       done();
     });
@@ -344,6 +600,39 @@ describe('AccessibleSendEvent', function () {
   })
 
   /*
+    * @tc.number  SendEvent_type_constructor_0080
+    * @tc.name    SendEvent_type_constructor_0080
+    * @tc.desc    The type of EventInfo is 'hoverExit', test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_type_constructor_0080', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_type_constructor_0080 starts`);
+
+    let eventType = 'hoverExit';
+
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_type_constructor_0080 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
     * @tc.number  SendEvent_type_0090
     * @tc.name    SendEvent_type_0090
     * @tc.desc    The type of EventInfo is 'textUpdate', test sendEvent() function
@@ -364,6 +653,39 @@ describe('AccessibleSendEvent', function () {
       done();
     }).catch(err => {
       console.error(`AccessibleSendEvent: SendEvent_type_0090 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
+    * @tc.number  SendEvent_type_constructor_0090
+    * @tc.name    SendEvent_type_constructor_0090
+    * @tc.desc    The type of EventInfo is 'textUpdate', test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_type_constructor_0090', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_type_constructor_0090 starts`);
+
+    let eventType = 'textUpdate';
+
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_type_constructor_0090 has error: ${err}`);
       expect(null).assertFail();
       done();
     });
@@ -396,6 +718,39 @@ describe('AccessibleSendEvent', function () {
   })
 
   /*
+    * @tc.number  SendEvent_type_constructor_0100
+    * @tc.name    SendEvent_type_constructor_0100
+    * @tc.desc    The type of EventInfo is 'textSelectionUpdate', test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_type_constructor_0100', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_type_constructor_0100 starts`);
+
+    let eventType = 'textSelectionUpdate';
+
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_type_constructor_0100 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
     * @tc.number  SendEvent_type_0110
     * @tc.name    SendEvent_type_0110
     * @tc.desc    The type of EventInfo is 'scroll', test sendEvent() function
@@ -422,56 +777,157 @@ describe('AccessibleSendEvent', function () {
   })
 
   /*
-    * @tc.number  SendEvent_type_0260
-    * @tc.name    SendEvent_type_0260
+    * @tc.number  SendEvent_type_constructor_0110
+    * @tc.name    SendEvent_type_constructor_0110
+    * @tc.desc    The type of EventInfo is 'scroll', test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_type_constructor_0110', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_type_constructor_0110 starts`);
+
+    let eventType = 'scroll';
+
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_type_constructor_0110 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
+    * @tc.number  SendEvent_type_0120
+    * @tc.name    SendEvent_type_0120
     * @tc.desc    The type of EventInfo is '', test sendEvent() function
     *             The result of sendEvent() should be equal to a rejected promise of undefined
     * @tc.size    SmallTest
     * @tc.type    User
     */
-  it('SendEvent_type_0260', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_type_0260 starts`);
+  it('SendEvent_type_0120', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_type_0120 starts`);
 
     let eventType = '';
     let event = new accessibility.EventInfo();
     event.type = eventType;
     event.bundleName = bundleName;
     event.triggerAction = triggerAction;
-    accessibility.sendEvent(event).then((result) =>{           
-        console.error(`AccessibleSendEvent: SendEvent_type_0260 result ${result}`);
-        expect(null).assertFail();  
-        done();          
+    accessibility.sendEvent(event).then((result) =>{
+        console.error(`AccessibleSendEvent: SendEvent_type_0120 result ${result}`);
+        expect(null).assertFail();
+        done();
     }).catch((err) => {
-        console.info(`AccessibleSendEvent: SendEvent_type_0260 has error: ${err}`);
+        console.info(`AccessibleSendEvent: SendEvent_type_0120 has error: ${err}`);
         expect(err).assertEqual(undefined);
-        done();    
+        done();
     });
   })
 
   /*
-    * @tc.number  SendEvent_type_0270
-    * @tc.name    SendEvent_type_0270
+    * @tc.number  SendEvent_type_constructor_0120
+    * @tc.name    SendEvent_type_constructor_0120
+    * @tc.desc    The type of EventInfo is '', test sendEvent() function
+    *             The result of sendEvent() should be equal to a rejected promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_type_constructor_0120', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_type_constructor_0120 starts`);
+
+    let eventType = '';
+
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) =>{
+        console.error(`AccessibleSendEvent: SendEvent_type_constructor_0120 result ${result}`);
+        expect(null).assertFail();
+        done();
+    }).catch((err) => {
+        console.info(`AccessibleSendEvent: SendEvent_type_constructor_0120 has error: ${err}`);
+        expect(err).assertEqual(undefined);
+        done();
+    });
+  })
+
+  /*
+    * @tc.number  SendEvent_type_0130
+    * @tc.name    SendEvent_type_0130
     * @tc.desc    The type of EventInfo is null, test sendEvent() function
     *             The result of sendEvent() should be equal to a rejected promise of undefined
     * @tc.size    SmallTest
     * @tc.type    User
     */
-  it('SendEvent_type_0270', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_type_0270 starts`);
+  it('SendEvent_type_0130', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_type_0130 starts`);
 
     let eventType = null;
     let event = new accessibility.EventInfo();
     event.type = eventType;
     event.bundleName = bundleName;
     event.triggerAction = triggerAction;
-    accessibility.sendEvent(event).then((result) =>{           
-        console.error(`AccessibleSendEvent: SendEvent_type_0270 result ${result}`);
-        expect(null).assertFail();  
-        done();          
+    accessibility.sendEvent(event).then((result) =>{
+        console.error(`AccessibleSendEvent: SendEvent_type_0130 result ${result}`);
+        expect(null).assertFail();
+        done();
     }).catch((err) => {
-        console.info(`AccessibleSendEvent: SendEvent_type_0270 has error: ${err}`);
+        console.info(`AccessibleSendEvent: SendEvent_type_0130 has error: ${err}`);
         expect(err).assertEqual(undefined);
-        done();    
+        done();
+    });
+  })
+
+  /*
+    * @tc.number  SendEvent_type_constructor_0130
+    * @tc.name    SendEvent_type_constructor_0130
+    * @tc.desc    The type of EventInfo is null, test sendEvent() function
+    *             The result of sendEvent() should be equal to a rejected promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_type_constructor_0130', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_type_constructor_0130 starts`);
+
+    let eventType = null;
+
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) =>{
+        console.error(`AccessibleSendEvent: SendEvent_type_constructor_0130 result ${result}`);
+        expect(null).assertFail();
+        done();
+    }).catch((err) => {
+        console.info(`AccessibleSendEvent: SendEvent_type_constructor_0130 has error: ${err}`);
+        expect(err).assertEqual(undefined);
+        done();
     });
   })
 
@@ -532,7 +988,7 @@ describe('AccessibleSendEvent', function () {
   /*
     * @tc.number  SendEvent_windowUpdateType_0030
     * @tc.name    SendEvent_windowUpdateType_0030
-    * @tc.desc    The windowUpdateType of EventInfo is 'title', test sendEvent() function
+    * @tc.desc    The windowUpdateType of EventInfo is 'bounds', test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     * @tc.size    SmallTest
     * @tc.type    User
@@ -541,7 +997,7 @@ describe('AccessibleSendEvent', function () {
     console.info(`AccessibleSendEvent: SendEvent_windowUpdateType_0030 starts`);
 
     let event = new accessibility.EventInfo();
-    let windowUpdateType = 'title';
+    let windowUpdateType = 'bounds';
     event.type = eventType;
     event.windowUpdateType = windowUpdateType;
     event.bundleName = bundleName;
@@ -559,7 +1015,7 @@ describe('AccessibleSendEvent', function () {
   /*
     * @tc.number  SendEvent_windowUpdateType_0040
     * @tc.name    SendEvent_windowUpdateType_0040
-    * @tc.desc    The windowUpdateType of EventInfo is 'bounds', test sendEvent() function
+    * @tc.desc    The windowUpdateType of EventInfo is 'active', test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     * @tc.size    SmallTest
     * @tc.type    User
@@ -568,7 +1024,7 @@ describe('AccessibleSendEvent', function () {
     console.info(`AccessibleSendEvent: SendEvent_windowUpdateType_0040 starts`);
 
     let event = new accessibility.EventInfo();
-    let windowUpdateType = 'bounds';
+    let windowUpdateType = 'active';
     event.type = eventType;
     event.windowUpdateType = windowUpdateType;
     event.bundleName = bundleName;
@@ -586,7 +1042,7 @@ describe('AccessibleSendEvent', function () {
   /*
     * @tc.number  SendEvent_windowUpdateType_0050
     * @tc.name    SendEvent_windowUpdateType_0050
-    * @tc.desc    The windowUpdateType of EventInfo is 'layer', test sendEvent() function
+    * @tc.desc    The windowUpdateType of EventInfo is 'focus', test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     * @tc.size    SmallTest
     * @tc.type    User
@@ -595,7 +1051,7 @@ describe('AccessibleSendEvent', function () {
     console.info(`AccessibleSendEvent: SendEvent_windowUpdateType_0050 starts`);
 
     let event = new accessibility.EventInfo();
-    let windowUpdateType = 'layer';
+    let windowUpdateType = 'focus';
     event.type = eventType;
     event.windowUpdateType = windowUpdateType;
     event.bundleName = bundleName;
@@ -613,7 +1069,7 @@ describe('AccessibleSendEvent', function () {
   /*
     * @tc.number  SendEvent_windowUpdateType_0060
     * @tc.name    SendEvent_windowUpdateType_0060
-    * @tc.desc    The windowUpdateType of EventInfo is 'active', test sendEvent() function
+    * @tc.desc    The windowUpdateType of EventInfo is '', test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     * @tc.size    SmallTest
     * @tc.type    User
@@ -622,7 +1078,7 @@ describe('AccessibleSendEvent', function () {
     console.info(`AccessibleSendEvent: SendEvent_windowUpdateType_0060 starts`);
 
     let event = new accessibility.EventInfo();
-    let windowUpdateType = 'active';
+    let windowUpdateType = '';
     event.type = eventType;
     event.windowUpdateType = windowUpdateType;
     event.bundleName = bundleName;
@@ -638,9 +1094,42 @@ describe('AccessibleSendEvent', function () {
   })
 
   /*
+    * @tc.number  SendEvent_windowUpdateType_constructor_0060
+    * @tc.name    SendEvent_windowUpdateType_constructor_0060
+    * @tc.desc    The windowUpdateType of EventInfo is '', test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_windowUpdateType_constructor_0060', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_windowUpdateType_constructor_0060 starts`);
+
+    let windowUpdateType = '';
+    let jsonObj = {
+      type : eventType,
+      windowUpdateType : windowUpdateType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_windowUpdateType_constructor_0060 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
     * @tc.number  SendEvent_windowUpdateType_0070
     * @tc.name    SendEvent_windowUpdateType_0070
-    * @tc.desc    The windowUpdateType of EventInfo is 'focus', test sendEvent() function
+    * @tc.desc    The windowUpdateType of EventInfo is null, test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
     * @tc.size    SmallTest
     * @tc.type    User
@@ -649,7 +1138,7 @@ describe('AccessibleSendEvent', function () {
     console.info(`AccessibleSendEvent: SendEvent_windowUpdateType_0070 starts`);
 
     let event = new accessibility.EventInfo();
-    let windowUpdateType = 'focus';
+    let windowUpdateType = null;
     event.type = eventType;
     event.windowUpdateType = windowUpdateType;
     event.bundleName = bundleName;
@@ -665,162 +1154,33 @@ describe('AccessibleSendEvent', function () {
   })
 
   /*
-    * @tc.number  SendEvent_windowUpdateType_0080
-    * @tc.name    SendEvent_windowUpdateType_0080
-    * @tc.desc    The windowUpdateType of EventInfo is 'accessibilityFocus', test sendEvent() function
-    *             The result of sendEvent() should be equal to a promise of undefined
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-  it('SendEvent_windowUpdateType_0080', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_windowUpdateType_0080 starts`);
-
-    let event = new accessibility.EventInfo();
-    let windowUpdateType = 'accessibilityFocus';
-    event.type = eventType;
-    event.windowUpdateType = windowUpdateType;
-    event.bundleName = bundleName;
-    event.triggerAction = triggerAction;
-    accessibility.sendEvent(event).then((result) => {
-      expect(result).assertEqual(undefined);
-      done();
-    }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_windowUpdateType_0080 has error: ${err}`);
-      expect(null).assertFail();
-      done();
-    });
-  })
-
-  /*
-    * @tc.number  SendEvent_windowUpdateType_0090
-    * @tc.name    SendEvent_windowUpdateType_0090
-    * @tc.desc    The windowUpdateType of EventInfo is 'parent', test sendEvent() function
-    *             The result of sendEvent() should be equal to a promise of undefined
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-  it('SendEvent_windowUpdateType_0090', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_windowUpdateType_0090 starts`);
-
-    let event = new accessibility.EventInfo();
-    let windowUpdateType = 'parent';
-    event.type = eventType;
-    event.windowUpdateType = windowUpdateType;
-    event.bundleName = bundleName;
-    event.triggerAction = triggerAction;
-    accessibility.sendEvent(event).then((result) => {
-      expect(result).assertEqual(undefined);
-      done();
-    }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_windowUpdateType_0090 has error: ${err}`);
-      expect(null).assertFail();
-      done();
-    });
-  })
-
-  /*
-    * @tc.number  SendEvent_windowUpdateType_0010
-    * @tc.name    SendEvent_windowUpdateType_0010
-    * @tc.desc    The windowUpdateType of EventInfo is 'children', test sendEvent() function
-    *             The result of sendEvent() should be equal to a promise of undefined
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-  it('SendEvent_windowUpdateType_0010', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_windowUpdateType_0010 starts`);
-
-    let event = new accessibility.EventInfo();
-    let windowUpdateType = 'children';
-    event.type = eventType;
-    event.windowUpdateType = windowUpdateType;
-    event.bundleName = bundleName;
-    event.triggerAction = triggerAction;
-    accessibility.sendEvent(event).then((result) => {
-      expect(result).assertEqual(undefined);
-      done();
-    }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_windowUpdateType_0010 has error: ${err}`);
-      expect(null).assertFail();
-      done();
-    });
-  })
-
-  /*
-    * @tc.number  SendEvent_windowUpdateType_0011
-    * @tc.name    SendEvent_windowUpdateType_0011
-    * @tc.desc    The windowUpdateType of EventInfo is 'pip', test sendEvent() function
-    *             The result of sendEvent() should be equal to a promise of undefined
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-  it('SendEvent_windowUpdateType_0011', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_windowUpdateType_0011 starts`);
-
-    let event = new accessibility.EventInfo();
-    let windowUpdateType = 'pip';
-    event.type = eventType;
-    event.windowUpdateType = windowUpdateType;
-    event.bundleName = bundleName;
-    event.triggerAction = triggerAction;
-    accessibility.sendEvent(event).then((result) => {
-      expect(result).assertEqual(undefined);
-      done();
-    }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_windowUpdateType_0011 has error: ${err}`);
-      expect(null).assertFail();
-      done();
-    });
-  })
-
-  /*
-    * @tc.number  SendEvent_windowUpdateType_0012
-    * @tc.name    SendEvent_windowUpdateType_0012
-    * @tc.desc    The windowUpdateType of EventInfo is '', test sendEvent() function
-    *             The result of sendEvent() should be equal to a promise of undefined
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-  it('SendEvent_windowUpdateType_0012', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_windowUpdateType_0012 starts`);
-
-    let event = new accessibility.EventInfo();
-    let windowUpdateType = '';
-    event.type = eventType;
-    event.windowUpdateType = windowUpdateType;
-    event.bundleName = bundleName;
-    event.triggerAction = triggerAction;
-    accessibility.sendEvent(event).then((result) => {
-      expect(result).assertEqual(undefined);
-      done();
-    }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_windowUpdateType_0012 has error: ${err}`);
-      expect(null).assertFail();
-      done();
-    });
-  })
-
-  /*
-    * @tc.number  SendEvent_windowUpdateType_0013
-    * @tc.name    SendEvent_windowUpdateType_0013
+    * @tc.number  SendEvent_windowUpdateType_constructor_0070
+    * @tc.name    SendEvent_windowUpdateType_constructor_0070
     * @tc.desc    The windowUpdateType of EventInfo is null, test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
     */
-  it('SendEvent_windowUpdateType_0013', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_windowUpdateType_0013 starts`);
+  it('SendEvent_windowUpdateType_constructor_0070', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_windowUpdateType_constructor_0070 starts`);
 
-    let event = new accessibility.EventInfo();
     let windowUpdateType = null;
-    event.type = eventType;
-    event.windowUpdateType = windowUpdateType;
-    event.bundleName = bundleName;
-    event.triggerAction = triggerAction;
+    let jsonObj = {
+      type : eventType,
+      windowUpdateType : windowUpdateType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
     accessibility.sendEvent(event).then((result) => {
       expect(result).assertEqual(undefined);
       done();
     }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_windowUpdateType_0013 has error: ${err}`);
+      console.error(`AccessibleSendEvent: SendEvent_windowUpdateType_constructor_0070 has error: ${err}`);
       expect(null).assertFail();
       done();
     });
@@ -853,6 +1213,38 @@ describe('AccessibleSendEvent', function () {
   })
 
   /*
+    * @tc.number  SendEvent_bundleName_constructor_0010
+    * @tc.name    SendEvent_bundleName_constructor_0010
+    * @tc.desc    The bundleName of EventInfo is 'com.ixaa.testfora11y', test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_bundleName_constructor_0010', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_bundleName_constructor_0010 starts`);
+
+    let localBundleName = 'com.ixaa.testfora11y';
+    let jsonObj = {
+      type : eventType,
+      bundleName : localBundleName,
+      triggerAction : triggerAction,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_bundleName_constructor_0010 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
     * @tc.number  SendEvent_bundleName_0020
     * @tc.name    SendEvent_bundleName_0020
     * @tc.desc    The bundleName of EventInfo is '', test sendEvent() function
@@ -870,12 +1262,45 @@ describe('AccessibleSendEvent', function () {
     event.triggerAction = triggerAction;
     accessibility.sendEvent(event).then((result) =>{
         console.error(`AccessibleSendEvent: SendEvent_bundleName_0020 result ${result}`);
-        expect(null).assertFail();  
-        done();          
+        expect(null).assertFail();
+        done();
     }).catch((err) => {
         console.info(`AccessibleSendEvent: SendEvent_bundleName_0020 has error: ${err}`);
         expect(err).assertEqual(undefined);
-        done();    
+        done();
+    });
+  })
+
+  /*
+    * @tc.number  SendEvent_bundleName_constructor_0020
+    * @tc.name    SendEvent_bundleName_constructor_0020
+    * @tc.desc    The bundleName of EventInfo is '', test sendEvent() function
+    *             The result of sendEvent() should be equal to a rejected promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_bundleName_constructor_0020', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_bundleName_constructor_0020 starts`);
+
+    let localBundleName = '';
+    let jsonObj = {
+      type : eventType,
+      bundleName : localBundleName,
+      triggerAction : triggerAction,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) =>{
+        console.error(`AccessibleSendEvent: SendEvent_bundleName_constructor_0020 result ${result}`);
+        expect(null).assertFail();
+        done();
+    }).catch((err) => {
+        console.info(`AccessibleSendEvent: SendEvent_bundleName_constructor_0020 has error: ${err}`);
+        expect(err).assertEqual(undefined);
+        done();
     });
   })
 
@@ -895,14 +1320,47 @@ describe('AccessibleSendEvent', function () {
     event.type = eventType;
     event.bundleName = localBundleName;
     event.triggerAction = triggerAction;
-    accessibility.sendEvent(event).then((result) =>{           
+    accessibility.sendEvent(event).then((result) =>{
         console.error(`AccessibleSendEvent: SendEvent_bundleName_0030 result ${result}`);
-        expect(null).assertFail();  
-        done();          
+        expect(null).assertFail();
+        done();
     }).catch((err) => {
         console.info(`AccessibleSendEvent: SendEvent_bundleName_0030 has error: ${err}`);
         expect(err).assertEqual(undefined);
-        done();    
+        done();
+    });
+  })
+
+  /*
+    * @tc.number  SendEvent_bundleName_constructor_0030
+    * @tc.name    SendEvent_bundleName_constructor_0030
+    * @tc.desc    The bundleName of EventInfo is null, test sendEvent() function
+    *             The result of sendEvent() should be equal to a rejected promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_bundleName_constructor_0030', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_bundleName_constructor_0030 starts`);
+
+    let localBundleName = null;
+    let jsonObj = {
+      type : eventType,
+      bundleName : localBundleName,
+      triggerAction : triggerAction,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) =>{
+        console.error(`AccessibleSendEvent: SendEvent_bundleName_constructor_0030 result ${result}`);
+        expect(null).assertFail();
+        done();
+    }).catch((err) => {
+        console.info(`AccessibleSendEvent: SendEvent_bundleName_constructor_0030 has error: ${err}`);
+        expect(err).assertEqual(undefined);
+        done();
     });
   })
 
@@ -928,6 +1386,39 @@ describe('AccessibleSendEvent', function () {
       done();
     }).catch(err => {
       console.error(`AccessibleSendEvent: SendEvent_componentType_0010 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
+    * @tc.number  SendEvent_componentType_constructor_0010
+    * @tc.name    SendEvent_componentType_constructor_0010
+    * @tc.desc    The componentType of EventInfo is 'button', test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_componentType_constructor_0010', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_componentType_constructor_0010 starts`);
+
+    let componentType = 'button';
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      componentType : componentType,
+      triggerAction : triggerAction,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_componentType_constructor_0010 has error: ${err}`);
       expect(null).assertFail();
       done();
     });
@@ -961,6 +1452,39 @@ describe('AccessibleSendEvent', function () {
   })
 
   /*
+    * @tc.number  SendEvent_componentType_constructor_0020
+    * @tc.name    SendEvent_componentType_constructor_0020
+    * @tc.desc    The componentType of EventInfo is '', test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_componentType_constructor_0020', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_componentType_constructor_0020 starts`);
+
+    let componentType = '';
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      componentType : componentType,
+      triggerAction : triggerAction,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_componentType_constructor_0020 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
     * @tc.number  SendEvent_componentType_0030
     * @tc.name    SendEvent_componentType_0030
     * @tc.desc    The componentType of EventInfo is null, test sendEvent() function
@@ -988,162 +1512,33 @@ describe('AccessibleSendEvent', function () {
   })
 
   /*
-    * @tc.number  SendEvent_timeStamp_0010
-    * @tc.name    SendEvent_timeStamp_0010
-    * @tc.desc    The timeStamp of EventInfo is 1, test sendEvent() function
+    * @tc.number  SendEvent_componentType_constructor_0030
+    * @tc.name    SendEvent_componentType_constructor_0030
+    * @tc.desc    The componentType of EventInfo is null, test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
     */
-  it('SendEvent_timeStamp_0010', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_timeStamp_0010 starts`);
+  it('SendEvent_componentType_constructor_0030', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_componentType_constructor_0030 starts`);
 
-    let event = new accessibility.EventInfo();
-    let timeStamp = 1;
-    event.type = eventType;
-    event.bundleName = bundleName;
-    event.timeStamp = timeStamp;
-    event.triggerAction = triggerAction;
+    let componentType = null;
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      componentType : componentType,
+      triggerAction : triggerAction,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
     accessibility.sendEvent(event).then((result) => {
       expect(result).assertEqual(undefined);
       done();
     }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_timeStamp_0010 has error: ${err}`);
-      expect(null).assertFail();
-      done();
-    });
-  })
-
-  /*
-    * @tc.number  SendEvent_timeStamp_0020
-    * @tc.name    SendEvent_timeStamp_0020
-    * @tc.desc    The timeStamp of EventInfo is 0, test sendEvent() function
-    *             The result of sendEvent() should be equal to a promise of undefined
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-  it('SendEvent_timeStamp_0020', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_timeStamp_0020 starts`);
-
-    let event = new accessibility.EventInfo();
-    let timeStamp = 0;
-    event.type = eventType;
-    event.bundleName = bundleName;
-    event.timeStamp = timeStamp;
-    event.triggerAction = triggerAction;
-    accessibility.sendEvent(event).then((result) => {
-      expect(result).assertEqual(undefined);
-      done();
-    }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_timeStamp_0020 has error: ${err}`);
-      expect(null).assertFail();
-      done();
-    });
-  })
-
-  /*
-    * @tc.number  SendEvent_timeStamp_0030
-    * @tc.name    SendEvent_timeStamp_0030
-    * @tc.desc    The timeStamp of EventInfo is -1, test sendEvent() function
-    *             The result of sendEvent() should be equal to a promise of undefined
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-  it('SendEvent_timeStamp_0030', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_timeStamp_0030 starts`);
-
-    let event = new accessibility.EventInfo();
-    let timeStamp = -1;
-    event.type = eventType;
-    event.bundleName = bundleName;
-    event.timeStamp = timeStamp;
-    event.triggerAction = triggerAction;
-    accessibility.sendEvent(event).then((result) => {
-      expect(result).assertEqual(undefined);
-      done();
-    }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_timeStamp_0030 has error: ${err}`);
-      expect(null).assertFail();
-      done();
-    });
-  })
-
-  /*
-    * @tc.number  SendEvent_windowId_0010
-    * @tc.name    SendEvent_windowId_0010
-    * @tc.desc    The windowId of EventInfo is 1, test sendEvent() function
-    *             The result of sendEvent() should be equal to a promise of undefined
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-  it('SendEvent_windowId_0010', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_windowId_0010 starts`);
-
-    let event = new accessibility.EventInfo();
-    let windowId = 1;
-    event.type = eventType;
-    event.bundleName = bundleName;
-    event.windowId = windowId;
-    event.triggerAction = triggerAction;
-    accessibility.sendEvent(event).then((result) => {
-      expect(result).assertEqual(undefined);
-      done();
-    }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_windowId_0010 has error: ${err}`);
-      expect(null).assertFail();
-      done();
-    });
-  })
-
-  /*
-    * @tc.number  SendEvent_windowId_0020
-    * @tc.name    SendEvent_windowId_0020
-    * @tc.desc    The windowId of EventInfo is 0, test sendEvent() function
-    *             The result of sendEvent() should be equal to a promise of undefined
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-  it('SendEvent_windowId_0020', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_windowId_0020 starts`);
-
-    let event = new accessibility.EventInfo();
-    let windowId = 0;
-    event.type = eventType;
-    event.bundleName = bundleName;
-    event.windowId = windowId;
-    event.triggerAction = triggerAction;
-    accessibility.sendEvent(event).then((result) => {
-      expect(result).assertEqual(undefined);
-      done();
-    }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_windowId_0020 has error: ${err}`);
-      expect(null).assertFail();
-      done();
-    });
-  })
-
-  /*
-    * @tc.number  SendEvent_windowId_0030
-    * @tc.name    SendEvent_windowId_0030
-    * @tc.desc    The windowId of EventInfo is -1, test sendEvent() function
-    *             The result of sendEvent() should be equal to a promise of undefined
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-  it('SendEvent_windowId_0030', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_windowId_0030 starts`);
-
-    let event = new accessibility.EventInfo();
-    let windowId = -1;
-    event.type = eventType;
-    event.bundleName = bundleName;
-    event.windowId = windowId;
-    event.triggerAction = triggerAction;
-    accessibility.sendEvent(event).then((result) => {
-      expect(result).assertEqual(undefined);
-      done();
-    }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_windowId_0030 has error: ${err}`);
+      console.error(`AccessibleSendEvent: SendEvent_componentType_constructor_0030 has error: ${err}`);
       expect(null).assertFail();
       done();
     });
@@ -1177,6 +1572,39 @@ describe('AccessibleSendEvent', function () {
   })
 
   /*
+    * @tc.number  SendEvent_pageId_constructor_0010
+    * @tc.name    SendEvent_pageId_constructor_0010
+    * @tc.desc    The pageId of EventInfo is 1, test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_pageId_constructor_0010', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_pageId_constructor_0010 starts`);
+
+    let pageId = 1;
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      pageId : pageId,
+      triggerAction : triggerAction,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_pageId_constructor_0010 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
     * @tc.number  SendEvent_pageId_0020
     * @tc.name    SendEvent_pageId_0020
     * @tc.desc    The pageId of EventInfo is 0, test sendEvent() function
@@ -1198,6 +1626,39 @@ describe('AccessibleSendEvent', function () {
       done();
     }).catch(err => {
       console.error(`AccessibleSendEvent: SendEvent_pageId_0020 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
+    * @tc.number  SendEvent_pageId_constructor_0020
+    * @tc.name    SendEvent_pageId_constructor_0020
+    * @tc.desc    The pageId of EventInfo is 0, test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_pageId_constructor_0020', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_pageId_constructor_0020 starts`);
+
+    let pageId = 0;
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      pageId : pageId,
+      triggerAction : triggerAction,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_pageId_constructor_0020 has error: ${err}`);
       expect(null).assertFail();
       done();
     });
@@ -1231,81 +1692,33 @@ describe('AccessibleSendEvent', function () {
   })
 
   /*
-    * @tc.number  SendEvent_componentId_0010
-    * @tc.name    SendEvent_componentId_0010
-    * @tc.desc    The componentId of EventInfo is 1, test sendEvent() function
+    * @tc.number  SendEvent_pageId_constructor_0030
+    * @tc.name    SendEvent_pageId_constructor_0030
+    * @tc.desc    The pageId of EventInfo is -1, test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
     */
-  it('SendEvent_componentId_0010', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_componentId_0010 starts`);
+  it('SendEvent_pageId_constructor_0030', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_pageId_constructor_0030 starts`);
 
-    let event = new accessibility.EventInfo();
-    let componentId = 1;
-    event.type = eventType;
-    event.bundleName = bundleName;
-    event.componentId = componentId;
-    event.triggerAction = triggerAction;
+    let pageId = -1;
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      pageId : pageId,
+      triggerAction : triggerAction,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
     accessibility.sendEvent(event).then((result) => {
       expect(result).assertEqual(undefined);
       done();
     }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_componentId_0010 has error: ${err}`);
-      expect(null).assertFail();
-      done();
-    });
-  })
-
-  /*
-    * @tc.number  SendEvent_componentId_0020
-    * @tc.name    SendEvent_componentId_0020
-    * @tc.desc    The componentId of EventInfo is 0, test sendEvent() function
-    *             The result of sendEvent() should be equal to a promise of undefined
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-  it('SendEvent_componentId_0020', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_componentId_0020 starts`);
-
-    let event = new accessibility.EventInfo();
-    let componentId = 0;
-    event.type = eventType;
-    event.bundleName = bundleName;
-    event.componentId = componentId;
-    event.triggerAction = triggerAction;
-    accessibility.sendEvent(event).then((result) => {
-      expect(result).assertEqual(undefined);
-      done();
-    }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_componentId_0020 has error: ${err}`);
-      expect(null).assertFail();
-      done();
-    });
-  })
-
-  /*
-    * @tc.number  SendEvent_componentId_0030
-    * @tc.name    SendEvent_componentId_0030
-    * @tc.desc    The componentId of EventInfo is -1, test sendEvent() function
-    *             The result of sendEvent() should be equal to a promise of undefined
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-  it('SendEvent_componentId_0030', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_componentId_0030 starts`);
-
-    let event = new accessibility.EventInfo();
-    let componentId = -1;
-    event.type = eventType;
-    event.bundleName = bundleName;
-    event.componentId = componentId;
-    event.triggerAction = triggerAction;
-    accessibility.sendEvent(event).then((result) => {
-      expect(result).assertEqual(undefined);
-      done();
-    }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_componentId_0030 has error: ${err}`);
+      console.error(`AccessibleSendEvent: SendEvent_pageId_constructor_0030 has error: ${err}`);
       expect(null).assertFail();
       done();
     });
@@ -1339,6 +1752,39 @@ describe('AccessibleSendEvent', function () {
   })
 
   /*
+    * @tc.number  SendEvent_description_constructor_0010
+    * @tc.name    SendEvent_description_constructor_0010
+    * @tc.desc    The description of EventInfo is '1', test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_description_constructor_0010', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_description_constructor_0010 starts`);
+
+    let description = '1';
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      description : description,
+      triggerAction : triggerAction,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_description_constructor_0010 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
     * @tc.number  SendEvent_description_0020
     * @tc.name    SendEvent_description_0020
     * @tc.desc    The description of EventInfo is '', test sendEvent() function
@@ -1360,6 +1806,39 @@ describe('AccessibleSendEvent', function () {
       done();
     }).catch(err => {
       console.error(`AccessibleSendEvent: SendEvent_description_0020 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
+    * @tc.number  SendEvent_description_constructor_0020
+    * @tc.name    SendEvent_description_constructor_0020
+    * @tc.desc    The description of EventInfo is '', test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_description_constructor_0020', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_description_constructor_0020 starts`);
+
+    let description = '';
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      description : description,
+      triggerAction : triggerAction,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_description_constructor_0020 has error: ${err}`);
       expect(null).assertFail();
       done();
     });
@@ -1393,6 +1872,39 @@ describe('AccessibleSendEvent', function () {
   })
 
   /*
+    * @tc.number  SendEvent_description_constructor_0030
+    * @tc.name    SendEvent_description_constructor_0030
+    * @tc.desc    The description of EventInfo is null, test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_description_constructor_0030', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_description_constructor_0030 starts`);
+
+    let description = null;
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      description : description,
+      triggerAction : triggerAction,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_description_constructor_0030 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
     * @tc.number  SendEvent_triggerAction_0010
     * @tc.name    SendEvent_triggerAction_0010
     * @tc.desc    The triggerAction of EventInfo is 'accessibilityFocus', test sendEvent() function
@@ -1413,6 +1925,38 @@ describe('AccessibleSendEvent', function () {
       done();
     }).catch(err => {
       console.error(`AccessibleSendEvent: SendEvent_triggerAction_0010 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
+    * @tc.number  SendEvent_triggerAction_constructor_0010
+    * @tc.name    SendEvent_triggerAction_constructor_0010
+    * @tc.desc    The triggerAction of EventInfo is 'accessibilityFocus', test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_triggerAction_constructor_0010', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_triggerAction_constructor_0010 starts`);
+
+    let triggerAction = 'accessibilityFocus';
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_triggerAction_constructor_0010 has error: ${err}`);
       expect(null).assertFail();
       done();
     });
@@ -1444,6 +1988,38 @@ describe('AccessibleSendEvent', function () {
     });
   })
 
+    /*
+    * @tc.number  SendEvent_triggerAction_constructor_0020
+    * @tc.name    SendEvent_triggerAction_constructor_0020
+    * @tc.desc    The triggerAction of EventInfo is 'clearAccessibilityFocus', test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+    it('SendEvent_triggerAction_constructor_0020', 0, async function (done) {
+      console.info(`AccessibleSendEvent: SendEvent_triggerAction_constructor_0020 starts`);
+  
+      let triggerAction = 'clearAccessibilityFocus';
+      let jsonObj = {
+        type : eventType,
+        bundleName : bundleName,
+        triggerAction : triggerAction,
+      }
+  
+      let event = new accessibility.EventInfo(jsonObj);
+
+      accessibility.sendEvent(event).then((result) => {
+        expect(result).assertEqual(undefined);
+        done();
+      }).catch(err => {
+        console.error(`AccessibleSendEvent: SendEvent_triggerAction_constructor_0020 has error: ${err}`);
+        expect(null).assertFail();
+        done();
+      });
+    })
+
   /*
     * @tc.number  SendEvent_triggerAction_0030
     * @tc.name    SendEvent_triggerAction_0030
@@ -1465,6 +2041,36 @@ describe('AccessibleSendEvent', function () {
       done();
     }).catch(err => {
       console.error(`AccessibleSendEvent: SendEvent_triggerAction_0030 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
+    * @tc.number  SendEvent_triggerAction_constructor_0030
+    * @tc.name    SendEvent_triggerAction_constructor_0030
+    * @tc.desc    The triggerAction of EventInfo is 'focus', test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_triggerAction_constructor_0030', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_triggerAction_constructor_0030 starts`);
+
+    let triggerAction = 'focus';
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_triggerAction_constructor_0030 has error: ${err}`);
       expect(null).assertFail();
       done();
     });
@@ -1497,6 +2103,38 @@ describe('AccessibleSendEvent', function () {
   })
 
   /*
+    * @tc.number  SendEvent_triggerAction_constructor_0040
+    * @tc.name    SendEvent_triggerAction_constructor_0040
+    * @tc.desc    The triggerAction of EventInfo is 'clearFocus', test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_triggerAction_constructor_0040', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_triggerAction_constructor_0040 starts`);
+
+    let triggerAction = 'clearFocus';
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_triggerAction_constructor_0040 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
     * @tc.number  SendEvent_triggerAction_0050
     * @tc.name    SendEvent_triggerAction_0050
     * @tc.desc    The triggerAction of EventInfo is 'clearSelection', test sendEvent() function
@@ -1517,6 +2155,38 @@ describe('AccessibleSendEvent', function () {
       done();
     }).catch(err => {
       console.error(`AccessibleSendEvent: SendEvent_triggerAction_0050 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
+    * @tc.number  SendEvent_triggerAction_constructor_0050
+    * @tc.name    SendEvent_triggerAction_constructor_0050
+    * @tc.desc    The triggerAction of EventInfo is 'clearSelection', test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_triggerAction_constructor_0050', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_triggerAction_constructor_0050 starts`);
+
+    let triggerAction = 'clearSelection';
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_triggerAction_constructor_0050 has error: ${err}`);
       expect(null).assertFail();
       done();
     });
@@ -1549,6 +2219,38 @@ describe('AccessibleSendEvent', function () {
   })
 
   /*
+    * @tc.number  SendEvent_triggerAction_constructor_0060
+    * @tc.name    SendEvent_triggerAction_constructor_0060
+    * @tc.desc    The triggerAction of EventInfo is 'click', test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_triggerAction_constructor_0060', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_triggerAction_constructor_0060 starts`);
+
+    let triggerAction = 'click';
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_triggerAction_constructor_0060 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
     * @tc.number  SendEvent_triggerAction_0070
     * @tc.name    SendEvent_triggerAction_0070
     * @tc.desc    The triggerAction of EventInfo is 'longClick', test sendEvent() function
@@ -1569,6 +2271,38 @@ describe('AccessibleSendEvent', function () {
       done();
     }).catch(err => {
       console.error(`AccessibleSendEvent: SendEvent_triggerAction_0070 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
+    * @tc.number  SendEvent_triggerAction_constructor_0070
+    * @tc.name    SendEvent_triggerAction_constructor_0070
+    * @tc.desc    The triggerAction of EventInfo is 'longClick', test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_triggerAction_constructor_0070', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_triggerAction_constructor_0070 starts`);
+
+    let triggerAction = 'longClick';
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_triggerAction_constructor_0070 has error: ${err}`);
       expect(null).assertFail();
       done();
     });
@@ -1601,6 +2335,38 @@ describe('AccessibleSendEvent', function () {
   })
 
   /*
+    * @tc.number  SendEvent_triggerAction_constructor_0080
+    * @tc.name    SendEvent_triggerAction_constructor_0080
+    * @tc.desc    The triggerAction of EventInfo is 'cut', test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_triggerAction_constructor_0080', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_triggerAction_constructor_0080 starts`);
+
+    let triggerAction = 'cut';
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_triggerAction_constructor_0080 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
     * @tc.number  SendEvent_triggerAction_0090
     * @tc.name    SendEvent_triggerAction_0090
     * @tc.desc    The triggerAction of EventInfo is 'copy', test sendEvent() function
@@ -1621,6 +2387,38 @@ describe('AccessibleSendEvent', function () {
       done();
     }).catch(err => {
       console.error(`AccessibleSendEvent: SendEvent_triggerAction_0090 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
+    * @tc.number  SendEvent_triggerAction_constructor_0090
+    * @tc.name    SendEvent_triggerAction_constructor_0090
+    * @tc.desc    The triggerAction of EventInfo is 'copy', test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_triggerAction_constructor_0090', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_triggerAction_constructor_0090 starts`);
+
+    let triggerAction = 'copy';
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_triggerAction_constructor_0090 has error: ${err}`);
       expect(null).assertFail();
       done();
     });
@@ -1653,6 +2451,38 @@ describe('AccessibleSendEvent', function () {
   })
 
   /*
+    * @tc.number  SendEvent_triggerAction_constructor_0100
+    * @tc.name    SendEvent_triggerAction_constructor_0100
+    * @tc.desc    The triggerAction of EventInfo is 'paste', test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_triggerAction_constructor_0100', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_triggerAction_constructor_0100 starts`);
+
+    let triggerAction = 'paste';
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_triggerAction_constructor_0100 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
     * @tc.number  SendEvent_triggerAction_0110
     * @tc.name    SendEvent_triggerAction_0110
     * @tc.desc    The triggerAction of EventInfo is 'select', test sendEvent() function
@@ -1673,6 +2503,38 @@ describe('AccessibleSendEvent', function () {
       done();
     }).catch(err => {
       console.error(`AccessibleSendEvent: SendEvent_triggerAction_0110 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
+    * @tc.number  SendEvent_triggerAction_constructor_0110
+    * @tc.name    SendEvent_triggerAction_constructor_0110
+    * @tc.desc    The triggerAction of EventInfo is 'select', test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_triggerAction_constructor_0110', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_triggerAction_constructor_0110 starts`);
+
+    let triggerAction = 'select';
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_triggerAction_constructor_0110 has error: ${err}`);
       expect(null).assertFail();
       done();
     });
@@ -1705,6 +2567,38 @@ describe('AccessibleSendEvent', function () {
   })
 
   /*
+    * @tc.number  SendEvent_triggerAction_constructor_0120
+    * @tc.name    SendEvent_triggerAction_constructor_0120
+    * @tc.desc    The triggerAction of EventInfo is 'setText', test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_triggerAction_constructor_0120', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_triggerAction_constructor_0120 starts`);
+
+    let triggerAction = 'setText';
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_triggerAction_constructor_0120 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
     * @tc.number  SendEvent_triggerAction_0130
     * @tc.name    SendEvent_triggerAction_0130
     * @tc.desc    The triggerAction of EventInfo is 'delete', test sendEvent() function
@@ -1725,6 +2619,38 @@ describe('AccessibleSendEvent', function () {
       done();
     }).catch(err => {
       console.error(`AccessibleSendEvent: SendEvent_triggerAction_0130 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
+    * @tc.number  SendEvent_triggerAction_constructor_0130
+    * @tc.name    SendEvent_triggerAction_constructor_0130
+    * @tc.desc    The triggerAction of EventInfo is 'delete', test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_triggerAction_constructor_0130', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_triggerAction_constructor_0130 starts`);
+
+    let triggerAction = 'delete';
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_triggerAction_constructor_0130 has error: ${err}`);
       expect(null).assertFail();
       done();
     });
@@ -1757,6 +2683,38 @@ describe('AccessibleSendEvent', function () {
   })
 
   /*
+    * @tc.number  SendEvent_triggerAction_constructor_0140
+    * @tc.name    SendEvent_triggerAction_constructor_0140
+    * @tc.desc    The triggerAction of EventInfo is 'scrollForward', test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_triggerAction_constructor_0140', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_triggerAction_constructor_0140 starts`);
+
+    let triggerAction = 'scrollForward';
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_triggerAction_constructor_0140 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
     * @tc.number  SendEvent_triggerAction_0150
     * @tc.name    SendEvent_triggerAction_0150
     * @tc.desc    The triggerAction of EventInfo is 'scrollBackward', test sendEvent() function
@@ -1777,6 +2735,38 @@ describe('AccessibleSendEvent', function () {
       done();
     }).catch(err => {
       console.error(`AccessibleSendEvent: SendEvent_triggerAction_0150 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
+    * @tc.number  SendEvent_triggerAction_constructor_0150
+    * @tc.name    SendEvent_triggerAction_constructor_0150
+    * @tc.desc    The triggerAction of EventInfo is 'scrollBackward', test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_triggerAction_constructor_0150', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_triggerAction_constructor_0150 starts`);
+
+    let triggerAction = 'scrollBackward';
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_triggerAction_constructor_0150 has error: ${err}`);
       expect(null).assertFail();
       done();
     });
@@ -1809,15 +2799,47 @@ describe('AccessibleSendEvent', function () {
   })
 
   /*
-    * @tc.number  SendEvent_triggerAction_0230
-    * @tc.name    SendEvent_triggerAction_0230
+    * @tc.number  SendEvent_triggerAction_constructor_0160
+    * @tc.name    SendEvent_triggerAction_constructor_0160
+    * @tc.desc    The triggerAction of EventInfo is 'setSelection', test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_triggerAction_constructor_0160', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_triggerAction_constructor_0160 starts`);
+
+    let triggerAction = 'setSelection';
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_triggerAction_constructor_0160 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
+    * @tc.number  SendEvent_triggerAction_0170
+    * @tc.name    SendEvent_triggerAction_0170
     * @tc.desc    The triggerAction of EventInfo is '', test sendEvent() function
     *             The result of sendEvent() should be equal to a rejected promise of undefined
     * @tc.size    SmallTest
     * @tc.type    User
     */
-  it('SendEvent_triggerAction_0230', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_triggerAction_0230 starts`);
+  it('SendEvent_triggerAction_0170', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_triggerAction_0170 starts`);
 
     let event = new accessibility.EventInfo();
     let triggerAction = '';
@@ -1825,26 +2847,59 @@ describe('AccessibleSendEvent', function () {
     event.bundleName = bundleName;
     event.triggerAction = triggerAction;
     accessibility.sendEvent(event).then((result) =>{
-        console.error(`AccessibleSendEvent: SendEvent_triggerAction_0230 result ${result}`);
-        expect(null).assertFail();  
-        done();          
+        console.error(`AccessibleSendEvent: SendEvent_triggerAction_0170 result ${result}`);
+        expect(null).assertFail();
+        done();
     }).catch((err) => {
-        console.info(`AccessibleSendEvent: SendEvent_triggerAction_0230 has error: ${err}`);
+        console.info(`AccessibleSendEvent: SendEvent_triggerAction_0170 has error: ${err}`);
         expect(err).assertEqual(undefined);
-        done();    
+        done();
     });
   })
 
   /*
-    * @tc.number  SendEvent_triggerAction_0240
-    * @tc.name    SendEvent_triggerAction_0240
+    * @tc.number  SendEvent_triggerAction_constructor_0170
+    * @tc.name    SendEvent_triggerAction_constructor_0170
+    * @tc.desc    The triggerAction of EventInfo is '', test sendEvent() function
+    *             The result of sendEvent() should be equal to a rejected promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_triggerAction_constructor_0170', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_triggerAction_constructor_0170 starts`);
+
+    let triggerAction = '';
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) =>{
+        console.error(`AccessibleSendEvent: SendEvent_triggerAction_constructor_0170 result ${result}`);
+        expect(null).assertFail();
+        done();
+    }).catch((err) => {
+        console.info(`AccessibleSendEvent: SendEvent_triggerAction_constructor_0170 has error: ${err}`);
+        expect(err).assertEqual(undefined);
+        done();
+    });
+  })
+
+  /*
+    * @tc.number  SendEvent_triggerAction_0180
+    * @tc.name    SendEvent_triggerAction_0180
     * @tc.desc    The triggerAction of EventInfo is null, test sendEvent() function
     *             The result of sendEvent() should be equal to a rejected promise of undefined
     * @tc.size    SmallTest
     * @tc.type    User
     */
-  it('SendEvent_triggerAction_0240', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_triggerAction_0240 starts`);
+  it('SendEvent_triggerAction_0180', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_triggerAction_0180 starts`);
 
     let event = new accessibility.EventInfo();
     let triggerAction = null;
@@ -1852,13 +2907,46 @@ describe('AccessibleSendEvent', function () {
     event.bundleName = bundleName;
     event.triggerAction = triggerAction;
     accessibility.sendEvent(event).then((result) =>{
-        console.error(`AccessibleSendEvent: SendEvent_triggerAction_0240 result ${result}`);
-        expect(null).assertFail();  
-        done();          
+        console.error(`AccessibleSendEvent: SendEvent_triggerAction_0180 result ${result}`);
+        expect(null).assertFail();
+        done();
     }).catch((err) => {
-        console.info(`AccessibleSendEvent: SendEvent_triggerAction_0240 has error: ${err}`);
+        console.info(`AccessibleSendEvent: SendEvent_triggerAction_0180 has error: ${err}`);
         expect(err).assertEqual(undefined);
-        done();    
+        done();
+    });
+  })
+
+  /*
+    * @tc.number  SendEvent_triggerAction_constructor_0180
+    * @tc.name    SendEvent_triggerAction_constructor_0180
+    * @tc.desc    The triggerAction of EventInfo is null, test sendEvent() function
+    *             The result of sendEvent() should be equal to a rejected promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_triggerAction_constructor_0180', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_triggerAction_constructor_0180 starts`);
+
+    let triggerAction = null;
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) =>{
+        console.error(`AccessibleSendEvent: SendEvent_triggerAction_constructor_0180 result ${result}`);
+        expect(null).assertFail();
+        done();
+    }).catch((err) => {
+        console.info(`AccessibleSendEvent: SendEvent_triggerAction_constructor_0180 has error: ${err}`);
+        expect(err).assertEqual(undefined);
+        done();
     });
   })
 
@@ -1884,6 +2972,39 @@ describe('AccessibleSendEvent', function () {
       done();
     }).catch(err => {
       console.error(`AccessibleSendEvent: SendEvent_textMoveUnit_0010 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
+    * @tc.number  SendEvent_textMoveUnit_constructor_0010
+    * @tc.name    SendEvent_textMoveUnit_constructor_0010
+    * @tc.desc    The textMoveUnit of EventInfo is 'char', test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_textMoveUnit_constructor_0010', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_textMoveUnit_constructor_0010 starts`);
+
+    let textMoveUnit = 'char';
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+      textMoveUnit : textMoveUnit,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_textMoveUnit_constructor_0010 has error: ${err}`);
       expect(null).assertFail();
       done();
     });
@@ -1917,6 +3038,39 @@ describe('AccessibleSendEvent', function () {
   })
 
   /*
+    * @tc.number  SendEvent_textMoveUnit_constructor_0020
+    * @tc.name    SendEvent_textMoveUnit_constructor_0020
+    * @tc.desc    The textMoveUnit of EventInfo is 'word', test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_textMoveUnit_constructor_0020', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_textMoveUnit_constructor_0020 starts`);
+
+    let textMoveUnit = 'word';
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+      textMoveUnit : textMoveUnit,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_textMoveUnit_constructor_0020 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
     * @tc.number  SendEvent_textMoveUnit_0030
     * @tc.name    SendEvent_textMoveUnit_0030
     * @tc.desc    The textMoveUnit of EventInfo is 'line', test sendEvent() function
@@ -1938,6 +3092,39 @@ describe('AccessibleSendEvent', function () {
       done();
     }).catch(err => {
       console.error(`AccessibleSendEvent: SendEvent_textMoveUnit_0030 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
+    * @tc.number  SendEvent_textMoveUnit_constructor_0030
+    * @tc.name    SendEvent_textMoveUnit_constructor_0030
+    * @tc.desc    The textMoveUnit of EventInfo is 'line', test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_textMoveUnit_constructor_0030', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_textMoveUnit_constructor_0030 starts`);
+
+    let textMoveUnit = 'line';
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+      textMoveUnit : textMoveUnit,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_textMoveUnit_constructor_0030 has error: ${err}`);
       expect(null).assertFail();
       done();
     });
@@ -1971,6 +3158,39 @@ describe('AccessibleSendEvent', function () {
   })
 
   /*
+    * @tc.number  SendEvent_textMoveUnit_constructor_0040
+    * @tc.name    SendEvent_textMoveUnit_constructor_0040
+    * @tc.desc    The textMoveUnit of EventInfo is 'page', test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_textMoveUnit_constructor_0040', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_textMoveUnit_constructor_0040 starts`);
+
+    let textMoveUnit = 'page';
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+      textMoveUnit : textMoveUnit,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_textMoveUnit_constructor_0040 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
     * @tc.number  SendEvent_textMoveUnit_0050
     * @tc.name    SendEvent_textMoveUnit_0050
     * @tc.desc    The textMoveUnit of EventInfo is 'paragraph', test sendEvent() function
@@ -1992,6 +3212,39 @@ describe('AccessibleSendEvent', function () {
       done();
     }).catch(err => {
       console.error(`AccessibleSendEvent: SendEvent_textMoveUnit_0050 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
+    * @tc.number  SendEvent_textMoveUnit_constructor_0050
+    * @tc.name    SendEvent_textMoveUnit_constructor_0050
+    * @tc.desc    The textMoveUnit of EventInfo is 'paragraph', test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_textMoveUnit_constructor_0050', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_textMoveUnit_constructor_0050 starts`);
+
+    let textMoveUnit = 'paragraph';
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+      textMoveUnit : textMoveUnit,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_textMoveUnit_constructor_0050 has error: ${err}`);
       expect(null).assertFail();
       done();
     });
@@ -2025,6 +3278,39 @@ describe('AccessibleSendEvent', function () {
   })
 
   /*
+    * @tc.number  SendEvent_textMoveUnit_constructor_0060
+    * @tc.name    SendEvent_textMoveUnit_constructor_0060
+    * @tc.desc    The textMoveUnit of EventInfo is '', test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_textMoveUnit_constructor_0060', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_textMoveUnit_constructor_0060 starts`);
+
+    let textMoveUnit = '';
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+      textMoveUnit : textMoveUnit,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_textMoveUnit_constructor_0060 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
     * @tc.number  SendEvent_textMoveUnit_0070
     * @tc.name    SendEvent_textMoveUnit_0070
     * @tc.desc    The textMoveUnit of EventInfo is null, test sendEvent() function
@@ -2046,6 +3332,39 @@ describe('AccessibleSendEvent', function () {
       done();
     }).catch(err => {
       console.error(`AccessibleSendEvent: SendEvent_textMoveUnit_0070 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
+    * @tc.number  SendEvent_textMoveUnit_constructor_0070
+    * @tc.name    SendEvent_textMoveUnit_constructor_0070
+    * @tc.desc    The textMoveUnit of EventInfo is null, test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_textMoveUnit_constructor_0070', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_textMoveUnit_constructor_0070 starts`);
+
+    let textMoveUnit = null;
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+      textMoveUnit : textMoveUnit,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_textMoveUnit_constructor_0070 has error: ${err}`);
       expect(null).assertFail();
       done();
     });
@@ -2079,6 +3398,39 @@ describe('AccessibleSendEvent', function () {
   })
 
   /*
+    * @tc.number  SendEvent_contents_constructor_0010
+    * @tc.name    SendEvent_contents_constructor_0010
+    * @tc.desc    The contents of EventInfo is ['1'], test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_contents_constructor_0010', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_contents_constructor_0010 starts`);
+
+    let contents = ['1'];
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+      contents : contents,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_contents_constructor_0010 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
     * @tc.number  SendEvent_contents_0020
     * @tc.name    SendEvent_contents_0020
     * @tc.desc    The contents of EventInfo is [], test sendEvent() function
@@ -2100,6 +3452,39 @@ describe('AccessibleSendEvent', function () {
       done();
     }).catch(err => {
       console.error(`AccessibleSendEvent: SendEvent_contents_0020 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
+    * @tc.number  SendEvent_contents_constructor_0020
+    * @tc.name    SendEvent_contents_constructor_0020
+    * @tc.desc    The contents of EventInfo is [], test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_contents_constructor_0020', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_contents_constructor_0020 starts`);
+
+    let contents = [];
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+      contents : contents,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_contents_constructor_0020 has error: ${err}`);
       expect(null).assertFail();
       done();
     });
@@ -2133,6 +3518,39 @@ describe('AccessibleSendEvent', function () {
   })
 
   /*
+    * @tc.number  SendEvent_lastContent_constructor_0010
+    * @tc.name    SendEvent_lastContent_constructor_0010
+    * @tc.desc    The lastContent of EventInfo is '1', test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_lastContent_constructor_0010', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_lastContent_constructor_0010 starts`);
+
+    let lastContent = '1';
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+      lastContent : lastContent,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_lastContent_constructor_0010 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
     * @tc.number  SendEvent_lastContent_0020
     * @tc.name    SendEvent_lastContent_0020
     * @tc.desc    The lastContent of EventInfo is '', test sendEvent() function
@@ -2160,6 +3578,39 @@ describe('AccessibleSendEvent', function () {
   })
 
   /*
+    * @tc.number  SendEvent_lastContent_constructor_0020
+    * @tc.name    SendEvent_lastContent_constructor_0020
+    * @tc.desc    The lastContent of EventInfo is '', test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_lastContent_constructor_0020', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_lastContent_constructor_0020 starts`);
+
+    let lastContent = '';
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+      lastContent : lastContent,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_lastContent_constructor_0020 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
     * @tc.number  SendEvent_lastContent_0030
     * @tc.name    SendEvent_lastContent_0030
     * @tc.desc    The lastContent of EventInfo is null, test sendEvent() function
@@ -2181,6 +3632,39 @@ describe('AccessibleSendEvent', function () {
       done();
     }).catch(err => {
       console.error(`AccessibleSendEvent: SendEvent_lastContent_0030 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
+    * @tc.number  SendEvent_lastContent_constructor_0030
+    * @tc.name    SendEvent_lastContent_constructor_0030
+    * @tc.desc    The lastContent of EventInfo is null, test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_lastContent_constructor_0030', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_lastContent_constructor_0030 starts`);
+
+    let lastContent = null;
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+      lastContent : lastContent,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_lastContent_constructor_0030 has error: ${err}`);
       expect(null).assertFail();
       done();
     });
@@ -2215,6 +3699,39 @@ describe('AccessibleSendEvent', function () {
   })
 
   /*
+    * @tc.number  SendEvent_beginIndex_constructor_0010
+    * @tc.name    SendEvent_beginIndex_constructor_0010
+    * @tc.desc    The beginIndex of EventInfo is 1, test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_beginIndex_constructor_0010', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_beginIndex_constructor_0010 starts`);
+
+    let beginIndex = 1;
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+      beginIndex : beginIndex,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_beginIndex_constructor_0010 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
     * @tc.number  SendEvent_beginIndex_0020
     * @tc.name    SendEvent_beginIndex_0020
     * @tc.desc    The beginIndex of EventInfo is 0, test sendEvent() function
@@ -2236,6 +3753,39 @@ describe('AccessibleSendEvent', function () {
       done();
     }).catch(err => {
       console.error(`AccessibleSendEvent: SendEvent_beginIndex_0020 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
+    * @tc.number  SendEvent_beginIndex_constructor_0020
+    * @tc.name    SendEvent_beginIndex_constructor_0020
+    * @tc.desc    The beginIndex of EventInfo is 0, test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_beginIndex_constructor_0020', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_beginIndex_constructor_0020 starts`);
+
+    let beginIndex = 0;
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+      beginIndex : beginIndex,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_beginIndex_constructor_0020 has error: ${err}`);
       expect(null).assertFail();
       done();
     });
@@ -2269,6 +3819,39 @@ describe('AccessibleSendEvent', function () {
   })
 
   /*
+    * @tc.number  SendEvent_beginIndex_constructor_0030
+    * @tc.name    SendEvent_beginIndex_constructor_0030
+    * @tc.desc    The beginIndex of EventInfo is -1, test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_beginIndex_constructor_0030', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_beginIndex_constructor_0030 starts`);
+
+    let beginIndex = -1;
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+      beginIndex : beginIndex,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_beginIndex_constructor_0030 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
       * @tc.number  SendEvent_currentIndex_0010
       * @tc.name    SendEvent_currentIndex_0010
       * @tc.desc    The currentIndex of EventInfo is 1, test sendEvent() function
@@ -2290,6 +3873,39 @@ describe('AccessibleSendEvent', function () {
       done();
     }).catch(err => {
       console.error(`AccessibleSendEvent: SendEvent_currentIndex_0010 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
+      * @tc.number  SendEvent_currentIndex_constructor_0010
+      * @tc.name    SendEvent_currentIndex_constructor_0010
+      * @tc.desc    The currentIndex of EventInfo is 1, test sendEvent() function
+      *             The result of sendEvent() should be equal to a promise of undefined
+      *             Another test point is to test whether the modified constructor (EventInfo)
+      *             works correctly.
+      * @tc.size    SmallTest
+      * @tc.type    User
+      */
+  it('SendEvent_currentIndex_constructor_0010', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_currentIndex_constructor_0010 starts`);
+
+    let currentIndex = 1;
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+      currentIndex : currentIndex,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_currentIndex_constructor_0010 has error: ${err}`);
       expect(null).assertFail();
       done();
     });
@@ -2323,6 +3939,37 @@ describe('AccessibleSendEvent', function () {
   })
 
   /*
+    * @tc.number  SendEvent_currentIndex_constructor_0020
+    * @tc.name    SendEvent_currentIndex_constructor_0020
+    * @tc.desc    The currentIndex of EventInfo is 0, test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_currentIndex_constructor_0020', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_currentIndex_constructor_0020 starts`);
+
+    let currentIndex = 0;
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+      currentIndex : currentIndex,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_currentIndex_constructor_0020 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
     * @tc.number  SendEvent_currentIndex_0030
     * @tc.name    SendEvent_currentIndex_0030
     * @tc.desc    The currentIndex of EventInfo is -1, test sendEvent() function
@@ -2344,6 +3991,39 @@ describe('AccessibleSendEvent', function () {
       done();
     }).catch(err => {
       console.error(`AccessibleSendEvent: SendEvent_currentIndex_0030 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
+    * @tc.number  SendEvent_currentIndex_constructor_0030
+    * @tc.name    SendEvent_currentIndex_constructor_0030
+    * @tc.desc    The currentIndex of EventInfo is -1, test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_currentIndex_constructor_0030', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_currentIndex_constructor_0030 starts`);
+
+    let currentIndex = -1;
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+      currentIndex : currentIndex,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_currentIndex_constructor_0030 has error: ${err}`);
       expect(null).assertFail();
       done();
     });
@@ -2377,6 +4057,39 @@ describe('AccessibleSendEvent', function () {
   })
 
   /*
+      * @tc.number  SendEvent_endIndex_constructor_0010
+      * @tc.name    SendEvent_endIndex_constructor_0010
+      * @tc.desc    The endIndex of EventInfo is 1, test sendEvent() function
+      *             The result of sendEvent() should be equal to a promise of undefined
+      *             Another test point is to test whether the modified constructor (EventInfo)
+      *             works correctly.
+      * @tc.size    SmallTest
+      * @tc.type    User
+      */
+  it('SendEvent_endIndex_constructor_0010', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_endIndex_constructor_0010 starts`);
+
+    let endIndex = 1;
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+      endIndex : endIndex,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_endIndex_constructor_0010 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
     * @tc.number  SendEvent_endIndex_0020
     * @tc.name    SendEvent_endIndex_0020
     * @tc.desc    The endIndex of EventInfo is 0, test sendEvent() function
@@ -2398,6 +4111,39 @@ describe('AccessibleSendEvent', function () {
       done();
     }).catch(err => {
       console.error(`AccessibleSendEvent: SendEvent_endIndex_0020 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
+    * @tc.number  SendEvent_endIndex_constructor_0020
+    * @tc.name    SendEvent_endIndex_constructor_0020
+    * @tc.desc    The endIndex of EventInfo is 0, test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_endIndex_constructor_0020', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_endIndex_constructor_0020 starts`);
+
+    let endIndex = 0;
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+      endIndex : endIndex,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_endIndex_constructor_0020 has error: ${err}`);
       expect(null).assertFail();
       done();
     });
@@ -2431,6 +4177,39 @@ describe('AccessibleSendEvent', function () {
   })
 
   /*
+    * @tc.number  SendEvent_endIndex_constructor_0030
+    * @tc.name    SendEvent_endIndex_constructor_0030
+    * @tc.desc    The endIndex of EventInfo is -1, test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_endIndex_constructor_0030', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_endIndex_constructor_0030 starts`);
+
+    let endIndex = -1;
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+      endIndex : endIndex,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_endIndex_constructor_0030 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
       * @tc.number  SendEvent_itemCount_0010
       * @tc.name    SendEvent_itemCount_0010
       * @tc.desc    The itemCount of EventInfo is 1, test sendEvent() function
@@ -2452,6 +4231,39 @@ describe('AccessibleSendEvent', function () {
       done();
     }).catch(err => {
       console.error(`AccessibleSendEvent: SendEvent_itemCount_0010 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
+      * @tc.number  SendEvent_itemCount_constructor_0010
+      * @tc.name    SendEvent_itemCount_constructor_0010
+      * @tc.desc    The itemCount of EventInfo is 1, test sendEvent() function
+      *             The result of sendEvent() should be equal to a promise of undefined
+      *             Another test point is to test whether the modified constructor (EventInfo)
+      *             works correctly.
+      * @tc.size    SmallTest
+      * @tc.type    User
+      */
+  it('SendEvent_itemCount_constructor_0010', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_itemCount_constructor_0010 starts`);
+
+    let itemCount = 1;
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+      itemCount : itemCount,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_itemCount_constructor_0010 has error: ${err}`);
       expect(null).assertFail();
       done();
     });
@@ -2485,6 +4297,39 @@ describe('AccessibleSendEvent', function () {
   })
 
   /*
+    * @tc.number  SendEvent_itemCount_constructor_0020
+    * @tc.name    SendEvent_itemCount_constructor_0020
+    * @tc.desc    The itemCount of EventInfo is 0, test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+  it('SendEvent_itemCount_constructor_0020', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_itemCount_constructor_0020 starts`);
+
+    let itemCount = 0;
+    let jsonObj = {
+      type : eventType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+      itemCount : itemCount,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_itemCount_constructor_0020 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
     * @tc.number  SendEvent_itemCount_0030
     * @tc.name    SendEvent_itemCount_0030
     * @tc.desc    The itemCount of EventInfo is -1, test sendEvent() function
@@ -2511,872 +4356,37 @@ describe('AccessibleSendEvent', function () {
     });
   })
 
-  /*
-    * @tc.number  SendEvent_categoryNotification_0010
-    * @tc.name    SendEvent_categoryNotification_0010
-    * @tc.desc    The categoryNotification of EventInfo is 'call', test sendEvent() function
+    /*
+    * @tc.number  SendEvent_itemCount_constructor_0030
+    * @tc.name    SendEvent_itemCount_constructor_0030
+    * @tc.desc    The itemCount of EventInfo is -1, test sendEvent() function
     *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
     * @tc.size    SmallTest
     * @tc.type    User
     */
-  it('SendEvent_categoryNotification_0010', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_categoryNotification_0010 starts`);
-
-    let event = new accessibility.EventInfo();
-    let categoryNotification = 'call';
-    event.type = eventType;
-    event.bundleName = bundleName;
-    event.triggerAction = triggerAction;
-    event.categoryNotification = categoryNotification;
-    accessibility.sendEvent(event).then((result) => {
-      expect(result).assertEqual(undefined);
-      done();
-    }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_categoryNotification_0010 has error: ${err}`);
-      expect(null).assertFail();
-      done();
-    });
-  })
-
-  /*
-    * @tc.number  SendEvent_categoryNotification_0020
-    * @tc.name    SendEvent_categoryNotification_0020
-    * @tc.desc    The categoryNotification of EventInfo is 'msg', test sendEvent() function
-    *             The result of sendEvent() should be equal to a promise of undefined
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-  it('SendEvent_categoryNotification_0020', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_categoryNotification_0020 starts`);
-
-    let event = new accessibility.EventInfo();
-    let categoryNotification = 'msg';
-    event.type = eventType;
-    event.bundleName = bundleName;
-    event.triggerAction = triggerAction;
-    event.categoryNotification = categoryNotification;
-    accessibility.sendEvent(event).then((result) => {
-      expect(result).assertEqual(undefined);
-      done();
-    }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_categoryNotification_0020 has error: ${err}`);
-      expect(null).assertFail();
-      done();
-    });
-  })
-
-  /*
-    * @tc.number  SendEvent_categoryNotification_0030
-    * @tc.name    SendEvent_categoryNotification_0030
-    * @tc.desc    The categoryNotification of EventInfo is 'email', test sendEvent() function
-    *             The result of sendEvent() should be equal to a promise of undefined
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-  it('SendEvent_categoryNotification_0030', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_categoryNotification_0030 starts`);
-
-    let event = new accessibility.EventInfo();
-    let categoryNotification = 'email';
-    event.type = eventType;
-    event.bundleName = bundleName;
-    event.triggerAction = triggerAction;
-    event.categoryNotification = categoryNotification;
-    accessibility.sendEvent(event).then((result) => {
-      expect(result).assertEqual(undefined);
-      done();
-    }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_categoryNotification_0030 has error: ${err}`);
-      expect(null).assertFail();
-      done();
-    });
-  })
-
-  /*
-    * @tc.number  SendEvent_categoryNotification_0040
-    * @tc.name    SendEvent_categoryNotification_0040
-    * @tc.desc    The categoryNotification of EventInfo is 'event', test sendEvent() function
-    *             The result of sendEvent() should be equal to a promise of undefined
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-  it('SendEvent_categoryNotification_0040', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_categoryNotification_0040 starts`);
-
-    let event = new accessibility.EventInfo();
-    let categoryNotification = 'event';
-    event.type = eventType;
-    event.bundleName = bundleName;
-    event.triggerAction = triggerAction;
-    event.categoryNotification = categoryNotification;
-    accessibility.sendEvent(event).then((result) => {
-      expect(result).assertEqual(undefined);
-      done();
-    }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_categoryNotification_0040 has error: ${err}`);
-      expect(null).assertFail();
-      done();
-    });
-  })
-
-  /*
-    * @tc.number  SendEvent_categoryNotification_0050
-    * @tc.name    SendEvent_categoryNotification_0050
-    * @tc.desc    The categoryNotification of EventInfo is 'promo', test sendEvent() function
-    *             The result of sendEvent() should be equal to a promise of undefined
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-  it('SendEvent_categoryNotification_0050', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_categoryNotification_0050 starts`);
-
-    let event = new accessibility.EventInfo();
-    let categoryNotification = 'promo';
-    event.type = eventType;
-    event.bundleName = bundleName;
-    event.triggerAction = triggerAction;
-    event.categoryNotification = categoryNotification;
-    accessibility.sendEvent(event).then((result) => {
-      expect(result).assertEqual(undefined);
-      done();
-    }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_categoryNotification_0050 has error: ${err}`);
-      expect(null).assertFail();
-      done();
-    });
-  })
-
-  /*
-    * @tc.number  SendEvent_categoryNotification_0060
-    * @tc.name    SendEvent_categoryNotification_0060
-    * @tc.desc    The categoryNotification of EventInfo is 'alarm', test sendEvent() function
-    *             The result of sendEvent() should be equal to a promise of undefined
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-  it('SendEvent_categoryNotification_0060', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_categoryNotification_0060 starts`);
-
-    let event = new accessibility.EventInfo();
-    let categoryNotification = 'alarm';
-    event.type = eventType;
-    event.bundleName = bundleName;
-    event.triggerAction = triggerAction;
-    event.categoryNotification = categoryNotification;
-    accessibility.sendEvent(event).then((result) => {
-      expect(result).assertEqual(undefined);
-      done();
-    }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_categoryNotification_0060 has error: ${err}`);
-      expect(null).assertFail();
-      done();
-    });
-  })
-
-  /*
-    * @tc.number  SendEvent_categoryNotification_0070
-    * @tc.name    SendEvent_categoryNotification_0070
-    * @tc.desc    The categoryNotification of EventInfo is 'progress', test sendEvent() function
-    *             The result of sendEvent() should be equal to a promise of undefined
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-  it('SendEvent_categoryNotification_0070', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_categoryNotification_0070 starts`);
-
-    let event = new accessibility.EventInfo();
-    let categoryNotification = 'progress';
-    event.type = eventType;
-    event.bundleName = bundleName;
-    event.triggerAction = triggerAction;
-    event.categoryNotification = categoryNotification;
-    accessibility.sendEvent(event).then((result) => {
-      expect(result).assertEqual(undefined);
-      done();
-    }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_categoryNotification_0070 has error: ${err}`);
-      expect(null).assertFail();
-      done();
-    });
-  })
-
-  /*
-    * @tc.number  SendEvent_categoryNotification_0080
-    * @tc.name    SendEvent_categoryNotification_0080
-    * @tc.desc    The categoryNotification of EventInfo is 'social', test sendEvent() function
-    *             The result of sendEvent() should be equal to a promise of undefined
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-  it('SendEvent_categoryNotification_0080', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_categoryNotification_0080 starts`);
-
-    let event = new accessibility.EventInfo();
-    let categoryNotification = 'social';
-    event.type = eventType;
-    event.bundleName = bundleName;
-    event.triggerAction = triggerAction;
-    event.categoryNotification = categoryNotification;
-    accessibility.sendEvent(event).then((result) => {
-      expect(result).assertEqual(undefined);
-      done();
-    }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_categoryNotification_0080 has error: ${err}`);
-      expect(null).assertFail();
-      done();
-    });
-  })
-
-  /*
-    * @tc.number  SendEvent_categoryNotification_0090
-    * @tc.name    SendEvent_categoryNotification_0090
-    * @tc.desc    The categoryNotification of EventInfo is 'err', test sendEvent() function
-    *             The result of sendEvent() should be equal to a promise of undefined
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-  it('SendEvent_categoryNotification_0090', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_categoryNotification_0090 starts`);
-
-    let event = new accessibility.EventInfo();
-    let categoryNotification = 'err';
-    event.type = eventType;
-    event.bundleName = bundleName;
-    event.triggerAction = triggerAction;
-    event.categoryNotification = categoryNotification;
-    accessibility.sendEvent(event).then((result) => {
-      expect(result).assertEqual(undefined);
-      done();
-    }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_categoryNotification_0090 has error: ${err}`);
-      expect(null).assertFail();
-      done();
-    });
-  })
-
-  /*
-    * @tc.number  SendEvent_categoryNotification_0100
-    * @tc.name    SendEvent_categoryNotification_0100
-    * @tc.desc    The categoryNotification of EventInfo is 'transport', test sendEvent() function
-    *             The result of sendEvent() should be equal to a promise of undefined
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-  it('SendEvent_categoryNotification_0100', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_categoryNotification_0100 starts`);
-
-    let event = new accessibility.EventInfo();
-    let categoryNotification = 'transport';
-    event.type = eventType;
-    event.bundleName = bundleName;
-    event.triggerAction = triggerAction;
-    event.categoryNotification = categoryNotification;
-    accessibility.sendEvent(event).then((result) => {
-      expect(result).assertEqual(undefined);
-      done();
-    }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_categoryNotification_0100 has error: ${err}`);
-      expect(null).assertFail();
-      done();
-    });
-  })
-
-  /*
-    * @tc.number  SendEvent_categoryNotification_0110
-    * @tc.name    SendEvent_categoryNotification_0110
-    * @tc.desc    The categoryNotification of EventInfo is 'sys', test sendEvent() function
-    *             The result of sendEvent() should be equal to a promise of undefined
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-  it('SendEvent_categoryNotification_0110', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_categoryNotification_0110 starts`);
-
-    let event = new accessibility.EventInfo();
-    let categoryNotification = 'sys';
-    event.type = eventType;
-    event.bundleName = bundleName;
-    event.triggerAction = triggerAction;
-    event.categoryNotification = categoryNotification;
-    accessibility.sendEvent(event).then((result) => {
-      expect(result).assertEqual(undefined);
-      done();
-    }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_categoryNotification_0110 has error: ${err}`);
-      expect(null).assertFail();
-      done();
-    });
-  })
-
-  /*
-    * @tc.number  SendEvent_categoryNotification_0120
-    * @tc.name    SendEvent_categoryNotification_0120
-    * @tc.desc    The categoryNotification of EventInfo is 'service', test sendEvent() function
-    *             The result of sendEvent() should be equal to a promise of undefined
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-  it('SendEvent_categoryNotification_0120', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_categoryNotification_0120 starts`);
-
-    let event = new accessibility.EventInfo();
-    let categoryNotification = 'service';
-    event.type = eventType;
-    event.bundleName = bundleName;
-    event.triggerAction = triggerAction;
-    event.categoryNotification = categoryNotification;
-    accessibility.sendEvent(event).then((result) => {
-      expect(result).assertEqual(undefined);
-      done();
-    }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_categoryNotification_0120 has error: ${err}`);
-      expect(null).assertFail();
-      done();
-    });
-  })
-
-  /*
-    * @tc.number  SendEvent_categoryNotification_0130
-    * @tc.name    SendEvent_categoryNotification_0130
-    * @tc.desc    The categoryNotification of EventInfo is '', test sendEvent() function
-    *             The result of sendEvent() should be equal to a promise of undefined
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-  it('SendEvent_categoryNotification_0130', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_categoryNotification_0130 starts`);
-
-    let event = new accessibility.EventInfo();
-    let categoryNotification = '';
-    event.type = eventType;
-    event.bundleName = bundleName;
-    event.triggerAction = triggerAction;
-    event.categoryNotification = categoryNotification;
-    accessibility.sendEvent(event).then((result) => {
-      expect(result).assertEqual(undefined);
-      done();
-    }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_categoryNotification_0130 has error: ${err}`);
-      expect(null).assertFail();
-      done();
-    });
-  })
-
-  /*
-    * @tc.number  SendEvent_categoryNotification_0140
-    * @tc.name    SendEvent_categoryNotification_0140
-    * @tc.desc    The categoryNotification of EventInfo is null, test sendEvent() function
-    *             The result of sendEvent() should be equal to a promise of undefined
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-  it('SendEvent_categoryNotification_0140', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_categoryNotification_0140 starts`);
-
-    let event = new accessibility.EventInfo();
-    let categoryNotification = null;
-    event.type = eventType;
-    event.bundleName = bundleName;
-    event.triggerAction = triggerAction;
-    event.categoryNotification = categoryNotification;
-    accessibility.sendEvent(event).then((result) => {
-      expect(result).assertEqual(undefined);
-      done();
-    }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_categoryNotification_0140 has error: ${err}`);
-      expect(null).assertFail();
-      done();
-    });
-  })
-
-  /*
-    * @tc.number  SendEvent_gestureType_0010
-    * @tc.name    SendEvent_gestureType_0010
-    * @tc.desc    The gestureType of EventInfo is 'left', test sendEvent() function
-    *             The result of sendEvent() should be equal to a promise of undefined
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-  it('SendEvent_gestureType_0010', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_gestureType_0010 starts`);
-
-    let event = new accessibility.EventInfo();
-    let gestureType = 'left';
-    event.type = eventType;
-    event.bundleName = bundleName;
-    event.triggerAction = triggerAction;
-    event.gestureType = gestureType;
-    accessibility.sendEvent(event).then((result) => {
-      expect(result).assertEqual(undefined);
-      done();
-    }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_gestureType_0010 has error: ${err}`);
-      expect(null).assertFail();
-      done();
-    });
-  })
-
-  /*
-    * @tc.number  SendEvent_gestureType_0020
-    * @tc.name    SendEvent_gestureType_0020
-    * @tc.desc    The gestureType of EventInfo is 'leftThenRight', test sendEvent() function
-    *             The result of sendEvent() should be equal to a promise of undefined
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-  it('SendEvent_gestureType_0020', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_gestureType_0020 starts`);
-
-    let event = new accessibility.EventInfo();
-    let gestureType = 'leftThenRight';
-    event.type = eventType;
-    event.bundleName = bundleName;
-    event.triggerAction = triggerAction;
-    event.gestureType = gestureType;
-    accessibility.sendEvent(event).then((result) => {
-      expect(result).assertEqual(undefined);
-      done();
-    }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_gestureType_0020 has error: ${err}`);
-      expect(null).assertFail();
-      done();
-    });
-  })
-
-  /*
-    * @tc.number  SendEvent_gestureType_0030
-    * @tc.name    SendEvent_gestureType_0030
-    * @tc.desc    The gestureType of EventInfo is 'leftThenUp', test sendEvent() function
-    *             The result of sendEvent() should be equal to a promise of undefined
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-  it('SendEvent_gestureType_0030', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_gestureType_0030 starts`);
-
-    let event = new accessibility.EventInfo();
-    let gestureType = 'leftThenUp';
-    event.type = eventType;
-    event.bundleName = bundleName;
-    event.triggerAction = triggerAction;
-    event.gestureType = gestureType;
-    accessibility.sendEvent(event).then((result) => {
-      expect(result).assertEqual(undefined);
-      done();
-    }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_gestureType_0030 has error: ${err}`);
-      expect(null).assertFail();
-      done();
-    });
-  })
-
-  /*
-    * @tc.number  SendEvent_gestureType_0040
-    * @tc.name    SendEvent_gestureType_0040
-    * @tc.desc    The gestureType of EventInfo is 'leftThenDown', test sendEvent() function
-    *             The result of sendEvent() should be equal to a promise of undefined
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-  it('SendEvent_gestureType_0040', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_gestureType_0040 starts`);
-
-    let event = new accessibility.EventInfo();
-    let gestureType = 'leftThenDown';
-    event.type = eventType;
-    event.bundleName = bundleName;
-    event.triggerAction = triggerAction;
-    event.gestureType = gestureType;
-    accessibility.sendEvent(event).then((result) => {
-      expect(result).assertEqual(undefined);
-      done();
-    }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_gestureType_0040 has error: ${err}`);
-      expect(null).assertFail();
-      done();
-    });
-  })
-
-  /*
-    * @tc.number  SendEvent_gestureType_0050
-    * @tc.name    SendEvent_gestureType_0050
-    * @tc.desc    The gestureType of EventInfo is 'right', test sendEvent() function
-    *             The result of sendEvent() should be equal to a promise of undefined
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-  it('SendEvent_gestureType_0050', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_gestureType_0050 starts`);
-
-    let event = new accessibility.EventInfo();
-    let gestureType = 'right';
-    event.type = eventType;
-    event.bundleName = bundleName;
-    event.triggerAction = triggerAction;
-    event.gestureType = gestureType;
-    accessibility.sendEvent(event).then((result) => {
-      expect(result).assertEqual(undefined);
-      done();
-    }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_gestureType_0050 has error: ${err}`);
-      expect(null).assertFail();
-      done();
-    });
-  })
-
-  /*
-    * @tc.number  SendEvent_gestureType_0060
-    * @tc.name    SendEvent_gestureType_0060
-    * @tc.desc    The gestureType of EventInfo is 'rightThenLeft', test sendEvent() function
-    *             The result of sendEvent() should be equal to a promise of undefined
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-  it('SendEvent_gestureType_0060', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_gestureType_0060 starts`);
-
-    let event = new accessibility.EventInfo();
-    let gestureType = 'rightThenLeft';
-    event.type = eventType;
-    event.bundleName = bundleName;
-    event.triggerAction = triggerAction;
-    event.gestureType = gestureType;
-    accessibility.sendEvent(event).then((result) => {
-      expect(result).assertEqual(undefined);
-      done();
-    }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_gestureType_0060 has error: ${err}`);
-      expect(null).assertFail();
-      done();
-    });
-  })
-
-  /*
-    * @tc.number  SendEvent_gestureType_0070
-    * @tc.name    SendEvent_gestureType_0070
-    * @tc.desc    The gestureType of EventInfo is 'rightThenUp', test sendEvent() function
-    *             The result of sendEvent() should be equal to a promise of undefined
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-  it('SendEvent_gestureType_0070', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_gestureType_0070 starts`);
-
-    let event = new accessibility.EventInfo();
-    let gestureType = 'rightThenUp';
-    event.type = eventType;
-    event.bundleName = bundleName;
-    event.triggerAction = triggerAction;
-    event.gestureType = gestureType;
-    accessibility.sendEvent(event).then((result) => {
-      expect(result).assertEqual(undefined);
-      done();
-    }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_gestureType_0070 has error: ${err}`);
-      expect(null).assertFail();
-      done();
-    });
-  })
-
-  /*
-    * @tc.number  SendEvent_gestureType_0080
-    * @tc.name    SendEvent_gestureType_0080
-    * @tc.desc    The gestureType of EventInfo is 'rightThenDown', test sendEvent() function
-    *             The result of sendEvent() should be equal to a promise of undefined
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-  it('SendEvent_gestureType_0080', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_gestureType_0080 starts`);
-
-    let event = new accessibility.EventInfo();
-    let gestureType = 'rightThenDown';
-    event.type = eventType;
-    event.bundleName = bundleName;
-    event.triggerAction = triggerAction;
-    event.gestureType = gestureType;
-    accessibility.sendEvent(event).then((result) => {
-      expect(result).assertEqual(undefined);
-      done();
-    }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_gestureType_0080 has error: ${err}`);
-      expect(null).assertFail();
-      done();
-    });
-  })
-
-  /*
-    * @tc.number  SendEvent_gestureType_0090
-    * @tc.name    SendEvent_gestureType_0090
-    * @tc.desc    The gestureType of EventInfo is 'up', test sendEvent() function
-    *             The result of sendEvent() should be equal to a promise of undefined
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-  it('SendEvent_gestureType_0090', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_gestureType_0090 starts`);
-
-    let event = new accessibility.EventInfo();
-    let gestureType = 'up';
-    event.type = eventType;
-    event.bundleName = bundleName;
-    event.triggerAction = triggerAction;
-    event.gestureType = gestureType;
-    accessibility.sendEvent(event).then((result) => {
-      expect(result).assertEqual(undefined);
-      done();
-    }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_gestureType_0090 has error: ${err}`);
-      expect(null).assertFail();
-      done();
-    });
-  })
-
-  /*
-    * @tc.number  SendEvent_gestureType_0100
-    * @tc.name    SendEvent_gestureType_0100
-    * @tc.desc    The gestureType of EventInfo is 'upThenLeft', test sendEvent() function
-    *             The result of sendEvent() should be equal to a promise of undefined
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-  it('SendEvent_gestureType_0100', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_gestureType_0100 starts`);
-
-    let event = new accessibility.EventInfo();
-    let gestureType = 'upThenLeft';
-    event.type = eventType;
-    event.bundleName = bundleName;
-    event.triggerAction = triggerAction;
-    event.gestureType = gestureType;
-    accessibility.sendEvent(event).then((result) => {
-      expect(result).assertEqual(undefined);
-      done();
-    }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_gestureType_0100 has error: ${err}`);
-      expect(null).assertFail();
-      done();
-    });
-  })
-
-  /*
-    * @tc.number  SendEvent_gestureType_0110
-    * @tc.name    SendEvent_gestureType_0110
-    * @tc.desc    The gestureType of EventInfo is 'upThenRight', test sendEvent() function
-    *             The result of sendEvent() should be equal to a promise of undefined
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-  it('SendEvent_gestureType_0110', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_gestureType_0110 starts`);
-
-    let event = new accessibility.EventInfo();
-    let gestureType = 'upThenRight';
-    event.type = eventType;
-    event.bundleName = bundleName;
-    event.triggerAction = triggerAction;
-    event.gestureType = gestureType;
-    accessibility.sendEvent(event).then((result) => {
-      expect(result).assertEqual(undefined);
-      done();
-    }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_gestureType_0110 has error: ${err}`);
-      expect(null).assertFail();
-      done();
-    });
-  })
-
-  /*
-    * @tc.number  SendEvent_gestureType_0120
-    * @tc.name    SendEvent_gestureType_0120
-    * @tc.desc    The gestureType of EventInfo is 'upThenDown', test sendEvent() function
-    *             The result of sendEvent() should be equal to a promise of undefined
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-  it('SendEvent_gestureType_0120', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_gestureType_0120 starts`);
-
-    let event = new accessibility.EventInfo();
-    let gestureType = 'upThenDown';
-    event.type = eventType;
-    event.bundleName = bundleName;
-    event.triggerAction = triggerAction;
-    event.gestureType = gestureType;
-    accessibility.sendEvent(event).then((result) => {
-      expect(result).assertEqual(undefined);
-      done();
-    }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_gestureType_0120 has error: ${err}`);
-      expect(null).assertFail();
-      done();
-    });
-  })
-
-  /*
-    * @tc.number  SendEvent_gestureType_0130
-    * @tc.name    SendEvent_gestureType_0130
-    * @tc.desc    The gestureType of EventInfo is 'down', test sendEvent() function
-    *             The result of sendEvent() should be equal to a promise of undefined
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-  it('SendEvent_gestureType_0130', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_gestureType_0130 starts`);
-
-    let event = new accessibility.EventInfo();
-    let gestureType = 'down';
-    event.type = eventType;
-    event.bundleName = bundleName;
-    event.triggerAction = triggerAction;
-    event.gestureType = gestureType;
-    accessibility.sendEvent(event).then((result) => {
-      expect(result).assertEqual(undefined);
-      done();
-    }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_gestureType_0130 has error: ${err}`);
-      expect(null).assertFail();
-      done();
-    });
-  })
-
-  /*
-    * @tc.number  SendEvent_gestureType_0140
-    * @tc.name    SendEvent_gestureType_0140
-    * @tc.desc    The gestureType of EventInfo is 'downThenLeft', test sendEvent() function
-    *             The result of sendEvent() should be equal to a promise of undefined
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-  it('SendEvent_gestureType_0140', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_gestureType_0140 starts`);
-
-    let event = new accessibility.EventInfo();
-    let gestureType = 'downThenLeft';
-    event.type = eventType;
-    event.bundleName = bundleName;
-    event.triggerAction = triggerAction;
-    event.gestureType = gestureType;
-    accessibility.sendEvent(event).then((result) => {
-      expect(result).assertEqual(undefined);
-      done();
-    }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_gestureType_0140 has error: ${err}`);
-      expect(null).assertFail();
-      done();
-    });
-  })
-
-  /*
-    * @tc.number  SendEvent_gestureType_0150
-    * @tc.name    SendEvent_gestureType_0150
-    * @tc.desc    The gestureType of EventInfo is 'downThenRight', test sendEvent() function
-    *             The result of sendEvent() should be equal to a promise of undefined
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-  it('SendEvent_gestureType_0150', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_gestureType_0150 starts`);
-
-    let event = new accessibility.EventInfo();
-    let gestureType = 'downThenRight';
-    event.type = eventType;
-    event.bundleName = bundleName;
-    event.triggerAction = triggerAction;
-    event.gestureType = gestureType;
-    accessibility.sendEvent(event).then((result) => {
-      expect(result).assertEqual(undefined);
-      done();
-    }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_gestureType_0150 has error: ${err}`);
-      expect(null).assertFail();
-      done();
-    });
-  })
-
-  /*
-    * @tc.number  SendEvent_gestureType_0160
-    * @tc.name    SendEvent_gestureType_0160
-    * @tc.desc    The gestureType of EventInfo is 'downThenUp', test sendEvent() function
-    *             The result of sendEvent() should be equal to a promise of undefined
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-  it('SendEvent_gestureType_0160', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_gestureType_0160 starts`);
-
-    let event = new accessibility.EventInfo();
-    let gestureType = 'downThenUp';
-    event.type = eventType;
-    event.bundleName = bundleName;
-    event.triggerAction = triggerAction;
-    event.gestureType = gestureType;
-    accessibility.sendEvent(event).then((result) => {
-      expect(result).assertEqual(undefined);
-      done();
-    }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_gestureType_0160 has error: ${err}`);
-      expect(null).assertFail();
-      done();
-    });
-  })
-
-  /*
-    * @tc.number  SendEvent_gestureType_0170
-    * @tc.name    SendEvent_gestureType_0170
-    * @tc.desc    The gestureType of EventInfo is '', test sendEvent() function
-    *             The result of sendEvent() should be equal to a promise of undefined
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-  it('SendEvent_gestureType_0170', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_gestureType_0170 starts`);
-
-    let event = new accessibility.EventInfo();
-    let gestureType = '';
-    event.type = eventType;
-    event.bundleName = bundleName;
-    event.triggerAction = triggerAction;
-    event.gestureType = gestureType;
-    accessibility.sendEvent(event).then((result) => {
-      expect(result).assertEqual(undefined);
-      done();
-    }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_gestureType_0170 has error: ${err}`);
-      expect(null).assertFail();
-      done();
-    });
-  })
-
-  /*
-    * @tc.number  SendEvent_gestureType_0180
-    * @tc.name    SendEvent_gestureType_0180
-    * @tc.desc    The gestureType of EventInfo is null, test sendEvent() function
-    *             The result of sendEvent() should be equal to a promise of undefined
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-  it('SendEvent_gestureType_0180', 0, async function (done) {
-    console.info(`AccessibleSendEvent: SendEvent_gestureType_0180 starts`);
-
-    let event = new accessibility.EventInfo();
-    let gestureType = null;
-    event.type = eventType;
-    event.bundleName = bundleName;
-    event.triggerAction = triggerAction;
-    event.gestureType = gestureType;
-    accessibility.sendEvent(event).then((result) => {
-      expect(result).assertEqual(undefined);
-      done();
-    }).catch(err => {
-      console.error(`AccessibleSendEvent: SendEvent_gestureType_0180 has error: ${err}`);
-      expect(null).assertFail();
-      done();
-    });
-  })
-
-    
-    
+    it('SendEvent_itemCount_constructor_0030', 0, async function (done) {
+      console.info(`AccessibleSendEvent: SendEvent_itemCount_constructor_0030 starts`);
+  
+      let itemCount = -1;
+      let jsonObj = {
+        type : eventType,
+        bundleName : bundleName,
+        triggerAction : triggerAction,
+        itemCount : itemCount,
+      }
+  
+      let event = new accessibility.EventInfo(jsonObj);
+
+      accessibility.sendEvent(event).then((result) => {
+        expect(result).assertEqual(undefined);
+        done();
+      }).catch(err => {
+        console.error(`AccessibleSendEvent: SendEvent_itemCount_constructor_0030 has error: ${err}`);
+        expect(null).assertFail();
+        done();
+      });
+    })
 })
-
 }

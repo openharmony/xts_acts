@@ -19,70 +19,129 @@ var time = 1000
 var WantAgent;
 export default function ActsAnsWantAgentOneProTest() {
 describe('ActsAnsWantAgentOneProTest', function () {
-    console.info('----ActsWantAgentTest----');
+  console.info("----ActsWantAgentTest----");
 
-    /*
-     * @tc.number: ACTS_SetWant_0200
-     * @tc.name: getWantAgent(OperationType.START_ABILITY)
-     * @tc.desc: verify the function of getWantAgent(OperationType.START_ABILITY)
-     */
-    it('ACTS_SetWant_0200', 0, async function (done) {
-        var agentInfo = {
-            wants: [
-                    {
-                        bundleName: "com.example.WantAgentTest1",
-                        abilityName: "com.example.WantAgentTest1.MainAbility",
-                        action: "action1",
-                        entities: ["entity1"],
-                        type: "MIMETYPE",
-                        uri: "key={true,true,false}",
-                        parameters:
-                        {
-                            mykey0: 2222,
-                            mykey1: [1, 2, 3],
-                            mykey2: "[1, 2, 3]",
-                            mykey3: "ssssssssssssssssssssssssss",
-                            mykey4: [false, true, false],
-                            mykey5: ["qqqqq", "wwwwww", "aaaaaaaaaaaaaaaaa"],
-                            mykey6: true,
-                        }
-                    },
-            ],
-            operationType: wantAgent.OperationType.START_ABILITY,
-            requestCode: 0,
-            wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
+  /*
+   * @tc.number: ACTS_SetWant_0200
+   * @tc.name: getWantAgent(OperationType.START_ABILITY)
+   * @tc.desc: verify the function of getWantAgent(OperationType.START_ABILITY)
+   */
+  it("ACTS_SetWant_0200", 0, async function (done) {
+    var agentInfo = {
+      wants: [
+        {
+          bundleName: "com.example.WantAgentTest1",
+          abilityName: "com.example.WantAgentTest1.MainAbility",
+          action: "action1",
+          entities: ["entity1"],
+          type: "MIMETYPE",
+          uri: "key={true,true,false}",
+          parameters: {
+            mykey0: 2222,
+            mykey1: [1, 2, 3],
+            mykey2: "[1, 2, 3]",
+            mykey3: "ssssssssssssssssssssssssss",
+            mykey4: [false, true, false],
+            mykey5: ["qqqqq", "wwwwww", "aaaaaaaaaaaaaaaaa"],
+            mykey6: true,
+          },
+        },
+      ],
+      operationType: wantAgent.OperationType.START_ABILITY,
+      requestCode: 0,
+      wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG],
+    };
+    console.info("----getWantAgent before----");
+    wantAgent.getWantAgent(agentInfo).then((data) => {
+      WantAgent = data;
+      console.info("----getWantAgent success!----");
+      console.info(JSON.stringify(data));
+      expect(typeof data).assertEqual("object");
+      var triggerInfo = {
+        code: 0,
+      };
+      wantAgent.trigger(WantAgent, triggerInfo, (err, data) => {
+        if (err.code == 0) {
+          console.info("----trigger success!----");
+          console.info("== trigger data  " + JSON.stringify(data));
+        } else {
+          console.info("----trigger failed!----");
+          console.info("== trigger data  " + JSON.stringify(data));
         }
-        console.info('----getWantAgent before----');
-        wantAgent.getWantAgent(agentInfo).then(
-            (data) => {
-                WantAgent = data;
-                console.info('----getWantAgent success!----');
-                console.info(JSON.stringify(data));
-                expect(typeof(data)).assertEqual("object");
-                var triggerInfo = {
-                    code:0
-                }
-                 wantAgent.trigger(WantAgent, triggerInfo,
-                    (err, data) => {
-                        if (err.code == 0) {
-                            console.info('----trigger success!----');
-                            console.info('== trigger data  ' + JSON.stringify(data) );
-                        } else {
-                            console.info('----trigger failed!----');
-                            console.info('== trigger data  ' + JSON.stringify(data) );
-                        }
-                        done();
-                    }
-                );
-                done();
-               
-            }
-        );
-	setTimeout(function(){
-            console.debug("====>time out ACTS_SetWant_0200====>");
-        }, time);
-        console.info('----getWantAgent after----');
-    })
+        done();
+      });
+      done();
+    });
+    setTimeout(function () {
+      console.debug("====>time out ACTS_SetWant_0200====>");
+    }, time);
+    console.info("----getWantAgent after----");
+  });
+
+  /*
+   * @tc.number: ACTS_SetWant_0300
+   * @tc.name: getWantAgent(OperationType.START_ABILITY)
+   * @tc.desc: verify the function of getWantAgent(OperationType.START_ABILITY)
+   */
+  it("ACTS_SetWant_0300", 0, async function (done) {
+    var agentInfo = {
+      wants: [
+        {
+          bundleName: "com.example.WantAgentTest1",
+          abilityName: "com.example.WantAgentTest1.MainAbility",
+          action: "action1",
+          entities: ["entity1"],
+          type: "MIMETYPE",
+          uri: "key={true,true,false}",
+          parameters: {
+            mykey0: 2222,
+            mykey1: [1, 2, 3],
+            mykey2: "[1, 2, 3]",
+            mykey3: "ssssssssssssssssssssssssss",
+            mykey4: [false, true, false],
+            mykey5: ["qqqqq", "wwwwww", "aaaaaaaaaaaaaaaaa"],
+            mykey6: true,
+          },
+        },
+      ],
+      operationType: wantAgent.OperationType.START_ABILITY,
+      requestCode: 0,
+      wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG],
+      extraInfo: {
+        key1:'test_extraInfo'
+      }
+    };
+    console.info("----getWantAgent before----");
+    wantAgent.getWantAgent(agentInfo).then((data) => {
+      WantAgent = data;
+      console.info("----getWantAgent success!----");
+      console.info(JSON.stringify(data));
+      expect(typeof data).assertEqual("object");
+      var triggerInfo = {
+        code: 0,
+        want:WantAgent,
+        permission:'',
+        extraInfo: {
+            key1:'test_triggerInfo'
+          }
+      };
+      wantAgent.trigger(WantAgent, triggerInfo, (err, data) => {
+        if (err.code == 0) {
+          console.info("----trigger success!----");
+          console.info("== trigger data  " + JSON.stringify(data));
+        } else {
+          console.info("----trigger failed!----");
+          console.info("== trigger data  " + JSON.stringify(data));
+        }
+        done();
+      });
+      done();
+    });
+    setTimeout(function () {
+      console.debug("====>time out ACTS_SetWant_0200====>");
+    }, time);
+    console.info("----getWantAgent after----");
+  });
 })
 
 }

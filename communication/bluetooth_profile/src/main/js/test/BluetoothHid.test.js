@@ -227,4 +227,24 @@ describe('bluetoothhostTest_host_2', function () {
 })
 
 
+    /**
+     * @tc.number SUB_COMMUNACATION_bluetoothble_PANProfile_Tethering_0001
+     * @tc.name testonsppReadOn
+     * @tc.desc Test sppReadOn api .
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('SUB_COMMUNACATION_bluetoothble_PANProfile_Tethering_0001', 0, async function (done) {
+        await tryToEnableBt();
+        console.info('[bluetooth_js] tethering test start');
+        let panProfile = bluetooth.getProfile(bluetooth.ProfileId.PROFILE_PAN_NETWORK);
+        let ret = panProfile.setTethering(false);
+        console.info("[bluetooth_js] setTethering false result "+JSON.stringify(ret));
+        let result = panProfile.isTetheringOn();
+        console.info("[bluetooth_js] setTethering getTetheringOn result1 false== "+JSON.stringify(result));
+        expect(result).assertFalse();
+        done();
+        })
+
 }

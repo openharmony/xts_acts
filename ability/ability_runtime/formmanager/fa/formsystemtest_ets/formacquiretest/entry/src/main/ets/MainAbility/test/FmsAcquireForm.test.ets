@@ -15,7 +15,7 @@
 
 import featureAbility from "@ohos.ability.featureAbility";
 import commonEvent from '@ohos.commonEvent';
-import { beforeEach, describe, expect, it } from "deccjsunit/index";
+import { beforeEach, afterEach, describe, expect, it } from "deccjsunit/index";
 
 var onErrorForm_Event = {
     events: ["FMS_FormOnError_commonEvent"],
@@ -29,6 +29,10 @@ var subscriberFormCastEvent = {
 var onSupplyEvent = {
     events: ["FMS_FormSupply_commonEvent"],
 };
+
+const unsubscribeCallback = (tcNumber) => {
+    console.info(`====>${tcNumber} unsubscribeCallback====>`);
+}
 
 var deleteForm_Event = "FMS_FormDelete_commonEvent";
 
@@ -45,6 +49,14 @@ export default function test() {
             subscriberOnAcquired = await commonEvent.createSubscriber(onAcquiredForm_Event);
             subscriberCast = await commonEvent.createSubscriber(subscriberFormCastEvent);
             subscriberSupply = await commonEvent.createSubscriber(onSupplyEvent);
+            await sleep(1000);
+        })
+
+        afterEach(async() => {
+            commonEvent.unsubscribe(subscriberOnError, () => unsubscribeCallback("afterEach unsubscribe subscriberOnError"));
+            commonEvent.unsubscribe(subscriberOnAcquired, () => unsubscribeCallback("afterEach unsubscribe subscriberOnAcquired"));
+            commonEvent.unsubscribe(subscriberCast, () => unsubscribeCallback("afterEach unsubscribe subscriberCast"));
+            commonEvent.unsubscribe(subscriberSupply, () => unsubscribeCallback("afterEach unsubscribe subscriberSupply"));
             await sleep(1000);
         })
 

@@ -13,4 +13,7 @@
  * limitations under the License.
  */
 
-require('./AudioRecorderFormatCompatibilityTest.test.js')
+import AudioRecorderFormatCompatibilityTest from './AudioRecorderFormatCompatibilityTest.test.js'
+export default function testsuite() {
+AudioRecorderFormatCompatibilityTest()
+}

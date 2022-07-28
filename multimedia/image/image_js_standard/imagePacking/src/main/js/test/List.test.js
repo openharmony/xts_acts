@@ -13,4 +13,7 @@
  * limitations under the License.
  */
 
-require('./packing.test.js')
+import Image_test from './packing.test.js'
+export default function testsuite() {
+    Image_test()
+}

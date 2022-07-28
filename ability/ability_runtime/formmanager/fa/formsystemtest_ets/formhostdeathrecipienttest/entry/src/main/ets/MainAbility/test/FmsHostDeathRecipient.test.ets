@@ -15,7 +15,7 @@
 
 import featureAbility from '@ohos.ability.featureAbility';
 import commonEvent from '@ohos.commonEvent';
-import { beforeEach, describe, expect, it } from 'deccjsunit/index';
+import { beforeEach, afterEach, describe, expect, it } from 'deccjsunit/index';
 
 const onAcquiredEvent = {
     events: [`FMS_FormOnAcquired_commonEvent`],
@@ -27,6 +27,11 @@ const onRequestEvent = {
     events: [`FMS_FormOnRequest_commonEvent`],
 };
 const formOnTerminateEvent = `FMS_FormTerminate_commonEvent`;
+
+const unsubscribeCallback = (tcNumber) => {
+    console.info(`====>${tcNumber} unsubscribeCallback====>`);
+}
+
 
 let tcNumber;
 let hostCounter;
@@ -46,6 +51,13 @@ export default function test() {
             onSupplyEventSubscriber = await commonEvent.createSubscriber(onSupplyEvent);
             onRequestEventSubscriber = await commonEvent.createSubscriber(onRequestEvent);
         });
+
+        afterEach(async() => {
+            commonEvent.unsubscribe(onAcquiredEventSubscriber, () => unsubscribeCallback("afterEach unsubscribe onAcquiredEventSubscriber"));
+            commonEvent.unsubscribe(onSupplyEventSubscriber, () => unsubscribeCallback("afterEach unsubscribe onSupplyEventSubscriber"));
+            commonEvent.unsubscribe(onRequestEventSubscriber, () => unsubscribeCallback("afterEach unsubscribe onRequestEventSubscriber"));
+            await sleep(1000);
+        })
 
         /**
          * @tc.number: FMS_hostDeathRecipient_0200

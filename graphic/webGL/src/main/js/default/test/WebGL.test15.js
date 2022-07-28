@@ -380,4 +380,138 @@ describe('webgl1Test_webgl15', function() {
 		expect(stencilMaskSeparateParameter).assertEqual(110101);
 		done();
 	});
+
+	/**
+	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_1338
+	 * @tc.name webgl_test_webglContextAttributes
+	 * @tc.desc Test webglContextAttributes.
+	 */
+	 it('webgl_test_webglContextAttributes_0', 0, async function(done) {
+		console.info("webgltest into webglContextAttributes");
+		const ContextAttributesValue = gl.getContextAttributes();
+    	ContextAttributesValue.alpha = true;
+		const alphaValue = ContextAttributesValue.alpha;
+		console.info("webgltest webglContextAttributes: " + alphaValue);
+		expect(alphaValue).assertEqual(true);
+		done();
+	})
+ 
+   	/**
+	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_1339
+	 * @tc.name webgl_test_webglContextAttributes
+	 * @tc.desc Test webglContextAttributes.
+	 */
+	it('webgl_test_webglContextAttributes_1', 0, async function(done) {
+		console.info("webgltest into webglContextAttributes_1");
+		const ContextAttributesValue = gl.getContextAttributes();
+    	ContextAttributesValue.antialias = true;
+		const antialiasValue = ContextAttributesValue.antialias;
+		console.info("webgltest webglContextAttributes_1: " + antialiasValue);
+		expect(antialiasValue).assertEqual(true);
+		done();
+	})
+ 
+    	/**
+	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_1341
+	 * @tc.name webgl_test_webglContextAttributes
+	 * @tc.desc Test webglContextAttributes.
+	 */
+	it('webgl_test_webglContextAttributes_2', 0, async function(done) {
+		console.info("webgltest into webglContextAttributes_2");
+		const ContextAttributesValue = gl.getContextAttributes();
+    	ContextAttributesValue.depth = true;
+		const depthValue = ContextAttributesValue.depth;
+		console.info("webgltest webglContextAttributes_2: " + depthValue);
+		expect(depthValue).assertEqual(true);
+		done();
+	})
+ 
+	/**
+	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_1342
+	 * @tc.name webgl_test_webglContextAttributes
+	 * @tc.desc Test webglContextAttributes.
+	 */
+	it('webgl_test_webglContextAttributes_3', 0, async function(done) {
+		console.info("webgltest into webglContextAttributes_3");
+		const ContextAttributesValue = gl.getContextAttributes();
+    	ContextAttributesValue.failIfMajorPerformanceCaveat = false;
+		const failIfMajorPerformanceCaveatValue = ContextAttributesValue.failIfMajorPerformanceCaveat;
+		console.info("webgltest webglContextAttributes_3: " + failIfMajorPerformanceCaveatValue);
+		expect(failIfMajorPerformanceCaveatValue).assertEqual(false);
+		done();
+	})
+ 
+	/**
+	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_1343
+	 * @tc.name webgl_test_webglContextAttributes
+	 * @tc.desc Test webglContextAttributes.
+	 */
+	it('webgl_test_webglContextAttributes_4', 0, async function(done) {
+		console.info("webgltest into webglContextAttributes_4");
+		const ContextAttributesValue = gl.getContextAttributes();
+    	ContextAttributesValue.desynchronized = false;
+		const desynchronizedValue = ContextAttributesValue.desynchronized;
+		console.info("webgltest webglContextAttributes_4: " + desynchronizedValue);
+		expect(desynchronizedValue).assertEqual(false);
+		done();
+	})
+ 
+ 	/**
+	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_1344
+	 * @tc.name webgl_test_webglContextAttributes
+	 * @tc.desc Test webglContextAttributes.
+	 */
+	it('webgl_test_webglContextAttributes_5', 0, async function(done) {
+		console.info("webgltest into webglContextAttributes_5");
+		const ContextAttributesValue = gl.getContextAttributes();
+		const powerPreferenceValue = ContextAttributesValue.powerPreference;
+		console.info("webgltest webglContextAttributes_5: " + powerPreferenceValue);
+		expect(powerPreferenceValue).assertEqual("default");
+		done();
+	})
+ 
+ 	/**
+	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_1345
+	 * @tc.name webgl_test_webglContextAttributes
+	 * @tc.desc Test webglContextAttributes.
+	 */
+	it('webgl_test_webglContextAttributes_6', 0, async function(done) {
+		console.info("webgltest into webglContextAttributes_6");
+		const ContextAttributesValue = gl.getContextAttributes();
+    	ContextAttributesValue.premultipliedAlpha = true;
+		const premultipliedAlphaValue = ContextAttributesValue.premultipliedAlpha;
+		console.info("webgltest webglContextAttributes_6: " + premultipliedAlphaValue);
+		expect(premultipliedAlphaValue).assertEqual(true);
+		done();
+	})
+ 
+  	/**
+	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_1346
+	 * @tc.name webgl_test_webglContextAttributes
+	 * @tc.desc Test webglContextAttributes.
+	 */
+	it('webgl_test_webglContextAttributes_7', 0, async function(done) {
+		console.info("webgltest into webglContextAttributes_7");
+		const ContextAttributesValue = gl.getContextAttributes();
+    	ContextAttributesValue.preserveDrawingBuffer = false;
+		const preserveDrawingBufferValue = ContextAttributesValue.preserveDrawingBuffer;
+		console.info("webgltest webglContextAttributes_7: " + preserveDrawingBufferValue);
+		expect(preserveDrawingBufferValue).assertEqual(false);
+		done();
+	})
+	
+   	/**
+	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_1347
+	 * @tc.name webgl_test_webglContextAttributes
+	 * @tc.desc Test webglContextAttributes.
+	 */
+	it('webgl_test_webglContextAttributes_8', 0, async function(done) {
+		console.info("webgltest into webglContextAttributes_8");
+		const ContextAttributesValue = gl.getContextAttributes();
+    	ContextAttributesValue.stencil = false;
+		const stencilValue = ContextAttributesValue.stencil;
+		console.info("webgltest webglContextAttributes_8: " + stencilValue);
+		expect(stencilValue).assertEqual(false);
+		done();
+	})
 })

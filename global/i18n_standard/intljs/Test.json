@@ -1,10 +1,11 @@
 {
     "description": "Configuration for intljs Tests",
     "driver": {
-        "type": "JSUnitTest",
+        "type": "OHJSUnitTest",
         "test-timeout": "300000",
-        "package": "ohos.intl.test",
-        "shell-timeout": "60000"
+        "shell-timeout": "300000",
+        "bundle-name": "ohos.intl.test",
+        "package-name": "ohos.intl.test"
     },
     "kits": [
         {

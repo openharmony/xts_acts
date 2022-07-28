@@ -1,30 +1,26 @@
 {
     "description": "Configuration for Image Tests",
     "driver": {
-        "type": "JSUnitTest",
+        "type": "OHJSUnitTest",
         "test-timeout": "1500000",
-        "package": "ohos.acts.multimedia.image.Packing",
-		"shell-timeout": "120000"
+        "shell-timeout": "1500000",
+        "bundle-name": "ohos.acts.multimedia.image.Packing",
+        "package-name": "ohos.acts.multimedia.image.Packing",
+        "testcase-timeout": 60000
     },
     "kits": [
-		{
+        {
             "type": "PushKit",
-            "pre-push": [
-            ],
-            "push": [		
-            ]
+            "pre-push": [],
+            "push": []
         },
-   
-		{
+        {
             "type": "ShellKit",
             "run-command": [
                 "hilog -Q pidoff"
             ],
-            "teardown-command":[
-              
-            ]
+            "teardown-command": []
         },
-        
         {
             "test-file-name": [
                 "ActsImagePackingJsTest.hap"
@@ -33,5 +29,4 @@
             "cleanup-apps": true
         }
     ]
-    
 }

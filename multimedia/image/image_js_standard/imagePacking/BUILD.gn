@@ -23,7 +23,9 @@ ohos_js_hap_suite("image_packing_js_hap") {
   hap_name = "ActsImagePackingJsTest"
 }
 ohos_js_assets("image_packing_js_assets") {
-  source_dir = "./src/main/js/default"
+  js2abc = true
+  hap_profile = "./src/main/config.json"
+  source_dir = "./src/main/js"
 }
 ohos_resources("image_packing_resources") {
   sources = [ "./src/main/resources" ]

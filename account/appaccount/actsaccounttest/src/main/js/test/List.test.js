@@ -22,6 +22,7 @@ import ActsAccountOAuthToken from './OAuthToken.test.js'
 import ActsCreatAppAccountManager from './CreatManager.test.js'
 import ActsAccountNoPermission from './NoPermission.test.js'
 import ActsAccountChangeOnOff from './OnOff.js'
+import ActsAccountAuthenticator from './Authenticator.test.js'
 export default function testsuite() {
     ActsAccountAddAccount()
     ActsAccountAppAccess()
@@ -33,4 +34,5 @@ export default function testsuite() {
     ActsAccountNoPermission()
     ActsAccountOAuthToken()
     ActsAccountChangeOnOff()
+    ActsAccountAuthenticator()
 }

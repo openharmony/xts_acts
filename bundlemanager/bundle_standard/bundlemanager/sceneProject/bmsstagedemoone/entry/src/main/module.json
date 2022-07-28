@@ -232,6 +232,32 @@
                         "resource": "$profile:form_config"
                     }
                 ]
+            },
+            {
+                "name": "ThumbnailAbility",
+                "srcEntrance": "./ets/ServiceAbility/FormAbility.ts",
+                "label": "$string:form_FormAbility_label",
+                "description": "$string:form_FormAbility_desc",
+                "type": "thumbnail",
+                "metadata": [
+                    {
+                        "name": "ohos.extension.form",
+                        "resource": "$profile:form_config"
+                    }
+                ]
+            },
+            {
+                "name": "PreviewAbility",
+                "srcEntrance": "./ets/ServiceAbility/FormAbility.ts",
+                "label": "$string:form_FormAbility_label",
+                "description": "$string:form_FormAbility_desc",
+                "type": "preview",
+                "metadata": [
+                    {
+                        "name": "ohos.extension.form",
+                        "resource": "$profile:form_config"
+                    }
+                ]
             }
         ]
     }

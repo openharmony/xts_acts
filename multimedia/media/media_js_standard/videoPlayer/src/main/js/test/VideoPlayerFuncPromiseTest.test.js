@@ -16,8 +16,9 @@
 import media from '@ohos.multimedia.media'
 import audio from '@ohos.multimedia.audio'
 import * as mediaTestBase from '../../../../../MediaTestBase.js';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
+export default function VideoPlayerFuncPromiseTest() {
 describe('VideoPlayerFuncPromiseTest', function () {
     const VIDEO_SOURCE = 'H264_AAC.mp4';
     const AUDIO_SOURCE = '01.mp3';
@@ -808,3 +809,4 @@ describe('VideoPlayerFuncPromiseTest', function () {
     })
 
 })
+}

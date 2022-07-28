@@ -54,13 +54,13 @@ export default function ActsAccountAppAccess() {
             console.debug("====>creat finish====");
             appAccountManager.addAccount("AppAccess_callback_itself", "extrainfo_callback_itself", (err)=>{
                 console.debug("====>add account ActsAccountAppAccess_0100 err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.enableAppAccess("AppAccess_callback_itself", "com.example.actsaccountappaccess", (err)=>{
                     console.debug("====>enableAppAccess err:" + JSON.stringify(err));
                     expect(err.code != 0).assertEqual(true);
                     appAccountManager.deleteAccount("AppAccess_callback_itself", (err)=>{
                         console.debug("====>delete Account ActsAccountAppAccess_0100 err:" + JSON.stringify(err));
-                        expect(err.code).assertEqual(0);
+                        expect(err).assertEqual(undefined);
                         console.debug("====>ActsAccountAppAccess_0100 end====");
                         done();
                     });
@@ -105,13 +105,13 @@ export default function ActsAccountAppAccess() {
             var nonExistBundle = "com.example.NonExistentBundleCallback";
             appAccountManager.addAccount("AppAccess_callback_NotExistBundle", "extrainfo_callback_NotExistBundle", (err)=>{
                 console.debug("====>add account ActsAccountAppAccess_0300 err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.enableAppAccess("AppAccess_callback_NotExistBundle", nonExistBundle, (err)=>{
                     console.debug("====>enableAppAccess 0300 err:" + JSON.stringify(err));
                     expect(err.code != 0).assertEqual(true);
                     appAccountManager.deleteAccount("AppAccess_callback_NotExistBundle", (err)=>{
                         console.debug("====>delete Account ActsAccountAppAccess_0300 err:" + JSON.stringify(err));
-                        expect(err.code).assertEqual(0);
+                        expect(err).assertEqual(undefined);
                         console.debug("====>ActsAccountAppAccess_0300 end====");
                         done();
                     });
@@ -199,15 +199,15 @@ export default function ActsAccountAppAccess() {
             var enableBundle = "com.example.actsaccountsceneappaccess";
             appAccountManager.addAccount("AppAccess_callback_account", (err)=>{
                 console.debug("====>add account ActsAccountAppAccess_0700 err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.enableAppAccess("AppAccess_callback_account", enableBundle, (err)=>{
                     console.debug("====>enableAppAccess 0700 err:" + JSON.stringify(err));
-                    expect(err.code).assertEqual(0);
+                    expect(err).assertEqual(undefined);
                     appAccountManager.disableAppAccess("AppAccess_callback_account", enableBundle, (err)=>{
-                        expect(err.code).assertEqual(0)
+                        expect(err).assertEqual(undefined)
                         appAccountManager.deleteAccount("AppAccess_callback_account", (err)=>{
                             console.debug("====>delete Account ActsAccountAppAccess_0700 err:" + JSON.stringify(err));
-                            expect(err.code).assertEqual(0);
+                            expect(err).assertEqual(undefined);
                             console.debug("====>ActsAccountAppAccess_0700 end====");
                             done();
                         });
@@ -315,13 +315,13 @@ export default function ActsAccountAppAccess() {
             }
             appAccountManager.addAccount("AppAccess_callback_bigBundleName", (err)=>{
                 console.debug("====>add account ActsAccountAppAccess_1100 err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.enableAppAccess("AppAccess_callback_bigBundleName", bigBundleName, (err)=>{
                     console.debug("====>enableAppAccess 1100 err:" + JSON.stringify(err));
                     expect(err.code != 0).assertEqual(true);
                     appAccountManager.deleteAccount("AppAccess_callback_bigBundleName", (err)=>{
                         console.debug("====>delete Account ActsAccountAppAccess_1100 err:" + JSON.stringify(err));
-                        expect(err.code).assertEqual(0);
+                        expect(err).assertEqual(undefined);
                         console.debug("====>ActsAccountAppAccess_1100 end====");
                         done();
                     });
@@ -370,13 +370,13 @@ export default function ActsAccountAppAccess() {
             var emptyBundleName = '';
             appAccountManager.addAccount("AppAccess_callback_emptyBundleName", (err)=>{
                 console.debug("====>add account ActsAccountAppAccess_1300 err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.enableAppAccess("AppAccess_callback_emptyBundleName", emptyBundleName, (err)=>{
                     console.debug("====>enableAppAccess 1300 err:" + JSON.stringify(err));
                     expect(err.code != 0).assertEqual(true);
                     appAccountManager.deleteAccount("AppAccess_callback_emptyBundleName", (err)=>{
                         console.debug("====>delete Account ActsAccountAppAccess_1300 err:" + JSON.stringify(err));
-                        expect(err.code).assertEqual(0);
+                        expect(err).assertEqual(undefined);
                         console.debug("====>ActsAccountAppAccess_1300 end====");
                         done();
                     });
@@ -422,12 +422,12 @@ export default function ActsAccountAppAccess() {
             var enableBundle = "com.example.actsaccountsceneappaccess";
             appAccountManager.addAccount("AppAccess_callback_account", (err)=>{
                 console.debug("====>add account ActsAccountAppAccess_1500 err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.disableAppAccess("AppAccess_callback_account", enableBundle, (err)=>{
                     expect(err.code != 0).assertEqual(true)
                     appAccountManager.deleteAccount("AppAccess_callback_account", (err)=>{
                         console.debug("====>delete Account ActsAccountAppAccess_1500 err:" + JSON.stringify(err));
-                        expect(err.code).assertEqual(0);
+                        expect(err).assertEqual(undefined);
                         console.debug("====>ActsAccountAppAccess_1500 end====");
                         done();
                     });
@@ -479,12 +479,12 @@ export default function ActsAccountAppAccess() {
             var notExistBundle = "com.example.actsaccountnotexistbundle";
             appAccountManager.addAccount("AppAccess_callback_notExistBundle", (err)=>{
                 console.debug("====>add account ActsAccountAppAccess_1700 err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.disableAppAccess("AppAccess_callback_notExistBundle", notExistBundle, (err)=>{
                     expect(err.code != 0).assertEqual(true)
                     appAccountManager.deleteAccount("AppAccess_callback_notExistBundle", (err)=>{
                         console.debug("====>delete Account ActsAccountAppAccess_1700 err:" + JSON.stringify(err));
-                        expect(err.code).assertEqual(0);
+                        expect(err).assertEqual(undefined);
                         console.debug("====>ActsAccountAppAccess_1700 end====");
                         done();
                     });

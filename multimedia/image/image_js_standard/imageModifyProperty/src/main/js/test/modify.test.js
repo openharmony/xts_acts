@@ -15,11 +15,12 @@
 
 import image from '@ohos.multimedia.image'
 import fileio from '@ohos.fileio'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import {modifyBuf} from './modifyBuffer'
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
 import bundle from '@ohos.bundle'
 
+export default function Image() {
 describe('Image', function () {
     var pathExifJpg = '/data/storage/el2/base/files/test_exif.jpg';
     beforeAll(async function () {
@@ -1179,4 +1180,4 @@ describe('Image', function () {
     it('modify_03_020', 0, async function (done) {
         modifyErrCb1(done, "modify_03_020", "buffer", "GPSLongitudeRef", "1234")
     })
-})
+})}

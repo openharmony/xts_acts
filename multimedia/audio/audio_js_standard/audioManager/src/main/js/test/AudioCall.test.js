@@ -23,7 +23,7 @@ import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 import featureAbility from '@ohos.ability.featureAbility'
 import resourceManager from '@ohos.resourceManager';
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 
 describe('audioCall', function () {
     var mediaDir;
@@ -31,35 +31,19 @@ describe('audioCall', function () {
     let readpath;
     var resultFlagRec;
     var resultFlagRen;
+    let fdPath;
+    let filePath;
     const audioManager = audio.getAudioManager();
     console.info('AudioFrameworkRenderLog: Create AudioManger Object JS Framework');
 
     const audioManagerRec = audio.getAudioManager();
     console.info('AudioFrameworkRecLog: Create AudioManger Object JS Framework');
 
-    /*async function getPathName(){
-        var path1 = '/data/accounts/account_0/appdata/';
-        var packageName;
-        var context = ability_featureAbility.getContext();
-        await context.getBundleName()
-            .then((data) => {
-                console.info('AudioFrameworkRenderLog: Cache directory obtained. Data: ' + data);
-                packageName = data;
-            }).catch((error) => {
-                console.error('AudioFrameworkRenderLog: Failed to obtain the cache directory. Cause:' + error.message);
-            });
-        await sleep(200);
-        //var mediaDirTemp = path1 + packageName + '/' + packageName + '/assets/entry/resources/rawfile';
-        var mediaDirTemp = path1+packageName
-        console.info('AudioFrameworkRenderLog: Resource DIR Path : '+mediaDirTemp);
-        return mediaDirTemp;
-
-    }*/
 
     beforeAll(async function () {
         await applyPermission();
         console.info('AudioFrameworkTest: beforeAll: Prerequisites at the test suite level');
-        mediaDir = '/data/storage/el2/base/haps/entry/cache';
+        //mediaDir = '/data/storage/el2/base/haps/entry/cache';
     })
 
     beforeEach(async function () {
@@ -74,24 +58,22 @@ describe('audioCall', function () {
 
     afterAll(async function () {
         console.info('AudioFrameworkTest: afterAll: Test suite-level cleanup condition');
+
     })
 
-    function sleep (ms) {
+    function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 
-    async function getFileDescriptor(fileName) {
-        let fileDescriptor = undefined;
-        await resourceManager.getResourceManager().then(async (mgr) => {
-            await mgr.getRawFileDescriptor(fileName).then(value => {
-                fileDescriptor = { fd: value.fd, offset: value.offset, length: value.length };
-            }).catch(error => {
-                console.log('AudioFrameworkRenderLog:case getRawFileDescriptor err: ' + error);
-            });
-        });
-        return fileDescriptor;
+    async function getAbilityInfo(fileName) {
+        let context = await featureAbility.getContext();
+        console.info("case0 context is  " + context);
+        await context.getFilesDir().then((data) => {
+            console.info("case1 getFilesDir is path " + data);
+            mediaDir = data + '/' + fileName;
+            console.info('case2 mediaDir is ' + mediaDir);
+        })
     }
-
     async function closeFileDescriptor(fileName) {
         await resourceManager.getResourceManager().then(async (mgr) => {
             await mgr.closeRawFileDescriptor(fileName).then(value => {
@@ -101,17 +83,27 @@ describe('audioCall', function () {
             });
         });
     }
-    async function getFdRead(pathName, done) {
-        await getFileDescriptor(pathName).then((res) => {
-            if (res == undefined) {
-                expect().assertFail();
-                console.info('AudioFrameworkRenderLog:case error fileDescriptor undefined, open file fail');
-                done();
-            } else {
-                fdRead = res.fd;
-                console.info("AudioFrameworkRenderLog:case 0 fdRead is: " + fdRead);
-            }
+    async function getFdRead(pathName) {
+        let context = await featureAbility.getContext();
+        console.info("case0 context is  " + context);
+        await context.getFilesDir().then((data) => {
+            console.info("case1 getFilesDir is path " + data);
+            filePath = data + '/' + pathName;
+            console.info('case4 filePath is ' + filePath);
+
         })
+        fdPath = 'fd://';
+        await fileio.open(filePath).then((fdNumber) => {
+            fdPath = fdPath + '' + fdNumber;
+            fdRead = fdNumber;
+            console.info('[fileIO]case open fd success,fdPath is ' + fdPath);
+            console.info('[fileIO]case open fd success,fdRead is ' + fdRead);
+
+        }, (err) => {
+            console.info('[fileIO]case open fd failed');
+        }).catch((err) => {
+            console.info('[fileIO]case catch open fd failed');
+        });
     }
 
     async function applyPermission() {
@@ -144,7 +136,7 @@ describe('audioCall', function () {
     }
 
 
-    async function playbackPromise (AudioRendererOptions, pathName, AudioScene) {
+    async function playbackPromise(AudioRendererOptions, pathName, AudioScene) {
         resultFlagRen = 'new';
         console.info('AudioFrameworkRenderLog: Promise : Audio Playback Function');
 
@@ -153,11 +145,11 @@ describe('audioCall', function () {
             audioRen = data;
             console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : '+err.message);
-            resultFlagRen=false;
+            console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
+            resultFlagRen = false;
             return resultFlagRen;
         });
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         await audioRen.getStreamInfo().then(async function (audioParamsGet) {
             console.info('AudioFrameworkRenderLog: Renderer getStreamInfo:');
@@ -166,11 +158,11 @@ describe('audioCall', function () {
             console.info('AudioFrameworkRenderLog: Renderer channels:' + audioParamsGet.channels);
             console.info('AudioFrameworkRenderLog: Renderer encodingType:' + audioParamsGet.encodingType);
         }).catch((err) => {
-            console.log('AudioFrameworkRenderLog: getStreamInfo :ERROR: '+err.message);
+            console.log('AudioFrameworkRenderLog: getStreamInfo :ERROR: ' + err.message);
             resultFlagRen = false;
         });
-        if (resultFlagRen == false){
-            console.info('AudioFrameworkRenderLog: resultFlagRen : '+resultFlagRen);
+        if (resultFlagRen == false) {
+            console.info('AudioFrameworkRenderLog: resultFlagRen : ' + resultFlagRen);
             return resultFlagRen;
         }
 
@@ -180,37 +172,37 @@ describe('audioCall', function () {
             console.info('AudioFrameworkRenderLog: Renderer usage:' + audioParamsGet.usage);
             console.info('AudioFrameworkRenderLog: Renderer rendererFlags:' + audioParamsGet.rendererFlags);
         }).catch((err) => {
-            console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: '+err.message);
+            console.log('AudioFrameworkRenderLog: RendererInfo :ERROR: ' + err.message);
             resultFlagRen = false;
         });
-        if (resultFlagRen == false){
-            console.info('AudioFrameworkRenderLog: resultFlagRen : '+resultFlagRen);
+        if (resultFlagRen == false) {
+            console.info('AudioFrameworkRenderLog: resultFlagRen : ' + resultFlagRen);
             return resultFlagRen;
         }
 
         await audioRen.start().then(async function () {
             console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : '+err.message);
-            resultFlagRen=false;
+            console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : ' + err.message);
+            resultFlagRen = false;
         });
-        if (resultFlagRen == false){
-            console.info('AudioFrameworkRenderLog: resultFlagRen : '+resultFlagRen);
+        if (resultFlagRen == false) {
+            console.info('AudioFrameworkRenderLog: resultFlagRen : ' + resultFlagRen);
             return resultFlagRen;
         }
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         var bufferSize;
         await audioRen.getBufferSize().then(async function (data) {
-            console.info('AudioFrameworkRenderLog: getBufferSize :SUCCESS '+data);
-            bufferSize=data;
+            console.info('AudioFrameworkRenderLog: getBufferSize :SUCCESS ' + data);
+            bufferSize = data;
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: getBufferSize :ERROR : '+err.message);
-            resultFlagRen=false;
+            console.info('AudioFrameworkRenderLog: getBufferSize :ERROR : ' + err.message);
+            resultFlagRen = false;
         });
-        if (resultFlagRen == false){
-            console.info('AudioFrameworkRenderLog: resultFlagRen : '+resultFlagRen);
+        if (resultFlagRen == false) {
+            console.info('AudioFrameworkRenderLog: resultFlagRen : ' + resultFlagRen);
             return resultFlagRen;
         }
 
@@ -219,21 +211,21 @@ describe('audioCall', function () {
         let discardHeader = new ArrayBuffer(44);
         ss.readSync(discardHeader);
         let totalSize = fileio.fstatSync(fdRead).size;
-        console.info('AudioFrameworkRenderLog:case3: File totalSize size: ' +totalSize);
-        totalSize = totalSize-44;
-        console.info('AudioFrameworkRenderLog: File size : Removing header: ' +totalSize);
+        console.info('AudioFrameworkRenderLog:case3: File totalSize size: ' + totalSize);
+        totalSize = totalSize - 44;
+        console.info('AudioFrameworkRenderLog: File size : Removing header: ' + totalSize);
         let rlen = 0;
-        while (rlen < totalSize/4) {
+        while (rlen < totalSize / 4) {
             let buf = new ArrayBuffer(bufferSize);
             rlen += ss.readSync(buf);
-            console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' +rlen);
+            console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' + rlen);
             await audioRen.write(buf);
-            if (rlen > (totalSize/2)){
+            if (rlen > (totalSize / 2)) {
                 await audioManager.getAudioScene().then(async function (data) {
-                    console.info('AudioFrameworkRenderLog:AudioFrameworkAudioScene: getAudioScene : Value : '+data);
+                    console.info('AudioFrameworkRenderLog:AudioFrameworkAudioScene: getAudioScene : Value : ' + data);
                 }).catch((err) => {
-                    console.info('AudioFrameworkRenderLog:AudioFrameworkAudioScene: getAudioScene : ERROR : '+err.message);
-                    resultFlagRen=false;
+                    console.info('AudioFrameworkRenderLog:AudioFrameworkAudioScene: getAudioScene : ERROR : ' + err.message);
+                    resultFlagRen = false;
                 });
             }
         }
@@ -242,42 +234,42 @@ describe('audioCall', function () {
         await audioRen.drain().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer drained : SUCCESS');
         }).catch((err) => {
-            console.error('AudioFrameworkRenderLog: Renderer drain: ERROR : '+err.message);
-            resultFlagRen=false;
+            console.error('AudioFrameworkRenderLog: Renderer drain: ERROR : ' + err.message);
+            resultFlagRen = false;
         });
-        if (resultFlagRen == false){
-            console.info('AudioFrameworkRenderLog: resultFlagRen : '+resultFlagRen);
+        if (resultFlagRen == false) {
+            console.info('AudioFrameworkRenderLog: resultFlagRen : ' + resultFlagRen);
             return resultFlagRen;
         }
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         await audioRen.stop().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer stopped : SUCCESS');
-            resultFlagRen=true;
-            console.info('AudioFrameworkRenderLog: resultFlagRen : '+resultFlagRen);
+            resultFlagRen = true;
+            console.info('AudioFrameworkRenderLog: resultFlagRen : ' + resultFlagRen);
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : '+err.message);
-            resultFlagRen=false;
+            console.info('AudioFrameworkRenderLog: Renderer stop:ERROR : ' + err.message);
+            resultFlagRen = false;
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
         await audioRen.release().then(async function () {
             console.info('AudioFrameworkRenderLog: Renderer release : SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : '+err.message);
-            resultFlagRen=false;
+            console.info('AudioFrameworkRenderLog: Renderer release :ERROR : ' + err.message);
+            resultFlagRen = false;
         });
 
-        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : '+audioRen.state);
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-        console.info('AudioFrameworkRenderLog: resultFlagRen : '+resultFlagRen);
+        console.info('AudioFrameworkRenderLog: resultFlagRen : ' + resultFlagRen);
 
         return resultFlagRen;
     }
 
-    async function recPromise (AudioCapturerOptions, fpath, AudioScene) {
+    async function recPromise(AudioCapturerOptions, fpath, AudioScene) {
 
         resultFlagRec = 'new';
         console.info('AudioFrameworkRecLog: Promise : Audio Recording Function');
@@ -288,13 +280,13 @@ describe('audioCall', function () {
             audioCap = data;
             console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRecLog: AudioCapturer Created : ERROR : '+err.message);
+            console.info('AudioFrameworkRecLog: AudioCapturer Created : ERROR : ' + err.message);
             return resultFlagRec;
         });
 
-        console.info('AudioFrameworkRecLog: AudioCapturer : Path : '+fpath);
+        console.info('AudioFrameworkRecLog: AudioCapturer : Path : ' + fpath);
 
-        console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCap.state);
+        console.info('AudioFrameworkRecLog: AudioCapturer : STATE : ' + audioCap.state);
 
 
         await audioCap.getStreamInfo().then(async function (audioParamsGet) {
@@ -304,11 +296,11 @@ describe('audioCall', function () {
             console.info('AudioFrameworkRecLog: Capturer channels:' + audioParamsGet.channels);
             console.info('AudioFrameworkRecLog: Capturer encodingType:' + audioParamsGet.encodingType);
         }).catch((err) => {
-            console.log('AudioFrameworkRecLog: getStreamInfo :ERROR: '+err.message);
+            console.log('AudioFrameworkRecLog: getStreamInfo :ERROR: ' + err.message);
             resultFlagRec = false;
         });
-        if (resultFlagRec == false){
-            console.info('AudioFrameworkRecLog: resultFlagRec : '+resultFlagRec);
+        if (resultFlagRec == false) {
+            console.info('AudioFrameworkRecLog: resultFlagRec : ' + resultFlagRec);
             return resultFlagRec;
         }
 
@@ -317,26 +309,26 @@ describe('audioCall', function () {
             console.info('AudioFrameworkRecLog: Capturer SourceType:' + audioParamsGet.source);
             console.info('AudioFrameworkRecLog: Capturer capturerFlags:' + audioParamsGet.capturerFlags);
         }).catch((err) => {
-            console.log('AudioFrameworkRecLog: CapturerInfo :ERROR: '+err.message);
+            console.log('AudioFrameworkRecLog: CapturerInfo :ERROR: ' + err.message);
             resultFlagRec = false;
         });
-        if (resultFlagRec == false){
-            console.info('AudioFrameworkRecLog: resultFlag : '+resultFlagRec);
+        if (resultFlagRec == false) {
+            console.info('AudioFrameworkRecLog: resultFlag : ' + resultFlagRec);
             return resultFlagRec;
         }
 
         await audioCap.start().then(async function () {
             console.info('AudioFrameworkRecLog: Capturer started :SUCCESS ');
         }).catch((err) => {
-            console.info('AudioFrameworkRecLog: Capturer start :ERROR : '+err.message);
-            resultFlagRec=false;
+            console.info('AudioFrameworkRecLog: Capturer start :ERROR : ' + err.message);
+            resultFlagRec = false;
         });
-        if (resultFlagRec == false){
-            console.info('AudioFrameworkRecLog: resultFlagRec : '+resultFlagRec);
+        if (resultFlagRec == false) {
+            console.info('AudioFrameworkRecLog: resultFlagRec : ' + resultFlagRec);
             return resultFlagRec;
         }
 
-        console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCap.state);
+        console.info('AudioFrameworkRecLog: AudioCapturer : STATE : ' + audioCap.state);
 
         var bufferSize = await audioCap.getBufferSize();
         console.info('AudioFrameworkRecLog: buffer size: ' + bufferSize);
@@ -345,9 +337,9 @@ describe('audioCall', function () {
         if (fd !== null) {
             console.info('AudioFrameworkRecLog: file fd created');
         }
-        else{
-            console.info('AudioFrameworkRecLog: Capturer start :ERROR : '+err.message);
-            resultFlagRec=false;
+        else {
+            console.info('AudioFrameworkRecLog: Capturer start :ERROR : ' + err.message);
+            resultFlagRec = false;
             return resultFlagRec;
         }
 
@@ -355,9 +347,9 @@ describe('audioCall', function () {
         if (fd !== null) {
             console.info('AudioFrameworkRecLog: file fd opened : Append Mode :PASS');
         }
-        else{
+        else {
             console.info('AudioFrameworkRecLog: file fd Open: Append Mode : FAILED');
-            resultFlagRec=false;
+            resultFlagRec = false;
             return resultFlagRec;
         }
 
@@ -369,27 +361,27 @@ describe('audioCall', function () {
             numBuffersToCapture--;
         }
 
-        console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCap.state);
+        console.info('AudioFrameworkRecLog: AudioCapturer : STATE : ' + audioCap.state);
 
         await audioCap.stop().then(async function () {
             console.info('AudioFrameworkRecLog: Capturer stopped : SUCCESS');
-            resultFlagRec=true;
-            console.info('AudioFrameworkRecLog: resultFlagRec : '+resultFlagRec);
+            resultFlagRec = true;
+            console.info('AudioFrameworkRecLog: resultFlagRec : ' + resultFlagRec);
         }).catch((err) => {
-            console.info('AudioFrameworkRecLog: Capturer stop:ERROR : '+err.message);
-            resultFlagRec=false;
+            console.info('AudioFrameworkRecLog: Capturer stop:ERROR : ' + err.message);
+            resultFlagRec = false;
         });
 
-        console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCap.state);
+        console.info('AudioFrameworkRecLog: AudioCapturer : STATE : ' + audioCap.state);
 
         await audioCap.release().then(async function () {
             console.info('AudioFrameworkRecLog: Capturer release : SUCCESS');
         }).catch((err) => {
-            console.info('AudioFrameworkRecLog: Capturer release :ERROR : '+err.message);
-            resultFlagRec=false;
+            console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
+            resultFlagRec = false;
         });
 
-        console.info('AudioFrameworkRecLog: AudioCapturer : STATE : '+audioCap.state);
+        console.info('AudioFrameworkRecLog: AudioCapturer : STATE : ' + audioCap.state);
 
         return resultFlagRec;
 
@@ -404,7 +396,7 @@ describe('audioCall', function () {
                * @tc.type      : Function
                * @tc.level     : Level 0
            */
-    it('SUB_AUDIO_VOIP_Play_001', 0, async function (done) {
+    it('SUB_AUDIO_CALL_Play_001', 0, async function (done) {
 
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -424,13 +416,12 @@ describe('audioCall', function () {
             rendererInfo: AudioRendererInfo
         }
 
-        readpath = 'StarWars10s-1C-44100-2SW.wav';
-        await getFdRead(readpath,done);
-        var resultFlag = await playbackPromise(AudioRendererOptions, readpath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        await getFdRead("StarWars10s-1C-44100-2SW.wav");
+        var resultFlag = await playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
-        console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
-        await closeFileDescriptor(readpath);
+        await closeFileDescriptor(filePath);
         done();
     })
 
@@ -442,7 +433,7 @@ describe('audioCall', function () {
                * @tc.type      : Function
                * @tc.level     : Level 0
            */
-    it('SUB_AUDIO_VOIP_Rec_001', 0, async function (done) {
+    it('SUB_AUDIO_CALL_Rec_001', 0, async function (done) {
 
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -460,77 +451,78 @@ describe('audioCall', function () {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
-
-        var resultFlag = await recPromise(AudioCapturerOptions, mediaDir+'/capture_js-44100-2C-16B.pcm', audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        await getAbilityInfo("capture_js-44100-2C-16B.pcm");
+        var resultFlag = await recPromise(AudioCapturerOptions, mediaDir, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
-        console.info('AudioFrameworkRenderLog: resultFlag : '+resultFlag);
- 
+        console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
+
         expect(resultFlag).assertTrue();
         done();
     })
 
 
-   /* *
-              * @tc.number    : SUB_AUDIO_VOIP_RecPlay_001
-              * @tc.name      : 
-              * @tc.desc      : 
-              * @tc.size      : MEDIUM
-              * @tc.type      : Function
-              * @tc.level     : Level 0
-          */
-   it('SUB_AUDIO_VOIP_RecPlay_001', 0, async function (done) {
+    /* *
+               * @tc.number    : SUB_AUDIO_VOIP_RecPlay_001
+               * @tc.name      : 
+               * @tc.desc      : 
+               * @tc.size      : MEDIUM
+               * @tc.type      : Function
+               * @tc.level     : Level 0
+           */
+    it('SUB_AUDIO_CALL_RecPlay_001', 0, async function (done) {
 
-       var AudioStreamInfoCap = {
-           samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
-           channels: audio.AudioChannel.CHANNEL_2,
-           sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
-           encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-       }
+        var AudioStreamInfoCap = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+        }
 
-       var AudioCapturerInfo = {
-           source: audio.SourceType.SOURCE_TYPE_MIC,
-           capturerFlags: 1
-       }
+        var AudioCapturerInfo = {
+            source: audio.SourceType.SOURCE_TYPE_MIC,
+            capturerFlags: 1
+        }
 
-       var AudioCapturerOptions = {
-           streamInfo: AudioStreamInfoCap,
-           capturerInfo: AudioCapturerInfo
-       }
+        var AudioCapturerOptions = {
+            streamInfo: AudioStreamInfoCap,
+            capturerInfo: AudioCapturerInfo
+        }
 
-       var AudioStreamInfoRen = {
-           samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
-           channels: audio.AudioChannel.CHANNEL_1,
-           sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
-           encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-       }
+        var AudioStreamInfoRen = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+            channels: audio.AudioChannel.CHANNEL_1,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+        }
 
-       var AudioRendererInfo = {
-           content: audio.ContentType.CONTENT_TYPE_SPEECH,
-           usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-           rendererFlags: 1
-       }
+        var AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_SPEECH,
+            usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+            rendererFlags: 1
+        }
 
-       var AudioRendererOptions = {
-           streamInfo: AudioStreamInfoRen,
-           rendererInfo: AudioRendererInfo
-       }
-       recPromise(AudioCapturerOptions, mediaDir+'/capture_js-44100-2C-16B-2.pcm', audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
-       await sleep(500);
-       readpath = 'StarWars10s-1C-44100-2SW.wav';
-       await getFdRead(readpath,done);
-       await playbackPromise(AudioRendererOptions, readpath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
-       await sleep(1000);
-       console.info('AudioFrameworkRecLog: resultFlag : Capturer : '+resultFlagRec);
-       console.info('AudioFrameworkRenderLog: resultFlag : Renderer : '+resultFlagRen);
+        var AudioRendererOptions = {
+            streamInfo: AudioStreamInfoRen,
+            rendererInfo: AudioRendererInfo
+        }
+        await getAbilityInfo("capture_js-44100-2C-16B-2.pcm");
+        recPromise(AudioCapturerOptions, mediaDir, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        await sleep(500);
+        readpath = 'StarWars10s-1C-44100-2SW.wav';
+        await getFdRead(readpath, done);
+        await playbackPromise(AudioRendererOptions, readpath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        await sleep(1000);
+        console.info('AudioFrameworkRecLog: resultFlag : Capturer : ' + resultFlagRec);
+        console.info('AudioFrameworkRenderLog: resultFlag : Renderer : ' + resultFlagRen);
 
-        if (resultFlagRec == true){
+        if (resultFlagRec == true) {
             expect(resultFlagRen).assertTrue();
         }
-        else{
+        else {
             expect(false).assertTrue();
         }
         await closeFileDescriptor(readpath);
         done();
-   })
+    })
 
 })

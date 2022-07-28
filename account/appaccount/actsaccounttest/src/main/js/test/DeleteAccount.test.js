@@ -46,10 +46,10 @@ export default function ActsAccountDeleteAccount() {
             console.debug("====>creat finish====");
             appAccountManager.addAccount("deleteAccount_name_callback_first", "extraInfo_callback_first", (err)=>{
                 console.debug("====>add account ActsAccountDeleteAccount_0100 err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.deleteAccount("deleteAccount_name_callback_first", (err)=>{
                     console.debug("====>delete Account ActsAccountDeleteAccount_0100 err:" + JSON.stringify(err));
-                    expect(err.code).assertEqual(0);
+                    expect(err).assertEqual(undefined);
                     console.debug("====>ActsAccountDeleteAccount_0100 end====");
                     done();
                 });
@@ -124,10 +124,10 @@ export default function ActsAccountDeleteAccount() {
             var appAccountManager = account.createAppAccountManager();
             appAccountManager.addAccount("deleteAccount_name_callback_third", "extraInfo_callback_third", (err)=>{
                 console.debug("====>add account ActsAccountDeleteAccount_0500 err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.deleteAccount("deleteAccount_name_callback_third", (err)=>{
                     console.debug("====>delete account first time  err:" + JSON.stringify(err));
-                    expect(err.code).assertEqual(0);
+                    expect(err).assertEqual(undefined);
                     appAccountManager.deleteAccount("deleteAccount_name_callback_third", (err)=>{
                         console.debug("====>delete Account second time err:" + JSON.stringify(err));
                         expect(err.code != 0).assertEqual(true);

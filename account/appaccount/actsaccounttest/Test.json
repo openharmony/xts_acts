@@ -13,7 +13,8 @@
                 "ActsAccountTest.hap",
                 "ActsAccountSceneAppAccess.hap",
                 "ActsAccountSceneOnOff.hap",
-                "ActsAccountOauthtoken.hap"
+                "ActsAccountOauthtoken.hap",
+                "ActsAccountAuthenticator.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
