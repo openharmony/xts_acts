@@ -38,7 +38,7 @@ hctest_suite("ActsHuksHalFunctionTest") {
   ]
   include_dirs = [
     "//base/security/huks/interfaces/innerkits/huks_standard/main/include",
-    "//base/iot_hardware/peripheral/interfaces/kits",
+    "//base/iothardware/peripheral/interfaces/inner_api",
     "../common/include",
   ]
 
