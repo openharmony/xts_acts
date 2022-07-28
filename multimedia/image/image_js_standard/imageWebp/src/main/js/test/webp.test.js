@@ -70,7 +70,35 @@ describe('Image', function () {
             console.info('[permission]case apply permission failed,createAtManager failed');
         }
     }
-
+	
+	async function createPixMapCb(done, testNum, arg) {
+        let fdNumber = fileio.openSync(pathWebp);
+        const imageSourceApi = image.createImageSource(fdNumber);
+        if (imageSourceApi == undefined) {
+            console.info(`${testNum} create image source failed`);
+            expect(false).assertTrue();
+            done();
+        } else {
+            imageSourceApi.createPixelMap(arg, (err, pixelmap) => {
+                if (err) {
+                    console.info(`${testNum} - fail `);
+                    expect(false).assertTrue();
+                    done();
+                } else {
+                    pixelmap.getImageInfo().then((imageInfo) => {
+                        expect(imageInfo.size.height == 2).assertTrue();
+                        expect(imageInfo.size.width == 1).assertTrue();
+                        console.info(`${testNum} - success `);
+                        console.info("imageInfo height :" + imageInfo.size.height + "width : " + imageInfo.size.width);
+                        done();
+                    }).catch((err) => {
+                        console.info(`${testNum} getimageInfo err ` + JSON.stringify(err));
+                    })
+                }
+            })
+        }
+    }
+	
     async function createPixMapCbErr(done, testNum, arg) {
         let fdNumber = fileio.openSync(pathWebp);
         const imageSourceApi = image.createImageSource(fdNumber);
@@ -91,6 +119,33 @@ describe('Image', function () {
             })
         }
     }
+	
+	async function createPixMapPromise(done, testNum, arg) {
+        let fdNumber = fileio.openSync(pathWebp);
+        const imageSourceApi = image.createImageSource(fdNumber);
+        if (imageSourceApi == undefined) {
+            console.info(`${testNum} create image source failed`);
+            expect(false).assertTrue();
+            done();
+        } else {
+            imageSourceApi.createPixelMap(arg).then(pixelmap => {
+                pixelmap.getImageInfo().then((imageInfo) => {
+                    expect(imageInfo.size.height == 2).assertTrue();
+                    expect(imageInfo.size.width == 1).assertTrue();
+                    console.info(`${testNum} - success `);
+                    console.info("imageInfo height :" + imageInfo.size.height + "width : " + imageInfo.size.width);
+                    done();
+                }).catch((err) => {
+                    console.info(`${testNum} getimageInfo err ` + JSON.stringify(err));
+                })
+            }).catch(error => {
+                console.log(`${testNum} fail `);
+                expect(flase).assertTrue();
+                done();
+            })
+        }
+    }
+	
     async function createPixMapPromiseErr(done, testNum, arg) {
         let fdNumber = fileio.openSync(pathWebp);
         const imageSourceApi = image.createImageSource(fdNumber);
@@ -752,7 +807,7 @@ describe('Image', function () {
             desiredRegion: { size: { height: 10000, width: 10000 }, x: 0, y: 0 },
             index: 0
         };
-        createPixMapCbErr(done, 'wbp_009', decodingOptions)
+        createPixMapCb(done, 'wbp_009', decodingOptions)
     })
 
     /**
@@ -873,7 +928,7 @@ describe('Image', function () {
             desiredRegion: { size: { height: 10000, width: 10000 }, x: 0, y: 0 },
             index: 0
         };
-        createPixMapPromiseErr(done, 'wbp_014', decodingOptions)
+        createPixMapPromise(done, 'wbp_014', decodingOptions)
     })
 
     /**
