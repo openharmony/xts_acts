@@ -13,12 +13,12 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 import wifi from '@ohos.wifi'
 
 function sleep(delay) {
-    return new Promise(resovle => setTimeout(resovle, delay))
+    return new  Promise(resovle => setTimeout(resovle,delay))
 }
 
 
@@ -31,24 +31,15 @@ let WifiSecurityType = {
 }
 
 function checkWifiPowerOn(){
-	let enable = wifi.enableWifi();
-	console.info("enableWifi result0000123:" + enable);
-	wifi.on('wifiStateChange', state => {
-    console.info("wifiStateLisener state:" +state)
-    if (state === 1) { // 1: wifi is enable, 0:wifi is disable
-      wifi.scan()
-	  wifi.getLinkedInfo()
-    }
-    })
-    console.info("wifi_test/wifi status:" + wifi.isWifiActive());
-    expect(wifi.isWifiActive()).assertTrue();
+	console.info("Wifi_test/wifi status:" + wifi.isWifiActive());
 }
+
 let WifiDeviceConfig = {
     "ssid": "TEST",
     "bssid": "",
     "preSharedKey": "",
     "isHiddenSsid": false,
-    "securityType":WifiSecurityType.WIFI_SEC_TYPE_OPEN ,
+    "securityType":WifiSecurityType.WIFI_SEC_TYPE_OPEN,
 }
 let ConnState = {
     SCANNING: 0,
@@ -60,6 +51,8 @@ let ConnState = {
     DISCONNECTED: 6,
     UNKNOWN: 7,
 }
+
+
 
 describe('ACTS_WifiTest', function() {
 
@@ -73,10 +66,10 @@ describe('ACTS_WifiTest', function() {
     /**
      * @tc.number     open_0001
      * @tc.name       SUB_Communication_WiFi_Sta_Open_0001
-     * @tc.desc       Test wifi.isWifiEnable API functionality.
+     * @since 6
+     * @tc.desc       Test wifi.isWifiActive API functionality.
      */
-    it('SUB_Communication_WiFi_Sta_Open_0001', 0,  function() {
-        console.info("[wifi_test] check the state of wifi, if it's close, open it.");
+    it('SUB_Communication_WiFi_Sta_WifiActive_0001', 0,  function() {
         let active = wifi.isWifiActive();
         console.log("[wifi_test]  check the state of wifi: " + wifi.isWifiActive());
         expect(wifi.isWifiActive()).assertTrue();
@@ -125,37 +118,47 @@ describe('ACTS_WifiTest', function() {
     /**
      * @tc.number     Scan_0004
      * @tc.name       SUB_Communication_WiFi_Sta_Scan_0004
+     * @since 7
      * @tc.desc       Test wifi.getSignalLevel API functionality.
      */
     it('SUB_Communication_WiFi_Sta_Scan_0004', 0,  function() {
         console.info("[wifi_test] check the 2.4G rssi assgined to level test.");
+        console.info("[wifi_test] getSignalLevel" + wifi.getSignalLevel(-65,1));
         expect(wifi.getSignalLevel(-65, 1)).assertEqual(4);
-
+        console.info("[wifi_test] getSignalLevel" + wifi.getSignalLevel(-66,1));
         expect(wifi.getSignalLevel(-66, 1)).assertEqual(3);
+        console.info("[wifi_test] getSignalLevel" + wifi.getSignalLevel(-75,1));
         expect(wifi.getSignalLevel(-75, 1)).assertEqual(3);
-
+        console.info("[wifi_test] getSignalLevel" + wifi.getSignalLevel(-76,1));
         expect(wifi.getSignalLevel(-76, 1)).assertEqual(2);
+        console.info("[wifi_test] getSignalLevel" + wifi.getSignalLevel(-82,1));
         expect(wifi.getSignalLevel(-82, 1)).assertEqual(2);
-
+        console.info("[wifi_test] getSignalLevel" + wifi.getSignalLevel(-83,1));
         expect(wifi.getSignalLevel(-83, 1)).assertEqual(1);
+        console.info("[wifi_test] getSignalLevel" + wifi.getSignalLevel(-88,1));
         expect(wifi.getSignalLevel(-88, 1)).assertEqual(1);
-
+        console.info("[wifi_test] getSignalLevel" + wifi.getSignalLevel(-89,1));
         expect(wifi.getSignalLevel(-89, 1)).assertEqual(0);
+        console.info("[wifi_test] getSignalLevel" + wifi.getSignalLevel(-127,1));
         expect(wifi.getSignalLevel(-127, 1)).assertEqual(0);
-
         console.info("[wifi_test] check the 5G rssi assgined to level test.");
+        console.info("[wifi_test] getSignalLevel" + wifi.getSignalLevel(-65,2));
         expect(wifi.getSignalLevel(-65, 2)).assertEqual(4);
-
+        console.info("[wifi_test] getSignalLevel" + wifi.getSignalLevel(-66,2));
         expect(wifi.getSignalLevel(-66, 2)).assertEqual(3);
+        console.info("[wifi_test] getSignalLevel" + wifi.getSignalLevel(-72,2));
         expect(wifi.getSignalLevel(-72, 2)).assertEqual(3);
-
+        console.info("[wifi_test] getSignalLevel" + wifi.getSignalLevel(-73,2));
         expect(wifi.getSignalLevel(-73, 2)).assertEqual(2);
+        console.info("[wifi_test] getSignalLevel" + wifi.getSignalLevel(-79,2));
         expect(wifi.getSignalLevel(-79, 2)).assertEqual(2);
-
+        console.info("[wifi_test] getSignalLevel" + wifi.getSignalLevel(-80,2));
         expect(wifi.getSignalLevel(-80, 2)).assertEqual(1);
+        console.info("[wifi_test] getSignalLevel" + wifi.getSignalLevel(-85,2));
         expect(wifi.getSignalLevel(-85, 2)).assertEqual(1);
-
+        console.info("[wifi_test] getSignalLevel" + wifi.getSignalLevel(-86,2));
         expect(wifi.getSignalLevel(-86, 2)).assertEqual(0);
+        console.info("[wifi_test] getSignalLevel" + wifi.getSignalLevel(-127,2));
         expect(wifi.getSignalLevel(-127, 2)).assertEqual(0);
        
     })
@@ -165,13 +168,14 @@ describe('ACTS_WifiTest', function() {
      * @tc.number SUB_Communication_WiFi_Sta_info_0002
      * @tc.name testgetCountryCode
      * @tc.desc Test getCountryCode api.
+     * @since 7
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 3
      */
     it('SUB_Communication_WiFi_Sta_Info_0002', 0,  function() {
         expect(wifi.isWifiActive()).assertTrue();
-        console.info(" [wifi_test] getCountryCode start ... ");
+        console.info("[wifi_test] getCountryCode start");
         let countryCode = wifi.getCountryCode();
         console.info("[wifi_test] getCountryCode -> " + JSON.stringify(countryCode));
         expect(JSON.stringify(countryCode)).assertEqual('"CN"');
@@ -181,6 +185,7 @@ describe('ACTS_WifiTest', function() {
      * @tc.number SUB_Communication_WiFi_Sta_info_0004
      * @tc.name testFeatureSupported
      * @tc.desc Test FeatureSupported api.
+     * @since 7
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 3
@@ -201,34 +206,35 @@ describe('ACTS_WifiTest', function() {
             WIFI_FEATURE_OWE:0x20000000
         }
         let isSupport1 = wifi.isFeatureSupported(WifiUtils.WIFI_FEATURE_INFRA);
-        expect(isSupport1).assertFalse();
+        expect(isSupport1).assertFalse(); 
         let isSupport2 = wifi.isFeatureSupported(WifiUtils.WIFI_FEATURE_INFRA_5G);
-        expect(isSupport2).assertFalse();
+        expect(isSupport2).assertFalse(); 
         let isSupport3 = wifi.isFeatureSupported(WifiUtils.WIFI_GAS_ANQP);
-        expect(isSupport3).assertFalse();
+        expect(isSupport3).assertFalse(); 
         let isSupport4 = wifi.isFeatureSupported(WifiUtils.WIFI_WIFI_DIRECT);
-        expect(isSupport4).assertFalse();
+        expect(isSupport4).assertFalse(); 
         let isSupport5 = wifi.isFeatureSupported(WifiUtils.WIFI_FEATURE_MOBILE_HOTSPOT);
-        expect(isSupport5).assertFalse();
+        expect(isSupport5).assertFalse(); 
         let isSupport6 = wifi.isFeatureSupported(WifiUtils.WIFI_FEATURE_AWARE);
-        expect(isSupport6).assertFalse();
+        expect(isSupport6).assertFalse(); 
         let isSupport7 = wifi.isFeatureSupported(WifiUtils.WIFI_FEATURE_AP_STA);
-        expect(isSupport7).assertFalse();
+        expect(isSupport7).assertFalse(); 
         let isSupport8 = wifi.isFeatureSupported(WifiUtils.WIFI_FEATURE_WPA3_SAE);
-        expect(isSupport8).assertFalse();
+        expect(isSupport8).assertFalse(); 
         let isSupport9 = wifi.isFeatureSupported(WifiUtils.WIFI_FEATURE_WPA3_SUITE_B);
-        expect(isSupport9).assertFalse();
+        expect(isSupport9).assertFalse(); 
         let isSupport = wifi.isFeatureSupported(WifiUtils.WIFI_FEATURE_OWE);
-        expect(isSupport).assertFalse();
+        expect(isSupport).assertFalse(); 
     })
  
     /**
      * @tc.number     conn_Config_0002
      * @tc.name       SUB_Communication_WiFi_Sta_Conn_Info_0002
+     * @since 7
      * @tc.desc       Test getLinkedInfo information
      */
     it('SUB_Communication_WiFi_Sta_Conn_Info_0002', 0, async function(done) {
-        console.info("[wifi_test]isConnected : " + wifi.isConnected());
+        console.info("[wifi_test] isConnected :" + wifi.isConnected());
         expect(wifi.isConnected()).assertFalse();
         await wifi.getLinkedInfo()
             .then((result) => {
@@ -244,10 +250,11 @@ describe('ACTS_WifiTest', function() {
     /**
      * @tc.number     conn_Config_0003
      * @tc.name       SUB_Communication_WiFi_Sta_Conn_Info_0003
+     * @since 7
      * @tc.desc       Test getLinkedInfo callback information
      */
     it('SUB_Communication_WiFi_Sta_Conn_Info_0003', 0, async function(done) {
-        console.info("[wifi_test]isConnected : " + wifi.isConnected());
+        console.info("[wifi_test] isConnected :" + wifi.isConnected());
         expect(wifi.isConnected()).assertFalse();
         await wifi.getLinkedInfo(
             (err,result) => {
@@ -259,11 +266,11 @@ describe('ACTS_WifiTest', function() {
                 console.info("[wifi_test] getLinkedInfo callback result: " + JSON.stringify(result));
                 console.info("ssid: " + result.ssid + "bssid:"+ result.bssid +"band: " + result.band+
                 "isHidden: " + result.isHidden + "isRestricted: " + result.isRestricted +
-                "rssi " + result.rssi + 
+                 "rssi " + result.rssi + 
                 "linkSpeed: " + result.linkSpeed + "frequency:" 
-                 + result.frequency +
-                "macAddress: " + result.macAddress + "ipAddress: " + result.ipAddress + 
-                 "connState: " + result.connState);
+                 + result.frequency + 
+                "macAddress: " + result.macAddress + "ipAddress: " + result.ipAddress +
+                "connState: " + result.connState);
                 done();
             });   
     })
@@ -271,6 +278,7 @@ describe('ACTS_WifiTest', function() {
     /**
     * @tc.number     Conn_Info_0001
     * @tc.name       SUB_Communication_WiFi_Sta_Conn_Info_0001
+    * @since 7
     * @tc.desc       Test get IpInfo information
     */
     it('SUB_Communication_WiFi_Sta_Conn_Info_0001', 0,  function () {
@@ -288,6 +296,7 @@ describe('ACTS_WifiTest', function() {
    /**
     * @tc.number     wifiStateChange_0001
     * @tc.name       SUB_Communication_WiFi_Sta_wifiStateChange_0001
+    * @since 7
     * @tc.desc       Test wifiStateChange callback
     */
     it('SUB_Communication_WiFi_Sta_wifiStateChange_0001', 0, async function (done) {
@@ -309,6 +318,7 @@ describe('ACTS_WifiTest', function() {
   /**
     * @tc.number     wifiConnectionChange_0002
     * @tc.name       SUB_Communication_WiFi_Sta_wifiConnectionChange_0002
+    * @since 7
     * @tc.desc       Test wifiStateChange callback
     */
     it('SUB_Communication_WiFi_Sta_wifiConnectionChange_0002', 0, async function (done) {
@@ -331,6 +341,7 @@ describe('ACTS_WifiTest', function() {
    /**
     * @tc.number     wifiScanStateChange_0003
     * @tc.name       SUB_Communication_WiFi_Sta_wifiScanStateChange_0003
+    * @since 7
     * @tc.desc       Test wifiScanStateChange callback
     */
     it('SUB_Communication_WiFi_Sta_wifiScanStateChange_0003', 0, async function (done) {
@@ -348,7 +359,6 @@ describe('ACTS_WifiTest', function() {
              await promise.then(done)
          });  
         let scan = wifi.scan();
-        await sleep(3000);
         done();  
        
     })
@@ -356,6 +366,7 @@ describe('ACTS_WifiTest', function() {
    /**
     * @tc.number     wifiRssiChange_0004
     * @tc.name       SUB_Communication_WiFi_Sta_wifiRssiChange_0004
+    * @since 7
     * @tc.desc       Test wifiRssiChange callback
     */
    it('SUB_Communication_WiFi_Sta_wifiRssiChange_0004', 0, async function (done) {
@@ -380,6 +391,7 @@ describe('ACTS_WifiTest', function() {
      * @tc.number SUB_Communication_WiFi_Hotspot_ON_0001
      * @tc.name testhotspotStateChangeOn
      * @tc.desc Test hotspotStateChangeOn api.
+     * @since 7
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 3
@@ -402,11 +414,12 @@ describe('ACTS_WifiTest', function() {
      * @tc.number SUB_Communication_WiFi_Hotspot_Off_0002
      * @tc.name testhotspotStateChangeOff
      * @tc.desc Test hotspotStateChange api.
+     * @since 7
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_Communication_WiFi_Sta_Off_0002', 0, async function (done) {
+    it('SUB_Communication_WiFi_Hotspot_Off_0002', 0, async function (done) {
         try {
            await wifi.off('hotspotStateChange', (data) => {
                 console.info("[wifi_test] hotspotStateChange Off ->" + data);
@@ -421,6 +434,4 @@ describe('ACTS_WifiTest', function() {
     })
     console.log("*************[wifi_test] start wifi js unit test end*************");
 })
-
-
 
