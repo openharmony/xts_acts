@@ -124,11 +124,9 @@ describe('VideoRecorderFuncPromiseTest', function () {
         await captureSession.addInput(cameraInput);
         await captureSession.addOutput(videoOutPut);
         await captureSession.commitConfig();
-        await captureSession.start();
     }
 
     async function stopCaptureSession() {
-        await captureSession.stop();
         await captureSession.release();
     }
 
@@ -148,7 +146,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         await videoOutPut.release().then(() => {
             console.info('[camera] case videoOutput release success');
         });
-        videoOutPut = undefined;
+        videoOutPut = null;
         await stopCaptureSession();
     }
 
@@ -186,12 +184,12 @@ describe('VideoRecorderFuncPromiseTest', function () {
 
     function failureCallback(error) {
         expect().assertFail();
-        console.info(`case error called,errMessage is ${error.message}`);
+        console.info(`case error called,err code is ${error.code}`);
     }
 
     function catchCallback(error) {
         expect().assertFail();
-        console.info(`case error called,errMessage is ${error.message}`);
+        console.info(`case error called,err code is ${error.code}`);
     }
 
     /* *
@@ -203,14 +201,14 @@ describe('VideoRecorderFuncPromiseTest', function () {
         * @tc.level     : Level0
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_0100', 0, async function (done) {
-        let videoRecorder = undefined;
+        let videoRecorder = null;
         let surfaceID = '';
         let videoOutput;
         await getFd('01.mp4');
         videoConfig.url = fdPath;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
-            if (typeof (recorder) != 'undefined') {
+            if (recorder != null) {
                 videoRecorder = recorder;
                 expect(videoRecorder.state).assertEqual('idle');
             } else {
@@ -253,14 +251,14 @@ describe('VideoRecorderFuncPromiseTest', function () {
         * @tc.level     : Level0
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_0200', 0, async function (done) {
-        let videoRecorder = undefined;
+        let videoRecorder = null;
         let surfaceID = '';
         let videoOutput;
         await getFd('02.mp4');
         videoConfig.url = fdPath;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
-            if (typeof (recorder) != 'undefined') {
+            if (recorder != null) {
                 videoRecorder = recorder;
                 expect(videoRecorder.state).assertEqual('idle');
             } else {
@@ -310,14 +308,14 @@ describe('VideoRecorderFuncPromiseTest', function () {
         * @tc.level     : Level0
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_0300', 0, async function (done) {
-        let videoRecorder = undefined;
+        let videoRecorder = null;
         let surfaceID = '';
         let videoOutput;
         await getFd('03.mp4');
         videoConfig.url = fdPath;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
-            if (typeof (recorder) != 'undefined') {
+            if (recorder != null) {
                 videoRecorder = recorder;
                 expect(videoRecorder.state).assertEqual('idle');
             } else {
@@ -375,14 +373,14 @@ describe('VideoRecorderFuncPromiseTest', function () {
         * @tc.level     : Level0
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_0400', 0, async function (done) {
-        let videoRecorder = undefined;
+        let videoRecorder = null;
         let surfaceID = '';
         let videoOutput;
         await getFd('04.mp4');
         videoConfig.url = fdPath;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
-            if (typeof (recorder) != 'undefined') {
+            if (recorder != null) {
                 videoRecorder = recorder;
                 expect(videoRecorder.state).assertEqual('idle');
             } else {
@@ -431,14 +429,14 @@ describe('VideoRecorderFuncPromiseTest', function () {
         * @tc.level     : Level0
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_0500', 0, async function (done) {
-        let videoRecorder = undefined;
+        let videoRecorder = null;
         let surfaceID = '';
         let videoOutput;
         await getFd('05.mp4');
         videoConfig.url = fdPath;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
-            if (typeof (recorder) != 'undefined') {
+            if (recorder != null) {
                 videoRecorder = recorder;
                 expect(videoRecorder.state).assertEqual('idle');
             } else {
@@ -486,14 +484,14 @@ describe('VideoRecorderFuncPromiseTest', function () {
         * @tc.level     : Level0
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_0600', 0, async function (done) {
-        let videoRecorder = undefined;
+        let videoRecorder = null;
         let surfaceID = '';
         let videoOutput;
         await getFd('06.mp4');
         videoConfig.url = fdPath;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
-            if (typeof (recorder) != 'undefined') {
+            if (recorder != null) {
                 videoRecorder = recorder;
                 expect(videoRecorder.state).assertEqual('idle');
             } else {
@@ -548,14 +546,14 @@ describe('VideoRecorderFuncPromiseTest', function () {
         * @tc.level     : Level0
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_0700', 0, async function (done) {
-        let videoRecorder = undefined;
+        let videoRecorder = null;
         let surfaceID = '';
         let videoOutput;
         await getFd('07.mp4');
         videoConfig.url = fdPath;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
-            if (typeof (recorder) != 'undefined') {
+            if (recorder != null) {
                 videoRecorder = recorder;
                 expect(videoRecorder.state).assertEqual('idle');
             } else {
@@ -610,14 +608,14 @@ describe('VideoRecorderFuncPromiseTest', function () {
         * @tc.level     : Level0
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_0800', 0, async function (done) {
-        let videoRecorder = undefined;
+        let videoRecorder = null;
         let surfaceID = '';
         let videoOutput;
         await getFd('08.mp4');
         videoConfig.url = fdPath;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
-            if (typeof (recorder) != 'undefined') {
+            if (recorder != null) {
                 videoRecorder = recorder;
                 expect(videoRecorder.state).assertEqual('idle');
             } else {
@@ -680,14 +678,14 @@ describe('VideoRecorderFuncPromiseTest', function () {
         * @tc.level     : Level0
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_0900', 0, async function (done) {
-        let videoRecorder = undefined;
+        let videoRecorder = null;
         let surfaceID = '';
         let videoOutput;
         await getFd('09.mp4');
         videoConfig.url = fdPath;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
-            if (typeof (recorder) != 'undefined') {
+            if (recorder != null) {
                 videoRecorder = recorder;
                 expect(videoRecorder.state).assertEqual('idle');
             } else {
@@ -750,7 +748,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1000', 0, async function (done) {
-        let videoRecorder = undefined;
+        let videoRecorder = null;
         let surfaceID = '';
         let videoOutput;
         await getFd('10.mp4');
@@ -760,7 +758,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         configFile.videoBitrate = 8000;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
-            if (typeof (recorder) != 'undefined') {
+            if (recorder != null) {
                 videoRecorder = recorder;
                 expect(videoRecorder.state).assertEqual('idle');
             } else {
@@ -810,7 +808,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1100', 0, async function (done) {
-        let videoRecorder = undefined;
+        let videoRecorder = null;
         let surfaceID = '';
         let videoOutput;
         await getFd('11.mp4');
@@ -820,7 +818,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         configFile.videoBitrate = 16000;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
-            if (typeof (recorder) != 'undefined') {
+            if (recorder != null) {
                 videoRecorder = recorder;
                 expect(videoRecorder.state).assertEqual('idle');
             } else {
@@ -870,7 +868,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1200', 0, async function (done) {
-        let videoRecorder = undefined;
+        let videoRecorder = null;
         let surfaceID = '';
         let videoOutput;
         await getFd('12.mp4');
@@ -880,7 +878,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         configFile.videoBitrate = 32000;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
-            if (typeof (recorder) != 'undefined') {
+            if (recorder != null) {
                 videoRecorder = recorder;
                 expect(videoRecorder.state).assertEqual('idle');
             } else {
@@ -930,7 +928,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1300', 0, async function (done) {
-        let videoRecorder = undefined;
+        let videoRecorder = null;
         let surfaceID = '';
         let videoOutput;
         await getFd('13.mp4');
@@ -940,7 +938,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         configFile.videoBitrate = 112000;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
-            if (typeof (recorder) != 'undefined') {
+            if (recorder != null) {
                 videoRecorder = recorder;
                 expect(videoRecorder.state).assertEqual('idle');
             } else {
@@ -989,14 +987,14 @@ describe('VideoRecorderFuncPromiseTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1400', 0, async function (done) {
-        let videoRecorder = undefined;
+        let videoRecorder = null;
         let surfaceID = '';
         let videoOutput;
         await getFd('14.mp4');
         onlyVideoConfig.url = fdPath;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
-            if (typeof (recorder) != 'undefined') {
+            if (recorder != null) {
                 videoRecorder = recorder;
                 expect(videoRecorder.state).assertEqual('idle');
             } else {
@@ -1038,14 +1036,14 @@ describe('VideoRecorderFuncPromiseTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1500', 0, async function (done) {
-        let videoRecorder = undefined;
+        let videoRecorder = null;
         let surfaceID = '';
         let videoOutput;
         await getFd('15.mp4');
         onlyVideoConfig.url = fdPath;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
-            if (typeof (recorder) != 'undefined') {
+            if (recorder != null) {
                 videoRecorder = recorder;
                 expect(videoRecorder.state).assertEqual('idle');
             } else {
@@ -1096,14 +1094,14 @@ describe('VideoRecorderFuncPromiseTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1600', 0, async function (done) {
-        let videoRecorder = undefined;
+        let videoRecorder = null;
         let surfaceID = '';
         let videoOutput;
         await getFd('16.mp4');
         onlyVideoConfig.url = fdPath;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
-            if (typeof (recorder) != 'undefined') {
+            if (recorder != null) {
                 videoRecorder = recorder;
                 expect(videoRecorder.state).assertEqual('idle');
             } else {
@@ -1160,14 +1158,14 @@ describe('VideoRecorderFuncPromiseTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1700', 0, async function (done) {
-        let videoRecorder = undefined;
+        let videoRecorder = null;
         let surfaceID = '';
         let videoOutput;
         await getFd('17.mp4');
         onlyVideoConfig.url = fdPath;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
-            if (typeof (recorder) != 'undefined') {
+            if (recorder != null) {
                 videoRecorder = recorder;
                 expect(videoRecorder.state).assertEqual('idle');
             } else {
@@ -1215,14 +1213,14 @@ describe('VideoRecorderFuncPromiseTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1800', 0, async function (done) {
-        let videoRecorder = undefined;
+        let videoRecorder = null;
         let surfaceID = '';
         let videoOutput;
         await getFd('18.mp4');
         onlyVideoConfig.url = fdPath;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
-            if (typeof (recorder) != 'undefined') {
+            if (recorder != null) {
                 videoRecorder = recorder;
                 expect(videoRecorder.state).assertEqual('idle');
             } else {
@@ -1270,7 +1268,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         * @tc.level     : Level0
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1900', 0, async function (done) {
-        let videoRecorder = undefined;
+        let videoRecorder = null;
         let surfaceID = '';
         let videoOutput;
         await getFd('40.mp4');
@@ -1278,7 +1276,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         videoConfig.rotation = 90;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
-            if (typeof (recorder) != 'undefined') {
+            if (recorder != null) {
                 videoRecorder = recorder;
                 expect(videoRecorder.state).assertEqual('idle');
             } else {
@@ -1319,7 +1317,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         * @tc.level     : Level0
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_2000', 0, async function (done) {
-        let videoRecorder = undefined;
+        let videoRecorder = null;
         let surfaceID = '';
         let videoOutput;
         await getFd('41.mp4');
@@ -1327,7 +1325,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         videoConfig.rotation = 180;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
-            if (typeof (recorder) != 'undefined') {
+            if (recorder != null) {
                 videoRecorder = recorder;
                 expect(videoRecorder.state).assertEqual('idle');
             } else {
@@ -1368,7 +1366,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         * @tc.level     : Level0
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_2100', 0, async function (done) {
-        let videoRecorder = undefined;
+        let videoRecorder = null;
         let surfaceID = '';
         let videoOutput;
         await getFd('42.mp4');
@@ -1376,7 +1374,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         videoConfig.rotation = 270;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
-            if (typeof (recorder) != 'undefined') {
+            if (recorder != null) {
                 videoRecorder = recorder;
                 expect(videoRecorder.state).assertEqual('idle');
             } else {
@@ -1417,7 +1415,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         * @tc.level     : Level0
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_2200', 0, async function (done) {
-        let videoRecorder = undefined;
+        let videoRecorder = null;
         let surfaceID = '';
         let videoOutput;
         await getFd('43.mp4');
@@ -1425,7 +1423,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         configFile.videoFrameRate = 20;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
-            if (typeof (recorder) != 'undefined') {
+            if (recorder != null) {
                 videoRecorder = recorder;
                 expect(videoRecorder.state).assertEqual('idle');
             } else {
@@ -1466,7 +1464,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         * @tc.level     : Level0
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_2300', 0, async function (done) {
-        let videoRecorder = undefined;
+        let videoRecorder = null;
         let surfaceID = '';
         let videoOutput;
         await getFd('44.mp4');
@@ -1474,7 +1472,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         configFile.videoFrameRate = 30;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
-            if (typeof (recorder) != 'undefined') {
+            if (recorder != null) {
                 videoRecorder = recorder;
                 expect(videoRecorder.state).assertEqual('idle');
             } else {
@@ -1515,7 +1513,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         * @tc.level     : Level0
     */
     it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_2400', 0, async function (done) {
-        let videoRecorder = undefined;
+        let videoRecorder = null;
         let surfaceID = '';
         let videoOutput;
         await getFd('45.mp4');
@@ -1523,7 +1521,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         configFile.videoFrameRate = 60;
         await media.createVideoRecorder().then((recorder) => {
             console.info('case createVideoRecorder called');
-            if (typeof (recorder) != 'undefined') {
+            if (recorder != null) {
                 videoRecorder = recorder;
                 expect(videoRecorder.state).assertEqual('idle');
             } else {

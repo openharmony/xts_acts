@@ -80,12 +80,12 @@ describe('VideoPlayerFuncCallbackTest', function () {
 
     function failureCallback(error) {
         expect().assertFail();
-        console.info(`case error called,errMessage is ${error.message}`);
+        console.info(`case error called,err code is ${error.code}`);
     }
 
     function catchCallback(error) {
         expect().assertFail();
-        console.info(`case error called,errMessage is ${error.message}`);
+        console.info(`case error called,err code is ${error.code}`);
     }
 
     function sleep(time) {
@@ -135,7 +135,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
 
     function printfError(error, done) {
         expect().assertFail();
-        console.info(`case error called,errMessage is ${error.message}`);
+        console.info(`case error called,err code is ${error.code}`);
         done();
     }
 
@@ -177,14 +177,14 @@ describe('VideoPlayerFuncCallbackTest', function () {
         });
 
         videoPlayer.on('error', (error) => {
-            console.info(`case error called,errMessage is ${error.message}`);
+            console.info(`case error called,err code is ${error.code}`);
         });
     }
 
     eventEmitter.on(CREATE_EVENT, (videoPlayer, steps, done) => {
         steps.shift();
         media.createVideoPlayer((err, video) => {
-            if (typeof (video) != 'undefined') {
+            if (video != null) {
                 videoPlayer = video;
                 setOnCallback(videoPlayer);
                 expect(videoPlayer.state).assertEqual('idle');
@@ -200,7 +200,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
         steps.shift();
         videoPlayer.url = fdPath;
         videoPlayer.setDisplaySurface(surfaceID, (err) => {
-            if (typeof (err) == 'undefined') {
+            if (err == null) {
                 expect(videoPlayer.state).assertEqual('idle');
                 console.info('case setDisplaySurface success!!');
                 toNextStep(videoPlayer, steps, done);
@@ -213,7 +213,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
     eventEmitter.on(PREPARE_EVENT, (videoPlayer, steps, done) => {
         steps.shift();
         videoPlayer.prepare((err) => {
-            if (typeof (err) == 'undefined') {
+            if (err == null) {
                 expect(videoPlayer.state).assertEqual('prepared');
                 expect(videoPlayer.duration).assertEqual(DURATION_TIME);
                 expect(videoPlayer.width).assertEqual(WIDTH_VALUE);
@@ -230,7 +230,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
         steps.shift();
         videoPlayer.url = fdPath;
         videoPlayer.prepare((err) => {
-            if (typeof (err) == 'undefined') {
+            if (err == null) {
                 expect(videoPlayer.state).assertEqual('prepared');
                 expect(videoPlayer.duration).assertEqual(DURATION_TIME);
                 expect(videoPlayer.width).assertEqual(WIDTH_VALUE);
@@ -246,7 +246,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
     eventEmitter.on(GETDESCRIPTION, (videoPlayer, steps, done) => {
         steps.shift();
         videoPlayer.getTrackDescription((err, arrlist) => {
-            if (typeof (err) == 'undefined') {
+            if (err == null) {
                 for (let i = 0; i < arrlist.length; i++) {
                     printfDescription(arrlist[i]);
                 }
@@ -261,7 +261,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
         steps.shift();
         let startTime = videoPlayer.currentTime;
         videoPlayer.play((err) => {
-            if (typeof (err) == 'undefined') {
+            if (err == null) {
                 expect(videoPlayer.state).assertEqual('playing');
                 console.info('case play success!!');
                 sleep(PLAY_TIME);
@@ -277,7 +277,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
     eventEmitter.on(PAUSE_EVENT, (videoPlayer, steps, done) => {
         steps.shift();
         videoPlayer.pause((err) => {
-            if (typeof (err) == 'undefined') {
+            if (err == null) {
                 expect(videoPlayer.state).assertEqual('paused');
                 console.info('case pause success!!');
                 toNextStep(videoPlayer, steps, done);
@@ -290,7 +290,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
     eventEmitter.on(STOP_EVENT, (videoPlayer, steps, done) => {
         steps.shift();
         videoPlayer.stop((err) => {
-            if (typeof (err) == 'undefined') {
+            if (err == null) {
                 expect(videoPlayer.state).assertEqual('stopped');
                 console.info('case stop success!!');
                 toNextStep(videoPlayer, steps, done);
@@ -303,7 +303,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
     eventEmitter.on(RESET_EVENT, (videoPlayer, steps, done) => {
         steps.shift();
         videoPlayer.reset((err) => {
-            if (typeof (err) == 'undefined') {
+            if (err == null) {
                 expect(videoPlayer.state).assertEqual('idle');
                 console.info('case reset success!!');
                 toNextStep(videoPlayer, steps, done);
@@ -316,7 +316,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
     eventEmitter.on(RELEASE_EVENT, (videoPlayer, steps, done) => {
         steps.shift();
         videoPlayer.release((err) => {
-            if (typeof (err) == 'undefined') {
+            if (err == null) {
                 console.info('case release success!!');
                 toNextStep(videoPlayer, steps, done);
             } else {
@@ -355,7 +355,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
         steps.shift();
         steps.shift();
         videoPlayer.seek(seekTime, (err, seekDoneTime) => {
-            if (typeof (err) == 'undefined') {
+            if (err == null) {
                 if (seekTime > DURATION_TIME) {
                     seekTime = DURATION_TIME;
                 }
@@ -375,7 +375,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
         steps.shift();
         steps.shift();
         videoPlayer.seek(seekTime, seekMode, (err, seekDoneTime) => {
-            if (typeof (err) == 'undefined') {
+            if (err == null) {
                 if (seekTime > DURATION_TIME) {
                     seekTime = DURATION_TIME;
                 }
@@ -393,7 +393,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
         steps.shift();
         steps.shift();
         videoPlayer.setVolume(volumeValue, (err) => {
-            if (typeof (err) == 'undefined') {
+            if (err == null) {
                 console.info('case setVolume success');
                 toNextStep(videoPlayer, steps, done);
             } else {
@@ -433,7 +433,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
         steps.shift();
         let startTime = videoPlayer.currentTime;
         videoPlayer.setSpeed(speedValue, (err, speedMode) => {
-            if (typeof (err) == 'undefined') {
+            if (err == null) {
                 sleep(1000);
                 expect(speedValue).assertEqual(speedMode);
                 console.info('case setSpeed success and speedMode is '+ speedMode);

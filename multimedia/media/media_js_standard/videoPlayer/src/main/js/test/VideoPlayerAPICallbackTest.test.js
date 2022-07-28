@@ -83,12 +83,12 @@ describe('VideoPlayerAPICallbackTest', function () {
 
     function failureCallback(error) {
         expect().assertFail();
-        console.info(`case error called,errMessage is ${error.message}`);
+        console.info(`case error called,err code is ${error.code}`);
     }
 
     function catchCallback(error) {
         expect().assertFail();
-        console.info(`case error called,errMessage is ${error.message}`);
+        console.info(`case error called,err code is ${error.code}`);
     }
 
     async function getFd() {
@@ -134,7 +134,7 @@ describe('VideoPlayerAPICallbackTest', function () {
 
     function printfError(error, done) {
         expect().assertFail();
-        console.info(`case error called,errMessage is ${error.message}`);
+        console.info(`case error called,err code is ${error.code}`);
         done();
     }
 
@@ -160,12 +160,12 @@ describe('VideoPlayerAPICallbackTest', function () {
     eventEmitter.on(CREATE_EVENT, (videoPlayer, steps, done) => {
         steps.shift();
         media.createVideoPlayer((err, video) => {
-            if (typeof (video) != 'undefined') {
+            if (video != null) {
                 videoPlayer = video;
                 expect(videoPlayer.state).assertEqual('idle');
                 console.info('case createVideoPlayer success!!');
                 toNextStep(videoPlayer, steps, done);
-            } else if ((typeof (err) != 'undefined') && (steps[0] == ERROR_EVENT)) {
+            } else if ((err != null) && (steps[0] == ERROR_EVENT)) {
                 steps.shift();
                 toNextStep(videoPlayer, steps, done);
             } else {
@@ -178,11 +178,11 @@ describe('VideoPlayerAPICallbackTest', function () {
         steps.shift();
         videoPlayer.url = fdPath;
         videoPlayer.setDisplaySurface(surfaceID, (err) => {
-            if (typeof (err) == 'undefined') {
+            if (err == null) {
                 expect(videoPlayer.state).assertEqual('idle');
                 console.info('case setDisplaySurface success!!');
                 toNextStep(videoPlayer, steps, done);
-            } else if ((typeof (err) != 'undefined') && (steps[0] == ERROR_EVENT)) {
+            } else if ((err != null) && (steps[0] == ERROR_EVENT)) {
                 steps.shift();
                 toNextStep(videoPlayer, steps, done);
             } else {
@@ -195,14 +195,14 @@ describe('VideoPlayerAPICallbackTest', function () {
         steps.shift();
         videoPlayer.url = fdPath;
         videoPlayer.prepare((err) => {
-            if (typeof (err) == 'undefined') {
+            if (err == null) {
                 expect(videoPlayer.state).assertEqual('prepared');
                 expect(videoPlayer.duration).assertEqual(DURATION_TIME);
                 expect(videoPlayer.width).assertEqual(WIDTH_VALUE);
                 expect(videoPlayer.height).assertEqual(HEIGHT_VALUE);
                 console.info('case prepare success!!');
                 toNextStep(videoPlayer, steps, done);
-            } else if ((typeof (err) != 'undefined') && (steps[0] == ERROR_EVENT)) {
+            } else if ((err != null) && (steps[0] == ERROR_EVENT)) {
                 steps.shift();
                 toNextStep(videoPlayer, steps, done);
             } else {
@@ -214,12 +214,12 @@ describe('VideoPlayerAPICallbackTest', function () {
     eventEmitter.on(GETDESCRIPTION, (videoPlayer, steps, done) => {
         steps.shift();
         videoPlayer.getTrackDescription((err, arrlist) => {
-            if (typeof (err) == 'undefined') {
+            if (err == null) {
                 for (let i = 0; i < arrlist.length; i++) {
                     printfDescription(arrlist[i]);
                 }
                 toNextStep(videoPlayer, steps, done);
-            } else if ((typeof (err) != 'undefined') && (steps[0] == ERROR_EVENT)) {
+            } else if ((err != null) && (steps[0] == ERROR_EVENT)) {
                 steps.shift();
                 toNextStep(videoPlayer, steps, done);
             } else {
@@ -231,12 +231,12 @@ describe('VideoPlayerAPICallbackTest', function () {
     eventEmitter.on(PLAY_EVENT, (videoPlayer, steps, done) => {
         steps.shift();
         videoPlayer.play((err) => {
-            if (typeof (err) == 'undefined') {
+            if (err == null) {
                 expect(videoPlayer.state).assertEqual('playing');
                 console.info('case play success!!');
                 sleep(PLAY_TIME);
                 toNextStep(videoPlayer, steps, done);
-            } else if ((typeof (err) != 'undefined') && (steps[0] == ERROR_EVENT)) {
+            } else if ((err != null) && (steps[0] == ERROR_EVENT)) {
                 steps.shift();
                 toNextStep(videoPlayer, steps, done);
             } else {
@@ -248,11 +248,11 @@ describe('VideoPlayerAPICallbackTest', function () {
     eventEmitter.on(PAUSE_EVENT, (videoPlayer, steps, done) => {
         steps.shift();
         videoPlayer.pause((err) => {
-            if (typeof (err) == 'undefined') {
+            if (err == null) {
                 expect(videoPlayer.state).assertEqual('paused');
                 console.info('case pause success!!');
                 toNextStep(videoPlayer, steps, done);
-            } else if ((typeof (err) != 'undefined') && (steps[0] == ERROR_EVENT)) {
+            } else if ((err != null) && (steps[0] == ERROR_EVENT)) {
                 steps.shift();
                 toNextStep(videoPlayer, steps, done);
             } else {
@@ -264,11 +264,11 @@ describe('VideoPlayerAPICallbackTest', function () {
     eventEmitter.on(STOP_EVENT, (videoPlayer, steps, done) => {
         steps.shift();
         videoPlayer.stop((err) => {
-            if (typeof (err) == 'undefined') {
+            if (err == null) {
                 expect(videoPlayer.state).assertEqual('stopped');
                 console.info('case stop success!!');
                 toNextStep(videoPlayer, steps, done);
-            } else if ((typeof (err) != 'undefined') && (steps[0] == ERROR_EVENT)) {
+            } else if ((err != null) && (steps[0] == ERROR_EVENT)) {
                 steps.shift();
                 toNextStep(videoPlayer, steps, done);
             } else {
@@ -280,11 +280,11 @@ describe('VideoPlayerAPICallbackTest', function () {
     eventEmitter.on(RESET_EVENT, (videoPlayer, steps, done) => {
         steps.shift();
         videoPlayer.reset((err) => {
-            if (typeof (err) == 'undefined') {
+            if (err == null) {
                 expect(videoPlayer.state).assertEqual('idle');
                 console.info('case reset success!!');
                 toNextStep(videoPlayer, steps, done);
-            } else if ((typeof (err) != 'undefined') && (steps[0] == ERROR_EVENT)) {
+            } else if ((err != null) && (steps[0] == ERROR_EVENT)) {
                 steps.shift();
                 toNextStep(videoPlayer, steps, done);
             } else {
@@ -296,10 +296,10 @@ describe('VideoPlayerAPICallbackTest', function () {
     eventEmitter.on(RELEASE_EVENT, (videoPlayer, steps, done) => {
         steps.shift();
         videoPlayer.release((err) => {
-            if (typeof (err) == 'undefined') {
+            if (err == null) {
                 console.info('case release success!!');
                 toNextStep(videoPlayer, steps, done);
-            } else if ((typeof (err) != 'undefined') && (steps[0] == ERROR_EVENT)) {
+            } else if ((err != null) && (steps[0] == ERROR_EVENT)) {
                 steps.shift();
                 toNextStep(videoPlayer, steps, done);
             } else {
@@ -313,10 +313,10 @@ describe('VideoPlayerAPICallbackTest', function () {
         steps.shift();
         steps.shift();
         videoPlayer.seek(seekTime, (err, seekDoneTime) => {
-            if (typeof (err) == 'undefined') {
+            if (err == null) {
                 console.info('case seek success and seekDoneTime is '+ seekDoneTime);
                 toNextStep(videoPlayer, steps, done);
-            } else if ((typeof (err) != 'undefined') && (steps[0] == ERROR_EVENT)) {
+            } else if ((err != null) && (steps[0] == ERROR_EVENT)) {
                 steps.shift();
                 toNextStep(videoPlayer, steps, done);
             } else {
@@ -355,11 +355,11 @@ describe('VideoPlayerAPICallbackTest', function () {
         steps.shift();
         steps.shift();
         videoPlayer.seek(seekTime, media.SeekMode.SEEK_NEXT_SYNC, (err, seekDoneTime) => {
-            if (typeof (err) == 'undefined') {
+            if (err == null) {
                 checkSeekTime(media.SeekMode.SEEK_NEXT_SYNC, seekTime, seekDoneTime);
                 console.info('case seek success and seekDoneTime is '+ seekDoneTime);
                 toNextStep(videoPlayer, steps, done);
-            } else if ((typeof (err) != 'undefined') && (steps[0] == ERROR_EVENT)) {
+            } else if ((err != null) && (steps[0] == ERROR_EVENT)) {
                 steps.shift();
                 toNextStep(videoPlayer, steps, done);
             } else {
@@ -373,10 +373,10 @@ describe('VideoPlayerAPICallbackTest', function () {
         steps.shift();
         steps.shift();
         videoPlayer.setVolume(volumeValue, (err) => {
-            if (typeof (err) == 'undefined') {
+            if (err == null) {
                 console.info('case setVolume success');
                 toNextStep(videoPlayer, steps, done);
-            } else if ((typeof (err) != 'undefined') && (steps[0] == ERROR_EVENT)) {
+            } else if ((err != null) && (steps[0] == ERROR_EVENT)) {
                 steps.shift();
                 toNextStep(videoPlayer, steps, done);
             } else {
@@ -390,11 +390,11 @@ describe('VideoPlayerAPICallbackTest', function () {
         steps.shift();
         steps.shift();
         videoPlayer.setSpeed(speedValue, (err, speedMode) => {
-            if (typeof (err) == 'undefined') {
+            if (err == null) {
                 expect(speedValue).assertEqual(speedMode);
                 console.info('case setSpeed success and speedMode is '+ speedMode);
                 toNextStep(videoPlayer, steps, done);
-            } else if ((typeof (err) != 'undefined') && (steps[0] == ERROR_EVENT)) {
+            } else if ((err != null) && (steps[0] == ERROR_EVENT)) {
                 steps.shift();
                 toNextStep(videoPlayer, steps, done);
             } else {
@@ -587,7 +587,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         console.info('case new surfaceID is ' + surfaceID);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, GETDESCRIPTION,
-            PREPARE_EVENT, RELEASE_EVENT, END_EVENT);
+            PREPARE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
@@ -604,7 +604,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         console.info('case new surfaceID is ' + surfaceID);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT, PREPARE_EVENT, PREPARE_EVENT,
-            PREPARE_EVENT, RELEASE_EVENT, END_EVENT);
+            ERROR_EVENT, PREPARE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
@@ -807,7 +807,8 @@ describe('VideoPlayerAPICallbackTest', function () {
         console.info('case new surfaceID is ' + surfaceID);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-            PREPARE_EVENT, PLAY_EVENT, PLAY_EVENT, PLAY_EVENT, RELEASE_EVENT, END_EVENT);
+            PREPARE_EVENT, PLAY_EVENT, PLAY_EVENT, ERROR_EVENT,
+            PLAY_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
@@ -1010,7 +1011,8 @@ describe('VideoPlayerAPICallbackTest', function () {
         console.info('case new surfaceID is ' + surfaceID);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-            PREPARE_EVENT, PLAY_EVENT, PAUSE_EVENT, PAUSE_EVENT, PAUSE_EVENT, RELEASE_EVENT, END_EVENT);
+            PREPARE_EVENT, PLAY_EVENT, PAUSE_EVENT, PAUSE_EVENT, ERROR_EVENT,
+            PAUSE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
@@ -1213,7 +1215,8 @@ describe('VideoPlayerAPICallbackTest', function () {
         console.info('case new surfaceID is ' + surfaceID);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-            PREPARE_EVENT, PLAY_EVENT, STOP_EVENT, STOP_EVENT, STOP_EVENT, RELEASE_EVENT, END_EVENT);
+            PREPARE_EVENT, PLAY_EVENT, STOP_EVENT, STOP_EVENT, ERROR_EVENT,
+            STOP_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
@@ -1416,7 +1419,8 @@ describe('VideoPlayerAPICallbackTest', function () {
         console.info('case new surfaceID is ' + surfaceID);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-            PREPARE_EVENT, RESET_EVENT, RESET_EVENT, RESET_EVENT, RELEASE_EVENT, END_EVENT);
+            PREPARE_EVENT, RESET_EVENT, RESET_EVENT, ERROR_EVENT,
+            RESET_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 
@@ -1995,7 +1999,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         console.info('case new surfaceID is ' + surfaceID);
         let videoPlayer = null;
         let mySteps = new Array(CREATE_EVENT, SETSURFACE_EVENT,
-            SETVOLUME_EVENT, VOLUME_VALUE, END_EVENT);
+            SETVOLUME_EVENT, VOLUME_VALUE, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoPlayer, mySteps, done);
     })
 

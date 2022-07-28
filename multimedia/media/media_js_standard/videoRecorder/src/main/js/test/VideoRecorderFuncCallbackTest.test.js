@@ -223,17 +223,15 @@ describe('VideoRecorderFuncCallbackTest', function () {
         await captureSession.addInput(cameraInput);
         await captureSession.addOutput(videoOutPut);
         await captureSession.commitConfig();
-        await captureSession.start();
     }
 
     async function stopCaptureSession() {
-        await captureSession.stop();
         await captureSession.release();
     }
 
     function printfError(error, done) {
         expect().assertFail();
-        console.info(`case error called,errMessage is ${error.message}`);
+        console.info(`case error called,err code is ${error.code}`);
         done();
     }
 
@@ -256,7 +254,7 @@ describe('VideoRecorderFuncCallbackTest', function () {
         });
 
         videoRecorder.on('error', (err) => {
-            console.info('case error called, errMessage is ' + err.message);
+            console.info('case error called, err code is ' + err.code);
             expect().assertFail();
         });
     }
@@ -264,7 +262,7 @@ describe('VideoRecorderFuncCallbackTest', function () {
     eventEmitter.on(CREATE_EVENT, async (videoRecorder, steps, done) => {
         steps.shift();
         media.createVideoRecorder((err, recorder) => {
-            if (typeof (err) == 'undefined') {
+            if (err == null) {
                 console.info('case createVideoRecorder success ');
                 videoRecorder = recorder;
                 setOnCallback(videoRecorder);
@@ -279,7 +277,7 @@ describe('VideoRecorderFuncCallbackTest', function () {
     eventEmitter.on(PREPARE_EVENT, async (videoRecorder, steps, done) => {
         steps.shift();
         videoRecorder.prepare(videoConfig, (err) => {
-            if (typeof (err) == 'undefined') {
+            if (err == null) {
                 console.info('case prepare success');
                 expect(videoRecorder.state).assertEqual('prepared');
                 toNextStep(videoRecorder, steps, done);
@@ -292,7 +290,7 @@ describe('VideoRecorderFuncCallbackTest', function () {
     eventEmitter.on(PREPARE_OLNYVIDEO_EVENT, async (videoRecorder, steps, done) => {
         steps.shift();
         videoRecorder.prepare(onlyVideoConfig, (err) => {
-            if (typeof (err) == 'undefined') {
+            if (err == null) {
                 console.info('case prepare success');
                 expect(videoRecorder.state).assertEqual('prepared');
                 toNextStep(videoRecorder, steps, done);
@@ -305,7 +303,7 @@ describe('VideoRecorderFuncCallbackTest', function () {
     eventEmitter.on(GETSURFACE_EVENT, async (videoRecorder, steps, done) => {
         steps.shift();
         videoRecorder.getInputSurface((err, outPutsurface) => {
-            if (typeof (err) == 'undefined') {
+            if (err == null) {
                 expect(videoRecorder.state).assertEqual('prepared');
                 surfaceID = outPutsurface;
                 console.info('case getInputSurface success :' + surfaceID);
@@ -329,7 +327,7 @@ describe('VideoRecorderFuncCallbackTest', function () {
             console.info('case videoOutput start success');
         });
         videoRecorder.start((err) => {
-            if (typeof (err) == 'undefined') {
+            if (err == null) {
                 console.info('case start success');
                 expect(videoRecorder.state).assertEqual('playing');
                 sleep(RECORDER_TIME);
@@ -343,7 +341,7 @@ describe('VideoRecorderFuncCallbackTest', function () {
     eventEmitter.on(PAUSE_EVENT, async (videoRecorder, steps, done) => {
         steps.shift();
         videoRecorder.pause((err) => {
-            if (typeof (err) == 'undefined') {
+            if (err == null) {
                 console.info('case pause success');
                 expect(videoRecorder.state).assertEqual('paused');
                 sleep(PAUSE_TIME);
@@ -357,7 +355,7 @@ describe('VideoRecorderFuncCallbackTest', function () {
     eventEmitter.on(RESUME_EVENT, async (videoRecorder, steps, done) => {
         steps.shift();
         videoRecorder.resume((err) => {
-            if (typeof (err) == 'undefined') {
+            if (err == null) {
                 console.info('case resume success');
                 sleep(RECORDER_TIME);
                 expect(videoRecorder.state).assertEqual('playing');
@@ -371,7 +369,7 @@ describe('VideoRecorderFuncCallbackTest', function () {
     eventEmitter.on(STOP_EVENT, async (videoRecorder, steps, done) => {
         steps.shift();
         videoRecorder.stop((err) => {
-            if (typeof (err) == 'undefined') {
+            if (err == null) {
                 console.info('case stop success');
                 expect(videoRecorder.state).assertEqual('stopped');
                 toNextStep(videoRecorder, steps, done);
@@ -384,7 +382,7 @@ describe('VideoRecorderFuncCallbackTest', function () {
     eventEmitter.on(RESET_EVENT, async (videoRecorder, steps, done) => {
         steps.shift();
         videoRecorder.reset((err) => {
-            if (typeof (err) == 'undefined') {
+            if (err == null) {
                 console.info('case reset success');
                 expect(videoRecorder.state).assertEqual('idle');
                 toNextStep(videoRecorder, steps, done);
@@ -403,9 +401,9 @@ describe('VideoRecorderFuncCallbackTest', function () {
             await videoOutput.release().then(() => {
                 console.info('case videoOutput release success');
             });
-            videoOutput = undefined;
+            videoOutput = null;
             await stopCaptureSession();
-            if (typeof (err) == 'undefined') {
+            if (err == null) {
                 expect(videoRecorder.state).assertEqual('idle');
                 console.info('case release success');
                 toNextStep(videoRecorder, steps, done);
