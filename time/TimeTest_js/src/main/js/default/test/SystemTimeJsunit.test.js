@@ -27,6 +27,7 @@ import {
   
   describe("TimeTest", function () {
     console.log("start################################start");  
+    
     /**
      * @tc.number    SUB_systemTime_getRealActiveTime_JS_API_0100
      * @tc.name      Test systemTime.getRealActiveTime

@@ -14,7 +14,6 @@
  */
 import app from '@system.app'
 
-//import {Core, ExpectExtend, ReportExtend, InstrumentLog} from 'deccjsunit/index'
 import {Core, ExpectExtend} from 'deccjsunit/index'
 
 const injectRef = Object.getPrototypeOf(global) || global
@@ -40,6 +39,7 @@ export default {
         //        core.subscribeEvent('suite', instrumentLog)
         //        core.subscribeEvent('task', instrumentLog)
         const configService = core.getDefaultService('config')
+        this.timeout = 30000
         configService.setConfig(this)
 
         require('../../test/List.test')
