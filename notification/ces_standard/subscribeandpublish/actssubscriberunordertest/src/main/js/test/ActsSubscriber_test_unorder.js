@@ -12,364 +12,448 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import Subscriber from "@ohos.commonEvent";
+import commonEvent from '@ohos.commonEvent';
 import {describe,beforeAll,beforeEach,afterEach,afterAll,it,expect,} from "@ohos/hypium";
 
 export default function ActsSubscriberTestUnorder() {
-describe("ActsSubscriberTestUnorder", async function (done) {
-  console.info(
-    "===========ActsSubscriberTestUnorder start====================>"
-  );
-  let commonEventSubscriber001;
-  let commonEventSubscriber002;
-  let commonEventSubscriber003;
-  let commonEventSubscriber004;
-  let commonEventSubscriber0051;
-  let commonEventSubscriber0052;
-  let commonEventSubscriber006;
-  let commonEventSubscriber007;
-  let commonEventSubscriber008;
-  let commonEventSubscriber0101;
-  let commonEventSubscriber0102;
-  let commonEventSubscriber011;
-  let commonEventSubscriber012;
+  describe('ActsSubscriberTestUnorder', function () {
 
-  function publishCallback(err) {
-    console.info("==========================>publishCallback");
-  }
+    let TAG = 'ActsSubscriberTestUnorder ===>';
 
-  function publishCallback10001(err) {
-    console.info("==========================>publishCallback");
-  }
-
-  function publishCallback10002(err) {
-    console.info("==========================>publishCallback");
-  }
-
-  function unsubscriberCallBack(err) {
-    console.info("==========================>unsubscriberCallBack");
-  }
-
-  /*
-   * @tc.number    : ActsSubscriberTestUnorder_0100
-   * @tc.name      : verify subscribe and publish : Check subscribe and publish common event data
-   * @tc.desc      : Check the subscriber can receive event "publish_event0100" type of the interface (by Promise)
-   */
-  it("ActsSubscriberTestUnorder_0100", 0, async function (done) {
-    console.info("===============ActsSubscriberTestUnorder_0100=============================>");
-    function subscriberCallBack001(err, data) {
-      console.info("==========================>subscriberCallBack001");
-      expect(data.event).assertEqual("publish_event0100");
-      expect(data.bundleName).assertEqual("");
-      expect(data.code).assertEqual(0);
-      expect(data.data).assertEqual("");
-      done();
+    let CommonEventSubscriberInfo = {
+      events: ['event'],
+      publisherPermission: '',
+      publisherDeviceId: '',
+      userId: 100,
+      priority: 1000
     }
 
-    let commonEventSubscribeInfo = {
-      events: ["publish_event0100"],
-    };
-
-    Subscriber.createSubscriber(commonEventSubscribeInfo).then((data) => {
-      console.info("===============ActsSubscriberTestUnorder_0100=========createSubscriber promise");
-      commonEventSubscriber001 = data;
-      data.getSubscribeInfo().then(() => {
-        console.info( "===============ActsSubscriberTestUnorder_0100=========getSubscribeInfo promise");
-        Subscriber.subscribe(commonEventSubscriber001, subscriberCallBack001);
-        setTimeout(function () {
-          console.info("==========ActsSubscriberTestUnorder_0100 publish start============");
-          Subscriber.publish("publish_event0100", publishCallback);
-        }, 1000);
-      });
-    });
-  });
-
-  /*
-   * @tc.number    : ActsSubscriberTestUnorder_0200
-   * @tc.name      : verify subscribe and publish : Check subscribe and publish common event data
-   *                 of containing special characters
-   * @tc.desc      : Check the subscriber can receive event "@#￥#3243adsafdf_" type of the interface (by Promise)
-   */
-  it("ActsSubscriberTestUnorder_0200", 0, async function (done) {
-    console.info("===============ActsSubscriberTestUnorder_0200==========================>");
-
-    function subscriberCallBack002(err, data) {
-      console.info("==========================>subscriberCallBack002");
-      expect(data.event).assertEqual("@#￥#3243adsafdf_");
-      expect(data.bundleName).assertEqual("");
-      expect(data.code).assertEqual(0);
-      expect(data.data).assertEqual("");
-      done();
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
     }
+    /*
+     * @tc.number    : ActsSubscriberTestUnorder_0100
+     * @tc.name      : check
+     * @tc.desc      : getSubscribeInfo(callback: AsyncCallback<CommonEventSubscribeInfo>): void
+     */
+    it('ActsSubscriberTestUnorder_0100', 0, async function (done) {
+      console.info(TAG + 'ActsSubscriberTestUnorder_0100 START ')
+      let CommonEventSubscriber = await commonEvent.createSubscriber(CommonEventSubscriberInfo)
+      if (CommonEventSubscriber == undefined) {
+        console.info(TAG + ': createSubscriber failed! Err.Info ===> ' + JSON.stringify(CommonEventSubscriber))
+        expect(false).assertTrue()
+        done()
+      } else {
+        console.info(TAG + ': createSubscriber successed! Subscriber.Info ===> ' + JSON.stringify(CommonEventSubscriber))
+        expect(true).assertTrue()
+      }
 
-    let commonEventSubscribeInfo = {
-      events: ["@#￥#3243adsafdf_"],
-    };
+      await CommonEventSubscriber.getSubscribeInfo((err, CommonEventSubscriberInfo) => {
+        if (err.code) {
+          console.info(TAG + ': getSubscribeInfo failed! event.Info ===> ' + JSON.stringify(err.code))
+          expect(false).assertTrue()
+          done()
+        } else {
+          console.info(TAG + ': getSubscribeInfo successed! event.Info ===> ' + JSON.stringify(CommonEventSubscriberInfo))
+          expect(true).assertTrue()
+          expect(CommonEventSubscriberInfo.events[0]).assertEqual('event')
+          expect(CommonEventSubscriberInfo.publisherPermission == '').assertTrue()
+          expect(CommonEventSubscriberInfo.publisherDeviceId == '').assertTrue()
+          expect(CommonEventSubscriberInfo.userId).assertEqual(100)
+          expect(CommonEventSubscriberInfo.priority).assertEqual(1000)
+          done()
+        }
+      })
+    })
 
-    Subscriber.createSubscriber(commonEventSubscribeInfo).then((data) => {
-      console.info("===============ActsSubscriberTestUnorder_0200=========createSubscriber promise");
-      commonEventSubscriber002 = data;
-      data.getSubscribeInfo().then(() => {
-        console.info("===============ActsSubscriberTestUnorder_0200=========getSubscribeInfo promise");
-        Subscriber.subscribe(commonEventSubscriber002, subscriberCallBack002);
-        setTimeout(function () {
-          console.info("==========ActsSubscriberTestUnorder_0200 publish start============");
-          Subscriber.publish("@#￥#3243adsafdf_", publishCallback);
-        }, 1000);
-      });
-    });
-  });
+    /*
+     * @tc.number    : ActsSubscriberTestUnorder_0200
+     * @tc.name      : check
+     * @tc.desc      : getSubscribeInfo(): Promise<CommonEventSubscribeInfo>
+     */
+    it('ActsSubscriberTestUnorder_0200', 0, async function (done) {
+      console.info(TAG + 'ActsSubscriberTestUnorder_0200 START ')
+      let CommonEventSubscriber = await commonEvent.createSubscriber(CommonEventSubscriberInfo)
+      if (CommonEventSubscriber == undefined) {
+        console.info(TAG + ': createSubscriber failed! Err.Info ===> ' + JSON.stringify(CommonEventSubscriber))
+        expect(false).assertTrue()
+        done()
+      } else {
+        console.info(TAG + ': createSubscriber successed! Subscriber.Info ===> ' + JSON.stringify(CommonEventSubscriber))
+        expect(true).assertTrue()
+      }
 
-  /*
-   * @tc.number    : ActsSubscriberTestUnorder_0300
-   * @tc.name      : verify subscribe and publish : Check subscribe and publish common event data
-   *                 with publishInfo data
-   * @tc.desc      : Check the subscriber can receive event "publish_event0300" type of the interface (by Promise)
-   */
-  it("ActsSubscriberTestUnorder_0300", 0, async function (done) {
-    console.info("===============ActsSubscriberTestUnorder_0300==========================>");
-    let commonEventSubscribeInfo = {
-      events: ["publish_event0300"],
-      publisherDeviceId: "PublishDeviceId0300",
-      priority: 10,
-    };
+      await CommonEventSubscriber.getSubscribeInfo().then((CommonEventSubscriberInfo) => {
+        console.info(TAG + ': getSubscribeInfo promise successed! event.Info ===> ' + JSON.stringify(CommonEventSubscriberInfo))
+        expect(true).assertTrue()
+        expect(CommonEventSubscriberInfo.events[0]).assertEqual('event')
+        expect(CommonEventSubscriberInfo.publisherPermission == '').assertTrue()
+        expect(CommonEventSubscriberInfo.publisherDeviceId == '').assertTrue()
+        expect(CommonEventSubscriberInfo.userId).assertEqual(100)
+        expect(CommonEventSubscriberInfo.priority).assertEqual(1000)
+        done()
+      }).catch((err) => {
+        console.info(TAG + ': getSubscribeInfo promise failed! event.Info ===> ' + JSON.stringify(err.code))
+        expect(false).assertTrue()
+      })
 
-    let commonEventPublishData = {
-      isOrdered: false,
-      code: 55,
-      data: "PublishData0300",
-    };
+    })
 
-    function isOrderedCommonEventCallback003(err, data) {
-      console.info("==========================>isOrderedCommonEventCallback003");
-      expect(data).assertEqual(false);
-      done();
-    }
+    /*
+     * @tc.number    : ActsgetSubscribeInfoTest_0300
+     * @tc.name      : Check the subscriber can receive event "@#￥#3243adsafdf_" type of the interface
+     * @tc.desc      : getSubscribeInfo(callback: AsyncCallback<CommonEventSubscribeInfo>): void
+     */
+    it('ActsgetSubscribeInfoTest_0300', 0, async function (done) {
+      console.info(TAG + 'ActsgetSubscribeInfoTest_0100 START ')
+      CommonEventSubscriberInfo.events[0] = '@#￥#3243adsafdf_'
+      let CommonEventSubscriber = await commonEvent.createSubscriber(CommonEventSubscriberInfo)
+      if (CommonEventSubscriber == undefined) {
+        console.info(TAG + ': createSubscriber failed! Err.Info ===> ' + JSON.stringify(CommonEventSubscriber))
+        expect(false).assertTrue()
+        done()
+      } else {
+        console.info(TAG + ': createSubscriber successed! Subscriber.Info ===> ' + JSON.stringify(CommonEventSubscriber))
+        expect(true).assertTrue()
+      }
 
-    function subscriberCallBack003(err, data) {
-      console.info("==========================>subscriberCallBack003");
-      expect(data.event).assertEqual("publish_event0300");
-      expect(data.code).assertEqual(55);
-      expect(data.data).assertEqual("PublishData0300");
-      commonEventSubscriber003.isOrderedCommonEvent(
-        isOrderedCommonEventCallback003
-      );
-    }
+      await CommonEventSubscriber.getSubscribeInfo((err, CommonEventSubscriberInfo) => {
+        if (err.code) {
+          console.info(TAG + ': getSubscribeInfo failed! event.Info ===> ' + JSON.stringify(err.code))
+          expect(false).assertTrue()
+          done()
+        } else {
+          console.info(TAG + ': getSubscribeInfo successed! event.Info ===> ' + JSON.stringify(CommonEventSubscriberInfo))
+          expect(true).assertTrue()
+          expect(CommonEventSubscriberInfo.events[0]).assertEqual('@#￥#3243adsafdf_')
+          expect(CommonEventSubscriberInfo.publisherPermission == '').assertTrue()
+          expect(CommonEventSubscriberInfo.publisherDeviceId == '').assertTrue()
+          expect(CommonEventSubscriberInfo.userId).assertEqual(100)
+          expect(CommonEventSubscriberInfo.priority).assertEqual(1000)
+          done()
+        }
+      })
+    })
 
-    Subscriber.createSubscriber(commonEventSubscribeInfo).then((data) => {
-      console.info("===============ActsSubscriberTestUnorder_0300=========createSubscriber promise");
-      commonEventSubscriber003 = data;
-      data.getSubscribeInfo().then(() => {
-        console.info("===============ActsSubscriberTestUnorder_0300=========getSubscribeInfo promise");
-        Subscriber.subscribe(commonEventSubscriber003, subscriberCallBack003);
-        setTimeout(function () {
-          console.info("==========ActsSubscriberTestUnorder_0300 publish start============");
-          Subscriber.publish("publish_event0300",commonEventPublishData,publishCallback);
-        }, 1000);
-      });
-    });
-  });
+    /*
+     * @tc.number    : ActsgetSubscribeInfoTest_0400
+     * @tc.name      : Check the subscriber can receive event "@#￥#3243adsafdf_" type of the interface (by Promise)
+     * @tc.desc      : getSubscribeInfo(callback: AsyncCallback<CommonEventSubscribeInfo>): void
+     */
+    it('ActsSubscriberTestUnorder_0400', 0, async function (done) {
+      console.info(TAG + 'ActsSubscriberTestUnorder_0400 START ')
+      CommonEventSubscriberInfo.events[0] = '@#￥#3243adsafdf_'
+      let CommonEventSubscriber = await commonEvent.createSubscriber(CommonEventSubscriberInfo)
+      if (CommonEventSubscriber == undefined) {
+        console.info(TAG + ': createSubscriber failed! Err.Info ===> ' + JSON.stringify(CommonEventSubscriber))
+        expect(false).assertTrue()
+        done()
+      } else {
+        console.info(TAG + ': createSubscriber successed! Subscriber.Info ===> ' + JSON.stringify(CommonEventSubscriber))
+        expect(true).assertTrue()
+      }
 
-  /*
-   * @tc.number    : ActsSubscriberTestUnorder_0400
-   * @tc.name      : verify subscribe and publish : Check subscribe and publish common event data
-   *                 with publishInfo data
-   * @tc.desc      : Check the subscriber can receive event "publish_event0300" type of the interface (by Promise)
-   */
-  it("ActsSubscriberTestUnorder_0400", 0, async function (done) {
-    console.info("===============ActsSubscriberTestUnorder_0400==========================>");
-    let commonEventSubscribeInfo = {
-      events: ["publish_event0400"],
-      publisherDeviceId: "PublishDeviceId0400",
-      priority: 10,
-    };
+      await CommonEventSubscriber.getSubscribeInfo().then((CommonEventSubscriberInfo) => {
+        console.info(TAG + ': getSubscribeInfo promise successed! event.Info ===> ' + JSON.stringify(CommonEventSubscriberInfo))
+        expect(true).assertTrue()
+        expect(CommonEventSubscriberInfo.events[0]).assertEqual('@#￥#3243adsafdf_')
+        expect(CommonEventSubscriberInfo.publisherPermission == '').assertTrue()
+        expect(CommonEventSubscriberInfo.publisherDeviceId == '').assertTrue()
+        expect(CommonEventSubscriberInfo.userId).assertEqual(100)
+        expect(CommonEventSubscriberInfo.priority).assertEqual(1000)
+        done()
+      }).catch((err) => {
+        console.info(TAG + ': getSubscribeInfo promise failed! event.Info ===> ' + JSON.stringify(err.code))
+        expect(false).assertTrue()
+      })
 
-    let commonEventPublishData = {
-      isOrdered: false,
-      bundleName: "com.example.actssubscribertestunorder",
-      code: 55,
-      data: "PublishData0400",
-    };
+    })
 
-    function isOrderedCommonEventCallback004(err, data) {
-      console.info("==========================>isOrderedCommonEventCallback003");
-      expect(data).assertEqual(false);
-      done();
-    }
+    /*
+     * @tc.number    : ActsSubscriberTestUnorder_0500
+     * @tc.name      : check
+     * @tc.desc      : isOrderedCommonEvent(callback: AsyncCallback<boolean>): void
+     */
+    it('ActsSubscriberTestUnorder_0500', 0, async function (done) {
+      console.info(TAG + 'ActsSubscriberTestUnorder_0500 START ')
+      CommonEventSubscriberInfo.events[0] = 'publish_event_0500'
+      CommonEventSubscriberInfo.publisherDeviceId = 'PublishDeviceId_0500'
+      CommonEventSubscriberInfo.priority = 10
 
-    function subscriberCallBack004(err, data) {
-      console.info("==========================>subscriberCallBack004");
-      expect(data.event).assertEqual("publish_event0400");
-      expect(data.code).assertEqual(55);
-      expect(data.data).assertEqual("PublishData0400");
-      commonEventSubscriber004.isOrderedCommonEvent(
-        isOrderedCommonEventCallback004
-      );
-    }
+      let CommonEventPublishData = {
+        code: 0,
+        data: "initial_data",
+        isOrdered: true,
+      }
+      let CommonEventSubscriber = await commonEvent.createSubscriber(CommonEventSubscriberInfo)
+      if (CommonEventSubscriber == undefined) {
+        console.info(TAG + ': createSubscriber failed! Err.Info ===> ' + JSON.stringify(CommonEventSubscriber))
+        expect(false).assertTrue()
+        done()
+      } else {
+        console.info(TAG + ': createSubscriber successed! Subscriber.Info ===> ' + JSON.stringify(CommonEventSubscriber))
+        expect(true).assertTrue()
+      }
 
-    Subscriber.createSubscriber(commonEventSubscribeInfo).then((data) => {
-      console.info("===============ActsSubscriberTestUnorder_0400=========createSubscriber promise");
-      commonEventSubscriber004 = data;
-      data.getSubscribeInfo().then(() => {
-        console.info(
-          "===============ActsSubscriberTestUnorder_0400=========getSubscribeInfo promise"
-        );
-        Subscriber.subscribe(commonEventSubscriber004, subscriberCallBack004);
-        setTimeout(function () {
-          console.info("==========ActsSubscriberTestUnorder_0400 publish start============");
-          Subscriber.publish(
-            "publish_event0400",
-            commonEventPublishData,
-            publishCallback
-          );
-        }, 1000);
-      });
-    });
-  });
+      await commonEvent.subscribe(CommonEventSubscriber, (err, CommonEventData) => {
+        if (err.code) {
+          console.info(TAG + ': subscribe failed! Err.Info ===> ' + JSON.stringify(err.code))
+          expect(false).assertTrue()
+          done()
+        } else {
+          console.info(TAG + ': subscribe successed! CommonEventData.Info ===> ' + JSON.stringify(CommonEventData))
+          expect(true).assertTrue()
+        }
+      })
 
-  /*
-   * @tc.number    : ActsSubscriberTestUnorder_0500
-   * @tc.name      : verify subscribe and publish : Check the two different subscribe and one publish,
-   *                 and check unsubscribe event
-   * @tc.desc      : Check the subscriber can receive event "publish_event0500" type of the interface (by Promise)
-   */
-  it("ActsSubscriberTestUnorder_0500", 0, async function (done) {
-    console.info("===============ActsSubscriberTestUnorder_0500==========================>");
-    let commonEventSubscribeInfo = {
-      events: ["publish_event0500"],
-    };
+      await CommonEventSubscriber.isOrderedCommonEvent((err) => {
+        if (err.code) {
+          console.info(TAG + ': isOrderedCommonEvent failed! event.Info ===> ' + JSON.stringify(err.code))
+          expect(false).assertTrue()
+          done()
+        } else {
+          console.info(TAG + ': isOrderedCommonEvent successed!')
+          expect(true).assertTrue()
+          expect(CommonEventSubscriberInfo.events[0]).assertEqual('publish_event_0500')
+          expect(CommonEventSubscriberInfo.publisherPermission == '').assertTrue()
+          expect(CommonEventSubscriberInfo.publisherDeviceId).assertEqual('PublishDeviceId_0500')
+          expect(CommonEventSubscriberInfo.userId).assertEqual(100)
+          expect(CommonEventSubscriberInfo.priority).assertEqual(10)
+          expect(CommonEventPublishData.code).assertEqual(0)
+          expect(CommonEventPublishData.data).assertEqual('initial_data')
+          expect(CommonEventPublishData.isOrdered).assertTrue()
+          done()
+        }
+      })
 
-    let commonEventPublishData = {
-      isOrdered: false,
-      isSticky: false,
-    };
+      await commonEvent.publish('publish_event_0500', CommonEventPublishData, (err) => {
+        if (err.code) {
+          console.info(TAG + ': publish failed! event.Info ===> ' + JSON.stringify(err.code))
+          expect(false).assertTrue()
+          done()
+        } else {
+          console.info(TAG + ': publish successed! event.Info ===> ' + JSON.stringify(CommonEventPublishData))
+          expect(true).assertTrue()
+          done()
+        }
+      })
 
-    function subscriberCallBack005(err, data) {
-      console.info("==========================>subscriberCallBack0500");
-      expect(data.event).assertEqual("publish_event0500");
-      expect(data.bundleName).assertEqual("");
-      expect(data.code).assertEqual(0);
-      expect(data.data).assertEqual("");
-      done();
-    }
+      await sleep(5000);
+    })
 
-    Subscriber.createSubscriber(commonEventSubscribeInfo).then((data) => {
-      console.info("===============ActsSubscriberTestUnorder_0500_1=========createSubscriber promise");
-      commonEventSubscriber0051 = data;
-      data.getSubscribeInfo().then(() => {
-        console.info("===============ActsSubscriberTestUnorder_0500_1=========getSubscribeInfo promise");
-        Subscriber.subscribe(commonEventSubscriber0051, subscriberCallBack005);
-      });
-    });
+    /*
+     * @tc.number    : ActsSubscriberTestUnorder_0600
+     * @tc.name      : check
+     * @tc.desc      : isOrderedCommonEvent(): Promise<boolean>
+     */
+    it('ActsSubscriberTestUnorder_0600', 0, async function (done) {
+      console.info(TAG + 'ActsSubscriberTestUnorder_0600 START ')
+      CommonEventSubscriberInfo.events[0] = 'publish_event_0600'
+      CommonEventSubscriberInfo.publisherDeviceId = 'PublishDeviceId_0600'
+      CommonEventSubscriberInfo.priority = 10
 
-    Subscriber.createSubscriber(commonEventSubscribeInfo).then((data) => {
-      console.info("===============ActsSubscriberTestUnorder_0500_2=========createSubscriber promise");
-      commonEventSubscriber0052 = data;
-      data.getSubscribeInfo().then(() => {
-        console.info("===============ActsSubscriberTestUnorder_0500_2=========getSubscribeInfo promise");
-        Subscriber.subscribe(commonEventSubscriber0052, subscriberCallBack005);
-        Subscriber.unsubscribe(commonEventSubscriber0051, unsubscriberCallBack);
-        setTimeout(function () {
-          console.info(
-            "==========ActsSubscriberTestUnorder_0500 publish start============"
-          );
-          Subscriber.publish(
-            "publish_event0500",
-            commonEventPublishData,
-            publishCallback
-          );
-        }, 1000);
-      });
-    });
-  });
+      let CommonEventPublishData = {
+        bundleName: 'com.example.actssubscribertestunorder',
+        code: 0,
+        data: "initial_data",
+        isOrdered: true,
+      }
+      let CommonEventSubscriber = await commonEvent.createSubscriber(CommonEventSubscriberInfo)
+      if (CommonEventSubscriber == undefined) {
+        console.info(TAG + ': createSubscriber failed! Err.Info ===> ' + JSON.stringify(CommonEventSubscriber))
+        expect(false).assertTrue()
+        done()
+      } else {
+        console.info(TAG + ': createSubscriber successed! Subscriber.Info ===> ' + JSON.stringify(CommonEventSubscriber))
+        expect(true).assertTrue()
+      }
 
-  /*
-   * @tc.number    : ActsSubscriberTestUnorder_0600
-   * @tc.name      : verify subscribe and publish : Check whether the current public event is a sticky event
-   * @tc.desc      : isStickyCommonEvent(callback: AsyncCallback<boolean>): void
-   */
-  it("ActsSubscriberTestUnorder_0600", 0, async function (done) {
-    console.info("===============ActsSubscriberTestUnorder_0600==========================>");
-    let commonEventSubscribeInfo = {
-      events: ["publish_event0600"],
-    };
+      await commonEvent.subscribe(CommonEventSubscriber, (err, CommonEventData) => {
+        if (err.code) {
+          console.info(TAG + ': subscribe failed! Err.Info ===> ' + JSON.stringify(err.code))
+          expect(false).assertTrue()
+          done()
+        } else {
+          console.info(TAG + ': subscribe successed! CommonEventData.Info ===> ' + JSON.stringify(CommonEventData))
+          expect(true).assertTrue()
+        }
+      })
 
-    let commonEventPublishData = {
-      isOrdered: false,
-      isSticky: false,
-    };
+      await CommonEventSubscriber.isOrderedCommonEvent().then(() => {
+        console.info(TAG + ': isOrderedCommonEvent successed!')
+        expect(true).assertTrue()
+        expect(CommonEventSubscriberInfo.events[0]).assertEqual('publish_event_0600')
+        expect(CommonEventSubscriberInfo.publisherPermission == '').assertTrue()
+        expect(CommonEventSubscriberInfo.publisherDeviceId).assertEqual('PublishDeviceId_0600')
+        expect(CommonEventSubscriberInfo.userId).assertEqual(100)
+        expect(CommonEventSubscriberInfo.priority).assertEqual(10)
+        expect(CommonEventPublishData.bundleName).assertEqual('com.example.actssubscribertestunorder')
+        expect(CommonEventPublishData.code).assertEqual(0)
+        expect(CommonEventPublishData.data).assertEqual('initial_data')
+        expect(CommonEventPublishData.isOrdered).assertTrue()
+        done()
+      }).catch((err) => {
+        console.info(TAG + ': isOrderedCommonEvent failed! event.Info ===> ' + JSON.stringify(err.code))
+        expect(false).assertTrue()
+        done()
+      })
 
-    function isStickyCallback(err, isSticky) {
-      console.info("==========================>isStickyCallback");
-      expect(isSticky).assertEqual(false);
-      done();
-    }
+      await commonEvent.publish('publish_event_0600', CommonEventPublishData, (err) => {
+        if (err.code) {
+          console.info(TAG + ': publish failed! event.Info ===> ' + JSON.stringify(err.code))
+          expect(false).assertTrue()
+          done()
+        } else {
+          console.info(TAG + ': publish successed! event.Info ===> ' + JSON.stringify(CommonEventPublishData))
+          expect(true).assertTrue()
+          done()
+        }
+      })
 
-    function subscriberCallBack006(err, data) {
-      console.info("==========================>subscriberCallBack006");
-      commonEventSubscriber006.isStickyCommonEvent(isStickyCallback);
-    }
+      await sleep(500)
 
-    Subscriber.createSubscriber(commonEventSubscribeInfo).then((data) => {
-      console.info("===============ActsSubscriberTestUnorder_0600=========createSubscriber promise");
-      commonEventSubscriber006 = data;
-      data.getSubscribeInfo().then(() => {
-        console.info("===============ActsSubscriberTestUnorder_0600=========getSubscribeInfo promise");
-        Subscriber.subscribe(commonEventSubscriber006, subscriberCallBack006);
-        Subscriber.unsubscribe(commonEventSubscriber006, unsubscriberCallBack);
-        setTimeout(function () {
-          console.info("==========ActsSubscriberTestUnorder_0600 publish start============");
-          Subscriber.publish("publish_event0600",commonEventPublishData,publishCallback);
-        }, 1000);
-      });
-    });
-  });
+    })
 
-  /*
-   * @tc.number    : ActsSubscriberTestUnorder_0700
-   * @tc.name      : verify subscribe and publish : Check whether the current public event is a sticky event
-   * @tc.desc      : isStickyCommonEvent(): Promise<boolean>
-   */
-  it("ActsSubscriberTestUnorder_0700", 0, async function (done) {
-    console.info("===============ActsSubscriberTestUnorder_0700==========================>");
-    let commonEventSubscribeInfo = {
-      events: ["publish_event0700"],
-      userId:100
-    };
+    /*
+     * @tc.number    : ActsSubscriberTestUnorder_0700
+     * @tc.name      : check
+     * @tc.desc      : iisStickyCommonEvent(callback: AsyncCallback<boolean>): void
+     */
+    it('ActsSubscriberTestUnorder_0700', 0, async function (done) {
+      console.info(TAG + 'ActsSubscriberTestUnorder_0700 START ')
+      CommonEventSubscriberInfo.events[0] = 'publish_event_0700'
+      CommonEventSubscriberInfo.publisherDeviceId = 'PublishDeviceId_0700'
+      CommonEventSubscriberInfo.priority = 10
 
-    let commonEventPublishData = {
-      isOrdered: false,
-      isSticky: false,
-    };
+      let CommonEventPublishData = {
+        code: 0,
+        data: "initial_data",
+        isSticky: true,
+      }
+      let CommonEventSubscriber = await commonEvent.createSubscriber(CommonEventSubscriberInfo)
+      if (CommonEventSubscriber == undefined) {
+        console.info(TAG + ': createSubscriber failed! Err.Info ===> ' + JSON.stringify(CommonEventSubscriber))
+        expect(false).assertTrue()
+        done()
+      } else {
+        console.info(TAG + ': createSubscriber successed! Subscriber.Info ===> ' + JSON.stringify(CommonEventSubscriber))
+        expect(true).assertTrue()
+      }
 
-    function subscriberCallBack007(err, data) {
-      console.info("subscriberCallBack007");
-      commonEventSubscriber007
-        .isStickyCommonEvent()
-        .then((isSticky) => {
-          console.info("isSticky " + JSON.stringify(isSticky));
-          expect(isSticky).assertEqual(false);
-          done();
-        })
-        .catch((err) => {
-          console.info("isSticky failed " + JSON.stringify(err));
-        });
-    }
+      await commonEvent.subscribe(CommonEventSubscriber, (err, CommonEventData) => {
+        if (err.code) {
+          console.info(TAG + ': subscribe failed! Err.Info ===> ' + JSON.stringify(err.code))
+          expect(false).assertTrue()
+          done()
+        } else {
+          console.info(TAG + ': subscribe successed! CommonEventData.Info ===> ' + JSON.stringify(CommonEventData))
+          expect(true).assertTrue()
+        }
+      })
 
-    Subscriber.createSubscriber(commonEventSubscribeInfo).then((data) => {
-      console.info("===============ActsSubscriberTestUnorder_0700=========createSubscriber promise");
-      expect(commonEventSubscribeInfo.userId).assertEqual(100)
-      commonEventSubscriber007 = data;
-      data.getSubscribeInfo().then(() => {
-        console.info("===============ActsSubscriberTestUnorder_0700=========getSubscribeInfo promise");
-        Subscriber.subscribe(commonEventSubscriber007, subscriberCallBack007);
-        Subscriber.unsubscribe(commonEventSubscriber007, unsubscriberCallBack);
-        setTimeout(function () {
-          console.info("==========ActsSubscriberTestUnorder_0700 publish start============");
-          Subscriber.publish("publish_event0700",commonEventPublishData,publishCallback);
-        }, 1000);
-      });
-    });
-  });
-});
+      await CommonEventSubscriber.isStickyCommonEvent((err) => {
+        if (err.code) {
+          console.info(TAG + ': isStickyCommonEvent failed! event.Info ===> ' + JSON.stringify(err.code))
+          expect(false).assertTrue()
+          done()
+        } else {
+          console.info(TAG + ': isStickyCommonEvent successed!')
+          expect(true).assertTrue()
+          expect(CommonEventSubscriberInfo.events[0]).assertEqual('publish_event_0700')
+          expect(CommonEventSubscriberInfo.publisherPermission == '').assertTrue()
+          expect(CommonEventSubscriberInfo.publisherDeviceId).assertEqual('PublishDeviceId_0700')
+          expect(CommonEventSubscriberInfo.userId).assertEqual(100)
+          expect(CommonEventSubscriberInfo.priority).assertEqual(10)
+          expect(CommonEventPublishData.code).assertEqual(0)
+          expect(CommonEventPublishData.data).assertEqual('initial_data')
+          expect(CommonEventPublishData.isSticky).assertTrue()
+          done()
+        }
+      })
+
+      await commonEvent.publish('publish_event_0700', CommonEventPublishData, (err) => {
+        if (err.code) {
+          console.info(TAG + ': publish failed! event.Info ===> ' + JSON.stringify(err.code))
+          expect(false).assertTrue()
+          done()
+        } else {
+          console.info(TAG + ': publish successed! event.Info ===> ' + JSON.stringify(CommonEventPublishData))
+          expect(true).assertTrue()
+          done()
+        }
+      })
+
+      await sleep(5000);
+    })
+
+    /*
+     * @tc.number    : ActsSubscriberTestUnorder_0800
+     * @tc.name      : check
+     * @tc.desc      : isStickyCommonEvent(): Promise<boolean>
+     */
+    it('ActsSubscriberTestUnorder_0800', 0, async function (done) {
+      console.info(TAG + 'ActsSubscriberTestUnorder_0800 START ')
+      CommonEventSubscriberInfo.events[0] = 'publish_event_0800'
+      CommonEventSubscriberInfo.publisherDeviceId = 'PublishDeviceId_0800'
+      CommonEventSubscriberInfo.priority = 10
+
+      let CommonEventPublishData = {
+        code: 0,
+        data: "initial_data",
+        isSticky: true,
+      }
+      let CommonEventSubscriber = await commonEvent.createSubscriber(CommonEventSubscriberInfo)
+      if (CommonEventSubscriber == undefined) {
+        console.info(TAG + ': createSubscriber failed! Err.Info ===> ' + JSON.stringify(CommonEventSubscriber))
+        expect(false).assertTrue()
+        done()
+      } else {
+        console.info(TAG + ': createSubscriber successed! Subscriber.Info ===> ' + JSON.stringify(CommonEventSubscriber))
+        expect(true).assertTrue()
+      }
+
+      await commonEvent.subscribe(CommonEventSubscriber, (err, CommonEventData) => {
+        if (err.code) {
+          console.info(TAG + ': subscribe failed! Err.Info ===> ' + JSON.stringify(err.code))
+          expect(false).assertTrue()
+          done()
+        } else {
+          console.info(TAG + ': subscribe successed! CommonEventData.Info ===> ' + JSON.stringify(CommonEventData))
+          expect(true).assertTrue()
+        }
+      })
+
+      await CommonEventSubscriber.isStickyCommonEvent().then(() => {
+        console.info(TAG + ': isStickyCommonEvent successed!')
+        expect(true).assertTrue()
+        expect(CommonEventSubscriberInfo.events[0]).assertEqual('publish_event_0800')
+        expect(CommonEventSubscriberInfo.publisherPermission == '').assertTrue()
+        expect(CommonEventSubscriberInfo.publisherDeviceId).assertEqual('PublishDeviceId_0800')
+        expect(CommonEventSubscriberInfo.userId).assertEqual(100)
+        expect(CommonEventSubscriberInfo.priority).assertEqual(10)
+        expect(CommonEventPublishData.code).assertEqual(0)
+        expect(CommonEventPublishData.data).assertEqual('initial_data')
+        expect(CommonEventPublishData.isSticky).assertTrue()
+        done()
+      }).catch((err) => {
+        console.info(TAG + ': isStickyCommonEvent failed! event.Info ===> ' + JSON.stringify(err.code))
+        expect(false).assertTrue()
+        done()
+      })
+
+      await commonEvent.publish('publish_event_0800', CommonEventPublishData, (err) => {
+        if (err.code) {
+          console.info(TAG + ': publish failed! event.Info ===> ' + JSON.stringify(err.code))
+          expect(false).assertTrue()
+          done()
+        } else {
+          console.info(TAG + ': publish successed! event.Info ===> ' + JSON.stringify(CommonEventPublishData))
+          expect(true).assertTrue()
+          done()
+        }
+      })
+
+      await sleep(500)
+    })
+  })
 }
