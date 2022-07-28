@@ -14,7 +14,6 @@
  */
 import rpc from "@ohos.rpc";
 import particleAbility from '@ohos.ability.particleAbility'
-import featureAbility from '@ohos.ability.featureAbility'
 import commonEvent from '@ohos.commonEvent'
 var server_bundleName = "com.amsst.stserviceabilityserver";
 var server_abilityName = "com.amsst.stserviceabilityserver.ServiceAbility";
@@ -59,14 +58,22 @@ export default {
     onStop() {
         console.debug('ACTS_SerivceAbilityServerSecond ====<onStop');
         commonEvent.publish("ACTS_SerivceAbilityServerSecond_onStop", (err) => { });
-        featureAbility.terminateSelf();
+        particleAbility.terminateSelf().then((data) => {
+            console.log('ACTS_SerivceAbilityServer terminateSelf data:' + JSON.stringify(data));
+          }).catch((error) => {
+            console.log('ACTS_SerivceAbilityServer terminateSelf error:' + JSON.stringify(error));
+          });
     },
     onCommand(want, restart, startId) {
         console.debug('ACTS_SerivceAbilityServerSecond ====>onCommand='
             + "JSON(want)=" + JSON.stringify(want)
             + " ,restart=" + restart + " ,startId=" + startId);
         commonEvent.publish("ACTS_SerivceAbilityServerSecond_onCommand" + "_" + want.action, (err) => { });
-        featureAbility.terminateSelf();
+        particleAbility.terminateSelf().then((data) => {
+            console.log('ACTS_SerivceAbilityServer terminateSelf data:' + JSON.stringify(data));
+          }).catch((error) => {
+            console.log('ACTS_SerivceAbilityServer terminateSelf error:' + JSON.stringify(error));
+          });
     },
     onConnect(want) {
         console.info('ACTS_SerivceAbilityServerSecond ====< onConnect');
@@ -161,7 +168,11 @@ export default {
                             + ("json err=") + JSON.stringify(err) + " , " + want.action);
                     })
                 }
-                featureAbility.terminateSelf();
+                particleAbility.terminateSelf().then((data) => {
+                    console.log('ACTS_SerivceAbilityServer terminateSelf data:' + JSON.stringify(data));
+                  }).catch((error) => {
+                    console.log('ACTS_SerivceAbilityServer terminateSelf error:' + JSON.stringify(error));
+                  });
             }
         });
     },
