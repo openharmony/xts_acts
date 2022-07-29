@@ -36,7 +36,7 @@
             ]
           }
         ],
-        "name": "ohos.acts.hiviewdfx.hilog.hitracechain.MainAbility",
+        "name": "ohos.acts.hiviewdfx.hitracechain.function.MainAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "MyApplication",
