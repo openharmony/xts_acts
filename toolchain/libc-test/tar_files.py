@@ -24,19 +24,17 @@ import shutil
 
 copyFileCounts = 0
 
-def copyFiles(sourceDir, targetDir):
-    global copyFileCounts
+def copy_files(sourceDir, targetDir):
     for f in os.listdir(sourceDir):
-        sourceF = os.path.join(sourceDir, f)
-        targetF = os.path.join(targetDir, f)
-        if os.path.isfile(sourceF):
+        source_files = os.path.join(sourceDir, f)
+        target_files = os.path.join(targetDir, f)
+        if os.path.isfile(source_files):
             if not os.path.exists(targetDir):
                 os.makedirs(targetDir)
             copyFileCounts += 1
-            if not os.path.exists(targetF) or (os.path.exists(targetF) and (os.path.getsize(targetF) != os.path.getsize(sourceF))):
-                open(targetF, "wb").write(open(sourceF, "rb").read())
-        if os.path.isdir(sourceF):
-            copyFiles(sourceF, targetF)
+            open(target_files, "wb").write(open(source_files, "rb").read())
+        if os.path.isdir(source_files):
+            copy_files(source_files, target_files)
 
 def make_targz_one_by_one(output_filename, source_dir):
     tar = tarfile.open(output_filename,"w")
