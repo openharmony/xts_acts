@@ -14,7 +14,7 @@
  */
 
 import Ability from '@ohos.application.Ability'
-import commonEvent from '@ohos.commonevent'
+import commonEvent from '@ohos.commonEvent'
 function PublishCallBackOne2() {
     console.debug("====>Publish CallBack ACTS_StartAbility2_CommonEvent====>");
     globalThis.ability2Context.terminateSelf();

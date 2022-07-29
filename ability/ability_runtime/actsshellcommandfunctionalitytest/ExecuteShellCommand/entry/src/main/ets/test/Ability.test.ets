@@ -14,7 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'hypium/index'
-import appManager from '@ohos.application.AppManager';
+import appManager from '@ohos.application.appManager';
 
 export default function abilityTest() {
     describe('ACTS_ExecuteShellCommandTest', function () {

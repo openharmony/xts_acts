@@ -29,3 +29,8 @@ group("distributeddatamgr") {
     ]
   }
 }
+
+group("pasteboard") {
+  testonly = true
+  deps = [ "Pasteboardjsapitest:ActsPasteBoardJSApiTest" ]
+}

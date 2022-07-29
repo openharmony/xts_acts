@@ -30,7 +30,7 @@ hcpptest_suite("ActsDMSTest") {
     "//foundation/communication/ipc/interfaces/innerkits/c/ipc/include",
     "//foundation/distributedschedule/samgr_lite/interfaces/kits/registry",
     "//foundation/distributedschedule/samgr_lite/interfaces/kits/samgr",
-    "//foundation/distributedschedule/dmsfwk_lite/include",
+    "//foundation/ability/dmsfwk_lite/include",
     "//foundation/distributedschedule/samgr_lite/interfaces/innerkits",
 
     "${aafwk_lite_path}/interfaces/innerkits/abilitymgr_lite",
@@ -44,7 +44,7 @@ hcpptest_suite("ActsDMSTest") {
   deps = [
     "${appexecfwk_lite_path}/frameworks/bundle_lite:bundle",
     "//base/hiviewdfx/hilog_lite/frameworks/featured:hilog_shared",
-    "//foundation/distributedschedule/dmsfwk_lite:dtbschedmgr",
+    "//foundation/ability/dmsfwk_lite:dtbschedmgr",
     "//foundation/distributedschedule/samgr_lite/samgr:samgr",
     "//third_party/bounds_checking_function:libsec_shared",
   ]

@@ -1,10 +1,12 @@
 {
     "description": "Configuration for hjunit demo Tests",
     "driver": {
-        "type": "JSUnitTest",
-        "test-timeout": "180000",
-        "package": "com.example.accessibilityconfig",
-        "shell-timeout": "180000"
+        "type": "OHJSUnitTest",
+        "test-timeout": "240000",
+        "bundle-name": "com.example.accessibilityconfig",
+        "module-name": "phone",
+        "shell-timeout": "600000",
+        "testcase-timeout": 70000
     },
     "kits": [
         {

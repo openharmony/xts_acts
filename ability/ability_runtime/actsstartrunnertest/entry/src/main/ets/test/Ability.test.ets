@@ -14,7 +14,7 @@
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
-import commonEvent from '@ohos.commonevent'
+import commonEvent from '@ohos.commonEvent'
 var subscriberInfo_MainAbility = {
     events: ["ACTS_Start_CommonEvent"]
 };
