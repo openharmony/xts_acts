@@ -305,7 +305,7 @@ export default function abilityTest(abilityContext) {
                         expect(null).assertFail();
                     }
                     done();
-                }, 3000);
+                }, 5500);
             } else {
                 console.error(caseName + ': extension not connected');
                 expect(null).assertFail();
@@ -339,7 +339,7 @@ export default function abilityTest(abilityContext) {
                     expect(null).assertFail();
                 }
                 done();
-            }, 3000);
+            }, 5500);
         } else {
             console.error(caseName + ': extension not connected');
             expect(null).assertFail();
@@ -372,7 +372,7 @@ export default function abilityTest(abilityContext) {
                         expect(null).assertFail();
                     }
                     done();
-                }, 3000);
+                }, 5500);
             } else {
                 console.error(caseName + ': extension not connected');
                 expect(null).assertFail();
@@ -405,7 +405,7 @@ export default function abilityTest(abilityContext) {
                         expect(null).assertFail();
                     }
                     done();
-                }, 3000);
+                }, 5500);
             } else {
                 console.error(caseName + ': extension not connected');
                 expect(null).assertFail();
@@ -438,7 +438,7 @@ export default function abilityTest(abilityContext) {
                         expect(null).assertFail();
                     }
                     done();
-                }, 3000);
+                }, 5500);
             } else {
                 console.error(caseName + ': extension not connected');
                 expect(null).assertFail();
@@ -472,7 +472,7 @@ export default function abilityTest(abilityContext) {
                         expect(null).assertFail();
                     }
                     done();
-                }, 3000);
+                }, 5500);
             } else {
                 console.error(caseName + ': extension not connected');
                 expect(null).assertFail();
@@ -505,7 +505,7 @@ export default function abilityTest(abilityContext) {
                         expect(null).assertFail();
                     }
                     done();
-                }, 3000);
+                }, 5500);
             } else {
                 console.error(caseName + ': extension not connected');
                 expect(null).assertFail();
@@ -538,7 +538,7 @@ export default function abilityTest(abilityContext) {
                         expect(null).assertFail();
                     }
                     done();
-                }, 3000);
+                }, 5500);
             } else {
                 console.error(caseName + ': extension not connected');
                 expect(null).assertFail();
@@ -571,7 +571,7 @@ export default function abilityTest(abilityContext) {
                         expect(null).assertFail();
                     }
                     done();
-                }, 3000);
+                }, 5500);
             } else {
                 console.error(caseName + ': extension not connected');
                 expect(null).assertFail();
@@ -604,7 +604,7 @@ export default function abilityTest(abilityContext) {
                         expect(null).assertFail();
                     }
                     done();
-                }, 3000);
+                }, 5500);
             } else {
                 console.error(caseName + ': extension not connected');
                 expect(null).assertFail();
@@ -637,7 +637,7 @@ export default function abilityTest(abilityContext) {
                         expect(null).assertFail();
                     }
                     done();
-                }, 3000);
+                }, 5500);
             } else {
                 console.error(caseName + ': extension not connected');
                 expect(null).assertFail();
@@ -670,7 +670,7 @@ export default function abilityTest(abilityContext) {
                         expect(null).assertFail();
                     }
                     done();
-                }, 3000);
+                }, 5500);
             } else {
                 console.error(caseName + ': extension not connected');
                 expect(null).assertFail();
@@ -703,7 +703,7 @@ export default function abilityTest(abilityContext) {
                         expect(null).assertFail();
                     }
                     done();
-                }, 3000);
+                }, 5500);
             } else {
                 console.error(caseName + ': extension not connected');
                 expect(null).assertFail();
@@ -736,7 +736,7 @@ export default function abilityTest(abilityContext) {
                         expect(null).assertFail();
                     }
                     done();
-                }, 3000);
+                }, 5500);
             } else {
                 console.error(caseName + ': extension not connected');
                 expect(null).assertFail();
@@ -769,7 +769,7 @@ export default function abilityTest(abilityContext) {
                         expect(null).assertFail();
                     }
                     done();
-                }, 3000);
+                }, 5500);
             } else {
                 console.error(caseName + ': extension not connected');
                 expect(null).assertFail();
@@ -802,7 +802,7 @@ export default function abilityTest(abilityContext) {
                         expect(null).assertFail();
                     }
                     done();
-                }, 3000);
+                }, 5500);
             } else {
                 console.error(caseName + ': extension not connected');
                 expect(null).assertFail();
@@ -836,7 +836,7 @@ export default function abilityTest(abilityContext) {
                         expect(null).assertFail();
                     }
                     done();
-                }, 3000);
+                }, 5500);
             } else {
                 console.error(caseName + ': extension not connected');
                 expect(null).assertFail();
@@ -869,7 +869,7 @@ export default function abilityTest(abilityContext) {
                         expect(null).assertFail();
                     }
                     done();
-                }, 3000);
+                }, 5500);
             } else {
                 console.error(caseName + ': extension not connected');
                 expect(null).assertFail();
@@ -902,7 +902,7 @@ export default function abilityTest(abilityContext) {
                         expect(null).assertFail();
                     }
                     done();
-                }, 3000);
+                }, 5500);
             } else {
                 console.error(caseName + ': extension not connected');
                 expect(null).assertFail();
@@ -935,7 +935,7 @@ export default function abilityTest(abilityContext) {
                         expect(null).assertFail();
                     }
                     done();
-                }, 3000);
+                }, 5500);
             } else {
                 console.error(caseName + ': extension not connected');
                 expect(null).assertFail();
@@ -968,7 +968,7 @@ export default function abilityTest(abilityContext) {
                         expect(null).assertFail();
                     }
                     done();
-                }, 3000);
+                }, 5500);
             } else {
                 console.error(caseName + ': extension not connected');
                 expect(null).assertFail();
@@ -1002,7 +1002,7 @@ export default function abilityTest(abilityContext) {
                         expect(null).assertFail();
                     }
                     done();
-                }, 3000);
+                }, 5500);
             } else {
                 console.error(caseName + ': extension not connected');
                 expect(null).assertFail();
@@ -1035,7 +1035,7 @@ export default function abilityTest(abilityContext) {
                         expect(null).assertFail();
                     }
                     done();
-                }, 3000);
+                }, 5500);
             } else {
                 console.error(caseName + ': extension not connected');
                 expect(null).assertFail();
@@ -1068,7 +1068,7 @@ export default function abilityTest(abilityContext) {
                         expect(null).assertFail();
                     }
                     done();
-                }, 3000);
+                }, 5500);
             } else {
                 console.error(caseName + ': extension not connected');
                 expect(null).assertFail();
