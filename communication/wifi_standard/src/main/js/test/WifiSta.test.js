@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
 import wifi from '@ohos.wifi'
 
@@ -66,9 +66,10 @@ let WifiChannelWidth = {
     WIDTH_80MHZ : 2,
     WIDTH_160MHZ : 3,
     WIDTH_280MHZ_PLUS : 4,
-    WIDTH_INVALID
+    WIDTH_INVALID : null,
 }
 
+export default function ACTS_WifiTest() {
 describe('ACTS_WifiTest', function() {
 
     beforeEach(function() {
@@ -289,28 +290,28 @@ describe('ACTS_WifiTest', function() {
                 "macType: " + result.macType);
 
                 let state = wifi.getLinkedInfo().connState;
-                if(state == connState.SCANNING){
+                if(state == ConnState.SCANNING){
                     expect(true).assertEqual(state == 0);
                 }
-                if(state == connState.CONNECTING){
+                if(state == ConnState.CONNECTING){
                     expect(true).assertEqual(state == 1);
                 }
-                if(state == connState.AUTHENTICATING){
+                if(state == ConnState.AUTHENTICATING){
                     expect(true).assertEqual(state == 2);
                 }
-                if(state == connState.OBTAINING_IPADDR){
+                if(state == ConnState.OBTAINING_IPADDR){
                     expect(true).assertEqual(state == 3);
                 }
-                if(state == connState.CONNECTED){
+                if(state == ConnState.CONNECTED){
                     expect(true).assertEqual(state == 4);
                 }
-                if(state == connState.DISCONNECTING){
+                if(state == ConnState.DISCONNECTING){
                     expect(true).assertEqual(state == 5);
                 }
-                if(state == connState.DISCONNECTED){
+                if(state == ConnState.DISCONNECTED){
                     expect(true).assertEqual(state == 6);
                 }
-                if(state == connState.UNKNOWN){
+                if(state == ConnState.UNKNOWN){
                     expect(true).assertEqual(state == 7);
                 }
                 done();
@@ -479,4 +480,5 @@ describe('ACTS_WifiTest', function() {
     })
     console.log("*************[wifi_test] start wifi js unit test end*************");
 })
+}
 
