@@ -288,7 +288,7 @@ export default function getHapModuleInfoJsunit() {
       expect(info.systemApp).assertEqual(true);
       expect(info.enabled).assertEqual(true);
       expect(info.label).assertEqual("$string:entry_MainAbility");
-      expect(info.icon).assertEqual("$media:icon");
+      expect(info.icon).assertEqual("");
       expect(info.process).assertEqual("com.ohos.acecollaboration");
       expect(info.supportedModes).assertEqual(0);
       expect(info.entryDir).assertEqual("/data/app/el1/bundle/public/" +
