@@ -22,7 +22,7 @@ hctest_suite("ActsSecurityHichainBasicDeps") {
   sources += DEVICEAUTH_BASIC_DEPS_SOURCE
 
   include_dirs = [
-    "//utils/native/base/include",
+    "//commonlibrary/c_utils/base/include",
     "//utils/native/lite/include",
     "//test/xts/tools/lite/hctest/include",
     "//third_party/unity/src",
