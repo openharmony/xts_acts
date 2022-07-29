@@ -24,13 +24,13 @@ import shutil
 
 copyFileCounts = 0
 
-def copy_files(sourceDir, targetDir):
-    for f in os.listdir(sourceDir):
-        source_files = os.path.join(sourceDir, f)
-        target_files = os.path.join(targetDir, f)
+def copy_files(source_d, target_d):
+    for f in os.listdir(source_d):
+        source_files = os.path.join(source_d, f)
+        target_files = os.path.join(target_d, f)
         if os.path.isfile(source_files):
-            if not os.path.exists(targetDir):
-                os.makedirs(targetDir)
+            if not os.path.exists(target_d):
+                os.makedirs(target_d)
             copyFileCounts += 1
             open(target_files, "wb").write(open(source_files, "rb").read())
         if os.path.isdir(source_files):
