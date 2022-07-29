@@ -1,0 +1,11 @@
+{
+    "description": "Configuration for aceceshi Tests",
+    "driver": {
+        "type": "OHJSUnitTest",
+        "test-timeout": "600000",
+        "bundle-name": "com.example.aacommandprintsync",
+        "module-name": "entry_test_desc",
+        "shell-timeout": "600000"
+    }
+}
+

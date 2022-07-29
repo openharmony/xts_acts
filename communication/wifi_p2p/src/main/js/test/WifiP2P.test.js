@@ -185,7 +185,7 @@ describe('ACTS_WifiTest', function () {
             netId : -2,
             passphrase : "12345678",
             groupName : "AAAZZZ",
-            goBand : 0
+            goBand : 2
         };
         
         console.log("[wifi_test]  check the state of wifi: " + wifi.isWifiActive());
@@ -506,5 +506,3 @@ describe('ACTS_WifiTest', function () {
 
     console.log("*************[wifi_test] start wifi js unit test end*************");
 })
-
-

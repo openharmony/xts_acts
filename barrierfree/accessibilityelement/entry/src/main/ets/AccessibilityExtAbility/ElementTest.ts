@@ -100,7 +100,7 @@ export class ElementTest {
                 result = await this.executeAttributeValuePromise(caseName, 'textLengthLimit', 'number');
                 break;
             case 'AccessibilityElementTest_attributeValue_asyncPromise_1500':
-                result = await this.executeAttributeValuePromise(caseName, 'rect', 'object');
+                result = await this.executeAttributeValuePromiseRect(caseName, 'rect');
                 break;
             case 'AccessibilityElementTest_attributeValue_asyncPromise_1600':
                 result = await this.executeAttributeValuePromise(caseName, 'checkable', 'boolean');
@@ -184,7 +184,7 @@ export class ElementTest {
                 result = await this.executeAttributeValuePromise(caseName, 'isActive', 'boolean', true);
                 break;
             case 'AccessibilityElementTest_attributeValue_asyncPromise_5300':
-                result = await this.executeAttributeValuePromise(caseName, 'screenRect', 'object', true);
+                result = await this.executeAttributeValuePromiseRect(caseName, 'screenRect', true);
                 break;
             case 'AccessibilityElementTest_attributeValue_asyncPromise_5400':
                 result = await this.executeAttributeValuePromise(caseName, 'layer', 'number', true);
@@ -334,7 +334,7 @@ export class ElementTest {
                 await this.executeAttributeValueCallback(caseName, 'textLengthLimit', 'number');
                 return;
             case 'AccessibilityElementTest_attributeValue_asyncCallback_1500':
-                await this.executeAttributeValueCallback(caseName, 'rect', 'object');
+                await this.executeAttributeValueCallbackRect(caseName, 'rect');
                 return;
             case 'AccessibilityElementTest_attributeValue_asyncCallback_1600':
                 await this.executeAttributeValueCallback(caseName, 'checkable', 'boolean');
@@ -418,7 +418,7 @@ export class ElementTest {
                 await this.executeAttributeValueCallback(caseName, 'isActive', 'boolean', true);
                 return;
             case 'AccessibilityElementTest_attributeValue_asyncCallback_5300':
-                await this.executeAttributeValueCallback(caseName, 'screenRect', 'object', true);
+                await this.executeAttributeValueCallbackRect(caseName, 'screenRect', true);
                 return;
             case 'AccessibilityElementTest_attributeValue_asyncCallback_5400':
                 await this.executeAttributeValueCallback(caseName, 'layer', 'number', true);
@@ -595,6 +595,33 @@ export class ElementTest {
                 if (input == invalidString) {
                     result = true;
                 }
+            }
+        }
+        return result;
+    }
+
+    private async executeAttributeValuePromiseRect(caseName: string, input: string, isWindow: boolean = false): Promise<boolean> {
+        let element = undefined;
+        if (isWindow) {
+            element = await this.getWindowElement();
+        } else {
+            element = await this.getBaseElement();
+        }
+
+        let result = false;
+        if (element) {
+            try {
+                console.info('ElementTest executeAttributeValuePromiseRect ' + caseName);
+                let value = await element.attributeValue(input);
+                console.info('ElementTest executeAttributeValuePromiseRect ' + caseName + ' value: ' + JSON.stringify(value));
+                if (typeof(value) == 'object' && typeof(value.left) == 'number' && typeof(value.top) == 'number'
+                && typeof(value.width) == 'number' && typeof(value.height) == 'number') {
+                    result = true;
+                } else {
+                    console.warn('ElementTest executeAttributeValuePromiseRect ' + caseName + ' valueType: ' + typeof(value));
+                }
+            } catch (e) {
+                console.info('ElementTest executeAttributeValuePromiseRect ' + caseName + ' catch(e): ' + JSON.stringify(e));
             }
         }
         return result;
@@ -840,6 +867,31 @@ export class ElementTest {
                     result = true;
                 } else {
                     console.warn('ElementTest executeAttributeValueCallback ' + caseName + ' valueType: ' + typeof(value));
+                }
+                this.publishCaseResult(caseName, result);
+            });
+        }
+    }
+
+    private async executeAttributeValueCallbackRect(caseName: string, input: string, isWindow: boolean = false) {
+        let element = undefined;
+        if (isWindow) {
+            element = await this.getWindowElement();
+        } else {
+            element = await this.getBaseElement();
+        }
+
+        let result = false;
+        if (element) {
+            console.info('ElementTest executeAttributeValueCallbackRect ' + caseName);
+            element.attributeValue(input, (err, value) => {
+                console.info('ElementTest executeAttributeValueCallback ' + caseName + ' err: ' + JSON.stringify(err));
+                console.info('ElementTest executeAttributeValueCallback ' + caseName + ' value: ' + JSON.stringify(value));
+                if (err.code == 0 && typeof(value) == 'object' && typeof(value.left) == 'number'
+                && typeof(value.top) == 'number' && typeof(value.width) == 'number' && typeof(value.height) == 'number') {
+                    result = true;
+                } else {
+                    console.warn('ElementTest executeAttributeValueCallbackRect ' + caseName + ' valueType: ' + typeof(value));
                 }
                 this.publishCaseResult(caseName, result);
             });

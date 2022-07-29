@@ -16,7 +16,7 @@
 import getProfileByAbility from './GetProfileByAbility.test.ets';
 import getProfileByExtensionAbility from './GetProfileByExtensionAbility.test.ets';
 
-export default function testsuite(context) {
+export default function testsuite() {
   getProfileByAbility();
   getProfileByExtensionAbility();
 }

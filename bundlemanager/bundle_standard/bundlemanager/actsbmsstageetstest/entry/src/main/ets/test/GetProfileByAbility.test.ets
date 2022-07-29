@@ -14,7 +14,7 @@
  */
 
 import bundle from '@ohos.bundle';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 
 const MODULE_NAME = "phone"
 const MODULE_NAME_TEST = "phone1"
@@ -26,7 +26,7 @@ const METADATA_NAME1 = "ohos.ability.form1"
 const METADATA_NAME2 = "ohos.ability.form2"
 const METADATA_NAME3 = "ohos.ability.form3"
 const METADATA_NAME_TEST = "ohos.test.form"
-const PROFILE_JSON_STRING = "{\"src\":[\"pages/index/index\",\"pages/second/second\"]}"
+const PROFILE_JSON_STRING = "{\"src\":[\"MainAbility/pages/index/index\",\"MainAbility/pages/second/second\"]}"
 
 export default function getProfileByAbility() {
   describe('getProfileByAbility', function () {

@@ -31,7 +31,7 @@ DEVICEAUTH_BASIC_DEPS_SOURCE = [
 ]
 
 DEVICEAUTH_BASIC_DEPS_INC = [
-  "//base/iot_hardware/peripheral/interfaces/kits",
+  "//base/iothardware/peripheral/interfaces/inner_api",
   "//utils/native/lite/include",  # utils_file.h ohos_types.h
 
   # alg test

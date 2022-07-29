@@ -122,15 +122,14 @@ export const getAllFormsInfoTest = (describeName, filterParameter) => {
          expect(formInfo.isDefault).assertTrue()
          expect(formInfo.updateEnabled).assertTrue()
          expect(formInfo.formVisibleNotify).assertTrue()
-         expect(undefined).assertEqual(formInfo.relatedBundleName)
+         expect('').assertEqual(formInfo.relatedBundleName)
          expect("abilityb").assertEqual(formInfo.formConfigAbility)
          expect(3).assertEqual(formInfo.updateDuration)
          expect(2).assertEqual(formInfo.defaultDimension)
          expect('10:30').assertEqual(formInfo.scheduledUpdateTime)
          expect(1).assertEqual(formInfo.supportDimensions[0])
          expect(2).assertEqual(formInfo.supportDimensions[1])
-         expect('originWidgetNameB').assertEqual(formInfo.customizeData[0].name)
-         expect('valueB').assertEqual(formInfo.customizeData[0].value)
+         expect('valueB').assertEqual(formInfo.customizeData.originWidgetNameB)
       }
   });
 };

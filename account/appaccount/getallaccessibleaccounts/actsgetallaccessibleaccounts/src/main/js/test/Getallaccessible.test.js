@@ -34,7 +34,7 @@ export default function ActsGetAllAccessibleAccounts() {
                 console.debug("====>getAllAccessibleAccounts 0100 err:" + JSON.stringify(err));
                 console.debug("====>getAllAccessibleAccounts 0100 data:" + JSON.stringify(data));
                 console.debug("====>getAllAccessibleAccounts 0100 data.length:" + data.length);
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 expect(data.length).assertEqual(0);
                 console.debug("====>ActsGetAllAccessibleAccounts_0100 end====");
                 done();
@@ -78,12 +78,12 @@ export default function ActsGetAllAccessibleAccounts() {
             console.debug("====>creat finish====");
             appAccountManager.addAccount("accessibleAccount_callback_single", (err)=>{
                 console.debug("====> add account ActsGetAllAccessibleAccounts_0300 err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.getAllAccessibleAccounts((err, data)=>{
                     console.debug("====>getAllAccessibleAccounts 0300 err:" + JSON.stringify(err));
                     console.debug("====>getAllAccessibleAccounts 0300 data:" + JSON.stringify(data));
                     console.debug("====>getAllAccessibleAccounts 0300 data.length:" + data.length);
-                    expect(err.code).assertEqual(0);
+                    expect(err).assertEqual(undefined);
                     expect(data.length).assertEqual(1);
                     try{
                         expect(data[0].name).assertEqual("accessibleAccount_callback_single");
@@ -96,7 +96,7 @@ export default function ActsGetAllAccessibleAccounts() {
                     }
                     appAccountManager.deleteAccount("accessibleAccount_callback_single", (err)=>{
                         console.debug("====>delete Account ActsGetAllAccessibleAccounts_0300 err:" + JSON.stringify(err));
-                        expect(err.code).assertEqual(0);
+                        expect(err).assertEqual(undefined);
                         console.debug("====>ActsGetAllAccessibleAccounts_0300 end====");
                         done();
                     })
@@ -167,18 +167,18 @@ export default function ActsGetAllAccessibleAccounts() {
             console.debug("====>creat finish====");
             appAccountManager.addAccount("accessibleAccount_callback_first", (err)=>{
                 console.debug("====>add account first time 0500 err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.addAccount("accessibleAccount_callback_second", (err)=>{
                     console.debug("====>add account second time 0500 err:" + JSON.stringify(err));
-                    expect(err.code).assertEqual(0);
+                    expect(err).assertEqual(undefined);
                     appAccountManager.addAccount("accessibleAccount_callback_third", (err)=>{
                         console.debug("====>add account third time 0500 err:" + JSON.stringify(err));
-                        expect(err.code).assertEqual(0);
+                        expect(err).assertEqual(undefined);
                         appAccountManager.getAllAccessibleAccounts((err, data)=>{
                             console.debug("====>getAllAccessibleAccounts 0500 err:" + JSON.stringify(err));
                             console.debug("====>getAllAccessibleAccounts 0500 data:" + JSON.stringify(data));
                             console.debug("====>getAllAccessibleAccounts 0500 data.length:" + data.length);
-                            expect(err.code).assertEqual(0);
+                            expect(err).assertEqual(undefined);
                             expect(data.length).assertEqual(3);
                             try{
                                 expect(data[0].name).assertEqual("accessibleAccount_callback_first");
@@ -195,13 +195,13 @@ export default function ActsGetAllAccessibleAccounts() {
                             }
                             appAccountManager.deleteAccount("accessibleAccount_callback_first", (err)=>{
                                 console.debug("====>delete Account first 0500 err:" + JSON.stringify(err));
-                                expect(err.code).assertEqual(0);
+                                expect(err).assertEqual(undefined);
                                 appAccountManager.deleteAccount("accessibleAccount_callback_second", (err)=>{
                                     console.debug("====>delete Account second 0500 err:" + JSON.stringify(err));
-                                    expect(err.code).assertEqual(0);
+                                    expect(err).assertEqual(undefined);
                                     appAccountManager.deleteAccount("accessibleAccount_callback_third", (err)=>{
                                         console.debug("====>delete Account third 0500 err:" + JSON.stringify(err));
-                                        expect(err.code).assertEqual(0);
+                                        expect(err).assertEqual(undefined);
                                         console.debug("====>ActsGetAllAccessibleAccounts_0500 end====");
                                         done();
                                     })
@@ -289,21 +289,21 @@ export default function ActsGetAllAccessibleAccounts() {
             console.debug("====>creat finish====");
             appAccountManager.addAccount("accessibleAccount_callback_delete_first", (err)=>{
                 console.debug("====>add first account 0700 err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.addAccount("accessibleAccount_callback_delete_second", (err)=>{
                     console.debug("====>add second account 0700 err:" + JSON.stringify(err));
-                    expect(err.code).assertEqual(0);
+                    expect(err).assertEqual(undefined);
                     appAccountManager.addAccount("accessibleAccount_callback_delete_third", (err)=>{
                         console.debug("====>add third account 0700 err:" + JSON.stringify(err));
-                        expect(err.code).assertEqual(0);
+                        expect(err).assertEqual(undefined);
                         appAccountManager.deleteAccount("accessibleAccount_callback_delete_second", (err)=>{
                             console.debug("====>delete second account 0700 err:" + JSON.stringify(err));
-                            expect(err.code).assertEqual(0);
+                            expect(err).assertEqual(undefined);
                             appAccountManager.getAllAccessibleAccounts((err, data)=>{
                                 console.debug("====>getAllAccessibleAccounts 0700 err:" + JSON.stringify(err));
                                 console.debug("====>getAllAccessibleAccounts 0700 data:" + JSON.stringify(data));
                                 console.debug("====>getAllAccessibleAccounts 0700 data.length:" + data.length);
-                                expect(err.code).assertEqual(0);
+                                expect(err).assertEqual(undefined);
                                 expect(data.length).assertEqual(2);
                                 try{
                                     expect(data[0].name).assertEqual("accessibleAccount_callback_delete_first");
@@ -318,10 +318,10 @@ export default function ActsGetAllAccessibleAccounts() {
                                 }
                                 appAccountManager.deleteAccount("accessibleAccount_callback_delete_first", (err)=>{
                                     console.debug("====>delete first account 0700 err:" + JSON.stringify(err));
-                                    expect(err.code).assertEqual(0);
+                                    expect(err).assertEqual(undefined);
                                     appAccountManager.deleteAccount("accessibleAccount_callback_delete_third", (err)=>{
                                         console.debug("====>delete third account 0700 err:" + JSON.stringify(err));
-                                        expect(err.code).assertEqual(0);
+                                        expect(err).assertEqual(undefined);
                                         console.debug("====>ActsGetAllAccessibleAccounts_0700 end====");
                                         done();
                                     })
@@ -408,15 +408,15 @@ export default function ActsGetAllAccessibleAccounts() {
             console.debug("====>creat finish====");
             appAccountManager.addAccount("accessibleAccount_callback_multiple_first", (err)=>{
                 console.debug("====>add first account 0900 err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.addAccount("accessibleAccount_callback_multiple_second", (err)=>{
                     console.debug("====>add third account 0900 err:" + JSON.stringify(err));
-                    expect(err.code).assertEqual(0);
+                    expect(err).assertEqual(undefined);
                     appAccountManager.getAllAccessibleAccounts((err, data)=>{
                         console.debug("====>getAllAccessibleAccounts first 0900 err:" + JSON.stringify(err));
                         console.debug("====>getAllAccessibleAccounts first 0900 data:" + JSON.stringify(data));
                         console.debug("====>getAllAccessibleAccounts first 0900 data.length:" + data.length);
-                        expect(err.code).assertEqual(0);
+                        expect(err).assertEqual(undefined);
                         expect(data.length).assertEqual(2);
                         try{
                             expect(data[0].name).assertEqual("accessibleAccount_callback_multiple_first");
@@ -433,7 +433,7 @@ export default function ActsGetAllAccessibleAccounts() {
                             console.debug("====>getAllAccessibleAccounts second 0900 err:" + JSON.stringify(err));
                             console.debug("====>getAllAccessibleAccounts second 0900 data:" + JSON.stringify(data));
                             console.debug("====>getAllAccessibleAccounts second 0900 data.length:" + data.length);
-                            expect(err.code).assertEqual(0);
+                            expect(err).assertEqual(undefined);
                             expect(data.length).assertEqual(2);
                             try{
                                 expect(data[0].name).assertEqual("accessibleAccount_callback_multiple_first");
@@ -448,10 +448,10 @@ export default function ActsGetAllAccessibleAccounts() {
                             }
                             appAccountManager.deleteAccount("accessibleAccount_callback_multiple_first", (err)=>{
                                 console.debug("====>delete first account 0900 err:" + JSON.stringify(err));
-                                expect(err.code).assertEqual(0);
+                                expect(err).assertEqual(undefined);
                                 appAccountManager.deleteAccount("accessibleAccount_callback_multiple_second", (err)=>{
                                     console.debug("====>delete second account 0900 err:" + JSON.stringify(err));
-                                    expect(err.code).assertEqual(0);
+                                    expect(err).assertEqual(undefined);
                                     console.debug("====>ActsGetAllAccessibleAccounts_0900 end====");
                                     done();
                                 })

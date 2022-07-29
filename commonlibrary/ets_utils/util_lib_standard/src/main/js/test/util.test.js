@@ -169,12 +169,12 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.name: testUtilPromiseWrapper_new_001
+     * @tc.name: testUtilPromisify_new_001
      * @tc.desc: Takes a function following the common error-first callback style,
        taking an callback as the last argument, and return a function that returns promises.
      * @tc.author: shikai
      */
-    it('testUtilPromiseWrapper_new_001', 0, async function () {
+    it('testUtilPromisify_new_001', 0, async function () {
         function aysnFun(str, callback) {
             if (typeof str === 'string') {
                 callback(null, str);
@@ -182,19 +182,19 @@ describe('TextEncoderTest', function () {
                 callback('type err');
             }
         }
-        let newPromiseObj = util.promiseWrapper(aysnFun);
+        let newPromiseObj = util.promisify(aysnFun);
         newPromiseObj("Hello").then(res => {
             expect(res).strictEqual('Hello');
         })
     })
 
     /**
-     * @tc.name: testUtilPromiseWrapper_new_002
+     * @tc.name: testUtilPromisify_new_002
      * @tc.desc: Takes a function following the common error-first callback style,
        taking an callback as the last argument, and return a function that returns promises.
      * @tc.author: shikai
      */
-    it('testUtilPromiseWrapper_new_002', 0, async function () {
+    it('testUtilPromisify_new_002', 0, async function () {
         function aysnFun(str, callback) {
             if (typeof str === 'string') {
                 callback(null, str);
@@ -202,35 +202,35 @@ describe('TextEncoderTest', function () {
                 callback('type err');
             }
         }
-        let newPromiseObj = util.promiseWrapper(aysnFun);
+        let newPromiseObj = util.promisify(aysnFun);
         newPromiseObj([1, 2]).catch(err => {
             expect(err).strictEqual('type err');
         })
     })
 
     /**
-     * @tc.name: testUtilPromiseWrapper_new_003
+     * @tc.name: testUtilPromisify_new_003
      * @tc.desc: Takes a function following the common error-first callback style,
        taking an callback as the last argument, and return a function that returns promises.
      * @tc.author: shikai
      */
-    it('testUtilPromiseWrapper_new_003', 0, async function () {
+    it('testUtilPromisify_new_003', 0, async function () {
         function fn(err, val, callback) {
             callback(err, val);
         }
         (async () => {
-            const value = await util.promiseWrapper(fn);
+            const value = await util.promisify(fn);
             expect(value(null, 42)).strictEqual(42);
         })();
     })
 
     /**
-     * @tc.name: testUtilPromiseWrapper_new_004
+     * @tc.name: testUtilPromisify_new_004
      * @tc.desc: Takes a function following the common error-first callback style,
        taking an callback as the last argument, and return a function that returns promises.
      * @tc.author: shikai
      */
-    it('testUtilPromiseWrapper_new_004', 0, async function () {
+    it('testUtilPromisify_new_004', 0, async function () {
         function aysnFun(str1, str2, callback) {
             if (typeof str1 === 'string' && typeof str1 === 'string') {
                 callback(null, str1 + str2);
@@ -238,19 +238,19 @@ describe('TextEncoderTest', function () {
                 callback('type err');
             }
         }
-        let newPromiseObj = util.promiseWrapper(aysnFun);
+        let newPromiseObj = util.promisify(aysnFun);
         newPromiseObj("Hello", 'World').then(res => {
             expect(res).strictEqual('HelloWorld');
         })
     })
 
     /**
-     * @tc.name: testUtilPromiseWrapper_new_005
+     * @tc.name: testUtilPromisify_new_005
      * @tc.desc: Takes a function following the common error-first callback style,
        taking an callback as the last argument, and return a function that returns promises.
      * @tc.author: shikai
      */
-    it('testUtilPromiseWrapper_new_005', 0, async function () {
+    it('testUtilPromisify_new_005', 0, async function () {
         function aysnFun(str1, str2, callback) {
             if (typeof str1 === 'string' && typeof str1 === 'string') {
                 callback(null, str1 + str2);
@@ -258,13 +258,11 @@ describe('TextEncoderTest', function () {
                 callback('type err');
             }
         }
-        let newPromiseObj = util.promiseWrapper(aysnFun);
+        let newPromiseObj = util.promisify(aysnFun);
         newPromiseObj([1, 2], 'World').catch(err => {
             expect(err).strictEqual('type err');
         })
     })
-
-
 
     /**
      * @tc.name: testUtilPromiseWrapper001
@@ -272,7 +270,7 @@ describe('TextEncoderTest', function () {
        taking an callback as the last argument, and return a version that returns promises.
      * @tc.author: shikai
      */
-    it('testUtilPromiseWrapper001', 0, async function () {
+       it('testUtilPromiseWrapper001', 0, async function () {
         function aysnFun(str1, str2, callback) {
             if (typeof str1 === 'string' && typeof str1 === 'string') {
                 callback(null, str1 + str2);

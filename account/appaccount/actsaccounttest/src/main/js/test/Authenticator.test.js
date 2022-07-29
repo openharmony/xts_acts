@@ -33,14 +33,14 @@ export default function ActsAccountAppAccess() {
             console.debug("====>start finish====");
             appAccountManager.addAccount(name, 'test_extraInfo', (err)=>{
                 console.debug("====>ActsAccountCheckAccountLabels_0100 add_account_err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.checkAccountLabels(name, owner, ['level4'], (err, data)=>{
                     console.debug("====>ActsAccountCheckAccountLabels_0100 err:" + JSON.stringify(err));
                     expect(err).assertEqual(undefined);
                     console.debug("====>ActsAccountCheckAccountLabels_0100 data:" + JSON.stringify(data));                
                     appAccountManager.deleteAccount(name, (err) =>{
                         console.debug("====>ActsAccountCheckAccountLabels_0100 deleteAccount_err:" + JSON.stringify(err))
-                        expect(err.code).assertEqual(0);
+                        expect(err).assertEqual(undefined);
                         console.debug("====>ActsAccountCheckAccountLabels_0100 end====");
                         done();
                     })                
@@ -61,14 +61,14 @@ export default function ActsAccountAppAccess() {
             console.debug("====>start finish====");
             appAccountManager.addAccount(name, (err)=>{
                 console.debug("====>ActsAccountCheckAccountLabels_0200 add_account_err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.checkAccountLabels(name, owner, ['20-30'], (err, data)=>{
                     console.debug("====>ActsAccountCheckAccountLabels_0200 err:" + JSON.stringify(err));
                     expect(err).assertEqual(undefined);
                     console.debug("====>ActsAccountCheckAccountLabels_0200 data:" + JSON.stringify(data));                
                     appAccountManager.deleteAccount(name, (err) =>{
                         console.debug("====>ActsAccountCheckAccountLabels_0200 deleteAccount_err:" + JSON.stringify(err))
-                        expect(err.code).assertEqual(0);
+                        expect(err).assertEqual(undefined);
                         console.debug("====>ActsAccountCheckAccountLabels_0200 end====");
                         done();
                     })
@@ -88,7 +88,7 @@ export default function ActsAccountAppAccess() {
             console.debug("====>start finish====");
             appAccountManager.addAccount('CheckAccountLabels_0300', (err)=>{
                 console.debug("====>ActsAccountCheckAccountLabels_0300 add_account_err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.checkAccountLabels('CheckAccountLabels_0300', owner, ['male'], (err, data)=>{
                     console.debug("====>ActsAccountCheckAccountLabels_0300 err:" + JSON.stringify(err));
                     expect(err).assertEqual(undefined);
@@ -96,7 +96,7 @@ export default function ActsAccountAppAccess() {
                     expect(data).assertEqual(false)   
                     appAccountManager.deleteAccount("CheckAccountLabels_0300", (err) =>{
                         console.debug("====>ActsAccountCheckAccountLabels_0300 deleteAccount_err:" + JSON.stringify(err))
-                        expect(err.code).assertEqual(0);
+                        expect(err).assertEqual(undefined);
                         console.debug("====>ActsAccountCheckAccountLabels_0300 end====");
                         done();                     
                     })
@@ -212,7 +212,7 @@ export default function ActsAccountAppAccess() {
             var appAccountManager = account.createAppAccountManager();
             appAccountManager.addAccount(name, (err)=>{
                 console.debug("====>ActsAccountCheckAppAccess_0100 add_account_err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.checkAppAccess(name, owner, (err, data)=>{
                     console.debug("====>ActsAccountCheckAppAccess_0100 first_err:" + JSON.stringify(err));
                     expect(err).assertEqual(undefined);
@@ -220,14 +220,14 @@ export default function ActsAccountAppAccess() {
                     expect(data).assertEqual(false)
                     appAccountManager.enableAppAccess(name, owner, (err, data) =>{
                         console.debug("====>ActsAccountCheckAppAccess_0100 enableAppAccess_err:" + JSON.stringify(err));
-                        expect(err.code).assertEqual(0);
+                        expect(err).assertEqual(undefined);
                         appAccountManager.checkAppAccess(name, owner, (err, data) =>{
                             console.debug("====>ActsAccountCheckAppAccess_0100 second_err:" + JSON.stringify(err));
                             expect(err).assertEqual(undefined);
                             expect(data).assertEqual(true)
                             appAccountManager.disableAppAccess(name, owner, (err, data) =>{
                                 console.debug("====>ActsAccountCheckAppAccess_0100 disableAppAccount_err:" + JSON.stringify(err));
-                                expect(err.code).assertEqual(0);  
+                                expect(err).assertEqual(undefined);  
                                 appAccountManager.checkAppAccess(name, owner,(err, data)=>{
                                     console.debug("====>ActsAccountCheckAppAccess_0100 third_err:" + JSON.stringify(err))
                                     expect(err).assertEqual(undefined)
@@ -330,14 +330,14 @@ export default function ActsAccountAppAccess() {
             console.debug("====>start finish====");
             appAccountManager.addAccount(name, (err)=>{
                 console.debug("====>ActsAccountDeleteAccountCredential_0100 add_account_err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.setAccountCredential(name, "PIN", (err, data)=>{
                     console.debug("====>ActsAccountDeleteAccountCredential_0100 setAccountCredential_err:" + JSON.stringify(err));
-                    expect(err.code).assertEqual(0);
+                    expect(err).assertEqual(undefined);
                     console.debug("====>ActsAccountDeleteAccountCredential_0100 setAccountCredential_data:" + JSON.stringify(data));  
                     appAccountManager.getAccountCredential(name, "PIN", (err) =>{
                         console.debug("====>ActsAccountDeleteAccountCredential_0100 getAccountCredential_err:" + JSON.stringify(err))
-                        expect(err.code).assertEqual(0);
+                        expect(err).assertEqual(undefined);
                         console.debug("====>ActsAccountDeleteAccountCredential_0100 getAccountCredential_success:" + JSON.stringify(data));
                         appAccountManager.deleteAccountCredential(name, "PIN", (err, data)=>{
                             console.debug("====>ActsAccountDeleteAccountCredential_0100 deleteAccountCredential_err:" + JSON.stringify(err));
@@ -423,7 +423,7 @@ export default function ActsAccountAppAccess() {
             console.debug("====>start finish====");
             appAccountManager.addAccount(name, (err)=>{
                 console.debug("====>ActsAccountVerifyCredential_0100 add_account_err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.verifyCredential(name, owner, options, {
                 onResult:(resultCode, resultData)=>{
                     console.debug("====>ActsAccountVerifyCredential_0100 verifyCredential_resultcode:" + JSON.stringify(resultCode));
@@ -461,9 +461,9 @@ export default function ActsAccountAppAccess() {
             console.debug("====>start finish====");
             appAccountManager.addAccount(name, (err)=>{
                 console.debug("====>ActsAccountVerifyCredential_0200 add_account_err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 console.debug("====>ActsAccountVerifyCredential_0200 add_account_err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.verifyCredential(name, owner,  {
                 onResult:(resultCode, resultData)=>{
                     console.debug("====>ActsAccountVerifyCredential_0200 verifyCredential_resultcode:" + JSON.stringify(resultCode));
@@ -502,7 +502,7 @@ export default function ActsAccountAppAccess() {
             console.debug("====>start finish====");
             appAccountManager.addAccount(name, (err)=>{
                 console.debug("====>ActsAccountSetAuthenticatorProperties_0100 add_account_err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.setAuthenticatorProperties(owner, options, {
                 onResult:(resultCode, resultData)=>{
                     console.debug("====>ActsAccountSetAuthenticatorProperties_0100 setAuthenticatorProperties_resultcode:" + JSON.stringify(resultCode));
@@ -539,7 +539,7 @@ export default function ActsAccountAppAccess() {
             console.debug("====>start finish====");
             appAccountManager.addAccount(name, (err)=>{
                 console.debug("====>ActsAccountSetAuthenticatorProperties_0200 add_account_err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.setAuthenticatorProperties(owner, {
                 onResult:(resultCode, resultData)=>{
                     console.debug("====>ActsAccountSetAuthenticatorProperties_0200 setAuthenticatorProperties_resultcode:" + JSON.stringify(resultCode));
@@ -577,7 +577,7 @@ export default function ActsAccountAppAccess() {
             console.debug("====>start finish====");
             appAccountManager.addAccount(name, (err)=>{
                 console.debug("====>ActsAccountSelectAccountByOptions_0100 add_account_err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.selectAccountsByOptions(select_options, ((err, data)=>{
                     console.debug("====>ActsAccountSelectAccountByOptions_0100 err:" + JSON.stringify(err));
                     expect(err).assertEqual(undefined)
@@ -610,7 +610,7 @@ export default function ActsAccountAppAccess() {
             console.debug("====>start finish====");
             appAccountManager.addAccount(name, (err)=>{
                 console.debug("====>ActsAccountSelectAccountByOptions_0200 add_account_err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManager.selectAccountsByOptions(select_options).then((data)=>{
                     console.debug("====>ActsAccountSelectAccountByOptions_0200 data:" + JSON.stringify(data.length));
                     expect(data.length).assertEqual(0)

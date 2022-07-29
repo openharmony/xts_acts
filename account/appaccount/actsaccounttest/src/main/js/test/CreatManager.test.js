@@ -48,10 +48,10 @@ export default function ActsCreatAppAccountManager() {
             console.debug("====>creat finish====");
             appAccountManager.addAccount("creatappaccount_name_first", (err)=>{
                 console.debug("====>add account ActsCreatAppAccountManager_0100 err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManagerTwo.deleteAccount("creatappaccount_name_first", (err)=>{
                     console.debug("====>delete Account ActsCreatAppAccountManager_0100 err:" + JSON.stringify(err));
-                    expect(err.code).assertEqual(0);
+                    expect(err).assertEqual(undefined);
                     console.debug("====>ActsCreatAppAccountManager_0100 end====");
                     done();
                 });
@@ -72,18 +72,18 @@ export default function ActsCreatAppAccountManager() {
             console.debug("====>creat finish====");
             appAccountManager.addAccount("creatappaccount_name_second", (err)=>{
                 console.debug("====>add account ActsCreatAppAccountManager_0200 err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(undefined);
                 appAccountManagerTwo.setAccountExtraInfo("creatappaccount_name_second", "creatappaccount_extra", (err)=>{
                     console.debug("====>setAccountExtraInfo err:" + JSON.stringify(err));
-                    expect(err.code).assertEqual(0);
+                    expect(err).assertEqual(undefined);
                     appAccountManager.getAccountExtraInfo("creatappaccount_name_second", (err, data)=>{
                         console.debug("====>getAccountExtraInfo err:" + JSON.stringify(err));
                         console.debug("====>getAccountExtraInfo data:" + JSON.stringify(data));
-                        expect(err.code).assertEqual(0);
+                        expect(err).assertEqual(undefined);
                         expect(data).assertEqual("creatappaccount_extra");
                         appAccountManagerTwo.deleteAccount("creatappaccount_name_second", (err)=>{
                             console.debug("====>delete Account err:" + JSON.stringify(err));
-                            expect(err.code).assertEqual(0);
+                            expect(err).assertEqual(undefined);
                             console.debug("====>ActsCreatAppAccountManager_0200 end====");
                             done();
                         });
