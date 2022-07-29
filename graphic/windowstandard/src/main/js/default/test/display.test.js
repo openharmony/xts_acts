@@ -14,7 +14,6 @@
  */
 import app from '@system.app'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
-import window from '@ohos.window'
 import display from '@ohos.display'
 
 describe('display_test', function () {
