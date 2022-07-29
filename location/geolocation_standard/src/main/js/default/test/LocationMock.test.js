@@ -31,7 +31,6 @@ async function changedLocationMode(){
             await geolocation.requestEnableLocation().then(async(result) => {
                 await sleep(3000);
                 console.info('[lbs_js] test requestEnableLocation promise result: ' + JSON.stringify(result));
-                expect(result).assertTrue();
             }).catch((error) => {
                 console.info("[lbs_js] promise then error." + JSON.stringify(error));
                 expect().assertFail();
@@ -70,6 +69,13 @@ async function applyPermission() {
         console.info('[permission] case apply permission failed, createAtManager failed');
     }
 }
+
+let CountryCodeType = {
+        COUNTRY_CODE_FROM_LOCALE : 1,
+        COUNTRY_CODE_FROM_SIM:2,
+        COUNTRY_CODE_FROM_LOCATION:3,
+        COUNTRY_CODE_FROM_NETWORK:4,
+    }
 
 describe('geolocationTest_4', function () {
     beforeAll(async function (done) {
@@ -151,6 +157,10 @@ describe('geolocationTest_4', function () {
             console.info("[lbs_js] getCountryCode promise result: " + JSON.stringify(result));
             console.info("[lbs_js] country :" + JSON.stringify(result).country);
             console.info("[lbs_js] type: " + JSON.stringify(result).type);
+            expect(true).assertTrue(JSON.stringify(result)==CountryCodeType.COUNTRY_CODE_FROM_LOCALE);
+            expect(true).assertTrue(JSON.stringify(result)!=CountryCodeType.COUNTRY_CODE_FROM_SIM);
+            expect(true).assertTrue(JSON.stringify(result)!=CountryCodeType.COUNTRY_CODE_FROM_LOCATION);
+            expect(true).assertTrue(JSON.stringify(result)!=CountryCodeType.COUNTRY_CODE_FROM_NETWORK);
             expect(true).assertTrue(JSON.stringify(result)!=null);
         }).catch((error) => {
             console.info("[lbs_js] getCountryCode promise then error."  + JSON.stringify(error));
@@ -355,6 +365,7 @@ describe('geolocationTest_4', function () {
     })
 
 })
+
 
 
 
