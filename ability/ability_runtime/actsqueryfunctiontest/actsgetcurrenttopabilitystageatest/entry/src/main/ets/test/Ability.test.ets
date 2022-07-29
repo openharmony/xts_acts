@@ -16,7 +16,7 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'hypium/index'
 import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
-import commonEvent from "@ohos.commonevent"
+import commonEvent from "@ohos.commonEvent"
 
 var subscriberInfo_MainAbility2 = {
     events: ["GetCurrentTopAbilityB"],

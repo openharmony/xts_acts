@@ -14,7 +14,7 @@
  */
 
 import Ability from '@ohos.application.Ability'
-import commonEvent from "@ohos.commonevent"
+import commonEvent from "@ohos.commonEvent"
 function PublishCallBackOne() {
     console.debug("====>Publish CallBack AACommand_Debugapp====>");
     console.debug("====>close this context====>====>");
