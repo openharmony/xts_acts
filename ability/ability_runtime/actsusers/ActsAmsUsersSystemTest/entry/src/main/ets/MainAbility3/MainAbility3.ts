@@ -29,7 +29,7 @@ export default class MainAbility3 extends Ability {
         // Main window is created, set main page for this ability
         console.log("MainAbility3 onWindowStageCreate")
         globalThis.abilityContext = this.context
-        windowStage.setUIContent(this.context, "pages/index/second", null)
+        windowStage.setUIContent(this.context, "MainAbility/pages/index/second", null)
         globalThis.abilityContext.terminateSelfWithResult(
           {
             resultCode:1,
