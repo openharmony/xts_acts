@@ -18,8 +18,7 @@ group("multimedia") {
   if (is_standard_system) {
     deps = [
       "audio/audio_js_standard/audioManager:audio_manager_js_hap",
-
-      "camera/camera_js_standard:camera_standard_ets_hap",
+      #"camera/camera_js_standard:camera_standard_ets_hap",
       "image/image_js_standard/image:image_js_hap",
       "image/image_js_standard/imageColorspace:image_colorspace_js_hap",
       "image/image_js_standard/imageDecodeOptions:image_DecodeOptions_js_hap",
