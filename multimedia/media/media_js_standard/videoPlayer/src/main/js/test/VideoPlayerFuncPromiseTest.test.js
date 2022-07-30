@@ -68,12 +68,12 @@ describe('VideoPlayerFuncPromiseTest', function () {
 
     function failureCallback(error) {
         expect().assertFail();
-        console.info(`case error called,errMessage is ${error.message}`);
+        console.info(`case error called,err code is ${error.code}`);
     }
 
     function catchCallback(error) {
         expect().assertFail();
-        console.info(`case error called,errMessage is ${error.message}`);
+        console.info(`case error called,err code is ${error.code}`);
     }
 
     async function toNewPage() {
@@ -163,7 +163,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         let testVideoPlayer1 = null;
         let testVideoPlayer2 = null;
         await media.createVideoPlayer().then((video) => {
-            if (typeof (video) != 'undefined') {
+            if (video != null) {
                 testVideoPlayer1 = video
                 console.info('case createVideoPlayer success ');
             } else {
@@ -201,7 +201,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         testVideoPlayer1 = null;
 
         await media.createVideoPlayer().then((video) => {
-            if (typeof (video) != 'undefined') {
+            if (video != null) {
                 testVideoPlayer2 = video
                 console.info('case createVideoPlayer success ');
             } else {
@@ -253,7 +253,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         console.info('case new surfaceID is ' + surfaceID);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
-            if (typeof (video) != 'undefined') {
+            if (video != null) {
                 console.info('case createVideoPlayer success');
                 videoPlayer = video;
                 expect(videoPlayer.state).assertEqual('idle');
@@ -277,13 +277,13 @@ describe('VideoPlayerFuncPromiseTest', function () {
             expect(videoPlayer.height).assertEqual(HEIGHT_VALUE);
         }, failureCallback).catch(catchCallback);
 
-        startTime = videoPlayer.currentTime;
+        let startTime = videoPlayer.currentTime;
         await videoPlayer.play().then(() => {
             console.info('case play called!!');
             sleep(PLAY_TIME);
             expect(videoPlayer.state).assertEqual('playing');
         }, failureCallback).catch(catchCallback);
-        endTime = videoPlayer.currentTime;
+        let endTime = videoPlayer.currentTime;
         expect(endTime - startTime).assertClose(PLAY_TIME, DELTA_TIME);
 
         await videoPlayer.release().then(() => {
@@ -305,7 +305,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         console.info('case new surfaceID is ' + surfaceID);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
-            if (typeof (video) != 'undefined') {
+            if (video != null) {
                 videoPlayer = video;
                 expect(videoPlayer.state).assertEqual('idle');
             } else {
@@ -361,7 +361,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         console.info('case new surfaceID is ' + surfaceID);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
-            if (typeof (video) != 'undefined') {
+            if (video != null) {
                 videoPlayer = video;
                 expect(videoPlayer.state).assertEqual('idle');
             } else {
@@ -426,7 +426,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         console.info('case new surfaceID is ' + surfaceID);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
-            if (typeof (video) != 'undefined') {
+            if (video != null) {
                 videoPlayer = video;
                 expect(videoPlayer.state).assertEqual('idle');
             } else {
@@ -482,7 +482,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         console.info('case new surfaceID is ' + surfaceID);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
-            if (typeof (video) != 'undefined') {
+            if (video != null) {
                 videoPlayer = video;
                 expect(videoPlayer.state).assertEqual('idle');
             } else {
@@ -538,7 +538,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         console.info('case new surfaceID is ' + surfaceID);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
-            if (typeof (video) != 'undefined') {
+            if (video != null) {
                 videoPlayer = video;
                 expect(videoPlayer.state).assertEqual('idle');
             } else {
@@ -595,7 +595,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         console.info('case new surfaceID is ' + surfaceID);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
-            if (typeof (video) != 'undefined') {
+            if (video != null) {
                 videoPlayer = video;
                 expect(videoPlayer.state).assertEqual('idle');
             } else {
@@ -682,7 +682,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         console.info('case new surfaceID is ' + surfaceID);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
-            if (typeof (video) != 'undefined') {
+            if (video != null) {
                 videoPlayer = video;
                 expect(videoPlayer.state).assertEqual('idle');
             } else {
@@ -738,7 +738,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         console.info('case new surfaceID is ' + surfaceID);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
-            if (typeof (video) != 'undefined') {
+            if (video != null) {
                 videoPlayer = video;
                 expect(videoPlayer.state).assertEqual('idle');
             } else {
@@ -800,7 +800,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         let videoPlayer = null;
         let arrayDescription = null;
         await media.createVideoPlayer().then((video) => {
-            if (typeof (video) != 'undefined') {
+            if (video != null) {
                 videoPlayer = video;
                 expect(videoPlayer.state).assertEqual('idle');
             } else {
@@ -822,7 +822,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
 
         await videoPlayer.getTrackDescription().then((arrayList) => {
             console.info('case getTrackDescription called!!');
-            if (typeof (arrayList) != 'undefined') {
+            if (arrayList != null) {
                 arrayDescription = arrayList;
             } else {
                 console.info('case getTrackDescription is failed');
@@ -853,7 +853,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         console.info('case new surfaceID is ' + surfaceID);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
-            if (typeof (video) != 'undefined') {
+            if (video != null) {
                 videoPlayer = video;
                 expect(videoPlayer.state).assertEqual('idle');
             } else {
@@ -912,7 +912,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         console.info('case new surfaceID is ' + surfaceID);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
-            if (typeof (video) != 'undefined') {
+            if (video != null) {
                 videoPlayer = video;
                 expect(videoPlayer.state).assertEqual('idle');
             } else {
@@ -973,7 +973,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         console.info('case new surfaceID is ' + surfaceID);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
-            if (typeof (video) != 'undefined') {
+            if (video != null) {
                 videoPlayer = video;
                 expect(videoPlayer.state).assertEqual('idle');
             } else {
@@ -1034,7 +1034,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         console.info('case new surfaceID is ' + surfaceID);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
-            if (typeof (video) != 'undefined') {
+            if (video != null) {
                 videoPlayer = video;
                 expect(videoPlayer.state).assertEqual('idle');
             } else {
@@ -1105,7 +1105,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         console.info('case new surfaceID is ' + surfaceID);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
-            if (typeof (video) != 'undefined') {
+            if (video != null) {
                 videoPlayer = video;
                 expect(videoPlayer.state).assertEqual('idle');
             } else {
@@ -1182,7 +1182,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         console.info('case new surfaceID is ' + surfaceID);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
-            if (typeof (video) != 'undefined') {
+            if (video != null) {
                 videoPlayer = video;
                 expect(videoPlayer.state).assertEqual('idle');
             } else {
@@ -1252,7 +1252,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         console.info('case new surfaceID is ' + surfaceID);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
-            if (typeof (video) != 'undefined') {
+            if (video != null) {
                 videoPlayer = video;
                 expect(videoPlayer.state).assertEqual('idle');
             } else {
@@ -1323,7 +1323,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         console.info('case new surfaceID is ' + surfaceID);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
-            if (typeof (video) != 'undefined') {
+            if (video != null) {
                 videoPlayer = video;
                 expect(videoPlayer.state).assertEqual('idle');
             } else {
@@ -1384,7 +1384,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         console.info('case new surfaceID is ' + surfaceID);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
-            if (typeof (video) != 'undefined') {
+            if (video != null) {
                 videoPlayer = video;
                 expect(videoPlayer.state).assertEqual('idle');
             } else {
@@ -1462,7 +1462,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         console.info('case new surfaceID is ' + surfaceID);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
-            if (typeof (video) != 'undefined') {
+            if (video != null) {
                 videoPlayer = video;
                 expect(videoPlayer.state).assertEqual('idle');
             } else {
@@ -1529,7 +1529,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         console.info('case new surfaceID is ' + surfaceID);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
-            if (typeof (video) != 'undefined') {
+            if (video != null) {
                 videoPlayer = video;
                 expect(videoPlayer.state).assertEqual('idle');
             } else {
@@ -1602,7 +1602,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         console.info('case new surfaceID is ' + surfaceID);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
-            if (typeof (video) != 'undefined') {
+            if (video != null) {
                 videoPlayer = video;
                 expect(videoPlayer.state).assertEqual('idle');
             } else {
@@ -1668,7 +1668,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         console.info('case new surfaceID is ' + surfaceID);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
-            if (typeof (video) != 'undefined') {
+            if (video != null) {
                 videoPlayer = video;
                 expect(videoPlayer.state).assertEqual('idle');
             } else {
@@ -1740,7 +1740,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         console.info('case new surfaceID is ' + surfaceID);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
-            if (typeof (video) != 'undefined') {
+            if (video != null) {
                 videoPlayer = video;
                 expect(videoPlayer.state).assertEqual('idle');
             } else {
@@ -1809,7 +1809,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         console.info('case new surfaceID is ' + surfaceID);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
-            if (typeof (video) != 'undefined') {
+            if (video != null) {
                 videoPlayer = video;
                 expect(videoPlayer.state).assertEqual('idle');
             } else {
@@ -1876,7 +1876,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         console.info('case new surfaceID is ' + surfaceID);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
-            if (typeof (video) != 'undefined') {
+            if (video != null) {
                 videoPlayer = video;
                 expect(videoPlayer.state).assertEqual('idle');
             } else {
@@ -1934,7 +1934,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         console.info('case new surfaceID is ' + surfaceID);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
-            if (typeof (video) != 'undefined') {
+            if (video != null) {
                 videoPlayer = video;
                 expect(videoPlayer.state).assertEqual('idle');
             } else {
