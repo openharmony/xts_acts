@@ -293,18 +293,22 @@ export default function DataShareCombinationRdb() {
     * @tc.size      : MediumTest
     * @tc.type      : Function
     * @tc.level     : Level 1
-*/
+    */
     it('DataShareNotifyChangeRdb0101', 1, async function (done) {
       try {
         let Count = 1;
-        globalThis.helper.on("dataChange", uri, function (data) {
+        globalThis.helper.on("dataChange", uri, function (err,data) {
           if (Count < 4) {
-            console.info("TestDataShare notifyChange = " + data);
-            expect(true).assertEqual(data != null);
+            console.info("TestDataShare notifyChange err = " + err);
+			console.info("TestDataShare notifyChange data = " + data);
+            expect(true).assertEqual(err == null);
+			expect(true).assertEqual(data == null);
             Count = Count + 1;
           } else {
-            console.info("TestDataShare notifyChange = " + data);
-            expect(true).assertEqual(data != null);
+            console.info("TestDataShare notifyChange err = " + err);
+			console.info("TestDataShare notifyChange data = " + data);
+            expect(true).assertEqual(err == null);
+			expect(true).assertEqual(data == null);
             globalThis.helper.off("dataChange", uri);
             console.info("TestDataShare off");
             done();
