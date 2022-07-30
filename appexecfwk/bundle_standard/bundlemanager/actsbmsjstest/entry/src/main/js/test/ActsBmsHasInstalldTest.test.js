@@ -28,11 +28,13 @@ describe('ActsBmsHasInstalldTest', function () {
      * @tc.desc Test hasInstalled interface.
      */
     it('hasInstalled_0100', 0, async function (done) {
+        let flag = 0;
         pkg.hasInstalled({
             bundleName: 'com.ohos.launcher',
             success: function success(data) {
                 console.info('hasInstalled success function in');
                 expect(data.result).assertTrue();
+                flag += 1;
                 done();
             },
             fail: function fail(data, code) {
@@ -42,7 +44,7 @@ describe('ActsBmsHasInstalldTest', function () {
             },
             complete: function complete() {
                 console.info('hasInstalled complete function in');
-                expect().assertFail();
+                expect(flag).assertEqual(1);
                 done();
             }
         });
@@ -54,10 +56,12 @@ describe('ActsBmsHasInstalldTest', function () {
      * @tc.desc Test hasInstalled interface.
      */
     it('hasInstalled_0200', 0, async function (done) {
+        let flag = 0;
         pkg.hasInstalled({
             bundleName: 'wrongName',
             success: function success(data) {
                 console.info('hasInstalled success function in');
+                flag += 1;
                 expect(data.result).assertFalse();
                 done();
             },
@@ -68,7 +72,7 @@ describe('ActsBmsHasInstalldTest', function () {
             },
             complete: function complete() {
                 console.info('hasInstalled complete function in');
-                expect().assertFail();
+                expect(flag).assertEqual(1);
                 done();
             }
         });
