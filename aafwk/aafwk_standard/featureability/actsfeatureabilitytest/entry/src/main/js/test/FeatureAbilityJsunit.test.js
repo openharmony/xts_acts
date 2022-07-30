@@ -847,7 +847,7 @@ describe('ActsFeatureAbilityTest', function () {
         expect(info.enabled).assertEqual(true);
         expect(info.label).assertEqual("$string:app_name");
         //            expect(info.labelId).assertEqual(0);  //create by DevEco when building HAP.
-        expect(info.icon).assertEqual("$media:icon");
+        expect(info.icon).assertEqual('');
         //            expect(info.iconId).assertEqual(0);   //create by DevEco when building HAP.
         expect(info.process).assertEqual("processTest");
         expect(info.supportedModes).assertEqual(0);
@@ -1060,7 +1060,7 @@ describe('ActsFeatureAbilityTest', function () {
 
     // checkAbilityInfo
     function checkAbilityInfo(data) {
-        console.info("checkAbilityInfo start  " + data);
+        console.info("checkAbilityInfo start  " + JSON.stringify(data));
 
         expect(typeof (data)).assertEqual("object");
         expect(typeof (data.bundleName)).assertEqual("string");
@@ -1104,7 +1104,7 @@ describe('ActsFeatureAbilityTest', function () {
         expect(data.moduleName).assertEqual("entry");
         expect(data.process).assertEqual("processTestAbility");
         expect(data.targetAbility).assertEqual("");
-        expect(data.backgroundModes).assertEqual(0);
+        expect(data.backgroundModes).assertEqual(1);
         expect(data.isVisible).assertEqual(true);
         expect(data.formEnabled).assertEqual(false);
         expect(data.type).assertEqual(1);
@@ -1185,20 +1185,20 @@ describe('ActsFeatureAbilityTest', function () {
         expect(typeof (data.moduleName)).assertEqual("string");
         expect(typeof (data.mainAbilityName)).assertEqual("string");
         expect(typeof (data.installationFree)).assertEqual("boolean");
-        expect(data.name).assertEqual("com.example.actsfeatureabilitytest");
+        expect(data.name).assertEqual("com.example.actsfeatureabilitytest.MyApplication");
         expect(data.description).assertEqual("descriptionTest");
         expect(data.descriptionId).assertEqual(0);
         expect(data.icon).assertEqual("$media:icon");
         expect(data.label).assertEqual("$string:app_name");
-        expect(data.labelId).assertEqual(0);
-        expect(data.iconId).assertEqual(0);
+        expect(data.labelId).assertEqual(16777216);
+        expect(data.iconId).assertEqual(16777219);
         expect(data.backgroundImg).assertEqual("");
         expect(data.supportedModes).assertEqual(0);
         expect(data.reqCapabilities[0]).assertEqual("reqCapabilitiesTest1");
         expect(data.reqCapabilities[1]).assertEqual("reqCapabilitiesTest2");
         expect(data.deviceTypes[0]).assertEqual("phone");
         expect(data.moduleName).assertEqual("entry")
-        expect(data.mainAbilityName).assertEqual("");
+        expect(data.mainAbilityName).assertEqual("com.example.actsfeatureabilitytest.MainAbility");
         expect(data.installationFree).assertEqual(false);
         console.info("checkHapModuleInfo end  " + data);
     }
