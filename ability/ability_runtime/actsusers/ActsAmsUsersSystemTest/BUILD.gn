@@ -14,7 +14,7 @@
 import("//test/xts/tools/build/suite.gni")
 
 ohos_js_hap_suite("ActsAmsUsersSystemTest") {
-  hap_profile = "entry/src/main/module.json"
+  hap_profile = "./entry/src/main/module.json"
   js_build_mode = "debug"
   deps = [
     ":actsamsuserssystemtest_js_assets",
@@ -31,11 +31,11 @@ ohos_app_scope("actsamsuserssystemtest_app_profile") {
 }
 
 ohos_js_assets("actsamsuserssystemtest_js_assets") {
-  source_dir = "entry/src/main/ets"
+  source_dir = "./entry/src/main/ets"
 }
 
 ohos_resources("actsamsuserssystemtest_resources") {
-  sources = [ "entry/src/main/resources" ]
+  sources = [ "./entry/src/main/resources" ]
   deps = [ ":actsamsuserssystemtest_app_profile" ]
-  hap_profile = "entry/src/main/module.json"
+  hap_profile = "./entry/src/main/module.json"
 }
