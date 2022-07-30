@@ -14,7 +14,7 @@
 import("//test/xts/tools/build/suite.gni")
 
 ohos_js_hap_suite("ActsAccessibilityEventTest") {
-  hap_profile = "entry/src/main/module.json"
+  hap_profile = "./entry/src/main/module.json"
   js_build_mode = "debug"
   deps = [
     ":accessibilityevent_js_assets",
@@ -31,11 +31,11 @@ ohos_app_scope("accessibilityevent_app_profile") {
 }
 
 ohos_js_assets("accessibilityevent_js_assets") {
-  source_dir = "entry/src/main/ets"
+  source_dir = "./entry/src/main/ets"
 }
 
 ohos_resources("accessibilityevent_resources") {
-  sources = [ "entry/src/main/resources" ]
+  sources = [ "./entry/src/main/resources" ]
   deps = [ ":accessibilityevent_app_profile" ]
-  hap_profile = "entry/src/main/module.json"
+  hap_profile = "./entry/src/main/module.json"
 }

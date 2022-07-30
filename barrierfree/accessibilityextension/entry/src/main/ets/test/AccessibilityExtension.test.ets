@@ -12,10 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import commonEvent from '@ohos.commonEvent'
 
-export default function abilityTest(abilityContext) {
+export default function abilityTest() {
     let isCalled: boolean = false;
     let subScriber = undefined;
 
@@ -57,7 +57,7 @@ export default function abilityTest(abilityContext) {
          */
         it('AccessibilityExtensionTest_Connect_0100', 0, async function (done) {
             console.info('AccessibilityExtensionTest_Connect_0100: start');
-            await abilityContext.startAbility({
+            await globalThis.abilityContext.startAbility({
                 deviceId: "",
                 bundleName: "com.example.acetest",
                 abilityName: "MainAbility",
