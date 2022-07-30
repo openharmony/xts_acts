@@ -515,7 +515,7 @@ describe('audioVoip', function () {
         }
 
         await getAbilityInfo("capture_js-44100-2C-16B-2.pcm");
-        recPromise(AudioCapturerOptions, mediaDir, audio.AudioScene.AUDIO_SCENE_PHONE_CHAT);
+        await recPromise(AudioCapturerOptions, mediaDir, audio.AudioScene.AUDIO_SCENE_PHONE_CHAT);
         await sleep(500);
 
         readpath = 'StarWars10s-1C-44100-2SW.wav';
