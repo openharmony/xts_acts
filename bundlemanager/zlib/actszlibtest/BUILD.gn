@@ -20,7 +20,7 @@ ohos_moduletest_suite("ActsZlibTest") {
   configs = [ "//third_party/zlib:zlib_config" ]
   public_configs = [ "//third_party/zlib:zlib_public_config" ]
   deps = [ "//third_party/zlib:libz" ]
-  external_deps = [ "utils_base:utils" ]
+  external_deps = [ "c_utils:utils" ]
   subsystem_name = "bundlemanager"
   part_name = "bundle_framework"
 }
