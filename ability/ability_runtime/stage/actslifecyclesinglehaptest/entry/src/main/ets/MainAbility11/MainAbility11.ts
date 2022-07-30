@@ -28,19 +28,27 @@ export default class MainAbility11 extends Ability {
                 console.log("[Demo] " + abilityname + " onAbilityCreate");
                 listKey11.push(abilityname + " onAbilityCreate");
             },
-            onAbilityWindowStageCreate(ability) {
+            onWindowStageCreate(ability, windowStage) {
                 let abilityname = ability.context.abilityInfo.name;
-                console.log("[Demo] AbilityLifecycleCallback11 onAbilityWindowStageCreate abilityname:"
+                console.log("[Demo] AbilityLifecycleCallback11 onWindowStageCreate abilityname:"
                 + JSON.stringify(abilityname));
-                console.log("[Demo] " + abilityname + " onAbilityWindowStageCreate");
-                listKey11.push(abilityname + " onAbilityWindowStageCreate");
+                console.log("[Demo] " + abilityname + " onWindowStageCreate");
+                listKey11.push(abilityname + " onWindowStageCreate");
             },
-            onAbilityWindowStageDestroy(ability) {
+            onWindowStageActive(ability, windowStage) {
                 let abilityname = ability.context.abilityInfo.name;
-                console.log("[Demo] AbilityLifecycleCallback11 onAbilityWindowStageDestroy abilityname:"
+                console.log(abilityname + " onWindowStageActive")
+            },
+            onWindowStageInactive(ability, windowStage) {
+                let abilityname = ability.context.abilityInfo.name;
+                console.log(abilityname + " onWindowStageInactive")
+            },
+            onWindowStageDestroy(ability, windowStage) {
+                let abilityname = ability.context.abilityInfo.name;
+                console.log("[Demo] AbilityLifecycleCallback11 onWindowStageDestroy abilityname:"
                 + JSON.stringify(abilityname));
-                console.log("[Demo] " + abilityname + " onAbilityWindowStageDestroy");
-                listKey11.push(abilityname + " onAbilityWindowStageDestroy");
+                console.log("[Demo] " + abilityname + " onWindowStageDestroy");
+                listKey11.push(abilityname + " onWindowStageDestroy");
             },
             onAbilityDestroy(ability) {
                 let abilityname = ability.context.abilityInfo.name;

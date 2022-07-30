@@ -48,10 +48,18 @@ export default class MainAbility9 extends Ability {
                 console.log(abilityName + " onAbilityCreate")
                 listKey9.push(abilityName + " onAbilityCreate");
             },
-            onAbilityWindowStageCreate(ability) {
+            onWindowStageCreate(ability, windowStage) {
                 abilityName = ability.context.abilityInfo.name;
-                console.log(abilityName + " onAbilityWindowStageCreate")
-                listKey9.push(abilityName + " onAbilityWindowStageCreate");
+                console.log(abilityName + " onWindowStageCreate")
+                listKey9.push(abilityName + " onWindowStageCreate");
+            },
+            onWindowStageActive(ability, windowStage) {
+                abilityName = ability.context.abilityInfo.name;
+                console.log(abilityName + " onWindowStageActive")
+            },
+            onWindowStageInactive(ability, windowStage) {
+                abilityName = ability.context.abilityInfo.name;
+                console.log(abilityName + " onWindowStageInactive")
             },
             onAbilityForeground(ability) {
                 abilityName = ability.context.abilityInfo.name;
@@ -63,10 +71,10 @@ export default class MainAbility9 extends Ability {
                 console.log(abilityName + " onAbilityBackground")
                 listKey9.push(abilityName + " onAbilityBackground");
             },
-            onAbilityWindowStageDestroy(ability) {
+            onWindowStageDestroy(ability, windowStage) {
                 abilityName = ability.context.abilityInfo.name;
-                console.log(abilityName + " onAbilityWindowStageDestroy")
-                listKey9.push(abilityName + " onAbilityWindowStageDestroy");
+                console.log(abilityName + " onWindowStageDestroy")
+                listKey9.push(abilityName + " onWindowStageDestroy");
             },
             onAbilityDestroy(ability) {
                 abilityName = ability.context.abilityInfo.name;

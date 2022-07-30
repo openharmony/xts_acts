@@ -51,24 +51,32 @@ export default class MainAbility8 extends Ability {
                 listKey8.push(abilityname + " onAbilityCreate");
                 console.log("[Demo] 1listKey8:" + JSON.stringify(listKey8));
             },
-            onAbilityWindowStageCreate(ability) {
-                console.log("[Demo] AbilityLifecycleCallback8 onAbilityWindowStageCreate ability:"
+            onWindowStageCreate(ability, windowStage) {
+                console.log("[Demo] AbilityLifecycleCallback8 onWindowStageCreate ability:"
                 + JSON.stringify(ability));
                 let abilityname = ability.context.abilityInfo.name;
-                console.log("[Demo] AbilityLifecycleCallback8 onAbilityWindowStageCreate abilityname:"
+                console.log("[Demo] AbilityLifecycleCallback8 onWindowStageCreate abilityname:"
                 + JSON.stringify(abilityname));
-                console.log("[Demo] " + abilityname + " onAbilityWindowStageCreate");
-                listKey8.push(abilityname + " onAbilityWindowStageCreate");
+                console.log("[Demo] " + abilityname + " onWindowStageCreate");
+                listKey8.push(abilityname + " onWindowStageCreate");
                 console.log("[Demo] 2listKey8:" + JSON.stringify(listKey8));
             },
-            onAbilityWindowStageDestroy(ability) {
-                console.log("[Demo] AbilityLifecycleCallback8 onAbilityWindowStageDestroy ability:"
+            onWindowStageActive(ability, windowStage) {
+                let abilityname = ability.context.abilityInfo.name;
+                console.log(abilityname + " onWindowStageActive")
+            },
+            onWindowStageInactive(ability, windowStage) {
+                let abilityname = ability.context.abilityInfo.name;
+                console.log(abilityname + " onWindowStageInactive")
+            },
+            onWindowStageDestroy(ability, windowStage) {
+                console.log("[Demo] AbilityLifecycleCallback8 onWindowStageDestroy ability:"
                 + JSON.stringify(ability));
                 let abilityname = ability.context.abilityInfo.name;
-                console.log("[Demo] AbilityLifecycleCallback8 onAbilityWindowStageDestroy abilityname:"
+                console.log("[Demo] AbilityLifecycleCallback8 onWindowStageDestroy abilityname:"
                 + JSON.stringify(abilityname));
-                console.log("[Demo] " + abilityname + " onAbilityWindowStageDestroy");
-                listKey8.push(abilityname + " onAbilityWindowStageDestroy");
+                console.log("[Demo] " + abilityname + " onWindowStageDestroy");
+                listKey8.push(abilityname + " onWindowStageDestroy");
                 console.log("[Demo] 3listKey8:" + JSON.stringify(listKey8));
             },
             onAbilityDestroy(ability) {

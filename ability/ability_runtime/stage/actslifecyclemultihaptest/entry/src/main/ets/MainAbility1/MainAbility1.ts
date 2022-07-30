@@ -28,11 +28,19 @@ export default class MainAbility1 extends Ability {
                 listKey.push(abilityName + " onAbilityCreate");
                 console.log("listKey is :" + listKey);
             },
-            onAbilityWindowStageCreate(ability) {
+            onWindowStageCreate(ability, windowStage) {
                 abilityName = ability.context.abilityInfo.name;
-                console.log(abilityName + " onAbilityWindowStageCreate")
-                listKey.push(abilityName + " onAbilityWindowStageCreate");
+                console.log(abilityName + " onWindowStageCreate")
+                listKey.push(abilityName + " onWindowStageCreate");
                 console.log("listKey is :" + listKey);
+            },
+            onWindowStageActive(ability, windowStage) {
+                abilityName = ability.context.abilityInfo.name;
+                console.log(abilityName + " onWindowStageActive")
+            },
+            onWindowStageInactive(ability, windowStage) {
+                abilityName = ability.context.abilityInfo.name;
+                console.log(abilityName + " onWindowStageInactive")
             },
             onAbilityForeground(ability) {
                 abilityName = ability.context.abilityInfo.name;
@@ -46,10 +54,10 @@ export default class MainAbility1 extends Ability {
                 listKey.push(abilityName + " onAbilityBackground");
                 console.log("listKey is :" + listKey);
             },
-            onAbilityWindowStageDestroy(ability) {
+            onWindowStageDestroy(ability, windowStage) {
                 abilityName = ability.context.abilityInfo.name;
-                console.log(abilityName + " onAbilityWindowStageDestroy")
-                listKey.push(abilityName + " onAbilityWindowStageDestroy");
+                console.log(abilityName + " onWindowStageDestroy")
+                listKey.push(abilityName + " onWindowStageDestroy");
                 console.log("listKey is :" + listKey);
             },
             onAbilityDestroy(ability) {
