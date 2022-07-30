@@ -12,11 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import accessibility from '@ohos.accessibility'
 import commonEvent from '@ohos.commonEvent'
 
-export default function abilityTest(abilityContext) {
+export default function abilityTest() {
     let targetBundleName = 'com.example.myapplication';
     let subScriber = undefined;
     let isConnected: boolean = false;
@@ -38,7 +38,7 @@ export default function abilityTest(abilityContext) {
             });
 
             setTimeout(async () => {
-                await abilityContext.startAbility({
+                await globalThis.abilityContext.startAbility({
                     deviceId: "",
                     bundleName: "com.example.acetest",
                     abilityName: "MainAbility",

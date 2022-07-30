@@ -14,6 +14,6 @@
  */
 import abilityTest from './AccessibilityExtensionContext.test.ets'
 
-export default function testsuite(abilityContext) {
-    abilityTest(abilityContext)
+export default function testsuite() {
+    abilityTest()
 }

@@ -12,10 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import file from '@system.file';
-
-import {Core, ExpectExtend, InstrumentLog, ReportExtend} from "deccjsunit/index"
-import testsuite from "../../test/List.test.ets"
+import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
+import { Hypium } from '@ohos/hypium'
+import testsuite from '../../../test/List.test'
 
 
 @Entry
@@ -24,22 +23,12 @@ struct Index {
 
   aboutToAppear(){
     console.info("start run testcase!!!!")
-    const core = Core.getInstance()
-    const expectExtend = new ExpectExtend({
-      'id': 'extend'
-    })
-    core.addService('expect', expectExtend)
-    const reportExtend = new ReportExtend(file)
-
-    core.addService('report', reportExtend)
-    core.init()
-    core.subscribeEvent('task', reportExtend)
-    const configService = core.getDefaultService('config')
-    console.info('parameters---->' + JSON.stringify(globalThis.abilityWant.parameters))
-    globalThis.abilityWant.parameters.timeout = 10000;
-    configService.setConfig(globalThis.abilityWant.parameters)
-    testsuite(globalThis.abilityContext)
-    core.execute()
+        var abilityDelegator: any
+        abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+        var abilityDelegatorArguments: any
+        abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+        console.info('start run testcase!!!')
+        Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
   }
 
   build() {
