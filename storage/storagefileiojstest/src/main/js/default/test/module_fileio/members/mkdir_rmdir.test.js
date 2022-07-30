@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { fileio, nextFileName, describe, it, expect } from '../../Common';
+import { fileio, nextFileName, describe, it, expect, isIntNum } from '../../Common';
 
 describe('fileio_mkdir_rmdir', function () {
 
@@ -26,22 +26,29 @@ describe('fileio_mkdir_rmdir', function () {
    * @tc.level Level 0
    * @tc.require
    */
-  it('fileio_mkdir_sync_rmdir_sync_000', 0, async function () {
+   it('fileio_mkdir_sync_rmdir_sync_000', 0, async function () {
     let dpath = await nextFileName('fileio_mkdir_sync_rmdir_sync_000') + 'd';
-
     try {
-      expect(fileio.mkdirSync(dpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
-    } catch (e) {
-      console.log('fileio_mkdir_sync_rmdir_sync_000 has failed for ' + e);
-      expect(null).assertFail();
+      fileio.mkdirSync(dpath);
+      expect((fileio.opendirSync(dpath)) != null).assertTrue();
+      console.info('fileio_mkdir_sync_rmdir_sync_000 has mkdir SUCCESS');
+      fileio.rmdirSync(dpath);
+    }catch (e) {
+      console.info('fileio_mkdir_sync_rmdir_sync_000 has failed for '+e);
+      expect(false).assertTrue();
+    }
+    try {
+      fileio.opendirSync(dpath);
+      expect(false).assertTrue();
+    }catch (e) {
+      expect(e.toString().indexOf('No such file or directory') != -1).assertTrue();
     }
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_MKDIR_SYNC_RMDIR_SYNC_0010
+   * @tc.number SUB_DF_FILEIO_MKDIR_SYNC_RMDIR_SYNC_0100
    * @tc.name fileio_mkdir_sync_rmdir_sync_001
-   * @tc.desc Test mkdirSync() interfaces.
+   * @tc.desc Test mkdirSync() interfaces,Path parameter passing '/'
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
@@ -49,17 +56,17 @@ describe('fileio_mkdir_rmdir', function () {
    */
   it('fileio_mkdir_sync_rmdir_sync_001', 0, function () {
     try {
-      expect(fileio.mkdirSync('/') == null).assertTrue();
-      expect(null).assertFail();
+      fileio.mkdirSync('/');
+      expect(false).assertTrue();
     } catch (e) {
-      console.log('fileio_mkdir_sync_rmdir_sync_001 has failed for ' + e);
+      expect(e.toString().indexOf('File exists') != -1).assertTrue();
     }
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_MKDIR_SYNC_RMDIR_SYNC_0020
+   * @tc.number SUB_DF_FILEIO_MKDIR_SYNC_RMDIR_SYNC_0200
    * @tc.name fileio_mkdir_sync_rmdir_sync_002
-   * @tc.desc Test mkdirSync() interfaces.
+   * @tc.desc Test mkdirSync() interfaces,Path parameter passes invalid path 12
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
@@ -67,17 +74,71 @@ describe('fileio_mkdir_rmdir', function () {
    */
   it('fileio_mkdir_sync_rmdir_sync_002', 0, function () {
     try {
-      expect(fileio.mkdirSync(12) == null).assertTrue();
-      expect(null).assertFail();
+      fileio.mkdirSync(12);
+      expect(false).assertTrue();
     } catch (e) {
-      console.log('fileio_mkdir_sync_rmdir_sync_002 has failed for ' + e);
+      expect(e.toString().indexOf('Invalid path') != -1).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_MKDIR_SYNC_RMDIR_SYNC_0300
+   * @tc.name fileio_mkdir_sync_rmdir_sync_003
+   * @tc.desc Test mkdirSync() interfaces,Path passes null parameter
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+   */
+  it('fileio_mkdir_sync_rmdir_sync_003', 0, function () {
+    try {
+      fileio.mkdirSync();
+      expect(false).assertTrue();
+    } catch (e) {
+      expect(e.toString().indexOf('Number of arguments unmatched') != -1).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_MKDIR_SYNC_RMDIR_SYNC_0400
+   * @tc.name fileio_mkdir_sync_rmdir_sync_004
+   * @tc.desc Test rmdirSync() interfaces,Path parameter passes invalid path 12
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+   */
+  it('fileio_mkdir_sync_rmdir_sync_004', 0, function () {
+    try {
+      fileio.rmdirSync(12);
+      expect(false).assertTrue();
+    } catch (e) {
+      expect(e.toString().indexOf('Invalid path') != -1).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_MKDIR_SYNC_RMDIR_SYNC_0500
+   * @tc.name fileio_mkdir_sync_rmdir_sync_005
+   * @tc.desc Test rmdirSync() interfaces,Path passes null parameter
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+   */
+  it('fileio_mkdir_sync_rmdir_sync_005', 0, function () {
+    try {
+      fileio.rmdirSync();
+      expect(false).assertTrue();
+    } catch (e) {
+      expect(e.toString().indexOf('Number of arguments unmatched') != -1).assertTrue();
     }
   });
 
   /**
    * @tc.number SUB_DF_FILEIO_MKDIR_ASYNC_RMDIR_SYNC_0000
    * @tc.name fileio_mkdir_async_rmdir_sync_000
-   * @tc.desc Test mkdirAsync() and rmdirSync() interfaces.
+   * @tc.desc Test mkdir() interfaces(promise).
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
@@ -85,21 +146,22 @@ describe('fileio_mkdir_rmdir', function () {
    */
   it('fileio_mkdir_async_rmdir_sync_000', 0, async function (done) {
     let dpath = await nextFileName('fileio_mkdir_async_rmdir_sync_000') + 'd';
-
     try {
-      expect(await fileio.mkdir(dpath) == null).assertTrue();
-      expect(fileio.rmdirSync(dpath) == null).assertTrue();
+      await fileio.mkdir(dpath);
+      expect((fileio.opendirSync(dpath)) != null).assertTrue();
+      console.info('fileio_mkdir_async_rmdir_sync_000 has mkdir SUCCESS');
+      fileio.rmdirSync(dpath);
       done();
-    } catch (e) {
-      console.log('fileio_mkdir_async_rmdir_sync_000 has failed for ' + e);
-      expect(null).assertFail();
+    }catch (e) {
+      console.info('fileio_mkdir_async_rmdir_sync_000 has mkdir failed for ' + e);
+      expect(false).assertTrue();
     }
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_MKDIR_ASYNC_RMDIR_SYNC_0010
+   * @tc.number SUB_DF_FILEIO_MKDIR_ASYNC_RMDIR_SYNC_0100
    * @tc.name fileio_mkdir_async_rmdir_sync_001
-   * @tc.desc Test mkdirAsync() and rmdirSync() interfaces.
+   * @tc.desc Test  mkdir() interfaces (callback)
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
@@ -107,22 +169,24 @@ describe('fileio_mkdir_rmdir', function () {
    */
   it('fileio_mkdir_async_rmdir_sync_001', 0, async function (done) {
     let dpath = await nextFileName('fileio_mkdir_async_rmdir_sync_001') + 'd';
-
     try {
       fileio.mkdir(dpath, function (error) {
-        expect(fileio.rmdirSync(dpath) == null).assertTrue();
-        done();
+        expect(error.toString().indexOf('No error information') != -1).assertTrue();
+        expect((fileio.opendirSync(dpath)) != null).assertTrue();
+        console.info('fileio_mkdir_async_rmdir_sync_001 has mkdir SUCCESS');
+        fileio.rmdirSync(dpath);
       });
     } catch (e) {
-      console.log('fileio_mkdir_async_rmdir_sync_001 has failed for ' + e);
-      expect(null).assertFail();
+      console.info('fileio_mkdir_async_rmdir_sync_001 has mkdir failed for ' + e);
+      expect(false).assertTrue();
     }
+    done();
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_MKDIR_ASYNC_RMDIR_SYNC_0020
+   * @tc.number SUB_DF_FILEIO_MKDIR_ASYNC_RMDIR_SYNC_0200
    * @tc.name fileio_mkdir_async_rmdir_sync_002
-   * @tc.desc Test mkdirAsync() and rmdirSync() interfaces.
+   * @tc.desc Test mkdir() interfaces,mode parameter passing 777
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
@@ -130,21 +194,22 @@ describe('fileio_mkdir_rmdir', function () {
    */
   it('fileio_mkdir_async_rmdir_sync_002', 0, async function (done) {
     let fpath = await nextFileName('fileio_mkdir_async_rmdir_sync_002');
-
     try {
-      expect(await fileio.mkdir(fpath, 777) == null).assertTrue();
-      expect(fileio.rmdirSync(fpath) == null).assertTrue();
+      await fileio.mkdir(fpath, 777);
+      expect((fileio.opendirSync(fpath)) != null).assertTrue();
+      console.info('fileio_mkdir_async_rmdir_sync_002 has mkdir SUCCESS');
+      fileio.rmdirSync(fpath);
       done();
     } catch (e) {
-      console.log('fileio_mkdir_async_rmdir_sync_002 has failed for ' + e);
-      expect(null).assertFail();
+      console.info('fileio_mkdir_async_rmdir_sync_002 has mkdir failed for ' + e);
+      expect(false).assertTrue();
     }
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_MKDIR_ASYNC_RMDIR_SYNC_0030
+   * @tc.number SUB_DF_FILEIO_MKDIR_ASYNC_RMDIR_SYNC_0300
    * @tc.name fileio_mkdir_async_rmdir_sync_003
-   * @tc.desc Test mkdirAsync() and rmdirSync() interfaces.
+   * @tc.desc Test mkdir() interfaces,mode parameter passing 400
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
@@ -152,21 +217,22 @@ describe('fileio_mkdir_rmdir', function () {
    */
   it('fileio_mkdir_async_rmdir_sync_003', 0, async function (done) {
     let fpath = await nextFileName('fileio_mkdir_async_rmdir_sync_003');
-
     try {
-      expect(await fileio.mkdir(fpath, 400) == null).assertTrue();
-      expect(fileio.rmdirSync(fpath) == null).assertTrue();
+      await fileio.mkdir(fpath, 400);
+      expect((fileio.opendirSync(fpath)) != null).assertTrue();
+      console.info('fileio_mkdir_async_rmdir_sync_003 has mkdir SUCCESS');
+      fileio.rmdirSync(fpath);
       done();
     } catch (e) {
-      console.log('fileio_mkdir_async_rmdir_sync_003 has failed for ' + e);
-      expect(null).assertFail();
+      console.info('fileio_mkdir_async_rmdir_sync_003 has mkdir failed for ' + e);
+      expect(false).assertTrue();
     }
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_MKDIR_ASYNC_RMDIR_SYNC_0040
+   * @tc.number SUB_DF_FILEIO_MKDIR_ASYNC_RMDIR_SYNC_0400
    * @tc.name fileio_mkdir_async_rmdir_sync_004
-   * @tc.desc Test mkdirAsync() and interfaces.
+   * @tc.desc Test mkdir() interfaces,Path parameter passes invalid path 12
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
@@ -174,17 +240,18 @@ describe('fileio_mkdir_rmdir', function () {
    */
   it('fileio_mkdir_async_rmdir_sync_004', 0, async function (done) {
     try {
-      expect(await fileio.mkdir(12) == null).assertTrue();
-      expect(null).assertFail();
+      await fileio.mkdir(12);
+      expect(false).assertTrue();
     } catch (e) {
+      expect(e.toString().indexOf('Invalid path') != -1).assertTrue();
       done();
     }
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_MKDIR_ASYNC_RMDIR_SYNC_0050
+   * @tc.number SUB_DF_FILEIO_MKDIR_ASYNC_RMDIR_SYNC_0500
    * @tc.name fileio_mkdir_async_rmdir_sync_005
-   * @tc.desc Test mkdirAsync()interfaces.
+   * @tc.desc Test mkdir() interfaces,Path parameter passing '/'
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
@@ -192,9 +259,68 @@ describe('fileio_mkdir_rmdir', function () {
    */
   it('fileio_mkdir_async_rmdir_sync_005', 0, async function (done) {
     try {
-      expect(await fileio.mkdir('/').indexOf('<pending>') > -1).assertTrue();
-      expect(null).assertFail();
+      await fileio.mkdir('/');
+      expect(false).assertTrue();
     } catch (e) {
+      expect(e.toString().indexOf('File exists') != -1).assertTrue();
+      done();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_MKDIR_ASYNC_RMDIR_SYNC_0600
+   * @tc.name fileio_mkdir_async_rmdir_sync_006
+   * @tc.desc Test mkdir() interfaces,Path passes null parameter
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+   */
+  it('fileio_mkdir_async_rmdir_sync_006', 0, async function (done) {
+    try {
+      await fileio.mkdir();
+      expect(false).assertTrue();
+    } catch (e) {
+      expect(e.toString().indexOf('Number of arguments unmatched') != -1).assertTrue();
+      console.info('fileio_mkdir_async_rmdir_sync_006 has failed for ' + e);
+      done();
+    }
+  });
+
+  /**
+    * @tc.number SUB_DF_FILEIO_MKDIR_SYNC_RMDIR_ASYNC_0000
+    * @tc.name fileio_mkdir_sync_rmdir_async_000
+    * @tc.desc Test rmdir() and interfaces,Path parameter passes invalid path 12
+    * @tc.size MEDIUM
+    * @tc.type Function
+    * @tc.level Level 0
+    * @tc.require
+    */
+  it('fileio_mkdir_sync_rmdir_async_000', 0, async function (done) {
+    try {
+      await fileio.rmdir(12);
+      expect(false).assertTrue();
+    }catch (e) {
+      expect(e.toString().indexOf('Invalid path') != -1).assertTrue();
+      done();
+    }
+  });
+
+  /**
+    * @tc.number SUB_DF_FILEIO_MKDIR_SYNC_RMDIR_ASYNC_0100
+    * @tc.name fileio_mkdir_sync_rmdir_async_001
+    * @tc.desc Test rmdir() and interfaces,Path passes null parameter
+    * @tc.size MEDIUM
+    * @tc.type Function
+    * @tc.level Level 0
+    * @tc.require
+    */
+  it('fileio_mkdir_sync_rmdir_async_001', 0, async function (done) {
+    try {
+      await fileio.rmdir();
+      expect(false).assertTrue();
+    }catch (e) {
+      expect(e.toString().indexOf('Number of arguments unmatched') != -1).assertTrue();
       done();
     }
   });
