@@ -13,7 +13,7 @@
 * limitations under the License.
 */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'hypium/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import dataShare from '@ohos.data.dataShare'
 import dataSharePredicates from '@ohos.data.dataSharePredicates'
 import * as pubfun from './DataSharePublicfunction_Callback'
