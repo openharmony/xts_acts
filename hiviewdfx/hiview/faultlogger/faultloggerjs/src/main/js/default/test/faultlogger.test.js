@@ -111,6 +111,7 @@ describe("FaultlogJsTest", function () {
                     expect(typeof(ret[i].module) == "string").assertTrue();
                     expect(typeof(ret[i].summary) == "string").assertTrue();
                     expect(typeof(ret[i].fullLog) == "string").assertTrue();
+                    expect(typeof(ret[i].timestamp) == "number").assertTrue();
                     expect(true).assertTrue();
                 } else {
                     expect(false).assertTrue();
