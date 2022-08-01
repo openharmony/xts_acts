@@ -79,14 +79,26 @@ describe('audioCapturer', function () {
         console.info('AudioFrameworkRecLog: Promise : Audio Recording Function');
 
         var audioCap;
-
+        let isPass = false;
         await audio.createAudioCapturer(AudioCapturerOptions).then(async function (data) {
             audioCap = data;
             console.info('AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: SUCCESS');
         }).catch((err) => {
             console.info('AudioFrameworkRecLog: AudioCapturer Created : ERROR : ' + err.message);
+            LE24 = audio.AudioSampleFormat.SAMPLE_FORMAT_S24LE;
+            LE32 = audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE;
+            let sampleFormat = AudioRendererOptions.streamInfo.sampleFormat;
+            if ((sampleFormat == LE24 || sampleFormat == LE32) && err.code == 202) {
+                isPass = true;
+                return;
+            }
             return resultFlag;
         });
+        console.log("isPass:" + isPass);
+        if (isPass) {
+            resultFlag = true;
+            return resultFlag;
+        }
 
         console.info('AudioFrameworkRecLog: AudioCapturer : Path : ' + fpath);
 
