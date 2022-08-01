@@ -14,35 +14,37 @@
  */
 import Ability from '@ohos.application.Ability'
 
-export default class MainAbility extends Ability {
+export default class TestAbility extends Ability {
     onCreate(want, launchParam) {
-        console.log("[Demo] MainAbility onCreate")
-        globalThis.abilityWant = want;
+        console.log('TestAbility onCreate')
     }
 
     onDestroy() {
-        console.log("[Demo] MainAbility onDestroy")
+        console.log('TestAbility onDestroy')
     }
 
     onWindowStageCreate(windowStage) {
-        // Main window is created, set main page for this ability
-        console.log("[Demo] MainAbility onWindowStageCreate")
+        console.log('TestAbility onWindowStageCreate')
+        windowStage.loadContent("TestAbility/pages/index", (err, data) => {
+            if (err.code) {
+                console.error('Failed to load the content. Cause:' + JSON.stringify(err));
+                return;
+            }
+            console.info('Succeeded in loading the content. Data: ' + JSON.stringify(data))
+        });
+
         globalThis.abilityContext = this.context;
-        windowStage.setUIContent(this.context, "MainAbility/pages/MainAbility_pages", null)
     }
 
     onWindowStageDestroy() {
-        // Main window is destroyed, release UI related resources
-        console.log("[Demo] MainAbility onWindowStageDestroy")
+        console.log('TestAbility onWindowStageDestroy')
     }
 
     onForeground() {
-        // Ability has brought to foreground
-        console.log("[Demo] MainAbility onForeground")
+        console.log('TestAbility onForeground')
     }
 
     onBackground() {
-        // Ability has back to background
-        console.log("[Demo] MainAbility onBackground")
+        console.log('TestAbility onBackground')
     }
 };

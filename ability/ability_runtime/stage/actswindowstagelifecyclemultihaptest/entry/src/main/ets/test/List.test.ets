@@ -12,8 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import LifeCycleTest from './LifeCycleTest'
+import lifecycleTest from './LifecycleTest'
 
-export default function List(context) {
-  LifeCycleTest(context)
+export default function List() {
+  lifecycleTest()
 }

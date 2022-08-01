@@ -22,7 +22,7 @@ ohos_js_hap_suite("WorkerContextTest") {
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "WorkerContextTest"
+  hap_name = "ActsWorkerContextTest"
 }
 
 ohos_app_scope("workercontexttest_app_profile") {

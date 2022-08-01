@@ -32,7 +32,7 @@ export default class MainAbility extends Ability {
         // Main window is created, set main page for this ability
         console.info(printLog1 + 'onWindowStageCreate')
 
-        windowStage.loadContent("pages/index", (err, data) => {
+        windowStage.loadContent("MainAbility/pages/index", (err, data) => {
             if (err.code) {
                 console.error('Failed to load the content. Cause:' + JSON.stringify(err));
                 return;

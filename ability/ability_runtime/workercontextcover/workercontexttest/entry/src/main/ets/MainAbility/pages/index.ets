@@ -1,4 +1,3 @@
-// @ts-nocheck
 /*
  * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,34 +12,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import file from '@system.file';
-import {Core, ExpectExtend, InstrumentLog, ReportExtend} from "deccjsunit/index.ets"
-import list from '../test/ListTest'
+import router from '@ohos.router';
+import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
+import { Hypium } from '@ohos/hypium'
+import testsuite from '../../test/List.test'
 
 @Entry
 @Component
 struct Index {
-  @State message: string = 'MainAbility'
+  @State message: string = 'MainAbility Worker'
 
   aboutToAppear() {
     console.info("start run testcase!!!!")
-    const core = Core.getInstance()
-    const expectExtend = new ExpectExtend({
-      'id': 'extend'
-    })
-    core.addService('expect', expectExtend)
-    const reportExtend = new ReportExtend(file)
-
-    core.addService('report', reportExtend)
-    core.init()
-    globalThis.abilityWant.parameters.timeout = 20000;
-
-    core.subscribeEvent('task', reportExtend)
-    const configService = core.getDefaultService('config')
-    configService.setConfig(globalThis.abilityWant.parameters)
-    console.info('parameters---->' + JSON.stringify(globalThis.abilityWant.parameters))
-    list(globalThis.abilityContext)
-    core.execute()
+        var abilityDelegator: any
+        abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+        var abilityDelegatorArguments: any
+        abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+        console.info('start run testcase!!!')
+        Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
   }
 
   build() {
