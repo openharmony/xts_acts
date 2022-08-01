@@ -106,7 +106,6 @@ describe("FaultlogJsTest", function () {
                     expect(typeof(ret[i].pid) == "number").assertTrue();
                     expect(typeof(ret[i].uid) == "number").assertTrue();
                     expect(typeof(ret[i].type) == "number").assertTrue();
-                    expect(typeof(ret[i].ts) == "number").assertTrue();
                     expect(typeof(ret[i].reason) == "string").assertTrue();
                     expect(typeof(ret[i].module) == "string").assertTrue();
                     expect(typeof(ret[i].summary) == "string").assertTrue();
