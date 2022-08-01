@@ -125,7 +125,7 @@ export default class MainAbility extends Ability {
             });
             dseConnectionId = await context.connectAbility(dseWant, dseConnect);
         })
-        windowStage.setUIContent(this.context, "pages/index", null)
+        windowStage.setUIContent(this.context, "MainAbility/pages/index", null)
     }
 
     onWindowStageDestroy() {

@@ -241,7 +241,7 @@ describe('bluetoothhostTest', function() {
 			console.info('[bluetooth_js] BLE scan device find result1 = '+JSON.stringify(data));
 			except(true).assertTrue(data.length>0);
 		}
-        bluetooth.BLE.on("BLEDeviceFind")
+        bluetooth.BLE.on("BLEDeviceFind",onReceiveEvent)
         bluetooth.BLE.startBLEScan([{}]);
 		await sleep(1000);
 		console.info('[bluetooth_js] BLE SCAN OFF01');

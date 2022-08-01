@@ -27,19 +27,27 @@ export default class MainAbility12 extends Ability {
                 console.log("[Demo] " + abilityname + " onAbilityCreate");
                 listKey12.push(abilityname + " onAbilityCreate");
             },
-            onAbilityWindowStageCreate(ability) {
-                console.log("[Demo] AbilityLifecycleCallback12 onAbilityWindowStageCreate ability:"
+            onWindowStageCreate(ability, windowStage) {
+                console.log("[Demo] AbilityLifecycleCallback12 onWindowStageCreate ability:"
                 + JSON.stringify(ability));
                 let abilityname = ability.context.abilityInfo.name;
-                console.log("[Demo] " + abilityname + " onAbilityWindowStageCreate");
-                listKey12.push(abilityname + " onAbilityWindowStageCreate");
+                console.log("[Demo] " + abilityname + " onWindowStageCreate");
+                listKey12.push(abilityname + " onWindowStageCreate");
             },
-            onAbilityWindowStageDestroy(ability) {
-                console.log("[Demo] AbilityLifecycleCallback12 onAbilityWindowStageDestroy ability:"
+            onWindowStageActive(ability, windowStage) {
+                let abilityname = ability.context.abilityInfo.name;
+                console.log(abilityname + " onWindowStageActive")
+            },
+            onWindowStageInactive(ability, windowStage) {
+                let abilityname = ability.context.abilityInfo.name;
+                console.log(abilityname + " onWindowStageInactive")
+            },
+            onWindowStageDestroy(ability, windowStage) {
+                console.log("[Demo] AbilityLifecycleCallback12 onWindowStageDestroy ability:"
                 + JSON.stringify(ability));
                 let abilityname = ability.context.abilityInfo.name;
-                console.log("[Demo] " + abilityname + " onAbilityWindowStageDestroy");
-                listKey12.push(abilityname + " onAbilityWindowStageDestroy");
+                console.log("[Demo] " + abilityname + " onWindowStageDestroy");
+                listKey12.push(abilityname + " onWindowStageDestroy");
             },
             onAbilityDestroy(ability) {
                 console.log("[Demo] AbilityLifecycleCallback12 onAbilityDestroy ability:"
