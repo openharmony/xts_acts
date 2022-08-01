@@ -102,21 +102,21 @@ export default function actsBmsJsUnPermissionTest() {
          * @tc.desc: test hasInstalled without permission
         */
         it('SUB_BMS_HAP_STATUS_0011', 0, async function (done) {
+            let flag = 0;
             pkg.hasInstalled({
                 bundleName: SELF_BUNDLENAME,
                 success: function success(data) {
                     console.info("get hasInstalled success" + JSON.stringify(data));
+                    flag += 1;
                     expect(data.result).assertTrue();
-                    done();
                 },
                 fail: function fail(data, code) {
                     console.info("get hasInstalled fail" + JSON.stringify(data));
                     expect(data).assertFail();
-                    done();
                 },
                 complete: function complete() {
                     console.info("get hasInstalled complete");
-                    expect().assertFail();
+                    expect(flag).assertEqual(1);
                     done();
                 }
             })
@@ -128,21 +128,21 @@ export default function actsBmsJsUnPermissionTest() {
          * @tc.desc: test hasInstalled without permission
         */
         it('SUB_BMS_HAP_STATUS_0012', 0, async function (done) {
+            let flag = 0;
             pkg.hasInstalled({
                 bundleName: BUNDLE_NAME_OTHER,
                 success: function success(data) {
                     console.info("get hasInstalled success" + JSON.stringify(data));
+                    flag += 1;
                     expect(data.result).assertFalse();
-                    done();
                 },
                 fail: function fail(data, code) {
                     console.info("get hasInstalled fail" + JSON.stringify(data));
                     expect(data).assertFail();
-                    done();
                 },
                 complete: function complete() {
                     console.info("get hasInstalled complete");
-                    expect().assertFail();
+                    expect(flag).assertEqual(1);
                     done();
                 }
             })
