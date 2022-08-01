@@ -280,7 +280,7 @@ export class GestureEventTest {
     }
 
     private async gestureInject(caseName: string, gesturePath: object) {
-        let ret = await this.context?.gestureInject(gesturePath, () => {});
-        console.info('GestureEventTest processCase: ' + caseName + ' ret: ' + ret);
+        await this.context?.injectGesture(gesturePath);
+        console.info('GestureEventTest processCase: ' + caseName);
     }
 }

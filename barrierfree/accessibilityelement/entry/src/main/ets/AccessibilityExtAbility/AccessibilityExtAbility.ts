@@ -32,8 +32,6 @@ class AccessibilityExtAbility extends AccessibilityExtensionAbility {
         function publishCallback(err) {
             console.info("onConnect====>onConnect publish call back result:" + JSON.stringify(err));
         }
-
-        this.context.setEventTypeFilter(['click']);
     }
 
     onDisconnect() {

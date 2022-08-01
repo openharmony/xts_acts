@@ -62,62 +62,6 @@ export class ExtensionContextTest {
         let gesturePos3 = {};
 
         switch (caseName) {
-            case 'AccessibilityExtensionContextTest_setEventTypeFilter_asyncCallback_0100':
-                eventType = ['accessibilityFocus'];
-                this.setEventTypeFilterCallback(caseName, eventType);
-                break;
-            case 'AccessibilityExtensionContextTest_setEventTypeFilter_asyncCallback_0200':
-                eventType = ['accessibilityFocusClear'];
-                this.setEventTypeFilterCallback(caseName, eventType);
-                break;
-            case 'AccessibilityExtensionContextTest_setEventTypeFilter_asyncCallback_0300':
-                eventType = ['click', 'longClick'];
-                this.setEventTypeFilterCallback(caseName, eventType);
-                break;
-            case 'AccessibilityExtensionContextTest_setEventTypeFilter_asyncCallback_0400':
-                eventType = ['focus', 'select'];
-                this.setEventTypeFilterCallback(caseName, eventType);
-                break;
-            case 'AccessibilityExtensionContextTest_setEventTypeFilter_asyncCallback_0500':
-                eventType = ['hoverEnter', 'hoverExit'];
-                this.setEventTypeFilterCallback(caseName, eventType);
-                break;
-            case 'AccessibilityExtensionContextTest_setEventTypeFilter_asyncCallback_0600':
-                eventType = ['accessibilityFocus', 'accessibilityFocusClear', 'click', 'longClick',
-                'focus', 'select', 'hoverEnter', 'hoverExit', 'textUpdate', 'textSelectionUpdate','scroll'];
-                this.setEventTypeFilterCallback(caseName, eventType);
-                break;
-            case 'AccessibilityExtensionContextTest_setEventTypeFilter_asyncCallback_0700':
-                this.setEventTypeFilterCallback(caseName, eventType);
-                break;
-            case 'AccessibilityExtensionContextTest_setEventTypeFilter_asyncPromise_0800':
-                eventType = ['accessibilityFocus'];
-                this.setEventTypeFilterPromise(caseName, eventType);
-                break;
-            case 'AccessibilityExtensionContextTest_setEventTypeFilter_asyncPromise_0900':
-                eventType = ['accessibilityFocusClear'];
-                this.setEventTypeFilterPromise(caseName, eventType);
-                break;
-            case 'AccessibilityExtensionContextTest_setEventTypeFilter_asyncPromise_1000':
-                eventType = ['click', 'longClick'];
-                this.setEventTypeFilterPromise(caseName, eventType);
-                break;
-            case 'AccessibilityExtensionContextTest_setEventTypeFilter_asyncPromise_1100':
-                eventType = ['focus', 'select'];
-                this.setEventTypeFilterPromise(caseName, eventType);
-                break;
-            case 'AccessibilityExtensionContextTest_setEventTypeFilter_asyncPromise_1200':
-                eventType = ['hoverEnter', 'hoverExit'];
-                this.setEventTypeFilterPromise(caseName, eventType);
-                break;
-            case 'AccessibilityExtensionContextTest_setEventTypeFilter_asyncPromise_1300':
-                eventType = ['accessibilityFocus', 'accessibilityFocusClear', 'click', 'longClick',
-                'focus', 'select', 'hoverEnter', 'hoverExit', 'textUpdate', 'textSelectionUpdate','scroll'];
-                this.setEventTypeFilterPromise(caseName, eventType);
-                break;
-            case 'AccessibilityExtensionContextTest_setEventTypeFilter_asyncPromise_1400':
-                this.setEventTypeFilterPromise(caseName, eventType);
-                break;
             case 'AccessibilityExtensionContextTest_setTargetBundleName_asyncCallback_1500':
                 bundleName = ['com.example.accessibleformextension'];
                 this.setTargetBundleNameCallback(caseName, bundleName);
@@ -374,83 +318,26 @@ export class ExtensionContextTest {
         }
     }
 
-    private async setEventTypeFilterCallback(caseName: string, eventType: Array<accessibility.Event>) {
-        let result = false;
-        if (eventType.length == 0) {
-            this.context.setEventTypeFilter(eventType, (err, res) => {
-                console.info(caseName + " res: " + JSON.stringify(res));
-                if (err.code != 0 ) {
-                    console.error(caseName + " err: " + JSON.stringify(err.code));
-                    result = true;
-                }
-                if (res == undefined) {
-                    result = true;
-                }
-                this.publishCaseResult(caseName, result);
-            });
-        } else {
-            this.context.setEventTypeFilter(eventType, (err, res) => {
-                console.info(caseName + " res: " + JSON.stringify(res));
-                if (err.code != 0 ) {
-                    console.error(caseName + " err: " + JSON.stringify(err.code));
-                }
-                if (typeof(res) == 'boolean') {
-                    result = true;
-                }
-                this.publishCaseResult(caseName, result);
-            });
-        }
-    }
-
-    private async setEventTypeFilterPromise(caseName: string, eventType: Array<accessibility.Event>) {
-        let result = false;
-        if (eventType.length == 0) {
-            this.context.setEventTypeFilter(eventType).then((res) => {
-                console.info(caseName + " res: " + JSON.stringify(res));
-                if (res == undefined) {
-                    result = true;
-                }
-                this.publishCaseResult(caseName, result);
-            }).catch((error) => {
-                console.error(caseName + " error: " + JSON.stringify(error));
-                result = true;
-                this.publishCaseResult(caseName, result);
-            });
-        } else {
-            this.context.setEventTypeFilter(eventType).then((res) => {
-                console.info(caseName + " res: " + JSON.stringify(res));
-                if (typeof(res) == 'boolean') {
-                    result = true;
-                }
-                this.publishCaseResult(caseName, result);
-            }).catch((error) => {
-                console.error(caseName + " error: " + JSON.stringify(error));
-                this.publishCaseResult(caseName, result);
-            });
-        }
-    }
-
     private async setTargetBundleNameCallback(caseName: string, bundleName: Array<string>) {
-        let result = false;
+        let result = true;
         this.context.setTargetBundleName(bundleName, (err, res) => {
             console.info(caseName + " res: " + JSON.stringify(res));
             if (err.code != 0) {
                 console.error(caseName + " err: " + JSON.stringify(err.code));
-            }
-            if (typeof(res) == 'boolean') {
-                result = true;
+                result = false;
             }
             this.publishCaseResult(caseName, result);
         });
     }
 
     private async setTargetBundleNamePromise(caseName: string, bundleName: Array<string>) {
-        let result = false;
+        let result = true;
         this.context.setTargetBundleName(bundleName).then((res) => {
             console.info(caseName + " res: " + JSON.stringify(res));
-            if (typeof(res) == 'boolean') {
-                result = true;
-            }
+            this.publishCaseResult(caseName, result);
+        }).catch((error) => {
+            console.error(caseName + " error: " + JSON.stringify(error));
+            result = false;
             this.publishCaseResult(caseName, result);
         });
     }
@@ -718,7 +605,7 @@ export class ExtensionContextTest {
     private async gestureInjectCallback(caseName: string, gesturePath: object) {
         let result = false;
         if (gesturePath == undefined) {
-            this.context.gestureInject(gesturePath, () => {}, (err, res) => {
+            this.context.injectGesture(gesturePath, (err, res) => {
                 console.info(caseName + " res: " + JSON.stringify(res));
                 if (err.code != 0) {
                     console.error(caseName + " err: " + JSON.stringify(err.code));
@@ -730,15 +617,11 @@ export class ExtensionContextTest {
                 this.publishCaseResult(caseName, result);
             });
         } else {
-            this.context.gestureInject(gesturePath, () => {}, (err, res) => {
+            this.context.injectGesture(gesturePath, (err, res) => {
                 console.info(caseName + " res: " + JSON.stringify(res));
+                result = true;
                 if (err.code != 0) {
                     console.error(caseName + " err: " + JSON.stringify(err.code));
-                }
-                if (typeof(res) == 'boolean') {
-                    result = true;
-                }
-                if (res == undefined) {
                     result = false;
                 }
                 this.publishCaseResult(caseName, result);
@@ -750,7 +633,7 @@ export class ExtensionContextTest {
     private async gestureInjectPromise(caseName: string, gesturePath: object) {
         let result = false;
         if (gesturePath == undefined) {
-            this.context.gestureInject(gesturePath, () => {}).then((res) => {
+            this.context.injectGesture(gesturePath).then((res) => {
                 console.info(caseName + " res: " + JSON.stringify(res));
                 if (res == undefined) {
                     result = true;
@@ -762,17 +645,13 @@ export class ExtensionContextTest {
                 this.publishCaseResult(caseName, result);
             });
         } else {
-            this.context.gestureInject(gesturePath, () => {}).then((res) => {
+            this.context.injectGesture(gesturePath).then((res) => {
                 console.info(caseName + " res: " + JSON.stringify(res));
-                if (typeof(res) == 'boolean') {
-                    result = true;
-                }
-                if (res == undefined) {
-                    result = false;
-                }
+                result = true;
                 this.publishCaseResult(caseName, result);
             }).catch ((err) => {
                 console.error(caseName + 'error:' + JSON.stringify(err));
+                result = false;
                 this.publishCaseResult(caseName, result);
             });
         }

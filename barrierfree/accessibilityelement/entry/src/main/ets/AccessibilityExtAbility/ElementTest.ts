@@ -157,7 +157,13 @@ export class ElementTest {
                 result = await this.executeAttributeValuePromise(caseName, 'endIndex', 'number');
                 break;
             case 'AccessibilityElementTest_attributeValue_asyncPromise_3700':
-                result = await this.executeAttributeValuePromise(caseName, 'rangeInfo', 'object');
+                result = await this.executeAttributeValuePromise(caseName, 'valueMax', 'number');
+                break;
+            case 'AccessibilityElementTest_attributeValue_asyncPromise_3800':
+                result = await this.executeAttributeValuePromise(caseName, 'valueMin', 'number');
+                break;
+            case 'AccessibilityElementTest_attributeValue_asyncPromise_3900':
+                result = await this.executeAttributeValuePromise(caseName, 'valueNow', 'number');
                 break;
             case 'AccessibilityElementTest_attributeValue_asyncPromise_4200':
                 result = await this.executeAttributeValuePromise(caseName, 'error', 'string');
@@ -391,7 +397,13 @@ export class ElementTest {
                 await this.executeAttributeValueCallback(caseName, 'endIndex', 'number');
                 return;
             case 'AccessibilityElementTest_attributeValue_asyncCallback_3700':
-                await this.executeAttributeValueCallback(caseName, 'rangeInfo', 'object');
+                await this.executeAttributeValueCallback(caseName, 'valueMax', 'number');
+                return;
+            case 'AccessibilityElementTest_attributeValue_asyncCallback_3800':
+                await this.executeAttributeValueCallback(caseName, 'valueMin', 'number');
+                return;
+            case 'AccessibilityElementTest_attributeValue_asyncCallback_3900':
+                await this.executeAttributeValueCallback(caseName, 'valueNow', 'number');
                 return;
             case 'AccessibilityElementTest_attributeValue_asyncCallback_4200':
                 await this.executeAttributeValueCallback(caseName, 'error', 'string');
