@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "deccjsunit/index"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import commonEvent from '@ohos.commonEvent'
 
 var subscriberInfo_MainAbility = {
@@ -21,7 +21,7 @@ var subscriberInfo_MainAbility = {
 const START_ABILITY_TIMEOUT = 5000;
 console.debug("====>in Ability.test====>");
 
-export default function abilityTest(abilityContext) {
+export default function abilityTest() {
   describe('ActsGetDisplayIdStartAbilityForResultTest', function () {
     console.debug("====>in ActsGetDisplayIdStartAbilityForResultTest====>");
 
@@ -57,7 +57,7 @@ export default function abilityTest(abilityContext) {
         console.debug("====>ACTS_startAbilityForResult_0100 Create Subscriber====>");
         subscriber = data;
         commonEvent.subscribe(subscriber, subscribeCallBack);
-        await abilityContext.startAbilityForResult(
+        await globalThis.abilityContext.startAbilityForResult(
           {
             bundleName: 'com.example.startabilityforresult',
             abilityName: 'com.example.startabilityforresult.MainAbility2',
@@ -115,7 +115,7 @@ export default function abilityTest(abilityContext) {
         console.debug("====>ACTS_startAbilityForResult_0200 Create Subscriber====>");
         subscriber = data;
         commonEvent.subscribe(subscriber, subscribeCallBack);
-        await abilityContext.startAbilityForResult(
+        await globalThis.abilityContext.startAbilityForResult(
           {
             bundleName: 'com.example.startabilityforresult',
             abilityName: 'com.example.startabilityforresult.MainAbility2',
@@ -176,7 +176,7 @@ export default function abilityTest(abilityContext) {
         console.debug("====>ACTS_startAbilityForResult_0300 Create Subscriber====>");
         subscriber = data;
         commonEvent.subscribe(subscriber, subscribeCallBack);
-        await abilityContext.startAbilityForResult(
+        await globalThis.abilityContext.startAbilityForResult(
           {
             bundleName: 'com.example.startabilityforresult',
             abilityName: 'com.example.startabilityforresult.MainAbility2',
@@ -235,7 +235,7 @@ export default function abilityTest(abilityContext) {
         console.debug("====>ACTS_startAbilityForResult_0400_Create Subscriber====>");
         subscriber = data;
         await commonEvent.subscribe(subscriber, subscribeCallBack);
-        connId = await abilityContext.connectAbility(
+        connId = await globalThis.abilityContext.connectAbility(
           {
             bundleName: "com.example.startabilityforresult",
             abilityName: "com.example.startabilityforresult.ServiceAbility",
@@ -246,7 +246,7 @@ export default function abilityTest(abilityContext) {
       })
 
       function unSubscribeCallback() {
-        abilityContext.disconnectAbility(
+        globalThis.abilityContext.disconnectAbility(
           connId,
           (error, data) => {
             console.log('startAbilityForResult_0400 Disconnect result errCode : ' + error.code + " data: " + data)
@@ -258,7 +258,7 @@ export default function abilityTest(abilityContext) {
 
       function timeout() {
         expect().assertFail();
-        abilityContext.disconnectAbility(
+        globalThis.abilityContext.disconnectAbility(
           connId,
           (error, data) => {
             console.log('DisconnectAbility_0400 result errCode : ' + error.code + " data: " + data)
