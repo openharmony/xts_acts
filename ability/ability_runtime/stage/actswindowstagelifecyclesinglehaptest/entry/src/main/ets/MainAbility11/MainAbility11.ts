@@ -100,7 +100,7 @@ export default class MainAbility11 extends Ability {
         // Main window is created, set main page for this ability
         console.log("[Demo] MainAbility11 onWindowStageCreate")
 
-        windowStage.setUIContent(this.context, "pages/index11", null)
+        windowStage.setUIContent(this.context, "MainAbility/pages/index11", null)
     }
 
     onWindowStageDestroy() {

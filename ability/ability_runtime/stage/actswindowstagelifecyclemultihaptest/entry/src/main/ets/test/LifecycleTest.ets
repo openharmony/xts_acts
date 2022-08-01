@@ -13,9 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "deccjsunit/index"
-
-export default function abilityTest(abilityContext) {
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+export default function abilityTest() {
 
   describe('AbilityTest', function () {
 
@@ -68,7 +67,7 @@ export default function abilityTest(abilityContext) {
       TAG = "Multihap_WindowStageLifecycleTest_001";
       listKeyTemp = [];
 
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "MainAbility4"
       }, (error, data) => {
@@ -78,7 +77,7 @@ export default function abilityTest(abilityContext) {
 
       await sleep(1000);
 
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "Hap2MainAbility3"
       }, (error, data) => {
@@ -120,7 +119,7 @@ export default function abilityTest(abilityContext) {
       TAG = "Multihap_WindowStageLifecycleTest_002";
       listKeyTemp = [];
 
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "MainAbility4"
       }, (error, data) => {
@@ -130,7 +129,7 @@ export default function abilityTest(abilityContext) {
 
       await sleep(1000);
 
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "Hap2MainAbility4"
       }, (error, data) => {
@@ -140,7 +139,7 @@ export default function abilityTest(abilityContext) {
 
       await sleep(1000);
 
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "Hap2MainAbility4"
       }, (error, data) => {
@@ -182,7 +181,7 @@ export default function abilityTest(abilityContext) {
       TAG = "Multihap_WindowStageLifecycleTest_003";
       listKeyTemp = [];
 
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "MainAbility4"
       }, (error, data) => {
@@ -192,7 +191,7 @@ export default function abilityTest(abilityContext) {
 
       await sleep(1000);
 
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "Hap2MainAbility5"
       }, (error, data) => {
@@ -202,7 +201,7 @@ export default function abilityTest(abilityContext) {
 
       await sleep(1000);
 
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "Hap2MainAbility5"
       }, (error, data) => {
@@ -249,7 +248,7 @@ export default function abilityTest(abilityContext) {
       listKeyTemp = [];
       listKeyTemp1 = [];
 
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "MainAbility4"
       }, (error, data) => {
@@ -259,7 +258,7 @@ export default function abilityTest(abilityContext) {
 
       await sleep(1000);
 
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "Hap2MainAbility6"
       }, (error, data) => {
@@ -269,7 +268,7 @@ export default function abilityTest(abilityContext) {
 
       await sleep(1000);
 
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "Hap3MainAbility2"
       }, (error, data) => {
@@ -320,7 +319,7 @@ export default function abilityTest(abilityContext) {
       listKeyTemp = [];
       listKeyTemp1 = [];
 
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "MainAbility4"
       }, (error, data) => {
@@ -330,7 +329,7 @@ export default function abilityTest(abilityContext) {
 
       await sleep(500);
 
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "Hap2MainAbility6"
       }, (error, data) => {
@@ -340,7 +339,7 @@ export default function abilityTest(abilityContext) {
 
       await sleep(500);
 
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "Hap2MainAbility7"
       }, (error, data) => {
@@ -394,7 +393,7 @@ export default function abilityTest(abilityContext) {
       var firstCallbackId;
       var secondCallbackId;
 
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "MainAbility7"
       }, (error, data) => {
@@ -404,7 +403,7 @@ export default function abilityTest(abilityContext) {
 
       await sleep(500);
 
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "Hap2MainAbility8"
       }, (error, data) => {
@@ -419,7 +418,7 @@ export default function abilityTest(abilityContext) {
 
       await sleep(500);
 
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "MainAbility7"
       }, (error, data) => {
@@ -429,7 +428,7 @@ export default function abilityTest(abilityContext) {
 
       await sleep(1000);
 
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "Hap2MainAbility8"
       }, (error, data) => {
@@ -476,7 +475,7 @@ export default function abilityTest(abilityContext) {
       var callBackId2;
       var flag;
 
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "MainAbility6"
       }, (error, data) => {
@@ -485,7 +484,7 @@ export default function abilityTest(abilityContext) {
       });
 
       setTimeout(function () {
-        abilityContext.startAbility({
+        globalThis.abilityContext.startAbility({
           bundleName: "com.example.lifecycletest",
           abilityName: "Hap2MainAbility9"
         }, (error, data) => {
@@ -523,7 +522,7 @@ export default function abilityTest(abilityContext) {
       setTimeout(function () {
         if (flag == 0) {
 
-          abilityContext.startAbility({
+          globalThis.abilityContext.startAbility({
             bundleName: "com.example.lifecycletest",
             abilityName: "MainAbility6"
           }, (error, data) => {
@@ -532,7 +531,7 @@ export default function abilityTest(abilityContext) {
           });
 
           setTimeout(function () {
-            abilityContext.startAbility({
+            globalThis.abilityContext.startAbility({
               bundleName: "com.example.lifecycletest",
               abilityName: "Hap2MainAbility9"
             }, (error, data) => {
@@ -584,7 +583,7 @@ export default function abilityTest(abilityContext) {
       TAG = "Multihap_WindowStageLifecycleTest_008";
       listKeyTemp = [];
 
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "MainAbility4"
       }, (error, data) => {
@@ -594,7 +593,7 @@ export default function abilityTest(abilityContext) {
 
       await sleep(500);
 
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "Hap2MainAbility6"
       }, (error, data) => {
@@ -644,7 +643,7 @@ export default function abilityTest(abilityContext) {
       listKeyTemp = [];
       listKeyTemp1 = [];
 
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "MainAbility4",
       }, (error, data) => {
@@ -653,7 +652,7 @@ export default function abilityTest(abilityContext) {
       })
 
       await sleep(1000)
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "Hap2MainAbility10",
       }, (error, data) => {
@@ -662,7 +661,7 @@ export default function abilityTest(abilityContext) {
       })
 
       await sleep(1000)
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "Hap3MainAbility3",
       }, (error, data) => {
@@ -671,7 +670,7 @@ export default function abilityTest(abilityContext) {
       })
 
       await sleep(1000)
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "Hap2MainAbility10",
       }, (error, data) => {
@@ -680,7 +679,7 @@ export default function abilityTest(abilityContext) {
       })
 
       await sleep(1000)
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "Hap3MainAbility3",
       }, (error, data) => {
@@ -690,7 +689,7 @@ export default function abilityTest(abilityContext) {
 
 
       await sleep(1000)
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "Hap2MainAbility10",
       }, (error, data) => {
@@ -699,7 +698,7 @@ export default function abilityTest(abilityContext) {
       })
 
       await sleep(1000)
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "Hap3MainAbility3",
       }, (error, data) => {
@@ -758,7 +757,7 @@ export default function abilityTest(abilityContext) {
       TAG = "Multihap_WindowStageLifecycleTest_010";
       listKeyTemp = [];
 
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "MainAbility2",
       }, (error, data) => {
@@ -768,7 +767,7 @@ export default function abilityTest(abilityContext) {
 
       await sleep(500);
 
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.lifecycletest",
         abilityName: "Hap4MainAbility1",
       }, (error, data) => {
