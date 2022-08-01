@@ -14,7 +14,7 @@
  */
 // @ts-nocheck
 import osaccount from '@ohos.account.osAccount'
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import commonEvent from '@ohos.commonEvent'
 var AbilityPermission1 = {
   events: ["ACTS_AbilityPermission_0100_Start_CommonEvent"]
@@ -29,7 +29,7 @@ var AbilityPermission6 = {
   events: ["ACTS_AbilityPermission_0600_Start_CommonEvent"]
 }
 const START_ABILITY_TIMEOUT = 3000;
-export default function abilityPermissionTest(abilityContext) {
+export default function abilityPermissionTest() {
   describe('ActsAbilityPermissionTest', function () {
     var osAccountManager = osaccount.getAccountManager();
     var userA;
@@ -72,7 +72,7 @@ export default function abilityPermissionTest(abilityContext) {
         Subscriber = data;
         commonEvent.subscribe(Subscriber, SubscribeCallBack);
         console.debug("====>start startAbility_100====>");
-        await abilityContext.startAbilityWithAccount(
+        await globalThis.abilityContext.startAbilityWithAccount(
           {
             bundleName: 'com.example.actsabilitypermissiontest',
             abilityName: 'com.example.actsabilitypermissiontest.MainAbility2'
@@ -118,7 +118,7 @@ export default function abilityPermissionTest(abilityContext) {
         Subscriber = data;
         commonEvent.subscribe(Subscriber, SubscribeCallBack);
         console.debug("====>start startAbility_0300====>");
-        await abilityContext.startAbilityWithAccount(
+        await globalThis.abilityContext.startAbilityWithAccount(
           {
             bundleName: 'com.example.actssystemappuonehundredonerelytest',
             abilityName: 'com.example.actssystemappuonehundredonerelytest.MainAbility'
@@ -158,7 +158,7 @@ export default function abilityPermissionTest(abilityContext) {
       function SubscribeCallBack(err, data) {
         expect(data.event == "ACTS_AbilityPermission_0400_Start_CommonEvent").assertTrue();
         console.debug("====>0400 Subscribe CallBack data:====>" + JSON.stringify(data));
-        abilityContext.disconnectAbility(globalThis.number).then((data) => {
+        globalThis.abilityContext.disconnectAbility(globalThis.number).then((data) => {
           console.debug("====>data is====>" + JSON.stringify(data));
         })
         console.log('====>disconnectAbility finish');
@@ -191,7 +191,7 @@ export default function abilityPermissionTest(abilityContext) {
         Subscriber = data;
         commonEvent.subscribe(Subscriber, SubscribeCallBack);
         console.debug("====>0400start connectAbility====>");
-        globalThis.number = await abilityContext.connectAbilityWithAccount(
+        globalThis.number = await globalThis.abilityContext.connectAbilityWithAccount(
           {
             bundleName: 'com.example.actsabilitypermissiontest',
             abilityName: 'com.example.actsabilitypermissiontest.ServiceAbility',
@@ -253,7 +253,7 @@ export default function abilityPermissionTest(abilityContext) {
         commonEvent.subscribe(Subscriber, SubscribeCallBackF);
       })
       console.debug("====>0600start connectAbility====>");
-      connId = await abilityContext.connectAbilityWithAccount(
+      connId = await globalThis.abilityContext.connectAbilityWithAccount(
         {
           bundleName: 'com.example.actssystemappuonehundredonerelytest',
           abilityName: 'com.example.actssystemappuonehundredonerelytest.ServiceAbility',
