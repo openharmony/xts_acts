@@ -59,9 +59,9 @@ hctest_suite("ActsSecurityHichainBasicDeps") {
     ]
     if (ohos_kernel_type == "liteos_m") {
       # liteos m
-      include_dirs += [ "//base/startup/syspara_lite/interfaces/kits" ]
+      include_dirs += [ "//base/startup/init/interfaces/innerkits/include/syspara" ]
       deps +=
-          [ "//base/startup/syspara_lite/frameworks/parameter/src:sysparam" ]
+          [ "//base/startup/init/interfaces/innerkits:libbegetutil" ]
       if (board_name == "rtl8720") {
         cflags +=
             [ "-isystem${ohos_root_path}/kernel/liteos_m/kal/posix/include" ]
@@ -134,19 +134,19 @@ hctest_suite("ActsSecurityHichainBasicDeps") {
       }
     } else {
       #liteos a or L1 linux
-      include_dirs += [ "//base/startup/syspara_lite/interfaces/kits" ]
+      include_dirs += [ "//base/startup/init/interfaces/innerkits/include/syspara" ]
       deps +=
-          [ "//base/startup/syspara_lite/frameworks/parameter/src:sysparam" ]
+          [ "//base/startup/init/interfaces/innerkits:libbegetutil" ]
     }
   } else {
     # linux
     include_dirs += [
-      "//base/startup/syspara_lite/interfaces/innerkits/native/syspara/include",
+      "//base/startup/init/interfaces/innerkits/include/syspara",
 
       "//base/security/device_auth/deps_adapter/os_adapter/interfaces/linux",
     ]
     deps += [
-      "//base/startup/syspara_lite/interfaces/innerkits/native/syspara:syspara",
+      "//base/startup/init/interfaces/innerkits:libbegetutil",
     ]
   }
 }
