@@ -109,12 +109,10 @@ export default function actsBmsJsUnPermissionTest() {
                     console.info("get hasInstalled success" + JSON.stringify(data));
                     flag += 1;
                     expect(data.result).assertTrue();
-                    done();
                 },
                 fail: function fail(data, code) {
                     console.info("get hasInstalled fail" + JSON.stringify(data));
                     expect(data).assertFail();
-                    done();
                 },
                 complete: function complete() {
                     console.info("get hasInstalled complete");
@@ -137,12 +135,10 @@ export default function actsBmsJsUnPermissionTest() {
                     console.info("get hasInstalled success" + JSON.stringify(data));
                     flag += 1;
                     expect(data.result).assertFalse();
-                    done();
                 },
                 fail: function fail(data, code) {
                     console.info("get hasInstalled fail" + JSON.stringify(data));
                     expect(data).assertFail();
-                    done();
                 },
                 complete: function complete() {
                     console.info("get hasInstalled complete");

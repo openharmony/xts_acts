@@ -36,12 +36,10 @@ describe('ActsBmsHasInstalldTest', function () {
                 console.info('hasInstalled success function in');
                 flag += 1;
                 expect(data.result).assertTrue();
-                done();
             },
             fail: function fail(data, code) {
                 console.info('hasInstalled fail function in');
                 expect().assertFail();
-                done();
             },
             complete: function complete() {
                 console.info('hasInstalled complete function in');
@@ -64,12 +62,10 @@ describe('ActsBmsHasInstalldTest', function () {
                 console.info('hasInstalled success function in');
                 flag += 1;
                 expect(data.result).assertFalse();
-                done();
             },
             fail: function fail(data, code) {
                 console.info('hasInstalled fail function in');
                 expect().assertFail();
-                done();
             },
             complete: function complete() {
                 console.info('hasInstalled complete function in');
@@ -107,7 +103,6 @@ describe('ActsBmsHasInstalldTest', function () {
             success: function success(data) {
                 console.info('hasInstalled success function in');
                 expect().assertFail();
-                done();
             },
             fail: function fail(data, code) {
                 flag += 2;
@@ -136,7 +131,6 @@ describe('ActsBmsHasInstalldTest', function () {
             success: function success(data) {
                 console.info('hasInstalled success' + JSON.stringify(data));
                 expect(error).assertFail();
-                done();
             },
             complete: function complete() {
                 console.info('hasInstalled complete');
@@ -156,7 +150,7 @@ describe('ActsBmsHasInstalldTest', function () {
             bundleName: NUM_TWO,
             success: function success(data) {
                 console.info('hasInstalled success' + JSON.stringify(data));
-                expect(error).assertFail();
+                expect().assertFail();
                 done();
             },
             fail: function fail(data, code) {
