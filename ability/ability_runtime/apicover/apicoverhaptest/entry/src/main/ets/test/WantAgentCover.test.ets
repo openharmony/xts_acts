@@ -12,11 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import wantAgent from '@ohos.wantAgent';
 
 var TAG
-export default function wantAgentCoverTest(abilityContext) {
+export default function wantAgentCoverTest() {
     describe('WantAgentTest', function () {
 
         /*
@@ -29,7 +29,7 @@ export default function wantAgentCoverTest(abilityContext) {
             TAG = 'SUB_AA_OpenHarmony_WantAgentCover_0100 ==>';
 
             try {
-                let status:any = abilityContext.stageMode
+                let status:any = globalThis.abilityContext.stageMode
                 let code1 = undefined
                 var wantAgentInfo = {
                     wants: [

@@ -15,8 +15,8 @@
 import abilityTest from './Ability.test.ets'
 
 
-export default function testsuite(context) {
+export default function testsuite() {
 
-  abilityTest(context)
+  abilityTest()
 
 }
