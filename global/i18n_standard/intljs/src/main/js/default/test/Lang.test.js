@@ -188,7 +188,8 @@ describe('LangTest', function () {
         let timezone = I18n.getTimeZone();
         let value = timezone.getID();
         console.log('timezone_test_0100 ' + value);
-        expect(value == 'UTC' || value == 'Asia/Shanghai').assertTrue();
+        expect(value == 'UTC' || value == 'Asia/Shanghai' || value == 'Asia/Seoul').assertTrue();
+        expect(value.length > 0).assertTrue();
     })
 
     /* *
@@ -201,7 +202,8 @@ describe('LangTest', function () {
         let timezone = I18n.getTimeZone();
         let value = timezone.getDisplayName();
         console.log('timezone_test_0200 ' + value);
-        expect(value == 'GMT' || value == '中国标准时间').assertTrue();
+        expect(value == 'GMT' || value == '中国标准时间' || value == '韩国标准时间').assertTrue();
+        expect(value.length > 0).assertTrue();
     })
 
     /* *
@@ -214,7 +216,8 @@ describe('LangTest', function () {
         let timezone = I18n.getTimeZone();
         let value = timezone.getDisplayName('zh-CN');
         console.log('timezone_test_0300 ' + value);
-        expect(value == 'GMT' || value == '中国标准时间').assertTrue();
+        expect(value == 'GMT' || value == '中国标准时间' || value == '韩国标准时间').assertTrue();
+        expect(value.length > 0).assertTrue();
     })
 
     /* *
@@ -227,7 +230,8 @@ describe('LangTest', function () {
         let timezone = I18n.getTimeZone();
         let value = timezone.getDisplayName(true);
         console.log('timezone_test_0400 ' + value);
-        expect(value == 'GMT' || value == '中国标准时间').assertTrue();
+        expect(value == 'GMT' || value == '中国标准时间' || value == '韩国标准时间').assertTrue();
+        expect(value.length > 0).assertTrue();
     })
 
     /* *
@@ -240,7 +244,8 @@ describe('LangTest', function () {
         let timezone = I18n.getTimeZone();
         let value = timezone.getDisplayName(false);
         console.log('timezone_test_0500 ' + value);
-        expect(value == 'GMT' || value == '中国标准时间').assertTrue();
+        expect(value == 'GMT' || value == '中国标准时间' || value == '韩国标准时间').assertTrue();
+        expect(value.length > 0).assertTrue();
     })
 
     /* *
