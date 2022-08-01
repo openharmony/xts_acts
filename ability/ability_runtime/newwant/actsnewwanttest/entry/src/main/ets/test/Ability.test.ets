@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "deccjsunit/index"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import commonEvent from '@ohos.commonEvent'
 
 let subscriberInfo = {
@@ -35,7 +35,7 @@ let subscriberInfo = {
 
 let flagNewWant = false;
 
-export default function abilityTest(abilityContext) {
+export default function abilityTest() {
   describe('ActsNewWantTest', function () {
 
     /**
@@ -57,7 +57,7 @@ export default function abilityTest(abilityContext) {
         await commonEvent.subscribe(Subscriber, SubscribeCallBack);
       })
 
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.newwanthap",
         abilityName: "com.example.newwanthapa.MainAbility"
       }, (error, data) => {
@@ -127,7 +127,7 @@ export default function abilityTest(abilityContext) {
         await commonEvent.subscribe(Subscriber, SubscribeCallBack);
       })
 
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.newwanthap",
         abilityName: "com.example.newwanthapa.SecondAbility"
       }, (error, data) => {
@@ -196,7 +196,7 @@ export default function abilityTest(abilityContext) {
         await commonEvent.subscribe(Subscriber, SubscribeCallBack);
       })
 
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.newwanthap",
         abilityName: "com.example.newwanthapa.MainAbility",
         action: "startStandard0300"
@@ -266,7 +266,7 @@ export default function abilityTest(abilityContext) {
         await commonEvent.subscribe(Subscriber, SubscribeCallBack);
       })
 
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.newwanthap",
         abilityName: "com.example.newwanthapa.SecondAbility",
         action: "startSingleton0400"
@@ -338,7 +338,7 @@ export default function abilityTest(abilityContext) {
         await commonEvent.subscribe(Subscriber, SubscribeCallBack);
       })
 
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.newwanthap",
         abilityName: "com.example.newwanthapb.MainAbility",
         action: "startHapB"
@@ -410,7 +410,7 @@ export default function abilityTest(abilityContext) {
         await commonEvent.subscribe(Subscriber, SubscribeCallBack);
       })
 
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.newwanthapa",
         abilityName: "com.example.newwanthapc.MainAbility",
         action: "startHapC"
@@ -482,7 +482,7 @@ export default function abilityTest(abilityContext) {
         await commonEvent.subscribe(Subscriber, SubscribeCallBack);
       })
 
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.newwanthap",
         abilityName: "com.example.newwanthapa.SecondAbility",
         action: "startSecondAbility0700"
@@ -553,7 +553,7 @@ export default function abilityTest(abilityContext) {
         await commonEvent.subscribe(Subscriber, SubscribeCallBack);
       })
 
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.newwanthap",
         abilityName: "com.example.newwanthapa.MainAbility",
         action: "startMainAbility0800"
