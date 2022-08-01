@@ -12,10 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import lifecycleTest from './LifecycleTest'
+import LifeCycleTest from './LifeCycleTest'
+import Test from './Test'
 
-export default function List(context) {
-
-  lifecycleTest(context)
-
+export default function List() {
+  LifeCycleTest()
+//  Test(context)
 }
