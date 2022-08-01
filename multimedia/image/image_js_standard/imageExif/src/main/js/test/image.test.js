@@ -17,15 +17,28 @@ import image from '@ohos.multimedia.image'
 import fileio from '@ohos.fileio'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 import { tc_020buf, tc_020_1buf, tc_021buf, tc_021_1buf, tc_022buf } from './testImg'
-import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
-import bundle from '@ohos.bundle'
+import featureAbility from '@ohos.ability.featureAbility'
 
 describe('Image', function () {
-    var pathExifJpg = '/data/storage/el2/base/files/test_exif.jpg';
-    var pathExifJpg1 = '/data/storage/el2/base/files/test_exif1.jpg';	
+    let filePath;
+    let fdNumber;
     let globalpixelmap;
+    async function getFd(fileName) {
+        let context = await featureAbility.getContext();
+        await context.getFilesDir().then((data) => {
+            filePath = data + '/' + fileName;
+            console.info('image case filePath is ' + filePath);
+        })
+        await fileio.open(filePath).then((data) => {
+            fdNumber = data;
+            console.info("image case open fd success " + fdNumber);
+        }, (err) => {
+            console.info("image cese open fd fail" + err)
+        }).catch((err) => {
+            console.info("image case open fd err " + err);
+        })
+    }
     beforeAll(async function () {
-        await applyPermission();
         console.info('beforeAll case');
     })
 
@@ -43,35 +56,6 @@ describe('Image', function () {
     afterAll(async function () {
         console.info('afterAll case');
     })
-
-    async function applyPermission() {
-        let appInfo = await bundle.getApplicationInfo('ohos.acts.multimedia.image.Exif', 0, 100);
-        let atManager = abilityAccessCtrl.createAtManager();
-        if (atManager != null) {
-            let tokenID = appInfo.accessTokenId;
-            console.info('[permission]case accessTokenId is' + tokenID);
-            let permissionName1 = 'ohos.permission.MEDIA_LOCATION';
-            let permissionName2 = 'ohos.permission.READ_MEDIA';
-            let permissionName3 = 'ohos.permission.WRITE_MEDIA';
-            await atManager.grantUserGrantedPermission(tokenID, permissionName1).then((result) => {
-                console.info('[permission]case grantUserGrantedPermission success:' + result);
-            }).catch((err) => {
-                console.info('[permission]case grantUserGrantedPermission failed:' + err);
-            });
-            await atManager.grantUserGrantedPermission(tokenID, permissionName2).then((result) => {
-                console.info('[permission]case grantUserGrantedPermission success:' + result);
-            }).catch((err) => {
-                console.info('[permission]case grantUserGrantedPermission failed:' + err);
-            });
-            await atManager.grantUserGrantedPermission(tokenID, permissionName3).then((result) => {
-                console.info('[permission]case grantUserGrantedPermission success:' + result);
-            }).catch((err) => {
-                console.info('[permission]case grantUserGrantedPermission failed:' + err);
-            });
-        } else {
-            console.info('[permission]case apply permission failed,createAtManager failed');
-        }
-    }
 
     /**
          * @tc.number    : TC_001
@@ -1231,7 +1215,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_171', 0, async function (done) {
-        let fdNumber = fileio.openSync(pathExifJpg1);
+        await getFd('test_exif1.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_171 create image source failed');
@@ -1264,7 +1248,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_171-1', 0, async function (done) {
-        let fdNumber = fileio.openSync(pathExifJpg);
+        await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_171-1 create image source failed');
@@ -1297,7 +1281,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_171-2', 0, async function (done) {
-        let fdNumber = fileio.openSync(pathExifJpg);
+        await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_171-2 create image source failed');
@@ -1330,7 +1314,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_171-3', 0, async function (done) {
-        let fdNumber = fileio.openSync(pathExifJpg);
+        await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_171-3 create image source failed');
@@ -1363,7 +1347,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_171-4', 0, async function (done) {
-        let fdNumber = fileio.openSync(pathExifJpg);
+        await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_171-4 create image source failed');
@@ -1396,7 +1380,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_171-5', 0, async function (done) {
-        let fdNumber = fileio.openSync(pathExifJpg);
+        await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_171-5 create image source failed');
@@ -1429,7 +1413,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_171-6', 0, async function (done) {
-        let fdNumber = fileio.openSync(pathExifJpg);
+        await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_171-6 create image source failed');
@@ -1462,7 +1446,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_171-7', 0, async function (done) {
-        let fdNumber = fileio.openSync(pathExifJpg);
+        await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_171-7 create image source failed');
@@ -1495,7 +1479,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_171-8', 0, async function (done) {
-        let fdNumber = fileio.openSync(pathExifJpg);
+        await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_171-8 create image source failed');
@@ -1527,7 +1511,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_172', 0, async function (done) {
-        let fdNumber = fileio.openSync(pathExifJpg1);
+        await getFd('test_exif1.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_172 create image source failed');
@@ -1559,7 +1543,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_172-1', 0, async function (done) {
-        let fdNumber = fileio.openSync(pathExifJpg);
+        await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_172-1 create image source failed');
@@ -1591,7 +1575,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_172-2', 0, async function (done) {
-        let fdNumber = fileio.openSync(pathExifJpg);
+        await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_172-2 create image source failed');
@@ -1623,7 +1607,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_172-3', 0, async function (done) {
-        let fdNumber = fileio.openSync(pathExifJpg);
+        await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_172-3 create image source failed');
@@ -1655,7 +1639,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_172-4', 0, async function (done) {
-        let fdNumber = fileio.openSync(pathExifJpg);
+        await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_172-4 create image source failed');
@@ -1687,7 +1671,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_172-5', 0, async function (done) {
-        let fdNumber = fileio.openSync(pathExifJpg);
+        await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_172-5 create image source failed');
@@ -1719,7 +1703,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_172-6', 0, async function (done) {
-        let fdNumber = fileio.openSync(pathExifJpg);
+        await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_172-6 create image source failed');
@@ -1751,7 +1735,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_172-7', 0, async function (done) {
-        let fdNumber = fileio.openSync(pathExifJpg);
+        await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_172-7 create image source failed');
@@ -1783,7 +1767,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_172-8', 0, async function (done) {
-        let fdNumber = fileio.openSync(pathExifJpg);
+        await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_172-8 create image source failed');
@@ -1816,7 +1800,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_173', 0, async function (done) {
-        let fdNumber = fileio.openSync(pathExifJpg1);
+        await getFd('test_exif1.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_173 create image source failed');
@@ -1850,7 +1834,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_173-1', 0, async function (done) {
-        let fdNumber = fileio.openSync(pathExifJpg);
+        await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_173-1 create image source failed');
@@ -1884,7 +1868,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_173-2', 0, async function (done) {
-        let fdNumber = fileio.openSync(pathExifJpg);
+        await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_173-2 create image source failed');
@@ -1918,7 +1902,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_173-3', 0, async function (done) {
-        let fdNumber = fileio.openSync(pathExifJpg);
+        await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_173-3 create image source failed');
@@ -1952,7 +1936,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_173-4', 0, async function (done) {
-        let fdNumber = fileio.openSync(pathExifJpg);
+        await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_173-4 create image source failed');
@@ -1986,7 +1970,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_173-5', 0, async function (done) {
-        let fdNumber = fileio.openSync(pathExifJpg);
+        await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_173-5 create image source failed');
@@ -2020,7 +2004,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_173-6', 0, async function (done) {
-        let fdNumber = fileio.openSync(pathExifJpg);
+        await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_173-6 create image source failed');
@@ -2054,7 +2038,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_173-7', 0, async function (done) {
-        let fdNumber = fileio.openSync(pathExifJpg);
+        await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_173-7 create image source failed');
@@ -2088,7 +2072,7 @@ describe('Image', function () {
      * @tc.level     : Level 1
      */
     it('TC_173-8', 0, async function (done) {
-        let fdNumber = fileio.openSync(pathExifJpg);
+        await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info('TC_173-8 create image source failed');

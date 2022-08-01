@@ -20,7 +20,6 @@ export default function Image() {
 describe('Image', function () {
 
     beforeAll(async function () {
-        await applyPermission();
         console.info('beforeAll case');
     })
 
@@ -36,36 +35,6 @@ describe('Image', function () {
     afterAll(function () {
         console.info('afterAll case');
     })
-
-    async function applyPermission() {
-        console.info('[permission]case applyPermission in');
-        let appInfo = await bundle.getApplicationInfo('ohos.acts.multimedia.image.YUV', 0, 100);
-        let atManager = abilityAccessCtrl.createAtManager();
-        if (atManager != null) {
-            let tokenID = appInfo.accessTokenId;
-            console.info('[permission]case accessTokenId is' + tokenID);
-            let permissionName1 = 'ohos.permission.MEDIA_LOCATION';
-            let permissionName2 = 'ohos.permission.READ_MEDIA';
-            let permissionName3 = 'ohos.permission.WRITE_MEDIA';
-            await atManager.grantUserGrantedPermission(tokenID, permissionName1).then((result) => {
-                console.info('[permission]case grantUserGrantedPermission success:' + result);
-            }).catch((err) => {
-                console.info('[permission]case grantUserGrantedPermission failed:' + err);
-            });
-            await atManager.grantUserGrantedPermission(tokenID, permissionName2).then((result) => {
-                console.info('[permission]case grantUserGrantedPermission success:' + result);
-            }).catch((err) => {
-                console.info('[permission]case grantUserGrantedPermission failed:' + err);
-            });
-            await atManager.grantUserGrantedPermission(tokenID, permissionName3).then((result) => {
-                console.info('[permission]case grantUserGrantedPermission success:' + result);
-            }).catch((err) => {
-                console.info('[permission]case grantUserGrantedPermission failed:' + err);
-            });
-        } else {
-            console.info('[permission]case apply permission failed,createAtManager failed');
-        }
-    }
 
     function createBuffer(height, width) {
         var ySize = height * width;
