@@ -23,7 +23,6 @@ group("ability_runtime") {
       "abilitymontior:AbilityMonitorTest",
       "abilitymultiinstance:abilitymultiinstance",
       "actsabilitydelegatorcase:ActsAbilityDelegatorCaseTest",
-      "actsabilitylifecyclestatenew:ActsAbilityLifecycleStateNewTest",
       "actsabilitymanageretstest:ActsAbilityManagerEtsTest",
       "actsabilityusertest:ActsAbilityuserTest",
       "actscalltest:actscalltest",
