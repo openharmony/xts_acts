@@ -4,8 +4,8 @@
         "type": "OHJSUnitTest",
         "test-timeout": "270000",
         "shell-timeout": "270000",
-        "bundle-name": "ohos.acts.hiviewdfx.hilog.function",
-        "package-name": "ohos.acts.hiviewdfx.hilog.function"
+        "bundle-name": "ohos.acts.hiviewdfx.hiappevent.function",
+        "package-name": "ohos.acts.hiviewdfx.hiappevent.function"
     },
     "kits": [
         {
