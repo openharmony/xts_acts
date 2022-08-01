@@ -220,12 +220,12 @@ describe('bluetoothhostTest', function() {
         let scanModeResult = bluetooth.getBluetoothScanMode();
         console.info('[bluetooth_js] get scan mode result2 = ' + JSON.stringify(scanModeResult));
         expect(scanModeResult).assertEqual(1);
-        expect(true).assertTrue(ScanMode.SCAN_MODE_NONE != scanMode);
-        expect(true).assertTrue(ScanMode.SCAN_MODE_CONNECTABLE != scanMode);
-        expect(true).assertTrue(ScanMode.SCAN_MODE_GENERAL_DISCOVERABLE != scanMode);
-        expect(true).assertTrue(ScanMode.SCAN_MODE_LIMITED_DISCOVERABLE != scanMode);
-        expect(true).assertTrue(ScanMode.SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE != scanMode);
-        expect(true).assertTrue(ScanMode.SCAN_MODE_CONNECTABLE_LIMITED_DISCOVERABLE != scanMode);
+        expect(true).assertTrue(ScanMode.SCAN_MODE_NONE != scanModeResult);
+        expect(true).assertTrue(ScanMode.SCAN_MODE_CONNECTABLE != scanModeResult);
+        expect(true).assertTrue(ScanMode.SCAN_MODE_GENERAL_DISCOVERABLE != scanModeResult);
+        expect(true).assertTrue(ScanMode.SCAN_MODE_LIMITED_DISCOVERABLE != scanModeResult);
+        expect(true).assertTrue(ScanMode.SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE != scanModeResult);
+        expect(true).assertTrue(ScanMode.SCAN_MODE_CONNECTABLE_LIMITED_DISCOVERABLE != scanModeResult);
         done();
     })
 

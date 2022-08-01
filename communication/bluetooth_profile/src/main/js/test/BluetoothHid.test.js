@@ -16,7 +16,7 @@
 import bluetooth from '@ohos.bluetooth';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
-let hidHostProfile = bluetooth.getProfile(6);
+let hidHostProfile = bluetooth.getProfileInst(6);
 
 function on(ON_VALUE_TEST_ELEMENT) {
     return new Promise((resolve, reject) => {
@@ -109,7 +109,7 @@ describe('bluetoothhostTest_host_2', function () {
     it('SUB_COMMUNACATION_bluetooth_DEVICE_JS_GET_PROFILE_LOOP_0001', 0, async function (done) {
         console.info('[bluetooth_js] loop get profile start');
         await tryToEnableBt();
-        let proFile = bluetooth.getProfile(6);
+        let proFile = bluetooth.getProfileInst(6);
         console.info('[bluetooth_js] loop get profile result:' + JSON.stringify(proFile));
         expect(proFile != null).assertEqual(true);
         done();
@@ -224,7 +224,6 @@ describe('bluetoothhostTest_host_2', function () {
         done();
     })
 
-})
 
 
     /**
@@ -238,7 +237,7 @@ describe('bluetoothhostTest_host_2', function () {
     it('SUB_COMMUNACATION_bluetoothble_PANProfile_Tethering_0001', 0, async function (done) {
         await tryToEnableBt();
         console.info('[bluetooth_js] tethering test start');
-        let panProfile = bluetooth.getProfile(bluetooth.ProfileId.PROFILE_PAN_NETWORK);
+        let panProfile = bluetooth.getProfileInst(bluetooth.ProfileId.PROFILE_PAN_NETWORK);
         let ret = panProfile.setTethering(false);
         console.info("[bluetooth_js] setTethering false result "+JSON.stringify(ret));
         let result = panProfile.isTetheringOn();
@@ -246,5 +245,5 @@ describe('bluetoothhostTest_host_2', function () {
         expect(result).assertFalse();
         done();
         })
-
+    })
 }
