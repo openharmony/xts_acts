@@ -14,7 +14,7 @@
 */
 
 import file from '@system.file';
-import { describe, it, expect } from 'hypium/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import dataShare from '@ohos.data.dataShare'
 import dataSharePredicates from '@ohos.data.dataSharePredicates'
 import DataShareResultSet from '@ohos.data.DataShareResultSet'
@@ -22,62 +22,53 @@ import DataShareResultSet from '@ohos.data.DataShareResultSet'
 //insert公共方法
 function publicinsert(helper, uri, DataShareValuesBucket) {
   return new Promise(function (resolve, reject) {
-    helper.insert(uri, DataShareValuesBucket, (err, data) => {
+    helper.insert(uri, DataShareValuesBucket).then((data) => {
       console.info("[ttt] [TestDataShare]  publicinsert Callback=" + JSON.stringify(data));
       globalThis.insertdata = data;
-      if (err) {
-        console.info("test insert err information: " + JSON.stringify(err));
-        reject(err);
-      } else {
-        resolve(data);
-      }
+      resolve(data);
+    }).catch((err) => {
+      console.info("test insert err information: " + JSON.stringify(err));
+      reject(err);
     })
   })
 }
 
 //delete公共方法
-async function publicdelete(helper, uri, DataSharePredicates) {
+function publicdelete(helper, uri, DataSharePredicates) {
   return new Promise(function (resolve, reject) {
-    console.info("[ttt] [DataShareTest] <<XTS>> 12345648564185645314");
-    helper.delete(uri, DataSharePredicates, (err, data) => {
-      console.info("[ttt] [TestDataShare] publicdelete Callback=" + JSON.stringify(data));
-      if (err) {
-        console.info("test delete err information: " + JSON.stringify(err));
-        reject(err);
-      } else {
-        resolve(data);
-      }
+    helper.delete(uri, DataSharePredicates).then((data) => {
+      console.info("[ttt] [TestDataShare]  publicdelete Callback=" + JSON.stringify(data));
+      resolve(data);
+    }).catch((err) => {
+      console.info("test delete err information: " + JSON.stringify(err));
+      reject(err);
     })
   })
 }
 
 //query公共方法
-function publicquery(helper, uri, DataSharePredicates, columns) {
+function publicquery(helper, uri, columns, DataSharePredicates) {
   return new Promise(function (resolve, reject) {
-    helper.query(uri, DataSharePredicates, columns, (err, data) => {
+    helper.query(uri, columns, DataSharePredicates).then((data) => {
       console.info("[ttt] [TestDataShare]  publicquery Callback=" + JSON.stringify(data));
       globalThis.ResultSet = data;
-      if (err) {
-        console.info("test query err information: " + JSON.stringify(err));
-        reject(err);
-      } else {
-        resolve(data);
-      }
+      resolve(data);
+    }).catch((err) => {
+      console.info("test query err information: " + JSON.stringify(err));
+      reject(err);
     })
   })
 }
 
 //update公共方法
-function publicupdate(helper, uri, DataSharePredicates, DataShareValuesBucket) {
+function publicupdate(helper, uri, DataShareValuesBucket, DataSharePredicates) {
   return new Promise(function (resolve, reject) {
-    helper.update(uri, DataSharePredicates, DataShareValuesBucket, (err, data) => {
+    helper.update(uri, DataShareValuesBucket, DataSharePredicates).then((data) => {
       console.info("[ttt] [TestDataShare]  publicupdate Callback=" + JSON.stringify(data));
-      if (err) {
-        console.info("test update err information: " + JSON.stringify(err));
-        reject(err);
-      } else {
-        resolve(data);
-      }
+      resolve(data);
+    }).catch((err) => {
+      console.info("test update err information: " + JSON.stringify(err));
+      reject(err);
     })
   })
 }
@@ -85,14 +76,12 @@ function publicupdate(helper, uri, DataSharePredicates, DataShareValuesBucket) {
 //batchInsert公共方法
 function publicbatchInsert(helper, uri, DataShareValuesBucket) {
   return new Promise(function (resolve, reject) {
-    helper.batchInsert(uri, DataShareValuesBucket, (err, data) => {
+    helper.batchInsert(uri, DataShareValuesBucket).then((data) => {
       console.info("[ttt] [TestDataShare]  publicbatchInsert Callback=" + JSON.stringify(data));
-      if (err) {
-        console.info("test batchInsert err information: " + JSON.stringify(err));
-        reject(err);
-      } else {
-        resolve(data);
-      }
+      resolve(data);
+    }).catch((err) => {
+      console.info("test batchInsert err information: " + JSON.stringify(err));
+      reject(err);
     })
   })
 }
@@ -100,14 +89,12 @@ function publicbatchInsert(helper, uri, DataShareValuesBucket) {
 //getType公共方法
 function publicgetType(helper, uri) {
   return new Promise(function (resolve, reject) {
-    helper.getType(uri, (err, data) => {
+    helper.getType(uri).then((data) => {
       console.info("[ttt] [TestDataShare]  publicgetType Callback=" + JSON.stringify(data));
-      if (err) {
-        console.info("test getType err information: " + JSON.stringify(err));
-        reject(err);
-      } else {
-        resolve(data);
-      }
+      resolve(data);
+    }).catch((err) => {
+      console.info("test getType err information: " + JSON.stringify(err));
+      reject(err);
     })
   })
 }
@@ -115,14 +102,12 @@ function publicgetType(helper, uri) {
 //getFileTypes公共方法
 function publicgetFileTypes(helper, uri, mimeTypeFilter) {
   return new Promise(function (resolve, reject) {
-    helper.getFileTypes(uri, mimeTypeFilter, (err, data) => {
+    helper.getFileTypes(uri, mimeTypeFilter).then((data) => {
       console.info("[ttt] [TestDataShare]  publicgetFileTypes Callback=" + JSON.stringify(data));
-      if (err) {
-        console.info("test getFileTypes err information: " + JSON.stringify(err));
-        reject(err);
-      } else {
-        resolve(data);
-      }
+      resolve(data);
+    }).catch((err) => {
+      console.info("test getFileTypes err information: " + JSON.stringify(err));
+      reject(err);
     })
   })
 }
@@ -130,14 +115,12 @@ function publicgetFileTypes(helper, uri, mimeTypeFilter) {
 //normalizeUri公共方法
 function publicnormalizeUri(helper, uri) {
   return new Promise(function (resolve, reject) {
-    helper.normalizeUri(uri, (err, data) => {
+    helper.normalizeUri(uri).then((data) => {
       console.info("[ttt] [TestDataShare]  publicnormalizeUri Callback=" + JSON.stringify(data));
-      if (err) {
-        console.info("test normalizeUri err information: " + JSON.stringify(err));
-        reject(err);
-      } else {
-        resolve(data);
-      }
+      resolve(data);
+    }).catch((err) => {
+      console.info("test normalizeUri err information: " + JSON.stringify(err));
+      reject(err);
     })
   })
 }
@@ -145,14 +128,12 @@ function publicnormalizeUri(helper, uri) {
 //denormalizeUri公共方法
 function publicdenormalizeUri(helper, uri) {
   return new Promise(function (resolve, reject) {
-    helper.denormalizeUri(uri, (err, data) => {
+    helper.denormalizeUri(uri).then((data) => {
       console.info("[ttt] [TestDataShare]  publicdenormalizeUri Callback=" + JSON.stringify(data));
-      if (err) {
-        console.info("test denormalizeUri err information: " + JSON.stringify(err));
-        reject(err);
-      } else {
-        resolve(data);
-      }
+      resolve(data);
+    }).catch((err) => {
+      console.info("test denormalizeUri err information: " + JSON.stringify(err));
+      reject(err);
     })
   })
 }
@@ -160,14 +141,12 @@ function publicdenormalizeUri(helper, uri) {
 //denormalizeUri公共方法
 function publicopenFile(helper, uri, mode) {
   return new Promise(function (resolve, reject) {
-    helper.denormalizeUri(uri, mode, (err, data) => {
+    helper.openFile(uri, mode).then((data) => {
       console.info("[ttt] [TestDataShare]  publicopenFile Callback=" + JSON.stringify(data));
-      if (err) {
-        console.info("test openFile err information: " + JSON.stringify(err));
-        reject(err);
-      } else {
-        resolve(data);
-      }
+      resolve(data);
+    }).catch((err) => {
+      console.info("test openFile err information: " + JSON.stringify(err));
+      reject(err);
     })
   })
 }
