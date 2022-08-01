@@ -36,7 +36,7 @@ export default class Hap1MainAbility2 extends Ability {
         // Main window is created, set main page for this ability
         console.log("[Demo] Hap1MainAbility2 onWindowStageCreate")
 
-        windowStage.setUIContent(this.context, "pages/indexh1a2", null)
+        windowStage.setUIContent(this.context, "MainAbility/pages/indexh1a2", null)
     }
 
     onWindowStageDestroy() {

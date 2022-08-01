@@ -28,7 +28,7 @@ export default class MainAbility6 extends Ability {
         // Main window is created, set main page for this ability
         console.log("[Demo] MainAbility6 onWindowStageCreate")
         globalThis.ability6 = this.context;
-        windowStage.setUIContent(this.context, "pages/index6", null)
+        windowStage.setUIContent(this.context, "MainAbility/pages/index6", null)
     }
 
     onWindowStageDestroy() {
