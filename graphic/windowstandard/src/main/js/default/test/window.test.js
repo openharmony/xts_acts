@@ -1851,7 +1851,7 @@ describe('window_test', function () {
                 done();
             }, (err) => {
                 console.log('windowTest resetSizeTest3 wnd.resetSize failed, err :' + JSON.stringify(err));
-                expect().assertFail();
+                expect(err.code).assertEqual(130);
                 done();
             })
         }, (err) => {
@@ -1877,7 +1877,7 @@ describe('window_test', function () {
                 done();
             }, (err) => {
                 console.log('windowTest resetSizeTest4 wnd.resetSize failed, err :' + JSON.stringify(err));
-                expect().assertFail();
+                expect(err.code).assertEqual(130);
                 done();
             })
         }, (err) => {
@@ -1901,13 +1901,13 @@ describe('window_test', function () {
                 wnd.resetSize(100, 100).then(() => {
                     console.log('windowTest resetSizeTest5 wnd.resetSize(100, 100) success, count:"%d\n"', i);
                     expect(TRUE_WINDOW).assertTrue();
+                    done();
                 },(err) => {
                     console.log('windowTest resetSizeTest5 wnd.resetSize failed, err :' + JSON.stringify(err));
-                    expect().assertFail();
+                    expect(err.code).assertEqual(130);
+                    done();
                 })
             }
-            console.log('windowTest resetSizeTest5 end');
-            done();
         }, (err) => {
             console.log('windowTest resetSizeTest5 getTopWindow failed, err :' + JSON.stringify(err));
             expect().assertFail();
@@ -1957,14 +1957,13 @@ describe('window_test', function () {
                 wnd.resetSize(width, height).then(() => {
                     console.log('windowTest  resetSizeTestLoop success');
                     expect(TRUE_WINDOW).assertTrue();
+                    done();
                 },(err) => {
                     console.log('windowTest resetSizeLoop resetSize failed, err :' + JSON.stringify(err));
-                    expect().assertFail();
+                    expect(err.code).assertEqual(130);
                     done();
                 })
             }
-            console.log('windowTest resetSizeLoop end');
-            done();
         },(err) => {
             console.log('windowTest resetSizeLoop getTopWindow failed, err :' + JSON.stringify(err));
             expect().assertFail();
