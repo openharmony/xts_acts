@@ -12,14 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import commonEvent from '@ohos.commonEvent';
 import AbilityConstant from "@ohos.application.AbilityConstant";
 import appManager from "@ohos.application.appManager";
 import wantConstant from '@ohos.ability.wantConstant';
 
 var TAG
-export default function verificationTest(abilityContext){
+export default function verificationTest(){
 
   describe('VerificationTestTest', function() {
 
@@ -62,7 +62,7 @@ export default function verificationTest(abilityContext){
           bundleName: 'ohos.acts.aafwk.test.fasupplement',
           abilityName: 'ohos.acts.aafwk.test.fasupplement.MainAbility'
         }
-        abilityContext.startAbility(wantNum).then((data) => {
+        globalThis.abilityContext.startAbility(wantNum).then((data) => {
           console.info(TAG + "startAbility data = " + JSON.stringify(data));
         }).catch((err) => {
           console.info(TAG + "startAbility err = " + JSON.stringify(err));
@@ -125,7 +125,7 @@ export default function verificationTest(abilityContext){
           bundleName: 'ohos.acts.aafwk.test.stagesupplement',
           abilityName: 'MainAbility3'
         }
-        abilityContext.startAbility(wantNum).then((data) => {
+        globalThis.abilityContext.startAbility(wantNum).then((data) => {
           console.info(TAG + "startAbility data = " + JSON.stringify(data));
         }).catch((err) => {
           console.info(TAG + "startAbility err = " + JSON.stringify(err));
@@ -202,7 +202,7 @@ export default function verificationTest(abilityContext){
           bundleName: 'ohos.acts.aafwk.test.stagesupplement',
           abilityName: 'MainAbility4'
         }
-        abilityContext.startAbility(wantNum).then((data) => {
+        globalThis.abilityContext.startAbility(wantNum).then((data) => {
           console.info(TAG + "startAbility data = " + JSON.stringify(data));
         }).catch((err) => {
           console.info(TAG + "startAbility err = " + JSON.stringify(err));
@@ -258,7 +258,7 @@ export default function verificationTest(abilityContext){
           bundleName: 'ohos.acts.aafwk.test.fasupplement',
           abilityName: 'ohos.acts.aafwk.test.fasupplement.MainAbility2'
         }
-        abilityContext.startAbility(wantNum).then((data) => {
+        globalThis.abilityContext.startAbility(wantNum).then((data) => {
           console.info(TAG + "startAbility data = " + JSON.stringify(data));
         }).catch((err) => {
           console.info(TAG + "startAbility err = " + JSON.stringify(err));
@@ -285,14 +285,14 @@ export default function verificationTest(abilityContext){
         let label = undefined
         let code1 = 0
         let code2 = 0
-        abilityContext.setMissionLabel(label).then((data) => {
+        globalThis.abilityContext.setMissionLabel(label).then((data) => {
           console.info(TAG + "setMissionLabel data = " + JSON.stringify(data));
         }).catch((err) => {
           code1 = err.code
           console.info(TAG + "setMissionLabel err = " + JSON.stringify(err));
         });
 
-        abilityContext.setMissionLabel(label, (err, data) => {
+        globalThis.abilityContext.setMissionLabel(label, (err, data) => {
           code2 = err.code
           console.info(TAG + "setMissionLabel err = " + JSON.stringify(err));
           console.info(TAG + "setMissionLabel data = " + JSON.stringify(data));
@@ -352,7 +352,7 @@ export default function verificationTest(abilityContext){
           bundleName: 'ohos.acts.aafwk.test.stagesupplement',
           abilityName: 'MainAbility5'
         }
-        abilityContext.startAbility(wantNum).then((data) => {
+        globalThis.abilityContext.startAbility(wantNum).then((data) => {
           console.info(TAG + "startAbility data = " + JSON.stringify(data));
         }).catch((err) => {
           console.info(TAG + "startAbility err = " + JSON.stringify(err));
@@ -415,8 +415,8 @@ export default function verificationTest(abilityContext){
           bundleName: 'ohos.acts.aafwk.test.stagesupplement',
           abilityName: 'MainAbility9'
         }
-        abilityContext.startAbility(wantNum).then((data) => {
-          value = abilityContext.restoreWindowStage(undefined);
+        globalThis.abilityContext.startAbility(wantNum).then((data) => {
+          value = globalThis.abilityContext.restoreWindowStage(undefined);
           console.info(TAG + "startAbility data = " + JSON.stringify(data) + ";" + JSON.stringify(data));
         }).catch((err) => {
           console.info(TAG + "startAbility err = " + JSON.stringify(err));
@@ -475,7 +475,7 @@ export default function verificationTest(abilityContext){
           bundleName: 'ohos.acts.aafwk.test.stagesupplement',
           abilityName: 'MainAbility10'
         }
-        abilityContext.startAbility(wantNum).then((data) => {
+        globalThis.abilityContext.startAbility(wantNum).then((data) => {
           console.info(TAG + "startAbility data = " + JSON.stringify(data));
         }).catch((err) => {
           console.info(TAG + "startAbility err = " + JSON.stringify(err));
