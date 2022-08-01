@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 // @ts-nocheck
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import commonEvent from '@ohos.commonEvent';
 
 var subscriberInfo = {
@@ -21,7 +21,7 @@ var subscriberInfo = {
 };
 
 
-export default function abilityTest(abilityContext) {
+export default function abilityTest() {
     describe('ActsAbilityMultiTest', function () {
 
         /**
@@ -35,7 +35,7 @@ export default function abilityTest(abilityContext) {
             var EntryHap = false;
             var FeatureHap = false;
 
-            abilityContext.startAbility({
+            globalThis.abilityContext.startAbility({
                 bundleName: "com.example.staticinformationmultihappackage",
                 abilityName: "com.example.staticinformationmultihappackage.MainAbility",
                 action:"startHapA"

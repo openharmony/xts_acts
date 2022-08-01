@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import commonEvent from '@ohos.commonEvent'
 
 
@@ -24,7 +24,7 @@ var subscriberInfo_MainAbility_ability_0300 = {
     events: ["MainAbility_Start_CommonEvent_ability_0300","SecondAbility_Start_CommonEvent_ability_0300"],
 };
 
-export default function abilityTest(abilityContext) {
+export default function abilityTest() {
     describe('ActsStaticInfoMationQueryTest', function () {
         /**
          * @tc.number: ACTS_getAbilityInfo_0100
@@ -33,8 +33,8 @@ export default function abilityTest(abilityContext) {
          *           information is the same as that in the configuration file.
          */
         it('ACTS_getAbilityInfo_0100', 0, async function (done) {
-            console.log("ACTS_getAbilityInfo_0100 --- start ability=====>'+ abilityContext.abilityInfo")
-            checkAbilityInfo(abilityContext.abilityInfo);
+            console.log("ACTS_getAbilityInfo_0100 --- start ability=====>'+ globalThis.abilityContext.abilityInfo")
+            checkAbilityInfo(globalThis.abilityContext.abilityInfo);
             done();
         })
 
@@ -45,8 +45,8 @@ export default function abilityTest(abilityContext) {
          *           information is the same as that in the configuration file.
          */
         it('ACTS_getApplicationInfo_0100', 0, async function (done) {
-            console.log("ACTS_getApplicationInfo_0100 --- start ability=====>'+ abilityContext.applicationInfo")
-            checkApplicationInfo(abilityContext.applicationInfo);
+            console.log("ACTS_getApplicationInfo_0100 --- start ability=====>'+ globalThis.abilityContext.applicationInfo")
+            checkApplicationInfo(globalThis.abilityContext.applicationInfo);
             done();
         })
 
@@ -57,8 +57,8 @@ export default function abilityTest(abilityContext) {
          *           information is the same as that in the configuration file.
          */
         it('ACTS_getHapModuleInfo_0100', 0, async function (done) {
-            console.log("ACTS_getHapModuleInfo_0100 --- start ability=====>'+ abilityContext.currentHapModuleInfo")
-            checkHapModuleInfo(abilityContext.currentHapModuleInfo);
+            console.log("ACTS_getHapModuleInfo_0100 --- start ability=====>'+ globalThis.abilityContext.currentHapModuleInfo")
+            checkHapModuleInfo(globalThis.abilityContext.currentHapModuleInfo);
             done();
         })
 
@@ -108,10 +108,10 @@ export default function abilityTest(abilityContext) {
                 Subscriber.getSubscribeInfo().then((data)=>{
                     console.log('ACTS_getAbilityInfo_0200 - Subscriber: ' + JSON.stringify(data))
                 })
-                abilityContext.startAbility({
+                globalThis.abilityContext.startAbility({
                     bundleName: "com.example.staticquerytesttwo",
                     abilityName: "com.example.staticquerytesttwo.MainAbility",
-                    action:"getAbilityContext"
+                    action:"getglobalThis.abilityContext"
                 }, (error, data) => {
                     console.log('ACTS_getAbilityInfo_0200_startMainAbility: ' + JSON.stringify(error) +
                     ", " + JSON.stringify(data))

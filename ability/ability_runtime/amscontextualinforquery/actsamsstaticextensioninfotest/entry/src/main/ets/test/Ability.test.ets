@@ -14,7 +14,7 @@
  */
 
 import commonEvent from "@ohos.commonEvent"
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 
 const START_ABILITY_TIMEOUT = 5000;
 var subscriberInfoStartAbility_0100 = {
@@ -24,7 +24,7 @@ var subscriberInfoStartAbility_0200 = {
   events: ["ACTS_ConnectAbility_0200_CommonEvent"],
 };
 
-export default function abilityTest(abilityContext) {
+export default function abilityTest() {
 
   describe('ActsExtensionAbilityTest', function () {
 
@@ -56,7 +56,7 @@ export default function abilityTest(abilityContext) {
         console.debug("====>ACTS_getExtensionInfo_0100_Create Subscriber====>");
         subscriber = data;
         await commonEvent.subscribe(subscriber, subscribeCallBack);
-        connId = await abilityContext.connectAbility(
+        connId = await globalThis.abilityContext.connectAbility(
           {
             bundleName: "com.example.staticextensioninfo",
             abilityName: "com.example.staticextensioninfo.ServiceAbility",
@@ -238,7 +238,7 @@ export default function abilityTest(abilityContext) {
         console.debug("====>ACTS_getExtensionInfo_0200_Create Subscriber====>");
         subscriber = data;
         await commonEvent.subscribe(subscriber, subscribeCallBack);
-        connId = await abilityContext.connectAbility(
+        connId = await globalThis.abilityContext.connectAbility(
           {
             bundleName: "com.example.staticextensioninfotest",
             abilityName: "com.example.staticextensioninfotest.ServiceAbility",
@@ -418,7 +418,7 @@ export default function abilityTest(abilityContext) {
         console.debug("====>ACTS_getExtensionInfo_0300_Create Subscriber====>");
         subscriber = data;
         await commonEvent.subscribe(subscriber, subscribeCallBack);
-              connId = await abilityContext.connectAbility(
+              connId = await globalThis.abilityContext.connectAbility(
         {
           bundleName: "com.example.extensionmodule",
           abilityName: "ServiceExtAbility",
@@ -433,7 +433,7 @@ export default function abilityTest(abilityContext) {
 
       function timeout() {
         expect().assertFail();
-        abilityContext.disconnectAbility(
+        globalThis.abilityContext.disconnectAbility(
           connId,
           (error, data) => {
             console.log('DisconnectAbility_0300 result errCode : ' + error.code + " data: " + data)
