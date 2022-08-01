@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import appManager from '@ohos.application.appManager';
 import osaccount from '@ohos.account.osAccount'
 
@@ -24,7 +24,7 @@ const SETVALUE = 3000;
 const SETVALUECOPY = 1500;
 const SLEEPVALUE = 500;
 
-export default function killProcessWithAccountTest(abilityContext) {
+export default function killProcessWithAccountTest() {
   describe('Acts_killProcessWithAccountTest', function () {
     var ACCOUNT_ID;
     var flag = false;
@@ -47,7 +47,7 @@ export default function killProcessWithAccountTest(abilityContext) {
       console.log('======>beforeEach  killProcessWithAccountTest<=======');
       if(flag == false){
         setTimeout(()=>{
-          abilityContext.startAbilityWithAccount(
+          globalThis.abilityContext.startAbilityWithAccount(
             {
               bundleName: 'com.acts.killprocesswithaccountpackage',
               abilityName: 'com.acts.killprocesswithaccountpackage.MainAbility'
@@ -61,7 +61,7 @@ export default function killProcessWithAccountTest(abilityContext) {
           })
         },1000)
       }else{
-        abilityContext.startAbilityWithAccount(
+        globalThis.abilityContext.startAbilityWithAccount(
           {
             bundleName: 'com.acts.killprocesswithaccountpackage',
             abilityName: 'com.acts.killprocesswithaccountpackage.MainAbility'
