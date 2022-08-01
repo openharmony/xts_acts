@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 // @ts-nocheck
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "hypium/index"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import ohosWindow from '@ohos.window';
 import screenManager from '@ohos.screen';
 import display from '@ohos.display';
@@ -1349,6 +1349,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
       console.log(msgStr + 'done ');
       done();
+  })
     /**
     * @tc.number     SUB_WINDOW_SETPREFERREDORIENTATION_JSAPI_001
     * @tc.name       Test setPreferredOrientation
@@ -1403,5 +1404,4 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'done ');
       done();
     })
-  })
 }

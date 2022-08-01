@@ -18,7 +18,7 @@ export default class MainAbility extends Ability {
         globalThis.windowStage = windowStage
         globalThis.abilityStorage = this.storage
         globalThis.abilityContext = this.context
-        windowStage.setUIContent(this.context, "pages/index/index", null)
+        windowStage.setUIContent(this.context, "MainAbility/pages/index/index", null)
     }
 
     onWindowStageDestroy() {
