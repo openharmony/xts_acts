@@ -640,7 +640,7 @@
  
          expect(obj.$type).assertEqual('dialog')
          expect(obj.$attrs.id).assertEqual('dragableNone')
-         expect(obj.$attrs.dragable).assertEqual(undefined)
+         expect(obj.$attrs.dragable).assertEqual('false')
          console.info("[dialogProps] get dragable value is: " + JSON.stringify(obj.$attrs.dragable));
          done();
      });
