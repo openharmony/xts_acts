@@ -43,12 +43,15 @@ describe('Image', function () {
     })
 
     beforeEach(function () {
-       
         console.info('beforeEach case');
     })
 
-    afterEach(function () {
-        await fileio.close(fdNumber);
+    afterEach(async function () {
+        await fileio.close(fdNumber).then(function(){
+            console.info("close file succeed");
+        }).catch(function(err){
+            console.info("close file failed with error:"+ err);
+        });
         console.info('afterEach case');
     })
 

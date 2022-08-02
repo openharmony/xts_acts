@@ -50,7 +50,11 @@ describe('Image', function () {
         if (globalpixelmap != undefined) {
             await globalpixelmap.release();
         }
-        await fileio.close(fdNumber);
+        await fileio.close(fdNumber).then(function(){
+            console.info("close file succeed");
+        }).catch(function(err){
+            console.info("close file failed with error:"+ err);
+        });
         console.info('afterEach case');
     })
 
