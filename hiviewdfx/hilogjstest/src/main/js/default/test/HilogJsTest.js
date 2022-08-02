@@ -118,7 +118,7 @@ describe('HilogJsTest', function () {
      */
     it('testHilogJsApi06', 2, function () {
         console.info('testHilogJsApi06 start');
-        const res = hilog.isLoggable(0xD001400, "HILOGTEST", 3);
+        const res = hilog.isLoggable(0xD001400, "HILOGTEST", hilog.LogLevel.DEBUG);
         expect(res).assertEqual(true);
         console.info('testHilogJsApi06 end');
     })
@@ -130,7 +130,7 @@ describe('HilogJsTest', function () {
      */
     it('testHilogJsApi07', 2, function () {
         console.info('testHilogJsApi07 start');
-        const res = hilog.isLoggable(0xD001400, "HILOGTEST", 3);
+        const res = hilog.isLoggable(0xD001400, "HILOGTEST", hilog.LogLevel.DEBUG);
         var tag = "";
         for (var i = 0; i < 1000; i++){
             tag += "HILOGTEST"
@@ -146,7 +146,7 @@ describe('HilogJsTest', function () {
      */
     it('testHilogJsApi08', 2, function () {
         console.info('testHilogJsApi08 start');
-        const res = hilog.isLoggable(0xD001400, "", 3);
+        const res = hilog.isLoggable(0xD001400, "", hilog.LogLevel.DEBUG);
         expect(res).assertEqual(true);
         console.info('testHilogJsApi08 end');
     })
@@ -158,7 +158,7 @@ describe('HilogJsTest', function () {
      */
     it('testHilogJsApi09', 2, function () {
         console.info('testHilogJsApi09 start');
-        const res = hilog.isLoggable(0xD001400, "HILOGTEST", 6);
+        const res = hilog.isLoggable(0xD001400, "HILOGTEST", hilog.LogLevel.ERROR);
         expect(res).assertEqual(true);
         console.info('testHilogJsApi09 end');
     })
@@ -170,7 +170,7 @@ describe('HilogJsTest', function () {
      */
     it('testHilogJsApi10', 2, function () {
         console.info('testHilogJsApi10 start');
-        const res = hilog.isLoggable(0xD001400, "HILOGTEST", 7);
+        const res = hilog.isLoggable(0xD001400, "HILOGTEST", hilog.LogLevel.FATAL);
         expect(res).assertEqual(true);
         console.info('testHilogJsApi10 end');
     })
@@ -182,7 +182,7 @@ describe('HilogJsTest', function () {
      */
     it('testHilogJsApi11', 2, function () {
         console.info('testHilogJsApi11 start');
-        const res = hilog.isLoggable(0xD001400, "HILOGTEST", 4);
+        const res = hilog.isLoggable(0xD001400, "HILOGTEST", hilog.LogLevel.INFO);
         expect(res).assertEqual(true);
         console.info('testHilogJsApi11 end');
     })
@@ -194,7 +194,7 @@ describe('HilogJsTest', function () {
      */
     it('testHilogJsApi12', 2, function () {
         console.info('testHilogJsApi12 start');
-        const res = hilog.isLoggable(0xD001400, "HILOGTEST", 5);
+        const res = hilog.isLoggable(0xD001400, "HILOGTEST", hilog.LogLevel.WARN);
         expect(res).assertEqual(true);
         console.info('testHilogJsApi12 end');
     })
@@ -218,7 +218,7 @@ describe('HilogJsTest', function () {
      */
     it('testHilogJsApi14', 2, function () {
         console.info('testHilogJsApi14 start');
-        const res = hilog.isLoggable(0, "HILOGTEST", 5);
+        const res = hilog.isLoggable(0, "HILOGTEST", hilog.LogLevel.WARN);
         expect(res).assertEqual(true);
         console.info('testHilogJsApi14 end');
     })
@@ -230,7 +230,7 @@ describe('HilogJsTest', function () {
      */
     it('testHilogJsApi15', 2, function () {
         console.info('testHilogJsApi15 start');
-        const res = hilog.isLoggable(0xFFFFFFF, "HILOGTEST", 5);
+        const res = hilog.isLoggable(0xFFFFFFF, "HILOGTEST", hilog.LogLevel.WARN);
         expect(res).assertEqual(true);
         console.info('testHilogJsApi15 end');
     })
