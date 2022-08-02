@@ -69,8 +69,8 @@ let WifiChannelWidth = {
     WIDTH_INVALID : null,
 }
 
-export default function ACTS_WifiTest() {
-describe('ACTS_WifiTest', function() {
+export default function ActsWifiTest() {
+describe('ActsWifiTest', function() {
 
     beforeEach(function() {
         checkWifiPowerOn();

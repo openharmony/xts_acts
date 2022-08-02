@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
 import wifi from '@ohos.wifi'
 
@@ -33,8 +33,8 @@ let GroupOwnerBand = {
     GO_BAND_2GHZ : 1,
     GO_BAND_5GHZ : 2,
 }
-
-describe('ACTS_WifiTest', function () {
+export default function ActsWifiTest() {
+describe('ActsWifiTest', function () {
     beforeEach(function () {
         console.info("beforeEach start");
         checkWifiPowerOn();
@@ -506,3 +506,4 @@ describe('ACTS_WifiTest', function () {
 
     console.log("*************[wifi_test] start wifi js unit test end*************");
 })
+}
