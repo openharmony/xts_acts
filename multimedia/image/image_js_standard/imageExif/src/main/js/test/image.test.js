@@ -50,6 +50,7 @@ describe('Image', function () {
         if (globalpixelmap != undefined) {
             await globalpixelmap.release();
         }
+        await fileio.close(fdNumber);
         console.info('afterEach case');
     })
 

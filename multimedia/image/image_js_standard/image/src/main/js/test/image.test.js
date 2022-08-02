@@ -56,6 +56,7 @@ export default function Image_test() {
                     console.info('globalpixelmap release fail');
                 }
             }
+            await fileio.close(fdNumber);
             console.info('afterEach case');
         })
 

@@ -48,6 +48,7 @@ describe('Image', function () {
     })
 
     afterEach(function () {
+        await fileio.close(fdNumber);
         console.info('afterEach case');
     })
 

@@ -57,6 +57,7 @@ export default function Image_test() {
                     console.info('globalpixelmap release fail');
                 }
             }
+            await fileio.close(fdNumber);
             console.info('afterEach case');
         })
 
@@ -734,11 +735,12 @@ export default function Image_test() {
                     };
                     imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                         globalpixelmap = pixelmap;
-                        if (pixelmap == undefined) {
+                        if (err){
                             console.info('TC_050-3 success ');
+                            console.info('TC_050-3 createPixelMap error '+ JSON.stringify(err));
                             expect(true).assertTrue();
                             done();
-                        } else {
+                        }else {
                             console.info('TC_050-3 fail  ' + pixelmap);
                             expect(false).assertTrue();
                             done();
@@ -783,12 +785,13 @@ export default function Image_test() {
                     };
                     imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                         globalpixelmap = pixelmap;
-                        if (pixelmap == undefined) {
+                        if (err){
                             console.info('TC_050-4 success ');
+                            console.info('TC_050-4 createPixelMap error '+ JSON.stringify(err));
                             expect(true).assertTrue();
                             done();
-                        } else {
-                            console.info('TC_050-4 fail ' + pixelmap);
+                        }else {
+                            console.info('TC_050-4 fail  ' + pixelmap);
                             expect(false).assertTrue();
                             done();
                         }
@@ -831,13 +834,14 @@ export default function Image_test() {
                         index: 0
                     };
                     imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
-                        globalpixelmap = pixelmap;
-                        if (pixelmap == undefined) {
+                        globalpixelmap = pixelmap; done();
+                        if (err){
                             console.info('TC_050-5 success ');
+                            console.info('TC_050-5 createPixelMap error '+ JSON.stringify(err));
                             expect(true).assertTrue();
                             done();
-                        } else {
-                            console.info('TC_050-5 fail ' + pixelmap);
+                        }else {
+                            console.info('TC_050-5 fail  ' + pixelmap);
                             expect(false).assertTrue();
                             done();
                         }
@@ -881,12 +885,13 @@ export default function Image_test() {
                     };
                     imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                         globalpixelmap = pixelmap;
-                        if (pixelmap == undefined) {
+                        if (err){
                             console.info('TC_050-6 success ');
+                            console.info('TC_050-6 createPixelMap error '+ JSON.stringify(err));
                             expect(true).assertTrue();
                             done();
-                        } else {
-                            console.info('TC_050-6 fail ' + pixelmap);
+                        }else {
+                            console.info('TC_050-6 fail  ' + pixelmap);
                             expect(false).assertTrue();
                             done();
                         }
@@ -930,11 +935,13 @@ export default function Image_test() {
                     };
                     imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                         globalpixelmap = pixelmap;
-                        if (pixelmap == undefined) {
+                        if (err){
                             console.info('TC_050-7 success ');
+                            console.info('TC_050-7 createPixelMap error '+ JSON.stringify(err));
                             expect(true).assertTrue();
                             done();
-                        } else {
+                        }else {
+                            console.info('TC_050-7 fail  ' + pixelmap);
                             expect(false).assertTrue();
                             done();
                         }
@@ -1131,12 +1138,13 @@ export default function Image_test() {
                     };
                     imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                         globalpixelmap = pixelmap;
-                        if (pixelmap == undefined) {
+                        if (err){
                             console.info('TC_050-11 success ');
+                            console.info('TC_050-11 createPixelMap error '+ JSON.stringify(err));
                             expect(true).assertTrue();
                             done();
-                        } else {
-                            console.info('TC_050-11 createPixelMap fail ' + pixelmap);
+                        }else {
+                            console.info('TC_050-11 fail  ' + pixelmap);
                             expect(false).assertTrue();
                             done();
                         }
@@ -1180,12 +1188,13 @@ export default function Image_test() {
                     };
                     imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                         globalpixelmap = pixelmap;
-                        if (pixelmap == undefined) {
+                        if (err){
                             console.info('TC_050-12 success ');
+                            console.info('TC_050-12 createPixelMap error '+ JSON.stringify(err));
                             expect(true).assertTrue();
                             done();
-                        } else {
-                            console.info('TC_050-12 fail ' + pixelmap);
+                        }else {
+                            console.info('TC_050-12 fail  ' + pixelmap);
                             expect(false).assertTrue();
                             done();
                         }
@@ -1229,12 +1238,13 @@ export default function Image_test() {
                     };
                     imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                         globalpixelmap = pixelmap;
-                        if (pixelmap == undefined) {
+                        if (err){
                             console.info('TC_050-13 success ');
+                            console.info('TC_050-13 createPixelMap error '+ JSON.stringify(err));
                             expect(true).assertTrue();
                             done();
-                        } else {
-                            console.info('TC_050-13 fail ' + pixelmap);
+                        }else {
+                            console.info('TC_050-13 fail  ' + pixelmap);
                             expect(false).assertTrue();
                             done();
                         }
@@ -1518,12 +1528,13 @@ export default function Image_test() {
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     globalpixelmap = pixelmap;
-                    if (pixelmap == undefined) {
+                    if (err){
                         console.info('TC_067-4 success ');
+                        console.info('TC_067-4 createPixelMap error '+ JSON.stringify(err));
                         expect(true).assertTrue();
                         done();
-                    } else {
-                        console.info('TC_067-4 fail ' + pixelmap);
+                    }else {
+                        console.info('TC_067-4 fail  ' + pixelmap);
                         expect(false).assertTrue();
                         done();
                     }
@@ -1561,12 +1572,13 @@ export default function Image_test() {
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     globalpixelmap = pixelmap;
-                    if (pixelmap == undefined) {
+                    if (err){
                         console.info('TC_067-5 success ');
+                        console.info('TC_067-5 createPixelMap error '+ JSON.stringify(err));
                         expect(true).assertTrue();
                         done();
-                    } else {
-                        console.info('TC_067-5 fail ' + pixelmap);
+                    }else {
+                        console.info('TC_067-5 fail  ' + pixelmap);
                         expect(false).assertTrue();
                         done();
                     }
@@ -1604,12 +1616,13 @@ export default function Image_test() {
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     globalpixelmap = pixelmap;
-                    if (pixelmap == undefined) {
+                    if (err){
                         console.info('TC_067-6 success ');
+                        console.info('TC_067-6 createPixelMap error '+ JSON.stringify(err));
                         expect(true).assertTrue();
                         done();
-                    } else {
-                        console.info('TC_067-6 fail ' + pixelmap);
+                    }else {
+                        console.info('TC_067-6 fail  ' + pixelmap);
                         expect(false).assertTrue();
                         done();
                     }
@@ -1647,12 +1660,13 @@ export default function Image_test() {
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     globalpixelmap = pixelmap;
-                    if (pixelmap == undefined) {
+                    if (err){
                         console.info('TC_067-7 success ');
+                        console.info('TC_067-7 createPixelMap error '+ JSON.stringify(err));
                         expect(true).assertTrue();
                         done();
-                    } else {
-                        console.info('TC_067-7 fail ' + pixelmap);
+                    }else {
+                        console.info('TC_067-7 fail  ' + pixelmap);
                         expect(false).assertTrue();
                         done();
                     }
@@ -1824,12 +1838,13 @@ export default function Image_test() {
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     globalpixelmap = pixelmap;
-                    if (pixelmap == undefined) {
+                    if (err){
                         console.info('TC_067-11 success ');
+                        console.info('TC_067-11createPixelMap error '+ JSON.stringify(err));
                         expect(true).assertTrue();
                         done();
-                    } else {
-                        console.info('TC_067-11 fail ' + pixelmap);
+                    }else {
+                        console.info('TC_067-11 fail  ' + pixelmap);
                         expect(false).assertTrue();
                         done();
                     }
@@ -1867,12 +1882,13 @@ export default function Image_test() {
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     globalpixelmap = pixelmap;
-                    if (pixelmap == undefined) {
+                    if (err){
                         console.info('TC_067-12 success ');
+                        console.info('TC_067-12 createPixelMap error '+ JSON.stringify(err));
                         expect(true).assertTrue();
                         done();
-                    } else {
-                        console.info('TC_067-12 fail ' + pixelmap);
+                    }else {
+                        console.info('TC_067-12 fail  ' + pixelmap);
                         expect(false).assertTrue();
                         done();
                     }
@@ -1910,12 +1926,13 @@ export default function Image_test() {
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     globalpixelmap = pixelmap;
-                    if (pixelmap == undefined) {
+                    if (err){
                         console.info('TC_067-13 success ');
+                        console.info('TC_067-13 createPixelMap error '+ JSON.stringify(err));
                         expect(true).assertTrue();
                         done();
-                    } else {
-                        console.info('TC_067-13 fail ' + pixelmap);
+                    }else {
+                        console.info('TC_067-13 fail  ' + pixelmap);
                         expect(false).assertTrue();
                         done();
                     }
@@ -2142,12 +2159,13 @@ export default function Image_test() {
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     globalpixelmap = pixelmap;
-                    if (pixelmap == undefined) {
+                    if (err){
                         console.info('TC_068-3 success ');
+                        console.info('TC_068-3 createPixelMap error '+ JSON.stringify(err));
                         expect(true).assertTrue();
                         done();
-                    } else {
-                        console.info('TC_068-3 fail ' + pixelmap);
+                    }else {
+                        console.info('TC_068-3 fail  ' + pixelmap);
                         expect(false).assertTrue();
                         done();
                     }
@@ -2185,12 +2203,13 @@ export default function Image_test() {
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     globalpixelmap = pixelmap;
-                    if (pixelmap == undefined) {
+                    if (err){
                         console.info('TC_068-4 success ');
+                        console.info('TC_068-4 createPixelMap error '+ JSON.stringify(err));
                         expect(true).assertTrue();
                         done();
-                    } else {
-                        console.info('TC_068-4 fail ' + pixelmap);
+                    }else {
+                        console.info('TC_068-4 fail  ' + pixelmap);
                         expect(false).assertTrue();
                         done();
                     }
@@ -2228,12 +2247,13 @@ export default function Image_test() {
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     globalpixelmap = pixelmap;
-                    if (pixelmap == undefined) {
+                    if (err){
                         console.info('TC_068-5 success ');
+                        console.info('TC_068-5 createPixelMap error '+ JSON.stringify(err));
                         expect(true).assertTrue();
                         done();
-                    } else {
-                        console.info('TC_068-5 fail ' + pixelmap);
+                    }else {
+                        console.info('TC_068-5 fail  ' + pixelmap);
                         expect(false).assertTrue();
                         done();
                     }
@@ -2271,12 +2291,13 @@ export default function Image_test() {
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     globalpixelmap = pixelmap;
-                    if (pixelmap == undefined) {
+                    if (err){
                         console.info('TC_068-6 success ');
+                        console.info('TC_068-6 createPixelMap error '+ JSON.stringify(err));
                         expect(true).assertTrue();
                         done();
-                    } else {
-                        console.info('TC_068-6 fail ' + pixelmap);
+                    }else {
+                        console.info('TC_068-6 fail  ' + pixelmap);
                         expect(false).assertTrue();
                         done();
                     }
@@ -2314,12 +2335,13 @@ export default function Image_test() {
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     globalpixelmap = pixelmap;
-                    if (pixelmap == undefined) {
+                    if (err){
                         console.info('TC_068-7 success ');
+                        console.info('TC_068-7 createPixelMap error '+ JSON.stringify(err));
                         expect(true).assertTrue();
                         done();
-                    } else {
-                        console.info('TC_068-7 fail ' + pixelmap);
+                    }else {
+                        console.info('TC_068-7 fail  ' + pixelmap);
                         expect(false).assertTrue();
                         done();
                     }
@@ -2493,12 +2515,13 @@ export default function Image_test() {
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     globalpixelmap = pixelmap;
-                    if (pixelmap == undefined) {
+                    if (err){
                         console.info('TC_068-11 success ');
+                        console.info('TC_068-11 createPixelMap error '+ JSON.stringify(err));
                         expect(true).assertTrue();
                         done();
-                    } else {
-                        console.info('TC_068-11 fail ' + pixelmap);
+                    }else {
+                        console.info('TC_068-11 fail  ' + pixelmap);
                         expect(false).assertTrue();
                         done();
                     }
@@ -2536,12 +2559,13 @@ export default function Image_test() {
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     globalpixelmap = pixelmap;
-                    if (pixelmap == undefined) {
+                    if (err){
                         console.info('TC_068-12 success ');
+                        console.info('TC_068-12 createPixelMap error '+ JSON.stringify(err));
                         expect(true).assertTrue();
                         done();
-                    } else {
-                        console.info('TC_068-12 fail ' + pixelmap);
+                    }else {
+                        console.info('TC_068-12 fail  ' + pixelmap);
                         expect(false).assertTrue();
                         done();
                     }
@@ -2578,12 +2602,13 @@ export default function Image_test() {
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     globalpixelmap = pixelmap;
-                    if (pixelmap == undefined) {
+                    if (err){
                         console.info('TC_068-13 success ');
+                        console.info('TC_068-13 createPixelMap error '+ JSON.stringify(err));
                         expect(true).assertTrue();
                         done();
-                    } else {
-                        console.info('TC_068-13 fail ' + pixelmap);
+                    }else {
+                        console.info('TC_068-13 fail  ' + pixelmap);
                         expect(false).assertTrue();
                         done();
                     }
@@ -2747,12 +2772,13 @@ export default function Image_test() {
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     globalpixelmap = pixelmap;
-                    if (pixelmap == undefined) {
+                    if (err){
                         console.info('TC_163-3 success ');
+                        console.info('TC_163-3 createPixelMap error '+ JSON.stringify(err));
                         expect(true).assertTrue();
                         done();
-                    } else {
-                        console.info('TC_163-3 fail ' + pixelmap);
+                    }else {
+                        console.info('TC_163-3 fail  ' + pixelmap);
                         expect(false).assertTrue();
                         done();
                     }
@@ -2791,12 +2817,13 @@ export default function Image_test() {
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     globalpixelmap = pixelmap;
-                    if (pixelmap == undefined) {
+                    if (err){
                         console.info('TC_163-4 success ');
+                        console.info('TC_163-4 createPixelMap error '+ JSON.stringify(err));
                         expect(true).assertTrue();
                         done();
-                    } else {
-                        console.info('TC_163-4 fail ' + pixelmap);
+                    }else {
+                        console.info('TC_163-4 fail  ' + pixelmap);
                         expect(false).assertTrue();
                         done();
                     }
@@ -2835,12 +2862,13 @@ export default function Image_test() {
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     globalpixelmap = pixelmap;
-                    if (pixelmap == undefined) {
+                    if (err){
                         console.info('TC_163-5 success ');
+                        console.info('TC_163-5 createPixelMap error '+ JSON.stringify(err));
                         expect(true).assertTrue();
                         done();
-                    } else {
-                        console.info('TC_163-5 fail ' + pixelmap);
+                    }else {
+                        console.info('TC_163-5 fail  ' + pixelmap);
                         expect(false).assertTrue();
                         done();
                     }
@@ -2879,12 +2907,13 @@ export default function Image_test() {
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     globalpixelmap = pixelmap;
-                    if (pixelmap == undefined) {
+                    if (err){
                         console.info('TC_163-6 success ');
+                        console.info('TC_163-6 createPixelMap error '+ JSON.stringify(err));
                         expect(true).assertTrue();
                         done();
-                    } else {
-                        console.info('TC_163-6 fail ' + pixelmap);
+                    }else {
+                        console.info('TC_163-6 fail  ' + pixelmap);
                         expect(false).assertTrue();
                         done();
                     }
@@ -2923,12 +2952,13 @@ export default function Image_test() {
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     globalpixelmap = pixelmap;
-                    if (pixelmap == undefined) {
+                    if (err){
                         console.info('TC_163-7 success ');
+                        console.info('TC_163-7 createPixelMap error '+ JSON.stringify(err));
                         expect(true).assertTrue();
                         done();
-                    } else {
-                        console.info('TC_163-7 fail ' + pixelmap);
+                    }else {
+                        console.info('TC_163-7 fail  ' + pixelmap);
                         expect(false).assertTrue();
                         done();
                     }
@@ -3106,12 +3136,13 @@ export default function Image_test() {
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     globalpixelmap = pixelmap;
-                    if (pixelmap == undefined) {
+                    if (err){
                         console.info('TC_163-11 success ');
+                        console.info('TC_163-11 createPixelMap error '+ JSON.stringify(err));
                         expect(true).assertTrue();
                         done();
-                    } else {
-                        console.info('TC_163-11 fail ' + pixelmap);
+                    }else {
+                        console.info('TC_163-11 fail  ' + pixelmap);
                         expect(false).assertTrue();
                         done();
                     }
@@ -3150,12 +3181,13 @@ export default function Image_test() {
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     globalpixelmap = pixelmap;
-                    if (pixelmap == undefined) {
+                    if (err){
                         console.info('TC_163-12 success ');
+                        console.info('TC_163-12 createPixelMap error '+ JSON.stringify(err));
                         expect(true).assertTrue();
                         done();
-                    } else {
-                        console.info('TC_163-12 fail ' + pixelmap);
+                    }else {
+                        console.info('TC_163-12 fail  ' + pixelmap);
                         expect(false).assertTrue();
                         done();
                     }
@@ -3192,12 +3224,13 @@ export default function Image_test() {
                 };
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     globalpixelmap = pixelmap;
-                    if (pixelmap == undefined) {
+                    if (err){
                         console.info('TC_163-13 success ');
+                        console.info('TC_163-13 createPixelMap error '+ JSON.stringify(err));
                         expect(true).assertTrue();
                         done();
-                    } else {
-                        console.info('TC_163-13 fail ' + pixelmap);
+                    }else {
+                        console.info('TC_163-13 fail  ' + pixelmap);
                         expect(false).assertTrue();
                         done();
                     }
@@ -3230,9 +3263,16 @@ export default function Image_test() {
             };
             imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                 globalpixelmap = pixelmap;
-                console.info('TC_167 success ');
-                expect(pixelmap == undefined).assertTrue();
-                done();
+                if (err){
+                    console.info('TC_167 success ');
+                    console.info('TC_167 createPixelMap error '+ JSON.stringify(err));
+                    expect(pixelmap == undefined).assertTrue();
+                    done();
+                }else {
+                    console.info('TC_167 fail  ' + pixelmap);
+                    expect(false).assertTrue();
+                    done();
+                }
 
             })
         })
