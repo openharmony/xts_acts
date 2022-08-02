@@ -14,10 +14,11 @@
  */
 import featureAbility from '@ohos.ability.featureAbility'
 import commonEvent from '@ohos.commonEvent'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+
 
 const errCode = 1;
-
+export default function ActsStServiceAbilityTest() {
 describe('ActsStServiceAbilityTest', function () {
     let bundleName = "com.amsst.stserviceabilityserver";
     let abilityName = "com.amsst.stserviceabilityserver.ServiceAbility";
@@ -270,6 +271,7 @@ it("ACTS_AAbilityStartSettingNew_0500",0, async function(done){
         console.log('ACTS_AJsServiceAbility_0600====<begin');
         try {
             var mConnIdJsAsyncCallback;
+            var currentAlertTimeout;
             commonEvent.createSubscriber(CommonEventSubscribeInfo0600).then(async (data) => {
                 console.debug("=ACTS_AJsServiceAbility_0600 createSubscriber .then(data)=======>"
                     + ("json data【") + JSON.stringify(data) + (" 】")
@@ -430,3 +432,4 @@ it("ACTS_AAbilityStartSettingNew_0500",0, async function(done){
         }
     })
 })
+}

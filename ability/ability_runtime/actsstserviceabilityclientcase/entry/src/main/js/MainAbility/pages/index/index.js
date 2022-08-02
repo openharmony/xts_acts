@@ -12,10 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import file from '@system.file'
-import app from '@system.app'
-import {Core, ExpectExtend, ReportExtend} from 'deccjsunit/index'
-
+const injectRef = Object.getPrototypeOf(global) || global
+injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')
 export default {
     data: {
         title: ""
@@ -24,21 +22,9 @@ export default {
         this.title = this.$t('strings.world');
     },
     onShow() {
-        console.info('====onShow finish====<')
-        const core = Core.getInstance()
-        const expectExtend = new ExpectExtend({
-            'id': 'extend'
-        })
-        const reportExtend = new ReportExtend(file)
-        core.addService('expect', expectExtend)
-        core.addService('report', reportExtend)
-        core.init()
-        const configService = core.getDefaultService('config')
-        configService.setConfig(this)
-
-        require('../../../test/List.test')
-        core.execute()
+        console.info('====onShow start====<')
     },
     onReady() {
+        console.info('onReady');
     },
 }
