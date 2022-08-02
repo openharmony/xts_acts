@@ -33,7 +33,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
     const DELTA_SEEK_TIME = 100;
     let surfaceID = '';
     let fdHead = 'fd://';
-    let fileDescriptor = undefined;
+    let fileDescriptor = null;
     const pagePath1 = 'pages/surfaceTest/surfaceTest';
     const pagePath2 = 'pages/surfaceTest2/surfaceTest2';
     let pageId = 0;
@@ -113,7 +113,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
-            if (typeof (video) != 'undefined') {
+            if (video != null) {
                 console.info('case createVideoPlayer success');
                 videoPlayer = video;
                 expect(videoPlayer.state).assertEqual('idle');
@@ -145,7 +145,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
-            if (typeof (video) != 'undefined') {
+            if (video != null) {
                 videoPlayer = video;
                 expect(videoPlayer.state).assertEqual('idle');
             } else {
@@ -202,7 +202,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
-            if (typeof (video) != 'undefined') {
+            if (video != null) {
                 videoPlayer = video;
                 expect(videoPlayer.state).assertEqual('idle');
             } else {
@@ -301,7 +301,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         let widthValue = -1;
         let heightValue = -1;
         await media.createVideoPlayer().then((video) => {
-            if (typeof (video) != 'undefined') {
+            if (video != null) {
                 videoPlayer = video;
                 expect(videoPlayer.state).assertEqual('idle');
             } else {
@@ -373,7 +373,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         let videoPlayer = null;
         let bufferCount = false;
         await media.createVideoPlayer().then((video) => {
-            if (typeof (video) != 'undefined') {
+            if (video != null) {
                 videoPlayer = video;
                 expect(videoPlayer.state).assertEqual('idle');
             } else {
@@ -453,7 +453,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
-            if (typeof (video) != 'undefined') {
+            if (video != null) {
                 console.info('case createVideoPlayer success');
                 videoPlayer = video;
                 expect(videoPlayer.state).assertEqual('idle');
@@ -565,7 +565,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
-            if (typeof (video) != 'undefined') {
+            if (video != null) {
                 console.info('case createVideoPlayer success');
                 videoPlayer = video;
                 expect(videoPlayer.state).assertEqual('idle');
@@ -698,7 +698,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         let bufferCount = false;
         let count = 0;
         await media.createVideoPlayer().then((video) => {
-            if (typeof (video) != 'undefined') {
+            if (video != null) {
                 videoPlayer = video;
                 expect(videoPlayer.state).assertEqual('idle');
             } else {
@@ -782,7 +782,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
         let videoPlayer = null;
         let errorCount = 0;
         await media.createVideoPlayer().then((video) => {
-            if (typeof (video) != 'undefined') {
+            if (video != null) {
                 videoPlayer = video;
                 expect(videoPlayer.state).assertEqual('idle');
             } else {

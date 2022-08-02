@@ -79,11 +79,11 @@ describe('PlayerLocalTestAudioFormat', function () {
             console.info('case reset success');
             expect(audioPlayer.state).assertEqual('idle');
             audioPlayer.release();
-            audioPlayer = undefined;
+            audioPlayer = null;
             done();
         });
         audioPlayer.on('timeUpdate', (seekDoneTime) => {
-            if (typeof (seekDoneTime) == "undefined") {
+            if (seekDoneTime == null) {
                 console.info(`case seek filed,errcode is ${seekDoneTime}`);
                 audioPlayer.release();
                 expect().assertFail();

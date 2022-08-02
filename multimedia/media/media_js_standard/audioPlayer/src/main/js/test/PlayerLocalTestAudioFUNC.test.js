@@ -84,12 +84,12 @@ describe('PlayerLocalTestAudioFUNC', function () {
     }
 
     function initAudioPlayer() {
-        if (typeof (audioPlayer) != 'undefined') {
+        if (audioPlayer != null) {
             audioPlayer.release();
-            audioPlayer = undefined;
+            audioPlayer = null;
         }
         audioPlayer = media.createAudioPlayer();
-        if (typeof (audioPlayer) == 'undefined') {
+        if (audioPlayer == null) {
             console.info('case create player is faild');
             expect().assertFail();
         }
@@ -194,7 +194,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
             console.info(`case dataLoad called`);
             expect(audioPlayer.currentTime).assertEqual(0);
             expect(audioPlayer.duration).assertEqual(DURATION_TIME);
-            expect(audioPlayer.state).assertEqual('idle');
+            expect(audioPlayer.state).assertEqual('paused');
             nextStep(mySteps, done);
         });
         audioPlayer.on('play', () => {
@@ -342,7 +342,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
 
         testAudioPlayer.on('dataLoad', () => {
             expect(testAudioPlayer.duration).assertEqual(DURATION_TIME);
-            expect(testAudioPlayer.state).assertEqual('idle');
+            expect(testAudioPlayer.state).assertEqual('paused');
             testAudioPlayer.play();
         });
         testAudioPlayer.on('play', () => {
@@ -402,6 +402,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
             expect(bufferFlag).assertEqual(true);
             expect(testAudioPlayer.state).assertEqual('idle');
             testAudioPlayer.release();
+            testAudioPlayer = null;
             done();
         });
         testAudioPlayer.src = fdPath;
