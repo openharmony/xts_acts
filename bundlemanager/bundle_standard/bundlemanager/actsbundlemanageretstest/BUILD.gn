@@ -23,6 +23,8 @@ ohos_js_hap_suite("ActsBundleManagerEtsTest") {
   ets2abc = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsBundleManagerEtsTest"
+  subsystem_name = "bundlemanager"
+  part_name = "bundle_framework"
 }
 ohos_js_assets("hjs_demo_ets_assets") {
   source_dir = "./entry/src/main/ets/MainAbility"

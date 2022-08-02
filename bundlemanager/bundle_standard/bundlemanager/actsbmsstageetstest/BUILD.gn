@@ -22,6 +22,8 @@ ohos_js_hap_suite("ActBmsStageEtsTest") {
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActBmsStageEtsTest"
+  subsystem_name = "bundlemanager"
+  part_name = "bundle_framework"
 }
 
 ohos_app_scope("actbmsstageetstest_app_profile") {

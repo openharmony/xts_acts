@@ -16,7 +16,8 @@ import("//test/xts/tools/build/suite.gni")
 ohos_hap("bmsStageDemo1") {
   hap_profile = "entry/src/main/module.json"
   hap_name = "bmsStageDemo1"
-  subsystem_name = XTS_SUITENAME
+  subsystem_name = "bundlemanager"
+  part_name = "bundle_framework"
   final_hap_path =
       "${SUITES_OUTPUT_ROOT}/${XTS_SUITENAME}/testcases/${hap_name}.hap"
   testonly = true
