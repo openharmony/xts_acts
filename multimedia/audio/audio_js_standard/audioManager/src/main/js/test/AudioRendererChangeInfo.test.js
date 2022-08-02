@@ -1576,7 +1576,7 @@ describe('audioRendererChange', function () {
 					console.info(Tag+'C'+i+':'+AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]);
 					console.info(Tag+'CM:'+i+':'+AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks);
 				}
-                if (clientUid != undefined &&  renFlags == 1 && devDescriptor != null) {
+                if (clientUid != undefined &&  renFlags == 0 && devDescriptor != null) {
                     resultFlag = true;
 					console.info(Tag+'[RENDERER-CHANGE-ON-017] ClientUid for '+i+' is:'+AudioRendererChangeInfoArray[i].clientUid);
 					console.info(Tag+'[RENDERER-CHANGE-ON-017] Flag '+i+' is:'+AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags);
