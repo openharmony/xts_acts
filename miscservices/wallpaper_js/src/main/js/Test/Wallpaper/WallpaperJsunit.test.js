@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
-import wallpaper from '@ohos.app.wallpaperability'
+import wallpaper from '@ohos.wallpaper'
 
 const WALLPAPER_SYSTEM = 0;
 const WALLPAPER_LOCKSCREEN = 1;
@@ -44,8 +44,8 @@ describe('WallpaperJsunitTest', function () {
      * @tc.level   0
      */
     it('testWALLPAPER_SYSTEM', 0, async function (done) {
-        console.info('wallpaperXTS ===> testWALLPAPER_SYSTEM : ' + JSON.stringify(wallpaper.WALLPAPER_SYSTEM));
-        expect(wallpaper.WALLPAPER_SYSTEM == 0).assertTrue();
+        console.info('testWALLPAPER_SYSTEM: ' + JSON.stringify(wallpaper.WallpaperType.WALLPAPER_SYSTEM));
+        expect(wallpaper.WallpaperType.WALLPAPER_SYSTEM == 0).assertTrue();
         done();
     })
 
@@ -56,8 +56,8 @@ describe('WallpaperJsunitTest', function () {
      * @tc.level   0
      */
     it('testWALLPAPER_LOCKSCREEN', 0, async function (done) {
-        console.info('wallpaperXTS ===> testWALLPAPER_LOCKSCREEN : ' + JSON.stringify(wallpaper.WALLPAPER_LOCKSCREEN));
-        expect(wallpaper.WALLPAPER_LOCKSCREEN == 1).assertTrue();
+        console.info('testWALLPAPER_LOCKSCREEN: ' + JSON.stringify(wallpaper.WallpaperType.WALLPAPER_LOCKSCREEN));
+        expect(wallpaper.WallpaperType.WALLPAPER_LOCKSCREEN == 1).assertTrue();
         done();
     })
 
@@ -71,10 +71,10 @@ describe('WallpaperJsunitTest', function () {
         await wallpaper.getColors(WALLPAPER_SYSTEM, function (err, data) {
             console.info('wallpaperXTS ===> testGetColorsCallbackSystem err : ' + JSON.stringify(err));
             console.info('wallpaperXTS ===> testGetColorsCallbackSystem data : ' + JSON.stringify(data));
-            expect(data[0].red != -1).assertTrue();
-            expect(data[0].green != -1).assertTrue();
-            expect(data[0].blue != -1).assertTrue();
-            expect(data[0].alpha != -1).assertTrue();
+            console.info('wallpaperXTS ===> testGetColorsCallbackSystem data : ' + data[0][0]);
+            console.info('wallpaperXTS ===> testGetColorsCallbackSystem data : ' + data[0][1]);
+            console.info('wallpaperXTS ===> testGetColorsCallbackSystem data : ' + data[0][2]);
+            console.info('wallpaperXTS ===> testGetColorsCallbackSystem data : ' + data[0][3]);
             if (err) {
                 expect(null).assertFail();
             }
