@@ -13,8 +13,8 @@
     limitations under the License.
 -->
 
-<div class="container" onswipe="touchMove">
+<div class="container">
     <text class="title">
-        {{ $t('strings.hello') }} {{title}}
+        {{ $t('strings.hello') }} {{ title }}
     </text>
 </div>

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 import util from '@ohos.util'
 import url from '@ohos.url'
 import app from '@system.app'
@@ -45,7 +45,7 @@ var rangeFir = new util.Scope(tempMiDF, tempMidS);
 var rangeSec = new util.Scope(tempLess, tempMore);
 var rangeThi = new util.Scope(tempLess, tempMiDF);
 var rangeFif = new util.Scope(tempMiDF, tempMore);
-
+export default function UtilFunTest() {
 describe('TextEncoderTest', function () {
 
     /**
@@ -175,17 +175,17 @@ describe('TextEncoderTest', function () {
      * @tc.author: shikai
      */
     it('testUtilPromisify_new_001', 0, async function () {
-        function aysnFun(str, callback) {
-            if (typeof str === 'string') {
-                callback(null, str);
+        function fn(val, callback) {
+            if (typeof val === 'string') {
+                callback(null, val);
             } else {
                 callback('type err');
             }
         }
-        let newPromiseObj = util.promisify(aysnFun);
-        newPromiseObj("Hello").then(res => {
-            expect(res).strictEqual('Hello');
-        })
+        (async () => {
+            const value = await util.promisify(fn);
+            expect(value(null, "Hello")).strictEqual('Hello');
+        })();
     })
 
     /**
@@ -195,17 +195,17 @@ describe('TextEncoderTest', function () {
      * @tc.author: shikai
      */
     it('testUtilPromisify_new_002', 0, async function () {
-        function aysnFun(str, callback) {
+        function fn(str, callback) {
             if (typeof str === 'string') {
                 callback(null, str);
             } else {
                 callback('type err');
             }
         }
-        let newPromiseObj = util.promisify(aysnFun);
-        newPromiseObj([1, 2]).catch(err => {
-            expect(err).strictEqual('type err');
-        })
+        (async () => {
+            const value = await util.promisify(fn);
+            expect(value(null, [1, 2])).strictEqual('type err');
+        })();
     })
 
     /**
@@ -231,17 +231,17 @@ describe('TextEncoderTest', function () {
      * @tc.author: shikai
      */
     it('testUtilPromisify_new_004', 0, async function () {
-        function aysnFun(str1, str2, callback) {
-            if (typeof str1 === 'string' && typeof str1 === 'string') {
-                callback(null, str1 + str2);
+        function fn(val, callback) {
+            if (typeof val === 'boolen') {
+                callback(null, val);
             } else {
                 callback('type err');
             }
         }
-        let newPromiseObj = util.promisify(aysnFun);
-        newPromiseObj("Hello", 'World').then(res => {
-            expect(res).strictEqual('HelloWorld');
-        })
+        (async () => {
+            const value = await util.promisify(fn);
+            expect(value(null, true)).strictEqual(true);
+        })();
     })
 
     /**
@@ -251,19 +251,19 @@ describe('TextEncoderTest', function () {
      * @tc.author: shikai
      */
     it('testUtilPromisify_new_005', 0, async function () {
-        function aysnFun(str1, str2, callback) {
-            if (typeof str1 === 'string' && typeof str1 === 'string') {
-                callback(null, str1 + str2);
+        function fn(val, callback) {
+            if (typeof val === 'number') {
+                callback(null, val);
             } else {
                 callback('type err');
             }
         }
-        let newPromiseObj = util.promisify(aysnFun);
-        newPromiseObj([1, 2], 'World').catch(err => {
-            expect(err).strictEqual('type err');
-        })
+        (async () => {
+            const value = await util.promisify(fn);
+            expect(value(null, 100)).strictEqual(100);
+        })();
     })
-
+    
     /**
      * @tc.name: testUtilPromiseWrapper001
      * @tc.desc: Takes a function following the common error-first callback style,
@@ -311,18 +311,6 @@ describe('TextEncoderTest', function () {
      * @tc.author: shikai
      */
     it('testUtilPromiseWrapper003', 0, async function () {
-        const a = util.promiseWrapper(function() {});
-        const b = util.promiseWrapper(a);
-        expect(a).strictEqual(b);
-    })
-
-    /**
-     * @tc.name: testUtilPromiseWrapper004
-     * @tc.desc: Takes a function following the common error-first callback style,
-       taking an callback as the last argument, and return a version that returns promises.
-     * @tc.author: shikai
-     */
-    it('testUtilPromiseWrapper004', 0, async function () {
         let errToThrow;
         const thrower = util.promiseWrapper(function(a, b, c, cb) {
             errToThrow = new Error();
@@ -334,12 +322,12 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.name: testUtilPromiseWrapper005
+     * @tc.name: testUtilPromiseWrapper004
      * @tc.desc: Takes a function following the common error-first callback style,
        taking an callback as the last argument, and return a version that returns promises.
      * @tc.author: shikai
      */
-    it('testUtilPromiseWrapper005', 0, async function () {
+    it('testUtilPromiseWrapper004', 0, async function () {
         const err = new Error();
         const a = util.promiseWrapper((cb) => cb(err))();
         const b = util.promiseWrapper(() => {throw err;})();
@@ -354,12 +342,12 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.name: testUtilPromiseWrapper006
+     * @tc.name: testUtilPromiseWrapper005
      * @tc.desc: Takes a function following the common error-first callback style,
        taking an callback as the last argument, and return a version that returns promises.
      * @tc.author: shikai
      */
-    it('testUtilPromiseWrapper006', 0, async function () {
+    it('testUtilPromiseWrapper005', 0, async function () {
         const err = new Error('callback with the error.');
         const stack = err.stack;
         const fn = util.promiseWrapper(function(cb) {
@@ -374,12 +362,12 @@ describe('TextEncoderTest', function () {
     })
 
     /**
-     * @tc.name: testUtilPromiseWrapper007
+     * @tc.name: testUtilPromiseWrapper006
      * @tc.desc: Takes a function following the common error-first callback style,
        taking an callback as the last argument, and return a version that returns promises.
      * @tc.author: shikai
      */
-    it('testUtilPromiseWrapper007', 0, async function () {
+    it('testUtilPromiseWrapper006', 0, async function () {
         function fn(err, val, callback) {
             callback(err, val);
         }
@@ -400,7 +388,7 @@ describe('TextEncoderTest', function () {
         try {
             util.callbackWrapper(promiseFn);
         } catch(e) {
-            expect(e.message).strictEqual('original is not function');
+            expect(e.message).assertEqual('original is not function');
         }
     })
 
@@ -415,10 +403,12 @@ describe('TextEncoderTest', function () {
             return Promise.resolve('value');
         }
         var cb = util.callbackWrapper(promiseFn);
-        cb((err, ret) => {
-            expect(err).strictEqual(null);
-            expect(ret).strictEqual('value');
-        })
+        (async () => {
+            cb((err, ret) => {
+                expect(err).assertEqual(null);
+                expect(ret).assertEqual('value');
+            })
+        })();
     })
 
     /**
@@ -432,10 +422,12 @@ describe('TextEncoderTest', function () {
             return 42;
         }
         var cb = util.callbackWrapper(promiseFn);
-        cb((err, ret) => {
-            expect(err).strictEqual(null);
-            expect(ret).strictEqual(42);
-        })
+        (async () => {
+            cb((err, ret) => {
+                expect(err).assertEqual(null);
+                expect(ret).assertEqual(42);
+            })
+        })();
     })
 
     /**
@@ -450,10 +442,12 @@ describe('TextEncoderTest', function () {
             return Promise.reject(err);
         }
         var cb = util.callbackWrapper(promiseFn);
-        cb((err, ret) => {
-            expect(err.message).strictEqual('value');
-            expect(ret).strictEqual(undefined);
-        })
+        (async () => {
+            cb((err, ret) => {
+                expect(err.message).strictEqual('value');
+                expect(ret).assertEqual(undefined);
+            })
+        })();
     })
 
     /**
@@ -467,10 +461,12 @@ describe('TextEncoderTest', function () {
             return a + b;
         }
         var cb = util.callbackWrapper(promiseFn);
-        cb(1, 2, (err, ret) => {
-            expect(err).strictEqual(null);
-            expect(ret).strictEqual(3);
-        })
+        (async () => {
+            cb(1, 2, (err, ret) => {
+                expect(err).assertEqual(null);
+                expect(ret).assertEqual(3);
+            })
+        })();
     })
 
     /**
@@ -485,9 +481,11 @@ describe('TextEncoderTest', function () {
         }
         var cb = util.callbackWrapper(promiseFn);
         try {
-            cb([1, 2])
+            (async () => {
+                cb([1, 2])
+            })();
         } catch(err) {
-            expect(err.message).strictEqual('maybe is not function');
+            expect(err.message).assertEqual('maybe is not function');
         }
     })
 
@@ -7009,3 +7007,4 @@ describe('TypesTest', function() {
         expect(result).assertEqual(false);
     })
 })
+}
