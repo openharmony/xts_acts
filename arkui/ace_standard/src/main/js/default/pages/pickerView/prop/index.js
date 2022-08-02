@@ -130,7 +130,7 @@ export default {
         this.showPropNone = this.$element("showPropNone").getInspector()
         this.pickerViewText = this.$element("pickerViewText").getInspector()
         this.pickerViewDate = this.$element("pickerViewDate").getInspector()
-        this.pickerViewTime = this.$element("pickerViewViewTime").getInspector()
+        this.pickerViewTime = this.$element("pickerViewTime").getInspector()
         this.pickerViewDatetime = this.$element("pickerViewDatetime").getInspector()
         this.pickerViewMultiText = this.$element("pickerViewMultiText").getInspector()
     }
