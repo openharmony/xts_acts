@@ -23,6 +23,8 @@ ohos_js_hap_suite("ActsBundleNativeTest") {
   ets2abc = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsBundleNativeTest"
+  subsystem_name = "bundlemanager"
+  part_name = "bundle_framework"
   shared_libraries = [
     "./entry/src/main/cpp:bundlendk",
     ":libcppsharedso",

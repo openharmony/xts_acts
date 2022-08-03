@@ -12,18 +12,17 @@
 # limitations under the License.
 import("//test/xts/tools/build/suite.gni")
 
-ohos_hap("bmsAccessTokenTest1") {
+ohos_hap_assist_suite("bmsAccessTokenTest1") {
   hap_profile = "./src/main/config.json"
   hap_name = "bmsAccessTokenTest1"
-  subsystem_name = XTS_SUITENAME
-  final_hap_path =
-      "${SUITES_OUTPUT_ROOT}/${XTS_SUITENAME}/testcases/${hap_name}.hap"
   testonly = true
   deps = [
     ":hjs_demo_js_assets",
     ":hjs_demo_resources",
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
+  subsystem_name = "bundlemanager"
+  part_name = "bundle_framework"
 }
 ohos_js_assets("hjs_demo_js_assets") {
   source_dir = "./src/main/js/default"
