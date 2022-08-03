@@ -23,6 +23,8 @@ ohos_js_hap_suite("ActsEdmTest") {
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsEdmTest"
+  subsystem_name = "customization"
+  part_name = "enterprise_device_management"
 }
 
 ohos_app_scope("edm_app_profile") {
