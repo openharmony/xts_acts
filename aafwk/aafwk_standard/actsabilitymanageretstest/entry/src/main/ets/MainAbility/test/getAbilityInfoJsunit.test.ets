@@ -46,20 +46,6 @@ export default function getHapModuleInfoJsunit() {
       done();
     });
 
-    async function startAbility2() {
-      var str = {
-        "want": {
-          "bundleName": "com.ohos.acecollaboration",
-          "abilityName": "com.ohos.acecollaboration.MainAbility2",
-        },
-      };
-      ability_featureAbility.startAbility(str).then((data) => {
-        console.info('context_getAbilityInfo_test_0300 startMainAbility2 succeeded: ' + JSON.stringify(data));
-      }).catch((error) => {
-        console.error('context_getAbilityInfo_test_0300 startMainAbility2 failed. Cause: ' + JSON.stringify(error));
-      });
-    }
-
     /**
      * @tc.number: context_getAbilityInfo_test_0200
      * @tc.name: getAbilityInfo:Query the current attributionability details.
@@ -87,19 +73,6 @@ export default function getHapModuleInfoJsunit() {
       console.info('[context_getAbilityInfo_test_0200] FINISH');
       done();
     })
-
-
-    /**
-     * @tc.number: context_getAbilityInfo_test_0300_1
-     * @tc.name: getAbilityInfo:Query the current attributionability details.
-     * @tc.desc: Check the return value of the interface
-     * @tc.level  0
-     */
-    it('context_getAbilityInfo_test_0300_1', 0, async function (done) {
-      console.info('[context_getAbilityInfo_test_0300] STARTability');
-      startAbility2();
-      done();
-    });
 
     /**
      * @tc.number: context_getAbilityInfo_test_0400
@@ -288,7 +261,7 @@ export default function getHapModuleInfoJsunit() {
       expect(info.systemApp).assertEqual(true);
       expect(info.enabled).assertEqual(true);
       expect(info.label).assertEqual("$string:entry_MainAbility");
-      expect(info.icon).assertEqual("");
+      expect(info.icon).assertEqual("$media:icon");
       expect(info.process).assertEqual("com.ohos.acecollaboration");
       expect(info.supportedModes).assertEqual(0);
       expect(info.entryDir).assertEqual("/data/app/el1/bundle/public/" +

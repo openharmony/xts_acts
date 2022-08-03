@@ -57,7 +57,7 @@ describe('ActsStServiceAbilityTest', function () {
                 console.log('ACTS_AExecuteShellCommand_Callback_0100====<end mySetTimeout')
                 done();
             }
-            var cmd = 'pwd'
+            var cmd = 'echo test'
             var escresult = '/system/app'
             var AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator()
             AbilityDelegator.executeShellCommand(cmd, (err, data) => {
