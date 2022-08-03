@@ -12,11 +12,9 @@
 # limitations under the License.
 import("//test/xts/tools/build/suite.gni")
 
-ohos_hap("bmsAccessTokenTest5") {
+ohos_hap_assist_suite("bmsAccessTokenTest5") {
   hap_profile = "./src/main/config.json"
   hap_name = "bmsAccessTokenTest5"
-  final_hap_path =
-      "${SUITES_OUTPUT_ROOT}/${XTS_SUITENAME}/testcases/${hap_name}.hap"
   testonly = true
   deps = [
     ":hjs_demo_js_assets",
