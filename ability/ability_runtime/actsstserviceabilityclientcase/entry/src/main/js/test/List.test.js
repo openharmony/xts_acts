@@ -12,8 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import ActsStServiceAbilityTest from './ActsStServiceAbilityClientCaseTest.test.js'
+import actsServiceAbilityTest from './ActsStServiceAbilityClientCaseTest.test.js'
 
 export default function testsuite() {
-    ActsStServiceAbilityTest()
+    actsServiceAbilityTest()
 }

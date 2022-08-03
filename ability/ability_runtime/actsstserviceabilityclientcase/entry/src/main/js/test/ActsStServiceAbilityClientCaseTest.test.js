@@ -18,7 +18,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 
 
 const errCode = 1;
-export default function ActsStServiceAbilityTest() {
+export default function actsStServiceAbilityTest() {
 describe('ActsStServiceAbilityTest', function () {
     let bundleName = "com.amsst.stserviceabilityserver";
     let abilityName = "com.amsst.stserviceabilityserver.ServiceAbility";
