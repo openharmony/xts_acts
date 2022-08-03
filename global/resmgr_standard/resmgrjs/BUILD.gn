@@ -21,6 +21,8 @@ ohos_js_hap_suite("resmgrjs_test") {
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsResMgrJsTest"
+  subsystem_name = "global"
+  part_name = "resource_management"
 }
 ohos_js_assets("resmgrjs_assets") {
   js2abc = true

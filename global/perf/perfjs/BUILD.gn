@@ -21,6 +21,8 @@ ohos_js_hap_suite("perfjs_test") {
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsGlobalPerfJsTest"
+  subsystem_name = "global"
+  part_name = "i18n"
 }
 ohos_js_assets("perfjs_assets") {
   js2abc = true

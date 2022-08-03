@@ -21,6 +21,8 @@ ohos_js_hap_suite("intljs_test") {
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsIntlJsTest"
+  subsystem_name = "global"
+  part_name = "i18n"
 }
 ohos_js_assets("intljs_assets") {
   js2abc = true
