@@ -417,7 +417,7 @@ describe('audioVoip', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -453,7 +453,7 @@ describe('audioVoip', function () {
 
         var AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_VOICE_COMMUNICATION,
-            capturerFlags: 1
+            capturerFlags: 0
         }
 
         var AudioCapturerOptions = {
@@ -488,7 +488,7 @@ describe('audioVoip', function () {
 
         var AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_VOICE_COMMUNICATION,
-            capturerFlags: 1
+            capturerFlags: 0
         }
 
         var AudioCapturerOptions = {
@@ -506,7 +506,7 @@ describe('audioVoip', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {

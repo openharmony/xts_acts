@@ -408,7 +408,7 @@ describe('audioCall', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -444,7 +444,7 @@ describe('audioCall', function () {
 
         var AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
-            capturerFlags: 1
+            capturerFlags: 0
         }
 
         var AudioCapturerOptions = {
@@ -480,7 +480,7 @@ describe('audioCall', function () {
 
         var AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
-            capturerFlags: 1
+            capturerFlags: 0
         }
 
         var AudioCapturerOptions = {
@@ -498,7 +498,7 @@ describe('audioCall', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
