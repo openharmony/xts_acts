@@ -65,6 +65,12 @@
       "deliveryWithInstall": true,
       "moduleName": "entry"
     },
+    "reqPermissions": [
+      {
+        "name":"ohos.permission.INTERNET",
+        "reason":"need use ohos.permission.INTERNET"
+      }
+    ],
     "package": "com.ohos.system_fetch",
     "js": [
       {
