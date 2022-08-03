@@ -681,6 +681,7 @@ describe('videoHardwareEncoderFuncPromise', function () {
             needRelease = true;
             await toStartEnc();
             await toFlushDec();
+            await toStartDec();
         });
     })
 
@@ -705,10 +706,12 @@ describe('videoHardwareEncoderFuncPromise', function () {
         await sleep(5000);
         expect(outputEncEos).assertFalse();
         await toFlushEnc();
+        await toStartEnc();
         resetReadParam();
         resetStateParam();
         needRelease = true;
         await toFlushDec();
+        await toStartDec();
     })
 
     /* *
@@ -731,10 +734,12 @@ describe('videoHardwareEncoderFuncPromise', function () {
         await startDecProcess(mime, srcPath, mediaDescription2, done);
         eventEmitter.on('flushAtEos', async() => {
             await toFlushEnc();
+            await toStartEnc();
             resetReadParam();
             resetStateParam();
             needRelease = true;
             await toFlushDec();
+            await toStartDec();
         });
     })
 

@@ -47,6 +47,7 @@ describe('AudioEncoderFuncCallback', function () {
     let outputCnt = 0;
     let inputCnt = 0;
     let frameThreshold = 10;
+    let lockFlag = false;
 
     beforeAll(async function() {
         console.info('beforeAll case 1');
@@ -72,6 +73,7 @@ describe('AudioEncoderFuncCallback', function () {
         ES_LENGTH = 1500;
         outputCnt = 0;
         inputCnt = 0;
+        lockFlag = false;
     })
 
     afterEach(async function() {
@@ -105,6 +107,7 @@ describe('AudioEncoderFuncCallback', function () {
         outputQueue = [];
         outputCnt = 0;
         inputCnt = 0;
+        lockFlag = false;
     }
 
     async function getFdRead(readPath, done) {
@@ -162,6 +165,7 @@ describe('AudioEncoderFuncCallback', function () {
     }
 
     async function flushWork(done) {
+        lockFlag = true;
         inputQueue = [];
         outputQueue = [];
         await getFdRead(readpath, done);
@@ -170,6 +174,11 @@ describe('AudioEncoderFuncCallback', function () {
             console.info("case flush at inputeos success");
             resetParam();
             workdoneAtEOS =true;
+            lockFlag = false;
+            audioEncodeProcessor.start((err) => {
+                expect(err).assertUndefined();
+                console.info("case start after flush success");
+            })
         })
     }
 
@@ -218,10 +227,12 @@ describe('AudioEncoderFuncCallback', function () {
             }
             timestamp += 23;
             frameCnt += 1;
-            audioEncodeProcessor.pushInputData(inputobject, () => {
-                console.info('queueInput success');
-                inputCnt += 1;
-            })
+            if (!lockFlag) {
+                audioEncodeProcessor.pushInputData(inputobject, () => {
+                    console.info('queueInput success');
+                    inputCnt += 1;
+                })
+            }
         }
     }
 
@@ -246,9 +257,11 @@ describe('AudioEncoderFuncCallback', function () {
             else{
                 console.info("write to file success");
             }
-            audioEncodeProcessor.freeOutputBuffer(outputobject, () => {
-                console.info('release output success');
-            })
+            if (!lockFlag) {
+                audioEncodeProcessor.freeOutputBuffer(outputobject, () => {
+                    console.info('release output success');
+                })
+            }
         }
     }
 
@@ -481,11 +494,17 @@ describe('AudioEncoderFuncCallback', function () {
             })
         });
         eventEmitter.on('flush', () => {
+            lockFlag = true;
             inputQueue = [];
             outputQueue = [];
             audioEncodeProcessor.flush((err) => {
                 expect(err).assertUndefined();
                 console.info(`case flush after 2s success`);
+                lockFlag = false;
+                audioEncodeProcessor.start((err) => {
+                    expect(err).assertUndefined();
+                    console.info(`case start after flush success`);
+                })
             })
         });
         media.createAudioEncoderByMime('audio/mp4a-latm', (err, processor) => {
