@@ -96,7 +96,7 @@ export default function getHapModuleInfoJsunit() {
       for (var k = 0; k < data.deviceTypes.length; k++) {
         console.log(msg + "getHapModuleInfo data.deviceTypes[" + k + "] : " + data.deviceTypes[k]);
       }
-      console.log(msg + "checkHapModuleInfo abilityInfos length : " + data.abilityInfos.length);
+      console.log(msg + "checkHapModuleInfo abilityInfo length : " + data.abilityInfo.length);
       console.log(msg + "checkHapModuleInfo moduleName : " + data.moduleName);
       console.log(msg + "checkHapModuleInfo mainAbilityName : " + data.mainAbilityName);
       console.log(msg + "checkHapModuleInfo installationFree : " + data.installationFree);
@@ -112,24 +112,24 @@ export default function getHapModuleInfoJsunit() {
       expect(typeof (data.supportedModes)).assertEqual("number");
       expect(Array.isArray(data.reqCapabilities)).assertEqual(true);
       expect(Array.isArray(data.deviceTypes)).assertEqual(true);
-      expect(Array.isArray(data.abilityInfos)).assertEqual(true);
+      expect(Array.isArray(data.abilityInfo)).assertEqual(true);
       expect(typeof (data.moduleName)).assertEqual("string");
       expect(typeof (data.mainAbilityName)).assertEqual("string");
       expect(typeof (data.installationFree)).assertEqual("boolean");
-      expect(data.name).assertEqual("com.ohos.acecollaboration");
+      expect(data.name).assertEqual("com.ohos.acecollaboration.MyApplication");
       expect(data.description).assertEqual("");
       expect(data.descriptionId).assertEqual(0);
       expect(data.icon).assertEqual("$media:icon");
       expect(data.label).assertEqual("$string:entry_MainAbility");
-      expect(data.labelId).assertEqual(0);
-      expect(data.iconId).assertEqual(0);
+      expect(data.labelId).assertEqual(16777226);
+      expect(data.iconId).assertEqual(16777229);
       expect(data.backgroundImg).assertEqual("");
       expect(data.supportedModes).assertEqual(0);
       expect(data.deviceTypes[0]).assertEqual("phone");
-      console.info(msg + ' data.abilityInfos.length ' + data.abilityInfos.length)
-      checkAbilityInfo(msg, data.abilityInfos[0]);
+      console.info(msg + ' data.abilityInfo.length ' + data.abilityInfo.length)
+      checkAbilityInfo(msg, data.abilityInfo[0]);
       expect(data.moduleName).assertEqual("entry")
-      expect(data.mainAbilityName).assertEqual("");
+      expect(data.mainAbilityName).assertEqual("com.ohos.acecollaboration.MainAbility");
       expect(data.installationFree).assertEqual(false);
       console.log(msg + "---checkHapModuleInfo End---");
     }
@@ -206,9 +206,9 @@ export default function getHapModuleInfoJsunit() {
       expect(typeof (data.defaultFormWidth)).assertEqual("number");
       expect(typeof (data.uri)).assertEqual("string");
       expect(data.bundleName).assertEqual("com.ohos.acecollaboration");
-      expect(data.name).assertEqual("com.ohos.acecollaboration.TestAbility");
-      expect(data.label).assertEqual("$string:TestAbility_label");
-      expect(data.description).assertEqual("$string:TestAbility_desc");
+      expect(data.name).assertEqual("com.ohos.acecollaboration.MainAbility");
+      expect(data.label).assertEqual("$string:entry_MainAbility");
+      expect(data.description).assertEqual("$string:mainability_description");
       expect(data.icon).assertEqual("$media:icon");
       expect(data.moduleName).assertEqual("entry");
       expect(data.process).assertEqual("com.ohos.acecollaboration");
