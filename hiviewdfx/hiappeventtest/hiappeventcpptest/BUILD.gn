@@ -13,7 +13,7 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-module_output_path = "hit/HiAppEventCPPTest"
+module_output_path = "hit/ActsHiAppEventCPPTest"
 
 ###############################################################################
 config("hilogtest_config") {
@@ -26,7 +26,7 @@ config("hilogtest_config") {
     "//base/hiviewdfx/hiappevent/frameworks/native/libhiappevent/include",
   ]
 }
-ohos_moduletest_suite("HiAppEventCPPTest") {
+ohos_moduletest_suite("ActsHiAppEventCPPTest") {
   module_out_path = module_output_path
   sources = [ "HiAppEventCPPTest.cpp" ]
   deps = [

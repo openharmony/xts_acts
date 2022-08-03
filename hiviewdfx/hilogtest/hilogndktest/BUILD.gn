@@ -12,7 +12,7 @@
 # limitations under the License.
 
 import("//test/xts/tools/build/suite.gni")
-module_output_path = "hits/hilogndktest"
+module_output_path = "hits/ActsHilogndkTest"
 
 config("hilogndktest_config") {
   visibility = [ ":*" ]
@@ -21,7 +21,7 @@ config("hilogndktest_config") {
     "//utils/native/base/include/",
   ]
 }
-ohos_moduletest_suite("hilogndktest") {
+ohos_moduletest_suite("ActsHilogndkTest") {
   module_out_path = module_output_path
   sources = [ "hilogndktest.cpp" ]
   deps = [
