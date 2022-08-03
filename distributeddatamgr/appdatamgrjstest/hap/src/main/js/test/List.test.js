@@ -30,7 +30,7 @@ import storageCallBackTest from './StorageCallBackJsunit.test.js'
 import storageHelperTest from './StorageHelperJsunit.test.js'
 import storagePromiseTest from './StoragePromiseJsunit.test.js'
 import storageSyncTest from './StorageSyncJsunit.test.js'
-import systemStorageTest from './SystemStorageJsunit.testjs'
+import systemStorageTest from './SystemStorageJsunit.test.js'
 export default function testsuite() {
 dataAbilityPredicatesTest()
 rdbStoreBackupRestoreWithFAContextTest()
