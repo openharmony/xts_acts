@@ -19,8 +19,8 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import { testPng, testJpg } from './testImg'
 import featureAbility from '@ohos.ability.featureAbility'
 
-export default function Image_test() {
-    describe('Image_test', function () {
+export default function image() {
+    describe('image', function () {
         let filePath;
         let fdNumber;
         let globalpixelmap;

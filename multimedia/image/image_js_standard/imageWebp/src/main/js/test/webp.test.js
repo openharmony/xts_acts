@@ -18,8 +18,8 @@ import fileio from '@ohos.fileio'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import featureAbility from '@ohos.ability.featureAbility'
 
-export default function Image() {
-describe('Image', function () {
+export default function imageWebp() {
+describe('imageWebp', function () {
     let filePath;
     let fdNumber;
     async function getFd(fileName) {

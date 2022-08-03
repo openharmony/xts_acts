@@ -19,8 +19,8 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import {modifyBuf} from './modifyBuffer'
 import featureAbility from '@ohos.ability.featureAbility'
 
-export default function Image() {
-describe('Image', function () {
+export default function imageModifyProperty() {
+describe('imageModifyProperty', function () {
     let filePath;
     let fdNumber;
     async function getFd(fileName) {

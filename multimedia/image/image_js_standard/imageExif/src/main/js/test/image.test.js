@@ -16,10 +16,10 @@
 import image from '@ohos.multimedia.image'
 import fileio from '@ohos.fileio'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
-import { tc_020buf, tc_020_1buf, tc_021buf, tc_021_1buf, tc_022buf } from './testImg'
+import { tc_020Buf, tc_020_1Buf, tc_021Buf, tc_021_1Buf, tc_022Buf } from './testImg'
 import featureAbility from '@ohos.ability.featureAbility'
 
-describe('Image', function () {
+describe('imageExif', function () {
     let filePath;
     let fdNumber;
     let globalpixelmap;
@@ -111,6 +111,7 @@ describe('Image', function () {
             done();
         })
     })
+
     /**
      * @tc.number    : TC_001-2
      * @tc.name      : createpixelmap-promise (editable: true, pixelFormat: RGB_565, size: { height: 6, width: 8 },bytes = buffer)
@@ -161,6 +162,7 @@ describe('Image', function () {
 
         })
     })
+
     /**
      * @tc.number    : TC_001-4
      * @tc.name      : createpixelmap-promise(editable: true, pixelFormat: unkonwn, size: { height: 6, width: 8 })
@@ -210,6 +212,7 @@ describe('Image', function () {
             done();
         })
     })
+    
     /**
      * @tc.number    : TC_001-6
      * @tc.name      : create pixelmap-callback(editable: true, pixelFormat: RGBA_8888, size: { height: 6, width: 8 } bytes > buffer )
@@ -331,7 +334,7 @@ describe('Image', function () {
                     var bufferArr2 = new Uint8Array(readBuffer);
                     var res = true;
                     for (var i = 0; i < bufferArr2.length; i++) {
-                        if (bufferArr2[i] != tc_020buf[i]) {
+                        if (bufferArr2[i] != tc_020Buf[i]) {
                             res = false;
                             console.info('TC_20_buffer' + bufferArr2[i]);
                             console.info('TC_020 failed');
@@ -389,7 +392,7 @@ describe('Image', function () {
                     var bufferArr = new Uint8Array(readBuffer);
                     var res = true;
                     for (var i = 0; i < bufferArr.length; i++) {
-                        if (bufferArr[i] != tc_020_1buf[i]) {
+                        if (bufferArr[i] != tc_020_1Buf[i]) {
                             res = false;
                             console.info('TC_020-1 failed');
                             expect(false).assertTrue();
@@ -493,7 +496,7 @@ describe('Image', function () {
                     var bufferArr2 = new Uint8Array(area.pixels);
                     var res = true;
                     for (var i = 0; i < bufferArr2.length; i++) {
-                        if (bufferArr2[i] != tc_021buf[i]) {
+                        if (bufferArr2[i] != tc_021Buf[i]) {
                             res = false;
                             console.info('TC_021 failed');
                             expect(false).assertTrue();
@@ -551,7 +554,7 @@ describe('Image', function () {
                     var res = true;
                     for (var i = 0; i < bufferArr.length; i++) {
                         console.info('TC_021-1 buffer ' + bufferArr[i]);
-                        if (bufferArr[i] != tc_021_1buf[i]) {
+                        if (bufferArr[i] != tc_021_1Buf[i]) {
                             res = false;
                             console.info('TC_021-1 failed');
                             expect(false).assertTrue();
@@ -788,7 +791,7 @@ describe('Image', function () {
                         var readArr = new Uint8Array(readArea.pixels);
                         var res = true;
                         for (var i = 0; i < readArr.length; i++) {
-                            if (readArr[i] != tc_022buf[i]) {
+                            if (readArr[i] != tc_022Buf[i]) {
                                 res = false;
                                 console.info('TC_022 failed');
                                 expect(false).assertTrue();
@@ -853,7 +856,7 @@ describe('Image', function () {
                     var readArr = new Uint8Array(readArea.pixels);
                     var res = true;
                     for (var i = 0; i < readArr.length; i++) {
-                        if (readArr[i] != tc_022buf[i]) {
+                        if (readArr[i] != tc_022Buf[i]) {
                             res = false;
                             console.info('TC_022-1 failed');
                             expect(false).assertTrue();

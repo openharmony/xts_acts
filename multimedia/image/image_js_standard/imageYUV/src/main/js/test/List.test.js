@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import Image from './yuv.test.js'
+import imageYuv from './yuv.test.js'
 export default function testsuite() {
-Image()
+    imageYuv()
 }
