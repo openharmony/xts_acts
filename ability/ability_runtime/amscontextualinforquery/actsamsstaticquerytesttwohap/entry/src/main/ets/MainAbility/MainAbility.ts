@@ -43,7 +43,7 @@ export default class MainAbility extends Ability {
 
     onForeground() {
         // Ability has brought to foreground
-        if (globalThis.abilityWant.action == 'getAbilityContext') {
+        if (globalThis.abilityWant.action == 'getglobalThis.abilityContext') {
             commonEvent.publish("MainAbility_Start_CommonEvent_ability", {
                 parameters: {
                     hapModuleInfo: JSON.stringify(globalThis.abilityContext.currentHapModuleInfo),

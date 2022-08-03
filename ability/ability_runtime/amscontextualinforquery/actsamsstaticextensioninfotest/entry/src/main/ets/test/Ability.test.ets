@@ -118,20 +118,21 @@ export default function abilityTest() {
         console.log("checkHapModuleInfo_expect_typeof_end")
         expect(data.name).assertEqual("phone");
         expect(data.description).assertEqual("$string:phone_entry_dsc");
-        expect(data.descriptionId).assertEqual(undefined);
+        expect(data.descriptionId).assertEqual(16777221);
         expect(data.icon).assertEqual("$media:icon");
         expect(data.label).assertEqual("$string:entry_label");
-        expect(data.labelId).assertEqual(undefined);
-        expect(data.iconId).assertEqual(undefined);
+        expect(data.labelId).assertEqual(16777219);
+        expect(data.iconId).assertEqual(16777224);
         expect(data.backgroundImg).assertEqual("");
         expect(data.supportedModes).assertEqual(0);
         expect(data.reqCapabilities.length).assertEqual(0);
-        expect(data.reqCapabilities[0]).assertEqual(undefined);
         expect(data.deviceTypes.length).assertEqual(1);
         expect(data.deviceTypes[0]).assertEqual("phone");
         expect(data.moduleName).assertEqual("phone")
-        expect(data.mainAbilityName).assertEqual("MainAbility");
-        expect(data.installationFree).assertEqual(undefined);
+        expect(data.mainAbilityName).assertEqual("com.example.staticextensioninfo.MainAbility");
+        expect(data.installationFree).assertEqual(false);
+        expect(data.mainElementName).assertEqual('com.example.staticextensioninfo.MainAbility');
+        expect(data.hashValue).assertEqual('');
         console.log("checkHapModuleInfo end  " + data);
       }
       function checkApplicationInfo(data) {
@@ -191,7 +192,7 @@ export default function abilityTest() {
         expect(data.enabled).assertEqual(true);
         expect(data.label).assertEqual("$string:app_name");
         expect(data.labelId).assertEqual("16777216");
-        expect(data.icon).assertEqual("");
+        expect(data.icon).assertEqual("$media:icon");
         expect(data.iconId).assertEqual("16777224");
         expect(data.process).assertEqual("");
         expect(data.supportedModes).assertEqual(0);
@@ -299,20 +300,21 @@ export default function abilityTest() {
         console.log("checkHapModuleInfo_expect_typeof_end")
         expect(data.name).assertEqual("phone");
         expect(data.description).assertEqual("$string:phone_entry_dsc");
-        expect(data.descriptionId).assertEqual(undefined);
+        expect(data.descriptionId).assertEqual(16777221);
         expect(data.icon).assertEqual("$media:icon");
         expect(data.label).assertEqual("$string:entry_label");
-        expect(data.labelId).assertEqual(undefined);
-        expect(data.iconId).assertEqual(undefined);
+        expect(data.labelId).assertEqual(16777219);
+        expect(data.iconId).assertEqual(16777224);
         expect(data.backgroundImg).assertEqual("");
         expect(data.supportedModes).assertEqual(0);
         expect(data.reqCapabilities.length).assertEqual(0);
-        expect(data.reqCapabilities[0]).assertEqual(undefined);
         expect(data.deviceTypes.length).assertEqual(1);
         expect(data.deviceTypes[0]).assertEqual("phone");
         expect(data.moduleName).assertEqual("phone")
-        expect(data.mainAbilityName).assertEqual("MainAbility");
-        expect(data.installationFree).assertEqual(undefined);
+        expect(data.mainAbilityName).assertEqual("com.example.staticextensioninfotest.MainAbility");
+        expect(data.installationFree).assertEqual(false);
+        expect(data.mainElementName).assertEqual('com.example.staticextensioninfotest.MainAbility');
+        expect(data.hashValue).assertEqual('');
         console.log("checkHapModuleInfo end  " + data);
       }
       function checkApplicationInfo_0200(data) {
@@ -372,7 +374,7 @@ export default function abilityTest() {
         expect(data.enabled).assertEqual(true);
         expect(data.label).assertEqual("$string:app_name");
         expect(data.labelId.length).assertLarger(0);
-        expect(data.icon).assertEqual("");
+        expect(data.icon).assertEqual("$media:icon");
         expect(data.iconId.length).assertLarger(0);
         expect(data.process).assertEqual("");
         expect(data.supportedModes).assertEqual(0);

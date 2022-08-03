@@ -20,6 +20,7 @@
   "module": {
     "package": "com.example.actsfeatureabilitytest",
     "name": ".MyApplication",
+    "mainAbility": "com.example.actsfeatureabilitytest.MainAbility",
     "deviceType": [
       "phone"
     ],
