@@ -514,4 +514,19 @@ describe('webgl1Test_webgl16', function() {
 		expect(stencilValue).assertEqual(false);
 		done();
 	})
+
+	/**
+	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_1348
+	 * @tc.name webgl_test_endTransformFeedback
+	 * @tc.desc Test endTransformFeedback.
+	 */
+	it('webgl_test_endTransformFeedback', 0, async function(done) {
+		let transformFeedback = gl2.createTransformFeedback();
+		gl2.endTransformFeedback();
+		let errorCode = gl.getError();
+		console.info("webgltest endTransformFeedback getError: " + errorCode);
+		expect(errorCode).assertLarger(gl.NO_ERROR);
+		//deleteContext();
+		done();	
+	});
 })
