@@ -40,8 +40,7 @@
         "type": "service",
         "isVisible": "true",
         "launchType": "singleton",
-        "language": "C++",
-        "orientation": "landscape"
+        "language": "C++"
       }
     ],
     "deviceType": [
