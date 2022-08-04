@@ -796,8 +796,10 @@ describe('ActsBundleManagerTest', function () {
         expect(datainfo.process).assertEqual(NAME2);
         expect(datainfo.enabled).assertEqual(true);
         expect(datainfo.moduleSourceDirs.length).assertLarger(0);
+        expect(datainfo.moduleInfos.length).assertEqual(2);
+        expect(datainfo.moduleInfos[0].moduleName).assertEqual("entry");
+        expect(datainfo.moduleInfos[1].moduleName).assertEqual("feature");
         for (let j = 0; j < datainfo.moduleInfos.length; j++) {
-            expect(datainfo.moduleInfos[j].moduleName).assertEqual("entry");
             expect(datainfo.moduleInfos[j].moduleSourceDir.length).assertLarger(0);
         }
         done();
@@ -831,8 +833,10 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.process).assertEqual(NAME2);
                 expect(datainfo.enabled).assertEqual(true);
                 expect(datainfo.moduleSourceDirs.length).assertLarger(0);
+                expect(datainfo.moduleInfos.length).assertEqual(2);
+                expect(datainfo.moduleInfos[0].moduleName).assertEqual("entry");
+                expect(datainfo.moduleInfos[1].moduleName).assertEqual("feature");
                 for (let j = 0; j < datainfo.moduleInfos.length; j++) {
-                    expect(datainfo.moduleInfos[j].moduleName).assertEqual("entry");
                     expect(datainfo.moduleInfos[j].moduleSourceDir.length).assertLarger(0);
                 }
                 done();
@@ -1520,7 +1524,7 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.applicationInfo.enabled).assertEqual(true);
             expect(datainfo.applicationInfo.moduleInfos[0].moduleName).assertEqual("entry");
             expect(datainfo.applicationInfo.moduleInfos[0].moduleSourceDir).assertEqual(DIR3);
-            expect(datainfo.applicationInfo.moduleInfos[1].moduleName).assertEqual("entry");
+            expect(datainfo.applicationInfo.moduleInfos[1].moduleName).assertEqual("feature");
             expect(datainfo.applicationInfo.moduleInfos[1].moduleSourceDir).assertEqual(DIR2);
         }
         done();
@@ -1561,7 +1565,7 @@ describe('ActsBundleManagerTest', function () {
                     expect(datainfo.applicationInfo.enabled).assertEqual(true);
                     expect(datainfo.applicationInfo.moduleInfos[0].moduleName).assertEqual("entry");
                     expect(datainfo.applicationInfo.moduleInfos[0].moduleSourceDir).assertEqual(DIR3);
-                    expect(datainfo.applicationInfo.moduleInfos[1].moduleName).assertEqual("entry");
+                    expect(datainfo.applicationInfo.moduleInfos[1].moduleName).assertEqual("feature");
                     expect(datainfo.applicationInfo.moduleInfos[1].moduleSourceDir).assertEqual(DIR2);
                 }
                 done();
