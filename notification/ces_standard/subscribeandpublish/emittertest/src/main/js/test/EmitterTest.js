@@ -12,144 +12,143 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import emitter from '@ohos.events.emitter'
+import events_emitter from '@ohos.events.emitter'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
 export default function EmitterTest() {
     describe('EmitterTest', function () {
-        console.info("===========EmitterTest start====================>");
-
-        var eventData = {
-            data: {
-                "id": 1,
-                "content": "message",
-            }
+        const TAG = 'EmitterTest ===> '
+        console.info(TAG + 'EmitterTest START')
+    
+        let innerEvent = {
+          eventId: undefined,
+          priority: undefined
         }
-
-        var InnerEventImmediate = {
-            eventId: 1,
-            priority: emitter.EventPriority.IMMEDIATE
+    
+        let eventData = {
+          data: {
+            'id': undefined,
+            'content': undefined
+          }
         }
-
-        var InnerEventLow = {
-            eventId: 2,
-            priority: emitter.EventPriority.LOW
+    
+        function EmitterCallback(eventData) {
+          console.info(TAG + 'eventData.id: ' + JSON.stringify(eventData.data.id));
+          console.info(TAG + 'eventData.content: ' + JSON.stringify(eventData.data.content));
+          if (eventData.data.id == 0) {
+            expect(eventData.data.content).assertEqual('message_0');
+          } else if (eventData.data.id == 1) {
+            expect(eventData.data.content).assertEqual('message_1');
+          } else if (eventData.data.id == 2) {
+            expect(eventData.data.content).assertEqual('message_2');
+          } else if (eventData.data.id == 3) {
+            expect(eventData.data.content).assertEqual('message_3');
+          } else if (eventData.data.id == 4) {
+            expect(eventData.data.content).assertEqual('message_4');
+          } else if (eventData.data.id == 5) {
+            expect(eventData.data.content).assertEqual('message_5');
+          }
         }
-
-        function callback(data){
-            console.info('callback success');
-            expect(data.eventId).assertEqual("message");
-        }
-
-        function callback01(data){
-            console.info('callback success');
-            expect(data.data.id).assertEqual(1);
-            expect(data.data.content).assertEqual("message");
-        }
-
+    
         /*
-         * @tc.number    : EmitterOnTest
-         * @tc.name      : verify on : Check subscribe same on common ordered event
-         * @tc.desc      : Check the subscriber can receive event "EmitterOnTest" type of the interface (by Promise)
+         * @tc.number    : EmitterTest_0100
+         * @tc.name      : verify on : on(event: InnerEvent, callback: Callback<EventData>): void
+         * @tc.desc      : events_emitter.EventPriority.IDLE
          */
-        it('EmitterOnTest', 0, async function (done) {
-            console.info("===========EmitterOnTest====================>");
-            emitter.on(InnerEventImmediate, callback);
-            done();
+        it('EmitterTest_0100', 0, async function (done) {
+          console.info(TAG + 'EmitterTest_0100 START')
+          innerEvent.eventId = 1
+          innerEvent.priority = events_emitter.EventPriority.IDLE
+    
+          eventData.data.id = 0
+          eventData.data.content = 'message_0'
+    
+          events_emitter.on(innerEvent, EmitterCallback)
+          events_emitter.emit(innerEvent, eventData)
+          eventData.data.id = 1
+          eventData.data.content = 'message_1'
+          events_emitter.emit(innerEvent, eventData)
+          console.info(TAG + 'EmitterTest_0100 END')
+          done()
         })
-
+    
         /*
-         * @tc.number    : EmitterOnceTest
-         * @tc.name      : verify once : Check subscribe same once common ordered event
-         * @tc.desc      : Check the subscriber can receive event "EmitterOnceTest" type of the interface (by Promise)
+         * @tc.number    : EmitterTest_0200
+         * @tc.name      : verify on : once(event: InnerEvent, callback: Callback<EventData>): void
+         * @tc.desc      : events_emitter.EventPriority.LOW
          */
-        it('EmitterOnceTest', 0, async function (done){
-            console.info("===========EmitterOnceTest====================>");
-            emitter.once(InnerEventImmediate, callback);
-            done();
+        it('EmitterTest_0200', 0, async function (done) {
+          console.info(TAG + 'EmitterTest_0200 START')
+          innerEvent.eventId = 2
+          innerEvent.priority = events_emitter.EventPriority.LOW
+    
+          eventData.data.id = 2
+          eventData.data.content = 'message_2'
+    
+          events_emitter.once(innerEvent, EmitterCallback)
+          events_emitter.emit(innerEvent, eventData)
+          console.info(TAG + 'EmitterTest_0200 END')
+          done()
         })
-
+    
         /*
-         * @tc.number    : EmitterEmitTest
-         * @tc.name      : verify emit : Check subscribe same emit common ordered event
-         * @tc.desc      : Check the subscriber can receive event "EmitterEmitTest" type of the interface (by Promise)
+         * @tc.number    : EmitterTest_0300
+         * @tc.name      : verify on : emit(event: InnerEvent, data?: EventData): void
+         * @tc.desc      : events_emitter.EventPriority.HIGH
          */
-        it('EmitterEmitTest', 0, async function (done){
-            console.info("===========EmitterEmitTest====================>");
-            emitter.once(InnerEventImmediate, callback01);
-            emitter.emit(InnerEventImmediate, eventData);
-            done();
+        it('EmitterTest_0300', 0, async function (done) {
+          console.info(TAG + 'EmitterTest_0300 START')
+          innerEvent.eventId = 3
+          innerEvent.priority = events_emitter.EventPriority.HIGH
+    
+          eventData.data.id = 3
+          eventData.data.content = 'message_3'
+    
+          events_emitter.once(innerEvent, EmitterCallback)
+          events_emitter.emit(innerEvent, eventData)
+          console.info(TAG + 'EmitterTest_0300 END')
+          done()
         })
-
+    
         /*
-         * @tc.number    : EmitterLowTest
-         * @tc.name      : verify low : Check subscribe same low common ordered event
-         * @tc.desc      : Check the subscriber can receive event "EmitterLowTest" type of the interface (by Promise)
+         * @tc.number    : EmitterTest_0400
+         * @tc.name      : verify on : emit(event: InnerEvent, data?: EventData): void
+         * @tc.desc      : events_emitter.EventPriority.IMMEDIATE
          */
-        it('EmitterLowTest', 0, async function (done){
-            console.info("===========EmitterLowTest====================>");
-            emitter.once(InnerEventLow, callback01);
-            emitter.emit(InnerEventLow,eventData);
-            done();
+        it('EmitterTest_0400', 0, async function (done) {
+          console.info(TAG + 'EmitterTest_0400 START')
+          innerEvent.eventId = 4
+          innerEvent.priority = events_emitter.EventPriority.IMMEDIATE
+    
+          eventData.data.id = 4
+          eventData.data.content = 'message_4'
+    
+          events_emitter.once(innerEvent, EmitterCallback)
+          events_emitter.emit(innerEvent, eventData)
+          console.info(TAG + 'EmitterTest_0400 END')
+          done()
         })
-
-
+    
         /*
-         * @tc.number    : EmitterOffTest
-         * @tc.name      : verify off : Check subscribe same off common ordered event
-         * @tc.desc      : Check the subscriber can receive event "EmitterOffTest" type of the interface (by Promise)
+         * @tc.number    : EmitterTest_0500
+         * @tc.name      : verify on : off(eventId: number): void
+         * @tc.desc      : events_emitter.EventPriority.IMMEDIATE
          */
-        it('EmitterOffTest', 0, async function (done){
-            console.info("===========EmitterOffTest111====================>");
-            emitter.once(InnerEventLow, callback01);
-            emitter.emit(InnerEventImmediate, eventData);
-            emitter.off(1);
-            done();
+        it('EmitterTest_0500', 0, async function (done) {
+          console.info(TAG + 'EmitterTest_0500 START')
+          innerEvent.eventId = 5
+          innerEvent.priority = events_emitter.EventPriority.IMMEDIATE
+    
+          eventData.data.id = 5
+          eventData.data.content = 'message_5'
+    
+          events_emitter.once(innerEvent, EmitterCallback)
+          events_emitter.emit(innerEvent, eventData)
+          events_emitter.off(5)
+          console.info(TAG + 'EmitterTest_0500 END')
+          done()
         })
-
-        /*
-         * @tc.number    : EmitterEmitTest_0100
-         * @tc.name      : verify off : Check subscribe same off common ordered event
-         * @tc.desc      : Check the subscriber can receive event "EmitterOffTest" type of the interface (by Promise)
-         */
-        it('EmitterEmitTest_0100', 0, async function (done){
-            console.info("===========EmitterEmitTest_0100====================>");
-            var eventData2 = {
-                data: {
-                    "content": "c",
-                    "id": 2,
-                }};
-            var innerEventHigh = {
-                eventId: 3,
-                priority: emitter.EventPriority.HIGH
-            };
-            emitter.once(InnerEventLow, callback01);
-            emitter.emit(innerEventHigh, eventData2);
-            expect(emitter.EventPriority.HIGH).assertEqual(1)
-            done();
-        })
-
-        /*
-        * @tc.number    : EmitterEmitTest_0200
-        * @tc.name      : verify off : emitter.EventPriority.IDLE
-        * @tc.desc      : emitter.EventPriority.IDLE
-        */
-        it('EmitterEmitTest_0200', 0, async function (done){
-            console.info("===========EmitterEmitTest_0100====================>");
-            var eventData3 = {
-                data: {
-                    "content": "d",
-                    "id": 3,
-                }};
-            var innerEventIdle = {
-                eventId: 4,
-                priority: emitter.EventPriority.IDLE
-            };
-            emitter.once(innerEventIdle, callback01);
-            emitter.emit(InnerEventImmediate, eventData3);
-            expect(emitter.EventPriority.IDLE).assertEqual(3)
-            done();
-        })
-
-    })
+    
+        console.info(TAG + 'EmitterTest END')
+      })    
 }
