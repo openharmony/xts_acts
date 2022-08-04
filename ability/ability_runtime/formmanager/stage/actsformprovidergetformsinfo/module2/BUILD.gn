@@ -13,12 +13,9 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_hap("ActsFormProviderGetFormsInfoModule2") {
+ohos_hap_assist_suite("ActsFormProviderGetFormsInfoModule2") {
   hap_name = "ActsFormProviderGetFormsInfoModule2"
   hap_profile = "src/main/module.json"
-  subsystem_name = XTS_SUITENAME
-  final_hap_path =
-      "${SUITES_OUTPUT_ROOT}/${XTS_SUITENAME}/testcases/${hap_name}.hap"
   testonly = true
   deps = [
     ":actsformprovidergetformsinfomodule2_js_assets",
@@ -26,6 +23,9 @@ ohos_hap("ActsFormProviderGetFormsInfoModule2") {
   ]
   ets2abc = true
   certificate_profile = "../signature/openharmony_sx.p7b"
+  js_build_mode = "debug"
+  subsystem_name = "ability"
+  part_name = "form_fwk"
 }
 
 ohos_app_scope("actsformprovidergetformsinfomodule2_app_profile") {

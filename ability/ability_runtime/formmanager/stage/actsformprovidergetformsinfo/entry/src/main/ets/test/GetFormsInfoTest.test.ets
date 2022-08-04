@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'hypium/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import formProvider from '@ohos.application.formProvider';
 import formInfo from '@ohos.application.formInfo';
 import formError from '@ohos.application.formError';
@@ -183,7 +183,9 @@ export default function abilityTest() {
             formProvider.getFormsInfo(filter, function(err, value) {
                 console.info("formProvider::GetFormsInfoTest err: " + JSON.stringify(err));
                 console.info("formProvider::GetFormsInfoTest value: " + JSON.stringify(value));
-                expect(err.code).assertEqual(formError.FormError.ERR_ADD_INVALID_PARAM);
+                expect(err.code).assertEqual(0);
+                expect(value.length).assertEqual(2);
+                checkResultArray(expectResult, value);
                 done();
             });
         });
@@ -294,10 +296,11 @@ export default function abilityTest() {
                 moduleName: undefined
             };
             formProvider.getFormsInfo(filter).then((value) => {
-                expect().assertFail();
+                expect(value.length).assertEqual(2);
+                checkResultArray(expectResult, value);
             }).catch((err) => {
                 console.info('formProvider::GetFormsInfoTest failed' + JSON.stringify(err));
-                expect(err.code).assertEqual(formError.FormError.ERR_ADD_INVALID_PARAM);
+                expect().assertFail();
             })
             done();
         });

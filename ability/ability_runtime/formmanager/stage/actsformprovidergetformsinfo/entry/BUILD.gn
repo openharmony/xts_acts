@@ -19,8 +19,12 @@ ohos_js_hap_suite("ActsFormProviderGetFormsInfoTest") {
     ":actsformprovidergetformsinfotest_js_assets",
     ":actsformprovidergetformsinfotest_resources",
   ]
+  ets2abc = true
   certificate_profile = "../signature/openharmony_sx.p7b"
   hap_name = "ActsFormProviderGetFormsInfoTest"
+  js_build_mode = "debug"
+  subsystem_name = "ability"
+  part_name = "form_fwk"
 }
 
 ohos_app_scope("actsformprovidergetformsinfotest_app_profile") {
@@ -29,7 +33,6 @@ ohos_app_scope("actsformprovidergetformsinfotest_app_profile") {
 }
 
 ohos_js_assets("actsformprovidergetformsinfotest_js_assets") {
-  ets2abc = true
   source_dir = "src/main/ets"
 }
 

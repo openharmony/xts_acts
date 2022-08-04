@@ -19,7 +19,7 @@ group("actsformprovidergetformsinfo") {
     deps = [
       "entry:ActsFormProviderGetFormsInfoTest",
       "module1:ActsFormProviderGetFormsInfoModule1",
-      "module2:ActsFormProviderGetFormsInfoModule2"
+      "module2:ActsFormProviderGetFormsInfoModule2",
     ]
   }
 }
