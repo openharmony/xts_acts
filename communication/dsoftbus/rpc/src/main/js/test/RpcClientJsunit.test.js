@@ -251,20 +251,6 @@ describe('ActsRpcClientJsTest', function(){
         }
     }
 
-    class Stub extends rpc.RemoteObject {
-        onRemoteRequest(code, data, reply, option) {
-            let callerPid = rpc.IPCSkeleton.getCallingPid();
-            console.info("RpcServer: getCallingPid result: " + callerPid);
-            let callerUid = rpc.IPCSkeleton.getCallingUid();
-            console.info("RpcServer: getCallingUid result: " + callerUid);
-            let callerDeviceID  = rpc.IPCSkeleton.getCallingDeviceID();
-            console.info("RpcServer: getCallingUid result: " + callerDeviceID );
-            let localDeviceID = rpc.IPCSkeleton.getLocalDeviceID();
-            console.info("RpcServer: localDeviceID is: " + localDeviceID);
-            return true;
-        }
-    }
-
     function assertArrayElementEqual(actual, expected) {
         expect(actual.length).assertEqual(expected.length)
         for (let i = 0; i < actual.length; i++) {
