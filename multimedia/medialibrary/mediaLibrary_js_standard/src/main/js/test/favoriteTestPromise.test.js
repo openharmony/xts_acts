@@ -23,8 +23,8 @@ const imageType = mediaLibrary.MediaType.IMAGE;
 const videoType = mediaLibrary.MediaType.VIDEO;
 const audioType = mediaLibrary.MediaType.AUDIO;
 const fileFetchOp = {
-    selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
-    selectionArgs: [fileType.toString()],
+    selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ? AND relative_path = ?',
+    selectionArgs: [fileType.toString(), 'Documents/'],
 };
 const imageFetchOp = {
     selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
@@ -35,8 +35,8 @@ const videoFetchOp = {
     selectionArgs: [videoType.toString()],
 };
 const audioFetchOp = {
-    selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
-    selectionArgs: [audioType.toString()],
+    selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ? AND bucket_display_name = ?',
+    selectionArgs: [audioType.toString(), 'Camera'],
 };
 
 describe('favoriteTestPromise.test.js', function () {
