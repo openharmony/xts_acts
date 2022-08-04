@@ -2084,7 +2084,7 @@ describe('ActsRpcClientJsTest', function(){
 
                 var newArr = []
                 result.reply.readIntArray(newArr);
-                console.info("SUB_Softbus_IPC_MessageParcel_05500: run readIntArray is success, intArryDataReply is " + newArr);
+                console.info("SUB_Softbus_IPC_MessageParcel_05500: run readIntArray is " + newArr);
                 assertArrayElementEqual(intArryData,newArr);
             });
 
@@ -2249,7 +2249,7 @@ describe('ActsRpcClientJsTest', function(){
                 expect(result.errCode == 0).assertTrue();
 
                 var floatArryDataReply = result.reply.readFloatArray();
-                console.info("SUB_Softbus_IPC_MessageParcel_05900: run readFloatArray success, floatArryDataReply " + floatArryDataReply);
+                console.info("SUB_Softbus_IPC_MessageParcel_05900: run readFloatArray is " + floatArryDataReply);
                 assertArrayElementEqual(floatArryData,floatArryDataReply);
             });
 
@@ -2292,7 +2292,7 @@ describe('ActsRpcClientJsTest', function(){
 
                 var newArr = []
                 result.reply.readFloatArray(newArr);
-                console.info("SUB_Softbus_IPC_MessageParcel_06000: readFloatArray is success, floatArryDataReply is " + newArr);
+                console.info("SUB_Softbus_IPC_MessageParcel_06000: readFloatArray is " + newArr);
                 assertArrayElementEqual(floatArryData,newArr);
             });
 
@@ -2333,7 +2333,7 @@ describe('ActsRpcClientJsTest', function(){
                 expect(result.errCode == 0).assertTrue();
 
                 var newArr = result.reply.readFloatArray();
-                console.info("SUB_Softbus_IPC_MessageParcel_06100: run readFloatArray is success, floatArryDataReply is " + newArr);
+                console.info("SUB_Softbus_IPC_MessageParcel_06100: run readFloatArray is " + newArr);
                 assertArrayElementEqual(floatArryData,newArr);
             });
             data.reclaim();
@@ -2536,7 +2536,7 @@ describe('ActsRpcClientJsTest', function(){
                 expect(result.errCode == 0).assertTrue();
 
                 var readShort = result.reply.readShort();
-                console.info("SUB_Softbus_IPC_MessageParcel_06600: run readFloatArray is success, readShort is " + readShort);
+                console.info("SUB_Softbus_IPC_MessageParcel_06600: run readFloatArray is " + readShort);
                 expect(readShort == 32767).assertTrue();
             });
 
@@ -2578,7 +2578,7 @@ describe('ActsRpcClientJsTest', function(){
                 expect(result.errCode == 0).assertTrue();
 
                 var readShort = result.reply.readShort();
-                console.info("SUB_Softbus_IPC_MessageParcel_06700: run readFloatArray is success, readShort is " + readShort);
+                console.info("SUB_Softbus_IPC_MessageParcel_06700: run readFloatArray is " + readShort);
                 expect(readShort == -32768).assertTrue();
             });
 
@@ -6177,7 +6177,7 @@ describe('ActsRpcClientJsTest', function(){
             await gIRemoteObject.sendRequest(CODE_WRITE_STRING, data, reply, option).then((result) => {
                 console.info("SUB_Softbus_IPC_MessageOption_01100: sendRequestis is " + result.errCode);
                 var replyReadResult = result.reply.readString();
-                console.info("SUB_Softbus_IPC_MessageOption_01100: run readString is success,result is " + replyReadResult);
+                console.info("SUB_Softbus_IPC_MessageOption_01100: run readString is " + replyReadResult);
                 expect(replyReadResult).assertEqual("");
                 expect(option.getFlags()).assertEqual(1);
 
@@ -6218,7 +6218,7 @@ describe('ActsRpcClientJsTest', function(){
             await gIRemoteObject.sendRequest(CODE_WRITE_STRING, data, reply, option).then((result) => {
                 console.info("SUB_Softbus_IPC_MessageOption_01200: sendRequestis is " + result.errCode);
                 var replyReadResult = result.reply.readString();
-                console.info("SUB_Softbus_IPC_MessageOption_01200: run readString is success,result is " + replyReadResult);
+                console.info("SUB_Softbus_IPC_MessageOption_01200: run readString is " + replyReadResult);
                 expect(replyReadResult).assertEqual("");
                 expect(option.getFlags()).assertEqual(3);
             });
