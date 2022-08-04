@@ -23,7 +23,7 @@ ohos_js_hap_suite("ActsRadiostatisticEtsTest") {
   ets2abc = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsRadiostatisticEtsTest"
-}
+  }
 ohos_js_assets("ace_demo_ets_assets") {
   source_dir = "./entry/src/main/ets/MainAbility"
 }
