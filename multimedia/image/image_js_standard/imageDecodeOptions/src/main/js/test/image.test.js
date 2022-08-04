@@ -63,59 +63,7 @@ export default function imageDecodeOptions() {
             console.info('afterAll case');
         })
         
-        /**
-         * @tc.number    : TC_063
-         * @tc.name      : release ImagePacker - promise
-         * @tc.desc      : 1.create ImagePacker
-         *                 2.call release
-         *                 3.return undefined
-         * @tc.size      : MEDIUM 
-         * @tc.type      : Functional
-         * @tc.level     : Level 1
-         */
-        it('TC_063', 0, async function (done) {
-            const imagePackerApi = image.createImagePacker();
-            if (imagePackerApi == undefined) {
-                console.info('TC_063 create image packer failed');
-                expect(false).assertTrue();
-                done();
-            } else {
-                imagePackerApi.release().then(() => {
-                    console.info('TC_063 success');
-                    expect(true).assertTrue();
-                    done();
-                }).catch(() => {
-                    console.log('TC_063 error: ' + error);
-                    expect(false).assertTrue();
-                    done();
-                })
-            }
-        })
 
-        /**
-         * @tc.number    : TC_063-1 
-         * @tc.name      : release ImagePacker - callback
-         * @tc.desc      : 1.create ImagePacker
-         *                 2.call release
-         *                 3.return undefined
-         * @tc.size      : MEDIUM 
-         * @tc.type      : Functional
-         * @tc.level     : Level 1
-         */
-        it('TC_063-1', 0, async function (done) {
-            const imagePackerApi = image.createImagePacker();
-            if (imagePackerApi == undefined) {
-                console.info('TC_063-1 create image packer failed');
-                expect(false).assertTrue();
-                done();
-            } else {
-                imagePackerApi.release(() => {
-                    console.info('TC_063-1 success');
-                    expect(true).assertTrue();
-                    done();
-                })
-            }
-        })
 
         /**
          * @tc.number    : TC_050

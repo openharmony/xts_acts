@@ -20,9 +20,7 @@
             "type": "ShellKit",
             "run-command": [
                 "hilog -Q pidoff",
-                "hilog -b D",
-                "killall com.ohos.medialibrary.MediaScannerAbilityA",
-                "aa start  -a MediaScannerAbility -b com.ohos.medialibrary.MediaScannerAbilityA"
+                "hilog -b D"
             ],
             "teardown-command": []
         }
