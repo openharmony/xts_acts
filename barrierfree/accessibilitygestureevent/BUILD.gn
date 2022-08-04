@@ -23,6 +23,8 @@ ohos_js_hap_suite("ActsAccessibilityGestureEventTest") {
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsAccessibilityGestureEventTest"
+  part_name = "accessibility"
+  subsystem_name = "barrierfree"
 }
 
 ohos_app_scope("accessibilitygestureevent_app_profile") {
