@@ -13,12 +13,13 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-group("formmanager") {
+group("actsformprovidergetformsinfo") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "fa:formmanager",
-      #"stage:stage",
+      "entry:ActsFormProviderGetFormsInfoTest",
+      "module1:ActsFormProviderGetFormsInfoModule1",
+      "module2:ActsFormProviderGetFormsInfoModule2",
     ]
   }
 }
