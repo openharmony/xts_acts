@@ -2373,7 +2373,7 @@ describe('ActsRpcClientJsTest', function(){
                 expect(result.errCode == 0).assertTrue();
 
                 var newArr = result.reply.readFloatArray();
-                console.info("SUB_Softbus_IPC_MessageParcel_06200: run readFloatArray is success, floatArryDataReply is " + newArr);
+                console.info("SUB_Softbus_IPC_MessageParcel_06200: run readFloatArray is " + newArr);
                 expect(newArr[0] == floatArryData[0]).assertTrue();
                 expect(newArr[1] == floatArryData[1]).assertTrue();
                 expect(newArr[2] == floatArryData[2]).assertTrue();
