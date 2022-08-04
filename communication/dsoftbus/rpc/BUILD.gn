@@ -21,6 +21,8 @@ ohos_js_hap_suite("ActsRpcJsTest") {
 
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsRpcHapTest"
+  subsystem_name = "communication"
+  part_name = "ipc"
 }
 ohos_js_assets("rpc_js_assets") {
   js2abc = true
