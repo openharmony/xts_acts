@@ -13,7 +13,7 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("AACommandPrintSyncTest") {
+ohos_js_hap_suite("ActsAACommandPrintSyncTest") {
   hap_profile = "entry/src/main/module.json"
   js_build_mode = "debug"
   deps = [
@@ -22,7 +22,7 @@ ohos_js_hap_suite("AACommandPrintSyncTest") {
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "AACommandPrintSyncTest"
+  hap_name = "ActsAACommandPrintSyncTest"
 }
 
 ohos_app_scope("aacommandprintsynctest_app_profile") {

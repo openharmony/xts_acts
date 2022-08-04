@@ -11,6 +11,14 @@
     {
       "name": "MainAbility_label",
       "value": "FaXts"
+    },
+    {
+        "name": "TestAbility_desc",
+        "value": "description"
+    },
+    {
+        "name": "TestAbility_label",
+        "value": "label"
     }
   ]
 }

@@ -17,13 +17,13 @@ group("aacommand") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "AACommand07:AACommand07",
-      "AACommand08:AACommand08",
-      "AACommandPrintSync:AACommandPrintSync",
-      "AACommandPrintSyncTest:AACommandPrintSyncTest",
-      "AACommandRelyHap:AACommandRelyHap",
-      "AACommandpackage:AACommandpackage",
-      "AACommandtest:AACommandtest",
+      "aacommand07:AACommand07",
+      "aacommand08:AACommand08",
+      "aacommandprintsync:AACommandPrintSync",
+      "aacommandprintsynctest:ActsAACommandPrintSyncTest",
+      "aacommandrelyhap:AACommandRelyHap",
+      "aacommandpackage:AACommandpackage",
+      "aacommandtest:ActsAACommandTest",
     ]
   }
 }

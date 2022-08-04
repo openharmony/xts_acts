@@ -1,7 +1,7 @@
 {
     "description": "Configuration for hjunit demo Tests",
     "driver": {
-        "type": "JSUnitTest",
+        "type": "OHJSUnitTest",
         "test-timeout": "300000",
         "bundle-name": "com.example.actsamstestthirdscene",
         "package-name": "com.example.actsamstestthirdscene",
