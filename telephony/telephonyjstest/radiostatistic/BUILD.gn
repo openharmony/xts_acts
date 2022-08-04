@@ -25,7 +25,7 @@ ohos_js_hap_suite("ActsRadiostatisticEtsTest") {
   hap_name = "ActsRadiostatisticEtsTest"
   part_name = "ril_adapter"
   subsystem_name = "telephony"
-  }
+}
 ohos_js_assets("ace_demo_ets_assets") {
   source_dir = "./entry/src/main/ets/MainAbility"
 }
