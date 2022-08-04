@@ -22,7 +22,8 @@ const STORE_VALUE = 'value-test-string';
 var kvManager = null;
 var kvStore = null;
 
-describe('KVManagerCallbackTest', function () {
+export default function kvManagerCallbackTest(){
+describe('kvManagerCallbackTest', function () {
     const config = {
         bundleName : TEST_BUNDLE_NAME,
         userInfo : {
@@ -935,17 +936,5 @@ describe('KVManagerCallbackTest', function () {
             done();
         }
     })
-
-    /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORE_ON_1100
-     * @tc.name [JS-API8]KVStore.On
-     * @tc.desc Test Js Api KVManager.On testcase 101
-     */
-//    it('testKVStoreOn101', 0, async function (done) {
-//        kvStoreNew.on('syncComplete', function (data) {
-//            console.info("testKVStoreOn101 callback call data: " + data);
-//            expect(true).assertTrue();
-//        });
-//        done();
-//    })
 })
+}

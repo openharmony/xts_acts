@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 import factory from '@ohos.data.distributedData'
 
 const KEY_TEST_INT_ELEMENT = 'key_test_int';
@@ -54,7 +54,8 @@ function putBatchString(len, prefix) {
     return entries;
 }
 
-describe('SingleKvStorePromiseTest', function () {
+export default function singleKvStorePromiseTest(){
+describe('singleKvStorePromiseTest', function () {
     const config = {
         bundleName : TEST_BUNDLE_NAME,
         userInfo : {
@@ -942,6 +943,7 @@ describe('SingleKvStorePromiseTest', function () {
      */
     it('testSingleKvStoreOffChange002', 0, async function (done) {
         console.info('testSingleKvStoreOffChange002');
+        let ret = false;
         try {
             var func = function (data) {
                 console.info('testSingleKvStoreOffChange002 ' + JSON.stringify(data));
@@ -1041,10 +1043,9 @@ describe('SingleKvStorePromiseTest', function () {
             kvStore.on('syncComplete', func);
             kvStore.on('syncComplete', func1);
             kvStore.off('syncComplete', func);
-            expect(null).assertFail();
         }catch(e) {
             console.info('testSingleKvStoreOffSyncComplete002 put e ' + e);
-            expect(true).assertTrue();
+            expect(null).assertFail();
         }
         done();
     })
@@ -1067,10 +1068,9 @@ describe('SingleKvStorePromiseTest', function () {
             kvStore.on('syncComplete', func1);
             kvStore.off('syncComplete', func);
             kvStore.off('syncComplete', func1);
-            expect(null).assertFail();
         }catch(e) {
             console.info('testSingleKvStoreOffSyncComplete003 put e ' + e);
-            expect(true).assertTrue();
+            expect(null).assertFail();
         }
         done();
     })
@@ -2733,3 +2733,4 @@ describe('SingleKvStorePromiseTest', function () {
         done();
     })
 })
+}

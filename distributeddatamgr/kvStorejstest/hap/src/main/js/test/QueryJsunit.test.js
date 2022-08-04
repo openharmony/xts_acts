@@ -12,10 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import ddm from '@ohos.data.distributedData';
 
-describe('QueryTest', function() {
+export default function queryTest(){
+describe('queryTest', function() {
 
     /**
      * @tc.number SUB_DISTRIBUTEDDATAMGR_QUERY_RESET_0100
@@ -2362,3 +2363,4 @@ describe('QueryTest', function() {
         done();
     })
 })
+}

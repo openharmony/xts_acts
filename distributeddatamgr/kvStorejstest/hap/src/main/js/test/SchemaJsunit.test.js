@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import ddm from '@ohos.data.distributedData';
 
 const TEST_BUNDLE_NAME = 'ohos.acts.kvStore';
@@ -83,7 +83,8 @@ async function testPutAndGet(kvManager, options) {
     }
 }
 
-describe('SchemaTest', function() {
+export default function schemaTest(){
+describe('schemaTest', function() {
     const config = {
         bundleName : TEST_BUNDLE_NAME,
         userInfo : {
@@ -372,4 +373,4 @@ describe('SchemaTest', function() {
         done();
     })
 })
-
+}

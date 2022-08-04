@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import factory from '@ohos.data.distributedData';
 
 const TEST_BUNDLE_NAME = 'ohos.acts.kvStore';
@@ -23,7 +23,8 @@ const STORE_KEY = 'key_test_string';
 const STORE_VALUE = 'value-test-string';
 var kvStoreNew = null;
 
-describe('KVManagerPromiseTest', function () {
+export default function kvManagerPromiseTest(){
+describe('kvManagerPromiseTest', function () {
     const config = {
         bundleName: TEST_BUNDLE_NAME,
         userInfo: {
@@ -413,9 +414,9 @@ describe('KVManagerPromiseTest', function () {
         try {
             await kvManager.getKVStore(TEST_STORE_ID, optionsInfo).then((store) => {
                 console.info('testKVManagerGetKVStore013 getKVStore success');
-                expect(null).assertFail();
             }).catch((err) => {
                 console.info('testKVManagerGetKVStore013 getKVStore err ' + err);
+                expect(null).assertFail();
             });
         } catch (e) {
             console.info('testKVManagerGetKVStore013 getKVStore e ' + e);
@@ -610,8 +611,8 @@ describe('KVManagerPromiseTest', function () {
         console.info('testKVManagerDeleteKVStore001');
         await kvManager.deleteKVStore(TEST_BUNDLE_NAME, TEST_STORE_ID).then(() => {
             console.info('testKVManagerDeleteKVStore001 deleteKVStore success');
-            expect(null).assertFail();
         }).catch((err) => {
+            expect(null).assertFail();
             console.info('testKVManagerDeleteKVStore001 deleteKVStore err ' + err);
         });
         done();
@@ -862,7 +863,6 @@ describe('KVManagerPromiseTest', function () {
         }
         done();
     })
-
-
-
+    
 })
+}
