@@ -17,7 +17,7 @@ import image from '@ohos.multimedia.image'
 import fileio from '@ohos.fileio'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import { testPng, testJpg } from './testImg'
-import { tc_020Buf, tc_020_1Buf, tc_021Buf, tc_021_1Buf, tc_022Buf } from './testImg'
+import { tcBuf020, tc_020_1Buf, tcBuf021, tcBuf021_1, tcBuf022 } from './testImg'
 import featureAbility from '@ohos.ability.featureAbility'
 
 export default function imageJsTest() {
@@ -218,7 +218,7 @@ export default function imageJsTest() {
         /**
          * @tc.number    : TC_001-6
          * @tc.name      : create pixelmap-callback(editable: true, pixelFormat: RGBA_8888, size: { height: 6, width: 8 } bytes > buffer )
-        * @tc.desc      : 1.create InitializationOptions object
+         * @tc.desc      : 1.create InitializationOptions object
          *                 2.set editable,pixeFormat,size
          *                 3.using color and opts create newPixelMap
          *                 4.return newpixelmap not empty
@@ -336,7 +336,7 @@ export default function imageJsTest() {
                         var bufferArr2 = new Uint8Array(readBuffer);
                         var res = true;
                         for (var i = 0; i < bufferArr2.length; i++) {
-                            if (bufferArr2[i] != tc_020Buf[i]) {
+                            if (bufferArr2[i] != tcBuf020[i]) {
                                 res = false;
                                 console.info('TC_20_buffer' + bufferArr2[i]);
                                 console.info('TC_020 failed');
@@ -498,7 +498,7 @@ export default function imageJsTest() {
                         var bufferArr2 = new Uint8Array(area.pixels);
                         var res = true;
                         for (var i = 0; i < bufferArr2.length; i++) {
-                            if (bufferArr2[i] != tc_021Buf[i]) {
+                            if (bufferArr2[i] != tcBuf021[i]) {
                                 res = false;
                                 console.info('TC_021 failed');
                                 expect(false).assertTrue();
@@ -556,7 +556,7 @@ export default function imageJsTest() {
                         var res = true;
                         for (var i = 0; i < bufferArr.length; i++) {
                             console.info('TC_021-1 buffer ' + bufferArr[i]);
-                            if (bufferArr[i] != tc_021_1Buf[i]) {
+                            if (bufferArr[i] != tcBuf021_1[i]) {
                                 res = false;
                                 console.info('TC_021-1 failed');
                                 expect(false).assertTrue();
@@ -794,7 +794,7 @@ export default function imageJsTest() {
                             var readArr = new Uint8Array(readArea.pixels);
                             var res = true;
                             for (var i = 0; i < readArr.length; i++) {
-                                if (readArr[i] != tc_022Buf[i]) {
+                                if (readArr[i] != tcBuf022[i]) {
                                     res = false;
                                     console.info('TC_022 failed');
                                     expect(false).assertTrue();
@@ -816,6 +816,7 @@ export default function imageJsTest() {
                     done();
                 })
         })
+        
         /**
         * @tc.number    : TC_022-1
         * @tc.name      : writePixels-callback
@@ -859,7 +860,7 @@ export default function imageJsTest() {
                             var readArr = new Uint8Array(readArea.pixels);
                             var res = true;
                             for (var i = 0; i < readArr.length; i++) {
-                                if (readArr[i] != tc_022Buf[i]) {
+                                if (readArr[i] != tcBuf022[i]) {
                                     res = false;
                                     console.info('TC_022-1 failed');
                                     expect(false).assertTrue();

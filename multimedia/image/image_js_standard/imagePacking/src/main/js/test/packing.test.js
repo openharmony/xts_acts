@@ -54,7 +54,7 @@ describe('imagePacking', function () {
         console.info('afterAll case');
     })
 
-    function packing_Promise(done, testNum, pixFormat, arg) {
+    function packingPromise(done, testNum, pixFormat, arg) {
         let opts;
         const Color = new ArrayBuffer(96);
         if (pixFormat == 2) {
@@ -100,7 +100,7 @@ describe('imagePacking', function () {
             })
     }
 
-    function packing_Cb(done, testNum, pixFormat, arg) {
+    function packingCb(done, testNum, pixFormat, arg) {
         let opts;
         const Color = new ArrayBuffer(96);
         if (pixFormat == 2) {
@@ -146,7 +146,7 @@ describe('imagePacking', function () {
             })
     }
 
-    function packing_Cb_Fail(done, testNum, pixFormat, arg) {
+    function packingCbFail(done, testNum, pixFormat, arg) {
         const Color = new ArrayBuffer(96);
         if (pixFormat == 2) {
             var opts = { editable: true, pixelFormat: 2, size: { height: 4, width: 6 } }
@@ -179,7 +179,7 @@ describe('imagePacking', function () {
             })
     }
 
-    function packing_Promise_Fail(done, testNum, pixFormat, arg) {
+    function packingPromiseFail(done, testNum, pixFormat, arg) {
         const Color = new ArrayBuffer(96);
         if (pixFormat == 2) {
             var opts = { editable: true, pixelFormat: 2, size: { height: 4, width: 6 } }
@@ -228,7 +228,7 @@ describe('imagePacking', function () {
      */
     it('SUB_IMAGE_packing_P_001', 0, async function (done) {
         let packOpts = { format: "image/jpeg", quality: 99 }
-        packing_Promise(done, 'SUB_IMAGE_packing_P_001', 2, packOpts)
+        packingPromise(done, 'SUB_IMAGE_packing_P_001', 2, packOpts)
     })
 
     /**
@@ -243,7 +243,7 @@ describe('imagePacking', function () {
      */
     it('SUB_IMAGE_packing_P_002', 0, async function (done) {
         let packOpts = { format: "image/jpeg", quality: 123 }
-        packing_Promise_Fail(done, 'SUB_IMAGE_packing_P_002', 2, packOpts)
+        packingPromiseFail(done, 'SUB_IMAGE_packing_P_002', 2, packOpts)
     })
 
     /**
@@ -258,7 +258,7 @@ describe('imagePacking', function () {
      */
     it('SUB_IMAGE_packing_P_003', 0, async function (done) {
         let packOpts = { format: "image/jpeg" }
-        packing_Promise_Fail(done, 'SUB_IMAGE_packing_P_003', 2, packOpts)
+        packingPromiseFail(done, 'SUB_IMAGE_packing_P_003', 2, packOpts)
     })
 
     /**
@@ -273,7 +273,7 @@ describe('imagePacking', function () {
      */
     it('SUB_IMAGE_packing_P_004', 0, async function (done) {
         let packOpts = { quality: 99 }
-        packing_Promise_Fail(done, 'SUB_IMAGE_packing_P_004', 2, packOpts)
+        packingPromiseFail(done, 'SUB_IMAGE_packing_P_004', 2, packOpts)
     })
 
     /**
@@ -288,7 +288,7 @@ describe('imagePacking', function () {
      */
     it('SUB_IMAGE_packing_P_005', 0, async function (done) {
         let packOpts = { format: "image/png", quality: 99 }
-        packing_Promise_Fail(done, 'SUB_IMAGE_packing_P_005', 2, packOpts)
+        packingPromiseFail(done, 'SUB_IMAGE_packing_P_005', 2, packOpts)
     })
 
     /**
@@ -303,7 +303,7 @@ describe('imagePacking', function () {
      */
     it('SUB_IMAGE_packing_P_006', 0, async function (done) {
         let packOpts = { format: "image/jpeg", quality: 50 }
-        packing_Promise(done, 'SUB_IMAGE_packing_P_006', 5, packOpts)
+        packingPromise(done, 'SUB_IMAGE_packing_P_006', 5, packOpts)
     })
 
     /**
@@ -318,7 +318,7 @@ describe('imagePacking', function () {
      */
     it('SUB_IMAGE_packing_P_007', 0, async function (done) {
         let packOpts = { format: "image/jpeg", quality: 123 }
-        packing_Promise_Fail(done, 'SUB_IMAGE_packing_P_007', 5, packOpts)
+        packingPromiseFail(done, 'SUB_IMAGE_packing_P_007', 5, packOpts)
     })
 
     /**
@@ -333,7 +333,7 @@ describe('imagePacking', function () {
      */
     it('SUB_IMAGE_packing_P_008', 0, async function (done) {
         let packOpts = { format: "image/jpeg" }
-        packing_Promise_Fail(done, 'SUB_IMAGE_packing_P_008', 5, packOpts)
+        packingPromiseFail(done, 'SUB_IMAGE_packing_P_008', 5, packOpts)
     })
 
     /**
@@ -348,7 +348,7 @@ describe('imagePacking', function () {
      */
     it('SUB_IMAGE_packing_P_009', 0, async function (done) {
         let packOpts = { quality: 99 }
-        packing_Promise_Fail(done, 'SUB_IMAGE_packing_P_009', 5, packOpts)
+        packingPromiseFail(done, 'SUB_IMAGE_packing_P_009', 5, packOpts)
     })
 
     /**
@@ -363,12 +363,12 @@ describe('imagePacking', function () {
      */
     it('SUB_IMAGE_packing_P_010', 0, async function (done) {
         let packOpts = { format: "image/png", quality: 99 }
-        packing_Promise_Fail(done, 'SUB_IMAGE_packing_P_010', 5, packOpts)
+        packingPromiseFail(done, 'SUB_IMAGE_packing_P_010', 5, packOpts)
     })
 
     /**
-     * @tc.number    : SUB_IMAGE_packing_Cb_001
-     * @tc.name      : SUB_IMAGE_packing_Cb_001
+     * @tc.number    : SUB_IMAGE_packingCb_001
+     * @tc.name      : SUB_IMAGE_packingCb_001
      * @tc.desc      : 1.create PixelMap
      *                 2.create ImagePacker
      *                 3.call packing
@@ -376,14 +376,14 @@ describe('imagePacking', function () {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it('SUB_IMAGE_packing_Cb_001', 0, async function (done) {
+    it('SUB_IMAGE_packingCb_001', 0, async function (done) {
         let packOpts = { format: "image/jpeg", quality: 99 }
-        packing_Cb(done, 'SUB_IMAGE_packing_Cb_001', 2, packOpts)
+        packingCb(done, 'SUB_IMAGE_packingCb_001', 2, packOpts)
     })
 
     /**
-     * @tc.number    : SUB_IMAGE_packing_Cb_002
-     * @tc.name      : SUB_IMAGE_packing_Cb_002 - callback - RGB565 quality 123
+     * @tc.number    : SUB_IMAGE_packingCb_002
+     * @tc.name      : SUB_IMAGE_packingCb_002 - callback - RGB565 quality 123
      * @tc.desc      : 1.create PixelMap
      *                 2.create ImagePacker
      *                 3.call packing
@@ -391,15 +391,15 @@ describe('imagePacking', function () {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it('SUB_IMAGE_packing_Cb_002', 0, async function (done) {
+    it('SUB_IMAGE_packingCb_002', 0, async function (done) {
         let packOpts = { format: "image/jpeg", quality: 123 }
-        packing_Cb_Fail(done, 'SUB_IMAGE_packing_Cb_002', 2, packOpts)
+        packingCbFail(done, 'SUB_IMAGE_packingCb_002', 2, packOpts)
 
     })
 
     /**
-     * @tc.number    : SUB_IMAGE_packing_Cb_003
-     * @tc.name      : SUB_IMAGE_packing_Cb_003 - callback - RGB565 quality null
+     * @tc.number    : SUB_IMAGE_packingCb_003
+     * @tc.name      : SUB_IMAGE_packingCb_003 - callback - RGB565 quality null
      * @tc.desc      : 1.create PixelMap
      *                 2.create ImagePacker
      *                 3.call packing
@@ -407,14 +407,14 @@ describe('imagePacking', function () {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it('SUB_IMAGE_packing_Cb_003', 0, async function (done) {
+    it('SUB_IMAGE_packingCb_003', 0, async function (done) {
         let packOpts = { format: "image/jpeg" }
-        packing_Cb_Fail(done, 'SUB_IMAGE_packing_Cb_003', 2, packOpts)
+        packingCbFail(done, 'SUB_IMAGE_packingCb_003', 2, packOpts)
     })
 
     /**
-     * @tc.number    : SUB_IMAGE_packing_Cb_004
-     * @tc.name      : SUB_IMAGE_packing_Cb_004 - callback - RGB565 format null
+     * @tc.number    : SUB_IMAGE_packingCb_004
+     * @tc.name      : SUB_IMAGE_packingCb_004 - callback - RGB565 format null
      * @tc.desc      : 1.create PixelMap
      *                 2.create ImagePacker
      *                 3.call packing
@@ -422,14 +422,14 @@ describe('imagePacking', function () {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it('SUB_IMAGE_packing_Cb_004', 0, async function (done) {
+    it('SUB_IMAGE_packingCb_004', 0, async function (done) {
         let packOpts = { quality: 99 }
-        packing_Cb_Fail(done, 'SUB_IMAGE_packing_Cb_004', 2, packOpts)
+        packingCbFail(done, 'SUB_IMAGE_packingCb_004', 2, packOpts)
     })
 
     /**
-     * @tc.number    : SUB_IMAGE_packing_Cb_005
-     * @tc.name      : SUB_IMAGE_packing_Cb_005 - callback - RGB565 wrong format
+     * @tc.number    : SUB_IMAGE_packingCb_005
+     * @tc.name      : SUB_IMAGE_packingCb_005 - callback - RGB565 wrong format
      * @tc.desc      : 1.create PixelMap
      *                 2.create ImagePacker
      *                 3.call packing
@@ -437,14 +437,14 @@ describe('imagePacking', function () {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it('SUB_IMAGE_packing_Cb_005', 0, async function (done) {
+    it('SUB_IMAGE_packingCb_005', 0, async function (done) {
         let packOpts = { format: "image/png", quality: 99 }
-        packing_Cb_Fail(done, 'SUB_IMAGE_packing_Cb_005', 2, packOpts)
+        packingCbFail(done, 'SUB_IMAGE_packingCb_005', 2, packOpts)
     })
 
     /**
-     * @tc.number    : SUB_IMAGE_packing_Cb_006
-     * @tc.name      : SUB_IMAGE_packing_Cb_006
+     * @tc.number    : SUB_IMAGE_packingCb_006
+     * @tc.name      : SUB_IMAGE_packingCb_006
      * @tc.desc      : 1.create PixelMap
      *                 2.create ImagePacker
      *                 3.call packing
@@ -452,14 +452,14 @@ describe('imagePacking', function () {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it('SUB_IMAGE_packing_Cb_006', 0, async function (done) {
+    it('SUB_IMAGE_packingCb_006', 0, async function (done) {
         let packOpts = { format: "image/jpeg", quality: 50 }
-        packing_Cb(done, 'SUB_IMAGE_packing_Cb_006', 5, packOpts)
+        packingCb(done, 'SUB_IMAGE_packingCb_006', 5, packOpts)
     })
 
     /**
-     * @tc.number    : SUB_IMAGE_packing_Cb_007
-     * @tc.name      : SUB_IMAGE_packing_Cb_007 - callback - RGB888 quality 123
+     * @tc.number    : SUB_IMAGE_packingCb_007
+     * @tc.name      : SUB_IMAGE_packingCb_007 - callback - RGB888 quality 123
      * @tc.desc      : 1.create PixelMap
      *                 2.create ImagePacker
      *                 3.call packing
@@ -467,15 +467,15 @@ describe('imagePacking', function () {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it('SUB_IMAGE_packing_Cb_007', 0, async function (done) {
+    it('SUB_IMAGE_packingCb_007', 0, async function (done) {
         let packOpts = { format: "image/jpeg", quality: 123 }
-        packing_Cb_Fail(done, 'SUB_IMAGE_packing_Cb_007', 5, packOpts)
+        packingCbFail(done, 'SUB_IMAGE_packingCb_007', 5, packOpts)
 
     })
 
     /**
-     * @tc.number    : SUB_IMAGE_packing_Cb_008
-     * @tc.name      : SUB_IMAGE_packing_Cb_008 - callback - RGB888 quality null
+     * @tc.number    : SUB_IMAGE_packingCb_008
+     * @tc.name      : SUB_IMAGE_packingCb_008 - callback - RGB888 quality null
      * @tc.desc      : 1.create PixelMap
      *                 2.create ImagePacker
      *                 3.call packing
@@ -483,14 +483,14 @@ describe('imagePacking', function () {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it('SUB_IMAGE_packing_Cb_008', 0, async function (done) {
+    it('SUB_IMAGE_packingCb_008', 0, async function (done) {
         let packOpts = { format: "image/jpeg" }
-        packing_Cb_Fail(done, 'SUB_IMAGE_packing_Cb_008', 5, packOpts)
+        packingCbFail(done, 'SUB_IMAGE_packingCb_008', 5, packOpts)
     })
 
     /**
-     * @tc.number    : SUB_IMAGE_packing_Cb_009
-     * @tc.name      : SUB_IMAGE_packing_Cb_009 - callback - RGB888 format null
+     * @tc.number    : SUB_IMAGE_packingCb_009
+     * @tc.name      : SUB_IMAGE_packingCb_009 - callback - RGB888 format null
      * @tc.desc      : 1.create PixelMap
      *                 2.create ImagePacker
      *                 3.call packing
@@ -498,14 +498,14 @@ describe('imagePacking', function () {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it('SUB_IMAGE_packing_Cb_009', 0, async function (done) {
+    it('SUB_IMAGE_packingCb_009', 0, async function (done) {
         let packOpts = { quality: 99 }
-        packing_Cb_Fail(done, 'SUB_IMAGE_packing_Cb_009', 5, packOpts)
+        packingCbFail(done, 'SUB_IMAGE_packingCb_009', 5, packOpts)
     })
 
     /**
-     * @tc.number    : SUB_IMAGE_packing_Cb_010
-     * @tc.name      : SUB_IMAGE_packing_Cb_010 - callback - RGB888 wrong format
+     * @tc.number    : SUB_IMAGE_packingCb_010
+     * @tc.name      : SUB_IMAGE_packingCb_010 - callback - RGB888 wrong format
      * @tc.desc      : 1.create PixelMap
      *                 2.create ImagePacker
      *                 3.call packing
@@ -513,9 +513,9 @@ describe('imagePacking', function () {
      * @tc.type      : Functional
      * @tc.level     : level 0
      */
-    it('SUB_IMAGE_packing_Cb_010', 0, async function (done) {
+    it('SUB_IMAGE_packingCb_010', 0, async function (done) {
         let packOpts = { format: "image/png", quality: 99 }
-        packing_Cb_Fail(done, 'SUB_IMAGE_packing_Cb_010', 5, packOpts)
+        packingCbFail(done, 'SUB_IMAGE_packingCb_010', 5, packOpts)
     })
 
     /**
