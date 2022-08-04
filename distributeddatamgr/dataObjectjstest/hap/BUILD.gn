@@ -10,28 +10,26 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
 import("//test/xts/tools/build/suite.gni")
 
-group("distributeddatamgr") {
-  testonly = true
-  if (is_standard_system) {
-    deps = [
-      "dataObjectjstest/hap:dataObject_js_test",
-      "dataShare:dataShare",
-      "kvStorejstest/hap:kvStore_js_test",
-      "preferencesjstest/hap:preferences_js_test",
-      "relationalStorejstest/hap:relationalstore_js_test",
-    ]
-  } else {
-    deps = [
-      "kvStorejstest/hap:distributeddatamgrfunctest_hap",
-      "relationalStorejstest/hap:appdatamgrfunctest_hap",
-      "searchtest/hap:searchfunctest_hap",
-    ]
-  }
+ohos_js_hap_suite("dataObject_js_test") {
+  hap_profile = "./src/main/config.json"
+  deps = [
+    ":dataObject_js_assets",
+    ":dataObject_resources",
+  ]
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsDataObjectJsTest"
+  subsystem_name = "distributeddatamgr"
+  part_name = "data_object"
 }
-
-group("pasteboard") {
-  testonly = true
-  deps = [ "Pasteboardjsapitest:ActsPasteBoardJSApiTest" ]
+ohos_js_assets("dataObject_js_assets") {
+  js2abc = true
+  hap_profile = "./src/main/config.json"
+  source_dir = "./src/main/js"
+}
+ohos_resources("dataObject_resources") {
+  sources = [ "./src/main/resources" ]
+  hap_profile = "./src/main/config.json"
 }
