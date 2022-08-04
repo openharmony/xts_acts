@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import events_emitter from '@ohos.events.emitter'
+import emitter from '@ohos.events.emitter'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
 export default function EmitterTest() {
@@ -53,21 +53,21 @@ export default function EmitterTest() {
         /*
          * @tc.number    : EmitterTest_0100
          * @tc.name      : verify on : on(event: InnerEvent, callback: Callback<EventData>): void
-         * @tc.desc      : events_emitter.EventPriority.IDLE
+         * @tc.desc      : emitter.EventPriority.IDLE
          */
         it('EmitterTest_0100', 0, async function (done) {
           console.info(TAG + 'EmitterTest_0100 START')
           innerEvent.eventId = 1
-          innerEvent.priority = events_emitter.EventPriority.IDLE
+          innerEvent.priority = emitter.EventPriority.IDLE
     
           eventData.data.id = 0
           eventData.data.content = 'message_0'
     
-          events_emitter.on(innerEvent, EmitterCallback)
-          events_emitter.emit(innerEvent, eventData)
+          emitter.on(innerEvent, EmitterCallback)
+          emitter.emit(innerEvent, eventData)
           eventData.data.id = 1
           eventData.data.content = 'message_1'
-          events_emitter.emit(innerEvent, eventData)
+          emitter.emit(innerEvent, eventData)
           console.info(TAG + 'EmitterTest_0100 END')
           done()
         })
@@ -75,18 +75,18 @@ export default function EmitterTest() {
         /*
          * @tc.number    : EmitterTest_0200
          * @tc.name      : verify on : once(event: InnerEvent, callback: Callback<EventData>): void
-         * @tc.desc      : events_emitter.EventPriority.LOW
+         * @tc.desc      : emitter.EventPriority.LOW
          */
         it('EmitterTest_0200', 0, async function (done) {
           console.info(TAG + 'EmitterTest_0200 START')
           innerEvent.eventId = 2
-          innerEvent.priority = events_emitter.EventPriority.LOW
+          innerEvent.priority = emitter.EventPriority.LOW
     
           eventData.data.id = 2
           eventData.data.content = 'message_2'
     
-          events_emitter.once(innerEvent, EmitterCallback)
-          events_emitter.emit(innerEvent, eventData)
+          emitter.once(innerEvent, EmitterCallback)
+          emitter.emit(innerEvent, eventData)
           console.info(TAG + 'EmitterTest_0200 END')
           done()
         })
@@ -94,18 +94,18 @@ export default function EmitterTest() {
         /*
          * @tc.number    : EmitterTest_0300
          * @tc.name      : verify on : emit(event: InnerEvent, data?: EventData): void
-         * @tc.desc      : events_emitter.EventPriority.HIGH
+         * @tc.desc      : emitter.EventPriority.HIGH
          */
         it('EmitterTest_0300', 0, async function (done) {
           console.info(TAG + 'EmitterTest_0300 START')
           innerEvent.eventId = 3
-          innerEvent.priority = events_emitter.EventPriority.HIGH
+          innerEvent.priority = emitter.EventPriority.HIGH
     
           eventData.data.id = 3
           eventData.data.content = 'message_3'
     
-          events_emitter.once(innerEvent, EmitterCallback)
-          events_emitter.emit(innerEvent, eventData)
+          emitter.once(innerEvent, EmitterCallback)
+          emitter.emit(innerEvent, eventData)
           console.info(TAG + 'EmitterTest_0300 END')
           done()
         })
@@ -113,18 +113,18 @@ export default function EmitterTest() {
         /*
          * @tc.number    : EmitterTest_0400
          * @tc.name      : verify on : emit(event: InnerEvent, data?: EventData): void
-         * @tc.desc      : events_emitter.EventPriority.IMMEDIATE
+         * @tc.desc      : emitter.EventPriority.IMMEDIATE
          */
         it('EmitterTest_0400', 0, async function (done) {
           console.info(TAG + 'EmitterTest_0400 START')
           innerEvent.eventId = 4
-          innerEvent.priority = events_emitter.EventPriority.IMMEDIATE
+          innerEvent.priority = emitter.EventPriority.IMMEDIATE
     
           eventData.data.id = 4
           eventData.data.content = 'message_4'
     
-          events_emitter.once(innerEvent, EmitterCallback)
-          events_emitter.emit(innerEvent, eventData)
+          emitter.once(innerEvent, EmitterCallback)
+          emitter.emit(innerEvent, eventData)
           console.info(TAG + 'EmitterTest_0400 END')
           done()
         })
@@ -132,19 +132,19 @@ export default function EmitterTest() {
         /*
          * @tc.number    : EmitterTest_0500
          * @tc.name      : verify on : off(eventId: number): void
-         * @tc.desc      : events_emitter.EventPriority.IMMEDIATE
+         * @tc.desc      : emitter.EventPriority.IMMEDIATE
          */
         it('EmitterTest_0500', 0, async function (done) {
           console.info(TAG + 'EmitterTest_0500 START')
           innerEvent.eventId = 5
-          innerEvent.priority = events_emitter.EventPriority.IMMEDIATE
+          innerEvent.priority = emitter.EventPriority.IMMEDIATE
     
           eventData.data.id = 5
           eventData.data.content = 'message_5'
     
-          events_emitter.once(innerEvent, EmitterCallback)
-          events_emitter.emit(innerEvent, eventData)
-          events_emitter.off(5)
+          emitter.once(innerEvent, EmitterCallback)
+          emitter.emit(innerEvent, eventData)
+          emitter.off(5)
           console.info(TAG + 'EmitterTest_0500 END')
           done()
         })
