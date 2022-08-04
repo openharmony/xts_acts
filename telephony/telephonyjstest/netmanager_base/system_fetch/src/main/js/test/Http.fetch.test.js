@@ -201,7 +201,7 @@ describe("Telephony_NetStack_HttpFetchTest", function () {
             success : function(data){
                 console.info("NetStack fetch success "+ JSON.stringify(data))
                 expect(data.code === 200).assertTrue()
-                expect(JSON.parse(data.data)["user-agent"] != undefined).assertTrue();
+                expect(data.data["user-agent"] != undefined).assertTrue();
                 done();
             },
             fail : function(){
