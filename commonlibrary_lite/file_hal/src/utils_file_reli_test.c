@@ -57,10 +57,10 @@ static BOOL UtilsFileReliTestSuiteTearDown(void)
 
 /**
  * @tc.number    : SUB_UTILS_FILE_OPERATION_5200
- * @tc.name      : Creat file after max files opened
+ * @tc.name      : Create file after max files opened
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-LITE_TEST_CASE(UtilsFileReliTestSuite, testCreatFileAfterMaxFilesOpened, Function | MediumTest | Level1)
+LITE_TEST_CASE(UtilsFileReliTestSuite, testCreateFileAfterMaxFilesOpened, Function | MediumTest | Level1)
 {
     // Open 32 files
     int fd32[MAX_NUM_OF_OPENED_FILES] = {0};
@@ -120,13 +120,13 @@ LITE_TEST_CASE(UtilsFileReliTestSuite, testDeleteFileAfterMaxFilesOpened, Functi
     }
     // Delete file
     char* fileName1 = "testReli101-1";
-    UtilsFileClose(fd32[0]);   
+    UtilsFileClose(fd32[0]);
     int ret = UtilsFileDelete(fileName1);
     TEST_ASSERT_EQUAL_INT(0, ret);
     // Delete all files
     for (int i = 1; i < MAX_NUM_OF_OPENED_FILES; i++) {
         UtilsFileClose(fd32[i]);
-    } 
+    }
     for (int i = 0; i < MAX_NUM_OF_OPENED_FILES; i++) {
         int j = i + 1;
         char fileName32[LENGTH_OF_FILE_NAME_BUF] = {0};
@@ -243,7 +243,7 @@ LITE_TEST_CASE(UtilsFileReliTestSuite, testFileOperFlow001, Function | MediumTes
 {
     char* fileName1 = "testReli102a";
     char* fileName2 = "testReli102b";
-    // Creat file
+    // Create file
     int fd1 = UtilsFileOpen(fileName1, O_RDWR_FS | O_CREAT_FS, 0);
     UtilsFileWrite(fd1, g_def, strlen(g_def));
     UtilsFileClose(fd1);
@@ -281,7 +281,7 @@ LITE_TEST_CASE(UtilsFileReliTestSuite, testFileOperFlow002, Function | MediumTes
     char* fileName1 = "testReli102a";
     char* fileName2 = "testReli102b";
     char* fileName3 = "testReli102c";
-    // Creat file
+    // Create file
     int fd1 = UtilsFileOpen(fileName1, O_RDWR_FS | O_CREAT_FS, 0);
     UtilsFileWrite(fd1, g_def, strlen(g_def));
     UtilsFileClose(fd1);
@@ -323,7 +323,7 @@ LITE_TEST_CASE(UtilsFileReliTestSuite, testEmptyFileOperFlow001, Function | Medi
 {
     char* fileName1 = "testReli103a";
     char* fileName2 = "testReli103b";
-    // Creat an empty file
+    // Create an empty file
     int fd1 = UtilsFileOpen(fileName1, O_RDWR_FS | O_CREAT_FS, 0);
     UtilsFileClose(fd1);
     // Copy file
@@ -359,7 +359,7 @@ LITE_TEST_CASE(UtilsFileReliTestSuite, testEmptyFileOperFlow002, Function | Medi
     char* fileName1 = "testReli103a";
     char* fileName2 = "testReli103b";
     char* fileName3 = "testReli103c";
-    // Creat an empty file
+    // Create an empty file
     int fd1 = UtilsFileOpen(fileName1, O_RDWR_FS | O_CREAT_FS, 0);
     UtilsFileClose(fd1);
     // Copy file
