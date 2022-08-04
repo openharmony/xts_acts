@@ -20,10 +20,10 @@ group("aacommand") {
       "AACommand07:AACommand07",
       "AACommand08:AACommand08",
       "AACommandPrintSync:AACommandPrintSync",
-      "AACommandPrintSyncTest:AACommandPrintSyncTest",
+      "AACommandPrintSyncTest:ActsAACommandPrintSyncTest",
       "AACommandRelyHap:AACommandRelyHap",
       "AACommandpackage:AACommandpackage",
-      "AACommandtest:AACommandtest",
+      "AACommandtest:ActsAACommandTest",
     ]
   }
 }
