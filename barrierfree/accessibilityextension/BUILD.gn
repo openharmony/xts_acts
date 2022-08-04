@@ -23,6 +23,8 @@ ohos_js_hap_suite("ActsAccessibilityExtensionTest") {
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsAccessibilityExtensionTest"
+  part_name = "accessibility"
+  subsystem_name = "barrierfree"
 }
 
 ohos_app_scope("accessibilityextension_app_profile") {
