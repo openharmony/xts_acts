@@ -25,7 +25,7 @@ function sleep(delay) {
 }
 
 function checkWifiPowerOn(){
-	console.info("Wifi_test/wifi status:" + wifi.isWifiActive());
+	console.info("wifi_test/wifi status:" + wifi.isWifiActive());
 }
 
 let GroupOwnerBand = {
@@ -34,7 +34,7 @@ let GroupOwnerBand = {
     GO_BAND_5GHZ : 2,
 }
 
-describe('ACTS_WifiTest', function () {
+describe('ActsWifiTest', function () {
     beforeEach(function () {
         console.info("beforeEach start");
         checkWifiPowerOn();
@@ -101,7 +101,6 @@ describe('ACTS_WifiTest', function () {
                 if (err) {
                     console.error('wifi_test / failed to get getCurrentGroup: ' + JSON.stringify(err));
                     expect().assertFail();
-                    return;
                 }else{
                     console.info("[wifi_test] getCurrentGroup [callback] -> " + JSON.stringify(result));
                     let removeConfig = wifi.removeGroup();
@@ -215,8 +214,6 @@ describe('ACTS_WifiTest', function () {
                 expect(true).assertEqual(resultLength!=0);
                 done()
             });
-      
-        done();
     })
 
 /**
@@ -506,3 +503,4 @@ describe('ACTS_WifiTest', function () {
 
     console.log("*************[wifi_test] start wifi js unit test end*************");
 })
+
