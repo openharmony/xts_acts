@@ -19,6 +19,8 @@ module_output_path = "hit/GraphicNapiDrawingTest"
 
 ohos_moduletest_suite("GraphicNapiDrawingTest") {
   module_out_path = module_output_path
+  subsystem_name = "graphic"
+  part_name = "graphic_standard"
 
   sources = [
     "NativeDrawingBitmapTest.cpp",
