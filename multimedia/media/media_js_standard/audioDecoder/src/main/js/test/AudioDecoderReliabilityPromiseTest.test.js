@@ -149,6 +149,7 @@ describe('AudioDecoderReliabilityPromise', function () {
     };
     let expectError = false;
     let fdRead;
+    let lockFlag = false;
 
     beforeAll(function() {
         console.info('beforeAll case');
@@ -261,6 +262,7 @@ describe('AudioDecoderReliabilityPromise', function () {
             380, 378, 391, 380, 339, 390, 383, 375];
         ES_LENGTH = 500;
         expectError = false;
+        lockFlag = false;
     })
 
     afterEach(async function() {
@@ -308,6 +310,7 @@ describe('AudioDecoderReliabilityPromise', function () {
         sawOutputEOS = false;
         inputQueue = [];
         outputQueue = [];
+        lockFlag = false;
     }
 
     async function createAudioDecoder(savepath, mySteps, done) {
@@ -416,6 +419,7 @@ describe('AudioDecoderReliabilityPromise', function () {
             case FLUSH:
                 mySteps.shift();
                 console.info(`case to flush`);
+                lockFlag = true;
                 inputQueue = [];
                 outputQueue = [];
                 audioDecodeProcessor.flush().then(async() => {
@@ -426,6 +430,7 @@ describe('AudioDecoderReliabilityPromise', function () {
                         workdoneAtEOS = true;
                         flushAtEOS = false;
                     }
+                    lockFlag = false;
                     nextStep(mySteps, done);
                 }, failCallback).catch(failCatch);
                 break;
@@ -525,9 +530,11 @@ describe('AudioDecoderReliabilityPromise', function () {
             }
             timestamp += ES[frameCnt]/samplerate;
             frameCnt += 1;
-            audioDecodeProcessor.pushInputData(inputobject).then(() => {
-                console.info('case queueInput success');
-            });
+            if (!lockFlag) {
+                audioDecodeProcessor.pushInputData(inputobject).then(() => {
+                    console.info('case queueInput success');
+                });
+            }
         }
     }
 
@@ -546,9 +553,11 @@ describe('AudioDecoderReliabilityPromise', function () {
             else{
                 console.info("not last frame, continue");
             }
-            audioDecodeProcessor.freeOutputBuffer(outputobject).then(() => {
-                console.info('release output success');
-            });
+            if (!lockFlag) {
+                audioDecodeProcessor.freeOutputBuffer(outputobject).then(() => {
+                    console.info('release output success');
+                });
+            }
         }
     }
 
@@ -885,7 +894,7 @@ describe('AudioDecoderReliabilityPromise', function () {
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_START_PROMISE_0500', 0, async function (done) {
         let savepath = BASIC_PATH + 'start_0500.pcm';
-        let mySteps = new Array(CONFIGURE, PREPARE, START, FLUSH, START_ERROR, END);
+        let mySteps = new Array(CONFIGURE, PREPARE, START, FLUSH, START, END);
         createAudioDecoder(savepath, mySteps, done);
     })
 
@@ -985,7 +994,7 @@ describe('AudioDecoderReliabilityPromise', function () {
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_FLUSH_PROMISE_0400', 0, async function (done) {
         let savepath = BASIC_PATH + 'flush_0400.pcm';
-        let mySteps = new Array(CONFIGURE, PREPARE, START, FLUSH, WAITFORALLOUTS);
+        let mySteps = new Array(CONFIGURE, PREPARE, START, FLUSH, START, WAITFORALLOUTS);
         workdoneAtEOS = true;
         createAudioDecoder(savepath, mySteps, done);
     })
@@ -1000,7 +1009,7 @@ describe('AudioDecoderReliabilityPromise', function () {
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_FLUSH_PROMISE_0500', 0, async function (done) {
         let savepath = BASIC_PATH + 'flush_0500.pcm';
-        let mySteps = new Array(CONFIGURE, PREPARE, START, FLUSH, FLUSH, WAITFORALLOUTS);
+        let mySteps = new Array(CONFIGURE, PREPARE, START, FLUSH, START, FLUSH, START, WAITFORALLOUTS);
         workdoneAtEOS = true;
         createAudioDecoder(savepath, mySteps, done);
     })
@@ -1029,7 +1038,7 @@ describe('AudioDecoderReliabilityPromise', function () {
     */
     it('SUB_MEDIA_AUDIO_DECODER_API_FLUSH_PROMISE_0700', 0, async function (done) {
         let savepath = BASIC_PATH + 'flush_0700.pcm';
-        let mySteps = new Array(CONFIGURE, PREPARE, START, HOLDON, FLUSH, END);
+        let mySteps = new Array(CONFIGURE, PREPARE, START, HOLDON, FLUSH, START, END);
         EOSFrameNum = 2;
         createAudioDecoder(savepath, mySteps, done);
     })

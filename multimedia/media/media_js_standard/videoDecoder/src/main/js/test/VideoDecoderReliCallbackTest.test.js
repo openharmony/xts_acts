@@ -75,6 +75,7 @@ describe('VideoDecoderReliCallbackTest', function () {
         1798, 170, 124, 121, 1666, 157, 128, 130, 1678, 135, 118, 1804, 169, 135, 125, 1837, 168, 124, 124];
     let ES_FRAME_SIZE = H264_FRAME_SIZE_60FPS_320;
     let fdRead;
+    let lockFlag = false;
 
     beforeAll(function() {
         console.info('beforeAll case');
@@ -97,6 +98,7 @@ describe('VideoDecoderReliCallbackTest', function () {
         inputEosFlag = false;
         position = 0;
         surfaceID = globalThis.value;
+        lockFlag = false;
     })
 
     afterEach(async function() {
@@ -245,6 +247,7 @@ describe('VideoDecoderReliCallbackTest', function () {
         });
     }
     function toFlush(mySteps, done, expectFail) {
+        lockFlag = true;
         videoDecodeProcessor.flush((err) => {
             console.info(`case flush callback`);
             printError(err, expectFail);
@@ -255,6 +258,7 @@ describe('VideoDecoderReliCallbackTest', function () {
                 timestamp = 0;
                 frameCountIn = 1;
             }
+            lockFlag = false;
             toNextStep(mySteps, done);
         });
     }
@@ -474,7 +478,7 @@ describe('VideoDecoderReliCallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_DECODER_FUNCTION_CALLBACK_01_0200', 0, async function (done) {
         let mySteps = new Array(DECODE_STEP.CONFIGURE, DECODE_STEP.SETSURFACE, DECODE_STEP.PREPARE, DECODE_STEP.START,
-            DECODE_STEP.FLUSH, DECODE_STEP.WAIT_FOR_ALL_OUTS);
+            DECODE_STEP.FLUSH, DECODE_STEP.START, DECODE_STEP.WAIT_FOR_ALL_OUTS);
         workdoneAtEOS = true;
         toCreateVideoDecoderByMime('video/avc', mySteps, done);
     })
@@ -825,7 +829,7 @@ describe('VideoDecoderReliCallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_DECODER_API_START_CALLBACK_0500', 0, async function (done) {
         let mySteps = new Array(DECODE_STEP.CONFIGURE, DECODE_STEP.SETSURFACE, DECODE_STEP.PREPARE, DECODE_STEP.START,
-            DECODE_STEP.FLUSH, DECODE_STEP.START, DECODE_STEP.ERROR, DECODE_STEP.RELEASE);
+            DECODE_STEP.FLUSH, DECODE_STEP.START, DECODE_STEP.RELEASE);
         toCreateVideoDecoderByMime('video/avc', mySteps, done);
     })
 
@@ -937,7 +941,7 @@ describe('VideoDecoderReliCallbackTest', function () {
     */
     it('SUB_MEDIA_VIDEO_DECODER_API_FLUSH_CALLBACK_0500', 0, async function (done) {
         let mySteps = new Array(DECODE_STEP.CONFIGURE, DECODE_STEP.SETSURFACE, DECODE_STEP.PREPARE, DECODE_STEP.START,
-            DECODE_STEP.FLUSH, DECODE_STEP.FLUSH, DECODE_STEP.RELEASE);
+            DECODE_STEP.FLUSH, DECODE_STEP.START, DECODE_STEP.FLUSH, DECODE_STEP.RELEASE);
         toCreateVideoDecoderByMime('video/avc', mySteps, done);
     })
 

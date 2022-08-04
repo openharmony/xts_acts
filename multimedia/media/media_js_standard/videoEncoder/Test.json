@@ -17,7 +17,6 @@
         {
             "type": "ShellKit",
             "run-command": [
-                "setenforce 0",
                 "rm -rf /storage/media/100/local/files/*",
                 "mkdir -p /data/app/el2/100/base/ohos.acts.multimedia.video.videoencoder/haps/entry/files/",
                 "chmod 777 -R /data/app/el2/100/base/ohos.acts.multimedia.video.videoencoder/haps/entry/files/"
@@ -41,7 +40,6 @@
                 "chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.video.videoencoder/haps/entry/files/*"
             ],
             "teardown-command":[
-                "setenforce 1"
             ]
         }
     ]
