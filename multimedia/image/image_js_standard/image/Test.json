@@ -22,9 +22,7 @@
                 "mkdir -p /data/app/el2/100/base/ohos.acts.multimedia.image/haps/entry/files/",
                 "chmod -R 666 /data/app/el2/100/base/ohos.acts.multimedia.image/haps/entry/files/*"
             ],
-            "teardown-command":[
-
-            ]
+            "teardown-command": []
         },
         {
             "type": "PushKit",
@@ -37,6 +35,14 @@
                 "./resource/image/test.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image/haps/entry/files",
                 "./resource/image/moving_test.gif ->/data/app/el2/100/base/ohos.acts.multimedia.image/haps/entry/files"
             ]
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "hilog -Q pidoff",
+                "hilog -b D"
+            ],
+            "teardown-command": []
         }
     ]
 }

@@ -14,6 +14,9 @@
  */
 
 import imageJsTest from './image.test.js'
+import addImage from './addImage.test.js'
+
 export default function testsuite() {
     imageJsTest()
+    addImage()
 }

@@ -15,9 +15,28 @@
 
 import image from '@ohos.multimedia.image'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import featureAbility from '@ohos.ability.featureAbility'
+import fileio from '@ohos.fileio'
 
 export default function imagePacking() {
 describe('imagePacking', function () {
+    let filePath;
+    let fdNumber;
+    async function getFd(fileName) {
+        let context = await featureAbility.getContext();
+        await context.getFilesDir().then((data) => {
+            filePath = data + '/' + fileName;
+            console.info('image case filePath is ' + filePath);
+        })
+        await fileio.open(filePath).then((data) => {
+            fdNumber = data;
+            console.info("image case open fd success " + fdNumber);
+        }, (err) => {
+            console.info("image cese open fd fail" + err)
+        }).catch((err) => {
+            console.info("image case open fd err " + err);
+        })
+    }
 
     beforeAll(async function () {
         console.info('beforeAll case');
@@ -497,6 +516,447 @@ describe('imagePacking', function () {
     it('SUB_IMAGE_packing_Cb_010', 0, async function (done) {
         let packOpts = { format: "image/png", quality: 99 }
         packing_Cb_Fail(done, 'SUB_IMAGE_packing_Cb_010', 5, packOpts)
+    })
+
+    /**
+         * @tc.number    : TC_062
+         * @tc.name      : packing ImageSource - promise
+         * @tc.desc      : 1.create ImageSource
+         *                 2.call packing
+         *                 3.return array
+         *                 4.callbackcall return undefined
+         * @tc.size      : MEDIUM 
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+     it('TC_062', 0, async function (done) {
+        try {
+            await getFd('test.png');
+            const imageSourceApi = image.createImageSource(fdNumber);
+            if (imageSourceApi == undefined) {
+                console.info('TC_062 create image source failed');
+                expect(false).assertTrue();
+                done();
+            } else {
+                const imagePackerApi = image.createImagePacker();
+                if (imagePackerApi == undefined) {
+                    console.info('TC_062 create image packer failed');
+                    expect(false).assertTrue();
+                    done();
+                } else {
+                    let packOpts = { format: "image/jpeg", quality: 99 }
+                    imagePackerApi.packing(imageSourceApi, packOpts)
+                        .then(data => {
+                            console.info('TC_062 success');
+                            expect(data != undefined).assertTrue();
+                            done();
+                        }).catch(error => {
+                            console.log('TC_062 error: ' + error);
+                            expect(false).assertFail();
+                            done();
+                        })
+                }
+            }
+        } catch (error) {
+            console.info('TC_062 error: ' + error);
+            expect(false).assertTrue();
+            done();
+        }
+
+    })
+
+    /**
+     * @tc.number    : TC_062-1 
+     * @tc.name      : packing ImageSource - callback
+     * @tc.desc      : 1.create ImageSource
+     *                 2.call packing
+     *                 3.return array
+     *                 4.callbackcall return undefined
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_062-1', 0, async function (done) {
+        try {
+            await getFd('test.png');
+            const imageSourceApi = image.createImageSource(fdNumber);
+            if (imageSourceApi == undefined) {
+                console.info('TC_062-1 create image source failed');
+                expect(false).assertTrue();
+                done();
+            } else {
+                const imagePackerApi = image.createImagePacker();
+                if (imagePackerApi == undefined) {
+                    console.info('TC_062-1 create image packer failed');
+                    expect(false).assertTrue();
+                    done();
+                } else {
+                    let packOpts = { format: "image/jpeg", quality: 1 }
+                    imagePackerApi.packing(imageSourceApi, packOpts, (err, data) => {
+                        console.info('TC_062-1 success' + JSON.stringify(data));
+                        expect(data != undefined).assertTrue();
+                        done();
+                    })
+                }
+            }
+        } catch (error) {
+            console.info('TC_062-1 error: ' + error);
+            expect(false).assertTrue();
+            done();
+        }
+    })
+
+    /**
+     * @tc.number    : TC_062-2
+     * @tc.name      : packing ImageSource - callback - wrong format
+     * @tc.desc      : 1.create ImageSource
+     *                 2.call packing
+     *                 3.return array
+     *                 4.callbackcall return undefined
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_062-2', 0, async function (done) {
+        try {
+            await getFd('test.png');
+            const imageSourceApi = image.createImageSource(fdNumber);
+            if (imageSourceApi == undefined) {
+                console.info('TC_062-2 create image source failed');
+                expect(false).assertTrue();
+                done();
+            } else {
+                const imagePackerApi = image.createImagePacker();
+                if (imagePackerApi == undefined) {
+                    console.info('TC_062-2 create image packer failed');
+                    expect(false).assertTrue();
+                    done();
+                } else {
+                    let packOpts = { format: "image/gif", quality: 98 }
+                    imagePackerApi.packing(imageSourceApi, packOpts, (err, data) => {
+                        console.info('TC_062-2 success');
+                        expect(data == undefined).assertTrue();
+                        console.info(data);
+                        done();
+                    })
+                }
+            }
+        } catch (error) {
+            console.info('TC_062-2 error: ' + error);
+            expect(false).assertTrue();
+            done();
+        }
+    })
+
+    /**
+     * @tc.number    : TC_062-3
+     * @tc.name      : packing ImageSource - callback - wrong quality
+     * @tc.desc      : 1.create ImageSource
+     *                 2.call packing
+     *                 3.call return array
+     *                 4.callbackcall return undefined
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_062-3', 0, async function (done) {
+        try {
+            await getFd('test.png');
+            const imageSourceApi = image.createImageSource(fdNumber);
+            if (imageSourceApi == undefined) {
+                console.info('TC_062-3 create image source failed');
+                expect(false).assertTrue();
+                done();
+            } else {
+                const imagePackerApi = image.createImagePacker();
+                if (imagePackerApi == undefined) {
+                    console.info('TC_062-3 create image packer failed');
+                    expect(false).assertTrue();
+                    done();
+                } else {
+                    let packOpts = { format: "image/jpeg", quality: 101 }
+                    imagePackerApi.packing(imageSourceApi, packOpts, (err, data) => {
+                        console.info('TC_062-3 success');
+                        expect(data == undefined).assertTrue();
+                        console.info(data);
+                        done();
+                    })
+                }
+            }
+        } catch (error) {
+            console.info('TC_062-3 error: ' + error);
+            expect(false).assertTrue();
+            done();
+        }
+    })
+
+    /**
+     * @tc.number    : TC_062-4 
+     * @tc.name      : createImagePacker
+     * @tc.desc      : 1.create ImageSource
+     *                 2.call packing
+     *                 3.return array
+     *                 4.callbackcall return undefined
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_062-4', 0, async function (done) {
+        try {
+            await getFd('test.png');
+            const imageSourceApi = image.createImageSource(fdNumber);
+            if (imageSourceApi == undefined) {
+                console.info('TC_062-4 create image source failed');
+                expect(false).assertTrue();
+                done();
+            } else {
+                const imagePackerApi = image.createImagePacker();
+                if (imagePackerApi == undefined) {
+                    console.info('TC_062-4 create image packer failed');
+                    expect(false).assertTrue();
+                    done();
+                } else {
+                    console.info('TC_062-4 create image packer success');
+                    expect(true).assertTrue();
+                    done();
+                }
+            }
+        } catch (error) {
+            console.info('TC_062-4 error: ' + error);
+            expect(false).assertTrue();
+            done();
+        }
+    })
+
+    /**
+     * @tc.number    : TC_062-5
+     * @tc.name      : packing ImageSource - promise - no quality
+     * @tc.desc      : 1.create ImageSource
+     *                 2.call packing
+     *                 3.call return array
+     *                 4.callbackcall return undefined
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+
+    it('TC_062-5', 0, async function (done) {
+        try {
+            await getFd('test.png');
+            const imageSourceApi = image.createImageSource(fdNumber);
+            if (imageSourceApi == undefined) {
+                console.info('TC_062-5 create image source failed');
+                expect(false).assertTrue();
+                done();
+            } else {
+                const imagePackerApi = image.createImagePacker();
+                if (imagePackerApi == undefined) {
+                    console.info('TC_062-5 create image packer failed');
+                    expect(false).assertTrue();
+                    done();
+                } else {
+                    let packOpts = { format: "image/jpeg" }
+                    imagePackerApi.packing(imageSourceApi, packOpts)
+                        .then(data => {
+                            console.info('TC_062-5 failed');
+                            expect(data == undefined).assertTrue();
+                            done();
+                        }).catch(error => {
+                            console.log('TC_062-5 error: ' + error);
+                            console.log('TC_062-5 success');
+                            expect(true).assertTrue();
+                            done();
+                        })
+                }
+            }
+        } catch (error) {
+            console.info('TC_062-5 error: ' + error);
+            expect(false).assertTrue();
+            done();
+        }
+    })
+
+    /**
+     * @tc.number    : TC_062-6
+     * @tc.name      : packing ImageSource - promise - no format
+     * @tc.desc      : 1.create ImageSource
+     *                 2.call packing
+     *                 3.call return array
+     *                 4.callbackcall return undefined
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_062-6', 0, async function (done) {
+        try {
+            await getFd('test.png');
+            const imageSourceApi = image.createImageSource(fdNumber);
+            if (imageSourceApi == undefined) {
+                console.info('TC_062-6 create image source failed');
+                expect(false).assertTrue();
+                done();
+            } else {
+                const imagePackerApi = image.createImagePacker();
+                if (imagePackerApi == undefined) {
+                    console.info('TC_062-6 create image packer failed');
+                    expect(false).assertTrue();
+                    done();
+                } else {
+                    let packOpts = { quality: 50 }
+                    imagePackerApi.packing(imageSourceApi, packOpts)
+                        .then(data => {
+                            console.info('TC_062-6 failed');
+                            expect(data == undefined).assertTrue();
+                            done();
+                        }).catch(error => {
+                            console.log('TC_062-6 error: ' + error);
+                            console.log('TC_062-6 success');
+                            expect(true).assertTrue();
+                            done();
+                        })
+                }
+            }
+        } catch (error) {
+            console.info('TC_062-6 error: ' + error);
+            expect(false).assertTrue();
+            done();
+        }
+    })
+
+    /**
+         * @tc.number    : TC_062-7 
+         * @tc.name      : packing ImageSource - callback - quality 100
+         * @tc.desc      : 1.create ImageSource
+         *                 2.call packing
+         *                 3.return array
+         *                 4.callbackcall return undefined
+         * @tc.size      : MEDIUM 
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+
+    it('TC_062-7', 0, async function (done) {
+        try {
+            await getFd('test.png');
+            const imageSourceApi = image.createImageSource(fdNumber);
+            if (imageSourceApi == undefined) {
+                console.info('TC_062-7 create image source failed');
+                expect(false).assertTrue();
+                done();
+            } else {
+                const imagePackerApi = image.createImagePacker();
+                if (imagePackerApi == undefined) {
+                    console.info('TC_062-7 create image packer failed');
+                    expect(false).assertTrue();
+                    done();
+                } else {
+                    let packOpts = { format: "image/jpeg", quality: 100 }
+                    imagePackerApi.packing(imageSourceApi, packOpts, (err, data) => {
+                        if (err) {
+                            expect(false).assertTrue();
+                            console.info('TC_062-7 error: ' + err);
+                            done();
+                            return
+                        }
+                        if (data != undefined) {
+                            console.info('TC_062-7 success');
+                            expect(true).assertTrue();
+                            done();
+                        } else {
+                            except(false).assertTrue();
+                            console.info('TC_062-7 failed');
+                            done();
+                        }
+                    })
+                }
+            }
+        } catch (error) {
+            console.info('TC_062-7 error: ' + error);
+            expect(false).assertTrue();
+            done();
+        }
+    })
+
+    /**
+     * @tc.number    : TC_062-8 
+     * @tc.name      : packing ImageSource - callback - quality 0
+     * @tc.desc      : 1.create ImageSource
+     *                 2.call packing
+     *                 3.return array
+     *                 4.callbackcall return undefined
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_062-8', 0, async function (done) {
+        try {
+            await getFd('test.png');
+            const imageSourceApi = image.createImageSource(fdNumber);
+            if (imageSourceApi == undefined) {
+                console.info('TC_062-8 create image source failed');
+                expect(false).assertTrue();
+                done();
+            } else {
+                const imagePackerApi = image.createImagePacker();
+                if (imagePackerApi == undefined) {
+                    console.info('TC_062-8 create image packer failed');
+                    expect(false).assertTrue();
+                    done();
+                } else {
+                    let packOpts = { format: "image/jpeg", quality: 0 }
+                    imagePackerApi.packing(imageSourceApi, packOpts, (err, data) => {
+                        console.info('TC_062-8 success');
+                        expect(data != undefined).assertTrue();
+                        done();
+                    })
+                }
+            }
+        } catch (error) {
+            console.info('TC_062-8 error: ' + error);
+            expect(false).assertTrue();
+            done();
+        }
+    })
+
+    /**
+     * @tc.number    : TC_062-9 
+     * @tc.name      : packing ImageSource - callback - quality -1
+     * @tc.desc      : 1.create ImageSource
+     *                 2.call packing
+     *                 3.return array
+     *                 4.callbackcall return undefined
+     * @tc.size      : MEDIUM 
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('TC_062-9', 0, async function (done) {
+        try {
+            await getFd('test.png');
+            const imageSourceApi = image.createImageSource(fdNumber);
+            if (imageSourceApi == undefined) {
+                console.info('TC_062-9 create image source failed');
+                expect(false).assertTrue();
+                done();
+            } else {
+                const imagePackerApi = image.createImagePacker();
+                if (imagePackerApi == undefined) {
+                    console.info('TC_062-9 create image packer failed');
+                    expect(false).assertTrue();
+                    done();
+                } else {
+                    let packOpts = { format: "image/jpeg", quality: -1 }
+                    imagePackerApi.packing(imageSourceApi, packOpts, (err, data) => {
+                        console.info('TC_062-9 success');
+                        expect(data == undefined).assertTrue();
+                        done();
+                    })
+                }
+            }
+        } catch (error) {
+            console.info('TC_062-9 error: ' + error);
+            expect(false).assertTrue();
+            done();
+        }
     })
 
 })}

@@ -10,14 +10,11 @@
     },
     "kits": [
         {
-            "type": "ShellKit",
-            "run-command": [],
-            "teardown-command": []
-        },
-        {
-            "type": "PushKit",
-            "pre-push": [],
-            "push": []
+            "test-file-name": [
+                "ActsImageReceiverJsTest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
         },
         {
             "type": "ShellKit",
@@ -28,13 +25,6 @@
                 "aa start  -a MediaScannerAbility -b com.ohos.medialibrary.MediaScannerAbilityA"
             ],
             "teardown-command": []
-        },
-        {
-            "test-file-name": [
-                "ActsImageReceiverJsTest.hap"
-            ],
-            "type": "AppInstallKit",
-            "cleanup-apps": true
         }
     ]
 }

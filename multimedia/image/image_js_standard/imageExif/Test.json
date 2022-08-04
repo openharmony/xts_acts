@@ -32,6 +32,14 @@
 				"./resource/image/test_exif.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.Exif/haps/entry/files",
 				"./resource/image/test_exif1.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.Exif/haps/entry/files"
             ]
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "hilog -Q pidoff",
+                "hilog -b D"
+            ],
+            "teardown-command": []
         }
     ]
     

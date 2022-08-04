@@ -17,6 +17,7 @@ import image from '@ohos.multimedia.image'
 import fileio from '@ohos.fileio'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import { testPng, testJpg } from './testImg'
+import { tc_020Buf, tc_020_1Buf, tc_021Buf, tc_021_1Buf, tc_022Buf } from './testImg'
 import featureAbility from '@ohos.ability.featureAbility'
 
 export default function imageJsTest() {
@@ -63,6 +64,1155 @@ export default function imageJsTest() {
             console.info('afterAll case');
         })
 
+        /**
+             * @tc.number    : TC_001
+             * @tc.name      : create pixelmap-promise (editable: true, pixelFormat: RGBA_8888, size: { height: 4, width: 6 }, bytes = buffer)
+             * @tc.desc      : 1.create InitializationOptions object
+             *                 2.set editable,pixeFormat,size
+             *                 3.using color and opts create newPixelMap
+             *                 4.return newpixelmap not empty
+             * @tc.size      : MEDIUM
+             * @tc.type      : Functional
+             * @tc.level     : Level 0
+             */
+        it('TC_001', 0, async function (done) {
+            const Color = new ArrayBuffer(96);
+            let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+            image.createPixelMap(Color, opts)
+                .then(pixelmap => {
+                    globalpixelmap = pixelmap;
+                    expect(pixelmap != undefined).assertTrue();
+                    console.info('TC_001 success');
+                    done();
+                })
+                .catch(error => {
+                    console.log('TC_001 error: ' + error);
+                    expect().assertFail();
+                    done();
+                })
+        })
+
+        /**
+         * @tc.number    : TC_001-1
+         * @tc.name      : create pixelmap-callback (editable: false, pixelFormat: RGBA_8888, size: { height: 4, width: 6 },bytes = buffer)
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixelFormat,size
+         *                 3.using colorand opts create newPixelMap
+         *                 4.return newpixelmap not empty
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+        */
+        it('TC_001-1', 0, async function (done) {
+            const Color = new ArrayBuffer(96);
+            let opts = { editable: false, pixelFormat: 3, size: { height: 4, width: 6 } }
+            image.createPixelMap(Color, opts, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+                expect(pixelmap != undefined).assertTrue();
+                console.info('TC_001-1 success');
+                done();
+            })
+        })
+
+        /**
+         * @tc.number    : TC_001-2
+         * @tc.name      : createpixelmap-promise (editable: true, pixelFormat: RGB_565, size: { height: 6, width: 8 },bytes = buffer)
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixelFormat,size
+         *                 3.using colorand opts create newPixelMap
+         *                 4.return newpixelmap not empty
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('TC_001-2', 0, async function (done) {
+            const Color = new ArrayBuffer(96);
+            let opts = { editable: true, pixelFormat: 2, size: { height: 6, width: 8 } }
+            image.createPixelMap(Color, opts)
+                .then(pixelmap => {
+                    globalpixelmap = pixelmap;
+                    expect(pixelmap != undefined).assertTrue();
+                    console.info('TC_001-2 success');
+                    done();
+                })
+                .catch(error => {
+                    console.log('TC_001-2 error: ' + error);
+                    expect().assertFail();
+                    done();
+                })
+        })
+
+        /**
+         * @tc.number    : TC_001-3
+         * @tc.name      : createpixelmap-callback (editable: false, pixelFormat: RGB_565, size: { height: 6, width: 8 },bytes = buffer)
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixelFormat,size
+         *                 3.using colorand opts create newPixelMap
+         *                 4.return newpixelmap not empty
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('TC_001-3', 0, async function (done) {
+            const Color = new ArrayBuffer(96);
+            let opts = { editable: false, pixelFormat: 2, size: { height: 6, width: 8 } }
+            image.createPixelMap(Color, opts, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+                expect(pixelmap != undefined).assertTrue();
+                console.info('TC_001-3 success');
+                done();
+
+            })
+        })
+
+        /**
+         * @tc.number    : TC_001-4
+         * @tc.name      : createpixelmap-promise(editable: true, pixelFormat: unkonwn, size: { height: 6, width: 8 })
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixelFormat,size
+         *                 3.using colorand opts create newPixelMap
+         *                 4.return newpixelmap not empty
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('TC_001-4', 0, async function (done) {
+            const Color = new ArrayBuffer(96);
+            let opts = { editable: true, pixelFormat: 0, size: { height: 6, width: 8 } }
+            image.createPixelMap(Color, opts)
+                .then(pixelmap => {
+                    globalpixelmap = pixelmap;
+                    expect(pixelmap != undefined).assertTrue();
+                    console.info('TC_001-4 success');
+                    done();
+                })
+                .catch(error => {
+                    console.log('TC_001-4 error: ' + error);
+                    expect().assertFail();
+                    done();
+                })
+        })
+
+        /**
+         * @tc.number    : TC_001-5
+         * @tc.name      : create pixelmap-callback(editable: false, pixelFormat: unkonwn, size: { height: 6, width: 8 })
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixelFormat,size
+         *                 3.using colorand opts create newPixelMap
+         *                 4.return newpixelmap not empty
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('TC_001-5', 0, async function (done) {
+            const Color = new ArrayBuffer(96);
+            let opts = { editable: false, pixelFormat: 0, size: { height: 6, width: 8 } }
+            image.createPixelMap(Color, opts, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+                expect(pixelmap != undefined).assertTrue();
+                console.info('TC_001-5 success');
+                done();
+            })
+        })
+
+        /**
+         * @tc.number    : TC_001-6
+         * @tc.name      : create pixelmap-callback(editable: true, pixelFormat: RGBA_8888, size: { height: 6, width: 8 } bytes > buffer )
+        * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size
+         *                 3.using color and opts create newPixelMap
+         *                 4.return newpixelmap not empty
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('TC_001-6', 0, async function (done) {
+            const Color = new ArrayBuffer(96);
+            let opts = { editable: true, pixelFormat: 3, size: { height: 6, width: 8 } }
+            image.createPixelMap(Color, opts, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+                expect(pixelmap != undefined).assertTrue();
+                console.info('TC_001-6 success');
+                done();
+            })
+        })
+
+        /**
+         * @tc.number    : TC_001-7
+         * @tc.name      : create pixelmap-callback(editable: true, pixelFormat: RGB_565, size: { height: 2, width: 3 }, bytes < buffer)
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size
+         *                 3.using color and opts create newPixelMap
+         *                 4.return newpixelmap not empty
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('TC_001-7', 0, async function (done) {
+            const Color = new ArrayBuffer(96);
+            let opts = { editable: true, pixelFormat: 2, size: { height: 2, width: 3 } }
+            image.createPixelMap(Color, opts, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+                expect(pixelmap != undefined).assertTrue();
+                console.info('TC_001-7 success');
+                done();
+            })
+        })
+
+        /**
+         * @tc.number    : TC_001-8
+         * @tc.name      : create pixelmap-callback(editable: true, pixelFormat: unkonwn, size: { height: -1, width: -1 })
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size
+         *                 3.using color and opts create newPixelMap
+         *                 4.return newpixelmap empty
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('TC_001-8', 0, async function (done) {
+            const Color = new ArrayBuffer(96);
+            let opts = { editable: true, pixelFormat: 0, size: { height: -1, width: -1 } }
+            image.createPixelMap(Color, opts, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+                expect(pixelmap == undefined).assertTrue();
+                console.info('TC_001-8 success');
+                done();
+            })
+        })
+
+        /**
+         * @tc.number    : TC_001-9
+         * @tc.name      : create pixelmap-callback(editable: true, pixelFormat: unsupported format, size: { height: 6, width: 8 })
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size(Unsupported formats are converted to RGBA_8888)
+         *                 3.using color and opts create newPixelMap
+         *                 4.return newpixelmap empty
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('TC_001-9', 0, async function (done) {
+            const Color = new ArrayBuffer(96);
+            let opts = { editable: true, pixelFormat: 21, size: { height: 6, width: 8 } }
+            image.createPixelMap(Color, opts, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+                expect(pixelmap != undefined).assertTrue();
+                console.info('TC_001-9 success');
+                done();
+            })
+        })
+
+        /**
+         * @tc.number    : TC_020
+         * @tc.name      : readPixelsToBuffer-promise
+         * @tc.desc      : read all pixels to an buffer
+         *                 1.create PixelMap,buffer
+         *                 2.call readPixelsToBuffer
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('TC_020', 0, async function (done) {
+            console.info('TC_020 in');
+            const color = new ArrayBuffer(96);
+            var bufferArr = new Uint8Array(color);
+            for (var i = 0; i < bufferArr.length; i++) {
+                bufferArr[i] = i + 1;
+            }
+
+            let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+            image.createPixelMap(color, opts)
+                .then(pixelmap => {
+                    globalpixelmap = pixelmap;
+                    if (pixelmap == undefined) {
+                        console.info('TC_020 createPixelMap failed');
+                        expect(false).assertTrue()
+                        done();
+                    }
+                    const readBuffer = new ArrayBuffer(96);
+                    pixelmap.readPixelsToBuffer(readBuffer).then(() => {
+                        var bufferArr2 = new Uint8Array(readBuffer);
+                        var res = true;
+                        for (var i = 0; i < bufferArr2.length; i++) {
+                            if (bufferArr2[i] != tc_020Buf[i]) {
+                                res = false;
+                                console.info('TC_20_buffer' + bufferArr2[i]);
+                                console.info('TC_020 failed');
+                                expect(false).assertTrue();
+                                done();
+                                break;
+                            }
+                        }
+                        if (res) {
+                            console.info('TC_020 success');
+                            expect(true).assertTrue()
+                            done();
+                        }
+                    }).catch(error => {
+                        console.log('TC_020 read error: ' + error);
+                        expect().assertFail();
+                        done();
+                    })
+                }).catch(error => {
+                    console.log('TC_020 error: ' + error);
+                    expect().assertFail();
+                    done();
+                })
+        })
+
+        /**
+         * @tc.number    : TC_020-1
+         * @tc.name      : readPixelsToBuffer-callback
+         * @tc.desc      : read all pixels to an buffer
+         *                 1.create PixelMap,buffer
+         *                 2.call readPixelsToBuffer
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('TC_020-1', 0, async function (done) {
+            console.info('TC_020-1 in');
+            const color = new ArrayBuffer(96);
+            var bufferArr = new Uint8Array(color);
+            for (var i = 0; i < bufferArr.length; i++) {
+                bufferArr[i] = i + 1;
+            }
+
+            let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+            image.createPixelMap(color, opts, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+                if (pixelmap == undefined) {
+                    console.info('TC_020-1 createPixelMap failed');
+                    expect(false).assertTrue();
+                    done();
+                } else {
+                    const readBuffer = new ArrayBuffer(96);
+                    pixelmap.readPixelsToBuffer(readBuffer, () => {
+                        var bufferArr = new Uint8Array(readBuffer);
+                        var res = true;
+                        for (var i = 0; i < bufferArr.length; i++) {
+                            if (bufferArr[i] != tc_020_1Buf[i]) {
+                                res = false;
+                                console.info('TC_020-1 failed');
+                                expect(false).assertTrue();
+                                done();
+                                break;
+                            }
+                        }
+                        if (res) {
+                            console.info('TC_020-1 success');
+                            expect(true).assertTrue()
+                            done();
+                        }
+                    })
+                }
+            })
+        })
+
+        /**
+         * @tc.number    : TC_020-2
+         * @tc.name      : readPixelsToBuffer-callback(buffer:0)
+         * @tc.desc      : read all pixels to an buffer
+         *                 1.create PixelMap,buffer
+         *                 2.call readPixelsToBuffer
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('TC_020-2', 0, async function (done) {
+            console.info('TC_020-2 in');
+            const color = new ArrayBuffer(96);
+            var bufferArr = new Uint8Array(color);
+            for (var i = 0; i < bufferArr.length; i++) {
+                bufferArr[i] = i + 1;
+            }
+
+            let opts = { editable: true, pixelFormat: 2, size: { height: 6, width: 8 } }
+            image.createPixelMap(color, opts, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+                if (pixelmap == undefined) {
+                    console.info('TC_020-2 createPixelMap failed');
+                    expect(false).assertTrue();
+                    done();
+                } else {
+                    const readBuffer = new ArrayBuffer(0);
+                    pixelmap.readPixelsToBuffer(readBuffer, () => {
+                        var bufferArr = new Uint8Array(readBuffer);
+                        var res = true;
+                        for (var i = 0; i < bufferArr.length; i++) {
+                            if (bufferArr[i] == 0) {
+                                res = false;
+                                console.info('TC_020-2 failed');
+                                expect(false).assertTrue();
+                                done();
+                                break;
+                            }
+                        }
+                        if (res) {
+                            console.info('TC_020-2 success');
+                            expect(true).assertTrue()
+                            done();
+                        }
+                    })
+                }
+            })
+        })
+
+        /**
+         * @tc.number    : TC_021
+         * @tc.name      : readPixels-promise
+         * @tc.desc      : 1.create PixelMap
+         *                 2.call readPixels
+         *                 3.promise return array
+         *                 4.callbackcall return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('TC_021', 0, async function (done) {
+            const color = new ArrayBuffer(96);
+            var bufferArr = new Uint8Array(color);
+            for (var i = 0; i < bufferArr.length; i++) {
+                bufferArr[i] = i + 1;
+            }
+            let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+            image.createPixelMap(color, opts)
+                .then(pixelmap => {
+                    globalpixelmap = pixelmap;
+                    if (pixelmap == undefined) {
+                        console.info('TC_021 createPixelMap failed');
+                        expect(false).assertTrue()
+                        done();
+                    }
+                    const area = {
+                        pixels: new ArrayBuffer(8),
+                        offset: 0,
+                        stride: 8,
+                        region: { size: { height: 1, width: 2 }, x: 0, y: 0 }
+                    }
+                    pixelmap.readPixels(area).then(() => {
+                        var bufferArr2 = new Uint8Array(area.pixels);
+                        var res = true;
+                        for (var i = 0; i < bufferArr2.length; i++) {
+                            if (bufferArr2[i] != tc_021Buf[i]) {
+                                res = false;
+                                console.info('TC_021 failed');
+                                expect(false).assertTrue();
+                                done();
+                                break;
+                            }
+                        }
+                        if (res) {
+                            console.info('TC_021 success');
+                            expect(true).assertTrue()
+                            done();
+                        }
+                    })
+                })
+                .catch(error => {
+                    console.log('TC_021 error: ' + error);
+                    expect().assertFail();
+                    done();
+                })
+        })
+
+        /**
+         * @tc.number    : TC_021-1
+         * @tc.name      : readPixels-callback
+         * @tc.desc      : 1.create PixelMap
+         *                 2.call readPixels
+         *                 3.promise return array
+         *                 4.callbackcall return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('TC_021-1', 0, async function (done) {
+            const color = new ArrayBuffer(96);
+            var bufferArr = new Uint8Array(color);
+            for (var i = 0; i < bufferArr.length; i++) {
+                bufferArr[i] = i + 1;
+            }
+            let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+            image.createPixelMap(color, opts, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+                if (pixelmap == undefined) {
+                    console.info('TC_020-1 createPixelMap failed');
+                    expect(false).assertTrue();
+                    done();
+                } else {
+                    const area = {
+                        pixels: new ArrayBuffer(8),
+                        offset: 0,
+                        stride: 8,
+                        region: { size: { height: 1, width: 2 }, x: 0, y: 0 }
+                    }
+                    pixelmap.readPixels(area, () => {
+                        var bufferArr = new Uint8Array(area.pixels);
+                        var res = true;
+                        for (var i = 0; i < bufferArr.length; i++) {
+                            console.info('TC_021-1 buffer ' + bufferArr[i]);
+                            if (bufferArr[i] != tc_021_1Buf[i]) {
+                                res = false;
+                                console.info('TC_021-1 failed');
+                                expect(false).assertTrue();
+                                done();
+                                break;
+                            }
+                        }
+                        if (res) {
+                            console.info('TC_021-1 success');
+                            expect(true).assertTrue()
+                            done();
+                        }
+                    })
+                }
+            })
+        })
+
+        /**
+         * @tc.number    : TC_021-2
+         * @tc.name      : readPixels-callback( region: { size: { height: 1, width: 2 }, x: -1, y: -1 })
+         * @tc.desc      : 1.create PixelMap
+         *                 2.call readPixels
+         *                 3.promise return array
+         *                 4.callbackcall return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('TC_021-2', 0, async function (done) {
+            const color = new ArrayBuffer(96);
+            var bufferArr = new Uint8Array(color);
+            for (var i = 0; i < bufferArr.length; i++) {
+                bufferArr[i] = i + 1;
+            }
+            let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+            image.createPixelMap(color, opts, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+                if (pixelmap == undefined) {
+                    expect(false).assertTrue();
+                    console.info('TC_021-2 create pixelmap fail');
+                    done();
+                } else {
+                    const area = {
+                        pixels: new ArrayBuffer(20),
+                        offset: 0,
+                        stride: 8,
+                        region: { size: { height: 1, width: 2 }, x: -1, y: -1 }
+                    }
+                    pixelmap.readPixels(area).then(() => {
+                        console.info('TC_021-2 failed');
+                        expect(false).assertTrue();
+                        done();
+                    }).catch(() => {
+                        expect(true).assertTrue();
+                        console.info('TC_021-2 success');
+                        done();
+                    })
+                }
+            })
+        })
+
+        /**
+         * @tc.number    : TC_021-3
+         * @tc.name      : readPixels-promise(buffer:0)
+         * @tc.desc      : 1.create PixelMap
+         *                 2.call readPixels
+         *                 3.promise return array
+         *                 4.callbackcall return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('TC_021-3', 0, async function (done) {
+            const color = new ArrayBuffer(96);
+            var bufferArr = new Uint8Array(color);
+            for (var i = 0; i < bufferArr.length; i++) {
+                bufferArr[i] = i + 1;
+            }
+            let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+            image.createPixelMap(color, opts, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+                if (pixelmap == undefined) {
+                    expect(false).assertTrue();
+                    console.info('TC_021-3 create pixelmap failed');
+                    done();
+                } else {
+                    const area = {
+                        pixels: new ArrayBuffer(0),
+                        offset: 0,
+                        stride: 8,
+                        region: { size: { height: 1, width: 2 }, x: 0, y: 0 }
+                    }
+                    pixelmap.readPixels(area).then(() => {
+                        console.info('TC_021-3 failed');
+                        expect(false).assertTrue();
+                        done();
+                    }).catch(() => {
+                        expect(true).assertTrue();
+                        console.info('TC_021-3 success');
+                        done();
+                    })
+                }
+            })
+        })
+
+        /**
+         * @tc.number    : TC_021-4
+         * @tc.name      : readPixels-promise(offset > buffer)
+         * @tc.desc      : 1.create PixelMap
+         *                 2.call readPixels
+         *                 3.promise return array
+         *                 4.callbackcall return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('TC_021-4', 0, async function (done) {
+            const color = new ArrayBuffer(96);
+            var bufferArr = new Uint8Array(color);
+            for (var i = 0; i < bufferArr.length; i++) {
+                bufferArr[i] = i + 1;
+            }
+            let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+            image.createPixelMap(color, opts, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+                if (pixelmap == undefined) {
+                    expect(false).assertTrue();
+                    console.info('TC_021-4 createPixelMap success');
+                    done();
+                }
+                const area = {
+                    pixels: new ArrayBuffer(20),
+                    offset: 21,
+                    stride: 8,
+                    region: { size: { height: 1, width: 2 }, x: 0, y: 0 }
+                }
+                pixelmap.readPixels(area).then(() => {
+                    console.info('TC_021-4 failed');
+                    expect(false).assertTrue();
+                    done();
+                }).catch(() => {
+                    expect(true).assertTrue();
+                    console.info('TC_021-4 success');
+                    done();
+                })
+            })
+        })
+
+        /**
+         * @tc.number    : TC_021-5
+         * @tc.name      : readPixels-promise(region: { size: { height: -1, width:-1}, x: 0, y: 0 })
+         * @tc.desc      : 1.create PixelMap
+         *                 2.call readPixels
+         *                 3.promise return array
+         *                 4.callbackcall return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('TC_021-5', 0, async function (done) {
+            const color = new ArrayBuffer(96);
+            var bufferArr = new Uint8Array(color);
+            for (var i = 0; i < bufferArr.length; i++) {
+                bufferArr[i] = i + 1;
+            }
+            let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+            image.createPixelMap(color, opts, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+                if (pixelmap == undefined) {
+                    expect(false).assertTrue();
+                    console.info('TC_021-5 createPixelMap success');
+                    done();
+                }
+                const area = {
+                    pixels: new ArrayBuffer(20),
+                    offset: 0,
+                    stride: 8,
+                    region: { size: { height: -1, width: -1 }, x: 0, y: 0 }
+                }
+                pixelmap.readPixels(area).then(() => {
+                    console.info('TC_021-5 failed');
+                    expect(false).assertTrue();
+                    done();
+                }).catch(() => {
+                    expect(true).assertTrue();
+                    console.info('TC_021-5 success');
+                    done();
+                })
+            })
+        })
+
+        /**
+         * @tc.number    : TC_022
+         * @tc.name      : writePixels-promise
+         * @tc.desc      : 1.create PixelMap
+         *                 2.call writePixels
+         *                 3.call return undefined
+         *                 4.callbackcall return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('TC_022', 0, async function (done) {
+            const color = new ArrayBuffer(96);
+            let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+            image.createPixelMap(color, opts)
+                .then(pixelmap => {
+                    globalpixelmap = pixelmap;
+                    if (pixelmap == undefined) {
+                        console.info('TC_022 createPixelMap failed');
+                        expect(false).assertTrue()
+                        done();
+                    }
+
+                    const area = {
+                        pixels: new ArrayBuffer(8),
+                        offset: 0,
+                        stride: 8,
+                        region: { size: { height: 1, width: 2 }, x: 0, y: 0 }
+                    }
+                    var bufferArr = new Uint8Array(area.pixels);
+                    for (var i = 0; i < bufferArr.length; i++) {
+                        bufferArr[i] = i + 1;
+                    }
+                    console.info('============ bufferArr ' + JSON.stringify(bufferArr));
+                    pixelmap.writePixels(area).then(() => {
+                        const readArea = {
+                            pixels: new ArrayBuffer(8),
+                            offset: 0,
+                            stride: 8,
+                            region: { size: { height: 1, width: 2 }, x: 0, y: 0 }
+                        }
+                        console.info('============ bufferArr ' + JSON.stringify(readArea));
+                        pixelmap.readPixels(readArea).then(() => {
+                            var readArr = new Uint8Array(readArea.pixels);
+                            var res = true;
+                            for (var i = 0; i < readArr.length; i++) {
+                                if (readArr[i] != tc_022Buf[i]) {
+                                    res = false;
+                                    console.info('TC_022 failed');
+                                    expect(false).assertTrue();
+                                    done();
+                                    break;
+                                }
+                            }
+                            if (res) {
+                                console.info('TC_022 success');
+                                expect(true).assertTrue()
+                                done();
+                            }
+                        })
+                    })
+                })
+                .catch(error => {
+                    console.log('TC_022 error: ' + error);
+                    expect().assertFail();
+                    done();
+                })
+        })
+        /**
+        * @tc.number    : TC_022-1
+        * @tc.name      : writePixels-callback
+        * @tc.desc      : 1.create PixelMap
+        *                 2.call writePixels
+        *                 3.call return undefined
+        *                 4.callbackcall return undefined
+        * @tc.size      : MEDIUM
+        * @tc.type      : Functional
+        * @tc.level     : Level 1
+       */
+        it('TC_022-1', 0, async function (done) {
+            try {
+                const color = new ArrayBuffer(96);
+                let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+                image.createPixelMap(color, opts, (err, pixelmap) => {
+                    globalpixelmap = pixelmap;
+                    if (pixelmap == undefined) {
+                        console.info('TC_022-1 createPixelMap failed');
+                        expect(false).assertTrue()
+                        done();
+                    }
+                    const area = {
+                        pixels: new ArrayBuffer(8),
+                        offset: 0,
+                        stride: 8,
+                        region: { size: { height: 1, width: 2 }, x: 0, y: 0 }
+                    }
+                    var bufferArr = new Uint8Array(area.pixels);
+                    for (var i = 0; i < bufferArr.length; i++) {
+                        bufferArr[i] = i + 1;
+                    }
+                    pixelmap.writePixels(area, () => {
+                        const readArea = {
+                            pixels: new ArrayBuffer(8),
+                            offset: 0,
+                            stride: 8,
+                            region: { size: { height: 1, width: 2 }, x: 0, y: 0 }
+                        }
+                        pixelmap.readPixels(readArea, () => {
+                            var readArr = new Uint8Array(readArea.pixels);
+                            var res = true;
+                            for (var i = 0; i < readArr.length; i++) {
+                                if (readArr[i] != tc_022Buf[i]) {
+                                    res = false;
+                                    console.info('TC_022-1 failed');
+                                    expect(false).assertTrue();
+                                    done();
+                                    break;
+                                }
+                            }
+                            if (res) {
+                                console.info('TC_022-1 success');
+                                expect(true).assertTrue()
+                                done();
+                            }
+                        })
+                    })
+                })
+            } catch (error) {
+                console.info('TC_022-1 error: ' + error);
+                expect(false).assertTrue();
+                done();
+            }
+        })
+
+        /**
+         * @tc.number    : TC_023
+         * @tc.name      : writeBufferToPixels-promise
+         * @tc.desc      : 1.create PixelMap,buffer
+         *                 2.call writeBufferToPixels
+         *                 3.call return undefined
+         *                 4.callbackcall return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('TC_023', 0, async function (done) {
+            const color = new ArrayBuffer(96);
+            let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+            image.createPixelMap(color, opts)
+                .then(pixelmap => {
+                    globalpixelmap = pixelmap;
+                    if (pixelmap == undefined) {
+                        console.info('TC_023 createPixelMap failed');
+                        expect(false).assertTrue()
+                        done();
+                    }
+
+                    const writeColor = new ArrayBuffer(96);
+                    var bufferArr = new Uint8Array(writeColor);
+                    for (var i = 0; i < bufferArr.length; i++) {
+                        bufferArr[i] = i + 1;
+                    }
+                    pixelmap.writeBufferToPixels(writeColor).then(() => {
+                        const readBuffer = new ArrayBuffer(96);
+                        pixelmap.readPixelsToBuffer(readBuffer).then(() => {
+                            var bufferArr = new Uint8Array(readBuffer);
+                            var res = true;
+                            for (var i = 0; i < bufferArr.length; i++) {
+                                if (bufferArr[i] == 0) {
+                                    res = false;
+                                    console.info('TC_023 failed');
+                                    expect(false).assertTrue()
+                                    done();
+                                    break;
+                                }
+                            }
+                            if (res) {
+                                console.info('TC_023 success');
+                                expect(true).assertTrue();
+                                done();
+                            }
+                        })
+                    })
+                })
+                .catch(error => {
+                    console.log('TC_023 error: ' + error);
+                    expect().assertFail();
+                    done();
+                })
+        })
+
+        /**
+         * @tc.number    : TC_023-1
+         * @tc.name      : writeBufferToPixels-callback
+         * @tc.desc      : 1.create PixelMap,buffer
+         *                 2.call writeBufferToPixels
+         *                 3.call return undefined
+         *                 4.callbackcall return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('TC_023-1', 0, async function (done) {
+            const color = new ArrayBuffer(96);
+            var bufferArr = new Uint8Array(color);
+            for (var i = 0; i < bufferArr.length; i++) {
+                bufferArr[i] = i + 1;
+            }
+            let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+            image.createPixelMap(color, opts).then(pixelmap => {
+                globalpixelmap = pixelmap;
+                if (pixelmap == undefined) {
+                    expect(false).assertTrue()
+                    console.info('TC_023-1 failed');
+                    done();
+                }
+                const writeColor = new ArrayBuffer(96);
+                pixelmap.writeBufferToPixels(writeColor, () => {
+                    const readBuffer = new ArrayBuffer(96);
+                    pixelmap.readPixelsToBuffer(readBuffer, () => {
+                        var bufferArr = new Uint8Array(readBuffer);
+                        var res = true;
+                        for (var i = 0; i < bufferArr.length; i++) {
+                            if (res) {
+                                if (bufferArr[i] == 0) {
+                                    res = false;
+                                    console.info('TC_023-1 Success');
+                                    expect(true).assertTrue()
+                                    done();
+                                    break;
+                                }
+                            }
+                        }
+                        if (res) {
+                            console.info('TC_023-1 no change after writeBuffer');
+                            expect(false).assertTrue();
+                            done();
+                        }
+                    })
+                })
+            })
+        })
+
+        /**
+         * @tc.number    : TC_024
+         * @tc.name      : getImageInfo-pixelmap-promise
+         * @tc.desc      : 1.create PixelMap,ImageInfo
+         *                 2.call getImageInfo
+         *                 3.call return imageinfo
+         *                 4.callback return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('TC_024', 0, async function (done) {
+            const color = new ArrayBuffer(96);
+            let opts = { editable: true, pixelFormat: 2, size: { height: 6, width: 8 } }
+            image.createPixelMap(color, opts)
+                .then(pixelmap => {
+                    globalpixelmap = pixelmap;
+                    if (pixelmap == undefined) {
+                        console.info('TC_024 createPixelMap failed');
+                        expect(false).assertTrue()
+                        done();
+                    }
+                    pixelmap.getImageInfo().then(imageInfo => {
+                        if (imageInfo == undefined) {
+                            console.info('TC_024 imageInfo is empty');
+                            expect(false).assertTrue()
+                            done();
+                        }
+                        if (imageInfo.size.height == 4 && imageInfo.size.width == 6) {
+                            console.info('TC_024 success ');
+                            expect(true).assertTrue()
+                            done();
+                        }
+                        done();
+                    }).catch(error => {
+                        console.log('TC_024 getimageinfo error: ' + error);
+                        expect().assertFail();
+                        done();
+                    })
+                    done();
+                })
+                .catch(error => {
+                    console.log('TC_024 error: ' + error);
+                    expect().assertFail();
+                    done();
+                })
+        })
+
+        /**
+         * @tc.number    : TC_024-1
+         * @tc.name      : getImageInfo-pixelmap-callback
+         * @tc.desc      : 1.create PixelMap,ImageInfo
+         *                 2.call getImageInfo
+         *                 3.call return imageinfo
+         *                 4.callback return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('TC_024-1', 0, async function (done) {
+            const color = new ArrayBuffer(96);
+            let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+            image.createPixelMap(color, opts, (err, pixelmap) => {
+                if (pixelmap == undefined) {
+                    globalpixelmap = pixelmap;
+                    expect(false).assertTrue()
+                    console.info('TC_024-1 create pixelmap fail');
+                    done();
+                }
+                pixelmap.getImageInfo((err, imageInfo) => {
+                    if (imageInfo == undefined) {
+                        console.info('TC_024-1 imageInfo is empty');
+                        expect(false).assertTrue()
+                        done();
+                    }
+                    if (imageInfo.size.height == 4 && imageInfo.size.width == 6) {
+                        console.info('TC_024-1 imageInfo success');
+                        expect(true).assertTrue()
+                        done();
+                    }
+                    done();
+                })
+            })
+        })
+
+        /**
+         * @tc.number    : TC_025-1
+         * @tc.name      : getBytesNumberPerRow
+         * @tc.desc      : 1.create PixelMap
+         *                 2.set PixelMap
+         *                 3.call getBytesNumberPerRow
+         *                 4. call return number
+         *                 5.callback return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('TC_025-1', 0, async function (done) {
+            const color = new ArrayBuffer(96);
+            let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+            const expectNum = 4 * opts.size.width;
+            image.createPixelMap(color, opts, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+                if (pixelmap == undefined) {
+                    expect(false).assertTrue()
+                    console.info('TC_25-1 create pixelmap fail');
+                    done();
+                } else {
+                    const num = pixelmap.getBytesNumberPerRow();
+                    console.info('TC_025-1 num is ' + num);
+                    expect(num == expectNum).assertTrue();
+                    if (num == expectNum) {
+                        console.info('TC_25-1 success');
+                    } else {
+                        console.info('TC_25-1 fail');
+                    }
+                    done();
+                }
+            })
+        })
+
+        /**
+         * @tc.number    : TC_026-1
+         * @tc.name      : getPixelBytesNumber
+         * @tc.desc      : 1.create PixelMap
+         *                 2.set Pixel
+         *                 3.call getPixelBytesNumber
+         *                 4. call return number
+         *                 5.callback return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('TC_026-1', 0, async function (done) {
+            const color = new ArrayBuffer(96);
+            let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+            const expectNum = 4 * opts.size.width * opts.size.height;
+            image.createPixelMap(color, opts, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+                if (pixelmap == undefined) {
+                    expect(false).assertTrue()
+                    console.info('TC_026-1 create pixelmap fail');
+                    done();
+                } else {
+                    const num = pixelmap.getPixelBytesNumber();
+                    console.info('TC_026-1 num is ' + num);
+                    expect(num == expectNum).assertTrue();
+                    if (num == expectNum) {
+                        console.info('TC_026-1 success');
+                    } else {
+                        console.info('TC_026-1 fail');
+                    }
+                    done();
+                }
+            })
+        })
+
+        /**
+         * @tc.number    : TC_027
+         * @tc.name      : release-pixelmap-promise
+         * @tc.desc      : 1.create PixelMap
+         *                 2.set Pixel
+         *                 3.call release
+         *                 4.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('TC_027', 0, async function (done) {
+            const color = new ArrayBuffer(96);
+            let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+            image.createPixelMap(color, opts).then(pixelmap => {
+                globalpixelmap = pixelmap;
+                if (pixelmap == undefined) {
+                    console.info('TC_027 createPixelMap failed');
+                    expect(false).assertTrue()
+                    done();
+                }
+                pixelmap.release().then(() => {
+                    console.info('TC_027 success');
+                    expect(true).assertTrue();
+                    done();
+                }).catch(error => {
+                    console.log('TC_027 error: ' + error);
+                    expect().assertFail();
+                    done();
+                })
+            }).catch(error => {
+                console.log('TC_027 createPixelMap failed error: ' + error);
+                expect().assertFail();
+                done();
+            })
+        })
+
+        /**
+         * @tc.number    : TC_027-1
+         * @tc.name      : release-pixelmap-callback
+         * @tc.desc      : 1.create PixelMap
+         *                 2.set Pixel
+         *                 3.call release
+         *                 4.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('TC_027-1', 0, async function (done) {
+            const color = new ArrayBuffer(96);
+            let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+            image.createPixelMap(color, opts, (err, pixelmap) => {
+                globalpixelmap = pixelmap;
+                if (pixelmap == undefined) {
+                    console.info('TC_027-1 createPixelMap failed');
+                    expect(false).assertTrue()
+                    done();
+                }
+                pixelmap.release(() => {
+                    expect(true).assertTrue();
+                    console.log('TC_027-1 success');
+                    done();
+                })
+            })
+        })
 
 
 
@@ -1668,6 +2818,120 @@ export default function imageJsTest() {
                     done();
                 }
             })
+        })
+
+        /**
+         * @tc.number    : editable_001
+         * @tc.name      : create pixelmap-callback (editable: true, pixelFormat: ARGB_8888,
+         *                 size: { height: 4, width: 6 },bytes = buffer)
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixelFormat,size
+         *                 3.using color and opts create newPixelMap
+         *                 4.return newpixelmap not empty
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('editable_001', 0, async function (done) {
+            const Color = new ArrayBuffer(96);
+            let edit = true;
+            let opts = { editable: true, pixelFormat: 1, size: { height: 4, width: 6 } }
+            image.createPixelMap(Color, opts, (err, pixelmap) => {
+                expect(pixelmap != undefined).assertTrue();
+                console.info('editable_001 editable: ' + pixelmap.isEditable);
+                expect(pixelmap.isEditable == opts.editable).assertTrue();
+                console.info('editable_001 edit: ' + edit);
+                expect(pixelmap.isEditable == edit).assertTrue();
+                done();
+            })
+        })
+
+        /**
+         * @tc.number    : editable_002
+         * @tc.name      : create pixelmap-callback (editable: false, pixelFormat: ARGB_8888,
+         *                 size: { height: 4, width: 6 },bytes = buffer)
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixelFormat,size
+         *                 3.using color and opts create newPixelMap
+         *                 4.return newpixelmap not empty
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('editable_002', 0, async function (done) {
+            const Color = new ArrayBuffer(96);
+            let edit = false;
+            let opts = { editable: false, pixelFormat: 1, size: { height: 4, width: 6 } }
+            image.createPixelMap(Color, opts, (err, pixelmap) => {
+                expect(pixelmap != undefined).assertTrue();
+                console.info('editable_002 editable: ' + pixelmap.isEditable);
+                expect(pixelmap.isEditable == opts.editable).assertTrue();
+                console.info('editable_002 edit: ' + edit);
+                expect(pixelmap.isEditable == edit).assertTrue();
+                done();
+            })
+        })
+
+        /**
+         * @tc.number    : editable_003
+         * @tc.name      : create pixelmap-promise (editable: true, pixelFormat: RGB_565,
+         *                 size: { height: 4, width: 6 }, bytes = buffer)
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size
+         *                 3.using color and opts create newPixelMap
+         *                 4.return newpixelmap not empty
+         * @tc.size      : MEDIUM 
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('editable_003', 0, async function (done) {
+            const Color = new ArrayBuffer(96);
+            let edit = true;
+            let opts = { editable: true, pixelFormat: 2, size: { height: 4, width: 6 } }
+            image.createPixelMap(Color, opts)
+                .then(pixelmap => {
+                    console.info('editable_003 editable: ' + pixelmap.isEditable);
+                    expect(pixelmap != undefined).assertTrue();
+                    expect(pixelmap.isEditable == opts.editable).assertTrue();
+                    expect(pixelmap.isEditable == edit).assertTrue();
+                    done();
+                })
+                .catch(error => {
+                    console.log('editable_003 err' + error);
+                    expect(false).assertTrue();
+                    done();
+                })
+        })
+
+        /**
+         * @tc.number    : editable_004
+         * @tc.name      : create pixelmap-promise (editable: false, pixelFormat: RGB_565,
+         *                 size: { height: 4, width: 6 }, bytes = buffer)
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size
+         *                 3.using color and opts create newPixelMap
+         *                 4.return newpixelmap not empty
+         * @tc.size      : MEDIUM 
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('editable_004', 0, async function (done) {
+            const Color = new ArrayBuffer(96);
+            let edit = false;
+            let opts = { editable: false, pixelFormat: 2, size: { height: 4, width: 6 } }
+            image.createPixelMap(Color, opts)
+                .then(pixelmap => {
+                    console.info('editable_004 editable: ' + pixelmap.isEditable);
+                    expect(pixelmap != undefined).assertTrue();
+                    expect(pixelmap.isEditable == opts.editable).assertTrue();
+                    expect(pixelmap.isEditable == edit).assertTrue();
+                    done();
+                })
+                .catch(error => {
+                    console.log('editable_004 err' + error);
+                    expect(false).assertTrue();
+                    done();
+                })
         })
     })
 }
