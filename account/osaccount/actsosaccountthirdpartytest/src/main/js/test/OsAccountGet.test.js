@@ -28,6 +28,8 @@ export default function ActsOsAccountThirdPartyTest_third_2() {
         it('ActsOsAccountGetIdFormUid_0100', 0, async function (done) {
             console.debug("====>ActsOsAccountGetIdFormUid_0100 start====");
             var osAccountManager = osaccount.getAccountManager();
+            var testLocalId = await osAccountManager.getOsAccountLocalIdFromProcess();
+            console.debug("====>testLocalId:" + testLocalId)
             console.debug("====>get AccountManager finish====");
             var bundleName = "com.example.actsosaccountthirdpartytest";
             var bundleInfo = await bundle.getBundleInfo(bundleName, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
@@ -37,7 +39,7 @@ export default function ActsOsAccountThirdPartyTest_third_2() {
                 console.debug("====>get localId err: " + JSON.stringify(err));
                 console.debug("====>localId obtained by uid:" + localId);
                 expect(err).assertEqual(undefined);
-                expect(localId).assertEqual(100);
+                expect(localId).assertEqual(testLocalId);
                 console.debug("====>ActsOsAccountGetIdFormUid_0100 end====");
                 done();
             });
@@ -51,6 +53,7 @@ export default function ActsOsAccountThirdPartyTest_third_2() {
         it('ActsOsAccountGetIdFormUid_0200', 0, async function (done) {
             console.debug("====>ActsOsAccountGetIdFormUid_0200 start====");
             var osAccountManager = osaccount.getAccountManager();
+            var testLocalId = await osAccountManager.getOsAccountLocalIdFromProcess();
             console.debug("====>get AccountManager finish====");
             var bundleName = "com.example.actsosaccountthirdpartytest";
             var bundleInfo = await bundle.getBundleInfo(bundleName, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
@@ -58,7 +61,7 @@ export default function ActsOsAccountThirdPartyTest_third_2() {
             console.debug("====>obtained uid:" + uid);
             var localId = await osAccountManager.getOsAccountLocalIdFromUid(uid);
             console.debug("====>localId obtained by uid:" + localId);
-            expect(localId).assertEqual(100);
+            expect(localId).assertEqual(testLocalId);
             console.debug("====>ActsOsAccountGetIdFormUid_0200 end====");
             done();
         });
@@ -151,12 +154,16 @@ export default function ActsOsAccountThirdPartyTest_third_2() {
         it('ActsOsAccountGetIdFormProcess_0100', 0, async function (done) {
             console.debug("====>ActsOsAccountGetIdFormProcess_0100 start====");
             var osAccountManager = osaccount.getAccountManager();
+            var bundleName = "com.example.actsosaccountthirdpartytest";
+            var bundleInfo = await bundle.getBundleInfo(bundleName, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
+            var uid = bundleInfo.uid;
+            var testLocalId = await osAccountManager.getOsAccountLocalIdFromUid(uid)
             console.debug("====>get AccountManager finish====");
             osAccountManager.getOsAccountLocalIdFromProcess((err, localId)=>{
                 console.debug("====>get localId err: " + JSON.stringify(err));
                 console.debug("====>localId obtained by process:" + localId);
                 expect(err).assertEqual(undefined);
-                expect(localId).assertEqual(100);
+                expect(localId).assertEqual(testLocalId);
                 console.debug("====>ActsOsAccountGetIdFormProcess_0100 end====");
                 done();
             });
@@ -170,10 +177,15 @@ export default function ActsOsAccountThirdPartyTest_third_2() {
         it('ActsOsAccountGetIdFormProcess_0200', 0, async function (done) {
             console.debug("====>ActsOsAccountGetIdFormProcess_0200 start====");
             var osAccountManager = osaccount.getAccountManager();
+            var bundleName = "com.example.actsosaccountthirdpartytest";
+            var bundleInfo = await bundle.getBundleInfo(bundleName, bundle.BundleFlag.GET_BUNDLE_WITH_ABILITIES);
+            var uid = bundleInfo.uid;
+            var testLocalId = await osAccountManager.getOsAccountLocalIdFromUid(uid)
+            console.debug("====>testLocalId obtained by process:" + testLocalId)
             console.debug("====>get AccountManager finish====");
             var localId = await osAccountManager.getOsAccountLocalIdFromProcess();
             console.debug("====>localId obtained by process:" + localId);
-            expect(localId).assertEqual(100);
+            expect(localId).assertEqual(testLocalId);
             console.debug("====>ActsOsAccountGetIdFormProcess_0200 end====");
             done();
         });
@@ -221,6 +233,7 @@ export default function ActsOsAccountThirdPartyTest_third_2() {
         it('ActsOsAccountLocalIdSerial_0100', 0, async function (done) {
             console.debug("====>ActsOsAccountLocalIdSerial_0100 start====");
             var osAccountManager = osaccount.getAccountManager();
+            var testLocalId = await osAccountManager.getOsAccountLocalIdFromProcess();
             console.debug("====>get AccountManager finish====");
             osAccountManager.getSerialNumberByOsAccountLocalId(100, (err, serialNumber)=>{
                 console.debug("====>ger serialNumber err:" + JSON.stringify(err));
@@ -234,7 +247,7 @@ export default function ActsOsAccountThirdPartyTest_third_2() {
                     console.debug("====>ger localId err:" + JSON.stringify(err));
                     console.debug("====>get localId:" + localId + " by serialNumber: " + serialNumber);
                     expect(err).assertEqual(undefined);
-                    expect(localId).assertEqual(100);
+                    expect(localId).assertEqual(testLocalId);
                     console.debug("====>ActsOsAccountLocalIdSerial_0100 end====");
                     done();
                 })
@@ -249,8 +262,9 @@ export default function ActsOsAccountThirdPartyTest_third_2() {
         it('ActsOsAccountLocalIdSerial_0200', 0, async function (done) {
             console.debug("====>ActsOsAccountLocalIdSerial_0200 start====");
             var osAccountManager = osaccount.getAccountManager();
+            var testLocalId = await osAccountManager.getOsAccountLocalIdFromProcess();
             console.debug("====>get AccountManager finish====");
-            var serialNumber = await osAccountManager.getSerialNumberByOsAccountLocalId(100);
+            var serialNumber = await osAccountManager.getSerialNumberByOsAccountLocalId(testLocalId);
             console.debug("====>get serialNumber:" + serialNumber + " by localId: 100" );
             var serialNumberStr = serialNumber.toString();
             var serialIntercept = serialNumberStr.substring(8);
@@ -258,7 +272,7 @@ export default function ActsOsAccountThirdPartyTest_third_2() {
             expect(serialIntercept).assertEqual("00000001");
             var localId = await osAccountManager.getOsAccountLocalIdBySerialNumber(serialNumber);
             console.debug("====>get localId:" + localId + " by serialNumber: " + serialNumber);
-            expect(localId).assertEqual(100);
+            expect(localId).assertEqual(testLocalId);
             console.debug("====>ActsOsAccountLocalIdSerial_0200 end====");
             done();
         });
