@@ -100,7 +100,7 @@ describe('WallpaperJsunitTest', function () {
         }).catch((err) => {
             console.info('wallpaperXTS ===> testGetColorsPromiseSystem err : ' + JSON.stringify(err));
             if (err) {
-                expect(null).assertFail();
+                expect(err.code != null ).assertTrue();
             }
         });
         done();
@@ -117,37 +117,41 @@ describe('WallpaperJsunitTest', function () {
             console.info('wallpaperXTS ===> testGetColorsCallbackLock err : ' + JSON.stringify(err));
             console.info('wallpaperXTS ===> testGetColorsCallbackLock data : ' + JSON.stringify(data));
             if (err) {
-                expect(null).assertFail();
+                expect(err.code === null).assertFalse();
+				done();
             }
             if ((data != undefined) && (data != null) && (data != '')) {
                 expect(true).assertTrue();
+				done();
             }
+			done();
         })
-        done();
     })
 
     /*
      * @tc.number  testGetColorsPromiseLock102
-     * @tc.name    Test getColors() to obtains the wallpaper colors for the wallpaper of the specified type.
+     * @tc.name    Test getColors() to obtains the wallpaper colors for the wallpaper of the specified
      * @tc.desc    Function test
      * @tc.level   0
      */
     it('testGetColorsPromiseLock102', 0, async function (done) {
         await wallpaper.getColors(WALLPAPER_LOCKSCREEN).then((data) => {
-            console.info('wallpaperXTS ===> testGetColorsCallbackLock data : ' + JSON.stringify(data));
+            console.info('wallpaperXTS ===> testGetColorsPromiseSystem data : ' + JSON.stringify(data));
             if ((data != undefined) && (data != null) && (data != '')) {
                 expect(true).assertTrue();
             }
+			done();
         }).catch((err) => {
-            console.info('wallpaperXTS ===> testGetColorsCallbackLock err : ' + JSON.stringify(err));
+            console.info('wallpaperXTS ===> testGetColorsPromiseSystem err : ' + JSON.stringify(err));
             if (err) {
-                expect(null).assertFail();
+                expect(err.code === null).assertFalse();
             }
+			done();
         });
-        done();
     })
 
     /*
+
      * @tc.number  testGetColorsPromiseLock102
      * @tc.name    Test getId() to the ID of the wallpaper of the specified type.
      * @tc.desc    Function test
@@ -182,7 +186,7 @@ describe('WallpaperJsunitTest', function () {
         }).catch((err) => {
             console.info('wallpaperXTS ===> testGetIdCallbackSystem err : ' + JSON.stringify(err));
             if (err) {
-                expect(null).assertFail();
+                expect(null).assertTrue();
             }
         });
         done();
