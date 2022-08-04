@@ -21,6 +21,8 @@ ohos_js_hap_suite("sensor_js_test") {
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsSensorJSApiTest"
+  subsystem_name = "sensors"
+  part_name = "sensor"
 }
 ohos_js_assets("sensor_js_assets") {
   js2abc = true
