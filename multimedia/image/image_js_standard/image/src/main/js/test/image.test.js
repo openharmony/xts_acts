@@ -17,7 +17,7 @@ import image from '@ohos.multimedia.image'
 import fileio from '@ohos.fileio'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import { testPng, testJpg } from './testImg'
-import { tcBuf020, tc_020_1Buf, tcBuf021, tcBuf021_1, tcBuf022 } from './testImg'
+import { tcBuf020, tcBuf020_1, tcBuf021, tcBuf021_1, tcBuf022 } from './testImg'
 import featureAbility from '@ohos.ability.featureAbility'
 
 export default function imageJsTest() {
@@ -394,7 +394,7 @@ export default function imageJsTest() {
                         var bufferArr = new Uint8Array(readBuffer);
                         var res = true;
                         for (var i = 0; i < bufferArr.length; i++) {
-                            if (bufferArr[i] != tc_020_1Buf[i]) {
+                            if (bufferArr[i] != tcBuf020_1[i]) {
                                 res = false;
                                 console.info('TC_020-1 failed');
                                 expect(false).assertTrue();
@@ -816,7 +816,7 @@ export default function imageJsTest() {
                     done();
                 })
         })
-        
+
         /**
         * @tc.number    : TC_022-1
         * @tc.name      : writePixels-callback
