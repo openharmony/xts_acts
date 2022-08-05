@@ -21,6 +21,8 @@ ohos_js_hap_suite("storagefile_js_test") {
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsStorageFileJSTest"
+  subsystem_name = "xts"
+  part_name = "xts_acts"
 }
 ohos_js_assets("storagefile_js_assets") {
   source_dir = "./src/main/js/default"
