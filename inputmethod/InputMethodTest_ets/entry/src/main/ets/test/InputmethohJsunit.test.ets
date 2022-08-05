@@ -1,6 +1,6 @@
 // @ts-nocheck
 /**
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -93,28 +93,6 @@ export default function settingUiJsunit() {
       console.info("inputmethod_test_001 result:" + inputMethodSetting);
       expect(inputMethodSetting != null).assertTrue();
       console.info("************* inputmethod_test_MAX_TYPE_NUM_001 Test end*************");
-      done();
-    });
-
-    /*
-     * @tc.number  inputmethod_test_switchInputMethod_001
-     * @tc.name    Test Indicates the input method which will replace the current one.
-     * @tc.desc    Function test
-     * @tc.level   2
-     */
-    it('inputmethod_test_switchInputMethod_001', 0, async function (done) {
-      console.info("************* inputmethod_test_switchInputMethod_001 Test start*************");
-      let inputMethodProperty = {
-        packageName:"com.example.kikakeyboard",
-        methodId:"ServiceExtAbility"
-      }
-      inputMethod.switchInputMethod(inputMethodProperty).then((data) => {
-        console.info("inputmethod_test_switchInputMethod_001 data:" + data)
-        expect(data).assertEqual(true);
-      }).catch((err) => {
-        console.error('inputmethod_test_switchInputMethod_001 failed because ' + JSON.stringify(err));
-      });
-      console.info("************* inputmethod_test_switchInputMethod_001 Test end*************");
       done();
     });
 

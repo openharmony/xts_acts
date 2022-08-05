@@ -14,5 +14,5 @@
 import("//build/ohos_var.gni")
 group("request") {
   testonly = true
-  deps = [ "RequestTest_js:ActsMiscservicesRequestJSApiTest" ]
+  deps = [ "RequestTest_ets:ActsRequestETSApiTest" ]
 }

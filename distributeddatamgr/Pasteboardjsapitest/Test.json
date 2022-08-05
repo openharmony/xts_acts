@@ -1,17 +1,20 @@
 {
     "description": "Configuration for PasteBoard js api Tests",
     "driver": {
-        "type": "JSUnitTest",
-        "test-timeout": "1800000",
-        "package": "com.open.harmony.pasteboard",
-        "shell-timeout": "1800000"
+        "type": "OHJSUnitTest",
+        "test-timeout": "600000",
+        "bundle-name": "com.acts.distributeddatamgr.pasteboardtest",
+        "package-name": "com.acts.distributeddatamgr.pasteboardtest",
+        "shell-timeout": "60000"
     },
     "kits": [
         {
-            "test-file-name": [
-                "ActsPasteBoardJSApiTest.hap"
-            ],
+            "test-file-name": ["ActsPasteBoardETSApiTest.hap"],
             "type": "AppInstallKit",
+            "cleanup-apps": true
+        },
+        {
+            "type": "ShellKit",
             "cleanup-apps": true
         }
     ]
