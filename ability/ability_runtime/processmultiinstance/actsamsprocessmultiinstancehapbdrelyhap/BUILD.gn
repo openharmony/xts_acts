@@ -23,7 +23,7 @@ ohos_hap_assist_suite("ActsAmsProcessMultiinstanceHapBDRelyHap") {
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsAmsProcessMultiinstanceHapBDRelyHap"
-  
+
   testonly = true
   subsystem_name = "ability"
   part_name = "ability_runtime"

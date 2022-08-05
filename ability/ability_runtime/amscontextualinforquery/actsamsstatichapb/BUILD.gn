@@ -17,7 +17,7 @@ ohos_hap_assist_suite("ActsAmsStaticBRelyHap") {
   hap_profile = "entry/src/main/module.json"
   js_build_mode = "debug"
   hap_name = "ActsAmsStaticBRelyHap"
-  
+
   testonly = true
   deps = [
     ":actsamsstaticbrelyhap_js_assets",

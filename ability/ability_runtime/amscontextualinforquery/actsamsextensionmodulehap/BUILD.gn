@@ -17,7 +17,7 @@ ohos_hap_assist_suite("ActsAmsExtensionModuleRelyHap") {
   hap_profile = "entry/src/main/module.json"
   js_build_mode = "debug"
   hap_name = "ActsAmsExtensionModuleRelyHap"
-  
+
   testonly = true
   deps = [
     ":actsamsextensionmodulerelyhap_js_assets",

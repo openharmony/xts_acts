@@ -16,7 +16,7 @@ import("//test/xts/tools/build/suite.gni")
 ohos_hap_assist_suite("StageSupplement") {
   hap_profile = "entry/src/main/module.json"
   hap_name = "StageSupplement"
-  
+
   testonly = true
   deps = [
     ":stagesupplement_js_assets",

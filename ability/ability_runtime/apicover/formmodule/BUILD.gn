@@ -17,7 +17,7 @@ ohos_hap_assist_suite("FormModule") {
   hap_name = "FormModule"
   js_build_mode = "debug"
   hap_profile = "entry/src/main/module.json"
-  
+
   testonly = true
   deps = [
     ":formmodule_js_assets",

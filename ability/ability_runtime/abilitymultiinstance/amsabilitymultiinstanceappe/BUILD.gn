@@ -16,7 +16,7 @@ ohos_hap_assist_suite("ActsAmsAbilityMultiinstanceHapERelyHap") {
   hap_name = "ActsAmsAbilityMultiinstanceHapERelyHap"
   js_build_mode = "debug"
   hap_profile = "./src/main/config.json"
-  
+
   testonly = true
   deps = [
     ":hjs_demo_js_assets",

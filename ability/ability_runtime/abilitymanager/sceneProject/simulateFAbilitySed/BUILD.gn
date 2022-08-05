@@ -16,7 +16,7 @@ ohos_hap_assist_suite("simulateFAbilitySed") {
   hap_profile = "./src/main/config.json"
   js_build_mode = "debug"
   hap_name = "simulateFAbilitySed"
-  
+
   testonly = true
   deps = [
     ":hjs_demo_js_assets",

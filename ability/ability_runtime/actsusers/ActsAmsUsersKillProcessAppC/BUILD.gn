@@ -17,7 +17,7 @@ ohos_hap_assist_suite("ActsAmsUsersKillProcessAppC") {
   hap_profile = "entry/src/main/module.json"
   js_build_mode = "debug"
   hap_name = "ActsAmsUsersKillProcessAppC"
-  
+
   testonly = true
   deps = [
     ":actsamsuserskillprocessappc_js_assets",
