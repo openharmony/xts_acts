@@ -23,6 +23,8 @@ ohos_js_hap_suite("ActsWindowStageTest") {
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsWindowStageTest"
+  subsystem_name = "window"
+  part_name = "window_manager"
 }
 
 ohos_app_scope("windowStage_app_profile") {
