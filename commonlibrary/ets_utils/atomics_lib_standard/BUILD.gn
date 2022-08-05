@@ -21,6 +21,9 @@ ohos_js_hap_suite("atomics_js_hap") {
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsAtomicsJSTest"
+
+  subsystem_name = "commonlibrary"
+  part_name = "ets_utils"
 }
 ohos_js_assets("atomics_js_assets") {
   js2abc = true
