@@ -3,7 +3,7 @@
     "driver": {
         "type": "JSUnitTest",
         "test-timeout": "600000",
-        "package": "ohos.acts.miscservices.timer",
+        "package": "ohos.acts.time.timertest",
         "shell-timeout": "600000"
     },
     "kits": [
