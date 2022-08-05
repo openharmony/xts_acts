@@ -847,7 +847,7 @@ describe('ActsFeatureAbilityTest', function () {
         expect(info.enabled).assertEqual(true);
         expect(info.label).assertEqual("$string:app_name");
         //            expect(info.labelId).assertEqual(0);  //create by DevEco when building HAP.
-        expect(info.icon).assertEqual('');
+        expect(info.icon).assertEqual('$media:icon');
         //            expect(info.iconId).assertEqual(0);   //create by DevEco when building HAP.
         expect(info.process).assertEqual("processTest");
         expect(info.supportedModes).assertEqual(0);
