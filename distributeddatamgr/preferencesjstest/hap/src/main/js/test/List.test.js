@@ -13,6 +13,9 @@
 * limitations under the License.
 */
 
+import preferencesCallBackTest from './PreferencesCallBackJsunit.test.js'
+import preferencesHelperTest from './PreferencesHelperJsunit.test.js'
+import preferencesPromiseTest from './PreferencesPromiseJsunit.test.js'
 import storageCallBackTest from './StorageCallBackJsunit.test.js'
 import storageHelperTest from './StorageHelperJsunit.test.js'
 import storagePromiseTest from './StoragePromiseJsunit.test.js'
@@ -24,4 +27,7 @@ storageHelperTest()
 storagePromiseTest()
 storageSyncTest()
 systemStorageTest()
+preferencesCallBackTest()
+preferencesHelperTest()
+preferencesPromiseTest()
 }

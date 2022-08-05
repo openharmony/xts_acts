@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2022 Huawei Device Co., Ltd.
+* Copyright (c) 2021 Huawei Device Co., Ltd.
 * Licensed under the Apache License, Version 2.0 (the "License");
 * you may not use this file except in compliance with the License.
 * You may obtain a copy of the License at
@@ -12,14 +12,19 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-require('./DeviceKvStorePromiseJsunit.test.js')
-require('./DeviceKvStoreCallbackJsunit.test.js')
-require('./SingleKvStorePromiseJsunit.test.js')
-require('./SingleKvStoreCallbackJsunit.test.js')
-require('./SingleKvStoreEnumJsunit.test.js')
-require('./KvManagerPromiseJsunit.test.js')
-require('./KvManagerCallbackJsunit.test.js')
-require('./KvStoreResultSetJsunit.test.js')
-require('./QueryJsunit.test.js')
-require('./FieldNodeJsunit.test.js')
-require('./SchemaJsunit.test.js')
+const injectRef = Object.getPrototypeOf(global) || global
+injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')
+
+export default {
+    data: {
+        title: ''
+    },
+    onInit() {
+        this.title = this.$t('strings.world');
+    },
+    onShow() {
+        console.info('onShow finish')
+    },
+    onReady() {
+    },
+}

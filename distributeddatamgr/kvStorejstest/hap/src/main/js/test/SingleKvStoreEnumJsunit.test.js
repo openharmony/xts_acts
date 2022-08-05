@@ -12,10 +12,11 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 import factory from '@ohos.data.distributedData';
 
-describe('KvStoreEnumTest', function () {
+export default function singleKvStoreEnumTest(){
+describe('singleKvStoreEnumTest', function () {
 
     /**
      * @tc.number SUB_DISTRIBUTEDDATAMGR_USERTYPE_SAMEUSERID_0100
@@ -340,3 +341,4 @@ describe('KvStoreEnumTest', function () {
         expect(s4 == 6).assertTrue()
     })
 })
+}

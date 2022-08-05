@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 import factory from '@ohos.data.distributedData'
 
 const KEY_TEST_INT_ELEMENT = 'key_test_int_2';
@@ -54,8 +54,8 @@ function putBatchString(len, prefix) {
     }
     return entries;
 }
-
-describe('DeviceKvStoreCallbackTest', function () {
+export default function deviceKvStoreCallbackTest(){
+describe('deviceKvStoreCallbackTest', function () {
     const config = {
         bundleName : TEST_BUNDLE_NAME,
         userInfo : {
@@ -2300,3 +2300,4 @@ describe('DeviceKvStoreCallbackTest', function () {
         done();
     })
 })
+}
