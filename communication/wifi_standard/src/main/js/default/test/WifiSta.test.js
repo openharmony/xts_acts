@@ -25,11 +25,11 @@ function sleep(delay) {
 }
 
 function checkWifiPowerOn(){
-	console.info("Wifi_test/wifi status:" + wifi.isWifiActive());
+	console.info("wifi_test/wifi status:" + wifi.isWifiActive());
 }
 
-function resolve(ip) {
-    return (ip>>24 & 0xFF) + "." + (ip>>16 & 0xFF ) + (ip>>8 & 0xFF ) + (ip & 0xFF );
+function resolveIP(ip) {
+    return (ip>>24 & 0xFF) + "." + (ip>>16 & 0xFF ) + "." +(ip>>8 & 0xFF ) + "." + (ip & 0xFF );
 }
 
 
@@ -65,11 +65,11 @@ let WifiChannelWidth = {
     WIDTH_40MHZ : 1,
     WIDTH_80MHZ : 2,
     WIDTH_160MHZ : 3,
-    WIDTH_280MHZ_PLUS : 4,
-    WIDTH_INVALID
+    WIDTH_80MHZ_PLUS : 4,
+    WIDTH_INVALID : null,
 }
 
-describe('ACTS_WifiTest', function() {
+describe('ActsWifiTest', function() {
 
     beforeEach(function() {
         checkWifiPowerOn();
@@ -123,8 +123,10 @@ describe('ACTS_WifiTest', function() {
                          "rssi: " + result[j].rssi + "band: " + result[j].band + 
                           "frequency: " + result[j].frequency +
                           "timestamp" + result[j].timestamp + "capabilities" + result[j].capabilities
-                          + "channelWidth: " + result[j].channelWidth+"centerFrequency0"+result[j].centerFrequency0
-                          +"centerFrequency1"+result[j].centerFrequency1+"infoElems"+result[j].infoElems
+                          + "channelWidth: " + result[j].channelWidth+"centerFrequency0"
+                          +result[j].centerFrequency0
+                          +"centerFrequency1"+result[j].centerFrequency1
+                          +"infoElems"+result[j].infoElems
                           );
                     }
                 }
@@ -194,8 +196,9 @@ describe('ACTS_WifiTest', function() {
         expect(wifi.isWifiActive()).assertTrue();
         let countryCode = wifi.getCountryCode();
         console.info("[wifi_test] getCountryCode -> " + JSON.stringify(countryCode));
-        console.info("[wifi_test] getCountryCode.length -> " + JSON.stringify(countryCode.length));
-        expect(true).assertEqual(countryCode.length == 2);
+        let countrylen = countryCode.length;
+        console.info("[wifi_test] getCountryCode.length -> " + JSON.stringify(countrylen));
+        expect(true).assertEqual(countrylen == 2);
     })
    
     /**
@@ -285,32 +288,32 @@ describe('ACTS_WifiTest', function() {
                 "linkSpeed: " + result.linkSpeed + "frequency:" 
                  + result.frequency + "snr:" +result.snr +
                 "macAddress: " + result.macAddress + "ipAddress: " + result.ipAddress + 
-                "suppState" + result.suppState +"connState: " + result.connState+
+                "suppState:" + result.suppState +"connState: " + result.connState+
                 "macType: " + result.macType);
 
                 let state = wifi.getLinkedInfo().connState;
-                if(state == connState.SCANNING){
+                if(state == ConnState.SCANNING){
                     expect(true).assertEqual(state == 0);
                 }
-                if(state == connState.CONNECTING){
+                if(state == ConnState.CONNECTING){
                     expect(true).assertEqual(state == 1);
                 }
-                if(state == connState.AUTHENTICATING){
+                if(state == ConnState.AUTHENTICATING){
                     expect(true).assertEqual(state == 2);
                 }
-                if(state == connState.OBTAINING_IPADDR){
+                if(state == ConnState.OBTAINING_IPADDR){
                     expect(true).assertEqual(state == 3);
                 }
-                if(state == connState.CONNECTED){
+                if(state == ConnState.CONNECTED){
                     expect(true).assertEqual(state == 4);
                 }
-                if(state == connState.DISCONNECTING){
+                if(state == ConnState.DISCONNECTING){
                     expect(true).assertEqual(state == 5);
                 }
-                if(state == connState.DISCONNECTED){
+                if(state == ConnState.DISCONNECTED){
                     expect(true).assertEqual(state == 6);
                 }
-                if(state == connState.UNKNOWN){
+                if(state == ConnState.UNKNOWN){
                     expect(true).assertEqual(state == 7);
                 }
                 done();
@@ -465,11 +468,11 @@ describe('ACTS_WifiTest', function() {
      * @tc.level Level 3
      */
     it('SUB_Communication_WiFi_Hotspot_Off_0002', 0, async function (done) {
+        console.info("[wifi_test] hotspotStateChange off test");
         try {
            await wifi.off('hotspotStateChange', (data) => {
                 console.info("[wifi_test] hotspotStateChange Off ->" + data);
                 expect(true).assertEqual(data != null);
-                console.info("[wifi_test] wifiRssiChange unregister end");
             });
             
         }catch(e) {
@@ -479,4 +482,5 @@ describe('ACTS_WifiTest', function() {
     })
     console.log("*************[wifi_test] start wifi js unit test end*************");
 })
+
 
