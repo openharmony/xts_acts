@@ -16,18 +16,28 @@
 import image from '@ohos.multimedia.image'
 import fileio from '@ohos.fileio'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
-import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
-import bundle from '@ohos.bundle'
+import featureAbility from '@ohos.ability.featureAbility'
 
-export default function Image() {
-describe('Image', function () {
-    var pathJpg = '/data/storage/el2/base/files/test.jpg';
-    var pathWebp = '/data/storage/el2/base/files/test_large.webp';
-    var pathPng = '/data/storage/el2/base/files/test.png';
-    var pathBmp = '/data/storage/el2/base/files/test.bmp';
-    var pathGif = '/data/storage/el2/base/files/test.gif';
+export default function imageWebp() {
+describe('imageWebp', function () {
+    let filePath;
+    let fdNumber;
+    async function getFd(fileName) {
+        let context = await featureAbility.getContext();
+        await context.getFilesDir().then((data) => {
+            filePath = data + '/' + fileName;
+            console.info('image case filePath is ' + filePath);
+        })
+        await fileio.open(filePath).then((data) => {
+            fdNumber = data;
+            console.info("image case open fd success " + fdNumber);
+        }, (err) => {
+            console.info("image cese open fd fail" + err)
+        }).catch((err) => {
+            console.info("image case open fd err " + err);
+        })
+    }
     beforeAll(async function () {
-        await applyPermission();
         console.info('beforeAll case');
     })
 
@@ -36,6 +46,11 @@ describe('Image', function () {
     })
 
     afterEach(async function () {
+        await fileio.close(fdNumber).then(function(){
+            console.info("close file succeed");
+        }).catch(function(err){
+            console.info("close file failed with error:"+ err);
+        });
         console.info('afterEach case');
     })
 
@@ -43,37 +58,9 @@ describe('Image', function () {
         console.info('afterAll case');
     })
 
-    async function applyPermission() {
-        let appInfo = await bundle.getApplicationInfo('ohos.acts.multimedia.image.Webp', 0, 100);
-        let atManager = abilityAccessCtrl.createAtManager();
-        if (atManager != null) {
-            let tokenID = appInfo.accessTokenId;
-            console.info('[permission]case accessTokenId is' + tokenID);
-            let permissionName1 = 'ohos.permission.MEDIA_LOCATION';
-            let permissionName2 = 'ohos.permission.READ_MEDIA';
-            let permissionName3 = 'ohos.permission.WRITE_MEDIA';
-            await atManager.grantUserGrantedPermission(tokenID, permissionName1).then((result) => {
-                console.info('[permission]case grantUserGrantedPermission success:' + result);
-            }).catch((err) => {
-                console.info('[permission]case grantUserGrantedPermission failed:' + err);
-            });
-            await atManager.grantUserGrantedPermission(tokenID, permissionName2).then((result) => {
-                console.info('[permission]case grantUserGrantedPermission success:' + result);
-            }).catch((err) => {
-                console.info('[permission]case grantUserGrantedPermission failed:' + err);
-            });
-            await atManager.grantUserGrantedPermission(tokenID, permissionName3).then((result) => {
-                console.info('[permission]case grantUserGrantedPermission success:' + result);
-            }).catch((err) => {
-                console.info('[permission]case grantUserGrantedPermission failed:' + err);
-            });
-        } else {
-            console.info('[permission]case apply permission failed,createAtManager failed');
-        }
-    }
 
     async function createPixMapCbErr(done, testNum, arg) {
-        let fdNumber = fileio.openSync(pathWebp);
+        await getFd('test_large.webp');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info(`${testNum} create image source failed`);
@@ -92,8 +79,37 @@ describe('Image', function () {
             })
         }
     }
+
+    
+    async function createPixMapCb(done, testNum, arg) {
+        await getFd('test_large.webp');
+        const imageSourceApi = image.createImageSource(fdNumber);
+        if (imageSourceApi == undefined) {
+            console.info(`${testNum} create image source failed`);
+            expect(false).assertTrue();
+            done();
+        } else {
+            imageSourceApi.createPixelMap(arg, (err, pixelmap) => {
+                if (err) {
+                    console.info(`${testNum} - fail `);
+                    expect(false).assertTrue();
+                    done();
+                } else {
+                    pixelmap.getImageInfo().then((imageInfo) => {
+                        expect(imageInfo.size.height == 2).assertTrue();
+                        expect(imageInfo.size.width == 1).assertTrue();
+                        console.info(`${testNum} - success `);
+                        console.info("imageInfo height :" + imageInfo.size.height + "width : " + imageInfo.size.width);
+                        done();
+                    }).catch((err) => {
+                        console.info(`${testNum} getimageInfo err ` + JSON.stringify(err));
+                    })
+                }
+            })
+        }
+    }
     async function createPixMapPromiseErr(done, testNum, arg) {
-        let fdNumber = fileio.openSync(pathWebp);
+        await getFd('test_large.webp');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
             console.info(`${testNum} create image source failed`);
@@ -107,6 +123,31 @@ describe('Image', function () {
             }).catch(error => {
                 console.log(`${testNum} success `);
                 expect(true).assertTrue();
+                done();
+            })
+        }
+    }
+    async function createPixMapPromise(done, testNum, arg) {
+        await getFd('test_large.webp');
+        const imageSourceApi = image.createImageSource(fdNumber);
+        if (imageSourceApi == undefined) {
+            console.info(`${testNum} create image source failed`);
+            expect(false).assertTrue();
+            done();
+        } else {
+            imageSourceApi.createPixelMap(arg).then(pixelmap => {
+                pixelmap.getImageInfo().then((imageInfo) => {
+                    expect(imageInfo.size.height == 2).assertTrue();
+                    expect(imageInfo.size.width == 1).assertTrue();
+                    console.info(`${testNum} - success `);
+                    console.info("imageInfo height :" + imageInfo.size.height + "width : " + imageInfo.size.width);
+                    done();
+                }).catch((err) => {
+                    console.info(`${testNum} getimageInfo err ` + JSON.stringify(err));
+                })
+            }).catch(error => {
+                console.log(`${testNum} fail `);
+                expect(flase).assertTrue();
                 done();
             })
         }
@@ -435,7 +476,7 @@ describe('Image', function () {
     */
     it('wbp_001', 0, async function (done) {
         try {
-            let fdNumber = fileio.openSync(pathWebp);
+            await getFd('test_large.webp');
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
                 console.info('wbp_001 create image source failed');
@@ -484,7 +525,7 @@ describe('Image', function () {
      */
     it('wbp_002', 0, async function (done) {
         try {
-            let fdNumber = fileio.openSync(pathWebp);
+            await getFd('test_large.webp');
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
                 console.info('wbp_002 create image source failed');
@@ -533,7 +574,7 @@ describe('Image', function () {
      */
     it('wbp_003', 0, async function (done) {
         try {
-            let fdNumber = fileio.openSync(pathWebp);
+            await getFd('test_large.webp');
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
                 console.info('wbp_003 create image source failed');
@@ -569,7 +610,7 @@ describe('Image', function () {
      */
     it('wbp_004', 0, async function (done) {
         try {
-            let fdNumber = fileio.openSync(pathWebp);
+            await getFd('test_large.webp');
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
                 console.info('wbp_004 create image source failed');
@@ -753,7 +794,7 @@ describe('Image', function () {
             desiredRegion: { size: { height: 10000, width: 10000 }, x: 0, y: 0 },
             index: 0
         };
-        createPixMapCbErr(done, 'wbp_009', decodingOptions)
+        createPixMapCb(done, 'wbp_009', decodingOptions)
     })
 
     /**
@@ -874,7 +915,7 @@ describe('Image', function () {
             desiredRegion: { size: { height: 10000, width: 10000 }, x: 0, y: 0 },
             index: 0
         };
-        createPixMapPromiseErr(done, 'wbp_014', decodingOptions)
+        createPixMapPromise(done, 'wbp_014', decodingOptions)
     })
 
     /**

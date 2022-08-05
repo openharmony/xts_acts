@@ -17,23 +17,41 @@ import image from '@ohos.multimedia.image'
 import fileio from '@ohos.fileio'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import {modifyBuf} from './modifyBuffer'
-import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
-import bundle from '@ohos.bundle'
+import featureAbility from '@ohos.ability.featureAbility'
 
-export default function Image() {
-describe('Image', function () {
-    var pathExifJpg = '/data/storage/el2/base/files/test_exif.jpg';
+export default function imageModifyProperty() {
+describe('imageModifyProperty', function () {
+    let filePath;
+    let fdNumber;
+    async function getFd(fileName) {
+        let context = await featureAbility.getContext();
+        await context.getFilesDir().then((data) => {
+            filePath = data + '/' + fileName;
+            console.info('image case filePath is ' + filePath);
+        })
+        await fileio.open(filePath, 0o2 | 0o100, 0o777).then((data) => {
+            fdNumber = data;
+            console.info("image case open fd success " + fdNumber);
+        }, (err) => {
+            console.info("image cese open fd fail" + err)
+        }).catch((err) => {
+            console.info("image case open fd err " + err);
+        })
+    }
     beforeAll(async function () {
-        await applyPermission();
         console.info('beforeAll case');
     })
 
     beforeEach(function () {
-       
         console.info('beforeEach case');
     })
 
-    afterEach(function () {
+    afterEach(async function () {
+        await fileio.close(fdNumber).then(function(){
+            console.info("close file succeed");
+        }).catch(function(err){
+            console.info("close file failed with error:"+ err);
+        });
         console.info('afterEach case');
     })
 
@@ -41,34 +59,6 @@ describe('Image', function () {
         console.info('afterAll case');
     })
 
-    async function applyPermission(){
-        let appInfo = await bundle.getApplicationInfo('ohos.acts.multimedia.image.ModifyProperty',0,100);
-        let atManager = abilityAccessCtrl.createAtManager();
-        if(atManager != null){
-            let tokenID = appInfo.accessTokenId;
-            console.info('[permission]case accessTokenId is' + tokenID);
-            let permissionName1 = 'ohos.permission.MEDIA_LOCATION';
-            let permissionName2 = 'ohos.permission.READ_MEDIA';
-            let permissionName3 = 'ohos.permission.WRITE_MEDIA';
-            await atManager.grantUserGrantedPermission(tokenID,permissionName1).then((result)=>{
-                console.info('[permission]case grantUserGrantedPermission success:' + result);
-            }).catch((err)=>{
-                console.info('[permission]case grantUserGrantedPermission failed:' + err);
-            });
-            await atManager.grantUserGrantedPermission(tokenID,permissionName2).then((result)=>{
-                console.info('[permission]case grantUserGrantedPermission success:' + result);
-            }).catch((err)=>{
-                console.info('[permission]case grantUserGrantedPermission failed:' + err);
-            });
-            await atManager.grantUserGrantedPermission(tokenID,permissionName3).then((result)=>{
-                console.info('[permission]case grantUserGrantedPermission success:' + result);
-            }).catch((err)=>{
-                console.info('[permission]case grantUserGrantedPermission failed:' + err);
-            });
-        }else{
-            console.info('[permission]case apply permission failed,createAtManager failed');
-        }
-    }
 
     async function modifyPromise(done, testNum, type, key, value, checkProps){
         let imageSourceApi;
@@ -76,8 +66,8 @@ describe('Image', function () {
             const data = modifyBuf.buffer;
             imageSourceApi = image.createImageSource(data);
         } else {
-            let fdExifJpg = fileio.openSync(pathExifJpg, 0o2 | 0o100, 0o777);
-            imageSourceApi = image.createImageSource(fdExifJpg);
+            await getFd('test_exif.jpg');
+            imageSourceApi = image.createImageSource(fdNumber);
         }
         if (imageSourceApi == undefined) {
             console.info(`${testNum} create image source failed`);
@@ -108,8 +98,8 @@ describe('Image', function () {
             const data = modifyBuf.buffer;
             imageSourceApi = image.createImageSource(data);
         } else {
-            let fdExifJpg = fileio.openSync(pathExifJpg, 0o2 | 0o100, 0o777);
-            imageSourceApi = image.createImageSource(fdExifJpg);
+            await getFd('test_exif.jpg');
+            imageSourceApi = image.createImageSource(fdNumber);
         }
         if (imageSourceApi == undefined) {
             console.info(`${testNum} create image source failed`);
@@ -143,8 +133,8 @@ describe('Image', function () {
             const data = modifyBuf.buffer;
             imageSourceApi = image.createImageSource(data);
         } else {
-            let fdExifJpg = fileio.openSync(pathExifJpg, 0o2 | 0o100, 0o777);
-            imageSourceApi = image.createImageSource(fdExifJpg);
+            await getFd('test_exif.jpg');
+            imageSourceApi = image.createImageSource(fdNumber);
         }
         if (imageSourceApi == undefined) {
             console.info(`${testNum} create image source failed`);
@@ -179,8 +169,8 @@ describe('Image', function () {
             const data = modifyBuf.buffer;
             imageSourceApi = image.createImageSource(data);
         } else {
-            let fdExifJpg = fileio.openSync(pathExifJpg, 0o2 | 0o100, 0o777);
-            imageSourceApi = image.createImageSource(fdExifJpg);
+            await getFd('test_exif.jpg');
+            imageSourceApi = image.createImageSource(fdNumber);
         }
         if (imageSourceApi == undefined) {
             console.info(`${testNum} create image source failed`);
@@ -202,8 +192,8 @@ describe('Image', function () {
             const data = modifyBuf.buffer;
             imageSourceApi = image.createImageSource(data);
         }else {
-            let fdExifJpg = fileio.openSync(pathExifJpg, 0o2 | 0o100, 0o777);
-            imageSourceApi = image.createImageSource(fdExifJpg);
+            await getFd('test_exif.jpg');
+            imageSourceApi = image.createImageSource(fdNumber);
         }
         if (imageSourceApi == undefined) {
             console.info(`${testNum} create image source failed`);
@@ -226,8 +216,8 @@ describe('Image', function () {
                 const data = modifyBuf.buffer;
                 imageSourceApi = image.createImageSource(data);
             } else {
-                let fdExifJpg = fileio.openSync(pathExifJpg, 0o2 | 0o100, 0o777);
-                imageSourceApi = image.createImageSource(fdExifJpg);
+                await getFd('test_exif.jpg');
+                imageSourceApi = image.createImageSource(fdNumber);
             }
         } catch (error) {
             expect(false).assertTrue();

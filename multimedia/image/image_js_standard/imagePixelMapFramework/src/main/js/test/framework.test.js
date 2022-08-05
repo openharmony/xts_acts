@@ -17,8 +17,8 @@ import image from '@ohos.multimedia.image'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import { base64Image, scale2x1, translate3x1, rotate90, flipH, testBmp, testGif, crop3x3, scale1x4, setAlpha8, translate1x3 } from './testImg2'
 import { testPng, testJpg} from '../../../../../image/src/main/js/test/testImg'
-export default function Image_test() {
-describe('Image_test', function () {
+export default function imagePixelMapFramework() {
+describe('imagePixelMapFramework', function () {
     beforeAll(async function () {
         console.info('beforeAll case');
     })
