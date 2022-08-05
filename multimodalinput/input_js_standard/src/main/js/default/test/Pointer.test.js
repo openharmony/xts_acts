@@ -33,7 +33,7 @@ describe('MultimodalInput_Pointer_test', function () {
                 this.log(`MultimodalInput_Pointer_test::SetPointerVisibleTest_001 failed, err=${JSON.stringify(err)}`);
                 expect(false).assertTrue();
             } else {
-                this.log(`MultimodalInput_Pointer_test::SetPointerVisibleTest_001 success, data=${JSON.stringify(data)}`);
+                this.log(`MultimodalInput_Pointer_test::SetPointerVisibleTest_001 success`);
                 expect(true).assertTure();
             }
         };
