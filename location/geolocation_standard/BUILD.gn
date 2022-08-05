@@ -25,9 +25,8 @@ ohos_js_hap_suite("ActslocationJsTest") {
   #  ]
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActslocationJSApiTest"
-
-  #  part_name = "prebuilt_hap"
-  #  subsystem_name = "xts"
+  part_name = "location"
+  subsystem_name = "location"
 }
 ohos_js_assets("geolocation_js_assets") {
   source_dir = "./src/main/js/default"

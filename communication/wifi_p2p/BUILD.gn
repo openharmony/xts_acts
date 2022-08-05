@@ -21,6 +21,8 @@ ohos_js_hap_suite("ActsP2PJSTest") {
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsP2PJSApiTest"
+  part_name = "wifi"
+  subsystem_name = "communication"
 }
 ohos_js_assets("wifi_js_assets") {
   js2abc = true

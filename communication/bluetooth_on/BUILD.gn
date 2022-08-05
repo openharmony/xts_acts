@@ -21,6 +21,8 @@ ohos_js_hap_suite("ActsBluetoothOnJsTest") {
 
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsBluetoothOnHapTest"
+  part_name = "bluetooth"
+  subsystem_name = "communication"
 }
 ohos_js_assets("bluetooth_js_assets") {
   js2abc = true
