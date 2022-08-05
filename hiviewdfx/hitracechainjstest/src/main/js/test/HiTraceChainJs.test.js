@@ -264,7 +264,6 @@ describe('HiTraceJsTest', function () {
      * @tc.feature DFX_DFT_Hitrace
      * @tc.level Level3
      * @tc.type FUNC
-     * @tc.author chenxuhui
      */
     it('testHitraceApi10', 0, async function (done) {
         console.info('testHitraceApi10 start')
@@ -295,7 +294,6 @@ describe('HiTraceJsTest', function () {
      * @tc.feature DFX_DFT_Hitrace
      * @tc.level Level3
      * @tc.type FUNC
-     * @tc.author chenxuhui
      */
     it('testHitraceApi11', 0, async function (done) {
         console.info('testHitraceApi11 start')
@@ -330,7 +328,6 @@ describe('HiTraceJsTest', function () {
      * @tc.feature DFX_DFT_Hitrace
      * @tc.level Level3
      * @tc.type FUNC
-     * @tc.author chenxuhui
      */
     it('testHitraceApi12', 0, async function (done) {
         console.info('testHitraceApi12 start')
