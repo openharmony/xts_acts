@@ -13,13 +13,11 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_hap("ActsLifecycleMultiHap3") {
+ohos_hap_assist_suite("ActsLifecycleMultiHap3") {
   hap_name = "ActsLifecycleMultiHap3"
   js_build_mode = "debug"
   hap_profile = "entry/src/main/module.json"
-  subsystem_name = XTS_SUITENAME
-  final_hap_path =
-      "${SUITES_OUTPUT_ROOT}/${XTS_SUITENAME}/testcases/${hap_name}.hap"
+
   testonly = true
   deps = [
     ":actslifecyclemultihap3_js_assets",
@@ -27,6 +25,9 @@ ohos_hap("ActsLifecycleMultiHap3") {
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
+
+  subsystem_name = "ability"
+  part_name = "ability_runtime"
 }
 
 ohos_app_scope("actslifecyclemultihap3_app_profile") {
