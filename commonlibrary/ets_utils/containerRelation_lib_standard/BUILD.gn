@@ -27,8 +27,8 @@ ohos_js_hap_suite("containerRelation_js_test") {
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsContainerRelationJsTest"
 
-  #  part_name = "prebuilt_hap"
-  #  subsystem_name = "xts"
+  subsystem_name = "commonlibrary"
+  part_name = "ets_utils"
 }
 ohos_js_assets("containerRelation_js_assets") {
   js2abc = true
