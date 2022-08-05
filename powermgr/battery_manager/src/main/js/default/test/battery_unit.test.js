@@ -14,7 +14,7 @@
  */
 
 import app from '@system.app'
-import batteryInfo from '@ohos.batteryinfo';
+import batteryInfo from '@ohos.batteryInfo';
 import brightness from '@ohos.brightness';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
