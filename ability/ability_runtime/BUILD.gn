@@ -43,6 +43,7 @@ group("ability_runtime") {
       "faapicover:faapicover",
       "featureability:featureability",
       "formmanager:formmanager",
+      "freeinstalltest:freeinstalltest",
       "killprocesswithaccountstage:killprocesswithaccountstage",
       "newwant:newwant",
       "non_concurrent:non_concurrent",
