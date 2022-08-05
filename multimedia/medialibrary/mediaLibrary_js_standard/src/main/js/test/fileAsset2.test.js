@@ -83,7 +83,7 @@ describe('fileAsset2.test.js', async function () {
         try {
             const fetchFileResult = await media.getFileAssets(imagesfetchOp);
             const asset = await fetchFileResult.getFirstObject();
-            const newName = 'newName';
+            const newName = 'newName' + new Date().getTime() + '.jpg';
             asset.displayName = newName;
             const id = asset.id;
             await asset.commitModify();
@@ -200,8 +200,8 @@ describe('fileAsset2.test.js', async function () {
         try {
             const fetchFileResult = await media.getFileAssets(imagesfetchOp);
             const asset = await fetchFileResult.getFirstObject();
-            let neworientation = 1;
-            if (asset.orientation == 1) {
+            let neworientation = 90;
+            if (asset.orientation == 90) {
                 neworientation = 0;
             }
             asset.orientation = neworientation;
