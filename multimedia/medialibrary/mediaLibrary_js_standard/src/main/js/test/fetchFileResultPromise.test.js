@@ -579,10 +579,10 @@ describe('fetchFileResultPromise.test.js', async function() {
                 console.info('MediaLibraryTest :firstObject.uri === undefined');
             }
 			
-	    expect(firstObject.mimeType.startsWith('image/')).assertTrue();
-	    if (!firstObject.mimeType.startsWith('image/')) {
-		console.info('Test MediaLibraryTest :firstObject.mimeType:' + firstObject.mimeType);
-	    }
+			expect(firstObject.mimeType.startsWith('image/')).assertTrue();
+			if (!firstObject.mimeType.startsWith('image/')) {
+				console.info('Test MediaLibraryTest :firstObject.mimeType:' + firstObject.mimeType);
+			}
 
             expect(firstObject.mediaType == imageType).assertTrue();
             if (firstObject.mediaType != imageType) {
