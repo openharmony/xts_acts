@@ -21,6 +21,8 @@ ohos_js_hap_suite("ActsApplicationinfoTest") {
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsApplicationinfoTest"
+  subsystem_name = "ability"
+  part_name = "form_fwk"
 }
 ohos_js_assets("hjs_demo_js_assets") {
   js2abc = true
