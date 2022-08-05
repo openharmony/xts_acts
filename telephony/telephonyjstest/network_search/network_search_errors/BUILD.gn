@@ -20,6 +20,8 @@ ohos_js_hap_suite("ActsNetworkSearchTest") {
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsNetworkSearchTest"
+  part_name = "state_registry"
+  subsystem_name = "telephony"
 }
 ohos_js_assets("hjs_demo_js_assets") {
   js2abc = true

@@ -2204,7 +2204,7 @@
                  done();
              } else {
                  console.info(`${caseName} netCapabilitiesChange handle ` + value.netHandle.netId);
-                 expect(value.netHandle.netId > ETH_100 ).assertTrue();
+                 expect(value.netHandle.netId >= ETH_100 ).assertTrue();
              }
          });
          netConn.on('netConnectionPropertiesChange', (value) => {
