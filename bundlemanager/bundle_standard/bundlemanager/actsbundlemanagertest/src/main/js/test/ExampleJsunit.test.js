@@ -1619,6 +1619,7 @@ describe('ActsBundleManagerTest', function () {
             if (datainfo.bundleName == NAME4) {
                 expect(datainfo.name).assertEqual("com.example.myapplication.MainAbility");
                 expect(datainfo.type).assertEqual(demo.AbilityType.DATA);
+                expect(datainfo.orientation).assertEqual(demo.DisplayOrientation.UNSPECIFIED);
                 expect(datainfo.bundleName).assertEqual(NAME4);
                 queryResultCount++;
             }
@@ -1685,6 +1686,7 @@ describe('ActsBundleManagerTest', function () {
             if (datainfo.bundleName == NAME4) {
                 expect(datainfo.name).assertEqual("com.example.myapplication.MainAbility");
                 expect(datainfo.bundleName).assertEqual(NAME4);
+                expect(datainfo.orientation).assertEqual(demo.DisplayOrientation.UNSPECIFIED);
                 queryResultCount++;
             }
             if (datainfo.bundleName == NAME5) {
