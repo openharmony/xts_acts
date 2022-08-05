@@ -77,11 +77,11 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
     callSetCurFunction('SUB_USB_JS_0350 ACM 1', usb.ACM)
   })
 
-  // /**
-  //  * @tc.number    : SUB_USB_JS_0360
-  //  * @tc.name      : functions_test
-  //  * @tc.desc      : 在设备模式下设置当前的USB功能列表 Set 2 设置为ECM功能
-  //  */
+  /**
+   * @tc.number    : SUB_USB_JS_0360
+   * @tc.name      : functions_test
+   * @tc.desc      : 在设备模式下设置当前的USB功能列表 Set 2 设置为ECM功能
+   */
   it('SUB_USB_JS_0360', 0, function () {
     CheckEmptyUtils.sleep(3000)
     console.info('usb SUB_USB_JS_0360 set ECM begin');
@@ -92,11 +92,11 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
     callSetCurFunction('SUB_USB_JS_0360 ECM 2', usb.ECM)
   })
 
-  // /**
-  //  * @tc.number    : SUB_USB_JS_0370
-  //  * @tc.name      : functions_test
-  //  * @tc.desc      : 在设备模式下设置当前的USB功能列表 Set 3 设置为ACM、ECM功能
-  //  */
+  /**
+   * @tc.number    : SUB_USB_JS_0370
+   * @tc.name      : functions_test
+   * @tc.desc      : 在设备模式下设置当前的USB功能列表 Set 3 设置为ACM、ECM功能
+   */
   it('SUB_USB_JS_0370', 0, function () {
     CheckEmptyUtils.sleep(3000)
     console.info('usb SUB_USB_JS_0370 set ACM ECM begin');

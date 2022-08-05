@@ -20,14 +20,14 @@ import parameter from '@ohos.systemparameter';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
 /* usb device pipe test */
-export default function UsbDevicePipeJsFunctionsTest() {
-describe('UsbDevicePipeJsFunctionsTest', function () {
+export default function UsbDevicePipeJsFunctionsTestA() {
+describe('UsbDevicePipeJsFunctionsTestA', function () {
   var gDeviceList
   var gPipe
   var portCurrentMode
 
   beforeAll(function () {
-    console.log('*************Usb Unit UsbDevicePipeJsFunctionsTest Begin*************');
+    console.log('*************Usb Unit UsbDevicePipeJsFunctionsTestA Begin*************');
     var Version = usb.getVersion()
     console.info('usb unit begin test getversion :' + Version)
     // version > 17  host currentMode = 2 device currentMode = 1
@@ -151,6 +151,12 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
    */
   it('SUB_USB_JS_0630', 0, function () {
     console.info('usb SUB_USB_JS_0630 begin');
+    console.info('usb SUB_USB_JS_0630 portcurrentMode ret : ' + portCurrentMode)
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
     var testParam = getTransferTestParam()
     if (testParam.interface == null || testParam.inEndpoint == null) {
       expect(false).assertTrue();
@@ -180,6 +186,11 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
    */
   it('SUB_USB_JS_0640', 0, function () {
     console.info('usb SUB_USB_JS_0640 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
     var testParam = getTransferTestParam()
     if (testParam.interface == null || testParam.outEndpoint == null) {
       expect(false).assertTrue();
@@ -217,6 +228,11 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
    */
   it('SUB_USB_JS_0420', 0, function () {
     console.info('usb SUB_USB_JS_0420 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
     if (gDeviceList.length == 0) {
       console.info('usb 01 case get_device_list is null')
       expect(gDeviceList.length).assertEqual(-1);
@@ -278,6 +294,11 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
    */
   it('SUB_USB_JS_0740', 0, function () {
     console.info('usb SUB_USB_JS_0740 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
     if (gDeviceList.length == 0) {
       console.info('usb case get_device_list is null')
       expect(false).assertTrue();
@@ -308,6 +329,11 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
    */
   it('SUB_USB_JS_0750', 0, function () {
     console.info('usb SUB_USB_JS_0750 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
     if (gDeviceList.length == 0) {
       console.info('usb case get_device_list is null')
       expect(false).assertTrue();
@@ -332,6 +358,11 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
    */
   it('SUB_USB_JS_0800', 0, function () {
     console.info('usb SUB_USB_JS_0800 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
     if (gDeviceList.length == 0) {
       console.info('usb case get_device_list is null')
       expect(false).assertTrue();
@@ -359,6 +390,11 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
    */
   it('SUB_USB_JS_0810', 0, function () {
     console.info('usb SUB_USB_JS_0810 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
     if (gDeviceList.length == 0) {
       console.info('usb case get_device_list is null')
       expect(false).assertTrue()
@@ -401,6 +437,11 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
    */
   it('SUB_USB_JS_0540', 0, function () {
     console.info('usb SUB_USB_JS_0540 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
     var testParam = getTransferTestParam()
     if (testParam.inEndpoint == null || testParam.interface == null || testParam.outEndpoint == null) {
       expect(false).assertTrue();
@@ -420,6 +461,11 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
    */
   it('SUB_USB_JS_0550', 0, function () {
     console.info('usb SUB_USB_JS_0550 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
     var testParam = getTransferTestParam()
     if (testParam.inEndpoint == null || testParam.interface == null || testParam.outEndpoint == null) {
       expect(false).assertTrue();
@@ -439,6 +485,11 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
    */
   it('SUB_USB_JS_0560', 0, function () {
     console.info('usb SUB_USB_JS_0560 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
     var testParam = getTransferTestParam()
     if (testParam.inEndpoint == null || testParam.interface == null || testParam.outEndpoint == null) {
       expect(false).assertTrue();
@@ -458,6 +509,11 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
    */
   it('SUB_USB_JS_0570', 0, function () {
     console.info('usb SUB_USB_JS_0570 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
     var testParam = getTransferTestParam()
     if (testParam.inEndpoint == null || testParam.interface == null || testParam.outEndpoint == null) {
       expect(false).assertTrue();
@@ -477,6 +533,11 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
    */
   it('SUB_USB_JS_0580', 0, function () {
     console.info('usb SUB_USB_JS_0580 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
     var testParam = getTransferTestParam()
     if (testParam.inEndpoint == null || testParam.interface == null || testParam.outEndpoint == null) {
       expect(false).assertTrue();
@@ -496,6 +557,11 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
    */
    it('SUB_USB_JS_0590', 0, function () {
     console.info('usb SUB_USB_JS_0590 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
     var testParam = getTransferTestParam()
     if (testParam.inEndpoint == null || testParam.interface == null || testParam.outEndpoint == null) {
       expect(false).assertTrue();
@@ -515,6 +581,11 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
    */
    it('SUB_USB_JS_0600', 0, function () {
     console.info('usb SUB_USB_JS_0600 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
     var testParam = getTransferTestParam()
     if (testParam.inEndpoint == null || testParam.interface == null || testParam.outEndpoint == null) {
       expect(false).assertTrue();
@@ -534,6 +605,11 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
    */
     it('SUB_USB_JS_0610', 0, function () {
       console.info('usb SUB_USB_JS_0610 begin');
+      if (portCurrentMode == 1) {
+        console.info('usb case get_device port is device')
+        expect(false).assertFalse();
+        return
+      }
       var testParam = getTransferTestParam()
       if (testParam.inEndpoint == null || testParam.interface == null || testParam.outEndpoint == null) {
         expect(false).assertTrue();
@@ -553,6 +629,11 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
    */
       it('SUB_USB_JS_0620', 0, function () {
         console.info('usb SUB_USB_JS_0620 begin');
+        if (portCurrentMode == 1) {
+          console.info('usb case get_device port is device')
+          expect(false).assertFalse();
+          return
+        }
         var testParam = getTransferTestParam()
         if (testParam.inEndpoint == null || testParam.interface == null || testParam.outEndpoint == null) {
           expect(false).assertTrue();
