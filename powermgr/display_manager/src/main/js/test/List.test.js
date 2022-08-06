@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import SystemDisplayTest from "./system_display.test"
+import systemDisplayTest from "./system_display.test"
 export default function testsuite() {
-    SystemDisplayTest()
+    systemDisplayTest()
 }

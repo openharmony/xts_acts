@@ -12,13 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import ThermalCommonEvent from './thermal_common_event.test.js'
-import ThermalPerformance from './thermal_performance.test.js'
-import ThermalUnit from './thermal_uint.test.js'
-import ThermalUnitTest from './thermal_unittest.test.js'
+import thermalCommonEvent from './thermal_common_event.test.js'
+import thermalPerformance from './thermal_performance.test.js'
+import thermalUnit from './thermal_uint.test.js'
+import thermalUnitTest from './thermal_unittest.test.js'
 export default function testsuite() {
-    ThermalUnitTest()
-    //ThermalUnit()
-    //ThermalCommonEvent()
-    // ThermalPerformance()
+    thermalUnitTest()
+    //thermalUnit()
+    //thermalCommonEvent()
+    //thermalPerformance()
 }

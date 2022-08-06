@@ -12,13 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import PowerManagerPowerTest from './power_manager_power.test.js'
-import PowerManagerRebootShutTest from './power_manager_rebootshut.test.js'
-import PowerManagerRunningLockTest from './power_manager_running_lock.test.js'
-import PowerPerformanceTest from './power_performance.test.js'
+import powerManagerPowerTest from './power_manager_power.test.js'
+import powerManagerRebootShutTest from './power_manager_rebootshut.test.js'
+import powerManagerRunningLockTest from './power_manager_running_lock.test.js'
+import powerPerformanceTest from './power_performance.test.js'
 export default function testsuite() {
-    PowerManagerPowerTest()
-    //PowerManagerRebootShutTest()
-    PowerManagerRunningLockTest()
-    //PowerPerformanceTest()
+    powerManagerPowerTest()
+    //powerManagerRebootShutTest()
+    powerManagerRunningLockTest()
+    //powerPerformanceTest()
 }
