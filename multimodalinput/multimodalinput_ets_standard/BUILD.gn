@@ -23,6 +23,8 @@ ohos_js_hap_suite("ActsMultimodalInputEtsTest") {
   ets2abc = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsMultimodalInputEtsTest"
+  subsystem_name = "multimodalinput"
+  part_name = "input"
 }
 ohos_js_assets("multimodalinput_ets_assets") {
   source_dir = "./entry/src/main/ets/MainAbility"

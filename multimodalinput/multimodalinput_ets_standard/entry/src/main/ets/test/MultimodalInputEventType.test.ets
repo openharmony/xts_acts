@@ -63,7 +63,7 @@ export default function MultimodalInputEventTypeTest() {
             let testKeyEvent: KeyEvent = {
                 id: 1, deviceId: 1, actionTime: 1, screenId: 1, windowId: 1,
                 action: keyEvent.Action.DOWN, key: testKey, unicodeChar: 1, keys: [testKey],
-                ctrlKey: true, altKey: true, shiftKey: true, infooKey: true, fnKey: true, capsLock: true, numLock: true,
+                ctrlKey: true, altKey: true, shiftKey: true, logoKey: true, fnKey: true, capsLock: true, numLock: true,
                 scrollLock: true
             };
 
@@ -74,7 +74,7 @@ export default function MultimodalInputEventTypeTest() {
             expect(testKeyEvent.ctrlKey).assertTrue();
             expect(testKeyEvent.altKey).assertTrue();
             expect(testKeyEvent.shiftKey).assertTrue();
-            expect(testKeyEvent.infooKey).assertTrue();
+            expect(testKeyEvent.logoKey).assertTrue();
             expect(testKeyEvent.fnKey).assertTrue();
             expect(testKeyEvent.capsLock).assertTrue();
             expect(testKeyEvent.numLock).assertTrue();
@@ -188,7 +188,7 @@ export default function MultimodalInputEventTypeTest() {
                 windowY: 1, rawDeltaX: 1, rawDeltaY: 1, button: mouseEvent.Button.LEFT,
                 pressedButtons: [mouseEvent.Button.LEFT], axes: [testAxisValue],
                 pressedKeys: [inputkeyCode.KeyCode.KEYCODE_FN], ctrlKey: true, altKey: true, shiftKey: true,
-                infooKey: true, fnKey: true, capsLock: true, numLock: true, scrollLock: true
+                logoKey: true, fnKey: true, capsLock: true, numLock: true, scrollLock: true
             };
             expect(testMouseEvent.action == mouseEvent.Action.CANCEL).assertTrue();
             expect(testMouseEvent.screenX == 1).assertTrue();
@@ -204,7 +204,7 @@ export default function MultimodalInputEventTypeTest() {
             expect(testMouseEvent.ctrlKey).assertTrue();
             expect(testMouseEvent.altKey).assertTrue();
             expect(testMouseEvent.shiftKey).assertTrue();
-            expect(testMouseEvent.infooKey).assertTrue();
+            expect(testMouseEvent.logoKey).assertTrue();
             expect(testMouseEvent.fnKey).assertTrue();
             expect(testMouseEvent.capsLock).assertTrue();
             expect(testMouseEvent.numLock).assertTrue();
