@@ -51,12 +51,12 @@ describe('fileAssetUriTestCallback.test.js', async function() {
             const uri = firstObject.uri;
             console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_URI_CALLBACK_005_35  uri:'
                          + uri);
-            const serachUri = 'dataability:///media/image/' + id;
-            console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_URI_CALLBACK_005_35  serachUri:'
-                         + serachUri);
+            const searchUri = uri.substr(0, uri.lastIndexOf('/') + 1) + id;
+            console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_URI_CALLBACK_005_35  searchUri:'
+                         + searchUri);
 
             let serchfetchOp = {
-                uri:serachUri.toString(),
+                uri:searchUri.toString(),
                 selections : mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
                 selectionArgs : [ type.toString()],
             };
@@ -64,11 +64,11 @@ describe('fileAssetUriTestCallback.test.js', async function() {
             const result = await media.getFileAssets(serchfetchOp);
             console.info(
                 'MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_URI_CALLBACK_005_35  getFileAssets by uri:'
-                + serachUri + ",result.getCount():" + result.getCount());
+                + searchUri + ",result.getCount():" + result.getCount());
             asset = await result.getFirstObject();
             console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_URI_CALLBACK_005_35  asset.uri:'
                          + asset.uri);
-            expect(asset.uri == serachUri).assertTrue();
+            expect(asset.uri == searchUri).assertTrue();
             fd = await asset.open('r');
             expect(fd > 0).assertTrue();
             console.info('MediaLibraryTest : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_URI_CALLBACK_005_35  fd:' + fd);

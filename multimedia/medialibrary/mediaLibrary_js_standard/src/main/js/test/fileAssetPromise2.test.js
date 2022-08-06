@@ -40,6 +40,9 @@ function checkAttrs(done, asset, tNum) {
         done();
     }
 }
+function sleep(time){
+	for (let t = Date.now(); Date.now() - t <= time;);
+}
 describe('fileAssetPromise2.test.js', async function () {
     let fileKeyObj = mediaLibrary.FileKey;
 
@@ -83,7 +86,7 @@ describe('fileAssetPromise2.test.js', async function () {
         try {
             const fetchFileResult = await media.getFileAssets(imagesfetchOp);
             const asset = await fetchFileResult.getFirstObject();
-            const newName = 'newName';
+            const newName = 'newName' + new Date().getTime() + '.jpg';
             asset.displayName = newName;
             const id = asset.id;
             await asset.commitModify();
@@ -200,14 +203,14 @@ describe('fileAssetPromise2.test.js', async function () {
         try {
             const fetchFileResult = await media.getFileAssets(imagesfetchOp);
             const asset = await fetchFileResult.getFirstObject();
-            let neworientation = 1;
-            if (asset.orientation == 1) {
+            let neworientation = 90;
+            if (asset.orientation == 90) {
                 neworientation = 0;
             }
             asset.orientation = neworientation;
             const id = asset.id;
             await asset.commitModify();
-
+	    sleep(1000);
             const fetchFileResult2 = await media.getFileAssets(imagesfetchOp);
             const dataList = await fetchFileResult2.getAllObject();
             let passed = false;

@@ -33,12 +33,12 @@ let videosfetchOp = {
     selectionArgs: [videoType.toString()],
 };
 let audiosfetchOp = {
-    selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
-    selectionArgs: [audioType.toString()],
+    selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ? AND bucket_display_name = ?',
+    selectionArgs: [audioType.toString(), 'Camera'],
 };
 let filesfetchOp = {
-    selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ?',
-    selectionArgs: [fileType.toString()],
+    selections: mediaLibrary.FileKey.MEDIA_TYPE + '= ? AND relative_path = ?',
+    selectionArgs: [fileType.toString(), 'Documents/'],
 };
 
 function checkAssetAttr(done, attr, testNum, asset, checkType) {
