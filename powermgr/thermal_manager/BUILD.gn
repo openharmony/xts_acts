@@ -21,6 +21,8 @@ ohos_js_hap_suite("powermgr_thermal_test") {
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsPowerMgrThermalTest"
+  subsystem_name = "powermgr"
+  part_name = "thermal_manager"
 }
 ohos_js_assets("powermgr_thermal_js_assets") {
   js2abc = true

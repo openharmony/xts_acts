@@ -15,8 +15,8 @@
 import commonEvent from '@ohos.commonEvent';
 import thermal from "@ohos.thermal"
 
-export default function appInfoTest_thermal_3() {
-describe('appInfoTest_thermal_3', function () {
+export default function ThermalCommonEvent() {
+describe('ThermalCommonEvent', function () {
     console.log("*************Thermal commonEvent Test Begin*************");
 
     /**

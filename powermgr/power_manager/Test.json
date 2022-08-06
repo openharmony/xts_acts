@@ -5,7 +5,8 @@
         "test-timeout": "60000",
         "shell-timeout": "60000",
         "bundle-name": "com.example.mypowerapp",
-        "package-name": "com.example.mypowerapp"
+        "package-name": "com.example.mypowerapp",
+        "testcase-timeout": 60000
     },
     "kits": [
         {
