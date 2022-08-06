@@ -21,6 +21,8 @@ ohos_js_hap_suite("powermgr_power_test") {
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsPowerMgrPowerTest"
+  subsystem_name = "powermgr"
+  part_name = "power_manager"
 }
 ohos_js_assets("powermgr_power_js_assets") {
   js2abc = true
