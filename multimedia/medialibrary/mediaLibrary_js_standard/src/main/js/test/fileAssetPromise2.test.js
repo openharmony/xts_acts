@@ -40,6 +40,9 @@ function checkAttrs(done, asset, tNum) {
         done();
     }
 }
+function sleep(time){
+	for (let t = Date.now(); Date.now() - t <= time;);
+}
 describe('fileAssetPromise2.test.js', async function () {
     let fileKeyObj = mediaLibrary.FileKey;
 
@@ -207,7 +210,7 @@ describe('fileAssetPromise2.test.js', async function () {
             asset.orientation = neworientation;
             const id = asset.id;
             await asset.commitModify();
-
+			sleep(1000);
             const fetchFileResult2 = await media.getFileAssets(imagesfetchOp);
             const dataList = await fetchFileResult2.getAllObject();
             let passed = false;
