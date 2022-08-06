@@ -26,7 +26,7 @@ hctest_suite("ActsSecurityHichainBasicDeps") {
     "//utils/native/lite/include",
     "//test/xts/tools/lite/hctest/include",
     "//third_party/unity/src",
-    "//foundation/distributedschedule/samgr_lite/interfaces/kits/samgr",
+    "//foundation/systemabilitymgr/samgr_lite/interfaces/kits/samgr",
   ]
 
   include_dirs += DEVICEAUTH_BASIC_DEPS_INC
