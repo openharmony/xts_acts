@@ -210,7 +210,7 @@ describe('fileAsset2.test.js', async function () {
             asset.orientation = neworientation;
             const id = asset.id;
             await asset.commitModify();
-			sleep(1000);
+	    sleep(1000);
             const fetchFileResult2 = await media.getFileAssets(imagesfetchOp);
             const dataList = await fetchFileResult2.getAllObject();
             let passed = false;
