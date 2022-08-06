@@ -40,6 +40,9 @@ function checkAttrs(done, asset, tNum) {
         done();
     }
 }
+function sleep(time){
+	for (let t = Date.now(); Date.now() - t <= time;);
+}
 describe('fileAssetCallBack2.test.js', async function () {
     let fileKeyObj = mediaLibrary.FileKey;
 
@@ -209,6 +212,7 @@ describe('fileAssetCallBack2.test.js', async function () {
             asset.orientation = neworientation;
             const id = asset.id;
             asset.commitModify(async () => {
+				sleep(1000);
                 const fetchFileResult2 = await media.getFileAssets(imagesfetchOp);
                 const dataList = await fetchFileResult2.getAllObject();
                 let passed = false;
