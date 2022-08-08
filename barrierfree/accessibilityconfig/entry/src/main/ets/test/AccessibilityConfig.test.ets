@@ -569,330 +569,6 @@ export default function abilityTest() {
         })
     
         /*
-         * @tc.number  AccessibilityConfigTest_set_asyncCallback_3100
-         * @tc.name    AccessibilityConfigTest_set_asyncCallback_3100
-         * @tc.desc    Test screenMagnifier.set() function in callback mode.
-         * @tc.size    SmallTest
-         * @tc.type    User
-         */
-        it('AccessibilityConfigTest_set_asyncCallback_3100', 0, async function(done) {
-            console.info('AccessibilityConfigTest_set_asyncCallback_3100');
-            config.screenMagnifier.set(true, (err, result) => {
-                if (err.code != 0) {
-                    console.error(`AccessibilityConfigTest_set_asyncCallback_3100 has error: ${err.code}`);
-                    expect(null).assertFail();
-                    done();
-                }
-                expect(result).assertEqual(undefined);
-                done();
-            });
-        })
-    
-        /*
-         * @tc.number  AccessibilityConfigTest_set_asyncPromise_3200
-         * @tc.name    AccessibilityConfigTest_set_asyncPromise_3200
-         * @tc.desc    Test screenMagnifier.set() function in promise mode.
-         * @tc.size    SmallTest
-         * @tc.type    User
-         */
-        it('AccessibilityConfigTest_set_asyncPromise_3200', 0, async function(done) {
-            console.info('AccessibilityConfigTest_set_asyncPromise_3200');
-            config.screenMagnifier.set(false).then((result) => {
-                console.info(`AccessibilityConfigTest_set_asyncPromise_3200 result: ${result}`);
-                expect(result).assertEqual(undefined);
-                done();
-            }).catch((err) => {
-                console.error(`AccessibilityConfigTest_set_asyncPromise_3200 has error: ${err.code}`);
-                expect(null).assertFail();
-                done();
-            });
-        })
-    
-        /*
-         * @tc.number  AccessibilityConfigTest_get_asyncCallback_3300
-         * @tc.name    AccessibilityConfigTest_get_asyncCallback_3300
-         * @tc.desc    Test screenMagnifier.get() function in callback mode.
-         * @tc.size    SmallTest
-         * @tc.type    User
-         */
-        it('AccessibilityConfigTest_get_asyncCallback_3300', 0, async function(done) {
-            console.info('AccessibilityConfigTest_get_asyncCallback_3300');
-            config.screenMagnifier.get((err, result) => {
-                if (err.code != 0) {
-                    console.error(`AccessibilityConfigTest_get_asyncCallback_3300 has error: ${err.code}`);
-                    expect(null).assertFail();
-                    done();
-                }
-                expect('boolean').assertEqual(typeof (result));
-                done();
-            });
-        })
-    
-        /*
-         * @tc.number  AccessibilityConfigTest_get_asyncPromise_3400
-         * @tc.name    AccessibilityConfigTest_get_asyncPromise_3400
-         * @tc.desc    Test screenMagnifier.get() function in promise mode.
-         * @tc.size    SmallTest
-         * @tc.type    User
-         */
-        it('AccessibilityConfigTest_get_asyncPromise_3400', 0, async function(done) {
-            console.info('AccessibilityConfigTest_get_asyncPromise_3400');
-            config.screenMagnifier.get().then((result) => {
-                console.info(`AccessibilityConfigTest_get_asyncPromise_3400 result: ${result}`);
-                expect('boolean').assertEqual(typeof (result));
-                done();
-            }).catch((err) => {
-                console.error(`AccessibilityConfigTest_get_asyncPromise_3400 has error: ${err.code}`);
-                expect(null).assertFail();
-                done();
-            });
-        })
-    
-        /*
-         * @tc.number  AccessibilityConfigTest_on_asyncCallback_3500
-         * @tc.name    AccessibilityConfigTest_on_asyncCallback_3500
-         * @tc.desc    Test screenMagnifier.on() function in callback mode.
-         * @tc.size    SmallTest
-         * @tc.type    User
-         */
-        it('AccessibilityConfigTest_on_asyncCallback_3500', 0, async function(done) {
-            console.info('AccessibilityConfigTest_on_asyncCallback_3500');
-            let ret = config.screenMagnifier.on((data) => {});
-            expect(ret).assertEqual(undefined);
-            done();
-        })
-    
-        /*
-         * @tc.number  AccessibilityConfigTest_off_asyncCallback_3600
-         * @tc.name    AccessibilityConfigTest_off_asyncCallback_3600
-         * @tc.desc    Test screenMagnifier.off() function in callback mode.
-         * @tc.size    SmallTest
-         * @tc.type    User
-         */
-        it('AccessibilityConfigTest_off_asyncCallback_3600', 0, async function(done) {
-            console.info('AccessibilityConfigTest_off_asyncCallback_3600');
-            let ret = config.screenMagnifier.off((data) => {});
-            expect(ret).assertEqual(undefined);
-            done();
-        })
-    
-        /*
-         * @tc.number  AccessibilityConfigTest_set_asyncCallback_3700
-         * @tc.name    AccessibilityConfigTest_set_asyncCallback_3700
-         * @tc.desc    Test audioMono.set() function in callback mode.
-         * @tc.size    SmallTest
-         * @tc.type    User
-         */
-        it('AccessibilityConfigTest_set_asyncCallback_3700', 0, async function(done) {
-            console.info('AccessibilityConfigTest_set_asyncCallback_3700');
-            config.audioMono.set(true, (err, result) => {
-                if (err.code != 0) {
-                    console.error(`AccessibilityConfigTest_set_asyncCallback_3700 has error: ${err.code}`);
-                    expect(null).assertFail();
-                    done();
-                }
-                expect(result).assertEqual(undefined);
-                done();
-            });
-        })
-    
-        /*
-         * @tc.number  AccessibilityConfigTest_set_asyncPromise_3800
-         * @tc.name    AccessibilityConfigTest_set_asyncPromise_3800
-         * @tc.desc    Test audioMono.set() function in promise mode.
-         * @tc.size    SmallTest
-         * @tc.type    User
-         */
-        it('AccessibilityConfigTest_set_asyncPromise_3800', 0, async function(done) {
-            console.info('AccessibilityConfigTest_set_asyncPromise_3800');
-            config.audioMono.set(false).then((result) => {
-                console.info(`AccessibilityConfigTest_set_asyncPromise_3800 result: ${result}`);
-                expect(result).assertEqual(undefined);
-                done();
-            }).catch((err) => {
-                console.error(`AccessibilityConfigTest_set_asyncPromise_3800 has error: ${err.code}`);
-                expect(null).assertFail();
-                done();
-            });
-        })
-    
-        /*
-         * @tc.number  AccessibilityConfigTest_get_asyncCallback_3900
-         * @tc.name    AccessibilityConfigTest_get_asyncCallback_3900
-         * @tc.desc    Test audioMono.get() function in callback mode.
-         * @tc.size    SmallTest
-         * @tc.type    User
-         */
-        it('AccessibilityConfigTest_get_asyncCallback_3900', 0, async function(done) {
-            console.info('AccessibilityConfigTest_get_asyncCallback_3900');
-            config.audioMono.get((err, result) => {
-                if (err.code != 0) {
-                    console.error(`AccessibilityConfigTest_get_asyncCallback_3900 has error: ${err.code}`);
-                    expect(null).assertFail();
-                    done();
-                }
-                expect('boolean').assertEqual(typeof (result));
-                done();
-            });
-        })
-    
-        /*
-         * @tc.number  AccessibilityConfigTest_get_asyncPromise_4000
-         * @tc.name    AccessibilityConfigTest_get_asyncPromise_4000
-         * @tc.desc    Test audioMono.get() function in promise mode.
-         * @tc.size    SmallTest
-         * @tc.type    User
-         */
-        it('AccessibilityConfigTest_get_asyncPromise_4000', 0, async function(done) {
-            console.info('AccessibilityConfigTest_get_asyncPromise_4000');
-            config.audioMono.get().then((result) => {
-                console.info(`AccessibilityConfigTest_get_asyncPromise_4000 result: ${result}`);
-                expect('boolean').assertEqual(typeof (result));
-                done();
-            }).catch((err) => {
-                console.error(`AccessibilityConfigTest_get_asyncPromise_4000 has error: ${err.code}`);
-                expect(null).assertFail();
-                done();
-            });
-        })
-    
-        /*
-         * @tc.number  AccessibilityConfigTest_on_asyncCallback_4100
-         * @tc.name    AccessibilityConfigTest_on_asyncCallback_4100
-         * @tc.desc    Test audioMono.on() function in callback mode.
-         * @tc.size    SmallTest
-         * @tc.type    User
-         */
-        it('AccessibilityConfigTest_on_asyncCallback_4100', 0, async function(done) {
-            console.info('AccessibilityConfigTest_on_asyncCallback_4100');
-            let ret = config.audioMono.on((data) => {});
-            expect(ret).assertEqual(undefined);
-            done();
-        })
-    
-        /*
-         * @tc.number  AccessibilityConfigTest_off_asyncCallback_4200
-         * @tc.name    AccessibilityConfigTest_off_asyncCallback_4200
-         * @tc.desc    Test audioMono.off() function in callback mode.
-         * @tc.size    SmallTest
-         * @tc.type    User
-         */
-        it('AccessibilityConfigTest_off_asyncCallback_4200', 0, async function(done) {
-            console.info('AccessibilityConfigTest_off_asyncCallback_4200');
-            let ret = config.audioMono.off((data) => {});
-            expect(ret).assertEqual(undefined);
-            done();
-        })
-    
-        /*
-         * @tc.number  AccessibilityConfigTest_set_asyncCallback_4300
-         * @tc.name    AccessibilityConfigTest_set_asyncCallback_4300
-         * @tc.desc    Test audioBalance.set() function in callback mode.
-         * @tc.size    SmallTest
-         * @tc.type    User
-         */
-        it('AccessibilityConfigTest_set_asyncCallback_4300', 0, async function(done) {
-            console.info('AccessibilityConfigTest_set_asyncCallback_4300');
-            config.audioBalance.set(0, (err, result) => {
-                if (err.code != 0) {
-                    console.error(`AccessibilityConfigTest_set_asyncCallback_4300 has error: ${err.code}`);
-                    expect(null).assertFail();
-                    done();
-                }
-                expect(result).assertEqual(undefined);
-                done();
-            });
-        })
-    
-        /*
-         * @tc.number  AccessibilityConfigTest_set_asyncPromise_4400
-         * @tc.name    AccessibilityConfigTest_set_asyncPromise_4400
-         * @tc.desc    Test audioBalance.set() function in promise mode.
-         * @tc.size    SmallTest
-         * @tc.type    User
-         */
-        it('AccessibilityConfigTest_set_asyncPromise_4400', 0, async function(done) {
-            console.info('AccessibilityConfigTest_set_asyncPromise_4400');
-            config.audioBalance.set(-1).then((result) => {
-                console.info(`AccessibilityConfigTest_set_asyncPromise_4400 result: ${result}`);
-                expect(result).assertEqual(undefined);
-                done();
-            }).catch((err) => {
-                console.error(`AccessibilityConfigTest_set_asyncPromise_4400 has error: ${err.code}`);
-                expect(null).assertFail();
-                done();
-            });
-        })
-    
-        /*
-         * @tc.number  AccessibilityConfigTest_get_asyncCallback_4500
-         * @tc.name    AccessibilityConfigTest_get_asyncCallback_4500
-         * @tc.desc    Test audioBalance.get() function in callback mode.
-         * @tc.size    SmallTest
-         * @tc.type    User
-         */
-        it('AccessibilityConfigTest_get_asyncCallback_4500', 0, async function(done) {
-            console.info('AccessibilityConfigTest_get_asyncCallback_4500');
-            config.audioBalance.get((err, result) => {
-                if (err.code != 0) {
-                    console.error(`AccessibilityConfigTest_get_asyncCallback_4500 has error: ${err.code}`);
-                    expect(null).assertFail();
-                    done();
-                }
-                expect('number').assertEqual(typeof (result));
-                done();
-            });
-        })
-    
-        /*
-         * @tc.number  AccessibilityConfigTest_get_asyncPromise_4600
-         * @tc.name    AccessibilityConfigTest_get_asyncPromise_4600
-         * @tc.desc    Test audioBalance.get() function in promise mode.
-         * @tc.size    SmallTest
-         * @tc.type    User
-         */
-        it('AccessibilityConfigTest_get_asyncPromise_4600', 0, async function(done) {
-            console.info('AccessibilityConfigTest_get_asyncPromise_4600');
-            config.audioBalance.get().then((result) => {
-                console.info(`AccessibilityConfigTest_get_asyncPromise_4600 result: ${result}`);
-                expect('number').assertEqual(typeof (result));
-                done();
-            }).catch((err) => {
-                console.error(`AccessibilityConfigTest_get_asyncPromise_4600 has error: ${err.code}`);
-                expect(null).assertFail();
-                done();
-            });
-        })
-    
-        /*
-         * @tc.number  AccessibilityConfigTest_on_asyncCallback_4700
-         * @tc.name    AccessibilityConfigTest_on_asyncCallback_4700
-         * @tc.desc    Test audioBalance.on() function in callback mode.
-         * @tc.size    SmallTest
-         * @tc.type    User
-         */
-        it('AccessibilityConfigTest_on_asyncCallback_4700', 0, async function(done) {
-            console.info('AccessibilityConfigTest_on_asyncCallback_4700');
-            let ret = config.audioBalance.on((data) => {});
-            expect(ret).assertEqual(undefined);
-            done();
-        })
-    
-        /*
-         * @tc.number  AccessibilityConfigTest_off_asyncCallback_4800
-         * @tc.name    AccessibilityConfigTest_off_asyncCallback_4800
-         * @tc.desc    Test audioBalance.off() function in callback mode.
-         * @tc.size    SmallTest
-         * @tc.type    User
-         */
-        it('AccessibilityConfigTest_off_asyncCallback_4800', 0, async function(done) {
-            console.info('AccessibilityConfigTest_off_asyncCallback_4800');
-            let ret = config.audioBalance.off((data) => {});
-            expect(ret).assertEqual(undefined);
-            done();
-        })
-    
-        /*
          * @tc.number  AccessibilityConfigTest_set_asyncCallback_4900
          * @tc.name    AccessibilityConfigTest_set_asyncCallback_4900
          * @tc.desc    Test mouseKey.set() function in callback mode.
@@ -1443,8 +1119,7 @@ export default function abilityTest() {
          */
         it('AccessibilityConfigTest_set_asyncCallback_7900', 0, async function(done) {
             console.info('AccessibilityConfigTest_set_asyncCallback_7900');
-            let value = 'Normal';
-            config.daltonizationColorFilter.set(value, (err, result) => {
+            config.daltonizationColorFilter.set('Normal', (err, result) => {
                 if (err.code != 0) {
                     console.error(`AccessibilityConfigTest_set_asyncCallback_7900 has error: ${err.code}`);
                     expect(null).assertFail();
@@ -1464,8 +1139,7 @@ export default function abilityTest() {
          */
         it('AccessibilityConfigTest_set_asyncCallback_8000', 0, async function(done) {
             console.info('AccessibilityConfigTest_set_asyncCallback_8000');
-            let value = 'Deuteranomaly';
-            config.daltonizationColorFilter.set(value, (err, result) => {
+            config.daltonizationColorFilter.set('Deuteranomaly', (err, result) => {
                 if (err.code != 0) {
                     console.error(`AccessibilityConfigTest_set_asyncCallback_8000 has error: ${err.code}`);
                     expect(null).assertFail();
@@ -1485,8 +1159,7 @@ export default function abilityTest() {
          */
         it('AccessibilityConfigTest_set_asyncPromise_8100', 0, async function(done) {
             console.info('AccessibilityConfigTest_set_asyncPromise_8100');
-            let value = 'Protanomaly';
-            config.daltonizationColorFilter.set(value).then((result) => {
+            config.daltonizationColorFilter.set('Protanomaly').then((result) => {
                 console.info(`AccessibilityConfigTest_set_asyncPromise_8100 result: ${result}`);
                 expect(result).assertEqual(undefined);
                 done();
@@ -1506,8 +1179,7 @@ export default function abilityTest() {
          */
         it('AccessibilityConfigTest_set_asyncPromise_8200', 0, async function(done) {
             console.info('AccessibilityConfigTest_set_asyncPromise_8200');
-            let value = 'Tritanomaly';
-            config.daltonizationColorFilter.set(value).then((result) => {
+            config.daltonizationColorFilter.set('Tritanomaly').then((result) => {
                 console.info(`AccessibilityConfigTest_set_asyncPromise_8200 result: ${result}`);
                 expect(result).assertEqual(undefined);
                 done();
@@ -1595,15 +1267,14 @@ export default function abilityTest() {
          */
         it('AccessibilityConfigTest_set_asyncCallback_8700', 0, async function(done) {
             console.info('AccessibilityConfigTest_set_asyncCallback_8700');
-            let value = {};
-            value.fontFamily = 'default';
-            value.fontScale = 10;
-            value.fontColor = 'blue';
-            value.fontEdgeType = 'none';
-            value.backgroundColor = 'blue';
-            value.windowColor = 'blue';
-    
-            config.captionsStyle.set(value, (err, result) => {
+            config.captionsStyle.set({
+                fontFamily: 'default',
+                fontScale: 10,
+                fontColor: 'blue',
+                fontEdgeType: 'none',
+                backgroundColor: 'blue',
+                windowColor: 'blue'
+            }, (err, result) => {
                 if (err.code != 0) {
                     console.error(`AccessibilityConfigTest_set_asyncCallback_8700 has error: ${err.code}`);
                     expect(null).assertFail();
@@ -1623,15 +1294,14 @@ export default function abilityTest() {
          */
         it('AccessibilityConfigTest_set_asyncPromise_8800', 0, async function(done) {
             console.info('AccessibilityConfigTest_set_asyncPromise_8800');
-            let value = {};
-            value.fontFamily = 'default';
-            value.fontScale = 10;
-            value.fontColor = 'blue';
-            value.fontEdgeType = 'none';
-            value.backgroundColor = 'blue';
-            value.windowColor = 'blue';
-    
-            config.captionsStyle.set(value).then((result) => {
+            config.captionsStyle.set({
+                fontFamily: 'default',
+                fontScale: 10,
+                fontColor: 'blue',
+                fontEdgeType: 'none',
+                backgroundColor: 'blue',
+                windowColor: 'blue'
+            }).then((result) => {
                 console.info(`AccessibilityConfigTest_set_asyncPromise_8800 result: ${result}`);
                 expect(result).assertEqual(undefined);
                 done();
@@ -1720,8 +1390,7 @@ export default function abilityTest() {
         it('AccessibilityConfigTest_enableAbility_asyncCallback_9300', 0, async function(done) {
             console.info('AccessibilityConfigTest_enableAbility_asyncCallback_9300');
             let name = '';
-            let capability = [];
-            config.enableAbility(name, capability, (err) => {
+            config.enableAbility(name, [], (err) => {
                 console.info(`AccessibilityConfigTest_enableAbility_asyncCallback_9300 error: ${JSON.stringify(err)}`);
                 if (err.code != 0) {
                     expect(true).assertTrue();
@@ -1742,8 +1411,7 @@ export default function abilityTest() {
         it('AccessibilityConfigTest_enableAbility_asyncCallback_9400', 0, async function(done) {
             console.info('AccessibilityConfigTest_enableAbility_asyncCallback_9400');
             let name = 'test';
-            let capability = ['retrieve'];
-            config.enableAbility(name, capability, (err) => {
+            config.enableAbility(name, ['retrieve'], (err) => {
                 console.info(`AccessibilityConfigTest_enableAbility_asyncCallback_9400 error: ${JSON.stringify(err)}`);
                 if (err.code != 0) {
                     expect(true).assertTrue();
@@ -1764,8 +1432,7 @@ export default function abilityTest() {
         it('AccessibilityConfigTest_enableAbility_asyncCallback_9500', 0, async function(done) {
             console.info('AccessibilityConfigTest_enableAbility_asyncCallback_9500');
             let name = 'test.com';
-            let capability = ['retrieve', 'touchGuide'];
-            config.enableAbility(name, capability, (err) => {
+            config.enableAbility(name, ['retrieve', 'touchGuide'], (err) => {
                 console.info(`AccessibilityConfigTest_enableAbility_asyncCallback_9500 error: ${JSON.stringify(err)}`);
                 if (err.code != 0) {
                     expect(true).assertTrue();
@@ -1786,8 +1453,7 @@ export default function abilityTest() {
         it('AccessibilityConfigTest_enableAbility_asyncCallback_9600', 0, async function(done) {
             console.info('AccessibilityConfigTest_enableAbility_asyncCallback_9600');
             let name = 'com.test';
-            let capability = ['retrieve', 'touchGuide', 'keyEventObserver'];
-            config.enableAbility(name, capability, (err) => {
+            config.enableAbility(name, ['retrieve', 'touchGuide', 'keyEventObserver'], (err) => {
                 console.info(`AccessibilityConfigTest_enableAbility_asyncCallback_9600 error: ${JSON.stringify(err)}`);
                 if (err.code != 0) {
                     expect(true).assertTrue();
@@ -1808,8 +1474,7 @@ export default function abilityTest() {
         it('AccessibilityConfigTest_enableAbility_asyncCallback_9700', 0, async function(done) {
             console.info('AccessibilityConfigTest_enableAbility_asyncCallback_9700');
             let name = 'com.';
-            let capability = ['retrieve', 'touchGuide', 'keyEventObserver', 'zoom', 'gesture'];
-            config.enableAbility(name, capability, (err) => {
+            config.enableAbility(name, ['retrieve', 'touchGuide', 'keyEventObserver', 'zoom', 'gesture'], (err) => {
                 console.info(`AccessibilityConfigTest_enableAbility_asyncCallback_9700 error: ${JSON.stringify(err)}`);
                 if (err.code != 0) {
                     expect(true).assertTrue();
@@ -1830,8 +1495,7 @@ export default function abilityTest() {
         it('AccessibilityConfigTest_enableAbility_asyncPromise_9800', 0, async function(done) {
             console.info('AccessibilityConfigTest_enableAbility_asyncPromise_9800');
             let name = '';
-            let capability = [];
-            config.enableAbility(name, capability).then(() => {
+            config.enableAbility(name, []).then(() => {
                 console.info('AccessibilityConfigTest_enableAbility_asyncPromise_9800 result back');
                 expect(null).assertFail();
                 done();
@@ -1852,8 +1516,7 @@ export default function abilityTest() {
         it('AccessibilityConfigTest_enableAbility_asyncPromise_9900', 0, async function(done) {
             console.info('AccessibilityConfigTest_enableAbility_asyncPromise_9900');
             let name = 'test';
-            let capability = ['retrieve'];
-            config.enableAbility(name, capability).then(() => {
+            config.enableAbility(name, ['retrieve']).then(() => {
                 console.info('AccessibilityConfigTest_enableAbility_asyncPromise_9900 result back');
                 expect(null).assertFail();
                 done();
@@ -1874,8 +1537,7 @@ export default function abilityTest() {
         it('AccessibilityConfigTest_enableAbility_asyncPromise_10000', 0, async function(done) {
             console.info('AccessibilityConfigTest_enableAbility_asyncPromise_10000');
             let name = 'test.com';
-            let capability = ['retrieve', 'touchGuide'];
-            config.enableAbility(name, capability).then(() => {
+            config.enableAbility(name, ['retrieve', 'touchGuide']).then(() => {
                 console.info('AccessibilityConfigTest_enableAbility_asyncPromise_10000 result back');
                 expect(null).assertFail();
                 done();
@@ -1896,8 +1558,7 @@ export default function abilityTest() {
         it('AccessibilityConfigTest_enableAbility_asyncPromise_10100', 0, async function(done) {
             console.info('AccessibilityConfigTest_enableAbility_asyncPromise_10100');
             let name = 'com.test';
-            let capability = ['retrieve', 'touchGuide', 'keyEventObserver'];
-            config.enableAbility(name, capability).then(() => {
+            config.enableAbility(name, ['retrieve', 'touchGuide', 'keyEventObserver']).then(() => {
                 console.info('AccessibilityConfigTest_enableAbility_asyncPromise_10100 result back');
                 expect(null).assertFail();
                 done();
@@ -1918,8 +1579,7 @@ export default function abilityTest() {
         it('AccessibilityConfigTest_enableAbility_asyncPromise_10200', 0, async function(done) {
             console.info('AccessibilityConfigTest_enableAbility_asyncPromise_10200');
             let name = 'com.';
-            let capability = ['retrieve', 'touchGuide', 'keyEventObserver', 'zoom', 'gesture'];
-            config.enableAbility(name, capability).then(() => {
+            config.enableAbility(name, ['retrieve', 'touchGuide', 'keyEventObserver', 'zoom', 'gesture']).then(() => {
                 console.info('AccessibilityConfigTest_enableAbility_asyncPromise_10200 result back');
                 expect(null).assertFail();
                 done();

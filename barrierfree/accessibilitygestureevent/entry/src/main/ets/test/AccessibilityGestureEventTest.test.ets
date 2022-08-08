@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import commonEvent from '@ohos.commonEvent'
 
 function publishCaseExecute(caseName: string) {
@@ -25,7 +25,7 @@ function publishCaseExecute(caseName: string) {
     });
 }
 
-export default function abilityTest(abilityContext) {
+export default function abilityTest() {
     let gestureEventTypes: Array<string> = [];
     describe('AccessibilityGestureEventTest', function () {
         let subScriber = undefined;
@@ -45,7 +45,7 @@ export default function abilityTest(abilityContext) {
                 }
             });
 
-            await abilityContext.startAbility({
+            await globalThis.abilityContext.startAbility({
                 deviceId: '',
                 bundleName: 'com.example.acetest',
                 abilityName: 'MainAbility',
