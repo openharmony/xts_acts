@@ -113,7 +113,7 @@ function publicoff(Updatetask, Type){
 }
 
 //remove公共方法
-function publicremove(Updatetask, Type){
+function publicremove(Updatetask){
     return new Promise(function(resolve, reject) {
         Updatetask.remove((err,data) => {
             console.info("Testupdate publicremove =" + data);

@@ -108,7 +108,7 @@ export default function uploadRequestJsunitTest() {
 
                 await pubfun.publicoffprogress(uploadTask, typeProgress).then((data) => {
                     console.info("SwitchOffProgressCallback001 data" + JSON.stringify(data));
-                    expect(7).assertEqual(data.totalSize);
+                    expect(7).assertEqual(data["totalSize"]);
                     done();
                 }).catch((err) => {
                     console.info("SwitchOffProgressCallback001 fail 2" + JSON.stringify(err));
