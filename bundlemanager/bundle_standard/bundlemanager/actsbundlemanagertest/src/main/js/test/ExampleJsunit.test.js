@@ -627,6 +627,10 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo[i].description.length >= 0).assertTrue();
                 expect(datainfo[i].icon.length).assertLarger(0);
                 expect(datainfo[i].label.length).assertLarger(0);
+                expect(datainfo[i].iconIndex).assertLarger(0);
+                expect(datainfo[i].labelIndex).assertLarger(0);
+                expect(datainfo[i].iconIndex).assertEqual(datainfo[i].iconId);
+                expect(datainfo[i].labelIndex).assertEqual(datainfo[i].labelId);
             }
             expect(datainfo[i].moduleSourceDirs.length).assertLarger(0);
             expect(datainfo[i].moduleInfos.length).assertLarger(0);
