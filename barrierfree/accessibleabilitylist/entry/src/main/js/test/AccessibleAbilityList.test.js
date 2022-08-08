@@ -77,10 +77,14 @@ describe('AccessibleAbilityList', function () {
 				item.capabilities == touchGuide ||
 				item.capabilities == keyEventObserver ||
 				item.capabilities == zoom ||
-				item.capabilities == gesture) {
+				item.capabilities == gesture ||
+				item.capabilities == undefined) {
                     expect(true).assertTrue();
 					done();
-                }
+                }else{
+					expect(null).assertFail();
+					done();
+				}
 				console.info(item.bundleName);
 				expect(item.bundleName != undefined).assertEqual(true);
 				done();
