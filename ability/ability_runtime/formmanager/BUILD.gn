@@ -18,7 +18,7 @@ group("formmanager") {
   if (is_standard_system) {
     deps = [
       "fa:formmanager",
-      #"stage:stage",
+      "stage:stage",
     ]
   }
 }

@@ -21,6 +21,8 @@ ohos_js_hap_suite("usb_js_test") {
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsUsbJSApiTest"
+  subsystem_name = "usb"
+  part_name = "usb_manager"
 }
 ohos_js_assets("usb_js_assets") {
   js2abc = true

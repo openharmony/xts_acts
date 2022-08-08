@@ -23,6 +23,8 @@ ohos_js_hap_suite("ActsAmsStaticInformationMultipleTest") {
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsAmsStaticInformationMultipleTest"
+  subsystem_name = "ability"
+  part_name = "ability_runtime"
 }
 
 ohos_app_scope("actsamsstaticinformationmultipletest_app_profile") {

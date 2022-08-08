@@ -13,14 +13,12 @@
  * limitations under the License.
  */
 
-import app from '@system.app'
 import thermal from "@ohos.thermal"
-import ThermalLevel from "@ohos.thermal"
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, it, expect } from '@ohos/hypium'
 const MSEC_1000 = 1000;
 
-export default function appInfoTest_thermal_1() {
-describe('appInfoTest_thermal_1', function () {
+export default function ThermalUnitTest() {
+describe('ThermalUnitTest', function () {
     console.log("*************Thermal API Test Begin*************");
     test14();
     test15();
@@ -28,7 +26,7 @@ describe('appInfoTest_thermal_1', function () {
 
 function test14() {
 
-    /* @tc.number USB_PowerSystem_ThermalManager_JSTest_0010
+    /* @tc.number SUB_PowerSystem_ThermalManager_JSTest_0010
      * @tc.name Thermal_014
      * @tc.desc Thermal acquisition kit
      */
@@ -48,7 +46,7 @@ function test14() {
 
 function test15() {
 
-    /* @tc.number USB_PowerSystem_ThermalManager_JSTest_0020
+    /* @tc.number SUB_PowerSystem_ThermalManager_JSTest_0020
      * @tc.name Thermal_015
      * @tc.desc Thermal acquisition kit
      */

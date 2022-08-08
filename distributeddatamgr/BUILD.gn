@@ -16,15 +16,16 @@ group("distributeddatamgr") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "appdatamgrjstest/hap:appdatamgr_js_test",
-      "distributeddataObjectjstest/hap:distributeddataObject_js_test",
-      "distributeddatamgrjstest/hap:distributeddatamgr_js_test",
-      "windowStage:windowStage",
+      "dataObjectjstest/hap:dataObject_js_test",
+      "dataShare:dataShare",
+      "kvStorejstest/hap:kvStore_js_test",
+      "preferencesjstest/hap:preferences_js_test",
+      "relationalStorejstest/hap:relationalstore_js_test",
     ]
   } else {
     deps = [
-      "appdatamgrtest/hap:appdatamgrfunctest_hap",
-      "distributeddatamgrtest/hap:distributeddatamgrfunctest_hap",
+      "kvStorejstest/hap:distributeddatamgrfunctest_hap",
+      "relationalStorejstest/hap:appdatamgrfunctest_hap",
       "searchtest/hap:searchfunctest_hap",
     ]
   }

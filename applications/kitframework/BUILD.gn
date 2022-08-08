@@ -22,7 +22,7 @@ hctest_suite("ActsKitFwkApiTest") {
     "//test/xts/tools/lite/hctest/include",
     "//third_party/unity/src",
     "//utils/native/lite/include",
-    "//foundation/distributedschedule/samgr_lite/interfaces/kits/samgr",
+    "//foundation/systemabilitymgr/samgr_lite/interfaces/kits/samgr",
     "//third_party/bounds_checking_function/include/",
     "//third_party/mbedtls/include/",
     "//third_party/cJSON/",

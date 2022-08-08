@@ -1,7 +1,8 @@
 {
   "strings": {
     "hello": "Hello",
-    "world": "World"
+    "world": "World",
+    "test": "PowerTest"
   },
   "Files": {
   }

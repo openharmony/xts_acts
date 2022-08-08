@@ -23,6 +23,8 @@ ohos_js_hap_suite("ActsGetAppContextStagebTest") {
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsGetAppContextStagebTest"
+  subsystem_name = "ability"
+  part_name = "ability_runtime"
 }
 
 ohos_app_scope("actsgetappcontextstagebtest_app_profile") {
