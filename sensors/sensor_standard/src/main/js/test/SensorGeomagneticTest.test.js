@@ -175,7 +175,8 @@ describe("SensorJsTest_sensor_2", function () {
     it('SensorGeomagenticAlgorithmJSTest003', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info("------------------SensorGeomagenticAlgorithmJSTest003-------------------------");
         let geomagneticComponent = [-1417119616, 23146989568, -6406359552, -15.442885398864746,
-        93.50342559814453, 23190329344, 24058943488]
+        93.50342559814453, 23190329344, 24058943488, 27779.234375, -6214.9794921875, -14924.6611328125,
+		-27.667943954467773, -12.610970497131348, 28465.9765625, 32141.2109375]
         sensor.getGeomagneticField({ 'latitude': 0, 'longitude': 0, 'altitude': 0 }, Number.MAX_VALUE,
             (error, data) => {
                 if (error) {
@@ -186,13 +187,13 @@ describe("SensorJsTest_sensor_2", function () {
                     + ',geomagneticDip: ' + data.geomagneticDip
                     + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity
                     + ',totalIntensity: ' + data.totalIntensity)
-                    expect(data.x).assertEqual(geomagneticComponent[0])
-                    expect(data.y).assertEqual(geomagneticComponent[1])
-                    expect(data.z).assertEqual(geomagneticComponent[2])
-                    expect(data.geomagneticDip).assertEqual(geomagneticComponent[3])
-                    expect(data.deflectionAngle).assertEqual(geomagneticComponent[4])
-                    expect(data.levelIntensity).assertEqual(geomagneticComponent[5])
-                    expect(data.totalIntensity).assertEqual(geomagneticComponent[6])
+                    expect(geomagneticComponent).assertContain(data.x)
+                    expect(geomagneticComponent).assertContain(data.y)
+                    expect(geomagneticComponent).assertContain(data.z)
+                    expect(geomagneticComponent).assertContain(data.geomagneticDip)
+                    expect(geomagneticComponent).assertContain(data.deflectionAngle)
+                    expect(geomagneticComponent).assertContain(data.levelIntensity)
+                    expect(geomagneticComponent).assertContain(data.totalIntensity)
                 }
                 setTimeout(() => {
                     done()
@@ -842,20 +843,21 @@ describe("SensorJsTest_sensor_2", function () {
     it("SensorGeomagenticAlgorithmJSTest027", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('------------------SensorGeomagenticAlgorithmJSTest027------------------');
         let geomagneticComponent = [-1417119616, 23146989568, -6406359552, -15.442885398864746,
-        93.50342559814453, 23190329344, 24058943488]
+        93.50342559814453, 23190329344, 24058943488, 27779.234375, -6214.9794921875, -14924.6611328125,
+		-27.667943954467773, -12.610970497131348, 28465.9765625, 32141.2109375]
         await sensor.getGeomagneticField({ 'latitude': 0, 'longitude': 0, 'altitude': 0 },
             Number.MAX_VALUE).then((data) => {
             console.info('SensorGeomagenticAlgorithmJSTest027 x: ' + data.x + ',y: ' + data.y + ',z: ' + data.z
             + ',geomagneticDip: ' + data.geomagneticDip
             + ',deflectionAngle: ' + data.deflectionAngle + ',levelIntensity: ' + data.levelIntensity
             + ',totalIntensity: ' + data.totalIntensity)
-            expect(data.x).assertEqual(geomagneticComponent[0])
-            expect(data.y).assertEqual(geomagneticComponent[1])
-            expect(data.z).assertEqual(geomagneticComponent[2])
-            expect(data.geomagneticDip).assertEqual(geomagneticComponent[3])
-            expect(data.deflectionAngle).assertEqual(geomagneticComponent[4])
-            expect(data.levelIntensity).assertEqual(geomagneticComponent[5])
-            expect(data.totalIntensity).assertEqual(geomagneticComponent[6])
+            expect(geomagneticComponent).assertContain(data.x)
+            expect(geomagneticComponent).assertContain(data.y)
+            expect(geomagneticComponent).assertContain(data.z)
+            expect(geomagneticComponent).assertContain(data.geomagneticDip)
+            expect(geomagneticComponent).assertContain(data.deflectionAngle)
+            expect(geomagneticComponent).assertContain(data.levelIntensity)
+            expect(geomagneticComponent).assertContain(data.totalIntensity)
         }).catch((error) => {
             console.info("promise::catch", error)
         });
