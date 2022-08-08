@@ -912,6 +912,22 @@ describe('webgl1Test_webgl15', function() {
 		expect(texParameterValue).assertEqual(gl.COMPARE_REF_TO_TEXTURE);
 		done();
 	});
+
+	/**
+	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_1335
+	 * @tc.name testRangeMin
+	 * @tc.desc Test RangeMin.
+	 */
+	 it('testRangeMin', 0, async function(done) {
+		console.info('jsWebGL testRangeMin test start');
+		gl.getShaderPrecisionFormat(gl.FRAGMENT_SHADER, gl.LOW_INT).rangeMin;
+		gl.getShaderPrecisionFormat(gl.VERTEX_SHADER, gl.MEDIUM_FLOAT).rangeMax;
+		gl.getShaderPrecisionFormat(gl.VERTEX_SHADER, gl.MEDIUM_FLOAT).precision;
+		const errorCode = gl.getError();
+		console.info("WebGLShaderPrecisionFormat getError: " + errorCode);
+		expect(errorCode).assertEqual(gl.NO_ERROR);
+		done();
+	});
 	
 	/**
 	 * @tc.number GRAPHIC_FUNCTION_JS_WEBGL_TESTWEBGL_1337
@@ -949,6 +965,39 @@ describe('webgl1Test_webgl15', function() {
 
 		var x9 = gl2.OBJECT_TYPE;
 		expect(x9).assertEqual(37138);
+
+		var x10 = gl2.FRAMEBUFFER_DEFAULT;
+		expect(x10).assertEqual(33304);
+
+		var x11 = gl2.RG8UI;
+		expect(x11).assertEqual(33336);
+
+		var x12 = gl2.UNIFORM_IS_ROW_MAJOR;
+		expect(x12).assertEqual(35390);
+
+		var x13 = gl2.ANY_SAMPLES_PASSED_CONSERVATIVE;
+		expect(x13).assertEqual(36202);
+
+		var y1 = gl.LUMINANCE_ALPHA;
+		expect(y1).assertEqual(6410);
+
+		var y2 = gl.SHADER_TYPE;
+		expect(y2).assertEqual(35663);
+
+		var y3 = gl.LINK_STATUS;
+		expect(y3).assertEqual(35714);
+
+		var y4 = gl.VALIDATE_STATUS;
+		expect(y4).assertEqual(35715);
+
+		var y5 = gl.VERTEX_ATTRIB_ARRAY_POINTER;
+		expect(y5).assertEqual(34373);
+
+		var y6 = gl.FRAMEBUFFER_ATTACHMENT_OBJECT_NAME;
+		expect(y6).assertEqual(36049);
+
+		var y7 = gl.CONTEXT_LOST_WEBGL;
+		expect(y7).assertEqual(37442);
 
 		done();
 	});
