@@ -27,7 +27,9 @@ export default function cameraKit(surfaceId: any) {
   console.info(TAG + 'surfaceId: ' + surfaceId)
 
   cameraJSUnitEnum(surfaceId)
+  /* CameraFormat Interface will be change
   cameraJSUnitCameraFormat(surfaceId)
+  */
   cameraJSUnitPhotoAsync(surfaceId)
   cameraJSUnitPhotoPromise(surfaceId)
   cameraJSUnitVideoAsync(surfaceId)

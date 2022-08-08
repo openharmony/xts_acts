@@ -327,6 +327,7 @@ export default function cameraJSUnitEnum(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('CAMERA_FORMAT', 0, async function (done) {
       console.info(TAG + "--------------CameraFormat ------------")
       console.info(TAG + "CameraFormat CAMERA_FORMAT_YUV_420_SP : " + cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP);
@@ -336,6 +337,7 @@ export default function cameraJSUnitEnum(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : FLASHMODE
@@ -409,6 +411,7 @@ export default function cameraJSUnitEnum(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* EXPOSUREMODE Interface will be change
     it('EXPOSUREMODE', 0, async function (done) {
       console.info(TAG + "--------------ExposureMode ------------")
       console.info(TAG + "ExposureMode EXPOSURE_MODE_LOCKED : " + cameraObj.ExposureMode.EXPOSURE_MODE_LOCKED);
@@ -420,6 +423,7 @@ export default function cameraJSUnitEnum(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : ExposureState
@@ -489,6 +493,7 @@ export default function cameraJSUnitEnum(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* VideoStabilizationMode Interface will be change
     it('VideoStabilization', 0, async function (done) {
       console.info(TAG + "--------------VideoStabilization ------------")
       console.info(TAG + "VideoStabilization OFF : " + cameraObj.VideoStabilizationMode.OFF);
@@ -504,5 +509,6 @@ export default function cameraJSUnitEnum(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
   })
 }

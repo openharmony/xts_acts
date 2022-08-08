@@ -2553,6 +2553,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* EXPOSUREMODE Interface will be change
     it('IS_EXPOSURE_MODE_LOCKED_SUPPORTED', 0, async function (done) {
       console.info(TAG + "Entering IS_EXPOSURE_MODE_LOCKED_SUPPORTED to operate");
       await camera0InputPromise.isExposureModeSupported(cameraObj.ExposureMode.EXPOSURE_MODE_LOCKED)
@@ -2568,6 +2569,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : SET_EXPOSURE_MODE_LOCKED
@@ -2577,6 +2579,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* EXPOSUREMODE Interface will be change
     it('SET_EXPOSURE_MODE_LOCKED', 0, async function (done) {
       console.info(TAG + "Entering SET_EXPOSURE_MODE_Locked to operate");
       await camera0InputPromise.setExposureMode(cameraObj.ExposureMode.EXPOSURE_MODE_LOCKED)
@@ -2593,6 +2596,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : GET_EXPOSURE_MODE_LOCKED
@@ -2628,6 +2632,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* EXPOSUREMODE Interface will be change
     it('IS_EXPOSURE_MODE_CONTINUOUS_AUTO_SUPPORTED', 0, async function (done) {
       console.info(TAG + "Entering IS_EXPOSURE_MODE_CONTINUOUS_AUTO_SUPPORTED to operate");
       await camera0InputPromise.isExposureModeSupported(cameraObj.ExposureMode.EXPOSURE_MODE_CONTINUOUS_AUTO)
@@ -2643,6 +2648,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : SET_EXPOSURE_MODE_CONTINUOUS_AUTO
@@ -2652,6 +2658,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* EXPOSUREMODE Interface will be change
     it('SET_EXPOSURE_MODE_CONTINUOUS_AUTO', 0, async function (done) {
       console.info(TAG + "Entering SET_EXPOSURE_MODE_CONTINUOUS_AUTO to operate");
       await camera0InputPromise.setExposureMode(cameraObj.ExposureMode.EXPOSURE_MODE_CONTINUOUS_AUTO)
@@ -2668,6 +2675,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : GET_EXPOSURE_MODE_CONTINUOUS_AUTO
@@ -2831,6 +2839,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* EXPOSUREMODE Interface will be change
     it('IS_EXPOSURE_MODE_AUTO_SUPPORTED', 0, async function (done) {
       console.info(TAG + "Entering IS_EXPOSURE_MODE_AUTO_SUPPORTED to operate");
       await camera0InputPromise.isExposureModeSupported(cameraObj.ExposureMode.EXPOSURE_MODE_AUTO)
@@ -2846,6 +2855,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : SET_EXPOSURE_MODE_AUTO
@@ -2855,6 +2865,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* EXPOSUREMODE Interface will be change
     it('SET_EXPOSURE_MODE_AUTO', 0, async function (done) {
       console.info(TAG + "Entering SET_EXPOSURE_MODE_AUTO to operate");
       await camera0InputPromise.setExposureMode(cameraObj.ExposureMode.EXPOSURE_MODE_AUTO)
@@ -2871,6 +2882,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : GET_EXPOSURE_MODE_AUTO
