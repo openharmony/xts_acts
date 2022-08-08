@@ -21,6 +21,9 @@ ohos_js_hap_suite("ActsAmsCallBackFifthSceneTest") {
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsAmsCallBackFifthSceneTest"
+
+  subsystem_name = "ability"
+  part_name = "ability_runtime"
 }
 ohos_js_assets("hjs_demo_js_assets") {
   js2abc = true

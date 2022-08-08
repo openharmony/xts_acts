@@ -13,13 +13,11 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_hap("AACommandRelyHap") {
+ohos_hap_assist_suite("AACommandRelyHap") {
   hap_profile = "entry/src/main/module.json"
   js_build_mode = "debug"
   hap_name = "AACommandRelyHap"
-  subsystem_name = XTS_SUITENAME
-  final_hap_path =
-      "${SUITES_OUTPUT_ROOT}/${XTS_SUITENAME}/testcases/${hap_name}.hap"
+
   testonly = true
   deps = [
     ":aacommandrelyhap_js_assets",
@@ -27,6 +25,9 @@ ohos_hap("AACommandRelyHap") {
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
+
+  subsystem_name = "ability"
+  part_name = "ability_runtime"
 }
 
 ohos_app_scope("aacommandrelyhap_app_profile") {
