@@ -502,6 +502,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_015', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_015--------------");
       camera0InputPromise.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP, async (err, data) => {
@@ -526,6 +527,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_016
@@ -535,6 +537,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_016', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_016--------------");
       var sizeArrayPromise = await camera0InputPromise.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP);
@@ -554,6 +557,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : GET_SUPPORTED_PHOTO_FORMATS_TC_017
@@ -624,6 +628,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_TC_019', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_TC_019--------------");
       camera0InputPromise.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_JPEG, async (err, data) => {
@@ -648,6 +653,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_PROMISE_TC_020
@@ -657,6 +663,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_PROMISE_TC_020', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_PROMISE_TC_020--------------");
       var sizeArrayPromise = await camera0InputPromise.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_JPEG);
@@ -676,6 +683,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /*CREATE CAMERAINPUT WITH POSITION BACK & TYPE UNSPECIFIED*/
     /**
@@ -804,6 +812,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_025', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_025--------------");
       camera0InputPromisePosBack.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP, async (err, data) => {
@@ -828,6 +837,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_026
@@ -837,6 +847,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_026', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_026--------------");
       var sizeArrayPromise = await camera0InputPromisePosBack.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP);
@@ -856,6 +867,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : GET_SUPPORTED_PHOTO_FORMATS_TC_027
@@ -926,6 +938,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_TC_029', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_TC_029--------------");
       camera0InputPromisePosBack.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_JPEG, async (err, data) => {
@@ -950,6 +963,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_PROMISE_TC_030
@@ -959,6 +973,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_PROMISE_TC_030', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_PROMISE_TC_030--------------");
       var sizeArrayPromise = await camera0InputPromisePosBack.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_JPEG);
@@ -978,6 +993,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /*CREATE CAMERAINPUT WITH POSITION FRONT & TYPE UNSPECIFIED*/
     /**
@@ -1106,6 +1122,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_035', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_035--------------");
       camera0InputPromisePosFront.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP, async (err, data) => {
@@ -1130,6 +1147,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_036
@@ -1139,6 +1157,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_036', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_036--------------");
       var sizeArrayPromise = await camera0InputPromisePosFront.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP);
@@ -1158,6 +1177,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : GET_SUPPORTED_PHOTO_FORMATS_TC_037
@@ -1228,6 +1248,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_TC_039', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_TC_039--------------");
       camera0InputPromisePosFront.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_JPEG, async (err, data) => {
@@ -1252,6 +1273,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_PROMISE_TC_040
@@ -1261,6 +1283,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_PROMISE_TC_040', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_PROMISE_TC_040--------------");
       var sizeArrayPromise = await camera0InputPromisePosFront.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_JPEG);
@@ -1281,6 +1304,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     it('FOCUSSTATECHANGE_CALLBACK_ON_CAMERAINPUT', 0, async function (done) {
       if (camera0InputPromise == null || camera0InputPromise == undefined) {
@@ -1602,6 +1626,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_051', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_051--------------");
       camera1InputPromise.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP, async (err, data) => {
@@ -1626,6 +1651,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_052
@@ -1635,6 +1661,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_052', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_052--------------");
       var sizeArrayPromise = await camera1InputPromise.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP);
@@ -1654,6 +1681,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : GET_SUPPORTED_PHOTO_FORMATS_TC_053
@@ -1724,6 +1752,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_TC_055', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_TC_055--------------");
       camera1InputPromise.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_JPEG, async (err, data) => {
@@ -1748,6 +1777,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_PROMISE_TC_056
@@ -1757,6 +1787,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_PROMISE_TC_056', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_PROMISE_TC_056--------------");
       var sizeArrayPromise = await camera1InputPromise.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_JPEG);
@@ -1776,6 +1807,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /*CREATE CAMERAINPUT WITH POSITION BACK & TYPE UNSPECIFIED*/
     /**
@@ -1904,6 +1936,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_061', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_061--------------");
       camera1InputPromisePosBack.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP, async (err, data) => {
@@ -1928,6 +1961,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_062
@@ -1937,6 +1971,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_062', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_062--------------");
       var sizeArrayPromise = await camera1InputPromisePosBack.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP);
@@ -1956,6 +1991,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : GET_SUPPORTED_PHOTO_FORMATS_TC_063
@@ -2026,6 +2062,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_TC_065', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_TC_065--------------");
       camera1InputPromisePosBack.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_JPEG, async (err, data) => {
@@ -2050,6 +2087,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_PROMISE_TC_066
@@ -2059,6 +2097,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_PROMISE_TC_066', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_PROMISE_TC_066--------------");
       var sizeArrayPromise = await camera1InputPromisePosBack.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_JPEG);
@@ -2078,6 +2117,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /*CREATE CAMERAINPUT WITH POSITION FRONT & TYPE UNSPECIFIED*/
     /**
@@ -2206,6 +2246,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_071', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_071--------------");
       camera1InputPromisePosFront.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP, async (err, data) => {
@@ -2230,6 +2271,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_072
@@ -2239,6 +2281,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_072', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_072--------------");
       var sizeArrayPromise = await camera1InputPromisePosFront.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP);
@@ -2258,6 +2301,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : GET_SUPPORTED_PHOTO_FORMATS_TC_073
@@ -2328,6 +2372,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_TC_075', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_TC_075--------------");
       camera1InputPromisePosFront.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_JPEG, async (err, data) => {
@@ -2352,6 +2397,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_PROMISE_TC_076
@@ -2361,6 +2407,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_PROMISE_TC_076', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_PROMISE_TC_076--------------");
       var sizeArrayPromise = await camera1InputPromisePosFront.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_JPEG);
@@ -2381,6 +2428,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /*CAMERA-2 Scripts*/
     /**
@@ -2678,6 +2726,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_087', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_087--------------");
       camera2InputPromise.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP, async (err, data) => {
@@ -2702,6 +2751,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_088
@@ -2711,6 +2761,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_088', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_088--------------");
       var sizeArrayPromise = await camera2InputPromise.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP);
@@ -2730,6 +2781,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : GET_SUPPORTED_PHOTO_FORMATS_TC_089
@@ -2800,6 +2852,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_TC_091', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_TC_091--------------");
       camera2InputPromise.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_JPEG, async (err, data) => {
@@ -2824,6 +2877,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_PROMISE_TC_092
@@ -2833,6 +2887,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_PROMISE_TC_092', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_PROMISE_TC_092--------------");
       var sizeArrayPromise = await camera2InputPromise.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_JPEG);
@@ -2852,6 +2907,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /*CREATE CAMERAINPUT WITH POSITION BACK & TYPE UNSPECIFIED*/
     /**
@@ -2980,6 +3036,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_097', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_097--------------");
       camera2InputPromisePosBack.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP, async (err, data) => {
@@ -3004,6 +3061,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_098
@@ -3013,6 +3071,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_098', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_098--------------");
       var sizeArrayPromise = await camera2InputPromisePosBack.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP);
@@ -3032,6 +3091,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : GET_SUPPORTED_PHOTO_FORMATS_TC_099
@@ -3102,6 +3162,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_TC_101', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_TC_101--------------");
       camera2InputPromisePosBack.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_JPEG, async (err, data) => {
@@ -3126,6 +3187,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_PROMISE_TC_102
@@ -3135,6 +3197,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_PROMISE_TC_102', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_PROMISE_TC_102--------------");
       var sizeArrayPromise = await camera2InputPromisePosBack.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_JPEG);
@@ -3154,6 +3217,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /*CREATE CAMERAINPUT WITH POSITION FRONT & TYPE UNSPECIFIED*/
     /**
@@ -3282,6 +3346,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_107', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_107--------------");
       camera2InputPromisePosFront.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP, async (err, data) => {
@@ -3306,6 +3371,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_108
@@ -3315,6 +3381,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_108', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_108--------------");
       var sizeArrayPromise = await camera2InputPromisePosFront.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP);
@@ -3334,6 +3401,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : GET_SUPPORTED_PHOTO_FORMATS_TC_109
@@ -3404,6 +3472,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_TC_013', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_TC_111--------------");
       camera2InputPromisePosFront.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_JPEG, async (err, data) => {
@@ -3428,6 +3497,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_PROMISE_TC_112
@@ -3437,6 +3507,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_PROMISE_TC_112', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_PROMISE_TC_112--------------");
       var sizeArrayPromise = await camera2InputPromisePosFront.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_JPEG);
@@ -3457,6 +3528,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /*CAMERA-3 Scripts*/
     /**
@@ -3693,6 +3765,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_121', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_121--------------");
       camera3InputPromise.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP, async (err, data) => {
@@ -3717,6 +3790,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : GET_SUPPORTED_VIDEO_FORMATS_CAMINPUT3_TC_122
@@ -3787,6 +3861,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_121', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_121--------------");
       camera3InputPromise.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP, async (err, data) => {
@@ -3811,6 +3886,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_125
@@ -3820,6 +3896,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_125', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_125--------------");
       var sizeArrayPromise = await camera3InputPromise.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP);
@@ -3839,6 +3916,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : GET_SUPPORTED_PHOTO_FORMATS_TC_126
@@ -3909,6 +3987,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_TC_128', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_TC_128--------------");
       camera3InputPromise.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_JPEG, async (err, data) => {
@@ -3933,6 +4012,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_PROMISE_TC_129
@@ -3942,6 +4022,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_PROMISE_TC_129', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_PROMISE_TC_129--------------");
       var sizeArrayPromise = await camera3InputPromise.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_JPEG);
@@ -3961,6 +4042,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /*CREATE CAMERAINPUT WITH POSITION BACK & TYPE UNSPECIFIED*/
     /**
@@ -4089,6 +4171,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_134', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_134--------------");
       camera3InputPromisePosBack.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP, async (err, data) => {
@@ -4113,6 +4196,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_135
@@ -4122,6 +4206,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_135', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_135--------------");
       var sizeArrayPromise = await camera3InputPromisePosBack.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP);
@@ -4141,6 +4226,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : GET_SUPPORTED_PHOTO_FORMATS_TC_136
@@ -4211,6 +4297,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_TC_138', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_TC_138--------------");
       camera3InputPromisePosBack.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_JPEG, async (err, data) => {
@@ -4235,6 +4322,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_PROMISE_TC_139
@@ -4244,6 +4332,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_PROMISE_TC_139', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_PROMISE_TC_139--------------");
       var sizeArrayPromise = await camera3InputPromisePosBack.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_JPEG);
@@ -4263,6 +4352,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /*CREATE CAMERAINPUT WITH POSITION FRONT & TYPE UNSPECIFIED*/
     /**
@@ -4391,6 +4481,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_144', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_TC_144--------------");
       camera3InputPromisePosFront.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP, async (err, data) => {
@@ -4415,6 +4506,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_145
@@ -4424,6 +4516,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_145', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_YUV_420_SP_PROMISE_TC_145--------------");
       var sizeArrayPromise = await camera3InputPromisePosFront.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP);
@@ -4443,6 +4536,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : GET_SUPPORTED_PHOTO_FORMATS_TC_146
@@ -4513,6 +4607,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_TC_148', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_TC_148--------------");
       camera3InputPromisePosFront.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_JPEG, async (err, data) => {
@@ -4537,6 +4632,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_PROMISE_TC_149
@@ -4546,6 +4642,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* CameraFormat Interface will be change
     it('GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_PROMISE_TC_149', 0, async function (done) {
       console.info("--------------GET_SUPP_SIZES_CAMERA_FORMAT_JPEG_PROMISE_TC_149--------------");
       var sizeArrayPromise = await camera3InputPromisePosFront.getSupportedSizes(cameraObj.CameraFormat.CAMERA_FORMAT_JPEG);
@@ -4566,6 +4663,7 @@ export default function cameraJSUnitCameraFormat(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /*CREATE CAMERAINPUT WITH POSITION UNSPECIFIED & TYPE UNSPECIFIED*/
     /**
