@@ -433,6 +433,7 @@ export default function cameraJSUnitEnum(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* ExposureState Interface will be change
     it('ExposureState', 0, async function (done) {
       console.info(TAG + "--------------ExposureState ------------")
       console.info(TAG + "ExposureState EXPOSURE_STATE_SCAN : " + cameraObj.ExposureState.EXPOSURE_STATE_SCAN);
@@ -442,6 +443,7 @@ export default function cameraJSUnitEnum(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */ 
 
     /**
       * @tc.number    : ImageRotation
