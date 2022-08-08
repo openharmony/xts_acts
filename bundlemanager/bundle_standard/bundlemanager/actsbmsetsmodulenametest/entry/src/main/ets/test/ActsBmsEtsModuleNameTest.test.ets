@@ -558,7 +558,7 @@ export default function actsBmsJsModuleNameTest() {
                 permissions: [], deviceTypes: [], deviceCapabilities: [], readPermission: "", writePermission: "",
                 applicationInfo: {
                     name: "", description: "", descriptionId: 0, systemApp: true, enabled: true, label: "",
-                    labelId: "", icon: "", iconId: "", process: "", supportedModes: 0, moduleSourceDirs: [],
+                    labelId: "", labelIndex: "", icon: "", iconId: "", iconIndex: "", process: "", supportedModes: 0, moduleSourceDirs: [],
                     permissions: [], moduleInfos: [], entryDir: "", codePath: "", metaData: map1, metadata: map2,
                     removable: true, accessTokenId: 0, uid: 0, entityType: "", fingerprint: "",
                     iconResource: resource, labelResource: resource, descriptionResource: resource,

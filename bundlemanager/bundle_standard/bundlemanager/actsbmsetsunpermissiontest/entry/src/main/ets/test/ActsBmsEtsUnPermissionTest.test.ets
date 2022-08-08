@@ -269,8 +269,12 @@ export default function actsBmsJsUnPermissionTest() {
             expect(info.descriptionId).assertEqual(0);
             expect(info.icon).assertEqual("$media:icon");
             expect(info.iconId > 0).assertTrue();
+            expect(info.iconIndex > 0).assertTrue();
+            expect(info.iconIndex).assertEqual(info.iconId);
             expect(info.label).assertEqual("$string:entry_MainAbility");
             expect(info.labelId > 0).assertTrue();
+            expect(info.labelIndex > 0).assertTrue();
+            expect(info.labelIndex).assertEqual(info.labelId);
             expect(info.systemApp).assertEqual(true);
             expect(info.entryDir).assertEqual("/data/app/el1/bundle/public/com.example.actsbmsetsunpermissiontest/com.example.actsbmsetsunpermissiontest");
             expect(info.supportedModes).assertEqual(0);

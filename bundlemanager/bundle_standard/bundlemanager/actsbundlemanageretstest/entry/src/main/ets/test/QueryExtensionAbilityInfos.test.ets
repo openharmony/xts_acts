@@ -1011,8 +1011,12 @@ export default function QueryExtensionAbilityInfos() {
       expect(data[0].applicationInfo.descriptionId).assertLarger(0);
       expect(data[0].applicationInfo.icon).assertEqual("$media:icon");
       expect(data[0].applicationInfo.iconId).assertLarger(0);
+      expect(data[0].applicationInfo.iconIndex).assertLarger(0);
+      expect(data[0].applicationInfo.iconIndex).assertEqual(data[0].applicationInfo.iconId);
       expect(data[0].applicationInfo.label).assertEqual("$string:app_name");
       expect(data[0].applicationInfo.labelId).assertLarger(0);
+      expect(data[0].applicationInfo.labelIndex).assertLarger(0);
+      expect(data[0].applicationInfo.labelIndex).assertEqual(data[0].applicationInfo.labelId);
       expect(data[0].applicationInfo.systemApp).assertTrue();
       expect(data[0].applicationInfo.supportedModes).assertEqual(0);
       expect(data[0].applicationInfo.process).assertEqual("");
