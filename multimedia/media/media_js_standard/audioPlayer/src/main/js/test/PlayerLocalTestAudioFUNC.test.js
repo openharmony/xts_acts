@@ -162,7 +162,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
             console.info(`case dataLoad called`);
             expect(audioPlayer.currentTime).assertEqual(0);
             expect(audioPlayer.duration).assertEqual(DURATION_TIME);
-            expect(audioPlayer.state).assertEqual('paused');
+            expect(audioPlayer.state).assertEqual('idle');
             nextStep(mySteps,done);
         });
         audioPlayer.on('play', () => {
@@ -767,7 +767,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
         testAudioPlayer.on('dataLoad', () => {
             expect(testAudioPlayer.currentTime).assertEqual(0);
             expect(testAudioPlayer.duration).assertEqual(DURATION_TIME);
-            expect(testAudioPlayer.state).assertEqual('paused');
+            expect(testAudioPlayer.state).assertEqual('idle');
             testAudioPlayer.loop = true;
             testAudioPlayer.play();
         });
