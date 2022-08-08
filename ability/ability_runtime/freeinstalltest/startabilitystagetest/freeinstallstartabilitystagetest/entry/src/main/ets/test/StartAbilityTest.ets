@@ -316,8 +316,8 @@ export default function startAbilityTest(abilityContext) {
       await sleep(1000);
       abilityManager.getTopAbility((err, data) => {
         console.log(TAG + 'getTopAbility result: ' + JSON.stringify(data) + " , err: " + JSON.stringify(err));
-        console.log(TAG + 'getTopAbility result deviceId:' + JSON.stringify(data.ability.deviceId));
-        deviceId = data.ability.deviceId;
+        console.log(TAG + 'getTopAbility result deviceId:' + JSON.stringify(data.deviceId));
+        deviceId = data.deviceId;
       })
       await sleep(2000);
       var str = {
@@ -355,8 +355,8 @@ export default function startAbilityTest(abilityContext) {
       await sleep(1000);
       abilityManager.getTopAbility((err, data) => {
         console.log(TAG + 'getTopAbility result: ' + JSON.stringify(data) + " , err: " + JSON.stringify(err));
-        console.log(TAG + 'getTopAbility result deviceId:' + JSON.stringify(data.ability.deviceId));
-        deviceId = data.ability.deviceId;
+        console.log(TAG + 'getTopAbility result deviceId:' + JSON.stringify(data.deviceId));
+        deviceId = data.deviceId;
       })
       await sleep(2000);
       var str = {

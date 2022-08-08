@@ -19,7 +19,6 @@ import router from '@system.router';
 @Component
 struct Index {
   @State message: string = 'Hello World'
-  private height: number = 25
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {

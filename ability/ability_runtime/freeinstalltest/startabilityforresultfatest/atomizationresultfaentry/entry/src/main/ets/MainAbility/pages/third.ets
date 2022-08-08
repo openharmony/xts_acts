@@ -34,7 +34,6 @@ struct Third {
   private content: string = "Third Page"
   private contextText: string= '';
   private localDeviceId: string= '';
-  private backgroundColor = Color.Grey;
   private tipsMsg = '请输入对端的deviceId';
   private isOn = false;
 
@@ -97,7 +96,7 @@ struct Third {
         .fontColor(Color.White)
         .fontWeight(FontWeight.Bold)
         .margin({ top: 20 })
-        .backgroundColor(this.backgroundColor)
+        .backgroundColor(Color.Grey)
         .onClick(() => {
           var str = {
             'want': {
@@ -120,7 +119,7 @@ struct Third {
         .fontColor(Color.White)
         .fontWeight(FontWeight.Bold)
         .margin({ top: 20 })
-        .backgroundColor(this.backgroundColor)
+        .backgroundColor(Color.Grey)
         .onClick(() => {
           var str = {
             'want': {
@@ -139,7 +138,7 @@ struct Third {
         .fontColor(Color.White)
         .fontWeight(FontWeight.Bold)
         .margin({ top: 20 })
-        .backgroundColor(this.backgroundColor)
+        .backgroundColor(Color.Grey)
         .onClick(() => {
           this.updateModuleUpgradeFlag('fAStartAbilityPromiseSameBundleName006','entry');
         });
@@ -151,7 +150,7 @@ struct Third {
         .fontColor(Color.White)
         .fontWeight(FontWeight.Bold)
         .margin({ top: 20 })
-        .backgroundColor(this.backgroundColor)
+        .backgroundColor(Color.Grey)
         .onClick(() => {
           if ('' === remoteDeviceId && '' === this.contextText) {
             this.tips(this.tipsMsg);
@@ -179,7 +178,7 @@ struct Third {
         .fontColor(Color.White)
         .fontWeight(FontWeight.Bold)
         .margin({ top: 20 })
-        .backgroundColor(this.backgroundColor)
+        .backgroundColor(Color.Grey)
         .onClick(() => {
           if ('' === remoteDeviceId && '' === this.contextText) {
             this.tips(this.tipsMsg);
@@ -207,7 +206,7 @@ struct Third {
         .fontColor(Color.White)
         .fontWeight(FontWeight.Bold)
         .margin({ top: 20 })
-        .backgroundColor(this.backgroundColor)
+        .backgroundColor(Color.Grey)
         .onClick(() => {
           var str = {
             'want': {
@@ -317,7 +316,7 @@ struct Third {
     console.log('[startAbility] get device onBackPress out');
   }
 
-  private aboutToAppear(): void {
+  aboutToAppear(): void {
     console.info('[startAbility] aboutToAppear in');
     remoteDeviceModel = new RemoteDeviceModel;
     remoteDeviceModel.registerDeviceListCallback();
@@ -335,7 +334,7 @@ struct Third {
     console.info('[startAbility] onPageShow deviceId is ' + remoteDeviceId);
   }
 
-  private aboutToDisappear() {
+  aboutToDisappear() {
     console.info('[startAbility] aboutToDisappear in');
     remoteDeviceModel.unregisterDeviceListCallback();
     console.info('[startAbility] aboutToDisappear out');
