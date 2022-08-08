@@ -45,7 +45,6 @@
         "isVisible": "true",
         "launchType": "standard",
         "language": "C++", 
-        "orientation": "followrecent",
         "uri":"dataability://"
       }
     ],
