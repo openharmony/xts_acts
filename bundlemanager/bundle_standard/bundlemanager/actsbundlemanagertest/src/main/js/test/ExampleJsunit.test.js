@@ -1619,15 +1619,15 @@ describe('ActsBundleManagerTest', function () {
             if (datainfo.bundleName == NAME4) {
                 expect(datainfo.name).assertEqual("com.example.myapplication.MainAbility");
                 expect(datainfo.type).assertEqual(demo.AbilityType.DATA);
+                expect(datainfo.orientation).assertEqual(demo.DisplayOrientation.UNSPECIFIED);
                 expect(datainfo.bundleName).assertEqual(NAME4);
-                expect(datainfo.orientation).assertEqual(demo.DisplayOrientation.FOLLOW_RECENT);
                 queryResultCount++;
             }
             if (datainfo.bundleName == NAME5) {
                 expect(datainfo.name).assertEqual("com.example.myapplication.MainAbility");
                 expect(datainfo.type).assertEqual(demo.AbilityType.PAGE);
                 expect(datainfo.bundleName).assertEqual(NAME5);
-                expect(datainfo.orientation).assertEqual(demo.DisplayOrientation.UNSPECIFIED);
+                expect(datainfo.orientation).assertEqual(demo.DisplayOrientation.FOLLOW_RECENT);
                 queryResultCount++;
             }
         }
@@ -1686,13 +1686,13 @@ describe('ActsBundleManagerTest', function () {
             if (datainfo.bundleName == NAME4) {
                 expect(datainfo.name).assertEqual("com.example.myapplication.MainAbility");
                 expect(datainfo.bundleName).assertEqual(NAME4);
-                expect(datainfo.orientation).assertEqual(3);
+                expect(datainfo.orientation).assertEqual(demo.DisplayOrientation.UNSPECIFIED);
                 queryResultCount++;
             }
             if (datainfo.bundleName == NAME5) {
                 expect(datainfo.name).assertEqual("com.example.myapplication.MainAbility");
                 expect(datainfo.bundleName).assertEqual(NAME5);
-                expect(datainfo.orientation).assertEqual(0);
+                expect(datainfo.orientation).assertEqual(demo.DisplayOrientation.FOLLOW_RECENT);
                 queryResultCount++;
             }
         }
