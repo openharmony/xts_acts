@@ -241,5 +241,5 @@ export default function webJsunit() {
       Utils.registerEvent("backOrForward","index",138,done);
       sendEventByKey('webcomponent',10,'');
     })
-  }
+  })
 }

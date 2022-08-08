@@ -19,7 +19,7 @@ export default class Utils {
     static sleep(time){
         return new Promise((resolve,reject)=>{
             setTimeout(()=>{
-                resolve()
+                resolve("ok")
             },time)
         }).then(()=>{
             console.info(`sleep ${time} over...`)
