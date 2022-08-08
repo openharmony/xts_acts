@@ -24,7 +24,6 @@ const ABILITY_NAME1 = 'hnm2MainAbility';
 @Entry
 @Component
 struct Index {
-  private backgroundColor = Color.Grey;
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {

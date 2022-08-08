@@ -301,8 +301,8 @@ export default function startAbilityTest() {
             var deviceId = "";
             await abilityManager.getTopAbility((err, data) => {
                 console.log(TAG + 'getTopAbility result: ' + JSON.stringify(data) + " , err: " + JSON.stringify(err));
-                console.log(TAG + 'getTopAbility result deviceId:' + JSON.stringify(data.ability.deviceId));
-                deviceId = data.ability.deviceId;
+                console.log(TAG + 'getTopAbility result deviceId:' + JSON.stringify(data.deviceId));
+                deviceId = data.deviceId;
             })
             await sleep(1000);
             let details;
@@ -340,8 +340,8 @@ export default function startAbilityTest() {
             var deviceId = "";
             await abilityManager.getTopAbility((err, data) => {
                 console.log(TAG + 'getTopAbility result: ' + JSON.stringify(data) + " , err: " + JSON.stringify(err));
-                console.log(TAG + 'getTopAbility result deviceId:' + JSON.stringify(data.ability.deviceId));
-                deviceId = data.ability.deviceId;
+                console.log(TAG + 'getTopAbility result deviceId:' + JSON.stringify(data.deviceId));
+                deviceId = data.deviceId;
             })
             await sleep(1000);
             let details;
@@ -559,7 +559,7 @@ export default function startAbilityTest() {
                     "bundleName": "com.example.qianyiyingyong.hmservice",
                     "abilityName": "com.example.qianyiyingyong.MainAbility",
                     "moduleName": "entry",
-                    "flags": '94.31'
+                    "flags": 94.31
                 }
             }
             await featureAbility.startAbility(str).then((data) => {
@@ -594,7 +594,7 @@ export default function startAbilityTest() {
                     "bundleName": "com.example.qianyiyingyong.hmservice",
                     "abilityName": "com.example.qianyiyingyong.MainAbility",
                     "moduleName": "entry",
-                    "flags": '94.31'
+                    "flags": 94.31
                 }
             }
             await featureAbility.startAbility(str).then((data) => {
@@ -625,7 +625,6 @@ export default function startAbilityTest() {
                     "bundleName": "com.example.qianyiyingyong.hmservice",
                     "abilityName": "com.example.qianyiyingyong.MainAbility",
                     "moduleName": "entry",
-                    "flags": ''
                 }
             }
             await featureAbility.startAbility(str).then((data) => {
@@ -660,7 +659,6 @@ export default function startAbilityTest() {
                     "bundleName": "com.example.qianyiyingyong.hmservice",
                     "abilityName": "com.example.qianyiyingyong.MainAbility",
                     "moduleName": "entry",
-                    "flags": ''
                 }
             }
             await featureAbility.startAbility(str).then((data) => {

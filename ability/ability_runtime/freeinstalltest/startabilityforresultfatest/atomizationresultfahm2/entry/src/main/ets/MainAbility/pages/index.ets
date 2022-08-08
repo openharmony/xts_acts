@@ -35,8 +35,6 @@ async function routePage() {
 @Component
 struct Index {
 
-  private backgroundColor = Color.Grey;
-
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Text('Hello World')
@@ -62,7 +60,7 @@ struct Index {
         .fontColor(Color.White)
         .fontWeight(FontWeight.Bold)
         .margin({ top: 20 })
-        .backgroundColor(this.backgroundColor)
+        .backgroundColor(Color.Grey)
         .onClick(() => {
           var str = {
             'want': {
