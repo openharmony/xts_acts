@@ -17,7 +17,9 @@ group("barrierfree") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "accessibilityconfig:ActsAccessibilityConfigTest",
       "accessibilityelement:ActsAccessibilityElementTest",
+      "accessibilityevent:ActsAccessibilityEventTest",
       "accessibilityextension:ActsAccessibilityExtensionTest",
       "accessibilityextensioncontext:ActsAccessibilityExtensionContextTest",
       "accessibilitygestureevent:ActsAccessibilityGestureEventTest",

@@ -78,9 +78,8 @@ export default function abilityTest() {
          */
         it('AccessibilityEventTest_0100', 0, async function (done) {
             console.info(`AccessibilityEventTest_0100`);
-            let eventType = 'accessibilityFocus';
             let event = new accessibility.EventInfo({});
-            event.type = eventType;
+            event.type = 'accessibilityFocus';
             event.bundleName = targetBundleName;
             event.triggerAction = 'accessibilityFocus';
             await accessibility.sendEvent(event);
@@ -88,7 +87,7 @@ export default function abilityTest() {
             setTimeout(() => {
                 let findResult = false;
                 for (let item of events) {
-                    if (item.eventType == eventType) {
+                    if (item.eventType == 'accessibilityFocus') {
                         findResult = true;
                     }
                 }
@@ -108,9 +107,8 @@ export default function abilityTest() {
          */
         it('AccessibilityEventTest_0200', 0, async function (done) {
             console.info(`AccessibilityEventTest_0200`);
-            let eventType = 'accessibilityFocusClear';
             let event = new accessibility.EventInfo({});
-            event.type = eventType;
+            event.type = 'accessibilityFocusClear';
             event.bundleName = targetBundleName;
             event.triggerAction = 'clearAccessibilityFocus';
             await accessibility.sendEvent(event);
@@ -118,7 +116,7 @@ export default function abilityTest() {
             setTimeout(() => {
                 let findResult = false;
                 for (let item of events) {
-                    if (item.eventType == eventType) {
+                    if (item.eventType == 'accessibilityFocusClear') {
                         findResult = true;
                     }
                 }
@@ -138,9 +136,8 @@ export default function abilityTest() {
          */
         it('AccessibilityEventTest_0300', 0, async function (done) {
             console.info(`AccessibilityEventTest_0300`);
-            let eventType = 'click';
             let event = new accessibility.EventInfo({});
-            event.type = eventType;
+            event.type = 'click';
             event.bundleName = targetBundleName;
             event.triggerAction = 'click';
             await accessibility.sendEvent(event);
@@ -148,7 +145,7 @@ export default function abilityTest() {
             setTimeout(() => {
                 let findResult = false;
                 for (let item of events) {
-                    if (item.eventType == eventType) {
+                    if (item.eventType == 'click') {
                         findResult = true;
                     }
                 }
@@ -168,9 +165,8 @@ export default function abilityTest() {
          */
         it('AccessibilityEventTest_0400', 0, async function (done) {
             console.info(`AccessibilityEventTest_0400`);
-            let eventType = 'longClick';
             let event = new accessibility.EventInfo({});
-            event.type = eventType;
+            event.type = 'longClick';
             event.bundleName = targetBundleName;
             event.triggerAction = 'longClick';
             await accessibility.sendEvent(event);
@@ -178,7 +174,7 @@ export default function abilityTest() {
             setTimeout(() => {
                 let findResult = false;
                 for (let item of events) {
-                    if (item.eventType == eventType) {
+                    if (item.eventType == 'longClick') {
                         findResult = true;
                     }
                 }
@@ -198,9 +194,8 @@ export default function abilityTest() {
          */
         it('AccessibilityEventTest_0500', 0, async function (done) {
             console.info(`AccessibilityEventTest_0500`);
-            let eventType = 'focus';
             let event = new accessibility.EventInfo({});
-            event.type = eventType;
+            event.type = 'focus';
             event.bundleName = targetBundleName;
             event.triggerAction = 'focus';
             await accessibility.sendEvent(event);
@@ -208,7 +203,7 @@ export default function abilityTest() {
             setTimeout(() => {
                 let findResult = false;
                 for (let item of events) {
-                    if (item.eventType == eventType) {
+                    if (item.eventType == 'focus') {
                         findResult = true;
                     }
                 }
@@ -228,9 +223,8 @@ export default function abilityTest() {
          */
         it('AccessibilityEventTest_0600', 0, async function (done) {
             console.info(`AccessibilityEventTest_0600`);
-            let eventType = 'select';
             let event = new accessibility.EventInfo({});
-            event.type = eventType;
+            event.type = 'select';
             event.bundleName = targetBundleName;
             event.triggerAction = 'select';
             await accessibility.sendEvent(event);
@@ -238,7 +232,7 @@ export default function abilityTest() {
             setTimeout(() => {
                 let findResult = false;
                 for (let item of events) {
-                    if (item.eventType == eventType) {
+                    if (item.eventType == 'select') {
                         findResult = true;
                     }
                 }
@@ -258,9 +252,8 @@ export default function abilityTest() {
          */
         it('AccessibilityEventTest_0700', 0, async function (done) {
             console.info(`AccessibilityEventTest_0700`);
-            let eventType = 'hoverEnter';
             let event = new accessibility.EventInfo({});
-            event.type = eventType;
+            event.type = 'hoverEnter';
             event.bundleName = targetBundleName;
             event.triggerAction = 'focus';
             await accessibility.sendEvent(event);
@@ -268,7 +261,7 @@ export default function abilityTest() {
             setTimeout(() => {
                 let findResult = false;
                 for (let item of events) {
-                    if (item.eventType == eventType) {
+                    if (item.eventType == 'hoverEnter') {
                         findResult = true;
                     }
                 }
@@ -288,9 +281,8 @@ export default function abilityTest() {
          */
         it('AccessibilityEventTest_0800', 0, async function (done) {
             console.info(`AccessibilityEventTest_0800`);
-            let eventType = 'hoverExit';
             let event = new accessibility.EventInfo({});
-            event.type = eventType;
+            event.type = 'hoverExit';
             event.bundleName = targetBundleName;
             event.triggerAction = 'focus';
             await accessibility.sendEvent(event);
@@ -298,7 +290,7 @@ export default function abilityTest() {
             setTimeout(() => {
                 let findResult = false;
                 for (let item of events) {
-                    if (item.eventType == eventType) {
+                    if (item.eventType == 'hoverExit') {
                         findResult = true;
                     }
                 }
@@ -318,9 +310,8 @@ export default function abilityTest() {
          */
         it('AccessibilityEventTest_0900', 0, async function (done) {
             console.info(`AccessibilityEventTest_0900`);
-            let eventType = 'textUpdate';
             let event = new accessibility.EventInfo({});
-            event.type = eventType;
+            event.type = 'textUpdate';
             event.bundleName = targetBundleName;
             event.triggerAction = 'cut';
             await accessibility.sendEvent(event);
@@ -328,7 +319,7 @@ export default function abilityTest() {
             setTimeout(() => {
                 let findResult = false;
                 for (let item of events) {
-                    if (item.eventType == eventType) {
+                    if (item.eventType == 'textUpdate') {
                         findResult = true;
                     }
                 }
@@ -348,9 +339,8 @@ export default function abilityTest() {
          */
         it('AccessibilityEventTest_1000', 0, async function (done) {
             console.info(`AccessibilityEventTest_1000`);
-            let eventType = 'textSelectionUpdate';
             let event = new accessibility.EventInfo({});
-            event.type = eventType;
+            event.type = 'textSelectionUpdate';
             event.bundleName = targetBundleName;
             event.triggerAction = 'setSelection';
             await accessibility.sendEvent(event);
@@ -358,7 +348,7 @@ export default function abilityTest() {
             setTimeout(() => {
                 let findResult = false;
                 for (let item of events) {
-                    if (item.eventType == eventType) {
+                    if (item.eventType == 'textSelectionUpdate') {
                         findResult = true;
                     }
                 }
@@ -378,9 +368,8 @@ export default function abilityTest() {
          */
         it('AccessibilityEventTest_1100', 0, async function (done) {
             console.info(`AccessibilityEventTest_1100`);
-            let eventType = 'scroll';
             let event = new accessibility.EventInfo({});
-            event.type = eventType;
+            event.type = 'scroll';
             event.bundleName = targetBundleName;
             event.triggerAction = 'scrollForward';
             await accessibility.sendEvent(event);
@@ -388,7 +377,7 @@ export default function abilityTest() {
             setTimeout(() => {
                 let findResult = false;
                 for (let item of events) {
-                    if (item.eventType == eventType) {
+                    if (item.eventType == 'scroll') {
                         findResult = true;
                     }
                 }
@@ -408,9 +397,8 @@ export default function abilityTest() {
          */
         it('AccessibilityEventTest_1200', 0, async function (done) {
             console.info(`AccessibilityEventTest_1200`);
-            let eventType = 'scroll';
             let event = new accessibility.EventInfo({});
-            event.type = eventType;
+            event.type = 'scroll';
             event.bundleName = targetBundleName;
             event.triggerAction = 'scrollForward';
             await accessibility.sendEvent(event);
@@ -419,7 +407,7 @@ export default function abilityTest() {
                 let findResult = false;
                 for (let item of events) {
                     console.info(`AccessibilityEventTest_1200 haveTarget: ${item.haveTarget}`);
-                    if (item.eventType == eventType && item.haveTarget) {
+                    if (item.eventType == 'scroll' && item.haveTarget) {
                         findResult = true;
                     }
                 }
@@ -439,9 +427,8 @@ export default function abilityTest() {
          */
         it('AccessibilityEventTest_1300', 0, async function (done) {
             console.info(`AccessibilityEventTest_1300`);
-            let eventType = 'scroll';
             let event = new accessibility.EventInfo({});
-            event.type = eventType;
+            event.type = 'scroll';
             event.bundleName = targetBundleName;
             event.triggerAction = 'scrollForward';
             await accessibility.sendEvent(event);
@@ -450,7 +437,7 @@ export default function abilityTest() {
                 let findResult = false;
                 for (let item of events) {
                     console.info(`AccessibilityEventTest_1300 timeStamp: ${item.timeStamp}`);
-                    if (item.eventType == eventType && typeof(item.timeStamp) == 'number') {
+                    if (item.eventType == 'scroll' && typeof(item.timeStamp) == 'number') {
                         findResult = true;
                     }
                 }

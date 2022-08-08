@@ -14,7 +14,7 @@
 import("//test/xts/tools/build/suite.gni")
 
 ohos_js_hap_suite("ActsAccessibilityGestureEventTest") {
-  hap_profile = "entry/src/main/module.json"
+  hap_profile = "./entry/src/main/module.json"
   js_build_mode = "debug"
   deps = [
     ":accessibilitygestureevent_js_assets",
@@ -33,11 +33,11 @@ ohos_app_scope("accessibilitygestureevent_app_profile") {
 }
 
 ohos_js_assets("accessibilitygestureevent_js_assets") {
-  source_dir = "entry/src/main/ets"
+  source_dir = "./entry/src/main/ets"
 }
 
 ohos_resources("accessibilitygestureevent_resources") {
-  sources = [ "entry/src/main/resources" ]
+  sources = [ "./entry/src/main/resources" ]
   deps = [ ":accessibilitygestureevent_app_profile" ]
-  hap_profile = "entry/src/main/module.json"
+  hap_profile = "./entry/src/main/module.json"
 }
