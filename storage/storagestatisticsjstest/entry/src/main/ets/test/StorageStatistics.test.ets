@@ -124,11 +124,15 @@ export default function storageStatisticsTest() {
         };
         let tasks = [delay(), delay(), delay(), delay()];
         Promise.all(tasks).then(results => {
-          let flag = !results.some(function(value){
+          let isNotNull = results.every(bundleStat => {
+            return bundleStat != null;
+          });
+          let flag = !results.some(value => {
             return JSON.stringify(value) !== JSON.stringify(results[0]);
           })
           expect(results.length == tasks.length).assertTrue();
           expect(flag).assertTrue();
+          expect(isNotNull).assertTrue();
           done();
         });
       } catch (error) {
