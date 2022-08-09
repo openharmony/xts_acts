@@ -21,6 +21,8 @@ ohos_js_hap_suite("ActsGetAllAccountsTest") {
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsGetAllAccountsTest"
+  subsystem_name = "account"
+  part_name = "os_account"
 }
 ohos_js_assets("hjs_demo_js_assets") {
   js2abc = true
