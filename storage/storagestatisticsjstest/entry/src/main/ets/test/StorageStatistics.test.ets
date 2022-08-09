@@ -38,8 +38,6 @@ export default function storageStatisticsTest() {
         done();
       } catch (e) {
         console.log("storage_statistics_test_get_current_bundle_stats_async_000 has failed for " + e);
-        expect(null).assertFail();
-        done();
       }
     });
 
@@ -63,15 +61,13 @@ export default function storageStatisticsTest() {
         });
       } catch (e) {
         console.log("storage_statistics_test_get_current_bundle_stats_async_001 has failed for " + e);
-        expect(null).assertFail();
-        done();
       }
     });
 
     /**
      * @tc.number SUB_DF_STORAGE_STATISTICS_GET_CURRENT_BUNDLE_STATS_0020
      * @tc.name storage_statistics_test_get_current_bundle_stats_async_002
-     * @tc.desc Test getCurrentBundleStats() interfaces, the parameter packagename is errors, returning error results.
+     * @tc.desc Test getCurrentBundleStats() interfaces, When the parameter type is wrong.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 0
@@ -80,7 +76,6 @@ export default function storageStatisticsTest() {
     it("storage_statistics_test_get_current_bundle_stats_async_002", 0, async function (done) {
       try {
         await storageStatistics.getCurrentBundleStats("1");
-        done();
       } catch (error) {
         console.log("storage_statistics_test_get_current_bundle_stats_async_002 has failed for " + error);
         expect(isInclude(error, "The callback shall be a function")).assertTrue();
@@ -91,7 +86,7 @@ export default function storageStatisticsTest() {
     /**
      * @tc.number SUB_DF_STORAGE_STATISTICS_GET_CURRENT_BUNDLE_STATS_0030
      * @tc.name storage_statistics_test_get_current_bundle_stats_async_003
-     * @tc.desc Test getCurrentBundleStats() interfaces, When the parameter type is wrong, returns the correct result.
+     * @tc.desc Test getCurrentBundleStats() interfaces, When there are redundant parameters.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 0
@@ -99,8 +94,9 @@ export default function storageStatisticsTest() {
      */
     it("storage_statistics_test_get_current_bundle_stats_async_003", 0, async function (done) {
       try {
-        await storageStatistics.getCurrentBundleStats(1);
-        done();
+        storageStatistics.getCurrentBundleStats("", (error, bundleStat) => {
+
+        });
       } catch (error) {
         console.log("storage_statistics_test_get_current_bundle_stats_async_003 has failed for " + error);
         expect(isInclude(error, "The callback shall be a function")).assertTrue();
@@ -111,7 +107,7 @@ export default function storageStatisticsTest() {
     /**
      * @tc.number SUB_DF_STORAGE_STATISTICS_GET_CURRENT_BUNDLE_STATS_0040
      * @tc.name storage_statistics_test_get_current_bundle_stats_async_004
-     * @tc.desc Test getCurrentBundleStats() interfaces, When there are no parameters, returning error results.
+     * @tc.desc Test getCurrentBundleStats() interfaces, When there are no parameters.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 0
@@ -119,8 +115,7 @@ export default function storageStatisticsTest() {
      */
     it("storage_statistics_test_get_current_bundle_stats_async_004", 0, async function (done) {
       try {
-        await storageStatistics.getCurrentBundleStats(true);
-        done();
+        await storageStatistics.getCurrentBundleStats();
       } catch (error) {
         console.log("storage_statistics_test_get_current_bundle_stats_async_004 has failed for " + error);
         expect(isInclude(error, "The callback shall be a function")).assertTrue();
