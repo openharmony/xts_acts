@@ -129,7 +129,7 @@ export default function storageStatisticsTest() {
           });
           let flag = !results.some(value => {
             return JSON.stringify(value) !== JSON.stringify(results[0]);
-          })
+          });
           expect(results.length == tasks.length).assertTrue();
           expect(flag).assertTrue();
           expect(isNotNull).assertTrue();
