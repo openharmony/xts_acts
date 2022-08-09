@@ -2225,14 +2225,22 @@ describe('Image', function () {
                 index: 0
             };
             imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
-                globalpixelmap = pixelmap;
-                if (pixelmap == undefined) {
-                    console.info('TC_050-10 success ');
-                    expect(true).assertTrue();
-                    done();
-                } else {
+                if (err) {
+                    console.info('TC_050-10 createPixelMap err ' + JSON.stringify(err));
                     expect(false).assertTrue();
                     done();
+                } else {
+                    globalpixelmap = pixelmap;
+                    pixelmap.getImageInfo().then((imageInfo) => {
+                        expect(imageInfo.size.height == 2).assertTrue();
+                        expect(imageInfo.size.width == 1).assertTrue();
+                        console.info('TC_050-10 success ');
+                        console.info("imageInfo height :" + imageInfo.size.height );
+                        console.info("imageInfo width : " + imageInfo.size.width);
+                        done();
+                    }).catch((err) => {
+                        console.info('TC_050-10 getimageInfo err ' + JSON.stringify(err));
+                    })
                 }
             })
         }
@@ -3363,14 +3371,22 @@ describe('Image', function () {
                 index: 0
             };
             imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
-                globalpixelmap = pixelmap;
-                if (pixelmap == undefined) {
-                    console.info('TC_067-10 success ');
-                    expect(true).assertTrue();
-                    done();
-                } else {
+                if (err) {
+                    console.info('TC_067-10 createPixelMap error ' + JSON.stringify(err));
                     expect(false).assertTrue();
                     done();
+                } else {
+                    globalpixelmap = pixelmap;
+                    pixelmap.getImageInfo().then((imageInfo) => {
+                        expect(imageInfo.size.height == 2).assertTrue();
+                        expect(imageInfo.size.width == 1).assertTrue();
+                        console.info('TC_067-10 success ');
+                            console.info("imageInfo height :" + imageInfo.size.height);
+                            console.info("imageInfo width : " + imageInfo.size.width);
+                        done();
+                    }).catch((err) => {
+                        console.info('TC_067-10 getimageInfo err ' + JSON.stringify(err));
+                    })
                 }
             })
         }
@@ -3868,14 +3884,22 @@ describe('Image', function () {
                 index: 0
             };
             imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
-                globalpixelmap = pixelmap;
-                if (pixelmap == undefined) {
-                    console.info('TC_068-10 success ');
-                    expect(true).assertTrue();
-                    done();
-                } else {
+                if (err) {
+                    console.info('TC_068-10 createPixelMap error  ' + JSON.stringify(err));
                     expect(false).assertTrue();
                     done();
+                } else {
+                    globalpixelmap = pixelmap;
+                    pixelmap.getImageInfo().then((imageInfo) => {
+                        expect(imageInfo.size.height == 2).assertTrue();
+                        expect(imageInfo.size.width == 1).assertTrue();
+                        console.info('TC_068-10 success ');
+                            console.info("imageInfo height :" + imageInfo.size.height);
+                            console.info("imageInfo width : " + imageInfo.size.width);
+                        done();
+                    }).catch((err) => {
+                        console.info('TC_068-10 getimageInfo err ' + JSON.stringify(err));
+                    })
                 }
             })
         }
@@ -4337,14 +4361,22 @@ describe('Image', function () {
                 index: 0
             };
             imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
-                globalpixelmap = pixelmap;
-                if (pixelmap == undefined) {
-                    console.info('TC_163-10 success ');
-                    expect(true).assertTrue();
-                    done();
-                } else {
+                if (err) {
+                    console.info('TC_163-10 createPixelMap error  ' + JSON.stringify(err));
                     expect(false).assertTrue();
                     done();
+                } else {
+                    globalpixelmap = pixelmap;
+                    pixelmap.getImageInfo().then((imageInfo) => {
+                        expect(imageInfo.size.height == 2).assertTrue();
+                        expect(imageInfo.size.width == 1).assertTrue();
+                        console.info('TC_163-10 success ');
+                            console.info("imageInfo height :" + imageInfo.size.height);
+                            console.info("imageInfo width : " + imageInfo.size.width);
+                        done();
+                    }).catch((err) => {
+                        console.info('TC_163-10 getimageInfo err ' + JSON.stringify(err));
+                    })
                 }
             })
         }
