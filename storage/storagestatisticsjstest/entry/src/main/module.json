@@ -1,8 +1,8 @@
 {
   "module": {
-	"package": "com.example.statistics",
-  "name": "entry",
-	"mainAbility": "com.example.statistics.MainAbility",
+    "package": "com.example.statistics",
+    "name": "entry",
+    "mainAbility": "com.example.statistics.MainAbility",
     "type": "entry",
     "srcEntrance": "./ets/Application/AbilityStage.ts",
     "description": "$string:entry_desc",
