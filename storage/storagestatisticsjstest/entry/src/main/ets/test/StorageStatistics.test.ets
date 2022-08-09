@@ -125,7 +125,7 @@ export default function storageStatisticsTest() {
         let tasks = [delay(), delay(), delay(), delay()];
         Promise.all(tasks).then(results => {
           let isNotNull = results.every(bundleStat => {
-            return bundleStat != null;
+            return bundleStat != null && JSON.stringify(bundleStat) != "{}";
           });
           let flag = !results.some(value => {
             return JSON.stringify(value) !== JSON.stringify(results[0]);
