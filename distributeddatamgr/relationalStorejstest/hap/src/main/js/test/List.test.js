@@ -12,6 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
+import rdbStoreBackupRestoreCallbackTest from './RdbstoreBackupRestoreCallbackJsunit.test.js'
 import rdbStoreBackupRestoreWithFAContextTest from './RdbstoreBackupRestoreWithFAContextJsunit.test.js'
 import rdbstoreChangeEncryptKeyTest from './RdbstoreChangeEncryptKeyJsunit.test.js'
 import rdbStoreDeleteTest from './RdbstoreDeleteJsunit.test.js'
@@ -24,7 +25,9 @@ import rdbResultSetTest from './RdbStoreResultSetJsunit.test.js'
 import rdbstoreStoreExcuteSqlTest from './RdbstoreStoreExcuteSqlJsunit.test.js'
 import rdbstoreTransactionTest from './RdbstoreTransactionJsunit.test.js'
 import rdbStoreUpdateTest from './RdbstoreUpdateJsunit.test.js'
+import rdbstoreQueryTest from './RdbstoreQuery.test.js'
 export default function testsuite() {
+rdbStoreBackupRestoreCallbackTest()
 rdbStoreBackupRestoreWithFAContextTest()
 rdbstoreChangeEncryptKeyTest()
 rdbStoreDeleteTest()
@@ -37,4 +40,5 @@ rdbResultSetTest()
 rdbstoreStoreExcuteSqlTest()
 rdbstoreTransactionTest()
 rdbStoreUpdateTest()
+rdbstoreQueryTest()
 }

@@ -18,7 +18,7 @@ import dataRdb from '@ohos.data.rdb';
 import abilityFeatureAbility from '@ohos.ability.featureAbility';
 
 var context = abilityFeatureAbility.getContext();
-
+var contextApplication = context.getApplicationContext()
 const TAG = "[RDB_JSKITS_TEST]"
 const CREATE_TABLE_TEST = "CREATE TABLE IF NOT EXISTS test (" + "id INTEGER PRIMARY KEY AUTOINCREMENT, " + "name TEXT NOT NULL, " + "age INTEGER, " + "salary REAL, " + "blobType BLOB)";
 
@@ -183,7 +183,7 @@ describe('rdbStoreTest', function () {
         console.info(TAG + "************* testRdbStore0006 start *************");
         let rdbstore = null;
         try{
-            const STORE_CONFIG = {
+            const STORE_CONFIG= {
                 name: "rdbstorecontext.db",
             }
             console.info(TAG + "first")
@@ -210,23 +210,78 @@ describe('rdbStoreTest', function () {
      * @tc.number SUB_DDM_AppDataFWK_JSRDB_RdbStore_0070
      * @tc.desc rdb store getRdbStore test
      */
-         it('testRdbStore0007', 0, async function (done) {
-            console.info(TAG + "************* testRdbStore0007 start *************");
-            let rdbstore = null;
-            dataRdb.getRdbStore(context,STORE_CONFIG, 1, (data,err) => {
-                if(err != undefined){
-                    expect(null).assertFail()
-                }else{
-                    rdbstore = data;
-                    console.info(TAG + "getRdbStore success: " + rdbstore)
-                    expect(rdbstore).assertNotNull();
-                }
-            });
-            await dataRdb.deleteRdbStore(STORE_CONFIG.name)
-            rdbstore = null;
-            done();
-            console.info(TAG + "************* testRdbStore0007 end   *************");
-        })
+    it('testRdbStore0007', 0, async function (done) {
+        console.info(TAG + "************* testRdbStore0007 start *************");
+        let rdbstore = null;
+        try{
+            const STORE_CONFIG = {
+                name: "rdbstorecontext.db",
+            }
+            console.info(TAG + "first")
+            await dataRdb.getRdbStore(contextApplication,STORE_CONFIG, 1).then((data) => {
+                console.info(TAG + "Get rdbstore success")
+                rdbstore = data;
+                expect(rdbstore != null).assertTrue();
+            }).catch((errInfo) => {
+                console.info(TAG + "Get rdbstore fail " + errInfo)
+                expect(null).assertFail();
+            })
+        }catch(err){
+            console.info(TAG + "Get rdbstore fail catch err: " + err)
+            expect(null).assertFail()
+        }
+        await dataRdb.deleteRdbStore(STORE_CONFIG.name)
+        rdbstore = null;
+        done();
+        console.info(TAG + "************* testRdbStore0007 end   *************");
+    })
+
+    /**
+     * @tc.name rdb store deleteRdbStore test
+     * @tc.number SUB_DDM_AppDataFWK_JSRDB_RdbStore_0080
+     * @tc.desc rdb store deleteRdbStore test
+     */
+    it('testRdbStore0008', 0, async function (done) {
+        console.info(TAG + "************* testRdbStore0008 start *************");
+        let rdbstore = null;
+        dataRdb.getRdbStore(context,STORE_CONFIG, 1, (data,err) => {
+            if(err != undefined){
+                expect(null).assertFail()
+            }else{
+                rdbstore = data;
+                console.info(TAG + "getRdbStore success: " + rdbstore)
+                expect(rdbstore).assertNotNull();
+            }
+        });
+        await dataRdb.deleteRdbStore(context,STORE_CONFIG.name)
+        rdbstore = null;
+        done();
+        console.info(TAG + "************* testRdbStore0008 end   *************");
+    })
+
+    /**
+     * @tc.name rdb store deleteRdbStore test
+     * @tc.number SUB_DDM_AppDataFWK_JSRDB_RdbStore_0090
+     * @tc.desc rdb store deleteRdbStore test
+     */
+    it('testRdbStore0009', 0, async function(done){
+        console.info(TAG + "************* testRdbStore0009 start *************");
+        let rdbstore = null;
+        dataRdb.getRdbStore(contextApplication,STORE_CONFIG, 1, (data,err) => {
+            if(err != undefined){
+                expect(null).assertFail()
+            }else{
+                rdbstore = data;
+                console.info(TAG + "getRdbStore success: " + rdbstore)
+                expect(rdbstore).assertNotNull();
+            }
+        });
+        await dataRdb.deleteRdbStore(contextApplication,STORE_CONFIG.name)
+        rdbstore = null;
+        
+        done();
+        console.info(TAG + "************* testRdbStore0009 end   *************");
+    })
     
     console.info(TAG + "*************Unit Test End*************");
 })}
