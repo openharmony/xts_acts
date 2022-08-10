@@ -14,6 +14,10 @@
 */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import factory from '@ohos.data.distributedData';
+import abilityFeatureAbility from '@ohos.ability.featureAbility';
+
+var context = abilityFeatureAbility.getContext();
+var contextApplication = context.getApplicationContext()
 
 const TEST_BUNDLE_NAME = 'ohos.acts.kvStore';
 const TEST_STORE_ID = 'storeId';
@@ -860,6 +864,91 @@ describe('kvManagerPromiseTest', function () {
             });
         }catch (e) {
             console.info('testKVStoreDelete001 promise delete fail err' + err);
+        }
+        done();
+    })
+
+    /**
+      * @tc.number SUB_DISTRIBUTEDDATAMGR_KVMANAGER_CONTEXT_1000
+      * @tc.name [JS-API9]KVManagerConfig.context
+      * @tc.desc Test Js Api createKVManager testcase 001
+      */
+     it('testcreateKVManager001', 0, async function (done) {
+        console.info('testcreateKVManager001');
+        const config = {
+            bundleName: TEST_BUNDLE_NAME,
+            userInfo: {
+                userId: '0',
+                userType: factory.UserType.SAME_USER_ID
+            },
+            context:context
+        }
+        try {
+            await factory.createKVManager(config).then((manager) => {
+                kvManager = manager;
+                expect(manager !=null).assertTrue();
+                console.info('testcreateKVManager001 createKVManager success');
+                kvManager.getKVStore(TEST_STORE_ID, options).then(async (store) => {
+                    console.info("testcreateKVManager001 getKVStore success");
+                    await store.put("createKVManager","success").then(async () => {
+                        await store.get("craeteKVManager","defaultValue").then((data) => {
+                            expect("success").assertEqual(data)
+                            console.info("testcreateKVManager001 put data success")
+                        })
+                    })
+                }).catch((err) => {
+                    console.info("testcreateKVManager001 getKVStore err: "  + JSON.stringify(err));
+                    expect(null).assertFail();
+                });
+            }).catch((err) => {
+                console.info('testcreateKVManager001 createKVManager err ' + err);
+                expect(null).assertFail()
+            });
+        }catch (e) {
+            console.info('testcreateKVManager001 promise delete fail err' + err);
+            expect(null).assertFail();
+        }
+        done();
+    })
+
+    /**
+      * @tc.number SUB_DISTRIBUTEDDATAMGR_KVMANAGER_CONTEXTAPPLICATION_1000
+      * @tc.name [JS-API9]KVManagerConfig.context
+      * @tc.desc Test Js Api createKVManager testcase 001
+      */
+     it('testcreateKVManager002', 0, async function (done) {
+        console.info('testcreateKVManager002');
+        const config = {
+            bundleName: TEST_BUNDLE_NAME,
+            userInfo: {
+                userId: '0',
+                userType: factory.UserType.SAME_USER_ID
+            },
+            context:contextApplication
+        }
+        try {
+            await factory.createKVManager(config).then((manager) => {
+                kvManager = manager;
+                console.info('testcreateKVManager002 createKVManager success');
+                kvManager.getKVStore(TEST_STORE_ID, options).then(async (store) => {
+                    console.info("testcreateKVManager002 getKVStore success");
+                    await store.put("createKVManager","success").then(async () => {
+                        await store.get("craeteKVManager","defaultValue").then((data) => {
+                            expect("success").assertEqual(data)
+                            console.info("testcreateKVManager002 put data success")
+                        })
+                    })
+                }).catch((err) => {
+                    console.info("testcreateKVManager002 getKVStore err: "  + JSON.stringify(err));
+                    expect(null).assertFail();
+                });
+            }).catch((err) => {
+                console.info('testcreateKVManager002 createKVManager err ' + err);
+                expect(null).assertFail()
+            });
+        }catch (e) {
+            console.info('testcreateKVManager002 promise delete fail err' + err);
+            expect(null).assertFail();
         }
         done();
     })
