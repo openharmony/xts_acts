@@ -2196,5 +2196,165 @@ describe('PerfTest', function () {
         }
     })
 
+    /* *
+    * @tc.number SUB_GLOBAL_PERF_JS_9000
+    * @tc.name   test the performance of getLocationName
+    * @tc.desc   check the performance of getLocationName
+    */
+    it('perf_test_9000', 0, function () {
+        console.log('perf_test_9000 ' + 'start');
+        let phonenumber = new I18n.PhoneNumberFormat('CN');
+        let ran = Math.ceil(Math.random(1) * 9);
+        console.log('perf_test_9000 ' + ran);
+        let value = 'test';
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            value = phonenumber.getLocationName('1351057467' + ran, 'zh-CN');
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_9000--'
+                    + ' value: ' + value
+                    + ' exeTime: ' + exeTime
+                    + ' avgTime: ' + avgTime);
+        expect(value).assertEqual('广东省深圳市');
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_PERF_JS_9100
+    * @tc.name   test the performance of getUsingLocalDigit
+    * @tc.desc   check the performance of getUsingLocalDigit
+    */
+    it('perf_test_9100', 0, function () {
+        console.log('perf_test_9100 ' + 'start');
+        let value = true;
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            value = I18n.getUsingLocalDigit();
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_9100--'
+                    + ' value: ' + value
+                    + ' exeTime: ' + exeTime
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_PERF_JS_9200
+    * @tc.name   test the performance of timezone.getAvailableIDs
+    * @tc.desc   check the performance of timezone.getAvailableIDs
+    */
+    it('perf_test_9200', 0, function () {
+        console.log('perf_test_9200 ' + 'start');
+        let value = 'test';
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            value = I18n.TimeZone.getAvailableIDs();
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_9200--'
+                    + ' value: ' + value
+                    + ' exeTime: ' + exeTime
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_PERF_JS_9300
+    * @tc.name   test the performance of getAvailableZoneCityIDs
+    * @tc.desc   check the performance of getAvailableZoneCityIDs
+    */
+    it('perf_test_9300', 0, function () {
+        console.log('perf_test_9300 ' + 'start');
+        let value = 'test';
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            value = I18n.TimeZone.getAvailableZoneCityIDs();
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_9300--'
+                    + ' value: ' + value
+                    + ' exeTime: ' + exeTime
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_PERF_JS_9400
+    * @tc.name   test the performance of getCityDisplayName
+    * @tc.desc   check the performance of getCityDisplayName
+    */
+    it('perf_test_9400', 0, function () {
+        console.log('perf_test_9400 ' + 'start');
+        let value = 'test';
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            value = I18n.TimeZone.getCityDisplayName('Auckland', 'zh');
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_9400--'
+                    + ' value: ' + value
+                    + ' exeTime: ' + exeTime
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_PERF_JS_9500
+    * @tc.name   test the performance of getTimezoneFromCity
+    * @tc.desc   check the performance of getTimezoneFromCity
+    */
+    it('perf_test_9500', 0, function () {
+        console.log('perf_test_9500 ' + 'start');
+        let value = 'test';
+        let startTime = new Date().getTime();
+        for(let i = 0; i < EXETIME; i++){
+            value = I18n.TimeZone.getTimezoneFromCity('Auckland');
+        }
+        let exeTime = new Date().getTime() - startTime;
+        let avgTime = exeTime/EXETIME;
+        console.log('perf_test_9500--'
+                    + ' value: ' + value
+                    + ' exeTime: ' + exeTime
+                    + ' avgTime: ' + avgTime);
+        if(avgTime < 10){
+            expect(true).assertTrue();
+        }
+        else{
+            expect(false).assertTrue();
+        }
+    })
+
     console.log('*************end PerfTest*************');
 })}
