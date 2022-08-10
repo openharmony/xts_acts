@@ -25,7 +25,9 @@ ohos_js_hap_suite("storagefileio_js_test") {
   part_name = "xts_acts"
 }
 ohos_js_assets("storagefileio_js_assets") {
-  source_dir = "./src/main/js/default"
+  js2abc = true
+  hap_profile = "./src/main/config.json"
+  source_dir = "./src/main/js"
 }
 ohos_resources("storagefileio_js_resources") {
   sources = [ "./src/main/resources" ]
