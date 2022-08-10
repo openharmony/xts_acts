@@ -108,7 +108,7 @@ describe("Telephony_NetStack_HttpTest", function () {
      */
     it("Telephony_NetStack_HttpTestCookies_0100", 0, function (done) {
         let http = NetHttp.createHttp()
-        http.request("https://httpbin.org/cookies/set/name/value").then(function(data){
+        http.request("https://m.baidu.com").then(function(data){
             console.info("NetStack "+JSON.stringify(data))
             expect(data.responseCode === NetHttp.ResponseCode.OK).assertTrue()
             expect(data.cookies !== "").assertTrue()

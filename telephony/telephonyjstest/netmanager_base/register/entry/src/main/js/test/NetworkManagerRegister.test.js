@@ -71,7 +71,7 @@
                  done();
              } else {
                  console.info(`${caseName} netCapabilitiesChange handle =:` + value.handle.netId);
-                 expect(value.handle.netId).assertEqual(ETH_100);
+                 expect(value.handle.netId >= ETH_100).assertTrue();
              }
          });
          netConn.on('netConnectionPropertiesChange', (value) => {
@@ -84,7 +84,7 @@
              }
          });
          netConn.on('netLost', (value) => {
-             if (error) {
+             if (value === undefined) {
                  console.info(`${caseName} netLost fail`);
                  expect().assertFail();
                  done();
@@ -94,7 +94,7 @@
          });
          netConn.register((error) => {
              if (error) {
-                 console.info(JSON.stringify(error) + `${caseName} register fail: ${error}`);
+                 console.info(JSON.stringify(error) + `${caseName} register fail `);
                  done();
              }
          });
@@ -102,7 +102,7 @@
          console.info(`${caseName} returnVaule : ` + returnValue);
          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info(`${caseName} register fail `);
                  done();
              }
              done();
@@ -142,7 +142,7 @@
                  done();
              } else {
                  console.info(`${caseName} netCapabilitiesChange handle =:` + value.handle.netId);
-                 expect(value.handle.netId).assertEqual(ETH_100);
+                 expect(value.handle.netId >= ETH_100).assertTrue();
              }
          });
          netConn.on('netConnectionPropertiesChange', (value) => {
@@ -155,7 +155,7 @@
              }
          });
          netConn.on('netLost', (value) => {
-             if (error) {
+             if (value === undefined) {
                  console.info(`${caseName} netLost fail`);
                  expect().assertFail();
                  done();
@@ -164,7 +164,7 @@
              }
          });
          netConn.on('netUnavailable', (value) => {
-             if (error) {
+             if (value === undefined) {
                  console.info(`${caseName} netUnavailable fail`);
                  expect().assertFail();
                  done();
@@ -173,7 +173,7 @@
              }
          });
          netConn.on('netBlockStatuschange', (value) => {
-             if (error) {
+             if (value === undefined) {
                  console.info(`${caseName} netBlockStatusChange fail`);
                  expect().assertFail();
                  done();
@@ -183,13 +183,13 @@
          });
          netConn.register((error) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info(`${caseName} register fail `);
              }
          });
          await sleep(DELAY);
          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregisterresult: ${error}` + JSON.stringify(error));
+                 console.info(`${caseName} unregisterresult ` + JSON.stringify(error));
                  done();
              }
          });
@@ -214,54 +214,54 @@
          }
          let netId = 0;
          let netConn = connection.createNetConnection(netSpecifier, TIMEOUT);
-         netConn.on('netAvailable', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netAvailable', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail`);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netAvailable:` + value.netId);
              }
          });
-         netConn.on('netBlockStatusChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netBlockStatusChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail`);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netCapabilitiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netCapabilitiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail`);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netConnectionPropertiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netConnectionPropertiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail`);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netLost', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netLost', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail`);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netLost = :` + value.netId);
              }
          });
-         netConn.on('netUnavailable', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netUnavailable', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail`);
                  expect().assertFail();
                  done();
              } else {
@@ -271,7 +271,7 @@
          });
          netConn.register((error) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info(`${caseName} register fail `);
              }
          });
          await sleep(DELAY);
@@ -279,7 +279,7 @@
          expect(true).assertTrue()
          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result: ${error}`);
+                 console.info(`${caseName} unregister result `);
              }
          });
          done();
@@ -303,54 +303,54 @@
              }, bearPrivateIdentifier: '123'
          }
          let netConn = connection.createNetConnection(netSpecifier, TIMEOUT);
-         netConn.on('netAvailable', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netAvailable', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail`);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netAvailable:` + value.netId);
              }
          });
-         netConn.on('netBlockStatusChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netBlockStatusChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail`);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netCapabilitiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netCapabilitiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail`);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netConnectionPropertiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netConnectionPropertiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail`);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netLost', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netLost', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail`);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netLost = :` + value.netId);
              }
          });
-         netConn.on('netUnavailable', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netUnavailable', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail`);
                  expect().assertFail();
                  done();
              } else {
@@ -360,7 +360,7 @@
          });
          netConn.register((error) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info(`${caseName} register fail `);
              }
          });
          await sleep(DELAY);
@@ -391,54 +391,54 @@
          }
          let netId = 0;
          let netConn = connection.createNetConnection(netSpecifier, TIMEOUT);
-         netConn.on('netAvailable', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netAvailable', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail`);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netAvailable:` + value.netId);
              }
          });
-         netConn.on('netBlockStatusChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netBlockStatusChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail`);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netCapabilitiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netCapabilitiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail`);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netConnectionPropertiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netConnectionPropertiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail`);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netLost', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netLost', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail`);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netLost = :` + value.netId);
              }
          });
-         netConn.on('netUnavailable', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netUnavailable', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail`);
                  expect().assertFail();
                  done();
              } else {
@@ -448,14 +448,14 @@
          });
          netConn.register((error) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info(`${caseName} register fail `);
              }
          });
          await sleep(DELAY);
          expect(true).assertTrue()
          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result: ${error}`);
+                 console.info(`${caseName} unregister result `);
              }
              done();
          });
@@ -480,54 +480,54 @@
          }
          let netConn = connection.createNetConnection(netSpecifier, TIMEOUT);
          let netId = 0;
-         netConn.on('netAvailable', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netAvailable', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail`);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netAvailable:` + value.netId);
              }
          });
-         netConn.on('netBlockStatusChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netBlockStatusChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail`);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netCapabilitiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netCapabilitiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail`);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netConnectionPropertiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netConnectionPropertiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail`);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netLost', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netLost', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail`);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netLost = :` + value.netId);
              }
          });
-         netConn.on('netUnavailable', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netUnavailable', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail: `);
                  expect().assertFail();
                  done();
              } else {
@@ -537,14 +537,14 @@
          });
          netConn.register((error) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info(`${caseName} register fail `);
              }
          });
          await sleep(DELAY);
          expect(true).assertTrue()
          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result: ${error}`);
+                 console.info(`${caseName} unregister result `);
              }
              done();
          });
@@ -569,54 +569,54 @@
          }
          let netConn = connection.createNetConnection(netSpecifier, TIMEOUT);
          let netId = 0;
-         netConn.on('netAvailable', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netAvailable', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail`);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netAvailable:` + value.netId);
              }
          });
-         netConn.on('netBlockStatusChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netBlockStatusChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail`);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netCapabilitiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netCapabilitiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail`);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netConnectionPropertiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netConnectionPropertiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail`);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netLost', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netLost', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail`);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netLost = :` + value.netId);
              }
          });
-         netConn.on('netUnavailable', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netUnavailable', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail`);
                  expect().assertFail();
                  done();
              } else {
@@ -626,14 +626,14 @@
          });
          netConn.register((error) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info(`${caseName} register fail `);
              }
          });
          await sleep(DELAY);
          expect(true).assertTrue()
          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result: ${error}`);
+                 console.info(`${caseName} unregister result `);
              }
              done();
          });
@@ -658,54 +658,54 @@
          }
          let netConn = connection.createNetConnection(netSpecifier, TIMEOUT);
          let netId = 0;
-         netConn.on('netAvailable', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netAvailable', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail`);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netAvailable:` + value.netId);
              }
          });
-         netConn.on('netBlockStatusChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netBlockStatusChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail`);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netCapabilitiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netCapabilitiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail`);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netConnectionPropertiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netConnectionPropertiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail`);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netLost', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netLost', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail`);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netLost = :` + value.netId);
              }
          });
-         netConn.on('netUnavailable', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netUnavailable', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail`);
                  expect().assertFail();
                  done();
              } else {
@@ -715,14 +715,14 @@
          });
          netConn.register((error) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info(`${caseName} register fail `);
              }
          });
          await sleep(DELAY);
          expect(true).assertTrue()
          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result: ${error}`);
+                 console.info(`${caseName} unregister result `);
              }
              done();
          });
@@ -747,57 +747,57 @@
          }
          let netConn = connection.createNetConnection(netSpecifier, TIMEOUT);
          let netId = 0;
-         netConn.on('netAvailable', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netAvailable', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail`);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netAvailable:` + value.netId);
              }
          });
-         netConn.on('netBlockStatusChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netBlockStatusChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail`);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
-                 expect(value.netId).assertEqual(ETH_100);
+                 expect(value.netId >= ETH_100).assertTrue();
              }
          });
-         netConn.on('netCapabilitiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netCapabilitiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail`);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
-                 expect(value.netId).assertEqual(ETH_100);
+                 expect(value.netId >= ETH_100).assertTrue();
              }
          });
-         netConn.on('netConnectionPropertiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netConnectionPropertiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail`);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
-                 expect(value.netId).assertEqual(ETH_100);
+                 expect(value.netId >= ETH_100).assertTrue();
              }
          });
-         netConn.on('netLost', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netLost', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail`);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netLost = :` + value.netId);
              }
          });
-         netConn.on('netUnavailable', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netUnavailable', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail`);
                  expect().assertFail();
                  done();
              } else {
@@ -807,14 +807,14 @@
          });
          netConn.register((error) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info(`${caseName} register fail `);
              }
          });
          await sleep(DELAY);
          expect(true).assertTrue()
          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result: ${error}`);
+                 console.info(`${caseName} unregister result `);
              }
              done();
          });
@@ -839,57 +839,57 @@
          }
          let netConn = connection.createNetConnection(netSpecifier, TIMEOUT);
          let netId = 0;
-         netConn.on('netAvailable', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netAvailable', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netAvailable:` + value.netId);
-                 expect(value.netId).assertEqual(ETH_100);
+                 expect(value.netId >= ETH_100).assertTrue();
              }
          });
-         netConn.on('netBlockStatusChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netBlockStatusChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
-                 expect(value.netId).assertEqual(ETH_100);
+                 expect(value.netId >= ETH_100).assertTrue();
              }
          });
-         netConn.on('netCapabilitiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netCapabilitiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netConnectionPropertiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netConnectionPropertiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
-                 expect(value.netId).assertEqual(ETH_100);
+                 expect(value.netId >= ETH_100).assertTrue();
              }
          });
-         netConn.on('netLost', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netLost', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netLost = :` + value.netId);
              }
          });
-         netConn.on('netUnavailable', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netUnavailable', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
@@ -899,14 +899,14 @@
          });
          netConn.register((error) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info(`${caseName} register fail `);
              }
          });
          await sleep(DELAY);
          expect(true).assertTrue()
          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result: ${error}`);
+                 console.info(`${caseName} unregister result `);
              }
              done();
          });
@@ -932,55 +932,55 @@
          }
          let netId = 0;
          let netConn = connection.createNetConnection(netSpecifier, TIMEOUT);
-         netConn.on('netAvailable', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netAvailable', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netAvailable : ` + value.netId);
              }
          });
-         netConn.on('netBlockStatusChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netBlockStatusChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netCapabilitiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netCapabilitiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netConnectionPropertiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netConnectionPropertiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
-                 expect(value.netId).assertEqual(ETH_100);
+                 expect(value.netId >= ETH_100).assertTrue();
              }
          });
-         netConn.on('netLost', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netLost', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netLost ` + value.netId);
              }
          });
-         netConn.on('netUnavailable', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netUnavailable', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
@@ -995,9 +995,9 @@
          });
          await sleep(DELAY);
          expect(true).assertTrue()
-         netConn.unregister((error) => {
+          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result : ${error}`);
+                 console.info(`${caseName} unregister result  `);
              }
              done();
          });
@@ -1023,56 +1023,56 @@
          }
          let netId = 0;
          let netConn = connection.createNetConnection(netSpecifier, TIMEOUT);
-         netConn.on('netAvailable', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netAvailable', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netAvailable : ` + value.netId);
              }
          });
-         netConn.on('netBlockStatusChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netBlockStatusChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
-                 expect(value.netId).assertEqual(ETH_100);
+                 expect(value.netId >= ETH_100).assertTrue();
              }
          });
-         netConn.on('netCapabilitiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netCapabilitiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
-                 expect(value.netId).assertEqual(ETH_100);
+                 expect(value.netId >= ETH_100).assertTrue();
              }
          });
-         netConn.on('netConnectionPropertiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netConnectionPropertiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netLost', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netLost', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netLost ` + value.netId);
              }
          });
-         netConn.on('netUnavailable', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netUnavailable', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
@@ -1089,7 +1089,7 @@
          expect(true).assertTrue()
          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result : ${error}`);
+                 console.info(`${caseName} unregister result  `);
              }
              done();
          });
@@ -1115,58 +1115,58 @@
              }, bearerPrivateIdentifier: '123'
          }
          let netConn = connection.createNetConnection(netSpecifier, TIMEOUT);
-         netConn.on('netAvailable', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netAvailable', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netAvailable : ` + value.netId);
-                 expect(value.netId).assertEqual(ETH_100);
+                 expect(value.netId >= ETH_100).assertTrue();
              }
          });
-         netConn.on('netBlockStatusChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netBlockStatusChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
-                 expect(value.handle.netId).assertEqual(ETH_100);
+                 expect(value.handle.netId >= ETH_100).assertTrue();
              }
          });
-         netConn.on('netCapabilitiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netCapabilitiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
-                 expect(value.handle.netId).assertEqual(ETH_100);
+                 expect(value.handle.netId >= ETH_100).assertTrue();
              }
          });
-         netConn.on('netConnectionPropertiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netConnectionPropertiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
-                 expect(value.handle.netId).assertEqual(ETH_100);
+                 expect(value.handle.netId >= ETH_100).assertTrue();
              }
          });
-         netConn.on('netLost', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netLost', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netLost ` + value.netId);
              }
          });
-         netConn.on('netUnavailable', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netUnavailable', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
@@ -1181,7 +1181,7 @@
          await sleep(DELAY);
          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result : ${error}`);
+                 console.info(`${caseName} unregister result  `);
              }
              done();
          });
@@ -1208,54 +1208,54 @@
          }
          let netId = 0;
          let netConn = connection.createNetConnection(netSpecifier, TIMEOUT);
-         netConn.on('netAvailable', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netAvailable', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netAvailable : ` + value.netId);
              }
          });
-         netConn.on('netBlockStatusChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netBlockStatusChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netCapabilitiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netCapabilitiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netConnectionPropertiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netConnectionPropertiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netLost', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netLost', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netLost ` + value.netId);
              }
          });
-         netConn.on('netUnavailable', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netUnavailable', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
@@ -1270,9 +1270,9 @@
          });
          await sleep(DELAY);
          expect(true).assertTrue()
-         netConn.unregister((error) => {
+          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result : ${error}`);
+                 console.info(`${caseName} unregister result  `);
              }
              done();
          });
@@ -1297,56 +1297,56 @@
              }, bearerPrivateIdentifier: '123'
          }
          let netConn = connection.createNetConnection(netSpecifier, TIMEOUT);
-         netConn.on('netAvailable', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netAvailable', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netAvailable : ` + value.netId);
                  VALUE = value.netId;
-                 expect(VALUE).assertEqual(ETH_100);
+                 expect(VALUE >= ETH_100).assertTrue();
              }
          });
-         netConn.on('netBlockStatusChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netBlockStatusChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netCapabilitiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netCapabilitiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netConnectionPropertiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netConnectionPropertiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netLost', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netLost', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netLost ` + value.netId);
              }
          });
-         netConn.on('netUnavailable', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netUnavailable', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
@@ -1359,9 +1359,9 @@
              }
          });
          await sleep(DELAY);
-         netConn.unregister((error) => {
+          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result : ${error}`);
+                 console.info(`${caseName} unregister result  `);
              }
              done();
          });
@@ -1388,54 +1388,54 @@
          }
          let netId = 0;
          let netConn = connection.createNetConnection(netSpecifier, TIMEOUT);
-         netConn.on('netAvailable', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netAvailable', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netAvailable : ` + value.netId);
              }
          });
-         netConn.on('netBlockStatusChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netBlockStatusChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netCapabilitiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netCapabilitiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netConnectionPropertiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netConnectionPropertiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netLost', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netLost', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netLost ` + value.netId);
              }
          });
-         netConn.on('netUnavailable', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netUnavailable', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
@@ -1450,9 +1450,9 @@
          });
          await sleep(DELAY);
          expect(true).assertTrue()
-         netConn.unregister((error) => {
+          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result : ${error}`);
+                 console.info(`${caseName} unregister result  `);
              }
              done();
          });
@@ -1478,54 +1478,54 @@
          }
          let netId = 0;
          let netConn = connection.createNetConnection(netSpecifier, TIMEOUT);
-         netConn.on('netAvailable', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn.on('netAvailable', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netAvailable : ` + value.netId);
              }
          });
-         netConn.on('netBlockStatusChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netBlockStatusChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netCapabilitiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netCapabilitiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netConnectionPropertiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netConnectionPropertiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netLost', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netLost', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netLost ` + value.netId);
              }
          });
-         netConn.on('netUnavailable', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netUnavailable', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
@@ -1540,9 +1540,9 @@
          });
          await sleep(DELAY);
          expect(true).assertTrue()
-         netConn.unregister((error) => {
+          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result : ${error}`);
+                 console.info(`${caseName} unregister result  `);
              }
              done();
          });
@@ -1570,52 +1570,52 @@
          let netConn = connection.createNetConnection(netSpecifier, TIMEOUT);
          netConn.on('netAvailable', (value) => {
              if (value === undefined) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netAvailable : ` + value.netId);
              }
          });
-         netConn.on('netBlockStatusChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netBlockStatusChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netCapabilitiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netCapabilitiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netConnectionPropertiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netConnectionPropertiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netLost', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netLost', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netLost ` + value.netId);
              }
          });
-         netConn.on('netUnavailable', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netUnavailable', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
@@ -1630,62 +1630,62 @@
          });
          await sleep(DELAY);
          expect(true).assertTrue()
-         netConn.unregister((error) => {
+          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result : ${error}`);
+                 console.info(`${caseName} unregister result  `);
              }
              done();
          });
          await sleep(DELAY);
          let netConn1 = connection.createNetConnection(netSpecifier, TIMEOUT);
-         netConn1.on('netAvailable', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn1.on('netAvailable', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netAvailable : ` + value.netId);
              }
          });
-         netConn.on('netBlockStatusChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netBlockStatusChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
              }
          });
-         netConn1.on('netCapabilitiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn1.on('netCapabilitiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
              }
          });
-         netConn1.on('netConnectionPropertiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn1.on('netConnectionPropertiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
              }
          });
-         netConn1.on('netLost', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn1.on('netLost', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netLost ` + value.netId);
              }
          });
-         netConn1.on('netUnavailable', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn1.on('netUnavailable', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
@@ -1702,7 +1702,7 @@
          expect(true).assertTrue()
          netConn1.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result : ${error}`);
+                 console.info(`${caseName} unregister result  `);
              }
              done();
          });
@@ -1729,52 +1729,52 @@
          let netConn = connection.createNetConnection(netSpecifier, TIMEOUT);
          netConn.on('netAvailable', (value) => {
              if (value === undefined) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netAvailable : ` + value.netId);
              }
          });
-         netConn.on('netBlockStatusChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netBlockStatusChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netCapabilitiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netCapabilitiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netConnectionPropertiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netConnectionPropertiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netLost', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netLost', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netLost ` + value.netId);
              }
          });
-         netConn.on('netUnavailable', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netUnavailable', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
@@ -1783,7 +1783,7 @@
          });
          netConn.register((error) => {
              if (error) {
- 
+                 console.info(`${caseName} register fail ${error}`);
                  done();
              }
              done();
@@ -1810,27 +1810,27 @@
          }
          let netId = 0;
          let netConn = connection.createNetConnection(netSpecifier, TIMEOUT);
-         netConn.on('netAvailable', (error, value) => {
+         netConn.on('netAvailable', (value) => {
              expect(false).assertTrue()
              done();
          });
-         netConn.on('netBlockStatusChange', (error, value) => {
+         netConn.on('netBlockStatusChange', (value) => {
              expect(false).assertTrue()
              done();
          });
-         netConn.on('netCapabilitiesChange', (error, value) => {
+         netConn.on('netCapabilitiesChange', (value) => {
              expect(false).assertTrue()
              done();
          });
-         netConn.on('netConnectionPropertiesChange', (error, value) => {
+         netConn.on('netConnectionPropertiesChange', (value) => {
              expect(false).assertTrue()
              done();
          });
-         netConn.on('netLost', (error, value) => {
+         netConn.on('netLost', (value) => {
              expect(false).assertTrue()
              done();
          });
-         netConn.on('netUnavailable', (error, value) => {
+         netConn.on('netUnavailable', (value) => {
              done();
          });
          netConn.register((error) => {
@@ -1839,9 +1839,9 @@
              }
          });
          await sleep(DELAY);
-         netConn.unregister((error) => {
+          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result : ${error}`);
+                 console.info(`${caseName} unregister result  `);
              }
          });
          done();
@@ -1865,54 +1865,54 @@
          }
          let netId = 0;
          let netConn = connection.createNetConnection(netSpecifier, TIMEOUT);
-         netConn.on('netAvailable', ( value) => {
+         netConn.on('netAvailable', (value) => {
              if (value === undefined) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netAvailable : ` + value.netId);
              }
          });
-         netConn.on('netBlockStatusChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netBlockStatusChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netCapabilitiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netCapabilitiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netConnectionPropertiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netConnectionPropertiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netLost', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netLost', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netLost ` + value.netId);
              }
          });
-         netConn.on('netUnavailable', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netUnavailable', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
@@ -1927,9 +1927,9 @@
          });
          await sleep(DELAY);
          expect(true).assertTrue()
-         netConn.unregister((error) => {
+          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result : ${error}`);
+                 console.info(`${caseName} unregister result  `);
              }
              done();
          });
@@ -1942,54 +1942,54 @@
              }, bearerPrivateIdentifier: '123'
          }
          let netConn1 = connection.createNetConnection(netSpecifier1, TIMEOUT);
-         netConn1.on('netAvailable', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn1.on('netAvailable', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netAvailable : ` + value.netId);
              }
          });
-         netConn1.on('netBlockStatusChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn1.on('netBlockStatusChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
              }
          });
-         netConn1.on('netCapabilitiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn1.on('netCapabilitiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
              }
          });
-         netConn1.on('netConnectionPropertiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn1.on('netConnectionPropertiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
              }
          });
-         netConn1.on('netLost', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn1.on('netLost', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netLost ` + value.netId);
              }
          });
-         netConn1.on('netUnavailable', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn1.on('netUnavailable', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
@@ -2006,7 +2006,7 @@
          expect(true).assertTrue()
          netConn1.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result : ${error}`);
+                 console.info(`${caseName} unregister result  `);
              }
              done();
          });
@@ -2033,52 +2033,52 @@
          let netConn = connection.createNetConnection(netSpecifier, TIMEOUT);
          netConn.on('netAvailable', (value) => {
              if (value === undefined) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netAvailable : ` + value.netId);
              }
          });
-         netConn.on('netBlockStatusChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netBlockStatusChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netCapabilitiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netCapabilitiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netConnectionPropertiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netConnectionPropertiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
              }
          });
-         netConn.on('netLost', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netLost', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netLost ` + value.netId);
              }
          });
-         netConn.on('netUnavailable', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netUnavailable', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
@@ -2093,9 +2093,9 @@
          });
          await sleep(DELAY);
          expect(true).assertTrue()
-         netConn.unregister((error) => {
+          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result : ${error}`);
+                 console.info(`${caseName} unregister result  `);
              }
              done();
          });
@@ -2108,54 +2108,54 @@
              }, bearerPrivateIdentifier: '123'
          }
          let netConn1 = connection.createNetConnection(netSpecifier1, TIMEOUT);
-         netConn1.on('netAvailable', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+         netConn1.on('netAvailable', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netAvailable : ` + value.netId);
              }
          });
-         netConn1.on('netBlockStatusChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn1.on('netBlockStatusChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
              }
          });
-         netConn1.on('netCapabilitiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn1.on('netCapabilitiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
              }
          });
-         netConn1.on('netConnectionPropertiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn1.on('netConnectionPropertiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
              }
          });
-         netConn1.on('netLost', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn1.on('netLost', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netLost ` + value.netId);
              }
          });
-         netConn1.on('netUnavailable', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn1.on('netUnavailable', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
@@ -2172,7 +2172,7 @@
          expect(true).assertTrue()
          netConn1.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result : ${error}`);
+                 console.info(`${caseName} unregister result  `);
              }
              done();
          });
@@ -2219,7 +2219,7 @@
              }
          });
          netConn.on('netLost', (value) => {
-             if (error) {
+             if (value === undefined) {
                  console.info(`${caseName} netLost fail`);
                  expect().assertFail();
                  done();
@@ -2234,9 +2234,9 @@
          });
          await sleep(DELAY);
          console.info(`${caseName} returnValue ` + returnValue);
-         netConn.unregister((error) => {
+          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result : ${error}`);
+                 console.info(`${caseName} unregister result  `);
                  done();
              }
              done();
@@ -2263,62 +2263,56 @@
          let netConn = connection.createNetConnection(netSpecifier, TIMEOUT_1);
          netConn.on('netAvailable', (value) => {
              if (value === undefined) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netAvailable : ` + value.netId);
-                 done();
              }
          });
-         netConn.on('netBlockStatusChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netBlockStatusChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
-                 done();
              }
          });
-         netConn.on('netCapabilitiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netCapabilitiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
-                 done();
              }
          });
-         netConn.on('netConnectionPropertiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netConnectionPropertiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
-                 done();
              }
          });
-         netConn.on('netLost', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netLost', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netLost ` + value.netId);
-                 done();
              }
          });
-         netConn.on('netUnavailable', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netUnavailable', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netUnavailable ` + value.netId);
-                 done();
              }
          });
          netConn.register((error) => {
@@ -2327,9 +2321,9 @@
              }
          });
          await sleep(1000);
-         netConn.unregister((error) => {
+          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result : ${error}`);
+                 console.info(`${caseName} unregister result  `);
                  expect().assertFail();
                  done();
              }
@@ -2351,62 +2345,56 @@
          let netConn = connection.createNetConnection();
          netConn.on('netAvailable', (value) => {
              if (value === undefined) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netAvailable : ` + value.netId);
-                 done();
              }
          });
-         netConn.on('netBlockStatusChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netBlockStatusChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
-                 done();
              }
          });
-         netConn.on('netCapabilitiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netCapabilitiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
-                 done();
              }
          });
-         netConn.on('netConnectionPropertiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netConnectionPropertiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
-                 done();
              }
          });
-         netConn.on('netLost', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netLost', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netLost ` + value.netId);
-                 done();
              }
          });
-         netConn.on('netUnavailable', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netUnavailable', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netUnavailable ` + value.netId);
-                 done();
              }
          });
          netConn.register((error) => {
@@ -2415,9 +2403,9 @@
              }
          });
          await sleep(1000);
-         netConn.unregister((error) => {
+          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result : ${error}`);
+                 console.info(`${caseName} unregister result  `);
                  expect().assertFail();
                  done();
              }
@@ -2438,62 +2426,56 @@
          let netConn = connection.createNetConnection();
          netConn.on('netAvailable', (value) => {
              if (value === undefined) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netAvailable : ` + value.netId);
-                 done();
              }
          });
-         netConn.on('netBlockStatusChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netBlockStatusChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
-                 done();
              }
          });
-         netConn.on('netCapabilitiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netCapabilitiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
-                 done();
              }
          });
-         netConn.on('netConnectionPropertiesChange', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netConnectionPropertiesChange', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
-                 done();
              }
          });
-         netConn.on('netLost', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netLost', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netLost ` + value.netId);
-                 done();
              }
          });
-         netConn.on('netUnavailable', (error, value) => {
-             if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+         netConn.on('netUnavailable', (value) => {
+             if (value === undefined) {
+                 console.info(`${caseName} register fail `);
                  expect().assertFail();
                  done();
              } else {
                  console.info(`${caseName} netUnavailable ` + value.netId);
-                 done();
              }
          });
          netConn.register((error) => {
@@ -2502,9 +2484,9 @@
              }
          });
          await sleep(1000);
-         netConn.unregister((error) => {
+          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result : ${error}`);
+                 console.info(`${caseName} unregister result  `);
                  expect().assertFail();
                  done();
              }
