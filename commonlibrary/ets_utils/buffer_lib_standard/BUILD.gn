@@ -25,13 +25,16 @@ ohos_js_hap_suite("buffer_js_test") {
   #    "//third_party/libpng:libpng",
   #  ]
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsBufferJsTest"
+  hap_name = "ActsBufferJSApiTest"
 
-  #  part_name = "prebuilt_hap"
-  #  subsystem_name = "xts"
+  part_name = "ets_utils"
+  subsystem_name = "commonlibrary"
 }
+
 ohos_js_assets("buffer_js_assets") {
-  source_dir = "./src/main/js/default"
+  js2abc = true
+  hap_profile = "./src/main/config.json"
+  source_dir = "./src/main/js"
 }
 ohos_resources("buffer_resources") {
   sources = [ "./src/main/resources" ]

@@ -1,15 +1,16 @@
 {
     "description": "Configuration for startup buffer js api Tests",
     "driver": {
-        "type": "JSUnitTest",
+        "type": "OHJSUnitTest",
         "test-timeout": "800000",
-        "package": "com.example.buffer",
-        "shell-timeout": "90000"
+        "shell-timeout": "800000",
+        "bundle-name": "com.example.buffer",
+        "package-name": "com.example.buffer"
     },
     "kits": [
         {
             "test-file-name": [
-                "ActsBufferJsTest.hap"
+                "ActsBufferJSApiTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

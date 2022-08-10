@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2022 Huawei Device Co., Ltd.
- * Licensed under the Apache License, Version 2.0 (the 'License')
+ * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
@@ -12,23 +12,57 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 import buffer from "@ohos.buffer";
-
-describe("BufferTest", function () {
+export default function BufferTest() {
+describe('BufferTest', function () {
 
   /**
    * @tc.name: testAlloc0010
    * @tc.desc: Allocates a new Buffer for a fixed size bytes. If fill is undefined, the Buffer will be zero-filled.
+   * For example: buffer.alloc(10);
    * @tc.author: liuganlin
    */
-   it("testAlloc0010", 0, function () {
+  it("testAlloc0010", 0, function () {
     let buf = buffer.alloc(10);
     expect(buf.length).assertEqual(10);
-    let offset = buf.writeInt32BE(0x12345678, 0);
-    expect(offset).assertEqual(4);
-    let str = buf.readInt32BE();
-    expect(str).assertEqual(305419896);
+  });
+
+  /**
+   * @tc.name: testAlloc0013
+   * @tc.desc: Allocates a new Buffer for a fixed size bytes. If fill is undefined, the Buffer will be zero-filled.
+   * For example: buffer.alloc(0);
+   * @tc.author: liuganlin
+   */
+  it("testAlloc0013", 0, function () {
+    let buf = buffer.alloc(0);
+    expect(buf.length).assertEqual(0);
+  });
+
+  /**
+   * @tc.name: testAlloc0016
+   * @tc.desc: Allocates a new Buffer for a fixed size bytes. If fill is undefined, the Buffer will be zero-filled.
+   * For example: buffer.alloc(-5);
+   * @tc.author: liuganlin
+   */
+  it("testAlloc0016", 0, function () {
+    try {
+      let buf = buffer.alloc(-5);
+    } catch (err) {
+      expect(err.name).assertEqual('RangeError');
+      expect(err.message).assertEqual('The value of "size" is out of range');
+    }
+  });
+
+  /**
+   * @tc.name: testAlloc0019
+   * @tc.desc: Allocates a new Buffer for a fixed size bytes. If fill is undefined, the Buffer will be zero-filled.
+   * For example: buffer.alloc(5.5);
+   * @tc.author: liuganlin
+   */
+  it("testAlloc0019", 0, function () {
+    let buf = buffer.alloc(5.5);
+    expect(buf.length).assertEqual(5);
   });
 
   /**
@@ -40,6 +74,43 @@ describe("BufferTest", function () {
   it("testAllocUninitializedFromPool0020", 0, function () {
     let buf = buffer.allocUninitializedFromPool(10);
     expect(buf.length).assertEqual(10);
+  });
+
+  /**
+   * @tc.name: testAllocUninitializedFromPool0023
+   * @tc.desc: Allocates a new un-pooled Buffer for a fixed size bytes. The Buffer will not be initially filled.
+   * For example: buffer.allocUninitializedFromPool(0);
+   * @tc.author: liuganlin
+   */
+  it("testAllocUninitializedFromPool0023", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(0);
+    expect(buf.length).assertEqual(0);
+  });
+
+  /**
+   * @tc.name: testAllocUninitializedFromPool0026
+   * @tc.desc: Allocates a new un-pooled Buffer for a fixed size bytes. The Buffer will not be initially filled.
+   * For example: buffer.allocUninitializedFromPool(-5);
+   * @tc.author: liuganlin
+   */
+  it("testAllocUninitializedFromPool0026", 0, function () {
+    try {
+      let buf = buffer.allocUninitializedFromPool(-5);
+    } catch (err) {
+      expect(err.name).assertEqual('RangeError');
+      expect(err.message).assertEqual('The value of "size" is out of range');
+    }
+  });
+
+  /**
+   * @tc.name: testAllocUninitializedFromPool0029
+   * @tc.desc: Allocates a new un-pooled Buffer for a fixed size bytes. The Buffer will not be initially filled.
+   * For example: buffer.allocUninitializedFromPool(5.5);
+   * @tc.author: liuganlin
+   */
+  it("testAllocUninitializedFromPool0029", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(5.5);
+    expect(buf.length).assertEqual(5);
   });
 
   /**
@@ -56,6 +127,48 @@ describe("BufferTest", function () {
   });
 
   /**
+   * @tc.name: testByteLength0031
+   * @tc.desc: Returns the byte length of a string when encoded using `encoding`.
+   *           This is not the same as [`String.prototype.length`], which does not account
+   *           for the encoding that is used to convert the string into bytes.
+   * For example: buffer.byteLength("测试");
+   * @tc.author: liuganlin
+   */
+  it("testByteLength0031", 0, function () {
+    let byteLen = buffer.byteLength("测试");
+    expect(byteLen).assertEqual(6);
+  });
+
+  /**
+   * @tc.name: testByteLength0032
+   * @tc.desc: Returns the byte length of a string when encoded using `encoding`.
+   *           This is not the same as [`String.prototype.length`], which does not account
+   *           for the encoding that is used to convert the string into bytes.
+   * For example: buffer.byteLength("测试");
+   * @tc.author: liuganlin
+   */
+  it("testByteLength0032", 0, function () {
+    let byteLen = buffer.byteLength("$&@*%");
+    expect(byteLen).assertEqual(5);
+  });
+  
+  /**
+   * @tc.name: testByteLength0035
+   * @tc.desc: Returns the byte length of a string when encoded using `encoding`.
+   *           This is not the same as [`String.prototype.length`], which does not account
+   *           for the encoding that is used to convert the string into bytes.
+   * For example: buffer.byteLength(arrayBuffer);
+   * @tc.author: liuganlin
+   */
+  it("testByteLength0035", 0, function () {
+    let uintarr = new Uint8Array(2);
+    uintarr[0] = 21;
+    uintarr[1] = 31;
+    let byteLen = buffer.byteLength(uintarr.buffer)
+    expect(byteLen).assertEqual(2);
+  });
+
+  /**
    * @tc.name: testIsBuffer0040
    * @tc.desc: Returns true if obj is a Buffer, false otherwise
    * For example: buffer.isBuffer(buf);
@@ -68,6 +181,18 @@ describe("BufferTest", function () {
   });
 
   /**
+   * @tc.name: testIsBuffer0045
+   * @tc.desc: Returns true if obj is a Buffer, false otherwise
+   * For example: buffer.isBuffer(buf);
+   * @tc.author: liuganlin
+   */
+  it("testIsBuffer0045", 0, function () {
+    let obj = new Object(1);
+    let flag = buffer.isBuffer(obj);
+    expect(flag).assertEqual(false);
+  });
+
+  /**
    * @tc.name: testIsEncoding0050
    * @tc.desc: Returns true if encoding is the name of a supported character encoding, or false otherwise.
    * For example: buffer.isEncoding("utf8");
@@ -76,6 +201,32 @@ describe("BufferTest", function () {
   it("testIsEncoding0050", 0, function () {
     let flag = buffer.isEncoding("utf8");
     expect(flag).assertEqual(true);
+  });
+
+  /**
+   * @tc.name: testIsEncoding0053
+   * @tc.desc: Returns true if encoding is the name of a supported character encoding, or false otherwise.
+   * For example: buffer.isEncoding(encode);
+   * @tc.author: liuganlin
+   */
+  it("testIsEncoding0053", 0, function () {
+    let encodeArr = ['utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary',
+                     'utf16le', 'utf-16le', 'base64', 'base64url', 'hex'];
+    for (const encode of encodeArr) {
+      let flag = buffer.isEncoding(encode);
+      expect(flag).assertEqual(true);
+    }
+  });
+
+  /**
+   * @tc.name: testIsEncoding0056
+   * @tc.desc: Returns true if encoding is the name of a supported character encoding, or false otherwise.
+   * For example: buffer.isEncoding("gbk");
+   * @tc.author: liuganlin
+   */
+  it("testIsEncoding0056", 0, function () {
+    let flag = buffer.isEncoding('gbk');
+    expect(flag).assertEqual(false);
   });
 
   /**
@@ -91,6 +242,66 @@ describe("BufferTest", function () {
     let buf2 = buffer.from("1235");
     let res = buffer.compare(buf1, buf2);
     expect(res).assertEqual(1);
+  });
+
+  /**
+   * @tc.name: testStaticCompare0061
+   * @tc.desc: Compares buf1 to buf2.
+   * For example: let buf1 = buffer.from("1236");
+   *              let buf2 = buffer.from("1235");
+   *              let res = buffer.compare(buf1, buf2);
+   * @tc.author: liuganlin
+   */
+  it("testStaticCompare0061", 0, function () {
+    let buf1 = buffer.from("1235");
+    let buf2 = buffer.from("1236");
+    let res = buffer.compare(buf1, buf2);
+    expect(res).assertEqual(-1);
+  });
+
+  /**
+   * @tc.name: testStaticCompare0062
+   * @tc.desc: Compares buf1 to buf2.
+   * For example: let buf1 = buffer.from("测试一");
+   *              let buf2 = buffer.from("测试二");
+   *              let res = buffer.compare(buf1, buf2);
+   * @tc.author: liuganlin
+   */
+  it("testStaticCompare0062", 0, function () {
+    let buf1 = buffer.from("测试一");
+    let buf2 = buffer.from("测试二");
+    let res = buffer.compare(buf1, buf2);
+    expect(res).assertEqual(-1);
+  });
+
+  /**
+   * @tc.name: testStaticCompare0063
+   * @tc.desc: Compares buf1 to buf2.
+   * For example: let buf1 = buffer.from("测试$&*");
+   *              let buf2 = buffer.from("测试$&*");
+   *              let res = buffer.compare(buf1, buf2);
+   * @tc.author: liuganlin
+   */
+   it("testStaticCompare0063", 0, function () {
+    let buf1 = buffer.from("测试$&*");
+    let buf2 = buffer.from("测试$&*");
+    let res = buffer.compare(buf1, buf2);
+    expect(res).assertEqual(0);
+  });
+
+  /**
+   * @tc.name: testStaticCompare0060
+   * @tc.desc: Compares buf1 to buf2.
+   * For example: let buf1 = buffer.from("1236");
+   *              let buf2 = buffer.from("1236");
+   *              let res = buffer.compare(buf1, buf2);
+   * @tc.author: liuganlin
+   */
+  it("testStaticCompare0065", 0, function () {
+    let buf1 = buffer.from("1236");
+    let buf2 = buffer.from("1236");
+    let res = buffer.compare(buf1, buf2);
+    expect(res).assertEqual(0);
   });
 
   /**
@@ -111,6 +322,44 @@ describe("BufferTest", function () {
   });
 
   /**
+   * @tc.name: testConcat0071
+   * @tc.desc: Returns a new `Buffer` which is the result of concatenating
+   *           all the `Buffer`instances in the `list` together.
+   * For example: let buf1 = buffer.from("测试");
+   *              let buf2 = buffer.from("$&*");
+   *              let buf = buffer.concat([buf1, buf2]);
+   * @tc.author: liuganlin
+   */
+  it("testConcat0071", 0, function () {
+    let buf1 = buffer.from("测试");
+    let buf2 = buffer.from("$&*");
+    let buf = buffer.concat([buf1, buf2]);
+    let str = buf.toString();
+    expect(str).assertEqual("测试$&*");
+  });
+
+  /**
+   * @tc.name: testConcat0075
+   * @tc.desc: Returns a new `Buffer` which is the result of concatenating
+   *           all the `Buffer`instances in the `list` together.
+   * For example: let buf1 = buffer.from("1236");
+   *              let buf2 = buffer.from("1235");
+   *              let buf = buffer.concat([buf1, buf2]);
+   * @tc.author: liuganlin
+   */
+  it("testConcat0075", 0, function () {
+    let uintarr = new Uint8Array(4);
+    uintarr[0] = 0x31;
+    uintarr[1] = 0x32;
+    uintarr[2] = 0x33;
+    uintarr[3] = 0x35;
+    let buf1 = buffer.from("1236");
+    let buf = buffer.concat([buf1, uintarr])
+    let str = buf.toString()
+    expect(str).assertEqual("12361235");
+  });
+
+  /**
    * @tc.name: testTranscode0080
    * @tc.desc: Re-encodes the given Buffer or Uint8Array instance from one character encoding to another.
    * For example: buffer.transcode(buf1, "ascii", "ucs2");
@@ -121,6 +370,19 @@ describe("BufferTest", function () {
     let buf = buffer.transcode(buf1, "ascii", "ucs2");
     let str = buf.toString("ucs2")
     expect(str).assertEqual("1236");
+  });
+
+  /**
+   * @tc.name: testTranscode0081
+   * @tc.desc: Re-encodes the given Buffer or Uint8Array instance from one character encoding to another.
+   * For example: buffer.transcode(buf1, "ascii", "ucs2");
+   * @tc.author: liuganlin
+   */
+  it("testTranscode0081", 0, function () {
+    let buf1 = buffer.from("测试");
+    let buf = buffer.transcode(buf1, "utf8", "ucs2");
+    let str = buf.toString("ucs2")
+    expect(str).assertEqual("测试");
   });
 
   /**
@@ -172,6 +434,18 @@ describe("BufferTest", function () {
   });
 
   /**
+   * @tc.name: testFill0092
+   * @tc.desc: Fills buf with the specified value. If the offset and end are not given, the entire buf will be filled.
+   * For example: buffer.alloc(3).fill("abc");
+   * @tc.author: liuganlin
+   */
+  it("testFill0092", 0, function () {
+    let buf = buffer.alloc(3).fill("$*$");
+    let str = buf.toString();
+    expect(str).assertEqual("$*$");
+  });
+
+  /**
    * @tc.name: testWrite0100
    * @tc.desc: Writes string to buf at offset according to the character encoding in encoding.
    * For example: buf.write("abcde", "latin1");
@@ -183,6 +457,34 @@ describe("BufferTest", function () {
     expect(offset).assertEqual(5);
     let str = buf.toString();
     expect(str).assertEqual("abcde");
+  });
+
+  /**
+   * @tc.name: testWrite0101
+   * @tc.desc: Writes string to buf at offset according to the character encoding in encoding.
+   * For example: buf.write("abcde", "latin1");
+   * @tc.author: liuganlin
+   */
+  it("testWrite0101", 0, function () {
+    let buf = buffer.alloc(6);
+    let offset = buf.write("测试", "utf8");
+    expect(offset).assertEqual(6);
+    let str = buf.toString();
+    expect(str).assertEqual("测试");
+  });
+
+  /**
+   * @tc.name: testWrite0102
+   * @tc.desc: Writes string to buf at offset according to the character encoding in encoding.
+   * For example: buf.write("abcde", "latin1");
+   * @tc.author: liuganlin
+   */
+  it("testWrite0102", 0, function () {
+    let buf = buffer.alloc(8);
+    let offset = buf.write("!@#$%^&*", "ascii");
+    expect(offset).assertEqual(8);
+    let str = buf.toString("ascii");
+    expect(str).assertEqual("!@#$%^&*");
   });
 
   /**
@@ -214,6 +516,32 @@ describe("BufferTest", function () {
   });
 
   /**
+   * @tc.name: testEquals0121
+   * @tc.desc: Returns true if both buf and otherBuffer have exactly the same bytes, false otherwise.
+   * For example: buf1.equals(buf2);
+   * @tc.author: liuganlin
+   */
+  it("testEquals0121", 0, function () {
+    let buf1 = buffer.from("1236测试");
+    let buf2 = buffer.from("1236测试");
+    let res = buf1.equals(buf2);
+    expect(res).assertEqual(true);
+  });
+
+  /**
+   * @tc.name: testEquals0122
+   * @tc.desc: Returns true if both buf and otherBuffer have exactly the same bytes, false otherwise.
+   * For example: buf1.equals(buf2);
+   * @tc.author: liuganlin
+   */
+  it("testEquals0122", 0, function () {
+    let buf1 = buffer.from("O@O");
+    let buf2 = buffer.from("O^O");
+    let res = buf1.equals(buf2);
+    expect(res).assertEqual(false);
+  });
+
+  /**
    * @tc.name: testSubarray0130
    * @tc.desc: Returns a new Buffer that references the same memory as the original,
    *           but offset and cropped by the start and end indices.
@@ -225,6 +553,33 @@ describe("BufferTest", function () {
     let buf = buf1.subarray(0, 3);
     let str = buf.toString();
     expect(str).assertEqual("123");
+  });
+
+  /**
+   * @tc.name: testSubarray0133
+   * @tc.desc: Returns a new Buffer that references the same memory as the original,
+   *           but offset and cropped by the start and end indices.
+   * For example: buf1.subarray(3, 4);
+   * @tc.author: liuganlin
+   */
+  it("testSubarray0133", 0, function () {
+    let buf1 = buffer.from("1236");
+    let buf = buf1.subarray(3, 4);
+    let str = buf.toString();
+    expect(str).assertEqual("6");
+  });
+
+  /**
+   * @tc.name: testSubarray0136
+   * @tc.desc: Returns a new Buffer that references the same memory as the original,
+   *           but offset and cropped by the start and end indices.
+   * For example: buf1.subarray(-3, 0);
+   * @tc.author: liuganlin
+   */
+  it("testSubarray0136", 0, function () {
+    let buf1 = buffer.from("1236");
+    let buf = buf1.subarray(-3, 0);
+    expect(buf.length).assertEqual(0);
   });
 
   /**
@@ -243,6 +598,42 @@ describe("BufferTest", function () {
     expect(num).assertEqual(4);
     let str = buf2.toString();
     expect(str).assertEqual("1236");
+  });
+
+  /**
+   * @tc.name: testCopy0143
+   * @tc.desc: Copies data from a region of buf to a region in target,
+   *           even if the target memory region overlaps with buf.
+   *           If sourceEnd is greater than the length of the target, the length of the target shall prevail,
+   *           and the extra part will not be overwritten.
+   * For example: buf1.copy(buf2);
+   * @tc.author: liuganlin
+   */
+  it("testCopy0143", 0, function () {
+    let buf1 = buffer.from("123656");
+    let buf2 = buffer.from("1235");
+    let num = buf1.copy(buf2);
+    expect(num).assertEqual(4);
+    let str = buf2.toString();
+    expect(str).assertEqual("1236");
+  });
+
+  /**
+   * @tc.name: testCopy0146
+   * @tc.desc: Copies data from a region of buf to a region in target,
+   *           even if the target memory region overlaps with buf.
+   *           If sourceEnd is greater than the length of the target, the length of the target shall prevail,
+   *           and the extra part will not be overwritten.
+   * For example: buf1.copy(buf2);
+   * @tc.author: liuganlin
+   */
+  it("testCopy0146", 0, function () {
+    let buf1 = buffer.from("ab$#");
+    let buf2 = buffer.from("123556");
+    let num = buf1.copy(buf2);
+    expect(num).assertEqual(4);
+    let str = buf2.toString();
+    expect(str).assertEqual("ab$#56");
   });
 
   /**
@@ -354,6 +745,18 @@ describe("BufferTest", function () {
   });
 
   /**
+   * @tc.name: testToString0159
+   * @tc.desc: Decodes buf to a string according to the specified character encoding in encoding.
+   * For example: buf1.toString();
+   * @tc.author: liuganlin
+   */
+  it("testToString0159", 0, function () {
+    let buf1 = buffer.from("!@#$%^&*");
+    let str = buf1.toString();
+    expect(str).assertEqual("!@#$%^&*");
+  });
+
+  /**
    * @tc.name: testToJSON0160
    * @tc.desc: Returns a JSON representation of buf.
    * For example: buf1.toJSON();
@@ -378,6 +781,42 @@ describe("BufferTest", function () {
   });
 
   /**
+    * @tc.name: testIndexOf0173
+    * @tc.desc: The index of the first occurrence of value in buf.
+    * For example: let index = buf1.indexOf(value);
+    * @tc.author: liuganlin
+    */
+  it("testIndexOf0173", 0, function () {
+    let buf1 = buffer.from("13236235");
+    let index = buf1.indexOf("23");
+    expect(index).assertEqual(2);
+  });
+
+  /**
+    * @tc.name: testIndexOf0174
+    * @tc.desc: The index of the first occurrence of value in buf.
+    * For example: let index = buf1.indexOf(value);
+    * @tc.author: liuganlin
+    */
+  it("testIndexOf0174", 0, function () {
+    let buf1 = buffer.from("测试特殊字符$#@!");
+    let index = buf1.indexOf("@");
+    expect(index).assertEqual(20);
+  });
+
+  /**
+   * @tc.name: testIndexOf0176
+   * @tc.desc: The index of the first occurrence of value in buf.
+   * For example: let buf1 = buffer.from("13236"); buf1.indexOf("a");
+   * @tc.author: liuganlin
+   */
+  it("testIndexOf0176", 0, function () {
+    let buf1 = buffer.from("13236");
+    let index = buf1.indexOf("a");
+    expect(index).assertEqual(-1);
+  });
+
+  /**
    * @tc.name: testLastIndexOf0180
    * @tc.desc: The index of the last occurrence of value in buf.
    * For example: let buf1 = buffer.from("13236"); buf1.lastIndexOf("3");
@@ -390,6 +829,30 @@ describe("BufferTest", function () {
   });
 
   /**
+   * @tc.name: testLastIndexOf0183
+   * @tc.desc: The index of the last occurrence of value in buf.
+   * For example: let buf1 = buffer.from("13236235"); buf1.lastIndexOf("23");
+   * @tc.author: liuganlin
+   */
+  it("testLastIndexOf0183", 0, function () {
+    let buf1 = buffer.from("13236235");
+    let index = buf1.lastIndexOf("23");
+    expect(index).assertEqual(5);
+  });
+
+  /**
+   * @tc.name: testLastIndexOf0186
+   * @tc.desc: The index of the last occurrence of value in buf.
+   * For example: let buf1 = buffer.from("13236"); buf1.lastIndexOf("a");
+   * @tc.author: liuganlin
+   */
+  it("testLastIndexOf0186", 0, function () {
+    let buf1 = buffer.from("13236");
+    let index = buf1.lastIndexOf("a");
+    expect(index).assertEqual(-1);
+  });
+
+  /**
    * @tc.name: testIncludes0190
    * @tc.desc: Returns true if value was found in buf, false otherwise.
    * For example: let buf1 = buffer.from("13236"); buf1.includes("3");
@@ -399,6 +862,44 @@ describe("BufferTest", function () {
     let buf1 = buffer.from("13236");
     let flag = buf1.includes("3");
     expect(flag).assertEqual(true);
+  });
+
+  /**
+   * @tc.name: testIncludes0193
+   * @tc.desc: Returns true if value was found in buf, false otherwise.
+   * For example: let buf1 = buffer.from("13236"); buf1.includes("32");
+   * @tc.author: liuganlin
+   */
+  it("testIncludes0193", 0, function () {
+    let buf1 = buffer.from("13236");
+    let flag = buf1.includes("32");
+    expect(flag).assertEqual(true);
+  });
+
+  /**
+   * @tc.name: testIncludes0194
+   * @tc.desc: Returns true if value was found in buf, false otherwise.
+   * For example: let buf1 = buffer.from("13236"); buf1.includes("32");
+   * @tc.author: liuganlin
+   */
+  it("testIncludes0194", 0, function () {
+    let buf1 = buffer.from("测试特殊字符$#@!");
+    let flag = buf1.includes("#@");
+    expect(flag).assertEqual(true);
+    flag = buf1.includes("测试");
+    expect(flag).assertEqual(true);
+  });
+
+  /**
+   * @tc.name: testIncludes0196
+   * @tc.desc: Returns true if value was found in buf, false otherwise.
+   * For example: let buf1 = buffer.from("13236"); buf1.includes("abc");
+   * @tc.author: liuganlin
+   */
+  it("testIncludes0196", 0, function () {
+    let buf1 = buffer.from("13236");
+    let flag = buf1.includes("abc");
+    expect(flag).assertEqual(false);
   });
 
   /**
@@ -457,6 +958,27 @@ describe("BufferTest", function () {
   });
 
   /**
+   * @tc.name: testKeys0235
+   * @tc.desc: Creates and returns an iterator of buf keys (indices).
+   * For example: buf1.keys();
+   * @tc.author: liuganlin
+   */
+  it("testKeys0235", 0, function () {
+    let uarr = new Uint8Array(4);
+    uarr[0] = 0x31;
+    uarr[1] = 0x32;
+    uarr[2] = 0x33;
+    uarr[3] = 0x34;
+    let buf1 = buffer.from(uarr);
+    let keys = buf1.keys();
+    let index = 0;
+    for (const key of keys) {
+      expect(key).assertEqual(index);
+      index++;
+    }
+  });
+
+  /**
    * @tc.name: testValues0240
    * @tc.desc: Creates and returns an iterator for buf values (bytes).
    * For example: buf1.values();
@@ -473,6 +995,27 @@ describe("BufferTest", function () {
   });
 
   /**
+   * @tc.name: testValues0245
+   * @tc.desc: Creates and returns an iterator for buf values (bytes).
+   * For example: buf1.values();
+   * @tc.author: liuganlin
+   */
+  it("testValues0245", 0, function () {
+    let uarr = new Uint8Array(4);
+    uarr[0] = 0x31;
+    uarr[1] = 0x32;
+    uarr[2] = 0x33;
+    uarr[3] = 0x34;
+    let buf1 = buffer.from(uarr);
+    let keys = buf1.values();
+    let va = 0x31;
+    for (const value of keys) {
+      expect(value).assertEqual(va);
+      va++;
+    }
+  });
+
+  /**
    * @tc.name: testEntries0250
    * @tc.desc: Creates and returns an iterator of [index, byte] pairs from the contents of buf.
    * For example: buf1.entries();
@@ -480,6 +1023,30 @@ describe("BufferTest", function () {
    */
   it("testEntries0250", 0, function () {
     let buf1 = buffer.from("1234");
+    let entries = buf1.entries();
+    let va = 49, index = 0;
+    for (const [key, value] of entries) {
+      expect(key).assertEqual(index);
+      expect(value).assertEqual(va);
+      va++;
+      index++;
+    }
+  });
+
+   /**
+   * @tc.name: testEntries0255
+   * @tc.desc: Creates and returns an iterator of [index, byte] pairs from the contents of buf
+   *           which is contructed from an Uint8Array.
+   * For example: buf1.entries();
+   * @tc.author: liuganlin
+   */
+  it("testEntries0255", 0, function () {
+    let uarr = new Uint8Array(4);
+    uarr[0] = 0x31;
+    uarr[1] = 0x32;
+    uarr[2] = 0x33;
+    uarr[3] = 0x34;
+    let buf1 = buffer.from(uarr);
     let entries = buf1.entries();
     let va = 49, index = 0;
     for (const [key, value] of entries) {
@@ -548,11 +1115,13 @@ describe("BufferTest", function () {
     arr[0] = 97;
     arr[1] = 98;
     const buf = buffer.from(arr.buffer, 1);
-    arr[0] = 99
-    buf[1] = 100
+    buf[0] = 99;
+    buf[1] = 100;
     let str = buf.toString("hex");
-    expect(str).assertEqual("62");
-    expect(arr[1]).assertEqual(98);
+    expect(str).assertEqual("63");
+    expect(arr[1]).assertEqual(99);
+    expect(buf[0]).assertEqual(99);
+    expect(buf[1]).assertEqual(undefined);
   });
 
   /**
@@ -642,7 +1211,6 @@ describe("BufferTest", function () {
    * @tc.author: liuganlin
    */
   it("testfrom0268", 0, function () {
-    console.log("fromObject 027_6_1");
     class Foo {
       [Symbol.toPrimitive]() {
         return 'this is a test';
@@ -744,7 +1312,6 @@ describe("BufferTest", function () {
    */
   it("testBlobArrayBuffer0280", 0, async function () {
     let blob2 = new buffer.Blob(["a", "b", "c"], { type: "new type", endings: "transparent" });
-    console.log(blob2.size)
     blob2.arrayBuffer().then((value) => {
       let arr = new Uint8Array(value)
       for (let i = 0, len = arr.length; i < len; i++) {
@@ -761,7 +1328,6 @@ describe("BufferTest", function () {
    */
   it("testBlobText0290", 0, async function () {
     let blob2 = new buffer.Blob(["a", "b", "c"], { type: "new type", endings: "transparent" });
-    console.log(blob2.size)
     blob2.text().then((value) => {
       expect(value).assertEqual("abc");
     });
@@ -2217,4 +2783,129 @@ describe("BufferTest", function () {
       expect(err.message).assertEqual('The value of "offset" is out of range');
     }
   });
-});
+
+  /**
+   * @tc.name: testBufferLength0750
+   * @tc.desc: Returns the number of bytes in buf.
+   * @tc.author: liuganlin
+   */
+  it("testBufferLength0750", 0, function () {
+    let buf = buffer.from("1236");
+    let len = buf.length;
+    expect(len).assertEqual(4);
+  });
+
+  /**
+   * @tc.name: testBufferLength0751
+   * @tc.desc: Returns the number of bytes in buf.
+   * @tc.author: liuganlin
+   */
+  it("testBufferLength0751", 0, function () {
+    let buf = buffer.from("1236");
+    buf.length = 10;
+    expect(buf.length).assertEqual(4);
+  });
+
+  /**
+   * @tc.name: testBufferLength0751
+   * @tc.desc: Returns the number of bytes in buf.
+   * @tc.author: liuganlin
+   */
+  it("testBufferLength0751", 0, function () {
+    let buf = buffer.from("测试特殊字符$#@!");
+    let len = buf.length;
+    expect(len).assertEqual(22);
+  });
+
+  /**
+   * @tc.name: testBlobSize0760
+   * @tc.desc: The total size of the Blob in bytes.
+   * @tc.author: liuganlin
+   */
+  it("testBlobSize0760", 0, function () {
+    let blob = new buffer.Blob(["a", "b", "c"]);
+    let size = blob.size;
+    expect(size).assertEqual(3);
+  });
+
+  /**
+   * @tc.name: testBlobSize0761
+   * @tc.desc: The total size of the Blob in bytes.
+   * @tc.author: liuganlin
+   */
+  it("testBlobSize0761", 0, function () {
+    let blob = new buffer.Blob([]);
+    let size = blob.size;
+    expect(size).assertEqual(0);
+  });
+
+  /**
+   * @tc.name: testBlobSize0762
+   * @tc.desc: The total size of the Blob in bytes.
+   * @tc.author: liuganlin
+   */
+  it("testBlobSize0762", 0, function () {
+    let blob = new buffer.Blob(["测试", "$#", "c"]);
+    let size = blob.size;
+    expect(size).assertEqual(9);
+  });
+
+  /**
+   * @tc.name: testBlobType0770
+   * @tc.desc: The content-type of the Blob.
+   * @tc.author: liuganlin
+   */
+  it("testBlobType0770", 0, function () {
+    let blob = new buffer.Blob(["a", "b", "c"], { type: "mime", endings: "transparent" });
+    let type = blob.type;
+    expect(type).assertEqual("mime");
+  });
+
+  /**
+   * @tc.name: testBlobType0771
+   * @tc.desc: The content-type of the Blob.
+   * @tc.author: liuganlin
+   */
+  it("testBlobType0771", 0, function () {
+    let blob = new buffer.Blob(["a", "b", "c"]);
+    let type = blob.type;
+    expect(type).assertEqual("");
+  });
+
+  /**
+   * @tc.name: testAllocUninitialized0780
+   * @tc.desc: Allocates a new un-pooled Buffer for a fixed size bytes. The Buffer will not be initially filled.
+   * For example: buffer.allocUninitialized(10);
+   * @tc.author: liuganlin
+   */
+  it("testAllocUninitialized0780", 0, function () {
+    let buf = buffer.allocUninitialized(10);
+    expect(buf.length).assertEqual(10);
+  });
+
+  /**
+   * @tc.name: testAllocUninitialized0781
+   * @tc.desc: Allocates a new un-pooled Buffer for a fixed size bytes. The Buffer will not be initially filled.
+   * For example: buffer.allocUninitialized(10);
+   * @tc.author: liuganlin
+   */
+  it("testAllocUninitialized0781", 0, function () {
+    let buf = buffer.allocUninitialized(0);
+    expect(buf.length).assertEqual(0);
+  });
+
+  /**
+   * @tc.name: testAllocUninitialized0782
+   * @tc.desc: Allocates a new un-pooled Buffer for a fixed size bytes. The Buffer will not be initially filled.
+   * For example: buffer.allocUninitialized(-5);
+   * @tc.author: liuganlin
+   */
+  it("testAllocUninitialized0782", 0, function () {
+    try {
+      let buf = buffer.allocUninitialized(-5);
+    } catch (err) {
+      expect(err.name).assertEqual('RangeError');
+      expect(err.message).assertEqual('The value of "size" is out of range');
+    }
+  });
+})}

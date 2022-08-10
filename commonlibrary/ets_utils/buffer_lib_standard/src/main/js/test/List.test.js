@@ -13,5 +13,7 @@
  * limitations under the License.
  */
 
-require('./Buffer.test.js');
-
+import BufferTest from './Buffer.test.js'
+export default function testsuite() {
+    BufferTest()
+}
