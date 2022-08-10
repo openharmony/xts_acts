@@ -1018,6 +1018,168 @@ describe('window_test', function () {
         })
     })
 
+    /**
+     * @tc.number		SUB_WMS_setDimBehind_JSAPI_001
+     * @tc.name			Test setDimBehindDeviceNotSupport_Test_001
+     * @tc.desc			Set the setDimBehind interface invalid
+     */
+    it('setDimBehindDeviceNotSupport_Test_001', 0, function (done) {
+        console.info('windowTest setDimBehindDeviceNotSupport begin');
+        window.getTopWindow().then(wnd => {
+            console.info('windowTest setDimBehindDeviceNotSupport1 getTopWindow wnd' + wnd);
+            expect(wnd != null).assertTrue();
+            wnd.setDimBehind(0.5).then(() => {
+                console.info('windowTest setDimBehind1 not support success ');
+                expect().assertFail();
+                done();
+            }, err => {
+                console.info('windowTest setDimBehind1 failed: err' + JSON.stringify(err));
+                expect(err.code).assertEqual(801);
+                done();
+            })
+        }, (err) => {
+            console.log('windowTest setDimBehind1 getTopWindow failed: err' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        })
+    })
+
+    /**
+     * @tc.number		SUB_WMS_setDimBehind_JSAPI_002
+     * @tc.name			Test setDimBehindDeviceNotSupport_Test_002
+     * @tc.desc			Set the setDimBehind interface invalid
+     */
+    it('setDimBehindDeviceNotSupport_Test_002', 0, function (done) {
+        console.info('windowTest setDimBehindDeviceNotSupport2 begin');
+        window.getTopWindow().then(wnd => {
+            console.info('windowTest setDimBehindDeviceNotSupport2 getTopWindow wnd' + wnd);
+            expect(wnd != null).assertTrue();
+            wnd.setDimBehind(0.5 ,(err, data) => {
+                if (err.code) {
+                    console.error('Failed to set the dimness2. Cause: ' + JSON.stringify(err));
+                    expect(err.code).assertEqual(801);
+                    done();
+                } else {
+                    console.info('windowTest setDimBehind2 not support success ');
+                    expect().assertFail();
+                    done();
+                }
+            })
+        }, (err) => {
+            console.log('windowTest setDimBehind2 getTopWindow failed: err' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        })
+    })
+
+    /**
+     * @tc.number		SUB_WMS_setOutsideTouchable_JSAPI_001
+     * @tc.name			Test setOutsideTouchableDeviceNotSupport_Test_001
+     * @tc.desc			Set the setOutsideTouchable interface invalid
+     */
+    it('setOutsideTouchable_Test_001', 0, function (done) {
+        console.info('windowTest setDimBehindDeviceNotSupport1 begin');
+        window.getTopWindow().then(wnd => {
+            console.info('windowTest setOutsideTouchable1 getTopWindow wnd' + wnd);
+            expect(wnd != null).assertTrue();
+            wnd.setOutsideTouchable(true).then(() => {
+                console.info('windowTest setOutsideTouchable1 not support success ');
+                expect().assertFail();
+                done();
+            }, err => {
+                console.info('windowTest setOutsideTouchable1 failed: err' + JSON.stringify(err));
+                expect(err.code).assertEqual(801);
+                done();
+            })
+        }, (err) => {
+            console.log('windowTest setOutsideTouchable1 getTopWindow failed: err' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        })
+    })
+
+    /**
+     * @tc.number		SUB_WMS_setOutsideTouchable__JSAPI_002
+     * @tc.name			Test setOutsideTouchableDeviceNotSupport_Test_002
+     * @tc.desc			Set the setOutsideTouchable interface invalid
+     */
+    it('setOutsideTouchable_Test_002', 0, function (done) {
+        console.info('windowTest setDimBehindDeviceNotSupport2 begin');
+        window.getTopWindow().then(wnd => {
+            console.info('windowTest setOutsideTouchable2 getTopWindow wnd' + wnd);
+            expect(wnd != null).assertTrue();
+            wnd.setOutsideTouchable(false).then(() => {
+                console.info('windowTest setOutsideTouchable2 not support success ');
+                expect().assertFail();
+                done();
+            }, err => {
+                console.info('windowTest setOutsideTouchable2 failed: err' + JSON.stringify(err));
+                expect(err.code).assertEqual(801);
+                done();
+            })
+        }, (err) => {
+            console.log('windowTest setOutsideTouchable2 getTopWindow failed: err' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        })
+    })
+
+    /**
+     * @tc.number		SUB_WMS_setOutsideTouchable_JSAPI_003
+     * @tc.name			Test setOutsideTouchable_Test_003
+     * @tc.desc			Set the setOutsideTouchable interface invalid
+     */
+    it('setOutsideTouchable_Test_003', 0, function (done) {
+        console.info('windowTest setOutsideTouchable3 begin');
+        window.getTopWindow().then(wnd => {
+            console.info('windowTest setOutsideTouchable3 getTopWindow wnd' + wnd);
+            expect(wnd != null).assertTrue();
+            wnd.setOutsideTouchable(true, (err, data) => {
+                if (err.code) {
+                    console.error('Failed to set the area to be touchable1. Cause: ' + JSON.stringify(err));
+                    expect(err.code).assertEqual(801);
+                    done();
+                } else {
+                    console.info('windowTest setOutsideTouchable3 not support success ');
+                    expect().assertFail();
+                    done();
+                }
+            })
+        }, (err) => {
+            console.log('windowTest setOutsideTouchable3 getTopWindow failed: err' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        })
+    })
+
+    /**
+     * @tc.number		SUB_WMS_setOutsideTouchable_JSAPI_004
+     * @tc.name			Test setOutsideTouchable_Test_004
+     * @tc.desc			Set the setOutsideTouchable interface invalid
+     */
+    it('setOutsideTouchable_Test_004', 0, function (done) {
+        console.info('windowTest setOutsideTouchable4 begin');
+        window.getTopWindow().then(wnd => {
+            console.info('windowTest setOutsideTouchable4 getTopWindow wnd' + wnd);
+            expect(wnd != null).assertTrue();
+            wnd.setOutsideTouchable(false, (err, data) => {
+                if (err.code) {
+                    console.error('Failed to set the area to be touchable4. Cause: ' + JSON.stringify(err));
+                    expect(err.code).assertEqual(801);
+                    done();
+                } else {
+                    console.info('windowTest setOutsideTouchable4 not support success ');
+                    expect().assertFail();
+                    done();
+                }
+            })
+        }, (err) => {
+            console.log('windowTest setOutsideTouchable4 getTopWindow failed: err' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        })
+    })
+
 
     /**
      * @tc.number    SUB_WMS_ONOFF_JSAPI_001
