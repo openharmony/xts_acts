@@ -18,7 +18,7 @@ import {
   describe, it, expect,
 } from '../../Common';
 
-export default function fileio_lseek() {
+export default function fileioLseek() {
 describe('fileio_lseek', function () {
 
   /**

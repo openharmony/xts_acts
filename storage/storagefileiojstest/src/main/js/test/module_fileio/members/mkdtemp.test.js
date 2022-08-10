@@ -15,7 +15,7 @@
 
 import { fileio, nextFileName, describe, it, expect } from '../../Common';
 
-export default function fileio_mkdtemp() {
+export default function fileioMkdtemp() {
 describe('fileio_mkdtemp', function () {
 
   /**

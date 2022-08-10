@@ -18,7 +18,7 @@ import {
   describe, it, expect,
 } from '../../Common';
 
-export default function fileio_FdOpenStream() {
+export default function fileioFdOpenStream() {
 describe('fileio_FdOpenStream', async function () {
 
   /**

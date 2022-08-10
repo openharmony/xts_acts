@@ -21,7 +21,7 @@ import {
   expect,
 } from '../../Common';
 
-export default function fileio_dir_close() {
+export default function fileioDirClose() {
 describe('fileio_dir_close', function () {
 
   /**

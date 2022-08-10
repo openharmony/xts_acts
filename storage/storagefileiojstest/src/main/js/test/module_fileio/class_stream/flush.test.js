@@ -18,7 +18,7 @@ import {
   describe, it, expect,
 } from '../../Common';
 
-export default function fileio_stream_flush() {
+export default function fileioStreamFlush() {
 describe('fileio_stream_flush', function () {
 
   /**

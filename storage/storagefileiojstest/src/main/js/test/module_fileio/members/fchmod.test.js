@@ -18,7 +18,7 @@ import {
   describe, it, expect,
 } from '../../Common';
 
-export default function fileio_fchmod() {
+export default function fileioFchmod() {
 describe('fileio_fchmod', function () {
 
   /**

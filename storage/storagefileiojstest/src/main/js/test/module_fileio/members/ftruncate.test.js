@@ -18,7 +18,7 @@ import {
   describe, it, expect,
 } from '../../Common';
 
-export default function fileio_ftruncate() {
+export default function fileioFtruncate() {
 describe('fileio_ftruncate', function () {
 
   /**

@@ -17,7 +17,7 @@ import {
   fileio, FILE_CONTENT, prepareFile, nextFileName,
   describe, it, expect,
 } from '../../Common';
-export default function fileio_rename() {
+export default function fileioRename() {
 describe('fileio_rename', function () {
 
   /**

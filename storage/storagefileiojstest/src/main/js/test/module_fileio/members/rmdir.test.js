@@ -17,13 +17,14 @@ import {
     fileio, FILE_CONTENT, prepareFile, nextFileName, randomString, isInclude,
     describe, it, expect,
 } from '../../Common';
-export default function fileio_rmdir() {
+export default function fileioRmdir() {
 describe('fileio_rmdir', function () {
 
     /**
      * @tc.number SUB_STORAGE_FileIO_RMDIR_SYNC_0000
      * @tc.name fileio_test_rmdir_sync_000
-     * @tc.desc Test rmdirSync() interface. Recursively delete all files and subfolders in a directory.
+     * @tc.desc Test rmdirSync() interface.
+     * Recursively delete all files and subfolders in a directory.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 0
@@ -48,7 +49,8 @@ describe('fileio_rmdir', function () {
     /**
      * @tc.number SUB_STORAGE_FileIO_RMDIR_SYNC_0100
      * @tc.name fileio_test_rmdir_sync_001
-     * @tc.desc Test rmdirSync() interface. Recursively delete all files and subfolders in a directory.
+     * @tc.desc Test rmdirSync() interface.
+     * Recursively delete all files and subfolders in a directory.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 0
@@ -77,7 +79,8 @@ describe('fileio_rmdir', function () {
     /**
      * @tc.number SUB_STORAGE_FileIO_RMDIR_SYNC_0200
      * @tc.name fileio_test_rmdir_sync_002
-     * @tc.desc Test rmdirSync() interface. Recursively delete all files and subfolders in a directory.
+     * @tc.desc Test rmdirSync() interface.
+     * Recursively delete all files and subfolders in a directory.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 0
@@ -182,7 +185,8 @@ describe('fileio_rmdir', function () {
     /**
      * @tc.number SUB_STORAGE_FileIO_RMDIR_ASYNC_0000
      * @tc.name fileio_test_rmdir_async_000
-     * @tc.desc Test rmdir() interface, return in promise mode. Recursively delete all files and subfolders in a directory.
+     * @tc.desc Test rmdir() interface, return in promise mode.
+     * Recursively delete all files and subfolders in a directory.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 0
@@ -211,7 +215,8 @@ describe('fileio_rmdir', function () {
     /**
      * @tc.number SUB_STORAGE_FileIO_RMDIR_ASYNC_0100
      * @tc.name fileio_test_rmdir_async_001
-     * @tc.desc Test rmdir() interface, return in callback mode. Recursively delete all files and subfolders in a directory.
+     * @tc.desc Test rmdir() interface, return in callback mode.
+     * Recursively delete all files and subfolders in a directory.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 0
@@ -241,7 +246,8 @@ describe('fileio_rmdir', function () {
     /**
      * @tc.number SUB_STORAGE_FileIO_RMDIR_ASYNC_0200
      * @tc.name fileio_test_rmdir_async_002
-     * @tc.desc Test rmdir() interface, return in promise mode. Recursively delete all files and subfolders in a directory.
+     * @tc.desc Test rmdir() interface, return in promise mode.
+     * Recursively delete all files and subfolders in a directory.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 0
@@ -267,7 +273,8 @@ describe('fileio_rmdir', function () {
     /**
      * @tc.number SUB_STORAGE_FileIO_RMDIR_ASYNC_0300
      * @tc.name fileio_test_rmdir_async_003
-     * @tc.desc Test rmdir() interface, return in callback mode. Recursively delete all files and subfolders in a directory.
+     * @tc.desc Test rmdir() interface, return in callback mode.
+     * Recursively delete all files and subfolders in a directory.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 0

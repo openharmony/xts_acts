@@ -18,7 +18,7 @@ import {
   describe, it, expect, nextFileName, prepareFile, FILE_CONTENT
 } from '../../Common';
 
-export default function fileio_close() {
+export default function fileioClose() {
 describe('fileio_close', function () {
 
   /**

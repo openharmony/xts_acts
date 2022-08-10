@@ -18,7 +18,7 @@ import {
   describe, it, expect,
 } from '../../Common';
 
-export default function fileio_unlink() {
+export default function fileioUnlink() {
 describe('fileio_unlink', function () {
 
   /**

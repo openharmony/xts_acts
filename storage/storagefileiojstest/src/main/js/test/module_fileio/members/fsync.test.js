@@ -18,8 +18,8 @@ import {
   describe, it, expect,
 } from '../../Common';
 
-export default function fileio_stat_fsync() {
-describe('fileio_stat_fsync', function () {
+export default function fileioFsync() {
+describe('fileio_fsync', function () {
 
   /**
    * @tc.number SUB_DF_FILEIO_FSYNC_SYNC_0000

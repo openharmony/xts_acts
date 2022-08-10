@@ -27,6 +27,7 @@ import {
 from './Common'
 export default function fileIOTest() {
   describe('fileIOTest', function () {
+
     /**
      * @tc.number SUB_STORAGE_FileIO_open&closesync_0000
      * @tc.name fileio_test_open_close_sync_000
@@ -2559,7 +2560,8 @@ export default function fileIOTest() {
     /**
      * @tc.number SUB_STORAGE_FileIO_RenameSync_0300
      * @tc.name fileio_test_rename_sync_003
-     * @tc.desc Function of API, renameSync. The test file is not exist, fpathTarget is same with fpatch, file name are same.
+     * @tc.desc Function of API, renameSync.
+     * The test file is not exist, fpathTarget is same with fpatch, file name are same.
      */
     it('fileio_test_rename_sync_003', 0, async function () {
       let fpath = await nextFileName('fileio_test_rename_sync_003');

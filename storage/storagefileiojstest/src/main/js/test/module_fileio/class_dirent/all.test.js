@@ -18,7 +18,7 @@ import {
   describe, it, expect,
 } from '../../Common';
 
-export default function fileio_dirent() {
+export default function fileioDirent() {
 describe('fileio_dirent', function () {
 
   /**

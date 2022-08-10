@@ -18,7 +18,7 @@ import {
   describe, it, expect,
 } from '../../Common';
 
-export default function fileio_hash() {
+export default function fileioHash() {
 describe('fileio_hash', function () {
 
   /**

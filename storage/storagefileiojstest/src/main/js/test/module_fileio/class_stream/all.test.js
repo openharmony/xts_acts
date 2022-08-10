@@ -18,7 +18,7 @@ import {
   describe, it, expect,
 } from '../../Common';
 
-export default function fileio_stream_1() {
+export default function fileioStream() {
 describe('fileio_stream_1', function () {
 
   /**
@@ -251,7 +251,8 @@ describe('fileio_stream_1', function () {
   /**
    * @tc.number SUB_DF_FILEIO_STREAM_READSYNC_0600
    * @tc.name fileio_test_stream_read_sync_006
-   * @tc.desc Test the readSync method of class Stream, When position is equal to the length of the file content plus one.
+   * @tc.desc Test the readSync method of class Stream.
+   * When position is equal to the length of the file content plus one.
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0

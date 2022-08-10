@@ -15,8 +15,8 @@
 
 import { fileio, nextFileName, describe, it, expect } from '../../Common';
 
-export default function fileio_dir_opendir_close() {
-describe('fileio_dir_opendir_close', function () {
+export default function fileioOpendirClose() {
+describe('fileio_opendir_close', function () {
 
   /**
    * @tc.number SUB_DF_FILEIO_OPEN_CLOSEDIR_SYNC_0000

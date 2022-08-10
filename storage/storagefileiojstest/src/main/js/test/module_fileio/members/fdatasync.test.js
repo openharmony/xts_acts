@@ -18,7 +18,7 @@ import {
   describe, it, expect,
 } from '../../Common';
 
-export default function fileio_fdatasync() {
+export default function fileioFdatasync() {
 describe('fileio_fdatasync', async function () {
 
   /**

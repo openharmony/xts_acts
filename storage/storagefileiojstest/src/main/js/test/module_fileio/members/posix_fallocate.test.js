@@ -18,7 +18,7 @@ import {
   describe, it, expect,
 } from '../../Common';
 
-export default function fileio_posix_fallocate() {
+export default function fileioPosixFallocate() {
 describe('fileio_posix_fallocate', function () {
 
   /**

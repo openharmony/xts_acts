@@ -18,7 +18,7 @@ import {
   describe, it, expect,
 } from '../../Common';
 
-export default function fileio_chown() {
+export default function fileioChown() {
 describe('fileio_chown', function () {
 
   /**

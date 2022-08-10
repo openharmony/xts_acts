@@ -397,7 +397,8 @@ describe('fileIOTestStat', function () {
   /**
    * @tc.number SUB_STORAGE_FileIO_stat_isCharacterDevice_0000
    * @tc.name fileio_test_stat_is_character_device_000
-   * @tc.desc Function of API, isCharacterDevice. Determine whether it is a character device. The return value is Boolean.
+   * @tc.desc Function of API, isCharacterDevice.
+   * Determine whether it is a character device. The return value is Boolean.
    */
   it('fileio_test_stat_is_character_device_000', 0, async function () {
     let fpath = await nextFileName('fileio_test_stat_is_character_device_000');
@@ -416,7 +417,8 @@ describe('fileIOTestStat', function () {
   /**
    * @tc.number SUB_STORAGE_FileIO_Stat_isCharacterDevice_0100
    * @tc.name fileio_test_stat_is_character_device_001
-   * @tc.desc Function of API, isCharacterDevice. Determine whether it is a character device. The return value is false.
+   * @tc.desc Function of API, isCharacterDevice.
+   * Determine whether it is a character device. The return value is false.
    */
   it('fileio_test_stat_is_character_device_001', 0, async function () {
     let fpath = await nextFileName('fileio_test_stat_is_character_device_001');

@@ -15,7 +15,7 @@
 
 import { fileio, nextFileName, describe, it, expect } from '../../Common';
 
-export default function fileio_mkdir_rmdir() {
+export default function fileioMkdirRmdir() {
 describe('fileio_mkdir_rmdir', function () {
 
   /**

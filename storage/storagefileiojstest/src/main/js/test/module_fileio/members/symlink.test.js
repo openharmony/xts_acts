@@ -18,7 +18,7 @@ import {
   describe, it, expect,
 } from '../../Common';
 
-export default function fileio_symlink() {
+export default function fileioSymlink() {
 describe('fileio_symlink', function () {
 
   /**

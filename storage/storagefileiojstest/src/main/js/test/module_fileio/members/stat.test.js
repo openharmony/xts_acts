@@ -18,7 +18,7 @@ import {
   describe, it, expect,
 } from '../../Common';
 
-export default function fileio_stat() {
+export default function fileioStat() {
 describe('fileio_stat', function () {
 
   /**
