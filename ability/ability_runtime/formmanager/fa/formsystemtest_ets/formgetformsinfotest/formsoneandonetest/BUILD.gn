@@ -17,8 +17,8 @@ ohos_js_hap_suite("ActsFormsOneAndOneTest") {
   hap_profile = "./entry/src/main/config.json"
   deps = [
     ":hjs_demo_js_assets",
-    ":hjs_demo_resources",
     ":hjs_demo_js_test_assets",
+    ":hjs_demo_resources",
   ]
   ets2abc = true
   certificate_profile = "./signature/openharmony_sx.p7b"
