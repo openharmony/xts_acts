@@ -16,6 +16,9 @@ import mediaLibrary from '@ohos.multimedia.mediaLibrary';
 import featureAbility from '@ohos.ability.featureAbility';
 import fileio from '@ohos.fileio';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
+import {
+    sleep,
+} from '../../../../../../common';
 let fileKeyObj = mediaLibrary.FileKey;
 let DIR_CAMERA = mediaLibrary.DirectoryType.DIR_CAMERA;
 let DIR_VIDEO = mediaLibrary.DirectoryType.DIR_VIDEO;
@@ -102,7 +105,6 @@ const props = {
         size: '348113',
         mediaType: imageType.toString(),
         title: '01',
-        dateTaken: '0',
         width: '1279',
         height: '1706',
         orientation: '0',
@@ -129,10 +131,9 @@ const props = {
         size: '1958311',
         mediaType: audioType.toString(),
         title: '01',
-        dateTaken: '0',
         artist: '元数据测试',
-        width: '0',
-        height: '0',
+        width: '219600',
+        height: '219600',
         orientation: '0',
         duration: '219600',
     },
@@ -143,7 +144,6 @@ const props = {
         size: '10',
         mediaType: fileType.toString(),
         title: '01',
-        dateTaken: '0',
         width: '0',
         height: '0',
         orientation: '0',
@@ -151,7 +151,9 @@ const props = {
     }
 
 }
-
+function isNum(value) {
+    return typeof value === 'number' && !isNaN(value);
+}
 async function checkFileAssetAttr(done, fetchFileResult, type, count, typesArr) {
     expect(fetchFileResult != undefined).assertTrue();
     expect(fetchFileResult.getCount() == count).assertTrue();
@@ -169,6 +171,10 @@ async function checkFileAssetAttr(done, fetchFileResult, type, count, typesArr) 
             expect(typesArr.includes(assetItem.mimeType)).assertTrue();
         }
     }
+    if(!isNum(asset.dateTaken)) {
+        expect(false).assertTrue();
+        done();
+    }
     if (
         asset.mimeType != props[type].mimeType ||
         asset.displayName != props[type].displayName ||
@@ -176,7 +182,6 @@ async function checkFileAssetAttr(done, fetchFileResult, type, count, typesArr) 
         asset.size != props[type].size ||
         asset.mediaType != props[type].mediaType ||
         asset.title != props[type].title ||
-        asset.dateTaken != props[type].dateTaken ||
         asset.width != props[type].width ||
         asset.height != props[type].height ||
         asset.orientation != props[type].orientation ||
@@ -194,7 +199,7 @@ export default function mediaLibraryTestCallBackTest(abilityContext){
 
         beforeAll(function () { });
         beforeEach(function () { });
-        afterEach(function () { });
+        afterEach(async function () { await sleep(200)});
         afterAll(function () { });
 
         var timestamp = new Date().getTime();

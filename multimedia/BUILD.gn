@@ -35,6 +35,9 @@ group("multimedia") {
       "media/media_js_standard/recorderFormat:recorder_format_js_hap",
       "media/media_js_standard/recorderProfile:recorder_profile_js_hap",
       "media/media_js_standard/videoPlayer:video_player_js_hap",
+      "medialibrary/mediaLibrary_album:mediaLibrary_album_hap",
+      "medialibrary/mediaLibrary_favorite:mediaLibrary_favorite_hap",
+      "medialibrary/mediaLibrary_fileResult:mediaLibrary_fileResult_hap",
       "medialibrary/mediaLibrary_js_standard:mediaLibrary_js_hap",
     ]
   } else {
