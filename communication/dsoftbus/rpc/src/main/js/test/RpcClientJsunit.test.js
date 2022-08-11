@@ -637,7 +637,7 @@ describe('ActsRpcClientJsTest', function(){
             var data = rpc.MessageParcel.create();
             console.info("SUB_Softbus_IPC_MessageParcel_01300: create object successfully.");
 
-            var size = 4*G - 4;
+            var size = M;
             var setResult = data.setCapacity(size);
             console.info("SUB_Softbus_IPC_MessageParcel_01300:run setSize " + setResult);
             expect(setResult).assertTrue();
@@ -5341,12 +5341,12 @@ describe('ActsRpcClientJsTest', function(){
             console.info("SUB_Softbus_IPC_MessageParcel_14000:run setCapacityis is " + getSizedata);
             expect(getSizedata).assertEqual(0);
 
-            let setMeCapacity = data.setCapacity(4*G - 1);
+            let setMeCapacity = data.setCapacity(M);
             console.info("SUB_Softbus_IPC_MessageParcel_14000:run setCapacityis is " + setMeCapacity);
             expect(setMeCapacity).assertTrue();
             let getCapacitydata = data.getCapacity();
             console.info("SUB_Softbus_IPC_MessageParcel_14000:run getCapacityis is " + getCapacitydata);
-            expect(getCapacitydata).assertEqual(4*G - 1);
+            expect(getCapacitydata).assertEqual(M);
 
             let setMeCapacity1 = data.setCapacity(4*G);
             console.info("SUB_Softbus_IPC_MessageParcel_14000:run setCapacityis is " + setMeCapacity1);
@@ -6708,7 +6708,7 @@ describe('ActsRpcClientJsTest', function(){
     it("SUB_Softbus_IPC_Ashmem_02000",0,function(){
         console.info("---------------------start SUB_Softbus_IPC_Ashmem_02000---------------------------");
         try{
-            let mapSize = 2*G - 1;
+            let mapSize = 2*M;
             let ashmem = rpc.Ashmem.createAshmem("JsAshmemTest", mapSize)
             console.info("SUB_Softbus_IPC_Ashmem_02000: ashmem " + ashmem);
 
@@ -6735,7 +6735,7 @@ describe('ActsRpcClientJsTest', function(){
     it("SUB_Softbus_IPC_Ashmem_02100",0,function(){
         console.info("---------------------start SUB_Softbus_IPC_Ashmem_02100---------------------------");
         try{
-            let mapSize = 2*G - 1;
+            let mapSize = 2*M;
             let ashmem = rpc.Ashmem.createAshmem("JsAshmemTest", mapSize)
             console.info("SUB_Softbus_IPC_Ashmem_02100: ashmem " + ashmem);
 
