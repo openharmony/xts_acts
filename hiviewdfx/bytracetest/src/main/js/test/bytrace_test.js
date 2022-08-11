@@ -47,6 +47,7 @@ describe("BytraceTest", function () {
     it("DFX_DFR_Bytrace_0200", 0, async function (done) {
         console.info("------DFX_DFR_Bytrace_0200 start------");
         // Normal condition
+        let flag = false;
         try {
             console.info("DFX_DFR_Bytrace_0200 1 start");
             bytrace.startTrace("test2", 222);
@@ -61,31 +62,36 @@ describe("BytraceTest", function () {
         try {
             console.info("DFX_DFR_Bytrace_0200 2 start");
             bytrace.startTrace("test2");
-            expect(false).assertTrue();
+            expect(flag).assertFalse();
         } catch (err) {
+            flag = true;
             console.info("DFX_DFR_Bytrace_0200 2 fail!");
             console.info("DFX_DFR_Bytrace_0200 2 err = " + err);
-            expect(true).assertTrue();
+            expect(flag).assertTrue();
         }
         // Abnormal condition, Pass multiple parameters
+        flag = false;
         try {
             console.info("DFX_DFR_Bytrace_0200 3 start");
             bytrace.startTrace("test2", 222, 2000, 2);
-            expect(false).assertTrue();
+            expect(flag).assertFalse();
         } catch (err) {
+            flag = true;
             console.info("DFX_DFR_Bytrace_0200 3 fail!");
             console.info("DFX_DFR_Bytrace_0200 3 err = " + err);
-            expect(true).assertTrue();
+            expect(flag).assertTrue();
         }
         // Abnormal condition, Parameter format mismatch
+        flag = false;
         try {
             console.info("DFX_DFR_Bytrace_0200 4 start");
             bytrace.startTrace(2, "222", "2000");
-            expect(false).assertTrue();
+            expect(flag).assertFalse();
         } catch (err) {
+            flag = true;
             console.info("DFX_DFR_Bytrace_0200 4 fail!");
             console.info("DFX_DFR_Bytrace_0200 4 err = " + err);
-            expect(true).assertTrue();
+            expect(flag).assertTrue();
         }
         console.info("------DFX_DFR_Bytrace_0200 end------");
         done();
@@ -94,6 +100,7 @@ describe("BytraceTest", function () {
     it("DFX_DFR_Bytrace_0300", 0, async function (done) {
         console.info("------DFX_DFR_Bytrace_0300 start------");
         // Normal condition
+        let flag = false;
         try {
             console.info("DFX_DFR_Bytrace_0300 1 start")
             bytrace.finishTrace("test3", 111);
@@ -108,31 +115,36 @@ describe("BytraceTest", function () {
         try {
             console.info("DFX_DFR_Bytrace_0300 2 start")
             bytrace.finishTrace("test3");
-            expect(false).assertTrue();
+            expect(flag).assertFalse();
         } catch (err) {
+            flag = true;
             console.info("DFX_DFR_Bytrace_0300 2 fail!");
             console.info("DFX_DFR_Bytrace_0300 2 err = " + err);
-            expect(true).assertTrue();
+            expect(flag).assertTrue();
         }
         // Abnormal condition, Pass multiple parameters
+        flag = false;
         try {
             console.info("DFX_DFR_Bytrace_0300 3 start")
             bytrace.finishTrace("test3", 1, 1);
-            expect(false).assertTrue();
+            expect(flag).assertFalse();
         } catch (err) {
+            flag = true;
             console.info("DFX_DFR_Bytrace_0300 3 fail!");
             console.info("DFX_DFR_Bytrace_0300 3 err = " + err);
-            expect(true).assertTrue();
+            expect(flag).assertTrue();
         }
         // Abnormal condition, Parameter format mismatch
+        flag = false;
         try {
             console.info("DFX_DFR_Bytrace_0300 4 start")
             bytrace.finishTrace(1, "123");
-            expect(false).assertTrue();
+            expect(flag).assertFalse();
         } catch (err) {
+            flag = true;
             console.info("DFX_DFR_Bytrace_0300 4 fail!");
             console.info("DFX_DFR_Bytrace_0300 4 err = " + err);
-            expect(true).assertTrue();
+            expect(flag).assertTrue();
         }
         console.info("------DFX_DFR_Bytrace_0300 end------");
         done();
@@ -152,6 +164,7 @@ describe("BytraceTest", function () {
     it("DFX_DFR_Bytrace_0500", 0, async function (done) {
         console.info("-------DFX_DFR_Bytrace_0500 start--------");
         // Normal condition
+        let flag = false;
         try {
             console.info("DFX_DFR_Bytrace_0500 1 start")
             bytrace.traceByValue("test5", 5);
@@ -166,31 +179,36 @@ describe("BytraceTest", function () {
         try {
             console.info("DFX_DFR_Bytrace_0500 2 start")
             bytrace.traceByValue("test5");
-            expect(false).assertTrue();
+            expect(flag).assertFalse();
         } catch (err) {
+            flag = true;
             console.info("DFX_DFR_Bytrace_0500 2 fail!");
             console.info("DFX_DFR_Bytrace_0500 2 err = " + err);
-            expect(true).assertTrue();
+            expect(flag).assertTrue();
         }
         // Abnormal condition, Pass multiple parameters
+        flag = false;
         try {
             console.info("DFX_DFR_Bytrace_0500 3 start")
             bytrace.traceByValue("test5", 3, 1);
-            expect(false).assertTrue();
+            expect(flag).assertFalse();
         } catch (err) {
+            flag = true;
             console.info("DFX_DFR_Bytrace_0500 3 fail!");
             console.info("DFX_DFR_Bytrace_0500 3 err = " + err);
-            expect(true).assertTrue();
+            expect(flag).assertTrue();
         }
         // Abnormal condition, Parameter format mismatch
+        flag = false;
         try {
             console.info("DFX_DFR_Bytrace_0500 4 start")
             bytrace.traceByValue(1, "123");
-            expect(false).assertTrue();
+            expect(flag).assertFalse();
         } catch (err) {
+            flag = true;
             console.info("DFX_DFR_Bytrace_0500 4 fail!");
             console.info("DFX_DFR_Bytrace_0500 4 err = " + err);
-            expect(true).assertTrue();
+            expect(flag).assertTrue();
         }
         console.info("------DFX_DFR_Bytrace_0500 end------");
         done();
