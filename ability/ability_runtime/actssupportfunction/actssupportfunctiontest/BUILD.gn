@@ -13,30 +13,30 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("SupportFunction") {
+ohos_js_hap_suite("ActsSupportFunctionTest") {
   hap_profile = "entry/src/main/module.json"
   deps = [
-    ":supportfunction_js_assets",
-    ":supportfunction_resources",
+    ":actssupportfunctiontest_js_assets",
+    ":actssupportfunctiontest_resources",
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "SupportFunction"
+  hap_name = "ActsSupportFunctionTest"
   subsystem_name = "ability"
   part_name = "ability_runtime"
 }
 
-ohos_app_scope("supportfunction_app_profile") {
+ohos_app_scope("actssupportfunctiontest_app_profile") {
   app_profile = "AppScope/app.json"
   sources = [ "AppScope/resources" ]
 }
 
-ohos_js_assets("supportfunction_js_assets") {
+ohos_js_assets("actssupportfunctiontest_js_assets") {
   source_dir = "entry/src/main/ets"
 }
 
-ohos_resources("supportfunction_resources") {
+ohos_resources("actssupportfunctiontest_resources") {
   sources = [ "entry/src/main/resources" ]
-  deps = [ ":supportfunction_app_profile" ]
+  deps = [ ":actssupportfunctiontest_app_profile" ]
   hap_profile = "entry/src/main/module.json"
 }

@@ -31,6 +31,7 @@ group("ability_runtime") {
       "actsshellcommandfunctionalitytest:actsshellcommandfunctionalitytest",
       "actsstartrunnertest:ActsStartRunnerTest",
       "actsstserviceabilityclientcase:ActsStServiceAbilityClientCaseTest",
+      "actssupportfunction:actssupportfunction",
       "actsusers:actsusers",
       "amscontextualinforquery:amscontextualinforquery",
       "amsdatauriutils:ActsAmsDataUriUtilsTest",
@@ -49,7 +50,6 @@ group("ability_runtime") {
       "non_concurrent:non_concurrent",
       "processmultiinstance:processmultiinstance",
       "stage:stage",
-      "supportfunctiontest:supportfunctiontest",
       "want:want",
       "workercontextcover:workercontextcover",
 

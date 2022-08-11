@@ -23,6 +23,8 @@ ohos_js_hap_suite("ActsFaApiCoverTest") {
   ets2abc = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsFaApiCoverTest"
+  subsystem_name = "ability"
+  part_name = "ability_runtime"
 }
 ohos_js_assets("faapicoverhaptest_ets_assets") {
   source_dir = "./entry/src/main/ets/MainAbility"
