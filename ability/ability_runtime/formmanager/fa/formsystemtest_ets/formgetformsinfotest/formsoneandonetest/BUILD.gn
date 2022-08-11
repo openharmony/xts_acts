@@ -18,6 +18,7 @@ ohos_js_hap_suite("ActsFormsOneAndOneTest") {
   deps = [
     ":hjs_demo_js_assets",
     ":hjs_demo_resources",
+    ":hjs_demo_js_test_assets",
   ]
   ets2abc = true
   certificate_profile = "./signature/openharmony_sx.p7b"
@@ -27,6 +28,9 @@ ohos_js_hap_suite("ActsFormsOneAndOneTest") {
 }
 ohos_js_assets("hjs_demo_js_assets") {
   source_dir = "./entry/src/main/ets/MainAbility"
+}
+ohos_js_assets("hjs_demo_js_test_assets") {
+  source_dir = "./entry/src/main/ets/TestAbility"
 }
 ohos_resources("hjs_demo_resources") {
   sources = [ "./entry/src/main/resources" ]

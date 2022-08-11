@@ -16,7 +16,7 @@
   "module": {
     "package": "com.ohos.st.formacquiretest",
     "name": ".FormAcquireSTApp",
-    "mainAbility": ".MainAbility",
+    "mainAbility": "com.ohos.st.formacquiretest.MainAbility",
     "deviceType": [
       "phone"
     ],
@@ -39,13 +39,27 @@
           }
         ],
         "visible": true,
-        "name": ".MainAbility",
+        "name": "com.ohos.st.formacquiretest.MainAbility",
+        "srcPath": "MainAbility",
         "srcLanguage": "ets",
         "icon": "$media:icon",
         "description": "$string:description_mainability",
         "label": "$string:entry_MainAbility",
         "type": "page",
         "launchType": "standard"
+      },
+      {
+          "orientation": "unspecified",
+          "formsEnabled": false,
+          "name": ".TestAbility",
+          "srcLanguage": "ets",
+          "srcPath": "TestAbility",
+          "icon": "$media:icon",
+          "description": "$string:TestAbility_desc",
+          "label": "$string:TestAbility_label",
+          "type": "page",
+          "visible": true,
+          "launchType": "singleton"
       }
     ],
     "defPermissions": [
@@ -131,6 +145,24 @@
           "pages/index"
         ],
         "name": ".MainAbility",
+        "window": {
+          "designWidth": 720,
+          "autoDesignWidth": false
+        }
+      },
+      {
+        "mode": {
+          "syntax": "ets",
+          "type": "pageAbility"
+        },
+        "mode": {
+          "syntax": "ets",
+          "type": "pageAbility"
+        },
+        "pages": [
+          "pages/index"
+        ],
+        "name": ".TestAbility",
         "window": {
           "designWidth": 720,
           "autoDesignWidth": false
