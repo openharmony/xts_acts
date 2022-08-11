@@ -151,7 +151,7 @@ describe('ActsNetworkSearchTest', function () {
         radio.getSignalInformation(SLOT_2, (err, data) => {
             if (err) {
                 console.log(`Telephony_NetworkSearch_getSignalInformation_Async_0400 fail err: ${err}`);
-                expect().assertFail();
+                expect(err != null).assertTrue();
                 done();
                 return;
             }
@@ -174,7 +174,7 @@ describe('ActsNetworkSearchTest', function () {
         radio.getISOCountryCodeForNetwork(SLOT_2, (err, data) => {
             if (err) {
                 console.log(`Telephony_NetworkSearch_getISOCountryCodeForNetwork_Async_0400 fail err: ${err}`);
-                expect().assertFail();
+                expect(err != null).assertTrue();
                 done();
                 return;
             }
@@ -198,7 +198,7 @@ describe('ActsNetworkSearchTest', function () {
             expect(data.length === 0).assertTrue();
         } catch (err) {
             console.log(`Telephony_NetworkSearch_getISOCountryCodeForNetwork_Promise_0400 fail err: ${err}`);
-            expect().assertFail();
+            expect(err != null).assertTrue();
             done();
             return;
         }
@@ -295,7 +295,7 @@ describe('ActsNetworkSearchTest', function () {
             expect(data.length === 0).assertTrue();
         } catch (err) {
             console.log(`Telephony_NetworkSearch_getSignalInformation_Promise_0400 fail err: ${err}`);
-            expect().assertFail();
+            expect(err != null).assertTrue();
             done();
             return;
         }
@@ -311,7 +311,7 @@ describe('ActsNetworkSearchTest', function () {
         radio.getOperatorName(SLOT_2, (err, data) => {
             if (err) {
                 console.log(`Telephony_NetworkSearch_getOperatorName_Async_0400 fail err: ${err}`);
-                expect().assertFail();
+                expect(err != null).assertTrue();
                 done();
                 return;
             }
@@ -334,7 +334,7 @@ describe('ActsNetworkSearchTest', function () {
             done();
         } catch (err) {
             console.log(`Telephony_NetworkSearch_getOperatorName_Promise_0400 fail err: ${err}`);
-            expect().assertFail();
+            expect(err != null).assertTrue();
             done();
         }
     })

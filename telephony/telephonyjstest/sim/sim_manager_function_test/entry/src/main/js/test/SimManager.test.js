@@ -269,7 +269,7 @@ describe('SimManagerTest', function () {
     sim.isSimActive(env.SLOTID2, (err, data) => {
       if (err) {
         console.log(`${CASE_NAME} fail, err: ${err.message}`);
-        expect().assertFail();
+        expect(err != null).assertTrue();
         done();
         return;
       }
@@ -292,7 +292,7 @@ describe('SimManagerTest', function () {
       expect(data).assertFalse();
     } catch (err) {
       console.log(`${CASE_NAME} isSimActive fail, err: ${err.message}`);
-      expect().assertFail();
+      expect(err != null).assertTrue();
       done();
       return;
     }
@@ -310,7 +310,7 @@ describe('SimManagerTest', function () {
     const CASE_NAME = 'Telephony_Sim_hasSimCard_Async_0600';
     sim.hasSimCard(env.SLOTID2, (err, data) => {
       if (err) {
-        expect().assertFail();
+        expect(err != null).assertTrue();
         console.log(`${CASE_NAME} fail, err: ${err.message}`);
         done();
         return;
@@ -333,7 +333,7 @@ describe('SimManagerTest', function () {
       let data = await sim.hasSimCard(env.SLOTID2);
       expect(data).assertFalse();
     } catch (err) {
-      expect().assertFail();
+      expect(err != null).assertTrue();
       console.log(`${CASE_NAME} fail, err: ${err.message}`);
       done();
       return;
@@ -366,7 +366,7 @@ describe('SimManagerTest', function () {
     sim.getCardType(env.SLOTID2, (error, cardType) => {
       if (error) {
         console.log(`${CASE_NAME} GetCardType error: ${error.message}`);
-        expect().assertFail();
+        expect(err != null).assertTrue();
         done();
         return;
       }
@@ -390,7 +390,7 @@ describe('SimManagerTest', function () {
       console.log(`${CASE_NAME} test finish.`);
     } catch (error) {
       console.log(`${CASE_NAME} GetCardType error: ${error.message}`);
-      expect().assertFail();
+      expect(err != null).assertTrue();
     }
     done();
   });
