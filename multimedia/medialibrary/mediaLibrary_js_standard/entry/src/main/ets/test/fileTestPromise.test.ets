@@ -18,7 +18,9 @@ import featureAbility from '@ohos.ability.featureAbility';
 import fileio from '@ohos.fileio';
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
-
+import {
+    sleep,
+} from '../../../../../../common';
 let fileKeyObj = mediaLibrary.FileKey;
 let fileType = mediaLibrary.MediaType.FILE;
 let imageType = mediaLibrary.MediaType.IMAGE;
@@ -69,7 +71,7 @@ export default function fileTestPromiseTest(abilityContext){
         console.info('getMediaLibrary OUT');
         beforeAll(function () { });
         beforeEach(function () { });
-        afterEach(function () { });
+        afterEach(async function () { await sleep(200)});
         afterAll(function () { });
 
         async function copyFile(fd1, fd2) {

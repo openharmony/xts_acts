@@ -16,7 +16,9 @@
 import mediaLibrary from '@ohos.multimedia.mediaLibrary';
 import image from '@ohos.multimedia.image';
 import featureAbility from '@ohos.ability.featureAbility';
-
+import {
+    sleep,
+} from '../../../../../../common';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 export default function FileAssetGetThumbnailCallBackTest(abilityContext){
     describe('FileAssetGetThumbnailCallBackTest', function () {
@@ -48,7 +50,7 @@ export default function FileAssetGetThumbnailCallBackTest(abilityContext){
         };
         beforeAll(function () {});
         beforeEach(function () {});
-        afterEach(function () {});
+        afterEach(async function () { await sleep(200)});
         afterAll(function () {});
 
         // ------------------------------ image type start -----------------------

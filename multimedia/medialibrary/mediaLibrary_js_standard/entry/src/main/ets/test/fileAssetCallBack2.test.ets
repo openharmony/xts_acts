@@ -15,7 +15,9 @@
 
 import mediaLibrary from '@ohos.multimedia.mediaLibrary';
 import featureAbility from '@ohos.ability.featureAbility';
-
+import {
+    sleep,
+} from '../../../../../../common';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 function printAttr(asset) {
     for (const key in asset) {
@@ -69,7 +71,7 @@ export default function fileAssetCallBack2Test(abilityContext){
         const media = mediaLibrary.getMediaLibrary(abilityContext);
         beforeAll(function () { });
         beforeEach(function () { });
-        afterEach(function () { });
+        afterEach(async function () { await sleep(200)});
         afterAll(function () { });
 
         /**
