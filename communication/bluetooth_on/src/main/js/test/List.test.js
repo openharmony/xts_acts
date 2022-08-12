@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 
+import bluetoothTEST from './BluetoothADD.test.js'
 import bluetoothhostTest from './BluetoothOn.test.js'
 export default function testsuite() {
 bluetoothhostTest()
+bluetoothTEST()	
 }
