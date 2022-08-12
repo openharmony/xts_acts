@@ -2543,7 +2543,6 @@ describe('audioManager', function () {
                 }
                 else {
                     expect(false).assertTrue();
-                    done();
                 }
             });
             await audioManager.isMute(audioMedia).then(function (data) {
@@ -2650,7 +2649,6 @@ describe('audioManager', function () {
                 }
                 else {
                     expect(false).assertTrue();
-                    done();
                 }
             });
             await audioManager.isMute(audioRingtone).then(function (data) {
@@ -2757,7 +2755,6 @@ describe('audioManager', function () {
                 }
                 else {
                     expect(false).assertTrue();
-                    done();
                 }
             });
             await audioManager.isMute(audio.AudioVolumeType.MEDIA).then(function (data) {
@@ -2864,7 +2861,6 @@ describe('audioManager', function () {
                 }
                 else {
                     expect(false).assertTrue();
-                    done();
                 }
             });
             await audioManager.isMute(audio.AudioVolumeType.RINGTONE).then(function (data) {
@@ -2971,7 +2967,6 @@ describe('audioManager', function () {
                 }
                 else {
                     expect(false).assertTrue();
-                    done();
                 }
             });
             await audioManager.isMute(audio.AudioVolumeType.VOICE_CALL).then(function (data) {
@@ -3078,7 +3073,6 @@ describe('audioManager', function () {
                 }
                 else {
                     expect(false).assertTrue();
-                    done();
                 }
             });
             await audioManager.isMute(audio.AudioVolumeType.VOICE_ASSISTANT).then(function (data) {
@@ -3174,7 +3168,6 @@ describe('audioManager', function () {
                     }
                     else {
                         expect(false).assertTrue();
-                        done();
                     }
                 });
                 await audioManager.setVolume(audioMedia, highVol);
@@ -3217,7 +3210,6 @@ describe('audioManager', function () {
                 }
                 else {
                     expect(false).assertTrue();
-                    done();
                 }
             });
             await audioManager.setVolume(audioRingtone, highVol);
@@ -3266,7 +3258,6 @@ describe('audioManager', function () {
                     }
                     else {
                         expect(false).assertTrue();
-                        done();
                     }
                 });
                 audioManager.setVolume(audioRingtone, lowVol);
@@ -3362,7 +3353,6 @@ describe('audioManager', function () {
                     }
                     else {
                         expect(false).assertTrue();
-                        done();
                     }
                 });
                 audioManager.setVolume(audio.AudioVolumeType.VOICE_CALL, lowVol);
@@ -3458,7 +3448,6 @@ describe('audioManager', function () {
                     }
                     else {
                         expect(false).assertTrue();
-                        done();
                     }
                 });
                 audioManager.setVolume(audio.AudioVolumeType.VOICE_ASSISTANT, lowVol);
@@ -5140,7 +5129,7 @@ describe('audioManager', function () {
         await sleep(50);
         done();
     })
-    
+
     /* *
                 * @tc.number    : SUB_AUDIO_MANAGER_DeviceType_002
                 * @tc.name      : DeviceType - WIRED_HEADPHONES
