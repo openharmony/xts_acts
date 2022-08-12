@@ -24,12 +24,14 @@ import {
     checkPresetsAssets,
     nameFetchOps,
     checkAssetsCount,
+    getPermission,
 } from '../../../../../../common';
 
 export default function favoriteTestCallbackTest(abilityContext) {
     describe('favoriteTestCallbackTest', function () {
         var media = mediaLibrary.getMediaLibrary(abilityContext);
         beforeAll(async function () {
+            await getPermission();
             await checkPresetsAssets(media, 'ActsMediaLibraryFavorite');
         });
         beforeEach(function () { });

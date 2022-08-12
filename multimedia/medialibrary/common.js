@@ -23,6 +23,9 @@ const presetsCount = {
     ActsMediaLibraryAlbumFileResultPro: { assetsCount: 123, albumsCount: 6 },
     //ActsMediaLibraryAlbumFileResultCb test case create 1 album 5 assets
     ActsMediaLibraryAlbumFileResultCb: { assetsCount: 118, albumsCount: 5 },
+    ActsMediaLibraryFileKey: { assetsCount: 4, albumsCount: 4 },
+    ActsMediaLibraryFileAsset: { assetsCount: 4, albumsCount: 4 },
+    ActsMediaLibraryFile: { assetsCount: 4, albumsCount: 4 },
 }
 
 const IMAGE_TYPE = mediaLibrary.MediaType.IMAGE;
@@ -128,6 +131,8 @@ const checkPresetsAssets = async function (media, hapName) {
 const checkAssetsCount = async function (done, testNum, fetchFileResult, expectCount) {
     if (!fetchFileResult) {
         console.info(`${testNum}:: fetchFileResult error:`);
+        expect(false).assertTrue();
+        done();
         return false
     }
     let count = await fetchFileResult.getCount();
@@ -143,6 +148,8 @@ const checkAssetsCount = async function (done, testNum, fetchFileResult, expectC
 const checkAlbumsCount = function (done, testNum, albumList, expectCount) {
     if (!Array.isArray(albumList)) {
         console.info(`${testNum}:: albumList error:`);
+        expect(false).assertTrue();
+        done();
         return false
     }
     let albumsCount = albumList.length;
@@ -174,17 +181,18 @@ const getPermission = async function (name = 'ohos.acts.multimedia.mediaLibrary'
 }
 
 const MODIFY_ERROR_CODE_01 = '-1000';
+
+const isNum = function (value) {
+    return typeof value === 'number' && !isNaN(value);
+}
 export {
     getPermission,
     IMAGE_TYPE,
     VIDEO_TYPE,
     AUDIO_TYPE,
     FILE_TYPE,
-
     FILEKEY,
-
     sleep,
-
     allFetchOp,
     fetchOps,
     nameFetchOps,
@@ -192,9 +200,9 @@ export {
     albumFetchOps,
     albumTwoTypesFetchOps,
     albumThreeTypesFetchOps,
-
     checkPresetsAssets,
     checkAssetsCount,
     checkAlbumsCount,
     MODIFY_ERROR_CODE_01,
+    isNum,
 }

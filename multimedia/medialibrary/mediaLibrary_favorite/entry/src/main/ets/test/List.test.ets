@@ -16,6 +16,6 @@
 import favoriteTestPromise from './favoriteTestPromise.test.ets'
 import favoriteTestCallback from './favoriteTestCallback.test.ets'
 export default function testsuite(abilityContext) {
-  favoriteTestPromise(abilityContext)
   favoriteTestCallback(abilityContext)
+  favoriteTestPromise(abilityContext)
 }
