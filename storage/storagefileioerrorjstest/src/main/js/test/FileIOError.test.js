@@ -34,30 +34,6 @@ export default function FileIOError() {
 describe('FileIOError', function () {
 
   /**
-   * @tc.number SUB_STORAGE_FileIo_test_error_0000
-   * @tc.name fileio_test_error_000
-   * @tc.desc Function of API, Delete directories with files
-   */
-  it('fileio_test_error_000', 0, async function (done) {
-    let dpath = await fileName('fileio_test_error_000d');
-    let fpath = dpath + '/fileio_test_error_000f';
-    fileio.mkdirSync(dpath);
-    expect(prepareFile(fpath, 'hello')).assertTrue();
-    try {
-      let fd = fileio.openSync(dpath);
-      expect(isIntNum(fd)).assertTrue();
-      fileio.rmdirSync(dpath);
-    } 
-    catch (err) {
-      console.info('fileio_test_error_000 has failed for ' + err);
-      expect(isInclude(err.message, 'Directory not empty')).assertTrue();
-      fileio.unlinkSync(fpath);
-      fileio.rmdirSync(dpath);
-      done();
-    }
-  });
-
-  /**
    * @tc.number SUB_STORAGE_FileIo_test_error_0100
    * @tc.name fileio_test_error_001
    * @tc.desc Function of API, delete file
