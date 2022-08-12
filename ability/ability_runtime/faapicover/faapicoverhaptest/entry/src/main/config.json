@@ -33,7 +33,7 @@
         "orientation": "unspecified",
         "visible": true,
         "srcPath": "MainAbility",
-        "name": "com.example.faapicoverhaptest.MainAbility",
+        "name": ".MainAbility",
         "srcLanguage": "ets",
         "icon": "$media:icon",
         "description": "$string:MainAbility_desc",
@@ -46,7 +46,7 @@
           "orientation": "unspecified",
           "formsEnabled": false,
           "name": ".TestAbility",
-          "srcLanguage": "js",
+          "srcLanguage": "ets",
           "srcPath": "TestAbility",
           "icon": "$media:icon",
           "description": "$string:TestAbility_desc",
@@ -62,7 +62,7 @@
       "deliveryWithInstall": true,
       "moduleName": "entry"
     },
-    "package": "com.example.entry",
+    "package": "com.example.faapicoverhaptest",
     "srcPath": "",
     "name": ".entry",
     "js": [
@@ -81,6 +81,10 @@
         }
       },
       {
+        "mode": {
+          "syntax": "ets",
+          "type": "pageAbility"
+        },
         "pages": [
           "pages/index"
         ],

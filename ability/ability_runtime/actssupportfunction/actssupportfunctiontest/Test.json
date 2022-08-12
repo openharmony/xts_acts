@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "SupportFunction.hap",
+                "ActsSupportFunctionTest.hap",
 				"FaSupportFunction.hap",
                 "FaSupportFunctionTwo.hap",
                 "FaSupportFunctionThree.hap",
