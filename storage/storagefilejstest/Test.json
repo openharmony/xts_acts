@@ -2,8 +2,8 @@
     "description": "Configuration for storage file Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "600000",
-        "shell-timeout": "600000",
+        "test-timeout": "120000",
+        "shell-timeout": "120000",
         "bundle-name": "ohos.acts.storage.file",
         "package-name": "ohos.acts.storage.file"
     },

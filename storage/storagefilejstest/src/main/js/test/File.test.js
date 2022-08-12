@@ -433,45 +433,42 @@ describe('fileTest', function () {
       text: 'hello,world',
       success: function () {
         console.info('File_writeText_005 call writeText success.');
-        done();
+        file.writeText({
+            uri: 'internal://cache/File_writeText_005',
+            text: 'hello',
+            append: true,
+            success: function () {
+              console.info('File_writeText_005 call writeText success.');
+              file.readText({
+                uri: 'internal://cache/File_writeText_005',
+                success: function (data) {
+                  console.info('File_writeText_005 call read success ' );
+                  file.delete({
+                    uri: 'internal://cache/File_writeText_005',
+                    success: function () {
+                      console.info('File_writeText_005 call delete success');
+                      done();
+                    },
+                    fail: function (data, code) {
+                      console.info('File_writeText_005 call delete fail, code: ' + code + ', data: ' + data);
+                      expect(null).assertFail();
+                    },
+                  });
+                },
+                fail: function (data, code) {
+                  console.info('File_writeText_005 call readText fail , code: ' + code + ', data: ' + data);
+                  expect(null).assertFail();
+                },
+              });
+            },
+            fail: function (data, code) {
+              console.info('File_writeText_005 call writeText fail, code: ' + code + ', data: ' + data);
+              expect(null).assertFail();
+            },
+          });
       },
       fail: function (data, code) {
         console.info('File_writeText_005 call writeText fail, code: ' + code + ', data: ' + data);
-        expect(null).assertFail();
-      },
-    });
-    file.writeText({
-      uri: 'internal://cache/File_writeText_005',
-      text: 'hello',
-      append: true,
-      success: function () {
-        console.info('File_writeText_005 call writeText success.');
-        done();
-      },
-      fail: function (data, code) {
-        console.info('File_writeText_005 call writeText fail, code: ' + code + ', data: ' + data);
-        expect(null).assertFail();
-      },
-    });
-    file.readText({
-      uri: 'internal://cache/File_writeText_005',
-      success: function (data) {
-        console.info('File_writeText_005 call read success ' );
-        done();
-      },
-      fail: function (data, code) {
-        console.info('File_writeText_005 call readText fail , code: ' + code + ', data: ' + data);
-        expect(null).assertFail();
-      },
-    });
-    file.delete({
-      uri: 'internal://cache/File_writeText_005',
-      success: function () {
-        console.info('File_writeText_005 call delete success');
-        done();
-      },
-      fail: function (data, code) {
-        console.info('File_writeText_005 call delete fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -916,33 +913,31 @@ describe('fileTest', function () {
       buffer: buf,
       success: function () {
         console.info('File_writeArrayBuffer_006 call writeText success.');
-        done();
+        file.writeArrayBuffer({
+            uri: 'internal://cache/File_writeArrayBuffer_006',
+            buffer: buf,
+            success: function () {
+              console.info('File_writeArrayBuffer_006 call writeArrayBuffer success.');
+              file.readArrayBuffer({
+                uri: 'internal://cache/File_writeArrayBuffer_006',
+                success: function () {
+                  console.info('File_writeArrayBuffer_006 call readArrayBuffer pass');
+                  done();
+                },
+                fail: function (data, code) {
+                  console.info('File_writeArrayBuffer_006 readArrayBuffer fail, code: ' + code + ', data: ' + data);
+                  expect(null).assertFail();
+                },
+              });
+            },
+            fail: function (data, code) {
+              console.info('File_writeArrayBuffer_006 writeArrayBuffer fail, code: ' + code + ', data: ' + data);
+              expect(null).assertFail();
+            },
+        });
       },
       fail: function (data, code) {
-        console.info('File_writeArrayBuffer_006 , code: ' + code + ', data: ' + data);
-        expect(null).assertFail();
-      },
-    });
-    file.writeArrayBuffer({
-      uri: 'internal://cache/File_writeArrayBuffer_006',
-      buffer: buf,
-      success: function () {
-        console.info('File_writeArrayBuffer_006 call writeArrayBuffer success.');
-        done();
-      },
-      fail: function (data, code) {
-        console.info('File_writeArrayBuffer_006 , code: ' + code + ', data: ' + data);
-        expect(null).assertFail();
-      },
-    });
-    file.readArrayBuffer({
-      uri: 'internal://cache/File_writeArrayBuffer_006',
-      success: function () {
-        console.info('File_writeArrayBuffer_006 pass');
-        done();
-      },
-      fail: function (data, code) {
-        console.info('File_writeArrayBuffer_006 , code: ' + code + ', data: ' + data);
+        console.info('File_writeArrayBuffer_006 writeText fail, code: ' + code + ', data: ' + data);
         expect(null).assertFail();
       },
     });
@@ -2213,7 +2208,7 @@ describe('fileTest', function () {
    */
   it('File_rmdir_005', 0, async function (done) {
     file.rmdir({
-      uri: 'internal://app/test/123',
+      uri: 'internal://app/notdir/123',
       success: function () {
         console.info('File_rmdir_005 call rmdir success.');
         expect(null).assertFail();

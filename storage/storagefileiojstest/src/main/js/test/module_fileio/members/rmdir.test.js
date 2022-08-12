@@ -108,45 +108,48 @@ describe('fileio_rmdir', function () {
     /**
      * @tc.number SUB_STORAGE_FileIO_RMDIR_SYNC_0300
      * @tc.name fileio_test_rmdir_sync_003
-     * @tc.desc Test rmdirSync() interface. Invalid path.
+     * @tc.desc Test rmdirSync() interface. The path contains ../, normal call.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 0
      * @tc.require
      */
     it('fileio_test_rmdir_sync_003', 0, async function () {
-        let dpath = await nextFileName('fileio_test_rmdir_sync_003') + 'd';
+        let dpath = await nextFileName('../cache/fileio_test_rmdir_sync_003') + 'd';
 
         try {
+            fileio.mkdirSync(dpath);
             fileio.rmdirSync(dpath);
         } catch (err) {
             console.info('fileio_test_rmdir_sync_003 has failed for ' + err);
-            expect(isInclude(err.message, 'No such file or directory')).assertTrue();
+            expect(null).assertFail();
         }
     });
 
     /**
      * @tc.number SUB_STORAGE_FileIO_RMDIR_SYNC_0400
      * @tc.name fileio_test_rmdir_sync_004
-     * @tc.desc Test rmdirSync() interface. No parameters.
+     * @tc.desc Test rmdirSync() interface. Invalid path.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 0
      * @tc.require
      */
     it('fileio_test_rmdir_sync_004', 0, async function () {
+        let dpath = await nextFileName('fileio_test_rmdir_sync_004') + 'd';
+
         try {
-            fileio.rmdirSync();
+            fileio.rmdirSync(dpath);
         } catch (err) {
             console.info('fileio_test_rmdir_sync_004 has failed for ' + err);
-            expect(isInclude(err.message, 'Number of arguments unmatched')).assertTrue();
+            expect(isInclude(err.message, 'No such file or directory')).assertTrue();
         }
     });
 
     /**
      * @tc.number SUB_STORAGE_FileIO_RMDIR_SYNC_0500
      * @tc.name fileio_test_rmdir_sync_005
-     * @tc.desc Test rmdirSync() interface. Invalid path.
+     * @tc.desc Test rmdirSync() interface. No parameters.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 0
@@ -154,29 +157,47 @@ describe('fileio_rmdir', function () {
      */
     it('fileio_test_rmdir_sync_005', 0, async function () {
         try {
-            fileio.rmdirSync('');
+            fileio.rmdirSync();
         } catch (err) {
             console.info('fileio_test_rmdir_sync_005 has failed for ' + err);
-            expect(isInclude(err.message, 'No such file or directory')).assertTrue();
+            expect(isInclude(err.message, 'Number of arguments unmatched')).assertTrue();
         }
     });
 
     /**
      * @tc.number SUB_STORAGE_FileIO_RMDIR_SYNC_0600
      * @tc.name fileio_test_rmdir_sync_006
-     * @tc.desc Test rmdirSync() interface. Not a directory.
+     * @tc.desc Test rmdirSync() interface. Invalid path.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 0
      * @tc.require
      */
     it('fileio_test_rmdir_sync_006', 0, async function () {
-        let fpath = await nextFileName('fileio_test_rmdir_sync_006');
+        try {
+            fileio.rmdirSync('');
+        } catch (err) {
+            console.info('fileio_test_rmdir_sync_006 has failed for ' + err);
+            expect(isInclude(err.message, 'No such file or directory')).assertTrue();
+        }
+    });
+
+    /**
+     * @tc.number SUB_STORAGE_FileIO_RMDIR_SYNC_0700
+     * @tc.name fileio_test_rmdir_sync_007
+     * @tc.desc Test rmdirSync() interface. Not a directory.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 0
+     * @tc.require
+     */
+    it('fileio_test_rmdir_sync_007', 0, async function () {
+        let fpath = await nextFileName('fileio_test_rmdir_sync_007');
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
         try {
             fileio.rmdirSync(fpath);
         } catch (err) {
-            console.info('fileio_test_rmdir_sync_006 has failed for ' + err);
+            console.info('fileio_test_rmdir_sync_007 has failed for ' + err);
             expect(isInclude(err.message, 'Not a directory')).assertTrue();
             fileio.unlinkSync(fpath);
         }
@@ -282,10 +303,10 @@ describe('fileio_rmdir', function () {
      */
     it('fileio_test_rmdir_async_003', 0, async function (done) {
         let dpath = await nextFileName('fileio_test_rmdir_async_003') + 'd';
-        let fpath = dpath + '/rmdir_async_001';
-        let ffpath = dpath + '/rmdir_async_001_1';
-        let ddpath = dpath + '/rmdir_async_001_1d';
-        let fffpath = ddpath + '/rmdir_async_002';
+        let fpath = dpath + '/rmdir_async_003';
+        let ffpath = dpath + '/rmdir_async_003_1';
+        let ddpath = dpath + '/rmdir_async_003_1d';
+        let fffpath = ddpath + '/rmdir_async_003_2';
         fileio.mkdirSync(dpath);
         fileio.mkdirSync(ddpath);
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -305,28 +326,28 @@ describe('fileio_rmdir', function () {
     /**
      * @tc.number SUB_STORAGE_FileIO_RMDIR_ASYNC_0400
      * @tc.name fileio_test_rmdir_async_004
-     * @tc.desc Test rmdir() interface. Invalid path.
+     * @tc.desc Test rmdirSync() interface. The path contains ../, normal call.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 0
      * @tc.require
      */
-    it('fileio_test_rmdir_async_004', 0, async function (done) {
-        let dpath = await nextFileName('fileio_test_rmdir_async_004') + 'd';
+    it('fileio_test_rmdir_async_004', 0, async function () {
+        let dpath = await nextFileName('../cache/fileio_test_rmdir_async_004') + 'd';
 
         try {
+            fileio.mkdirSync(dpath);
             await fileio.rmdir(dpath);
         } catch (err) {
             console.info('fileio_test_rmdir_async_004 has failed for ' + err);
-            expect(isInclude(err.message, 'No such file or directory')).assertTrue();
-            done();
+            expect(null).assertFail();
         }
     });
 
     /**
      * @tc.number SUB_STORAGE_FileIO_RMDIR_ASYNC_0500
      * @tc.name fileio_test_rmdir_async_005
-     * @tc.desc Test rmdir() interface. Parameter mismatch.
+     * @tc.desc Test rmdir() interface. Invalid path.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 0
@@ -334,12 +355,12 @@ describe('fileio_rmdir', function () {
      */
      it('fileio_test_rmdir_async_005', 0, async function (done) {
         let dpath = await nextFileName('fileio_test_rmdir_async_005') + 'd';
+
         try {
-            fileio.rmdir(dpath, '', function() {
-            });
+            await fileio.rmdir(dpath);
         } catch (err) {
             console.info('fileio_test_rmdir_async_005 has failed for ' + err);
-            expect(isInclude(err.message, 'Number of arguments unmatched')).assertTrue();
+            expect(isInclude(err.message, 'No such file or directory')).assertTrue();
             done();
         }
     });
@@ -347,18 +368,20 @@ describe('fileio_rmdir', function () {
     /**
      * @tc.number SUB_STORAGE_FileIO_RMDIR_ASYNC_0600
      * @tc.name fileio_test_rmdir_async_006
-     * @tc.desc Test rmdir() interface. Invalid path.
+     * @tc.desc Test rmdir() interface. Parameter mismatch.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 0
      * @tc.require
      */
     it('fileio_test_rmdir_async_006', 0, async function (done) {
+        let dpath = await nextFileName('fileio_test_rmdir_async_006') + 'd';
         try {
-            await fileio.rmdir('');
+            fileio.rmdir(dpath, '', function() {
+            });
         } catch (err) {
             console.info('fileio_test_rmdir_async_006 has failed for ' + err);
-            expect(isInclude(err.message, 'No such file or directory')).assertTrue();
+            expect(isInclude(err.message, 'Number of arguments unmatched')).assertTrue();
             done();
         }
     });
@@ -366,19 +389,38 @@ describe('fileio_rmdir', function () {
     /**
      * @tc.number SUB_STORAGE_FileIO_RMDIR_ASYNC_0700
      * @tc.name fileio_test_rmdir_async_007
-     * @tc.desc Test rmdir() interface. Not a directory.
+     * @tc.desc Test rmdir() interface. Invalid path.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 0
      * @tc.require
      */
     it('fileio_test_rmdir_async_007', 0, async function (done) {
-        let fpath = await nextFileName('fileio_test_rmdir_async_007');
+        try {
+            await fileio.rmdir('');
+        } catch (err) {
+            console.info('fileio_test_rmdir_async_007 has failed for ' + err);
+            expect(isInclude(err.message, 'No such file or directory')).assertTrue();
+            done();
+        }
+    });
+
+    /**
+     * @tc.number SUB_STORAGE_FileIO_RMDIR_ASYNC_0800
+     * @tc.name fileio_test_rmdir_async_008
+     * @tc.desc Test rmdir() interface. Not a directory.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 0
+     * @tc.require
+     */
+    it('fileio_test_rmdir_async_008', 0, async function (done) {
+        let fpath = await nextFileName('fileio_test_rmdir_async_008');
         expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
         try {
             await fileio.rmdir(fpath);
         } catch (err) {
-            console.info('fileio_test_rmdir_async_007 has failed for ' + err);
+            console.info('fileio_test_rmdir_async_008 has failed for ' + err);
             expect(isInclude(err.message, 'Not a directory')).assertTrue();
             fileio.unlinkSync(fpath);
             done();
