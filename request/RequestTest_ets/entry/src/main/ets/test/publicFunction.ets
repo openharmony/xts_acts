@@ -27,7 +27,7 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-function getUploadConfig(fileurl){
+function getUploadConfig(fileURL){
     let File = {
         filename: 'test', // When multipart is submitted, the file name in the request header.
         name: 'test', // When multipart is submitted, the name of the form item. The default is file.
@@ -52,74 +52,74 @@ function getUploadConfig(fileurl){
 }
 
 //upload公共方法
-function publicupload(UploadConfig){
-    console.info(`Testupdate UploadConfig ${JSON.stringify(UploadConfig)}`)
+function publicUpload(UploadConfig){
+    console.info(`TestUpdate UploadConfig ${JSON.stringify(UploadConfig)}`)
     return new Promise(function(resolve, reject) {
         request.upload(UploadConfig, (err, data) => {
-            console.info("Testupdate publiconprogress Updatetask =" + JSON.stringify(data));
+            console.info("TestUpdate publicOnProgress UpdateTask =" + JSON.stringify(data));
             resolve(data);
         })
     })
 }
 
-//onprogress公共方法
-function publiconprogress(Updatetask, Type){
+//OnProgress公共方法
+function publicOnProgress(UpdateTask, Type){
     return new Promise(function(resolve, reject) {
-        Updatetask.on(Type, function(data1 ,data2){
+        UpdateTask.on(Type, function(data1 ,data2){
             let progress = {
                 uploadedSize : data1,
                 totalSize : data2
             }
-            console.info("Testupdate publiconprogress uploadedSize =" + data1);
-            console.info("Testupdate publiconprogress totalSize =" + data2);
+            console.info("TestUpdate publicOnProgress uploadedSize =" + data1);
+            console.info("TestUpdate publicOnProgress totalSize =" + data2);
             resolve(progress);
         })
     })
 }
 
-//offprogress公共方法
-function publicoffprogress(Updatetask, Type){
+//OffProgress公共方法
+function publicOffProgress(UpdateTask, Type){
     return new Promise(function(resolve, reject) {
-        Updatetask.off(Type, function(data1 ,data2){
+        UpdateTask.off(Type, function(data1 ,data2){
             let progress = {
                 uploadedSize : data1,
                 totalSize : data2
             }
-            console.info("Testupdate publicoffprogress uploadedSize =" + data1);
-            console.info("Testupdate publicoffprogress totalSize =" + data2);
+            console.info("TestUpdate publicOffProgress uploadedSize =" + data1);
+            console.info("TestUpdate publicOffProgress totalSize =" + data2);
             resolve(progress);
         })
     })
 }
 
 //其他on公共方法
-function publicon(Updatetask, Type){
+function publicOn(UpdateTask, Type){
     return new Promise(function(resolve, reject) {
-        Updatetask.on(Type, function(data){
-            console.info("Testupdate publicon =" + data);
+        UpdateTask.on(Type, function(data){
+            console.info("TestUpdate publicOn =" + data);
             resolve(data);
         })
     })
 }
 
 //其他off公共方法
-function publicoff(Updatetask, Type){
+function publicOff(UpdateTask, Type){
     return new Promise(function(resolve, reject) {
-        Updatetask.off(Type, function(data){
-            console.info("Testupdate publicoff =" + data);
+        UpdateTask.off(Type, function(data){
+            console.info("TestUpdate publicOff =" + data);
             resolve(data);
         })
     })
 }
 
 //remove公共方法
-function publicremove(Updatetask){
+function publicRemove(UpdateTask){
     return new Promise(function(resolve, reject) {
-        Updatetask.remove((err,data) => {
-            console.info("Testupdate publicremove =" + data);
+        UpdateTask.remove((err,data) => {
+            console.info("TestUpdate publicRemove =" + data);
             resolve(data);
         })
     })
 }
 
-export{publicupload,publicon,publicoff,publicremove,publiconprogress,publicoffprogress,getUploadConfig,sleep}
+export{publicUpload,publicOn,publicOff,publicRemove,publicOnProgress,publicOffProgress,getUploadConfig,sleep}

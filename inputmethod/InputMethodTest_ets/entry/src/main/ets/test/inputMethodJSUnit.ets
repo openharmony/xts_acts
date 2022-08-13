@@ -16,7 +16,7 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'hypium/index';
 import inputMethod from '@ohos.inputmethod';
 
-export default function settingUiJsunit() {
+export default function inputMethodJSUnit() {
   describe('appInfoTest_input_2', function () {
     console.info("************* settings Test start*************");
     it('inputmethoh_test_001', 0, async function (done) {

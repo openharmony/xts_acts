@@ -18,8 +18,8 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 
 const WALLPAPER_SYSTEM = 0;
 const WALLPAPER_LOCKSCREEN = 1;
-var imageSourceSystem = '/data/service/el1/public/wallpaper/0/system/wallpaper';
-var imageSourceLockscreen = '/data/service/el1/public/wallpaper/0/lockscreen/wallpaper_lock';
+let imageSourceSystem = '/data/service/el1/public/wallpaper/0/system/wallpaper';
+let imageSourceLockscreen = '/data/service/el1/public/wallpaper/0/lockscreen/wallpaper_lock';
 
 export default function wallpaperJSUnit() {
     describe('WallpaperJsunitTest', function () {
