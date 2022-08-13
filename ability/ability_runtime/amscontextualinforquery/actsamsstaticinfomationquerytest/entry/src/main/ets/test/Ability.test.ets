@@ -286,7 +286,7 @@ export default function abilityTest() {
             expect(data.labelId.length).assertLarger(0);
             expect(data.icon).assertEqual("$media:icon");
             expect(data.iconId.length).assertLarger(0);
-            expect(data.process).assertEqual("");
+            expect(data.process).assertEqual("com.example.staticinfomationquery");
             expect(data.supportedModes).assertEqual(0);
             expect(data.moduleSourceDirs.length).assertEqual(1);
             expect(data.moduleSourceDirs[0]).assertEqual("/data/app/el1/bundle/public/" +
