@@ -20,7 +20,6 @@ import fileAssetTestCallbackTest from './fileAssetTestCallback.test.ets'
 import fileAssetUriTestCallBackTest from './fileAssetUriTestCallBack.test.ets'
 import fileAssetUriTestPromiseTest from './fileAssetUriTestPromise.test.ets'
 import fileTestCallBackTest from './fileTestCallBack.test.ets'
-import fileTestPromiseTest from './fileTestPromise.test.ets'
 import mediaLibraryTestCallBackTest from './mediaLibraryTestCallBack.test.ets'
 import mediaLibraryTestPromiseTest from './mediaLibraryTestPromise.test.ets'
 import mediaLibraryTestPromiseOnOffTest from './mediaLibraryTestPromiseOnOff.test.ets'
@@ -34,7 +33,6 @@ export default function testsuite(abilityContext) {
   fileAssetUriTestCallBackTest(abilityContext)
   fileAssetUriTestPromiseTest(abilityContext)
   fileTestCallBackTest(abilityContext)
-  fileTestPromiseTest(abilityContext)
   mediaLibraryTestCallBackTest(abilityContext)
   mediaLibraryTestPromiseTest(abilityContext)
   mediaLibraryTestPromiseOnOffTest(abilityContext)

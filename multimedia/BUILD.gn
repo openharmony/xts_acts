@@ -37,6 +37,7 @@ group("multimedia") {
       "media/media_js_standard/videoPlayer:video_player_js_hap",
       "medialibrary/mediaLibrary_album:mediaLibrary_album_hap",
       "medialibrary/mediaLibrary_favorite:mediaLibrary_favorite_hap",
+      "medialibrary/mediaLibrary_file:mediaLibrary_file_hap",
       "medialibrary/mediaLibrary_fileAsset:mediaLibrary_fileAsset_hap",
       "medialibrary/mediaLibrary_fileKey:mediaLibrary_fileKey_hap",
       "medialibrary/mediaLibrary_fileResult:mediaLibrary_fileResult_hap",
