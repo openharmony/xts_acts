@@ -46,13 +46,13 @@ export default function ActsAccountNoPermission() {
             console.debug("====>creat finish====");
             appAccountManager.addAccount("syncenable_callback_setnopermission", (err)=>{
                 console.debug("====>add account ActsAccountNoPermission_0100 err:" + JSON.stringify(err));
-                expect(err).assertEqual(undefined);
+                expect(err).assertEqual(null);
                 appAccountManager.setAppAccountSyncEnable("syncenable_callback_setnopermission", true, (err)=>{
                     console.debug("====>setAppAccountSyncEnable 0100 err:" + JSON.stringify(err));
                     expect(err.code).assertEqual(account.ResultCode.ERROR_PERMISSION_DENIED);
                     appAccountManager.deleteAccount("syncenable_callback_setnopermission", (err)=>{
                         console.debug("====>delete Account ActsAccountNoPermission_0100 err:" + JSON.stringify(err));
-                        expect(err).assertEqual(undefined);
+                        expect(err).assertEqual(null);
                         console.debug("====>ActsAccountNoPermission_0100 end====");
                         done();
                     }); 
@@ -96,13 +96,13 @@ export default function ActsAccountNoPermission() {
             console.debug("====>creat finish====");
             appAccountManager.addAccount("syncenable_callback_checknopermission", (err)=>{
                 console.debug("====>add account ActsAccountNoPermission_0300 err:" + JSON.stringify(err));
-                expect(err).assertEqual(undefined);
+                expect(err).assertEqual(null);
                 appAccountManager.checkAppAccountSyncEnable("syncenable_callback_checknopermission", (err, data)=>{
                     console.debug("====>checkAppAccountSyncEnable 0300 err:" + JSON.stringify(err));
                     expect(err.code).assertEqual(account.ResultCode.ERROR_PERMISSION_DENIED);
                     appAccountManager.deleteAccount("syncenable_callback_checknopermission", (err)=>{
                         console.debug("====>delete Account ActsAccountNoPermission_0300 err:" + JSON.stringify(err));
-                        expect(err).assertEqual(undefined);
+                        expect(err).assertEqual(null);
                         console.debug("====>ActsAccountNoPermission_0300 end====");
                         done();
                     });
@@ -145,13 +145,13 @@ export default function ActsAccountNoPermission() {
             console.debug("====>creat finish====");
             appAccountManager.addAccount("accessibleAccount_callback_nopermission", (err)=>{
                 console.debug("====> add account ActsAccountNoPermission_0500 err:" + JSON.stringify(err));
-                expect(err).assertEqual(undefined);
+                expect(err).assertEqual(null);
                 appAccountManager.getAllAccessibleAccounts((err, data)=>{
                     console.debug("====>getAllAccessibleAccounts 0500 err:" + JSON.stringify(err));
                     expect(err.code).assertEqual(account.ResultCode.ERROR_PERMISSION_DENIED);
                     appAccountManager.deleteAccount("accessibleAccount_callback_nopermission", (err)=>{
                         console.debug("====>delete Account ActsAccountNoPermission_0500 err:" + JSON.stringify(err));
-                        expect(err).assertEqual(undefined);
+                        expect(err).assertEqual(null);
                         console.debug("====>ActsAccountNoPermission_0500 end====");
                         done();
                     })
@@ -195,13 +195,13 @@ export default function ActsAccountNoPermission() {
             var selfBundle = "com.example.actsaccounttest";
             appAccountManager.addAccount("getAll_callback_nopermission", (err)=>{
                 console.debug("====>add account 0700 err:" + JSON.stringify(err));
-                expect(err).assertEqual(undefined);
+                expect(err).assertEqual(null);
                 appAccountManager.getAllAccounts(selfBundle, (err, data)=>{
                     console.debug("====>getAllAccounts 0700 err:" + JSON.stringify(err));
-                    expect(err).assertEqual(undefined);
+                    expect(err.code).assertEqual(account.ResultCode.ERROR_PERMISSION_DENIED);
                     appAccountManager.deleteAccount("getAll_callback_nopermission", (err)=>{
                         console.debug("====>delete account 0700 err:" + JSON.stringify(err));
-                        expect(err).assertEqual(undefined);
+                        expect(err).assertEqual(null);
                         console.debug("====>ActsAccountNoPermission_0700 end====");
                         done();
                     });
@@ -224,7 +224,7 @@ export default function ActsAccountNoPermission() {
             console.debug("====>getAllAccounts 0800 start====");
             try{
                 var data = await appAccountManager.getAllAccounts(selfBundle);
-                console.debug("====>getAll_promist_nopermission data:" + JSON.stringify(data))
+                console.debug("====>getAll_promise_nopermission data:" + JSON.stringify(data))
                 expect(data.length>0).assertEqual(true);
                 done();
             }
