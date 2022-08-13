@@ -16,7 +16,7 @@
 import {describe, it, expect} from 'hypium/index';
 import request from '@ohos.request';
 
-export default function inputRequestJsunit() {
+export default function inputRequestJSUnit() {
   describe('inputRequestTest', function () {
     console.log("************* request Test start*************");
 

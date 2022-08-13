@@ -16,7 +16,7 @@
 import {describe, it, expect} from "deccjsunit/index.ets";
 import request from '@ohos.request';
 
-export default function requestDownloadJsunit() {
+export default function requestDownloadJSUnit() {
   describe('requestDownloadTest', function () {
     let downloadConfig = {
       url: "www.baidu.com"
@@ -32,10 +32,10 @@ export default function requestDownloadJsunit() {
       header: 'HTTP',
       method: 'post',
       files: file,
-      data: 'jason/xml'
+      data: 'json/xml'
     };
-    var receivedSize;
-    var totalSize;
+    let receivedSize;
+    let totalSize;
     console.log("************* settings Test start*************");
 
     /**

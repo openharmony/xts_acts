@@ -16,7 +16,7 @@
 import {describe, it, expect} from "deccjsunit/index.ets";
 import request from '@ohos.request';
 
-export default function requestJsunit() {
+export default function requestJSUnit() {
   describe('requestTest', function () {
 
     /**

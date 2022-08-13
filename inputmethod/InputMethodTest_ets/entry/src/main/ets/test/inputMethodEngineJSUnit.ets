@@ -19,12 +19,12 @@ import Utils from './Utils';
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter';
 
-export default function inputMethodEngineJsunit() {
+export default function inputMethodEngineJSUnit() {
   describe('appInfoTest_input_1', function () {
-    var mKeyboardDelegate = null;
-    var inputMethodEngineObject = inputMethodEngine.getInputMethodEngine();
-    var textInputClient = null;
-    var kbController = null;
+    let mKeyboardDelegate = null;
+    let inputMethodEngineObject = inputMethodEngine.getInputMethodEngine();
+    let textInputClient = null;
+    let kbController = null;
 
     console.info("************* inputMethodEngine Test start*************");
     beforeEach(async function (done) {

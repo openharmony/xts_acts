@@ -57,10 +57,10 @@ export default class Utils {
   }
 
   static async drags(downX, downY, upX, upY, steps, drag) {
-    var xStep;
-    var yStep;
-    var swipeSteps;
-    var ret;
+    let xStep;
+    let yStep;
+    let swipeSteps;
+    let ret;
     xStep = 0;
     yStep = 0;
     ret = false;
@@ -71,7 +71,7 @@ export default class Utils {
     xStep = (upX - downX) / swipeSteps;
     yStep = (upY - downY) / swipeSteps;
     console.info('move step is: ' + 'xStep: ' + xStep + '    yStep: ' + yStep)
-    var downPonit: TouchObject = {
+    let downPonit: TouchObject = {
       id: 1,
       x: downX,
       y: downY,
@@ -83,8 +83,8 @@ export default class Utils {
     if (drag) {
       await this.sleep(500)
     }
-    for (var i = 1;i <= swipeSteps; i++) {
-      var movePoint: TouchObject = {
+    for (let i = 1;i <= swipeSteps; i++) {
+      let movePoint: TouchObject = {
         id: 1,
         x: downX + (xStep * i),
         y: downY + (yStep * i),
@@ -101,7 +101,7 @@ export default class Utils {
     if (drag) {
       await this.sleep(100)
     }
-    var upPoint: TouchObject = {
+    let upPoint: TouchObject = {
       id: 1,
       x: upX,
       y: upY,
