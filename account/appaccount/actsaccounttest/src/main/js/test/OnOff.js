@@ -326,7 +326,7 @@ export default function ActsAccountChangeOnOff() {
             await appAccountManager.enableAppAccess("onoff_delete", "com.example.actsaccountsceneonoff");
             function unSubscriberCallback(err){
                 console.debug("====>unsubscribe 0500 err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
+                expect(err).assertEqual(null);
                 done();
             }
             function subscriberCallback(err, data){

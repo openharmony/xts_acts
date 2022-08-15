@@ -376,7 +376,7 @@ export default function ActsAccountAppAccess() {
                     appAccountManager.getAccountCredential(name, "PIN").then((data) =>{
                         console.debug("====>ActsAccountDeleteAccountCredential_0200 getAccountCredential_data:" + JSON.stringify(data));
                         appAccountManager.deleteAccountCredential(name, "PIN").then((data) =>{
-                            console.debug("====>ActsAccountDeleteAccountCredential_0200 data:" + JSON.stringify(data));                //expect undefined assertEqual true
+                            console.debug("====>ActsAccountDeleteAccountCredential_0200 data:" + JSON.stringify(data));                
                             try{
                                 appAccountManager.deleteAccount(name)
                                 console.debug('====>ActsAccountDeleteAccountCredential_0200 deleteAccount_success')

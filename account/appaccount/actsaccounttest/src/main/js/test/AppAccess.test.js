@@ -204,6 +204,7 @@ export default function ActsAccountAppAccess() {
                     console.debug("====>enableAppAccess 0700 err:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
                     appAccountManager.disableAppAccess("AppAccess_callback_account", enableBundle, (err)=>{
+			console.debug("====>disableAppAccess 0700 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null)
                         appAccountManager.deleteAccount("AppAccess_callback_account", (err)=>{
                             console.debug("====>delete Account ActsAccountAppAccess_0700 err:" + JSON.stringify(err));
