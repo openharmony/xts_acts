@@ -1,0 +1,58 @@
+{
+    "description": "Configuration for mediaLibrary Tests",
+    "driver": {
+        "type": "JSUnitTest",
+        "test-timeout": "300000",
+        "package": "ohos.acts.multimedia.mediaLibrary",
+        "shell-timeout": "600000"
+    },
+    "kits": [
+        {
+            "type": "ShellKit",
+            "pre-push": [
+            ],
+            "run-command": [
+                "rm -rf /storage/media/100/local/files/*",
+                "rm -rf /data/app/el2/100/database/com.ohos.medialibrary.medialibrarydata/*",
+                "mkdir -pv /storage/media/100/local/files/{Pictures,Videos,Audios,Documents}",
+                "mkdir -p /data/accounts/account_0/appdata/com.ohos.medialibrary.medialibrarydata"
+            ]
+        },
+        {
+            "type": "PushKit",
+            "pre-push": [
+            ],
+            "push": [
+                "./resource/medialibrary/01.jpg ->/data/accounts/account_0/appdata/com.ohos.medialibrary.medialibrarydata",
+                "./resource/medialibrary/01.mp3 ->/data/accounts/account_0/appdata/com.ohos.medialibrary.medialibrarydata",
+                "./resource/medialibrary/01.mp4 ->/data/accounts/account_0/appdata/com.ohos.medialibrary.medialibrarydata",
+                "./resource/medialibrary/01.dat ->/data/accounts/account_0/appdata/com.ohos.medialibrary.medialibrarydata"
+            ]
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "mkdir -pv /storage/media/100/local/files/Pictures/ImageInfo",
+                "mkdir -pv /storage/media/100/local/files/Audios/Static",
+                
+                "cp /data/accounts/account_0/appdata/com.ohos.medialibrary.medialibrarydata/01.jpg /storage/media/100/local/files/Pictures/ImageInfo/01.jpg",
+                "cp /data/accounts/account_0/appdata/com.ohos.medialibrary.medialibrarydata/01.mp3 /storage/media/100/local/files/Audios/Static/01.mp3",
+                
+                "chmod -R 777 /storage/media/100/local/files/*",
+                "chmod -R 777 /data/service/el2/100/hmdfs/account/files/*",
+                "hilog -Q pidoff",
+                "hilog -p off",
+                "hilog -b D -D 0xD002B70", 
+                "scanner_demo",
+                "sleep 10"
+            ]
+        },
+        {
+            "test-file-name": [
+                "ActsMediaLibraryFileKey.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        }
+    ]
+}

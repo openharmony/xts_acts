@@ -47,9 +47,7 @@
                 "hilog -Q pidoff",
                 "hilog -p off",
                 "hilog -b D -D 0xD002B70", 
-                "aa start -a com.ohos.photos.MainAbility -b com.ohos.photos",
-                "sleep 10",
-                "cem publish -e usual.event.SCREEN_OFF",
+                "scanner_demo",
                 "sleep 10"
             ]
         },

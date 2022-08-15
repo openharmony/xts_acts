@@ -16,14 +16,12 @@ import file from '@system.file';
 
 import { Core, ExpectExtend, InstrumentLog, ReportExtend } from "deccjsunit/index"
 import testsuite from "../../test/List.test.ets"
-import { getPermission } from "../../../../../../../common"
 
 @Entry
 @Component
 struct Index {
 
   aboutToAppear(){
-    getPermission()
     console.info("start run testcase!!!!")
     const core = Core.getInstance()
     const expectExtend = new ExpectExtend({

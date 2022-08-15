@@ -24,12 +24,14 @@ import {
     checkPresetsAssets,
     checkAssetsCount,
     fetchOps,
+    getPermission,
 } from '../../../../../../common';
 
 export default function fetchFileResultCallbackTest(abilityContext) {
     describe('fetchFileResultCallbackTest', function () {
         const media = mediaLibrary.getMediaLibrary(abilityContext);
         beforeAll(async function () {
+            await getPermission();
             await checkPresetsAssets(media, 'ActsMediaLibraryAlbumFileResultCb');
         });
         beforeEach(function () { });

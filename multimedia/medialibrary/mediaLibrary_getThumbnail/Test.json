@@ -1,0 +1,62 @@
+{
+    "description": "Configuration for mediaLibrary Tests",
+    "driver": {
+        "type": "JSUnitTest",
+        "test-timeout": "300000",
+        "package": "ohos.acts.multimedia.mediaLibrary",
+        "shell-timeout": "300000"
+    },
+    "kits": [
+        {
+            "type": "ShellKit",
+            "pre-push": [
+            ],
+            "run-command": [
+                "rm -rf /storage/media/100/local/files/*",
+                "rm -rf /data/app/el2/100/database/com.ohos.medialibrary.MediaLibraryDataA/*",
+                "mkdir -pv /storage/media/100/local/files/{Pictures,Videos,Audios}",
+                "mkdir -p /data/accounts/account_0/appdata/com.ohos.medialibrary.MediaLibraryDataA"
+            ]
+        },
+        {
+            "type": "PushKit",
+            "pre-push": [
+            ],
+            "push": [
+                "./resource/medialibrary/01.jpg ->/data/accounts/account_0/appdata/com.ohos.medialibrary.MediaLibraryDataA",
+                "./resource/medialibrary/01.mp3 ->/data/accounts/account_0/appdata/com.ohos.medialibrary.MediaLibraryDataA",
+                "./resource/medialibrary/01.mp4 ->/data/accounts/account_0/appdata/com.ohos.medialibrary.MediaLibraryDataA"
+            ]
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "mkdir -pv /storage/media/100/local/files/Pictures/Thumbnail",
+                "mkdir -pv /storage/media/100/local/files/Videos/Thumbnail",
+                "mkdir -pv /storage/media/100/local/files/Audios/Thumbnail",
+
+                "cp /data/accounts/account_0/appdata/com.ohos.medialibrary.MediaLibraryDataA/01.jpg /storage/media/100/local/files/Pictures/Thumbnail",
+                "cp /data/accounts/account_0/appdata/com.ohos.medialibrary.MediaLibraryDataA/01.mp3 /storage/media/100/local/files/Audios/Thumbnail",
+                "cp /data/accounts/account_0/appdata/com.ohos.medialibrary.MediaLibraryDataA/01.mp4 /storage/media/100/local/files/Videos/Thumbnail",
+
+                "chmod -R 777 /storage/media/100/local/files/*",
+                "chmod -R 777 /data/service/el2/100/hmdfs/account/files/*",
+                "hilog -Q pidoff",
+                "hilog -p off",
+                "hilog -b D -D 0xD002B70", 
+                "scanner_demo",
+                "sleep 10"
+            ],
+            "teardown-command":[
+               "rm -rf /storage/media/100/local/files/*"
+            ]
+        },
+        {
+            "test-file-name": [
+                "ActsMediaLibraryGetThumbnailTest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        }
+    ]
+}
