@@ -1,7 +1,7 @@
 {
   "app": {
     "vendor": "open",
-    "bundleName": "com.uitest.acts",
+    "bundleName": "com.uitestScene.acts",
     "version": {
       "code": 1000000,
       "name": "1.0.0"
@@ -14,7 +14,7 @@
   },
   "deviceConfig": {},
   "module": {
-    "package": "com.uitest.acts",
+    "package": "com.uitestScene.acts",
     "name": ".MyApplication",
     "mainAbility": ".MainAbility",
     "srcPath": "MainAbility",
@@ -50,19 +50,6 @@
         "label": "$string:entry_MainAbility",
         "type": "page",
         "launchType": "standard"
-      },
-      {
-        "orientation": "unspecified",
-        "formsEnabled": false,
-        "visible": true,
-        "srcPath": "TestAbility",
-        "name": ".TestAbility",
-        "srcLanguage": "ets",
-        "icon": "$media:icon",
-        "description": "$string:TestAbility_desc",
-        "label": "$string:TestAbility_label",
-        "type": "page",
-        "launchType": "standard"
       }
     ],
     "js": [
@@ -72,23 +59,13 @@
           "type": "pageAbility"
         },
         "pages": [
-          "pages/index"
+          "pages/index",
+          "pages/second",
+          "pages/third",
+          "pages/fourth",
+          "pages/screen"
         ],
         "name": ".MainAbility",
-        "window": {
-          "designWidth": 720,
-          "autoDesignWidth": false
-        }
-      },
-      {
-        "mode": {
-          "syntax": "ets",
-          "type": "pageAbility"
-        },
-        "pages": [
-          "pages/index"
-        ],
-        "name": ".TestAbility",
         "window": {
           "designWidth": 720,
           "autoDesignWidth": false
