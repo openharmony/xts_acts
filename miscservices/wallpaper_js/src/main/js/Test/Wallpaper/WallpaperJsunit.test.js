@@ -76,7 +76,7 @@ describe('WallpaperJsunitTest', function () {
             console.info('wallpaperXTS ===> testGetColorsCallbackSystem data : ' + data[0][2]);
             console.info('wallpaperXTS ===> testGetColorsCallbackSystem data : ' + data[0][3]);
             if (err) {
-                expect(null).assertFail();
+                expect(err.code).assertEqual(801);
             }
             if ((data != undefined) && (data != null) && (data != '')) {
                 expect(true).assertTrue();
@@ -100,7 +100,7 @@ describe('WallpaperJsunitTest', function () {
         }).catch((err) => {
             console.info('wallpaperXTS ===> testGetColorsPromiseSystem err : ' + JSON.stringify(err));
             if (err) {
-                expect(err.code != null ).assertTrue();
+                expect(err.code).assertEqual(801);
             }
         });
         done();
@@ -117,7 +117,7 @@ describe('WallpaperJsunitTest', function () {
             console.info('wallpaperXTS ===> testGetColorsCallbackLock err : ' + JSON.stringify(err));
             console.info('wallpaperXTS ===> testGetColorsCallbackLock data : ' + JSON.stringify(data));
             if (err) {
-                expect(err.code === null).assertFalse();
+                expect(err.code).assertEqual(801);
 				done();
             }
             if ((data != undefined) && (data != null) && (data != '')) {
@@ -144,7 +144,7 @@ describe('WallpaperJsunitTest', function () {
         }).catch((err) => {
             console.info('wallpaperXTS ===> testGetColorsPromiseSystem err : ' + JSON.stringify(err));
             if (err) {
-                expect(err.code === null).assertFalse();
+                expect(err.code).assertEqual(801);
             }
 			done();
         });
@@ -489,8 +489,11 @@ describe('WallpaperJsunitTest', function () {
             console.info('wallpaperXTS ===> testSetWallpaperURLPromiseLock data : ' + JSON.stringify(data));
             if ((data != undefined) && (data != null) && (data != '')) {
                 expect(true).assertTrue();
+                done();
+            }else{
+                expect().assertFail();
+                done();
             }
-            done();
         }).catch((err) => {
             console.info('wallpaperXTS ===> testSetWallpaperURLPromiseLock err : ' + JSON.stringify(err));
             expect(true).assertTrue();
@@ -509,14 +512,14 @@ describe('WallpaperJsunitTest', function () {
         await wallpaper.setWallpaper(imageSource, WALLPAPER_SYSTEM, function (err, data) {
             console.info('wallpaperXTS ===> testSetWallpaperURLCallbackSystem err : ' + JSON.stringify(err));
             console.info('wallpaperXTS ===> testSetWallpaperURLCallbackSystem data : ' + JSON.stringify(data));
-            if (err) {
-                expect(null).assertFail();
-            }
-            if ((data != undefined) && (data != null) && (data != '')) {
+            if (data != undefined ) {
+                expect().assertFail();
+                done();
+            }else {
                 expect(true).assertTrue();
+                done();
             }
         });
-        done();
     })
 
     /*
@@ -556,14 +559,14 @@ describe('WallpaperJsunitTest', function () {
         await wallpaper.setWallpaper(imageSource, WALLPAPER_LOCKSCREEN, function (err, data) {
             console.info('wallpaperXTS ===> testSetWallpaperURLCallbackLock err : ' + JSON.stringify(err));
             console.info('wallpaperXTS ===> testSetWallpaperURLCallbackLock data : ' + JSON.stringify(data));
-            if (err) {
-                expect(null).assertFail();
-            }
-            if ((data != undefined) && (data != null) && (data != '')) {
+            if (data != undefined) {
+                expect().assertFail();
+                done();
+            }else {
                 expect(true).assertTrue();
+                done();
             }
         });
-        done();
     })
 
     /*
@@ -574,7 +577,7 @@ describe('WallpaperJsunitTest', function () {
      * @tc.level   0
      */
     it('testOnCallback101', 0, async function (done) {
-        await wallpaper.on('colorChange', function (colors, wallpaperType) {
+        let listener = (colors, wallpaperType) => {
             console.info('wallpaperXTS ===> testOnCallback colors : ' + JSON.stringify(colors));
             console.info('wallpaperXTS ===> testOnCallback wallpaperType : ' + JSON.stringify(wallpaperType));
             if ((colors != undefined) && (colors != null) && (colors != '')) {
@@ -583,28 +586,50 @@ describe('WallpaperJsunitTest', function () {
             if ((wallpaperType != undefined) && (wallpaperType != null) && (wallpaperType != '')) {
                 expect(true).assertTrue();
             }
-        })
-        done();
+        };
+        await wallpaper.on('colorChange', listener)
+        await wallpaper.off('colorChange', listener)
+        done()
     })
+    
+     /*
 
-    /*
-     * @tc.number  testOffCallback101
-     * @tc.name    Test on_colorChange to registers a listener for wallpaper color changes to
-                   receive notifications about the changes.
+     * @tc.number  testGetFileCallback101
+     * @tc.name    Test getfiule() to the ID of the wallpaper of the specified type.
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it('testOffCallback101', 0, async function (done) {
-        await wallpaper.off('colorChange', function (colors, wallpaperType) {
-            console.info('wallpaperXTS ===> testOffCallback colors : ' + JSON.stringify(colors));
-            console.info('wallpaperXTS ===> testOffCallback wallpaperType : ' + JSON.stringify(wallpaperType));
-            if ((colors != undefined) && (colors != null) && (colors != '')) {
-                expect(true).assertTrue();
+     it('testGetFileCallback101', 0, async function (done) {
+        wallpaper.getFile(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error, data) => {
+            if (error) {
+                console.error(`failed to testGetFileCallback101 because: ` + JSON.stringify(error));
+                expect(error.code).assertEqual("801");
+                done();
+
             }
-            if ((wallpaperType != undefined) && (wallpaperType != null) && (wallpaperType != '')) {
-                expect(true).assertTrue();
-            }
-        })
-        done();
+            console.info(`success to getFile: ` + JSON.stringify(data));
+        });
     })
+
+
+     /*
+
+     * @tc.number  testGetFilePromise101
+     * @tc.name    Test getfile() to the ID of the wallpaper of the specified type.
+     * @tc.desc    Function test
+     * @tc.level   0
+     */
+     it('testGetFilePromise101', 0, async function (done) {
+        await wallpaper.getFile(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then((data) => {
+            console.info(`success to getFile: ` + JSON.stringify(data));
+            expect(true).assertTrue();
+            done();
+        }).catch((error) => {
+            console.error(`failed to testGetFilePromise101 because: ` + JSON.stringify(error));
+            console.info(typeof(error.code));
+            expect(error.code).assertEqual("801");
+            done();
+        });
+    })
+
 })
