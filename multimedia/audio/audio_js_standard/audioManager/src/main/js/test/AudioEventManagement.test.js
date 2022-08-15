@@ -751,7 +751,6 @@ describe('audioEM', function () {
                 * @tc.level     : Level 0
             */
     it('SUB_AUDIO_MANAGER_DeviceType_001', 0, async function (done) {
-
         expect(audio.DeviceType.INVALID).assertEqual(0);
         await sleep(50);
         done();
@@ -765,8 +764,7 @@ describe('audioEM', function () {
                 * @tc.type      : Function
                 * @tc.level     : Level 0
             */
-    it('SUB_AUDIO_MANAGER_DeviceType_001', 0, async function (done) {
-
+    it('SUB_AUDIO_MANAGER_DeviceType_002', 0, async function (done) {
         expect(audio.DeviceType.WIRED_HEADSET).assertEqual(3);
         await sleep(50);
         done();
