@@ -19,10 +19,10 @@ hcpptest_suite("ActsParameterTest") {
 
   include_dirs = [
     "src",
-    "//base/startup/syspara_lite/interfaces/kits",
+    "//base/startup/init/interfaces/innerkits/include/syspara",
   ]
 
-  deps = [ "//base/startup/syspara_lite/frameworks/parameter:parameter" ]
+  deps = [ "//base/startup/init/interfaces/innerkits:libbegetutil" ]
   cflags = [ "-Wno-error" ]
   ldflags = [
     "-lstdc++",

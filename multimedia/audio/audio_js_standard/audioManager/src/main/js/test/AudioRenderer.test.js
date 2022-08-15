@@ -15,8 +15,6 @@
 
 import audio from '@ohos.multimedia.audio';
 import fileio from '@ohos.fileio';
-import bundle from '@ohos.bundle';
-import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 import resourceManager from '@ohos.resourceManager';
 import featureAbility from '@ohos.ability.featureAbility'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
@@ -31,7 +29,6 @@ describe('audioRenderer', function () {
     let filePath;
 
     beforeAll(async function () {
-        await applyPermission();
         console.info('AudioFrameworkRenderLog: beforeAll: Prerequisites at the test suite level');
     })
 
@@ -82,35 +79,6 @@ describe('audioRenderer', function () {
         }).catch((err) => {
             console.info('[fileIO]case catch open fd failed');
         });
-    }
-
-    async function applyPermission() {
-        let appInfo = await bundle.getApplicationInfo('ohos.acts.multimedia.audio.audiomanager', 0, 100);
-        let atManager = abilityAccessCtrl.createAtManager();
-        if (atManager != null) {
-            let tokenID = appInfo.accessTokenId;
-            console.info('AudioFrameworkRenderLog:[permission] case accessTokenID is ' + tokenID);
-            let permissionName1 = 'ohos.permission.MEDIA_LOCATION';
-            let permissionName2 = 'ohos.permission.READ_MEDIA';
-            let permissionName3 = 'ohos.permission.WRITE_MEDIA';
-            await atManager.grantUserGrantedPermission(tokenID, permissionName1, 1).then((result) => {
-                console.info('AudioFrameworkRenderLog:[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('AudioFrameworkRenderLog:[permission] case grantUserGrantedPermission failed :' + err);
-            });
-            await atManager.grantUserGrantedPermission(tokenID, permissionName2, 1).then((result) => {
-                console.info('AudioFrameworkRenderLog:[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('AudioFrameworkRenderLog:[permission] case grantUserGrantedPermission failed :' + err);
-            });
-            await atManager.grantUserGrantedPermission(tokenID, permissionName3, 1).then((result) => {
-                console.info('AudioFrameworkRenderLog:[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('AudioFrameworkRenderLog:[permission] case grantUserGrantedPermission failed :' + err);
-            });
-        } else {
-            console.info('AudioFrameworkRenderLog:[permission] case apply permission failed, createAtManager failed');
-        }
     }
 
     async function playbackPromise(AudioRendererOptions, pathName, AudioScene) {

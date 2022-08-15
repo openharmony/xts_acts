@@ -14,12 +14,6 @@
  */
 
 import audio from '@ohos.multimedia.audio';
-import fileio from '@ohos.fileio';
-import app from '@system.app';
-import bundle from '@ohos.bundle';
-import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
-import featureAbility from '@ohos.ability.featureAbility'
-import ability_featureAbility from '@ohos.ability.featureAbility';
 import resourceManager from '@ohos.resourceManager';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index';
 
@@ -28,13 +22,11 @@ describe('audioRendererChange', function () {
     var audioStreamManager;
 	var audioStreamManagerCB;
     let fdRead;
-    let readpath;
 	var Tag = "AFRenLog : ";
     const audioManager = audio.getAudioManager();
     console.info(Tag+'Create AudioManger Object JS Framework');
 
     beforeAll(async function () {
-        await applyPermission();
         await audioManager.getStreamManager().then(async function (data) {
             audioStreamManager = data;
             console.info(Tag+'Get AudioStream Manager : Success ');
@@ -105,34 +97,6 @@ describe('audioRendererChange', function () {
                 console.info("AFRenLog:case 0 fdRead is: "+fdRead);
             }
         })
-    }
-    async function applyPermission() {
-        let appInfo = await bundle.getApplicationInfo('ohos.acts.multimedia.audio.audiomanager', 0, 100);
-        let atManager = abilityAccessCtrl.createAtManager();
-        if (atManager != null) {
-            let tokenID = appInfo.accessTokenId;
-            console.info(Tag+'[permission] case accessTokenID is '+tokenID);
-            let permissionName1 = 'ohos.permission.MEDIA_LOCATION';
-            let permissionName2 = 'ohos.permission.READ_MEDIA';
-            let permissionName3 = 'ohos.permission.WRITE_MEDIA';
-            await atManager.grantUserGrantedPermission(tokenID, permissionName1, 1).then((result) => {
-                console.info(Tag+'[permission] case grantUserGrantedPermission success :'+result);
-            }).catch((err) => {
-                console.info(Tag+'[permission] case grantUserGrantedPermission failed :'+err);
-            });
-            await atManager.grantUserGrantedPermission(tokenID, permissionName2, 1).then((result) => {
-                console.info(Tag+'[permission] case grantUserGrantedPermission success :'+result);
-            }).catch((err) => {
-                console.info(Tag+'[permission] case grantUserGrantedPermission failed :'+err);
-            });
-            await atManager.grantUserGrantedPermission(tokenID, permissionName3, 1).then((result) => {
-                console.info(Tag+'[permission] case grantUserGrantedPermission success :'+result);
-            }).catch((err) => {
-                console.info(Tag+'[permission] case grantUserGrantedPermission failed :'+err);
-            });
-        } else {
-            console.info(Tag+'[permission] case apply permission failed, createAtManager failed');
-        }
     }
 
     /* *
