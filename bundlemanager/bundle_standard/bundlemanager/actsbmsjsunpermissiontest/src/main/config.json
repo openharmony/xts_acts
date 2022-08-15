@@ -17,7 +17,7 @@
         "package": "com.example.actsbmsjsunpermissiontest",
         "name": ".entry",
         "deviceType": [
-            "phone"
+            "default"
         ],
         "distro": {
             "deliveryWithInstall": true,

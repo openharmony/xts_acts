@@ -20,7 +20,7 @@
     "name": ".BmsThirdBundle3",
     "colorMode": "auto",
     "deviceType": [
-      "phone"
+      "default"
     ],
     "distro": {
       "deliveryWithInstall": true,
