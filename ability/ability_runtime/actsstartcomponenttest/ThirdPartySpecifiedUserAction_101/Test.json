@@ -51,6 +51,10 @@
 		     "type": "ShellKit",
             "run-command": [
                 "acm switch -i 101"
+            ],
+            "teardown-command":[
+                "acm delete -i 101",
+                "acm delete -i 102"
             ]
         },
         {
