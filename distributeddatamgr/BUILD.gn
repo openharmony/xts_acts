@@ -17,7 +17,7 @@ group("distributeddatamgr") {
   if (is_standard_system) {
     deps = [
       "dataObjectjstest/hap:dataObject_js_test",
-      "dataShare:dataShare",
+      "dataSharejstest/hap:dataShare_js_test",
       "kvStorejstest/hap:kvStore_js_test",
       "preferencesjstest/hap:preferences_js_test",
       "relationalStorejstest/hap:relationalstore_js_test",
