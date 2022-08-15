@@ -26,6 +26,7 @@ const presetsCount = {
     ActsMediaLibraryFileKey: { assetsCount: 4, albumsCount: 4 },
     ActsMediaLibraryFileAsset: { assetsCount: 4, albumsCount: 4 },
     ActsMediaLibraryFile: { assetsCount: 4, albumsCount: 4 },
+    ActsMediaLibraryGetThumbnail: { assetsCount: 3, albumsCount: 3 },
 }
 
 const IMAGE_TYPE = mediaLibrary.MediaType.IMAGE;

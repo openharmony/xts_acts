@@ -64,7 +64,7 @@ export default function filekeyTestPromiseTest(abilityContext) {
             try {
                 let assetOp = fetchOps('Pictures/ImageInfo/', IMAGE_TYPE);
                 if (type == 'audioAlbum' || type == 'artist' || type == 'duration') {
-                    assetOp = fetchOps('Audios/Static2/', AUDIO_TYPE);
+                    assetOp = fetchOps('Audios/Static/', AUDIO_TYPE);
                 }
                 console.info(`${testNum} assOp : ${JSON.stringify(assetOp)}`)
                 let fetchFileResult = await media.getFileAssets(assetOp);
