@@ -325,15 +325,14 @@ export default function ActsAccountChangeOnOff() {
             console.debug("====>enableAppAccess ActsAccountChangeOnOff_0500 start");
             await appAccountManager.enableAppAccess("onoff_delete", "com.example.actsaccountsceneonoff");
             function unSubscriberCallback(err){
-                console.debug("====>unsubscribe 0500 err:" + JSON.stringify(err));
-                expect(err).assertEqual(null);
-                done();
+                console.debug("====>unsubscribe 0500 err:" + JSON.stringify(err));                
             }
             function subscriberCallback(err, data){
                 console.debug("====>subscriberCallback 0500 data:" + JSON.stringify(data));
                 expect(data.event).assertEqual("account_on_change_delete");
                 expect(data.data).assertEqual("SUCCESS");
                 commonevent.unsubscribe(subscriber, unSubscriberCallback);
+                done();
             }
             function publishCallback(err){
                 console.debug("====>publish call back err:" + JSON.stringify(err));
