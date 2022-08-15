@@ -1055,11 +1055,11 @@ export default function ActsAccountOAuthToken() {
             console.debug("====>getOAuthToken ActsAccountOAuthToken_1200 start====");
             var data1BeforeDel = await appAccountManager.getOAuthToken("account_promise_setDeleteGet",OWNERSELF,"old_authType");
             console.debug("====>getOAuthToken getOld ActsAccountOAuthToken_1200 data1BeforeDel:" + data1BeforeDel);
-            expect(data1_beforeDel).assertEqual("promise_setDeleteGet_token");
+            expect(data1BeforeDel).assertEqual("promise_setDeleteGet_token");
             console.debug("====>getOAuthToken ActsAccountOAuthToken_1200 start====");
             var data2BeforeDel = await appAccountManager.getOAuthToken("account_promise_setDeleteGet",OWNERSELF,"new_authType");
             console.debug("====>getOAuthToken getNew ActsAccountOAuthToken_1200 data2BeforeDel:" + data2BeforeDel);
-            expect(data2beforeDel).assertEqual("promise_setDeleteGet_token");
+            expect(data2BeforeDel).assertEqual("promise_setDeleteGet_token");
 
             console.debug("====>deleteOAuthToken deleteOld ActsAccountOAuthToken_1200 start====");
             try{
@@ -1082,7 +1082,7 @@ export default function ActsAccountOAuthToken() {
             }
             console.debug("====>getOAuthToken ActsAccountOAuthToken_1200 start====");
             try{
-                var data2_AfterDel = await appAccountManager.getOAuthToken("account_promise_setDeleteGet",OWNERSELF,"new_authType",);
+                var data2AfterDel = await appAccountManager.getOAuthToken("account_promise_setDeleteGet",OWNERSELF,"new_authType",);
                 console.debug("====>getOAuthToken getOld ActsAccountOAuthToken_1200 data2_AfterDel:" + data2AfterDel);
                 expect(data2AfterDel).assertEqual("promise_setDeleteGet_token");
             }
