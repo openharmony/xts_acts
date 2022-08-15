@@ -13,19 +13,19 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_hap_assist_suite("ActsAmsUsersApi7AppA") {
+ohos_hap("ActsAmsUsersApi7AppA") {
   hap_name = "ActsAmsUsersApi7AppA"
   js_build_mode = "debug"
   hap_profile = "entry/src/main/config.json"
-
+  subsystem_name = XTS_SUITENAME
+  final_hap_path =
+      "${SUITES_OUTPUT_ROOT}/${XTS_SUITENAME}/testcases/${hap_name}.hap"
   testonly = true
   deps = [
     ":actsamsusersapi7appa_resources",
     ":actsamsusersapi7appa_ts_assets",
   ]
   certificate_profile = "signature/openharmony_sx.p7b"
-  subsystem_name = "ability"
-  part_name = "ability_runtime"
 }
 
 ohos_js_assets("actsamsusersapi7appa_ts_assets") {

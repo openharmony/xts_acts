@@ -1,0 +1,50 @@
+
+{
+    "description": "Configuration for hjunit demo Tests",
+    "driver": {
+        "type": "JSUnitTest",
+        "test-timeout": "300000",
+        "package": "com.example.actsthirdpartyspecifieduseractionzerotest",
+        "shell-timeout": "60000"
+    },
+    "kits": [
+        {
+            "test-file-name": [
+                "ActsThirdPartySpecifiedUserActionZeroTest.hap",
+                "ActsThirdPartySpecifiedUserActiononeTest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        },
+        {
+            "type": "PushKit",
+            "push": [
+                "ActsThirdPartySpecifiedUserActionZeroTest.hap->/data/ActsThirdPartySpecifiedUserActionZeroTest.hap"]
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "acm create -n 101 -t normal",
+                "acm create -n 102 -t normal",
+                "acm switch -i 101"
+            ]
+        },
+        {
+            "type": "PushKit",
+            "push": [
+                "ActsThirdPartySpecifiedUserActiononeTest.hap->/data/ActsThirdPartySpecifiedUserActiononeTest.hap"]
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "acm switch -i 100"
+            ],
+            "teardown-command":[
+                "acm delete -i 101",
+                "acm delete -i 102"
+            ]
+        }
+        
+] 
+}
+

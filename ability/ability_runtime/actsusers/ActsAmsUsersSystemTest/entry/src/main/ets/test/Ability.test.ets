@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index"
 import commonEvent from '@ohos.commonEvent'
 import appManager from '@ohos.application.appManager'
 import osaccount from '@ohos.account.osAccount'
@@ -26,7 +26,7 @@ var subscriberInfo_killprocess ={
 var osAccountManager
 const START_ABILITY_TIMEOUT = 10000;
 console.debug("====>in Ability.test====>");
-export default function abilityTest() {
+export default function abilityTest(abilityContext) {
   console.debug("====>in function abilityTest====>");
   describe('ActsInterfaceMultiUsersTest', function () {
     // afterAll(function() {
@@ -64,7 +64,7 @@ export default function abilityTest() {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>start startAbility====>");
-          await globalThis.abilityContext.startAbility(
+          await abilityContext.startAbility(
             {
               bundleName: 'com.acts.actsinterfacemultiuserstest',
               abilityName: 'com.acts.actsinterfacemultiuserstest.MainAbility2'
@@ -115,7 +115,7 @@ export default function abilityTest() {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>start startAbility====>");
-          await globalThis.abilityContext.startAbility(
+          await abilityContext.startAbility(
             {
               bundleName: 'com.acts.error',
               abilityName: 'com.acts.error.MainAbility2'
@@ -165,7 +165,7 @@ export default function abilityTest() {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>start startAbility====>");
-          globalThis.abilityContext.startAbility(
+          abilityContext.startAbility(
             {
               bundleName: 'com.acts.actsinterfacemultiuserstest',
               abilityName: 'com.acts.actsinterfacemultiuserstest.MainAbility2'
@@ -217,7 +217,7 @@ export default function abilityTest() {
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
         })
         console.debug("====>start startAbility====>");
-        await globalThis.abilityContext.startAbility(
+        await abilityContext.startAbility(
           {
             bundleName: 'com.acts.error',
             abilityName: 'com.acts.error.MainAbility2'
@@ -266,7 +266,7 @@ export default function abilityTest() {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>start startAbility====>");
-          await globalThis.abilityContext.startAbility(
+          await abilityContext.startAbility(
             {
               bundleName: 'com.acts.actsinterfacemultiuserstest',
               abilityName: 'com.acts.actsinterfacemultiuserstest.MainAbility2'
@@ -315,7 +315,7 @@ export default function abilityTest() {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>start startAbility====>");
-          await globalThis.abilityContext.startAbility(
+          await abilityContext.startAbility(
             {
               bundleName: 'com.acts.error',
               abilityName: 'com.acts.error.MainAbility2'
@@ -363,7 +363,7 @@ export default function abilityTest() {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>start startAbility====>");
-          globalThis.abilityContext.startAbility(
+          abilityContext.startAbility(
             {
               bundleName: 'com.acts.actsinterfacemultiuserstest',
               abilityName: 'com.acts.actsinterfacemultiuserstest.MainAbility2'
@@ -413,7 +413,7 @@ export default function abilityTest() {
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
         })
         console.debug("====>start startAbility====>");
-        await globalThis.abilityContext.startAbility(
+        await abilityContext.startAbility(
           {
             bundleName: 'com.acts.error',
             abilityName: 'com.acts.error.MainAbility2'
@@ -461,7 +461,7 @@ export default function abilityTest() {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>start startAbility====>");
-          await globalThis.abilityContext.startAbility(
+          await abilityContext.startAbility(
             {
               bundleName: 'com.example.userservicesystemapi7',
               abilityName: 'com.example.userservicesystemapi7.ServiceAbility'
@@ -512,7 +512,7 @@ export default function abilityTest() {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>start startAbility====>");
-          await globalThis.abilityContext.startAbility(
+          await abilityContext.startAbility(
             {
               bundleName: 'com.example.userservicesystemapi7',
               abilityName: 'com.example.userservicesystemapi7.ServiceAbility'
@@ -556,7 +556,7 @@ export default function abilityTest() {
       }
       setTimeout(timeout, START_ABILITY_TIMEOUT);
       console.debug("====>start startAbilityForResult====>");
-      await globalThis.abilityContext.startAbilityForResult(
+      await abilityContext.startAbilityForResult(
         {
           bundleName: 'com.acts.actsinterfacemultiuserstest',
           abilityName: 'com.acts.actsinterfacemultiuserstest.MainAbility3',
@@ -584,7 +584,7 @@ export default function abilityTest() {
       }
       setTimeout(timeout, START_ABILITY_TIMEOUT);
       console.debug("====>start startAbilityForResult====>");
-      await globalThis.abilityContext.startAbilityForResult(
+      await abilityContext.startAbilityForResult(
         {
           bundleName: 'com.acts.error',
           abilityName: 'com.acts.error.MainAbility3',
@@ -615,7 +615,7 @@ export default function abilityTest() {
       }
       setTimeout(timeout, START_ABILITY_TIMEOUT);
       console.debug("====>start startAbilityForResult====>");
-      await globalThis.abilityContext.startAbilityForResult(
+      await abilityContext.startAbilityForResult(
         {
           bundleName: 'com.acts.actsinterfacemultiuserstest',
           abilityName: 'com.acts.actsinterfacemultiuserstest.MainAbility3',
@@ -642,7 +642,7 @@ export default function abilityTest() {
       }
       setTimeout(timeout, START_ABILITY_TIMEOUT);
       console.debug("====>start startAbilityForResult====>");
-      await globalThis.abilityContext.startAbilityForResult(
+      await abilityContext.startAbilityForResult(
         {
           bundleName: 'com.acts.error',
           abilityName: 'com.acts.error.MainAbility3',
@@ -673,7 +673,7 @@ export default function abilityTest() {
       }
       setTimeout(timeout, START_ABILITY_TIMEOUT);
       console.debug("====>start startAbilityForResult====>");
-      await globalThis.abilityContext.startAbilityForResult(
+      await abilityContext.startAbilityForResult(
         {
           bundleName: 'com.acts.actsinterfacemultiuserstest',
           abilityName: 'com.acts.actsinterfacemultiuserstest.MainAbility3',
@@ -699,7 +699,7 @@ export default function abilityTest() {
       }
       setTimeout(timeout, START_ABILITY_TIMEOUT);
       console.debug("====>start startAbilityForResult====>");
-      await globalThis.abilityContext.startAbilityForResult(
+      await abilityContext.startAbilityForResult(
         {
           bundleName: 'com.acts.error',
           abilityName: 'com.acts.error.MainAbility3',
@@ -728,7 +728,7 @@ export default function abilityTest() {
       }
       setTimeout(timeout, START_ABILITY_TIMEOUT);
       console.debug("====>start startAbilityForResult====>");
-      await globalThis.abilityContext.startAbilityForResult(
+      await abilityContext.startAbilityForResult(
         {
           bundleName: 'com.acts.actsinterfacemultiuserstest',
           abilityName: 'com.acts.actsinterfacemultiuserstest.MainAbility3',
@@ -753,7 +753,7 @@ export default function abilityTest() {
       }
       setTimeout(timeout, START_ABILITY_TIMEOUT);
       console.debug("====>start startAbilityForResult====>");
-      await globalThis.abilityContext.startAbilityForResult(
+      await abilityContext.startAbilityForResult(
         {
           bundleName: 'com.acts.error',
           abilityName: 'com.acts.error.MainAbility3',
@@ -792,7 +792,7 @@ export default function abilityTest() {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>start startAbility====>");
-          await globalThis.abilityContext.startAbility(
+          await abilityContext.startAbility(
             {
               bundleName: 'com.acts.actsinterfacemultiuserstest',
               abilityName: 'com.acts.actsinterfacemultiuserstest.MainAbility2'
@@ -841,7 +841,7 @@ export default function abilityTest() {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>start startAbility====>");
-          await globalThis.abilityContext.startAbility(
+          await abilityContext.startAbility(
             {
               bundleName: 'com.acts.error',
               abilityName: 'com.acts.error.MainAbility2'
@@ -892,7 +892,7 @@ export default function abilityTest() {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>start startAbility====>");
-          globalThis.abilityContext.startAbility(
+          abilityContext.startAbility(
             {
               bundleName: 'com.acts.actsinterfacemultiuserstest',
               abilityName: 'com.acts.actsinterfacemultiuserstest.MainAbility2'
@@ -941,7 +941,7 @@ export default function abilityTest() {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>start startAbility====>");
-          await globalThis.abilityContext.startAbility(
+          await abilityContext.startAbility(
             {
               bundleName: 'com.acts.error',
               abilityName: 'com.acts.error.MainAbility2'
@@ -982,7 +982,7 @@ export default function abilityTest() {
       }
       setTimeout(timeout, START_ABILITY_TIMEOUT);
       console.debug("====>start startAbilityForResult====>");
-      await globalThis.abilityContext.startAbilityForResult(
+      await abilityContext.startAbilityForResult(
         {
           bundleName: 'com.acts.actsinterfacemultiuserstest',
           abilityName: 'com.acts.actsinterfacemultiuserstest.MainAbility3',
@@ -1008,7 +1008,7 @@ export default function abilityTest() {
       }
       setTimeout(timeout, START_ABILITY_TIMEOUT);
       console.debug("====>start startAbilityForResult====>");
-      await globalThis.abilityContext.startAbilityForResult(
+      await abilityContext.startAbilityForResult(
         {
           bundleName: 'com.acts.error',
           abilityName: 'com.acts.error.MainAbility3',
@@ -1037,7 +1037,7 @@ export default function abilityTest() {
       }
       setTimeout(timeout, START_ABILITY_TIMEOUT);
       console.debug("====>start startAbilityForResult====>");
-      await globalThis.abilityContext.startAbilityForResult(
+      await abilityContext.startAbilityForResult(
         {
           bundleName: 'com.acts.actsinterfacemultiuserstest',
           abilityName: 'com.acts.actsinterfacemultiuserstest.MainAbility3',
@@ -1062,7 +1062,7 @@ export default function abilityTest() {
       }
       setTimeout(timeout, START_ABILITY_TIMEOUT);
       console.debug("====>start startAbilityForResult====>");
-      await globalThis.abilityContext.startAbilityForResult(
+      await abilityContext.startAbilityForResult(
         {
           bundleName: 'com.acts.error',
           abilityName: 'com.acts.error.MainAbility3',
@@ -1123,7 +1123,7 @@ export default function abilityTest() {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>start startAbility====>");
-          await globalThis.abilityContext.startAbility(
+          await abilityContext.startAbility(
             {
               bundleName: 'com.acts.killprocesshap',
               abilityName: 'com.acts.killprocesshap.MainAbility'
@@ -1198,7 +1198,7 @@ export default function abilityTest() {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>start startAbility====>");
-          await globalThis.abilityContext.startAbility(
+          await abilityContext.startAbility(
             {
               bundleName: 'com.acts.killprocesshap',
               abilityName: 'com.acts.killprocesshap.MainAbility'
@@ -1232,7 +1232,7 @@ export default function abilityTest() {
      */
     it('ACTS_ThirdPartyKillProcess_0100', 0, async function (done) {
       console.debug("====>start startAbility====>");
-      await globalThis.abilityContext.startAbility(
+      await abilityContext.startAbility(
         {
           bundleName: 'com.acts.killprocessthirdhap',
           abilityName: 'com.acts.killprocessthirdhap.MainAbility'
@@ -1278,7 +1278,7 @@ export default function abilityTest() {
      */
     it('ACTS_ThirdPartyKillProcess_0200', 0, async function (done) {
       console.debug("====>start startAbility====>");
-      await globalThis.abilityContext.startAbility(
+      await abilityContext.startAbility(
         {
           bundleName: 'com.acts.killprocessthirdhap2',
           abilityName: 'com.acts.killprocessthirdhap2.MainAbility'
