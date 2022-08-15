@@ -17,6 +17,7 @@ import inputkeyCode from '@ohos.multimodalInput.keyCode'
 import keyEvent from '@ohos.multimodalInput.keyEvent'
 import mouseEvent from '@ohos.multimodalInput.mouseEvent'
 import touchEvent from '@ohos.multimodalInput.touchEvent'
+import inputEvent from '@ohos.multimodalInput.inputEvent'
 import { Key, KeyEvent } from '@ohos.multimodalInput.keyEvent'
 import { AxisValue, MouseEvent } from '@ohos.multimodalInput.mouseEvent'
 import { Touch, TouchEvent } from '@ohos.multimodalInput.touchEvent'
@@ -298,6 +299,18 @@ export default function MultimodalInputEventTypeTest() {
             expect(testTouchEvent.sourceType == touchEvent.SourceType.TOUCH_SCREEN).assertTrue();
 
             console.info(`MultimodalInput_test::TouchEventTypeTest_0050 exit`);
+        })
+
+        it('MultimodalInput_test::InputEventTypeTest_0010', 0, function () {
+            console.info(`MultimodalInput_test::InputEventTypeTest_0010 enter`);
+            let testInputEvent = {id: 1, deviceId: 1, actionTime: 1, screenId: 1, windowId: 1};
+            expect(testInputEvent.id == 1).assertTrue();
+            expect(testInputEvent.deviceId == 1).assertTrue();
+            expect(testInputEvent.actionTime == 1).assertTrue();
+            expect(testInputEvent.screenId == 1).assertTrue();
+            expect(testInputEvent.windowId == 1).assertTrue();
+
+            console.info(`MultimodalInput_test::InputEventTypeTest_0010 exit`);
         })
     })
 }
