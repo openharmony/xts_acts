@@ -887,6 +887,9 @@ describe('kvManagerCallbackTest', function () {
                 kvStore = store;
                 try {
                     await kvManager.getAllKVStoreId(TEST_BUNDLE_NAME, function (err, data) {
+                        console.info('testKVManagerGetAllKVStoreId002 getKVStore success');
+                        console.info('testKVManagerGetAllKVStoreId002 getkvmanager success: ' + kvManager)
+                        console.info('testKVManagerGetAllKVStoreId002 get kvstore: ' + store)
                         console.info('testKVManagerGetAllKVStoreId102 getAllKVStoreId success');
                         console.info('testKVManagerGetAllKVStoreId102 size = ' + data.length);
                         expect(1).assertEqual(data.length);
