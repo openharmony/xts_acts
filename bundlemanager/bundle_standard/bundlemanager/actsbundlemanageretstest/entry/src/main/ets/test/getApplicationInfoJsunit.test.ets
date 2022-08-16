@@ -416,6 +416,7 @@ export default function applicationBundleJsunit() {
                 expect(applicationInfo.descriptionResource.bundleName).assertEqual('com.open.harmony.packagemag')
                 expect(applicationInfo.descriptionResource.moduleName).assertEqual('entry')
                 expect(applicationInfo.descriptionResource.id).assertLarger(0)
+                expect(applicationInfo.appProvisionType).assertEqual('release')
                 done();
             }).catch((err) => {
                 expect(err).assertFail();
