@@ -14,6 +14,7 @@
 */
 import ServiceExtension from '@ohos.application.ServiceExtensionAbility'
 import commonEvent from '@ohos.commonEvent'
+import Want from '@ohos.application.Want';
 import rpc from "@ohos.rpc";
 
 var conn = -1;
@@ -43,7 +44,7 @@ function publishCallBackttwo () {
 }
 
 export default class ServiceAbility extends ServiceExtension {
-    onCreate(want) {
+    onCreate(want:Want) {
         console.log('ServiceAbility onCreate, want: ' + want.abilityName);
     }
 

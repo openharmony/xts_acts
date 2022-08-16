@@ -15,10 +15,11 @@
 
 import ServiceExtension from '@ohos.application.ServiceExtensionAbility'
 import commonEvent from "@ohos.commonEvent"
+import Want from '@ohos.application.Want';
 import rpc from "@ohos.rpc";
 
 export default class ServiceAbility2 extends ServiceExtension {
-    onCreate(want) {
+    onCreate(want:Want) {
         console.log('ServiceAbility2 onCreate');
         globalThis.abilityWant = want;
     }
