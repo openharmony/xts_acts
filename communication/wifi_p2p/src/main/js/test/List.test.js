@@ -12,9 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-//require('./WifiSta.test.js')
-//require('./WifiSoftAP.test.js')
-import ActsWifiTest from './WifiP2P.test.js'
+import actsWifiTestNew from './WifiP2P.testsame.js'
+import actsWifiTest from './WifiP2P.test2.js'
 export default function testsuite() {
-ActsWifiTest()
+actsWifiTestNew()
+actsWifiTest()
 }
+
