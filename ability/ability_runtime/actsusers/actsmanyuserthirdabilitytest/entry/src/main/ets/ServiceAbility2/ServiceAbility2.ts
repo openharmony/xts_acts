@@ -13,8 +13,9 @@
  * limitations under the License.
  */
 
-import ServiceExtension from '@ohos.application.ServiceExtension'
+import ServiceExtension from '@ohos.application.ServiceExtensionAbility'
 import commonEvent from "@ohos.commonEvent"
+import rpc from "@ohos.rpc";
 
 export default class ServiceAbility2 extends ServiceExtension {
     onCreate(want) {
@@ -47,6 +48,7 @@ export default class ServiceAbility2 extends ServiceExtension {
         commonEvent.publish("AMS_ConnectAbility_1200_commonEvent", () => {
             console.log("publish Publish AMS_ConnectAbility_1200_commonEvent callback");
         })
+        return new rpc.RemoteObject('connect');
     }
 
 

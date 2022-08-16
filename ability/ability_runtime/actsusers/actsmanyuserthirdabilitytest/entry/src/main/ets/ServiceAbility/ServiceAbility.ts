@@ -12,8 +12,10 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import ServiceExtension from '@ohos.application.ServiceExtension'
+import ServiceExtension from '@ohos.application.ServiceExtensionAbility'
 import commonEvent from '@ohos.commonEvent'
+import rpc from "@ohos.rpc";
+
 var conn = -1;
 function publishCallBackOne () {
     console.log("========Publish CallBack AMS_ConnectAbility_0100_commonEvent========");
@@ -151,6 +153,7 @@ export default class ServiceAbility extends ServiceExtension {
             },1000)
 
         };
+        return new rpc.RemoteObject('connect');
     }
 
     onDisconnect(want) {
