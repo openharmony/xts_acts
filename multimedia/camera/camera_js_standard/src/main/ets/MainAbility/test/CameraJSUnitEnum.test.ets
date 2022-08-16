@@ -124,29 +124,29 @@ export default function cameraJSUnitEnum(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_CAMERA_MANAGER_TC_001
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_CAMERA_MANAGER_CALLBACK_0100
       * @tc.name      : Create camera manager instance async api
       * @tc.desc      : Create camera manager instance async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_CAMERA_MANAGER_TC_001', 0, async function (done) {
-      console.info("--------------GET_CAMERA_MANAGER_TC_001--------------");
+    it('SUB_MULTIMEDIA_CAMERA_GET_CAMERA_MANAGER_CALLBACK_0100', 0, async function (done) {
+      console.info("--------------SUB_MULTIMEDIA_CAMERA_GET_CAMERA_MANAGER_CALLBACK_0100--------------");
       cameraObj.getCameraManager(null, async (err, data) => {
         if (!err) {
-          console.info(TAG + "Entering GET_CAMERA_MANAGER_TC_001 success");
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERA_MANAGER_CALLBACK_0100 success");
           if (data != null || data != undefined) {
-            console.info(TAG + "Entering GET_CAMERA_MANAGER_TC_001 data is not null || undefined");
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERA_MANAGER_CALLBACK_0100 data is not null || undefined");
             cameraManager = data;
             expect(true).assertTrue();
-            console.info(TAG + "Entering GET_CAMERA_MANAGER_TC_001 PASSED");
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERA_MANAGER_CALLBACK_0100 PASSED");
           }
         } else {
           expect().assertFail();
-          console.info(TAG + "Entering GET_CAMERA_MANAGER_TC_001 FAILED: " + err.message);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERA_MANAGER_CALLBACK_0100 FAILED: " + err.message);
         }
-        console.info(TAG + "Entering GET_CAMERA_MANAGER_TC_001 ends here");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERA_MANAGER_CALLBACK_0100 ends here");
         await sleep(1000);
         done();
       })
@@ -155,45 +155,45 @@ export default function cameraJSUnitEnum(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_CAMERAS_TC_002
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_CALLBACK_0100
       * @tc.name      : Get camera from cameramanager to get array of camera async api
       * @tc.desc      : Get camera from cameramanager to get array of camera async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_CAMERAS_TC_002', 0, async function (done) {
-      console.info("--------------GET_CAMERAS_TC_002--------------");
+    it('SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_CALLBACK_0100', 0, async function (done) {
+      console.info("--------------SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_CALLBACK_0100--------------");
       cameraManager.getCameras(async (err, data) => {
         if (!err) {
-          console.info(TAG + "Entering GET_CAMERAS_TC_002 success");
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_CALLBACK_0100 success");
           if (data != null || data != undefined) {
-            console.info(TAG + "Entering GET_CAMERAS_TC_002 data is not null || undefined");
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_CALLBACK_0100 data is not null || undefined");
             camerasArray = data;
             if (camerasArray != null && camerasArray.length > 0) {
               for (var i = 0; i < camerasArray.length; i++) {
                 // Get the variables from camera object
                 var cameraId = camerasArray[i].cameraId;
-                console.info(TAG + "Entering GET_CAMERAS_TC_002 camera" + i + "Id: " + cameraId);
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_CALLBACK_0100 camera" + i + "Id: " + cameraId);
                 var cameraPosition = camerasArray[i].cameraPosition;
-                console.info(TAG + "Entering GET_CAMERAS_TC_002 camera" + i + "Position: " + cameraPosition);
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_CALLBACK_0100 camera" + i + "Position: " + cameraPosition);
                 var cameraType = camerasArray[i].cameraType;
-                console.info(TAG + "Entering GET_CAMERAS_TC_002 camera" + i + "Type: " + cameraType);
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_CALLBACK_0100 camera" + i + "Type: " + cameraType);
                 var connectionType = camerasArray[i].connectionType
-                console.info(TAG + "Entering GET_CAMERAS_TC_002 connection" + i + "Type: " + connectionType);
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_CALLBACK_0100 connection" + i + "Type: " + connectionType);
               }
               expect(true).assertTrue();
-              console.info(TAG + "Entering GET_CAMERAS_TC_002 PASSED");
+              console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_CALLBACK_0100 PASSED");
             } else {
               expect().assertFail();
-              console.info(TAG + "Entering GET_CAMERAS_TC_002 FAILED cameraArray is null || undefined");
+              console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_CALLBACK_0100 FAILED cameraArray is null || undefined");
             }
           }
         } else {
           expect().assertFail();
-          console.info(TAG + "Entering GET_CAMERAS_TC_002 FAILED: " + err.message);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_CALLBACK_0100 FAILED: " + err.message);
         }
-        console.info(TAG + "Entering GET_CAMERAS_TC_002 ends here");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_CALLBACK_0100 ends here");
         await sleep(1000);
         done();
       })
@@ -203,29 +203,29 @@ export default function cameraJSUnitEnum(surfaceId: any) {
 
     /*CAMERA-0 Scripts*/
     /**
-      * @tc.number    : CREATE_CAMERA_INPUT_TC_003
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_INPUT_0100
       * @tc.name      : Create camerainput from camera-0 cameraId async api
       * @tc.desc      : Create camerainput from camera-0 cameraId async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('CREATE_CAMERA_INPUT_TC_003', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_INPUT_0100', 0, async function (done) {
       console.info("--------------CAMERA-0 STARTS HERE--------------");
-      console.info("--------------CREATE_CAMERA_INPUT_TC_003--------------");
+      console.info("--------------SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_INPUT_0100--------------");
       cameraManager.createCameraInput(camerasArray[0].cameraId, async (err, data) => {
         if (!err) {
           if (data != null && data != undefined) {
-            console.info(TAG + "Entering CREATE_CAMERA_INPUT_TC_003 data is not null || undefined");
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_INPUT_0100 data is not null || undefined");
             camera0Input = data;
             expect(true).assertTrue();
-            console.info(TAG + "Entering CREATE_CAMERA_INPUT_TC_003 PASSED with CameraID :" + camerasArray[0].cameraId);
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_INPUT_0100 PASSED with CameraID :" + camerasArray[0].cameraId);
           }
         } else {
           expect().assertFail();
-          console.info(TAG + "Entering CREATE_CAMERA_INPUT_TC_003 FAILED: " + err.message);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_INPUT_0100 FAILED: " + err.message);
         }
-        console.info(TAG + "Entering CREATE_CAMERA_INPUT_TC_003 ends here");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_INPUT_0100 ends here");
         await sleep(1000);
         done();
       })
@@ -234,15 +234,15 @@ export default function cameraJSUnitEnum(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : CAMERA_STATUS
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CAMERA_STATUS_0100
       * @tc.name      : camera status ENAME
       * @tc.desc      : camera status ENAME
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('CAMERA_STATUS', 0, async function (done) {
-      console.info(TAG + "--------------CameraStatus ------------");
+    it('SUB_MULTIMEDIA_CAMERA_CAMERA_STATUS_0100', 0, async function (done) {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_CAMERA_STATUS_0100------------");
       console.info(TAG + "CameraStatus CAMERA_STATUS_APPEAR : " + cameraObj.CameraStatus.CAMERA_STATUS_APPEAR);
       expect(cameraObj.CameraStatus.CAMERA_STATUS_APPEAR).assertEqual(0);
       console.info(TAG + "CameraStatus CAMERA_STATUS_DISAPPEAR : " + cameraObj.CameraStatus.CAMERA_STATUS_DISAPPEAR);
@@ -256,15 +256,15 @@ export default function cameraJSUnitEnum(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : CAMERA_POSITION
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CAMERA_POSITION_0100
       * @tc.name      : Camera position ENAME
       * @tc.desc      : Camera position ENAME
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('CAMERA_POSITION', 0, async function (done) {
-      console.info(TAG + "--------------CameraPosition ------------")
+    it('SUB_MULTIMEDIA_CAMERA_CAMERA_POSITION_0100', 0, async function (done) {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_CAMERA_POSITION_0100------------")
       console.info(TAG + "CameraPosition CAMERA_POSITION_BACK : " + cameraObj.CameraPosition.CAMERA_POSITION_BACK);
       expect(cameraObj.CameraPosition.CAMERA_POSITION_BACK).assertEqual(1);
       console.info(TAG + "CameraPosition CAMERA_POSITION_FRONT : " + cameraObj.CameraPosition.CAMERA_POSITION_FRONT);
@@ -276,15 +276,15 @@ export default function cameraJSUnitEnum(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : CAMERA_TYPE
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CAMERA_TYPE_0100
       * @tc.name      : camera type ENAME
       * @tc.desc      : camera type ENAME
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('CAMERA_TYPE', 0, async function (done) {
-      console.info(TAG + "--------------CameraType ------------")
+    it('SUB_MULTIMEDIA_CAMERA_CAMERA_TYPE_0100', 0, async function (done) {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_CAMERA_TYPE_0100------------")
       console.info(TAG + "CameraType CAMERA_TYPE_UNSPECIFIED : " + cameraObj.CameraType.CAMERA_TYPE_UNSPECIFIED);
       expect(cameraObj.CameraType.CAMERA_TYPE_UNSPECIFIED).assertEqual(0);
       console.info(TAG + "CameraType CAMERA_TYPE_WIDE_ANGLE : " + cameraObj.CameraType.CAMERA_TYPE_WIDE_ANGLE);
@@ -300,15 +300,15 @@ export default function cameraJSUnitEnum(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : CONNECTION_TYPE
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CONNECTION_TYPE_0100
       * @tc.name      : connection type ENAME
       * @tc.desc      : connection type ENAME
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('CONNECTION_TYPE', 0, async function (done) {
-      console.info(TAG + "--------------ConnectionType ------------")
+    it('SUB_MULTIMEDIA_CAMERA_CONNECTION_TYPE_0100', 0, async function (done) {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_CONNECTION_TYPE_0100------------")
       console.info(TAG + "ConnectionType CAMERA_CONNECTION_BUILT_IN : " + cameraObj.ConnectionType.CAMERA_CONNECTION_BUILT_IN);
       expect(cameraObj.ConnectionType.CAMERA_CONNECTION_BUILT_IN).assertEqual(0);
       console.info(TAG + "ConnectionType CAMERA_CONNECTION_USB_PLUGIN : " + cameraObj.ConnectionType.CAMERA_CONNECTION_USB_PLUGIN);
@@ -320,35 +320,15 @@ export default function cameraJSUnitEnum(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : CAMERA_FORMAT
-      * @tc.name      : Camera Format ENAME
-      * @tc.desc      : Camera Format ENAME
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    /* CameraFormat Interface will be change
-    it('CAMERA_FORMAT', 0, async function (done) {
-      console.info(TAG + "--------------CameraFormat ------------")
-      console.info(TAG + "CameraFormat CAMERA_FORMAT_YUV_420_SP : " + cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP);
-      expect(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP).assertEqual(1003);
-      console.info(TAG + "CameraFormat CAMERA_FORMAT_JPEG : " + cameraObj.CameraFormat.CAMERA_FORMAT_JPEG);
-      expect(cameraObj.CameraFormat.CAMERA_FORMAT_JPEG).assertEqual(2000);
-      await sleep(1000);
-      done();
-    })
-    */
-
-    /**
-      * @tc.number    : FLASHMODE
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_FLASHMODE_0100
       * @tc.name      : Flash Mode ENAME
       * @tc.desc      : Flash Mode ENAME
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('FLASHMODE', 0, async function (done) {
-      console.info(TAG + "--------------FlashMode ------------")
+    it('SUB_MULTIMEDIA_CAMERA_FLASHMODE_0100', 0, async function (done) {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_FLASHMODE_0100------------")
       console.info(TAG + "FlashMode FLASH_MODE_CLOSE : " + cameraObj.FlashMode.FLASH_MODE_CLOSE);
       expect(cameraObj.FlashMode.FLASH_MODE_CLOSE).assertEqual(0);
       console.info(TAG + "FlashMode FLASH_MODE_OPEN : " + cameraObj.FlashMode.FLASH_MODE_OPEN);
@@ -362,15 +342,15 @@ export default function cameraJSUnitEnum(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : FOCUSMODE
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_FOCUSMODE_0100
       * @tc.name      : Focus Mode ENAME
       * @tc.desc      : Focus Mode ENAME
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('FOCUSMODE', 0, async function (done) {
-      console.info(TAG + "--------------FocusMode ------------")
+    it('SUB_MULTIMEDIA_CAMERA_FOCUSMODE_0100', 0, async function (done) {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_FOCUSMODE_0100------------")
       console.info(TAG + "FocusMode FOCUS_MODE_MANUAL : " + cameraObj.FocusMode.FOCUS_MODE_MANUAL);
       expect(cameraObj.FocusMode.FOCUS_MODE_MANUAL).assertEqual(0);
       console.info(TAG + "FocusMode FOCUS_MODE_CONTINUOUS_AUTO : " + cameraObj.FocusMode.FOCUS_MODE_CONTINUOUS_AUTO);
@@ -384,15 +364,15 @@ export default function cameraJSUnitEnum(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : FOCUSSTATE
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_FOCUSSTATE_0100
       * @tc.name      : Focus State ENAME
       * @tc.desc      : Focus State ENAME
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('FOCUSSTATE', 0, async function (done) {
-      console.info(TAG + "--------------FocusState ------------")
+    it('SUB_MULTIMEDIA_CAMERA_FOCUSSTATE_0100', 0, async function (done) {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_FOCUSSTATE_0100------------")
       console.info(TAG + "FocusState FOCUS_STATE_SCAN : " + cameraObj.FocusState.FOCUS_STATE_SCAN);
       expect(cameraObj.FocusState.FOCUS_STATE_SCAN).assertEqual(0);
       console.info(TAG + "FocusState FOCUS_STATE_FOCUSED : " + cameraObj.FocusState.FOCUS_STATE_FOCUSED);
@@ -404,57 +384,15 @@ export default function cameraJSUnitEnum(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : EXPOSUREMODE
-      * @tc.name      : Exposure Mode ENAME
-      * @tc.desc      : Exposure Mode ENAME
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    /* EXPOSUREMODE Interface will be change
-    it('EXPOSUREMODE', 0, async function (done) {
-      console.info(TAG + "--------------ExposureMode ------------")
-      console.info(TAG + "ExposureMode EXPOSURE_MODE_LOCKED : " + cameraObj.ExposureMode.EXPOSURE_MODE_LOCKED);
-      expect(cameraObj.ExposureMode.EXPOSURE_MODE_LOCKED).assertEqual(0);
-      console.info(TAG + "ExposureMode EXPOSURE_MODE_AUTO : " + cameraObj.ExposureMode.EXPOSURE_MODE_AUTO);
-      expect(cameraObj.ExposureMode.EXPOSURE_MODE_AUTO).assertEqual(1);
-      console.info(TAG + "ExposureMode EXPOSURE_MODE_CONTINUOUS_AUTO : " + cameraObj.ExposureMode.EXPOSURE_MODE_CONTINUOUS_AUTO);
-      expect(cameraObj.ExposureMode.EXPOSURE_MODE_CONTINUOUS_AUTO).assertEqual(2);
-      await sleep(1000);
-      done();
-    })
-    */
-
-    /**
-      * @tc.number    : ExposureState
-      * @tc.name      : Exposure State ENAME
-      * @tc.desc      : Exposure State ENAME
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    /* ExposureState Interface will be change
-    it('ExposureState', 0, async function (done) {
-      console.info(TAG + "--------------ExposureState ------------")
-      console.info(TAG + "ExposureState EXPOSURE_STATE_SCAN : " + cameraObj.ExposureState.EXPOSURE_STATE_SCAN);
-      expect(cameraObj.ExposureState.EXPOSURE_STATE_SCAN).assertEqual(0);
-      console.info(TAG + "ExposureState EXPOSURE_STATE_CONVERGED : " + cameraObj.ExposureState.EXPOSURE_STATE_CONVERGED);
-      expect(cameraObj.ExposureState.EXPOSURE_STATE_CONVERGED).assertEqual(1);
-      await sleep(1000);
-      done();
-    })
-    */ 
-
-    /**
-      * @tc.number    : ImageRotation
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_IMAGEROTATION_0100
       * @tc.name      : Image Rotation ENAME
       * @tc.desc      : Image Rotation ENAME
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('ImageRotation', 0, async function (done) {
-      console.info(TAG + "--------------ImageRotation ------------")
+    it('SUB_MULTIMEDIA_CAMERA_IMAGEROTATION_0100', 0, async function (done) {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_IMAGEROTATION_0100------------")
       console.info(TAG + "ImageRotation ROTATION_0 : " + cameraObj.ImageRotation.ROTATION_0);
       expect(cameraObj.ImageRotation.ROTATION_0).assertEqual(0);
       console.info(TAG + "ImageRotation ROTATION_90 : " + cameraObj.ImageRotation.ROTATION_90);
@@ -468,15 +406,15 @@ export default function cameraJSUnitEnum(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : QualityLevel
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_QUALITYLEVEL_0100
       * @tc.name      : Quality Level ENAME
       * @tc.desc      : Quality Level ENAME
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('QualityLevel', 0, async function (done) {
-      console.info(TAG + "--------------QualityLevel ------------")
+    it('SUB_MULTIMEDIA_CAMERA_QUALITYLEVEL_0100', 0, async function (done) {
+      console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERA_QUALITYLEVEL_0100------------")
       console.info(TAG + "QualityLevel QUALITY_LEVEL_HIGH : " + cameraObj.QualityLevel.QUALITY_LEVEL_HIGH);
       expect(cameraObj.QualityLevel.QUALITY_LEVEL_HIGH).assertEqual(0);
       console.info(TAG + "QualityLevel QUALITY_LEVEL_MEDIUM : " + cameraObj.QualityLevel.QUALITY_LEVEL_MEDIUM);
@@ -486,31 +424,5 @@ export default function cameraJSUnitEnum(surfaceId: any) {
       await sleep(1000);
       done();
     })
-
-/**
-      * @tc.number    : VIDEOSTABILIZATION_ENUM
-      * @tc.name      : VIDEOSTABILIZATION ENAME
-      * @tc.desc      : VIDEOSTABILIZATION ENAME
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    /* VideoStabilizationMode Interface will be change
-    it('VideoStabilization', 0, async function (done) {
-      console.info(TAG + "--------------VideoStabilization ------------")
-      console.info(TAG + "VideoStabilization OFF : " + cameraObj.VideoStabilizationMode.OFF);
-      expect(cameraObj.VideoStabilizationMode.OFF).assertEqual(0);
-      console.info(TAG + "VideoStabilization LOW : " + cameraObj.VideoStabilizationMode.LOW);
-      expect(cameraObj.VideoStabilizationMode.LOW).assertEqual(1);
-      console.info(TAG + "VideoStabilization MIDDLE : " + cameraObj.VideoStabilizationMode.MIDDLE);
-      expect(cameraObj.VideoStabilizationMode.MIDDLE).assertEqual(2);
-      console.info(TAG + "VideoStabilization HIGH : " + cameraObj.VideoStabilizationMode.HIGH);
-      expect(cameraObj.VideoStabilizationMode.HIGH).assertEqual(3);
-      console.info(TAG + "VideoStabilization AUTO : " + cameraObj.VideoStabilizationMode.AUTO);
-      expect(cameraObj.VideoStabilizationMode.AUTO).assertEqual(4);
-      await sleep(1000);
-      done();
-    })
-    */
   })
 }
