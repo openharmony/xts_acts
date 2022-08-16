@@ -485,7 +485,7 @@ export default function actsBmsJsModuleNameTest() {
             expect(data.icon).assertEqual("$media:icon");
             expect(typeof (data.icon)).assertEqual("string");
             expect(data.isVisible).assertEqual(false);
-            expect(data.deviceTypes[0]).assertEqual("phone");
+            expect(data.deviceTypes[0]).assertEqual("default");
             expect(typeof (data.process)).assertEqual("string");
             expect(data.process).assertEqual("com.example.bmsmodulename");
             expect(typeof (data.uri)).assertEqual("string");
@@ -513,7 +513,7 @@ export default function actsBmsJsModuleNameTest() {
             expect(info.label).assertEqual("$string:app_name");
             expect(typeof (info.labelId)).assertEqual("number");
             expect(info.labelId > 0).assertTrue();
-            expect(info.systemApp).assertEqual(true);
+            expect(info.systemApp).assertEqual(false);
             expect(typeof (info.entryDir)).assertEqual("string");
             expect(info.entryDir).assertEqual("/data/app/el1/bundle/public/com.example.bmsmodulename/com.example.bmsmodulenamedentry");
             expect(typeof (info.process)).assertEqual("string");
