@@ -14,6 +14,7 @@
  */
 
 import ServiceExtensionAbility from '@ohos.application.ServiceExtensionAbility'
+import Want from '@ohos.application.Want';
 import rpc from '@ohos.rpc';
 class Stub extends rpc.RemoteObject {
   constructor(des) {
@@ -26,7 +27,7 @@ class Stub extends rpc.RemoteObject {
   }
 }
 export default class ServiceAbility extends ServiceExtensionAbility {
-  onCreate(want) {
+  onCreate(want:Want) {
     console.log('ServiceAbility onCreate');
   }
   onDestory(){
@@ -187,6 +188,7 @@ export default class ServiceAbility extends ServiceExtensionAbility {
       default:
         break;
     }
+    return new rpc.RemoteObject('connect');
   }
 
   onDisconnect(want) {
