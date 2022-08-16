@@ -58,20 +58,16 @@ export default function getThumbnailCallback(abilityContext) {
                     size = { width: 256, height: 256 };
                     asset.getThumbnail(async (err, pixelmap) => {
                         await pixelmap.getImageInfo((err, info) => {
-                            console.info(`${testNum}:: pixel width ${info.size.width},pixel height: ${info.size.height}`);
-                            console.info(`${testNum}:: param width ${size.width},param height: ${size.height}`);
-                            expect(info.size.width == size.width).assertTrue();
-                            expect(info.size.height == size.height).assertTrue();
+                            expect(info.size.width).assertEqual(size.width);
+                            expect(info.size.height).assertEqual(size.height);
                             done();
                         });
                     })
                 } else {
                     asset.getThumbnail(size, async (err, pixelmap) => {
                         await pixelmap.getImageInfo((err, info) => {
-                            console.info(`${testNum}:: pixel width ${info.size.width},pixel height: ${info.size.height}`);
-                            console.info(`${testNum}:: param width ${size.width},param height: ${size.height}`);
-                            expect(info.size.width == size.width).assertTrue();
-                            expect(info.size.height == size.height).assertTrue();
+                            expect(info.size.width).assertEqual(size.width);
+                            expect(info.size.height).assertEqual(size.height);
                             done();
                         });
                     })
