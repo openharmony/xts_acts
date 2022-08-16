@@ -18,7 +18,7 @@ group("arkXtest") {
   if (is_standard_system) {
     deps = [
       "uitest:ActsUiTest",
-      "uitestScene:ActsUiTestScene"
-     ]
+      "uitestScene:ActsUiTestScene",
+    ]
   }
 }
