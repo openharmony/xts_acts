@@ -17,8 +17,6 @@ import fileAssetCallBack2Test from './fileAssetCallBack2.test.ets'
 import fileAssetTestCallbackTest from './fileAssetTestCallback.test.ets'
 import fileTestCallBackTest from './fileTestCallBack.test.ets'
 import mediaLibraryTestCallBackTest from './mediaLibraryTestCallBack.test.ets'
-import mediaLibraryTestPromiseTest from './mediaLibraryTestPromise.test.ets'
-import mediaLibraryTestPromiseOnOffTest from './mediaLibraryTestPromiseOnOff.test.ets'
 
 export default function testsuite(abilityContext) {
   getPermissionTest()
@@ -26,6 +24,4 @@ export default function testsuite(abilityContext) {
   fileAssetTestCallbackTest(abilityContext)
   fileTestCallBackTest(abilityContext)
   mediaLibraryTestCallBackTest(abilityContext)
-  mediaLibraryTestPromiseTest(abilityContext)
-  mediaLibraryTestPromiseOnOffTest(abilityContext)
 }
