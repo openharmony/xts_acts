@@ -11,6 +11,14 @@
     {
       "name": "permreason_camera",
       "value": "permreason camera"
+    },
+    {
+        "name": "TestAbility_desc",
+        "value": "description"
+    },
+    {
+        "name": "TestAbility_label",
+        "value": "label"
     }
   ]
 }
