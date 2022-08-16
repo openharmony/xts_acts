@@ -63,10 +63,8 @@ export default function getThumbnailPromise(abilityContext) {
                     pixelmap = await asset.getThumbnail(size)
                 }
                 let info = await pixelmap.getImageInfo();
-                console.info(`${testNum}:: pixel width ${info.size.width},pixel height: ${info.size.height}`);
-                console.info(`${testNum}:: param width ${size.width},param height: ${size.height}`);
-                expect(info.size.width == size.width).assertTrue();
-                expect(info.size.height == size.height).assertTrue();
+                expect(info.size.width).assertEqual(size.width);
+                expect(info.size.height).assertEqual(size.height);
                 done();
             } catch (error) {
                 console.info(`${testNum}:: error :${error}`);
