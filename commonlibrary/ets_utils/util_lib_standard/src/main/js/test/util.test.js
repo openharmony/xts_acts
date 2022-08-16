@@ -883,6 +883,104 @@ describe('TextEncoderTest', function () {
     })
 
     /**
+     * @tc.name: decodeWithStream001
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.author: wangben
+     */
+    it('decodeWithStream001', 0, function () {
+        var that = new util.TextDecoder('utf-16le', { ignoreBOM : false });
+        var arr = new Uint8Array(8)
+        arr[0] = 0xFF;
+        arr[1] = 0xFE;
+        arr[2] = 0x61;
+        arr[3] = 0x00;
+        arr[4] = 0x62;
+        arr[5] = 0x00;
+        arr[6] = 0x63;
+        arr[7] = 0x00;
+        var retStr = that.decodeWithStream(arr, { stream : false });
+        var BOM = '\uFEFF';
+        var rel = 'abc';
+        var re = BOM + rel;
+        expect(retStr).assertEqual(rel)
+    })
+
+    /**
+     * @tc.name: decodeWithStream002
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.author: wangben
+     */
+    it('decodeWithStream002', 0, function () {
+        var that = new  util.TextDecoder('utf-8', { ignoreBOM : true })
+        var arr = new Uint8Array(6)
+        arr[0] = 0xEF;
+        arr[1] = 0xBB;
+        arr[2] = 0xBF;
+        arr[3] = 0x61;
+        arr[4] = 0x62;
+        arr[5] = 0x63;
+        var retStr = that.decodeWithStream(arr, {stream:true})
+        var BOM = '\uFEFF'
+        var rel = 'abc'
+        var re = BOM + rel;
+        expect(retStr).assertEqual(rel)
+    })
+
+    /**
+     * @tc.name: decodeWithStream003
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.author: wangben
+     */
+    it('decodeWithStream003', 0, function () {
+        var that = new util.TextDecoder('utf-16be');
+        var arr = new Uint8Array(6);
+        arr[0] = 0x00;
+        arr[1] = 0x61;
+        arr[2] = 0x00;
+        arr[3] = 0x62;
+        arr[4] = 0x00;
+        arr[5] = 0x63;
+        var retStr = that.decodeWithStream(arr);
+        var rel = 'abc'
+        expect(retStr).assertEqual(rel)
+    })
+
+    /**
+     * @tc.name: decodeWithStream004
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.author: wangben
+     */
+    it('decodeWithStream004', 0, function () {
+        var that = new util.TextDecoder('utf-16le')
+        var arr = new Uint8Array(6)
+        arr[0] = 0x61;
+        arr[1] = 0x00;
+        arr[2] = 0x62;
+        arr[3] = 0x00;
+        arr[4] = 0x63;
+        arr[5] = 0x00;
+        var retStr = that.decodeWithStream(arr);
+        var rel = 'abc'
+        expect(retStr).assertEqual(rel)
+    })
+
+    /**
+     * @tc.name: decodeWithStream005
+     * @tc.desc: Returns the result of running encoding's decoder.
+     * @tc.author: wangben
+     */
+    it('decodeWithStream005', 0, function () {
+        var that = new util.TextDecoder('utf-8');
+        var arr = new Uint8Array(3);
+        for (var i = 0; i < 3; i++) {
+        arr[i] = 0x61 + i;
+        }
+        var retStr = that.decodeWithStream(arr);
+        var rel = 'abc';
+        expect(retStr).assertEqual(rel)
+    })
+
+    /**
      * @tc.name: testencoding_textencoder_001
      * @tc.desc: Encoding format.
      * @tc.author: wangben
