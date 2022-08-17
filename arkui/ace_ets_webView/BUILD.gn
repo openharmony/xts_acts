@@ -22,6 +22,8 @@ ohos_js_hap_suite("AceEtsWebViewTest") {
   ets2abc = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "AceEtsWebViewTest"
+  subsystem_name = "arkui"
+  part_name = "webview"
 }
 ohos_js_assets("ace_ets_webView_assets") {
   source_dir = "./entry/src/main/ets/MainAbility"
