@@ -7006,5 +7006,81 @@ describe('TypesTest', function() {
         var result = proc.isWeakSet(new Map());
         expect(result).assertEqual(false);
     })
+
+    /**
+     * @tc.name: testUtilRandomUUID001
+     * @tc.desc: Generate a random RFC 4122 version 4 UUID.
+     * @tc.author: linhaoran
+     */
+    it('testUtilRandomUUID001', 0, async function () {
+        var result = util.randomUUID(true);
+        expect(result.length).assertEqual(36);
+    })
+    
+    /**
+     * @tc.name: testUtilRandomUUID002
+     * @tc.desc: Generate a random RFC 4122 version 4 UUID.
+     * @tc.author: linhaoran
+     */
+    it('testUtilRandomUUID002', 0, async function () {
+        var result = util.randomUUID(false);
+        expect(result.length).assertEqual(36);
+    })
+
+    /**
+     * @tc.name: testUtilRandomBinaryUUID001
+     * @tc.desc: Generate a random RFC 4122 version 4 UUID.
+     * @tc.author: linhaoran
+     */
+    it('testUtilRandomBinaryUUID001', 0, async function () {
+        var result = util.randomBinaryUUID(true);
+        expect(result.length).assertEqual(16);
+    })
+
+    /**
+     * @tc.name: testUtilRandomBinaryUUID002
+     * @tc.desc: Generate a random RFC 4122 version 4 UUID.
+     * @tc.author: linhaoran
+     */
+    it('testUtilRandomBinaryUUID002', 0, async function () {
+        var result = util.randomBinaryUUID(false);
+        expect(result.length).assertEqual(16);
+    })
+
+    /**
+     * @tc.name: testUtilParseUUID001
+     * @tc.desc: Generate a random RFC 4122 version 4 UUID.
+     * @tc.author: linhaoran
+     */
+    it('testUtilParseUUID001', 0, async function () {
+        var result = util.parseUUID('84bdf796-66cc-4655-9b89-d6218d100f9c');
+        expect(result.length).assertEqual(16);
+    })
+
+    /**
+     * @tc.name: testUtilParseUUID002
+     * @tc.desc: Generate a random RFC 4122 version 4 UUID.
+     * @tc.author: linhaoran
+     */
+    it('testUtilParseUUID002', 0, async function () {
+        try {
+            var result = util.parseUUID('84df796-66cc-4655-9b89-d6218d100f9c');
+        } catch(e) {
+            expect(e.message).assertEqual('this uuid parsing failed');
+        }
+    })
+
+    /**
+     * @tc.name: testUtilParseUUID003
+     * @tc.desc: Generate a random RFC 4122 version 4 UUID.
+     * @tc.author: linhaoran
+     */
+    it('testUtilParseUUID003', 0, async function () {
+        try {
+            var result = util.parseUUID('84Wdf796-66cc-4655-9b89-d6218d100f9c');
+        } catch(e) {
+            expect(e.message).assertEqual('this uuid parsing failed');
+        }
+    })
 })
 }
