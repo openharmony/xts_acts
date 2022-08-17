@@ -127,6 +127,13 @@ export default function ConnectAbilityTest_Ext(abilityContext) {
       console.info("FreeInstall_Stage_ConnectAbility_Ext after each called");
       dataAssert = ""
       await sleep(1000);
+      if ("FreeInstall_Stage_ConnectAbility_Ext_1200" === TAG) {
+        var cmdUninstall = "bm uninstall -n com.ohos.hag.famanager";
+        globalThis.delegator.executeShellCommand(cmdUninstall, (err: any, d: any) => {
+          console.info("executeShellCommandUninstall : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
+        })
+      }
+      await sleep(500);
       done();
     });
 

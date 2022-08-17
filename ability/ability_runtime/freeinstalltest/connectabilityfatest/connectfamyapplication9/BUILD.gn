@@ -13,7 +13,7 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ConnectFaMyApplication9") {
+ohos_hap_assist_suite("ConnectFaMyApplication9") {
   hap_profile = "./entry/src/main/config.json"
   deps = [
     ":connectfamyapplication9_ets_assets",
@@ -22,6 +22,8 @@ ohos_js_hap_suite("ConnectFaMyApplication9") {
   ets2abc = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ConnectFaMyApplication9"
+  subsystem_name = "ability"
+  part_name = "ability_runtime"
 }
 ohos_js_assets("connectfamyapplication9_ets_assets") {
   source_dir = "./entry/src/main/ets"
