@@ -43,6 +43,18 @@ function publishCallBackttwo () {
     console.log("========Publish CallBack AMSc_disonnectAbility_0200_commonEvent========");
 }
 
+function onConnectCallback(element, remote) {
+    console.log('onConnectCallback====> element=' + JSON.stringify(element));
+    console.log('onConnectCallback====> remote=' + JSON.stringify(remote));
+  }
+
+  function onDisconnectCallback(element) {
+    console.log('onDisconnectCallback====> element=' + JSON.stringify(element));
+  }
+
+  function onFailedCallback(code) {
+    console.log('onFailedCallback====> code=' + JSON.stringify(code))
+  }
 export default class ServiceAbility extends ServiceExtension {
     onCreate(want:Want) {
         console.log('ServiceAbility onCreate, want: ' + want.abilityName);
@@ -87,7 +99,11 @@ export default class ServiceAbility extends ServiceExtension {
                 {
                     bundleName: "com.example.manyusersabilitytest",
                     abilityName: "com.example.manyusersabilitytest.ServiceAbility2",
-                }
+                }, {
+                    onConnect: onConnectCallback,
+                    onDisconnect: onDisconnectCallback,
+                    onFailed: onFailedCallback
+                  }
             );
         };
         if (want.action == "Eight") {
@@ -95,7 +111,11 @@ export default class ServiceAbility extends ServiceExtension {
                 {
                     bundleName: "com.example.manyusersabilitytesta",
                     abilityName: "com.example.manyusersabilitytest.ServiceAbility3",
-                }
+                }, {
+                    onConnect: onConnectCallback,
+                    onDisconnect: onDisconnectCallback,
+                    onFailed: onFailedCallback
+                  }
             );
         };
         if (want.action == "Nine") {
@@ -104,7 +124,11 @@ export default class ServiceAbility extends ServiceExtension {
                 {
                     bundleName: 'com.example.manyusersabilitytest',
                     abilityName: 'com.example.manyusersabilitytest.ServiceAbility2'
-                })
+                }, {
+                    onConnect: onConnectCallback,
+                    onDisconnect: onDisconnectCallback,
+                    onFailed: onFailedCallback
+                  })
             setTimeout(()=>{
                 this.context.disconnectAbility(num).then(()=>{
                     console.log('in disconnectAbility');
@@ -118,7 +142,11 @@ export default class ServiceAbility extends ServiceExtension {
                 {
                     bundleName: 'com.example.manyusersabilitytest',
                     abilityName: 'com.example.manyusersabilitytest.ServiceAbility2'
-                })
+                }, {
+                    onConnect: onConnectCallback,
+                    onDisconnect: onDisconnectCallback,
+                    onFailed: onFailedCallback
+                  })
             setTimeout(()=>{
                 this.context.disconnectAbility(num).then(()=>{
                     console.log('in disconnectAbility2');
@@ -132,7 +160,11 @@ export default class ServiceAbility extends ServiceExtension {
                 {
                     bundleName: 'com.example.manyusersabilitytest',
                     abilityName: 'com.example.manyusersabilitytest.ServiceAbility2'
-                })
+                }, {
+                    onConnect: onConnectCallback,
+                    onDisconnect: onDisconnectCallback,
+                    onFailed: onFailedCallback
+                  })
             setTimeout(()=>{
                 this.context.disconnectAbility(2222).then(()=>{
                     console.log('in disconnectAbility3');
@@ -146,7 +178,11 @@ export default class ServiceAbility extends ServiceExtension {
                 {
                     bundleName: 'com.example.manyusersabilitytest',
                     abilityName: 'com.example.manyusersabilitytest.ServiceAbility2'
-                })
+                }, {
+                    onConnect: onConnectCallback,
+                    onDisconnect: onDisconnectCallback,
+                    onFailed: onFailedCallback
+                  })
             setTimeout(()=>{
                 this.context.disconnectAbility(2222).then(()=>{
                     console.log('in disconnectAbility4');
