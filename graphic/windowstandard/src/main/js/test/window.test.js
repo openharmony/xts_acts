@@ -2938,6 +2938,7 @@ describe('window_test', function () {
             done();
         })
     })
+	
     /**
      * @tc.number		SUB_WMS_ENUM_ORIENTATION_JSAPI_001
      * @tc.name			Test enumOrientation_Test_001.
@@ -2960,7 +2961,7 @@ describe('window_test', function () {
             expect(11).assertEqual(window.Orientation.LOCKED);
             done();
         } catch (err) {
-            console.log('test enum value of windowStageEventType error ' + JSON.stringify(err));
+            console.info('test enum value of windowStageEventType error ' + JSON.stringify(err));
             expect().assertFail();
             done();
         }
@@ -2974,7 +2975,7 @@ describe('window_test', function () {
     it('setKeepScreenOnCallBack_Test_001', 0, async function (done) {
         console.log('windowTest setCallBackKeepScreenOnTest1 begin');
         window.getTopWindow().then(wnd => {
-            console.log('windowTest setKeepScreenOnTest1 getTopWindow wnd' + wnd);
+            console.info('windowTest setKeepScreenOnTest1 getTopWindow wnd' + wnd);
             expect(wnd != null).assertTrue();
             wnd.getProperties().then(data => {
                 expect(!data.isKeepScreenOn).assertTrue();
@@ -2989,19 +2990,19 @@ describe('window_test', function () {
                             expect(data.isKeepScreenOn).assertTrue();
                             done();
                         }, (err) => {
-                            console.log('windowTest setKeepScreenOnTest1 getProperties failed: err' + JSON.stringify(err));
+                            console.info('windowTest setKeepScreenOnTest1 getProperties failed: err' + JSON.stringify(err));
                             expect().assertFail();
                             done();
                         })
                     }
                 })
             }, (err) => {
-                console.log('windowTest setKeepScreenOnTest1 getProperties failed: err' + JSON.stringify(err));
+                console.info('windowTest setKeepScreenOnTest1 getProperties failed: err' + JSON.stringify(err));
                 expect().assertFail();
                 done();
             })
         }, (err) => {
-            console.log('windowTest setKeepScreenOnTest1 getTopWindow failed: err' + JSON.stringify(err));
+            console.info('windowTest setKeepScreenOnTest1 getTopWindow failed: err' + JSON.stringify(err));
             expect().assertFail();
             done();
         })
@@ -3015,7 +3016,7 @@ describe('window_test', function () {
     it('setKeepScreenOnCallBack_Test_002', 0, async function (done) {
         console.log('windowTest setKeepScreenOnTestCallBack2 begin');
         window.getTopWindow().then(wnd => {
-            console.log('windowTest setKeepScreenOnTestCallBack2 getTopWindow wnd' + wnd);
+            console.info('windowTest setKeepScreenOnTestCallBack2 getTopWindow wnd' + wnd);
             expect(wnd != null).assertTrue();
             for (let i = 0; i < 5; i++) {
                 wnd.getProperties().then(data => {
@@ -3031,21 +3032,21 @@ describe('window_test', function () {
                                 expect(!data.isKeepScreenOn).assertTrue();
                                 done();
                             }, (err) => {
-                                console.log('windowTest setCallBackKeepScreenOnTest1 getProperties failed: err' + JSON.stringify(err));
+                                console.info('windowTest setCallBackKeepScreenOnTest1 getProperties failed: err' + JSON.stringify(err));
                                 expect().assertFail();
                                 done();
                             })
                         }
                     })
                 }, (err) => {
-                    console.log('windowTest setCallBack_KeepScreenOnTest2 getProperties failed: err' + JSON.stringify(err));
+                    console.info('windowTest setCallBack_KeepScreenOnTest2 getProperties failed: err' + JSON.stringify(err));
                     expect().assertFail();
                     done();
                 })
             }
             done();
         }, (err) => {
-            console.log('windowTest setCallBackKeepScreenOnTest2 getTopWindow failed: err' + JSON.stringify(err));
+            console.info('windowTest setCallBackKeepScreenOnTest2 getTopWindow failed: err' + JSON.stringify(err));
             expect().assertFail();
             done();
         })
