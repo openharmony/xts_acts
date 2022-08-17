@@ -100,24 +100,13 @@ export default function ActsAmsCallBackFifthScene() {
             done();
         }
 
-        function sleep(delay) {
-            let start = new Date().getTime();
-            while (true) {
-                if (new Date().getTime() - start > delay) {
-                    break;
-                }
-            }
-        }
-
         /*
         * @tc.number    : Acts_Ams_test_6600
         * @tc.name      : getProcessRunningInfos : Get All Running Processes Info
         * @tc.desc      : Get All Running Processes Info(by CallBack)
         */
         it('Acts_Ams_test_6600', 0, async function (done) {
-            console.info("sleep begin");
-            sleep(5000);
-            console.info("sleep end");
+            console.info("Acts_Ams_test_6600 begin");
             appManager.getProcessRunningInfos(
                 (error, info) => {
                     console.info('Acts_Ams_test_6600 getProcessRunningInfos error.code \
