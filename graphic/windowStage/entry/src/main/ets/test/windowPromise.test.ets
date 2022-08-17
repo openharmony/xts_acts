@@ -1404,5 +1404,84 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'done ');
       done();
     })
+    /**
+* @tc.number     SUB_WINDOW_SNAPSHOT_JSAPI_001
+* @tc.name       Test snapshotTest1
+* @tc.desc       Scenario of screenshot of verification window
+*/
+    it('snapshotTest1', 0, async function (done) {
+      let caseName = 'snapshotTest1';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let mainWin = await windowStage.getMainWindow().catch((err) => {
+        unexpectedError(err, caseName, 'windowStage.getMainWindow', done);
+      });
+      console.log(msgStr + 'windowStage.getMainWindow' + JSON.stringify(mainWin));
+      expect(!!mainWin).assertTrue();
+      let snapshotData = await mainWin.snapshot().catch((err) => {
+        unexpectedError(err, caseName, 'mainWin.snapshot', done);
+        console.log(msgStr + 'snapshot err.code:' + JSON.stringify(err.code));
+      })
+      expect(!!snapshotData).assertTrue();
+      done();
+    })
+    /**
+    * @tc.number     SUB_WINDOW_DIALOGTARGETTOUCH_JSAPI_001
+    * @tc.name       Test dialogTargetTouchTest1
+    * @tc.desc       Verify the scenario of opening modal window
+    */
+    it('dialogTargetTouchTest1', 0, async function (done) {
+      let caseName = 'dialogTargetTouchTest1';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin context==' + JSON.stringify(context));
+      let tempType = ohosWindow.WindowType.TYPE_DIALOG
+      let dialogTargetTouchTest1Win = await ohosWindow.create(context, 'dialogTargetTouchTest1', tempType).catch((err) => {
+        unexpectedError(err, caseName, 'ohosWindow.create', done);
+      })
+      expect(!!dialogTargetTouchTest1Win).assertTrue();
+      dialogTargetTouchTest1Win.destroy();
+      done();
+    })
+    /**
+    * @tc.number     SUB_WINDOW_ANIMATIONFORSHOWN_JSAPI_001
+    * @tc.name       Test animationForShownTest1
+    * @tc.desc       Verify window custom animation configuration of the scene
+    */
+    it('animationForShownTest1', 0, async function (done) {
+      let caseName = 'animationForShownTest1';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin context==' + JSON.stringify(context));
+      console.log(msgStr + 'begin ohosWindow==' + JSON.stringify(ohosWindow));
+      let wndId = 'animationForShownTest1';
+      let baseType = ohosWindow.WindowType.TYPE_SYSTEM_ALERT;
+      let tempWnd = await ohosWindow.create(context,wndId, baseType).catch((err) => {
+        unexpectedError(err, caseName, 'ohosWindow.create ' + baseType, done);
+      });
+      console.log(msgStr + 'ohosWindow.create ' + baseType + ', tempWnd: ' + tempWnd);
+      expect(!!tempWnd).assertTrue();
+      let controller = tempWnd.getTransitionController();
+      controller.animationForShown = (context: ohosWindow.TransitionContext) => {
+        let toWindow = context.toWindow
+        animateTo({
+          duration: 1000, // 动画时长
+          tempo: 0.5, // 播放速率
+          curve: Curve.EaseInOut, // 动画曲线
+          delay: 0, // 动画延迟
+          iterations: 1, // 播放次数
+          playMode: PlayMode.Normal, // 动画模式
+        }, () => {
+          var obj: ohosWindow.TranslateOptions;
+          obj.x = 100.0;
+          obj.y = 0.0;
+          obj.z = 0.0;
+          toWindow.translate(obj);
+          console.info(msgStr + 'toWindow translate end');
+        }
+        )
+        context.completeTransition(true)
+        console.info(msgStr + 'complete transition end');
+      }
+      done();
+    })
   })
 }
