@@ -18,7 +18,7 @@
     "mainAbility": "com.example.bmsmainabilityfirstscene.MainAbility",
     "name": ".MyApplication",
     "deviceType": [
-      "phone"
+      "default"
     ],
     "distro": {
       "deliveryWithInstall": true,

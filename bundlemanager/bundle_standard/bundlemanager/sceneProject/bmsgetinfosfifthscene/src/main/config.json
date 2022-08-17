@@ -18,7 +18,7 @@
     "name": ".BmsThirdBundle5",
     "mainAbility": "com.example.third5.AMainAbility",
     "deviceType": [
-      "phone"
+      "default"
     ],
     "distro": {
       "deliveryWithInstall": true,
