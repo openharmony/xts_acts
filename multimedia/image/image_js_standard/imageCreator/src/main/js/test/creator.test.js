@@ -590,7 +590,12 @@ describe('ImageCreator', function () {
                         bufferArr[i + 3] = 255; //A
                     }
                     console.info("this is img " + img);
-                    creator.queueImage(img, () => {
+                    creator.queueImage(img, (err) => {
+                        if (err != 0) {
+                            console.info('Creator_007 queueImage err: ' + err);
+                            expect(false).assertTrue();
+                            done();
+                        }
                         console.info('Creator_007 queueImage Success');
                         var dummy = creator.test;
                         expect(true).assertTrue();
@@ -724,6 +729,7 @@ describe('ImageCreator', function () {
                         return;
                     }
                     console.info('Creator_008 queueImage Success');
+                    expect(true).assertTrue();
                     var dummy = creator.test;
                 })
             })
