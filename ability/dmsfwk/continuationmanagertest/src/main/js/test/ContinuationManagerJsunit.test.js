@@ -19,8 +19,8 @@ const TEST_DEVICE_ID = "test_deviceId";
 const TEST_CONNECT_STATUS = continuationManager.DeviceConnectState.CONNECTED;
 let token = -1;
 
-export default function ContinuationManagerTest() {
-describe('ContinuationManagerTest', function() {
+export default function continuationManagerTest() {
+describe('continuationManagerTest', function() {
 
     beforeAll(async function (done) {
         console.info('beforeAll');
