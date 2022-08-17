@@ -9,12 +9,6 @@
     },
     "kits": [
         {
-            "type": "PushKit",
-            "push": [
-                "ActsUiTestScene.hap -> /data/ActsUiTestScene.hap"
-            ]
-        },
-        {
             "test-file-name": [
                 "ActsUiTest.hap",
                 "ActsUiTestScene.hap"

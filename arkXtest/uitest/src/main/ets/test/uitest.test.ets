@@ -37,7 +37,7 @@ async function stopApplication(bundleName: string) {
   })
 }
 
-export default function uiTest() {
+export default function UiTest() {
   describe('UiTest', function () {
 
     /*
@@ -46,11 +46,8 @@ export default function uiTest() {
      * @tc.desc: inject text to the target UiComponent
      */
     it('testInputText', 0, async function () {
-      console.info('0000')
       await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
-      console.info('11111')
       let driver = UiDriver.create()
-      console.info('2222')
       await driver.delayMs(waitUiReadyMs)
       let input = await driver.findComponent(BY.type('TextInput'))
       await input.inputText('123')
