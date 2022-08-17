@@ -32,7 +32,7 @@ export default function fetchFileResultCallbackTest(abilityContext) {
         const media = mediaLibrary.getMediaLibrary(abilityContext);
         beforeAll(async function () {
             await getPermission();
-            await checkPresetsAssets(media, 'ActsMediaLibraryAlbumFileResultCb');
+            await checkPresetsAssets(media, 'ActsMediaLibraryFileResult');
         });
         beforeEach(function () { });
         afterEach(async function () {

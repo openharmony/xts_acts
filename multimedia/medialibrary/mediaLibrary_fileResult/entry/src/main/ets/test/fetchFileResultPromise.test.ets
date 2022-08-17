@@ -33,7 +33,7 @@ export default function fetchFileResultPromiseTest(abilityContext) {
     describe('fetchFileResultPromiseTest', function () {
         const media = mediaLibrary.getMediaLibrary(abilityContext);
         beforeAll(async function () {
-            await checkPresetsAssets(media, 'ActsMediaLibraryAlbumFileResultPro');
+            await checkPresetsAssets(media, 'ActsMediaLibraryFileResult');
         });
         beforeEach(function () { });
         afterEach(async function () {

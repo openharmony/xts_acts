@@ -26,8 +26,8 @@ import {
     checkAssetsCount,
     fetchOps,
 } from '../../../../../../common';
-export default function fileAssetTestPromiseTest(abilityContext) {
-    describe('fileAssetTestPromiseTest', function () {
+export default function fileAssetTestCallbackTest(abilityContext) {
+    describe('fileAssetTestCallbackTest', function () {
         const media = mediaLibrary.getMediaLibrary(abilityContext);
         beforeAll(async function () {
             await checkPresetsAssets(media, 'ActsMediaLibraryFileAsset')
@@ -50,23 +50,31 @@ export default function fileAssetTestPromiseTest(abilityContext) {
                 if (!checkAssetCountPass) return;
                 const dataList = await fetchFileResult.getAllObject();
                 asset = dataList[0];
-                fd = await asset.open('rw');
-                expect(isNum(fd)).assertTrue();
-                let buf = new ArrayBuffer(4096);
-                let res = await fileio.read(fd, buf);
-                expect(res.bytesRead).assertEqual(assetProps.bytesRead);
-                asset1 = dataList[1];
-                fd1 = await asset1.open('r');
-                expect(isNum(fd1)).assertTrue();
-                let buf1 = new ArrayBuffer(4096);
-                await fileio.read(fd1, buf1);
-                let write = await fileio.write(fd, buf1);
-                expect(write).assertEqual(assetProps.write);
-                console.info(`res.bytesRead:${res.bytesRead},write:${write}`)
-                console.info(`fd1:${fd1},fd:${fd}`)
-                await asset.close(fd);
-                await asset1.close(fd1);
-                done();
+                asset.open('rw', async (err, fd) => {
+                    if (err) {
+                        console.info(`${testNum} :: err: ${err}`);
+                        expect.assertFail();
+                        done();
+                        return;
+                    }
+                    expect(isNum(fd)).assertTrue();
+                    let buf = new ArrayBuffer(4096);
+                    let res = await fileio.read(fd, buf);
+                    expect(res.bytesRead).assertEqual(assetProps.bytesRead);
+                    asset1 = dataList[1];
+                    fd1 = await asset1.open('r');
+                    expect(isNum(fd1)).assertTrue();
+                    let buf1 = new ArrayBuffer(4096);
+                    await fileio.read(fd1, buf1);
+                    let write = await fileio.write(fd, buf1);
+                    expect(write).assertEqual(assetProps.write);
+                    console.info(`res.bytesRead:${res.bytesRead},write:${write}`)
+                    console.info(`fd1:${fd1},fd:${fd}`)
+                    await asset.close(fd);
+                    await asset1.close(fd1);
+                    done();
+                });
+
             } catch (error) {
                 console.info(`${testNum} :: error: ${error}`);
                 await asset.close(fd);
@@ -84,20 +92,28 @@ export default function fileAssetTestPromiseTest(abilityContext) {
                 if (!checkAssetCountPass) return;
                 const dataList = await fetchFileResult.getAllObject();
                 asset = dataList[0];
-                fd = await asset.open('r');
-                expect(isNum(fd)).assertTrue();
-                let buf = new ArrayBuffer(4096);
-                let res = await fileio.read(fd, buf);
-                console.log(' bytesRead: ' + res.bytesRead)
-                expect(res.bytesRead).assertEqual(assetProps.bytesRead);
-                try {
-                    await fileio.write(fd, buf);
-                    expect.assertFail();
-                } catch (error) {
-                    expect(true).assertTrue();
-                    await asset.close(fd);
-                    done();
-                }
+                asset.open('r', async (err, fd) => {
+                    if (err) {
+                        console.info(`${testNum} :: err: ${err}`);
+                        expect.assertFail();
+                        done();
+                        return;
+                    }
+                    expect(isNum(fd)).assertTrue();
+                    let buf = new ArrayBuffer(4096);
+                    let res = await fileio.read(fd, buf);
+                    console.log(' bytesRead: ' + res.bytesRead)
+                    expect(res.bytesRead).assertEqual(assetProps.bytesRead);
+                    try {
+                        await fileio.write(fd, buf);
+                        expect.assertFail();
+                    } catch (error) {
+                        expect(true).assertTrue();
+                        await asset.close(fd);
+                        done();
+                    }
+                });
+
             } catch (error) {
                 console.info(`${testNum} :: error: ${error}`);
                 expect.assertFail();
@@ -118,24 +134,32 @@ export default function fileAssetTestPromiseTest(abilityContext) {
                 asset = dataList[0];
                 asset1 = dataList[1];
 
-                fd = await asset.open('w');
-                expect(isNum(fd)).assertTrue();
-                fd1 = await asset1.open('r');
-                let buf = new ArrayBuffer(4096);
-                await fileio.read(fd1, buf);
-                let write = await fileio.write(fd, buf);
-                console.info(`${testNum} :: write: ${write}`);
-                expect(write).assertEqual(assetProps.write);
-                let buf1 = new ArrayBuffer(4096);
-                try {
-                    await fileio.read(fd, buf1);
-                    expect.assertFail();
+                asset.open('w', async (err, fd) => {
+                    if (err) {
+                        console.info(`${testNum} :: err: ${err}`);
+                        expect.assertFail();
+                        done();
+                        return;
+                    }
+                    expect(isNum(fd)).assertTrue();
+                    fd1 = await asset1.open('r');
+                    let buf = new ArrayBuffer(4096);
+                    await fileio.read(fd1, buf);
+                    let write = await fileio.write(fd, buf);
+                    console.info(`${testNum} :: write: ${write}`);
+                    expect(write).assertEqual(assetProps.write);
+                    let buf1 = new ArrayBuffer(4096);
+                    try {
+                        await fileio.read(fd, buf1);
+                        expect.assertFail();
 
-                } catch (error) {
-                    expect(true).assertTrue();
+                    } catch (error) {
+                        expect(true).assertTrue();
 
-                }
-                done();
+                    }
+                    done();
+                });
+
             } catch (error) {
                 console.info(`${testNum} :: error: ${error}`);
                 expect(false).assertTrue();
@@ -155,22 +179,30 @@ export default function fileAssetTestPromiseTest(abilityContext) {
                 const asset = await fetchFileResult.getFirstObject();
                 fd = await asset.open('r');
                 expect(isNum(fd)).assertTrue();
-                await asset.close(fd);
-                let count = 0
-                let buf = new ArrayBuffer(4096);
-                try {
-                    await fileio.read(fd, buf);
-                } catch (error) {
-                    count++
-                }
-                try {
-                    await fileio.write(fd, buf);
-                } catch (error) {
-                    count++
-                }
-                await sleep(1000)
-                expect(count).assertEqual(2);
-                done();
+                asset.close(fd, async (err) => {
+                    if (err) {
+                        console.info(`${testNum} :: err: ${err}`);
+                        expect.assertFail();
+                        done();
+                        return;
+                    }
+                    let count = 0
+                    let buf = new ArrayBuffer(4096);
+                    try {
+                        await fileio.read(fd, buf);
+                    } catch (error) {
+                        count++
+                    }
+                    try {
+                        await fileio.write(fd, buf);
+                    } catch (error) {
+                        count++
+                    }
+                    await sleep(1000)
+                    expect(count).assertEqual(2);
+                    done();
+                });
+
             } catch (error) {
                 console.info(`${testNum} error:${error}`)
                 await asset.close(fd);
@@ -180,58 +212,58 @@ export default function fileAssetTestPromiseTest(abilityContext) {
         }
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_01
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_01
          * @tc.name      : open('rw')
          * @tc.desc      : open -rw the type of FILE
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_01', 0, async function (done) {
+        it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_01', 0, async function (done) {
             let assetProps = {
                 bytesRead: 10,
                 write: 4096,
             }
-            let fetchOp = fetchOps('Documents/RW/', FILE_TYPE);
+            let fetchOp = fetchOps('Documents/RW_cb/', FILE_TYPE);
             let expectCount = 2;
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_01';
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_01';
             await rwOpenTest(done, testNum, fetchOp, assetProps, expectCount)
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_02
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_02
          * @tc.name      : open('r')
          * @tc.desc      : open -r the type of FILE
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_02', 0, async function (done) {
+        it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_02', 0, async function (done) {
             let assetProps = {
                 bytesRead: 10,
                 write: 4096,
             }
-            let fetchOp = fetchOps('Documents/R/', FILE_TYPE);
+            let fetchOp = fetchOps('Documents/R_cb/', FILE_TYPE);
             let expectCount = 2;
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_02';
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_02';
             await rOpenTest(done, testNum, fetchOp, assetProps, expectCount)
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_03
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_03
          * @tc.name      : open('w')
          * @tc.desc      : open -w the type of FILE
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_03', 0, async function (done) {
+        it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_03', 0, async function (done) {
             let assetProps = {
                 write: 4096,
             }
-            let fetchOp = fetchOps('Documents/W/', FILE_TYPE);
+            let fetchOp = fetchOps('Documents/W_cb/', FILE_TYPE);
             let expectCount = 2;
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_03';
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_03';
             await wOpenTest(done, testNum, fetchOp, assetProps, expectCount)
         });
 
@@ -239,57 +271,57 @@ export default function fileAssetTestPromiseTest(abilityContext) {
 
         //======================== IMAGE BEGIN ==================================
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_07
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_07
          * @tc.name      : open('rw')
          * @tc.desc      : open -rw the type of IMAGE
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_07', 0, async function (done) {
+        it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_07', 0, async function (done) {
             let assetProps = {
                 bytesRead: 4096,
                 write: 4096,
             }
-            let fetchOp = fetchOps('Pictures/RW/', IMAGE_TYPE);
+            let fetchOp = fetchOps('Pictures/RW_cb/', IMAGE_TYPE);
             let expectCount = 2;
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_07';
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_07';
             await rwOpenTest(done, testNum, fetchOp, assetProps, expectCount)
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_08
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_08
          * @tc.name      : open('r')
          * @tc.desc      : open -r the type of IMAGE
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_08', 0, async function (done) {
+        it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_08', 0, async function (done) {
             let assetProps = {
                 bytesRead: 4096,
             }
-            let fetchOp = fetchOps('Pictures/R/', IMAGE_TYPE);
+            let fetchOp = fetchOps('Pictures/R_cb/', IMAGE_TYPE);
             let expectCount = 2;
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_08';
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_08';
             await rOpenTest(done, testNum, fetchOp, assetProps, expectCount)
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_09
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_09
          * @tc.name      : open('w')
          * @tc.desc      : open -w the type of IMAGE
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_09', 0, async function (done) {
+        it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_09', 0, async function (done) {
             let assetProps = {
                 write: 4096,
             }
-            let fetchOp = fetchOps('Pictures/W/', IMAGE_TYPE);
+            let fetchOp = fetchOps('Pictures/W_cb/', IMAGE_TYPE);
             let expectCount = 2;
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_09';
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_09';
             await wOpenTest(done, testNum, fetchOp, assetProps, expectCount)
         });
 
@@ -297,57 +329,57 @@ export default function fileAssetTestPromiseTest(abilityContext) {
 
         //======================== AUDIO BEGIN ==================================
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_10
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_10
          * @tc.name      : open('rw')
          * @tc.desc      : open -rw the type of AUDIO
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_10', 0, async function (done) {
+        it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_10', 0, async function (done) {
             let assetProps = {
                 bytesRead: 4096,
                 write: 4096,
             }
-            let fetchOp = fetchOps('Audios/RW/', AUDIO_TYPE);
+            let fetchOp = fetchOps('Audios/RW_cb/', AUDIO_TYPE);
             let expectCount = 2;
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_10';
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_10';
             await rwOpenTest(done, testNum, fetchOp, assetProps, expectCount)
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_11
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_11
          * @tc.name      : open('r')
          * @tc.desc      : open -r the type of AUDIO
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_11', 0, async function (done) {
+        it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_11', 0, async function (done) {
             let assetProps = {
                 bytesRead: 4096,
             }
-            let fetchOp = fetchOps('Audios/R/', AUDIO_TYPE);
+            let fetchOp = fetchOps('Audios/R_cb/', AUDIO_TYPE);
             let expectCount = 2;
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_11';
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_11';
             await rOpenTest(done, testNum, fetchOp, assetProps, expectCount)
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_12
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_12
          * @tc.name      : open('w')
          * @tc.desc      : open -w the type of AUDIO
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_12', 0, async function (done) {
+        it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_12', 0, async function (done) {
             let assetProps = {
                 write: 4096,
             }
-            let fetchOp = fetchOps('Audios/W/', AUDIO_TYPE);
+            let fetchOp = fetchOps('Audios/W_cb/', AUDIO_TYPE);
             let expectCount = 2;
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_12';
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_12';
             await wOpenTest(done, testNum, fetchOp, assetProps, expectCount)
         });
 
@@ -355,57 +387,57 @@ export default function fileAssetTestPromiseTest(abilityContext) {
 
         //======================== VIDEO BEGIN ==================================
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_13
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_13
          * @tc.name      : open('rw')
          * @tc.desc      : open -rw the type of VIDEO
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_13', 0, async function (done) {
+        it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_13', 0, async function (done) {
             let assetProps = {
                 bytesRead: 4096,
                 write: 4096,
             }
-            let fetchOp = fetchOps('Videos/RW/', VIDEO_TYPE);
+            let fetchOp = fetchOps('Videos/RW_cb/', VIDEO_TYPE);
             let expectCount = 2;
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_13';
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_13';
             await rwOpenTest(done, testNum, fetchOp, assetProps, expectCount)
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_14
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_14
          * @tc.name      : open('r')
          * @tc.desc      : open -r the type of VIDEO
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_14', 0, async function (done) {
+        it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_14', 0, async function (done) {
             let assetProps = {
                 bytesRead: 4096,
             }
-            let fetchOp = fetchOps('Videos/R/', VIDEO_TYPE);
+            let fetchOp = fetchOps('Videos/R_cb/', VIDEO_TYPE);
             let expectCount = 2;
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_14';
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_14';
             await rOpenTest(done, testNum, fetchOp, assetProps, expectCount)
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_15
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_15
          * @tc.name      : open('w')
          * @tc.desc      : open -w the type of VIDEO
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_15', 0, async function (done) {
+        it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_15', 0, async function (done) {
             let assetProps = {
                 write: 4096,
             }
-            let fetchOp = fetchOps('Videos/W/', VIDEO_TYPE);
+            let fetchOp = fetchOps('Videos/W_cb/', VIDEO_TYPE);
             let expectCount = 2;
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_15';
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_15';
             await wOpenTest(done, testNum, fetchOp, assetProps, expectCount)
         });
 
@@ -414,57 +446,57 @@ export default function fileAssetTestPromiseTest(abilityContext) {
         //======================== CLOSE BEGIN ================================
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_31
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_31
          * @tc.name      : close
          * @tc.desc      : asset close the type of file
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_31', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_31'
+        it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_31', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_31'
             let fetchOp = fetchOps('Documents/openClose/', FILE_TYPE);
             await closeTest(done, testNum, fetchOp)
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_33
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_33
          * @tc.name      : close
          * @tc.desc      : asset close the type of image
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_33', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_33'
+        it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_33', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_33'
             let fetchOp = fetchOps('Pictures/openClose/', IMAGE_TYPE);
             await closeTest(done, testNum, fetchOp)
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_34
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_34
          * @tc.name      : close
          * @tc.desc      : asset close the type of audio
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_34', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_34'
+        it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_34', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_34'
             let fetchOp = fetchOps('Audios/openClose/', AUDIO_TYPE);
             await closeTest(done, testNum, fetchOp)
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_35
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_35
          * @tc.name      : close
          * @tc.desc      : asset close the type of video
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_35', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_PROMISE_005_35'
+        it('SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_35', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_OPENANDCLOSE_ASSET_CALLBACK_005_35'
             let fetchOp = fetchOps('Videos/openClose/', VIDEO_TYPE);
             await closeTest(done, testNum, fetchOp)
         });

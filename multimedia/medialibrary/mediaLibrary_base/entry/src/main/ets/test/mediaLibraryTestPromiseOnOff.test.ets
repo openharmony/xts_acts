@@ -35,7 +35,7 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
         beforeAll(async function () {
             console.info('beforeAll case');
             await getPermission();
-            await checkPresetsAssets(media, 'ActsMediaLibraryGetThumbnail');
+            await checkPresetsAssets(media, 'ActsMediaLibraryBase');
         });
         beforeEach(function () {
             console.info('beforeEach case');
@@ -321,6 +321,43 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
             await offTest(done, testNum, type, currentFetchOps)
         });
 
+        /**
+        * @tc.number    : SUB_MEDIA_MIDIALIBRARY_PROMISE_OFF_005
+        * @tc.name      : off
+        * @tc.desc      : off album 
+        * @tc.size      : MEDIUM
+        * @tc.type      : Function
+        * @tc.level     : Level 0
+        */
+        it('SUB_MEDIA_MIDIALIBRARY_PROMISE_OFF_005', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MIDIALIBRARY_PROMISE_OFF_005'
+            try {
+                let conut = 0;
+                media.on('albumChange', () => {
+                    conut++;
+                });
+                await sleep(300)
+                media.off('albumChange');
+                let currentFetchOps = albumFetchOps('Pictures/', 'OffAlbum', IMAGE_TYPE);
+                const albumList = await media.getAlbums(currentFetchOps);
+                const albumCountPass = await checkAlbumsCount(done, testNum, albumList, 1);
+                if (!albumCountPass) return;
+                const album = albumList[0]
+                const oldName = album.albumName
+                album.albumName = album.albumName + 'changename';
+                await sleep(1000)
+                await album.commitModify();
+                await sleep(300)
+                album.albumName = oldName;
+                await album.commitModify();
+                expect(conut).assertEqual(0);
+                done();
+            } catch (error) {
+                console.info(`${testNum}:: error :${error}`);
+                expect(false).assertTrue();
+                done();
+            }
+        });
         /**
          * @tc.number    : SUB_MEDIA_MIDIALIBRARY_PROMISE_OFF_006
          * @tc.name      : off

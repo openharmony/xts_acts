@@ -13,15 +13,7 @@
  * limitations under the License.
  */
 import getPermissionTest from './getPermission.test.ets'
-import fileAssetCallBack2Test from './fileAssetCallBack2.test.ets'
-import fileAssetTestCallbackTest from './fileAssetTestCallback.test.ets'
-import fileTestCallBackTest from './fileTestCallBack.test.ets'
-import mediaLibraryTestCallBackTest from './mediaLibraryTestCallBack.test.ets'
 
 export default function testsuite(abilityContext) {
   getPermissionTest()
-  fileAssetCallBack2Test(abilityContext)
-  fileAssetTestCallbackTest(abilityContext)
-  fileTestCallBackTest(abilityContext)
-  mediaLibraryTestCallBackTest(abilityContext)
 }
