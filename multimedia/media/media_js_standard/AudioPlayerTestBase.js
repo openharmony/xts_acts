@@ -39,7 +39,7 @@ export function playAudioSource(src, duration, playTime, checkSeekTime, done) {
     }
     audioPlayer.on('dataLoad', () => {
         console.info('case set source success');
-        expect(audioPlayer.state).assertEqual('paused');
+        expect(audioPlayer.state).assertEqual('idle');
         expect(audioPlayer.currentTime).assertEqual(0);
         expect(audioPlayer.duration).assertClose(duration, 500);
         // step 0: dataLoad -> play

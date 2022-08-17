@@ -23,8 +23,8 @@ ohos_js_hap_suite("storagestatistics_js_test") {
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsStorageStatisticsJsTest"
-  subsystem_name = "xts"
-  part_name = "xts_acts"
+  subsystem_name = "filemanagement"
+  part_name = "storage_service"
 }
 
 ohos_app_scope("storagestatistics_app_profile") {

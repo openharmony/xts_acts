@@ -194,7 +194,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
             console.info(`case dataLoad called`);
             expect(audioPlayer.currentTime).assertEqual(0);
             expect(audioPlayer.duration).assertEqual(DURATION_TIME);
-            expect(audioPlayer.state).assertEqual('paused');
+            expect(audioPlayer.state).assertEqual('idle');
             nextStep(mySteps, done);
         });
         audioPlayer.on('play', () => {
@@ -316,7 +316,40 @@ describe('PlayerLocalTestAudioFUNC', function () {
             VOLUME_STATE, MAX_VOLUME, RESET_STATE, RELEASE_STATE, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
-        audioPlayer.src = fdPath;     
+        audioPlayer.src = fdPath;       
+    })
+
+    /* *
+        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_SEEK
+        * @tc.name      : 001.test seek mode 0 / 0.5 * duration/ duration
+        * @tc.desc      : Audio playback control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level0
+    */
+    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_SEEK', 0, async function (done) {
+        mediaTestBase.isFileOpen(fileDescriptor, done);
+        let mySteps = new Array(SRC_STATE, PLAY_STATE, SEEK_STATE, 0, SEEK_STATE,
+            DURATION_TIME / 2, SEEK_STATE, DURATION_TIME, FINISH_STATE, RELEASE_STATE, END_STATE);
+        initAudioPlayer();
+        setCallback(mySteps, done);
+        audioPlayer.src = fdHead + fileDescriptor.fd;
+    })
+
+    /* *
+        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_GETTRECKDESCRIPTION
+        * @tc.name      : 001.test getTrackDescription
+        * @tc.desc      : Audio playback control test
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level0
+    */
+    it('SUB_MEDIA_PLAYER_LOCAL_AUDIO_FUNCTION_GETTRECKDESCRIPTION', 0, async function (done) {
+        mediaTestBase.isFileOpen(fileDescriptor, done);
+        let mySteps = new Array(SRC_STATE, GETDESCRIPTION_PROMISE, GETDESCRIPTION_CALLBACK, RELEASE_STATE, END_STATE);
+        initAudioPlayer();
+        setCallback(mySteps, done);
+        audioPlayer.src = fdHead + fileDescriptor.fd;
     })
 
     /* *
@@ -342,7 +375,7 @@ describe('PlayerLocalTestAudioFUNC', function () {
 
         testAudioPlayer.on('dataLoad', () => {
             expect(testAudioPlayer.duration).assertEqual(DURATION_TIME);
-            expect(testAudioPlayer.state).assertEqual('paused');
+            expect(testAudioPlayer.state).assertEqual('idle');
             testAudioPlayer.play();
         });
         testAudioPlayer.on('play', () => {

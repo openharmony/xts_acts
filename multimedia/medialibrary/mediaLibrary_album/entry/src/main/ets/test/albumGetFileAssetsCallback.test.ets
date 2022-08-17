@@ -27,12 +27,14 @@ import {
     albumThreeTypesFetchOps,
     checkPresetsAssets,
     checkAlbumsCount,
+    getPermission,
 } from '../../../../../../common';
 
 export default function albumGetFileAssetsCallbackTest(abilityContext) {
     describe('albumGetFileAssetsCallbackTest', function () {
         const media = mediaLibrary.getMediaLibrary(abilityContext);
         beforeAll(async function () {
+            await getPermission();
             await checkPresetsAssets(media, 'ActsMediaLibraryAlbum');
         });
         beforeEach(function () { });

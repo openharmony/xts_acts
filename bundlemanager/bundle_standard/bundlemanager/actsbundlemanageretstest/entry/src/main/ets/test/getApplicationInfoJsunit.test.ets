@@ -469,7 +469,7 @@ export default function applicationBundleJsunit() {
             expect(data.labelId > 0).assertEqual(true);
             expect(data.labelIndex > 0).assertEqual(true);
             expect(data.labelIndex).assertEqual(data.labelId);
-            expect(data.systemApp).assertEqual(true);
+            expect(data.systemApp).assertEqual(false);
             expect(data.supportedModes).assertEqual(0);
             expect(data.process).assertEqual(BUNDLE_NAME);
             expect(data.entryDir).assertEqual(PATH + '/' + BUNDLE_NAME + '/' + BUNDLE_NAME);
@@ -499,7 +499,7 @@ export default function applicationBundleJsunit() {
             expect(data.labelId).assertLarger(0);
             expect(data.labelIndex).assertLarger(0);
             expect(data.labelIndex).assertEqual(data.labelId);
-            expect(data.systemApp).assertTrue();
+            expect(data.systemApp).assertFalse();
             expect(data.supportedModes).assertEqual(0);
             expect(data.process).assertEqual(BUNDLE_NAME);
             expect(data.entryDir).assertEqual(PATH + '/' + BUNDLE_NAME + '/' + BUNDLE_NAME);

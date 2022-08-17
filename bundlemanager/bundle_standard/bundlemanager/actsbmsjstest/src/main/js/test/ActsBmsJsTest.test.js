@@ -54,7 +54,7 @@ describe('ActsBmsJsTest', function () {
             expect(abilityInfo1.icon).assertEqual("$media:icon");
             expect(abilityInfo1.isVisible).assertEqual(true);
             expect(abilityInfo1.permissions.length).assertEqual(0);
-            expect(abilityInfo1.deviceTypes[0]).assertEqual('phone');
+            expect(abilityInfo1.deviceTypes[0]).assertEqual('default');
             expect(abilityInfo1.process).assertEqual(BUNDLE_NAME2);
             expect(abilityInfo1.uri).assertEqual("");
             expect(abilityInfo1.bundleName).assertEqual(BUNDLE_NAME2);
@@ -130,7 +130,7 @@ describe('ActsBmsJsTest', function () {
             expect(abilityInfo1.icon).assertEqual("$media:icon");
             expect(abilityInfo1.isVisible).assertEqual(true);
             expect(abilityInfo1.permissions.length).assertEqual(0);
-            expect(abilityInfo1.deviceTypes[0]).assertEqual('phone');
+            expect(abilityInfo1.deviceTypes[0]).assertEqual('default');
             expect(abilityInfo1.process).assertEqual(BUNDLE_NAME4);
             expect(abilityInfo1.uri).assertEqual("");
             expect(abilityInfo1.bundleName).assertEqual(BUNDLE_NAME4);
@@ -173,7 +173,7 @@ describe('ActsBmsJsTest', function () {
             expect(abilityInfo1.icon).assertEqual("$media:icon");
             expect(abilityInfo1.isVisible).assertEqual(true);
             expect(abilityInfo1.permissions.length).assertEqual(0);
-            expect(abilityInfo1.deviceTypes[0]).assertEqual('phone');
+            expect(abilityInfo1.deviceTypes[0]).assertEqual('default');
             expect(abilityInfo1.process).assertEqual(BUNDLE_NAME5);
             expect(abilityInfo1.uri).assertEqual("");
             expect(abilityInfo1.bundleName).assertEqual(BUNDLE_NAME5);
@@ -205,7 +205,7 @@ describe('ActsBmsJsTest', function () {
         expect(info.icon).assertEqual("$media:icon");
         expect(info.isVisible).assertEqual(true);
         expect(info.permissions.length).assertEqual(0);
-        expect(info.deviceTypes[0]).assertEqual('phone');
+        expect(info.deviceTypes[0]).assertEqual('default');
         expect(info.process).assertEqual(BUNDLE_NAME3);
         expect(info.uri).assertEqual("");
         expect(info.bundleName).assertEqual(BUNDLE_NAME3);

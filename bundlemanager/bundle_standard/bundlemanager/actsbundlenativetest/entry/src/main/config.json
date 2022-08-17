@@ -19,7 +19,7 @@
     "mainAbility": "com.actsbundle.napitest.MainAbility",
 
     "deviceType": [
-      "phone"
+      "default"
     ],
     "distro": {
       "deliveryWithInstall": true,

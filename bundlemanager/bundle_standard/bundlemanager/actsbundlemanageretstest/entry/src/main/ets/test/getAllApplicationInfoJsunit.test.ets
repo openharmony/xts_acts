@@ -343,7 +343,7 @@ export default function getAllApplicationBundleTest() {
                     if (data[i].uid !== 0) {
                         expect(data[i].uid > 0).assertEqual(true);
                     };
-                    expect(data[i].systemApp).assertEqual(true);
+                    expect(data[i].systemApp).assertEqual(false);
                     expect(data[i].supportedModes).assertEqual(0);
                     expect(data[i].process).assertEqual('com.open.harmony.packagemag');
                     expect(data[i].entryDir).assertEqual('/data/app/el1/bundle/public/com.open.harmony.packagemag' +

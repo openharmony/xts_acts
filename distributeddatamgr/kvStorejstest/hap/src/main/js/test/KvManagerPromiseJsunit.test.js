@@ -821,29 +821,6 @@ describe('kvManagerPromiseTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORE_DELETE_1000
-     * @tc.name [JS-API8]KVStore.Delete
-     * @tc.desc Test Js Api KVManager.Delete testcase 001
-     */
-    it('testKVStorePut001', 0, async function (done) {
-        console.info('testKVStorePut001');
-        try {
-            await kvStoreNew.put(TEST_BUNDLE_NAME, TEST_STORE_ID).then((data) => {
-                if (err != undefined){
-                    console.info('testKVStorePut001 put promise fail');
-                } else {
-                    console.info('testKVStorePut001 put promise success');
-                    expect(null).assertFail();
-                }
-                done();
-            });
-        } catch (e) {
-            console.info('testKVStorePut001 e ' + e);
-            done();
-        }
-    })
-
-    /**
       * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORE_DELETE_1000
       * @tc.name [JS-API8]KVStore.Delete
       * @tc.desc Test Js Api KVManager.Delete testcase 001
@@ -884,18 +861,23 @@ describe('kvManagerPromiseTest', function () {
             context:context
         }
         try {
-            await factory.createKVManager(config).then((manager) => {
+            await factory.createKVManager(config).then(async (manager) => {
                 kvManager = manager;
                 expect(manager !=null).assertTrue();
                 console.info('testcreateKVManager001 createKVManager success');
-                kvManager.getKVStore(TEST_STORE_ID, options).then(async (store) => {
+                await kvManager.getKVStore(TEST_STORE_ID, options).then(async (store) => {
                     console.info("testcreateKVManager001 getKVStore success");
-                    await store.put("createKVManager","success").then(async () => {
-                        await store.get("craeteKVManager","defaultValue").then((data) => {
-                            expect("success").assertEqual(data)
-                            console.info("testcreateKVManager001 put data success")
-                        })
-                    })
+                    await store.put(STORE_KEY, STORE_VALUE).then(async (data) => {
+                        console.info('testcreateKVManager001 put data success');
+                        await store.get(STORE_KEY).then((data) => {
+                            console.info("testcreateKVManager001  get data success");
+                            expect(data).assertEqual(STORE_VALUE);
+                        }).catch((err) => {
+                            console.info('testcreateKVManager001 get data err' + err);
+                        });
+                    }).catch((err) => {
+                        console.info('testcreateKVManager001 put data err' + err);
+                    });
                 }).catch((err) => {
                     console.info("testcreateKVManager001 getKVStore err: "  + JSON.stringify(err));
                     expect(null).assertFail();
@@ -927,17 +909,22 @@ describe('kvManagerPromiseTest', function () {
             context:contextApplication
         }
         try {
-            await factory.createKVManager(config).then((manager) => {
+            await factory.createKVManager(config).then(async (manager) => {
                 kvManager = manager;
                 console.info('testcreateKVManager002 createKVManager success');
-                kvManager.getKVStore(TEST_STORE_ID, options).then(async (store) => {
+                await kvManager.getKVStore(TEST_STORE_ID, options).then(async (store) => {
                     console.info("testcreateKVManager002 getKVStore success");
-                    await store.put("createKVManager","success").then(async () => {
-                        await store.get("craeteKVManager","defaultValue").then((data) => {
-                            expect("success").assertEqual(data)
-                            console.info("testcreateKVManager002 put data success")
-                        })
-                    })
+                    await store.put(STORE_KEY, STORE_VALUE).then(async (data) => {
+                        console.info('testcreateKVManager002 put data success');
+                        await store.get(STORE_KEY).then((data) => {
+                            console.info("testcreateKVManager002  get data success");
+                            expect(data).assertEqual(STORE_VALUE);
+                        }).catch((err) => {
+                            console.info('testcreateKVManager002 get data err' + err);
+                        });
+                    }).catch((err) => {
+                        console.info('testcreateKVManager002 put data err' + err);
+                    });
                 }).catch((err) => {
                     console.info("testcreateKVManager002 getKVStore err: "  + JSON.stringify(err));
                     expect(null).assertFail();

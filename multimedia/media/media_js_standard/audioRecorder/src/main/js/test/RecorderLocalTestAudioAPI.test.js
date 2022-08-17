@@ -18,7 +18,7 @@ import * as mediaTestBase from '../../../../../MediaTestBase.js';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 describe('RecorderLocalTestAudioAPI', function () {
-    let audioRecorder = media.createAudioRecorder();
+    let audioRecorder = null;
     const END_STATE = 0;
     const PRE_STATE = 1;
     const START_STATE = 2;
@@ -42,9 +42,9 @@ describe('RecorderLocalTestAudioAPI', function () {
         fileFormat : media.ContainerFormatType.CFT_MPEG_4A,
     }
     function initAudioRecorder() {
-        if (typeof (audioRecorder) != 'undefined') {
+        if (audioRecorder != null) {
             audioRecorder.release();
-            audioRecorder = undefined;
+            audioRecorder = null;
         }
         audioRecorder = media.createAudioRecorder();
     }
@@ -83,7 +83,7 @@ describe('RecorderLocalTestAudioAPI', function () {
             case RELEASE_STATE:
                 console.info('case to release');
                 audioRecorder.release();
-                audioRecorder = undefined;
+                audioRecorder = null;
                 break;
             case ERROR_STATE:
                 console.info('case to wait error callback');
@@ -138,9 +138,7 @@ describe('RecorderLocalTestAudioAPI', function () {
             nextStep(mySteps,done);
         });
         audioRecorder.on('error', (err) => {
-            console.info(`case error called,errName is ${err.name}`);
             console.info(`case error called,errCode is ${err.code}`);
-            console.info(`case error called,errMessage is ${err.message}`);
             mySteps.shift();
             expect(mySteps[0]).assertEqual(ERROR_STATE);
             mySteps.shift();
@@ -166,36 +164,6 @@ describe('RecorderLocalTestAudioAPI', function () {
     afterAll(async function () {
         await mediaTestBase.closeFd(fdObject.fileAsset, fdObject.fdNumber);
         console.info('afterAll case');
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_RECORDER_createAudioRecorder_API_0100
-        * @tc.name      : Create an AudioRecoder Object by function of createAudioRecorder
-        * @tc.desc      : Reliability Test
-        * @tc.size      : MediumTest
-        * @tc.type      : Reliability
-        * @tc.level     : Level2
-    */
-    it('SUB_MEDIA_RECORDER_createAudioRecorder_API_0100', 0, async function (done) {
-        let testAudioRecorder = undefined;
-        testAudioRecorder= media.createAudioRecorder();
-        expect(testAudioRecorder != undefined).assertTrue();
-        done();
-    })
-
-    /* *
-        * @tc.number    : SUB_MEDIA_RECORDER_AudioRecorder_Prepare_API_0100
-        * @tc.name      : 01.creatAudioRecorder->prepare
-        * @tc.desc      : Reliability Test
-        * @tc.size      : MediumTest
-        * @tc.type      : Reliability
-        * @tc.level     : Level2
-    */
-    it('SUB_MEDIA_RECORDER_AudioRecorder_Prepare_API_0100', 0, async function (done) {
-        let testAudioRecorder= media.createAudioRecorder();
-        expect(testAudioRecorder != null).assertTrue();
-        testAudioRecorder.prepare(audioConfig);
-        done();
     })
 
     /* *
@@ -1000,7 +968,7 @@ describe('RecorderLocalTestAudioAPI', function () {
         let mySteps = new Array(RELEASE_STATE, END_STATE);
         setCallback(mySteps, done);
         audioRecorder.release();
-        audioRecorder = undefined;
+        audioRecorder = null;
     })
 
     /* *
