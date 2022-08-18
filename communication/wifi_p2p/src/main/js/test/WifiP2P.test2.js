@@ -75,6 +75,47 @@ export default function actsWifiTestNew() {
             done();
         })
 
+        /**
+        * @tc.number     P2P_0002
+        * @tc.name       SUB_Communication_WiFi_XTS_P2P_0002
+        * @since 8
+        * @tc.desc       Test set P2P DeviceName ,get TO P2pLocalDevice API functionality.
+        * @systemapi Hide this for inner system use.
+        * hits case(setDeviceName)
+        */
+
+        it('SUB_Communication_WiFi_XTS_P2P_0002', 0, async function (done) {
+            await wifi.getP2pLocalDevice()
+                .then(data => {
+                    let resultLength = Object.keys(data).length;
+                    console.info("[wifi_test] getP2pLocalDevice  [promise] result :" + JSON.stringify(data));
+                    expect(true).assertEqual(resultLength >= 0);
+                }).catch((error) => {
+                    console.info("[wifi_test]getP2pLocalDevice promise error." + JSON.stringify(error));
+                    expect().assertFail();
+                });
+            function getP2pLocal(){
+                return new Promise((resolve, reject) => {
+                    wifi.getP2pLocalDevice(
+                        (err, ret) => {
+                            if(err) {
+                                console.info("[wifi_test]getP2pLocalDevice callback failed : " + JSON.stringify(err));
+                                return;
+                            }
+                            console.info("[wifi_test] getP2pLocalDevice callback result: " + JSON.stringify(ret));
+                            console.info("deviceName: " + ret.deviceName + "deviceAddress: " +
+                            ret.deviceAddress + "primaryDeviceType: " + ret.primaryDeviceType +
+                            "deviceStatus: " + ret.deviceStatus + "groupCapabilitys: " +
+                            ret.groupCapabilitys );
+                            resolve();
+                        });
+                });
+            }
+            await getP2pLocal();
+            done();
+        })
+
     })
 }
+
 

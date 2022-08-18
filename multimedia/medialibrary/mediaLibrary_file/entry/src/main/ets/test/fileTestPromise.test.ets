@@ -26,7 +26,6 @@ import {
     checkPresetsAssets,
     nameFetchOps,
     checkAssetsCount,
-    getPermission,
     fetchOps,
     FILEKEY,
     isNum,
@@ -37,7 +36,6 @@ export default function fileTestPromiseTest(abilityContext) {
     describe('fileTestPromiseTest', function () {
         const media = mediaLibrary.getMediaLibrary(abilityContext);
         beforeAll(async function () {
-            await getPermission();
             await checkPresetsAssets(media, 'ActsMediaLibraryFile')
         });
         beforeEach(function () { });

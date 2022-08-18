@@ -22,19 +22,15 @@ import {
     VIDEO_TYPE,
     AUDIO_TYPE,
     FILE_TYPE,
-
-    FILEKEY,
     checkPresetsAssets,
     checkAssetsCount,
-    getPermission,
     fetchOps,
-    nameFetchOps,
 } from '../../../../../../common';
 export default function fileAssetTestPromiseTest(abilityContext) {
     describe('fileAssetTestPromiseTest', function () {
         const media = mediaLibrary.getMediaLibrary(abilityContext);
         beforeAll(async function () {
-            await checkPresetsAssets(media, 'ActsMediaLibraryFileKey')
+            await checkPresetsAssets(media, 'ActsMediaLibraryFileAsset')
         });
         beforeEach(function () { });
         afterEach(async function () {
