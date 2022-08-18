@@ -169,7 +169,7 @@ describe('fieldNodeTest', function() {
      it('testtype001', 0, async function(done) {
         try {
             let node = new ddm.FieldNode('first');
-            node.type = ddm.type.STRING;
+            node.type = ddm.value.type.STRING;
             console.info('type = ' + node.type);
             expect(node.type === ddm.type.STRING).assertTrue()
         } catch (e) {
