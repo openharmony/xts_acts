@@ -21,6 +21,8 @@ ohos_js_hap_suite("video_codec_format_js_hap") {
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsVideoCodecFormatJsTest"
+  subsystem_name = "multimedia"
+  part_name = "multimedia_player_framework"
 }
 ohos_js_assets("video_codec_format_js_assets") {
   source_dir = "./src/main/js/default"
