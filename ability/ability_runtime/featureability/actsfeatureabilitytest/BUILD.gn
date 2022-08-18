@@ -21,14 +21,15 @@ ohos_js_hap_suite("ActsFeatureAbilityTest") {
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsFeatureAbilityTest"
-
   subsystem_name = "ability"
   part_name = "ability_runtime"
 }
 ohos_js_assets("hjs_demo_js_assets") {
-  source_dir = "./entry/src/main/js/default"
+  js2abc = true
+  hap_profile = "./entry/src/main/config.json"
+  source_dir = "./entry/src/main/js"
 }
 ohos_resources("hjs_demo_resources") {
-  sources = [ "./entry/src/main/js/resources" ]
+  sources = [ "./entry/src/main/resources" ]
   hap_profile = "./entry/src/main/config.json"
 }
