@@ -5150,10 +5150,10 @@ describe('audioManager', function () {
             * @tc.level     : Level 0
         */
     it('SUB_AUDIO_MANAGER_DeviceRole_001', 0, async function (done) {
-        expect(audio.DeviceRole.INPUT_DEVICE ).assertEqual(1);
+        expect(audio.DeviceRole.INPUT_DEVICE).assertEqual(1);
         console.info("audio.DeviceRole.INPUT_DEVICE :"+audio.DeviceRole.INPUT_DEVICE);
-        expect(audio.DeviceRole.OUTPUT_DEVICE ).assertEqual(2);
-        console.info("audio.DeviceRole.OUTPUT_DEVICE :"+audio.DeviceRole.OUTPUT_DEVICE );
+        expect(audio.DeviceRole.OUTPUT_DEVICE).assertEqual(2);
+        console.info("audio.DeviceRole.OUTPUT_DEVICE :"+audio.DeviceRole.OUTPUT_DEVICE);
         await sleep(50);
         done();
     })
