@@ -687,6 +687,38 @@ export default function cameraJSUnitPhotoAsync(surfaceId: any) {
     })
 
     /**
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_PREVIEW_SUCCESS_0200
+      * @tc.name      : Add output with camera0Input api
+      * @tc.desc      : Add output with camera0Input api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 0
+    */
+     it('SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_PREVIEW_SUCCESS_0200', 0, async function (done) {
+      if (captureSession == null || captureSession == undefined) {
+        console.info(TAG + "Entering AddOutput_Preview captureSession == null || undefined");
+      } else {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_PREVIEW_SUCCESS_0200 to operate");
+        captureSession.addOutput(previewOutputAsync, async (err, data) => {
+          if (!err) {
+            console.info(TAG + "Entering AddOutput_Preview : Success");
+            if (data != null || data != undefined) {
+              console.info(TAG + "Entering AddOutput_Preview data is not null || undefined");
+              expect(true).assertTrue();
+              console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_PREVIEW_SUCCESS_0200 PASSED");
+            }
+          } else {
+            expect().assertFail();
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_PREVIEW_SUCCESS_0200 FAILED : " + err.message);
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_PREVIEW_SUCCESS_0200 ends here");
+          }
+          await sleep(1000);
+          done();
+        })
+      }
+    })
+
+    /**
       * @tc.number    : SUB_MULTIMEDIA_CAMERA_COMMIT_CONFIG_SUCCESS_0100
       * @tc.name      : commit config api
       * @tc.desc      : commit config api
@@ -972,6 +1004,74 @@ export default function cameraJSUnitPhotoAsync(surfaceId: any) {
         await sleep(1000);
       }
       done();
+    })
+
+    /**
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_PHOTO_SUCCESS_0200
+      * @tc.name      : Add output with photo output api
+      * @tc.desc      : Add output with photo output api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 0
+    */
+     it('SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_PHOTO_SUCCESS_0200', 0, async function (done) {
+      if (captureSession == null || captureSession == undefined) {
+        console.info(TAG + "Entering AddOutput_Photo captureSession == null || undefined");
+      } else {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_PHOTO_SUCCESS_0200 to operate");
+        captureSession.addOutput(photoOutputAsync, async (err, data) => {
+          if (!err) {
+            console.info(TAG + "Entering AddOutput_Photo  success");
+            if (data != null || data != undefined) {
+              console.info(TAG + "Entering AddOutput_Photo data is not null || undefined");
+              expect(true).assertTrue();
+              console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_PHOTO_SUCCESS_0200 PASSED");
+            }
+          } else {
+            expect().assertFail();
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_PHOTO_SUCCESS_0200 FAILED: " + err.message);
+          }
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_PHOTO_SUCCESS_0200 ends here");
+          await sleep(1000);
+          done();
+        })
+        await sleep(1000);
+        done();
+      }
+    })
+
+    /**
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_COMMIT_CONFIG_SUCCESS_0200
+      * @tc.name      : commit config api
+      * @tc.desc      : commit config api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_CAMERA_COMMIT_CONFIG_SUCCESS_0200', 0, async function (done) {
+      if (captureSession == null || captureSession == undefined) {
+        console.info(TAG + "Entering CommitConfig captureSession == null || undefined");
+      } else {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_COMMIT_CONFIG_SUCCESS_0200 to operate");
+        captureSession.commitConfig(async (err, data) => {
+          if (!err) {
+            console.info(TAG + "Entering commitConfig success");
+            if (data != null || data != undefined) {
+              console.info(TAG + "Entering CommitConfig data is not null || undefined");
+              expect(true).assertTrue();
+              console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_COMMIT_CONFIG_SUCCESS_0200 PASSED");
+            }
+          } else {
+            expect().assertFail();
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_COMMIT_CONFIG_SUCCESS_0200 FAILED : " + err.message);
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_COMMIT_CONFIG_SUCCESS_0200 ends here");
+          }
+          await sleep(1000);
+          done();
+        })
+        await sleep(1000);
+        done();
+      }
     })
 
     /**
@@ -2315,6 +2415,40 @@ export default function cameraJSUnitPhotoAsync(surfaceId: any) {
     })
 
     /**
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTOOUTPUT_CAPTURE_0200
+      * @tc.name      : Photo output capture without photosettings api
+      * @tc.desc      : Photo output capture without photosettings api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 0
+    */
+     it('SUB_MULTIMEDIA_CAMERA_PHOTOOUTPUT_CAPTURE_0200', 0, async function (done) {
+      if (photoOutputAsync == null || photoOutputAsync == undefined) {
+        console.info(TAG + "Entering PhotoOutputCapture photoOutput == null || undefined");
+      } else {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTOOUTPUT_CAPTURE_0200 to operate");
+        photoOutputAsync.capture(async (err, data) => {
+          if (!err) {
+            console.info(TAG + "Entering photoOutput capture without photosettings success");
+            if (data != null || data != undefined) {
+              console.info(TAG + "Entering photoOutput capture without photosettings data is not null || undefined");
+              console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTOOUTPUT_CAPTURE_0200 PASSED");
+              expect(true).assertTrue();
+            }
+          } else {
+            expect().assertFail();
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTOOUTPUT_CAPTURE_0200 FAILED : " + err.message);
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTOOUTPUT_CAPTURE_0200 ends here");
+          }
+          await sleep(1000);
+          done();
+        })
+        await sleep(1000);
+        done();
+      }
+    })
+
+    /**
       * @tc.number    : SUB_MULTIMEDIA_CAMERA_SET_FOCUS_POINT_0200
       * @tc.name      : set focus Point locked camera0 api
       * @tc.desc      : set focus Point locked camera0 api
@@ -2606,6 +2740,40 @@ export default function cameraJSUnitPhotoAsync(surfaceId: any) {
     })
 
     /**
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTOOUTPUT_CAPTURE_0300
+      * @tc.name      : Photo output capture without photosettings api
+      * @tc.desc      : Photo output capture without photosettings api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 0
+    */
+     it('SUB_MULTIMEDIA_CAMERA_PHOTOOUTPUT_CAPTURE_0300', 0, async function (done) {
+      if (photoOutputAsync == null || photoOutputAsync == undefined) {
+        console.info(TAG + "Entering PhotoOutputCapture photoOutput == null || undefined");
+      } else {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTOOUTPUT_CAPTURE_0300 to operate");
+        photoOutputAsync.capture(async (err, data) => {
+          if (!err) {
+            console.info(TAG + "Entering photoOutput capture without photosettings success");
+            if (data != null || data != undefined) {
+              console.info(TAG + "Entering photoOutput capture without photosettings data is not null || undefined");
+              console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTOOUTPUT_CAPTURE_0300 PASSED");
+              expect(true).assertTrue();
+            }
+          } else {
+            expect().assertFail();
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTOOUTPUT_CAPTURE_0300 FAILED : " + err.message);
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTOOUTPUT_CAPTURE_0300 ends here");
+          }
+          await sleep(1000);
+          done();
+        })
+        await sleep(1000);
+        done();
+      }
+    })
+
+    /**
       * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_MODE_LOCKED_0100
       * @tc.name      : get exposure mode locked camera0 api
       * @tc.desc      : get exposure mode locked camera0 api
@@ -2833,6 +3001,40 @@ export default function cameraJSUnitPhotoAsync(surfaceId: any) {
     })
 
     /**
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTOOUTPUT_CAPTURE_0400
+      * @tc.name      : Photo output capture without photosettings api
+      * @tc.desc      : Photo output capture without photosettings api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_CAMERA_PHOTOOUTPUT_CAPTURE_0400', 0, async function (done) {
+      if (photoOutputAsync == null || photoOutputAsync == undefined) {
+        console.info(TAG + "Entering PhotoOutputCapture photoOutput == null || undefined");
+      } else {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTOOUTPUT_CAPTURE_0400 to operate");
+        photoOutputAsync.capture(async (err, data) => {
+          if (!err) {
+            console.info(TAG + "Entering photoOutput capture without photosettings success");
+            if (data != null || data != undefined) {
+              console.info(TAG + "Entering photoOutput capture without photosettings data is not null || undefined");
+              console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTOOUTPUT_CAPTURE_0400 PASSED");
+              expect(true).assertTrue();
+            }
+          } else {
+            expect().assertFail();
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTOOUTPUT_CAPTURE_0400 FAILED : " + err.message);
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTOOUTPUT_CAPTURE_0400 ends here");
+          }
+          await sleep(1000);
+          done();
+        })
+        await sleep(1000);
+        done();
+      }
+    })
+
+    /**
       * @tc.number    : SUB_MULTIMEDIA_CAMERA_SET_EXPOSURE_BIAS_0200 mode auto
       * @tc.name      : set exposure bias camera0 api
       * @tc.desc      : set exposure bias camera0 api
@@ -2943,6 +3145,39 @@ export default function cameraJSUnitPhotoAsync(surfaceId: any) {
       await sleep(1000);
       done();
     })
+
+        /**
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS1_0200
+      * @tc.name      : Photo output capture with photosettings api
+      * @tc.desc      : Photo output capture with photosettings api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_CAMERA_PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS1_0200', 0, async function (done) {
+    if (photoOutputAsync == null || photoOutputAsync == undefined) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS1_0200 photoOutput == null || undefined");
+    } else {
+      console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS to operate");
+      photoOutputAsync.capture(photosettings1, async (err, data) => {
+        if (!err) {
+          console.info(TAG + "Entering photoOutput capture with photosettings1");
+          if (data != null || data != undefined) {
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS1_0200 PASSED");
+            expect(true).assertTrue();
+          }
+        } else {
+          expect().assertFail();
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS1_0200 FAILED : " + err.message);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS1_0200 ends here");
+        }
+        await sleep(1000);
+        done();
+      })
+      await sleep(1000);
+      done();
+    }
+  })
 
     /**
       * @tc.number    : SUB_MULTIMEDIA_CAMERA_SET_EXPOSURE_BIAS_0300 mode auto
