@@ -398,28 +398,28 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     }
 
     /* *
-    * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0100
+    * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0100
     * @tc.name      : 001.create -> configure
     * @tc.desc      : test for state transition
     * @tc.size      : MediumTest
     * @tc.type      : Reliability test
     * @tc.level     : Level2
     */ 
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0100', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0100.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, ENCODE_STEP.RELEASE);
         toCreateVideoEncoderByName('avenc_mpeg4', path, mySteps, done);
     })
 
     /* *
-    * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0200
+    * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0200
     * @tc.name      : 002.prepare -> configure
     * @tc.desc      : test for state transition
     * @tc.size      : MediumTest
     * @tc.type      : Reliability test
     * @tc.level     : Level2
     */ 
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0200', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0200.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START, ENCODE_STEP.PREPARE, 
@@ -428,14 +428,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-    * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0300
+    * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0300
     * @tc.name      : 003.start -> configure
     * @tc.desc      : test for state transition
     * @tc.size      : MediumTest
     * @tc.type      : Reliability test
     * @tc.level     : Level2
     */ 
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0300', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0300.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START, ENCODE_STEP.PREPARE, 
@@ -444,14 +444,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-    * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0400
+    * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0400
     * @tc.name      : 004.flush -> configure
     * @tc.desc      : test for state transition
     * @tc.size      : MediumTest
     * @tc.type      : Reliability test
     * @tc.level     : Level2
     */ 
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0400', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0400.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START, ENCODE_STEP.PREPARE, 
@@ -461,14 +461,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-    * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0500
+    * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0500
     * @tc.name      : 005.stop -> configure
     * @tc.desc      : test for state transition
     * @tc.size      : MediumTest
     * @tc.type      : Reliability test
     * @tc.level     : Level2
     */ 
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0500', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0500', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0500.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START, ENCODE_STEP.PREPARE, 
@@ -478,14 +478,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-    * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0600
+    * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0600
     * @tc.name      : 006.EOS -> configure
     * @tc.desc      : test for state transition
     * @tc.size      : MediumTest
     * @tc.type      : Reliability test
     * @tc.level     : Level2
     */ 
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0600', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0600', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0600.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START, ENCODE_STEP.PREPARE, 
@@ -496,14 +496,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-    * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0700
+    * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0700
     * @tc.name      : 007.reset -> configure
     * @tc.desc      : test for state transition
     * @tc.size      : MediumTest
     * @tc.type      : Reliability test
     * @tc.level     : Level2
     */ 
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0700', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0700', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0700.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START, ENCODE_STEP.PREPARE, 
@@ -514,14 +514,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-    * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0800
+    * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0800
     * @tc.name      : 008.configure -> configure
     * @tc.desc      : test for state transition
     * @tc.size      : MediumTest
     * @tc.type      : Reliability test
     * @tc.level     : Level2
     */ 
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0800', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0800', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0800.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START, ENCODE_STEP.CONFIGURE, 
@@ -530,14 +530,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-    * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0900
+    * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0900
     * @tc.name      : 009.configure -> reset -> configure
     * @tc.desc      : test for state transition
     * @tc.size      : MediumTest
     * @tc.type      : Reliability test
     * @tc.level     : Level2
     */ 
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0900', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0900', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_CALLBACK_0900.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START, ENCODE_STEP.PREPARE, 
@@ -548,28 +548,28 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0100
         * @tc.name      : 001.create -> prepare
         * @tc.desc      : test for state transition
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0100', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0100.es';
         let mySteps = new Array(ENCODE_STEP.PREPARE, ENCODE_STEP.ERROR, ENCODE_STEP.RELEASE);
         toCreateVideoEncoderByName('avenc_mpeg4', path, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0200
         * @tc.name      : 002.configure -> prepare
         * @tc.desc      : test for state transition
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0200', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0200.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
@@ -578,14 +578,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0300
         * @tc.name      : 003.prepare -> prepare
         * @tc.desc      : test for state transition
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0300', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0300.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START, ENCODE_STEP.PREPARE, 
@@ -594,14 +594,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0400
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0400
         * @tc.name      : 004.start -> prepare
         * @tc.desc      : test for state transition
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0400', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0400.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
@@ -611,14 +611,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0500
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0500
         * @tc.name      : 005.flush -> prepare
         * @tc.desc      : test for state transition
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0500', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0500', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0500.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
@@ -628,14 +628,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0600
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0600
         * @tc.name      : 006.stop -> prepare
         * @tc.desc      : test for state transition
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0600', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0600', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0600.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
@@ -645,14 +645,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0700
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0700
         * @tc.name      : 007.EOS -> prepare
         * @tc.desc      : test for state transition
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0700', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0700', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0700.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
@@ -663,14 +663,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0800
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0800
         * @tc.name      : 008.reset -> prepare
         * @tc.desc      : test for state transition
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0800', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0800', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_PREPARE_CALLBACK_0800.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
@@ -680,28 +680,28 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0100
         * @tc.name      : 001.create -> start
         * @tc.desc      : test for state transition
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0100', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0100.es';
         let mySteps = new Array(ENCODE_STEP.START, ENCODE_STEP.ERROR, ENCODE_STEP.RELEASE);
         toCreateVideoEncoderByName('avenc_mpeg4', path, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0200
         * @tc.name      : 002.configure -> start
         * @tc.desc      : test for state transition
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0200', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0200.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START, ENCODE_STEP.START, 
@@ -710,14 +710,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0300
         * @tc.name      : 003.prepare -> start
         * @tc.desc      : test for state transition
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0300', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0300.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
@@ -726,14 +726,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0400
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0400
         * @tc.name      : 004.start -> start
         * @tc.desc      : test for state transition
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0400', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0400.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
@@ -742,14 +742,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0500
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0500
         * @tc.name      : 005.flush -> start
         * @tc.desc      : test for state transition
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0500', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0500', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0500.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START, ENCODE_STEP.PREPARE, 
@@ -758,14 +758,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0600
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0600
         * @tc.name      : 006.stop -> start
         * @tc.desc      : test for state transition
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0600', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0600', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0600.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
@@ -774,14 +774,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0700
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0700
         * @tc.name      : 007.EOS -> start
         * @tc.desc      : test for state transition
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0700', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0700', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0700.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
@@ -792,14 +792,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0800
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0800
         * @tc.name      : 008.reset -> start
         * @tc.desc      : test for state transition
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0800', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0800', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_CALLBACK_0800.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
@@ -809,28 +809,28 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0100
         * @tc.name      : 001.create -> flush
         * @tc.desc      : test for state transition
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0100', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0100.es';
         let mySteps = new Array(ENCODE_STEP.FLUSH, ENCODE_STEP.ERROR, ENCODE_STEP.RELEASE);
         toCreateVideoEncoderByName('avenc_mpeg4', path, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0200
         * @tc.name      : 002.configure -> flush
         * @tc.desc      : test for state transition
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0200', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0200.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE,
@@ -839,14 +839,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0300
         * @tc.name      : 003.prepare -> flush
         * @tc.desc      : test for state transition
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0300', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0300.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
@@ -855,14 +855,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0400
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0400
         * @tc.name      : 004.start -> flush
         * @tc.desc      : test for state transition
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0400', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0400.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
@@ -871,14 +871,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0500
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0500
         * @tc.name      : 005.flush -> flush
         * @tc.desc      : test for state transition
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0500', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0500', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0500.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
@@ -887,14 +887,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0600
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0600
         * @tc.name      : 006.stop -> flush
         * @tc.desc      : test for state transition
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0600', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0600', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0600.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
@@ -904,14 +904,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0700
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0700
         * @tc.name      : 007.EOS -> flush
         * @tc.desc      : test for state transition
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0700', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0700', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0700.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
@@ -922,14 +922,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0800
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0800
         * @tc.name      : 008.reset -> flush
         * @tc.desc      : test for state transition
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0800', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0800', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_FLUSH_CALLBACK_0800.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
@@ -939,28 +939,28 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0100
         * @tc.name      : 001.create -> stop
         * @tc.desc      : test for state transition
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0100', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0100.es';
         let mySteps = new Array(ENCODE_STEP.STOP, ENCODE_STEP.ERROR, ENCODE_STEP.RELEASE);
         toCreateVideoEncoderByName('avenc_mpeg4', path, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0200
         * @tc.name      : 002.configure -> stop
         * @tc.desc      : test for state transition
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0200', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0200.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, STREAM_STEP.START, ENCODE_STEP.STOP, ENCODE_STEP.ERROR, ENCODE_STEP.RELEASE);
@@ -968,14 +968,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0300
         * @tc.name      : 003.prepare -> stop
         * @tc.desc      : test for state transition
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0300', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0300.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
@@ -984,14 +984,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0400
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0400
         * @tc.name      : 004.start -> stop
         * @tc.desc      : test for state transition
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0400', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0400.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
@@ -1000,14 +1000,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0500
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0500
         * @tc.name      : 005.flush -> stop
         * @tc.desc      : test for state transition
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0500', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0500', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0500.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
@@ -1017,14 +1017,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0600
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0600
         * @tc.name      : 006.stop -> stop
         * @tc.desc      : test for state transition
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0600', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0600', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0600.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
@@ -1034,14 +1034,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0700
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0700
         * @tc.name      : 007.EOS -> stop
         * @tc.desc      : test for state transition
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0700', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0700', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0700.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
@@ -1052,14 +1052,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0800
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0800
         * @tc.name      : 008.reset -> stop
         * @tc.desc      : test for state transition
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0800', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0800', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_STOP_CALLBACK_0800.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
@@ -1069,28 +1069,28 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0100
         * @tc.name      : 001.create -> reset
         * @tc.desc      : test for state transition
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0100', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0100.es';
         let mySteps = new Array(ENCODE_STEP.RESET, ENCODE_STEP.RELEASE);
         toCreateVideoEncoderByName('avenc_mpeg4', path, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0200
         * @tc.name      : 002.configure -> reset
         * @tc.desc      : test for state transition
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0200', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0200.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE,
@@ -1099,14 +1099,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0300
         * @tc.name      : 003.prepare -> reset
         * @tc.desc      : test for state transition
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0300', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0300.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
@@ -1115,14 +1115,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0400
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0400
         * @tc.name      : 004.start -> reset
         * @tc.desc      : test for state transition
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0400', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0400.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
@@ -1131,14 +1131,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0500
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0500
         * @tc.name      : 005.flush -> reset
         * @tc.desc      : test for state transition
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0500', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0500', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0500.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
@@ -1147,14 +1147,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0600
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0600
         * @tc.name      : 006.stop -> reset
         * @tc.desc      : test for state transition
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0600', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0600', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0600.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
@@ -1163,14 +1163,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0700
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0700
         * @tc.name      : 007.EOS -> reset
         * @tc.desc      : test for state transition
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0700', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0700', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0700.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
@@ -1180,14 +1180,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0800
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0800
         * @tc.name      : 008.reset -> reset
         * @tc.desc      : test for state transition
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0800', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0800', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_RESET_CALLBACK_0800.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
@@ -1196,14 +1196,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_CALLBACK_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_CALLBACK_0100
         * @tc.name      : 001.EOS -> flush -> stop
         * @tc.desc      : test for state transition
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_CALLBACK_0100', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_CALLBACK_0100.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
@@ -1214,14 +1214,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_CALLBACK_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_CALLBACK_0200
         * @tc.name      : 002.EOS -> flush -> EOS
         * @tc.desc      : test for state transition
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_CALLBACK_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_CALLBACK_0200', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_CALLBACK_0200.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
@@ -1232,14 +1232,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_CALLBACK_0300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_CALLBACK_0300
         * @tc.name      : 003.EOS -> reset -> configure
         * @tc.desc      : test for state transition
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_CALLBACK_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_CALLBACK_0300', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_CALLBACK_0300.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
@@ -1251,14 +1251,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_CALLBACK_0400
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_CALLBACK_0400
         * @tc.name      : 004.EOS -> stop -> start -> EOS
         * @tc.desc      : test for state transition
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_CALLBACK_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_CALLBACK_0400', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_CALLBACK_0400.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
@@ -1269,14 +1269,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_CALLBACK_0500
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_CALLBACK_0500
         * @tc.name      : 005.EOS -> stop -> start -> stop
         * @tc.desc      : test for state transition
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_CALLBACK_0500', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_CALLBACK_0500', 0, async function (done) {
         let path = BASIC_PATH + 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_EOS_CALLBACK_0500.es';
         let mySteps = new Array(ENCODE_STEP.CONFIGURE, STREAM_STEP.CREATE, STREAM_STEP.SET_PARAM, 
             STREAM_STEP.SET_EOS_FRAME, ENCODE_STEP.GET_INPUTSURFACE, STREAM_STEP.START,
@@ -1287,14 +1287,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE-RESET_CALLBACK_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE+RESET_CALLBACK_0100
         * @tc.name      : 001. configure -> reset for 50 times
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE-RESET_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE+RESET_CALLBACK_0100', 0, async function (done) {
         let name = 'avenc_mpeg4';
         let events = require('events');
         let eventEmitter = new events.EventEmitter();
@@ -1338,14 +1338,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START-STOP_CALLBACK_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_STOP_CALLBACK_0100
         * @tc.name      : 001. start -> stop for 50 times
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START-STOP_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_START_STOP_CALLBACK_0100', 0, async function (done) {
         let name = 'avenc_mpeg4';
         let events = require('events');
         let eventEmitter = new events.EventEmitter();
@@ -1412,14 +1412,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
     
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CREATE-RELEASE_CALLBACK_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CREATE_RELEASE_CALLBACK_0100
         * @tc.name      : 001. create -> release for 50 times
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CREATE-RELEASE_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CREATE_RELEASE_CALLBACK_0100', 0, async function (done) {
         let name = 'avenc_mpeg4';
         let events = require('events');
         let eventEmitter = new events.EventEmitter();
@@ -1455,14 +1455,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_TOTALLOOP_CALLBACK_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_TOTALLOOP_CALLBACK_0100
         * @tc.name      : 001. total loop for 50 times
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_API_TOTALLOOP_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_TOTALLOOP_CALLBACK_0100', 0, async function (done) {
         let name = 'avenc_mpeg4';
         let events = require('events');
         let eventEmitter = new events.EventEmitter();

@@ -36,14 +36,14 @@ describe('VideoHardwareEncoderEnum', function () {
 
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_HARDWARE_ENCODER_ENUM_MediaDescriptionKey_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_HARDWARE_ENCODER_ENUM_MediaDescriptionKey_0100
         * @tc.name      : 001.MediaDescriptionKey
         * @tc.desc      : Test Enumerate MediaDescriptionKey
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_HARDWARE_ENCODER_ENUM_MediaDescriptionKey_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_HARDWARE_ENCODER_ENUM_MediaDescriptionKey_0100', 0, async function (done) {
         expect(media.MediaDescriptionKey.MD_KEY_SUSPEND_INPUT_SURFACE).assertEqual("suspend_input_surface");
         expect(media.MediaDescriptionKey.MD_KEY_VIDEO_ENCODE_BITRATE_MODE).assertEqual("video_encode_bitrate_mode");
         expect(media.MediaDescriptionKey.MD_KEY_PROFILE).assertEqual("codec_profile");        
