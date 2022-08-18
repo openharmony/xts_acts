@@ -13,7 +13,7 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("mediaLibrary_js_hap") {
+ohos_js_hap_suite("mediaLibrary_base_hap") {
   hap_profile = "entry/src/main/module.json"
   deps = [
     ":mediaLibrary_js_assets",
@@ -21,7 +21,7 @@ ohos_js_hap_suite("mediaLibrary_js_hap") {
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "ActsMediaLibraryJs"
+  hap_name = "ActsMediaLibraryBase"
 }
 
 ohos_app_scope("medialibrary_app_profile") {

@@ -26,16 +26,18 @@ import {
     checkPresetsAssets,
     nameFetchOps,
     checkAssetsCount,
+    getPermission,
     fetchOps,
     FILEKEY,
     isNum,
 } from '../../../../../../common';
 
 
-export default function fileTestPromiseTest(abilityContext) {
-    describe('fileTestPromiseTest', function () {
+export default function fileTestCallbackTest(abilityContext) {
+    describe('fileTestCallbackTest', function () {
         const media = mediaLibrary.getMediaLibrary(abilityContext);
         beforeAll(async function () {
+            await getPermission();
             await checkPresetsAssets(media, 'ActsMediaLibraryFile')
         });
         beforeEach(function () { });
@@ -60,24 +62,29 @@ export default function fileTestPromiseTest(abilityContext) {
                 const asset = await fetchFileResult.getFirstObject();
                 let displayName1 = `${new Date().getTime()}.${name}`;
 
-                const creatAsset1 = await media.createAsset(type, displayName1, path);
+                media.createAsset(type, displayName1, path, async (err, creatAsset1) => {
+                    if (err) {
+                        console.info(`${testNum} err : ${err}`)
+                        expect.assertFail();
+                        done();
+                        return;
+                    }
+                    const fd = await asset.open('rw');
+                    const creatAssetFd1 = await creatAsset1.open('rw');
+                    await copyFile(fd, creatAssetFd1);
+                    await creatAsset1.close(creatAssetFd1);
 
-                const fd = await asset.open('rw');
-                const creatAssetFd1 = await creatAsset1.open('rw');
-                await copyFile(fd, creatAssetFd1);
-                await creatAsset1.close(creatAssetFd1);
-
-                let displayName2 = `${new Date().getTime()}.${name}`;
-                const creatAsset2 = await media.createAsset(type, displayName2, path);
-                const creatAssetFd2 = await creatAsset2.open('rw');
-                await copyFile(fd, creatAssetFd2);
-                await creatAsset2.close(creatAssetFd2);
-                await asset.close(fd);
-                expect(creatAsset1.id != creatAsset2.id).assertTrue();
-                done();
+                    let displayName2 = `${new Date().getTime()}.${name}`;
+                    const creatAsset2 = await media.createAsset(type, displayName2, path);
+                    const creatAssetFd2 = await creatAsset2.open('rw');
+                    await copyFile(fd, creatAssetFd2);
+                    await creatAsset2.close(creatAssetFd2);
+                    await asset.close(fd);
+                    expect(creatAsset1.id != creatAsset2.id).assertTrue();
+                    done();
+                });
             } catch (error) {
                 console.info(`${testNum} failed error: ${error}`)
-
                 expect(false).assertTrue();
                 done();
             }
@@ -93,22 +100,26 @@ export default function fileTestPromiseTest(abilityContext) {
                 const asset = await fetchFileResult.getFirstObject();
                 let displayName = `${new Date().getTime()}.${name}`;
 
-                const creatAsset = await media.createAsset(type, displayName, path);
+                media.createAsset(type, displayName, path, async (err, creatAsset) => {
+                    if (err) {
+                        console.info(`${testNum} err : ${err}`)
+                        expect.assertFail();
+                        done();
+                        return;
+                    }
+                    const fd = await asset.open('rw');
+                    const creatAssetFd = await creatAsset.open('rw');
+                    await copyFile(fd, creatAssetFd);
+                    await creatAsset.close(creatAssetFd);
 
-                const fd = await asset.open('rw');
-                const creatAssetFd = await creatAsset.open('rw');
-                await copyFile(fd, creatAssetFd);
-                await creatAsset.close(creatAssetFd);
-
-                if (val == 'displayName') {
-                    val = displayName
-                }
-                expect(creatAsset[key]).assertEqual(val);
-
-                done();
+                    if (val == 'displayName') {
+                        val = displayName
+                    }
+                    expect(creatAsset[key]).assertEqual(val);
+                    done();
+                });
             } catch (error) {
                 console.info(`${testNum} failed error: ${error}`)
-
                 expect(false).assertTrue();
                 done();
             }
@@ -123,18 +134,23 @@ export default function fileTestPromiseTest(abilityContext) {
                 if (!checkAssetCountPass) return;
                 let asset = await fetchFileResult.getFirstObject();
                 asset.title = `title_${new Date().getTime()}`;
-                await asset.commitModify();
-
-                const id = asset.id;
-                const idOP = { selections: FILEKEY.ID + '= ?', selectionArgs: ['' + id] };
-                fetchFileResult = await media.getFileAssets(idOP);
-                let newAsset = await fetchFileResult.getFirstObject();
-                expect(isNum(newAsset.dateModified)).assertTrue();
-                expect(newAsset.dateModified != asset.dateModified).assertTrue()
-                done();
+                asset.commitModify(async (err) => {
+                    if (err) {
+                        console.info(`${testNum} err : ${err}`)
+                        expect.assertFail();
+                        done();
+                        return;
+                    }
+                    const id = asset.id;
+                    const idOP = { selections: FILEKEY.ID + '= ?', selectionArgs: ['' + id] };
+                    fetchFileResult = await media.getFileAssets(idOP);
+                    let newAsset = await fetchFileResult.getFirstObject();
+                    expect(isNum(newAsset.dateModified)).assertTrue();
+                    expect(newAsset.dateModified != asset.dateModified).assertTrue()
+                    done();
+                });
             } catch (error) {
                 console.info(`${testNum} failed error: ${error}`)
-
                 expect(false).assertTrue();
                 done();
             }
@@ -142,15 +158,15 @@ export default function fileTestPromiseTest(abilityContext) {
 
         // ------------------------------- image type start ----------------------------
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_01
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_001_01
          * @tc.name      : createAsset
          * @tc.desc      : Insert two database records, read a unique identifier, expectations are not equal
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_01', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_01';
+        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_001_01', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_001_01';
             let currentFetchOp = nameFetchOps('Pictures/Static/', '01', IMAGE_TYPE)
             let name = 'jpg'
             let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_IMAGE) + '/create/'
@@ -159,15 +175,15 @@ export default function fileTestPromiseTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_02
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_001_02
          * @tc.name      : getFileAssets
          * @tc.desc      : Access to the file displayName and validation is not undefined
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_02', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_02';
+        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_001_02', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_001_02';
             let currentFetchOp = nameFetchOps('Pictures/Static/', '02', IMAGE_TYPE)
             let name = 'jpg'
             let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_IMAGE) + '/create/';
@@ -178,15 +194,15 @@ export default function fileTestPromiseTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_03
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_001_03
          * @tc.name      : getFileAssets
          * @tc.desc      : Access to the file relativePath  and validation is not undefined
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_03', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_03';
+        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_001_03', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_001_03';
             let currentFetchOp = nameFetchOps('Pictures/Static/', '03', IMAGE_TYPE)
             let name = 'jpg'
             let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_IMAGE) + '/create/';
@@ -197,29 +213,29 @@ export default function fileTestPromiseTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_07
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_001_07
          * @tc.name      : getFileAssets
          * @tc.desc      : Access to the file dateModified and validation is not undefined
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_07', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_07';
+        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_001_07', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_001_07';
             let currentFetchOp = fetchOps('Pictures/Dynamic/', IMAGE_TYPE)
             await checkdateModified(done, testNum, currentFetchOp)
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_08
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_001_08
          * @tc.name      : createAsset
          * @tc.desc      : Insert a picture record, the retrieve attributes for images
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_08', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_08';
+        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_001_08', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_001_08';
             let currentFetchOp = nameFetchOps('Pictures/Static/', '04', IMAGE_TYPE)
             let name = 'jpg'
             let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_IMAGE) + '/create/';
@@ -230,15 +246,15 @@ export default function fileTestPromiseTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_11
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_001_11
          * @tc.name      : createAsset
          * @tc.desc      : Get the orientaion attribute
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_11', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_001_11';
+        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_001_11', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_001_11';
             let currentFetchOp = nameFetchOps('Pictures/Static/', '05', IMAGE_TYPE)
             let name = 'jpg'
             let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_IMAGE) + '/create/';
@@ -252,15 +268,15 @@ export default function fileTestPromiseTest(abilityContext) {
 
         // ------------------------------- video type start ----------------------------
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_01
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_002_01
          * @tc.name      : createAsset
          * @tc.desc      : Insert two database records, read a unique identifier, expectations are not equal
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_01', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_01';
+        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_002_01', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_002_01';
             let currentFetchOp = nameFetchOps('Videos/Static/', '01', VIDEO_TYPE)
             let name = 'mp4'
             let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_VIDEO) + '/create/'
@@ -269,15 +285,15 @@ export default function fileTestPromiseTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_02
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_002_02
          * @tc.name      : getFileAssets
          * @tc.desc      : Access to the file displayName and validation is not undefined
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_02', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_02';
+        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_002_02', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_002_02';
             let currentFetchOp = nameFetchOps('Videos/Static/', '02', VIDEO_TYPE)
             let name = 'mp4'
             let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_VIDEO) + '/create/';
@@ -288,15 +304,15 @@ export default function fileTestPromiseTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_03
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_002_03
          * @tc.name      : getFileAssets
          * @tc.desc      : Access to the file relativePath  and validation is not undefined
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_03', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_03';
+        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_002_03', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_002_03';
             let currentFetchOp = nameFetchOps('Videos/Static/', '03', VIDEO_TYPE)
             let name = 'mp4'
             let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_VIDEO) + '/create/';
@@ -307,29 +323,29 @@ export default function fileTestPromiseTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_07
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_002_07
          * @tc.name      : getFileAssets
          * @tc.desc      : Access to the file dateModified and validation is not undefined
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_07', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_07';
+        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_002_07', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_002_07';
             let currentFetchOp = fetchOps('Videos/Dynamic/', VIDEO_TYPE)
             await checkdateModified(done, testNum, currentFetchOp)
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_08
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_002_08
          * @tc.name      : createAsset
          * @tc.desc      : Insert a picture record, the retrieve attributes for images
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_08', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_08';
+        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_002_08', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_002_08';
             let currentFetchOp = nameFetchOps('Videos/Static/', '04', VIDEO_TYPE)
             let name = 'mp4'
             let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_VIDEO) + '/create/';
@@ -340,15 +356,15 @@ export default function fileTestPromiseTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_11
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_002_11
          * @tc.name      : createAsset
          * @tc.desc      : Get the orientaion attribute
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_11', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_002_11';
+        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_002_11', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_002_11';
             let currentFetchOp = nameFetchOps('Videos/Static/', '05', VIDEO_TYPE)
             let name = 'mp4'
             let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_VIDEO) + '/create/';
@@ -361,15 +377,15 @@ export default function fileTestPromiseTest(abilityContext) {
 
         // ------------------------------- audio type start ----------------------------
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_01
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_003_01
          * @tc.name      : createAsset
          * @tc.desc      : Insert two database records, read a unique identifier, expectations are not equal
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_01', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_01';
+        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_003_01', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_003_01';
             let currentFetchOp = nameFetchOps('Audios/Static/', '01', AUDIO_TYPE)
             let name = 'mp3'
             let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_AUDIO) + '/create/'
@@ -378,15 +394,15 @@ export default function fileTestPromiseTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_02
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_003_02
          * @tc.name      : getFileAssets
          * @tc.desc      : Access to the file name and validation is not undefined
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_02', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_02';
+        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_003_02', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_003_02';
             let currentFetchOp = nameFetchOps('Audios/Static/', '02', AUDIO_TYPE)
             let name = 'mp3'
             let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_AUDIO) + '/create/';
@@ -397,15 +413,15 @@ export default function fileTestPromiseTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_03
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_003_03
          * @tc.name      : getFileAssets
          * @tc.desc      : Access to the file relativePath  and validation is not undefined
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_03', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_03';
+        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_003_03', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_003_03';
             let currentFetchOp = nameFetchOps('Audios/Static/', '03', AUDIO_TYPE)
             let name = 'mp3'
             let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_AUDIO) + '/create/';
@@ -416,29 +432,29 @@ export default function fileTestPromiseTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_07
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_003_07
          * @tc.name      : getFileAssets
          * @tc.desc      : Access to the file dateModified and validation is not undefined
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_07', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_07';
+        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_003_07', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_003_07';
             let currentFetchOp = fetchOps('Audios/Dynamic/', AUDIO_TYPE)
             await checkdateModified(done, testNum, currentFetchOp)
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_08
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_003_08
          * @tc.name      : createAsset
          * @tc.desc      : Insert a picture record, the retrieve attributes for images
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_08', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_003_08';
+        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_003_08', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_003_08';
             let currentFetchOp = nameFetchOps('Audios/Static/', '05', AUDIO_TYPE)
             let name = 'mp3'
             let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_AUDIO) + '/create/';
@@ -452,15 +468,15 @@ export default function fileTestPromiseTest(abilityContext) {
 
         // ------------------------------ file type start ----------------------------
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_01
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_004_01
          * @tc.name      : createAsset
          * @tc.desc      : Insert two database records, read a unique identifier, expectations are not equal
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_01', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_01';
+        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_004_01', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_004_01';
             let currentFetchOp = nameFetchOps('Documents/Static/', '01', FILE_TYPE)
             let name = 'dat'
             let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_DOCUMENTS) + '/create/'
@@ -469,15 +485,15 @@ export default function fileTestPromiseTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_02
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_004_02
          * @tc.name      : getFileAssets
          * @tc.desc      : Access to the file name and validation is not undefined
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_02', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_02';
+        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_004_02', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_004_02';
             let currentFetchOp = nameFetchOps('Documents/Static/', '02', FILE_TYPE)
             let name = 'dat'
             let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_DOCUMENTS) + '/create/';
@@ -488,15 +504,15 @@ export default function fileTestPromiseTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_03
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_004_03
          * @tc.name      : getFileAssets
          * @tc.desc      : Access to the file relativePath  and validation is not undefined
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_03', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_03';
+        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_004_03', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_004_03';
             let currentFetchOp = nameFetchOps('Documents/Static/', '03', FILE_TYPE)
             let name = 'dat'
             let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_DOCUMENTS) + '/create/';
@@ -507,29 +523,29 @@ export default function fileTestPromiseTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_07
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_004_07
          * @tc.name      : getFileAssets
          * @tc.desc      : Access to the file dateModified and validation is not undefined
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_07', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_07';
+        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_004_07', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_004_07';
             let currentFetchOp = fetchOps('Documents/Dynamic/', FILE_TYPE)
             await checkdateModified(done, testNum, currentFetchOp)
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_08
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_004_08
          * @tc.name      : createAsset
          * @tc.desc      : Insert a picture record, the retrieve attributes for images
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_08', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_PROMISE_004_08';
+        it('SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_004_08', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CREATEASSET_CALLBACK_004_08';
             let currentFetchOp = nameFetchOps('Documents/Static/', '04', FILE_TYPE)
             let name = 'dat'
             let path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_DOCUMENTS) + '/create/';

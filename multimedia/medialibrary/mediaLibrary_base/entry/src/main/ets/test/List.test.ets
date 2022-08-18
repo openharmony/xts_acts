@@ -13,10 +13,12 @@
  * limitations under the License.
  */
 
+import mediaLibraryTestCallback from './mediaLibraryTestCallback.test.ets'
 import mediaLibraryTestPromise from './mediaLibraryTestPromise.test.ets'
 import mediaLibraryTestPromiseOnOffTest from './mediaLibraryTestPromiseOnOff.test.ets'
 
 export default function testsuite(abilityContext) {
+  mediaLibraryTestCallback(abilityContext)
   mediaLibraryTestPromise(abilityContext)
   mediaLibraryTestPromiseOnOffTest(abilityContext)
 }

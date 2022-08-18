@@ -17,16 +17,16 @@ import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 import bundle from '@ohos.bundle';
 
 const presetsCount = {
-    ActsMediaLibraryAlbum: { assetsCount: 19, albumsCount: 7 },
-    ActsMediaLibraryFavorite: { assetsCount: 32, albumsCount: 6 },
-    //ActsMediaLibraryAlbumFileResultPro test case create 1 album 5 assets
-    ActsMediaLibraryAlbumFileResultPro: { assetsCount: 123, albumsCount: 6 },
-    //ActsMediaLibraryAlbumFileResultCb test case create 1 album 5 assets
-    ActsMediaLibraryAlbumFileResultCb: { assetsCount: 118, albumsCount: 5 },
-    ActsMediaLibraryFileKey: { assetsCount: 4, albumsCount: 4 },
-    ActsMediaLibraryFileAsset: { assetsCount: 4, albumsCount: 4 },
-    ActsMediaLibraryFile: { assetsCount: 4, albumsCount: 4 },
-    ActsMediaLibraryGetThumbnail: { assetsCount: 3, albumsCount: 3 },
+    ActsMediaLibraryAlbum: { albumsCount: 7, assetsCount: 19 },
+    ActsMediaLibraryFavorite: { albumsCount: 6, assetsCount: 32 },
+    ActsMediaLibraryAlbumFileResultCb: { albumsCount: 5, assetsCount: 118 },
+    ActsMediaLibraryFile: { albumsCount: 6, assetsCount: 21 },
+    ActsMediaLibraryFileAsset: { albumsCount: 27, assetsCount: 72 },
+    ActsMediaLibraryFileAssetUri: { albumsCount: 3, assetsCount: 6 },
+    ActsMediaLibraryFileKey: { albumsCount: 2, assetsCount: 2 },
+    ActsMediaLibraryFileResult: { albumsCount: 4, assetsCount: 13 },
+    ActsMediaLibraryGetThumbnail: { albumsCount: 3, assetsCount: 3 },
+    ActsMediaLibraryBase: { albumsCount: 11, assetsCount: 11 },
 }
 
 const IMAGE_TYPE = mediaLibrary.MediaType.IMAGE;
@@ -122,10 +122,9 @@ const checkPresetsAssets = async function (media, hapName) {
     let albumsCount = albumList.length;
     let fetchFileResult = await media.getFileAssets(allFetchOp());
     let assetsCount = await fetchFileResult.getCount();
-    console.info(`${hapName}:: assetsCount: ${assetsCount}`);
-    console.info(`${hapName}:: albumsCount: ${albumsCount}`);
-    console.info(`${hapName}:: presetsassetsCount: ${presetsCount[hapName].assetsCount}`);
-    console.info(`${hapName}:: presetsalbumsCount: ${presetsCount[hapName].albumsCount}`);
+    console.info(`${hapName}:: assetsCount: ${assetsCount} albumsCount: ${albumsCount} 
+            presetsassetsCount: ${presetsCount[hapName].assetsCount} 
+            presetsalbumsCount: ${presetsCount[hapName].albumsCount}`);
     console.info('checkPresetsAssets end')
 }
 
