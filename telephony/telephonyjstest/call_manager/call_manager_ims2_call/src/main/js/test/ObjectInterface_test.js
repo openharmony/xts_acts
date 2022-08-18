@@ -31,10 +31,12 @@ export default function ObjectInterfaceTest() {
             id: 0,
             key: "0",
             contactAttributes: {
-                attributes: [contactsapi.Attribute.ATTR_CONTACT_EVENT, contactsapi.Attribute.ATTR_EMAIL, contactsapi.Attribute.ATTR_GROUP_MEMBERSHIP, 
+                attributes: [contactsapi.Attribute.ATTR_CONTACT_EVENT, contactsapi.Attribute.ATTR_EMAIL,
+                contactsapi.Attribute.ATTR_GROUP_MEMBERSHIP,
 				contactsapi.Attribute.ATTR_IM, contactsapi.Attribute.ATTR_NAME, contactsapi.Attribute.ATTR_NICKNAME, 
 				contactsapi.Attribute.ATTR_NOTE, contactsapi.Attribute.ATTR_ORGANIZATION, contactsapi.Attribute.ATTR_PHONE, 
-				contactsapi.Attribute.ATTR_PORTRAIT, contactsapi.Attribute.ATTR_POSTAL_ADDRESS, contactsapi.Attribute.ATTR_RELATION, 
+				contactsapi.Attribute.ATTR_PORTRAIT, contactsapi.Attribute.ATTR_POSTAL_ADDRESS,
+                contactsapi.Attribute.ATTR_RELATION,
 				contactsapi.Attribute.ATTR_SIP_ADDRESS, contactsapi.Attribute.ATTR_WEBSITE]
             },
             emails: [{
@@ -177,7 +179,9 @@ export default function ObjectInterfaceTest() {
         });
 
         it("contactsApi_contactdata_test_600", 0, async function (done) {
-            console.info("contactData.postalAddresses.city != null" + contactData.postalAddresses.city  +(contactData.postalAddresses.city != null));
+            console.info("contactData.postalAddresses.city != null"
+            + contactData.postalAddresses.city
+            +(contactData.postalAddresses.city != null));
             expect(contactData.postalAddresses.city === null).assertFalse();
             expect(contactData.postalAddresses.country === null).assertFalse();
             expect(contactData.postalAddresses.labelName === null).assertFalse();
@@ -192,7 +196,8 @@ export default function ObjectInterfaceTest() {
         });
 
         it("contactsApi_contactdata_test_700", 0, async function (done) {
-            console.info("contactData.relations.labelName != null" + contactData.relations.labelName +(contactData.relations.labelName === null));
+            console.info("contactData.relations.labelName != null"
+            + contactData.relations.labelName +(contactData.relations.labelName === null));
             expect(contactData.relations.labelId != 0).assertTrue();
             expect(contactData.relations.labelName === null).assertFalse();
             expect(contactData.relations.relationName === null).assertFalse();
@@ -206,9 +211,11 @@ export default function ObjectInterfaceTest() {
 
         it("contactsApi_contactdata_test_800", 0, async function (done) {
             expect(contactsapi.Contact.INVALID_CONTACT_ID == -1).assertTrue();
-            expect(contactsapi.Attribute.ATTR_CONTACT_EVENT == contactData.contactAttributes.attributes[0]).assertTrue();
+            expect(contactsapi.Attribute.ATTR_CONTACT_EVENT ==
+            contactData.contactAttributes.attributes[0]).assertTrue();
             expect(contactsapi.Attribute.ATTR_EMAIL == contactData.contactAttributes.attributes[1]).assertTrue();
-            expect(contactsapi.Attribute.ATTR_GROUP_MEMBERSHIP == contactData.contactAttributes.attributes[2]).assertTrue();
+            expect(contactsapi.Attribute.ATTR_GROUP_MEMBERSHIP ==
+            contactData.contactAttributes.attributes[2]).assertTrue();
             expect(contactsapi.Attribute.ATTR_IM == contactData.contactAttributes.attributes[3]).assertTrue();
             expect(contactsapi.Attribute.ATTR_NAME == contactData.contactAttributes.attributes[4]).assertTrue();
             expect(contactsapi.Attribute.ATTR_NICKNAME == contactData.contactAttributes.attributes[5]).assertTrue();
@@ -216,7 +223,8 @@ export default function ObjectInterfaceTest() {
             expect(contactsapi.Attribute.ATTR_ORGANIZATION == contactData.contactAttributes.attributes[7]).assertTrue();
             expect(contactsapi.Attribute.ATTR_PHONE == contactData.contactAttributes.attributes[8]).assertTrue();
             expect(contactsapi.Attribute.ATTR_PORTRAIT == contactData.contactAttributes.attributes[9]).assertTrue();
-            expect(contactsapi.Attribute.ATTR_POSTAL_ADDRESS == contactData.contactAttributes.attributes[10]).assertTrue();
+            expect(contactsapi.Attribute.ATTR_POSTAL_ADDRESS ==
+            contactData.contactAttributes.attributes[10]).assertTrue();
             expect(contactsapi.Attribute.ATTR_RELATION == contactData.contactAttributes.attributes[11]).assertTrue();
             expect(contactsapi.Attribute.ATTR_SIP_ADDRESS == contactData.contactAttributes.attributes[12]).assertTrue();
             expect(contactsapi.Attribute.ATTR_WEBSITE == contactData.contactAttributes.attributes[13]).assertTrue();
