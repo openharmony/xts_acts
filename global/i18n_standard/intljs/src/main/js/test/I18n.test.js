@@ -860,7 +860,7 @@ describe('I18nTest', function () {
         expect(name).assertEqual('和暦');
         let timezone = calendar.getTimeZone();
         console.log('i18n_test_7920 ' + timezone);
-        expect(timezone).assertContain('Time');
+        expect(timezone.length > 0).assertTrue();
         let firstday = calendar.getFirstDayOfWeek();
         console.log('i18n_test_7920 ' + firstday);
         expect(firstday).assertEqual(1);
