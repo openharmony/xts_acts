@@ -40,7 +40,7 @@ describe('GetSecondModuleTest', function () {
      * @tc.desc Test whether the secondary module (BundleInfo / ReqPermissionDetail / UsedScene / HapModuleInfo 
      *          ApplicationInfo / ModuleInfo) can be exported by the primary module
      */
-    it('GetSecondModuleTest_0100', 0, async function (done) {
+    it('GetSecondModuleTest', 0, async function (done) {
         let bundleInfo = await demo.getBundleInfo("com.example.myapplication1",
             demo.BundleFlag.GET_BUNDLE_WITH_ABILITIES | demo.BundleFlag.GET_BUNDLE_WITH_REQUESTED_PERMISSION);
         let bundleInfoTest : demo.BundleInfo = bundleInfo;
