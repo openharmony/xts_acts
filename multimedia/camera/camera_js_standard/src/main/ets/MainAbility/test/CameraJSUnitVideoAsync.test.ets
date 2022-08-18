@@ -254,15 +254,15 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_CAMERA_MANAGER_TC
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_CAMERA_MANAGER_CALLBACK_0100
       * @tc.name      : Create camera manager instance async api
       * @tc.desc      : Create camera manager instance async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_CAMERA_MANAGER_TC', 0, async function (done) {
-      console.info('--------------GET_CAMERA_MANAGER_TC--------------')
+    it('SUB_MULTIMEDIA_CAMERA_GET_CAMERA_MANAGER_CALLBACK_0100', 0, async function (done) {
+      console.info('--------------SUB_MULTIMEDIA_CAMERA_GET_CAMERA_MANAGER_CALLBACK_0100--------------')
       await sleep(1)
       cameraObj.getCameraManager(null, (err, data) => {
         if (!err) {
@@ -271,13 +271,13 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
             console.info(TAG + 'Entering Get Camera Manager data is not null || undefined')
             cameraManager = data
             expect(true).assertTrue()
-            console.info(TAG + 'Entering GET_CAMERA_MANAGER_TC PASSED')
+            console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERA_MANAGER_CALLBACK_0100 PASSED')
           }
         } else {
           expect().assertFail()
-          console.info(TAG + 'Entering GET_CAMERA_MANAGER_TC FAILED: ' + err.message)
+          console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERA_MANAGER_CALLBACK_0100 FAILED: ' + err.message)
         }
-        console.info(TAG + 'Entering GET_CAMERA_MANAGER_TC ends here')
+        console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERA_MANAGER_CALLBACK_0100 ends here')
         done()
       })
       await sleep(1)
@@ -285,18 +285,18 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : CAMERA_STATUS_CALLBACK
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CAMERA_STATUS_CALLBACK_0100
       * @tc.name      : camera status callback on CameraManager async api
       * @tc.desc      : camera status callback on CameraManager async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('CAMERA_STATUS_CALLBACK', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_CAMERA_STATUS_CALLBACK_0100', 0, async function (done) {
       if (cameraManager == null || cameraManager == undefined) {
-        console.info(TAG + 'Entering CAMERA_STATUS_CALLBACK cameraManager == null || undefined')
+        console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_CAMERA_STATUS_CALLBACK_0100 cameraManager == null || undefined')
       } else {
-        console.info(TAG + 'Entering CAMERA_STATUS_CALLBACK to operate')
+        console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_CAMERA_STATUS_CALLBACK_0100 to operate')
         cameraManager.on('cameraStatus', async (err, data) => {
           if (!err) {
             console.info(TAG + "Camera status Callback on cameraManager is success");
@@ -318,15 +318,15 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_CAMERAS
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_CALLBACK_0100
       * @tc.name      : Create camera manager instance async api
       * @tc.desc      : Create camera manager instance async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_CAMERAS', 0, async function (done) {
-      console.info('--------------GET_CAMERAS--------------')
+    it('SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_CALLBACK_0100', 0, async function (done) {
+      console.info('--------------SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_CALLBACK_0100--------------')
       await sleep(1)
       cameraManager.getCameras((err, data) => {
         if (!err) {
@@ -347,17 +347,17 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
                 console.info(TAG + 'Entering Get Cameras connection' + i + 'Type: ' + connectionType)
               }
               expect(true).assertTrue()
-              console.info(TAG + 'Entering GET_CAMERAS PASSED')
+              console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_CALLBACK_0100 PASSED')
             } else {
               expect().assertFail()
-              console.info(TAG + 'Entering GET_CAMERAS FAILED cameraArray is null || undefined')
+              console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_CALLBACK_0100 FAILED cameraArray is null || undefined')
             }
           }
         } else {
           expect().assertFail()
-          console.info(TAG + 'Entering GET_CAMERAS FAILED: ' + err.message)
+          console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_CALLBACK_0100 FAILED: ' + err.message)
         }
-        console.info(TAG + 'Entering GET_CAMERAS ends here')
+        console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_CALLBACK_0100 ends here')
         done()
       })
       await sleep(1)
@@ -366,16 +366,16 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
 
     /*CAMERA-0 Scripts*/
     /**
-      * @tc.number    : CREATE_CAMERA_INPUT
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_INPUT_CALLBACK_0100
       * @tc.name      : Create camerainput from camera-0 cameraId async api
       * @tc.desc      : Create camerainput from camera-0 cameraId async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('CREATE_CAMERA_INPUT', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_INPUT_CALLBACK_0100', 0, async function (done) {
       console.info('--------------CAMERA-0 STARTS HERE--------------')
-      console.info('--------------CREATE_CAMERA_INPUT--------------')
+      console.info('--------------SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_INPUT_CALLBACK_0100--------------')
       await sleep(1)
       cameraManager.createCameraInput(camerasArray[0].cameraId, (err, data) => {
         if (!err) {
@@ -383,13 +383,13 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
             console.info(TAG + 'Entering Create camera input data is not null || undefined')
             camera0Input = data
             expect(true).assertTrue()
-            console.info(TAG + 'Entering CREATE_CAMERA_INPUT PASSED with CameraID :' + camerasArray[0].cameraId)
+            console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_INPUT_CALLBACK_0100 PASSED with CameraID :' + camerasArray[0].cameraId)
           }
         } else {
           expect().assertFail()
-          console.info(TAG + 'Entering CREATE_CAMERA_INPUT FAILED: ' + err.message)
+          console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_INPUT_CALLBACK_0100 FAILED: ' + err.message)
         }
-        console.info(TAG + 'Entering CREATE_CAMERA_INPUT ends here')
+        console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_INPUT_CALLBACK_0100 ends here')
         done()
       })
       await sleep(1)
@@ -397,28 +397,28 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : CAMERA_INPUT_CALLBACK_ON_ERROR
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_ON_ERROR_CALLBACK_0100
       * @tc.name      : Photo output callback on error api
       * @tc.desc      : Photo output callback on error api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('CAMERA_INPUT_CALLBACK_ON_ERROR', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_ON_ERROR_CALLBACK_0100', 0, async function (done) {
       if (camera0Input == null || camera0Input == undefined) {
         console.info(TAG + "Entering Camera Input callback camera0Input == null || undefined");
       } else {
-        console.info(TAG + "Entering CAMERA_INPUT_CALLBACK_ON_ERROR to operate");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_ON_ERROR_CALLBACK_0100 to operate");
         camera0Input.on('error', async (err, data) => {
           if (!err) {
             console.info(TAG + "camera0Input error callback is success");
             if (data != null || data != undefined) {
-              console.info(TAG + "CAMERA_INPUT_CALLBACK_ON_ERROR with ErrorCode: " + data.code);
+              console.info(TAG + "SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_ON_ERROR_CALLBACK_0100 with ErrorCode: " + data.code);
               expect(true).assertTrue();
             }
           } else {
             expect().assertFail();
-            console.info(TAG + "CAMERA_INPUT_CALLBACK_ON_ERROR FAILED: " + err.message);
+            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_ON_ERROR_CALLBACK_0100 FAILED: " + err.message);
           }
           await sleep(1);
           done();
@@ -429,15 +429,15 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : CREATE_PREVIEW_OUTPUT
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CREATE_PREVIEW_OUTPUT_CALLBACK_0100
       * @tc.name      : Create previewoutput async api
       * @tc.desc      : Create previewoutput async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('CREATE_PREVIEW_OUTPUT', 0, async function (done) {
-      console.info(TAG + 'Entering CREATE_PREVIEW_OUTPUT to operate')
+    it('SUB_MULTIMEDIA_CAMERA_CREATE_PREVIEW_OUTPUT_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_CREATE_PREVIEW_OUTPUT_CALLBACK_0100 to operate')
       await sleep(1)
       cameraObj.createPreviewOutput(surfaceId, (err, data) => {
         if (!err) {
@@ -446,13 +446,13 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
             console.info(TAG + 'Entering Create preview output data is not null || undefined')
             previewOutput = data
             expect(true).assertTrue()
-            console.info(TAG + 'Entering CREATE_PREVIEW_OUTPUT PASSED')
+            console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_CREATE_PREVIEW_OUTPUT_CALLBACK_0100 PASSED')
           }
         } else {
-          console.info(TAG + 'Entering CREATE_PREVIEW_OUTPUT FAILED: ' + err.message)
+          console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_CREATE_PREVIEW_OUTPUT_CALLBACK_0100 FAILED: ' + err.message)
           expect().assertFail();
         }
-        console.info(TAG + 'Entering CREATE_PREVIEW_OUTPUT ends here')
+        console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_CREATE_PREVIEW_OUTPUT_CALLBACK_0100 ends here')
         done()
       })
       await sleep(1)
@@ -460,28 +460,28 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : PREVIEW_OUTPUT_CALLBACK_ON_ERROR
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_PREVIEW_OUTPUT_ON_ERROR_CALLBACK_0100
       * @tc.name      : Preview output callback on error api
       * @tc.desc      : Preview output callback on error api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('PREVIEW_OUTPUT_CALLBACK_ON_ERROR', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_PREVIEW_OUTPUT_ON_ERROR_CALLBACK_0100', 0, async function (done) {
       if (previewOutput == null || previewOutput == undefined) {
         console.info(TAG + "Entering PreviewOutput callback on error previewOutput == null || undefined");
       } else {
-        console.info(TAG + "Entering PREVIEW_OUTPUT_CALLBACK_ON_ERROR to operate");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PREVIEW_OUTPUT_ON_ERROR_CALLBACK_0100 to operate");
         previewOutput.on('error', async (err, data) => {
           if (!err) {
             console.info(TAG + "PreviewOutputError callback is success");
             if (data != null || data != undefined) {
-              console.info(TAG + "PREVIEW_OUTPUT_CALLBACK_ON_ERROR with ErrorCode: " + data.code);
+              console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PREVIEW_OUTPUT_ON_ERROR_CALLBACK_0100 with ErrorCode: " + data.code);
               expect(true).assertTrue();
             }
           } else {
             expect().assertFail();
-            console.info(TAG + "PREVIEW_OUTPUT_CALLBACK_ON_ERROR FAILED: " + err.message);
+            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PREVIEW_OUTPUT_ON_ERROR_CALLBACK_0100 FAILED: " + err.message);
           }
           await sleep(1);
           done();
@@ -493,15 +493,15 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
 
     /*PhotoOutput APIs test script*/
     /**
-      * @tc.number    : CREATE_PHOTO_OUTPUT_SUCCESS
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CREATE_PHOTO_OUTPUT_SUCCESS_CALLBACK_0100
       * @tc.name      : Create PhotoOutput instance api
       * @tc.desc      : Create PhotoOutput instance api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('CREATE_PHOTO_OUTPUT_SUCCESS', 0, async function (done) {
-      console.info(TAG + "Entering CREATE_PHOTO_OUTPUT_SUCCESS to operate");
+    it('SUB_MULTIMEDIA_CAMERA_CREATE_PHOTO_OUTPUT_SUCCESS_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_PHOTO_OUTPUT_SUCCESS_CALLBACK_0100 to operate");
       console.info(TAG + 'Entering getImageReceiverSurfaceId')
       await getImageReceiverSurfaceId()
       await sleep(1)
@@ -512,11 +512,11 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
             console.info(TAG + "Entering  createPhotoOutput data is not null || undefined");
             photoOutputAsync = data;
             expect(true).assertTrue();
-            console.info(TAG + "Entering  CREATE_PHOTO_OUTPUT_SUCCESS PASSED");
+            console.info(TAG + "Entering  SUB_MULTIMEDIA_CAMERA_CREATE_PHOTO_OUTPUT_SUCCESS_CALLBACK_0100 PASSED");
           }
         } else {
           expect().assertFail();
-          console.info(TAG + "Entering CREATE_PHOTO_OUTPUT_SUCCESS FAILED : " + err.message);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_PHOTO_OUTPUT_SUCCESS_CALLBACK_0100 FAILED : " + err.message);
           console.info(TAG + "Entering  createPhotoOutput ends here");
         }
         await sleep(1);
@@ -527,18 +527,18 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : PHOTO_OUTPUT_CALLBACK_ON_ERROR
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_ON_ERROR_CALLBACK_0100
       * @tc.name      : Photo output callback on error api
       * @tc.desc      : Photo output callback on error api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('PHOTO_OUTPUT_CALLBACK_ON_ERROR', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_ON_ERROR_CALLBACK_0100', 0, async function (done) {
       if (photoOutputAsync == null || photoOutputAsync == undefined) {
-        console.info(TAG + "Entering PHOTO_OUTPUT_CALLBACK_ON_ERROR photoOutput == null || undefined");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_ON_ERROR_CALLBACK_0100 photoOutput == null || undefined");
       } else {
-        console.info(TAG + "Entering PHOTO_OUTPUT_CALLBACK_ON_ERROR to operate");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_ON_ERROR_CALLBACK_0100 to operate");
         photoOutputAsync.on('error', async (err, data) => {
           if (!err) {
             console.info(TAG + "PhotoOutputError callback is success");
@@ -548,7 +548,7 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
             }
           } else {
             expect().assertFail();
-            console.info(TAG + "PHOTO_OUTPUT_CALLBACK_ON_ERROR FAILED: " + err.message);
+            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_ON_ERROR_CALLBACK_0100 FAILED: " + err.message);
           }
           await sleep(1);
           done();
@@ -559,15 +559,15 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : CREATE_VIDEO_OUTPUT
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CREATE_VIDEO_OUTPUT_CALLBACK_0100
       * @tc.name      : Create videooutput async api
       * @tc.desc      : Create videooutput async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('CREATE_VIDEO_OUTPUT', 0, async function (done) {
-      console.info(TAG + 'Entering CREATE_VIDEO_OUTPUT to operate')
+    it('SUB_MULTIMEDIA_CAMERA_CREATE_VIDEO_OUTPUT_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_CREATE_VIDEO_OUTPUT_CALLBACK_0100 to operate')
       await getvideosurface()
       await sleep(2)
       cameraObj.createVideoOutput(videoId, (err, data) => {
@@ -577,13 +577,13 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
             console.info(TAG + 'Entering Create videooutput data is not null || undefined')
             videoOutput = data
             expect(true).assertTrue()
-            console.info(TAG + 'Entering CREATE_VIDEO_OUTPUT PASSED')
+            console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_CREATE_VIDEO_OUTPUT_CALLBACK_0100 PASSED')
           }
         } else {
           expect().assertFail()
-          console.info(TAG + 'Entering CREATE_VIDEO_OUTPUT FAILED: ' + err.message)
+          console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_CREATE_VIDEO_OUTPUT_CALLBACK_0100 FAILED: ' + err.message)
         }
-        console.info(TAG + 'Entering CREATE_VIDEO_OUTPUT ends here')
+        console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_CREATE_VIDEO_OUTPUT_CALLBACK_0100 ends here')
         done()
       })
       await sleep(1)
@@ -591,29 +591,29 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : VIDEO_OUTPUT_CALLBACK_ON_ERROR
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_ON_ERROR_CALLBACK_0100
       * @tc.name      : VideoOutput callback onerror async api
       * @tc.desc      : VideoOutput callback onerror async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('VIDEO_OUTPUT_CALLBACK_ON_ERROR', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_ON_ERROR_CALLBACK_0100', 0, async function (done) {
       if (videoOutput == null || videoOutput == undefined) {
-        console.info(TAG + 'Entering VIDEO_OUTPUT_CALLBACK_ON_ERROR videoOutput == null || undefined')
+        console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_ON_ERROR_CALLBACK_0100 videoOutput == null || undefined')
       } else {
-        console.info(TAG + 'Entering VIDEO_OUTPUT_CALLBACK_ON_ERROR to operate')
+        console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_ON_ERROR_CALLBACK_0100 to operate')
         await sleep(1)
         videoOutput.on('error', async (err, data) => {
           if (!err) {
             console.info(TAG + "VideoOutput Errorcallback is success")
             if (data != null || data != undefined) {
-              console.info(TAG + "VIDEO_OUTPUT_CALLBACK_ON_ERROR with ErrorCode: " + data.code);
+              console.info(TAG + "SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_ON_ERROR_CALLBACK_0100 with ErrorCode: " + data.code);
               expect(true).assertTrue()
             }
           } else {
             expect().assertFail()
-            console.info(TAG + "VIDEO_OUTPUT_CALLBACK_ON_ERROR FAILED: " + err.message);
+            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_ON_ERROR_CALLBACK_0100 FAILED: " + err.message);
           }
           await sleep(1)
           done()
@@ -624,15 +624,15 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : CREATE_CAPTURE_SESSION
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CREATE_CAPTURE_SESSION_CALLBACK_0100
       * @tc.name      : Create capturesession async api
       * @tc.desc      : Create capturesession async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('CREATE_CAPTURE_SESSION', 0, async function (done) {
-      console.info(TAG + 'Entering CREATE_CAPTURE_SESSION to operate')
+    it('SUB_MULTIMEDIA_CAMERA_CREATE_CAPTURE_SESSION_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_CREATE_CAPTURE_SESSION_CALLBACK_0100 to operate')
       await sleep(1)
       cameraObj.createCaptureSession(null, async (err, data) => {
         if (!err) {
@@ -641,13 +641,13 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
             console.info(TAG + 'Entering Create capturesession data is not null || undefined')
             captureSession = data
             expect(true).assertTrue()
-            console.info(TAG + 'Entering CREATE_CAPTURE_SESSION PASSED')
+            console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_CREATE_CAPTURE_SESSION_CALLBACK_0100 PASSED')
           }
         } else {
-          console.info(TAG + 'Entering CREATE_CAPTURE_SESSION FAILED: ' + err.message)
+          console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_CREATE_CAPTURE_SESSION_CALLBACK_0100 FAILED: ' + err.message)
           expect().assertFail()
         }
-        console.info(TAG + 'Entering CREATE_CAPTURE_SESSION ends here')
+        console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_CREATE_CAPTURE_SESSION_CALLBACK_0100 ends here')
         await sleep(1)
         done()
       })
@@ -656,28 +656,28 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : CAP_SES_CALLBACK_ON_ERROR
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CAP_SES_ON_ERROR_CALLBACK_0100
       * @tc.name      : CaptureSession callback on error api
       * @tc.desc      : CaptureSession callback on error api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('CAP_SES_CALLBACK_ON_ERROR', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_CAP_SES_ON_ERROR_CALLBACK_0100', 0, async function (done) {
       if (captureSession == null || captureSession == undefined) {
-        console.info(TAG + "Entering CAP_SES_CALLBACK_ON_ERROR captureSession == null || undefined");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAP_SES_ON_ERROR_CALLBACK_0100 captureSession == null || undefined");
       } else {
-        console.info(TAG + "Entering CAP_SES_CALLBACK_ON_ERROR to operate");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAP_SES_ON_ERROR_CALLBACK_0100 to operate");
         captureSession.on('error', async (err, data) => {
           if (!err) {
             console.info(TAG + " captureSession errorcallback is success");
             if (data != null || data != undefined) {
-              console.info(TAG + "CAP_SES_CALLBACK_ON_ERROR with ErrorCode: " + data.code);
+              console.info(TAG + "SUB_MULTIMEDIA_CAMERA_CAP_SES_ON_ERROR_CALLBACK_0100 with ErrorCode: " + data.code);
               expect(true).assertTrue();
             }
           } else {
             expect().assertFail();
-            console.info(TAG + "CAP_SES_CALLBACK_ON_ERROR FAILED: " + err.message);
+            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_CAP_SES_ON_ERROR_CALLBACK_0100 FAILED: " + err.message);
           }
           await sleep(1);
           done();
@@ -688,29 +688,29 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : BEGIN_CONFIG
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_BEGIN_CONFIG_CALLBACK_0100
       * @tc.name      : Begin Config async api
       * @tc.desc      : Begin Config async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('BEGIN_CONFIG', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_BEGIN_CONFIG_CALLBACK_0100', 0, async function (done) {
       if (captureSession == null || captureSession == undefined) {
         console.info(TAG + 'Entering Begin Config captureSession == null || undefined')
       } else {
-        console.info(TAG + 'Entering BEGIN_CONFIG to operate')
+        console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_BEGIN_CONFIG_CALLBACK_0100 to operate')
         await sleep(1)
         captureSession.beginConfig((err, data) => {
           if (!err) {
             console.info(TAG + 'Entering Begin Config success')
             expect(true).assertTrue()
-            console.info(TAG + 'Entering BEGIN_CONFIG PASSED')
+            console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_BEGIN_CONFIG_CALLBACK_0100 PASSED')
           } else {
-            console.info(TAG + 'Entering BEGIN_CONFIG FAILED: ' + err.message)
+            console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_BEGIN_CONFIG_CALLBACK_0100 FAILED: ' + err.message)
             expect().assertFail();
           }
-          console.info(TAG + 'Entering BEGIN_CONFIG ends here')
+          console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_BEGIN_CONFIG_CALLBACK_0100 ends here')
           done()
         })
         await sleep(1)
@@ -719,29 +719,29 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : ADD_INPUT
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_ADD_INPUT_CALLBACK_0100
       * @tc.name      : AddInput async api
       * @tc.desc      : AddInput async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('ADD_INPUT', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_ADD_INPUT_CALLBACK_0100', 0, async function (done) {
       if (captureSession == null || captureSession == undefined) {
         console.info(TAG + 'Entering AddInput captureSession == null || undefined')
       } else {
-        console.info(TAG + 'Entering ADD_INPUT to operate')
+        console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_ADD_INPUT_CALLBACK_0100 to operate')
         await sleep(1)
         captureSession.addInput(camera0Input, (err, data) => {
           if (!err) {
             console.info(TAG + 'Entering AddInput success')
             expect(true).assertTrue()
-            console.info(TAG + 'Entering ADD_INPUT PASSED')
+            console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_ADD_INPUT_CALLBACK_0100 PASSED')
           } else {
-            console.info(TAG + 'Entering ADD_INPUT FAILED: ' + err.message)
+            console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_ADD_INPUT_CALLBACK_0100 FAILED: ' + err.message)
             expect().assertFail();
           }
-          console.info(TAG + 'Entering ADD_INPUT ends here')
+          console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_ADD_INPUT_CALLBACK_0100 ends here')
           done()
         })
         await sleep(1)
@@ -750,29 +750,29 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : ADD_OUTPUT_PREVIEW
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_PREVIEW_CALLBACK_0100
       * @tc.name      : AddOutput preview async api
       * @tc.desc      : AddOutput preview async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('ADD_OUTPUT_PREVIEW', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_PREVIEW_CALLBACK_0100', 0, async function (done) {
       if (captureSession == null || captureSession == undefined) {
         console.info(TAG + 'Entering AddOutput preview captureSession == null || undefined')
       } else {
-        console.info(TAG + 'Entering ADD_OUTPUT_PREVIEW to operate')
+        console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_PREVIEW_CALLBACK_0100 to operate')
         await sleep(1)
         captureSession.addOutput(previewOutput, (err, data) => {
           if (!err) {
             console.info(TAG + 'Entering AddOutput preview success')
             expect(true).assertTrue()
-            console.info(TAG + 'Entering ADD_OUTPUT_PREVIEW PASSED')
+            console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_PREVIEW_CALLBACK_0100 PASSED')
           } else {
-            console.info(TAG + 'Entering ADD_OUTPUT_PREVIEW FAILED: ' + err.message)
+            console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_PREVIEW_CALLBACK_0100 FAILED: ' + err.message)
             expect().assertFail();
           }
-          console.info(TAG + 'Entering ADD_OUTPUT_PREVIEW ends here')
+          console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_PREVIEW_CALLBACK_0100 ends here')
           done()
         })
         await sleep(1)
@@ -781,31 +781,31 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : ADD_OUTPUT_PHOTO_SUCCESS
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_PHOTO_SUCCESS_CALLBACK_0100
       * @tc.name      : Add output with photo output api
       * @tc.desc      : Add output with photo output api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('ADD_OUTPUT_PHOTO_SUCCESS', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_PHOTO_SUCCESS_CALLBACK_0100', 0, async function (done) {
       if (captureSession == null || captureSession == undefined) {
         console.info(TAG + "Entering AddOutput_Photo captureSession == null || undefined");
       } else {
-        console.info(TAG + "Entering ADD_OUTPUT_PHOTO_SUCCESS to operate");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_PHOTO_SUCCESS_CALLBACK_0100 to operate");
         captureSession.addOutput(photoOutputAsync, async (err, data) => {
           if (!err) {
             console.info(TAG + "Entering AddOutput_Photo  success");
             if (data != null || data != undefined) {
               console.info(TAG + "Entering AddOutput_Photo data is not null || undefined");
               expect(true).assertTrue();
-              console.info(TAG + "Entering ADD_OUTPUT_PHOTO_SUCCESS PASSED");
+              console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_PHOTO_SUCCESS_CALLBACK_0100 PASSED");
             }
           } else {
             expect().assertFail();
-            console.info(TAG + "Entering ADD_OUTPUT_PHOTO_SUCCESS FAILED: " + err.message);
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_PHOTO_SUCCESS_CALLBACK_0100 FAILED: " + err.message);
           }
-          console.info(TAG + "Entering ADD_OUTPUT_PHOTO_SUCCESS ends here");
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_PHOTO_SUCCESS_CALLBACK_0100 ends here");
           await sleep(1);
           done();
         })
@@ -815,29 +815,29 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : ADD_OUTPUT_VIDEO
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_VIDEO_CALLBACK_0100
       * @tc.name      : AddOutput video async api
       * @tc.desc      : AddOutput video async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('ADD_OUTPUT_VIDEO', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_VIDEO_CALLBACK_0100', 0, async function (done) {
       if (captureSession == null || captureSession == undefined) {
         console.info(TAG + 'Entering AddOutput video captureSession == null || undefined')
       } else {
-        console.info(TAG + 'Entering ADD_OUTPUT_VIDEO to operate')
+        console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_VIDEO_CALLBACK_0100 to operate')
         await sleep(1)
         captureSession.addOutput(videoOutput, async (err, data) => {
           if (!err) {
             console.info(TAG + 'Entering AddOutput video success')
             expect(true).assertTrue()
-            console.info(TAG + 'Entering ADD_OUTPUT_VIDEO PASSED')
+            console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_VIDEO_CALLBACK_0100 PASSED')
           } else {
-            console.info(TAG + 'Entering ADD_OUTPUT_VIDEO FAILED: ' + err.message)
+            console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_VIDEO_CALLBACK_0100 FAILED: ' + err.message)
             expect().assertFail();
           }
-          console.info(TAG + 'Entering ADD_OUTPUT_VIDEO ends here')
+          console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_VIDEO_CALLBACK_0100 ends here')
           await sleep(1);
           done()
         })
@@ -847,23 +847,23 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : REMOVE_INPUT_SUCCESS
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_REMOVE_INPUT_SUCCESS_CALLBACK_0100
       * @tc.name      : remove input api
       * @tc.desc      : remove input api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('REMOVE_INPUT_SUCCESS', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_REMOVE_INPUT_SUCCESS_CALLBACK_0100', 0, async function (done) {
       if (captureSession == null || captureSession == undefined) {
-        console.info(TAG + "Entering REMOVE_INPUT_SUCCESS captureSession == null || undefined");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_REMOVE_INPUT_SUCCESS_CALLBACK_0100 captureSession == null || undefined");
       } else {
-        console.info(TAG + "Entering REMOVE_INPUT_SUCCESS to operate");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_REMOVE_INPUT_SUCCESS_CALLBACK_0100 to operate");
         captureSession.removeInput(camera0Input, async (err, data) => {
           if (!err) {
             console.info(TAG + "Entering remove input success");
             expect(true).assertTrue();
-            console.info(TAG + "Entering REMOVE_INPUT_SUCCESS PASSED");
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_REMOVE_INPUT_SUCCESS_CALLBACK_0100 PASSED");
           } else {
             expect().assertFail();
             console.info(TAG + "Entering Remove Input FAILED" + err.message);
@@ -878,23 +878,23 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : REMOVE_PREVIEW_OUTPUT_SUCCESS
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_REMOVE_PREVIEW_OUTPUT_SUCCESS_CALLBACK_0100
       * @tc.name      : Remove preview Output api
       * @tc.desc      : Remove preview Output api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('REMOVE_PREVIEW_OUTPUT_SUCCESS', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_REMOVE_PREVIEW_OUTPUT_SUCCESS_CALLBACK_0100', 0, async function (done) {
       if (captureSession == null || captureSession == undefined) {
-        console.info(TAG + "Entering REMOVE_PREVIEW_OUTPUT_SUCCESS captureSession == null || undefined");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_REMOVE_PREVIEW_OUTPUT_SUCCESS_CALLBACK_0100 captureSession == null || undefined");
       } else {
-        console.info(TAG + "Entering REMOVE_PREVIEW_OUTPUT_SUCCESS to operate");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_REMOVE_PREVIEW_OUTPUT_SUCCESS_CALLBACK_0100 to operate");
         captureSession.removeOutput(previewOutput, async (err, data) => {
           if (!err) {
             console.info(TAG + "Entering remove preview Output success");
             expect(true).assertTrue();
-            console.info(TAG + "Entering REMOVE_PREVIEW_OUTPUT_SUCCESS PASSED");
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_REMOVE_PREVIEW_OUTPUT_SUCCESS_CALLBACK_0100 PASSED");
           } else {
             expect().assertFail();
             console.info(TAG + "Entering Remove preview Output FAILED" + err.message);
@@ -909,23 +909,23 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : REMOVE_PHOTO_OUTPUT_SUCCESS
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_REMOVE_PHOTO_OUTPUT_SUCCESS_CALLBACK_0100
       * @tc.name      : Remove photo Output api
       * @tc.desc      : Remove photo Output api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('REMOVE_PHOTO_OUTPUT_SUCCESS', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_REMOVE_PHOTO_OUTPUT_SUCCESS_CALLBACK_0100', 0, async function (done) {
       if (captureSession == null || captureSession == undefined) {
-        console.info(TAG + "Entering REMOVE_PHOTO_OUTPUT_SUCCESS captureSession == null || undefined");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_REMOVE_PHOTO_OUTPUT_SUCCESS_CALLBACK_0100 captureSession == null || undefined");
       } else {
-        console.info(TAG + "Entering REMOVE_PHOTO_OUTPUT_SUCCESS to operate");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_REMOVE_PHOTO_OUTPUT_SUCCESS_CALLBACK_0100 to operate");
         captureSession.removeOutput(photoOutputAsync, async (err, data) => {
           if (!err) {
             console.info(TAG + "Entering remove photo Output success");
             expect(true).assertTrue();
-            console.info(TAG + "Entering REMOVE_PHOTO_OUTPUT_SUCCESS PASSED");
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_REMOVE_PHOTO_OUTPUT_SUCCESS_CALLBACK_0100 PASSED");
           }
           else {
             expect().assertFail();
@@ -941,23 +941,23 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : REMOVE_VIDEO_OUTPUT_SUCCESS
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_REMOVE_VIDEO_OUTPUT_SUCCESS_CALLBACK_0100
       * @tc.name      : Remove video Output api
       * @tc.desc      : Remove video Output api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('REMOVE_VIDEO_OUTPUT_SUCCESS', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_REMOVE_VIDEO_OUTPUT_SUCCESS_CALLBACK_0100', 0, async function (done) {
       if (captureSession == null || captureSession == undefined) {
-        console.info(TAG + "Entering REMOVE_VIDEO_OUTPUT_SUCCESS captureSession == null || undefined");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_REMOVE_VIDEO_OUTPUT_SUCCESS_CALLBACK_0100 captureSession == null || undefined");
       } else {
-        console.info(TAG + "Entering REMOVE_VIDEO_OUTPUT_SUCCESS to operate");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_REMOVE_VIDEO_OUTPUT_SUCCESS_CALLBACK_0100 to operate");
         captureSession.removeOutput(videoOutput, async (err, data) => {
           if (!err) {
             console.info(TAG + "Entering remove video Output success");
             expect(true).assertTrue();
-            console.info(TAG + "Entering REMOVE_VIDEO_OUTPUT_SUCCESS PASSED");
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_REMOVE_VIDEO_OUTPUT_SUCCESS_CALLBACK_0100 PASSED");
           } else {
             expect().assertFail();
             console.info(TAG + "Entering Remove video Output FAILED" + err.message);
@@ -972,29 +972,29 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : ADD_INPUT
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_ADD_INPUT_CALLBACK_0200
       * @tc.name      : AddInput async api
       * @tc.desc      : AddInput async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('ADD_INPUT', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_ADD_INPUT_CALLBACK_0200', 0, async function (done) {
       if (captureSession == null || captureSession == undefined) {
         console.info(TAG + 'Entering AddInput captureSession == null || undefined')
       } else {
-        console.info(TAG + 'Entering ADD_INPUT to operate')
+        console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_ADD_INPUT_CALLBACK_0200 to operate')
         await sleep(1)
         captureSession.addInput(camera0Input, (err, data) => {
           if (!err) {
             console.info(TAG + 'Entering AddInput success')
             expect(true).assertTrue()
-            console.info(TAG + 'Entering ADD_INPUT PASSED')
+            console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_ADD_INPUT_CALLBACK_0200 PASSED')
           } else {
-            console.info(TAG + 'Entering ADD_INPUT FAILED: ' + err.message)
+            console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_ADD_INPUT_CALLBACK_0200 FAILED: ' + err.message)
             expect().assertFail();
           }
-          console.info(TAG + 'Entering ADD_INPUT ends here')
+          console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_ADD_INPUT_CALLBACK_0200 ends here')
           done()
         })
         await sleep(1)
@@ -1003,30 +1003,30 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : ADD_OUTPUT_PREVIEW
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_PREVIEW_CALLBACK_0200
       * @tc.name      : AddOutput preview async api
       * @tc.desc      : AddOutput preview async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('ADD_OUTPUT_PREVIEW', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_PREVIEW_CALLBACK_0200', 0, async function (done) {
       if (captureSession == null || captureSession == undefined) {
         console.info(TAG + 'Entering AddOutput captureSession == null || undefined')
       } else {
-        console.info(TAG + 'Entering ADD_OUTPUT_PREVIEW to operate')
+        console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_PREVIEW_CALLBACK_0200 to operate')
         await sleep(1)
         captureSession.addOutput(previewOutput, (err, data) => {
           if (!err) {
             console.info(TAG + 'Entering AddOutput success')
             console.info(TAG + 'Entering AddOutput data is not null || undefined')
             expect(true).assertTrue()
-            console.info(TAG + 'Entering ADD_OUTPUT_PREVIEW PASSED')
+            console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_PREVIEW_CALLBACK_0200 PASSED')
           } else {
-            console.info(TAG + 'Entering ADD_OUTPUT_PREVIEW FAILED: ' + err.message)
+            console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_PREVIEW_CALLBACK_0200 FAILED: ' + err.message)
             expect().assertFail();
           }
-          console.info(TAG + 'Entering ADD_OUTPUT_PREVIEW ends here')
+          console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_PREVIEW_CALLBACK_0200 ends here')
           done()
         })
         await sleep(1)
@@ -1035,31 +1035,31 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : ADD_OUTPUT_PHOTO
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_PHOTO_CALLBACK_0100
       * @tc.name      : Add output with photo output api
       * @tc.desc      : Add output with photo output api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('ADD_OUTPUT_PHOTO', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_PHOTO_CALLBACK_0100', 0, async function (done) {
       if (captureSession == null || captureSession == undefined) {
         console.info(TAG + "Entering AddOutput_Photo captureSession == null || undefined");
       } else {
-        console.info(TAG + "Entering ADD_OUTPUT_PHOTO to operate");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_PHOTO_CALLBACK_0100 to operate");
         captureSession.addOutput(photoOutputAsync, async (err, data) => {
           if (!err) {
             console.info(TAG + "Entering AddOutput_Photo  success");
             if (data != null || data != undefined) {
               console.info(TAG + "Entering AddOutput_Photo data is not null || undefined");
               expect(true).assertTrue();
-              console.info(TAG + "Entering ADD_OUTPUT_PHOTO PASSED");
+              console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_PHOTO_CALLBACK_0100 PASSED");
             }
           } else {
             expect().assertFail();
-            console.info(TAG + "Entering ADD_OUTPUT_PHOTO FAILED: " + err.message);
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_PHOTO_CALLBACK_0100 FAILED: " + err.message);
           }
-          console.info(TAG + "Entering ADD_OUTPUT_PHOTO ends here");
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_PHOTO_CALLBACK_0100 ends here");
           await sleep(1);
           done();
         })
@@ -1069,30 +1069,30 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : ADD_OUTPUT_VIDEO
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_VIDEO_CALLBACK_0200
       * @tc.name      : AddOutput video async api
       * @tc.desc      : AddOutput video async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('ADD_OUTPUT_VIDEO', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_VIDEO_CALLBACK_0200', 0, async function (done) {
       if (captureSession == null || captureSession == undefined) {
         console.info(TAG + 'Entering AddOutput captureSession == null || undefined')
       } else {
-        console.info(TAG + 'Entering ADD_OUTPUT_VIDEO to operate')
+        console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_VIDEO_CALLBACK_0200 to operate')
         await sleep(1)
         captureSession.addOutput(videoOutput, (err, data) => {
           if (!err) {
             console.info(TAG + 'Entering AddOutput success')
             console.info(TAG + 'Entering AddOutput data is not null || undefined')
             expect(true).assertTrue()
-            console.info(TAG + 'Entering ADD_OUTPUT_VIDEO PASSED')
+            console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_VIDEO_CALLBACK_0200 PASSED')
           } else {
-            console.info(TAG + 'Entering ADD_OUTPUT_VIDEO FAILED: ' + err.message)
+            console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_VIDEO_CALLBACK_0200 FAILED: ' + err.message)
             expect().assertFail();
           }
-          console.info(TAG + 'Entering ADD_OUTPUT_VIDEO ends here')
+          console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_ADD_OUTPUT_VIDEO_CALLBACK_0200 ends here')
           done()
         })
         await sleep(1)
@@ -1102,26 +1102,26 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
  
     //framerate
     /**
-      * @tc.number    : GET_FRAME_RATE_RANGE
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_FRAME_RATE_RANGE_CALLBACK_0100
       * @tc.name      : get frame rate range camera0 api
       * @tc.desc      : get frame rate range async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_FRAME_RATE_RANGE', 0, async function (done) {
-      console.info(TAG + "Entering GET_FRAME_RATE_RANGE to operate");
+    it('SUB_MULTIMEDIA_CAMERA_GET_FRAME_RATE_RANGE_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_FRAME_RATE_RANGE_CALLBACK_0100 to operate");
       videoOutput.getFrameRateRange(async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering get frame rate range success");
             expect(true).assertTrue();
             console.info(TAG + "Current FrameRateRange is: " + JSON.stringify(data));
-            console.info(TAG + "GET_FRAME_RATE_RANGE PASSED");
+            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_FRAME_RATE_RANGE_CALLBACK_0100 PASSED");
           }
         else {
           expect().assertFail();
-          console.info(TAG + "GET_FRAME_RATE_RANGE FAILED : " + err.message);
-          console.info(TAG + "GET_FRAME_RATE_RANGE ends here");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_FRAME_RATE_RANGE_CALLBACK_0100 FAILED : " + err.message);
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_FRAME_RATE_RANGE_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -1131,15 +1131,15 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : SET_FRAME_RATE_RANGE_Grp0
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SET_FRAME_RATE_RANGE_Grp0_CALLBACK_0100
       * @tc.name      : set frame rate range camera0 api
       * @tc.desc      : set frame rate range async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_FRAME_RATE_RANGE_Grp0', 0, async function (done) {
-      console.info(TAG + "Entering SET_FRAME_RATE_RANGE_Grp0 to operate");
+    it('SUB_MULTIMEDIA_CAMERA_SET_FRAME_RATE_RANGE_Grp0_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FRAME_RATE_RANGE_Grp0_CALLBACK_0100 to operate");
       videoOutput.setFrameRateRange(minFrameRate_Grp0,maxFrameRate_Grp0, async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering set frame rate range, current framerateRange is: " + JSON.stringify(data));
@@ -1147,9 +1147,9 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
           expect(true).assertTrue();
         }
         else {
-          console.info(TAG + "Entering SET_FRAME_RATE_RANGE_Grp0 FAILED : " + err.message);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FRAME_RATE_RANGE_Grp0_CALLBACK_0100 FAILED : " + err.message);
           expect().assertFail();
-          console.info(TAG + "Entering SET_FRAME_RATE_RANGE_Grp0 ends here");
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FRAME_RATE_RANGE_Grp0_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -1159,15 +1159,15 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
  
     /**
-      * @tc.number    : SET_FRAME_RATE_RANGE_Mix
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SET_FRAME_RATE_RANGE_Mix_CALLBACK_0100
       * @tc.name      : set frame rate range camera0 api
       * @tc.desc      : set frame rate range async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_FRAME_RATE_RANGE_Mix', 0, async function (done) {
-      console.info(TAG + "Entering SET_FRAME_RATE_RANGE_Mix to operate");
+    it('SUB_MULTIMEDIA_CAMERA_SET_FRAME_RATE_RANGE_Mix_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FRAME_RATE_RANGE_Mix_CALLBACK_0100 to operate");
       videoOutput.setFrameRateRange(minFrameRate_Mix,maxFrameRate_Mix, async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering set frame rate range, current framerateRange is: " + JSON.stringify(data));
@@ -1175,9 +1175,9 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
           expect().assertFail();
         }
         else {
-          console.info(TAG + "Entering SET_FRAME_RATE_RANGE_Mix PASSED : " + err.message);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FRAME_RATE_RANGE_Mix_CALLBACK_0100 PASSED : " + err.message);
           expect(true).assertTrue();
-          console.info(TAG + "Entering SET_FRAME_RATE_RANGE_Mix ends here");
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FRAME_RATE_RANGE_Mix_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -1187,15 +1187,15 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : SET_FRAME_RATE_RANGE_Err1
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SET_FRAME_RATE_RANGE_Err1_CALLBACK_0100
       * @tc.name      : set frame rate range camera0 api_err
       * @tc.desc      : set frame rate range async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_FRAME_RATE_RANGE_Err1', 0, async function (done) {
-      console.info(TAG + "Entering SET_FRAME_RATE_RANGE_Err1 to operate");
+    it('SUB_MULTIMEDIA_CAMERA_SET_FRAME_RATE_RANGE_Err1_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FRAME_RATE_RANGE_Err1_CALLBACK_0100 to operate");
       videoOutput.setFrameRateRange(minFrameRate_Err1,maxFrameRate_Err1, async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering set frame rate range, current framerateRange is: " + JSON.stringify(data));
@@ -1203,9 +1203,9 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
           expect().assertFail();
         }
         else {
-          console.info(TAG + "Entering SET_FRAME_RATE_RANGE_Err1 PASSED : " + err.message);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FRAME_RATE_RANGE_Err1_CALLBACK_0100 PASSED : " + err.message);
           expect(true).assertTrue();
-          console.info(TAG + "Entering SET_FRAME_RATE_RANGE_Err1 ends here");
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FRAME_RATE_RANGE_Err1_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -1215,15 +1215,15 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : SET_FRAME_RATE_RANGE_Err2
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SET_FRAME_RATE_RANGE_Err2_CALLBACK_0100
       * @tc.name      : set frame rate range camera0 api
       * @tc.desc      : set frame rate range async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_FRAME_RATE_RANGE_Err2', 0, async function (done) {
-      console.info(TAG + "Entering SET_FRAME_RATE_RANGE_Err2 to operate");
+    it('SUB_MULTIMEDIA_CAMERA_SET_FRAME_RATE_RANGE_Err2_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FRAME_RATE_RANGE_Err2_CALLBACK_0100 to operate");
       videoOutput.setFrameRateRange(minFrameRate_Err2,maxFrameRate_Err2, async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering set frame rate range, current framerateRange is: " + JSON.stringify(data));
@@ -1231,9 +1231,9 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
           expect().assertFail();
         }
         else {
-          console.info(TAG + "Entering SET_FRAME_RATE_RANGE_Err2 PASSED : " + err.message);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FRAME_RATE_RANGE_Err2_CALLBACK_0100 PASSED : " + err.message);
           expect(true).assertTrue();
-          console.info(TAG + "Entering SET_FRAME_RATE_RANGE_Err2 ends here");
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FRAME_RATE_RANGE_Err2_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -1243,15 +1243,15 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : SET_FRAME_RATE_RANGE_Err3
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SET_FRAME_RATE_RANGE_Err3_CALLBACK_0100
       * @tc.name      : set frame rate range camera0 api
       * @tc.desc      : set frame rate range async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_FRAME_RATE_RANGE_Err3', 0, async function (done) {
-      console.info(TAG + "Entering SET_FRAME_RATE_RANGE_Err3 to operate");
+    it('SUB_MULTIMEDIA_CAMERA_SET_FRAME_RATE_RANGE_Err3_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FRAME_RATE_RANGE_Err3_CALLBACK_0100 to operate");
       videoOutput.setFrameRateRange(minFrameRate_Err3,maxFrameRate_Err3, async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering set frame rate range, current framerateRange is: " + JSON.stringify(data));
@@ -1259,9 +1259,9 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
           expect().assertFail();
         }
         else {
-          console.info(TAG + "Entering SET_FRAME_RATE_RANGE_Err3 PASSED : " + err.message);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FRAME_RATE_RANGE_Err3_CALLBACK_0100 PASSED : " + err.message);
           expect(true).assertTrue();
-          console.info(TAG + "Entering SET_FRAME_RATE_RANGE_Err3 ends here");
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FRAME_RATE_RANGE_Err3_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -1271,15 +1271,15 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : SET_FRAME_RATE_RANGE_Grp20
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SET_FRAME_RATE_RANGE_Grp20_CALLBACK_0100
       * @tc.name      : set frame rate range camera0 api
       * @tc.desc      : set frame rate range async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_FRAME_RATE_RANGE_Grp20', 0, async function (done) {
-      console.info(TAG + "Entering SET_FRAME_RATE_RANGE_Grp20 to operate");
+    it('SUB_MULTIMEDIA_CAMERA_SET_FRAME_RATE_RANGE_Grp20_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FRAME_RATE_RANGE_Grp20_CALLBACK_0100 to operate");
       videoOutput.setFrameRateRange(minFrameRate_Grp20,maxFrameRate_Grp20, async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering set frame rate range, current framerateRange is: " + JSON.stringify(data));
@@ -1287,9 +1287,9 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
           expect(true).assertTrue();
         }
         else {
-          console.info(TAG + "Entering SET_FRAME_RATE_RANGE_Grp20 FAILED : " + err.message);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FRAME_RATE_RANGE_Grp20_CALLBACK_0100 FAILED : " + err.message);
           expect().assertFail();
-          console.info(TAG + "Entering SET_FRAME_RATE_RANGE_Grp20 ends here");
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FRAME_RATE_RANGE_Grp20_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -1359,26 +1359,26 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     */
 
     /**
-      * @tc.number    : GET_VIDEOSTABILIZATION_MODE_OFF
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_VIDEOSTABILIZATION_MODE_OFF_CALLBACK_0100
       * @tc.name      : getVideoStabilizationModeOff 
       * @tc.desc      : getVideoStabilizationModeOff async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_VIDEOSTABILIZATION_MODE_OFF', 0, async function (done) {
-      console.info(TAG + "Entering GET_VIDEOSTABILIZATION_MODE_OFF to operate");
+    it('SUB_MULTIMEDIA_CAMERA_GET_VIDEOSTABILIZATION_MODE_OFF_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_VIDEOSTABILIZATION_MODE_OFF_CALLBACK_0100 to operate");
       captureSession.getActiveVideoStabilizationMode(async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering get Video Stabilization Mode Off success");
             console.info(TAG + "Current VideoStabilizationMode is: " + data);
              expect(data).assertEqual(0);
-            console.info(TAG + "GET_VIDEOSTABILIZATION_MODE_OFF PASSED");
+            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_VIDEOSTABILIZATION_MODE_OFF_CALLBACK_0100 PASSED");
           }
         else {
           expect().assertFail();
-          console.info(TAG + "GET_VIDEOSTABILIZATION_MODE_OFF FAILED :" + err.message);
-          console.info(TAG + "GET_VIDEOSTABILIZATION_MODE_OFF ends here");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_VIDEOSTABILIZATION_MODE_OFF_CALLBACK_0100 FAILED :" + err.message);
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_VIDEOSTABILIZATION_MODE_OFF_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -1450,26 +1450,26 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     */
  
     /**
-      * @tc.number    : GET_VIDEOSTABILIZATION_MODE_LOW
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_VIDEOSTABILIZATION_MODE_LOW_CALLBACK_0100
       * @tc.name      : getVideoStabilizationModeLow 
       * @tc.desc      : getVideoStabilizationModeLOw async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_VIDEOSTABILIZATION_MODE_LOW', 0, async function (done) {
-      console.info(TAG + "Entering GET_VIDEOSTABILIZATION_MODE_LOW to operate");
+    it('SUB_MULTIMEDIA_CAMERA_GET_VIDEOSTABILIZATION_MODE_LOW_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_VIDEOSTABILIZATION_MODE_LOW_CALLBACK_0100 to operate");
       captureSession.getActiveVideoStabilizationMode(async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering get Video Stabilization Mode low success");
             console.info(TAG + "Current VideoStabilizationMode is: " + data);
              expect(data).assertEqual(1)
-            console.info(TAG + "GET_VIDEOSTABILIZATION_MODE_LOW PASSED");
+            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_VIDEOSTABILIZATION_MODE_LOW_CALLBACK_0100 PASSED");
           }
         else {
           expect().assertFail();
-          console.info(TAG + "GET_VIDEOSTABILIZATION_MODE_LOW FAILED :" + err.message);
-          console.info(TAG + "GET_VIDEOSTABILIZATION_MODE_LOW ends here");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_VIDEOSTABILIZATION_MODE_LOW_CALLBACK_0100 FAILED :" + err.message);
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_VIDEOSTABILIZATION_MODE_LOW_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -1541,26 +1541,26 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     */
  
     /**
-      * @tc.number    : GET_VIDEOSTABILIZATION_MODE_MIDDLE
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_VIDEOSTABILIZATION_MODE_MIDDLE_CALLBACK_0100
       * @tc.name      : getVideoStabilizationModeMedium 
       * @tc.desc      : getVideoStabilizationModeMedium async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_VIDEOSTABILIZATION_MODE_MIDDLE', 0, async function (done) {
-      console.info(TAG + "Entering GET_VIDEOSTABILIZATION_MODE_MIDDLE to operate");
+    it('SUB_MULTIMEDIA_CAMERA_GET_VIDEOSTABILIZATION_MODE_MIDDLE_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_VIDEOSTABILIZATION_MODE_MIDDLE_CALLBACK_0100 to operate");
       captureSession.getActiveVideoStabilizationMode(async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering get Video Stabilization Mode medium success");
             console.info(TAG + "Current VideoStabilizationMode is: " + data);
              expect(true).assertTrue();
-            console.info(TAG + "GET_VIDEOSTABILIZATION_MODE_MIDDLE PASSED");
+            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_VIDEOSTABILIZATION_MODE_MIDDLE_CALLBACK_0100 PASSED");
           }
         else {
           expect().assertFail();
-          console.info(TAG + "GET_VIDEOSTABILIZATION_MODE_MIDDLE FAILED :" + err.message);
-          console.info(TAG + "GET_VIDEOSTABILIZATION_MODE_MIDDLE ends here");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_VIDEOSTABILIZATION_MODE_MIDDLE_CALLBACK_0100 FAILED :" + err.message);
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_VIDEOSTABILIZATION_MODE_MIDDLE_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -1630,26 +1630,26 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     */
  
     /**
-      * @tc.number    : GET_VIDEOSTABILIZATION_MODE_HIGH
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_VIDEOSTABILIZATION_MODE_HIGH_CALLBACK_0100
       * @tc.name      : getVideoStabilizationModeHigh 
       * @tc.desc      : getVideoStabilizationModeHigh async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_VIDEOSTABILIZATION_MODE_HIGH', 0, async function (done) {
-      console.info(TAG + "Entering GET_VIDEOSTABILIZATION_MODE_HIGH to operate");
+    it('SUB_MULTIMEDIA_CAMERA_GET_VIDEOSTABILIZATION_MODE_HIGH_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_VIDEOSTABILIZATION_MODE_HIGH_CALLBACK_0100 to operate");
       captureSession.getActiveVideoStabilizationMode(async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering get Video Stabilization Mode High success");
             console.info(TAG + "Current VideoStabilizationMode is: " + data);
              expect(true).assertTrue();
-            console.info(TAG + "GET_VIDEOSTABILIZATION_MODE_HIGH PASSED");
+            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_VIDEOSTABILIZATION_MODE_HIGH_CALLBACK_0100 PASSED");
           }
         else {
           expect().assertFail();
-          console.info(TAG + "GET_VIDEOSTABILIZATION_MODE_HIGH FAILED :" + err.message);
-          console.info(TAG + "GET_VIDEOSTABILIZATION_MODE_HIGH ends here");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_VIDEOSTABILIZATION_MODE_HIGH_CALLBACK_0100 FAILED :" + err.message);
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_VIDEOSTABILIZATION_MODE_HIGH_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -1721,26 +1721,26 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     */
  
     /**
-      * @tc.number    : GET_VIDEOSTABILIZATION_MODE_AUTO
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_VIDEOSTABILIZATION_MODE_AUTO_CALLBACK_0100
       * @tc.name      : getVideoStabilizationModeAuto 
       * @tc.desc      : getVideoStabilizationModeAuto async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_VIDEOSTABILIZATION_MODE_AUTO', 0, async function (done) {
-      console.info(TAG + "Entering GET_VIDEOSTABILIZATION_MODE_AUTO to operate");
+    it('SUB_MULTIMEDIA_CAMERA_GET_VIDEOSTABILIZATION_MODE_AUTO_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_VIDEOSTABILIZATION_MODE_AUTO_CALLBACK_0100 to operate");
       captureSession.getActiveVideoStabilizationMode(async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering get Video Stabilization Mode Auto success");
             console.info(TAG + "Current VideoStabilizationMode is: " + data);
              expect(true).assertTrue();
-            console.info(TAG + "GET_VIDEOSTABILIZATION_MODE_AUTO PASSED");
+            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_VIDEOSTABILIZATION_MODE_AUTO_CALLBACK_0100 PASSED");
           }
         else {
           expect().assertFail();
-          console.info(TAG + "GET_VIDEOSTABILIZATION_MODE_AUTO FAILED :" + err.message);
-          console.info(TAG + "GET_VIDEOSTABILIZATION_MODE_AUTO ends here");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_VIDEOSTABILIZATION_MODE_AUTO_CALLBACK_0100 FAILED :" + err.message);
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_VIDEOSTABILIZATION_MODE_AUTO_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -1750,30 +1750,30 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : COMMIT_CONFIG
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_COMMIT_CONFIG_CALLBACK_0100
       * @tc.name      : CommitConfig async api
       * @tc.desc      : CommitConfig async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('COMMIT_CONFIG', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_COMMIT_CONFIG_CALLBACK_0100', 0, async function (done) {
       if (captureSession == null || captureSession == undefined) {
         console.info(TAG + 'Entering CommitConfig captureSession == null || undefined')
       } else {
-        console.info(TAG + 'Entering COMMIT_CONFIG to operate')
+        console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_COMMIT_CONFIG_CALLBACK_0100 to operate')
         await sleep(1)
         captureSession.commitConfig(async (err, data) => {
           if (!err) {
             console.info(TAG + 'Entering CommitConfig success')
             console.info(TAG + 'Entering CommitConfig data is not null || undefined')
             expect(true).assertTrue()
-            console.info(TAG + 'Entering COMMIT_CONFIG PASSED')
+            console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_COMMIT_CONFIG_CALLBACK_0100 PASSED')
           } else {
-            console.info(TAG + 'Entering COMMIT_CONFIG FAILED: ' + err.message)
+            console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_COMMIT_CONFIG_CALLBACK_0100 FAILED: ' + err.message)
             expect().assertFail();
           }
-          console.info(TAG + 'Entering COMMIT_CONFIG ends here')
+          console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_COMMIT_CONFIG_CALLBACK_0100 ends here')
           await sleep(1)
           done()
         })
@@ -1783,18 +1783,18 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : FOCUSSTATECHANGE_CALLBACK_ON_CAMERAINPUT
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_FOCUSSTATECHANGE_CALLBACK_ON_CAMERAINPUT_CALLBACK_0100
       * @tc.name      : FocusStateChange callback api
       * @tc.desc      : FocusStateChange callback api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('FOCUSSTATECHANGE_CALLBACK_ON_CAMERAINPUT', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_FOCUSSTATECHANGE_CALLBACK_ON_CAMERAINPUT_CALLBACK_0100', 0, async function (done) {
       if (camera0Input == null || camera0Input == undefined) {
         console.info(TAG + "Entering FocusStateChange callback previewOutput == null || undefined");
       } else {
-        console.info(TAG + "Entering FOCUSSTATECHANGE_CALLBACK_ON_CAMERAINPUT to operate");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_FOCUSSTATECHANGE_CALLBACK_ON_CAMERAINPUT_CALLBACK_0100 to operate");
         camera0Input.on('focusStateChange', async (err, data) => {
           if (!err) {
             console.info(TAG + "FocusState callback is success");
@@ -1804,7 +1804,7 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
             }
           } else {
             expect().assertFail();
-            console.info(TAG + "FOCUSSTATECHANGE_CALLBACK_ON_CAMERAINPUT FAILED: " + err.message);
+            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_FOCUSSTATECHANGE_CALLBACK_ON_CAMERAINPUT_CALLBACK_0100 FAILED: " + err.message);
           }
           await sleep(1);
           done();
@@ -1815,18 +1815,18 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : EXPOSURESTATECHANGE_CALLBACK_ON_CAMERAINPUT
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_EXPOSURESTATECHANGE_ON_CAMERAINPUT_CALLBACK_0100
       * @tc.name      : ExposureStateChange callback api
       * @tc.desc      : ExposureStateChange callback api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('EXPOSURESTATECHANGE_CALLBACK_ON_CAMERAINPUT', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_EXPOSURESTATECHANGE_ON_CAMERAINPUT_CALLBACK_0100', 0, async function (done) {
       if (camera0Input == null || camera0Input == undefined) {
         console.info(TAG + "Entering ExposureStateChange callback previewOutput == null || undefined");
       } else {
-        console.info(TAG + "Entering EXPOSURESTATECHANGE_CALLBACK_ON_CAMERAINPUT to operate");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_EXPOSURESTATECHANGE_ON_CAMERAINPUT_CALLBACK_0100 to operate");
         camera0Input.on('exposureStateChange', async (err, data) => {
           if (!err) {
             console.info(TAG + "ExposureStateChange callback is success");
@@ -1836,7 +1836,7 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
             }
           } else {
             expect().assertFail();
-            console.info(TAG + "EXPOSURESTATECHANGE_CALLBACK_ON_CAMERAINPUT FAILED: " + err.message);
+            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_EXPOSURESTATECHANGE_ON_CAMERAINPUT_CALLBACK_0100 FAILED: " + err.message);
           }
           await sleep(1);
           done();
@@ -1848,27 +1848,27 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
 
     //callback API
     /**
-      * @tc.number    : PREVIEW_OUTPUT_CALLBACK_ON_FRAME_START
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_PREVIEW_OUTPUT_ON_FRAME_START_CALLBACK_0100
       * @tc.name      : Preview output callback on frame start api
       * @tc.desc      : Preview output callback on frame start api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('PREVIEW_OUTPUT_CALLBACK_ON_FRAME_START', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_PREVIEW_OUTPUT_ON_FRAME_START_CALLBACK_0100', 0, async function (done) {
       if (previewOutput == null || previewOutput == undefined) {
         console.info(TAG + "Entering Preview output callback on frame start previewOutput == null || undefined");
       } else {
-        console.info(TAG + "Entering PREVIEW_OUTPUT_CALLBACK_ON_FRAME_START to operate");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PREVIEW_OUTPUT_ON_FRAME_START_CALLBACK_0100 to operate");
         previewOutput.on('frameStart', async (err, data) => {
           if (!err) {
-            console.info(TAG + "PREVIEW_OUTPUT_CALLBACK_ON_FRAME_START is success");
+            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PREVIEW_OUTPUT_ON_FRAME_START_CALLBACK_0100 is success");
             if (data != null || data != undefined) {
               expect(true).assertTrue();
             }
           } else {
             expect().assertFail();
-            console.info(TAG + "PREVIEW_OUTPUT_CALLBACK_ON_FRAME_START  FAILED : + err.message");
+            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PREVIEW_OUTPUT_ON_FRAME_START_CALLBACK_0100  FAILED : + err.message");
           }
           await sleep(1);
           done();
@@ -1879,27 +1879,27 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : PREVIEW_OUTPUT_CALLBACK_ON_FRAME_END
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_PREVIEW_OUTPUT_ON_FRAME_END_CALLBACK_0100
       * @tc.name      : Preview capture callback on frame end api
       * @tc.desc      : Preview capture callback on frame end api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('PREVIEW_OUTPUT_CALLBACK_ON_FRAME_END', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_PREVIEW_OUTPUT_ON_FRAME_END_CALLBACK_0100', 0, async function (done) {
       if (previewOutput == null || previewOutput == undefined) {
         console.info(TAG + "Entering Preview capture callback on frame end previewOutput == null || undefined");
       } else {
-        console.info(TAG + "Entering PREVIEW_OUTPUT_CALLBACK_ON_FRAME_END to operate");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PREVIEW_OUTPUT_ON_FRAME_END_CALLBACK_0100 to operate");
         previewOutput.on('frameEnd', async (err, data) => {
           if (!err) {
-            console.info(TAG + "PREVIEW_OUTPUT_CALLBACK_ON_FRAME_END is success");
+            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PREVIEW_OUTPUT_ON_FRAME_END_CALLBACK_0100 is success");
             if (data != null || data != undefined) {
               expect(true).assertTrue();
             }
           } else {
             expect().assertFail();
-            console.info(TAG + "PREVIEW_OUTPUT_CALLBACK_ON_FRAME_END  FAILED : + err.message");
+            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PREVIEW_OUTPUT_ON_FRAME_END_CALLBACK_0100  FAILED : + err.message");
           }
           await sleep(1);
           done();
@@ -1911,28 +1911,28 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
 
     //Capture callback
     /**
-      * @tc.number    : PHOTO_CAP_CALLBACK_ON_CAPTURE_START
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_CAP_ON_CAPTURE_START_CALLBACK_0100
       * @tc.name      : Photo capture callback on capture start api
       * @tc.desc      : Photo capture callback on capture start api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('PHOTO_CAP_CALLBACK_ON_CAPTURE_START', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_CAP_ON_CAPTURE_START_CALLBACK_0100', 0, async function (done) {
       if (photoOutputAsync == null || photoOutputAsync == undefined) {
         console.info(TAG + "Entering Photo Capture Callback on CaptureStart photoOutput == null || undefined");
       } else {
-        console.info(TAG + "Entering PHOTO_CAP_CALLBACK_ON_CAPTURE_START to operate");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_CAP_ON_CAPTURE_START_CALLBACK_0100 to operate");
         photoOutputAsync.on('captureStart', async (err, data) => {
           if (!err) {
             console.info(TAG + "Photo Capture Callback on CaptureStart  is success");
             if (data != null || data != undefined) {
-              console.info(TAG + "PHOTO_CAP_CALLBACK_ON_CAPTURE_START with captureId: " + data);
+              console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PHOTO_CAP_ON_CAPTURE_START_CALLBACK_0100 with captureId: " + data);
               expect(true).assertTrue();
             }
           } else {
             expect().assertFail();
-            console.info(TAG + "PHOTO_CAP_CALLBACK_ON_CAPTURE_START FAILED: " + err.message);
+            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PHOTO_CAP_ON_CAPTURE_START_CALLBACK_0100 FAILED: " + err.message);
           }
           await sleep(1);
           done();
@@ -1943,18 +1943,18 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : PHOTO_CAP_CALLBACK_ON_CAPTURE_END
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_CAP_ON_CAPTURE_END_CALLBACK_0100
       * @tc.name      : Photo capture callback on capture end api
       * @tc.desc      : Photo capture callback on capture end api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('PHOTO_CAP_CALLBACK_ON_CAPTURE_END', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_CAP_ON_CAPTURE_END_CALLBACK_0100', 0, async function (done) {
       if (photoOutputAsync == null || photoOutputAsync == undefined) {
-        console.info(TAG + "Entering PHOTO_CAP_CALLBACK_ON_CAPTURE_END photoOutput == null || undefined");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_CAP_ON_CAPTURE_END_CALLBACK_0100 photoOutput == null || undefined");
       } else {
-        console.info(TAG + "Entering PHOTO_CAP_CALLBACK_ON_CAPTURE_END to operate");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_CAP_ON_CAPTURE_END_CALLBACK_0100 to operate");
         photoOutputAsync.on('captureEnd', async (err, data) => {
           if (!err) {
             console.info(TAG + "captureEnd callback is success");
@@ -1965,7 +1965,7 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
             }
           } else {
             expect().assertFail();
-            console.info(TAG + 'PHOTO_CAP_CALLBACK_ON_CAPTURE_END FAILED' + err.message);
+            console.info(TAG + 'SUB_MULTIMEDIA_CAMERA_PHOTO_CAP_ON_CAPTURE_END_CALLBACK_0100 FAILED' + err.message);
           }
           await sleep(1);
           done();
@@ -1976,18 +1976,18 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : PHOTO_CAP_CALLBACK_ON_FRAME_SHUTTER
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_CAP_ON_FRAME_SHUTTER_CALLBACK_0100
       * @tc.name      : Photo capture callback on frame shutter api
       * @tc.desc      : Photo capture callback on frame shutter api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('PHOTO_CAP_CALLBACK_ON_FRAME_SHUTTER', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_CAP_ON_FRAME_SHUTTER_CALLBACK_0100', 0, async function (done) {
       if (photoOutputAsync == null || photoOutputAsync == undefined) {
-        console.info(TAG + "Entering PHOTO_CAP_CALLBACK_ON_FRAME_SHUTTER photoOutput == null || undefined");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_CAP_ON_FRAME_SHUTTER_CALLBACK_0100 photoOutput == null || undefined");
       } else {
-        console.info(TAG + "Entering PHOTO_CAP_CALLBACK_ON_FRAME_SHUTTER to operate");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_CAP_ON_FRAME_SHUTTER_CALLBACK_0100 to operate");
         photoOutputAsync.on('frameShutter', async (err, data) => {
           if (!err) {
             console.info(TAG + "frameShutter callback is success");
@@ -1998,7 +1998,7 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
             }
           } else {
             expect().assertFail();
-            console.info(TAG + "PHOTO_CAP_CALLBACK_ON_FRAME_SHUTTER FAILED: " + err.message);
+            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PHOTO_CAP_ON_FRAME_SHUTTER_CALLBACK_0100 FAILED: " + err.message);
           }
           await sleep(1);
           done();
@@ -2009,27 +2009,27 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : VIDEO_OUTPUT_CALLBACK_ON_FRAME_START
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_ON_FRAME_START_CALLBACK_0100
       * @tc.name      : VideoOutput callback onframestart async api
       * @tc.desc      : VideoOutput callback onframestart async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('VIDEO_OUTPUT_CALLBACK_ON_FRAME_START', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_ON_FRAME_START_CALLBACK_0100', 0, async function (done) {
       if (videoOutput == null || videoOutput == undefined) {
         console.info(TAG + "Entering VideoOutput callback onframestart videoOutput == null || undefined");
       } else {
-        console.info(TAG + "Entering VIDEO_OUTPUT_CALLBACK_ON_FRAME_START to operate");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_ON_FRAME_START_CALLBACK_0100 to operate");
         videoOutput.on('frameStart', async (err, data) => {
           if (!err) {
-            console.info(TAG + "VIDEO_OUTPUT_CALLBACK_ON_FRAME_START is success");
+            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_ON_FRAME_START_CALLBACK_0100 is success");
             if (data != null || data != undefined) {
               expect(true).assertTrue();
             }
           } else {
             expect().assertFail();
-            console.info(TAG + "VIDEO_OUTPUT_CALLBACK_ON_FRAME_START is FAILED : " + err.message);
+            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_ON_FRAME_START_CALLBACK_0100 is FAILED : " + err.message);
           }
           await sleep(1);
           done();
@@ -2040,28 +2040,28 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : VIDEO_OUTPUT_CALLBACK_ON_FRAME_END
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_ON_FRAME_END_CALLBACK_0100
       * @tc.name      : VideoOutput callback onframeend async api
       * @tc.desc      : VideoOutput callback onframeend async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('VIDEO_OUTPUT_CALLBACK_ON_FRAME_END', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_ON_FRAME_END_CALLBACK_0100', 0, async function (done) {
       if (videoOutput == null || videoOutput == undefined) {
         console.info(TAG + 'Entering VideoOutput callback onframeend videoOutput == null || undefined')
       } else {
-        console.info(TAG + 'Entering VIDEO_OUTPUT_CALLBACK_ON_FRAME_END to operate')
+        console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_ON_FRAME_END_CALLBACK_0100 to operate')
         await sleep(1)
         videoOutput.on('frameEnd', async (err, data) => {
           if (!err) {
-            console.info(TAG + 'VIDEO_OUTPUT_CALLBACK_ON_FRAME_END is success');
+            console.info(TAG + 'SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_ON_FRAME_END_CALLBACK_0100 is success');
             if (data != null || data != undefined) {
               expect(true).assertTrue()
             }
           } else {
             expect().assertFail();
-            console.info(TAG + 'VIDEO_OUTPUT_CALLBACK_ON_FRAME_END FAILED' + err.message);
+            console.info(TAG + 'SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_ON_FRAME_END_CALLBACK_0100 FAILED' + err.message);
           }
           await sleep(1);
           done();
@@ -2072,29 +2072,29 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : CAPTURE_SESSION_START
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_START_CALLBACK_0100
       * @tc.name      : CaptureSession start async api
       * @tc.desc      : CaptureSession start async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('CAPTURE_SESSION_START', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_START_CALLBACK_0100', 0, async function (done) {
       if (captureSession == null || captureSession == undefined) {
         console.info(TAG + "Entering CaptureSession start captureSession == null || undefined")
       } else {
-        console.info(TAG + "Entering CAPTURE_SESSION_START to operate")
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_START_CALLBACK_0100 to operate")
         await sleep(1)
         captureSession.start(async (err, data) => {
           if (!err) {
             console.info(TAG + "Entering CaptureSession start success")
             expect(true).assertTrue()
-            console.info(TAG + "Entering CAPTURE_SESSION_START PASSED")
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_START_CALLBACK_0100 PASSED")
           } else {
-            console.info(TAG + 'Entering CAPTURE_SESSION_START FAILED: ' + err.message)
+            console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_START_CALLBACK_0100 FAILED: ' + err.message)
             expect().assertFail();
           }
-          console.info(TAG + 'Entering CAPTURE_SESSION_START ends here')
+          console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_START_CALLBACK_0100 ends here')
           await sleep(1)
           done()
         })
@@ -2104,30 +2104,30 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS_CALLBACK_0100
       * @tc.name      : Photo output capture without photosettings api
       * @tc.desc      : Photo output capture without photosettings api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS_CALLBACK_0100', 0, async function (done) {
       if (photoOutputAsync == null || photoOutputAsync == undefined) {
-        console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS photoOutput == null || undefined");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS_CALLBACK_0100 photoOutput == null || undefined");
       } else {
-        console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS to operate");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS_CALLBACK_0100 to operate");
         photoOutputAsync.capture(async (err, data) => {
           if (!err) {
             console.info(TAG + "Entering photoOutput capture without photosettings success");
             if (data != null || data != undefined) {
               console.info(TAG + "Entering photoOutput capture without photosettings data is not null || undefined");
-              console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS PASSED");
+              console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS_CALLBACK_0100 PASSED");
               expect(true).assertTrue();
             }
           } else {
             expect().assertFail();
-            console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS FAILED : " + err.message);
-            console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS ends here");
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS_CALLBACK_0100 FAILED : " + err.message);
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS_CALLBACK_0100 ends here");
           }
           await sleep(1);
           done();
@@ -2139,56 +2139,56 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
 
     //FLASH Function API scripts
     /**
-      * @tc.number    : HAS_FLASH
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_HAS_FLASH_CALLBACK_0100
       * @tc.name      : check if has flash-camera0Input api
       * @tc.desc      : check if has flash-camera0Input api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('HAS_FLASH', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_HAS_FLASH_CALLBACK_0100', 0, async function (done) {
       console.info(TAG + "hasFlash called.")
       camera0Input.hasFlash(async (err, data) => {
         if (!err) {
-          console.info(TAG + "Entering HAS_FLASH success");
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_HAS_FLASH_CALLBACK_0100 success");
           if (data != null || data != undefined) {
-            console.info(TAG + "Entering HAS_FLASH data is not null || undefined");
-            console.info(TAG + "Entering HAS_FLASH PASSED with HAS_FLASH is: " + data);
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_HAS_FLASH_CALLBACK_0100 data is not null || undefined");
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_HAS_FLASH_CALLBACK_0100 PASSED with SUB_MULTIMEDIA_CAMERA_HAS_FLASH_CALLBACK_0100 is: " + data);
             expect(data).assertEqual(true);
           }
         } else {
-          console.info(TAG + "Entering HAS_FLASH FAILED : " + err.message);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_HAS_FLASH_CALLBACK_0100 FAILED : " + err.message);
           expect().assertFail();
         }
-        console.info(TAG + "Entering HAS_FLASH ends here");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_HAS_FLASH_CALLBACK_0100 ends here");
       })
       await sleep(1);
       done();
     })
 
     /**
-      * @tc.number    : IS_FLASH_MODE_OPEN_SUPPORTED
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_IS_FLASH_MODE_OPEN_SUPPORTED_CALLBACK_0100
       * @tc.name      : check if flash mode open is supported-camera0Input api
       * @tc.desc      : check if flash mode open is supported-camera0Input api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('IS_FLASH_MODE_OPEN_SUPPORTED', 0, async function (done) {
-      console.info(TAG + "Entering IS_FLASH_MODE_OPEN_SUPPORTED to operate");
+    it('SUB_MULTIMEDIA_CAMERA_IS_FLASH_MODE_OPEN_SUPPORTED_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_IS_FLASH_MODE_OPEN_SUPPORTED_CALLBACK_0100 to operate");
       camera0Input.isFlashModeSupported(cameraObj.FlashMode.FLASH_MODE_OPEN, async (err, data) => {
         if (!err) {
-          console.info(TAG + "Entering IS_FLASH_MODE_OPEN_SUPPORTED SUCCESS ");
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_IS_FLASH_MODE_OPEN_SUPPORTED_CALLBACK_0100 SUCCESS ");
           if (data != null || data != undefined) {
-            console.info(TAG + "Entering IS_FLASH_MODE_OPEN_SUPPORTED data is not null || undefined");
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_IS_FLASH_MODE_OPEN_SUPPORTED_CALLBACK_0100 data is not null || undefined");
             console.info(TAG + "FLASH_MODE_OPEN supported is: " + data);
             expect(data).assertEqual(true);
-            console.info(TAG + "Entering IS_FLASH_MODE_OPEN_SUPPORTED PASSED");
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_IS_FLASH_MODE_OPEN_SUPPORTED_CALLBACK_0100 PASSED");
           }
         } else {
-          console.info(TAG + "Entering IS_FLASH_MODE_OPEN_SUPPORTED FAILED : " + err.message);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_IS_FLASH_MODE_OPEN_SUPPORTED_CALLBACK_0100 FAILED : " + err.message);
           expect().assertFail();
-          console.info(TAG + "Entering IS_FLASH_MODE_OPEN_SUPPORTED ends here");
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_IS_FLASH_MODE_OPEN_SUPPORTED_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -2198,25 +2198,25 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : SET_FLASH_MODE_OPEN
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SET_FLASH_MODE_OPEN_CALLBACK_0100
       * @tc.name      : set flash mode open camera0 api
       * @tc.desc      : set flash mode open camera0 api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_FLASH_MODE_OPEN', 0, async function (done) {
-      console.info(TAG + "Entering SET_FLASH_MODE_OPEN to operate");
+    it('SUB_MULTIMEDIA_CAMERA_SET_FLASH_MODE_OPEN_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FLASH_MODE_OPEN_CALLBACK_0100 to operate");
       camera0Input.setFlashMode(cameraObj.FlashMode.FLASH_MODE_OPEN, async (err, data) => {
         if (!err) {
-          console.info(TAG + "Entering SET_FLASH_MODE_OPEN SUCCESS, current flashmode is: " + cameraObj.FlashMode.FLASH_MODE_OPEN);
-          console.info(TAG + "Entering SET_FLASH_MODE_OPEN PASSED")
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FLASH_MODE_OPEN_CALLBACK_0100 SUCCESS, current flashmode is: " + cameraObj.FlashMode.FLASH_MODE_OPEN);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FLASH_MODE_OPEN_CALLBACK_0100 PASSED")
           expect(cameraObj.FlashMode.FLASH_MODE_OPEN).assertEqual(1);
         }
         else {
-          console.info(TAG + "Entering SET_FLASH_MODE_OPEN FAILED : " + err.message);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FLASH_MODE_OPEN_CALLBACK_0100 FAILED : " + err.message);
           expect().assertFail();
-          console.info(TAG + "Entering SET_FLASH_MODE_OPEN ends here");
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FLASH_MODE_OPEN_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -2226,29 +2226,29 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_FLASH_MODE_OPEN
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_FLASH_MODE_OPEN_CALLBACK_0100
       * @tc.name      : get flash mode open camera0 api
       * @tc.desc      : get flash mode open camera0 api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_FLASH_MODE_OPEN', 0, async function (done) {
-      console.info(TAG + "Entering GET_FLASH_MODE_OPEN to operate");
+    it('SUB_MULTIMEDIA_CAMERA_GET_FLASH_MODE_OPEN_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_FLASH_MODE_OPEN_CALLBACK_0100 to operate");
       camera0Input.getFlashMode(async (err, data) => {
         if (!err) {
-          console.info(TAG + "Entering GET_FLASH_MODE_OPEN success");
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_FLASH_MODE_OPEN_CALLBACK_0100 success");
           if (data == 1) {
-            console.info(TAG + "GET_FLASH_MODE_OPEN data is not null || undefined: ");
+            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_FLASH_MODE_OPEN_CALLBACK_0100 data is not null || undefined: ");
             console.info(TAG + "Current FlashMode is: " + data);
             expect(true).assertTrue();
-            console.info(TAG + "GET_FLASH_MODE_OPEN PASSED");
+            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_FLASH_MODE_OPEN_CALLBACK_0100 PASSED");
           }
         }
         else {
           expect().assertFail();
-          console.info(TAG + "GET_FLASH_MODE_OPEN FAILED : " + err.message);
-          console.info(TAG + "GET_FLASH_MODE_OPEN ends here");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_FLASH_MODE_OPEN_CALLBACK_0100 FAILED : " + err.message);
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_FLASH_MODE_OPEN_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -2258,28 +2258,28 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : IS_FLASH_MODE_ALWAYS_OPEN_SUPPORTED
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_IS_FLASH_MODE_ALWAYS_OPEN_SUPPORTED_CALLBACK_0100
       * @tc.name      : check if flash mode always open is supported-camera0Input api
       * @tc.desc      : check if flash mode always open is supported-camera0Input api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('IS_FLASH_MODE_ALWAYS_OPEN_SUPPORTED', 0, async function (done) {
-      console.info(TAG + "Entering IS_FLASH_MODE_ALWAYS_OPEN_SUPPORTED to operate");
+    it('SUB_MULTIMEDIA_CAMERA_IS_FLASH_MODE_ALWAYS_OPEN_SUPPORTED_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_IS_FLASH_MODE_ALWAYS_OPEN_SUPPORTED_CALLBACK_0100 to operate");
       camera0Input.isFlashModeSupported(cameraObj.FlashMode.FLASH_MODE_ALWAYS_OPEN, async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering FLASH_MODE_ALWAYS_OPEN SUCCESS ");
           if (data != null || data != undefined) {
-            console.info(TAG + "Entering IS_FLASH_MODE_ALWAYS_OPEN_SUPPORTED data is not null || undefined");
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_IS_FLASH_MODE_ALWAYS_OPEN_SUPPORTED_CALLBACK_0100 data is not null || undefined");
             console.info(TAG + "FLASH_MODE_ALWAYS_OPEN supported is: " + data);
             expect(data).assertEqual(true);
-            console.info(TAG + "Entering IS_FLASH_MODE_ALWAYS_OPEN_SUPPORTED PASSED");
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_IS_FLASH_MODE_ALWAYS_OPEN_SUPPORTED_CALLBACK_0100 PASSED");
           }
         } else {
-          console.info(TAG + "Entering IS_FLASH_MODE_ALWAYS_OPEN_SUPPORTED FAILED : " + err.message);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_IS_FLASH_MODE_ALWAYS_OPEN_SUPPORTED_CALLBACK_0100 FAILED : " + err.message);
           expect().assertFail();
-          console.info(TAG + "Entering IS_FLASH_MODE_ALWAYS_OPEN_SUPPORTED ends here");
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_IS_FLASH_MODE_ALWAYS_OPEN_SUPPORTED_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -2289,25 +2289,25 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : SET_FLASH_MODE_ALWAYS_OPEN
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SET_FLASH_MODE_ALWAYS_OPEN_CALLBACK_0100
       * @tc.name      : set flash mode always open camera0 api
       * @tc.desc      : set flash mode always open camera0 api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_FLASH_MODE_ALWAYS_OPEN', 0, async function (done) {
-      console.info(TAG + "Entering SET_FLASH_MODE_ALWAYS_OPEN to operate");
+    it('SUB_MULTIMEDIA_CAMERA_SET_FLASH_MODE_ALWAYS_OPEN_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FLASH_MODE_ALWAYS_OPEN_CALLBACK_0100 to operate");
       camera0Input.setFlashMode(cameraObj.FlashMode.FLASH_MODE_ALWAYS_OPEN, async (err, data) => {
         if (!err) {
-          console.info(TAG + "Entering SET_FLASH_MODE_ALWAYS_OPEN SUCCESS, current flashmode is: " + cameraObj.FlashMode.FLASH_MODE_ALWAYS_OPEN);
-          console.info(TAG + "Entering SET_FLASH_MODE_ALWAYS_OPEN PASSED")
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FLASH_MODE_ALWAYS_OPEN_CALLBACK_0100 SUCCESS, current flashmode is: " + cameraObj.FlashMode.FLASH_MODE_ALWAYS_OPEN);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FLASH_MODE_ALWAYS_OPEN_CALLBACK_0100 PASSED")
           expect(cameraObj.FlashMode.FLASH_MODE_ALWAYS_OPEN).assertEqual(3);
         }
         else {
-          console.info(TAG + "Entering SET_FLASH_MODE_ALWAYS_OPEN FAILED : " + err.message);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FLASH_MODE_ALWAYS_OPEN_CALLBACK_0100 FAILED : " + err.message);
           expect().assertFail();
-          console.info(TAG + "Entering SET_FLASH_MODE_ALWAYS_OPEN ends here");
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FLASH_MODE_ALWAYS_OPEN_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -2317,29 +2317,29 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_FLASH_MODE_ALWAYS_OPEN
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_FLASH_MODE_ALWAYS_OPEN_CALLBACK_0100
       * @tc.name      : get flash mode always open camera0 api
       * @tc.desc      : get flash mode always open camera0 api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_FLASH_MODE_ALWAYS_OPEN', 0, async function (done) {
-      console.info(TAG + "Entering GET_FLASH_MODE_ALWAYS_OPEN to operate");
+    it('SUB_MULTIMEDIA_CAMERA_GET_FLASH_MODE_ALWAYS_OPEN_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_FLASH_MODE_ALWAYS_OPEN_CALLBACK_0100 to operate");
       camera0Input.getFlashMode(async (err, data) => {
         if (!err) {
-          console.info(TAG + "Entering GET_FLASH_MODE_ALWAYS_OPEN success");
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_FLASH_MODE_ALWAYS_OPEN_CALLBACK_0100 success");
           if (data == 3) {
-            console.info(TAG + "GET_FLASH_MODE_ALWAYS_OPEN data is not null || undefined: ");
+            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_FLASH_MODE_ALWAYS_OPEN_CALLBACK_0100 data is not null || undefined: ");
             expect(true).assertTrue();
             console.info(TAG + "Current FlashMode is: " + data);
-            console.info(TAG + "GET_FLASH_MODE_ALWAYS_OPEN PASSED");
+            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_FLASH_MODE_ALWAYS_OPEN_CALLBACK_0100 PASSED");
           }
         }
         else {
           expect().assertFail();
-          console.info(TAG + "GET_FLASH_MODE_ALWAYS_OPEN FAILED : " + err.message);
-          console.info(TAG + "GET_FLASH_MODE_ALWAYS_OPEN ends here");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_FLASH_MODE_ALWAYS_OPEN_CALLBACK_0100 FAILED : " + err.message);
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_FLASH_MODE_ALWAYS_OPEN_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -2349,28 +2349,28 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
  
     /**
-      * @tc.number    : IS_FLASH_MODE_AUTO_SUPPORTED
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_IS_FLASH_MODE_AUTO_SUPPORTED_CALLBACK_0100
       * @tc.name      : check if flash mode auto is supported-camera0Input api
       * @tc.desc      : check if flash mode auto is supported-camera0Input api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('IS_FLASH_MODE_AUTO_SUPPORTED', 0, async function (done) {
-      console.info(TAG + "Entering IS_FLASH_MODE_AUTO_SUPPORTED to operate");
+    it('SUB_MULTIMEDIA_CAMERA_IS_FLASH_MODE_AUTO_SUPPORTED_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_IS_FLASH_MODE_AUTO_SUPPORTED_CALLBACK_0100 to operate");
       camera0Input.isFlashModeSupported(cameraObj.FlashMode.FLASH_MODE_AUTO, async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering FLASH_MODE_AUTO SUCCESS ");
           if (data != null || data != undefined) {
-            console.info(TAG + "Entering IS_FLASH_MODE_AUTO_SUPPORTED data is not null || undefined");
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_IS_FLASH_MODE_AUTO_SUPPORTED_CALLBACK_0100 data is not null || undefined");
             console.info(TAG + "FLASH_MODE_AUTO supported is: " + data);
             expect(data).assertEqual(true);
-            console.info(TAG + "Entering IS_FLASH_MODE_AUTO_SUPPORTED PASSED");
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_IS_FLASH_MODE_AUTO_SUPPORTED_CALLBACK_0100 PASSED");
           }
         } else {
-          console.info(TAG + "Entering IS_FLASH_MODE_AUTO_SUPPORTED FAILED :" + err.message);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_IS_FLASH_MODE_AUTO_SUPPORTED_CALLBACK_0100 FAILED :" + err.message);
           expect().assertFail();
-          console.info(TAG + "Entering IS_FLASH_MODE_AUTO_SUPPORTED ends here");
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_IS_FLASH_MODE_AUTO_SUPPORTED_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -2380,25 +2380,25 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : SET_FLASH_MODE_AUTO
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SET_FLASH_MODE_AUTO_CALLBACK_0100
       * @tc.name      : set flash mode auto camera0 api
       * @tc.desc      : set flash mode auto open camera0 api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_FLASH_MODE_AUTO', 0, async function (done) {
-      console.info(TAG + "Entering SET_FLASH_MODE_AUTO to operate");
+    it('SUB_MULTIMEDIA_CAMERA_SET_FLASH_MODE_AUTO_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FLASH_MODE_AUTO_CALLBACK_0100 to operate");
       camera0Input.setFlashMode(cameraObj.FlashMode.FLASH_MODE_AUTO, async (err, data) => {
         if (!err) {
-          console.info(TAG + "Entering SET_FLASH_MODE_AUTO SUCCESS, current flashmode is: " + cameraObj.FlashMode.FLASH_MODE_AUTO);
-          console.info(TAG + "Entering SET_FLASH_MODE_AUTO PASSED")
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FLASH_MODE_AUTO_CALLBACK_0100 SUCCESS, current flashmode is: " + cameraObj.FlashMode.FLASH_MODE_AUTO);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FLASH_MODE_AUTO_CALLBACK_0100 PASSED")
           expect(cameraObj.FlashMode.FLASH_MODE_AUTO).assertEqual(2);
         }
         else {
-          console.info(TAG + "Entering SET_FLASH_MODE_AUTO FAILED : " + err.message);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FLASH_MODE_AUTO_CALLBACK_0100 FAILED : " + err.message);
           expect().assertFail();
-          console.info(TAG + "Entering SET_FLASH_MODE_AUTO ends here");
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FLASH_MODE_AUTO_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -2408,29 +2408,29 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_FLASH_MODE_AUTO
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_FLASH_MODE_AUTO_CALLBACK_0100
       * @tc.name      : get flash mode auto camera0 api
       * @tc.desc      : get flash mode auto camera0 api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_FLASH_MODE_AUTO', 0, async function (done) {
-      console.info(TAG + "Entering GET_FLASH_MODE_AUTO to operate");
+    it('SUB_MULTIMEDIA_CAMERA_GET_FLASH_MODE_AUTO_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_FLASH_MODE_AUTO_CALLBACK_0100 to operate");
       camera0Input.getFlashMode(async (err, data) => {
         if (!err) {
-          console.info(TAG + "Entering GET_FLASH_MODE_AUTO success");
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_FLASH_MODE_AUTO_CALLBACK_0100 success");
           if (data == 2) {
-            console.info(TAG + "GET_FLASH_MODE_AUTO data is not null || undefined: ");
+            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_FLASH_MODE_AUTO_CALLBACK_0100 data is not null || undefined: ");
             expect(true).assertTrue();
             console.info(TAG + "Current FlashMode is: " + data);
-            console.info(TAG + "GET_FLASH_MODE_AUTO PASSED");
+            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_FLASH_MODE_AUTO_CALLBACK_0100 PASSED");
           }
         }
         else {
           expect().assertFail();
-          console.info(TAG + "GET_FLASH_MODE_AUTO FAILED :" + err.message);
-          console.info(TAG + "GET_FLASH_MODE_AUTO ends here");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_FLASH_MODE_AUTO_CALLBACK_0100 FAILED :" + err.message);
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_FLASH_MODE_AUTO_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -2439,28 +2439,28 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
       done();
     })
     /**
-      * @tc.number    : IS_FLASH_MODE_CLOSE_SUPPORTED
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_IS_FLASH_MODE_CLOSE_SUPPORTED_CALLBACK_0100
       * @tc.name      : check if flash mode close is supported-camera0Input api
       * @tc.desc      : check if flash mode close is supported-camera0Input api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('IS_FLASH_MODE_CLOSE_SUPPORTED', 0, async function (done) {
-      console.info(TAG + "Entering IS_FLASH_MODE_CLOSE_SUPPORTED to operate");
+    it('SUB_MULTIMEDIA_CAMERA_IS_FLASH_MODE_CLOSE_SUPPORTED_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_IS_FLASH_MODE_CLOSE_SUPPORTED_CALLBACK_0100 to operate");
       camera0Input.isFlashModeSupported(cameraObj.FlashMode.FLASH_MODE_CLOSE, async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering FLASH_MODE_CLOSE SUCCESS ");
           if (data != null || data != undefined) {
-            console.info(TAG + "Entering IS_FLASH_MODE_CLOSE_SUPPORTED data is not null || undefined");
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_IS_FLASH_MODE_CLOSE_SUPPORTED_CALLBACK_0100 data is not null || undefined");
             console.info(TAG + "FLASH_MODE_CLOSE supported is: " + data);
             expect(data).assertEqual(true);
-            console.info(TAG + "Entering IS_FLASH_MODE_CLOSE_SUPPORTED PASSED");
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_IS_FLASH_MODE_CLOSE_SUPPORTED_CALLBACK_0100 PASSED");
           }
         } else {
-          console.info(TAG + "Entering IS_FLASH_MODE_CLOSE_SUPPORTED FAILED :" + err.message);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_IS_FLASH_MODE_CLOSE_SUPPORTED_CALLBACK_0100 FAILED :" + err.message);
           expect().assertFail();
-          console.info(TAG + "Entering IS_FLASH_MODE_CLOSE_SUPPORTED ends here");
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_IS_FLASH_MODE_CLOSE_SUPPORTED_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -2470,25 +2470,25 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : SET_FLASH_MODE_CLOSE
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SET_FLASH_MODE_CLOSE_CALLBACK_0100
       * @tc.name      : set flash mode close camera0 api
       * @tc.desc      : set flash mode close open camera0 api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_FLASH_MODE_CLOSE', 0, async function (done) {
-      console.info(TAG + "Entering SET_FLASH_MODE_CLOSE to operate");
+    it('SUB_MULTIMEDIA_CAMERA_SET_FLASH_MODE_CLOSE_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FLASH_MODE_CLOSE_CALLBACK_0100 to operate");
       camera0Input.setFlashMode(cameraObj.FlashMode.FLASH_MODE_CLOSE, async (err, data) => {
         if (!err) {
-          console.info(TAG + "Entering SET_FLASH_MODE_CLOSE SUCCESS, current flashmode is: " + cameraObj.FlashMode.FLASH_MODE_CLOSE);
-          console.info(TAG + "Entering SET_FLASH_MODE_CLOSE PASSED")
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FLASH_MODE_CLOSE_CALLBACK_0100 SUCCESS, current flashmode is: " + cameraObj.FlashMode.FLASH_MODE_CLOSE);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FLASH_MODE_CLOSE_CALLBACK_0100 PASSED")
           expect(cameraObj.FlashMode.FLASH_MODE_CLOSE).assertEqual(0);
         }
         else {
-          console.info(TAG + "Entering SET_FLASH_MODE_CLOSE FAILED : " + err.message);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FLASH_MODE_CLOSE_CALLBACK_0100 FAILED : " + err.message);
           expect().assertFail();
-          console.info(TAG + "Entering SET_FLASH_MODE_CLOSE ends here");
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FLASH_MODE_CLOSE_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -2498,29 +2498,29 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_FLASH_MODE_CLOSE
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_FLASH_MODE_CLOSE_CALLBACK_0100
       * @tc.name      : get flash mode auto camera0 api
       * @tc.desc      : get flash mode auto camera0 api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_FLASH_MODE_CLOSE', 0, async function (done) {
-      console.info(TAG + "Entering GET_FLASH_MODE_CLOSE to operate");
+    it('SUB_MULTIMEDIA_CAMERA_GET_FLASH_MODE_CLOSE_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_FLASH_MODE_CLOSE_CALLBACK_0100 to operate");
       camera0Input.getFlashMode(async (err, data) => {
         if (!err) {
-          console.info(TAG + "Entering GET_FLASH_MODE_CLOSE success");
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_FLASH_MODE_CLOSE_CALLBACK_0100 success");
           if (data == 0) {
-            console.info(TAG + "GET_FLASH_MODE_CLOSE data is not null || undefined: ");
+            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_FLASH_MODE_CLOSE_CALLBACK_0100 data is not null || undefined: ");
             expect(true).assertTrue();
             console.info(TAG + "Current FlashMode is: " + data);
-            console.info(TAG + "GET_FLASH_MODE_CLOSE PASSED");
+            console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_FLASH_MODE_CLOSE_CALLBACK_0100 PASSED");
           }
         }
         else {
           expect().assertFail();
-          console.info(TAG + "GET_FLASH_MODE_CLOSE FAILED :" + err.message);
-          console.info(TAG + "GET_FLASH_MODE_CLOSE ends here");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_FLASH_MODE_CLOSE_CALLBACK_0100 FAILED :" + err.message);
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_FLASH_MODE_CLOSE_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -2530,27 +2530,27 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_ZOOM_RATIO
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_ZOOM_RATIO_CALLBACK_0100
       * @tc.name      : get zoom ratio camera-0 cameraId api
       * @tc.desc      : get zoom ratio camera-0 cameraId api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_ZOOM_RATIO', 0, async function (done) {
-      console.info("--------------GET_ZOOM_RATIO--------------");
+    it('SUB_MULTIMEDIA_CAMERA_GET_ZOOM_RATIO_CALLBACK_0100', 0, async function (done) {
+      console.info("--------------SUB_MULTIMEDIA_CAMERA_GET_ZOOM_RATIO_CALLBACK_0100--------------");
       camera0Input.getZoomRatioRange(async (err, data) => {
         if (!err) {
           if (data != null && data != undefined) {
-            console.info(TAG + "Entering GET_ZOOM_RATIO data is not null || undefined");
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_ZOOM_RATIO_CALLBACK_0100 data is not null || undefined");
             expect(true).assertTrue();
-            console.info(TAG + "Entering GET_ZOOM_RATIO Success " + data)
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_ZOOM_RATIO_CALLBACK_0100 Success " + data)
           }
         } else {
           expect().assertFail();
-          console.info(TAG + "Entering GET_ZOOM_RATIO FAILED: " + err.message);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_ZOOM_RATIO_CALLBACK_0100 FAILED: " + err.message);
         }
-        console.info(TAG + "Entering GET_ZOOM_RATIO ends here");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_ZOOM_RATIO_CALLBACK_0100 ends here");
         await sleep(1);
         done();
       })
@@ -2559,14 +2559,14 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : SET_GET_ZOOM_1_ASYNC
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SET_GET_ZOOM_1_ASYNC_CALLBACK_0100
       * @tc.name      : Zoom camera-0 cameraId api
       * @tc.desc      : Zoom camera-0 cameraId api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_GET_ZOOM_1_ASYNC', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_SET_GET_ZOOM_1_ASYNC_CALLBACK_0100', 0, async function (done) {
       camera0Input.setZoomRatio(1, (err, data) => {
         if (!err) {
           console.info(TAG + "setZoomRatio success: 1");
@@ -2575,7 +2575,7 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
             if (!err) {
               console.info(TAG + "getZoomRatio success : " + data1);
               expect(data1).assertEqual(1);
-              console.info(TAG + "SET_GET_ZOOM_1_ASYNC PASSED ");
+              console.info(TAG + "SUB_MULTIMEDIA_CAMERA_SET_GET_ZOOM_1_ASYNC_CALLBACK_0100 PASSED ");
             }
             else {
               console.info(TAG + "GET_ZOOM_1_ASYNC FAILED" + err.message);
@@ -2592,14 +2592,14 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : SET_GET_ZOOM_2_ASYNC
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SET_GET_ZOOM_2_ASYNC_CALLBACK_0100
       * @tc.name      : Zoom camera-0 cameraId api
       * @tc.desc      : Zoom camera-0 cameraId api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_GET_ZOOM_2_ASYNC', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_SET_GET_ZOOM_2_ASYNC_CALLBACK_0100', 0, async function (done) {
       camera0Input.setZoomRatio(2, (err, data) => {
         if (!err) {
           console.info(TAG + "setZoomRatio success: 2");
@@ -2608,7 +2608,7 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
             if (!err) {
               console.info(TAG + "getZoomRatio success : " + data1);
               expect(data1).assertEqual(2);
-              console.info(TAG + "SET_GET_ZOOM_2_ASYNC PASSED ");
+              console.info(TAG + "SUB_MULTIMEDIA_CAMERA_SET_GET_ZOOM_2_ASYNC_CALLBACK_0100 PASSED ");
             }
             else {
               expect().assertFail();
@@ -2625,14 +2625,14 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : SET_GET_ZOOM_3_ASYNC
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SET_GET_ZOOM_3_ASYNC_CALLBACK_0100
       * @tc.name      : Zoom camera-0 cameraId api
       * @tc.desc      : Zoom camera-0 cameraId api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_GET_ZOOM_3_ASYNC', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_SET_GET_ZOOM_3_ASYNC_CALLBACK_0100', 0, async function (done) {
       camera0Input.setZoomRatio(3, (err, data) => {
         if (!err) {
           console.info(TAG + "setZoomRatio success: 3");
@@ -2641,7 +2641,7 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
             if (!err) {
               console.info(TAG + "getZoomRatio success : " + data1);
               expect(data1).assertEqual(3);
-              console.info(TAG + "SET_GET_ZOOM_3_ASYNC PASSED ");
+              console.info(TAG + "SUB_MULTIMEDIA_CAMERA_SET_GET_ZOOM_3_ASYNC_CALLBACK_0100 PASSED ");
             }
             else {
               console.info(TAG + "GET_ZOOM_3_ASYNC FAILED" + err.message);
@@ -2658,14 +2658,14 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : SET_GET_ZOOM_4_ASYNC
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SET_GET_ZOOM_4_ASYNC_CALLBACK_0100
       * @tc.name      : Zoom camera-0 cameraId api
       * @tc.desc      : Zoom camera-0 cameraId api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_GET_ZOOM_4_ASYNC', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_SET_GET_ZOOM_4_ASYNC_CALLBACK_0100', 0, async function (done) {
       camera0Input.setZoomRatio(4, (err, data) => {
         if (!err) {
           console.info(TAG + "setZoomRatio success: 4");
@@ -2674,7 +2674,7 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
             if (!err) {
               console.info(TAG + "getZoomRatio success : " + data1);
               expect(data1).assertEqual(4);
-              console.info(TAG + "SET_GET_ZOOM_4_ASYNC PASSED ");
+              console.info(TAG + "SUB_MULTIMEDIA_CAMERA_SET_GET_ZOOM_4_ASYNC_CALLBACK_0100 PASSED ");
             }
             else {
               console.info(TAG + "GET_ZOOM_4_ASYNC FAILED" + err.message);
@@ -2691,14 +2691,14 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : SET_GET_ZOOM_5_ASYNC
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SET_GET_ZOOM_5_ASYNC_CALLBACK_0100
       * @tc.name      : Zoom camera-0 cameraId api
       * @tc.desc      : Zoom camera-0 cameraId api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_GET_ZOOM_5_ASYNC', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_SET_GET_ZOOM_5_ASYNC_CALLBACK_0100', 0, async function (done) {
       camera0Input.setZoomRatio(5, (err, data) => {
         if (!err) {
           console.info(TAG + "setZoomRatio success: 5");
@@ -2707,7 +2707,7 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
             if (!err) {
               console.info(TAG + "getZoomRatio success : " + data1);
               expect(data1).assertEqual(5);
-              console.info(TAG + "SET_GET_ZOOM_5_ASYNC PASSED ");
+              console.info(TAG + "SUB_MULTIMEDIA_CAMERA_SET_GET_ZOOM_5_ASYNC_CALLBACK_0100 PASSED ");
             }
             else {
               console.info(TAG + "GET_ZOOM_5_ASYNC FAILED" + err.message);
@@ -2724,14 +2724,14 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : SET_GET_ZOOM_6_ASYNC
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SET_GET_ZOOM_6_ASYNC_CALLBACK_0100
       * @tc.name      : Zoom camera-0 cameraId api
       * @tc.desc      : Zoom camera-0 cameraId api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_GET_ZOOM_6_ASYNC', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_SET_GET_ZOOM_6_ASYNC_CALLBACK_0100', 0, async function (done) {
       camera0Input.setZoomRatio(6, (err, data) => {
         if (!err) {
           console.info(TAG + "setZoomRatio success: 6");
@@ -2740,7 +2740,7 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
             if (!err) {
               console.info(TAG + "getZoomRatio success : " + data1);
               expect(data1).assertEqual(6);
-              console.info(TAG + "SET_GET_ZOOM_6_ASYNC PASSED ");
+              console.info(TAG + "SUB_MULTIMEDIA_CAMERA_SET_GET_ZOOM_6_ASYNC_CALLBACK_0100 PASSED ");
             }
             else {
               console.info(TAG + "GET_ZOOM_6_ASYNC FAILED" + err.message);
@@ -2757,15 +2757,15 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : IS_FOCUS_MODE_LOCKED_SUPPORTED
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_IS_FOCUS_MODE_LOCKED_SUPPORTED_CALLBACK_0100
       * @tc.name      : check if focus mode locked is supported-camera0Input api
       * @tc.desc      : check if focus mode locked is supported-camera0Input api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('IS_FOCUS_MODE_LOCKED_SUPPORTED', 0, async function (done) {
-      console.info(TAG + "Entering IS_FOCUS_MODE_LOCKED_SUPPORTED to operate");
+    it('SUB_MULTIMEDIA_CAMERA_IS_FOCUS_MODE_LOCKED_SUPPORTED_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_IS_FOCUS_MODE_LOCKED_SUPPORTED_CALLBACK_0100 to operate");
       camera0Input.isFocusModeSupported(cameraObj.FocusMode.FOCUS_MODE_LOCKED, async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering Is Focus Mode Locked Supported SUCCESS: " + data);
@@ -2773,12 +2773,12 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
             console.info(TAG + "Entering Is Focus Mode Locked Supported data is not null || undefined");
             console.info(TAG + "FOCUS_MODE_LOCKED_SUPPORTED is: " + data);
             expect(data).assertEqual(false);
-            console.info(TAG + "Entering IS_FOCUS_MODE_LOCKED_SUPPORTED PASSED: ");
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_IS_FOCUS_MODE_LOCKED_SUPPORTED_CALLBACK_0100 PASSED: ");
           }
         } else {
-          console.info(TAG + "IS_FOCUS_MODE_LOCKED_SUPPORTED FAILED :" + err.message);
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_IS_FOCUS_MODE_LOCKED_SUPPORTED_CALLBACK_0100 FAILED :" + err.message);
           expect().assertFail()
-          console.info(TAG + "IS_FOCUS_MODE_LOCKED_SUPPORTED ends here");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_IS_FOCUS_MODE_LOCKED_SUPPORTED_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -2788,24 +2788,24 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : SET_FOCUS_MODE_LOCKED
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SET_FOCUS_MODE_LOCKED_CALLBACK_0100
       * @tc.name      : set focus mode locked camera0 api
       * @tc.desc      : set focus mode locked camera0 api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_FOCUS_MODE_LOCKED', 0, async function (done) {
-      console.info(TAG + "Entering SET_FOCUS_MODE_LOCKED to operate");
+    it('SUB_MULTIMEDIA_CAMERA_SET_FOCUS_MODE_LOCKED_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FOCUS_MODE_LOCKED_CALLBACK_0100 to operate");
       camera0Input.setFocusMode(cameraObj.FocusMode.FOCUS_MODE_LOCKED, async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering SetFocus Mode Locked SUCCESS, current FocusMode is: " + cameraObj.FocusMode.FOCUS_MODE_LOCKED);
-          console.info(TAG + "Entering SET_FOCUS_MODE_LOCKED FAILED : ")
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FOCUS_MODE_LOCKED_CALLBACK_0100 FAILED : ")
           expect().assertFail();
         } else {
-          console.info(TAG + "Entering SET_FOCUS_MODE_LOCKED PASSED : " + err.message);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FOCUS_MODE_LOCKED_CALLBACK_0100 PASSED : " + err.message);
           expect(true).assertTrue();
-          console.info(TAG + "Entering SET_FOCUS_MODE_LOCKED ends here");
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FOCUS_MODE_LOCKED_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -2815,27 +2815,27 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_FOCUS_MODE_LOCKED
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_FOCUS_MODE_LOCKED_CALLBACK_0100
       * @tc.name      : get focus mode locked camera0 api
       * @tc.desc      : get focus mode locked camera0 api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_FOCUS_MODE_LOCKED', 0, async function (done) {
-      console.info(TAG + "Entering GET_FOCUS_MODE_LOCKED to operate");
+    it('SUB_MULTIMEDIA_CAMERA_GET_FOCUS_MODE_LOCKED_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_FOCUS_MODE_LOCKED_CALLBACK_0100 to operate");
       camera0Input.getFocusMode(async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering Get Focus Mode Locked SUCCESS: " + data);
           console.info(TAG + "Get Focus Mode Locked data is not null || undefined: ");
           console.info(TAG + "Current FocusMode is: " + data);
           expect(data).assertEqual(0);
-          console.info(TAG + "GET_FOCUS_MODE_LOCKED PASSED");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_FOCUS_MODE_LOCKED_CALLBACK_0100 PASSED");
         }
         else {
           expect().assertFail();
-          console.info(TAG + "GET_FOCUS_MODE_LOCKED FAILED : " + err.message);
-          console.info(TAG + "GET_FOCUS_MODE_LOCKED ends here");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_FOCUS_MODE_LOCKED_CALLBACK_0100 FAILED : " + err.message);
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_FOCUS_MODE_LOCKED_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -2845,28 +2845,28 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : IS_FOCUS_MODE_MANUAL_SUPPORTED
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_IS_FOCUS_MODE_MANUAL_SUPPORTED_CALLBACK_0100
       * @tc.name      : check if focus mode manual is supported-camera0Input api
       * @tc.desc      : check if focus mode manual is supported-camera0Input api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('IS_FOCUS_MODE_MANUAL_SUPPORTED', 0, async function (done) {
-      console.info(TAG + "Entering IS_FOCUS_MODE_MANUAL_SUPPORTED to operate");
+    it('SUB_MULTIMEDIA_CAMERA_IS_FOCUS_MODE_MANUAL_SUPPORTED_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_IS_FOCUS_MODE_MANUAL_SUPPORTED_CALLBACK_0100 to operate");
       camera0Input.isFocusModeSupported(cameraObj.FocusMode.FOCUS_MODE_MANUAL, async (err, data) => {
         if (!err) {
-          console.info(TAG + "Entering IS_FOCUS_MODE_MANUAL_SUPPORTED SUCCESS ");
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_IS_FOCUS_MODE_MANUAL_SUPPORTED_CALLBACK_0100 SUCCESS ");
           if (data != null || data != undefined) {
-            console.info(TAG + "Entering IS_FOCUS_MODE_MANUAL_SUPPORTED data is not null || undefined");
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_IS_FOCUS_MODE_MANUAL_SUPPORTED_CALLBACK_0100 data is not null || undefined");
             console.info(TAG + "FOCUS_MODE_MANUAL_SUPPORTED is: " + data);
             expect(data).assertEqual(true);
-            console.info(TAG + "Entering IS_FOCUS_MODE_MANUAL_SUPPORTED PASSED: ");
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_IS_FOCUS_MODE_MANUAL_SUPPORTED_CALLBACK_0100 PASSED: ");
           }
         } else {
-          console.info(TAG + "IS_FOCUS_MODE_MANUAL_SUPPORTED FAILED  " + err.message);
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_IS_FOCUS_MODE_MANUAL_SUPPORTED_CALLBACK_0100 FAILED  " + err.message);
           expect().assertFail();
-          console.info(TAG + "IS_FOCUS_MODE_MANUAL_SUPPORTED ends here");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_IS_FOCUS_MODE_MANUAL_SUPPORTED_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -2876,25 +2876,25 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : SET_FOCUS_MODE_MANUAL
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SET_FOCUS_MODE_MANUAL_CALLBACK_0100
       * @tc.name      : set focus mode manual camera0 api
       * @tc.desc      : set focus mode manual camera0 api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_FOCUS_MODE_MANUAL', 0, async function (done) {
-      console.info(TAG + "Entering SET_FOCUS_MODE_MANUAL to operate");
+    it('SUB_MULTIMEDIA_CAMERA_SET_FOCUS_MODE_MANUAL_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FOCUS_MODE_MANUAL_CALLBACK_0100 to operate");
       camera0Input.setFocusMode(cameraObj.FocusMode.FOCUS_MODE_MANUAL, async (err, data) => {
         if (!err) {
-          console.info(TAG + "Entering SET_FOCUS_MODE_MANUAL SUCCESS, current FocusMode is: " + cameraObj.FocusMode.FOCUS_MODE_MANUAL);
-          console.info(TAG + "Entering SET_FOCUS_MODE_MANUAL PASSED")
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FOCUS_MODE_MANUAL_CALLBACK_0100 SUCCESS, current FocusMode is: " + cameraObj.FocusMode.FOCUS_MODE_MANUAL);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FOCUS_MODE_MANUAL_CALLBACK_0100 PASSED")
           expect(cameraObj.FocusMode.FOCUS_MODE_MANUAL).assertEqual(0)
         }
         else {
-          console.info(TAG + "Entering SET_FOCUS_MODE_MANUAL FAILED : " + err.message);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FOCUS_MODE_MANUAL_CALLBACK_0100 FAILED : " + err.message);
           expect().assertFail();
-          console.info(TAG + "Entering SET_FOCUS_MODE_MANUAL ends here");
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FOCUS_MODE_MANUAL_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -2904,27 +2904,27 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_FOCUS_MODE_MANUAL
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_FOCUS_MODE_MANUALL_CALLBACK_0100
       * @tc.name      : get focus mode manual camera0 api
       * @tc.desc      : get focus mode manual camera0 api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_FOCUS_MODE_MANUAL', 0, async function (done) {
-      console.info(TAG + "Entering GET_FOCUS_MODE_MANUAL to operate");
+    it('SUB_MULTIMEDIA_CAMERA_GET_FOCUS_MODE_MANUALL_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_FOCUS_MODE_MANUALL_CALLBACK_0100 to operate");
       camera0Input.getFocusMode(async (err, data) => {
         if (!err) {
-          console.info(TAG + "Entering GET_FOCUS_MODE_MANUAL SUCCESS");
-          console.info(TAG + "GET_FOCUS_MODE_MANUAL data is not null || undefined: ");
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_FOCUS_MODE_MANUALL_CALLBACK_0100 SUCCESS");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_FOCUS_MODE_MANUALL_CALLBACK_0100 data is not null || undefined: ");
           console.info(TAG + "Current FocusMode is: " + data);
           expect(data).assertEqual(0);
-          console.info(TAG + "GET_FOCUS_MODE_MANUAL PASSED");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_FOCUS_MODE_MANUALL_CALLBACK_0100 PASSED");
         }
         else {
           expect().assertFail();
-          console.info(TAG + "GET_FOCUS_MODE_MANUAL FAILED : " + err.message);
-          console.info(TAG + "GET_FOCUS_MODE_MANUAL ends here");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_FOCUS_MODE_MANUALL_CALLBACK_0100 FAILED : " + err.message);
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_FOCUS_MODE_MANUALL_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -2934,24 +2934,24 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : SET_FOCUS_POINT_focus mode manual
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SET_FOCUS_POINT_CALLBACK_0100
       * @tc.name      : set focus Point camera0 api
       * @tc.desc      : set focus Point camera0 api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_FOCUS_POINT_focus mode manual', 0, async function (done) {
-      console.info(TAG + "Entering SET_FOCUS_POINT to operate");
+    it('SUB_MULTIMEDIA_CAMERA_SET_FOCUS_POINT_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FOCUS_POINT_CALLBACK_0100 to operate");
       camera0Input.setFocusPoint(Point, async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering SetFocus Point, current FocusMode is: " + JSON.stringify(data));
-          console.info(TAG + "Entering SET_FOCUS_POINT PASSED")
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FOCUS_POINT_CALLBACK_0100 PASSED")
           expect(true).assertTrue();
         } else {
-          console.info(TAG + "Entering SET_FOCUS_POINT FAILED : " + err.message);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FOCUS_POINT_CALLBACK_0100 FAILED : " + err.message);
           expect().assertFail();
-          console.info(TAG + "Entering SET_FOCUS_POINT ends here");
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FOCUS_POINT_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -2961,26 +2961,26 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_FOCUS_POINT_focus mode manual
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_FOCUS_POINT_CALLBACK_0100
       * @tc.name      : get focus Point camera0 api
       * @tc.desc      : get focus point camera0 api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_FOCUS_POINT_focus mode manual', 0, async function (done) {
-      console.info(TAG + "Entering GET_FOCUS_POINT to operate");
+    it('SUB_MULTIMEDIA_CAMERA_GET_FOCUS_POINT_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_FOCUS_POINT_CALLBACK_0100 to operate");
       camera0Input.getFocusPoint(async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering Get Focus Point SUCCESS: " + JSON.stringify(data));
           console.info(TAG + "Current Focus Point is: " + data);
           expect(true).assertTrue();
-          console.info(TAG + "GET_FOCUS_POINT PASSED");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_FOCUS_POINT_CALLBACK_0100 PASSED");
         }
         else {
           expect().assertFail();
-          console.info(TAG + "GET_FOCUS_POINT FAILED : " + err.message);
-          console.info(TAG + "GET_FOCUS_POINT ends here");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_FOCUS_POINT_CALLBACK_0100 FAILED : " + err.message);
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_FOCUS_POINT_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -2990,28 +2990,28 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : IS_FOCUS_MODE_CONTINUOUS_SUPPORTED
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_IS_FOCUS_MODE_CONTINUOUS_SUPPORTED_CALLBACK_0100
       * @tc.name      : check if focus mode continuous is supported-camera0Input api
       * @tc.desc      : check if focus mode continuous is supported-camera0Input api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('IS_FOCUS_MODE_CONTINUOUS_SUPPORTED', 0, async function (done) {
-      console.info(TAG + "Entering IS_FOCUS_MODE_CONTINUOUS_SUPPORTED to operate");
+    it('SUB_MULTIMEDIA_CAMERA_IS_FOCUS_MODE_CONTINUOUS_SUPPORTED_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_IS_FOCUS_MODE_CONTINUOUS_SUPPORTED_CALLBACK_0100 to operate");
       camera0Input.isFocusModeSupported(cameraObj.FocusMode.FOCUS_MODE_CONTINUOUS_AUTO, async (err, data) => {
         if (!err) {
-          console.info(TAG + "Entering IS_FOCUS_MODE_CONTINUOUS_SUPPORTED SUCCESS ");
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_IS_FOCUS_MODE_CONTINUOUS_SUPPORTED_CALLBACK_0100 SUCCESS ");
           if (data != null || data != undefined) {
-            console.info(TAG + "Entering IS_FOCUS_MODE_CONTINUOUS_SUPPORTED data is not null || undefined");
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_IS_FOCUS_MODE_CONTINUOUS_SUPPORTED_CALLBACK_0100 data is not null || undefined");
             console.info(TAG + "FOCUS_MODE_CONTINOUS_SUPPORTED is: " + data);
             expect(data).assertEqual(true);
-            console.info(TAG + "Entering IS_FOCUS_MODE_CONTINUOUS_SUPPORTED PASSED: ");
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_IS_FOCUS_MODE_CONTINUOUS_SUPPORTED_CALLBACK_0100 PASSED: ");
           }
         } else {
-          console.info(TAG + "IS_FOCUS_MODE_CONTINUOUS_SUPPORTED FAILED : " + err.message);
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_IS_FOCUS_MODE_CONTINUOUS_SUPPORTED_CALLBACK_0100 FAILED : " + err.message);
           expect().assertFail();
-          console.info(TAG + "IS_FOCUS_MODE_CONTINUOUS_SUPPORTED ends here");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_IS_FOCUS_MODE_CONTINUOUS_SUPPORTED_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -3021,25 +3021,25 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : SET_FOCUS_MODE_CONTINUOUS
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SET_FOCUS_MODE_CONTINUOUS_CALLBACK_0100
       * @tc.name      : set focus mode continuous camera0 api
       * @tc.desc      : set focus mode continuous camera0 api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_FOCUS_MODE_CONTINUOUS', 0, async function (done) {
-      console.info(TAG + "Entering SET_FOCUS_MODE_CONTINUOUS to operate");
+    it('SUB_MULTIMEDIA_CAMERA_SET_FOCUS_MODE_CONTINUOUS_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FOCUS_MODE_CONTINUOUS_CALLBACK_0100 to operate");
       camera0Input.setFocusMode(cameraObj.FocusMode.FOCUS_MODE_CONTINUOUS_AUTO, async (err, data) => {
         if (!err) {
-          console.info(TAG + "Entering SET_FOCUS_MODE_CONTINUOUS SUCCESS, current FocusMode is: " + cameraObj.FocusMode.FOCUS_MODE_CONTINUOUS_AUTO);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FOCUS_MODE_CONTINUOUS_CALLBACK_0100 SUCCESS, current FocusMode is: " + cameraObj.FocusMode.FOCUS_MODE_CONTINUOUS_AUTO);
           expect(cameraObj.FocusMode.FOCUS_MODE_CONTINUOUS_AUTO).assertEqual(1);
-          console.info(TAG + "Entering SET_FOCUS_MODE_CONTINUOUS PASSED");
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FOCUS_MODE_CONTINUOUS_CALLBACK_0100 PASSED");
         }
         else {
-          console.info(TAG + "Entering SET_FOCUS_MODE_CONTINUOUS FAILED : " + err.message);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FOCUS_MODE_CONTINUOUS_CALLBACK_0100 FAILED : " + err.message);
           expect().assertFail();
-          console.info(TAG + "Entering SET_FOCUS_MODE_CONTINUOUS ends here");
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FOCUS_MODE_CONTINUOUS_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -3049,27 +3049,27 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_FOCUS_MODE_CONTINUOUS
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_FOCUS_MODE_CONTINUOUS_CALLBACK_0100
       * @tc.name      : get focus mode continuous camera0 api
       * @tc.desc      : get focus mode continuous camera0 api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_FOCUS_MODE_CONTINUOUS', 0, async function (done) {
-      console.info(TAG + "Entering GET_FOCUS_MODE_CONTINUOUS to operate");
+    it('SUB_MULTIMEDIA_CAMERA_GET_FOCUS_MODE_CONTINUOUS_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_FOCUS_MODE_CONTINUOUS_CALLBACK_0100 to operate");
       camera0Input.getFocusMode(async (err, data) => {
         if (!err) {
-          console.info(TAG + "Entering GET_FOCUS_MODE_CONTINUOUS SUCCESS");
-          console.info(TAG + "GET_FOCUS_MODE_CONTINUOUS data is not null || undefined: ");
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_FOCUS_MODE_CONTINUOUS_CALLBACK_0100 SUCCESS");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_FOCUS_MODE_CONTINUOUS_CALLBACK_0100 data is not null || undefined: ");
           console.info(TAG + "Current FocusMode is: " + data);
           expect(data).assertEqual(1);
-          console.info(TAG + "GET_FOCUS_MODE_CONTINUOUS PASSED");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_FOCUS_MODE_CONTINUOUS_CALLBACK_0100 PASSED");
         }
         else {
           expect().assertFail();
-          console.info(TAG + "GET_FOCUS_MODE_CONTINUOUS FAILED : " + err.message);
-          console.info(TAG + "GET_FOCUS_MODE_CONTINUOUS ends here");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_FOCUS_MODE_CONTINUOUS_CALLBACK_0100 FAILED : " + err.message);
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_FOCUS_MODE_CONTINUOUS_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -3079,24 +3079,24 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : SET_FOCUS_POINT_focus mode continuous
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SET_FOCUS_POINT_CALLBACK_0200
       * @tc.name      : set focus Point locked camera0 api
       * @tc.desc      : set focus Point locked camera0 api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_FOCUS_POINT', 0, async function (done) {
-      console.info(TAG + "Entering SET_FOCUS_POINT to operate");
+    it('SUB_MULTIMEDIA_CAMERA_SET_FOCUS_POINT_CALLBACK_0200', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FOCUS_POINT_CALLBACK_0200 to operate");
       camera0Input.setFocusPoint(Point, async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering SetFocus Point, current FocusMode is: " + JSON.stringify(data));
-          console.info(TAG + "Entering SET_FOCUS_POINT PASSED")
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FOCUS_POINT_CALLBACK_0200 PASSED")
           expect(true).assertTrue();
         } else {
-          console.info(TAG + "Entering SET_FOCUS_POINT FAILED : " + err.message);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FOCUS_POINT_CALLBACK_0200 FAILED : " + err.message);
           expect().assertFail();
-          console.info(TAG + "Entering SET_FOCUS_POINT ends here");
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FOCUS_POINT_CALLBACK_0200 ends here");
         }
         await sleep(1);
         done();
@@ -3106,26 +3106,26 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_FOCUS_POINT_focus mode continuous
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_FOCUS_POINT_CALLBACK_0200
       * @tc.name      : get focus Point camera0 api
       * @tc.desc      : get focus point camera0 api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_FOCUS_POINT', 0, async function (done) {
-      console.info(TAG + "Entering GET_FOCUS_POINT to operate");
+    it('SUB_MULTIMEDIA_CAMERA_GET_FOCUS_POINT_CALLBACK_0200', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_FOCUS_POINT_CALLBACK_0200 to operate");
       camera0Input.getFocusPoint(async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering Get Focus Point SUCCESS: " + JSON.stringify(data));
           console.info(TAG + "Current Focus Point is: " + data);
           expect(true).assertTrue();
-          console.info(TAG + "GET_FOCUS_POINT PASSED");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_FOCUS_POINT_CALLBACK_0200 PASSED");
         }
         else {
           expect().assertFail();
-          console.info(TAG + "GET_FOCUS_POINT FAILED : " + err.message);
-          console.info(TAG + "GET_FOCUS_POINT ends here");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_FOCUS_POINT_CALLBACK_0200 FAILED : " + err.message);
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_FOCUS_POINT_CALLBACK_0200 ends here");
         }
         await sleep(1);
         done();
@@ -3135,28 +3135,28 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : IS_FOCUS_MODE_AUTO_SUPPORTED
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_IS_FOCUS_MODE_AUTO_SUPPORTED_CALLBACK_0100
       * @tc.name      : check if focus mode auto is supported-camera0Input api
       * @tc.desc      : check if focus mode auto is supported-camera0Input api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('IS_FOCUS_MODE_AUTO_SUPPORTED', 0, async function (done) {
-      console.info(TAG + "Entering IS_FOCUS_MODE_AUTO_SUPPORTED to operate");
+    it('SUB_MULTIMEDIA_CAMERA_IS_FOCUS_MODE_AUTO_SUPPORTED_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_IS_FOCUS_MODE_AUTO_SUPPORTED_CALLBACK_0100 to operate");
       camera0Input.isFocusModeSupported(cameraObj.FocusMode.FOCUS_MODE_AUTO, async (err, data) => {
         if (!err) {
-          console.info(TAG + "Entering IS_FOCUS_MODE_AUTO_SUPPORTED SUCCESS ");
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_IS_FOCUS_MODE_AUTO_SUPPORTED_CALLBACK_0100 SUCCESS ");
           if (data != null || data != undefined) {
-            console.info(TAG + "Entering IS_FOCUS_MODE_AUTO_SUPPORTED data is not null || undefined");
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_IS_FOCUS_MODE_AUTO_SUPPORTED_CALLBACK_0100 data is not null || undefined");
             console.info(TAG + "FOCUS_MODE_AUTO_SUPPORTED is: " + data);
             expect(data).assertEqual(true);
-            console.info(TAG + "Entering IS_FOCUS_MODE_AUTO_SUPPORTED PASSED: ");
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_IS_FOCUS_MODE_AUTO_SUPPORTED_CALLBACK_0100 PASSED: ");
           }
         } else {
-          console.info(TAG + "IS_FOCUS_MODE_AUTO_SUPPORTED FAILED : " + err.message);
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_IS_FOCUS_MODE_AUTO_SUPPORTED_CALLBACK_0100 FAILED : " + err.message);
           expect().assertFail();
-          console.info(TAG + "IS_FOCUS_MODE_AUTO_SUPPORTED ends here");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_IS_FOCUS_MODE_AUTO_SUPPORTED_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -3166,26 +3166,26 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : SET_FOCUS_MODE_AUTO
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SET_FOCUS_MODE_AUTO_CALLBACK_0100
       * @tc.name      : set focus mode auto camera0 api
       * @tc.desc      : set focus mode auto camera0 api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_FOCUS_MODE_AUTO', 0, async function (done) {
-      console.info(TAG + "Entering SET_FOCUS_MODE_AUTO to operate");
+    it('SUB_MULTIMEDIA_CAMERA_SET_FOCUS_MODE_AUTO_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FOCUS_MODE_AUTO_CALLBACK_0100 to operate");
       camera0Input.setFocusMode(cameraObj.FocusMode.FOCUS_MODE_AUTO, async (err, data) => {
         if (!err) {
-          console.info(TAG + "Entering SET_FOCUS_MODE_AUTO SUCCESS, current FocusMode is: " + cameraObj.FocusMode.FOCUS_MODE_AUTO);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FOCUS_MODE_AUTO_CALLBACK_0100 SUCCESS, current FocusMode is: " + cameraObj.FocusMode.FOCUS_MODE_AUTO);
           if (data != null || data != undefined) {
             expect(cameraObj.FocusMode.FOCUS_MODE_AUTO).assertEqual(2);
-            console.info(TAG + "Entering SET_FOCUS_MODE_AUTO PASSED")
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FOCUS_MODE_AUTO_CALLBACK_0100 PASSED")
           }
         } else {
-          console.info(TAG + "Entering SET_FOCUS_MODE_AUTO FAILED : " + err.message);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FOCUS_MODE_AUTO_CALLBACK_0100 FAILED : " + err.message);
           expect().assertFail();
-          console.info(TAG + "Entering SET_FOCUS_MODE_AUTO ends here");
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FOCUS_MODE_AUTO_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -3195,27 +3195,27 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_FOCUS_MODE_AUTO
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_FOCUS_MODE_AUTO_CALLBACK_0100
       * @tc.name      : get focus mode auto camera0 api
       * @tc.desc      : get focus mode auto camera0 api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_FOCUS_MODE_AUTO', 0, async function (done) {
-      console.info(TAG + "Entering GET_FOCUS_MODE_AUTO to operate");
+    it('SUB_MULTIMEDIA_CAMERA_GET_FOCUS_MODE_AUTO_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_FOCUS_MODE_AUTO_CALLBACK_0100 to operate");
       camera0Input.getFocusMode(async (err, data) => {
         if (!err) {
-          console.info(TAG + "Entering GET_FOCUS_MODE_AUTO SUCCESS");
-          console.info(TAG + "GET_FOCUS_MODE_AUTO data is not null || undefined: ");
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_FOCUS_MODE_AUTO_CALLBACK_0100 SUCCESS");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_FOCUS_MODE_AUTO_CALLBACK_0100 data is not null || undefined: ");
           console.info(TAG + "Current FocusMode is: " + data);
           expect(data).assertEqual(2);
-          console.info(TAG + "GET_FOCUS_MODE_AUTO PASSED");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_FOCUS_MODE_AUTO_CALLBACK_0100 PASSED");
         }
         else {
           expect().assertFail();
-          console.info(TAG + "GET_FOCUS_MODE_AUTO FAILED : " + err.message);
-          console.info(TAG + "GET_FOCUS_MODE_AUTO ends here");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_FOCUS_MODE_AUTO_CALLBACK_0100 FAILED : " + err.message);
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_FOCUS_MODE_AUTO_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -3225,24 +3225,24 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : SET_FOCUS_POINT_focus mode auto
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SET_FOCUS_POINT_CALLBACK_0300
       * @tc.name      : set focus Point camera0 api
       * @tc.desc      : set focus Point camera0 api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_FOCUS_POINT', 0, async function (done) {
-      console.info(TAG + "Entering SET_FOCUS_POINT to operate");
+    it('SUB_MULTIMEDIA_CAMERA_SET_FOCUS_POINT_CALLBACK_0300', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FOCUS_POINT_CALLBACK_0300 to operate");
       camera0Input.setFocusPoint(Point, async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering SetFocus Point, current FocusMode is: " + JSON.stringify(data));
-          console.info(TAG + "Entering SET_FOCUS_POINT PASSED")
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FOCUS_POINT_CALLBACK_0300 PASSED")
           expect(true).assertTrue();
         } else {
-          console.info(TAG + "Entering SET_FOCUS_POINT FAILED : " + err.message);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FOCUS_POINT_CALLBACK_0300 FAILED : " + err.message);
           expect().assertFail();
-          console.info(TAG + "Entering SET_FOCUS_POINT ends here");
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_FOCUS_POINT_CALLBACK_0300 ends here");
         }
         await sleep(1);
         done();
@@ -3252,26 +3252,26 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_FOCUS_POINT_focus mode auto
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_FOCUS_POINT_CALLBACK_0300
       * @tc.name      : get focus Point camera0 api
       * @tc.desc      : get focus point camera0 api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_FOCUS_POINT', 0, async function (done) {
-      console.info(TAG + "Entering GET_FOCUS_POINT to operate");
+    it('SUB_MULTIMEDIA_CAMERA_GET_FOCUS_POINT_CALLBACK_0300', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_FOCUS_POINT_CALLBACK_0300 to operate");
       camera0Input.getFocusPoint(async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering Get Focus Point SUCCESS: " + JSON.stringify(data));
           console.info(TAG + "Current Focus Point is: " + JSON.stringify(data));
           expect(true).assertTrue();
-          console.info(TAG + "GET_FOCUS_POINT PASSED");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_FOCUS_POINT_CALLBACK_0300 PASSED");
         }
         else {
           expect().assertFail();
-          console.info(TAG + "GET_FOCUS_POINT FAILED : " + err.message);
-          console.info(TAG + "GET_FOCUS_POINT ends here");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_FOCUS_POINT_CALLBACK_0300 FAILED : " + err.message);
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_FOCUS_POINT_CALLBACK_0300 ends here");
         }
         await sleep(1);
         done();
@@ -3343,25 +3343,25 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     */
 
     /**
-      * @tc.number    : GET_EXPOSURE_MODE_LOCKED
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_MODE_LOCKED_CALLBACK_0100
       * @tc.name      : get exposure mode locked camera0 api
       * @tc.desc      : get exposure mode locked camera0 api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_EXPOSURE_MODE_LOCKED', 0, async function (done) {
-      console.info(TAG + "Entering GET_EXPOSURE_MODE_LOCKED to operate");
+    it('SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_MODE_LOCKED_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_MODE_LOCKED_CALLBACK_0100 to operate");
       camera0Input.getExposureMode(async (err, data) => {
         if (!err) {
           console.info(TAG + "Current ExposureMode is: " + data);
           expect(true).assertTrue();
-          console.info(TAG + "GET_EXPOSURE_MODE_LOCKED PASSED");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_MODE_LOCKED_CALLBACK_0100 PASSED");
         }
         else {
           expect().assertFail();
-          console.info(TAG + "GET_EXPOSURE_MODE_LOCKED FAILED : " + err.message);
-          console.info(TAG + "GET_EXPOSURE_MODE_LOCKED ends here");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_MODE_LOCKED_CALLBACK_0100 FAILED : " + err.message);
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_MODE_LOCKED_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -3371,24 +3371,24 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : SET_EXPOSURE_POINT_exposure mode locked
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SET_EXPOSURE_POINT_CALLBACK_0100
       * @tc.name      : set exposure Point camera0 api
       * @tc.desc      : set exposure Point camera0 api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_EXPOSURE_POINT', 0, async function (done) {
-      console.info(TAG + "Entering SET_EXPOSURE_POINT to operate");
+    it('SUB_MULTIMEDIA_CAMERA_SET_EXPOSURE_POINT_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_EXPOSURE_POINT_CALLBACK_0100 to operate");
       camera0Input.setExposurePoint(Point, async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering Set Exposure Point, current ExposureMode is: " + JSON.stringify(data));
-          console.info(TAG + "Entering SET_EXPOSURE_POINT PASSED")
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_EXPOSURE_POINT_CALLBACK_0100 PASSED")
           expect(true).assertTrue();
         } else {
-          console.info(TAG + "Entering SET_EXPOSURE_POINT FAILED : " + err.message);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_EXPOSURE_POINT_CALLBACK_0100 FAILED : " + err.message);
           expect().assertFail();
-          console.info(TAG + "Entering SET_EXPOSURE_POINT ends here");
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_EXPOSURE_POINT_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -3398,26 +3398,26 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_EXPOSURE_POINT_exposure mode locked
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_POINT_CALLBACK_0100
       * @tc.name      : get exposure point camera0 api
       * @tc.desc      : get exposure point camera0 api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_EXPOSURE_POINT', 0, async function (done) {
-      console.info(TAG + "Entering GET_EXPOSURE_POINT to operate");
+    it('SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_POINT_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_POINT_CALLBACK_0100 to operate");
       camera0Input.getExposurePoint(async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering Get Exposure point SUCCESS");
           console.info(TAG + "Current Exposure Point is: " + JSON.stringify(data));
           expect(true).assertTrue();
-          console.info(TAG + "GET_EXPOSURE_POINT PASSED");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_POINT_CALLBACK_0100 PASSED");
         }
         else {
           expect().assertFail();
-          console.info(TAG + "GET_EXPOSURE_POINT FAILED : " + err.message);
-          console.info(TAG + "GET_EXPOSURE_POINT ends here");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_POINT_CALLBACK_0100 FAILED : " + err.message);
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_POINT_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -3427,26 +3427,26 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_EXPOSURE_BIASRANGE_exposure mode continuous auto
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_BIASRANGE_CALLBACK_0100_exposure mode continuous auto
       * @tc.name      : get exposure bias range camera0 api
       * @tc.desc      : get exposure bias range camera0 api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_EXPOSURE_BIASRANGE', 0, async function (done) {
-      console.info(TAG + "Entering GET_EXPOSURE_BIASRANGE to operate");
+    it('SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_BIASRANGE_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_BIASRANGE_CALLBACK_0100 to operate");
       camera0Input.getExposureBiasRange(async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering Get Exposure bias range SUCCESS");
           console.info(TAG + "Current Exposure bias range is: " + JSON.stringify(data));
           expect(true).assertTrue();
-          console.info(TAG + "GET_EXPOSURE_BIASRANGE PASSED");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_BIASRANGE_CALLBACK_0100 PASSED");
         }
         else {
           expect().assertFail();
-          console.info(TAG + "GET_EXPOSURE_BIASRANGE FAILED : " + err.message);
-          console.info(TAG + "GET_EXPOSURE_BIASRANGE ends here");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_BIASRANGE_CALLBACK_0100 FAILED : " + err.message);
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_BIASRANGE_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -3456,24 +3456,24 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : SET_EXPOSURE_BIAS_exposure mode locked
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SET_EXPOSURE_BIAS_CALLBACK_0100
       * @tc.name      : set exposure bias camera0 api 
       * @tc.desc      : set exposure bias camera0 api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_EXPOSURE_BIAS', 0, async function (done) {
-      console.info(TAG + "Entering SET_EXPOSURE_BIAS to operate");
+    it('SUB_MULTIMEDIA_CAMERA_SET_EXPOSURE_BIAS_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_EXPOSURE_BIAS_CALLBACK_0100 to operate");
       camera0Input.setExposureBias(-4, async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering Set Exposure bias is: " + "-4");
-          console.info(TAG + "Entering SET_EXPOSURE_BIAS PASSED")
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_EXPOSURE_BIAS_CALLBACK_0100 PASSED")
           expect(true).assertTrue();
         } else {
-          console.info(TAG + "Entering SET_EXPOSURE_BIAS FAILED : " + err.message);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_EXPOSURE_BIAS_CALLBACK_0100 FAILED : " + err.message);
           expect().assertFail();
-          console.info(TAG + "Entering SET_EXPOSURE_BIAS ends here");
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_EXPOSURE_BIAS_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -3483,26 +3483,26 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_EXPOSURE_BIASVALUE_exposure mode locked
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_BIASVALUE_CALLBACK_0100
       * @tc.name      : get exposure bias value camera0 api
       * @tc.desc      : get exposure bias value camera0 api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_EXPOSURE_BIASVALUE', 0, async function (done) {
-      console.info(TAG + "Entering GET_EXPOSURE_BIASVALUE to operate");
+    it('SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_BIASVALUE_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_BIASVALUE_CALLBACK_0100 to operate");
       camera0Input.getExposureValue(async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering Get Exposure bias value SUCCESS");
           console.info(TAG + "Current Exposure bias value is: " + JSON.stringify(data));
           expect(data).assertEqual(-4);
-          console.info(TAG + "GET_EXPOSURE_BIASVALUE PASSED");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_BIASVALUE_CALLBACK_0100 PASSED");
         }
         else {
           expect().assertFail();
-          console.info(TAG + "GET_EXPOSURE_BIASVALUE FAILED : " + err.message);
-          console.info(TAG + "GET_EXPOSURE_BIASVALUE ends here");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_BIASVALUE_CALLBACK_0100 FAILED : " + err.message);
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_BIASVALUE_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -3576,27 +3576,27 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     */
 
     /**
-      * @tc.number    : GET_EXPOSURE_MODE_AUTO
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_MODE_AUTO_CALLBACK_0100
       * @tc.name      : get exposure mode auto camera0 api
       * @tc.desc      : get exposure mode auto camera0 api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_EXPOSURE_MODE_AUTO', 0, async function (done) {
-      console.info(TAG + "Entering GET_EXPOSURE_MODE_AUTO to operate");
+    it('SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_MODE_AUTO_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_MODE_AUTO_CALLBACK_0100 to operate");
       camera0Input.getExposureMode(async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering Get Exposure Mode SUCCESS");
           console.info(TAG + "Get Exposure Mode data is not null || undefined: ");
           console.info(TAG + "Current ExposureMode is: " + data);
           expect(data).assertEqual(1);
-          console.info(TAG + "GET_EXPOSURE_MODE_AUTO PASSED");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_MODE_AUTO_CALLBACK_0100 PASSED");
         }
         else {
           expect().assertFail();
-          console.info(TAG + "GET_EXPOSURE_MODE_AUTO FAILED : " + err.message);
-          console.info(TAG + "GET_EXPOSURE_MODE_AUTO ends here");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_MODE_AUTO_CALLBACK_0100 FAILED : " + err.message);
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_MODE_AUTO_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -3606,24 +3606,24 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : SET_EXPOSURE_POINT_exposure mode auto
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SET_EXPOSURE_POINT_CALLBACK_0200
       * @tc.name      : set exposure Point camera0 api
       * @tc.desc      : set exposure Point camera0 api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_EXPOSURE_POINT', 0, async function (done) {
-      console.info(TAG + "Entering SET_EXPOSURE_POINT to operate");
+    it('SUB_MULTIMEDIA_CAMERA_SET_EXPOSURE_POINT_CALLBACK_0200', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_EXPOSURE_POINT_CALLBACK_0200 to operate");
       camera0Input.setExposurePoint(Point, async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering Set Exposure Point, current ExposureMode is: " + JSON.stringify(data));
-          console.info(TAG + "Entering SET_EXPOSURE_POINT PASSED")
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_EXPOSURE_POINT_CALLBACK_0200 PASSED")
           expect(true).assertTrue();
         } else {
-          console.info(TAG + "Entering SET_EXPOSURE_POINT FAILED : " + err.message);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_EXPOSURE_POINT_CALLBACK_0200 FAILED : " + err.message);
           expect().assertFail();
-          console.info(TAG + "Entering SET_EXPOSURE_POINT ends here");
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_EXPOSURE_POINT_CALLBACK_0200 ends here");
         }
         await sleep(1);
         done();
@@ -3633,26 +3633,26 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_EXPOSURE_POINT_exposure mode auto
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_POINT_CALLBACK_0200
       * @tc.name      : get exposure point camera0 api
       * @tc.desc      : get exposure point camera0 api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_EXPOSURE_POINT', 0, async function (done) {
-      console.info(TAG + "Entering GET_EXPOSURE_POINT to operate");
+    it('SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_POINT_CALLBACK_0200', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_POINT_CALLBACK_0200 to operate");
       camera0Input.getExposurePoint(async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering Get Exposure point SUCCESS");
           console.info(TAG + "Current Exposure Point is: " + JSON.stringify(data));
           expect(true).assertTrue();
-          console.info(TAG + "GET_EXPOSURE_POINT PASSED");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_POINT_CALLBACK_0200 PASSED");
         }
         else {
           expect().assertFail();
-          console.info(TAG + "GET_EXPOSURE_POINT FAILED : " + err.message);
-          console.info(TAG + "GET_EXPOSURE_POINT ends here");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_POINT_CALLBACK_0200 FAILED : " + err.message);
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_POINT_CALLBACK_0200 ends here");
         }
         await sleep(1);
         done();
@@ -3662,24 +3662,24 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : SET_EXPOSURE_BIAS_exposure mode auto
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SET_EXPOSURE_BIAS_CALLBACK_0200
       * @tc.name      : set exposure bias camera0 api
       * @tc.desc      : set exposure bias camera0 api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_EXPOSURE_BIAS', 0, async function (done) {
-      console.info(TAG + "Entering SET_EXPOSURE_BIAS to operate");
+    it('SUB_MULTIMEDIA_CAMERA_SET_EXPOSURE_BIAS_CALLBACK_0200', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_EXPOSURE_BIAS_CALLBACK_0200 to operate");
       camera0Input.setExposureBias(1, async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering Set Exposure bias is: " + "1");
-          console.info(TAG + "Entering SET_EXPOSURE_BIAS PASSED")
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_EXPOSURE_BIAS_CALLBACK_0200 PASSED")
           expect(true).assertTrue();
         } else {
-          console.info(TAG + "Entering SET_EXPOSURE_BIAS FAILED : " + err.message);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_EXPOSURE_BIAS_CALLBACK_0200 FAILED : " + err.message);
           expect().assertFail();
-          console.info(TAG + "Entering SET_EXPOSURE_BIAS ends here");
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_EXPOSURE_BIAS_CALLBACK_0200 ends here");
         }
         await sleep(1);
         done();
@@ -3689,26 +3689,26 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_EXPOSURE_BIASVALUE_exposure mode auto
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_BIASVALUE_CALLBACK_0200
       * @tc.name      : get exposure bias value camera0 api
       * @tc.desc      : get exposure bias value camera0 api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_EXPOSURE_BIASVALUE', 0, async function (done) {
-      console.info(TAG + "Entering GET_EXPOSURE_BIASVALUE to operate");
+    it('SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_BIASVALUE_CALLBACK_0200', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_BIASVALUE_CALLBACK_0200 to operate");
       camera0Input.getExposureValue(async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering Get Exposure bias value SUCCESS");
           console.info(TAG + "Current Exposure bias value is: " + JSON.stringify(data));
           expect(data).assertEqual(1);
-          console.info(TAG + "GET_EXPOSURE_BIASVALUE PASSED");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_BIASVALUE_CALLBACK_0200 PASSED");
         }
         else {
           expect().assertFail();
-          console.info(TAG + "GET_EXPOSURE_BIASVALUE FAILED : " + err.message);
-          console.info(TAG + "GET_EXPOSURE_BIASVALUE ends here");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_BIASVALUE_CALLBACK_0200 FAILED : " + err.message);
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_BIASVALUE_CALLBACK_0200 ends here");
         }
         await sleep(1);
         done();
@@ -3780,25 +3780,25 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     */
 
     /**
-      * @tc.number    : GET_EXPOSURE_MODE_CONTINUOUS_AUTO
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_MODE_CONTINUOUS_AUTO_CALLBACK_0100
       * @tc.name      : get exposure mode continuous auto camera0 api
       * @tc.desc      : get exposure mode continuous auto camera0 api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_EXPOSURE_MODE_CONTINUOUS_AUTO', 0, async function (done) {
-      console.info(TAG + "Entering GET_EXPOSURE_MODE_CONTINUOUS_AUTO to operate");
+    it('SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_MODE_CONTINUOUS_AUTO_CALLBACK_0100', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_MODE_CONTINUOUS_AUTO_CALLBACK_0100 to operate");
       camera0Input.getExposureMode(async (err, data) => {
         if (!err) {
           console.info(TAG + "Current ExposureMode is: " + data);
           expect(true).assertTrue();
-          console.info(TAG + "GET_EXPOSURE_MODE_CONTINUOUS_AUTO PASSED");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_MODE_CONTINUOUS_AUTO_CALLBACK_0100 PASSED");
         }
         else {
           expect().assertFail();
-          console.info(TAG + "GET_EXPOSURE_MODE_CONTINUOUS_AUTO FAILED : " + err.message);
-          console.info(TAG + "GET_EXPOSURE_MODE_CONTINUOUS_AUTO ends here");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_MODE_CONTINUOUS_AUTO_CALLBACK_0100 FAILED : " + err.message);
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_MODE_CONTINUOUS_AUTO_CALLBACK_0100 ends here");
         }
         await sleep(1);
         done();
@@ -3808,24 +3808,24 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : SET_EXPOSURE_POINT_exposure mode continuous auto
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SET_EXPOSURE_POINT_CALLBACK_0300
       * @tc.name      : set exposure Point camera0 api
       * @tc.desc      : set exposure Point camera0 api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_EXPOSURE_POINT', 0, async function (done) {
-      console.info(TAG + "Entering SET_EXPOSURE_POINT to operate");
+    it('SUB_MULTIMEDIA_CAMERA_SET_EXPOSURE_POINT_CALLBACK_0300', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_EXPOSURE_POINT_CALLBACK_0300 to operate");
       camera0Input.setExposurePoint(Point, async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering Set Exposure Point, current ExposureMode is: " + JSON.stringify(data));
-          console.info(TAG + "Entering SET_EXPOSURE_POINT PASSED")
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_EXPOSURE_POINT_CALLBACK_0300 PASSED")
           expect(true).assertTrue();
         } else {
-          console.info(TAG + "Entering SET_EXPOSURE_POINT FAILED : " + err.message);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_EXPOSURE_POINT_CALLBACK_0300 FAILED : " + err.message);
           expect().assertFail();
-          console.info(TAG + "Entering SET_EXPOSURE_POINT ends here");
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_EXPOSURE_POINT_CALLBACK_0300 ends here");
         }
         await sleep(1);
         done();
@@ -3835,26 +3835,26 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_EXPOSURE_POINT_exposure mode continuous auto
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_POINT_CALLBACK_0300
       * @tc.name      : get exposure point camera0 api
       * @tc.desc      : get exposure point camera0 api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_EXPOSURE_POINT', 0, async function (done) {
-      console.info(TAG + "Entering GET_EXPOSURE_POINT to operate");
+    it('SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_POINT_CALLBACK_0300', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_POINT_CALLBACK_0300 to operate");
       camera0Input.getExposurePoint(async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering Get Exposure point SUCCESS");
           console.info(TAG + "Current Exposure Point is: " + JSON.stringify(data));
           expect(true).assertTrue();
-          console.info(TAG + "GET_EXPOSURE_POINT PASSED");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_POINT_CALLBACK_0300 PASSED");
         }
         else {
           expect().assertFail();
-          console.info(TAG + "GET_EXPOSURE_POINT FAILED : " + err.message);
-          console.info(TAG + "GET_EXPOSURE_POINT ends here");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_POINT_CALLBACK_0300 FAILED : " + err.message);
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_POINT_CALLBACK_0300 ends here");
         }
         await sleep(1);
         done();
@@ -3864,24 +3864,24 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : SET_EXPOSURE_BIAS_exposure mode auto
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SET_EXPOSURE_BIAS_CALLBACK_0300
       * @tc.name      : set exposure bias camera0 api
       * @tc.desc      : set exposure bias camera0 api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_EXPOSURE_BIAS', 0, async function (done) {
-      console.info(TAG + "Entering SET_EXPOSURE_BIAS to operate");
+    it('SUB_MULTIMEDIA_CAMERA_SET_EXPOSURE_BIAS_CALLBACK_0300', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_EXPOSURE_BIAS_CALLBACK_0300 to operate");
       camera0Input.setExposureBias(4, async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering Set Exposure bias is: " + "4");
-          console.info(TAG + "Entering SET_EXPOSURE_BIAS PASSED")
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_EXPOSURE_BIAS_CALLBACK_0300 PASSED")
           expect(true).assertTrue();
         } else {
-          console.info(TAG + "Entering SET_EXPOSURE_BIAS FAILED : " + err.message);
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_EXPOSURE_BIAS_CALLBACK_0300 FAILED : " + err.message);
           expect().assertFail();
-          console.info(TAG + "Entering SET_EXPOSURE_BIAS ends here");
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SET_EXPOSURE_BIAS_CALLBACK_0300 ends here");
         }
         await sleep(1);
         done();
@@ -3891,26 +3891,26 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : GET_EXPOSURE_BIASVALUE_exposure mode continuous auto
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_BIASVALUE_CALLBACK_0300
       * @tc.name      : get exposure bias value camera0 api
       * @tc.desc      : get exposure bias value camera0 api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_EXPOSURE_BIASVALUE', 0, async function (done) {
-      console.info(TAG + "Entering GET_EXPOSURE_BIASVALUE to operate");
+    it('SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_BIASVALUE_CALLBACK_0300', 0, async function (done) {
+      console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_BIASVALUE_CALLBACK_0300 to operate");
       camera0Input.getExposureValue(async (err, data) => {
         if (!err) {
           console.info(TAG + "Entering Get Exposure bias value SUCCESS");
           console.info(TAG + "Current Exposure bias value is: " + JSON.stringify(data));
           expect(data).assertEqual(4);
-          console.info(TAG + "GET_EXPOSURE_BIASVALUE PASSED");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_BIASVALUE_CALLBACK_0300 PASSED");
         }
         else {
           expect().assertFail();
-          console.info(TAG + "GET_EXPOSURE_BIASVALUE FAILED : " + err.message);
-          console.info(TAG + "GET_EXPOSURE_BIASVALUE ends here");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_BIASVALUE_CALLBACK_0300 FAILED : " + err.message);
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_BIASVALUE_CALLBACK_0300 ends here");
         }
         await sleep(1);
         done();
@@ -3920,21 +3920,21 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : isMirrorSupported_PHOTO_OUTPUT
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_ISMIRRORSUPPORTED_PHOTO_OUTPUT_CALLBACK_0100
       * @tc.name      : isMirrorSupported
       * @tc.desc      : isMirrorSupported
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('isMirrorSupported_PHOTO_OUTPUT', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_ISMIRRORSUPPORTED_PHOTO_OUTPUT_CALLBACK_0100', 0, async function (done) {
       if (photoOutputAsync == null || photoOutputAsync == undefined) {
         console.info(TAG + "photoOutput == null || undefined");
       } else {
-        console.info(TAG + "Entering isMirrorSupported_PHOTO_OUTPUT to operate");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ISMIRRORSUPPORTED_PHOTO_OUTPUT_CALLBACK_0100 to operate");
         photoOutputAsync.isMirrorSupported(async (err, data) => {
           if (!err) {
-            console.info(TAG + "Entering isMirrorSupported_PHOTO_OUTPUT is success");
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ISMIRRORSUPPORTED_PHOTO_OUTPUT_CALLBACK_0100 is success");
             console.info(TAG + "isMirrorSupported : " + data);
             expect(true).assertTrue();
           } else {
@@ -3949,21 +3949,21 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : setMirror_true
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_SETMIRROR_TRUE_CALLBACK_0100
       * @tc.name      : setMirror true
       * @tc.desc      : setMirror true
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('setMirror_true', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_SETMIRROR_TRUE_CALLBACK_0100', 0, async function (done) {
       if (photoOutputAsync == null || photoOutputAsync == undefined) {
         console.info(TAG + "photoOutput == null || undefined");
       } else {
-        console.info(TAG + "Entering setMirror_true to operate");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SETMIRROR_TRUE_CALLBACK_0100 to operate");
         photoOutputAsync.setMirror(true, async (err, data) => {
           if (!err) {
-            console.info(TAG + "Entering setMirror_true is success:");
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SETMIRROR_TRUE_CALLBACK_0100 is success:");
             console.info(TAG + "setMirror is : " + 'True');
             expect(true).assertTrue();
           } else {
@@ -3978,28 +3978,28 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : VIDEO_OUTPUT_START
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_START_CALLBACK_0100
       * @tc.name      : VideoOutput start async api
       * @tc.desc      : VideoOutput start async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('VIDEO_OUTPUT_START', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_START_CALLBACK_0100', 0, async function (done) {
       if (videoOutput == null || videoOutput == undefined) {
-        console.info(TAG + "Entering VIDEO_OUTPUT_START videoOutput == null || undefined")
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_START_CALLBACK_0100 videoOutput == null || undefined")
       } else {
-        console.info(TAG + "Entering VIDEO_OUTPUT_START to operate")
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_START_CALLBACK_0100 to operate")
         await sleep(1)
         videoOutput.start(async (err, data) => {
           if (!err) {
-            console.info(TAG + "Entering VIDEO_OUTPUT_START success: " + JSON.stringify(data))
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_START_CALLBACK_0100 success: " + JSON.stringify(data))
             if (data == undefined) {
               expect(true).assertTrue();
             }
           } else {
             expect().assertFail();
-            console.info(TAG + "Entering VIDEO_OUTPUT_START FAILED: " + err.message)
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_START_CALLBACK_0100 FAILED: " + err.message)
           }
         })
         await sleep(1)
@@ -4010,27 +4010,27 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : VIDEO_RECORDER_START
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_VIDEO_RECORDER_START_CALLBACK_0100
       * @tc.name      : VideoRecorder start async api
       * @tc.desc      : VideoRecorder start async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('VIDEO_RECORDER_START', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_VIDEO_RECORDER_START_CALLBACK_0100', 0, async function (done) {
       if (videoRecorder == null || videoRecorder == undefined) {
         console.info(TAG + 'Entering VideoRecorder start videoRecorder == null || undefined')
       } else {
-        console.info(TAG + 'Entering VIDEO_RECORDER_START to operate')
+        console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_VIDEO_RECORDER_START_CALLBACK_0100 to operate')
         videoRecorder.start()
-        console.info(TAG + 'VIDEO_RECORDER_START called');
+        console.info(TAG + 'SUB_MULTIMEDIA_CAMERA_VIDEO_RECORDER_START_CALLBACK_0100 called');
         sleep(3);
         console.info(TAG + 'Capture with photosettings1 during video - Start & setMirror: true')
         photoOutputAsync.capture(photosettings1)
         console.info(TAG + 'Capture during Video - End.')
         expect(true).assertTrue()
-        console.info(TAG + 'Entering VIDEO_RECORDER_START PASSED')
-        console.info(TAG + 'Entering VIDEO_RECORDER_START ends here')
+        console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_VIDEO_RECORDER_START_CALLBACK_0100 PASSED')
+        console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_VIDEO_RECORDER_START_CALLBACK_0100 ends here')
         await sleep(1)
         done()
       }
@@ -4039,29 +4039,29 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : VIDEO_OUTPUT_STOP
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_STOP_CALLBACK_0100
       * @tc.name      : VideoOutput stop async api
       * @tc.desc      : VideoOutput stop async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('VIDEO_OUTPUT_STOP', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_STOP_CALLBACK_0100', 0, async function (done) {
       if (videoOutput == null || videoOutput == undefined) {
         console.info(TAG + 'Entering VideoOutput stop videoOutput == null || undefined')
       } else {
-        console.info(TAG + 'Entering VIDEO_OUTPUT_STOP to operate')
+        console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_STOP_CALLBACK_0100 to operate')
         videoOutput.stop(async (err, data) => {
           if (!err) {
-            console.info(TAG + 'Entering VIDEO_OUTPUT_STOP success: ' + JSON.stringify(data))
+            console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_STOP_CALLBACK_0100 success: ' + JSON.stringify(data))
             if (data == undefined) {
               expect(true).assertTrue()
             }
           } else {
             expect().assertFail()
-            console.info(TAG + 'Entering VIDEO_OUTPUT_STOP FAILED: ' + err.message)
+            console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_STOP_CALLBACK_0100 FAILED: ' + err.message)
           }
-          console.info(TAG + 'Entering VIDEO_OUTPUT_STOP ends here')
+          console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_VIDEO_OUTPUT_STOP_CALLBACK_0100 ends here')
           await sleep(1)
           done()
         })
@@ -4071,21 +4071,21 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : VIDEO_RECORDER_STOP
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_VIDEO_RECORDER_STOP_CALLBACK_0100
       * @tc.name      : VideoRecorder stop async api
       * @tc.desc      : VideoRecorder stop async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('VIDEO_RECORDER_STOP', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_VIDEO_RECORDER_STOP_CALLBACK_0100', 0, async function (done) {
       if (videoRecorder == null || videoRecorder == undefined) {
         console.info(TAG + 'Entering VideoRecorder stop videoRecorder == null || undefined')
       } else {
-        console.info(TAG + 'Entering VIDEO_RECORDER_STOP to operate')
+        console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_VIDEO_RECORDER_STOP_CALLBACK_0100 to operate')
         videoRecorder.stop()
         console.info(TAG + 'VideoRecorder stop stopVideo done.')
-        console.info(TAG + 'Entering VIDEO_RECORDER_STOP PASSED')
+        console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_VIDEO_RECORDER_STOP_CALLBACK_0100 PASSED')
         expect(true).assertTrue()
       }
       await sleep(1)
@@ -4093,29 +4093,29 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : CAPTURE_SESSION_STOP
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_STOP_CALLBACK_0100
       * @tc.name      : CaptureSession stop async api
       * @tc.desc      : CaptureSession stop async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('CAPTURE_SESSION_STOP', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_STOP_CALLBACK_0100', 0, async function (done) {
       if (captureSession == null || captureSession == undefined) {
         console.info(TAG + 'Entering CaptureSession stop captureSession == null || undefined')
       } else {
-        console.info(TAG + 'Entering CAPTURE_SESSION_STOP to operate')
+        console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_STOP_CALLBACK_0100 to operate')
         await sleep(1)
         captureSession.stop((err, data) => {
           if (!err) {
             console.info(TAG + 'Entering CaptureSession stop success')
             expect(true).assertTrue()
-            console.info(TAG + 'Entering CAPTURE_SESSION_STOP PASSED')
+            console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_STOP_CALLBACK_0100 PASSED')
           } else {
-            console.info(TAG + 'Entering CAPTURE_SESSION_STOP FAILED: ' + err.message)
+            console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_STOP_CALLBACK_0100 FAILED: ' + err.message)
             expect().assertFail();
           }
-          console.info(TAG + 'Entering CAPTURE_SESSION_STOP ends here')
+          console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_STOP_CALLBACK_0100 ends here')
           done()
         })
         await sleep(1)
@@ -4124,18 +4124,18 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : CAPTURE_SESSION_RELEASE
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_RELEASE_CALLBACK_0100
       * @tc.name      : CaptureSession release async api
       * @tc.desc      : CaptureSession release async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('CAPTURE_SESSION_RELEASE', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_RELEASE_CALLBACK_0100', 0, async function (done) {
       if (captureSession == null || captureSession == undefined) {
         console.info(TAG + 'Entering CaptureSession release captureSession == null || undefined')
       } else {
-        console.info(TAG + 'Entering CAPTURE_SESSION_RELEASE to operate')
+        console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_RELEASE_CALLBACK_0100 to operate')
         await sleep(1)
         captureSession.release(async (err, data) => {
           if (!err) {
@@ -4143,13 +4143,13 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
             if (data != null || data != undefined) {
               console.info(TAG + 'Entering CaptureSession release data is not null || undefined')
               expect(true).assertTrue()
-              console.info(TAG + 'Entering CAPTURE_SESSION_RELEASE PASSED')
+              console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_RELEASE_CALLBACK_0100 PASSED')
             }
           } else {
-            console.info(TAG + 'Entering CAPTURE_SESSION_RELEASE FAILED: ' + err.message)
+            console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_RELEASE_CALLBACK_0100 FAILED: ' + err.message)
             expect().assertFail();
           }
-          console.info(TAG + 'Entering CAPTURE_SESSION_RELEASE ends here')
+          console.info(TAG + 'Entering SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_RELEASE_CALLBACK_0100 ends here')
           await sleep(1)
           done()
         })
@@ -4159,30 +4159,30 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : VIDEOOUPUT_RELEASE_SUCCESS
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_VIDEOOUPUT_RELEASE_SUCCESS_CALLBACK_0100
       * @tc.name      : videooutput release api
       * @tc.desc      : videooutput release api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('VIDEOOUPUT_RELEASE_SUCCESS', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_VIDEOOUPUT_RELEASE_SUCCESS_CALLBACK_0100', 0, async function (done) {
       if (videoOutput == null || videoOutput == undefined) {
         console.info(TAG + "Entering videooutput.release previewOutput == null || undefined");
       } else {
-        console.info(TAG + "Entering VIDEOOUPUT_RELEASE_SUCCESS to operate");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_VIDEOOUPUT_RELEASE_SUCCESS_CALLBACK_0100 to operate");
         videoOutput.release(async (err, data) => {
           if (!err) {
             console.info(TAG + "Entering videooutput.release success");
             if (data != null || data != undefined) {
               console.info(TAG + "Entering videooutput.release data is not null || undefined");
               expect(true).assertTrue();
-              console.info(TAG + "Entering VIDEOOUPUT_RELEASE_SUCCESS PASSED");
+              console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_VIDEOOUPUT_RELEASE_SUCCESS_CALLBACK_0100 PASSED");
             }
           } else {
             expect().assertFail();
-            console.info(TAG + "Entering VIDEOOUPUT_RELEASE_SUCCESS FAILED: " + err.message);
-            console.info(TAG + "Entering  VIDEOOUPUT_RELEASE_SUCCESS ends here");
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_VIDEOOUPUT_RELEASE_SUCCESS_CALLBACK_0100 FAILED: " + err.message);
+            console.info(TAG + "Entering  SUB_MULTIMEDIA_CAMERA_VIDEOOUPUT_RELEASE_SUCCESS_CALLBACK_0100 ends here");
             await sleep(1);
             done();
           }
@@ -4193,18 +4193,18 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : PREVIEWOUPUT_RELEASE_SUCCESS
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_PREVIEWOUPUT_RELEASE_SUCCESS_CALLBACK_0100
       * @tc.name      : previewOutput release api
       * @tc.desc      : previewOutput release api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('PREVIEWOUPUT_RELEASE_SUCCESS', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_PREVIEWOUPUT_RELEASE_SUCCESS_CALLBACK_0100', 0, async function (done) {
       if (previewOutput == null || previewOutput == undefined) {
-        console.info(TAG + "Entering PREVIEWOUPUT_RELEASE_SUCCESS previewOutput == null || undefined");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PREVIEWOUPUT_RELEASE_SUCCESS_CALLBACK_0100 previewOutput == null || undefined");
       } else {
-        console.info(TAG + "Entering PREVIEWOUPUT_RELEASE_SUCCESS to operate");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PREVIEWOUPUT_RELEASE_SUCCESS_CALLBACK_0100 to operate");
         previewOutput.release(async (err, data) => {
           if (!err) {
             console.info(TAG + "Entering previewOutput.release success");
@@ -4215,7 +4215,7 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
             }
           } else {
             expect().assertFail();
-            console.info(TAG + "Entering PREVIEWOUPUT_RELEASE_SUCCESS FAILED: " + err.message);
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PREVIEWOUPUT_RELEASE_SUCCESS_CALLBACK_0100 FAILED: " + err.message);
             console.info(TAG + "Entering  previewOutput.release ends here");
             await sleep(1);
             done();
@@ -4227,26 +4227,26 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : PHOTOOUPUT_RELEASE
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTOOUPUT_RELEASE_CALLBACK_0100
       * @tc.name      : photoOutput release api
       * @tc.desc      : photoOutput release api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('PHOTOOUPUT_RELEASE', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_PHOTOOUPUT_RELEASE_CALLBACK_0100', 0, async function (done) {
       if (photoOutputAsync == null || photoOutputAsync == undefined) {
-        console.info(TAG + "Entering PHOTOOUPUT_RELEASE photoOutputAsync == null || undefined");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTOOUPUT_RELEASE_CALLBACK_0100 photoOutputAsync == null || undefined");
       } else {
-        console.info(TAG + "Entering PHOTOOUPUT_RELEASE to operate");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTOOUPUT_RELEASE_CALLBACK_0100 to operate");
         photoOutputAsync.release(async (err, data) => {
           if (!err) {
             console.info(TAG + "Entering photoOutputAsync.release success");
             expect(true).assertTrue();
-            console.info(TAG + "Entering PHOTOOUPUT_RELEASE PASSED");
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTOOUPUT_RELEASE_CALLBACK_0100 PASSED");
           } else {
             expect().assertFail();
-            console.info(TAG + "Entering PHOTOOUPUT_RELEASE FAILED: " + err.message);
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTOOUPUT_RELEASE_CALLBACK_0100 FAILED: " + err.message);
             console.info(TAG + "Entering  photoOutputAsync.release ends here");
           }
           await sleep(1);
@@ -4258,30 +4258,30 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : CAMERAINPUT_RELEASE_SUCCESS
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CAMERAINPUT_RELEASE_SUCCESS_CALLBACK_0100
       * @tc.name      : camera Input release api
       * @tc.desc      : camera Input release api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('CAMERAINPUT_RELEASE_SUCCESS', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_CAMERAINPUT_RELEASE_SUCCESS_CALLBACK_0100', 0, async function (done) {
       if (camera0Input == null || camera0Input == undefined) {
         console.info(TAG + "Entering camera0Input.release camera0Input == null || undefined");
       } else {
-        console.info(TAG + "Entering CAMERAINPUT_RELEASE_SUCCESS to operate");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAMERAINPUT_RELEASE_SUCCESS_CALLBACK_0100 to operate");
         camera0Input.release(async (err, data) => {
           if (!err) {
             console.info(TAG + "Entering camera0Input.release success");
             if (data != null || data != undefined) {
               console.info(TAG + "Entering camera0Input.release data is not null || undefined");
               expect(true).assertTrue();
-              console.info(TAG + "Entering CAMERAINPUT_RELEASE_SUCCESS PASSED");
+              console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAMERAINPUT_RELEASE_SUCCESS_CALLBACK_0100 PASSED");
             }
           } else {
             expect().assertFail();
-            console.info(TAG + "Entering CAMERAINPUT_RELEASE_SUCCESS FAILED: " + err.message);
-            console.info(TAG + "Entering  CAMERAINPUT_RELEASE_SUCCESS ends here");
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAMERAINPUT_RELEASE_SUCCESS_CALLBACK_0100 FAILED: " + err.message);
+            console.info(TAG + "Entering  SUB_MULTIMEDIA_CAMERA_CAMERAINPUT_RELEASE_SUCCESS_CALLBACK_0100 ends here");
             await sleep(1);
             done();
           }
