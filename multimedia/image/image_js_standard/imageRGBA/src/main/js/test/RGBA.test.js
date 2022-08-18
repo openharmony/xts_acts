@@ -332,7 +332,12 @@ describe('Image', function () {
         const Color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: 0, size: { height: -1, width: 8 } }
         image.createPixelMap(Color, opts, (err, pixelmap) => {
-            console.info('RGBA_011 err: ' + err);
+            if (err != undefined) {
+                console.info('RGBA_011 err: ' + err);
+                expect(false).assertTrue();
+                done();
+                return;
+            }
             expect(pixelmap == undefined).assertTrue();
             console.info('RGBA_011 pass');
             done();
@@ -341,7 +346,7 @@ describe('Image', function () {
 
     /**
      * @tc.number    : RGBA_012
-     * @tc.name      : create pixelmap-callback(editable: true, pixelFormat: 1, size: { height: 6, width: -1 })
+     * @tc.name      : create pixelmap-callback(editable: true, pixelFormat: ARGB_8888, size: { height: 6, width: -1 })
      * @tc.desc      : 1.create InitializationOptions object
      *                 2.set editable,pixeFormat,size
      *                 3.using color and opts create newPixelMap
@@ -354,7 +359,12 @@ describe('Image', function () {
         const Color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: 1, size: { height: 6, width: -1 } }
         image.createPixelMap(Color, opts, (err, pixelmap) => {
-            console.info('RGBA_012 err: ' + err);
+            if (err != undefined) {
+                console.info('RGBA_012 err: ' + err);
+                expect(false).assertTrue();
+                done();
+                return;
+            }
             expect(pixelmap == undefined).assertTrue();
             console.info('RGBA_012 pass');
             done();
@@ -413,7 +423,7 @@ describe('Image', function () {
 
     /**
      * @tc.number    : RGBA_015
-     * @tc.name      : create pixelmap-promise (editable: true, pixelFormat: 4,
+     * @tc.name      : create pixelmap-promise (editable: true, pixelFormat: BGRA8888,
      *                                          size: { height: 4, width: 6 }, bytes = buffer)
      * @tc.desc      : 1.create InitializationOptions object
      *                 2.set editable,pixeFormat,size
@@ -442,7 +452,7 @@ describe('Image', function () {
 
     /**
      * @tc.number    : RGBA_016
-     * @tc.name      : create pixelmap-callback (editable: true, pixelFormat: 4,
+     * @tc.name      : create pixelmap-callback (editable: true, pixelFormat: BGRA8888,
      *                                           size: { height: 4, width: 6 },bytes = buffer)
      * @tc.desc      : 1.create InitializationOptions object
      *                 2.set editable,pixelFormat,size
