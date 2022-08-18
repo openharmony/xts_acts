@@ -2546,59 +2546,6 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : IS_EXPOSURE_MODE_LOCKED_SUPPORTED
-      * @tc.name      : check is exposure mode locked supported-camera0Input api
-      * @tc.desc      : check is exposure mode locked supported-camera0Input api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    /* EXPOSUREMODE Interface will be change
-    it('IS_EXPOSURE_MODE_LOCKED_SUPPORTED', 0, async function (done) {
-      console.info(TAG + "Entering IS_EXPOSURE_MODE_LOCKED_SUPPORTED to operate");
-      await camera0InputPromise.isExposureModeSupported(cameraObj.ExposureMode.EXPOSURE_MODE_LOCKED)
-        .then(function (data) {
-          console.info(TAG + "Entering IS_EXPOSURE_MODE_LOCKED_SUPPORTED PASSED: " + data);
-          expect(data).assertEqual(false);
-        })
-        .catch((err) => {
-          console.info(TAG + "IS_EXPOSURE_MODE_LOCKED_SUPPORTED FAILED : " + err.message);
-          expect().assertFail();
-        });
-      console.info(TAG + "IS_EXPOSURE_MODE_LOCKED_SUPPORTED ends here");
-      await sleep(1000);
-      done();
-    })
-    */
-
-    /**
-      * @tc.number    : SET_EXPOSURE_MODE_LOCKED
-      * @tc.name      : set exposure mode locked camera0 api
-      * @tc.desc      : set exposure mode locked camera0 api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    /* EXPOSUREMODE Interface will be change
-    it('SET_EXPOSURE_MODE_LOCKED', 0, async function (done) {
-      console.info(TAG + "Entering SET_EXPOSURE_MODE_Locked to operate");
-      await camera0InputPromise.setExposureMode(cameraObj.ExposureMode.EXPOSURE_MODE_LOCKED)
-        .then(function () {
-          console.info(TAG + "Entering set exposure mode auto SUCCESS, current ExposureMode is: " + cameraObj.ExposureMode.EXPOSURE_MODE_LOCKED);
-          console.info(TAG + "Entering SET_EXPOSURE_MODE_Locked FAILED")
-          expect().assertFail()
-        })
-        .catch((err) => {
-          console.info(TAG + "Entering SET_EXPOSURE_MODE_LOCKED PASSED : " + err.message);
-          expect(true).assertTrue();
-        });
-      console.info(TAG + "Entering SET_EXPOSURE_MODE_LOCKED ends here");
-      await sleep(1000);
-      done();
-    })
-    */
-
-    /**
       * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_MODE_LOCKED_0100
       * @tc.name      : get exposure mode locked camera0 api
       * @tc.desc      : get exposure mode locked camera0 api
@@ -2623,59 +2570,6 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       await sleep(1000);
       done();
     })
-
-    /**
-      * @tc.number    : IS_EXPOSURE_MODE_CONTINUOUS_AUTO_SUPPORTED
-      * @tc.name      : check is exposure mode continuous auto supported-camera0Input api
-      * @tc.desc      : check is exposure mode continuous auto supported-camera0Input api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    /* EXPOSUREMODE Interface will be change
-    it('IS_EXPOSURE_MODE_CONTINUOUS_AUTO_SUPPORTED', 0, async function (done) {
-      console.info(TAG + "Entering IS_EXPOSURE_MODE_CONTINUOUS_AUTO_SUPPORTED to operate");
-      await camera0InputPromise.isExposureModeSupported(cameraObj.ExposureMode.EXPOSURE_MODE_CONTINUOUS_AUTO)
-        .then(function (data) {
-          console.info(TAG + "Entering IS_EXPOSURE_MODE_CONTINUOUS_AUTO_SUPPORTED PASSED: " + data);
-          expect(data).assertEqual(false);
-        })
-        .catch((err) => {
-          console.info(TAG + "IS_EXPOSURE_MODE_CONTINUOUS_AUTO_SUPPORTED FAILED : " + err.message);
-          expect().assertFail();
-        });
-      console.info(TAG + "IS_EXPOSURE_MODE_CONTINUOUS_AUTO_SUPPORTED ends here");
-      await sleep(1000);
-      done();
-    })
-    */
-
-    /**
-      * @tc.number    : SET_EXPOSURE_MODE_CONTINUOUS_AUTO
-      * @tc.name      : set exposure mode continuous auto camera0 api
-      * @tc.desc      : set exposure mode continuous auto camera0 api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    /* EXPOSUREMODE Interface will be change
-    it('SET_EXPOSURE_MODE_CONTINUOUS_AUTO', 0, async function (done) {
-      console.info(TAG + "Entering SET_EXPOSURE_MODE_CONTINUOUS_AUTO to operate");
-      await camera0InputPromise.setExposureMode(cameraObj.ExposureMode.EXPOSURE_MODE_CONTINUOUS_AUTO)
-        .then(function () {
-          console.info(TAG + "Entering set exposure mode auto SUCCESS, current ExposureMode is: " + cameraObj.ExposureMode.EXPOSURE_MODE_CONTINUOUS_AUTO);
-          console.info(TAG + "Entering SET_EXPOSURE_MODE_CONTINUOUS_AUTO FAILED")
-          expect().assertFail();
-        })
-        .catch((err) => {
-          console.info(TAG + "Entering SET_EXPOSURE_MODE_CONTINUOUS_AUTO PASSED : " + err.message);
-          expect(true).assertTrue();
-        });
-      console.info(TAG + "Entering SET_EXPOSURE_MODE_CONTINUOUS_AUTO ends here");
-      await sleep(1000);
-      done();
-    })
-    */
 
     /**
       * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_MODE_CONTINUOUS_AUTO_0100
@@ -2830,59 +2724,6 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       await sleep(1000);
       done();
     })
-
-    /**
-      * @tc.number    : IS_EXPOSURE_MODE_AUTO_SUPPORTED
-      * @tc.name      : check is exposure mode auto supported-camera0Input api
-      * @tc.desc      : check is exposure mode auto supported-camera0Input api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    /* EXPOSUREMODE Interface will be change
-    it('IS_EXPOSURE_MODE_AUTO_SUPPORTED', 0, async function (done) {
-      console.info(TAG + "Entering IS_EXPOSURE_MODE_AUTO_SUPPORTED to operate");
-      await camera0InputPromise.isExposureModeSupported(cameraObj.ExposureMode.EXPOSURE_MODE_AUTO)
-        .then(function (data) {
-          console.info(TAG + "Entering IS_EXPOSURE_MODE_AUTO_SUPPORTED PASSED: " + data);
-          expect(data).assertEqual(true);
-        })
-        .catch((err) => {
-          console.info(TAG + "IS_EXPOSURE_MODE_AUTO_SUPPORTED FAILED: " + err.message);
-          expect().assertFail();
-        });
-      console.info(TAG + "IS_EXPOSURE_MODE_AUTO_SUPPORTED ends here");
-      await sleep(1000);
-      done();
-    })
-    */
-
-    /**
-      * @tc.number    : SET_EXPOSURE_MODE_AUTO
-      * @tc.name      : set exposure mode auto camera0 api
-      * @tc.desc      : set exposure mode auto camera0 api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    /* EXPOSUREMODE Interface will be change
-    it('SET_EXPOSURE_MODE_AUTO', 0, async function (done) {
-      console.info(TAG + "Entering SET_EXPOSURE_MODE_AUTO to operate");
-      await camera0InputPromise.setExposureMode(cameraObj.ExposureMode.EXPOSURE_MODE_AUTO)
-        .then(function () {
-          console.info(TAG + "Entering set exposure mode auto SUCCESS, current ExposureMode is: " + cameraObj.ExposureMode.EXPOSURE_MODE_AUTO);
-          console.info(TAG + "Entering SET_EXPOSURE_MODE_AUTO PASSED")
-          expect(cameraObj.ExposureMode.EXPOSURE_MODE_AUTO).assertEqual(1);
-        })
-        .catch((err) => {
-          console.info(TAG + "Entering SET_EXPOSURE_MODE_AUTO FAILED : " + err.message);
-          expect().assertFail();
-        });
-      console.info(TAG + "Entering SET_EXPOSURE_MODE_AUTO ends here");
-      await sleep(1000);
-      done();
-    })
-    */
 
     /**
       * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_MODE_AUTO_0100

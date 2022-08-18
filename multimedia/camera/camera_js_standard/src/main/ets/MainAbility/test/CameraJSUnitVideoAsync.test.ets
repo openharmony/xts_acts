@@ -1299,66 +1299,6 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : ISVIDEOSTABILIZATIONMODESUPPORTEDOFF
-      * @tc.name      : isVideoStabilizationModeSupported Off
-      * @tc.desc      : isVideoStabilizationModeSupported async api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    /* VideoStabilizationMode Interface will be change
-    it('ISVIDEOSTABILIZATIONMODESUPPORTEDOFF', 0, async function (done) {
-      console.info(TAG + 'Entering ISVIDEOSTABILIZATIONMODESUPPORTEDOFF to operate')
-      captureSession.isVideoStabilizationModeSupported(cameraObj.VideoStabilizationMode.OFF, async (err, data) => {
-        if (!err) {
-          console.info(TAG + 'Entering Create isVideoStabilizationModeSupported success')
-            expect(data).assertEqual(true)
-            console.info(TAG + 'Entering ISVIDEOSTABILIZATIONMODESUPPORTEDOFF PASSED :' + data)
-          }
-         else {
-          console.info(TAG + 'Entering ISVIDEOSTABILIZATIONMODESUPPORTEDOFF FAILED: ' + err.message)
-          expect().assertFail()
-        }
-        console.info(TAG + 'Entering ISVIDEOSTABILIZATIONMODESUPPORTEDOFF ends here')
-        await sleep(1)
-        done()
-      })
-      await sleep(1)
-      done()
-    })
-    */
-
-     /**
-      * @tc.number    : SET_VIDEOSTABILIZATIONMODEOFF
-      * @tc.name      : SetVideoStabilizationModeOff 
-      * @tc.desc      : SetVideoStabilizationModeOff async api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    /* VideoStabilizationMode Interface will be change
-    it('SET_VIDEOSTABILIZATIONMODEOFF', 0, async function (done) {
-      console.info(TAG + 'Entering SET_VIDEOSTABILIZATIONMODEOFF to operate')
-      captureSession.setVideoStabilizationMode(cameraObj.VideoStabilizationMode.OFF, async (err, data) => {
-        if (!err) {
-          console.info(TAG + 'Entering Set VideoStabilization Mode Off success')
-            console.info(TAG + 'Entering SET_VIDEOSTABILIZATIONMODEOFF PASSED: ' + data)
-            expect(cameraObj.VideoStabilizationMode.OFF).assertEqual(0)
-          }
-         else {
-          console.info(TAG + 'Entering SET_VIDEOSTABILIZATIONMODEOFF FAILED: ' + err.message)
-          expect().assertFail()
-        }
-        console.info(TAG + 'Entering SET_VIDEOSTABILIZATIONMODEOFF ends here')
-        await sleep(1)
-        done()
-      })
-      await sleep(1)
-      done()
-    })
-    */
-
-    /**
       * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_VIDEOSTABILIZATION_MODE_OFF_CALLBACK_0100
       * @tc.name      : getVideoStabilizationModeOff 
       * @tc.desc      : getVideoStabilizationModeOff async api
@@ -1386,68 +1326,6 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
       await sleep(1);
       done();
     })
-
-    /**
-      * @tc.number    : ISVIDEOSTABILIZATIONMODESUPPORTED_LOW
-      * @tc.name      : is VideoStabilization Mode Low Supported 
-      * @tc.desc      : isVideoStabilizationModeSupported low async api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    /* VideoStabilizationMode Interface will be change
-    it('ISVIDEOSTABILIZATIONMODESUPPORTED_LOW', 0, async function (done) {
-      console.info(TAG + 'Entering ISVIDEOSTABILIZATIONMODESUPPORTED_LOW to operate')
-      captureSession.isVideoStabilizationModeSupported(cameraObj.VideoStabilizationMode.LOW, async (err, data) => {
-        if (!err) {
-          console.info(TAG + 'Entering isVideoStabilizationModeSupported success')
-          if (data != null || data != undefined) {
-            console.info(TAG + 'Entering isVideoStabilizationModeSupported data is not null || undefined')
-            expect(data).assertEqual(true)
-            console.info(TAG + 'Entering ISVIDEOSTABILIZATIONMODESUPPORTED_LOW PASSED: ' + data)
-          }
-        } else {
-          console.info(TAG + 'Entering ISVIDEOSTABILIZATIONMODESUPPORTED_LOW FAILED: ' + err.message)
-          expect().assertFail()
-        }
-        console.info(TAG + 'Entering ISVIDEOSTABILIZATIONMODESUPPORTED_LOW ends here')
-        await sleep(1)
-        done()
-      })
-      await sleep(1)
-      done()
-    })
-    */
- 
-     /**
-      * @tc.number    : SET_VIDEOSTABILIZATIONMODELOW
-      * @tc.name      : SetVideoStabilizationModelow
-      * @tc.desc      : SetVideoStabilizationModelow async api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    /* VideoStabilizationMode Interface will be change
-    it('SET_VIDEOSTABILIZATIONMODELOW', 0, async function (done) {
-      console.info(TAG + 'Entering SET_VIDEOSTABILIZATIONMODELOW to operate')
-      captureSession.setVideoStabilizationMode(cameraObj.VideoStabilizationMode.LOW, async (err, data) => {
-        if (!err) {
-          console.info(TAG + 'Entering Set VideoStabilization Mode Low success')
-            console.info(TAG + 'Entering SET_VIDEOSTABILIZATIONMODELOW PASSED: ' + data)
-            expect(cameraObj.VideoStabilizationMode.LOW).assertEqual(1);
-          }
-         else {
-          console.info(TAG + 'Entering SET_VIDEOSTABILIZATIONMODELOW FAILED: ' + err.message)
-          expect().assertFail();
-        }
-        console.info(TAG + 'Entering SET_VIDEOSTABILIZATIONMODELOW ends here')
-        await sleep(1)
-        done()
-      })
-      await sleep(1)
-      done()
-    })
-    */
  
     /**
       * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_VIDEOSTABILIZATION_MODE_LOW_CALLBACK_0100
@@ -1479,68 +1357,6 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
  
     /**
-      * @tc.number    : ISVIDEOSTABILIZATIONMODESUPPORTED_MIDDLE
-      * @tc.name      : is VideoStabilization Mode Middle Supported 
-      * @tc.desc      : isVideoStabilizationModeSupported Middle async api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    /* VideoStabilizationMode Interface will be change
-    it('ISVIDEOSTABILIZATIONMODESUPPORTED_MIDDLE', 0, async function (done) {
-      console.info(TAG + 'Entering ISVIDEOSTABILIZATIONMODESUPPORTED_MIDDLE to operate')
-      captureSession.isVideoStabilizationModeSupported(cameraObj.VideoStabilizationMode.MIDDLE, async (err, data) => {
-        if (!err) {
-          console.info(TAG + 'Entering is VideoStabilization Mode middle Supported  success')
-          if (data != null || data != undefined) {
-            console.info(TAG + 'Entering isVideoStabilizationModeSupported data is not null || undefined')
-            expect(data).assertEqual(false)
-            console.info(TAG + 'Entering ISVIDEOSTABILIZATIONMODESUPPORTED_MIDDLE PASSED : ' + data)
-          }
-        } else {
-          console.info(TAG + 'Entering ISVIDEOSTABILIZATIONMODESUPPORTED_MIDDLE FAILED: ' + err.message)
-          expect().assertFail()
-        }
-        console.info(TAG + 'Entering ISVIDEOSTABILIZATIONMODESUPPORTED_MIDDLE ends here')
-        await sleep(1)
-        done()
-      })
-      await sleep(1)
-      done()
-    })
-    */
- 
-    /**
-      * @tc.number    : SET_VIDEOSTABILIZATIONMODEMIDDLE
-      * @tc.name      : SetVideoStabilizationModeMedium
-      * @tc.desc      : SetVideoStabilizationModeMedium async api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    /* VideoStabilizationMode Interface will be change
-    it('SET_VIDEOSTABILIZATIONMODEMIDDLE', 0, async function (done) {
-      console.info(TAG + 'Entering SET_VIDEOSTABILIZATIONMODEMIDDLE to operate')
-      captureSession.setVideoStabilizationMode(cameraObj.VideoStabilizationMode.MIDDLE, async (err, data) => {
-        if (!err) {
-          console.info(TAG + 'Entering Create Set VideoStabilization Mode middle success')
-            console.info(TAG + 'Entering SET_VIDEOSTABILIZATIONMODEMIDDLE FAILED: ' + data)
-            expect().assertFail();
-          }
-         else {
-          console.info(TAG + 'Entering SET_VIDEOSTABILIZATIONMODEMIDDLE PASSED: ' + err.message)
-          expect(true).assertTrue();
-        }
-        console.info(TAG + 'Entering SET_VIDEOSTABILIZATIONMODEMIDDLE ends here')
-        await sleep(1)
-        done()
-      })
-      await sleep(1)
-      done()
-    })
-    */
- 
-    /**
       * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_VIDEOSTABILIZATION_MODE_MIDDLE_CALLBACK_0100
       * @tc.name      : getVideoStabilizationModeMedium 
       * @tc.desc      : getVideoStabilizationModeMedium async api
@@ -1570,66 +1386,6 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
  
     /**
-      * @tc.number    : ISVIDEOSTABILIZATIONMODESUPPORTED_HIGH
-      * @tc.name      : is VideoStabilization Mode High Supported 
-      * @tc.desc      : isVideoStabilizationModeSupported High async api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    /* VideoStabilizationMode Interface will be change
-    it('ISVIDEOSTABILIZATIONMODESUPPORTED_HIGH', 0, async function (done) {
-      console.info(TAG + 'Entering ISVIDEOSTABILIZATIONMODESUPPORTED_HIGH to operate')
-      captureSession.isVideoStabilizationModeSupported(cameraObj.VideoStabilizationMode.HIGH, async (err, data) => {
-        if (!err) {
-          console.info(TAG + 'Entering is VideoStabilization Mode High Supported  success')
-            expect(data).assertEqual(false)
-            console.info(TAG + 'Entering ISVIDEOSTABILIZATIONMODESUPPORTED_HIGH PASSED : ' + data)
-          }
-         else {
-          console.info(TAG + 'Entering ISVIDEOSTABILIZATIONMODESUPPORTED_HIGH FAILED: ' + err.message)
-          expect().assertFail()
-        }
-        console.info(TAG + 'Entering ISVIDEOSTABILIZATIONMODESUPPORTED_HIGH ends here')
-        await sleep(1)
-        done()
-      })
-      await sleep(1)
-      done()
-    })
-    */
- 
-    /**
-      * @tc.number    : SET_VIDEOSTABILIZATIONMODEHIGH
-      * @tc.name      : SetVideoStabilizationModeHigh
-      * @tc.desc      : SetVideoStabilizationModeHigh async api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    /* VideoStabilizationMode Interface will be change
-    it('SET_VIDEOSTABILIZATIONMODEHIGH', 0, async function (done) {
-      console.info(TAG + 'Entering SET_VIDEOSTABILIZATIONMODEHIGH to operate')
-      captureSession.setVideoStabilizationMode(cameraObj.VideoStabilizationMode.HIGH, async (err, data) => {
-        if (!err) {
-          console.info(TAG + 'Entering Create Set VideoStabilization Mode High success')
-            console.info(TAG + 'Entering SET_VIDEOSTABILIZATIONMODEHIGH FAILED: ' + data)
-            expect().assertFail();
-          }
-         else {
-          console.info(TAG + 'Entering SET_VIDEOSTABILIZATIONMODEHIGH PASSED: ' + err.message)
-          expect(true).assertTrue();
-        }
-        console.info(TAG + 'Entering SET_VIDEOSTABILIZATIONMODEHIGH ends here')
-        await sleep(1)
-        done()
-      })
-      await sleep(1)
-      done()
-    })
-    */
- 
-    /**
       * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_VIDEOSTABILIZATION_MODE_HIGH_CALLBACK_0100
       * @tc.name      : getVideoStabilizationModeHigh 
       * @tc.desc      : getVideoStabilizationModeHigh async api
@@ -1657,68 +1413,6 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
       await sleep(1);
       done();
     })
- 
-    /**
-      * @tc.number    : ISVIDEOSTABILIZATIONMODESUPPORTED_AUTO
-      * @tc.name      : is VideoStabilization Mode Auto Supported 
-      * @tc.desc      : isVideoStabilizationModeSupported Auto async api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    /* VideoStabilizationMode Interface will be change
-    it('ISVIDEOSTABILIZATIONMODESUPPORTED_AUTO', 0, async function (done) {
-      console.info(TAG + 'Entering ISVIDEOSTABILIZATIONMODESUPPORTED_AUTO to operate')
-      captureSession.isVideoStabilizationModeSupported(cameraObj.VideoStabilizationMode.AUTO, async (err, data) => {
-        if (!err) {
-          console.info(TAG + 'Entering is VideoStabilization Mode Auto Supported  success')
-          if (data != null || data != undefined) {
-            console.info(TAG + 'Entering isVideoStabilizationModeSupported data is not null || undefined')
-            expect(data).assertEqual(false)
-            console.info(TAG + 'Entering ISVIDEOSTABILIZATIONMODESUPPORTED_AUTO PASSED : ' + data)
-          }
-        } else {
-          console.info(TAG + 'Entering ISVIDEOSTABILIZATIONMODESUPPORTED_AUTO FAILED: ' + err.message)
-          expect().assertFail()
-        }
-        console.info(TAG + 'Entering ISVIDEOSTABILIZATIONMODESUPPORTED_AUTO ends here')
-        await sleep(1)
-        done()
-      })
-      await sleep(1)
-      done()
-    })
-    */
- 
-    /**
-      * @tc.number    : SET_VIDEOSTABILIZATIONMODEAUTO
-      * @tc.name      : SetVideoStabilizationModeAuto
-      * @tc.desc      : SetVideoStabilizationModeAuto async api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    /* VideoStabilizationMode Interface will be change
-    it('SET_VIDEOSTABILIZATIONMODEAUTO', 0, async function (done) {
-      console.info(TAG + 'Entering SET_VIDEOSTABILIZATIONMODEAUTO to operate')
-      captureSession.setVideoStabilizationMode(cameraObj.VideoStabilizationMode.AUTO, async (err, data) => {
-        if (!err) {
-          console.info(TAG + 'Entering Create Set VideoStabilization Mode auto success')
-            console.info(TAG + 'Entering SET_VIDEOSTABILIZATIONMODEAUTO FAILED: ' + data)
-            expect().assertFail();
-          }
-         else {
-          console.info(TAG + 'Entering SET_VIDEOSTABILIZATIONMODEAUTO PASSED: ' + err.message)
-          expect(true).assertTrue();
-        }
-        console.info(TAG + 'Entering SET_VIDEOSTABILIZATIONMODEAUTO ends here')
-        await sleep(1)
-        done()
-      })
-      await sleep(1)
-      done()
-    })
-    */
  
     /**
       * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_VIDEOSTABILIZATION_MODE_AUTO_CALLBACK_0100
@@ -3281,68 +2975,6 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : IS_EXPOSURE_MODE_LOCKED_SUPPORTED
-      * @tc.name      : check if exposure mode locked is supported-camera0Input api
-      * @tc.desc      : check if exposure mode locked is supported-camera0Input api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    /* EXPOSUREMODE Interface will be change
-    it('IS_EXPOSURE_MODE_LOCKED_SUPPORTED', 0, async function (done) {
-      console.info(TAG + "Entering IS_EXPOSURE_MODE_LOCKED_SUPPORTED to operate");
-      camera0Input.isExposureModeSupported(cameraObj.ExposureMode.EXPOSURE_MODE_LOCKED, async (err, data) => {
-        if (!err) {
-          console.info(TAG + "Entering Is Exposure Mode Locked supported SUCCESS ");
-          if (data != null || data != undefined) {
-            console.info(TAG + "Entering Is Exposure Mode Locked supported data is not null || undefined");
-            console.info(TAG + "Exposure_Mode_Locked_Supported is: " + data);
-            expect(data).assertEqual(false);
-            console.info(TAG + "Entering IS_EXPOSURE_MODE_LOCKED_SUPPORTED PASSED: ");
-          }
-        } else {
-          console.info(TAG + "IS_EXPOSURE_MODE_LOCKED_SUPPORTED FAILED : " + err.message);
-          expect().assertFail();
-          console.info(TAG + "IS_EXPOSURE_MODE_LOCKED_SUPPORTED ends here");
-        }
-        await sleep(1);
-        done();
-      })
-      await sleep(1);
-      done();
-    })
-    */
-
-    /**
-      * @tc.number    : SET_EXPOSURE_MODE_LOCKED
-      * @tc.name      : set exposure mode locked camera0 api
-      * @tc.desc      : set exposure mode locked camera0 api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    /* EXPOSUREMODE Interface will be change
-    it('SET_EXPOSURE_MODE_LOCKED', 0, async function (done) {
-      console.info(TAG + "Entering SET_EXPOSURE_MODE_LOCKED to operate");
-      camera0Input.setExposureMode(cameraObj.ExposureMode.EXPOSURE_MODE_LOCKED, async (err, data) => {
-        if (!err) {
-          console.info(TAG + "Entering Set Exposure Mode Locked, current ExposureMode is: " + cameraObj.ExposureMode.EXPOSURE_MODE_LOCKED);
-          console.info(TAG + "Entering SET_EXPOSURE_MODE_LOCKED FAILED")
-          expect().assertFail();
-        } else {
-          console.info(TAG + "Entering SET_EXPOSURE_MODE_LOCKED PASSED : " + err.message);
-          expect(true).assertTrue();
-          console.info(TAG + "Entering SET_EXPOSURE_MODE_LOCKED ends here");
-        }
-        await sleep(1);
-        done();
-      })
-      await sleep(1);
-      done();
-    })
-    */
-
-    /**
       * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_MODE_LOCKED_CALLBACK_0100
       * @tc.name      : get exposure mode locked camera0 api
       * @tc.desc      : get exposure mode locked camera0 api
@@ -3512,70 +3144,6 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : IS_EXPOSURE_MODE_AUTO_SUPPORTED
-      * @tc.name      : check if exposure mode auto is supported-camera0Input api
-      * @tc.desc      : check if exposure mode auto is supported-camera0Input api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    /* EXPOSUREMODE Interface will be change
-    it('IS_EXPOSURE_MODE_AUTO_SUPPORTED', 0, async function (done) {
-      console.info(TAG + "Entering IS_EXPOSURE_MODE_AUTO_SUPPORTED to operate");
-      camera0Input.isExposureModeSupported(cameraObj.ExposureMode.EXPOSURE_MODE_AUTO, async (err, data) => {
-        if (!err) {
-          console.info(TAG + "Entering Is Exposure Mode Auto supported SUCCESS ");
-          if (data != null || data != undefined) {
-            console.info(TAG + "Entering Is Exposure Mode Auto supported data is not null || undefined");
-            console.info(TAG + "Exposure_Mode_Auto_Supported is: " + data);
-            expect(data).assertEqual(true);
-            console.info(TAG + "Entering IS_EXPOSURE_MODE_AUTO_SUPPORTED PASSED: ");
-          }
-        } else {
-          console.info(TAG + "IS_EXPOSURE_MODE_AUTO_SUPPORTED FAILED : " + err.message);
-          expect().assertFail();
-          console.info(TAG + "IS_EXPOSURE_MODE_AUTO_SUPPORTED ends here");
-        }
-        await sleep(1);
-        done();
-      })
-      await sleep(1);
-      done();
-    })
-    */
-
-    /**
-      * @tc.number    : SET_EXPOSURE_MODE_AUTO
-      * @tc.name      : set exposure mode auto camera0 api
-      * @tc.desc      : set exposure mode auto camera0 api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    /* EXPOSUREMODE Interface will be change
-    it('SET_EXPOSURE_MODE_AUTO', 0, async function (done) {
-      console.info(TAG + "Entering SET_EXPOSURE_MODE_AUTO to operate");
-      camera0Input.setExposureMode(cameraObj.ExposureMode.EXPOSURE_MODE_AUTO, async (err, data) => {
-        if (!err) {
-          console.info(TAG + "Entering Set Exposure Mode auto,current ExposureMode is: " + cameraObj.ExposureMode.EXPOSURE_MODE_AUTO);
-          if (data != null || data != undefined) {
-            expect(cameraObj.ExposureMode.EXPOSURE_MODE_AUTO).assertEqual(1);
-            console.info(TAG + "Entering SET_EXPOSURE_MODE_AUTO PASSED")
-          }
-        } else {
-          console.info(TAG + "Entering SET_EXPOSURE_MODE_AUTO FAILED : " + err.message);
-          expect().assertFail();
-          console.info(TAG + "Entering SET_EXPOSURE_MODE_AUTO ends here");
-        }
-        await sleep(1);
-        done();
-      })
-      await sleep(1);
-      done();
-    })
-    */
-
-    /**
       * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_MODE_AUTO_CALLBACK_0100
       * @tc.name      : get exposure mode auto camera0 api
       * @tc.desc      : get exposure mode auto camera0 api
@@ -3716,68 +3284,6 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
       await sleep(1);
       done();
     })
-
-    /**
-      * @tc.number    : IS_EXPOSURE_MODE_CONTINUOUS_AUTO_SUPPORTED
-      * @tc.name      : check if exposure mode continuous auto is supported-camera0Input api
-      * @tc.desc      : check if exposure mode continuous auto is supported-camera0Input api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    /* EXPOSUREMODE Interface will be change
-    it('IS_EXPOSURE_MODE_CONTINUOUS_AUTO_SUPPORTED', 0, async function (done) {
-      console.info(TAG + "Entering IS_EXPOSURE_MODE_CONTINUOUS_AUTO_SUPPORTED to operate");
-      camera0Input.isExposureModeSupported(cameraObj.ExposureMode.EXPOSURE_MODE_CONTINUOUS_AUTO, async (err, data) => {
-        if (!err) {
-          console.info(TAG + "Entering Is Exposure Mode continuous Auto supported SUCCESS ");
-          if (data != null || data != undefined) {
-            console.info(TAG + "Entering Is Exposure Mode continuous Auto supported data is not null || undefined");
-            console.info(TAG + "Exposure_Mode_continuous_Auto_Supported is: " + data);
-            expect(data).assertEqual(false);
-            console.info(TAG + "Entering IS_EXPOSURE_MODE_CONTINUOUS_AUTO_SUPPORTED PASSED: ");
-          }
-        } else {
-          console.info(TAG + "IS_EXPOSURE_MODE_CONTINUOUS_AUTO_SUPPORTED FAILED : " + err.message);
-          expect().assertFail();
-          console.info(TAG + "IS_EXPOSURE_MODE_CONTINUOUS_AUTO_SUPPORTED ends here");
-        }
-        await sleep(1);
-        done();
-      })
-      await sleep(1);
-      done();
-    })
-    */
-
-    /**
-      * @tc.number    : SET_EXPOSURE_MODE_CONTINUOUS_AUTO
-      * @tc.name      : set exposure mode continuous auto camera0 api
-      * @tc.desc      : set exposure mode continuous auto camera0 api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    /* EXPOSUREMODE Interface will be change
-    it('SET_EXPOSURE_MODE_CONTINUOUS_AUTO', 0, async function (done) {
-      console.info(TAG + "Entering SET_EXPOSURE_MODE_CONTINUOUS_AUTO to operate");
-      camera0Input.setExposureMode(cameraObj.ExposureMode.EXPOSURE_MODE_CONTINUOUS_AUTO, async (err, data) => {
-        if (!err) {
-          console.info(TAG + "Entering Set Exposure Mode continuous auto,current ExposureMode is: " + cameraObj.ExposureMode.EXPOSURE_MODE_CONTINUOUS_AUTO);
-          console.info(TAG + "Entering SET_EXPOSURE_MODE_CONTINUOUS_AUTO FAILED")
-          expect().AssertFail();
-        } else {
-          console.info(TAG + "Entering SET_EXPOSURE_MODE_CONTINUOUS_AUTO PASSED : " + err.message);
-          expect(true).assertTrue();
-          console.info(TAG + "Entering SET_EXPOSURE_MODE_CONTINUOUS_AUTO ends here");
-        }
-        await sleep(1);
-        done();
-      })
-      await sleep(1);
-      done();
-    })
-    */
 
     /**
       * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_EXPOSURE_MODE_CONTINUOUS_AUTO_CALLBACK_0100
