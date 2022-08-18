@@ -4915,178 +4915,168 @@ describe('audioManager', function () {
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_interrupt_001
+                * @tc.number    : SUB_AUDIO_MANAGER_INTERRUPT_001
                 * @tc.name      : InterruptType - INTERRUPT_TYPE_BEGIN
                 * @tc.desc      : InterruptType - INTERRUPT_TYPE_BEGIN
                 * @tc.size      : MEDIUM
                 * @tc.type      : Function
                 * @tc.level     : Level 0
             */
-    it('SUB_AUDIO_MANAGER_interrupt_001', 0, async function (done) {
-
+    it('SUB_AUDIO_MANAGER_INTERRUPT_001', 0, async function (done) {
         expect(audio.InterruptType.INTERRUPT_TYPE_BEGIN).assertEqual(1);
         await sleep(50);
         done();
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_interrupt_002
+                * @tc.number    : SUB_AUDIO_MANAGER_INTERRUPT_002
                 * @tc.name      : InterruptType - INTERRUPT_TYPE_END
                 * @tc.desc      : InterruptType - INTERRUPT_TYPE_END
                 * @tc.size      : MEDIUM
                 * @tc.type      : Function
                 * @tc.level     : Level 0
             */
-    it('SUB_AUDIO_MANAGER_interrupt_002', 0, async function (done) {
-
+    it('SUB_AUDIO_MANAGER_INTERRUPT_002', 0, async function (done) {
         expect(audio.InterruptType.INTERRUPT_TYPE_END).assertEqual(2);
         await sleep(50);
         done();
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_interrupt_003
+                * @tc.number    : SUB_AUDIO_MANAGER_INTERRUPT_003
                 * @tc.name      : InterruptHint - INTERRUPT_HINT_NONE
                 * @tc.desc      : InterruptHint - INTERRUPT_HINT_NONE
                 * @tc.size      : MEDIUM
                 * @tc.type      : Function
                 * @tc.level     : Level 0
             */
-    it('SUB_AUDIO_MANAGER_interrupt_003', 0, async function (done) {
-
+    it('SUB_AUDIO_MANAGER_INTERRUPT_003', 0, async function (done) {
         expect(audio.InterruptHint.INTERRUPT_HINT_NONE).assertEqual(0);
         await sleep(50);
         done();
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_interrupt_004
+                * @tc.number    : SUB_AUDIO_MANAGER_INTERRUPT_004
                 * @tc.name      : InterruptHint - INTERRUPT_HINT_RESUME
                 * @tc.desc      : InterruptHint - INTERRUPT_HINT_RESUME
                 * @tc.size      : MEDIUM
                 * @tc.type      : Function
                 * @tc.level     : Level 0
             */
-    it('SUB_AUDIO_MANAGER_interrupt_004', 0, async function (done) {
-
+    it('SUB_AUDIO_MANAGER_INTERRUPT_004', 0, async function (done) {
         expect(audio.InterruptHint.INTERRUPT_HINT_RESUME).assertEqual(1);
         await sleep(50);
         done();
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_interrupt_005
+                * @tc.number    : SUB_AUDIO_MANAGER_INTERRUPT_005
                 * @tc.name      : InterruptHint - INTERRUPT_HINT_PAUSE
                 * @tc.desc      : InterruptHint - INTERRUPT_HINT_PAUSE
                 * @tc.size      : MEDIUM
                 * @tc.type      : Function
                 * @tc.level     : Level 0
             */
-    it('SUB_AUDIO_MANAGER_interrupt_005', 0, async function (done) {
-
+    it('SUB_AUDIO_MANAGER_INTERRUPT_005', 0, async function (done) {
         expect(audio.InterruptHint.INTERRUPT_HINT_PAUSE).assertEqual(2);
         await sleep(50);
         done();
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_interrupt_006
+                * @tc.number    : SUB_AUDIO_MANAGER_INTERRUPT_006
                 * @tc.name      : InterruptHint - INTERRUPT_HINT_STOP
                 * @tc.desc      : InterruptHint - INTERRUPT_HINT_STOP
                 * @tc.size      : MEDIUM
                 * @tc.type      : Function
                 * @tc.level     : Level 0
             */
-    it('SUB_AUDIO_MANAGER_interrupt_006', 0, async function (done) {
-
+    it('SUB_AUDIO_MANAGER_INTERRUPT_006', 0, async function (done) {
         expect(audio.InterruptHint.INTERRUPT_HINT_STOP).assertEqual(3);
         await sleep(50);
         done();
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_interrupt_007
+                * @tc.number    : SUB_AUDIO_MANAGER_INTERRUPT_007
                 * @tc.name      : InterruptHint - INTERRUPT_HINT_DUCK
                 * @tc.desc      : InterruptHint - INTERRUPT_HINT_DUCK
                 * @tc.size      : MEDIUM
                 * @tc.type      : Function
                 * @tc.level     : Level 0
             */
-    it('SUB_AUDIO_MANAGER_interrupt_007', 0, async function (done) {
-
+    it('SUB_AUDIO_MANAGER_INTERRUPT_007', 0, async function (done) {
         expect(audio.InterruptHint.INTERRUPT_HINT_DUCK).assertEqual(4);
         await sleep(50);
         done();
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_interrupt_008
+                * @tc.number    : SUB_AUDIO_MANAGER_INTERRUPT_008
                 * @tc.name      : InterruptHint - INTERRUPT_HINT_UNDUCK
                 * @tc.desc      : InterruptHint - INTERRUPT_HINT_UNDUCK
                 * @tc.size      : MEDIUM
                 * @tc.type      : Function
                 * @tc.level     : Level 0
             */
-    it('SUB_AUDIO_MANAGER_interrupt_008', 0, async function (done) {
-
+    it('SUB_AUDIO_MANAGER_INTERRUPT_008', 0, async function (done) {
         expect(audio.InterruptHint.INTERRUPT_HINT_UNDUCK).assertEqual(5);
         await sleep(50);
         done();
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_interrupt_009
+                * @tc.number    : SUB_AUDIO_MANAGER_INTERRUPT_009
                 * @tc.name      : InterruptForceType - INTERRUPT_FORCE
                 * @tc.desc      : InterruptForceType - INTERRUPT_FORCE
                 * @tc.size      : MEDIUM
                 * @tc.type      : Function
                 * @tc.level     : Level 0
             */
-    it('SUB_AUDIO_MANAGER_interrupt_009', 0, async function (done) {
-
+    it('SUB_AUDIO_MANAGER_INTERRUPT_009', 0, async function (done) {
         expect(audio.InterruptForceType.INTERRUPT_FORCE).assertEqual(0);
         await sleep(50);
         done();
     })
 
     /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_interrupt_010
+                * @tc.number    : SUB_AUDIO_MANAGER_INTERRUPT_010
                 * @tc.name      : InterruptForceType - INTERRUPT_SHARE
                 * @tc.desc      : InterruptForceType - INTERRUPT_SHARE
                 * @tc.size      : MEDIUM
                 * @tc.type      : Function
                 * @tc.level     : Level 0
             */
-    it('SUB_AUDIO_MANAGER_interrupt_009', 0, async function (done) {
-
+    it('SUB_AUDIO_MANAGER_INTERRUPT_010', 0, async function (done) {
         expect(audio.InterruptForceType.INTERRUPT_SHARE).assertEqual(1);
         await sleep(50);
         done();
     })
 
     /* *
-             * @tc.number    : SUB_AUDIO_MANAGER_interrupt_010
+             * @tc.number    : SUB_AUDIO_MANAGER_INTERRUPT_011
              * @tc.name      : ActiveDeviceType - BLUETOOTH_SCO
              * @tc.desc      : ActiveDeviceType - BLUETOOTH_SCO
              * @tc.size      : MEDIUM
              * @tc.type      : Function
              * @tc.level     : Level 0
          */
-    it('SUB_AUDIO_MANAGER_interrupt_010', 0, async function (done) {
+    it('SUB_AUDIO_MANAGER_INTERRUPT_011', 0, async function (done) {
         expect(audio.ActiveDeviceType.BLUETOOTH_SCO).assertEqual(7);
         await sleep(50);
         done();
     })
 
     /* *
-              * @tc.number    : SUB_AUDIO_MANAGER_interrupt_011
+              * @tc.number    : SUB_AUDIO_MANAGER_INTERRUPT_012
               * @tc.name      : ActiveDeviceType - SPEAKER
               * @tc.desc      : ActiveDeviceType - SPEAKER
               * @tc.size      : MEDIUM
               * @tc.type      : Function
               * @tc.level     : Level 0
           */
-    it('SUB_AUDIO_MANAGER_interrupt_011', 0, async function (done) {
+    it('SUB_AUDIO_MANAGER_INTERRUPT_012', 0, async function (done) {
         expect(audio.ActiveDeviceType.SPEAKER).assertEqual(2);
         await sleep(50);
         done();
@@ -5122,8 +5112,8 @@ describe('audioManager', function () {
 
     /* *
             * @tc.number    : SUB_AUDIO_MANAGER_DeviceType_001
-            * @tc.name      : DeviceType - BLUETOOTH_SCO
-            * @tc.desc      : DeviceType - BLUETOOTH_SCO
+            * @tc.name      : DeviceType - ALL Device Type
+            * @tc.desc      : DeviceType - ALL Device Type
             * @tc.size      : MEDIUM
             * @tc.type      : Function
             * @tc.level     : Level 0
@@ -5147,6 +5137,410 @@ describe('audioManager', function () {
         console.info("audio.DeviceType.MIC:"+audio.DeviceType.MIC);
         expect(audio.DeviceType.USB_HEADSET).assertEqual(22);
         console.info("audio.DeviceType.USB_HEADSET:"+audio.DeviceType.USB_HEADSET);
+        await sleep(50);
+        done();
+    })
+	
+	/* *
+            * @tc.number    : SUB_AUDIO_MANAGER_DeviceRole_001
+            * @tc.name      : DeviceRole - ALL Device Role
+            * @tc.desc      : DeviceRole - ALL Device Role
+            * @tc.size      : MEDIUM
+            * @tc.type      : Function
+            * @tc.level     : Level 0
+        */
+    it('SUB_AUDIO_MANAGER_DeviceRole_001', 0, async function (done) {
+        expect(audio.DeviceRole.INPUT_DEVICE ).assertEqual(1);
+        console.info("audio.DeviceRole.INPUT_DEVICE :"+audio.DeviceRole.INPUT_DEVICE);
+        expect(audio.DeviceRole.OUTPUT_DEVICE ).assertEqual(2);
+        console.info("audio.DeviceRole.OUTPUT_DEVICE :"+audio.DeviceRole.OUTPUT_DEVICE );
+        await sleep(50);
+        done();
+    })
+	
+	/* *
+            * @tc.number    : SUB_AUDIO_ROUTING_MANAGER_getDevices_001
+            * @tc.name      : getDevices - Output device - Callback
+            * @tc.desc      : getDevices - Output device
+            * @tc.size      : MEDIUM
+            * @tc.type      : Function
+            * @tc.level     : Level 0
+        */
+    it('SUB_AUDIO_ROUTING_MANAGER_getDevices_001', 0, async function (done) {
+        dRValue = null;
+        dTValue = null;
+        devId = null;
+        devName = null;
+        devAddr = null;
+        sRate = null;
+        cCount = null;
+        cMask = null;
+        let AudioRoutingManager = await audioManager.getRoutingManager();
+        AudioRoutingManager.getDevices(1, (err, value) => {
+            // Getting all Output devices Enumb 1 = OUTPUT_DEVICES_FLAG
+            console.info('AudioFrameworkTest: Callback: getDevices OUTPUT_DEVICES_FLAG');
+
+            if (err) {
+                console.error(`AudioFrameworkTest:Callback: OUTPUT_DEVICES_FLAG: failed to get devices ${err.message}`);
+                expect().assertFail();
+            }
+            else {
+                console.info('AudioFrameworkTest: Callback: getDevices OUTPUT_DEVICES_FLAG');
+                value.forEach(displayDeviceProp);
+
+                if (dTValue != null && dRValue != null && devId > 0 && sRate != null && cCount != null &&
+                     cMask != null) {
+                    console.info('AudioFrameworkTest: Callback: getDevices : OUTPUT_DEVICES_FLAG :  PASS');
+                    expect(true).assertTrue();
+                }
+                else {
+                    console.info('AudioFrameworkTest: Callback: getDevices : OUTPUT_DEVICES_FLAG :  FAIL');
+                    expect(false).assertTrue();
+                }
+            }
+            done();
+        });
+    })
+
+    /* *
+            * @tc.number    : SUB_AUDIO_ROUTING_MANAGER_getDevices_002
+            * @tc.name      : getDevices - Input device - Callback
+            * @tc.desc      : getDevices - Input device
+            * @tc.size      : MEDIUM
+            * @tc.type      : Function
+            * @tc.level     : Level 0
+        */
+    it('SUB_AUDIO_ROUTING_MANAGER_getDevices_002', 0, async function (done) {
+        dRValue = null;
+        dTValue = null;
+        devId = null;
+        devName = null;
+        devAddr = null;
+        sRate = null;
+        cCount = null;
+        cMask = null;
+        let AudioRoutingManager = await audioManager.getRoutingManager();
+        AudioRoutingManager.getDevices(2, (err, value) => {
+            // Getting all Input Devices ENUM 2 = INPUT_DEVICES_FLAG
+
+            console.info('AudioFrameworkTest: Callback: getDevices INPUT_DEVICES_FLAG');
+
+            if (err) {
+                console.error(`AudioFrameworkTest:Callback:INPUT_DEVICES_FLAG: failed to get devices ${err.message}`);
+                expect().assertFail();
+            }
+            else {
+                console.info('AudioFrameworkTest: Callback: getDevices INPUT_DEVICES_FLAG');
+                value.forEach(displayDeviceProp);
+
+                if (dTValue != null && dRValue != null && devId > 0 && sRate != null && cCount != null 
+                    && cMask != null) {
+                    console.info('AudioFrameworkTest: Callback: getDevices : INPUT_DEVICES_FLAG:  PASS');
+                    expect(true).assertTrue();
+                }
+                else {
+                    console.info('AudioFrameworkTest: Callback: getDevices : INPUT_DEVICES_FLAG:  FAIL');
+                    expect(false).assertTrue();
+                }
+            }
+            done();
+        });
+    })
+
+    /* *
+            * @tc.number    : SUB_AUDIO_ROUTING_MANAGER_getDevices_003
+            * @tc.name      : getDevices - ALL device - Callback
+            * @tc.desc      : getDevices - ALL device
+            * @tc.size      : MEDIUM
+            * @tc.type      : Function
+            * @tc.level     : Level 0
+        */
+    it('SUB_AUDIO_ROUTING_MANAGER_getDevices_003', 0, async function (done) {
+        dRValue = null;
+        dTValue = null;
+        devId = null;
+        devName = null;
+        devAddr = null;
+        sRate = null;
+        cCount = null;
+        cMask = null;
+        let AudioRoutingManager = await audioManager.getRoutingManager();
+        AudioRoutingManager.getDevices(3, (err, value) => {
+            // Getting all devies connected 3 = ALL_DEVICES_FLAG
+
+            console.info('AudioFrameworkTest: Callback: getDevices ALL_DEVICES_FLAG');
+
+            if (err) {
+                console.error(`AudioFrameworkTest:Callback:ALL_DEVICES_FLAG: failed to get devices ${err.message}`);
+                expect().assertFail();
+            }
+            else {
+                console.info('AudioFrameworkTest: Callback: getDevices ALL_DEVICES_FLAG');
+                value.forEach(displayDeviceProp);
+
+                if (dTValue != null && dRValue != null && devId > 0 && sRate != null && cCount != null && 
+                    cMask != null) {
+                    console.info('AudioFrameworkTest: Callback: getDevices : ALL_DEVICES_FLAG:  PASS');
+                    expect(true).assertTrue();
+                }
+                else {
+                    console.info('AudioFrameworkTest: Callback: getDevices : ALL_DEVICES_FLAG:  FAIL');
+                    expect(false).assertTrue();
+                }
+            }
+            done();
+        });
+    })
+
+    /* *
+            * @tc.number    : SUB_AUDIO_ROUTING_MANAGER_getDevices_004
+            * @tc.name      : getDevices - Output device - Callback - ENAME
+            * @tc.desc      : getDevices - Output device
+            * @tc.size      : MEDIUM
+            * @tc.type      : Function
+            * @tc.level     : Level 0
+        */
+    it('SUB_AUDIO_ROUTING_MANAGER_getDevices_004', 0, async function (done) {
+        dRValue = null;
+        dTValue = null;
+        devId = null;
+        devName = null;
+        devAddr = null;
+        sRate = null;
+        cCount = null;
+        cMask = null;
+        let AudioRoutingManager = await audioManager.getRoutingManager();
+        AudioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG, (err, value) => {
+            console.info('AudioFrameworkTest: Callback: getDevices OUTPUT_DEVICES_FLAG');
+            if (err) {
+                console.error(`AudioFrameworkTest:Callback:OUTPUT_DEVICES_FLAG:failed to get devices ${err.message}`);
+                expect().assertFail();
+            }
+            else {
+                console.info('AudioFrameworkTest: Callback: getDevices OUTPUT_DEVICES_FLAG');
+                value.forEach(displayDeviceProp);
+                if (dTValue != null && dRValue != null && devId > 0 && sRate != null && cCount != null && 
+                    cMask != null) {
+                    console.info('AudioFrameworkTest: Callback: getDevices : OUTPUT_DEVICES_FLAG :  PASS');
+                    expect(true).assertTrue();
+                }
+                else {
+                    console.info('AudioFrameworkTest: Callback: getDevices : OUTPUT_DEVICES_FLAG :  FAIL');
+                    expect(false).assertTrue();
+                }
+            }
+            done();
+        });
+    })
+
+    /* *
+            * @tc.number    : SUB_AUDIO_ROUTING_MANAGER_getDevices_005
+            * @tc.name      : getDevices - Input device - Callback - ENAME
+            * @tc.desc      : getDevices - Input device
+            * @tc.size      : MEDIUM
+            * @tc.type      : Function
+            * @tc.level     : Level 0
+        */
+    it('SUB_AUDIO_ROUTING_MANAGER_getDevices_005', 0, async function (done) {
+        dRValue = null;
+        dTValue = null;
+        devId = null;
+        devName = null;
+        devAddr = null;
+        sRate = null;
+        cCount = null;
+        cMask = null;
+        let AudioRoutingManager = await audioManager.getRoutingManager();
+        AudioRoutingManager.getDevices(audio.DeviceFlag.INPUT_DEVICES_FLAG, (err, value) => {
+            console.info('AudioFrameworkTest: Callback: getDevices INPUT_DEVICES_FLAG');
+            if (err) {
+                console.error(`AudioFrameworkTest:Callback:INPUT_DEVICES_FLAG: failed to get devices ${err.message}`);
+                expect().assertFail();
+            }
+            else {
+                console.info('AudioFrameworkTest: Callback: getDevices INPUT_DEVICES_FLAG');
+                value.forEach(displayDeviceProp);
+
+                if (dTValue != null && dRValue != null && devId > 0 && sRate != null && cCount != null && 
+                    cMask != null) {
+                    console.info('AudioFrameworkTest: Callback: getDevices : INPUT_DEVICES_FLAG:  PASS');
+                    expect(true).assertTrue();
+                }
+                else {
+                    console.info('AudioFrameworkTest: Callback: getDevices : INPUT_DEVICES_FLAG:  FAIL');
+                    expect(false).assertTrue();
+                }
+            }
+            done();
+        });
+    })
+
+    /* *
+            * @tc.number    : SUB_AUDIO_ROUTING_MANAGER_getDevices_006
+            * @tc.name      : getDevices - ALL device - Callback - ENAME
+            * @tc.desc      : getDevices - ALL device
+            * @tc.size      : MEDIUM
+            * @tc.type      : Function
+            * @tc.level     : Level 0
+        */
+    it('SUB_AUDIO_ROUTING_MANAGER_getDevices_006', 0, async function (done) {
+        dRValue = null;
+        dTValue = null;
+        devId = null;
+        devName = null;
+        devAddr = null;
+        sRate = null;
+        cCount = null;
+        cMask = null;
+        let AudioRoutingManager = await audioManager.getRoutingManager();
+        AudioRoutingManager.getDevices(audio.DeviceFlag.ALL_DEVICES_FLAG, (err, value) => {
+            console.info('AudioFrameworkTest: Callback: getDevices ALL_DEVICES_FLAG');
+            if (err) {
+                console.error(`AudioFrameworkTest: Callback: ALL_DEVICES_FLAG: failed to get devices ${err.message}`);
+                expect().assertFail();
+            }
+            else {
+                console.info('AudioFrameworkTest: Callback: getDevices ALL_DEVICES_FLAG');
+                value.forEach(displayDeviceProp);
+                if (dTValue != null && dRValue != null && devId > 0 && sRate != null && cCount != null && 
+                    cMask != null) {
+                    console.info('AudioFrameworkTest: Callback: getDevices : ALL_DEVICES_FLAG:  PASS');
+                    expect(true).assertTrue();
+                }
+                else {
+                    console.info('AudioFrameworkTest: Callback: getDevices : ALL_DEVICES_FLAG:  FAIL');
+                    expect(false).assertTrue();
+                }
+            }
+            done();
+        });
+    })
+    
+    /* *
+            * @tc.number    : SUB_AUDIO_ROUTING_MANAGER_getDevices_008
+            * @tc.name      : getDevices - OUTPUT device - Promise - ENAME
+            * @tc.desc      : getDevices - OUTPUT device
+            * @tc.size      : MEDIUM
+            * @tc.type      : Function
+            * @tc.level     : Level 0
+        */
+    it('SUB_AUDIO_ROUTING_MANAGER_getDevices_008', 0, async function (done) {
+        dRValue = null;
+        dTValue = null;
+        devId = null;
+        devName = null;
+        devAddr = null;
+        sRate = null;
+        cCount = null;
+        cMask = null;
+        let AudioRoutingManager = await audioManager.getRoutingManager();
+        let value = await AudioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG);
+        console.info('AudioFrameworkTest: Promise: getDevices OUTPUT_DEVICES_FLAG');
+        value.forEach(displayDeviceProp);
+        if (dTValue != null && dRValue != null && devId > 0 && sRate != null && cCount != null &&
+                cMask != null) {
+            console.info('AudioFrameworkTest: Promise: getDevices:OUTPUT_DEVICES_FLAG : PASS');
+            expect(true).assertTrue();
+        }
+        else {
+            console.info('AudioFrameworkTest: Promise: getDevices:OUTPUT_DEVICES_FLAG : FAIL');
+            expect(false).assertTrue();
+        }
+        done();
+    })
+
+    /* *
+            * @tc.number    : SUB_AUDIO_ROUTING_MANAGER_getDevices_009
+            * @tc.name      : getDevices - INPUT device - Promise - ENAME
+            * @tc.desc      : getDevices - INPUT device
+            * @tc.size      : MEDIUM
+            * @tc.type      : Function
+            * @tc.level     : Level 0
+        */
+    it('SUB_AUDIO_ROUTING_MANAGER_getDevices_009', 0, async function (done) {
+        dRValue = null;
+        dTValue = null;
+        devId = null;
+        devName = null;
+        devAddr = null;
+        sRate = null;
+        cCount = null;
+        cMask = null;
+        audioManager.getRoutingManager(async (err,AudioRoutingManager)=>{
+            if (err) {
+                console.error(`AudioFrameworkTest: Callback: failed to get RoutingManager ${err.message}`);
+                expect().assertFail();
+            } else {
+                let value = await AudioRoutingManager.getDevices(audio.DeviceFlag.INPUT_DEVICES_FLAG)
+                console.info('AudioFrameworkTest: Promise: getDevices INPUT_DEVICES_FLAG');
+                value.forEach(displayDeviceProp);
+
+                if (dTValue != null && dRValue != null && devId > 0 && sRate != null && cCount != null &&
+                        cMask != null) {
+                    console.info('AudioFrameworkTest: Promise: getDevices : INPUT_DEVICES_FLAG :  PASS');
+                    expect(true).assertTrue();
+                }
+                else {
+                    console.info('AudioFrameworkTest: Promise: getDevices : INPUT_DEVICES_FLAG :  FAIL');
+                    expect(false).assertTrue();
+                }
+            }
+            done();
+        });
+    })
+
+    /* *
+            * @tc.number    : SUB_AUDIO_ROUTING_MANAGER_getDevices_010
+            * @tc.name      : getDevices - ALL device - Promise - ENAME
+            * @tc.desc      : getDevices - ALL device
+            * @tc.size      : MEDIUM
+            * @tc.type      : Function
+            * @tc.level     : Level 0
+        */
+    it('SUB_AUDIO_ROUTING_MANAGER_getDevices_010', 0, async function (done) {
+        dRValue = null;
+        dTValue = null;
+        devId = null;
+        devName = null;
+        devAddr = null;
+        sRate = null;
+        cCount = null;
+        cMask = null;
+        audioManager.getRoutingManager(async (err,AudioRoutingManager)=>{
+            if (err) {
+                console.error(`AudioFrameworkTest:Callback:failed to get RoutingManager ${err.message}`);
+                    expect().assertFail();
+            } else {
+                let value = await AudioRoutingManager.getDevices(audio.DeviceFlag.ALL_DEVICES_FLAG)
+                console.info('AudioFrameworkTest: Promise: getDevices ALL_DEVICES_FLAG');
+                value.forEach(displayDeviceProp);
+
+                if (dTValue != null && dRValue != null && devId > 0 && sRate != null && cCount != null &&
+                        cMask != null) {
+                    console.info('AudioFrameworkTest: Promise: getDevices : ALL_DEVICES_FLAG :  PASS');
+                    expect(true).assertTrue();
+                }
+                else {
+                    console.info('AudioFrameworkTest: Promise: getDevices : ALL_DEVICES_FLAG :  FAIL');
+                    expect(false).assertTrue();
+                }
+            }
+            done();
+        });
+    })
+
+    /* *
+            * @tc.number    : SUB_AUDIO_DeviceFlag_001
+            * @tc.name      : NONE_DEVICES_FLAG
+            * @tc.desc      : NONE_DEVICES_FLAG
+            * @tc.size      : MEDIUM
+            * @tc.type      : Function
+            * @tc.level     : Level 0
+            */
+    it('SUB_AUDIO_DeviceFlag_001', 0, async function (done) {
+        expect(audio.DeviceFlag.OUTPUT_DEVICES_FLAG).assertEqual(1);
+        expect(audio.DeviceFlag.INPUT_DEVICES_FLAG).assertEqual(2);
+        expect(audio.DeviceFlag.ALL_DEVICES_FLAG).assertEqual(3);
         await sleep(50);
         done();
     })
