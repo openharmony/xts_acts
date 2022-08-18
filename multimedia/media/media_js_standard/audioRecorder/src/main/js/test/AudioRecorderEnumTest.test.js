@@ -34,14 +34,14 @@ describe('AudioRecorderEnumTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_RECORDER_ENUM_AUDIO_OUTPUT_FORMAT_00_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_ENUM_AUDIO_OUTPUT_FORMAT_0100
         * @tc.name      : AudioOutputFormat
         * @tc.desc      : AudioOutputFormat Enumeration test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_AUDIO_RECORDER_ENUM_AUDIO_OUTPUT_FORMAT_00_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_ENUM_AUDIO_OUTPUT_FORMAT_0100', 0, async function (done) {
         expect(media.AudioOutputFormat.DEFAULT).assertEqual(0);
         expect(media.AudioOutputFormat.MPEG_4).assertEqual(2);
         expect(media.AudioOutputFormat.AMR_NB).assertEqual(3);
@@ -51,14 +51,14 @@ describe('AudioRecorderEnumTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_RECORDER_ENUM_AUDIO_ENCODER_00_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_ENUM_AUDIO_ENCODER_0100
         * @tc.name      : AudioOutputFormat
         * @tc.desc      : AudioOutputFormat Enumeration test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_AUDIO_RECORDER_ENUM_AUDIO_ENCODER_00_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_ENUM_AUDIO_ENCODER_0100', 0, async function (done) {
         expect(media.AudioEncoder.DEFAULT).assertEqual(0);
         expect(media.AudioEncoder.AMR_NB).assertEqual(1);
         expect(media.AudioEncoder.AMR_WB).assertEqual(2);
@@ -68,14 +68,14 @@ describe('AudioRecorderEnumTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_ENUM_CodecMimeType_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_ENUM_CodecMimeType_0100
         * @tc.name      : CodecMimeType
         * @tc.desc      : Test Enumerate CodecMimeType
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_AUDIO_DECODER_ENUM_CodecMimeType_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_ENUM_CodecMimeType_0100', 0, async function (done) {
         expect(media.CodecMimeType.AUDIO_AAC).assertEqual('audio/mp4a-latm');
         expect(media.CodecMimeType.AUDIO_VORBIS).assertEqual('audio/vorbis');
         expect(media.CodecMimeType.AUDIO_FLAC).assertEqual('audio/flac');

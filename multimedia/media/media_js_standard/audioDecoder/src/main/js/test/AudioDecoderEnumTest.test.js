@@ -45,14 +45,14 @@ describe('AudioDecoderEnum', function () {
     }
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_ENUM_AACProfile_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_ENUM_AACProfile_0100
         * @tc.name      : 001.AACProfile
         * @tc.desc      : Test Enumerate AACProfile
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_AUDIO_DECODER_ENUM_AACProfile_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_ENUM_AACProfile_0100', 0, async function (done) {
         expect(media.AACProfile.AAC_PROFILE_LC).assertEqual(0);
         expect(media.AACProfile.AAC_PROFILE_ELD).assertEqual(1);
         expect(media.AACProfile.AAC_PROFILE_ERLC).assertEqual(2);
@@ -64,14 +64,14 @@ describe('AudioDecoderEnum', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_ENUM_AudioCaps_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_ENUM_AudioCaps_0100
         * @tc.name      : 002.AudioCaps
         * @tc.desc      : Test Interface AudioCaps
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_AUDIO_DECODER_ENUM_AudioCaps_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_ENUM_AudioCaps_0100', 0, async function (done) {
         console.info("case test Test Interface AudioCaps");
         let audioDecodeProcessor;
         let audioCaps;
@@ -131,14 +131,14 @@ describe('AudioDecoderEnum', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_ENUM_AVCodecType_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_ENUM_AVCodecType_0100
         * @tc.name      : 003.AVCodecType
         * @tc.desc      : Test Enumerate AVCodecType
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_AUDIO_DECODER_ENUM_AVCodecType_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_ENUM_AVCodecType_0100', 0, async function (done) {
         expect(media.AVCodecType.AVCODEC_TYPE_VIDEO_ENCODER).assertEqual(0);
         expect(media.AVCodecType.AVCODEC_TYPE_VIDEO_DECODER).assertEqual(1);
         expect(media.AVCodecType.AVCODEC_TYPE_AUDIO_ENCODER).assertEqual(2);
