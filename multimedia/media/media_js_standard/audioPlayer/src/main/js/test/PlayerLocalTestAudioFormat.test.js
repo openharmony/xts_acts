@@ -122,7 +122,7 @@ describe('PlayerLocalTestAudioFormat', function () {
     }
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_FORMAT_MP3_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_MP3_0100
         * @tc.name      : 001.Playing mp3 streams
         * @tc.desc      : Format : MP3
                           Codec : MP3
@@ -133,12 +133,12 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_PLAYER_LOCAL_FORMAT_MP3_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_MP3_0100', 0, async function (done) {
         playSource('01.mp3', done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_FORMAT_MP3_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_MP3_0200
         * @tc.name      : 002.Playing mp3 streams
         * @tc.desc      : Format : MP3
                           Codec : MP3
@@ -149,12 +149,12 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_PLAYER_LOCAL_FORMAT_MP3_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_MP3_0200', 0, async function (done) {
         playSource('02.mp3', done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_FORMAT_MP3_0300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_MP3_0300
         * @tc.name      : 003.Playing mp3 streams
         * @tc.desc      : Format : MP3
                           Codec : MP3
@@ -165,12 +165,12 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_PLAYER_LOCAL_FORMAT_MP3_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_MP3_0300', 0, async function (done) {
         playSource('03.mp3', done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_FORMAT_MP3_0400
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_MP3_0400
         * @tc.name      : 004.Playing mp3 streams
         * @tc.desc      : Format : MP3
                           Codec : MP3
@@ -181,12 +181,12 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_PLAYER_LOCAL_FORMAT_MP3_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_MP3_0400', 0, async function (done) {
         playSource('04.mp3', done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_FORMAT_MP4_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_MP4_0100
         * @tc.name      : 001.Playing mp4 streams
         * @tc.desc      : Format : MP4
                           Codec : AAC LC
@@ -197,13 +197,13 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_PLAYER_LOCAL_FORMAT_MP4_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_MP4_0100', 0, async function (done) {
         playSource('47.mp4', done);
     })
 
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_FORMAT_MP4_0300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_MP4_0300
         * @tc.name      : 003.Playing mp4 streams
         * @tc.desc      : Format : MP4
                           Codec : AAC LC
@@ -214,12 +214,12 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_PLAYER_LOCAL_FORMAT_MP4_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_MP4_0300', 0, async function (done) {
         playSource('49.mp4', done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_FORMAT_MP4_0400
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_MP4_0400
         * @tc.name      : 004.Playing mp4 streams
         * @tc.desc      : Format : MP4
                           Codec : AAC LC
@@ -230,12 +230,12 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_PLAYER_LOCAL_FORMAT_MP4_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_MP4_0400', 0, async function (done) {
         playSource('50.mp4', done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_FORMAT_MP4_0500
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_MP4_0500
         * @tc.name      : 005.Playing mp4 streams
         * @tc.desc      : Format : MP4
                           Codec : AAC LC
@@ -246,12 +246,12 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_PLAYER_LOCAL_FORMAT_MP4_0500', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_MP4_0500', 0, async function (done) {
         playSource('51.mp4', done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_FORMAT_MP4_0600
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_MP4_0600
         * @tc.name      : 006.Playing mp4 streams
         * @tc.desc      : Format : MP4
                           Codec : AAC LC
@@ -262,12 +262,12 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_PLAYER_LOCAL_FORMAT_MP4_0600', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_MP4_0600', 0, async function (done) {
         playSource('54.mp4', done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_FORMAT_MP4_0700
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_MP4_0700
         * @tc.name      : 007.Playing mp4 streams
         * @tc.desc      : Format : MP4
                           Codec : MP3
@@ -278,12 +278,12 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_PLAYER_LOCAL_FORMAT_MP4_0700', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_MP4_0700', 0, async function (done) {
         playSource('64.mp4', done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_FORMAT_MP4_0800
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_MP4_0800
         * @tc.name      : 008.Playing mp4 streams
         * @tc.desc      : Format : MP4
                           Codec : MP3
@@ -294,12 +294,12 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_PLAYER_LOCAL_FORMAT_MP4_0800', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_MP4_0800', 0, async function (done) {
         playSource('65.mp4', done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_FORMAT_MP4_0900
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_MP4_0900
         * @tc.name      : 009.Playing mp4 streams
         * @tc.desc      : Format : MP4
                           Codec : MP3
@@ -310,12 +310,12 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_PLAYER_LOCAL_FORMAT_MP4_0900', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_MP4_0900', 0, async function (done) {
         playSource('66.mp4', done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_FORMAT_MP4_1000
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_MP4_1000
         * @tc.name      : 010.Playing mp4 streams
         * @tc.desc      : Format : MP4
                           Codec : MP3
@@ -326,12 +326,12 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_PLAYER_LOCAL_FORMAT_MP4_1000', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_MP4_1000', 0, async function (done) {
         playSource('67.mp4', done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_FORMAT_MP4_1100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_MP4_1100
         * @tc.name      : 011.Playing mp4 streams
         * @tc.desc      : Format : MP4
                           Codec : Vorbis
@@ -342,12 +342,12 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_PLAYER_LOCAL_FORMAT_MP4_1100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_MP4_1100', 0, async function (done) {
         playSource('92.mp4', done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_FORMAT_MP4_1200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_MP4_1200
         * @tc.name      : 012.Playing mp4 streams
         * @tc.desc      : Format : MP4
                           Codec : Vorbis
@@ -358,12 +358,12 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_PLAYER_LOCAL_FORMAT_MP4_1200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_MP4_1200', 0, async function (done) {
         playSource('93.mp4', done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_FORMAT_MP4_1300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_MP4_1300
         * @tc.name      : 013.Playing mp4 streams
         * @tc.desc      : Format : MP4
                           Codec : Vorbis
@@ -374,12 +374,12 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_PLAYER_LOCAL_FORMAT_MP4_1300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_MP4_1300', 0, async function (done) {
         playSource('94.mp4', done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_FORMAT_MP4_1400
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_MP4_1400
         * @tc.name      : 014.Playing mp4 streams
         * @tc.desc      : Format : MP4
                           Codec : Vorbis
@@ -390,12 +390,12 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_PLAYER_LOCAL_FORMAT_MP4_1400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_MP4_1400', 0, async function (done) {
         playSource('96.mp4', done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_FORMAT_MP4_1500
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_MP4_1500
         * @tc.name      : 015.Playing mp4 streams
         * @tc.desc      : Format : MP4
                           Codec : Vorbis
@@ -406,12 +406,12 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_PLAYER_LOCAL_FORMAT_MP4_1500', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_MP4_1500', 0, async function (done) {
         playSource('97.mp4', done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_FORMAT_MP4_1600
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_MP4_1600
         * @tc.name      : 016.Playing mp4 streams
         * @tc.desc      : Format : MP4
                           Codec : Vorbis
@@ -422,12 +422,12 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_PLAYER_LOCAL_FORMAT_MP4_1600', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_MP4_1600', 0, async function (done) {
         playSource('98.mp4', done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_FORMAT_M4A_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_M4A_0100
         * @tc.name      : 001.Playing m4a streams
         * @tc.desc      : Format : M4A
                           Codec : AAC LC
@@ -438,13 +438,13 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_PLAYER_LOCAL_FORMAT_M4A_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_M4A_0100', 0, async function (done) {
         playSource('55.m4a', done);
     })
 
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_FORMAT_M4A_0300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_M4A_0300
         * @tc.name      : 003.Playing m4a streams
         * @tc.desc      : Format : M4A
                           Codec : AAC LC
@@ -455,12 +455,12 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_PLAYER_LOCAL_FORMAT_M4A_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_M4A_0300', 0, async function (done) {
         playSource('57.m4a', done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_FORMAT_M4A_0400
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_M4A_0400
         * @tc.name      : 004.Playing m4a streams
         * @tc.desc      : Format : M4A
                           Codec : AAC LC
@@ -471,12 +471,12 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_PLAYER_LOCAL_FORMAT_M4A_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_M4A_0400', 0, async function (done) {
         playSource('58.m4a', done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_FORMAT_M4A_0500
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_M4A_0500
         * @tc.name      : 005.Playing m4a streams
         * @tc.desc      : Format : M4A
                           Codec : AAC LC
@@ -487,12 +487,12 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_PLAYER_LOCAL_FORMAT_M4A_0500', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_M4A_0500', 0, async function (done) {
         playSource('59.m4a', done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_PLAYER_LOCAL_FORMAT_M4A_0700
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_M4A_0700
         * @tc.name      : 007.Playing m4a streams
         * @tc.desc      : Format : M4A
                           Codec : AAC LC
@@ -503,7 +503,7 @@ describe('PlayerLocalTestAudioFormat', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_PLAYER_LOCAL_FORMAT_M4A_0700', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_LOCAL_FORMAT_M4A_0700', 0, async function (done) {
         playSource('62.m4a', done);
     })
 })
