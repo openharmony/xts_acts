@@ -81,7 +81,7 @@ describe('ImageCreator', function () {
                     return
                 }
                 img.getComponent(JPEG, async (err, component) => {
-                    if (err != undefined) {
+                    if (err != 0) {
                         expect(false).assertTrue();
                         console.log(`${testNum} getComponent err:` + err);
                         done();
@@ -462,7 +462,7 @@ describe('ImageCreator', function () {
                     return;
                 }
                 img.getComponent(JPEG, (err, component) => {
-                    if (err != undefined) {
+                    if (err != 0) {
                         expect(false).assertTrue();
                         done();
                         return;
@@ -565,7 +565,7 @@ describe('ImageCreator', function () {
         var creator = image.createImageCreator(WIDTH, HEIGHT, FORMAT, CAPACITY);
         if (creator != undefined) {
             creator.dequeueImage((err, img) => {
-                if (err != undefined || img == undefined) {
+                if (err != 0 || img == undefined) {
                     console.log('Creator_007 dequeueImage error:' + err);
                     expect(false).assertTrue();
                     done();
@@ -688,7 +688,7 @@ describe('ImageCreator', function () {
             return;
         }
         creator.on('imageRelease', (err) => {
-            if (err != undefined) {
+            if (err != 0) {
                 console.info('Creator_008 on release faild' + err);
                 expect(false).assertTrue();
                 done();
