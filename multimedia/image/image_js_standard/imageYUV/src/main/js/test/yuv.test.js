@@ -24,6 +24,7 @@ describe('imageYuv', function () {
     })
 
     beforeEach(function () {
+        isTimeOut = false;
         console.info('beforeEach case');
     })
 
