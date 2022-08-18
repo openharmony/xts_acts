@@ -48,37 +48,47 @@ const allFetchOp = function (others = {}) {
     };
 }
 
-const fetchOps = function (path, type, others = {}) {
-    return {
+const fetchOps = function (testNum, path, type, others = {}) {
+    let ops = {
         selections: FILEKEY.RELATIVE_PATH + '= ? AND ' + FILEKEY.MEDIA_TYPE + '=?',
         selectionArgs: [path, type.toString()],
         ...others
     };
+    console.info(`${testNum}: fetchOps${JSON.stringify(ops)}`)
+    return ops
 }
-const nameFetchOps = function (path, title, type) {
-    return {
+const nameFetchOps = function (testNum, path, title, type) {
+    let ops = {
         selections: FILEKEY.RELATIVE_PATH + '= ? AND ' + FILEKEY.TITLE + '= ? AND ' + FILEKEY.MEDIA_TYPE + '=?',
         selectionArgs: [path, title, type.toString()],
     };
+    console.info(`${testNum}: fetchOps${JSON.stringify(ops)}`)
+    return ops
 }
 
-const idFetchOps = function (albumId) {
-    return {
+const idFetchOps = function (testNum, albumId) {
+    let ops = {
         selections: FILEKEY.ALBUM_ID + '= ?',
         selectionArgs: [albumId + ''],
     };
+    console.info(`${testNum}: fetchOps${JSON.stringify(ops)}`)
+    return ops
 }
 
-const albumFetchOps = function (path, albumName, type, others = { order: FILEKEY.DATE_ADDED + " DESC", }) {
-    return {
+const albumFetchOps = function (testNum, path, albumName, type,
+    others = { order: FILEKEY.DATE_ADDED + " DESC", }) {
+    let ops = {
         selections: RELATIVE_PATH + '= ? AND ' + ALBUM_NAME + '= ? AND ' + MEDIA_TYPE + '= ?',
         selectionArgs: [path, albumName, type.toString()],
         ...others
     };
+    console.info(`${testNum}: fetchOps${JSON.stringify(ops)}`)
+    return ops
 }
 
 // albums of two resource types
-const albumTwoTypesFetchOps = function (paths, albumName, types, others = { order: FILEKEY.DATE_ADDED + " DESC", }) {
+const albumTwoTypesFetchOps = function (testNum, paths, albumName, types,
+    others = { order: FILEKEY.DATE_ADDED + " DESC", }) {
     try {
         let ops = {
             selections: '(' + RELATIVE_PATH + '= ? or ' +
@@ -89,6 +99,7 @@ const albumTwoTypesFetchOps = function (paths, albumName, types, others = { orde
             selectionArgs: [paths[0], paths[1], albumName, types[0].toString(), types[1].toString()],
             ...others
         };
+        console.info(`${testNum}: fetchOps${JSON.stringify(ops)}`)
         return ops
     } catch (error) {
         console.info(`albumTwoTypesFetchOps :: error: ${error}`);
@@ -96,7 +107,7 @@ const albumTwoTypesFetchOps = function (paths, albumName, types, others = { orde
 }
 
 // albums of three resource types
-const albumThreeTypesFetchOps = function (paths, albumName, types, others = { order: FILEKEY.DATE_ADDED, }) {
+const albumThreeTypesFetchOps = function (testNum, paths, albumName, types, others = { order: FILEKEY.DATE_ADDED, }) {
     try {
         let ops = {
             selections: '(' + RELATIVE_PATH + '= ? or ' +
@@ -110,6 +121,7 @@ const albumThreeTypesFetchOps = function (paths, albumName, types, others = { or
             types[0].toString(), types[1].toString(), types[2].toString()],
             ...others
         };
+        console.info(`${testNum}: fetchOps${JSON.stringify(ops)}`)
         return ops
     } catch (error) {
         console.info(`albumThreeTypesFetchOps :: error: ${error}`);
@@ -122,7 +134,7 @@ const checkPresetsAssets = async function (media, hapName) {
     let albumsCount = albumList.length;
     let fetchFileResult = await media.getFileAssets(allFetchOp());
     let assetsCount = await fetchFileResult.getCount();
-    console.info(`${hapName}:: assetsCount: ${assetsCount} albumsCount: ${albumsCount} 
+    console.info(`${hapName}:: assetsCount: ${assetsCount} albumsCount: ${albumsCount},
             presetsassetsCount: ${presetsCount[hapName].assetsCount} 
             presetsalbumsCount: ${presetsCount[hapName].albumsCount}`);
     console.info('checkPresetsAssets end')
@@ -137,8 +149,7 @@ const checkAssetsCount = async function (done, testNum, fetchFileResult, expectC
     }
     let count = await fetchFileResult.getCount();
     if (count != expectCount) {
-        console.info(`${testNum}:: count: ${count}`);
-        console.info(`${testNum}:: expectCount: ${expectCount}`);
+        console.info(`${testNum}:: count:expectCount - ${count} : ${expectCount}`);
         expect(count).assertEqual(expectCount);
         done();
     }
@@ -154,9 +165,7 @@ const checkAlbumsCount = function (done, testNum, albumList, expectCount) {
     }
     let albumsCount = albumList.length;
     if (albumsCount != expectCount) {
-        console.info(`${testNum}:: albumsCount: ${albumsCount}`);
-        console.info(`${testNum}:: expectCount: ${expectCount}`);
-        console.info(`${testNum} failed:: albums length error`);
+        console.info(`${testNum}:: albumsCount: expectCount - ${albumsCount} : ${expectCount}`);
         expect(albumsCount).assertEqual(expectCount);
         done();
     }

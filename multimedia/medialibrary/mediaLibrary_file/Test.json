@@ -52,6 +52,7 @@
                 "hilog -Q pidoff",
                 "hilog -p off",
                 "hilog -b I",
+                "setenforce 0",
                 "hilog -b D -D 0xD002B70", 
                 "scanner_demo",
                 "sleep 10"

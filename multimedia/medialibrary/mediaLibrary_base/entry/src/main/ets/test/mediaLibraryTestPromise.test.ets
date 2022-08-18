@@ -43,7 +43,7 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
         });
         afterEach(async function () {
             console.info('afterEach case');
-            await sleep()
+            await sleep(200)
         });
         afterAll(function () {
             console.info('afterAll case');
@@ -108,8 +108,6 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
                 mediaType: AUDIO_TYPE.toString(),
                 title: '01',
                 artist: '元数据测试',
-                width: 219600,
-                height: 219600,
                 orientation: 0,
                 duration: '219600',
             },
@@ -150,14 +148,21 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
                     done();
                     return;
                 }
+                if(asset.size !== props[type].size) {
+                    console.info(`${testNum}:: asset.size: props.size - ${asset.size} : ${props[type].size}`);
+                    expect(false).assertTrue();
+                    done();
+                    return;
+                }
                 expect(asset.mimeType).assertEqual(props[type].mimeType);
                 expect(asset.displayName).assertEqual(props[type].displayName);
                 expect(asset.relativePath).assertEqual(props[type].relativePath);
-                expect(asset.size).assertEqual(props[type].size);
                 expect(asset.mediaType.toString()).assertEqual(props[type].mediaType);
                 expect(asset.title.toString()).assertEqual(props[type].title);
-                expect(asset.width).assertEqual(props[type].width);
-                expect(asset.height).assertEqual(props[type].height);
+                if(type != 'audio') {
+                    expect(asset.width).assertEqual(props[type].width);
+                    expect(asset.height).assertEqual(props[type].height);
+                }
                 expect(asset.orientation).assertEqual(props[type].orientation);
                 expect(asset.duration.toString()).assertEqual(props[type].duration);
                 done();
@@ -281,7 +286,7 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
          */
         it('SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_001', 0, async function (done) {
             let testNum = 'SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_001';
-            let currentFetchOps = fetchOps('Pictures/Static/', IMAGE_TYPE);
+            let currentFetchOps = fetchOps(testNum, 'Pictures/Static/', IMAGE_TYPE);
             let type = 'image';
             let count = 1;
             await checkFileAssetAttr(done, testNum, currentFetchOps, type, count, null)
@@ -297,7 +302,7 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
          */
         it('SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_002', 0, async function (done) {
             let testNum = 'SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_002';
-            let currentFetchOps = fetchOps('Videos/Static/', VIDEO_TYPE);
+            let currentFetchOps = fetchOps(testNum, 'Videos/Static/', VIDEO_TYPE);
             let type = 'video';
             let count = 1;
             await checkFileAssetAttr(done, testNum, currentFetchOps, type, count, null)
@@ -313,7 +318,7 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
          */
         it('SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_003', 0, async function (done) {
             let testNum = 'SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_003';
-            let currentFetchOps = fetchOps('Audios/Static/', AUDIO_TYPE);
+            let currentFetchOps = fetchOps(testNum, 'Audios/Static/', AUDIO_TYPE);
             let type = 'audio';
             let count = 1;
             await checkFileAssetAttr(done, testNum, currentFetchOps, type, count, null)
@@ -329,7 +334,7 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
          */
         it('SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_004', 0, async function (done) {
             let testNum = 'SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_004';
-            let currentFetchOps = fetchOps('Documents/Static/', FILE_TYPE);
+            let currentFetchOps = fetchOps(testNum, 'Documents/Static/', FILE_TYPE);
             let type = 'file';
             let count = 1;
             await checkFileAssetAttr(done, testNum, currentFetchOps, type, count, null)
@@ -560,7 +565,7 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
          */
         it('SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_001', 0, async function (done) {
             let testNum = 'SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_001';
-            let currentFetchOps = fetchOps('Pictures/Static/', IMAGE_TYPE);
+            let currentFetchOps = fetchOps(testNum, 'Pictures/Static/', IMAGE_TYPE);
             let type = IMAGE_TYPE;
             let name = new Date().getTime() + '.jpg';
             let path = 'Pictures/Create/';
@@ -577,7 +582,7 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
          */
         it('SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_002', 0, async function (done) {
             let testNum = 'SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_002';
-            let currentFetchOps = fetchOps('Pictures/Static/', IMAGE_TYPE);
+            let currentFetchOps = fetchOps(testNum, 'Pictures/Static/', IMAGE_TYPE);
             let type = IMAGE_TYPE;
             let name = new Date().getTime() + '.jpg';
             let path = 'Pictures/Create/';
@@ -595,7 +600,7 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
          */
         it('SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_003', 0, async function (done) {
             let testNum = 'SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_003';
-            let currentFetchOps = fetchOps('Videos/Static/', VIDEO_TYPE);
+            let currentFetchOps = fetchOps(testNum, 'Videos/Static/', VIDEO_TYPE);
             let type = VIDEO_TYPE;
             let name = new Date().getTime() + '.mp4';
             let path = 'Videos/Create/';
@@ -612,7 +617,7 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
          */
         it('SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_004', 0, async function (done) {
             let testNum = 'SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_004';
-            let currentFetchOps = fetchOps('Videos/Static/', VIDEO_TYPE);
+            let currentFetchOps = fetchOps(testNum, 'Videos/Static/', VIDEO_TYPE);
             let type = VIDEO_TYPE;
             let name = new Date().getTime() + '.mp4';
             let path = 'Videos/Create/';
@@ -629,7 +634,7 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
          */
         it('SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_005', 0, async function (done) {
             let testNum = 'SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_005';
-            let currentFetchOps = fetchOps('Audios/Static/', AUDIO_TYPE);
+            let currentFetchOps = fetchOps(testNum, 'Audios/Static/', AUDIO_TYPE);
             let type = AUDIO_TYPE;
             let name = new Date().getTime() + '.mp3';
             let path = 'Audios/Create/';
@@ -646,7 +651,7 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
          */
         it('SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_006', 0, async function (done) {
             let testNum = 'SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_006';
-            let currentFetchOps = fetchOps('Audios/Static/', AUDIO_TYPE);
+            let currentFetchOps = fetchOps(testNum, 'Audios/Static/', AUDIO_TYPE);
             let type = AUDIO_TYPE;
             let name = new Date().getTime() + '.mp3';
             let path = 'Audios/Create/';
@@ -663,7 +668,7 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
          */
         it('SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_007', 0, async function (done) {
             let testNum = 'SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_007';
-            let currentFetchOps = fetchOps('Documents/Static/', FILE_TYPE);
+            let currentFetchOps = fetchOps(testNum, 'Documents/Static/', FILE_TYPE);
             let type = FILE_TYPE;
             let name = new Date().getTime() + '.dat';
             let path = 'Documents/Create/';
@@ -680,7 +685,7 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
          */
         it('SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_008', 0, async function (done) {
             let testNum = 'SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_008';
-            let currentFetchOps = fetchOps('Documents/Static/', FILE_TYPE);
+            let currentFetchOps = fetchOps(testNum, 'Documents/Static/', FILE_TYPE);
             let type = FILE_TYPE;
             let name = new Date().getTime() + '.dat';
             let path = 'Documents/Create/';
@@ -697,7 +702,7 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
        */
         it('SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_009', 0, async function (done) {
             let testNum = 'SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_001';
-            let currentFetchOps = fetchOps('Pictures/Static/', IMAGE_TYPE);
+            let currentFetchOps = fetchOps(testNum, 'Pictures/Static/', IMAGE_TYPE);
             let type = IMAGE_TYPE;
             let name = new Date().getTime() + '.jpg';
             let path = 'Pictures/Create/Temp';

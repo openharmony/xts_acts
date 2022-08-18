@@ -102,7 +102,7 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
         it('SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_001', 0, async function (done) {
             let type = 'imageChange'
             let testNum = 'SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_001';
-            let currentFetchOps = fetchOps('Pictures/On/', IMAGE_TYPE);
+            let currentFetchOps = fetchOps(testNum, 'Pictures/On/', IMAGE_TYPE);
             await onTest(done, testNum, type, currentFetchOps)
         });
 
@@ -117,7 +117,7 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
         it('SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_002', 0, async function (done) {
             let type = 'videoChange'
             let testNum = 'SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_002';
-            let currentFetchOps = fetchOps('Videos/On/', VIDEO_TYPE);
+            let currentFetchOps = fetchOps(testNum, 'Videos/On/', VIDEO_TYPE);
             await onTest(done, testNum, type, currentFetchOps)
         });
 
@@ -132,7 +132,7 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
         it('SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_003', 0, async function (done) {
             let type = 'audioChange'
             let testNum = 'SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_003';
-            let currentFetchOps = fetchOps('Audios/On/', AUDIO_TYPE);
+            let currentFetchOps = fetchOps(testNum, 'Audios/On/', AUDIO_TYPE);
             await onTest(done, testNum, type, currentFetchOps)
         });
 
@@ -147,7 +147,7 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
         it('SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_004', 0, async function (done) {
             let type = 'fileChange'
             let testNum = 'SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_004';
-            let currentFetchOps = fetchOps('Documents/On/', FILE_TYPE);
+            let currentFetchOps = fetchOps(testNum, 'Documents/On/', FILE_TYPE);
             await onTest(done, testNum, type, currentFetchOps)
         });
 
@@ -166,7 +166,7 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
                 media.on('albumChange', () => {
                     conut++;
                 });
-                let currentFetchOps = albumFetchOps('Pictures/', 'OnAlbum', IMAGE_TYPE);
+                let currentFetchOps = albumFetchOps(testNum, 'Pictures/', 'OnAlbum', IMAGE_TYPE);
                 const albumList = await media.getAlbums(currentFetchOps);
                 const albumCountPass = await checkAlbumsCount(done, testNum, albumList, 1);
                 if (!albumCountPass) return;
@@ -195,6 +195,7 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
          * @tc.level     : Level 0
          */
         it('SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_006', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_006'
             try {
                 let conut = 0;
                 expect(true).assertTrue();
@@ -203,7 +204,7 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
                     console.info('MediaLibraryTest : on 006 callback');
                     conut++;
                 });
-                let currentFetchOps = fetchOps('Documents/On/', FILE_TYPE);
+                let currentFetchOps = fetchOps(testNum, 'Documents/On/', FILE_TYPE);
                 const fetchFileResult = await media.getFileAssets(currentFetchOps);
                 const asset = await fetchFileResult.getFirstObject();
                 asset.title = asset.title + 'changename';
@@ -232,6 +233,7 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
          * @tc.level     : Level 0
          */
         it('SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_007', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_007'
             try {
                 let conut = 0;
                 expect(true).assertTrue();
@@ -241,7 +243,7 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
                     conut++;
                 });
 
-                let currentFetchOps = fetchOps('Documents/On/', FILE_TYPE);
+                let currentFetchOps = fetchOps(testNum, 'Documents/On/', FILE_TYPE);
                 const fetchFileResult = await media.getFileAssets(currentFetchOps);
                 const asset = await fetchFileResult.getFirstObject();
                 asset.title = asset.title + 'changename';
@@ -272,7 +274,7 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
         it('SUB_MEDIA_MIDIALIBRARY_PROMISE_OFF_001', 0, async function (done) {
             let type = 'imageChange'
             let testNum = 'SUB_MEDIA_MIDIALIBRARY_PROMISE_OFF_001';
-            let currentFetchOps = fetchOps('Pictures/Off/', IMAGE_TYPE);
+            let currentFetchOps = fetchOps(testNum, 'Pictures/Off/', IMAGE_TYPE);
             await offTest(done, testNum, type, currentFetchOps)
         });
 
@@ -287,7 +289,7 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
         it('SUB_MEDIA_MIDIALIBRARY_PROMISE_OFF_002', 0, async function (done) {
             let type = 'videoChange'
             let testNum = 'SUB_MEDIA_MIDIALIBRARY_PROMISE_OFF_002';
-            let currentFetchOps = fetchOps('Videos/Off/', VIDEO_TYPE);
+            let currentFetchOps = fetchOps(testNum, 'Videos/Off/', VIDEO_TYPE);
             await offTest(done, testNum, type, currentFetchOps)
         });
 
@@ -302,7 +304,7 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
         it('SUB_MEDIA_MIDIALIBRARY_PROMISE_OFF_003', 0, async function (done) {
             let type = 'audioChange'
             let testNum = 'SUB_MEDIA_MIDIALIBRARY_PROMISE_OFF_003';
-            let currentFetchOps = fetchOps('Audios/Off/', AUDIO_TYPE);
+            let currentFetchOps = fetchOps(testNum, 'Audios/Off/', AUDIO_TYPE);
             await offTest(done, testNum, type, currentFetchOps)
         });
 
@@ -317,7 +319,7 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
         it('SUB_MEDIA_MIDIALIBRARY_PROMISE_OFF_004', 0, async function (done) {
             let type = 'fileChange'
             let testNum = 'SUB_MEDIA_MIDIALIBRARY_PROMISE_OFF_004';
-            let currentFetchOps = fetchOps('Documents/Off/', FILE_TYPE);
+            let currentFetchOps = fetchOps(testNum, 'Documents/Off/', FILE_TYPE);
             await offTest(done, testNum, type, currentFetchOps)
         });
 
@@ -338,7 +340,7 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
                 });
                 await sleep(300)
                 media.off('albumChange');
-                let currentFetchOps = albumFetchOps('Pictures/', 'OffAlbum', IMAGE_TYPE);
+                let currentFetchOps = albumFetchOps(testNum, 'Pictures/', 'OffAlbum', IMAGE_TYPE);
                 const albumList = await media.getAlbums(currentFetchOps);
                 const albumCountPass = await checkAlbumsCount(done, testNum, albumList, 1);
                 if (!albumCountPass) return;
@@ -367,6 +369,7 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
          * @tc.level     : Level 0
          */
         it('SUB_MEDIA_MIDIALIBRARY_PROMISE_OFF_006', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MIDIALIBRARY_PROMISE_OFF_006'
             try {
                 media.on('deviceChange', () => {
                     console.info('MediaLibraryTest : off 006 failed');
@@ -379,7 +382,7 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
                         res(true)
                     }, 300)
                 })
-                let currentFetchOps = fetchOps('Documents/On/', FILE_TYPE);
+                let currentFetchOps = fetchOps(testNum, 'Documents/On/', FILE_TYPE);
                 const fetchFileResult = await media.getFileAssets(currentFetchOps);
                 const asset = await fetchFileResult.getFirstObject();
                 asset.title = asset.title + 'deviceChange';
@@ -415,6 +418,7 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
          * @tc.level     : Level 0
          */
         it('SUB_MEDIA_MIDIALIBRARY_PROMISE_OFF_007', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MIDIALIBRARY_PROMISE_OFF_007'
             try {
                 media.on('remoteFileChange', () => {
                     console.info('MediaLibraryTest : off 007 failed');
@@ -429,7 +433,7 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
                 })
 
                 media.off('remoteFileChange');
-                let currentFetchOps = fetchOps('Documents/On/', FILE_TYPE);
+                let currentFetchOps = fetchOps(testNum, 'Documents/On/', FILE_TYPE);
                 const fetchFileResult = await media.getFileAssets(currentFetchOps);
                 const asset = await fetchFileResult.getFirstObject();
                 asset.title = asset.title + 'remoteFileChange';

@@ -13,9 +13,9 @@
  * limitations under the License.
  */
 
-import fileAssetUriTestPromise from './fileAssetUriTestPromise.test.ets'
-import fileAssetUriTestCallback from './fileAssetUriTestCallback.test.ets'
+import mediafetchoptionsCallback from './mediafetchoptionsCallback.test.ets'
+import mediafetchoptionsPromise from './mediafetchoptionsPromise.test.ets'
 export default function testsuite(abilityContext) {
-  fileAssetUriTestCallback(abilityContext)
-  fileAssetUriTestPromise(abilityContext)
+  mediafetchoptionsCallback(abilityContext)
+  mediafetchoptionsPromise(abilityContext)
 }
