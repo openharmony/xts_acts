@@ -332,15 +332,15 @@ describe('Image', function () {
         const Color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: 0, size: { height: -1, width: 8 } }
         image.createPixelMap(Color, opts, (err, pixelmap) => {
-            if (err != undefined) {
+            if (err) {
                 console.info('RGBA_011 err: ' + err);
-                expect(false).assertTrue();
+                expect(pixelmap == undefined).assertTrue();
+                console.info('RGBA_011 pass');
                 done();
-                return;
+            } else {
+                expect(true).assertTrue();
+                done();
             }
-            expect(pixelmap == undefined).assertTrue();
-            console.info('RGBA_011 pass');
-            done();
         })
     })
 
@@ -359,15 +359,15 @@ describe('Image', function () {
         const Color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: 1, size: { height: 6, width: -1 } }
         image.createPixelMap(Color, opts, (err, pixelmap) => {
-            if (err != undefined) {
+            if (err) {
                 console.info('RGBA_012 err: ' + err);
-                expect(false).assertTrue();
+                expect(pixelmap == undefined).assertTrue();
+                console.info('RGBA_012 pass');
                 done();
-                return;
+            } else {
+                expect(true).assertTrue();
+                done();
             }
-            expect(pixelmap == undefined).assertTrue();
-            console.info('RGBA_012 pass');
-            done();
         })
     })
 
