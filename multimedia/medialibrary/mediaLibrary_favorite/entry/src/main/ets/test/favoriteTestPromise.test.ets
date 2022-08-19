@@ -30,16 +30,21 @@ export default function favoriteTestPromiseTest(abilityContext) {
     describe('favoriteTestPromiseTest', function () {
         var media = mediaLibrary.getMediaLibrary(abilityContext);
         beforeAll(async function () {
+            console.info('beforeAll case');
             await checkPresetsAssets(media, 'ActsMediaLibraryFavorite');
         });
-        beforeEach(function () { });
-        afterEach(async function () {
-            sleep()
+        beforeEach(function () {
+            console.info('beforeEach case');
         });
-        afterAll(function () { });
+        afterEach(async function () {
+            console.info('afterEach case');
+            await sleep()
+        });
+        afterAll(function () {
+            console.info('afterAll case');
+        });
 
         const favoriteDefaultState = async function (done, testNum, fetchOp) {
-            console.info(`${testNum} fetchOp ${JSON.stringify(fetchOp)}`)
             try {
                 let fetchFileResult = await media.getFileAssets(fetchOp);
                 let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 1);
@@ -56,7 +61,6 @@ export default function favoriteTestPromiseTest(abilityContext) {
             }
         }
         const favoriteByTrue = async function (done, testNum, fetchOp) {
-            console.info(`${testNum} fetchOp ${JSON.stringify(fetchOp)}`)
             try {
                 const fetchFileResult = await media.getFileAssets(fetchOp);
                 let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 1);
@@ -74,7 +78,6 @@ export default function favoriteTestPromiseTest(abilityContext) {
             }
         }
         const favoriteByFalse = async function (done, testNum, fetchOp) {
-            console.info(`${testNum} fetchOp ${JSON.stringify(fetchOp)}`)
             try {
                 const fetchFileResult = await media.getFileAssets(fetchOp);
                 let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 1);
@@ -103,7 +106,7 @@ export default function favoriteTestPromiseTest(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_001_01', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_001_01'
-            let currentFetchOp = nameFetchOps('Pictures/StaticPro/', '01', IMAGE_TYPE)
+            let currentFetchOp = nameFetchOps(testNum, 'Pictures/StaticPro/', '01', IMAGE_TYPE)
             await favoriteDefaultState(done, testNum, currentFetchOp)
         });
 
@@ -117,7 +120,7 @@ export default function favoriteTestPromiseTest(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_001_02', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_001_02'
-            let currentFetchOp = nameFetchOps('Pictures/StaticPro/', '02', IMAGE_TYPE)
+            let currentFetchOp = nameFetchOps(testNum, 'Pictures/StaticPro/', '02', IMAGE_TYPE)
             await favoriteByTrue(done, testNum, currentFetchOp)
         });
 
@@ -131,7 +134,7 @@ export default function favoriteTestPromiseTest(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_001_03', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_001_03'
-            let currentFetchOp = nameFetchOps('Pictures/StaticPro/', '03', IMAGE_TYPE)
+            let currentFetchOp = nameFetchOps(testNum, 'Pictures/StaticPro/', '03', IMAGE_TYPE)
             await favoriteByFalse(done, testNum, currentFetchOp)
         });
 
@@ -145,7 +148,7 @@ export default function favoriteTestPromiseTest(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_002_01', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_002_01'
-            let currentFetchOp = nameFetchOps('Videos/StaticPro/', '01', VIDEO_TYPE)
+            let currentFetchOp = nameFetchOps(testNum, 'Videos/StaticPro/', '01', VIDEO_TYPE)
             await favoriteDefaultState(done, testNum, currentFetchOp)
         });
 
@@ -159,7 +162,7 @@ export default function favoriteTestPromiseTest(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_002_02', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_002_02'
-            let currentFetchOp = nameFetchOps('Videos/StaticPro/', '02', VIDEO_TYPE)
+            let currentFetchOp = nameFetchOps(testNum, 'Videos/StaticPro/', '02', VIDEO_TYPE)
             await favoriteByTrue(done, testNum, currentFetchOp)
         });
 
@@ -173,7 +176,7 @@ export default function favoriteTestPromiseTest(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_002_03', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_002_03'
-            let currentFetchOp = nameFetchOps('Videos/StaticPro/', '03', VIDEO_TYPE)
+            let currentFetchOp = nameFetchOps(testNum, 'Videos/StaticPro/', '03', VIDEO_TYPE)
             await favoriteByFalse(done, testNum, currentFetchOp)
         });
 
@@ -187,7 +190,7 @@ export default function favoriteTestPromiseTest(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_003_01', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_003_01'
-            let currentFetchOp = nameFetchOps('Audios/StaticPro/', '01', AUDIO_TYPE)
+            let currentFetchOp = nameFetchOps(testNum, 'Audios/StaticPro/', '01', AUDIO_TYPE)
             await favoriteDefaultState(done, testNum, currentFetchOp)
         });
 
@@ -201,7 +204,7 @@ export default function favoriteTestPromiseTest(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_003_02', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_003_02'
-            let currentFetchOp = nameFetchOps('Audios/StaticPro/', '02', AUDIO_TYPE)
+            let currentFetchOp = nameFetchOps(testNum, 'Audios/StaticPro/', '02', AUDIO_TYPE)
             await favoriteByTrue(done, testNum, currentFetchOp)
         });
 
@@ -215,7 +218,7 @@ export default function favoriteTestPromiseTest(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_003_03', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_003_03'
-            let currentFetchOp = nameFetchOps('Audios/StaticPro/', '03', AUDIO_TYPE)
+            let currentFetchOp = nameFetchOps(testNum, 'Audios/StaticPro/', '03', AUDIO_TYPE)
             await favoriteByFalse(done, testNum, currentFetchOp)
         });
 
@@ -229,7 +232,7 @@ export default function favoriteTestPromiseTest(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_004_01', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_004_01'
-            let currentFetchOp = nameFetchOps('Documents/StaticPro/', '01', FILE_TYPE)
+            let currentFetchOp = nameFetchOps(testNum, 'Documents/StaticPro/', '01', FILE_TYPE)
             await favoriteDefaultState(done, testNum, currentFetchOp)
         });
 
@@ -243,7 +246,7 @@ export default function favoriteTestPromiseTest(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_004_02', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_004_02'
-            let currentFetchOp = nameFetchOps('Documents/StaticPro/', '02', FILE_TYPE)
+            let currentFetchOp = nameFetchOps(testNum, 'Documents/StaticPro/', '02', FILE_TYPE)
             await favoriteByTrue(done, testNum, currentFetchOp)
         });
 
@@ -257,7 +260,7 @@ export default function favoriteTestPromiseTest(abilityContext) {
          */
         it('SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_004_03', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FAV_ASSET_PROMISE_004_03'
-            let currentFetchOp = nameFetchOps('Documents/StaticPro/', '03', FILE_TYPE)
+            let currentFetchOp = nameFetchOps(testNum, 'Documents/StaticPro/', '03', FILE_TYPE)
             await favoriteByFalse(done, testNum, currentFetchOp)
         });
     });

@@ -54,7 +54,7 @@
         },
         {
             "test-file-name": [
-                "ActsMediaLibraryFileAssetUri.hap"
+                "ActsMediaLibraryMediafetchoptions.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

@@ -31,18 +31,23 @@ export default function fileAssetCallback2Test(abilityContext) {
     describe('fileAssetCallback2Test', function () {
         const media = mediaLibrary.getMediaLibrary(abilityContext);
         beforeAll(async function () {
+            console.info('beforeAll case');
             await getPermission();
             await checkPresetsAssets(media, 'ActsMediaLibraryFileAsset')
         });
-        beforeEach(function () { });
+        beforeEach(function () {
+            console.info('beforeEach case');
+        });
         afterEach(async function () {
+            console.info('afterEach case');
             await sleep()
         });
-        afterAll(function () { });
+        afterAll(function () {
+            console.info('afterAll case');
+        });
 
         const checkCommitModify = async function (done, testNum, fetchOp, prop, val) {
             try {
-                console.info(`${testNum} fetchOp : ${JSON.stringify(fetchOp)}`)
                 const fetchFileResult = await media.getFileAssets(fetchOp);
                 let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 1);
                 if (!checkAssetCountPass) return;
@@ -78,6 +83,7 @@ export default function fileAssetCallback2Test(abilityContext) {
             }
         }
 
+        
         /**
          * @tc.number    : SUB_MEDIA_FILEASSET_commitModify_callback_001
          * @tc.name      : commitModify
@@ -88,7 +94,7 @@ export default function fileAssetCallback2Test(abilityContext) {
          */
         it('SUB_MEDIA_FILEASSET_commitModify_callback_001', 0, async function (done) {
             let testNum = 'SUB_MEDIA_FILEASSET_commitModify_callback_001'
-            let fetchOp = nameFetchOps('Pictures/ModifyCb/', '01', IMAGE_TYPE);
+            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyCb/', '01', IMAGE_TYPE);
             let prop = 'displayName'
             let val = new Date().getTime() + '.jpg'
             await checkCommitModify(done, testNum, fetchOp, prop, val)
@@ -104,7 +110,7 @@ export default function fileAssetCallback2Test(abilityContext) {
          */
         it('SUB_MEDIA_FILEASSET_commitModify_callback_002', 0, async function (done) {
             let testNum = 'SUB_MEDIA_FILEASSET_commitModify_callback_002'
-            let fetchOp = nameFetchOps('Pictures/ModifyCb/', '02', IMAGE_TYPE);
+            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyCb/', '02', IMAGE_TYPE);
             let prop = 'title'
             let val = new Date().getTime() + 'newTitle'
             await checkCommitModify(done, testNum, fetchOp, prop, val)
@@ -120,7 +126,7 @@ export default function fileAssetCallback2Test(abilityContext) {
          */
         it('SUB_MEDIA_FILEASSET_commitModify_callback_003', 0, async function (done) {
             let testNum = 'SUB_MEDIA_FILEASSET_commitModify_callback_003'
-            let fetchOp = nameFetchOps('Pictures/ModifyCb/', '03', IMAGE_TYPE);
+            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyCb/', '03', IMAGE_TYPE);
             let prop = 'relativePath'
             let val = 'Pictures/Temp/'
             await checkCommitModify(done, testNum, fetchOp, prop, val)
@@ -137,7 +143,7 @@ export default function fileAssetCallback2Test(abilityContext) {
         it('SUB_MEDIA_FILEASSET_commitModify_callback_004', 0, async function (done) {
 
             let testNum = 'SUB_MEDIA_FILEASSET_commitModify_callback_004'
-            let fetchOp = nameFetchOps('Pictures/ModifyCb/', '04', IMAGE_TYPE);
+            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyCb/', '04', IMAGE_TYPE);
             let prop = 'orientation'
             let val = 1
             await checkCommitModify(done, testNum, fetchOp, prop, val)
@@ -153,7 +159,8 @@ export default function fileAssetCallback2Test(abilityContext) {
          */
         it('SUB_MEDIA_FILEASSET_isDirectory_callback_001', 0, async function (done) {
             try {
-                let fetchOp = nameFetchOps('Pictures/ModifyCb/', '05', IMAGE_TYPE);
+                let testNum = 'SUB_MEDIA_FILEASSET_isDirectory_callback_001'
+                let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyCb/', '05', IMAGE_TYPE);
                 const fetchFileResult = await media.getFileAssets(fetchOp);
                 const asset = await fetchFileResult.getFirstObject();
                 const isDir = await asset.isDirectory();
