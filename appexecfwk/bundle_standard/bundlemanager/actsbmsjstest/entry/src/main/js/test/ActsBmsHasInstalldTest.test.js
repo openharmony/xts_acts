@@ -30,7 +30,7 @@ describe('ActsBmsHasInstalldTest', function () {
     it('hasInstalled_0100', 0, async function (done) {
         let flag = 0;
         pkg.hasInstalled({
-            bundleName: 'com.ohos.launcher',
+            bundleName: 'com.example.third2',
             success: function success(data) {
                 console.info('hasInstalled success function in');
                 expect(data.result).assertTrue();

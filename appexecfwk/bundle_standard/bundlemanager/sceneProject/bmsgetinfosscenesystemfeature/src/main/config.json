@@ -23,7 +23,7 @@
     "name": ".system2feature",
     "mainAbility": "com.example.system2.MainAbility",
     "deviceType": [
-      "phone"
+      "default"
     ],
     "distro": {
       "deliveryWithInstall": true,

@@ -58,7 +58,7 @@ describe('ActsBmsHapModuleTest', function () {
                 expect(hapModuleInfo.backgroundImg).assertEqual("");
                 expect(hapModuleInfo.supportedModes).assertEqual(0);
                 expect(hapModuleInfo.reqCapabilities.length).assertEqual(0);
-                expect(hapModuleInfo.deviceTypes[0]).assertEqual('phone');
+                expect(hapModuleInfo.deviceTypes[0]).assertEqual('default');
                 expect(hapModuleInfo.mainAbilityName).assertEqual(FIRSTMAINABILITY);
                 expect(hapModuleInfo.abilityInfo.length).assertLarger(0);
                 expect(hapModuleInfo.installationFree).assertEqual(false);
@@ -116,7 +116,7 @@ describe('ActsBmsHapModuleTest', function () {
                 expect(hapModuleInfo.backgroundImg).assertEqual("");
                 expect(hapModuleInfo.supportedModes).assertEqual(0);
                 expect(hapModuleInfo.reqCapabilities.length).assertEqual(0);
-                expect(hapModuleInfo.deviceTypes[0]).assertEqual('phone');
+                expect(hapModuleInfo.deviceTypes[0]).assertEqual('default');
                 expect(hapModuleInfo.mainAbilityName).assertEqual("");
                 expect(hapModuleInfo.abilityInfo.length).assertLarger(0);
                 expect(hapModuleInfo.installationFree).assertEqual(false);
@@ -148,7 +148,7 @@ describe('ActsBmsHapModuleTest', function () {
                 expect(hapModuleInfo.backgroundImg).assertEqual("");
                 expect(hapModuleInfo.supportedModes).assertEqual(0);
                 expect(hapModuleInfo.reqCapabilities.length).assertEqual(0);
-                expect(hapModuleInfo.deviceTypes[0]).assertEqual('phone');
+                expect(hapModuleInfo.deviceTypes[0]).assertEqual('default');
                 expect(hapModuleInfo.mainAbilityName).assertEqual("com.example.third5.AMainAbility");
                 expect(hapModuleInfo.abilityInfo.length).assertLarger(0);
                 expect(hapModuleInfo.installationFree).assertEqual(false);
@@ -181,7 +181,7 @@ describe('ActsBmsHapModuleTest', function () {
                 expect(hapModuleInfo.backgroundImg).assertEqual("");
                 expect(hapModuleInfo.supportedModes).assertEqual(0);
                 expect(hapModuleInfo.reqCapabilities.length).assertEqual(0);
-                expect(hapModuleInfo.deviceTypes[0]).assertEqual('phone');
+                expect(hapModuleInfo.deviceTypes[0]).assertEqual('default');
                 expect(hapModuleInfo.mainAbilityName).assertEqual("com.example.system1.MainAbility");
                 expect(hapModuleInfo.abilityInfo.length).assertLarger(0);
                 expect(hapModuleInfo.installationFree).assertEqual(false);
@@ -200,7 +200,7 @@ describe('ActsBmsHapModuleTest', function () {
         expect(info.backgroundImg).assertEqual("");
         expect(info.supportedModes).assertEqual(0);
         expect(info.reqCapabilities.length).assertEqual(0);
-        expect(info.deviceTypes[0]).assertEqual('phone');
+        expect(info.deviceTypes[0]).assertEqual('default');
         expect(info.abilityInfo.length).assertLarger(0);
         expect(info.installationFree).assertEqual(false);
     }

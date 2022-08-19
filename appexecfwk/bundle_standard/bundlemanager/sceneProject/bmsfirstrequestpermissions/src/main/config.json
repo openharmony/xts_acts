@@ -17,7 +17,7 @@
     "package": "com.example.firstrequestpermissions",
     "name": ".MyApplication",
     "deviceType": [
-      "phone"
+      "default"
     ],
     "distro": {
       "deliveryWithInstall": true,

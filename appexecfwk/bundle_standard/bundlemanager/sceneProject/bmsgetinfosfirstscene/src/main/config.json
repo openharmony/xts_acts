@@ -20,7 +20,7 @@
     "name": "com.example.third1.BmsThirdBundle1",
     "colorMode": "light",
     "deviceType": [
-      "phone"
+      "default"
     ],
     "distro": {
       "deliveryWithInstall": true,

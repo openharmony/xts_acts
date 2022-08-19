@@ -17,7 +17,7 @@
     "package": "com.example.myapplication1",
     "name": ".MyApplication1",
     "deviceType": [
-      "phone"
+      "default"
     ],
     "distro": {
       "deliveryWithInstall": true,
@@ -45,7 +45,7 @@
         "launchType": "standard",
         "orientation": "unspecified",
         "language": "C++",
-        "permissions":["ohos.permission.INTERNET"],
+        "permissions":["ohos.permission.BMS_PERMISSION_CAMERA"],
         "metaData": {
             "customizeData": [
                 {
@@ -68,10 +68,26 @@
         }
       }
     ],
+    "defPermissions": [
+      {
+        "availableScope": [
+          "signature"
+        ],
+        "grantMode": "system_grant",
+        "name": "ohos.permission.BMS_PERMISSION_CAMERA",
+        "description": "BMS_PERMISSION_CAMERA permission in detail",
+        "label": "BMS_PERMISSION_CAMERA permission"
+      },
+      {
+        "name": "ohos.permission.PERMISSION_A",
+        "grantMode": "system_grant",
+        "availableScope": ["signature"]
+      }
+    ],
     "reqPermissions": [
       {
-        "name": "ohos.permission.USE_BLUETOOTH",
-        "reason": "Need USE_BLUETOOTH",
+        "name": "ohos.permission.PERMISSION_A",
+        "reason": "Need PERMISSION_A",
         "usedScene": {
           "ability": [
             "com.example.myapplication1.MainAbility"
