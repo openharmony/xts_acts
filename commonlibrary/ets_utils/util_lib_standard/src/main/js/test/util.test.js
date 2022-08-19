@@ -902,7 +902,7 @@ describe('TextEncoderTest', function () {
         var BOM = '\uFEFF';
         var rel = 'abc';
         var re = BOM + rel;
-        expect(retStr).assertEqual(rel)
+        expect(retStr).assertEqual(re)
     })
 
     /**
@@ -923,7 +923,7 @@ describe('TextEncoderTest', function () {
         var BOM = '\uFEFF'
         var rel = 'abc'
         var re = BOM + rel;
-        expect(retStr).assertEqual(rel)
+        expect(retStr).assertEqual(re)
     })
 
     /**
