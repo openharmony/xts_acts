@@ -490,14 +490,14 @@ describe('VideoDecoderFormatPromise', function () {
     }
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_DECODER_SOFTWARE_FORMAT_COMPATIBILITY_H264_PROMISE_01_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_DECODER_SOFTWARE_FORMAT_H264_PROMISE_0100
         * @tc.name      : 001.test h264 format-HP-resolution 720*480-frame rate 30FPS-bitrate 3000000bps
         * @tc.desc      : video decoder format compatibility test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */ 
-    it('SUB_MEDIA_VIDEO_DECODER_SOFTWARE_FORMAT_COMPATIBILITY_H264_PROMISE_01_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_DECODER_SOFTWARE_FORMAT_H264_PROMISE_0100', 0, async function (done) {
         console.info("case test h264 format-HP-resolution 720*480-frame rate 30FPS-bitrate 3000000bps");
         ES_FRAME_SIZE = H264_HP_720_480_30_3000000;
         let name = "avdec_h264";
@@ -519,14 +519,14 @@ describe('VideoDecoderFormatPromise', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_DECODER_SOFTWARE_FORMAT_COMPATIBILITY_H264_PROMISE_01_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_DECODER_SOFTWARE_FORMAT_H264_PROMISE_0200
         * @tc.name      : 001.test h264 format-HP-resolution 640*480-frame rate 30FPS-bitrate 3000000bps
         * @tc.desc      : video decoder format compatibility test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */ 
-    it('SUB_MEDIA_VIDEO_DECODER_SOFTWARE_FORMAT_COMPATIBILITY_H264_PROMISE_01_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_DECODER_SOFTWARE_FORMAT_H264_PROMISE_0200', 0, async function (done) {
         console.info("case test h264 format-HP-resolution 640*480-frame rate 30FPS-bitrate 3000000bps");
         ES_FRAME_SIZE = H264_HP_640_480_30_3000000;
         let name = "avdec_h264";
@@ -548,14 +548,14 @@ describe('VideoDecoderFormatPromise', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_DECODER_SOFTWARE_FORMAT_COMPATIBILITY_H264_PROMISE_01_0300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_DECODER_SOFTWARE_FORMAT_H264_PROMISE_0300
         * @tc.name      : 001.test h264 format-HP-resolution 352*288-frame rate 30FPS-bitrate 3000000bps
         * @tc.desc      : video decoder format compatibility test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */ 
-    it('SUB_MEDIA_VIDEO_DECODER_SOFTWARE_FORMAT_COMPATIBILITY_H264_PROMISE_01_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_DECODER_SOFTWARE_FORMAT_H264_PROMISE_0300', 0, async function (done) {
         console.info("case test h264 format-HP-resolution 352*288-frame rate 30FPS-bitrate 3000000bps");
         ES_FRAME_SIZE = H264_HP_352_288_30_3000000;
         let name = "avdec_h264";
@@ -577,14 +577,14 @@ describe('VideoDecoderFormatPromise', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_DECODER_SOFTWARE_FORMAT_COMPATIBILITY_H264_PROMISE_02_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_DECODER_SOFTWARE_FORMAT_H264_PROMISE_0400
         * @tc.name      : 001.test h264 format-HP-resolution 720*480-frame rate 25FPS-bitrate 3000000bps
         * @tc.desc      : video decoder format compatibility test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */ 
-    it('SUB_MEDIA_VIDEO_DECODER_SOFTWARE_FORMAT_COMPATIBILITY_H264_PROMISE_02_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_DECODER_SOFTWARE_FORMAT_H264_PROMISE_0400', 0, async function (done) {
         console.info("case test h264 format-HP-resolution 720*480-frame rate 25FPS-bitrate 3000000bps");
         ES_FRAME_SIZE = H264_HP_720_480_25_3000000;
         let name = "avdec_h264";
@@ -606,14 +606,14 @@ describe('VideoDecoderFormatPromise', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_DECODER_SOFTWARE_FORMAT_COMPATIBILITY_H264_PROMISE_02_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_DECODER_SOFTWARE_FORMAT_H264_PROMISE_0500
         * @tc.name      : 001.test h264 format-BP-resolution 720*480-frame rate 10FPS-bitrate 3000000bps
         * @tc.desc      : video decoder format compatibility test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */ 
-    it('SUB_MEDIA_VIDEO_DECODER_SOFTWARE_FORMAT_COMPATIBILITY_H264_PROMISE_02_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_DECODER_SOFTWARE_FORMAT_H264_PROMISE_0500', 0, async function (done) {
         console.info("case test h264 format-BP-resolution 720*480-frame rate 10FPS-bitrate 3000000bps");
         ES_FRAME_SIZE = H264_BP_720_480_10_3000000;
         let name = "avdec_h264";
@@ -635,14 +635,14 @@ describe('VideoDecoderFormatPromise', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_DECODER_SOFTWARE_FORMAT_COMPATIBILITY_H264_PROMISE_03_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_DECODER_SOFTWARE_FORMAT_H264_PROMISE_0600
         * @tc.name      : 001.test h264 format-BP-resolution 720*480-frame rate 30FPS-bitrate 2000000bps
         * @tc.desc      : video decoder format compatibility test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */ 
-    it('SUB_MEDIA_VIDEO_DECODER_SOFTWARE_FORMAT_COMPATIBILITY_H264_PROMISE_03_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_DECODER_SOFTWARE_FORMAT_H264_PROMISE_0600', 0, async function (done) {
         console.info("case test h264 format-BP-resolution 720*480-frame rate 30FPS-bitrate 2000000bps");
         ES_FRAME_SIZE = H264_BP_720_480_30_2000000;
         let name = "avdec_h264";
@@ -664,14 +664,14 @@ describe('VideoDecoderFormatPromise', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_DECODER_SOFTWARE_FORMAT_COMPATIBILITY_H264_PROMISE_03_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_DECODER_SOFTWARE_FORMAT_H264_PROMISE_0700
         * @tc.name      : 001.test h264 format-BP-resolution 720*480-frame rate 30FPS-bitrate 768000bps
         * @tc.desc      : video decoder format compatibility test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */ 
-    it('SUB_MEDIA_VIDEO_DECODER_SOFTWARE_FORMAT_COMPATIBILITY_H264_PROMISE_03_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_DECODER_SOFTWARE_FORMAT_H264_PROMISE_0700', 0, async function (done) {
         console.info("case test h264 format-BP-resolution 720*480-frame rate 30FPS-bitrate 768000bps");
         ES_FRAME_SIZE = H264_BP_720_480_30_768000;
         let name = "avdec_h264";
@@ -693,14 +693,14 @@ describe('VideoDecoderFormatPromise', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_DECODER_SOFTWARE_FORMAT_COMPATIBILITY_H264_PROMISE_03_0300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_DECODER_SOFTWARE_FORMAT_H264_PROMISE_0800
         * @tc.name      : 001.test h264 format-MP-resolution 720*480-frame rate 30FPS-bitrate 384000bps
         * @tc.desc      : video decoder format compatibility test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */ 
-    it('SUB_MEDIA_VIDEO_DECODER_SOFTWARE_FORMAT_COMPATIBILITY_H264_PROMISE_03_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_DECODER_SOFTWARE_FORMAT_H264_PROMISE_0800', 0, async function (done) {
         console.info("case test h264 format-MP-resolution 720*480-frame rate 30FPS-bitrate 384000bps");
         ES_FRAME_SIZE = H264_MP_720_480_30_384000;
         let name = "avdec_h264";
@@ -722,14 +722,14 @@ describe('VideoDecoderFormatPromise', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_DECODER_SOFTWARE_FORMAT_COMPATIBILITY_H264_PROMISE_03_0400
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_DECODER_SOFTWARE_FORMAT_H264_PROMISE_0900
         * @tc.name      : 001.test h264 format-MP-resolution 720*480-frame rate 30FPS-bitrate 192000bps
         * @tc.desc      : video decoder format compatibility test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */ 
-    it('SUB_MEDIA_VIDEO_DECODER_SOFTWARE_FORMAT_COMPATIBILITY_H264_PROMISE_03_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_DECODER_SOFTWARE_FORMAT_H264_PROMISE_0900', 0, async function (done) {
         console.info("case test h264 format-MP-resolution 720*480-frame rate 30FPS-bitrate 192000bps");
         ES_FRAME_SIZE = H264_MP_720_480_30_192000;
         let name = "avdec_h264";
@@ -751,14 +751,14 @@ describe('VideoDecoderFormatPromise', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_DECODER_SOFTWARE_FORMAT_COMPATIBILITY_H264_PROMISE_03_0500
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_DECODER_SOFTWARE_FORMAT_H264_PROMISE_1000
         * @tc.name      : 001.test h264 format-MP-resolution 720*480-frame rate 30FPS-bitrate 128000bps
         * @tc.desc      : video decoder format compatibility test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */ 
-    it('SUB_MEDIA_VIDEO_DECODER_SOFTWARE_FORMAT_COMPATIBILITY_H264_PROMISE_03_0500', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_DECODER_SOFTWARE_FORMAT_H264_PROMISE_1000', 0, async function (done) {
         console.info("case test h264 format-MP-resolution 720*480-frame rate 30FPS-bitrate 128000bps");
         ES_FRAME_SIZE = H264_MP_720_480_30_128000;
         let name = "avdec_h264";
@@ -780,14 +780,14 @@ describe('VideoDecoderFormatPromise', function () {
     })
     
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_DECODER_SOFTWARE_FORMAT_COMPATIBILITY_H264_PROMISE_03_0600
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_DECODER_SOFTWARE_FORMAT_H264_PROMISE_1100
         * @tc.name      : 001.test h264 format-MP-resolution 720*480-frame rate 30FPS-bitrate 64000bps
         * @tc.desc      : video decoder format compatibility test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */ 
-    it('SUB_MEDIA_VIDEO_DECODER_SOFTWARE_FORMAT_COMPATIBILITY_H264_PROMISE_03_0600', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_DECODER_SOFTWARE_FORMAT_H264_PROMISE_1100', 0, async function (done) {
         console.info("case test h264 format-MP-resolution 720*480-frame rate 30FPS-bitrate 64000bps");
         ES_FRAME_SIZE = H264_MP_720_480_30_64000;
         let name = "avdec_h264";

@@ -2443,14 +2443,14 @@ describe('AudioDecoderFormatCompatibilityPromise', function () {
     }
 
     /* *
-    * @tc.number    : SUB_MEDIA_AUDIO_DECODER_FORMAT_COMPATIBILITY_AAC_PROMISE_01_0100
+    * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FORMAT_COMPATIBILITY_AAC_PROMISE_0100
     * @tc.name      : 001.test AAC format compatibility
     * @tc.desc      : audio decoder format compatibility test
     * @tc.size      : MediumTest
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-    it('SUB_MEDIA_AUDIO_DECODER_FORMAT_COMPATIBILITY_AAC_PROMISE_01_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FORMAT_COMPATIBILITY_AAC_PROMISE_0100', 0, async function (done) {
         console.log("case test AAC format compatibility");
         await getFormatCaps('audio/mp4a-latm');
         ES_DICT = AAC_ES_DICT;
@@ -2476,14 +2476,14 @@ describe('AudioDecoderFormatCompatibilityPromise', function () {
     })
 
     /* *
-    * @tc.number    : SUB_MEDIA_AUDIO_DECODER_FORMAT_COMPATIBILITY_FLAC_PROMISE_01_0100
+    * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FORMAT_COMPATIBILITY_FLAC_PROMISE_0100
     * @tc.name      : 001.test FLAC format compatibility
     * @tc.desc      : audio decoder format compatibility test
     * @tc.size      : MediumTest
     * @tc.type      : Function test
     * @tc.level     : Level0
     */
-     it('SUB_MEDIA_AUDIO_DECODER_FORMAT_COMPATIBILITY_FLAC_PROMISE_01_0100', 0, async function (done) {
+     it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FORMAT_COMPATIBILITY_FLAC_PROMISE_0100', 0, async function (done) {
         console.log("case test FLAC format compatibility");
         await getFormatCaps('audio/flac');
         ES_DICT = FLAC_ES_DICT;

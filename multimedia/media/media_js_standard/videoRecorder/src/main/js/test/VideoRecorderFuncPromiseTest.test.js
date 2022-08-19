@@ -126,14 +126,14 @@ describe('VideoRecorderFuncPromiseTest', function () {
     }
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_ALL_CAMERAS
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_ALL_CAMERAS_0100
         * @tc.name      : 01.all cameras recordering (promise)
         * @tc.desc      : Video recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level0
     */  
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_ALL_CAMERAS', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_ALL_CAMERAS_0100', 0, async function (done) {
         for (let i = 0; i < 2; i++) {
             cameraID = i;
             console.info('[camera] case cameraID is :' + cameraID);
@@ -197,14 +197,14 @@ describe('VideoRecorderFuncPromiseTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_0100
         * @tc.name      : 02.start->release (promise)
         * @tc.desc      : Video recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_0100', 0, async function (done) {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
@@ -257,14 +257,14 @@ describe('VideoRecorderFuncPromiseTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_0200
         * @tc.name      : 02.start->pause->release (promise)
         * @tc.desc      : Video recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_0200', 0, async function (done) {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
@@ -322,14 +322,14 @@ describe('VideoRecorderFuncPromiseTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_0300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_0300
         * @tc.name      : 03.start->pause->resume->release (promise)
         * @tc.desc      : Video recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_0300', 0, async function (done) {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
@@ -396,14 +396,14 @@ describe('VideoRecorderFuncPromiseTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_0400
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_0400
         * @tc.name      : 04.start->stop->release (promise)
         * @tc.desc      : Video recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_0400', 0, async function (done) {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
@@ -460,14 +460,14 @@ describe('VideoRecorderFuncPromiseTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_0500
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_0500
         * @tc.name      : 05.start->reset->release (promise)
         * @tc.desc      : Video recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_0500', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_0500', 0, async function (done) {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
@@ -524,14 +524,14 @@ describe('VideoRecorderFuncPromiseTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_0600
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_0600
         * @tc.name      : 06.start->pause->stop->release (promise)
         * @tc.desc      : Video recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_0600', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_0600', 0, async function (done) {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
@@ -596,14 +596,14 @@ describe('VideoRecorderFuncPromiseTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_0700
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_0700
         * @tc.name      : 07.start->pause->reset->release (promise)
         * @tc.desc      : Video recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_0700', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_0700', 0, async function (done) {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
@@ -667,14 +667,14 @@ describe('VideoRecorderFuncPromiseTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_0800
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_0800
         * @tc.name      : 08.start->pause->resume->stop->release (promise)
         * @tc.desc      : Video recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_0800', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_0800', 0, async function (done) {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
@@ -746,14 +746,14 @@ describe('VideoRecorderFuncPromiseTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_0900
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_0900
         * @tc.name      : 09.start->pause->resume->reset->release (promise)
         * @tc.desc      : Video recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_0900', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_0900', 0, async function (done) {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
@@ -824,7 +824,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1000
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1000
         * @tc.name      : 10.start->stop->release
         *                 (audioBitrate 8000,audioSampleRate 8000,videoBitrateRange 8000)(promise)
         * @tc.desc      : Video recordr control test
@@ -832,7 +832,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         * @tc.type      : Function
         * @tc.level     : Level1
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1000', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1000', 0, async function (done) {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
@@ -893,7 +893,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1100
         * @tc.name      : 11.start->stop->release
         *                 (audioBitrate 16000,audioSampleRate 32000,videoBitrateRange 16000)(promise)
         * @tc.desc      : Video recordr control test
@@ -901,7 +901,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         * @tc.type      : Function
         * @tc.level     : Level1
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1100', 0, async function (done) {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
@@ -962,7 +962,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1200
         * @tc.name      : 12.start->stop->release
         *                 (audioBitrate 32000,audioSampleRate 44100,videoBitrateRange 32000)(promise)
         * @tc.desc      : Video recordr control test
@@ -970,7 +970,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         * @tc.type      : Function
         * @tc.level     : Level1
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1200', 0, async function (done) {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
@@ -1031,7 +1031,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1300
         * @tc.name      : 13.start->stop->release
         *                 (audioBitrate 112000,audioSampleRate 96000,videoBitrateRange 112000)(promise)
         * @tc.desc      : Video recordr control test
@@ -1039,7 +1039,7 @@ describe('VideoRecorderFuncPromiseTest', function () {
         * @tc.type      : Function
         * @tc.level     : Level1
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1300', 0, async function (done) {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
@@ -1100,14 +1100,14 @@ describe('VideoRecorderFuncPromiseTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1400
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1400
         * @tc.name      : 14.start->release (only video) (promise)
         * @tc.desc      : Video recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level1
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1400', 0, async function (done) {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
@@ -1158,14 +1158,14 @@ describe('VideoRecorderFuncPromiseTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1500
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1500
         * @tc.name      : 15.start->pause->release (only video) (promise)
         * @tc.desc      : Video recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level1
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1500', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1500', 0, async function (done) {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
@@ -1225,14 +1225,14 @@ describe('VideoRecorderFuncPromiseTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1600
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1600
         * @tc.name      : 16.start->pause->resume->releas (only video) (promise)
         * @tc.desc      : Video recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level1
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1600', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1600', 0, async function (done) {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
@@ -1298,14 +1298,14 @@ describe('VideoRecorderFuncPromiseTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1700
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1700
         * @tc.name      : 17.start->stop->release (only video) (promise)
         * @tc.desc      : Video recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level1
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1700', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1700', 0, async function (done) {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
@@ -1362,14 +1362,14 @@ describe('VideoRecorderFuncPromiseTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1800
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1800
         * @tc.name      : 18.start->reset->release (only video) (promise)
         * @tc.desc      : Video recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level1
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1800', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1800', 0, async function (done) {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
@@ -1426,14 +1426,14 @@ describe('VideoRecorderFuncPromiseTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1900
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1900
         * @tc.name      : 19.rotation 90 (promise)
         * @tc.desc      : Video recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1900', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_1900', 0, async function (done) {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
@@ -1485,14 +1485,14 @@ describe('VideoRecorderFuncPromiseTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_2000
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_2000
         * @tc.name      : 20.rotation 180 (promise)
         * @tc.desc      : Video recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_2000', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_2000', 0, async function (done) {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
@@ -1543,14 +1543,14 @@ describe('VideoRecorderFuncPromiseTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_2100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_2100
         * @tc.name      : 21.rotation 270 (promise)
         * @tc.desc      : Video recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_2100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_2100', 0, async function (done) {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
@@ -1601,14 +1601,14 @@ describe('VideoRecorderFuncPromiseTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_2200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_2200
         * @tc.name      : 22.videoFrameRate 20 (promise)
         * @tc.desc      : Video recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_2200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_2200', 0, async function (done) {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
@@ -1659,14 +1659,14 @@ describe('VideoRecorderFuncPromiseTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_2300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_2300
         * @tc.name      : 23.videoFrameRate 30 (promise)
         * @tc.desc      : Video recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_2300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_2300', 0, async function (done) {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;
@@ -1717,14 +1717,14 @@ describe('VideoRecorderFuncPromiseTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_2400
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_2400
         * @tc.name      : 24.videoFrameRate 60 (promise)
         * @tc.desc      : Video recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_2400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_PROMISE_2400', 0, async function (done) {
         let videoRecorder = undefined;
         let surfaceID = '';
         let videoOutput;

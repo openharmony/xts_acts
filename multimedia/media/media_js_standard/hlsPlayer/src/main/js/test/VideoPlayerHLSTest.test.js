@@ -54,7 +54,7 @@ describe('VideoPlayerHLSTest', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('testHlsVideoPlayer', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HLS_0100', 0, async function (done) {
         await playVideoSource(HTTP_PATH + '05.hls/1/index.m3u8', 640, 320, 10033, PLAY_TIME, done);
         done();
     })
@@ -67,7 +67,7 @@ describe('VideoPlayerHLSTest', function () {
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('testHlsVideoPlayerSeparate', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HLS_0100Separate', 0, async function (done) {
         await playVideoSource(HTTP_PATH + '05.hls/2/index.m3u8', 640, 320, 10033, PLAY_TIME, done);
         done();
     })
@@ -80,7 +80,7 @@ describe('VideoPlayerHLSTest', function () {
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('testHlsVideoPlayerAudioOnly', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HLS_0100AudioOnly', 0, async function (done) {
         await playVideoSource(HTTP_PATH + '05.hls/audio_only/index.m3u8', 0, 0, 10033, PLAY_TIME, done);
         done();
     })
@@ -93,7 +93,7 @@ describe('VideoPlayerHLSTest', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('testHlsVideoPlayerVariant', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HLS_0100Variant', 0, async function (done) {
         await playVideoSource(HTTP_PATH + '05.hls/hls_variant/index.m3u8', null, null, 10033, PLAY_TIME, done);
         done();
     })
@@ -106,7 +106,7 @@ describe('VideoPlayerHLSTest', function () {
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('testHlsVideoPlayerVariantAudioOff', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HLS_0100VariantAudioOff', 0, async function (done) {
         await playVideoSource(HTTP_PATH + '05.hls/hls_variant2/index.m3u8', null, null, 10080, PLAY_TIME, done);
         done();
     })
@@ -119,7 +119,7 @@ describe('VideoPlayerHLSTest', function () {
         * @tc.type      : Function test
         * @tc.level     : Level2
     */
-    it('testHlsVideoPlayerCodecChange', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HLS_0100CodecChange', 0, async function (done) {
         await playVideoSource(HTTP_PATH + '05.hls/hls_variant3/index.m3u8', null, null, 10080, PLAY_TIME, done);
         done();
     })

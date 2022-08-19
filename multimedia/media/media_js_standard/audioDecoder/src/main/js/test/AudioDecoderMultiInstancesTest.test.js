@@ -235,14 +235,14 @@ describe('AudioDecoderMultiInstances', function () {
     }
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_MULTIINSTANCE_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_MULTIINSTANCE_0100
         * @tc.name      : 001.create multiple decoders
         * @tc.desc      : basic decode function
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_MULTIINSTANCE_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_MULTIINSTANCE_0100', 0, async function (done) {
         console.info("case test multiple instances");
         let array = new Array();
         for (let i = 0; i < 2; i += 1) {

@@ -115,14 +115,14 @@ describe('HttpPlayerFuncPromiseTest', function () {
     }
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0100
         * @tc.name      : 001.play (promise)
         * @tc.desc      : Video playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0100', 0, async function (done) {
         surfaceID = globalThis.value;
         console.info('case new surfaceID is ' + surfaceID);
         let videoPlayer = null;
@@ -167,14 +167,14 @@ describe('HttpPlayerFuncPromiseTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0200
         * @tc.name      : 002.pause (promise)
         * @tc.desc      : Video playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0200', 0, async function (done) {
         surfaceID = globalThis.value;
         console.info('case new surfaceID is ' + surfaceID);
         let videoPlayer = null;
@@ -223,14 +223,14 @@ describe('HttpPlayerFuncPromiseTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0300
         * @tc.name      : 003.pause->play (promise)
         * @tc.desc      : Video playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0300', 0, async function (done) {
         surfaceID = globalThis.value;
         console.info('case new surfaceID is ' + surfaceID);
         let videoPlayer = null;
@@ -288,14 +288,14 @@ describe('HttpPlayerFuncPromiseTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0400
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0400
         * @tc.name      : 004.stop (promise)
         * @tc.desc      : Video playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0400', 0, async function (done) {
         surfaceID = globalThis.value;
         console.info('case new surfaceID is ' + surfaceID);
         let videoPlayer = null;
@@ -344,14 +344,14 @@ describe('HttpPlayerFuncPromiseTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0500
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0500
         * @tc.name      : 005.reset (promise)
         * @tc.desc      : Video playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0500', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0500', 0, async function (done) {
         surfaceID = globalThis.value;
         console.info('case new surfaceID is ' + surfaceID);
         let videoPlayer = null;
@@ -400,14 +400,14 @@ describe('HttpPlayerFuncPromiseTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0600
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0600
         * @tc.name      : 006.seek (promise)
         * @tc.desc      : Video playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0600', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0600', 0, async function (done) {
         surfaceID = globalThis.value;
         console.info('case new surfaceID is ' + surfaceID);
         let videoPlayer = null;
@@ -457,14 +457,14 @@ describe('HttpPlayerFuncPromiseTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0700
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0700
         * @tc.name      : 007.seek CLOSEST(promise)
         * @tc.desc      : Video playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0700', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0700', 0, async function (done) {
         surfaceID = globalThis.value;
         console.info('case new surfaceID is ' + surfaceID);
         let videoPlayer = null;
@@ -544,14 +544,14 @@ describe('HttpPlayerFuncPromiseTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0800
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0800
         * @tc.name      : 008.setVolume (promise)
         * @tc.desc      : Video playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0800', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0800', 0, async function (done) {
         surfaceID = globalThis.value;
         console.info('case new surfaceID is ' + surfaceID);
         let videoPlayer = null;
@@ -600,14 +600,14 @@ describe('HttpPlayerFuncPromiseTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0900
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0900
         * @tc.name      : 009.setSpeed (promise)
         * @tc.desc      : Video playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0900', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_0900', 0, async function (done) {
         surfaceID = globalThis.value;
         console.info('case new surfaceID is ' + surfaceID);
         let videoPlayer = null;
@@ -661,14 +661,14 @@ describe('HttpPlayerFuncPromiseTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_1000
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_1000
         * @tc.name      : 010.getTrackDescription (promise)
         * @tc.desc      : Video playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_1000', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_1000', 0, async function (done) {
         surfaceID = globalThis.value;
         console.info('case new surfaceID is ' + surfaceID);
         let videoPlayer = null;
@@ -711,14 +711,14 @@ describe('HttpPlayerFuncPromiseTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_1100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_1100
         * @tc.name      : 011.Loop true (promise)
         * @tc.desc      : Video playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_1100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FUNCTION_PROMISE_1100', 0, async function (done) {
         surfaceID = globalThis.value;
         console.info('case new surfaceID is ' + surfaceID);
         let videoPlayer = null;
