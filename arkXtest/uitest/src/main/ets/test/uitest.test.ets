@@ -738,7 +738,7 @@ export default function UiTest() {
         await stopApplication('com.uitestScene.acts')
       }
       catch(USAGE_ERROR){
-        expect(window != null).assertTrue()
+        expect(window1 != null).assertTrue()
         await stopApplication('com.uitestScene.acts')
       }
     })
