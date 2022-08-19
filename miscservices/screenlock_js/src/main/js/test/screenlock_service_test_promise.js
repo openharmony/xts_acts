@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import screenLock from '@ohos.app.screenlockability';
+import screenLock from '@ohos.screenLock';
 import {describe, expect, it} from 'deccjsunit/index'
 
 const SLEEP_TIME = 1000;
@@ -126,18 +126,11 @@ describe('ScreenLockServicePromiseTest', function () {
                 console.log("ScreenLock_Test_Promise_0400: send unlockScreen issue success");
             });
 
-            sleep(SLEEP_TIME);
-            var unlockScreenResult = 0;
-            var eventType = 'unlockScreenResult';
-            screenLock.sendScreenLockEvent(eventType, unlockScreenResult).then((data) => {
-                console.log("ScreenLock_Test_Promise_0400: sendScreenLockEvent result is " + data);
-                expect(data == true).assertTrue();
-            });
 
             sleep(SLEEP_TIME);
             screenLock.isScreenLocked().then((data) => {
                 console.log("ScreenLock_Test_Promise_0400: isScreenLocked result is " + data);
-                expect(data == false).assertTrue();
+                expect(data == true).assertTrue();
             });
 
             sleep(SLEEP_TIME);
@@ -170,14 +163,6 @@ describe('ScreenLockServicePromiseTest', function () {
             sleep(SLEEP_TIME);
             screenLock.unlockScreen().then(() => {
                 console.log("ScreenLock_Test_Promise_0500: send unlockScreen issue success");
-            });
-
-            sleep(SLEEP_TIME);
-            var unlockScreenResult = 1;
-            var eventType = 'unlockScreenResult';
-            screenLock.sendScreenLockEvent(eventType, unlockScreenResult).then((data) => {
-                console.log("ScreenLock_Test_Promise_0500: sendScreenLockEvent result is " + data);
-                expect(data == true).assertTrue();
             });
 
             sleep(SLEEP_TIME);
