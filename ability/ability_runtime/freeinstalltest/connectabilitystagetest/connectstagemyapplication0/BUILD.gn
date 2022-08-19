@@ -13,7 +13,7 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ConnectStageMyApplication0") {
+ohos_hap_assist_suite("ConnectStageMyApplication0") {
   hap_profile = "entry/src/main/module.json"
   js_build_mode = "debug"
   deps = [
@@ -23,6 +23,8 @@ ohos_js_hap_suite("ConnectStageMyApplication0") {
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ConnectStageMyApplication0"
+  subsystem_name = "ability"
+  part_name = "ability_runtime"
 }
 
 ohos_app_scope("connectstagemyapplication0_app_profile") {

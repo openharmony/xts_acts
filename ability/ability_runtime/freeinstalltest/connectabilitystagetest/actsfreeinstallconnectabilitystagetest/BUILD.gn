@@ -23,6 +23,8 @@ ohos_js_hap_suite("ActsFreeInstallConnectAbilityStageTest") {
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsFreeInstallConnectAbilityStageTest"
+  subsystem_name = "ability"
+  part_name = "ability_runtime"
 }
 
 ohos_app_scope("actsfreeinstallconnectabilitystagetest_app_profile") {

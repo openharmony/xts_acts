@@ -59,7 +59,14 @@ export default function ConnectAbilityTest1() {
             console.info("FreeInstall_FA_ConnectAbility after each called");
             Tempassert = ""
             await sleep(1000);
-            done();
+            if ("FreeInstall_FA_ConnectAbility_1600" === TAG) {
+            var cmd14 = "bm uninstall -n com.ohos.hag.famanager";
+            abilityDelegator.executeShellCommand(cmd14, (err: any, d: any) => {
+                console.info("executeShellCommand14 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
+         })
+       }
+        await sleep(500);
+        done();
         });
 
         function tips(msg) {

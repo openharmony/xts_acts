@@ -143,8 +143,15 @@ export default function connectAbilityTest_PA() {
       console.info("FreeInstall_FA_ConnectAbility_PA after each called");
       dataAssert = ""
       await sleep(1000);
-      done();
-    });
+      if ("FreeInstall_FA_ConnectAbility_PA_1100" === TAG) {
+            var cmd14 = "bm uninstall -n com.ohos.hag.famanager";
+            abilityDelegator.executeShellCommand(cmd14, (err: any, d: any) => {
+                console.info("executeShellCommand14 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
+         })
+       }
+        await sleep(500);
+        done();
+        });
 
     /*
     * @tc.number  FreeInstall_FA_ConnectAbility_PA_0100
