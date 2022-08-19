@@ -20,21 +20,26 @@
  describe('Telephony_NETMANAGER_TestDNSTest',function(){
  
  
-     it('Telephony_NETMANAGER_TestDNS_Test0100', 0, function(done){
- 
-         netConnection.getDefaultNet().then(function(netHandle){
-             netHandle.getAddressesByName("www.baidu.com").then(function(addresses){
-                 if(addresses === undefined || addresses.length == 0 ){
-                     console.info('Telephony_NETMANAGER_TestDNS_Test0100 addresses is '+addresses);
-                     expect(false).assertFail();
-                 }else{
-                     console.info('Telephony_NETMANAGER_TestDNS_Test0100 is success');
-                     expect(true).assertTrue();
-                 }
-                 done();
-             })
-         })
-     });
+    it('Telephony_NETMANAGER_TestDNS_Test0100', 0, function(done){
+
+        netConnection.getDefaultNet().then(function(netHandle){
+            netHandle.getAddressesByName("www.baidu.com").then(function (addresses) {
+                if(addresses === undefined || addresses.length == 0 ){
+                    console.info('Telephony_NETMANAGER_TestDNS_Test0100 addresses is '+addresses);
+                    expect(false).assertFail();
+                }
+                done()
+            }).catch(function (error) {
+                if(error === undefined){
+                    expect(false).assertTrue();
+                }else{
+                    console.info('Telephony_NETMANAGER_TestDNS_Test0100 is success');
+                    expect(true).assertTrue();
+                }
+                done();
+            })
+        })
+    });
  
      it('Telephony_NETMANAGER_TestDNS_Test0200', 0, function(done){
  
