@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index";
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
@@ -109,8 +109,8 @@ export default function circleJsunit() {
       let strJson = getInspectorByKey('circle');
       let obj = JSON.parse(strJson);
       console.info("[circleTest_0300] component objNew is: " + JSON.stringify(obj));
-      expect(obj.$attrs.width).assertEqual('0.00px');
-      expect(obj.$attrs.height).assertEqual('0.00px');
+      expect(obj.$attrs.width).assertEqual('0.00vp');
+      expect(obj.$attrs.height).assertEqual('0.00vp');
       console.info('circleTest_0300 END');
       done();
     });
