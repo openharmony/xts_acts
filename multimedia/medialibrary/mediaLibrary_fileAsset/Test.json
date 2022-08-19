@@ -32,20 +32,20 @@
         {
             "type": "ShellKit",
             "run-command": [
-                "mkdir -pv /storage/media/100/local/files/Pictures/{Static,RW,R,W,openClose}",
-                "mkdir -pv /storage/media/100/local/files/Videos/{Static,RW,R,W,openClose}",
-                "mkdir -pv /storage/media/100/local/files/Audios/{Static,RW,R,W,openClose}",
-                "mkdir -pv /storage/media/100/local/files/Documents/{Static,RW,R,W,openClose}",
+                "mkdir -pv /storage/media/100/local/files/Pictures/{ModifyCb,ModifyPro,RW,R,W,RW_cb,R_cb,W_cb,openClose}",
+                "mkdir -pv /storage/media/100/local/files/Videos/{ModifyCb,ModifyPro,RW,R,W,RW_cb,R_cb,W_cb,openClose}",
+                "mkdir -pv /storage/media/100/local/files/Audios/{ModifyCb,ModifyPro,RW,R,W,RW_cb,R_cb,W_cb,openClose}",
+                "mkdir -pv /storage/media/100/local/files/Documents/{ModifyCb,ModifyPro,RW,R,W,RW_cb,R_cb,W_cb,openClose}",
                 
-                "for d in RW R W openClose; do for i in $$(seq 2); do cp /data/accounts/account_0/appdata/com.ohos.medialibrary.medialibrarydata/01.jpg /storage/media/100/local/files/Pictures/$$d/0$$i.jpg; done;done;",
-                "for d in RW R W openClose; do for i in $$(seq 2); do cp /data/accounts/account_0/appdata/com.ohos.medialibrary.medialibrarydata/01.mp3 /storage/media/100/local/files/Audios/$$d/0$$i.mp3; done;done;",
-                "for d in RW R W openClose; do for i in $$(seq 2); do cp /data/accounts/account_0/appdata/com.ohos.medialibrary.medialibrarydata/01.mp4 /storage/media/100/local/files/Videos/$$d/0$$i.mp4; done;done;",
-                "for d in RW R W openClose; do for i in $$(seq 2); do cp /data/accounts/account_0/appdata/com.ohos.medialibrary.medialibrarydata/01.dat /storage/media/100/local/files/Documents/$$d/0$$i.dat; done;done;",
+                "for d in RW_cb R_cb W_cb RW R W openClose; do for i in $$(seq 2); do cp /data/accounts/account_0/appdata/com.ohos.medialibrary.medialibrarydata/01.jpg /storage/media/100/local/files/Pictures/$$d/0$$i.jpg; done;done;",
+                "for d in RW_cb R_cb W_cb RW R W openClose; do for i in $$(seq 2); do cp /data/accounts/account_0/appdata/com.ohos.medialibrary.medialibrarydata/01.mp3 /storage/media/100/local/files/Audios/$$d/0$$i.mp3; done;done;",
+                "for d in RW_cb R_cb W_cb RW R W openClose; do for i in $$(seq 2); do cp /data/accounts/account_0/appdata/com.ohos.medialibrary.medialibrarydata/01.mp4 /storage/media/100/local/files/Videos/$$d/0$$i.mp4; done;done;",
+                "for d in RW_cb R_cb W_cb RW R W openClose; do for i in $$(seq 2); do cp /data/accounts/account_0/appdata/com.ohos.medialibrary.medialibrarydata/01.dat /storage/media/100/local/files/Documents/$$d/0$$i.dat; done;done;",
                 
-                "for d in Static; do for i in $$(seq 5); do cp /data/accounts/account_0/appdata/com.ohos.medialibrary.medialibrarydata/01.jpg /storage/media/100/local/files/Pictures/$$d/0$$i.jpg; done;done;",
-                "for d in Static; do for i in $$(seq 5); do cp /data/accounts/account_0/appdata/com.ohos.medialibrary.medialibrarydata/01.mp3 /storage/media/100/local/files/Audios/$$d/0$$i.mp3; done;done;",
-                "for d in Static; do for i in $$(seq 5); do cp /data/accounts/account_0/appdata/com.ohos.medialibrary.medialibrarydata/01.mp4 /storage/media/100/local/files/Videos/$$d/0$$i.mp4; done;done;",
-                "for d in Static; do for i in $$(seq 5); do cp /data/accounts/account_0/appdata/com.ohos.medialibrary.medialibrarydata/01.dat /storage/media/100/local/files/Documents/$$d/0$$i.dat; done;done;",
+                "for d in ModifyCb ModifyPro; do for i in $$(seq 7); do cp /data/accounts/account_0/appdata/com.ohos.medialibrary.medialibrarydata/01.jpg /storage/media/100/local/files/Pictures/$$d/0$$i.jpg; done;done;",
+                "for d in ModifyCb ModifyPro; do for i in $$(seq 5); do cp /data/accounts/account_0/appdata/com.ohos.medialibrary.medialibrarydata/01.mp3 /storage/media/100/local/files/Audios/$$d/0$$i.mp3; done;done;",
+                "for d in ModifyCb ModifyPro; do for i in $$(seq 5); do cp /data/accounts/account_0/appdata/com.ohos.medialibrary.medialibrarydata/01.mp4 /storage/media/100/local/files/Videos/$$d/0$$i.mp4; done;done;",
+                "for d in ModifyCb ModifyPro; do for i in $$(seq 5); do cp /data/accounts/account_0/appdata/com.ohos.medialibrary.medialibrarydata/01.dat /storage/media/100/local/files/Documents/$$d/0$$i.dat; done;done;",
                 
                 "chmod -R 777 /storage/media/100/local/files/*",
                 "chmod -R 777 /data/service/el2/100/hmdfs/account/files/*",
