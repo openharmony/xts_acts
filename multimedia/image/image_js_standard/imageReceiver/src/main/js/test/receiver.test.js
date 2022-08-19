@@ -182,7 +182,7 @@ describe('ImageReceiver', function () {
             once = true;
             receiver.readLatestImage((err, img) => {
                 globalimg = img;
-                if (err != 0) {
+                if (err) {
                     expect(false).assertTrue();
                     done();
                 } else {
@@ -237,7 +237,7 @@ describe('ImageReceiver', function () {
             once = true;
             receiver.readLatestImage((err, img) => {
                 globalimg = img;
-                if (err != 0) {
+                if (err) {
                     expect(false).assertTrue();
                     done();
                 } else {
@@ -250,7 +250,7 @@ describe('ImageReceiver', function () {
                     expect(img.clipRect.y == 0).assertTrue();
                     console.info(`${testNum} ${param} img.format: ${img.format}`);
                     img.getComponent(param, (err, component) => {
-                        if (err != 0) {
+                        if (err) {
                             expect(false).assertTrue();
                             console.log(`${testNum} geterror: ` + err);
                             done();
@@ -602,7 +602,7 @@ describe('ImageReceiver', function () {
         globalreceiver = receiver;
         if (receiver != undefined) {
             receiver.release((err) => {
-                if (err != 0) {
+                if (err) {
                     expect(false).assertTrue();
                     console.info('Receiver_005 release fail');
                     done();
@@ -729,7 +729,7 @@ describe('ImageReceiver', function () {
         if (receiver != undefined) {
             receiver.readNextImage((err, img) => {
                 globalimg = img;
-                if (err != 0) {
+                if (err) {
                     expect(false).assertTrue();
                     done();
                 } else {
@@ -940,7 +940,7 @@ describe('ImageReceiver', function () {
         } else {
             let pass = false;
             receiver.on('imageArrival', (err) => {
-                if (err != 0) {
+                if (err) {
                     console.info('Receiver_011 on err' + err);
                     expect(false).assertTrue();
                     done();
@@ -1056,7 +1056,7 @@ describe('ImageReceiver', function () {
             expect(img.clipRect.y == 0).assertTrue();
 
             img.release((err) => {
-                if (err != 0) {
+                if (err) {
                     expect(false).assertTrue();
                     done();
                 } else {
