@@ -338,7 +338,7 @@ describe('Image', function () {
                 console.info('RGBA_011 pass');
                 done();
             } else {
-                expect(true).assertTrue();
+                expect(false).assertTrue();
                 done();
             }
         })
@@ -365,7 +365,7 @@ describe('Image', function () {
                 console.info('RGBA_012 pass');
                 done();
             } else {
-                expect(true).assertTrue();
+                expect(false).assertTrue();
                 done();
             }
         })
