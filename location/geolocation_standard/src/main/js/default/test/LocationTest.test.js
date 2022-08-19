@@ -888,7 +888,8 @@ describe('geolocationTest_geo3', function () {
             ' longitude: ' + result.longitude +' altitude: ' + result.altitude
             +' accuracy: ' + result.accuracy+' speed: ' + result.speed +
             'timeStamp: ' + result.timeStamp+'direction:' + result.direction+' timeSinceBoot: '
-            + result.timeSinceBoot +'additions: ' + result.additions+' additionSize' + result.additionSize);
+            + result.timeSinceBoot +'additions: ' + result.additions+' additionSize' + result.additionSize
+            +'isFromMock'+ result.isFromMock);
         }).catch((error) => {
             console.info("[lbs_js] getLastLocation promise then error:" + JSON.stringify(error));
             console.info('[lbs_js] not support now');
