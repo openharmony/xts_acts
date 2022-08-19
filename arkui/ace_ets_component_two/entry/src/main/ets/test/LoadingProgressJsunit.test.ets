@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import router from '@system.router';
 import Utils from './Utils';
 
@@ -83,7 +83,7 @@ export default function loadingProgressJsunit() {
       let strJson = getInspectorByKey('LP');
       let obj = JSON.parse(strJson);
       console.info("testLoadingProgress_400 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.borderWidth).assertEqual("0.00px");
+      expect(obj.$attrs.borderWidth).assertEqual("0.00vp");
       console.info('testLoadingProgress_400 END');
       done();
     });
