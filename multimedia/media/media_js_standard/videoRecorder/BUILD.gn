@@ -25,6 +25,8 @@ ohos_js_hap_suite("video_recorder_js_hap") {
   #  ]
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsVideoRecorderJsTest"
+  subsystem_name = "multimedia"
+  part_name = "multimedia_player_framework"
 
   #  part_name = "prebuilt_hap"
   #  subsystem_name = "xts"
