@@ -13,15 +13,13 @@
  * limitations under the License.
  */
 
-import bluetoothTEST from './BluetoothOn.test.js'
+
 import bluetoothhostTest from './BleScanResult.test.js'
 import bluetoothhostTest2 from './BluetoothPair.test.js'
-import bluetoothhostTest1 from './bluetoothProfileAdd.test.js'
 import bluetoothhostTest4 from './bluetoothSys.test.js'
 export default function testsuite() {
-bluetoothTEST()
+
 bluetoothhostTest()
 bluetoothhostTest2()
-bluetoothhostTest1()
 bluetoothhostTest4()
 }

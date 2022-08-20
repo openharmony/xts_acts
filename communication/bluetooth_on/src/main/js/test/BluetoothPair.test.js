@@ -179,8 +179,8 @@ describe('bluetoothhostTest2', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_BR_Pair_0500
-     * @tc.name test getRemoteDeviceClass
-     * @tc.desc Test get getRemoteDeviceClass
+     * @tc.name test get RemoteDeviceName
+     * @tc.desc Test getRemoteDeviceName api 
      * @tc.size MEDIUM
      * @ since 8
      * @tc.type Function
@@ -195,8 +195,8 @@ describe('bluetoothhostTest2', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_BR_Pair_0600
-     * @tc.name test getPairedDevices
-     * @tc.desc Test get getPairedDevices
+     * @tc.name test get PairedDevices
+     * @tc.desc Test getPairedDevices api
      * @tc.size MEDIUM
      * @ since 8
      * @tc.type Function
@@ -211,8 +211,8 @@ describe('bluetoothhostTest2', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_BR_Pair_0700
-     * @tc.name test pinRequired
-     * @tc.desc Test pinRequired and setDevicePairing false
+     * @tc.name Test pinRequired and setDevicePairing false
+     * @tc.desc Test pinRequired ON api
      * @tc.size MEDIUM
      * @ since 8
      * @tc.type Function
@@ -224,7 +224,7 @@ describe('bluetoothhostTest2', function() {
             bluetooth.setDevicePairingConfirmation(data.deviceId,false);
         }
         bluetooth.BLE.on('pinRequired', PinRequiredParam);
-        let result = bluetooth.pairDevice("00:00:00:00:00:00");
+        let result = bluetooth.pairDevice("11:22:55:66:33:44");
         console.info("[bluetooth_js] onStartpair007 -> " + JSON.stringify(result));
         expect(result).assertFalse();
         bluetooth.BLE.off('pinRequired', PinRequiredParam);
@@ -233,8 +233,8 @@ describe('bluetoothhostTest2', function() {
 
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_BR_Pair_0800
-     * @tc.name test pinRequired
-     * @tc.desc Test pinRequired and setDevicePairing true
+     * @tc.name Test pinRequired and setDevicePairing true
+     * @tc.desc Test pinRequired off api
      * @tc.size MEDIUM
      * @ since 8
      * @tc.type Function
@@ -246,13 +246,43 @@ describe('bluetoothhostTest2', function() {
             bluetooth.setDevicePairingConfirmation(data.deviceId,true);
         }
         bluetooth.BLE.on('pinRequired', PinRequiredParam);
-        let result = bluetooth.pairDevice("00:00:00:00:00:00");
+        let result = bluetooth.pairDevice("11:22:55:66:33:44");
         console.info("[bluetooth_js] onStartpair008 -> " + JSON.stringify(result));
         expect(result).assertFalse();
         bluetooth.BLE.off('pinRequired', PinRequiredParam);
         done()
     })
 
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BR_Pair_0900
+     * @tc.name Test On pair StateChange
+     * @tc.desc Test bondStateChange ON api
+     * @tc.size MEDIUM
+     * @ since 8
+     * @tc.type Function
+     * @tc.level Level 3
+     */
+    it('SUB_COMMUNICATION_BLUETOOTH_BR_Pair_0900', 0, async function (done) {
+        let BondState=
+        {
+            BOND_STATE_INVALID : 0,
+            BOND_STATE_BONDING : 1,
+            BOND_STATE_BONDED : 2
+        };
+        function BondStateParam(data) {
+            console.info("[bluetooth_js] bondStateChange on:" + JSON.stringify(data)
+            +'bondStateChange deviceId:' + data.deviceId + 'bondStateChange state:' + data.state);
+        }
+        bluetooth.BLE.on('bondStateChange', BondStateParam);
+        let result = bluetooth.pairDevice("11:22:55:66:33:44");
+        expect(BondState.BOND_STATE_INVALID == 0).assertTrue();
+        expect(BondState.BOND_STATE_BONDING == 1).assertTrue();
+        expect(BondState.BOND_STATE_BONDED == 2).assertTrue();
+        bluetooth.BLE.off('bondStateChange', BondStateParam);
+        done()
+    })
+
 })
 }
+
 
