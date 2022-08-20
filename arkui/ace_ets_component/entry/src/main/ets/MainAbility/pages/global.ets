@@ -55,7 +55,6 @@ struct GlobalExample {
   }
 
   testOffscreenCanvas() {
-    var offContext = new OffscreenCanvas(300, 300);
     var offCanvas2 = this.offContext.getContext("2d");
     var img = new Image();
     img.src = "/images/bg.jpg";
@@ -66,7 +65,6 @@ struct GlobalExample {
   }
 
   testImageData() {
-    var offContext = new OffscreenCanvas(300, 300);
     var offCanvas2 = this.offContext.getContext("2d");
     var imageData = offCanvas2.createImageData(100, 100);
     var imgData = imageData.data;
