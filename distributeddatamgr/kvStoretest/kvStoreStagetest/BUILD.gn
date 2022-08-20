@@ -24,7 +24,7 @@ ohos_js_hap_suite("ActsKvStoreStageTest") {
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsKvStoreStageTest"
   subsystem_name = "distributeddatamgr"
-  part_name = "distributeddatamgr"
+  part_name = "kv_store"
 }
 
 ohos_app_scope("kvStoreStage_app_profile") {
