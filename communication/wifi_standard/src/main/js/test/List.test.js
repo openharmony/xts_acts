@@ -12,10 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import actsWifiTestNew from './WifiJsunit.test1.js'
-import actsWifiTest from './WifiJsunit.testsame.js'
+import actsWifiCandidateNetWorkTest from './WifiCandidateNetWork.test.js'
+import actsWifiFunctionsTest from './WifiStationFunctions.test.js'
+import actsWifiEventTest from './WifiStationEvent.test.js'
 export default function testsuite() {
-actsWifiTestNew()
-actsWifiTest()
+actsWifiCandidateNetWorkTest()
+actsWifiFunctionsTest()
+actsWifiEventTest()
 }
+
 

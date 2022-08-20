@@ -69,6 +69,35 @@ describe('bluetoothBLETest1', function() {
 
 
     /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BLE_Connect_0100
+     * @tc.name test Server connectStateChange
+     * @tc.desc Test on and off api .
+     * @tc.size MEDIUM
+     * @ since 7
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('SUB_COMMUNICATION_BLUETOOTH_BLE_Connect_0100', 0, async function (done) {
+        function Connected(BLEConnectChangedState) {
+            let deviceId = BLEConnectChangedState.deviceId;
+            let status = BLEConnectChangedState.state;
+            console.info("[bluetooth_js] connectStateChange jsondata:"
+             +'deviceId:' + deviceId + 'status:' + status);
+            expect(true).assertEqual(BLEConnectChangedState !=null);
+          }
+          
+        let gattServer = bluetooth.BLE.createGattServer();
+        await gattServer.on("connectStateChange", Connected);
+        let gattClient = bluetooth.BLE.createGattClientDevice("11:22:33:44:55:66");
+        let ret = gattClient.connect();
+        await sleep(2000);
+        console.info('[bluetooth_js] gattClient connect' + ret)
+        expect(ret).assertTrue();
+        await gattServer.off("connectStateChange");
+        done()
+    })
+
+    /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_BLE_AddService_0100
      * @tc.name testAddService
      * @tc.desc Test AddService api.
@@ -83,9 +112,9 @@ describe('bluetoothBLETest1', function() {
         let ret = gattServer.addService(service);
         console.info('[bluetooth_js] bluetooth addService characteristics is null result:' + ret);
         expect(ret).assertTrue();
-        await sleep(3000);
+        await sleep(1000);
         let ret1=gattServer.removeService('00001810-0000-1000-8000-00805F9B34FB');
-        await sleep(3000);
+        await sleep(1000);
         console.info('[bluetooth_js]removeService ret:'+ret1);
         expect(ret1).assertTrue();
         done();
@@ -474,7 +503,7 @@ describe('bluetoothBLETest1', function() {
         let ret = gattServer.addService(gattService);
         console.info('[bluetooth_js] bluetooth addService null characteristicValue result : ' + ret);
         expect(ret).assertFalse();
-        await sleep(2000);
+        await sleep(1000);
         let ret1=gattServer.removeService('00001810-0000-1000-8000-00805F9B34FB');
         console.info('[bluetooth_js]removeService ret:'+ret1);
         expect(ret1).assertFalse();
@@ -512,7 +541,7 @@ describe('bluetoothBLETest1', function() {
         let ret = gattServer.addService(gattService);
         console.info('[bluetooth_js] bluetooth addService null descriptorValue result : ' + ret);
         expect(ret).assertFalse();
-        await sleep(2000);
+        await sleep(1000);
         let ret1=gattServer.removeService('00001810-0000-1000-8000-00805F9B34FB');
         console.info('[bluetooth_js]removeService ret:'+ret1);
         expect(ret1).assertFalse();
@@ -539,7 +568,7 @@ describe('bluetoothBLETest1', function() {
         let retN = gattServer.addService(gattService1);
         console.info('[bluetooth_js] bluetooth addService2 result : ' + retN);
         expect(retN).assertTrue();
-        await sleep(2000);
+        await sleep(1000);
         let ret1=gattServer.removeService('00001888-0000-1000-8000-00805f9b34fb');
         console.info('[bluetooth_js]removeService ret:'+ret1);
         expect(ret1).assertTrue();
@@ -599,7 +628,7 @@ describe('bluetoothBLETest1', function() {
         console.info('[bluetooth_js]removeService ret:'+ret1);
         expect(ret1).assertTrue();
         let ret2=gattServer.removeService('00001810-0000-1000-8000-00805F9B34FB');
-        await sleep(2000);
+        await sleep(1000);
         console.info('[bluetooth_js]removeService ret:'+ret2);
         expect(ret2).assertFalse();
         done();

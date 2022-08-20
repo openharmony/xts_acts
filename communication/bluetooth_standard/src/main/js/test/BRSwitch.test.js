@@ -82,25 +82,30 @@ describe('bluetoothhostTest', function() {
      * @tc.level Level 0
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BR_Switch_0100', 0, async function (done) {
+        function onReceiveEvent(data) {
+            console.info('bluetooth state001 ='+ JSON.stringify(data));
+        }
+        await bluetooth.on('stateChange', onReceiveEvent);
         let state = bluetooth.getState();
-        console.info('[bluetooth_js] get bluetooth state result'+ JSON.stringify(state));
+        console.info('[bluetooth_js] get bluetooth state001'+ JSON.stringify(state));
         if(state!=BluetoothState.STATE_ON)
         {
             let enable = bluetooth.enableBluetooth();
-            await sleep(3000);
-            console.info('[bluetooth_js] bluetooth enable result'+JSON.stringify(enable));
+            await sleep(5000);
+            console.info('[bluetooth_js] bluetooth enable001'+JSON.stringify(enable));
             expect(enable).assertTrue();
             let state1 = bluetooth.getState();
-            console.info('[bluetooth_js] enable state1 '+ JSON.stringify(state1));
+            console.info('[bluetooth_js] enable state001 '+ JSON.stringify(state1));
             expect(state1).assertEqual(BluetoothState.STATE_ON);
         }
         let disable = bluetooth.disableBluetooth();
         await sleep(3000);
-        console.info('[bluetooth_js] bluetooth disable result'+JSON.stringify(disable));
+        console.info('[bluetooth_js] bluetooth disable001'+JSON.stringify(disable));
         expect(disable).assertTrue();
         let state2 = bluetooth.getState();
-        console.info('[bluetooth_js] disable state2 '+ JSON.stringify(state2));
+        console.info('[bluetooth_js] disable state001 '+ JSON.stringify(state2));
         expect(state2).assertEqual(BluetoothState.STATE_OFF);
+        await bluetooth.off('stateChange', onReceiveEvent);
         done()   
     })
 

@@ -475,7 +475,7 @@ describe('bluetoothhostTest', function() {
             }]);
         await sleep(1000);
         console.info('[bluetooth_js] BLE scan off14 ');
-        bluetooth.BLE.off('BLEDeviceFind');
+        bluetooth.BLE.stopBLEScan();
         bluetooth.BLE.off('BLEDeviceFind', onReceiveEvent);
         done();
 
