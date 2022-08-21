@@ -164,6 +164,7 @@ describe('geolocationTest_geo3', function () {
         }
         geolocation.on('locationServiceState', locationServiceState);
         geolocation.off('locationServiceState', locationServiceState);
+	expect(true).assertTrue();
         done();
     })
 
@@ -388,14 +389,14 @@ describe('geolocationTest_geo3', function () {
     })
 
     /**
-     * @tc.number SUB_HSS_LocationSystem_SingleLoc_0100
+     * @tc.number SUB_HSS_LocationSystem_SingleLoc_1000
      * @tc.name Test getCurrentLocation
      * @tc.desc Initiate a single location request and set the location reporting precision.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_SingleLoc_0100', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_SingleLoc_1000', 0, async function (done) {
         let currentLocationRequest = { "priority": 0x0200, "scenario": 0x0300, "timeoutMs": 1000, "maxAccuracy": 5 };
         let currentLocationRequest1 = { "priority": 0x0200, "scenario": 0x0300, "timeoutMs": 1000, "maxAccuracy": 2 };
         await geolocation.getCurrentLocation(currentLocationRequest).then((result) => {
@@ -716,14 +717,14 @@ describe('geolocationTest_geo3', function () {
     })
 
     /**
-     * @tc.number SUB_HSS_LocationSystem_LocRequest_0100
+     * @tc.number SUB_HSS_LocationSystem_LocRequest_1000
      * @tc.name Test locationChange
      * @tc.desc Initiate a specified continuous location request and set the reporting interval.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_LocRequest_0100', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_LocRequest_1000', 0, async function (done) {
         enableLocationSwitch();
         let requestInfo = {"priority":0x200, "scenario":0x301, "timeInterval":3,
             "distanceInterval": 0, "maxAccuracy": 0};
@@ -1060,17 +1061,6 @@ describe('geolocationTest_geo3', function () {
             "distanceInterval": 0, "maxAccuracy": 0};
         geolocation.on('cachedGnssLocationsReporting', CachedGnssLoactionsRequest, cachedLocationsCb);
         geolocation.off('cachedGnssLocationsReporting',cachedLocationsCb);
-//        geolocation.getCachedGnssLocationsSize((err, data) => {
-//            if (err) {
-//                console.info('[lbs_js]  getCachedGnssLocationsSize callback err is : ' + err);
-//                expect(true).assertTrue(err != null);
-//                done();
-//            }else {
-//                console.info("[lbs_js] getCachedGnssLocationsSize callback data is: " + JSON.stringify(data));
-//                expect(true).assertTrue(data != null);
-//                done()
-//            }
-//        });
         function getCachedGnssLocationsSizeCallback(){
             return new Promise((resolve, reject)=>{
                 geolocation.getCachedGnssLocationsSize((err, data) => {

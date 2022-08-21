@@ -122,11 +122,12 @@ describe('geolocationTest_4', function () {
     it('SUB_HSS_LocationSystem_CountryCode_0200', 0, async function (done) {
         function getCountryCodeCallback() {
             return new Promise((resolve, reject) => {
-                geolocation.getCountryCode((err) => {
+                geolocation.getCountryCode((err,data) => {
                     if (err) {
                         return console.info("getCountryCode callback err:  " + JSON.stringify(err));
                     } else {
-                        console.info("getCountryCode callback success");
+                        console.info("getCountryCode callback success"+ JSON.stringify(data));
+			expect(true).assertEqual(data != null);
                     }
                     resolve();
                 })
