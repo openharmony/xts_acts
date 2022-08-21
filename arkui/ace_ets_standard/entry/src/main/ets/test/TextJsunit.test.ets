@@ -93,7 +93,7 @@ export default function textJsunit() {
       expect(obj.$attrs.fontWeight).assertEqual("FontWeight.Bold")
       expect(obj.$attrs.fontStyle).assertEqual("FontStyle.Italic")
       expect(obj.$attrs.fontFamily).assertEqual("sans-serif")
-      expect(obj.$attrs.textAlign).assertEqual("TextAlign.End")
+      expect(obj.$attrs.textAlign).assertEqual("TextAlign.Center")
       expect(obj.$attrs.textOverflow).assertEqual("TextOverflow.Ellipsis")
       expect(obj.$attrs.lineHeight).assertEqual("15.00fp")
       expect(obj.$attrs.baselineOffset).assertEqual("0")
@@ -125,7 +125,7 @@ export default function textJsunit() {
       expect(obj.$attrs.enabled).assertEqual(true)
       expect(obj.$attrs.visibility).assertEqual("Visibility.Hidden")
       expect(obj.$attrs.fontWeight).assertEqual("FontWeight.Normal")
-      expect(obj.$attrs.textAlign).assertEqual("TextAlign.Start")
+      expect(obj.$attrs.textAlign).assertEqual("TextAlign.Left")
       expect(obj.$attrs.textOverflow).assertEqual("TextOverflow.Clip")
       expect(obj.$attrs.decoration).assertEqual(JSON.stringify({
         type: "TextDecorationType.LineThrough", color: "#FFFF0000"
@@ -150,7 +150,7 @@ export default function textJsunit() {
       expect(obj.$attrs.borderStyle).assertEqual("BorderStyle.Solid")
       expect(obj.$attrs.visibility).assertEqual("Visibility.None")
       expect(obj.$attrs.fontWeight).assertEqual("FontWeight.Bolder")
-      expect(obj.$attrs.textAlign).assertEqual("TextAlign.Center")
+      expect(obj.$attrs.textAlign).assertEqual("TextAlign.Right")
       expect(obj.$attrs.textCase).assertEqual("TextCase.UpperCase")
       expect(obj.$attrs.decoration).assertEqual(JSON.stringify({
         type: "TextDecorationType.None", color: "#FFFF0000"
