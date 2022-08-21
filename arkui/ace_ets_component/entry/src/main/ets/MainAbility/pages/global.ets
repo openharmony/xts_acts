@@ -21,6 +21,7 @@ struct GlobalExample {
   private settings: RenderingContextSettings = new RenderingContextSettings (true)
   private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
   private offContext: OffscreenCanvasRenderingContext2D  = new OffscreenCanvasRenderingContext2D(300, 300, this.settings);
+  private img: ImageBitmap = new ImageBitmap("/images/bg.jpg")
   
   onPageShow() {
     console.info("global page called")
@@ -45,19 +46,16 @@ struct GlobalExample {
   }
 
   testImageBitmapSize() {
-    let img = new ImageBitmap("/images/bg.jpg");
-    let width = img.width;
-    let height = img.height;
+    let width = this.img.width;
+    let height = this.img.height;
     this.offContext.imageSmoothingEnabled = false;
-    this.offContext.drawImage(img, 30, 950, 160, 100);
+    this.offContext.drawImage(this.img, 30, 950, 160, 100);
     console.log("imagebitmap_width=" + width);
     console.log("imagebitmap_height=" + height);
   }
 
   testOffscreenCanvas() {
-    var img = new Image();
-    img.src = "/images/bg.jpg";
-    this.offContext.drawImage(img, 0, 0, 100, 100);
+    this.offContext.drawImage(this.img, 0, 0, 100, 100);
     var bitmap = this.offContext.transferToImageBitmap();
     this.context.transferFromImageBitmap(bitmap);
   }
@@ -70,7 +68,7 @@ struct GlobalExample {
   }
 
   testImage() {
-    var img = new Image("/images/bg.jpg", 100, 100)
+    var image = this.offContext.drawImage(this.img, 0, 0, 100, 100)
       .onload(() => {
       })
       .onerror(() => {

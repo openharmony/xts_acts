@@ -130,7 +130,7 @@ export default function visibilityJsunit() {
       let strJson = getInspectorByKey('box');
       let obj = JSON.parse(strJson);
       console.info("[testVisibility04] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.visibility).assertEqual('Visibility.None');
+      expect(obj.$attrs.visibility).assertEqual('Visibility.Visible');
       console.info('[testVisibility04] END');
       done();
     });
@@ -156,7 +156,7 @@ export default function visibilityJsunit() {
       let strJson = getInspectorByKey('box');
       let obj = JSON.parse(strJson);
       console.info("[testVisibility05] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.visibility).assertEqual('Visibility.None');
+      expect(obj.$attrs.visibility).assertEqual('Visibility.Visible');
       console.info('[testVisibility05] END');
       done();
     });
