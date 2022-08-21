@@ -79,44 +79,51 @@ describe('bluetoothBLETest2', function() {
      * @tc.level Level 0
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_AdvertiseData_0100', 0, async function (done) {
-        let gattServer =bluetooth.BLE.createGattServer();
-        let manufactureValueBuffer = new Uint8Array(4);
-        manufactureValueBuffer[0] = 1;
-        manufactureValueBuffer[1] = 2;
-        manufactureValueBuffer[2] = 3;
-        manufactureValueBuffer[3] = 4;
-        let serviceValueBuffer = new Uint8Array(4);
-        serviceValueBuffer[0] = 4;
-        serviceValueBuffer[1] = 6;
-        serviceValueBuffer[2] = 7;
-        serviceValueBuffer[3] = 8;
-        gattServer.startAdvertising({
-            interval:150,
-            txPower:60,
-            connectable:true,
-            },{
-            serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
-            manufactureData:[{
-                 manufactureId:4567,
-                 manufactureValue:manufactureValueBuffer.buffer
-            }],
-            serviceData:[{
-                 serviceUuid:"00001888-0000-1000-8000-00805f9b34fb",
-                 serviceValue:serviceValueBuffer.buffer
-            }],
-          },{
-            serviceUuids:["00001889-0000-1000-8000-00805f9b34fb"],
-            manufactureData:[{
-                 manufactureId:1789,
-                 manufactureValue:manufactureValueBuffer.buffer
-            }],
-            serviceData:[{
-                 serviceUuid:"00001889-0000-1000-8000-00805f9b34fb",
-                 serviceValue:serviceValueBuffer.buffer
-            }],
-        });
-        gattServer.stopAdvertising();
-        done();
+          let gattServer =bluetooth.BLE.createGattServer();
+          let manufactureValueBuffer = new Uint8Array(4);
+          manufactureValueBuffer[0] = 1;
+          manufactureValueBuffer[1] = 2;
+          manufactureValueBuffer[2] = 3;
+          manufactureValueBuffer[3] = 4;
+          let serviceValueBuffer = new Uint8Array(4);
+          serviceValueBuffer[0] = 4;
+          serviceValueBuffer[1] = 6;
+          serviceValueBuffer[2] = 7;
+          serviceValueBuffer[3] = 8;
+          let setting={
+               interval:150,
+               txPower:60,
+               connectable:true,
+          }
+          let advData={
+               serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
+               manufactureData:[{
+                    manufactureId:4567,
+                    manufactureValue:manufactureValueBuffer.buffer
+               }],
+               serviceData:[{
+                    serviceUuid:"00001888-0000-1000-8000-00805f9b34fb",
+                    serviceValue:serviceValueBuffer.buffer
+               }],
+          }
+          let advResponse ={
+               serviceUuids:["00001889-0000-1000-8000-00805f9b34fb"],
+               manufactureData:[{
+                    manufactureId:1789,
+                    manufactureValue:manufactureValueBuffer.buffer
+               }],
+               serviceData:[{
+                    serviceUuid:"00001889-0000-1000-8000-00805f9b34fb",
+                    serviceValue:serviceValueBuffer.buffer
+               }],
+          }
+          try {
+               gattServer.startAdvertising(setting,advData,advResponse);
+               gattServer.stopAdvertising();
+          }catch(e) {
+               expect(null).assertFail();
+          }
+          done();
     })
 
     /**
@@ -129,44 +136,51 @@ describe('bluetoothBLETest2', function() {
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_AdvertiseData_0200', 0, async function (done) {
-        let gattServer =bluetooth.BLE.createGattServer();
-        let manufactureValueBuffer = new Uint8Array(4);
-        manufactureValueBuffer[0] = 1;
-        manufactureValueBuffer[1] = 2;
-        manufactureValueBuffer[2] = 3;
-        manufactureValueBuffer[3] = 4;
-        let serviceValueBuffer = new Uint8Array(4);
-        serviceValueBuffer[0] = 4;
-        serviceValueBuffer[1] = 6;
-        serviceValueBuffer[2] = 7;
-        serviceValueBuffer[3] = 8;
-        gattServer.startAdvertising({
-            interval:20,
-            txPower:60,
-            connectable:true,
-            },{
-            serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
-            manufactureData:[{
-                 manufactureId:4567,
-                 manufactureValue:manufactureValueBuffer.buffer
-            }],
-            serviceData:[{
-                 serviceUuid:"00001888-0000-1000-8000-00805f9b34fb",
-                 serviceValue:serviceValueBuffer.buffer
-            }],
-          },{
-            serviceUuids:["00001889-0000-1000-8000-00805f9b34fb"],
-            manufactureData:[{
-                 manufactureId:1789,
-                 manufactureValue:manufactureValueBuffer.buffer
-            }],
-            serviceData:[{
-                 serviceUuid:"00001889-0000-1000-8000-00805f9b34fb",
-                 serviceValue:serviceValueBuffer.buffer
-            }],
-        });
-        gattServer.stopAdvertising();
-        done();
+          let gattServer =bluetooth.BLE.createGattServer();
+          let manufactureValueBuffer = new Uint8Array(4);
+          manufactureValueBuffer[0] = 1;
+          manufactureValueBuffer[1] = 2;
+          manufactureValueBuffer[2] = 3;
+          manufactureValueBuffer[3] = 4;
+          let serviceValueBuffer = new Uint8Array(4);
+          serviceValueBuffer[0] = 4;
+          serviceValueBuffer[1] = 6;
+          serviceValueBuffer[2] = 7;
+          serviceValueBuffer[3] = 8;
+          let setting={
+               interval:20,
+               txPower:60,
+               connectable:true,
+          }
+          let advData={
+               serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
+               manufactureData:[{
+                    manufactureId:4567,
+                    manufactureValue:manufactureValueBuffer.buffer
+               }],
+               serviceData:[{
+                    serviceUuid:"00001888-0000-1000-8000-00805f9b34fb",
+                    serviceValue:serviceValueBuffer.buffer
+               }],
+          }
+          let advResponse ={
+               serviceUuids:["00001889-0000-1000-8000-00805f9b34fb"],
+               manufactureData:[{
+                    manufactureId:1789,
+                    manufactureValue:manufactureValueBuffer.buffer
+               }],
+               serviceData:[{
+                    serviceUuid:"00001889-0000-1000-8000-00805f9b34fb",
+                    serviceValue:serviceValueBuffer.buffer
+               }],
+          }
+          try {
+               gattServer.startAdvertising(setting,advData,advResponse);
+               gattServer.stopAdvertising();
+          }catch(e) {
+               expect(null).assertFail();
+          }
+          done();
     })
 
     /**
@@ -179,44 +193,51 @@ describe('bluetoothBLETest2', function() {
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_AdvertiseData_0300', 0, async function (done) {
-        let gattServer =bluetooth.BLE.createGattServer();
-        let manufactureValueBuffer = new Uint8Array(4);
-        manufactureValueBuffer[0] = 1;
-        manufactureValueBuffer[1] = 2;
-        manufactureValueBuffer[2] = 3;
-        manufactureValueBuffer[3] = 4;
-        let serviceValueBuffer = new Uint8Array(4);
-        serviceValueBuffer[0] = 4;
-        serviceValueBuffer[1] = 6;
-        serviceValueBuffer[2] = 7;
-        serviceValueBuffer[3] = 8;
-        gattServer.startAdvertising({
-            interval:16385,
-            txPower:60,
-            connectable:true,
-            },{
-            serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
-            manufactureData:[{
-                 manufactureId:4567,
-                 manufactureValue:manufactureValueBuffer.buffer
-            }],
-            serviceData:[{
-                 serviceUuid:"00001888-0000-1000-8000-00805f9b34fb",
-                 serviceValue:serviceValueBuffer.buffer
-            }],
-          },{
-            serviceUuids:["00001889-0000-1000-8000-00805f9b34fb"],
-            manufactureData:[{
-                 manufactureId:1789,
-                 manufactureValue:manufactureValueBuffer.buffer
-            }],
-            serviceData:[{
-                 serviceUuid:"00001889-0000-1000-8000-00805f9b34fb",
-                 serviceValue:serviceValueBuffer.buffer
-            }],
-        });
-        gattServer.stopAdvertising();
-        done();
+          let gattServer =bluetooth.BLE.createGattServer();
+          let manufactureValueBuffer = new Uint8Array(4);
+          manufactureValueBuffer[0] = 1;
+          manufactureValueBuffer[1] = 2;
+          manufactureValueBuffer[2] = 3;
+          manufactureValueBuffer[3] = 4;
+          let serviceValueBuffer = new Uint8Array(4);
+          serviceValueBuffer[0] = 4;
+          serviceValueBuffer[1] = 6;
+          serviceValueBuffer[2] = 7;
+          serviceValueBuffer[3] = 8;
+          let setting={
+               interval:16385,
+               txPower:60,
+               connectable:true,
+          }
+          let advData={
+               serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
+               manufactureData:[{
+                    manufactureId:4567,
+                    manufactureValue:manufactureValueBuffer.buffer
+               }],
+               serviceData:[{
+                    serviceUuid:"00001888-0000-1000-8000-00805f9b34fb",
+                    serviceValue:serviceValueBuffer.buffer
+               }],
+          }
+          let advResponse ={
+               serviceUuids:["00001889-0000-1000-8000-00805f9b34fb"],
+               manufactureData:[{
+                    manufactureId:1789,
+                    manufactureValue:manufactureValueBuffer.buffer
+               }],
+               serviceData:[{
+                    serviceUuid:"00001889-0000-1000-8000-00805f9b34fb",
+                    serviceValue:serviceValueBuffer.buffer
+               }],
+          }
+          try {
+               gattServer.startAdvertising(setting,advData,advResponse);
+               gattServer.stopAdvertising();
+          }catch(e) {
+               expect(null).assertFail();
+          }
+          done();
     })
 
     /**
@@ -229,44 +250,51 @@ describe('bluetoothBLETest2', function() {
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_AdvertiseData_0400', 0, async function (done) {
-        let gattServer =bluetooth.BLE.createGattServer();
-        let manufactureValueBuffer = new Uint8Array(4);
-        manufactureValueBuffer[0] = 1;
-        manufactureValueBuffer[1] = 2;
-        manufactureValueBuffer[2] = 3;
-        manufactureValueBuffer[3] = 4;
-        let serviceValueBuffer = new Uint8Array(4);
-        serviceValueBuffer[0] = 4;
-        serviceValueBuffer[1] = 6;
-        serviceValueBuffer[2] = 7;
-        serviceValueBuffer[3] = 8;
-        gattServer.startAdvertising({
-            interval:16400,
-            txPower:60,
-            connectable:true,
-            },{
-            serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
-            manufactureData:[{
-                 manufactureId:4567,
-                 manufactureValue:manufactureValueBuffer.buffer
-            }],
-            serviceData:[{
-                 serviceUuid:"00001888-0000-1000-8000-00805f9b34fb",
-                 serviceValue:serviceValueBuffer.buffer
-            }],
-          },{
-            serviceUuids:["00001889-0000-1000-8000-00805f9b34fb"],
-            manufactureData:[{
-                 manufactureId:1789,
-                 manufactureValue:manufactureValueBuffer.buffer
-            }],
-            serviceData:[{
-                 serviceUuid:"00001889-0000-1000-8000-00805f9b34fb",
-                 serviceValue:serviceValueBuffer.buffer
-            }],
-        });
-        gattServer.stopAdvertising();
-        done();
+          let gattServer =bluetooth.BLE.createGattServer();
+          let manufactureValueBuffer = new Uint8Array(4);
+          manufactureValueBuffer[0] = 1;
+          manufactureValueBuffer[1] = 2;
+          manufactureValueBuffer[2] = 3;
+          manufactureValueBuffer[3] = 4;
+          let serviceValueBuffer = new Uint8Array(4);
+          serviceValueBuffer[0] = 4;
+          serviceValueBuffer[1] = 6;
+          serviceValueBuffer[2] = 7;
+          serviceValueBuffer[3] = 8;
+          let setting={
+               interval:16400,
+               txPower:60,
+               connectable:true,
+          }
+          let advData={
+               serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
+               manufactureData:[{
+                    manufactureId:4567,
+                    manufactureValue:manufactureValueBuffer.buffer
+               }],
+               serviceData:[{
+                    serviceUuid:"00001888-0000-1000-8000-00805f9b34fb",
+                    serviceValue:serviceValueBuffer.buffer
+               }],
+          }
+          let advResponse ={
+               serviceUuids:["00001889-0000-1000-8000-00805f9b34fb"],
+               manufactureData:[{
+                    manufactureId:1789,
+                    manufactureValue:manufactureValueBuffer.buffer
+               }],
+               serviceData:[{
+                    serviceUuid:"00001889-0000-1000-8000-00805f9b34fb",
+                    serviceValue:serviceValueBuffer.buffer
+               }],
+          }
+          try {
+               gattServer.startAdvertising(setting,advData,advResponse);
+               gattServer.stopAdvertising();
+          }catch(e) {
+               expect(null).assertFail();
+          }
+          done();
     })
 
     /**
@@ -279,47 +307,54 @@ describe('bluetoothBLETest2', function() {
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_AdvertiseData_0500', 0, async function (done) {
-        let gattServer =bluetooth.BLE.createGattServer();
-        let manufactureValueBuffer = new Uint8Array(4);
-        manufactureValueBuffer[0] = 1;
-        manufactureValueBuffer[1] = 2;
-        manufactureValueBuffer[2] = 3;
-        manufactureValueBuffer[3] = 4;
-        let serviceValueBuffer = new Uint8Array(4);
-        serviceValueBuffer[0] = 4;
-        serviceValueBuffer[1] = 6;
-        serviceValueBuffer[2] = 7;
-        serviceValueBuffer[3] = 8;
-        gattServer.startAdvertising({
-            interval:19,
-            txPower:60,
-            connectable:true,
-            },{
-            serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
-            manufactureData:[{
-                 manufactureId:4567,
-                 manufactureValue:manufactureValueBuffer.buffer
-            }],
-            serviceData:[{
-                 serviceUuid:"00001888-0000-1000-8000-00805f9b34fb",
-                 serviceValue:serviceValueBuffer.buffer
-            }],
-          },{
-            serviceUuids:["00001889-0000-1000-8000-00805f9b34fb"],
-            manufactureData:[{
-                 manufactureId:1789,
-                 manufactureValue:manufactureValueBuffer.buffer
-            }],
-            serviceData:[{
-                 serviceUuid:"00001889-0000-1000-8000-00805f9b34fb",
-                 serviceValue:serviceValueBuffer.buffer
-            }],
-        });
-        gattServer.stopAdvertising();
-        done();
+          let gattServer =bluetooth.BLE.createGattServer();
+          let manufactureValueBuffer = new Uint8Array(4);
+          manufactureValueBuffer[0] = 1;
+          manufactureValueBuffer[1] = 2;
+          manufactureValueBuffer[2] = 3;
+          manufactureValueBuffer[3] = 4;
+          let serviceValueBuffer = new Uint8Array(4);
+          serviceValueBuffer[0] = 4;
+          serviceValueBuffer[1] = 6;
+          serviceValueBuffer[2] = 7;
+          serviceValueBuffer[3] = 8;
+          let setting={
+               interval:19,
+               txPower:60,
+               connectable:true,
+          }
+          let advData={
+               serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
+               manufactureData:[{
+                    manufactureId:4567,
+                    manufactureValue:manufactureValueBuffer.buffer
+               }],
+               serviceData:[{
+                    serviceUuid:"00001888-0000-1000-8000-00805f9b34fb",
+                    serviceValue:serviceValueBuffer.buffer
+               }],
+          }
+          let advResponse ={
+               serviceUuids:["00001889-0000-1000-8000-00805f9b34fb"],
+               manufactureData:[{
+                    manufactureId:1789,
+                    manufactureValue:manufactureValueBuffer.buffer
+               }],
+               serviceData:[{
+                    serviceUuid:"00001889-0000-1000-8000-00805f9b34fb",
+                    serviceValue:serviceValueBuffer.buffer
+               }],
+          }
+          try {
+               gattServer.startAdvertising(setting,advData,advResponse);
+               gattServer.stopAdvertising();
+          }catch(e) {
+               expect(null).assertFail();
+          }
+          done();
     })
 
-     /**
+    /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_BLE_AdvertiseData_0800
      * @tc.name testStartAdvertising
      * @tc.desc Test StartAdvertising api.
@@ -329,44 +364,51 @@ describe('bluetoothBLETest2', function() {
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_AdvertiseData_0800', 0, async function (done) {
-        let gattServer =bluetooth.BLE.createGattServer();
-        let manufactureValueBuffer = new Uint8Array(4);
-        manufactureValueBuffer[0] = 1;
-        manufactureValueBuffer[1] = 2;
-        manufactureValueBuffer[2] = 3;
-        manufactureValueBuffer[3] = 4;
-        let serviceValueBuffer = new Uint8Array(4);
-        serviceValueBuffer[0] = 4;
-        serviceValueBuffer[1] = 6;
-        serviceValueBuffer[2] = 7;
-        serviceValueBuffer[3] = 8;
-        gattServer.startAdvertising({
-            interval:1000,
-            txPower:-10,
-            connectable:true,
-            },{
-            serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
-            manufactureData:[{
-                 manufactureId:4567,
-                 manufactureValue:manufactureValueBuffer.buffer
-            }],
-            serviceData:[{
-                 serviceUuid:"00001888-0000-1000-8000-00805f9b34fb",
-                 serviceValue:serviceValueBuffer.buffer
-            }],
-          },{
-            serviceUuids:["00001889-0000-1000-8000-00805f9b34fb"],
-            manufactureData:[{
-                 manufactureId:1789,
-                 manufactureValue:manufactureValueBuffer.buffer
-            }],
-            serviceData:[{
-                 serviceUuid:"00001889-0000-1000-8000-00805f9b34fb",
-                 serviceValue:serviceValueBuffer.buffer
-            }],
-        });
-        gattServer.stopAdvertising();
-        done();
+          let gattServer =bluetooth.BLE.createGattServer();
+          let manufactureValueBuffer = new Uint8Array(4);
+          manufactureValueBuffer[0] = 1;
+          manufactureValueBuffer[1] = 2;
+          manufactureValueBuffer[2] = 3;
+          manufactureValueBuffer[3] = 4;
+          let serviceValueBuffer = new Uint8Array(4);
+          serviceValueBuffer[0] = 4;
+          serviceValueBuffer[1] = 6;
+          serviceValueBuffer[2] = 7;
+          serviceValueBuffer[3] = 8;
+          let setting={
+               interval:1000,
+               txPower:-10,
+               connectable:true,
+          }
+          let advData={
+               serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
+               manufactureData:[{
+                    manufactureId:4567,
+                    manufactureValue:manufactureValueBuffer.buffer
+               }],
+               serviceData:[{
+                    serviceUuid:"00001888-0000-1000-8000-00805f9b34fb",
+                    serviceValue:serviceValueBuffer.buffer
+               }],
+          }
+          let advResponse ={
+               serviceUuids:["00001889-0000-1000-8000-00805f9b34fb"],
+               manufactureData:[{
+                    manufactureId:1789,
+                    manufactureValue:manufactureValueBuffer.buffer
+               }],
+               serviceData:[{
+                    serviceUuid:"00001889-0000-1000-8000-00805f9b34fb",
+                    serviceValue:serviceValueBuffer.buffer
+               }],
+          }
+          try {
+               gattServer.startAdvertising(setting,advData,advResponse);
+               gattServer.stopAdvertising();
+          }catch(e) {
+               expect(null).assertFail();
+          }
+          done();
     })
 
     /**
@@ -379,44 +421,51 @@ describe('bluetoothBLETest2', function() {
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_AdvertiseData_0900', 0, async function (done) {
-        let gattServer =bluetooth.BLE.createGattServer();
-        let manufactureValueBuffer = new Uint8Array(4);
-        manufactureValueBuffer[0] = 1;
-        manufactureValueBuffer[1] = 2;
-        manufactureValueBuffer[2] = 3;
-        manufactureValueBuffer[3] = 4;
-        let serviceValueBuffer = new Uint8Array(4);
-        serviceValueBuffer[0] = 4;
-        serviceValueBuffer[1] = 6;
-        serviceValueBuffer[2] = 7;
-        serviceValueBuffer[3] = 8;
-        gattServer.startAdvertising({
-            interval:1000,
-            txPower:-127,
-            connectable:true,
-            },{
-            serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
-            manufactureData:[{
-                 manufactureId:4567,
-                 manufactureValue:manufactureValueBuffer.buffer
-            }],
-            serviceData:[{
-                 serviceUuid:"00001888-0000-1000-8000-00805f9b34fb",
-                 serviceValue:serviceValueBuffer.buffer
-            }],
-          },{
-            serviceUuids:["00001889-0000-1000-8000-00805f9b34fb"],
-            manufactureData:[{
-                 manufactureId:1789,
-                 manufactureValue:manufactureValueBuffer.buffer
-            }],
-            serviceData:[{
-                 serviceUuid:"00001889-0000-1000-8000-00805f9b34fb",
-                 serviceValue:serviceValueBuffer.buffer
-            }],
-        });
-        gattServer.stopAdvertising();
-        done();
+          let gattServer =bluetooth.BLE.createGattServer();
+          let manufactureValueBuffer = new Uint8Array(4);
+          manufactureValueBuffer[0] = 1;
+          manufactureValueBuffer[1] = 2;
+          manufactureValueBuffer[2] = 3;
+          manufactureValueBuffer[3] = 4;
+          let serviceValueBuffer = new Uint8Array(4);
+          serviceValueBuffer[0] = 4;
+          serviceValueBuffer[1] = 6;
+          serviceValueBuffer[2] = 7;
+          serviceValueBuffer[3] = 8;
+          let setting={
+               interval:1000,
+               txPower:-127,
+               connectable:true,
+          }
+          let advData={
+               serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
+               manufactureData:[{
+                    manufactureId:4567,
+                    manufactureValue:manufactureValueBuffer.buffer
+               }],
+               serviceData:[{
+                    serviceUuid:"00001888-0000-1000-8000-00805f9b34fb",
+                    serviceValue:serviceValueBuffer.buffer
+               }],
+          }
+          let advResponse ={
+               serviceUuids:["00001889-0000-1000-8000-00805f9b34fb"],
+               manufactureData:[{
+                    manufactureId:1789,
+                    manufactureValue:manufactureValueBuffer.buffer
+               }],
+               serviceData:[{
+                    serviceUuid:"00001889-0000-1000-8000-00805f9b34fb",
+                    serviceValue:serviceValueBuffer.buffer
+               }],
+          }
+          try {
+               gattServer.startAdvertising(setting,advData,advResponse);
+               gattServer.stopAdvertising();
+          }catch(e) {
+               expect(null).assertFail();
+          }
+          done();
     })
 
     /**
@@ -429,44 +478,51 @@ describe('bluetoothBLETest2', function() {
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_AdvertiseData_1000', 0, async function (done) {
-        let gattServer =bluetooth.BLE.createGattServer();
-        let manufactureValueBuffer = new Uint8Array(4);
-        manufactureValueBuffer[0] = 1;
-        manufactureValueBuffer[1] = 2;
-        manufactureValueBuffer[2] = 3;
-        manufactureValueBuffer[3] = 4;
-        let serviceValueBuffer = new Uint8Array(4);
-        serviceValueBuffer[0] = 4;
-        serviceValueBuffer[1] = 6;
-        serviceValueBuffer[2] = 7;
-        serviceValueBuffer[3] = 8;
-        gattServer.startAdvertising({
-            interval:1000,
-            txPower:1,
-            connectable:true,
-            },{
-            serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
-            manufactureData:[{
-                 manufactureId:4567,
-                 manufactureValue:manufactureValueBuffer.buffer
-            }],
-            serviceData:[{
-                 serviceUuid:"00001888-0000-1000-8000-00805f9b34fb",
-                 serviceValue:serviceValueBuffer.buffer
-            }],
-          },{
-            serviceUuids:["00001889-0000-1000-8000-00805f9b34fb"],
-            manufactureData:[{
-                 manufactureId:1789,
-                 manufactureValue:manufactureValueBuffer.buffer
-            }],
-            serviceData:[{
-                 serviceUuid:"00001889-0000-1000-8000-00805f9b34fb",
-                 serviceValue:serviceValueBuffer.buffer
-            }],
-        });
-        gattServer.stopAdvertising();
-        done();
+          let gattServer =bluetooth.BLE.createGattServer();
+          let manufactureValueBuffer = new Uint8Array(4);
+          manufactureValueBuffer[0] = 1;
+          manufactureValueBuffer[1] = 2;
+          manufactureValueBuffer[2] = 3;
+          manufactureValueBuffer[3] = 4;
+          let serviceValueBuffer = new Uint8Array(4);
+          serviceValueBuffer[0] = 4;
+          serviceValueBuffer[1] = 6;
+          serviceValueBuffer[2] = 7;
+          serviceValueBuffer[3] = 8;
+          let setting={
+               interval:1000,
+               txPower:1,
+               connectable:true,
+          }
+          let advData={
+               serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
+               manufactureData:[{
+                    manufactureId:4567,
+                    manufactureValue:manufactureValueBuffer.buffer
+               }],
+               serviceData:[{
+                    serviceUuid:"00001888-0000-1000-8000-00805f9b34fb",
+                    serviceValue:serviceValueBuffer.buffer
+               }],
+          }
+          let advResponse ={
+               serviceUuids:["00001889-0000-1000-8000-00805f9b34fb"],
+               manufactureData:[{
+                    manufactureId:1789,
+                    manufactureValue:manufactureValueBuffer.buffer
+               }],
+               serviceData:[{
+                    serviceUuid:"00001889-0000-1000-8000-00805f9b34fb",
+                    serviceValue:serviceValueBuffer.buffer
+               }],
+          }
+          try {
+               gattServer.startAdvertising(setting,advData,advResponse);
+               gattServer.stopAdvertising();
+          }catch(e) {
+               expect(null).assertFail();
+          }
+          done();
     })
 
     /**
@@ -479,44 +535,51 @@ describe('bluetoothBLETest2', function() {
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_AdvertiseData_1100', 0, async function (done) {
-        let gattServer =bluetooth.BLE.createGattServer();
-        let manufactureValueBuffer = new Uint8Array(4);
-        manufactureValueBuffer[0] = 1;
-        manufactureValueBuffer[1] = 2;
-        manufactureValueBuffer[2] = 3;
-        manufactureValueBuffer[3] = 4;
-        let serviceValueBuffer = new Uint8Array(4);
-        serviceValueBuffer[0] = 4;
-        serviceValueBuffer[1] = 6;
-        serviceValueBuffer[2] = 7;
-        serviceValueBuffer[3] = 8;
-        gattServer.startAdvertising({
-            interval:1000,
-            txPower:10,
-            connectable:true,
-            },{
-            serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
-            manufactureData:[{
-                 manufactureId:4567,
-                 manufactureValue:manufactureValueBuffer.buffer
-            }],
-            serviceData:[{
-                 serviceUuid:"00001888-0000-1000-8000-00805f9b34fb",
-                 serviceValue:serviceValueBuffer.buffer
-            }],
-          },{
-            serviceUuids:["00001889-0000-1000-8000-00805f9b34fb"],
-            manufactureData:[{
-                 manufactureId:1789,
-                 manufactureValue:manufactureValueBuffer.buffer
-            }],
-            serviceData:[{
-                 serviceUuid:"00001889-0000-1000-8000-00805f9b34fb",
-                 serviceValue:serviceValueBuffer.buffer
-            }],
-        });
-        gattServer.stopAdvertising();
-        done();
+          let gattServer =bluetooth.BLE.createGattServer();
+          let manufactureValueBuffer = new Uint8Array(4);
+          manufactureValueBuffer[0] = 1;
+          manufactureValueBuffer[1] = 2;
+          manufactureValueBuffer[2] = 3;
+          manufactureValueBuffer[3] = 4;
+          let serviceValueBuffer = new Uint8Array(4);
+          serviceValueBuffer[0] = 4;
+          serviceValueBuffer[1] = 6;
+          serviceValueBuffer[2] = 7;
+          serviceValueBuffer[3] = 8;
+          let setting={
+               interval:1000,
+               txPower:10,
+               connectable:true,
+          }
+          let advData={
+               serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
+               manufactureData:[{
+                    manufactureId:4567,
+                    manufactureValue:manufactureValueBuffer.buffer
+               }],
+               serviceData:[{
+                    serviceUuid:"00001888-0000-1000-8000-00805f9b34fb",
+                    serviceValue:serviceValueBuffer.buffer
+               }],
+          }
+          let advResponse ={
+               serviceUuids:["00001889-0000-1000-8000-00805f9b34fb"],
+               manufactureData:[{
+                    manufactureId:1789,
+                    manufactureValue:manufactureValueBuffer.buffer
+               }],
+               serviceData:[{
+                    serviceUuid:"00001889-0000-1000-8000-00805f9b34fb",
+                    serviceValue:serviceValueBuffer.buffer
+               }],
+          }
+          try {
+               gattServer.startAdvertising(setting,advData,advResponse);
+               gattServer.stopAdvertising();
+          }catch(e) {
+               expect(null).assertFail();
+          }
+          done();
     })
 
     /**
@@ -529,44 +592,51 @@ describe('bluetoothBLETest2', function() {
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_AdvertiseData_1200', 0, async function (done) {
-        let gattServer =bluetooth.BLE.createGattServer();
-        let manufactureValueBuffer = new Uint8Array(4);
-        manufactureValueBuffer[0] = 1;
-        manufactureValueBuffer[1] = 2;
-        manufactureValueBuffer[2] = 3;
-        manufactureValueBuffer[3] = 4;
-        let serviceValueBuffer = new Uint8Array(4);
-        serviceValueBuffer[0] = 4;
-        serviceValueBuffer[1] = 6;
-        serviceValueBuffer[2] = 7;
-        serviceValueBuffer[3] = 8;
-        gattServer.startAdvertising({
-            interval:1000,
-            txPower:-130,
-            connectable:true,
-            },{
-            serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
-            manufactureData:[{
-                 manufactureId:4567,
-                 manufactureValue:manufactureValueBuffer.buffer
-            }],
-            serviceData:[{
-                 serviceUuid:"00001888-0000-1000-8000-00805f9b34fb",
-                 serviceValue:serviceValueBuffer.buffer
-            }],
-          },{
-            serviceUuids:["00001889-0000-1000-8000-00805f9b34fb"],
-            manufactureData:[{
-                 manufactureId:1789,
-                 manufactureValue:manufactureValueBuffer.buffer
-            }],
-            serviceData:[{
-                 serviceUuid:"00001889-0000-1000-8000-00805f9b34fb",
-                 serviceValue:serviceValueBuffer.buffer
-            }],
-        });
-        gattServer.stopAdvertising();
-        done();
+           let gattServer =bluetooth.BLE.createGattServer();
+          let manufactureValueBuffer = new Uint8Array(4);
+          manufactureValueBuffer[0] = 1;
+          manufactureValueBuffer[1] = 2;
+          manufactureValueBuffer[2] = 3;
+          manufactureValueBuffer[3] = 4;
+          let serviceValueBuffer = new Uint8Array(4);
+          serviceValueBuffer[0] = 4;
+          serviceValueBuffer[1] = 6;
+          serviceValueBuffer[2] = 7;
+          serviceValueBuffer[3] = 8;
+          let setting={
+               interval:1000,
+               txPower:-130,
+               connectable:true,
+          }
+          let advData={
+               serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
+               manufactureData:[{
+                    manufactureId:4567,
+                    manufactureValue:manufactureValueBuffer.buffer
+               }],
+               serviceData:[{
+                    serviceUuid:"00001888-0000-1000-8000-00805f9b34fb",
+                    serviceValue:serviceValueBuffer.buffer
+               }],
+          }
+          let advResponse ={
+               serviceUuids:["00001889-0000-1000-8000-00805f9b34fb"],
+               manufactureData:[{
+                    manufactureId:1789,
+                    manufactureValue:manufactureValueBuffer.buffer
+               }],
+               serviceData:[{
+                    serviceUuid:"00001889-0000-1000-8000-00805f9b34fb",
+                    serviceValue:serviceValueBuffer.buffer
+               }],
+          }
+          try {
+               gattServer.startAdvertising(setting,advData,advResponse);
+               gattServer.stopAdvertising();
+          }catch(e) {
+               expect(null).assertFail();
+          }
+          done();
     })
 
     /**
@@ -579,44 +649,51 @@ describe('bluetoothBLETest2', function() {
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_AdvertiseData_1400', 0, async function (done) {
-        let gattServer =bluetooth.BLE.createGattServer();
-        let manufactureValueBuffer = new Uint8Array(4);
-        manufactureValueBuffer[0] = 1;
-        manufactureValueBuffer[1] = 2;
-        manufactureValueBuffer[2] = 3;
-        manufactureValueBuffer[3] = 4;
-        let serviceValueBuffer = new Uint8Array(4);
-        serviceValueBuffer[0] = 4;
-        serviceValueBuffer[1] = 6;
-        serviceValueBuffer[2] = 7;
-        serviceValueBuffer[3] = 8;
-        gattServer.startAdvertising({
-            interval:1000,
-            txPower:1,
-            connectable:false,
-            },{
-            serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
-            manufactureData:[{
-                 manufactureId:4567,
-                 manufactureValue:manufactureValueBuffer.buffer
-            }],
-            serviceData:[{
-                 serviceUuid:"00001888-0000-1000-8000-00805f9b34fb",
-                 serviceValue:serviceValueBuffer.buffer
-            }],
-          },{
-            serviceUuids:["00001889-0000-1000-8000-00805f9b34fb"],
-            manufactureData:[{
-                 manufactureId:1789,
-                 manufactureValue:manufactureValueBuffer.buffer
-            }],
-            serviceData:[{
-                 serviceUuid:"00001889-0000-1000-8000-00805f9b34fb",
-                 serviceValue:serviceValueBuffer.buffer
-            }],
-        });
-        gattServer.stopAdvertising();
-        done();
+          let gattServer =bluetooth.BLE.createGattServer();
+          let manufactureValueBuffer = new Uint8Array(4);
+          manufactureValueBuffer[0] = 1;
+          manufactureValueBuffer[1] = 2;
+          manufactureValueBuffer[2] = 3;
+          manufactureValueBuffer[3] = 4;
+          let serviceValueBuffer = new Uint8Array(4);
+          serviceValueBuffer[0] = 4;
+          serviceValueBuffer[1] = 6;
+          serviceValueBuffer[2] = 7;
+          serviceValueBuffer[3] = 8;
+          let setting={
+               interval:1000,
+               txPower:1,
+               connectable:false,
+          }
+          let advData={
+               serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
+               manufactureData:[{
+                    manufactureId:4567,
+                    manufactureValue:manufactureValueBuffer.buffer
+               }],
+               serviceData:[{
+                    serviceUuid:"00001888-0000-1000-8000-00805f9b34fb",
+                    serviceValue:serviceValueBuffer.buffer
+               }],
+          }
+          let advResponse ={
+               serviceUuids:["00001889-0000-1000-8000-00805f9b34fb"],
+               manufactureData:[{
+                    manufactureId:1789,
+                    manufactureValue:manufactureValueBuffer.buffer
+               }],
+               serviceData:[{
+                    serviceUuid:"00001889-0000-1000-8000-00805f9b34fb",
+                    serviceValue:serviceValueBuffer.buffer
+               }],
+          }
+          try {
+               gattServer.startAdvertising(setting,advData,advResponse);
+               gattServer.stopAdvertising();
+          }catch(e) {
+               expect(null).assertFail();
+          }
+          done();
     })
 
     /**
@@ -629,44 +706,51 @@ describe('bluetoothBLETest2', function() {
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_AdvertiseData_1500', 0, async function (done) {
-        let gattServer =bluetooth.BLE.createGattServer();
-        let manufactureValueBuffer = new Uint8Array(4);
-        manufactureValueBuffer[0] = 1;
-        manufactureValueBuffer[1] = 2;
-        manufactureValueBuffer[2] = 3;
-        manufactureValueBuffer[3] = 4;
-        let serviceValueBuffer = new Uint8Array(4);
-        serviceValueBuffer[0] = 4;
-        serviceValueBuffer[1] = 6;
-        serviceValueBuffer[2] = 7;
-        serviceValueBuffer[3] = 8;
-        gattServer.startAdvertising({
-            interval:1000,
-            txPower:70,
-            connectable:true,
-            },{
-            serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
-            manufactureData:[{
-                 manufactureId:4567,
-                 manufactureValue:manufactureValueBuffer.buffer
-            }],
-            serviceData:[{
-                 serviceUuid:"00001888-0000-1000-8000-00805f9b34fb",
-                 serviceValue:serviceValueBuffer.buffer
-            }],
-          },{
-            serviceUuids:["00001889-0000-1000-8000-00805f9b34fb"],
-            manufactureData:[{
-                 manufactureId:1789,
-                 manufactureValue:manufactureValueBuffer.buffer
-            }],
-            serviceData:[{
-                 serviceUuid:"00001889-0000-1000-8000-00805f9b34fb",
-                 serviceValue:serviceValueBuffer.buffer
-            }],
-        });
-        gattServer.stopAdvertising();
-        done();
+          let gattServer =bluetooth.BLE.createGattServer();
+          let manufactureValueBuffer = new Uint8Array(4);
+          manufactureValueBuffer[0] = 1;
+          manufactureValueBuffer[1] = 2;
+          manufactureValueBuffer[2] = 3;
+          manufactureValueBuffer[3] = 4;
+          let serviceValueBuffer = new Uint8Array(4);
+          serviceValueBuffer[0] = 4;
+          serviceValueBuffer[1] = 6;
+          serviceValueBuffer[2] = 7;
+          serviceValueBuffer[3] = 8;
+          let setting={
+               interval:1000,
+               txPower:70,
+               connectable:true,
+          }
+          let advData={
+               serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
+               manufactureData:[{
+                    manufactureId:4567,
+                    manufactureValue:manufactureValueBuffer.buffer
+               }],
+               serviceData:[{
+                    serviceUuid:"00001888-0000-1000-8000-00805f9b34fb",
+                    serviceValue:serviceValueBuffer.buffer
+               }],
+          }
+          let advResponse ={
+               serviceUuids:["00001889-0000-1000-8000-00805f9b34fb"],
+               manufactureData:[{
+                    manufactureId:1789,
+                    manufactureValue:manufactureValueBuffer.buffer
+               }],
+               serviceData:[{
+                    serviceUuid:"00001889-0000-1000-8000-00805f9b34fb",
+                    serviceValue:serviceValueBuffer.buffer
+               }],
+          }
+          try {
+               gattServer.startAdvertising(setting,advData,advResponse);
+               gattServer.stopAdvertising();
+          }catch(e) {
+               expect(null).assertFail();
+          }
+          done();
     })
 
     /**
@@ -679,45 +763,234 @@ describe('bluetoothBLETest2', function() {
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_AdvertiseData_1600', 0, async function (done) {
-        let gattServer =bluetooth.BLE.createGattServer();
-        let manufactureValueBuffer = new Uint8Array(4);
-        manufactureValueBuffer[0] = 1;
-        manufactureValueBuffer[1] = 2;
-        manufactureValueBuffer[2] = 3;
-        manufactureValueBuffer[3] = 4;
-        let serviceValueBuffer = new Uint8Array(4);
-        serviceValueBuffer[0] = 4;
-        serviceValueBuffer[1] = 6;
-        serviceValueBuffer[2] = 7;
-        serviceValueBuffer[3] = 8;
-        gattServer.startAdvertising({
-            interval:1000,
-            txPower:-70,
-            connectable:true,
-            },{
-            serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
-            manufactureData:[{
-                 manufactureId:4567,
-                 manufactureValue:manufactureValueBuffer.buffer
-            }],
-            serviceData:[{
-                 serviceUuid:"00001888-0000-1000-8000-00805f9b34fb",
-                 serviceValue:serviceValueBuffer.buffer
-            }],
-          },{
-            serviceUuids:["00001889-0000-1000-8000-00805f9b34fb"],
-            manufactureData:[{
-                 manufactureId:1789,
-                 manufactureValue:manufactureValueBuffer.buffer
-            }],
-            serviceData:[{
-                 serviceUuid:"00001889-0000-1000-8000-00805f9b34fb",
-                 serviceValue:serviceValueBuffer.buffer
-            }],
-        });
-        gattServer.stopAdvertising();
-        done();
-    }) 
+          let gattServer =bluetooth.BLE.createGattServer();
+          let manufactureValueBuffer = new Uint8Array(4);
+          manufactureValueBuffer[0] = 1;
+          manufactureValueBuffer[1] = 2;
+          manufactureValueBuffer[2] = 3;
+          manufactureValueBuffer[3] = 4;
+          let serviceValueBuffer = new Uint8Array(4);
+          serviceValueBuffer[0] = 4;
+          serviceValueBuffer[1] = 6;
+          serviceValueBuffer[2] = 7;
+          serviceValueBuffer[3] = 8;
+          let setting={
+               interval:1000,
+               txPower:70,
+               connectable:true,
+          }
+          let advData={
+               serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
+               manufactureData:[{
+                    manufactureId:4567,
+                    manufactureValue:manufactureValueBuffer.buffer
+               }],
+               serviceData:[{
+                    serviceUuid:"00001888-0000-1000-8000-00805f9b34fb",
+                    serviceValue:serviceValueBuffer.buffer
+               }],
+          }
+          let advResponse ={
+               serviceUuids:["00001889-0000-1000-8000-00805f9b34fb"],
+               manufactureData:[{
+                    manufactureId:1789,
+                    manufactureValue:manufactureValueBuffer.buffer
+               }],
+               serviceData:[{
+                    serviceUuid:"00001889-0000-1000-8000-00805f9b34fb",
+                    serviceValue:serviceValueBuffer.buffer
+               }],
+          }
+          try {
+               gattServer.startAdvertising(setting,advData,advResponse);
+               gattServer.stopAdvertising();
+          }catch(e) {
+               expect(null).assertFail();
+          }
+          done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BLE_AdvertiseData_1800
+     * @tc.name testStartAdvertising
+     * @tc.desc Test StartAdvertising api.
+     * @tc.size MEDIUM
+     * @ since 7
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('SUB_COMMUNICATION_BLUETOOTH_BLE_AdvertiseData_1800', 0, async function (done) {
+          let gattServer =bluetooth.BLE.createGattServer();
+          let manufactureValueBuffer = new Uint8Array(4);
+          manufactureValueBuffer[0] = 1;
+          manufactureValueBuffer[1] = 2;
+          manufactureValueBuffer[2] = 3;
+          manufactureValueBuffer[3] = 4;
+          let serviceValueBuffer = new Uint8Array(4);
+          serviceValueBuffer[0] = 4;
+          serviceValueBuffer[1] = 6;
+          serviceValueBuffer[2] = 7;
+          serviceValueBuffer[3] = 8;
+          let setting={
+               interval:1000,
+               txPower:1,
+               connectable:true,
+          }
+          let advData={
+               serviceUuids:[""],
+               manufactureData:[{
+                    manufactureId:4567,
+                    manufactureValue:manufactureValueBuffer.buffer
+               }],
+               serviceData:[{
+                    serviceUuid:"",
+                    serviceValue:serviceValueBuffer.buffer
+               }],
+          }
+          let advResponse ={
+               serviceUuids:[""],
+               manufactureData:[{
+                    manufactureId:1789,
+                    manufactureValue:manufactureValueBuffer.buffer
+               }],
+               serviceData:[{
+                    serviceUuid:"",
+                    serviceValue:serviceValueBuffer.buffer
+               }],
+          }
+          try {
+               gattServer.startAdvertising(setting,advData,advResponse);
+               gattServer.stopAdvertising();
+          }catch(e) {
+               expect(null).assertFail();
+          }
+          done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BLE_AdvertiseData_1900
+     * @tc.name testStartAdvertising
+     * @tc.desc Test StartAdvertising api.
+     * @tc.size MEDIUM
+     * @ since 7
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('SUB_COMMUNICATION_BLUETOOTH_BLE_AdvertiseData_1900', 0, async function (done) {
+          let gattServer =bluetooth.BLE.createGattServer();
+          let manufactureValueBuffer = new Uint8Array(4);
+          manufactureValueBuffer[0] = 1;
+          manufactureValueBuffer[1] = 2;
+          manufactureValueBuffer[2] = 3;
+          manufactureValueBuffer[3] = 4;
+          let serviceValueBuffer = new Uint8Array(4);
+          serviceValueBuffer[0] = 4;
+          serviceValueBuffer[1] = 6;
+          serviceValueBuffer[2] = 7;
+          serviceValueBuffer[3] = 8;
+          let setting={
+               interval:1000,
+               txPower:1,
+               connectable:true,
+          }
+          let advData={
+               serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
+               manufactureData:[{
+                    manufactureId:4567,
+                    manufactureValue:manufactureValueBuffer.buffer
+               }],
+               serviceData:[],
+          }
+          let advResponse ={
+               serviceUuids:["00001889-0000-1000-8000-00805f9b34fb"],
+               manufactureData:[{
+                    manufactureId:1789,
+                    manufactureValue:manufactureValueBuffer.buffer
+               }],
+               serviceData:[],
+          }
+          try {
+               gattServer.startAdvertising(setting,advData,advResponse);
+               gattServer.stopAdvertising();
+          }catch(e) {
+               expect(null).assertFail();
+          }
+          done();
+    })
+
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BLE_AdvertiseData_2100
+     * @tc.name testStartAdvertising
+     * @tc.desc Test StartAdvertising api.
+     * @tc.size MEDIUM
+     * @ since 7
+     * @tc.type Function
+     * @tc.level Level 3
+     */
+    it('SUB_COMMUNICATION_BLUETOOTH_BLE_AdvertiseData_2100', 0, async function (done) {
+          let gattServer =bluetooth.BLE.createGattServer();
+          let manufactureValueBuffer = new Uint8Array(4);
+          manufactureValueBuffer[0] = 1;
+          manufactureValueBuffer[1] = 2;
+          manufactureValueBuffer[2] = 3;
+          manufactureValueBuffer[3] = 4;
+          let serviceValueBuffer = new Uint8Array(4);
+          serviceValueBuffer[0] = 4;
+          serviceValueBuffer[1] = 6;
+          serviceValueBuffer[2] = 7;
+          serviceValueBuffer[3] = 8;
+          let setting={
+               interval:1000,
+               txPower:1,
+               connectable:true,
+          }
+          let advData={
+               serviceUuids:["00001888-0000-1000-8000-00805f9b34fb"],
+               manufactureData:[],
+               serviceData:[{
+                    serviceUuid:"00001888-0000-1000-8000-00805f9b34fb",
+                    serviceValue:serviceValueBuffer.buffer
+               }],
+          }
+          let advResponse ={
+               serviceUuids:["00001889-0000-1000-8000-00805f9b34fb"],
+               manufactureData:[],
+               serviceData:[{
+                    serviceUuid:"00001889-0000-1000-8000-00805f9b34fb",
+                    serviceValue:serviceValueBuffer.buffer
+               }],
+          }
+          try {
+               gattServer.startAdvertising(setting,advData,advResponse);
+               gattServer.stopAdvertising();
+          }catch(e) {
+               expect(null).assertFail();
+          }
+          done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BLE_StartAdvertise_0400
+     * @tc.name testStartAdvertising
+     * @tc.desc Test StartAdvertising api.
+     * @tc.size MEDIUM
+     * @ since 7
+     * @tc.type Function
+     * @tc.level Level 3
+     */
+    it('SUB_COMMUNICATION_BLUETOOTH_BLE_StartAdvertise_0400', 0, function () {
+        let isRet = true;
+        try{
+            let gattServer =bluetooth.BLE.createGattServer();
+            gattServer.stopAdvertising();
+            expect(isRet).assertTrue();
+        }catch(error){
+            console.info("[bluetooth_js] GattclientClose err:" + JSON.stringify(error));
+            let isRet = false;
+            expect(isRet).assertFalse();
+        } 
+    })
 
 })
 

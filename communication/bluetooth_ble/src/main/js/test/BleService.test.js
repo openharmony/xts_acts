@@ -218,7 +218,7 @@ describe('bluetoothBLETest1', function() {
         cccV[0] = 1;
         let characteristic = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
         characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB', 
-        characteristicValue: arrayBufferC, descriptors:[]};
+        characteristicValue: arrayBufferC};
         characteristics[0] = characteristic;
         let gattService = {serviceUuid:'00001810-0000-1000-8000-00805F9B34FB', isPrimary: true,
         characteristics:characteristics, includeServices:[]};
@@ -505,7 +505,7 @@ describe('bluetoothBLETest1', function() {
         expect(ret).assertFalse();
         await sleep(1000);
         let ret1=gattServer.removeService('00001810-0000-1000-8000-00805F9B34FB');
-        console.info('[bluetooth_js]removeService ret:'+ret1);
+        console.info('[bluetooth_js]removeService ret:'+ ret1);
         expect(ret1).assertFalse();
         done();
     })
@@ -711,7 +711,7 @@ describe('bluetoothBLETest1', function() {
     })
 
     /**
-     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BLE_sendResponse_0200
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BLE_sendResponse_0100
      * @tc.name testSendResponse success
      * @tc.desc Test SendResponse api.
      * @tc.size MEDIUM
@@ -724,6 +724,26 @@ describe('bluetoothBLETest1', function() {
         value[0] = 1;
         let ServerResponse = {deviceId: '00:11:22:33:44:55', transId: 1,
             status: 0, offset: 0, value: arrayBuffer};
+        let ret = gattServer.sendResponse(ServerResponse);
+        console.info('[bluetooth_js] sendResponse ret : ' + ret);
+        expect(ret).assertEqual(false);
+        done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BLE_sendResponse_0200
+     * @tc.name testSendResponse success
+     * @tc.desc Test SendResponse api.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 1
+     */
+    it('SUB_COMMUNICATION_BLUETOOTH_BLE_sendResponse_0200', 0, async function (done) {
+        let arrayBuffer = new ArrayBuffer(8);
+        let value =  new Uint8Array(arrayBuffer);
+        value[0] = 1;
+        let ServerResponse = {deviceId: '00:11:22:33:44:55', transId: 1,
+            status: -1, offset: 0, value: arrayBuffer};
         let ret = gattServer.sendResponse(ServerResponse);
         console.info('[bluetooth_js] sendResponse ret : ' + ret);
         expect(ret).assertEqual(false);
