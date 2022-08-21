@@ -40,7 +40,6 @@ struct GlobalExample {
           this.testImageBitmapSize();
           this.testOffscreenCanvas();
           this.testImageData();
-          this.testImage();
         })
     }.width('100%').height('100%')
   }
@@ -65,15 +64,5 @@ struct GlobalExample {
     var imgData = imageData.data;
     console.log("imageData_width=" + imageData.width);
     console.log("imageData_height=" + imageData.height);
-  }
-
-  testImage() {
-    var image = this.offContext.drawImage(this.img, 0, 0, 100, 100)
-      .onload(() => {
-      })
-      .onerror(() => {
-      });
-    console.log("img_width=" + img.width);
-    console.log("img_height=" + img.height);
   }
 }
