@@ -500,9 +500,11 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
     * @tc.desc: verify the function of equal("$%$%^$%^","$%$%^$%^")promise
     */
     it('ACTS_SetWantInfo_0700', 0, async function (done) {
-        var promise = await wantAgent.equal("$%$%^$%^","$%$%^$%^")
-        console.info('----equali success!----'+promise)
-        expect(promise).assertEqual(undefined);
+        wantAgent.equal("$%$%^$%^","$%$%^$%^").then((error, data)=>{
+            if(error.code) {
+                expect(error.code).assertEqual(-1)
+            }
+        })
         done();
         setTimeout(function(){
             console.debug("====>time out ACTS_SetWantInfo_0700====>");
@@ -531,9 +533,11 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
     * @tc.desc: verify the function of equal({},{})promise
     */
     it('ACTS_SetWantInfo_0900', 0, async function (done) {
-        var promise = wantAgent.equal({},{})
-        console.info('----equalk success!----'+promise)
-        expect(promise).assertEqual(null);
+        wantAgent.equal({},{}).then((error, data)=>{
+            if(error.code) {
+                expect(error.code).assertEqual(-1)
+            }
+        })
         done();
         setTimeout(function(){
             console.debug("====>time out ACTS_SetWantInfo_0900====>");
@@ -557,14 +561,16 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
         }, time);
     });
     /*
-    * @tc.number: ACTS_SetWantInfo_2200
+    * @tc.number: ACTS_SetWantInfo_1100
     * @tc.name: equal()
     * @tc.desc: verify the function of equal(100,100)promise
     */
     it('ACTS_SetWantInfo_1100', 0, async function (done) {
-        var promise = await wantAgent.equal(100,100)
-        console.info('----equaln success!----'+promise)
-        expect(promise).assertEqual(undefined);
+        wantAgent.equal(100,100).then((error, data)=>{
+            if(error.code) {
+                expect(error.code).assertEqual(-1)
+            }
+        })
         done();
         setTimeout(function(){
             console.debug("====>time out ACTS_SetWantInfo_1100====>");
@@ -591,9 +597,11 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
     */
     it('ACTS_SetWantInfo_1300', 0, async function (done) {
         console.info('----ACTS_SetWantInfo_0300 begin----');
-        var promise = wantAgent.getWantAgent("")
-        console.log("===getWantAgentb==="+promise)
-        expect(promise).assertEqual(null);
+        wantAgent.getWantAgent("").then((error, data)=>{
+            if(error.code) {
+                expect(error.code).assertEqual(-1)
+            }
+        })
         done();
         setTimeout(function(){
             console.debug("====>time out ACTS_SetWantInfo_1300====>");
@@ -619,9 +627,11 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
     * @tc.desc: verify the function of getBundleName("")promise
     */
     it('ACTS_SetWantInfo_1500', 0, async function (done) {
-        var promise = await wantAgent.getBundleName("")
-        console.info('----getBundleNameb success!----'+promise);
-        expect(promise).assertEqual(undefined)
+        wantAgent.getBundleName("").then((error, data)=>{
+            if(error.code) {
+                expect(error.code).assertEqual(-1)
+            }
+        })
         done();
         setTimeout(function(){
             console.debug("====>time out ACTS_SetWantInfo_1500====>");
@@ -647,9 +657,11 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
     * @tc.desc: verify the function of getUid("")promise
     */
     it('ACTS_SetWantInfo_1700', 0, async function (done) {
-        var promise =await wantAgent.getUid("")
-        console.info('----getUidb success!----'+promise);
-        expect(promise).assertEqual(undefined)
+        wantAgent.getUid("").then((error, data)=>{
+            if(error.code) {
+                expect(error.code).assertEqual(-1)
+            }
+        })
         done()
         setTimeout(function(){
             console.debug("====>time out ACTS_SetWantInfo_1700====>");
@@ -676,9 +688,11 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
     * @tc.desc: verify the function of getWant("")promise
     */
     it('ACTS_SetWantInfo_1900', 0, async function (done) {
-        var promise = await wantAgent.getWant("")
-        console.info('----getWantb success!----'+promise);
-        expect(promise).assertEqual(undefined)
+        wantAgent.getWant("").then((error, data)=>{
+            if(error.code) {
+                expect(error.code).assertEqual(-1)
+            }
+        })
         done()
         setTimeout(function(){
             console.debug("====>time out ACTS_SetWantInfo_1900====>");
@@ -705,9 +719,11 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
     * @tc.desc: verify the function of getWantAgent(100)promises
     */
     it('ACTS_SetWantInfo_2100', 0, async function (done) {
-        var promise = wantAgent.getWantAgent(100)
-        console.log("----getWantAgentb success!----"+promise)
-        expect(promise).assertEqual(null)
+        wantAgent.getWantAgent(100).then((error, data)=>{
+            if(error.code) {
+                expect(error.code).assertEqual(-1)
+            }
+        })
         done();
         setTimeout(function(){
             console.debug("====>time out ACTS_SetWantInfo_2100====>");
@@ -734,9 +750,11 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
     * @tc.desc: verify the function of getBundleName(100)promise
     */
     it('ACTS_SetWantInfo_2300', 0, async function (done) {
-        var promise =await wantAgent.getBundleName(100)
-        console.info('----getBundleNamed success!----'+promise);
-        expect(promise).assertEqual(undefined)
+        wantAgent.getBundleName(100).then((error, data)=>{
+            if(error.code) {
+                expect(error.code).assertEqual(-1)
+            }
+        })
         done()
         setTimeout(function(){
             console.debug("====>time out ACTS_SetWantInfo_2300====>");
@@ -762,9 +780,11 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
     * @tc.desc: verify the function of getUid(100)promise
     */
     it('ACTS_SetWantInfo_2500', 0, async function (done) {
-        var promise =await wantAgent.getUid(100)
-        console.info('----getUidd success!----'+promise);
-        expect(promise).assertEqual(undefined)
+        wantAgent.getUid(100).then((error, data)=>{
+            if(error.code) {
+                expect(error.code).assertEqual(-1)
+            }
+        })
         done()
         setTimeout(function(){
             console.debug("====>time out ACTS_SetWantInfo_2500====>");
@@ -791,9 +811,11 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
     * @tc.desc: verify the function of getWant(100)promise
     */
     it('ACTS_SetWantInfo_2700', 0, async function (done) {
-        var promise = await wantAgent.getWant(100)
-        console.info('----getWantd success!----'+promise);
-        expect(promise).assertEqual(undefined)
+        wantAgent.getWant(100).then((error, data)=>{
+            if(error.code) {
+                expect(error.code).assertEqual(-1)
+            }
+        })
         done()
         setTimeout(function(){
             console.debug("====>time out ACTS_SetWantInfo_2700====>");
@@ -842,10 +864,12 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
     * @tc.desc: verify the function of getBundleName({})promise
     */
     it('ACTS_SetWantInfo_3100', 0, async function (done) {
-        var promise = wantAgent.getBundleName({})
-            console.info('----getBundleNamef success!----'+promise);
-            expect(promise).assertEqual(null)
-            done()
+        wantAgent.getBundleName({}).then((error, data)=>{
+            if(error.code) {
+                expect(error.code).assertEqual(-1)
+            }
+        })
+        done()
     })
     /*
     * @tc.number: ACTS_SetWantInfo_3200
@@ -864,10 +888,12 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
     * @tc.desc: verify the function of getUid({})promise
     */
     it('ACTS_SetWantInfo_3300', 0, async function (done) {
-        var promise = wantAgent.getUid({})
-            console.info('----getUidf success!----'+promise);
-            expect(promise).assertEqual(null)
-            done()
+        wantAgent.getUid({}).then((error, data)=>{
+            if(error.code) {
+                expect(error.code).assertEqual(-1)
+            }
+        })
+        done()
     })
     /*
     * @tc.number: ACTS_SetWantInfo_3400
@@ -886,10 +912,12 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
     * @tc.desc: verify the function of getWant({})promise
     */
     it('ACTS_SetWantInfo_3500', 0, async function (done) {
-       var promise = wantAgent.getWant({})
-            console.info('----getWantf success!----'+promise);
-            expect(promise).assertEqual(null)
-            done()
+        wantAgent.getWant({}).then((error, data)=>{
+            if(error.code) {
+                expect(error.code).assertEqual(-1)
+            }
+        })
+        done()
     })
     /*
     * @tc.number: ACTS_SetWantInfo_3600
@@ -908,10 +936,12 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
     * @tc.desc: verify the function of cancel({})promise
     */
     it('ACTS_SetWantInfo_3700', 0, async function (done) {
-        var promise = await wantAgent.cancel({})
-            console.info('----cancelb success!----'+promise);
-            expect(promise).assertEqual(null)
-            done()
+        wantAgent.cancel({}).then((error, data)=>{
+            if(error.code) {
+                expect(error.code).assertEqual(-1)
+            }
+        })
+        done()
     })
     /*
     * @tc.number: ACTS_SetWantInfo_3800
@@ -930,9 +960,11 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
     * @tc.desc: verify the function of cancel(100)promise
     */
     it('ACTS_SetWantInfo_3900', 0, async function (done) {
-        var promise =await wantAgent.cancel(100)
-            console.info('----canceld success!----'+promise);
-            expect(promise).assertEqual(undefined)
+        wantAgent.cancel(100).then((error, data)=>{
+            if(error.code) {
+                expect(error.code).assertEqual(-1)
+            }
+        })
         done()
     })
     /*
@@ -952,9 +984,11 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
     * @tc.desc: verify the function of cancel("")promise
     */
     it('ACTS_SetWantInfo_4100', 0, async function (done) {
-        var promise = await wantAgent.cancel("")
-            console.info('----cancelf success!----'+promise);
-        expect(promise).assertEqual(undefined)
+        wantAgent.cancel("").then((error, data)=>{
+            if(error.code) {
+                expect(error.code).assertEqual(-1)
+            }
+        })
         done()
     })
     /*
@@ -974,9 +1008,11 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
     * @tc.desc: verify the function of cancel("%^%^%^")promise
     */
     it('ACTS_SetWantInfo_4300', 0, async function (done) {
-        var promise =await wantAgent.cancel("%^%^%^")
-            console.info('----cancelh success!----'+promise);
-        expect(promise).assertEqual(undefined)
+        wantAgent.cancel("%^%^%^").then((error, data)=>{
+            if(error.code) {
+                expect(error.code).assertEqual(-1)
+            }
+        })
         done()
     })
 })
