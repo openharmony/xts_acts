@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -53,4 +53,4 @@
         if (!(cond)) {                                          \
             (void)printf("%s\n", fmt, ##__VA_ARGS__);           \
         }
-#endif // NDK_LOG_H
+#endif // NDKTEST_LOG_H

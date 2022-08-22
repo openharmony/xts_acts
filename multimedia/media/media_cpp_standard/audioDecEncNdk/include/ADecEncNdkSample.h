@@ -32,7 +32,6 @@
 #include "nocopyable.h"
 #include "ndktest_log.h"
 
-
 namespace OHOS {
 namespace Media {
 class ADecEncSignal {

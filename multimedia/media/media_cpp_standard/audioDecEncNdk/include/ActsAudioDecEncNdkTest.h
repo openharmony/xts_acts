@@ -46,4 +46,4 @@ public:
 };
 }
 }
-#endif
+#endif // ACTSAUDIODECODER_NDK_FUNC_TEST_H

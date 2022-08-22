@@ -378,7 +378,7 @@ void ADecEncNdkSample::InputFuncDec()
             cout << "Fatal: OH_AudioDecoder_PushInputData fail" << endl;
             acodecSignal_->errorNum_ += 1;
         } else {
-            decInCnt_ ++;
+            decInCnt_++;
         }
         timeStampDec_ += SAMPLE_DURATION_US;
         PopInqueueDec();
@@ -618,7 +618,7 @@ void ADecEncNdkSample::InputFuncEnc()
             cout << "Fatal error, exit" << endl;
             acodecSignal_->errorNum_ += 1;
         } else {
-            encInCnt_ ++;
+            encInCnt_++;
         }
         timeStampEnc_ += SAMPLE_DURATION_US;
         PopOutqueueDec();
@@ -685,7 +685,7 @@ void ADecEncNdkSample::OutputFuncEnc()
                 acodecSignal_->errorNum_ += 1;
             } else {
                 encOutCnt_ += 1;
-                cout << "ENC output cnt: "<< encOutCnt_ << endl;
+                cout << "ENC output cnt: " << encOutCnt_ << endl;
             }
         }
         PopOutqueueEnc();
@@ -703,7 +703,7 @@ void ADecEncNdkSample::ReRead()
 {
     if (testFile_ != nullptr) {
         testFile_->close();
-        cout << "ReRead close before file success "<< endl;
+        cout << "ReRead close before file success " << endl;
     }
     cout << "ReRead INP_FILE is " << INP_FILE << endl;
     testFile_->open(INP_FILE, std::ios::in | std::ios::binary);
