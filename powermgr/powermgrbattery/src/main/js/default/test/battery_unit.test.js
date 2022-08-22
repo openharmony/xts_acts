@@ -14,7 +14,6 @@
  */
 
 import app from '@system.app'
-import Context from '@ohos.napi_context'
 import batteryInfo from '@ohos.batteryInfo';
 import brightness from '@ohos.brightness';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
