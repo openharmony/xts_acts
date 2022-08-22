@@ -205,7 +205,6 @@ describe('MultimodalInput_test', function () {
         for (let i = 0; i < data.length; ++i) {
           inputDevice.getKeyboardType(data[i]).then((res) => {
             expect(res).assertInstanceOf('number');
-            done();
           });
         }
       }
@@ -282,8 +281,8 @@ describe('MultimodalInput_test', function () {
    * @tc.name MultimodalInputDevice_getDeviceIds_Promise_test
    * @tc.desc inputdevice interface getDeviceIds & supportKeys test
    */
-  it("MultimodalInputDevice_getDeviceIds_Promise_test", 0, async function () {
-    console.info(`inputDevice::supportKeys_test-01 enter`);
+  it("MultimodalInputDevice_getDeviceIds_Promise_test", 0, async function (done) {
+    console.info(`MultimodalInputDevice_getDeviceIds_Promise_test enter`);
     await inputDevice.getDeviceIds().then((data, err) => {
       if (err) {
         expect(false).assertTrue();
@@ -296,7 +295,7 @@ describe('MultimodalInput_test', function () {
         }
         done();
       }
-      console.info(`inputDevice::supportKeys_test-01 exit`);
+      console.info(`MultimodalInputDevice_getDeviceIds_Promise_test exit`);
     });
   })
 
@@ -305,18 +304,18 @@ describe('MultimodalInput_test', function () {
    * @tc.name MultimodalInputDevice_getDevice_Promise_test
    * @tc.desc inputdevice interface getDevice test
    */
-  it("MultimodalInputDevice_getDevice_Promise_test", 0, async function () {
-    console.info(`inputDevice::getDevice_test-01 enter`);
+  it("MultimodalInputDevice_getDevice_Promise_test", 0, async function (done) {
+    console.info(`MultimodalInputDevice_getDevice_Promise_test enter`);
     await inputDevice.getDevice(-1).then((data, err) => {
       if (err) {
         expect(false).assertTrue();
-        console.info(`inputDevice::getDevice_test-01 ${JSON.stringify(err)}`);
+        console.info(`MultimodalInputDevice_getDevice_Promise_test ${JSON.stringify(err)}`);
         done();
       } else {
         expect(JSON.stringify(data) !== "{}").assertTrue();
         done();
       }
-      console.info(`inputDevice::getDevice_test-01 exit`);
+      console.info(`MultimodalInputDevice_getDevice_Promise_test exit`);
     });
   })
 
