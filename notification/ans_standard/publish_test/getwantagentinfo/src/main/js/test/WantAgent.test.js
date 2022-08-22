@@ -26,6 +26,7 @@ var time = 1000
 export default function ActsAnsGetWantAgentInfoTest() {
 describe('ActsAnsGetWantAgentInfoTest', function () {
     console.info('----ActsGetWantAgentInfoTest----');
+
     /*
     * @tc.number: ACTS_SetWantInfo_0100
     * @tc.name: getWantAgent(),getBundleName(),getUid(),getWant(),cancel()
@@ -107,6 +108,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
         }, time);
             console.info('----getWantAgenta after----');
     })
+
     /*
     * @tc.number: ACTS_SetWantInfo_0200
     * @tc.name: getWantAgent(),getBundleName(),getUid(),getWant(),cancel()
@@ -170,6 +172,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
             console.debug("====>time out ACTS_SetWantInfo_0200====>");
         }, time)
     })
+
     /*
     * @tc.number: ACTS_SetWantInfo_0300
     * @tc.name: equal(normal)
@@ -372,6 +375,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
             });
 		}, 1000);
     })
+
     /*
     * @tc.number: ACTS_SetWantInfo_0500
     * @tc.name: equal(),cancel()
@@ -472,6 +476,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
             });
 		}, 1000);
     })
+
     /*
     * @tc.number: ACTS_SetWantInfo_0600
     * @tc.name: equal()
@@ -494,6 +499,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
             console.debug("====>time out ACTS_SetWantInfo_0600====>");
         }, time);
     });
+
     /*
     * @tc.number: ACTS_SetWantInfo_0700
     * @tc.name: equal()
@@ -510,6 +516,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
             console.debug("====>time out ACTS_SetWantInfo_0700====>");
         }, time);
     });
+
     /*
     * @tc.number: ACTS_SetWantInfo_0800
     * @tc.name: equal()
@@ -527,6 +534,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
             console.debug("====>time out ACTS_SetWantInfo_0800====>");
         }, time);
     });
+
     /*
     * @tc.number: ACTS_SetWantInfo_0900
     * @tc.name: equal()
@@ -543,6 +551,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
             console.debug("====>time out ACTS_SetWantInfo_0900====>");
         }, time);
     });
+
     /*
     * @tc.number: ACTS_SetWantInfo_1000
     * @tc.name: equal()
@@ -560,6 +569,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
             console.debug("====>time out ACTS_SetWantInfo_1000====>");
         }, time);
     });
+
     /*
     * @tc.number: ACTS_SetWantInfo_1100
     * @tc.name: equal()
@@ -576,6 +586,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
             console.debug("====>time out ACTS_SetWantInfo_1100====>");
         }, time);
     });
+
     /*
     * @tc.number: ACTS_SetWantInfo_1200
     * @tc.name: getWantAgent()
@@ -590,6 +601,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
             console.debug("====>time out ACTS_SetWantInfo_1200====>");
         }, time);
     })
+
     /*
     * @tc.number: ACTS_SetWantInfo_1300
     * @tc.name: getWantAgent()
@@ -607,6 +619,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
             console.debug("====>time out ACTS_SetWantInfo_1300====>");
         }, time);
     })
+
     /*
     * @tc.number: ACTS_SetWantInfo_1400
     * @tc.name: getBundleName()
@@ -621,6 +634,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
             console.debug("====>time out ACTS_SetWantInfo_1400====>");
         }, time);
     })
+
     /*
     * @tc.number: ACTS_SetWantInfo_1500
     * @tc.name: getBundleName()
@@ -637,6 +651,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
             console.debug("====>time out ACTS_SetWantInfo_1500====>");
         }, time);
     })
+
     /*
     * @tc.number: ACTS_SetWantInfo_1600
     * @tc.name: getUid()
@@ -651,6 +666,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
             console.debug("====>time out ACTS_SetWantInfo_1600====>");
         }, time);
     })
+
     /*
     * @tc.number: ACTS_SetWantInfo_1700
     * @tc.name: getUid()
@@ -667,6 +683,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
             console.debug("====>time out ACTS_SetWantInfo_1700====>");
         }, time);
     })
+
     /*
     * @tc.number: ACTS_SetWantInfo_1800
     * @tc.name: getWant()
@@ -682,6 +699,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
             console.debug("====>time out ACTS_SetWantInfo_1800====>");
         }, time);
     })
+
     /*
     * @tc.number: ACTS_SetWantInfo_1900
     * @tc.name: getWant()
@@ -698,6 +716,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
             console.debug("====>time out ACTS_SetWantInfo_1900====>");
         }, time);
     })
+
     /*
     * @tc.number: ACTS_SetWantInfo_2000
     * @tc.name: getWantAgent()
@@ -713,6 +732,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
             console.debug("====>time out ACTS_SetWantInfo_2000====>");
         }, time);
     })
+
     /*
     * @tc.number: ACTS_SetWantInfo_2100
     * @tc.name: getWantAgent()
@@ -729,6 +749,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
             console.debug("====>time out ACTS_SetWantInfo_2100====>");
         }, time);
     })
+
     /*
     * @tc.number: ACTS_SetWantInfo_2200
     * @tc.name: getBundleName()
@@ -744,6 +765,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
             console.debug("====>time out ACTS_SetWantInfo_2200====>");
         }, time);
     })
+
     /*
     * @tc.number: ACTS_SetWantInfo_2300
     * @tc.name: getBundleName()
@@ -760,6 +782,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
             console.debug("====>time out ACTS_SetWantInfo_2300====>");
         }, time);
     })
+
     /*
     * @tc.number: ACTS_SetWantInfo_2400
     * @tc.name: getUid()
@@ -774,6 +797,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
             console.debug("====>time out ACTS_SetWantInfo_2400====>");
         }, time);
     })
+
     /*
     * @tc.number: ACTS_SetWantInfo_2500
     * @tc.name: getUid()
@@ -790,6 +814,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
             console.debug("====>time out ACTS_SetWantInfo_2500====>");
         }, time);
     })
+
     /*
     * @tc.number: ACTS_SetWantInfo_2600
     * @tc.name: getWant()
@@ -805,6 +830,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
             console.debug("====>time out ACTS_SetWantInfo_2600====>");
         }, time);
     })
+
     /*
     * @tc.number: ACTS_SetWantInfo_2700
     * @tc.name: getWant()
@@ -821,6 +847,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
             console.debug("====>time out ACTS_SetWantInfo_2700====>");
         }, time);
     })
+
     /*
     * @tc.number: ACTS_SetWantInfo_2800
     * @tc.name: getWantAgent()
@@ -833,6 +860,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
             })
         done();
     })
+
     /*
     * @tc.number: ACTS_SetWantInfo_2900
     * @tc.name: getWantAgent()
@@ -846,6 +874,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
            })
         done();
     })
+
     /*
     * @tc.number: ACTS_SetWantInfo_3000
     * @tc.name: getBundleName()
@@ -858,6 +887,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
             });
         done()
     })
+
     /*
     * @tc.number: ACTS_SetWantInfo_3100
     * @tc.name: getBundleName()
@@ -871,6 +901,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
         })
         done()
     })
+
     /*
     * @tc.number: ACTS_SetWantInfo_3200
     * @tc.name: getUid()
@@ -882,6 +913,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
             });
         done()
     })
+
     /*
     * @tc.number: ACTS_SetWantInfo_3300
     * @tc.name: getUid()
@@ -895,6 +927,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
         })
         done()
     })
+
     /*
     * @tc.number: ACTS_SetWantInfo_3400
     * @tc.name: getWant()
@@ -906,6 +939,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
         });
         done()
     })
+
     /*
     * @tc.number: ACTS_SetWantInfo_3500
     * @tc.name: getWant()
@@ -919,6 +953,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
         })
         done()
     })
+
     /*
     * @tc.number: ACTS_SetWantInfo_3600
     * @tc.name: cancel()
@@ -930,6 +965,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
         });
         done()
     })
+
     /*
     * @tc.number: ACTS_SetWantInfo_3700
     * @tc.name: cancel()
@@ -943,6 +979,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
         })
         done()
     })
+
     /*
     * @tc.number: ACTS_SetWantInfo_3800
     * @tc.name: cancel()
@@ -954,6 +991,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
         });
         done()
     })
+
     /*
     * @tc.number: ACTS_SetWantInfo_3900
     * @tc.name: cancel()
@@ -967,6 +1005,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
         })
         done()
     })
+
     /*
     * @tc.number: ACTS_SetWantInfo_4000
     * @tc.name: getWant()
@@ -978,6 +1017,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
         });
         done()
     })
+
     /*
     * @tc.number: ACTS_SetWantInfo_4100
     * @tc.name: cancel()
@@ -991,6 +1031,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
         })
         done()
     })
+
     /*
     * @tc.number: ACTS_SetWantInfo_4200
     * @tc.name: cancel()
@@ -1002,6 +1043,7 @@ describe('ActsAnsGetWantAgentInfoTest', function () {
         });
         done()
     })
+    
     /*
     * @tc.number: ACTS_SetWantInfo_4300
     * @tc.name: cancel()
