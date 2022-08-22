@@ -46,7 +46,6 @@ struct ScrollExample {
                 router.push({ uri: 'pages/fourth' })
               })
             )
-
             Button() {
               Text('Click twice')
                 .fontSize(25)
@@ -60,7 +59,16 @@ struct ScrollExample {
                 router.push({ uri: 'pages/third' })
               })
             )
-
+            Button() {
+              Text('jump')
+                .fontSize(25)
+                .fontWeight(FontWeight.Bold)
+            }
+            .type(ButtonType.Capsule)
+            .margin({ top: 20 })
+            .onClick(() => {
+              router.push({ uri: 'pages/screen' })
+            })
             Checkbox({ name: 'hi' })
               .size({ width: 30, height: 30 })
             TextInput({ placeholder: 'welcome', text: 'Hello World' })
