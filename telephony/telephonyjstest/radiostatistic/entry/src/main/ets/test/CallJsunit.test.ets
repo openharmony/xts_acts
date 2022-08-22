@@ -45,65 +45,7 @@ export default function callJsunit(){
     console.log("==========> call Test start ==========>");
 
 
-    /**
-       * @tc.number  Telephony_Call_Call_MakeCall_0100
-       * @tc.name    Make a call.
-       * @tc.desc    Function test
-       */
-    it("Telephony_Call_Call_MakeCall_0100",0,async function(done){
-      let caseName:string = "Telephony_Call_Call_MakeCall_0100";
-      console.log(`==========> ${caseName} Test start ==========>`);
-      try{
-        let telNumber = "";
-        call.makeCall(telNumber,(error) => {
-          if(error){
-            console.log(`${caseName} fail,case success,error:${toString(error)}`);
-            expect(true).assertTrue();
-            done();
-            return;
-          }
-          expect().assertFail();
-          console.log(`${caseName} success,case fail`);
-          done();
-        });
-      }catch(err){
-        console.log(`${caseName} fail,case success,error:${toString(err)}`);
-        expect(true).assertTrue();
-        done();
-        return;
-      }
-      console.log(`==========> ${caseName} Test end ==========>`);
-      done();
-    });
 
-    /**
-       * @tc.number  Telephony_Call_Call_MakeCall_0200
-       * @tc.name    Makes a call.
-       * @tc.desc    Function test
-       */
-    it("Telephony_Call_Call_MakeCall_0200",0,async function(done){
-      let caseName:string = "Telephony_Call_Call_MakeCall_0200";
-      console.log(`==========> ${caseName} Test start ==========>`);
-      let telNumber = "";
-      try{
-        call.makeCall(telNumber).then(()=>{
-          console.log(`${caseName} success,case fail`);
-          done();
-        }).catch(error =>{
-          console.log(`${caseName} fail,case success,error:${toString(error)}`);
-          expect(true).assertTrue();
-          done();
-          return;
-        });
-      }catch(err){
-        console.log(`${caseName} fail,case success,error:${toString(err)}`);
-        expect(true).assertTrue();
-        done();
-        return;
-      }
-      console.log(`==========> ${caseName} Test end ==========>`);
-      done();
-    });
 
     /**
        * @tc.number  Telephony_Call_HasVoiceCapability_HasVoiceCapability
@@ -493,6 +435,66 @@ export default function callJsunit(){
       }
       expect(1045).assertEqual(call.DisconnectedDetails.SIM_INVALID);
       expect(1045).assertEqual(call.DisconnectedDetails.SIM_INVALID);
+      console.log(`==========> ${caseName} Test end ==========>`);
+      done();
+    });
+
+    /**
+       * @tc.number  Telephony_Call_Call_MakeCall_0100
+       * @tc.name    Make a call.
+       * @tc.desc    Function test
+       */
+    it("Telephony_Call_Call_MakeCall_0100",0,async function(done){
+      let caseName:string = "Telephony_Call_Call_MakeCall_0100";
+      console.log(`==========> ${caseName} Test start ==========>`);
+      try{
+        let telNumber = "";
+        call.makeCall(telNumber,(error) => {
+          if(error){
+            console.log(`${caseName} fail,case success,error:${toString(error)}`);
+            expect(true).assertTrue();
+            done();
+            return;
+          }
+          expect().assertFail();
+          console.log(`${caseName} success,case fail`);
+          done();
+        });
+      }catch(err){
+        console.log(`${caseName} fail,case success,error:${toString(err)}`);
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+      console.log(`==========> ${caseName} Test end ==========>`);
+      done();
+    });
+
+    /**
+       * @tc.number  Telephony_Call_Call_MakeCall_0200
+       * @tc.name    Makes a call.
+       * @tc.desc    Function test
+       */
+    it("Telephony_Call_Call_MakeCall_0200",0,async function(done){
+      let caseName:string = "Telephony_Call_Call_MakeCall_0200";
+      console.log(`==========> ${caseName} Test start ==========>`);
+      let telNumber = "";
+      try{
+        call.makeCall(telNumber).then(()=>{
+          console.log(`${caseName} success,case fail`);
+          done();
+        }).catch(error =>{
+          console.log(`${caseName} fail,case success,error:${toString(error)}`);
+          expect(true).assertTrue();
+          done();
+          return;
+        });
+      }catch(err){
+        console.log(`${caseName} fail,case success,error:${toString(err)}`);
+        expect(true).assertTrue();
+        done();
+        return;
+      }
       console.log(`==========> ${caseName} Test end ==========>`);
       done();
     });
