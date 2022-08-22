@@ -20,7 +20,7 @@ group("multimedia") {
       "audio/audio_js_standard/audioManager:audio_manager_js_hap",
       "camera/cameraDepthOffield:camera_depthoffield_ets_hap",
       "camera/cameraExceedWideAngle:camera_exceedwideangle_ets_hap",
-      "camera/cameraLongFocus:ActsCameraLongFocusETSTest",
+      "camera/cameraLongFocus:camera_longfocus_ets_hap",
       "camera/cameraUnspc:camera_unspc_ets_hap",
       "camera/cameraWideAngle:camera_wideangle_ets_hap",
       "camera/cameraWideAngleRK:camera_wideanglerk_ets_hap",

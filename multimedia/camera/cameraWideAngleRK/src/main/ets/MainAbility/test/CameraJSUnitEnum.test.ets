@@ -28,6 +28,8 @@ var cameraManager;
 var surfaceId1;
 var camerasArray;
 
+var camera0Input;
+
 export default function cameraJSUnitEnum(surfaceId: any) {
 
   async function getImageReceiverSurfaceId() {
