@@ -737,7 +737,7 @@ export default function UiTest() {
         expect(mode2 == WindowMode.FLOATING).assertTrue()
         await stopApplication('com.uitestScene.acts')
       }
-      catch(USAGE_ERROR){
+      catch(error){
         expect(window1 != null).assertTrue()
         await stopApplication('com.uitestScene.acts')
       }
@@ -795,7 +795,7 @@ export default function UiTest() {
         expect(bounds1 != bounds2).assertTrue()
         await stopApplication('com.uitestScene.acts')
       }
-      catch(USAGE_ERROR){
+      catch(error){
         expect(window != null).assertTrue()
         await stopApplication('com.uitestScene.acts')
       }
@@ -838,7 +838,7 @@ export default function UiTest() {
         expect(bounds5 != bounds4).assertTrue()
         await stopApplication('com.uitestScene.acts')
       }
-      catch(USAGE_ERROR){
+      catch(error){
         expect(window != null).assertTrue()
         await stopApplication('com.uitestScene.acts')
       }
@@ -877,7 +877,7 @@ export default function UiTest() {
 
         await stopApplication('com.uitestScene.acts')
       }
-      catch(USAGE_ERROR){
+      catch(error){
         expect(window != null).assertTrue()
         await stopApplication('com.uitestScene.acts')
       }
@@ -919,7 +919,7 @@ export default function UiTest() {
         expect(mode == WindowMode.FULLSCREEN).assertTrue()
         await stopApplication('com.uitestScene.acts')
       }
-      catch(USAGE_ERROR){
+      catch(error){
         expect(window != null).assertTrue()
         await stopApplication('com.uitestScene.acts')
       }
@@ -942,7 +942,7 @@ export default function UiTest() {
         expect(window1 == null).assertTrue()
         await stopApplication('com.uitestScene.acts')
       }
-      catch(USAGE_ERROR){
+      catch(error){
         expect(window != null).assertTrue()
         await stopApplication('com.uitestScene.acts')
       }
@@ -964,7 +964,7 @@ export default function UiTest() {
         let window1 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
         expect(window1 == null).assertTrue()
       }
-      catch(USAGE_ERROR){
+      catch(error){
         expect(window != null).assertTrue()
         await stopApplication('com.uitestScene.acts')
       }
