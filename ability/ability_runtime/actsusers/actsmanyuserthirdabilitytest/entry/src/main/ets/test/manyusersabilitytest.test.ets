@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "deccjsunit/index"
 import commonEvent from '@ohos.commonEvent'
 
 
@@ -67,6 +67,26 @@ var unsubscriberInfoStartAbility_0200 = {
 const START_ABILITY_TIMEOUT = 1000;
 globalThis.number = 0;
 
+function onConnectCallback(element, remote) {
+  console.log('  ACTS_ConnectAbility onConnectCallback====> element=' + JSON.stringify(element));
+  console.log('  ACTS_ConnectAbility onConnectCallback====> remote=' + JSON.stringify(remote));
+  // setTimeout(()=> {
+  //   console.log('====>in timeout');
+  //   console.debug("====>flag is====>" + JSON.stringify(flag));
+  //   if(flag == true) {
+  //     console.debug('ACTS_ThirdPartyExtensionStartAbility_0600 - timeout');
+  //     commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
+  //   }
+  // }, 1000);
+}
+function onDisconnectCallback(element) {
+  console.log('ACTS_ConnectAbility onDisconnectCallback====> element=' + JSON.stringify(element));
+}
+
+function onFailedCallback(code) {
+  console.log('ACTS_ConnectAbility onFailedCallback====> code=' + JSON.stringify(code))
+}
+
 export default function abilityTest(abilityContext) {
   describe('manyuserability', function () {
 
@@ -74,13 +94,17 @@ export default function abilityTest(abilityContext) {
       console.log('ACTS_ConnectAbility_0200 Connectability errcode:' + code);
     }
 
+    /*
+     * @tc.number  : ACTS_ThirdPartyConnectAbility_0100
+     * @tc.name    : connect ability
+     * @tc.desc    : Start an ability with the parameter startability with options failed.(callback)
+     */
     it('ACTS_ThirdPartyConnectAbility_0100', 0, async function (done) {
       console.log('ACTS_ThirdPartyConnectAbility_0100====<begin');
       console.log('========ACTS_ConnectAbility_0100 1 called');
       var subscriber;
       let id;
       let connId;
-
 
       function subscribeCallBack(err, data) {
         console.debug("====>ACTS_ThirdPartyConnectAbility_0100 7 CallBack data:====>" + JSON.stringify(data));
@@ -95,9 +119,7 @@ export default function abilityTest(abilityContext) {
         );
         console.debug("====>ACTS_ThirdPartyConnectAbility_0100 6  ");
         commonEvent.unsubscribe(subscriber, unSubscribeCallback)
-
       }
-
 
       commonEvent.createSubscriber(subscriberInfoStartAbility_0100).then(async (data) => {
         console.debug("====>ACTS_ThirdPartyConnectAbility_0100 2  Subscriber1====>");
@@ -128,11 +150,19 @@ export default function abilityTest(abilityContext) {
           bundleName: "com.example.actsmanyusersabilitytest",
           abilityName: "com.example.actsmanyusersabilitytest.ServiceAbility",
           action: "one",
-        },
+        },{
+          onConnect:onConnectCallback,
+          onDisconnect:onDisconnectCallback,
+          onFailed: onFailedCallback
+        }
       );
+
       console.debug("====>ACTS_ThirdPartyConnectAbility_0100 4  ");
 
     })
+
+
+
     it('ACTS_ThirdPartyConnectAbility_0200', 0, async function (done) {
       console.log('ACTS_ThirdPartyConnectAbility_0200====<begin');
       console.log('========StartConnect called');
@@ -142,7 +172,7 @@ export default function abilityTest(abilityContext) {
 
 
       function subscribeCallBack(err, data) {
-        console.debug("====>Subscribe CallBack data:====>" + JSON.stringify(data));
+        console.debug("====>ACTS_ThirdPartyConnectAbility_0200 Subscribe CallBack data:====>" + JSON.stringify(data));
         clearTimeout(id);
         expect(data.event).assertEqual("AMS_ConnectAbility_0200_commonEvent");
 
@@ -150,13 +180,13 @@ export default function abilityTest(abilityContext) {
       }
 
       commonEvent.createSubscriber(subscriberInfoStartAbility_0200).then(async (data) => {
-        console.debug("====>Create Subscriber====>");
+        console.debug("====>ACTS_ThirdPartyConnectAbility_0200 Create Subscriber====>");
         subscriber = data;
         await commonEvent.subscribe(subscriber, subscribeCallBack);
       })
 
       function unSubscribeCallback() {
-        console.debug("====>UnSubscribe CallBack====>");
+        console.debug("====>ACTS_ThirdPartyConnectAbility_0200 UnSubscribe CallBack====>");
         done();
       }
 
@@ -176,8 +206,6 @@ export default function abilityTest(abilityContext) {
         {
           onFailed: onFailedCallBack,
         },
-
-
       );
     })
 
@@ -213,10 +241,10 @@ export default function abilityTest(abilityContext) {
 
       function unSubscribeCallback() {
         console.debug("====>UnSubscribe CallBack====>");
-        setTimeout(()=>
-        {
+        setTimeout(() => {
           done()
-        }, 1000)};
+        }, 1000)
+      };
 
       function timeout() {
         expect().assertFail();
@@ -236,7 +264,11 @@ export default function abilityTest(abilityContext) {
           bundleName: "com.example.actsmanyusersabilitytest",
           abilityName: "com.example.actsmanyusersabilitytest.ServiceAbility",
           action: "Three",
-        },
+        }, {
+        onConnect: onConnectCallback,
+        onDisconnect: onDisconnectCallback,
+        onFailed: onFailedCallback
+      }
       );
       console.debug("====>ACTS_ThirdPartyDisconnectAbility_0100 4====>");
     })
@@ -312,7 +344,11 @@ export default function abilityTest(abilityContext) {
             bundleName: "com.example.actsmanyusersabilitytest",
             abilityName: "com.example.actsmanyusersabilitytest.ServiceAbility",
             action: "Four",
-          },
+          }, {
+          onConnect: onConnectCallback,
+          onDisconnect: onDisconnectCallback,
+          onFailed: onFailedCallback
+        }
         );
         console.debug("====>connId is:====>" + JSON.stringify(connId));
         console.debug("====>ACTS_ThirdPartyDisconnectAbility_0200 1010 Subscriber====>");
@@ -380,7 +416,11 @@ export default function abilityTest(abilityContext) {
           bundleName: "com.example.actsmanyusersabilitytest",
           abilityName: "com.example.actsmanyusersabilitytest.ServiceAbility",
           action: "Five",
-        },
+        }, {
+        onConnect: onConnectCallback,
+        onDisconnect: onDisconnectCallback,
+        onFailed: onFailedCallback
+      }
       );
       console.debug("====>ACTS_ThirdPartyDisconnectAbility_0300 4 ");
     })
@@ -455,7 +495,11 @@ export default function abilityTest(abilityContext) {
             bundleName: "com.example.actsmanyusersabilitytest",
             abilityName: "com.example.actsmanyusersabilitytest.ServiceAbility",
             action: "Six",
-          },
+          }, {
+          onConnect: onConnectCallback,
+          onDisconnect: onDisconnectCallback,
+          onFailed: onFailedCallback
+        }
         );
         console.debug("====>connId is:====>" + JSON.stringify(connId));
         console.debug("====>ACTS_ThirdPartyDisconnectAbility_0400 1010 Subscriber====>");
@@ -524,7 +568,11 @@ export default function abilityTest(abilityContext) {
           bundleName: "com.example.actsmanyusersabilitytest",
           abilityName: "com.example.actsmanyusersabilitytest.ServiceAbility",
           action: "Seven",
-        },
+        }, {
+        onConnect: onConnectCallback,
+        onDisconnect: onDisconnectCallback,
+        onFailed: onFailedCallback
+      }
       );
       console.debug("====>ACTS_ThirdPartyExtensionConnectAbility_0100 4  ");
 
@@ -585,7 +633,11 @@ export default function abilityTest(abilityContext) {
           bundleName: "com.example.actsmanyusersabilitytest",
           abilityName: "com.example.actsmanyusersabilitytest.ServiceAbility",
           action: "Eight",
-        },
+        }, {
+        onConnect: onConnectCallback,
+        onDisconnect: onDisconnectCallback,
+        onFailed: onFailedCallback
+      }
       );
       console.debug("====>ACTS_ThirdPartyExtensionConnectAbility_0200 4  ");
 
@@ -646,7 +698,11 @@ export default function abilityTest(abilityContext) {
           bundleName: "com.example.actsmanyusersabilitytest",
           abilityName: "com.example.actsmanyusersabilitytest.ServiceAbility",
           action: "Nine",
-        },
+        }, {
+        onConnect: onConnectCallback,
+        onDisconnect: onDisconnectCallback,
+        onFailed: onFailedCallback
+      }
       );
       console.debug("====>ACTS_ThirdPartyExtensionDisconnectAbility_0100 4  ");
 
@@ -708,7 +764,11 @@ export default function abilityTest(abilityContext) {
           bundleName: "com.example.actsmanyusersabilitytest",
           abilityName: "com.example.actsmanyusersabilitytest.ServiceAbility",
           action: "Ten",
-        },
+        }, {
+        onConnect: onConnectCallback,
+        onDisconnect: onDisconnectCallback,
+        onFailed: onFailedCallback
+      }
       );
       console.debug("====>ACTS_ThirdPartyExtensionDisconnectAbility_0200 4  ");
 
@@ -769,7 +829,11 @@ export default function abilityTest(abilityContext) {
           bundleName: "com.example.actsmanyusersabilitytest",
           abilityName: "com.example.actsmanyusersabilitytest.ServiceAbility",
           action: "Ten one",
-        },
+        }, {
+        onConnect: onConnectCallback,
+        onDisconnect: onDisconnectCallback,
+        onFailed: onFailedCallback
+      }
       );
       console.debug("====>ACTS_ThirdPartyExtensionDisconnectAbility_0300 4  ");
 
@@ -830,7 +894,11 @@ export default function abilityTest(abilityContext) {
           bundleName: "com.example.actsmanyusersabilitytest",
           abilityName: "com.example.actsmanyusersabilitytest.ServiceAbility",
           action: "Ten two",
-        },
+        }, {
+        onConnect: onConnectCallback,
+        onDisconnect: onDisconnectCallback,
+        onFailed: onFailedCallback
+      }
       );
       console.debug("====>ACTS_ThirdPartyExtensionDisconnectAbility_0400 4  ");
 

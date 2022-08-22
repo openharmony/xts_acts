@@ -36,7 +36,7 @@
     "extensionAbilities": [
       {
         "srcEntrance": "./ets/ServiceAbility/ServiceAbility.ts",
-        "name": "com.example.actsconnectabilitysystemabilitytest.ServiceAbility",
+        "name": "com.example.actsmanyusersabilitytest.ServiceAbility",
         "icon": "$media:icon",
         "srcLanguage": "ets",
         "description": "$string:phone_entry_main",
@@ -45,7 +45,7 @@
       },
       {
         "srcEntrance": "./ets/ServiceAbility2/ServiceAbility2.ts",
-        "name": "com.example.actsconnectabilitysystemabilitytest.ServiceAbility2",
+        "name": "com.example.actsmanyusersabilitytest.ServiceAbility2",
         "icon": "$media:icon",
         "srcLanguage": "ets",
         "description": "$string:phone_entry_main",

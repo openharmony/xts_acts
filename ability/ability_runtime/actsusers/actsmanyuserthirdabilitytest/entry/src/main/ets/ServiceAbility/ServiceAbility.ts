@@ -97,8 +97,8 @@ export default class ServiceAbility extends ServiceExtension {
         if (want.action == "Seven") {
             extensionContext.connectAbility(
                 {
-                    bundleName: "com.example.manyusersabilitytest",
-                    abilityName: "com.example.manyusersabilitytest.ServiceAbility2",
+                    bundleName: "com.example.actsmanyusersabilitytest",
+                    abilityName: "com.example.actsmanyusersabilitytest.ServiceAbility2",
                 }, {
                     onConnect: onConnectCallback,
                     onDisconnect: onDisconnectCallback,
@@ -109,8 +109,8 @@ export default class ServiceAbility extends ServiceExtension {
         if (want.action == "Eight") {
             extensionContext.connectAbility(
                 {
-                    bundleName: "com.example.manyusersabilitytesta",
-                    abilityName: "com.example.manyusersabilitytest.ServiceAbility3",
+                    bundleName: "com.example.actsmanyusersabilitytesta",
+                    abilityName: "com.example.actsmanyusersabilitytest.ServiceAbility3",
                 }, {
                     onConnect: onConnectCallback,
                     onDisconnect: onDisconnectCallback,
@@ -122,8 +122,8 @@ export default class ServiceAbility extends ServiceExtension {
             console.log('connectAbility 111');
             let num = this.context.connectAbility(
                 {
-                    bundleName: 'com.example.manyusersabilitytest',
-                    abilityName: 'com.example.manyusersabilitytest.ServiceAbility2'
+                    bundleName: 'com.example.actsmanyusersabilitytest',
+                    abilityName: 'com.example.actsmanyusersabilitytest.ServiceAbility2'
                 }, {
                     onConnect: onConnectCallback,
                     onDisconnect: onDisconnectCallback,
@@ -140,8 +140,8 @@ export default class ServiceAbility extends ServiceExtension {
             console.log('connectAbility 222');
             let num = this.context.connectAbility(
                 {
-                    bundleName: 'com.example.manyusersabilitytest',
-                    abilityName: 'com.example.manyusersabilitytest.ServiceAbility2'
+                    bundleName: 'com.example.actsmanyusersabilitytest',
+                    abilityName: 'com.example.actsmanyusersabilitytest.ServiceAbility2'
                 }, {
                     onConnect: onConnectCallback,
                     onDisconnect: onDisconnectCallback,
@@ -158,8 +158,8 @@ export default class ServiceAbility extends ServiceExtension {
             console.log('connectAbility 333');
             let num = this.context.connectAbility(
                 {
-                    bundleName: 'com.example.manyusersabilitytest',
-                    abilityName: 'com.example.manyusersabilitytest.ServiceAbility2'
+                    bundleName: 'com.example.actsmanyusersabilitytest',
+                    abilityName: 'com.example.actsmanyusersabilitytest.ServiceAbility2'
                 }, {
                     onConnect: onConnectCallback,
                     onDisconnect: onDisconnectCallback,
@@ -176,8 +176,8 @@ export default class ServiceAbility extends ServiceExtension {
             console.log('connectAbility 444');
             let num = this.context.connectAbility(
                 {
-                    bundleName: 'com.example.manyusersabilitytest',
-                    abilityName: 'com.example.manyusersabilitytest.ServiceAbility2'
+                    bundleName: 'com.example.actsmanyusersabilitytest',
+                    abilityName: 'com.example.actsmanyusersabilitytest.ServiceAbility2'
                 }, {
                     onConnect: onConnectCallback,
                     onDisconnect: onDisconnectCallback,
