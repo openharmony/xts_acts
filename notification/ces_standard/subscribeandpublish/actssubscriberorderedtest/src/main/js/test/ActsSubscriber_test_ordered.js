@@ -477,9 +477,14 @@ describe('ActsSubscriberTestOrder', function () {
             expect(data.event).assertEqual('publish_event0500');
             expect(data.code).assertEqual(10);
             expect(data.data).assertEqual('publish_event0500_init');
-            commonEventSubscriber0500.finishCommonEvent().then(() => {
-                console.info('===============>subscriberCallBack0500 finishCommonEvent promise');
-            });
+            commonEventSubscriber0500.finishCommonEvent((err) => {
+                if (err.code) {
+                  console.info("===============>finishCommonEvent AsyncCallback failed " + JSON.stringify(err));
+              } else {
+                  console.info("===============>FinishCommonEvent AsyncCallback success");
+              }
+              done()
+              })
         }
 
         async function subscriberCallBack0501(err, data) {
@@ -489,10 +494,14 @@ describe('ActsSubscriberTestOrder', function () {
             expect(data.event).assertEqual('publish_event0500');
             expect(data.code).assertEqual(10);
             expect(data.data).assertEqual('publish_event0500_init');
-            commonEventSubscriber0501.finishCommonEvent().then(() => {
-                console.info('===============>subscriberCallBack0501 finishCommonEvent promise');
-                done();
-            });
+            commonEventSubscriber0501.finishCommonEvent((err) => {
+                if (err.code) {
+                  console.info("===============>finishCommonEvent AsyncCallback failed " + JSON.stringify(err));
+              } else {
+                  console.info("===============>FinishCommonEvent AsyncCallback success");
+              }
+              done()
+              })
         }
 
         Subscriber.createSubscriber(
