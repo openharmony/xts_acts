@@ -32,7 +32,7 @@ struct VisibilityExample {
       eventId: 48,
       priority: events_emitter.EventPriority.LOW
     }
-    events_emitter.on(noneChangeEvent, this.noneChangCallBack)
+    events_emitter.on(noneChangeEvent, this.hiddenChangCallBack)
 
     var stateChangeEvent2 = {
       eventId: 1116,
