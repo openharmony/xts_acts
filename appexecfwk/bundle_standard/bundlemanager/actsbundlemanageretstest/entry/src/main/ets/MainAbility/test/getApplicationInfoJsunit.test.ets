@@ -358,7 +358,7 @@ export default function applicationBundleJsunit() {
             expect(data.uid > 0).assertEqual(true);
             expect(data.label).assertEqual('$string:entry_MainAbility');
             expect(data.labelId > 0).assertEqual(true);
-            expect(data.systemApp).assertEqual(true);
+            expect(data.systemApp).assertEqual(false);
             expect(data.supportedModes).assertEqual(0);
             expect(data.process).assertEqual('com.open.harmony.packagemag');
             expect(data.entryDir).assertEqual('/data/app/el1/bundle/public/com.open.harmony.packagemag' +
@@ -371,9 +371,9 @@ export default function applicationBundleJsunit() {
                 'com.open.harmony.packagemag/com.open.harmony.packagemag');
             expect(data.moduleSourceDirs[0]).assertEqual('/data/app/el1/bundle/public/' +
                 'com.open.harmony.packagemag/com.open.harmony.packagemag');
-            expect(data.permissions[0]).assertEqual("ohos.permission.CHANGE_ABILITY_ENABLED_STATE");
-            expect(data.permissions[1]).assertEqual("ohos.permission.GET_BUNDLE_INFO");
-            expect(data.permissions[2]).assertEqual("ohos.permission.GET_BUNDLE_INFO_PRIVILEGED");
+            expect(data.permissions[0]).assertEqual("ohos.permission.GET_BUNDLE_INFO");
+            expect(data.permissions[1]).assertEqual("ohos.permission.GET_BUNDLE_INFO_PRIVILEGED");
+            expect(data.permissions[2]).assertEqual("ohos.permission.USE_BLUETOOTH");
             console.log(msg + ' end  ' + JSON.stringify(data));
         }
 
@@ -388,7 +388,7 @@ export default function applicationBundleJsunit() {
             expect(data.uid > 0).assertEqual(true);
             expect(data.label).assertEqual('$string:entry_MainAbility');
             expect(data.labelId > 0).assertEqual(true);
-            expect(data.systemApp).assertEqual(true);
+            expect(data.systemApp).assertEqual(false);
             expect(data.supportedModes).assertEqual(0);
             expect(data.process).assertEqual('com.open.harmony.packagemag');
             expect(data.entryDir).assertEqual('/data/app/el1/bundle/public/com.open.harmony.packagemag' +

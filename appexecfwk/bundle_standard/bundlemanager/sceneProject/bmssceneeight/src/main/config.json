@@ -17,7 +17,7 @@
     "package": "com.example.third1",
     "name": ".MyApplication",
     "deviceType": [
-      "phone"
+      "default"
     ],
     "distro": {
       "deliveryWithInstall": true,
