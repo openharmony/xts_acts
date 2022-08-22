@@ -73,15 +73,20 @@ export default function wallpaperJSUnit() {
         * @tc.level   0
         */
         it('testGetColorsCallbackSystem101', 0, async function (done) {
+
             await wallpaper.getColors(WALLPAPER_SYSTEM, function (err, data) {
+                let RgbaColor = {
+                    red:data[0][0],
+                    green:data[0][1],
+                    blue:data[0][2],
+                    alpha:data[0][3]
+                }
                 console.info('wallpaperXTS ===> testGetColorsCallbackSystem err : ' + JSON.stringify(err));
                 console.info('wallpaperXTS ===> testGetColorsCallbackSystem data : ' + JSON.stringify(data));
                 console.info('wallpaperXTS ===> testGetColorsCallbackSystem data : ' + data[0][0]);
                 console.info('wallpaperXTS ===> testGetColorsCallbackSystem data : ' + data[0][1]);
                 console.info('wallpaperXTS ===> testGetColorsCallbackSystem data : ' + data[0][2]);
                 console.info('wallpaperXTS ===> testGetColorsCallbackSystem data : ' + data[0][3]);
-
-
                 if (err) {
                     expect(null).assertFail();
                 }
@@ -608,6 +613,46 @@ export default function wallpaperJSUnit() {
                     expect(true).assertTrue();
                 }
             })
+            done();
+        })
+
+        /*
+        * @tc.number  testGetFileCallback101
+        * @tc.name    Obtains a file of the wallpaper of the specified type.
+        * @tc.desc    Function test
+        * @tc.level   0
+        */
+        it('testGetFileCallback101', 0, async function (done) {
+            wallpaper.getFile(WALLPAPER_SYSTEM, (error, data) => {
+                if (error) {
+                    console.error("callback failed to getFile because: " + JSON.stringify(error));
+                    expect().assertFail()
+                }else{
+                    expect(typeof data == "number").assertTrue();
+                    expect(!isNaN(data)).assertTrue();
+                    console.info("callback success to getFile: " + JSON.stringify(data));
+                    done()
+                }
+            });
+            done();
+        })
+
+        /*
+        * @tc.number  testGetFilePromise101
+        * @tc.name    Obtains a file of the wallpaper of the specified type.
+        * @tc.desc    Function test
+        * @tc.level   0
+        */
+        it('testGetFilePromise101', 0, async function (done) {
+            wallpaper.getFile(WALLPAPER_SYSTEM).then((data) => {
+                expect(typeof data == "number").assertTrue();
+                expect(!isNaN(data)).assertTrue();
+                console.info("promise success to getFile: " + JSON.stringify(data));
+                done()
+            }).catch((error) => {
+                console.error("promise failed to getFile because: " + JSON.stringify(error));
+                expect().assertFail()
+            });
             done();
         })
     })
