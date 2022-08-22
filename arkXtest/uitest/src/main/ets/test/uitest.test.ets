@@ -737,9 +737,12 @@ export default function UiTest() {
         expect(mode2 == WindowMode.FLOATING).assertTrue()
         await stopApplication('com.uitestScene.acts')
       }
-      catch(err: any){
-        expect(window1 != null).assertTrue()
-        await stopApplication('com.uitestScene.acts')
+      catch (err) {
+        if (err.message == 'this device can not support this action') {
+          expect(window1 != null).assertTrue()
+        } else {
+          expect(false).assertTrue()
+        }
       }
     })
 
@@ -795,9 +798,12 @@ export default function UiTest() {
         expect(bounds1 != bounds2).assertTrue()
         await stopApplication('com.uitestScene.acts')
       }
-      catch(err: any){
-        expect(window != null).assertTrue()
-        await stopApplication('com.uitestScene.acts')
+      catch (err) {
+        if (err.message == 'this device can not support this action') {
+          expect(window != null).assertTrue()
+        } else {
+          expect(false).assertTrue()
+        }
       }
     })
 
@@ -838,9 +844,12 @@ export default function UiTest() {
         expect(bounds5 != bounds4).assertTrue()
         await stopApplication('com.uitestScene.acts')
       }
-      catch(err: any){
-        expect(window != null).assertTrue()
-        await stopApplication('com.uitestScene.acts')
+      catch (err) {
+        if (err.message == 'this device can not support this action') {
+          expect(window != null).assertTrue()
+        } else {
+          expect(false).assertTrue()
+        }
       }
     })
 
@@ -877,9 +886,12 @@ export default function UiTest() {
 
         await stopApplication('com.uitestScene.acts')
       }
-      catch(err: any){
-        expect(window != null).assertTrue()
-        await stopApplication('com.uitestScene.acts')
+      catch (err) {
+        if (err.message == 'this device can not support this action') {
+          expect(window != null).assertTrue()
+        } else {
+          expect(false).assertTrue()
+        }
       }
     })
 
@@ -919,9 +931,12 @@ export default function UiTest() {
         expect(mode == WindowMode.FULLSCREEN).assertTrue()
         await stopApplication('com.uitestScene.acts')
       }
-      catch(err: any){
-        expect(window != null).assertTrue()
-        await stopApplication('com.uitestScene.acts')
+      catch (err) {
+        if (err.message == 'this device can not support this action') {
+          expect(window != null).assertTrue()
+        } else {
+          expect(false).assertTrue()
+        }
       }
     })
 
@@ -942,9 +957,12 @@ export default function UiTest() {
         expect(window1 == null).assertTrue()
         await stopApplication('com.uitestScene.acts')
       }
-      catch(err: any){
-        expect(window != null).assertTrue()
-        await stopApplication('com.uitestScene.acts')
+      catch (err) {
+        if (err.message == 'this device can not support this action') {
+          expect(window != null).assertTrue()
+        } else {
+          expect(false).assertTrue()
+        }
       }
     })
 
@@ -964,9 +982,12 @@ export default function UiTest() {
         let window1 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
         expect(window1 == null).assertTrue()
       }
-      catch(err: any){
-        expect(window != null).assertTrue()
-        await stopApplication('com.uitestScene.acts')
+      catch (err) {
+        if (err.message == 'this device can not support this action') {
+          expect(window != null).assertTrue()
+        } else {
+          expect(false).assertTrue()
+        }
       }
     })
 
