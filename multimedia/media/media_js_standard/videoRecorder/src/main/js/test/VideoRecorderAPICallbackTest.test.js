@@ -307,28 +307,28 @@ describe('VideoRecorderAPICallbackTest', function () {
     });
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_PREPARE_CALLBACK_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_PREPARE_CALLBACK_0100
         * @tc.name      : 01.create->prepare
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_PREPARE_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_PREPARE_CALLBACK_0100', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_PREPARE_CALLBACK_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_PREPARE_CALLBACK_0200
         * @tc.name      : 02.start->prepare
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_PREPARE_CALLBACK_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_PREPARE_CALLBACK_0200', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM,
             START_EVENT, PREPARE_EVENT, ERROR_EVENT, RELEASE_EVENT, CLOSE_STREAM, END_EVENT);
@@ -336,14 +336,14 @@ describe('VideoRecorderAPICallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_PREPARE_CALLBACK_0300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_PREPARE_CALLBACK_0300
         * @tc.name      : 03.pause->prepare
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_PREPARE_CALLBACK_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_PREPARE_CALLBACK_0300', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM,
             START_EVENT, PAUSE_EVENT, CLOSE_STREAM, PREPARE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
@@ -351,14 +351,14 @@ describe('VideoRecorderAPICallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_PREPARE_CALLBACK_0400
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_PREPARE_CALLBACK_0400
         * @tc.name      : 04.resume->prepare
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_PREPARE_CALLBACK_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_PREPARE_CALLBACK_0400', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM,
             START_EVENT, PAUSE_EVENT, RESUME_EVENT,
@@ -367,14 +367,14 @@ describe('VideoRecorderAPICallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_PREPARE_CALLBACK_0500
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_PREPARE_CALLBACK_0500
         * @tc.name      : 05.stop->prepare
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_PREPARE_CALLBACK_0500', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_PREPARE_CALLBACK_0500', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM,
             START_EVENT, STOP_EVENT, CLOSE_STREAM, PREPARE_EVENT, RELEASE_EVENT, END_EVENT);
@@ -382,14 +382,14 @@ describe('VideoRecorderAPICallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_PREPARE_CALLBACK_0600
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_PREPARE_CALLBACK_0600
         * @tc.name      : 06.reset->prepare
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_PREPARE_CALLBACK_0600', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_PREPARE_CALLBACK_0600', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM,
             START_EVENT, CLOSE_STREAM, RESET_EVENT, PREPARE_EVENT, RELEASE_EVENT, END_EVENT);
@@ -397,14 +397,14 @@ describe('VideoRecorderAPICallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_PREPARE_CALLBACK_0700
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_PREPARE_CALLBACK_0700
         * @tc.name      : 07.getInputSurface->prepare
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_PREPARE_CALLBACK_0700', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_PREPARE_CALLBACK_0700', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, PREPARE_EVENT,
             ERROR_EVENT, RELEASE_EVENT, END_EVENT);
@@ -412,14 +412,14 @@ describe('VideoRecorderAPICallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_PREPARE_CALLBACK_0800
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_PREPARE_CALLBACK_0800
         * @tc.name      : 08.prepare 3 times
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_PREPARE_CALLBACK_0800', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_PREPARE_CALLBACK_0800', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, PREPARE_EVENT, ERROR_EVENT,
             PREPARE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
@@ -427,28 +427,28 @@ describe('VideoRecorderAPICallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_START_CALLBACK_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_START_CALLBACK_0100
         * @tc.name      : 01.create->start
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_START_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_START_CALLBACK_0100', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, START_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_START_CALLBACK_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_START_CALLBACK_0200
         * @tc.name      : 02.prepare->start
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_START_CALLBACK_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_START_CALLBACK_0200', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM,
             START_EVENT, RELEASE_EVENT, CLOSE_STREAM, END_EVENT);
@@ -456,14 +456,14 @@ describe('VideoRecorderAPICallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_START_CALLBACK_0300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_START_CALLBACK_0300
         * @tc.name      : 03.pause->start
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_START_CALLBACK_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_START_CALLBACK_0300', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM,
             START_EVENT, PAUSE_EVENT, START_EVENT, ERROR_EVENT, RELEASE_EVENT, CLOSE_STREAM, END_EVENT);
@@ -471,14 +471,14 @@ describe('VideoRecorderAPICallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_START_CALLBACK_0400
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_START_CALLBACK_0400
         * @tc.name      : 04.resume->start
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_START_CALLBACK_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_START_CALLBACK_0400', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM,
             START_EVENT, PAUSE_EVENT, RESUME_EVENT,
@@ -487,14 +487,14 @@ describe('VideoRecorderAPICallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_START_CALLBACK_0500
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_START_CALLBACK_0500
         * @tc.name      : 05.stop->start
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_START_CALLBACK_0500', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_START_CALLBACK_0500', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM,
             START_EVENT, STOP_EVENT, CLOSE_STREAM, START_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
@@ -502,14 +502,14 @@ describe('VideoRecorderAPICallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_START_CALLBACK_0600
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_START_CALLBACK_0600
         * @tc.name      : 06.reset->start
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_START_CALLBACK_0600', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_START_CALLBACK_0600', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM,
             START_EVENT, RESET_EVENT, CLOSE_STREAM, START_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
@@ -517,14 +517,14 @@ describe('VideoRecorderAPICallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_START_CALLBACK_0700
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_START_CALLBACK_0700
         * @tc.name      : 07.getInputSurface->start
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_START_CALLBACK_0700', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_START_CALLBACK_0700', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM,
             START_EVENT, RELEASE_EVENT, CLOSE_STREAM, END_EVENT);
@@ -532,14 +532,14 @@ describe('VideoRecorderAPICallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_START_CALLBACK_0800
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_START_CALLBACK_0800
         * @tc.name      : 08.start 3 times
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_START_CALLBACK_0800', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_START_CALLBACK_0800', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM,
             START_EVENT, START_EVENT, ERROR_EVENT, START_EVENT, ERROR_EVENT, RELEASE_EVENT, CLOSE_STREAM, END_EVENT);
@@ -547,42 +547,42 @@ describe('VideoRecorderAPICallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_PAUSE_CALLBACK_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_PAUSE_CALLBACK_0100
         * @tc.name      : 01.create->pause
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_PAUSE_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_PAUSE_CALLBACK_0100', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PAUSE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_PAUSE_CALLBACK_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_PAUSE_CALLBACK_0200
         * @tc.name      : 02.prepare->pause
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_PAUSE_CALLBACK_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_PAUSE_CALLBACK_0200', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, PAUSE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_PAUSE_CALLBACK_0300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_PAUSE_CALLBACK_0300
         * @tc.name      : 03.start->pause
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_PAUSE_CALLBACK_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_PAUSE_CALLBACK_0300', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM,
             START_EVENT, PAUSE_EVENT, CLOSE_STREAM, RELEASE_EVENT, END_EVENT);
@@ -590,14 +590,14 @@ describe('VideoRecorderAPICallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_PAUSE_CALLBACK_0400
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_PAUSE_CALLBACK_0400
         * @tc.name      : 04.resume->pause
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_PAUSE_CALLBACK_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_PAUSE_CALLBACK_0400', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM,
             START_EVENT, PAUSE_EVENT, RESUME_EVENT,
@@ -606,14 +606,14 @@ describe('VideoRecorderAPICallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_PAUSE_CALLBACK_0500
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_PAUSE_CALLBACK_0500
         * @tc.name      : 05.stop->pause
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_PAUSE_CALLBACK_0500', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_PAUSE_CALLBACK_0500', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM,
             START_EVENT, STOP_EVENT, CLOSE_STREAM, PAUSE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
@@ -621,14 +621,14 @@ describe('VideoRecorderAPICallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_PAUSE_CALLBACK_0600
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_PAUSE_CALLBACK_0600
         * @tc.name      : 06.reset->pause
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_PAUSE_CALLBACK_0600', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_PAUSE_CALLBACK_0600', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM,
             START_EVENT, RESET_EVENT, CLOSE_STREAM, PAUSE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
@@ -636,14 +636,14 @@ describe('VideoRecorderAPICallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_PAUSE_CALLBACK_0700
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_PAUSE_CALLBACK_0700
         * @tc.name      : 07.getInputSurface->pause
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_PAUSE_CALLBACK_0700', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_PAUSE_CALLBACK_0700', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, PAUSE_EVENT,
             ERROR_EVENT, RELEASE_EVENT, END_EVENT);
@@ -651,14 +651,14 @@ describe('VideoRecorderAPICallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_PAUSE_CALLBACK_0800
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_PAUSE_CALLBACK_0800
         * @tc.name      : 08.pause 3 times
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_PAUSE_CALLBACK_0800', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_PAUSE_CALLBACK_0800', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM,
             START_EVENT, PAUSE_EVENT, PAUSE_EVENT, ERROR_EVENT, PAUSE_EVENT, ERROR_EVENT,
@@ -667,42 +667,42 @@ describe('VideoRecorderAPICallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_RESUME_CALLBACK_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_RESUME_CALLBACK_0100
         * @tc.name      : 01.create->resume
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_RESUME_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_RESUME_CALLBACK_0100', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, RESUME_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_RESUME_CALLBACK_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_RESUME_CALLBACK_0200
         * @tc.name      : 02.prepare->resume
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_RESUME_CALLBACK_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_RESUME_CALLBACK_0200', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, RESUME_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_RESUME_CALLBACK_0300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_RESUME_CALLBACK_0300
         * @tc.name      : 03.start->resume
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_RESUME_CALLBACK_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_RESUME_CALLBACK_0300', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM,
             START_EVENT, RESUME_EVENT, ERROR_EVENT, RELEASE_EVENT, CLOSE_STREAM, END_EVENT);
@@ -710,14 +710,14 @@ describe('VideoRecorderAPICallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_RESUME_CALLBACK_0400
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_RESUME_CALLBACK_0400
         * @tc.name      : 04.pause->resume
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_RESUME_CALLBACK_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_RESUME_CALLBACK_0400', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM,
             START_EVENT, PAUSE_EVENT,
@@ -726,14 +726,14 @@ describe('VideoRecorderAPICallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_RESUME_CALLBACK_0500
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_RESUME_CALLBACK_0500
         * @tc.name      : 05.stop->resume
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_RESUME_CALLBACK_0500', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_RESUME_CALLBACK_0500', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM,
             START_EVENT, STOP_EVENT, CLOSE_STREAM, RESUME_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
@@ -741,14 +741,14 @@ describe('VideoRecorderAPICallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_RESUME_CALLBACK_0600
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_RESUME_CALLBACK_0600
         * @tc.name      : 06.reset->resume
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_RESUME_CALLBACK_0600', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_RESUME_CALLBACK_0600', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM,
             START_EVENT, RESET_EVENT, CLOSE_STREAM, RESUME_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
@@ -756,14 +756,14 @@ describe('VideoRecorderAPICallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_RESUME_CALLBACK_0700
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_RESUME_CALLBACK_0700
         * @tc.name      : 07.getInputSurface->resume
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_RESUME_CALLBACK_0700', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_RESUME_CALLBACK_0700', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, RESUME_EVENT,
             ERROR_EVENT, RELEASE_EVENT, END_EVENT);
@@ -771,14 +771,14 @@ describe('VideoRecorderAPICallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_RESUME_CALLBACK_0800
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_RESUME_CALLBACK_0800
         * @tc.name      : 08.resume 3 times
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_RESUME_CALLBACK_0800', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_RESUME_CALLBACK_0800', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM,
             START_EVENT, PAUSE_EVENT,
@@ -788,42 +788,42 @@ describe('VideoRecorderAPICallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_STOP_CALLBACK_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_STOP_CALLBACK_0100
         * @tc.name      : 01.create->stop
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_STOP_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_STOP_CALLBACK_0100', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, STOP_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_STOP_CALLBACK_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_STOP_CALLBACK_0200
         * @tc.name      : 02.prepare->stop
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_STOP_CALLBACK_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_STOP_CALLBACK_0200', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, STOP_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_STOP_CALLBACK_0300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_STOP_CALLBACK_0300
         * @tc.name      : 03.start->stop
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_STOP_CALLBACK_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_STOP_CALLBACK_0300', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM, 
             START_EVENT, STOP_EVENT, CLOSE_STREAM, RELEASE_EVENT, END_EVENT);
@@ -831,14 +831,14 @@ describe('VideoRecorderAPICallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_STOP_CALLBACK_0400
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_STOP_CALLBACK_0400
         * @tc.name      : 04.pause->stop
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_STOP_CALLBACK_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_STOP_CALLBACK_0400', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM, 
             START_EVENT, PAUSE_EVENT, STOP_EVENT, CLOSE_STREAM, RELEASE_EVENT, END_EVENT);
@@ -846,14 +846,14 @@ describe('VideoRecorderAPICallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_STOP_CALLBACK_0500
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_STOP_CALLBACK_0500
         * @tc.name      : 05.resume->stop
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_STOP_CALLBACK_0500', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_STOP_CALLBACK_0500', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM, 
             START_EVENT, PAUSE_EVENT, RESUME_EVENT,
@@ -862,14 +862,14 @@ describe('VideoRecorderAPICallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_STOP_CALLBACK_0600
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_STOP_CALLBACK_0600
         * @tc.name      : 06.reset->stop
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_STOP_CALLBACK_0600', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_STOP_CALLBACK_0600', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, RESET_EVENT, STOP_EVENT,
             ERROR_EVENT, RELEASE_EVENT, END_EVENT);
@@ -877,14 +877,14 @@ describe('VideoRecorderAPICallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_STOP_CALLBACK_0700
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_STOP_CALLBACK_0700
         * @tc.name      : 07.getInputSurface->stop
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_STOP_CALLBACK_0700', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_STOP_CALLBACK_0700', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT,
             STOP_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
@@ -892,14 +892,14 @@ describe('VideoRecorderAPICallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_STOP_CALLBACK_0800
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_STOP_CALLBACK_0800
         * @tc.name      : 08.stop 3 times
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_STOP_CALLBACK_0800', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_STOP_CALLBACK_0800', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM, 
             START_EVENT, STOP_EVENT, CLOSE_STREAM, STOP_EVENT, ERROR_EVENT,
@@ -908,42 +908,42 @@ describe('VideoRecorderAPICallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_RESET_CALLBACK_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_RESET_CALLBACK_0100
         * @tc.name      : 01.create->reset
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_RESET_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_RESET_CALLBACK_0100', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, RESET_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_RESET_CALLBACK_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_RESET_CALLBACK_0200
         * @tc.name      : 02.prepare->reset
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_RESET_CALLBACK_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_RESET_CALLBACK_0200', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, RESET_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_RESET_CALLBACK_0300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_RESET_CALLBACK_0300
         * @tc.name      : 03.start->reset
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_RESET_CALLBACK_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_RESET_CALLBACK_0300', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM,
             START_EVENT, RESET_EVENT, CLOSE_STREAM, RELEASE_EVENT, END_EVENT);
@@ -951,14 +951,14 @@ describe('VideoRecorderAPICallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_RESET_CALLBACK_0400
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_RESET_CALLBACK_0400
         * @tc.name      : 04.pause->reset
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_RESET_CALLBACK_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_RESET_CALLBACK_0400', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM,
             START_EVENT, PAUSE_EVENT, RESET_EVENT, CLOSE_STREAM, RELEASE_EVENT, END_EVENT);
@@ -966,14 +966,14 @@ describe('VideoRecorderAPICallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_RESET_CALLBACK_0500
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_RESET_CALLBACK_0500
         * @tc.name      : 05.resume->reset
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_RESET_CALLBACK_0500', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_RESET_CALLBACK_0500', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM,
             START_EVENT, PAUSE_EVENT, RESUME_EVENT,
@@ -982,14 +982,14 @@ describe('VideoRecorderAPICallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_RESET_CALLBACK_0600
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_RESET_CALLBACK_0600
         * @tc.name      : 06.stop->reset
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_RESET_CALLBACK_0600', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_RESET_CALLBACK_0600', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM,
             START_EVENT, STOP_EVENT, CLOSE_STREAM, RESET_EVENT, RELEASE_EVENT, END_EVENT);
@@ -997,28 +997,28 @@ describe('VideoRecorderAPICallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_RESET_CALLBACK_0700
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_RESET_CALLBACK_0700
         * @tc.name      : 07.getInputSurface->reset
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_RESET_CALLBACK_0700', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_RESET_CALLBACK_0700', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, RESET_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_RESET_CALLBACK_0800
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_RESET_CALLBACK_0800
         * @tc.name      : 08.reset 3 times
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_RESET_CALLBACK_0800', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_RESET_CALLBACK_0800', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, RESET_EVENT,
             RESET_EVENT, RESET_EVENT, RELEASE_EVENT, END_EVENT);
@@ -1026,42 +1026,42 @@ describe('VideoRecorderAPICallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_GETSURFACE_CALLBACK_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_GETSURFACE_CALLBACK_0100
         * @tc.name      : 01.create->getInputSurface
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_GETSURFACE_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_GETSURFACE_CALLBACK_0100', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, GETSURFACE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_GETSURFACE_CALLBACK_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_GETSURFACE_CALLBACK_0200
         * @tc.name      : 02.prepare->getInputSurface
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_GETSURFACE_CALLBACK_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_GETSURFACE_CALLBACK_0200', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, RELEASE_EVENT, END_EVENT);
         eventEmitter.emit(mySteps[0], videoRecorder, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_GETSURFACE_CALLBACK_0300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_GETSURFACE_CALLBACK_0300
         * @tc.name      : 03.start->getInputSurface
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_GETSURFACE_CALLBACK_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_GETSURFACE_CALLBACK_0300', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM, START_EVENT,
             GETSURFACE_EVENT, RELEASE_EVENT, CLOSE_STREAM, END_EVENT);
@@ -1069,14 +1069,14 @@ describe('VideoRecorderAPICallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_GETSURFACE_CALLBACK_0400
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_GETSURFACE_CALLBACK_0400
         * @tc.name      : 04.pause->getInputSurface
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_GETSURFACE_CALLBACK_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_GETSURFACE_CALLBACK_0400', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM, START_EVENT,
             PAUSE_EVENT, GETSURFACE_EVENT, RELEASE_EVENT, CLOSE_STREAM, END_EVENT);
@@ -1084,14 +1084,14 @@ describe('VideoRecorderAPICallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_GETSURFACE_CALLBACK_0500
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_GETSURFACE_CALLBACK_0500
         * @tc.name      : 05.resume->getInputSurface
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_GETSURFACE_CALLBACK_0500', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_GETSURFACE_CALLBACK_0500', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM, START_EVENT,
             PAUSE_EVENT, RESUME_EVENT, GETSURFACE_EVENT,
@@ -1100,14 +1100,14 @@ describe('VideoRecorderAPICallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_GETSURFACE_CALLBACK_0600
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_GETSURFACE_CALLBACK_0600
         * @tc.name      : 06.stop->getInputSurface
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_GETSURFACE_CALLBACK_0600', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_GETSURFACE_CALLBACK_0600', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, START_STREEAM, START_EVENT,
             STOP_EVENT, CLOSE_STREAM, GETSURFACE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
@@ -1115,14 +1115,14 @@ describe('VideoRecorderAPICallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_GETSURFACE_CALLBACK_0700
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_GETSURFACE_CALLBACK_0700
         * @tc.name      : 07.reset->getInputSurface
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_GETSURFACE_CALLBACK_0700', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_GETSURFACE_CALLBACK_0700', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, RESET_EVENT,
             GETSURFACE_EVENT, ERROR_EVENT, RELEASE_EVENT, END_EVENT);
@@ -1130,14 +1130,14 @@ describe('VideoRecorderAPICallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_GETSURFACE_CALLBACK_0800
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_GETSURFACE_CALLBACK_0800
         * @tc.name      : 08.getInputSurface 3 times
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_GETSURFACE_CALLBACK_0800', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_GETSURFACE_CALLBACK_0800', 0, async function (done) {
         let videoRecorder = null;
         let mySteps = new Array(CREATE_EVENT, PREPARE_EVENT, GETSURFACE_EVENT, 
             GETSURFACE_EVENT, GETSURFACE_EVENT, RELEASE_EVENT, END_EVENT);

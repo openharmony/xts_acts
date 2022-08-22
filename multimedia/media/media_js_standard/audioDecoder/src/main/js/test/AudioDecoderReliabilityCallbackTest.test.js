@@ -582,84 +582,84 @@ describe('AudioDecoderReliabilityCallback', function () {
     }
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_CONFIGURE_CALLBACK_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_CONFIGURE_CALLBACK_0100
         * @tc.name      : 001.create -> configure
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_CONFIGURE_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_CONFIGURE_CALLBACK_0100', 0, async function (done) {
         let savepath = BASIC_PATH + 'configure_0100.pcm';
         let mySteps = new Array(CONFIGURE, END);
         createAudioDecoder(savepath, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_CONFIGURE_CALLBACK_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_CONFIGURE_CALLBACK_0200
         * @tc.name      : 002.prepare -> configure
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_CONFIGURE_CALLBACK_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_CONFIGURE_CALLBACK_0200', 0, async function (done) {
         let savepath = BASIC_PATH + 'configure_0200.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, CONFIGURE_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_CONFIGURE_CALLBACK_0300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_CONFIGURE_CALLBACK_0300
         * @tc.name      : 003.start -> configure
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_CONFIGURE_CALLBACK_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_CONFIGURE_CALLBACK_0300', 0, async function (done) {
         let savepath = BASIC_PATH + 'configure_0300.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, CONFIGURE_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_CONFIGURE_CALLBACK_0400
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_CONFIGURE_CALLBACK_0400
         * @tc.name      : 004.flush -> configure
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_CONFIGURE_CALLBACK_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_CONFIGURE_CALLBACK_0400', 0, async function (done) {
         let savepath = BASIC_PATH + 'configure_0400.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, FLUSH, CONFIGURE_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_CONFIGURE_CALLBACK_0500
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_CONFIGURE_CALLBACK_0500
         * @tc.name      : 005.stop -> configure
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_CONFIGURE_CALLBACK_0500', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_CONFIGURE_CALLBACK_0500', 0, async function (done) {
         let savepath = BASIC_PATH + 'configure_0500.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, STOP ,CONFIGURE_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_CONFIGURE_CALLBACK_0600
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_CONFIGURE_CALLBACK_0600
         * @tc.name      : 006.EOS -> configure
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_CONFIGURE_CALLBACK_0600', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_CONFIGURE_CALLBACK_0600', 0, async function (done) {
         let savepath = BASIC_PATH + 'configure_0600.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, HOLDON, JUDGE_EOS, CONFIGURE_ERROR, END);
         EOSFrameNum = 2;
@@ -667,140 +667,140 @@ describe('AudioDecoderReliabilityCallback', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_CONFIGURE_CALLBACK_0700
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_CONFIGURE_CALLBACK_0700
         * @tc.name      : 007.reset -> configure
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_CONFIGURE_CALLBACK_0700', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_CONFIGURE_CALLBACK_0700', 0, async function (done) {
         let savepath = BASIC_PATH + 'configure_0700.pcm';
         let mySteps = new Array(RESET, CONFIGURE, END);
         createAudioDecoder(savepath, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_CONFIGURE_CALLBACK_0800
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_CONFIGURE_CALLBACK_0800
         * @tc.name      : 008.configure -> configure
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_CONFIGURE_CALLBACK_0800', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_CONFIGURE_CALLBACK_0800', 0, async function (done) {
         let savepath = BASIC_PATH + 'configure_0800.pcm';
         let mySteps = new Array(CONFIGURE, CONFIGURE_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_CONFIGURE_CALLBACK_0900
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_CONFIGURE_CALLBACK_0900
         * @tc.name      : 009.configure -> reset -> configure
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_CONFIGURE_CALLBACK_0900', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_CONFIGURE_CALLBACK_0900', 0, async function (done) {
         let savepath = BASIC_PATH + 'configure_0900.pcm';
         let mySteps = new Array(CONFIGURE, RESET, CONFIGURE, END);
         createAudioDecoder(savepath, mySteps, done);
     })
 
    /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_PREPARE_CALLBACK_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_PREPARE_CALLBACK_0100
         * @tc.name      : 001.create -> prepare
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_PREPARE_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_PREPARE_CALLBACK_0100', 0, async function (done) {
         let savepath = BASIC_PATH + 'prepare_0100.pcm';
         let mySteps = new Array(PREPARE_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_PREPARE_CALLBACK_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_PREPARE_CALLBACK_0200
         * @tc.name      : 002.configure -> prepare
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_PREPARE_CALLBACK_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_PREPARE_CALLBACK_0200', 0, async function (done) {
         let savepath = BASIC_PATH + 'prepare_0200.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, END);
         createAudioDecoder(savepath, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_PREPARE_CALLBACK_0300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_PREPARE_CALLBACK_0300
         * @tc.name      : 003.prepare -> prepare
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_PREPARE_CALLBACK_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_PREPARE_CALLBACK_0300', 0, async function (done) {
         let savepath = BASIC_PATH + 'prepare_0300.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, PREPARE_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_PREPARE_CALLBACK_0400
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_PREPARE_CALLBACK_0400
         * @tc.name      : 004.start -> prepare
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_PREPARE_CALLBACK_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_PREPARE_CALLBACK_0400', 0, async function (done) {
         let savepath = BASIC_PATH + 'prepare_0400.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, PREPARE_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_PREPARE_CALLBACK_0500
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_PREPARE_CALLBACK_0500
         * @tc.name      : 005.flush -> prepare
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_PREPARE_CALLBACK_0500', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_PREPARE_CALLBACK_0500', 0, async function (done) {
         let savepath = BASIC_PATH + 'prepare_0500.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, FLUSH, PREPARE_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_PREPARE_CALLBACK_0600
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_PREPARE_CALLBACK_0600
         * @tc.name      : 006.stop -> prepare
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_PREPARE_CALLBACK_0600', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_PREPARE_CALLBACK_0600', 0, async function (done) {
         let savepath = BASIC_PATH + 'prepare_0600.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, STOP, PREPARE_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_PREPARE_CALLBACK_0700
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_PREPARE_CALLBACK_0700
         * @tc.name      : 007.EOS -> prepare
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_PREPARE_CALLBACK_0700', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_PREPARE_CALLBACK_0700', 0, async function (done) {
         let savepath = BASIC_PATH + 'prepare_0700.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, HOLDON, JUDGE_EOS, PREPARE_ERROR, END);
         EOSFrameNum = 2;
@@ -808,56 +808,56 @@ describe('AudioDecoderReliabilityCallback', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_PREPARE_CALLBACK_0800
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_PREPARE_CALLBACK_0800
         * @tc.name      : 008.reset -> prepare
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_PREPARE_CALLBACK_0800', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_PREPARE_CALLBACK_0800', 0, async function (done) {
         let savepath = BASIC_PATH + 'prepare_0800.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, RESET, PREPARE_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
 
   /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_START_CALLBACK_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_START_CALLBACK_0100
         * @tc.name      : 001.create -> start
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_START_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_START_CALLBACK_0100', 0, async function (done) {
         let savepath = BASIC_PATH + 'start_0100.pcm';
         let mySteps = new Array(START_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_START_CALLBACK_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_START_CALLBACK_0200
         * @tc.name      : 002.configure -> start
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_START_CALLBACK_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_START_CALLBACK_0200', 0, async function (done) {
         let savepath = BASIC_PATH + 'start_0200.pcm';
         let mySteps = new Array(CONFIGURE, START_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_START_CALLBACK_0300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_START_CALLBACK_0300
         * @tc.name      : 003.prepare -> start
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_START_CALLBACK_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_START_CALLBACK_0300', 0, async function (done) {
         let savepath = BASIC_PATH + 'start_0300.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, WAITFORALLOUTS);
         workdoneAtEOS = true;
@@ -865,42 +865,42 @@ describe('AudioDecoderReliabilityCallback', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_START_CALLBACK_0400
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_START_CALLBACK_0400
         * @tc.name      : 004.start -> start
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_START_CALLBACK_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_START_CALLBACK_0400', 0, async function (done) {
         let savepath = BASIC_PATH + 'start_0400.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, START_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_START_CALLBACK_0500
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_START_CALLBACK_0500
         * @tc.name      : 005.flush -> start
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_START_CALLBACK_0500', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_START_CALLBACK_0500', 0, async function (done) {
         let savepath = BASIC_PATH + 'start_0500.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, FLUSH, START, END);
         createAudioDecoder(savepath, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_START_CALLBACK_0600
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_START_CALLBACK_0600
         * @tc.name      : 006.stop -> start
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_START_CALLBACK_0600', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_START_CALLBACK_0600', 0, async function (done) {
         let savepath = BASIC_PATH + 'start_0600.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, STOP, START, WAITFORALLOUTS);
         workdoneAtEOS = true;
@@ -908,14 +908,14 @@ describe('AudioDecoderReliabilityCallback', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_START_CALLBACK_0700
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_START_CALLBACK_0700
         * @tc.name      : 007.EOS -> start
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_START_CALLBACK_0700', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_START_CALLBACK_0700', 0, async function (done) {
         let savepath = BASIC_PATH + 'start_0700.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, HOLDON, JUDGE_EOS, START_ERROR, END);
         EOSFrameNum = 2;
@@ -923,70 +923,70 @@ describe('AudioDecoderReliabilityCallback', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_START_CALLBACK_0800
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_START_CALLBACK_0800
         * @tc.name      : 008.reset -> start
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_START_CALLBACK_0800', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_START_CALLBACK_0800', 0, async function (done) {
         let savepath = BASIC_PATH + 'start_0800.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, RESET, START_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_FLUSH_CALLBACK_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_FLUSH_CALLBACK_0100
         * @tc.name      : 001.create -> flush
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_FLUSH_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_FLUSH_CALLBACK_0100', 0, async function (done) {
         let savepath = BASIC_PATH + 'flush_0100.pcm';
         let mySteps = new Array(FLUSH_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_FLUSH_CALLBACK_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_FLUSH_CALLBACK_0200
         * @tc.name      : 002.configure -> flush
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_FLUSH_CALLBACK_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_FLUSH_CALLBACK_0200', 0, async function (done) {
         let savepath = BASIC_PATH + 'flush_0200.pcm';
         let mySteps = new Array(CONFIGURE, FLUSH_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_FLUSH_CALLBACK_0300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_FLUSH_CALLBACK_0300
         * @tc.name      : 003.prepare -> flush
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_FLUSH_CALLBACK_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_FLUSH_CALLBACK_0300', 0, async function (done) {
         let savepath = BASIC_PATH + 'flush_0300.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, FLUSH_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_FLUSH_CALLBACK_0400
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_FLUSH_CALLBACK_0400
         * @tc.name      : 004.start -> flush
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_FLUSH_CALLBACK_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_FLUSH_CALLBACK_0400', 0, async function (done) {
         let savepath = BASIC_PATH + 'flush_0400.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, FLUSH, START, WAITFORALLOUTS);
         workdoneAtEOS = true;
@@ -994,14 +994,14 @@ describe('AudioDecoderReliabilityCallback', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_FLUSH_CALLBACK_0500
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_FLUSH_CALLBACK_0500
         * @tc.name      : 005.flush -> flush
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_FLUSH_CALLBACK_0500', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_FLUSH_CALLBACK_0500', 0, async function (done) {
         let savepath = BASIC_PATH + 'flush_0500.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, FLUSH, START, FLUSH, START, WAITFORALLOUTS);
         workdoneAtEOS = true;
@@ -1009,28 +1009,28 @@ describe('AudioDecoderReliabilityCallback', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_FLUSH_CALLBACK_0600
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_FLUSH_CALLBACK_0600
         * @tc.name      : 006.stop -> flush
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_FLUSH_CALLBACK_0600', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_FLUSH_CALLBACK_0600', 0, async function (done) {
         let savepath = BASIC_PATH + 'flush_0600.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, STOP ,FLUSH_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_FLUSH_CALLBACK_0700
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_FLUSH_CALLBACK_0700
         * @tc.name      : 007.EOS -> flush
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_FLUSH_CALLBACK_0700', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_FLUSH_CALLBACK_0700', 0, async function (done) {
         let savepath = BASIC_PATH + 'flush_0700.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, HOLDON, FLUSH, START, END);
         EOSFrameNum = 2;
@@ -1038,112 +1038,112 @@ describe('AudioDecoderReliabilityCallback', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_FLUSH_CALLBACK_0800
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_FLUSH_CALLBACK_0800
         * @tc.name      : 008.reset -> flush
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_FLUSH_CALLBACK_0800', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_FLUSH_CALLBACK_0800', 0, async function (done) {
         let savepath = BASIC_PATH + 'flush_0800.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, RESET, FLUSH_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_STOP_CALLBACK_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_STOP_CALLBACK_0100
         * @tc.name      : 001.create -> stop
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_STOP_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_STOP_CALLBACK_0100', 0, async function (done) {
         let savepath = BASIC_PATH + 'stop_0100.pcm';
         let mySteps = new Array(STOP_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_STOP_CALLBACK_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_STOP_CALLBACK_0200
         * @tc.name      : 002.configure -> stop
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_STOP_CALLBACK_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_STOP_CALLBACK_0200', 0, async function (done) {
         let savepath = BASIC_PATH + 'stop_0200.pcm';
         let mySteps = new Array(CONFIGURE, STOP_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_STOP_CALLBACK_0300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_STOP_CALLBACK_0300
         * @tc.name      : 003.prepare -> stop
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_STOP_CALLBACK_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_STOP_CALLBACK_0300', 0, async function (done) {
         let savepath = BASIC_PATH + 'stop_0300.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, STOP_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_STOP_CALLBACK_0400
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_STOP_CALLBACK_0400
         * @tc.name      : 004.start -> stop
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_STOP_CALLBACK_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_STOP_CALLBACK_0400', 0, async function (done) {
         let savepath = BASIC_PATH + 'stop_0400.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, STOP, END);
         createAudioDecoder(savepath, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_STOP_CALLBACK_0500
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_STOP_CALLBACK_0500
         * @tc.name      : 005.flush -> stop
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_STOP_CALLBACK_0500', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_STOP_CALLBACK_0500', 0, async function (done) {
         let savepath = BASIC_PATH + 'stop_0500.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, FLUSH, STOP, END);
         createAudioDecoder(savepath, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_STOP_CALLBACK_0600
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_STOP_CALLBACK_0600
         * @tc.name      : 006.stop -> stop
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_STOP_CALLBACK_0600', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_STOP_CALLBACK_0600', 0, async function (done) {
         let savepath = BASIC_PATH + 'stop_0600.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, STOP, STOP_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_STOP_CALLBACK_0700
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_STOP_CALLBACK_0700
         * @tc.name      : 007.EOS -> stop
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_STOP_CALLBACK_0700', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_STOP_CALLBACK_0700', 0, async function (done) {
         let savepath = BASIC_PATH + 'stop_0700.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, HOLDON, JUDGE_EOS, STOP, END);
         EOSFrameNum = 2;
@@ -1151,112 +1151,112 @@ describe('AudioDecoderReliabilityCallback', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_STOP_CALLBACK_0800
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_STOP_CALLBACK_0800
         * @tc.name      : 008.reset -> stop
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_STOP_CALLBACK_0800', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_STOP_CALLBACK_0800', 0, async function (done) {
         let savepath = BASIC_PATH + 'stop_0800.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, RESET, STOP_ERROR, END);
         createAudioDecoder(savepath, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_RESET_CALLBACK_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_RESET_CALLBACK_0100
         * @tc.name      : 001.create -> reset
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_RESET_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_RESET_CALLBACK_0100', 0, async function (done) {
         let savepath = BASIC_PATH + 'reset_0100.pcm';
         let mySteps = new Array(RESET, END);
         createAudioDecoder(savepath, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_RESET_CALLBACK_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_RESET_CALLBACK_0200
         * @tc.name      : 002.configure -> reset
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_RESET_CALLBACK_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_RESET_CALLBACK_0200', 0, async function (done) {
         let savepath = BASIC_PATH + 'reset_0200.pcm';
         let mySteps = new Array(CONFIGURE, RESET, END);
         createAudioDecoder(savepath, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_RESET_CALLBACK_0300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_RESET_CALLBACK_0300
         * @tc.name      : 003.prepare -> reset
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_RESET_CALLBACK_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_RESET_CALLBACK_0300', 0, async function (done) {
         let savepath = BASIC_PATH + 'reset_0300.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, RESET, END);
         createAudioDecoder(savepath, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_RESET_CALLBACK_0400
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_RESET_CALLBACK_0400
         * @tc.name      : 004.start -> reset
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_RESET_CALLBACK_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_RESET_CALLBACK_0400', 0, async function (done) {
         let savepath = BASIC_PATH + 'reset_0400.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, RESET, END);
         createAudioDecoder(savepath, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_RESET_CALLBACK_0500
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_RESET_CALLBACK_0500
         * @tc.name      : 005.flush -> reset
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_RESET_CALLBACK_0500', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_RESET_CALLBACK_0500', 0, async function (done) {
         let savepath = BASIC_PATH + 'reset_0500.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, FLUSH, RESET, END);
         createAudioDecoder(savepath, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_RESET_CALLBACK_0600
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_RESET_CALLBACK_0600
         * @tc.name      : 006.stop -> reset
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_RESET_CALLBACK_0600', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_RESET_CALLBACK_0600', 0, async function (done) {
         let savepath = BASIC_PATH + 'reset_0600.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, STOP, RESET, END);
         createAudioDecoder(savepath, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_RESET_CALLBACK_0700
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_RESET_CALLBACK_0700
         * @tc.name      : 007.EOS -> reset
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_RESET_CALLBACK_0700', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_RESET_CALLBACK_0700', 0, async function (done) {
         let savepath = BASIC_PATH + 'reset_0700.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, HOLDON, JUDGE_EOS, RESET, END);
         EOSFrameNum = 2;
@@ -1264,28 +1264,28 @@ describe('AudioDecoderReliabilityCallback', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_RESET_CALLBACK_0800
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_RESET_CALLBACK_0800
         * @tc.name      : 008.reset -> reset
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_RESET_CALLBACK_0800', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_RESET_CALLBACK_0800', 0, async function (done) {
         let savepath = BASIC_PATH + 'reset_0800.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, RESET, RESET, END);
         createAudioDecoder(savepath, mySteps, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_EOS_CALLBACK_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_EOS_CALLBACK_0100
         * @tc.name      : 001.EOS -> flush -> stop
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_EOS_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_EOS_CALLBACK_0100', 0, async function (done) {
         let savepath = BASIC_PATH + 'eos_0100.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, HOLDON, JUDGE_EOS, FLUSH, STOP, END);
         EOSFrameNum = 2;
@@ -1293,14 +1293,14 @@ describe('AudioDecoderReliabilityCallback', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_EOS_CALLBACK_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_EOS_CALLBACK_0200
         * @tc.name      : 002.EOS -> flush -> EOS
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_EOS_CALLBACK_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_EOS_CALLBACK_0200', 0, async function (done) {
         let savepath = BASIC_PATH + 'eos_0200.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, HOLDON, JUDGE_EOS, FLUSH, END);
         EOSFrameNum = 2;
@@ -1309,14 +1309,14 @@ describe('AudioDecoderReliabilityCallback', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_EOS_CALLBACK_0300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_EOS_CALLBACK_0300
         * @tc.name      : 003.EOS -> reset -> configure
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_EOS_CALLBACK_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_EOS_CALLBACK_0300', 0, async function (done) {
         let savepath = BASIC_PATH + 'eos_0300.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, HOLDON, JUDGE_EOS, RESET, CONFIGURE, END);
         EOSFrameNum = 2;
@@ -1324,14 +1324,14 @@ describe('AudioDecoderReliabilityCallback', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_EOS_CALLBACK_0400
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_EOS_CALLBACK_0400
         * @tc.name      : 004.EOS -> stop -> start -> EOS
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_EOS_CALLBACK_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_EOS_CALLBACK_0400', 0, async function (done) {
         let savepath = BASIC_PATH + 'eos_0400.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, HOLDON, JUDGE_EOS, STOP, START, END);
         EOSFrameNum = 2;
@@ -1339,14 +1339,14 @@ describe('AudioDecoderReliabilityCallback', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_API_EOS_CALLBACK_0500
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_EOS_CALLBACK_0500
         * @tc.name      : 005.EOS -> stop -> start -> stop
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MEDIA_AUDIO_DECODER_API_EOS_CALLBACK_0500', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_API_EOS_CALLBACK_0500', 0, async function (done) {
         let savepath = BASIC_PATH + 'eos_0500.pcm';
         let mySteps = new Array(CONFIGURE, PREPARE, START, HOLDON, JUDGE_EOS, STOP, START, STOP, END);
         EOSFrameNum = 2;
