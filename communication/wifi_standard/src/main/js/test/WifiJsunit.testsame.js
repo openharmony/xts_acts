@@ -123,7 +123,7 @@ export default function actsWifiTest() {
                             +"infoElems: " + result[j].infoElems);
                         }
                     }
-                    done()
+                    done();
                 });
         })
 
