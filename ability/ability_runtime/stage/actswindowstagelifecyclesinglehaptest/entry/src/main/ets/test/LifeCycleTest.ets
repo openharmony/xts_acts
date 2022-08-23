@@ -428,7 +428,7 @@ export default function lifecycleTest() {
             console.log("------------Singlehap_WindowStageLifeCycleTest_0500 END-------------");
             done();
           })
-      }, 4200);
+      }, 3800);
     });
 
     /*
@@ -713,8 +713,7 @@ export default function lifecycleTest() {
           expect(listKeyTemp[0]).assertEqual("Hap1MainAbility1 onWindowStageCreate");
           expect(listKeyTemp[1]).assertEqual("Hap1MainAbility1 onWindowStageActive");
           expect(listKeyTemp[2]).assertEqual("Hap1MainAbility1 onWindowStageInactive");
-          expect(listKeyTemp[3]).assertEqual("Hap1MainAbility1 onWindowStageInactive");
-          expect(listKeyTemp[4]).assertEqual("Hap1MainAbility1 onWindowStageDestroy");
+          expect(listKeyTemp[3]).assertEqual("Hap1MainAbility1 onWindowStageDestroy");
           globalThis.applicationContext9
             .unregisterAbilityLifecycleCallback(globalThis.mainAbility9CallBackId, (error, data) => {
               console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
