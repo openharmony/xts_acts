@@ -5547,8 +5547,8 @@ describe('audioManager', function () {
 	
 	/* *
             * @tc.number    : SUB_AUDIO_SAMPLE_FORMAT_F32LE_001
-            * @tc.name      : NONE_DEVICES_FLAG
-            * @tc.desc      : NONE_DEVICES_FLAG
+            * @tc.name      : SAMPLE_FORMAT_F32LE
+            * @tc.desc      : SAMPLE_FORMAT_F32LE
             * @tc.size      : MEDIUM
             * @tc.type      : Function
             * @tc.level     : Level 0
