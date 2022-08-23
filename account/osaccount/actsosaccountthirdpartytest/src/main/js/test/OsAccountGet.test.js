@@ -235,7 +235,7 @@ export default function ActsOsAccountThirdPartyTest_third_2() {
             var osAccountManager = osaccount.getAccountManager();
             var testLocalId = await osAccountManager.getOsAccountLocalIdFromProcess();
             console.debug("====>get AccountManager finish====");
-            osAccountManager.getSerialNumberByOsAccountLocalId(100, (err, serialNumber)=>{
+            osAccountManager.getSerialNumberByOsAccountLocalId(testLocalId, (err, serialNumber)=>{
                 console.debug("====>ger serialNumber err:" + JSON.stringify(err));
                 console.debug("====>get serialNumber:" + serialNumber + " by localId: 100" );
                 expect(err).assertEqual(null);
@@ -349,6 +349,12 @@ export default function ActsOsAccountThirdPartyTest_third_2() {
                 expect(data.isVerified).assertEqual(false);
                 expect(data.distributedInfo.name != null).assertEqual(true);
                 expect(data.domainInfo.domain == "").assertEqual(true);
+		        expect(data.photo == "").assertEqual(true);
+            	expect(data.createTime != "").assertEqual(true);
+            	expect(data.lastLoginTime>=0).assertEqual(true);
+            	expect(data.serialNumber.toString().length == 16).assertEqual(true);
+            	expect(data.isActived).assertEqual(false);
+            	expect(data.isCreateCompleted).assertEqual(true)
                 localId = data.localId;
                 osAccountManager.getSerialNumberByOsAccountLocalId(localId, (err, serialNumber)=>{
                     console.debug("====>queryOsAccountById err:" + JSON.stringify(err));
@@ -487,5 +493,192 @@ export default function ActsOsAccountThirdPartyTest_third_2() {
             console.debug("====>ActsOsAccountGetCount_0200 end====");
             done();
         })
+
+        /*
+        * @tc.number  : ActsOsAccountQueryActivedOsAccountIds_0100
+        * @tc.name    : queryActivatedOsAccountIds callback
+        * @tc.desc    : query activated osAccount Ids
+        */
+        it('ActsOsAccountQueryActivedOsAccountIds_0100', 0, async function (done) {
+            console.debug("====>ActsOsAccountQueryActivedOsAccountIds_0100 start====");
+            var osAccountManager = osaccount.getAccountManager();
+            osAccountManager.queryActivatedOsAccountIds((err,dataArray)=>{
+                console.info("====>ActsOsAccountGQueryActicedOsAccountIds_0100 err :" + JSON.stringify(err));
+                expect(err).assertEqual(null)
+                console.info("====>ActsOsAccountGQueryActicedOsAccountIds_0100 dataArray" + dataArray.length);
+                done();
+            })
+        })
+        
+        /*
+        * @tc.number  : ActsOsAccountQueryActivedOsAccountIds_0200
+        * @tc.name    : queryActivatedOsAccountIds promise
+        * @tc.desc    : query activated osAccount Ids
+        */
+        it('ActsOsAccountQueryActivedOsAccountIds_0200', 0, async function (done) {
+            console.debug("====>ActsOsAccountQueryActivedOsAccountIds_0200 start====");
+            var osAccountManager = osaccount.getAccountManager(); 
+            osAccountManager.queryActivatedOsAccountIds().then((data)=>{
+                console.debug("====>ActsOsAccountQueryActivedOsAccountIds_0200 data" + JSON.stringify(data))
+                done();
+            }).catch((err)=>{
+                console.info("====>ActsOsAccountQueryActivedOsAccountIds_0200 err " + JSON.stringify(err));
+                expect(err).assertEqual(null)
+                done();
+            });
+        })
+
+
+        /*
+        * @tc.number  : ActsOsAccountConstraints_0300
+        * @tc.name    : Constraints callback
+        * @tc.desc    : get 0 local user all constraints
+        */
+        it('ActsOsAccountConstraints_3100', 0, async function(done){
+            console.debug("====>ActsOsAccountConstraints_3100 start====");
+            var AccountManager = osaccount.getAccountManager();
+            console.debug("====>get AccountManager finish====");
+            AccountManager.getOsAccountAllConstraints(0, (err, constraints)=>{
+                console.debug("====>getOsAccountAllConstraints err:" + JSON.stringify(err));
+                console.debug("====>getOsAccountAllConstraints:" + JSON.stringify(constraints));
+                expect(err).assertEqual(null);
+                expect(constraints.length).assertEqual(0);
+                console.debug("====>ActsOsAccountConstraints_3100 end====");
+                done();
+            })
+        })
+
+        /*
+        * @tc.number  : ActsOsAccountConstraints_0400
+        * @tc.name    : Constraints promise
+        * @tc.desc    : get 0 local user all constraints
+        */
+        it('ActsOsAccountConstraints_3200', 0, async function(done){
+            console.debug("====>ActsOsAccountConstraints_3200 start====");
+            var AccountManager = osaccount.getAccountManager();
+            console.debug("get AccountManager finish====");
+            AccountManager.getOsAccountAllConstraints(0).then((data)=>{
+                console.debug("====>ActsOsAccountConstraints_3200 getOsAccountAllConstraints data:" + data);
+                done();
+            }).catch((err)=>{
+                console.debug("====>ActsOsAccountConstraints_3200 getOsAccountAllConstraints err:" + JSON.stringify(err));
+                expect().assertFalse()
+                done();
+            })
+        })
+
+        /**
+        * @tc.number     ActsAccountDomainTest_0300
+        * @tc.name       Test createOsAccountForDomain getOsAccountLocalIdFromDomain callback
+        * @tc.desc       Test createOsAccountForDomain getOsAccountLocalIdFromDomain API functionality
+        */
+        it('ActsOsAccountDomainTest_0300', 0, async function (done) {
+            console.debug("====>ActsOsAccountDomainTest_0100 start====");
+            var osAccountManager = osaccount.getAccountManager();
+            osAccountManager.getOsAccountLocalIdFromDomain({domain: "", accountName: ""}, (err)=>{
+                console.debug("====>ActsOsAccountDomainTest_0300 err:" + JSON.stringify(err));
+                expect(err.code != 0).assertEqual(true)
+                console.debug("====>ActsOsAccountDomainTest_0300 end====");
+                done();
+            })
+        });
+
+        /**
+        * @tc.number     ActsAccountDomainTest_0400
+        * @tc.name       Test createOsAccountForDomain getOsAccountLocalIdFromDomain pormise
+        * @tc.desc       Test createOsAccountForDomain getOsAccountLocalIdFromDomain API functionality
+        */
+         it('ActsOsAccountDomainTest_0400', 0, async function (done) {
+            console.debug("====>ActsOsAccountDomainTest_0400 start====");
+            var osAccountManager = osaccount.getAccountManager();
+            osAccountManager.getOsAccountLocalIdFromDomain({domain: "", accountName: ""}).then((accountID)=>{
+                console.debug("ActsOsAccountDomainTest_0400 accountID:" + JSON.stringify(accountID))
+                done();
+            }).catch((err)=>{
+                console.debug("ActsOsAccountDomainTest_0400 err:" + JSON.stringify(err))
+                expect(err.code != 0).assertEqual(true)
+                done();
+            })
+        });
+
+        /*
+        * @tc.number  : ActsOsAccountQuery_1700
+        * @tc.name    : queryCurrentOsAccount callback
+        * @tc.desc    : Get the os account information to which the application belongs
+        */
+        it('ActsOsAccountQuery_2100', 0, async function(done){
+            console.debug("====>ActsOsAccountQuery_2100 start====");
+            var AccountManager = osaccount.getAccountManager();
+            console.debug("====>get os AccountManager finish====");
+            AccountManager.queryCurrentOsAccount((err, data)=>{
+                console.debug("====>queryCurrentOsAccount err:" + JSON.stringify(err));
+                console.debug("====>queryCurrentOsAccount data:" + JSON.stringify(data));
+                expect(err).assertEqual(null);
+                console.debug("====>ActsOsAccountQuery_2100 end====");
+                done();
+            })
+        })
+
+        /*
+        * @tc.number  : ActsOsAccountQuery_1800
+        * @tc.name    : queryCurrentOsAccount promise
+        * @tc.desc    : Get the os account information to which the application belongs
+        */
+        it('ActsOsAccountQuery_2200', 0, async function(done){
+            console.debug("====>ActsOsAccountQuery_2200 start====");
+            var AccountManager = osaccount.getAccountManager();
+            console.debug("====>get os AccountManager finish====");
+            var data = await AccountManager.queryCurrentOsAccount();
+            console.debug("====>queryCurrentOsAccount data:" + JSON.stringify(data));
+            expect(data.localId).assertEqual(100);
+            expect(data.type.ADMIN).assertEqual(0);
+            var serialNumberStr = data.serialNumber.toString();
+            var serialIntercept = serialNumberStr.substring(8);
+            console.debug("====>truncate the last eight characters: " + serialIntercept);
+            expect(serialIntercept).assertEqual("00000001");
+            expect(data.isCreateCompleted).assertTrue();
+            console.debug("====>ActsOsAccountQuery_2200 end====");
+            done();
+        })
+
+
+        /*
+        * @tc.number  : ActsOsAccountPermission_3300
+        * @tc.name    : isOsAccountConstraintEnable callback
+        * @tc.desc    : the application call interface does not meet the permissions
+        */
+        it('ActsOsAccountConstraints_3300', 0, async function(done){
+            console.debug("====>ActsOsAccountConstraints_3300 start====");
+            var AccountManager = osaccount.getAccountManager();
+            console.debug("====>get os AccountManager finish====");
+            AccountManager.isOsAccountConstraintEnable(100, "constraint.bluetooth", (err, result)=>{
+                console.debug("====>isOsAccountConstraintEnable err:" + JSON.stringify(err));
+                expect(err).assertEqual(null);
+                expect(result).assertTrue();
+                console.debug("====>ActsOsAccountConstraints_3300 end====");
+                done();
+            })
+        })
+
+        /*
+        * @tc.number  : ActsOsAccountPermission_3400
+        * @tc.name    : isOsAccountConstraintEnable promise
+        * @tc.desc    : the application call interface does not meet the permissions
+        */
+        it('ActsOsAccountConstraints_3400', 0, async function(done){
+            console.debug("====>ActsOsAccountConstraints_3400 start====");
+            var AccountManager = osaccount.getAccountManager();
+            console.debug("====>get os AccountManager finish====");
+            try{
+                await AccountManager.isOsAccountConstraintEnable(100, "constraint.bluetooth");
+                done();
+            }
+            catch(err){
+                console.debug("====>isOsAccountConstraintEnable err:" + JSON.stringify(err));
+                expect(err).assertEqual(null);
+                console.debug("====>ActsOsAccountConstraints_3400 end====");
+                done();
+            }
+        })       
     })
 }

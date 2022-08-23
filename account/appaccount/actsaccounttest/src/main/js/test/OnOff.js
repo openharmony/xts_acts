@@ -30,7 +30,11 @@ export default function ActsAccountChangeOnOff() {
                 console.info(`sleep #{time} over ...`)
             })
         }
-        beforeAll(async function (done) {
+        beforeAll(async function (done) {            
+            done();
+        });
+
+        async function test_init(){
             console.debug("====>startAbility start====");
             await featureAbility.startAbility(
                 {
@@ -46,8 +50,7 @@ export default function ActsAccountChangeOnOff() {
                 },
             );
             await sleep(TIMEOUT);
-            done();
-        });
+        }
 
         /*
         * @tc.number    : ActsAccountChangeOnOff_0100
@@ -56,6 +59,7 @@ export default function ActsAccountChangeOnOff() {
         *                 the additional information
         */
         it('ActsAccountChangeOnOff_0100', 0, async function (done) {
+            test_init();
             console.debug("====>ActsAccountChangeOnOff_0100 start====");
             var appAccountManager = account.createAppAccountManager();
             console.debug("====>creat appAccountManager finish");
@@ -124,6 +128,7 @@ export default function ActsAccountChangeOnOff() {
         *                 the associatal data
         */
         it('ActsAccountChangeOnOff_0200', 0, async function (done) {
+            test_init();
             console.debug("====>ActsAccountChangeOnOff_0200 start====");
             var appAccountManager = account.createAppAccountManager();
             console.debug("====>creat appAccountManager finish");
@@ -187,6 +192,7 @@ export default function ActsAccountChangeOnOff() {
         *                 the credential
         */
         it('ActsAccountChangeOnOff_0300', 0, async function (done) {
+            test_init();
             console.debug("====>ActsAccountChangeOnOff_0300 start====");
             var appAccountManager = account.createAppAccountManager();
             console.debug("====>creat appAccountManager finish");
@@ -250,6 +256,7 @@ export default function ActsAccountChangeOnOff() {
         *                 authorized account
         */
         it('ActsAccountChangeOnOff_0400', 0, async function (done) {
+            test_init();
             console.debug("====>ActsAccountChangeOnOff_0400 start====");
             var appAccountManager = account.createAppAccountManager();
             console.debug("====>creat appAccountManager finish");
@@ -317,6 +324,7 @@ export default function ActsAccountChangeOnOff() {
         *                 the only authorized account
         */
         it('ActsAccountChangeOnOff_0500', 0, async function (done) {
+            test_init();
             console.debug("====>ActsAccountChangeOnOff_0500 start====");
             var appAccountManager = account.createAppAccountManager();
             console.debug("====>creat appAccountManager finish");
@@ -326,14 +334,13 @@ export default function ActsAccountChangeOnOff() {
             await appAccountManager.enableAppAccess("onoff_delete", "com.example.actsaccountsceneonoff");
             function unSubscriberCallback(err){
                 console.debug("====>unsubscribe 0500 err:" + JSON.stringify(err));
-                expect(err).assertEqual(null);
-                done();
             }
             function subscriberCallback(err, data){
                 console.debug("====>subscriberCallback 0500 data:" + JSON.stringify(data));
                 expect(data.event).assertEqual("account_on_change_delete");
                 expect(data.data).assertEqual("SUCCESS");
                 commonevent.unsubscribe(subscriber, unSubscriberCallback);
+                done();
             }
             function publishCallback(err){
                 console.debug("====>publish call back err:" + JSON.stringify(err));
@@ -376,6 +383,7 @@ export default function ActsAccountChangeOnOff() {
         *                 authorized account   
         */
         it('ActsAccountChangeOnOff_0600', 0, async function (done) {
+            test_init();
             console.debug("====>ActsAccountChangeOnOff_0600 start====");
             var appAccountManager = account.createAppAccountManager();
             console.debug("====>creat appAccountManager finish");
@@ -447,6 +455,7 @@ export default function ActsAccountChangeOnOff() {
         *                 the only authorized account
         */
         it('ActsAccountChangeOnOff_0700', 0, async function (done) {
+            test_init();
             console.debug("====>ActsAccountChangeOnOff_0700 start====");
             var appAccountManager = account.createAppAccountManager();
             console.debug("====>creat appAccountManager finish");

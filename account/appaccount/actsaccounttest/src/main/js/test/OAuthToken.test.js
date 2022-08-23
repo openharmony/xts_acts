@@ -596,6 +596,10 @@ export default function ActsAccountOAuthToken() {
                         expect(ArrayData.length).assertEqual(1);
                         expect(ArrayData[0].authType).assertEqual("authType");
                         expect(ArrayData[0].token).assertEqual("test_token");
+                        expect(ArrayData[0].account).assertEqual(undefined);
+                        expect(ArrayData[0].accounts).assertEqual(undefined);
+                        console.debug("====>test1" + JSON.stringify(ArrayData[0].account))
+                        console.debug("====>test2" + JSON.stringify(ArrayData[0].accounts))
                         appAccountManager.deleteAccount(limitName,(err)=>{
                             console.debug("====>ActsAccountOAuthToken_8500 deleteAccount err:" + JSON.stringify(err));
                             expect(err).assertEqual(null);
