@@ -470,6 +470,7 @@ describe('Image', function () {
                 console.log('RGBA_016 err: ' + err);
                 expect(false).assertTrue();
                 done();
+                return;
             }
             console.log('RGBA_016 pixelFormat: image.PixelMapFormat.BGRA_8888');
             expect(pixelmap != undefined).assertTrue();
