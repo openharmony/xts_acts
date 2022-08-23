@@ -102,17 +102,17 @@ describe('MultimodalInput_test', function () {
           inputDevice.getDevice(data[i], (res, err) => {
             console.info(`getDevice:data ${JSON.stringify(data)}`);
             arr = Object.keys(res);
-            expect(res.id).assertInstanceOf('number');
-            expect(res.name).assertInstanceOf('string');
+            expect(res.id).assertInstanceOf('Number');
+            expect(res.name).assertInstanceOf('String');
             expect(res.sources).assertInstanceOf('Array');
             expect(res.axisRanges).assertInstanceOf('Array');
-            expect(res.bus).assertInstanceOf('number');
-            expect(res.product).assertInstanceOf('number');
-            expect(res.vendor).assertInstanceOf('number');
-            expect(res.version).assertInstanceOf('number');
-            expect(res.phys).assertInstanceOf('string');
-            expect(res.uniq).assertInstanceOf('string');
-            expect(res).assertInstanceOf('InputDeviceData');
+            expect(res.bus).assertInstanceOf('Number');
+            expect(res.product).assertInstanceOf('Number');
+            expect(res.vendor).assertInstanceOf('Number');
+            expect(res.version).assertInstanceOf('Number');
+            expect(res.phys).assertInstanceOf('String');
+            expect(res.uniq).assertInstanceOf('String');
+            expect(res).assertInstanceOf('Object');
             for(let j = 0;j < res.axisRanges.length; j++ ){
               expect(res.axisRanges[j].source == 'keyboard' || res.axisRanges[j].source == 'mouse'
               || res.axisRanges[j].source == 'touchpad' || res.axisRanges[j].source == 'touchscreen'
@@ -122,15 +122,14 @@ describe('MultimodalInput_test', function () {
               || res.axisRanges[j].axis == 'y' || res.axisRanges[j].axis == 'pressure'
               || res.axisRanges[j].axis == 'toolMinor' || res.axisRanges[j].axis == 'touchMajor'
               || res.axisRanges[j].axis == 'NULL').assertTrue();
-              expect(res.axisRanges[j].max).assertInstanceOf('number');
+              expect(res.axisRanges[j].max).assertInstanceOf('Number');
               expect(res.axisRanges[j]).assertInstanceOf('AxisRange');
-              expect(res.axisRanges[j].min).assertInstanceOf('number');
-              expect(res.axisRanges[j].fuzz).assertInstanceOf('number');
-              expect(res.axisRanges[j].flat).assertInstanceOf('number');
-              expect(res.axisRanges[j].resolution).assertInstanceOf('number');
+              expect(res.axisRanges[j].min).assertInstanceOf('Number');
+              expect(res.axisRanges[j].fuzz).assertInstanceOf('Number');
+              expect(res.axisRanges[j].flat).assertInstanceOf('Number');
+              expect(res.axisRanges[j].resolution).assertInstanceOf('Number');
             }
           })
-          expect(arr.length > 0).assertTrue();
         }
       }
       console.info(`inputDevice::getDevice_test-02 exit`);
@@ -176,7 +175,7 @@ describe('MultimodalInput_test', function () {
       } else {
         for (let i = 0; i < data.length; ++i) {
           inputDevice.getKeyboardType(data[i], (res, err) => {
-            expect(res).assertInstanceOf('number');
+            expect(res).assertInstanceOf('Number');
           });
         }
       }
@@ -204,8 +203,7 @@ describe('MultimodalInput_test', function () {
       } else {
         for (let i = 0; i < data.length; ++i) {
           inputDevice.getKeyboardType(data[i]).then((res) => {
-            expect(res).assertInstanceOf('number');
-            done();
+            expect(res).assertInstanceOf('Number');
           });
         }
       }
@@ -282,13 +280,15 @@ describe('MultimodalInput_test', function () {
    * @tc.name MultimodalInputDevice_getDeviceIds_Promise_test
    * @tc.desc inputdevice interface getDeviceIds & supportKeys test
    */
-  it("MultimodalInputDevice_getDeviceIds_Promise_test", 0, async function () {
-    console.info(`inputDevice::supportKeys_test-01 enter`);
-    await inputDevice.getDeviceIds().then((data, err) => {
+  it("MultimodalInputDevice_getDeviceIds_Promise_test", 0, async function (done) {
+    console.info(`MultimodalInputDevice_getDeviceIds_Promise_test enter`);
+    inputDevice.getDeviceIds().then((data, err) => {
       if (err) {
+        console.info(`MultimodalInputDevice_getDeviceIds_Promise_test err`);
         expect(false).assertTrue();
         done();
       } else {
+        console.info(`MultimodalInputDevice_getDeviceIds_Promise_test data`);
         for (let i = 0; i < data.length; ++i) {
           inputDevice.supportKeys(data[i], [17, 22, 2055]).then((res, err) => {
             expect(res).assertInstanceOf('Array');
@@ -296,7 +296,7 @@ describe('MultimodalInput_test', function () {
         }
         done();
       }
-      console.info(`inputDevice::supportKeys_test-01 exit`);
+      console.info(`MultimodalInputDevice_getDeviceIds_Promise_test exit`);
     });
   })
 
@@ -305,18 +305,20 @@ describe('MultimodalInput_test', function () {
    * @tc.name MultimodalInputDevice_getDevice_Promise_test
    * @tc.desc inputdevice interface getDevice test
    */
-  it("MultimodalInputDevice_getDevice_Promise_test", 0, async function () {
-    console.info(`inputDevice::getDevice_test-01 enter`);
-    await inputDevice.getDevice(-1).then((data, err) => {
+  it("MultimodalInputDevice_getDevice_Promise_test", 0, async function (done) {
+    console.info(`MultimodalInputDevice_getDevice_Promise_test enter`);
+    inputDevice.getDevice(-1).then((data, err) => {
       if (err) {
+        console.info(`MultimodalInputDevice_getDevice_Promise_test err`);
         expect(false).assertTrue();
-        console.info(`inputDevice::getDevice_test-01 ${JSON.stringify(err)}`);
+        console.info(`MultimodalInputDevice_getDevice_Promise_test ${JSON.stringify(err)}`);
         done();
       } else {
+        console.info(`MultimodalInputDevice_getDevice_Promise_test data`);
         expect(JSON.stringify(data) !== "{}").assertTrue();
         done();
       }
-      console.info(`inputDevice::getDevice_test-01 exit`);
+      console.info(`MultimodalInputDevice_getDevice_Promise_test exit`);
     });
   })
 
