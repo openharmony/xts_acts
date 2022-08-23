@@ -14,20 +14,13 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
-import appManager from '@ohos.application.appManager';
-const DELAY = 3000
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
+
+let msg: any
+let msgcopy: any
+let finishmsg: any
+let finishmsg1: any
 export default function abilityTest() {
     describe('ACTS_AACommand_Test', function () {
-        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-        function checkRunningProcess(name, dataInfo) {
-            for (let i = 0, len = dataInfo.length; i < len; i++) {
-                if (dataInfo[i].processName == name) {
-                    return true;
-                }
-            }
-            return false;
-        }
 
         /**
          * @tc.number: ACTS_AACommand_0100
@@ -39,10 +32,10 @@ export default function abilityTest() {
         it('ACTS_AACommand_0100', 0, async function (done) {
             console.log("ACTS_AACommand_0100 --- start")
             let cmd = 'aa test -b com.example.actsaacommandtesta' +
-            'test -m entry_test ' +
-            '-s unittest OpenHarmonyTestRunner ' +
-            '-w 40 -s class ACTS_AACommand_01_3 -s level 1 -s size 0 -s testType aaa -s '+
-            'timeout 5 -s 1 3 -D'
+                'test -m entry_test ' +
+                '-s unittest OpenHarmonyTestRunner ' +
+                '-w 40 -s class ACTS_AACommand_01_3 -s level 1 -s size 0 -s testType aaa -s ' +
+                'timeout 5 -s 1 3 -D'
             let delay = 3000
             globalThis.abilityDelegator.executeShellCommand(cmd, (err, data) => {
                 console.log('ACTS_AACommand_0100 - executeShellCommand: start ')
@@ -109,8 +102,8 @@ export default function abilityTest() {
         it('ACTS_AACommand_0400', 0, async function (done) {
             console.log("ACTS_AACommand_0400 --- start")
             let cmd = 'aa test -b com.example.actsaacommandtestatest -m entry_test ' +
-            '-s unittest OpenHarmonyTestRunner ' +
-            '-w 无效值'
+                '-s unittest OpenHarmonyTestRunner ' +
+                '-w 无效值'
             globalThis.abilityDelegator.executeShellCommand(cmd, (err, data) => {
                 console.log('ACTS_AACommand_0400 - executeShellCommand: start ')
                 console.log('ACTS_AACommand_0400 stdResult = ' + data.stdResult)
@@ -134,7 +127,7 @@ export default function abilityTest() {
         it('ACTS_AACommand_0500', 0, async function (done) {
             console.log("ACTS_AACommand_0500 --- start")
             let cmd = 'aa test -b aa test -b com.example.actsaacommandtestatest -m entry_test' +
-            '-s unittest OpenHarmonyTestRunner -z invalid'
+                '-s unittest OpenHarmonyTestRunner -z invalid'
             globalThis.abilityDelegator.executeShellCommand(cmd, (err, data) => {
                 console.log('ACTS_AACommand_0500 - executeShellCommand: start ')
                 console.log('ACTS_AACommand_0500 stdResult = ' + data.stdResult)
@@ -181,33 +174,12 @@ export default function abilityTest() {
          */
         it('ACTS_AACommand_finishTest_0700', 0, async function (done) {
             console.log("ACTS_AACommand_finishTest_0700 --- start")
-            var cmd = 'aa test -m entry_test -b com.example.aacommandrelyhap -s ' +
-            'class ACTS_AACommand_01_3#ACTS_AACommand_finish_0700 -s unittest OpenHarmonyTestRunner'
-            var finishmsg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
-            globalThis.abilityDelegator.executeShellCommand(cmd, (err, data) => {
-                console.log('ACTS_AACommand_finishTest_0700 - executeShellCommand: start ')
-                console.log('ACTS_AACommand_finishTest_0700 stdResult = ' + data.stdResult)
-                var i = data.stdResult.indexOf(finishmsg);
-                console.log('ACTS_AACommand_finishTest_0700 query string i = ' + i);
-                expect(i == -1).assertEqual(false);
-                var j = data.stdResult.indexOf('TestFinished-ResultCode: -1');
-                console.log('ACTS_AACommand_finishTest_0700 query string j = ' + j);
-                expect(j == -1).assertEqual(false);
-                console.log('ACTS_AACommand_finishTest_0700 - executeShellCommand: end')
-            })
-            setTimeout(async() => {
-                var temp
-                var cmd ='aa dump -a'
-                abilityDelegator.executeShellCommand(cmd,
-                    (err: any, d: any) => {
-                        console.info('executeShellCommand : err : ' + JSON.stringify(err));
-                        console.info('executeShellCommand : data : ' + JSON.stringify(d));
-                        temp = d["stdResult"];
-                        expect(temp.indexOf("com.example.aacommandrelyhap") == -1).assertTrue()
-                        console.info('executeShellCommand end');
-                    })
-                done();
-            }, DELAY )
+            finishmsg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
+            finishmsg1 = 'TestFinished-ResultCode: -1'
+            expect(globalThis.stdResult1).assertContain(finishmsg);
+            expect(globalThis.stdResult1).assertContain(finishmsg1);
+            expect(globalThis.stdResult2.indexOf("com.example.aacommandrelyhap") == -1).assertTrue()
+            done()
         })
 
         /**
@@ -239,26 +211,11 @@ export default function abilityTest() {
          */
         it('ACTS_AACommand_print_0100', 0, async function (done) {
             console.log("ACTS_AACommand_print_0100 --- start")
-            let cmd = 'aa test -b com.example.aacommandrelyhap -m entry_test  -s class ACTS_AACommand_01_3#ACTS_AACo' +
-            'mmand_print_0100 -s unittest OpenHarmonyTestRunner'
-            let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
-            globalThis.abilityDelegator.executeShellCommand(cmd, (err, data) => {
-                console.log('ACTS_AACommand_print_0100 - executeShellCommand: start ')
-                console.log('ACTS_AACommand_print_0100 stdResult = ' + data.stdResult)
-                let i = data.stdResult.indexOf(msg);
-                console.log('ACTS_AACommand_print_0100 query string i = ' + i);
-                expect(i == -1).assertEqual(false);
-                console.log('ACTS_AACommand_print_0100 - executeShellCommand: end')
-            })
-            setTimeout(async() => {
-                let procrssinfo = await appManager.getProcessRunningInfos()
-                console.log('ACTS_AACommand_print_0100 getProcessRunningInfos ======> ' + JSON.stringify(procrssinfo));
-                let infores = checkRunningProcess('com.example.print01', procrssinfo)
-                console.log("====>ACTS_AACommand_print_0100====>infores = " + infores)
-                expect(infores==false).assertEqual(true);
-                done();
-            }, DELAY )
+            msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
+            expect(globalThis.stdResult3).assertContain(msg);
+            done()
         })
+
 
         /**
          * @tc.number: ACTS_AACommand_print_0200
@@ -269,35 +226,19 @@ export default function abilityTest() {
          */
         it('ACTS_AACommand_print_0200', 0, async function (done) {
             console.log("ACTS_AACommand_print_0200 --- start")
-            let cmd = 'aa test -m entry_test -b com.example.aacommandrelyhap -s class ACTS_AACommand_01_3#ACTS_AAComm'+
-            'and_print_0200 -s unittest OpenHarmonyTestRunner'
-            let msg = '0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'+
-            'aaaaaaaaa' +
-            '1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-            '2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-            '3aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-            '4aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-            '5aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-            '6aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-            '7aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-            '8aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-            '9aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaae'
-            globalThis.abilityDelegator.executeShellCommand(cmd, (err, data) => {
-                console.log('ACTS_AACommand_print_0200 - executeShellCommand: start ')
-                console.log('ACTS_AACommand_print_0200 stdResult = ' + data.stdResult)
-                let i = data.stdResult.indexOf(msg);
-                console.log('ACTS_AACommand_print_0200 query string i = ' + i);
-                expect(i == -1).assertEqual(false);
-                console.log('ACTS_AACommand_print_0200 - executeShellCommand: end')
-            })
-            setTimeout(async() => {
-                let procrssinfo = await appManager.getProcessRunningInfos()
-                console.log('ACTS_AACommand_print_0200 getProcessRunningInfos ======> ' + JSON.stringify(procrssinfo));
-                let infores = checkRunningProcess('com.example.print02', procrssinfo)
-                console.log("====>ACTS_AACommand_print_0200====>infores = " + infores)
-                expect(infores).assertEqual(false);
-                done();
-            }, DELAY )
+            msg = '0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+                'aaaaaaaaa' +
+                '1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+                '2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+                '3aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+                '4aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+                '5aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+                '6aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+                '7aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+                '8aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+                '9aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaae'
+            expect(globalThis.stdResult4).assertContain(msg);
+            done()
         })
 
         /**
@@ -309,39 +250,21 @@ export default function abilityTest() {
          */
         it('ACTS_AACommand_print_0300', 0, async function (done) {
             console.log("ACTS_AACommand_print_0300 --- start")
-            let cmd = 'aa test -m entry_test -b com.example.aacommandrelyhap -s class ACTS_AACommand_01_3#ACTS_'+
-            'AACommand_print_0300 -s unittest OpenHarmonyTestRunner'
-            let msg = '0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-            'aaaaaaaaaa' +
-            '1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-            '2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-            '3aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-            '4aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-            '5aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-            '6aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-            '7aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-            '8aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-            '9aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaae'
+            msg = '0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+                'aaaaaaaaaa' +
+                '1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+                '2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+                '3aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+                '4aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+                '5aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+                '6aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+                '7aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+                '8aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+                '9aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaae'
             let msgcopy = 'fffffffffff'
-            globalThis.abilityDelegator.executeShellCommand(cmd, (err, data) => {
-                console.log('ACTS_AACommand_print_0300 - executeShellCommand: start ')
-                console.log('ACTS_AACommand_print_0300 stdResult = ' + data.stdResult)
-                let i = data.stdResult.indexOf(msg);
-                console.log('ACTS_AACommand_print_0300 query string i = ' + i);
-                expect(i == -1).assertEqual(false);
-                let j = data.stdResult.indexOf(msgcopy);
-                console.log('ACTS_AACommand_print_0300 === query string j = ' + j);
-                expect(j == -1).assertEqual(true);
-                console.log('ACTS_AACommand_print_0300 - executeShellCommand: end')
-            })
-            setTimeout(async() => {
-                let procrssinfo = await appManager.getProcessRunningInfos()
-                console.log('ACTS_AACommand_print_0300 getProcessRunningInfos ======> ' + JSON.stringify(procrssinfo));
-                let infores = checkRunningProcess('com.example.print03', procrssinfo)
-                console.log("====>ACTS_AACommand_print_0300====>infores = " + infores)
-                expect(infores).assertEqual(false);
-                done();
-            }, DELAY )
+            expect(globalThis.stdResult5).assertContain(msg);
+            expect(globalThis.stdResult5.indexOf(msgcopy) == -1).assertEqual(true);
+            done()
         })
 
         /**
@@ -353,22 +276,9 @@ export default function abilityTest() {
          */
         it('ACTS_AACommand_print_0400', 0, async function (done) {
             console.log("ACTS_AACommand_print_0400 --- start")
-            let cmd = 'aa test -m entry_test -b com.example.aacommandrelyhap -s class ACTS_AACommand_01_3#ACTS_AAComma'+
-            'nd_print_0400 -s unittest OpenHarmonyTestRunner'
-            globalThis.abilityDelegator.executeShellCommand(cmd, (err, data) => {
-                console.log('ACTS_AACommand_print_0400 - executeShellCommand: start ')
-                console.log('ACTS_AACommand_print_0400 stdResult = ' + data.stdResult)
-                expect(data.stdResult.indexOf('start ability successfully')==-1).assertEqual(false);
-                console.log('ACTS_AACommand_print_0400 - executeShellCommand: end')
-            })
-            setTimeout(async() => {
-                let procrssinfo = await appManager.getProcessRunningInfos()
-                console.log('ACTS_AACommand_print_0400 getProcessRunningInfos ======> ' + JSON.stringify(procrssinfo));
-                let infores = checkRunningProcess('com.example.print04', procrssinfo)
-                console.log("====>ACTS_AACommand_print_0400====>infores = ")
-                expect(infores).assertEqual(false);
-                done();
-            }, DELAY )
+            msg = 'start ability successfully'
+            expect(globalThis.stdResult6).assertContain(msg);
+            done()
         })
 
         /**
@@ -380,25 +290,9 @@ export default function abilityTest() {
          */
         it('ACTS_AACommand_print_0500', 0, async function (done) {
             console.log("ACTS_AACommand_print_0500 --- start")
-            let cmd = 'aa test -m entry_test -b com.example.aacommandrelyhap -s class ACTS_AACommand_01_3#ACTS_AAComm'+
-            'and_print_0500 -s unittest OpenHarmonyTestRunner'
-            let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
-            globalThis.abilityDelegator.executeShellCommand(cmd, (err, data) => {
-                console.log('ACTS_AACommand_print_0500 - executeShellCommand: start ')
-                console.log('ACTS_AACommand_print_0500 stdResult = ' + data.stdResult)
-                let i = data.stdResult.indexOf(msg);
-                console.log('ACTS_AACommand_print_0500 query string i = ' + i);
-                expect(i == -1).assertEqual(false);
-                console.log('ACTS_AACommand_print_0500 - executeShellCommand: end')
-            })
-            setTimeout(async() => {
-                let procrssinfo = await appManager.getProcessRunningInfos()
-                console.log('ACTS_AACommand_print_0500 getProcessRunningInfos ======> ' + JSON.stringify(procrssinfo));
-                let infores = checkRunningProcess('com.example.print05', procrssinfo)
-                console.log("====>ACTS_AACommand_print_0500====>infores = " + infores)
-                expect(infores).assertEqual(false);
-                done();
-            }, DELAY )
+            msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
+            expect(globalThis.stdResult7).assertContain(msg);
+            done()
         })
 
         /**
@@ -410,35 +304,19 @@ export default function abilityTest() {
          */
         it('ACTS_AACommand_print_0600', 0, async function (done) {
             console.log("ACTS_AACommand_print_0600 --- start")
-            let cmd = 'aa test -m entry_test -b com.example.aacommandrelyhap -s class ACTS_AACommand_01_3#ACTS_AA' +
-            'Command_print_0600 -s unittest OpenHarmonyTestRunner'
-            let msg = '0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-            'aaaaaaaaaa' +
-            '1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-            '2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-            '3aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-            '4aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-            '5aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-            '6aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-            '7aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-            '8aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-            '9aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaae'
-            globalThis.abilityDelegator.executeShellCommand(cmd, (err, data) => {
-                console.log('ACTS_AACommand_print_0600 - executeShellCommand: start ')
-                console.log('ACTS_AACommand_print_0600 stdResult = ' + data.stdResult)
-                let i = data.stdResult.indexOf(msg);
-                console.log('ACTS_AACommand_print_0600 query string i = ' + i);
-                expect(i == -1).assertEqual(false);
-                console.log('ACTS_AACommand_print_0600 - executeShellCommand: end')
-            })
-            setTimeout(async() => {
-                let procrssinfo = await appManager.getProcessRunningInfos()
-                console.log('ACTS_AACommand_print_0600 getProcessRunningInfos ======> ' + JSON.stringify(procrssinfo));
-                let infores = checkRunningProcess('com.example.print06', procrssinfo)
-                console.log("====>ACTS_AACommand_print_0600====>infores = " + infores)
-                expect(infores).assertEqual(false);
-                done();
-            }, DELAY )
+            msg = '0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+                'aaaaaaaaaa' +
+                '1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+                '2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+                '3aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+                '4aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+                '5aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+                '6aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+                '7aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+                '8aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+                '9aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaae'
+            expect(globalThis.stdResult8).assertContain(msg);
+            done()
         })
 
         /**
@@ -450,39 +328,21 @@ export default function abilityTest() {
          */
         it('ACTS_AACommand_print_0700', 0, async function (done) {
             console.log("ACTS_AACommand_print_0700 --- start")
-            let cmd = 'aa test -m entry_test -b com.example.aacommandrelyhap -s class ' +
-            'ACTS_AACommand_01_3#ACTS_AACommand_print_0700 -s unittest OpenHarmonyTestRunner '
-            let msg = '0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-            'aaaaaaaaaa' +
-            '1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-            '2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-            '3aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-            '4aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-            '5aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-            '6aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-            '7aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-            '8aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
-            '9aaaaaaaaa'
-            let msgcopy = 'fffffffffff'
-            globalThis.abilityDelegator.executeShellCommand(cmd, (err, data) => {
-                console.log('ACTS_AACommand_print_0700 - executeShellCommand: start ')
-                console.log('ACTS_AACommand_print_0700 stdResult = ' + data.stdResult)
-                let i = data.stdResult.indexOf(msg);
-                console.log('ACTS_AACommand_print_0700 query string i = ' + i);
-                expect(i == -1).assertEqual(false);
-                let j = data.stdResult.indexOf(msgcopy);
-                console.log('ACTS_AACommand_print_0700 === query string j = ' + j);
-                expect(j == -1).assertEqual(true);
-                console.log('ACTS_AACommand_print_0700 - executeShellCommand: end')
-            })
-            setTimeout(async() => {
-                let procrssinfo = await appManager.getProcessRunningInfos()
-                console.log('ACTS_AACommand_print_0700 getProcessRunningInfos ======> ' + JSON.stringify(procrssinfo));
-                let infores = checkRunningProcess('com.example.print07', procrssinfo)
-                console.log("====>ACTS_AACommand_print_0700====>infores = " + infores)
-                expect(infores).assertEqual(false);
-                done();
-            }, DELAY )
+            msg = '0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+                'aaaaaaaaaa' +
+                '1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+                '2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+                '3aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+                '4aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+                '5aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+                '6aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+                '7aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+                '8aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
+                '9aaaaaaaaa'
+            msgcopy = 'fffffffffff'
+            expect(globalThis.stdResult9).assertContain(msg);
+            expect(globalThis.stdResult9.indexOf(msgcopy) == -1).assertEqual(true);
+            done()
         })
 
         /**
@@ -494,22 +354,9 @@ export default function abilityTest() {
          */
         it('ACTS_AACommand_print_0800', 0, async function (done) {
             console.log("ACTS_AACommand_print_0800 --- start")
-            let cmd = 'aa test -m entry_test -b com.example.aacommandrelyhap -s ' +
-            'class ACTS_AACommand_01_3#ACTS_AACommand_print_0800 -s unittest OpenHarmonyTestRunner'
-            globalThis.abilityDelegator.executeShellCommand(cmd, (err, data) => {
-                console.log('ACTS_AACommand_print_0800 - executeShellCommand: start ')
-                console.log("ACTS_AACommand_print_0800 print  test  end ========> callback " )
-                expect(data.stdResult.indexOf('start ability successfully')==-1).assertEqual(false);
-                console.log('ACTS_AACommand_print_0800 - executeShellCommand: end')
-            })
-            setTimeout(async() => {
-                let procrssinfo = await appManager.getProcessRunningInfos()
-                console.log('ACTS_AACommand_print_0800 getProcessRunningInfos ======> ' + JSON.stringify(procrssinfo));
-                let infores = checkRunningProcess('com.example.print08', procrssinfo)
-                console.log("====>ACTS_AACommand_print_0800====>infores = " + infores)
-                expect(infores).assertEqual(false);
-                done();
-            }, DELAY )
+            msg = 'start ability successfully'
+            expect(globalThis.stdResult10).assertContain(msg);
+            done()
         })
 
 
@@ -525,33 +372,11 @@ export default function abilityTest() {
          */
         it('ACTS_AACommand_finishTest_0400', 0, async function (done) {
             console.log("ACTS_AACommand_finishTest_0400 --- start")
-            let cmd = 'aa test -m entry_test -b com.example.aacommandrelyhap -s class ' +
-            'ACTS_AACommand_01_3#ACTS_AACommand_finish_0400 -s unittest OpenHarmonyTestRunner'
-            let finishmsg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
-            globalThis.abilityDelegator.executeShellCommand(cmd, (err, data) => {
-                console.log('ACTS_AACommand_finishTest_0400 - executeShellCommand: start ')
-                console.log('ACTS_AACommand_finishTest_0400 stdResult = ' + data.stdResult)
-                let i = data.stdResult.indexOf(finishmsg);
-                console.log('ACTS_AACommand_finishTest_0400 query string i = ' + i);
-                expect(i == -1).assertEqual(false);
-                let j = data.stdResult.indexOf('TestFinished-ResultCode: -1');
-                console.log('ACTS_AACommand_finishTest_0400 query string j = ' + j);
-                expect(j == -1).assertEqual(true);
-                console.log('ACTS_AACommand_finishTest_0400 - executeShellCommand: end')
-            })
-            setTimeout(async() => {
-                let temp
-                let cmd ='aa dump -a'
-                abilityDelegator.executeShellCommand(cmd,
-                    (err: any, d: any) => {
-                        console.info('executeShellCommand : err : ' + JSON.stringify(err));
-                        console.info('executeShellCommand : data : ' + JSON.stringify(d));
-                        temp = d["stdResult"];
-                        expect(temp.indexOf("com.example.aacommandrelyhap") == -1).assertTrue()
-                        console.info('executeShellCommand end');
-                    })
-                done();
-            }, DELAY )
+            finishmsg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
+            expect(globalThis.stdResult11).assertContain(finishmsg);
+            expect(globalThis.stdResult12.indexOf("com.example.aacommandrelyhap") == -1).assertTrue()
+            done()
+
         })
 
 
@@ -565,33 +390,12 @@ export default function abilityTest() {
          */
         it('ACTS_AACommand_finishTest_0100', 0, async function (done) {
             console.log("ACTS_AACommand_finishTest_0100 --- start")
-            let cmd = 'aa test -m entry_test -b com.example.aacommandrelyhap -s ' +
-            'class ACTS_AACommand_01_3#ACTS_AACommand_finish_0100 -s unittest OpenHarmonyTestRunner'
-            let finishmsg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
-            globalThis.abilityDelegator.executeShellCommand(cmd, (err, data) => {
-                console.log('ACTS_AACommand_finishTest_0100 - executeShellCommand: start ')
-                console.log('ACTS_AACommand_finishTest_0100 stdResult = ' + data.stdResult)
-                let i = data.stdResult.indexOf(finishmsg);
-                console.log('ACTS_AACommand_finishTest_0100 query string i = ' + i);
-                expect(i == -1).assertEqual(false);
-                let j = data.stdResult.indexOf('TestFinished-ResultCode: 1');
-                console.log('ACTS_AACommand_finishTest_0100 query string j = ' + j);
-                expect(j == -1).assertEqual(false);
-                console.log('ACTS_AACommand_finishTest_0100 - executeShellCommand: end')
-            })
-            setTimeout(async() => {
-                let temp
-                let cmd ='aa dump -a'
-                abilityDelegator.executeShellCommand(cmd,
-                    (err: any, d: any) => {
-                        console.info('executeShellCommand : err : ' + JSON.stringify(err));
-                        console.info('executeShellCommand : data : ' + JSON.stringify(d));
-                        temp = d["stdResult"];
-                        expect(temp.indexOf("com.example.aacommandrelyhap") == -1).assertTrue()
-                        console.info('executeShellCommand end');
-                    })
-                done();
-            }, DELAY )
+            finishmsg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
+            finishmsg1 = 'TestFinished-ResultCode: 1'
+            expect(globalThis.stdResult13).assertContain(finishmsg);
+            expect(globalThis.stdResult13).assertContain(finishmsg1);
+            expect(globalThis.stdResult14.indexOf("com.example.aacommandrelyhap") == -1).assertTrue()
+            done()
         })
 
 
@@ -606,33 +410,12 @@ export default function abilityTest() {
          */
         it('ACTS_AACommand_finishTest_0500', 0, async function (done) {
             console.log("ACTS_AACommand_finishTest_0500 --- start")
-            let cmd = 'aa test -m entry_test -b com.example.aacommandrelyhap -s class ' +
-            'ACTS_AACommand_01_3#ACTS_AACommand_finish_0500 -s unittest OpenHarmonyTestRunner'
-            let finishmsg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
-            globalThis.abilityDelegator.executeShellCommand(cmd, (err, data) => {
-                console.log('ACTS_AACommand_finishTest_0500 - executeShellCommand: start ')
-                console.log('ACTS_AACommand_finishTest_0500 stdResult = ' + data.stdResult)
-                let i = data.stdResult.indexOf(finishmsg);
-                console.log('ACTS_AACommand_finishTest_0500 query string i = ' + i);
-                expect(i == -1).assertEqual(false);
-                let j = data.stdResult.indexOf('TestFinished-ResultCode: 0');
-                console.log('ACTS_AACommand_finishTest_0500 query string j = ' + j);
-                expect(j == -1).assertEqual(false);
-                console.log('ACTS_AACommand_finishTest_0500 - executeShellCommand: end')
-            })
-            setTimeout(async() => {
-                let temp
-                let cmd ='aa dump -a'
-                abilityDelegator.executeShellCommand(cmd,
-                    (err: any, d: any) => {
-                        console.info('executeShellCommand : err : ' + JSON.stringify(err));
-                        console.info('executeShellCommand : data : ' + JSON.stringify(d));
-                        temp = d["stdResult"];
-                        expect(temp.indexOf("com.example.aacommandrelyhap") == -1).assertTrue()
-                        console.info('executeShellCommand end');
-                    })
-                done();
-            }, DELAY )
+            finishmsg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
+            finishmsg1 = 'TestFinished-ResultCode: 0'
+            expect(globalThis.stdResult15).assertContain(finishmsg);
+            expect(globalThis.stdResult15).assertContain(finishmsg1);
+            expect(globalThis.stdResult16.indexOf("com.example.aacommandrelyhap") == -1).assertTrue()
+            done()
         })
 
         /**
@@ -646,74 +429,14 @@ export default function abilityTest() {
          */
         it('ACTS_AACommand_finishTest_0600', 0, async function (done) {
             console.log("ACTS_AACommand_finishTest_0600 --- start")
-            let cmd = 'aa test -m entry_test -b com.example.aacommandrelyhap -s ' +
-            'class ACTS_AACommand_01_3#ACTS_AACommand_finish_0600 -s unittest OpenHarmonyTestRunner'
-            let finishmsg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
-            globalThis.abilityDelegator.executeShellCommand(cmd, (err, data) => {
-                console.log('ACTS_AACommand_finishTest_0600 - executeShellCommand: start ')
-                console.log('ACTS_AACommand_finishTest_0600 stdResult = ' + data.stdResult)
-                let i = data.stdResult.indexOf(finishmsg);
-                console.log('ACTS_AACommand_finishTest_0600 query string i = ' + i);
-                expect(i == -1).assertEqual(false);
-                let j = data.stdResult.indexOf('TestFinished-ResultCode: 1');
-                console.log('ACTS_AACommand_finishTest_0600 query string j = ' + j);
-                expect(j == -1).assertEqual(false);
-                console.log('ACTS_AACommand_finishTest_0600 - executeShellCommand: end')
-            })
-            setTimeout(async() => {
-                let temp
-                let cmd ='aa dump -a'
-                abilityDelegator.executeShellCommand(cmd,
-                    (err: any, d: any) => {
-                        console.info('executeShellCommand : err : ' + JSON.stringify(err));
-                        console.info('executeShellCommand : data : ' + JSON.stringify(d));
-                        temp = d["stdResult"];
-                        expect(temp.indexOf("com.example.aacommandrelyhap") == -1).assertTrue()
-                        console.info('executeShellCommand end');
-                    })
-                done();
-            }, DELAY )
+            finishmsg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
+            finishmsg1 = 'TestFinished-ResultCode: 1'
+            expect(globalThis.stdResult17).assertContain(finishmsg);
+            expect(globalThis.stdResult17).assertContain(finishmsg1);
+            expect(globalThis.stdResult18.indexOf("com.example.aacommandrelyhap") == -1).assertTrue()
+            done()
         })
 
-        /**
-         * @tc.number: ACTS_AACommand_finishTest_0700
-         * @tc.name: The parameters of the test command are valid, and the finishTest interface is called in 
-         *           AsyncCallback
-         *           mode. The msg parameter is invalid(including Chinese and special characters) and the code 
-         *           parameter
-         *           is valid (Number.MIN_VALUE-1)
-         * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
-         */
-        it('ACTS_AACommand_finishTest_0700', 0, async function (done) {
-            console.log("ACTS_AACommand_finishTest_0700 --- start")
-            let cmd = 'aa test -m entry_test -b com.example.aacommandrelyhap -s ' +
-            'class ACTS_AACommand_01_3#ACTS_AACommand_finish_0700 -s unittest OpenHarmonyTestRunner'
-            let finishmsg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
-            globalThis.abilityDelegator.executeShellCommand(cmd, (err, data) => {
-                console.log('ACTS_AACommand_finishTest_0700 - executeShellCommand: start ')
-                console.log('ACTS_AACommand_finishTest_0700 stdResult = ' + data.stdResult)
-                let i = data.stdResult.indexOf(finishmsg);
-                console.log('ACTS_AACommand_finishTest_0700 query string i = ' + i);
-                expect(i == -1).assertEqual(false);
-                let j = data.stdResult.indexOf('TestFinished-ResultCode: -1');
-                console.log('ACTS_AACommand_finishTest_0700 query string j = ' + j);
-                expect(j == -1).assertEqual(false);
-                console.log('ACTS_AACommand_finishTest_0700 - executeShellCommand: end')
-            })
-            setTimeout(async() => {
-                let temp
-                let cmd ='aa dump -a'
-                abilityDelegator.executeShellCommand(cmd,
-                    (err: any, d: any) => {
-                        console.info('executeShellCommand : err : ' + JSON.stringify(err));
-                        console.info('executeShellCommand : data : ' + JSON.stringify(d));
-                        temp = d["stdResult"];
-                        expect(temp.indexOf("com.example.aacommandrelyhap") == -1).assertTrue()
-                        console.info('executeShellCommand end');
-                    })
-                done();
-            }, DELAY )
-        })
 
 
         /**
@@ -725,33 +448,12 @@ export default function abilityTest() {
          */
         it('ACTS_AACommand_finishTest_0900', 0, async function (done) {
             console.log("ACTS_AACommand_finishTest_0900 --- start")
-            let cmd = 'aa test -m entry_test -b com.example.aacommandrelyhap -s ' +
-            'class ACTS_AACommand_01_3#ACTS_AACommand_finish_0900 -s unittest OpenHarmonyTestRunner'
-            let finishmsg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
-            globalThis.abilityDelegator.executeShellCommand(cmd).then((data) => {
-                console.log('ACTS_AACommand_finishTest_0900 - executeShellCommand: start ')
-                console.log('ACTS_AACommand_finishTest_0900 stdResult = ' + data.stdResult)
-                let i = data.stdResult.indexOf(finishmsg);
-                console.log('ACTS_AACommand_finishTest_0900 query string i = ' + i);
-                expect(i == -1).assertEqual(false);
-                let j = data.stdResult.indexOf('TestFinished-ResultCode: 1');
-                console.log('ACTS_AACommand_finishTest_0900 query string j = ' + j);
-                expect(j == -1).assertEqual(false);
-                console.log('ACTS_AACommand_finishTest_0900 - executeShellCommand: end')
-            })
-            setTimeout(async() => {
-                let temp
-                let cmd ='aa dump -a'
-                abilityDelegator.executeShellCommand(cmd,
-                    (err: any, d: any) => {
-                        console.info('executeShellCommand : err : ' + JSON.stringify(err));
-                        console.info('executeShellCommand : data : ' + JSON.stringify(d));
-                        temp = d["stdResult"];
-                        expect(temp.indexOf("com.example.aacommandrelyhap") == -1).assertTrue()
-                        console.info('executeShellCommand end');
-                    })
-                done();
-            }, DELAY )
+            finishmsg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
+            finishmsg1 = 'TestFinished-ResultCode: 1'
+            expect(globalThis.stdResult19).assertContain(finishmsg);
+            expect(globalThis.stdResult19).assertContain(finishmsg1);
+            expect(globalThis.stdResult20.indexOf("com.example.aacommandrelyhap") == -1).assertTrue()
+            done()
         })
 
 
@@ -764,33 +466,13 @@ export default function abilityTest() {
          */
         it('ACTS_AACommand_finishTest_1200', 0, async function (done) {
             console.log("ACTS_AACommand_finishTest_1200 --- start")
-            let cmd = 'aa test -m entry_test -b com.example.aacommandrelyhap' +
-            ' -s class ACTS_AACommand_01_3#ACTS_AACommand_finish_1200 -s unittest OpenHarmonyTestRunner'
-            let finishmsg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
-            globalThis.abilityDelegator.executeShellCommand(cmd).then((data) => {
-                console.log('ACTS_AACommand_finishTest_1200 - executeShellCommand: start ')
-                console.log('ACTS_AACommand_finishTest_1200 stdResult = ' + data.stdResult)
-                let i = data.stdResult.indexOf(finishmsg);
-                console.log('ACTS_AACommand_finishTest_1200 query string i = ' + i);
-                expect(i == -1).assertEqual(false);
-                let j = data.stdResult.indexOf('TestFinished-ResultCode: -1');
-                console.log('ACTS_AACommand_finishTest_1200 query string j = ' + j);
-                expect(j == -1).assertEqual(true);
-                console.log('ACTS_AACommand_finishTest_1200 - executeShellCommand: end')
-            })
-            setTimeout(async() => {
-                let temp
-                let cmd ='aa dump -a'
-                abilityDelegator.executeShellCommand(cmd,
-                    (err: any, d: any) => {
-                        console.info('executeShellCommand : err : ' + JSON.stringify(err));
-                        console.info('executeShellCommand : data : ' + JSON.stringify(d));
-                        temp = d["stdResult"];
-                        expect(temp.indexOf("com.example.aacommandrelyhap") == -1).assertTrue()
-                        console.info('executeShellCommand end');
-                    })
-                done();
-            }, DELAY )
+            let
+                finishmsg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
+            finishmsg1 = 'TestFinished-ResultCode: -1'
+            expect(globalThis.stdResult21).assertContain(finishmsg);
+            expect(globalThis.stdResult21).assertContain(finishmsg1);
+            expect(globalThis.stdResult22.indexOf("com.example.aacommandrelyhap") == -1).assertTrue()
+            done()
         })
 
         /**
@@ -802,33 +484,12 @@ export default function abilityTest() {
          */
         it('ACTS_AACommand_finishTest_1300', 0, async function (done) {
             console.log("ACTS_AACommand_finishTest_1300 --- start")
-            let cmd = 'aa test -m entry_test -b com.example.aacommandrelyhap ' +
-            '-s class ACTS_AACommand_01_3#ACTS_AACommand_finish_1300 -s unittest OpenHarmonyTestRunner'
-            let finishmsg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
-            globalThis.abilityDelegator.executeShellCommand(cmd).then((data) => {
-                console.log('ACTS_AACommand_finishTest_1300 - executeShellCommand: start ')
-                console.log('ACTS_AACommand_finishTest_1300 stdResult = ' + data.stdResult)
-                let i = data.stdResult.indexOf(finishmsg);
-                console.log('ACTS_AACommand_finishTest_1300 query string i = ' + i);
-                expect(i == -1).assertEqual(false);
-                let j = data.stdResult.indexOf('TestFinished-ResultCode: 0');
-                console.log('ACTS_AACommand_finishTest_1300 query string j = ' + j);
-                expect(j == -1).assertEqual(false);
-                console.log('ACTS_AACommand_finishTest_1300 - executeShellCommand: end')
-            })
-            setTimeout(async() => {
-                let temp
-                let cmd ='aa dump -a'
-                abilityDelegator.executeShellCommand(cmd,
-                    (err: any, d: any) => {
-                        console.info('executeShellCommand : err : ' + JSON.stringify(err));
-                        console.info('executeShellCommand : data : ' + JSON.stringify(d));
-                        temp = d["stdResult"];
-                        expect(temp.indexOf("com.example.aacommandrelyhap") == -1).assertTrue()
-                        console.info('executeShellCommand end');
-                    })
-                done();
-            }, DELAY )
+            finishmsg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
+            finishmsg1 = 'TestFinished-ResultCode: 0'
+            expect(globalThis.stdResult23).assertContain(finishmsg);
+            expect(globalThis.stdResult23).assertContain(finishmsg1);
+            expect(globalThis.stdResult24.indexOf("com.example.aacommandrelyhap") == -1).assertTrue()
+            done()
         })
 
         /**
@@ -840,33 +501,12 @@ export default function abilityTest() {
          */
         it('ACTS_AACommand_finishTest_1400', 0, async function (done) {
             console.log("ACTS_AACommand_finishTest_1400 --- start")
-            let cmd = 'aa test -m entry_test -b com.example.aacommandrelyhap ' +
-            '-s class ACTS_AACommand_01_3#ACTS_AACommand_finish_1400 -s unittest OpenHarmonyTestRunner'
-            let finishmsg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
-            globalThis.abilityDelegator.executeShellCommand(cmd).then((data) => {
-                console.log('ACTS_AACommand_finishTest_1400 - executeShellCommand: start ')
-                console.log('ACTS_AACommand_finishTest_1400 stdResult = ' + data.stdResult)
-                let i = data.stdResult.indexOf(finishmsg);
-                console.log('ACTS_AACommand_finishTest_1400 query string i = ' + i);
-                expect(i == -1).assertEqual(false);
-                let j = data.stdResult.indexOf('TestFinished-ResultCode: 1');
-                console.log('ACTS_AACommand_finishTest_1400 query string j = ' + j);
-                expect(j == -1).assertEqual(false);
-                console.log('ACTS_AACommand_finishTest_1400 - executeShellCommand: end')
-            })
-            setTimeout(async() => {
-                let temp
-                let cmd ='aa dump -a'
-                abilityDelegator.executeShellCommand(cmd,
-                    (err: any, d: any) => {
-                        console.info('executeShellCommand : err : ' + JSON.stringify(err));
-                        console.info('executeShellCommand : data : ' + JSON.stringify(d));
-                        temp = d["stdResult"];
-                        expect(temp.indexOf("com.example.aacommandrelyhap") == -1).assertTrue()
-                        console.info('executeShellCommand end');
-                    })
-                done();
-            }, DELAY )
+            finishmsg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
+            finishmsg1 = 'TestFinished-ResultCode: 1'
+            expect(globalThis.stdResult25).assertContain(finishmsg);
+            expect(globalThis.stdResult25).assertContain(finishmsg1);
+            expect(globalThis.stdResult26.indexOf("com.example.aacommandrelyhap") == -1).assertTrue()
+            done()
         })
 
         /**
@@ -878,33 +518,12 @@ export default function abilityTest() {
          */
         it('ACTS_AACommand_finishTest_1500', 0, async function (done) {
             console.log("ACTS_AACommand_finishTest_1500 --- start")
-            let cmd = 'aa test -m entry_test -b com.example.aacommandrelyhap ' +
-            '-s class ACTS_AACommand_01_3#ACTS_AACommand_finish_1500 -s unittest OpenHarmonyTestRunner'
-            let finishmsg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
-            globalThis.abilityDelegator.executeShellCommand(cmd).then((data) => {
-                console.log('ACTS_AACommand_finishTest_1500 - executeShellCommand: start ')
-                console.log('ACTS_AACommand_finishTest_1500 stdResult = ' + data.stdResult)
-                let i = data.stdResult.indexOf(finishmsg);
-                console.log('ACTS_AACommand_finishTest_1500 query string i = ' + i);
-                expect(i == -1).assertEqual(false);
-                let j = data.stdResult.indexOf('TestFinished-ResultCode: -1');
-                console.log('ACTS_AACommand_finishTest_1500 query string j = ' + j);
-                expect(j == -1).assertEqual(false);
-                console.log('ACTS_AACommand_finishTest_1500 - executeShellCommand: end')
-            })
-            setTimeout(async() => {
-                let temp
-                let cmd ='aa dump -a'
-                abilityDelegator.executeShellCommand(cmd,
-                    (err: any, d: any) => {
-                        console.info('executeShellCommand : err : ' + JSON.stringify(err));
-                        console.info('executeShellCommand : data : ' + JSON.stringify(d));
-                        temp = d["stdResult"];
-                        expect(temp.indexOf("com.example.aacommandrelyhap") == -1).assertTrue()
-                        console.info('executeShellCommand end');
-                    })
-                done();
-            }, DELAY )
+            finishmsg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
+            finishmsg1 = 'TestFinished-ResultCode: -1'
+            expect(globalThis.stdResult27).assertContain(finishmsg);
+            expect(globalThis.stdResult27).assertContain(finishmsg1);
+            expect(globalThis.stdResult28.indexOf("com.example.aacommandrelyhap") == -1).assertTrue()
+            done()
         })
 
         /**
@@ -916,24 +535,8 @@ export default function abilityTest() {
                  */
         it('ACTS_AACommand_finishTest_0200', 0, async function (done) {
             console.log("ACTS_AACommand_finishTest_0200 --- start")
-            let cmd = 'aa test -m entry_test -b com.example.aacommandrelyhap ' +
-            '-s class ACTS_AACommand_01_3#ACTS_AACommand_finish_0200 -s unittest OpenHarmonyTestRunner'
-            globalThis.abilityDelegator.executeShellCommand(cmd, () => {
-                console.log('ACTS_AACommand_finishTest_0200 - executeShellCommand: end')
-            })
-            setTimeout(async() => {
-                let temp
-                let cmd ='aa dump -a'
-                abilityDelegator.executeShellCommand(cmd,
-                    (err: any, d: any) => {
-                        console.info('executeShellCommand : err : ' + JSON.stringify(err));
-                        console.info('executeShellCommand : data : ' + JSON.stringify(d));
-                        temp = d["stdResult"];
-                        expect(temp.indexOf("com.example.aacommandrelyhap") >= 0).assertTrue()
-                        console.info('executeShellCommand end');
-                    })
-                done();
-            }, DELAY )
+            expect(globalThis.stdResult29.indexOf("com.example.aacommandrelyhap") >= 0).assertTrue()
+            done()
         })
 
         /**
@@ -944,24 +547,8 @@ export default function abilityTest() {
          */
         it('ACTS_AACommand_finishTest_0300', 0, async function (done) {
             console.log("ACTS_AACommand_finishTest_0300 --- start")
-            let cmd = 'aa test -m entry_test -b com.example.aacommandrelyhap ' +
-            '-s class ACTS_AACommand_01_3#ACTS_AACommand_finish_0300 -s unittest OpenHarmonyTestRunner'
-            globalThis.abilityDelegator.executeShellCommand(cmd, () => {
-                console.log('ACTS_AACommand_finishTest_0300 - executeShellCommand: start ')
-            })
-            setTimeout(async() => {
-                let temp
-                let cmd ='aa dump -a'
-                abilityDelegator.executeShellCommand(cmd,
-                    (err: any, d: any) => {
-                        console.info('executeShellCommand : err : ' + JSON.stringify(err));
-                        console.info('executeShellCommand : data : ' + JSON.stringify(d));
-                        temp = d["stdResult"];
-                        expect(temp.indexOf("com.example.aacommandrelyhap") >= 0).assertTrue()
-                        console.info('executeShellCommand end');
-                    })
-                done();
-            }, DELAY )
+            expect(globalThis.stdResult30.indexOf("com.example.aacommandrelyhap") >= 0).assertTrue()
+            done()
         })
 
         /**
@@ -974,35 +561,8 @@ export default function abilityTest() {
          */
         it('ACTS_AACommand_finishTest_0800', 0, async function (done) {
             console.log("ACTS_AACommand_finishTest_0800 --- start")
-            let cmd = 'aa test -m entry_test -b com.example.aacommandrelyhap -s ' +
-            'class ACTS_AACommand_01_3#ACTS_AACommand_finish_0800 -s unittest OpenHarmonyTestRunner'
-            let finishmsg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
-            globalThis.abilityDelegator.executeShellCommand(cmd, (err, data) => {
-                console.log('ACTS_AACommand_finishTest_0800 - executeShellCommand: start ')
-                console.log('ACTS_AACommand_finishTest_0800 stdResult = ' + data.stdResult)
-                let i = data.stdResult.indexOf(finishmsg);
-                console.log('ACTS_AACommand_finishTest_0800 query string i = ' + i);
-                expect(i == -1).assertEqual(true);
-                let j = data.stdResult.indexOf('TestFinished-ResultCode:');
-                console.log('ACTS_AACommand_finishTest_0800 query string j = ' + j);
-                expect(j == -1).assertEqual(false);
-                console.log('ACTS_AACommand_finishTest_0800 exitCode = ' + data.exitCode)
-                expect(data.exitCode).assertEqual(0);
-                console.log('ACTS_AACommand_finishTest_0800 - executeShellCommand: end')
-            })
-            setTimeout(async() => {
-                let temp
-                let cmd ='aa dump -a'
-                abilityDelegator.executeShellCommand(cmd,
-                    (err: any, d: any) => {
-                        console.info('executeShellCommand : err : ' + JSON.stringify(err));
-                        console.info('executeShellCommand : data : ' + JSON.stringify(d));
-                        temp = d["stdResult"];
-                        expect(temp.indexOf("com.example.aacommandrelyhap") >= 0).assertTrue()
-                        console.info('executeShellCommand end');
-                    })
-                done();
-            }, DELAY )
+            expect(globalThis.stdResult31.indexOf("com.example.aacommandrelyhap") >= 0).assertTrue()
+            done()
         })
 
         /**
@@ -1013,24 +573,8 @@ export default function abilityTest() {
          */
         it('ACTS_AACommand_finishTest_1000', 0, async function (done) {
             console.log("ACTS_AACommand_finishTest_1000 --- start")
-            let cmd = 'aa test -m entry_test -b com.example.aacommandrelyhap -s ' +
-            'class ACTS_AACommand_01_3#ACTS_AACommand_finish_1000 -s unittest OpenHarmonyTestRunner'
-            globalThis.abilityDelegator.executeShellCommand(cmd).then((data) => {
-                console.log('ACTS_AACommand_finishTest_1000 - executeShellCommand: start ')
-            })
-            setTimeout(async() => {
-                let temp
-                let cmd ='aa dump -a'
-                abilityDelegator.executeShellCommand(cmd,
-                    (err: any, d: any) => {
-                        console.info('executeShellCommand : err : ' + JSON.stringify(err));
-                        console.info('executeShellCommand : data : ' + JSON.stringify(d));
-                        temp = d["stdResult"];
-                        expect(temp.indexOf("com.example.aacommandrelyhap") >=0).assertTrue()
-                        console.info('executeShellCommand end');
-                    })
-                done();
-            }, DELAY )
+            expect(globalThis.stdResult32.indexOf("com.example.aacommandrelyhap") >= 0).assertTrue()
+            done()
         })
 
         /**
@@ -1041,24 +585,8 @@ export default function abilityTest() {
          */
         it('ACTS_AACommand_finishTest_1100', 0, async function (done) {
             console.log("ACTS_AACommand_finishTest_1100 --- start")
-            let cmd = 'aa test -m entry_test -b com.example.aacommandrelyhap ' +
-            '-s class ACTS_AACommand_01_3#ACTS_AACommand_finish_1100 -s unittest OpenHarmonyTestRunner'
-            globalThis.abilityDelegator.executeShellCommand(cmd).then((data) => {
-                console.log('ACTS_AACommand_finishTest_1100 - executeShellCommand: start ')
-            })
-            setTimeout(async() => {
-                let temp
-                let cmd ='aa dump -a'
-                abilityDelegator.executeShellCommand(cmd,
-                    (err: any, d: any) => {
-                        console.info('executeShellCommand : err : ' + JSON.stringify(err));
-                        console.info('executeShellCommand : data : ' + JSON.stringify(d));
-                        temp = d["stdResult"];
-                        expect(temp.indexOf("com.example.aacommandrelyhap") >= 0).assertTrue()
-                        console.info('executeShellCommand end');
-                    })
-                done();
-            }, DELAY )
+            expect(globalThis.stdResult33.indexOf("com.example.aacommandrelyhap") >= 0).assertTrue()
+            done()
         })
         /**
         * @tc.number: ACTS_AACommand_finishTest_1600
@@ -1070,35 +598,8 @@ export default function abilityTest() {
         */
         it('ACTS_AACommand_finishTest_1600', 0, async function (done) {
             console.log("ACTS_AACommand_finishTest_1600 --- start")
-            let cmd = 'aa test -m entry_test -b com.example.aacommandrelyhap' +
-            ' -s class ACTS_AACommand_01_3#ACTS_AACommand_finish_1600 -s unittest OpenHarmonyTestRunner'
-            let finishmsg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
-            globalThis.abilityDelegator.executeShellCommand(cmd).then((data) => {
-                console.log('ACTS_AACommand_finishTest_1600 - executeShellCommand: start ')
-                console.log('ACTS_AACommand_finishTest_1600 stdResult = ' + data.stdResult)
-                let i = data.stdResult.indexOf(finishmsg);
-                console.log('ACTS_AACommand_finishTest_1600 query string i = ' + i);
-                expect(i == -1).assertEqual(true);
-                let j = data.stdResult.indexOf('TestFinished-ResultCode:');
-                console.log('ACTS_AACommand_finishTest_1600 query string j = ' + j);
-                expect(j == -1).assertEqual(false);
-                console.log('ACTS_AACommand_finishTest_1600 exitCode = ' + data.exitCode)
-                expect(data.exitCode).assertEqual(0);
-                console.log('ACTS_AACommand_finishTest_1600 - executeShellCommand: end')
-            })
-            setTimeout(async() => {
-                let temp
-                let cmd ='aa dump -a'
-                abilityDelegator.executeShellCommand(cmd,
-                    (err: any, d: any) => {
-                        console.info('executeShellCommand : err : ' + JSON.stringify(err));
-                        console.info('executeShellCommand : data : ' + JSON.stringify(d));
-                        temp = d["stdResult"];
-                        expect(temp.indexOf("com.example.aacommandrelyhap") >= 0).assertTrue()
-                        console.info('executeShellCommand end');
-                    })
-                done();
-            }, DELAY )
+            expect(globalThis.stdResult34.indexOf("com.example.aacommandrelyhap") >= 0).assertTrue()
+            done()
         })
     })
 };
