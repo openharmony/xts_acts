@@ -156,8 +156,7 @@ export default function abilityTest() {
           expect(listKeyTemp[0]).assertEqual("Hap2MainAbility4 onWindowStageCreate");
           expect(listKeyTemp[1]).assertEqual("Hap2MainAbility4 onWindowStageActive");
           expect(listKeyTemp[2]).assertEqual("Hap2MainAbility4 onWindowStageInactive");
-          expect(listKeyTemp[3]).assertEqual("Hap2MainAbility4 onWindowStageInactive");
-          expect(listKeyTemp[4]).assertEqual("Hap2MainAbility4 onWindowStageDestroy");
+          expect(listKeyTemp[3]).assertEqual("Hap2MainAbility4 onWindowStageDestroy");
           globalThis.ApplicationContext4
             .unregisterAbilityLifecycleCallback(globalThis.mainAbility4CallBackId, (error, data) => {
               console.log(TAG + ": unregisterAbilityLifecycleCallback success, err: " + JSON.stringify(error) +
