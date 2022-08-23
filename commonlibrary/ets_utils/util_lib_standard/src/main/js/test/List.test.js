@@ -12,5 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-require('./util.test.js');
+import UtilFunTest from './util.test.js'
+export default function testsuite() {
+    UtilFunTest()
+}

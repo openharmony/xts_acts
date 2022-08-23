@@ -23,6 +23,9 @@ ohos_js_hap_suite("ActsAmsStartAbilityForResultTest") {
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsAmsStartAbilityForResultTest"
+
+  subsystem_name = "ability"
+  part_name = "ability_runtime"
 }
 
 ohos_app_scope("actsamsstartabilityforresulttest_app_profile") {

@@ -102,21 +102,21 @@ export default function actsBmsJsUnPermissionTest() {
          * @tc.desc: test hasInstalled without permission
         */
         it('SUB_BMS_HAP_STATUS_0011', 0, async function (done) {
+            let flag = 0;
             pkg.hasInstalled({
                 bundleName: SELF_BUNDLENAME,
                 success: function success(data) {
                     console.info("get hasInstalled success" + JSON.stringify(data));
+                    flag += 1;
                     expect(data.result).assertTrue();
-                    done();
                 },
                 fail: function fail(data, code) {
                     console.info("get hasInstalled fail" + JSON.stringify(data));
                     expect(data).assertFail();
-                    done();
                 },
                 complete: function complete() {
                     console.info("get hasInstalled complete");
-                    expect().assertFail();
+                    expect(flag).assertEqual(1);
                     done();
                 }
             })
@@ -128,21 +128,21 @@ export default function actsBmsJsUnPermissionTest() {
          * @tc.desc: test hasInstalled without permission
         */
         it('SUB_BMS_HAP_STATUS_0012', 0, async function (done) {
+            let flag = 0;
             pkg.hasInstalled({
                 bundleName: BUNDLE_NAME_OTHER,
                 success: function success(data) {
                     console.info("get hasInstalled success" + JSON.stringify(data));
+                    flag += 1;
                     expect(data.result).assertFalse();
-                    done();
                 },
                 fail: function fail(data, code) {
                     console.info("get hasInstalled fail" + JSON.stringify(data));
                     expect(data).assertFail();
-                    done();
                 },
                 complete: function complete() {
                     console.info("get hasInstalled complete");
-                    expect().assertFail();
+                    expect(flag).assertEqual(1);
                     done();
                 }
             })
@@ -269,8 +269,12 @@ export default function actsBmsJsUnPermissionTest() {
             expect(info.descriptionId).assertEqual(0);
             expect(info.icon).assertEqual("$media:icon");
             expect(info.iconId > 0).assertTrue();
+            expect(info.iconIndex > 0).assertTrue();
+            expect(info.iconIndex).assertEqual(info.iconId);
             expect(info.label).assertEqual("$string:entry_MainAbility");
             expect(info.labelId > 0).assertTrue();
+            expect(info.labelIndex > 0).assertTrue();
+            expect(info.labelIndex).assertEqual(info.labelId);
             expect(info.systemApp).assertEqual(true);
             expect(info.entryDir).assertEqual("/data/app/el1/bundle/public/com.example.actsbmsetsunpermissiontest/com.example.actsbmsetsunpermissiontest");
             expect(info.supportedModes).assertEqual(0);

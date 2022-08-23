@@ -1,6 +1,6 @@
 {
     "app": {
-        "bundleName": "ohos.acts.hiviewdfx.hilog.function",
+        "bundleName": "ohos.acts.hiviewdfx.hiappevent.function",
         "vendor": "example",
         "version": {
             "code": 1,
@@ -13,7 +13,7 @@
     },
     "deviceConfig": {},
     "module": {
-        "package": "ohos.acts.hiviewdfx.hilog.function",
+        "package": "ohos.acts.hiviewdfx.hiappevent.function",
         "name": ".entry",
         "deviceType": [
             "phone"

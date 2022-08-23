@@ -4,7 +4,7 @@
         "type": "entry",
         "srcEntrance": "./ets/Application/AbilityStage.ts",
         "description": "$string:phone_entry_dsc",
-        "mainElement": "MainAbility",
+        "mainElement": "com.example.staticabilitystagecontext.MainAbility",
         "deviceTypes": [
             "phone"
         ],

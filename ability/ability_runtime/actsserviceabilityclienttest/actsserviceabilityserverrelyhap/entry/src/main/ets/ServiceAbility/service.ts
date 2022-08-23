@@ -14,7 +14,6 @@
  */
 import rpc from "@ohos.rpc";
 import particleAbility from '@ohos.ability.particleAbility'
-import featureAbility from '@ohos.ability.featureAbility'
 import commonEvent from '@ohos.commonEvent'
 var serversecond_bundleName = "com.amsst.stserviceabilityserversecond";
 var serversecond_abilityName = "com.amsst.stserviceabilityserversecond.ServiceAbility";
@@ -59,7 +58,11 @@ export default {
     onStop() {
         console.debug('ACTS_SerivceAbilityServer ====<onStop');
         commonEvent.publish("ACTS_SerivceAbilityServer_onStop", (err) => { });
-        featureAbility.terminateSelf();
+        particleAbility.terminateSelf().then((data) => {
+            console.log('ACTS_SerivceAbilityServer terminateSelf data:' + JSON.stringify(data));
+          }).catch((error) => {
+            console.log('ACTS_SerivceAbilityServer terminateSelf error:' + JSON.stringify(error));
+          });
     },
     onCommand(want, restart, startId) {
         console.debug('ACTS_SerivceAbilityServer ====>onCommand='
@@ -76,7 +79,11 @@ export default {
                     },
                 }
             );
-            featureAbility.terminateSelf();
+            particleAbility.terminateSelf().then((data) => {
+                console.log('ACTS_SerivceAbilityServer terminateSelf data:' + JSON.stringify(data));
+              }).catch((error) => {
+                console.log('ACTS_SerivceAbilityServer terminateSelf error:' + JSON.stringify(error));
+              });
         } else if (want.action == 'ServiceStartService_1000') {
             particleAbility.startAbility(
                 {
@@ -89,7 +96,11 @@ export default {
                 }, (err, data) => {
                     console.debug('ACTS_SerivceAbilityServer start Ability 1000 callback====='
                         + err + ', data= ' + data + " , JSON." + JSON.stringify(data));
-                    featureAbility.terminateSelf();
+                        particleAbility.terminateSelf().then((data) => {
+                            console.log('ACTS_SerivceAbilityServer terminateSelf data:' + JSON.stringify(data));
+                          }).catch((error) => {
+                            console.log('ACTS_SerivceAbilityServer terminateSelf error:' + JSON.stringify(error));
+                          });
                 }
             );
         } else {
@@ -99,7 +110,11 @@ export default {
                         || want.action == 'PageStartService_0301' || want.action == 'PageStartService_0401') {
                         console.debug('ACTS_SerivceAbilityServer_onCommand 100 200 301 401.terminateSelf()=====>'
                             + want.action);
-                        featureAbility.terminateSelf();
+                            particleAbility.terminateSelf().then((data) => {
+                                console.log('ACTS_SerivceAbilityServer terminateSelf data:' + JSON.stringify(data));
+                              }).catch((error) => {
+                                console.log('ACTS_SerivceAbilityServer terminateSelf error:' + JSON.stringify(error));
+                              });
                     }
                 } else {
                     console.debug('ACTS_SerivceAbilityServer_onCommand publish err=====>' + err);
@@ -169,7 +184,11 @@ export default {
                             + ("json err=") + JSON.stringify(err) + " , " + want.action);
                     })
                 }
-                featureAbility.terminateSelf();
+                particleAbility.terminateSelf().then((data) => {
+                    console.log('ACTS_SerivceAbilityServer terminateSelf data:' + JSON.stringify(data));
+                  }).catch((error) => {
+                    console.log('ACTS_SerivceAbilityServer terminateSelf error:' + JSON.stringify(error));
+                  });
             }
         });
     },

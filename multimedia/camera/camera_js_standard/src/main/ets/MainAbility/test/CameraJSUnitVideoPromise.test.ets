@@ -1300,6 +1300,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* VideoStabilizationMode Interface will be change
     it('ISVIDEOSTABILIZATIONMODESUPPORTEDOFF', 0, async function (done) {
       console.info(TAG + "Entering ISVIDEOSTABILIZATIONMODESUPPORTEDOFF to operate");
       await captureSessionPromise.isVideoStabilizationModeSupported(cameraObj.VideoStabilizationMode.OFF)
@@ -1317,6 +1318,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       await sleep(1);
       done();
     })
+    */
  
     /**
       * @tc.number    : SET_VIDEOSTABILIZATIONMODEOFF
@@ -1326,6 +1328,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* VideoStabilizationMode Interface will be change
     it('SET_VIDEOSTABILIZATIONMODEOFF', 0, async function (done) {
       console.info(TAG + "Entering SET_VIDEOSTABILIZATIONMODEOFF to operate");
       await captureSessionPromise.setVideoStabilizationMode(cameraObj.VideoStabilizationMode.OFF)
@@ -1342,6 +1345,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       await sleep(1);
       done();
     })
+    */
  
     /**
       * @tc.number    : GET_VIDEOSTABILIZATIONMODEOFF
@@ -1377,6 +1381,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* VideoStabilizationMode Interface will be change
     it('ISVIDEOSTABILIZATIONMODESUPPORTED_LOW', 0, async function (done) {
       console.info(TAG + "Entering ISVIDEOSTABILIZATIONMODESUPPORTED_LOW to operate");
       await captureSessionPromise.isVideoStabilizationModeSupported(cameraObj.VideoStabilizationMode.LOW)
@@ -1394,7 +1399,8 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       await sleep(1);
       done();
     })
- 
+    */
+
     /**
       * @tc.number    : SET_VIDEOSTABILIZATIONMODELOW
       * @tc.name      : SetVideoStabilizationModelow
@@ -1403,6 +1409,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* VideoStabilizationMode Interface will be change
     it('SET_VIDEOSTABILIZATIONMODELOW', 0, async function (done) {
       console.info(TAG + "Entering SET_VIDEOSTABILIZATIONMODELOW to operate");
       await captureSessionPromise.setVideoStabilizationMode(cameraObj.VideoStabilizationMode.LOW)
@@ -1419,6 +1426,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       await sleep(1);
       done();
     })
+    */
  
     /**
       * @tc.number    : GET_VIDEOSTABILIZATIONMODELOW
@@ -1454,6 +1462,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* VideoStabilizationMode Interface will be change
     it('ISVIDEOSTABILIZATIONMODESUPPORTED_MIDDLE', 0, async function (done) {
       console.info(TAG + "Entering ISVIDEOSTABILIZATIONMODESUPPORTED_MIDDLE to operate");
       await captureSessionPromise.isVideoStabilizationModeSupported(cameraObj.VideoStabilizationMode.MIDDLE)
@@ -1471,6 +1480,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       await sleep(1);
       done();
     })
+    */
  
     /**
       * @tc.number    : SET_VIDEOSTABILIZATIONMODEMIDDLE
@@ -1480,6 +1490,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* VideoStabilizationMode Interface will be change
     it('SET_VIDEOSTABILIZATIONMODEMIDDLE', 0, async function (done) {
       console.info(TAG + "Entering SET_VIDEOSTABILIZATIONMODEMIDDLE to operate");
       await captureSessionPromise.setVideoStabilizationMode(cameraObj.VideoStabilizationMode.MIDDLE)
@@ -1496,6 +1507,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       await sleep(1);
       done();
     })
+    */
  
     /**
       * @tc.number    : GET_VIDEOSTABILIZATIONMODEMIDDLE
@@ -1531,6 +1543,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* VideoStabilizationMode Interface will be change
     it('ISVIDEOSTABILIZATIONMODESUPPORTED_HIGH', 0, async function (done) {
       console.info(TAG + "Entering ISVIDEOSTABILIZATIONMODESUPPORTED_HIGH to operate");
       await captureSessionPromise.isVideoStabilizationModeSupported(cameraObj.VideoStabilizationMode.HIGH)
@@ -1548,6 +1561,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       await sleep(1);
       done();
     })
+    */
  
     /**
       * @tc.number    : SET_VIDEOSTABILIZATIONMODEHIGH
@@ -1557,6 +1571,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* VideoStabilizationMode Interface will be change
     it('SET_VIDEOSTABILIZATIONMODEHIGH', 0, async function (done) {
       console.info(TAG + "Entering SET_VIDEOSTABILIZATIONMODEHIGH to operate");
       await captureSessionPromise.setVideoStabilizationMode(cameraObj.VideoStabilizationMode.HIGH)
@@ -1573,6 +1588,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       await sleep(1);
       done();
     })
+    */
  
     /**
       * @tc.number    : GET_VIDEOSTABILIZATIONMODEHIGH
@@ -1608,6 +1624,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* VideoStabilizationMode Interface will be change
     it('ISVIDEOSTABILIZATIONMODESUPPORTED_AUTO', 0, async function (done) {
       console.info(TAG + "Entering ISVIDEOSTABILIZATIONMODESUPPORTED_AUTO to operate");
       await captureSessionPromise.isVideoStabilizationModeSupported(cameraObj.VideoStabilizationMode.AUTO)
@@ -1625,6 +1642,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       await sleep(1);
       done();
     })
+    */
  
     /**
       * @tc.number    : SET_VIDEOSTABILIZATIONMODEAUTO
@@ -1634,6 +1652,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* VideoStabilizationMode Interface will be change
     it('SET_VIDEOSTABILIZATIONMODEAUTO', 0, async function (done) {
       console.info(TAG + "Entering SET_VIDEOSTABILIZATIONMODEAUTO to operate");
       await captureSessionPromise.setVideoStabilizationMode(cameraObj.VideoStabilizationMode.AUTO)
@@ -1650,6 +1669,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       await sleep(1);
       done();
     })
+    */
  
     /**
       * @tc.number    : GET_VIDEOSTABILIZATIONMODEAUTO
@@ -3049,6 +3069,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* EXPOSUREMODE Interface will be change
     it('IS_EXPOSURE_MODE_LOCKED_SUPPORTED', 0, async function (done) {
       console.info(TAG + "Entering IS_EXPOSURE_MODE_LOCKED_SUPPORTED to operate");
       await camera0InputPromise.isExposureModeSupported(cameraObj.ExposureMode.EXPOSURE_MODE_LOCKED)
@@ -3064,6 +3085,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       await sleep(1);
       done();
     })
+    */
 
     /**
       * @tc.number    : SET_EXPOSURE_MODE_LOCKED
@@ -3073,6 +3095,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* EXPOSUREMODE Interface will be change
     it('SET_EXPOSURE_MODE_LOCKED', 0, async function (done) {
       console.info(TAG + "Entering SET_EXPOSURE_MODE_Locked to operate");
       await camera0InputPromise.setExposureMode(cameraObj.ExposureMode.EXPOSURE_MODE_LOCKED)
@@ -3089,6 +3112,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       await sleep(1);
       done();
     })
+    */
 
     /**
       * @tc.number    : GET_EXPOSURE_MODE_LOCKED
@@ -3252,6 +3276,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* EXPOSUREMODE Interface will be change
     it('IS_EXPOSURE_MODE_AUTO_SUPPORTED', 0, async function (done) {
       console.info(TAG + "Entering IS_EXPOSURE_MODE_AUTO_SUPPORTED to operate");
       await camera0InputPromise.isExposureModeSupported(cameraObj.ExposureMode.EXPOSURE_MODE_AUTO)
@@ -3267,6 +3292,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       await sleep(1);
       done();
     })
+    */
 
     /**
       * @tc.number    : SET_EXPOSURE_MODE_AUTO
@@ -3276,6 +3302,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* EXPOSUREMODE Interface will be change
     it('SET_EXPOSURE_MODE_AUTO', 0, async function (done) {
       console.info(TAG + "Entering SET_EXPOSURE_MODE_AUTO to operate");
       await camera0InputPromise.setExposureMode(cameraObj.ExposureMode.EXPOSURE_MODE_AUTO)
@@ -3292,6 +3319,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       await sleep(1);
       done();
     })
+    */
 
     /**
       * @tc.number    : GET_EXPOSURE_MODE_AUTO
@@ -3429,6 +3457,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* EXPOSUREMODE Interface will be change
     it('IS_EXPOSURE_MODE_CONTINUOUS_AUTO', 0, async function (done) {
       console.info(TAG + "Entering IS_EXPOSURE_MODE_CONTINUOUS_AUTO to operate");
       await camera0InputPromise.isExposureModeSupported(cameraObj.ExposureMode.EXPOSURE_MODE_CONTINUOUS_AUTO)
@@ -3444,6 +3473,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       await sleep(1);
       done();
     })
+    */
 
     /**
       * @tc.number    : SET_EXPOSURE_MODE_CONTINUOUS_AUTO
@@ -3453,6 +3483,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* EXPOSUREMODE Interface will be change
     it('SET_EXPOSURE_MODE_CONTINUOUS_AUTO', 0, async function (done) {
       console.info(TAG + "Entering SET_EXPOSURE_MODE_CONTINUOUS_AUTO to operate");
       await camera0InputPromise.setExposureMode(cameraObj.ExposureMode.EXPOSURE_MODE_CONTINUOUS_AUTO)
@@ -3469,6 +3500,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       await sleep(1);
       done();
     })
+    */
 
     /**
       * @tc.number    : GET_EXPOSURE_MODE_CONTINUOUS_AUTO

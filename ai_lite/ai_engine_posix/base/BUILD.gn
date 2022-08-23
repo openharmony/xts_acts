@@ -47,17 +47,17 @@ hcpptest_suite("ActsAiEngineTest") {
     "//utils/native/lite/include",
     "//kernel/liteos-a/kernel/include",
     "//kernel/liteos-a/kernel/common",
-    "//foundation/distributedschedule/samgr_lite/interfaces/innerkits/registry",
-    "//foundation/distributedschedule/samgr_lite/interfaces/kits/registry",
-    "//foundation/distributedschedule/samgr_lite/interfaces/innerkits/samgr",
-    "//foundation/distributedschedule/samgr_lite/interfaces/kits/samgr",
+    "//foundation/systemabilitymgr/samgr_lite/interfaces/innerkits/registry",
+    "//foundation/systemabilitymgr/samgr_lite/interfaces/kits/registry",
+    "//foundation/systemabilitymgr/samgr_lite/interfaces/innerkits/samgr",
+    "//foundation/systemabilitymgr/samgr_lite/interfaces/kits/samgr",
   ]
   deps = [
     "//base/hiviewdfx/hilog_lite/frameworks/featured:hilog_shared",
     "//foundation/ai/engine/services/client:client",
     "//foundation/ai/engine/services/common/platform/dl_operation:dlOperation",
     "//foundation/ai/engine/services/server/plugin_manager:plugin_manager",
-    "//foundation/distributedschedule/samgr_lite/samgr:samgr",
+    "//foundation/systemabilitymgr/samgr_lite/samgr:samgr",
     "//test/xts/acts/ai_lite/ai_engine_posix/base/src/sample:sample_plugin_1_sync",
     "//test/xts/acts/ai_lite/ai_engine_posix/base/src/sample:sample_plugin_2_async",
   ]

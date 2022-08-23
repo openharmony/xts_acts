@@ -327,13 +327,13 @@ describe('ActsFeatureAbilityTest', function () {
 
         function SubscribeCallBack(err, data) {
             clearTimeout(id);
+            expect(promise).assertEqual(0);
             expect(data.event).assertEqual("ACTS_StartAbility_0200_CommonEvent");
             console.debug("====>Subscribe CallBack data:====>" + JSON.stringify(data));
             commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
-            done();
         }
 
-        commonEvent.createSubscriber(subscriberInfoActsStartAbility0200).then(async (data) => {
+        await commonEvent.createSubscriber(subscriberInfoActsStartAbility0200).then(async (data) => {
             console.debug("====>Create Subscriber====>");
             Subscriber = data;
             await commonEvent.subscribe(Subscriber, SubscribeCallBack);
@@ -407,7 +407,6 @@ describe('ActsFeatureAbilityTest', function () {
                 },
             }
         );
-        expect(promise).assertEqual(0);
     })
 
     /**
@@ -687,7 +686,6 @@ describe('ActsFeatureAbilityTest', function () {
             expect(data.event).assertEqual("ACTS_StartAbility_0600_CommonEvent");
             console.debug("====>Subscribe CallBack data:====>" + JSON.stringify(data));
             commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
-            done();
         }
 
         commonEvent.createSubscriber(subscriberInfoActsStartAbility0600).then(async (data) => {
@@ -1104,7 +1102,7 @@ describe('ActsFeatureAbilityTest', function () {
         expect(data.moduleName).assertEqual("entry");
         expect(data.process).assertEqual("processTestAbility");
         expect(data.targetAbility).assertEqual("");
-        expect(data.backgroundModes).assertEqual(0);
+        expect(data.backgroundModes).assertEqual(1);
         expect(data.isVisible).assertEqual(true);
         expect(data.formEnabled).assertEqual(false);
         expect(data.type).assertEqual(1);
@@ -1185,20 +1183,20 @@ describe('ActsFeatureAbilityTest', function () {
         expect(typeof (data.moduleName)).assertEqual("string");
         expect(typeof (data.mainAbilityName)).assertEqual("string");
         expect(typeof (data.installationFree)).assertEqual("boolean");
-        expect(data.name).assertEqual("com.example.actsfeatureabilitytest");
+        expect(data.name).assertEqual("com.example.actsfeatureabilitytest.MyApplication");
         expect(data.description).assertEqual("descriptionTest");
         expect(data.descriptionId).assertEqual(0);
         expect(data.icon).assertEqual("$media:icon");
         expect(data.label).assertEqual("$string:app_name");
-        expect(data.labelId).assertEqual(0);
-        expect(data.iconId).assertEqual(0);
+        expect(data.labelId).assertEqual(16777216);
+        expect(data.iconId).assertEqual(16777219);
         expect(data.backgroundImg).assertEqual("");
         expect(data.supportedModes).assertEqual(0);
         expect(data.reqCapabilities[0]).assertEqual("reqCapabilitiesTest1");
         expect(data.reqCapabilities[1]).assertEqual("reqCapabilitiesTest2");
         expect(data.deviceTypes[0]).assertEqual("phone");
         expect(data.moduleName).assertEqual("entry")
-        expect(data.mainAbilityName).assertEqual("");
+        expect(data.mainAbilityName).assertEqual("com.example.actsfeatureabilitytest.MainAbility");
         expect(data.installationFree).assertEqual(false);
         console.info("checkHapModuleInfo end  " + data);
     }
@@ -1578,7 +1576,6 @@ describe('ActsFeatureAbilityTest', function () {
                 expect(data.event).assertEqual("ACTS_StartAbility_1300_CommonEvent");
                 console.debug("====>Subscribe CallBack data:====>" + JSON.stringify(data));
                 commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
-                done();
             }
 
             commonEvent.createSubscriber(subscriberInfoStartAbilityThirteen).then(async (data) => {

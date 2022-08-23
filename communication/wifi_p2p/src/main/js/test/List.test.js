@@ -14,7 +14,7 @@
  */
 //require('./WifiSta.test.js')
 //require('./WifiSoftAP.test.js')
-import ACTS_WifiTest from './WifiP2P.test.js'
+import ActsWifiTest from './WifiP2P.test.js'
 export default function testsuite() {
-ACTS_WifiTest()
+ActsWifiTest()
 }

@@ -14,6 +14,7 @@
 import("//test/xts/tools/build/suite.gni")
 
 _all_test_packages = [
+  "${ACTS_ROOT}/arkXtest:arkXtest",
   "${ACTS_ROOT}/global:global",
   "${ACTS_ROOT}/security:security",
   "${ACTS_ROOT}/useriam:useriam",
@@ -23,12 +24,15 @@ _all_test_packages = [
   "${ACTS_ROOT}/communication:communication",
   "${ACTS_ROOT}/notification:notification",
   "${ACTS_ROOT}/ability:ability",
-  "${ACTS_ROOT}/miscservices:miscservices",
+  "${ACTS_ROOT}/time:time",
+  "${ACTS_ROOT}/theme:theme",
+  "${ACTS_ROOT}/request:request",
+  "${ACTS_ROOT}/inputmethod:inputmethod",
   "${ACTS_ROOT}/powermgr:powermgr",
   "${ACTS_ROOT}/startup:startup",
   "${ACTS_ROOT}/sensors:sensor",
+  "${ACTS_ROOT}/distributeddatamgr:pasteboard",
   "${ACTS_ROOT}/distributeddatamgr:distributeddatamgr",
-  "${ACTS_ROOT}/updater:update",
   "${ACTS_ROOT}/graphic:graphic",
   "${ACTS_ROOT}/arkui:arkui",
   "${ACTS_ROOT}/storage:storage",
@@ -42,7 +46,7 @@ _all_test_packages = [
   "${ACTS_ROOT}/settingsdata:settingsdata",
   "${ACTS_ROOT}/barrierfree:barrierfree",
   "${ACTS_ROOT}/customization:customization",
-  "${ACTS_ROOT}/distributedschedule:distributedschedule",
+  "${ACTS_ROOT}/distributedschedule:systemabilitymgr",
 ]
 
 _all_test_packages_ivi = [

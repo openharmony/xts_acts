@@ -12,12 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 
 
-
-export default function abilityTest(abilityStageContext) {
-    describe('ActsAbilityStageContextTest', function () {
+export default function abilityTest() {
+    describe('ActsglobalThis.abilityStageContextTest', function () {
         /**
          * @tc.number: ACTS_getApplicationInfo_0300
          * @tc.name: Application query applicationInfo Static information.
@@ -26,7 +25,7 @@ export default function abilityTest(abilityStageContext) {
          */
         it('ACTS_getApplicationInfo_0300', 0, async function (done) {
             console.log("ACTS_getApplicationInfo_0300 --- start ability=====>'+ abilityContext.applicationInfo")
-            checkApplicationInfo(abilityStageContext.applicationInfo);
+            checkApplicationInfo(globalThis.abilityContext.applicationInfo);
             done();
         })
 
@@ -38,7 +37,7 @@ export default function abilityTest(abilityStageContext) {
          */
         it('ACTS_getHapModuleInfo_0300', 0, async function (done) {
             console.log("ACTS_getHapModuleInfo_0300 --- start ability=====>'+ abilityContext.currentHapModuleInfo")
-            checkHapModuleInfo(abilityStageContext.currentHapModuleInfo);
+            checkHapModuleInfo(globalThis.abilityStageContext.currentHapModuleInfo);
             done();
         })
 
@@ -101,7 +100,7 @@ export default function abilityTest(abilityStageContext) {
             expect(data.enabled).assertEqual(true);
             expect(data.label).assertEqual("$string:app_name");
             expect(data.labelId.length).assertLarger(0);
-            expect(data.icon).assertEqual("");
+            expect(data.icon).assertEqual("$media:icon");
             expect(data.iconId.length).assertLarger(0);
             expect(data.process).assertEqual("");
             expect(data.supportedModes).assertEqual(0);
@@ -120,7 +119,7 @@ export default function abilityTest(abilityStageContext) {
             console.log("checkApplicationInfo end  " + data);
         }
         function checkHapModuleInfo(data) {
-            console.log("checkHapModuleInfo start  " + data);
+            console.log("checkHapModuleInfo start  " + JSON.stringify(data));
             console.log("checkHapModuleInfo name : " + data.name);
             console.log("checkHapModuleInfo description : " + data.description);
             console.log("checkHapModuleInfo descriptionId : " + data.descriptionId);
@@ -157,20 +156,21 @@ export default function abilityTest(abilityStageContext) {
             console.log("checkHapModuleInfo_expect_typeof_end")
             expect(data.name).assertEqual("com.example.staticabilitystagecontext");
             expect(data.description).assertEqual("$string:phone_entry_dsc");
-            expect(data.descriptionId).assertEqual(undefined);
+            expect(data.descriptionId).assertEqual(16777221);
             expect(data.icon).assertEqual("$media:icon");
             expect(data.label).assertEqual("$string:entry_label");
-            expect(data.labelId).assertEqual(undefined);
-            expect(data.iconId).assertEqual(undefined);
+            expect(data.labelId).assertEqual(16777219);
+            expect(data.iconId).assertEqual(16777224);
             expect(data.backgroundImg).assertEqual("");
             expect(data.supportedModes).assertEqual(0);
             expect(data.reqCapabilities.length).assertEqual(0);
-            expect(data.reqCapabilities[0]).assertEqual(undefined);
             expect(data.deviceTypes.length).assertEqual(1);
             expect(data.deviceTypes[0]).assertEqual("phone");
             expect(data.moduleName).assertEqual("com.example.staticabilitystagecontext")
-            expect(data.mainAbilityName).assertEqual("MainAbility");
-            expect(data.installationFree).assertEqual(undefined);
+            expect(data.mainAbilityName).assertEqual("com.example.staticabilitystagecontext.MainAbility");
+            expect(data.installationFree).assertEqual(false);
+            expect(data.mainElementName).assertEqual('com.example.staticabilitystagecontext.MainAbility');
+            expect(data.hashValue).assertEqual('');
             console.log("checkHapModuleInfo end  " + data);
         }
     })

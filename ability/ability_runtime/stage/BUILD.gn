@@ -21,6 +21,8 @@ group("stage") {
       "actslifecyclemultihap3:ActsLifecycleMultiHap3",
       "actslifecyclemultihaptest:ActsLifecycleMultiHapTest",
       "actslifecyclesinglehaptest:ActsLifecycleSingleHapTest",
+      "actswindowstagelifecyclemultihaptest:ActsWindowStageLifecycleMultiHapTest",
+      "actswindowstagelifecyclesinglehaptest:ActsWindowStageLifecycleSingleHapTest",
     ]
   }
 }

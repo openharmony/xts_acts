@@ -627,6 +627,10 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo[i].description.length >= 0).assertTrue();
                 expect(datainfo[i].icon.length).assertLarger(0);
                 expect(datainfo[i].label.length).assertLarger(0);
+                expect(datainfo[i].iconIndex).assertLarger(0);
+                expect(datainfo[i].labelIndex).assertLarger(0);
+                expect(datainfo[i].iconIndex).assertEqual(datainfo[i].iconId);
+                expect(datainfo[i].labelIndex).assertEqual(datainfo[i].labelId);
             }
             expect(datainfo[i].moduleSourceDirs.length).assertLarger(0);
             expect(datainfo[i].moduleInfos.length).assertLarger(0);
@@ -796,8 +800,10 @@ describe('ActsBundleManagerTest', function () {
         expect(datainfo.process).assertEqual(NAME2);
         expect(datainfo.enabled).assertEqual(true);
         expect(datainfo.moduleSourceDirs.length).assertLarger(0);
+        expect(datainfo.moduleInfos.length).assertEqual(2);
+        expect(datainfo.moduleInfos[0].moduleName).assertEqual("entry");
+        expect(datainfo.moduleInfos[1].moduleName).assertEqual("feature");
         for (let j = 0; j < datainfo.moduleInfos.length; j++) {
-            expect(datainfo.moduleInfos[j].moduleName).assertEqual("entry");
             expect(datainfo.moduleInfos[j].moduleSourceDir.length).assertLarger(0);
         }
         done();
@@ -831,8 +837,10 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo.process).assertEqual(NAME2);
                 expect(datainfo.enabled).assertEqual(true);
                 expect(datainfo.moduleSourceDirs.length).assertLarger(0);
+                expect(datainfo.moduleInfos.length).assertEqual(2);
+                expect(datainfo.moduleInfos[0].moduleName).assertEqual("entry");
+                expect(datainfo.moduleInfos[1].moduleName).assertEqual("feature");
                 for (let j = 0; j < datainfo.moduleInfos.length; j++) {
-                    expect(datainfo.moduleInfos[j].moduleName).assertEqual("entry");
                     expect(datainfo.moduleInfos[j].moduleSourceDir.length).assertLarger(0);
                 }
                 done();
@@ -1520,7 +1528,7 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.applicationInfo.enabled).assertEqual(true);
             expect(datainfo.applicationInfo.moduleInfos[0].moduleName).assertEqual("entry");
             expect(datainfo.applicationInfo.moduleInfos[0].moduleSourceDir).assertEqual(DIR3);
-            expect(datainfo.applicationInfo.moduleInfos[1].moduleName).assertEqual("entry");
+            expect(datainfo.applicationInfo.moduleInfos[1].moduleName).assertEqual("feature");
             expect(datainfo.applicationInfo.moduleInfos[1].moduleSourceDir).assertEqual(DIR2);
         }
         done();
@@ -1561,7 +1569,7 @@ describe('ActsBundleManagerTest', function () {
                     expect(datainfo.applicationInfo.enabled).assertEqual(true);
                     expect(datainfo.applicationInfo.moduleInfos[0].moduleName).assertEqual("entry");
                     expect(datainfo.applicationInfo.moduleInfos[0].moduleSourceDir).assertEqual(DIR3);
-                    expect(datainfo.applicationInfo.moduleInfos[1].moduleName).assertEqual("entry");
+                    expect(datainfo.applicationInfo.moduleInfos[1].moduleName).assertEqual("feature");
                     expect(datainfo.applicationInfo.moduleInfos[1].moduleSourceDir).assertEqual(DIR2);
                 }
                 done();
@@ -1619,15 +1627,15 @@ describe('ActsBundleManagerTest', function () {
             if (datainfo.bundleName == NAME4) {
                 expect(datainfo.name).assertEqual("com.example.myapplication.MainAbility");
                 expect(datainfo.type).assertEqual(demo.AbilityType.DATA);
+                expect(datainfo.orientation).assertEqual(demo.DisplayOrientation.UNSPECIFIED);
                 expect(datainfo.bundleName).assertEqual(NAME4);
-                expect(datainfo.orientation).assertEqual(demo.DisplayOrientation.FOLLOW_RECENT);
                 queryResultCount++;
             }
             if (datainfo.bundleName == NAME5) {
                 expect(datainfo.name).assertEqual("com.example.myapplication.MainAbility");
                 expect(datainfo.type).assertEqual(demo.AbilityType.PAGE);
                 expect(datainfo.bundleName).assertEqual(NAME5);
-                expect(datainfo.orientation).assertEqual(demo.DisplayOrientation.UNSPECIFIED);
+                expect(datainfo.orientation).assertEqual(demo.DisplayOrientation.FOLLOW_RECENT);
                 queryResultCount++;
             }
         }
@@ -1686,13 +1694,13 @@ describe('ActsBundleManagerTest', function () {
             if (datainfo.bundleName == NAME4) {
                 expect(datainfo.name).assertEqual("com.example.myapplication.MainAbility");
                 expect(datainfo.bundleName).assertEqual(NAME4);
-                expect(datainfo.orientation).assertEqual(3);
+                expect(datainfo.orientation).assertEqual(demo.DisplayOrientation.UNSPECIFIED);
                 queryResultCount++;
             }
             if (datainfo.bundleName == NAME5) {
                 expect(datainfo.name).assertEqual("com.example.myapplication.MainAbility");
                 expect(datainfo.bundleName).assertEqual(NAME5);
-                expect(datainfo.orientation).assertEqual(0);
+                expect(datainfo.orientation).assertEqual(demo.DisplayOrientation.FOLLOW_RECENT);
                 queryResultCount++;
             }
         }

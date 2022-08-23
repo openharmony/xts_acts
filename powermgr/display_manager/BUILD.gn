@@ -21,9 +21,13 @@ ohos_js_hap_suite("powermgr_display_test") {
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsPowerMgrDisplayTest"
+  subsystem_name = "powermgr"
+  part_name = "display_manager"
 }
 ohos_js_assets("powermgr_display_js_assets") {
-  source_dir = "./src/main/js/default"
+  js2abc = true
+  hap_profile = "./src/main/config.json"
+  source_dir = "./src/main/js"
 }
 ohos_resources("powermgr_display_resources") {
   sources = [ "./src/main/resources" ]

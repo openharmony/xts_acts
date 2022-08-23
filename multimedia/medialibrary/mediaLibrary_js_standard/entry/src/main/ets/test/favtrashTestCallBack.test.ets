@@ -17,7 +17,9 @@ import mediaLibrary from '@ohos.multimedia.mediaLibrary';
 import featureAbility from '@ohos.ability.featureAbility';
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
-
+import {
+    sleep,
+} from '../../../../../../common';
 describe('file.callback.test.js', function () {
     var context = featureAbility.getContext();
     console.info('MediaLibraryTest : getMediaLibrary IN');
@@ -29,9 +31,7 @@ describe('file.callback.test.js', function () {
     beforeEach(function () {
         console.info('File Callback MediaLibraryTest: beforeEach: Prerequisites at the test case level, which are executed before each test case is executed.');
     });
-    afterEach(function () {
-        console.info('File Callback MediaLibraryTest: afterEach: Test case-level clearance conditions, which are executed after each test case is executed.');
-    });
+    afterEach(async function () { await sleep(200)});
     afterAll(function () {
         console.info('File Callback MediaLibraryTest: afterAll: Test suite-level cleanup condition, which is executed after the test suite is executed');
     });

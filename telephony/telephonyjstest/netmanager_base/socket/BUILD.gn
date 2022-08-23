@@ -21,6 +21,8 @@ ohos_js_hap_suite("ActsSocketTest") {
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsSocketTest"
+  part_name = "netstack"
+  subsystem_name = "communication"
 }
 ohos_js_assets("hjs_demo_js_assets") {
   js2abc = true

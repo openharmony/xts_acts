@@ -26,8 +26,8 @@ hcpptest_suite("ActsBundleMgrTest") {
     "${appexecfwk_lite_path}/interfaces/kits/bundle_lite/",
     "${appexecfwk_lite_path}/utils/bundle_lite",
     "${appexecfwk_lite_path}/interfaces/innerkits/bundlemgr_lite/",
-    "//foundation/distributedschedule/samgr_lite/interfaces/kits/samgr",
-    "//foundation/distributedschedule/samgr_lite/interfaces/kits/registry",
+    "//foundation/systemabilitymgr/samgr_lite/interfaces/kits/samgr",
+    "//foundation/systemabilitymgr/samgr_lite/interfaces/kits/registry",
     "//third_party/googletest/googletest/include",
     "//utils/native/lite/include",
     "${aafwk_lite_path}/interfaces/innerkits/intent_lite",
@@ -37,7 +37,7 @@ hcpptest_suite("ActsBundleMgrTest") {
     "${appexecfwk_lite_path}/frameworks/bundle_lite:bundle",
     "//base/hiviewdfx/hilog_lite/frameworks/featured:hilog_shared",
     "//foundation/communication/ipc/interfaces/innerkits/c/ipc:ipc_single",
-    "//foundation/distributedschedule/samgr_lite/samgr:samgr",
+    "//foundation/systemabilitymgr/samgr_lite/samgr:samgr",
   ]
 
   cflags = [ "-Wno-error" ]

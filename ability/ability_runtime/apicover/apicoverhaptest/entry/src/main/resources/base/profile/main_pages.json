@@ -1,5 +1,5 @@
 {
   "src": [
-    "pages/MainAbility_pages"
+    "MainAbility/pages/MainAbility_pages"
   ]
 }

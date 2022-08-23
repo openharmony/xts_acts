@@ -17,14 +17,20 @@ ohos_js_hap_suite("ActsFormsOneAndZeroTest") {
   hap_profile = "./entry/src/main/config.json"
   deps = [
     ":hjs_demo_js_assets",
+    ":hjs_demo_js_test_assets",
     ":hjs_demo_resources",
   ]
   ets2abc = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsFormsOneAndZeroTest"
+  subsystem_name = "ability"
+  part_name = "form_fwk"
 }
 ohos_js_assets("hjs_demo_js_assets") {
   source_dir = "./entry/src/main/ets/MainAbility"
+}
+ohos_js_assets("hjs_demo_js_test_assets") {
+  source_dir = "./entry/src/main/ets/TestAbility"
 }
 ohos_resources("hjs_demo_resources") {
   sources = [ "./entry/src/main/resources" ]

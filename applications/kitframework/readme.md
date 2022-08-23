@@ -52,7 +52,7 @@ Hi3861芯片平台可能需要修改为：`"//vendor/hisilicon/hi3861/hals/utils
         # "//test/xts/acts/communication_lite/wifiservice_hal:ActsWifiServiceTest",
         # "//test/xts/acts/utils_lite/file_hal:ActsUtilsFileTest",
         # "//test/xts/acts/startup_lite/syspara_hal:ActsParameterTest",
-        # "//test/xts/acts/iot_hardware_lite/iot_controller_hal:ActsWifiIotTest",
+        # "//test/xts/acts/iothardware_lite/peripheral_hal:ActsWifiIotTest",
         # "//test/xts/acts/kernel_lite/kernelcmsis_hal:ActsCMSISTest",
         # "//test/xts/acts/utils_lite/kv_store_hal:ActsKvStoreTest",
         # "//test/xts/acts/security_lite/huks_hal:ActsSecurityDataTest",

@@ -154,7 +154,7 @@ describe('audioRendererChange', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -237,7 +237,7 @@ describe('audioRendererChange', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
             usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -335,7 +335,7 @@ describe('audioRendererChange', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -433,7 +433,7 @@ describe('audioRendererChange', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -531,7 +531,7 @@ describe('audioRendererChange', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -634,7 +634,7 @@ describe('audioRendererChange', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -715,7 +715,7 @@ describe('audioRendererChange', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
             usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -800,7 +800,7 @@ describe('audioRendererChange', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -883,7 +883,7 @@ describe('audioRendererChange', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MUSIC,
             usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -965,7 +965,7 @@ describe('audioRendererChange', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MOVIE,
             usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -1049,7 +1049,7 @@ describe('audioRendererChange', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SONIFICATION,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -1131,7 +1131,7 @@ describe('audioRendererChange', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -1214,7 +1214,7 @@ describe('audioRendererChange', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MUSIC,
             usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -1298,7 +1298,7 @@ describe('audioRendererChange', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MOVIE,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -1380,7 +1380,7 @@ describe('audioRendererChange', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SONIFICATION,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -1461,7 +1461,7 @@ describe('audioRendererChange', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SONIFICATION,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -1543,7 +1543,7 @@ describe('audioRendererChange', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SONIFICATION,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -1576,7 +1576,7 @@ describe('audioRendererChange', function () {
 					console.info(Tag+'C'+i+':'+AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]);
 					console.info(Tag+'CM:'+i+':'+AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks);
 				}
-                if (clientUid != undefined &&  renFlags == 1 && devDescriptor != null) {
+                if (clientUid != undefined &&  renFlags == 0 && devDescriptor != null) {
                     resultFlag = true;
 					console.info(Tag+'[RENDERER-CHANGE-ON-017] ClientUid for '+i+' is:'+AudioRendererChangeInfoArray[i].clientUid);
 					console.info(Tag+'[RENDERER-CHANGE-ON-017] Flag '+i+' is:'+AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags);
@@ -1627,7 +1627,7 @@ describe('audioRendererChange', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -1714,7 +1714,7 @@ describe('audioRendererChange', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -1791,7 +1791,7 @@ describe('audioRendererChange', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_ASSISTANT,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -1874,7 +1874,7 @@ describe('audioRendererChange', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -1964,7 +1964,7 @@ describe('audioRendererChange', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
             usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -2055,7 +2055,7 @@ describe('audioRendererChange', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
             usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -2153,7 +2153,7 @@ describe('audioRendererChange', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -2238,7 +2238,7 @@ describe('audioRendererChange', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -2347,7 +2347,7 @@ describe('audioRendererChange', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -2468,7 +2468,7 @@ describe('audioRendererChange', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -2594,7 +2594,7 @@ describe('audioRendererChange', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -2725,7 +2725,7 @@ describe('audioRendererChange', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -2836,7 +2836,7 @@ describe('audioRendererChange', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -2951,7 +2951,7 @@ describe('audioRendererChange', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -3078,7 +3078,7 @@ describe('audioRendererChange', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -3210,7 +3210,7 @@ describe('audioRendererChange', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {
@@ -3347,7 +3347,7 @@ describe('audioRendererChange', function () {
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
-            rendererFlags: 1
+            rendererFlags: 0
         }
 
         var AudioRendererOptions = {

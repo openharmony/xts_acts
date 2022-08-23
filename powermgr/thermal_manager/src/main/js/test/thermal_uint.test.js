@@ -14,13 +14,11 @@
  * limitations under the License.
  */
 
-import app from '@system.app'
 import thermal from "@ohos.thermal"
-import ThermalLevel from "@ohos.thermal"
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, it, expect } from '@ohos/hypium'
 
-export default function appInfoTest_thermal_2() {
-describe('appInfoTest_thermal_2', function () {
+export default function ThermalUnit() {
+describe('ThermalUnit', function () {
     console.log("*************Thermal API Test Begin*************");
     test1();
     test2();
@@ -41,7 +39,7 @@ describe('appInfoTest_thermal_2', function () {
 function test1() {
     const MSEC_1000 = 1000;
 
-    /* @tc.number USB_PowerSystem_ThermalManager_JSTest_0010
+    /* @tc.number SUB_PowerSystem_ThermalManager_JSTest_0010
      * @tc.name Thermal_JSTest0010
      * @tc.desc Thermal acquisition kit
      */
@@ -62,7 +60,7 @@ function test1() {
 function test2() {
     const MSEC_1000 = 1000;
 
-    /* @tc.number USB_PowerSystem_ThermalManager_JSTest_0020
+    /* @tc.number SUB_PowerSystem_ThermalManager_JSTest_0020
      * @tc.name Thermal_JSTest0020
      * @tc.desc Thermal acquisition kit
      */
@@ -82,7 +80,7 @@ function test2() {
 function test3() {
     const MSEC_1000 = 1000;
 
-    /* @tc.number USB_PowerSystem_ThermalManager_JSTest_0030
+    /* @tc.number SUB_PowerSystem_ThermalManager_JSTest_0030
      * @tc.name Thermal_JSTest0030
      * @tc.desc Thermal acquisition kit
      */
@@ -102,7 +100,7 @@ function test3() {
 function test4() {
     const MSEC_1000 = 1000;
 
-    /* @tc.number USB_PowerSystem_ThermalManager_JSTest_0040
+    /* @tc.number SUB_PowerSystem_ThermalManager_JSTest_0040
      * @tc.name Thermal_JSTest0040
      * @tc.desc Thermal acquisition kit
      */
@@ -123,7 +121,7 @@ function test4() {
 function test5() {
     const MSEC_1000 = 1000;
 
-    /* @tc.number USB_PowerSystem_ThermalManager_JSTest_0050
+    /* @tc.number SUB_PowerSystem_ThermalManager_JSTest_0050
      * @tc.name Thermal_JSTest0050
      * @tc.desc Thermal acquisition kit
      */
@@ -143,7 +141,7 @@ function test5() {
 function test6() {
     const MSEC_1000 = 1000;
 
-    /* @tc.number USB_PowerSystem_ThermalManager_JSTest_0060
+    /* @tc.number SUB_PowerSystem_ThermalManager_JSTest_0060
      * @tc.name Thermal_JSTest0060
      * @tc.desc Thermal acquisition kit
      */
@@ -164,7 +162,7 @@ function test6() {
 function test7() {
     const MSEC_1000 = 1000;
 
-    /* @tc.number USB_PowerSystem_ThermalManager_JSTest_0070
+    /* @tc.number SUB_PowerSystem_ThermalManager_JSTest_0070
      * @tc.name Thermal_JSTest0070
      * @tc.desc Thermal acquisition kit
      */
@@ -188,7 +186,7 @@ function test7() {
 function test8() {
     const MSEC_1000 = 1000;
 
-    /* @tc.number USB_PowerSystem_ThermalManager_JSTest_0080
+    /* @tc.number SUB_PowerSystem_ThermalManager_JSTest_0080
      * @tc.name Thermal_JSTest0080
      * @tc.desc Thermal acquisition kit
      */
@@ -212,7 +210,7 @@ function test8() {
 function test9() {
     const MSEC_1000 = 1000;
 
-    /* @tc.number USB_PowerSystem_ThermalManager_JSTest_0090
+    /* @tc.number SUB_PowerSystem_ThermalManager_JSTest_0090
      * @tc.name Thermal_JSTest0090
      * @tc.desc Thermal acquisition kit
      */
@@ -237,7 +235,7 @@ function test9() {
 function test10() {
     const MSEC_1000 = 1000;
 
-    /* @tc.number USB_PowerSystem_ThermalManager_JSTest_0100
+    /* @tc.number SUB_PowerSystem_ThermalManager_JSTest_0100
      * @tc.name Thermal_JSTest0100
      * @tc.desc Thermal acquisition kit
      */
@@ -262,7 +260,7 @@ function test10() {
 function test11() {
     const MSEC_1000 = 1000;
 
-    /* @tc.number USB_PowerSystem_ThermalManager_JSTest_0110
+    /* @tc.number SUB_PowerSystem_ThermalManager_JSTest_0110
      * @tc.name Thermal_JSTest0110
      * @tc.desc Thermal acquisition kit
      */
@@ -286,7 +284,7 @@ function test11() {
 function test12() {
     const MSEC_1000 = 1000;
 
-    /* @tc.number USB_PowerSystem_ThermalManager_JSTest_0120
+    /* @tc.number SUB_PowerSystem_ThermalManager_JSTest_0120
      * @tc.name Thermal_JSTest0120
      * @tc.desc Thermal acquisition kit
      */
@@ -310,7 +308,7 @@ function test12() {
 function test13() {
     const MSEC_1000 = 1000;
 
-    /* @tc.number USB_PowerSystem_ThermalManager_JSTest_0130
+    /* @tc.number SUB_PowerSystem_ThermalManager_JSTest_0130
      * @tc.name Thermal_JSTest0130
      * @tc.desc Thermal acquisition kit
      */

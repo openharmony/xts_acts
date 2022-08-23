@@ -13,18 +13,15 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import commonEvent from '@ohos.commonEvent'
 
 
 var subscriberInfo_MainAbility_ability = {
     events: ["MainAbility_Start_CommonEvent_ability", "SecondAbility_Start_CommonEvent_ability"],
 };
-var subscriberInfo_MainAbility_ability_0300 = {
-    events: ["MainAbility_Start_CommonEvent_ability_0300","SecondAbility_Start_CommonEvent_ability_0300"],
-};
 
-export default function abilityTest(abilityContext) {
+export default function abilityTest() {
     describe('ActsStaticInfoMationQueryTest', function () {
         /**
          * @tc.number: ACTS_getAbilityInfo_0100
@@ -33,8 +30,8 @@ export default function abilityTest(abilityContext) {
          *           information is the same as that in the configuration file.
          */
         it('ACTS_getAbilityInfo_0100', 0, async function (done) {
-            console.log("ACTS_getAbilityInfo_0100 --- start ability=====>'+ abilityContext.abilityInfo")
-            checkAbilityInfo(abilityContext.abilityInfo);
+            console.log("ACTS_getAbilityInfo_0100 --- start ability=====>'+ globalThis.abilityContext.abilityInfo")
+            checkAbilityInfo(globalThis.abilityContext.abilityInfo);
             done();
         })
 
@@ -45,8 +42,8 @@ export default function abilityTest(abilityContext) {
          *           information is the same as that in the configuration file.
          */
         it('ACTS_getApplicationInfo_0100', 0, async function (done) {
-            console.log("ACTS_getApplicationInfo_0100 --- start ability=====>'+ abilityContext.applicationInfo")
-            checkApplicationInfo(abilityContext.applicationInfo);
+            console.log("ACTS_getApplicationInfo_0100 --- start ability=====>'+ globalThis.abilityContext.applicationInfo")
+            checkApplicationInfo(globalThis.abilityContext.applicationInfo);
             done();
         })
 
@@ -57,8 +54,8 @@ export default function abilityTest(abilityContext) {
          *           information is the same as that in the configuration file.
          */
         it('ACTS_getHapModuleInfo_0100', 0, async function (done) {
-            console.log("ACTS_getHapModuleInfo_0100 --- start ability=====>'+ abilityContext.currentHapModuleInfo")
-            checkHapModuleInfo(abilityContext.currentHapModuleInfo);
+            console.log("ACTS_getHapModuleInfo_0100 --- start ability=====>'+ globalThis.abilityContext.currentHapModuleInfo")
+            checkHapModuleInfo(globalThis.abilityContext.currentHapModuleInfo);
             done();
         })
 
@@ -101,17 +98,17 @@ export default function abilityTest(abilityContext) {
                     commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
                 }
             }
-            commonEvent.createSubscriber(subscriberInfo_MainAbility_ability).then(async (data) => {
+            await commonEvent.createSubscriber(subscriberInfo_MainAbility_ability).then(async (data) => {
                 console.debug("ACTS_getAbilityInfo_0200====>Create Subscriber====>");
                 Subscriber = data;
-                commonEvent.subscribe(Subscriber, SubscribeCallBack);
+                await commonEvent.subscribe(Subscriber, SubscribeCallBack);
                 Subscriber.getSubscribeInfo().then((data)=>{
                     console.log('ACTS_getAbilityInfo_0200 - Subscriber: ' + JSON.stringify(data))
                 })
-                abilityContext.startAbility({
+                globalThis.abilityContext.startAbility({
                     bundleName: "com.example.staticquerytesttwo",
                     abilityName: "com.example.staticquerytesttwo.MainAbility",
-                    action:"getAbilityContext"
+                    action:"getglobalThis.abilityContext"
                 }, (error, data) => {
                     console.log('ACTS_getAbilityInfo_0200_startMainAbility: ' + JSON.stringify(error) +
                     ", " + JSON.stringify(data))
@@ -287,7 +284,7 @@ export default function abilityTest(abilityContext) {
             expect(data.enabled).assertEqual(true);
             expect(data.label).assertEqual("$string:app_name");
             expect(data.labelId.length).assertLarger(0);
-            expect(data.icon).assertEqual("");
+            expect(data.icon).assertEqual("$media:icon");
             expect(data.iconId.length).assertLarger(0);
             expect(data.process).assertEqual("");
             expect(data.supportedModes).assertEqual(0);
@@ -343,20 +340,21 @@ export default function abilityTest(abilityContext) {
             console.log("checkHapModuleInfo_expect_typeof_end")
             expect(data.name).assertEqual("com.example.staticinfomationquery");
             expect(data.description).assertEqual("$string:phone_entry_dsc");
-            expect(data.descriptionId).assertEqual(undefined);
+            expect(data.descriptionId).assertEqual(16777221);
             expect(data.icon).assertEqual("$media:icon");
             expect(data.label).assertEqual("$string:entry_label");
-            expect(data.labelId).assertEqual(undefined);
-            expect(data.iconId).assertEqual(undefined);
+            expect(data.labelId).assertEqual(16777219);
+            expect(data.iconId).assertEqual(16777224);
             expect(data.backgroundImg).assertEqual("");
             expect(data.supportedModes).assertEqual(0);
             expect(data.reqCapabilities.length).assertEqual(0);
-            expect(data.reqCapabilities[0]).assertEqual(undefined);
             expect(data.deviceTypes.length).assertEqual(1);
             expect(data.deviceTypes[0]).assertEqual("phone");
             expect(data.moduleName).assertEqual("com.example.staticinfomationquery")
-            expect(data.mainAbilityName).assertEqual("MainAbility");
-            expect(data.installationFree).assertEqual(undefined);
+            expect(data.mainAbilityName).assertEqual("com.example.staticinfomationquery.MainAbility");
+            expect(data.installationFree).assertEqual(false);
+            expect(data.mainElementName).assertEqual('com.example.staticinfomationquery.MainAbility');
+            expect(data.hashValue).assertEqual('');
             console.log("checkHapModuleInfo end  " + data);
         }
     })

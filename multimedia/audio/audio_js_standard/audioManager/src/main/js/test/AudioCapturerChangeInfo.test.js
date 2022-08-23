@@ -92,7 +92,7 @@ describe('audioCapturerChange', function () {
 
         var AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
-            capturerFlags: 1
+            capturerFlags: 0
         }
 
         var AudioCapturerOptions = {
@@ -172,7 +172,7 @@ describe('audioCapturerChange', function () {
 
         var AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
-            capturerFlags: 1
+            capturerFlags: 0
         }
 
         var AudioCapturerOptions = {
@@ -263,7 +263,7 @@ describe('audioCapturerChange', function () {
 
         var AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
-            capturerFlags: 1
+            capturerFlags: 0
         }
 
         var AudioCapturerOptions = {
@@ -359,7 +359,7 @@ describe('audioCapturerChange', function () {
 
         var AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
-            capturerFlags: 1
+            capturerFlags: 0
         }
 
         var AudioCapturerOptions = {
@@ -455,7 +455,7 @@ describe('audioCapturerChange', function () {
 
         var AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
-            capturerFlags: 1
+            capturerFlags: 0
         }
 
         var AudioCapturerOptions = {
@@ -537,7 +537,7 @@ describe('audioCapturerChange', function () {
 
         var AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_VOICE_COMMUNICATION,
-            capturerFlags: 1
+            capturerFlags: 0
         }
 
         var AudioCapturerOptions = {
@@ -620,7 +620,7 @@ describe('audioCapturerChange', function () {
 
         var AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
-            capturerFlags: 1
+            capturerFlags: 0
         }
 
         var AudioCapturerOptions = {
@@ -699,7 +699,7 @@ describe('audioCapturerChange', function () {
 
         var AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
-            capturerFlags: 1
+            capturerFlags: 0
         }
 
         var AudioCapturerOptions = {
@@ -729,7 +729,7 @@ describe('audioCapturerChange', function () {
 					console.info(Tag+'C'+i+':'+AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]);
 					console.info(Tag+'CM:'+i+':'+AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks);
 				}
-                if (clientUid != undefined && capFlags == 1 && devDescriptor != null) {
+                if (clientUid != undefined && capFlags == 0 && devDescriptor != null) {
                     resultFlag = true;
                     console.info(Tag+'[CAPTURER-CHANGE-ON-008] ResultFlag for element '+i +' is: '+ resultFlag);
                 }
@@ -779,7 +779,7 @@ describe('audioCapturerChange', function () {
 
         var AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
-            capturerFlags: 1
+            capturerFlags: 0
         }
 
         var AudioCapturerOptions = {
@@ -864,7 +864,7 @@ describe('audioCapturerChange', function () {
 
         var AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
-            capturerFlags: 1
+            capturerFlags: 0
         }
 
         var AudioCapturerOptions = {
@@ -943,7 +943,7 @@ describe('audioCapturerChange', function () {
 
         var AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
-            capturerFlags: 1
+            capturerFlags: 0
         }
 
         var AudioCapturerOptions = {
@@ -1029,7 +1029,7 @@ describe('audioCapturerChange', function () {
 
         var AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
-            capturerFlags: 1
+            capturerFlags: 0
         }
 
         var AudioCapturerOptions = {
@@ -1122,7 +1122,7 @@ describe('audioCapturerChange', function () {
 
         var AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
-            capturerFlags: 1
+            capturerFlags: 0
         }
 
         var AudioCapturerOptions = {
@@ -1214,7 +1214,7 @@ describe('audioCapturerChange', function () {
 
         var AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
-            capturerFlags: 1
+            capturerFlags: 0
         }
 
         var AudioCapturerOptions = {
@@ -1299,7 +1299,7 @@ describe('audioCapturerChange', function () {
 
         var AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
-            capturerFlags: 1
+            capturerFlags: 0
         }
 
         var AudioCapturerOptions = {
@@ -1405,7 +1405,7 @@ describe('audioCapturerChange', function () {
 
         var AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
-            capturerFlags: 1
+            capturerFlags: 0
         }
 
         var AudioCapturerOptions = {
@@ -1523,7 +1523,7 @@ describe('audioCapturerChange', function () {
 
         var AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
-            capturerFlags: 1
+            capturerFlags: 0
         }
 
         var AudioCapturerOptions = {
@@ -1646,7 +1646,7 @@ describe('audioCapturerChange', function () {
 
         var AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
-            capturerFlags: 1
+            capturerFlags: 0
         }
 
         var AudioCapturerOptions = {
@@ -1754,7 +1754,7 @@ describe('audioCapturerChange', function () {
 
         var AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
-            capturerFlags: 1
+            capturerFlags: 0
         }
 
         var AudioCapturerOptions = {
@@ -1866,7 +1866,7 @@ describe('audioCapturerChange', function () {
 
         var AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
-            capturerFlags: 1
+            capturerFlags: 0
         }
 
         var AudioCapturerOptions = {
@@ -1990,7 +1990,7 @@ describe('audioCapturerChange', function () {
 
         var AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
-            capturerFlags: 1
+            capturerFlags: 0
         }
 
         var AudioCapturerOptions = {
@@ -2119,7 +2119,7 @@ describe('audioCapturerChange', function () {
 
         var AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
-            capturerFlags: 1
+            capturerFlags: 0
         }
 
         var AudioCapturerOptions = {

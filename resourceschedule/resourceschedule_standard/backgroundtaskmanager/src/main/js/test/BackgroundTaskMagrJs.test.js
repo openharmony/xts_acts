@@ -51,10 +51,9 @@ describe("TransientTaskJsTest", function () {
     })
 
     /*
+     * @tc.number:SUB_RESOURCESCHEDULE_SHORT_TASK_XTS_001
      * @tc.name: TransientTaskJsTest001
      * @tc.desc: test request a suspend delay
-     * @tc.type: FUNC
-     * @tc.require: 
      */
     it("TransientTaskJsTest001", 0, async function (done) {
         console.info('----------------------TransientTaskJsTest001---------------------------');
@@ -71,10 +70,9 @@ describe("TransientTaskJsTest", function () {
     })
 
     /*
+     * @tc.number:SUB_RESOURCESCHEDULE_SHORT_TASK_XTS_002
      * @tc.name: TransientTaskJsTest002
      * @tc.desc: test transient task more than three
-     * @tc.type: FUNC
-     * @tc.require: 
      */
     it("TransientTaskJsTest002", 0, async function (done) {
         console.info('----------------------TransientTaskJsTest002---------------------------');
@@ -96,10 +94,9 @@ describe("TransientTaskJsTest", function () {
     })
 
     /*
+     * @tc.number:SUB_RESOURCESCHEDULE_SHORT_TASK_XTS_003
      * @tc.name: TransientTaskJsTest003
      * @tc.desc: test getRemainingDelayTime Promise
-     * @tc.type: FUNC
-     * @tc.require: 
      */
     it("TransientTaskJsTest003", 0, async function (done) {
         function callback() {}
@@ -128,10 +125,9 @@ describe("TransientTaskJsTest", function () {
     })
 
     /*
+     * @tc.number:SUB_RESOURCESCHEDULE_SHORT_TASK_XTS_004
      * @tc.name: TransientTaskJsTest004
      * @tc.desc: test getRemainingDelayTime Callback
-     * @tc.type: FUNC
-     * @tc.require: 
      */
     it("TransientTaskJsTest004", 0, async function (done) {
         function callback() {}
@@ -162,10 +158,9 @@ describe("TransientTaskJsTest", function () {
     })
 
     /*
+     * @tc.number:SUB_RESOURCESCHEDULE_SHORT_TASK_XTS_005
      * @tc.name: TransientTaskJsTest005
      * @tc.desc: test request a suspend delay
-     * @tc.type: FUNC
-     * @tc.require: 
      */
     it("TransientTaskJsTest005", 0, async function (done) {
         console.info('----------------------TransientTaskJsTest005---------------------------');
@@ -183,10 +178,9 @@ describe("TransientTaskJsTest", function () {
     })
 	
 	/*
+     * @tc.number:SUB_RESOURCESCHEDULE_SHORT_TASK_XTS_006
      * @tc.name: TransientTaskJsTest006
      * @tc.desc: test DelaySuspendInfo actualDelayTime
-     * @tc.type: FUNC
-     * @tc.require: 
      */
     it("TransientTaskJsTest006", 0, async function (done) {
         console.info('----------------------TransientTaskJsTest006---------------------------');

@@ -14,10 +14,10 @@
  */
 
 import thermal from "@ohos.thermal"
-import { describe, it, expect } from '@ohos/hypium';
+import { describe, it } from '@ohos/hypium';
 
-export default function appInfoTest_thermal_4() {
-describe('appInfoTest_thermal_4', function () {
+export default function ThermalPerformance() {
+describe('ThermalPerformance', function () {
     console.log("*************Thermal Performance Test Begin*************");
     performanceTest1();
     performanceTest2();

@@ -60,6 +60,7 @@ describe('AudioEncoderReliabilityPromise', function () {
     };
     let expectError = false;
     let fdRead;
+    let lockFlag = false;
 
     beforeAll(function() {
         console.info('beforeAll case');
@@ -82,6 +83,7 @@ describe('AudioEncoderReliabilityPromise', function () {
         outputQueue = [];
         ES_LENGTH = 200;
         expectError = false;
+        lockFlag = false;
     })
 
     afterEach(async function() {
@@ -128,6 +130,7 @@ describe('AudioEncoderReliabilityPromise', function () {
         sawOutputEOS = false;
         inputQueue = [];
         outputQueue = [];
+        lockFlag = false;
     }
 
     async function createAudioEncoder(savepath, mySteps, done) {
@@ -189,7 +192,7 @@ describe('AudioEncoderReliabilityPromise', function () {
     async function nextStep(mySteps, done) {
         console.info("case myStep[0]: " + mySteps[0]);
         if (mySteps[0] == END) {
-            audioEncodeProcessor.release().then(() => {
+            await audioEncodeProcessor.release().then(() => {
                 console.info("case release success");
                 audioEncodeProcessor = null;
                 done();
@@ -199,7 +202,7 @@ describe('AudioEncoderReliabilityPromise', function () {
             case CONFIGURE:
                 mySteps.shift();
                 console.info(`case to configure`);
-                audioEncodeProcessor.configure(mediaDescription).then(() => {
+                await audioEncodeProcessor.configure(mediaDescription).then(() => {
                     console.info(`case configure 1`);
                     nextStep(mySteps, done);
                 }, failCallback).catch(failCatch);
@@ -207,7 +210,7 @@ describe('AudioEncoderReliabilityPromise', function () {
             case PREPARE:
                 mySteps.shift();
                 console.info(`case to prepare`);
-                audioEncodeProcessor.prepare().then(() => {
+                await audioEncodeProcessor.prepare().then(() => {
                     console.info(`case prepare 1`);
                     nextStep(mySteps, done);
                 }, failCallback).catch(failCatch);
@@ -221,7 +224,7 @@ describe('AudioEncoderReliabilityPromise', function () {
                     workdoneAtEOS = true;
                     enqueueInputs(inputQueue);
                 }
-                audioEncodeProcessor.start().then(() => {
+                await audioEncodeProcessor.start().then(() => {
                     console.info(`case start 1`);
                     nextStep(mySteps, done);
                 }, failCallback).catch(failCatch);
@@ -229,9 +232,10 @@ describe('AudioEncoderReliabilityPromise', function () {
             case FLUSH:
                 mySteps.shift();
                 console.info(`case to flush`);
+                lockFlag = true;
                 inputQueue = [];
                 outputQueue = [];
-                audioEncodeProcessor.flush().then(async() => {
+                await audioEncodeProcessor.flush().then(async() => {
                     console.info(`case flush 1`);
                     if (flushAtEOS) {
                         await getFdRead(AUDIOPATH, done);
@@ -239,13 +243,14 @@ describe('AudioEncoderReliabilityPromise', function () {
                         workdoneAtEOS = true;
                         flushAtEOS = false;
                     }
+                    lockFlag = false;
                     nextStep(mySteps, done);
                 }, failCallback).catch(failCatch);
                 break;
             case STOP:
                 mySteps.shift();
                 console.info(`case to stop`);
-                audioEncodeProcessor.stop().then(() => {
+                await audioEncodeProcessor.stop().then(() => {
                     console.info(`case stop 1`);
                     nextStep(mySteps, done);
                 }, failCallback).catch(failCatch);
@@ -254,7 +259,7 @@ describe('AudioEncoderReliabilityPromise', function () {
                 mySteps.shift();
                 console.info(`case to reset`);
                 resetParam();
-                audioEncodeProcessor.reset().then(() => {
+                await audioEncodeProcessor.reset().then(() => {
                     console.info(`case reset 1`);
                     nextStep(mySteps, done);
                 }, failCallback).catch(failCatch);
@@ -272,7 +277,7 @@ describe('AudioEncoderReliabilityPromise', function () {
             case CONFIGURE_ERROR:
                 mySteps.shift();
                 console.info(`case to configure 2`);
-                audioEncodeProcessor.configure(mediaDescription).then(() => {
+                await audioEncodeProcessor.configure(mediaDescription).then(() => {
                     console.info(`case configure error 1`);
                     expect(expectError).assertTrue();
                 }, (err) => {failCallbackTrue(err,  mySteps, done)}).catch(failCatch);
@@ -280,7 +285,7 @@ describe('AudioEncoderReliabilityPromise', function () {
             case PREPARE_ERROR:
                 mySteps.shift();
                 console.info(`case to prepare 2`);
-                audioEncodeProcessor.prepare().then(() => {
+                await audioEncodeProcessor.prepare().then(() => {
                     console.info(`case prepare error 1`);
                     expect(expectError).assertTrue();
                 }, (err) => {failCallbackTrue(err,  mySteps, done)}).catch(failCatch);
@@ -288,7 +293,7 @@ describe('AudioEncoderReliabilityPromise', function () {
             case START_ERROR:
                 mySteps.shift();
                 console.info(`case to start 2`);
-                audioEncodeProcessor.start().then(() => {
+                await audioEncodeProcessor.start().then(() => {
                     console.info(`case start error 1`);
                     expect(expectError).assertTrue();
                 }, (err) => {failCallbackTrue(err,  mySteps, done)}).catch(failCatch);
@@ -296,7 +301,7 @@ describe('AudioEncoderReliabilityPromise', function () {
             case FLUSH_ERROR:
                 mySteps.shift();
                 console.info(`case to flush 2`);
-                audioEncodeProcessor.flush().then(() => {
+                await audioEncodeProcessor.flush().then(() => {
                     console.info(`case flush error 1`);
                     expect(expectError).assertTrue();
                 }, (err) => {failCallbackTrue(err,  mySteps, done)}).catch(failCatch);
@@ -304,7 +309,7 @@ describe('AudioEncoderReliabilityPromise', function () {
             case STOP_ERROR:
                 mySteps.shift();
                 console.info(`case to stop 2`);
-                audioEncodeProcessor.stop().then(() => {
+                await audioEncodeProcessor.stop().then(() => {
                     console.info(`case stop error 1`);
                     expect(expectError).assertTrue();
                 }, (err) => {failCallbackTrue(err,  mySteps, done)}).catch(failCatch);
@@ -701,7 +706,7 @@ describe('AudioEncoderReliabilityPromise', function () {
     */
     it('SUB_MEDIA_AUDIO_ENCODER_API_START_PROMISE_0500', 0, async function (done) {
         let savepath = BASIC_PATH + 'start_0500.es';
-        let mySteps = new Array(CONFIGURE, PREPARE, START, FLUSH, START_ERROR, END);
+        let mySteps = new Array(CONFIGURE, PREPARE, START, FLUSH, START, END);
         createAudioEncoder(savepath, mySteps, done);
     })
 
@@ -801,7 +806,7 @@ describe('AudioEncoderReliabilityPromise', function () {
     */
     it('SUB_MEDIA_AUDIO_ENCODER_API_FLUSH_PROMISE_0400', 0, async function (done) {
         let savepath = BASIC_PATH + 'flush_0400.es';
-        let mySteps = new Array(CONFIGURE, PREPARE, START, FLUSH, WAITFORALLOUTS);
+        let mySteps = new Array(CONFIGURE, PREPARE, START, FLUSH, START, WAITFORALLOUTS);
         workdoneAtEOS = true;
         createAudioEncoder(savepath, mySteps, done);
     })
@@ -816,7 +821,7 @@ describe('AudioEncoderReliabilityPromise', function () {
     */
     it('SUB_MEDIA_AUDIO_ENCODER_API_FLUSH_PROMISE_0500', 0, async function (done) {
         let savepath = BASIC_PATH + 'flush_0500.es';
-        let mySteps = new Array(CONFIGURE, PREPARE, START, FLUSH, FLUSH, WAITFORALLOUTS);
+        let mySteps = new Array(CONFIGURE, PREPARE, START, FLUSH, START, FLUSH, START, WAITFORALLOUTS);
         workdoneAtEOS = true;
         createAudioEncoder(savepath, mySteps, done);
     })
@@ -845,7 +850,7 @@ describe('AudioEncoderReliabilityPromise', function () {
     */
     it('SUB_MEDIA_AUDIO_ENCODER_API_FLUSH_PROMISE_0700', 0, async function (done) {
         let savepath = BASIC_PATH + 'flush_0700.es';
-        let mySteps = new Array(CONFIGURE, PREPARE, START, HOLDON, FLUSH, END);
+        let mySteps = new Array(CONFIGURE, PREPARE, START, HOLDON, FLUSH, START, END);
         EOSFrameNum = 2;
         createAudioEncoder(savepath, mySteps, done);
     })

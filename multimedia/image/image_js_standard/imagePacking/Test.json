@@ -10,23 +10,34 @@
     },
     "kits": [
         {
-            "type": "PushKit",
-            "pre-push": [],
-            "push": []
-        },
-        {
-            "type": "ShellKit",
-            "run-command": [
-                "hilog -Q pidoff"
-            ],
-            "teardown-command": []
-        },
-        {
             "test-file-name": [
                 "ActsImagePackingJsTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "mkdir -p /data/app/el2/100/base/ohos.acts.multimedia.image.Packing/haps/entry/files/",
+                "chmod -R 666 /data/app/el2/100/base/ohos.acts.multimedia.image.Packing/haps/entry/files/*"
+            ],
+            "teardown-command": []
+        },
+        {
+            "type": "PushKit",
+            "pre-push": [],
+            "push": [
+                "./resource/image/test.png ->/data/app/el2/100/base/ohos.acts.multimedia.image.Packing/haps/entry/files"
+            ]
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "hilog -Q pidoff",
+                "hilog -b D"
+            ],
+            "teardown-command": []
         }
     ]
 }

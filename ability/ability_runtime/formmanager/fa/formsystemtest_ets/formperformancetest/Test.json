@@ -1,10 +1,12 @@
 {
     "description": "Configuration for hjunit demo Tests",
     "driver": {
-        "type": "JSUnitTest",
+        "type": "OHJSUnitTest",
         "test-timeout": "300000",
-        "package": "com.ohos.st.formperformancetest",
-        "shell-timeout": "60000"
+        "bundle-name": "com.ohos.st.formperformancetest",
+        "package-name": "com.ohos.st.formperformancetest",
+        "shell-timeout": "600000",
+        "testcase-timeout":"30000"
     },
     "kits": [
         {
@@ -15,6 +17,13 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "power-shell wakeup",
+                "power-shell setmode 602"
+            ]
         }
     ]
 }

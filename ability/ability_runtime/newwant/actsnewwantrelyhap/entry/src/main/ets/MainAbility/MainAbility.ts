@@ -80,6 +80,16 @@ export default class MainAbility extends Ability {
                 + JSON.stringify(error) + ", " + JSON.stringify(data))
             })
         }
+        if (globalThis.abilityWant.action == 'startMainAbility0800') {
+            globalThis.abilityContext.startAbility({
+                bundleName: "com.example.newwanthap",
+                abilityName: "com.example.newwanthapa.SecondAbility",
+                action: "startSecondAbility0800"
+            }, (error, data) => {
+                console.log('ACTS_NewWant MainAbility onForeground - startAbility startServiceAbility: '
+                + JSON.stringify(error) + ", " + JSON.stringify(data))
+            })
+        }
         commonEvent.publish("onForegroundMain_To_Test_CommonEvent", () => {
             console.log("ACTS_NewWant MainAbility Publish CallBack onForegroundMain_To_Test_CommonEvent")
         });
@@ -102,9 +112,23 @@ export default class MainAbility extends Ability {
         console.log("ACTS_NewWant MainAbility onNewWant type :" + want.type)
         console.log("ACTS_NewWant MainAbility onNewWant flags :" + want.flags)
         console.log("ACTS_NewWant MainAbility onNewWant action :" + want.action)
-
+        var publishData = {
+            data: want.action
+        }
         commonEvent.publish("onNewWantMain_To_Test_CommonEvent",  () => {
             console.log("ACTS_NewWant MainAbility Publish CallBack onNewWantMain_To_Test_CommonEvent")
         });
+        switch (want.action) {
+            case 'restartHapB':
+              commonEvent.publish("onNewWantSecond1_To_Test_CommonEvent", publishData,() => {
+                  console.log("ACTS_NewWant SecondAbility Publish CallBack onNewWantSecond1_To_Test_CommonEvent")
+              });
+              break;
+            case 'restartSecondAbility0700':
+              commonEvent.publish("onNewWantSecond2_To_Test_CommonEvent", publishData,() => {
+                  console.log("ACTS_NewWant SecondAbility Publish CallBack onNewWantSecond2_To_Test_CommonEvent")
+              });
+              break;
+          }
     }
 };

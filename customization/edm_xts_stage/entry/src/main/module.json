@@ -62,8 +62,8 @@
                 "reason": "need use EDM_MANAGE_DATETIME"
             },
             {
-                "name": "ohos.permission.MANAGE_ADMIN",
-                "reason": "need use MANAGE_ADMIN"
+                "name": "ohos.permission.MANAGE_ENTERPRISE_DEVICE_ADMIN",
+                "reason": "need use MANAGE_ENTERPRISE_DEVICE_ADMIN"
             }
         ]
     }

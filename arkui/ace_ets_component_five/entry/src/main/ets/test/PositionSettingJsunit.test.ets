@@ -53,7 +53,7 @@ export default function positionSettingJsunit() {
       console.info("[testPositionSetting001] component strJson:" + strJson);
       let obj = JSON.parse(strJson);
       console.info("[testPositionSetting001] textAlign: " + obj.$attrs.textAlign);
-      expect(obj.$attrs.textAlign).assertEqual('TextAlign.Start');
+      expect(obj.$attrs.textAlign).assertEqual('TextAlign.Left');
       console.info('[testPositionSetting001] END');
       done();
     });
@@ -92,7 +92,7 @@ export default function positionSettingJsunit() {
       console.info("[testPositionSetting003] component strJson:" + strJson);
       let obj = JSON.parse(strJson);
       console.info("[testPositionSetting003] textAlign: " + obj.$attrs.textAlign);
-      expect(obj.$attrs.textAlign).assertEqual("TextAlign.Start");
+      expect(obj.$attrs.textAlign).assertEqual("TextAlign.Right");
       console.info('[testPositionSetting003] END');
       done();
     });

@@ -35,7 +35,7 @@ export default class MainAbility2 extends Ability {
   onWindowStageCreate(windowStage) {
     // Main window is created, set main page for this ability
     console.log("MainAbility2 onWindowStageCreate")
-    windowStage.setUIContent(this.context, "pages/index/index2", null)
+    windowStage.setUIContent(this.context, "MainAbility/pages/index/index2", null)
     globalThis.ability2Context = this.context;
     commonEvent.publish("ACTS_AbilityPermission_0100_Start_CommonEvent", PublishCallBackOne1);
   }

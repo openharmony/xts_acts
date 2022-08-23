@@ -10,23 +10,19 @@
     },
     "kits": [
         {
-            "type": "PushKit",
-            "pre-push": [],
-            "push": []
-        },
-        {
-            "type": "ShellKit",
-            "run-command": [
-                "hilog -Q pidoff"
-            ],
-            "teardown-command": []
-        },
-        {
             "test-file-name": [
                 "ActsImageyuvJsTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "hilog -Q pidoff",
+                "hilog -b D"
+            ],
+            "teardown-command": []
         }
     ]
 }

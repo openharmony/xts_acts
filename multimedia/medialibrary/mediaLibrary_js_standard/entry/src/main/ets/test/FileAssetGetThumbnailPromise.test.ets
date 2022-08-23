@@ -18,7 +18,9 @@ import image from '@ohos.multimedia.image';
 import featureAbility from '@ohos.ability.featureAbility';
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
-
+import {
+    sleep,
+} from '../../../../../../common';
 export default function FileAssetGetThumbnailPromiseTest(abilityContext){
     describe('FileAssetGetThumbnailPromiseTest', function () {
 	      // image组件空调用避免image被优化
@@ -49,7 +51,7 @@ export default function FileAssetGetThumbnailPromiseTest(abilityContext){
         };
         beforeAll(function () {});
         beforeEach(function () {});
-        afterEach(function () {});
+        afterEach(async function () { await sleep(200)});
         afterAll(function () {});
 
         // ------------------------------ image type start -----------------------

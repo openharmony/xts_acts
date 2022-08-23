@@ -14,7 +14,7 @@ export default class MainAbility7 extends Ability {
         // Main window is created, set main page for this ability
         console.log("[Demo] MainAbility7 onWindowStageCreate")
         globalThis.ability7context = this.context;
-        windowStage.setUIContent(this.context, "pages/MainAbility7_pages", null)
+        windowStage.setUIContent(this.context, "MainAbility/pages/MainAbility7_pages", null)
     }
 
     onWindowStageDestroy() {
@@ -34,10 +34,18 @@ export default class MainAbility7 extends Ability {
                 console.log(abilityName + " onAbilityCreate")
                 listKey.push(abilityName + " onAbilityCreate");
             },
-            onAbilityWindowStageCreate(ability) {
+            onWindowStageCreate(ability, windowStage) {
                 abilityName = ability.context.abilityInfo.name;
-                console.log(abilityName + " onAbilityWindowStageCreate")
-                listKey.push(abilityName + " onAbilityWindowStageCreate");
+                console.log(abilityName + " onWindowStageCreate")
+                listKey.push(abilityName + " onWindowStageCreate");
+            },
+            onWindowStageActive(ability, windowStage) {
+                abilityName = ability.context.abilityInfo.name;
+                console.log(abilityName + " onWindowStageActive")
+            },
+            onWindowStageInactive(ability, windowStage) {
+                abilityName = ability.context.abilityInfo.name;
+                console.log(abilityName + " onWindowStageInactive")
             },
             onAbilityForeground(ability) {
                 abilityName = ability.context.abilityInfo.name;
@@ -49,10 +57,10 @@ export default class MainAbility7 extends Ability {
                 console.log(abilityName + " onAbilityBackground")
                 listKey.push(abilityName + " onAbilityBackground");
             },
-            onAbilityWindowStageDestroy(ability) {
+            onWindowStageDestroy(ability, windowStage) {
                 abilityName = ability.context.abilityInfo.name;
-                console.log(abilityName + " onAbilityWindowStageDestroy")
-                listKey.push(abilityName + " onAbilityWindowStageDestroy");
+                console.log(abilityName + " onWindowStageDestroy")
+                listKey.push(abilityName + " onWindowStageDestroy");
             },
             onAbilityDestroy(ability) {
                 abilityName = ability.context.abilityInfo.name;

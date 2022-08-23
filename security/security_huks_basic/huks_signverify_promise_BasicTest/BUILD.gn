@@ -18,6 +18,8 @@ ohos_js_hap_suite("hukssignverify_promise_basic_js_test") {
     ":huks_js_assets",
     ":huks_js_resources",
   ]
+  subsystem_name = "security"
+  part_name = "huks"
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsHuksSignVerifyBasicPromiseJSApiTest"
 }

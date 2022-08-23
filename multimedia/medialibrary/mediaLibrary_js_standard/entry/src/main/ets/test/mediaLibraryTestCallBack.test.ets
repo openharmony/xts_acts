@@ -16,6 +16,9 @@ import mediaLibrary from '@ohos.multimedia.mediaLibrary';
 import featureAbility from '@ohos.ability.featureAbility';
 import fileio from '@ohos.fileio';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
+import {
+    sleep,
+} from '../../../../../../common';
 let fileKeyObj = mediaLibrary.FileKey;
 let DIR_CAMERA = mediaLibrary.DirectoryType.DIR_CAMERA;
 let DIR_VIDEO = mediaLibrary.DirectoryType.DIR_VIDEO;
@@ -100,62 +103,57 @@ const props = {
         displayName: '01.jpg',
         relativePath: 'Pictures/Static01/',
         size: '348113',
-        mediaType: '3',
+        mediaType: imageType.toString(),
         title: '01',
-        dateTaken: '0',
         width: '1279',
         height: '1706',
         orientation: '0',
         duration: '0',
         albumId: '1118',
-        albumName: 'Static01'
     },
     video: {
         mimeType: 'video/mp4',
         displayName: '01.mp4',
         relativePath: 'Videos/Static01/',
         size: '4853005',
-        mediaType: '4',
+        mediaType: videoType.toString(),
         title: '01',
         dateTaken: '0',
         width: '1280',
         height: '720',
         orientation: '0',
         duration: '10100',
-        albumName: 'Static01'
     },
     audio: {
         mimeType: 'audio/mpeg',
         displayName: '01.mp3',
         relativePath: 'Audios/Static01/',
         size: '1958311',
-        mediaType: '5',
+        mediaType: audioType.toString(),
         title: '01',
-        dateTaken: '0',
         artist: '元数据测试',
-        width: '0',
-        height: '0',
+        width: '219600',
+        height: '219600',
         orientation: '0',
         duration: '219600',
-        albumName: 'Static01'
     },
     file: {
         mimeType: 'file/*',
         displayName: '01.dat',
         relativePath: 'Documents/Static01/',
         size: '10',
-        mediaType: '1',
+        mediaType: fileType.toString(),
         title: '01',
-        dateTaken: '0',
         width: '0',
         height: '0',
         orientation: '0',
         duration: '0',
-        albumName: 'Static01'
     }
 
 }
-
+function isNum(value) {
+    return typeof value === 'number' && !isNaN(value);
+}
 async function checkFileAssetAttr(done, fetchFileResult, type, count, typesArr) {
     expect(fetchFileResult != undefined).assertTrue();
     expect(fetchFileResult.getCount() == count).assertTrue();
@@ -173,6 +171,10 @@ async function checkFileAssetAttr(done, fetchFileResult, type, count, typesArr) 
             expect(typesArr.includes(assetItem.mimeType)).assertTrue();
         }
     }
+    if(!isNum(asset.dateTaken)) {
+        expect(false).assertTrue();
+        done();
+    }
     if (
         asset.mimeType != props[type].mimeType ||
         asset.displayName != props[type].displayName ||
@@ -180,12 +182,10 @@ async function checkFileAssetAttr(done, fetchFileResult, type, count, typesArr) 
         asset.size != props[type].size ||
         asset.mediaType != props[type].mediaType ||
         asset.title != props[type].title ||
-        asset.dateTaken != props[type].dateTaken ||
         asset.width != props[type].width ||
         asset.height != props[type].height ||
         asset.orientation != props[type].orientation ||
-        asset.duration != props[type].duration ||
-        asset.albumName != props[type].albumName
+        asset.duration != props[type].duration 
     ) {
         expect(false).assertTrue();
         done();
@@ -199,7 +199,7 @@ export default function mediaLibraryTestCallBackTest(abilityContext){
 
         beforeAll(function () { });
         beforeEach(function () { });
-        afterEach(function () { });
+        afterEach(async function () { await sleep(200)});
         afterAll(function () { });
 
         var timestamp = new Date().getTime();
@@ -898,7 +898,7 @@ export default function mediaLibraryTestCallBackTest(abilityContext){
         it('SUB__MEDIA_MIDIALIBRARY_CALLBACK_CREATEASSET_007', 0, async function (done) {
             try {
                 const fileName = new Date().getTime() + '.bat';
-                const path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_DOWNLOAD);
+                const path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_DOCUMENTS);
                 const fileAssets = await media.getFileAssets(filesfetchOp);
                 const asset1 = await fileAssets.getFirstObject();
                 media.createAsset(fileType, fileName, path, async (err, creatAsset1) => {
@@ -941,7 +941,7 @@ export default function mediaLibraryTestCallBackTest(abilityContext){
         it('SUB__MEDIA_MIDIALIBRARY_CALLBACK_CREATEASSET_008', 0, async function (done) {
             try {
                 const fileName = new Date().getTime() + '.bat';
-                const path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_DOWNLOAD);
+                const path = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_DOCUMENTS);
                 const fileAssets = await media.getFileAssets(filesfetchOp);
                 const asset1 = await fileAssets.getFirstObject();
                 media.createAsset(fileType, fileName, path, async (err, creatAsset1) => {

@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 // @ts-nocheck
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "hypium/index"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import ohosWindow from '@ohos.window';
 import screenManager from '@ohos.screen';
 import display from '@ohos.display';
@@ -1349,6 +1349,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
       console.log(msgStr + 'done ');
       done();
+    })
     /**
     * @tc.number     SUB_WINDOW_SETPREFERREDORIENTATION_JSAPI_001
     * @tc.name       Test setPreferredOrientation
@@ -1363,10 +1364,10 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       });
       console.log(msgStr + 'windowStage.getMainWindow' + JSON.stringify(mainWin));
       expect(!!mainWin).assertTrue();
-      let orientationItem = ['UNSPECIFIED','LOCKED','PORTRAIT_UNSPECIFIED','PORTRAIT','LANDSCAPE','PORTRAIT_INVERTED','LANDSCAPE_INVERTED','AUTO_ROTATION','AUTO_ROTATION_PORTRAIT','AUTO_ROTATION_LANDSCAPE','AUTO_ROTATION_RESTRICTED','AUTO_ROTATION_PORTRAIT_RESTRICTED','AUTO_ROTATION_LANDSCAPE_RESTRICTED'];
+      let orientationItem = ['UNSPECIFIED', 'LOCKED', 'PORTRAIT_UNSPECIFIED', 'PORTRAIT', 'LANDSCAPE', 'PORTRAIT_INVERTED', 'LANDSCAPE_INVERTED', 'AUTO_ROTATION', 'AUTO_ROTATION_PORTRAIT', 'AUTO_ROTATION_LANDSCAPE', 'AUTO_ROTATION_RESTRICTED', 'AUTO_ROTATION_PORTRAIT_RESTRICTED', 'AUTO_ROTATION_LANDSCAPE_RESTRICTED'];
       for (let i = 0;i < orientationItem.length; i++) {
         await sleep(1000);
-        let orientation=ohosWindow.Orientation[orientationItem[i]]
+        let orientation = ohosWindow.Orientation[orientationItem[i]]
         await mainWin.setPreferredOrientation(orientation).then(() => {
           console.log(msgStr + 'success set window.setPreferredOrientation ' + orientation);
         }).catch(err => {

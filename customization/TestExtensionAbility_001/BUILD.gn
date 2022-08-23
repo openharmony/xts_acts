@@ -23,6 +23,8 @@ ohos_js_hap_suite("ExtensionZeroTest") {
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ExtensionZeroTest"
+  subsystem_name = "customization"
+  part_name = "enterprise_device_management"
 }
 
 ohos_app_scope("extensionZeroTest_app_profile") {

@@ -17,7 +17,7 @@ group("faapicover") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "faapicoverhaptest:FaApiCoverHapTest",
+      "faapicoverhaptest:ActsFaApiCoverTest",
       "faauxiliary:FaAuxiliary",
     ]
   }

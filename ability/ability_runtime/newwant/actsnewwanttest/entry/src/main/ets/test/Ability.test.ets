@@ -13,10 +13,10 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "deccjsunit/index"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import commonEvent from '@ohos.commonEvent'
 
-var subscriberInfo = {
+let subscriberInfo = {
   events: ['onCreateMain_To_Test_CommonEvent',
     'onWindowStageCreateMain_To_Test_CommonEvent',
     'onForegroundMain_To_Test_CommonEvent',
@@ -33,7 +33,9 @@ var subscriberInfo = {
   ],
 };
 
-export default function abilityTest(abilityContext) {
+let flagNewWant = false;
+
+export default function abilityTest() {
   describe('ActsNewWantTest', function () {
 
     /**
@@ -43,19 +45,19 @@ export default function abilityTest(abilityContext) {
      */
     it('ACTS_NewWant_Test_0100', 0, async function (done) {
       console.log("ACTS_NewWant_Test_0100 --- start")
-      var Subscriber;
-      var flagOnCreate = 0;
-      var flagOnWindowStageCreate = 0;
-      var flagOnForeground = 0;
-      var flagOnNewWant = 0;
+      let Subscriber;
+      let flagOnCreate = 0;
+      let flagOnWindowStageCreate = 0;
+      let flagOnForeground = 0;
+      let flagOnNewWant = 0;
 
-       commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
+      await commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
         console.debug("ACTS_NewWant_Test_0100====>Create Subscriber====>");
         Subscriber = data;
         await commonEvent.subscribe(Subscriber, SubscribeCallBack);
       })
 
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.newwanthap",
         abilityName: "com.example.newwanthapa.MainAbility"
       }, (error, data) => {
@@ -94,17 +96,14 @@ export default function abilityTest(abilityContext) {
           + flagOnNewWant)
         if (flagOnCreate == 1 && flagOnWindowStageCreate == 1
           && flagOnForeground == 1 && flagOnNewWant == 0) {
-          expect(flagOnCreate).assertEqual(1);
-          expect(flagOnWindowStageCreate).assertEqual(1);
-          expect(flagOnForeground).assertEqual(1);
-          expect(flagOnNewWant).assertEqual(0);
-          commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
+            flagNewWant = true;
+            commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
         }
-        done()
       }
 
       function UnSubscribeCallback() {
         console.debug("ACTS_NewWant_Test_0100====>UnSubscribe CallBack====>");
+        expect(flagNewWant).assertTrue();
         done();
       }
     })
@@ -116,19 +115,19 @@ export default function abilityTest(abilityContext) {
      */
     it('ACTS_NewWant_Test_0200', 0, async function (done) {
       console.log("ACTS_NewWant_Test_0200 --- start")
-      var Subscriber;
-      var flagOnCreate = 0;
-      var flagOnWindowStageCreate = 0;
-      var flagOnForeground = 0;
-      var flagOnNewWant = 0;
+      let Subscriber;
+      let flagOnCreate = 0;
+      let flagOnWindowStageCreate = 0;
+      let flagOnForeground = 0;
+      let flagOnNewWant = 0;
       
-      commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
+      await commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
         console.debug("ACTS_NewWant_Test_0200====>Create Subscriber====>");
         Subscriber = data;
         await commonEvent.subscribe(Subscriber, SubscribeCallBack);
       })
 
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.newwanthap",
         abilityName: "com.example.newwanthapa.SecondAbility"
       }, (error, data) => {
@@ -166,17 +165,14 @@ export default function abilityTest(abilityContext) {
           + flagOnNewWant)
         if (flagOnCreate == 1 && flagOnWindowStageCreate == 1
           && flagOnForeground == 1 && flagOnNewWant == 0) {
-          expect(flagOnCreate).assertEqual(1);
-          expect(flagOnWindowStageCreate).assertEqual(1);
-          expect(flagOnForeground).assertEqual(1);
-          expect(flagOnNewWant).assertEqual(0);
-          commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
+            flagNewWant = true;
+            commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
         }
-        done()
       }
 
       function UnSubscribeCallback() {
         console.debug("ACTS_NewWant_Test_0200====>UnSubscribe CallBack====>");
+        expect(flagNewWant).assertTrue();
         done();
       }
     })
@@ -188,19 +184,19 @@ export default function abilityTest(abilityContext) {
      */
     it('ACTS_NewWant_Test_0300', 0, async function (done) {
       console.log("ACTS_NewWant_Test_0300 --- start")
-      var Subscriber;
-      var flagOnCreate = 0;
-      var flagOnWindowStageCreate = 0;
-      var flagOnForeground = 0;
-      var flagOnNewWant = 0;
+      let Subscriber;
+      let flagOnCreate = 0;
+      let flagOnWindowStageCreate = 0;
+      let flagOnForeground = 0;
+      let flagOnNewWant = 0;
 
-      commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
+      await commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
         console.debug("ACTS_NewWant_Test_0300====>Create Subscriber====>");
         Subscriber = data;
         await commonEvent.subscribe(Subscriber, SubscribeCallBack);
       })
 
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.newwanthap",
         abilityName: "com.example.newwanthapa.MainAbility",
         action: "startStandard0300"
@@ -240,15 +236,13 @@ export default function abilityTest(abilityContext) {
 
         if (flagOnCreate == 2 && flagOnWindowStageCreate == 2
           && flagOnForeground == 2 && flagOnNewWant == 0) {
-          expect(flagOnCreate).assertEqual(2);
-          expect(flagOnWindowStageCreate).assertEqual(2);
-          expect(flagOnForeground).assertEqual(2);
-          expect(flagOnNewWant).assertEqual(0);
-          commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
+            flagNewWant = true;
+            commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
         }
       }
       function UnSubscribeCallback() {
         console.debug("ACTS_NewWant_Test_0300====>UnSubscribe CallBack====>");
+        expect(flagNewWant).assertTrue();
         done();
       }
     })
@@ -260,19 +254,19 @@ export default function abilityTest(abilityContext) {
      */
     it('ACTS_NewWant_Test_0400', 0, async function (done) {
       console.log("ACTS_NewWant_Test_0400 --- start")
-      var Subscriber;
-      var flagOnCreate = 0;
-      var flagOnWindowStageCreate = 0;
-      var flagOnForeground = 0;
-      var flagOnNewWant = 0;
+      let Subscriber;
+      let flagOnCreate = 0;
+      let flagOnWindowStageCreate = 0;
+      let flagOnForeground = 0;
+      let flagOnNewWant = 0;
 
-      commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
+      await commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
         console.debug("ACTS_NewWant_Test_0400====>Create Subscriber====>");
         Subscriber = data;
         await commonEvent.subscribe(Subscriber, SubscribeCallBack);
       })
 
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.newwanthap",
         abilityName: "com.example.newwanthapa.SecondAbility",
         action: "startSingleton0400"
@@ -311,19 +305,16 @@ export default function abilityTest(abilityContext) {
         console.debug("ACTS_NewWant_Test_0400====>flagOnNewWant:====>"
           + flagOnNewWant)
 
-        if (flagOnCreate == 1 && flagOnWindowStageCreate == 1
+        if (flagOnCreate == 0 && flagOnWindowStageCreate == 0
           && flagOnForeground == 2 && flagOnNewWant == 1) {
-          expect(flagOnCreate).assertEqual(1);
-          expect(flagOnWindowStageCreate).assertEqual(1);
-          expect(flagOnForeground).assertEqual(2);
-          expect(flagOnNewWant).assertEqual(1);
-          commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
+            flagNewWant = true;
+            commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
         }
-        done()
       }
 
       function UnSubscribeCallback() {
         console.debug("ACTS_NewWant_Test_0400====>UnSubscribe CallBack====>");
+        expect(flagNewWant).assertTrue();
         done();
       }
     })
@@ -335,19 +326,19 @@ export default function abilityTest(abilityContext) {
      */
     it('ACTS_NewWant_Test_0500', 0, async function (done) {
       console.log("ACTS_NewWant_Test_0500 --- start")
-      var Subscriber;
-      var flagOnCreate = 0;
-      var flagOnWindowStageCreate = 0;
-      var flagOnForeground = 0;
-      var flagOnNewWant = 0;
+      let Subscriber;
+      let flagOnCreate = 0;
+      let flagOnWindowStageCreate = 0;
+      let flagOnForeground = 0;
+      let flagOnNewWant = 0;
 
-       commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
+      await commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
         console.debug("ACTS_NewWant_Test_0500====>Create Subscriber====>");
         Subscriber = data;
         await commonEvent.subscribe(Subscriber, SubscribeCallBack);
       })
 
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.newwanthap",
         abilityName: "com.example.newwanthapb.MainAbility",
         action: "startHapB"
@@ -388,17 +379,14 @@ export default function abilityTest(abilityContext) {
 
         if (flagOnCreate == 1 && flagOnWindowStageCreate == 1
           && flagOnForeground == 2 && flagOnNewWant == 1) {
-          expect(flagOnCreate).assertEqual(1);
-          expect(flagOnWindowStageCreate).assertEqual(1);
-          expect(flagOnForeground).assertEqual(2);
-          expect(flagOnNewWant).assertEqual(1);
-          commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
+            flagNewWant = true;
+            commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
         }
-        done()
       }
 
       function UnSubscribeCallback() {
         console.debug("ACTS_NewWant_Test_0500====>UnSubscribe CallBack====>");
+        expect(flagNewWant).assertTrue();
         done();
       }
     })
@@ -410,19 +398,19 @@ export default function abilityTest(abilityContext) {
      */
     it('ACTS_NewWant_Test_0600', 0, async function (done) {
       console.log("ACTS_NewWant_Test_0600 --- start")
-      var Subscriber;
-      var flagOnCreate = 0;
-      var flagOnWindowStageCreate = 0;
-      var flagOnForeground = 0;
-      var flagOnNewWant = 0;
+      let Subscriber;
+      let flagOnCreate = 0;
+      let flagOnWindowStageCreate = 0;
+      let flagOnForeground = 0;
+      let flagOnNewWant = 0;
 
-       commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
+      await commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
         console.debug("ACTS_NewWant_Test_0600====>Create Subscriber====>");
         Subscriber = data;
         await commonEvent.subscribe(Subscriber, SubscribeCallBack);
       })
 
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.newwanthapa",
         abilityName: "com.example.newwanthapc.MainAbility",
         action: "startHapC"
@@ -463,17 +451,14 @@ export default function abilityTest(abilityContext) {
 
         if (flagOnCreate == 1 && flagOnWindowStageCreate == 1
           && flagOnForeground == 2 && flagOnNewWant == 1) {
-          expect(flagOnCreate).assertEqual(1);
-          expect(flagOnWindowStageCreate).assertEqual(1);
-          expect(flagOnForeground).assertEqual(2);
-          expect(flagOnNewWant).assertEqual(1);
-          commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
+            flagNewWant = true;
+            commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
         }
-        done()
       }
 
       function UnSubscribeCallback() {
         console.debug("ACTS_NewWant_Test_0600====>UnSubscribe CallBack====>");
+        expect(flagNewWant).assertTrue();
         done();
       }
     })
@@ -485,19 +470,19 @@ export default function abilityTest(abilityContext) {
      */
     it('ACTS_NewWant_Test_0700', 0, async function (done) {
       console.log("ACTS_NewWant_Test_0700 --- start")
-      var Subscriber;
-      var flagOnCreate = 0;
-      var flagOnWindowStageCreate = 0;
-      var flagOnForeground = 0;
-      var flagOnNewWant = 0;
+      let Subscriber;
+      let flagOnCreate = 0;
+      let flagOnWindowStageCreate = 0;
+      let flagOnForeground = 0;
+      let flagOnNewWant = 0;
 
-      commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
+      await commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
         console.debug("ACTS_NewWant_Test_0700====>Create Subscriber====>");
         Subscriber = data;
         await commonEvent.subscribe(Subscriber, SubscribeCallBack);
       })
 
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.newwanthap",
         abilityName: "com.example.newwanthapa.SecondAbility",
         action: "startSecondAbility0700"
@@ -536,18 +521,15 @@ export default function abilityTest(abilityContext) {
         console.debug("ACTS_NewWant_Test_0700====>flagOnNewWant:====>"
           + flagOnNewWant)
 
-        if (flagOnCreate == 1 && flagOnWindowStageCreate == 1
+        if (flagOnCreate == 0 && flagOnWindowStageCreate == 0
           && flagOnForeground == 2 && flagOnNewWant == 1) {
-          expect(flagOnCreate).assertEqual(1);
-          expect(flagOnWindowStageCreate).assertEqual(1);
-          expect(flagOnForeground).assertEqual(2);
-          expect(flagOnNewWant).assertEqual(1);
-          commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
+            flagNewWant = true;
+            commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
         }
-        done()
       }
       function UnSubscribeCallback() {
         console.debug("ACTS_NewWant_Test_0700====>UnSubscribe CallBack====>");
+        expect(flagNewWant).assertTrue();
         done();
       }
     })
@@ -559,22 +541,22 @@ export default function abilityTest(abilityContext) {
      */
     it('ACTS_NewWant_Test_0800', 0, async function (done) {
       console.log("ACTS_NewWant_Test_0800 --- start")
-      var Subscriber;
-      var flagOnCreate = 0;
-      var flagOnWindowStageCreate = 0;
-      var flagOnForeground = 0;
-      var flagOnNewWant = 0;
+      let Subscriber;
+      let flagOnCreate = 0;
+      let flagOnWindowStageCreate = 0;
+      let flagOnForeground = 0;
+      let flagOnNewWant = 0;
 
-      commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
+      await commonEvent.createSubscriber(subscriberInfo).then(async (data) => {
         console.debug("ACTS_NewWant_Test_0800====>Create Subscriber====>");
         Subscriber = data;
         await commonEvent.subscribe(Subscriber, SubscribeCallBack);
       })
 
-      abilityContext.startAbility({
+      globalThis.abilityContext.startAbility({
         bundleName: "com.example.newwanthap",
-        abilityName: "com.example.newwanthapa.SecondAbility",
-        action: "startSecondAbility0800"
+        abilityName: "com.example.newwanthapa.MainAbility",
+        action: "startMainAbility0800"
       }, (error, data) => {
         console.log('ACTS_NewWant_Test_0800 - startAbility start SecondAbility: '
           + JSON.stringify(error) + ", " + JSON.stringify(data))
@@ -611,18 +593,15 @@ export default function abilityTest(abilityContext) {
         console.debug("ACTS_NewWant_Test_0800====>flagOnNewWant:====>"
           + flagOnNewWant)
 
-        if (flagOnCreate == 1 && flagOnWindowStageCreate == 1
+        if (flagOnCreate == 0 && flagOnWindowStageCreate == 0
           && flagOnForeground == 2 && flagOnNewWant == 1) {
-          expect(flagOnCreate).assertEqual(1);
-          expect(flagOnWindowStageCreate).assertEqual(1);
-          expect(flagOnForeground).assertEqual(2);
-          expect(flagOnNewWant).assertEqual(1);
-          commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
+            flagNewWant = true;
+            commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
         }
-        done()
       }
       function UnSubscribeCallback() {
         console.debug("ACTS_NewWant_Test_0800====>UnSubscribe CallBack====>");
+        expect(flagNewWant).assertTrue();
         done();
       }
     })
