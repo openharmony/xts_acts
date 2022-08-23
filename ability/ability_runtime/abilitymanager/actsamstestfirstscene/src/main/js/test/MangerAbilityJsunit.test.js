@@ -40,6 +40,7 @@ export default function ActsAmsTestFirstScene() {
                     ' + error.code + ', data length [' + data.length + ']');
                 }
             );
+            sleep(500);
             done();
         });
 

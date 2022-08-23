@@ -52,6 +52,7 @@ export default function ActsAmsCallBackSecondScene() {
                     ' + error.code + ', data length [' + data.length + ']');
                 }
             );
+            sleep(500);
             done();
         });
 

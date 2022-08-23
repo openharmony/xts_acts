@@ -52,6 +52,7 @@ export default function ActsAmsCallBackThirdScene() {
                     ' + error.code + ', data length [' + data.length + ']');
                 }
             );
+            sleep(500);
             done();
         });
 

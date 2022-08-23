@@ -35,6 +35,7 @@ export default function ActsAmsCallBackFirstScene() {
                     ' + error.code + ', data length [' + data.length + ']');
                 }
             );
+            sleep(500);
             done();
         });
 
