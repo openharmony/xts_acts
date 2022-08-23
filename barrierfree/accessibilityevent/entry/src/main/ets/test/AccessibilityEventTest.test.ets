@@ -17,7 +17,7 @@ import accessibility from '@ohos.accessibility'
 import commonEvent from '@ohos.commonEvent'
 
 export default function abilityTest() {
-    let targetBundleName = 'com.example.myapplication';
+    let targetBundleName = 'com.example.accessibilityxts';
     let subScriber = undefined;
     let isConnected: boolean = false;
     let events: Array<any> = [];

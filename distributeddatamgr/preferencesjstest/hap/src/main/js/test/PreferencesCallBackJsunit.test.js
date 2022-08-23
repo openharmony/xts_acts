@@ -413,5 +413,79 @@ describe('preferencesCallBackTest', function () {
             done()
         })
     })
+
+    /**
+     * @tc.name getPreferences callback interface test
+     * @tc.number SUB_DDM_AppDataFWK_GetPreferencesTest_CallBack_0001
+     * @tc.desc getPreferences callback interface test
+    */
+    it('testPreferencesGetPreferences0001', 0, async function (done) {
+        const NAME = 'getPreferencesTest'
+        await dataPreferences.getPreferences(context, NAME, (err, preferences) => {
+            if(err != null){
+                console.info(TAG + "Get preferences err: " + err)
+                expect(false).assertTrue(); 
+            }else{
+                console.info(TAG + "Get preferences success")
+                expect(preferences != null).assertTrue();
+            }
+        })
+        done()
+    })
+
+    /**
+     * @tc.name deletePreferences callback interface test
+     * @tc.number SUB_DDM_AppDataFWK_DeletePreferencesTest_CallBack_0001
+     * @tc.desc deletePreferences callback interface test
+    */
+     it('testPreferencesDeletePreferences0001', 0, async function (done) {
+        const NAME = 'getPreferencesTest'
+        await dataPreferences.getPreferences(context, NAME, (err, preferences) => {
+            if(err != null){
+                console.info(TAG + "Get preferences err: " + err)
+                expect(false).assertTrue();
+            }else{
+                console.info(TAG + "Get preferences success")
+                expect(preferences != null).assertTrue();
+            }
+        })
+        await dataPreferences.deletePreferences(context, NAME, (err, data) => {
+            if(err != null){
+                console.info(TAG + "Delete preferences err: " + err)
+                expect(false).assertTrue();
+            }else{
+                console.info(TAG + "Delete preferences success")
+                expect(true).assertTrue();
+            }
+        })
+        done()
+    })
+
+    /**
+     * @tc.name removePreferencesFromCache interface test
+     * @tc.number SUB_DDM_AppDataFWK_RemovePreferencesFromCache_CallBack_0001
+     * @tc.desc removePreferencesFromCache interface test
+     */
+     it('testRemovePreferencesFromCache0001', 0, async function (done) {
+        await dataPreferences.getPreferences(context, NAME, (err, preferences) => {
+            if(err != null){
+                console.info(TAG + "Get preferences err: " + err)
+                expect(false).assertTrue();
+            }else{
+                console.info(TAG + "Get preferences success")
+                expect(preferences != null).assertTrue();
+            }
+        })
+        await dataPreferences.removePreferencesFromCache(context, NAME, (err ,data) => {
+            if(err != null){
+                console.info(TAG + "Remove preferences from cache error: " + err)
+                expect(false).assertTrue();
+            }else{
+                console.info(TAG + "Remove preferences from cache success")
+                expect(true).assertTrue();
+            }
+        })
+        done();
+    })
 })
 }

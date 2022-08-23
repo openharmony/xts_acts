@@ -21,6 +21,8 @@ ohos_js_hap_suite("ActsAnsBadgeDisplayTest") {
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsAnsBadgeDisplayTest"
+  subsystem_name = "notification"
+  part_name = "distributed_notification_service"
 }
 ohos_js_assets("hjs_demo_js_assets") {
   js2abc = true

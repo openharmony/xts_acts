@@ -24,7 +24,7 @@ executable("ActsKitFwkApiTest") {
     "//third_party/cJSON",
     "//third_party/mbedtls/include/",
     "//third_party/bounds_checking_function/include/",
-    "//base/startup/syspara_lite/interfaces/kits/",
+    "//base/startup/init/interfaces/innerkits/include/syspara",
 
     # dir for oem_auth_config.h and oem_auth_result_storage.h
     "//vendor/kitframework/include/",

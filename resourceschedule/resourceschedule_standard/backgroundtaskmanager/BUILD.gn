@@ -21,6 +21,8 @@ ohos_js_hap_suite("resourceschedule_backgroundtaskmanager_js_test") {
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsResourcescheduleTaskMgrTest"
+  subsystem_name = "resourceschedule"
+  part_name = "background_task_mgr"
 }
 ohos_js_assets("resourceschedule_js_assets") {
   js2abc = true

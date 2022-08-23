@@ -179,7 +179,8 @@ struct Index {
                             let webPageHeight=this.controller.getPageHeight()+""
                             setTimeout(()=>{
                                 this.controller.runJavaScript({script:"getPageHeight()",callback:(res)=>{
-                                    Utils.emitEvent(webPageHeight==res,124)
+				    console.info("getPageHeight==>"+res)
+                                    Utils.emitEventTwo(res,webPageHeight,124)
                                 }})
                             },3000)
                             break;

@@ -15,9 +15,11 @@
 import abilityIsTerminatingTest from './AbilityIsTerminating.test';
 import faSetDisplayOrientation from './FaSetDisplayOrientation.test';
 import faShowOnLock from './FaShowOnLock.test';
+import onAndOffScreenTest from './OnAndOffScreenTest.test';
 
 export default function testsuite() {
   abilityIsTerminatingTest();
   faSetDisplayOrientation();
   faShowOnLock();
+  onAndOffScreenTest();
 }

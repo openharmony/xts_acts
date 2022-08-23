@@ -14,8 +14,6 @@
  */
 
 import audio from '@ohos.multimedia.audio';
-import fileio from '@ohos.fileio';
-
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index';
 
 describe('audioEM', function () {
@@ -23,16 +21,6 @@ describe('audioEM', function () {
     const audioManager = audio.getAudioManager();
     var deviceRoleValue = null;
     var deviceTypeValue = null;
-    var volErrorMesg = 'Error, Operation not supported or Failed';
-    var audioMedia = 3;
-    var audioRingtone = 2;
-    var minVol = 0;
-    var maxVol = 15;
-    var lowVol = 5;
-    var highVol = 14;
-    var outOfRangeVol = 28;
-    var longValue = '28374837458743875804735081439085918459801437584738967509184509813904850914375904790589104801843';
-
     function sleep (ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
@@ -752,53 +740,6 @@ describe('audioEM', function () {
             }
             done();
         });
-    })
-
-    /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_DeviceType_001
-                * @tc.name      : DeviceType - INVALID
-                * @tc.desc      : DeviceType - INVALID
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
-    it('SUB_AUDIO_MANAGER_DeviceType_001', 0, async function (done) {
-
-        expect(audio.DeviceType.INVALID).assertEqual(0);
-        await sleep(50);
-        done();
-    })
-
-    /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_DeviceType_002
-                * @tc.name      : DeviceType - WIRED_HEADSET
-                * @tc.desc      : DeviceType - WIRED_HEADSET
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
-    it('SUB_AUDIO_MANAGER_DeviceType_001', 0, async function (done) {
-
-        expect(audio.DeviceType.WIRED_HEADSET).assertEqual(3);
-        await sleep(50);
-        done();
-    })
-	
-    /* *
-                * @tc.number    : SUB_AUDIO_MANAGER_DeviceType_003
-                * @tc.name      : DeviceType - USB_HEADSET
-                * @tc.desc      : DeviceType - USB_HEADSET
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-            */
-    it('SUB_AUDIO_MANAGER_DeviceType_003', 0, async function (done) {
-        var resultflag = false;
-        if (audio.DeviceType.USB_HEADSET == 22 || audio.DeviceType.USB_HEADSET == undefined)
-        resultflag = true;
-        expect(resultflag).assertTrue();
-        await sleep(50);
-        done();
     })
 
 	/* *

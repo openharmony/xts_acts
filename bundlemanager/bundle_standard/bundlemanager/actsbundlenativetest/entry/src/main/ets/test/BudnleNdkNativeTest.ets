@@ -17,7 +17,7 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "
 import bundlendk from 'libbundlendk.so'
 
 const BUNDLE_NAME = "com.actsbundle.napitest"
-const FINGER_PRINT = "7B3D8586460A7666621992FD367993D7ECDE40A8FD8E9CF525A48822E9A62655"
+const FINGER_PRINT = "8E93863FC32EE238060BF69A9B37E2608FFFB21F93C862DD511CBAC9F30024B5"
 
 export default function budnleNdkNativeTest() {
     describe('BundleNdkTest', function () {

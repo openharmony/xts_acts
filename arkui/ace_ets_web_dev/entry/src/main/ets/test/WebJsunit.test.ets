@@ -19,7 +19,7 @@ import Utils from './Utils.ets';
 let emitKey = "emitUserAgent";
 export default function webJsunit() {
   describe('ActsAceWebDevTest', function () {
-    beforeEach(async function () {
+    beforeEach(async function (done) {
       await Utils.sleep(2000);
       console.info("web beforeEach start");
       done();
@@ -70,7 +70,7 @@ export default function webJsunit() {
      */
     it('onUrlLoadIntercept',0,async function(done){
       emitKey="emitOnRenderExited";
-      Utils.registerEvent("onUrlLoadIntercept","https://www.gitee.com",104,done);
+      Utils.registerEvent("onUrlLoadIntercept","https://gitee.com/",104,done);
       sendEventByKey('webcomponent',10,'');
     })
     /* 
@@ -100,7 +100,7 @@ export default function webJsunit() {
      */
     it('loadUrl',0,async function(done){
       emitKey="emitRunJavaScript";
-      Utils.registerEvent("loadUrl","基于Git的代码托管和研发协作平台--Gitee | Software Development and Collaboration Platform",110,done);
+      Utils.registerContainEvent("loadUrl","代码托管和研发协作平台",110,done);
       sendEventByKey('webcomponent',10,'');
     })
     /* 
@@ -168,7 +168,7 @@ export default function webJsunit() {
      */
     it('getPageHeight',0,async function(done){
       emitKey="emitGetRequestFocus";
-      Utils.registerEvent("getPageHeight","true",124,done);
+      Utils.registerEventTwo("getPageHeight",124,done);
       sendEventByKey('webcomponent',10,'');
     })
     /* 

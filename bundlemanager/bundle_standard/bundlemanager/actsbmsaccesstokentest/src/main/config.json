@@ -17,7 +17,7 @@
         "package": "com.example.actsbmsaccesstokentest",
         "name": ".entry",
         "deviceType": [
-            "phone"
+            "default"
         ],
         "distro": {
             "deliveryWithInstall": true,

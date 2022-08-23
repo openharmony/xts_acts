@@ -21,6 +21,8 @@ ohos_js_hap_suite("resourceschedule_reminderagent_js_test") {
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsResourcescheduleReminderAgentTest"
+  subsystem_name = "notification"
+  part_name = "distributed_notification_service"
 }
 ohos_js_assets("resourceschedule_js_assets") {
   js2abc = true

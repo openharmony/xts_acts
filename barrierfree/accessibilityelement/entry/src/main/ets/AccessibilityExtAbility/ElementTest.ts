@@ -643,7 +643,7 @@ export class ElementTest {
         console.info('ElementTest executeAttributeValuePromiseTriggerAction ' + caseName + ' start');
         let event = new accessibility.EventInfo({});
         event.type = 'click';
-        event.bundleName = 'com.example.myapplication';
+        event.bundleName = 'com.example.accessibilityxts';
         event.triggerAction = 'click';
         await accessibility.sendEvent(event);
         console.info('ElementTest executeAttributeValuePromiseTriggerAction ' + caseName + ' sendEvent finish');
@@ -914,7 +914,7 @@ export class ElementTest {
         console.info('ElementTest executeAttributeValueCallbackTriggerAction ' + caseName + ' start');
         let event = new accessibility.EventInfo({});
         event.type = 'click';
-        event.bundleName = 'com.example.myapplication';
+        event.bundleName = 'com.example.accessibilityxts';
         event.triggerAction = 'click';
         await accessibility.sendEvent(event);
         console.info('ElementTest executeAttributeValueCallbackTriggerAction ' + caseName + ' sendEvent finish');

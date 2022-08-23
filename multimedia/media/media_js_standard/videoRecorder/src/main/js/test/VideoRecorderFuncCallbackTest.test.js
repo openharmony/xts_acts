@@ -326,14 +326,14 @@ describe('VideoRecorderFuncCallbackTest', function () {
     });
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0100
         * @tc.name      : 01.start->release (callback)
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0100', 0, async function (done) {
         fdObject = await mediaTestBase.getFd('recorder_callback_01.mp4');
         fdPath = "fd://" + fdObject.fdNumber.toString();
         videoConfig.url = fdPath;
@@ -345,14 +345,14 @@ describe('VideoRecorderFuncCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0200
         * @tc.name      : 02.start->pause->release (callback)
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0200', 0, async function (done) {
         fdObject = await mediaTestBase.getFd('recorder_callback_02.mp4');
         fdPath = "fd://" + fdObject.fdNumber.toString();
         videoConfig.url = fdPath;
@@ -365,14 +365,14 @@ describe('VideoRecorderFuncCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0300
         * @tc.name      : 03.start->pause->resume->release (callback)
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0300', 0, async function (done) {
         fdObject = await mediaTestBase.getFd('recorder_callback_03.mp4');
         fdPath = "fd://" + fdObject.fdNumber.toString();
         videoConfig.url = fdPath;
@@ -385,14 +385,14 @@ describe('VideoRecorderFuncCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0400
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0400
         * @tc.name      : 04.start->stop->release (callback)
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0400', 0, async function (done) {
         fdObject = await mediaTestBase.getFd('recorder_callback_04.mp4');
         fdPath = "fd://" + fdObject.fdNumber.toString();
         videoConfig.url = fdPath;
@@ -404,14 +404,14 @@ describe('VideoRecorderFuncCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0500
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0500
         * @tc.name      : 05.start->reset->release (callback)
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0500', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0500', 0, async function (done) {
         fdObject = await mediaTestBase.getFd('recorder_callback_05.mp4');
         fdPath = "fd://" + fdObject.fdNumber.toString();
         videoConfig.url = fdPath;
@@ -423,14 +423,14 @@ describe('VideoRecorderFuncCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0600
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0600
         * @tc.name      : 06.start->pause->stop->release (callback)
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0600', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0600', 0, async function (done) {
         fdObject = await mediaTestBase.getFd('recorder_callback_06.mp4');
         fdPath = "fd://" + fdObject.fdNumber.toString();
         videoConfig.url = fdPath;
@@ -442,14 +442,14 @@ describe('VideoRecorderFuncCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0700
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0700
         * @tc.name      : 07.start->pause->reset->release (callback)
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0700', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0700', 0, async function (done) {
         fdObject = await mediaTestBase.getFd('recorder_callback_07.mp4');
         fdPath = "fd://" + fdObject.fdNumber.toString();
         videoConfig.url = fdPath;
@@ -461,14 +461,14 @@ describe('VideoRecorderFuncCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0800
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0800
         * @tc.name      : 08.start->pause->resume->stop->release (callback)
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0800', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0800', 0, async function (done) {
         fdObject = await mediaTestBase.getFd('recorder_callback_08.mp4');
         fdPath = "fd://" + fdObject.fdNumber.toString();
         videoConfig.url = fdPath;
@@ -480,14 +480,14 @@ describe('VideoRecorderFuncCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0900
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0900
         * @tc.name      : 09.start->pause->resume->reset->release (callback)
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0900', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_0900', 0, async function (done) {
         fdObject = await mediaTestBase.getFd('recorder_callback_09.mp4');
         fdPath = "fd://" + fdObject.fdNumber.toString();
         videoConfig.url = fdPath;
@@ -499,7 +499,7 @@ describe('VideoRecorderFuncCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1000
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1000
         * @tc.name      : 10.start->stop->release
         *                 (audioBitrate 8000,audioSampleRate 8000,videoBitrateRange 8000)(promise)
         * @tc.desc      : Audio recordr control test
@@ -507,7 +507,7 @@ describe('VideoRecorderFuncCallbackTest', function () {
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1000', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1000', 0, async function (done) {
         configFile.audioBitrate = 8000;
         configFile.audioSampleRate = 8000;
         configFile.videoBitrate = 8000;
@@ -522,7 +522,7 @@ describe('VideoRecorderFuncCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1100
         * @tc.name      : 11.start->stop->release
         *                 (audioBitrate 16000, audioSampleRate 32000, videoBitrateRange 16000)(callback)
         * @tc.desc      : Audio recordr control test
@@ -530,7 +530,7 @@ describe('VideoRecorderFuncCallbackTest', function () {
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1100', 0, async function (done) {
         configFile.audioBitrate = 16000;
         configFile.audioSampleRate = 32000;
         configFile.videoBitrate = 16000;
@@ -545,7 +545,7 @@ describe('VideoRecorderFuncCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1200
         * @tc.name      : 12.start->stop->release
         *                 (audioBitrate 32000, audioSampleRate 44100, videoBitrateRange 32000)(callback)
         * @tc.desc      : Audio recordr control test
@@ -553,7 +553,7 @@ describe('VideoRecorderFuncCallbackTest', function () {
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1200', 0, async function (done) {
         configFile.audioBitrate = 32000;
         configFile.audioSampleRate = 44100;
         configFile.videoBitrate = 32000;
@@ -568,7 +568,7 @@ describe('VideoRecorderFuncCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1300
         * @tc.name      : 13.start->stop->release
         *                 (audioBitrate 112000, audioSampleRate 96000, videoBitrateRange 112000)(callback)
         * @tc.desc      : Audio recordr control test
@@ -576,7 +576,7 @@ describe('VideoRecorderFuncCallbackTest', function () {
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1300', 0, async function (done) {
         configFile.audioBitrate = 112000;
         configFile.audioSampleRate = 96000;
         configFile.videoBitrate = 112000;
@@ -591,14 +591,14 @@ describe('VideoRecorderFuncCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1400
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1400
         * @tc.name      : 14.start->release (only video) (callback)
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1400', 0, async function (done) {
         fdObject = await mediaTestBase.getFd('recorder_callback_14.mp4');
         fdPath = "fd://" + fdObject.fdNumber.toString();
         onlyVideoConfig.url = fdPath;
@@ -610,14 +610,14 @@ describe('VideoRecorderFuncCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1500
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1500
         * @tc.name      : 15.start->pause->release (only video) (callback)
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1500', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1500', 0, async function (done) {
         fdObject = await mediaTestBase.getFd('recorder_callback_15.mp4');
         fdPath = "fd://" + fdObject.fdNumber.toString();
         onlyVideoConfig.url = fdPath;
@@ -629,14 +629,14 @@ describe('VideoRecorderFuncCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1600
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1600
         * @tc.name      : 16.start->pause->resume->releas (only video) (callback)
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1600', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1600', 0, async function (done) {
         fdObject = await mediaTestBase.getFd('recorder_callback_16.mp4');
         fdPath = "fd://" + fdObject.fdNumber.toString();
         onlyVideoConfig.url = fdPath;
@@ -648,14 +648,14 @@ describe('VideoRecorderFuncCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1700
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1700
         * @tc.name      : 17.start->stop->release (only video) (callback)
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1700', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1700', 0, async function (done) {
         fdObject = await mediaTestBase.getFd('recorder_callback_17.mp4');
         fdPath = "fd://" + fdObject.fdNumber.toString();
         onlyVideoConfig.url = fdPath;
@@ -667,14 +667,14 @@ describe('VideoRecorderFuncCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1800
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1800
         * @tc.name      : 18.start->reset->release (only video) (callback)
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1800', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1800', 0, async function (done) {
         fdObject = await mediaTestBase.getFd('recorder_callback_18.mp4');
         fdPath = "fd://" + fdObject.fdNumber.toString();
         onlyVideoConfig.url = fdPath;
@@ -686,14 +686,14 @@ describe('VideoRecorderFuncCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1900
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1900
         * @tc.name      : 19.rotation 90 (callback)
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level1
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1900', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_1900', 0, async function (done) {
         fdObject = await mediaTestBase.getFd('recorder_callback_19.mp4');
         fdPath = "fd://" + fdObject.fdNumber.toString();
         videoConfig.url = fdPath;
@@ -707,14 +707,14 @@ describe('VideoRecorderFuncCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_2000
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_2000
         * @tc.name      : 20.rotation 180 (callback)
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level1
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_2000', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_2000', 0, async function (done) {
         fdObject = await mediaTestBase.getFd('recorder_callback_20.mp4');
         fdPath = "fd://" + fdObject.fdNumber.toString();
         videoConfig.url = fdPath;
@@ -727,14 +727,14 @@ describe('VideoRecorderFuncCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_2100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_2100
         * @tc.name      : 21.rotation 270 (callback)
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level1
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_2100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_2100', 0, async function (done) {
         fdObject = await mediaTestBase.getFd('recorder_callback_21.mp4');
         fdPath = "fd://" + fdObject.fdNumber.toString();
         videoConfig.url = fdPath;
@@ -747,14 +747,14 @@ describe('VideoRecorderFuncCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_2200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_2200
         * @tc.name      : 22.videoFrameRate 20 (callback)
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level1
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_2200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_2200', 0, async function (done) {
         fdObject = await mediaTestBase.getFd('recorder_callback_22.mp4');
         fdPath = "fd://" + fdObject.fdNumber.toString();
         videoConfig.url = fdPath;
@@ -767,14 +767,14 @@ describe('VideoRecorderFuncCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_2300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_2300
         * @tc.name      : 23.videoFrameRate 30 (callback)
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level1
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_2300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_2300', 0, async function (done) {
         fdObject = await mediaTestBase.getFd('recorder_callback_23.mp4');
         fdPath = "fd://" + fdObject.fdNumber.toString();
         videoConfig.url = fdPath;
@@ -787,14 +787,14 @@ describe('VideoRecorderFuncCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_2400
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_2400
         * @tc.name      : 24.videoFrameRate 60 (callback)
         * @tc.desc      : Audio recordr control test
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level1
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_2400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_FUNCTION_CALLBACK_2400', 0, async function (done) {
         fdObject = await mediaTestBase.getFd('recorder_callback_24.mp4');
         fdPath = "fd://" + fdObject.fdNumber.toString();
         videoConfig.url = fdPath;
