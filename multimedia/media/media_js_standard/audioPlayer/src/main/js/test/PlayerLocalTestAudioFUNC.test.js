@@ -255,13 +255,17 @@ describe('PlayerLocalTestAudioFUNC', function () {
             nextStep(mySteps, done);
         });
         audioPlayer.on('volumeChange', () => {
-            console.info(`case setvolume called`);
-            mySteps.shift();
-            mySteps.shift();
-            if (audioPlayer.state == 'playing') {
-                mediaTestBase.msleep(PLAY_TIME);
+            if (mySteps[0] != VOLUME_STATE) {
+                console.info(`case setvolume called by system`);
+            } else {
+                console.info(`case setvolume called`);
+                mySteps.shift();
+                mySteps.shift();
+                if (audioPlayer.state == 'playing') {
+                    mediaTestBase.msleep(PLAY_TIME);
+                }
+                nextStep(mySteps, done);
             }
-            nextStep(mySteps, done);
         });
         audioPlayer.on('finish', () => {
             mySteps.shift();

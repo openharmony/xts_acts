@@ -24,6 +24,7 @@ describe('PlayerLocalTestAudioFormat', function () {
     const SEEK_TIME = 10000; // 10s
     let isToSeek = false;
     let isToDuration = false;
+    let isVolume = false;
     let fdNumber = 0;
     beforeAll(function() {
         console.info('beforeAll case');
@@ -32,6 +33,7 @@ describe('PlayerLocalTestAudioFormat', function () {
     beforeEach(function() {
         isToSeek = false;
         isToDuration = false;
+	isVolume = false;
         console.info('beforeEach case');
     })
 
@@ -68,6 +70,7 @@ describe('PlayerLocalTestAudioFormat', function () {
         audioPlayer.on('pause', () => {
             console.info('case now is paused');
             expect(audioPlayer.state).assertEqual('paused');
+	    isVolume = true;
             audioPlayer.setVolume(MAX_VOLUME);
         });
         audioPlayer.on('stop', () => {
@@ -101,9 +104,12 @@ describe('PlayerLocalTestAudioFormat', function () {
             }
         });
         audioPlayer.on('volumeChange', () => {
-            console.info('case set volume value to ' + MAX_VOLUME);
-            audioPlayer.play();
-            isToSeek = true;
+	    if (isVolume) {
+	        console.info('case set volume value to ' + MAX_VOLUME);
+		audioPlayer.play();
+		isToSeek = true;
+	    }
+            console.info('case set volume by system');
         });
         audioPlayer.on('finish', () => {
             console.info('case play end');
