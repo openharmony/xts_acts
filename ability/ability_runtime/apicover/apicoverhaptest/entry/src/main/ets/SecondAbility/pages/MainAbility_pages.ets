@@ -1,3 +1,4 @@
+// @ts-nocheck
 /*
  * Copyright (c) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,16 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import router from '@ohos.router';
+import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
+import { Hypium } from '@ohos/hypium'
+import testsuite from '../../test/List.test'
 
-import apiCoverAbility from './ApiCoverAbility.test'
-import verificationTest from './VerificationTest'
-import wantAgentCover from './WantAgentCover.test'
-import contextEnvironmentTest from './ContextEnvironmentTest.test';
-
-export default function List() {
-
-  apiCoverAbility()
-  verificationTest()
-  wantAgentCover()
-  contextEnvironmentTest(globalThis.applicationContext)
+@Entry
+@Component
+struct Index {
+  @State message: string = 'MainAbility'
+  @State create: string = 'MainAbility'
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
 }

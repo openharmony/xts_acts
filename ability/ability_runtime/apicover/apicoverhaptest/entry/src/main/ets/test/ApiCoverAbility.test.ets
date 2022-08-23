@@ -17,6 +17,13 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import formProvider from '@ohos.application.formProvider';
 import FormInfo from '@ohos.application.formInfo';
 import formError from '@ohos.application.formError';
+import formHost from '@ohos.application.formHost';
+import errorManager from '@ohos.application.errorManager';
+import abilityConstant from '@ohos.application.AbilityConstant'
+import appManager from '@ohos.application.appManager'
+import appContext from '@ohos.application.context'
+import commonEvent from '@ohos.commonEvent';
+FormDimension
 var EXTENSION_INFO_ERR = 2097152
 var USERID_ERR = 2097177
 var trueInfo;
@@ -315,6 +322,9 @@ export default function ApiCoverTest() {
       expect("ohos.extra.param.key.form_name").assertEqual(FormInfo.FormParam.NAME_KEY)
       expect("ohos.extra.param.key.form_temporary").assertEqual(FormInfo.FormParam.TEMPORARY_KEY)
       expect("ohos.extra.param.key.form_width").assertEqual(FormInfo.FormParam.WIDTH_KEY)
+      expect("ohos.extra.param.key.form_identity").assertEqual(FormInfo.FormParam.IDENTITY_KEY)
+      expect("ohos.extra.param.key.bundle_name").assertEqual(FormInfo.FormParam.BUNDLE_NAME_KEY)
+      expect("ohos.extra.param.key.ability_name").assertEqual(FormInfo.FormParam.ABILITY_NAME_KEY)
       expect(0).assertEqual(FormInfo.FormState.DEFAULT)
       expect(1).assertEqual(FormInfo.FormState.READY)
       expect(-1).assertEqual(FormInfo.FormState.UNKNOWN)
@@ -322,5 +332,216 @@ export default function ApiCoverTest() {
       expect(1).assertEqual(FormInfo.ColorMode.MODE_LIGHT)
       done();
     });
+
+    /*
+     * @tc.number  SUB_AA_ReisterErrorObserver_0100
+     * @tc.name    Test ReisterErrorObserver.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_AA_ReisterErrorObserver_0100', 0, async function (done) {
+      let errorObserver:errorManager.ErrorObserver;
+      errorObserver = {
+        onUnhandledException:(errMessage) => {
+          console.info("SUB_AA_ReisterErrorObserver_0100" + JSON.stringify(errMessage));
+        }
+      }
+      let errCodeId = errorManager.registerErrorObserver(errorObserver)
+      expect(errCodeId).assertEqual(0)
+      errorManager.unregisterErrorObserver(errCodeId).then((data)=>{
+        expect(data).assertEqual(undefined)
+        done();
+      }).catch((err)=>{
+        expect().assertFail()
+        done();
+      })
+    });
+
+    /*
+     * @tc.number  SUB_AA_ReisterErrorObserver_0200
+     * @tc.name    Test unregisterErrorObserver with error number.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_AA_ReisterErrorObserver_0200', 0, async function (done) {
+      errorManager.unregisterErrorObserver(-1, (err, data)=>{
+        console.info("SUB_AA_ReisterErrorObserver_0200:" + JSON.stringify(err) + " " + JSON.stringify(data));
+        console.info("SUB_AA_ReisterErrorObserver_0200:" + typeof(err.code));
+        if(err.code != 0){
+          expect(err.code).assertEqual(-2)
+          done()
+        }else{
+          expect().assertFail()
+          done();
+        }
+      })
+    });
+
+    /*
+     * @tc.number  SUB_AA_Test_AbilityConstant_0100
+     * @tc.name    Test abilityConstant.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_AA_AbilityConstant_0200', 0, async function (done) {
+      expect(1).assertEqual(abilityConstant.LaunchReason.START_ABILITY)
+      expect(1).assertEqual(abilityConstant.LastExitReason.ABILITY_NOT_RESPONDING)
+      expect(2).assertEqual(abilityConstant.LastExitReason.NORMAL)
+      done()
+    });
+
+    /*
+     * @tc.number  SUB_AA_Test_ProcessRunningInformation_0100
+     * @tc.name    Test getProcessRunningInformation in appManager.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_AA_Test_ProcessRunningInformation_0100', 0, async function (done) {
+      let processRunningInformation:appManager.ProcessRunningInformation;
+      let process;
+      appManager.getProcessRunningInformation().then((processRunningInformations)=>{
+        console.info("SUB_AA_Test_ProcessRunningInformation_0100:" + JSON.stringify(processRunningInformations));
+        for(let i = 0; i < processRunningInformations.length; i++){
+          console.info("SUB_AA_Test_ProcessRunningInformation_0100:" + JSON.stringify(processRunningInformations[i]));
+          expect(processRunningInformations[i].pid).assertLarger(0)
+          expect(processRunningInformations[i].uid).assertLarger(0)
+          if(processRunningInformations[i].processName == "com.example.apicoverhaptest"){
+            process = processRunningInformations[i]
+          }
+        }
+        expect(process.bundleNames[0]).assertEqual("com.example.apicoverhaptest")
+        done()
+      }).catch((error)=>{
+        console.info("SUB_AA_Test_ProcessRunningInformation_0100:" + JSON.stringify(error));
+        expect().assertFail()
+        done()
+      })
+    });
+
+    /*
+     * @tc.number  SUB_AA_FMS_AbilityStage_0100
+     * @tc.name    Start AbilityStage and get config.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+     it('SUB_AA_FMS_AbilityStage_0100', 0, async function (done) {
+      let subscriber = null
+        let subscribeInfo = {
+          events: ["AbilityStage_StartAbility"]
+        }
+        function UnSubscribeInfoCallback(err, data) {
+          console.info("SUB_AA_FMS_AbilityStage_0100===UnSubscribeInfoCallback===")
+          done()
+        }
+        function SubscribeInfoCallback(err, data) {
+          console.info("SUB_AA_FMS_AbilityStage_0100===SubscribeInfoCallback===" + JSON.stringify(data))
+            expect(data.parameters["config"]).assertEqual(-1)
+            commonEvent.unsubscribe(subscriber, UnSubscribeInfoCallback)
+            done()
+        }
+        commonEvent.createSubscriber(subscribeInfo, (err, data) => {
+          console.info("SUB_AA_FMS_AbilityStage_0100===CreateSubscriberCallback===")
+          subscriber = data
+          commonEvent.subscribe(subscriber, SubscribeInfoCallback)
+        })
+      let formWant ={
+        deviceId:"",
+        bundleName:"ohos.acts.aafwk.test.stagesupplement",
+        abilityName:"MainAbility3",
+      }
+      globalThis.abilityContext.startAbility(formWant, (err, data)=>{
+        if(err.code == 0){
+           console.info("SUB_AA_FMS_AbilityStage_0100===CreateSubscriberCallback===")
+        }else{
+          expect().assertFail()
+          done()
+        }
+      })
+    })
+
+    /*
+     * @tc.number  SUB_AA_FMS_AbilityStage_0200
+     * @tc.name    Start Service and get config.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+     it('SUB_AA_FMS_AbilityStage_0200', 0, async function (done) {
+      let subscriber = null
+        let subscribeInfo = {
+          events: ["ExtensionConext_StartAbility"]
+        }
+        function UnSubscribeInfoCallback(err, data) {
+          console.info("SUB_AA_FMS_AbilityStage_0200===UnSubscribeInfoCallback===")
+        }
+        function SubscribeInfoCallback(err, data) {
+          console.info("SUB_AA_FMS_AbilityStage_0200===SubscribeInfoCallback===" + JSON.stringify(data))
+            expect(data.parameters["config"]).assertEqual(0)
+            expect(data.parameters["AbilityInfo"]).assertEqual("com.example.apicoverhaptest")
+            commonEvent.unsubscribe(subscriber, UnSubscribeInfoCallback)
+            done()
+        }
+        commonEvent.createSubscriber(subscribeInfo, (err, data) => {
+          console.info("SUB_AA_FMS_AbilityStage_0200===CreateSubscriberCallback===")
+          subscriber = data
+          commonEvent.subscribe(subscriber, SubscribeInfoCallback)
+        })
+      let formWant ={
+        deviceId:"",
+        bundleName:"com.example.apicoverhaptest",
+        abilityName:"ServiceAbility",
+      }
+      globalThis.abilityContext.startAbility(formWant, (err, data)=>{
+        if(err.code == 0){
+           console.info("SUB_AA_FMS_AbilityStage_0200===abilityContext startAbility success===")
+        }else{
+          expect().assertFail()
+          done()
+        }
+      })
+    })
+
+    /*
+     * @tc.number  SUB_AA_FMS_AcquireForm_0100
+     * @tc.name    Test startAbility in FormExtensionContext.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+     it('SUB_AA_FMS_AcquireForm_0100', 0, async function (done) {
+      let subscriber = null
+        let subscribeInfo = {
+          events: ["Form_StartAbility"]
+        }
+        function UnSubscribeInfoCallback(err, data) {
+          console.info("SUB_AA_FMS_AcquireFormState_0700 ===UnSubscribeInfoCallback===")
+        }
+        function SubscribeInfoCallback(err, data) {
+          console.info("SUB_AA_FMS_AcquireFormState_0700 ===SubscribeInfoCallback===" + JSON.stringify(data))
+            expect(data.parameters["Life"]).assertEqual("onForeground")
+            commonEvent.unsubscribe(subscriber, UnSubscribeInfoCallback)
+            done()
+        }
+        commonEvent.createSubscriber(subscribeInfo, (err, data) => {
+          console.info("SUB_AA_FMS_AcquireFormState_0700 ===CreateSubscriberCallback===")
+          subscriber = data
+          commonEvent.subscribe(subscriber, SubscribeInfoCallback)
+        })
+      let formWant ={
+        deviceId:"",
+        bundleName:"com.example.apicoverhaptest",
+        abilityName:"CreateFormAbility",
+        parameters:{
+          "createForm": true
+        }
+      }
+      globalThis.abilityContext.startAbility(formWant, (err, data)=>{
+        if(err.code == 0){
+           console.info("SUB_AA_FMS_AcquireFormState_0700 ===acquireFormState=== " + JSON.stringify(data))
+        }else{
+          expect().assertFail()
+          done()
+        }
+      })
+    })
+
   })
 }

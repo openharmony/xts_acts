@@ -16,13 +16,27 @@
 import FormExtension from '@ohos.application.FormExtension';
 import formBindingData from '@ohos.application.formBindingData';
 import formInfo from '@ohos.application.formInfo';
+import commonEvent from '@ohos.commonEvent';
 
-var extensionInfo_config_direction
 export default class FormAbility extends FormExtension {
     onCreate(want) {
         // Called to return a FormBindingData object.
-        let formData = {};
         console.info("FormAbility onCreate")
+        let formData = {
+            temperature: "11°",
+            time: "11:00",
+            area: "Shenyang"
+        };
+        console.info("FormAbility onCreate===StarAbility=== ")
+        this.context.startAbility({
+            bundleName:"com.example.apicoverhaptest",
+            abilityName:"SecondAbility"
+        }).then((data)=>{
+            console.info("FormAbility startAbility success")
+        }).catch((err)=>{
+            console.info("FormAbility startAbility failed " + err.code)
+        })
+        console.info("FormAbility onCreate===end=== ")
         return formBindingData.createFormBindingData(formData);
     }
 
@@ -49,6 +63,7 @@ export default class FormAbility extends FormExtension {
 
     onAcquireFormState(want) {
         // Called to return a {@link FormState} object.
+        console.info("FormAbility want success" + JSON.stringify(want.parameters))
         return formInfo.FormState.READY;
     }
 };
