@@ -2036,7 +2036,7 @@ describe('window_test', function () {
      * @tc.name			Test setFocusable_Test_001
      * @tc.desc			Setting window focus acquisition and defocus
      */
-    it('setFocusable_Test_001', 0, function (done) {
+    it('setFocusable_Test_001', 0, async function (done) {
         console.log('windowTest setFocusableTest1 begin');
         window.getTopWindow().then(wnd => {
             console.log('windowTest setFocusableTest1 getTopWindow wnd' + wnd);
@@ -2079,7 +2079,7 @@ describe('window_test', function () {
      * @tc.name			Test setFocusable_Test_002
      * @tc.desc			The setting window loses focus and cannot be touched
      */
-    it('setFocusable_Test_002', 0, function (done) {
+    it('setFocusable_Test_002', 0, async function (done) {
         console.log('windowTest setFocusableTest2 begin');
         window.getTopWindow().then(wnd => {
             console.log('windowTest setFocusableTest2 getTopWindow wnd' + wnd);
@@ -2125,7 +2125,7 @@ describe('window_test', function () {
      * @tc.name			Test setFocusable_Test_003
      * @tc.desc			Set the window to lose focus and be touchable
      */
-    it('setFocusable_Test_003', 0, function (done) {
+    it('setFocusable_Test_003', 0, async function (done) {
         console.log('windowTest setFocusableTest3 begin');
         window.getTopWindow().then(wnd => {
             console.log('windowTest setFocusableTest3 getTopWindow wnd' + wnd);
@@ -2171,7 +2171,7 @@ describe('window_test', function () {
      * @tc.name			Test setFocusable_Test_004
      * @tc.desc			Setting the window to get focus is not touchable
      */
-    it('setFocusable_Test_004', 0, function (done) {
+    it('setFocusable_Test_004', 0, async function (done) {
         console.log('windowTest setFocusableTest4 begin');
         window.getTopWindow().then(wnd => {
             console.log('windowTest setFocusableTest4 getTopWindow wnd' + wnd);
@@ -2217,7 +2217,7 @@ describe('window_test', function () {
      * @tc.name			Test setFocusable_Test_005
      * @tc.desc			Set the window to get focus and touch
      */
-    it('setFocusable_Test_005', 0, function (done) {
+    it('setFocusable_Test_005', 0, async function (done) {
         console.log('windowTest setFocusableTest5 begin');
         window.getTopWindow().then(wnd => {
             console.log('windowTest setFocusableTest5 getTopWindow wnd' + wnd);
@@ -2263,7 +2263,7 @@ describe('window_test', function () {
      * @tc.name			Test setTouchable_Test_001
      * @tc.desc			Set whether the window can be touched or not
      */
-    it('setTouchable_Test_001', 0, function (done) {
+    it('setTouchable_Test_001', 0, async function (done) {
         console.log('windowTest setTouchableTest1 begin');
         window.getTopWindow().then(wnd => {
             console.log('windowTest setTouchableTest1 getTopWindow wnd' + wnd);
@@ -2316,7 +2316,7 @@ describe('window_test', function () {
      * @tc.name			Test setKeepScreenOn_Test_001
      * @tc.desc			Set whether the window can be touched or not
      */
-    it('setKeepScreenOn_Test_001', 0, function (done) {
+    it('setKeepScreenOn_Test_001', 0, async function (done) {
         console.log('windowTest setKeepScreenOnTest1 begin');
         window.getTopWindow().then(wnd => {
             console.log('windowTest setKeepScreenOnTest1 getTopWindow wnd' + wnd);
@@ -2369,7 +2369,7 @@ describe('window_test', function () {
      * @tc.name			Test setKeepScreenOn_Test_002
      * @tc.desc			Set whether the window can be touched or not
      */
-    it('setKeepScreenOn_Test_002', 0, function (done) {
+    it('setKeepScreenOn_Test_002', 0, async function (done) {
         console.log('windowTest setKeepScreenOnTest2 begin');
         window.getTopWindow().then(wnd => {
             console.log('windowTest setKeepScreenOnTest2 getTopWindow wnd' + wnd);
@@ -2424,7 +2424,7 @@ describe('window_test', function () {
      * @tc.name			Test setBackgroundColor_Test_001
      * @tc.desc			Set the window background color to red and Default opacity
      */
-    it('setBackgroundColor_Test_001', 0, function (done) {
+    it('setBackgroundColor_Test_001', 0, async function (done) {
         console.log('windowTest setBackgroundColorTest1 begin');
         window.getTopWindow().then(wnd => {
             console.log('windowTest setBackgroundColorTest1 getTopWindow wnd' + wnd);
@@ -2456,7 +2456,7 @@ describe('window_test', function () {
      * @tc.name			Test setBackgroundColor_Test_002
      * @tc.desc			Set the window background color to red opaque
      */
-    it('setBackgroundColor_Test_002', 0, function (done) {
+    it('setBackgroundColor_Test_002', 0, async function (done) {
         console.log('windowTest setBackgroundColorTest2 begin');
         window.getTopWindow().then(wnd => {
             console.log('windowTest setBackgroundColorTest2 getTopWindow wnd' + wnd);
@@ -2488,7 +2488,7 @@ describe('window_test', function () {
      * @tc.name			Test setBackgroundColor_Test_003
      * @tc.desc			Set the window background color to red transparent
      */
-    it('setBackgroundColor_Test_003', 0, function (done) {
+    it('setBackgroundColor_Test_003', 0, async function (done) {
         console.log('windowTest setBackgroundColorTest3 begin');
         window.getTopWindow().then(wnd => {
             console.log('windowTest setBackgroundColorTest3 getTopWindow wnd' + wnd);
@@ -2520,7 +2520,7 @@ describe('window_test', function () {
      * @tc.name			Test setBackgroundColor_Test_004
      * @tc.desc			Set the background color input parameter as an outlier
      */
-    it('setBackgroundColor_Test_004', 0, function (done) {
+    it('setBackgroundColor_Test_004', 0, async function (done) {
         console.log('windowTest setBackgroundColorTest4 begin');
         window.getTopWindow().then(wnd => {
             console.log('windowTest setBackgroundColorTest4 getTopWindow wnd' + wnd);
@@ -2546,7 +2546,7 @@ describe('window_test', function () {
      * @tc.name			Test setBackgroundColor_Test_005
      * @tc.desc			Setting window background color input exception ARGB
      */
-    it('setBackgroundColor_Test_005', 0, function (done) {
+    it('setBackgroundColor_Test_005', 0, async function (done) {
         console.log('windowTest setBackgroundColorTest5 begin');
         window.getTopWindow().then(wnd => {
             console.log('windowTest setBackgroundColorTest5 getTopWindow wnd' + wnd);
@@ -2572,7 +2572,7 @@ describe('window_test', function () {
      * @tc.name			Test setBackgroundColor_Test_006
      * @tc.desc			Setting window background color input exception RGB
      */
-    it('setBackgroundColor_Test_006', 0, function (done) {
+    it('setBackgroundColor_Test_006', 0, async function (done) {
         console.log('windowTest setBackgroundColorTest6 begin');
         window.getTopWindow().then(wnd => {
             console.log('windowTest setBackgroundColorTest6 getTopWindow wnd' + wnd);
@@ -2598,7 +2598,7 @@ describe('window_test', function () {
      * @tc.name			Test setBrightness_Test_001
      * @tc.desc			Setting the brightness bar input parameter is normal
      */
-    it('setBrightness_Test_001', 0, function (done) {
+    it('setBrightness_Test_001', 0, async function (done) {
         console.log('windowTest setBrightnessTest1 begin');
         window.getTopWindow().then(wnd => {
             console.log('windowTest setBrightnessTest1 getTopWindow wnd' + wnd);
@@ -2645,7 +2645,6 @@ describe('window_test', function () {
                     expect().assertFail();
                     done();
                 })
-
             }, (err) => {
                 console.log('windowTest setBrightnessTest1 setBrightness failed: err' + JSON.stringify(err));
                 expect().assertFail();
@@ -2663,7 +2662,7 @@ describe('window_test', function () {
      * @tc.name			Test setBrightness_Test_002
      * @tc.desc			Set the brightness bar input parameter to decimal
      */
-    it('setBrightness_Test_002', 0, function (done) {
+    it('setBrightness_Test_002', 0, async function (done) {
         console.log('windowTest setBrightnessTest2 begin');
         window.getTopWindow().then(wnd => {
             console.log('windowTest setBrightnessTest2 getTopWindow wnd' + wnd);
@@ -2696,7 +2695,7 @@ describe('window_test', function () {
      * @tc.name			Test setBrightness_Test_003
      * @tc.desc			Set the brightness bar input parameter to number max
      */
-    it('setBrightness_Test_003', 0, function (done) {
+    it('setBrightness_Test_003', 0, async function (done) {
         console.log('windowTest setBrightnessTest3 begin');
         window.getTopWindow().then(wnd => {
             console.log('windowTest setBrightnessTest3 getTopWindow wnd' + wnd);
@@ -2722,7 +2721,7 @@ describe('window_test', function () {
      * @tc.name			Test setBrightness_Test_004
      * @tc.desc			Set the brightness bar input parameter to number min
      */
-    it('setBrightness_Test_004', 0, function (done) {
+    it('setBrightness_Test_004', 0, async function (done) {
         console.log('windowTest setBrightnessTest4 begin');
         window.getTopWindow().then(wnd => {
             console.log('windowTest setBrightnessTest4 getTopWindow wnd' + wnd);
@@ -2748,7 +2747,7 @@ describe('window_test', function () {
      * @tc.name			Test setBrightness_Test_005
      * @tc.desc			Setting brightness bar input parameter exception
      */
-    it('setBrightness_Test_005', 0, function (done) {
+    it('setBrightness_Test_005', 0, async function (done) {
         console.log('windowTest setBrightnessTest5 begin');
         window.getTopWindow().then(wnd => {
             console.log('windowTest setBrightnessTest5 getTopWindow wnd' + wnd);
@@ -2782,7 +2781,7 @@ describe('window_test', function () {
      * @tc.name			Test setDimBehindDeviceNotSupport_Test_001
      * @tc.desc			Set the setDimBehind interface invalid
      */
-    it('setDimBehindDeviceNotSupport_Test_001', 0, function (done) {
+    it('setDimBehindDeviceNotSupport_Test_001', 0, async function (done) {
         console.info('windowTest setDimBehindDeviceNotSupport begin');
         window.getTopWindow().then(wnd => {
             console.info('windowTest setDimBehindDeviceNotSupport1 getTopWindow wnd' + wnd);
@@ -2808,7 +2807,7 @@ describe('window_test', function () {
      * @tc.name			Test setDimBehindDeviceNotSupport_Test_002
      * @tc.desc			Set the setDimBehind interface invalid
      */
-    it('setDimBehindDeviceNotSupport_Test_002', 0, function (done) {
+    it('setDimBehindDeviceNotSupport_Test_002', 0, async function (done) {
         console.info('windowTest setDimBehindDeviceNotSupport2 begin');
         window.getTopWindow().then(wnd => {
             console.info('windowTest setDimBehindDeviceNotSupport2 getTopWindow wnd' + wnd);
@@ -2836,7 +2835,7 @@ describe('window_test', function () {
      * @tc.name			Test setOutsideTouchableDeviceNotSupport_Test_001
      * @tc.desc			Set the setOutsideTouchable interface invalid
      */
-    it('setOutsideTouchable_Test_001', 0, function (done) {
+    it('setOutsideTouchable_Test_001', 0, async function (done) {
         console.info('windowTest setDimBehindDeviceNotSupport1 begin');
         window.getTopWindow().then(wnd => {
             console.info('windowTest setOutsideTouchable1 getTopWindow wnd' + wnd);
@@ -2862,7 +2861,7 @@ describe('window_test', function () {
      * @tc.name			Test setOutsideTouchableDeviceNotSupport_Test_002
      * @tc.desc			Set the setOutsideTouchable interface invalid
      */
-    it('setOutsideTouchable_Test_002', 0, function (done) {
+    it('setOutsideTouchable_Test_002', 0, async function (done) {
         console.info('windowTest setDimBehindDeviceNotSupport2 begin');
         window.getTopWindow().then(wnd => {
             console.info('windowTest setOutsideTouchable2 getTopWindow wnd' + wnd);
@@ -2888,7 +2887,7 @@ describe('window_test', function () {
      * @tc.name			Test setOutsideTouchable_Test_003
      * @tc.desc			Set the setOutsideTouchable interface invalid
      */
-    it('setOutsideTouchable_Test_003', 0, function (done) {
+    it('setOutsideTouchable_Test_003', 0, async function (done) {
         console.info('windowTest setOutsideTouchable3 begin');
         window.getTopWindow().then(wnd => {
             console.info('windowTest setOutsideTouchable3 getTopWindow wnd' + wnd);
@@ -2916,7 +2915,7 @@ describe('window_test', function () {
     * @tc.name			Test setOutsideTouchable_Test_004
     * @tc.desc			Set the setOutsideTouchable interface invalid
     */
-    it('setOutsideTouchable_Test_004', 0, function (done) {
+    it('setOutsideTouchable_Test_004', 0, async function (done) {
         console.info('windowTest setOutsideTouchable4 begin');
         window.getTopWindow().then(wnd => {
             console.info('windowTest setOutsideTouchable4 getTopWindow wnd' + wnd);
@@ -2938,7 +2937,594 @@ describe('window_test', function () {
             done();
         })
     })
+	
+    /**
+     * @tc.number		SUB_WMS_ENUM_ORIENTATION_JSAPI_001
+     * @tc.name			Test enumOrientation_Test_001.
+     * @tc.desc			To test the enum value of Orientation.
+     */
+    it('enumOrientation_Test_001', 0, async function (done) {
+        console.info('test the enum value of orientation begin');
+        try {
+            expect(0).assertEqual(window.Orientation.UNSPECIFIED);
+            expect(1).assertEqual(window.Orientation.PORTRAIT);
+            expect(2).assertEqual(window.Orientation.LANDSCAPE);
+            expect(3).assertEqual(window.Orientation.PORTRAIT_INVERTED);
+            expect(4).assertEqual(window.Orientation.LANDSCAPE_INVERTED);
+            expect(5).assertEqual(window.Orientation.AUTO_ROTATION);
+            expect(6).assertEqual(window.Orientation.AUTO_ROTATION_PORTRAIT);
+            expect(7).assertEqual(window.Orientation.AUTO_ROTATION_LANDSCAPE);
+            expect(8).assertEqual(window.Orientation.AUTO_ROTATION_RESTRICTED);
+            expect(9).assertEqual(window.Orientation.AUTO_ROTATION_PORTRAIT_RESTRICTED);
+            expect(10).assertEqual(window.Orientation.AUTO_ROTATION_LANDSCAPE_RESTRICTED);
+            expect(11).assertEqual(window.Orientation.LOCKED);
+            done();
+        } catch (err) {
+            console.info('test enum value of windowStageEventType error ' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        }
+    })
 
+    /**
+     * @tc.number		SUB_WMS_SETKEEPSCREENONCALLBACK_JSAPI_001
+     * @tc.name			Test setKeepScreenOnCallBack_Test_001
+    * @tc.desc			Set whether setKeepScreenOn or not
+    */
+    it('setKeepScreenOnCallBack_Test_001', 0, async function (done) {
+        console.log('windowTest setCallBackKeepScreenOnTest1 begin');
+        window.getTopWindow().then(wnd => {
+            console.info('windowTest setKeepScreenOnTest1 getTopWindow wnd' + wnd);
+            expect(wnd != null).assertTrue();
+            wnd.getProperties().then(data => {
+                expect(!data.isKeepScreenOn).assertTrue();
+                wnd.setKeepScreenOn(true, (err, data) => {
+                    if (err.code) {
+                        console.error('Failed to set the screen to be always on. Cause: ' + JSON.stringify(err));
+                        expect().assertFail();
+                        done();
+                    } else {
+                        console.info('success set the screen to be always on. Cause: ' + JSON.stringify(data));
+                        wnd.getProperties().then(data => {
+                            expect(data.isKeepScreenOn).assertTrue();
+                            done();
+                        }, (err) => {
+                            console.info('windowTest setKeepScreenOnTest1 getProperties failed: err' + JSON.stringify(err));
+                            expect().assertFail();
+                            done();
+                        })
+                    }
+                })
+            }, (err) => {
+                console.info('windowTest setKeepScreenOnTest1 getProperties failed: err' + JSON.stringify(err));
+                expect().assertFail();
+                done();
+            })
+        }, (err) => {
+            console.info('windowTest setKeepScreenOnTest1 getTopWindow failed: err' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        })
+    })
+
+    /**
+     * @tc.number		SUB_WMS_SETKEEPSCREENON_JSAPI_002
+     * @tc.name			Test setKeepScreenOnCallBack_Test_002
+     * @tc.desc			Set whether the window can be touched or not
+     */
+    it('setKeepScreenOnCallBack_Test_002', 0, async function (done) {
+        console.log('windowTest setKeepScreenOnTestCallBack2 begin');
+        window.getTopWindow().then(wnd => {
+            console.info('windowTest setKeepScreenOnTestCallBack2 getTopWindow wnd' + wnd);
+            expect(wnd != null).assertTrue();
+            for (let i = 0; i < 5; i++) {
+                wnd.getProperties().then(data => {
+                    expect(!data.isKeepScreenOn).assertTrue();
+                    wnd.setKeepScreenOn(false, (err, data) => {
+                        if (err.code) {
+                            console.error('Failed to set the screen to be always on. Cause: ' + JSON.stringify(err));
+                            expect().assertFail();
+                            done();
+                        } else {
+                            console.info('success set the screen to be always on. Cause: ' + JSON.stringify(data));
+                            wnd.getProperties().then(data => {
+                                expect(!data.isKeepScreenOn).assertTrue();
+                                done();
+                            }, (err) => {
+                                console.info('windowTest setCallBackKeepScreenOnTest1 getProperties failed: err' + JSON.stringify(err));
+                                expect().assertFail();
+                                done();
+                            })
+                        }
+                    })
+                }, (err) => {
+                    console.info('windowTest setCallBack_KeepScreenOnTest2 getProperties failed: err' + JSON.stringify(err));
+                    expect().assertFail();
+                    done();
+                })
+            }
+            done();
+        }, (err) => {
+            console.info('windowTest setCallBackKeepScreenOnTest2 getTopWindow failed: err' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        })
+    })
+
+    /**
+     * @tc.number		SUB_WMS_SETBACKGROUNDCOLORCALLBACK_JSAPI_001
+     * @tc.name			Test setBackgroundColorCALLBack_Test_001
+     * @tc.desc			Set the window background color to red and Default opacity
+     */
+    it('setBackgroundColorCallBack_Test_001', 0, async function (done) {
+        console.info('windowTest setBackgroundColorCallBackTest1 begin');
+        window.getTopWindow().then(wnd => {
+            console.log('windowTest setBackgroundColorBackTest1 getTopWindow wnd' + wnd);
+            expect(wnd != null).assertTrue();
+            wnd.setBackgroundColor("#ffff00",(err, data) => {
+                if (err.code) {
+                    console.error('Failed to set the background color. Cause: ' + JSON.stringify(err));
+                    expect().assertFail();
+                    done();
+                } else {
+                    console.info('Succeeded in setting the background color. Data: ' + JSON.stringify(data));
+                    wnd.getProperties().then(data => {
+                        expect(!data.isTransparent).assertTrue();
+                        done();
+                    }, (err) => {
+                        console.log('windowTest setBackgroundColorCallBackTest1 getProperties failed: err' + JSON.stringify(err));
+                        expect().assertFail();
+                        done();
+                    })
+                }
+            })
+        }, (err) => {
+            console.info('windowTest setBackgroundColorCallBackTest1 getTopWindow failed: err' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        })
+    })
+
+    /**
+     * @tc.number		SUB_WMS_SETBACKGROUNDCOLORCALLBACK_JSAPI_002
+     * @tc.name			Test setBackgroundColorCallBack_Test_002
+    * @tc.desc			Set the window background color to red opaque
+    */
+    it('setBackgroundColorCallBack_Test_002', 0, async function (done) {
+        console.log('windowTest setBackgroundColorCallBackTest2 begin');
+        window.getTopWindow().then(wnd => {
+            console.log('windowTest setBackgroundColorTestCallBack2 getTopWindow wnd' + wnd);
+            expect(wnd != null).assertTrue();
+            wnd.setBackgroundColor("#ffffff00",(err, data) => {
+                if (err.code) {
+                    console.error('Failed to set the background color2. Cause: ' + JSON.stringify(err));
+                    expect().assertFail();
+                    done();
+                } else {
+                    console.info('Succeeded in setting the background color2. Data: ' + JSON.stringify(data));
+                    wnd.getProperties().then(data => {
+                        expect(!data.isTransparent).assertTrue();
+                        done();
+                    }, (err) => {
+                        console.log('windowTest setBackgroundColorCallBackTest2 getProperties failed: err' + JSON.stringify(err));
+                        expect().assertFail();
+                        done();
+                    })
+                }
+            })
+        }, (err) => {
+            console.log('windowTest setBackgroundColorTest2 getTopWindow failed: err' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        })
+    })
+
+    /**
+     * @tc.number		SUB_WMS_SETBACKGROUNDCOLORCallBack_JSAPI_003
+     * @tc.name			Test setBackgroundColorBack_Test_003
+     * @tc.desc			Set the window background color to red transparent
+     */
+    it('setBackgroundColorCallBack_Test_003', 0, async function (done) {
+        console.log('windowTest setBackgroundColorTestCallBack3 begin');
+        window.getTopWindow().then(wnd => {
+            console.info('windowTest setBackgroundColorTest3 getTopWindow wnd' + wnd);
+            expect(wnd != null).assertTrue();
+            wnd.setBackgroundColor("#00ffff00",(err, data) => {
+                if (err.code) {
+                    console.error('Failed to set the background color2. Cause: ' + JSON.stringify(err));
+                    expect().assertFail();
+                    done();
+                } else {
+                    console.info('Succeeded in setting the background color2. Data: ' + JSON.stringify(data));
+                    wnd.getProperties().then(data => {
+                        expect(data.isTransparent).assertTrue();
+                        done();
+                    }, (err) => {
+                        console.info('windowTest setBackgroundColorCallBackTest3 getProperties failed: err' + JSON.stringify(err));
+                        expect().assertFail();
+                        done();
+                    })
+                }
+            })
+        }, (err) => {
+            console.log('windowTest setBackgroundColorCallBackTest3 getTopWindow failed: err' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        })
+    })
+
+    /**
+     * @tc.number		SUB_WMS_SETBACKGROUNDCOLORBACK_JSAPI_004
+     * @tc.name			Test setBackgroundColorBack_Test_004
+     * @tc.desc			Set the background color input parameter as an outlier
+     */
+    it('setBackgroundColorBack_Test_004', 0, async function (done) {
+        console.info('windowTest setBackgroundColorCallBackTest4 begin');
+        window.getTopWindow().then(wnd => {
+            console.info('windowTest setBackgroundColorTestCallBack4 getTopWindow wnd' + wnd);
+            expect(wnd != null).assertTrue();
+            wnd.setBackgroundColor("ff00",(err, data) => {
+                if (err.code) {
+                    console.error('Failed to set the background color2. Cause: ' + JSON.stringify(err));
+                    expect(err.code).assertEqual(1003);
+                    done();
+                } else {
+                    console.info('Succeeded in setting the background color2. Data: ' + JSON.stringify(data));
+                    expect().assertFail();
+                    done();
+                }
+            })
+        }, (err) => {
+            console.info('windowTest setBackgroundColorCallBackTest4 getTopWindow failed: err' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        })
+    })
+
+    /**
+     * @tc.number		SUB_WMS_SETBACKGROUNDCOLORCallBack_JSAPI_005
+     * @tc.name			Test setBackgroundColorCallBack_Test_005
+     * @tc.desc			Setting window background color input exception ARGB
+     */
+    it('setBackgroundColorCallBack_Test_005', 0, async function (done) {
+        console.log('windowTest setBackgroundColorCallBackTest5 begin');
+        window.getTopWindow().then(wnd => {
+            console.log('windowTest setBackgroundColorBackTest5 getTopWindow wnd' + wnd);
+            expect(wnd != null).assertTrue();
+            wnd.setBackgroundColor("#hhgghhgg",(err, data) => {
+                if (err.code) {
+                    console.error('Failed to set the background color5. Cause: ' + JSON.stringify(err));
+                    expect(err.code).assertEqual(1003);
+                    done();
+                } else {
+                    console.info('Succeeded in setting the background color5. Data: ' + JSON.stringify(data));
+                    expect().assertFail();
+                    done();
+                }
+            })
+        }, (err) => {
+            console.info('windowTest setBackgroundColorTest5 getTopWindow failed: err' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        })
+    })
+
+    /**
+     * @tc.number		SUB_WMS_SETBACKGROUNDCOLORCallBack_JSAPI_006
+     * @tc.name			Test setBackgroundColorBack_Test_006
+     * @tc.desc			Setting window background color input exception RGB
+     */
+    it('setBackgroundColorCallBack_Test_006', 0, async function (done) {
+        console.log('windowTest setBackgroundColorTestCallBack6 begin');
+        window.getTopWindow().then(wnd => {
+            console.log('windowTest setBackgroundColorTestCallBack6 getTopWindow wnd' + wnd);
+            expect(wnd != null).assertTrue();
+            wnd.setBackgroundColor("#gghhkk",(err, data) => {
+                if (err.code) {
+                    console.error('Failed to set the background color6. Cause: ' + JSON.stringify(err));
+                    expect(err.code).assertEqual(1003);
+                    done();
+                } else {
+                    console.info('Succeeded in setting the background color6. Data: ' + JSON.stringify(data));
+                    expect().assertFail();
+                    done();
+                }
+            })
+        }, (err) => {
+            console.log('windowTest setBackgroundColorTest6 getTopWindow failed: err' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        })
+    })
+
+    /**
+     * @tc.number		SUB_WMS_SETBRIGHTNESSCALLBACK_JSAPI_002
+     * @tc.name			Test setBrightnessCallBack_Test_002
+     * @tc.desc			Set the brightness bar input parameter to decimal
+     */
+    it('setBrightnessCallBack_Test_002', 0, async function (done) {
+        console.log('windowTest setBrightnessTestCallBack2 begin');
+        window.getTopWindow().then(wnd => {
+            console.log('windowTest setBrightnessTestCallBack2 getTopWindow wnd' + wnd);
+            expect(wnd != null).assertTrue();
+            wnd.setBrightness(1, (err, data) => {
+                if (err.code) {
+                    console.error('Failed to set the brightness2. Cause: ' + JSON.stringify(err));
+                    expect().assertFail();
+                    done();
+                } else {
+                    console.info('Succeeded in setting the brightness2. Data: ' + JSON.stringify(data));
+                    wnd.getProperties().then(data => {
+                        console.info('windowTest setBrightnessTest2 getProperties data ' + data);
+                        expect(data.brightness).assertEqual(1);
+                        done();
+                    }, (err) => {
+                        console.log('windowTest setBrightnessTest2 getProperties failed: err' + JSON.stringify(err));
+                        expect().assertFail();
+                        done();
+                    })
+                }
+
+            })
+        }, (err) => {
+            console.log('windowTest setBrightnessTest2 getTopWindow failed: err' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        })
+    })
+
+    /**
+     * @tc.number		SUB_WMS_SETBRIGHTNESSCALLBACK_JSAPI_003
+     * @tc.name			Test setBrightnessCallBack_Test_003
+     * @tc.desc			Set the brightness bar input parameter to number max
+     */
+    it('setBrightnessCallBack_Test_003', 0, async function (done) {
+        console.log('windowTest setBrightnessTest3 begin');
+        window.getTopWindow().then(wnd => {
+            console.log('windowTest setBrightnessTest3 getTopWindow wnd' + wnd);
+            expect(wnd != null).assertTrue();
+            wnd.setBrightness(Number.MAX_VALUE, (err, data) => {
+                if (err.code) {
+                    console.log('windowTest setBrightnessTest3 setBrightness failed: err' + JSON.stringify(err));
+                    expect(err.code).assertEqual(1003);
+                    done();
+                } else {
+                    console.log('windowTest setBrightnessTest3 setBrightness(Number.MAX_VALUE) success ');
+                    expect().assertFail();
+                    done();
+                }
+            })
+        }, (err) => {
+            console.log('windowTest setBrightnessTest3 getTopWindow failed: err' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        })
+    })
+
+    /**
+     * @tc.number		SUB_WMS_SETBRIGHTNESSCALLBACK_JSAPI_004
+     * @tc.name			Test setBrightnessCallBack_Test_004
+     * @tc.desc			Set the brightness bar input parameter to number min
+     */
+    it('setBrightnessCallBack_Test_004', 0, async function (done) {
+        console.log('windowTest setBrightnessTest4 begin');
+        window.getTopWindow().then(wnd => {
+            console.log('windowTest setBrightnessTest4 getTopWindow wnd' + wnd);
+            expect(wnd != null).assertTrue();
+            wnd.setBrightness(Number.MIN_VALUE, (err, data) => {
+                if (err.code) {
+                    console.log('windowTest setBrightnessTest4 setBrightness failed: err' + JSON.stringify(err));
+                    expect(err.code).assertEqual(1003);
+                    done();
+                } else {
+                    console.log('windowTest setBrightnessTest4 setBrightness(Number.MIN_VALUE) success ');
+                    expect(TRUE_WINDOW).assertTrue();
+                    done();
+                }
+            })
+        }, (err) => {
+            console.log('windowTest setBrightnessTest4 getTopWindow failed: err' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        })
+    })
+
+    /**
+     * @tc.number		SUB_WMS_SETBRIGHTNESSCALLBACK_JSAPI_005
+     * @tc.name			Test setBrightnessCALLBACK_Test_005
+     * @tc.desc			Setting brightness bar input parameter exception
+     */
+    it('setBrightnessCallBack_Test_005', 0, async function (done) {
+        console.log('windowTest setBrightnessTest5 begin');
+        window.getTopWindow().then(wnd => {
+            console.log('windowTest setBrightnessTest5 getTopWindow wnd' + wnd);
+            expect(wnd != null).assertTrue();
+            wnd.setBrightness(1.1, (err, data) => {
+                if (err.code) {
+                    console.log('windowTest setBrightnessTest5 setBrightness failed: err' + JSON.stringify(err));
+                    expect(err.code).assertEqual(1003);
+                    done();
+                } else {
+                    console.log('windowTest setBrightnessTest5 setBrightness(1.1) success ');
+                    expect().assertFail();
+                    done();
+                }
+            })
+        }, (err) => {
+            console.log('windowTest setBrightnessTest5 getTopWindow failed: err' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        })
+    })
+
+    /**
+     * @tc.number		SUB_WMS_SETTOUCHABLECALLBACK_JSAPI_001
+     * @tc.name			Test setTouchableCallBack_Test_001
+     * @tc.desc			Set whether the window can be touched or not
+    */
+    it('setTouchableCallBack_Test_001', 0, async function (done) {
+        window.getTopWindow().then(wnd => {
+            console.log('windowTest setTouchableTestCallBack1 getTopWindow wnd' + wnd);
+            expect(wnd != null).assertTrue();
+            wnd.setTouchable(false, (err, data) => {
+                if (err.code) {
+                    console.error('Failed to set the window to be touchable. Cause:' + JSON.stringify(err));
+                    expect().assertFail();
+                    done();
+                } else {
+                    wnd.getProperties().then(data => {
+                        expect(!data.touchable).assertTrue();
+                        wnd.setTouchable(true, (err, data) => {
+                            if (err.code) {
+                                console.error('Failed to set the window to be touchable. Cause:' + JSON.stringify(err));
+                                expect().assertFail();
+                                done();
+                            } else {
+                                wnd.getProperties().then(data => {
+                                    expect(data.touchable).assertTrue();
+                                    done();
+                                }, (err) => {
+                                    console.info('windowTest setTouchableTestCallBack1 getProperties failed: err' + JSON.stringify(err));
+                                    expect().assertFail();
+                                    done();
+                                })
+                            }
+                        })
+                    }, (err) => {
+                        console.log('windowTest setTouchableTest1 getProperties failed: err' + JSON.stringify(err));
+                        expect().assertFail();
+                        done();
+                    })
+                }
+            })
+        }, (err) => {
+            console.log('windowTest setTouchableTest1 getTopWindow failed: err' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        })
+    })
+
+    /**
+     * @tc.number		SUB_WMS_SETFOCUSABLECALLBACK_JSAPI_001
+     * @tc.name			Test setFocusable_Test_001
+     * @tc.desc			Setting window focus acquisition and defocus
+     */
+    it('setFocusableCallBack_Test_001', 0, async function (done) {
+        console.log('windowTest setFocusableTest1 begin');
+        window.getTopWindow().then(wnd => {
+            console.log('windowTest setFocusableCallBack1 getTopWindow wnd' + wnd);
+            expect(wnd != null).assertTrue();
+            wnd.setFocusable(false, (err, data) => {
+                if (err.code) {
+                    console.error('Failed to set the window to be setFocusable. Cause:' + JSON.stringify(err));
+                    expect().assertFail();
+                    done();
+                } else {
+                    wnd.getProperties().then(data => {
+                        expect(!data.focusable).assertTrue();
+                        wnd.setFocusable(true, (err, data) => {
+                            if (err.code) {
+                                console.error('Failed to set the window to be setFocusable. Cause:' + JSON.stringify(err));
+                                expect().assertFail();
+                                done();
+                            } else {
+                                wnd.getProperties().then(data => {
+                                    expect(data.focusable).assertTrue();
+                                    done();
+                                }, (err) => {
+                                    console.info('windowTest setFocusableTestCallBack1 getProperties failed: err' + JSON.stringify(err));
+                                    expect().assertFail();
+                                    done();
+                                })
+                            }
+                        })
+                    }, (err) => {
+                        console.log('windowTest setFocusableTest1 getProperties failed: err' + JSON.stringify(err));
+                        expect().assertFail();
+                        done();
+                    })
+                }
+            })
+        }, (err) => {
+            console.log('windowTest setFocusable1 getTopWindow failed: err' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        })
+
+    })
+
+    /**
+     * @tc.number		SUB_WMS_ENUM_AVOIDAREATYPE_JSAPI_001
+     * @tc.name			Test avoidareatype_Test_001.
+     * @tc.desc			To test the enum value of avoidareatype.
+    */
+    it('enumAvoidAreaType_Test_001', 0, async function (done) {
+        console.info('test the enum AvoidArea of orientation begin');
+        try {
+            expect(0).assertEqual(window.AvoidAreaType.TYPE_SYSTEM);
+            expect(1).assertEqual(window.AvoidAreaType.TYPE_CUTOUT);
+            expect(2).assertEqual(window.AvoidAreaType.TYPE_SYSTEM_GESTURE);
+            expect(3).assertEqual(window.AvoidAreaType.TYPE_KEYBOARD);
+            done();
+        } catch (err) {
+            console.info('test enum value of AvoidArea error ' + JSON.stringify(err));
+            expect().assertFail();
+            done();
+        }
+    })
+
+    /**
+     * @tc.number    SUB_WMS_GETAVOIDAREAADD_JSAPI_001
+     * @tc.name      Test getAvoidAreaAdd_Test_001
+     * @tc.desc      Get System type avoidance area
+    */
+    it('getAvoidAreaAdd_Test_001', 0, async function (done) {
+        console.log('windowTest getAvoidAreaAdd_Test_001 begin');
+        window.getTopWindow().then(wnd => {
+            console.info('windowTest getAvoidAreaTestAdd window.getTopWindow wnd: ' + wnd);
+            expect(wnd != null).assertTrue();
+            wnd.getAvoidArea(window.AvoidAreaType.TYPE_KEYBOARD, (err, data) => {
+                if (err.code != 0) {
+                    console.log('windowTest getAvoidAreaTestAdd1 wnd.getAvoidArea callback fail' + JSON.stringify(err));
+                    expect().assertFail();
+                    done();
+                } else {
+                    expect(data.topRect != null).assertTrue();
+                    expect(data.rightRect != null).assertTrue();
+                    expect(data.bottomRect != null).assertTrue();
+                    expect(data.leftRect != null).assertTrue();
+                    done();
+                }
+            })
+        })
+    })
+
+    /**
+     * @tc.number    SUB_WMS_GETAVOIDAREAADD_JSAPI_002
+     * @tc.name      Test getAvoidAreaAdd_Test_002
+     * @tc.desc      Get invalid parameter avoidarea
+     */
+    it('getAvoidAreaAdd_Test_002', 0, async function (done) {
+        console.log('windowTest getAvoidAreaAdd_Test_002 begin');
+        window.getTopWindow().then(wnd => {
+            console.info('windowTest getAvoidAreaTestAdd002 window.getTopWindow wnd: ' + wnd);
+            expect(wnd != null).assertTrue();
+            wnd.getAvoidArea(-1, (err, data) => {
+                console.info('windowTest getAvoidAreaTestAdd2' + JSON.stringify(data));
+                if (err.code != 0) {
+                    console.log('windowTest getAvoidAreaTestAdd002 wnd.getAvoidArea callback fail' + JSON.stringify(err));
+                    expect().assertFail();
+                    done();
+                } else {
+                    expect(data.topRect != null).assertTrue();
+                    expect(data.rightRect != null).assertTrue();
+                    expect(data.bottomRect != null).assertTrue();
+                    expect(data.leftRect != null).assertTrue();
+                    done();
+                }
+            })
+        })
+    })
 
 })
 }
