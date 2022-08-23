@@ -23,7 +23,7 @@ export default function inputMethodJSUnit() {
       let inputMethodSetting = inputMethod.getInputMethodSetting();
       console.info("inputmethoh_test_001 result:" + JSON.stringify(inputMethodSetting));
       inputMethodSetting.listInputMethod((arr) => {
-        console.info("inputmethoh_test_001 listInputMethod result---" + JSON.stringify(arr));
+        console.info("appInfoTest_input_2 listInputMethod result---" + JSON.stringify(arr));
         expect(1==1).assertTrue();
       });
       done();
@@ -32,17 +32,19 @@ export default function inputMethodJSUnit() {
     it('inputmethoh_test_002', 0, async function (done) {
       let inputMethodSetting = inputMethod.getInputMethodSetting();
       console.info("inputmethoh_test_002 result:" + JSON.stringify(inputMethodSetting));
-      let promise = inputMethodSetting.listInputMethod();
-      console.info("inputmethoh_test_002 listInputMethod result---" + JSON.stringify(promise));
-      if (promise.length > 0){
-        let obj = promise[0]
-        console.info("inputmethoh_test_002 listInputMethod obj---" + JSON.stringify(obj));
-        expect(obj.packageName != null).assertTrue();
-        expect(obj.methodId != null).assertTrue();
-      }else{
-        console.info("inputmethoh_test_002 listInputMethod is null");
-        except().assertFail()
-      }
+      inputMethodSetting.listInputMethod().then(inputMethodProperty => {
+        if (inputMethodProperty.length > 0){
+          let obj = inputMethodProperty[0]
+          console.info("inputmethoh_test_002 listInputMethod obj---" + JSON.stringify(obj));
+          expect(obj.packageName != null).assertTrue();
+          expect(obj.methodId != null).assertTrue();
+        }else{
+          console.info("inputmethoh_test_002 listInputMethod is null");
+          expect().assertFail()
+        }
+      }).catch(err => {
+        console.info("inputmethoh_test_002 listInputMethod is err: " +  JSON.stringify(err));
+      });
       done();
     });
 
@@ -58,9 +60,13 @@ export default function inputMethodJSUnit() {
     it('inputmethoh_test_004', 0, async function (done) {
       let inputMethodSetting = inputMethod.getInputMethodSetting();
       console.info("inputmethoh_test_004 result:" + JSON.stringify(inputMethodSetting));
-      let promise = inputMethodSetting.displayOptionalInputMethod();
-      console.info("inputmethoh_test_004 displayOptionalInputMethod result---" + JSON.stringify(promise));
-      expect(promise).assertEqual(undefined)
+      inputMethodSetting.displayOptionalInputMethod().then(() => {
+        console.info("inputmethoh_test_004 displayOptionalInputMethod is called");
+        expect(true).assertTrue()
+      }).catch(err => {
+        console.info("inputmethoh_test_004 displayOptionalInputMethod is err: " + JSON.stringify(err));
+        expect().assertFail()
+      });
       done();
     });
 
@@ -76,9 +82,13 @@ export default function inputMethodJSUnit() {
     it('inputmethoh_test_006', 0, async function (done) {
       let inputMethodCtrl = inputMethod.getInputMethodController();
       console.info("inputmethoh_test_006 result:" + JSON.stringify(inputMethodCtrl));
-      let promise = inputMethodCtrl.stopInput();
-      console.info("inputmethoh_test_006 inputMethodCtrl stopInput result---" + JSON.stringify(promise));
-      expect(promise).assertEqual(true)
+      inputMethodCtrl.stopInput().then(data => {
+        console.info("inputmethoh_test_006 stopInput result----" + data);
+        expect(data == true).assertTrue()
+      }).catch(err => {
+        console.info("inputmethoh_test_006 stopInput is err: " + JSON.stringify(err));
+        expect().assertFail()
+      });
       done();
     });
 
@@ -93,6 +103,29 @@ export default function inputMethodJSUnit() {
       console.info("inputmethod_test_001 result:" + inputMethodSetting);
       expect(inputMethodSetting != null).assertTrue();
       console.info("************* inputmethod_test_MAX_TYPE_NUM_001 Test end*************");
+      done();
+    });
+
+    /*
+     * @tc.number  inputmethod_test_switchInputMethod_001
+     * @tc.name    Test Indicates the input method which will replace the current one.
+     * @tc.desc    Function test
+     * @tc.level   2
+     */
+    it('inputmethod_test_switchInputMethod_001', 0, async function (done) {
+      console.info("************* inputmethod_test_switchInputMethod_001 Test start*************");
+      let inputMethodProperty = {
+        packageName:"com.example.kikakeyboard",
+        methodId:"ServiceExtAbility"
+      }
+
+      inputMethod.switchInputMethod(inputMethodProperty).then(data => {
+        console.info("inputmethod_test_switchInputMethod_001 data:" + data)
+        expect(data == true).assertTrue();
+      }).catch( err=> {
+        console.info("inputmethod_test_switchInputMethod_001 err:" + err)
+      })
+      console.info("************* inputmethod_test_switchInputMethod_001 Test end*************");
       done();
     });
 
@@ -117,6 +150,78 @@ export default function inputMethodJSUnit() {
         expect(data == true).assertTrue();
       });
       console.info("************* inputmethod_test_switchInputMethod_002 Test end*************");
+      done();
+    });
+
+    /*
+     * @tc.number  inputmethod_test_showSoftKeyboard_001
+     * @tc.name    Test Indicates the input method which will show softboard with calback.
+     * @tc.desc    Function test
+     * @tc.level   2
+     */
+    it('inputmethod_test_showSoftKeyboard_001', 0, async function (done) {
+      let inputMethodCtrl = inputMethod.getInputMethodController()
+      inputMethodCtrl.showSoftKeyboard((data)=>{
+        if(data == undefined){
+          console.info("showSoftKeyboard callbace success" );
+        }else{
+          console.info('showSoftKeyboard callbace failed : ' + JSON.stringify(err))
+        }
+      });
+      console.info("************* inputmethod_test_showSoftKeyboard_001 Test end*************");
+      done();
+    });
+
+    /*
+     * @tc.number  inputmethod_test_showSoftKeyboard_001
+     * @tc.name    Test Indicates the input method which will show softboard with Promise.
+     * @tc.desc    Function test
+     * @tc.level   2
+     */
+    it('inputmethod_test_showSoftKeyboard_002', 0, async function (done) {
+      let inputMethodCtrl = inputMethod.getInputMethodController()
+      inputMethodCtrl.showSoftKeyboard().then((data) =>{
+        console.info("showSoftKeyboard promise success" );
+      }).catch((err) => {
+        console.info('showSoftKeyboard promise failed : ' + JSON.stringify(err))
+      })
+      console.info("************* inputmethod_test_showSoftKeyboard_002 Test end*************");
+      done();
+    });
+
+    /*
+     * @tc.number  inputmethod_test_showSoftKeyboard_001
+     * @tc.name    Test Indicates the input method which will hide softboard with calback.
+     * @tc.desc    Function test
+     * @tc.level   2
+     */
+    it('inputmethod_test_hideSoftKeyboard_001', 0, async function (done) {
+      let inputMethodCtrl = inputMethod.getInputMethodController()
+      inputMethodCtrl.hideSoftKeyboard((data)=>{
+        if(data == undefined){
+          console.info("hideSoftKeyboard callbace success" );
+        }else{
+          console.info('hideSoftKeyboard callbace failed : ' + JSON.stringify(err))
+        }
+      });
+      console.info("************* inputmethod_test_hideSoftKeyboard_001 Test end*************");
+      done();
+    });
+
+    /*
+     * @tc.number  inputmethod_test_showSoftKeyboard_001
+     * @tc.name    Test Indicates the input method which will hide softboard with Promise.
+     * @tc.desc    Function test
+     * @tc.level   2
+     */
+    it('inputmethod_test_hideSoftKeyboard_002', 0, async function (done) {
+      let inputMethodCtrl = inputMethod.getInputMethodController()
+      inputMethodCtrl.hideSoftKeyboard().then((data) =>{
+        console.info("hideSoftKeyboard promise success" );
+      }).catch((err) => {
+        console.info('hideSoftKeyboard promise failed : ' + JSON.stringify(err))
+      })
+      console.info("************* inputmethod_test_hideSoftKeyboard_002 Test end*************");
       done();
     });
   })
