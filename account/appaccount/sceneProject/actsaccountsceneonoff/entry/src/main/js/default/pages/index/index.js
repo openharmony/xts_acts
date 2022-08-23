@@ -14,6 +14,7 @@
  */
 import account from '@ohos.account.appAccount'
 import commonevent from '@ohos.commonEvent'
+import featureAbility from '@ohos.ability.featureAbility'
 
 const ACCOUNT_TEST_ONOFF_EXTRA = 1
 const ACCOUNT_TEST_ONOFF_ASSOCIATEDDATA = 2
@@ -46,6 +47,7 @@ export default {
             appAccountManager.off('change', function (){
                 console.debug("====>scene off finish====");
             });
+            featureAbility.terminateSelf()
         }
 
         // Subscribe to the callback of account information changes, verify the received account information, and send

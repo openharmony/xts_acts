@@ -459,6 +459,8 @@ export default function ActsGetAllAccounts() {
             var nonexistentBundle = "com.example.actsgetallaccountsnonexistent";
             try{
                 var data = await appAccountManager.getAllAccounts(nonexistentBundle);
+                expect().assertFail();
+                done();
             }
             catch(err){
                 console.debug("====>getAllAccounts 1400 err:" + JSON.stringify(err));   
