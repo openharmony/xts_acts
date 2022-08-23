@@ -45,8 +45,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       'TYPE_KEYGUARD': 5,
       'TYPE_VOLUME_OVERLAY': 6,
       'TYPE_NAVIGATION_BAR': 7,
-      'TYPE_FLOAT': 8,
-      'TYPE_FLOAT_CAMERA':9
+      'TYPE_FLOAT': 8
     }
     var windowLayoutModeArr = [];
     var windowLayoutModeDic = {
@@ -1353,11 +1352,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
     })
     /**
     * @tc.number     SUB_WINDOW_SETPREFERREDORIENTATION_JSAPI_001
-    * @tc.name       Test setPreferredOrientation
+    * @tc.name       Test setPreferredOrientationTest1
     * @tc.desc       Sets the display direction property of the window
     */
-    it('setPreferredOrientation', 0, async function (done) {
-      let caseName = 'setPreferredOrientation';
+    it('setPreferredOrientationTest1', 0, async function (done) {
+      let caseName = 'setPreferredOrientationTest1';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let mainWin = await windowStage.getMainWindow().catch(err => {
@@ -1380,11 +1379,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
     })
     /**
     * @tc.number     SUB_WINDOW_SETFORBIDSPLITMOVE_JSAPI_001
-    * @tc.name       Test setForbidSplitMove
+    * @tc.name       Test setForbidSplitMoveTest1
     * @tc.desc       Sets whether Windows are forbidden to move in split screen mode
     */
-    it('setForbidSplitMove', 0, async function (done) {
-      let caseName = 'setForbidSplitMove';
+    it('setForbidSplitMoveTest1', 0, async function (done) {
+      let caseName = 'setForbidSplitMoveTest1';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let mainWin = await windowStage.getMainWindow().catch(err => {
@@ -1406,10 +1405,10 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       done();
     })
     /**
-* @tc.number     SUB_WINDOW_SNAPSHOT_JSAPI_001
-* @tc.name       Test snapshotTest1
-* @tc.desc       Scenario of screenshot of verification window
-*/
+    * @tc.number     SUB_WINDOW_SNAPSHOT_JSAPI_001
+    * @tc.name       Test snapshotTest1
+    * @tc.desc       Scenario of screenshot of verification window
+    */
     it('snapshotTest1', 0, async function (done) {
       let caseName = 'snapshotTest1';
       let msgStr = 'jsunittest ' + caseName + ' ';
@@ -1464,12 +1463,12 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       controller.animationForShown = (context: ohosWindow.TransitionContext) => {
         let toWindow = context.toWindow
         animateTo({
-          duration: 1000, // 动画时长
-          tempo: 0.5, // 播放速率
-          curve: Curve.EaseInOut, // 动画曲线
-          delay: 0, // 动画延迟
-          iterations: 1, // 播放次数
-          playMode: PlayMode.Normal, // 动画模式
+          duration: 1000,
+          tempo: 0.5,
+          curve: Curve.EaseInOut,
+          delay: 0,
+          iterations: 1,
+          playMode: PlayMode.Normal,
         }, () => {
           var obj: ohosWindow.TranslateOptions;
           obj.x = 100.0;
