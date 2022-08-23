@@ -5544,4 +5544,18 @@ describe('audioManager', function () {
         await sleep(50);
         done();
     })
+	
+	/* *
+            * @tc.number    : SUB_AUDIO_SAMPLE_FORMAT_F32LE_001
+            * @tc.name      : NONE_DEVICES_FLAG
+            * @tc.desc      : NONE_DEVICES_FLAG
+            * @tc.size      : MEDIUM
+            * @tc.type      : Function
+            * @tc.level     : Level 0
+            */
+    it('SUB_AUDIO_SAMPLE_FORMAT_F32LE_001', 0, async function (done) {
+        expect(audio.AudioSampleFormat.SAMPLE_FORMAT_F32LE).assertEqual(4);
+        await sleep(50);
+        done();
+    })
 })
