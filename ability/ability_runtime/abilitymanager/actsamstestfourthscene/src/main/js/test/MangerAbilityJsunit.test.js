@@ -106,6 +106,7 @@ export default function ActsAmsTestFourthScene() {
                     ' + error.code + ', data length [' + data.length + ']');
                 }
             );
+            sleep(500);
             done();
         });
 

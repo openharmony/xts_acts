@@ -86,6 +86,7 @@ export default function ActsAmsCallBackFourthScene() {
                     ' + error.code + ', data length [' + data.length + ']');
                 }
             );
+            sleep(500);
             done();
         });
 
