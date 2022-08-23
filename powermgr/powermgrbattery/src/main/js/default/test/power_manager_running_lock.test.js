@@ -37,24 +37,25 @@ describe('appInfoTest_battery3', function () {
     })
     //createRunningLock(name: string, type: RunningLockType, callback: AsyncCallback<RunningLock>)
     it('create_running_lock_callback_test', 0, async function (done) {
-        runningLock.createRunningLock("running_lock_test_2", runningLock.RunningLockType.BACKGROUND, (error, runninglock) => {
-            if (typeof error === "undefined") {
-                console.info('create_running_lock_callback_test: runningLock is ' + runninglock);
-                expect(runninglock !== null).assertTrue();
-                let used = runninglock.isUsed();
-                console.info('create_running_lock_callback_test is used: ' + used);
-                expect(used).assertFalse();
-                runninglock.lock(500);
-                used = runninglock.isUsed();
-                console.info('after lock create_running_lock_callback_test is used: ' + used);
-                expect(used).assertTrue();
-                console.info('create_running_lock_callback_test success');
-                done();
-            } else {
-                console.log('create_running_lock_callback_test: ' + error);
-                expect().assertFail();
-                done();
-            }
+        runningLock.createRunningLock("running_lock_test_2", runningLock.RunningLockType.BACKGROUND,
+            (error, runninglock) => {
+                if (typeof error === "undefined") {
+                    console.info('create_running_lock_callback_test: runningLock is ' + runninglock);
+                    expect(runninglock !== null).assertTrue();
+                    let used = runninglock.isUsed();
+                    console.info('create_running_lock_callback_test is used: ' + used);
+                    expect(used).assertFalse();
+                    runninglock.lock(500);
+                    used = runninglock.isUsed();
+                    console.info('after lock create_running_lock_callback_test is used: ' + used);
+                    expect(used).assertTrue();
+                    console.info('create_running_lock_callback_test success');
+                    done();
+                } else {
+                    console.log('create_running_lock_callback_test: ' + error);
+                    expect().assertFail();
+                    done();
+                }
         })
     })
     //lock(timeout: number)
