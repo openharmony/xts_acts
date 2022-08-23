@@ -14,5 +14,4 @@
  */
 
 require('./DeviceInfoJsUnit.test.js')
-require('./ParametersJsUnit.test.js')
 require('./SystemDeviceApi.test.js')
