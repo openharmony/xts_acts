@@ -2490,27 +2490,26 @@ describe('audioManager', function () {
                         }
                         else if (value == highVol) {
                             console.info("AudioFrameworkTest: value is " + value);
-                            expect(true).assertTrue();
+							audioManager.isMute(audioMedia, (err, data) => {
+								if (err) {
+									console.error(`AudioFrameworkTest: Callback : FALSE: Media : failed to get Mute Status ${err.message}`);
+									expect().assertFail();
+								}
+								else if (data == false) {
+									console.log('AudioFrameworkTest: Callback : Is Stream Mute Media: FALSE: PASS: ' + data);
+									expect(true).assertTrue();
+								}
+								else {
+									console.log('AudioFrameworkTest: Callback : Is Stream Mute Media: FALSE: FAIL: ' + data);
+									expect(false).assertTrue();
+								}
+								done();
+							});
                         }
                         else {
                             console.info("AudioFrameworkTest: mute fail");
                             expect(false).assertTrue();
                         }
-                    });
-                    audioManager.isMute(audioMedia, (err, data) => {
-                        if (err) {
-                            console.error(`AudioFrameworkTest: Callback : FALSE: Media : failed to get Mute Status ${err.message}`);
-                            expect().assertFail();
-                        }
-                        else if (data == false) {
-                            console.log('AudioFrameworkTest: Callback : Is Stream Mute Media: FALSE: PASS: ' + data);
-                            expect(true).assertTrue();
-                        }
-                        else {
-                            console.log('AudioFrameworkTest: Callback : Is Stream Mute Media: FALSE: FAIL: ' + data);
-                            expect(false).assertTrue();
-                        }
-                        done();
                     });
                 }
                 done();
@@ -2597,33 +2596,31 @@ describe('audioManager', function () {
                         }
                         else if (value == highVol) {
                             console.info("AudioFrameworkTest: value is " + value);
-                            expect(true).assertTrue();
+                            audioManager.isMute(audioRingtone, (err, data) => {
+								if (err) {
+									console.error(`AudioFrameworkTest: Callback : FALSE: Media : failed to get Mute Status ${err.message}`);
+									expect().assertFail();
+								}
+								else if (data == false) {
+									console.log('AudioFrameworkTest: Callback : Is Stream Mute Media: FALSE: PASS: ' + data);
+									expect(true).assertTrue();
+								}
+								else {
+									console.log('AudioFrameworkTest: Callback : Is Stream Mute Media: FALSE: FAIL: ' + data);
+									expect(false).assertTrue();
+								}
+								done();
+							});
                         }
                         else {
                             console.info("AudioFrameworkTest: mute fail");
                             expect(false).assertTrue();
                         }
                     });
-                    audioManager.isMute(audioRingtone, (err, data) => {
-                        if (err) {
-                            console.error(`AudioFrameworkTest: Callback : FALSE: Media : failed to get Mute Status ${err.message}`);
-                            expect().assertFail();
-                        }
-                        else if (data == false) {
-                            console.log('AudioFrameworkTest: Callback : Is Stream Mute Media: FALSE: PASS: ' + data);
-                            expect(true).assertTrue();
-                        }
-                        else {
-                            console.log('AudioFrameworkTest: Callback : Is Stream Mute Media: FALSE: FAIL: ' + data);
-                            expect(false).assertTrue();
-                        }
-                        done();
-                    });
                 }
                 done();
             });
         });
-
     })
 
     /* *
@@ -2704,27 +2701,26 @@ describe('audioManager', function () {
                         }
                         else if (value == highVol) {
                             console.info("AudioFrameworkTest: value is " + value);
-                            expect(true).assertTrue();
+                            audioManager.isMute(audio.AudioVolumeType.MEDIA, (err, data) => {
+								if (err) {
+									console.error(`AudioFrameworkTest: Callback : FALSE: Media : failed to get Mute Status ${err.message}`);
+									expect().assertFail();
+								}
+								else if (data == false) {
+									console.log('AudioFrameworkTest: Callback : Is Stream Mute Media: FALSE: PASS: ' + data);
+									expect(true).assertTrue();
+								}
+								else {
+									console.log('AudioFrameworkTest: Callback : Is Stream Mute Media: FALSE: FAIL: ' + data);
+									expect(false).assertTrue();
+								}
+								done();
+							});
                         }
                         else {
                             console.info("AudioFrameworkTest: mute fail");
                             expect(false).assertTrue();
                         }
-                    });
-                    audioManager.isMute(audio.AudioVolumeType.MEDIA, (err, data) => {
-                        if (err) {
-                            console.error(`AudioFrameworkTest: Callback : FALSE: Media : failed to get Mute Status ${err.message}`);
-                            expect().assertFail();
-                        }
-                        else if (data == false) {
-                            console.log('AudioFrameworkTest: Callback : Is Stream Mute Media: FALSE: PASS: ' + data);
-                            expect(true).assertTrue();
-                        }
-                        else {
-                            console.log('AudioFrameworkTest: Callback : Is Stream Mute Media: FALSE: FAIL: ' + data);
-                            expect(false).assertTrue();
-                        }
-                        done();
                     });
                 }
                 done();
@@ -2811,27 +2807,26 @@ describe('audioManager', function () {
                         }
                         else if (value == highVol) {
                             console.info("AudioFrameworkTest: value is " + value);
-                            expect(true).assertTrue();
+                            audioManager.isMute(audio.AudioVolumeType.RINGTONE, (err, data) => {
+								if (err) {
+									console.error(`AudioFrameworkTest: Callback : FALSE: Media : failed to get Mute Status ${err.message}`);
+									expect().assertFail();
+								}
+								else if (data == false) {
+									console.log('AudioFrameworkTest: Callback : Is Stream Mute Media: FALSE: PASS: ' + data);
+									expect(true).assertTrue();
+								}
+								else {
+									console.log('AudioFrameworkTest: Callback : Is Stream Mute Media: FALSE: FAIL: ' + data);
+									expect(false).assertTrue();
+								}
+								done();
+							});
                         }
                         else {
                             console.info("AudioFrameworkTest: mute fail");
                             expect(false).assertTrue();
                         }
-                    });
-                    audioManager.isMute(audio.AudioVolumeType.RINGTONE, (err, data) => {
-                        if (err) {
-                            console.error(`AudioFrameworkTest: Callback : FALSE: Media : failed to get Mute Status ${err.message}`);
-                            expect().assertFail();
-                        }
-                        else if (data == false) {
-                            console.log('AudioFrameworkTest: Callback : Is Stream Mute Media: FALSE: PASS: ' + data);
-                            expect(true).assertTrue();
-                        }
-                        else {
-                            console.log('AudioFrameworkTest: Callback : Is Stream Mute Media: FALSE: FAIL: ' + data);
-                            expect(false).assertTrue();
-                        }
-                        done();
                     });
                 }
                 done();
@@ -2917,27 +2912,26 @@ describe('audioManager', function () {
                         }
                         else if (value == highVol) {
                             console.info("AudioFrameworkTest: value is " + value);
-                            expect(true).assertTrue();
+                            audioManager.isMute(audio.AudioVolumeType.VOICE_CALL, (err, data) => {
+								if (err) {
+									console.error(`AudioFrameworkTest: Callback : FALSE: VOICE_CALL : failed to get Mute Status ${err.message}`);
+									expect().assertFail();
+								}
+								else if (data == false) {
+									console.log('AudioFrameworkTest: Callback : Is Stream Mute VOICE_CALL: FALSE: PASS: ' + data);
+									expect(true).assertTrue();
+								}
+								else {
+									console.log('AudioFrameworkTest: Callback : Is Stream Mute VOICE_CALL: FALSE: FAIL: ' + data);
+									expect(false).assertTrue();
+								}
+								done();
+							});
                         }
                         else {
                             console.info("AudioFrameworkTest: mute fail");
                             expect(false).assertTrue();
                         }
-                    });
-                    audioManager.isMute(audio.AudioVolumeType.VOICE_CALL, (err, data) => {
-                        if (err) {
-                            console.error(`AudioFrameworkTest: Callback : FALSE: VOICE_CALL : failed to get Mute Status ${err.message}`);
-                            expect().assertFail();
-                        }
-                        else if (data == false) {
-                            console.log('AudioFrameworkTest: Callback : Is Stream Mute VOICE_CALL: FALSE: PASS: ' + data);
-                            expect(true).assertTrue();
-                        }
-                        else {
-                            console.log('AudioFrameworkTest: Callback : Is Stream Mute VOICE_CALL: FALSE: FAIL: ' + data);
-                            expect(false).assertTrue();
-                        }
-                        done();
                     });
                 }
                 done();
@@ -3023,27 +3017,26 @@ describe('audioManager', function () {
                         }
                         else if (value == highVol) {
                             console.info("AudioFrameworkTest: value is " + value);
-                            expect(true).assertTrue();
+                            audioManager.isMute(audio.AudioVolumeType.VOICE_ASSISTANT, (err, data) => {
+								if (err) {
+									console.error(`AudioFrameworkTest: Callback : FALSE: VOICE_ASSISTANT : failed to get Mute Status ${err.message}`);
+									expect().assertFail();
+								}
+								else if (data == false) {
+									console.log('AudioFrameworkTest: Callback : Is Stream Mute VOICE_ASSISTANT: FALSE: PASS: ' + data);
+									expect(true).assertTrue();
+								}
+								else {
+									console.log('AudioFrameworkTest: Callback : Is Stream Mute VOICE_ASSISTANT: FALSE: FAIL: ' + data);
+									expect(false).assertTrue();
+								}
+								done();
+							});
                         }
                         else {
                             console.info("AudioFrameworkTest: mute fail");
                             expect(false).assertTrue();
                         }
-                    });
-                    audioManager.isMute(audio.AudioVolumeType.VOICE_ASSISTANT, (err, data) => {
-                        if (err) {
-                            console.error(`AudioFrameworkTest: Callback : FALSE: VOICE_ASSISTANT : failed to get Mute Status ${err.message}`);
-                            expect().assertFail();
-                        }
-                        else if (data == false) {
-                            console.log('AudioFrameworkTest: Callback : Is Stream Mute VOICE_ASSISTANT: FALSE: PASS: ' + data);
-                            expect(true).assertTrue();
-                        }
-                        else {
-                            console.log('AudioFrameworkTest: Callback : Is Stream Mute VOICE_ASSISTANT: FALSE: FAIL: ' + data);
-                            expect(false).assertTrue();
-                        }
-                        done();
                     });
                 }
                 done();
@@ -3167,28 +3160,27 @@ describe('audioManager', function () {
                     }
                     else if (value == 0) {
                         console.info("AudioFrameworkTest: value is " + value);
-                        expect(true).assertTrue();
+                        await audioManager.setVolume(audioMedia, highVol);
+						audioManager.isMute(audioMedia, (err, data) => {
+							if (err) {
+								console.error(`AudioFrameworkTest: Callback : SetVolume: Media : failed to get Mute Status ${err.message}`);
+								expect().assertFail();
+							}
+							else if (data == false) {
+								console.log('AudioFrameworkTest: Callback : Is Stream Mute Media: SetVolume: PASS: ' + data);
+								expect(true).assertTrue();
+							}
+							else {
+								console.log('AudioFrameworkTest: Callback : Is Stream Mute Media: SetVolume: FAIL: ' + data);
+								expect(false).assertTrue();
+							}
+							done();
+						});
                     }
                     else {
                         console.info("AudioFrameworkTest: mute fail");
                         expect(false).assertTrue();
                     }
-                });
-                await audioManager.setVolume(audioMedia, highVol);
-                audioManager.isMute(audioMedia, (err, data) => {
-                    if (err) {
-                        console.error(`AudioFrameworkTest: Callback : SetVolume: Media : failed to get Mute Status ${err.message}`);
-                        expect().assertFail();
-                    }
-                    else if (data == false) {
-                        console.log('AudioFrameworkTest: Callback : Is Stream Mute Media: SetVolume: PASS: ' + data);
-                        expect(true).assertTrue();
-                    }
-                    else {
-                        console.log('AudioFrameworkTest: Callback : Is Stream Mute Media: SetVolume: FAIL: ' + data);
-                        expect(false).assertTrue();
-                    }
-                    done();
                 });
             }
             done();
@@ -3262,28 +3254,27 @@ describe('audioManager', function () {
                     }
                     else if (value == 0) {
                         console.info("AudioFrameworkTest: value is " + value);
-                        expect(true).assertTrue();
+                        await audioManager.setVolume(audioRingtone, lowVol);
+						audioManager.isMute(audioRingtone, (err, data) => {
+							if (err) {
+								console.error(`AudioFrameworkTest: Callback : SetVolume: Ringtone : failed to get Mute Status ${err.message}`);
+								expect().assertFail();
+							}
+							else if (data == false) {
+								console.log('AudioFrameworkTest: Callback : Is Stream Mute Ringtone: SetVolume: PASS: ' + data);
+								expect(true).assertTrue();
+							}
+							else {
+								console.log('AudioFrameworkTest: Callback : Is Stream Mute Ringtone: SetVolume: FAIL: ' + data);
+								expect(false).assertTrue();
+							}
+							done();
+						});
                     }
                     else {
                         console.info("AudioFrameworkTest: mute fail");
                         expect(false).assertTrue();
                     }
-                });
-                await audioManager.setVolume(audioRingtone, lowVol);
-                audioManager.isMute(audioRingtone, (err, data) => {
-                    if (err) {
-                        console.error(`AudioFrameworkTest: Callback : SetVolume: Ringtone : failed to get Mute Status ${err.message}`);
-                        expect().assertFail();
-                    }
-                    else if (data == false) {
-                        console.log('AudioFrameworkTest: Callback : Is Stream Mute Ringtone: SetVolume: PASS: ' + data);
-                        expect(true).assertTrue();
-                    }
-                    else {
-                        console.log('AudioFrameworkTest: Callback : Is Stream Mute Ringtone: SetVolume: FAIL: ' + data);
-                        expect(false).assertTrue();
-                    }
-                    done();
                 });
             }
             done();
@@ -3357,28 +3348,27 @@ describe('audioManager', function () {
                     }
                     else if (value == 0) {
                         console.info("AudioFrameworkTest: value is " + value);
-                        expect(true).assertTrue();
+                        await audioManager.setVolume(audio.AudioVolumeType.VOICE_CALL, lowVol);
+						audioManager.isMute(audio.AudioVolumeType.VOICE_CALL, (err, data) => {
+							if (err) {
+								console.error(`AudioFrameworkTest: Callback : SetVolume: VOICE_CALL : failed to get Mute Status ${err.message}`);
+								expect().assertFail();
+							}
+							else if (data == false) {
+								console.log('AudioFrameworkTest: Callback : Is Stream Mute VOICE_CALL: SetVolume: PASS: ' + data);
+								expect(true).assertTrue();
+							}
+							else {
+								console.log('AudioFrameworkTest: Callback : Is Stream Mute VOICE_CALL: SetVolume: FAIL: ' + data);
+								expect(false).assertTrue();
+							}
+							done();
+						});
                     }
                     else {
                         console.info("AudioFrameworkTest: mute fail");
                         expect(false).assertTrue();
                     }
-                });
-                await audioManager.setVolume(audio.AudioVolumeType.VOICE_CALL, lowVol);
-                audioManager.isMute(audio.AudioVolumeType.VOICE_CALL, (err, data) => {
-                    if (err) {
-                        console.error(`AudioFrameworkTest: Callback : SetVolume: VOICE_CALL : failed to get Mute Status ${err.message}`);
-                        expect().assertFail();
-                    }
-                    else if (data == false) {
-                        console.log('AudioFrameworkTest: Callback : Is Stream Mute VOICE_CALL: SetVolume: PASS: ' + data);
-                        expect(true).assertTrue();
-                    }
-                    else {
-                        console.log('AudioFrameworkTest: Callback : Is Stream Mute VOICE_CALL: SetVolume: FAIL: ' + data);
-                        expect(false).assertTrue();
-                    }
-                    done();
                 });
             }
             done();
@@ -3448,27 +3438,26 @@ describe('audioManager', function () {
                 await audioManager.getVolume(audio.AudioVolumeType.VOICE_ASSISTANT).then((value) => {
                     if (value == 0) {
                         console.info("AudioFrameworkTest: value is " + value);
-                        expect(true).assertTrue();
+                        await audioManager.setVolume(audio.AudioVolumeType.VOICE_ASSISTANT, lowVol);
+						audioManager.isMute(audio.AudioVolumeType.VOICE_ASSISTANT, (err, data) => {
+							if (err) {
+								console.error(`AudioFrameworkTest: Callback : SetVolume: VOICE_ASSISTANT : failed to get Mute Status ${err.message}`);
+								expect().assertFail();
+							}
+							else if (data == false) {
+								console.log('AudioFrameworkTest: Callback : Is Stream Mute VOICE_ASSISTANT: SetVolume: PASS: ' + data);
+								expect(true).assertTrue();
+							}
+							else {
+								console.log('AudioFrameworkTest: Callback : Is Stream Mute VOICE_ASSISTANT: SetVolume: FAIL: ' + data);
+								expect(false).assertTrue();
+							}
+							done();
+						});
                     }
                     else {
                         expect(false).assertTrue();
                     }
-                });
-                await audioManager.setVolume(audio.AudioVolumeType.VOICE_ASSISTANT, lowVol);
-                audioManager.isMute(audio.AudioVolumeType.VOICE_ASSISTANT, (err, data) => {
-                    if (err) {
-                        console.error(`AudioFrameworkTest: Callback : SetVolume: VOICE_ASSISTANT : failed to get Mute Status ${err.message}`);
-                        expect().assertFail();
-                    }
-                    else if (data == false) {
-                        console.log('AudioFrameworkTest: Callback : Is Stream Mute VOICE_ASSISTANT: SetVolume: PASS: ' + data);
-                        expect(true).assertTrue();
-                    }
-                    else {
-                        console.log('AudioFrameworkTest: Callback : Is Stream Mute VOICE_ASSISTANT: SetVolume: FAIL: ' + data);
-                        expect(false).assertTrue();
-                    }
-                    done();
                 });
             }
             done();
