@@ -24,8 +24,10 @@ export default {
     var abilityDelegatorArguments: any
     abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
     console.info('start run testcase!!!')
-    abilityDelegatorArguments.parameters['-s timeout'] = 3000000
-    Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
+    abilityDelegatorArguments.parameters['-s timeout'] = 300000
+    setTimeout(()=>{
+        Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
+    },3000)
   },
   onDestroy() {
     console.info('Application onDestroy')
