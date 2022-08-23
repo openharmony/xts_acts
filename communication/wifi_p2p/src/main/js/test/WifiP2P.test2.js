@@ -25,56 +25,91 @@ function checkWifiPowerOn(){
 }
 
 export default function actsWifiTestNew() {
-    describe('actsWifiTestNew', function () {
-        beforeEach(function () {
-            checkWifiPowerOn();
-        })
-        afterEach(function () {
-        })
+describe('actsWifiTestNew', function () {
+    beforeEach(function () {
+        checkWifiPowerOn();
+    })
+    afterEach(function () {
+    })
 
-        /**
-        * @tc.number     P2P_0009
-        * @tc.name       SUB_Communication_WiFi_XTS_P2P_0009
-        * @since 8
-        * @tc.desc       Test p2pCancelConnect Group  API functionality.
-        * @syscap SystemCapability.Communication.WiFi.P2P
-        * @permission ohos.permission.GET_WIFI_INFO
-        */
-        it('SUB_Communication_WiFi_XTS_P2P_0009', 0, async function (done) {
-            let WifiP2PConfig = {
-                deviceAddress : "00:00:00:00:00:00",
-                netId : -1,
-                passphrase : "12345678",
-                groupName : "AAAZZZ123",
-                goBand : 0
-            };
-            let addConfig = wifi.createGroup(WifiP2PConfig);
-            console.info("[wifi_test] test p2pConnect result." + addConfig);
-            let disConn = wifi.p2pCancelConnect();
-            sleep(2000);
-            console.info("[wifi_test] test p2pCancelConnect result." + disConn);
-            expect(disConn).assertTrue();
-            let removeConfig = wifi.removeGroup();
-            console.info("[wifi_test] test start removeGroup" + removeConfig);
-            expect(removeConfig).assertTrue();
-            done();
-        })
+    /**
+    * @tc.number SUB_Communication_WiFi_XTS_P2P_0009
+    * @tc.name testp2pCancelConnect
+    * @tc.desc Test p2pCancelConnect Group  API functionality.
+    * @tc.type Function
+    * @tc.level Level 3
+    */
+    it('SUB_Communication_WiFi_XTS_P2P_0009', 0, async function (done) {
+        let WifiP2PConfig = {
+            deviceAddress : "00:00:00:00:00:00",
+            netId : -1,
+            passphrase : "12345678",
+            groupName : "AAAZZZ123",
+            goBand : 0
+        };
+        let addConfig = wifi.createGroup(WifiP2PConfig);
+        console.info("[wifi_test] test p2pConnect result." + addConfig);
+        let disConn = wifi.p2pCancelConnect();
+        sleep(2000);
+        console.info("[wifi_test] test p2pCancelConnect result." + disConn);
+        expect(disConn).assertTrue();
+        let removeConfig = wifi.removeGroup();
+        console.info("[wifi_test] test start removeGroup" + removeConfig);
+        expect(removeConfig).assertTrue();
+        done();
+    })
 
-        /**
-        * @tc.number     P2P_0011
-        * @tc.name       SUB_Communication_WiFi_XTS_P2P_0011
-        * @since 8
-        * @tc.desc       Test remove error Group functionality.
-        * @syscap SystemCapability.Communication.WiFi.P2P
-        * @permission ohos.permission.GET_WIFI_INFO
-        */
-        it('SUB_Communication_WiFi_XTS_P2P_0011', 0, async function (done) {
-            let isRemoved = wifi.removeGroup(10000);
-            console.info("[wifi_test]removeGroup(10000) result : " + JSON.stringify(isRemoved));
-            expect(isRemoved).assertTrue();
-            done();
-        })
+    /**
+    * @tc.number SUB_Communication_WiFi_XTS_P2P_0011
+    * @tc.name testremoveGroup
+    * @tc.desc Test remove error Group functionality.
+    * @tc.type Function
+    * @tc.level Level 3
+    */
+    it('SUB_Communication_WiFi_XTS_P2P_0011', 0, async function (done) {
+        let isRemoved = wifi.removeGroup(10000);
+        console.info("[wifi_test]removeGroup(10000) result : " + JSON.stringify(isRemoved));
+        expect(isRemoved).assertTrue();
+        done();
+    })
 
+    /**
+    * @tc.number     SUB_Communication_WiFi_XTS_P2P_0002
+    * @tc.name       testP2pLocalDevice
+    * @tc.desc       Test get TO P2pLocalDevice API functionality.
+    * @tc.type Function
+    * @tc.level Level 3
+    */
+    it('SUB_Communication_WiFi_XTS_P2P_0002', 0, async function (done) {
+        await wifi.getP2pLocalDevice()
+            .then(data => {
+                let resultLength = Object.keys(data).length;
+                console.info("[wifi_test] getP2pLocalDevice  [promise] result :" + JSON.stringify(data));
+                expect(true).assertEqual(resultLength >= 0);
+            }).catch((error) => {
+                console.info("[wifi_test]getP2pLocalDevice promise error." + JSON.stringify(error));
+                expect().assertFail();
+            });
+        function getP2pLocal(){
+            return new Promise((resolve, reject) => {
+                wifi.getP2pLocalDevice(
+                    (err, ret) => {
+                        if(err) {
+                            console.info("[wifi_test]getP2pLocalDevice callback failed : " + JSON.stringify(err));
+                            return;
+                        }
+                        console.info("[wifi_test] getP2pLocalDevice callback result: " + JSON.stringify(ret));
+                        console.info("deviceName: " + ret.deviceName + "deviceAddress: " +
+                        ret.deviceAddress + "primaryDeviceType: " + ret.primaryDeviceType +
+                        "deviceStatus: " + ret.deviceStatus + "groupCapabilitys: " +
+                        ret.groupCapabilitys );
+                        resolve();
+                    });
+            });
+        }
+        await getP2pLocal();
+        done();
+    })
     })
 }
 
