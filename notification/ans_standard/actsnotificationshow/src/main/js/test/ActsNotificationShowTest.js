@@ -77,26 +77,27 @@ export default function ActsNotificationShowTest() {
      */
     it('ActsNotificationShowTest_0400', 0, async function (done) {
       console.info(TAG + 'ActsNotificationShowTest_0400 START ')
+      let ActionResult = {
+        bundleName: 'com.example.notification',
+        abilityName: 'com.example.notification.MainAbility',
+        uri: '/'
+      }
       let ShowNotificationOptions = {
         contentTitle: 'Title4',
         contentText: 'This is a notification 004',
-        ActionResult: {
-          bundleName: 'com.example.notification',
-          abilityName: 'com.example.notification.MainAbility',
-          uri: '/',
-        }
+        clickAction: ActionResult
       }
       notification.show(ShowNotificationOptions)
       console.info(TAG + ' conteneTitle:' + ShowNotificationOptions.contentTitle)
       console.info(TAG + ' contentText:' + ShowNotificationOptions.contentText)
-      console.info(TAG + ' ActionResult bundleName:' + ShowNotificationOptions.ActionResult.bundleName)
-      console.info(TAG + ' ActionResult abilityName:' + ShowNotificationOptions.ActionResult.abilityName)
-      console.info(TAG + ' ActionResult uri:' + ShowNotificationOptions.ActionResult.uri)
+      console.info(TAG + ' ActionResult bundleName:' + ShowNotificationOptions.clickAction.bundleName)
+      console.info(TAG + ' ActionResult abilityName:' + ShowNotificationOptions.clickAction.abilityName)
+      console.info(TAG + ' ActionResult uri:' + ShowNotificationOptions.clickAction.uri)
       expect(ShowNotificationOptions.contentTitle).assertEqual('Title4')
       expect(ShowNotificationOptions.contentText).assertEqual('This is a notification 004')
-      expect(ShowNotificationOptions.ActionResult.bundleName).assertEqual('com.example.notification')
-      expect(ShowNotificationOptions.ActionResult.abilityName).assertEqual('com.example.notification.MainAbility')
-      expect(ShowNotificationOptions.ActionResult.uri).assertEqual('/')
+      expect(ShowNotificationOptions.clickAction.bundleName).assertEqual('com.example.notification')
+      expect(ShowNotificationOptions.clickAction.abilityName).assertEqual('com.example.notification.MainAbility')
+      expect(ShowNotificationOptions.clickAction.uri).assertEqual('/')
       done()
     })
 
@@ -107,26 +108,27 @@ export default function ActsNotificationShowTest() {
      */
     it('ActsNotificationShowTest_0500', 0, async function (done) {
       console.info(TAG + 'ActsNotificationShowTest_0500 START ')
+      let ActionResult = {
+        bundleName: 'com.example.notification',
+        abilityName: 'com.example.notification.MainAbility',
+        uri: 'pages/index/index'
+      }
       let ShowNotificationOptions = {
         contentTitle: 'Title5',
         contentText: 'This is a notification 005',
-        ActionResult: {
-          bundleName: 'com.example.notification',
-          abilityName: 'com.example.notification.MainAbility',
-          uri: 'pages/index/index',
-        }
+        clickAction: ActionResult
       }
       notification.show(ShowNotificationOptions)
       console.info(TAG + ' conteneTitle:' + ShowNotificationOptions.contentTitle)
       console.info(TAG + ' contentText:' + ShowNotificationOptions.contentText)
-      console.info(TAG + ' ActionResult bundleName:' + ShowNotificationOptions.ActionResult.bundleName)
-      console.info(TAG + ' ActionResult abilityName:' + ShowNotificationOptions.ActionResult.abilityName)
-      console.info(TAG + ' ActionResult uri:' + ShowNotificationOptions.ActionResult.uri)
+      console.info(TAG + ' ActionResult bundleName:' + ShowNotificationOptions.clickAction.bundleName)
+      console.info(TAG + ' ActionResult abilityName:' + ShowNotificationOptions.clickAction.abilityName)
+      console.info(TAG + ' ActionResult uri:' + ShowNotificationOptions.clickAction.uri)
       expect(ShowNotificationOptions.contentTitle).assertEqual('Title5')
       expect(ShowNotificationOptions.contentText).assertEqual('This is a notification 005')
-      expect(ShowNotificationOptions.ActionResult.bundleName).assertEqual('com.example.notification')
-      expect(ShowNotificationOptions.ActionResult.abilityName).assertEqual('com.example.notification.MainAbility')
-      expect(ShowNotificationOptions.ActionResult.uri).assertEqual('pages/index/index')
+      expect(ShowNotificationOptions.clickAction.bundleName).assertEqual('com.example.notification')
+      expect(ShowNotificationOptions.clickAction.abilityName).assertEqual('com.example.notification.MainAbility')
+      expect(ShowNotificationOptions.clickAction.uri).assertEqual('pages/index/index')
       done()
     })
 
@@ -137,25 +139,26 @@ export default function ActsNotificationShowTest() {
      */
     it('ActsNotificationShowTest_0600', 0, async function (done) {
       console.info(TAG + 'ActsNotificationShowTest_0600 START ')
+      let ActionResult = {
+        bundleName: '',
+        abilityName: 'com.example.notification.MainAbility',
+        uri: '/',
+      }
       let ShowNotificationOptions = {
         contentTitle: 'Title6',
         contentText: 'This is a notification 006',
-        ActionResult: {
-          bundleName: '',
-          abilityName: 'com.example.notification.MainAbility',
-          uri: '/',
-        }
+        clickAction: ActionResult
       }
       notification.show(ShowNotificationOptions)
       console.info(TAG + ' conteneTitle:' + ShowNotificationOptions.contentTitle)
       console.info(TAG + ' contentText:' + ShowNotificationOptions.contentText)
-      console.info(TAG + ' ActionResult bundleName:' + ShowNotificationOptions.ActionResult.bundleName)
-      console.info(TAG + ' ActionResult abilityName:' + ShowNotificationOptions.ActionResult.abilityName)
-      console.info(TAG + ' ActionResult uri:' + ShowNotificationOptions.ActionResult.uri)
+      console.info(TAG + ' ActionResult bundleName:' + ShowNotificationOptions.clickAction.bundleName)
+      console.info(TAG + ' ActionResult abilityName:' + ShowNotificationOptions.clickAction.abilityName)
+      console.info(TAG + ' ActionResult uri:' + ShowNotificationOptions.clickAction.uri)
       expect(ShowNotificationOptions.contentTitle).assertEqual('Title6')
       expect(ShowNotificationOptions.contentText).assertEqual('This is a notification 006')
-      expect(ShowNotificationOptions.ActionResult.abilityName).assertEqual('com.example.notification.MainAbility')
-      expect(ShowNotificationOptions.ActionResult.uri).assertEqual('/')
+      expect(ShowNotificationOptions.clickAction.abilityName).assertEqual('com.example.notification.MainAbility')
+      expect(ShowNotificationOptions.clickAction.uri).assertEqual('/')
       done()
     })
 
@@ -166,25 +169,26 @@ export default function ActsNotificationShowTest() {
      */
     it('ActsNotificationShowTest_0700', 0, async function (done) {
       console.info(TAG + 'ActsNotificationShowTest_0700 START ')
+      let ActionResult = {
+        bundleName: 'com.example.notification',
+        abilityName: '',
+        uri: '/',
+      }
       let ShowNotificationOptions = {
         contentTitle: 'Title7',
         contentText: 'This is a notification 007',
-        ActionResult: {
-          bundleName: 'com.example.notification',
-          abilityName: '',
-          uri: '/',
-        }
+        clickAction: ActionResult
       }
       notification.show(ShowNotificationOptions)
       console.info(TAG + ' conteneTitle:' + ShowNotificationOptions.contentTitle)
       console.info(TAG + ' contentText:' + ShowNotificationOptions.contentText)
-      console.info(TAG + ' ActionResult bundleName:' + ShowNotificationOptions.ActionResult.bundleName)
-      console.info(TAG + ' ActionResult abilityName:' + ShowNotificationOptions.ActionResult.abilityName)
-      console.info(TAG + ' ActionResult uri:' + ShowNotificationOptions.ActionResult.uri)
+      console.info(TAG + ' ActionResult bundleName:' + ShowNotificationOptions.clickAction.bundleName)
+      console.info(TAG + ' ActionResult abilityName:' + ShowNotificationOptions.clickAction.abilityName)
+      console.info(TAG + ' ActionResult uri:' + ShowNotificationOptions.clickAction.uri)
       expect(ShowNotificationOptions.contentTitle).assertEqual('Title7')
       expect(ShowNotificationOptions.contentText).assertEqual('This is a notification 007')
-      expect(ShowNotificationOptions.ActionResult.bundleName).assertEqual('com.example.notification')
-      expect(ShowNotificationOptions.ActionResult.uri).assertEqual('/')
+      expect(ShowNotificationOptions.clickAction.bundleName).assertEqual('com.example.notification')
+      expect(ShowNotificationOptions.clickAction.uri).assertEqual('/')
       done()
     })
 
@@ -195,25 +199,26 @@ export default function ActsNotificationShowTest() {
      */
     it('ActsNotificationShowTest_0800', 0, async function (done) {
       console.info(TAG + 'ActsNotificationShowTest_0800 START ')
+      let ActionResult = {
+        bundleName: 'com.example.notification',
+        abilityName: 'com.example.notification.MainAbility',
+        uri: '',
+      }
       let ShowNotificationOptions = {
         contentTitle: 'Title8',
         contentText: 'This is a notification 008',
-        ActionResult: {
-          bundleName: 'com.example.notification',
-          abilityName: 'com.example.notification.MainAbility',
-          uri: '',
-        }
+        clickAction: ActionResult
       }
       notification.show(ShowNotificationOptions)
       console.info(TAG + ' conteneTitle:' + ShowNotificationOptions.contentTitle)
       console.info(TAG + ' contentText:' + ShowNotificationOptions.contentText)
-      console.info(TAG + ' ActionResult bundleName:' + ShowNotificationOptions.ActionResult.bundleName)
-      console.info(TAG + ' ActionResult abilityName:' + ShowNotificationOptions.ActionResult.abilityName)
-      console.info(TAG + ' ActionResult uri:' + ShowNotificationOptions.ActionResult.uri)
+      console.info(TAG + ' ActionResult bundleName:' + ShowNotificationOptions.clickAction.bundleName)
+      console.info(TAG + ' ActionResult abilityName:' + ShowNotificationOptions.clickAction.abilityName)
+      console.info(TAG + ' ActionResult uri:' + ShowNotificationOptions.clickAction.uri)
       expect(ShowNotificationOptions.contentTitle).assertEqual('Title8')
       expect(ShowNotificationOptions.contentText).assertEqual('This is a notification 008')
-      expect(ShowNotificationOptions.ActionResult.bundleName).assertEqual('com.example.notification')
-      expect(ShowNotificationOptions.ActionResult.abilityName).assertEqual('com.example.notification.MainAbility')
+      expect(ShowNotificationOptions.clickAction.bundleName).assertEqual('com.example.notification')
+      expect(ShowNotificationOptions.clickAction.abilityName).assertEqual('com.example.notification.MainAbility')
       done()
     })
 
@@ -224,23 +229,24 @@ export default function ActsNotificationShowTest() {
      */
     it('ActsNotificationShowTest_0900', 0, async function (done) {
       console.info(TAG + 'ActsNotificationShowTest_0900 START ')
+      let ActionResult = {
+        bundleName: 'com.example.notification',
+        abilityName: 'com.example.notification.MainAbility',
+        uri: '/',
+      }
       let ShowNotificationOptions = {
         contentText: 'This is a notification 009',
-        ActionResult: {
-          bundleName: 'com.example.notification',
-          abilityName: 'com.example.notification.MainAbility',
-          uri: '/',
-        }
+        clickAction: ActionResult
       }
       notification.show(ShowNotificationOptions)
       console.info(TAG + ' contentText:' + ShowNotificationOptions.contentText)
-      console.info(TAG + ' ActionResult bundleName:' + ShowNotificationOptions.ActionResult.bundleName)
-      console.info(TAG + ' ActionResult abilityName:' + ShowNotificationOptions.ActionResult.abilityName)
-      console.info(TAG + ' ActionResult uri:' + ShowNotificationOptions.ActionResult.uri)
+      console.info(TAG + ' ActionResult bundleName:' + ShowNotificationOptions.clickAction.bundleName)
+      console.info(TAG + ' ActionResult abilityName:' + ShowNotificationOptions.clickAction.abilityName)
+      console.info(TAG + ' ActionResult uri:' + ShowNotificationOptions.clickAction.uri)
       expect(ShowNotificationOptions.contentText).assertEqual('This is a notification 009')
-      expect(ShowNotificationOptions.ActionResult.bundleName).assertEqual('com.example.notification')
-      expect(ShowNotificationOptions.ActionResult.abilityName).assertEqual('com.example.notification.MainAbility')
-      expect(ShowNotificationOptions.ActionResult.uri).assertEqual('/')
+      expect(ShowNotificationOptions.clickAction.bundleName).assertEqual('com.example.notification')
+      expect(ShowNotificationOptions.clickAction.abilityName).assertEqual('com.example.notification.MainAbility')
+      expect(ShowNotificationOptions.clickAction.uri).assertEqual('/')
       done()
     })
 
@@ -251,23 +257,24 @@ export default function ActsNotificationShowTest() {
      */
     it('ActsNotificationShowTest_1000', 0, async function (done) {
       console.info(TAG + 'ActsNotificationShowTest_1000 START ')
+      let ActionResult = {
+        bundleName: 'com.example.notification',
+        abilityName: 'com.example.notification.MainAbility',
+        uri: '/',
+      }
       let ShowNotificationOptions = {
         contentTitle: 'Title10',
-        ActionResult: {
-          bundleName: 'com.example.notification',
-          abilityName: 'com.example.notification.MainAbility',
-          uri: '/',
-        }
+        clickAction: ActionResult
       }
       notification.show(ShowNotificationOptions)
       console.info(TAG + ' conteneTitle:' + ShowNotificationOptions.contentTitle)
-      console.info(TAG + ' ActionResult bundleName:' + ShowNotificationOptions.ActionResult.bundleName)
-      console.info(TAG + ' ActionResult abilityName:' + ShowNotificationOptions.ActionResult.abilityName)
-      console.info(TAG + ' ActionResult uri:' + ShowNotificationOptions.ActionResult.uri)
+      console.info(TAG + ' ActionResult bundleName:' + ShowNotificationOptions.clickAction.bundleName)
+      console.info(TAG + ' ActionResult abilityName:' + ShowNotificationOptions.clickAction.abilityName)
+      console.info(TAG + ' ActionResult uri:' + ShowNotificationOptions.clickAction.uri)
       expect(ShowNotificationOptions.contentTitle).assertEqual('Title10')
-      expect(ShowNotificationOptions.ActionResult.bundleName).assertEqual('com.example.notification')
-      expect(ShowNotificationOptions.ActionResult.abilityName).assertEqual('com.example.notification.MainAbility')
-      expect(ShowNotificationOptions.ActionResult.uri).assertEqual('/')
+      expect(ShowNotificationOptions.clickAction.bundleName).assertEqual('com.example.notification')
+      expect(ShowNotificationOptions.clickAction.abilityName).assertEqual('com.example.notification.MainAbility')
+      expect(ShowNotificationOptions.clickAction.uri).assertEqual('/')
       done()
     })
 
@@ -275,5 +282,4 @@ export default function ActsNotificationShowTest() {
 
 
   })
-
 }
