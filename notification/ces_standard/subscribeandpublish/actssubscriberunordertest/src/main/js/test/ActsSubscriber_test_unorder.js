@@ -455,5 +455,62 @@ export default function ActsSubscriberTestUnorder() {
 
       await sleep(500)
     })
+
+    /*
+     * @tc.number    : ActsSubscriberTestUnorder_0900
+     * @tc.name      : check properties
+     * @tc.desc      : CommonEventPublishData
+     */
+    it('ActsSubscriberTestUnorder_0900', 0, async function (done) {
+      console.info(TAG + 'ActsSubscriberTestUnorder_0900 START ')
+      CommonEventSubscriberInfo.events[0] = 'publish_event_0900'
+      CommonEventSubscriberInfo.publisherDeviceId = 'PublishDeviceId_0900'
+      CommonEventSubscriberInfo.priority = 10
+
+      let CommonEventPublishData = {
+        code: 0,
+        data: "initial_data",
+        subscriberPermissions:['publish_event_0900_subscriberPermissions'],
+        isOrdered:false,
+        isSticky:false,
+        parameters:{
+          key1:'parameters_0100'
+        }
+      }
+      let CommonEventSubscriber = await commonEvent.createSubscriber(CommonEventSubscriberInfo)
+      if (CommonEventSubscriber == undefined) {
+        console.info(TAG + ': createSubscriber failed! Err.Info ===> ' + JSON.stringify(CommonEventSubscriber))
+        expect(false).assertTrue()
+        done()
+      } else {
+        console.info(TAG + ': createSubscriber successed! Subscriber.Info ===> ' + JSON.stringify(CommonEventSubscriber))
+        expect(true).assertTrue()
+      }
+
+      await commonEvent.subscribe(CommonEventSubscriber, (err, CommonEventData) => {
+        if (err.code) {
+          console.info(TAG + ': subscribe failed! Err.Info ===> ' + JSON.stringify(err.code))
+          expect(false).assertTrue()
+          done()
+        } else {
+          console.info(TAG + ': subscribe successed! CommonEventData.Info ===> ' + JSON.stringify(CommonEventData))
+          expect(true).assertTrue()
+        }
+      })
+
+      await commonEvent.publish('publish_event_0900', CommonEventPublishData, (err) => {
+        if (err.code) {
+          console.info(TAG + ': publish failed! event.Info ===> ' + JSON.stringify(err.code))
+          expect(false).assertTrue()
+          done()
+        } else {
+          console.info(TAG + ': publish successed! event.Info ===> ' + JSON.stringify(CommonEventPublishData))
+          expect(true).assertTrue()
+          done()
+        }
+      })
+
+      await sleep(5000)
+    })     
   })
 }
