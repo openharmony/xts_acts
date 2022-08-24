@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 import account from '@ohos.account.appAccount'
+import featureAbility from '@ohos.ability.featureAbility'
 
 const injectRef = Object.getPrototypeOf(global) || global
 injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')
@@ -33,6 +34,7 @@ export default {
             console.debug("====>add account scene err:" + JSON.stringify(err));
             appAccountManager.enableAppAccess("account_name_scene_single", enableBundle, (err)=>{
                 console.debug("====>enableAppAccess scene err:" + JSON.stringify(err));
+                featureAbility.terminateSelf()
             });
         });
     },
