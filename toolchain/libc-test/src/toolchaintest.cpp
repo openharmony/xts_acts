@@ -32,8 +32,10 @@
 
 using namespace std;
 using namespace testing::ext;
-class toolchaintest : public testing::Test {};
+class ToolChainTest : public ::testing::TestWithParam<string> {};
 
+static string filepath = "/data/local/tmp/libc-test/src";
+static vector<std::string> temp =  GetFileNames(filepath);
 volatile int t_status = 0;
 
 static void handler(int s)
@@ -54,7 +56,7 @@ static int start(char *wrap, const char *argvs)
     return pid;
 }
 
-static int runtests(const char *argvs)
+static int runTests(const char *argvs)
 {
     char wrap[] = "";
     int timeoutsec = 5, timeout = 0;
@@ -109,23 +111,20 @@ static int runtests(const char *argvs)
 }
 
 /**
- * @tc.name      : toolchaintest.LibcTest
+ * @tc.name      : ToolChainTest.LibcTest
  * @tc.desc      : start test
  * @tc.level     : Level 2
  */
-static HWTEST_F(toolchaintest, LibcTest, Function | MediumTest | Level3)
+static HWTEST_F(ToolChainTest, LibcTest, Function | MediumTest | Level3)
 {
     int ret;
-    vector<string> temp;
-    string filepath = "/data/local/tmp/libc-test/src";
-    GetFileNames(filepath, temp);
-    for (size_t i = 0; i < temp.size(); i++) {
-        if ((temp[i].find("stat", filepath.length()-1) != -1) ||
-            (temp[i].find("sem_close-unmap", filepath.length()-1) != -1) ||
-            (temp[i].find("runtest", filepath.length()-1) != -1)) {
-            continue;
-        }
-        ret = runtests(temp[i].c_str());
-        EXPECT_EQ(0, ret) << "test  " << temp[i]  << "  failed" << endl;
+    string testName = GetParam();
+    ret = runTests(testName.c_str());
+    if (ret == 0) {
+        EXPECT_EQ(0, ret) << "test  " << testName  << "  succeed" << endl;
+    } else {
+        EXPECT_EQ(1, ret) << "test  " << testName  << "  failed" << endl;
+        EXPECT_EQ(-1, ret) << "test  " << testName  << "  failed" << endl;
     }
 }
+INSTANTIATE_TEST_CASE_P(libcTest, ToolChainTest, testing:: ValuesIn(temp.begin(), temp.end()));

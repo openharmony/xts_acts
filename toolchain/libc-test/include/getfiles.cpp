@@ -17,28 +17,24 @@
 #include <vector>
 #include <cstring>
 #include <dirent.h>
+#include "gettestfiles.cpp"
 
 #include "runtest.h"
 
-void GetFileNames(std::string path, std::vector<std::string>& filenames)
+using namespace std;
+vector<string> filenames;
+
+vector<std::string> GetFileNames(std::string path)
 {
-    DIR *pDir;
-    struct dirent* ptr;
-    std::string  p;
-    if (!(pDir = opendir(path.c_str()))) {
-        std::cout << "Folder doesn't Exist!" << std::endl;
-        return;
-    }
-    while ((ptr = readdir(pDir)) != nullptr) {
-        if (ptr->d_type == DT_DIR) {
-            if (strcmp(ptr->d_name, ".") != 0 && strcmp(ptr->d_name, "..") != 0) {
-                GetFileNames(path + "/" + ptr->d_name, filenames);
-            }
-        } else {
-            if (strcmp(ptr->d_name, ".") != 0 && strcmp(ptr->d_name, "..") != 0) {
-                filenames.push_back(path + "/" + ptr->d_name);
-            }
+    vector<string> tempName;
+    GetTestNames(path, tempName);
+    for (size_t i = 0; i < tempName.size(); i++) {
+        if ((tempName[i].find("stat", path.length()-1) != -1) ||
+            (tempName[i].find("sem_close-unmap", path.length()-1) != -1) ||
+            (tempName[i].find("runtest", path.length()-1) != -1)) {
+            continue;
         }
+        filenames.push_back(tempName[i]);
     }
-    closedir(pDir);
+    return filenames;
 }

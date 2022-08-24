@@ -20,6 +20,6 @@
 #include <vector>
 
 int t_setrlim(int r, long lim);
-void GetFileNames(std::string path, std::vector<std::string>& filenames);
+std::vector<std::string> GetFileNames(std::string path);
 
 #endif  // TOOLCHAIN_LIBC_TEST_INCLUDE_RUNTEST_H_

@@ -47,6 +47,7 @@ _all_test_packages = [
   "${ACTS_ROOT}/barrierfree:barrierfree",
   "${ACTS_ROOT}/customization:customization",
   "${ACTS_ROOT}/distributedschedule:distributedschedule",
+  "${ACTS_ROOT}/toolchain:toolchain",
 ]
 
 _all_test_packages_ivi = [
