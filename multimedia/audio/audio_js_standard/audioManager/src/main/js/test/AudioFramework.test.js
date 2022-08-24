@@ -2475,6 +2475,7 @@ describe('audioManager', function () {
                 console.error(`AudioFrameworkTest: Failed to mute the stream. ${err.message}`);
                 expect(false).assertTrue();
                 done();
+                return;
             }
             console.log('AudioFrameworkTest: Callback invoked to indicate that the stream is muted.');
             audioManager.mute(audioMedia, false, (err) => {
@@ -2503,7 +2504,6 @@ describe('audioManager', function () {
                                     console.log('AudioFrameworkTest: Callback : Is Stream Mute Media: FALSE: FAIL: ' + data);
                                     expect(false).assertTrue();
                                 }
-                                done();
                             });
                         }
                         else {
@@ -2513,9 +2513,8 @@ describe('audioManager', function () {
                     });
                 }
                 done();
-            });
+            }); 
         });
-
     })
 
     /* *
@@ -2581,6 +2580,8 @@ describe('audioManager', function () {
             if (err) {
                 console.error(`AudioFrameworkTest: Failed to mute the stream. ${err.message}`);
                 expect(false).assertTrue();
+                done();
+                return;
             }
             console.log('AudioFrameworkTest: Callback invoked to indicate that the stream is muted.');
             audioManager.mute(audioRingtone, false, (err) => {
@@ -2609,7 +2610,6 @@ describe('audioManager', function () {
                                     console.log('AudioFrameworkTest: Callback : Is Stream Mute Media: FALSE: FAIL: ' + data);
                                     expect(false).assertTrue();
                                 }
-                                done();
                             });
                         }
                         else {
@@ -2686,6 +2686,8 @@ describe('audioManager', function () {
             if (err) {
                 console.error(`AudioFrameworkTest: Failed to mute the stream. ${err.message}`);
                 expect(false).assertTrue();
+                done();
+                return;
             }
             console.log('AudioFrameworkTest: Callback invoked to indicate that the stream is muted.');
             audioManager.mute(audio.AudioVolumeType.MEDIA, false, (err) => {
@@ -2714,7 +2716,6 @@ describe('audioManager', function () {
                                     console.log('AudioFrameworkTest: Callback : Is Stream Mute Media: FALSE: FAIL: ' + data);
                                     expect(false).assertTrue();
                                 }
-                                done();
                             });
                         }
                         else {
@@ -2726,7 +2727,6 @@ describe('audioManager', function () {
                 done();
             });
         });
-
     })
 
     /* *
@@ -2792,6 +2792,8 @@ describe('audioManager', function () {
             if (err) {
                 console.error(`AudioFrameworkTest: Failed to mute the stream. ${err.message}`);
                 expect(false).assertTrue();
+                done();
+                return;
             }
             console.log('AudioFrameworkTest: Callback invoked to indicate that the stream is muted.');
             audioManager.mute(audio.AudioVolumeType.RINGTONE, false, (err) => {
@@ -2820,7 +2822,6 @@ describe('audioManager', function () {
                                     console.log('AudioFrameworkTest: Callback : Is Stream Mute Media: FALSE: FAIL: ' + data);
                                     expect(false).assertTrue();
                                 }
-                                done();
                             });
                         }
                         else {
@@ -2897,6 +2898,8 @@ describe('audioManager', function () {
             if (err) {
                 console.error(`AudioFrameworkTest: Failed to mute the stream. ${err.message}`);
                 expect(false).assertTrue();
+                done();
+                return;
             }
             console.log('AudioFrameworkTest: Callback invoked to indicate that the stream is muted.');
             audioManager.mute(audio.AudioVolumeType.VOICE_CALL, false, (err) => {
@@ -2925,7 +2928,6 @@ describe('audioManager', function () {
                                     console.log('AudioFrameworkTest: Callback : Is Stream Mute VOICE_CALL: FALSE: FAIL: ' + data);
                                     expect(false).assertTrue();
                                 }
-                                done();
                             });
                         }
                         else {
@@ -3002,6 +3004,8 @@ describe('audioManager', function () {
             if (err) {
                 console.error(`AudioFrameworkTest: Failed to mute the stream. ${err.message}`);
                 expect(false).assertTrue();
+                done();
+                return;
             }
             console.log('AudioFrameworkTest: Callback invoked to indicate that the stream is muted.');
             audioManager.mute(audio.AudioVolumeType.VOICE_ASSISTANT, false, (err) => {
@@ -3030,7 +3034,6 @@ describe('audioManager', function () {
                                     console.log('AudioFrameworkTest: Callback : Is Stream Mute VOICE_ASSISTANT: FALSE: FAIL: ' + data);
                                     expect(false).assertTrue();
                                 }
-                                done();
                             });
                         }
                         else {
@@ -3174,7 +3177,6 @@ describe('audioManager', function () {
                                 console.log('AudioFrameworkTest: Callback : Is Stream Mute Media: SetVolume: FAIL: ' + data);
                                 expect(false).assertTrue();
                             }
-                            done();
                         });
                     }
                     else {
@@ -3268,7 +3270,6 @@ describe('audioManager', function () {
                                 console.log('AudioFrameworkTest: Callback : Is Stream Mute Ringtone: SetVolume: FAIL: ' + data);
                                 expect(false).assertTrue();
                             }
-                            done();
                         });
                     }
                     else {
@@ -3362,7 +3363,6 @@ describe('audioManager', function () {
                                 console.log('AudioFrameworkTest: Callback : Is Stream Mute VOICE_CALL: SetVolume: FAIL: ' + data);
                                 expect(false).assertTrue();
                             }
-                            done();
                         });
                     }
                     else {
@@ -3452,7 +3452,6 @@ describe('audioManager', function () {
                                 console.log('AudioFrameworkTest: Callback : Is Stream Mute VOICE_ASSISTANT: SetVolume: FAIL: ' + data);
                                 expect(false).assertTrue();
                             }
-                            done();
                         });
                     }
                     else {
