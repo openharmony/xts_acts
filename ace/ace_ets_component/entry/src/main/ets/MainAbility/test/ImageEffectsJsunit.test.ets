@@ -504,7 +504,7 @@ export default function imageEffectsJsunit() {
       try {
         var eventData = {
           data: {
-            "saturateValue": '0'
+            "saturateValue": 'error'
           }
         }
         var innerEvent = {
