@@ -23,6 +23,7 @@ import abilityConstant from '@ohos.application.AbilityConstant'
 import appManager from '@ohos.application.appManager'
 import appContext from '@ohos.application.context'
 import commonEvent from '@ohos.commonEvent';
+import ability from '@ohos.ability.ability'
 FormDimension
 var EXTENSION_INFO_ERR = 2097152
 var USERID_ERR = 2097177
@@ -539,6 +540,7 @@ export default function ApiCoverTest() {
      it('SUB_AA_FMS_AcquireForm_0100', 0, async function (done) {
       let subscriber = null
       let formExtensionContext:appContext.FormExtensionContext
+      let pacMap:ability.PacMap
         let subscribeInfo = {
           events: ["Form_StartAbility"]
         }
