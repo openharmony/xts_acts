@@ -106,6 +106,7 @@ export default function ActsAmsTestFifthScene() {
                     ' + error.code + ', data length [' + data.length + ']');
                 }
             );
+            sleep(500);
             done();
         });
 
