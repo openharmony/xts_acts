@@ -12,7 +12,7 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-import ContinuationManagerTest from './ContinuationManagerJsunit.test.js'
+import continuationManagerTest from './ContinuationManagerJsunit.test.js'
 export default function testsuite() {
-ContinuationManagerTest()
+continuationManagerTest()
 }

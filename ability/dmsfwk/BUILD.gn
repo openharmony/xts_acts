@@ -13,9 +13,9 @@
 
 import("//build/ohos_var.gni")
 
-group("systemabilitymgr") {
+group("dmsfwk") {
   testonly = true
   if (is_standard_system) {
-    deps = [ "dmsfwk:dmsfwk" ]
+    deps = [ "continuationmanagertest:continuationmanager_js_test" ]
   }
 }
