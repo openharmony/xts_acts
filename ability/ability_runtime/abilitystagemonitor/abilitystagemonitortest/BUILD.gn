@@ -41,3 +41,4 @@ ohos_resources("abilitystagemonitor_resources") {
   deps = [ ":abilitystagemonitor_app_profile" ]
   hap_profile = "entry/src/main/module.json"
 }
+
