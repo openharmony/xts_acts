@@ -12,12 +12,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import abilityIsTerminatingTest from './AbilityIsTerminating.test';
-import faSetDisplayOrientation from './FaSetDisplayOrientation.test';
-import faShowOnLock from './FaShowOnLock.test';
+@Entry
+@Component
+struct Index {
+  aboutToAppear() {
+    console.log('ActsOnAndOffScreenTest MainAbility index aboutToAppear')
+  }
 
-export default function testsuite() {
-  abilityIsTerminatingTest();
-  faSetDisplayOrientation();
-  faShowOnLock();
+  @State message: string = 'Hello World ActsOnAndOffScreenTest 1'
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
 }

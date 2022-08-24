@@ -16,12 +16,12 @@ import Ability from '@ohos.application.Ability'
 import commonEvent from '@ohos.commonEvent'
 
 async function onShowProcess() {
-    var abilityWant = globalThis.abilityWant;
+    var abilityWant = globalThis.abilityWant2;
 
     var commonEventPublishData = {
         parameters: {
-            displayId: globalThis.abilityWant.parameters['ohos.aafwk.param.displayId'],
-            windowMode: globalThis.abilityWant.parameters['ohos.aafwk.param.windowMode'],
+            displayId: abilityWant.parameters['ohos.aafwk.param.displayId'],
+            windowMode: abilityWant.parameters['ohos.aafwk.param.windowMode'],
         }
     };
    
@@ -29,7 +29,7 @@ async function onShowProcess() {
   
     commonEvent.publish("ACTS_TerminateSelf_CommonEvent", commonEventPublishData, () => {
         console.log('============>querytestsecond success==========>>')
-        globalThis.abilityContext.terminateSelf();
+        globalThis.abilityContext2.terminateSelf();
     });
     
 }
@@ -38,8 +38,8 @@ export default class MainAbility extends Ability {
     onCreate(want, launchParam) {
         // Ability is creating, initialize resources for this ability
         console.log("MainAbility2 onCreate")
-        globalThis.abilityWant = want;
-        console.log("AbilityMultiInstanceAppA abilityWant = " + JSON.stringify( globalThis.abilityWant));
+        globalThis.abilityWant2 = want;
+        console.log("AbilityMultiInstanceAppA abilityWant = " + JSON.stringify( globalThis.abilityWant2));
     }
 
     onDestroy() {
@@ -50,7 +50,7 @@ export default class MainAbility extends Ability {
     onWindowStageCreate(windowStage) {
         // Main window is created, set main page for this ability
         console.log("MainAbility2 onWindowStageCreate")
-        globalThis.abilityContext = this.context
+        globalThis.abilityContext2 = this.context
         windowStage.setUIContent(this.context, "MainAbility/pages/second/second", null)
     }
 
