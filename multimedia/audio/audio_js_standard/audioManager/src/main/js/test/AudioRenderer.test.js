@@ -7206,7 +7206,6 @@ describe('audioRenderer', function () {
                 * @tc.level     : Level 0
             */
     it('SUB_AUDIO_RENDERER_Play_audio_108', 0, async function (done) {
-
         expect(audio.AudioState.STATE_INVALID).assertEqual(-1);
         await sleep(50);
         done();
@@ -7221,7 +7220,6 @@ describe('audioRenderer', function () {
                 * @tc.level     : Level 0
             */
     it('SUB_AUDIO_RENDERER_Play_audio_109', 0, async function (done) {
-
         expect(audio.AudioState.STATE_NEW).assertEqual(0);
         await sleep(50);
         done();
@@ -7236,7 +7234,6 @@ describe('audioRenderer', function () {
                 * @tc.level     : Level 0
             */
     it('SUB_AUDIO_RENDERER_Play_audio_110', 0, async function (done) {
-
         expect(audio.AudioSampleFormat.SAMPLE_FORMAT_INVALID).assertEqual(-1);
         await sleep(50);
         done();
@@ -7251,7 +7248,6 @@ describe('audioRenderer', function () {
                 * @tc.level     : Level 0
             */
     it('SUB_AUDIO_RENDERER_Play_audio_111', 0, async function (done) {
-
         expect(audio.SourceType.SOURCE_TYPE_INVALID).assertEqual(-1);
         await sleep(50);
         done();
@@ -7371,7 +7367,6 @@ describe('audioRenderer', function () {
                 * @tc.level     : Level 0
             */
     it('SUB_AUDIO_RENDERER_Play_audio_114', 0, async function (done) {
-
         expect(audio.AudioEncodingType.ENCODING_TYPE_INVALID).assertEqual(-1);
         await sleep(50);
         done();
@@ -7403,10 +7398,12 @@ describe('audioRenderer', function () {
         let mode = audio.InterruptMode.SHARE_MODE;
         audioRenderer.setInterruptMode(mode, (err, data) => {
             if (err) {
+				console.info(`AudioFrameworkRenderLog: SetInterruptMode SHARE_MODE CALLBACK: error: ${err.message}`);
                 expect(false).assertTrue();
                 done();
                 return;
             }
+			console.info(`AudioFrameworkRenderLog: SetInterruptMode SHARE_MODE CALLBACK: SUCCESS`);
             expect(true).assertTrue();
             done();
         })
@@ -7438,10 +7435,12 @@ describe('audioRenderer', function () {
         let mode = audio.InterruptMode.INDEPENDENT_MODE;
         audioRenderer.setInterruptMode(mode, (err, data) => {
             if (err) {
+				console.info(`AudioFrameworkRenderLog: SetInterruptMode INDEPENDENT_MODE CALLBACK: error: ${err.message}`);
                 expect(false).assertTrue();
                 done();
                 return;
             }
+			console.info(`AudioFrameworkRenderLog: SetInterruptMode INDEPENDENT_MODE CALLBACK: SUCCESS`);
             expect(true).assertTrue();
             done();
         })
@@ -7472,9 +7471,11 @@ describe('audioRenderer', function () {
         let audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
         let mode = audio.InterruptMode.SHARE_MODE;
         audioRenderer.setInterruptMode(mode).then(data => {
+			console.info(`AudioFrameworkRenderLog: SetInterruptMode SHARE_MODE PROMISE: SUCCESS`);
             expect(true).assertTrue();
             done();
         }).catch(err => {
+			console.info(`AudioFrameworkRenderLog: SetInterruptMode SHARE_MODE PROMISE: error: ${err.message}`);
             expect(false).assertTrue();
             done();
         })
@@ -7505,9 +7506,11 @@ describe('audioRenderer', function () {
         let audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
         let mode = audio.InterruptMode.INDEPENDENT_MODE;
         audioRenderer.setInterruptMode(mode).then(data => {
+			console.info(`AudioFrameworkRenderLog: SetInterruptMode INDEPENDENT_MODE PROMISE: SUCCESS`);
             expect(true).assertTrue();
             done();
         }).catch(err => {
+			console.info(`AudioFrameworkRenderLog: SetInterruptMode INDEPENDENT_MODE PROMISE: error: ${err.message}`);
             expect(false).assertTrue();
             done();
         })
@@ -7539,17 +7542,19 @@ describe('audioRenderer', function () {
         let mode = '1';
         try {
             let data = await audioRenderer.setInterruptMode(mode);
+			console.info(`AudioFrameworkRenderLog: SetInterruptMode STRING PROMISE: SUCCESS`);
             expect(false).assertTrue();
             done();
         } catch (err) {
-            expect('assertion (false) failed: type mismatch').assertEqual(err.message);
+			console.info(`AudioFrameworkRenderLog: SetInterruptMode STRING PROMISE: error: ${err.message}`);
+            expect(true).assertTrue();
             done();
         }
     })
 
     /*
    * @tc.name:SUB_AUDIO_SetInterruptMode_006
-   * @tc.desc:SetInterruptMode mode 2,will catch error with out of border
+   * @tc.desc:SetInterruptMode mode 2,set it to default SHARE_MODE
    * @tc.type: FUNC
    * @tc.require: Issue Number
    */
@@ -7572,11 +7577,13 @@ describe('audioRenderer', function () {
         let audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
         let mode = 2;
         try {
-            let data = await audioRenderer.setInterruptMode(mode)
-            expect(false).assertTrue();
+            let data = await audioRenderer.setInterruptMode(mode);	
+			console.info(`AudioFrameworkRenderLog: SetInterruptMode OUT OF BORDER PROMISE: SUCCESS`);
+            expect(true).assertTrue();
             done();
         } catch (err) {
-            expect(err).assertEqual(undefined);
+			console.info(`AudioFrameworkRenderLog: SetInterruptMode OUT OF BORDER PROMISE: ERROR: ${err.message}`);
+            expect(false).assertTrue();
             done();
         }
     })
