@@ -1305,11 +1305,9 @@ export default function ObjectInterfaceTest() {
       }
       contactsapi.addContact(contactData, (err, data) => {
         if (err) {
-          console.info(`addContact callback: err->${JSON.stringify(err)}`);
           done();
           return;
         }
-        console.info(`addContact callback: success data->${JSON.stringify(data)}`);
         expect(JSON.stringify(data) != -1).assertTrue();
         done();
       });
@@ -1324,7 +1322,6 @@ export default function ObjectInterfaceTest() {
       }
       contactsapi.deleteContact('xxx', (err) => {
         if (err) {
-          console.info(`deleteContact callback: err->${JSON.stringify(err)}`);
           expect(JSON.stringify(err) == -1).assertTrue();
           done();
           return;
@@ -1345,12 +1342,10 @@ export default function ObjectInterfaceTest() {
       }
       contactsapi.queryContact('xxx', (err, data) => {
         if (err) {
-          console.info(`queryContact callback: err->${JSON.stringify(err)}`);
           expect(false).assertTrue();
           done();
           return;
         }
-        console.info(`queryContact callback: success data->${JSON.stringify(data)}`);
         expect(JSON.stringify(data) == undefined).assertTrue();
         done();
       });
@@ -1367,12 +1362,10 @@ export default function ObjectInterfaceTest() {
         holderId: 0
       }, (err, data) => {
         if (err) {
-          console.info(`queryContact callback: err->${JSON.stringify(err)}`);
           expect(false).assertTrue();
           done();
           return;
         }
-        console.info(`queryContact callback: success data->${JSON.stringify(data)}`);
         expect(JSON.stringify(data) == undefined).assertTrue();
         done();
       });
@@ -1389,12 +1382,10 @@ export default function ObjectInterfaceTest() {
         attributes: ["ATTR_EMAIL", "ATTR_NAME"]
       }, (err, data) => {
         if (err) {
-          console.info(`queryContact callback: err->${JSON.stringify(err)}`);
           expect(false).assertTrue();
           done();
           return;
         }
-        console.info(`queryContact callback: success data->${JSON.stringify(data)}`);
         expect(JSON.stringify(data) == undefined).assertTrue();
         done();
       });
@@ -1413,12 +1404,10 @@ export default function ObjectInterfaceTest() {
         attributes: ["ATTR_EMAIL", "ATTR_NAME"]
       }, (err, data) => {
         if (err) {
-          console.info(`queryContact callback: err->${JSON.stringify(err)}`);
           expect(false).assertTrue();
           done();
           return;
         }
-        console.info(`queryContact callback: success data->${JSON.stringify(data)}`);
         expect(JSON.stringify(data) == undefined).assertTrue();
         done();
       });
@@ -1437,11 +1426,9 @@ export default function ObjectInterfaceTest() {
         attributes: ["ATTR_EMAIL", "ATTR_NAME"]
       });
       promise.then((data) => {
-        console.info(`queryContact success: data->${JSON.stringify(data)}`);
         expect(JSON.stringify(data) == undefined).assertTrue();
         done();
       }).catch((err) => {
-        console.info(`queryContact fail: err->${JSON.stringify(err)}`);
         expect(false).assertTrue();
         done();
       });
@@ -1456,12 +1443,10 @@ export default function ObjectInterfaceTest() {
       }
       contactsapi.queryContacts((err, data) => {
         if (err) {
-          console.info(`queryContacts callback: err->${JSON.stringify(err)}`);
           expect(JSON.stringify(data) === null).assertFalse();
           done();
           return;
         }
-        console.info(`queryContacts callback: success data->${JSON.stringify(data)}`);
         expect(JSON.stringify(data) === null).assertFalse();
         done();
       });
@@ -1478,12 +1463,10 @@ export default function ObjectInterfaceTest() {
         holderId: 0
       }, (err, data) => {
         if (err) {
-          console.info(`queryContacts callback: err->${JSON.stringify(err)}`);
           expect(JSON.stringify(data) === null).assertFalse();
           done();
           return;
         }
-        console.info(`queryContacts callback: success data->${JSON.stringify(data)}`);
         expect(JSON.stringify(data) === null).assertFalse();
         done();
       });
@@ -1500,12 +1483,10 @@ export default function ObjectInterfaceTest() {
         attributes: ["ATTR_EMAIL", "ATTR_NAME"]
       }, (err, data) => {
         if (err) {
-          console.info(`queryContacts callback: err->${JSON.stringify(err)}`);
           expect(JSON.stringify(data) === null).assertFalse();
           done();
           return;
         }
-        console.info(`queryContacts callback: success data->${JSON.stringify(data)}`);
         expect(JSON.stringify(data) === null).assertFalse();
         done();
       });
@@ -1525,12 +1506,10 @@ export default function ObjectInterfaceTest() {
         attributes: ["ATTR_EMAIL", "ATTR_NAME"]
       }, (err, data) => {
         if (err) {
-          console.info(`queryContacts callback: err->${JSON.stringify(err)}`);
           expect(JSON.stringify(data) === null).assertFalse();
           done();
           return;
         }
-        console.info(`queryContacts callback: success data->${JSON.stringify(data)}`);
         expect(JSON.stringify(data) === null).assertFalse();
         done();
       });
@@ -1550,11 +1529,9 @@ export default function ObjectInterfaceTest() {
         attributes: ["ATTR_EMAIL", "ATTR_NAME"]
       });
       promise.then((data) => {
-        console.info(`queryContacts success: data->${JSON.stringify(data)}`);
         expect(JSON.stringify(data) === null).assertFalse();
         done();
       }).catch((err) => {
-        console.info(`queryContacts fail: err->${JSON.stringify(err)}`);
         expect(false).assertTrue();
         done();
       });
@@ -1569,12 +1546,10 @@ export default function ObjectInterfaceTest() {
       }
       contactsapi.queryContactsByPhoneNumber('138xxxxxxxx', (err, data) => {
         if (err) {
-          console.info(`queryContactsByPhoneNumber callback: err->${JSON.stringify(err)}`);
           expect(JSON.stringify(data) === null).assertFalse();
           done();
           return;
         }
-        console.info(`queryContactsByPhoneNumber callback: success data->${JSON.stringify(data)}`);
         expect(JSON.stringify(data) === null).assertFalse();
         done();
       });
@@ -1591,12 +1566,10 @@ export default function ObjectInterfaceTest() {
         holderId: 0
       }, (err, data) => {
         if (err) {
-          console.info(`queryContactsByPhoneNumber callback: err->${JSON.stringify(err)}`);
           expect(JSON.stringify(data) === null).assertFalse();
           done();
           return;
         }
-        console.info(`queryContactsByPhoneNumber callback: success data->${JSON.stringify(data)}`);
         expect(JSON.stringify(data) === null).assertFalse();
         done();
       });
@@ -1613,12 +1586,10 @@ export default function ObjectInterfaceTest() {
         attributes: ["ATTR_EMAIL", "ATTR_NAME"]
       }, (err, data) => {
         if (err) {
-          console.info(`queryContactsByPhoneNumber callback: err->${JSON.stringify(err)}`);
           expect(JSON.stringify(data) === null).assertFalse();
           done();
           return;
         }
-        console.info(`queryContactsByPhoneNumber callback: success data->${JSON.stringify(data)}`);
         expect(JSON.stringify(data) === null).assertFalse();
         done();
       });
@@ -1637,12 +1608,10 @@ export default function ObjectInterfaceTest() {
         attributes: ["ATTR_EMAIL", "ATTR_NAME"]
       }, (err, data) => {
         if (err) {
-          console.info(`queryContactsByPhoneNumber callback: err->${JSON.stringify(err)}`);
           expect(JSON.stringify(data) === null).assertFalse();
           done();
           return;
         }
-        console.info(`queryContactsByPhoneNumber callback: success data->${JSON.stringify(data)}`);
         expect(JSON.stringify(data) === null).assertFalse();
         done();
       });
@@ -1658,12 +1627,10 @@ export default function ObjectInterfaceTest() {
       }
       contactsapi.queryContactsByEmail('xxx@email.com', (err, data) => {
         if (err) {
-          console.info(`queryContactsByEmail callback: err->${JSON.stringify(err)}`);
           expect(JSON.stringify(data) === null).assertFalse();
           done();
           return;
         }
-        console.info(`queryContactsByEmail callback: success data->${JSON.stringify(data)}`);
         expect(JSON.stringify(data) === null).assertFalse();
         done();
       });
@@ -1680,12 +1647,10 @@ export default function ObjectInterfaceTest() {
         holderId: 0
       }, (err, data) => {
         if (err) {
-          console.info(`queryContactsByEmail callback: err->${JSON.stringify(err)}`);
           expect(JSON.stringify(data) === null).assertFalse();
           done();
           return;
         }
-        console.info(`queryContactsByEmail callback: success data->${JSON.stringify(data)}`);
         expect(JSON.stringify(data) === null).assertFalse();
         done();
       });
@@ -1703,12 +1668,10 @@ export default function ObjectInterfaceTest() {
         attributes: ["ATTR_EMAIL", "ATTR_NAME"]
       }, (err, data) => {
         if (err) {
-          console.info(`queryContactsByEmail callback: err->${JSON.stringify(err)}`);
           expect(JSON.stringify(data) === null).assertFalse();
           done();
           return;
         }
-        console.info(`queryContactsByEmail callback: success data->${JSON.stringify(data)}`);
         expect(JSON.stringify(data) === null).assertFalse();
         done();
       });
@@ -1728,12 +1691,10 @@ export default function ObjectInterfaceTest() {
         attributes: ["ATTR_EMAIL", "ATTR_NAME"]
       }, (err, data) => {
         if (err) {
-          console.info(`queryContactsByEmail callback: err->${JSON.stringify(err)}`);
           expect(JSON.stringify(data) === null).assertFalse();
           done();
           return;
         }
-        console.info(`queryContactsByEmail callback: success data->${JSON.stringify(data)}`);
         expect(JSON.stringify(data) === null).assertFalse();
         done();
       });
@@ -1748,12 +1709,10 @@ export default function ObjectInterfaceTest() {
       }
       contactsapi.queryGroups((err, data) => {
         if (err) {
-          console.info(`queryGroups callback: err->${JSON.stringify(err)}`);
           expect(JSON.stringify(data) === null).assertFalse();
           done();
           return;
         }
-        console.info(`queryGroups callback: success data->${JSON.stringify(data)}`);
         expect(JSON.stringify(data) === null).assertFalse();
         done();
       });
@@ -1770,12 +1729,10 @@ export default function ObjectInterfaceTest() {
         holderId: 0
       }, (err, data) => {
         if (err) {
-          console.info(`queryGroups callback: err->${JSON.stringify(err)}`);
           expect(JSON.stringify(data) === null).assertFalse();
           done();
           return;
         }
-        console.info(`queryGroups callback: success data->${JSON.stringify(data)}`);
         expect(JSON.stringify(data) === null).assertFalse();
         done();
       });
@@ -1791,12 +1748,10 @@ export default function ObjectInterfaceTest() {
       }
       contactsapi.queryHolders((err, data) => {
         if (err) {
-          console.info(`queryHolders callback: err->${JSON.stringify(err)}`);
           expect(JSON.stringify(data) === null).assertFalse();
           done();
           return;
         }
-        console.info(`queryHolders callback: success data->${JSON.stringify(data)}`);
         expect(JSON.stringify(data) === null).assertFalse();
         done();
       });
@@ -1812,12 +1767,10 @@ export default function ObjectInterfaceTest() {
       contactsapi.queryKey( /*id*/
         1, (err, data) => {
         if (err) {
-          console.info(`queryKey callback: err->${JSON.stringify(err)}`);
           expect(JSON.stringify(data) === null).assertFalse();
           done();
           return;
         }
-        console.info(`queryKey callback: success data->${JSON.stringify(data)}`);
         expect(JSON.stringify(data) === null).assertFalse();
         done();
       });
@@ -1835,12 +1788,10 @@ export default function ObjectInterfaceTest() {
         holderId: 1
       }, (err, data) => {
         if (err) {
-          console.info(`queryKey callback: err->${JSON.stringify(err)}`);
           expect(JSON.stringify(data) === null).assertFalse();
           done();
           return;
         }
-        console.info(`queryKey callback: success data->${JSON.stringify(data)}`);
         expect(JSON.stringify(data) === null).assertFalse();
         done();
       });
@@ -1856,12 +1807,10 @@ export default function ObjectInterfaceTest() {
       }
       contactsapi.queryMyCard((err, data) => {
         if (err) {
-          console.info(`queryMyCard callback: err->${JSON.stringify(err)}`);
           expect(JSON.stringify(data) === null).assertFalse();
           done();
           return;
         }
-        console.info(`queryMyCard callback: success data->${JSON.stringify(data)}`);
         expect(JSON.stringify(data) === null).assertFalse();
         done();
       });
@@ -1879,12 +1828,10 @@ export default function ObjectInterfaceTest() {
         attributes: ['ATTR_EMAIL', 'ATTR_NAME']
       }, (err, data) => {
         if (err) {
-          console.info(`queryMyCard callback: err->${JSON.stringify(err)}`);
           expect(JSON.stringify(data) === null).assertFalse();
           done();
           return;
         }
-        console.info(`queryMyCard callback: success data->${JSON.stringify(data)}`);
         expect(JSON.stringify(data) === null).assertFalse();
         done();
       });
@@ -1954,12 +1901,10 @@ export default function ObjectInterfaceTest() {
       contactsapi.isLocalContact( /*id*/
         1, (err, data) => {
         if (err) {
-          console.info(`isLocalContact callback: err->${JSON.stringify(err)}`);
           expect(false).assertTrue();
           done();
           return;
         }
-        console.info(`isLocalContact callback: success data->${JSON.stringify(data)}`);
         done();
       });
       sleep(500)
@@ -1974,12 +1919,10 @@ export default function ObjectInterfaceTest() {
       contactsapi.isMyCard( /*id*/
         1, (err, data) => {
         if (err) {
-          console.info(`isMyCard callback: err->${JSON.stringify(err)}`);
           expect(false).assertTrue();
           done();
           return;
         }
-        console.info(`isMyCard callback: success data->${JSON.stringify(data)}`);
         done();
       });
       sleep(500)
@@ -1992,12 +1935,10 @@ export default function ObjectInterfaceTest() {
         return;
       }
       let sendCallback = function (err, data) {
-        console.log(`sendCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
         expect(JSON.stringify(data) === null).assertFalse();
         done();
       }
       let deliveryCallback = function (err, data) {
-        console.log(`deliveryCallback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
         expect(JSON.stringify(data) === null).assertFalse();
         done();
       }
@@ -2045,7 +1986,6 @@ export default function ObjectInterfaceTest() {
         done();
         sleep(500)
       }).catch((err) => {
-        console.error(`selectContact fail: err->${JSON.stringify(err)}`);
         done();
       });
     });
@@ -2074,11 +2014,9 @@ export default function ObjectInterfaceTest() {
       if (result1 == -1 || result2 == -1) {
         contactPermission = false;
         done();
-        return;
       }
       contactPermission = true;
       done();
-      return;
     }
   });
 }
