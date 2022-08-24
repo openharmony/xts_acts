@@ -21,11 +21,13 @@ export default class ServiceAbility extends ServiceExtension {
     onCreate(want:Want) {
         globalThis.abilityWant = want;
         let direction = this.context.config.direction
+        let pointerDervice = this.context.config.hasPointerDevice
         let AbilityInfo = this.context.extensionAbilityInfo.bundleName
         console.log('ServiceAbility onCreate, want: ' + want.abilityName);
         var CommonEventPublishData = {
             parameters: {
                 "config": direction,
+                "poniterDevices": pointerDervice,
                 "AbilityInfo":AbilityInfo
             }
         }

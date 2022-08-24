@@ -419,6 +419,35 @@ export default function ApiCoverTest() {
     });
 
     /*
+     * @tc.number  SUB_AA_Test_ProcessRunningInformation_0200
+     * @tc.name    Test getProcessRunningInformation by callback in appManager.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_AA_Test_ProcessRunningInformation_0200', 0, async function (done) {
+      let process;
+      appManager.getProcessRunningInformation((error, processRunningInformations)=>{
+        if(error.code == 0){
+          console.info("SUB_AA_Test_ProcessRunningInformation_0100:" + JSON.stringify(processRunningInformations));
+          for(let i = 0; i < processRunningInformations.length; i++){
+            console.info("SUB_AA_Test_ProcessRunningInformation_0100:" + JSON.stringify(processRunningInformations[i]));
+            expect(processRunningInformations[i].pid).assertLarger(0)
+            expect(processRunningInformations[i].uid).assertLarger(0)
+            if(processRunningInformations[i].processName == "com.example.apicoverhaptest"){
+            process = processRunningInformations[i]
+          }
+        }
+          expect(process.bundleNames[0]).assertEqual("com.example.apicoverhaptest")
+          done()
+        }else{
+          console.info("SUB_AA_Test_ProcessRunningInformation_0100:" + JSON.stringify(error));
+          expect().assertFail()
+          done()
+        }
+      })
+    });
+
+    /*
      * @tc.number  SUB_AA_FMS_AbilityStage_0100
      * @tc.name    Start AbilityStage and get config.
      * @tc.desc    Function test
@@ -476,6 +505,7 @@ export default function ApiCoverTest() {
         function SubscribeInfoCallback(err, data) {
           console.info("SUB_AA_FMS_AbilityStage_0200===SubscribeInfoCallback===" + JSON.stringify(data))
             expect(data.parameters["config"]).assertEqual(0)
+            expect(data.parameters["poniterDevices"]).assertFalse()
             expect(data.parameters["AbilityInfo"]).assertEqual("com.example.apicoverhaptest")
             commonEvent.unsubscribe(subscriber, UnSubscribeInfoCallback)
             done()
@@ -508,6 +538,7 @@ export default function ApiCoverTest() {
      */
      it('SUB_AA_FMS_AcquireForm_0100', 0, async function (done) {
       let subscriber = null
+      let formExtensionContext:appContext.FormExtensionContext
         let subscribeInfo = {
           events: ["Form_StartAbility"]
         }
