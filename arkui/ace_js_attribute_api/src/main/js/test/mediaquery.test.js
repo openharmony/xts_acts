@@ -16,8 +16,8 @@
 import {describe,beforeAll,beforeEach,afterEach,afterAll,it,expect}from '@ohos/hypium'
 import mediaquery from '@system.mediaquery';
 
-export default function mediaquery() {
-describe('mediaquery', function() {
+export default function mediaqueryTest() {
+describe('mediaqueryTest', function() {
     let testResult;
     let test;
     beforeAll(function() {
