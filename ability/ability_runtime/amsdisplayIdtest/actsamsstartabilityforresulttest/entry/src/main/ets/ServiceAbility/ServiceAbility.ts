@@ -38,7 +38,7 @@ export default class ServiceAbility extends ServiceExtension {
                     abilityName: 'com.example.startabilityforresult.MainAbility2'
                 },
                 {
-                    windowMode: 2,
+                    windowMode: 0,
                     displayId: 10,
                 }).then(() => {
                 console.log("====>end startAbility====>success!")
