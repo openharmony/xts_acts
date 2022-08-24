@@ -67,7 +67,7 @@ export default function ContextEnvironmentTest(applicationContext) {
         var code = undefined
         console.info(TAG + "callbackId = " + callbackId + " callNum = " + callNum)
 
-        await sleep(1000)
+        await sleep(700)
         // unregisterEnvironmentCallback
         applicationContext.unregisterEnvironmentCallback(callbackId, (error, data) => {
           console.info(TAG + "unregisterEnvironmentCallback first err is : " + JSON.stringify(error) + ", data is : " + JSON.stringify(data))
@@ -75,7 +75,7 @@ export default function ContextEnvironmentTest(applicationContext) {
 
         })
 
-        await sleep(1000)
+        await sleep(700)
         expect(callbackId).assertEqual(callNum)
         expect(code).assertEqual(0)
         callNum++;
