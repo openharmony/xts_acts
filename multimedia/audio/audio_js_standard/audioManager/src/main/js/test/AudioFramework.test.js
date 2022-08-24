@@ -3150,7 +3150,7 @@ describe('audioManager', function () {
             }
             else {
                 console.log('AudioFrameworkTest: Set Stream Mute: Media: Callback : TRUE');
-                audioManager.getVolume(audioMedia, (err, value) => {
+                audioManager.getVolume(audioMedia, async (err, value) => {
                     if (err) {
                         console.error(`Failed to obtain the volume. ${err.message}`);
                         expect(false).assertTrue();
@@ -3242,7 +3242,7 @@ describe('audioManager', function () {
             }
             else {
                 console.log('AudioFrameworkTest: Set Stream Mute: Ringtone: Callback : SetVolume');
-                audioManager.getVolume(audioRingtone, (err, value) => {
+                audioManager.getVolume(audioRingtone, async (err, value) => {
                     if (err) {
                         console.error(`Failed to obtain the volume. ${err.message}`);
                         expect(false).assertTrue();
@@ -3334,7 +3334,7 @@ describe('audioManager', function () {
             }
             else {
                 console.log('AudioFrameworkTest: Set Stream Mute: VOICE_CALL: Callback : SetVolume');
-                audioManager.getVolume(audio.AudioVolumeType.VOICE_CALL, (err, value) => {
+                audioManager.getVolume(audio.AudioVolumeType.VOICE_CALL, async (err, value) => {
                     if (err) {
                         console.error(`Failed to obtain the volume. ${err.message}`);
                         expect(false).assertTrue();
@@ -3428,26 +3428,28 @@ describe('audioManager', function () {
                 console.log('AudioFrameworkTest: Set Stream Mute: VOICE_ASSISTANT: Callback : SetVolume');
                 await audioManager.getVolume(audio.AudioVolumeType.VOICE_ASSISTANT).then((value) => {
                     if (value == 0) {
-                        await audioManager.setVolume(audio.AudioVolumeType.VOICE_ASSISTANT, lowVol);
-                        audioManager.isMute(audio.AudioVolumeType.VOICE_ASSISTANT, (err, data) => {
-                            if (err) {
-                                console.error(`AudioFrameworkTest: Callback : SetVolume: VOICE_ASSISTANT : failed to get Mute Status ${err.message}`);
-                                expect().assertFail();
-                            }
-                            else if (data == false) {
-                                console.log('AudioFrameworkTest: Callback : Is Stream Mute VOICE_ASSISTANT: SetVolume: PASS: ' + data);
-                                expect(true).assertTrue();
-                            }
-                            else {
-                                console.log('AudioFrameworkTest: Callback : Is Stream Mute VOICE_ASSISTANT: SetVolume: FAIL: ' + data);
-                                expect(false).assertTrue();
-                            }
-                        });
+                        console.info("AudioFrameworkTest: value is " + value);
+                        expect(true).assertTrue();
                     }
                     else {
-                        console.info(`AudioFrameworkTest: mute fail: value ${value}`);
                         expect(false).assertTrue();
                     }
+                });
+                await audioManager.setVolume(audio.AudioVolumeType.VOICE_ASSISTANT, lowVol);
+                audioManager.isMute(audio.AudioVolumeType.VOICE_ASSISTANT, (err, data) => {
+                    if (err) {
+                        console.error(`AudioFrameworkTest: Callback : SetVolume: VOICE_ASSISTANT : failed to get Mute Status ${err.message}`);
+                        expect().assertFail();
+                    }
+                    else if (data == false) {
+                        console.log('AudioFrameworkTest: Callback : Is Stream Mute VOICE_ASSISTANT: SetVolume: PASS: ' + data);
+                        expect(true).assertTrue();
+                    }
+                    else {
+                        console.log('AudioFrameworkTest: Callback : Is Stream Mute VOICE_ASSISTANT: SetVolume: FAIL: ' + data);
+                        expect(false).assertTrue();
+                    }
+                    done();
                 });
             }
             done();
