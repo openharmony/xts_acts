@@ -513,4 +513,83 @@ export default function cameraJSUnitEnum(surfaceId: any) {
     })
     */
   })
+  /**
+      * @tc.number    : SUB_MULTIMEDIA_CAMERAINPUTERRORCODE_0100
+      * @tc.name      : CameraInputErrorCode ENAME
+      * @tc.desc      : CameraInputErrorCode ENAME
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 0
+    */
+   it('SUB_MULTIMEDIA_CAMERAINPUTERRORCODE_0100', 0, async function (done) {
+    console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERAINPUTERRORCODE_0100------------")
+    console.info(TAG + "QualityLevel SUB_MULTIMEDIA_CAMERAINPUTERRORCODE_0100 : " + cameraObj.CameraInputErrorCode.ERROR_UNKNOWN);
+    expect(cameraObj.CameraInputErrorCode.ERROR_UNKNOWN).assertEqual(-1);
+    await sleep(1000);
+    done();
+  })
+  
+  /**
+    * @tc.number    : SUB_MULTIMEDIA_CAPTURESESSIONERRORCODE_0100
+    * @tc.name      : CaptureSessionErrorCode ENAME
+    * @tc.desc      : CaptureSessionErrorCode ENAME
+    * @tc.size      : MEDIUM
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+  */
+   it('SUB_MULTIMEDIA_CAPTURESESSIONERRORCODE_0100', 0, async function (done) {
+    console.info(TAG + "--------------SUB_MULTIMEDIA_CAPTURESESSIONERRORCODE_0100------------")
+    console.info(TAG + "QualityLevel SUB_MULTIMEDIA_CAPTURESESSIONERRORCODE_0100 : " + cameraObj.CaptureSessionErrorCode.ERROR_UNKNOWN);
+    expect(cameraObj.CaptureSessionErrorCode.ERROR_UNKNOWN).assertEqual(-1);
+    await sleep(1000);
+    done();
+  })
+
+  /**
+    * @tc.number    : SUB_MULTIMEDIA_PREVIEWOUTPUTERRORCODE_0100
+    * @tc.name      : PreviewOutputErrorCode ENAME
+    * @tc.desc      : PreviewOutputErrorCode ENAME
+    * @tc.size      : MEDIUM
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+  */
+   it('SUB_MULTIMEDIA_PREVIEWOUTPUTERRORCODE_0100', 0, async function (done) {
+    console.info(TAG + "--------------SUB_MULTIMEDIA_PREVIEWOUTPUTERRORCODE_0100------------")
+    console.info(TAG + "QualityLevel SUB_MULTIMEDIA_PREVIEWOUTPUTERRORCODE_0100 : " + cameraObj.PreviewOutputErrorCode.ERROR_UNKNOWN);
+    expect(cameraObj.PreviewOutputErrorCode.ERROR_UNKNOWN).assertEqual(-1);
+    await sleep(1000);
+    done();
+  })
+
+  /**
+    * @tc.number    : SUB_MULTIMEDIA_PHOTOOUTPUTERRORCODE_0100
+    * @tc.name      : PhotoOutputErrorCode ENAME
+    * @tc.desc      : PhotoOutputErrorCode ENAME
+    * @tc.size      : MEDIUM
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+  */
+   it('SUB_MULTIMEDIA_PHOTOOUTPUTERRORCODE_0100', 0, async function (done) {
+    console.info(TAG + "--------------SUB_MULTIMEDIA_PHOTOOUTPUTERRORCODE_0100------------")
+    console.info(TAG + "QualityLevel SUB_MULTIMEDIA_PHOTOOUTPUTERRORCODE_0100 : " + cameraObj.PhotoOutputErrorCode.ERROR_UNKNOWN);
+    expect(cameraObj.PhotoOutputErrorCode.ERROR_UNKNOWN).assertEqual(-1);
+    await sleep(1000);
+    done();
+  })
+
+  /**
+    * @tc.number    : SUB_MULTIMEDIA_VIDEOOUTPUTERRORCODE_0100
+    * @tc.name      : VideoOutputErrorCode ENAME
+    * @tc.desc      : VideoOutputErrorCode ENAME
+    * @tc.size      : MEDIUM
+    * @tc.type      : Function
+    * @tc.level     : Level 0
+  */
+   it('SUB_MULTIMEDIA_VIDEOOUTPUTERRORCODE_0100', 0, async function (done) {
+    console.info(TAG + "--------------SUB_MULTIMEDIA_VIDEOOUTPUTERRORCODE_0100------------")
+    console.info(TAG + "QualityLevel SUB_MULTIMEDIA_VIDEOOUTPUTERRORCODE_0100 : " + cameraObj.VideoOutputErrorCode.ERROR_UNKNOWN);
+    expect(cameraObj.VideoOutputErrorCode.ERROR_UNKNOWN).assertEqual(-1);
+    await sleep(1000);
+    done();
+  })
 }
