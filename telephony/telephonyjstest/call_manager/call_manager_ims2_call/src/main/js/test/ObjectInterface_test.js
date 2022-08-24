@@ -1853,7 +1853,6 @@ export default function ObjectInterfaceTest() {
                        }]
       }, (err) => {
         if (err) {
-          console.info('updateContact callback: err->${JSON.stringify(err)}');
           expect(true).assertTrue();
           done();
           return;
@@ -1881,7 +1880,6 @@ export default function ObjectInterfaceTest() {
         attributes: ['ATTR_EMAIL', 'ATTR_NAME']
       }, (err) => {
         if (err) {
-          console.info('updateContact callback: err->${JSON.stringify(err)}');
           expect(true).assertTrue();
           done();
           return;
