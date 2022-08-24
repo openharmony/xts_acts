@@ -30,8 +30,8 @@ export default function OnAndOffScreenTest() {
     async function slideScreen(TAG) {
       console.log(TAG + "slideScreen start");
       var driver = UiDriver.create();
-      await driver.swipe(100, 100, 500, 500);
-      driver.delayMs(500);
+      await driver.swipe(1000, 3000, 1000, 500, 1200);
+      await driver.delayMs(500);
       console.log(TAG + "slideScreen end");
     }
 
@@ -70,9 +70,9 @@ export default function OnAndOffScreenTest() {
     afterEach(async (done) => {
       console.log(TAG1 + "afterEach called");
       let cmd1 = "aa force-stop ohos.acts.aafwk.test.faonandoffscreen";
-      await executeShellCommand(cmd1, TAG);
+      await executeShellCommand(cmd1, TAG1);
       let cmd2 = "aa force-stop ohos.acts.aafwk.test.stageonandoffscreen";
-      await executeShellCommand(cmd2, TAG);
+      await executeShellCommand(cmd2, TAG1);
 
       setTimeout(() => {
         console.log(TAG1 + "afterEach end");

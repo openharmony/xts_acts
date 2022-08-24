@@ -12,12 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import abilityIsTerminatingTest from './AbilityIsTerminating.test';
-import faSetDisplayOrientation from './FaSetDisplayOrientation.test';
-import faShowOnLock from './FaShowOnLock.test';
+import AbilityStage from "@ohos.application.AbilityStage";
 
-export default function testsuite() {
-  abilityIsTerminatingTest();
-  faSetDisplayOrientation();
-  faShowOnLock();
+var TAG0 = 'ActsOnAndOffScreenTest:MyAbilityStage:';
+export default class MyAbilityStage extends AbilityStage {
+    onCreate() {
+        console.log(TAG0 + "onCreate")
+    }
 }
