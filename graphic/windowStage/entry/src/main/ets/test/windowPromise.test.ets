@@ -1464,12 +1464,12 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       controller.animationForShown = (context: ohosWindow.TransitionContext) => {
         let toWindow = context.toWindow
         animateTo({
-          duration: 1000, // 动画时长
-          tempo: 0.5, // 播放速率
-          curve: Curve.EaseInOut, // 动画曲线
-          delay: 0, // 动画延迟
-          iterations: 1, // 播放次数
-          playMode: PlayMode.Normal, // 动画模式
+          duration: 1000,
+          tempo: 0.5,
+          curve: Curve.EaseInOut,
+          delay: 0,
+          iterations: 1,
+          playMode: PlayMode.Normal,
         }, () => {
           var obj: ohosWindow.TranslateOptions;
           obj.x = 100.0;
