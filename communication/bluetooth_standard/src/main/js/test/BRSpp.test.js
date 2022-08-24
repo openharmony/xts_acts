@@ -79,9 +79,10 @@ describe('bluetoothhostTest4', function() {
             secure: true, type: SppType.SPP_RFCOMM};
         let serverNumber = -1;
         function serverSocket(code, number) {
-            console.log('bluetooth error code: ' + code.code);
-            if (code.code == 0) {
-                console.log('bluetooth serverSocket Number: ' + number);
+            if (code) {
+                console.log('bluetooth error code: ' + code);               
+            }else{
+                console.log('bluetooth serverSocket Number:' + JSON.stringify(number));
                 serverNumber = number;
                 expect(true).assertEqual(number!=null);
             }
@@ -103,11 +104,12 @@ describe('bluetoothhostTest4', function() {
             secure: false, type: 0};
         let serverNumber = -1;
         function serverSocket(code, number) {
-            console.log('[bluetooth_js] error code: ' + code.code);
-            if (code.code == 0) {
-              console.log('[bluetooth_js] serverSocket Number: ' + number);
-              serverNumber = number;
-              expect(true).assertEqual(number!=null);
+            if (code) {
+                console.log('[bluetooth_js] error code: ' + code);
+             }else{
+                console.log('[bluetooth_js] serverSocket Number: ' + JSON.stringify(number));
+                serverNumber = number;
+                expect(true).assertEqual(number!=null);
              }
         }
         bluetooth.sppListen('server1', sppOption, serverSocket);
@@ -127,12 +129,15 @@ describe('bluetoothhostTest4', function() {
             secure: true, type: 0};
         let serverNumber = -1;
         function serverSocket(code, number) {
-            console.log('[bluetooth_js] error code: ' + code.code);
-            if (code.code == 0) {
-              console.log('[bluetooth_js] serverSocket Number: ' + number);
-              serverNumber = number;
-              expect(true).assertEqual(number!=null);
-             }
+            
+            if (code) {
+                console.log('[bluetooth_js] error code: ' + code);
+             
+            }else{
+                console.log('[bluetooth_js] serverSocket Number: '+JSON.stringify(number));
+                serverNumber = number;
+                expect(true).assertEqual(serverNumber!=null);
+            }
         }
         bluetooth.sppListen('server1', sppOption, serverSocket);
         done();
@@ -151,11 +156,14 @@ describe('bluetoothhostTest4', function() {
             secure: false, type: 0};
         let serverNumber = -1;
         function serverSocket(code, number) {
-            console.log('[bluetooth_js] error code: ' + code.code);
-            if (code.code == 0) {
-              console.log('[bluetooth_js] serverSocket Number: ' + number);
-              serverNumber = number;
-              expect(true).assertEqual(number!=null);
+            
+            if (code) {
+                console.log('[bluetooth_js] error code: ' + code);
+              
+             }else{
+                console.log('[bluetooth_js] serverSocket Number:'+ JSON.stringify(number));
+                serverNumber = number;
+                expect(true).assertEqual(serverNumber!=null);
              }
         }
         bluetooth.sppListen('server1', sppOption, serverSocket);
@@ -172,11 +180,13 @@ describe('bluetoothhostTest4', function() {
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BR_SPP_0500', 0, async function (done) {
         function acceptClientSocket(code, number) {
-            console.log('[bluetooth_js] error code: ' + code.code);
-            if (code.code == 0) {
-             console.log('[bluetooth_js] clientSocket Number: ' + number);
-             expect(true).assertEqual(number!=null);
-         }
+            
+            if (code) {
+                console.log('[bluetooth_js] error code: ' + code);
+            }else{
+                console.log('[bluetooth_js] clientSocket Number:' + JSON.stringify(number));
+                expect(true).assertEqual(number!=null);
+            }
         }
         bluetooth.sppAccept(0, acceptClientSocket);
         done();
@@ -191,13 +201,13 @@ describe('bluetoothhostTest4', function() {
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BR_SPP_0600', 0, async function (done) {
-        bluetooth.sppAccept(-1, function(code, clientSocketNumber) {
-            console.info('[bluetooth_js] code is: ' + code.code);
-            if (code.code == 0) {
-                console.log('[bluetooth_js]sppAccept Number:' + clientSocketNumber);
-                expect(true).assertEqual(clientSocketNumber!=null);
+        bluetooth.sppAccept(-1, function(code, clientSocketNumber) {           
+            if (code) {
+                console.info('[bluetooth_js] code is: ' + code);
             } else {
-                expect(true).assertEqual(false);
+                console.log('[bluetooth_js]sppAccept Number:' 
+                            + JSON.stringify(clientSocketNumber));
+                expect(true).assertEqual(clientSocketNumber!=null);
             }
         });
         done();
@@ -215,12 +225,12 @@ describe('bluetoothhostTest4', function() {
         let sppOption = {uuid: '00001810-0000-1000-8000-00805F9B34FB',
             secure: true, type: 0};
         bluetooth.sppConnect('00:11:22:33:44:55', sppOption, function(code, clientSocketNumber) {
-            console.info('[bluetooth_js] code is: ' + code.code);
-            if (code.code == 0) {
-                console.log('[bluetooth_js]sppConnect Number:' + clientSocketNumber);
-                expect(true).assertEqual(clientSocketNumber!=null);
+            if (code) {
+                console.info('[bluetooth_js] code is: ' + code);
             } else {
-                expect(true).assertEqual(false);
+                console.log('[bluetooth_js]sppConnect Number:'
+                    + JSON.stringify(clientSocketNumber));
+                expect(true).assertEqual(clientSocketNumber!=null);
             }
         });
         done();
@@ -238,12 +248,12 @@ describe('bluetoothhostTest4', function() {
         let sppOption = {uuid: '0000',
             secure: false, type: 0};
         bluetooth.sppConnect('ABC', sppOption, function(code, clientSocketNumber) {
-            console.info('[bluetooth_js] code is: ' + code.code);
-            if (code.code == 0) {
-                console.log('[bluetooth_js]sppConnect Number' + clientSocketNumber);
-                expect(true).assertEqual(clientSocketNumber!=null);
+            if (code) {
+                console.info('[bluetooth_js] code is: ' + code);
             } else {
-                expect(true).assertEqual(false);
+                console.log('[bluetooth_js]sppConnect Number' 
+                    + JSON.stringify(clientSocketNumber));
+                expect(true).assertEqual(clientSocketNumber!=null);
             }
         });
         done();
@@ -261,12 +271,12 @@ describe('bluetoothhostTest4', function() {
         let sppOption = {uuid: '00001810-0000-1000-8000-00805F9B34FB',
             secure: true, type: 0};
         bluetooth.sppConnect('BT', sppOption, function(code, clientSocketNumber) {
-            console.info('[bluetooth_js] code is: ' + code.code);
-            if (code.code == 0) {
-                console.log('[bluetooth_js]sppConnect Number' + clientSocketNumber);
-                expect(true).assertEqual(clientSocketNumber!=null);
+            if (code) {
+                console.info('[bluetooth_js] code is: ' + code);
             } else {
-                expect(true).assertEqual(false);
+                console.log('[bluetooth_js]sppConnect Number' 
+                    + JSON.stringify(clientSocketNumber));
+                expect(true).assertEqual(clientSocketNumber!=null);
             }
         });
         done();
@@ -283,11 +293,14 @@ describe('bluetoothhostTest4', function() {
     it('SUB_COMMUNICATION_BLUETOOTH_BR_SPP_1000', 0, async function (done) {
         let serverNumber = -1;
         function serverSocket(code, number) {
-            console.log('bluetooth error code: ' + code.code);
-            if (code.code == 0) {
-                console.log('bluetooth serverSocket Number: ' + number);
+            if (code) {
+                console.log('bluetooth error code: ' + code);
+            }else{
+                console.log('bluetooth serverSocket Number:'+ JSON.stringify(number));
                 serverNumber = number;
+                expect(true).assertEqual(serverNumber!=null);
             }
+
         }
         let SppOption = {uuid: '00001810-0000-1000-8000-00805F9B34FB',
             secure: true, type: 0};
@@ -307,13 +320,13 @@ describe('bluetoothhostTest4', function() {
      it('SUB_COMMUNICATION_BLUETOOTH_BR_SPP_1100', 0, async function (done) {
         let clientNumber = -1;
         bluetooth.sppAccept(-1, function(code, clientSocketNumber) {
-            console.info('[bluetooth_js] code is: ' + code.code);
-            if (code.code == 0) {
-                console.log('[bluetooth_js]sppAccept Number:' + clientSocketNumber);
+            if (code) {
+                console.info('[bluetooth_js] code is: ' + code);
+            } else {
+                console.log('[bluetooth_js]sppAccept Number:' 
+                    + JSON.stringify(clientSocketNumber));
                 clientNumber =clientSocketNumber;
                 expect(true).assertEqual(clientSocketNumber!=null);
-            } else {
-                expect(true).assertEqual(false);
             }
         });
         bluetooth.sppCloseClientSocket(clientNumber);
@@ -331,13 +344,13 @@ describe('bluetoothhostTest4', function() {
     it('SUB_COMMUNICATION_BLUETOOTH_BR_SPP_1200', 0, async function (done) {
         let clientNumber = -1;
         bluetooth.sppAccept(-1, function(code, clientSocketNumber) {
-            console.info('[bluetooth_js] code is: ' + code.code);
-            if (code.code == 0) {
-                console.log('[bluetooth_js]sppAccept Number:' + clientSocketNumber);
+            if (code) {
+                console.info('[bluetooth_js] code is: ' + code);
+            } else {
+                console.log('[bluetooth_js]sppAccept Number:' 
+                    + JSON.stringify(clientSocketNumber));
                 clientNumber =clientSocketNumber;
                 expect(true).assertEqual(clientSocketNumber!=null);
-            } else {
-                expect(true).assertEqual(false);
             }
         });
         let arrayBuffer = new ArrayBuffer(8);
