@@ -12,12 +12,11 @@
 # limitations under the License.
 import("//test/xts/tools/build/suite.gni")
 
-ohos_hap("ActsAccountSceneOnOff") {
+ohos_hap_assist_suite("ActsAccountSceneOnOff") {
   hap_profile = "./entry/src/main/config.json"
   hap_name = "ActsAccountSceneOnOff"
-  subsystem_name = XTS_SUITENAME
-  final_hap_path =
-      "${SUITES_OUTPUT_ROOT}/${XTS_SUITENAME}/testcases/${hap_name}.hap"
+  subsystem_name = "account"
+  part_name = "os_account"
   testonly = true
   deps = [
     ":hjs_demo_js_assets",

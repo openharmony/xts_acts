@@ -13,26 +13,19 @@
  * limitations under the License.
  */
 
-import app from '@system.app'
 import thermal from "@ohos.thermal"
-import ThermalLevel from "@ohos.thermal"
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, it, expect } from '@ohos/hypium'
 const MSEC_1000 = 1000;
 
-export default function appInfoTest_thermal_1() {
-describe('appInfoTest_thermal_1', function () {
+export default function ThermalUnitTest() {
+describe('ThermalUnitTest', function () {
     console.log("*************Thermal API Test Begin*************");
-    test14();
-    test15();
-})
 
-function test14() {
-
-    /* @tc.number USB_PowerSystem_ThermalManager_JSTest_0010
-     * @tc.name Thermal_014
+    /* @tc.number SUB_PowerSystem_ThermalManager_JSTest_0010
+     * @tc.name Get_Thermal_Level_JSTest0010
      * @tc.desc Thermal acquisition kit
      */
-    it('Thermal_014', 0, async function (done) {
+    it('Get_Thermal_Level_JSTest0010', 0, async function (done) {
         console.info("enter");
         await new Promise((resolve, reject) => {
             setTimeout(() => {
@@ -44,15 +37,12 @@ function test14() {
             }, MSEC_1000 * 4);
         })
     })
-}
 
-function test15() {
-
-    /* @tc.number USB_PowerSystem_ThermalManager_JSTest_0020
-     * @tc.name Thermal_015
+    /* @tc.number SUB_PowerSystem_ThermalManager_JSTest_0020
+     * @tc.name SubscribeAndUnsubscribe_Thermal_Level_JSTest0020
      * @tc.desc Thermal acquisition kit
      */
-    it('Thermal_015', 0, async function (done) {
+    it('SubscribeAndUnsubscribe_Thermal_Level_JSTest0020', 0, async function (done) {
         thermal.subscribeThermalLevel((level) => {
             console.info("level is: " + level);
               expect(level >= 0 && level <= 6).assertTrue();
@@ -67,4 +57,82 @@ function test15() {
             }, MSEC_1000 * 4);
         })
     })
-}}
+
+    /**
+     * @tc.number SUB_PowerSystem_ThermalManager_JSTest_0030
+     * @tc.name Get_Thermal_Level_Cool_JSTest0030
+     * @tc.desc Get device thermalLevel COOL
+     */
+    it('Get_Thermal_Level_Cool_JSTest0030', 0, function () {
+        let thermalLevel = thermal.ThermalLevel.COOL;
+        console.info('ThermalLevel.COOL = ' + thermalLevel);
+        expect(thermalLevel === 0).assertTrue();
+    })
+
+    /**
+     * @tc.number SUB_PowerSystem_ThermalManager_JSTest_0040
+     * @tc.name Get_Thermal_Level_Normal_JSTest0040
+     * @tc.desc Get device thermalLevel NORMAL
+     */
+    it('Get_Thermal_Level_Normal_JSTest0040', 0, function () {
+        let thermalLevel = thermal.ThermalLevel.NORMAL;
+        console.info('ThermalLevel.NORMAL = ' + thermalLevel);
+        expect(thermalLevel === 1).assertTrue();
+    })
+
+    /**
+     * @tc.number SUB_PowerSystem_ThermalManager_JSTest_0050
+     * @tc.name Get_Thermal_Level_Warm_JSTest0050
+     * @tc.desc Get device thermalLevel WARM
+     */
+    it('Get_Thermal_Level_Warm_JSTest0050', 0, function () {
+        let thermalLevel = thermal.ThermalLevel.WARM;
+        console.info('ThermalLevel.WARM = ' + thermalLevel);
+        expect(thermalLevel === 2).assertTrue();
+    })
+
+    /**
+     * @tc.number SUB_PowerSystem_ThermalManager_JSTest_0060
+     * @tc.name Get_Thermal_Level_Hot_JSTest0060
+     * @tc.desc Get device thermalLevel HOT
+     */
+    it('Get_Thermal_Level_Hot_JSTest0060', 0, function () {
+        let thermalLevel = thermal.ThermalLevel.HOT;
+        console.info('ThermalLevel.HOT = ' + thermalLevel);
+        expect(thermalLevel === 3).assertTrue();
+    })
+
+    /**
+     * @tc.number SUB_PowerSystem_ThermalManager_JSTest_0070
+     * @tc.name Get_Thermal_Level_OverHeated_JSTest0070
+     * @tc.desc Get device thermalLevel OVERHEATED
+     */
+    it('Get_Thermal_Level_OverHeated_JSTest0070', 0, function () {
+        let thermalLevel = thermal.ThermalLevel.OVERHEATED;
+        console.info('ThermalLevel.OVERHEATED = ' + thermalLevel);
+        expect(thermalLevel === 4).assertTrue();
+    })
+
+    /**
+     * @tc.number SUB_PowerSystem_ThermalManager_JSTest_0080
+     * @tc.name Get_Thermal_Level_Warning_JSTest0080
+     * @tc.desc Get device thermalLevel WARNING
+     */
+    it('Get_Thermal_Level_Warning_JSTest0080', 0, function () {
+        let thermalLevel = thermal.ThermalLevel.WARNING;
+        console.info('ThermalLevel.WARNING = ' + thermalLevel);
+        expect(thermalLevel === 5).assertTrue();
+    })
+
+    /**
+     * @tc.number SUB_PowerSystem_ThermalManager_JSTest_0090
+     * @tc.name Get_Thermal_Level_Emergency_JSTest0090
+     * @tc.desc Get device thermalLevel EMERGENCY
+     */
+    it('Get_Thermal_Level_Emergency_JSTest0090', 0, function () {
+        let thermalLevel = thermal.ThermalLevel.EMERGENCY;
+        console.info('ThermalLevel.EMERGENCY = ' + thermalLevel);
+        expect(thermalLevel === 6).assertTrue();
+    })
+})
+}

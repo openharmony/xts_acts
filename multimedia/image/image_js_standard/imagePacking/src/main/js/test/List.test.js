@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import Image_test from './packing.test.js'
+import imagePacking from './packing.test.js'
 export default function testsuite() {
-    Image_test()
+    imagePacking()
 }

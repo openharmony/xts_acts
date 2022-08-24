@@ -21,6 +21,8 @@ ohos_js_hap_suite("startup_deviceinfo_js_test") {
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsStartupSysDeviceInfoTest"
+  subsystem_name = "startup"
+  part_name = "startup_l2"
 }
 ohos_js_assets("startup_js_assets") {
   js2abc = true

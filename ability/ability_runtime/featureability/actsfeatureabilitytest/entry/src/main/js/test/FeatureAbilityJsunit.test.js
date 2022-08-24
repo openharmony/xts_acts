@@ -14,7 +14,7 @@
  */
 import featureAbility from '@ohos.ability.featureAbility'
 import wantconstant from '@ohos.ability.wantConstant'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import commonEvent from '@ohos.commonEvent'
 import particleAbility from '@ohos.ability.particleAbility'
 import backgroundTaskManager from '@ohos.backgroundTaskManager'
@@ -57,7 +57,7 @@ let subscriberInfoActsGetCallingBundle0100 = {
 function sleep(time) {
     return new Promise((resolve)=>setTimeout(resolve,time));
 }
-
+export default function actsFeatureAbilityTest() {
 describe('ActsFeatureAbilityTest', function () {
 
     beforeAll(function() {
@@ -327,13 +327,13 @@ describe('ActsFeatureAbilityTest', function () {
 
         function SubscribeCallBack(err, data) {
             clearTimeout(id);
+            expect(promise).assertEqual(0);
             expect(data.event).assertEqual("ACTS_StartAbility_0200_CommonEvent");
             console.debug("====>Subscribe CallBack data:====>" + JSON.stringify(data));
             commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
-            done();
         }
 
-        commonEvent.createSubscriber(subscriberInfoActsStartAbility0200).then(async (data) => {
+        await commonEvent.createSubscriber(subscriberInfoActsStartAbility0200).then(async (data) => {
             console.debug("====>Create Subscriber====>");
             Subscriber = data;
             await commonEvent.subscribe(Subscriber, SubscribeCallBack);
@@ -407,7 +407,6 @@ describe('ActsFeatureAbilityTest', function () {
                 },
             }
         );
-        expect(promise).assertEqual(0);
     })
 
     /**
@@ -687,7 +686,6 @@ describe('ActsFeatureAbilityTest', function () {
             expect(data.event).assertEqual("ACTS_StartAbility_0600_CommonEvent");
             console.debug("====>Subscribe CallBack data:====>" + JSON.stringify(data));
             commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
-            done();
         }
 
         commonEvent.createSubscriber(subscriberInfoActsStartAbility0600).then(async (data) => {
@@ -849,7 +847,7 @@ describe('ActsFeatureAbilityTest', function () {
         //            expect(info.labelId).assertEqual(0);  //create by DevEco when building HAP.
         expect(info.icon).assertEqual("$media:icon");
         //            expect(info.iconId).assertEqual(0);   //create by DevEco when building HAP.
-        expect(info.process).assertEqual("processTest");
+        expect(info.process).assertEqual("processTestAbility");
         expect(info.supportedModes).assertEqual(0);
         expect(info.moduleSourceDirs[0]).assertEqual("/data/app/el1/bundle/public/" +
             "com.example.actsfeatureabilitytest/com.example.actsfeatureabilitytest");
@@ -966,7 +964,7 @@ describe('ActsFeatureAbilityTest', function () {
 
         expect(info.deviceId).assertEqual("");
         expect(info.bundleName).assertEqual("com.example.actsfeatureabilitytest");
-        expect(info.abilityName).assertEqual("com.example.actsfeatureabilitytest.MainAbility");
+        expect(info.abilityName).assertEqual("com.example.actsfeatureabilitytest.TestAbility");
         expect(info.uri).assertEqual("");
         expect(info.shortName).assertEqual("");
         console.info("getElementName : end");
@@ -1096,9 +1094,9 @@ describe('ActsFeatureAbilityTest', function () {
 
 
         expect(data.bundleName).assertEqual("com.example.actsfeatureabilitytest");
-        expect(data.name).assertEqual("com.example.actsfeatureabilitytest.MainAbility");
-        expect(data.label).assertEqual("$string:app_name");
-        expect(data.description).assertEqual("$string:mainability_description");
+        expect(data.name).assertEqual("com.example.actsfeatureabilitytest.TestAbility");
+        expect(data.label).assertEqual("$string:TestAbility_label");
+        expect(data.description).assertEqual("$string:TestAbility_desc");
         expect(data.icon).assertEqual("$media:icon");
 
         expect(data.moduleName).assertEqual("entry");
@@ -1185,20 +1183,20 @@ describe('ActsFeatureAbilityTest', function () {
         expect(typeof (data.moduleName)).assertEqual("string");
         expect(typeof (data.mainAbilityName)).assertEqual("string");
         expect(typeof (data.installationFree)).assertEqual("boolean");
-        expect(data.name).assertEqual("com.example.actsfeatureabilitytest");
+        expect(data.name).assertEqual("com.example.actsfeatureabilitytest.MyApplication");
         expect(data.description).assertEqual("descriptionTest");
         expect(data.descriptionId).assertEqual(0);
         expect(data.icon).assertEqual("$media:icon");
         expect(data.label).assertEqual("$string:app_name");
-        expect(data.labelId).assertEqual(0);
-        expect(data.iconId).assertEqual(0);
+        expect(data.labelId).assertEqual(16777218);
+        expect(data.iconId).assertEqual(16777221);
         expect(data.backgroundImg).assertEqual("");
         expect(data.supportedModes).assertEqual(0);
         expect(data.reqCapabilities[0]).assertEqual("reqCapabilitiesTest1");
         expect(data.reqCapabilities[1]).assertEqual("reqCapabilitiesTest2");
         expect(data.deviceTypes[0]).assertEqual("phone");
         expect(data.moduleName).assertEqual("entry")
-        expect(data.mainAbilityName).assertEqual("");
+        expect(data.mainAbilityName).assertEqual("com.example.actsfeatureabilitytest.MainAbility");
         expect(data.installationFree).assertEqual(false);
         console.info("checkHapModuleInfo end  " + data);
     }
@@ -1578,7 +1576,6 @@ describe('ActsFeatureAbilityTest', function () {
                 expect(data.event).assertEqual("ACTS_StartAbility_1300_CommonEvent");
                 console.debug("====>Subscribe CallBack data:====>" + JSON.stringify(data));
                 commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
-                done();
             }
 
             commonEvent.createSubscriber(subscriberInfoStartAbilityThirteen).then(async (data) => {
@@ -1734,3 +1731,4 @@ describe('ActsFeatureAbilityTest', function () {
         }
     });
 })
+}

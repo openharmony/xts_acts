@@ -13,12 +13,14 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-module_output_path = "hit/GraphicNapiDrawingTest"
+module_output_path = "hit/ActsGraphicNapiDrawingTest"
 
 ###############################################################################
 
-ohos_moduletest_suite("GraphicNapiDrawingTest") {
+ohos_moduletest_suite("ActsGraphicNapiDrawingTest") {
   module_out_path = module_output_path
+  subsystem_name = "graphic"
+  part_name = "graphic_standard"
 
   sources = [
     "NativeDrawingBitmapTest.cpp",
@@ -45,8 +47,8 @@ ohos_moduletest_suite("GraphicNapiDrawingTest") {
 
   deps = [
     "//base/hiviewdfx/hilog/interfaces/native/innerkits:libhilog",
+    "//commonlibrary/c_utils/base:utils",
     "//foundation/graphic/graphic_2d/rosen/modules/2d_graphics:2d_graphics",
     "//third_party/googletest:gtest_main",
-    "//utils/native/base:utils",
   ]
 }

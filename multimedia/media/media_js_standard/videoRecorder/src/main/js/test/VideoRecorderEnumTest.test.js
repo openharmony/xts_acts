@@ -34,42 +34,42 @@ describe('VideoRecorderEnumTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_ENUM_AUDIO_SOURCE_TYPE_00_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_ENUM_AUDIO_SOURCE_TYPE_0100
         * @tc.name      : AudioSourceType
         * @tc.desc      : AudioSourceType Enumeration test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_ENUM_AUDIO_SOURCE_TYPE_00_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_ENUM_AUDIO_SOURCE_TYPE_0100', 0, async function (done) {
         expect(media.AudioSourceType.AUDIO_SOURCE_TYPE_DEFAULT).assertEqual(0);
         expect(media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC).assertEqual(1);
         done();
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_RECORDER_ENUM_VIDEO_SOURCE_TYPE_00_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_ENUM_VIDEO_SOURCE_TYPE_0100
         * @tc.name      : VideoSourceType
         * @tc.desc      : VideoSourceType Enumeration test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_RECORDER_ENUM_VIDEO_SOURCE_TYPE_00_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_RECORDER_ENUM_VIDEO_SOURCE_TYPE_0100', 0, async function (done) {
         expect(media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_YUV).assertEqual(0);
         expect(media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_ES).assertEqual(1);
         done();
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_DECODER_ENUM_CodecMimeType_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_DECODER_ENUM_CodecMimeType_0100
         * @tc.name      : CodecMimeType
         * @tc.desc      : Test Enumerate CodecMimeType
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_DECODER_ENUM_CodecMimeType_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_DECODER_ENUM_CodecMimeType_0100', 0, async function (done) {
         expect(media.CodecMimeType.VIDEO_H263).assertEqual('video/h263');
         expect(media.CodecMimeType.VIDEO_AVC).assertEqual('video/avc');
         expect(media.CodecMimeType.VIDEO_MPEG2).assertEqual('video/mpeg2');

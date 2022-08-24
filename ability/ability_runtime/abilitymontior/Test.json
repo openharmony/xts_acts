@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "AbilityMonitorTest.hap"
+                "ActsAbilityMonitorTest.hap"
             ],
             "type": "AppInstallKit",
             "run-command": [

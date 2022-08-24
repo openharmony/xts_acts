@@ -14,7 +14,7 @@
  */
 
 import featureAbility from '@ohos.ability.featureAbility'
-import {describe, beforeEach, afterEach, it, expect} from 'hypium/index';
+import {describe, beforeEach, afterEach, it, expect} from '@ohos/hypium';
 import Utils from './Utils';
 
 export default function ContextJsunit() {

@@ -17,7 +17,7 @@
     "package": "com.example.myapplication",
     "name": ".MyApplication",
     "deviceType": [
-      "phone"
+      "default"
     ],
     "distro": {
       "deliveryWithInstall": true,
@@ -44,6 +44,7 @@
         "type": "page",
         "isVisible": "true",
         "launchType": "standard",
+        "orientation": "followrecent",
         "language": "C++"
       }
     ],

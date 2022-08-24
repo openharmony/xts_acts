@@ -13,12 +13,10 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_hap("ActsKillProcessWithAccountRelyHap") {
+ohos_hap_assist_suite("ActsKillProcessWithAccountRelyHap") {
   hap_profile = "entry/src/main/module.json"
   hap_name = "ActsKillProcessWithAccountRelyHap"
-  subsystem_name = XTS_SUITENAME
-  final_hap_path =
-      "${SUITES_OUTPUT_ROOT}/${XTS_SUITENAME}/testcases/${hap_name}.hap"
+
   testonly = true
   deps = [
     ":actskillprocesswithaccountrelyhap_js_assets",
@@ -26,6 +24,8 @@ ohos_hap("ActsKillProcessWithAccountRelyHap") {
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
+  subsystem_name = "ability"
+  part_name = "ability_runtime"
 }
 
 ohos_app_scope("actskillprocesswithaccountrelyhap_app_profile") {

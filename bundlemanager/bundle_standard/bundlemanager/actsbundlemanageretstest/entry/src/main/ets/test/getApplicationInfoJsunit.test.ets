@@ -416,6 +416,7 @@ export default function applicationBundleJsunit() {
                 expect(applicationInfo.descriptionResource.bundleName).assertEqual('com.open.harmony.packagemag')
                 expect(applicationInfo.descriptionResource.moduleName).assertEqual('entry')
                 expect(applicationInfo.descriptionResource.id).assertLarger(0)
+                expect(applicationInfo.appProvisionType).assertEqual('release')
                 done();
             }).catch((err) => {
                 expect(err).assertFail();
@@ -432,8 +433,12 @@ export default function applicationBundleJsunit() {
             expect(typeof (data.descriptionId)).assertEqual('number');
             expect(typeof (data.icon)).assertEqual('string');
             expect(typeof (data.iconId)).assertEqual('number');
+            expect(typeof (data.iconIndex)).assertEqual('number');
+            expect(data.iconIndex).assertEqual(data.iconId);
             expect(typeof (data.label)).assertEqual('string');
             expect(typeof (data.labelId)).assertEqual('number');
+            expect(typeof (data.labelIndex)).assertEqual('number');
+            expect(data.labelIndex).assertEqual(data.labelId);
             expect(typeof (data.systemApp)).assertEqual('boolean')
             expect(typeof (data.supportedModes)).assertEqual('number');
             expect(typeof (data.process)).assertEqual('string');
@@ -458,10 +463,14 @@ export default function applicationBundleJsunit() {
             expect(data.descriptionId > 0).assertEqual(true);
             expect(data.icon).assertEqual('$media:icon');
             expect(data.iconId > 0).assertEqual(true);
+            expect(data.iconIndex > 0).assertEqual(true);
+            expect(data.iconIndex).assertEqual(data.iconId);
             expect(data.uid > 0).assertEqual(true);
             expect(data.label).assertEqual('$string:entry_MainAbility');
             expect(data.labelId > 0).assertEqual(true);
-            expect(data.systemApp).assertEqual(true);
+            expect(data.labelIndex > 0).assertEqual(true);
+            expect(data.labelIndex).assertEqual(data.labelId);
+            expect(data.systemApp).assertEqual(false);
             expect(data.supportedModes).assertEqual(0);
             expect(data.process).assertEqual(BUNDLE_NAME);
             expect(data.entryDir).assertEqual(PATH + '/' + BUNDLE_NAME + '/' + BUNDLE_NAME);
@@ -471,9 +480,9 @@ export default function applicationBundleJsunit() {
             expect(data.moduleInfos[0].moduleName).assertEqual('entry');
             expect(data.moduleInfos[0].moduleSourceDir).assertEqual(PATH + '/' + BUNDLE_NAME + '/' + BUNDLE_NAME);
             expect(data.moduleSourceDirs[0]).assertEqual(PATH + '/' + BUNDLE_NAME + '/' + BUNDLE_NAME);
-            expect(data.permissions[0]).assertEqual("ohos.permission.CHANGE_ABILITY_ENABLED_STATE");
-            expect(data.permissions[1]).assertEqual("ohos.permission.GET_BUNDLE_INFO");
-            expect(data.permissions[2]).assertEqual("ohos.permission.GET_BUNDLE_INFO_PRIVILEGED");
+            expect(data.permissions[0]).assertEqual("ohos.permission.GET_BUNDLE_INFO");
+            expect(data.permissions[1]).assertEqual("ohos.permission.GET_BUNDLE_INFO_PRIVILEGED");
+            expect(data.permissions[2]).assertEqual("ohos.permission.USE_BLUETOOTH");
             console.log(msg + ' end  ' + JSON.stringify(data));
         }
 
@@ -485,9 +494,13 @@ export default function applicationBundleJsunit() {
             expect(data.descriptionId).assertLarger(0);
             expect(data.icon).assertEqual('$media:icon');
             expect(data.iconId).assertLarger(0);
+            expect(data.iconIndex).assertLarger(0);
+            expect(data.iconIndex).assertEqual(data.iconId);
             expect(data.label).assertEqual('$string:entry_MainAbility');
             expect(data.labelId).assertLarger(0);
-            expect(data.systemApp).assertTrue();
+            expect(data.labelIndex).assertLarger(0);
+            expect(data.labelIndex).assertEqual(data.labelId);
+            expect(data.systemApp).assertFalse();
             expect(data.supportedModes).assertEqual(0);
             expect(data.process).assertEqual(BUNDLE_NAME);
             expect(data.entryDir).assertEqual(PATH + '/' + BUNDLE_NAME + '/' + BUNDLE_NAME);
@@ -516,8 +529,12 @@ export default function applicationBundleJsunit() {
           expect(data.descriptionId).assertLarger(0);
           expect(data.icon).assertEqual('$media:icon');
           expect(data.iconId).assertLarger(0);
+          expect(data.iconIndex).assertLarger(0);
+          expect(data.iconIndex).assertEqual(data.iconId);
           expect(data.label).assertEqual('$string:app_name');
           expect(data.labelId).assertLarger(0);
+          expect(data.labelIndex).assertLarger(0);
+          expect(data.labelIndex).assertEqual(data.labelId);
           expect(data.systemApp).assertFalse();
           expect(data.supportedModes).assertEqual(0);
           expect(data.process).assertEqual(BUNDLE_OTHER);

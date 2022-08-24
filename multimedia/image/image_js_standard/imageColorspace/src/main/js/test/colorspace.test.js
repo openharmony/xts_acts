@@ -17,8 +17,8 @@ import image from '@ohos.multimedia.image'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import { iccbuf } from './testImg2'
 
-export default function Image_test() {
-describe('Image_test', function () {
+export default function imageColorSpace() {
+describe('imageColorSpace', function () {
     beforeAll(async function () {
         console.info('beforeAll case');
     })

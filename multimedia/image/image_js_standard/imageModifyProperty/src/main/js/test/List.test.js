@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import Image from './modify.test.js'
+import imageModifyProperty from './modify.test.js'
 export default function testsuite() {
-Image()
+    imageModifyProperty()
 }

@@ -68,12 +68,12 @@ export default function ActsAccountChangeOnOff() {
             }
             function deleteAccountCallback(err){
                 console.debug("====>delete account 0100 err:" + JSON.stringify(err));
-                expect(err).assertEqual(undefined);
+                expect(err).assertEqual(null);
                 done();
             }
             function disCallback(err){
                 console.debug("====>delete account 0100 err:" + JSON.stringify(err));
-                expect(err).assertEqual(undefined);
+                expect(err).assertEqual(null);
                 appAccountManager.deleteAccount("changeonoff_extra", deleteAccountCallback);
             }
             function subscriberCallback(err, data){
@@ -136,7 +136,7 @@ export default function ActsAccountChangeOnOff() {
             }
             function deleteAccountCallback(err){
                 console.debug("====>delete account 0200 err:" + JSON.stringify(err));
-                expect(err).assertEqual(undefined);
+                expect(err).assertEqual(null);
                 done();
             }
             function subscriberCallback(err, data){
@@ -199,7 +199,7 @@ export default function ActsAccountChangeOnOff() {
             }
             function deleteAccountCallback(err){
                 console.debug("====>delete account 0300 err:" + JSON.stringify(err));
-                expect(err).assertEqual(undefined);
+                expect(err).assertEqual(null);
                 done();
             }
             function subscriberCallback(err, data){
@@ -266,7 +266,7 @@ export default function ActsAccountChangeOnOff() {
             }
             function deleteAccountCallback(err){
                 console.debug("====>delete account 0400 err:" + JSON.stringify(err));
-                expect(err).assertEqual(undefined);
+                expect(err).assertEqual(null);
                 done();
             }
             function subscriberCallback(err, data){
@@ -325,15 +325,14 @@ export default function ActsAccountChangeOnOff() {
             console.debug("====>enableAppAccess ActsAccountChangeOnOff_0500 start");
             await appAccountManager.enableAppAccess("onoff_delete", "com.example.actsaccountsceneonoff");
             function unSubscriberCallback(err){
-                console.debug("====>unsubscribe 0500 err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(0);
-                done();
+                console.debug("====>unsubscribe 0500 err:" + JSON.stringify(err));                
             }
             function subscriberCallback(err, data){
                 console.debug("====>subscriberCallback 0500 data:" + JSON.stringify(data));
                 expect(data.event).assertEqual("account_on_change_delete");
                 expect(data.data).assertEqual("SUCCESS");
                 commonevent.unsubscribe(subscriber, unSubscriberCallback);
+                done();
             }
             function publishCallback(err){
                 console.debug("====>publish call back err:" + JSON.stringify(err));
@@ -392,10 +391,10 @@ export default function ActsAccountChangeOnOff() {
             }
             function deleteAccountCallback(err){
                 console.debug("====>delete first account 0600 err:" + JSON.stringify(err));
-                expect(err).assertEqual(undefined);
+                expect(err).assertEqual(null);
                 appAccountManager.deleteAccount("onoff_enableSec", (err)=>{
                     console.debug("====>delete second account 0600 err:" + JSON.stringify(err));
-                    expect(err).assertEqual(undefined);
+                    expect(err).assertEqual(null);
                     done();
                 });
             }
@@ -459,7 +458,7 @@ export default function ActsAccountChangeOnOff() {
             }
             function deleteAccountCallback(err){
                 console.debug("====>delete account 0700 err:" + JSON.stringify(err));
-                expect(err).assertEqual(undefined);
+                expect(err).assertEqual(null);
                 done();
             }
             function subscriberCallback(err, data){
@@ -532,7 +531,7 @@ export default function ActsAccountChangeOnOff() {
                     console.debug("====>off ActsAccountChangeOnOff_0800 finish====");
                     appAccountManager.deleteAccount("onoff_self", (err)=>{
                         console.debug("====>delete account ActsAccountChangeOnOff_0800 err:" + JSON.stringify(err));
-                        expect(err).assertEqual(undefined);
+                        expect(err).assertEqual(null);
                         console.debug("====>ActsAccountChangeOnOff_0800 end====");
                         done();
                     });
@@ -595,10 +594,10 @@ export default function ActsAccountChangeOnOff() {
                     console.debug("====>off ActsAccountChangeOnOff_0900 finish====");
                     appAccountManager.deleteAccount("onoff_self_first", (err)=>{
                         console.debug("====>delete first account 0900 err:" + JSON.stringify(err));
-                        expect(err).assertEqual(undefined);
+                        expect(err).assertEqual(null);
                         appAccountManager.deleteAccount("onoff_self_second", (err)=>{
                             console.debug("====>delete second account 0900 err:" + JSON.stringify(err));
-                            expect(err).assertEqual(undefined);
+                            expect(err).assertEqual(null);
                             console.debug("====>ActsAccountChangeOnOff_0900 end====");
                             done();
                         });
@@ -672,7 +671,7 @@ export default function ActsAccountChangeOnOff() {
                         console.debug("====>off ActsAccountChangeOnOff_1000 finish====");
                         appAccountManager.deleteAccount("onoff_twice", (err)=>{
                             console.debug("====>delete account ActsAccountChangeOnOff_1000 err:" + JSON.stringify(err));
-                            expect(err).assertEqual(undefined);
+                            expect(err).assertEqual(null);
                             expect(twiceSign).assertEqual(2);
                             console.debug("====>ActsAccountChangeOnOff_1000 end====");
                             done();
@@ -753,7 +752,7 @@ export default function ActsAccountChangeOnOff() {
                     console.debug("====>off ActsAccountChangeOnOff_1100 finish====");
                     appAccountManager.deleteAccount("onoff_same", (err)=>{
                         console.debug("====>delete account ActsAccountChangeOnOff_1100 err:" + JSON.stringify(err));
-                        expect(err).assertEqual(undefined);
+                        expect(err).assertEqual(null);
                         console.debug("====>ActsAccountChangeOnOff_1100 end====");
                         done();
                     });
@@ -794,7 +793,7 @@ export default function ActsAccountChangeOnOff() {
                             console.debug("====>delete account 1200 start====");
                             appAccountManager.deleteAccount("onoff_repeatoff", (err)=>{
                                 console.debug("====>delete account ActsAccountChangeOnOff_1200 err:" + JSON.stringify(err));
-                                expect(err).assertEqual(undefined);
+                                expect(err).assertEqual(null);
                                 console.debug("====>ActsAccountChangeOnOff_1200 end====");
                                 done();
                             });
@@ -861,7 +860,7 @@ export default function ActsAccountChangeOnOff() {
                 console.debug("====>delete account 1300 start====");
                 appAccountManager.deleteAccount("onoff_same", (err)=>{
                     console.debug("====>delete account ActsAccountChangeOnOff_1300 err:" + JSON.stringify(err));
-                    expect(err).assertEqual(undefined);
+                    expect(err).assertEqual(null);
                     console.debug("====>ActsAccountChangeOnOff_1300 end====");
                     done();
                 });
@@ -908,7 +907,7 @@ export default function ActsAccountChangeOnOff() {
                 console.debug("====>delete account 1400 start====");
                 appAccountManager.deleteAccount("onoff_same", (err)=>{
                     console.debug("====>delete account ActsAccountChangeOnOff_1400 err:" + JSON.stringify(err));
-                    expect(err).assertEqual(undefined);
+                    expect(err).assertEqual(null);
                     console.debug("====>ActsAccountChangeOnOff_1400 end====");
                     done();
                 });

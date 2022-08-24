@@ -46,6 +46,19 @@
         "label": "$string:entry_MainAbility",
         "type": "page",
         "launchType": "standard"
+      },
+      {
+          "orientation": "unspecified",
+          "formsEnabled": false,
+          "name": ".TestAbility",
+          "srcLanguage": "ets",
+          "srcPath": "TestAbility",
+          "icon": "$media:icon",
+          "description": "$string:TestAbility_desc",
+          "label": "$string:TestAbility_label",
+          "type": "page",
+          "visible": true,
+          "launchType": "singleton"
       }
     ],
     "defPermissions": [
@@ -149,6 +162,20 @@
           "pages/index"
         ],
         "name": ".MainAbility",
+        "window": {
+          "designWidth": 720,
+          "autoDesignWidth": false
+        }
+      },
+      {
+        "mode": {
+          "syntax": "ets",
+          "type": "pageAbility"
+        },
+        "pages": [
+          "pages/index"
+        ],
+        "name": ".TestAbility",
         "window": {
           "designWidth": 720,
           "autoDesignWidth": false

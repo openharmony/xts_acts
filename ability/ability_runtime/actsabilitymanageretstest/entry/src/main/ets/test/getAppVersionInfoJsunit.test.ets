@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, it, expect} from 'hypium/index';
+import {describe, it, expect} from '@ohos/hypium';
 import Utils from './Utils';
 import ability_featureAbility from '@ohos.ability.featureAbility';
 
@@ -83,7 +83,7 @@ export default function getHapModuleInfoJsunit() {
       expect(typeof (data.appName)).assertEqual("string");
       expect(typeof (data.versionCode)).assertEqual("number");
       expect(typeof (data.versionName)).assertEqual("string");
-      expect(data.appName).assertEqual("");
+      expect(data.appName).assertEqual("com.ohos.acecollaboration");
       expect(data.versionCode).assertEqual(1000000);
       expect(data.versionName).assertEqual("1.0.0");
       console.log(msg + "---checkAppVersionInfo End--- ");

@@ -14,6 +14,6 @@
  */
 import abilityPermissionText from './AbilityPermission.test.ets'
 
-export default function testsuite(context) {
-  abilityPermissionText(context)
+export default function testsuite() {
+  abilityPermissionText()
 }

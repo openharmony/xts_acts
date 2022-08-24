@@ -17,8 +17,11 @@
         {
             "type": "ShellKit",
             "run-command": [
-                "mkdir   /data/app/el2/100/base/ohos.acts.multimedia.image.Exif/files",
-                "chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.image.Exif/files"
+                "mkdir -p /data/app/el2/100/base/ohos.acts.multimedia.image.Exif/haps/entry/files/",
+                "chmod -R 666 /data/app/el2/100/base/ohos.acts.multimedia.image.Exif/haps/entry/files/*"
+            ],
+            "teardown-command":[
+
             ]
         },
 		{
@@ -26,20 +29,17 @@
             "pre-push": [
             ],
             "push": [
-				"./resource/image/test_exif.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.Exif/files",
-				"./resource/image/test_exif1.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.Exif/files"
+				"./resource/image/test_exif.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.Exif/haps/entry/files",
+				"./resource/image/test_exif1.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.Exif/haps/entry/files"
             ]
         },
-   
-		{
+        {
             "type": "ShellKit",
             "run-command": [
-                "chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.image.Exif/files/test_exif.jpg",
-		"chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.image.Exif/files/test_exif1.jpg"
+                "hilog -Q pidoff",
+                "hilog -b D"
             ],
-            "teardown-command":[
-              
-            ]
+            "teardown-command": []
         }
     ]
     

@@ -21,14 +21,20 @@ export default function isDefaultApplicationTest() {
   
        /**
          * @tc.number: isDefaultApplication_0100
-         * @tc.name: isDefaultApplication Promise
+         * @tc.name: isDefaultApplication Promise and Callback
          * @tc.desc: No default image application is set. Query and return false
          */
           it('isDefaultApplication_0100', 0, async function (done) {
               const data = await defaultAppMgr.isDefaultApplication(defaultAppMgr.ApplicationType.IMAGE)
               console.info("isDefaultApplication_0100 --- " + data)
               expect(data).assertFalse()
-              done()
+              defaultAppMgr.isDefaultApplication(defaultAppMgr.ApplicationType.IMAGE,(err,data) => {
+                  console.info("isDefaultApplication_0100 data--- " + data)
+                  console.info("isDefaultApplication_0100 err--- " + err)
+                  expect(data).assertFalse()
+                  expect(err).assertEqual(0)
+                  done()
+              })
           });
 
        /**

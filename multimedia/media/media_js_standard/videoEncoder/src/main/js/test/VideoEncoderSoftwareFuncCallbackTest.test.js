@@ -337,14 +337,14 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
     });
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_00_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_0100
         * @tc.name      : 000.test stop after last frame and reset
         * @tc.desc      : basic encode function
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */ 
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_00_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_0100', 0, async function (done) {
         let decPath = 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_00_0100.es';
         let mime = 'video/mp4v-es';
         let mediaDescription = {
@@ -399,14 +399,14 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_0200
         * @tc.name      : 000.test stop at running state and reset
         * @tc.desc      : basic encode function
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */ 
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_0200', 0, async function (done) {
         let decPath = 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0100.es';
         let name= 'avenc_mpeg4';
         let mediaDescription = {
@@ -435,14 +435,14 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_0300
         * @tc.name      : 000.test stop at end of stream and restart
         * @tc.desc      : basic encode function
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */ 
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_0300', 0, async function (done) {
         let decPath = 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0200.es';
         let name= 'avenc_mpeg4';
         let mediaDescription = {
@@ -471,14 +471,14 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_0400
         * @tc.name      : 000.test stop at running state and restart
         * @tc.desc      : basic encode function
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */ 
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_0400', 0, async function (done) {
         let decPath = 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0300.es';
         let name= 'avenc_mpeg4';
         let mediaDescription = {
@@ -508,14 +508,14 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0400
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_0500
         * @tc.name      : 000.test flush at running state
         * @tc.desc      : basic encode function
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */ 
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_0500', 0, async function (done) {
         let decPath = 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0400.es';
         let name= 'avenc_mpeg4';
         let mediaDescription = {
@@ -544,14 +544,14 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0500
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_0600
         * @tc.name      : 000.test flush at end of stream
         * @tc.desc      : basic encode function
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */ 
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0500', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_0600', 0, async function (done) {
         let decPath = 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0500.es';
         let name= 'avenc_mpeg4';
         let mediaDescription = {
@@ -579,14 +579,14 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0600
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_0700
         * @tc.name      : 000.test reconfigure
         * @tc.desc      : basic encode function
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */ 
-    it('SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0600', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_0700', 0, async function (done) {
         let decPath = 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0600.es';
         let name= 'avenc_mpeg4';
         let mediaDescription = {
@@ -595,7 +595,7 @@ describe('VideoEncoderSoftwareFuncCallbackTest', function () {
             'pixel_format': 3,
             'frame_rate': 30.00,
         }
-        let decPath2 = 'SUB_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_01_0600_2.es';
+        let decPath2 = 'SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_FUNCTION_CALLBACK_0700_2.es';
         let mediaDescription2 = {
             'width': 320, 
             'height': 240,

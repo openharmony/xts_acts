@@ -15,10 +15,10 @@
 
 import power from '@ohos.power';
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, it, expect } from '@ohos/hypium'
 
-export default function appInfoTest() {
-describe('appInfoTest', function () {
+export default function PowerManagerRebootShutTest() {
+describe('PowerManagerRebootShutTest', function () {
     console.log("*************Power Unit Test Begin*************");
     
     /**

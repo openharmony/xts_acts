@@ -9,12 +9,19 @@
     },
     "kits": [
         {
-            
             "test-file-name": [
                 "ActsPixelMapNapiEtsTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "hilog -Q pidoff",
+                "hilog -b D"
+            ],
+            "teardown-command": []
         }
     ]
 }

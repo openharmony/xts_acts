@@ -16,12 +16,12 @@ group("hiviewdfxtestacts") {
   if (is_standard_system) {
     deps = [
       "bytracetest:ActsBytraceJsTest",
-      "hiappeventtest/hiappeventcpptest:HiAppEventCPPTest",
+      "hiappeventtest/hiappeventcpptest:ActsHiAppEventCPPTest",
       "hiappeventtest/hiappeventjstest:ActsHiAppeventTest",
       "hicheckertest/hicheckerjstest:hicheckerjstest",
       "hidebugtest/hidebugtestjstest:ActsHiDebugTest",
       "hilogtest/hilogjstest:ActsHilogJsTest",
-      "hilogtest/hilogndktest:hilogndktest",
+      "hilogtest/hilogndktest:ActsHilogndkTest",
       "hisyseventtest/hisyseventjstest:ActsHiSysEventJsTest",
       "hitracechainjstest:ActsHiTraceChainJsTest",
       "hitracechaintest:ActsHiTraceChainTest",

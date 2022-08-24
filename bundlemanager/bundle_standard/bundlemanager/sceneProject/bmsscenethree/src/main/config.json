@@ -40,17 +40,16 @@
         "type": "service",
         "isVisible": "true",
         "launchType": "singleton",
-        "language": "C++",
-        "orientation": "landscape"
+        "language": "C++"
       }
     ],
     "deviceType": [
-      "phone"
+      "default"
     ],
     "distro": {
       "moduleType": "feature",
       "deliveryWithInstall": true,
-      "moduleName": "entry"
+      "moduleName": "feature"
     },
     "package": "com.example.myapplication2",
     "name": ".MyApplication2",

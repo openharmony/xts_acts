@@ -13,12 +13,12 @@
  * limitations under the License.
  */
 
-import runningLock from '@ohos.runninglock'
+import runningLock from '@ohos.runningLock'
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
+import { describe, it, expect } from '@ohos/hypium'
 
-export default function appInfoTest_power_2() {
-describe('appInfoTest_power_2', function () {
+export default function PowerManagerRunningLockTest() {
+describe('PowerManagerRunningLockTest', function () {
     console.log("*************RunningLock Unit Test Begin*************");
 
     /**

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import commonEvent from '@ohos.commonEvent'
 
 let subscriberInfoMultiInstance = {
@@ -100,7 +100,6 @@ export default function abilityTest(abilityContext) {
       console.log('ACTS_AbilityMultiInstance_Single_0100====<begin');
       let subscriber;
       let id;
-      let result;
       let checkEventResults = ["AppA:onCreateonForegroundonAcceptWantCalledId1", "AppB:onCreateonForeground",
       "AppA:onForegroundonAcceptWantCalledId1"];
       let checkIndex = 0;

@@ -51,8 +51,8 @@ it('ACTS_ZipFile_0100', 0, async function (done) {
       expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_ERRNO);
       done();
     }).catch((err) => {
-      console.log("zipFile fail: " + err);
-      expect(err).assertFail();
+      console.log("ACTS_ZipFile_0100 zipFile fail: " + err);
+      expect(err).assertEqual(zlib.ErrorCode.ERROR_CODE_ERRNO);
       done();
     })
     console.log("==================ACTS_ZipFile_0100 end==================");
@@ -77,8 +77,8 @@ it('ACTS_ZipFile_0200', 0, async function (done) {
         expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_ERRNO);
         done();
       }).catch((err) => {
-        console.log("zipFile fail: " + err);
-        expect(err).assertFail();
+        console.log("ACTS_ZipFile_0200 zipFile fail: " + err);
+        expect(err).assertEqual(zlib.ErrorCode.ERROR_CODE_ERRNO);
         done();
       })
     }).catch(function (err) {
@@ -108,8 +108,8 @@ it('ACTS_ZipFile_0300', 0, async function (done) {
         expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_ERRNO);
         done();
       }).catch((err) => {
-        console.log("zipFile fail: " + err);
-        expect(err).assertFail();
+        console.log("ACTS_ZipFile_0300 zipFile fail: " + err);
+        expect(err).assertEqual(zlib.ErrorCode.ERROR_CODE_ERRNO);
         done();
       })
     }).catch(function (err) {
@@ -139,8 +139,8 @@ it('ACTS_ZipFile_0400', 0, async function (done) {
         expect(data).assertEqual(zlib.ErrorCode.ERROR_CODE_ERRNO);
         done();
       }).catch((err) => {
-        console.log("zipFile fail: " + err);
-        expect(err).assertFail();
+        console.log("ACTS_ZipFile_0400 zipFile fail: " + err);
+        expect(err).assertEqual(zlib.ErrorCode.ERROR_CODE_ERRNO);
         done();
       })
     }).catch(function (err) {
@@ -892,7 +892,7 @@ it('ACTS_ZipFile_3500', 0, async function (done) {
         done();
       }).catch((err) => {
         console.log("ACTS_ZipFile_3500 err: " + err);
-        expect(err).assertFail();
+        expect(err).assertEqual(zlib.ErrorCode.ERROR_CODE_ERRNO);
         done();
       });
     }).catch(function (err) {
@@ -923,7 +923,7 @@ it('ACTS_ZipFile_3600', 0, async function (done) {
         done();
       }).catch((err) => {
         console.log("ACTS_ZipFile_3600 err: " + err);
-        expect(err).assertFail();
+        expect(err).assertEqual(zlib.ErrorCode.ERROR_CODE_ERRNO);
         done();
       });
     }).catch(function (err) {
@@ -967,7 +967,7 @@ it('ACTS_ZipFile_4500', 0, async function (done) {
               done();
             }).catch((err) => {
               console.log("ACTS_ZipFile_4500 err: " + err);
-              expect(err).assertFail();
+              expect(err).assertEqual(zlib.ErrorCode.ERROR_CODE_ERRNO);
               done();
             })
           }).catch(function (error) {
@@ -977,7 +977,7 @@ it('ACTS_ZipFile_4500', 0, async function (done) {
           });
       }).catch((err) => {
          console.log("ACTS_ZipFile_4500 zipFile fail: " + err);
-         expect(err).assertFail();
+         expect(err).assertEqual(zlib.ErrorCode.ERROR_CODE_ERRNO);
          done();
       })
     }).catch(function (err) {

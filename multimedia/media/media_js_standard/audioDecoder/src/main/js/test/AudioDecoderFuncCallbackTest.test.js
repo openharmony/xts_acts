@@ -139,6 +139,7 @@ describe('AudioDecoderFuncCallback', function () {
     let outputCnt = 0;
     let inputCnt = 0;
     let frameThreshold = 10;
+    let lockFlag = false;
 
     beforeAll(async function() {
         console.info('beforeAll case 1');
@@ -254,6 +255,7 @@ describe('AudioDecoderFuncCallback', function () {
         ES_LENGTH = 1500;
         outputCnt = 0;
         inputCnt = 0;
+        lockFlag = false;
     })
 
     afterEach(async function() {
@@ -288,6 +290,7 @@ describe('AudioDecoderFuncCallback', function () {
         outputQueue = [];
         outputCnt = 0;
         inputCnt = 0;
+        lockFlag = false;
     }
 
     async function getFdRead(readPath, done) {
@@ -345,6 +348,7 @@ describe('AudioDecoderFuncCallback', function () {
     }
 
     async function flushWork(done) {
+        lockFlag = true;
         inputQueue = [];
         outputQueue = [];
         await getFdRead(readpath, done);
@@ -353,6 +357,11 @@ describe('AudioDecoderFuncCallback', function () {
             console.info("case flush at inputeos success");
             resetParam();
             workdoneAtEOS =true;
+            lockFlag = false;
+            audioDecodeProcessor.start((err) => {
+                expect(err).assertUndefined();
+                console.info("case start after flush success");
+            });
         })
     }
 
@@ -403,10 +412,12 @@ describe('AudioDecoderFuncCallback', function () {
             }
             timestamp += ES[frameCnt]/samplerate;
             frameCnt += 1;
-            audioDecodeProcessor.pushInputData(inputobject, () => {
-                console.info('queueInput success');
-                inputCnt += 1;
-            })
+            if (!lockFlag) {
+                audioDecodeProcessor.pushInputData(inputobject, () => {
+                    console.info('queueInput success');
+                    inputCnt += 1;
+                })
+            }
         }
     }
 
@@ -431,9 +442,11 @@ describe('AudioDecoderFuncCallback', function () {
             else{
                 console.info("write to file success");
             }
-            audioDecodeProcessor.freeOutputBuffer(outputobject, () => {
-                console.info('release output success');
-            })
+            if (!lockFlag) {
+                audioDecodeProcessor.freeOutputBuffer(outputobject, () => {
+                    console.info('release output success');
+                })
+            }
         }
     }
 
@@ -471,14 +484,14 @@ describe('AudioDecoderFuncCallback', function () {
     }
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_FUNCTION_CALLBACK_00_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FUNCTION_CALLBACK_0100
         * @tc.name      : 000.test set EOS after last frame and reset
         * @tc.desc      : basic decode function
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_AUDIO_DECODER_FUNCTION_CALLBACK_00_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FUNCTION_CALLBACK_0100', 0, async function (done) {
         console.info("case test set EOS after last frame and reset");
         let events = require('events');
         let eventEmitter = new events.EventEmitter();
@@ -553,14 +566,14 @@ describe('AudioDecoderFuncCallback', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_FUNCTION_CALLBACK_01_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FUNCTION_CALLBACK_0200
         * @tc.name      : 001.test set EOS manually before last frame and reset
         * @tc.desc      : basic decode function
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MEDIA_AUDIO_DECODER_FUNCTION_CALLBACK_01_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FUNCTION_CALLBACK_0200', 0, async function (done) {
         console.info("case test set EOS manually before last frame and reset");
         let events = require('events');
         let eventEmitter = new events.EventEmitter();
@@ -625,14 +638,14 @@ describe('AudioDecoderFuncCallback', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_FUNCTION_CALLBACK_01_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FUNCTION_CALLBACK_0300
         * @tc.name      : 002.test flush at running state
         * @tc.desc      : basic decode function
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MEDIA_AUDIO_DECODER_FUNCTION_CALLBACK_01_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FUNCTION_CALLBACK_0300', 0, async function (done) {
         console.info("case test flush at running state");
         let events = require('events');
         let eventEmitter = new events.EventEmitter();
@@ -677,12 +690,18 @@ describe('AudioDecoderFuncCallback', function () {
             })
         });
         eventEmitter.on('flush', () => {
+            lockFlag = true;
             inputQueue = [];
             outputQueue = [];
             audioDecodeProcessor.flush((err) => {
                 expect(err).assertUndefined();
                 console.info(`case flush after 2s success`);
-            })
+                lockFlag = false;
+                audioDecodeProcessor.start((err) => {
+                    expect(err).assertUndefined();
+                    console.info(`case start after flush success`);
+                });
+            });
         });
         media.createAudioDecoderByMime('audio/mp4a-latm', (err, processor) => {
             expect(err).assertUndefined();
@@ -693,14 +712,14 @@ describe('AudioDecoderFuncCallback', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_FUNCTION_CALLBACK_01_0300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FUNCTION_CALLBACK_0400
         * @tc.name      : 003. test flush at EOS state
         * @tc.desc      : basic decode function
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MEDIA_AUDIO_DECODER_FUNCTION_CALLBACK_01_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FUNCTION_CALLBACK_0400', 0, async function (done) {
         console.info("case test flush at EOS state");
         let events = require('events');
         let eventEmitter = new events.EventEmitter();
@@ -753,14 +772,14 @@ describe('AudioDecoderFuncCallback', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_FUNCTION_CALLBACK_01_0400
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FUNCTION_CALLBACK_0500
         * @tc.name      : 004. test stop at running state and reset
         * @tc.desc      : basic decode function
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MEDIA_AUDIO_DECODER_FUNCTION_CALLBACK_01_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FUNCTION_CALLBACK_0500', 0, async function (done) {
         console.info("case test stop at running state and reset");
         let events = require('events');
         let eventEmitter = new events.EventEmitter();
@@ -837,14 +856,14 @@ describe('AudioDecoderFuncCallback', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_FUNCTION_CALLBACK_01_0500
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FUNCTION_CALLBACK_0600
         * @tc.name      : 005. test stop and restart
         * @tc.desc      : basic decode function
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MEDIA_AUDIO_DECODER_FUNCTION_CALLBACK_01_0500', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FUNCTION_CALLBACK_0600', 0, async function (done) {
         console.info("case test start - stop - restart");
         let events = require('events');
         let eventEmitter = new events.EventEmitter();
@@ -918,14 +937,14 @@ describe('AudioDecoderFuncCallback', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_FUNCTION_CALLBACK_01_0600
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FUNCTION_CALLBACK_0700
         * @tc.name      : 006. test reconfigure for new file with the same format
         * @tc.desc      : basic decode function
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MEDIA_AUDIO_DECODER_FUNCTION_CALLBACK_01_0600', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FUNCTION_CALLBACK_0700', 0, async function (done) {
         console.info("case test reconfigure codec for new file with the same format");
         let events = require('events');
         let eventEmitter = new events.EventEmitter();
@@ -1020,14 +1039,14 @@ describe('AudioDecoderFuncCallback', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_FUNCTION_CALLBACK_01_0700
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FUNCTION_CALLBACK_0800
         * @tc.name      : 007. test reconfigure for new file with different formats
         * @tc.desc      : basic decode function
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MEDIA_AUDIO_DECODER_FUNCTION_CALLBACK_01_0700', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FUNCTION_CALLBACK_0800', 0, async function (done) {
         console.info("case test reconfigure codec for new file with different format");
         let events = require('events');
         let eventEmitter = new events.EventEmitter();

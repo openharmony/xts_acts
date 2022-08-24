@@ -101,10 +101,9 @@ describe("ContinuousTaskJsTest", function () {
     }
 
     /*
+     * @tc.number:SUB_RESOURCESCHEDULE_LONG_TASK_XTS_001
      * @tc.name:ContinuousTaskJsTest001
      * @tc.desc:verify old startBackgroundrunning interface callback mode work properly
-     * @tc.type: FUNC
-     * @tc.require:
      */
     it("ContinuousTaskJsTest001", 0, async function (done) {
         console.info(TAG + '-----------------ContinuousTaskJsTest001 begin--------------------');
@@ -112,10 +111,9 @@ describe("ContinuousTaskJsTest", function () {
     })
 
     /*
+     * @tc.number:SUB_RESOURCESCHEDULE_LONG_TASK_XTS_002
      * @tc.name:ContinuousTaskJsTest002
      * @tc.desc:verify cancelBackgroundrunning interface callback mode work properly
-     * @tc.type: FUNC
-     * @tc.require: 
      */
     it("ContinuousTaskJsTest002", 0, async function (done) {
         console.info(TAG + '-----------------ContinuousTaskJsTest002 begin--------------------');
@@ -123,10 +121,9 @@ describe("ContinuousTaskJsTest", function () {
     })
 
     /*
+     * @tc.number:SUB_RESOURCESCHEDULE_LONG_TASK_XTS_003
      * @tc.name:ContinuousTaskJsTest003
      * @tc.desc:verify new startBackgroundrunning interface callback mode work properly
-     * @tc.type: FUNC
-     * @tc.require: 
      */
     it("ContinuousTaskJsTest003", 0, async function (done) {
         console.info(TAG + '-----------------ContinuousTaskJsTest003 begin--------------------');
@@ -134,10 +131,9 @@ describe("ContinuousTaskJsTest", function () {
     })
 
     /*
+     * @tc.number:SUB_RESOURCESCHEDULE_LONG_TASK_XTS_004
      * @tc.name:ContinuousTaskJsTest004
      * @tc.desc:verify new stopBackgroundrunning interface callback mode work properly
-     * @tc.type: FUNC
-     * @tc.require: 
      */
     it("ContinuousTaskJsTest004", 0, async function (done) {
         console.info(TAG + '-----------------ContinuousTaskJsTest004 begin--------------------');
@@ -145,10 +141,9 @@ describe("ContinuousTaskJsTest", function () {
     })
 
     /*
+     * @tc.number:SUB_RESOURCESCHEDULE_LONG_TASK_XTS_005
      * @tc.name:ContinuousTaskJsTest005
      * @tc.desc:verify old startBackgroundrunning interface promise mode work properly
-     * @tc.type: FUNC
-     * @tc.require: 
      */
     it("ContinuousTaskJsTest005", 0, async function (done) {
         console.info(TAG + '-----------------ContinuousTaskJsTest005 begin--------------------');
@@ -156,10 +151,9 @@ describe("ContinuousTaskJsTest", function () {
     })
 
     /*
+     * @tc.number:SUB_RESOURCESCHEDULE_LONG_TASK_XTS_006
      * @tc.name:ContinuousTaskJsTest006
      * @tc.desc:verify cancelBackgroundrunning interface promise mode work properly
-     * @tc.type: FUNC
-     * @tc.require: 
      */
     it("ContinuousTaskJsTest006", 0, async function (done) {
         console.info(TAG + '-----------------ContinuousTaskJsTest006 begin--------------------');
@@ -167,10 +161,9 @@ describe("ContinuousTaskJsTest", function () {
     })
 
     /*
+     * @tc.number:SUB_RESOURCESCHEDULE_LONG_TASK_XTS_007
      * @tc.name:ContinuousTaskJsTest007
      * @tc.desc:verify new startBackgroundrunning interface promise mode work properly
-     * @tc.type: FUNC
-     * @tc.require: 
      */
     it("ContinuousTaskJsTest007", 0, async function (done) {
         console.info(TAG + '-----------------ContinuousTaskJsTest007 begin--------------------');
@@ -178,10 +171,9 @@ describe("ContinuousTaskJsTest", function () {
     })
 
     /*
+     * @tc.number:SUB_RESOURCESCHEDULE_LONG_TASK_XTS_008
      * @tc.name:ContinuousTaskJsTest008
      * @tc.desc:verify new stopBackgroundrunning interface promise mode work properly
-     * @tc.type: FUNC
-     * @tc.require: 
      */
     it("ContinuousTaskJsTest008", 0, async function (done) {
         console.info(TAG + '-----------------ContinuousTaskJsTest008 begin--------------------');
@@ -189,10 +181,9 @@ describe("ContinuousTaskJsTest", function () {
     })
 
     /*
+     * @tc.number:SUB_RESOURCESCHEDULE_LONG_TASK_XTS_009
      * @tc.name:ContinuousTaskJsTest009
      * @tc.desc:verify continuous task request failed with invalid background mode
-     * @tc.type: FUNC
-     * @tc.require:
      */
     it("ContinuousTaskJsTest009", 0, async function (done) {
         console.info(TAG + '-----------------ContinuousTaskJsTest009 begin--------------------');
@@ -200,10 +191,9 @@ describe("ContinuousTaskJsTest", function () {
     })
 
     /*
+     * @tc.number:SUB_RESOURCESCHEDULE_LONG_TASK_XTS_0010
      * @tc.name: ContinuousTaskJsTest010
-     * @tc.desc: test work scheduler constant
-     * @tc.type: FUNC
-     * @tc.require: 
+     * @tc.desc: test backgroudManager BackgroudMode constant
      */
     it("ContinuousTaskJsTest010", 0, async function (done) {
         console.info(TAG + '-----------------ContinuousTaskJsTest010 begin--------------------');
@@ -213,10 +203,9 @@ describe("ContinuousTaskJsTest", function () {
     })
 
     /*
+     * @tc.number:SUB_RESOURCESCHEDULE_LONG_TASK_XTS_0011
      * @tc.name: ContinuousTaskJsTest011
-     * @tc.desc: test work scheduler constant
-     * @tc.type: FUNC
-     * @tc.require: 
+     * @tc.desc: test backgroudManager BackgroudMode constant
      */
     it("ContinuousTaskJsTest011", 0, async function (done) {
         console.info(TAG + '-----------------ContinuousTaskJsTest011 begin--------------------');
@@ -226,10 +215,9 @@ describe("ContinuousTaskJsTest", function () {
     })
 
     /*
+     * @tc.number:SUB_RESOURCESCHEDULE_LONG_TASK_XTS_0012
      * @tc.name: ContinuousTaskJsTest012
-     * @tc.desc: test work scheduler constant
-     * @tc.type: FUNC
-     * @tc.require: 
+     * @tc.desc: test backgroudManager BackgroudMode constant
      */
     it("ContinuousTaskJsTest012", 0, async function (done) {
         console.info(TAG + '-----------------ContinuousTaskJsTest012 begin--------------------');
@@ -239,10 +227,9 @@ describe("ContinuousTaskJsTest", function () {
     })
 
     /*
+     * @tc.number:SUB_RESOURCESCHEDULE_LONG_TASK_XTS_0013
      * @tc.name: ContinuousTaskJsTest013
-     * @tc.desc: test work scheduler constant
-     * @tc.type: FUNC
-     * @tc.require: 
+     * @tc.desc: test backgroudManager BackgroudMode constant
      */
     it("ContinuousTaskJsTest013", 0, async function (done) {
         console.info(TAG + '-----------------ContinuousTaskJsTest013 begin--------------------');
@@ -252,10 +239,9 @@ describe("ContinuousTaskJsTest", function () {
     })
 
     /*
+     * @tc.number:SUB_RESOURCESCHEDULE_LONG_TASK_XTS_0014
      * @tc.name: ContinuousTaskJsTest014
-     * @tc.desc: test work scheduler constant
-     * @tc.type: FUNC
-     * @tc.require: 
+     * @tc.desc: test backgroudManager BackgroudMode constant
      */
     it("ContinuousTaskJsTest014", 0, async function (done) {
         console.info(TAG + '-----------------ContinuousTaskJsTest014 begin--------------------');
@@ -265,10 +251,9 @@ describe("ContinuousTaskJsTest", function () {
     })
 
     /*
+     * @tc.number:SUB_RESOURCESCHEDULE_LONG_TASK_XTS_0015
      * @tc.name: ContinuousTaskJsTest015
-     * @tc.desc: test work scheduler constant
-     * @tc.type: FUNC
-     * @tc.require: 
+     * @tc.desc: test backgroudManager BackgroudMode constant
      */
     it("ContinuousTaskJsTest015", 0, async function (done) {
         console.info(TAG + '-----------------ContinuousTaskJsTest015 begin--------------------');
@@ -278,10 +263,9 @@ describe("ContinuousTaskJsTest", function () {
     })
 
     /*
+     * @tc.number:SUB_RESOURCESCHEDULE_LONG_TASK_XTS_0016
      * @tc.name: ContinuousTaskJsTest016
-     * @tc.desc: test work scheduler constant
-     * @tc.type: FUNC
-     * @tc.require: 
+     * @tc.desc: test backgroudManager BackgroudMode constant
      */
     it("ContinuousTaskJsTest016", 0, async function (done) {
         console.info(TAG + '-----------------ContinuousTaskJsTest016 begin--------------------');

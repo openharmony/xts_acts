@@ -355,14 +355,14 @@ describe('VideoDecoderFuncCallbackTest', function () {
     });
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_DECODER_H264_CALLBACK_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_DECODER_H264_CALLBACK_0100
         * @tc.name      : 001.basic Video decode function
         * @tc.desc      : start-> EOS -> stop -> reset
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0s
     */ 
-    it('SUB_MEDIA_VIDEO_DECODER_H264_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_DECODER_H264_CALLBACK_0100', 0, async function (done) {
         ES_FRAME_SIZE = H264_FRAME_SIZE_60FPS_320;
         isCodecData = true;
         let srcPath = 'out_320_240_10s.h264';
@@ -390,14 +390,14 @@ describe('VideoDecoderFuncCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_DECODER_MPEG2_CALLBACK_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_DECODER_MPEG2_CALLBACK_0100
         * @tc.name      : 001.basic Video decode function
         * @tc.desc      : start-> EOS -> stop -> reset
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */ 
-    it('SUB_MEDIA_VIDEO_DECODER_MPEG2_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_DECODER_MPEG2_CALLBACK_0100', 0, async function (done) {
         ES_FRAME_SIZE = MPEG2_FRAME_SIZE;
         let srcPath = 'MPEG2_720_480.es';
         readpath = srcPath;
@@ -424,14 +424,14 @@ describe('VideoDecoderFuncCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_DECODER_MPEG4_CALLBACK_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_DECODER_MPEG4_CALLBACK_0100
         * @tc.name      : 001.basic Video decode function
         * @tc.desc      : start-> EOS -> stop -> reset
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */ 
-    it('SUB_MEDIA_VIDEO_DECODER_MPEG4_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_DECODER_MPEG4_CALLBACK_0100', 0, async function (done) {
         ES_FRAME_SIZE = MPEG4_FRAME_SIZE;
         let srcPath = 'mpeg4_320_240.es';
         readpath = srcPath;

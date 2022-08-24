@@ -1,10 +1,11 @@
 {
     "description": "Configuration for hjunit demo Tests",
     "driver": {
-        "type": "JSUnitTest",
-        "test-timeout": "60000",
-        "package": "com.amsst.actsstserviceabilityclientcasetest",
-        "shell-timeout": "60000"
+        "type": "OHJSUnitTest",
+        "test-timeout": "300000",
+        "bundle-name": "com.amsst.actsstserviceabilityclientcasetest",
+        "package-name": "com.amsst.actsstserviceabilityclientcasetest",
+        "shell-timeout": "600000"
     },
     "kits": [
         {

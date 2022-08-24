@@ -5,33 +5,26 @@
         "test-timeout": "1800000",
         "bundle-name": "com.uitest.acts",
         "package-name": "com.uitest.acts",
-        "shell-timeout": "60000"
+        "shell-timeout": "180000"
     },
     "kits": [
         {
             "test-file-name": [
-                "$module.hap"
+                "ActsUiTest.hap",
+                "ActsUiTestScene.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
         },
         {
-            "type": "PushKit",
-            "push": [
-                "resource/arkXtest/arkXtest_windowsTest.hap -> /data/local/tmp/arkXtest_windowsTest.hap",
-                "resource/arkXtest/window_manager_config.xml -> /system/etc/window/resources/window_manager_config.xml"
-            ]
-        },
-        {
             "type": "ShellKit",
             "run-command": [
+                "param set persist.ace.testmode.enabled 1",
                 "power-shell wakeup",
+                "hilog -Q pidoff",
+                "hilog -b DEBUG",
                 "uinput -T -d 300 600 -m 300 600 300 100 -u 300 100",
-                "power-shell setmode 602",
-                "bm install -p /data/local/tmp/arkXtest_windowsTest.hap"
-            ],
-            "teardown-command": [
-                "bm uninstall -n com.example.windows"
+                "power-shell setmode 602"
             ]
         }
     ]

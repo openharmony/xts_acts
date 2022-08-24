@@ -12,4 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-require('./ActsAbilityDelegatorCaseTest.test.js')
+import actsStServiceAbilityTest from './ActsAbilityDelegatorCaseTest.test.js'
+
+export default function testsuite() {
+    actsStServiceAbilityTest()
+}

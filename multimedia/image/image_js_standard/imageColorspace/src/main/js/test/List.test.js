@@ -14,7 +14,7 @@
  */
 
 
-import Image_test from './colorspace.test.js'
+import imageColorSpace from './colorspace.test.js'
 export default function testsuite() {
-    Image_test()
+    imageColorSpace()
 }

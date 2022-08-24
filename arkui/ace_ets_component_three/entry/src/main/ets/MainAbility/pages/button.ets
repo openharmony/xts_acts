@@ -123,8 +123,8 @@ struct ButtonExample {
         .position({x: 50,y: 400})
         .onClick((event: ClickEvent) => {
           console.info(this.text = 'Click Point:' + '\n  screenX:' + event.screenX + '\n  screenY:' + event.screenY
-          + '\n  x :' + event.x + '\n  y:' + event.y + '\ntarget:' + '\n  component globalPos：（'
-          + event.target.area.globalPos.x + ',' + event.target.area.globalPos.y + '）\n  width:'
+          + '\n  x :' + event.x + '\n  y:' + event.y + '\ntarget:' + '\n  component globalPosition：（'
+          + event.target.area.globalPosition.x + ',' + event.target.area.globalPosition.y + '）\n  width:'
           + event.target.area.width + '\n  height：' + event.target.area.height);
           this.onClickValue = true;
           try {

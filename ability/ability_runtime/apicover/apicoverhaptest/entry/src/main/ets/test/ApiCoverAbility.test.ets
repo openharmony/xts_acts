@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
 import formProvider from '@ohos.application.formProvider';
 import FormInfo from '@ohos.application.formInfo';
@@ -24,7 +24,7 @@ var array = new Array();
 function sleep(time) {
   return new Promise((resolve)=>setTimeout(resolve,time));
 }
-export default function ApiCoverTest(abilityContext) {
+export default function ApiCoverTest() {
   describe('ApiCoverTestTest', function () {
 
     /*
@@ -39,7 +39,7 @@ export default function ApiCoverTest(abilityContext) {
         bundleName: "com.example.extensionapitest",
         abilityName: "FirstExtension1"
       };
-      await abilityContext.startServiceExtensionAbility(want).then((data) => {
+      await globalThis.abilityContext.startServiceExtensionAbility(want).then((data) => {
         console.log('Ability: startServiceExtensionAbility success:' + JSON.stringify(data));
         expect("case execute failed").assertEqual(data);
       }).catch((error) => {
@@ -61,7 +61,7 @@ export default function ApiCoverTest(abilityContext) {
         bundleName: "com.example.extensionapitest1",
         abilityName: "FirstExtension"
       };
-      await abilityContext.stopServiceExtensionAbility(want).then((data) => {
+      await globalThis.abilityContext.stopServiceExtensionAbility(want).then((data) => {
         console.log(`Ability: stopServiceExtensionAbility success: ${JSON.stringify(data)}`);
         expect("case execute failed").assertEqual(data);
       }).catch((error) => {
@@ -83,7 +83,7 @@ export default function ApiCoverTest(abilityContext) {
         bundleName: "com.example.extensionapitest",
         abilityName: "FirstExtension"
       };
-      await abilityContext.startServiceExtensionAbilityWithAccount(want, 999).then((data) => {
+      await globalThis.abilityContext.startServiceExtensionAbilityWithAccount(want, 999).then((data) => {
         console.log(`Ability: startServiceExtensionAbilityWithAccount success: ${JSON.stringify(data)}`);
         expect("case execute failed").assertEqual("data");
       }).catch((error) => {
@@ -105,7 +105,7 @@ export default function ApiCoverTest(abilityContext) {
         bundleName: "com.example.extensionapitest",
         abilityName: "FirstExtension"
       };
-      await abilityContext.stopServiceExtensionAbilityWithAccount(want, 999).then((data) => {
+      await globalThis.abilityContext.stopServiceExtensionAbilityWithAccount(want, 999).then((data) => {
         console.log(`Ability: stopServiceExtensionAbilityWithAccount success: ${JSON.stringify(data)}`);
         expect("case execute failed").assertEqual(data);
       }).catch((error) => {
@@ -127,7 +127,7 @@ export default function ApiCoverTest(abilityContext) {
         bundleName: "com.example.extensionapitest",
         abilityName: "FirstExtension1"
       }
-      await abilityContext.startServiceExtensionAbility(want, (err, data) => {
+      await globalThis.abilityContext.startServiceExtensionAbility(want, (err, data) => {
         if (err.code) {
           console.error(`Ability: startServiceExtensionAbility failed: ${JSON.stringify(err)}`);
           expect(EXTENSION_INFO_ERR).assertEqual(err.code);
@@ -151,7 +151,7 @@ export default function ApiCoverTest(abilityContext) {
         bundleName: "com.example.extensionapitest1",
         abilityName: "FirstExtension"
       };
-      await abilityContext.stopServiceExtensionAbility(want, (err, data) => {
+      await globalThis.abilityContext.stopServiceExtensionAbility(want, (err, data) => {
         if (err.code) {
           console.error(`Ability: stopServiceExtensionAbility failed: ${JSON.stringify(err)}`);
           expect(EXTENSION_INFO_ERR).assertEqual(err.code);
@@ -176,7 +176,7 @@ export default function ApiCoverTest(abilityContext) {
         bundleName: "com.example.extensionapitest",
         abilityName: "FirstExtension"
       };
-      await abilityContext.startServiceExtensionAbilityWithAccount(want, 999, (err, data) => {
+      await globalThis.abilityContext.startServiceExtensionAbilityWithAccount(want, 999, (err, data) => {
         if (err.code) {
           console.error(`Ability: startServiceExtensionAbilityWithAccount failed: ${JSON.stringify(err)}`);
           expect(USERID_ERR).assertEqual(err.code);
@@ -200,7 +200,7 @@ export default function ApiCoverTest(abilityContext) {
         bundleName: "com.example.extensionapitest",
         abilityName: "FirstExtension"
       };
-      abilityContext.stopServiceExtensionAbilityWithAccount(want, 999, (err, data) => {
+      globalThis.abilityContext.stopServiceExtensionAbilityWithAccount(want, 999, (err, data) => {
         if (err.code) {
           console.error(`Ability: stopServiceExtensionAbilityWithAccount failed: ${JSON.stringify(err)}`);
           expect(USERID_ERR).assertEqual(err.code);
@@ -219,17 +219,17 @@ export default function ApiCoverTest(abilityContext) {
      * @tc.level   3
      */
     it('SUB_AA_AMS_Context_0100', 0, async function (done) {
-      expect("/data/storage/el2/base/haps/phone/cache").assertEqual(abilityContext.cacheDir)
-      expect("/data/storage/el2/base/haps/phone/temp").assertEqual(abilityContext.tempDir)
-      expect("/data/storage/el2/base/haps/phone/files").assertEqual(abilityContext.filesDir)
-      expect("/data/storage/el2/database/phone").assertEqual(abilityContext.databaseDir)
-      expect("/data/storage/el2/base/haps/phone/preferences").assertEqual(abilityContext.preferencesDir)
-      expect("/data/storage/el1/bundle").assertEqual(abilityContext.bundleCodeDir)
-      expect("/data/storage/el2/distributedfiles").assertEqual(abilityContext.distributedFilesDir)
-      expect(1).assertEqual(abilityContext.area)
-	  let moduleContext = abilityContext.createModuleContext("module1")
+      expect("/data/storage/el2/base/haps/phone/cache").assertEqual(globalThis.abilityContext.cacheDir)
+      expect("/data/storage/el2/base/haps/phone/temp").assertEqual(globalThis.abilityContext.tempDir)
+      expect("/data/storage/el2/base/haps/phone/files").assertEqual(globalThis.abilityContext.filesDir)
+      expect("/data/storage/el2/database/phone").assertEqual(globalThis.abilityContext.databaseDir)
+      expect("/data/storage/el2/base/haps/phone/preferences").assertEqual(globalThis.abilityContext.preferencesDir)
+      expect("/data/storage/el1/bundle").assertEqual(globalThis.abilityContext.bundleCodeDir)
+      expect("/data/storage/el2/distributedfiles").assertEqual(globalThis.abilityContext.distributedFilesDir)
+      expect(1).assertEqual(globalThis.abilityContext.area)
+	  let moduleContext = globalThis.abilityContext.createModuleContext("module1")
       expect("/data/storage/el2/base/cache").assertEqual(moduleContext.cacheDir)
-	  abilityContext.resourceManager.getConfiguration((err, data) => {
+	  globalThis.abilityContext.resourceManager.getConfiguration((err, data) => {
 		if(err == undefined){
           console.log(`Ability: getConfiguration success: ${JSON.stringify(data)}`);
 		  console.log(`Ability: getConfiguration success: JSON.stringify(data.direction)`);
@@ -249,14 +249,14 @@ export default function ApiCoverTest(abilityContext) {
      * @tc.level   3
      */
 	it('SUB_AA_AMS_Context_0200', 0, async function (done) {
-      await abilityContext.eventHub.on("contextEvent", func1)
-      abilityContext.eventHub.emit("contextEvent", "aa", "bb")
+      await globalThis.abilityContext.eventHub.on("contextEvent", func1)
+      globalThis.abilityContext.eventHub.emit("contextEvent", "aa", "bb")
       await sleep(500)
       expect("aa").assertEqual(array[0])
       expect("bb").assertEqual(array[1])
       array = []
-      await abilityContext.eventHub.off("contextEvent", func1)
-      abilityContext.eventHub.emit("contextEvent", "cc", "dd")
+      await globalThis.abilityContext.eventHub.off("contextEvent", func1)
+      globalThis.abilityContext.eventHub.emit("contextEvent", "cc", "dd")
       await sleep(500)
       expect(array.length).assertEqual(0)
       array = [];

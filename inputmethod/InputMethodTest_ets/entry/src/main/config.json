@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "com.open.harmony.inputMethodtest",
+    "bundleName": "com.acts.inputmethodtest",
     "vendor": "open",
     "version": {
       "code": 1000000,
@@ -9,14 +9,14 @@
     "apiVersion": {
       "compatible": 7,
       "releaseType": "Release",
-      "target": 7
+      "target": 9
     }
   },
   "deviceConfig": {},
   "module": {
-    "package": "com.open.harmony.inputMethodtest",
+    "package": "com.acts.inputmethodtest",
     "name": ".MyApplication",
-    "mainAbility": "com.open.harmony.inputMethodtest.MainAbility",
+    "mainAbility": "com.acts.inputmethodtest.MainAbility",
     "deviceType": [
       "phone"
     ],

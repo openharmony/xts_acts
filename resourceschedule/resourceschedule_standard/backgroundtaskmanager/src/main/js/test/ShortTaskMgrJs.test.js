@@ -51,7 +51,7 @@ describe("ShortTaskMgrApiTest", function () {
     })
 
     /*
-     * @tc.number    SUB_RESOURCESCHEDULE_SHORT_TASK_MAG_API_007
+     * @tc.number    SUB_RESOURCESCHEDULE_SHORT_TASK_XTS_007
      * @tc.name      testRequestSuspendDelayFun001
      * @tc.desc      test request a suspend daly reason is NumberType.
      */
@@ -77,7 +77,7 @@ describe("ShortTaskMgrApiTest", function () {
     })
 
     /*
-     * @tc.number    SUB_RESOURCESCHEDULE_SHORT_TASK_MAG_API_008
+     * @tc.number    SUB_RESOURCESCHEDULE_SHORT_TASK_XTS_008
      * @tc.name      testRequestSuspendDelayFun002
      * @tc.desc      test request a suspend daly reason is BooleanType.
      */
@@ -103,7 +103,7 @@ describe("ShortTaskMgrApiTest", function () {
 })
 
     /*
-     * @tc.number    SUB_RESOURCESCHEDULE_SHORT_TASK_MAG_API_009
+     * @tc.number    SUB_RESOURCESCHEDULE_SHORT_TASK_XTS_009
      * @tc.name      testRequestSuspendDelayFun003
      * @tc.desc      test request a suspend daly reason is NullType.
      */
@@ -129,7 +129,7 @@ it("testRequestSuspendDelayFun003", 0, async function (done) {
 })
 
     /*
-     * @tc.number    SUB_RESOURCESCHEDULE_SHORT_TASK_MAG_API_010
+     * @tc.number    SUB_RESOURCESCHEDULE_SHORT_TASK_XTS_010
      * @tc.name      testRequestSuspendDelayFun004
      * @tc.desc      test request a suspend daly reason is EmptyString.
      */
@@ -156,7 +156,7 @@ it("testRequestSuspendDelayFun003", 0, async function (done) {
 
 
     /*
-     * @tc.number    SUB_RESOURCESCHEDULE_SHORT_TASK_MAG_API_011
+     * @tc.number    SUB_RESOURCESCHEDULE_SHORT_TASK_XTS_011
      * @tc.name      testRequestSuspendDelayFun005
      * @tc.desc      test request a suspend daly reason Undefined.
      */
@@ -182,7 +182,7 @@ it("testRequestSuspendDelayFun003", 0, async function (done) {
     })
 
     /*
-     * @tc.number    SUB_RESOURCESCHEDULE_SHORT_TASK_MAG_API_012
+     * @tc.number    SUB_RESOURCESCHEDULE_SHORT_TASK_XTS_012
      * @tc.name      testGetRemainingDelayTimeFun001
      * @tc.desc      test getRemainingDelayTime Callback ,requestId non-existent.
      */
@@ -217,7 +217,7 @@ it("testRequestSuspendDelayFun003", 0, async function (done) {
     })
 
     /*
-     * @tc.number    SUB_RESOURCESCHEDULE_SHORT_TASK_MAG_API_013
+     * @tc.number    SUB_RESOURCESCHEDULE_SHORT_TASK_XTS_013
      * @tc.name      testGetRemainingDelayTimeFun002
      * @tc.desc      test getRemainingDelayTime Promise ,requestId non-existent.
      */
@@ -250,7 +250,7 @@ it("testRequestSuspendDelayFun003", 0, async function (done) {
     })   
 
     /*
-     * @tc.number    SUB_RESOURCESCHEDULE_SHORT_TASK_MAG_API_014
+     * @tc.number    SUB_RESOURCESCHEDULE_SHORT_TASK_XTS_014
      * @tc.name      testGetRemainingDelayTimeFun003
      * @tc.desc      test getRemainingDelayTime Promise ,requestId is null.
      */
@@ -276,7 +276,7 @@ it("testRequestSuspendDelayFun003", 0, async function (done) {
     })   
 
     /*
-     * @tc.number    SUB_RESOURCESCHEDULE_SHORT_TASK_MAG_API_015
+     * @tc.number    SUB_RESOURCESCHEDULE_SHORT_TASK_XTS_015
      * @tc.name      testGetRemainingDelayTimeFun004
      * @tc.desc      test getRemainingDelayTime Callback ,requestId = -1.
      */
@@ -299,7 +299,7 @@ it("testRequestSuspendDelayFun003", 0, async function (done) {
     })
     
     /*
-     * @tc.number    SUB_RESOURCESCHEDULE_SHORT_TASK_MAG_API_016
+     * @tc.number    SUB_RESOURCESCHEDULE_SHORT_TASK_XTS_016
      * @tc.name      testGetRemainingDelayTimeFun005
      * @tc.desc      test getRemainingDelayTime Promise ,requestId = 0.
      */

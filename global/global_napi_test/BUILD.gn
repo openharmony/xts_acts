@@ -23,6 +23,8 @@ ohos_js_hap_suite("ActsGlobalNapiTest") {
   ets2abc = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsGlobalNapiTest"
+  subsystem_name = "global"
+  part_name = "resource_management"
   shared_libraries = [ "./entry/src/main/cpp:resmgrndk" ]
 }
 

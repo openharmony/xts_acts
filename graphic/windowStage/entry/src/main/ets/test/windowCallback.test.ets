@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "hypium/index"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import ohosWindow from '@ohos.window';
 import display from '@ohos.display';
 import screenManager from '@ohos.screen';
@@ -46,7 +46,8 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       'TYPE_KEYGUARD': 5,
       'TYPE_VOLUME_OVERLAY': 6,
       'TYPE_NAVIGATION_BAR': 7,
-      'TYPE_FLOAT': 8
+      'TYPE_FLOAT': 8,
+      'TYPE_FLOAT_CAMERA':9
     }
     var windowLayoutModeArr = [];
     var windowLayoutModeDic = {
@@ -1474,6 +1475,111 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       })
       console.log(msgStr + 'done ');
       done();
+    })
+    /**
+* @tc.number     SUB_WINDOW_SNAPSHOT_JSAPI_002
+* @tc.name       Test snapshotTest2
+* @tc.desc       Scenario of screenshot of verification window
+*/
+    it('snapshotTest2', 0, async function (done) {
+      let caseName = 'snapshotTest2';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let mainWin = await windowStage.getMainWindow().catch(err => {
+        unexpectedError(err, caseName, 'windowStage.getMainWindow', done);
+      });
+      console.log(msgStr + 'windowStage.getMainWindow' + JSON.stringify(mainWin));
+      expect(!!mainWin).assertTrue();
+      await mainWin.snapshot((err, data) => {
+        if (err && err.code) {
+          console.log(msgStr + 'snapshot err.code:' + JSON.stringify(err.code));
+          return;
+        }
+        console.log(msgStr + 'snapshot success data:' + JSON.stringify(data));
+        mainWin.on('snapshot', (err, data) => {
+          if (err && err.code) {
+            console.log(msgStr + 'mainWin.on(snapshot)  err.code:' + JSON.stringify(err.code));
+            return;
+          }
+          mainWin.off('snapshot', (err, data) => {
+            if (err && err.code) {
+              console.log(msgStr + 'mainWin.off(snapshot) err.code:' + JSON.stringify(err.code));
+              return;
+            }
+          })
+        })
+      })
+      done();
+    })
+    /**
+     * @tc.number     SUB_WINDOW_DIALOGTARGETTOUCH_JSAPI_002
+     * @tc.name       Test dialogTargetTouchTest2
+     * @tc.desc       Verify the scenario of opening modal window
+     */
+    it('dialogTargetTouchTest2', 0, done => {
+      let caseName = 'dialogTargetTouchTest2';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin context==' + JSON.stringify(context));
+      let tempType = ohosWindow.WindowType.TYPE_DIALOG
+      ohosWindow.create(context, 'dialogTargetTouchTest2', tempType, (err, data) => {
+        console.log(msgStr + 'ohosWindow.create err' + JSON.stringify(err));
+        console.log(msgStr + 'ohosWindow.create data' + JSON.stringify(data));
+        if (err && err.code) {
+          unexpectedError(err, caseName, 'ohosWindow.create', done);
+        } else {
+          let dialogTargetTouchTest2Win = data
+          expect(!!dialogTargetTouchTest2Win).assertTrue();
+          dialogTargetTouchTest2Win.destroy();
+          done();
+        }
+      })
+    })
+    /**
+    * @tc.number     SUB_WINDOW_ANIMATIONFORSHOWN_JSAPI_002
+    * @tc.name       Test animationForShownTest2
+    * @tc.desc       Verify window custom animation configuration of the scene
+    */
+    it('animationForShownTest2', 0, async function (done) {
+      let caseName = 'animationForShownTest2';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin context==' + JSON.stringify(context));
+      console.log(msgStr + 'begin ohosWindow==' + JSON.stringify(ohosWindow));
+      let wndId = 'animationForShownTest2';
+      let baseType = ohosWindow.WindowType.TYPE_SYSTEM_ALERT;
+      let tempWnd = null;
+      ohosWindow.create(context, wndId, baseType, (err, data) => {
+        if (err && err.code) {
+          unexpectedError(err, caseName, 'ohosWindow.create ' + baseType, done);
+        } else {
+          tempWnd = data
+          expect(!!tempWnd).assertTrue();
+          console.log(msgStr + 'ohosWindow.create ' + baseType + ', tempWnd: ' + tempWnd);
+          let controller = tempWnd.getTransitionController();
+          controller.animationForShown = (context: ohosWindow.TransitionContext) => {
+            let toWindow = context.toWindow
+            animateTo({
+              duration: 1000, // 动画时长
+              tempo: 0.5, // 播放速率
+              curve: Curve.EaseInOut, // 动画曲线
+              delay: 0, // 动画延迟
+              iterations: 1, // 播放次数
+              playMode: PlayMode.Normal, // 动画模式
+            }, () => {
+              var obj: ohosWindow.TranslateOptions;
+              obj.x = 100.0;
+              obj.y = 0.0;
+              obj.z = 0.0;
+              toWindow.translate(obj);
+              console.info(msgStr + 'toWindow translate end');
+            }
+            )
+            context.completeTransition(true)
+            console.info(msgStr + 'complete transition end');
+          }
+          done();
+        }
+      });
+
     })
   })
 }

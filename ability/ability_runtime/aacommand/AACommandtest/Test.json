@@ -19,7 +19,7 @@
         },
 		{
             "test-file-name": [
-                "AACommandtest.hap",
+                "ActsAACommandTest.hap",
                 "AACommand07.hap",
                 "AACommand08.hap",
                 "AACommandpackage.hap",

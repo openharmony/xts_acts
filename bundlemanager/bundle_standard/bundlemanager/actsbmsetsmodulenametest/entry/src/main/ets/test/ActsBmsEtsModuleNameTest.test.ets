@@ -268,7 +268,7 @@ export default function actsBmsJsModuleNameTest() {
                     expect(err).assertFail();
                 });
             bundle.getAbilityLabel(BUNDLE_NAME, MODULE_NAME3, ABILITY_NAME, (err, data) => {
-                expect(err).assertEqual(SUCCESS_CODE);
+                expect(err).assertNull();
                 if (err) {
                     console.error('[GetAbilityLabel_0300]Operation failed. Err: ' + JSON.stringify(err));
                 }
@@ -485,7 +485,7 @@ export default function actsBmsJsModuleNameTest() {
             expect(data.icon).assertEqual("$media:icon");
             expect(typeof (data.icon)).assertEqual("string");
             expect(data.isVisible).assertEqual(false);
-            expect(data.deviceTypes[0]).assertEqual("phone");
+            expect(data.deviceTypes[0]).assertEqual("default");
             expect(typeof (data.process)).assertEqual("string");
             expect(data.process).assertEqual("com.example.bmsmodulename");
             expect(typeof (data.uri)).assertEqual("string");
@@ -513,7 +513,7 @@ export default function actsBmsJsModuleNameTest() {
             expect(info.label).assertEqual("$string:app_name");
             expect(typeof (info.labelId)).assertEqual("number");
             expect(info.labelId > 0).assertTrue();
-            expect(info.systemApp).assertEqual(true);
+            expect(info.systemApp).assertEqual(false);
             expect(typeof (info.entryDir)).assertEqual("string");
             expect(info.entryDir).assertEqual("/data/app/el1/bundle/public/com.example.bmsmodulename/com.example.bmsmodulenamedentry");
             expect(typeof (info.process)).assertEqual("string");
@@ -558,7 +558,7 @@ export default function actsBmsJsModuleNameTest() {
                 permissions: [], deviceTypes: [], deviceCapabilities: [], readPermission: "", writePermission: "",
                 applicationInfo: {
                     name: "", description: "", descriptionId: 0, systemApp: true, enabled: true, label: "",
-                    labelId: "", icon: "", iconId: "", process: "", supportedModes: 0, moduleSourceDirs: [],
+                    labelId: "", labelIndex: 0, icon: "", iconId: "", iconIndex: 0, process: "", supportedModes: 0, moduleSourceDirs: [],
                     permissions: [], moduleInfos: [], entryDir: "", codePath: "", metaData: map1, metadata: map2,
                     removable: true, accessTokenId: 0, uid: 0, entityType: "", fingerprint: "",
                     iconResource: resource, labelResource: resource, descriptionResource: resource,

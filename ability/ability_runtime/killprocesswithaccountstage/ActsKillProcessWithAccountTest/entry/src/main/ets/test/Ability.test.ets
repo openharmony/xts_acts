@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import appManager from '@ohos.application.appManager';
 import osaccount from '@ohos.account.osAccount'
 
@@ -24,7 +24,7 @@ const SETVALUE = 3000;
 const SETVALUECOPY = 1500;
 const SLEEPVALUE = 500;
 
-export default function killProcessWithAccountTest(abilityContext) {
+export default function killProcessWithAccountTest() {
   describe('Acts_killProcessWithAccountTest', function () {
     var ACCOUNT_ID;
     var flag = false;
@@ -44,35 +44,33 @@ export default function killProcessWithAccountTest(abilityContext) {
    
 
     beforeEach(async (done) => {
-      console.log('======>beforeEach  killProcessWithAccountTest<=======');
+      console.log('======>beforeEach  killProcessWithAccountTest<=======' + flag);
       if(flag == false){
-        setTimeout(()=>{
-          abilityContext.startAbilityWithAccount(
+        setTimeout(async ()=>{
+          await globalThis.abilityContext.startAbilityWithAccount(
             {
               bundleName: 'com.acts.killprocesswithaccountpackage',
               abilityName: 'com.acts.killprocesswithaccountpackage.MainAbility'
-            }, ACCOUNT_ID,
-            {
-              windowMode: 2,
-              displayId: 1
-            }).then(() => {
+            }, ACCOUNT_ID).then(() => {
             console.log(" ====>ACTS_KillProcessWithAccount startability ====> success! ")
-            done();
+          }).catch((error) => {
+            console.log(" ====>ACTS_KillProcessWithAccount startability ====> error: " + JSON.stringify(error))
           })
+          sleep(500);
+          done();
         },1000)
       }else{
-        abilityContext.startAbilityWithAccount(
+        await globalThis.abilityContext.startAbilityWithAccount(
           {
             bundleName: 'com.acts.killprocesswithaccountpackage',
             abilityName: 'com.acts.killprocesswithaccountpackage.MainAbility'
-          }, ACCOUNT_ID,
-          {
-            windowMode: 2,
-            displayId: 1
-          }).then(() => {
+          }, ACCOUNT_ID).then(() => {
           console.log(" ====>ACTS_KillProcessWithAccount startability ====> success! ")
-          done();
+        }).catch((error) => {
+          console.log(" ====>ACTS_KillProcessWithAccount startability ====> error: " + JSON.stringify(error))
         })
+        sleep(500);
+        done();
       }
     })
 

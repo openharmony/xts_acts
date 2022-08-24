@@ -13,23 +13,21 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("uitestActs") {
+ohos_js_hap_suite("ActsUiTest") {
   hap_profile = "./src/main/config.json"
   deps = [
     ":uitest_ets_assets",
     ":uitest_ets_resources",
-    ":uitest_ets_test_assets",
   ]
   ets2abc = true
   certificate_profile = "//test/xts/acts/arkXtest/uitest/signature/auto_ohos_default_com.uitest.test.p7b"
-  hap_name = "uitestActs"
+  hap_name = "ActsUiTest"
 }
+
 ohos_js_assets("uitest_ets_assets") {
   source_dir = "./src/main/ets/MainAbility"
 }
-ohos_js_assets("uitest_ets_test_assets") {
-  source_dir = "./src/main/ets/TestAbility"
-}
+
 ohos_resources("uitest_ets_resources") {
   sources = [ "./src/main/resources" ]
   hap_profile = "./src/main/config.json"

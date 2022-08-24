@@ -229,14 +229,14 @@ describe('AudioDecoderFormatPromise', function () {
     }
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_FORMAT_PROMISE_01_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FORMAT_AAC_PROMISE_0100
         * @tc.name      : 001.test aac format(createbymime)
         * @tc.desc      : decode format test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_AUDIO_DECODER_FORMAT_PROMISE_01_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FORMAT_AAC_PROMISE_0100', 0, async function (done) {
         console.log("case test aac format");
         let mediaDescription = {
                     "channel_count": 2,
@@ -328,14 +328,14 @@ describe('AudioDecoderFormatPromise', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_FORMAT_PROMISE_01_0101
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FORMAT_AAC_PROMISE_0200
         * @tc.name      : 001.test aac format(createbyname)
         * @tc.desc      : decode format test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_AUDIO_DECODER_FORMAT_PROMISE_01_0101', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FORMAT_AAC_PROMISE_0200', 0, async function (done) {
         console.log("case test aac format");
         let mediaDescription = {
                     "channel_count": 2,
@@ -427,14 +427,14 @@ describe('AudioDecoderFormatPromise', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_FORMAT_PROMISE_01_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FORMAT_FLAC_PROMISE_0100
         * @tc.name      : 002.test flac format(createbymime)
         * @tc.desc      : decode format test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_AUDIO_DECODER_FORMAT_PROMISE_01_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FORMAT_FLAC_PROMISE_0100', 0, async function (done) {
         console.log("case test flac format");
         let mediaDescription = {
                     "channel_count": 1,
@@ -484,14 +484,14 @@ describe('AudioDecoderFormatPromise', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_FORMAT_PROMISE_01_0201
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FORMAT_FLAC_PROMISE_0200
         * @tc.name      : 002.test flac format(createbyname)
         * @tc.desc      : decode format test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_AUDIO_DECODER_FORMAT_PROMISE_01_0201', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FORMAT_FLAC_PROMISE_0200', 0, async function (done) {
         console.log("case test flac format");
         let mediaDescription = {
                     "channel_count": 1,
@@ -541,14 +541,14 @@ describe('AudioDecoderFormatPromise', function () {
     })
 
    /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_FORMAT_PROMISE_01_0300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FORMAT_MP3_PROMISE_0100
         * @tc.name      : 003.test mp3 format(createbymime)
         * @tc.desc      : decode format test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-   it('SUB_MEDIA_AUDIO_DECODER_FORMAT_PROMISE_01_0300', 0, async function (done) {
+   it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FORMAT_MP3_PROMISE_0100', 0, async function (done) {
         console.log("case test mp3 format");
         let mediaDescription = {
             "channel_count": 2,
@@ -583,14 +583,14 @@ describe('AudioDecoderFormatPromise', function () {
     })
 
    /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_FORMAT_PROMISE_01_0301
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FORMAT_MP3_PROMISE_0200
         * @tc.name      : 003.test mp3 format(createbyname)
         * @tc.desc      : decode format test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-   it('SUB_MEDIA_AUDIO_DECODER_FORMAT_PROMISE_01_0301', 0, async function (done) {
+   it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FORMAT_MP3_PROMISE_0200', 0, async function (done) {
         console.log("case test mp3 format");
         let mediaDescription = {
             "channel_count": 2,
@@ -625,14 +625,14 @@ describe('AudioDecoderFormatPromise', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_FORMAT_PROMISE_01_0400
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FORMAT_VORBIS_PROMISE_0100
         * @tc.name      : 004.test vorbis format(createbymime)
         * @tc.desc      : decode format test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_AUDIO_DECODER_FORMAT_PROMISE_01_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FORMAT_VORBIS_PROMISE_0100', 0, async function (done) {
         console.log("case test vorbis format");
         let mediaDescription = {
             "channel_count": 1,
@@ -711,14 +711,14 @@ describe('AudioDecoderFormatPromise', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_FORMAT_PROMISE_01_0401
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FORMAT_VORBIS_PROMISE_0200
         * @tc.name      : 004.test vorbis format(createbyname)
         * @tc.desc      : decode format test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_AUDIO_DECODER_FORMAT_PROMISE_01_0401', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FORMAT_VORBIS_PROMISE_0200', 0, async function (done) {
         console.log("case test vorbis format");
         let mediaDescription = {
             "channel_count": 1,

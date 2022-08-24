@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import account_appAccount from '@ohos.account.appAccount';
 import {MyAuthenticator} from '../Common/utils'
 
@@ -24,11 +23,11 @@ export default {
         var accountMgr = account_appAccount.createAppAccountManager();
         try {
             await accountMgr.addAccount("zhangsan", "");
-            await accountMgr.enableAppAccess("zhangsan", "com.example.accounttest");
+            await accountMgr.enableAppAccess("zhangsan", "com.example.actsaccounttest");
             await accountMgr.addAccount("lisi", "");
-            await accountMgr.enableAppAccess("lisi", "com.example.accounttest");
+            await accountMgr.enableAppAccess("lisi", "com.example.actsaccounttest");
             await accountMgr.addAccount("wangwu", "");
-            await accountMgr.enableAppAccess("wangwu", "com.example.accounttest");
+            await accountMgr.enableAppAccess("wangwu", "com.example.actsaccounttest");
         } catch(err) {
             console.error(TAG + "addAccount or enableAppAccess failed, error: " + JSON.stringify(err))
         }

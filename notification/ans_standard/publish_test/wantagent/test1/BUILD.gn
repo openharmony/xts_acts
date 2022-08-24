@@ -12,12 +12,11 @@
 # limitations under the License.
 import("//test/xts/tools/build/suite.gni")
 
-ohos_hap("test1") {
+ohos_hap_assist_suite("test1") {
   hap_profile = "./entry/src/main/config.json"
   hap_name = "test1"
-  subsystem_name = XTS_SUITENAME
-  final_hap_path =
-      "${SUITES_OUTPUT_ROOT}/${XTS_SUITENAME}/testcases/${hap_name}.hap"
+  subsystem_name = "notification"
+  part_name = "distributed_notification_service"
   testonly = true
   deps = [
     ":hjs_demo_js_assets",

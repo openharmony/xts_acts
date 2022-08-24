@@ -14,7 +14,7 @@
  */
 
 import commonEvent from "@ohos.commonEvent"
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 
 const START_ABILITY_TIMEOUT = 5000;
 var subscriberInfoStartAbility_0100 = {
@@ -24,7 +24,7 @@ var subscriberInfoStartAbility_0200 = {
   events: ["ACTS_ConnectAbility_0200_CommonEvent"],
 };
 
-export default function abilityTest(abilityContext) {
+export default function abilityTest() {
 
   describe('ActsExtensionAbilityTest', function () {
 
@@ -56,7 +56,7 @@ export default function abilityTest(abilityContext) {
         console.debug("====>ACTS_getExtensionInfo_0100_Create Subscriber====>");
         subscriber = data;
         await commonEvent.subscribe(subscriber, subscribeCallBack);
-        connId = await abilityContext.connectAbility(
+        connId = await globalThis.abilityContext.connectAbility(
           {
             bundleName: "com.example.staticextensioninfo",
             abilityName: "com.example.staticextensioninfo.ServiceAbility",
@@ -118,20 +118,21 @@ export default function abilityTest(abilityContext) {
         console.log("checkHapModuleInfo_expect_typeof_end")
         expect(data.name).assertEqual("phone");
         expect(data.description).assertEqual("$string:phone_entry_dsc");
-        expect(data.descriptionId).assertEqual(undefined);
+        expect(data.descriptionId).assertEqual(16777221);
         expect(data.icon).assertEqual("$media:icon");
         expect(data.label).assertEqual("$string:entry_label");
-        expect(data.labelId).assertEqual(undefined);
-        expect(data.iconId).assertEqual(undefined);
+        expect(data.labelId).assertEqual(16777219);
+        expect(data.iconId).assertEqual(16777224);
         expect(data.backgroundImg).assertEqual("");
         expect(data.supportedModes).assertEqual(0);
         expect(data.reqCapabilities.length).assertEqual(0);
-        expect(data.reqCapabilities[0]).assertEqual(undefined);
         expect(data.deviceTypes.length).assertEqual(1);
         expect(data.deviceTypes[0]).assertEqual("phone");
         expect(data.moduleName).assertEqual("phone")
-        expect(data.mainAbilityName).assertEqual("MainAbility");
-        expect(data.installationFree).assertEqual(undefined);
+        expect(data.mainAbilityName).assertEqual("com.example.staticextensioninfo.MainAbility");
+        expect(data.installationFree).assertEqual(false);
+        expect(data.mainElementName).assertEqual('com.example.staticextensioninfo.MainAbility');
+        expect(data.hashValue).assertEqual('');
         console.log("checkHapModuleInfo end  " + data);
       }
       function checkApplicationInfo(data) {
@@ -191,9 +192,9 @@ export default function abilityTest(abilityContext) {
         expect(data.enabled).assertEqual(true);
         expect(data.label).assertEqual("$string:app_name");
         expect(data.labelId).assertEqual("16777216");
-        expect(data.icon).assertEqual("");
+        expect(data.icon).assertEqual("$media:icon");
         expect(data.iconId).assertEqual("16777224");
-        expect(data.process).assertEqual("");
+        expect(data.process).assertEqual("com.example.staticextensioninfo");
         expect(data.supportedModes).assertEqual(0);
         expect(data.moduleSourceDirs.length).assertEqual(1);
         expect(data.moduleSourceDirs[0]).assertEqual("/data/app/el1/bundle/public/" +
@@ -238,7 +239,7 @@ export default function abilityTest(abilityContext) {
         console.debug("====>ACTS_getExtensionInfo_0200_Create Subscriber====>");
         subscriber = data;
         await commonEvent.subscribe(subscriber, subscribeCallBack);
-        connId = await abilityContext.connectAbility(
+        connId = await globalThis.abilityContext.connectAbility(
           {
             bundleName: "com.example.staticextensioninfotest",
             abilityName: "com.example.staticextensioninfotest.ServiceAbility",
@@ -299,20 +300,21 @@ export default function abilityTest(abilityContext) {
         console.log("checkHapModuleInfo_expect_typeof_end")
         expect(data.name).assertEqual("phone");
         expect(data.description).assertEqual("$string:phone_entry_dsc");
-        expect(data.descriptionId).assertEqual(undefined);
+        expect(data.descriptionId).assertEqual(16777221);
         expect(data.icon).assertEqual("$media:icon");
         expect(data.label).assertEqual("$string:entry_label");
-        expect(data.labelId).assertEqual(undefined);
-        expect(data.iconId).assertEqual(undefined);
+        expect(data.labelId).assertEqual(16777219);
+        expect(data.iconId).assertEqual(16777224);
         expect(data.backgroundImg).assertEqual("");
         expect(data.supportedModes).assertEqual(0);
         expect(data.reqCapabilities.length).assertEqual(0);
-        expect(data.reqCapabilities[0]).assertEqual(undefined);
         expect(data.deviceTypes.length).assertEqual(1);
         expect(data.deviceTypes[0]).assertEqual("phone");
         expect(data.moduleName).assertEqual("phone")
-        expect(data.mainAbilityName).assertEqual("MainAbility");
-        expect(data.installationFree).assertEqual(undefined);
+        expect(data.mainAbilityName).assertEqual("com.example.staticextensioninfotest.MainAbility");
+        expect(data.installationFree).assertEqual(false);
+        expect(data.mainElementName).assertEqual('com.example.staticextensioninfotest.MainAbility');
+        expect(data.hashValue).assertEqual('');
         console.log("checkHapModuleInfo end  " + data);
       }
       function checkApplicationInfo_0200(data) {
@@ -372,9 +374,9 @@ export default function abilityTest(abilityContext) {
         expect(data.enabled).assertEqual(true);
         expect(data.label).assertEqual("$string:app_name");
         expect(data.labelId.length).assertLarger(0);
-        expect(data.icon).assertEqual("");
+        expect(data.icon).assertEqual("$media:icon");
         expect(data.iconId.length).assertLarger(0);
-        expect(data.process).assertEqual("");
+        expect(data.process).assertEqual("com.example.staticextensioninfo");
         expect(data.supportedModes).assertEqual(0);
         expect(data.moduleSourceDirs.length).assertEqual(1);
         expect(data.moduleSourceDirs[0]).assertEqual("/data/app/el1/bundle/public/" +
@@ -418,7 +420,7 @@ export default function abilityTest(abilityContext) {
         console.debug("====>ACTS_getExtensionInfo_0300_Create Subscriber====>");
         subscriber = data;
         await commonEvent.subscribe(subscriber, subscribeCallBack);
-              connId = await abilityContext.connectAbility(
+              connId = await globalThis.abilityContext.connectAbility(
         {
           bundleName: "com.example.extensionmodule",
           abilityName: "ServiceExtAbility",
@@ -433,7 +435,7 @@ export default function abilityTest(abilityContext) {
 
       function timeout() {
         expect().assertFail();
-        abilityContext.disconnectAbility(
+        globalThis.abilityContext.disconnectAbility(
           connId,
           (error, data) => {
             console.log('DisconnectAbility_0300 result errCode : ' + error.code + " data: " + data)

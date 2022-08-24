@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 import workScheduler from '@ohos.workScheduler'
-import workSchedulerCallback from '@ohos.WorkSchedulerExtensionAbility'
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
@@ -52,7 +51,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_072
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_072
          * @tc.name      testStartWorkFun001
          * @tc.desc      test workScheduler workInfo networkType is MOBILE.
          */
@@ -72,7 +71,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_073
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_073
          * @tc.name      testStartWorkFun002
          * @tc.desc      test workScheduler workInfo networkType is WIFI.
          */
@@ -92,7 +91,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_074
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_074
          * @tc.name      testStartWorkFun003
          * @tc.desc      test workScheduler workInfo networkType is BLUETOOTH.
          */
@@ -112,7 +111,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_075
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_075
          * @tc.name      testStartWorkFun004
          * @tc.desc      test workScheduler workInfo networkType is WIFI_P2P.
          */
@@ -132,7 +131,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_076
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_076
          * @tc.name      testStartWorkFun005
          * @tc.desc      test workScheduler workInfo networkType is ETHERNET.
          */
@@ -152,7 +151,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_077
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_077
          * @tc.name      testStartWorkFun006
          * @tc.desc      test workScheduler workInfo chargerType is ANY.
          */
@@ -173,7 +172,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_078
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_078
          * @tc.name      testStartWorkFun007
          * @tc.desc      test workScheduler workInfo chargerType is USB.
          */
@@ -194,7 +193,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_079
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_079
          * @tc.name      testStartWorkFun008
          * @tc.desc      test workScheduler workInfo chargerType is WIRELESS.
          */
@@ -215,7 +214,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_080
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_080
          * @tc.name      testStartWorkFun009
          * @tc.desc      test workScheduler workInfo BatteryStatus OKAY.
          */
@@ -235,7 +234,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_081
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_081
          * @tc.name      testStartWorkFun010
          * @tc.desc      test workScheduler workInfo BatteryStatus LOW_OR_OKAY.
          */
@@ -255,7 +254,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_082
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_082
          * @tc.name      testStartWorkFun011
          * @tc.desc      test workScheduler workInfo storageRequest LOW.
          */
@@ -275,7 +274,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_083
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_083
          * @tc.name      testStartWorkFun012
          * @tc.desc      test workScheduler workInfo storageRequest OKAY.
          */
@@ -295,7 +294,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_084
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_084
          * @tc.name      testStartWorkFun013
          * @tc.desc      test workScheduler workInfo storageRequest LOW_OR_OKAY.
          */
@@ -315,7 +314,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_085
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_085
          * @tc.name      testStartWorkFun014
          * @tc.desc      test workScheduler workInfo select all parameter.
          */
@@ -348,7 +347,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_086
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_086
          * @tc.name      testStartWorkFun015
          * @tc.desc      test workScheduler workInfo select networkType,batteryLevel,batteryStatus,storageRequest.
          */
@@ -377,7 +376,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_087
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_087
          * @tc.name      testStartWorkFun016
          * @tc.desc      test start workScheduler workId is StringType. 
          */
@@ -397,7 +396,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_088
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_088
          * @tc.name      testStartWorkFun017
          * @tc.desc      test start workScheduler workId is NullType. 
          */
@@ -417,7 +416,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_089
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_089
          * @tc.name      testStartWorkFun018
          * @tc.desc      test start workScheduler without workId. 
          */
@@ -436,7 +435,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_090
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_090
          * @tc.name      testStartWorkFun019
          * @tc.desc      test start workScheduler bundleName is NumberType. 
          */
@@ -456,7 +455,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_091
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_091
          * @tc.name      testStartWorkFun020
          * @tc.desc      test start workScheduler bundleName error. 
          */
@@ -476,7 +475,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_092
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_092
          * @tc.name      testStartWorkFun021
          * @tc.desc      test start workScheduler bundleName is NullType. 
          */
@@ -496,7 +495,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_093
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_093
          * @tc.name      testStartWorkFun022
          * @tc.desc      test start workScheduler abilityName is NumberType. 
          */
@@ -516,7 +515,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_094
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_094
          * @tc.name      testStartWorkFun023
          * @tc.desc      test start workScheduler abilityName is EmptyString. 
          */
@@ -536,7 +535,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_095
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_095
          * @tc.name      testStartWorkFun024
          * @tc.desc      test start workScheduler abilityName is a space. 
          */
@@ -556,7 +555,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_096
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_096
          * @tc.name      testStartWorkFun025
          * @tc.desc      test start workScheduler abilityName is NullType. 
          */
@@ -576,7 +575,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_097
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_097
          * @tc.name      testStartWorkFun026
          * @tc.desc      test start workScheduler networkType < 0. 
          */
@@ -596,7 +595,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_098
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_098
          * @tc.name      testStartWorkFun027
          * @tc.desc      test start workScheduler networkType > 5. 
          */
@@ -616,7 +615,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_099
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_099
          * @tc.name      testStartWorkFun028
          * @tc.desc      test start workScheduler chargerType < 0. 
          */
@@ -637,7 +636,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_100
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_100
          * @tc.name      testStartWorkFun029
          * @tc.desc      test start workScheduler chargerType > 3. 
          */
@@ -658,7 +657,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_101
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_101
          * @tc.name      testStartWorkFun030
          * @tc.desc      test start workScheduler isCharging is NumberType. 
          */
@@ -679,7 +678,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_102
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_102
          * @tc.name      testStartWorkFun031
          * @tc.desc      test start workScheduler isCharging is StringType. 
          */
@@ -700,7 +699,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_103
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_103
          * @tc.name      testStartWorkFun032
          * @tc.desc      test start workScheduler without isCharging. 
          */
@@ -720,7 +719,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_104
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_104
          * @tc.name      testStartWorkFun033
          * @tc.desc      test start workScheduler batteryLevel < 0. 
          */
@@ -740,7 +739,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_105
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_105
          * @tc.name      testStartWorkFun034
          * @tc.desc      test start workScheduler batteryLevel = 0. 
          */
@@ -760,7 +759,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_106
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_106
          * @tc.name      testStartWorkFun035
          * @tc.desc      test start workScheduler batteryLevel = 100. 
          */
@@ -780,7 +779,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_107
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_107
          * @tc.name      testStartWorkFun036
          * @tc.desc      test start workScheduler batteryLevel > 100. 
          */
@@ -800,7 +799,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_108
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_108
          * @tc.name      testStartWorkFun037
          * @tc.desc      test start workScheduler batteryStatus < 0. 
          */
@@ -820,7 +819,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_109
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_109
          * @tc.name      testStartWorkFun038
          * @tc.desc      test start workScheduler batteryStatus > 2. 
          */
@@ -840,7 +839,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_110
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_110
          * @tc.name      testStartWorkFun039
          * @tc.desc      test start workScheduler storageRequest < 0. 
          */
@@ -860,7 +859,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_111
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_111
          * @tc.name      testStartWorkFun040
          * @tc.desc      test start workScheduler storageRequest > 2. 
          */
@@ -880,7 +879,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_112
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_112
          * @tc.name      testStartWorkFun041
          * @tc.desc      test start workScheduler repeatCycleTime < 0. 
          */
@@ -901,7 +900,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_113
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_113
          * @tc.name      testStartWorkFun042
          * @tc.desc      test start workScheduler repeatCycleTime < 20min. 
          */
@@ -922,7 +921,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_114
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_114
          * @tc.name      testStartWorkFun043
          * @tc.desc      test start workScheduler condition only repeatCycleTime. 
          */
@@ -942,7 +941,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_115
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_115
          * @tc.name      testStartWorkFun044
          * @tc.desc      test start workScheduler without repeatCycleTime. 
          */
@@ -963,7 +962,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_116
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_116
          * @tc.name      testStartWorkFun045
          * @tc.desc      test start workScheduler isRepeat is StringType. 
          */
@@ -984,7 +983,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_117
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_117
          * @tc.name      testStartWorkFun046
          * @tc.desc      test start workScheduler repeatCount = 0. 
          */
@@ -1005,7 +1004,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_118
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_118
          * @tc.name      testStartWorkFun047
          * @tc.desc      test start workScheduler repeatCount < 0. 
          */
@@ -1026,7 +1025,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_119
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_119
          * @tc.name      testStartWorkFun048
          * @tc.desc      test start workScheduler isRepeat = false and repeatCount < 0. 
          */
@@ -1048,7 +1047,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_120
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_120
          * @tc.name      testStartWorkFun049
          * @tc.desc      test start workScheduler condition only repeatCount. 
          */
@@ -1068,7 +1067,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_121
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_121
          * @tc.name      testStartWorkFun050
          * @tc.desc      test start workScheduler isPersisted is StringType. 
          */
@@ -1088,7 +1087,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_122
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_122
          * @tc.name      testStartWorkFun051
          * @tc.desc      test start workScheduler isPersisted is NumberType. 
          */
@@ -1108,7 +1107,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_123
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_123
          * @tc.name      testStartWorkFun052
          * @tc.desc      test start workScheduler isDeepIdle is StringType. 
          */
@@ -1128,7 +1127,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_124
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_124
          * @tc.name      testStartWorkFun053
          * @tc.desc      test start workScheduler isDeepIdle is NumberType. 
          */
@@ -1148,7 +1147,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_125
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_125
          * @tc.name      testStopWorkFun001
          * @tc.desc      test stop workScheduler needCancel is StringType. 
          */
@@ -1177,7 +1176,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_126
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_126
          * @tc.name      testStopWorkFun002
          * @tc.desc      test stop workScheduler needCancel is NumberType. 
          */
@@ -1206,7 +1205,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_127
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_127
          * @tc.name      testStopWorkFun003
          * @tc.desc      test stop workScheduler needCancel is NullType. 
          */
@@ -1235,7 +1234,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_128
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_128
          * @tc.name      testStopWorkFun004
          * @tc.desc      test stop workScheduler missing parameter needCancel. 
          */
@@ -1264,7 +1263,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_129
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_129
          * @tc.name      testStopWorkFun005
          * @tc.desc      test stop workScheduler workId error ,needCancel true. 
          */
@@ -1295,7 +1294,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_130
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_130
          * @tc.name      testStopWorkFun006
          * @tc.desc      test stop workScheduler workId error ,needCancel false. 
          */
@@ -1326,7 +1325,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_131
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_131
          * @tc.name      testStopWorkFun007
          * @tc.desc      test stop workScheduler bundleName error,needCancel true. 
          */
@@ -1357,7 +1356,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_132
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_132
          * @tc.name      testStopWorkFun008
          * @tc.desc      test stop workScheduler bundleName error,needCancel false. 
          */
@@ -1388,7 +1387,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_133
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_133
          * @tc.name      testStopWorkFun009
          * @tc.desc      test stop workScheduler abilityName error,needCancel true. 
          */
@@ -1424,7 +1423,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_134
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_134
          * @tc.name      testStopWorkFun010
          * @tc.desc      test stop workScheduler abilityName error,needCancel false. 
          */
@@ -1460,7 +1459,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_135
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_135
          * @tc.name      testStopWorkFun011
          * @tc.desc      test stop workScheduler networkType different. 
          */
@@ -1491,7 +1490,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_136
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_136
          * @tc.name      testStopWorkFun012
          * @tc.desc      test stop workScheduler chargerType different. 
          */
@@ -1524,7 +1523,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_137
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_137
          * @tc.name      test stopWorkFun013
          * @tc.desc      test stop workScheduler batteryStatus different. 
          */
@@ -1555,7 +1554,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_138
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_138
          * @tc.name      test stopWorkFun014
          * @tc.desc      test stop workScheduler storageRequest different. 
          */
@@ -1586,7 +1585,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_139
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_139
          * @tc.name      testStopWorkFun015
          * @tc.desc      test stop workScheduler isPersisted different. 
          */
@@ -1619,7 +1618,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_140
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_140
          * @tc.name      testStopWorkFun016
          * @tc.desc      test stop workScheduler repeatCycleTime different. 
          */
@@ -1652,7 +1651,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_141
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_141
          * @tc.name      testGetWorkStatusFun001
          * @tc.desc      test getWorkStatus Callback workId error. 
          */
@@ -1685,7 +1684,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_142
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_142
          * @tc.name      testGetWorkStatusFun002
          * @tc.desc      test getWorkStatus Promise workId error. 
          */
@@ -1717,7 +1716,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_143
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_143
          * @tc.name      testGetWorkStatusFun003
          * @tc.desc      test getWorkStatus Promise parameter undefined. 
          */
@@ -1753,7 +1752,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
        /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_144
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_144
          * @tc.name      testGetWorkStatusFun004
          * @tc.desc      test getWorkStatus Promise parameter StringType. 
          */
@@ -1789,7 +1788,7 @@ export default function WorkSchedulerMgrApiTest() {
     })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_145
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_145
          * @tc.name      testObtainAllWorksFun001
          * @tc.desc      test obtainAllWorks Callback. 
          */
@@ -1820,7 +1819,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_146
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_146
          * @tc.name      testObtainAllWorksFun002
          * @tc.desc      test first stop work then obtainAllWorks Promise. 
          */
@@ -1848,7 +1847,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_147
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_147
          * @tc.name      testStopAndClearWorksFun001
          * @tc.desc      test repeat stopAndClearWorks. 
          */
@@ -1872,7 +1871,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_148
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_148
          * @tc.name      testIsLastWorkTimeOutFun001
          * @tc.desc      test isLastWorkTimeOut callback parameter workId < 0. 
          */
@@ -1893,7 +1892,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_150
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_150
          * @tc.name      testIsLastWorkTimeOutFun003
          * @tc.desc      test isLastWorkTimeOut promise parameter workId is StringType. 
          */
@@ -1917,7 +1916,7 @@ export default function WorkSchedulerMgrApiTest() {
         })
     
         /*
-         * @tc.number    SUB_RESOURCESCHEDULE_WORK_SCHEDULE_API_151
+         * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_151
          * @tc.name      testIsLastWorkTimeOutFun004
          * @tc.desc      test isLastWorkTimeOut promise parameter workId is NullType. 
          */

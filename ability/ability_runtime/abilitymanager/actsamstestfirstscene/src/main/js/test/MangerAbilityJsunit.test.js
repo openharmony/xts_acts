@@ -40,6 +40,7 @@ export default function ActsAmsTestFirstScene() {
                     ' + error.code + ', data length [' + data.length + ']');
                 }
             );
+            sleep(500);
             done();
         });
 
@@ -64,9 +65,6 @@ export default function ActsAmsTestFirstScene() {
         * @tc.desc      : Get All Running Processes Info(by Promise)
         */
         it('Acts_Ams_test_0100', 0, async function (done) {
-            console.info("sleep begin");
-            sleep(5000);
-            console.info("sleep end");
             var info = await appManager.getProcessRunningInfos();
             expect(Array.isArray(info)).assertEqual(true);
             expect(info.length).assertLarger(0);
@@ -85,5 +83,32 @@ export default function ActsAmsTestFirstScene() {
             }
             done();
         })
+
+        /*
+        * @tc.number    : Acts_Ams_test_0200
+        * @tc.name      : getProcessRunningInformation : Get All Running Processes Information
+        * @tc.desc      : Get All Running Processes Information(by Promise)
+        */
+        it('Acts_Ams_test_0200', 0, async function (done) {
+            var info = await appManager.getProcessRunningInformation();
+            expect(Array.isArray(info)).assertEqual(true);
+            expect(info.length).assertLarger(0);
+            for (var i = 0; i < info.length; i++) {
+                console.info('Acts_Ams_test_0200 getProcessRunningInformation[' + i + "]: \
+                    " + JSON.stringify(info[i]));
+                expect(typeof (info[i].pid)).assertEqual("number");
+                expect(info[i].pid).assertLarger(0);
+
+                expect(typeof (info[i].processName)).assertEqual("string");
+                expect(info[i].processName.length).assertLarger(0);
+                expect(Array.isArray(info[i].bundleNames)).assertEqual(true);
+                expect(info[i].bundleNames.length).assertLarger(0);
+
+                expect(typeof (info[i].uid)).assertEqual("number");
+                expect(info[i].uid).assertLarger(0);
+            }
+            done();
+        })
+
     })
 }

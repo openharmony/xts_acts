@@ -13,7 +13,10 @@
  * limitations under the License.
  */
 
-import Image_test from './image.test.js'
+import imageJsTest from './image.test.js'
+import addImage from './addImage.test.js'
+
 export default function testsuite() {
-    Image_test()
+    imageJsTest()
+    addImage()
 }

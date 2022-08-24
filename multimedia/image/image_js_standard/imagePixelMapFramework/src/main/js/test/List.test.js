@@ -14,7 +14,7 @@
  */
 
 
-import Image_test from './framework.test.js'
+import imagePixelMapFramework from './framework.test.js'
 export default function testsuite() {
-    Image_test()
+    imagePixelMapFramework()
 }

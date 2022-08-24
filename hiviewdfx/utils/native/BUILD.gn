@@ -20,7 +20,7 @@ config("utils_config") {
   include_dirs = [
     "//third_party/cJSON/",
     "//third_party/zlib/",
-    "//utils/native/base/",
+    "//commonlibrary/c_utils/base/",
   ]
 }
 
@@ -33,6 +33,6 @@ ohos_static_library("utilskit") {
   deps = [
     "//base/hiviewdfx/hilog/interfaces/native/innerkits:libhilog",
     "//base/hiviewdfx/hiview/base:hiviewbase",
-    "//utils/native/base:utils",
+    "//commonlibrary/c_utils/base:utils",
   ]
 }

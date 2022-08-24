@@ -23,6 +23,9 @@ ohos_js_hap_suite("ActsAbilityManagerEtsTest") {
   ets2abc = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsAbilityManagerEtsTest"
+
+  subsystem_name = "ability"
+  part_name = "ability_runtime"
 }
 ohos_js_assets("hjs_demo_ets_assets") {
   source_dir = "./entry/src/main/ets/MainAbility"

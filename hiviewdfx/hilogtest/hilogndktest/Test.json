@@ -3,14 +3,14 @@
     "driver": {
         "type": "CppTest",
         "native-test-timeout": "120000",
-        "module-name": "hilogndktest",
+        "module-name": "ActsHilogndkTest",
         "runtime-hint": "ls",
         "native-test-device-path": "/data/local/tmp"
     },
     "kits": [
         {
           "push": [
-               "hilogndktest->/data/local/tmp/hilogndktest"
+               "ActsHilogndkTest->/data/local/tmp/ActsHilogndkTest"
            ],
            "type": "PushKit"
         }

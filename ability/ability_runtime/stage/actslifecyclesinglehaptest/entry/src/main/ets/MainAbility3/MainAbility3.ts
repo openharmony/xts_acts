@@ -32,24 +32,32 @@ export default class MainAbility3 extends Ability {
                 listKey3.push(abilityname + " onAbilityCreate");
                 console.log("[Demo] 1listKey3:" + JSON.stringify(listKey3));
             },
-            onAbilityWindowStageCreate(ability) {
-                console.log("[Demo] AbilityLifecycleCallback3 onAbilityWindowStageCreate ability:"
+            onWindowStageCreate(ability, windowStage) {
+                console.log("[Demo] AbilityLifecycleCallback3 onWindowStageCreate ability:"
                 + JSON.stringify(ability));
                 let abilityname = ability.context.abilityInfo.name;
-                console.log("[Demo] AbilityLifecycleCallback3 onAbilityWindowStageCreate abilityname:"
+                console.log("[Demo] AbilityLifecycleCallback3 onWindowStageCreate abilityname:"
                 + JSON.stringify(abilityname));
-                console.log("[Demo] " + abilityname + " onAbilityWindowStageCreate");
-                listKey3.push(abilityname + " onAbilityWindowStageCreate");
+                console.log("[Demo] " + abilityname + " onWindowStageCreate");
+                listKey3.push(abilityname + " onWindowStageCreate");
                 console.log("[Demo] 2listKey3:" + JSON.stringify(listKey3));
             },
-            onAbilityWindowStageDestroy(ability) {
-                console.log("[Demo] AbilityLifecycleCallback3 onAbilityWindowStageDestroy ability:"
+            onWindowStageActive(ability, windowStage) {
+                let abilityname = ability.context.abilityInfo.name;
+                console.log(abilityname + " onWindowStageActive")
+            },
+            onWindowStageInactive(ability, windowStage) {
+                let abilityname = ability.context.abilityInfo.name;
+                console.log(abilityname + " onWindowStageInactive")
+            },
+            onWindowStageDestroy(ability, windowStage) {
+                console.log("[Demo] AbilityLifecycleCallback3 onWindowStageDestroy ability:"
                 + JSON.stringify(ability));
                 let abilityname = ability.context.abilityInfo.name;
-                console.log("[Demo] AbilityLifecycleCallback3 onAbilityWindowStageDestroy abilityname:"
+                console.log("[Demo] AbilityLifecycleCallback3 onWindowStageDestroy abilityname:"
                 + JSON.stringify(abilityname));
-                console.log("[Demo] " + abilityname + " onAbilityWindowStageDestroy");
-                listKey3.push(abilityname + " onAbilityWindowStageDestroy");
+                console.log("[Demo] " + abilityname + " onWindowStageDestroy");
+                listKey3.push(abilityname + " onWindowStageDestroy");
                 console.log("[Demo] 3listKey3:" + JSON.stringify(listKey3));
             },
             onAbilityDestroy(ability) {
@@ -111,7 +119,7 @@ export default class MainAbility3 extends Ability {
         // Main window is created, set main page for this ability
         console.log("[Demo] MainAbility3 onWindowStageCreate")
         globalThis.ability3 = this.context
-        windowStage.setUIContent(this.context, "pages/index3", null)
+        windowStage.setUIContent(this.context, "MainAbility/pages/index3", null)
     }
 
     onWindowStageDestroy() {

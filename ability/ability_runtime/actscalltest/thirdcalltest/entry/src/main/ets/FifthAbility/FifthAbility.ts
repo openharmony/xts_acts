@@ -94,7 +94,7 @@ export default class FifthAbility extends Ability {
     onWindowStageCreate(windowStage) {
         // Main window is created, set main page for this ability
         console.log("SystemCallTest FifthAbility onWindowStageCreate")
-        windowStage.setUIContent(this.context, "pages/second/second", null)
+        windowStage.setUIContent(this.context, "MainAbility/pages/second/second", null)
     }
 
     onWindowStageDestroy() {
