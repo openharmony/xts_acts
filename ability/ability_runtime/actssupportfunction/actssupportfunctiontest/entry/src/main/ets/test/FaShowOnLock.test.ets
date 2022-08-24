@@ -22,7 +22,7 @@ export default function FaShowOnLockTest() {
   describe('FaShowOnLockTest', function () {
 
     let TAG = "";
-    let TAG1 = "SUB_AA_OpenHarmony == ";
+    let TAG1 = "SUB_AA_OpenHarmony == FaShowOnLockTest : ";
     let sleepTimeOne = 1000;
     let sleepTimeTwo = 2000;
     let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
