@@ -18,6 +18,7 @@ group("ans_standard") {
     deps = [
       #"actsansnotificationcancel:ActsAnsNotificationCancelTest",
       #"actsansnotificationremove:ActsAnsNotificationRemoveTest",
+      "actsNotificationSlotTest:ActsNotificationSlotTest",
       "actsansslottest:ActsAnsSlotTest",
       "actsnotificationshow:ActsNotificationShowTest",
       "publish_test:publish_test",

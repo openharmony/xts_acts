@@ -352,14 +352,14 @@ describe('VideoEncoderFormatPromise', function () {
     }
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_ENCODER_SOFTWARE_FORMAT_COMPATIBILITY_MPEG4_PROMISE_01_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_ENCODER_SOFTWARE_FORMAT_MPEG4_PROMISE_0100
         * @tc.name      : 000.test MPEG4 format-resolution 640*480-frame rate 30 FPS
         * @tc.desc      : video encoder format compatibility test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */ 
-    it('SUB_MEDIA_VIDEO_ENCODER_SOFTWARE_FORMAT_COMPATIBILITY_MPEG4_PROMISE_01_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_ENCODER_SOFTWARE_FORMAT_MPEG4_PROMISE_0100', 0, async function (done) {
         console.info("case test MPEG4 format-resolution 640*480-frame rate 30 FPS");
         let savePath = 'rk_mpeg4_video_software_640_480_30.es';
         let name= 'avenc_mpeg4';
@@ -375,14 +375,14 @@ describe('VideoEncoderFormatPromise', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_ENCODER_SOFTWARE_FORMAT_COMPATIBILITY_MPEG4_PROMISE_01_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_ENCODER_SOFTWARE_FORMAT_MPEG4_PROMISE_0200
         * @tc.name      : 000.test MPEG4 format-resolution 352*288-frame rate 30 FPS
         * @tc.desc      : video encoder format compatibility test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */ 
-    it('SUB_MEDIA_VIDEO_ENCODER_SOFTWARE_FORMAT_COMPATIBILITY_MPEG4_PROMISE_01_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_ENCODER_SOFTWARE_FORMAT_MPEG4_PROMISE_0200', 0, async function (done) {
         console.info("case test MPEG4 format-resolution 352*288-frame rate 30 FPS");
         let savePath = 'rk_mpeg4_video_software_352_288_30.es';
         let name= 'avenc_mpeg4';
@@ -398,14 +398,14 @@ describe('VideoEncoderFormatPromise', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_ENCODER_SOFTWARE_FORMAT_COMPATIBILITY_MPEG4_PROMISE_02_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_ENCODER_SOFTWARE_FORMAT_MPEG4_PROMISE_0300
         * @tc.name      : 000.test MPEG4 format-resolution 640*480-frame rate 25 FPS
         * @tc.desc      : video encoder format compatibility test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */ 
-    it('SUB_MEDIA_VIDEO_ENCODER_SOFTWARE_FORMAT_COMPATIBILITY_MPEG4_PROMISE_02_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_ENCODER_SOFTWARE_FORMAT_MPEG4_PROMISE_0300', 0, async function (done) {
         console.info("case test MPEG4 format-resolution 640*480-frame rate 25 FPS");
         let savePath = 'rk_mpeg4_video_software_640_480_25.es';
         let name= 'avenc_mpeg4';
@@ -421,14 +421,14 @@ describe('VideoEncoderFormatPromise', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_ENCODER_SOFTWARE_FORMAT_COMPATIBILITY_MPEG4_PROMISE_02_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_ENCODER_SOFTWARE_FORMAT_MPEG4_PROMISE_0400
         * @tc.name      : 000.test MPEG4 format-resolution 640*480-frame rate 10 FPS
         * @tc.desc      : video encoder format compatibility test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */ 
-    it('SUB_MEDIA_VIDEO_ENCODER_SOFTWARE_FORMAT_COMPATIBILITY_MPEG4_PROMISE_02_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_ENCODER_SOFTWARE_FORMAT_MPEG4_PROMISE_0400', 0, async function (done) {
         console.info("case test MPEG4 format-resolution 640*480-frame rate 10 FPS");
         let savePath = 'rk_mpeg4_video_software_640_480_10.es';
         let name= 'avenc_mpeg4';

@@ -222,14 +222,14 @@ describe('AudioDecoderFormatCallback', function () {
     }
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_FORMAT_CALLBACK_01_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FORMAT_AAC_CALLBACK_0100
         * @tc.name      : 001.test aac format(createbymime)
         * @tc.desc      : basic decode function
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_AUDIO_DECODER_FORMAT_CALLBACK_01_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FORMAT_AAC_CALLBACK_0100', 0, async function (done) {
         console.log("case test aac format");
         let events = require('events');
         let eventEmitter = new events.EventEmitter();
@@ -340,14 +340,14 @@ describe('AudioDecoderFormatCallback', function () {
     })
 
    /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_FORMAT_CALLBACK_01_0101
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FORMAT_AAC_CALLBACK_0200
         * @tc.name      : 001.test aac format(createbyname)
         * @tc.desc      : basic decode function
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_AUDIO_DECODER_FORMAT_CALLBACK_01_0101', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FORMAT_AAC_CALLBACK_0200', 0, async function (done) {
         console.log("case test aac format");
         let events = require('events');
         let eventEmitter = new events.EventEmitter();
@@ -458,14 +458,14 @@ describe('AudioDecoderFormatCallback', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_FORMAT_CALLBACK_01_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FORMAT_FLAC_CALLBACK_0100
         * @tc.name      : 002.test flac format(createbymime)
         * @tc.desc      : basic decode function
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_AUDIO_DECODER_FORMAT_CALLBACK_01_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FORMAT_FLAC_CALLBACK_0100', 0, async function (done) {
         console.log("case test flac format");
         let events = require('events');
         let eventEmitter = new events.EventEmitter();
@@ -533,14 +533,14 @@ describe('AudioDecoderFormatCallback', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_FORMAT_CALLBACK_01_0201
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FORMAT_FLAC_CALLBACK_0200
         * @tc.name      : 002.test flac format(createbyname)
         * @tc.desc      : basic decode function
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_AUDIO_DECODER_FORMAT_CALLBACK_01_0201', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FORMAT_FLAC_CALLBACK_0200', 0, async function (done) {
         console.log("case test flac format");
         let events = require('events');
         let eventEmitter = new events.EventEmitter();
@@ -608,14 +608,14 @@ describe('AudioDecoderFormatCallback', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_FORMAT_CALLBACK_01_0300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FORMAT_MP3_CALLBACK_0100
         * @tc.name      : 003.test mp3 format(createbymime)
         * @tc.desc      : basic decode function
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_AUDIO_DECODER_FORMAT_CALLBACK_01_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FORMAT_MP3_CALLBACK_0100', 0, async function (done) {
         console.log("test mp3 format");
         let events = require('events');
         let eventEmitter = new events.EventEmitter();
@@ -670,14 +670,14 @@ describe('AudioDecoderFormatCallback', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_FORMAT_CALLBACK_01_0301
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FORMAT_MP3_CALLBACK_0200
         * @tc.name      : 003.test mp3 format(createbyname)
         * @tc.desc      : basic decode function
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_AUDIO_DECODER_FORMAT_CALLBACK_01_0301', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FORMAT_MP3_CALLBACK_0200', 0, async function (done) {
         console.log("test mp3 format");
         let events = require('events');
         let eventEmitter = new events.EventEmitter();
@@ -732,14 +732,14 @@ describe('AudioDecoderFormatCallback', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_FORMAT_CALLBACK_01_0400
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FORMAT_VORBIS_CALLBACK_0100
         * @tc.name      : 004.test vorbis format(createbymime)
         * @tc.desc      : basic decode function
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_AUDIO_DECODER_FORMAT_CALLBACK_01_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FORMAT_VORBIS_CALLBACK_0100', 0, async function (done) {
         console.log("test vorbis format");
         let events = require('events');
         let eventEmitter = new events.EventEmitter();
@@ -837,14 +837,14 @@ describe('AudioDecoderFormatCallback', function () {
     })
 
         /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_DECODER_FORMAT_CALLBACK_01_0401
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FORMAT_VORBIS_CALLBACK_0200
         * @tc.name      : 004.test vorbis format(createbyname)
         * @tc.desc      : basic decode function
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_AUDIO_DECODER_FORMAT_CALLBACK_01_0401', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_DECODER_FORMAT_VORBIS_CALLBACK_0200', 0, async function (done) {
         console.log("test vorbis format");
         let events = require('events');
         let eventEmitter = new events.EventEmitter();

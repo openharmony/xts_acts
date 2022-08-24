@@ -3,7 +3,7 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "360000",
-        "bundle-name": "com.example.myapplication",
+        "bundle-name": "com.example.accessibilityxts",
         "module-name": "phone",
         "shell-timeout": "600000",
         "testcase-timeout": 70000
@@ -20,7 +20,7 @@
         {
             "type": "ShellKit",
             "teardown-command":[
-                "bm uninstall -n com.example.myapplication",
+                "bm uninstall -n com.example.accessibilityxts",
                 "bm uninstall -n com.example.acetest"
             ]
         }

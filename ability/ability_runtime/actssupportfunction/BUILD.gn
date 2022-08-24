@@ -18,8 +18,10 @@ group("actssupportfunction") {
   if (is_standard_system) {
     deps = [
       "actssupportfunctiontest:ActsSupportFunctionTest",
+      "faonandoffscreen:FaOnAndOffScreen",
       "fasupportfunction:fasupportfunction",
       "fasupportfunctionthree:fasupportfunctionthree",
+      "stageonandoffscreen:StageOnAndOffScreen",
       "stagesupportfunction:StageSupportFunction",
     ]
   }

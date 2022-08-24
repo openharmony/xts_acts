@@ -25,7 +25,7 @@ struct Index {
     onPageShow() {
         console.info(`TargetApp onPageShow start`);
         config.enableAbility(
-            'com.example.myapplication/AccessibilityExtAbility',
+            'com.example.accessibilityxts/AccessibilityExtAbility',
             ["retrieve", "touchGuide", "gesture"]
         ).then(() => {
             console.info('TargetApp enableAbility finish');
@@ -59,7 +59,7 @@ struct Index {
             return;
         }
 
-        config.disableAbility("com.example.myapplication/AccessibilityExtAbility").then(() => {
+        config.disableAbility("com.example.accessibilityxts/AccessibilityExtAbility").then(() => {
             console.info(`TargetApp disableAccAbility finish`);
             this.isEnable = false;
         });

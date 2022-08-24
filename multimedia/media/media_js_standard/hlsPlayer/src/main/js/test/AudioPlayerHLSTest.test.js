@@ -38,26 +38,26 @@ describe('AudioPlayerHLSTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_PLAYER_HLS
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_HLS_0100
         * @tc.name      : 001.test hls audio only
         * @tc.desc      : HLS Video playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('testHlsAudioPlayer', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_HLS_0100', 0, async function (done) {
         playAudioSource(HTTP_PATH + '05.hls/audio_only/index.m3u8', 219600, PLAY_TIME, false, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_PLAYER_HLS_VARIANT
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_HLS_VARIANT_0100
         * @tc.name      : 001.test hls audio variant
         * @tc.desc      : HLS Video playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level2
     */
-    it('testHlsAudioPlayerVariant', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_HLS_VARIANT_0100', 0, async function (done) {
         playAudioSource(HTTP_PATH + '05.hls/hls_variant_audio/index.m3u8', 219600, PLAY_TIME, false, done);
     })
 })

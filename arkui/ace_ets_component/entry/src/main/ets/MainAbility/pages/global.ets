@@ -18,7 +18,9 @@
 @Component
 struct GlobalExample {
 
+  private settings: RenderingContextSettings = new RenderingContextSettings (true)
   private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
+  private offContext: OffscreenCanvasRenderingContext2D  = new OffscreenCanvasRenderingContext2D(300, 300, this.settings);
   
   onPageShow() {
     console.info("global page called")
@@ -53,8 +55,7 @@ struct GlobalExample {
   }
 
   testOffscreenCanvas() {
-    var offscreen = new OffscreenCanvas(300, 300);
-    var offCanvas2 = offscreen.getContext("2d");
+    var offCanvas2 = this.offContext.getContext("2d");
     var img = new Image();
     img.src = "/images/bg.jpg";
     offCanvas2.drawImage(img, 0, 0, 100, 100);
@@ -64,8 +65,7 @@ struct GlobalExample {
   }
 
   testImageData() {
-    var offscreen = new OffscreenCanvas(300, 300);
-    var offCanvas2 = offscreen.getContext("2d");
+    var offCanvas2 = this.offContext.getContext("2d");
     var imageData = offCanvas2.createImageData(100, 100);
     var imgData = imageData.data;
     console.log("imageData_width=" + imageData.width);

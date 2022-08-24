@@ -14,7 +14,7 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
-import { UiDriver, BY, ResizeDirection, MatchPattern, WindowMode } from '@ohos.uitest'
+import { UiDriver, BY, ResizeDirection, MatchPattern, WindowMode, DisplayRotation, PointerMatrix } from '@ohos.uitest'
 import ability_featureAbility from '@ohos.ability.featureAbility';
 
 const delegator = abilityDelegatorRegistry.getAbilityDelegator();
@@ -37,15 +37,16 @@ async function stopApplication(bundleName: string) {
   })
 }
 
-export default function uiTest() {
-  describe('UiTestCase', function () {
+export default function UiTest() {
+  describe('UiTest', function () {
 
-   /*
-    * @tc.number: uiTest_0100
-    * @tc.name: testInputText
-    * @tc.desc: inject text to the target UiComponent
-    */
+    /*
+     * @tc.number: uiTest_0100
+     * @tc.name: testInputText
+     * @tc.desc: inject text to the target UiComponent
+     */
     it('testInputText', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let input = await driver.findComponent(BY.type('TextInput'))
@@ -54,6 +55,7 @@ export default function uiTest() {
       let input_new = await driver.findComponent(BY.type('TextInput'))
       let text = await input_new.getText()
       expect(text == '123').assertTrue()
+      await stopApplication('com.uitestScene.acts')
     })
 
     /*
@@ -62,6 +64,7 @@ export default function uiTest() {
      * @tc.desc: clear text of the target UiComponent
      */
     it('testClearText', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let input1 = await driver.findComponent(BY.type('TextInput'))
@@ -72,6 +75,7 @@ export default function uiTest() {
       let input_new = await driver.findComponent(BY.type('TextInput'))
       let text = await input_new.getText()
       expect(text).assertEqual('')
+      await stopApplication('com.uitestScene.acts')
     })
 
     /*
@@ -80,11 +84,13 @@ export default function uiTest() {
      * @tc.desc: find UiComponent by checkable attribute and get it's checkable attribute.
      */
     it('testCheckable', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let button = await driver.findComponent(BY.checkable(true).type('Checkbox'))
       let checkable = await button.isCheckable()
       expect(checkable == true).assertTrue()
+      await stopApplication('com.uitestScene.acts')
     })
 
     /*
@@ -93,11 +99,13 @@ export default function uiTest() {
      * @tc.desc: find UiComponent by checked attribute and get it's checked attribute.
      */
     it('testChecked', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let button = await driver.findComponent(BY.checked(false).type('Checkbox'))
       let checked = await button.isChecked()
       expect(checked == false).assertTrue()
+      await stopApplication('com.uitestScene.acts')
     })
 
     /*
@@ -106,6 +114,7 @@ export default function uiTest() {
      * @tc.desc: specifies the string value match pattern.
      */
     it('testMatchPattern', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let Button1 = await driver.findComponent(BY.text('next page',MatchPattern.EQUALS))
@@ -116,6 +125,7 @@ export default function uiTest() {
       expect(await Button3.getText() == 'next page').assertTrue()
       let Button4 = await driver.findComponent(BY.text('ext',MatchPattern.CONTAINS))
       expect(await Button4.getText() == 'next page').assertTrue()
+      await stopApplication('com.uitestScene.acts')
     })
 
     /*
@@ -124,6 +134,7 @@ export default function uiTest() {
      * @tc.desc: click in the specified location on the screen.
      */
     it('testClick', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let Button = await driver.findComponent(BY.text('next page'))
@@ -134,6 +145,7 @@ export default function uiTest() {
       let text = await newButton.getText()
       expect(text == 'back to index').assertTrue()
       await newButton.click()
+      await stopApplication('com.uitestScene.acts')
     })
 
     /*
@@ -142,6 +154,7 @@ export default function uiTest() {
      * @tc.desc: doubleClick in the specified location on the screen.
      */
     it('testDoubleClick', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let Button = await driver.findComponent(BY.text('Click twice'))
@@ -152,6 +165,7 @@ export default function uiTest() {
       let text = await button.getText()
       expect(text == 'doubleClick').assertTrue()
       await button.click()
+      await stopApplication('com.uitestScene.acts')
     })
 
     /*
@@ -160,6 +174,7 @@ export default function uiTest() {
      * @tc.desc: longClick in the specified location on the screen.
      */
     it('testLongClick', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let Button = await driver.findComponent(BY.text('next page'))
@@ -170,6 +185,7 @@ export default function uiTest() {
       let text = await newButton.getText()
       expect(text == 'longClick').assertTrue()
       await newButton.click()
+      await stopApplication('com.uitestScene.acts')
     })
 
     /*
@@ -178,6 +194,7 @@ export default function uiTest() {
      * @tc.desc: click this UiComponentClick.
      */
     it('testUiComponentClick', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let button = await driver.findComponent(BY.text('next page'))
@@ -187,6 +204,7 @@ export default function uiTest() {
       let text = await newButton.getText()
       expect(text == 'back to index').assertTrue()
       await newButton.click()
+      await stopApplication('com.uitestScene.acts')
     })
 
     /*
@@ -195,6 +213,7 @@ export default function uiTest() {
      * @tc.desc: doubleClick this UiComponentClick.
      */
     it('testUiComponentDoubleClick', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let button = await driver.findComponent(BY.text('Click twice'))
@@ -204,6 +223,7 @@ export default function uiTest() {
       let text = await newButton.getText()
       expect(text == 'doubleClick').assertTrue()
       await newButton.click()
+      await stopApplication('com.uitestScene.acts')
     })
 
     /*
@@ -211,7 +231,8 @@ export default function uiTest() {
      * @tc.name: testUiComponentLongClick
      * @tc.desc: longClick this UiComponentClick.
      */
-      it('testUiComponentLongClick', 0, async function () {
+    it('testUiComponentLongClick', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let button = await driver.findComponent(BY.text('next page'))
@@ -221,6 +242,7 @@ export default function uiTest() {
       let text = await newButton.getText()
       expect(text == 'longClick').assertTrue()
       await newButton.click()
+      await stopApplication('com.uitestScene.acts')
     })
 
     /*
@@ -229,10 +251,12 @@ export default function uiTest() {
      * @tc.desc: find UiComponent by key attribute and get it's key attribute.
      */
     it('testKey', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let button = await driver.findComponent(BY.key('my-key'))
       expect(await button.getKey() == 'my-key').assertTrue()
+      await stopApplication('com.uitestScene.acts')
     })
 
     /*
@@ -241,12 +265,14 @@ export default function uiTest() {
      * @tc.desc: find UiComponent by id attribute and get it's id attribute.
      */
     it('testId', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let button = await driver.findComponent(BY.text('next page'))
       let id = await button.getId()
       let button2 = await driver.findComponent(BY.id(id))
       expect(await button2.getText() == 'next page').assertTrue()
+      await stopApplication('com.uitestScene.acts')
     })
 
     /*
@@ -255,11 +281,13 @@ export default function uiTest() {
      * @tc.desc: find UiComponent by type attribute and get it's type attribute.
      */
     it('testType', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let text = await driver.findComponent(BY.type('Text'))
       let type = await text.getType()
       expect(type == 'Text').assertTrue()
+      await stopApplication('com.uitestScene.acts')
     })
 
     /*
@@ -268,11 +296,13 @@ export default function uiTest() {
      * @tc.desc: find UiComponent by clickable attribute and get it's clickable attribute.
      */
     it('testClickable', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let button = await driver.findComponent(BY.text('next page').clickable(false))
       let clickable = await button.isClickable()
       expect(clickable == false).assertTrue()
+      await stopApplication('com.uitestScene.acts')
     })
 
     /*
@@ -281,11 +311,13 @@ export default function uiTest() {
      * @tc.desc: find UiComponent by longClickable attribute and get it's longClickable attribute.
      */
     it('testLongClickable', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let button = await driver.findComponent(BY.text('next page').longClickable(false))
       let longClickable = await button.isLongClickable()
       expect(longClickable== false).assertTrue()
+      await stopApplication('com.uitestScene.acts')
     })
 
     /*
@@ -294,11 +326,13 @@ export default function uiTest() {
      * @tc.desc: find UiComponent by scrollable attribute and get it's scrollable attribute.
      */
     it('testScrollable', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let scrollBar = await driver.findComponent(BY.type('Scroll').scrollable(false))
       let scrollable = await scrollBar.isScrollable()
       expect(scrollable == false).assertTrue()
+      await stopApplication('com.uitestScene.acts')
     })
 
     /*
@@ -307,11 +341,13 @@ export default function uiTest() {
      * @tc.desc: find UiComponent by enabled attribute and get it's enabled attribute.
      */
     it('testEnabled', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let button = await driver.findComponent(BY.text('next page').enabled(true))
       let enable = await button.isEnabled()
       expect(enable == true).assertTrue()
+      await stopApplication('com.uitestScene.acts')
     })
 
     /*
@@ -320,11 +356,13 @@ export default function uiTest() {
      * @tc.desc: find UiComponent by focused attribute and get it's focused attribute.
      */
     it('testFocused', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let button = await driver.findComponent(BY.text('next page').focused(false))
       let focused = await button.isFocused()
       expect(focused == false).assertTrue()
+      await stopApplication('com.uitestScene.acts')
     })
 
     /*
@@ -333,11 +371,13 @@ export default function uiTest() {
      * @tc.desc: find UiComponent by selected attribute and get it's selected attribute.
      */
     it('testSelected', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let button = await driver.findComponent(BY.text('next page').selected(false))
       let selected = await button.isSelected()
       expect(selected == false).assertTrue()
+      await stopApplication('com.uitestScene.acts')
     })
 
     /*
@@ -346,6 +386,7 @@ export default function uiTest() {
      * @tc.desc: Press the BACK key.
      */
     it('testPressBack', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let button = await driver.findComponent(BY.text('next page'))
@@ -355,6 +396,7 @@ export default function uiTest() {
       await driver.delayMs(waitUiReadyMs)
       let button_ori = await driver.findComponent(BY.text('next page'))
       expect(await button_ori.getText() == 'next page').assertTrue()
+      await stopApplication('com.uitestScene.acts')
     })
 
     /*
@@ -363,10 +405,12 @@ export default function uiTest() {
      * @tc.desc: find all the matched UiComponents on current UI
      */
     it('testFindComponents', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let buttons = await driver.findComponents(BY.type('Button'))
       expect(await buttons[0].getText() != null).assertTrue()
+      await stopApplication('com.uitestScene.acts')
     })
 
     /*
@@ -375,6 +419,7 @@ export default function uiTest() {
      * @tc.desc: press the specified key.
      */
     it('testTriggerKey', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let button = await driver.findComponent(BY.text('next page'))
@@ -385,14 +430,39 @@ export default function uiTest() {
       await driver.delayMs(waitUiReadyMs)
       let button_ori = await driver.findComponent(BY.text('next page'))
       expect(await button_ori.getText() == 'next page').assertTrue()
+      await stopApplication('com.uitestScene.acts')
     })
 
     /*
      * @tc.number: uiTest_2400
+     * @tc.name: testTriggerCombineKeys
+     * @tc.desc: press two or three key combinations
+     */
+    it('testTriggerCombineKeys', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+      let driver = UiDriver.create()
+      await driver.delayMs(2000)
+      let text = await driver.findComponent(BY.type('TextInput'))
+      let center = await text.getBoundsCenter()
+      await text.inputText('123')
+      await driver.click(center.X, center.Y)
+      await driver.delayMs(waitUiReadyMs)
+      await driver.triggerCombineKeys(2072, 2017)
+      await driver.delayMs(waitUiReadyMs)
+      await driver.triggerCombineKeys(2072, 2019)
+      await driver.triggerCombineKeys(2072, 2038)
+      let text2 = await driver.findComponent(BY.type('TextInput'))
+      expect(await text2.getText() == '123123').assertTrue()
+      await stopApplication('com.uitestScene.acts')
+    })
+
+    /*
+     * @tc.number: uiTest_2500
      * @tc.name: testGetUiComponentBounds
      * @tc.desc: get the bounds of this UiComponent.
      */
     it('testGetUiComponentBounds', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let text = await driver.findComponent(BY.text('next page'))
@@ -401,14 +471,16 @@ export default function uiTest() {
       expect(bounds !== null).assertTrue()
       expect(bounds.rightX).assertLarger(bounds.leftX)
       expect(bounds.bottomY).assertLarger(bounds.topY)
+      await stopApplication('com.uitestScene.acts')
     })
 
     /*
-     * @tc.number: uiTest_2500
+     * @tc.number: uiTest_2600
      * @tc.name: testGetUiComponentBoundsCenter
      * @tc.desc: get the boundsCenter of this @link UiComponent.
      */
     it('testGetUiComponentBoundsCenter', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let button = await driver.findComponent(BY.text('next page'))
@@ -417,101 +489,135 @@ export default function uiTest() {
       expect(point!== null).assertTrue()
       expect(point.Y == (bounds.bottomY + bounds.topY)/2).assertTrue()
       expect(point.X == (bounds.rightX + bounds.leftX)/2).assertTrue()
-    })
-
-    /*
-     * @tc.number: uiTest_2600
-     * @tc.name: testWaitForComponent
-     * @tc.desc: Find the first matched UiComponent on current UI during the time given.
-     */
-    it('testWaitForComponent', 0, async function () {
-      let driver = UiDriver.create()
-      await driver.delayMs(waitUiReadyMs)
-      let button = await driver.waitForComponent(BY.text('next page'), waitUiReadyMs)
-      expect(button !== null).assertTrue()
+      await stopApplication('com.uitestScene.acts')
     })
 
     /*
      * @tc.number: uiTest_2700
+     * @tc.name: testWaitForComponent
+     * @tc.desc: Find the first matched UiComponent on current UI during the time given.
+     */
+    it('testWaitForComponent', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+      let driver = UiDriver.create()
+      await driver.delayMs(waitUiReadyMs)
+      let button = await driver.waitForComponent(BY.text('next page'), waitUiReadyMs)
+      expect(button !== null).assertTrue()
+      await stopApplication('com.uitestScene.acts')
+    })
+
+    /*
+     * @tc.number: uiTest_2800
      * @tc.name: testScreenCap
      * @tc.desc: capture current screen.
      */
     it('testScreenCap', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let savePath = '/data/local/tmp/1.png'
       let success = await driver.screenCap(savePath)
       expect(success == true).assertTrue()
-    })
-
-    /*
-     * @tc.number: uiTest_2800
-     * @tc.name: testAssertComponentExist
-     * @tc.desc:  Assert whether the matched UiComponent exists on current UI;.
-     */
-    it('testAssertComponentExist', 0, async function () {
-      let driver = UiDriver.create()
-      await driver.delayMs(waitUiReadyMs)
-      await driver.assertComponentExist(BY.text('next page'))
+      await stopApplication('com.uitestScene.acts')
     })
 
     /*
      * @tc.number: uiTest_2900
-     * @tc.name: testIsBefore
-     * @tc.desc: find uiComponent which is before another UiComponent that specified by given.
+     * @tc.name: testAssertComponentExist
+     * @tc.desc:  Assert whether the matched UiComponent exists on current UI;.
      */
-    it('testIsBefore', 0, async function () {
+    it('testAssertComponentExist', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
-      let button = await driver.findComponent(BY.isBefore(BY.text('Click twice')).type('Button'))
-      expect(await button.getType() == 'Button').assertTrue()
+      await driver.assertComponentExist(BY.text('next page'))
+      await stopApplication('com.uitestScene.acts')
     })
 
     /*
      * @tc.number: uiTest_3000
-     * @tc.name: testIsAfter
-     * @tc.desc: find uiComponent which is after another UiComponent that specified by given.
+     * @tc.name: testIsBefore
+     * @tc.desc: find uiComponent which is before another UiComponent that specified by given.
      */
-    it('testIsAfter', 0, async function () {
+    it('testIsBefore', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
-      let button = await driver.findComponent(BY.isAfter(BY.text('next page')).type('Text'))
-      expect(await button.getText() == 'Click twice').assertTrue()
+      let button = await driver.findComponent(BY.isBefore(BY.text('Click twice')).type('Button'))
+      expect(await button.getType() == 'Button').assertTrue()
+      await stopApplication('com.uitestScene.acts')
     })
 
     /*
      * @tc.number: uiTest_3100
+     * @tc.name: testIsAfter
+     * @tc.desc: find uiComponent which is after another UiComponent that specified by given.
+     */
+    it('testIsAfter', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+      let driver = UiDriver.create()
+      await driver.delayMs(waitUiReadyMs)
+      let button = await driver.findComponent(BY.isAfter(BY.text('next page')).type('Text'))
+      expect(await button.getText() == 'Click twice').assertTrue()
+      await stopApplication('com.uitestScene.acts')
+    })
+
+    /*
+     * @tc.number: uiTest_3200
      * @tc.name: testSwipe
      * @tc.desc: swipe on the screen between the specified points.
      */
     it('testSwipe', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       await driver.swipe(300,600,300,300)
       let text = await driver.findComponent(BY.text('next page'))
       expect(text == null).assertTrue()
-      await driver.swipe(300,300,300,600)
+      let scrollBar = await driver.findComponent(BY.type('Scroll'))
+      await scrollBar.scrollToTop()
+      await stopApplication('com.uitestScene.acts')
     })
 
     /*
-     * @tc.number: uiTest_3200
+     * @tc.number: uiTest_3300
+     * @tc.name: testFling
+     * @tc.desc: inject fling on the device display.
+     */
+    it('testFling', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+      let driver = UiDriver.create()
+      await driver.delayMs(waitUiReadyMs)
+      await driver.fling({X:300, Y:600},{X:300, Y:300}, 20, 600)
+      let text = await driver.findComponent(BY.text('next page'))
+      expect(text == null).assertTrue()
+      let scrollBar = await driver.findComponent(BY.type('Scroll'))
+      await scrollBar.scrollToTop()
+      await stopApplication('com.uitestScene.acts')
+    })
+
+    /*
+     * @tc.number: uiTest_3400
      * @tc.name: testScrollSearch
      * @tc.desc: scroll on this UiComponent to find matched UiComponent.
      */
     it('testScrollSearch', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let scrollBar = await driver.findComponent(BY.type('Scroll'))
       let button = await scrollBar.scrollSearch(BY.text('next page'))
       expect(await button.getText() == 'next page').assertTrue()
+      await stopApplication('com.uitestScene.acts')
     })
 
     /*
-     * @tc.number: uiTest_3300
+     * @tc.number: uiTest_3500
      * @tc.name: testScrollToBottom
      * @tc.desc: scroll on this UiComponent to the bottom.
      */
     it('testScrollToBottom', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let scrollBar = await driver.findComponent(BY.type('Scroll'))
@@ -520,14 +626,16 @@ export default function uiTest() {
       let button = await driver.findComponent(BY.text('bottom'))
       expect(await button.getText() == 'bottom').assertTrue()
       await scrollBar.scrollToTop()
+      await stopApplication('com.uitestScene.acts')
     })
 
     /*
-     * @tc.number: uiTest_3400
+     * @tc.number: uiTest_3600
      * @tc.name: testScrollToTop
      * @tc.desc: scroll on this UiComponent to the top.
      */
     it('testScrollToTop', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let scrollBar = await driver.findComponent(BY.type('Scroll'))
@@ -536,202 +644,474 @@ export default function uiTest() {
       await scrollBar.scrollToTop()
       let button = await driver.findComponent(BY.text('next page'))
       expect(await button.getText() == 'next page').assertTrue()
-    })
-
-    /*
-     * @tc.number: uiTest_3500
-     * @tc.name: testGetWindowMode
-     * @tc.desc: get the window mode of this UiWindow.
-     */
-    it('testGetWindowMode', 0, async function () {
-      await startAbility('com.example.windows', 'MainAbility')
-      let driver = UiDriver.create()
-      await driver.delayMs(waitUiReadyMs)
-      let window1 = await driver.findWindow({bundleName:'com.example.windows'})
-      let mode1 = await window1.getWindowMode()
-      expect(mode1 == WindowMode.FULLSCREEN).assertTrue()
-      let window2 = await driver.findWindow({bundleName:'com.example.windows'})
-      await window2.resume()
-      let mode2 = await window2.getWindowMode()
-      expect(mode2 == WindowMode.FLOATING).assertTrue()
-      await stopApplication('com.example.windows')
-    })
-
-    /*
-     * @tc.number: uiTest_3600
-     * @tc.name: testGetBundleName
-     * @tc.desc: get the bundleName of this UiWindow.
-     */
-    it('testGetBundleName', 0, async function () {
-      await startAbility('com.example.windows', 'MainAbility')
-      let driver = UiDriver.create()
-      await driver.delayMs(waitUiReadyMs)
-      let window = await driver.findWindow({bundleName:'com.example.windows'})
-      let name = await window.getBundleName()
-      expect(name == 'com.example.windows').assertTrue()
-      await stopApplication('com.example.windows')
+      await stopApplication('com.uitestScene.acts')
     })
 
     /*
      * @tc.number: uiTest_3700
-     * @tc.name: testGetTitle
-     * @tc.desc: get the title of this UiWindow.
+     * @tc.name: testPinch
+     * @tc.desc: pinch enlarge this UiComponent to the target scale.
      */
-    it('testGetTitle', 0, async function () {
-      await startAbility('com.example.windows', 'MainAbility')
+    it('testPinch', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
-      let window = await driver.findWindow({bundleName:'com.example.windows'})
-      let title = await window.getTitle()
-      expect(title == '').assertTrue()
-      await stopApplication('com.example.windows')
+      let button = await driver.findComponent(BY.text('jump'))
+      await button.click()
+      let image1 = await driver.findComponent(BY.type('Image'))
+      let bounds1 = await image1.getBounds()
+      await image1.pinchIn(0.5);
+      await driver.delayMs(waitUiReadyMs)
+      let image2 = await driver.findComponent(BY.type('Image'))
+      let bounds2 = await image2.getBounds()
+      expect(bounds2 != bounds1).assertTrue()
+      await image2.pinchOut(1.2);
+      let image3 = await driver.findComponent(BY.type('Image'))
+      let bounds3 = await image3.getBounds()
+      expect(bounds3 != bounds2).assertTrue()
+      await driver.pressBack()
+      await stopApplication('com.uitestScene.acts')
     })
 
     /*
      * @tc.number: uiTest_3800
-     * @tc.name: testWindowMoveTo
-     * @tc.desc: move this UiWindow to the specified points.
+     * @tc.name: testInjectMultiPointerAction
+     * @tc.desc: inject multi-pointer action on the device display.
      */
-    it('testWindowMoveTo', 0, async function () {
-      await startAbility('com.example.windows', 'MainAbility')
+    it('testInjectMultiPointerAction', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
-      let window = await driver.findWindow({bundleName:'com.example.windows'})
-      await window.resume()
-      await driver.delayMs(waitUiReadyMs)
-      let window1 = await driver.findWindow({bundleName:'com.example.windows'})
-      let bounds1 = await window1.getBounds()
-      await window1.moveTo(100,100)
-      await driver.delayMs(waitUiReadyMs)
-      let window2 = await driver.findWindow({bundleName:'com.example.windows'})
-      let bounds2 = await window2.getBounds()
-      expect(bounds1 != bounds2).assertTrue()
-      await stopApplication('com.example.windows')
+      let button = await driver.findComponent(BY.text('jump'))
+      await button.click()
+      let image1 = await driver.findComponent(BY.type('Image'))
+      let bounds1 = await image1.getBounds()
+      let pointer = PointerMatrix.create(2,11)
+      await driver.delayMs(300)
+      pointer.setPoint(0,0,{X:245,Y:480})
+      pointer.setPoint(0,1,{X:250,Y:480})
+      pointer.setPoint(0,2,{X:255,Y:480})
+      pointer.setPoint(0,3,{X:260,Y:480})
+      pointer.setPoint(0,4,{X:265,Y:480})
+      pointer.setPoint(0,5,{X:270,Y:480})
+      pointer.setPoint(0,6,{X:275,Y:480})
+      pointer.setPoint(0,7,{X:280,Y:480})
+      pointer.setPoint(0,8,{X:285,Y:480})
+      pointer.setPoint(0,9,{X:290,Y:480})
+      pointer.setPoint(0,10,{X:295,Y:480})
+      pointer.setPoint(1,0,{X:505,Y:480})
+      pointer.setPoint(1,1,{X:500,Y:480})
+      pointer.setPoint(1,2,{X:495,Y:480})
+      pointer.setPoint(1,3,{X:490,Y:480})
+      pointer.setPoint(1,4,{X:485,Y:480})
+      pointer.setPoint(1,5,{X:480,Y:480})
+      pointer.setPoint(1,6,{X:475,Y:480})
+      pointer.setPoint(1,7,{X:470,Y:480})
+      pointer.setPoint(1,8,{X:465,Y:480})
+      pointer.setPoint(1,9,{X:460,Y:480})
+      pointer.setPoint(1,10,{X:455,Y:480})
+      await driver.injectMultiPointerAction(pointer, 600)
+      let image2 = await driver.findComponent(BY.type('Image'))
+      let bounds2= await image1.getBounds()
+      expect(bounds2 != bounds1).assertTrue()
+      await driver.pressBack()
+      await stopApplication('com.uitestScene.acts')
     })
 
     /*
      * @tc.number: uiTest_3900
-     * @tc.name: testWindowResize
-     * @tc.desc: resize this UiWindow to the specified size for the specified direction.
+     * @tc.name: testGetWindowMode
+     * @tc.desc: get the window mode of this UiWindow.
      */
-    it('testWindowResize', 0, async function () {
-      await startAbility('com.example.windows', 'MainAbility')
+    it('testGetWindowMode', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
-      let window = await driver.findWindow({bundleName:'com.example.windows'})
-      await window.resume()
-      await driver.delayMs(waitUiReadyMs)
-      let window1 = await driver.findWindow({bundleName:'com.example.windows'})
-      let bounds1 = await window1.getBounds()
-      await window1.resize(400,400,ResizeDirection.RIGHT_DOWN)
-      await driver.delayMs(waitUiReadyMs)
-      let window2 = await driver.findWindow({bundleName:'com.example.windows'})
-      let bounds2 = await window2.getBounds()
-      expect(bounds2 != bounds1).assertTrue()
-      await window2.resize(500,500,ResizeDirection.RIGHT_UP)
-      let window3 = await driver.findWindow({bundleName:'com.example.windows'})
-      let bounds3= await window2.getBounds()
-      expect(bounds3 != bounds2).assertTrue()
-      await window3.resize(400,400,ResizeDirection.LEFT_DOWN)
-      let window4 = await driver.findWindow({bundleName:'com.example.windows'})
-      let bounds4= await window2.getBounds()
-      expect(bounds4 != bounds3).assertTrue()
-      await window4.resize(500,500,ResizeDirection.LEFT_DOWN)
-      let window5 = await driver.findWindow({bundleName:'com.example.windows'})
-      let bounds5= await window2.getBounds()
-      expect(bounds5 != bounds4).assertTrue()
-      await window5.resize(500,400,ResizeDirection.DOWN)
-      let window6 = await driver.findWindow({bundleName:'com.example.windows'})
-      let bounds6= await window2.getBounds()
-      expect(bounds6 != bounds5).assertTrue()
-      await window6.resize(500,500,ResizeDirection.UP)
-      let window7 = await driver.findWindow({bundleName:'com.example.windows'})
-      let bounds7 = await window2.getBounds()
-      expect(bounds7 != bounds5).assertTrue()
-      await window7.resize(500,500,ResizeDirection.UP)
-      let window8 = await driver.findWindow({bundleName:'com.example.windows'})
-      let bounds8 = await window2.getBounds()
-      expect(bounds8 != bounds7).assertTrue()
-      await window8.resize(400,500,ResizeDirection.LEFT)
-      let window9 = await driver.findWindow({bundleName:'com.example.windows'})
-      let bounds9 = await window2.getBounds()
-      expect(bounds9 != bounds8).assertTrue()
-      await window9.resize(400,500,ResizeDirection.RIGHT)
-      let window10 = await driver.findWindow({bundleName:'com.example.windows'})
-      let bounds10 = await window2.getBounds()
-      expect(bounds10 != bounds9).assertTrue()
-      await stopApplication('com.example.windows')
+      let window1 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+      let mode1 = await window1.getWindowMode()
+      expect(mode1 == WindowMode.FULLSCREEN).assertTrue()
+      try {
+        await window1.resume()
+        let window2 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+        let mode2 = await window2.getWindowMode()
+        expect(mode2 == WindowMode.FLOATING).assertTrue()
+        await stopApplication('com.uitestScene.acts')
+      }
+      catch (err) {
+        if (err.message == 'this device can not support this action') {
+          expect(window1 != null).assertTrue()
+        } else {
+          expect(false).assertTrue()
+        }
+      }
     })
 
     /*
      * @tc.number: uiTest_4000
-     * @tc.name: testWindowFocus
-     * @tc.desc: set the focused status of this UiWindow.
+     * @tc.name: testGetBundleName
+     * @tc.desc: get the bundleName of this UiWindow.
      */
-    it('testWindowFocus', 0, async function () {
-      await startAbility('com.example.windows', 'MainAbility')
+    it('testGetBundleName', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
-      let window = await driver.findWindow({bundleName:'com.example.windows'})
-      await window.focus()
-      let IsActive = await window.focus()
-      expect(IsActive == true).assertTrue()
-      await stopApplication('com.example.windows')
+      let window = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+      let name = await window.getBundleName()
+      expect(name == 'com.uitestScene.acts').assertTrue()
+      await stopApplication('com.uitestScene.acts')
     })
 
     /*
      * @tc.number: uiTest_4100
-     * @tc.name: testWindowMaximize
-     * @tc.desc: maximize this UiWindow.
+     * @tc.name: testGetTitle
+     * @tc.desc: get the title of this UiWindow.
      */
-    it('testWindowMaximize', 0, async function () {
-      await startAbility('com.example.windows', 'MainAbility')
+    it('testGetTitle', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
-      let window = await driver.findWindow({bundleName:'com.example.windows'})
-      await window.resume()
-      let window2 = await driver.findWindow({bundleName:'com.example.windows'})
-      await window2.maximize()
-      await driver.delayMs(waitUiReadyMs)
-      let window3 = await driver.findWindow({bundleName:'com.example.windows'})
-      let mode = await window3.getWindowMode()
-      expect(mode == WindowMode.FULLSCREEN).assertTrue()
-      await stopApplication('com.example.windows')
+      let window = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+      let title = await window.getTitle()
+      expect(title == '').assertTrue()
+      await stopApplication('com.uitestScene.acts')
     })
 
     /*
      * @tc.number: uiTest_4200
-     * @tc.name: testWindowMinimize
-     * @tc.desc: minimize this UiWindow.
+     * @tc.name: testWindowMoveTo
+     * @tc.desc: move this UiWindow to the specified points.
      */
-    it('testWindowMinimize', 0, async function () {
-      await startAbility('com.example.windows', 'MainAbility')
+    it('testWindowMoveTo', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
-      let window = await driver.findWindow({bundleName:'com.example.windows'})
-      await window.minimize()
-      await driver.delayMs(waitUiReadyMs)
-      let button = await driver.findComponent(BY.text('Clock'))
-      expect(button != null).assertTrue()
-      await stopApplication('com.example.windows')
+      let window = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+      try{
+        await window.resume()
+        await driver.delayMs(waitUiReadyMs)
+        let window1 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+        let bounds1 = await window1.getBounds()
+        await window1.moveTo(100,100)
+        await driver.delayMs(waitUiReadyMs)
+        let window2 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+        let bounds2 = await window2.getBounds()
+        expect(bounds1 != bounds2).assertTrue()
+        await stopApplication('com.uitestScene.acts')
+      }
+      catch (err) {
+        if (err.message == 'this device can not support this action') {
+          expect(window != null).assertTrue()
+        } else {
+          expect(false).assertTrue()
+        }
+      }
     })
 
     /*
      * @tc.number: uiTest_4300
+     * @tc.name: testWindowResize
+     * @tc.desc: resize this UiWindow to the specified size for the specified direction.
+     */
+    it('testWindowResizeA', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+      let driver = UiDriver.create()
+      await driver.delayMs(waitUiReadyMs)
+      let window = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+      try{
+        await window.resume()
+        await driver.delayMs(waitUiReadyMs)
+
+        let window1 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+        let bounds1 = await window1.getBounds()
+        await window1.resize(600,600,ResizeDirection.RIGHT_DOWN)
+        await driver.delayMs(waitUiReadyMs)
+        let window2 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+        let bounds2 = await window2.getBounds()
+        expect(bounds2 != bounds1).assertTrue()
+
+        await window2.resize(400,400,ResizeDirection.RIGHT_UP)
+        let window3 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+        let bounds3= await window3.getBounds()
+        expect(bounds3 != bounds2).assertTrue()
+        await window3.resize(300,300,ResizeDirection.LEFT_DOWN)
+        let window4 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+        let bounds4= await window4.getBounds()
+        expect(bounds4 != bounds3).assertTrue()
+
+        await window4.resize(500,500,ResizeDirection.LEFT_UP)
+        let window5 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+        let bounds5= await window5.getBounds()
+        expect(bounds5 != bounds4).assertTrue()
+        await stopApplication('com.uitestScene.acts')
+      }
+      catch (err) {
+        if (err.message == 'this device can not support this action') {
+          expect(window != null).assertTrue()
+        } else {
+          expect(false).assertTrue()
+        }
+      }
+    })
+
+    it('testWindowResizeB', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+      let driver = UiDriver.create()
+      await driver.delayMs(waitUiReadyMs)
+      let window = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+      try{
+        await window.resume()
+        await driver.delayMs(waitUiReadyMs)
+
+        let window5 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+        let bounds5= await window5.getBounds()
+        await window5.resize(bounds5.rightX - bounds5.leftX,300,ResizeDirection.DOWN)
+        let window6 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+        let bounds6= await window6.getBounds()
+        expect(bounds6 != bounds5).assertTrue()
+
+        await window6.resize(bounds6.rightX - bounds6.leftX,500,ResizeDirection.UP)
+        let window7 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+        let bounds7 = await window7.getBounds()
+        expect(bounds7 != bounds6).assertTrue()
+
+        await window7.resize(300,bounds7.bottomY - bounds7.topY,ResizeDirection.LEFT)
+        let window8 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+        let bounds8 = await window8.getBounds()
+        expect(bounds8 != bounds7).assertTrue()
+
+        await window8.resize(500,bounds8.bottomY - bounds8.topY,ResizeDirection.RIGHT)
+        let window9 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+        let bounds9 = await window9.getBounds()
+        expect(bounds9 != bounds8).assertTrue()
+
+        await stopApplication('com.uitestScene.acts')
+      }
+      catch (err) {
+        if (err.message == 'this device can not support this action') {
+          expect(window != null).assertTrue()
+        } else {
+          expect(false).assertTrue()
+        }
+      }
+    })
+
+    /*
+     * @tc.number: uiTest_4400
+     * @tc.name: testWindowFocus
+     * @tc.desc: set the focused status of this UiWindow.
+     */
+    it('testWindowFocus', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+      let driver = UiDriver.create()
+      await driver.delayMs(waitUiReadyMs)
+      let window = await driver.findWindow({bundleName:'com.uitestScene.acts',focused:true,actived:true})
+      await window.focus()
+      let isFocused = await window.isFocused()
+      expect(isFocused == true).assertTrue()
+      await stopApplication('com.uitestScene.acts')
+    })
+
+    /*
+     * @tc.number: uiTest_4500
+     * @tc.name: testWindowMaximize
+     * @tc.desc: maximize this UiWindow.
+     */
+    it('testWindowMaximize', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+      let driver = UiDriver.create()
+      await driver.delayMs(waitUiReadyMs)
+      let window = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+      try{
+        await window.resume()
+        let window2 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+        await window2.maximize()
+        await driver.delayMs(waitUiReadyMs)
+        let window3 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+        let mode = await window3.getWindowMode()
+        expect(mode == WindowMode.FULLSCREEN).assertTrue()
+        await stopApplication('com.uitestScene.acts')
+      }
+      catch (err) {
+        if (err.message == 'this device can not support this action') {
+          expect(window != null).assertTrue()
+        } else {
+          expect(false).assertTrue()
+        }
+      }
+    })
+
+    /*
+     * @tc.number: uiTest_4600
+     * @tc.name: testWindowMinimize
+     * @tc.desc: minimize this UiWindow.
+     */
+    it('testWindowMinimize', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+      let driver = UiDriver.create()
+      await driver.delayMs(waitUiReadyMs)
+      let window = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+      try{
+      await window.minimize()
+        await driver.delayMs(waitUiReadyMs)
+        let window1 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+        expect(window1 == null).assertTrue()
+        await stopApplication('com.uitestScene.acts')
+      }
+      catch (err) {
+        if (err.message == 'this device can not support this action') {
+          expect(window != null).assertTrue()
+        } else {
+          expect(false).assertTrue()
+        }
+      }
+    })
+
+    /*
+     * @tc.number: uiTest_4700
      * @tc.name: testWindowClose
      * @tc.desc: close this UiWindow.
      */
     it('testWindowClose', 0, async function () {
-      await startAbility('com.example.windows', 'MainAbility')
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
-      let window = await driver.findWindow({bundleName:'com.example.windows'})
-      await window.close()
-      await driver.delayMs(waitUiReadyMs)
-      let button = await driver.findComponent(BY.text('Clock'))
-      expect(button != null).assertTrue()
+      let window = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+      try{
+        await window.close()
+        await driver.delayMs(waitUiReadyMs)
+        let window1 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+        expect(window1 == null).assertTrue()
+      }
+      catch (err) {
+        if (err.message == 'this device can not support this action') {
+          expect(window != null).assertTrue()
+        } else {
+          expect(false).assertTrue()
+        }
+      }
     })
 
-  })
+    /*
+     * @tc.number: uiTest_4800
+     * @tc.name: testGetDisplaySize
+     * @tc.desc: get the size of the device display.
+     */
+    it('testGetDisplaySize', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+      let driver = UiDriver.create()
+      await driver.delayMs(waitUiReadyMs)
+      let s = await driver.getDisplaySize()
+      expect(s.X != 0).assertTrue()
+      expect(s.Y != 0).assertTrue()
+      await stopApplication('com.uitestScene.acts')
+    })
 
+    /*
+     * @tc.number: uiTest_4900
+     * @tc.name: testGetDisplayDensity
+     * @tc.desc: get the density of the device display.
+     */
+    it('testGetDisplayDensity', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+      let driver = UiDriver.create()
+      await driver.delayMs(waitUiReadyMs)
+      let s = await driver.getDisplayDensity()
+      expect(s.X != 0).assertTrue()
+      expect(s.Y != 0).assertTrue()
+      await stopApplication('com.uitestScene.acts')
+    })
+
+    /*
+     * @tc.number: uiTest_5000
+     * @tc.name: testDisplayRotation
+     * @tc.desc: get the rotation of the device display and set it.
+     */
+    it('testDisplayRotation', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+      let driver = UiDriver.create()
+      await driver.delayMs(waitUiReadyMs)
+      await driver.delayMs(waitUiReadyMs)
+      await driver.setDisplayRotation(DisplayRotation.ROTATION_90)
+      let rotation1 = await driver.getDisplayRotation()
+      expect(rotation1 == DisplayRotation.ROTATION_90).assertTrue()
+      await driver.delayMs(waitUiReadyMs)
+
+      await driver.setDisplayRotation(DisplayRotation.ROTATION_180)
+      let rotation2 = await driver.getDisplayRotation()
+      expect(rotation2 == DisplayRotation.ROTATION_180).assertTrue()
+      await driver.delayMs(waitUiReadyMs)
+
+      await driver.setDisplayRotation(DisplayRotation.ROTATION_270)
+      let rotation3 = await driver.getDisplayRotation()
+      expect(rotation3 == DisplayRotation.ROTATION_270).assertTrue()
+      await driver.delayMs(waitUiReadyMs)
+
+      await driver.setDisplayRotation(DisplayRotation.ROTATION_0)
+      let rotation4 = await driver.getDisplayRotation()
+      expect(rotation4== DisplayRotation.ROTATION_0).assertTrue()
+      await stopApplication('com.uitestScene.acts')
+    })
+
+    /*
+     * @tc.number: uiTest_5100
+     * @tc.name: testSetDisplayRotationEnabled
+     * @tc.desc: enable/disable the rotation of device display.
+     */
+    it('testSetDisplayRotationEnabled', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+      let driver = UiDriver.create()
+      await driver.setDisplayRotationEnabled(false)
+      await driver.setDisplayRotation(DisplayRotation.ROTATION_180)
+      await driver.delayMs(waitUiReadyMs)
+      let rotation3 = await driver.getDisplayRotation()
+      await driver.setDisplayRotationEnabled(true)
+      await driver.setDisplayRotation(DisplayRotation.ROTATION_90)
+      let rotation2 = await driver.getDisplayRotation()
+      expect(rotation2 == DisplayRotation.ROTATION_90).assertTrue()
+      await driver.setDisplayRotation(DisplayRotation.ROTATION_0)
+      await stopApplication('com.uitestScene.acts')
+    })
+
+    /*
+     * @tc.number: uiTest_5200
+     * @tc.name: testWakeUpDisplay
+     * @tc.desc: wake up the device display.
+     */
+    it('testWakeUpDisplay', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+      let driver = UiDriver.create()
+      await driver.delayMs(waitUiReadyMs)
+      await driver.wakeUpDisplay()
+      await stopApplication('com.uitestScene.acts')
+    })
+
+    /*
+     * @tc.number: uiTest_5300
+     * @tc.name: testPressHome
+     * @tc.desc: press the home key.
+     */
+    it('testPressHome', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+      let driver = UiDriver.create()
+      await driver.delayMs(waitUiReadyMs)
+      await driver.pressHome()
+      let button = await driver.findComponent(BY.text('next page'))
+      expect(button != null).assertTrue()
+      await stopApplication('com.uitestScene.acts')
+    })
+
+    /*
+     * @tc.number: uiTest_5400
+     * @tc.name: testWaitForIdle
+     * @tc.desc: wait for the UI become idle.
+     */
+    it('testWaitForIdle', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+      let driver = UiDriver.create()
+      await driver.delayMs(2000)
+      let idled = await driver.waitForIdle(4000,5000)
+      expect(idled = true).assertTrue()
+      await stopApplication('com.uitestScene.acts')
+    })
+  })
 }

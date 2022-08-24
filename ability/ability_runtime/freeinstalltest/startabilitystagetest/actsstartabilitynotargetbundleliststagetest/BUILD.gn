@@ -23,6 +23,8 @@ ohos_js_hap_suite("ActsStartAbilityNoTargetBundleListStageTest") {
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsStartAbilityNoTargetBundleListStageTest"
+  subsystem_name = "ability"
+  part_name = "ability_runtime"
 }
 
 ohos_app_scope("actsstartabilitynotargetbundleliststagetest_app_profile") {

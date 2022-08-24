@@ -72,10 +72,7 @@
           "type": "pageAbility"
         },
         "pages": [
-          "pages/index",
-          "pages/second",
-          "pages/third",
-          "pages/fourth"
+          "pages/index"
         ],
         "name": ".MainAbility",
         "window": {

@@ -106,248 +106,248 @@ describe('ProfileAbnormalTestPromise', function () {
 
 
     /* *
-        * @tc.number    : SUB_PROFILE_ABNORMAL_PROMISE_0100
+        * @tc.number    : SUB_PROFILE_RELIABILITY_PROMISE_0100
         * @tc.name      : test isAudioRecoderConfigSupported false
         * @tc.desc      : 5 args all set wrong
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level2
     */
-    it('SUB_PROFILE_ABNORMAL_PROMISE_0100', 0, async function (done) {
+    it('SUB_PROFILE_RELIABILITY_PROMISE_0100', 0, async function (done) {
         console.info("test getAudioRecorderCaps");
         promiseAbnormalAudioRecoderConfigSupported(base.audioRecorderAbnormalAll, done);
     })
 
     /* *
-        * @tc.number    : SUB_PROFILE_ABNORMAL_PROMISE_0200
+        * @tc.number    : SUB_PROFILE_RELIABILITY_PROMISE_0200
         * @tc.name      : test isAudioRecoderConfigSupported false
         * @tc.desc      : FormatType  is wrong
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level2
     */
-    it('SUB_PROFILE_ABNORMAL_PROMISE_0200', 0, async function (done) {
+    it('SUB_PROFILE_RELIABILITY_PROMISE_0200', 0, async function (done) {
         console.info("test getAudioRecorderCaps");
         promiseAbnormalAudioRecoderConfigSupported(base.audioRecorderAbnormalFormatType, done);
     })
 
     /* *
-        * @tc.number    : SUB_PROFILE_ABNORMAL_PROMISE_0300
+        * @tc.number    : SUB_PROFILE_RELIABILITY_PROMISE_0300
         * @tc.name      : test isAudioRecoderConfigSupported
         * @tc.desc      : CodecMimeType is wrong
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level2
     */
-    it('SUB_PROFILE_ABNORMAL_PROMISE_0300', 0, async function (done) {
+    it('SUB_PROFILE_RELIABILITY_PROMISE_0300', 0, async function (done) {
         console.info("test getAudioRecorderCaps");
         promiseAbnormalAudioRecoderConfigSupported(base.audioRecorderAbnormalCodecMimeType, done);
     })
 
     /* *
-        * @tc.number    : SUB_PROFILE_ABNORMAL_PROMISE_0400
+        * @tc.number    : SUB_PROFILE_RELIABILITY_PROMISE_0400
         * @tc.name      : test isAudioRecoderConfigSupported
         * @tc.desc      : bitrate is wrong
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level2
     */
-    it('SUB_PROFILE_ABNORMAL_PROMISE_0400', 0, async function (done) {
+    it('SUB_PROFILE_RELIABILITY_PROMISE_0400', 0, async function (done) {
         console.info("test getAudioRecorderCaps");
         promiseAbnormalAudioRecoderConfigSupported(base.audioRecorderAbnormalBitrate, done);
     })
 
     /* *
-        * @tc.number    : SUB_PROFILE_ABNORMAL_PROMISE_0500
+        * @tc.number    : SUB_PROFILE_RELIABILITY_PROMISE_0500
         * @tc.name      : test isAudioRecoderConfigSupported
         * @tc.desc      : sampleRate is wrong
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level2
     */
-    it('SUB_PROFILE_ABNORMAL_PROMISE_0500', 0, async function (done) {
+    it('SUB_PROFILE_RELIABILITY_PROMISE_0500', 0, async function (done) {
         console.info("test getAudioRecorderCaps");
         promiseAbnormalAudioRecoderConfigSupported(base.audioRecorderAbnormalSampleRate, done);
     })
 
     /* *
-        * @tc.number    : SUB_PROFILE_ABNORMAL_PROMISE_0600
+        * @tc.number    : SUB_PROFILE_RELIABILITY_PROMISE_0600
         * @tc.name      : test isAudioRecoderConfigSupported
         * @tc.desc      : channel is wrong
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level2
     */
-    it('SUB_PROFILE_ABNORMAL_PROMISE_0600', 0, async function (done) {
+    it('SUB_PROFILE_RELIABILITY_PROMISE_0600', 0, async function (done) {
         console.info("test getAudioRecorderCaps");
         promiseAbnormalAudioRecoderConfigSupported(base.audioRecorderAbnormalSampleChannel, done);
     })
 
     /* *
-        * @tc.number  : SUB_PROFILE_ABNORMAL_PROMISE_0700
+        * @tc.number  : SUB_PROFILE_RELIABILITY_PROMISE_0700
         * @tc.name    : test hasVideoRecorderProfile
         * @tc.desc    : sourceId 1 qualityLevel 0
         * @tc.size    : MediumTest
         * @tc.type    : Function test
         * @tc.level   : Level2
     */
-    it('SUB_PROFILE_ABNORMAL_PROMISE_0700', 0, async function (done) {
+    it('SUB_PROFILE_RELIABILITY_PROMISE_0700', 0, async function (done) {
         console.info('test hasVideoRecorderProfile');
         promiseAbnormalHasVideoProfile(1, media.VideoRecorderQualityLevel.RECORDER_QUALITY_LOW, done);
     })
 
     /* *
-        * @tc.number    : SUB_PROFILE_ABNORMAL_PROMISE_0800
+        * @tc.number    : SUB_PROFILE_RELIABILITY_PROMISE_0800
         * @tc.name      : test hasVideoRecorderProfile sourceId -1
         * @tc.desc      : sourceId -1 qualityLevel 0
         * @tc.size      : MediumTest
         * @tc.type      : Abnormal test
         * @tc.level     : Level2
     */
-    it('SUB_PROFILE_ABNORMAL_PROMISE_0800', 0, async function (done) {
+    it('SUB_PROFILE_RELIABILITY_PROMISE_0800', 0, async function (done) {
         console.info("test hasVideoRecorderProfile");
         promiseAbnormalHasVideoProfile(-1, media.VideoRecorderQualityLevel.RECORDER_QUALITY_LOW, done);
     })
 
     /* *
-        * @tc.number    : SUB_PROFILE_ABNORMAL_PROMISE_0900
+        * @tc.number    : SUB_PROFILE_RELIABILITY_PROMISE_0900
         * @tc.name      : test hasVideoRecorderProfile qualityLevel -1
         * @tc.desc      : sourceId 0 qualityLevel -1
         * @tc.size      : MediumTest
         * @tc.type      : Abnormal test
         * @tc.level     : Level2
     */
-    it('SUB_PROFILE_ABNORMAL_PROMISE_0900', 0, async function (done) {
+    it('SUB_PROFILE_RELIABILITY_PROMISE_0900', 0, async function (done) {
         console.info("test hasVideoRecorderProfile");
         promiseAbnormalHasVideoProfile(0, -1, done);
     })
 
     /* *
-        * @tc.number    : SUB_PROFILE_ABNORMAL_PROMISE_1000
+        * @tc.number    : SUB_PROFILE_RELIABILITY_PROMISE_1000
         * @tc.name      : test hasVideoRecorderProfile sourceId 65536
         * @tc.desc      : sourceId 65535 qualityLevel 0
         * @tc.size      : MediumTest
         * @tc.type      : Abnormal test
         * @tc.level     : Level2
     */
-    it('SUB_PROFILE_ABNORMAL_PROMISE_1000', 0, async function (done) {
+    it('SUB_PROFILE_RELIABILITY_PROMISE_1000', 0, async function (done) {
         console.info("test hasVideoRecorderProfile");
         promiseAbnormalHasVideoProfile(65535, media.VideoRecorderQualityLevel.RECORDER_QUALITY_LOW, done);
     })
 
     /* *
-        * @tc.number    : SUB_PROFILE_ABNORMAL_PROMISE_1100
+        * @tc.number    : SUB_PROFILE_RELIABILITY_PROMISE_1100
         * @tc.name      : test hasVideoRecorderProfile sourceId 65536
         * @tc.desc      : sourceId 65536 qualityLevel 0
         * @tc.size      : MediumTest
         * @tc.type      : Abnormal test
         * @tc.level     : Level2
     */
-    it('SUB_PROFILE_ABNORMAL_PROMISE_1100', 0, async function (done) {
+    it('SUB_PROFILE_RELIABILITY_PROMISE_1100', 0, async function (done) {
         console.info("test hasVideoRecorderProfile");
         promiseAbnormalHasVideoProfile(65536, media.VideoRecorderQualityLevel.RECORDER_QUALITY_LOW, done);
     })
 
     /* *
-        * @tc.number    : SUB_PROFILE_ABNORMAL_PROMISE_1200
+        * @tc.number    : SUB_PROFILE_RELIABILITY_PROMISE_1200
         * @tc.name      : test hasVideoRecorderProfile qualityLevel 65536
         * @tc.desc      : sourceId 0 qualityLevel 65535
         * @tc.size      : MediumTest
         * @tc.type      : Abnormal test
         * @tc.level     : Level2
     */
-    it('SUB_PROFILE_ABNORMAL_PROMISE_1200', 0, async function (done) {
+    it('SUB_PROFILE_RELIABILITY_PROMISE_1200', 0, async function (done) {
         console.info("test hasVideoRecorderProfile");
         promiseAbnormalHasVideoProfile(0, 65535, done);
     })
 
     /* *
-        * @tc.number    : SUB_PROFILE_ABNORMAL_PROMISE_1300
+        * @tc.number    : SUB_PROFILE_RELIABILITY_PROMISE_1300
         * @tc.name      : test hasVideoRecorderProfile qualityLevel 65536
         * @tc.desc      : sourceId 0 qualityLevel 65536
         * @tc.size      : MediumTest
         * @tc.type      : Abnormal test
         * @tc.level     : Level2
     */
-    it('SUB_PROFILE_ABNORMAL_PROMISE_1300', 0, async function (done) {
+    it('SUB_PROFILE_RELIABILITY_PROMISE_1300', 0, async function (done) {
         console.info("test hasVideoRecorderProfile");
         promiseAbnormalHasVideoProfile(0, 65536, done);
     })
 
     /* *
-        * @tc.number    : SUB_PROFILE_ABNORMAL_PROMISE_1400
+        * @tc.number    : SUB_PROFILE_RELIABILITY_PROMISE_1400
         * @tc.name      : test getVideoRecorderProfile sourceId -1
         * @tc.desc      : sourceId -1 qualityLevel 0
         * @tc.size      : MediumTest
         * @tc.type      : Abnormal test
         * @tc.level     : Level2
     */
-    it('SUB_PROFILE_ABNORMAL_PROMISE_1400', 0, async function (done) {
+    it('SUB_PROFILE_RELIABILITY_PROMISE_1400', 0, async function (done) {
         console.info("test getVideoRecorderProfile");
         promiseAbnormalGetVideoProfile(-1, media.VideoRecorderQualityLevel.RECORDER_QUALITY_LOW, done);
     })
 
     /* *
-        * @tc.number    : SUB_PROFILE_ABNORMAL_PROMISE_1500
+        * @tc.number    : SUB_PROFILE_RELIABILITY_PROMISE_1500
         * @tc.name      : test getVideoRecorderProfile qualityLevel -1
         * @tc.desc      : sourceId 0 qualityLevel -1
         * @tc.size      : MediumTest
         * @tc.type      : Abnormal test
         * @tc.level     : Level2
     */
-    it('SUB_PROFILE_ABNORMAL_PROMISE_1500', 0, async function (done) {
+    it('SUB_PROFILE_RELIABILITY_PROMISE_1500', 0, async function (done) {
         console.info("test getVideoRecorderProfile");
         promiseAbnormalGetVideoProfile(0, -1, done);
     })
 
     /* *
-        * @tc.number    : SUB_PROFILE_ABNORMAL_PROMISE_1600
+        * @tc.number    : SUB_PROFILE_RELIABILITY_PROMISE_1600
         * @tc.name      : test getVideoRecorderProfile sourceId 65535
         * @tc.desc      : sourceId 65535 qualityLevel 0
         * @tc.size      : MediumTest
         * @tc.type      : Abnormal test
         * @tc.level     : Level2
     */
-    it('SUB_PROFILE_ABNORMAL_PROMISE_1600', 0, async function (done) {
+    it('SUB_PROFILE_RELIABILITY_PROMISE_1600', 0, async function (done) {
         console.info("test getVideoRecorderProfile");
         promiseAbnormalGetVideoProfile(65535, media.VideoRecorderQualityLevel.RECORDER_QUALITY_LOW, done);
     })
 
     /* *
-        * @tc.number    : SUB_PROFILE_ABNORMAL_PROMISE_1700
+        * @tc.number    : SUB_PROFILE_RELIABILITY_PROMISE_1700
         * @tc.name      : test getVideoRecorderProfile sourceId 65536
         * @tc.desc      : sourceId 65536 qualityLevel 0
         * @tc.size      : MediumTest
         * @tc.type      : Abnormal test
         * @tc.level     : Level2
     */
-    it('SUB_PROFILE_ABNORMAL_PROMISE_1700', 0, async function (done) {
+    it('SUB_PROFILE_RELIABILITY_PROMISE_1700', 0, async function (done) {
         console.info("test getVideoRecorderProfile");
         promiseAbnormalGetVideoProfile(65536, media.VideoRecorderQualityLevel.RECORDER_QUALITY_LOW, done);
     })
 
     /* *
-        * @tc.number    : SUB_PROFILE_ABNORMAL_PROMISE_1800
+        * @tc.number    : SUB_PROFILE_RELIABILITY_PROMISE_1800
         * @tc.name      : test getVideoRecorderProfile qualityLevel 65535
         * @tc.desc      : sourceId 0 qualityLevel 65535
         * @tc.size      : MediumTest
         * @tc.type      : Abnormal test
         * @tc.level     : Level2
     */
-    it('SUB_PROFILE_ABNORMAL_PROMISE_1800', 0, async function (done) {
+    it('SUB_PROFILE_RELIABILITY_PROMISE_1800', 0, async function (done) {
         console.info("test getVideoRecorderProfile");
         promiseAbnormalGetVideoProfile(0, 65535, done);
     })
 
     /* *
-        * @tc.number    : SUB_PROFILE_ABNORMAL_PROMISE_1900
+        * @tc.number    : SUB_PROFILE_RELIABILITY_PROMISE_1900
         * @tc.name      : test getVideoRecorderProfile qualityLevel 65536
         * @tc.desc      : sourceId 0 qualityLevel 65536
         * @tc.size      : MediumTest
         * @tc.type      : Abnormal test
         * @tc.level     : Level2
     */
-    it('SUB_PROFILE_ABNORMAL_PROMISE_1900', 0, async function (done) {
+    it('SUB_PROFILE_RELIABILITY_PROMISE_1900', 0, async function (done) {
         console.info("test getVideoRecorderProfile");
         promiseAbnormalGetVideoProfile(0, 65536, done);
     })

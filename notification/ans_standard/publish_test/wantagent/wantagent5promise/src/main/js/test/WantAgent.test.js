@@ -67,15 +67,17 @@ describe('ActsAnsWantAgentFiveProTest', function () {
                                 console.info('----trigger success!----');
                                 console.info('== trigger data  ' + JSON.stringify(data) );
                             } else {
-                                console.info('----trigger failed!----');
-                                console.info('== trigger data  ' + JSON.stringify(data) );
+                                expect(err.code).assertEqual(-1)
                             }
                             done();
                         }
                     );
                     done();         
             }
-        );
+        ).catch((err)=>{
+            expect(err.code).assertEqual(-1)
+            done()
+        })
  setTimeout(function(){
                         console.debug("====>time out ACTS_SetWant_1000====>");
                     }, time);

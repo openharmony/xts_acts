@@ -14,40 +14,40 @@
  * limitations under the License.
  */
  
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'hypium/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 export default function abilityTest() {
     describe('ACTS_AACommand_01_3', function () {
         /**
-         * @tc.number: ACTS_AACommand_print_0100
+         * @tc.number: ACTS_AACommand_print_01_0100
          * @tc.name: The -b, -p, -s, -w and other parameters of the test command are valid, and the print interface is
          *           called in AsyncCallback mode. The print information includes Chinese, special characters, etc.
          * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally through
          *           the test command.
          */
-        it('ACTS_AACommand_print_0100', 0, async function (done) {
-            console.log("ACTS_AACommand_print_0100 start ====> " )
+        it('ACTS_AACommand_print_01_0100', 0, async function (done) {
+            console.log("ACTS_AACommand_print_01_0100 start ====> " )
             var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
             globalThis.abilityDelegator.print(msg,(err,data)=>{
-                console.log("ACTS_AACommand_print_0100 print  test  end ========> callback " )
-                console.log("ACTS_AACommand_print_0100 print  test  end ========> callback err: "+JSON.stringify(err) )
-                console.log("ACTS_AACommand_print_0100 print  test  end ========> callback data: "+JSON.stringify(data))
+                console.log("ACTS_AACommand_print_01_0100 print  test  end ========> callback " )
+                console.log("ACTS_AACommand_print_01_0100 print  test  end ========> callback err: "+JSON.stringify(err) )
+                console.log("ACTS_AACommand_print_01_0100 print  test  end ========> callback data: "+JSON.stringify(data))
             })
-            var finishmsg = 'ACTS_AACommand_print_0100 end'
+            var finishmsg = 'ACTS_AACommand_print_01_0100 end'
             globalThis.abilityDelegator.finishTest(finishmsg, 1).then((data)=>{
-                console.log("ACTS_AACommand_print_0100 finishTest  test  end ========> callback " )
-                console.log("ACTS_AACommand_print_0100 finishTest  test  end ========> callback data: "+JSON.stringify(data))
+                console.log("ACTS_AACommand_print_01_0100 finishTest  test  end ========> callback " )
+                console.log("ACTS_AACommand_print_01_0100 finishTest  test  end ========> callback data: "+JSON.stringify(data))
                 done()
             })
         })
 
         /**
-         * @tc.number: ACTS_AACommand_print_0200
+         * @tc.number: ACTS_AACommand_print_01_0200
          * @tc.name: The -b, -p, -s, -w and other parameters of the test command are valid, and the print interface is
          *           called in AsyncCallback mode. The length of the print message is 1000 characters.
          * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally through
          *           the test command.
          */
-        it('ACTS_AACommand_print_0200', 0, async function (done) {
+        it('ACTS_AACommand_print_01_0200', 0, async function (done) {
             var msg = '0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
             'aaaaaaaaaa' +
             '1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
@@ -62,21 +62,21 @@ export default function abilityTest() {
             globalThis.abilityDelegator.print(msg,()=>{
                 console.log("print  test  end ========> callback " )
             })
-            var finishmsg = 'ACTS_AACommand_print_0200 end'
+            var finishmsg = 'ACTS_AACommand_print_01_0200 end'
             globalThis.abilityDelegator.finishTest(finishmsg, 1).then(()=>{
-                console.log("ACTS_AACommand_print_0200 print  test  end ========> callback " )
+                console.log("ACTS_AACommand_print_01_0200 print  test  end ========> callback " )
                 done()
             })
         })
 
         /**
-         * @tc.number: ACTS_AACommand_print_0300
+         * @tc.number: ACTS_AACommand_print_01_0300
          * @tc.name: The -b, -p, -s, -w and other parameters of the test command are valid, and the print interface is
          *           called in AsyncCallback mode. The length of the print message is greater than 1000 characters.
          * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally through
          *           the test command.
          */
-        it('ACTS_AACommand_print_0300', 0, async function (done) {
+        it('ACTS_AACommand_print_01_0300', 0, async function (done) {
             var msg = '0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
             '1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
             '2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
@@ -91,58 +91,58 @@ export default function abilityTest() {
             globalThis.abilityDelegator.print(msg,()=>{
                 console.log("print  test  end ========> callback " )
             })
-            var finishmsg = 'ACTS_AACommand_print_0300 end'
+            var finishmsg = 'ACTS_AACommand_print_01_0300 end'
             globalThis.abilityDelegator.finishTest(finishmsg, 1).then(()=>{
-                console.log("ACTS_AACommand_print_0300 print  test  end ========> callback " )
+                console.log("ACTS_AACommand_print_01_0300 print  test  end ========> callback " )
                 done()
             })
         })
 
         /**
-         * @tc.number: ACTS_AACommand_print_0400
+         * @tc.number: ACTS_AACommand_print_01_0400
          * @tc.name: The -b, -p, -s, -w and other parameters of the test command are valid, and the print interface is
          *           called in AsyncCallback mode. print information is null.
          * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally through
          *           the test command.
          */
-        it('ACTS_AACommand_print_0400', 0, async function (done) {
+        it('ACTS_AACommand_print_01_0400', 0, async function (done) {
             globalThis.abilityDelegator.print(null,()=>{
                 console.log("print  test  end ========> callback " )
             })
-            var finishmsg = 'ACTS_AACommand_print_0400 end'
+            var finishmsg = 'ACTS_AACommand_print_01_0400 end'
             globalThis.abilityDelegator.finishTest(finishmsg, 1).then(()=>{
-                console.log("ACTS_AACommand_print_0400 print  test  end ========> callback " )
+                console.log("ACTS_AACommand_print_01_0400 print  test  end ========> callback " )
                 done()
             })
         })
 
         /**
-         * @tc.number: ACTS_AACommand_print_0500
+         * @tc.number: ACTS_AACommand_print_01_0500
          * @tc.name: The -b, -p, -s, -w and other parameters of the test command are valid, and the print interface is
          *           called in Promise mode. The print information includes Chinese, special characters, etc.
          * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally through
          *           the test command.
          */
-        it('ACTS_AACommand_print_0500', 0, async function (done) {
+        it('ACTS_AACommand_print_01_0500', 0, async function (done) {
             var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
             globalThis.abilityDelegator.print(msg).then(()=>{
-                console.log("ACTS_AACommand_print_0500 print  test  end ========> callback " )
+                console.log("ACTS_AACommand_print_01_0500 print  test  end ========> callback " )
             })
-            var finishmsg = 'ACTS_AACommand_print_0500 end'
+            var finishmsg = 'ACTS_AACommand_print_01_0500 end'
             globalThis.abilityDelegator.finishTest(finishmsg, 1).then(()=>{
-                console.log("ACTS_AACommand_print_0500 print  test  end ========> callback " )
+                console.log("ACTS_AACommand_print_01_0500 print  test  end ========> callback " )
                 done()
             })
         })
 
         /**
-         * @tc.number: ACTS_AACommand_print_0600
+         * @tc.number: ACTS_AACommand_print_01_0600
          * @tc.name: The -b, -p, -s, -w and other parameters of the test command are valid, and the print interface is
          *           called in Promise mode. The length of the print message is 1000 characters.
          * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally
          *           through the test command.
          */
-        it('ACTS_AACommand_print_0600', 0, async function (done) {
+        it('ACTS_AACommand_print_01_0600', 0, async function (done) {
             var msg = '0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
             '1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
             '2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
@@ -154,23 +154,23 @@ export default function abilityTest() {
             '8aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
             '9aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaae'
             globalThis.abilityDelegator.print(msg).then(()=>{
-                console.log("ACTS_AACommand_print_0600 print  test  end ========> callback " )
+                console.log("ACTS_AACommand_print_01_0600 print  test  end ========> callback " )
             })
-            var finishmsg = 'ACTS_AACommand_print_0600 end'
+            var finishmsg = 'ACTS_AACommand_print_01_0600 end'
             globalThis.abilityDelegator.finishTest(finishmsg, 1).then(()=>{
-                console.log("ACTS_AACommand_print_0600 2 print  test  end ========> callback " )
+                console.log("ACTS_AACommand_print_01_0600 2 print  test  end ========> callback " )
                 done()
             })
         })
 
         /**
-         * @tc.number: ACTS_AACommand_print_0700
+         * @tc.number: ACTS_AACommand_print_01_0700
          * @tc.name: The -b, -p, -s, -w and other parameters of the test command are valid, and the print interface is
          *           called in Promise mode. The length of the print message is greater than 1000 characters.
          * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally through
          *           the test command.
          */
-        it('ACTS_AACommand_print_0700', 0, async function (done) {
+        it('ACTS_AACommand_print_01_0700', 0, async function (done) {
             var msg = '0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
             '1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
             '2aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
@@ -183,197 +183,197 @@ export default function abilityTest() {
             '9aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaae' +
             'fffffffffff'
             globalThis.abilityDelegator.print(msg).then(()=>{
-                console.log("ACTS_AACommand_print_0700 print  test  end ========> callback " )
+                console.log("ACTS_AACommand_print_01_0700 print  test  end ========> callback " )
             })
-            var finishmsg = 'ACTS_AACommand_print_0700 end'
+            var finishmsg = 'ACTS_AACommand_print_01_0700 end'
             globalThis.abilityDelegator.finishTest(finishmsg, 1).then(()=>{
-                console.log("ACTS_AACommand_print_0700 2 print  test  end ========> callback " )
+                console.log("ACTS_AACommand_print_01_0700 2 print  test  end ========> callback " )
                 done()
             })
         })
 
         /**
-         * @tc.number: ACTS_AACommand_print_0800
+         * @tc.number: ACTS_AACommand_print_01_0800
          * @tc.name: The -b, -p, -s, -w and other parameters of the test command are valid, and the print interface is
          *           called in Promise mode. print information is null.
          * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally
          *           through the test command.
          */
-        it('ACTS_AACommand_print_0800', 0, async function (done) {
+        it('ACTS_AACommand_print_01_0800', 0, async function (done) {
             globalThis.abilityDelegator.print("").then(()=>{
-                console.log("ACTS_AACommand_print_0800 print  test  end ========> callback " )
+                console.log("ACTS_AACommand_print_01_0800 print  test  end ========> callback " )
             })
-            var finishmsg = 'ACTS_AACommand_print_0800 end'
+            var finishmsg = 'ACTS_AACommand_print_01_0800 end'
             globalThis.abilityDelegator.finishTest(finishmsg, 1).then(()=>{
-                console.log("ACTS_AACommand_print_0800 2 print  test  end ========> callback " )
+                console.log("ACTS_AACommand_print_01_0800 2 print  test  end ========> callback " )
                 done()
             })
         })
 
         /**
-         * @tc.number: ACTS_AACommand_finishTest_0100
+         * @tc.number: ACTS_AACommand_finishTest_01_0100
          * @tc.name: Each parameter of the test command is valid, and the finishTest interface is called
          *           in AsyncCallback mode.
          *           The msg parameter is valid (including Chinese and special characters) and the code parameter
          *           is valid (1).
          * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
          */
-        it('ACTS_AACommand_finish_0100', 0, async function (done) {
-            var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146ACTS_AACommand_finish_0100'
+        it('ACTS_AACommand_finish_01_0100', 0, async function (done) {
+            var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146ACTS_AACommand_finish_01_0100'
             globalThis.abilityDelegator.finishTest(msg, 1,()=>{
-                console.log("ACTS_AACommand_finish_0100 finishTest  test  end ========> callback " )
+                console.log("ACTS_AACommand_finish_01_0100 finishTest  test  end ========> callback " )
                 done()
             })
         })
 
         /**
-         * @tc.number: ACTS_AACommand_finishTest_0200
+         * @tc.number: ACTS_AACommand_finishTest_01_0200
          * @tc.name: The parameters of the test command are valid, and the finishTest interface is called in AsyncCallback
          *           mode. The msg parameter is invalid (null) and the code parameter is valid (1)
          * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
          */
-        it('ACTS_AACommand_finish_0200', 0, async function (done) {
+        it('ACTS_AACommand_finish_01_0200', 0, async function (done) {
             setTimeout(() => {
-                console.log('ACTS_AACommand_finish_0200 code:'+JSON.stringify(code))
+                console.log('ACTS_AACommand_finish_01_0200 code:'+JSON.stringify(code))
                 if(code!=undefined){
                     expect().assertFail();
                 }
                 done();
             }, 3000)
             var code = globalThis.abilityDelegator.finishTest(null, 1,()=>{
-                console.log(" ACTS_AACommand_finish_0200 finishTest  test  end ========> callback " )
+                console.log(" ACTS_AACommand_finish_01_0200 finishTest  test  end ========> callback " )
                 expect().assertFail();
             })
         })
 
         /**
-         * @tc.number: ACTS_AACommand_finishTest_0300
+         * @tc.number: ACTS_AACommand_finishTest_01_0300
          * @tc.name: The parameters of the test command are valid, and the finishTest interface is called in AsyncCallback
          *           mode. The msg parameter is invalid (Undefined) and the code parameter is valid (1)
          * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
          */
-        it('ACTS_AACommand_finish_0300', 0, async function (done) {
+        it('ACTS_AACommand_finish_01_0300', 0, async function (done) {
             setTimeout(() => {
-                console.log('ACTS_AACommand_finish_0300 code:'+JSON.stringify(code))
+                console.log('ACTS_AACommand_finish_01_0300 code:'+JSON.stringify(code))
                 if(code!=undefined){
                     expect().assertFail();
                 }
                 done();
             }, 3000)
             var code = globalThis.abilityDelegator.finishTest(undefined, 1,()=>{
-                console.log(" ACTS_AACommand_finish_0300 finishTest  test  end ========> callback " )
+                console.log(" ACTS_AACommand_finish_01_0300 finishTest  test  end ========> callback " )
                 expect().assertFail();
             })
         })
 
         /**
-         * @tc.number: ACTS_AACommand_finishTest_0400
+         * @tc.number: ACTS_AACommand_finishTest_01_0400
          * @tc.name: The parameters of the test command are valid, and the finishTest interface is called in AsyncCallback
          *           mode. The msg parameter is invalid(including Chinese and special characters) and the code parameter
          *           is valid (Number.MAX_VALUE)
          * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
          */
-        it('ACTS_AACommand_finish_0400', 0, async function (done) {
+        it('ACTS_AACommand_finish_01_0400', 0, async function (done) {
             var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
             globalThis.abilityDelegator.finishTest(msg, Number.MAX_VALUE,()=>{
-                console.log("ACTS_AACommand_finish_0400 finishTest  test  end ========> callback " )
+                console.log("ACTS_AACommand_finish_01_0400 finishTest  test  end ========> callback " )
                 done()
             })
         })
 
         /**
-         * @tc.number: ACTS_AACommand_finishTest_0500
+         * @tc.number: ACTS_AACommand_finishTest_01_0500
          * @tc.name: The parameters of the test command are valid, and the finishTest interface is called in AsyncCallback
          *           mode. The msg parameter is invalid(including Chinese and special characters) and the code parameter
          *           is valid (Number.MIN_VALUE)
          * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
          */
-        it('ACTS_AACommand_finish_0500', 0, async function (done) {
+        it('ACTS_AACommand_finish_01_0500', 0, async function (done) {
             var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
             globalThis.abilityDelegator.finishTest(msg, Number.MIN_VALUE,()=>{
-                console.log("ACTS_AACommand_finish_0500 finishTest  test  end ========> callback " )
+                console.log("ACTS_AACommand_finish_01_0500 finishTest  test  end ========> callback " )
                 done()
             })
         })
 
         /**
-         * @tc.number: ACTS_AACommand_finishTest_0600
+         * @tc.number: ACTS_AACommand_finishTest_01_0600
          * @tc.name: The parameters of the test command are valid, and the finishTest interface is called in AsyncCallback
          *           mode. The msg parameter is invalid(including Chinese and special characters) and the code parameter
          *           is valid (Number.MAX_VALUE+1)
          * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
          */
-        it('ACTS_AACommand_finish_0600', 0, async function (done) {
+        it('ACTS_AACommand_finish_01_0600', 0, async function (done) {
 
             var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
             globalThis.abilityDelegator.finishTest(msg, (Number.MIN_VALUE+1),()=>{
-                console.log("ACTS_AACommand_finish_0600 finishTest  test  end ========> callback " )
+                console.log("ACTS_AACommand_finish_01_0600 finishTest  test  end ========> callback " )
                 done()
             })
         })
 
         /**
-         * @tc.number: ACTS_AACommand_finishTest_0700
+         * @tc.number: ACTS_AACommand_finishTest_01_0700
          * @tc.name: The parameters of the test command are valid, and the finishTest interface is called in AsyncCallback
          *           mode. The msg parameter is invalid(including Chinese and special characters) and the code parameter
          *           is valid (Number.MIN_VALUE-1)
          * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
          */
-        it('ACTS_AACommand_finish_0700', 0, async function (done) {
+        it('ACTS_AACommand_finish_01_0700', 0, async function (done) {
             var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
             globalThis.abilityDelegator.finishTest(msg, (Number.MIN_VALUE-1),()=>{
-                console.log("ACTS_AACommand_finish_0700 finishTest  test  end ========> callback " )
+                console.log("ACTS_AACommand_finish_01_0700 finishTest  test  end ========> callback " )
                 done()
             })
         })
 
         /**
-         * @tc.number: ACTS_AACommand_finishTest_0800
+         * @tc.number: ACTS_AACommand_finishTest_01_0800
          * @tc.name: The parameters of the test command are valid, and the finishTest interface is called in AsyncCallback
          *           mode. The msg parameter is invalid(including Chinese and special characters) and the
          *           code parameter is valid (“ABCD”)
          * @tc.desc: Verify that the process of the test framework is not stopped by calling this interface.
          */
-        it('ACTS_AACommand_finish_0800', 0, async function (done) {
+        it('ACTS_AACommand_finish_01_0800', 0, async function (done) {
             var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
             setTimeout(() => {
-                console.log('ACTS_AACommand_finish_0800 code:'+JSON.stringify(code))
+                console.log('ACTS_AACommand_finish_01_0800 code:'+JSON.stringify(code))
                 if(code!=undefined){
                     expect().assertFail();
                 }
                 done();
             }, 3000)
             var code = globalThis.abilityDelegator.finishTest(msg, 'ABCD',()=>{
-                console.log(" ACTS_AACommand_finish_0800 finishTest  test  end ========> callback " )
+                console.log(" ACTS_AACommand_finish_01_0800 finishTest  test  end ========> callback " )
                 expect().assertFail();
             })
         })
 
         /**
-         * @tc.number: ACTS_AACommand_finishTest_0900
+         * @tc.number: ACTS_AACommand_finishTest_01_0900
          * @tc.name: The parameters of the test command are valid, and the finishTest interface is called in Promise
          *           mode. The msg parameter is valid(including Chinese and special characters) and the code parameter
          *           is valid (1)
          * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
          */
-        it('ACTS_AACommand_finish_0900', 0, async function (done) {
+        it('ACTS_AACommand_finish_01_0900', 0, async function (done) {
             var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
             globalThis.abilityDelegator.finishTest(msg, 1).then(() => {
-                console.log("ACTS_AACommand_finish_0900 finishTest  test  end ========> callback " )
+                console.log("ACTS_AACommand_finish_01_0900 finishTest  test  end ========> callback " )
                 done()
             })
         })
 
         /**
-         * @tc.number: ACTS_AACommand_finishTest_1000
+         * @tc.number: ACTS_AACommand_finishTest_01_1000
          * @tc.name: The parameters of the test command are valid, and the finishTest interface is called in Promise
          *           mode. The msg parameter is invalid(null) and the code parameter is valid (1)
          * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
          */
-        it('ACTS_AACommand_finish_1000', 0, async function (done) {
+        it('ACTS_AACommand_finish_01_1000', 0, async function (done) {
             var code = null
             setTimeout(() => {
-                console.log('ACTS_AACommand_finish_1000 code:'+JSON.stringify(code))
+                console.log('ACTS_AACommand_finish_01_1000 code:'+JSON.stringify(code))
                 if(code!=undefined){
                     expect().assertFail();
                 }
@@ -383,15 +383,15 @@ export default function abilityTest() {
         })
 
         /**
-         * @tc.number: ACTS_AACommand_finishTest_1100
+         * @tc.number: ACTS_AACommand_finishTest_01_1100
          * @tc.name: The parameters of the test command are valid, and the finishTest interface is called in Promise
          *           mode. The msg parameter is invalid(undefined) and the code parameter is valid (1)
          * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
          */
-        it('ACTS_AACommand_finish_1100', 0, async function (done) {
+        it('ACTS_AACommand_finish_01_1100', 0, async function (done) {
             var code=null
             setTimeout(() => {
-                console.log('ACTS_AACommand_finish_1100 code:'+JSON.stringify(code))
+                console.log('ACTS_AACommand_finish_01_1100 code:'+JSON.stringify(code))
                 if(code!=undefined){
                     expect().assertFail();
                 }
@@ -401,77 +401,77 @@ export default function abilityTest() {
         })
 
         /**
-         * @tc.number: ACTS_AACommand_finishTest_1200
+         * @tc.number: ACTS_AACommand_finishTest_01_1200
          * @tc.name: The parameters of the test command are valid, and the finishTest interface is called in Promise
          *           mode. The msg parameter is valid(including Chinese and special characters) and the code parameter
          *           is valid (Number.MAX_VALUE)
          * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
          */
-        it('ACTS_AACommand_finish_1200', 0, async function (done) {
+        it('ACTS_AACommand_finish_01_1200', 0, async function (done) {
             var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
             globalThis.abilityDelegator.finishTest(msg, Number.MAX_VALUE).then(()=>{
-                console.log("ACTS_AACommand_finish_1200 finishTest  test  end ========> callback " )
+                console.log("ACTS_AACommand_finish_01_1200 finishTest  test  end ========> callback " )
                 done()
             })
         })
 
         /**
-         * @tc.number: ACTS_AACommand_finishTest_1300
+         * @tc.number: ACTS_AACommand_finishTest_01_1300
          * @tc.name: The parameters of the test command are valid, and the finishTest interface is called in Promise
          *           mode. The msg parameter is valid(including Chinese and special characters) and the code parameter
          *           is valid (Number.MIN_VALUE)
          * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
          */
-        it('ACTS_AACommand_finish_1300', 0, async function (done) {
+        it('ACTS_AACommand_finish_01_1300', 0, async function (done) {
             var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
             globalThis.abilityDelegator.finishTest(msg, Number.MIN_VALUE).then(()=>{
-                console.log("ACTS_AACommand_finish_1300 finishTest  test  end ========> callback " )
+                console.log("ACTS_AACommand_finish_01_1300 finishTest  test  end ========> callback " )
                 done()
             })
         })
 
         /**
-         * @tc.number: ACTS_AACommand_finishTest_1400
+         * @tc.number: ACTS_AACommand_finishTest_01_1400
          * @tc.name: The parameters of the test command are valid, and the finishTest interface is called in Promise
          *           mode. The msg parameter is valid(including Chinese and special characters) and the code parameter
          *           is valid (Number.MAX_VALUE+1)
          * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
          */
-        it('ACTS_AACommand_finish_1400', 0, async function (done) {
+        it('ACTS_AACommand_finish_01_1400', 0, async function (done) {
             var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
             globalThis.abilityDelegator.finishTest(msg, Number.MIN_VALUE+1).then(()=>{
-                console.log("ACTS_AACommand_finish_1400 finishTest  test  end ========> callback " )
+                console.log("ACTS_AACommand_finish_01_1400 finishTest  test  end ========> callback " )
                 done()
             })
         })
 
         /**
-         * @tc.number: ACTS_AACommand_finishTest_1500
+         * @tc.number: ACTS_AACommand_finishTest_01_1500
          * @tc.name: The parameters of the test command are valid, and the finishTest interface is called in Promise
          *           mode. The msg parameter is valid(including Chinese and special characters) and the code parameter
          *           is valid (Number.MIN_VALUE-1)
          * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
          */
-        it('ACTS_AACommand_finish_1500', 0, async function (done) {
+        it('ACTS_AACommand_finish_01_1500', 0, async function (done) {
             var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
             globalThis.abilityDelegator.finishTest(msg, Number.MIN_VALUE-1).then(()=>{
-                console.log("ACTS_AACommand_finish_1500 finishTest  test  end ========> callback " )
+                console.log("ACTS_AACommand_finish_01_1500 finishTest  test  end ========> callback " )
                 done()
             })
         })
 
         /**
-         * @tc.number: ACTS_AACommand_finishTest_1600
+         * @tc.number: ACTS_AACommand_finishTest_01_1600
          * @tc.name: The parameters of the test command are valid, and the finishTest interface is called in Promise
          *           mode. The msg parameter is valid(including Chinese and special characters) and the code parameter
          *           is valid (ABCD)
          * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
          */
-        it('ACTS_AACommand_finish_1600', 0, async function (done) {
+        it('ACTS_AACommand_finish_01_1600', 0, async function (done) {
             var code = null
             var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
             setTimeout(() => {
-                console.log('ACTS_AACommand_finish_1600 code:'+JSON.stringify(code))
+                console.log('ACTS_AACommand_finish_01_1600 code:'+JSON.stringify(code))
                 if(code!=undefined){
                     expect().assertFail();
                 }

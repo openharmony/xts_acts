@@ -13,39 +13,39 @@
 * limitations under the License.
 */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'hypium/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
 export default function abilityTest() {
     describe('ACTS_AACommand_01_3', function () {
         /**
-        * @tc.number: ACTS_AACommand_printSync_0100
+        * @tc.number: ACTS_AACommand_printSync_01_0100
         * @tc.name: The -b, -p, -s, -w and other parameters of the test command are valid,
         *           The printSync information includes Chinese, special characters, etc.
         * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally through
         *           the test command.
         */
-        it('ACTS_AACommand_printSync_0100', 0, async function (done) {
-            console.log("ACTS_AACommand_printSync_0100 start ====> " )
+        it('ACTS_AACommand_printSync_01_0100', 0, async function (done) {
+            console.log("ACTS_AACommand_printSync_01_0100 start ====> " )
             var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
             globalThis.abilityDelegator.printSync(msg);
-            console.log("ACTS_AACommand_printSync_0100 printSync end ====> " )
-            var finishmsg = 'ACTS_AACommand_printSync_0100 end'
+            console.log("ACTS_AACommand_printSync_01_0100 printSync end ====> " )
+            var finishmsg = 'ACTS_AACommand_printSync_01_0100 end'
             globalThis.abilityDelegator.finishTest(finishmsg, 1).then((data)=>{
-                console.log("ACTS_AACommand_printSync_0100 finishTest  test  end ========> callback " )
-                console.log("ACTS_AACommand_printSync_0100 finishTest  test  end " +
+                console.log("ACTS_AACommand_printSync_01_0100 finishTest  test  end ========> callback " )
+                console.log("ACTS_AACommand_printSync_01_0100 finishTest  test  end " +
                 "========> callback data: "+JSON.stringify(data))
                 done()
             })
         })
 
         /**
-        * @tc.number: ACTS_AACommand_printSync_0200
+        * @tc.number: ACTS_AACommand_printSync_01_0200
         * @tc.name: The -b, -p, -s, -w and other parameters of the test command are valid,
         *           The length of the printSync message is 1000 characters.
         * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally through
         *           the test command.
         */
-        it('ACTS_AACommand_printSync_0200', 0, async function (done) {
+        it('ACTS_AACommand_printSync_01_0200', 0, async function (done) {
             var msg = '0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
             'aaaaaaaaaa' +
             '1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
@@ -58,22 +58,22 @@ export default function abilityTest() {
             '8aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
             '9aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaae'
             globalThis.abilityDelegator.printSync(msg);
-            console.log("ACTS_AACommand_printSync_0200 printSync end ====> " )
-            var finishmsg = 'ACTS_AACommand_printSync_0200 end'
+            console.log("ACTS_AACommand_printSync_01_0200 printSync end ====> " )
+            var finishmsg = 'ACTS_AACommand_printSync_01_0200 end'
             globalThis.abilityDelegator.finishTest(finishmsg, 1).then(()=>{
-                console.log("ACTS_AACommand_printSync_0200 print  test  end ========> callback " )
+                console.log("ACTS_AACommand_printSync_01_0200 print  test  end ========> callback " )
                 done()
             })
         })
 
         /**
-         * @tc.number: ACTS_AACommand_printSync_0300
+         * @tc.number: ACTS_AACommand_printSync_01_0300
          * @tc.name: The -b, -p, -s, -w and other parameters of the test command are valid
          *           The length of the printSync message is greater than 1000 characters.
          * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally through
          *           the test command.
          */
-        it('ACTS_AACommand_printSync_0300', 0, async function (done) {
+        it('ACTS_AACommand_printSync_01_0300', 0, async function (done) {
             var msg = '0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
             'aaaaaaaaaa' +
             '1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' +
@@ -87,27 +87,27 @@ export default function abilityTest() {
             '9aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaae' +
             'fffffffffff'
             globalThis.abilityDelegator.printSync(msg);
-            console.log("ACTS_AACommand_printSync_0300 printSync end ====> " )
-            var finishmsg = 'ACTS_AACommand_printSync_0300 end'
+            console.log("ACTS_AACommand_printSync_01_0300 printSync end ====> " )
+            var finishmsg = 'ACTS_AACommand_printSync_01_0300 end'
             globalThis.abilityDelegator.finishTest(finishmsg, 1).then(()=>{
-                console.log("ACTS_AACommand_printSync_0300 print  test  end ========> callback " )
+                console.log("ACTS_AACommand_printSync_01_0300 print  test  end ========> callback " )
                 done()
             })
         })
 
         /**
-         * @tc.number: ACTS_AACommand_printSync_0400
+         * @tc.number: ACTS_AACommand_printSync_01_0400
          * @tc.name: The -b, -p, -s, -w and other parameters of the test command are valid,
          *           printSync information is null.
          * @tc.desc: Verify that the test framework can be started normally and the logs can be output normally through
          *           the test command.
          */
-        it('ACTS_AACommand_printSync_0400', 0, async function (done) {
+        it('ACTS_AACommand_printSync_01_0400', 0, async function (done) {
             globalThis.abilityDelegator.printSync(null);
-            console.log("ACTS_AACommand_printSync_0300 printSync end ====> " )
-            var finishmsg = 'ACTS_AACommand_printSync_0400 end'
+            console.log("ACTS_AACommand_printSync_01_0300 printSync end ====> " )
+            var finishmsg = 'ACTS_AACommand_printSync_01_0400 end'
             globalThis.abilityDelegator.finishTest(finishmsg, 1).then(()=>{
-                console.log("ACTS_AACommand_printSync_0400 print  test  end ========> callback " )
+                console.log("ACTS_AACommand_printSync_01_0400 print  test  end ========> callback " )
                 done()
             })
         })

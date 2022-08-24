@@ -89,7 +89,7 @@ export default function ScrollJsunit() {
       console.log("cd scroll1 scrollable" + JSON.stringify(obj.$attrs.scrollable));
       console.log("cd scroll1 scrollBar" + JSON.stringify(obj.$attrs.scrollBar));
       expect(obj.$attrs.scrollable).assertEqual('ScrollDirection.Horizontal')
-      expect(obj.$attrs.scrollBar).assertEqual('BarState.Off')
+      expect(obj.$attrs.scrollBar).assertEqual('BarState.Auto')
       console.info('cd Scorll1GetInspectorByKey END');
       done();
     });

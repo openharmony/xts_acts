@@ -345,14 +345,6 @@ describe('ActsDataAbilityHelperTest', function () {
         console.log('Insert_0700 DAHelper ====<: ' + JSON.stringify(DAHelper) + "," + DAHelper)
         var currentAlertTimeout;
         try {
-            function onAsyncCallbackInsert0700(err) {
-                clearTimeout(currentAlertTimeout);
-                expect(err.code).assertEqual(0);
-                console.log('ACTS_Insert_0700====<onAsyncCallbackInsert0700');
-                DAHelper.off("dataChange", dataAbilityUri, onAsyncCallbackInsert0700);
-                done();
-            }
-            DAHelper.on("dataChange", dataAbilityUri, onAsyncCallbackInsert0700);
             DAHelper.insert(dataAbilityUri, valueBucket)
                 .then((data) => {
                     console.debug("=ACTS_Insert_0700 then data====>"
@@ -389,14 +381,6 @@ describe('ActsDataAbilityHelperTest', function () {
         console.log('featureAbility getDataAbilityHelper ====>: ' + DAHelper)
         var currentAlertTimeout;
         try {
-            function onAsyncCallbackInsert0800(err) {
-                clearTimeout(currentAlertTimeout);
-                expect(err.code).assertEqual(0);
-                console.log('ACTS_Insert_0800====<onAsyncCallbackInsert0800');
-                DAHelper.off("dataChange", dataAbilityUri, onAsyncCallbackInsert0800);
-                done();
-            }
-            DAHelper.on("dataChange", dataAbilityUri, onAsyncCallbackInsert0800);
             await DAHelper.insert(dataAbilityUri, valueBucket,
                 (err, data) => {
                     console.debug("=ACTS_Insert_0800 err,data=======>"
@@ -1909,15 +1893,6 @@ describe('ActsDataAbilityHelperTest', function () {
         console.log('featureAbility Update getDataAbilityHelper ====>: ' + DAHelper)
         var currentAlertTimeout;
         try {
-            function onAsyncCallbackUpdate0700(err) {
-                expect(err.code).assertEqual(0);
-                clearTimeout(currentAlertTimeout);
-                console.log('ACTS_Update_0700====<onAsyncCallbackUpdate0700');
-                DAHelper.off("dataChange", dataAbilityUri, onAsyncCallbackUpdate0700);
-                console.log('ACTS_Update_0700====<end');
-                done();
-            }
-            DAHelper.on("dataChange", dataAbilityUri, onAsyncCallbackUpdate0700);
             let predicates = new ohosDataAbility.DataAbilityPredicates();
             predicates.equalTo('contact_id', 1);
             predicates.limitAs(10);
@@ -1963,15 +1938,6 @@ describe('ActsDataAbilityHelperTest', function () {
         console.log('featureAbility Update getDataAbilityHelper ====>: ' + DAHelper)
         var currentAlertTimeout;
         try {
-            function onAsyncCallbackUpdate0800(err) {
-                expect(err.code).assertEqual(0);
-                clearTimeout(currentAlertTimeout);
-                console.log('ACTS_Update_0800====<onAsyncCallbackUpdate0800');
-                DAHelper.off("dataChange", dataAbilityUri, onAsyncCallbackUpdate0800);
-                console.log('ACTS_Update_0800====<end');
-                done();
-            }
-            DAHelper.on("dataChange", dataAbilityUri, onAsyncCallbackUpdate0800);
             let predicates = new ohosDataAbility.DataAbilityPredicates();
             predicates.equalTo('contact_id', 1);
             predicates.limitAs(10);
@@ -2466,15 +2432,6 @@ describe('ActsDataAbilityHelperTest', function () {
         console.log('ACTS_Delete_0700====<begin');
         var currentAlertTimeout;
         try {
-            function onAsyncCallbackDelete0700(err) {
-                expect(err.code).assertEqual(0);
-                clearTimeout(currentAlertTimeout);
-                console.log('ACTS_Delete_0700====<onAsyncCallbackDelete0700');
-                DAHelper.off("dataChange", dataAbilityUri, onAsyncCallbackDelete0700);
-                console.log('ACTS_Delete_0700====<end');
-                done();
-            }
-            DAHelper.on("dataChange", dataAbilityUri, onAsyncCallbackDelete0700);
             let predicates = new ohosDataAbility.DataAbilityPredicates();
             predicates.equalTo('contact_id', 1);
             predicates.limitAs(10);
@@ -2519,15 +2476,6 @@ describe('ActsDataAbilityHelperTest', function () {
         console.log('featureAbility getDataAbilityHelper ====>: ' + DAHelper)
         var currentAlertTimeout;
         try {
-            function onAsyncCallbackDelete0800(err) {
-                expect(err.code).assertEqual(0);
-                clearTimeout(currentAlertTimeout);
-                console.log('ACTS_Delete_0800====<onAsyncCallbackDelete0800');
-                DAHelper.off("dataChange", dataAbilityUri, onAsyncCallbackDelete0800);
-                console.log('ACTS_Delete_0800====<end');
-                done();
-            }
-            DAHelper.on("dataChange", dataAbilityUri, onAsyncCallbackDelete0800);
             let predicates = new ohosDataAbility.DataAbilityPredicates();
             predicates.equalTo('contact_id', 1);
             predicates.limitAs(10);
@@ -5087,6 +5035,7 @@ describe('ActsDataAbilityHelperTest', function () {
                 gSetTimeout = 500;
                 done();
             }
+            DAHelper.off("dataChange", dataAbilityUri, onAsyncCallback0100);
             DAHelper.on("dataChange", dataAbilityUri, onAsyncCallback0100);
 
             setTimeout(mySetTimeout, gSetTimeout);

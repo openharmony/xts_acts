@@ -43,7 +43,7 @@ describe('VideoEncoderEnum', function () {
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_DECODER_ENUM_VideoEncodeBitrateMode_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_DECODER_ENUM_VideoEncodeBitrateMode_0100', 0, async function (done) {
         expect(media.VideoEncodeBitrateMode.CBR).assertEqual(0);
         expect(media.VideoEncodeBitrateMode.VBR).assertEqual(1);
         expect(media.VideoEncodeBitrateMode.CQ).assertEqual(2);
