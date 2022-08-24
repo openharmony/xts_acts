@@ -1580,5 +1580,86 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       });
 
     })
+    /**
+    * @tc.number     SUB_WINDOW_GETCUTOUTINFO_JSAPI_002
+    * @tc.name       Test getCutoutInfoTest2
+    * @tc.desc       Obtain information about unavailable screen areas such as the hole screen, fringe screen, and waterfall screen
+    */
+    it('getCutoutInfoTest2', 0, async function (done) {
+      let caseName = 'getCutoutInfoTest2';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin context==' + JSON.stringify(context));
+      let dpClass = display.getDefaultDisplaySync();
+      expect(!!dpClass).assertTrue();
+      dpClass.getCutoutInfo((err, data) => {
+        if (err && err.code) {
+          unexpectedError(err, caseName, 'displayClass.getCutoutInfo', done);
+        }else{
+          console.info(msgStr+'Succeeded in getting cutoutInfo. Data: ' + JSON.stringify(data));
+          done();
+        }
+      })
+    })
+    /**
+    * @tc.number     SUB_WINDOW_SHOWWITHANIMATION_JSAPI_002
+    * @tc.name       Test showWithAnimationTest2
+    * @tc.desc       Displays the current window, playing an animation in the process
+    */
+    it('showWithAnimationTest2', 0, async function (done) {
+      let caseName = 'showWithAnimationTest2';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin context==' + JSON.stringify(context));
+      let wndId = 'showWithAnimationTest2';
+      let baseType = ohosWindow.WindowType.TYPE_FLOAT;
+      ohosWindow.create(context, wndId, baseType, (err, data) => {
+        if (err && err.code) {
+          unexpectedError(err, caseName, 'ohosWindow.create ' + baseType, done);
+        } else {
+          let tempWnd=data;
+          console.log(msgStr + 'ohosWindow.create ' + baseType + ', tempWnd: ' + JSON.stringify(tempWnd));
+          expect(!!tempWnd).assertTrue();
+          tempWnd.showWithAnimation((error, animationData) => {
+            if (error && error.code) {
+              unexpectedError(error, caseName, 'Failed to show the window with animation', done);
+            }else {
+              console.info('Succeeded in showing the window with animation. Data: ' + JSON.stringify(animationData));
+              done();
+            }
+          })
+        }
+      })
+    })
+    /**
+    * @tc.number     SUB_WINDOW_HIDEWITHANIMATION_JSAPI_002
+    * @tc.name       Test hideWithAnimationTest2
+    * @tc.desc       Hide the current window and play an animation in the process
+    */
+    it('hideWithAnimationTest2', 0, async function (done) {
+      let caseName = 'hideWithAnimationTest2';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin context==' + JSON.stringify(context));
+      let wndId = 'hideWithAnimationTest2';
+      let baseType = ohosWindow.WindowType.TYPE_FLOAT;
+      ohosWindow.create(context, wndId, baseType, (creare_err, tempWnd) => {
+        if (creare_err && creare_err.code) {
+          unexpectedError(creare_err, caseName, 'ohosWindow.create ' + baseType, done);
+        }
+        expect(!!tempWnd).assertTrue();
+        ohosWindow.find(wndId, (findErr, findWnd) => {
+          if (findErr && findErr.code) {
+            unexpectedError(findErr, caseName, 'Failed to hide the window with animation', done);
+          }else {
+            findWnd.hideWithAnimation((err, data) => {
+              if (err && err.code) {
+                unexpectedError(err, caseName, 'Failed to hide the window with animation', done);
+              }else {
+                console.info('Succeeded in hiding the window with animation. Data: ' + JSON.stringify(data));
+                done();
+              }
+            })
+          }
+        })
+      })
+    })
   })
 }

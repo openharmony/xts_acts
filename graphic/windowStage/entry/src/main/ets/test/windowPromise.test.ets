@@ -1483,5 +1483,78 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       }
       done();
     })
+    /**
+    * @tc.number     SUB_WINDOW_GETCUTOUTINFO_JSAPI_001
+    * @tc.name       Test getCutoutInfoTest1
+    * @tc.desc       Obtain information about unavailable screen areas such as the hole screen, fringe screen, and waterfall screen
+    */
+    it('getCutoutInfoTest1', 0, async function (done) {
+      let caseName = 'getCutoutInfoTest1';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin context==' + JSON.stringify(context));
+      let dpClass = display.getDefaultDisplaySync();
+      expect(!!dpClass).assertTrue();
+      dpClass.getCutoutInfo().then((data) => {
+        console.info('Succeeded in getting cutoutInfo. Data: ' + JSON.stringify(data));
+        done();
+      }).catch(err=>{
+        unexpectedError(err, caseName, 'displayClass.getCutoutInfo', done);
+      });
+    })
+    /**
+    * @tc.number     SUB_WINDOW_SHOWWITHANIMATION_JSAPI_001
+    * @tc.name       Test showWithAnimationTest1
+    * @tc.desc       Displays the current window, playing an animation in the process
+    */
+    it('showWithAnimationTest1', 0, async function (done) {
+      let caseName = 'showWithAnimationTest1';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin context==' + JSON.stringify(context));
+      let wndId = 'showWithAnimationTest1';
+      let baseType = ohosWindow.WindowType.TYPE_FLOAT;
+      let tempWnd = await ohosWindow.create(context,wndId, baseType).catch((err) => {
+        unexpectedError(err, caseName, 'ohosWindow.create ' + baseType, done);
+      });
+      console.log(msgStr + 'ohosWindow.create ' + baseType + ', tempWnd: ' + JSON.stringify(tempWnd));
+      expect(!!tempWnd).assertTrue();
+      console.info('showWithAnimationTest1 ****' + Reflect.has(tempWnd,'showWithAnimation'))
+      await tempWnd.showWithAnimation().then((data)=> {
+        console.info('Succeeded in showing the window with animation. Data: ' + JSON.stringify(data));
+        done();
+      }).catch((err)=>{
+        unexpectedError(err, caseName, 'Failed to show the window with animation', done);
+      })
+    })
+    /**
+    * @tc.number     SUB_WINDOW_HIDEWITHANIMATION_JSAPI_001
+    * @tc.name       Test hideWithAnimationTest1
+    * @tc.desc       Hide the current window and play an animation in the process
+    */
+    it('hideWithAnimationTest1', 0, async function (done) {
+      let caseName = 'hideWithAnimationTest1';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin context==' + JSON.stringify(context));
+      let wndId = 'hideWithAnimationTest1';
+      let baseType = ohosWindow.WindowType.TYPE_FLOAT;
+      let tempWnd = await ohosWindow.create(context,wndId, baseType).catch((err) => {
+        unexpectedError(err, caseName, 'ohosWindow.create ' + baseType, done);
+      });
+      console.log(msgStr + 'ohosWindow.create ' + baseType + ', tempWnd: ' + JSON.stringify(tempWnd));
+      expect(!!tempWnd).assertTrue();
+      let findWnd = await ohosWindow.find(wndId).catch((err) => {
+        expectedError(err, caseName, 'ohosWindow.find', done);
+      });
+      console.log(msgStr + 'find findWnd: ' + JSON.stringify(findWnd));
+      expect(!!findWnd).assertTrue();
+      console.info('hideWithAnimationTest1 ****' + Reflect.has(findWnd,'hideWithAnimation'))
+      console.info('hideWithAnimationTest1 ****' + Reflect.has(findWnd,'destroy'))
+      let promise = findWnd.hideWithAnimation();
+      promise.then((data)=> {
+        console.info('Succeeded in hiding the window with animation. Data: ' + JSON.stringify(data));
+        done();
+      }).catch((err)=>{
+        console.error('Failed to hide the window with animation. Cause: ' + JSON.stringify(err));
+      })
+    })
   })
 }
