@@ -32,13 +32,13 @@ struct VisibilityExample {
       eventId: 48,
       priority: events_emitter.EventPriority.LOW
     }
-    events_emitter.on(noneChangeEvent, this.hiddenChangCallBack)
+    events_emitter.on(noneChangeEvent, this.noneChangCallBack)
 
     var stateChangeEvent2 = {
       eventId: 1116,
       priority: events_emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent2, this.stateChangCallBack);
+    events_emitter.on(stateChangeEvent2, this.hiddenChangCallBack);
   }
 
   private hiddenChangCallBack = (eventData) => {
