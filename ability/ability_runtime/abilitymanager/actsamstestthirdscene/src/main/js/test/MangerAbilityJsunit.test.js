@@ -63,6 +63,7 @@ export default function ActsAmsTestThirdScene() {
                     ' + error.code + ', data length [' + data.length + ']');
                 }
             );
+            sleep(500);
             done();
         });
 

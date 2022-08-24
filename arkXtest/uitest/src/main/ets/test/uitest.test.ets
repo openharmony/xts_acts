@@ -730,12 +730,20 @@ export default function UiTest() {
       let window1 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
       let mode1 = await window1.getWindowMode()
       expect(mode1 == WindowMode.FULLSCREEN).assertTrue()
-      await window1.resume()
-      let window2 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
-      let mode2 = await window2.getWindowMode()
-      expect(mode2 == WindowMode.FLOATING).assertTrue()
-      await window2.resume()
-      await stopApplication('com.uitestScene.acts')
+      try {
+        await window1.resume()
+        let window2 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+        let mode2 = await window2.getWindowMode()
+        expect(mode2 == WindowMode.FLOATING).assertTrue()
+        await stopApplication('com.uitestScene.acts')
+      }
+      catch (err) {
+        if (err.message == 'this device can not support this action') {
+          expect(window1 != null).assertTrue()
+        } else {
+          expect(false).assertTrue()
+        }
+      }
     })
 
     /*
@@ -778,16 +786,25 @@ export default function UiTest() {
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let window = await driver.findWindow({bundleName:'com.uitestScene.acts'})
-      await window.resume()
-      await driver.delayMs(waitUiReadyMs)
-      let window1 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
-      let bounds1 = await window1.getBounds()
-      await window1.moveTo(100,100)
-      await driver.delayMs(waitUiReadyMs)
-      let window2 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
-      let bounds2 = await window2.getBounds()
-      expect(bounds1 != bounds2).assertTrue()
-      await stopApplication('com.uitestScene.acts')
+      try{
+        await window.resume()
+        await driver.delayMs(waitUiReadyMs)
+        let window1 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+        let bounds1 = await window1.getBounds()
+        await window1.moveTo(100,100)
+        await driver.delayMs(waitUiReadyMs)
+        let window2 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+        let bounds2 = await window2.getBounds()
+        expect(bounds1 != bounds2).assertTrue()
+        await stopApplication('com.uitestScene.acts')
+      }
+      catch (err) {
+        if (err.message == 'this device can not support this action') {
+          expect(window != null).assertTrue()
+        } else {
+          expect(false).assertTrue()
+        }
+      }
     })
 
     /*
@@ -800,31 +817,40 @@ export default function UiTest() {
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let window = await driver.findWindow({bundleName:'com.uitestScene.acts'})
-      await window.resume()
-      await driver.delayMs(waitUiReadyMs)
+      try{
+        await window.resume()
+        await driver.delayMs(waitUiReadyMs)
 
-      let window1 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
-      let bounds1 = await window1.getBounds()
-      await window1.resize(600,600,ResizeDirection.RIGHT_DOWN)
-      await driver.delayMs(waitUiReadyMs)
-      let window2 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
-      let bounds2 = await window2.getBounds()
-      expect(bounds2 != bounds1).assertTrue()
+        let window1 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+        let bounds1 = await window1.getBounds()
+        await window1.resize(600,600,ResizeDirection.RIGHT_DOWN)
+        await driver.delayMs(waitUiReadyMs)
+        let window2 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+        let bounds2 = await window2.getBounds()
+        expect(bounds2 != bounds1).assertTrue()
 
-      await window2.resize(400,400,ResizeDirection.RIGHT_UP)
-      let window3 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
-      let bounds3= await window3.getBounds()
-      expect(bounds3 != bounds2).assertTrue()
-      await window3.resize(300,300,ResizeDirection.LEFT_DOWN)
-      let window4 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
-      let bounds4= await window4.getBounds()
-      expect(bounds4 != bounds3).assertTrue()
+        await window2.resize(400,400,ResizeDirection.RIGHT_UP)
+        let window3 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+        let bounds3= await window3.getBounds()
+        expect(bounds3 != bounds2).assertTrue()
+        await window3.resize(300,300,ResizeDirection.LEFT_DOWN)
+        let window4 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+        let bounds4= await window4.getBounds()
+        expect(bounds4 != bounds3).assertTrue()
 
-      await window4.resize(500,500,ResizeDirection.LEFT_UP)
-      let window5 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
-      let bounds5= await window5.getBounds()
-      expect(bounds5 != bounds4).assertTrue()
-      await stopApplication('com.uitestScene.acts')
+        await window4.resize(500,500,ResizeDirection.LEFT_UP)
+        let window5 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+        let bounds5= await window5.getBounds()
+        expect(bounds5 != bounds4).assertTrue()
+        await stopApplication('com.uitestScene.acts')
+      }
+      catch (err) {
+        if (err.message == 'this device can not support this action') {
+          expect(window != null).assertTrue()
+        } else {
+          expect(false).assertTrue()
+        }
+      }
     })
 
     it('testWindowResizeB', 0, async function () {
@@ -832,32 +858,41 @@ export default function UiTest() {
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let window = await driver.findWindow({bundleName:'com.uitestScene.acts'})
-      await window.resume()
-      await driver.delayMs(waitUiReadyMs)
+      try{
+        await window.resume()
+        await driver.delayMs(waitUiReadyMs)
 
-      let window5 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
-      let bounds5= await window5.getBounds()
-      await window5.resize(bounds5.rightX - bounds5.leftX,300,ResizeDirection.DOWN)
-      let window6 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
-      let bounds6= await window6.getBounds()
-      expect(bounds6 != bounds5).assertTrue()
+        let window5 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+        let bounds5= await window5.getBounds()
+        await window5.resize(bounds5.rightX - bounds5.leftX,300,ResizeDirection.DOWN)
+        let window6 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+        let bounds6= await window6.getBounds()
+        expect(bounds6 != bounds5).assertTrue()
 
-      await window6.resize(bounds6.rightX - bounds6.leftX,500,ResizeDirection.UP)
-      let window7 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
-      let bounds7 = await window7.getBounds()
-      expect(bounds7 != bounds6).assertTrue()
+        await window6.resize(bounds6.rightX - bounds6.leftX,500,ResizeDirection.UP)
+        let window7 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+        let bounds7 = await window7.getBounds()
+        expect(bounds7 != bounds6).assertTrue()
 
-      await window7.resize(300,bounds7.bottomY - bounds7.topY,ResizeDirection.LEFT)
-      let window8 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
-      let bounds8 = await window8.getBounds()
-      expect(bounds8 != bounds7).assertTrue()
+        await window7.resize(300,bounds7.bottomY - bounds7.topY,ResizeDirection.LEFT)
+        let window8 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+        let bounds8 = await window8.getBounds()
+        expect(bounds8 != bounds7).assertTrue()
 
-      await window8.resize(500,bounds8.bottomY - bounds8.topY,ResizeDirection.RIGHT)
-      let window9 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
-      let bounds9 = await window9.getBounds()
-      expect(bounds9 != bounds8).assertTrue()
+        await window8.resize(500,bounds8.bottomY - bounds8.topY,ResizeDirection.RIGHT)
+        let window9 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+        let bounds9 = await window9.getBounds()
+        expect(bounds9 != bounds8).assertTrue()
 
-      await stopApplication('com.uitestScene.acts')
+        await stopApplication('com.uitestScene.acts')
+      }
+      catch (err) {
+        if (err.message == 'this device can not support this action') {
+          expect(window != null).assertTrue()
+        } else {
+          expect(false).assertTrue()
+        }
+      }
     })
 
     /*
@@ -886,14 +921,23 @@ export default function UiTest() {
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let window = await driver.findWindow({bundleName:'com.uitestScene.acts'})
-      await window.resume()
-      let window2 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
-      await window2.maximize()
-      await driver.delayMs(waitUiReadyMs)
-      let window3 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
-      let mode = await window3.getWindowMode()
-      expect(mode == WindowMode.FULLSCREEN).assertTrue()
-      await stopApplication('com.uitestScene.acts')
+      try{
+        await window.resume()
+        let window2 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+        await window2.maximize()
+        await driver.delayMs(waitUiReadyMs)
+        let window3 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+        let mode = await window3.getWindowMode()
+        expect(mode == WindowMode.FULLSCREEN).assertTrue()
+        await stopApplication('com.uitestScene.acts')
+      }
+      catch (err) {
+        if (err.message == 'this device can not support this action') {
+          expect(window != null).assertTrue()
+        } else {
+          expect(false).assertTrue()
+        }
+      }
     })
 
     /*
@@ -906,11 +950,20 @@ export default function UiTest() {
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let window = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+      try{
       await window.minimize()
-      await driver.delayMs(waitUiReadyMs)
-      let window1 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
-      expect(window1 == null).assertTrue()
-      await stopApplication('com.uitestScene.acts')
+        await driver.delayMs(waitUiReadyMs)
+        let window1 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+        expect(window1 == null).assertTrue()
+        await stopApplication('com.uitestScene.acts')
+      }
+      catch (err) {
+        if (err.message == 'this device can not support this action') {
+          expect(window != null).assertTrue()
+        } else {
+          expect(false).assertTrue()
+        }
+      }
     })
 
     /*
@@ -923,11 +976,19 @@ export default function UiTest() {
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let window = await driver.findWindow({bundleName:'com.uitestScene.acts'})
-      await window.close()
-      await driver.delayMs(waitUiReadyMs)
-      let window1 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
-      expect(window1 == null).assertTrue()
-      await stopApplication('com.uitestScene.acts')
+      try{
+        await window.close()
+        await driver.delayMs(waitUiReadyMs)
+        let window1 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+        expect(window1 == null).assertTrue()
+      }
+      catch (err) {
+        if (err.message == 'this device can not support this action') {
+          expect(window != null).assertTrue()
+        } else {
+          expect(false).assertTrue()
+        }
+      }
     })
 
     /*

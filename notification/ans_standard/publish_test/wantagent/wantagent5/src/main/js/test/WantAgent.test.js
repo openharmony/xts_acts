@@ -47,7 +47,7 @@ describe('ActsAnsWantAgentFiveTest', function () {
                         }
                     },
             ],
-//            operationType: wantAgent.OperationType.START_ABILITY,
+            operationType: wantAgent.OperationType.START_ABILITY,
             requestCode: 0,
             wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
         }
@@ -75,9 +75,7 @@ describe('ActsAnsWantAgentFiveTest', function () {
                         }
                     );
                 } else {
-                    console.info('----getWantAgent failed!----');
-                    console.info(data);
-                    expect(typeof(data)).assertEqual("object");
+                    expect(err.code).assertEqual(-1)
                 }
                 done();
                 
