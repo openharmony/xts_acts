@@ -123,7 +123,7 @@ export default function actsWifiTest() {
                             +"infoElems: " + result[j].infoElems);
                         }
                     }
-                    done()
+                    done();
                 });
         })
 
@@ -348,7 +348,7 @@ export default function actsWifiTest() {
                         resolve()
                     });
                 })
-                await promise.then(done)
+                await promise.then(done);
             });
             done();
 
@@ -372,7 +372,7 @@ export default function actsWifiTest() {
                         resolve()
                     });
                 })
-                await promise.then(done)
+                await promise.then(done);
             });
             done();
 
@@ -396,7 +396,7 @@ export default function actsWifiTest() {
                         resolve()
                     });
                 })
-                await promise.then(done)
+                await promise.then(done);
             });
             let scan = wifi.scan();
             sleep(3000);
@@ -422,7 +422,8 @@ export default function actsWifiTest() {
                         resolve()
                     });
                 })
-                await promise.then(done)
+                await promise.then(done);
+                await promise.then(done);
             });
             done();
         })
