@@ -56,55 +56,6 @@ describe('basicabilityapi', function () {
     }
 
     /**
-     * @tc.number    SUB_ACE_BASICABILITY_JS_API_0100
-     * @tc.name      testClearInterval
-     * @tc.desc      Cancel the repetitive timing tasks previously set by setInterval.
-     */
-    it('testClearInterval', 0, async function(done) {
-        console.info('testClearInterval START');
-        let res = 0;
-        let intervalID = -1;
-        let promise1 = new Promise((resolve, reject) => {
-            intervalID = setInterval(function () {
-                res++;
-                console.info('testClearInterval res = ' + res);
-                resolve();
-            }, 100);
-        });
-        let promise2 = new Promise((resolve, reject) => {
-            setTimeout(function () {
-                console.info('[clearInterval] start');
-                clearInterval(intervalID);
-                console.info('[clearInterval] end');
-                resolve();
-            }, 600);
-        });
-        Promise.all([promise1, promise2]).then(() => {
-            console.info('testClearInterval finally');
-            expect(5).assertEqual(res);
-            console.info('testClearInterval END');
-            done();
-        });
-    });
-
-    /**
-     * @tc.number    SUB_ACE_BASICABILITY_JS_API_0200
-     * @tc.name      testConsole
-     * @tc.desc      Print a text message.
-     */
-    it('testConsole', 0, function () {
-        console.info('testConsole START');
-        const versionCode = 1.1;
-        console.info('[console.info] versionCode: ' + versionCode);
-        console.debug('[console.debug] versionCode: ' + versionCode);
-        console.log('[console.log] versionCode: ' + versionCode);
-        console.warn('[console.warn] versionCode: ' + versionCode);
-        console.error('[console.error] versionCode: ' + versionCode);
-        expect(test).assertEqual('success');
-        console.info('testConsole END');
-    });
-
-    /**
      * @tc.number    SUB_ACE_BASICABILITY_JS_API_0300
      * @tc.name      testRouterPush
      * @tc.desc      Go to the specified page of the application.
@@ -344,55 +295,6 @@ describe('basicabilityapi', function () {
     });
 
     /**
-     * @tc.number    SUB_ACE_BASICABILITY_JS_API_0900
-     * @tc.name      testPromptShowToast
-     * @tc.desc      Show text pop-up window.
-     */
-    it('testPromptShowToast', 0, function () {
-        console.info('testPromptShowToast START');
-        const delay = 5000;
-        prompt.showToast({
-            message: 'message',
-            duration: delay,
-        });
-        expect(test).assertEqual('success');
-        console.info('[prompt.showToast] success');
-        console.info('testPromptShowToast END');
-    });
-
-    /**
-     * @tc.number    SUB_ACE_BASICABILITY_JS_API_1000
-     * @tc.name      testPromptDialog
-     * @tc.desc      Display the dialog box in the page.
-     */
-    it('testPromptDialog', 0, function () {
-        console.info('testPromptDialog START')
-        prompt.showDialog({
-            title: 'dialog showDialog test',
-            message: 'message of dialog',
-            buttons: [
-                {
-                    text: 'OK',
-                    color: '#0000ff',
-                    index: 0
-                }
-            ],
-            success: function (ret) {
-                console.info("[prompt.showDialog] ret.index " + ret.index);
-                expect(testResult).toBeTrue();
-            },
-            cancel: function () {
-                console.log('[prompt.showDialog] dialog cancel callback');
-                expect(testResultFail).toBeTrue();
-            },
-            complete: function () {
-                console.log('[prompt.showDialog] complete');
-            }
-        });
-        console.info('testPromptDialog END');
-    });
-
-    /**
      * @tc.number    SUB_ACE_BASICABILITY_JS_API_1100
      * @tc.name      testConfigurationGetLocale
      * @tc.desc      Get the current language and region of the app. Synchronize with the language and region.
@@ -431,29 +333,6 @@ describe('basicabilityapi', function () {
             console.info('testSetTimeout END');
             done();
         }, delay, 'test', 'message');
-    });
-
-    /**
-     * @tc.number    SUB_ACE_BASICABILITY_JS_API_1300
-     * @tc.name      testClearTimeout
-     * @tc.desc      The timer previously established by calling setTimeout() is cancelled.
-     */
-    it('testClearTimeout', 0, async function (done) {
-        console.info('testClearTimeout START');
-        let res = 0;
-        let timeoutID = setTimeout(function () {
-            res++;
-        }, 700);
-        await setTimeout(function () {
-            console.info('testClearTimeout delay 0.5s')
-            clearTimeout(timeoutID);
-            console.info("[clearTimeout] success");
-        }, 500);
-        await setTimeout(function () {
-            expect(0).assertEqual(res);
-            console.info('testClearTimeout END');
-            done();
-        }, 1000);
     });
 
     /**
