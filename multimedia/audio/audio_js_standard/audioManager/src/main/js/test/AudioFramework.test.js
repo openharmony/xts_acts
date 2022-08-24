@@ -2512,7 +2512,7 @@ describe('audioManager', function () {
                     });
                 }
                 done();
-            }); 
+            });
         });
     })
 
@@ -2699,7 +2699,7 @@ describe('audioManager', function () {
                             console.error(`Failed to obtain the volume. ${err.message}`);
                             expect(false).assertTrue();
                         }
-                        else if (value == highVol) {       
+                        else if (value == highVol) {
                             audioManager.isMute(audio.AudioVolumeType.MEDIA, (err, data) => {
                                 if (err) {
                                     console.error(`AudioFrameworkTest: Callback : FALSE: Media : failed to get Mute Status ${err.message}`);
@@ -3445,7 +3445,7 @@ describe('audioManager', function () {
                         });
                     }
                     else {
-						console.info(`AudioFrameworkTest: mute fail: value ${value}`);
+                        console.info(`AudioFrameworkTest: mute fail: value ${value}`);
                         expect(false).assertTrue();
                     }
                 });
