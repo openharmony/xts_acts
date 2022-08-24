@@ -1602,10 +1602,10 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       })
     })
     /**
-  * @tc.number     SUB_WINDOW_SHOWWITHANIMATION_JSAPI_002
-  * @tc.name       Test showWithAnimationTest2
-  * @tc.desc       Displays the current window, playing an animation in the process
-  */
+    * @tc.number     SUB_WINDOW_SHOWWITHANIMATION_JSAPI_002
+    * @tc.name       Test showWithAnimationTest2
+    * @tc.desc       Displays the current window, playing an animation in the process
+    */
     it('showWithAnimationTest2', 0, async function (done) {
       let caseName = 'showWithAnimationTest2';
       let msgStr = 'jsunittest ' + caseName + ' ';
