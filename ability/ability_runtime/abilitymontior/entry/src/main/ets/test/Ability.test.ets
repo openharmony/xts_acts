@@ -109,7 +109,10 @@ export default function abilityTest() {
             data.addAbilityMonitor(
                 {
                     abilityName: 'MainAbility2',
-                    onAbilityForeground: onAbilityForeground
+                    onAbilityForeground: onAbilityForeground,
+                    onWindowStageRestore:(Ability)=>{
+                        console.info("===>onWindowStageRestore");
+                    }
                 }, (async (err) => {
                     console.debug("====>ACTS_AddAbilityMonitor_0200 success====>" + err.code);
                     await globalThis.abilitydelegator.startAbility(
