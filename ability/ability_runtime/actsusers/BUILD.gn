@@ -17,13 +17,16 @@ group("actsusers") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "ActsAmsExtensionConnectAbilitytest:ActsAmsExtensionConnectAbilitytest",
       "ActsAmsUsersApi7AppA:ActsAmsUsersApi7AppA",
+      "ActsAmsUsersExtensionSystemTest:ActsAmsUsersExtensionSystemTest",
       "ActsAmsUsersExtensionThirdTest:ActsAmsUsersExtensionThirdTest",
       "ActsAmsUsersKillProcessAppA:ActsAmsUsersKillProcessAppA",
       "ActsAmsUsersKillProcessAppB:ActsAmsUsersKillProcessAppB",
       "ActsAmsUsersKillProcessAppC:ActsAmsUsersKillProcessAppC",
       "ActsAmsUsersSystemTest:ActsAmsUsersSystemTest",
       "ActsAmsUsersThirdTest:ActsAmsUsersThirdTest",
+      "actsconnectabilitysystemabilitytest:ActsConnectAbilitySystemAbilityTest",
       "actsmanyuserthirdabilitytest:ActsManyUsersAbilityTest",
     ]
   }
