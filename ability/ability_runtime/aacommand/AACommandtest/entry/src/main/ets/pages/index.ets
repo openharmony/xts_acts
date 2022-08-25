@@ -271,29 +271,6 @@ struct Index {
 
     test(3000)
 
-    cmd = 'aa test -m entry_test -b com.example.aacommandrelyhap' +
-      ' -s class ACTS_AACommand_01_3#ACTS_AACommand_finish_01_1200 -s unittest OpenHarmonyTestRunner'
-    globalThis.abilityDelegator.executeShellCommand(cmd, (err, data) => {
-      console.log('ACTS_AACommand_finish_01_1200 - executeShellCommand: start ')
-      console.log('ACTS_AACommand_finish_01_1200 start err: ' + JSON.stringify(err))
-      console.log('ACTS_AACommand_finish_01_1200 stdResult = ' + data.stdResult)
-      globalThis.stdResult21 = data.stdResult;
-      console.log('ACTS_AACommand_finish_01_1200 - executeShellCommand: end')
-    })
-
-    test(3000)
-
-    cmd = 'aa dump -a'
-    abilityDelegator.executeShellCommand(cmd,
-      (err, data) => {
-        console.info('ACTS_AACommand_finish_01_1200 : err : ' + JSON.stringify(err));
-        console.info('ACTS_AACommand_finish_01_1200 : data : ' + JSON.stringify(data));
-        globalThis.stdResult22 = data["stdResult"];
-        console.info('ACTS_AACommand_finish_01_1200 end');
-      })
-
-    test(3000)
-
     cmd = 'aa test -m entry_test -b com.example.aacommandrelyhap ' +
       '-s class ACTS_AACommand_01_3#ACTS_AACommand_finish_01_1300 -s unittest OpenHarmonyTestRunner'
     globalThis.abilityDelegator.executeShellCommand(cmd, (err, data) => {
