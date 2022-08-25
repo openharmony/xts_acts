@@ -13,8 +13,10 @@
  * limitations under the License.
  */
 
-import uploadRequestJSUnitTest from './uploadCallbackXTSJSUnitTest';
+import requestUploadJSUnit from './requestUpload.test';
+import requestDownloadJSUnit from './requestDownload.test';
 
 export default function testsuite() {
-  uploadRequestJSUnitTest()
+  requestUploadJSUnit()
+  requestDownloadJSUnit()
 }
