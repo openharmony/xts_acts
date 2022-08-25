@@ -28,5 +28,6 @@ require('./RdbstoreTransactionJsunit.test.js')
 require('./RdbstorePredicatesJoinJsunit.test.js')	
 require('./RdbStoreDistributedJsunit.test.js')
 require('./SystemStorageJsunit.test.js')
+require('./RdbStoreContextJsunit.test.js')
 
 
