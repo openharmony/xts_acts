@@ -11,10 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsAnsSecondaryDirectoryTest.hap",
-                "FaSupplement.hap",
-                "StageSupplement.hap",
-                "FormModule.hap"
+                "ActsAnsSecondaryDirectoryTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
