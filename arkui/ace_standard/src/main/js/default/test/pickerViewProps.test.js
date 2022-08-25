@@ -148,7 +148,7 @@
 //         console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
 //         console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 //
-//         expect(obj.$type).assertEqual('picker-view-view')
+//         expect(obj.$type).assertEqual('picker-view')
 //         expect(obj.$attrs.id).assertEqual('styleProp')
 //         expect(obj.$attrs.style).assertEqual(undefined)
 //         console.info("[pickerViewProps] get style value is: " + JSON.stringify(obj.$attrs.style));
@@ -600,7 +600,7 @@
          console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
          console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-         expect(obj.$type).assertEqual('picker-view-view')
+         expect(obj.$type).assertEqual('picker-view')
          expect(obj.$attrs.id).assertEqual('ifPropFalse')
          expect(obj.$attrs.if).assertEqual(false)
          done();
@@ -619,7 +619,7 @@
          console.info("[pickerViewProps] get inspector value is: " + JSON.stringify(obj));
          console.info("[pickerViewProps] get inspector attrs value is: " + JSON.stringify(obj.$attrs));
 
-         expect(obj.$type).assertEqual('picker-view-view')
+         expect(obj.$type).assertEqual('picker-view')
          expect(obj.$attrs.id).assertEqual('ifPropNone')
          expect(obj.$attrs.if).assertEqual(false)
          done();
