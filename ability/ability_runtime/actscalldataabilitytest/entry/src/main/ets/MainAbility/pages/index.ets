@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,19 +15,32 @@
  */
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
 import { Hypium } from '@ohos/hypium'
-import testsuite from "./test/List.test";
+import testsuite from "../test/List.test";
 
-export default {
-  onCreate() {
-    console.info('Application onCreate')
-     var abilityDelegator: any
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World'
+
+  aboutToAppear() {
+    console.info("aboutToAppear start!!!!")
+    var abilityDelegator: any
     abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
     var abilityDelegatorArguments: any
     abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
     console.info('start run testcase!!!')
     Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
-  },
-  onDestroy() {
-    console.info('Application onDestroy')
-  },
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
 }

@@ -1,15 +1,12 @@
 {
   "app": {
-    "targetBundleList": [
-      "com.example.qianyiyingyong.hmservice"
-    ],
     "vendor": "example",
-    "bundleName": "com.open.harmony.startAbilityForResult",
+    "bundleName": "ohos.acts.aafwk.test.fasupplement",
     "version": {
       "code": 1000000,
       "name": "1.0.0"
     },
-	"apiVersion": {
+   "apiVersion": {
       "compatible": 8,
       "releaseType": "Release",
       "target": 8
@@ -19,8 +16,21 @@
   "module": {
     "mainAbility": ".MainAbility",
     "deviceType": [
-      "phone",
-      "tablet"
+      "default"
+    ],
+    "reqPermissions": [
+      {
+        "name": "ohos.permission.GET_BUNDLE_INFO_PRIVILEGED"
+      },
+      {
+        "name": "ohos.permission.GET_BUNDLE_INFO"
+      },
+      {
+        "name": "ohos.permission.READ_CONTACTS"
+      },
+      {
+        "name": "ohos.permission.WRITE_CONTACTS"
+      }
     ],
     "abilities": [
       {
@@ -47,16 +57,13 @@
         "launchType": "singleton"
       },
       {
-        "orientation": "unspecified",
-        "srcPath": "PageAbility",
-        "name": ".PageAbility",
+        "name": ".DataAbility",
         "srcLanguage": "ets",
+        "srcPath": "DataAbility",
         "icon": "$media:icon",
-        "description": "$string:PageAbility_desc",
-        "formsEnabled": false,
-        "label": "$string:PageAbility_label",
-        "type": "page",
-        "launchType": "standard"
+        "description": "$string:DataAbility_desc",
+        "type": "data",
+        "uri": "dataability://ohos.acts.aafwk.test.fasupplement.DataAbility"
       }
     ],
     "distro": {
@@ -65,7 +72,7 @@
       "deliveryWithInstall": true,
       "moduleName": "entry"
     },
-    "package": "com.open.harmony.startAbilityForResult",
+    "package": "ohos.acts.aafwk.test.fasupplement",
     "srcPath": "",
     "name": ".entry",
     "js": [
@@ -91,40 +98,16 @@
         "pages": [
           "pages/index"
         ],
-        "name": ".PageAbility",
+        "name": ".MainAbility2",
         "window": {
           "designWidth": 720,
           "autoDesignWidth": false
         }
       }
     ],
-    "reqPermissions": [
+    "defPermissions": [
       {
-        "reason": "need use ohos.permission.INSTALL_BUNDLE",
-        "name": "ohos.permission.GET_BUNDLE_INFO"
-      },
-      {
-        "name": "ohos.permission.MANAGE_MISSIONS"
-      },
-      {
-        "reason": "need use ohos.permission.INSTALL_BUNDLE",
-        "name": "ohos.permission.INSTALL_BUNDLE"
-      },
-      {
-        "reason": "need use ohos.permission.GET_BUNDLE_INFO_PRIVILEGED",
-        "name": "ohos.permission.GET_BUNDLE_INFO_PRIVILEGED"
-      },
-      {
-        "reason": "need use ohos.permission.CHANGE_ABILITY_ENABLED_STATE",
-        "name": "ohos.permission.CHANGE_ABILITY_ENABLED_STATE"
-      },
-      {
-        "reason": "need use ohos.permission.REMOVE_CACHE_FILES",
-        "name": "ohos.permission.REMOVE_CACHE_FILES"
-      },
-      {
-        "reason": "need use ohos.permission.LISTEN_BUNDLE_CHANGE",
-        "name": "ohos.permission.LISTEN_BUNDLE_CHANGE"
+        "name": "ohos.acts.aafwk.test.fasupplement.DataAbilityShellProvider.PROVIDER"
       }
     ]
   }
