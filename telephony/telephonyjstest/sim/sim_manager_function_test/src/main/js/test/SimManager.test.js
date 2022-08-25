@@ -52,6 +52,24 @@ describe('SimManagerTest', function () {
     }
   });
 
+    it('Telephony_Sim_getDefaultVoiceSlotId_0100', 0, async function (done) {
+      sim.getDefaultVoiceSlotId((err, data) => {
+        expect(data === null).assertFalse();
+        done();
+      });
+    });
+
+    it('Telephony_Sim_getDefaultVoiceSlotId_0200', 0, async function (done) {
+      let promise = sim.getDefaultVoiceSlotId();
+      promise.then(data => {
+        expect(data === null).assertFalse();
+        done();
+      }).catch(err => {
+        expect(err === null).assertFalse();
+        done();
+      });
+    });
+
   /**
     * @tc.number  Telephony_Sim_constantValidate_0100
     * @tc.name    SIM card constant validation

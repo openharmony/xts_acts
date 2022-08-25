@@ -15,6 +15,8 @@
  */
 import {describe, it, expect} from 'hypium/index';
 import connection from '@ohos.net.connection'
+import http from "@ohos.net.http";
+import socket from "@ohos.net.socket";
 import utils from './Utils.ets'
 
 export default function connectionJsunit() {
@@ -24,6 +26,19 @@ export default function connectionJsunit() {
     const NETID_IVVALID = 99;
     const NETID_IVVALID2 = 0;
     console.log("************* connection Test start*************");
+
+    it('Telephony_Connection_Request_Socket_0100', 0, function (done) {
+      type HttpRequest = http.HttpRequest
+      ;
+      type TCPSocket = socket.TCPSocket
+      ;
+      type UDPSocket = socket.UDPSocket
+      ;
+      expect(typeof HttpRequest == typeof connection.HttpRequest).assertTrue();
+      expect(typeof TCPSocket == typeof connection.TCPSocket).assertTrue();
+      expect(typeof UDPSocket == typeof connection.UDPSocket).assertTrue();
+      done();
+    });
 
     /*
      * @tc.number    : Telephony_Connection_Connection_createNetConnection_0100
