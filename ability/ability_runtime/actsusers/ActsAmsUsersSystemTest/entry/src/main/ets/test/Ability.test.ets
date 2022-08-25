@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import commonEvent from '@ohos.commonEvent'
 import appManager from '@ohos.application.appManager'
 import osaccount from '@ohos.account.osAccount'
@@ -26,7 +26,7 @@ var subscriberInfo_killprocess ={
 var osAccountManager
 const START_ABILITY_TIMEOUT = 10000;
 console.debug("====>in Ability.test====>");
-export default function abilityTest(abilityContext) {
+export default function abilityTest() {
   console.debug("====>in function abilityTest====>");
   describe('ActsInterfaceMultiUsersTest', function () {
     // afterAll(function() {
@@ -64,7 +64,7 @@ export default function abilityTest(abilityContext) {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>start startAbility====>");
-          await abilityContext.startAbility(
+          await globalThis.abilityContext.startAbility(
             {
               bundleName: 'com.acts.actsinterfacemultiuserstest',
               abilityName: 'com.acts.actsinterfacemultiuserstest.MainAbility2'
@@ -115,7 +115,7 @@ export default function abilityTest(abilityContext) {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>start startAbility====>");
-          await abilityContext.startAbility(
+          await globalThis.abilityContext.startAbility(
             {
               bundleName: 'com.acts.error',
               abilityName: 'com.acts.error.MainAbility2'
@@ -165,7 +165,7 @@ export default function abilityTest(abilityContext) {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>start startAbility====>");
-          abilityContext.startAbility(
+          globalThis.abilityContext.startAbility(
             {
               bundleName: 'com.acts.actsinterfacemultiuserstest',
               abilityName: 'com.acts.actsinterfacemultiuserstest.MainAbility2'
@@ -217,7 +217,7 @@ export default function abilityTest(abilityContext) {
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
         })
         console.debug("====>start startAbility====>");
-        await abilityContext.startAbility(
+        await globalThis.abilityContext.startAbility(
           {
             bundleName: 'com.acts.error',
             abilityName: 'com.acts.error.MainAbility2'
@@ -266,7 +266,7 @@ export default function abilityTest(abilityContext) {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>start startAbility====>");
-          await abilityContext.startAbility(
+          await globalThis.abilityContext.startAbility(
             {
               bundleName: 'com.acts.actsinterfacemultiuserstest',
               abilityName: 'com.acts.actsinterfacemultiuserstest.MainAbility2'
@@ -290,49 +290,6 @@ export default function abilityTest(abilityContext) {
           console.debug('ACTS_startAbility_0100 - timeout');
           commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
         }
-      }
-
-      setTimeout(timeout, START_ABILITY_TIMEOUT);
-    })
-
-    /*
-     * @tc.number  : ACTS_startAbility_0600
-     * @tc.name    : start new ability
-     * @tc.desc    : Starting mainability2 with startability failed.(promise)
-     */
-    it('ACTS_StartAbility_0600', 0, async function (done) {
-      let Subscriber
-      function SubscribeCallBack (err, data) {
-        expect().assertFail();
-        console.debug("====>0200 Subscribe CallBack data:====>" + JSON.stringify(data));
-        commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
-      }
-
-      commonEvent.createSubscriber(subscriberInfo_MainAbility).then((data) => {
-        console.debug("====>Create Subscriber====>");
-        data.getSubscribeInfo().then(async (SubscribeInfo)=>{
-          console.debug("====>SubscribeInfo is====>" + JSON.stringify(SubscribeInfo));
-          Subscriber = data;
-          commonEvent.subscribe(Subscriber, SubscribeCallBack);
-          console.debug("====>start startAbility====>");
-          await abilityContext.startAbility(
-            {
-              bundleName: 'com.acts.error',
-              abilityName: 'com.acts.error.MainAbility2'
-            }).then(()=>{
-            console.debug("====>startAbility end====>");
-          })
-        })
-      })
-
-      function UnSubscribeCallback() {
-        console.debug("====>UnSubscribeCallback====>");
-        done();
-      }
-
-      function timeout() {
-        console.debug('ACTS_startAbility_0200 - timeout');
-        commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
       }
 
       setTimeout(timeout, START_ABILITY_TIMEOUT);
@@ -363,7 +320,7 @@ export default function abilityTest(abilityContext) {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>start startAbility====>");
-          abilityContext.startAbility(
+          globalThis.abilityContext.startAbility(
             {
               bundleName: 'com.acts.actsinterfacemultiuserstest',
               abilityName: 'com.acts.actsinterfacemultiuserstest.MainAbility2'
@@ -393,51 +350,6 @@ export default function abilityTest(abilityContext) {
     })
 
     /*
-     * @tc.number  : ACTS_startAbility_0800
-     * @tc.name    : start new ability
-     * @tc.desc    : Starting mainability2 with startability failed.(callback)
-     */
-    it('ACTS_StartAbility_0800', 0, async function (done) {
-      let Subscriber
-      function SubscribeCallBack (err, data) {
-        expect().assertFail();
-        console.debug("====>0200 Subscribe CallBack data:====>" + JSON.stringify(data));
-        commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
-      }
-
-      commonEvent.createSubscriber(subscriberInfo_MainAbility).then(async (data) => {
-        console.debug("====>Create Subscriber====>");
-        data.getSubscribeInfo().then(async (SubscribeInfo)=>{
-          console.debug("====>SubscribeInfo is====>" + JSON.stringify(SubscribeInfo));
-          Subscriber = data;
-          commonEvent.subscribe(Subscriber, SubscribeCallBack);
-        })
-        console.debug("====>start startAbility====>");
-        await abilityContext.startAbility(
-          {
-            bundleName: 'com.acts.error',
-            abilityName: 'com.acts.error.MainAbility2'
-          },() => {
-          console.debug("====>startAbility end====>" );
-        })
-      })
-
-      function UnSubscribeCallback() {
-        console.debug("====>UnSubscribeCallback====>");
-        done();
-      }
-
-      function timeout() {
-        console.debug('ACTS_startAbility_0800 - timeout');
-        commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
-      }
-
-      setTimeout(timeout, START_ABILITY_TIMEOUT);
-
-    })
-
-
-    /*
      * @tc.number  : ACTS_startAbility_0900
      * @tc.name    : start new ability
      * @tc.desc    : Start an ability with the parameter startability with options succeeded.(promise)
@@ -461,7 +373,7 @@ export default function abilityTest(abilityContext) {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>start startAbility====>");
-          await abilityContext.startAbility(
+          await globalThis.abilityContext.startAbility(
             {
               bundleName: 'com.example.userservicesystemapi7',
               abilityName: 'com.example.userservicesystemapi7.ServiceAbility'
@@ -512,7 +424,7 @@ export default function abilityTest(abilityContext) {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>start startAbility====>");
-          await abilityContext.startAbility(
+          await globalThis.abilityContext.startAbility(
             {
               bundleName: 'com.example.userservicesystemapi7',
               abilityName: 'com.example.userservicesystemapi7.ServiceAbility'
@@ -556,7 +468,7 @@ export default function abilityTest(abilityContext) {
       }
       setTimeout(timeout, START_ABILITY_TIMEOUT);
       console.debug("====>start startAbilityForResult====>");
-      await abilityContext.startAbilityForResult(
+      await globalThis.abilityContext.startAbilityForResult(
         {
           bundleName: 'com.acts.actsinterfacemultiuserstest',
           abilityName: 'com.acts.actsinterfacemultiuserstest.MainAbility3',
@@ -584,7 +496,7 @@ export default function abilityTest(abilityContext) {
       }
       setTimeout(timeout, START_ABILITY_TIMEOUT);
       console.debug("====>start startAbilityForResult====>");
-      await abilityContext.startAbilityForResult(
+      await globalThis.abilityContext.startAbilityForResult(
         {
           bundleName: 'com.acts.error',
           abilityName: 'com.acts.error.MainAbility3',
@@ -615,7 +527,7 @@ export default function abilityTest(abilityContext) {
       }
       setTimeout(timeout, START_ABILITY_TIMEOUT);
       console.debug("====>start startAbilityForResult====>");
-      await abilityContext.startAbilityForResult(
+      await globalThis.abilityContext.startAbilityForResult(
         {
           bundleName: 'com.acts.actsinterfacemultiuserstest',
           abilityName: 'com.acts.actsinterfacemultiuserstest.MainAbility3',
@@ -642,7 +554,7 @@ export default function abilityTest(abilityContext) {
       }
       setTimeout(timeout, START_ABILITY_TIMEOUT);
       console.debug("====>start startAbilityForResult====>");
-      await abilityContext.startAbilityForResult(
+      await globalThis.abilityContext.startAbilityForResult(
         {
           bundleName: 'com.acts.error',
           abilityName: 'com.acts.error.MainAbility3',
@@ -673,7 +585,7 @@ export default function abilityTest(abilityContext) {
       }
       setTimeout(timeout, START_ABILITY_TIMEOUT);
       console.debug("====>start startAbilityForResult====>");
-      await abilityContext.startAbilityForResult(
+      await globalThis.abilityContext.startAbilityForResult(
         {
           bundleName: 'com.acts.actsinterfacemultiuserstest',
           abilityName: 'com.acts.actsinterfacemultiuserstest.MainAbility3',
@@ -681,31 +593,6 @@ export default function abilityTest(abilityContext) {
         console.debug("====>startAbilityForResult end====>");
         flag = false
         console.debug("====>data.resultCode is====>"+JSON);
-        expect(data.resultCode).assertEqual(1)
-        expect(data.want.action).assertEqual('ACTION')
-        done();
-      })
-    })
-
-    /*
-     * @tc.number  : ACTS_StartAbilityForResult_0600
-     * @tc.name    : start new ability for result
-     * @tc.desc    : Starting mainability3 with startAbilityForResult failed.(promise)
-     */
-    it('ACTS_StartAbilityForResult_0600', 0, async function (done) {
-      function timeout() {
-        console.debug('ACTS_startAbilityForResult_0600 - timeout');
-        done();
-      }
-      setTimeout(timeout, START_ABILITY_TIMEOUT);
-      console.debug("====>start startAbilityForResult====>");
-      await abilityContext.startAbilityForResult(
-        {
-          bundleName: 'com.acts.error',
-          abilityName: 'com.acts.error.MainAbility3',
-        }).then((data)=>{
-        console.debug("====>startAbilityForResult end====>");
-        expect().assertFail();
         expect(data.resultCode).assertEqual(1)
         expect(data.want.action).assertEqual('ACTION')
         done();
@@ -728,38 +615,13 @@ export default function abilityTest(abilityContext) {
       }
       setTimeout(timeout, START_ABILITY_TIMEOUT);
       console.debug("====>start startAbilityForResult====>");
-      await abilityContext.startAbilityForResult(
+      await globalThis.abilityContext.startAbilityForResult(
         {
           bundleName: 'com.acts.actsinterfacemultiuserstest',
           abilityName: 'com.acts.actsinterfacemultiuserstest.MainAbility3',
         },(err,data)=>{
         console.debug("====>startAbilityForResult end====>");
         flag = false
-        expect(data.resultCode).assertEqual(1)
-        expect(data.want.action).assertEqual('ACTION')
-        done();
-      })
-    })
-
-    /*
-     * @tc.number  : ACTS_StartAbilityForResult_0800
-     * @tc.name    : start new ability for result
-     * @tc.desc    : Starting mainability3 with startAbilityForResult failed.(callback)
-     */
-    it('ACTS_StartAbilityForResult_0800', 0, async function (done) {
-      function timeout() {
-        console.debug('ACTS_startAbilityForResult_0800 - timeout');
-        done();
-      }
-      setTimeout(timeout, START_ABILITY_TIMEOUT);
-      console.debug("====>start startAbilityForResult====>");
-      await abilityContext.startAbilityForResult(
-        {
-          bundleName: 'com.acts.error',
-          abilityName: 'com.acts.error.MainAbility3',
-        },(err,data)=>{
-        expect().assertFail();
-        console.debug("====>startAbilityForResult end====>");
         expect(data.resultCode).assertEqual(1)
         expect(data.want.action).assertEqual('ACTION')
         done();
@@ -792,7 +654,7 @@ export default function abilityTest(abilityContext) {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>start startAbility====>");
-          await abilityContext.startAbility(
+          await globalThis.abilityContext.startAbility(
             {
               bundleName: 'com.acts.actsinterfacemultiuserstest',
               abilityName: 'com.acts.actsinterfacemultiuserstest.MainAbility2'
@@ -815,51 +677,6 @@ export default function abilityTest(abilityContext) {
           console.debug('ACTS_TerminateSelf_0100 - timeout');
           commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
         }
-      }
-
-      setTimeout(timeout, START_ABILITY_TIMEOUT);
-
-    })
-
-    /*
-     * @tc.number  : ACTS_TerminateSelf_0200
-     * @tc.name    : Use terminateself to terminate ability
-     * @tc.desc    : Starting mainability2 with startAbility then terminateself ability failed.(promise)
-     */
-    it('ACTS_TerminateSelf_0200', 0, async function (done) {
-      let Subscriber
-      function SubscribeCallBack (err, data) {
-        expect().assertFail();
-        console.debug("====>0200 Subscribe CallBack data:====>" + JSON.stringify(data));
-        commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
-      }
-
-      commonEvent.createSubscriber(subscriberInfo_MainAbility).then(async (data) => {
-        console.debug("====>Create Subscriber====>");
-        data.getSubscribeInfo().then(async(SubscribeInfo)=>{
-          console.debug("====>SubscribeInfo is====>" + JSON.stringify(SubscribeInfo));
-          Subscriber = data;
-          commonEvent.subscribe(Subscriber, SubscribeCallBack);
-          console.debug("====>start startAbility====>");
-          await abilityContext.startAbility(
-            {
-              bundleName: 'com.acts.error',
-              abilityName: 'com.acts.error.MainAbility2'
-            }).then(()=>{
-            console.debug("====>startAbility end====>");
-          })
-        })
-      })
-
-      function UnSubscribeCallback() {
-        console.debug("====>UnSubscribeCallback====>");
-        done();
-      }
-
-      function timeout() {
-        console.debug('ACTS_TerminateSelf_0200 - timeout');
-        commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
-        done();
       }
 
       setTimeout(timeout, START_ABILITY_TIMEOUT);
@@ -892,7 +709,7 @@ export default function abilityTest(abilityContext) {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>start startAbility====>");
-          abilityContext.startAbility(
+          globalThis.abilityContext.startAbility(
             {
               bundleName: 'com.acts.actsinterfacemultiuserstest',
               abilityName: 'com.acts.actsinterfacemultiuserstest.MainAbility2'
@@ -922,50 +739,6 @@ export default function abilityTest(abilityContext) {
     })
 
     /*
-     * @tc.number  : ACTS_TerminateSelf_0400
-     * @tc.name    : Use terminateself to terminate ability
-     * @tc.desc    : Starting mainability2 with startAbility then terminateself ability failed.(callback)
-     */
-    it('ACTS_TerminateSelf_0400', 0, async function (done) {
-      let Subscriber
-      function SubscribeCallBack (err, data) {
-        expect().assertFail();
-        console.debug("====>0400 Subscribe CallBack data:====>" + JSON.stringify(data));
-        commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
-      }
-
-      commonEvent.createSubscriber(subscriberInfo_MainAbility).then(async (data) => {
-        console.debug("====>Create Subscriber====>");
-        data.getSubscribeInfo().then(async(SubscribeInfo)=>{
-          console.debug("====>SubscribeInfo is====>" + JSON.stringify(SubscribeInfo));
-          Subscriber = data;
-          commonEvent.subscribe(Subscriber, SubscribeCallBack);
-          console.debug("====>start startAbility====>");
-          await abilityContext.startAbility(
-            {
-              bundleName: 'com.acts.error',
-              abilityName: 'com.acts.error.MainAbility2'
-            },() => {
-            console.debug("====>startAbility end====>" );
-          })
-        })
-      })
-
-      function UnSubscribeCallback() {
-        console.debug("====>UnSubscribeCallback====>");
-        done();
-      }
-
-      function timeout() {
-        console.debug('ACTS_TerminateSelf_0400 - timeout');
-        commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
-      }
-
-      setTimeout(timeout, START_ABILITY_TIMEOUT);
-
-    })
-
-    /*
      * @tc.number  : ACTS_TerminateSelfWithResult_0100
      * @tc.name    : Use terminateselfwithresult to terminate ability and return result
      * @tc.desc    : Starting mainability3 with startAbilityforresult
@@ -982,7 +755,7 @@ export default function abilityTest(abilityContext) {
       }
       setTimeout(timeout, START_ABILITY_TIMEOUT);
       console.debug("====>start startAbilityForResult====>");
-      await abilityContext.startAbilityForResult(
+      await globalThis.abilityContext.startAbilityForResult(
         {
           bundleName: 'com.acts.actsinterfacemultiuserstest',
           abilityName: 'com.acts.actsinterfacemultiuserstest.MainAbility3',
@@ -995,31 +768,7 @@ export default function abilityTest(abilityContext) {
         done();
       })
     })
-    /*
-     * @tc.number  : ACTS_TerminateSelfWithResult_0200
-     * @tc.name    : Use terminateselfwithresult to terminate ability and return result
-     * @tc.desc    : Starting mainability3 with startAbilityforresult
-     *               then terminateself ability and return result failed.(promise)
-     */
-    it('ACTS_TerminateSelfWithResult_0200', 0, async function (done) {
-      function timeout() {
-        console.debug('ACTS_TerminateSelfWithResult_0200 - timeout');
-        done();
-      }
-      setTimeout(timeout, START_ABILITY_TIMEOUT);
-      console.debug("====>start startAbilityForResult====>");
-      await abilityContext.startAbilityForResult(
-        {
-          bundleName: 'com.acts.error',
-          abilityName: 'com.acts.error.MainAbility3',
-        }).then((data)=>{
-        console.debug("====>startAbilityForResult end====>");
-        expect().assertFail();
-        expect(data.resultCode).assertEqual(1)
-        expect(data.want.action).assertEqual('ACTION')
-        done();
-      })
-    })
+
     /*
      * @tc.number  : ACTS_TerminateSelfWithResult_0300
      * @tc.name    : Use terminateselfwithresult to terminate ability and return result
@@ -1037,37 +786,12 @@ export default function abilityTest(abilityContext) {
       }
       setTimeout(timeout, START_ABILITY_TIMEOUT);
       console.debug("====>start startAbilityForResult====>");
-      await abilityContext.startAbilityForResult(
+      await globalThis.abilityContext.startAbilityForResult(
         {
           bundleName: 'com.acts.actsinterfacemultiuserstest',
           abilityName: 'com.acts.actsinterfacemultiuserstest.MainAbility3',
         },(err,data)=>{
         flag = false
-        console.debug("====>startAbilityForResult end====>");
-        expect(data.resultCode).assertEqual(1)
-        expect(data.want.action).assertEqual('ACTION')
-        done();
-      })
-    })
-    /*
-     * @tc.number  : ACTS_TerminateSelfWithResult_0400
-     * @tc.name    : Use terminateselfwithresult to terminate ability and return result
-     * @tc.desc    : Starting mainability3 with startAbilityforresult
-     *               then terminateself ability and return result failed.(callback)
-     */
-    it('ACTS_TerminateSelfWithResult_0400', 0, async function (done) {
-      function timeout() {
-        console.debug('ACTS_TerminateSelfWithResult_0400 - timeout');
-        done();
-      }
-      setTimeout(timeout, START_ABILITY_TIMEOUT);
-      console.debug("====>start startAbilityForResult====>");
-      await abilityContext.startAbilityForResult(
-        {
-          bundleName: 'com.acts.error',
-          abilityName: 'com.acts.error.MainAbility3',
-        },(err,data)=>{
-        expect().assertFail();
         console.debug("====>startAbilityForResult end====>");
         expect(data.resultCode).assertEqual(1)
         expect(data.want.action).assertEqual('ACTION')
@@ -1123,7 +847,7 @@ export default function abilityTest(abilityContext) {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>start startAbility====>");
-          await abilityContext.startAbility(
+          await globalThis.abilityContext.startAbility(
             {
               bundleName: 'com.acts.killprocesshap',
               abilityName: 'com.acts.killprocesshap.MainAbility'
@@ -1198,7 +922,7 @@ export default function abilityTest(abilityContext) {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>start startAbility====>");
-          await abilityContext.startAbility(
+          await globalThis.abilityContext.startAbility(
             {
               bundleName: 'com.acts.killprocesshap',
               abilityName: 'com.acts.killprocesshap.MainAbility'
@@ -1224,6 +948,7 @@ export default function abilityTest(abilityContext) {
 
       setTimeout(timeout, 19500);
     })
+
     /*
      * @tc.number  : ACTS_ThirdPartyKillProcess_0100
      * @tc.name    : Use terminateselfwithresult to terminate ability and return result
@@ -1232,7 +957,7 @@ export default function abilityTest(abilityContext) {
      */
     it('ACTS_ThirdPartyKillProcess_0100', 0, async function (done) {
       console.debug("====>start startAbility====>");
-      await abilityContext.startAbility(
+      await globalThis.abilityContext.startAbility(
         {
           bundleName: 'com.acts.killprocessthirdhap',
           abilityName: 'com.acts.killprocessthirdhap.MainAbility'
@@ -1270,6 +995,7 @@ export default function abilityTest(abilityContext) {
           })
         },15000)
     })
+
     /*
      * @tc.number  : ACTS_ThirdPartyKillProcess_0200
      * @tc.name    : Use terminateselfwithresult to terminate ability and return result
@@ -1278,7 +1004,7 @@ export default function abilityTest(abilityContext) {
      */
     it('ACTS_ThirdPartyKillProcess_0200', 0, async function (done) {
       console.debug("====>start startAbility====>");
-      await abilityContext.startAbility(
+      await globalThis.abilityContext.startAbility(
         {
           bundleName: 'com.acts.killprocessthirdhap2',
           abilityName: 'com.acts.killprocessthirdhap2.MainAbility'
