@@ -423,7 +423,6 @@ export default function actsWifiTest() {
                     });
                 })
                 await promise.then(done);
-                await promise.then(done);
             });
             done();
         })
