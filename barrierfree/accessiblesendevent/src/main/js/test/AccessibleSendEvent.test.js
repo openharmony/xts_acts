@@ -514,6 +514,39 @@ describe('AccessibleSendEvent', function () {
   })
 
   /*
+    * @tc.number  SendEvent_windowUpdateType_constructor_0050
+    * @tc.name    SendEvent_windowUpdateType_constructor_0050
+    * @tc.desc    The windowUpdateType of EventInfo is '', test sendEvent() function
+    *             The result of sendEvent() should be equal to a promise of undefined
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+   it('SendEvent_windowUpdateType_constructor_0050', 0, async function (done) {
+    console.info(`AccessibleSendEvent: SendEvent_windowUpdateType_constructor_0050 starts`);
+
+    let windowUpdateType = 'add';
+    let jsonObj = {
+      type : eventType,
+      windowUpdateType : windowUpdateType,
+      bundleName : bundleName,
+      triggerAction : triggerAction,
+    }
+
+    let event = new accessibility.EventInfo(jsonObj);
+
+    accessibility.sendEvent(event).then((result) => {
+      expect(result).assertEqual(undefined);
+      done();
+    }).catch(err => {
+      console.error(`AccessibleSendEvent: SendEvent_windowUpdateType_constructor_0050 has error: ${err}`);
+      expect(null).assertFail();
+      done();
+    });
+  })
+
+  /*
     * @tc.number  SendEvent_windowUpdateType_constructor_0060
     * @tc.name    SendEvent_windowUpdateType_constructor_0060
     * @tc.desc    The windowUpdateType of EventInfo is '', test sendEvent() function
