@@ -30,12 +30,10 @@
 #include "gtest/gtest.h"
 #include "runtest.h"
 
-
 using namespace std;
 using namespace testing::ext;
 using namespace testing;
 namespace OHOS {
-
 class toolchaintest : public ::testing::TestWithParam<string> {};
 
 static string filepath = "/data/local/tmp/libc-test/src";
@@ -133,4 +131,4 @@ HWTEST_P(toolchaintest, LibcTest, Function | MediumTest | Level3)
     }
 }
 INSTANTIATE_TEST_CASE_P(libcTest, toolchaintest, testing::ValuesIn(temp.begin(), temp.end()));
-}// namespace OHOS
+} // namespace OHOS
