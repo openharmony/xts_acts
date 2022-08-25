@@ -38,7 +38,7 @@ describe('secondaryDirectoryTest', function () {
 
     /*
      * @tc.number: ACTS_SecondaryDirectory_xts_0100
-     * @tc.name: NotificationRequest、NotificationSubscriber、NotificationSubscribeInfo、SubscribeCallbackData
+     * @tc.name: NotificationRequest、NotificationSubscriber、NotificationSubscribeInfo、SubscribeCallbackData、NotificationFlags
      * @tc.desc: use NotificationRequest type
      */
     function consumeCallback1(data) {
@@ -48,6 +48,13 @@ describe('secondaryDirectoryTest', function () {
         let contentType = subscribeCallback.request.content.contentType;
         console.info("===>contentType: ===>" + contentType)
         expect(contentType).assertEqual(notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT);
+
+        let flags: notify.NotificationFlags = subscribeCallback.request.notificationFlags;
+        console.info("===>notificationFlags: ===>" + JSON.stringify(flags));
+        let soundEnabled: notify.NotificationFlagStatus = flags.soundEnabled;
+        let vibrationEnabled: notify.NotificationFlagStatus = flags.vibrationEnabled
+        expect(soundEnabled).assertEqual(0);
+        expect(vibrationEnabled).assertEqual(0);
     }
 
     it('ACTS_SecondaryDirectory_xts_0100', 0, async function (done) {
@@ -263,7 +270,7 @@ describe('secondaryDirectoryTest', function () {
      */
     function consumeCallback5(data) {
         console.info("===>consumeCallback5 data : ===>" +JSON.stringify(data));
-        let actionButtons = data.request.actionButtons[0]
+        let actionButtons: notify.NotificationActionButton = data.request.actionButtons[0]
         console.info("===>actionButtons: ===>" + JSON.stringify(actionButtons))
         expect(actionButtons.title).assertEqual("buttonA");
         expect(actionButtons.userInput.inputKey).assertEqual("test_NotificationUserInput");
