@@ -12,8 +12,10 @@
     </style>
 </head>
 <body>
-    <div id="container">首页</div>
-    <div id="pageHeight"></div>
+    <div style="width: 300px;height: 300px;background-color: #999999;">
+        <div id="container">首页</div>
+        <div id="pageHeight"></div>
+    </div>  
 </body>
 <script>
     function getUserAgent(){
@@ -28,6 +30,18 @@
     function getPageHeight(){
         let height=document.body.scrollHeight
         return height
+    }
+    function proxy(){
+        backToEts.register("backToEts")
+    }
+    function consoleTest(){
+        console.log("console test")
+    }
+    function alertTest(){
+        alert('alert test')
+    }
+    function confirmTest(){
+        confirm("confirm test")
     }
 </script>
 </html>
