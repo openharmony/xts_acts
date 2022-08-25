@@ -16,29 +16,42 @@ import commonEvent from '@ohos.commonEvent'
 import ServiceExtension from '@ohos.application.ServiceExtensionAbility'
 import rpc from '@ohos.rpc';
 var conn = -1;
-function publishCallBackOne () {
+function publishCallBackOne() {
     console.log("========Publish CallBack AMS_ConnectAbility_0100_commonEvent========");
 }
-function publishCallBackTwo () {
+function publishCallBackTwo() {
     console.log("========Publish CallBack AMS_ConnectAbility_0200_commonEvent========");
 }
-function publishCallBackThree () {
+function publishCallBackThree() {
     console.log("========Publish CallBack AMS_ConnectAbility_0300_commonEvent========");
 }
-function publishCallBackFour () {
+function publishCallBackFour() {
     console.log("========Publish CallBack AMS_ConnectAbility_0400_commonEvent========");
 }
-function publishCallBackFive () {
+function publishCallBackFive() {
     console.log("========Publish CallBack AMS_ConnectAbility_0500_commonEvent========");
 }
-function publishCallBackSix () {
+function publishCallBackSix() {
     console.log("========Publish CallBack AMS_ConnectAbility_0600_commonEvent========");
 }
-function publishCallBackzero () {
+function publishCallBackzero() {
     console.log("========Publish CallBack AMSc_disonnectAbility_0100_commonEvent========");
 }
-function publishCallBackttwo () {
+function publishCallBackttwo() {
     console.log("========Publish CallBack AMSc_disonnectAbility_0200_commonEvent========");
+}
+
+function onConnectCallback(element, remote) {
+    console.log('onConnectCallback====> element=' + JSON.stringify(element));
+    console.log('onConnectCallback====> remote=' + JSON.stringify(remote));
+}
+
+function onDisconnectCallback(element) {
+    console.log('onDisconnectCallback====> element=' + JSON.stringify(element));
+}
+
+function onFailedCallback(code) {
+    console.log('onFailedCallback====> code=' + JSON.stringify(code))
 }
 
 export default class ServiceAbility extends ServiceExtension {
@@ -85,7 +98,11 @@ export default class ServiceAbility extends ServiceExtension {
                 {
                     bundleName: "com.example.actsconnectabilitysystemabilitytest",
                     abilityName: "com.example.actsconnectabilitysystemabilitytest.ServiceAbility2",
-                }
+                }, {
+                onConnect: onConnectCallback,
+                onDisconnect: onDisconnectCallback,
+                onFailed: onFailedCallback
+            }
             );
         };
         if (want.action == "Eight") {
@@ -93,7 +110,11 @@ export default class ServiceAbility extends ServiceExtension {
                 {
                     bundleName: "com.example.actsconnectabilitysystemabilitytest",
                     abilityName: "com.example.actsconnectabilitysystemabilitytest.ServiceAbility3",
-                }
+                }, {
+                onConnect: onConnectCallback,
+                onDisconnect: onDisconnectCallback,
+                onFailed: onFailedCallback
+            }
             );
         };
         if (want.action == "Nine") {
@@ -102,12 +123,16 @@ export default class ServiceAbility extends ServiceExtension {
                 {
                     bundleName: 'com.example.actsconnectabilitysystemabilitytest',
                     abilityName: 'com.example.actsconnectabilitysystemabilitytest.ServiceAbility2'
-                })
-            setTimeout(()=>{
-                extensionContext.disconnectAbility(num).then(()=>{
+                }, {
+                onConnect: onConnectCallback,
+                onDisconnect: onDisconnectCallback,
+                onFailed: onFailedCallback
+            })
+            setTimeout(() => {
+                extensionContext.disconnectAbility(num).then(() => {
                     console.log('in disconnectAbility');
                 })
-            },1000)
+            }, 1000)
 
         };
         if (want.action == "Ten") {
@@ -116,12 +141,16 @@ export default class ServiceAbility extends ServiceExtension {
                 {
                     bundleName: 'com.example.actsconnectabilitysystemabilitytest',
                     abilityName: 'com.example.actsconnectabilitysystemabilitytest.ServiceAbility2'
-                })
-            setTimeout(()=>{
-                extensionContext.disconnectAbility(num).then(()=>{
+                }, {
+                onConnect: onConnectCallback,
+                onDisconnect: onDisconnectCallback,
+                onFailed: onFailedCallback
+            })
+            setTimeout(() => {
+                extensionContext.disconnectAbility(num).then(() => {
                     console.log('in disconnectAbility2');
                 })
-            },1000)
+            }, 1000)
 
         };
         if (want.action == "Ten one") {
@@ -130,12 +159,16 @@ export default class ServiceAbility extends ServiceExtension {
                 {
                     bundleName: 'com.example.actsconnectabilitysystemabilitytest',
                     abilityName: 'com.example.actsconnectabilitysystemabilitytest.ServiceAbility2'
-                })
-            setTimeout(()=>{
-                extensionContext.disconnectAbility(2222).then(()=>{
+                }, {
+                onConnect: onConnectCallback,
+                onDisconnect: onDisconnectCallback,
+                onFailed: onFailedCallback
+            })
+            setTimeout(() => {
+                extensionContext.disconnectAbility(2222).then(() => {
                     console.log('in disconnectAbility3');
                 })
-            },1000)
+            }, 1000)
 
         };
         if (want.action == "Ten two") {
@@ -144,12 +177,16 @@ export default class ServiceAbility extends ServiceExtension {
                 {
                     bundleName: 'com.example.actsconnectabilitysystemabilitytest',
                     abilityName: 'com.example.actsconnectabilitysystemabilitytest.ServiceAbility2'
-                })
-            setTimeout(()=>{
-                extensionContext.disconnectAbility(2222).then(()=>{
+                }, {
+                onConnect: onConnectCallback,
+                onDisconnect: onDisconnectCallback,
+                onFailed: onFailedCallback
+            })
+            setTimeout(() => {
+                extensionContext.disconnectAbility(2222).then(() => {
                     console.log('in disconnectAbility4');
                 })
-            },1000)
+            }, 1000)
 
         };
         return new rpc.RemoteObject('connect');
@@ -157,8 +194,8 @@ export default class ServiceAbility extends ServiceExtension {
 
     onDisconnect(want) {
         console.log('ServiceAbility onDisconnect, want:' + want.abilityName);
-        commonEvent.publish("AMSc_disonnectAbility_0100_commonEvent",publishCallBackzero);
-        commonEvent.publish("AMSc_disonnectAbility_0200_commonEvent",publishCallBackttwo);
+        commonEvent.publish("AMSc_disonnectAbility_0100_commonEvent", publishCallBackzero);
+        commonEvent.publish("AMSc_disonnectAbility_0200_commonEvent", publishCallBackttwo);
     }
 
     onDestroy() {
