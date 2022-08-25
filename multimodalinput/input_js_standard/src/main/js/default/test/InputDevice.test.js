@@ -46,7 +46,7 @@ describe('MultimodalInput_test', function () {
       if (err) {
         expect(false).assertTrue();
       } else {
-        expect(data.length > 0).assertTure();
+        expect(data.length > 0).assertTrue();
       }
       console.info(`inputDevice::getDeviceIds_test-02 exit`);
     })
