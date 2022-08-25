@@ -226,7 +226,7 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          */
 
         it('Telephony_NetStack_UDPTest1200', 0, function (done) {
-                let udp = socket.constructUDPSocketInstance();
+                let udp = netSocket.constructUDPSocketInstance();
                 let callback = value =>{
                         console.info("on message, message:" + value.message + ", remoteInfo:" + value.remoteInfo);
                 }
@@ -245,9 +245,11 @@ describe('Telephony_NETSTACK_SocketTest', function () {
                 let callback3 = err =>{
                         console.info("on error, err:" + JSON.stringify(err));
                         expect(err === undefined).assertTrue();
+                        done();
                 }
                 udp.on('error', callback3);
                 udp.off('error', callback3);
+                done();
         });
 
         /**
@@ -446,28 +448,30 @@ describe('Telephony_NETSTACK_SocketTest', function () {
          */
 
         it('Telephony_NetStack_TCPTest1200', 0, function (done) {
-                let tcp = socket.constructTCPSocketInstance();
+                let tcp = netSocket.constructTCPSocketInstance();
                 let callback = value =>{
-                        console.info("on message, message:" + value.message + ", remoteInfo:" + value.remoteInfo);
+                        console.info(" on message, message:" + value.message + ", " + "remoteInfo:" + value.remoteInfo);
                 }
                 tcp.on('message', callback);
                 tcp.off('message', callback);
                 let callback1 = () =>{
-                        console.info("on connect success");
+                        console.info("Telephony_NetStack_TCPTest1200 on connect success");
                 }
                 tcp.on('connect', callback1);
                 tcp.off('connect', callback1);
                 let callback2 = () =>{
-                        console.info("on close success");
+                        console.info("Telephony_NetStack_TCPTest1200on close success");
                 }
                 tcp.on('close', callback2);
                 tcp.off('close', callback2);
                 let callback3 = err =>{
-                        console.info("on error, err:" + JSON.stringify(err));
+                        console.info("Telephony_NetStack_TCPTest1200 on error, err:" + JSON.stringify(err));
                         expect(err === undefined).assertTrue();
+                        done();
                 }
                 tcp.on('error', callback3);
                 tcp.off('error', callback3);
+                done();
         });
 
         /**
