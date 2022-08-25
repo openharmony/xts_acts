@@ -69,6 +69,12 @@ struct ScrollExample {
             .onClick(() => {
               router.push({ uri: 'pages/screen' })
             })
+            .gesture(
+            LongPressGesture({ repeat: false })
+              .onAction((event: GestureEvent) => {
+                router.push({ uri: 'pages/drag' })
+              })
+            )
             Checkbox({ name: 'hi' })
               .size({ width: 30, height: 30 })
             TextInput({ placeholder: 'welcome', text: 'Hello World' })
