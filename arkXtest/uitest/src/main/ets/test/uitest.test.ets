@@ -658,6 +658,7 @@ export default function UiTest() {
       await driver.delayMs(waitUiReadyMs)
       let button = await driver.findComponent(BY.text('jump'))
       await button.click()
+      await driver.delayMs(waitUiReadyMs)
       let image1 = await driver.findComponent(BY.type('Image'))
       let bounds1 = await image1.getBounds()
       await image1.pinchIn(0.5);
@@ -684,6 +685,7 @@ export default function UiTest() {
       await driver.delayMs(waitUiReadyMs)
       let button = await driver.findComponent(BY.text('jump'))
       await button.click()
+      await driver.delayMs(waitUiReadyMs)
       let image1 = await driver.findComponent(BY.type('Image'))
       let bounds1 = await image1.getBounds()
       let pointer = PointerMatrix.create(2,11)
@@ -897,17 +899,19 @@ export default function UiTest() {
 
     /*
      * @tc.number: uiTest_4400
-     * @tc.name: testWindowFocus
+     * @tc.name: testWindowAttr
      * @tc.desc: set the focused status of this UiWindow.
      */
-    it('testWindowFocus', 0, async function () {
+    it('testWindowAttr', 0, async function () {
       await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
       let window = await driver.findWindow({bundleName:'com.uitestScene.acts',focused:true,actived:true})
       await window.focus()
       let isFocused = await window.isFocused()
+      let isActived = await window.isActived()
       expect(isFocused == true).assertTrue()
+      expect(isActived == true).assertTrue()
       await stopApplication('com.uitestScene.acts')
     })
 
@@ -1111,6 +1115,50 @@ export default function UiTest() {
       await driver.delayMs(2000)
       let idled = await driver.waitForIdle(4000,5000)
       expect(idled = true).assertTrue()
+      await stopApplication('com.uitestScene.acts')
+    })
+
+    /*
+     * @tc.number: uiTest_5600
+     * @tc.name: testDrag
+     * @tc.desc: drag on the screen between the specified points.
+     */
+    it('testDrag', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+      let driver = UiDriver.create()
+      await driver.delayMs(waitUiReadyMs)
+      let button = await driver.findComponent(BY.text('jump'))
+      await button.longClick()
+      await driver.delayMs(waitUiReadyMs)
+      let text1 = await driver.findComponent(BY.text('orange'))
+      let text2 = await driver.findComponent(BY.text('one'))
+      let point1 = await text1.getBoundsCenter()
+      let point2 = await text2.getBoundsCenter()
+      await driver.drag(point1.X, point1.Y, point2.X, point2.Y)
+      await driver.delayMs(waitUiReadyMs)
+      let text = await driver.findComponent(BY.text('four'))
+      expect(text == null).assertTrue()
+      await stopApplication('com.uitestScene.acts')
+    })
+
+    /*
+     * @tc.number: uiTest_5700
+     * @tc.name: testDragTos  
+     * @tc.desc: drag this UiComponent to the bounds rect of target UiComponent.
+     */
+    it('testDragTo', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+      let driver = UiDriver.create()
+      await driver.delayMs(waitUiReadyMs)
+      let button = await driver.findComponent(BY.text('jump'))
+      await button.longClick()
+      await driver.delayMs(waitUiReadyMs)
+      let text1 = await driver.findComponent(BY.text('orange'))
+      let text2 = await driver.findComponent(BY.text('one'))
+      await text1.dragTo(text2)
+      await driver.delayMs(waitUiReadyMs)
+      let text = await driver.findComponent(BY.text('four'))
+      expect(text == null).assertTrue()
       await stopApplication('com.uitestScene.acts')
     })
   })
