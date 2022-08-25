@@ -46,7 +46,8 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       'TYPE_KEYGUARD': 5,
       'TYPE_VOLUME_OVERLAY': 6,
       'TYPE_NAVIGATION_BAR': 7,
-      'TYPE_FLOAT': 8
+      'TYPE_FLOAT': 8,
+      'TYPE_FLOAT_CAMERA':9
     }
     var windowLayoutModeArr = [];
     var windowLayoutModeDic = {
