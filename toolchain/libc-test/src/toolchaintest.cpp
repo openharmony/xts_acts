@@ -27,18 +27,19 @@
 #include <sys/time.h>
 #include <sys/resource.h>
 
-#include "runtest.h"
 #include "gtest/gtest.h"
+#include "runtest.h"
 
 
 using namespace std;
 using namespace testing::ext;
 using namespace testing;
+namespace OHOS {
 
 class toolchaintest : public ::testing::TestWithParam<string> {};
 
 static string filepath = "/data/local/tmp/libc-test/src";
-static vector<std::string> temp =  GetFileNames(filepath);
+static vector<string> temp =  GetFileNames(filepath);
 volatile int t_status = 0;
 
 static void handler(int s)
@@ -113,6 +114,7 @@ static int runTests(const char *argvs)
     return 1;
 }
 
+
 /**
  * @tc.name      : toolchaintest.LibcTest
  * @tc.desc      : start test
@@ -131,3 +133,4 @@ HWTEST_P(toolchaintest, LibcTest, Function | MediumTest | Level3)
     }
 }
 INSTANTIATE_TEST_CASE_P(libcTest, toolchaintest, testing::ValuesIn(temp.begin(), temp.end()));
+}// namespace OHOS

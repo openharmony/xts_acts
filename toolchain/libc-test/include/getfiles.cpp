@@ -23,7 +23,7 @@
 
 using namespace std;
 
-vector<string> filenames;
+static vector<std::string> filenames;
 vector<std::string> GetFileNames(std::string path)
 {
     vector<string> tempName;
