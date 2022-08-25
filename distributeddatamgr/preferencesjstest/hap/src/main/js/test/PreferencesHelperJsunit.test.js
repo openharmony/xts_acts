@@ -36,7 +36,7 @@ describe('preferencesHelperTest', function () {
 
     /**
      * @tc.name getPreferencesSync interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Preferences_0010
+     * @tc.number SUB_DDM_Preferences_GetPreferences_Helper_0010
      * @tc.desc getPreferencesSync interface test
      */
     it('testGetPreferencesHelper001', 0, async function () {
@@ -49,7 +49,7 @@ describe('preferencesHelperTest', function () {
 
     /**
      * @tc.name getPreferences interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Preferences_0020
+     * @tc.number SUB_DDM_Preferences_GetPreferences_Helper_0020
      * @tc.desc getPreferences interface test
      */
     it('testGetPreferencesHelper002', 0, async function (done) {
@@ -68,7 +68,7 @@ describe('preferencesHelperTest', function () {
 
     /**
      * @tc.name removePreferencesFromCache interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Preferences_0030
+     * @tc.number SUB_DDM_Preferences_GetPreferences_Helper_0030
      * @tc.desc removePreferencesFromCache interface test
      */
     it('testRemovePreferencesFromCache001', 0, async function (done) {
@@ -85,7 +85,7 @@ describe('preferencesHelperTest', function () {
 
     /**
      * @tc.name deletePreferences interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Preferences_0060
+     * @tc.number SUB_DDM_Preferences_GetPreferences_Helper_0040
      * @tc.desc deletePreferences interface test
      */
     it('testDeletePreferencesHelper002', 0, async function (done) {
@@ -102,7 +102,7 @@ describe('preferencesHelperTest', function () {
 
     /**
      * @tc.name put interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_0140
+     * @tc.number SUB_DDM_Preferences_Put_Helper_0050
      * @tc.desc put interface test
      */
     it('testPreferencesRegisterObserver001', 0, async function () {
@@ -117,7 +117,7 @@ describe('preferencesHelperTest', function () {
 
     /**
      * @tc.name repeat on interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_0150
+     * @tc.number SUB_DDM_Preferences_On_Helper_0060
      * @tc.desc repeat on interface test
      */
     it('testPreferencesRegisterObserver002', 0, async function () {
@@ -133,7 +133,7 @@ describe('preferencesHelperTest', function () {
 
     /**
      * @tc.name off interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_0160
+     * @tc.number SUB_DDM_Preferences_Off_Helper_0070
      * @tc.desc off interface test
      */
     it('testPreferencesUnRegisterObserver001', 0, async function () {
