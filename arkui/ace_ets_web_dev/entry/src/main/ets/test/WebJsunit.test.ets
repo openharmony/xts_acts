@@ -447,7 +447,7 @@ export default function webJsunit() {
      *tc.desic Registers the JavaScript object and method list
      */
     it('registerJavaScriptProxy',0,async function(done){
-      emitKey="emitDeleteEntireCookie";
+      emitKey="emitDeleteJavaScriptRegister";
       Utils.registerEvent("registerJavaScriptProxy","backToEts",86,done);
       sendEventByKey('webcomponent',10,'');
     })

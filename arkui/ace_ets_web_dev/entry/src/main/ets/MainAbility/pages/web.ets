@@ -59,7 +59,7 @@ struct Index {
         },
         toString:(str)=>{
             console.info("ets toString:"+String(str));
-        }
+        },
         register:(res)=>{
             Utils.emitEvent(res,86);
             return "web222"
@@ -76,8 +76,6 @@ struct Index {
     build(){
         Column(){
             Web({src:$rawfile('index.html'),controller:this.controller})
-            .width('300px')
-            .height('300px')
             .javaScriptAccess(this.javaScriptAccess)
             .userAgent("Mozila/5.0 (Linux; Andriod 9; VRD-AL10; HMSCore 6.3.0.331) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.105 HuaweiBrowser/12.0.4.1 MobileSafari/537.36")
             .javaScriptProxy({
@@ -124,7 +122,7 @@ struct Index {
                 this.alert = event.message
                 return false
             })
-            .onConsole((event) => {
+            .onConfirm((event) => {
                 this.confirm = event.message
                 return false
             })
@@ -357,7 +355,7 @@ struct Index {
                             setTimeout(()=>{    
                                 this.controller.zoom(2)
                                 setTimeout(() => {
-                                    if(this.controller.getPageHeight() > 400){
+                                    if(this.controller.getPageHeight() > 1400){
                                         var zoomCalled = true
                                     }
                                     Utils.emitEvent(zoomCalled,77) 
@@ -366,9 +364,11 @@ struct Index {
                             break;
                         }
                         case "emitZoomOut":{                           
-                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/second.html"})
-                            setTimeout(()=>{    
-                                let zoomOutCalled = this.controller.zoomOut()                                                              
+                            this.controller.zoomOut()
+                            setTimeout(()=>{ 
+                                if(this.controller.getPageHeight() < 1500){
+                                    var zoomOutCalled = true
+                                }                                                                                          
                                 Utils.emitEvent(zoomOutCalled,78)                                                                                
                             },3000)
                             break;
@@ -377,7 +377,7 @@ struct Index {
                             this.controller.zoomIn()      
                             setTimeout(()=>{ 
                                 var zoomInCalled = false   
-                                if(this.controller.getPageHeight() > 300){
+                                if(this.controller.getPageHeight() > 1400){
                                         zoomInCalled = true
                                     }
                                     Utils.emitEvent(zoomInCalled,79)                                                                                 
@@ -425,7 +425,7 @@ struct Index {
                             this.controller.zoomOut()
                             setTimeout(()=>{    
                                 var onInactiveCalled = false
-                                if(this.controller.getPageHeight > 400'){
+                                if(this.controller.getPageHeight() < 2600){
                                     onInactiveCalled = true
                                 }  
                                 Utils.emitEvent(onInactiveCalled,84)                                                                                                            
@@ -462,13 +462,15 @@ struct Index {
                         }
                         case "emitJavaScriptAccess":{                           
                             this.javaScriptAccess = false
-                            this.controller.runJavaScript({script:"registerTest()"})
-                            setTimeout(()=>{  
-                                if(this.console !== "web222"){
-                                    let javaScriptAccessCalled = true
-                                    Utils.emitEvent(javaScriptAccessCalled,88)
-                                }                                                                                                                                                               
-                            },3000)
+                            setTimeout(() => {
+                                this.controller.runJavaScript({script:"jsAccess()"})
+                                setTimeout(()=>{  
+                                    if(this.console !== "web111"){
+                                        let javaScriptAccessCalled = true
+                                        Utils.emitEvent(javaScriptAccessCalled,88)
+                                    }                                                                                                                                                               
+                                },3000)  
+                            },3000)                            
                             break;
                         }
                         case "emitGetCookieManager":{                                                                                 
