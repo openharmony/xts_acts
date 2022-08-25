@@ -18,7 +18,7 @@ import window from '@ohos.window'
 import display from '@ohos.display'
 import featureAbility from '@ohos.ability.featureAbility'
 const TRUE_WINDOW = true;
-const avoidAreaType = 3;
+const avoidAreaType = 100;
 
 describe('window_test', function () {
     var wnd;
@@ -341,14 +341,11 @@ describe('window_test', function () {
             expect(wnd != null).assertTrue();
             wnd.getAvoidArea(avoidAreaType).then((data) => {
                 console.log('windowTest getAvoidAreaTest3 wnd.getAvoidArea success, data :' + JSON.stringify(data));
-                expect(data.rightRect != null).assertTrue();
-                expect(data.topRect != null).assertTrue();
-                expect(data.bottomRect != null).assertTrue();
-                expect(data.leftRect != null).assertTrue();
+                expect().assertFail();
                 done();
             }, (err) => {
                 console.log('windowTest getAvoidAreaTest3 wnd.getAvoidArea failed, err : ' + JSON.stringify(err));
-                expect().assertFail();
+                expect(err.code).assertEqual(130);
                 done();
             })
         }, (err) => {
@@ -428,13 +425,10 @@ describe('window_test', function () {
             wnd.getAvoidArea(avoidAreaType, (err, data) => {
                 if (err.code != 0) {
                     console.log('windowTest getAvoidAreaTest6 wnd.getAvoidArea callback fail' + JSON.stringify(err));
-                    expect().assertFail();
+                    expect(err.code).assertEqual(130);
                     done();
                 } else {
-                    expect(data.topRect != null).assertTrue();
-                    expect(data.rightRect != null).assertTrue();
-                    expect(data.bottomRect != null).assertTrue();
-                    expect(data.leftRect != null).assertTrue();
+                    expect().assertFail();
                     done();
                 }
             })
@@ -949,12 +943,22 @@ describe('window_test', function () {
 	 */
     it('find_Test_001', 0, async function (done) {
         console.log('windowTest findTest1 begin');
-        window.find('window0').then((data) => {
-            console.log('windowTest findTest1 wnd.find success, data : ' + JSON.stringify(data));
-            expect(data != null).assertTrue();
-            done();
+        window.create('findWindow0', window.WindowType.TYPE_APP).then(wnd => {
+            console.log('windowTest CreateTest1 create success wnd' + wnd);
+            expect(wnd != null).assertTrue();
+            window.find('findWindow0', (err, data) => {
+                if (err.code) {
+                    console.log('windowTest findTest1 wnd.find fail, err : ' + JSON.stringify(err));
+                    expect().assertFail();
+                    done();
+                } else {
+                    console.log('windowTest findTest1 wnd.find success');
+                    expect(data != null).assertTrue();
+                    done();
+                }
+            })
         }, (err) => {
-            console.log('windowTest findTest1 wnd.find failed, err : ' + JSON.stringify(err));
+            console.log('windowTest CreateTest1 create failed, err :' + JSON.stringify(err));
             expect().assertFail();
             done();
         })
@@ -975,26 +979,6 @@ describe('window_test', function () {
             console.log('windowTest findTest2 wnd.find failed, err : ' + JSON.stringify(err));
             expect(TRUE_WINDOW).assertTrue();
             done();
-        })
-    })
-
-    /**
-     * @tc.number    SUB_WMS_FIND_JSAPI_004
-     * @tc.name      Test find_Test_003
-     * @tc.desc      Query main window.
-     */
-    it('find_Test_003', 0, async function (done) {
-        console.log('windowTest findTest3 begin');
-        window.find('window0', (err, data) => {
-            if (err.code) {
-                console.log('windowTest findTest3 wnd.find fail, err : ' + JSON.stringify(err));
-                expect().assertFail();
-                done();
-            } else {
-                console.log('windowTest findTest3 wnd.find fail');
-                expect(data != null).assertTrue();
-                done();
-            }
         })
     })
 
@@ -2149,25 +2133,6 @@ describe('window_test', function () {
             expect().assertFail();
             done();
         })
-    })
-
-
-    /**
-     * @tc.number		SUB_WMS_ENUM_WINDOWSTAGEEVENTTYPE_JSAPI_001
-     * @tc.name			Test enumWindowStageEventType_Test_001.
-     * @tc.desc			To test the enum value of WindowStageEventType.
-     */
-    it('enumWindowStageEventType_Test_001', 0, async function (done) {
-        console.log('test the enum value of WindowStageEventType begin');
-        try {
-            expect(1).assertEqual(window.WindowStageEventType.FOREGROUND);
-            expect(2).assertEqual(window.WindowStageEventType.ACTIVE);
-            expect(3).assertEqual(window.WindowStageEventType.INACTIVE);
-            expect(4).assertEqual(window.WindowStageEventType.BACKGROUND);
-            done();
-        } catch (err) {
-            console.log('test enum value of windowStageEventType error ' + JSON.stringify(err));
-        }
     })
 
     /**
