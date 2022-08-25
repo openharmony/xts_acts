@@ -13,7 +13,7 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActBmsStageEtsTest") {
+ohos_js_hap_suite("ActsBmsStageEtsTest") {
   hap_profile = "entry/src/main/module.json"
   deps = [
     ":actbmsstageetstest_js_assets",
@@ -21,7 +21,7 @@ ohos_js_hap_suite("ActBmsStageEtsTest") {
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "ActBmsStageEtsTest"
+  hap_name = "ActsBmsStageEtsTest"
   subsystem_name = "bundlemanager"
   part_name = "bundle_framework"
 }
