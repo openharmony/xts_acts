@@ -17,7 +17,7 @@ import router from '@ohos.router';
 @Entry
 @Component
 struct Index {
-    @State message: string = 'Hello World';
+    @State message: string = 'accessibility element';
 
     aboutToAppear(){
         console.info("start run testcase!!!!");
@@ -27,8 +27,26 @@ struct Index {
         Row() {
             Column() {
                 Text(this.message)
-                    .fontSize(50)
-                    .fontWeight(FontWeight.Bold)
+                  .fontSize(50)
+                  .fontWeight(FontWeight.Bold)
+                  .margin({bottom: 10})
+
+                Row() {
+                    Button('left')
+                    Button('button1')
+                      .margin({
+                          left: 10,
+                          right: 10
+                      })
+                    Button('right')
+                }
+                .margin({bottom: 10})
+
+                Button('button2')
+                  .margin({bottom: 10})
+
+                Button('button3')
+                  .margin({bottom: 10})
             }
             .width('100%')
         }
