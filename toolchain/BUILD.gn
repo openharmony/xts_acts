@@ -15,11 +15,9 @@ import("//test/xts/tools/build/suite.gni")
 
 group("toolchain") {
   testonly = true
-  deps = [
-    "//third_party/musl:libctest",
-  ]
+  deps = [ "//third_party/musl:libctest" ]
   if (is_standard_system) {
-    deps = [
+    deps += [
       #":tar_testcases",
       ":tar_dllib",
     ]

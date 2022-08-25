@@ -20,8 +20,7 @@
 
 #include "runtest.h"
 
-
-void GetTestNames(std::string path, std::vector<std::string>& tempName)
+static void GetTestNames(std::string path, std::vector<std::string>& tempName)
 {
     DIR *pDir;
     struct dirent* ptr;
@@ -43,9 +42,3 @@ void GetTestNames(std::string path, std::vector<std::string>& tempName)
     }
     closedir(pDir);
 }
-
-
-
-
-
-

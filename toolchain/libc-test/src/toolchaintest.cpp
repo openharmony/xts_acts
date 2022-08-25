@@ -27,12 +27,15 @@
 #include <sys/time.h>
 #include <sys/resource.h>
 
-#include "gtest/gtest.h"
 #include "runtest.h"
+#include "gtest/gtest.h"
+
 
 using namespace std;
 using namespace testing::ext;
-class ToolChainTest : public ::testing::TestWithParam<string> {};
+using namespace testing;
+
+class toolchaintest : public ::testing::TestWithParam<string> {};
 
 static string filepath = "/data/local/tmp/libc-test/src";
 static vector<std::string> temp =  GetFileNames(filepath);
@@ -68,7 +71,7 @@ static int runTests(const char *argvs)
     sigaddset(&set, SIGCHLD);
     sigprocmask(SIG_BLOCK, &set, nullptr);
     retfunc = signal(SIGCHLD, handler);
-    if (retfunc == int(SIG_ERR)) {
+    if (retfunc == SIG_ERR) {
         printf("signal triggering failed:%s\n", strerror(errno));
     }
     pid = start(wrap, argvs);
@@ -111,11 +114,11 @@ static int runTests(const char *argvs)
 }
 
 /**
- * @tc.name      : ToolChainTest.LibcTest
+ * @tc.name      : toolchaintest.LibcTest
  * @tc.desc      : start test
  * @tc.level     : Level 2
  */
-static HWTEST_F(ToolChainTest, LibcTest, Function | MediumTest | Level3)
+HWTEST_P(toolchaintest, LibcTest, Function | MediumTest | Level3)
 {
     int ret;
     string testName = GetParam();
@@ -127,4 +130,4 @@ static HWTEST_F(ToolChainTest, LibcTest, Function | MediumTest | Level3)
         EXPECT_EQ(-1, ret) << "test  " << testName  << "  failed" << endl;
     }
 }
-INSTANTIATE_TEST_CASE_P(libcTest, ToolChainTest, testing:: ValuesIn(temp.begin(), temp.end()));
+INSTANTIATE_TEST_CASE_P(libcTest, toolchaintest, testing::ValuesIn(temp.begin(), temp.end()));

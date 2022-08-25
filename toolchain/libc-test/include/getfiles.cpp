@@ -22,8 +22,8 @@
 #include "runtest.h"
 
 using namespace std;
-vector<string> filenames;
 
+vector<string> filenames;
 vector<std::string> GetFileNames(std::string path)
 {
     vector<string> tempName;
