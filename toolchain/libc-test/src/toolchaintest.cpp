@@ -37,7 +37,7 @@ namespace OHOS {
 class toolchaintest : public ::testing::TestWithParam<string> {};
 
 static string filepath = "/data/local/tmp/libc-test/src";
-static vector<string> temp =  GetFileNames(filepath);
+static vector<std::string> temp = runtest::GetFileNames(filepath);
 volatile int t_status = 0;
 
 static void handler(int s)
@@ -50,7 +50,7 @@ static int start(char *wrap, const char *argvs)
 
     pid = fork();
     if (pid == 0) {
-        t_setrlim(RLIMIT_STACK, space_size);
+        runtest::t_setrlim(RLIMIT_STACK, space_size);
         int exe = execl(argvs, "strptime", nullptr);
         printf("exe:%d %s exec failed: %s\n", exe, argvs, strerror(errno));
         exit(1);
@@ -64,11 +64,13 @@ static int runTests(const char *argvs)
     int timeoutsec = 5, timeout = 0;
     int status, pid;
     sigset_t set;
+    void (*retfunc)(int);
 
     sigemptyset(&set);
     sigaddset(&set, SIGCHLD);
     sigprocmask(SIG_BLOCK, &set, nullptr);
-    if (signal(SIGCHLD, handler) == SIG_ERR) {
+    retfunc = signal(SIGCHLD, handler);
+    if (retfunc == SIG_ERR) {
         printf("signal triggering failed:%s\n", strerror(errno));
     }
     pid = start(wrap, argvs);
