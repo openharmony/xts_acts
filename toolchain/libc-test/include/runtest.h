@@ -19,12 +19,10 @@
 #include <string>
 #include <vector>
 namespace OHOS {
-
-class runtest
-{
+class runtest {
 public:
     static int t_setrlim(int r, long lim);
     static std::vector<std::string> GetFileNames(std::string path);
 };
-} //namespace OHOS
+} // namespace OHOS
 #endif  // TOOLCHAIN_LIBC_TEST_INCLUDE_RUNTEST_H_

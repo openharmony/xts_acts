@@ -20,7 +20,7 @@
 #include "gettestfiles.cpp"
 
 #include "runtest.h"
-namespace OHOS{
+namespace OHOS {
 using namespace std;
 
 static vector<std::string> filenames;
@@ -38,4 +38,4 @@ std::vector<std::string> runtest::GetFileNames(std::string path)
     }
     return filenames;
 }
-} //namespace OHOS
+} // namespace OHOS

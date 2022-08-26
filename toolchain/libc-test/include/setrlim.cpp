@@ -18,7 +18,7 @@
 #include <sys/resource.h>
 
 #include "runtest.h"
-namespace OHOS{
+namespace OHOS {
 int runtest::t_setrlim(int r, long lim)
 {
     struct rlimit rl;
@@ -41,4 +41,4 @@ int runtest::t_setrlim(int r, long lim)
     }
     return 0;
 }
-} //namespace OHOS
+} // namespace OHOS

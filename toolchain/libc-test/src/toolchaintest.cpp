@@ -26,6 +26,7 @@
 #include <sys/wait.h>
 #include <sys/time.h>
 #include <sys/resource.h>
+#include "signal.h"
 
 #include "gtest/gtest.h"
 #include "runtest.h"
