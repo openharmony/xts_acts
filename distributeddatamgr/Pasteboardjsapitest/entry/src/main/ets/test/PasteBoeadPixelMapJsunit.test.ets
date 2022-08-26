@@ -29,7 +29,7 @@ export default function pasteBoardTest(){
          * @tc.desc      Test pasteBoard API functionality.
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
         it('SUB_PASTEBOARD_FUNCTION_ETS_TEST_0100', 0, async function (done) {
             console.info("SUB_PASTEBOARD_FUNCTION_ETS_TEST_0100 start")
@@ -79,7 +79,7 @@ export default function pasteBoardTest(){
          * @tc.desc      Test pasteBoard API functionality.
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
          it('SUB_PASTEBOARD_FUNCTION_ETS_TEST_0200', 0, async function (done) {
             console.info("SUB_PASTEBOARD_FUNCTION_ETS_TEST_0200 start")
@@ -117,7 +117,7 @@ export default function pasteBoardTest(){
          * @tc.desc      Test pasteBoard API functionality.
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
          it('SUB_PASTEBOARD_FUNCTION_ETS_TEST_0300', 0, async function (done) {
             console.info("SUB_PASTEBOARD_FUNCTION_ETS_TEST_0300 start")
@@ -156,7 +156,7 @@ export default function pasteBoardTest(){
          * @tc.desc      Test pasteBoard API functionality.
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
         */
        it('SUB_PASTEBOARD_FUNCTION_ETS_TEST_0400', 0, async function (done) {
             var uri = "https://www.baidu.com/"
