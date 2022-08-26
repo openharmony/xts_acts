@@ -50,11 +50,14 @@ describe('secondaryDirectoryTest', function () {
         expect(contentType).assertEqual(notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT);
 
         let flags: notify.NotificationFlags = subscribeCallback.request.notificationFlags;
-        console.info("===>notificationFlags: ===>" + JSON.stringify(flags));
-        let soundEnabled: notify.NotificationFlagStatus = flags.soundEnabled;
-        let vibrationEnabled: notify.NotificationFlagStatus = flags.vibrationEnabled
-        expect(soundEnabled).assertEqual(0);
-        expect(vibrationEnabled).assertEqual(0);
+        if (flags != undefined) 
+        {
+            console.info("===>notificationFlags: ===>" + JSON.stringify(flags));
+            let soundEnabled: notify.NotificationFlagStatus = flags.soundEnabled;
+            let vibrationEnabled: notify.NotificationFlagStatus = flags.vibrationEnabled
+            expect(soundEnabled).assertEqual(0);
+            expect(vibrationEnabled).assertEqual(0);
+        }
     }
 
     it('ACTS_SecondaryDirectory_xts_0100', 0, async function (done) {
