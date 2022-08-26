@@ -528,7 +528,7 @@ export default function mediaLibraryTestCallback(abilityContext) {
         /**
          * @tc.number    : SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETPUBLICDIRECTORY_004
          * @tc.name      : getPublicDirectory
-         * @tc.desc      : getPublicDirectory DIR_IMAGE
+         * @tc.desc      : getPublicDirectory DIR_AUDIO
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
@@ -549,7 +549,7 @@ export default function mediaLibraryTestCallback(abilityContext) {
          * @tc.level     : Level 0
          */
         it('SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETPUBLICDIRECTORY_005', 0, async function (done) {
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETPUBLICDIRECTORY_004';
+            let testNum = 'SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETPUBLICDIRECTORY_005';
             let dir = mediaLibrary.DirectoryType.DIR_DOCUMENTS;
             let val = 'Documents/';
             await checkGetPublicDirectory(done, testNum, dir, val)
@@ -574,6 +574,21 @@ export default function mediaLibraryTestCallback(abilityContext) {
                 expect(true).assertTrue();
                 done();
             }
+        });
+
+        /**
+         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETPUBLICDIRECTORY_007
+         * @tc.name      : getPublicDirectory
+         * @tc.desc      : getPublicDirectory DIR_DOWNLOAD
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETPUBLICDIRECTORY_007', 0, async function (done) {
+            let testNum = 'SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETPUBLICDIRECTORY_007';
+            let dir = mediaLibrary.DirectoryType.DIR_DOWNLOAD;
+            let val = 'Download/';
+            await checkGetPublicDirectory(done, testNum, dir, val)
         });
 
         /**
