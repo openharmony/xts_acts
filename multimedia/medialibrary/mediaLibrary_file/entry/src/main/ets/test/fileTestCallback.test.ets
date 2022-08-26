@@ -146,7 +146,7 @@ export default function fileTestCallbackTest(abilityContext) {
                     fetchFileResult = await media.getFileAssets(idOP);
                     let newAsset = await fetchFileResult.getFirstObject();
                     expect(isNum(newAsset.dateModified)).assertTrue();
-                    expect(newAsset.dateModified != asset.dateModified).assertTrue()
+                    expect(newAsset.dateModified).assertEqual(asset.dateModified);
                     done();
                 });
             } catch (error) {
