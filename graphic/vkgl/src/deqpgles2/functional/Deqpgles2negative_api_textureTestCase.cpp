@@ -149,7 +149,7 @@ static SHRINK_HWTEST_F(ActsDeqpgles20014TestSuite, TestCase_013759,
 
 static SHRINK_HWTEST_F(ActsDeqpgles20014TestSuite, TestCase_013760,
         "dEQP-GLES2.functional.negative_api.tex",
-        "ture.compressedteximage2d_invalid_size");
+        "true.compressedteximage2d_invalid_size");
 
 static SHRINK_HWTEST_F(ActsDeqpgles20014TestSuite, TestCase_013761,
         "dEQP-GLES2.functional.negative_api.t",
