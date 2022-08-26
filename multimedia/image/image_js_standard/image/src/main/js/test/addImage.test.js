@@ -59,6 +59,101 @@ export default function addImage() {
                 done();
             })
         }
+		
+		async function createIncrementalSourcePromise(done, testNum, type, opts) {
+            let testimagebuffer = testPng;
+            let incSouce;
+            console.info(`${testNum} 0001 ` + testimagebuffer.length);
+            let bufferSize = 5000;
+            let offset = 0;
+            if (type == 'sourceOpts') {
+                console.info(`${testNum} have sourceopts`)
+                incSouce = image.createIncrementalSource(new ArrayBuffer(1), opts);
+            } else {
+                console.info(`${testNum} no sourceopts`)
+                incSouce = image.createIncrementalSource(new ArrayBuffer(1));
+            }
+            let ret;
+            let isFinished = false;
+            while (offset < testimagebuffer.length) {
+                var oneStep = testimagebuffer.slice(offset, offset + bufferSize);
+                console.info(`${testNum} 0002 ` + oneStep.length);
+                if (oneStep.length < bufferSize) {
+                    isFinished = true;
+                }
+                ret = await incSouce.updateData(oneStep, isFinished, 0, oneStep.length);
+                if (!ret) {
+                    console.info(`${testNum} updateData failed`);
+                    expect(ret).assertTrue();
+                    break;
+                }
+                offset = offset + oneStep.length;
+                console.info(`${testNum} 0003 ` + offset);
+            }
+            if (ret) {
+                console.info(`${testNum} updateData success `);
+                let decodingOptions = {
+                    sampleSize: 1
+                };
+                incSouce.createPixelMap(decodingOptions, (err, pixelmap) => {
+                    console.info(`${testNum} 0004` + pixelmap);
+                    expect(pixelmap != undefined).assertTrue();
+                    done();
+                })
+            } else {
+                expect(false).assertTrue();
+                done();
+            }
+        }
+
+        async function createIncrementalSourceCb(done, testNum, type, opts) {
+            let testimagebuffer = testPng;
+            let incSouce;
+            console.info(`${testNum} 0001 ` + testimagebuffer.length);
+            let bufferSize = 5000;
+            let offset = 0;
+            if (type == 'sourceOpts') {
+                incSouce = image.createIncrementalSource(new ArrayBuffer(1), opts);
+            } else {
+                incSouce = image.createIncrementalSource(new ArrayBuffer(1));
+            }
+            let ret;
+            let isFinished = false;
+            while (offset < testimagebuffer.length) {
+                var oneStep = testimagebuffer.slice(offset, offset + bufferSize);
+                console.info(`${testNum} 0002 ` + oneStep.length);
+                if (oneStep.length < bufferSize) {
+                    isFinished = true;
+                }
+                ret = await new Promise(res => {
+                    incSouce.updateData(oneStep, isFinished, 0, oneStep.length, (err, ret) => {
+                        res(ret);
+                    })
+                })
+
+                if (!ret) {
+                    console.info(`${testNum} updateData failed`);
+                    expect(ret).assertTrue();
+                    break;
+                }
+                offset = offset + oneStep.length;
+                console.info(`${testNum} 0003 ` + offset);
+            }
+            if (ret) {
+                console.info(`${testNum} updateData success `);
+                let decodingOptions = {
+                    sampleSize: 1
+                };
+                incSouce.createPixelMap(decodingOptions, (err, pixelmap) => {
+                    console.info(`${testNum} 0004` + pixelmap);
+                    expect(pixelmap != undefined).assertTrue();
+                    done();
+                })
+            } else {
+                expect(false).assertTrue();
+                done();
+            }
+        }
 
         /**
          * @tc.number    : addImage_001
@@ -199,48 +294,7 @@ export default function addImage() {
          * @tc.level     : Level 1
          */
         it('add_053', 0, async function (done) {
-            try {
-                let testimagebuffer = testPng;
-                console.info('add_053 0003 ' + testimagebuffer.length);
-                let bufferSize = 5000;
-                let offset = 0;
-                const incSouce = image.createIncrementalSource(new ArrayBuffer(1));
-                let ret;
-                let isFinished = false;
-                while (offset < testimagebuffer.length) {
-                    console.info('add_053 0006 ' + testimagebuffer.length);
-                    var oneStep = testimagebuffer.slice(offset, offset + bufferSize);
-                    console.info('add_053 0007 ' + oneStep.length);
-                    if (oneStep.length < bufferSize) {
-                        isFinished = true;
-                    }
-                    ret = await incSouce.updateData(oneStep, isFinished, 0, oneStep.length);
-                    if (!ret) {
-                        console.info('add_053 updateData failed');
-                        expect(ret).assertTrue();
-                        break;
-                    }
-                    offset = offset + oneStep.length;
-                    console.info('add_053 0011 ' + offset);
-                }
-                if (ret) {
-                    console.info('add_053 updateData success ');
-                    let decodingOptions = {
-                        sampleSize: 1
-                    };
-                    incSouce.createPixelMap(decodingOptions, (err, pixelmap) => {
-                        console.info('add_053 0014' + pixelmap);
-                        expect(pixelmap != undefined).assertTrue();
-                        done();
-                    })
-                } else {
-                    expect(false).assertTrue();
-                    done();
-                }
-            } catch (error) {
-                expect(false).assertTrue();
-                console.info('add_053 updateData failed ' + error);
-            }
+             createIncrementalSourcePromise(done, 'add_053', 'noSourceOpts')
         })
 
         /**
@@ -254,51 +308,45 @@ export default function addImage() {
          * @tc.level     : Level 1
          */
         it('add_053-1', 0, async function (done) {
-            try {
-                let testimagebuffer = testPng;
-                console.info('add_053-1 0001 ' + testimagebuffer.length);
-                let bufferSize = 5000;
-                let offset = 0;
-                const incSouce = image.createIncrementalSource(new ArrayBuffer(1));
-                let ret;
-                let isFinished = false;
-                while (offset < testimagebuffer.length) {
-                    var oneStep = testimagebuffer.slice(offset, offset + bufferSize);
-                    console.info('add_053-1 0002 ' + oneStep.length);
-                    if (oneStep.length < bufferSize) {
-                        isFinished = true;
-                    }
-                    ret = await new Promise(res => {
-                        incSouce.updateData(oneStep, isFinished, 0, oneStep.length, (err, ret) => {
-                            res(ret);
-                        })
-                    })
-                    if (!ret) {
-                        console.info('add_053-1 updateData failed');
-                        expect(ret).assertTrue();
-                        break;
-                    }
-                    offset = offset + oneStep.length;
-                    console.info('add_053-1 0003 ' + offset);
-                }
-                if (ret) {
-                    console.info('add_053-1 updateData success ');
-                    let decodingOptions = {
-                        sampleSize: 1
-                    };
-                    incSouce.createPixelMap(decodingOptions, (err, pixelmap) => {
-                        console.info('add_053-1 0004' + pixelmap);
-                        expect(pixelmap != undefined).assertTrue();
-                        done();
-                    })
-                } else {
-                    expect(false).assertTrue();
-                    done();
-                }
-            } catch (error) {
-                expect(false).assertTrue();
-                console.info('add_053-1 updateData failed ' + error);
-            }
+             createIncrementalSourceCb(done, 'add_053-1', 'noSourceOpts')
+        })
+		
+		/**
+         * @tc.number    : add_054
+         * @tc.name      : createIncrementalSource-updateData-png-promise
+         * @tc.desc      : 1.create imagesource
+         *                 2.update data
+         *                 3.create pixelmap
+         * @tc.size      : MEDIUM 
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('add_054', 0, async function (done) {
+            let opts = {
+                sourceDensity: 240,
+                pixelFormat: 3,
+                size: { height: 4, width: 6 }
+            };
+            createIncrementalSourcePromise(done, 'add_054', 'sourceOpts', opts)
+        })
+
+        /**
+         * @tc.number    : add_055
+         * @tc.name      : createIncrementalSource-updateData-png-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.update data
+         *                 3.create pixelmap
+         * @tc.size      : MEDIUM 
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('add_055', 0, async function (done) {
+            let opts = {
+                sourceDensity: 240,
+                pixelFormat: 3,
+                size: { height: 4, width: 6 }
+            };
+            createIncrementalSourceCb(done, 'add_055', 'sourceOpts', opts)
         })
     })
 }
