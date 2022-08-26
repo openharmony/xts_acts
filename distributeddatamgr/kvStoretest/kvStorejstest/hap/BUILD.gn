@@ -22,7 +22,7 @@ ohos_js_hap_suite("kvStore_js_test") {
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsKvStoreJsTest"
   subsystem_name = "distributeddatamgr"
-  part_name = "distributeddatamgr"
+  part_name = "kv_store"
 }
 ohos_js_assets("kvStore_js_assets") {
   js2abc = true

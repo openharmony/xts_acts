@@ -225,7 +225,7 @@ export default function abilityTest() {
         if (data.event == "ACTS_TerminateSelf_CommonEvent") {
           clearTimeout(id);
           expect(data.parameters['displayId']).assertEqual(10);
-          expect(data.parameters['windowMode']).assertEqual(2);
+          expect(data.parameters['windowMode']).assertEqual(0);
           commonEvent.unsubscribe(subscriber, unSubscribeCallback)
           expect(data.event).assertEqual("ACTS_TerminateSelf_CommonEvent");
 

@@ -7206,7 +7206,6 @@ describe('audioRenderer', function () {
                 * @tc.level     : Level 0
             */
     it('SUB_AUDIO_RENDERER_Play_audio_108', 0, async function (done) {
-
         expect(audio.AudioState.STATE_INVALID).assertEqual(-1);
         await sleep(50);
         done();
@@ -7221,7 +7220,6 @@ describe('audioRenderer', function () {
                 * @tc.level     : Level 0
             */
     it('SUB_AUDIO_RENDERER_Play_audio_109', 0, async function (done) {
-
         expect(audio.AudioState.STATE_NEW).assertEqual(0);
         await sleep(50);
         done();
@@ -7236,7 +7234,6 @@ describe('audioRenderer', function () {
                 * @tc.level     : Level 0
             */
     it('SUB_AUDIO_RENDERER_Play_audio_110', 0, async function (done) {
-
         expect(audio.AudioSampleFormat.SAMPLE_FORMAT_INVALID).assertEqual(-1);
         await sleep(50);
         done();
@@ -7251,7 +7248,6 @@ describe('audioRenderer', function () {
                 * @tc.level     : Level 0
             */
     it('SUB_AUDIO_RENDERER_Play_audio_111', 0, async function (done) {
-
         expect(audio.SourceType.SOURCE_TYPE_INVALID).assertEqual(-1);
         await sleep(50);
         done();
@@ -7371,19 +7367,18 @@ describe('audioRenderer', function () {
                 * @tc.level     : Level 0
             */
     it('SUB_AUDIO_RENDERER_Play_audio_114', 0, async function (done) {
-
         expect(audio.AudioEncodingType.ENCODING_TYPE_INVALID).assertEqual(-1);
         await sleep(50);
         done();
     })
 
-     /*
-     * @tc.name:SetInterruptMode_001
-     * @tc.desc:SetInterruptMode mode 0 callback,is public share mode
-     * @tc.type: FUNC
-     * @tc.require: Issue Number
-     */
-     it("SetInterruptMode_001", 0,async function (done) {
+    /*
+    * @tc.name:SUB_AUDIO_SetInterruptMode_001
+    * @tc.desc:SetInterruptMode mode 0 callback,is public share mode
+    * @tc.type: FUNC
+    * @tc.require: Issue Number
+    */
+    it("SUB_AUDIO_SetInterruptMode_001", 0, async function (done) {
         var audioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -7400,24 +7395,27 @@ describe('audioRenderer', function () {
             rendererInfo: audioRendererInfo
         }
         let audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
-        let mode = 0;
-        audioRenderer.setInterruptMode(mode,(err,data)=>{
-            if(err){
-                expect(true).assertEqual(false);
-                return done();
+        let mode = audio.InterruptMode.SHARE_MODE;
+        audioRenderer.setInterruptMode(mode, (err, data) => {
+            if (err) {
+				console.info(`AudioFrameworkRenderLog: SetInterruptMode SHARE_MODE CALLBACK: error: ${err.message}`);
+                expect(false).assertTrue();
+                done();
+                return;
             }
-            expect(true).assertEqual(true);
+			console.info(`AudioFrameworkRenderLog: SetInterruptMode SHARE_MODE CALLBACK: SUCCESS`);
+            expect(true).assertTrue();
             done();
         })
     })
 
     /*
-     * @tc.name:SetInterruptMode_002
+     * @tc.name:SUB_AUDIO_SetInterruptMode_002
      * @tc.desc:SetInterruptMode mode 1 callback,is independent mode
      * @tc.type: FUNC
      * @tc.require: Issue Number
      */
-    it("SetInterruptMode_002", 0,async function (done) {
+    it("SUB_AUDIO_SetInterruptMode_002", 0, async function (done) {
         var audioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -7434,24 +7432,27 @@ describe('audioRenderer', function () {
             rendererInfo: audioRendererInfo
         }
         let audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
-        let mode = 1;
-        audioRenderer.setInterruptMode(mode,(err,data)=>{
-            if(err){
-                expect(true).assertEqual(false);
-                return done();
+        let mode = audio.InterruptMode.INDEPENDENT_MODE;
+        audioRenderer.setInterruptMode(mode, (err, data) => {
+            if (err) {
+				console.info(`AudioFrameworkRenderLog: SetInterruptMode INDEPENDENT_MODE CALLBACK: error: ${err.message}`);
+                expect(false).assertTrue();
+                done();
+                return;
             }
-            expect(true).assertEqual(true);
+			console.info(`AudioFrameworkRenderLog: SetInterruptMode INDEPENDENT_MODE CALLBACK: SUCCESS`);
+            expect(true).assertTrue();
             done();
         })
     })
 
     /*
-     * @tc.name:SetInterruptMode_003
+     * @tc.name:SUB_AUDIO_SetInterruptMode_003
      * @tc.desc:SetInterruptMode mode 0 promise,is public share mode
      * @tc.type: FUNC
      * @tc.require: Issue Number
      */
-    it("SetInterruptMode_003", 0,async function (done) {
+    it("SUB_AUDIO_SetInterruptMode_003", 0, async function (done) {
         var audioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -7468,23 +7469,25 @@ describe('audioRenderer', function () {
             rendererInfo: audioRendererInfo
         }
         let audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
-        let mode = 0;
-        audioRenderer.setInterruptMode(mode).then(data=>{
-            expect(true).assertEqual(true);
+        let mode = audio.InterruptMode.SHARE_MODE;
+        audioRenderer.setInterruptMode(mode).then(data => {
+			console.info(`AudioFrameworkRenderLog: SetInterruptMode SHARE_MODE PROMISE: SUCCESS`);
+            expect(true).assertTrue();
             done();
-        }).catch(err=>{
-            expect(true).assertEqual(false);
+        }).catch(err => {
+			console.info(`AudioFrameworkRenderLog: SetInterruptMode SHARE_MODE PROMISE: error: ${err.message}`);
+            expect(false).assertTrue();
             done();
         })
     })
 
     /*
-        * @tc.name:SetInterruptMode_004
+        * @tc.name:SUB_AUDIO_SetInterruptMode_004
         * @tc.desc:SetInterruptMode mode 1 promise,is independent mode
         * @tc.type: FUNC
         * @tc.require: Issue Number
         */
-    it("SetInterruptMode_004", 0,async function (done) {
+    it("SUB_AUDIO_SetInterruptMode_004", 0, async function (done) {
         var audioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -7501,23 +7504,25 @@ describe('audioRenderer', function () {
             rendererInfo: audioRendererInfo
         }
         let audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
-        let mode = 1;
-        audioRenderer.setInterruptMode(mode).then(data=>{
-            expect(true).assertEqual(true);
+        let mode = audio.InterruptMode.INDEPENDENT_MODE;
+        audioRenderer.setInterruptMode(mode).then(data => {
+			console.info(`AudioFrameworkRenderLog: SetInterruptMode INDEPENDENT_MODE PROMISE: SUCCESS`);
+            expect(true).assertTrue();
             done();
-        }).catch(err=>{
-            expect(true).assertEqual(false);
+        }).catch(err => {
+			console.info(`AudioFrameworkRenderLog: SetInterruptMode INDEPENDENT_MODE PROMISE: error: ${err.message}`);
+            expect(false).assertTrue();
             done();
         })
     })
 
     /*
-    * @tc.name:SetInterruptMode_005
+    * @tc.name:SUB_AUDIO_SetInterruptMode_005
     * @tc.desc:SetInterruptMode mode '1',will catch error with type error
     * @tc.type: FUNC
     * @tc.require: Issue Number
     */
-    it("SetInterruptMode_005", 0,async function (done) {
+    it("SUB_AUDIO_SetInterruptMode_005", 0, async function (done) {
         var audioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -7535,23 +7540,25 @@ describe('audioRenderer', function () {
         }
         let audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
         let mode = '1';
-        try{
+        try {
             let data = await audioRenderer.setInterruptMode(mode);
-            expect(false).assertEqual(false);
+			console.info(`AudioFrameworkRenderLog: SetInterruptMode STRING PROMISE: SUCCESS`);
+            expect(false).assertTrue();
             done();
-        }catch(err){
-            expect('assertion (false) failed: type mismatch').assertEqual(err.message);
+        } catch (err) {
+			console.info(`AudioFrameworkRenderLog: SetInterruptMode STRING PROMISE: error: ${err.message}`);
+            expect(true).assertTrue();
             done();
         }
     })
 
     /*
-   * @tc.name:SetInterruptMode_006
-   * @tc.desc:SetInterruptMode mode 2,will catch error with out of border
+   * @tc.name:SUB_AUDIO_SetInterruptMode_006
+   * @tc.desc:SetInterruptMode mode 2,set it to default SHARE_MODE
    * @tc.type: FUNC
    * @tc.require: Issue Number
    */
-    it("SetInterruptMode_006", 0,async function (done) {
+    it("SUB_AUDIO_SetInterruptMode_006", 0, async function (done) {
         var audioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -7569,12 +7576,14 @@ describe('audioRenderer', function () {
         }
         let audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
         let mode = 2;
-        try{
-            let data = await audioRenderer.setInterruptMode(mode)
-            expect(true).assertEqual(true);
+        try {
+            let data = await audioRenderer.setInterruptMode(mode);	
+			console.info(`AudioFrameworkRenderLog: SetInterruptMode OUT OF BORDER PROMISE: SUCCESS`);
+            expect(true).assertTrue();
             done();
-        }catch(err){
-            expect(err).assertEqual(undefined);
+        } catch (err) {
+			console.info(`AudioFrameworkRenderLog: SetInterruptMode OUT OF BORDER PROMISE: ERROR: ${err.message}`);
+            expect(false).assertTrue();
             done();
         }
     })

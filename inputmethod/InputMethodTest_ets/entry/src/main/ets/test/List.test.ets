@@ -12,16 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import inputMethodJSUnit from './inputMethodJSUnit.ets';
-import inputMethodEngineJSUnit from './inputMethodEngineJSUnit.ets';
-import inputRequestJSUnit from './inputRequestJSUnit.ets';
-import requestJSUnit from './requestJSUnit.ets';
-import requestDownloadJSUnit from './requestDownloadJSUnit.ets';
+import inputMethodJSUnit from './inputMethodJSUnit';
+import inputMethodEngineJSUnit from './inputMethodEngineJSUnit';
 
 export default function testsuite() {
   inputMethodJSUnit();
   inputMethodEngineJSUnit();
-  inputRequestJSUnit();
-  requestDownloadJSUnit();
-  requestJSUnit();
 }

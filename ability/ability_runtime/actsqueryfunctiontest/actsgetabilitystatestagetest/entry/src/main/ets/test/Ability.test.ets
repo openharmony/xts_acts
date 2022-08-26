@@ -97,6 +97,8 @@ export default function abilityTest() {
                     var state = abilityDelegator.getAbilityState(ability);
                     console.debug("====>ACTS_GetAbilityState_0300 state:" + state);
                     expect(state).assertEqual(AbilityDelegatorRegistry.AbilityLifecycleState.FOREGROUND);
+                    expect(state != AbilityDelegatorRegistry.AbilityLifecycleState.CREATE).assertTrue()
+                    expect(state != AbilityDelegatorRegistry.AbilityLifecycleState.DESTROY).assertTrue()
                     abilityDelegator.doAbilityBackground(ability, (err, isBackground)=>{
                         console.debug("====>doAbilityBackground_0300 data:" + JSON.stringify(isBackground));
                         expect(isBackground).assertTrue();

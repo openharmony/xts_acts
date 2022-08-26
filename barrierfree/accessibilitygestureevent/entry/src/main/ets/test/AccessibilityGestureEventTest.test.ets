@@ -14,6 +14,7 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import commonEvent from '@ohos.commonEvent'
+import config from '@ohos.accessibility.config'
 
 function publishCaseExecute(caseName: string) {
     let commonEventPublishData = {
@@ -45,21 +46,26 @@ export default function abilityTest() {
                 }
             });
 
-            await globalThis.abilityContext.startAbility({
-                deviceId: '',
-                bundleName: 'com.example.acetest',
-                abilityName: 'MainAbility',
-                action: 'action1',
-                parameters: {},
+            config.enableAbility('com.example.accessibilityxts/AccessibilityExtAbility',
+                                    ["retrieve", "touchGuide", "gesture"]
+            ).then(() => {
+                console.info(`AccessibilityGestureEventTest enableAbility: then`);
+            }).catch((err) => {
+                console.error(`AccessibilityGestureEventTest enableAbility has error: ${err.code}`);
             });
+
             setTimeout(done, 3000);
         })
 
         afterAll(async function (done) {
             console.info('AccessibilityGestureEventTest: afterAll');
             commonEvent.unsubscribe(subScriber);
-            isConnect = false;
-            done();
+            config.disableAbility('com.example.accessibilityxts/AccessibilityExtAbility').then(() => {
+                console.info(`AccessibilityGestureEventTest disableAbility: then`);
+            }).catch((err) => {
+                console.error(`AccessibilityGestureEventTest disableAbility has error: ${err.code}`);
+            });
+            setTimeout(done, 5000);
         })
 
         beforeEach(async function (done) {
