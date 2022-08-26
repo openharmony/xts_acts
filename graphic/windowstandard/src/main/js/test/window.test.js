@@ -176,6 +176,7 @@ describe('window_test', function () {
             expect(wnd != null).assertTrue();
             wnd.getAvoidArea(window.AvoidAreaType.TYPE_SYSTEM).then((data) => {
                 console.log('windowTest getAvoidAreaTest1 wnd.getAvoidArea success, data :' + JSON.stringify(data));
+                expect(data.visible).assertTrue();
                 expect(data.rightRect != null).assertTrue();
                 expect(data.topRect != null).assertTrue();
                 expect(data.bottomRect != null).assertTrue();
@@ -205,6 +206,7 @@ describe('window_test', function () {
             expect(wnd != null).assertTrue();
             wnd.getAvoidArea(window.AvoidAreaType.TYPE_CUTOUT).then((data) => {
                 console.log('windowTest getAvoidAreaTest2 wnd.getAvoidArea success, data :' + JSON.stringify(data));
+                expect(!data.visible).assertTrue();
                 expect(data.rightRect != null).assertTrue();
                 expect(data.topRect != null).assertTrue();
                 expect(data.bottomRect != null).assertTrue();
@@ -234,6 +236,7 @@ describe('window_test', function () {
             expect(wnd != null).assertTrue();
             wnd.getAvoidArea(avoidAreaType).then((data) => {
                 console.log('windowTest getAvoidAreaTest3 wnd.getAvoidArea success, data :' + JSON.stringify(data));
+                expect(data.visible).assertTrue();
                 expect(data.rightRect != null).assertTrue();
                 expect(data.topRect != null).assertTrue();
                 expect(data.bottomRect != null).assertTrue();
@@ -267,6 +270,7 @@ describe('window_test', function () {
                     expect().assertFail();
                     done();
                 } else {
+                    expect(data.visible).assertTrue();
                     expect(data.topRect != null).assertTrue();
                     expect(data.rightRect != null).assertTrue();
                     expect(data.bottomRect != null).assertTrue();
@@ -293,6 +297,7 @@ describe('window_test', function () {
                     expect().assertFail();
                     done();
                 } else {
+                    expect(!data.visible).assertTrue();
                     expect(data.topRect != null).assertTrue();
                     expect(data.rightRect != null).assertTrue();
                     expect(data.bottomRect != null).assertTrue();
@@ -324,6 +329,7 @@ describe('window_test', function () {
                     expect().assertFail();
                     done();
                 } else {
+                    expect(data.visible).assertTrue();
                     expect(data.topRect != null).assertTrue();
                     expect(data.rightRect != null).assertTrue();
                     expect(data.bottomRect != null).assertTrue();
@@ -3489,6 +3495,7 @@ describe('window_test', function () {
                     expect().assertFail();
                     done();
                 } else {
+                    expect(data.visible).assertTrue();
                     expect(data.topRect != null).assertTrue();
                     expect(data.rightRect != null).assertTrue();
                     expect(data.bottomRect != null).assertTrue();
