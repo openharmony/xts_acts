@@ -21,6 +21,8 @@ let moduleName1: any
 let monitor: any
 let want: any
 let timeout = 3000;
+let addMonitor = false;
+let removeMonitor = false;
 
 function sleep(delay) {
   let start = (new Date()).getTime();
@@ -329,6 +331,8 @@ export default function abilityStageMonitorTest() {
     it('SUB_AA_AbilityStageMonitor_0700', 0, async function (done) {
       console.info("SUB_AA_AbilityStageMonitor_0700 begin")
 
+      addMonitor = false;
+      removeMonitor = false;
       monitor = {
         moduleName: "feature_assisth",
         srcEntrance: "./ets/Application/MyAbilityStage.ts",
@@ -338,6 +342,7 @@ export default function abilityStageMonitorTest() {
 
       await abilityDelegator.addAbilityStageMonitor(monitor).then((data) => {
         console.info("stageMonitor addAbilityStageMonitor promise, data = " + data);
+        addMonitor = true;
       }).catch((err) => {
         console.info("SUB_AA_AbilityStageMonitor_0700 addAbilityStageMonitor err: " + JSON.stringify(err));
         expect().assertFail()
@@ -349,18 +354,21 @@ export default function abilityStageMonitorTest() {
       }).catch((err) => {
         console.info("SUB_AA_AbilityStageMonitor_0600 waitAbilityStageMonitor err: " + JSON.stringify(err));
         expect(err.code).assertEqual(-1)
-        done()
       })
 
       console.info("SUB_AA_AbilityStageMonitor_0700 removeAbilityStageMonitor");
 
       await abilityDelegator.removeAbilityStageMonitor(monitor).then((data) => {
         console.info("stageMonitor addAbilityStageMonitor promise, data = " + data);
+        removeMonitor = true;
       }).catch((err) => {
         console.info("SUB_AA_AbilityStageMonitor_0700 removeAbilityStageMonitor err: " + JSON.stringify(err));
         expect().assertFail()
         done()
       });
+      expect(addMonitor).assertTrue();
+      expect(removeMonitor).assertTrue();
+      done()
     })
 
     /**
@@ -374,6 +382,8 @@ export default function abilityStageMonitorTest() {
     it('SUB_AA_AbilityStageMonitor_0800', 0, async function (done) {
       console.info("SUB_AA_AbilityStageMonitor_0800 begin")
 
+      addMonitor = false;
+      removeMonitor = false;
       monitor = {
         moduleName: "feature_assisti",
         srcEntrance: "./ets/Application/AbilityStage.ts",
@@ -385,6 +395,7 @@ export default function abilityStageMonitorTest() {
         abilityDelegator.addAbilityStageMonitor(monitor, (err, data) => {
           console.info("SUB_AA_AbilityStageMonitor_0800 addAbilityStageMonitor callback, data = " + data +
             "err: " + err);
+          addMonitor = true;
         })
       } catch (error) {
         console.log("SUB_AA_AbilityStageMonitor_0800 addAbilityStageMonitor callback err: " + error);
@@ -397,7 +408,6 @@ export default function abilityStageMonitorTest() {
       }).catch((err) => {
         console.info("SUB_AA_AbilityStageMonitor_0600 waitAbilityStageMonitor err: " + JSON.stringify(err));
         expect(err.code).assertEqual(-1)
-        done()
       })
 
       try {
@@ -405,12 +415,20 @@ export default function abilityStageMonitorTest() {
         abilityDelegator.removeAbilityStageMonitor(monitor, (err, data) => {
           console.info("SUB_AA_AbilityStageMonitor_0800 removeAbilityStageMonitor callback, data = " +
             data + "err: " + err);
+          removeMonitor = true;
         })
       } catch (error) {
         console.log("SUB_AA_AbilityStageMonitor_0800 removeAbilityStageMonitor callback err: " + error);
         expect().assertFail()
         done()
       }
+
+      setTimeout(() => {
+        expect(addMonitor).assertTrue()
+        expect(removeMonitor).assertTrue()
+        done()
+      }, 3000);
+
     })
 
     /**
@@ -474,8 +492,8 @@ export default function abilityStageMonitorTest() {
     it('SUB_AA_AbilityStageMonitor_1000', 0, async function (done) {
       console.info("SUB_AA_AbilityStageMonitor_1000 begin")
 
-      let addMonitor = false;
-      let removeMonitor = true;
+      addMonitor = false;
+      removeMonitor = false;
       monitor = {
         moduleName: "feature_assa",
         srcEntrance: "./ets/Application/MyAbilityStage.ts",
