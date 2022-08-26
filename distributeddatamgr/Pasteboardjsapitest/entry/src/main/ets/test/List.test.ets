@@ -14,7 +14,8 @@
  */
 
 import pasteBoardJEtsunitTest from './PasteBoardEtsunitTest';
-
+import pasteBoardTest from './PasteBoeadPixelMapJsunit.test';
 export default function testsuite() {
   pasteBoardJEtsunitTest()
+  pasteBoardTest()
 }
