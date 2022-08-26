@@ -194,7 +194,7 @@ export default function abilityStageMonitorTest() {
 
       console.info("SUB_AA_AbilityStageMonitor_0400 wait abilityStage");
 
-      await abilityDelegator.waitAbilityStageMonitor(monitor, timeout).then((abilityStage) => {
+      abilityDelegator.waitAbilityStageMonitor(monitor, timeout).then((abilityStage) => {
         moduleName1 = abilityStage.context.currentHapModuleInfo.name;
         console.info("stageMonitor waitAbilityStageMonitor callback, abilityStage: " +
           JSON.stringify(abilityStage));
