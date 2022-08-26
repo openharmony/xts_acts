@@ -237,8 +237,248 @@ export default function webJsunit() {
      *tc.desic Goes forward or back backOrForward in the history of the web page
      */
     it('backOrForward',0,async function(done){
-      emitKey="emitBackOrForward";
+      emitKey="emitOnPageBegin";
       Utils.registerEvent("backOrForward","index",138,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_021                                                                                                                                                                       
+     *tc.name onPageBegin                                                                                                                                                                                                                 
+     *tc.desic Triggered when the page loading progress changes
+     */
+    it('onPageBegin',0,async function(done){
+      emitKey="emitOnPageEnd";
+      Utils.registerEvent("onPageBegin","file:///data/storage/el1/bundle/phone/resources/rawfile/index.html",59,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_022                                                                                                                                                                       
+     *tc.name onPageEnd                                                                                                                                                                                                                 
+     *tc.desic Triggered at the begin of web page loading
+     */
+    it('onPageEnd',0,async function(done){
+      emitKey="emitOnConsole";
+      Utils.registerEvent("onPageEnd","file:///data/storage/el1/bundle/phone/resources/rawfile/index.html",60,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_023                                                                                                                                                                       
+     *tc.name onConsole                                                                                                                                                                                                                 
+     *tc.desic Triggered when the web page receives a JavaScript console message
+     */
+    it('onConsole',0,async function(done){
+      emitKey="emitOnAlert";
+      Utils.registerEvent("onConsole","console test",62,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_024                                                                                                                                                                       
+     *tc.name onAlert                                                                                                                                                                                                                 
+     *tc.desic Triggered when the Web wants to display a JavaScript alert() dialog
+     */
+    it('onAlert',0,async function(done){
+      emitKey="emitOnConfirm";
+      Utils.registerEvent("onAlert","alert test",63,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_025                                                                                                                                                                       
+     *tc.name onConfirm                                                                                                                                                                                                                 
+     *tc.desic Triggered when the web page wants to display a JavaScript confirm() dialog
+     */
+    it('onConfirm',0,async function(done){
+      emitKey="emitOnErrorReceive";
+      Utils.registerEvent("onConfirm","confirm test",64,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_026                                                                                                                                                                       
+     *tc.name onErrorReceive                                                                                                                                                                                                                 
+     *tc.desic Triggered when the web page receives a web resource loading error
+     */
+    it('onErrorReceive',0,async function(done){
+      emitKey="emitOnHttpErrorReceive";
+      Utils.registerEvent("onErrorReceive","http://192.168.5.40:9006/sso_web/html/H5/doctor/aboutUs.html",65,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_027                                                                                                                                                                       
+     *tc.name onHttpErrorReceive                                                                                                                                                                                                                 
+     *tc.desic Triggered when the web page receives a web resource loading HTTP error
+     */
+    it('onHttpErrorReceive',0,async function(done){
+      emitKey="emitOnTitleReceive";
+      Utils.registerEvent("onHttpErrorReceive",404,66,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_028                                                                                                                                                                       
+     *tc.name onTitleReceive                                                                                                                                                                                                                 
+     *tc.desic Triggered when the title of the main application document changes
+     */
+    it('onTitleReceive',0,async function(done){
+      emitKey="emitOnDownloadStart";
+      Utils.registerEvent("onTitleReceive","index",67,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_029                                                                                                                                                                       
+     *tc.name onDownloadStart                                                                                                                                                                                                                 
+     *tc.desic Triggered when starting to download
+     */
+    it('onDownloadStart',0,async function(done){
+      emitKey="emitSetCookie";
+      Utils.registerEvent("onDownloadStart","https://consumer.huawei.com/content/dam/huawei-cbg-site/cn/mkt/mobileservices/2022/download/PC107f1b3947c942ffaa14334a879065d8.2107261020.exe",68,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_030                                                                                                                                                                       
+     *tc.name setCookie                                                                                                                                                                                                                 
+     *tc.desic  Sets the cookie
+     */
+    it('setCookie',0,async function(done){
+      emitKey="emitGetCookie";
+      Utils.registerEvent("setCookie","e=f",76,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_031                                                                                                                                                                       
+     *tc.name getCookie                                                                                                                                                                                                                 
+     *tc.desic Gets all cookies for the given URL
+     */
+    it('getCookie',0,async function(done){
+      emitKey="emitZoom";
+      Utils.registerEvent("getCookie","e=f",69,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_032                                                                                                                                                                       
+     *tc.name zoom                                                                                                                                                                                                                 
+     *tc.desic Let the Web zoom by
+     */
+    it('zoom',0,async function(done){
+      emitKey="emitZoomOut";
+      Utils.registerEvent("zoom",true,77,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_033                                                                                                                                                                       
+     *tc.name zoomOut                                                                                                                                                                                                                 
+     *tc.desic Let the Web zoom out
+     */
+    it('zoomOut',0,async function(done){
+      emitKey="emitZoomIn";
+      Utils.registerEvent("zoomOut",true,78,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_034                                                                                                                                                                       
+     *tc.name zoomIn                                                                                                                                                                                                                 
+     *tc.desic Let the Web zoom in
+     */
+    it('zoomIn',0,async function(done){
+      emitKey="emitDeleteEntireCookie";
+      Utils.registerEvent("zoomIn",true,79,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_035                                                                                                                                                                       
+     *tc.name deleteEntireCookie                                                                                                                                                                                                                 
+     *tc.desic Delete all cookies
+     */
+    it('deleteEntireCookie',0,async function(done){
+      emitKey="emitSaveCookieSync";
+      Utils.registerEvent("deleteEntireCookie","",80,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_036                                                                                                                                                                       
+     *tc.name saveCookieSync                                                                                                                                                                                                                 
+     *tc.desic  Saves the cookies
+     */
+    it('saveCookieSync',0,async function(done){
+      emitKey="emitClearHistory";
+      Utils.registerEvent("saveCookieSync",true,81,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_037                                                                                                                                                                       
+     *tc.name clearHistory                                                                                                                                                                                                                 
+     *tc.desic Clears the history in the Web
+     */
+    it('clearHistory',0,async function(done){
+      emitKey="emitStop";
+      Utils.registerEvent("clearHistory",false,82,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_038                                                                                                                                                                       
+     *tc.name stop                                                                                                                                                                                                                 
+     *tc.desic  Stops the current load
+     */
+    it('stop',0,async function(done){
+      emitKey="emitOnInactive";
+      Utils.registerEvent("stop",true,83,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_039                                                                                                                                                                       
+     *tc.name onInactive                                                                                                                                                                                                                 
+     *tc.desic Let the Web inactive.
+     */
+    it('onInactive',0,async function(done){
+      emitKey="emitOnActive";
+      Utils.registerEvent("onInactive",true,84,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_040                                                                                                                                                                       
+     *tc.name onActive                                                                                                                                                                                                                 
+     *tc.desic Let the Web active
+     */
+    it('onActive',0,async function(done){
+      emitKey="emitRegisterJavaScriptProxy";
+      Utils.registerEvent("onActive","file:///data/storage/el1/bundle/phone/resources/rawfile/index.html",85,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_041                                                                                                                                                                       
+     *tc.name registerJavaScriptProxy                                                                                                                                                                                                                 
+     *tc.desic Registers the JavaScript object and method list
+     */
+    it('registerJavaScriptProxy',0,async function(done){
+      emitKey="emitDeleteJavaScriptRegister";
+      Utils.registerEvent("registerJavaScriptProxy","backToEts",86,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_042                                                                                                                                                                       
+     *tc.name deleteJavaScriptRegister                                                                                                                                                                                                                 
+     *tc.desic Deletes a registered JavaScript object with given name
+     */
+    it('deleteJavaScriptRegister',0,async function(done){
+      emitKey="emitJavaScriptAccess";
+      Utils.registerEvent("deleteJavaScriptRegister",true,87,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_043                                                                                                                                                                       
+     *tc.name javaScriptAccess                                                                                                                                                                                                                 
+     *tc.desic Sets whether the Web allows JavaScript scripts to execute
+     */
+    it('javaScriptAccess',0,async function(done){
+      emitKey="emitGetCookieManager";
+      Utils.registerEvent("javaScriptAccess",true,88,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_044                                                                                                                                                                       
+     *tc.name getCookieManager                                                                                                                                                                                                                 
+     *tc.desic Gets network cookie manager
+     */
+    it('getCookieManager',0,async function(done){
+      emitKey="emitGetCookieManager";
+      Utils.registerEvent("getCookieManager",true,89,done);
       sendEventByKey('webcomponent',10,'');
     })
   })
