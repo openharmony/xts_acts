@@ -80,6 +80,7 @@ describe('continuationManagerTest', function() {
         try {
             let continuationExtraParams = {
                 deviceType: [],
+                targetBundle: "",
                 description: "",
                 filter: "",
                 continuationMode: null,
@@ -106,6 +107,7 @@ describe('continuationManagerTest', function() {
         try {
             let continuationExtraParams = {
                 deviceType: ["00E"],
+                targetBundle: "ohos.example.test",
                 description: "description",
                 filter: {"name": "authInfo","length": 8},
                 continuationMode: 10,
@@ -132,6 +134,7 @@ describe('continuationManagerTest', function() {
         try {
             let continuationExtraParams = {
                 deviceType: ["00E"],
+                targetBundle: "ohos.example.test",
                 description: "description",
                 filter: {"name": "authInfo","length": 8},
                 continuationMode: continuationManager.ContinuationMode.COLLABORATION_MULTIPLE,
@@ -159,6 +162,7 @@ describe('continuationManagerTest', function() {
         try {
             let continuationExtraParams = {
                 deviceType: ["00E"],
+                targetBundle: "ohos.example.test",
                 description: "description",
                 filter: {"name": "authInfo","length": 8},
                 continuationMode: continuationManager.ContinuationMode.COLLABORATION_SINGLE,
@@ -185,6 +189,7 @@ describe('continuationManagerTest', function() {
         try {
             let continuationExtraParams = {
                 deviceType: ["00E"],
+                targetBundle: "ohos.example.test",
                 description: "description",
                 filter: {"name": "authInfo","length": 8},
                 continuationMode: continuationManager.ContinuationMode.COLLABORATION_SINGLE,
