@@ -214,20 +214,21 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet isStarted normal test
      */
     it('testIsStarted0003', 0, async function (done) {
-        console.info(TAG + '************* testIsStarted0003 start *************');
-        let predicates = await new dataRdb.RdbPredicates('test')
+        console.info(TAG + "************* testIsStarted0003 start *************");
+        let predicates = await new dataRdb.RdbPredicates("test")
         let resultSet = await rdbStore.query(predicates)
         try {
+            expect(false).assertEqual(resultSet.isStarted)
             expect(true).assertEqual(resultSet.goToNextRow())
             expect(true).assertEqual(resultSet.isStarted)
             expect(false).assertEqual(resultSet.goToPreviousRow())
-            expect(false).assertEqual(resultSet.isStarted)
+            expect(true).assertEqual(resultSet.isStarted)
         } catch (e) {
             expect(null).assertFail();
         }
         resultSet = null
         done();
-        console.info(TAG + '************* testIsStarted0003 end *************');
+        console.info(TAG + "************* testIsStarted0003 end *************");
     })
 
     /**
