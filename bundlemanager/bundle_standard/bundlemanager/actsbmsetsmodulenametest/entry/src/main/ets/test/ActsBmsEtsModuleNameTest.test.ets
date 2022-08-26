@@ -268,7 +268,7 @@ export default function actsBmsJsModuleNameTest() {
                     expect(err).assertFail();
                 });
             bundle.getAbilityLabel(BUNDLE_NAME, MODULE_NAME3, ABILITY_NAME, (err, data) => {
-                expect(err).assertEqual(SUCCESS_CODE);
+                expect(err).assertNull();
                 if (err) {
                     console.error('[GetAbilityLabel_0300]Operation failed. Err: ' + JSON.stringify(err));
                 }
