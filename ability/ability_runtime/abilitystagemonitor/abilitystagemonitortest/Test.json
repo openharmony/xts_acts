@@ -6,7 +6,7 @@
         "bundle-name": "com.example.abilitystagemonitortest",
         "module-name": "entry_test",
         "shell-timeout": "600000",
-        "testcase-timeout": "7000"
+        "testcase-timeout": "15000"
     },
     "kits": [
 		{
