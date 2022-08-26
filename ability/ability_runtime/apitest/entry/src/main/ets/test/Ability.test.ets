@@ -19,7 +19,7 @@ var subscriberInfo_MainAbility = {
   events: ["ACTS_DoAbility_Event"]
 };
 var mainability
-const START_ABILITY_TIMEOUT = 4000;
+const START_ABILITY_TIMEOUT = 10000;
 const START_ABILITY_TIMEOUT_TWO_THOUSAND = 2000;
 const START_ABILITY_TIMEOUT_THOUSAND = 1000;
 export default function abilityTest() {
