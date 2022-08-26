@@ -59,8 +59,8 @@ export default function addImage() {
                 done();
             })
         }
-		
-		async function createIncrementalSourcePromise(done, testNum, type, opts) {
+
+        async function createIncrementalSourcePromise(done, testNum, type, opts) {
             let testimagebuffer = testPng;
             let incSouce;
             console.info(`${testNum} 0001 ` + testimagebuffer.length);
@@ -294,7 +294,7 @@ export default function addImage() {
          * @tc.level     : Level 1
          */
         it('add_053', 0, async function (done) {
-             createIncrementalSourcePromise(done, 'add_053', 'noSourceOpts')
+            createIncrementalSourcePromise(done, 'add_053', 'noSourceOpts')
         })
 
         /**
@@ -308,10 +308,10 @@ export default function addImage() {
          * @tc.level     : Level 1
          */
         it('add_053-1', 0, async function (done) {
-             createIncrementalSourceCb(done, 'add_053-1', 'noSourceOpts')
+            createIncrementalSourceCb(done, 'add_053-1', 'noSourceOpts')
         })
-		
-		/**
+
+        /**
          * @tc.number    : add_054
          * @tc.name      : createIncrementalSource-updateData-png-promise
          * @tc.desc      : 1.create imagesource
