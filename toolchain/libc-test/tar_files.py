@@ -33,8 +33,7 @@ def copyFiles(sourceDir, targetDir):
             if not os.path.exists(targetDir):
                 os.makedirs(targetDir)
             copyFileCounts += 1
-            if not os.path.exists(targetF) or (os.path.exists(targetF) and (os.path.getsize(targetF) != os.path.getsize(sourceF))):
-                open(targetF, "wb").write(open(sourceF, "rb").read())
+            open(targetF, "wb").write(open(sourceF, "rb").read())
         if os.path.isdir(sourceF):
             copyFiles(sourceF, targetF)
 

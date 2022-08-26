@@ -64,13 +64,11 @@ static int runTests(const char *argvs)
     int timeoutsec = 5, timeout = 0;
     int status, pid;
     sigset_t set;
-    void (*retfunc)(int);
 
     sigemptyset(&set);
     sigaddset(&set, SIGCHLD);
     sigprocmask(SIG_BLOCK, &set, nullptr);
-    retfunc = signal(SIGCHLD, handler);
-    if (retfunc == SIG_ERR) {
+    if (signal(SIGCHLD, handler) == SIG_ERR) {
         printf("signal triggering failed:%s\n", strerror(errno));
     }
     pid = start(wrap, argvs);
