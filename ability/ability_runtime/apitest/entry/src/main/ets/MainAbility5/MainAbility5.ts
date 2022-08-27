@@ -20,7 +20,7 @@ function PublishCallBackOne() {
 export default class MainAbility5 extends Ability {
     onCreate(want, launchParam) {
         console.log("[Demo] MainAbility5 onCreate")
-        globalThis.abilityContext = this.context
+        globalThis.abilityContextMainAility5 = this.context
         setTimeout(()=> {
             commonEvent.publish("ACTS_DoAbility_Event", PublishCallBackOne);
         }, 500)
