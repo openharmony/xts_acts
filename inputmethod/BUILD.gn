@@ -14,5 +14,8 @@
 import("//build/ohos_var.gni")
 group("inputmethod") {
   testonly = true
-  deps = [ "InputMethodTest_ets:ActsInputMethodEtsTest" ]
+  deps = [
+    "InputMethodTest_Stage:ActsImeAbilityTest",
+    "InputMethodTest_ets:ActsInputMethodEtsTest",
+  ]
 }

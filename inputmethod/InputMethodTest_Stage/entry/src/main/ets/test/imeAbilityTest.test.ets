@@ -1,0 +1,100 @@
+/*
+ * Copyright (c) 2022 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import inputMethod from '@ohos.inputmethod'
+
+export default function imeAbilityTest(abilityContext) {
+  describe('imeAbilityTest', function () {
+    /**
+     * sleep function.
+     */
+    function sleep(date, time){
+      while(Date.now() - date <= time);
+    }
+
+
+    /**
+     * beforeEach: Prerequisites at the test case level, which are executed before each test case is executed.
+     */
+    beforeEach(function () {
+      console.info('beforeEach: switchInputMethod to kikakeyboard.');
+      let serviceAbilityProperty = {
+        packageName: "com.example.kikakeyboard",
+        methodId: "ServiceExtAbility"
+      }
+
+      inputMethod.switchInputMethod(serviceAbilityProperty).then((data)=>{
+        console.info('SUB_InputMethod_IMEAbility_0001 switchInputMethod to Kika :' + data);
+        expect(data == true).assertTrue();
+      })
+
+    });
+
+    /**
+     * afterEach: Test case-level clearance conditions, which are executed after each test case is executed.
+     */
+    afterEach(function () {
+      console.info('afterEach: Test case-level clearance conditions is executed.');
+    });
+
+    /**
+     * @tc.number    SUB_InputMethod_IMEAbility_0001
+     * @tc.desc      Start a inputMethodExtension ability session.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_InputMethod_IMEAbility_0001', 0, async function (done) {
+      console.info('----------SUB_InputMethod_IMEAbility_0001 start-------------');
+      let imExtAbilityProperty = {
+        packageName : "com.acts.imeability.test",
+        methodId : "com.acts.imeability.test.ImExtAbility",
+      }
+
+      inputMethod.switchInputMethod(imExtAbilityProperty).then((data)=>{
+        console.info('SUB_InputMethod_IMEAbility_0004 switchInputMethod to IME :' + data);
+        expect(data == true).assertTrue();
+      });
+      sleep(Date.now(), 3000);
+      console.info('----------SUB_InputMethod_IMEAbility_0001 end-------------');
+
+      done();
+    })
+
+    /**
+     * @tc.number    SUB_InputMethod_IMEAbility_0002
+     * @tc.desc      Start a inputMethodExtension ability session
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_InputMethod_IMEAbility_0002', 0, async function (done) {
+      console.info('-----------SUB_InputMethod_IMEAbility_0002 start-------------');
+
+      let imExtAbilityProperty = {
+        packageName : "com.acts.imeability.test",
+        methodId : "com.acts.imeability.test.ImExtAbility",
+      }
+
+      inputMethod.switchInputMethod(imExtAbilityProperty).then((data)=>{
+        console.info('SUB_InputMethod_IMEAbility_0004 switchInputMethod to IME :' + data);
+        expect(data == true).assertTrue();
+      });
+      sleep(Date.now(), 2500);
+      console.info('-----------SUB_InputMethod_IMEAbility_0002 end-------------');
+      done();
+    })
+  })
+}
