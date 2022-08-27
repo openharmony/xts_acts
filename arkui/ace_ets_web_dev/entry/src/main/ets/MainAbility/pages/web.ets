@@ -37,6 +37,24 @@ struct Index {
     @State titleReceive:string=""
     @State downloadStart:string=""
     @State javaScriptAccess:boolean=true
+    @State fileAccess:boolean=true
+    @State domStorageAccess:boolean=false
+    @State imageAccess:boolean=true
+    @State geolocationAccess:boolean=true
+    @State onlineImageAccess:boolean=true
+    @State fileFromUrlAccess:boolean=true
+    @State databaseAccess:boolean=true
+    @State overviewModeAccess:boolean=false
+    @State initialScale:number=100
+    @State enterPageEnd:boolean=false
+    @State newScale:number=0
+    @State scaleChange:boolean=false
+    @State geoShow:boolean=false
+    @State mixedMode:MixedMode=MixedMode.All
+    @State cacheMode:CacheMode=CacheMode.Default
+    @State cacheError:boolean=false
+    @State mixedSwitch:boolean=false
+    @State mixedAllSwitch:boolean=false
     onPageShow(){
         let valueChangeEvent={
             eventId:10,
@@ -77,6 +95,17 @@ struct Index {
         Column(){
             Web({src:$rawfile('index.html'),controller:this.controller})
             .javaScriptAccess(this.javaScriptAccess)
+            .fileAccess(this.fileAccess)
+            .imageAccess(this.imageAccess)
+            .domStorageAccess(this.domStorageAccess)
+            .geolocationAccess(this.geolocationAccess)
+            .onlineImageAccess(this.onlineImageAccess)
+            .fileFromUrlAccess(this.fileFromUrlAccess)
+            .databaseAccess(this.databaseAccess)
+            .cacheMode(this.cacheMode)
+            .initialScale(this.initialScale)
+            .mixedMode(this.mixedMode)
+            .overviewModeAccess(this.overviewModeAccess)
             .userAgent("Mozila/5.0 (Linux; Andriod 9; VRD-AL10; HMSCore 6.3.0.331) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.105 HuaweiBrowser/12.0.4.1 MobileSafari/537.36")
             .javaScriptProxy({
                 object:this.jsObj,
@@ -113,9 +142,24 @@ struct Index {
             })
             .onPageEnd((event) => {
                 this.pageEnd = event.url
+                console.log("onPageEnd==>")
+                if(this.enterPageEnd){
+                    Utils.emitEvent(this.newScale,97)
+                    this.enterPageEnd=false
+                }
             })
             .onConsole((event) => {
                 this.console = event.message.getMessage()
+                let level=event.message.getMessageLevel()
+                let msg=event.message.getMessage()
+                console.log("html==>"+msg)
+                if(this.mixedSwitch){
+                    Utils.emitEvent(msg,186)
+                    this.mixedSwitch=false
+                }else if(this.mixedAllSwitch){
+                    Utils.emitEvent(level,188)
+                    this.mixedAllSwitch=false
+                }
                 return false
             })
             .onAlert((event) => {
@@ -127,7 +171,12 @@ struct Index {
                 return false
             })
             .onErrorReceive((event) => {
-                this.errorReceive = event.request.getRequestUrl()               
+                this.errorReceive = event.request.getRequestUrl()
+                console.log("onErrorReceive==>")
+                if(this.cacheError){
+                    Utils.emitEvent("cacheError",182)
+                    this.cacheError=false
+                }               
             })
             .onHttpErrorReceive((event) => {
                 this.httpErrorReceive = event.response.getResponseCode()              
@@ -138,8 +187,28 @@ struct Index {
             .onDownloadStart((event) => {
                 this.downloadStart = event.url
             })
+            .onScaleChange((event)=>{
+                console.log("onScaleChange==>")
+                this.newScale=event.newScale
+                if(this.scaleChange){
+                    Utils.emitEvent("onScaleChange",98)
+                    this.scaleChange=false
+                }
+            })
+            .onPrompt((event)=>{
+                event.result.handlePromptConfirm("onPrompt ok")
+                Utils.emitEvent(event.message,178)
+                return true
+            })
+            .onGeolocationShow(()=>{
+                console.log("onGeolocationShow==>")
+                if(this.geoShow){
+                    Utils.emitEvent("onGeolocationShow",99)
+                    this.geoShow=false
+                }
+            })
             Row(){
-                Button("web click").key('webcomponent').onClick(()=>{
+                Button("web click").key('webcomponent').onClick(async ()=>{
                     console.info("key==>"+this.str)
                     switch(this.str){
                         case "emitUserAgent":{
@@ -224,7 +293,7 @@ struct Index {
                             let webPageHeight=this.controller.getPageHeight()+""
                             setTimeout(()=>{
                                 this.controller.runJavaScript({script:"getPageHeight()",callback:(res)=>{
-				    console.info("getPageHeight==>"+res)
+				                    console.info("getPageHeight==>"+res)
                                     Utils.emitEventTwo(res,webPageHeight,124)
                                 }})
                             },3000)
@@ -271,6 +340,219 @@ struct Index {
                             setTimeout(()=>{
                                 let webTitle=this.controller.getTitle()
                                 Utils.emitEvent(webTitle,138)
+                            },3000)
+                            break;
+                        }
+                        case "emitGeolocationAccessFalse":{
+                            this.geolocationAccess=false
+                            await Utils.sleep(2000)
+                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/geo.html"})
+                            setTimeout(()=>{
+                                this.controller.runJavaScript({script:"getGeoResult()",callback:(res)=>{
+				                    console.info("getGeoResult==>"+res)
+                                    Utils.emitEvent(res,96)
+                                }})
+                            },3000)
+                            break;
+                        }
+                        case "emitInitialScale":{
+                            this.initialScale=120
+                            await Utils.sleep(1000)
+                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/second.html"})
+                            this.enterPageEnd=true
+                            break;
+                        }
+                        case "emitOnscaleChange":{
+                            this.initialScale=110
+                            this.scaleChange=true
+                            await Utils.sleep(2000)
+                            this.controller.loadUrl({url:"https://gitee.com/"})
+                            break;
+                        }
+                        case "emitOnGeolocationShow":{
+                            this.geolocationAccess=true
+                            this.geoShow=true
+                            await Utils.sleep(2000)
+                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/geo.html"})
+                            break;
+                        }
+                        case "emitDomStorageAccessFalse":{
+                            this.domStorageAccess=false
+                            await Utils.sleep(2000)
+                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/domApi.html"})
+                            setTimeout(()=>{
+                                this.controller.runJavaScript({script:"getDomResult()",callback:(res)=>{
+				                    console.info("getDomResult==>"+res)
+                                    Utils.emitEvent(res,144)
+                                }})
+                            },3000)
+                            break;
+                        }
+                        case "emitDomStorageAccessTrue":{
+                            this.domStorageAccess=true
+                            await Utils.sleep(2000)
+                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/domApi.html"})
+                            setTimeout(()=>{
+                                this.controller.runJavaScript({script:"getDomResult()",callback:(res)=>{
+				                    console.info("getDomResult==>"+res)
+                                    Utils.emitEvent(res,146)
+                                }})
+                            },3000)
+                            break;
+                        }
+                        case "emitImageAccessFalse":{
+                            this.imageAccess=false
+                            await Utils.sleep(1000)
+                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/index.html"})
+                            setTimeout(()=>{
+                                this.controller.runJavaScript({script:"getImgResult()",callback:(res)=>{
+				                    console.info("getImgResult==>"+res)
+                                    Utils.emitEvent(res,148)
+                                }})
+                            },3000)
+                            break;
+                        }
+                        case "emitImageAccessTrue":{
+                            this.imageAccess=true
+                            await Utils.sleep(1000)
+                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/index.html"})
+                            setTimeout(()=>{
+                                this.controller.runJavaScript({script:"getImgResult()",callback:(res)=>{
+				                    console.info("getImgResult==>"+res)
+                                    Utils.emitEvent(res,150)
+                                }})
+                            },3000)
+                            break;
+                        }
+                        case "emitOnlineImageAccessFalse":{
+                            this.onlineImageAccess=false
+                            await Utils.sleep(1000)
+                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/onlineImageAccess.html"})
+                            setTimeout(()=>{
+                                this.controller.runJavaScript({script:"getImageLoadResult()",callback:(res)=>{
+				                    console.info("getImageLoadResult==>"+res)
+                                    Utils.emitEvent(res,156)
+                                }})
+                            },3000)
+                            break;
+                        }
+                        case "emitOnlineImageAccessTrue":{
+                            this.onlineImageAccess=true
+                            await Utils.sleep(1000)
+                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/onlineImageAccess.html"})
+                            setTimeout(()=>{
+                                this.controller.runJavaScript({script:"getImageLoadResult()",callback:(res)=>{
+				                    console.info("getImageLoadResult==>"+res)
+                                    Utils.emitEvent(res,158)
+                                }})
+                            },3000)
+                            break;
+                        }
+                        case "emitFileFromUrlAccessFalse":{
+                            this.fileFromUrlAccess=false
+                            await Utils.sleep(2000)
+                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/fileFromUrlAccess.html"})
+                            setTimeout(()=>{
+                                this.controller.runJavaScript({script:"getFileResult()",callback:(res)=>{
+				                    console.info("getFileResult==>"+res)
+                                    Utils.emitEvent(res,160)
+                                }})
+                            },3000)
+                            break;
+                        }
+                        case "emitFileFromUrlAccessTrue":{
+                            this.fileFromUrlAccess=true
+                            await Utils.sleep(2000)
+                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/fileFromUrlAccess.html"})
+                            setTimeout(()=>{
+                                this.controller.runJavaScript({script:"getFileResult()",callback:(res)=>{
+				                    console.info("getFileResult==>"+res)
+                                    Utils.emitEvent(res,162)
+                                }})
+                            },3000)
+                            break;
+                        }
+                        case "emitDatabaseAccessTrue":{
+                            this.databaseAccess=true
+                            await Utils.sleep(2000)
+                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/databaseAccess.html"})
+                            setTimeout(()=>{
+                                this.controller.runJavaScript({script:"getDataResult()",callback:(res)=>{
+				                    console.info("getDataResult==>"+res)
+                                    Utils.emitEvent(res,164)
+                                }})
+                            },3000)
+                            break;
+                        }
+                        case "emitOverviewModeAccessFalse":{
+                            this.overviewModeAccess=false
+                            await Utils.sleep(1000)
+                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/overview.html"})
+                            setTimeout(()=>{
+                                this.controller.runJavaScript({script:"getViewResult()",callback:(res)=>{
+				                    console.info("getViewResult==>"+res)
+                                    Utils.emitEventTwo(1150,res,168)
+                                }})
+                            },3000)
+                            break;
+                        }
+                        case "emitOverviewModeAccessTrue":{
+                            this.overviewModeAccess=true
+                            await Utils.sleep(1000)
+                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/overview.html"})
+                            setTimeout(()=>{
+                                this.controller.runJavaScript({script:"getViewResult()",callback:(res)=>{
+				                    console.info("getViewResult==>"+res)
+                                    Utils.emitEventTwo(2350,res,170)
+                                }})
+                            },3000)
+                            break;
+                        }
+                        case "emitOnPrompt":{
+                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/index.html"})
+                            setTimeout(()=>{
+                                this.controller.runJavaScript({script:"toPrompt()"})
+                            },3000)
+                            break;
+                        }
+                        case "emitCacheModeOnly":{
+                            this.cacheError=true
+                            this.cacheMode=CacheMode.Only
+                            await Utils.sleep(2000)
+                            this.controller.loadUrl({url:"https://www.openharmony.cn/mainPlay"})
+                            break;
+                        }
+                        case "emitCacheModeDefault":{
+                            this.cacheMode=CacheMode.Default
+                            await Utils.sleep(2000)
+                            this.controller.loadUrl({url:"https://www.openharmony.cn/mainPlay"})
+                            setTimeout(()=>{
+                                let webTitle=this.controller.getTitle()
+                                Utils.emitEvent(webTitle,184)
+                            },3000)
+                            break;
+                        }
+                        case "emitMixedModeNone":{
+                            this.mixedSwitch=true
+                            this.mixedMode=MixedMode.None
+                            await Utils.sleep(2000)
+                            this.controller.loadUrl({url:"https://www.openharmony.cn/mainPlay"})
+                            break;
+                        }
+                        case "emitMixedModeAll":{
+                            this.mixedAllSwitch=true
+                            this.mixedMode=MixedMode.All
+                            await Utils.sleep(2000)
+                            this.controller.loadUrl({url:"https://www.openharmony.cn/mainPlay"})
+                            break;
+                        }
+                        case "emitFileAccessTrue":{
+                            this.fileAccess=true
+                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/index.html"})
+                            this.controller.runJavaScript({script:"openRawFile()"})
+                            setTimeout(()=>{
+                                let webTitle=this.controller.getTitle()
+                                Utils.emitEvent(webTitle,190)
                             },3000)
                             break;
                         }

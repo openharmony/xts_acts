@@ -115,4 +115,21 @@ export default class Utils {
             console.info(`[${testCaseName}] err:`+JSON.stringify(err));
         }
     }
+    static commitKey(emitKey){
+        try {
+            let backData = {
+                data: {
+                    "ACTION": emitKey
+                }
+            }
+            let backEvent = {
+                eventId:10,
+                priority:events_emitter.EventPriority.LOW
+            }
+            console.info("start send emitKey");
+            events_emitter.emit(backEvent, backData);
+      } catch (err) {
+            console.info("emit emitKey  err: " + JSON.stringify(err));
+      }
+    }
 }
