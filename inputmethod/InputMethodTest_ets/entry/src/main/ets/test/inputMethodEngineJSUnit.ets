@@ -25,6 +25,7 @@ export default function inputMethodEngineJSUnit() {
     let inputMethodEngineObject = inputMethodEngine.getInputMethodEngine();
     let textInputClient = null;
     let kbController = null;
+    let KeyboardDelegate = null;
 
     console.info("************* inputMethodEngine Test start*************");
     beforeEach(async function (done) {
@@ -47,6 +48,50 @@ export default function inputMethodEngineJSUnit() {
     afterEach(async function () {
       console.info("inputMethodEngine afterEach start:" + inputMethodEngineObject);
       await Utils.sleep(1000);
+    });
+
+    it('inputMethodEngine_testOff_000', 0 , async function (done) {
+      inputMethodEngineObject.off('inputStart', (kbController, textInputClient) => {
+        console.info("inputMethodEngine beforeEach inputStart:" + JSON.stringify(kbController));
+        console.info("inputMethodEngine beforeEach inputStart:" + JSON.stringify(textInputClient));
+      });
+      inputMethodEngineObject.off('keyboardShow', (err) => {
+        console.info("inputMethodEngine beforeEach keyboardShow:" + err);
+      });
+      inputMethodEngineObject.off('keyboardHide', (err) => {
+        console.info("inputMethodEngine beforeEach keyboardHide:" + err);
+      });
+      KeyboardDelegate = inputMethodEngine.createKeyboardDelegate();
+      KeyboardDelegate.off('keyDown', (keyEvent) => {
+        console.info("inputMethodEngine beforeEach keyDown:" + keyEvent.keyCode);
+        expect(keyEvent.keyCode).assertEqual('1');
+
+        console.info("inputMethodEngine beforeEach keyDown:" + keyEvent.keyAction);
+        expect(keyEvent.keyAction).assertEqual('1');
+
+      });
+      KeyboardDelegate.off('keyUp', (keyEvent) => {
+        console.info("inputMethodEngine beforeEach keyUp:" + keyEvent.keyCode);
+        expect(keyEvent.keyCode).assertEqual('1');
+        console.info("inputMethodEngine beforeEach keyDown:" + keyEvent.keyAction);
+        expect(keyEvent.keyAction).assertEqual('0');
+
+      });
+      KeyboardDelegate.off('cursorContextChange', (x, y, height) => {
+        console.info("inputMethodEngine beforeEach cursorContextChange x:" + x);
+        console.info("inputMethodEngine beforeEach cursorContextChange y:" + y);
+        console.info("inputMethodEngine beforeEach cursorContextChange height:" + height);
+      });
+      KeyboardDelegate.off('selectionChange', (oldBegin, oldEnd, newBegin, newEnd) => {
+        console.info("inputMethodEngine beforeEach selectionChange oldBegin:" + oldBegin);
+        console.info("inputMethodEngine beforeEach selectionChange oldEnd:" + oldEnd);
+        console.info("inputMethodEngine beforeEach selectionChange newBegin:" + newBegin);
+        console.info("inputMethodEngine beforeEach selectionChange newEnd:" + newEnd);
+      });
+      KeyboardDelegate.off('textChange', (text) => {
+        console.info("inputMethodEngine beforeEach textChange:" + text);
+      });
+      done();
     });
 
     it('inputMethodEngine_test_000', 0, async function (done) {
