@@ -38,7 +38,8 @@
             }
         ],
         "deviceType": [
-            "tablet"
+            "tablet",
+            "default"
         ],
         "mainAbility": "com.example.l1jsdemo.MainAbility",
         "distro": {
