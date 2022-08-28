@@ -505,7 +505,7 @@ export default function ApiCoverTest() {
         }
         function SubscribeInfoCallback(err, data) {
           console.info("SUB_AA_FMS_AbilityStage_0200===SubscribeInfoCallback===" + JSON.stringify(data))
-            expect(data.parameters["config"]).assertEqual(0)
+            expect(data.parameters["config"]).assertLess(2)
             expect(data.parameters["poniterDevices"]).assertFalse()
             expect(data.parameters["AbilityInfo"]).assertEqual("com.example.apicoverhaptest")
             commonEvent.unsubscribe(subscriber, UnSubscribeInfoCallback)
@@ -530,51 +530,5 @@ export default function ApiCoverTest() {
         }
       })
     })
-
-    /*
-     * @tc.number  SUB_AA_FMS_AcquireForm_0100
-     * @tc.name    Test startAbility in FormExtensionContext.
-     * @tc.desc    Function test
-     * @tc.level   3
-     */
-     it('SUB_AA_FMS_AcquireForm_0100', 0, async function (done) {
-      let subscriber = null
-      let formExtensionContext:appContext.FormExtensionContext
-      let pacMap:ability.PacMap
-        let subscribeInfo = {
-          events: ["Form_StartAbility"]
-        }
-        function UnSubscribeInfoCallback(err, data) {
-          console.info("SUB_AA_FMS_AcquireFormState_0700 ===UnSubscribeInfoCallback===")
-        }
-        function SubscribeInfoCallback(err, data) {
-          console.info("SUB_AA_FMS_AcquireFormState_0700 ===SubscribeInfoCallback===" + JSON.stringify(data))
-            expect(data.parameters["Life"]).assertEqual("onForeground")
-            commonEvent.unsubscribe(subscriber, UnSubscribeInfoCallback)
-            done()
-        }
-        commonEvent.createSubscriber(subscribeInfo, (err, data) => {
-          console.info("SUB_AA_FMS_AcquireFormState_0700 ===CreateSubscriberCallback===")
-          subscriber = data
-          commonEvent.subscribe(subscriber, SubscribeInfoCallback)
-        })
-      let formWant ={
-        deviceId:"",
-        bundleName:"com.example.apicoverhaptest",
-        abilityName:"CreateFormAbility",
-        parameters:{
-          "createForm": true
-        }
-      }
-      globalThis.abilityContext.startAbility(formWant, (err, data)=>{
-        if(err.code == 0){
-           console.info("SUB_AA_FMS_AcquireFormState_0700 ===acquireFormState=== " + JSON.stringify(data))
-        }else{
-          expect().assertFail()
-          done()
-        }
-      })
-    })
-
   })
 }
