@@ -34,7 +34,6 @@ export default {
           },
         }
       );
-      featureAbility.terminateSelf();
       console.info('fAStartAbilityForResultPromise terminateSelfWithResult END');
     }, 1000);
   },

@@ -220,7 +220,7 @@ export default function StartAbilityForResult2() {
                 console.info(TAG + ' StartAbilityForResultPromise failed. Cause: ' + JSON.stringify(error));
             })
             await Utils.sleep(35000);
-            expect(wrong.code).assertEqual(13);
+            expect(wrong.code).assertEqual(3);
             done();
         });
     })
