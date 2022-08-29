@@ -21,7 +21,7 @@ import formHost from '@ohos.application.formHost';
 import errorManager from '@ohos.application.errorManager';
 import abilityConstant from '@ohos.application.AbilityConstant'
 import appManager from '@ohos.application.appManager'
-import appContext from '@ohos.application.context'
+import applicationContext from '@ohos.application.context'
 import commonEvent from '@ohos.commonEvent';
 import ability from '@ohos.ability.ability'
 FormDimension
@@ -32,8 +32,16 @@ var array = new Array();
 function sleep(time) {
   return new Promise((resolve)=>setTimeout(resolve,time));
 }
+
 export default function ApiCoverTest() {
   describe('ApiCoverTestTest', function () {
+
+    afterEach(async (done) => {
+      isUpdated = false;
+      setTimeout(function () {
+        done();
+      }, 2000);
+    })
 
     /*
      * @tc.number  SUB_AA_ABILITY_Extension_API_001
@@ -524,6 +532,51 @@ export default function ApiCoverTest() {
       globalThis.abilityContext.startAbility(formWant, (err, data)=>{
         if(err.code == 0){
            console.info("SUB_AA_FMS_AbilityStage_0200===abilityContext startAbility success===")
+        }else{
+          expect().assertFail()
+          done()
+        }
+      })
+    })
+
+    /*
+     * @tc.number  SUB_AA_FMS_AcquireForm_0100
+     * @tc.name    Test startAbility in FormExtensionContext.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+     it('SUB_AA_FMS_AcquireForm_0100', 0, async function (done) {
+      let subscriber = null
+      let formExtensionContext:applicationContext.FormExtensionContext
+      let pacMap:ability.PacMap
+        let subscribeInfo = {
+          events: ["Form_StartAbility"]
+        }
+        function UnSubscribeInfoCallback(err, data) {
+          console.info("SUB_AA_FMS_AcquireFormState_0700 ===UnSubscribeInfoCallback===")
+        }
+        function SubscribeInfoCallback(err, data) {
+          console.info("SUB_AA_FMS_AcquireFormState_0700 ===SubscribeInfoCallback===" + JSON.stringify(data))
+            expect(data.parameters["Life"]).assertEqual("onForeground")
+            commonEvent.unsubscribe(subscriber, UnSubscribeInfoCallback)
+            done()
+        }
+        commonEvent.createSubscriber(subscribeInfo, (err, data) => {
+          console.info("SUB_AA_FMS_AcquireFormState_0700 ===CreateSubscriberCallback===")
+          subscriber = data
+          commonEvent.subscribe(subscriber, SubscribeInfoCallback)
+        })
+      let formWant ={
+        deviceId:"",
+        bundleName:"com.example.apicoverhaptest",
+        abilityName:"CreateFormAbility",
+        parameters:{
+          "createForm": true
+        }
+      }
+      globalThis.abilityContext.startAbility(formWant, (err, data)=>{
+        if(err.code == 0){
+           console.info("SUB_AA_FMS_AcquireFormState_0700 ===acquireFormState=== " + JSON.stringify(data))
         }else{
           expect().assertFail()
           done()
