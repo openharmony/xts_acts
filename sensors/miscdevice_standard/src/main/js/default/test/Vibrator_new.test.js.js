@@ -395,16 +395,16 @@ describe("VibratorJsTest_miscdevice2", function () {
      * @tc.type: FUNC
      * @tc.require: Issue Number
      */
-    it("VibratorJsTest015", 0, async function (done) {
-        vibrator.vibrate("").then(() => {
-            console.log("VibratorJsTest015  vibrate error");
-            expect(false).assertTrue();
+	 it("VibratorJsTest015", 0, async function (done) {
+        vibrator.stop("preset").then(() => {
+            console.log("VibratorJsTest015 off success");
+            expect(true).assertTrue();
             setTimeout(() => {
                 done();
             }, 500);
         }, (error) => {
-            expect(true).assertTrue();
-            console.log("VibratorJsTest015  vibrate success");
+            expect(false).assertTrue();
+            console.log("VibratorJsTest015 off error");
             setTimeout(() => {
                 done();
             }, 500);
@@ -419,14 +419,14 @@ describe("VibratorJsTest_miscdevice2", function () {
      */
     it("VibratorJsTest016", 0, async function (done) {
         vibrator.stop("").then(() => {
-            console.log("VibratorJsTest016  stop error");
+            console.log("VibratorJsTest016 stop error");
             expect(false).assertTrue();
             setTimeout(() => {
                 done();
             }, 500);
         }, (error) => {
             expect(true).assertTrue();
-            console.log("VibratorJsTest016  stop success");
+            console.log("VibratorJsTest016 stop success");
             setTimeout(() => {
                 done();
             }, 500);
@@ -439,21 +439,22 @@ describe("VibratorJsTest_miscdevice2", function () {
      * @tc.type: FUNC
      * @tc.require: Issue Number
      */
-    it("VibratorJsTest017", 0, async function (done) {
-        vibrator.stop("preset").then(() => {
-            console.log("VibratorJsTest017  off success");
-            expect(true).assertTrue();
+        it("VibratorJsTest017", 0, async function (done) {
+        vibrator.vibrate("").then(() => {
+            console.log("VibratorJsTest017 vibrate error");
+            expect(false).assertTrue();
             setTimeout(() => {
                 done();
             }, 500);
         }, (error) => {
-            expect(false).assertTrue();
-            console.log("VibratorJsTest017  off error");
+            expect(true).assertTrue();
+            console.log("VibratorJsTest017 vibrate success");
             setTimeout(() => {
                 done();
             }, 500);
         });
     })
+	
 
     /*
      * @tc.name:VibratorJsTest018
