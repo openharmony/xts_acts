@@ -1539,14 +1539,14 @@ describe('audioRenderer', function () {
     }
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_0100
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_0100
      * @tc.name      : AudioRenderer-Set1-Media
      * @tc.desc      : AudioRenderer with parameter set 1
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_0100', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_0100', 2, async function (done) {
 
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -1577,14 +1577,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_0200
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_0200
      * @tc.name      : AudioRenderer - getAudioTime -Before Play
      * @tc.desc      : AudioRenderer - getAudioTime -Before Play
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_0200', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_0200', 2, async function (done) {
 
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_24000,
@@ -1616,14 +1616,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_0300
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_0300
      * @tc.name      : AudioRenderer - getAudioTime - During Play
      * @tc.desc      : AudioRenderer - getAudioTime - During Play
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_0300', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_0300', 2, async function (done) {
 
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_24000,
@@ -1654,14 +1654,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_0400
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_0400
      * @tc.name      : AudioRenderer - getAudioTime - after Play
      * @tc.desc      : AudioRenderer - getAudioTime - after Play
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_0400', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_0400', 2, async function (done) {
 
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_24000,
@@ -1692,14 +1692,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_0500
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_0500
      * @tc.name      : AudioRenderer - markReached - On
      * @tc.desc      : AudioRenderer - markReached
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_0500', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_0500', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -1731,14 +1731,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_0600
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_0600
      * @tc.name      : AudioRenderer - markReached - On - off -on
      * @tc.desc      : AudioRenderer - markReached
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_0600', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_0600', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -1769,14 +1769,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_0700
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_0700
      * @tc.name      : AudioRenderer - markReached - on - on
      * @tc.desc      : AudioRenderer - markReached
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_0700', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_0700', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -1808,14 +1808,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_0800
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_0800
      * @tc.name      : AudioRenderer - periodReach - On
      * @tc.desc      : AudioRenderer - periodReach
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_0800', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_0800', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -1845,14 +1845,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_0900
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_0900
      * @tc.name      : AudioRenderer - periodReach - On - off -on
      * @tc.desc      : AudioRenderer - periodReach
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_0900', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_0900', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -1883,14 +1883,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_1000
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_1000
      * @tc.name      : AudioRenderer - periodReach - on - on
      * @tc.desc      : AudioRenderer - periodReach
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_1000', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_1000', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -1921,14 +1921,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_1100
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_1100
      * @tc.name      : AudioRenderer-Set2-Media
      * @tc.desc      : AudioRenderer with parameter set 2
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_1100', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_1100', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_8000,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -1959,14 +1959,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_1200
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_1200
      * @tc.name      : AudioRenderer-Set3-Media
      * @tc.desc      : AudioRenderer with parameter set 3
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_1200', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_1200', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_32000,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -1997,14 +1997,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_1300
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_1300
      * @tc.name      : AudioRenderer-Set4-Media
      * @tc.desc      : AudioRenderer with parameter set 4
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_1300', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_1300', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_64000,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -2034,14 +2034,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_1400
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_1400
      * @tc.name      : AudioRenderer-Set5-Media
      * @tc.desc      : AudioRenderer with parameter set 5
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_1400', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_1400', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_96000,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -2071,14 +2071,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_1500
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_1500
      * @tc.name      : AudioRenderer-Set6-Media
      * @tc.desc      : AudioRenderer with parameter set 6
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_1500', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_1500', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_11025,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -2108,14 +2108,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_1600
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_1600
      * @tc.name      : AudioRenderer-Set7-Media
      * @tc.desc      : AudioRenderer with parameter set 7
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_1600', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_1600', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_12000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -2145,14 +2145,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_1700
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_1700
      * @tc.name      : AudioRenderer-Set11-Media
      * @tc.desc      : AudioRenderer with parameter set 11
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_1700', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_1700', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -2182,14 +2182,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_1800
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_1800
      * @tc.name      : AudioRenderer-isStreamActive - UNKNOWN - UNKNOWN
      * @tc.desc      : AudioRenderer-isStreamActive - UNKNOWN - UNKNOWN
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_1800', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_1800', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -2230,14 +2230,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_1900
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_1900
      * @tc.name      : AudioRenderer-isStreamActive - SPEECH - UNKNOWN
      * @tc.desc      : AudioRenderer-isStreamActive - SPEECH - UNKNOWN
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_1900', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_1900', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -2277,14 +2277,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_2000
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_2000
      * @tc.name      : AudioRenderer-isStreamActive - MUSIC - UNKNOWN
      * @tc.desc      : AudioRenderer-isStreamActive - MUSIC - UNKNOWN
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_2000', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_2000', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -2324,14 +2324,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_2100
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_2100
      * @tc.name      : AudioRenderer-isStreamActive - MOVIE - UNKNOWN
      * @tc.desc      : AudioRenderer-isStreamActive - MOVIE - UNKNOWN
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_2100', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_2100', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -2372,14 +2372,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_2200
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_2200
      * @tc.name      : AudioRenderer-isStreamActive - SONIFICATION - UNKNOWN
      * @tc.desc      : AudioRenderer-isStreamActive - SONIFICATION - UNKNOWN
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_2200', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_2200', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -2419,14 +2419,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_2300
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_2300
      * @tc.name      : AudioRenderer-isStreamActive - RINGTONE - UNKNOWN
      * @tc.desc      : AudioRenderer-isStreamActive - RINGTONE - UNKNOWN
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_2300', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_2300', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -2466,14 +2466,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_2400
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_2400
      * @tc.name      : AudioRenderer-isStreamActive - UNKNOWN - MEDIA
      * @tc.desc      : AudioRenderer-isStreamActive - UNKNOWN - MEDIA
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_2400', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_2400', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -2513,14 +2513,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_2500
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_2500
      * @tc.name      : AudioRenderer-isStreamActive - SPEECH - MEDIA
      * @tc.desc      : AudioRenderer-isStreamActive - SPEECH - MEDIA
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_2500', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_2500', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -2560,14 +2560,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_2600
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_2600
      * @tc.name      : AudioRenderer-isStreamActive - MUSIC - MEDIA
      * @tc.desc      : AudioRenderer-isStreamActive - MUSIC - MEDIA
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_2600', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_2600', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -2608,14 +2608,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_2700
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_2700
      * @tc.name      : AudioRenderer-isStreamActive - MOVIE - MEDIA
      * @tc.desc      : AudioRenderer-isStreamActive - MOVIE - MEDIA
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_2700', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_2700', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -2655,14 +2655,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_2800
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_2800
      * @tc.name      : AudioRenderer-isStreamActive - SONIFICATION - MEDIA
      * @tc.desc      : AudioRenderer-isStreamActive - SONOTIFICATION - MEDIA
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_2800', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_2800', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -2702,14 +2702,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_2900
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_2900
      * @tc.name      : AudioRenderer-isStreamActive - RINGTONE - MEDIA
      * @tc.desc      : AudioRenderer-isStreamActive - RINGTONE - MEDIA
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_2900', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_2900', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -2749,14 +2749,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_3000
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_3000
      * @tc.name      : AudioRenderer-isStreamActive - UNKNOWN - VOICE_COMMUNICATION
      * @tc.desc      : AudioRenderer-isStreamActive - UNKNOWN - VOICE_COMMUNICATION
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_3000', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_3000', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -2796,14 +2796,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_3100
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_3100
      * @tc.name      : AudioRenderer-isStreamActive - SPEECH - VOICE_COMMUNICATION
      * @tc.desc      : AudioRenderer-isStreamActive - SPEECH - VOICE_COMMUNICATION
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_3100', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_3100', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -2843,14 +2843,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_3200
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_3200
      * @tc.name      : AudioRenderer-isStreamActive - MUSIC - VOICE_COMMUNICATION
      * @tc.desc      : AudioRenderer-isStreamActive - MUSIC - VOICE_COMMUNICATION
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_3200', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_3200', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -2890,14 +2890,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_3300
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_3300
      * @tc.name      : AudioRenderer-isStreamActive - MOVIE - VOICE_COMMUNICATION
      * @tc.desc      : AudioRenderer-isStreamActive - MOVIE - VOICE_COMMUNICATION
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_3300', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_3300', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -2937,14 +2937,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_3400
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_3400
      * @tc.name      : AudioRenderer-isStreamActive - SONOTIFICATION - VOICE_COMMUNICATION
      * @tc.desc      : AudioRenderer-isStreamActive - SONOTIFICATION - VOICE_COMMUNICATION
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_3400', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_3400', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -2984,14 +2984,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_3500
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_3500
      * @tc.name      : AudioRenderer-isStreamActive - RINGTONE - VOICE_COMMUNICATION
      * @tc.desc      : AudioRenderer-isStreamActive - RINGTONE - VOICE_COMMUNICATION
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_3500', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_3500', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -3031,14 +3031,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_3600
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_3600
      * @tc.name      : AudioRenderer-isStreamActive - UNKNOWN - NOTIFICATION_RINGTONE
      * @tc.desc      : AudioRenderer-isStreamActive - UNKNOWN - NOTIFICATION_RINGTONE
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_3600', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_3600', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -3079,14 +3079,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_3700
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_3700
      * @tc.name      : AudioRenderer-isStreamActive - SPEECH - NOTIFICATION_RINGTONE
      * @tc.desc      : AudioRenderer-isStreamActive - SPEECH - NOTIFICATION_RINGTONE
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_3700', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_3700', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -3127,14 +3127,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_3800
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_3800
      * @tc.name      : AudioRenderer-isStreamActive - MUSIC - NOTIFICATION_RINGTONE
      * @tc.desc      : AudioRenderer-isStreamActive - MUSIC - NOTIFICATION_RINGTONE
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_3800', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_3800', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -3175,14 +3175,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_3900
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_3900
      * @tc.name      : AudioRenderer-isStreamActive - MOVIE - NOTIFICATION_RINGTONE
      * @tc.desc      : AudioRenderer-isStreamActive - MOVIE - NOTIFICATION_RINGTONE
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_3900', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_3900', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -3223,14 +3223,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_4000
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_4000
      * @tc.name      : AudioRenderer-isStreamActive - SONOTIFICATION - NOTIFICATION_RINGTONE
      * @tc.desc      : AudioRenderer-isStreamActive - SONOTIFICATION - NOTIFICATION_RINGTONE
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_4000', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_4000', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -3270,14 +3270,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_4100
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_4100
      * @tc.name      : AudioRenderer-isStreamActive - RINGTONE - NOTIFICATION_RINGTONE
      * @tc.desc      : AudioRenderer-isStreamActive - RINGTONE - NOTIFICATION_RINGTONE
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_4100', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_4100', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -3318,14 +3318,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_4200
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_4200
      * @tc.name      : AudioRenderer-SET & GET AudioRendererInfo - Set1
      * @tc.desc      : AudioRenderer-SET & GET AudioRendererInfo - Set1
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_4200', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_4200', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -3406,14 +3406,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_4300
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_4300
      * @tc.name      : AudioRenderer-SET & GET AudioRendererInfo - Set2
      * @tc.desc      : AudioRenderer-SET & GET AudioRendererInfo - Set2
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_4300', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_4300', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -3496,14 +3496,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_4400
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_4400
      * @tc.name      : AudioRenderer-SET & GET AudioRendererInfo - Set3
      * @tc.desc      : AudioRenderer-SET & GET AudioRendererInfo - Set3
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_4400', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_4400', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -3586,14 +3586,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_4500
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_4500
      * @tc.name      : AudioRenderer-SET & GET AudioRendererInfo - Set4
      * @tc.desc      : AudioRenderer-SET & GET AudioRendererInfo - Set4
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_4500', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_4500', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -3676,14 +3676,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_4600
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_4600
      * @tc.name      : AudioRenderer-SET & GET AudioRendererInfo - Set5
      * @tc.desc      : AudioRenderer-SET & GET AudioRendererInfo - Set5
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_4600', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_4600', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -3766,14 +3766,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_4700
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_4700
      * @tc.name      : AudioRenderer-SET & GET AudioRendererInfo - Set6
      * @tc.desc      : AudioRenderer-SET & GET AudioRendererInfo - Set6
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_4700', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_4700', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -3856,14 +3856,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_4800
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_4800
      * @tc.name      : AudioRenderer-SET & GET AudioRendererInfo - Set7
      * @tc.desc      : AudioRenderer-SET & GET AudioRendererInfo - Set7
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_4800', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_4800', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -3946,14 +3946,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_4900
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_4900
      * @tc.name      : AudioRenderer-SET & GET AudioRendererInfo - Set8
      * @tc.desc      : AudioRenderer-SET & GET AudioRendererInfo - Set8
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_4900', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_4900', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -4036,14 +4036,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_5000
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_5000
      * @tc.name      : AudioRenderer-SET & GET AudioRendererInfo - Set9
      * @tc.desc      : AudioRenderer-SET & GET AudioRendererInfo - Set9
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_5000', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_5000', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -4126,14 +4126,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_5100
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_5100
      * @tc.name      : AudioRenderer-SET & GET AudioRendererInfo - Set10
      * @tc.desc      : AudioRenderer-SET & GET AudioRendererInfo - Set10
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_5100', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_5100', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -4216,14 +4216,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_5200
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_5200
      * @tc.name      : AudioRenderer-SET & GET AudioRendererInfo - Set11
      * @tc.desc      : AudioRenderer-SET & GET AudioRendererInfo - Set11
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_5200', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_5200', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -4306,14 +4306,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_5300
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_5300
      * @tc.name      : AudioRenderer-SET & GET AudioRendererInfo - Set12
      * @tc.desc      : AudioRenderer-SET & GET AudioRendererInfo - Set12
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_5300', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_5300', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -4396,14 +4396,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_5400
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_5400
      * @tc.name      : AudioRenderer-SET & GET AudioRendererInfo - Set13
      * @tc.desc      : AudioRenderer-SET & GET AudioRendererInfo - Set13
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_5400', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_5400', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -4486,14 +4486,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_5500
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_5500
      * @tc.name      : AudioRenderer-SET & GET AudioRendererInfo - Set14
      * @tc.desc      : AudioRenderer-SET & GET AudioRendererInfo - Set14
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_5500', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_5500', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -4576,14 +4576,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_5600
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_5600
      * @tc.name      : AudioRenderer-SET & GET AudioRendererInfo - Set15
      * @tc.desc      : AudioRenderer-SET & GET AudioRendererInfo - Set15
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_5600', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_5600', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -4666,14 +4666,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_5700
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_5700
      * @tc.name      : AudioRenderer-SET & GET AudioRendererInfo - Set16
      * @tc.desc      : AudioRenderer-SET & GET AudioRendererInfo - Set16
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_5700', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_5700', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -4756,14 +4756,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_5800
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_5800
      * @tc.name      : AudioRenderer-SET & GET AudioRendererInfo - Set17
      * @tc.desc      : AudioRenderer-SET & GET AudioRendererInfo - Set17
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_5800', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_5800', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -4846,14 +4846,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_5900
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_5900
      * @tc.name      : AudioRenderer-SET & GET AudioRendererInfo - Set18
      * @tc.desc      : AudioRenderer-SET & GET AudioRendererInfo - Set18
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_5900', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_5900', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -4936,14 +4936,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_6000
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_6000
      * @tc.name      : AudioRenderer-SET & GET AudioRendererInfo - Set19
      * @tc.desc      : AudioRenderer-SET & GET AudioRendererInfo - Set19
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_6000', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_6000', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -5026,14 +5026,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_6100
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_6100
      * @tc.name      : AudioRenderer-SET & GET AudioRendererInfo - Set20
      * @tc.desc      : AudioRenderer-SET & GET AudioRendererInfo - Set20
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_6100', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_6100', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -5116,14 +5116,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_6200
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_6200
      * @tc.name      : AudioRenderer-SET & GET AudioRendererInfo - Set21
      * @tc.desc      : AudioRenderer-SET & GET AudioRendererInfo - Set21
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_6200', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_6200', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -5206,14 +5206,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_6300
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_6300
      * @tc.name      : AudioRenderer-SET & GET AudioRendererInfo - Set22
      * @tc.desc      : AudioRenderer-SET & GET AudioRendererInfo - Set22
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_6300', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_6300', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -5296,14 +5296,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_6400
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_6400
      * @tc.name      : AudioRenderer-SET & GET AudioRendererInfo - Set23
      * @tc.desc      : AudioRenderer-SET & GET AudioRendererInfo - Set23
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_6400', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_6400', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -5386,14 +5386,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_6500
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_6500
      * @tc.name      : AudioRenderer-SET & GET AudioRendererInfo - Set24
      * @tc.desc      : AudioRenderer-SET & GET AudioRendererInfo - Set24
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_6500', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_6500', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -5476,14 +5476,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_6600
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_6600
      * @tc.name      : AudioRenderer - STATE_PREPARED
      * @tc.desc      : AudioRenderer - STATE_PREPARED
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_6600', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_6600', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -5548,14 +5548,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_6700
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_6700
      * @tc.name      : AudioRenderer - STATE_RUNNING
      * @tc.desc      : AudioRenderer - STATE_RUNNING
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_6700', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_6700', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -5635,14 +5635,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_6800
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_6800
      * @tc.name      : AudioRenderer - STATE_STOPPED
      * @tc.desc      : AudioRenderer - STATE_STOPPED
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_6800', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_6800', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -5724,14 +5724,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_6900
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_6900
      * @tc.name      : AudioRenderer - STATE_RELEASED
      * @tc.desc      : AudioRenderer - STATE_RELEASED
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_6900', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_6900', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -5814,14 +5814,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_7000
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_7000
      * @tc.name      : AudioRenderer - STATE_PAUSED
      * @tc.desc      : AudioRenderer - STATE_PAUSED
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_7000', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_7000', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -5912,14 +5912,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_7100
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_7100
      * @tc.name      : AudioRenderer - SetRenderRate - RENDER_RATE_DOUBLE
      * @tc.desc      : AudioRenderer - SetRenderRate - RENDER_RATE_DOUBLE
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_7100', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_7100', 2, async function (done) {
 
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
@@ -6091,14 +6091,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_7200
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_7200
      * @tc.name      : AudioRenderer - SetRenderRate - RENDER_RATE_HALF
      * @tc.desc      : AudioRenderer - SetRenderRate - RENDER_RATE_HALF
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_7200', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_7200', 2, async function (done) {
 
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_24000,
@@ -6269,14 +6269,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_7300
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_7300
      * @tc.name      : AudioRenderer - SetRenderRate - RENDER_RATE_NORMAL
      * @tc.desc      : AudioRenderer - SetRenderRate - RENDER_RATE_NORMAL
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_7300', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_7300', 2, async function (done) {
 
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -6425,14 +6425,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_7400
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_7400
      * @tc.name      : AudioRenderer - SetRenderRate - DEFAULT - RENDER_RATE_NORMAL
      * @tc.desc      : AudioRenderer - SetRenderRate - DEFAULT - RENDER_RATE_NORMAL
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_7400', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_7400', 2, async function (done) {
 
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_96000,
@@ -6596,14 +6596,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_7500
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_7500
      * @tc.name      : AudioRenderer - SetRenderRate - RENDER_RATE_DOUBLE - Callback
      * @tc.desc      : AudioRenderer - SetRenderRate - RENDER_RATE_DOUBLE - Callback
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_7500', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_7500', 2, async function (done) {
 
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_32000,
@@ -6635,14 +6635,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_7600
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_7600
      * @tc.name      : AudioRenderer - getAudioTime - Error
      * @tc.desc      : AudioRenderer - getAudioTime - Error
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_7600', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_7600', 2, async function (done) {
 
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
@@ -6728,14 +6728,14 @@ describe('audioRenderer', function () {
 
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_7700
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_7700
      * @tc.name      : AudioRenderer - STATE_PREPARED -Callback
      * @tc.desc      : AudioRenderer - STATE_PREPARED
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_7700', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_7700', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -6807,14 +6807,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_7800
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_7800
      * @tc.name      : AudioRenderer - STATE_RUNNING - Callback
      * @tc.desc      : AudioRenderer - STATE_RUNNING
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_7800', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_7800', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -6902,14 +6902,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_7900
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_7900
      * @tc.name      : AudioRenderer - STATE_STOPPED - Callback
      * @tc.desc      : AudioRenderer - STATE_STOPPED
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_7900', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_7900', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -6999,14 +6999,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_8000
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_8000
      * @tc.name      : AudioRenderer - STATE_RELEASED - Callback
      * @tc.desc      : AudioRenderer - STATE_RELEASED
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_8000', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_8000', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -7096,14 +7096,14 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_8100
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_8100
      * @tc.name      : AudioRenderer - STATE_PAUSED - Callback
      * @tc.desc      : AudioRenderer - STATE_PAUSED
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_8100', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_8100', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -7198,70 +7198,70 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_8200
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_8200
      * @tc.name      : AudioState - STATE_INVALID
      * @tc.desc      : AudioState - STATE_INVALID
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_8200', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_8200', 2, async function (done) {
         expect(audio.AudioState.STATE_INVALID).assertEqual(-1);
         await sleep(50);
         done();
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_8300
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_8300
      * @tc.name      : AudioState - STATE_NEW
      * @tc.desc      : AudioState - STATE_NEW
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_8300', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_8300', 2, async function (done) {
         expect(audio.AudioState.STATE_NEW).assertEqual(0);
         await sleep(50);
         done();
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_8400
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_8400
      * @tc.name      : AudioSampleFormat - STATE_FORMAT_INVALID
      * @tc.desc      : AudioSampleFormat - STATE_FORMAT_INVALID
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_8400', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_8400', 2, async function (done) {
         expect(audio.AudioSampleFormat.SAMPLE_FORMAT_INVALID).assertEqual(-1);
         await sleep(50);
         done();
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_8500
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_8500
      * @tc.name      : SourceType - SOURCE_TYPE_INVALID
      * @tc.desc      : SourceType - SOURCE_TYPE_INVALID
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_8500', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_8500', 2, async function (done) {
         expect(audio.SourceType.SOURCE_TYPE_INVALID).assertEqual(-1);
         await sleep(50);
         done();
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_8600
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_8600
      * @tc.name      : AudioRenderer - Pause - Callback
      * @tc.desc      : AudioRenderer - Pause - Callback
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_8600', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_8600', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -7359,28 +7359,28 @@ describe('audioRenderer', function () {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_8700
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_8700
      * @tc.name      : AudioEncodingType - ENCODING_TYPE_INVALID
      * @tc.desc      : AudioEncodingType - ENCODING_TYPE_INVALID
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_RENDERER_PLAY_AUDIO_8700', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_8700', 2, async function (done) {
         expect(audio.AudioEncodingType.ENCODING_TYPE_INVALID).assertEqual(-1);
         await sleep(50);
         done();
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_SETINTERRUPTMODE_0100
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_SETINTERRUPTMODE_0100
      * @tc.name      : SetInterruptMode mode 0 callback,is public share mode
      * @tc.desc      : SetInterruptMode mode 0 callback,is public share mode
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it("SUB_MULTIMEDIA_SETINTERRUPTMODE_0100", 2, async function (done) {
+    it("SUB_MULTIMEDIA_AUDIO_SETINTERRUPTMODE_0100", 2, async function (done) {
         var audioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -7412,12 +7412,12 @@ describe('audioRenderer', function () {
     })
 
     /*
-     * @tc.name:SUB_MULTIMEDIA_SETINTERRUPTMODE_0200
+     * @tc.name:SUB_MULTIMEDIA_AUDIO_SETINTERRUPTMODE_0200
      * @tc.desc:SetInterruptMode mode 1 callback,is independent mode
      * @tc.type: FUNC
      * @tc.require: Issue Number
      */
-    it("SUB_MULTIMEDIA_SETINTERRUPTMODE_0200", 2, async function (done) {
+    it("SUB_MULTIMEDIA_AUDIO_SETINTERRUPTMODE_0200", 2, async function (done) {
         var audioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -7449,12 +7449,12 @@ describe('audioRenderer', function () {
     })
 
     /*
-     * @tc.name:SUB_MULTIMEDIA_SETINTERRUPTMODE_0300
+     * @tc.name:SUB_MULTIMEDIA_AUDIO_SETINTERRUPTMODE_0300
      * @tc.desc:SetInterruptMode mode 0 promise,is public share mode
      * @tc.type: FUNC
      * @tc.require: Issue Number
      */
-    it("SUB_MULTIMEDIA_SETINTERRUPTMODE_0300", 2, async function (done) {
+    it("SUB_MULTIMEDIA_AUDIO_SETINTERRUPTMODE_0300", 2, async function (done) {
         var audioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -7484,12 +7484,12 @@ describe('audioRenderer', function () {
     })
 
     /*
-     * @tc.name:SUB_MULTIMEDIA_SETINTERRUPTMODE_0400
+     * @tc.name:SUB_MULTIMEDIA_AUDIO_SETINTERRUPTMODE_0400
      * @tc.desc:SetInterruptMode mode 1 promise,is independent mode
      * @tc.type: FUNC
      * @tc.require: Issue Number
      */
-    it("SUB_MULTIMEDIA_SETINTERRUPTMODE_0400", 2, async function (done) {
+    it("SUB_MULTIMEDIA_AUDIO_SETINTERRUPTMODE_0400", 2, async function (done) {
         var audioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -7519,12 +7519,12 @@ describe('audioRenderer', function () {
     })
 
     /*
-     * @tc.name:SUB_MULTIMEDIA_SETINTERRUPTMODE_0500
+     * @tc.name:SUB_MULTIMEDIA_AUDIO_SETINTERRUPTMODE_0500
      * @tc.desc:SetInterruptMode mode '1',will catch error with type error
      * @tc.type: FUNC
      * @tc.require: Issue Number
      */
-    it("SUB_MULTIMEDIA_SETINTERRUPTMODE_0500", 2, async function (done) {
+    it("SUB_MULTIMEDIA_AUDIO_SETINTERRUPTMODE_0500", 2, async function (done) {
         var audioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -7555,12 +7555,12 @@ describe('audioRenderer', function () {
     })
 
     /*
-   * @tc.name:SUB_MULTIMEDIA_SETINTERRUPTMODE_0600
+   * @tc.name:SUB_MULTIMEDIA_AUDIO_SETINTERRUPTMODE_0600
    * @tc.desc:SetInterruptMode mode 2,set it to default SHARE_MODE
    * @tc.type: FUNC
    * @tc.require: Issue Number
    */
-    it("SUB_MULTIMEDIA_SETINTERRUPTMODE_0600", 2, async function (done) {
+    it("SUB_MULTIMEDIA_AUDIO_SETINTERRUPTMODE_0600", 2, async function (done) {
         var audioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_1,

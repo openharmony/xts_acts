@@ -835,14 +835,14 @@ describe('audioCapturerChange', function () {
 
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_OFF_CAPTURER_CHANGE_0100
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_OFF_CAPTURER_CHANGE_0100
      *@tc.name      : AudioCapturerChange - OFF_STATE_PREPARED
      *@tc.desc      : AudioCapturerChange - OFF_STATE_PREPARED
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_OFF_CAPTURER_CHANGE_0100', 1, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_OFF_CAPTURER_CHANGE_0100', 1, async function (done) {
 
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -912,14 +912,14 @@ describe('audioCapturerChange', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_OFF_CAPTURER_CHANGE_0200
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_OFF_CAPTURER_CHANGE_0200
      *@tc.name      : AudioCapturerChange - OFF_STATE_RUNNING
      *@tc.desc      : AudioCapturerChange - OFF_STATE_RUNNING
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_OFF_CAPTURER_CHANGE_0200', 1, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_OFF_CAPTURER_CHANGE_0200', 1, async function (done) {
 
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -996,14 +996,14 @@ describe('audioCapturerChange', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_OFF_CAPTURER_CHANGE_0300
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_OFF_CAPTURER_CHANGE_0300
      *@tc.name      : AudioCapturerChange - OFF_STATE_STOPPED
      *@tc.desc      : AudioCapturerChange - OFF_STATE_STOPPED
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_OFF_CAPTURER_CHANGE_0300', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_OFF_CAPTURER_CHANGE_0300', 2, async function (done) {
 
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -1087,14 +1087,14 @@ describe('audioCapturerChange', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_OFF_CAPTURER_CHANGE_0400
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_OFF_CAPTURER_CHANGE_0400
      *@tc.name      : AudioCapturerChange - OFF_STATE_RELEASED
      *@tc.desc      : AudioCapturerChange - OFF_STATE_RELEASED
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_OFF_CAPTURER_CHANGE_0400', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_OFF_CAPTURER_CHANGE_0400', 2, async function (done) {
 
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -1177,14 +1177,14 @@ describe('audioCapturerChange', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_OFF_CAPTURER_CHANGE_0500
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_OFF_CAPTURER_CHANGE_0500
      *@tc.name      : AudioCapturerChange - DeviceDescriptor
      *@tc.desc      : AudioCapturerChange - DeviceDescriptor
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_OFF_CAPTURER_CHANGE_0500', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_OFF_CAPTURER_CHANGE_0500', 2, async function (done) {
 
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -1262,14 +1262,14 @@ describe('audioCapturerChange', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_GET_CAPTURER_CHANGE_PROMISE_0100
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_AUDIO_GET_CAPTURER_CHANGE_PROMISE_0100
      *@tc.name      : AudioCapturerChange - GET_STATE_PREPARED
      *@tc.desc      : AudioCapturerChange - GET_STATE_PREPARED
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_GET_CAPTURER_CHANGE_PROMISE_0100', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_AUDIO_GET_CAPTURER_CHANGE_PROMISE_0100', 2, async function (done) {
         var audioCap;
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -1366,14 +1366,14 @@ describe('audioCapturerChange', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_GET_CAPTURER_CHANGE_PROMISE_0200
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_GET_CAPTURER_CHANGE_PROMISE_0200
      *@tc.name      : AudioCapturerChange - GET_STATE_RUNNING
      *@tc.desc      : AudioCapturerChange - GET_STATE_RUNNING
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_GET_CAPTURER_CHANGE_PROMISE_0200', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_GET_CAPTURER_CHANGE_PROMISE_0200', 2, async function (done) {
 
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -1482,14 +1482,14 @@ describe('audioCapturerChange', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_GET_CAPTURER_CHANGE_PROMISE_0300
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_GET_CAPTURER_CHANGE_PROMISE_0300
      *@tc.name      : AudioCapturerChange - GET_STATE_STOPPED
      *@tc.desc      : AudioCapturerChange - GET_STATE_STOPPED
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_GET_CAPTURER_CHANGE_PROMISE_0300', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_GET_CAPTURER_CHANGE_PROMISE_0300', 2, async function (done) {
 
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -1605,14 +1605,14 @@ describe('audioCapturerChange', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_GET_CAPTURER_CHANGE_PROMISE_0400
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_GET_CAPTURER_CHANGE_PROMISE_0400
      *@tc.name      : AudioCapturerChange - DEVICE DESCRIPTOR
      *@tc.desc      : AudioCapturerChange - DEVICE DESCRIPTOR
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_GET_CAPTURER_CHANGE_PROMISE_0400', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_GET_CAPTURER_CHANGE_PROMISE_0400', 2, async function (done) {
         var audioCap;
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -1713,14 +1713,14 @@ describe('audioCapturerChange', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_GET_CAPTURER_CHANGE_CALLBACK_0100
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_GET_CAPTURER_CHANGE_CALLBACK_0100
      *@tc.name      : AudioCapturerChange - GET_STATE_PREPARED
      *@tc.desc      : AudioCapturerChange - GET_STATE_PREPARED
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_GET_CAPTURER_CHANGE_CALLBACK_0100', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_GET_CAPTURER_CHANGE_CALLBACK_0100', 2, async function (done) {
         var audioCap;
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -1823,14 +1823,14 @@ describe('audioCapturerChange', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_GET_CAPTURER_CHANGE_CALLBACK_0200
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_GET_CAPTURER_CHANGE_CALLBACK_0200
      *@tc.name      : AudioCapturerChange - GET_STATE_RUNNING
      *@tc.desc      : AudioCapturerChange - GET_STATE_RUNNING
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_GET_CAPTURER_CHANGE_CALLBACK_0200', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_GET_CAPTURER_CHANGE_CALLBACK_0200', 2, async function (done) {
 
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -1945,14 +1945,14 @@ describe('audioCapturerChange', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_GET_CAPTURER_CHANGE_CALLBACK_0300
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_GET_CAPTURER_CHANGE_CALLBACK_0300
      *@tc.name      : AudioCapturerChange - GET_STATE_STOPPED
      *@tc.desc      : AudioCapturerChange - GET_STATE_STOPPED
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_GET_CAPTURER_CHANGE_CALLBACK_0300', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_GET_CAPTURER_CHANGE_CALLBACK_0300', 2, async function (done) {
 
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -2074,14 +2074,14 @@ describe('audioCapturerChange', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_GET_CAPTURER_CHANGE_CALLBACK_0400
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_GET_CAPTURER_CHANGE_CALLBACK_0400
      *@tc.name      : AudioCapturerChange - DEVICE DESCRIPTOR
      *@tc.desc      : AudioCapturerChange - DEVICE DESCRIPTOR
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_GET_CAPTURER_CHANGE_CALLBACK_0400', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_GET_CAPTURER_CHANGE_CALLBACK_0400', 2, async function (done) {
         var audioCap;
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,

@@ -111,14 +111,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETAUDIOMANAGER_0100
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETAUDIOMANAGER_0100
      *@tc.name      : getAudioManger is Not returned Empty
      *@tc.desc      : Check getAudioManger is not empty
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETAUDIOMANAGER_0100', 0, function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETAUDIOMANAGER_0100', 0, function (done) {
         if (audioManager != null) {
             console.info('AudioFrameworkTest: getAudioManger : PASS');
             expect(true).assertTrue();
@@ -131,14 +131,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETAUDIOMANAGER_0200
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETAUDIOMANAGER_0200
      *@tc.name      : getAudioManger - Multiple instance
      *@tc.desc      : multiple times with different instance
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETAUDIOMANAGER_0200', 1, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETAUDIOMANAGER_0200', 1, async function (done) {
         const audioManager1 = audio.getAudioManager();
         const audioManager2 = audio.getAudioManager();
         const audioManager3 = audio.getAudioManager();
@@ -190,14 +190,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETVOLUME_0100
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_0100
      *@tc.name      : setVolume - Media - Promise
      *@tc.desc      : Setvol to 1
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETVOLUME_0100', 1, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_0100', 1, async function (done) {
         const promise = audioManager.setVolume(audioMedia, lowVol);
         promise.then(function () {
             console.info('AudioFrameworkTest: Media setVolume promise: successful');
@@ -217,14 +217,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETVOLUME_0200
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_0200
      *@tc.name      : setVolume - Media - Promise - MAX Volume
      *@tc.desc      : Setvol to 15
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETVOLUME_0200', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_0200', 2, async function (done) {
         const promise = audioManager.setVolume(audioMedia, maxVol);
         promise.then(function () {
             console.info('AudioFrameworkTest: Media setVolume promise: successful');
@@ -244,14 +244,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETVOLUME_0300
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_0300
      *@tc.name      : setVolume - Media - Promise - Mute Volume
      *@tc.desc      : Setvol to 0
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETVOLUME_0300', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_0300', 2, async function (done) {
         const promise = audioManager.setVolume(audioMedia, minVol);
         promise.then(function () {
             console.info('AudioFrameworkTest: Media setVolume promise: successful');
@@ -272,14 +272,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETVOLUME_0400
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_0400
      *@tc.name      : setVolume - Media - Promise - Out of range Volume
      *@tc.desc      : Setvol to 28 (More than 15)
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETVOLUME_0400', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_0400', 2, async function (done) {
         console.info('AudioFrameworkTest: Media setVolume Promise:Out of range: Setvol 100');
         await audioManager.setVolume(audioMedia, outOfRangeVol).then(() => {
             console.info('AudioFrameworkTest: Media setVolume Promise:Out of range: FAIL');
@@ -292,14 +292,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETVOLUME_0500
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_0500
      *@tc.name      : setVolume - Media - Callback
      *@tc.desc      : Setvol to 14
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETVOLUME_0500', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_0500', 2, async function (done) {
         audioManager.setVolume(audioMedia, highVol, (err) => {
             if (err) {
                 console.error(`AudioFrameworkTest: failed to set volume: Callback:  ${err.message}`);
@@ -328,14 +328,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETVOLUME_0600
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_0600
      *@tc.name      : setVolume - Media - Callback - MAX Volume
      *@tc.desc      : Setvol to 15
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETVOLUME_0600', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_0600', 2, async function (done) {
         audioManager.setVolume(audioMedia, maxVol, (err) => {
             if (err) {
                 console.error(`AudioFrameworkTest: failed to set volume: Callback:  ${err.message}`);
@@ -364,14 +364,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETVOLUME_0700
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_0700
      *@tc.name      : setVolume - Media - Callback - Mute Volume
      *@tc.desc      : Setvol to 0
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETVOLUME_0700', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_0700', 2, async function (done) {
         audioManager.setVolume(audioMedia, minVol, (err) => {
             if (err) {
                 console.error(`AudioFrameworkTest: failed to set volume: Callback:  ${err.message}`);
@@ -400,14 +400,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETVOLUME_0800
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_0800
      *@tc.name      : setVolume - Media - Callback - Out of range Volume
      *@tc.desc      : Setvol to 20
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETVOLUME_0800', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_0800', 2, async function (done) {
         audioManager.setVolume(audioMedia, outOfRangeVol, (err) => {
             if (err) {
                 console.error(`AudioFrameworkTest: setVolume: Out of range: Callback: PASS:  ${err.message}`);
@@ -422,14 +422,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETVOLUME_0900
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_0900
      *@tc.name      : setVolume - Ringtone - Promise
      *@tc.desc      : Setvol to 5
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETVOLUME_0900', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_0900', 2, async function (done) {
         const promise = audioManager.setVolume(audioRingtone, lowVol);
         promise.then(function () {
             console.info('AudioFrameworkTest: Ringtone setVolume promise: successful');
@@ -449,14 +449,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETVOLUME_1000
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_1000
      *@tc.name      : setVolume - Ringtone - Promise - MAX Volume
      *@tc.desc      : Setvol to 15
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETVOLUME_1000', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_1000', 2, async function (done) {
         const promise = audioManager.setVolume(audioRingtone, maxVol);
         promise.then(function () {
             console.info('AudioFrameworkTest: Ringtone setVolume promise: successful');
@@ -476,14 +476,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETVOLUME_1100
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_1100
      *@tc.name      : setVolume - Ringtone - Promise - Mute Volume
      *@tc.desc      : Setvol to 0
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETVOLUME_1100', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_1100', 2, async function (done) {
         const promise = audioManager.setVolume(audioRingtone, minVol);
         promise.then(function () {
             console.info('AudioFrameworkTest: Ringtone setVolume promise: successful');
@@ -503,14 +503,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETVOLUME_1200
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_1200
      *@tc.name      : setVolume - Ringtone - Promise - Out of range Volume
      *@tc.desc      : Setvol to 30
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETVOLUME_1200', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_1200', 2, async function (done) {
         console.info('AudioFrameworkTest: Ringtone setVolume Promise: Out of range: Setvol 30');
         await audioManager.setVolume(audioRingtone, outOfRangeVol).then(() => {
             console.info('AudioFrameworkTest: Ringtone setVolume Promise:Out of range: FAIL');
@@ -523,14 +523,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETVOLUME_1300
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_1300
      *@tc.name      : setVolume - Ringtone - Callback
      *@tc.desc      : Setvol to 7
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETVOLUME_1300', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_1300', 2, async function (done) {
         audioManager.setVolume(audioRingtone, highVol, (err) => {
             if (err) {
                 console.error(`AudioFrameworkTest: failed to set volume: Callback:  ${err.message}`);
@@ -559,14 +559,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETVOLUME_1400
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_1400
      *@tc.name      : setVolume - Ringtone - Callback - MAX Volume
      *@tc.desc      : Setvol to 15
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETVOLUME_1400', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_1400', 2, async function (done) {
         audioManager.setVolume(audioRingtone, maxVol, (err) => {
             if (err) {
                 console.error(`AudioFrameworkTest: failed to set volume: Callback:  ${err.message}`);
@@ -596,14 +596,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETVOLUME_1500
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_1500
      *@tc.name      : setVolume - Ringtone - Callback - Mute Volume
      *@tc.desc      : Setvol to 0
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETVOLUME_1500', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_1500', 2, async function (done) {
         audioManager.setVolume(audioRingtone, minVol, (err) => {
             if (err) {
                 console.error(`AudioFrameworkTest: failed to set volume: Callback:  ${err.message}`);
@@ -632,14 +632,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETVOLUME_1600
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_1600
      *@tc.name      : setVolume - Ringtone - Callback - Out of range Volume
      *@tc.desc      : Setvol to 28 (more than max volume 15)
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETVOLUME_1600', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_1600', 2, async function (done) {
         audioManager.setVolume(audioRingtone, outOfRangeVol, (err) => {
             if (err) {
                 console.error(`AudioFrameworkTest: Out of range Volume: Callback:  ${err.message}`);
@@ -654,14 +654,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETVOLUME_1700
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_1700
      *@tc.name      : setVolume - Media - Promise - Negative Value
      *@tc.desc      : Setvol to -1
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETVOLUME_1700', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_1700', 2, async function (done) {
         console.info('AudioFrameworkTest: Media setVolume promise: Negative Value -1');
         await audioManager.setVolume(audioMedia, -1).then(() => {
             // Setting negative audio volume for error Scenario
@@ -675,14 +675,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETVOLUME_1800
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_1800
      *@tc.name      : setVolume - Media - Callback - Negative Value
      *@tc.desc      : Setvol to -1
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETVOLUME_1800', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_1800', 2, async function (done) {
         audioManager.setVolume(audioMedia, -1, (err) => {
             // Setting negative audio volume for error Scenario
             if (err) {
@@ -698,14 +698,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETVOLUME_1900
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_1900
      *@tc.name      : setVolume - Ringtone - Promise - Negative Value
      *@tc.desc      : Setvol to -1
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETVOLUME_1900', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_1900', 2, async function (done) {
         console.info('AudioFrameworkTest: Ringtone setVolume promise: Negative');
         await audioManager.setVolume(audioRingtone, -1).then(() => {
             // Setting negative audio volume for error Scenario
@@ -719,14 +719,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETVOLUME_2000
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_2000
      *@tc.name      : setVolume - Ringtone - Callback - Negative Value
      *@tc.desc      : Setvol to -1
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETVOLUME_2000', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_2000', 2, async function (done) {
         audioManager.setVolume(audioRingtone, -1, (err) => {
             // Setting negative audio volume for error Scenario
             if (err) {
@@ -742,14 +742,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETVOLUME_2100
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_2100
      *@tc.name      : setVolume - Media - Promise - ENAME
      *@tc.desc      : Setvol to 5
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETVOLUME_2100', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_2100', 2, async function (done) {
         const promise = audioManager.setVolume(audio.AudioVolumeType.MEDIA, lowVol);
         promise.then(function () {
             audioManager.getVolume(audio.AudioVolumeType.MEDIA).then(function (data) {
@@ -768,14 +768,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETVOLUME_2200
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_2200
      *@tc.name      : setVolume - Media - Callback - ENAME
      *@tc.desc      : Setvol to 14
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETVOLUME_2200', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_2200', 2, async function (done) {
         audioManager.setVolume(audio.AudioVolumeType.MEDIA, highVol, (err) => {
             if (err) {
                 console.error(`AudioFrameworkTest: failed to set volume: Callback: ENAME :  ${err.message}`);
@@ -804,14 +804,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETVOLUME_2300
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_2300
      *@tc.name      : setVolume - Ringtone - Promise - ENAME
      *@tc.desc      : Setvol to 14
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETVOLUME_2300', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_2300', 2, async function (done) {
         const promise = audioManager.setVolume(audio.AudioVolumeType.RINGTONE, highVol);
         promise.then(function () {
             console.info('AudioFrameworkTest: Ringtone setVolume promise: ENAME: successful');
@@ -831,14 +831,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETVOLUME_2400
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_2400
      *@tc.name      : setVolume - Ringtone - Callback - ENAME
      *@tc.desc      : Setvol to 5
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETVOLUME_2400', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_2400', 2, async function (done) {
         audioManager.setVolume(audio.AudioVolumeType.RINGTONE, lowVol, (err) => {
             if (err) {
                 console.error(`AudioFrameworkTest: failed to set volume: Callback: ENAME:  ${err.message}`);
@@ -867,14 +867,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETVOLUME_2500
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_2500
      *@tc.name      : setVolume - Media - Promise - Change Ringtone vol
      *@tc.desc      : Setvol to 5
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETVOLUME_2500', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_2500', 2, async function (done) {
         const promise = audioManager.setVolume(audio.AudioVolumeType.MEDIA, lowVol);
         promise.then(function () {
             audioManager.setVolume(audio.AudioVolumeType.RINGTONE, maxVol);
@@ -894,14 +894,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETVOLUME_2600
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_2600
      *@tc.name      : setVolume - Media - Callback - Change Ringtone vol
      *@tc.desc      : Setvol to 14
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETVOLUME_2600', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_2600', 2, async function (done) {
         audioManager.setVolume(audio.AudioVolumeType.MEDIA, highVol, (err) => {
             if (err) {
                 console.error(`AudioFrameworkTest: failed to set volume: Callback: ENAME :  ${err.message}`);
@@ -931,14 +931,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETVOLUME_2700
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_2700
      *@tc.name      : setVolume - Ringtone - Promise - Change Media vol
      *@tc.desc      : Setvol to 14
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETVOLUME_2700', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_2700', 2, async function (done) {
         const promise = audioManager.setVolume(audio.AudioVolumeType.RINGTONE, highVol);
         promise.then(function () {
             console.info('AudioFrameworkTest: Ringtone setVolume promise: ENAME: successful');
@@ -959,14 +959,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETVOLUME_2800
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_2800
      *@tc.name      : setVolume - Ringtone - Callback - Change Media vol
      *@tc.desc      : Setvol to 5
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETVOLUME_2800', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_2800', 2, async function (done) {
         audioManager.setVolume(audio.AudioVolumeType.RINGTONE, lowVol, (err) => {
             if (err) {
                 console.error(`AudioFrameworkTest: failed to set volume: Callback: ENAME:  ${err.message}`);
@@ -996,14 +996,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETMAXVOLUME_0100
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETMAXVOLUME_0100
      *@tc.name      : getMaxVolume - Media - Promise
      *@tc.desc      : getMaxVolume for Media
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETMAXVOLUME_0100', 1, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETMAXVOLUME_0100', 1, async function (done) {
         const promise = audioManager.getMaxVolume(audioMedia);
         promise.then(function (data) {
             if (data == maxVol) {
@@ -1020,14 +1020,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETMAXVOLUME_0200
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETMAXVOLUME_0200
      *@tc.name      : getMaxVolume - Media - Callback
      *@tc.desc      : getMaxVolume for Media
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETMAXVOLUME_0200', 1, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETMAXVOLUME_0200', 1, async function (done) {
         audioManager.getMaxVolume(audioMedia, (err, value) => {
             if (err) {
                 console.error(`AudioFrameworkTest: callback : Media : failed to getMaxVolume ${err.message}`);
@@ -1046,14 +1046,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETMAXVOLUME_0300
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETMAXVOLUME_0300
      *@tc.name      : getMaxVolume - Ringtone - Promise
      *@tc.desc      : getMaxVolume for Ringtone
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETMAXVOLUME_0300', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETMAXVOLUME_0300', 2, async function (done) {
         const promise = audioManager.getMaxVolume(audioRingtone);
         promise.then(function (data) {
             if (data == maxVol) {
@@ -1070,14 +1070,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETMAXVOLUME_0400
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETMAXVOLUME_0400
      *@tc.name      : getMaxVolume - Ringtone - Callback
      *@tc.desc      : getMaxVolume for Ringtone
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETMAXVOLUME_0400', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETMAXVOLUME_0400', 2, async function (done) {
         audioManager.getMaxVolume(audioRingtone, (err, value) => {
             if (err) {
                 console.error(`AudioFrameworkTest: callback : Ringtone : failed to getMaxVolume ${err.message}`);
@@ -1096,14 +1096,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETMAXVOLUME_0500
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETMAXVOLUME_0500
      *@tc.name      : getMaxVolume - Media - Promise - Change Ringtone Volume and check
      *@tc.desc      : getMaxVolume for Media
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETMAXVOLUME_0500', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETMAXVOLUME_0500', 2, async function (done) {
         audioManager.setVolume(audioRingtone, lowVol);
         const promise = audioManager.getMaxVolume(audioMedia);
         promise.then(function (data) {
@@ -1121,14 +1121,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETMAXVOLUME_0600
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETMAXVOLUME_0600
      *@tc.name      : getMaxVolume - Ringtone - Promise - Change Media Volume and check
      *@tc.desc      : getMaxVolume for Media
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETMAXVOLUME_0600', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETMAXVOLUME_0600', 2, async function (done) {
         audioManager.setVolume(audioMedia, lowVol);
         const promise = audioManager.getMaxVolume(audioRingtone);
         promise.then(function (data) {
@@ -1147,14 +1147,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETMAXVOLUME_0700
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETMAXVOLUME_0700
      *@tc.name      : getMaxVolume - Media - Callback- Change Ringtone Volume and check
      *@tc.desc      : getMaxVolume for Media
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETMAXVOLUME_0700', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETMAXVOLUME_0700', 2, async function (done) {
         audioManager.setVolume(audioRingtone, lowVol);
         audioManager.getMaxVolume(audioMedia, (err, value) => {
             if (err) {
@@ -1175,14 +1175,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETMAXVOLUME_0800
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETMAXVOLUME_0800
      *@tc.name      : getMaxVolume - Ringtone - Callback - Callback- Change media Volume and check
      *@tc.desc      : getMaxVolume for Ringtone
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETMAXVOLUME_0800', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETMAXVOLUME_0800', 2, async function (done) {
         audioManager.setVolume(audioMedia, lowVol);
         audioManager.getMaxVolume(audioRingtone, (err, value) => {
             if (err) {
@@ -1202,14 +1202,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETMAXVOLUME_0900
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETMAXVOLUME_0900
      *@tc.name      : getMaxVolume - Media - Promise - Change media Volume and check
      *@tc.desc      : getMaxVolume for Media
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETMAXVOLUME_0900', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETMAXVOLUME_0900', 2, async function (done) {
         audioManager.setVolume(audioMedia, lowVol);
         const promise = audioManager.getMaxVolume(audioMedia);
         promise.then(function (data) {
@@ -1227,14 +1227,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETMAXVOLUME_1000
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETMAXVOLUME_1000
      *@tc.name      : getMaxVolume - Ringtone - Promise - Change Ringtone Volume and check
      *@tc.desc      : getMaxVolume for Media
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETMAXVOLUME_1000', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETMAXVOLUME_1000', 2, async function (done) {
         audioManager.setVolume(audioRingtone, lowVol);
         const promise = audioManager.getMaxVolume(audioRingtone);
         promise.then(function (data) {
@@ -1252,14 +1252,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETMAXVOLUME_1100
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETMAXVOLUME_1100
      *@tc.name      : getMaxVolume - Media - Callback- Change media Volume and check
      *@tc.desc      : getMaxVolume for Media
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETMAXVOLUME_1100', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETMAXVOLUME_1100', 2, async function (done) {
         audioManager.setVolume(audioMedia, highVol);
         audioManager.getMaxVolume(audioMedia, (err, value) => {
             if (err) {
@@ -1279,14 +1279,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETMAXVOLUME_1200
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETMAXVOLUME_1200
      *@tc.name      : getMaxVolume - Ringtone - Callback - Callback- Change ringtone Volume and check
      *@tc.desc      : getMaxVolume for Ringtone
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETMAXVOLUME_1200', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETMAXVOLUME_1200', 2, async function (done) {
         audioManager.setVolume(audioRingtone, highVol);
         audioManager.getMaxVolume(audioRingtone, (err, value) => {
             if (err) {
@@ -1306,14 +1306,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETMINVOLUME_0100
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETMINVOLUME_0100
      *@tc.name      : getMinVolume - Media - Promise
      *@tc.desc      : getMinVolume for Media
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETMINVOLUME_0100', 1, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETMINVOLUME_0100', 1, async function (done) {
         const promise = audioManager.getMinVolume(audioMedia);
         promise.then(function (data) {
             if (data == minVol) {
@@ -1330,14 +1330,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETMINVOLUME_0200
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETMINVOLUME_0200
      *@tc.name      : getMinVolume - Media - Callback
      *@tc.desc      : getMinVolume for Media
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETMINVOLUME_0200', 1, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETMINVOLUME_0200', 1, async function (done) {
         audioManager.getMinVolume(audioMedia, (err, value) => {
             if (err) {
                 console.error(`AudioFrameworkTest: callback : Media : failed to getMinVolume ${err.message}`);
@@ -1356,14 +1356,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETMINVOLUME_0300
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETMINVOLUME_0300
      *@tc.name      : getMinVolume - Ringtone - Promise
      *@tc.desc      : getMinVolume for Ringtone
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETMINVOLUME_0300', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETMINVOLUME_0300', 2, async function (done) {
         const promise = audioManager.getMinVolume(audioRingtone);
         promise.then(function (data) {
             if (data == minVol) {
@@ -1381,14 +1381,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETMINVOLUME_0400
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETMINVOLUME_0400
      *@tc.name      : getMinVolume - Ringtone - Callback
      *@tc.desc      : getMinVolume for Ringtone
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETMINVOLUME_0400', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETMINVOLUME_0400', 2, async function (done) {
         audioManager.getMinVolume(audioRingtone, (err, value) => {
             if (err) {
                 console.error(`AudioFrameworkTest: callback : Ringtone : failed to getMinVolume ${err.message}`);
@@ -1407,14 +1407,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETMINVOLUME_0500
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETMINVOLUME_0500
      *@tc.name      : getMinVolume - Media - Promise - Change Ringtone Volume and check
      *@tc.desc      : getMinVolume for Media
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETMINVOLUME_0500', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETMINVOLUME_0500', 2, async function (done) {
         audioManager.setVolume(audioRingtone, lowVol);
         const promise = audioManager.getMinVolume(audioMedia);
         promise.then(function (data) {
@@ -1432,14 +1432,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETMINVOLUME_0600
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETMINVOLUME_0600
      *@tc.name      : getMinVolume - Media - Callback - Change Ringtone Volume and check
      *@tc.desc      : getMinVolume for Media
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETMINVOLUME_0600', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETMINVOLUME_0600', 2, async function (done) {
         audioManager.setVolume(audioRingtone, lowVol);
         audioManager.getMinVolume(audioMedia, (err, value) => {
             if (err) {
@@ -1459,14 +1459,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETMINVOLUME_0700
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETMINVOLUME_0700
      *@tc.name      : getMinVolume - Ringtone - Promise - Change Media Volume and check
      *@tc.desc      : getMinVolume for Ringtone
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETMINVOLUME_0700', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETMINVOLUME_0700', 2, async function (done) {
         audioManager.setVolume(audioMedia, highVol);
         const promise = audioManager.getMinVolume(audioRingtone);
         promise.then(function (data) {
@@ -1484,14 +1484,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETMINVOLUME_0800
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETMINVOLUME_0800
      *@tc.name      : getMinVolume - Ringtone - Callback - Change Media Volume and check
      *@tc.desc      : getMinVolume for Ringtone
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETMINVOLUME_0800', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETMINVOLUME_0800', 2, async function (done) {
         audioManager.setVolume(audioMedia, lowVol);
         audioManager.getMinVolume(audioRingtone, (err, value) => {
             if (err) {
@@ -1511,14 +1511,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETMINVOLUME_0900
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETMINVOLUME_0900
      *@tc.name      : getMinVolume - Media - Promise - Change Media Volume and check
      *@tc.desc      : getMinVolume for Media
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETMINVOLUME_0900', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETMINVOLUME_0900', 2, async function (done) {
         audioManager.setVolume(audioMedia, lowVol);
         const promise = audioManager.getMinVolume(audioMedia);
         promise.then(function (data) {
@@ -1536,14 +1536,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETMINVOLUME_1000
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETMINVOLUME_1000
      *@tc.name      : getMinVolume - Media - Callback - Change Media Volume and check
      *@tc.desc      : getMinVolume for Media
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETMINVOLUME_1000', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETMINVOLUME_1000', 2, async function (done) {
         audioManager.setVolume(audioMedia, highVol);
         audioManager.getMinVolume(audioMedia, (err, value) => {
             if (err) {
@@ -1563,14 +1563,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETMINVOLUME_1100
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETMINVOLUME_1100
      *@tc.name      : getMinVolume - Ringtone - Promise - Change Ringtone Volume and check
      *@tc.desc      : getMinVolume for Ringtone
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETMINVOLUME_1100', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETMINVOLUME_1100', 2, async function (done) {
         audioManager.setVolume(audioRingtone, lowVol);
         const promise = audioManager.getMinVolume(audioRingtone)
         promise.then(function (data) {
@@ -1588,14 +1588,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETMINVOLUME_1200
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETMINVOLUME_1200
      *@tc.name      : getMinVolume - Ringtone - Callback - Change Ringtone Volume and check
      *@tc.desc      : getMinVolume for Ringtone
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETMINVOLUME_1200', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETMINVOLUME_1200', 2, async function (done) {
         audioManager.setVolume(audioRingtone, lowVol);
         audioManager.getMinVolume(audioRingtone, (err, value) => {
             if (err) {
@@ -1615,14 +1615,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETDEVICES_0100
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_0100
      *@tc.name      : getDevices - Output device - Promise
      *@tc.desc      : getDevices - Output device
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETDEVICES_0100', 1, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_0100', 1, async function (done) {
         dRValue = null;
         dTValue = null;
         devId = null;
@@ -1650,14 +1650,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETDEVICES_0200
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_0200
      *@tc.name      : getDevices - Input device - Promise
      *@tc.desc      : getDevices - Input device
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETDEVICES_0200', 1, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_0200', 1, async function (done) {
         dRValue = null;
         dTValue = null;
         devId = null;
@@ -1686,14 +1686,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETDEVICES_0300
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_0300
      *@tc.name      : getDevices - ALL device - Promise
      *@tc.desc      : getDevices - ALL device
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETDEVICES_0300', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_0300', 2, async function (done) {
         dRValue = null;
         dTValue = null;
         devId = null;
@@ -1722,14 +1722,14 @@ describe('audioManager', function () {
         done();
     })
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETDEVICES_0400
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_0400
      *@tc.name      : getDevices - Output device - Callback
      *@tc.desc      : getDevices - Output device
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETDEVICES_0400', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_0400', 2, async function (done) {
         dRValue = null;
         dTValue = null;
         devId = null;
@@ -1764,14 +1764,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETDEVICES_0500
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_0500
      *@tc.name      : getDevices - Input device - Callback
      *@tc.desc      : getDevices - Input device
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETDEVICES_0500', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_0500', 2, async function (done) {
         dRValue = null;
         dTValue = null;
         devId = null;
@@ -1807,14 +1807,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETDEVICES_0600
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_0600
      *@tc.name      : getDevices - ALL device - Callback
      *@tc.desc      : getDevices - ALL device
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETDEVICES_0600', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_0600', 2, async function (done) {
         dRValue = null;
         dTValue = null;
         devId = null;
@@ -1850,14 +1850,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETDEVICES_0700
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_0700
      *@tc.name      : getDevices - Output device - Promise - ENAME
      *@tc.desc      : getDevices - Output device
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETDEVICES_0700', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_0700', 2, async function (done) {
         dRValue = null;
         dTValue = null;
         devId = null;
@@ -1885,14 +1885,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETDEVICES_0800
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_0800
      *@tc.name      : getDevices - Input device - Promise - ENAME
      *@tc.desc      : getDevices - Input device
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETDEVICES_0800', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_0800', 2, async function (done) {
         dRValue = null;
         dTValue = null;
         devId = null;
@@ -1920,14 +1920,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETDEVICES_0900
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_0900
      *@tc.name      : getDevices - ALL device - Promise - ENAME
      *@tc.desc      : getDevices - ALL device
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETDEVICES_0900', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_0900', 2, async function (done) {
         dRValue = null;
         dTValue = null;
         devId = null;
@@ -1955,14 +1955,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETDEVICES_1000
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_1000
      *@tc.name      : getDevices - Output device - Callback - ENAME
      *@tc.desc      : getDevices - Output device
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETDEVICES_1000', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_1000', 2, async function (done) {
         dRValue = null;
         dTValue = null;
         devId = null;
@@ -1994,14 +1994,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETDEVICES_1100
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_1100
      *@tc.name      : getDevices - Input device - Callback - ENAME
      *@tc.desc      : getDevices - Input device
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETDEVICES_1100', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_1100', 2, async function (done) {
         dRValue = null;
         dTValue = null;
         devId = null;
@@ -2034,14 +2034,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETDEVICES_1200
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_1200
      *@tc.name      : getDevices - ALL device - Callback - ENAME
      *@tc.desc      : getDevices - ALL device
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETDEVICES_1200', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_1200', 2, async function (done) {
         dRValue = null;
         dTValue = null;
         devId = null;
@@ -2073,14 +2073,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETRINGERMODE_0100
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETRINGERMODE_0100
      *@tc.name      : setRingerMode - Normal Mode - Promise
      *@tc.desc      : setRingerMode - Set Ring more to Normal Mode
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETRINGERMODE_0100', 1, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETRINGERMODE_0100', 1, async function (done) {
         const promise = audioManager.setRingerMode(2);
         // Setting Ringtone Mode to Normal ENUM 2 = RINGER_MODE_NORMAL
         promise.then(function () {
@@ -2101,14 +2101,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETRINGERMODE_0200
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETRINGERMODE_0200
      *@tc.name      : setRingerMode - Silent Mode - Promise
      *@tc.desc      : setRingerMode - Set Ring more to Silent Mode
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETRINGERMODE_0200', 1, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETRINGERMODE_0200', 1, async function (done) {
         const promise = audioManager.setRingerMode(0);
         // Setting Ringtone Mode to Silent ENUM 0 = RINGER_MODE_SILENT
         promise.then(function () {
@@ -2129,14 +2129,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETRINGERMODE_0300
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETRINGERMODE_0300
      *@tc.name      : setRingerMode - Vibration Mode - Promise
      *@tc.desc      : setRingerMode - Set Ring more to Vibration Mode
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETRINGERMODE_0300', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETRINGERMODE_0300', 2, async function (done) {
         const promise = audioManager.setRingerMode(1);
         // Setting Ringtone Mode to Vibration ENUM 1 = RINGER_MODE_VIBRATE
         promise.then(function () {
@@ -2157,14 +2157,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETRINGERMODE_0400
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETRINGERMODE_0400
      *@tc.name      : setRingerMode - Normal Mode - Callback
      *@tc.desc      : setRingerMode - Set Ring more to Normal Mode
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETRINGERMODE_0400', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETRINGERMODE_0400', 2, async function (done) {
         audioManager.setRingerMode(2, (err) => {
             // Setting Ringtone Mode to Normal ENUM 2 = RINGER_MODE_NORMAL
             console.info('AudioFrameworkTest: Callback : setRingerMode RINGER_MODE_NORMAL');
@@ -2194,14 +2194,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETRINGERMODE_0500
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETRINGERMODE_0500
      *@tc.name      : setRingerMode - Silent Mode - Callback
      *@tc.desc      : setRingerMode - Set Ring more to Silent Mode
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETRINGERMODE_0500', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETRINGERMODE_0500', 2, async function (done) {
         audioManager.setRingerMode(0, (err) => {
             // Setting Ringtone Mode to Silent ENUM 0 = RINGER_MODE_SILENT
             console.info('AudioFrameworkTest: Callback : setRingerMode RINGER_MODE_SILENT');
@@ -2232,14 +2232,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETRINGERMODE_0600
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETRINGERMODE_0600
      *@tc.name      : setRingerMode - Vibration Mode - Callback
      *@tc.desc      : setRingerMode - Set Ring more to Vibration Mode
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETRINGERMODE_0600', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETRINGERMODE_0600', 2, async function (done) {
         audioManager.setRingerMode(1, (err) => {
             // Setting Ringtone Mode to Vibration ENUM 1 = RINGER_MODE_VIBRATE
             console.info('AudioFrameworkTest: Callback : setRingerMode RINGER_MODE_VIBRATE');
@@ -2270,14 +2270,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETRINGERMODE_0700
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETRINGERMODE_0700
      *@tc.name      : setRingerMode - Normal Mode - Promise - ENAME
      *@tc.desc      : setRingerMode - Set Ring more to Normal Mode
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETRINGERMODE_0700', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETRINGERMODE_0700', 2, async function (done) {
         const promise = audioManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_NORMAL);
         promise.then(function () {
             console.info('AudioFrameworkTest: Promise: setRingerMode RINGER_MODE_NORMAL');
@@ -2297,14 +2297,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETRINGERMODE_0800
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETRINGERMODE_0800
      *@tc.name      : setRingerMode - Silent Mode - Promise - ENAME
      *@tc.desc      : setRingerMode - Set Ring more to Silent Mode
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETRINGERMODE_0800', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETRINGERMODE_0800', 2, async function (done) {
         const promise = audioManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_SILENT);
         promise.then(function () {
             console.info('AudioFrameworkTest: Promise: setRingerMode RINGER_MODE_SILENT');
@@ -2324,14 +2324,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETRINGERMODE_0900
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETRINGERMODE_0900
      *@tc.name      : setRingerMode - Vibration Mode - Promise - NAME
      *@tc.desc      : setRingerMode - Set Ring more to Vibration Mode
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETRINGERMODE_0900', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETRINGERMODE_0900', 2, async function (done) {
         const promise = audioManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_VIBRATE);
         promise.then(function () {
             console.info('AudioFrameworkTest: Promise: setRingerMode RINGER_MODE_VIBRATE');
@@ -2351,14 +2351,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETRINGERMODE_1000
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETRINGERMODE_1000
      *@tc.name      : setRingerMode - Normal Mode - Callback - ENAME
      *@tc.desc      : setRingerMode - Set Ring more to Normal Mode
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETRINGERMODE_1000', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETRINGERMODE_1000', 2, async function (done) {
         audioManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_NORMAL, (err) => {
             console.info('AudioFrameworkTest: Callback : setRingerMode RINGER_MODE_NORMAL');
             if (err) {
@@ -2387,14 +2387,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETRINGERMODE_1100
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETRINGERMODE_1100
      *@tc.name      : setRingerMode - Silent Mode - Callback - ENAME
      *@tc.desc      : setRingerMode - Set Ring more to Silent Mode
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETRINGERMODE_1100', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETRINGERMODE_1100', 2, async function (done) {
         audioManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_SILENT, (err) => {
             console.info('AudioFrameworkTest: Callback : setRingerMode RINGER_MODE_SILENT');
             if (err) {
@@ -2424,14 +2424,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETRINGERMODE_1200
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETRINGERMODE_1200
      *@tc.name      : setRingerMode - Vibration Mode - Callback
      *@tc.desc      : setRingerMode - Set Ring more to Vibration Mode
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETRINGERMODE_1200', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETRINGERMODE_1200', 2, async function (done) {
         audioManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_VIBRATE, (err, value) => {
             console.info('AudioFrameworkTest: Callback : setRingerMode RINGER_MODE_VIBRATE');
             if (err) {
@@ -2461,14 +2461,14 @@ describe('audioManager', function () {
     })
 
     /**
-      *@tc.number    : SUB_MULTIMEDIA_MANAGER_MUTE_0100
+      *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_MUTE_0100
       *@tc.name      : mute - Media - callback
       *@tc.desc      : mute - Media - callback - Disable mute
       *@tc.size      : MEDIUM
       *@tc.type      : Function
       *@tc.level     : Level 1
       */
-    it('SUB_MULTIMEDIA_MANAGER_MUTE_0100', 1, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_MUTE_0100', 1, async function (done) {
         await audioManager.setVolume(audioMedia, highVol);
         audioManager.mute(audioMedia, true, (err) => {
             if (err) {
@@ -2517,14 +2517,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_MUTE_0200
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_MUTE_0200
      *@tc.name      : mute - Media - Promise
      *@tc.desc      : mute - Media - Promise - Disable mute
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_MANAGER_MUTE_0200', 1, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_MUTE_0200', 1, async function (done) {
         await audioManager.setVolume(audioMedia, lowVol);
         await audioManager.mute(audioMedia, true).then(() => {
             console.log('AudioFrameworkTest: Promise returned to indicate that the stream is muted.');
@@ -2566,14 +2566,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_MUTE_0300
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_MUTE_0300
      *@tc.name      : mute - Ringtone - callback
      *@tc.desc      : mute - Ringtone - callback - Disable mute
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_MUTE_0300', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_MUTE_0300', 2, async function (done) {
         await audioManager.setVolume(audioRingtone, highVol);
         audioManager.mute(audioRingtone, true, (err) => {
             if (err) {
@@ -2622,14 +2622,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_MUTE_0400
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_MUTE_0400
      *@tc.name      : mute - Ringtone - Promise
      *@tc.desc      : mute - Ringtone - Promise - disable mute
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_MUTE_0400', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_MUTE_0400', 2, async function (done) {
         await audioManager.setVolume(audioRingtone, lowVol);
         await audioManager.mute(audioRingtone, true).then(() => {
             console.log('AudioFrameworkTest: Promise returned to indicate that the stream is muted.');
@@ -2671,14 +2671,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_MUTE_0500
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_MUTE_0500
      *@tc.name      : mute - Media - callback - ENAME
      *@tc.desc      : mute - Media - callback - Disable mute
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_MUTE_0500', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_MUTE_0500', 2, async function (done) {
         await audioManager.setVolume(audio.AudioVolumeType.MEDIA, highVol);
         audioManager.mute(audio.AudioVolumeType.MEDIA, true, (err) => {
             if (err) {
@@ -2727,14 +2727,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_MUTE_0600
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_MUTE_0600
      *@tc.name      : mute - Media - Promise -  ENAME
      *@tc.desc      : mute - Media - Promise - Disable mute
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_MUTE_0600', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_MUTE_0600', 2, async function (done) {
         await audioManager.setVolume(audio.AudioVolumeType.MEDIA, lowVol);
         await audioManager.mute(audio.AudioVolumeType.MEDIA, true).then(() => {
             console.log('AudioFrameworkTest: Promise returned to indicate that the stream is muted.');
@@ -2776,14 +2776,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_MUTE_0700
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_MUTE_0700
      *@tc.name      : mute - Ringtone - callback -  ENAME
      *@tc.desc      : mute - Ringtone - callback - Disable mute
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_MUTE_0700', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_MUTE_0700', 2, async function (done) {
         await audioManager.setVolume(audio.AudioVolumeType.RINGTONE, highVol);
         audioManager.mute(audio.AudioVolumeType.RINGTONE, true, (err) => {
             if (err) {
@@ -2832,14 +2832,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_MUTE_0800
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_MUTE_0800
      *@tc.name      : mute - RINGTONE - Promise - ENAME:
      *@tc.desc      : mute - RINGTONE - Promise - Disable mute
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_MUTE_0800', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_MUTE_0800', 2, async function (done) {
         await audioManager.setVolume(audio.AudioVolumeType.RINGTONE, lowVol);
         await audioManager.mute(audio.AudioVolumeType.RINGTONE, true).then(() => {
             console.log('AudioFrameworkTest: Promise returned to indicate that the stream is muted.');
@@ -2881,14 +2881,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_MUTE_0900
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_MUTE_0900
      *@tc.name      : mute - VOICE_CALL - callback - ENAME
      *@tc.desc      : mute - VOICE_CALL - callback - Disable mute
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_MUTE_0900', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_MUTE_0900', 2, async function (done) {
         await audioManager.setVolume(audio.AudioVolumeType.VOICE_CALL, highVol);
         audioManager.mute(audio.AudioVolumeType.VOICE_CALL, true, (err) => {
             if (err) {
@@ -2937,14 +2937,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_MUTE_1000
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_MUTE_1000
      *@tc.name      : mute - VOICE_CALL - Promise -  ENAME
      *@tc.desc      : mute - VOICE_CALL - Promise - Disable mute
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_MUTE_1000', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_MUTE_1000', 2, async function (done) {
         await audioManager.setVolume(audio.AudioVolumeType.VOICE_CALL, lowVol);
         await audioManager.mute(audio.AudioVolumeType.VOICE_CALL, true).then(() => {
             console.log('AudioFrameworkTest: Promise returned to indicate that the stream is muted.');
@@ -2986,14 +2986,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_MUTE_1100
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_MUTE_1100
      *@tc.name      : mute - VOICE_ASSISTANT - callback - ENAME
      *@tc.desc      : mute - VOICE_ASSISTANT - callback - Disable mute
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_MUTE_1100', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_MUTE_1100', 2, async function (done) {
         await audioManager.setVolume(audio.AudioVolumeType.VOICE_ASSISTANT, highVol);
         audioManager.mute(audio.AudioVolumeType.VOICE_ASSISTANT, true, (err) => {
             if (err) {
@@ -3042,14 +3042,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_MUTE_1200
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_MUTE_1200
      *@tc.name      : mute - VOICE_ASSISTANT - Promise -  ENAME
      *@tc.desc      : mute - VOICE_ASSISTANT - Promise - Disable mute
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_MUTE_1200', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_MUTE_1200', 2, async function (done) {
         await audioManager.setVolume(audio.AudioVolumeType.VOICE_ASSISTANT, lowVol);
         await audioManager.mute(audio.AudioVolumeType.VOICE_ASSISTANT, true).then(() => {
             console.log('AudioFrameworkTest: Promise returned to indicate that the stream is muted.');
@@ -3091,14 +3091,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_MUTE_1300
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_MUTE_1300
      *@tc.name      : mute - Media - Promise - SetVolume
      *@tc.desc      : mute - Media - Promise - Enable mute -SetVolume
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_MUTE_1300', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_MUTE_1300', 2, async function (done) {
         await audioManager.setVolume(audioMedia, highVol);
         await audioManager.mute(audioMedia, true).then(async function () {
             console.log('AudioFrameworkTest: Set Stream Mute: Media: Promise: TRUE');
@@ -3134,14 +3134,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_MUTE_1400
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_MUTE_1400
      *@tc.name      : mute - Media - callback - SetVolume
      *@tc.desc      : mute - Media - callback - Enable mute - SetVolume
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_MUTE_1400', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_MUTE_1400', 2, async function (done) {
         await audioManager.setVolume(audioMedia, lowVol);
         audioManager.mute(audioMedia, true, async (err) => {
             if (err) {
@@ -3183,14 +3183,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_MUTE_1500
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_MUTE_1500
      *@tc.name      : mute - Ringtone - Promise - SetVolume
      *@tc.desc      : mute - Ringtone - Promise - Enable mute - SetVolume
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_MUTE_1500', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_MUTE_1500', 2, async function (done) {
         await audioManager.setVolume(audioRingtone, lowVol);
         await audioManager.mute(audioRingtone, true).then(async function () {
             console.log('AudioFrameworkTest: Set Stream Mute: Ringtone: Promise: SetVolume');
@@ -3226,14 +3226,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_MUTE_1600
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_MUTE_1600
      *@tc.name      : mute - Ringtone - callback - SetVolume
      *@tc.desc      : mute - Ringtone - callback - Enable mute - SetVolume
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_MUTE_1600', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_MUTE_1600', 2, async function (done) {
         await audioManager.setVolume(audioRingtone, highVol);
         audioManager.mute(audioRingtone, true, async (err) => {
             if (err) {
@@ -3275,14 +3275,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_MUTE_1700
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_MUTE_1700
      *@tc.name      : mute - VOICE_CALL - Promise - SetVolume
      *@tc.desc      : mute - VOICE_CALL - Promise - Enable mute -SetVolume
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_MUTE_1700', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_MUTE_1700', 2, async function (done) {
         await audioManager.setVolume(audio.AudioVolumeType.VOICE_CALL, highVol);
         await audioManager.mute(audio.AudioVolumeType.VOICE_CALL, true).then(async function () {
             console.log('AudioFrameworkTest: Set Stream Mute: VOICE_CALL: Promise: TRUE');
@@ -3318,14 +3318,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_MUTE_1800
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_MUTE_1800
      *@tc.name      : mute - VOICE_CALL - callback - SetVolume
      *@tc.desc      : mute - VOICE_CALL - callback - Enable mute - SetVolume
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_MUTE_1800', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_MUTE_1800', 2, async function (done) {
         await audioManager.setVolume(audio.AudioVolumeType.VOICE_CALL, highVol);
         audioManager.mute(audio.AudioVolumeType.VOICE_CALL, true, async (err) => {
             if (err) {
@@ -3367,14 +3367,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_MUTE_1900
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_MUTE_1900
      *@tc.name      : mute - VOICE_ASSISTANT - Promise - SetVolume
      *@tc.desc      : mute - VOICE_ASSISTANT - Promise - Enable mute -SetVolume
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_MUTE_1900', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_MUTE_1900', 2, async function (done) {
         await audioManager.setVolume(audio.AudioVolumeType.VOICE_ASSISTANT, highVol);
         await audioManager.mute(audio.AudioVolumeType.VOICE_ASSISTANT, true).then(async function () {
             console.log('AudioFrameworkTest: Set Stream Mute: VOICE_ASSISTANT: Promise: TRUE');
@@ -3410,14 +3410,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_MUTE_2000
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_MUTE_2000
      *@tc.name      : mute - VOICE_ASSISTANT - callback - SetVolume
      *@tc.desc      : mute - VOICE_ASSISTANT - callback - Enable mute - SetVolume
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_MUTE_2000', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_MUTE_2000', 2, async function (done) {
         await audioManager.setVolume(audio.AudioVolumeType.VOICE_ASSISTANT, highVol);
         audioManager.mute(audio.AudioVolumeType.VOICE_ASSISTANT, true, async (err) => {
             if (err) {
@@ -3457,14 +3457,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_ISACTIVE_0100
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_ISACTIVE_0100
      *@tc.name      : isActive - Media - Promise
      *@tc.desc      : isActive - Media - Promise - When stream is NOT playing
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_MANAGER_ISACTIVE_0100', 1, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_ISACTIVE_0100', 1, async function (done) {
         console.log('AudioFrameworkTest: Promise : isActive Media: NOTE: audio NOT PLAYING as MEDIA for the test case to PASS');
         const promise = audioManager.isActive(audioMedia);
         promise.then(function (data) {
@@ -3482,14 +3482,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_ISACTIVE_0200
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_ISACTIVE_0200
      *@tc.name      : isActive - Media - Callback
      *@tc.desc      : isActive - Media - Callback - When stream is NOT playing
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_MANAGER_ISACTIVE_0200', 1, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_ISACTIVE_0200', 1, async function (done) {
         console.log('AudioFrameworkTest: Callback : isActive Media: NOTE: audio NOT PLAYING as MEDIA for the test case to PASS');
         audioManager.isActive(audioMedia, (err, data) => {
             if (err) {
@@ -3509,14 +3509,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_ISACTIVE_0300
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_ISACTIVE_0300
      *@tc.name      : isActive - Ringtone - Promise
      *@tc.desc      : isActive - Ringtone - Promise - When stream is NOT playing
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_ISACTIVE_0300', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_ISACTIVE_0300', 2, async function (done) {
         console.log('AudioFrameworkTest: Promise : isActive Ringtone: NOTE: audio NOT PLAYING as MEDIA for the test case to PASS');
         const promise = audioManager.isActive(audioRingtone);
         promise.then(function (data) {
@@ -3534,14 +3534,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_ISACTIVE_0400
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_ISACTIVE_0400
      *@tc.name      : isActive - Ringtone - Callback
      *@tc.desc      : isActive - Ringtone - Callback - When stream is NOT playing
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_ISACTIVE_0400', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_ISACTIVE_0400', 2, async function (done) {
         console.log('AudioFrameworkTest: Callback : isActive Ringtone: NOTE: audio NOT PLAYING as MEDIA for the test case to PASS');
         audioManager.isActive(audioRingtone, (err, data) => {
             if (err) {
@@ -3561,14 +3561,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_ISACTIVE_0500
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_ISACTIVE_0500
      *@tc.name      : isActive - Media - Promise - ENAME:
      *@tc.desc      : isActive - Media - Promise - When stream is NOT playing
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_ISACTIVE_0500', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_ISACTIVE_0500', 2, async function (done) {
         console.log('AudioFrameworkTest: Promise : isActive Media: ENAME: NOTE: audio NOT PLAYING as MEDIA for the test case to PASS');
         const promise = audioManager.isActive(audio.AudioVolumeType.MEDIA);
         promise.then(function (data) {
@@ -3586,14 +3586,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_ISACTIVE_0600
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_ISACTIVE_0600
      *@tc.name      : isActive - Media - Callback -  ENAME
      *@tc.desc      : isActive - Media - Callback - When stream is NOT playing
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_ISACTIVE_0600', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_ISACTIVE_0600', 2, async function (done) {
         console.log('AudioFrameworkTest: Callback : isActive Media: ENAME: NOTE: audio NOT PLAYING as MEDIA for the test case to PASS');
         audioManager.isActive(audio.AudioVolumeType.MEDIA, (err, data) => {
             if (err) {
@@ -3613,14 +3613,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_ISACTIVE_0700
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_ISACTIVE_0700
      *@tc.name      : isActive - Ringtone - Promise - ENAME
      *@tc.desc      : isActive - Ringtone - Promise - When stream is NOT playing
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_ISACTIVE_0700', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_ISACTIVE_0700', 2, async function (done) {
         console.log('AudioFrameworkTest: Promise : isActive Ringtone: ENAME: NOTE: audio NOT PLAYING as MEDIA for the test case to PASS');
         const promise = audioManager.isActive(audio.AudioVolumeType.RINGTONE);
         promise.then(function (data) {
@@ -3638,14 +3638,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_ISACTIVE_0800
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_ISACTIVE_0800
      *@tc.name      : isActive - Ringtone - Callback - ENAME
      *@tc.desc      : isActive - Ringtone - Callback - When stream is NOT playing
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_ISACTIVE_0800', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_ISACTIVE_0800', 2, async function (done) {
         console.log('AudioFrameworkTest: Callback : isActive Ringtone: ENAME: NOTE: audio NOT PLAYING as MEDIA for the test case to PASS');
         audioManager.isActive(audio.AudioVolumeType.RINGTONE, (err, data) => {
             if (err) {
@@ -3665,14 +3665,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETMICROPHONEMUTE_0100
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETMICROPHONEMUTE_0100
      *@tc.name      : setMicrophoneMute - true - Promise
      *@tc.desc      : Enable mic mute
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETMICROPHONEMUTE_0100', 1, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETMICROPHONEMUTE_0100', 1, async function (done) {
         await audioManager.setMicrophoneMute(true).then(function () {
             console.log('AudioFrameworkTest: setMicrophoneMute: Promise: TRUE');
             audioManager.isMicrophoneMute().then(function (data) {
@@ -3693,14 +3693,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETMICROPHONEMUTE_0200
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETMICROPHONEMUTE_0200
      *@tc.name      : setMicrophoneMute - false - Promise
      *@tc.desc      : Disable mic mute
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETMICROPHONEMUTE_0200', 1, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETMICROPHONEMUTE_0200', 1, async function (done) {
         await audioManager.setMicrophoneMute(false).then(function () {
             console.log('AudioFrameworkTest: setMicrophoneMute: Promise: FALSE');
             audioManager.isMicrophoneMute().then(function (data) {
@@ -3721,14 +3721,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETMICROPHONEMUTE_0300
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETMICROPHONEMUTE_0300
      *@tc.name      : setMicrophoneMute - true - Callback
      *@tc.desc      : Enable mic mute
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETMICROPHONEMUTE_0300', 1, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETMICROPHONEMUTE_0300', 1, async function (done) {
         audioManager.setMicrophoneMute(true, (err) => {
             if (err) {
                 console.error(`AudioFrameworkTest: setMicrophoneMute: Callback : TRUE: Error : ${err.message}`);
@@ -3757,14 +3757,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETMICROPHONEMUTE_0400
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETMICROPHONEMUTE_0400
      *@tc.name      : setMicrophoneMute - false - Callback
      *@tc.desc      : Disable mic mute
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETMICROPHONEMUTE_0400', 1, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETMICROPHONEMUTE_0400', 1, async function (done) {
         audioManager.setMicrophoneMute(false, (err) => {
             if (err) {
                 console.error(`AudioFrameworkTest: setMicrophoneMute: Callback : FALSE: Error : ${err.message}`);
@@ -3793,14 +3793,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETDEVICEACTIVE_0100
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_0100
      *@tc.name      : setDeviceActive - SPEAKER - deactivate - Promise
      *@tc.desc      : Deactivate speaker - Promise
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETDEVICEACTIVE_0100', 1, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_0100', 1, async function (done) {
         await audioManager.setDeviceActive(2, false).then(function () {
             // Setting device active ENUM 2 = SPEAKER
             console.info('AudioFrameworkTest: Device Test: Promise : setDeviceActive : SPEAKER: Deactivate');
@@ -3822,14 +3822,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETDEVICEACTIVE_0200
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_0200
      *@tc.name      : setDeviceActive - SPEAKER - Activate - Promise
      *@tc.desc      : Activate speaker - Promise
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETDEVICEACTIVE_0200', 1, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_0200', 1, async function (done) {
         await audioManager.setDeviceActive(audio.ActiveDeviceType.SPEAKER, true).then(function () {
             console.info('AudioFrameworkTest: Device Test: Promise : setDeviceActive : SPEAKER: Activate');
             audioManager.isDeviceActive(2).then(function (value) {
@@ -3851,14 +3851,14 @@ describe('audioManager', function () {
 
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETDEVICEACTIVE_0300
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_0300
      *@tc.name      : setDeviceActive - SPEAKER - deactivate - Callback
      *@tc.desc      : Deactivate speaker - Callback
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETDEVICEACTIVE_0300', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_0300', 2, async function (done) {
         audioManager.setDeviceActive(audio.ActiveDeviceType.SPEAKER, false, (err) => {
             if (err) {
                 console.error(`AudioFrameworkTest: Device Test: Callback : setDeviceActive : SPEAKER: Deactivate: Error: ${err.message}`);
@@ -3887,14 +3887,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETDEVICEACTIVE_0400
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_0400
      *@tc.name      : setDeviceActive - SPEAKER - deactivate - Callback
      *@tc.desc      : Activate speaker - Callback
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETDEVICEACTIVE_0400', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_0400', 2, async function (done) {
         audioManager.setDeviceActive(audio.ActiveDeviceType.SPEAKER, true, (err) => {
             if (err) {
                 console.error(`AudioFrameworkTest: Device Test: Callback : setDeviceActive : SPEAKER: Active: Error: ${err.message}`);
@@ -3924,14 +3924,14 @@ describe('audioManager', function () {
 
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETAUDIOPARAMETER_0100
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETAUDIOPARAMETER_0100
      *@tc.name      : setAudioParameter - Promise - Character & Number
      *@tc.desc      : setAudioParameter - Promise - Character & Number
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETAUDIOPARAMETER_0100', 1, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETAUDIOPARAMETER_0100', 1, async function (done) {
         const promise = audioManager.setAudioParameter('VOICE_PHONE_STATUS', '8 bit');
         promise.then(function () {
             console.info('AudioFrameworkTest: Audio Parameter Test: Promise : setAudioParameter');
@@ -3951,14 +3951,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETAUDIOPARAMETER_0200
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETAUDIOPARAMETER_0200
      *@tc.name      : setAudioParameter - Promise - Number
      *@tc.desc      : setAudioParameter - Promise - Number
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETAUDIOPARAMETER_0200', 1, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETAUDIOPARAMETER_0200', 1, async function (done) {
         const promise = audioManager.setAudioParameter('VOICE_PHONE_STATUS', '4800');
         promise.then(function () {
             console.info('AudioFrameworkTest: Audio Parameter Test: Promise : setAudioParameter');
@@ -3978,14 +3978,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETAUDIOPARAMETER_0300
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETAUDIOPARAMETER_0300
      *@tc.name      : setAudioParameter - Promise - Long Number
      *@tc.desc      : setAudioParameter - Promise - Long Number
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETAUDIOPARAMETER_0300', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETAUDIOPARAMETER_0300', 2, async function (done) {
         const promise = audioManager.setAudioParameter('VOICE_PHONE_STATUS', longValue);
         promise.then(function () {
             console.info('AudioFrameworkTest: Audio Parameter Test: Promise : setAudioParameter');
@@ -4005,14 +4005,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETAUDIOPARAMETER_0400
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETAUDIOPARAMETER_0400
      *@tc.name      : setAudioParameter - Promise - Decimal
      *@tc.desc      : setAudioParameter - Promise - Decimal
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETAUDIOPARAMETER_0400', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETAUDIOPARAMETER_0400', 2, async function (done) {
         const promise = audioManager.setAudioParameter('VOICE_PHONE_STATUS', '10.000000234324324324');
         promise.then(function () {
             console.info('AudioFrameworkTest: Audio Parameter Test: Promise : setAudioParameter');
@@ -4032,14 +4032,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETAUDIOPARAMETER_0500
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETAUDIOPARAMETER_0500
      *@tc.name      : setAudioParameter - Promise - Parameter name Number
      *@tc.desc      : setAudioParameter - Promise - Parameter name Number
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETAUDIOPARAMETER_0500', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETAUDIOPARAMETER_0500', 2, async function (done) {
         const promise = audioManager.setAudioParameter('VOICE_PHONE_STATUS', 'PPNumber');
         promise.then(function () {
             console.info('AudioFrameworkTest: Audio Parameter Test: Promise : setAudioParameter');
@@ -4059,14 +4059,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETAUDIOPARAMETER_0600
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETAUDIOPARAMETER_0600
      *@tc.name      : setAudioParameter - Promise - Special Characters
      *@tc.desc      : setAudioParameter - Promise - Special Characters
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETAUDIOPARAMETER_0600', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETAUDIOPARAMETER_0600', 2, async function (done) {
         const promise = audioManager.setAudioParameter('VOICE_PHONE_STATUS', '[]\:";<>?,./~!@#$%^*()_+-={}|');
         promise.then(function () {
             console.info('AudioFrameworkTest: Audio Parameter Test: Promise : setAudioParameter');
@@ -4086,14 +4086,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETAUDIOPARAMETER_0700
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETAUDIOPARAMETER_0700
      *@tc.name      : setAudioParameter - Callback - Character & Number
      *@tc.desc      : setAudioParameter - Callback - Character & Number
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETAUDIOPARAMETER_0700', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETAUDIOPARAMETER_0700', 2, async function (done) {
         audioManager.setAudioParameter('VOICE_PHONE_STATUS', '16 bit', (err) => {
             console.info('AudioFrameworkTest: Audio Parameter Test: Callback : setAudioParameter');
             if (err) {
@@ -4122,14 +4122,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETAUDIOPARAMETER_0800
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETAUDIOPARAMETER_0800
      *@tc.name      : setAudioParameter - Callback - Special Character
      *@tc.desc      : setAudioParameter - Callback - Special Character
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETAUDIOPARAMETER_0800', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETAUDIOPARAMETER_0800', 2, async function (done) {
         audioManager.setAudioParameter('VOICE_PHONE_STATUS', '~!@#$%^*()_+-={}|[]\:";<>?,./', (err) => {
             console.info('AudioFrameworkTest: Audio Parameter Test: Callback : setAudioParameter');
             if (err) {
@@ -4158,14 +4158,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETAUDIOPARAMETER_0900
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETAUDIOPARAMETER_0900
      *@tc.name      : setAudioParameter - Callback - Decimal
      *@tc.desc      : setAudioParameter - Callback - Decimal
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETAUDIOPARAMETER_0900', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETAUDIOPARAMETER_0900', 2, async function (done) {
         audioManager.setAudioParameter('VOICE_PHONE_STATUS', '10000.21321432432432', (err) => {
             console.info('AudioFrameworkTest: Audio Parameter Test: Callback : setAudioParameter');
             if (err) {
@@ -4194,14 +4194,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETAUDIOPARAMETER_1000
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETAUDIOPARAMETER_1000
      *@tc.name      : setAudioParameter - Callback - Number
      *@tc.desc      : setAudioParameter - Callback - Number
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETAUDIOPARAMETER_1000', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETAUDIOPARAMETER_1000', 2, async function (done) {
         audioManager.setAudioParameter('VOICE_PHONE_STATUS', '5454', (err) => {
             console.info('AudioFrameworkTest: Audio Parameter Test: Callback :VOICE_PHONE_STATUS : setAudioParameter');
             if (err) {
@@ -4230,14 +4230,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETAUDIOPARAMETER_1100
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETAUDIOPARAMETER_1100
      *@tc.name      : setAudioParameter - Callback - Long Number
      *@tc.desc      : setAudioParameter - Callback - Long Number
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETAUDIOPARAMETER_1100', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETAUDIOPARAMETER_1100', 2, async function (done) {
         audioManager.setAudioParameter('VOICE_PHONE_STATUS', longValue, (err) => {
             console.info('AudioFrameworkTest: Audio Parameter Test: Callback :VOICE_PHONE_STATUS : setAudioParameter');
             if (err) {
@@ -4264,14 +4264,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_SETAUDIOPARAMETER_1200
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_SETAUDIOPARAMETER_1200
      *@tc.name      : setAudioParameter - Callback - Parameter name Number
      *@tc.desc      : setAudioParameter - Callback - Parameter name Number
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_SETAUDIOPARAMETER_1200', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_SETAUDIOPARAMETER_1200', 2, async function (done) {
         audioManager.setAudioParameter('VOICE_PHONE_STATUS', 'xyza', (err) => {
             console.info('AudioFrameworkTest: Audio Parameter Test: Callback :VOICE_PHONE_STATUS : setAudioParameter');
             if (err) {
@@ -4298,14 +4298,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETAUDIOPARAMETER_0100
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETAUDIOPARAMETER_0100
      *@tc.name      : getAudioParameter - Promise - Character & Number
      *@tc.desc      : getAudioParameter - Promise - Character & Number
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETAUDIOPARAMETER_0100', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETAUDIOPARAMETER_0100', 2, async function (done) {
         const promise = audioManager.setAudioParameter('VOICE_PHONE_STATUS', '8 bit');
         promise.then(function () {
             console.info('AudioFrameworkTest: Audio Parameter Test: Promise : setAudioParameter');
@@ -4325,14 +4325,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETAUDIOPARAMETER_0200
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETAUDIOPARAMETER_0200
      *@tc.name      : getAudioParameter - Promise - Number
      *@tc.desc      : getAudioParameter - Promise - Number
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETAUDIOPARAMETER_0200', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETAUDIOPARAMETER_0200', 2, async function (done) {
         const promise = audioManager.setAudioParameter('VOICE_PHONE_STATUS', '4800');
         promise.then(function () {
             console.info('AudioFrameworkTest: Audio Parameter Test: Promise : setAudioParameter');
@@ -4352,14 +4352,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETAUDIOPARAMETER_0300
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETAUDIOPARAMETER_0300
      *@tc.name      : getAudioParameter - Promise - Long Number
      *@tc.desc      : getAudioParameter - Promise - Long Number
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETAUDIOPARAMETER_0300', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETAUDIOPARAMETER_0300', 2, async function (done) {
         const promise = audioManager.setAudioParameter('VOICE_PHONE_STATUS', longValue);
         promise.then(function () {
             console.info('AudioFrameworkTest: Audio Parameter Test: Promise : setAudioParameter');
@@ -4379,14 +4379,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETAUDIOPARAMETER_0400
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETAUDIOPARAMETER_0400
      *@tc.name      : getAudioParameter - Promise - Decimal
      *@tc.desc      : getAudioParameter - Promise - Decimal
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETAUDIOPARAMETER_0400', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETAUDIOPARAMETER_0400', 2, async function (done) {
         const promise = audioManager.setAudioParameter('VOICE_PHONE_STATUS', '10.0000000000234');
         promise.then(function () {
             console.info('AudioFrameworkTest: Audio Parameter Test: Promise : setAudioParameter');
@@ -4406,14 +4406,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETAUDIOPARAMETER_0500
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETAUDIOPARAMETER_0500
      *@tc.name      : getAudioParameter - Promise - Parameter name Number
      *@tc.desc      : getAudioParameter - Promise - Parameter name Number
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETAUDIOPARAMETER_0500', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETAUDIOPARAMETER_0500', 2, async function (done) {
         const promise = audioManager.setAudioParameter('VOICE_PHONE_STATUS', 'PPNumber');
         promise.then(function () {
             console.info('AudioFrameworkTest: Audio Parameter Test: Promise : setAudioParameter');
@@ -4433,14 +4433,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETAUDIOPARAMETER_0600
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETAUDIOPARAMETER_0600
      *@tc.name      : getAudioParameter - Promise - Special Characters
      *@tc.desc      : getAudioParameter - Promise - Special Characters 
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETAUDIOPARAMETER_0600', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETAUDIOPARAMETER_0600', 2, async function (done) {
         const promise = audioManager.setAudioParameter('VOICE_PHONE_STATUS', '[]\:";<>?,./~!@#$%^*()_+-={}|');
         promise.then(function () {
             console.info('AudioFrameworkTest: Audio Parameter Test: Promise : setAudioParameter');
@@ -4460,14 +4460,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETAUDIOPARAMETER_0700
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETAUDIOPARAMETER_0700
      *@tc.name      : getAudioParameter - Callback - Character & Number 
      *@tc.desc      : getAudioParameter - Callback - Character & Number
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETAUDIOPARAMETER_0700', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETAUDIOPARAMETER_0700', 2, async function (done) {
         audioManager.setAudioParameter('VOICE_PHONE_STATUS', '16 bit', (err) => {
             console.info('AudioFrameworkTest: Audio Parameter Test: Callback :VOICE_PHONE_STATUS : setAudioParameter');
             if (err) {
@@ -4494,14 +4494,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETAUDIOPARAMETER_0800
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETAUDIOPARAMETER_0800
      *@tc.name      : getAudioParameter - Callback - Special Character ~!@#$%^*()_+-={}|[]\:";<>?,./
      *@tc.desc      : getAudioParameter - Callback - Special Character
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETAUDIOPARAMETER_0800', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETAUDIOPARAMETER_0800', 2, async function (done) {
         audioManager.setAudioParameter('VOICE_PHONE_STATUS', '~!@#$%^*()_+-={}|[]\:";<>?,./', (err) => {
             console.info('AudioFrameworkTest: Audio Parameter Test: Callback :VOICE_PHONE_STATUS : setAudioParameter');
             if (err) {
@@ -4528,14 +4528,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETAUDIOPARAMETER_0900
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETAUDIOPARAMETER_0900
      *@tc.name      : getAudioParameter - Callback - Decimal
      *@tc.desc      : getAudioParameter - Callback - Decimal 10000.21321432432432
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETAUDIOPARAMETER_0900', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETAUDIOPARAMETER_0900', 2, async function (done) {
         audioManager.setAudioParameter('VOICE_PHONE_STATUS', '10000.21321432432432', (err) => {
             console.info('AudioFrameworkTest: Audio Parameter Test: Callback :VOICE_PHONE_STATUS : setAudioParameter');
             if (err) {
@@ -4562,14 +4562,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETAUDIOPARAMETER_1000
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETAUDIOPARAMETER_1000
      *@tc.name      : getAudioParameter - Callback - Number 5454
      *@tc.desc      : getAudioParameter - Callback - Number
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETAUDIOPARAMETER_1000', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETAUDIOPARAMETER_1000', 2, async function (done) {
         audioManager.setAudioParameter('VOICE_PHONE_STATUS', '5454', (err) => {
             console.info('AudioFrameworkTest: Audio Parameter Test: Callback :VOICE_PHONE_STATUS : setAudioParameter');
             if (err) {
@@ -4596,14 +4596,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETAUDIOPARAMETER_1100
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETAUDIOPARAMETER_1100
      *@tc.name      : getAudioParameter - Callback - Long Number longValue
      *@tc.desc      : getAudioParameter - Callback - Long Number
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_GETAUDIOPARAMETER_1100', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETAUDIOPARAMETER_1100', 2, async function (done) {
         audioManager.setAudioParameter('VOICE_PHONE_STATUS', longValue, (err) => {
             console.info('AudioFrameworkTest: Audio Parameter Test: Callback :VOICE_PHONE_STATUS : setAudioParameter');
             if (err) {
@@ -4631,7 +4631,7 @@ describe('audioManager', function () {
 
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_GETAUDIOPARAMETER_1200
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_GETAUDIOPARAMETER_1200
      *@tc.name      : getAudioParameter - Callback - Parameter name Number
      *@tc.desc      : getAudioParameter - Callback - Parameter name Number
      *@tc.size      : MEDIUM
@@ -4639,7 +4639,7 @@ describe('audioManager', function () {
      *@tc.level     : Level 2
      */
 
-    it('SUB_MULTIMEDIA_MANAGER_GETAUDIOPARAMETER_1200', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_GETAUDIOPARAMETER_1200', 2, async function (done) {
         audioManager.setAudioParameter('VOICE_PHONE_STATUS', 'xyza', (err) => {
             console.info('AudioFrameworkTest: Audio Parameter Test: Callback :VOICE_PHONE_STATUS : setAudioParameter');
             if (err) {
@@ -4666,14 +4666,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_ONVOLUMECHANGE_0100
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_ONVOLUMECHANGE_0100
      *@tc.name      : OnVolumeChange - setVolume - MEDIA
      *@tc.desc      : OnVolumeChange - setVolume - MEDIA
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_MANAGER_ONVOLUMECHANGE_0100', 1, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_ONVOLUMECHANGE_0100', 1, async function (done) {
 
         audioManager.on('volumeChange', (VolumeEvent) => {
 
@@ -4702,14 +4702,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_ONVOLUMECHANGE_0200
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_ONVOLUMECHANGE_0200
      *@tc.name      : OnVolumeChange - setVolume - RINGTONE
      *@tc.desc      : OnVolumeChange - setVolume - RINGTONE
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_MANAGER_ONVOLUMECHANGE_0200', 1, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_ONVOLUMECHANGE_0200', 1, async function (done) {
 
         audioManager.on('volumeChange', (VolumeEvent) => {
 
@@ -4738,14 +4738,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_ONVOLUMECHANGE_0300
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_ONVOLUMECHANGE_0300
      *@tc.name      : OnVolumeChange - setVolume - VOICE_CALL
      *@tc.desc      : OnVolumeChange - setVolume - VOICE_CALL
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_ONVOLUMECHANGE_0300', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_ONVOLUMECHANGE_0300', 2, async function (done) {
 
         audioManager.on('volumeChange', (VolumeEvent) => {
 
@@ -4774,14 +4774,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_ONVOLUMECHANGE_0400
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_ONVOLUMECHANGE_0400
      *@tc.name      : OnVolumeChange - setVolume - VOICE_ASSISTANT
      *@tc.desc      : OnVolumeChange - setVolume - VOICE_ASSISTANT
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_ONVOLUMECHANGE_0400', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_ONVOLUMECHANGE_0400', 2, async function (done) {
 
         audioManager.on('volumeChange', (VolumeEvent) => {
 
@@ -4810,14 +4810,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_RINGERMODECHANGE_0100
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_RINGERMODECHANGE_0100
      *@tc.name      : RingerModeChange - RINGER_MODE_SILENT
      *@tc.desc      : RingerModeChange - RINGER_MODE_SILENT
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_MANAGER_RINGERMODECHANGE_0100', 1, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_RINGERMODECHANGE_0100', 1, async function (done) {
 
         audioManager.on('ringerModeChange', (ringerMode) => {
 
@@ -4839,14 +4839,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_RINGERMODECHANGE_0200
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_RINGERMODECHANGE_0200
      *@tc.name      : RingerModeChange - RINGER_MODE_VIBRATE
      *@tc.desc      : RingerModeChange - RINGER_MODE_VIBRATE
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_MANAGER_RINGERMODECHANGE_0200', 1, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_RINGERMODECHANGE_0200', 1, async function (done) {
 
         audioManager.on('ringerModeChange', (ringerMode) => {
 
@@ -4868,14 +4868,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_RINGERMODECHANGE_0300
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_RINGERMODECHANGE_0300
      *@tc.name      : RingerModeChange - RINGER_MODE_SILENT
      *@tc.desc      : RingerModeChange - RINGER_MODE_SILENT
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_RINGERMODECHANGE_0300', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_RINGERMODECHANGE_0300', 2, async function (done) {
 
         audioManager.on('ringerModeChange', (ringerMode) => {
             console.log('AudioFrameworkTest: RingerModeChange is called');
@@ -4895,210 +4895,210 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_INTERRUPT_0100
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_INTERRUPT_0100
      *@tc.name      : InterruptType - INTERRUPT_TYPE_BEGIN
      *@tc.desc      : InterruptType - INTERRUPT_TYPE_BEGIN
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_INTERRUPT_0100', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_INTERRUPT_0100', 2, async function (done) {
         expect(audio.InterruptType.INTERRUPT_TYPE_BEGIN).assertEqual(1);
         await sleep(50);
         done();
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_INTERRUPT_0200
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_INTERRUPT_0200
      *@tc.name      : InterruptType - INTERRUPT_TYPE_END
      *@tc.desc      : InterruptType - INTERRUPT_TYPE_END
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_INTERRUPT_0200', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_INTERRUPT_0200', 2, async function (done) {
         expect(audio.InterruptType.INTERRUPT_TYPE_END).assertEqual(2);
         await sleep(50);
         done();
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_INTERRUPT_0300
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_INTERRUPT_0300
      *@tc.name      : InterruptHint - INTERRUPT_HINT_NONE
      *@tc.desc      : InterruptHint - INTERRUPT_HINT_NONE
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_INTERRUPT_0300', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_INTERRUPT_0300', 2, async function (done) {
         expect(audio.InterruptHint.INTERRUPT_HINT_NONE).assertEqual(0);
         await sleep(50);
         done();
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_INTERRUPT_0400
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_INTERRUPT_0400
      *@tc.name      : InterruptHint - INTERRUPT_HINT_RESUME
      *@tc.desc      : InterruptHint - INTERRUPT_HINT_RESUME
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_INTERRUPT_0400', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_INTERRUPT_0400', 2, async function (done) {
         expect(audio.InterruptHint.INTERRUPT_HINT_RESUME).assertEqual(1);
         await sleep(50);
         done();
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_INTERRUPT_0500
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_INTERRUPT_0500
      *@tc.name      : InterruptHint - INTERRUPT_HINT_PAUSE
      *@tc.desc      : InterruptHint - INTERRUPT_HINT_PAUSE
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_INTERRUPT_0500', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_INTERRUPT_0500', 2, async function (done) {
         expect(audio.InterruptHint.INTERRUPT_HINT_PAUSE).assertEqual(2);
         await sleep(50);
         done();
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_INTERRUPT_0600
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_INTERRUPT_0600
      *@tc.name      : InterruptHint - INTERRUPT_HINT_STOP
      *@tc.desc      : InterruptHint - INTERRUPT_HINT_STOP
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_INTERRUPT_0600', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_INTERRUPT_0600', 2, async function (done) {
         expect(audio.InterruptHint.INTERRUPT_HINT_STOP).assertEqual(3);
         await sleep(50);
         done();
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_INTERRUPT_0700
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_INTERRUPT_0700
      *@tc.name      : InterruptHint - INTERRUPT_HINT_DUCK
      *@tc.desc      : InterruptHint - INTERRUPT_HINT_DUCK
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_INTERRUPT_0700', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_INTERRUPT_0700', 2, async function (done) {
         expect(audio.InterruptHint.INTERRUPT_HINT_DUCK).assertEqual(4);
         await sleep(50);
         done();
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_INTERRUPT_0800
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_INTERRUPT_0800
      *@tc.name      : InterruptHint - INTERRUPT_HINT_UNDUCK
      *@tc.desc      : InterruptHint - INTERRUPT_HINT_UNDUCK
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_INTERRUPT_0800', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_INTERRUPT_0800', 2, async function (done) {
         expect(audio.InterruptHint.INTERRUPT_HINT_UNDUCK).assertEqual(5);
         await sleep(50);
         done();
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_INTERRUPT_0900
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_INTERRUPT_0900
      *@tc.name      : InterruptForceType - INTERRUPT_FORCE
      *@tc.desc      : InterruptForceType - INTERRUPT_FORCE
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_INTERRUPT_0900', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_INTERRUPT_0900', 2, async function (done) {
         expect(audio.InterruptForceType.INTERRUPT_FORCE).assertEqual(0);
         await sleep(50);
         done();
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_INTERRUPT_1000
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_INTERRUPT_1000
      *@tc.name      : InterruptForceType - INTERRUPT_SHARE
      *@tc.desc      : InterruptForceType - INTERRUPT_SHARE
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_INTERRUPT_1000', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_INTERRUPT_1000', 2, async function (done) {
         expect(audio.InterruptForceType.INTERRUPT_SHARE).assertEqual(1);
         await sleep(50);
         done();
     })
 
     /**
-      *@tc.number    : SUB_MULTIMEDIA_MANAGER_INTERRUPT_1100
+      *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_INTERRUPT_1100
       *@tc.name      : ActiveDeviceType - BLUETOOTH_SCO
       *@tc.desc      : ActiveDeviceType - BLUETOOTH_SCO
       *@tc.size      : MEDIUM
       *@tc.type      : Function
       *@tc.level     : Level 2
       */
-    it('SUB_MULTIMEDIA_MANAGER_INTERRUPT_1100', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_INTERRUPT_1100', 2, async function (done) {
         expect(audio.ActiveDeviceType.BLUETOOTH_SCO).assertEqual(7);
         await sleep(50);
         done();
     })
 
     /**
-       *@tc.number    : SUB_MULTIMEDIA_MANAGER_INTERRUPT_1200
+       *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_INTERRUPT_1200
        *@tc.name      : ActiveDeviceType - SPEAKER
        *@tc.desc      : ActiveDeviceType - SPEAKER
        *@tc.size      : MEDIUM
        *@tc.type      : Function
        *@tc.level     : Level 2
        */
-    it('SUB_MULTIMEDIA_MANAGER_INTERRUPT_1200', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_INTERRUPT_1200', 2, async function (done) {
         expect(audio.ActiveDeviceType.SPEAKER).assertEqual(2);
         await sleep(50);
         done();
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_INTERRUPTACTIONTYPE_0100
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_INTERRUPTACTIONTYPE_0100
      *@tc.name      : InterruptActionType - TYPE_ACTIVATED 
      *@tc.desc      : InterruptActionType - TYPE_ACTIVATED 
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_INTERRUPTACTIONTYPE_0100', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_INTERRUPTACTIONTYPE_0100', 2, async function (done) {
         expect(audio.InterruptActionType.TYPE_ACTIVATED).assertEqual(0);
         await sleep(50);
         done();
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_INTERRUPTACTIONTYPE_0200
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_INTERRUPTACTIONTYPE_0200
      *@tc.name      : InterruptActionType - TYPE_INTERRUPT
      *@tc.desc      : InterruptActionType - TYPE_INTERRUPT
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
     */
-    it('SUB_MULTIMEDIA_MANAGER_INTERRUPTACTIONTYPE_0200', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_INTERRUPTACTIONTYPE_0200', 2, async function (done) {
         expect(audio.InterruptActionType.TYPE_INTERRUPT).assertEqual(1);
         await sleep(50);
         done();
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_DEVICETYPE_0100
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_DEVICETYPE_0100
      *@tc.name      : DeviceType - ALL Device Type
      *@tc.desc      : DeviceType - ALL Device Type
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_DEVICETYPE_0100', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_DEVICETYPE_0100', 2, async function (done) {
         expect(audio.DeviceType.INVALID).assertEqual(0);
         console.info("audio.DeviceType.INVALID:" + audio.DeviceType.INVALID);
         expect(audio.DeviceType.EARPIECE).assertEqual(1);
@@ -5122,14 +5122,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_MANAGER_DEVICEROLE_0100
+     *@tc.number    : MULTIMEDIA_AUDIO_MANAGER_DEVICEROLE_0100
      *@tc.name      : DeviceRole - ALL Device Role
      *@tc.desc      : DeviceRole - ALL Device Role
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_MANAGER_DEVICEROLE_0100', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_MANAGER_DEVICEROLE_0100', 2, async function (done) {
         expect(audio.DeviceRole.INPUT_DEVICE).assertEqual(1);
         console.info("audio.DeviceRole.INPUT_DEVICE :" + audio.DeviceRole.INPUT_DEVICE);
         expect(audio.DeviceRole.OUTPUT_DEVICE).assertEqual(2);
@@ -5139,14 +5139,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_ROUTING_MANAGER_GETDEVICES_0100
+     *@tc.number    : MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0100
      *@tc.name      : getDevices - Output device - Callback
      *@tc.desc      : getDevices - Output device
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_ROUTING_MANAGER_GETDEVICES_0100', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0100', 2, async function (done) {
         dRValue = null;
         dTValue = null;
         devId = null;
@@ -5183,14 +5183,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_ROUTING_MANAGER_GETDEVICES_0200
+     *@tc.number    : MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0200
      *@tc.name      : getDevices - Input device - Callback
      *@tc.desc      : getDevices - Input device
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_ROUTING_MANAGER_GETDEVICES_0200', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0200', 2, async function (done) {
         dRValue = null;
         dTValue = null;
         devId = null;
@@ -5228,14 +5228,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_ROUTING_MANAGER_GETDEVICES_0300
+     *@tc.number    : MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0300
      *@tc.name      : getDevices - ALL device - Callback
      *@tc.desc      : getDevices - ALL device
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_ROUTING_MANAGER_GETDEVICES_0300', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0300', 2, async function (done) {
         dRValue = null;
         dTValue = null;
         devId = null;
@@ -5273,14 +5273,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_ROUTING_MANAGER_GETDEVICES_0400
+     *@tc.number    : MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0400
      *@tc.name      : getDevices - Output device - Callback - ENAME
      *@tc.desc      : getDevices - Output device
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_ROUTING_MANAGER_GETDEVICES_0400', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0400', 2, async function (done) {
         dRValue = null;
         dTValue = null;
         devId = null;
@@ -5314,14 +5314,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_ROUTING_MANAGER_GETDEVICES_0500
+     *@tc.number    : MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0500
      *@tc.name      : getDevices - Input device - Callback - ENAME
      *@tc.desc      : getDevices - Input device
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_ROUTING_MANAGER_GETDEVICES_0500', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0500', 2, async function (done) {
         dRValue = null;
         dTValue = null;
         devId = null;
@@ -5356,14 +5356,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_ROUTING_MANAGER_GETDEVICES_0600
+     *@tc.number    : MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0600
      *@tc.name      : getDevices - ALL device - Callback - ENAME
      *@tc.desc      : getDevices - ALL device
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_ROUTING_MANAGER_GETDEVICES_0600', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0600', 2, async function (done) {
         dRValue = null;
         dTValue = null;
         devId = null;
@@ -5397,14 +5397,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_ROUTING_MANAGER_GETDEVICES_0700
+     *@tc.number    : MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0700
      *@tc.name      : getDevices - OUTPUT device - Promise - ENAME
      *@tc.desc      : getDevices - OUTPUT device
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_ROUTING_MANAGER_GETDEVICES_0700', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0700', 2, async function (done) {
         dRValue = null;
         dTValue = null;
         devId = null;
@@ -5430,14 +5430,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_ROUTING_MANAGER_GETDEVICES_0800
+     *@tc.number    : MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0800
      *@tc.name      : getDevices - INPUT device - Promise - ENAME
      *@tc.desc      : getDevices - INPUT device
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_ROUTING_MANAGER_GETDEVICES_0800', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0800', 2, async function (done) {
         dRValue = null;
         dTValue = null;
         devId = null;
@@ -5470,14 +5470,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_ROUTING_MANAGER_GETDEVICES_0900
+     *@tc.number    : MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0900
      *@tc.name      : getDevices - ALL device - Promise - ENAME
      *@tc.desc      : getDevices - ALL device
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_ROUTING_MANAGER_GETDEVICES_0900', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0900', 2, async function (done) {
         dRValue = null;
         dTValue = null;
         devId = null;
@@ -5510,14 +5510,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_DEVICEFALG_0100
+     *@tc.number    : MULTIMEDIA_AUDIO_DEVICEFALG_0100
      *@tc.name      : NONE_DEVICES_FLAG
      *@tc.desc      : NONE_DEVICES_FLAG
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_DEVICEFALG_0100', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_DEVICEFALG_0100', 2, async function (done) {
         expect(audio.DeviceFlag.OUTPUT_DEVICES_FLAG).assertEqual(1);
         expect(audio.DeviceFlag.INPUT_DEVICES_FLAG).assertEqual(2);
         expect(audio.DeviceFlag.ALL_DEVICES_FLAG).assertEqual(3);
@@ -5526,14 +5526,14 @@ describe('audioManager', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_SAMPLE_FORMAT_F32LE_0100
+     *@tc.number    : MULTIMEDIA_AUDIO_SAMPLE_FORMAT_F32LE_0100
      *@tc.name      : SAMPLE_FORMAT_F32LE
      *@tc.desc      : SAMPLE_FORMAT_F32LE
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_SAMPLE_FORMAT_F32LE_0100', 2, async function (done) {
+    it('MULTIMEDIA_AUDIO_SAMPLE_FORMAT_F32LE_0100', 2, async function (done) {
         expect(audio.AudioSampleFormat.SAMPLE_FORMAT_F32LE).assertEqual(4);
         await sleep(50);
         done();
