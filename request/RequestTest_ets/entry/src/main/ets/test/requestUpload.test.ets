@@ -255,49 +255,6 @@ export default function requestUploadJSUnit() {
       done();
     });
 
-    /**
-         * @tc.number    SUB_REQUEST_UPLOAD_API_CALLBACK_0002
-         * @tc.name      Test requestUploadTest type = TIMER_TYPE_REALTIME
-         * @tc.desc      Test requestUploadTest API functionality.
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 1
-         */
-    it('SUB_REQUEST_UPLOAD_API_CALLBACK_0002', 0, async function (done) {
-      console.info("-----------------------Request_test_0006 is starting-----------------------");
-      try {
-        console.info("SUB_REQUEST_UPLOAD_API_CALLBACK_0002 uploadConfig = " + JSON.stringify(uploadConfig));
-        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-        let appContext = abilityDelegator.getAppContext();
-        console.info("SUB_REQUEST_UPLOAD_API_CALLBACK_0002 context = " + appContext);
-        request.upload(appContext, uploadConfig, (data) => {
-          uploadTask = data;
-          console.info("SUB_REQUEST_UPLOAD_API_CALLBACK_0002 progress uploadTask =" + JSON.stringify(uploadTask));
-          expect(uploadTask != undefined).assertEqual(true);
-
-          uploadTask.on('progress', function (data1, data2) {
-            console.info("SUB_REQUEST_UPLOAD_API_CALLBACK_0002 on data1 =" + data1);
-            console.info("SUB_REQUEST_UPLOAD_API_CALLBACK_0002 on data2 =" + data2);
-          });
-
-          uploadTask.off('progress', function (data1, data2) {
-            console.info("SUB_REQUEST_UPLOAD_API_CALLBACK_0002 off data1 =" + data1);
-            console.info("SUB_REQUEST_UPLOAD_API_CALLBACK_0002 off data2 =" + data2);
-          });
-
-          uploadTask.remove((err, data) => {
-            console.info("SUB_REQUEST_UPLOAD_API_CALLBACK_0002 remove =" + data);
-          });
-        });
-      } catch (err) {
-        console.error("SUB_REQUEST_UPLOAD_API_CALLBACK_0002 error: " + err);
-        expect().assertFail();
-      }
-      sleep(Date.now(), 20000);
-      console.info("-----------------------SUB_REQUEST_UPLOAD_API_CALLBACK_0002 end-----------------------");
-      done();
-    });
-
     /*
         * @tc.number    : SUB_REQUEST_UPLOAD_API_PROMISE_0001
         * @tc.name      : Use getEntries get the value by mixing the string key
@@ -307,6 +264,7 @@ export default function requestUploadJSUnit() {
         * @tc.level     : Level 1
     */
     it('SUB_REQUEST_UPLOAD_API_PROMISE_0001', 0, async function (done) {
+      console.info("-----------------------SUB_REQUEST_UPLOAD_API_PROMISE_0001 is starting-----------------------");
       try {
         console.info("SUB_REQUEST_UPLOAD_API_PROMISE_0001 UploadConfig = " + JSON.stringify(uploadConfig));
         request.upload(uploadConfig).then((data) => {
@@ -331,52 +289,12 @@ export default function requestUploadJSUnit() {
         });
       } catch (e) {
         console.error("SUB_REQUEST_UPLOAD_API_PROMISE_0001 error: " + JSON.stringify(e));
-        expect(e).assertFail();
+        expect(true).assertFail(true);
       }
       sleep(Date.now(), 20000);
+      console.info("-----------------------SUB_REQUEST_UPLOAD_API_PROMISE_0001 end-----------------------");
       done();
     });
 
-    /*
-        * @tc.number    : SUB_REQUEST_UPLOAD_API_PROMISE_0002
-        * @tc.name      : Use getEntries get the value by mixing the string key
-        * @tc.desc      : Mixed strings value can be obtained correctly
-        * @tc.size      : MediumTest
-        * @tc.type      : Function
-        * @tc.level     : Level 1
-    */
-    it('SUB_REQUEST_UPLOAD_API_PROMISE_0002', 0, async function (done) {
-      try {
-        console.info("SUB_REQUEST_UPLOAD_API_PROMISE_0002 UploadConfig = " + JSON.stringify(uploadConfig));
-        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-        let appContext = abilityDelegator.getAppContext();
-        console.info("SUB_REQUEST_UPLOAD_API_PROMISE_0002 context = " + appContext);
-        request.upload(appContext, uploadConfig).then((data) => {
-          uploadTask = data;
-          console.info("SUB_REQUEST_UPLOAD_API_PROMISE_0002 uploadTask = " + uploadTask);
-          expect(data != undefined).assertEqual(true);
-
-          uploadTask.on('headerReceive', (header) => {
-            console.info("SUB_REQUEST_UPLOAD_API_PROMISE_0002 header = " + header);
-            expect(true).assertEqual((header != undefined) || (header != "") || (header != {}));
-          });
-
-          uploadTask.off('headerReceive', (header) => {
-            console.info("SUB_REQUEST_UPLOAD_API_PROMISE_0002 header = " + header);
-            expect(true).assertEqual((header != undefined) || (header != "") || (header != {}));
-          });
-
-          uploadTask.remove().then((result)=>{
-            console.info("SUB_REQUEST_UPLOAD_API_PROMISE_0002 remove result = " + result);
-            expect(result).assertEqual(true);
-          });
-        });
-      } catch (e) {
-        console.error("SUB_REQUEST_UPLOAD_API_PROMISE_0002 error: " + JSON.stringify(e));
-        expect(e).assertFail();
-      }
-      sleep(Date.now(), 20000);
-      done();
-    });
   })
 }

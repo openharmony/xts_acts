@@ -11,29 +11,33 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//build/ohos.gni")
 import("//test/xts/tools/build/suite.gni")
-ohos_js_hap_suite("ActsRequestETSApiTest") {
-  hap_profile = "./entry/src/main/config.json"
+
+ohos_js_hap_suite("ActsRequestStageTest") {
+  hap_profile = "entry/src/main/module.json"
+  js_build_mode = "debug"
   deps = [
-    ":request_ets_assets",
-    ":request_ets_resources",
-    ":request_ets_test_assets",
+    ":requestStage_ets_assets",
+    ":requestStage_resources",
   ]
   ets2abc = true
+  certificate_profile = "signature/actsRequestStageTest.p7b"
+  hap_name = "ActsRequestStageTest"
   subsystem_name = "request"
   part_name = "request"
-  certificate_profile = "./signature/ActsRequestETSApiTest.p7b"
-  hap_name = "ActsRequestETSApiTest"
 }
 
-ohos_js_assets("request_ets_assets") {
-  source_dir = "./entry/src/main/ets/MainAbility"
+ohos_app_scope("requestStage_app_profile") {
+  app_profile = "AppScope/app.json"
+  sources = [ "AppScope/resources" ]
 }
-ohos_js_assets("request_ets_test_assets") {
-  source_dir = "./entry/src/main/ets/TestAbility"
+
+ohos_js_assets("requestStage_ets_assets") {
+  source_dir = "entry/src/main/ets"
 }
-ohos_resources("request_ets_resources") {
-  sources = [ "./entry/src/main/resources" ]
-  hap_profile = "./entry/src/main/config.json"
+
+ohos_resources("requestStage_resources") {
+  sources = [ "entry/src/main/resources" ]
+  deps = [ ":requestStage_app_profile" ]
+  hap_profile = "entry/src/main/module.json"
 }
