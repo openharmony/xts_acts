@@ -460,14 +460,14 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_PROMISE_RELEASE_001
+         * @tc.number    : SUB_MEDIA_MIDIALIBRARY_PROMISE_RELEASE_001
          * @tc.name      : release
          * @tc.desc      : Release MediaLibrary instance
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_PROMISE_RELEASE_001', 0, async function (done) {
+        it('SUB_MEDIA_MIDIALIBRARY_PROMISE_RELEASE_001', 0, async function (done) {
             try {
                 await media.release();
                 console.info('MediaLibraryTest : release 001 passed');
