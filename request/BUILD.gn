@@ -14,5 +14,8 @@
 import("//build/ohos_var.gni")
 group("request") {
   testonly = true
-  deps = [ "RequestTest_ets:ActsRequestETSApiTest" ]
+  deps = [
+    "RequestTest_Stage:ActsRequestStageTest",
+    "RequestTest_ets:ActsRequestETSApiTest",
+  ]
 }

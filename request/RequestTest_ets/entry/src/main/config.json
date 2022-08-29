@@ -62,6 +62,18 @@
         "launchType": "standard"
       }
     ],
+    "reqPermissions": [
+      {
+        "name": "ohos.permission.INTERNET",
+        "reason": "need use ohos.permission.INTERNET",
+        "usedScene": {
+          "ability": [
+            "com.acts.request.test.MainAbility"
+          ],
+          "when": "inuse"
+        }
+      }
+    ],
     "js": [
       {
         "mode": {
