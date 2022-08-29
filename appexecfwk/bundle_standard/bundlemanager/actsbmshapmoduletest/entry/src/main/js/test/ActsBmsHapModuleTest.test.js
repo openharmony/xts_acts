@@ -88,6 +88,8 @@ describe('ActsBmsHapModuleTest', function () {
                 expect(hapModuleInfo.mainAbilityName).assertEqual(FIRSTMAINABILITY);
                 expect(hapModuleInfo1.moduleName).assertEqual('bmsmainabilitysecondscene');
                 expect(hapModuleInfo1.mainAbilityName).assertEqual(SECONDMAINABILITY);
+                expect(hapModuleInfo.installationFree).assertEqual(false);
+                expect(hapModuleInfo1.installationFree).assertEqual(true);
                 done();
             }
         });
@@ -202,6 +204,5 @@ describe('ActsBmsHapModuleTest', function () {
         expect(info.reqCapabilities.length).assertEqual(0);
         expect(info.deviceTypes[0]).assertEqual('default');
         expect(info.abilityInfo.length).assertLarger(0);
-        expect(info.installationFree).assertEqual(false);
     }
 })
