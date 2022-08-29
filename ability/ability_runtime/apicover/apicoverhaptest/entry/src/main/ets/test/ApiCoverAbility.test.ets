@@ -553,16 +553,16 @@ export default function ApiCoverTest() {
           events: ["Form_StartAbility"]
         }
         function UnSubscribeInfoCallback(err, data) {
-          console.info("SUB_AA_FMS_AcquireFormState_0700 ===UnSubscribeInfoCallback===")
+          console.info("SUB_AA_FMS_AcquireForm_0100 ===UnSubscribeInfoCallback===")
         }
         function SubscribeInfoCallback(err, data) {
-          console.info("SUB_AA_FMS_AcquireFormState_0700 ===SubscribeInfoCallback===" + JSON.stringify(data))
+          console.info("SUB_AA_FMS_AcquireForm_0100 ===SubscribeInfoCallback===" + JSON.stringify(data))
             expect(data.parameters["Life"]).assertEqual("onForeground")
             commonEvent.unsubscribe(subscriber, UnSubscribeInfoCallback)
             done()
         }
         commonEvent.createSubscriber(subscribeInfo, (err, data) => {
-          console.info("SUB_AA_FMS_AcquireFormState_0700 ===CreateSubscriberCallback===")
+          console.info("SUB_AA_FMS_AcquireForm_0100 ===CreateSubscriberCallback===")
           subscriber = data
           commonEvent.subscribe(subscriber, SubscribeInfoCallback)
         })
@@ -576,7 +576,7 @@ export default function ApiCoverTest() {
       }
       globalThis.abilityContext.startAbility(formWant, (err, data)=>{
         if(err.code == 0){
-           console.info("SUB_AA_FMS_AcquireFormState_0700 ===acquireFormState=== " + JSON.stringify(data))
+           console.info("SUB_AA_FMS_AcquireForm_0100 ===acquireFormState=== " + JSON.stringify(data))
         }else{
           expect().assertFail()
           done()
