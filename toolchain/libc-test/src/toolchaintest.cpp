@@ -38,10 +38,14 @@ class toolchaintest : public ::testing::TestWithParam<string> {};
 
 static string filepath = "/data/local/tmp/libc-test/src";
 static vector<std::string> temp = runtest::GetFileNames(filepath);
+
 volatile int t_status = 0;
 
-static void handler(int s)
+static int h_sigCount = 0;
+static void handler(int sig)
 {
+    (void)sig;
+    h_sigCount++;
 }
 
 static int start(char *wrap, const char *argvs)
