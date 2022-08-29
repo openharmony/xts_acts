@@ -348,30 +348,26 @@ describe('audioCall', function () {
 
     }
 
-
-    /* *
-               * @tc.number    : SUB_AUDIO_VOIP_Play_001
-               * @tc.name      : 
-               * @tc.desc      : 
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0
-           */
-    it('SUB_AUDIO_CALL_Play_001', 0, async function (done) {
-
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_CALL_PlAY_0100
+     *@tc.name
+     *@tc.desc
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_CALL_PlAY_0100', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_1,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
             rendererFlags: 0
         }
-
         var AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
@@ -386,16 +382,15 @@ describe('audioCall', function () {
         done();
     })
 
-    /* *
-               * @tc.number    : SUB_AUDIO_VOIP_Rec_001
-               * @tc.name      : 
-               * @tc.desc      : 
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0
-           */
-    it('SUB_AUDIO_CALL_Rec_001', 0, async function (done) {
-
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_CALL_REC_0100
+     *@tc.name
+     *@tc.desc
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_CALL_REC_0100', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -421,17 +416,15 @@ describe('audioCall', function () {
         done();
     })
 
-
-    /* *
-               * @tc.number    : SUB_AUDIO_VOIP_RecPlay_001
-               * @tc.name      : 
-               * @tc.desc      : 
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0
-           */
-    it('SUB_AUDIO_CALL_RecPlay_001', 0, async function (done) {
-
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_CALL_RECPLAY_0100
+     *@tc.name
+     *@tc.desc
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_CALL_RECPLAY_0100', 2, async function (done) {
         var AudioStreamInfoCap = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -485,5 +478,4 @@ describe('audioCall', function () {
         await closeFileDescriptor(readpath);
         done();
     })
-
 })

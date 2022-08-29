@@ -344,15 +344,15 @@ describe('audioCapturer', function () {
         return resultFlag;
     }
 
-    /*         *
-               * @tc.number    : SUB_AUDIO_VOIP_CAP_CB_PREPARED_STATE_001
-               * @tc.name      : AudioCapturer-Check-STATE-PREPARED
-               * @tc.desc      : AudioCapturer with state prepared
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_CAP_CB_PREPARED_STATE_001', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_PREPARED_STATE_0100
+     *@tc.name
+     *@tc.desc
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 1
+     */    
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_PREPARED_STATE_0100', 1, async function (done) {
         var stateFlag;
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -392,18 +392,17 @@ describe('audioCapturer', function () {
                 }
             }
         });
-
     })
 
-    /*         *
-               * @tc.number    : SUB_AUDIO_VOIP_CAP_CB_PREPARED_STATE_ENUM_002
-               * @tc.name      : AudioCapturer-Check-STATE-PREPARED-ENUM
-               * @tc.desc      : AudioCapturer with state prepared
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_CAP_CB_PREPARED_STATE_ENUM_002', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_PREPARED_STATE_EUNM_0100
+     *@tc.name      : AudioCapturer-Check-STATE-PREPARED-ENUM
+     *@tc.desc      : AudioCapturer with state prepared
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_PREPARED_STATE_EUNM_0100', 0, async function (done) {
         var stateFlag;
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -440,15 +439,15 @@ describe('audioCapturer', function () {
 
     })
 
-    /*         *
-               * @tc.number    : SUB_AUDIO_VOIP_CAP_CB_RUNNING_STATE_003
-               * @tc.name      : AudioCapturer-Check-STATE-RUNNING
-               * @tc.desc      : AudioCapturer with state running
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_CAP_CB_RUNNING_STATE_003', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_RUNNING_STATE_0100
+     *@tc.name      : AudioCapturer-Check-STATE-RUNNING
+     *@tc.desc      : AudioCapturer with state running
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_RUNNING_STATE_0100', 1, async function (done) {
         var stateFlag;
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -511,15 +510,15 @@ describe('audioCapturer', function () {
         await sleep(1000);
     })
 
-    /*         *
-               * @tc.number    : SUB_AUDIO_VOIP_CAP_CB_RUNNING_STATE_EUNM_004
-               * @tc.name      : AudioCapturer-Check-STATE-RUNNING-ENUM
-               * @tc.desc      : AudioCapturer with state running
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_CAP_CB_RUNNING_STATE_EUNM_004', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_RUNNING_STATE_EUNM_0100
+     *@tc.name      : AudioCapturer-Check-STATE-RUNNING-ENUM
+     *@tc.desc      : AudioCapturer with state running
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_RUNNING_STATE_EUNM_0100', 1, async function (done) {
         var stateFlag;
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -583,15 +582,15 @@ describe('audioCapturer', function () {
         await sleep(1000);
     })
 
-    /*         *
-               * @tc.number    : SUB_AUDIO_VOIP_CAP_CB_STOPPED_STATE_005
-               * @tc.name      : AudioCapturer-Check-STATE-STOPPED
-               * @tc.desc      : AudioCapturer with state stopped
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_CAP_CB_STOPPED_STATE_005', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_STOPPED_STATE_0100
+     *@tc.name      : AudioCapturer-Check-STATE-STOPPED
+     *@tc.desc      : AudioCapturer with state stopped
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_STOPPED_STATE_0100', 1, async function (done) {
         var stateFlag;
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -671,15 +670,15 @@ describe('audioCapturer', function () {
         await sleep(1000);
     })
 
-    /*         *
-               * @tc.number    : SUB_AUDIO_VOIP_CAP_CB_STOPPED_STATE_ENUM_006
-               * @tc.name      : AudioCapturer-Check-STATE-STOPPED-ENUM
-               * @tc.desc      : AudioCapturer with state stopped
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_CAP_CB_STOPPED_STATE_ENUM_006', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_STOPPED_STATE_EUNM_0100
+     *@tc.name      : AudioCapturer-Check-STATE-STOPPED-ENUM
+     *@tc.desc      : AudioCapturer with state stopped
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_STOPPED_STATE_EUNM_0100', 1, async function (done) {
         var stateFlag;
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -754,15 +753,15 @@ describe('audioCapturer', function () {
         await sleep(1000);
     })
 
-    /*         *
-               * @tc.number    : SUB_AUDIO_VOIP_CAP_CB_RELEASED_STATE_007
-               * @tc.name      : AudioCapturer-Check-STATE-RELEASED
-               * @tc.desc      : AudioCapturer with state released
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_CAP_CB_RELEASED_STATE_007', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_RELEASED_STATE_0100
+     *@tc.name      : AudioCapturer-Check-STATE-RELEASED
+     *@tc.desc      : AudioCapturer with state released
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_RELEASED_STATE_0100', 2, async function (done) {
         var stateFlag;
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -842,15 +841,15 @@ describe('audioCapturer', function () {
         await sleep(1000);
     })
 
-    /*         *
-               * @tc.number    : SUB_AUDIO_VOIP_CAP_CB_RELEASED_STATE_ENUM_008
-               * @tc.name      : AudioCapturer-Check-STATE-RELEASED
-               * @tc.desc      : AudioCapturer with state released
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_CAP_CB_RELEASED_STATE_ENUM_008', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_RELEASED_STATE_EUNM_0100
+     *@tc.name      : AudioCapturer-Check-STATE-RELEASED
+     *@tc.desc      : AudioCapturer with state released
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_RELEASED_STATE_EUNM_0100', 1, async function (done) {
         var stateFlag;
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -931,15 +930,15 @@ describe('audioCapturer', function () {
         await sleep(1000);
     })
 
-    /*         *
-               * @tc.number    : SUB_AUDIO_VOIP_CAP_CB_GET_BUFFER_SIZE_009
-               * @tc.name      : AudioCapturer-get_buffer_size
-               * @tc.desc      : AudioCapturer with state stopped
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_CAP_CB_GET_BUFFER_SIZE_009', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_GET_BUFFER_SIZE_0100
+     *@tc.name      : AudioCapturer-get_buffer_size
+     *@tc.desc      : AudioCapturer with state stopped
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_GET_BUFFER_SIZE_0100', 1, async function (done) {
         var stateFlag;
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -1016,15 +1015,15 @@ describe('audioCapturer', function () {
         await sleep(1000);
     })
 
-    /*         *
-               * @tc.number    : SUB_AUDIO_VOIP_CAP_CB_READ_BUFFER_010
-               * @tc.name      : AudioCapturer-Check-READ_BUFFER
-               * @tc.desc      : AudioCapturer with read buffer
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_CAP_CB_READ_BUFFER_010', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_READ_BUFFER_0100
+     *@tc.name      : AudioCapturer-Check-READ_BUFFER
+     *@tc.desc      : AudioCapturer with read buffer
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_READ_BUFFER_0100', 1, async function (done) {
         var stateFlag;
         await getFd("capture_CB_js-44100-2C-S16LE-checkcbreadbuffer.pcm");
         var AudioStreamInfo = {
@@ -1092,7 +1091,7 @@ describe('audioCapturer', function () {
         var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
-            await new Promise((resolve,reject)=>{
+            await new Promise((resolve, reject) => {
                 audioCapCallBack.read(bufferSize, true, async (err, buffer) => {
                     if (err) {
                         console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
@@ -1111,7 +1110,7 @@ describe('audioCapturer', function () {
                     }
                 });
             })
-         
+
             numBuffersToCapture--;
         }
         await sleep(1000);
@@ -1136,15 +1135,15 @@ describe('audioCapturer', function () {
         await sleep(1000);
     })
 
-    /*         *
-               * @tc.number    : SUB_AUDIO_VOIP_CAP_PROMOISE_PREPARED_STATE_011
-               * @tc.name      : AudioCapturer-Check-STATE-PREPARED
-               * @tc.desc      : AudioCapturer with state prepared
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_CAP_PROMOISE_PREPARED_STATE_011', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMOISE_PREPARED_STATE_0100
+     *@tc.name      : AudioCapturer-Check-STATE-PREPARED
+     *@tc.desc      : AudioCapturer with state prepared
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMOISE_PREPARED_STATE_0100', 0, async function (done) {
         var stateFlag;
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -1179,15 +1178,15 @@ describe('audioCapturer', function () {
         }
     })
 
-    /*         *
-               * @tc.number    : SUB_AUDIO_VOIP_CAP_PROMOISE_PREPARED_STATE_ENUM_012
-               * @tc.name      : AudioCapturer-Check-STATE-PREPARED-ENUM
-               * @tc.desc      : AudioCapturer with state prepared
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_CAP_PROMOISE_PREPARED_STATE_ENUM_012', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMOISE_PREPARED_STATE_ENUM_0100
+     *@tc.name      : AudioCapturer-Check-STATE-PREPARED-ENUM
+     *@tc.desc      : AudioCapturer with state prepared
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMOISE_PREPARED_STATE_ENUM_0100', 0, async function (done) {
         var stateFlag;
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -1223,15 +1222,15 @@ describe('audioCapturer', function () {
 
     })
 
-    /*         *
-               * @tc.number    : SUB_AUDIO_VOIP_CAP_PROMISE_RUNNING_STATE_013
-               * @tc.name      : AudioCapturer-Check-STATE-RUNNING
-               * @tc.desc      : AudioCapturer with state running
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_CAP_PROMISE_RUNNING_STATE_013', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMISE_RUNNING_STATE_0100
+     *@tc.name      : AudioCapturer-Check-STATE-RUNNING
+     *@tc.desc      : AudioCapturer with state running
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMISE_RUNNING_STATE_0100', 0, async function (done) {
         var stateFlag;
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -1288,15 +1287,15 @@ describe('audioCapturer', function () {
         await sleep(1000);
     })
 
-    /*         *
-               * @tc.number    : SUB_AUDIO_VOIP_CAP_PROMISE_RUNNING_STATE_ENUM_014
-               * @tc.name      : AudioCapturer-Check-STATE-RUNNING-ENUM
-               * @tc.desc      : AudioCapturer with state running
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_CAP_PROMISE_RUNNING_STATE_ENUM_014', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMISE_RUNNING_STATE_ENUM_0100
+     *@tc.name      : AudioCapturer-Check-STATE-RUNNING-ENUM
+     *@tc.desc      : AudioCapturer with state running
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMISE_RUNNING_STATE_ENUM_0100', 0, async function (done) {
         var stateFlag;
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -1353,15 +1352,15 @@ describe('audioCapturer', function () {
         await sleep(1000);
     })
 
-    /*         *
-               * @tc.number    : SUB_AUDIO_VOIP_CAP_PROMISE_STOPPED_STATE_015
-               * @tc.name      : AudioCapturer-Check-STATE-STOPPED
-               * @tc.desc      : AudioCapturer with state stopped
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_CAP_PROMISE_STOPPED_STATE_015', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMISE_STOPPED_STATE_0100
+     *@tc.name      : AudioCapturer-Check-STATE-STOPPED
+     *@tc.desc      : AudioCapturer with state stopped
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMISE_STOPPED_STATE_0100', 2, async function (done) {
         var stateFlag;
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -1429,15 +1428,15 @@ describe('audioCapturer', function () {
         await sleep(1000);
     })
 
-    /*         *
-               * @tc.number    : SUB_AUDIO_VOIP_CAP_PROMISE_STOPPED_STATE_ENUM_016
-               * @tc.name      : AudioCapturer-Check-STATE-STOPPED
-               * @tc.desc      : AudioCapturer with state stopped
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_CAP_PROMISE_STOPPED_STATE_ENUM_016', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMISE_STOPPED_STATE_ENUM_0100
+     *@tc.name      : AudioCapturer-Check-STATE-STOPPED
+     *@tc.desc      : AudioCapturer with state stopped
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMISE_STOPPED_STATE_ENUM_0100', 2, async function (done) {
         var stateFlag;
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -1506,15 +1505,15 @@ describe('audioCapturer', function () {
         await sleep(1000);
     })
 
-    /*         *
-               * @tc.number    : SUB_AUDIO_VOIP_CAP_PROMISE_RELEASED_STATE_017
-               * @tc.name      : AudioCapturer-Check-STATE-RELEASED
-               * @tc.desc      : AudioCapturer with state released
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_CAP_PROMISE_RELEASED_STATE_017', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMISE_RELEASED_STATE_0100
+     *@tc.name      : AudioCapturer-Check-STATE-RELEASED
+     *@tc.desc      : AudioCapturer with state released
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMISE_RELEASED_STATE_0100', 2, async function (done) {
         var stateFlag;
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -1580,15 +1579,15 @@ describe('audioCapturer', function () {
         });
     })
 
-    /*         *
-               * @tc.number    : SUB_AUDIO_VOIP_CAP_PROMISE_RELEASED_STATE_ENUM_018
-               * @tc.name      : AudioCapturer-Check-STATE-RELEASED-ENUM
-               * @tc.desc      : AudioCapturer with state released
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_CAP_PROMISE_RELEASED_STATE_ENUM_018', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMISE_RELEASED_STATE_ENUM_0100
+     *@tc.name      : AudioCapturer-Check-STATE-RELEASED-ENUM
+     *@tc.desc      : AudioCapturer with state released
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMISE_RELEASED_STATE_ENUM_0100', 2, async function (done) {
         var stateFlag;
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -1655,15 +1654,15 @@ describe('audioCapturer', function () {
         await sleep(1000);
     })
 
-    /*         *
-               * @tc.number    : SUB_AUDIO_VOIP_CAP_PROMISE_GET_BUFFER_SIZE_019
-               * @tc.name      : AudioCapturer-get_buffer_size
-               * @tc.desc      : AudioCapturer with state stopped
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_CAP_PROMISE_GET_BUFFER_SIZE_019', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMISE_GET_BUFFER_SIZE_0100
+     *@tc.name      : AudioCapturer-get_buffer_size
+     *@tc.desc      : AudioCapturer with state stopped
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMISE_GET_BUFFER_SIZE_0100', 2, async function (done) {
         var stateFlag;
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -1729,15 +1728,15 @@ describe('audioCapturer', function () {
         await sleep(1000);
     })
 
-    /*         *
-               * @tc.number    : SUB_AUDIO_VOIP_CAP_PROMISE_READ_BUFFER_020
-               * @tc.name      : AudioCapturer-Check-READ_BUFFER
-               * @tc.desc      : AudioCapturer with read buffer
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_CAP_PROMISE_READ_BUFFER_020', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMISE_READ_BUFFER_0100
+     *@tc.name      : AudioCapturer-Check-READ_BUFFER
+     *@tc.desc      : AudioCapturer with read buffer
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMISE_READ_BUFFER_0100', 2, async function (done) {
         var stateFlag;
         await getFd("capture_CB_js-44100-2C-S16LE-checkpromisereadbuffer.pcm");
         var AudioStreamInfo = {
@@ -1835,15 +1834,15 @@ describe('audioCapturer', function () {
         await sleep(1000);
     })
 
-    /*         *
-               * @tc.number    : SUB_AUDIO_VOIP_Rec_VOICE_CHAT_CB_021
-               * @tc.name      : AudioCapturer-Set1-Media
-               * @tc.desc      : AudioCapturer with parameter set 1
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_Rec_VOICE_CHAT_CB_021', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_CB_0100
+     *@tc.name      : AudioCapturer-Set1-Media
+     *@tc.desc      : AudioCapturer with parameter set 1
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_CB_0100', 2, async function (done) {
 
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -1870,15 +1869,15 @@ describe('audioCapturer', function () {
         done();
     })
 
-    /*         *
-               * @tc.number    : SUB_AUDIO_VOIP_Rec_VOICE_CHAT_CB_ENUM_022
-               * @tc.name      : AudioCapturer-Set1-Media
-               * @tc.desc      : AudioCapturer with parameter set 1
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_Rec_VOICE_CHAT_CB_ENUM_022', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_CB_ENUM_0100
+     *@tc.name      : AudioCapturer-Set1-Media
+     *@tc.desc      : AudioCapturer with parameter set 1
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_CB_ENUM_0100', 2, async function (done) {
 
         var AudioStreamInfo = {
             samplingRate: 44100,
@@ -1905,18 +1904,15 @@ describe('audioCapturer', function () {
         done();
     })
 
-    /*                   *
-               * @tc.number    : SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_023
-               * @tc.name      : AudioCapturer-Set1-Media
-               * @tc.desc      : AudioCapturer with parameter set 1
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0
-               * */
-
-
-    it('SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_023', 0, async function (done) {
-
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_0100
+     *@tc.name      : AudioCapturer-Set1-Media
+     *@tc.desc      : AudioCapturer with parameter set 1
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_0100', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -1944,17 +1940,15 @@ describe('audioCapturer', function () {
         done();
     })
 
-    /*                   *
-               * @tc.number    : SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_ENUM_024
-               * @tc.name      : AudioCapturer-Set1-Media
-               * @tc.desc      : AudioCapturer with parameter set 1
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0
-               * */
-
-
-    it('SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_ENUM_024', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_0100
+     *@tc.name      : AudioCapturer-Set1-Media
+     *@tc.desc      : AudioCapturer with parameter set 1
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_0100', 2, async function (done) {
 
         var AudioStreamInfo = {
             samplingRate: 44100,
@@ -1983,16 +1977,15 @@ describe('audioCapturer', function () {
         done();
     })
 
-    /*               *
-                * @tc.number    : SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_025
-                * @tc.name      : AudioRec-Set1
-                * @tc.desc      : record audio with parameter set 1
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0*/
-
-
-    it('SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_025', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_0200
+     *@tc.name      : AudioRec-Set1
+     *@tc.desc      : record audio with parameter set 1
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+      */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_0200', 2, async function (done) {
         var audioStreamInfo44100 = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -2018,16 +2011,15 @@ describe('audioCapturer', function () {
         done();
     })
 
-    /*               *
-                * @tc.number    : SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_ENUM_026
-                * @tc.name      : AudioRec-Set1
-                * @tc.desc      : record audio with parameter set 1
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0*/
-
-
-    it('SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_ENUM_026', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_0200
+     *@tc.name      : AudioRec-Set1
+     *@tc.desc      : record audio with parameter set 1
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_0200', 2, async function (done) {
         var audioStreamInfo44100 = {
             samplingRate: 44100,
             channels: 1,
@@ -2054,15 +2046,15 @@ describe('audioCapturer', function () {
         done();
     })
 
-    /*         *
-                * @tc.number    : SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_027
-                * @tc.name      : AudioRec-Set2
-                * @tc.desc      : record audio with parameter set 2
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_027', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_0300
+     *@tc.name      : AudioRec-Set2
+     *@tc.desc      : record audio with parameter set 2
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_0300', 2, async function (done) {
         var audioStreamInfo96000 = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_96000,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -2088,15 +2080,15 @@ describe('audioCapturer', function () {
         done();
     })
 
-    /*         *
-                * @tc.number    : SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_ENUM_028
-                * @tc.name      : AudioRec-Set2
-                * @tc.desc      : record audio with parameter set 2
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_ENUM_028', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_0300
+     *@tc.name      : AudioRec-Set2
+     *@tc.desc      : record audio with parameter set 2
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_0300', 2, async function (done) {
         var audioStreamInfo96000 = {
             samplingRate: 96000,
             channels: 1,
@@ -2122,15 +2114,15 @@ describe('audioCapturer', function () {
         done();
     })
 
-    /*         *
-                * @tc.number    : SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_029
-                * @tc.name      : AudioRec-Set3
-                * @tc.desc      : record audio with parameter set 3
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_029', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_0400
+     *@tc.name      : AudioRec-Set3
+     *@tc.desc      : record audio with parameter set 3
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_0400', 2, async function (done) {
         var audioStreamInfo48000 = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -2146,7 +2138,7 @@ describe('audioCapturer', function () {
             capturerInfo: audioCapturerInfo48000,
         }
 
-         await getFd("capture_js-48000-2C-1S32LE.pcm");
+        await getFd("capture_js-48000-2C-1S32LE.pcm");
         var resultFlag = await recPromise(audioCapturerOptions48000, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
@@ -2156,15 +2148,15 @@ describe('audioCapturer', function () {
         done();
     })
 
-    /*         *
-                * @tc.number    : SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_ENUM_30
-                * @tc.name      : AudioRec-Set3
-                * @tc.desc      : record audio with parameter set 3
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_ENUM_30', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_0400
+     *@tc.name      : AudioRec-Set3
+     *@tc.desc      : record audio with parameter set 3
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_0400', 2, async function (done) {
         var audioStreamInfo48000 = {
             samplingRate: 48000,
             channels: 2,
@@ -2180,7 +2172,7 @@ describe('audioCapturer', function () {
             capturerInfo: audioCapturerInfo48000,
         }
 
-         await getFd("capture_js-48000-2C-1S32LE.pcm");
+        await getFd("capture_js-48000-2C-1S32LE.pcm");
         var resultFlag = await recPromise(audioCapturerOptions48000, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
@@ -2190,15 +2182,15 @@ describe('audioCapturer', function () {
         done();
     })
 
-    /*         *
-                * @tc.number    : SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_031
-                * @tc.name      : AudioRec-Set4
-                * @tc.desc      : record audio with parameter set 4
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_031', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_0500
+     *@tc.name      : AudioRec-Set4
+     *@tc.desc      : record audio with parameter set 4
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_0500', 2, async function (done) {
         var audioStreamInfo8000 = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_8000,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -2214,7 +2206,7 @@ describe('audioCapturer', function () {
             capturerInfo: audioCapturerInfo8000,
         }
 
-         await getFd("capture_js-8000-1C-8B.pcm");
+        await getFd("capture_js-8000-1C-8B.pcm");
         var resultFlag = await recPromise(audioCapturerOptions8000, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
@@ -2224,15 +2216,15 @@ describe('audioCapturer', function () {
         done();
     })
 
-    /*         *
-                * @tc.number    : SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_ENUM_032
-                * @tc.name      : AudioRec-Set4
-                * @tc.desc      : record audio with parameter set 4
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_ENUM_032', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_0500
+     *@tc.name      : AudioRec-Set4
+     *@tc.desc      : record audio with parameter set 4
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_0500', 2, async function (done) {
         var audioStreamInfo8000 = {
             samplingRate: 8000,
             channels: 1,
@@ -2248,7 +2240,7 @@ describe('audioCapturer', function () {
             capturerInfo: audioCapturerInfo8000,
         }
 
-         await getFd("capture_js-8000-1C-8B.pcm");
+        await getFd("capture_js-8000-1C-8B.pcm");
         var resultFlag = await recPromise(audioCapturerOptions8000, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
@@ -2258,15 +2250,15 @@ describe('audioCapturer', function () {
         done();
     })
 
-    /*         *
-                * @tc.number    : SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_33
-                * @tc.name      : AudioRec-Set5
-                * @tc.desc      : record audio with parameter set 5
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_33', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_0600
+     *@tc.name      : AudioRec-Set5
+     *@tc.desc      : record audio with parameter set 5
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_0600', 2, async function (done) {
         var audioStreamInfo11025 = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_11025,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -2282,7 +2274,7 @@ describe('audioCapturer', function () {
             capturerInfo: audioCapturerInfo11025,
         }
 
-         await getFd("capture_js-11025-2C-16B.pcm");
+        await getFd("capture_js-11025-2C-16B.pcm");
         var resultFlag = await recPromise(audioCapturerOptions11025, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
@@ -2292,15 +2284,15 @@ describe('audioCapturer', function () {
         done();
     })
 
-    /*         *
-                * @tc.number    : SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_ENUM_034
-                * @tc.name      : AudioRec-Set5
-                * @tc.desc      : record audio with parameter set 5
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_ENUM_034', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_0600
+     *@tc.name      : AudioRec-Set5
+     *@tc.desc      : record audio with parameter set 5
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_0600', 2, async function (done) {
         var audioStreamInfo11025 = {
             samplingRate: 11025,
             channels: 2,
@@ -2316,7 +2308,7 @@ describe('audioCapturer', function () {
             capturerInfo: audioCapturerInfo11025,
         }
 
-         await getFd("capture_js-11025-2C-16B.pcm");
+        await getFd("capture_js-11025-2C-16B.pcm");
 
         var resultFlag = await recPromise(audioCapturerOptions11025, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
@@ -2327,15 +2319,15 @@ describe('audioCapturer', function () {
         done();
     })
 
-    /*         *
-                * @tc.number    : SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_035
-                * @tc.name      : AudioRec-Set6
-                * @tc.desc      : record audio with parameter set 6
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_028', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_0700
+     *@tc.name      : AudioRec-Set6
+     *@tc.desc      : record audio with parameter set 6
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_0700', 2, async function (done) {
         var audioStreamInfo12000 = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_12000,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -2361,15 +2353,15 @@ describe('audioCapturer', function () {
         done();
     })
 
-    /*         *
-                * @tc.number    : SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_ENUM_036
-                * @tc.name      : AudioRec-Set6
-                * @tc.desc      : record audio with parameter set 6
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_ENUM_036', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_0700
+     *@tc.name      : AudioRec-Set6
+     *@tc.desc      : record audio with parameter set 6
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_0700', 2, async function (done) {
         var audioStreamInfo12000 = {
             samplingRate: 12000,
             channels: 1,
@@ -2395,15 +2387,15 @@ describe('audioCapturer', function () {
         done();
     })
 
-    /*         *
-                * @tc.number    : SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_037
-                * @tc.name      : AudioRec-Set7
-                * @tc.desc      : record audio with parameter set 7
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_037', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_0800
+     *@tc.name      : AudioRec-Set7
+     *@tc.desc      : record audio with parameter set 7
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_0800', 2, async function (done) {
         var audioStreamInfo16000 = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_16000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -2429,15 +2421,15 @@ describe('audioCapturer', function () {
         done();
     })
 
-    /*         *
-                * @tc.number    : SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_ENUM_038
-                * @tc.name      : AudioRec-Set7
-                * @tc.desc      : record audio with parameter set 7
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_ENUM_038', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_0800
+     *@tc.name      : AudioRec-Set7
+     *@tc.desc      : record audio with parameter set 7
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_0800', 2, async function (done) {
         var audioStreamInfo16000 = {
             samplingRate: 16000,
             channels: 2,
@@ -2463,15 +2455,15 @@ describe('audioCapturer', function () {
         done();
     })
 
-    /*         *
-                * @tc.number    : SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_039
-                * @tc.name      : AudioRec-Set8
-                * @tc.desc      : record audio with parameter set 8
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_039', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_0900
+     *@tc.name      : AudioRec-Set8
+     *@tc.desc      : record audio with parameter set 8
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_0900', 2, async function (done) {
         var audioStreamInfo22050 = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_22050,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -2497,15 +2489,15 @@ describe('audioCapturer', function () {
         done();
     })
 
-    /*         *
-                * @tc.number    : SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_ENUM_040
-                * @tc.name      : AudioRec-Set8
-                * @tc.desc      : record audio with parameter set 8
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_ENUM_040', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_0900
+     *@tc.name      : AudioRec-Set8
+     *@tc.desc      : record audio with parameter set 8
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_0900', 2, async function (done) {
         var audioStreamInfo22050 = {
             samplingRate: 22050,
             channels: 1,
@@ -2532,15 +2524,15 @@ describe('audioCapturer', function () {
         done();
     })
 
-    /*         *
-                * @tc.number    : SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_041
-                * @tc.name      : AudioRec-Set9
-                * @tc.desc      : record audio with parameter set 9
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_041', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_1000
+     *@tc.name      : AudioRec-Set9
+     *@tc.desc      : record audio with parameter set 9
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_1000', 2, async function (done) {
         var audioStreamInfo24000 = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_24000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -2567,15 +2559,15 @@ describe('audioCapturer', function () {
         done();
     })
 
-    /*         *
-                * @tc.number    : SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_ENUM_042
-                * @tc.name      : AudioRec-Set9
-                * @tc.desc      : record audio with parameter set 9
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_ENUM_042', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_1000
+     *@tc.name      : AudioRec-Set9
+     *@tc.desc      : record audio with parameter set 9
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_1000', 2, async function (done) {
         var audioStreamInfo24000 = {
             samplingRate: 24000,
             channels: 2,
@@ -2602,15 +2594,15 @@ describe('audioCapturer', function () {
         done();
     })
 
-    /*         *
-                * @tc.number    : SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_043
-                * @tc.name      : AudioRec-Set10
-                * @tc.desc      : record audio with parameter set 010
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_043', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_1100
+     *@tc.name      : AudioRec-Set10
+     *@tc.desc      : record audio with parameter set 010
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_1100', 2, async function (done) {
         var audioStreamInfo32000 = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_32000,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -2637,15 +2629,15 @@ describe('audioCapturer', function () {
         done();
     })
 
-    /*         *
-                * @tc.number    : SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_ENUM_044
-                * @tc.name      : AudioRec-Set10
-                * @tc.desc      : record audio with parameter set 010
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_ENUM_044', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_1100
+     *@tc.name      : AudioRec-Set10
+     *@tc.desc      : record audio with parameter set 010
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_1100', 2, async function (done) {
         var audioStreamInfo32000 = {
             samplingRate: 32000,
             channels: 1,
@@ -2672,19 +2664,15 @@ describe('audioCapturer', function () {
         done();
     })
 
-
-    /*
-     *
-                * @tc.number    : SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_045
-                * @tc.name      : AudioRec-Set11
-                * @tc.desc      : record audio with parameter set 011
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0
-*/
-
-
-    it('SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_045', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_1200
+     *@tc.name      : AudioRec-Set11
+     *@tc.desc      : record audio with parameter set 011
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_1200', 2, async function (done) {
         var audioStreamInfo64000 = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_64000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -2712,16 +2700,15 @@ describe('audioCapturer', function () {
     })
 
 
-    /*     *
-                * @tc.number    : SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_ENUM_046
-                * @tc.name      : AudioRec-Set11
-                * @tc.desc      : record audio with parameter set 011
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0*/
-
-
-    it('SUB_AUDIO_VOIP_Rec_VOICE_CHAT_Promise_ENUM_046', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_1200
+     *@tc.name      : AudioRec-Set11
+     *@tc.desc      : record audio with parameter set 011
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_1200', 2, async function (done) {
         var audioStreamInfo64000 = {
             samplingRate: 64000,
             channels: 2,
@@ -2748,16 +2735,15 @@ describe('audioCapturer', function () {
         done();
     })
 
-    /*        *
-                * @tc.number    : SUB_AUDIO_RECORD_Promise_AUDIO_SCENE_DEFAULT_047
-                * @tc.name      : AudioRec-Set1
-                * @tc.desc      : record audio with parameter set 1
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0*/
-
-
-    it('SUB_AUDIO_RECORD_Promise_AUDIO_SCENE_DEFAULT_047', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_RECORD_Promise_AUDIO_SCENE_DEFAULT_0100
+     *@tc.name      : AudioRec-Set1
+     *@tc.desc      : record audio with parameter set 1
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_RECORD_Promise_AUDIO_SCENE_DEFAULT_0100', 2, async function (done) {
         var audioStreamInfo44100 = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -2778,22 +2764,19 @@ describe('audioCapturer', function () {
         var resultFlag = await recPromise(audioCapturerOptions44100, dirPath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
-
         expect(resultFlag).assertTrue();
-
         done();
     })
 
-    /*        *
-                * @tc.number    : SUB_AUDIO_RECORD_Promise_AUDIO_SCENE_DEFAULT_ENUM_048
-                * @tc.name      : AudioRec-Set1
-                * @tc.desc      : record audio with parameter set 1
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0*/
-
-
-    it('SUB_AUDIO_RECORD_Promise_AUDIO_SCENE_DEFAULT_ENUM_048', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_RECORD_Promise_AUDIO_SCENE_DEFAULT_ENUM_0100
+     *@tc.name      : AudioRec-Set1
+     *@tc.desc      : record audio with parameter set 1
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_RECORD_Promise_AUDIO_SCENE_DEFAULT_ENUM_0100', 2, async function (done) {
         var audioStreamInfo44100 = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -2820,16 +2803,15 @@ describe('audioCapturer', function () {
         done();
     })
 
-
-    /*     *
-               * @tc.number    : SUB_AUDIO_VOIP_CAP_PROMISE_GET_AUDIO_TIME_AFTER_START_055
-               * @tc.name      : AudioCapturer-GET_AUDIO_TIME
-               * @tc.desc      : AudioCapturer GET_AUDIO_TIME
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_CAP_PROMISE_GET_AUDIO_TIME_AFTER_START_055', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMISE_GET_AUDIO_TIME_AFTER_START_0100
+     *@tc.name      : AudioCapturer-GET_AUDIO_TIME
+     *@tc.desc      : AudioCapturer GET_AUDIO_TIME
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMISE_GET_AUDIO_TIME_AFTER_START_0100', 2, async function (done) {
         var stateFlag;
         await getFd("capture_CB_js-44100-2C-S16LE-checkcbreadbuffer.pcm");
         var AudioStreamInfo = {
@@ -2920,15 +2902,15 @@ describe('audioCapturer', function () {
         await sleep(1000);
     })
 
-    /*     *
-               * @tc.number    : SUB_AUDIO_VOIP_CAP_PROMISE_GET_AUDIO_TIME_AFTER_READ_WRITE_056
-               * @tc.name      : AudioCapturer-GET_AUDIO_TIME
-               * @tc.desc      : AudioCapturer GET_AUDIO_TIME
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_CAP_PROMISE_GET_AUDIO_TIME_AFTER_READ_WRITE_056', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMISE_GET_AUDIO_TIME_AFTER_READ_WRITE_0100
+     *@tc.name      : AudioCapturer-GET_AUDIO_TIME
+     *@tc.desc      : AudioCapturer GET_AUDIO_TIME
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMISE_GET_AUDIO_TIME_AFTER_READ_WRITE_0100', 2, async function (done) {
         var stateFlag;
         await getFd("capture_CB_js-44100-2C-S16LE-checkcbreadbuffer.pcm");
         var AudioStreamInfo = {
@@ -3007,7 +2989,7 @@ describe('audioCapturer', function () {
         var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
-            await new Promise((resolve,reject)=>{
+            await new Promise((resolve, reject) => {
                 audioCapCallBack.read(bufferSize, true, async (err, buffer) => {
                     if (err) {
                         console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
@@ -3071,15 +3053,15 @@ describe('audioCapturer', function () {
         await sleep(1000);
     })
 
-    /*     *
-               * @tc.number    : SUB_AUDIO_VOIP_CAP_PROMISE_GET_AUDIO_TIME_AFTER_STOP_057
-               * @tc.name      : AudioCapturer-GET_AUDIO_TIME
-               * @tc.desc      : AudioCapturer GET_AUDIO_TIME
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_CAP_PROMISE_GET_AUDIO_TIME_AFTER_STOP_057', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMISE_GET_AUDIO_TIME_AFTER_STOP_0100
+     *@tc.name      : AudioCapturer-GET_AUDIO_TIME
+     *@tc.desc      : AudioCapturer GET_AUDIO_TIME
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMISE_GET_AUDIO_TIME_AFTER_STOP_0100', 2, async function (done) {
         var stateFlag;
         await getFd("capture_CB_js-44100-2C-S16LE-checkcbreadbuffer.pcm");
         var AudioStreamInfo = {
@@ -3158,7 +3140,7 @@ describe('audioCapturer', function () {
         var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
-            await new Promise((resolve,reject)=>{
+            await new Promise((resolve, reject) => {
                 audioCapCallBack.read(bufferSize, true, async (err, buffer) => {
                     if (err) {
                         console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
@@ -3245,15 +3227,15 @@ describe('audioCapturer', function () {
     })
 
 
-    /*     *
-               * @tc.number    : SUB_AUDIO_VOIP_CAP_CB_GET_AUDIO_TIME_058
-               * @tc.name      : AudioCapturer-GET_AUDIO_TIME
-               * @tc.desc      : AudioCapturer GET_AUDIO_TIME
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_CAP_CB_GET_AUDIO_TIME_058', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_GET_AUDIO_TIME_0100
+     *@tc.name      : AudioCapturer-GET_AUDIO_TIME
+     *@tc.desc      : AudioCapturer GET_AUDIO_TIME
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_GET_AUDIO_TIME_0100', 2, async function (done) {
         var stateFlag;
         var audioCapCallBack;
         var AudioStreamInfo = {
@@ -3329,15 +3311,15 @@ describe('audioCapturer', function () {
 
     })
 
-    /*     *
-               * @tc.number    : SUB_AUDIO_VOIP_CAP_PROMISE_STOP_BEFORE_START_059
-               * @tc.name      : AudioCapturer-GET_AUDIO_TIME
-               * @tc.desc      : AudioCapturer GET_AUDIO_TIME
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_CAP_PROMISE_STOP_BEFORE_START_059', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMISE_STOP_BEFORE_START_0100
+     *@tc.name      : AudioCapturer-GET_AUDIO_TIME
+     *@tc.desc      : AudioCapturer GET_AUDIO_TIME
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMISE_STOP_BEFORE_START_0100', 2, async function (done) {
         var stateFlag;
         var audioCapPromise;
         var AudioStreamInfo = {
@@ -3401,14 +3383,14 @@ describe('audioCapturer', function () {
     })
 
     /**
-               * @tc.number    : SUB_AUDIO_VOIP_CAP_PROMISE_RELEASE_BEFORE_START_060
-               * @tc.name      : AudioCapturer-GET_AUDIO_TIME
-               * @tc.desc      : AudioCapturer GET_AUDIO_TIME
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_CAP_PROMISE_RELEASE_BEFORE_START_060', 0, async function (done) {
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMISE_RELEASE_BEFORE_START_0100
+     *@tc.name      : AudioCapturer-GET_AUDIO_TIME
+     *@tc.desc      : AudioCapturer GET_AUDIO_TIME
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMISE_RELEASE_BEFORE_START_0100', 2, async function (done) {
         var stateFlag;
         var audioCapPromise;
         var AudioStreamInfo = {
@@ -3469,16 +3451,15 @@ describe('audioCapturer', function () {
     })
 
 
-    /*           *
-                * @tc.number    : SUB_AUDIO_Rec_PR_VOICE_CHAT_GET_STREAM_INFO_061
-                * @tc.name      : AudioRec-Set1
-                * @tc.desc      : record audio with parameter set 1
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0*/
-
-
-    it('SUB_AUDIO_Rec_PR_VOICE_CHAT_GET_STREAM_INFO_061', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_REC_PR_VOICE_CHAT_GET_STREAM_INFO_0100
+     *@tc.name      : AudioRec-Set1
+     *@tc.desc      : record audio with parameter set 1
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_REC_PR_VOICE_CHAT_GET_STREAM_INFO_0100', 2, async function (done) {
         var audioCapGetgetStreamInfo;
         var setFlag;
         var audioStreamInfo44100 = {
@@ -3546,16 +3527,15 @@ describe('audioCapturer', function () {
 
     })
 
-    /*           *
-                * @tc.number    : SUB_AUDIO_Rec_PR_VOICE_CHAT_GET_STREAM_INFO_ENUM_062
-                * @tc.name      : AudioRec-Set1
-                * @tc.desc      : record audio with parameter set 1
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0*/
-
-
-    it('SUB_AUDIO_Rec_PR_VOICE_CHAT_GET_STREAM_INFO_ENUM_062', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_REC_PR_VOICE_CHAT_GET_STREAM_INFO_ENUM_0100
+     *@tc.name      : AudioRec-Set1
+     *@tc.desc      : record audio with parameter set 1
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_REC_PR_VOICE_CHAT_GET_STREAM_INFO_ENUM_0100', 2, async function (done) {
         var audioCapGetgetStreamInfo;
         var setFlag;
         var audioStreamInfo44100 = {
@@ -3624,16 +3604,15 @@ describe('audioCapturer', function () {
 
     })
 
-    /*           *
-                * @tc.number    : SUB_AUDIO_Rec_CB_VOICE_CHAT_GET_STREAM_INFO_063
-                * @tc.name      : AudioRec-Set1
-                * @tc.desc      : record audio with parameter set 1
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0*/
-
-
-    it('SUB_AUDIO_Rec_CB_VOICE_CHAT_GET_STREAM_INFO_063', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_REC_CB_VOICE_CHAT_GET_STREAM_INFO_0200
+     *@tc.name      : AudioRec-Set1
+     *@tc.desc      : record audio with parameter set 1
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_REC_CB_VOICE_CHAT_GET_STREAM_INFO_0200', 2, async function (done) {
         var audioCapGetgetStreamInfo;
         var setFlag;
         var audioStreamInfo44100 = {
@@ -3704,16 +3683,15 @@ describe('audioCapturer', function () {
 
     })
 
-    /*           *
-                * @tc.number    : SUB_AUDIO_Rec_CB_VOICE_CHAT_GET_STREAM_INFO_ENUM_064
-                * @tc.name      : AudioRec-Set1
-                * @tc.desc      : record audio with parameter set 1
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0*/
-
-
-    it('SUB_AUDIO_Rec_CB_VOICE_CHAT_GET_STREAM_INFO_ENUM_064', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_REC_CB_VOICE_CHAT_GET_STREAM_INFO_ENUM_0200
+     *@tc.name      : AudioRec-Set1
+     *@tc.desc      : record audio with parameter set 1
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_REC_CB_VOICE_CHAT_GET_STREAM_INFO_ENUM_0200', 2, async function (done) {
         var audioCapGetgetStreamInfo;
         var setFlag;
         var audioStreamInfo44100 = {
@@ -3784,16 +3762,15 @@ describe('audioCapturer', function () {
 
 
 
-    /*           *
-                * @tc.number    : SUB_AUDIO_Rec_PR_VOICE_CHAT_GET_CAPTURER_INFO_065
-                * @tc.name      : AudioRec-Set1
-                * @tc.desc      : record audio with parameter set 1
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0*/
-
-
-    it('SUB_AUDIO_Rec_PR_VOICE_CHAT_GET_CAPTURER_INFO_065', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_REC_PR_VOICE_CHAT_GET_CAPTURER_INFO_0300
+     *@tc.name      : AudioRec-Set1
+     *@tc.desc      : record audio with parameter set 1
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_REC_PR_VOICE_CHAT_GET_CAPTURER_INFO_0300', 2, async function (done) {
         var audioCapGetgetCapturerInfo;
         var setFlag;
         var audioStreamInfo44100 = {
@@ -3857,16 +3834,15 @@ describe('audioCapturer', function () {
 
     })
 
-    /*           *
-                * @tc.number    : SUB_AUDIO_Rec_PR_VOICE_CHAT_GET_CAPTURER_INFO_ENUM_066
-                * @tc.name      : AudioRec-Set1
-                * @tc.desc      : record audio with parameter set 1
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0*/
-
-
-    it('SUB_AUDIO_Rec_PR_VOICE_CHAT_GET_CAPTURER_INFO_ENUM_65', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_REC_PR_VOICE_CHAT_GET_CAPTURER_INFO_ENUM_0300
+     *@tc.name      : AudioRec-Set1
+     *@tc.desc      : record audio with parameter set 1
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_REC_PR_VOICE_CHAT_GET_CAPTURER_INFO_ENUM_0300', 2, async function (done) {
         var audioCapGetgetCapturerInfo;
         var setFlag;
         var audioStreamInfo44100 = {
@@ -3929,16 +3905,15 @@ describe('audioCapturer', function () {
 
     })
 
-    /*           *
-                * @tc.number    : SUB_AUDIO_Rec_CB_VOICE_CHAT_GET_CAPTURER_INFO_067
-                * @tc.name      : AudioRec-Set1
-                * @tc.desc      : record audio with parameter set 1
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0*/
-
-
-    it('SUB_AUDIO_Rec_CB_VOICE_CHAT_GET_CAPTURER_INFO_067', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_REC_CB_VOICE_CHAT_GET_CAPTURER_INFO_0400
+     *@tc.name      : AudioRec-Set1
+     *@tc.desc      : record audio with parameter set 1
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_REC_CB_VOICE_CHAT_GET_CAPTURER_INFO_0400', 2, async function (done) {
         var audioCapGetgetCapturerInfo;
         var setFlag;
         var audioStreamInfo44100 = {
@@ -4006,16 +3981,15 @@ describe('audioCapturer', function () {
 
     })
 
-    /*           *
-                * @tc.number    : SUB_AUDIO_Rec_CB_VOICE_CHAT_GET_STREAM_INFO_ENUM_068
-                * @tc.name      : AudioRec-Set1
-                * @tc.desc      : record audio with parameter set 1
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0*/
-
-
-    it('SUB_AUDIO_Rec_CB_VOICE_CHAT_GET_STREAM_INFO_ENUM_068', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_REC_CB_VOICE_CHAT_GET_STREAM_INFO_ENUM_0400
+     *@tc.name      : AudioRec-Set1
+     *@tc.desc      : record audio with parameter set 1
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_REC_CB_VOICE_CHAT_GET_STREAM_INFO_ENUM_0400', 2, async function (done) {
         var audioCapGetgetCapturerInfo;
         var setFlag;
         var audioStreamInfo44100 = {
@@ -4081,16 +4055,15 @@ describe('audioCapturer', function () {
         await sleep(1000);
     })
 
-    /*           *
-                * @tc.number    : SUB_AUDIO_Rec_VOICE_CHAT_PR_ENUM_AUDIO_STREAM_INFO_INVALID_069
-                * @tc.name      : AudioRec-Set1
-                * @tc.desc      : record audio with parameter set 1
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0*/
-
-
-    it('SUB_AUDIO_Rec_VOICE_CHAT_PR_ENUM_AUDIO_STREAM_INFO_INVALID_069', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_REC_VOICE_CHAT_PR_ENUM_AUDIO_STREAM_INFO_INVALID_0100
+     *@tc.name      : AudioRec-Set1
+     *@tc.desc      : record audio with parameter set 1
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_REC_VOICE_CHAT_PR_ENUM_AUDIO_STREAM_INFO_INVALID_0100', 2, async function (done) {
         var audioStreamInfo44100 = {
             samplingRate: 0,
             channels: 1,
@@ -4121,16 +4094,15 @@ describe('audioCapturer', function () {
         done();
     })
 
-    /*           *
-                * @tc.number    : SUB_AUDIO_Rec_VOICE_CHAT_PR_ENUM_AUDIO_CAPTURER_INFO_INVALID_070
-                * @tc.name      : AudioRec-Set1
-                * @tc.desc      : record audio with parameter set 1
-                * @tc.size      : MEDIUM
-                * @tc.type      : Function
-                * @tc.level     : Level 0*/
-
-
-    it('SUB_AUDIO_Rec_VOICE_CHAT_PR_ENUM_AUDIO_CAPTURER_INFO_INVALID_070', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_REC_VOICE_CHAT_PR_ENUM_AUDIO_CAPTURER_INFO_INVALID_0100
+     *@tc.name      : AudioRec-Set1
+     *@tc.desc      : record audio with parameter set 1
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_REC_VOICE_CHAT_PR_ENUM_AUDIO_CAPTURER_INFO_INVALID_0100', 2, async function (done) {
         var audioStreamInfo44100 = {
             samplingRate: 44100,
             channels: 1,
@@ -4160,15 +4132,15 @@ describe('audioCapturer', function () {
         done();
     })
 
-    /*         *
-               * @tc.number    : SUB_AUDIO_VOIP_CAP_CB_ON_ALL_CASES_071
-               * @tc.name      : AudioCapturer-Check-STATE-STOPPED
-               * @tc.desc      : AudioCapturer with state stopped
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_CAP_CB_ON_ALL_CASES_070', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_ON_0100
+     *@tc.name      : AudioCapturer-Check-STATE-STOPPED
+     *@tc.desc      : AudioCapturer with state stopped
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_ON_0100', 2, async function (done) {
         var stateFlag;
         var audioCapCallBack;
         var AudioStreamInfo = {
@@ -4275,15 +4247,15 @@ describe('audioCapturer', function () {
         await sleep(1000);
     })
 
-    /*         *
-                   * @tc.number    : SUB_AUDIO_VOIP_CAP_CB_ON_PREPARED_072
-               * @tc.name      : AudioCapturer-Check-STATE-STOPPED
-               * @tc.desc      : AudioCapturer with state stopped
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_CAP_CB_ON_PREPARED_072', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_ON_0200
+     *@tc.name      : AudioCapturer-Check-STATE-STOPPED
+     *@tc.desc      : AudioCapturer with state stopped
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_ON_0200', 2, async function (done) {
         var stateFlag;
         var audioCapCallBack;
         var AudioStreamInfo = {
@@ -4356,15 +4328,15 @@ describe('audioCapturer', function () {
         await sleep(1000);
     })
 
-    /*         *
-               * @tc.number    : SUB_AUDIO_VOIP_CAP_CB_ON_START_073
-               * @tc.name      : AudioCapturer-Check-STATE-STOPPED
-               * @tc.desc      : AudioCapturer with state stopped
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_CAP_CB_ON_START_073', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_ON_0300
+     *@tc.name      : AudioCapturer-Check-STATE-STOPPED
+     *@tc.desc      : AudioCapturer with state stopped
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_ON_0300', 2, async function (done) {
         var stateFlag;
         var audioCapCallBack;
         var AudioStreamInfo = {
@@ -4453,15 +4425,15 @@ describe('audioCapturer', function () {
         await sleep(1000);
     })
 
-    /*         *
-               * @tc.number    : SUB_AUDIO_VOIP_CAP_CB_ON_STOP_074
-               * @tc.name      : AudioCapturer-Check-STATE-STOPPED
-               * @tc.desc      : AudioCapturer with state stopped
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_CAP_CB_ON_STOP_074', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_ON_0400
+     *@tc.name      : AudioCapturer-Check-STATE-STOPPED
+     *@tc.desc      : AudioCapturer with state stopped
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_ON_0400', 2, async function (done) {
         var stateFlag;
         var audioCapCallBack;
         var AudioStreamInfo = {
@@ -4569,15 +4541,15 @@ describe('audioCapturer', function () {
         await sleep(1000);
     })
 
-    /*     *
-               * @tc.number    : SUB_AUDIO_VOIP_CAP_CB_READ_BUFFER_MARK_5000_REACH_075
-               * @tc.name      : AudioCapturer-Check-READ_BUFFER
-               * @tc.desc      : AudioCapturer with read buffer
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_CAP_CB_READ_BUFFER_MARK_5000_REACH_075', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_READ_BUFFER_MARK_REACH_0100
+     *@tc.name      : AudioCapturer-Check-READ_BUFFER
+     *@tc.desc      : AudioCapturer with read buffer
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_READ_BUFFER_MARK_REACH_0100', 2, async function (done) {
         var stateFlag;
         await getFd("capture_CB_js-44100-2C-S16LE-checkcbreadbuffer.pcm");
         var AudioStreamInfo = {
@@ -4657,7 +4629,7 @@ describe('audioCapturer', function () {
         var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
-            await new Promise((resolve,reject)=>{
+            await new Promise((resolve, reject) => {
                 audioCapCallBack.read(bufferSize, true, async (err, buffer) => {
                     if (err) {
                         console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
@@ -4707,15 +4679,15 @@ describe('audioCapturer', function () {
         await sleep(1000);
     })
 
-    /*     *
-               * @tc.number    : SUB_AUDIO_VOIP_CAP_CB_READ_BUFFER_MARK_1000_REACH_076
-               * @tc.name      : AudioCapturer-Check-READ_BUFFER
-               * @tc.desc      : AudioCapturer with read buffer
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_CAP_CB_READ_BUFFER_MARK_1000_REACH_076', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_READ_BUFFER_MARK_REACH_0200
+     *@tc.name      : AudioCapturer-Check-READ_BUFFER
+     *@tc.desc      : AudioCapturer with read buffer
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_READ_BUFFER_MARK_REACH_0200', 2, async function (done) {
         var stateFlag;
         await getFd("capture_CB_js-44100-2C-S16LE-checkcbreadbuffer.pcm");
         var AudioStreamInfo = {
@@ -4795,7 +4767,7 @@ describe('audioCapturer', function () {
         var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
-            await new Promise((resolve,reject)=>{
+            await new Promise((resolve, reject) => {
                 audioCapCallBack.read(bufferSize, true, async (err, buffer) => {
                     if (err) {
                         console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
@@ -4839,15 +4811,15 @@ describe('audioCapturer', function () {
         await sleep(1000);
     })
 
-    /*     *
-               * @tc.number    : SUB_AUDIO_VOIP_CAP_CB_READ_BUFFER_MARK_10000_REACH_077
-               * @tc.name      : AudioCapturer-Check-READ_BUFFER
-               * @tc.desc      : AudioCapturer with read buffer
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_CAP_CB_READ_BUFFER_MARK_10000_REACH_077', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_READ_BUFFER_MARK_REACH_0300
+     *@tc.name      : AudioCapturer-Check-READ_BUFFER
+     *@tc.desc      : AudioCapturer with read buffer
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_READ_BUFFER_MARK_REACH_0300', 2, async function (done) {
         var stateFlag;
         await getFd("capture_CB_js-44100-2C-S16LE-checkcbreadbuffer.pcm");
         var AudioStreamInfo = {
@@ -4927,7 +4899,7 @@ describe('audioCapturer', function () {
         var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
-            await new Promise((resolve,reject)=>{
+            await new Promise((resolve, reject) => {
                 audioCapCallBack.read(bufferSize, true, async (err, buffer) => {
                     if (err) {
                         console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
@@ -4972,15 +4944,15 @@ describe('audioCapturer', function () {
         await sleep(1000);
     })
 
-    /*     *
-               * @tc.number    : SUB_AUDIO_VOIP_CAP_CB_READ_BUFFER_MARK_100_REACH_078
-               * @tc.name      : AudioCapturer-Check-READ_BUFFER
-               * @tc.desc      : AudioCapturer with read buffer
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_CAP_CB_READ_BUFFER_MARK_100_REACH_078', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_READ_BUFFER_MARK_REACH_0400
+     *@tc.name      : AudioCapturer-Check-READ_BUFFER
+     *@tc.desc      : AudioCapturer with read buffer
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_READ_BUFFER_MARK_REACH_0400', 2, async function (done) {
         var stateFlag;
         await getFd("capture_CB_js-44100-2C-S16LE-checkcbreadbuffer.pcm");
         var AudioStreamInfo = {
@@ -5060,7 +5032,7 @@ describe('audioCapturer', function () {
         var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
-            await new Promise((resolve,reject)=>{
+            await new Promise((resolve, reject) => {
                 audioCapCallBack.read(bufferSize, true, async (err, buffer) => {
                     if (err) {
                         console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
@@ -5105,15 +5077,15 @@ describe('audioCapturer', function () {
         await sleep(1000);
     })
 
-    /*     *
-               * @tc.number    : SUB_AUDIO_VOIP_CAP_CB_READ_BUFFER_MARK_1_REACH_079
-               * @tc.name      : AudioCapturer-Check-READ_BUFFER
-               * @tc.desc      : AudioCapturer with read buffer
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_CAP_CB_READ_BUFFER_MARK_1_REACH_079', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_READ_BUFFER_MARK_REACH_0500
+     *@tc.name      : AudioCapturer-Check-READ_BUFFER
+     *@tc.desc      : AudioCapturer with read buffer
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_READ_BUFFER_MARK_REACH_0500', 2, async function (done) {
         var stateFlag;
         await getFd("capture_CB_js-44100-2C-S16LE-checkcbreadbuffer.pcm");
         var AudioStreamInfo = {
@@ -5193,7 +5165,7 @@ describe('audioCapturer', function () {
         var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
-            await new Promise((resolve,reject)=>{
+            await new Promise((resolve, reject) => {
                 audioCapCallBack.read(bufferSize, true, async (err, buffer) => {
                     if (err) {
                         console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
@@ -5239,15 +5211,15 @@ describe('audioCapturer', function () {
     })
 
 
-    /*     *
-               * @tc.number    : SUB_AUDIO_VOIP_CAP_CB_READ_BUFFER_MARK_0_REACH_080
-               * @tc.name      : AudioCapturer-Check-READ_BUFFER
-               * @tc.desc      : AudioCapturer with read buffer
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_CAP_CB_READ_BUFFER_MARK_0_REACH_080', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_READ_BUFFER_MARK_REACH_0600
+     *@tc.name      : AudioCapturer-Check-READ_BUFFER
+     *@tc.desc      : AudioCapturer with read buffer
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_READ_BUFFER_MARK_REACH_0600', 2, async function (done) {
         var stateFlag;
         await getFd("capture_CB_js-44100-2C-S16LE-checkcbreadbuffer.pcm");
         var AudioStreamInfo = {
@@ -5327,7 +5299,7 @@ describe('audioCapturer', function () {
         var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
-            await new Promise((resolve,reject)=>{
+            await new Promise((resolve, reject) => {
                 audioCapCallBack.read(bufferSize, true, async (err, buffer) => {
                     if (err) {
                         console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
@@ -5373,15 +5345,15 @@ describe('audioCapturer', function () {
     })
 
 
-    /*     *
-               * @tc.number    : SUB_AUDIO_VOIP_CAP_CB_READ_BUFFER_MARK_LARGEVALUE_REACH_081
-               * @tc.name      : AudioCapturer-Check-READ_BUFFER
-               * @tc.desc      : AudioCapturer with read buffer
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_CAP_CB_READ_BUFFER_MARK_LARGEVALUE_REACH_081', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_READ_BUFFER_MARK_REACH_0700
+     *@tc.name      : AudioCapturer-Check-READ_BUFFER
+     *@tc.desc      : AudioCapturer with read buffer
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_READ_BUFFER_MARK_REACH_0700', 2, async function (done) {
         var stateFlag;
         await getFd("capture_CB_js-44100-2C-S16LE-checkcbreadbuffer.pcm");
         var AudioStreamInfo = {
@@ -5461,7 +5433,7 @@ describe('audioCapturer', function () {
         var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
-            await new Promise((resolve,reject)=>{
+            await new Promise((resolve, reject) => {
                 audioCapCallBack.read(bufferSize, true, async (err, buffer) => {
                     if (err) {
                         console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
@@ -5506,15 +5478,15 @@ describe('audioCapturer', function () {
         await sleep(1000);
     })
 
-    /*     *
-               * @tc.number    : SUB_AUDIO_VOIP_CAP_CB_READ_BUFFER_MARK_NEGATIVEVALUE_REACH_082
-               * @tc.name      : AudioCapturer-Check-READ_BUFFER
-               * @tc.desc      : AudioCapturer with read buffer
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_CAP_CB_READ_BUFFER_MARK_NEGATIVEVALUE_REACH_082', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_READ_BUFFER_MARK_REACH_0800
+     *@tc.name      : AudioCapturer-Check-READ_BUFFER
+     *@tc.desc      : AudioCapturer with read buffer
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_READ_BUFFER_MARK_REACH_0800', 2, async function (done) {
         var stateFlag;
         await getFd("capture_CB_js-44100-2C-S16LE-checkcbreadbuffer.pcm");
         var AudioStreamInfo = {
@@ -5594,7 +5566,7 @@ describe('audioCapturer', function () {
         var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
-            await new Promise((resolve,reject)=>{
+            await new Promise((resolve, reject) => {
                 audioCapCallBack.read(bufferSize, true, async (err, buffer) => {
                     if (err) {
                         console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
@@ -5639,15 +5611,15 @@ describe('audioCapturer', function () {
         await sleep(1000);
     })
 
-    /*     *
-               * @tc.number    : SUB_AUDIO_VOIP_CAP_CB_READ_BUFFER_PERIOD_REACH_1000_084
-               * @tc.name      : AudioCapturer-Check-READ_BUFFER
-               * @tc.desc      : AudioCapturer with read buffer
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_CAP_CB_READ_BUFFER_PERIOD_REACH_1000_084', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_READ_BUFFER_PERIOD_REACH_0100
+     *@tc.name      : AudioCapturer-Check-READ_BUFFER
+     *@tc.desc      : AudioCapturer with read buffer
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_READ_BUFFER_PERIOD_REACH_0100', 2, async function (done) {
         var stateFlag;
         await getFd("capture_CB_js-44100-2C-S16LE-checkcbreadbuffer.pcm");
         var AudioStreamInfo = {
@@ -5725,7 +5697,7 @@ describe('audioCapturer', function () {
         var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
-            await new Promise((resolve,reject)=>{
+            await new Promise((resolve, reject) => {
                 audioCapCallBack.read(bufferSize, true, async (err, buffer) => {
                     if (err) {
                         console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
@@ -5794,15 +5766,15 @@ describe('audioCapturer', function () {
 
     })
 
-    /*     *
-               * @tc.number    : SUB_AUDIO_VOIP_CAP_CB_READ_BUFFER_PERIOD_REACH_1_085
-               * @tc.name      : AudioCapturer-Check-READ_BUFFER
-               * @tc.desc      : AudioCapturer with read buffer
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_CAP_CB_READ_BUFFER_PERIOD_REACH_1_085', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_READ_BUFFER_PERIOD_REACH_0200
+     *@tc.name      : AudioCapturer-Check-READ_BUFFER
+     *@tc.desc      : AudioCapturer with read buffer
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_READ_BUFFER_PERIOD_REACH_0200', 2, async function (done) {
         var stateFlag;
         await getFd("capture_CB_js-44100-2C-S16LE-checkcbreadbuffer.pcm");
         var AudioStreamInfo = {
@@ -5880,7 +5852,7 @@ describe('audioCapturer', function () {
         var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
-            await new Promise((resolve,reject)=>{
+            await new Promise((resolve, reject) => {
                 audioCapCallBack.read(bufferSize, true, async (err, buffer) => {
                     if (err) {
                         console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
@@ -5949,15 +5921,15 @@ describe('audioCapturer', function () {
 
     })
 
-    /*     *
-               * @tc.number    : SUB_AUDIO_VOIP_CAP_CB_READ_BUFFER_PERIOD_REACH_NEGATIVE_086
-               * @tc.name      : AudioCapturer-Check-READ_BUFFER
-               * @tc.desc      : AudioCapturer with read buffer
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_CAP_CB_READ_BUFFER_PERIOD_REACH_NEGATIVE_086', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_READ_BUFFER_PERIOD_REACH_0300
+     *@tc.name      : AudioCapturer-Check-READ_BUFFER
+     *@tc.desc      : AudioCapturer with read buffer
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_READ_BUFFER_PERIOD_REACH_0300', 2, async function (done) {
         var stateFlag;
         await getFd("capture_CB_js-44100-2C-S16LE-checkcbreadbuffer.pcm");
         var AudioStreamInfo = {
@@ -6035,7 +6007,7 @@ describe('audioCapturer', function () {
         var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
-            await new Promise((resolve,reject)=>{
+            await new Promise((resolve, reject) => {
                 audioCapCallBack.read(bufferSize, true, async (err, buffer) => {
                     if (err) {
                         console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
@@ -6105,15 +6077,15 @@ describe('audioCapturer', function () {
     })
 
 
-    /*     *
-               * @tc.number    : SUB_AUDIO_VOIP_CAP_CB_READ_BUFFER_PERIOD_REACH_223750_087
-               * @tc.name      : AudioCapturer-Check-READ_BUFFER
-               * @tc.desc      : AudioCapturer with read buffer
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0*/
-
-    it('SUB_AUDIO_VOIP_CAP_CB_READ_BUFFER_PERIOD_REACH_223750_087', 0, async function (done) {
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_READ_BUFFER_PERIOD_REACH_0400
+     *@tc.name      : AudioCapturer-Check-READ_BUFFER
+     *@tc.desc      : AudioCapturer with read buffer
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_READ_BUFFER_PERIOD_REACH_0400', 2, async function (done) {
         var stateFlag;
         await getFd("capture_CB_js-44100-2C-S16LE-checkcbreadbuffer.pcm");
         var AudioStreamInfo = {
@@ -6191,7 +6163,7 @@ describe('audioCapturer', function () {
         var numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
-            await new Promise((resolve,reject)=>{
+            await new Promise((resolve, reject) => {
                 audioCapCallBack.read(bufferSize, true, async (err, buffer) => {
                     if (err) {
                         console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
