@@ -10,9 +10,7 @@
         {
             "type": "ShellKit",
             "run-command": [
-                "touch /data/media/01.mp4",
-                "chmod -R 777 /data/media"
-                
+                "rm -rf /storage/media/100/local/files/Videos/*"
             ],
             "teardown-command":[
                

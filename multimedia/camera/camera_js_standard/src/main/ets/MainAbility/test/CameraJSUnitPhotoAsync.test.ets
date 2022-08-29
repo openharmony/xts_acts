@@ -3166,6 +3166,7 @@ export default function cameraJSUnitPhotoAsync(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* EXPOSUREMODE Interface will be change
     it('GET_EXPOSURE_MODE_AUTO', 0, async function (done) {
       console.info(TAG + "Entering GET_EXPOSURE_MODE_AUTO to operate");
       camera0Input.getExposureMode(async (err, data) => {
@@ -3187,6 +3188,7 @@ export default function cameraJSUnitPhotoAsync(surfaceId: any) {
       await sleep(1000);
       done();
     })
+    */
 
     /**
       * @tc.number    : PHOTOOUTPUT_CAPTURE
