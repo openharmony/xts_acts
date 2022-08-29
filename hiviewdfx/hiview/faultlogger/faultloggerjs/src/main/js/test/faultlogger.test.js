@@ -159,7 +159,7 @@ describe("FaultlogJsTest", function () {
                 }
             }).then(
                 (value) => {
-                    console.log("HiSysEvent json-callback-success value=${value}");
+                    console.log(`HiSysEvent json-callback-success value=${value}`);
                 })
             await msleep(1000);
 
