@@ -479,7 +479,6 @@ export default function verificationTest(){
           console.info(TAG + "startAbility data = " + JSON.stringify(data));
         }).catch((err) => {
           console.info(TAG + "startAbility err = " + JSON.stringify(err));
-          done();
         });
       } catch (err) {
         console.info(TAG + "catch err = " + JSON.stringify(err));
