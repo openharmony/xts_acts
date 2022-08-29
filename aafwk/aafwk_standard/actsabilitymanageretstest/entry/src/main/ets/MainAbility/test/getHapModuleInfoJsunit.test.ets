@@ -123,7 +123,7 @@ export default function getHapModuleInfoJsunit() {
       expect(data.iconId).assertEqual(16777227);
       expect(data.backgroundImg).assertEqual("");
       expect(data.supportedModes).assertEqual(0);
-      expect(data.deviceTypes[0]).assertEqual("phone");
+      expect(data.deviceTypes[0]).assertEqual("default");
       checkAbilityInfo(msg,data.abilityInfo[0]);
       expect(data.moduleName).assertEqual("entry")
       expect(data.mainAbilityName).assertEqual("com.ohos.acecollaboration.MainAbility");
@@ -216,7 +216,7 @@ export default function getHapModuleInfoJsunit() {
       expect(data.type).assertEqual(1);
       expect(data.orientation).assertEqual(0);
       expect(data.launchMode).assertEqual(1);
-      expect(data.deviceTypes[0]).assertEqual("phone");
+      expect(data.deviceTypes[0]).assertEqual("default");
       expect(data.readPermission).assertEqual("");
       expect(data.writePermission).assertEqual("");
       expect(data.formEntity).assertEqual(0);
