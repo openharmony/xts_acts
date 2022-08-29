@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import faultlogger from '@ohos.faultLogger'
-
+import hiSysEvent from '@ohos.hiSysEvent'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 export default function FaultlogJsTest() {
 
@@ -90,7 +90,7 @@ describe("FaultlogJsTest", function () {
             const loopTimes = 10;
             for (let i = 0; i < loopTimes; i++) {
                 console.info("--------DFX_DFR_Faultlogger_Interface_0400 3 + " + i + "----------");
-                faultlogger.addFaultLog(i - 400, 
+                faultlogger.addFaultLog(i - 400,
                     faultlogger.FaultType.CPP_CRASH, module, "faultloggertestsummary02 " + i);
                 await msleep(300);
             }
@@ -145,25 +145,22 @@ describe("FaultlogJsTest", function () {
         try {
             let now = Date.now();
             console.info("DFX_DFR_Faultlogger_Interface_0500 2 + " + now);
-            const loopTimes = 2;
-            let i = 0;
-            let pro = new Promise(
-                (r, e) => {
-                    setTimeout(function run() {
-                        if (i < loopTimes) {
-                            setTimeout(run, 1001);
-                        } else {
-                            r("done!")
-                            return
-                        }
-                        console.info("--------DFX_DFR_Faultlogger_Interface_0500 3 + " + i + "----------");
-                        ++i;
-                        let dataStr = ["1", "2"]
-                        console.info(dataStr[2].test);
-                    }, 1001);
+            hiSysEvent.write({
+                domain: "ACE",
+                name: "JS_ERROR",
+                eventType: hiSysEvent.EventType.FAULT,
+                params: {
+                    PID: 487,
+                    UID: 103,
+                    PACKAGE_NAME: "com.ohos.faultlogger.test",
+                    PROCESS_NAME: "com.ohos.faultlogger.test",
+                    MSG: "faultlogger testcase test.",
+                    REASON: "faultlogger testcase test."
                 }
-            );
-            await pro;
+            }).then(
+                (value) => {
+                    console.log("HiSysEvent json-callback-success value=${value}");
+                })
             await msleep(1000);
 
             console.info("--------DFX_DFR_Faultlogger_Interface_0500 4" + "----------");
