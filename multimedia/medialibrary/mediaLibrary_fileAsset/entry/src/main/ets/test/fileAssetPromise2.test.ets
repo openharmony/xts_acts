@@ -96,15 +96,15 @@ export default function fileAssetPromise2Test(abilityContext) {
             }
         }
         /**
-         * @tc.number    : SUB_MEDIA_FILEASSET_commitModify_promise_001
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_001
          * @tc.name      : commitModify
          * @tc.desc      : Modify displayName
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_FILEASSET_commitModify_promise_001', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_FILEASSET_commitModify_promise_001'
+        it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_001', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_001'
             let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyPro/', '01', IMAGE_TYPE);
             let prop = 'displayName'
             let val = new Date().getTime() + '.jpg'
@@ -112,15 +112,15 @@ export default function fileAssetPromise2Test(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_FILEASSET_commitModify_promise_002
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_002
          * @tc.name      : commitModify
          * @tc.desc      : Modify title
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_FILEASSET_commitModify_promise_002', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_FILEASSET_commitModify_promise_002'
+        it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_002', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_002'
             let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyPro/', '02', IMAGE_TYPE);
             let prop = 'title'
             let val = new Date().getTime() + 'newTitle'
@@ -128,15 +128,15 @@ export default function fileAssetPromise2Test(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_FILEASSET_commitModify_promise_003
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_003
          * @tc.name      : commitModify
          * @tc.desc      : Modify relativePath
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_FILEASSET_commitModify_promise_003', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_FILEASSET_commitModify_promise_003'
+        it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_003', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_003'
             let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyPro/', '03', IMAGE_TYPE);
             let prop = 'relativePath'
             let val = 'Pictures/Temp/'
@@ -144,15 +144,15 @@ export default function fileAssetPromise2Test(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_FILEASSET_commitModify_promise_004
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_004
          * @tc.name      : commitModify
          * @tc.desc      : Modify orientation
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_FILEASSET_commitModify_promise_004', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_FILEASSET_commitModify_promise_004'
+        it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_004', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_004'
             let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyPro/', '04', IMAGE_TYPE);
             let prop = 'orientation'
             let val = 1
@@ -160,15 +160,15 @@ export default function fileAssetPromise2Test(abilityContext) {
         });
 
         /**
-                 * @tc.number    : SUB_MEDIA_FILEASSET_commitModify_promise_005
+                 * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_005
                  * @tc.name      : commitModify
                  * @tc.desc      : Modify uri
                  * @tc.size      : MEDIUM
                  * @tc.type      : Function
                  * @tc.level     : Level 0
                  */
-        it('SUB_MEDIA_FILEASSET_commitModify_promise_005', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_FILEASSET_commitModify_promise_005'
+        it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_005', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_005'
             let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyPro/', '06', IMAGE_TYPE);
             let prop = 'uri'
             let val = 'newUri'
@@ -176,15 +176,15 @@ export default function fileAssetPromise2Test(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_FILEASSET_commitModify_promise_006
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_006
          * @tc.name      : commitModify
          * @tc.desc      : Modify mediaType
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_FILEASSET_commitModify_promise_006', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_FILEASSET_commitModify_promise_006'
+        it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_006', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_006'
             let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyPro/', '07', IMAGE_TYPE);
             let prop = 'mediaType'
             let val = 'newMediaType'
@@ -192,16 +192,16 @@ export default function fileAssetPromise2Test(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_FILEASSET_isDirectory_promise_001
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILEASSET_ISDIRECTORY_PROMISE_001
          * @tc.name      : isDirectory
          * @tc.desc      : isDirectory asset
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_FILEASSET_isDirectory_promise_001', 0, async function (done) {
+        it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_ISDIRECTORY_PROMISE_001', 0, async function (done) {
             try {
-                let testNum = 'SUB_MEDIA_FILEASSET_isDirectory_promise_001'
+                let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_ISDIRECTORY_PROMISE_001'
                 let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyPro/', '05', IMAGE_TYPE);
                 const fetchFileResult = await media.getFileAssets(fetchOp);
                 const asset = await fetchFileResult.getFirstObject();

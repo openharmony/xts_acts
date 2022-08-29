@@ -85,15 +85,15 @@ export default function fileAssetCallback2Test(abilityContext) {
 
         
         /**
-         * @tc.number    : SUB_MEDIA_FILEASSET_commitModify_callback_001
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_001
          * @tc.name      : commitModify
          * @tc.desc      : Modify displayName
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_FILEASSET_commitModify_callback_001', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_FILEASSET_commitModify_callback_001'
+        it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_001', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_001'
             let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyCb/', '01', IMAGE_TYPE);
             let prop = 'displayName'
             let val = new Date().getTime() + '.jpg'
@@ -101,15 +101,15 @@ export default function fileAssetCallback2Test(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_FILEASSET_commitModify_callback_002
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_002
          * @tc.name      : commitModify
          * @tc.desc      : Modify title
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_FILEASSET_commitModify_callback_002', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_FILEASSET_commitModify_callback_002'
+        it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_002', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_002'
             let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyCb/', '02', IMAGE_TYPE);
             let prop = 'title'
             let val = new Date().getTime() + 'newTitle'
@@ -117,15 +117,15 @@ export default function fileAssetCallback2Test(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_FILEASSET_commitModify_callback_003
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_003
          * @tc.name      : commitModify
          * @tc.desc      : Modify relativePath
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_FILEASSET_commitModify_callback_003', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_FILEASSET_commitModify_callback_003'
+        it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_003', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_003'
             let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyCb/', '03', IMAGE_TYPE);
             let prop = 'relativePath'
             let val = 'Pictures/Temp/'
@@ -133,16 +133,16 @@ export default function fileAssetCallback2Test(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_FILEASSET_commitModify_callback_004
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_004
          * @tc.name      : commitModify
          * @tc.desc      : Modify orientation
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_FILEASSET_commitModify_callback_004', 0, async function (done) {
+        it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_004', 0, async function (done) {
 
-            let testNum = 'SUB_MEDIA_FILEASSET_commitModify_callback_004'
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_CALLBACK_004'
             let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyCb/', '04', IMAGE_TYPE);
             let prop = 'orientation'
             let val = 1
@@ -150,16 +150,16 @@ export default function fileAssetCallback2Test(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_FILEASSET_isDirectory_callback_001
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILEASSET_ISDIRECTORY_CALLBACK_001
          * @tc.name      : isDirectory
          * @tc.desc      : isDirectory asset
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_FILEASSET_isDirectory_callback_001', 0, async function (done) {
+        it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_ISDIRECTORY_CALLBACK_001', 0, async function (done) {
             try {
-                let testNum = 'SUB_MEDIA_FILEASSET_isDirectory_callback_001'
+                let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_ISDIRECTORY_CALLBACK_001'
                 let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyCb/', '05', IMAGE_TYPE);
                 const fetchFileResult = await media.getFileAssets(fetchOp);
                 const asset = await fetchFileResult.getFirstObject();
