@@ -38,7 +38,9 @@ export default class MainAbility2 extends Ability {
         windowStage.setUIContent(this.context, "pages/index", null)
         windowStage.on('windowStageEvent', (data)=>{
             if(data == 2){
-                commonEvent.publish("ACTS_DoAbility_Event", PublishCallBackOne);
+                setTimeout(()=>{
+                    commonEvent.publish("ACTS_DoAbility_Event", PublishCallBackOne);
+                }, 2000)
             }
         })
     }
