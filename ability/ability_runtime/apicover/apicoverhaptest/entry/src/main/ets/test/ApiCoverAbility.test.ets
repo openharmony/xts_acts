@@ -38,7 +38,7 @@ export default function ApiCoverTest() {
     afterEach(async (done) => {
       setTimeout(function () {
         done();
-      }, gSetTimeout);
+      }, 2000);
     })
 
     /*
