@@ -75,6 +75,15 @@ const idFetchOps = function (testNum, albumId) {
     return ops
 }
 
+const fileIdFetchOps = function (testNum, id) {
+    let ops = {
+        selections: FILEKEY.ID + "= ?",
+        selectionArgs: [id + ""],
+    };
+    console.info(`${testNum}: fetchOps${JSON.stringify(ops)}`);
+    return ops;
+};
+
 const albumFetchOps = function (testNum, path, albumName, type,
     others = { order: FILEKEY.DATE_ADDED + " DESC", }) {
     let ops = {
@@ -214,4 +223,5 @@ export {
     checkAlbumsCount,
     MODIFY_ERROR_CODE_01,
     isNum,
-}
+    fileIdFetchOps,
+};

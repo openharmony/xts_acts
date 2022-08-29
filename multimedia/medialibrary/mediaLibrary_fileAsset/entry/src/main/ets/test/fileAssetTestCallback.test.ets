@@ -26,6 +26,7 @@ import {
     checkAssetsCount,
     fetchOps,
     isNum,
+    fileIdFetchOps,
 } from '../../../../../../common';
 export default function fileAssetTestCallbackTest(abilityContext) {
     describe('fileAssetTestCallbackTest', function () {
@@ -76,6 +77,11 @@ export default function fileAssetTestCallbackTest(abilityContext) {
                     console.info(`fd1:${fd1},fd:${fd}`)
                     await asset.close(fd);
                     await asset1.close(fd1);
+                    let newFetchFileResult = await media.getFileAssets(fileIdFetchOps(testNum, asset.id));
+                    let checkAssetCountPass = await checkAssetsCount(done, testNum, newFetchFileResult, 1);
+                    if (!checkAssetCountPass) return;
+                    let newAsset = await newFetchFileResult.getFirstObject();
+                    expect(newAsset.dateModified != asset.dateModified).assertTrue();
                     done();
                 });
 
