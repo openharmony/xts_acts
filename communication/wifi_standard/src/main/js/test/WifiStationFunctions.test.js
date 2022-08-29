@@ -66,8 +66,8 @@ let WifiChannelWidth = {
     WIDTH_INVALID:null,
 }
 
-export default function actsWifiTest() {
-    describe('actsWifiTest', function() {
+export default function actsWifiFunctionsTest() {
+    describe('actsWifiFunctionsTest', function() {
         beforeEach(function () {
             checkWifiPowerOn();
         })
@@ -77,43 +77,47 @@ export default function actsWifiTest() {
         /**
         * @tc.number SUB_Communication_WiFi_XTS_Sta_0002
         * @tc.name testgetScanInfos
-        * @tc.desc Test get ScanInfos callback API functionality..
+        * @tc.desc Test get to ScanInfos promise and callback API functionality.
         * @tc.type Function
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_Sta_0002', 0, async function (done) {
             let scan = wifi.scan();
-            sleep(3000);
-            console.log("[wifi_test] open wifi scan result: " + scan);
+            await sleep(3000);
             await wifi.getScanInfos()
                 .then(result => {
                     let clen = Object.keys(result).length;
                     expect(clen).assertLarger(0);
                     console.info("[wifi_test] getScanInfos promise result " + JSON.stringify(result));
                 });
-            wifi.getScanInfos(
-                (err, result) => {
-                    if (err) {
-                        console.log("[wifi_test] wifi getScanInfos failed " + err);
-                    }
-                    let clen = Object.keys(result).length;
-                    if (!(clen == 0)) {
-                        expect(clen).assertLarger(0);
-                        console.info("[wifi_test] getScanInfos callback result: " + JSON.stringify(result));
-                        for (let j = 0; j < clen; ++j) {
-                            console.info("ssid: " + result[j].ssid + "bssid: " + result[j].bssid +
-                            "securityType: " + result[j].securityType +
-                            "rssi: " + result[j].rssi + "band: " + result[j].band +
-                            "frequency: " + result[j].frequency +
-                            "timestamp" + result[j].timestamp + "capabilities" + result[j].capabilities
-                            + "channelWidth: " + result[j].channelWidth + "centerFrequency0: "
-                            + result[j].centerFrequency0
-                            + "centerFrequency1: " + result[j].centerFrequency1
-                            + "infoElems: " + result[j].infoElems);
-                        }
-                    }
-                    done()
+            function getScanInfos() {
+                return new Promise((resolve, reject) => {
+                    wifi.getScanInfos(
+                        (err, result) => {
+                            if (err) {
+                                console.log("[wifi_test] wifi getScanInfos failed " + err);
+                            }
+                            let clen = Object.keys(result).length;
+                            if (!(clen == 0)) {
+                                expect(clen).assertLarger(0);
+                                console.info("[wifi_test] getScanInfos callback result: " + JSON.stringify(result));
+                                for (let j = 0; j < clen; ++j) {
+                                    console.info("ssid: " + result[j].ssid + "bssid: " + result[j].bssid +
+                                    "securityType: " + result[j].securityType +
+                                    "rssi: " + result[j].rssi + "band: " + result[j].band +
+                                    "frequency: " + result[j].frequency + "channelWidth: " + result[j].channelWidth +
+                                    "timestamp" + result[j].timestamp + "capabilities" + result[j].capabilities
+                                    + "centerFrequency0: " + result[j].centerFrequency0
+                                    + "centerFrequency1: " + result[j].centerFrequency1
+                                    + "infoElems: " + result[j].infoElems);
+                                }
+                            }
+                            resolve();
+                        });
                 });
+            }
+            await getScanInfos();
+            done();
         })
 
         /**
@@ -297,163 +301,24 @@ export default function actsWifiTest() {
                 });
             })
 
-            /**
-        * @tc.number     Conn_Info_0003
-        * @tc.name       SUB_Communication_WiFi_Sta_Conn_Info_0003
-        * @since 7
-        * @tc.desc       Test get IpInfo information
-        */
-        it('SUB_Communication_WiFi_Sta_Conn_Info_0001', 0, function () {
-            let isConnected = wifi.isConnected();
-            expect(isConnected).assertFalse();
-            let ipInfo = wifi.getIpInfo();
-            expect(JSON.stringify(ipInfo)).assertContain("gateway");
-            let ipAddress = resolveIP(ipInfo.ipAddress);
-            console.info("ipAddress result: " + ipAddress);
-            console.info("gateway: " + ipInfo.gateway + "ipAddress: " + ipInfo.ipAddress
-            + "leaseDuration: " + ipInfo.leaseDuration +
-            "leaseDuration: " + ipInfo.leaseDuration +
-            "netmask: " + ipInfo.netmask + "primaryDns:" + ipInfo.primaryDns +
-            "secondDns: " + ipInfo.secondDns + "serverIp: " + ipInfo.serverIp);
-        })
-
-            /**
-        * @tc.number     wifiStateChange_0001
-        * @tc.name       SUB_Communication_WiFi_Sta_wifiStateChange_0001
-        * @since 7
-        * @tc.desc       Test wifiStateChange callback
-        */
-        it('SUB_Communication_WiFi_Sta_wifiStateChange_0001', 0, async function (done) {
-            wifi.on('wifiStateChange', async result => {
-                console.info("wifiStateChange callback, result:" + JSON.stringify(result));
-                expect(true).assertEqual(result != null);
-                let promise = new Promise((resolve) => {
-                    wifi.off('wifiStateChange', result => {
-                        console.info("offwifiStateChange callback, result: " + JSON.stringify(result));
-                        expect(true).assertEqual(result != null);
-                        resolve()
-                    });
-                })
-                await promise.then(done)
-            });
-            done();
-        })
-
-            /**
-        * @tc.number     wifiConnectionChange_0002
-        * @tc.name       SUB_Communication_WiFi_Sta_wifiConnectionChange_0002
-        * @since 7
-        * @tc.desc       Test wifiStateChange callback
-        */
-        it('SUB_Communication_WiFi_Sta_wifiConnectionChange_0002', 0, async function (done) {
-            wifi.on('wifiConnectionChange', async result => {
-                console.info("wifiConnectionChange callback, result:" + JSON.stringify(result));
-                expect(true).assertEqual(result != null);
-                let promise = new Promise((resolve) => {
-                    console.info('[wifi_test] offwifiConnectionChange test start ...');
-                    wifi.off('wifiConnectionChange', result => {
-                        console.info("offwifiConnectionChange callback, result:  " + JSON.stringify(result));
-                        expect(true).assertEqual(result != null);
-                        resolve()
-                    });
-                })
-                await promise.then(done)
-            });
-            done();
-        })
-
-            /**
-        * @tc.number     wifiScanStateChange_0003
-        * @tc.name       SUB_Communication_WiFi_Sta_wifiScanStateChange_0003
-        * @since 7
-        * @tc.desc       Test wifiScanStateChange callback
-        */
-        it('SUB_Communication_WiFi_Sta_wifiScanStateChange_0003', 0, async function (done) {
-            wifi.on('wifiScanStateChange', async result => {
-                console.info("wifiScanStateChange callback, result:" + JSON.stringify(result));
-                expect(true).assertEqual(result != null);
-                let promise = new Promise((resolve) => {
-                    console.info('[wifi_test] offwifiScanStateChange test start ...');
-                    wifi.off('wifiScanStateChange', result => {
-                        console.info("offwifiScanStateChange callback, result:  " + JSON.stringify(result));
-                        expect(true).assertEqual(result != null);
-                        resolve()
-                    });
-                })
-                await promise.then(done)
-            });
-            let scan = wifi.scan();
-            sleep(3000);
-            done();
-        })
-
-            /**
-        * @tc.number     wifiRssiChange_0004
-        * @tc.name       SUB_Communication_WiFi_Sta_wifiRssiChange_0004
-        * @since 7
-        * @tc.desc       Test wifiRssiChange callback
-        */
-        it('SUB_Communication_WiFi_Sta_wifiRssiChange_0004', 0, async function (done) {
-            wifi.on('wifiRssiChange', async result => {
-                console.info("wifiRssiChange callback, result:" + JSON.stringify(result));
-                expect(true).assertEqual(result != null);
-                let promise = new Promise((resolve) => {
-                    console.info('[wifi_test] offwifiRssiChange test start ...');
-                    wifi.off('wifiRssiChange', result => {
-                        console.info("offwifiRssiChange callback, result:  " + JSON.stringify(result));
-                        expect(true).assertEqual(result != null);
-                        resolve()
-                    });
-                })
-                await promise.then(done)
-            });
-            done();
-        })
-
-            /**
-        * @tc.number SUB_Communication_WiFi_Hotspot_ON_0001
-        * @tc.name testhotspotStateChangeOn
-        * @since 7
-        * @tc.desc Test hotspotStateChangeOn api.
-        * @tc.size MEDIUM
+        /**
+        * @tc.number SUB_Communication_WiFi_XTS_Sta_0034
+        * @tc.name testgetScanInfosSync
+        * @tc.desc Test  get to ScanInfos  Sync API functionality.
         * @tc.type Function
-        * @tc.level Level 3
+        * @tc.level Level 0
         */
-        it('SUB_Communication_WiFi_Hotspot_ON_0001', 0, async function (done) {
-            console.info("[wifi_test]hotspotStateChange On test");
-            try {
-                await wifi.on('hotspotStateChange', (data) => {
-                    console.info("[wifi_test] hotspotStateChange On ->" + data);
-                    expect(true).assertEqual(data != null);
-                });
-
-            } catch (e) {
-                expect(null).assertFail();
-            }
-            done();
-        })
-
-            /**
-        * @tc.number SUB_Communication_WiFi_Hotspot_Off_0002
-        * @tc.name testhotspotStateChangeOff
-        * @since 7
-        * @tc.desc Test hotspotStateChange api.
-        * @tc.size MEDIUM
-        * @tc.type Function
-        * @tc.level Level 3
-        */
-        it('SUB_Communication_WiFi_Hotspot_Off_0002', 0, async function (done) {
-            console.info("[wifi_test]hotspotStateChange Off test");
-            try {
-                await wifi.off('hotspotStateChange', (data) => {
-                    console.info("[wifi_test] hotspotStateChange Off ->" + data);
-                    expect(true).assertEqual(data != null);
-                });
-            } catch (e) {
-                expect(null).assertFail();
-            }
+        it('SUB_Communication_WiFi_XTS_Sta_0034', 0, async function (done) {
+            let getScanInfos = wifi.getScanInfosSync();
+            console.info("[wifi_test] wifi get to ScanInfosSync  result : " + JSON.stringify(getScanInfos));
+            let lenth = Object.keys(getScanInfos).length;
+            console.info("[wifi_test] wifi ScanInfosSync length  result : " + JSON.stringify(lenth));
+            expect(lenth).assertLarger(0);
             done();
         })
         console.log("*************[wifi_test] start wifi js unit test end*************");
         })
 }
+
+
+

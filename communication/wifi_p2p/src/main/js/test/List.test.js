@@ -12,10 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import actsWifiTestNew from './WifiP2P.testsame.js'
-import actsWifiTest from './WifiP2P.test2.js'
+import actsWifiFunctionTest from './WifiP2PFunction.test.js'
+import actsWifiEventTest from './WifiP2PEvent.test.js'
 export default function testsuite() {
-actsWifiTestNew()
-actsWifiTest()
+actsWifiFunctionTest()
+actsWifiEventTest()
 }
-

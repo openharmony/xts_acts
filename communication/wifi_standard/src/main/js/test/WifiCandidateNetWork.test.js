@@ -56,8 +56,8 @@ let WifiChannelWidth = {
     WIDTH_INVALID:null,
 }
 
-export default function actsWifiTestNew() {
-    describe('actsWifiTestNew', function () {
+export default function actsWifiCandidateNetWorkTest() {
+    describe('actsWifiCandidateNetWorkTest', function () {
         beforeEach(function () {
             checkWifiPowerOn();
         })
@@ -65,12 +65,11 @@ export default function actsWifiTestNew() {
         })
 
         /**
-        * @tc.number     CandidateNetWork_0001
-        * @tc.name       SUB_Communication_WiFi_XTS_CandidateNetWork_0001
-        * @since 9
-        * @tc.desc       Test add OPEN and WEP CandidateConfig Promise API functionality.
-        * @syscap SystemCapability.Communication.WiFi.STA
-        * @permission ohos.permission.SET_WIFI_INFO
+        * @tc.number SUB_Communication_WiFi_XTS_CandidateNetWork_0001
+        * @tc.name testaddCandidateConfig
+        * @tc.desc Test add OPEN and WEP CandidateConfig Promise API functionality.
+        * @tc.type Function
+        * @tc.level Level 2
         */
         it('SUB_Communication_WiFi_XTS_CandidateNetWork_0001', 0, async function (done) {
             let wifiDeviceConfig = {
@@ -113,12 +112,11 @@ export default function actsWifiTestNew() {
         })
 
         /**
-        * @tc.number     CandidateNetWork_0001
-        * @tc.name       SUB_Communication_WiFi_XTS_CandidateNetWork_0002
-        * @since 8
-        * @tc.desc       Test add PSK CandidateConfig and removeCandidateConfig Promise API functionality.
-        * @syscap SystemCapability.Communication.WiFi.STA
-        * @permission ohos.permission.SET_WIFI_INFO
+        * @tc.number SUB_Communication_WiFi_XTS_CandidateNetWork_0002
+        * @tc.name testaddCandidateConfig
+        * @tc.desc Test add PSK CandidateConfig and removeCandidateConfig Promise API functionality.
+        * @tc.type Function
+        * @tc.level Level 2
         */
         it('SUB_Communication_WiFi_XTS_CandidateNetWork_0002', 0, async function (done) {
             let wifiDeviceConfig = {
@@ -156,12 +154,11 @@ export default function actsWifiTestNew() {
         })
 
         /**
-        * @tc.number     CandidateNetWork_0003
-        * @tc.name       SUB_Communication_WiFi_XTS_CandidateNetWork_0003
-        * @since 8
-        * @tc.desc       Test add SAE CandidateConfig Promise API functionality.
-        * @syscap SystemCapability.Communication.WiFi.STA
-        * @permission ohos.permission.SET_WIFI_INFO
+        * @tc.number SUB_Communication_WiFi_XTS_CandidateNetWork_0003
+        * @tc.name testaddCandidateConfig
+        * @tc.desc Test add SAE CandidateConfig Promise API functionality.
+        * @tc.type Function
+        * @tc.level Level 2
         */
         it('SUB_Communication_WiFi_XTS_CandidateNetWork_0003', 0, async function (done) {
             let wifiDeviceConfig = {
@@ -198,12 +195,72 @@ export default function actsWifiTestNew() {
         })
 
         /**
-        * @tc.number     CandidateNetWork_0005
-        * @tc.name       SUB_Communication_WiFi_XTS_CandidateNetWork_0005
-        * @since 8
-        * @tc.desc       Test add CandidateConfig and removeCandidateConfig callback API functionality.
-        * @syscap SystemCapability.Communication.WiFi.STA
-        * @permission ohos.permission.SET_WIFI_INFO
+        * @tc.number SUB_Communication_WiFi_XTS_CandidateNetWork_0004
+        * @tc.name testaddCandidateConfig
+        * @tc.desc Test add MAX CandidateConfig and removeall CandidateConfig.
+        * @tc.type Function
+        * @tc.level Level 2
+        */
+        it('SUB_Communication_WiFi_XTS_CandidateNetWork_0004', 0, async function (done) {
+            let SSID = "TYPE_PSK"
+            for (let i = 0; i < 16; i++) {
+                SSID = "TYPE_PSK" + i
+                console.info("[wifi_test] get canshu result : ");
+                let wifiDeviceConfig = {
+                    "ssid": SSID,
+                    "bssid": "",
+                    "preSharedKey": "12345678",
+                    "isHiddenSsid": false,
+                    "securityType": WifiSecurityType.WIFI_SEC_TYPE_PSK,
+                };
+                console.info("[wifi_test] get wifiDeviceConfig ssid result : " + JSON.stringify(wifiDeviceConfig.ssid));
+                await wifi.addCandidateConfig(wifiDeviceConfig)
+                    .then(netWorkId => {
+                        console.info("[wifi_test]add 16th CandidateConfig promise : " + JSON.stringify(netWorkId));
+                        expect(true).assertEqual(netWorkId != -1);
+                    }).catch((error) => {
+                        console.error('[wifi_js] add 16th CandidateConfig promise failed -> ' + JSON.stringify(error));
+                        expect().assertFail();
+                    });
+            }
+            let wifiDeviceConfig1 = {
+                "ssid": "TYPE_17",
+                "bssid": "",
+                "preSharedKey": "12345678",
+                "isHiddenSsid": false,
+                "securityType": WifiSecurityType.WIFI_SEC_TYPE_PSK,
+            };
+            await wifi.addCandidateConfig(wifiDeviceConfig1)
+                .then(netWorkId => {
+                    console.info("[wifi_test]add 17th CandidateConfig promise : " + JSON.stringify(netWorkId));
+                    expect(true).assertEqual(netWorkId != -1);
+                }).catch((error) => {
+                    console.error('[wifi_js] add 17th CandidateConfig promise failed -> ' + JSON.stringify(error));
+                });
+            let getconfig = wifi.getCandidateConfigs();
+            console.info("[wifi_test] wifi get 16 CandidateConfigs result : " + JSON.stringify(getconfig));
+            for (let i = 0; i < 16; i++) {
+                var networkId = getconfig[i].netId;
+                console.info("[wifi_test] wifi get networkId result : " + JSON.stringify(networkId));
+                await wifi.removeCandidateConfig(networkId)
+                    .then(ret => {
+                        console.info("[wifi_test]remove CandidateConfig promise" + JSON.stringify(ret));
+                        let getconfig1 = wifi.getCandidateConfigs();
+                        console.info("[wifi_test] wifi get CandidateConfigs result : " + JSON.stringify(getconfig1));
+                        console.info("[wifi_test] wifi getconfiglength result : " + JSON.stringify(getconfig1.length));
+                    }).catch((error) => {
+                        console.error('[wifi_js] remove CandidateConfig promise failed -> ' + JSON.stringify(error));
+                    });
+            }
+            done();
+        })
+
+        /**
+        * @tc.number SUB_Communication_WiFi_XTS_CandidateNetWork_0005
+        * @tc.name testaddCandidateConfig
+        * @tc.desc Test add CandidateConfig and removeCandidateConfig callback API functionality.
+        * @tc.type Function
+        * @tc.level Level 2
         */
         it('SUB_Communication_WiFi_XTS_CandidateNetWork_0005', 0, async function (done) {
             let wifiDeviceConfig = {
@@ -249,18 +306,16 @@ export default function actsWifiTestNew() {
                         });
                 });
             }
-
             await removeCandidate();
             done();
         })
 
         /**
-        * @tc.number     CandidateNetWork_0006
-        * @tc.name       SUB_Communication_WiFi_XTS_SUB_Communication_WiFi_XTS_CandidateNetWork_0006
-        * @tc.desc       Test connect To CandidateConfig API functionality.
-        * @since 9
-        * @syscap SystemCapability.Communication.WiFi.STA
-        * @permission ohos.permission.SET_WIFI_INFO
+        * @tc.number SUB_Communication_WiFi_XTS_CandidateNetWork_0006
+        * @tc.name testaddCandidateConfig
+        * @tc.desc Test connect To CandidateConfig API functionality.
+        * @tc.type Function
+        * @tc.level Level 2
         */
         it('SUB_Communication_WiFi_XTS_CandidateNetWork_0006', 0, async function (done) {
             let WifiSecurityType = {
@@ -299,69 +354,6 @@ export default function actsWifiTestNew() {
                     console.info("[wifi_test] promise then error." + JSON.stringify(error));
                     expect().assertFail();
                 });
-            done();
-        })
-
-
-        /**
-        * @tc.number     Sta_0002
-        * @tc.name       SUB_Communication_WiFi_XTS_Sta_0002
-        * @tc.desc       Test  get to ScanInfos promise and callback API functionality.
-        * @since 6
-        * @syscap SystemCapability.Communication.WiFi.STA
-        * @permission ohos.permission.GET_WIFI_INFO and (ohos.permission.GET_WIFI_PEERS_MAC or ohos.permission.LOCATION)
-        */
-        it('SUB_Communication_WiFi_XTS_Sta_0002', 0, async function (done) {
-            await wifi.getScanInfos()
-                .then(result => {
-                    let clen = Object.keys(result).length;
-                    expect(clen).assertLarger(0);
-                    console.info("[wifi_test] getScanInfos promise result " + JSON.stringify(result));
-                });
-            function getScanInfos() {
-                return new Promise((resolve, reject) => {
-                    wifi.getScanInfos(
-                        (err, result) => {
-                            if (err) {
-                                console.log("[wifi_test] wifi getScanInfos failed " + err);
-                            }
-                            let clen = Object.keys(result).length;
-                            if (!(clen == 0)) {
-                                expect(clen).assertLarger(0);
-                                console.info("[wifi_test] getScanInfos callback result: " + JSON.stringify(result));
-                                for (let j = 0; j < clen; ++j) {
-                                    console.info("ssid: " + result[j].ssid + "bssid: " + result[j].bssid +
-                                    "securityType: " + result[j].securityType +
-                                    "rssi: " + result[j].rssi + "band: " + result[j].band +
-                                    "frequency: " + result[j].frequency + "channelWidth: " + result[j].channelWidth +
-                                    "timestamp" + result[j].timestamp + "capabilities" + result[j].capabilities
-                                    + "centerFrequency0: " + result[j].centerFrequency0
-                                    + "centerFrequency1: " + result[j].centerFrequency1
-                                    + "infoElems: " + result[j].infoElems);
-                                }
-                            }
-                            resolve();
-                        });
-                });
-            }
-            await getScanInfos();
-            done();
-        })
-
-        /**
-        * @tc.number     Sta_0034
-        * @tc.name       SUB_Communication_WiFi_XTS_Sta_0034
-        * @tc.desc       Test  get to ScanInfos  Sync API functionality.
-        * @since 9
-        * @syscap SystemCapability.Communication.WiFi.STA
-        * @permission ohos.permission.GET_WIFI_INFO and (ohos.permission.GET_WIFI_PEERS_MAC or ohos.permission.LOCATION)
-        */
-        it('SUB_Communication_WiFi_XTS_Sta_0034', 0, async function (done) {
-            let getScanInfos = wifi.getScanInfosSync();
-            console.info("[wifi_test] wifi get to ScanInfosSync  result : " + JSON.stringify(getScanInfos));
-            let lenth = Object.keys(getScanInfos).length;
-            console.info("[wifi_test] wifi ScanInfosSync length  result : " + JSON.stringify(lenth));
-            expect(lenth).assertLarger(0);
             done();
         })
 
@@ -448,3 +440,7 @@ export default function actsWifiTestNew() {
         })
     })
 }
+
+
+
+
