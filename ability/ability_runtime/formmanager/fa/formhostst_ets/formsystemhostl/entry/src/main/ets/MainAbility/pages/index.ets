@@ -42,11 +42,11 @@ struct Index {
   private formOnRequestEvent = `FMS_FormOnRequest_commonEvent`;
   private formOnDeletedEvent = "FMS_FormOnDeleted_commonEvent";
 
-  private onAcquiredCallback() {
+  private onAcquiredCallback = () => {
     console.info(`====>${this.TAG} onAcquiredCallback====>`);
   }
 
-  private onRequestCallback() {
+  private onRequestCallback = () => {
     console.info(`====>${this.TAG} onRequestCallback====>`);
   }
 

@@ -49,22 +49,22 @@ struct Index {
     events: ["FMS_FormDelete_commonEvent"],
   };
 
-  private publishOnErrorCallBack() {
+  private publishOnErrorCallBack = () => {
     this.canCreateForm = false;
     console.debug("====>[FormComponent.host] formOnErrorEventCallBack ====>");
   }
-  private publishOnDeletedCallBack() {
+  private publishOnDeletedCallBack = () => {
     this.canCreateForm = false;
     console.debug("====>[FormComponent.host] publishOnDeletedCallBack ====>");
   }
-  private publishOnStateCallBack() {
+  private publishOnStateCallBack = () => {
     this.canCreateForm = false;
     console.debug("====>[FormComponent.host] publishOnStateCallBack ====>");
   }
-  private publishOnAcquiredCallBack() {
+  private publishOnAcquiredCallBack = () => {
     console.debug("====>[FormComponent.host] formOnAcquiredEventCallBack ====>");
   }
-  private deleteCallBack(err, data) {
+  private deleteCallBack = (err, data) => {
     console.info("!!!====>[FormComponent.host] deleteCallBack start:====>" + JSON.stringify(data));
     if(data.bundleName && data.bundleName != "com.ohos.st.formsystemhostg") {
       return;
