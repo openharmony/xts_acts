@@ -1,5 +1,4 @@
-// @ts-nocheck
-/**
+/*
  * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,25 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import AbilityStage from "@ohos.application.AbilityStage"
 
-@Entry
-@Component
-struct MyComponent {
-  aboutToAppear() {
-  }
-
-  build() {
-    Flex({
-      direction: FlexDirection.Column,
-      alignItems: ItemAlign.Center,
-      justifyContent: FlexAlign.Center
-    }) {
-      Text('REQUEST ETS TEST')
-        .fontSize(50)
-        .fontWeight(FontWeight.Bold)
+export default class MyAbilityStage extends AbilityStage {
+    onCreate() {
+        console.log("MyAbilityStage onCreate");
+        globalThis.stageOnCreateRun = 1;
+        globalThis.stageContext = this.context;
     }
-    .width('100%')
-    .height('100%')
-  }
 }
-
