@@ -1436,6 +1436,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* VideoStabilizationMode Interface will be change
     it('GET_VIDEOSTABILIZATIONMODELOW', 0, async function (done) {
       console.info(TAG + "Entering GET_VIDEOSTABILIZATIONMODELOW to operate");
       await captureSessionPromise.getActiveVideoStabilizationMode()
@@ -1453,6 +1454,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       await sleep(1);
       done();
     })
+    */
  
     /**
       * @tc.number    : ISVIDEOSTABILIZATIONMODESUPPORTED_MIDDLE
@@ -3329,6 +3331,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* EXPOSUREMODE Interface will be change
     it('GET_EXPOSURE_MODE_AUTO', 0, async function (done) {
       console.info(TAG + "Entering GET_EXPOSURE_MODE_AUTO to operate");
       await camera0InputPromise.getExposureMode()
@@ -3346,6 +3349,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       await sleep(1);
       done();
     })
+    */
 
     /**
       * @tc.number    : SET_EXPOSURE_POINT_exposure mode auto
@@ -3510,6 +3514,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* EXPOSUREMODE Interface will be change
     it('GET_EXPOSURE_MODE_CONTINUOUS_AUTO', 0, async function (done) {
       console.info(TAG + "Entering GET_EXPOSURE_MODE_CONTINUOUS_AUTO to operate");
       await camera0InputPromise.getExposureMode()
@@ -3527,6 +3532,7 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       await sleep(1);
       done();
     })
+    */
 
     /**
       * @tc.number    : SET_EXPOSURE_POINT

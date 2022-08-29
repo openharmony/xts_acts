@@ -1457,6 +1457,7 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* VideoStabilizationMode Interface will be change
     it('GET_VIDEOSTABILIZATION_MODE_LOW', 0, async function (done) {
       console.info(TAG + "Entering GET_VIDEOSTABILIZATION_MODE_LOW to operate");
       captureSession.getActiveVideoStabilizationMode(async (err, data) => {
@@ -1477,6 +1478,7 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
       await sleep(1);
       done();
     })
+    */
  
     /**
       * @tc.number    : ISVIDEOSTABILIZATIONMODESUPPORTED_MIDDLE
@@ -3583,6 +3585,7 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
+    /* EXPOSUREMODE Interface will be change
     it('GET_EXPOSURE_MODE_AUTO', 0, async function (done) {
       console.info(TAG + "Entering GET_EXPOSURE_MODE_AUTO to operate");
       camera0Input.getExposureMode(async (err, data) => {
@@ -3604,6 +3607,7 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
       await sleep(1);
       done();
     })
+    */
 
     /**
       * @tc.number    : SET_EXPOSURE_POINT_exposure mode auto
