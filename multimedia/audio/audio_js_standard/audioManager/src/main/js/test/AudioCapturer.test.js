@@ -1905,14 +1905,14 @@ describe('audioCapturer', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_0100
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_0100
      *@tc.name      : AudioCapturer-Set1-Media
      *@tc.desc      : AudioCapturer with parameter set 1
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_0100', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_0100', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -1941,15 +1941,14 @@ describe('audioCapturer', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_0100
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_ENUM_0100
      *@tc.name      : AudioCapturer-Set1-Media
      *@tc.desc      : AudioCapturer with parameter set 1
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_0100', 2, async function (done) {
-
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_ENUM_0100', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: 44100,
             channels: 1,
@@ -1978,14 +1977,14 @@ describe('audioCapturer', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_0200
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_0200
      *@tc.name      : AudioRec-Set1
      *@tc.desc      : record audio with parameter set 1
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
       */
-    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_0200', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_0200', 2, async function (done) {
         var audioStreamInfo44100 = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -2012,14 +2011,14 @@ describe('audioCapturer', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_0200
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_ENUM_0200
      *@tc.name      : AudioRec-Set1
      *@tc.desc      : record audio with parameter set 1
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_0200', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_ENUM_0200', 2, async function (done) {
         var audioStreamInfo44100 = {
             samplingRate: 44100,
             channels: 1,
@@ -2047,14 +2046,14 @@ describe('audioCapturer', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_0300
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_0300
      *@tc.name      : AudioRec-Set2
      *@tc.desc      : record audio with parameter set 2
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_0300', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_0300', 2, async function (done) {
         var audioStreamInfo96000 = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_96000,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -2081,14 +2080,14 @@ describe('audioCapturer', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_0300
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_ENUM_0300
      *@tc.name      : AudioRec-Set2
      *@tc.desc      : record audio with parameter set 2
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_0300', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_ENUM_0300', 2, async function (done) {
         var audioStreamInfo96000 = {
             samplingRate: 96000,
             channels: 1,
@@ -2115,14 +2114,14 @@ describe('audioCapturer', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_0400
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_0400
      *@tc.name      : AudioRec-Set3
      *@tc.desc      : record audio with parameter set 3
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_0400', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_0400', 2, async function (done) {
         var audioStreamInfo48000 = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -2149,14 +2148,14 @@ describe('audioCapturer', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_0400
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_ENUM_0400
      *@tc.name      : AudioRec-Set3
      *@tc.desc      : record audio with parameter set 3
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_0400', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_ENUM_0400', 2, async function (done) {
         var audioStreamInfo48000 = {
             samplingRate: 48000,
             channels: 2,
@@ -2183,14 +2182,14 @@ describe('audioCapturer', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_0500
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_0500
      *@tc.name      : AudioRec-Set4
      *@tc.desc      : record audio with parameter set 4
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_0500', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_0500', 2, async function (done) {
         var audioStreamInfo8000 = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_8000,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -2217,14 +2216,14 @@ describe('audioCapturer', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_0500
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_ENUM_0500
      *@tc.name      : AudioRec-Set4
      *@tc.desc      : record audio with parameter set 4
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_0500', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_ENUM_0500', 2, async function (done) {
         var audioStreamInfo8000 = {
             samplingRate: 8000,
             channels: 1,
@@ -2251,14 +2250,14 @@ describe('audioCapturer', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_0600
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_0600
      *@tc.name      : AudioRec-Set5
      *@tc.desc      : record audio with parameter set 5
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_0600', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_0600', 2, async function (done) {
         var audioStreamInfo11025 = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_11025,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -2285,14 +2284,14 @@ describe('audioCapturer', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_0600
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_ENUM_0600
      *@tc.name      : AudioRec-Set5
      *@tc.desc      : record audio with parameter set 5
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_0600', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_ENUM_0600', 2, async function (done) {
         var audioStreamInfo11025 = {
             samplingRate: 11025,
             channels: 2,
@@ -2320,14 +2319,14 @@ describe('audioCapturer', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_0700
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_0700
      *@tc.name      : AudioRec-Set6
      *@tc.desc      : record audio with parameter set 6
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_0700', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_0700', 2, async function (done) {
         var audioStreamInfo12000 = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_12000,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -2354,14 +2353,14 @@ describe('audioCapturer', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_0700
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_ENUM_0700
      *@tc.name      : AudioRec-Set6
      *@tc.desc      : record audio with parameter set 6
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_0700', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_ENUM_0700', 2, async function (done) {
         var audioStreamInfo12000 = {
             samplingRate: 12000,
             channels: 1,
@@ -2388,14 +2387,14 @@ describe('audioCapturer', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_0800
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_0800
      *@tc.name      : AudioRec-Set7
      *@tc.desc      : record audio with parameter set 7
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_0800', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_0800', 2, async function (done) {
         var audioStreamInfo16000 = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_16000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -2422,14 +2421,14 @@ describe('audioCapturer', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_0800
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_ENUM_0800
      *@tc.name      : AudioRec-Set7
      *@tc.desc      : record audio with parameter set 7
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_0800', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_ENUM_0800', 2, async function (done) {
         var audioStreamInfo16000 = {
             samplingRate: 16000,
             channels: 2,
@@ -2456,14 +2455,14 @@ describe('audioCapturer', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_0900
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_0900
      *@tc.name      : AudioRec-Set8
      *@tc.desc      : record audio with parameter set 8
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_0900', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_0900', 2, async function (done) {
         var audioStreamInfo22050 = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_22050,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -2490,14 +2489,14 @@ describe('audioCapturer', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_0900
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_ENUM_0900
      *@tc.name      : AudioRec-Set8
      *@tc.desc      : record audio with parameter set 8
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_0900', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_ENUM_0900', 2, async function (done) {
         var audioStreamInfo22050 = {
             samplingRate: 22050,
             channels: 1,
@@ -2525,14 +2524,14 @@ describe('audioCapturer', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_1000
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_1000
      *@tc.name      : AudioRec-Set9
      *@tc.desc      : record audio with parameter set 9
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_1000', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_1000', 2, async function (done) {
         var audioStreamInfo24000 = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_24000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -2560,14 +2559,14 @@ describe('audioCapturer', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_1000
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_ENUM_1000
      *@tc.name      : AudioRec-Set9
      *@tc.desc      : record audio with parameter set 9
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_1000', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_ENUM_1000', 2, async function (done) {
         var audioStreamInfo24000 = {
             samplingRate: 24000,
             channels: 2,
@@ -2595,14 +2594,14 @@ describe('audioCapturer', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_1100
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_1100
      *@tc.name      : AudioRec-Set10
      *@tc.desc      : record audio with parameter set 010
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_1100', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_1100', 2, async function (done) {
         var audioStreamInfo32000 = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_32000,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -2630,14 +2629,14 @@ describe('audioCapturer', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_1100
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_ENUM_1100
      *@tc.name      : AudioRec-Set10
      *@tc.desc      : record audio with parameter set 010
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_1100', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_ENUM_1100', 2, async function (done) {
         var audioStreamInfo32000 = {
             samplingRate: 32000,
             channels: 1,
@@ -2665,14 +2664,14 @@ describe('audioCapturer', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_1200
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_1200
      *@tc.name      : AudioRec-Set11
      *@tc.desc      : record audio with parameter set 011
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_1200', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_1200', 2, async function (done) {
         var audioStreamInfo64000 = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_64000,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -2701,14 +2700,14 @@ describe('audioCapturer', function () {
 
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_1200
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_ENUM_1200
      *@tc.name      : AudioRec-Set11
      *@tc.desc      : record audio with parameter set 011
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_Promise_ENUM_1200', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_ENUM_1200', 2, async function (done) {
         var audioStreamInfo64000 = {
             samplingRate: 64000,
             channels: 2,
@@ -2736,14 +2735,14 @@ describe('audioCapturer', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_RECORD_Promise_AUDIO_SCENE_DEFAULT_0100
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_RECORD_PROMISE_AUDIO_SCENE_DEFAULT_0100
      *@tc.name      : AudioRec-Set1
      *@tc.desc      : record audio with parameter set 1
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_RECORD_Promise_AUDIO_SCENE_DEFAULT_0100', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RECORD_PROMISE_AUDIO_SCENE_DEFAULT_0100', 2, async function (done) {
         var audioStreamInfo44100 = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_1,
@@ -2769,14 +2768,14 @@ describe('audioCapturer', function () {
     })
 
     /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_RECORD_Promise_AUDIO_SCENE_DEFAULT_ENUM_0100
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_RECORD_PROMISE_AUDIO_SCENE_DEFAULT_ENUM_0100
      *@tc.name      : AudioRec-Set1
      *@tc.desc      : record audio with parameter set 1
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_RECORD_Promise_AUDIO_SCENE_DEFAULT_ENUM_0100', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_RECORD_PROMISE_AUDIO_SCENE_DEFAULT_ENUM_0100', 2, async function (done) {
         var audioStreamInfo44100 = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_1,
