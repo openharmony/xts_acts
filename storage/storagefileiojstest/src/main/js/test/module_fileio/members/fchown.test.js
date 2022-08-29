@@ -123,6 +123,54 @@ describe('fileio_fchown', async function () {
   });
 
   /**
+   * @tc.number SUB_DF_FILEIO_FCHOWN_ASYNC_0400
+   * @tc.name fileio_test_fchown_async_004
+   * @tc.desc Test the fchownAsync() interface with promise, wrong owner. Test file modification failed.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+   */
+   it('fileio_test_fchown_async_004', 0, async function (done) {
+    let fpath = await nextFileName('fileio_test_fchown_async_004');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    try {
+      let fd = fileio.openSync(fpath);
+      let stat = fileio.statSync(fpath);
+      await fileio.fchown(fd, null, stat.gid);
+    } catch (e) {
+      console.info('fileio_test_fchown_async_004 has failed for ' + e);
+      expect(e.message == "Operation not permitted" || e.message == "Invalid owner").assertTrue();
+      fileio.unlinkSync(fpath);
+      done();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_FCHOWN_ASYNC_0500
+   * @tc.name fileio_test_fchown_async_005
+   * @tc.desc Test the fchownAsync() interface with promise, wrong group. Test file modification failed.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+   */
+  it('fileio_test_fchown_async_005', 0, async function (done) {
+    let fpath = await nextFileName('fileio_test_fchown_async_005');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+    try {
+      let fd = fileio.openSync(fpath);
+      let stat = fileio.statSync(fpath);
+      await fileio.fchown(fd, stat.uid, null);
+    } catch (e) {
+      console.info('fileio_test_fchown_async_005 has failed for ' + e);
+      expect(e.message == "Invalid group").assertTrue();
+      fileio.unlinkSync(fpath);
+      done();
+    }
+  });
+
+  /**
    * @tc.number SUB_DF_FILEIO_FCHOWN_SYNC_0000
    * @tc.name fileio_test_fchown_sync_000
    * @tc.desc Test fchownSync() interface. The test file was modified successfully.
