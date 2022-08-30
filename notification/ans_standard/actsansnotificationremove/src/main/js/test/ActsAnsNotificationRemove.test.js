@@ -29,7 +29,7 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("=============ANS_Remove_0100 onConsume data:==================>" + JSON.stringify(data));
         console.info("=============ANS_Remove_0100 onConsume hascode:===============>" + data.request.hashCode);
         hashCode = data.request.hashCode
-        notify.remove(hashCode,removeCallBack);
+        notify.remove(hashCode, notify.RemoveReason.CANCEL_REASON_REMOVE, removeCallBack);
         console.info("=============ANS_Remove_0100 onConsume remove=======================>");
         console.info("=============ANS_Remove_0100 onConsume end=======================>");
     }
@@ -58,9 +58,9 @@ describe('ActsAnsNotificationRemove', function () {
 
     /*
      * @tc.number: ANS_Remove_0100
-     * @tc.name: remove(hashCode: string, callback: AsyncCallback<void>): void;
-     * @tc.desc: Verify that the call interface remove(hashCode: string, callback: AsyncCallback<void>): void
-                 deletes the notification information through hashcode
+     * @tc.name: remove(hashCode: string, reason: RemoveReason, callback: AsyncCallback<void>): void;
+     * @tc.desc: Verify that the call interface remove
+     *           deletes the notification information through hashcode
      */
     it('ANS_Remove_0100', 0, async function (done) {
         console.info("===============ANS_Remove_0100==========================>");
@@ -118,7 +118,7 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("================ANS_Remove_0200 onConsume data================>" + JSON.stringify(data));
         hashCode = data.request.hashCode
         console.info("================ANS_Remove_0200 onConsume hascode:========>" + data.request.hashCode);
-        notify.remove(hashCode);
+        notify.remove(hashCode, notify.RemoveReason.CANCEL_REASON_REMOVE);
         console.info("================ANS_Remove_0200 onConsume remove============>");
         console.info("================ANS_Remove_0200 onConsume end===============>");
     }
@@ -134,9 +134,9 @@ describe('ActsAnsNotificationRemove', function () {
 
     /*
      * @tc.number: ANS_Remove_0200
-     * @tc.name: remove(hashCode: string): Promise<void>;
-     * @tc.desc: Verify that the call interface remove(hashCode: string): Promise<void>
-                 deletes the notification information through hashcode
+     * @tc.name: remove(hashCode: string, reason: RemoveReason): Promise<void>;
+     * @tc.desc: Verify that the call interface remove to
+     *           deletes the notification information through hashcode
      */
     it('ANS_Remove_0200', 0, async function (done) {
         console.info("===============ANS_Remove_0200==========================>");
@@ -191,7 +191,7 @@ describe('ActsAnsNotificationRemove', function () {
     function onConsumeRemoveErrHashCode(data) {
         console.info("================ANS_Remove_0300 onConsume start=======================>");
         console.info("================ANS_Remove_0300 onConsume data:=============>" + JSON.stringify(data));
-        notify.remove("errorHashCode",removeErrHashCodeCallBack);
+        notify.remove("errorHashCode", notify.RemoveReason.CANCEL_REASON_REMOVE, removeErrHashCodeCallBack);
         console.info("================ANS_Remove_0300 onConsume remove=======================>");
         console.info("================ANS_Remove_0300 onConsume end=======================>");
     }
@@ -209,9 +209,9 @@ describe('ActsAnsNotificationRemove', function () {
 
     /*
      * @tc.number: ANS_Remove_0300
-     * @tc.name: remove(hashCode: string, callback: AsyncCallback<void>): void
-     * @tc.desc: Verify that the error hashcode is used to call the interface
-                 remove(hashCode: string, callback: AsyncCallback<void>) to delete the notification information
+     * @tc.name: remove(hashCode: string, reason: RemoveReason, callback: AsyncCallback<void>): void
+     * @tc.desc: Verify that the error hashcode is used to call the interface remove
+     *           to delete the notification information
      */
     it('ANS_Remove_0300', 0, async function (done) {
         console.info("===============ANS_Remove_0300==========================>");
@@ -265,7 +265,7 @@ describe('ActsAnsNotificationRemove', function () {
     function onConsumeRemoveErrHashCodePromise(data) {
         console.info("===========ANS_Remove_0400 onConsume start:===========>");
         console.info("===========ANS_Remove_0400 onConsume data:===========>" + JSON.stringify(data));
-        notify.remove("errorHashCode").then((data)=>{
+        notify.remove("errorHashCode", notify.RemoveReason.CANCEL_REASON_REMOVE).then((data)=>{
             console.info("===========ANS_Remove_0400 onConsume remove data:===========>" + JSON.stringify(data));
         }).catch((err)=>{
             console.info("===========ANS_Remove_0400 onConsume remove err:============>" + JSON.stringify(err));
@@ -282,9 +282,9 @@ describe('ActsAnsNotificationRemove', function () {
 
     /*
      * @tc.number: ANS_Remove_0400
-     * @tc.name: remove(hashCode: string): Promise<void>
-     * @tc.desc: Verify that the error hashcode is used to call the interface
-                 remove(hashCode: string): Promise<void> to delete the notification information
+     * @tc.name: remove(hashCode: string, reason: RemoveReason): Promise<void>
+     * @tc.desc: Verify that the error hashcode is used to call the interface remove
+     *           to delete the notification information
      */
     it('ANS_Remove_0400', 0, async function (done) {
         console.info("===============ANS_Remove_0400==========================>");
@@ -338,7 +338,7 @@ describe('ActsAnsNotificationRemove', function () {
     function onConsumeRemoveUseEmptyCharacter(data) {
         console.info("================ANS_Remove_0500 onConsume start==============>");
         console.info("================ANS_Remove_0500 onConsume data:==============>" + JSON.stringify(data));
-        notify.remove('',removeCallBackUseEmptyCharacter);
+        notify.remove('', notify.RemoveReason.CANCEL_REASON_REMOVE, removeCallBackUseEmptyCharacter);
         console.info("================ANS_Remove_0500 onConsume remove=============>");
         console.info("================ANS_Remove_0500 onConsume end================>");
     }
@@ -359,10 +359,9 @@ describe('ActsAnsNotificationRemove', function () {
 
     /*
      * @tc.number: ANS_Remove_0500
-     * @tc.name: remove(hashCode: string, callback: AsyncCallback<void>): void;
-     * @tc.desc: Verify that the Empty Character hashcode is used to call the interface
-                 remove(hashCode: string, callback: AsyncCallback<void>): void
-                 to delete the notification information
+     * @tc.name: remove(hashCode: string, reason: RemoveReason, callback: AsyncCallback<void>): void;
+     * @tc.desc: Verify that the Empty Character hashcode is used to call the interface remove
+     *           to delete the notification information
      */
     it('ANS_Remove_0500', 0, async function (done) {
         console.info("===============ANS_Remove_0500==========================>");
@@ -416,7 +415,7 @@ describe('ActsAnsNotificationRemove', function () {
     function OnConsumeRemoveUseEmptyCharacterPromise(data) {
         console.info("===============ANS_Remove_0600 onConsume start==================>");
         console.info("===============ANS_Remove_0600 onConsume data:==================>" + JSON.stringify(data));
-        notify.remove('').then((data)=>{
+        notify.remove('', notify.RemoveReason.CANCEL_REASON_REMOVE).then((data)=>{
             console.info("===========ANS_Remove_0600 onConsume remove data:============>" + JSON.stringify(data));
         }).catch((err)=>{
             console.info("===========ANS_Remove_0600 onConsume remove err:=============>" + JSON.stringify(err));
@@ -435,9 +434,9 @@ describe('ActsAnsNotificationRemove', function () {
 
     /*
      * @tc.number: ANS_Remove_0600
-     * @tc.name: remove(hashCode: string): Promise<void>;
-     * @tc.desc: Verify that the Empty Character hashcode is used to call the interface
-                 remove(hashCode: string): Promise<void> to delete the notification information
+     * @tc.name: remove(hashCode: string, reason: RemoveReason): Promise<void>;
+     * @tc.desc: Verify that the Empty Character hashcode is used to call the interface remove
+     *           to delete the notification information
      */
     it('ANS_Remove_0600', 0, async function (done) {
         console.info("===============ANS_Remove_0600 start==========================>");
@@ -491,7 +490,7 @@ describe('ActsAnsNotificationRemove', function () {
     function onConsumeRemoveNotExistHashCode(data) {
         console.info("==============ANS_Remove_0700 onConsume start===================>");
         console.info("==============ANS_Remove_0700 onConsume data:===================>" + JSON.stringify(data));
-        notify.remove("9999_9999_9",removeNotExistHashCodeCallBack);
+        notify.remove("9999_9999_9", notify.RemoveReason.CANCEL_REASON_REMOVE, removeNotExistHashCodeCallBack);
         console.info("==============ANS_Remove_0700 onConsume remove===================>");
         console.info("==============ANS_Remove_0700 onConsume end===================>");
     }
@@ -512,9 +511,8 @@ describe('ActsAnsNotificationRemove', function () {
 
     /*
      * @tc.number: ANS_Remove_0700
-     * @tc.name: remove(hashCode: string, callback: AsyncCallback<void>): void;
-     * @tc.desc: Verify that the not exist hashCode is used to call the interface
-     *           remove(hashCode: string, callback: AsyncCallback<void>): void
+     * @tc.name: remove(hashCode: string, reason: RemoveReason, callback: AsyncCallback<void>): void;
+     * @tc.desc: Verify that the not exist hashCode is used to call the interface remove
      *           to delete the notification information
      */
     it('ANS_Remove_0700', 0, async function (done) {
@@ -569,7 +567,7 @@ describe('ActsAnsNotificationRemove', function () {
     function onConsumeRemoveNotExistHashCodePromise(data) {
         console.info("================ANS_Remove_0800 onConsume start===============>");
         console.info("================ANS_Remove_0800 onConsume data:===============>" + JSON.stringify(data));
-        notify.remove("9999_9999_9").then((data)=>{
+        notify.remove("9999_9999_9", notify.RemoveReason.CANCEL_REASON_REMOVE).then((data)=>{
             console.info("===========ANS_Remove_0800 onConsume remove data:=========>" + JSON.stringify(data));
         }).catch((err)=>{
             console.info("===========ANS_Remove_0800 onConsume remove err:==========>" + JSON.stringify(err));
@@ -588,9 +586,9 @@ describe('ActsAnsNotificationRemove', function () {
 
     /*
      * @tc.number: ANS_Remove_0800
-     * @tc.name: remove(hashCode: string): Promise<void>;
-     * @tc.desc: Verify that the not exist hashCode is used to call the interface remove(hashCode: string,
-     *           callback: AsyncCallback<void>): void to delete the notification information
+     * @tc.name: remove(hashCode: string, reason: RemoveReason): Promise<void>;
+     * @tc.desc: Verify that the not exist hashCode is used to call the interface remove
+     *           to delete the notification information
      */
     it('ANS_Remove_0800', 0, async function (done) {
         console.info("===============ANS_Remove_0800==========================>");
@@ -644,7 +642,7 @@ describe('ActsAnsNotificationRemove', function () {
     function onConsumeRemoveNonComplianceHashCode(data) {
         console.info("================ANS_Remove_0900 onConsume start===================>");
         console.info("================ANS_Remove_0900 onConsume data: ==================>" + JSON.stringify(data));
-        notify.remove("哈希码",removeNonComplianceHashCallBack);
+        notify.remove("哈希码", notify.RemoveReason.CANCEL_REASON_REMOVE, removeNonComplianceHashCallBack);
         console.info("================ANS_Remove_0900 onConsume remove==================>");
         console.info("================ANS_Remove_0900 onConsume end=====================>");
     }
@@ -666,9 +664,9 @@ describe('ActsAnsNotificationRemove', function () {
 
     /*
      * @tc.number: ANS_Remove_0900
-     * @tc.name: remove(hashCode: string, callback: AsyncCallback<void>): void;
-     * @tc.desc: Verify that the non compliance hashCode is used to call the interface remove(hashCode: string,
-     *           callback: AsyncCallback<void>): void to delete the notification information
+     * @tc.name: remove(hashCode: string, reason: RemoveReason, callback: AsyncCallback<void>): void;
+     * @tc.desc: Verify that the non compliance hashCode is used to call the interface remove
+     *           to delete the notification information
      */
     it('ANS_Remove_0900', 0, async function (done) {
         console.info("===============ANS_Remove_0900==========================>");
@@ -722,7 +720,7 @@ describe('ActsAnsNotificationRemove', function () {
     function onConsumeRemoveNonComplianceHashCodePromise(data) {
         console.info("================ANS_Remove_1000 onConsume start===========>");
         console.info("================ANS_Remove_1000 onConsume data:===========>" + JSON.stringify(data));
-        notify.remove("哈希码").then((data)=>{
+        notify.remove("哈希码", notify.RemoveReason.CANCEL_REASON_REMOVE).then((data)=>{
             console.info("===========ANS_Remove_1000 onConsume remove data:===========>" + JSON.stringify(data));
         }).catch((err)=>{
             console.info("===========ANS_Remove_1000 onConsume remove err:===========>" + JSON.stringify(err));
@@ -740,9 +738,9 @@ describe('ActsAnsNotificationRemove', function () {
 
     /*
      * @tc.number: ANS_Remove_1000
-     * @tc.name: remove(hashCode: string, callback: AsyncCallback<void>): void;
-     * @tc.desc: Verify that the non compliance hashCode is used to call the interface
-                 remove(hashCode: string, callback: AsyncCallback<void>): void to delete the notification information
+     * @tc.name: remove(hashCode: string, reason: RemoveReason, callback: AsyncCallback<void>): void;
+     * @tc.desc: Verify that the non compliance hashCode is used to call the interface remove
+     *           to delete the notification information
      */
     it('ANS_Remove_1000', 0, async function (done) {
         console.info("===============ANS_Remove_1000==========================>");
@@ -803,7 +801,7 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("=====ANS_Remove_1100 removeCallBack2TimesOf1 start============>");
         console.info("=====ANS_Remove_1100 removeCallBack2TimesOf1 err========>" + JSON.stringify(err));
         expect(err.code).assertEqual(0);
-        notify.remove(hashCode1100,removeCallBack2TimesOf2);
+        notify.remove(hashCode1100, notify.RemoveReason.CANCEL_REASON_REMOVE, removeCallBack2TimesOf2);
         console.info("=====ANS_Remove_1100 removeCallBack2TimesOf1 end============>");
     }
     let hashCode1100;
@@ -811,7 +809,7 @@ describe('ActsAnsNotificationRemove', function () {
         console.info("=====ANS_Remove_1100 onConsume start=================>");
         console.info("=====ANS_Remove_1100 onConsume data: ================>" + JSON.stringify(data));
         hashCode1100 = data.request.hashCode;
-        notify.remove(data.request.hashCode,removeCallBack2TimesOf1);
+        notify.remove(data.request.hashCode, notify.RemoveReason.CANCEL_REASON_REMOVE, removeCallBack2TimesOf1);
         console.info("=====ANS_Remove_1100 onConsume remove================>");
         console.info("=====ANS_Remove_1100 onConsume end===================>");
     }
@@ -830,9 +828,9 @@ describe('ActsAnsNotificationRemove', function () {
 
     /*
      * @tc.number: ANS_Remove_1100
-     * @tc.name: remove(hashCode: string, callback: AsyncCallback<void>): void;
-     * @tc.desc: Verify that the interface remove(hashCode: string, callback: AsyncCallback<void>): void;
-                 is called twice in a row to delete the notification information
+     * @tc.name: remove(hashCode: string, reason: RemoveReason, callback: AsyncCallback<void>): void;
+     * @tc.desc: Verify that the interface remove
+     *           is called twice in a row to delete the notification information
      */
     it('ANS_Remove_1100', 0, async function (done) {
         console.info("===============ANS_Remove_1100==========================>");
@@ -888,13 +886,13 @@ describe('ActsAnsNotificationRemove', function () {
     function onConsumeCallbackRemove2TimesPromise(data) {
         console.info("=======ANS_Remove_1200 onConsume start=============>");
         console.info("=======ANS_Remove_1200 onConsume data:=============>" + JSON.stringify(data));
-        notify.remove(data.request.hashCode).then(()=>{
+        notify.remove(data.request.hashCode, notify.RemoveReason.CANCEL_REASON_REMOVE).then(()=>{
             console.info("=======ANS_Remove_1200 onConsume remove_2times1:=======>");
         }).catch((err)=>{
             console.info("=======ANS_Remove_1200 onConsume remove_2times1 err:========>" + JSON.stringify(err));
             expect(err.code == 0).assertEqual(true);
         });
-        notify.remove(data.request.hashCode).then((data)=>{
+        notify.remove(data.request.hashCode, notify.RemoveReason.CANCEL_REASON_REMOVE).then((data)=>{
             console.info("=======ANS_Remove_1200 onConsume remove_2times2 data:=======>" + JSON.stringify(data));
         }).catch((err)=>{
             console.info("=======ANS_Remove_1200 onConsume remove_2times2 err:========>" + JSON.stringify(err));
@@ -918,8 +916,8 @@ describe('ActsAnsNotificationRemove', function () {
 
     /*
      * @tc.number: ANS_Remove_1200
-     * @tc.name: remove(hashCode: string): Promise<void>;
-     * @tc.desc: Verify that the interface remove(hashCode: string): Promise<void> is called twice in a row to
+     * @tc.name: remove(hashCode: string, reason: RemoveReason): Promise<void>;
+     * @tc.desc: Verify that the interface remove is called twice in a row to
      *           delete the notification information
      */
     it('ANS_Remove_1200', 0, async function (done) {
@@ -975,7 +973,7 @@ describe('ActsAnsNotificationRemove', function () {
     function onConsumeRemoveIsUnremovable(data) {
         console.info("==========ANS_Remove_1300 onConsume start=================>");
         console.info("==========ANS_Remove_1300 onConsume data:=================>" + JSON.stringify(data));
-        notify.remove(data.request.hashCode,removeIsUnremovableCallBack);
+        notify.remove(data.request.hashCode, notify.RemoveReason.CANCEL_REASON_REMOVE, removeIsUnremovableCallBack);
         console.info("==========ANS_Remove_1300 onConsume remove==============>");
         console.info("==========ANS_Remove_1300 onConsume end=================>");
     }
@@ -995,8 +993,8 @@ describe('ActsAnsNotificationRemove', function () {
 
     /*
      * @tc.number: ANS_Remove_1300
-     * @tc.name: remove(hashCode: string, callback: AsyncCallback<void>): void;
-     * @tc.desc: Verify that the calling interface remove(hashCode: string, callback: AsyncCallback<void>): void;
+     * @tc.name: remove(hashCode: string, reason: RemoveReason, callback: AsyncCallback<void>): void;
+     * @tc.desc: Verify that the calling interface remove
      *           deletes the notification information that the property isunremovable is true
      */
     it('ANS_Remove_1300', 0, async function (done) {
@@ -1051,7 +1049,7 @@ describe('ActsAnsNotificationRemove', function () {
     function OnConsumeRemoveIsUnremovablePromise(data) {
         console.info("==============ANS_Remove_1400 onConsume start==============>");
         console.info("==============ANS_Remove_1400 onConsume data:==============>" + JSON.stringify(data));
-        notify.remove(data.request.hashCode).then((data)=>{
+        notify.remove(data.request.hashCode, notify.RemoveReason.CANCEL_REASON_REMOVE).then((data)=>{
             console.info("=======ANS_Remove_1400 onConsume remove data:=======>" + JSON.stringify(data));
         }).catch((err)=>{
             console.info("=======ANS_Remove_1400 onConsume remove err:========>" + JSON.stringify(err));
@@ -1068,9 +1066,9 @@ describe('ActsAnsNotificationRemove', function () {
 
     /*
      * @tc.number: ANS_Remove_1400
-     * @tc.name: remove(hashCode: string): Promise<void>;
-     * @tc.desc: Verify that the calling interface remove(hashCode: string): Promise<void>;
-                 deletes the notification information that the property isunremovable is true
+     * @tc.name: remove(hashCode: string, reason: RemoveReason): Promise<void>;
+     * @tc.desc: Verify that the calling interface remove
+     *           deletes the notification information that the property isunremovable is true
      */
     it('ANS_Remove_1400', 0, async function (done) {
         console.info("===============ANS_Remove_1400 start==========================>");
@@ -1778,7 +1776,7 @@ describe('ActsAnsNotificationRemove', function () {
      * @tc.number: ANS_Remove_2200
      * @tc.name: removeAll(bundle: BundleOption, callback: AsyncCallback<void>):void;
      * @tc.desc: Verify that the removeAll(bundle: BundleOption, callback: AsyncCallback<void>):void
-                 interface is called to delete the notification information whose attribute isUnremovable is true
+     *           interface is called to delete the notification information whose attribute isUnremovable is true
      */
     it('ANS_Remove_2200', 0, async function (done) {
         console.info("===============ANS_Remove_2200 start==========================>");
@@ -2394,7 +2392,8 @@ describe('ActsAnsNotificationRemove', function () {
             id:data.request.id,
             label:data.request.label
         }
-        notify.remove(bundleOption,notificationKey,removeByNotificationKeyCB);
+        notify.remove(bundleOption, notificationKey, notify.RemoveReason.CANCEL_REASON_REMOVE,
+            removeByNotificationKeyCB);
         console.info("=============ANS_Remove_2900 onConsume remove=======================>");
         console.info("=============ANS_Remove_2900 onConsume end=======================>");
     }
@@ -2416,10 +2415,10 @@ describe('ActsAnsNotificationRemove', function () {
 
     /*
      * @tc.number: ANS_Remove_2900
-     * @tc.name: remove(bundle: BundleOption, notificationKey: NotificationKey, callback: AsyncCallback<void>): void;
-     * @tc.desc: Verify that the calling interface remove(bundle: BundleOption, notificationKey: NotificationKey,
-     *           callback: AsyncCallback<void>): void; deletes notification information through BundleOption and
-     *           NotificationKey
+     * @tc.name: remove(bundle: BundleOption, notificationKey: NotificationKey, reason: RemoveReason,
+     *           callback: AsyncCallback<void>): void;
+     * @tc.desc: Verify that the calling interface remove
+     *           deletes notification information through BundleOption and NotificationKey
      */
     it('ANS_Remove_2900', 0, async function (done) {
         console.info("===============ANS_Remove_2900 start==========================>");
@@ -2481,7 +2480,7 @@ describe('ActsAnsNotificationRemove', function () {
             id:30,
             label:"3000"
         }
-        notify.remove(bundleOption,notificationKey)
+        notify.remove(bundleOption,notificationKey, notify.RemoveReason.CANCEL_REASON_REMOVE)
         console.info("==========ANS_Remove_3000 onConsume remove==============>");
         console.info("==========ANS_Remove_3000 onConsume end=================>");
     }
@@ -2495,10 +2494,10 @@ describe('ActsAnsNotificationRemove', function () {
 
     /*
      * @tc.number: ANS_Remove_3000
-     * @tc.name: remove(bundle: BundleOption, notificationKey: NotificationKey): Promise<void>;
-     * @tc.desc: Verify that the calling interface
-                 remove(bundle: BundleOption, notificationKey: NotificationKey): Promise<void>
-                 deletes notification information through BundleOption and NotificationKey
+     * @tc.name: remove(bundle: BundleOption, notificationKey: NotificationKey, 
+     *           reason: RemoveReason): Promise<void>;
+     * @tc.desc: Verify that the calling interface remove
+     *           deletes notification information through BundleOption and NotificationKey
      */
     it('ANS_Remove_3000', 0, async function (done) {
         console.info("===============ANS_Remove_3000 start==========================>");
@@ -2560,7 +2559,8 @@ describe('ActsAnsNotificationRemove', function () {
             id:0,
             label:"wrongLabel"
         }
-        notify.remove(bundleOption,notificationKey,removeByNotificationKeyCBWrongKey);
+        notify.remove(bundleOption, notificationKey, notify.RemoveReason.CANCEL_REASON_REMOVE,
+            removeByNotificationKeyCBWrongKey);
         console.info("==========ANS_Remove_3100 onConsume remove==========>");
         console.info("==========ANS_Remove_3100 onConsume end=============>");
     }
@@ -2580,9 +2580,10 @@ describe('ActsAnsNotificationRemove', function () {
 
     /*
      * @tc.number: ANS_Remove_3100
-     * @tc.name: remove(bundle: BundleOption, notificationKey: NotificationKey, callback: AsyncCallback<void>): void;
-     * @tc.desc: Verify that the calling interface remove(bundle: BundleOption, notificationKey: NotificationKey,
-     *           callback: AsyncCallback<void>): void; deletes notification information through BundleOption and
+     * @tc.name: remove(bundle: BundleOption, notificationKey: NotificationKey, reason: RemoveReason,
+     *           callback: AsyncCallback<void>): void;
+     * @tc.desc: Verify that the calling interface remove
+     *           deletes notification information through BundleOption and
      *           NotificationKey correct bundleOption,wrong notificationKey.
      */
     it('ANS_Remove_3100', 0, async function (done) {
@@ -2645,7 +2646,7 @@ describe('ActsAnsNotificationRemove', function () {
             id:0,
             label:"wrongLabel"
         }
-        notify.remove(bundleOption, notificationKey).then((data)=>{
+        notify.remove(bundleOption, notificationKey, notify.RemoveReason.CANCEL_REASON_REMOVE).then((data)=>{
             console.info("=======ANS_Remove_3200 onConsume remove data:=======>" + JSON.stringify(data));
         }).catch((err)=>{
             console.info("=======ANS_Remove_3200 onConsume remove err:========>" + JSON.stringify(err));
@@ -2663,9 +2664,10 @@ describe('ActsAnsNotificationRemove', function () {
 
     /*
      * @tc.number: ANS_Remove_3200
-     * @tc.name: remove(bundle: BundleOption, notificationKey: NotificationKey, callback: AsyncCallback<void>): void;
-     * @tc.desc: Verify that the calling interface remove(bundle: BundleOption, notificationKey: NotificationKey):
-     *           Promise<void> deletes notification information through BundleOption and NotificationKey correct
+     * @tc.name: remove(bundle: BundleOption, notificationKey: NotificationKey, reason: RemoveReason,
+     *           callback: AsyncCallback<void>): void;
+     * @tc.desc: Verify that the calling interface remove
+     *           deletes notification information through BundleOption and NotificationKey correct
      *           bundleOption,wrong notificationKey.
      */
     it('ANS_Remove_3200', 0, async function (done) {
@@ -2728,7 +2730,8 @@ describe('ActsAnsNotificationRemove', function () {
             id:33,
             label:"3300"
         }
-        notify.remove(bundleOption,notificationKey,removeByNotificationKeyCBWrongBundle);
+        notify.remove(bundleOption, notificationKey, notify.RemoveReason.CANCEL_REASON_REMOVE,
+            removeByNotificationKeyCBWrongBundle);
         console.info("==============ANS_Remove_3300 onConsume remove===============>");
         console.info("==============ANS_Remove_3300 onConsume end==================>");
     }
@@ -2748,9 +2751,10 @@ describe('ActsAnsNotificationRemove', function () {
 
     /*
      * @tc.number: ANS_Remove_3300
-     * @tc.name: remove(bundle: BundleOption, notificationKey: NotificationKey, callback: AsyncCallback<void>): void;
-     * @tc.desc: Verify that the calling interface remove(bundle: BundleOption, notificationKey: NotificationKey,
-     *           callback: AsyncCallback<void>): void; deletes notification information through BundleOption and
+     * @tc.name: remove(bundle: BundleOption, notificationKey: NotificationKey, reason: RemoveReason,
+     *           callback: AsyncCallback<void>): void;
+     * @tc.desc: Verify that the calling interface remove
+     *           deletes notification information through BundleOption and
      *           NotificationKey wrong bundleOption,correct notificationKey.
      */
     it('ANS_Remove_3300', 0, async function (done) {
@@ -2813,7 +2817,7 @@ describe('ActsAnsNotificationRemove', function () {
             id:34,
             label:"3400"
         }
-        notify.remove(bundleOption, notificationKey).then((data)=>{
+        notify.remove(bundleOption, notificationKey, notify.RemoveReason.CANCEL_REASON_REMOVE).then((data)=>{
             console.info("=======ANS_Remove_3400 onConsume remove data:=======>" + JSON.stringify(data));
         }).catch((err)=>{
             console.info("=======ANS_Remove_3400 onConsume remove err:========>" + JSON.stringify(err));
@@ -2831,9 +2835,10 @@ describe('ActsAnsNotificationRemove', function () {
 
     /*
      * @tc.number: ANS_Remove_3400
-     * @tc.name: remove(bundle: BundleOption, notificationKey: NotificationKey, callback: AsyncCallback<void>): void;
-     * @tc.desc: Verify that the calling interface remove(bundle: BundleOption, notificationKey: NotificationKey):
-     *           Promise<void> deletes notification information through BundleOption and NotificationKey correct
+     * @tc.name: remove(bundle: BundleOption, notificationKey: NotificationKey, reason: RemoveReason,
+     *           callback: AsyncCallback<void>): void;
+     * @tc.desc: Verify that the calling interface remove
+     *           deletes notification information through BundleOption and NotificationKey correct
      *           bundleOption,wrong notificationKey.
      */
     it('ANS_Remove_3400', 0, async function (done) {
@@ -2910,8 +2915,10 @@ describe('ActsAnsNotificationRemove', function () {
             id:35,
             label:"3500"
         }
-        notify.remove(bundleOption,notificationKey,removeByNotificationKey2Times1CB);
-        notify.remove(bundleOption,notificationKey,removeByNotificationKey2Times2CB);
+        notify.remove(bundleOption, notificationKey, notify.RemoveReason.CANCEL_REASON_REMOVE,
+            removeByNotificationKey2Times1CB);
+        notify.remove(bundleOption, notificationKey, notify.RemoveReason.CANCEL_REASON_REMOVE,
+            removeByNotificationKey2Times2CB);
         console.info("=========ANS_Remove_3500 onConsume remove==============>");
         console.info("=========ANS_Remove_3500 onConsume end=================>");
     }
@@ -2931,9 +2938,10 @@ describe('ActsAnsNotificationRemove', function () {
 
     /*
      * @tc.number: ANS_Remove_3500
-     * @tc.name: remove(bundle: BundleOption, notificationKey: NotificationKey, callback: AsyncCallback<void>): void;
-     * @tc.desc: Verify that the interface  remove(bundle: BundleOption, notificationKey: NotificationKey, callback:
-     *           AsyncCallback<void>): void; void; is called twice in a row to delete the notification information
+     * @tc.name: remove(bundle: BundleOption, notificationKey: NotificationKey, reason: RemoveReason,
+     *           callback: AsyncCallback<void>): void;
+     * @tc.desc: Verify that the interface  remove 
+     *           is called twice in a row to delete the notification information
      */
     it('ANS_Remove_3500', 0, async function (done) {
         console.info("===============ANS_Remove_3500 start==========================>");
@@ -2996,9 +3004,9 @@ describe('ActsAnsNotificationRemove', function () {
             id:36,
             label:"3600"
         }
-        notify.remove(bundleOption, notificationKey)
+        notify.remove(bundleOption, notificationKey, notify.RemoveReason.CLICK_REASON_REMOVE)
         console.info("=========ANS_Remove_3600 onConsume remove1===========>");
-        notify.remove(bundleOption, notificationKey).then((data)=>{
+        notify.remove(bundleOption, notificationKey, notify.RemoveReason.CLICK_REASON_REMOVE).then((data)=>{
             console.info("=======ANS_Remove_3600 onConsume remove2 data:=======>" + JSON.stringify(data));
         }).catch((err)=>{
             console.info("=======ANS_Remove_3600 onConsume remove2 err:========>" + JSON.stringify(err));
@@ -3022,9 +3030,10 @@ describe('ActsAnsNotificationRemove', function () {
 
     /*
      * @tc.number: ANS_Remove_3600
-     * @tc.name: remove(bundle: BundleOption, notificationKey: NotificationKey): Promise<void>;
-     * @tc.desc: Verify that the interface remove(bundle: BundleOption, notificationKey: NotificationKey):
-     *           Promise<void> is called twice in a row to delete the notification information
+     * @tc.name: remove(bundle: BundleOption, notificationKey: NotificationKey, 
+     *           reason: RemoveReason): Promise<void>;
+     * @tc.desc: Verify that the interface remove
+     *           is called twice in a row to delete the notification information
      */
     it('ANS_Remove_3600', 0, async function (done) {
         console.info("===============ANS_Remove_3600 start==========================>");
