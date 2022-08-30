@@ -450,5 +450,22 @@ describe('preferencesPromiseTest', function () {
         await promise;
         done();
     })
+
+    /**
+     * @tc.name get string promise interface test
+     * @tc.number SUB_DDM_Preferences_Get_Promise_0210
+     * @tc.desc get string promise interface test
+     */
+     it('testPreferencesGetDefValue00162', 0, async function (done) {
+        await mPreferences.clear();
+        const promise = mPreferences.get(KEY_TEST_BOOLEAN_ELEMENT, true);
+        promise.then((ret) => {
+            expect(true).assertEqual(ret);
+        }).catch((err) => {
+            expect(null).assertFail();
+        });
+        await promise;
+        done();
+    })
 })
 }

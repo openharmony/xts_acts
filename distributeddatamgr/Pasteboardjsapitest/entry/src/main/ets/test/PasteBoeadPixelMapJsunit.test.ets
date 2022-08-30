@@ -172,6 +172,8 @@ export default function pasteBoardTest(){
                             expect(uri).assertEqual(data.getRecordAt(0).uri)
                             expect('text/uri').assertEqual(data.getRecordAt(0).mimeType)
                             console.info(data.getRecordAt(0).mimeType)
+                            console.info(data.getProperty().mimeTypes[0]);
+                            expect("text/uri").assertEqual(data.getProperty().mimeTypes[0]);
                         })
                     })
                 })

@@ -287,4 +287,16 @@ describe('storageSyncTest', function () {
         mPref.off('change', observer);
         mPref.putSync(KEY_TEST_STRING_ELEMENT, "abc");
     })
+
+    /**
+     * @tc.name get defaultValue callback interface test
+     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Sync_0170
+     * @tc.desc get defaultValue callback interface test
+     */
+     it('testGetDefValue001', 0, async function (done) {
+        await mPref.clear();
+        var ret = mPref.getSync(KEY_TEST_BOOLEAN_ELEMENT, true)
+        expect(ret).assertTrue();
+        done();
+    })
 })}
