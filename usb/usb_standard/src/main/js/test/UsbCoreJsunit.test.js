@@ -141,6 +141,7 @@ describe('UsbCoreJsFunctionsTest', function () {
         console.info('usb case device request right failed : ' + error + ' :' + gDeviceList[i].name);
         expect(false).assertTrue();
       });
+      CheckEmptyUtils.sleep(5000);
     }
   })
 
@@ -168,7 +169,7 @@ describe('UsbCoreJsFunctionsTest', function () {
       }).catch(error => {
         console.info('usb 01 requestRight error:' + error);
       });
-      CheckEmptyUtils.sleep(3000)
+      CheckEmptyUtils.sleep(5000)
     }
 
     gPipe = usb.connectDevice(gDeviceList[0])
