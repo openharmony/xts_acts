@@ -379,17 +379,18 @@ export default function getProfileByExtensionAbility() {
    /*
     * @tc.number: getProfileByExtensionAbility_2200
     * @tc.name: getProfileByExtensionAbility : The profile is obtained by specified ability
-    * @tc.desc: profile is not json-format (by promise)
+    * @tc.desc: profile is .txt (by promise)
     * @tc.level   0
     */
     it('getProfileByExtensionAbility_2200', 0, async function (done) {
       await bundle.getProfileByExtensionAbility(MODULE_NAME, ABILITY_NAME, METADATA_NAME3).then(data => {
         console.info('[getProfileByExtensionAbility_2200] getApplicationInfo callback data is: ' + JSON.stringify(data));
-        expect(data).assertFail()
+        expect(Array.isArray(data)).assertTrue();
+        expect(typeof data[0]).assertEqual("string");
         done();
       }).catch(err => {
         console.error('[getProfileByExtensionAbility_2200]Operation failed. Cause: ' + JSON.stringify(err));
-        expect(err).assertEqual(1);
+        expect().assertFail();
         done();
       })
     })
@@ -397,18 +398,18 @@ export default function getProfileByExtensionAbility() {
    /*
     * @tc.number: getProfileByExtensionAbility_2300
     * @tc.name: getProfileByExtensionAbility : The profile is obtained by specified ability
-    * @tc.desc: profile is not json-format (by callback)
+    * @tc.desc: profile is .txt (by callback)
     * @tc.level   0
     */
     it('getProfileByExtensionAbility_2300', 0, async function (done) {
       bundle.getProfileByExtensionAbility(MODULE_NAME, ABILITY_NAME, METADATA_NAME3, (err, data) => {
         if (err) {
           console.error('[getProfileByExtensionAbility_2300]Operation failed. Cause: ' + JSON.stringify(err));
-          expect(err).assertEqual(1);
+          expect().assertFail();
         }
         console.info('[getProfileByExtensionAbility_2300] getApplicationInfo callback data is: ' + JSON.stringify(data));
-        expect(typeof data).assertEqual("string");
-        expect(data).assertEqual("GetProfile failed");
+        expect(Array.isArray(data)).assertTrue();
+        expect(typeof data[0]).assertEqual("string");
         done();
       });
     })
