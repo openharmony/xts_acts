@@ -30,8 +30,8 @@ import {
     getPermission,
 } from '../../../../../../common';
 
-export default function filekeyTestCallbackTest(abilityContext) {
-    describe('filekeyTestCallbackTest', function () {
+export default function mediafetchoptionsCallback(abilityContext) {
+    describe('mediafetchoptionsCallback', function () {
         const media = mediaLibrary.getMediaLibrary(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
