@@ -81,16 +81,16 @@ describe('geolocationTest_geo2', function () {
     })
     afterEach(function () {
     })
-    
+
     /**
-     * @tc.number SUB_HSS_LocationSystem_systemapi_0001
+     * @tc.number SUB_HSS_LocationSystem_systemapi_0100
      * @tc.name Test getLocation
      * @tc.desc Obtains the geographical location of a device..
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 2
     */
-    it('SUB_HSS_LocationSystem_systemapi_0001', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_systemapi_0100', 0, async function (done) {
         geolocations.getLocation({
             timeout:30000,
             coordType:'wgs84',
@@ -127,14 +127,14 @@ describe('geolocationTest_geo2', function () {
     })
 
     /**
-     * @tc.number SUB_HSS_LocationSystem_systemapi_0002
+     * @tc.number SUB_HSS_LocationSystem_systemapi_0200
      * @tc.name Test subscribe and unsubscribe
      * @tc.desc Test subscribe api .
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 2
     */
-    it('SUB_HSS_LocationSystem_systemapi_0002', 0,  async function (done) {
+    it('SUB_HSS_LocationSystem_systemapi_0200', 0,  async function (done) {
         geolocations.subscribe({
             coordType:'wgs84',
             success: function(data) {
@@ -152,14 +152,14 @@ describe('geolocationTest_geo2', function () {
     })
 
     /**
-      * @tc.number SUB_HSS_LocationSystem_systemapi_0003
+      * @tc.number SUB_HSS_LocationSystem_systemapi_0300
       * @tc.name test getLocationType
       * @tc.desc Subscribing to geographical location information .
       * @tc.size MEDIUM
       * @tc.type Function
       * @tc.level Level 2
       */
-    it('SUB_HSS_LocationSystem_systemapi_0003', 0,  async function (done) {
+    it('SUB_HSS_LocationSystem_systemapi_0300', 0,  async function (done) {
         geolocations.getLocationType({
             success: function(data) {
                 console.log('success get location type:' + JSON.stringify(data));
@@ -178,26 +178,20 @@ describe('geolocationTest_geo2', function () {
     })
 
     /**
-      * @tc.number SUB_HSS_LocationSystem_systemapi_0004
+      * @tc.number SUB_HSS_LocationSystem_systemapi_0400
       * @tc.name Test getSupportedCoordTypes
       * @tc.desc Obtains the geographical location of a device..
       * @tc.size MEDIUM
       * @tc.type Function
       * @tc.level Level 2
       */
-    it('SUB_HSS_LocationSystem_systemapi_0004', 0,  function () {
+    it('SUB_HSS_LocationSystem_systemapi_0400', 0,  function () {
         let types = geolocations.getSupportedCoordTypes();
         console.info('[lbs_js] getSupportedCoordTypes result: ' + JSON.stringify(types));
         expect(true).assertEqual(types.length !=0);
 
     })
 })
-
-
-
-
-
-
 
 
 
