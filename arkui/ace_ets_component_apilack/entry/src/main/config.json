@@ -71,14 +71,12 @@
           "type": "pageAbility"
         },
         "pages": [
-          "pages/index",
           "pages/alphabetIndexer",
+          "pages/attr_animate",
           "pages/bindContextMenu",
           "pages/checkBoxGroup",
           "pages/circle",
-          "pages/common_ts_ets_api",
-          "pages/common",
-          "pages/curves"
+          "pages/index"
         ],
         "name": ".MainAbility",
         "window": {
