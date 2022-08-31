@@ -13,12 +13,11 @@
  * limitations under the License.
  */
 
-import {SecurityHuksAccessControlJsunit} from './HMAC/SecurityHuksAccessControlJsunit.test.js'
-import {SecurityHuksHmacBasicCallbackJsunit_test, SecurityHuksHmacCallbackJsunit} from './HMAC/SecurityHuksHmacBasicCallbackJsunit.test.js'
-import {SecurityHuksImportJsunit} from './HMAC/SecurityHuksImportJsunit.test.js'
+import { SecurityHuksAccessControlJsunit } from "./HMAC/SecurityHuksAccessControlJsunit.test.js";
+import { SecurityHuksHmacCallbackJsunit } from "./HMAC/SecurityHuksHmacBasicCallbackJsunit.test.js";
+import { SecurityHuksImportJsunit } from "./HMAC/SecurityHuksImportJsunit.test.js";
 export default function testsuite() {
-SecurityHuksAccessControlJsunit()
-SecurityHuksHmacBasicCallbackJsunit_test()
-SecurityHuksHmacCallbackJsunit()
-SecurityHuksImportJsunit()
+  SecurityHuksAccessControlJsunit();
+  SecurityHuksHmacCallbackJsunit();
+  SecurityHuksImportJsunit();
 }
