@@ -293,14 +293,14 @@ describe('VideoPlayerFuncPromiseTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_SeekMode
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_SeekMode
         * @tc.name      : 001.seek mode SEEK_PREV_SYNC/SEEK_NEXT_SYNC (promise)
         * @tc.desc      : Video playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_SeekMode', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_SeekMode', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
@@ -454,14 +454,14 @@ describe('VideoPlayerFuncPromiseTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_GetTreckDescription
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_GetTreckDescription
         * @tc.name      : 001.getTrackDescription (promise)
         * @tc.desc      : Video playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_GetTreckDescription', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_GetTreckDescription', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         let arrayDescription = null;
@@ -963,14 +963,14 @@ describe('VideoPlayerFuncPromiseTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_PARAMETER_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_PARAMETER_0100
         * @tc.name      : 001.parameter value after create/reset/release (promise)
         * @tc.desc      : Video playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_PARAMETER_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_PARAMETER_0100', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
@@ -1028,14 +1028,14 @@ describe('VideoPlayerFuncPromiseTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_PARAMETER_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_PARAMETER_0200
         * @tc.name      : 002.speed and loop value after finish (promise)
         * @tc.desc      : Video playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_PARAMETER_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_PARAMETER_0200', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
@@ -1134,14 +1134,14 @@ describe('VideoPlayerFuncPromiseTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_PARAMETER_0300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_PARAMETER_0300
         * @tc.name      : 003.speed and loop value after reset (promise)
         * @tc.desc      : Video playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_PARAMETER_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_FUNCTION_PROMISE_PARAMETER_0300', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         let videoPlayer = null;
         await media.createVideoPlayer().then((video) => {
