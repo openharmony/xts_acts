@@ -441,7 +441,7 @@ export default function getProfileByExtensionAbility() {
     */
     it('getProfileByExtensionAbility_2500', 0, async function (done) {
       bundle.getProfileByExtensionAbility(MODULE_NAME, ABILITY_NAME, METADATA_NAME4, (err, data) => {
-        console.error('[getProfileByExtensionAbility_2500] Operation failed. Cause: ' + JSON.stringify(err));
+        console.info('[getProfileByExtensionAbility_2500] err: ' + JSON.stringify(err));
         expect(err).assertEqual(1);
         console.info('[getProfileByExtensionAbility_2500] data is: ' + JSON.stringify(data));
         expect(typeof data).assertEqual("string");
