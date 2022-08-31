@@ -37,7 +37,7 @@ export default function ActsBaseCellularDataTest() {
 
         beforeAll(function () {
             let stringValue = {
-                profile_name: "test_profile_name",
+                profile_Name: "test_profile_name",
                 mcc: "460",
                 mnc: "91"
             };
@@ -47,7 +47,7 @@ export default function ActsBaseCellularDataTest() {
             }).catch(error => {
                 expect().assertFail();
                 console.log("Telephony_DataStorage_beforeAll failed");
-                return;
+                done();
             });
         })
 
@@ -63,7 +63,7 @@ export default function ActsBaseCellularDataTest() {
             }).catch(error => {
                 expect().assertFail();
                 console.log("Telephony_DataStorage_PdpProfile_afterAll failed");
-                return;
+                done();
             });
         })
 
@@ -74,7 +74,7 @@ export default function ActsBaseCellularDataTest() {
      */
         it("Telephony_DataStorage_PdpProfile_Insert_Async_0100", 0, async function (done) {
             let stringValue = {
-                profile_name: "test_profile_name",
+                profile_Name: "test_profile_name",
                 mcc: "460",
                 mnc: "91"
             };
@@ -86,7 +86,6 @@ export default function ActsBaseCellularDataTest() {
                 expect().assertFail();
                 console.log("Telephony_DataStorage_InsetIntoPdpProfile_Async_0100 failed");
                 done();
-                return;
             });
         })
 
@@ -105,22 +104,23 @@ export default function ActsBaseCellularDataTest() {
             condition.equalTo("profile_name", "test_profile_name");
             dataAbilityHelper.query(pdpProfileFullUri, resultColumns, condition).then(resultSet => {
                 let pdpProfiles = [];
-                console.log("Telephony_DataStorage_PdpProfile_Query_Async_0100 resultSet: " + JSON.stringify(resultSet));
+                console.log("Telephony_DataStorage_PdpProfile_Query_Async_0100 resultSet: "
+                + JSON.stringify(resultSet));
                 while (resultSet.goToNextRow()) {
                     let pdpProfile = {};
-                    pdpProfile.profile_name = resultSet.getString(0);
+                    pdpProfile.profile_Name = resultSet.getString(0);
                     pdpProfile.mcc = resultSet.getString(1);
                     pdpProfile.mnc = resultSet.getString(2);
                     pdpProfiles.push(pdpProfile);
                 }
-                console.log("Telephony_DataStorage_PdpProfile_Query_Async_0100 pdpProfiles: " + JSON.stringify(pdpProfiles));
+                console.log("Telephony_DataStorage_PdpProfile_Query_Async_0100 pdpProfiles: "
+                + JSON.stringify(pdpProfiles));
                 expect(pdpProfiles.length >= 1).assertTrue();
                 done();
             }).catch(error => {
                 expect().assertFail();
                 console.log("Telephony_DataStorage_PdpProfile_Query_Async_0100 failed");
                 done();
-                return;
             });
         })
 
@@ -137,14 +137,14 @@ export default function ActsBaseCellularDataTest() {
                 'mnc': "92",
             };
             dataAbilityHelper.update(pdpProfileFullUri, stringValue, condition).then(data => {
-                console.log("Telephony_DataStorage_PdpProfile_Update_Async_0100: update success data: " + JSON.stringify(data));
+                console.log("Telephony_DataStorage_PdpProfile_Update_Async_0100: update success data: "
+                + JSON.stringify(data));
                 expect(data === 0).assertTrue();
                 done();
             }).catch(error => {
                 expect().assertFail();
                 console.log("Telephony_DataStorage_PdpProfile_Update_Async_0100 failed");
                 done();
-                return;
             });
         })
 
@@ -157,14 +157,14 @@ export default function ActsBaseCellularDataTest() {
             var condition = new ohosDataAbility.DataAbilityPredicates();
             condition.equalTo("profile_name", "test_profile_name");
             dataAbilityHelper.delete(pdpProfileFullUri, condition).then(data => {
-                console.log("Telephony_DataStorage_PdpProfile_Delete_Async_0100: delete success data: " + JSON.stringify(data));
+                console.log("Telephony_DataStorage_PdpProfile_Delete_Async_0100: delete success data: "
+                + JSON.stringify(data));
                 expect(data === 0).assertTrue();
                 done();
             }).catch(error => {
                 expect().assertFail();
                 console.log("Telephony_DataStorage_PdpProfile_Update_Async_0100 failed");
                 done();
-                return;
             });
         })
     })

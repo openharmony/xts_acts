@@ -12,13 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import net_connection from '@ohos.net.connection';
+import netConnection from '@ohos.net.connection';
 import call from '@ohos.telephony.call';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
 export default function ActsBaseCallManagerTest() {
 
 
-    let net = net_connection.createNetConnection()
+    let net = netConnection.createNetConnection()
 
     class RejectMessageOptions {
         constructor(str) {
