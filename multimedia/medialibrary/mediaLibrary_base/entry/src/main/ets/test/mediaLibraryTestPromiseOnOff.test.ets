@@ -92,75 +92,75 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
             }
         }
         /** 
-         * @tc.number    : SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_001
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_PROMISE_ON_001
          * @tc.name      : ON
          * @tc.desc      : ON Image ASSET
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_001', 0, async function (done) {
+        it('SUB_MEDIA_MEDIALIBRARY_PROMISE_ON_001', 0, async function (done) {
             let type = 'imageChange'
-            let testNum = 'SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_001';
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_PROMISE_ON_001';
             let currentFetchOps = fetchOps(testNum, 'Pictures/On/', IMAGE_TYPE);
             await onTest(done, testNum, type, currentFetchOps)
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_002
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_PROMISE_ON_002
          * @tc.name      : ON
          * @tc.desc      : ON Video ASSET
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_002', 0, async function (done) {
+        it('SUB_MEDIA_MEDIALIBRARY_PROMISE_ON_002', 0, async function (done) {
             let type = 'videoChange'
-            let testNum = 'SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_002';
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_PROMISE_ON_002';
             let currentFetchOps = fetchOps(testNum, 'Videos/On/', VIDEO_TYPE);
             await onTest(done, testNum, type, currentFetchOps)
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_003
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_PROMISE_ON_003
          * @tc.name      : ON
          * @tc.desc      : ON Audio ASSET
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_003', 0, async function (done) {
+        it('SUB_MEDIA_MEDIALIBRARY_PROMISE_ON_003', 0, async function (done) {
             let type = 'audioChange'
-            let testNum = 'SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_003';
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_PROMISE_ON_003';
             let currentFetchOps = fetchOps(testNum, 'Audios/On/', AUDIO_TYPE);
             await onTest(done, testNum, type, currentFetchOps)
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_004
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_PROMISE_ON_004
          * @tc.name      : ON
          * @tc.desc      : ON File ASSET
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_004', 0, async function (done) {
+        it('SUB_MEDIA_MEDIALIBRARY_PROMISE_ON_004', 0, async function (done) {
             let type = 'fileChange'
-            let testNum = 'SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_004';
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_PROMISE_ON_004';
             let currentFetchOps = fetchOps(testNum, 'Documents/On/', FILE_TYPE);
             await onTest(done, testNum, type, currentFetchOps)
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_005
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_PROMISE_ON_005
          * @tc.name      : ON
          * @tc.desc      : ON ALBUM
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_005', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_005'
+        it('SUB_MEDIA_MEDIALIBRARY_PROMISE_ON_005', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_PROMISE_ON_005'
             try {
                 let conut = 0;
                 media.on('albumChange', () => {
@@ -187,15 +187,15 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_006
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_PROMISE_ON_006
          * @tc.name      : ON
          * @tc.desc      : ON DEVICE ASSET
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_006', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_006'
+        it('SUB_MEDIA_MEDIALIBRARY_PROMISE_ON_006', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_PROMISE_ON_006'
             try {
                 let conut = 0;
                 expect(true).assertTrue();
@@ -225,15 +225,15 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_006
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_PROMISE_ON_006
          * @tc.name      : ON
          * @tc.desc      : ON REMOTE_FILE ASSET
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_007', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MIDIALIBRARY_PROMISE_ON_007'
+        it('SUB_MEDIA_MEDIALIBRARY_PROMISE_ON_007', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_PROMISE_ON_007'
             try {
                 let conut = 0;
                 expect(true).assertTrue();
@@ -264,75 +264,75 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MIDIALIBRARY_PROMISE_OFF_001
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_PROMISE_OFF_001
          * @tc.name      : off
          * @tc.desc      : off Image ASSET
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MIDIALIBRARY_PROMISE_OFF_001', 0, async function (done) {
+        it('SUB_MEDIA_MEDIALIBRARY_PROMISE_OFF_001', 0, async function (done) {
             let type = 'imageChange'
-            let testNum = 'SUB_MEDIA_MIDIALIBRARY_PROMISE_OFF_001';
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_PROMISE_OFF_001';
             let currentFetchOps = fetchOps(testNum, 'Pictures/Off/', IMAGE_TYPE);
             await offTest(done, testNum, type, currentFetchOps)
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MIDIALIBRARY_PROMISE_OFF_002
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_PROMISE_OFF_002
          * @tc.name      : off
          * @tc.desc      : off video ASSET
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MIDIALIBRARY_PROMISE_OFF_002', 0, async function (done) {
+        it('SUB_MEDIA_MEDIALIBRARY_PROMISE_OFF_002', 0, async function (done) {
             let type = 'videoChange'
-            let testNum = 'SUB_MEDIA_MIDIALIBRARY_PROMISE_OFF_002';
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_PROMISE_OFF_002';
             let currentFetchOps = fetchOps(testNum, 'Videos/Off/', VIDEO_TYPE);
             await offTest(done, testNum, type, currentFetchOps)
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MIDIALIBRARY_PROMISE_OFF_003
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_PROMISE_OFF_003
          * @tc.name      : off
          * @tc.desc      : off audio ASSET
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MIDIALIBRARY_PROMISE_OFF_003', 0, async function (done) {
+        it('SUB_MEDIA_MEDIALIBRARY_PROMISE_OFF_003', 0, async function (done) {
             let type = 'audioChange'
-            let testNum = 'SUB_MEDIA_MIDIALIBRARY_PROMISE_OFF_003';
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_PROMISE_OFF_003';
             let currentFetchOps = fetchOps(testNum, 'Audios/Off/', AUDIO_TYPE);
             await offTest(done, testNum, type, currentFetchOps)
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MIDIALIBRARY_PROMISE_OFF_004
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_PROMISE_OFF_004
          * @tc.name      : off
          * @tc.desc      : off file ASSET
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MIDIALIBRARY_PROMISE_OFF_004', 0, async function (done) {
+        it('SUB_MEDIA_MEDIALIBRARY_PROMISE_OFF_004', 0, async function (done) {
             let type = 'fileChange'
-            let testNum = 'SUB_MEDIA_MIDIALIBRARY_PROMISE_OFF_004';
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_PROMISE_OFF_004';
             let currentFetchOps = fetchOps(testNum, 'Documents/Off/', FILE_TYPE);
             await offTest(done, testNum, type, currentFetchOps)
         });
 
         /**
-        * @tc.number    : SUB_MEDIA_MIDIALIBRARY_PROMISE_OFF_005
+        * @tc.number    : SUB_MEDIA_MEDIALIBRARY_PROMISE_OFF_005
         * @tc.name      : off
         * @tc.desc      : off album 
         * @tc.size      : MEDIUM
         * @tc.type      : Function
         * @tc.level     : Level 0
         */
-        it('SUB_MEDIA_MIDIALIBRARY_PROMISE_OFF_005', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MIDIALIBRARY_PROMISE_OFF_005'
+        it('SUB_MEDIA_MEDIALIBRARY_PROMISE_OFF_005', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_PROMISE_OFF_005'
             try {
                 let conut = 0;
                 media.on('albumChange', () => {
@@ -361,15 +361,15 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
             }
         });
         /**
-         * @tc.number    : SUB_MEDIA_MIDIALIBRARY_PROMISE_OFF_006
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_PROMISE_OFF_006
          * @tc.name      : off
          * @tc.desc      : off device ASSET
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MIDIALIBRARY_PROMISE_OFF_006', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MIDIALIBRARY_PROMISE_OFF_006'
+        it('SUB_MEDIA_MEDIALIBRARY_PROMISE_OFF_006', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_PROMISE_OFF_006'
             try {
                 media.on('deviceChange', () => {
                     console.info('MediaLibraryTest : off 006 failed');
@@ -410,15 +410,15 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MIDIALIBRARY_PROMISE_OFF_007
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_PROMISE_OFF_007
          * @tc.name      : off
          * @tc.desc      : off remoteFile ASSET
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MIDIALIBRARY_PROMISE_OFF_007', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MIDIALIBRARY_PROMISE_OFF_007'
+        it('SUB_MEDIA_MEDIALIBRARY_PROMISE_OFF_007', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_PROMISE_OFF_007'
             try {
                 media.on('remoteFileChange', () => {
                     console.info('MediaLibraryTest : off 007 failed');
@@ -460,14 +460,14 @@ export default function mediaLibraryTestPromiseOnOffTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MIDIALIBRARY_PROMISE_RELEASE_001
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_PROMISE_RELEASE_001
          * @tc.name      : release
          * @tc.desc      : Release MediaLibrary instance
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MIDIALIBRARY_PROMISE_RELEASE_001', 0, async function (done) {
+        it('SUB_MEDIA_MEDIALIBRARY_PROMISE_RELEASE_001', 0, async function (done) {
             try {
                 await media.release();
                 console.info('MediaLibraryTest : release 001 passed');
