@@ -441,10 +441,8 @@ export default function getProfileByAbility() {
     */
     it('getProfileByAbility_2500', 0, async function (done) {
       bundle.getProfileByAbility(MODULE_NAME, ABILITY_NAME, METADATA_NAME4, (err, data) => {
-        if (err) {
-          console.error('[getProfileByAbility_2500] Operation failed. Cause: ' + JSON.stringify(err));
-          expect(err).assertEqual(1);
-        }
+        console.error('[getProfileByAbility_2500] Operation failed. Cause: ' + JSON.stringify(err));
+        expect(err).assertEqual(1);
         console.info('[getProfileByAbility_2500] data is: ' + JSON.stringify(data));
         expect(typeof data).assertEqual("string");
         expect(data).assertEqual("GetProfile failed");
