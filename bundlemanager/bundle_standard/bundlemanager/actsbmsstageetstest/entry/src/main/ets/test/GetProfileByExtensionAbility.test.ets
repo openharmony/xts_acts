@@ -25,7 +25,7 @@ const METADATA_NAME = "ohos.extension.form"
 const METADATA_NAME1 = "ohos.extension.form1"
 const METADATA_NAME2 = "ohos.extension.form2"
 const METADATA_NAME3 = "ohos.extension.form3"
-const METADATA_NAME3 = "ohos.extension.form4"
+const METADATA_NAME4 = "ohos.extension.form4"
 const METADATA_NAME_TEST = "ohos.test.form"
 const PROFILE_JSON_STRING = "{\"src\":[\"MainAbility/pages/index/index\",\"MainAbility/pages/second/second\"]}"
 
