@@ -45,7 +45,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
           });
   
           console.log('*************Usb Unit switch to host Ex Begin*************');
-          CheckEmptyUtils.sleep(3000)
+          CheckEmptyUtils.sleep(8000)
         }
       } else {
         portCurrentMode = 1
@@ -174,6 +174,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       expect(false).assertFalse();
       console.info('usb case SUB_USB_JS_0650 :  PASS');
     });
+    CheckEmptyUtils.sleep(3000);
   })
 
   /**
@@ -210,6 +211,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       expect(false).assertFalse();
       console.info('usb case SUB_USB_JS_0660 :  PASS');
     });
+    CheckEmptyUtils.sleep(3000);
   })
 
   /**
@@ -246,6 +248,7 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
       expect(false).assertFalse();
       console.info('usb case SUB_USB_JS_0670 :  PASS');
     });
+    CheckEmptyUtils.sleep(3000);
   })
 
   /**

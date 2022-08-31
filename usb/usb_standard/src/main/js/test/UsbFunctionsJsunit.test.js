@@ -34,6 +34,7 @@ describe('UsbFunctionsJsFunctionsTest', function () {
         }).catch(error => {
           console.info('usb case setPortRoles error : ' + error);
         });
+        CheckEmptyUtils.sleep(8000)
         console.log('*************Usb Unit switch to device Begin*************');
       }
     }

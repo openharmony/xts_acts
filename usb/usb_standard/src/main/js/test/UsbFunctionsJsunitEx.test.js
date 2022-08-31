@@ -33,7 +33,7 @@ describe('UsbFunctionsJsFunctionsTestEx', function () {
         }).catch(error => {
           console.info('usb case setPortRoles error : ' + error);
         });
-
+        CheckEmptyUtils.sleep(8000)
         console.log('*************Usb Unit switch to device Begin*************');
       }
     }
@@ -135,7 +135,7 @@ describe('UsbFunctionsJsFunctionsTestEx', function () {
     var maskCode = usb.ACM | usb.HDC
     console.info('usb case maskCode : ' + maskCode);
     var strMaskCode = usb.usbFunctionsToString(maskCode)
-    expect(strMaskCode).assertEqual('hdc,acm');
+    expect(strMaskCode).assertEqual('acm,hdc');
     console.info('usb case maskCode ' + maskCode + ' usbFunctionsToString return int: ' + strMaskCode);
     console.info('usb SUB_USB_JS_0980 :  PASS');
   })
@@ -150,7 +150,7 @@ describe('UsbFunctionsJsFunctionsTestEx', function () {
     var maskCode = usb.ECM | usb.HDC
     console.info('usb case maskCode : ' + maskCode);
     var strMaskCode = usb.usbFunctionsToString(maskCode)
-    expect(strMaskCode).assertEqual('hdc,ecm');
+    expect(strMaskCode).assertEqual('ecm,hdc');
     console.info('usb case maskCode ' + maskCode + ' usbFunctionsToString return int: ' + strMaskCode);
     console.info('usb SUB_USB_JS_0990 :  PASS');
   })
