@@ -13,906 +13,751 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
-import systemTimer from '@ohos.systemTimer'
+import {describe, it, expect} from 'deccjsunit/index'
+import systemTimer from '@ohos.systemTimer';
+import WantAgent from '@ohos.wantAgent';
 
-describe('TimerTest', function() {
-    console.log('start################################start');
+var wantAgentInfo = {
+    wants: [
+        {
+            deviceId: "deviceId",
+            bundleName: "com.neu.setResultOnAbilityResultTest1",
+            abilityName: "com.example.test.MainAbility",
+            action: "action1",
+            entities: ["entity1"],
+            type: "MIMETYPE",
+            uri: "key={true,true,false}",
+            parameters:
+            {
+                mykey0: 2222,
+                mykey1: [1, 2, 3],
+                mykey2: "[1, 2, 3]",
+                mykey3: "ssssssssssssssssssssssssss",
+                mykey4: [false, true, false],
+                mykey5: ["qqqqq", "wwwwww", "aaaaaaaaaaaaaaaaa"],
+                mykey6: true,
+            }
+        }
+    ],
+    operationType: WantAgent.OperationType.START_ABILITIES,
+    requestCode: 0
+}
 
-	/**
-     * @tc.number    SUB_systemTimer_Timer_JS_API_0100
-     * @tc.name      Test systemTimer.createTimer type = TIMER_TYPE_REALTIME
-     * @tc.desc      Test systemTimer_Timer API functionality.
+describe('systemTimerTest', function () {
+    console.info('start################################start');
+
+	function isIntNum(val) {
+		return typeof val === 'number' && val % 1 === 0;
+	  }
+
+    /**
+     * @tc.number    SUB_systemTimer_createTimer_0000
+     * @tc.name      systemTimer_createTimer_test000
+     * @tc.desc      Test createTimer() interfaces, type = TIMER_TYPE_REALTIME, repeat = false (Promise)
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-	it('systemTimer_Timer_test1',0, async () => {
-		console.log("SUB_systemTimer_Timer_JS_API_0100 start")
-        var options = {
-			type:TIMER_TYPE_REALTIME,
-			repeat:false,
-			persistent:false
-		}
-		console.log("create timer")
-        let timer = systemTimer.createTimer(options)
-		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
-		
-		console.log("start timer")
-		systemTimer.startTimer(timer, 100000)
-		
-		console.log("stop timer")
-		systemTimer.stopTimer(timer)
-		
-		console.log("destroy timer")
-		systemTimer.destroyTimer(timer)
-		console.log('SUB_systemTimer_Timer_JS_API_0100 end');
-	});
+    it('systemTimer_createTimer_test000', 0, async function (done) {
+        console.info("systemTimer_createTimer_test000 start")
+        let options = {
+            type:systemTimer.TIMER_TYPE_REALTIME,
+            repeat:false
+        }
+        try {
+            console.info("systemTimer_createTimer_test000 create timer")
+            let timerID = await systemTimer.createTimer(options);
+            expect(isIntNum(timerID)).assertTrue();
+            console.info('systemTimer_createTimer_test000 has SUCCESS');
+            systemTimer.destroyTimer(timerID, function(e){
+                done();
+            });
+        }catch (e) {
+            console.info('systemTimer_createTimer_test000 has failed for '+e);
+            expect(false).assertTrue();
+        }
+    });
 
-	/**
-     * @tc.number    SUB_systemTimer_Timer_JS_API_0200
-     * @tc.name      Test systemTimer.createTimer type = TIMER_TYPE_REALTIME_WAKEUP
-     * @tc.desc      Test systemTimer_Timer API functionality.
+    /**
+     * @tc.number    SUB_systemTimer_createTimer_0100
+     * @tc.name      systemTimer_createTimer_test001
+     * @tc.desc      Test createTimer() interfaces, type = TIMER_TYPE_REALTIME, repeat = false (callback)
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-	it('systemTimer_Timer_test2',0, async () => {
-		console.log("SUB_systemTimer_Timer_JS_API_0200 start")
-        var options = {
-			type:TIMER_TYPE_WAKEUP,
-			repeat:false,
-			persistent:false
-		}
-		console.log("create timer")
-        let timer = systemTimer.createTimer(options)
-		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
-		
-		console.log("start timer")
-		systemTimer.startTimer(timer, 100000)
-		
-		console.log("stop timer")
-		systemTimer.stopTimer(timer)
-		
-		console.log("destroy timer")
-		systemTimer.destroyTimer(timer)
-		console.log('SUB_systemTimer_Timer_JS_API_0200 end');
-	});
+    it('systemTimer_createTimer_test001', 0, async function (done) {
+        console.info("systemTimer_createTimer_test001 start")
+        let options = {
+            type:systemTimer.TIMER_TYPE_REALTIME,
+            repeat:false
+        }
+        try {
+            console.info("systemTimer_createTimer_test001 create timer")
+            systemTimer.createTimer(options, function(err, timerID){
+                expect(isIntNum(timerID)).assertTrue();
+                systemTimer.destroyTimer(timerID, function(e){
+                    console.info('systemTimer_createTimer_test001 has SUCCESS');
+                    done();
+                });
+            });
+        }catch (e) {
+            console.info('systemTimer_createTimer_test001 has failed for '+e);
+            expect(false).assertTrue();
+        }
+    });
 
-	/**
-     * @tc.number    SUB_systemTimer_Timer_JS_API_0300
-     * @tc.name      Test systemTimer.createTimer type = TIMER_TYPE_EXACT
-     * @tc.desc      Test systemTimer_Timer API functionality.
+    /**
+     * @tc.number    SUB_systemTimer_createTimer_0200
+     * @tc.name      systemTimer_createTimer_test002
+     * @tc.desc      Test createTimer() interfaces, type = TIMER_TYPE_WAKEUP, repeat = true, interval (Promise)
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('systemTimer_createTimer_test002', 0, async function (done) {
+        console.info("systemTimer_createTimer_test002 start")
+        let options = {
+            type:systemTimer.TIMER_TYPE_WAKEUP,
+            repeat:true,
+            interval:5001
+        }
+        try {
+            console.info("systemTimer_createTimer_test002 create timer")
+            let timerID = await systemTimer.createTimer(options);
+            expect(isIntNum(timerID)).assertTrue();
+            console.info('systemTimer_createTimer_test002 has SUCCESS');
+            systemTimer.destroyTimer(timerID, function(e){
+                done();
+            });
+        }catch (e) {
+            console.info('systemTimer_createTimer_test002 has failed for '+e);
+            expect(false).assertTrue();
+        }
+    });
+
+    /**
+     * @tc.number    SUB_systemTimer_createTimer_0300
+     * @tc.name      systemTimer_createTimer_test003
+     * @tc.desc      Test createTimer() interfaces, type = TIMER_TYPE_WAKEUP, repeat = true, interval (callback)
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('systemTimer_createTimer_test003', 0, async function (done) {
+        console.info("systemTimer_createTimer_test003 start")
+        let options = {
+            type:systemTimer.TIMER_TYPE_WAKEUP,
+            repeat:true,
+            interval:5001
+        }
+        try {
+            console.info("systemTimer_createTimer_test003 create timer")
+            systemTimer.createTimer(options, function(err, timerID){
+                expect(isIntNum(timerID)).assertTrue();
+                systemTimer.destroyTimer(timerID, function(e){
+                    console.info('systemTimer_createTimer_test003 has SUCCESS');
+                    done();
+                });
+            });
+        }catch (e) {
+            console.info('systemTimer_createTimer_test003 has failed for '+e);
+            expect(false).assertTrue();
+        }
+    });
+
+    /**
+     * @tc.number    SUB_systemTimer_createTimer_0400
+     * @tc.name      systemTimer_createTimer_test004
+     * @tc.desc      Test createTimer() interfaces, type = TIMER_TYPE_EXACT, repeat = false (Promise)
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('systemTimer_createTimer_test004', 0, async function (done) {
+        console.info("systemTimer_createTimer_test004 start")
+        let options = {
+            type:systemTimer.TIMER_TYPE_EXACT,
+            repeat:false
+        }
+        try {
+            console.info("systemTimer_createTimer_test004 create timer")
+            let timerID = await systemTimer.createTimer(options);
+            expect(isIntNum(timerID)).assertTrue();
+            console.info('systemTimer_createTimer_test004 has SUCCESS');
+            systemTimer.destroyTimer(timerID, function(e){
+                done();
+            });
+        }catch (e) {
+            console.info('systemTimer_createTimer_test004 has failed for '+e);
+            expect(false).assertTrue();
+        }
+    });
+
+    /**
+     * @tc.number    SUB_systemTimer_createTimer_0500
+     * @tc.name      systemTimer_createTimer_test005
+     * @tc.desc      Test createTimer() interfaces, type = TIMER_TYPE_EXACT, repeat = false (callback)
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('systemTimer_createTimer_test005', 0, async function (done) {
+        console.info("systemTimer_createTimer_test005 start")
+        let options = {
+            type:systemTimer.TIMER_TYPE_EXACT,
+            repeat:false,
+        }
+        try {
+            console.info("systemTimer_createTimer_test005 create timer")
+            systemTimer.createTimer(options, function(err, timerID){
+                expect(isIntNum(timerID)).assertTrue();
+                systemTimer.destroyTimer(timerID, function(e){
+                    console.info('systemTimer_createTimer_test005 has SUCCESS');
+                    done();
+                });
+            });
+        }catch (e) {
+            console.info('systemTimer_createTimer_test005 has failed for '+e);
+            expect(false).assertTrue();
+        }
+    });
+
+    /**
+     * @tc.number    SUB_systemTimer_createTimer_0600
+     * @tc.name      systemTimer_createTimer_test006
+     * @tc.desc      Test createTimer() interfaces, type = TIMER_TYPE_IDLE, repeat = false, wantAgent (Promise)
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('systemTimer_createTimer_test006', 0, async function (done) {
+        console.info("systemTimer_createTimer_test006 start")
+        let wantAgent = await WantAgent.getWantAgent(wantAgentInfo);
+        let options = {
+            type:systemTimer.TIMER_TYPE_IDLE,
+            repeat:false,
+            wantAgent:wantAgent
+        }
+        try {
+            console.info("systemTimer_createTimer_test006 create timer")
+            let timerID = await systemTimer.createTimer(options);
+            expect(isIntNum(timerID)).assertTrue();
+            console.info('systemTimer_createTimer_test006 has SUCCESS');
+            systemTimer.destroyTimer(timerID, function(e){
+                done();
+            });
+        }catch (e) {
+            console.info('systemTimer_createTimer_test006 has failed for '+e);
+            expect(false).assertTrue();
+        }
+    });
+
+    /**
+     * @tc.number    SUB_systemTimer_createTimer_0700
+     * @tc.name      systemTimer_createTimer_test007
+     * @tc.desc      Test createTimer() interfaces, type = TIMER_TYPE_IDLE, repeat = false, wantAgent(callback)
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('systemTimer_createTimer_test007', 0, async function (done) {
+        console.info("systemTimer_createTimer_test007 start")
+        let wantAgent = await WantAgent.getWantAgent(wantAgentInfo);
+        let options = {
+            type:systemTimer.TIMER_TYPE_IDLE,
+            repeat:false,
+            wantAgent:wantAgent
+        }
+        try {
+            console.info("systemTimer_createTimer_test007 create timer")
+            systemTimer.createTimer(options, function(err, timerID){
+                expect(isIntNum(timerID)).assertTrue();
+                systemTimer.destroyTimer(timerID, function(e){
+                    console.info('systemTimer_createTimer_test007 has SUCCESS');
+                    done();
+                });
+            });
+        }catch (e) {
+            console.info('systemTimer_createTimer_test007 has failed for '+e);
+            expect(false).assertTrue();
+        }
+    });
+
+    /**
+     * @tc.number    SUB_systemTimer_createTimer_0800
+     * @tc.name      systemTimer_createTimer_test008
+     * @tc.desc      Test createTimer() interfaces, type = 'TIMER_TYPE_REALTIME'(String)(Promise)
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('systemTimer_createTimer_test008', 0, async function (done) {
+        console.info("systemTimer_createTimer_test008 start")
+        let options = {
+            type:'TIMER_TYPE_REALTIME',
+            repeat:false
+        }
+        try {
+            console.info("systemTimer_createTimer_test008 create timer")
+            await systemTimer.createTimer(options);
+            expect(false).assertTrue();
+        }catch (e) {
+            console.info('systemTimer_createTimer_test008 has failed for '+e);
+            expect(e.toString().indexOf('Wrong argument type') != -1).assertTrue();
+            done();
+        }
+    });
+
+    /**
+     * @tc.number    SUB_systemTimer_createTimer_0900
+     * @tc.name      systemTimer_createTimer_test009
+     * @tc.desc      Test createTimer() interfaces, type = 'TIMER_TYPE_REALTIME'(String)(callback)
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('systemTimer_createTimer_test009', 0, async function (done) {
+        console.info("systemTimer_createTimer_test009 start")
+        let options = {
+            type:'TIMER_TYPE_REALTIME',
+            repeat:false
+        }
+        try {
+            console.info("systemTimer_createTimer_test009 create timer")
+            systemTimer.createTimer(options, function(err, timerID){
+                console.info("systemTimer_createTimer_test009 failed")
+            });
+            expect(false).assertTrue();
+        }catch (e) {
+            console.info('systemTimer_createTimer_test009 has failed for '+e);
+            expect(e.toString().indexOf('Wrong argument type') != -1).assertTrue();
+            done();
+        }
+    });
+
+    /**
+     * @tc.number    SUB_systemTimer_createTimer_1000
+     * @tc.name      systemTimer_createTimer_test010
+     * @tc.desc      Test createTimer() interfaces, type = null(Promise)
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('systemTimer_createTimer_test010', 0, async function (done) {
+        console.info("systemTimer_createTimer_test010 start")
+        let options = {
+            type:null,
+            repeat:false
+        }
+        try {
+            console.info("systemTimer_createTimer_test010 create timer")
+            await systemTimer.createTimer(options);
+            expect(false).assertTrue();
+        }catch (e) {
+            console.info('systemTimer_createTimer_test010 has failed for '+e);
+            expect(e.toString().indexOf('Wrong argument type') != -1).assertTrue();
+            done();
+        }
+    });
+
+    /**
+     * @tc.number    SUB_systemTimer_createTimer_1100
+     * @tc.name      systemTimer_createTimer_test011
+     * @tc.desc      Test createTimer() interfaces, type = null(callback)
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('systemTimer_createTimer_test011', 0, async function (done) {
+        console.info("systemTimer_createTimer_test011 start")
+        let options = {
+            type:null,
+            repeat:false
+        }
+        try {
+            console.info("systemTimer_createTimer_test011 create timer")
+            systemTimer.createTimer(options, function(err, timerID){
+                console.info("systemTimer_createTimer_test011 failed ")
+            });
+            expect(false).assertTrue();
+        }catch (e) {
+            console.info('systemTimer_createTimer_test011 has failed for '+e);
+            expect(e.toString().indexOf('Wrong argument type') != -1).assertTrue();
+            done();
+        }
+    });
+
+    /**
+     * @tc.number    SUB_systemTimer_createTimer_1200
+     * @tc.name      systemTimer_createTimer_test012
+     * @tc.desc      Test createTimer() interfaces, type = undefined(Promise)
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('systemTimer_createTimer_test012', 0, async function (done) {
+        console.info("systemTimer_createTimer_test012 start")
+        let options = {
+            type:undefined,
+            repeat:false
+        }
+        try {
+            console.info("systemTimer_createTimer_test012 create timer")
+            await systemTimer.createTimer(options);
+            expect(false).assertTrue();
+        }catch (e) {
+            console.info('systemTimer_createTimer_test012 has failed for '+e);
+            expect(e.toString().indexOf('Wrong argument type') != -1).assertTrue();
+            done();
+        }
+    });
+
+    /**
+     * @tc.number    SUB_systemTimer_createTimer_1300
+     * @tc.name      systemTimer_createTimer_test013
+     * @tc.desc      Test createTimer() interfaces, type = undefined(callback)
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('systemTimer_createTimer_test013', 0, async function (done) {
+        console.info("systemTimer_createTimer_test013 start")
+        let options = {
+            type:undefined,
+            repeat:false
+        }
+        try {
+            console.info("systemTimer_createTimer_test013 create timer")
+            systemTimer.createTimer(options, function(err, timerID){
+                console.info("systemTimer_createTimer_test013 failed ")
+            });
+            expect(false).assertTrue();
+        }catch (e) {
+            console.info('systemTimer_createTimer_test013 has failed for '+e);
+            expect(e.toString().indexOf('Wrong argument type') != -1).assertTrue();
+            done();
+        }
+    });
+
+    /**
+     * @tc.number    SUB_systemTimer_createTimer_1400
+     * @tc.name      systemTimer_createTimer_test014
+     * @tc.desc      Test createTimer() interfaces, no parameters(Promise)
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('systemTimer_createTimer_test014', 0, async function (done) {
+        console.info("systemTimer_createTimer_test014 start")
+        try {
+            console.info("systemTimer_createTimer_test014 create timer")
+            await systemTimer.createTimer();
+            expect(false).assertTrue();
+        }catch (e) {
+            console.info('systemTimer_createTimer_test014 has failed for '+e);
+            expect(e.toString().indexOf('Wrong number of arguments') != -1).assertTrue();
+            done();
+        }
+    });
+
+    /**
+     * @tc.number    SUB_systemTimer_createTimer_1500
+     * @tc.name      systemTimer_createTimer_test015
+     * @tc.desc      Test createTimer() interfaces, repeat = 'false'(String) (Promise)
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('systemTimer_createTimer_test015', 0, async function (done) {
+        console.info("systemTimer_createTimer_test015 start")
+        let options = {
+            type:systemTimer.TIMER_TYPE_REALTIME,
+            repeat:'false'
+        }
+        try {
+            console.info("systemTimer_createTimer_test015 create timer")
+            await systemTimer.createTimer(options);
+            expect(false).assertTrue();
+        }catch (e) {
+            console.info('systemTimer_createTimer_test015 has failed for '+e);
+            expect(e.toString().indexOf('Wrong argument type') != -1).assertTrue();
+            done();
+        }
+    });
+
+    /**
+     * @tc.number    SUB_systemTimer_createTimer_1600
+     * @tc.name      systemTimer_createTimer_test016
+     * @tc.desc      Test createTimer() interfaces, repeat = 'false'(String)(callback)
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('systemTimer_createTimer_test016', 0, async function (done) {
+        console.info("systemTimer_createTimer_test016 start")
+        let options = {
+            type:systemTimer.TIMER_TYPE_REALTIME,
+            repeat:'false'
+        }
+        try {
+            console.info("systemTimer_createTimer_test016 create timer")
+            systemTimer.createTimer(options, function(err, timerID){
+                console.info("systemTimer_createTimer_test016 failed ")
+            });
+            expect(false).assertTrue();
+        }catch (e) {
+            console.info('systemTimer_createTimer_test016 has failed for '+e);
+            expect(e.toString().indexOf('Wrong argument type') != -1).assertTrue();
+            done();
+        }
+    });
+
+    /**
+      * @tc.number    SUB_systemTimer_createTimer_1700
+      * @tc.name      systemTimer_createTimer_test017
+      * @tc.desc      Test createTimer() interfaces, repeat = 0(number) (Promise)
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 2
+      */
+    it('systemTimer_createTimer_test017', 0, async function (done) {
+        console.info("systemTimer_createTimer_test017 start")
+        let options = {
+            type:systemTimer.TIMER_TYPE_REALTIME,
+            repeat:0
+        }
+        try {
+            console.info("systemTimer_createTimer_test017 create timer")
+            await systemTimer.createTimer(options);
+            expect(false).assertTrue();
+        }catch (e) {
+            console.info('systemTimer_createTimer_test017 has failed for '+e);
+            expect(e.toString().indexOf('Wrong argument type') != -1).assertTrue();
+            done();
+        }
+    });
+
+    /**
+     * @tc.number    SUB_systemTimer_createTimer_1800
+     * @tc.name      systemTimer_createTimer_test018
+     * @tc.desc      Test createTimer() interfaces, repeat = 0(number)(callback)
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('systemTimer_createTimer_test018', 0, async function (done) {
+        console.info("systemTimer_createTimer_test018 start")
+        let options = {
+            type:systemTimer.TIMER_TYPE_REALTIME,
+            repeat:0
+        }
+        try {
+            console.info("systemTimer_createTimer_test018 create timer")
+            systemTimer.createTimer(options, function(err, timerID){
+                console.info("systemTimer_createTimer_test018 failed ")
+            });
+            expect(false).assertTrue();
+        }catch (e) {
+            console.info('systemTimer_createTimer_test018 has failed for '+e);
+            expect(e.toString().indexOf('Wrong argument type') != -1).assertTrue();
+            done();
+        }
+    });
+
+    /**
+     * @tc.number    SUB_systemTimer_startTimer_0100
+     * @tc.name      systemTimer_startTimer_test001
+     * @tc.desc      Test startTimer() interfaces, normal call(callback)
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-	it('systemTimer_Timer_test3',0, async () => {
-		console.log("SUB_systemTimer_Timer_JS_API_0300 start")
-        var options = {
-			type:TIMER_TYPE_EXACT,
-			repeat:false,
-			persistent:false
-		}
-		console.log("create timer")
-        let timer = systemTimer.createTimer(options)
-		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
-		
-		console.log("start timer")
-		systemTimer.startTimer(timer, 100000)
-		
-		console.log("stop timer")
-		systemTimer.stopTimer(timer)
-		
-		console.log("destroy timer")
-		systemTimer.destroyTimer(timer)
-		console.log('SUB_systemTimer_Timer_JS_API_0300 end');
-	});
+    it('systemTimer_startTimer_test001', 0, async function (done) {
+        console.info("systemTimer_startTimer_test001 start")
+        let options = {
+            type:systemTimer.TIMER_TYPE_IDLE,
+            repeat:false,
+        }
+        let timerID = await systemTimer.createTimer(options);
+        expect(isIntNum(timerID)).assertTrue();
+        let triggerTime = 5000;
+        try {
+            console.info("systemTimer_startTimer_test001 start timer")
+            systemTimer.startTimer(timerID, triggerTime, function(err, data){
+                systemTimer.stopTimer(timerID, function(err, data){
+                    systemTimer.destroyTimer(timerID, function(err, data){
+                        console.info('systemTimer_startTimer_test001 has SUCCESS');
+                        done();
+                    });
+                });
+            });
+        }catch (e) {
+            console.info('systemTimer_startTimer_test001 has failed for '+e);
+            expect(false).assertTrue();
+        }
+    });
 
-	/**
-     * @tc.number    SUB_systemTimer_Timer_JS_API_0400
-     * @tc.name      Test systemTimer.createTimer type = TIMER_TYPE_REALTIME
-     * @tc.desc      Test systemTimer_Timer API functionality.
+    /**
+     * @tc.number    SUB_systemTimer_startTimer_0300
+     * @tc.name      systemTimer_startTimer_test003
+     * @tc.desc      Test startTimer() interfaces, timer = 0(callback)
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('systemTimer_startTimer_test003', 0, async function (done) {
+        console.info("systemTimer_startTimer_test003 start")
+        let timerID = 0;
+        let triggerTime = 5000;
+        try {
+            console.info("systemTimer_startTimer_test003 start timer")
+            systemTimer.startTimer(timerID, triggerTime, function(err, data){
+                systemTimer.stopTimer(timerID, function(err, data){
+                    systemTimer.destroyTimer(timerID, function(err, data){
+                        console.info('systemTimer_startTimer_test003 has SUCCESS');
+                        done();
+                    });
+                });
+            });
+        }catch (e) {
+            console.info('systemTimer_startTimer_test003 has failed for '+e);
+            expect(false).assertTrue();
+        }
+    });
+
+    /**
+     * @tc.number    SUB_systemTimer_startTimer_0500
+     * @tc.name      systemTimer_startTimer_test005
+     * @tc.desc      Test startTimer() interfaces, triggerTime = -5000(callback)
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('systemTimer_startTimer_test005', 0, async function (done) {
+        console.info("systemTimer_startTimer_test005 start")
+        let options = {
+            type:systemTimer.TIMER_TYPE_IDLE,
+            repeat:false,
+        }
+        let timerID = await systemTimer.createTimer(options);
+        expect(isIntNum(timerID)).assertTrue();
+        let triggerTime = -5000;
+        try {
+            console.info("systemTimer_startTimer_test005 start timer")
+            systemTimer.startTimer(timerID, triggerTime, function(err, data){
+                console.info('systemTimer_startTimer_test005 failed');
+            });
+            expect(false).assertTrue();
+        }catch (e) {
+            console.info('systemTimer_startTimer_test005 has failed for '+e);
+            expect(e.toString().indexOf('Wrong argument triggerTime') != -1).assertTrue();
+            done();
+        }
+    });
+
+    /**
+     * @tc.number    SUB_systemTimer_stopTimer_0100
+     * @tc.name      systemTimer_stopTimer_test001
+     * @tc.desc      Test stopTimer() interfaces, normal call(callback)
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-	it('systemTimer_Timer_test4',0, async () => {
-		console.log("SUB_systemTimer_Timer_JS_API_0400 start")
-        var options = {
-			type:TIMER_TYPE_REALTIME,
-			repeat:false,
-			persistent:false
-		}
-		console.log("create timer")
-        let timer = systemTimer.createTimer(options)
-		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
-		
-		console.log("start timer")
-		systemTimer.startTimer(timer, 100000)
-		
-		console.log("stop timer")
-		systemTimer.stopTimer(timer)
-		
-		console.log("destroy timer")
-		systemTimer.destroyTimer(timer)
-		console.log('SUB_systemTimer_Timer_JS_API_0400 end');
-	});
+    it('systemTimer_stopTimer_test001', 0, async function (done) {
+        console.info("systemTimer_stopTimer_test001 start")
+        let options = {
+            type:systemTimer.TIMER_TYPE_IDLE,
+            repeat:false,
+        }
+        let timerID = await systemTimer.createTimer(options);
+        expect(isIntNum(timerID)).assertTrue();
+        systemTimer.startTimer(timerID,5000);
+        try {
+            console.info("systemTimer_stopTimer_test001 stop timer")
+            systemTimer.stopTimer(timerID, function(err, data){
+                systemTimer.destroyTimer(timerID, function(err, data){
+                    console.info('systemTimer_stopTimer_test001 has SUCCESS');
+                    done();
+                });
+            });
+        }catch (e) {
+            console.info('systemTimer_stopTimer_test001 has failed for '+e);
+            expect(false).assertTrue();
+        }
+    });
 
-	/**
-     * @tc.number    SUB_systemTimer_Timer_JS_API_0500
-     * @tc.name      Test systemTimer.createTimer triggerTime = 0
-     * @tc.desc      Test systemTimer_Timer API functionality.
+    /**
+     * @tc.number    SUB_systemTimer_stopTimer_0400
+     * @tc.name      systemTimer_stopTimer_test004
+     * @tc.desc      Test stopTimer() interfaces, timerID is not defined(callback)
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('systemTimer_stopTimer_test004', 0, async function (done) {
+        console.info("systemTimer_stopTimer_test004 start")
+        try {
+            console.info("systemTimer_stopTimer_test004 stop timer")
+            systemTimer.stopTimer(timerID, function(err, data){
+                console.info('systemTimer_stopTimer_test004 failed');
+            });
+            expect(false).assertTrue();
+        }catch (e) {
+            console.info('systemTimer_stopTimer_test004 has failed for '+e);
+            expect(e.toString().indexOf('timerID is not defined') != -1).assertTrue();
+            done();
+        }
+    });
+
+    /**
+     * @tc.number    SUB_systemTimer_destroyTimer_0100
+     * @tc.name      systemTimer_destroyTimer_test001
+     * @tc.desc      Test destroyTimer() interfaces, normal call(callback)
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-	it('systemTimer_Timer_test5',0, async () => {
-		console.log("SUB_systemTimer_Timer_JS_API_0500 start")
-        var options = {
-			type:TIMER_TYPE_REALTIME,
-			repeat:false,
-			persistent:false
-		}
-		console.log("create timer")
-        let timer = systemTimer.createTimer(options)
-		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
-		
-		console.log("start timer")
-		systemTimer.startTimer(timer, 0)
-		
-		console.log("stop timer")
-		systemTimer.stopTimer(timer)
-		
-		console.log("destroy timer")
-		systemTimer.destroyTimer(timer)
-		console.log('SUB_systemTimer_Timer_JS_API_0500 end');
-	});
+    it('systemTimer_destroyTimer_test001', 0, async function (done) {
+        console.info("systemTimer_destroyTimer_test001 start")
+        let options = {
+            type:systemTimer.TIMER_TYPE_IDLE,
+            repeat:false,
+        }
+        let timerID = await systemTimer.createTimer(options);
+        expect(isIntNum(timerID)).assertTrue();
+        try {
+            console.info("systemTimer_destroyTimer_test001 destroy timer")
+            systemTimer.destroyTimer(timerID, function(err, data){
+                console.info('systemTimer_destroyTimer_test001 has SUCCESS');
+                done();
+            });
+        }catch (e) {
+            console.info('systemTimer_destroyTimer_test001 has failed for '+e);
+            expect(false).assertTrue();
+        }
+    });
 
-	/**
-     * @tc.number    SUB_systemTimer_Timer_JS_API_0600
-     * @tc.name      Test systemTimer.createTimer triggerTime = 5000
-     * @tc.desc      Test systemTimer_Timer API functionality.
+    /**
+     * @tc.number    SUB_systemTimer_destroyTimer_0400
+     * @tc.name      systemTimer_destroyTimer_test004
+     * @tc.desc      Test destroyTimer() interfaces, timerID is not defined(callback)
      * @tc.size      : MEDIUM
      * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.level     : Level 2
      */
-	it('systemTimer_Timer_test6',0, async () => {
-		console.log("SUB_systemTimer_Timer_JS_API_0600 start")
-        var options = {
-			type:TIMER_TYPE_REALTIME,
-			repeat:false,
-			persistent:false
-		}
-		console.log("create timer")
-        let timer = systemTimer.createTimer(options)
-		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
-		
-		console.log("start timer")
-		systemTimer.startTimer(timer, 5000)
-		
-		console.log("stop timer")
-		systemTimer.stopTimer(timer)
-		
-		console.log("destroy timer")
-		systemTimer.destroyTimer(timer)
-		console.log('SUB_systemTimer_Timer_JS_API_0600 end');
-	});
-
-	/**
-     * @tc.number    SUB_systemTimer_Timer_JS_API_0700
-     * @tc.name      Test systemTimer.createTimer triggerTime = Number.MAX_VALUE/2
-     * @tc.desc      Test systemTimer_Timer API functionality.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-	it('systemTimer_Timer_test7',0, async () => {
-		console.log("SUB_systemTimer_Timer_JS_API_0700 start")
-        var options = {
-			type:TIMER_TYPE_REALTIME,
-			repeat:false,
-			persistent:false
-		}
-		console.log("create timer")
-        let timer = systemTimer.createTimer(options)
-		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
-		
-		console.log("start timer")
-		systemTimer.startTimer(timer, Number.MAX_VALUE/2)
-		
-		console.log("stop timer")
-		systemTimer.stopTimer(timer)
-		
-		console.log("destroy timer")
-		systemTimer.destroyTimer(timer)
-		console.log('SUB_systemTimer_Timer_JS_API_0700 end');
-	});
-
-	/**
-     * @tc.number    SUB_systemTimer_Timer_JS_API_0800
-     * @tc.name      Test systemTimer.createTimer triggerTime = Number.MAX_VALUE-1
-     * @tc.desc      Test systemTimer_Timer API functionality.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-	it('systemTimer_Timer_test8',0, async () => {
-		console.log("SUB_systemTimer_Timer_JS_API_0800 start")
-        var options = {
-			type:TIMER_TYPE_REALTIME,
-			repeat:false,
-			persistent:false
-		}
-		console.log("create timer")
-        let timer = systemTimer.createTimer(options)
-		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
-		
-		console.log("start timer")
-		systemTimer.startTimer(timer, Number.MAX_VALUE-1)
-		
-		console.log("stop timer")
-		systemTimer.stopTimer(timer)
-		
-		console.log("destroy timer")
-		systemTimer.destroyTimer(timer)
-		console.log('SUB_systemTimer_Timer_JS_API_0800 end');
-	});
-
-	/**
-     * @tc.number    SUB_systemTimer_Timer_JS_API_0900
-     * @tc.name      Test systemTimer.createTimer triggerTime = Number.MAX_VALUE
-     * @tc.desc      Test systemTimer_Timer API functionality.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-	it('systemTimer_Timer_test9',0, async () => {
-		console.log("SUB_systemTimer_Timer_JS_API_0900 start")
-        var options = {
-			type:TIMER_TYPE_REALTIME,
-			repeat:false,
-			persistent:false
-		}
-		console.log("create timer")
-        let timer = systemTimer.createTimer(options)
-		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
-		
-		console.log("start timer")
-		systemTimer.startTimer(timer, Number.MAX_VALUE)
-		
-		console.log("stop timer")
-		ystemTimer.stopTimer(timer)
-		
-		console.log("destroy timer")
-		systemTimer.destroyTimer(timer)
-		console.log('SUB_systemTimer_Timer_JS_API_0900 end');
-	});
-
-	/**
-     * @tc.number    SUB_systemTimer_Timer_JS_API_1000
-     * @tc.name      Test systemTimer.createTimer repeat = true
-     * @tc.desc      Test systemTimer_Timer API functionality.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-	it('systemTimer_Timer_test10',0, async () => {
-		console.log("SUB_systemTimer_Timer_JS_API_1000 start")
-        var options = {
-			type:TIMER_TYPE_REALTIME,
-			repeat:true,
-			persistent:false
-		}
-		console.log("create timer")
-        let timer = systemTimer.createTimer(options)
-		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
-		
-		console.log("start timer")
-		systemTimer.startTimer(timer, 100000)
-		
-		console.log("stop timer")
-		systemTimer.stopTimer(timer)
-		
-		console.log("destroy timer")
-		systemTimer.destroyTimer(timer)
-		console.log('SUB_systemTimer_Timer_JS_API_1000 end');
-	});
-
-	/**
-     * @tc.number    SUB_systemTimer_Timer_JS_API_1100
-     * @tc.name      Test systemTimer.createTimer persistent = true
-     * @tc.desc      Test systemTimer_Timer API functionality.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-	it('systemTimer_Timer_test11',0, async () => {
-		console.log("SUB_systemTimer_Timer_JS_API_1100 start")
-        var options = {
-			type:TIMER_TYPE_REALTIME,
-			repeat:false,
-			persistent:true
-		}
-		console.log("create timer")
-        let timer = systemTimer.createTimer(options)
-		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
-		
-		console.log("start timer")
-		systemTimer.startTimer(timer, 100000)
-		
-		console.log("stop timer")
-		systemTimer.stopTimer(timer)
-		
-		console.log("destroy timer")
-		systemTimer.destroyTimer(timer)
-		console.log('SUB_systemTimer_Timer_JS_API_1100 end');
-	});
-
-	/**
-     * @tc.number    SUB_systemTimer_Timer_JS_API_1200
-     * @tc.name      Test systemTimer.createTimer repeat,persistent = true
-     * @tc.desc      Test systemTimer_Timer API functionality.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-	it('systemTimer_Timer_test12',0, async () => {
-		console.log("SUB_systemTimer_Timer_JS_API_1200 start")
-        var options = {
-			type:TIMER_TYPE_REALTIME,
-			repeat:true,
-			persistent:true
-		}
-		console.log("create timer")
-        let timer = systemTimer.createTimer(options)
-		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
-		
-		console.log("start timer")
-		systemTimer.startTimer(timer, 100000)
-		
-		console.log("stop timer")
-		systemTimer.stopTimer(timer)
-		
-		console.log("destroy timer")
-		systemTimer.destroyTimer(timer)
-		console.log('SUB_systemTimer_Timer_JS_API_1200 end');
-	});
-
-	/**
-     * @tc.number    SUB_systemTimer_Timer_JS_API_1300
-     * @tc.name      Test systemTimer.createTimer create,start,stop,destroy 1000 timers
-     * @tc.desc      Test systemTimer_Timer API functionality.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-	it('systemTimer_Timer_test13',0, async () => {
-		console.log("SUB_systemTimer_Timer_JS_API_1300 start")
-        var options = {
-			type:TIMER_TYPE_REALTIME,
-			repeat:false,
-			persistent:false
-		}
-		for (var index = 0; index < 1000; index++)
-		{
-			console.log("create timer")
-			let timer = systemTimer.createTimer(options)
-			expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
-
-			console.log("start timer")
-			systemTimer.startTimer(timer, 100000)
-
-			console.log("stop timer")
-			systemTimer.stopTimer(timer)
-
-			console.log("destroy timer")
-			systemTimer.destroyTimer(timer)
-			console.log('SUB_systemTimer_Timer_JS_API_1300 end');
-		}
-	});
-
-	/**
-     * @tc.number    SUB_systemTimer_Timer_JS_API_1400
-     * @tc.name      Test systemTimer.createTimer interval = 0
-     * @tc.desc      Test systemTimer_Timer API functionality.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-	it('systemTimer_Timer_test14',0, async () => {
-		console.log("SUB_systemTimer_Timer_JS_API_1400 start")
-        var options = {
-			type:TIMER_TYPE_REALTIME,
-			repeat:false,
-			interval:0,
-			persistent:false
-		}
-		console.log("create timer")
-        let timer = systemTimer.createTimer(options)
-		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
-		
-		console.log("start timer")
-		systemTimer.startTimer(timer, 100000)
-		
-		console.log("stop timer")
-		systemTimer.stopTimer(timer)
-		
-		console.log("destroy timer")
-		systemTimer.destroyTimer(timer)
-		console.log('SUB_systemTimer_Timer_JS_API_1400 end');
-	});
-
-	/**
-     * @tc.number    SUB_systemTimer_Timer_JS_API_1500
-     * @tc.name      Test systemTimer.createTimer interval = 5000
-     * @tc.desc      Test systemTimer_Timer API functionality.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-	it('systemTimer_Timer_test15',0, async () => {
-		console.log("SUB_systemTimer_Timer_JS_API_1500 start")
-        var options = {
-			type:TIMER_TYPE_REALTIME,
-			repeat:false,
-			interval:5000,
-			persistent:false
-		}
-		console.log("create timer")
-        let timer = systemTimer.createTimer(options)
-		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
-		
-		console.log("start timer")
-		systemTimer.startTimer(timer, 100000)
-		
-		console.log("stop timer")
-		systemTimer.stopTimer(timer)
-		
-		console.log("destroy timer")
-		systemTimer.destroyTimer(timer)
-		console.log('SUB_systemTimer_Timer_JS_API_1500 end');
-	});
-
-	/**
-     * @tc.number    SUB_systemTimer_Timer_JS_API_1600
-     * @tc.name      Test systemTimer.createTimer interval = Number.MAX_VALUE/2
-     * @tc.desc      Test systemTimer_Timer API functionality.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-	it('systemTimer_Timer_test16',0, async () => {
-		console.log("SUB_systemTimer_Timer_JS_API_1600 start")
-        var options = {
-			type:TIMER_TYPE_REALTIME,
-			repeat:false,
-			interval:Number.MAX_VALUE/2,
-			persistent:false
-		}
-		console.log("create timer")
-        let timer = systemTimer.createTimer(options)
-		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
-		
-		console.log("start timer")
-		systemTimer.startTimer(timer, 100000)
-		
-		console.log("stop timer")
-		systemTimer.stopTimer(timer)
-		
-		console.log("destroy timer")
-		systemTimer.destroyTimer(timer)
-		console.log('SUB_systemTimer_Timer_JS_API_1600 end');
-	});
-
-	/**
-     * @tc.number    SUB_systemTimer_Timer_JS_API_1700
-     * @tc.name      Test systemTimer.createTimer interval = Number.MAX_VALUE-1
-     * @tc.desc      Test systemTimer_Timer API functionality.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-	it('systemTimer_Timer_test17',0, async () => {
-		console.log("SUB_systemTimer_Timer_JS_API_1700 start")
-        var options = {
-			type:TIMER_TYPE_REALTIME,
-			repeat:false,
-			interval:Number.MAX_VALUE-1,
-			persistent:false
-		}
-		console.log("create timer")
-        let timer = systemTimer.createTimer(options)
-		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
-		
-		console.log("start timer")
-		systemTimer.startTimer(timer, 100000)
-		
-		console.log("stop timer")
-		systemTimer.stopTimer(timer)
-		
-		console.log("destroy timer")
-		systemTimer.destroyTimer(timer)
-		console.log('SUB_systemTimer_Timer_JS_API_1700 end');
-	});
-
-	/**
-     * @tc.number    SUB_systemTimer_Timer_JS_API_1800
-     * @tc.name      Test systemTimer.createTimer interval = Number.MAX_VALUE
-     * @tc.desc      Test systemTimer_Timer API functionality.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-	it('systemTimer_Timer_test18',0, async () => {
-		console.log("SUB_systemTimer_Timer_JS_API_1800 start")
-        var options = {
-			type:TIMER_TYPE_REALTIME,
-			repeat:false,
-			interval:Number.MAX_VALUE,
-			persistent:false
-		}
-		console.log("create timer")
-        let timer = systemTimer.createTimer(options)
-		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
-		
-		console.log("start timer")
-		systemTimer.startTimer(timer, 100000)
-		
-		console.log("stop timer")
-		systemTimer.stopTimer(timer)
-		
-		console.log("destroy timer")
-		systemTimer.destroyTimer(timer)
-		console.log('SUB_systemTimer_Timer_JS_API_1800 end');
-	});
-
-	/**
-     * @tc.number    SUB_systemTimer_Timer_JS_API_1900
-     * @tc.name      Test systemTimer.createTimer WantAgent
-     * @tc.desc      Test systemTimer_Timer API functionality.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-	it('systemTimer_Timer_test19',0, async () => {
-		console.log("SUB_systemTimer_Timer_JS_API_1900 start")
-        var options = {
-			type:TIMER_TYPE_REALTIME,
-			repeat:false,
-			interval:100000,
-			persistent:false
-		}
-		console.log("create timer")
-        let timer = systemTimer.createTimer(options)
-		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
-		
-		console.log("start timer")
-		systemTimer.startTimer(timer, 100000)
-		
-		console.log("stop timer")
-		systemTimer.stopTimer(timer)
-		
-		console.log("destroy timer")
-		systemTimer.destroyTimer(timer)
-		console.log('SUB_systemTimer_Timer_JS_API_1900 end');
-	});
-
-	/**
-     * @tc.number    SUB_systemTimer_Timer_JS_API_2000
-     * @tc.name      Test systemTimer.createTimer Called back when the timer goes off.
-     * @tc.desc      Test systemTimer_Timer API functionality.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-	it('systemTimer_Timer_test20',0, async () => {
-		console.log("SUB_systemTimer_Timer_JS_API_2000 start")
-        var options = {
-			type:TIMER_TYPE_REALTIME,
-			repeat:false,
-			interval:100000,
-			persistent:false,
-			callback:callbackFunction
-		}
-		console.log("create timer")
-        let timer = systemTimer.createTimer(options)
-		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
-		
-		console.log("start timer")
-		systemTimer.startTimer(timer, 100000)
-		
-		console.log("stop timer")
-		systemTimer.stopTimer(timer)
-		
-		console.log("destroy timer")
-		systemTimer.destroyTimer(timer)
-		console.log('SUB_systemTimer_Timer_JS_API_2000 end');
-	});
-
-	/**
-     * @tc.number    SUB_systemTimer_Timer_JS_API_2100
-     * @tc.name      Test systemTimer.createTimer start a not exist timer
-     * @tc.desc      Test systemTimer_Timer API functionality.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-	it('systemTimer_Timer_test21',0, async () => {
-		console.log("SUB_systemTimer_Timer_JS_API_2100 start")
-        var options = {
-			type:TIMER_TYPE_REALTIME,
-			repeat:false,
-			persistent:false
-		}
-		console.log("create timer")
-        let timer = systemTimer.createTimer(options)
-		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
-		
-		console.log("start a not exist timer")
-		systemTimer.startTimer(timer + 1, 100000)
-		
-		console.log("destroy timer")
-		systemTimer.destroyTimer(timer)
-		console.log('SUB_systemTimer_Timer_JS_API_2100 end');
-	});
-
-	/**
-     * @tc.number    SUB_systemTimer_Timer_JS_API_2200
-     * @tc.name      Test systemTimer.createTimer stop a not exist timer
-     * @tc.desc      Test systemTimer_Timer API functionality.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-	it('systemTimer_Timer_test22',0, async () => {
-		console.log("SUB_systemTimer_Timer_JS_API_2200 start")
-        var options = {
-			type:TIMER_TYPE_REALTIME,
-			repeat:false,
-			persistent:false
-		}
-		console.log("create timer")
-        let timer = systemTimer.createTimer(options)
-		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
-		
-		console.log("start timer")
-		systemTimer.startTimer(timer, 100000)
-		
-		console.log("stop a not exist timer")
-		systemTimer.stopTimer(timer + 1)
-		
-		console.log("stop the current timer")
-		systemTimer.stopTimer(timer)
-		
-		console.log("destroy timer")
-		systemTimer.destroyTimer(timer)
-		console.log('SUB_systemTimer_Timer_JS_API_2200 end');
-	});
-
-	/**
-     * @tc.number    SUB_systemTimer_Timer_JS_API_2300
-     * @tc.name      Test systemTimer.createTimer destroy a not exist timer
-     * @tc.desc      Test systemTimer_Timer API functionality.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-	it('systemTimer_Timer_test23',0, async () => {
-		console.log("SUB_systemTimer_Timer_JS_API_2300 start")
-        var options = {
-			type:TIMER_TYPE_REALTIME,
-			repeat:false,
-			persistent:false
-		}
-		console.log("create timer")
-        let timer = systemTimer.createTimer(options)
-		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
-		
-		console.log("start timer")
-		systemTimer.startTimer(timer, 100000)
-		
-		console.log("stop timer")
-		systemTimer.stopTimer(timer)
-		
-		console.log("destroy a not exist timer")
-		systemTimer.destroyTimer(timer + 1)
-		
-		console.log("destroy timer")
-		systemTimer.destroyTimer(timer)
-		console.log('SUB_systemTimer_Timer_JS_API_2300 end');
-	});
-
-	/**
-     * @tc.number    SUB_systemTimer_Timer_JS_API_2400
-     * @tc.name      Test systemTimer.createTimer stop a not started timer
-     * @tc.desc      Test systemTimer_Timer API functionality.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-	it('systemTimer_Timer_test24',0, async () => {
-		console.log("SUB_systemTimer_Timer_JS_API_2400 start")
-        var options = {
-			type:TIMER_TYPE_REALTIME,
-			repeat:false,
-			persistent:false
-		}
-		console.log("create timer")
-        let timer = systemTimer.createTimer(options)
-		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
-		
-		console.log("stop a not started timer")
-		systemTimer.stopTimer(timer)
-		
-		console.log("destroy timer")
-		systemTimer.destroyTimer(timer)
-		console.log('SUB_systemTimer_Timer_JS_API_2400 end');
-	});
-
-	/**
-     * @tc.number    SUB_systemTimer_Timer_JS_API_2500
-     * @tc.name      Test systemTimer.createTimer destroy a started timer
-     * @tc.desc      Test systemTimer_Timer API functionality.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-	it('systemTimer_Timer_test25',0, async () => {
-		console.log("SUB_systemTimer_Timer_JS_API_2500 start")
-        var options = {
-			type:TIMER_TYPE_REALTIME,
-			repeat:false,
-			persistent:false
-		}
-		console.log("create timer")
-        let timer = systemTimer.createTimer(options)
-		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
-		
-		console.log("start timer")
-		systemTimer.startTimer(timer, 100000)
-		
-		console.log("destroy a started timer")
-		systemTimer.destroyTimer(timer)
-		console.log('SUB_systemTimer_Timer_JS_API_2500 end');
-	});
-
-	/**
-     * @tc.number    SUB_systemTimer_Timer_JS_API_2600
-     * @tc.name      Test systemTimer.createTimer repeat to start a timer
-     * @tc.desc      Test systemTimer_Timer API functionality.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-	it('systemTimer_Timer_test26',0, async () => {
-		console.log("SUB_systemTimer_Timer_JS_API_2600 start")
-        var options = {
-			type:TIMER_TYPE_REALTIME,
-			repeat:false,
-			persistent:false
-		}
-		console.log("create timer")
-        let timer = systemTimer.createTimer(options)
-		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
-		
-		console.log("start timer")
-		systemTimer.startTimer(timer, 100000)
-		
-		console.log("start timer again")
-		systemTimer.startTimer(timer, 100000)
-		
-		console.log("stop timer")
-		systemTimer.stopTimer(timer)
-		
-		console.log("destroy timer")
-		systemTimer.destroyTimer(timer)
-		console.log('SUB_systemTimer_Timer_JS_API_2600 end');
-	});
-
-	/**
-     * @tc.number    SUB_systemTimer_Timer_JS_API_2700
-     * @tc.name      Test systemTimer.createTimer repeat to stop a timer
-     * @tc.desc      Test systemTimer_Timer API functionality.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-	it('systemTimer_Timer_test27',0, async () => {
-		console.log("SUB_systemTimer_Timer_JS_API_2700 start")
-        var options = {
-			type:TIMER_TYPE_REALTIME,
-			repeat:false,
-			persistent:false
-		}
-		console.log("create timer")
-        let timer = systemTimer.createTimer(options)
-		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
-		
-		console.log("start timer")
-		systemTimer.startTimer(timer, 100000)
-		
-		console.log("stop timer")
-		systemTimer.stopTimer(timer)
-		
-		console.log("stop timer again")
-		systemTimer.stopTimer(timer)
-		
-		console.log("destroy timer")
-		systemTimer.destroyTimer(timer)
-		console.log('SUB_systemTimer_Timer_JS_API_2700 end');
-	});
-
-	/**
-     * @tc.number    SUB_systemTimer_Timer_JS_API_2800
-     * @tc.name      Test systemTimer.createTimer repeat to destroy a timer
-     * @tc.desc      Test systemTimer_Timer API functionality.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-	it('systemTimer_Timer_test28',0, async () => {
-		console.log("SUB_systemTimer_Timer_JS_API_2800 start")
-        var options = {
-			type:TIMER_TYPE_REALTIME,
-			repeat:false,
-			persistent:false
-		}
-		console.log("create timer")
-        let timer = systemTimer.createTimer(options)
-		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
-		
-		console.log("start timer")
-		systemTimer.startTimer(timer, 100000)
-		
-		console.log("stop timer")
-		systemTimer.stopTimer(timer)
-		
-		console.log("destroy timer")
-		systemTimer.destroyTimer(timer)
-		
-		console.log("destroy timer again")
-		systemTimer.destroyTimer(timer)
-		console.log('SUB_systemTimer_Timer_JS_API_2800 end');
-	});
-
-	/**
-     * @tc.number    SUB_systemTimer_Timer_JS_API_2900
-     * @tc.name      Test systemTimer.createTTimer type = TIMER_TYPE_IDLE
-     * @tc.desc      Test systemTimer_Timer API functionality.
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-	it('systemTimer_Timer_test29',0, async () => {
-		console.log("SUB_systemTimer_Timer_JS_API_2900 start")
-        var options = {
-			type:TIMER_TYPE_IDLE,
-			repeat:false,
-			persistent:false
-		}
-		console.log("create timer")
-        let timer = systemTimer.createTimer(options)
-		expect(parseInt(timer) == parseFloat(timer)).assertEqual(true)
-		
-		console.log("start timer")
-		systemTimer.startTimer(timer, 100000)
-		
-		console.log("stop timer")
-		systemTimer.stopTimer(timer)
-		
-		console.log("destroy timer")
-		systemTimer.destroyTimer(timer)
-		console.log('SUB_systemTimer_Timer_JS_API_2900 end');
-	});
-
-	/**
-     * @function     Used for callback functions
-     * @tc.name      callbackFunction
-     */
-	function callbackFunction()
-	{
-		console.log("Start to call the callback function")
-	}
-})
+    it('systemTimer_destroyTimer_test004', 0, async function (done) {
+        console.info("systemTimer_destroyTimer_test004 start")
+        try {
+            console.info("systemTimer_destroyTimer_test004 destroy timer")
+            systemTimer.destroyTimer(timerID, function(err, data){
+                console.info('systemTimer_destroyTimer_test004 failed');
+            });
+            expect(false).assertTrue();
+        }catch (e) {
+            console.info('systemTimer_destroyTimer_test004 has failed for '+e);
+            expect(e.toString().indexOf('timerID is not defined') != -1).assertTrue();
+            done();
+        }
+    });
+});
