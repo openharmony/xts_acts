@@ -854,6 +854,8 @@ export function SecurityHuksAccessControlJsunit() {
       expect(1342197283).assertEqual(
         huks.HuksTag.HUKS_TAG_ASYMMETRIC_PRIVATE_KEY_DATA
       );
+      expect(0).assertEqual(huks.HuksKeyStorageType.HUKS_STORAGE_TEMP	);
+      expect(1).assertEqual(huks.HuksKeyStorageType.HUKS_STORAGE_PERSISTENT);
       done();
     });
   });
