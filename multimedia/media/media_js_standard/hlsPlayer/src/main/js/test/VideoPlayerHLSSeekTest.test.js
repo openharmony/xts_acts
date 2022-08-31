@@ -47,7 +47,7 @@ describe('VideoPlayerHLSTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_HLS_SEEK
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HLS_SEEK_0100
         * @tc.name      : 001.test hls
         * @tc.desc      : HLS Video playback control test
         * @tc.size      : MediumTest
