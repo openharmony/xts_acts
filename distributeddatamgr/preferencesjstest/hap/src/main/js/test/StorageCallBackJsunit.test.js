@@ -333,5 +333,18 @@ describe('storageCallBackTest', function () {
         });
         done();
     })
+
+    /**
+     * @tc.name get defaultValue callback interface test
+     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_CallBack_0190
+     * @tc.desc get defaultValue callback interface test
+     */
+     it('testGetDefValue0192', 0, async function (done) {
+        await mPref.clear();
+        await mPref.get(KEY_TEST_BOOLEAN_ELEMENT, true, function (err, ret) {
+            expect(true).assertEqual(ret);
+            done();
+        })
+    })
 })
 }
