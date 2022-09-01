@@ -52,7 +52,7 @@ describe('HttpPlayerCompatibilityTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_MP4_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_MP4_0100
         * @tc.name      : 001.H264_AAC
         * @tc.desc      : Http playback control test
         * @tc.size      : MediumTest
@@ -66,7 +66,7 @@ describe('HttpPlayerCompatibilityTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_MP4_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_MP4_0200
         * @tc.name      : 002.H264_MP3
         * @tc.desc      : Http playback control test
         * @tc.size      : MediumTest
@@ -80,7 +80,7 @@ describe('HttpPlayerCompatibilityTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_TS_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_TS_0100
         * @tc.name      : 001.H264_AAC
         * @tc.desc      : Http playback control test
         * @tc.size      : MediumTest
@@ -94,7 +94,7 @@ describe('HttpPlayerCompatibilityTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_TS_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_TS_0200
         * @tc.name      : 002.H264_MP3
         * @tc.desc      : Http playback control test
         * @tc.size      : MediumTest
@@ -108,7 +108,7 @@ describe('HttpPlayerCompatibilityTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_MKV_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_MKV_0100
         * @tc.name      : 001.H264_AAC
         * @tc.desc      : Http playback control test
         * @tc.size      : MediumTest
@@ -122,7 +122,7 @@ describe('HttpPlayerCompatibilityTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_MKV_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_MKV_0200
         * @tc.name      : 002.H264_MP3
         * @tc.desc      : Http playback control test
         * @tc.size      : MediumTest
@@ -136,7 +136,7 @@ describe('HttpPlayerCompatibilityTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_MKV_0500
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_MKV_0500
         * @tc.name      : 005.MPEG2_AAC
         * @tc.desc      : Http playback control test
         * @tc.size      : MediumTest
@@ -150,7 +150,7 @@ describe('HttpPlayerCompatibilityTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_MKV_0600
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_MKV_0600
         * @tc.name      : 006.MPEG2_MP3
         * @tc.desc      : Http playback control test
         * @tc.size      : MediumTest
@@ -164,7 +164,7 @@ describe('HttpPlayerCompatibilityTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_MKV_0800
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_MKV_0800
         * @tc.name      : 008.MPEG4_MP3
         * @tc.desc      : Http playback control test
         * @tc.size      : MediumTest
@@ -178,7 +178,7 @@ describe('HttpPlayerCompatibilityTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_WEBM_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_WEBM_0100
         * @tc.name      : 001.VP8_VORBIS
         * @tc.desc      : Http playback control test
         * @tc.size      : MediumTest
@@ -192,7 +192,7 @@ describe('HttpPlayerCompatibilityTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_PLAYER_HTTP_FORMAT_MP3_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_HTTP_FORMAT_MP3_0100
         * @tc.name      : 001.MP3
         * @tc.desc      : Http playback control test
         * @tc.size      : MediumTest
@@ -205,7 +205,7 @@ describe('HttpPlayerCompatibilityTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_PLAYER_HTTP_FORMAT_AAC_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_HTTP_FORMAT_AAC_0100
         * @tc.name      : 001.AAC
         * @tc.desc      : Http playback control test
         * @tc.size      : MediumTest
@@ -218,7 +218,7 @@ describe('HttpPlayerCompatibilityTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_PLAYER_HTTP_FORMAT_WAV_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_HTTP_FORMAT_WAV_0100
         * @tc.name      : 001.MP3
         * @tc.desc      : Http playback control test
         * @tc.size      : MediumTest
@@ -231,7 +231,7 @@ describe('HttpPlayerCompatibilityTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_PLAYER_HTTP_FORMAT_FLAC_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_HTTP_FORMAT_FLAC_0100
         * @tc.name      : 001.FLAC
         * @tc.desc      : Http playback control test
         * @tc.size      : MediumTest
@@ -244,7 +244,7 @@ describe('HttpPlayerCompatibilityTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_PLAYER_HTTP_FORMAT_M4A_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_HTTP_FORMAT_M4A_0100
         * @tc.name      : 001.M4A
         * @tc.desc      : Http playback control test
         * @tc.size      : MediumTest
@@ -257,7 +257,7 @@ describe('HttpPlayerCompatibilityTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_PLAYER_HTTP_FORMAT_OGG_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_HTTP_FORMAT_OGG_0100
         * @tc.name      : 001.OGG
         * @tc.desc      : Http playback control test
         * @tc.size      : MediumTest
