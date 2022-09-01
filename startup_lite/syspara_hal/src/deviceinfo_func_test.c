@@ -39,7 +39,8 @@ LITE_TEST_SUIT(startup, deviceinfo, DeviceInfoFuncTestSuite);
  * @tc.setup     : setup for all testcases
  * @return       : setup result, TRUE is success, FALSE is fail
  */
-static BOOL DeviceInfoFuncTestSuiteSetUp(void) {
+static BOOL DeviceInfoFuncTestSuiteSetUp(void) 
+{
     return TRUE;
 }
 
@@ -47,7 +48,8 @@ static BOOL DeviceInfoFuncTestSuiteSetUp(void) {
  * @tc.teardown  : teardown for all testcases
  * @return       : teardown result, TRUE is success, FALSE is fail
  */
-static BOOL DeviceInfoFuncTestSuiteTearDown(void) {
+static BOOL DeviceInfoFuncTestSuiteTearDown(void) 
+{
     printf("+--------------------------------------------+\n");
     return TRUE;
 }
