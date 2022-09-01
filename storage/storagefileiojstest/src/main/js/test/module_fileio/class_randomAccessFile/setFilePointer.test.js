@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -60,6 +60,7 @@ describe('fileio_randomAccessFile_setFilePointer', function () {
 
         try {
             randomaccessfile.setFilePointerSync('5');
+            expect(false).assertTrue();
         } catch(err) {
             console.info('fileio_randomaccessfile_set_file_pointer_sync_001 has failed for ' + err);
             expect(err.message == "Invalid fpointer").assertTrue();
@@ -83,6 +84,7 @@ describe('fileio_randomAccessFile_setFilePointer', function () {
 
         try {
             randomaccessfile.setFilePointerSync();
+            expect(false).assertTrue();
         } catch(err) {
             console.info('fileio_randomaccessfile_set_file_pointer_sync_002 has failed for ' + err);
             expect(err.message == "Number of arguments unmatched").assertTrue();

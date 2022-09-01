@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -136,6 +136,7 @@ describe('fileio_create_randomAccessFile', function () {
 
         try {
             fileio.createRandomAccessFileSync(fpath, 0, 0o2);
+            expect(false).assertTrue();
         } catch(err) {
             console.info('fileio_create_randomaccessfile_sync_004 has failed for ' + err);
             expect(err.message == "No such file or directory").assertTrue();
@@ -154,6 +155,7 @@ describe('fileio_create_randomAccessFile', function () {
     it('fileio_create_randomaccessfile_sync_005', 0, async function () {
         try {
             fileio.createRandomAccessFileSync(-1, 0);
+            expect(false).assertTrue();
         } catch(err) {
             console.info('fileio_create_randomaccessfile_sync_005 has failed for ' + err);
             expect(err.message == "Invalid fd").assertTrue();
@@ -175,6 +177,7 @@ describe('fileio_create_randomAccessFile', function () {
 
         try {
             fileio.createRandomAccessFileSync(fd, '1');
+            expect(false).assertTrue();
         } catch(err) {
             console.info('fileio_create_randomaccessfile_sync_006 has failed for ' + err);
             expect(err.message == "Invalid fp").assertTrue();
@@ -198,6 +201,7 @@ describe('fileio_create_randomAccessFile', function () {
 
         try {
             fileio.createRandomAccessFileSync(fd);
+            expect(false).assertTrue();
         } catch(err) {
             console.info('fileio_create_randomaccessfile_sync_007 has failed for ' + err);
             expect(err.message == "Number of arguments unmatched").assertTrue();
@@ -246,6 +250,7 @@ describe('fileio_create_randomAccessFile', function () {
 
         try {
             fileio.createRandomAccessFileSync(fpath, 0, 0o302);
+            expect(false).assertTrue();
         } catch(err) {
             console.info('fileio_create_randomaccessfile_sync_009 has failed for ' + err);
             expect(err.message == "File exists").assertTrue();
@@ -324,6 +329,7 @@ describe('fileio_create_randomAccessFile', function () {
 
         try {
             fileio.createRandomAccessFileSync(fpath, 0, 0o200002);
+            expect(false).assertTrue();
         } catch(err) {
             console.info('fileio_create_randomaccessfile_sync_012 has failed for ' + err);
             expect(err.message == "Not a directory").assertTrue();

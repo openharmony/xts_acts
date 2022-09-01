@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -58,6 +58,7 @@ describe('fileio_randomAccessFile_close', function () {
 
         try {
             randomaccessfile.closeSync(1);
+            expect(false).assertTrue();
         } catch(err) {
             console.info('fileio_randomaccessfile_close_sync_001 has failed for ' + err);
             expect(err.message == "Number of arguments unmatched").assertTrue();

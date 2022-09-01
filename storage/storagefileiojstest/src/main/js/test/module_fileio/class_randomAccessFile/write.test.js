@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -60,7 +60,7 @@ describe('fileio_randomAccessFile_write', function () {
 
         try {
             let randomaccessfile = fileio.createRandomAccessFileSync(fpath, 0, 0o102);
-            let length = 4096;
+            let length = 20;
             let num = randomaccessfile.writeSync(new ArrayBuffer(length), { offset: 1 });
             expect(num == length - 1).assertTrue();
             randomaccessfile.closeSync();
@@ -86,7 +86,7 @@ describe('fileio_randomAccessFile_write', function () {
         try {
             let fd = fileio.openSync(fpath, 0o102, 0o666);
             let randomaccessfile = fileio.createRandomAccessFileSync(fd, 0);
-            let length = 4096;
+            let length = 20;
             let num = randomaccessfile.writeSync(new ArrayBuffer(length), { position: 1 });
             expect(num == length).assertTrue();
             randomaccessfile.closeSync();
@@ -111,7 +111,7 @@ describe('fileio_randomAccessFile_write', function () {
 
         try {
             let randomaccessfile = fileio.createRandomAccessFileSync(fpath, 0, 0o102);
-            let length = 4096;
+            let length = 20;
             let num = randomaccessfile.writeSync(new ArrayBuffer(length), { offset: 1, length: 10 });
             expect(num == 10).assertTrue();
             randomaccessfile.closeSync();
@@ -196,6 +196,7 @@ describe('fileio_randomAccessFile_write', function () {
 
         try {
             randomaccessfile.writeSync(new ArrayBuffer(4096), { offset: 5, length: 4095 });
+            expect(false).assertTrue();
         } catch(err) {
             console.info('fileio_randomaccessfile_write_sync_006 has failed for ' + err);
             expect(err.message == "Invalid buffer/options").assertTrue();
@@ -220,6 +221,7 @@ describe('fileio_randomAccessFile_write', function () {
         try {
             let length = 4096;
             randomaccessfile.writeSync(new ArrayBuffer(length), { offset: length + 1 });
+            expect(false).assertTrue();
         } catch(err) {
             console.info('fileio_randomaccessfile_write_sync_007 has failed for ' + err);
             expect(err.message == "Invalid buffer/options").assertTrue();
@@ -243,6 +245,7 @@ describe('fileio_randomAccessFile_write', function () {
 
         try {
             randomaccessfile.writeSync();
+            expect(false).assertTrue();
         } catch(err) {
             console.info('fileio_randomaccessfile_write_sync_008 has failed for ' + err);
             expect(err.message == "Number of arguments unmatched").assertTrue();
@@ -267,6 +270,7 @@ describe('fileio_randomAccessFile_write', function () {
 
         try {
             randomaccessfile.writeSync(new ArrayBuffer(4096), { offset: -1 });
+            expect(false).assertTrue();
         } catch(err) {
             console.info('fileio_randomaccessfile_write_sync_009 has failed for ' + err);
             expect(err.message == "Invalid buffer/options").assertTrue();
@@ -315,6 +319,7 @@ describe('fileio_randomAccessFile_write', function () {
 
         try {
             randomaccessfile.writeSync(10, { length: -1 });
+            expect(false).assertTrue();
         } catch(err) {
             console.info('fileio_randomaccessfile_write_sync_011 has failed for ' + err);
             expect(err.message == "Invalid buffer/options").assertTrue();
@@ -339,6 +344,7 @@ describe('fileio_randomAccessFile_write', function () {
         try {
             let length = 4096;
             randomaccessfile.writeSync(new ArrayBuffer(length), { length: length + 1 });
+            expect(false).assertTrue();
         } catch(err) {
             console.info('fileio_randomaccessfile_write_sync_012 has failed for ' + err);
             expect(err.message == "Invalid buffer/options").assertTrue();
@@ -362,6 +368,7 @@ describe('fileio_randomAccessFile_write', function () {
 
         try {
             randomaccessfile.writeSync(new ArrayBuffer(4096), { position: -1 });
+            expect(false).assertTrue();
         } catch(err) {
             console.info('fileio_randomaccessfile_write_sync_013 has failed for ' + err);
             expect(err.message == "Invalid buffer/options").assertTrue();
@@ -412,7 +419,7 @@ describe('fileio_randomAccessFile_write', function () {
         try {
             let fd = fileio.openSync(fpath, 0o102, 0o666);
             let randomaccessfile = await fileio.createRandomAccessFile(fd, 0);
-            let length = 4096;
+            let length = 20;
             randomaccessfile.write(new ArrayBuffer(length), { offset: 1 }, function(err, bytesWritten) {
                 expect(bytesWritten == length - 1).assertTrue();
                 randomaccessfile.closeSync();
@@ -439,7 +446,7 @@ describe('fileio_randomAccessFile_write', function () {
 
         try {
             let randomaccessfile = await fileio.createRandomAccessFile(fpath, 0, 0o102);
-            let length = 4096;
+            let length = 20;
             let num = await randomaccessfile.write(new ArrayBuffer(length), { position: 1 });
             expect(num == length).assertTrue();
             randomaccessfile.closeSync();
@@ -465,7 +472,7 @@ describe('fileio_randomAccessFile_write', function () {
 
         try {
             let randomaccessfile = await fileio.createRandomAccessFile(fpath, 0, 0o102);
-            let length = 4096;
+            let length = 20;
             let num = await randomaccessfile.write(new ArrayBuffer(length), { offset: 1, length: 10 });
             expect(num == 10).assertTrue();
             randomaccessfile.closeSync();
