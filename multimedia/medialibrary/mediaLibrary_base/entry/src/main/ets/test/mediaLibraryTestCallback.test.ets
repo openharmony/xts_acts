@@ -276,14 +276,14 @@ export default function mediaLibraryTestCallback(abilityContext) {
                 await asset.close(fd);
                 try {
                     media.createAsset(type, name, path, async (err, creatAsset) => {
-                        if (err || creatAsset == undefined) {
+                        if (err != undefined) {
                             expect(true).assertTrue();
                             done();
                             return;
-                        } else {
-                            expect(false).assertTrue();
-                            done();
                         }
+                        expect(false).assertTrue();
+                        done();
+                        
                     });
                 } catch (error) {
                     console.info(`${testNum}:: error :${error}`);
