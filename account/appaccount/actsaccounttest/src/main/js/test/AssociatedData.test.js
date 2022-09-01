@@ -1161,5 +1161,35 @@ export default function ActsAccountAssociatedData() {
                 }
             }
         })
+
+
+        /*
+        * @tc.number    : ActsAccountAssociatedData_3100
+        * @tc.name      : The correct calls setAssociatedData and getAssociatedData get the value
+        * @tc.desc      : The setAssociatedData setting valueis called when the forwarding parameters
+        *                 are correct, and then getAssociatedData is called for the value(callback)
+        */
+        it('ActsAccountAssociatedData_3100', 0, async function (done) {
+            console.debug("====>ActsAccountAssociatedData_3100 start====");
+            var appAccountManager = account.createAppAccountManager();
+            console.debug("====>creat finish====");
+            appAccountManager.addAccount("account_name_3100",(err)=>{
+                console.debug("====>add ActsAccountAssociatedData_3100 err:" + JSON.stringify(err));
+                expect(err).assertEqual(null);
+                appAccountManager.setAssociatedData("account_name_3100", "key31", "value31", (err)=>{
+                    console.debug("====>setAssociatedData ActsAccountAssociatedData_3100 err:" + JSON.stringify(err));
+                    expect(err).assertEqual(null);
+                    var result = appAccountManager.getAssociatedDataSync("account_name_3100", "key31")
+                    console.debug("====>getAssociatedData ActsAccountAssociatedData_3100 result:" + JSON.stringify(result));
+                    expect(result).assertEqual("value31");
+                    appAccountManager.deleteAccount("account_name_3100", (err)=>{
+                        console.debug("====>delete Account 0100 err:" + JSON.stringify(err));
+                        expect(err).assertEqual(null);
+                        console.debug("====>ActsAccountAssociatedData_3100 end====");
+                        done();
+                    });
+                });
+            });
+        });
     })
 }
