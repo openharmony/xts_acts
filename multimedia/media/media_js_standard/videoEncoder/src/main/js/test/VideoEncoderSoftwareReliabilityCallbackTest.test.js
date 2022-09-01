@@ -1287,14 +1287,14 @@ describe('VideoEncoderSoftwareReliCallbackTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE+RESET_CALLBACK_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_RESET_CALLBACK_0100
         * @tc.name      : 001. configure -> reset for 50 times
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE+RESET_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_SOFTWARE_ENCODER_API_CONFIGURE_RESET_CALLBACK_0100', 0, async function (done) {
         let name = 'avenc_mpeg4';
         let events = require('events');
         let eventEmitter = new events.EventEmitter();
