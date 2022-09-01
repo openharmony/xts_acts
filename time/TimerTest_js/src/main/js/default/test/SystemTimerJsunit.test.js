@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import {describe, it, expect} from 'deccjsunit/index'
+import {describe, it, expect} from 'deccjsunit/index';
 import systemTimer from '@ohos.systemTimer';
 import WantAgent from '@ohos.wantAgent';
 
@@ -44,8 +44,7 @@ var wantAgentInfo = {
 }
 
 describe('systemTimerTest', function () {
-    console.info('start################################start');
-
+    
 	function isIntNum(val) {
 		return typeof val === 'number' && val % 1 === 0;
 	  }
