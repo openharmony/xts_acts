@@ -100,7 +100,7 @@ describe('WallpaperJsunitTest', function () {
         }).catch((err) => {
             console.info('wallpaperXTS ===> testGetColorsPromiseSystem err : ' + JSON.stringify(err));
             if (err) {
-                expect(err.code).assertEqual(801);
+                expect(err.code).assertEqual("801");
             }
         });
         done();
@@ -117,7 +117,7 @@ describe('WallpaperJsunitTest', function () {
             console.info('wallpaperXTS ===> testGetColorsCallbackLock err : ' + JSON.stringify(err));
             console.info('wallpaperXTS ===> testGetColorsCallbackLock data : ' + JSON.stringify(data));
             if (err) {
-                expect(err.code).assertEqual(801);
+                expect(err.code).assertEqual("801");
 				done();
             }
             if ((data != undefined) && (data != null) && (data != '')) {
@@ -144,7 +144,7 @@ describe('WallpaperJsunitTest', function () {
         }).catch((err) => {
             console.info('wallpaperXTS ===> testGetColorsPromiseSystem err : ' + JSON.stringify(err));
             if (err) {
-                expect(err.code).assertEqual(801);
+                expect(err.code).assertEqual("801");
             }
 			done();
         });
