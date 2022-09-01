@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+import events_emitter from '@ohos.events.emitter';
 import router from '@system.router';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
 import Utils from './Utils.ets'
@@ -53,12 +54,12 @@ export default function checkBoxGroupSelectAllJsunit() {
     it('testcheckBoxGroupSelectAll0001', 0, async function (done) {
       console.info('checkBoxGroupSelectAll testcheckBoxGroupSelectAll0001 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('selectAllText');
-      console.info("[testcheckBoxGroupSelectAll0001] component width strJson:" + strJson);
+      let strJson = getInspectorByKey('CheckboxGroup');
+      console.info("[testcheckBoxGroupSelectAll0001] component selectedColor strJson:" + strJson);
       let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.width).assertEqual("100.00vp");
-      console.info("[testcheckBoxGroupSelectAll0001] width value :" + obj.$attrs.width);
+      expect(obj.$type).assertEqual('CheckboxGroup');
+      expect(obj.$attrs.selectedColor).assertEqual("#FFED6F21");
+      console.info("[testcheckBoxGroupSelectAll0001] selectedColor value :" + obj.$attrs.selectedColor);
       done();
     });
 
@@ -69,132 +70,28 @@ export default function checkBoxGroupSelectAllJsunit() {
      */
     it('testcheckBoxGroupSelectAll0002', 0, async function (done) {
       console.info('checkBoxGroupSelectAll testcheckBoxGroupSelectAll0002 START');
+      try {
+        var eventData = {
+          data: {
+            "isSelect": false
+          }
+        }
+        var innerEvent = {
+          eventId: 908,
+          priority: events_emitter.EventPriority.LOW
+        }
+        console.info("[testcheckBoxGroupSelectAll0002] start to publish emit");
+        events_emitter.emit(innerEvent, eventData);
+      } catch (err) {
+        console.log("[testcheckBoxGroupSelectAll0002] change component data error: " + err.message);
+      }
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('selectAllText');
-      console.info("[testcheckBoxGroupSelectAll0002] component height strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.height).assertEqual("70.00vp");
-      console.info("[testcheckBoxGroupSelectAll0002] height value :" + obj.$attrs.height);
-      done();
-    });
 
-    /*
-     * @tc.number       SUB_ACE_BASIC_ETS_API_0003
-     * @tc.name         testcheckBoxGroupSelectAll0003
-     * @tc.desic         acecheckBoxGroupSelectAllEtsTest0003
-     */
-    it('testcheckBoxGroupSelectAll0003', 0, async function (done) {
-      console.info('checkBoxGroupSelectAll testcheckBoxGroupSelectAll0003 START');
-      await Utils.sleep(2000);
-      let strJson = getInspectorByKey('selectAllText');
-      console.info("[testcheckBoxGroupSelectAll0003] component fontSize strJson:" + strJson);
+      let strJson = getInspectorByKey('CheckboxGroup');
       let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.fontSize).assertEqual("20.00fp");
-      console.info("[testcheckBoxGroupSelectAll0003] fontSize value :" + obj.$attrs.fontSize);
-      done();
-    });
-
-    /*
-     * @tc.number       SUB_ACE_BASIC_ETS_API_0004
-     * @tc.name         testcheckBoxGroupSelectAll0004
-     * @tc.desic         acecheckBoxGroupSelectAllEtsTest0004
-     */
-    it('testcheckBoxGroupSelectAll0004', 0, async function (done) {
-      console.info('checkBoxGroupSelectAll testcheckBoxGroupSelectAll0004 START');
-      await Utils.sleep(2000);
-      let strJson = getInspectorByKey('selectAllText');
-      console.info("[testcheckBoxGroupSelectAll0004] component opacity strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.opacity).assertEqual(1);
-      console.info("[testcheckBoxGroupSelectAll0004] opacity value :" + obj.$attrs.opacity);
-      done();
-    });
-
-    /*
-     * @tc.number       SUB_ACE_BASIC_ETS_API_0005
-     * @tc.name         testcheckBoxGroupSelectAll0005
-     * @tc.desic         acecheckBoxGroupSelectAllEtsTest0005
-     */
-    it('testcheckBoxGroupSelectAll0005', 0, async function (done) {
-      console.info('checkBoxGroupSelectAll testcheckBoxGroupSelectAll0005 START');
-      await Utils.sleep(2000);
-      let strJson = getInspectorByKey('selectAllText');
-      console.info("[testcheckBoxGroupSelectAll0005] component align strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.align).assertEqual("Alignment.TopStart");
-      console.info("[testcheckBoxGroupSelectAll0005] align value :" + obj.$attrs.align);
-      done();
-    });
-
-    /*
-     * @tc.number       SUB_ACE_BASIC_ETS_API_0006
-     * @tc.name         testcheckBoxGroupSelectAll0006
-     * @tc.desic         acecheckBoxGroupSelectAllEtsTest0006
-     */
-    it('testcheckBoxGroupSelectAll0006', 0, async function (done) {
-      console.info('checkBoxGroupSelectAll testcheckBoxGroupSelectAll0006 START');
-      await Utils.sleep(2000);
-      let strJson = getInspectorByKey('selectAllText');
-      console.info("[testcheckBoxGroupSelectAll0006] component fontColor strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.fontColor).assertEqual("#FFCCCCCC");
-      console.info("[testcheckBoxGroupSelectAll0006] fontColor value :" + obj.$attrs.fontColor);
-      done();
-    });
-
-    /*
-     * @tc.number       SUB_ACE_BASIC_ETS_API_0007
-     * @tc.name         testcheckBoxGroupSelectAll0007
-     * @tc.desic         acecheckBoxGroupSelectAllEtsTest0007
-     */
-    it('testcheckBoxGroupSelectAll0007', 0, async function (done) {
-      console.info('checkBoxGroupSelectAll testcheckBoxGroupSelectAll0007 START');
-      await Utils.sleep(2000);
-      let strJson = getInspectorByKey('selectAllText');
-      console.info("[testcheckBoxGroupSelectAll0007] component lineHeight strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.lineHeight).assertEqual("25.00fp");
-      console.info("[testcheckBoxGroupSelectAll0007] lineHeight value :" + obj.$attrs.lineHeight);
-      done();
-    });
-
-    /*
-     * @tc.number       SUB_ACE_BASIC_ETS_API_0009
-     * @tc.name         testcheckBoxGroupSelectAll0009
-     * @tc.desic         acecheckBoxGroupSelectAllEtsTest0009
-     */
-    it('testcheckBoxGroupSelectAll0009', 0, async function (done) {
-      console.info('checkBoxGroupSelectAll testcheckBoxGroupSelectAll009 START');
-      await Utils.sleep(2000);
-      let strJson = getInspectorByKey('selectAllText');
-      console.info("[testcheckBoxGroupSelectAll0009] component padding strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.padding).assertEqual("10.00vp");
-      console.info("[testcheckBoxGroupSelectAll0009] padding value :" + obj.$attrs.padding);
-      done();
-    });
-
-    /*
-     * @tc.number       SUB_ACE_BASIC_ETS_API_0010
-     * @tc.name         testcheckBoxGroupSelectAll0010
-     * @tc.desic         acecheckBoxGroupSelectAllEtsTest0010
-     */
-    it('testcheckBoxGroupSelectAll0010', 0, async function (done) {
-      console.info('checkBoxGroupSelectAll testcheckBoxGroupSelectAll0010 START');
-      await Utils.sleep(2000);
-      let strJson = getInspectorByKey('selectAllText');
-      console.info("[testcheckBoxGroupSelectAll0010] component textAlign strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.textAlign).assertEqual("TextAlign.Left");
-      console.info("[testcheckBoxGroupSelectAll0010] textAlign value :" + obj.$attrs.textAlign);
+      console.info("[testcheckBoxGroupSelectAll0002] obj is: " + JSON.stringify(obj));
+      expect(obj.$attrs.selectAll).assertEqual('false');
+      console.info('testcheckBoxGroupSelectAll0002 END');
       done();
     });
   })

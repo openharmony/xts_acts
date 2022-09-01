@@ -15,10 +15,12 @@
 
 import alphabetIndexerOnSelectJsunit from './alphabetIndexer.test.ets';
 import checkBoxGroupSelectAllJsunit from './checkBoxGroup.test.ets';
-import circleNeJsunit from './circle.test.ets';
+import circleNewJsunit from './circle.test.ets';
+import ellipseNeJsunit from './ellipse.test.ets';
 
 export default function testsuite() {
   alphabetIndexerOnSelectJsunit()
   checkBoxGroupSelectAllJsunit()
-  circleNeJsunit()
+  circleNewJsunit()
+  ellipseNeJsunit()
 }

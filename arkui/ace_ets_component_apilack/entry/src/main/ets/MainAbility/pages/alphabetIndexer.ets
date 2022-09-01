@@ -15,6 +15,7 @@
 
 import Log from '../common/Log.ets';
 import prompt from '@ohos.prompt'
+import events_emitter from '@ohos.events.emitter';
 const TAG = 'ets_apiLack_add';
 
 @Entry
@@ -23,6 +24,8 @@ export default
 struct AlphabetIndexerOnSelect {
   private value: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N']
   private content: string = "AlphabetIndexer Page"
+  @State onSelectStatus: boolean = false;
+  @State onRequestPopupDataStatus: boolean = false;
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear AlphabetIndexerOnSelect start`)
   }
@@ -40,63 +43,6 @@ struct AlphabetIndexerOnSelect {
 
   build(){
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
-
-      Text("alphabetIndexer-OnSelect")
-        .width(100)
-        .height(70)
-        .fontSize(20)
-        .opacity(1)
-        .align(Alignment.TopStart)
-        .fontColor(0xCCCCCC)
-        .lineHeight(25)
-        .border({ width: 1 })
-        .padding(10)
-        .textAlign(TextAlign.Center)
-        .textOverflow({ overflow: TextOverflow.None })
-        .key("onSelectText")
-
-      Text("alphabetIndexer-OnRequestPopupData")
-        .width(100)
-        .height(70)
-        .fontSize(20)
-        .opacity(1)
-        .align(Alignment.TopStart)
-        .fontColor(0xCCCCCC)
-        .lineHeight(25)
-        .border({ width: 1 })
-        .padding(10)
-        .textAlign(TextAlign.Center)
-        .textOverflow({ overflow: TextOverflow.None })
-        .key("onRequestPopupDataText")
-
-      Text("alphabetIndexer-OnPopupSelect")
-        .width(100)
-        .height(70)
-        .fontSize(20)
-        .opacity(1)
-        .align(Alignment.TopStart)
-        .fontColor(0xCCCCCC)
-        .lineHeight(25)
-        .border({ width: 1 })
-        .padding(10)
-        .textAlign(TextAlign.Center)
-        .textOverflow({ overflow: TextOverflow.None })
-        .key("onPopupSelectText")
-
-      Text("alphabetIndexer-PopupPosition")
-        .width(100)
-        .height(70)
-        .fontSize(20)
-        .opacity(1)
-        .align(Alignment.TopStart)
-        .fontColor(0xCCCCCC)
-        .lineHeight(25)
-        .border({ width: 1 })
-        .padding(10)
-        .textAlign(TextAlign.Center)
-        .textOverflow({ overflow: TextOverflow.None })
-        .key("popupPositionText")
-    
       Text(`${this.content}`)
         .fontSize(20)
         .align(Alignment.Center)
@@ -112,22 +58,56 @@ struct AlphabetIndexerOnSelect {
         .selectedFont({ size: 16, weight: FontWeight.Regular })
         .popupFont({ size: 30, weight: FontWeight.Bolder, style: FontStyle.Normal })
         .itemSize(28)
+        .width(100)
+        .height(300)
         .alignStyle(IndexerAlign.Left)
         .onSelect((index: number) => {
           console.info(this.value[index] + 'on onSelect')
-          this.showToast("onSelect() " + index);
+          this.showToast("onSelect() " + index)
+          this.onSelectStatus = true;
+          try {
+            var backData = {
+              data: {
+                "STATUS": this.onSelectStatus
+              }
+            }
+            let backEvent = {
+              eventId: 10201,
+              priority: events_emitter.EventPriority.LOW
+            }
+            console.info("onSelect start to emit action state")
+            events_emitter.emit(backEvent, backData)
+          } catch (err) {
+            console.info("onSelect emit action state err: " + JSON.stringify(err.message))
+          }
         })
         .onPopupSelect((index: number) => {
           console.info(this.value[index] + 'on onPopupSelect')
-          this.showToast("onPopupSelect() " + index);
+          this.showToast("onPopupSelect() " + index)
         })
         .onRequestPopupData((index: number) => {
           console.info(this.value[index] + 'on onRequestPopupData')
-          this.showToast("onRequestPopupData() " + index);
-          return ['1','2','3','4','5'];
+          this.showToast("onRequestPopupData() " + index)
+          this.onRequestPopupDataStatus = true
+          try {
+            var backData = {
+              data: {
+                "STATUS": this.onRequestPopupDataStatus
+              }
+            }
+            let backEvent = {
+              eventId: 10202,
+              priority: events_emitter.EventPriority.LOW
+            }
+            console.info("onRequestPopupData start to emit action state")
+            events_emitter.emit(backEvent, backData)
+          } catch (err) {
+            console.info("onRequestPopupData emit action state err: " + JSON.stringify(err.message))
+          }
+          return ['1', '2', '3', '4', '5']
+
         })
-//         这个地方发生crash Error message: is not callable
-//        .popupPosition({ x:100, y:200})
+      //  .popupPosition({ x:100, y:200})
     }.width("100%").height("100%")
   }
 }

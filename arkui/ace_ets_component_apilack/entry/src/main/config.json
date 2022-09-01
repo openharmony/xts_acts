@@ -71,12 +71,11 @@
           "type": "pageAbility"
         },
         "pages": [
+          "pages/index",
           "pages/alphabetIndexer",
-          "pages/attr_animate",
-          "pages/bindContextMenu",
           "pages/checkBoxGroup",
           "pages/circle",
-          "pages/index"
+          "pages/ellipse"
         ],
         "name": ".MainAbility",
         "window": {

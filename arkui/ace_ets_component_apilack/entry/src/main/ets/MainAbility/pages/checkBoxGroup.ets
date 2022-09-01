@@ -14,7 +14,7 @@
  */
 
 import prompt from '@ohos.prompt'
-
+import events_emitter from '@ohos.events.emitter';
 import Log from '../common/Log.ets';
 
 const TAG = 'ets_apiLack_add';
@@ -23,6 +23,26 @@ const TAG = 'ets_apiLack_add';
 @Component
 export default
 struct CheckBoxGroupSelectAll {
+  @State isSelect: boolean = true;
+
+  onPageShow() {
+    console.info('[CheckBoxGroup] page show called');
+    var stateChangeEvent = {
+      eventId: 908,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(stateChangeEvent, this.stateChangCallBack);
+  }
+
+  private stateChangCallBack = (eventData) => {
+    console.info("[CheckBoxGroup] page stateChangCallBack");
+    if (eventData != null) {
+      console.info("[CheckBoxGroup] page state change called:" + JSON.stringify(eventData));
+      if (eventData.data.isSelect != null) {
+        this.isSelect = eventData.data.isSelect;
+      }
+    }
+  }
 
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear CheckBoxGroupSelectAll start`)
@@ -57,33 +77,33 @@ struct CheckBoxGroupSelectAll {
         .key("selectAllText")
 
       Scroll() {
-      Column() {
-        CheckboxGroup({group : 'checkboxGroup'})
-          .selectedColor(0xed6f21)
-          .key('CheckboxGroup')
-          .selectAll(true)
-          .onChange((itemName:CheckboxGroupResult) => {
-            console.info("TextPicker::dialogResult is" + JSON.stringify(itemName))
-            this.showToast(itemName.status.valueOf() == 0 ? "selectAll true" : "selectAll false");
-          })
-        Checkbox({ name: 'checkbox1', group: 'checkboxGroup' })
-          .selectedColor(0x39a2db)
-          .onChange((value: boolean) => {
-            console.info('Checkbox1 change is' + value)
-          })
-        Checkbox({ name: 'checkbox2', group: 'checkboxGroup' })
-          .selectedColor(0x39a2db)
-          .onChange((value: boolean) => {
-            console.info('Checkbox2 change is' + value)
-          })
-        Checkbox({ name: 'checkbox3', group: 'checkboxGroup' })
-          .selectedColor(0x39a2db)
-          .onChange((value: boolean) => {
-            console.info('Checkbox3 change is' + value)
-          })
+        Column() {
+          CheckboxGroup({group : 'checkboxGroup'})
+            .selectedColor(0xed6f21)
+            .key('CheckboxGroup')
+            .selectAll(this.isSelect)
+            .onChange((itemName:CheckboxGroupResult) => {
+              console.info("TextPicker::dialogResult is" + JSON.stringify(itemName))
+              this.showToast(itemName.status.valueOf() == 0 ? "selectAll true" : "selectAll false");
+            })
+          Checkbox({ name: 'checkbox1', group: 'checkboxGroup' })
+            .selectedColor(0x39a2db)
+            .onChange((value: boolean) => {
+              console.info('Checkbox1 change is' + value)
+            })
+          Checkbox({ name: 'checkbox2', group: 'checkboxGroup' })
+            .selectedColor(0x39a2db)
+            .onChange((value: boolean) => {
+              console.info('Checkbox2 change is' + value)
+            })
+          Checkbox({ name: 'checkbox3', group: 'checkboxGroup' })
+            .selectedColor(0x39a2db)
+            .onChange((value: boolean) => {
+              console.info('Checkbox3 change is' + value)
+            })
+        }
       }
-    }
-    
+
     }.width("100%").height("100%")
   }
 }

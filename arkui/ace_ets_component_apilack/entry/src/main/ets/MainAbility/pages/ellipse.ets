@@ -19,21 +19,21 @@ const TAG = 'ets_apiLack_add';
 @Entry
 @Component
 export default
-struct CircleNe {
-  @State w: string = "100px";
-  @State h: string = "100px";
+struct EllipseNe {
+  @State w: string = "300.00px";
+  @State h: string = "300.00px";
   aboutToAppear() {
-    Log.showInfo(TAG, `aboutToAppear CircleNew start`)
+    Log.showInfo(TAG, `aboutToAppear EllipseNe start`)
   }
 
   aboutToDisappear(){
-    Log.showInfo(TAG, `aboutToDisAppear CircleNew end`)
+    Log.showInfo(TAG, `aboutToDisAppear EllipseNe end`)
   }
 
   build(){
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
 
-      Text("circle-New")
+      Text("ellipse-Ne")
         .width(100)
         .height(70)
         .fontSize(20)
@@ -46,13 +46,8 @@ struct CircleNe {
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
         .key("neText")
-
-      Circle()
-        .width(`${this.w}`)
-        .height(`${this.h}`)
-        .key('circle')
-    
-    }.width("100%").height("100%")
+      Ellipse().width(`${this.w}`).height(`${this.h}`).key('ellipse')
+    }.width('100%').height('100%')
   }
 }
 
