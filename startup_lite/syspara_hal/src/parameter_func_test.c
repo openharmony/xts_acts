@@ -39,7 +39,7 @@ LITE_TEST_SUIT(utils, parameter, ParameterFuncTestSuite);
  * @tc.setup     : setup for all testcases
  * @return       : setup result, TRUE is success, FALSE is fail
  */
-static BOOL ParameterFuncTestSuiteSetUp(void) 
+static BOOL ParameterFuncTestSuiteSetUp(void)
 {
     return TRUE;
 }
@@ -48,7 +48,7 @@ static BOOL ParameterFuncTestSuiteSetUp(void)
  * @tc.teardown  : teardown for all testcases
  * @return       : teardown result, TRUE is success, FALSE is fail
  */
-static BOOL ParameterFuncTestSuiteTearDown(void) 
+static BOOL ParameterFuncTestSuiteTearDown(void)
 {
     printf("+-------------------------------------------+\n");
     return TRUE;
