@@ -14,6 +14,7 @@
  */
 
 import pointer from '@ohos.multimodalInput.pointer'
+import window from '@ohos.window'
 import {
     describe,
     beforeAll,
