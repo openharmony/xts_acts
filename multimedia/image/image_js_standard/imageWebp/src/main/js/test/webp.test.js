@@ -464,7 +464,7 @@ describe('imageWebp', function () {
     }
 
     /**
-    * @tc.number    : wbp_001
+    * @tc.number    : SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_PROMISE_0100
     * @tc.name      : createPixelMap - promise-webp
     * @tc.desc      : 1.create imagesource
     *                 2.set index and DecodeOptions
@@ -474,12 +474,12 @@ describe('imageWebp', function () {
     * @tc.type      : Functional
     * @tc.level     : Level 1
     */
-    it('wbp_001', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_PROMISE_0100', 0, async function (done) {
         try {
             await getFd('test_large.webp');
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
-                console.info('wbp_001 create image source failed');
+                console.info('SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_PROMISE_0100 create image source failed');
                 expect(false).assertTrue();
                 done();
             } else {
@@ -496,7 +496,7 @@ describe('imageWebp', function () {
                 imageSourceApi.createPixelMap(decodingOptions).then(pixelmap => {
                     if (pixelmap != undefined) {
                         expect(true).assertTrue();
-                        console.info('wbp_001 success ');
+                        console.info('SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_PROMISE_0100 success ');
                         done();
                     } else {
                         expect(false).assertTrue();
@@ -505,7 +505,7 @@ describe('imageWebp', function () {
                 })
             }
         } catch (error) {
-            console.info('wbp_001 error: ' + error);
+            console.info('SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_PROMISE_0100 error: ' + error);
             expect(false).assertTrue();
             done();
         }
@@ -513,7 +513,7 @@ describe('imageWebp', function () {
     })
 
     /**
-     * @tc.number    : wbp_002
+     * @tc.number    : SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0100
      * @tc.name      : createPixelMap - callback-webp
      * @tc.desc      : 1.create imagesource
      *                 2.set index and DecodeOptions
@@ -523,12 +523,12 @@ describe('imageWebp', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('wbp_002', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0100', 0, async function (done) {
         try {
             await getFd('test_large.webp');
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
-                console.info('wbp_002 create image source failed');
+                console.info('SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0100 create image source failed');
                 expect(false).assertTrue();
                 done();
             } else {
@@ -545,7 +545,7 @@ describe('imageWebp', function () {
                 imageSourceApi.createPixelMap(decodingOptions, (err, pixelmap) => {
                     if (pixelmap != undefined) {
                         expect(true).assertTrue();
-                        console.info('wbp_002 success ');
+                        console.info('SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0100 success ');
                         done();
                     } else {
                         expect(false).assertTrue();
@@ -554,7 +554,7 @@ describe('imageWebp', function () {
                 })
             }
         } catch (error) {
-            console.info('wbp_002 error: ' + error);
+            console.info('SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0100 error: ' + error);
             expect(false).assertTrue();
             done();
         }
@@ -562,7 +562,7 @@ describe('imageWebp', function () {
     })
 
     /**
-     * @tc.number    : wbp_003
+     * @tc.number    : SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_PROMISE_0200
      * @tc.name      : createPixelMap-promise-webp
      * @tc.desc      : 1.create imagesource
      *                 2.set index and DecodeOptions
@@ -572,33 +572,33 @@ describe('imageWebp', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('wbp_003', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_PROMISE_0200', 0, async function (done) {
         try {
             await getFd('test_large.webp');
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
-                console.info('wbp_003 create image source failed');
+                console.info('SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_PROMISE_0200 create image source failed');
                 expect(false).assertTrue();
                 done();
             } else {
                 imageSourceApi.createPixelMap().then(pixelmap => {
                     expect(pixelmap != undefined).assertTrue();
-                    console.info('wbp_003 success ');
+                    console.info('SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_PROMISE_0200 success ');
                     done();
                 }).catch(error => {
-                    console.log('wbp_003 error: ' + error);
+                    console.log('SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_PROMISE_0200 error: ' + error);
                     expect().assertFail();
                     done();
                 })
             }
         } catch (error) {
-            console.info('wbp_003 err ' + error);
+            console.info('SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_PROMISE_0200 err ' + error);
         }
 
     })
 
     /**
-     * @tc.number    : wbp_004
+     * @tc.number    : SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0200
      * @tc.name      : createPixelMap-callback-webp
      * @tc.desc      : 1.create imagesource
      *                 2.set index and DecodeOptions
@@ -608,29 +608,29 @@ describe('imageWebp', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('wbp_004', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0200', 0, async function (done) {
         try {
             await getFd('test_large.webp');
             const imageSourceApi = image.createImageSource(fdNumber);
             if (imageSourceApi == undefined) {
-                console.info('wbp_004 create image source failed');
+                console.info('SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0200 create image source failed');
                 expect(false).assertTrue();
                 done();
             } else {
                 imageSourceApi.createPixelMap((err, pixelmap) => {
                     expect(pixelmap != undefined).assertTrue();
-                    console.info('wbp_004 success ');
+                    console.info('SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0200 success ');
                     done();
                 })
             }
         } catch (error) {
-            console.info('wbp_004 err ' + error);
+            console.info('SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0200 err ' + error);
         }
 
     })
 
     /**
-     * @tc.number    : wbp_005
+     * @tc.number    : SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0300
      * @tc.name      : createPixelMap-callback -{sampleSize: -1} -webp
      * @tc.desc      : 1.create imagesource
      *                 2.set index and DecodeOptions
@@ -640,7 +640,7 @@ describe('imageWebp', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('wbp_005', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0300', 0, async function (done) {
         let decodingOptions = {
             sampleSize: -1,
             editable: true,
@@ -650,11 +650,11 @@ describe('imageWebp', function () {
             desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
             index: 0
         };
-        createPixMapCbErr(done, 'wbp_005', decodingOptions)
+        createPixMapCbErr(done, 'SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0300', decodingOptions)
     })
 
     /**
-     * @tc.number    : wbp_006
+     * @tc.number    : SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0400
      * @tc.name      : createPixelMap-callback -{index: -1} -webp
      * @tc.desc      : 1.create imagesource
      *                 2.set index and DecodeOptions
@@ -664,7 +664,7 @@ describe('imageWebp', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('wbp_006', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0400', 0, async function (done) {
         let decodingOptions = {
             sampleSize: 1,
             editable: true,
@@ -674,11 +674,11 @@ describe('imageWebp', function () {
             desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
             index: -1
         };
-        createPixMapCbErr(done, 'wbp_006', decodingOptions)
+        createPixMapCbErr(done, 'SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0400', decodingOptions)
     })
 
     /**
-     * @tc.number    : wbp_007
+     * @tc.number    : SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0500
      * @tc.name      : createPixelMap-callback -{rotate: 500} -webp
      * @tc.desc      : 1.create imagesource
      *                 2.set index and DecodeOptions
@@ -688,7 +688,7 @@ describe('imageWebp', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('wbp_007', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0500', 0, async function (done) {
         let decodingOptions = {
             sampleSize: 1,
             editable: true,
@@ -698,11 +698,11 @@ describe('imageWebp', function () {
             desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
             index: 0
         };
-        createPixMapCbErr(done, 'wbp_007', decodingOptions)
+        createPixMapCbErr(done, 'SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0500', decodingOptions)
     })
 
     /**
-    * @tc.number    : wbp_007-1
+    * @tc.number    : SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0600
     * @tc.name      : createPixelMap-callback -{rotate: -10} -webp
     * @tc.desc      : 1.create imagesource
     *                 2.set index and DecodeOptions
@@ -712,7 +712,7 @@ describe('imageWebp', function () {
     * @tc.type      : Functional
     * @tc.level     : Level 1
     */
-    it('wbp_007-1', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0600', 0, async function (done) {
         let decodingOptions = {
             sampleSize: 1,
             editable: true,
@@ -722,11 +722,11 @@ describe('imageWebp', function () {
             desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
             index: 0
         };
-        createPixMapCbErr(done, 'wbp_007-1', decodingOptions)
+        createPixMapCbErr(done, 'SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0600', decodingOptions)
     })
 
     /**
-   * @tc.number    : wbp_007-2
+   * @tc.number    : SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0700
    * @tc.name      : createPixelMap-callback editable: false -webp
    * @tc.desc      : 1.create imagesource
    *                 2.set index and DecodeOptions
@@ -736,7 +736,7 @@ describe('imageWebp', function () {
    * @tc.type      : Functional
    * @tc.level     : Level 1
    */
-    it('wbp_007-2', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0700', 0, async function (done) {
         let decodingOptions = {
             sampleSize: 1,
             editable: false,
@@ -746,11 +746,11 @@ describe('imageWebp', function () {
             desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
             index: 0
         };
-        createPixMapCbErr(done, 'wbp_007-2', decodingOptions)
+        createPixMapCbErr(done, 'SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0700', decodingOptions)
     })
 
     /**
-    * @tc.number    : wbp_008
+    * @tc.number    : SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0800
     * @tc.name      : createPixelMap-callback -{ size: { height: 1, width: 2 }, x: -1, y: -1 }-webp
     * @tc.desc      : 1.create imagesource
     *                 2.set index and DecodeOptions
@@ -760,7 +760,7 @@ describe('imageWebp', function () {
     * @tc.type      : Functional
     * @tc.level     : Level 1
     */
-    it('wbp_008', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0800', 0, async function (done) {
         let decodingOptions = {
             sampleSize: 1,
             editable: true,
@@ -770,11 +770,11 @@ describe('imageWebp', function () {
             desiredRegion: { size: { height: 1, width: 2 }, x: -1, y: -1 },
             index: 0
         };
-        createPixMapCbErr(done, 'wbp_008', decodingOptions)
+        createPixMapCbErr(done, 'SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0800', decodingOptions)
     })
 
     /**
-    * @tc.number    : wbp_009
+    * @tc.number    : SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0900
     * @tc.name      : createPixelMap-callback -size: { height: 10000, width: 10000 } -webp
     * @tc.desc      : 1.create imagesource
     *                 2.set index and DecodeOptions
@@ -784,7 +784,7 @@ describe('imageWebp', function () {
     * @tc.type      : Functional
     * @tc.level     : Level 1
     */
-    it('wbp_009', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0900', 0, async function (done) {
         let decodingOptions = {
             sampleSize: 1,
             editable: true,
@@ -794,11 +794,11 @@ describe('imageWebp', function () {
             desiredRegion: { size: { height: 10000, width: 10000 }, x: 0, y: 0 },
             index: 0
         };
-        createPixMapCb(done, 'wbp_009', decodingOptions)
+        createPixMapCb(done, 'SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_0900', decodingOptions)
     })
 
     /**
-    * @tc.number    : wbp_010
+    * @tc.number    : SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_1000
     * @tc.name      : createPixelMap-callback - sampleSize: -1 -webp
     * @tc.desc      : 1.create imagesource
     *                 2.set index and DecodeOptions
@@ -808,7 +808,7 @@ describe('imageWebp', function () {
     * @tc.type      : Functional
     * @tc.level     : Level 1
     */
-    it('wbp_010', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_1000', 0, async function (done) {
         let decodingOptions = {
             sampleSize: -1,
             editable: true,
@@ -818,11 +818,11 @@ describe('imageWebp', function () {
             desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
             index: 0
         };
-        createPixMapPromiseErr(done, 'wbp_010', decodingOptions)
+        createPixMapPromiseErr(done, 'SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_1000', decodingOptions)
     })
 
     /**
-    * @tc.number    : wbp_011
+    * @tc.number    : SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_1100
     * @tc.name      : createPixelMap-callback - index: -1 -webp
     * @tc.desc      : 1.create imagesource
     *                 2.set index and DecodeOptions
@@ -832,7 +832,7 @@ describe('imageWebp', function () {
     * @tc.type      : Functional
     * @tc.level     : Level 1
     */
-    it('wbp_011', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_1100', 0, async function (done) {
         let decodingOptions = {
             sampleSize: 1,
             editable: true,
@@ -842,11 +842,11 @@ describe('imageWebp', function () {
             desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
             index: -1
         };
-        createPixMapPromiseErr(done, 'wbp_011', decodingOptions)
+        createPixMapPromiseErr(done, 'SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_1100', decodingOptions)
     })
 
     /**
-    * @tc.number    : wbp_012
+    * @tc.number    : SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_1200
     * @tc.name      : createPixelMap-callback - desiredPixelFormat: 1 -webp
     * @tc.desc      : 1.create imagesource
     *                 2.set index and DecodeOptions
@@ -856,7 +856,7 @@ describe('imageWebp', function () {
     * @tc.type      : Functional
     * @tc.level     : Level 1
     */
-    it('wbp_012', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_1200', 0, async function (done) {
         let decodingOptions = {
             sampleSize: 2,
             editable: true,
@@ -866,12 +866,12 @@ describe('imageWebp', function () {
             desiredRegion: { size: { height: 1, width: 2 }, x: 0, y: 0 },
             index: 0
         };
-        createPixMapPromiseErr(done, 'wbp_012', decodingOptions)
+        createPixMapPromiseErr(done, 'SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_1200', decodingOptions)
     })
 
 
     /**
-    * @tc.number    : wbp_013
+    * @tc.number    : SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_1300
     * @tc.name      : createPixelMap-callback - { size: { height: 1, width: 2 }, x: -1, y: -1 } -webp
     * @tc.desc      : 1.create imagesource
     *                 2.set index and DecodeOptions
@@ -881,7 +881,7 @@ describe('imageWebp', function () {
     * @tc.type      : Functional
     * @tc.level     : Level 1
     */
-    it('wbp_013', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_1300', 0, async function (done) {
         let decodingOptions = {
             sampleSize: 1,
             editable: true,
@@ -891,11 +891,11 @@ describe('imageWebp', function () {
             desiredRegion: { size: { height: 1, width: 2 }, x: -1, y: -1 },
             index: 0
         };
-        createPixMapPromiseErr(done, 'wbp_013', decodingOptions)
+        createPixMapPromiseErr(done, 'SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_1300', decodingOptions)
     })
 
     /**
-    * @tc.number    : wbp_014
+    * @tc.number    : SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_1400
     * @tc.name      : createPixelMap-callback -  size: { height: 10000, width:10000 } -webp
     * @tc.desc      : 1.create imagesource
     *                 2.set index and DecodeOptions
@@ -905,7 +905,7 @@ describe('imageWebp', function () {
     * @tc.type      : Functional
     * @tc.level     : Level 1
     */
-    it('wbp_014', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_1400', 0, async function (done) {
         let decodingOptions = {
             sampleSize: 1,
             editable: true,
@@ -915,11 +915,11 @@ describe('imageWebp', function () {
             desiredRegion: { size: { height: 10000, width: 10000 }, x: 0, y: 0 },
             index: 0
         };
-        createPixMapPromise(done, 'wbp_014', decodingOptions)
+        createPixMapPromise(done, 'SUB_GRAPHIC_IMAGE_WEBP_CREATEPIXELMAP_CALLBACK_1400', decodingOptions)
     })
 
     /**
-     * @tc.number    : wbp_015
+     * @tc.number    : SUB_GRAPHIC_IMAGE_WEBP_PACKING_CALLBACK_0100
      * @tc.name      : packing - callback-webp
      * @tc.desc      : 1.create ImageSource
      *                 2.call packing
@@ -928,13 +928,13 @@ describe('imageWebp', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('wbp_015', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_WEBP_PACKING_CALLBACK_0100', 0, async function (done) {
         let packOpts = { format: ["image/webp"], quality: 90 }
-        packingCb(done, 'wbp_015', packOpts)
+        packingCb(done, 'SUB_GRAPHIC_IMAGE_WEBP_PACKING_CALLBACK_0100', packOpts)
     })
 
     /**
-     * @tc.number    : wbp_016
+     * @tc.number    : SUB_GRAPHIC_IMAGE_WEBP_PACKING_PROMISE_0100
      * @tc.name      : packing - promise-webp
      * @tc.desc      : 1.create ImageSource
      *                 2.call packing
@@ -943,13 +943,13 @@ describe('imageWebp', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('wbp_016', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_WEBP_PACKING_PROMISE_0100', 0, async function (done) {
         let packOpts = { format: ["image/webp"], quality: 100 }
-        packingPromise(done, 'wbp_016', packOpts)
+        packingPromise(done, 'SUB_GRAPHIC_IMAGE_WEBP_PACKING_PROMISE_0100', packOpts)
     })
 
     /**
-     * @tc.number    : wbp_017
+     * @tc.number    : SUB_GRAPHIC_IMAGE_WEBP_PACKING_PROMISE_ERROR_0100
      * @tc.name      : packing - promise-webp-wrong quality
      * @tc.desc      : 1.create ImageSource
      *                 2.call packing
@@ -958,13 +958,13 @@ describe('imageWebp', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('wbp_017', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_WEBP_PACKING_PROMISE_ERROR_0100', 0, async function (done) {
         let packOpts = { format: ["image/webp"], quality: 123 }
-        packingPromiseErr(done, 'wbp_017', packOpts)
+        packingPromiseErr(done, 'SUB_GRAPHIC_IMAGE_WEBP_PACKING_PROMISE_ERROR_0100', packOpts)
     })
 
     /**
-     * @tc.number    : wbp_018
+     * @tc.number    : SUB_GRAPHIC_IMAGE_WEBP_PACKING_PROMISE_0200
      * @tc.name      : packing - promise-webp
      * @tc.desc      : 1.create ImageSource
      *                 2.call packing
@@ -973,13 +973,13 @@ describe('imageWebp', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('wbp_018', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_WEBP_PACKING_PROMISE_0200', 0, async function (done) {
         let packOpts = { format: ["image/gif"], quality: 90 }
-        packingPromiseErr(done, 'wbp_018', packOpts)
+        packingPromiseErr(done, 'SUB_GRAPHIC_IMAGE_WEBP_PACKING_PROMISE_0200', packOpts)
     })
 
     /**
-     * @tc.number    : wbp_019
+     * @tc.number    : SUB_GRAPHIC_IMAGE_WEBP_PACKING_PROMISE_NO_0100
      * @tc.name      : packing - promise-webp-no format
      * @tc.desc      : 1.create ImageSource
      *                 2.call packing
@@ -988,13 +988,13 @@ describe('imageWebp', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('wbp_019', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_WEBP_PACKING_PROMISE_NO_0100', 0, async function (done) {
         let packOpts = { quality: 90 }
-        packingPromiseErr(done, 'wbp_019', packOpts)
+        packingPromiseErr(done, 'SUB_GRAPHIC_IMAGE_WEBP_PACKING_PROMISE_NO_0100', packOpts)
     })
 
     /**
-     * @tc.number    : wbp_020
+     * @tc.number    : SUB_GRAPHIC_IMAGE_WEBP_PACKING_PROMISE_NO_0200
      * @tc.name      : packing - promise-webp-no format
      * @tc.desc      : 1.create ImageSource
      *                 2.call packing
@@ -1003,13 +1003,13 @@ describe('imageWebp', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('wbp_020', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_WEBP_PACKING_PROMISE_NO_0200', 0, async function (done) {
         let packOpts = { format: ["image/jpeg"] }
-        packingPromiseErr(done, 'wbp_020', packOpts)
+        packingPromiseErr(done, 'SUB_GRAPHIC_IMAGE_WEBP_PACKING_PROMISE_NO_0200', packOpts)
     })
 
     /**
-     * @tc.number    : wbp_021
+     * @tc.number    : SUB_GRAPHIC_IMAGE_WEBP_PACKING_CALLBACK_ERROR_0100
      * @tc.name      : packing - callback-webp-wrong format
      * @tc.desc      : 1.create ImageSource
      *                 2.call packing
@@ -1018,13 +1018,13 @@ describe('imageWebp', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('wbp_021', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_WEBP_PACKING_CALLBACK_ERROR_0100', 0, async function (done) {
         let packOpts = { format: ["image/gif"], quality: 100 }
-        packingCbErr(done, 'wbp_021', packOpts)
+        packingCbErr(done, 'SUB_GRAPHIC_IMAGE_WEBP_PACKING_CALLBACK_ERROR_0100', packOpts)
     })
 
     /**
-     * @tc.number    : wbp_022
+     * @tc.number    : SUB_GRAPHIC_IMAGE_WEBP_PACKING_CALLBACK_ERROR_0200
      * @tc.name      : packing - callback-webp-wrong quality
      * @tc.desc      : 1.create ImageSource
      *                 2.call packing
@@ -1033,13 +1033,13 @@ describe('imageWebp', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('wbp_022', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_WEBP_PACKING_CALLBACK_ERROR_0200', 0, async function (done) {
         let packOpts = { format: ["image/jpeg"], quality: 112 }
-        packingCbErr(done, 'wbp_022', packOpts)
+        packingCbErr(done, 'SUB_GRAPHIC_IMAGE_WEBP_PACKING_CALLBACK_ERROR_0200', packOpts)
     })
 
     /**
-     * @tc.number    : wbp_023
+     * @tc.number    : SUB_GRAPHIC_IMAGE_WEBP_PACKING_CALLBACK_NO_0100
      * @tc.name      : packing - callback-webp-no quality
      * @tc.desc      : 1.create ImageSource
      *                 2.call packing
@@ -1048,13 +1048,13 @@ describe('imageWebp', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('wbp_023', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_WEBP_PACKING_CALLBACK_NO_0100', 0, async function (done) {
         let packOpts = { format: ["image/jpeg"] }
-        packingCbErr(done, 'wbp_023', packOpts)
+        packingCbErr(done, 'SUB_GRAPHIC_IMAGE_WEBP_PACKING_CALLBACK_NO_0100', packOpts)
     })
 
     /**
-     * @tc.number    : wbp_024
+     * @tc.number    : SUB_GRAPHIC_IMAGE_WEBP_PACKING_CALLBACK_NO_0200
      * @tc.name      : packing - callback-webp-no format
      * @tc.desc      : 1.create ImageSource
      *                 2.call packing
@@ -1063,13 +1063,13 @@ describe('imageWebp', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('wbp_024', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_WEBP_PACKING_CALLBACK_NO_0200', 0, async function (done) {
         let packOpts = { quality: 90 }
-        packingCbErr(done, 'wbp_024', packOpts)
+        packingCbErr(done, 'SUB_GRAPHIC_IMAGE_WEBP_PACKING_CALLBACK_NO_0200', packOpts)
     })
 
     /**
-    * @tc.number    : wbp_025
+    * @tc.number    : SUB_GRAPHIC_IMAGE_WEBP_PACKING_CALLBACK_0200
     * @tc.name      : packing - callback-webp-quality -1
     * @tc.desc      : 1.create ImageSource
     *                 2.call packing
@@ -1078,13 +1078,13 @@ describe('imageWebp', function () {
     * @tc.type      : Functional
     * @tc.level     : Level 1
     */
-    it('wbp_025', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_WEBP_PACKING_CALLBACK_0200', 0, async function (done) {
         let packOpts = { format: ["image/jpeg"], quality: -1 }
-        packingCbErr(done, 'wbp_025', packOpts)
+        packingCbErr(done, 'SUB_GRAPHIC_IMAGE_WEBP_PACKING_CALLBACK_0200', packOpts)
     })
 
     /**
-     * @tc.number    : wbp_026
+     * @tc.number    : SUB_GRAPHIC_IMAGE_WEBP_PACKING_PROMISE_0300
      * @tc.name      : packing - promise-webp-quality -1
      * @tc.desc      : 1.create ImageSource
      *                 2.call packing
@@ -1093,14 +1093,14 @@ describe('imageWebp', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('wbp_026', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_WEBP_PACKING_PROMISE_0300', 0, async function (done) {
         let packOpts = { format: ["image/jpeg"], quality: -1 }
-        packingPromiseErr(done, 'wbp_026', packOpts)
+        packingPromiseErr(done, 'SUB_GRAPHIC_IMAGE_WEBP_PACKING_PROMISE_0300', packOpts)
     })
 
 
     /**
-    * @tc.number    : wbp_027
+    * @tc.number    : SUB_GRAPHIC_IMAGE_WEBP_PACKING_CALLBACK_0300
     * @tc.name      : packing - callback-webp-quality 0
     * @tc.desc      : 1.create ImageSource
     *                 2.call packing
@@ -1109,13 +1109,13 @@ describe('imageWebp', function () {
     * @tc.type      : Functional
     * @tc.level     : Level 1
     */
-    it('wbp_027', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_WEBP_PACKING_CALLBACK_0300', 0, async function (done) {
         let packOpts = { format: ["image/jpeg"], quality: 0 }
-        packingPromise(done, 'wbp_027', packOpts)
+        packingPromise(done, 'SUB_GRAPHIC_IMAGE_WEBP_PACKING_CALLBACK_0300', packOpts)
     })
 
     /**
-     * @tc.number    : wbp_028
+     * @tc.number    : SUB_GRAPHIC_IMAGE_WEBP_PACKING_PROMISE_0400
      * @tc.name      : packing - promise-webp-quality 0
      * @tc.desc      : 1.create ImageSource
      *                 2.call packing
@@ -1124,8 +1124,8 @@ describe('imageWebp', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('wbp_028', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_WEBP_PACKING_PROMISE_0400', 0, async function (done) {
         let packOpts = { format: ["image/jpeg"], quality: 0 }
-        packingPromise(done, 'wbp_028', packOpts)
+        packingPromise(done, 'SUB_GRAPHIC_IMAGE_WEBP_PACKING_PROMISE_0400', packOpts)
     })
 })}
