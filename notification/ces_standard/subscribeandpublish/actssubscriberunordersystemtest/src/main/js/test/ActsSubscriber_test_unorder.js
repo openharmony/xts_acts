@@ -158,7 +158,7 @@ export default function ActsSubscriberTestUnorderSystem() {
           commonEvent.Support.COMMON_EVENT_NFC_ACTION_RF_FIELD_ON_DETECTED,
           commonEvent.Support.COMMON_EVENT_NFC_ACTION_RF_FIELD_OFF_DETECTED,
           commonEvent.Support.COMMON_EVENT_USER_ADDED,
-          commonEvent.Support.COMMON_EVENT_USER_REMOVED,
+          //commonEvent.Support.COMMON_EVENT_USER_REMOVED,
           commonEvent.Support.COMMON_EVENT_ABILITY_ADDED,
           commonEvent.Support.COMMON_EVENT_ABILITY_REMOVED,
           commonEvent.Support.COMMON_EVENT_ABILITY_UPDATED,
