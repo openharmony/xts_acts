@@ -34,7 +34,7 @@ LITE_TEST_SUIT(utils, parameter, ParameterReliTestSuite);
  * @tc.setup     : setup for all testcases
  * @return       : setup result, TRUE is success, FALSE is fail
  */
-static BOOL ParameterReliTestSuiteSetUp(void) 
+static BOOL ParameterReliTestSuiteSetUp(void)
 {
     return TRUE;
 }
@@ -43,7 +43,7 @@ static BOOL ParameterReliTestSuiteSetUp(void)
  * @tc.teardown  : teardown for all testcases
  * @return       : teardown result, TRUE is success, FALSE is fail
  */
-static BOOL ParameterReliTestSuiteTearDown(void) 
+static BOOL ParameterReliTestSuiteTearDown(void)
 {
     printf("+-------------------------------------------+\n");
     return TRUE;
