@@ -130,7 +130,6 @@ describe('bluetoothBLETest', function() {
         done()
    })
 
-
     /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_BLE_GetRssiValue_0100
      * @tc.name testgetRssiValue
@@ -149,14 +148,16 @@ describe('bluetoothBLETest', function() {
             console.info('[bluetooth_js] BLE read rssi: ' + JSON.stringify(data));
             let rssiLength = Object.keys(data).length;
             expect(rssiLength).assertEqual(0);
+            done();
         }).catch(error => {
             console.info('bluetooth getRssiValue has error: '+ JSON.stringify(error));
             expect(true).assertEqual(true);
+            done();
         });
         let disconnect = gattClient.disconnect();
         console.info('[bluetooth_js] gatt getrssi2 disconnect:' + disconnect);
         expect(disconnect).assertEqual(false);
-        done();
+        
     })
 
     /**
@@ -203,14 +204,16 @@ describe('bluetoothBLETest', function() {
         await gattClient.getDeviceName().then((data) => {
             console.info('[bluetooth_js] device name' + JSON.stringify(data))
             expect(data).assertNull();
+            done();
         }).catch(err => {
             console.error('bluetooth getDeviceName has error: '+ err);
             expect(true).assertEqual(true);
+            done();
         });
         let disconnect = gattClient.disconnect();
         console.info('[bluetooth_js] gatt getname2 disconnect:' + disconnect);
         expect(disconnect).assertEqual(false);
-        done();
+        
     })
 
 
@@ -256,14 +259,15 @@ describe('bluetoothBLETest', function() {
         await gattClient.getServices().then((GattService) => {
             console.info('[bluetooth_js] getServices successfully:'+JSON.stringify(GattService));
             expect(GattService).assertNull();
+            done();
         }).catch(err => {
             console.error('[bluetooth_js] getServices has error:'+ JSON.stringify(err));
             expect(true).assertEqual(true);
+            done();
         });
         let disconnect = gattClient.disconnect();
         console.info('[bluetooth_js] gatt getservices1 disconnect:' + disconnect);
         expect(disconnect).assertEqual(false);
-        done();
     })
 
     /**
@@ -383,39 +387,35 @@ describe('bluetoothBLETest', function() {
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_ReadCharacteristic_0100', 0, async function (done) {
-        let promise = new Promise((resolve) => {
-            let descriptors = [];
-            let arrayBuffer = new ArrayBuffer(8);
-            let desValue =  new Uint8Array(arrayBuffer);
-            desValue[0] = 11;
-            let descriptor = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
-                descriptorUuid: '00001830-0000-1000-8000-00805F9B34FB',
-                descriptorValue: arrayBuffer};
-            descriptors[0] = descriptor;
-            let arrayBufferCCC = new ArrayBuffer(8);
-            let cccValue = new Uint8Array(arrayBufferCCC);
-            cccValue[0] = 32;
-            let characteristic = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
-                characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB',
-                characteristicValue: arrayBufferCCC, descriptors:descriptors};
-            let gattClient = bluetooth.BLE.createGattClientDevice("00:00:00:00:00:00");
-            gattClient.readCharacteristicValue(characteristic).then((object) => {
-                if (object != null) {
-                    expect(true).assertEqual(true);
-                } else {
-                    console.info('[bluetooth_js] readCharacValue promise data:'
-                    + JSON.stringify(data));
-                    expect(null).assertFail();
-                }
-                done();
-            }).catch(err => {
-                console.error(`bluetooth readCharacteValue promise has error: ${err}`);
+        let descriptors = [];
+        let arrayBuffer = new ArrayBuffer(8);
+        let desValue =  new Uint8Array(arrayBuffer);
+        desValue[0] = 11;
+        let descriptor = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
+            descriptorUuid: '00001830-0000-1000-8000-00805F9B34FB',
+            descriptorValue: arrayBuffer};
+        descriptors[0] = descriptor;
+        let arrayBufferCCC = new ArrayBuffer(8);
+        let cccValue = new Uint8Array(arrayBufferCCC);
+        cccValue[0] = 32;
+        let characteristic = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
+            characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB',
+            characteristicValue: arrayBufferCCC, descriptors:descriptors};
+        let gattClient = bluetooth.BLE.createGattClientDevice("00:00:00:00:00:00");
+        gattClient.readCharacteristicValue(characteristic).then((object) => {
+            if (object != null) {
                 expect(true).assertEqual(true);
-                done();
-            });
-            resolve()
+            } else {
+                console.info('[bluetooth_js] readCharacValue promise data:'
+                + JSON.stringify(data));
+                expect(null).assertFail();
+            }
+            done();
+        }).catch(err => {
+            console.error(`bluetooth readCharacteValue promise has error: ${err}`);
+            expect(true).assertEqual(true);
+            done();
         })
-        await promise.then(done)
     })
 
     /**
@@ -450,7 +450,7 @@ describe('bluetoothBLETest', function() {
         characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB',
            characteristicValue: arrayBufferCCC, descriptors:descriptor};
         let gattClient = bluetooth.BLE.createGattClientDevice("11:22:33:44:55:66");
-        gattClient.readCharacteristicValue(characteristic,readCcc);
+        await gattClient.readCharacteristicValue(characteristic,readCcc);
         done()
     })
 
@@ -611,7 +611,7 @@ describe('bluetoothBLETest', function() {
         expect(ret).assertEqual(false);
     })
 
-     /**
+    /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_BLE_WriteCharacteristic_0200
      * @tc.name testWriteCharacteristicValue
      * @tc.desc Test Client WriteCharacteristicValue api.
@@ -736,7 +736,7 @@ describe('bluetoothBLETest', function() {
         done()
     })
 
-     /**
+    /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_BLE_NotifyCharacteristic_0100
      * @tc.name testSetNotifyCharacteristicChanged
      * @tc.desc Test SetNotifyCharacteristicChanged api.
@@ -888,5 +888,4 @@ describe('bluetoothBLETest', function() {
 
 })
 }
-
 
