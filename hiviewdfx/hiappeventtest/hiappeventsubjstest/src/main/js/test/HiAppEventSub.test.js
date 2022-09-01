@@ -2003,7 +2003,7 @@ describe('HiAppEventSubTest', function () {
      * @tc.name 验证清理接口功能
      * @tc.desc HiAppEvent write interface test.
      */
-    it('HiAppEventSub27', 3, async function () {
+    it('HiAppEventSub27', 3, function () {
         console.info('testHiAppEventSub27 start')
         HiAppEvent.clearData()
         expect(true).assertTrue()
