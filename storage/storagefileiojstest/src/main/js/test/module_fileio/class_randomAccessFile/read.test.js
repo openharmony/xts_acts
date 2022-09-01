@@ -676,7 +676,6 @@ describe('fileio_randomAccessFile_read', function () {
     it('fileio_randomaccessfile_read_async_010', 0, async function (done) {
         let fpath = await nextFileName('fileio_randomaccessfile_read_async_010');
 
-
         try {
             let randomaccessfile = await fileio.createRandomAccessFile(fpath, 0, 0o102);
             let length = 4096;
