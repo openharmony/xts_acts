@@ -360,15 +360,15 @@ describe('audioVoip', function () {
 
     }
 
-    /* *
-               * @tc.number    : SUB_AUDIO_VOIP_Play_001
-               * @tc.name      : AudioRenderer-Set1-Media
-               * @tc.desc      : AudioRenderer with parameter set 1
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0
-           */
-    it('SUB_AUDIO_VOIP_Play_001', 0, async function (done) {
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_PLAY_0100
+     * @tc.name      : AudioRenderer-Set1-Media
+     * @tc.desc      : AudioRenderer with parameter set 1
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_PLAY_0100', 2, async function (done) {
 
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -397,15 +397,15 @@ describe('audioVoip', function () {
         done();
     })
 
-    /* *
-               * @tc.number    : SUB_AUDIO_VOIP_Rec_001
-               * @tc.name      : AudioCapturer-Set1-Media
-               * @tc.desc      : AudioCapturer with parameter set 1
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0
-           */
-    it('SUB_AUDIO_VOIP_Rec_001', 0, async function (done) {
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_0100
+     * @tc.name      : AudioCapturer-Set1-Media
+     * @tc.desc      : AudioCapturer with parameter set 1
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_0100', 2, async function (done) {
 
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
@@ -432,15 +432,15 @@ describe('audioVoip', function () {
         done();
     })
 
-    /* *
-               * @tc.number    : SUB_AUDIO_VOIP_RecPlay_001
-               * @tc.name      : AudioCapturer-Set1-Media
-               * @tc.desc      : AudioCapturer with parameter set 1
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0
-           */
-    it('SUB_AUDIO_VOIP_RecPlay_001', 0, async function (done) {
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_RECPLAY_0100
+     * @tc.name      : AudioCapturer-Set1-Media
+     * @tc.desc      : AudioCapturer with parameter set 1
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_RECPLAY_0100', 2, async function (done) {
 
         var AudioStreamInfoCap = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
