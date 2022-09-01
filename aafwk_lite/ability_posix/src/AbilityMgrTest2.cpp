@@ -615,70 +615,6 @@ HWTEST_F(AbilityMgrTest2, testStopAbilityIllegal, Function | MediumTest | Level2
 }
 
 /**
- * @tc.number    : SUB_APPEXECFWK_AMS_API_0008
- * @tc.name      : testConnectAbility parameter legal test
- * @tc.desc      : [C- SOFTWARE -0200]
- */
-HWTEST_F(AbilityMgrTest2, testConnectAbility, Function | MediumTest | Level1)
-{
-    printf("------start testConnectAbility------\n");
-    Want want = { nullptr };
-    ElementName element = { nullptr };
-    SetElementBundleName(&element, "com.openharmony.testnative");
-    SetElementAbilityName(&element, "ServiceAbility");
-    SetWantElement(&want, element);
-    sem_init(&g_sem, 0, 0);
-    int result = ConnectAbility(&want, &g_conn, this);
-    struct timespec ts = {};
-    clock_gettime(CLOCK_REALTIME, &ts);
-    ts.tv_sec += WAIT_TIMEOUT;
-    sem_timedwait(&g_sem, &ts);
-    printf("sem exit \n");
-    printf("ret is %d \n ", result);
-    EXPECT_EQ(result, 0);
-    EXPECT_EQ(g_errorCode, 16);
-    DisconnectAbility(&g_conn);
-    sleep(1);
-    ClearElement(&element);
-    ClearWant(&want);
-    printf("------end testConnectAbility------\n");
-}
-
-/**
- * @tc.number    : SUB_APPEXECFWK_AMS_API_0010
- * @tc.name      : testWantMathBundle
- * @tc.desc      : [C- SOFTWARE -0100]
- * @tc.author    : lijiashan
- */
-HWTEST_F(AbilityMgrTest2, testDisConnectAbility, Function | MediumTest | Level1)
-{
-    printf("------start testDisConnectAbility------\n");
-    Want want = { nullptr };
-    ElementName element = { nullptr };
-    SetElementBundleName(&element, "com.openharmony.testnative");
-    SetElementAbilityName(&element, "ServiceAbility");
-    SetWantElement(&want, element);
-    sem_init(&g_sem, 0, 0);
-    int result = ConnectAbility(&want, &g_conn, this);
-    struct timespec ts = {};
-    clock_gettime(CLOCK_REALTIME, &ts);
-    ts.tv_sec += WAIT_TIMEOUT;
-    sem_timedwait(&g_sem, &ts);
-    printf("sem exit \n");
-    printf("ret of connect is %d \n ", result);
-    EXPECT_EQ(g_errorCode, 16);
-    if (g_errorCode == 16) {
-        result = DisconnectAbility(&g_conn);
-        sleep(2);
-        EXPECT_EQ(result, 0);
-        printf("ret of disconnect is %d \n ", result);
-    }
-    ClearElement(&element);
-    ClearWant(&want);
-    printf("------end testDisConnectAbility------\n");
-}
-
-/**
  * @tc.number    : SUB_APPEXECFWK_AMS_API_0009
  * @tc.name      : testConnectAbilityIllegal parameter illegal test
  * @tc.desc      : [C- SOFTWARE -0200]
@@ -700,38 +636,6 @@ HWTEST_F(AbilityMgrTest2, testConnectAbilityIllegal, Function | MediumTest | Lev
     ClearElement(&element);
     ClearWant(&want);
     printf("------end testConnectAbilityIllegal------\n");
-}
-
-/**
- * @tc.number    : SUB_APPEXECFWK_AMS_API_0011
- * @tc.name      : testDisConnectAbilityIllegal parameter illegal test
- * @tc.desc      : [C- SOFTWARE -0200]
- */
-HWTEST_F(AbilityMgrTest2, testDisConnectAbilityIllegal, Function | MediumTest | Level1)
-{
-    printf("------start testDisConnectAbilityIllegal------\n");
-    Want want = { nullptr };
-    ElementName element = { nullptr };
-    SetElementBundleName(&element, "com.openharmony.testnative");
-    SetElementAbilityName(&element, "ServiceAbility");
-    SetWantElement(&want, element);
-    sem_init(&g_sem, 0, 0);
-    int result = ConnectAbility(&want, &g_conn, this);
-    struct timespec ts = {};
-    clock_gettime(CLOCK_REALTIME, &ts);
-    ts.tv_sec += WAIT_TIMEOUT;
-    sem_timedwait(&g_sem, &ts);
-    printf("sem exit \n");
-    printf("ret is of connect is %d \n ", g_errorCode);
-    EXPECT_EQ(g_errorCode, 16);
-    EXPECT_EQ(result, 0);
-    g_errorCode = DisconnectAbility(nullptr);
-    int expect = -10;
-    EXPECT_EQ(g_errorCode, expect);
-    printf("ret of disconnect is %d \n ", g_errorCode);
-    ClearElement(&element);
-    ClearWant(&want);
-    printf("------end testDisConnectAbilityIllegal------\n");
 }
 
 /**
@@ -760,45 +664,6 @@ HWTEST_F(AbilityMgrTest2, testTerminateAbility, Function | MediumTest | Level1)
     ClearWant(&want);
     delete ability;
     printf("------end testTerminateAbility------\n");
-}
-
-/**
- * @tc.number    : SUB_APPEXECFWK_AMS_WANT_0001
- * @tc.name      : test Want Match BundleInfo
- * @tc.desc      : [C- SOFTWARE -0200]
- */
-HWTEST_F(AbilityMgrTest2, testWantMatchBundle, Function | MediumTest | Level1)
-{
-    printf("------start testWantMathBundle------\n");
-    Want want;
-    memset_s(&want, sizeof(Want), 0, sizeof(Want));
-    ElementName element;
-    memset_s(&element, sizeof(ElementName), 0, sizeof(ElementName));
-    SetElementAbilityName(&element, "ServiceAbility");
-    SetElementBundleName(&element, "com.openharmony.testnative");
-    SetElementDeviceID(&element, "");
-    SetWantElement(&want, element);
-    AbilityInfo abilityInfo;
-    memset_s(&abilityInfo, sizeof(AbilityInfo), 0, sizeof(AbilityInfo));
-    g_errorCode = QueryAbilityInfo(&want, &abilityInfo);
-    printf("ret of query is %d \n", g_errorCode);
-    EXPECT_EQ(g_errorCode, 0);
-    if (g_errorCode == 0) {
-        printf("abilityInfo.name is %s \n", abilityInfo.name);
-    }
-    int result = StartAbility(&want);
-    sleep(2);
-    printf("result of startAbility is %d \n", result);
-    EXPECT_EQ(result, 0);
-    printf("element is %s \n", want.element->bundleName);
-    printf("element is %s \n", want.element->abilityName);
-    StopAbility(&want);
-    sleep(1);
-    g_errorCode = StopAbility(&want);
-    sleep(2);
-    ClearElement(&element);
-    ClearWant(&want);
-    printf("------end testWantMathBundle------\n");
 }
 
 /**
@@ -899,39 +764,6 @@ HWTEST_F(AbilityMgrTest2, testWantOnlyMathAbility, Function | MediumTest | Level
     ClearWant(&want);
     printf("------end testWantOnlyMathAbility------\n");
 }
-
-/**
- * @tc.number    : SUB_APPEXECFWK_AMS_WANT_0005
- * @tc.name      : test WantData Match DataLength
- * @tc.desc      : [C- SOFTWARE -0200]
- */
-HWTEST_F(AbilityMgrTest2, testWantDataMatchLength, Function | MediumTest | Level1)
-{
-    printf("------start testWantDataMatchLength------\n");
-    Want want;
-    memset_s(&want, sizeof(Want), 0, sizeof(Want));
-    ElementName element;
-    memset_s(&element, sizeof(ElementName), 0, sizeof(ElementName));
-    SetElementAbilityName(&element, "ServiceAbility");
-    SetElementBundleName(&element, "com.openharmony.testnative");
-    SetWantElement(&want, element);
-    SetWantData(&want, "test", 5);
-    AbilityInfo abilityInfo;
-    memset_s(&abilityInfo, sizeof(AbilityInfo), 0, sizeof(AbilityInfo));
-    g_errorCode = QueryAbilityInfo(&want, &abilityInfo);
-    printf("ret is %d \n", g_errorCode);
-    EXPECT_TRUE(g_errorCode == 0);
-    int result = StartAbility(&want);
-    sleep(2);
-    printf("result of startAbility is %d \n", result);
-    EXPECT_TRUE(result == 0);
-    EXPECT_STREQ((char*)(want.data), "test");
-    EXPECT_EQ(want.dataLength, 5);
-    StopAbility(&want);
-    sleep(1);
-    printf("------end testWantDataMatchLength------\n");
-}
-
 
 /**
  * @tc.number    : SUB_APPEXECFWK_AMS_WANT_0006
