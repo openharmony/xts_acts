@@ -30,8 +30,8 @@ import {
     getPermission,
 } from '../../../../../../common';
 
-export default function filekeyTestPromiseTest(abilityContext) {
-    describe('filekeyTestPromiseTest', function () {
+export default function mediafetchoptionsPromise(abilityContext) {
+    describe('mediafetchoptionsPromise', function () {
         const media = mediaLibrary.getMediaLibrary(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
