@@ -127,6 +127,19 @@ export default function albumTestPromiseTest(abilityContext) {
             }
         }
 
+        const queryConditionAbnormal = async function (done, testNum, fetchOp) {
+            try {
+                console.info(`${testNum}, fetchOp: ${JSON.stringify(fetchOp)}`)
+                const albumList = await media.getAlbums(fetchOp);
+                expect(false).assertTrue();
+                done();
+            } catch (error) {
+                console.info(`${testNum},query condition abnormal error: ${error}`)
+                expect(true).assertTrue();
+                done();
+            }
+        }
+
         const abnormalAlbumCommitModify = async function (done, testNum, fetchOp, newName, expectAlbumCount) {
             try {
                 const albumList = await media.getAlbums(fetchOp);
@@ -301,7 +314,7 @@ export default function albumTestPromiseTest(abilityContext) {
             };
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_PROMISE_002_07'
 
-            await abnormalAlbumCount(done, testNum, fileHasArgsfetchOp)
+            await queryConditionAbnormal(done, testNum, fileHasArgsfetchOp)
         });
 
         /**
@@ -318,7 +331,7 @@ export default function albumTestPromiseTest(abilityContext) {
                 selectionArgs: ['666'],
             };
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_PROMISE_002_08'
-            await abnormalAlbumCount(done, testNum, fileHasArgsfetchOp)
+            await queryConditionAbnormal(done, testNum, fileHasArgsfetchOp)
         });
         // ------------------------------ 002 test end -------------------------
 
