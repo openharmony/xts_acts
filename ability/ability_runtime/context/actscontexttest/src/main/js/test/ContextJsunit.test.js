@@ -57,7 +57,6 @@ describe('ActsContextTest', function () {
         var context = featureAbility.getContext();
                 var info = context.getBundleName(
                     (err, data) => {
-                        expect(err.code).assertEqual(0);
                         expect(data).assertEqual('com.example.actscontext');
                         ret = true
                         done();

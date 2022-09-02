@@ -142,48 +142,6 @@ describe('StartAbilityTest', function () {
     })
 
     /*
-    * @tc.number: SUB_AA_JsApi_Ability_0700
-    * @tc.name: testAblity0700.
-    * @tc.desc: startAbility-want-configuration action+entities-entities is configured as a string.(by promise)
-    */
-    it("SUB_AA_JsApi_Ability_0700", 0, async function (done) {
-        let parameter = {
-            'want': {
-                'action': 'action.ohos.acts.aafwk.jsapi.MainAbility',
-                'entities': 'abc123'
-            }
-        }
-        await featureAbility.startAbility(parameter).then((data) => {
-            console.log('testAblity0700 data: ' + JSON.stringify(data))
-            expect().assertFail()
-        }).catch((error) => {
-            console.log('testAblity0700 error: ' + JSON.stringify(error))
-            expect(errCode).assertEqual(error.code)
-        })
-        done()
-    })
-
-    /*
-    * @tc.number: SUB_AA_JsApi_Ability_0800
-    * @tc.name: testAblity0800.
-    * @tc.desc: startAbility-want-configuration action+entities-entities is configured as a string.(by callback)
-    */
-    it("SUB_AA_JsApi_Ability_0800", 0, async function (done) {
-        let parameter = {
-            'want': {
-                'action': 'action.ohos.acts.aafwk.jsapi.MainAbility',
-                'entities': 'abc123'
-            }
-        }
-        featureAbility.startAbility((parameter), (error, data) => {
-            console.log('testAblity0800 data: ' + JSON.stringify(data))
-            console.log('testAblity0800 error: ' + JSON.stringify(error))
-            expect(errCode).assertEqual(error.code)
-            done()
-        })
-    })
-
-    /*
     * @tc.number: SUB_AA_JsApi_Ability_0900
     * @tc.name: testAblity0900.
     * @tc.desc: startAbility-want configure action+entities- entities is configurd as a string.(by promise)
