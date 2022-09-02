@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-#include "hctest.h"
 #include "parameter_utils.h"
+#include "hctest.h"
 
 void AssertNotEmpty(const char* sysPara)
 {
