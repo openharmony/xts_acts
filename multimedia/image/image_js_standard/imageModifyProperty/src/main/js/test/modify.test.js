@@ -29,7 +29,7 @@ describe('imageModifyProperty', function () {
             filePath = data + '/' + fileName;
             console.info('image case filePath is ' + filePath);
         })
-        await fileio.open(filePath, 0o2 | 0o100, 0o777).then((data) => {
+        await fileio.open(filePath, 0o2, 0o777).then((data) => {
             fdNumber = data;
             console.info("image case open fd success " + fdNumber);
         }, (err) => {
