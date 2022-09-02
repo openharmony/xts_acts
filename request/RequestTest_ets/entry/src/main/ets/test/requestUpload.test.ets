@@ -255,13 +255,13 @@ export default function requestUploadJSUnit() {
       done();
     });
 
-    /*
-        * @tc.number    : SUB_REQUEST_UPLOAD_API_PROMISE_0001
-        * @tc.name      : Use getEntries get the value by mixing the string key
-        * @tc.desc      : Mixed strings value can be obtained correctly
-        * @tc.size      : MediumTest
-        * @tc.type      : Function
-        * @tc.level     : Level 1
+   /**
+    * @tc.number    : SUB_REQUEST_UPLOAD_API_PROMISE_0001
+    * @tc.name      : Use getEntries get the value by mixing the string key
+    * @tc.desc      : Mixed strings value can be obtained correctly
+    * @tc.size      : MediumTest
+    * @tc.type      : Function
+    * @tc.level     : Level 1
     */
     it('SUB_REQUEST_UPLOAD_API_PROMISE_0001', 0, async function (done) {
       console.info("-----------------------SUB_REQUEST_UPLOAD_API_PROMISE_0001 is starting-----------------------");
@@ -293,6 +293,87 @@ export default function requestUploadJSUnit() {
       }
       sleep(Date.now(), 20000);
       console.info("-----------------------SUB_REQUEST_UPLOAD_API_PROMISE_0001 end-----------------------");
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_REQUEST_UPLOAD_API_PROMISE_0002
+     * @tc.name      : Use getEntries get the value by mixing the string key
+     * @tc.desc      : Called when the current upload session complete or fail.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_REQUEST_UPLOAD_API_PROMISE_0002', 0, async function (done) {
+      console.info("-----------------------SUB_REQUEST_UPLOAD_API_PROMISE_0002 is starting-----------------------");
+      try {
+        console.info("SUB_REQUEST_UPLOAD_API_PROMISE_0002 UploadConfig = " + JSON.stringify(uploadConfig));
+        request.upload(uploadConfig).then((data) => {
+          uploadTask = data;
+          console.info("SUB_REQUEST_UPLOAD_API_PROMISE_0002 uploadTask = " + uploadTask);
+          expect(true).assertEqual((uploadTask != undefined) || (uploadTask != "") || (uploadTask != {}));
+
+          uploadTask.on('complete', (TaskState) => {
+            console.info("SUB_REQUEST_UPLOAD_API_PROMISE_0002 TaskState.path = " + TaskState.path);
+            console.info("SUB_REQUEST_UPLOAD_API_PROMISE_0002 TaskState.responseCode" + TaskState.responseCode);
+            console.info("SUB_REQUEST_UPLOAD_API_PROMISE_0002 TaskState.TaskState.message" + TaskState.message);
+            expect(typeof(TaskState.path) == "string").assertEqual(true);
+            expect(typeof(TaskState.responseCode) == "number").assertEqual(true);
+            expect(typeof(TaskState.message) == "string").assertEqual(true);
+          });
+
+          uploadTask.on('fail', (TaskState) => {
+            console.info("SUB_REQUEST_UPLOAD_API_PROMISE_0002 TaskState.path = " + TaskState.path);
+            console.info("SUB_REQUEST_UPLOAD_API_PROMISE_0002 TaskState.responseCode" + TaskState.responseCode);
+            console.info("SUB_REQUEST_UPLOAD_API_PROMISE_0002 TaskState.TaskState.message" + TaskState.message);
+            expect(typeof(TaskState.path) == "string").assertEqual(true);
+            expect(typeof(TaskState.responseCode) == "number").assertEqual(true);
+            expect(typeof(TaskState.message) == "string").assertEqual(true);
+            expect(true).assertEqual(true);
+          });
+        });
+      } catch (e) {
+        console.error("SUB_REQUEST_UPLOAD_API_PROMISE_0001 error: " + JSON.stringify(e));
+        expect(true).assertFail(true);
+      }
+      sleep(Date.now(), 20000);
+      console.info("-----------------------SUB_REQUEST_UPLOAD_API_PROMISE_0001 end-----------------------");
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_REQUEST_UPLOAD_API_PROMISE_0003
+     * @tc.name      : Use getEntries get the value by mixing the string key
+     * @tc.desc      : Called when the current upload session complete or fail.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_REQUEST_UPLOAD_API_PROMISE_0003', 0, async function (done) {
+      console.info("-----------------------SUB_REQUEST_UPLOAD_API_PROMISE_0003 is starting-----------------------");
+      try {
+        console.info("SUB_REQUEST_UPLOAD_API_PROMISE_0003 UploadConfig = " + JSON.stringify(uploadConfig));
+        request.upload(uploadConfig).then((data) => {
+          uploadTask = data;
+          console.info("SUB_REQUEST_UPLOAD_API_PROMISE_0003 uploadTask = " + uploadTask);
+          expect(true).assertEqual((uploadTask != undefined) || (uploadTask != "") || (uploadTask != {}));
+
+          uploadTask.off('complete', () => {
+            console.info("SUB_REQUEST_UPLOAD_API_PROMISE_0003 TaskState success");
+            expect(true).assertEqual(true);
+          });
+
+          uploadTask.off('fail', () => {
+            console.info("SUB_REQUEST_UPLOAD_API_PROMISE_0003 TaskState success");
+            expect(true).assertEqual(true);
+          });
+        });
+      } catch (e) {
+        console.error("SUB_REQUEST_UPLOAD_API_PROMISE_0003 error: " + JSON.stringify(e));
+        expect(true).assertFail(true);
+      }
+      sleep(Date.now(), 20000);
+      console.info("-----------------------SUB_REQUEST_UPLOAD_API_PROMISE_0003 end-----------------------");
       done();
     });
 
