@@ -382,8 +382,58 @@ describe('fileio_create_randomAccessFile', function () {
             randomaccessfile.closeSync();
             fileio.unlinkSync(fpath);
         } catch(err) {
-            console.info('fileio_create_randomaccessfile_sync_015 has failed for ' + err);
+            console.info('fileio_create_randomaccessfile_sync_014 has failed for ' + err);
             expect(null).assertFail();
+        }
+    });
+
+    /**
+     * @tc.number SUB_STORAGE_FILEIO_CREATE_RANDOMACCESSFILE_SYNC_1500
+     * @tc.name fileio_create_randomaccessfile_sync_015
+     * @tc.desc Test createRandomAccessFileSync() interface. flags=0o200002. Invalid filepath.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 0
+     * @tc.require
+     */
+    it('fileio_create_randomaccessfile_sync_015', 0, async function () {
+       let dpath = await nextFileName('fileio_create_randomaccessfile_sync_015') + 'd';
+       fileio.mkdirSync(dpath);
+
+       try {
+           fileio.createRandomAccessFileSync(dpath, 0, 0o200002);
+           expect(false).assertTrue();
+       } catch(err) {
+           console.info('fileio_create_randomaccessfile_sync_015 has failed for ' + err);
+           expect(err.message == "Invalid filepath").assertTrue();
+           fileio.rmdirSync(dpath);
+       }
+    });
+
+    /**
+     * @tc.number SUB_STORAGE_FILEIO_CREATE_RANDOMACCESSFILE_SYNC_1600
+     * @tc.name fileio_create_randomaccessfile_sync_016
+     * @tc.desc Test createRandomAccessFileSync() interface. flags=0o400002. Symbolic link loop.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 0
+     * @tc.require
+     */
+    it('fileio_create_randomaccessfile_sync_016', 0, async function () {
+        let fpath = await nextFileName('fileio_create_randomaccessfile_sync_016');
+        let ffpath = fpath + 'aaaa';
+        expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+        try {
+            fileio.symlinkSync(fpath, ffpath);
+            fileio.createRandomAccessFileSync(ffpath, 0, 0o400002);
+            expect(false).assertTrue();
+        } catch(err) {
+            console.info('fileio_create_randomaccessfile_sync_016 has failed for ' + err);
+            expect(err.message == 'Symbolic link loop' || 
+                err.message == 'Too many symbolic links encountered').assertTrue();
+            fileio.unlinkSync(fpath);
+            fileio.unlinkSync(ffpath);
         }
     });
 
@@ -762,6 +812,107 @@ describe('fileio_create_randomAccessFile', function () {
             done();
         } catch(err) {
             console.info('fileio_create_randomaccessfile_async_014 has failed for ' + err);
+            expect(null).assertFail();
+        }
+    });
+
+    /**
+     * @tc.number SUB_STORAGE_FILEIO_CREATE_RANDOMACCESSFILE_ASYNC_1500
+     * @tc.name fileio_create_randomaccessfile_async_015
+     * @tc.desc Test createRandomAccessFile() interface. flags=0o200002. Invalid filepath.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 0
+     * @tc.require
+     */
+    it('fileio_create_randomaccessfile_async_015', 0, async function (done) {
+       let dpath = await nextFileName('fileio_create_randomaccessfile_async_015') + 'd';
+       fileio.mkdirSync(dpath);
+
+       try {
+           await fileio.createRandomAccessFile(dpath, 0, 0o200002);
+       } catch(err) {
+           console.info('fileio_create_randomaccessfile_async_015 has failed for ' + err);
+           expect(err.message == "Invalid filepath").assertTrue();
+           fileio.rmdirSync(dpath);
+           done();
+       }
+   });
+
+    /**
+     * @tc.number SUB_STORAGE_FILEIO_CREATE_RANDOMACCESSFILE_ASYNC_1600
+     * @tc.name fileio_create_randomaccessfile_async_016
+     * @tc.desc Test createRandomAccessFile() interface. flags=0o400002. Symbolic link loop.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 0
+     * @tc.require
+     */
+    it('fileio_create_randomaccessfile_async_016', 0, async function (done) {
+        let fpath = await nextFileName('fileio_create_randomaccessfile_async_016');
+        let ffpath = fpath + 'aaaa';
+        expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+        try {
+            fileio.symlinkSync(fpath, ffpath);
+            await fileio.createRandomAccessFile(ffpath, 0, 0o400002);
+        } catch(err) {
+            console.info('fileio_create_randomaccessfile_async_016 has failed for ' + err);
+            expect(err.message == 'Symbolic link loop' || 
+                err.message == 'Too many symbolic links encountered').assertTrue();
+            fileio.unlinkSync(fpath);
+            fileio.unlinkSync(ffpath);
+            done();
+        }
+    });
+
+    /**
+     * @tc.number SUB_STORAGE_FILEIO_RANDOMACCESSFILE_MULTITHREADED_REPLICATION_0000
+     * @tc.name fileio_randomaccessfile_multithreaded_replication_000
+     * @tc.desc Test createRandomAccessFileSync() interface. Test multi-threaded replication.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 0
+     * @tc.require
+     */
+    it('fileio_randomaccessfile_multithreaded_replication_000', 0, async function (done) {
+        let srcpath = await nextFileName('fileio_randomaccessfile_multithreaded_replication_000');
+        let dstpath = await nextFileName('fileio_randomaccessfile_multithreaded_replication_000_1');
+        let length = 4096;
+        let buffer = new ArrayBuffer(length);
+        expect(prepareFile(srcpath, buffer)).assertTrue();
+
+        try {
+            let fileSize = fileio.statSync(srcpath).size;
+            // init randomaccessfiles
+            let threadNums = 4;
+            let srcfiles = new Array();
+            let dstfiles = new Array();
+            for (let i = 0; i < threadNums; i++) {
+                srcfiles[i] = fileio.createRandomAccessFileSync(srcpath, fileSize / threadNums * i, 0o2);
+                dstfiles[i] = fileio.createRandomAccessFileSync(dstpath, fileSize / threadNums * i, 0o102);
+            }
+            // copy in every thread i from multi-thread
+            let bufs = new Array(threadNums);
+            let len = length / threadNums;
+            for(let i = 0; i < threadNums; i++) {
+                bufs[i] = new ArrayBuffer(len);
+                srcfiles[i].read(bufs[i]).then(async function(readOut) {
+                    let writeLen = await dstfiles[i].write(readOut.buffer);
+                    expect(writeLen == len).assertTrue();
+                    dstfiles[i].closeSync();
+                    srcfiles[i].closeSync();
+                    if (i == threadNums - 1) {
+                        let size = fileio.statSync(dstpath).size;
+                        expect(size == fileSize).assertTrue();
+                        fileio.unlinkSync(srcpath);
+                        fileio.unlinkSync(dstpath);
+                        done();
+                    }
+                });
+            }
+        } catch (err) {
+            console.info('fileio_randomaccessfile_multithreaded_replication_000 has failed for ' + err);
             expect(null).assertFail();
         }
     });
