@@ -23,7 +23,7 @@ ohos_js_hap_suite("camera_wideanglerk_ets_hap") {
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsCameraWideAngleRKETSTest"
   subsystem_name = "multimedia"
-  part_name = "multimedia_camera_standard"
+  part_name = "multimedia_camera_framework"
 }
 ohos_js_assets("camera_ets_assets") {
   source_dir = "./src/main/ets/MainAbility"
