@@ -15,6 +15,8 @@
 import windowPromiseTest from './windowPromise.test'
 import windowCallbackTest from './windowCallback.test'
 
+//import windowPromiseTest from './windowPromise1.test'
+//import windowCallbackTest from './windowCallback1.test'
 export default function testsuite() {
   windowCallbackTest(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage)
   windowPromiseTest(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage)
