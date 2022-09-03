@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'hypium/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import commonEvent from '@ohos.commonEvent'
 import { BY, UiDriver, UiComponent, MatchPattern } from '@ohos.uitest'
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
@@ -97,7 +97,7 @@ export default function abilityTest() {
           let button = await component.getBounds()
           console.log("ACTS_AppSelectorTest_3200 button " + JSON.stringify(button));
 
-          await sleep(2000);
+          await sleep(1000);
           globalThis.abilityContext.startAbility(
             {
               bundleName: "imagejrelyhap",
@@ -107,9 +107,9 @@ export default function abilityTest() {
                 JSON.stringify(error) + "," + JSON.stringify(data));
               console.debug("ACTS_AppSelectorTest_3200 startAbility end");
 
-              await sleep(2000);
-              await driver.click(button.leftX, button.topY);
+              await sleep(5000);
               commonEvent.subscribe(subscriber, SubscribeCallBack)
+              await driver.click(button.leftX, button.topY);
             })
         })
 
@@ -267,9 +267,9 @@ export default function abilityTest() {
       console.log("ACTS_AppSelectorTest_0300 findComponent");
       let button = await driver.findComponent(BY.text('textbrelyhap.com.example').enabled(true))
       console.log("ACTS_AppSelectorTest_0300 button " + JSON.stringify(button));
-      await button.click();
       subscriber = await commonEvent.createSubscriber(subscriberInfo);
       commonEvent.subscribe(subscriber, SubscribeCallBack)
+      await button.click();
 
       async function SubscribeCallBack(err, data) {
         console.log('ACTS_AppSelectorTest_0300 SubscribeCallBack');
@@ -869,7 +869,7 @@ export default function abilityTest() {
         }, async (error, data) => {
           console.log("ACTS_AppSelectorTest_2300 startAbility " +
             JSON.stringify(error) + "," + JSON.stringify(data));
-          expect(error.code).assertEqual(2097199);
+          expect(error.code).assertEqual(1);
           await sleep(2000);
           let button = await driver.findComponent(BY.text('知道了').enabled(true))
           console.debug("ACTS_AppSelectorTest_2300 button: " + JSON.stringify(button))
@@ -902,7 +902,7 @@ export default function abilityTest() {
         }, async (error, data) => {
           console.log("ACTS_AppSelectorTest_2400 startAbility " +
             JSON.stringify(error) + "," + JSON.stringify(data));
-          expect(error.code).assertEqual(2097199);
+          expect(error.code).assertEqual(1);
           await sleep(2000);
           let button = await driver.findComponent(BY.text('知道了').enabled(true))
           console.debug("ACTS_AppSelectorTest_2400 button: " + JSON.stringify(button))
@@ -935,7 +935,7 @@ export default function abilityTest() {
         }, async (error, data) => {
           console.log("ACTS_AppSelectorTest_2500 startAbility " +
             JSON.stringify(error) + "," + JSON.stringify(data));
-          expect(error.code).assertEqual(2097199);
+          expect(error.code).assertEqual(1);
           await sleep(2000);
           let button = await driver.findComponent(BY.text('知道了').enabled(true))
           console.debug("ACTS_AppSelectorTest_2500 button: " + JSON.stringify(button))
@@ -1242,8 +1242,6 @@ export default function abilityTest() {
         done();
       }
     })
-
-
 
     /*
      * @tc.number: ACTS_AppSelectorTest_3300

@@ -38,7 +38,7 @@
         "srcEntrance": "./ets/ServiceAbility/ServiceAbility.ts",
         "label": "$string:service_ServiceAbility_desc",
         "description": "$string:service_ServiceAbility_desc",
-        "type": "service",
+        "type": "service|dataShare",
         "visible": true
       }
     ]

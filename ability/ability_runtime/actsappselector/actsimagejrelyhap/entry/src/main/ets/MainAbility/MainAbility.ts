@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 import Ability from '@ohos.application.Ability'
-import commonEvent from '@ohos.commonEvent'
 
 export default class MainAbility extends Ability {
     onCreate(want, launchParam) {
@@ -28,7 +27,7 @@ export default class MainAbility extends Ability {
         // Main window is created, set main page for this ability
         console.log("[Demo] MainAbility onWindowStageCreate")
 
-        windowStage.setUIContent(this.context, "pages/index", null)
+        // windowStage.setUIContent(this.context, "pages/index", null)
     }
 
     onWindowStageDestroy() {
