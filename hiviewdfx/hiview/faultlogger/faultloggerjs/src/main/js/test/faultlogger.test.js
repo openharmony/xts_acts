@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import faultlogger from '@ohos.faultLogger'
-
+import hiSysEvent from '@ohos.hiSysEvent'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 export default function FaultlogJsTest() {
 
@@ -47,7 +47,6 @@ describe("FaultlogJsTest", function () {
      * @tc.name: DFX_DFR_Faultlogger_Interface_0200
      * @tc.desc: 检验函数参数输入错误时程序是否会崩溃
      * @tc.require: AR000GICT2
-     * @tc.author:
      */
     it('DFX_DFR_Faultlogger_Interface_0200', 0, async function (done) {
         console.info("---------------------------DFX_DFR_Faultlogger_Interface_0200----------------------------------");
@@ -79,7 +78,6 @@ describe("FaultlogJsTest", function () {
      * @tc.name: DFX_DFR_Faultlogger_Interface_0400
      * @tc.desc: 检验promise同步方式获取faultlog CPP_CRASH日志
      * @tc.require: AR000GICT2
-     * @tc.author:
      */
     it('DFX_DFR_Faultlogger_Interface_0400', 0, async function (done) {
         console.info("---------------------------DFX_DFR_Faultlogger_Interface_0400----------------------------------");
@@ -138,32 +136,28 @@ describe("FaultlogJsTest", function () {
      * @tc.name: DFX_DFR_Faultlogger_Interface_0500
      * @tc.desc: 检验promise同步方式获取faultlog JS_CRASH日志
      * @tc.require: AR000GICT2
-     * @tc.author:
      */
      it('DFX_DFR_Faultlogger_Interface_0500', 0, async function (done) {
         console.info("---------------------------DFX_DFR_Faultlogger_Interface_0500----------------------------------");
         try {
             let now = Date.now();
             console.info("DFX_DFR_Faultlogger_Interface_0500 2 + " + now);
-            const loopTimes = 2;
-            let i = 0;
-            let pro = new Promise(
-                (r, e) => {
-                    setTimeout(function run() {
-                        if (i < loopTimes) {
-                            setTimeout(run, 1001);
-                        } else {
-                            r("done!")
-                            return
-                        }
-                        console.info("--------DFX_DFR_Faultlogger_Interface_0500 3 + " + i + "----------");
-                        ++i;
-                        let dataStr = ["1", "2"]
-                        console.info(dataStr[2].test);
-                    }, 1001);
+            hiSysEvent.write({
+                domain: "ACE",
+                name: "JS_ERROR",
+                eventType: hiSysEvent.EventType.FAULT,
+                params: {
+                    PID: 487,
+                    UID:103,
+                    PACKAGE_NAME: "com.ohos.faultlogger.test",
+                    PROCESS_NAME: "com.ohos.faultlogger.test",
+                    MSG: "faultlogger testcase test.",
+                    REASON: "faultlogger testcase test."
                 }
-            );
-            await pro;
+            }).then(
+                (value) => {
+                    console.log(`HiSysEvent json-callback-success value=${value}`);
+                })
             await msleep(1000);
 
             console.info("--------DFX_DFR_Faultlogger_Interface_0500 4" + "----------");
@@ -193,7 +187,6 @@ describe("FaultlogJsTest", function () {
      * @tc.name: DFX_DFR_Faultlogger_Interface_0300
      * @tc.desc: 检验promise同步方式获取faultlog APP_FREEZE日志
      * @tc.require: AR000GICT2
-     * @tc.author:
      */
      it('DFX_DFR_Faultlogger_Interface_0300', 0, async function (done) {
         console.info("---------------------------DFX_DFR_Faultlogger_Interface_0300----------------------------------");
@@ -239,7 +232,6 @@ describe("FaultlogJsTest", function () {
      * @tc.name: DFX_DFR_Faultlogger_Interface_0100
      * @tc.desc: 检验通过回调方式获取faultlog日志
      * @tc.require: AR000GICT2
-     * @tc.author:
      */
     it('DFX_DFR_Faultlogger_Interface_0100', 0, async function (done) {
         console.info("---------------------------DFX_DFR_Faultlogger_Interface_0100----------------------------------");

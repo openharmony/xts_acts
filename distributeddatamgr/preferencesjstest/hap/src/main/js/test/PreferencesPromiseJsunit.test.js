@@ -43,7 +43,7 @@ describe('preferencesPromiseTest', function () {
 
     /**
      * @tc.name put StringArray promise interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Preferences_0131
+     * @tc.number SUB_DDM_Preferences_Put_Promise_0010
      * @tc.desc put StringArray promise interface test
      */
     it('testPreferencesPutStringArray0131', 0, async function (done) {
@@ -67,7 +67,7 @@ describe('preferencesPromiseTest', function () {
 
     /**
      * @tc.name put NumberArray promise interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Preferences_0132
+     * @tc.number SUB_DDM_Preferences_Put_Promise_0020
      * @tc.desc put NumberArray promise interface test
      */
     it('testPreferencesPutNumberArray0132', 0, async function (done) {
@@ -90,7 +90,7 @@ describe('preferencesPromiseTest', function () {
 
     /**
      * @tc.name put BoolArray promise interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Preferences_0133
+     * @tc.number SUB_DDM_Preferences_Put_Promise_0030
      * @tc.desc put BoolArray promise interface test
      */
     it('testPreferencesPutBoolArray0133', 0, async function (done) {
@@ -113,7 +113,7 @@ describe('preferencesPromiseTest', function () {
 
     /**
      * @tc.name getAll promise interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Preferences_0133
+     * @tc.number SUB_DDM_Preferences_GetAll_Promise_0040
      * @tc.desc getAll promise interface test
      */
     it('testPreferencesGetAll0001', 0, async function (done) {
@@ -159,7 +159,7 @@ describe('preferencesPromiseTest', function () {
 
     /**
      * @tc.name clear promise interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Promise_0010
+     * @tc.number SUB_DDM_Preferences_Clear_Promise_0050
      * @tc.desc clear promise interface test
      */
     it('testPreferencesClear0011', 0, async function (done) {
@@ -178,7 +178,7 @@ describe('preferencesPromiseTest', function () {
 
     /**
      * @tc.name has string interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Preferences_0020
+     * @tc.number SUB_DDM_Preferences_Has_Promise_0060
      * @tc.desc has string interface test
      */
     it('testPreferencesHasKey0031', 0, async function (done) {
@@ -195,7 +195,7 @@ describe('preferencesPromiseTest', function () {
 
     /**
      * @tc.name has int interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Preferences_0140
+     * @tc.number SUB_DDM_Preferences_Has_Promise_0070
      * @tc.desc has int interface test
      */
     it('testPreferencesHasKey0032', 0, async function (done) {
@@ -212,7 +212,7 @@ describe('preferencesPromiseTest', function () {
 
     /**
      * @tc.name has float interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Preferences_0150
+     * @tc.number SUB_DDM_Preferences_Put_Promise_0080
      * @tc.desc has float interface test
      */
     it('testPreferencesHasKey0033', 0, async function (done) {
@@ -229,7 +229,7 @@ describe('preferencesPromiseTest', function () {
 
     /**
      * @tc.name has boolean interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Preferences_0160
+     * @tc.number SUB_DDM_Preferences_Has_Promise_0090
      * @tc.desc has boolean interface test
      */
     it('testPreferencesHasKey0034', 0, async function (done) {
@@ -246,7 +246,7 @@ describe('preferencesPromiseTest', function () {
 
     /**
      * @tc.name has long interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Preferences_0170
+     * @tc.number SUB_DDM_Preferences_Put_Promise_0100
      * @tc.desc has long interface test
      */
     it('testPreferencesHasKey0035', 0, async function (done) {
@@ -263,7 +263,7 @@ describe('preferencesPromiseTest', function () {
 
     /**
      * @tc.name get string promise interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Preferences_0030
+     * @tc.number SUB_DDM_Preferences_Get_Promise_0110
      * @tc.desc get string promise interface test
      */
     it('testPreferencesGetDefValue0061', 0, async function (done) {
@@ -280,7 +280,7 @@ describe('preferencesPromiseTest', function () {
 
     /**
      * @tc.name get float promise interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Preferences_0040
+     * @tc.number SUB_DDM_Preferences_Get_Promise_0120
      * @tc.desc get float promise interface test
      */
     it('testPreferencesGetFloat0071', 0, async function (done) {
@@ -298,7 +298,7 @@ describe('preferencesPromiseTest', function () {
 
     /**
      * @tc.name get int promise interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Preferences_0050
+     * @tc.number SUB_DDM_Preferences_Put_Promise_0130
      * @tc.desc get int promise interface test
      */
     it('testPreferencesGetInt0081', 0, async function (done) {
@@ -316,7 +316,7 @@ describe('preferencesPromiseTest', function () {
 
     /**
      * @tc.name get long promise interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Preferences_0060
+     * @tc.number SUB_DDM_Preferences_Put_Promise_0140
      * @tc.desc get long promise interface test
      */
     it('testPreferencesGetLong0091', 0, async function (done) {
@@ -334,7 +334,7 @@ describe('preferencesPromiseTest', function () {
 
     /**
      * @tc.name get String promise interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Preferences_0070
+     * @tc.number SUB_DDM_Preferences_Get_Promise_0150
      * @tc.desc get String promise interface test
      */
     it('tesPreferencesGetString101', 0, async function (done) {
@@ -353,7 +353,7 @@ describe('preferencesPromiseTest', function () {
 
     /**
      * @tc.name put boolean promise interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Preferences_0090
+     * @tc.number SUB_DDM_Preferences_Put_Promise_0160
      * @tc.desc put boolean promise interface test
      */
     it('testPreferencesPutBoolean0121', 0, async function (done) {
@@ -373,7 +373,7 @@ describe('preferencesPromiseTest', function () {
 
     /**
      * @tc.name put float promise interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Preferences_0100
+     * @tc.number SUB_DDM_Preferences_Put_Promise_0170
      * @tc.desc put float promise interface test
      */
     it('testPreferencesPutFloat0131', 0, async function (done) {
@@ -393,7 +393,7 @@ describe('preferencesPromiseTest', function () {
 
     /**
      * @tc.name put int promise interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Preferences_0110
+     * @tc.number SUB_DDM_Preferences_Put_Promise_0180
      * @tc.desc put int promise interface test
      */
     it('testPreferencesPutInt0141', 0, async function (done) {
@@ -413,7 +413,7 @@ describe('preferencesPromiseTest', function () {
 
     /**
      * @tc.name put long promise interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Preferences_0120
+     * @tc.number SUB_DDM_Preferences_Put_Promise_0190
      * @tc.desc put long promise interface test
      */
     it('testPreferencesPutLong0151', 0, async function (done) {
@@ -433,7 +433,7 @@ describe('preferencesPromiseTest', function () {
 
     /**
      * @tc.name put String promise interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Preferences_0130
+     * @tc.number SUB_DDM_Preferences_Put_Promise_0200
      * @tc.desc put String promise interface test
      */
     it('testPreferencesPutString0161', 0, async function (done) {
@@ -444,6 +444,23 @@ describe('preferencesPromiseTest', function () {
             await mPreferences.flush();
             let per2 = await mPreferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue")
             expect('').assertEqual(per2);
+        }).catch((err) => {
+            expect(null).assertFail();
+        });
+        await promise;
+        done();
+    })
+
+    /**
+     * @tc.name get string promise interface test
+     * @tc.number SUB_DDM_Preferences_Get_Promise_0210
+     * @tc.desc get string promise interface test
+     */
+     it('testPreferencesGetDefValue00162', 0, async function (done) {
+        await mPreferences.clear();
+        const promise = mPreferences.get(KEY_TEST_BOOLEAN_ELEMENT, true);
+        promise.then((ret) => {
+            expect(true).assertEqual(ret);
         }).catch((err) => {
             expect(null).assertFail();
         });

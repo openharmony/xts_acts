@@ -13,15 +13,15 @@
  * limitations under the License.
  */
 import featureAbility from '@ohos.ability.featureAbility'
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
 let resultCode = 123;
 let bundleName = 'ohso.act.aafwk';
 let mainAbilityName = 'ohos.acts.aafwk.jsap';
 const errCode = 1;
 const errCode1 = 202;
-
-describe('ConnectAbilityTest', function () {
+export default function startAbilityTest() {
+describe('StartAbilityTest', function () {
   
     /*
     * @tc.number: SUB_AA_JsApi_StartAbility_0100
@@ -449,3 +449,4 @@ describe('ConnectAbilityTest', function () {
         })
     })
 })
+}

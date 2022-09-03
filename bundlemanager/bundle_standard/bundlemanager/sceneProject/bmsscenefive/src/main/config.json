@@ -17,7 +17,7 @@
     "package": "com.example.myapplication",
     "name": ".MyApplication",
     "deviceType": [
-      "phone"
+      "default"
     ],
     "distro": {
       "deliveryWithInstall": true,
@@ -45,7 +45,7 @@
         "isVisible": "true",
         "launchType": "standard",
         "language": "C++", 
-        "uri":"dataability://"
+        "uri":"dataability://com.example.myapplication5"
       }
     ],
     "js": [

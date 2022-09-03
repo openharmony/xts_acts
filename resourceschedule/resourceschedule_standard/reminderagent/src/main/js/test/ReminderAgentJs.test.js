@@ -58,7 +58,7 @@ describe('ReminderAgentTest', function () {
   console.info('start################################start');
   
 	/**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_001
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_001
      * @tc.name      testActionButton_001
      * @tc.desc      test ActionButton title.
      */
@@ -89,7 +89,7 @@ describe('ReminderAgentTest', function () {
     })
 	
 	/**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_002
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_002
      * @tc.name      testActionButton_002
      * @tc.desc      test ActionButton 
      */
@@ -124,7 +124,7 @@ describe('ReminderAgentTest', function () {
     })
 	
 	/**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_003
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_003
      * @tc.name      testWantAgentAbilityName_003
      * @tc.desc      test wantAgent abilityName 
      */
@@ -158,7 +158,7 @@ describe('ReminderAgentTest', function () {
     })
 	
 	/**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_004
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_004
      * @tc.name      testMaxScreenWantAgentAbilityName_004
      * @tc.desc      test MaxScreenWantAgent abilityName 
      */
@@ -190,7 +190,7 @@ describe('ReminderAgentTest', function () {
     })
 	
 	/**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_005
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_005
      * @tc.name      testReminderRequestTitle_005
      * @tc.desc      test ReminderRequest title 
      */
@@ -220,7 +220,7 @@ describe('ReminderAgentTest', function () {
     })
 	
 	/**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_006
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_006
      * @tc.name      testReminderRequestContent_006
      * @tc.desc      test ReminderRequest content 
      */
@@ -250,7 +250,7 @@ describe('ReminderAgentTest', function () {
     })
 	
 	/**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_007
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_007
      * @tc.name      testReminderRequestType_007
      * @tc.desc      test ReminderRequest LocalDateTime second 
      */
@@ -278,7 +278,7 @@ describe('ReminderAgentTest', function () {
     })
 	
 	/**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_008
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_008
      * @tc.name      testReminderRequestType_008
      * @tc.desc      test ReminderRequest ReminderRequestAlarm daysOfWeek 
      */
@@ -303,7 +303,7 @@ describe('ReminderAgentTest', function () {
     })
   
   /**
-   * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_009
+   * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_009
    * @tc.name      testPublishReminderNorFun_009
    * @tc.desc      test reminderId is outo increment with the promise function.
    */
@@ -333,7 +333,7 @@ describe('ReminderAgentTest', function () {
   })
 
   /**
-   * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_010
+   * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_010
    * @tc.name      testPublishReminderNorFun_010
    * @tc.desc      test reminderId is outo increment with the callback function.
    */
@@ -355,7 +355,7 @@ describe('ReminderAgentTest', function () {
   })
 
   /**
-   * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_011
+   * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_011
    * @tc.name      testAddNotificationSlotNorFun_011
    * @tc.desc      Adds a reminder notification slot with the callback function.
    */
@@ -374,7 +374,7 @@ describe('ReminderAgentTest', function () {
   })
 
   /**
-   * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_012
+   * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_012
    * @tc.name      testAddNotificationSlotNorFun_012
    * @tc.desc      Adds a reminder notification slot with the promise function and null mySlot.
    */
@@ -399,7 +399,7 @@ describe('ReminderAgentTest', function () {
     }})
   
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_013
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_013
      * @tc.name      testAddNotificationSlotNorFun_013
      * @tc.desc      Adds a reminder notification slot with the promise function and mySlot type 3.
      */
@@ -422,7 +422,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_014
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_014
      * @tc.name      testAddNotificationSlotNorFun_014
      * @tc.desc      Adds a reminder notification slot with the promise function and mySlot more types.
      */
@@ -461,7 +461,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_015
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_015
      * @tc.name      testGetValidRemindersNorFun_015
      * @tc.desc      Obtains all valid remindeers set by the current application. 
      */
@@ -485,7 +485,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_016
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_016
      * @tc.name      testCancelAllRemindersNorFun_016
      * @tc.desc      test cancel all reminders can cancel all exist reminders
      */
@@ -509,7 +509,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_017
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_017
      * @tc.name      testCancelRemindersNorFun_017
      * @tc.desc      test cancelReminder with not exit reminder.
      */
@@ -543,7 +543,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_018
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_018
      * @tc.name      testCancelRemindersNorFun_018
      * @tc.desc      test cancel reminder with not exit reminder.
      */
@@ -577,7 +577,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_019
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_019
      * @tc.name      testCancelRemindersNorFun_019
      * @tc.desc      test cancel reminder with exist reminder.
      */
@@ -615,7 +615,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_020
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_020
      * @tc.name      testCancelRemindersNorFun_020
      * @tc.desc      test cancel reminder with exist reminder with the promise function.
      */
@@ -653,7 +653,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_021
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_021
      * @tc.name      testGetValidRemindersNorFun_021
      * @tc.desc      test get valid reminders verify all the information is correct.
      */
@@ -684,7 +684,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_022
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_022
      * @tc.name      testGetValidRemindersNorFun_022
      * @tc.desc      test get valid reminders verify all the information is correct with the callback function.
      */
@@ -715,7 +715,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_023
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_023
      * @tc.name      testRemoveNotificationSlotNorFun_023
      * @tc.desc      test remove notification Slot with not exist slot.
      */
@@ -730,7 +730,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_024
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_024
      * @tc.name      testPublishReminderTimer_024
      * @tc.desc      test timer without reminderType .
      */
@@ -750,7 +750,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_025
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_025
      * @tc.name      testPublishReminderTimer_025
      * @tc.desc      test timer without triggerTimeInSeconds.
      */
@@ -770,7 +770,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_026
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_026
      * @tc.name      testPublishReminderTimer_026
      * @tc.desc      test timer triggerTimeInSeconds with wrong parameter.
      */
@@ -791,7 +791,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_027
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_027
      * @tc.name      testPublishReminderTimer_027
      * @tc.desc      test timer triggerTimeInSeconds with illegal parameter.
      */
@@ -812,7 +812,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_028
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_028
      * @tc.name      testPublishReminderTimer_028
      * @tc.desc      test timer triggerTimeInSeconds with illegal parameter.
      */
@@ -833,7 +833,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_029
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_029
      * @tc.name      testPublishReminderTimer_029
      * @tc.desc      test timer normal parameter,return with callback.
      */
@@ -854,7 +854,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_030
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_030
      * @tc.name      testPublishReminderTimer_030
      * @tc.desc      test timer normal parameter,return with promise.
      */
@@ -875,7 +875,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_031
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_031
      * @tc.name      testPublishReminderAlarm_031
      * @tc.desc      test alarm without reminderType parameter.
      */
@@ -896,7 +896,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_032
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_032
      * @tc.name      testPublishReminderAlarm_032
      * @tc.desc      test alarm without hour parameter.
      */
@@ -917,7 +917,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_033
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_033
      * @tc.name      testPublishReminderAlarm_033
      * @tc.desc      test alarm with illegal hour parameter.
      */
@@ -939,7 +939,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_034
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_034
      * @tc.name      testPublishReminderAlarm_034
      * @tc.desc      test alarm hour with illegal parameter 24.
      */
@@ -961,7 +961,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_035
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_035
      * @tc.name      testPublishReminderAlarm_035
      * @tc.desc      test alarm without minute parameter.
      */
@@ -982,7 +982,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_036
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_036
      * @tc.name      testPublishReminderAlarmNorFun_036
      * @tc.desc      test alarm with illegal minute parameter.
      */
@@ -1004,7 +1004,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_037
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_037
      * @tc.name      testPublishReminderAlarm_037
      * @tc.desc      test alarm hour with illegal parameter 60.
      */
@@ -1026,7 +1026,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_038
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_038
      * @tc.name      testPublishReminderAlarmFun_038
      * @tc.desc      test alarm with normal parameter,return with callback.
      */
@@ -1048,7 +1048,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_039
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_039
      * @tc.name      testPublishReminderAlarmFun_039
      * @tc.desc      test alarm with normal parameter,return with promise.
      */
@@ -1070,7 +1070,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_040
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_040
      * @tc.name      testPublishReminderAlarm_040
      * @tc.desc      test alarm with illegal daysOfWeek parameter.
      */
@@ -1093,7 +1093,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_041
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_041
      * @tc.name      testPublishReminderAlarm_041
      * @tc.desc      test alarm with null daysOfWeek parameter.
      */
@@ -1116,7 +1116,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_042
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_042
      * @tc.name      testPublishReminderCalendar_042
      * @tc.desc      test calendar without reminderType parameter.
      */
@@ -1143,7 +1143,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_043
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_043
      * @tc.name      testPublishReminderCalendar_043
      * @tc.desc      test calendar without year parameter.
      */
@@ -1170,7 +1170,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_044
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_044
      * @tc.name      testPublishReminderCalendar_044
      * @tc.desc      test calendar with illegal year parameter.
      */
@@ -1198,7 +1198,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_045
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_045
      * @tc.name      testPublishReminderCalendar_045
      * @tc.desc      test calendar without month parameter.
      */
@@ -1225,7 +1225,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_046
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_046
      * @tc.name      testPublishReminderCalendar_046
      * @tc.desc      test calendar with illegal month parameter.
      */
@@ -1253,7 +1253,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_047
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_047
      * @tc.name      testPublishReminderCalendar_047
      * @tc.desc      test calendar with illegal month parameter 0.
      */
@@ -1281,7 +1281,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_048
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_048
      * @tc.name      testPublishReminderCalendar_048
      * @tc.desc      test calendar with illegal month parameter 13.
      */
@@ -1309,7 +1309,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_049
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_049
      * @tc.name      testPublishReminderCalendar_049
      * @tc.desc      test calendar without day parameter.
      */
@@ -1336,7 +1336,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_050
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_050
      * @tc.name      testPublishReminderCalendar_050
      * @tc.desc      test calendar with illegal day parameter.
      */
@@ -1364,7 +1364,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_051
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_051
      * @tc.name      testPublishReminderCalendar_051
      * @tc.desc      test calendar with illegal day parameter 0.
      */
@@ -1392,7 +1392,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_052
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_052
      * @tc.name      testPublishReminderCalendar_052
      * @tc.desc      test calendar with illegal day parameter 32.
      */
@@ -1420,7 +1420,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_053
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_053
      * @tc.name      testPublishReminderCalendar_053
      * @tc.desc      test calendar without hour parameter.
      */
@@ -1447,7 +1447,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_054
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_054
      * @tc.name      testPublishReminderCalendar_054
      * @tc.desc      test calendar with illegal hour parameter.
      */
@@ -1475,7 +1475,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_055
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_055
      * @tc.name      testPublishReminderCalendar_055
      * @tc.desc      test calendar with illegal hour parameter 24.
      */
@@ -1503,7 +1503,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_056
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_056
      * @tc.name      testPublishReminderCalendar_056
      * @tc.desc      test calendar without minute parameter.
      */
@@ -1530,7 +1530,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_057
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_057
      * @tc.name      testPublishReminderCalendar_057
      * @tc.desc      test calendar with illegal minute parameter.
      */
@@ -1558,7 +1558,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_058
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_058
      * @tc.name      testPublishReminderCalendar_058
      * @tc.desc      test calendar with illegal minute parameter 60.
      */
@@ -1586,7 +1586,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_059
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_059
      * @tc.name      testPublishReminderCalendarFun_059
      * @tc.desc      test calendar with normal parameter,return with callback.
      */
@@ -1614,7 +1614,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_060
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_060
      * @tc.name      testPublishReminderCalendarFun_060
      * @tc.desc      test calendar with normal parameter,return with promise.
      */
@@ -1642,7 +1642,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_061
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_061
      * @tc.name      testPublishReminderCalendar_061
      * @tc.desc      test calendar with illegal repeatMonths parameter 13.
      */
@@ -1671,7 +1671,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_062
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_062
      * @tc.name      testPublishReminderCalendar_062
      * @tc.desc      test calendar with illegal repeatMonths parameter 0.
      */
@@ -1700,7 +1700,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_063
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_063
      * @tc.name      testPublishReminderCalendar_063
      * @tc.desc      test calendar with illegal repeatDays parameter 32.
      */
@@ -1729,7 +1729,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_064
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_064
      * @tc.name      testPublishReminderCalendar_064
      * @tc.desc      test calendar with illegal repeatDays parameter 0.
      */
@@ -1758,7 +1758,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_065
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_065
      * @tc.name      testPublishReminderCalendar_065
      * @tc.desc      test calendar with repeatMonths��repeatDays parameter null,return with callback.
      */
@@ -1788,7 +1788,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_066
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_066
      * @tc.name      testPublishReminderCalendar_066
      * @tc.desc      test calendar with repeatMonths��repeatDays parameter null,return with promise.
      */
@@ -1817,7 +1817,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_067
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_067
      * @tc.name      testGetValidRemindersButton_067
      * @tc.desc      test actionButton with illegal parameter.
      */
@@ -1858,7 +1858,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_068
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_068
      * @tc.name      testGetValidRemindersButton_068
      * @tc.desc      test actionButton without title.
      */
@@ -1898,7 +1898,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_069
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_069
      * @tc.name      testGetValidRemindersButton_069
      * @tc.desc      test actionButton with illegal title.
      */
@@ -1939,7 +1939,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_070
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_070
      * @tc.name      testGetValidRemindersSnoozTimes_070
      * @tc.desc      test snoozeTimes with parameter 0.
      */
@@ -1968,7 +1968,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_071
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_071
      * @tc.name      testGetValidRemindersSnoozTimes_071
      * @tc.desc      test snoozeTimes with illegal parameter.
      */
@@ -1997,7 +1997,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_072
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_072
      * @tc.name      testGetValidRemindersSnoozTimes_072
      * @tc.desc      test snoozeTimes with illegal parameter.
      */
@@ -2026,7 +2026,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_073
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_073
      * @tc.name      testGetValidRemindersRingDuration_073
      * @tc.desc      test ringDuration default parameters.
      */
@@ -2054,7 +2054,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_074
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_074
      * @tc.name      testGetValidRemindersRingDuration_074
      * @tc.desc      test ringDuration with illegal parameter.
      */
@@ -2083,7 +2083,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_075
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_075
      * @tc.name      testGetValidRemindersRingDuration_075
      * @tc.desc      test ringDuration with illegal parameter.
      */
@@ -2112,7 +2112,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_076
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_076
      * @tc.name      testGetValidRemindersTimeInterval_076
      * @tc.desc      test timeInterval default parameters.
      */
@@ -2140,7 +2140,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_077
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_077
      * @tc.name      testGetValidRemindersTimeInterval_077
      * @tc.desc      test timeInterval with illegal parameters.
      */
@@ -2169,7 +2169,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_078
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_078
      * @tc.name      testGetValidRemindersTimeInterval_078
      * @tc.desc      test timeInterval with illegal parameters.
      */
@@ -2198,7 +2198,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_079
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_079
      * @tc.name      testGetValidRemindersTitle_079
      * @tc.desc      test title with empty parameters.
      */
@@ -2230,7 +2230,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_080
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_080
      * @tc.name      testGetValidRemindersTitle_080
      * @tc.desc      test title with illegal parameters.
      */
@@ -2262,7 +2262,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_081
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_081
      * @tc.name      testGetValidRemindersSlotType_081
      * @tc.desc      test slotType default parameters.
      */
@@ -2291,7 +2291,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_082
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_082
      * @tc.name      testGetValidRemindersSlotType_082
      * @tc.desc      test slotType with illegal parameter 5.
      */
@@ -2321,7 +2321,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_083
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_083
      * @tc.name      testGetValidRemindersPkgName_083
      * @tc.desc      test pkgName with empty parameters.
      */
@@ -2354,7 +2354,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_084
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_084
      * @tc.name      testGetValidRemindersPkgName_084
      * @tc.desc      test pkgName with illegal parameters.
      */
@@ -2387,7 +2387,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_085
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_085
      * @tc.name      testGetValidRemindersAbilityName_085
      * @tc.desc      test abilityName with empty parameters.
      */
@@ -2421,7 +2421,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_086
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_086
      * @tc.name      testGetValidRemindersAbilityName_086
      * @tc.desc      test abilityName with illegal parameters.
      */
@@ -2455,7 +2455,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_087
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_087
      * @tc.name      testGetValidRemindersContent_087
      * @tc.desc      test content with illegal parameters.
      */
@@ -2485,7 +2485,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_088
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_088
      * @tc.name      testGetValidRemindersContent_088
      * @tc.desc      test content with illegal parameters.
      */
@@ -2515,7 +2515,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_089
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_089
      * @tc.name      testGetValidRemindersExpiredContent_089
      * @tc.desc      test expiredContent with empty parameters.
      */
@@ -2546,7 +2546,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_090
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_090
      * @tc.name      testGetValidRemindersExpiredContent_090
      * @tc.desc      test expiredContent with illegal parameters.
      */
@@ -2577,7 +2577,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_091
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_091
      * @tc.name      testGetValidRemindersSnoozeContent_091
      * @tc.desc      test snoozeContent with empty parameters.
      */
@@ -2608,7 +2608,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_092
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_092
      * @tc.name      testGetValidRemindersSnoozeContent_092
      * @tc.desc      test snoozeContent with illegal parameters.
      */
@@ -2638,7 +2638,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_093
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_093
      * @tc.name      testGetValidRemindersNotificationId_093
      * @tc.desc      test notificationId with illegal parameters.
      */
@@ -2669,7 +2669,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_094
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_094
      * @tc.name      testGetValidRemindersNotificationId_094
      * @tc.desc      test snoozeContent with illegal parameters.
      */
@@ -2700,7 +2700,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_095
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_095
      * @tc.name      testReminderType_095
      * @tc.desc      test timer default parameter with 0.
      */
@@ -2712,7 +2712,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_096
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_096
      * @tc.name      testReminderType_096
      * @tc.desc      test calendar default parameter with 1.
      */
@@ -2724,7 +2724,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_097
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_097
      * @tc.name      testReminderType_097
      * @tc.desc      test alarm default parameter with 2.
      */
@@ -2736,7 +2736,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_098
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_098
      * @tc.name      testActionButtonType_098
      * @tc.desc      test button close default parameter with 0.
      */
@@ -2748,7 +2748,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_099
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_099
      * @tc.name      testActionButtonType_099
      * @tc.desc      test button snooze default parameter with 1.
      */
@@ -2760,7 +2760,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_0100
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_0100
      * @tc.name      testNotificationSlotType_0100
      * @tc.desc      test UNKNOWN_TYPE default parameter with 0.
      */
@@ -2772,7 +2772,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_0101
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_0101
      * @tc.name      testNotificationSlotType_0101
      * @tc.desc      test SOCIAL_COMMUNICATION default parameter with 1.
      */
@@ -2784,7 +2784,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_0102
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_0102
      * @tc.name      testNotificationSlotType_0102
      * @tc.desc      test SERVICE.INFORMATION default parameter with 2.
      */
@@ -2796,7 +2796,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_0103
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_0103
      * @tc.name      testNotificationSlotType_0103
      * @tc.desc      test CONTENT_INFORMATION default parameter with 3.
      */
@@ -2808,7 +2808,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_0104
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_0104
      * @tc.name      testNotificationSlotType_0104
      * @tc.desc      test OTHER_TYPES default parameter with 65535.
      */
@@ -2820,7 +2820,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_0105
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_0105
      * @tc.name      testRemoveNotificationSlotNorFun_0105
      * @tc.desc      test remove notification Slot with not exist slot with the promise function.
      */
@@ -2841,7 +2841,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_0106
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_0106
      * @tc.name      testRemoveNotificationSlotNorFun_0106
      * @tc.desc      test remove notification Slot with exist slot.
      */
@@ -2859,7 +2859,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_0107
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_0107
      * @tc.name      testRemoveNotificationSlotNorFun_0107
      * @tc.desc      test remove notification Slot with exist slot with the promise function.
      */
@@ -2877,7 +2877,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_0108
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_0108
      * @tc.name      testGetValidRemindersNorFun_0108
      * @tc.desc      test get valid reminders with promise function.
      */
@@ -2897,7 +2897,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_0109
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_0109
      * @tc.name      testGetValidRemindersNorFun_0109
      * @tc.desc      test get valid reminders with the callback function.
      */
@@ -2917,7 +2917,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_0110
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_0110
      * @tc.name      testPublishReminderNorAlarmFun_0110
      * @tc.desc      test publish reminder with a nomal alarm promise function.
      */
@@ -2936,7 +2936,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_0111
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_0111
      * @tc.name      testPublishReminderNorAlarmFun_0111
      * @tc.desc      test publish reminder with a nomal alarm callback function.
      */
@@ -2955,7 +2955,7 @@ describe('ReminderAgentTest', function () {
     })
 
     /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_0112
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_0112
      * @tc.name      testPublishReminderAbNorFun_0112
      * @tc.desc      test publish reminder with max number limit of each application.
      */
@@ -2989,7 +2989,7 @@ describe('ReminderAgentTest', function () {
     })
 
        /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_0113
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_0113
      * @tc.name      testReminderTypeCalendarFun_0113
      * @tc.desc      test cancelAllReminders can cancel all exist reminders with type of calendar.
      */
@@ -3022,7 +3022,7 @@ describe('ReminderAgentTest', function () {
       })
 
      /**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_0114
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_0114
      * @tc.name      testPublishReminderTypeCalendarFun_0114
      * @tc.desc      test publish reminders with type of calendar.
      */
@@ -3105,7 +3105,7 @@ describe('ReminderAgentTest', function () {
       })
 	
 	/**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_0115
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_0115
      * @tc.name      testActionButtonType_0115
      * @tc.desc      test action butto type type = 0.
      */
@@ -3122,7 +3122,7 @@ describe('ReminderAgentTest', function () {
     })
 	
 	/**
-     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_API_0116
+     * @tc.number    SUB_RESOURCESCHEDULE_REMINDER_AGENT_XTS_0116
      * @tc.name      testActionButtonType_0116
      * @tc.desc      test action butto type type = 1.
      */

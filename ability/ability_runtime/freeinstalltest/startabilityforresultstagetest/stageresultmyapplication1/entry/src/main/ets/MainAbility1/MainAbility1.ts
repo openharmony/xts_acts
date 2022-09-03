@@ -52,7 +52,6 @@ export default class MainAbility1 extends Ability {
                     },
                 }
             );
-            globalThis.abilityContext.terminateSelf();
             console.info('fAStartAbilityForResultPromise terminateSelfWithResult END');
         }, 1000);
     }

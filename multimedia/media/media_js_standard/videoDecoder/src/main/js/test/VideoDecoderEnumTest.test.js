@@ -300,14 +300,14 @@ describe('VideoDecoderEnum', function () {
     }
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_DECODER_ENUM_CodecBuffer_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_DECODER_ENUM_CodecBuffer_0100
         * @tc.name      : 001.CodecBuffer
         * @tc.desc      : Test Interface CodecBuffer
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */ 
-    it('SUB_MEDIA_VIDEO_DECODER_ENUM_CodecBuffer_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_DECODER_ENUM_CodecBuffer_0100', 0, async function (done) {
         ES_FRAME_SIZE = H264_FRAME_SIZE_60FPS_320;
         isCodecData = true;
         let srcPath = 'out_320_240_10s.h264';

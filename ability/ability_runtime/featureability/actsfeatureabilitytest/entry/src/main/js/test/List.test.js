@@ -12,5 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-require('./FeatureAbilityJsunit.test.js')
-require('./StartAbilityJsunit.test.js')
+import actsFeatureAbilityTest from './FeatureAbilityJsunit.test.js'
+import startAbilityTest from './StartAbilityJsunit.test.js'
+
+export default function testsuite() {
+    actsFeatureAbilityTest()
+    startAbilityTest()
+}

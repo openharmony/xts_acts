@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActBmsStageEtsTest.hap"
+                "ActsBmsStageEtsTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

@@ -22,7 +22,8 @@ const VIDEO_TRACK = 'video_track';
 const AUDIO_TRACK = 'audio_track';
 const AUDIO_VIDEO_TYPE = 'audio_video';
 const ONLYVIDEO_TYPE = 'only_video';
-const DELTA_TIME = 1000;
+const DELTA_TIME = 1500;
+const BITRATE_DELTA_TIME = 20000;
 const PLAY_TIME = 1000;
 
 
@@ -50,13 +51,25 @@ export function getTrackArray(videoType, recorderConfigFile) {
     if (videoType == AUDIO_VIDEO_TYPE) {
         let audioTrack = new Array(recorderConfigFile.audioBitrate, recorderConfigFile.audioChannels,
                                    'audio/mpeg', recorderConfigFile.audioSampleRate);
-        let videoTrack = new Array('video/mpeg', recorderConfigFile.videoFrameHeight,
-                                   recorderConfigFile.videoFrameWidth);
+        let videoTrack = null;
+        if (recorderConfigFile.videoCodec == 'video/avc') {
+            videoTrack = new Array('video/x-h264', recorderConfigFile.videoFrameHeight,
+            recorderConfigFile.videoFrameWidth);
+        } else {
+            videoTrack = new Array('video/mpeg', recorderConfigFile.videoFrameHeight,
+            recorderConfigFile.videoFrameWidth);
+        }
         let trackArray = new Array(videoTrack, audioTrack);
         return trackArray;
     } else if (videoType == ONLYVIDEO_TYPE) {
-        let videoTrack = new Array('video/mpeg',
-                                   recorderConfigFile.videoFrameHeight, recorderConfigFile.videoFrameWidth);
+        let videoTrack = null;
+        if (recorderConfigFile.videoCodec == 'video/avc') {
+            videoTrack = new Array('video/x-h264', recorderConfigFile.videoFrameHeight,
+            recorderConfigFile.videoFrameWidth);
+        } else {
+            videoTrack = new Array('video/mpeg', recorderConfigFile.videoFrameHeight,
+            recorderConfigFile.videoFrameWidth);
+        }
         let trackArray = new Array(videoTrack);
         return trackArray;
     } else {
@@ -78,7 +91,7 @@ export function checkDescription(obj, trackTpye, descriptionValue) {
         expect(obj['width']).assertEqual(descriptionValue[index++]);
     } else {
         console.info('case audio bitrate is  '+ obj['bitrate']);
-        expect(obj['bitrate']).assertClose(descriptionValue[index++], 2 * DELTA_TIME);
+        expect(Math.abs(obj['bitrate'] - descriptionValue[index++])).assertLess(BITRATE_DELTA_TIME);
         console.info('case audio channel_count is  '+ obj['channel_count']);
         expect(obj['channel_count']).assertEqual(descriptionValue[index++]);
         console.info('case audio codec_mime is  '+ obj['codec_mime']);
@@ -115,7 +128,7 @@ export async function checkVideos(playFdPath, duration, trackArray, playerSurfac
     }
     await videoPlayer.prepare().then(() => {
         expect(videoPlayer.state).assertEqual('prepared');
-        expect(videoPlayer.duration).assertClose(duration, DELTA_TIME);
+        expect(Math.abs(videoPlayer.duration - duration)).assertLess(DELTA_TIME);
         console.info('case prepare called!!');
     }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
 
@@ -136,7 +149,7 @@ export async function checkVideos(playFdPath, duration, trackArray, playerSurfac
         expect(videoPlayer.state).assertEqual('playing');
     }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
     let endTime = videoPlayer.currentTime;
-    expect(endTime - startTime).assertClose(PLAY_TIME, DELTA_TIME);
+    expect(Math.abs(endTime - startTime - PLAY_TIME)).assertLess(DELTA_TIME);
 
     await videoPlayer.stop().then(() => {
         console.info('case stop called!!');

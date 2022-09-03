@@ -22,15 +22,6 @@ struct PanGestureExample {
   @State offsetY: number = 0
   @State touchable: boolean = true;
   @State isTouched: boolean = false;
-
-  onPageShow() {
-    let ChangeEvent = {
-      eventId: 23,
-      priority: events_emitter.EventPriority.LOW
-    }
-    events_emitter.on(ChangeEvent, this.ChangCallBack)
-  }
-
   private ChangCallBack = (eventData) => {
     console.info("[PanGesture] ChangCallBack stateChangCallBack");
     if (eventData != null) {
@@ -39,6 +30,14 @@ struct PanGestureExample {
         this.touchable = eventData.data.touchable;
       }
     }
+  }
+
+  onPageShow() {
+    var ChangeEvent = {
+      eventId: 23,
+      priority: events_emitter.EventPriority.LOW
+    }
+    events_emitter.on(ChangeEvent, this.ChangCallBack)
   }
 
   build() {
@@ -54,8 +53,8 @@ struct PanGestureExample {
     .translate({ x: this.offsetX, y: this.offsetY, z: 5 })
     .touchable(this.touchable)
     .gesture(
-    PanGesture({ fingers: 1, direction: PanDirection.All, distance: 1 })
-      .onActionStart((event: PanGestureEvent) => {
+      PanGesture({ fingers: 1, direction: PanDirection.All, distance: 1 })
+      .onActionStart((event: GestureEvent) => {
         console.info('Pan start')
         console.log('PanGesture globalX' + event.globalX);
         console.log('PanGesture globalY' + event.globalY);
@@ -67,14 +66,15 @@ struct PanGestureExample {
         console.log('PanGesture pinchCenterX' + event.pinchCenterX);
         console.log('PanGesture pinchCenterY' + event.pinchCenterY);
       })
-      .onActionUpdate((event: PanGestureEvent) => {
+      .onActionUpdate((event: GestureEvent) => {
         this.offsetX = event.offsetX
         this.offsetY = event.offsetY
       })
       .onActionEnd(() => {
         console.info('Pan end')
       })
-      .onTouch((event: TouchEvent) => {
+    )
+    .onTouch((event: TouchEvent) => {
         console.log('[PanGesture] TouchType start');
         this.isTouched = true
         if (event.type === TouchType.Down) {
@@ -104,7 +104,5 @@ struct PanGestureExample {
           console.info("[PanGesture] emit action state err: " + JSON.stringify(err.message))
         }
       })
-    )
   }
 }
-

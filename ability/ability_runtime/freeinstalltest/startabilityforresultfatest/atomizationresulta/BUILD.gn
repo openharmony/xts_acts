@@ -13,7 +13,7 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("AtomizationResultA") {
+ohos_hap_assist_suite("AtomizationResultA") {
   hap_profile = "./entry/src/main/config.json"
   deps = [
     ":atomizationresulta_ets_assets",
@@ -22,6 +22,8 @@ ohos_js_hap_suite("AtomizationResultA") {
   ets2abc = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "AtomizationResultA"
+  subsystem_name = "ability"
+  part_name = "ability_runtime"
 }
 ohos_js_assets("atomizationresulta_ets_assets") {
   source_dir = "./entry/src/main/ets/MainAbility"

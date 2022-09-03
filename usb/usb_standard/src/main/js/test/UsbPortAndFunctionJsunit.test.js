@@ -34,6 +34,7 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
         }).catch(error => {
           console.info('usb case setPortRoles error : ' + error);
         });
+        CheckEmptyUtils.sleep(8000)
         console.log('*************Usb Unit switch to device Begin*************');
       }
     }
@@ -49,7 +50,6 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
   })
 
   function callSetCurFunction(caseName, iValue) {
-    CheckEmptyUtils.sleep(3000)
     console.info('usb case param case name:' + caseName);
     console.info('usb case param iValue:' + iValue);
     usb.setCurrentFunctions(iValue).then(data => {
@@ -60,6 +60,7 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
       console.info('usb case ' + caseName + ' error : ' + error);
       expect(false).assertTrue();
     });
+    CheckEmptyUtils.sleep(6000)
   }
 
   /**
@@ -175,6 +176,7 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
         console.info('usb case setPortRoles error : ' + error);
         expect(false).assertTrue();
       });
+      CheckEmptyUtils.sleep(8000)
     }
 
     console.info('usb SUB_USB_JS_0010 device 2 2:  PASS');
@@ -197,7 +199,6 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
 
     for (var i = 0; i < usbPortList.length; i++) {
       console.info('usb case set data role 1, data role 1');
-      CheckEmptyUtils.sleep(5000)
       usb.setPortRoles(usbPortList[i].id, usb.SOURCE, usb.HOST).then(data => {
         expect(data).assertTrue();
         console.info('usb case setPortRoles return: ' + data);
@@ -205,6 +206,7 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
         console.info('usb case setPortRoles error : ' + error);
         expect(false).assertTrue();
       });
+      CheckEmptyUtils.sleep(8000)
     }
 
     console.info('usb SUB_USB_JS_0020 host 1 1:  PASS');

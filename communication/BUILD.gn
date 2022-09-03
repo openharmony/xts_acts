@@ -21,6 +21,7 @@ group("communication") {
       "bluetooth_profile:ActsBluetoothProFileJsTest",
       "bluetooth_standard:ActsBluetoothJsTest",
       "dsoftbus/rpc:ActsRpcJsTest",
+      "dsoftbus/rpc_server:ActsRpcJsServer",
       "wifi_p2p:ActsP2PJSTest",
       "wifi_standard:ActsWifiJSTest",
     ]

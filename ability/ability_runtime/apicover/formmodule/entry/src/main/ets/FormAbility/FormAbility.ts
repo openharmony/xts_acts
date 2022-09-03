@@ -5,7 +5,9 @@ import formInfo from '@ohos.application.formInfo';
 export default class FormModuleAbility extends FormExtension {
     onCreate(want) {
         // Called to return a FormBindingData object.
-        let formData = {};
+        console.info("FormAbility onCreate")
+        let formData = {
+        };
         return formBindingData.createFormBindingData(formData);
     }
 

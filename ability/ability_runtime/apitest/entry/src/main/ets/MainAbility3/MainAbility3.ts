@@ -16,14 +16,14 @@ import Ability from '@ohos.application.Ability'
 import commonEvent from '@ohos.commonEvent'
 function PublishCallBackOne() {
     console.debug("====>Publish CallBack ACTS_DoAbilityForeground_0300_Event====>");
-    globalThis.abilityContext.terminateSelf().then(()=>{
+    globalThis.abilityContextMainAbility3.terminateSelf().then(()=>{
         console.debug("====>MainAbility3 terminateSelf====>");
     });
 }
 export default class MainAbility3 extends Ability {
     onCreate(want, launchParam) {
         console.log("[Demo] MainAbility3 onCreate")
-        globalThis.abilityContext = this.context
+        globalThis.abilityContextMainAbility3 = this.context
     }
 
     onDestroy() {

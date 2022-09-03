@@ -17,12 +17,16 @@ import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 import bundle from '@ohos.bundle';
 
 const presetsCount = {
-    ActsMediaLibraryAlbum: { assetsCount: 19, albumsCount: 7 },
-    ActsMediaLibraryFavorite: { assetsCount: 32, albumsCount: 6 },
-    //ActsMediaLibraryAlbumFileResultPro test case create 1 album 5 assets
-    ActsMediaLibraryAlbumFileResultPro: { assetsCount: 123, albumsCount: 6 },
-    //ActsMediaLibraryAlbumFileResultCb test case create 1 album 5 assets
-    ActsMediaLibraryAlbumFileResultCb: { assetsCount: 118, albumsCount: 5 },
+    ActsMediaLibraryAlbum: { albumsCount: 7, assetsCount: 19 },
+    ActsMediaLibraryFavorite: { albumsCount: 6, assetsCount: 32 },
+    ActsMediaLibraryAlbumFileResultCb: { albumsCount: 5, assetsCount: 118 },
+    ActsMediaLibraryFile: { albumsCount: 6, assetsCount: 21 },
+    ActsMediaLibraryFileAsset: { albumsCount: 27, assetsCount: 72 },
+    ActsMediaLibraryFileAssetUri: { albumsCount: 3, assetsCount: 6 },
+    ActsMediaLibraryFileKey: { albumsCount: 2, assetsCount: 2 },
+    ActsMediaLibraryFileResult: { albumsCount: 4, assetsCount: 13 },
+    ActsMediaLibraryGetThumbnail: { albumsCount: 3, assetsCount: 3 },
+    ActsMediaLibraryBase: { albumsCount: 11, assetsCount: 11 },
 }
 
 const IMAGE_TYPE = mediaLibrary.MediaType.IMAGE;
@@ -44,37 +48,56 @@ const allFetchOp = function (others = {}) {
     };
 }
 
-const fetchOps = function (path, type, others = {}) {
-    return {
+const fetchOps = function (testNum, path, type, others = {}) {
+    let ops = {
         selections: FILEKEY.RELATIVE_PATH + '= ? AND ' + FILEKEY.MEDIA_TYPE + '=?',
         selectionArgs: [path, type.toString()],
         ...others
     };
+    console.info(`${testNum}: fetchOps${JSON.stringify(ops)}`)
+    return ops
 }
-const nameFetchOps = function (path, title, type) {
-    return {
+const nameFetchOps = function (testNum, path, title, type) {
+    let ops = {
         selections: FILEKEY.RELATIVE_PATH + '= ? AND ' + FILEKEY.TITLE + '= ? AND ' + FILEKEY.MEDIA_TYPE + '=?',
         selectionArgs: [path, title, type.toString()],
     };
+    console.info(`${testNum}: fetchOps${JSON.stringify(ops)}`)
+    return ops
 }
 
-const idFetchOps = function (albumId) {
-    return {
+const idFetchOps = function (testNum, albumId) {
+    let ops = {
         selections: FILEKEY.ALBUM_ID + '= ?',
         selectionArgs: [albumId + ''],
     };
+    console.info(`${testNum}: fetchOps${JSON.stringify(ops)}`)
+    return ops
 }
 
-const albumFetchOps = function (path, albumName, type, others = { order: FILEKEY.DATE_ADDED + " DESC", }) {
-    return {
+const fileIdFetchOps = function (testNum, id) {
+    let ops = {
+        selections: FILEKEY.ID + "= ?",
+        selectionArgs: [id + ""],
+    };
+    console.info(`${testNum}: fetchOps${JSON.stringify(ops)}`);
+    return ops;
+};
+
+const albumFetchOps = function (testNum, path, albumName, type,
+    others = { order: FILEKEY.DATE_ADDED + " DESC", }) {
+    let ops = {
         selections: RELATIVE_PATH + '= ? AND ' + ALBUM_NAME + '= ? AND ' + MEDIA_TYPE + '= ?',
         selectionArgs: [path, albumName, type.toString()],
         ...others
     };
+    console.info(`${testNum}: fetchOps${JSON.stringify(ops)}`)
+    return ops
 }
 
 // albums of two resource types
-const albumTwoTypesFetchOps = function (paths, albumName, types, others = { order: FILEKEY.DATE_ADDED + " DESC", }) {
+const albumTwoTypesFetchOps = function (testNum, paths, albumName, types,
+    others = { order: FILEKEY.DATE_ADDED + " DESC", }) {
     try {
         let ops = {
             selections: '(' + RELATIVE_PATH + '= ? or ' +
@@ -85,6 +108,7 @@ const albumTwoTypesFetchOps = function (paths, albumName, types, others = { orde
             selectionArgs: [paths[0], paths[1], albumName, types[0].toString(), types[1].toString()],
             ...others
         };
+        console.info(`${testNum}: fetchOps${JSON.stringify(ops)}`)
         return ops
     } catch (error) {
         console.info(`albumTwoTypesFetchOps :: error: ${error}`);
@@ -92,7 +116,7 @@ const albumTwoTypesFetchOps = function (paths, albumName, types, others = { orde
 }
 
 // albums of three resource types
-const albumThreeTypesFetchOps = function (paths, albumName, types, others = { order: FILEKEY.DATE_ADDED, }) {
+const albumThreeTypesFetchOps = function (testNum, paths, albumName, types, others = { order: FILEKEY.DATE_ADDED, }) {
     try {
         let ops = {
             selections: '(' + RELATIVE_PATH + '= ? or ' +
@@ -106,6 +130,7 @@ const albumThreeTypesFetchOps = function (paths, albumName, types, others = { or
             types[0].toString(), types[1].toString(), types[2].toString()],
             ...others
         };
+        console.info(`${testNum}: fetchOps${JSON.stringify(ops)}`)
         return ops
     } catch (error) {
         console.info(`albumThreeTypesFetchOps :: error: ${error}`);
@@ -118,22 +143,22 @@ const checkPresetsAssets = async function (media, hapName) {
     let albumsCount = albumList.length;
     let fetchFileResult = await media.getFileAssets(allFetchOp());
     let assetsCount = await fetchFileResult.getCount();
-    console.info(`${hapName}:: assetsCount: ${assetsCount}`);
-    console.info(`${hapName}:: albumsCount: ${albumsCount}`);
-    console.info(`${hapName}:: presetsassetsCount: ${presetsCount[hapName].assetsCount}`);
-    console.info(`${hapName}:: presetsalbumsCount: ${presetsCount[hapName].albumsCount}`);
+    console.info(`${hapName}:: assetsCount: ${assetsCount} albumsCount: ${albumsCount},
+            presetsassetsCount: ${presetsCount[hapName].assetsCount} 
+            presetsalbumsCount: ${presetsCount[hapName].albumsCount}`);
     console.info('checkPresetsAssets end')
 }
 
 const checkAssetsCount = async function (done, testNum, fetchFileResult, expectCount) {
     if (!fetchFileResult) {
         console.info(`${testNum}:: fetchFileResult error:`);
+        expect(false).assertTrue();
+        done();
         return false
     }
     let count = await fetchFileResult.getCount();
     if (count != expectCount) {
-        console.info(`${testNum}:: count: ${count}`);
-        console.info(`${testNum}:: expectCount: ${expectCount}`);
+        console.info(`${testNum}:: count:expectCount - ${count} : ${expectCount}`);
         expect(count).assertEqual(expectCount);
         done();
     }
@@ -143,13 +168,13 @@ const checkAssetsCount = async function (done, testNum, fetchFileResult, expectC
 const checkAlbumsCount = function (done, testNum, albumList, expectCount) {
     if (!Array.isArray(albumList)) {
         console.info(`${testNum}:: albumList error:`);
+        expect(false).assertTrue();
+        done();
         return false
     }
     let albumsCount = albumList.length;
     if (albumsCount != expectCount) {
-        console.info(`${testNum}:: albumsCount: ${albumsCount}`);
-        console.info(`${testNum}:: expectCount: ${expectCount}`);
-        console.info(`${testNum} failed:: albums length error`);
+        console.info(`${testNum}:: albumsCount: expectCount - ${albumsCount} : ${expectCount}`);
         expect(albumsCount).assertEqual(expectCount);
         done();
     }
@@ -174,17 +199,18 @@ const getPermission = async function (name = 'ohos.acts.multimedia.mediaLibrary'
 }
 
 const MODIFY_ERROR_CODE_01 = '-1000';
+
+const isNum = function (value) {
+    return typeof value === 'number' && !isNaN(value);
+}
 export {
     getPermission,
     IMAGE_TYPE,
     VIDEO_TYPE,
     AUDIO_TYPE,
     FILE_TYPE,
-
     FILEKEY,
-
     sleep,
-
     allFetchOp,
     fetchOps,
     nameFetchOps,
@@ -192,9 +218,10 @@ export {
     albumFetchOps,
     albumTwoTypesFetchOps,
     albumThreeTypesFetchOps,
-
     checkPresetsAssets,
     checkAssetsCount,
     checkAlbumsCount,
     MODIFY_ERROR_CODE_01,
-}
+    isNum,
+    fileIdFetchOps,
+};

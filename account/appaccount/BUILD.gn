@@ -18,6 +18,7 @@ group("appaccount_hap") {
   if (is_standard_system) {
     deps = [
       "actsaccounttest:ActsAccountTest",
+      "actsaccounttstest:ActsAccountTsTest",
       "actsgetallaccounts:ActsGetAllAccountsTest",
       "actssetchecksyncenable:ActsSetCheckSyncEnableTest",
       "getallaccessibleaccounts:accessibleaccounts",

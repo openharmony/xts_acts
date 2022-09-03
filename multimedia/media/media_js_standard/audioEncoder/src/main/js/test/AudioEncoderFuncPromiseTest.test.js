@@ -293,14 +293,14 @@ describe('AudioEncoderFuncPromise', function () {
     }
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_ENCODER_FUNCTION_PROMISE_00_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_ENCODER_FUNCTION_PROMISE_0100
         * @tc.name      : 000.test set EOS after last frame and reset
         * @tc.desc      : basic encode function
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_AUDIO_ENCODER_FUNCTION_PROMISE_00_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_ENCODER_FUNCTION_PROMISE_0100', 0, async function (done) {
         console.info("case test set EOS after last frame and reset");
         let mediaDescription = {
             "channel_count": 2,
@@ -359,14 +359,14 @@ describe('AudioEncoderFuncPromise', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_ENCODER_FUNCTION_PROMISE_01_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_ENCODER_FUNCTION_PROMISE_0200
         * @tc.name      : 001.test set EOS manually before last frame and reset
         * @tc.desc      : basic encode function
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MEDIA_AUDIO_ENCODER_FUNCTION_PROMISE_01_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_ENCODER_FUNCTION_PROMISE_0200', 0, async function (done) {
         console.info("case test set EOS manually before last frame and reset");
         let mediaDescription = {
             "channel_count": 2,
@@ -399,14 +399,14 @@ describe('AudioEncoderFuncPromise', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_ENCODER_FUNCTION_PROMISE_01_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_ENCODER_FUNCTION_PROMISE_0300
         * @tc.name      : 002.test flush at running state
         * @tc.desc      : basic encode function
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MEDIA_AUDIO_ENCODER_FUNCTION_PROMISE_01_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_ENCODER_FUNCTION_PROMISE_0300', 0, async function (done) {
         console.info("case test flush at running state");
         let mediaDescription = {
             "channel_count": 2,
@@ -450,14 +450,14 @@ describe('AudioEncoderFuncPromise', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_ENCODER_FUNCTION_PROMISE_01_0300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_ENCODER_FUNCTION_PROMISE_0400
         * @tc.name      : 003.test flush at EOS state
         * @tc.desc      : basic encode function
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MEDIA_AUDIO_ENCODER_FUNCTION_PROMISE_01_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_ENCODER_FUNCTION_PROMISE_0400', 0, async function (done) {
         console.info("case test flush at EOS state");
         let mediaDescription = {
             "channel_count": 2,
@@ -490,14 +490,14 @@ describe('AudioEncoderFuncPromise', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_ENCODER_FUNCTION_PROMISE_01_0400
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_ENCODER_FUNCTION_PROMISE_0500
         * @tc.name      : 004.test stop at running state and reset
         * @tc.desc      : basic encode function
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MEDIA_AUDIO_ENCODER_FUNCTION_PROMISE_01_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_ENCODER_FUNCTION_PROMISE_0500', 0, async function (done) {
         console.info("case test stop at running state and reset");
         let mediaDescription = {
             "channel_count": 2,
@@ -542,14 +542,14 @@ describe('AudioEncoderFuncPromise', function () {
     })
 
      /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_ENCODER_FUNCTION_PROMISE_01_0500
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_ENCODER_FUNCTION_PROMISE_0600
         * @tc.name      : 005.test stop and restart
         * @tc.desc      : basic encode function
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MEDIA_AUDIO_ENCODER_FUNCTION_PROMISE_01_0500', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_ENCODER_FUNCTION_PROMISE_0600', 0, async function (done) {
         console.info("case test stop and restart");
         let mediaDescription = {
             "channel_count": 2,
@@ -597,14 +597,14 @@ describe('AudioEncoderFuncPromise', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_ENCODER_FUNCTION_PROMISE_01_0600
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_ENCODER_FUNCTION_PROMISE_0700
         * @tc.name      : 006.test reconfigure for new file with the same format
         * @tc.desc      : basic encode function
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('SUB_MEDIA_AUDIO_ENCODER_FUNCTION_PROMISE_01_0600', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_ENCODER_FUNCTION_PROMISE_0700', 0, async function (done) {
         console.info("case test reconfigure for new file with the same format");
         let mediaDescription = {
             "channel_count": 2,

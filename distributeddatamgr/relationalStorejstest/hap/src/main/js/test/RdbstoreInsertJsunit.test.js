@@ -25,6 +25,7 @@ const STORE_CONFIG = {
 }
 
 var rdbStore = undefined;
+var resultSet = undefined;
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -320,7 +321,7 @@ describe('rdbstoreInsertTest', function () {
         })
         let predicates = new dataRdb.RdbPredicates("test2");
         predicates.equalTo("name", "lisi")
-        resultSet = await rdbStore.query(predicates)
+        let resultSet = await rdbStore.query(predicates)
         try {
             console.info(TAG + "resultSet query done");
             expect(true).assertEqual(resultSet.goToFirstRow())
@@ -334,11 +335,11 @@ describe('rdbstoreInsertTest', function () {
             expect("lisi").assertEqual(name)
             expect(23).assertEqual(age)
             expect(200).assertEqual(salary)
-            await rdbstore.delete(predicates).then((number) => {
+            await rdbStore.delete(predicates).then((number) => {
                 expect(1).assertEqual(number)
             }).then(async () => {
                 resultSet = await rdbStore.query(predicates).catch((err) =>{
-                    expect(true).assertTrue();
+                    expect(err != null).assertTrue();
                 })
             })
         } catch (e) {
@@ -393,6 +394,7 @@ describe('rdbstoreInsertTest', function () {
             const name = resultSet.getString(resultSet.getColumnIndex("name"))
             const age = resultSet.getLong(resultSet.getColumnIndex("age"))
             const salary = resultSet.getDouble(resultSet.getColumnIndex("salary"))
+            const blobType = resultSet.getBlob(resultSet.getColumnIndex("blobType"))
             console.info(TAG + "id=" + id + ", name=" + name + ", age=" + age + ", salary=" + salary + ", blobType=" + blobType);
             expect(1).assertEqual(id);
             expect("zhangsan").assertEqual(name)
@@ -414,6 +416,7 @@ describe('rdbstoreInsertTest', function () {
             const name = resultSet.getString(resultSet.getColumnIndex("name"))
             const age = resultSet.getLong(resultSet.getColumnIndex("age"))
             const salary = resultSet.getDouble(resultSet.getColumnIndex("salary"))
+            const blobType = resultSet.getBlob(resultSet.getColumnIndex("blobType"))
             console.info(TAG + "id=" + id + ", name=" + name + ", age=" + age + ", salary=" + salary + ", blobType=" + blobType);
             expect(2).assertEqual(id);
             expect("lisi").assertEqual(name)
@@ -425,7 +428,7 @@ describe('rdbstoreInsertTest', function () {
                 "salary": 500,
                 "blobType": u8,
             }
-            await rdbstore.insert("test3",valueBucket4)
+            await rdbStore.insert("test3",valueBucket4)
             predicates = new dataRdb.RdbPredicates("test3");
             predicates.equalTo("name", "zhangmaowen")
             resultSet = await rdbStore.query(predicates)
@@ -488,6 +491,7 @@ describe('rdbstoreInsertTest', function () {
             const name = resultSet.getString(resultSet.getColumnIndex("name"))
             const age = resultSet.getLong(resultSet.getColumnIndex("age"))
             const salary = resultSet.getDouble(resultSet.getColumnIndex("salary"))
+            const blobType = resultSet.getBlob(resultSet.getColumnIndex("blobType"))
             console.info(TAG + "id=" + id + ", name=" + name + ", age=" + age + ", salary=" + salary + ", blobType=" + blobType);
             expect(56).assertEqual(id);
             expect("zhangsan55").assertEqual(name)
@@ -594,11 +598,11 @@ describe('rdbstoreInsertTest', function () {
         const valueBuckets = [valueBucket1, valueBucket2, valueBucket3]
         try{
             await rdbStore.batchInsert("test6","valueBuckets").catch((err) =>{
-                expect(true).assertTrue();
+                expect(err != null).assertTrue();
             })
         }catch(err){
             console.info(TAG + "Batch insert data error:  " + err)
-            expect(true).assertTrue();
+            expect(err != null).assertTrue();
         }
         done()
         console.info(TAG + "************* testRdbStorebatchInsertPromise0006 end *************");
@@ -614,11 +618,11 @@ describe('rdbstoreInsertTest', function () {
         await rdbStore.executeSql(CREATE_TABLE_NAME + "7" + CREATE_TABLE)
         try{
             await rdbStore.batchInsert("test7").catch((err) =>{
-                expect(true).assertTrue();
+                expect(err != null).assertTrue();
             })
         }catch(err){
             console.info(TAG + "Batch insert data error:  " + err)
-            expect(true).assertTrue();
+            expect(err != null).assertTrue();
         }
         done()
         console.info(TAG + "************* testRdbStorebatchInsertPromise0007 end *************");
@@ -748,7 +752,7 @@ describe('rdbstoreInsertTest', function () {
                     expect(3).assertEqual(data)
                     let predicates = new dataRdb.RdbPredicates("testCallback2");
                     predicates.equalTo("name", "lisi")
-                    resultSet = await rdbStore.query(predicates)
+                    let resultSet = await rdbStore.query(predicates)
                     try {
                         console.info(TAG + "resultSet query done");
                         expect(true).assertEqual(resultSet.goToFirstRow())
@@ -762,11 +766,11 @@ describe('rdbstoreInsertTest', function () {
                         expect("lisi").assertEqual(name)
                         expect(23).assertEqual(age)
                         expect(200).assertEqual(salary)
-                        await rdbstore.delete(predicates).then((number) => {
+                        await rdbStore.delete(predicates).then((number) => {
                             expect(1).assertEqual(number)
                         }).then(async () => {
                             resultSet = await rdbStore.query(predicates).catch((err) =>{
-                                expect(true).assertTrue();
+                                expect(err != null).assertTrue();
                             })
                         })
                     } catch (e) {
@@ -856,7 +860,7 @@ describe('rdbstoreInsertTest', function () {
                             "salary": 500,
                             "blobType": u8,
                         }
-                        await rdbstore.insert("testCallback3",valueBucket4)
+                        await rdbStore.insert("testCallback3",valueBucket4)
                         predicates = new dataRdb.RdbPredicates("testCallback3");
                         predicates.equalTo("name", "zhangmaowen")
                         resultSet = await rdbStore.query(predicates)
@@ -1034,14 +1038,14 @@ describe('rdbstoreInsertTest', function () {
             try{
                 await rdbStore.batchInsert("testCallback6", "valueBuckets", (err, data) => {
                     if(err != null){
-                        expect(true).assertTrue()
+                        expect(err != null).assertTrue()
                     }else{
                         expect(false).assertTrue()
                     }
                 })
             }catch(err){
                 console.info(TAG + "Batch insert data error:  " + err)
-                expect(true).assertTrue();
+                expect(err != null).assertTrue();
             }
         })
         
@@ -1059,15 +1063,15 @@ describe('rdbstoreInsertTest', function () {
         console.info(TAG + "************* testRdbStorebatchInsertCallback0007 start *************");
         try{
             await rdbStore.executeSql(CREATE_TABLE_NAME + "Callback7" + CREATE_TABLE).then(async () => {
-                await rdbstore.batchInsert("testCallback7", (err,data) => {
+                await rdbStore.batchInsert("testCallback7", (err,data) => {
                     if(err != null){
-                        expect(true).assertTrue();
+                        expect(err != null).assertTrue();
                     }
                 })
             })
         }catch(err){
             console.info(TAG + "Batch insert data error:  " + err)
-            expect(true).assertTrue();
+            expect(err != null).assertTrue();
         }
         done()
         console.info(TAG + "************* testRdbStorebatchInsertCallback0007 end *************");

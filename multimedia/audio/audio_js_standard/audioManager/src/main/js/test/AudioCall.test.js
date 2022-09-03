@@ -16,10 +16,6 @@
 
 import audio from '@ohos.multimedia.audio';
 import fileio from '@ohos.fileio';
-import ability_featureAbility from '@ohos.ability.featureAbility';
-import app from '@system.app';
-import bundle from '@ohos.bundle';
-import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 import featureAbility from '@ohos.ability.featureAbility'
 import resourceManager from '@ohos.resourceManager';
 
@@ -36,12 +32,7 @@ describe('audioCall', function () {
     const audioManager = audio.getAudioManager();
     console.info('AudioFrameworkRenderLog: Create AudioManger Object JS Framework');
 
-    const audioManagerRec = audio.getAudioManager();
-    console.info('AudioFrameworkRecLog: Create AudioManger Object JS Framework');
-
-
     beforeAll(async function () {
-        await applyPermission();
         console.info('AudioFrameworkTest: beforeAll: Prerequisites at the test suite level');
         //mediaDir = '/data/storage/el2/base/haps/entry/cache';
     })
@@ -105,36 +96,6 @@ describe('audioCall', function () {
             console.info('[fileIO]case catch open fd failed');
         });
     }
-
-    async function applyPermission() {
-        let appInfo = await bundle.getApplicationInfo('ohos.acts.multimedia.audio.audiomanager', 0, 100);
-        let atManager = abilityAccessCtrl.createAtManager();
-        if (atManager != null) {
-            let tokenID = appInfo.accessTokenId;
-            console.info('AudioFrameworkRenderLog:[permission] case accessTokenID is ' + tokenID);
-            let permissionName1 = 'ohos.permission.MEDIA_LOCATION';
-            let permissionName2 = 'ohos.permission.READ_MEDIA';
-            let permissionName3 = 'ohos.permission.WRITE_MEDIA';
-            await atManager.grantUserGrantedPermission(tokenID, permissionName1, 1).then((result) => {
-                console.info('AudioFrameworkRenderLog:[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('AudioFrameworkRenderLog:[permission] case grantUserGrantedPermission failed :' + err);
-            });
-            await atManager.grantUserGrantedPermission(tokenID, permissionName2, 1).then((result) => {
-                console.info('AudioFrameworkRenderLog:[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('AudioFrameworkRenderLog:[permission] case grantUserGrantedPermission failed :' + err);
-            });
-            await atManager.grantUserGrantedPermission(tokenID, permissionName3, 1).then((result) => {
-                console.info('AudioFrameworkRenderLog:[permission] case grantUserGrantedPermission success :' + result);
-            }).catch((err) => {
-                console.info('AudioFrameworkRenderLog:[permission] case grantUserGrantedPermission failed :' + err);
-            });
-        } else {
-            console.info('AudioFrameworkRenderLog:[permission] case apply permission failed, createAtManager failed');
-        }
-    }
-
 
     async function playbackPromise(AudioRendererOptions, pathName, AudioScene) {
         resultFlagRen = 'new';
@@ -387,30 +348,26 @@ describe('audioCall', function () {
 
     }
 
-
-    /* *
-               * @tc.number    : SUB_AUDIO_VOIP_Play_001
-               * @tc.name      : 
-               * @tc.desc      : 
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0
-           */
-    it('SUB_AUDIO_CALL_Play_001', 0, async function (done) {
-
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_CALL_PlAY_0100
+     *@tc.name
+     *@tc.desc
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_CALL_PlAY_0100', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_1,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-
         var AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
             rendererFlags: 0
         }
-
         var AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
@@ -425,16 +382,15 @@ describe('audioCall', function () {
         done();
     })
 
-    /* *
-               * @tc.number    : SUB_AUDIO_VOIP_Rec_001
-               * @tc.name      : 
-               * @tc.desc      : 
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0
-           */
-    it('SUB_AUDIO_CALL_Rec_001', 0, async function (done) {
-
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_CALL_REC_0100
+     *@tc.name
+     *@tc.desc
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_CALL_REC_0100', 2, async function (done) {
         var AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -460,17 +416,15 @@ describe('audioCall', function () {
         done();
     })
 
-
-    /* *
-               * @tc.number    : SUB_AUDIO_VOIP_RecPlay_001
-               * @tc.name      : 
-               * @tc.desc      : 
-               * @tc.size      : MEDIUM
-               * @tc.type      : Function
-               * @tc.level     : Level 0
-           */
-    it('SUB_AUDIO_CALL_RecPlay_001', 0, async function (done) {
-
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_CALL_RECPLAY_0100
+     *@tc.name
+     *@tc.desc
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_CALL_RECPLAY_0100', 2, async function (done) {
         var AudioStreamInfoCap = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -506,7 +460,7 @@ describe('audioCall', function () {
             rendererInfo: AudioRendererInfo
         }
         await getAbilityInfo("capture_js-44100-2C-16B-2.pcm");
-        recPromise(AudioCapturerOptions, mediaDir, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        await recPromise(AudioCapturerOptions, mediaDir, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(500);
         readpath = 'StarWars10s-1C-44100-2SW.wav';
         await getFdRead(readpath, done);
@@ -524,5 +478,4 @@ describe('audioCall', function () {
         await closeFileDescriptor(readpath);
         done();
     })
-
 })

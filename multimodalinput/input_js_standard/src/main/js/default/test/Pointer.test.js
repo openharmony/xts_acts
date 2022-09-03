@@ -14,6 +14,7 @@
  */
 
 import pointer from '@ohos.multimodalInput.pointer'
+import window from '@ohos.window'
 import {
     describe,
     beforeAll,
@@ -72,4 +73,107 @@ describe('MultimodalInput_Pointer_test', function () {
         console.info(`MultimodalInput_Pointer_test::PointerVisibleTest_002 exit`);
     })
 
+    it('MultimodalInput_Pointer_test::SetPointerStyle_001', 0, function () {
+        console.info(`SetPointerStyle_001 enter`);
+        window.getTopWindow((err, data) => {
+            if (err) {
+                this.log(`SetPointerStyle_001 failed, err=${JSON.stringify(err)}`);
+                expect(false).assertTrue();
+            }
+            var windowClass = data;
+            windowClass.getProperties((err, data) => {
+                if (err) {
+                    this.log(`SetPointerStyle_001 failed, err=${JSON.stringify(err)}`);
+                    expect(false).assertTrue();
+                }
+                var windowId = data.id;
+                pointer.setPointerStyle(windowId, 4).then(() => {
+                    expect(true).assertTrue();
+                    this.log(`SetPointerStyle_001 success`);
+                }).catch((err) => {
+                    expect(false).assertTure();
+                    console.info("promise::catch", err);
+                });
+            })
+        })
+    })
+
+    it('MultimodalInput_Pointer_test::SetPointerStyle_002', 0, function () {
+        console.info(`SetPointerStyle_002 enter`);
+        window.getTopWindow((err, data) => {
+            var windowClass = data;
+            if (err) {
+                this.log(`SetPointerStyle_002 failed, err=${JSON.stringify(err)}`);
+                expect(false).assertTrue();
+            }
+            windowClass.getProperties((err, data) => {
+                if (err) {
+                    this.log(`SetPointerStyle_002 failed, err=${JSON.stringify(err)}`);
+                    expect(false).assertTrue();
+                }
+                var windowId = data.id;
+                pointer.setPointerStyle(windowId, 4, (err) => {
+                    if (err) {
+                        this.log(`SetPointerStyle_002 failed, err=${JSON.stringify(err)}`);
+                        expect(false).assertTrue();
+                    } else {
+                        this.log(`SetPointerStyle_002 success`);
+                        expect(true).assertTrue();
+                    }
+                });
+            })
+        })
+    })
+
+    it('MultimodalInput_Pointer_test::GetPointerStyle_001', 0, function () {
+        console.info(`GetPointerStyle_001 enter`);
+        window.getTopWindow((err, data) => {
+            if (err) {
+                this.log(`GetPointerStyle_001 failed, err=${JSON.stringify(err)}`);
+                expect(false).assertTrue();
+            }
+            var windowClass = data;
+            windowClass.getProperties((err, data) => {
+                if (err) {
+                    this.log(`GetPointerStyle_001 failed, err=${JSON.stringify(err)}`);
+                    expect(false).assertTrue();
+                }
+                var windowId = data.id;
+                pointer.getPointerStyle(windowId).then((data) => {
+                    this.log(`GetPointerStyle_001 success, data=${JSON.stringify(data)}`);
+                    expect(data).assertTrue('Number');
+                }).catch((err) => {
+                    console.info("promise::catch", err);
+                    expect(false).assertTure();
+                });
+            })
+        })
+    })
+
+    it('MultimodalInput_Pointer_test::GetPointerStyle_002', 0, function () {
+        console.info(`GetPointerStyle_002 enter`);
+        window.getTopWindow((err, data) => {
+            if (err) {
+                this.log(`GetPointerStyle_002 failed, err=${JSON.stringify(err)}`);
+                expect(false).assertTrue();
+            }
+            var windowClass = data;
+            windowClass.getProperties((err, data) => {
+                if (err) {
+                    this.log(`GetPointerStyle_002 failed, err=${JSON.stringify(err)}`);
+                    expect(false).assertTrue();
+                }
+                var windowId = data.id;
+                pointer.getPointerStyle(windowId, (err, data) => {
+                    if (err) {
+                        this.log(`GetPointerStyle_002 failed, err=${JSON.stringify(err)}`);
+                        expect(false).assertTrue();
+                    } else {
+                        this.log(`GetPointerStyle_002 success, data=${JSON.stringify(data)}`);
+                        expect(data).assertTrue('Number');
+                    }
+                });
+            })
+        })
+    })
 })

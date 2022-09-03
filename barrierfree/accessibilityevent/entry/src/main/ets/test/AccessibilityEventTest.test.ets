@@ -15,9 +15,10 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import accessibility from '@ohos.accessibility'
 import commonEvent from '@ohos.commonEvent'
+import config from '@ohos.accessibility.config'
 
 export default function abilityTest() {
-    let targetBundleName = 'com.example.myapplication';
+    let targetBundleName = 'com.example.accessibilityxts';
     let subScriber = undefined;
     let isConnected: boolean = false;
     let events: Array<any> = [];
@@ -37,23 +38,27 @@ export default function abilityTest() {
                 }
             });
 
-            setTimeout(async () => {
-                await globalThis.abilityContext.startAbility({
-                    deviceId: "",
-                    bundleName: "com.example.acetest",
-                    abilityName: "MainAbility",
-                    action: "action1",
-                    parameters: {},
-                });
-                done();
-            }, 5000);
+            config.enableAbility('com.example.accessibilityxts/AccessibilityExtAbility',
+                                 ["retrieve", "touchGuide", "gesture"]
+            ).then(() => {
+                console.info(`AccessibilityEventTest enableAbility: then`);
+            }).catch((err) => {
+                console.error(`AccessibilityEventTest enableAbility has error: ${err.code}`);
+            });
+
+            setTimeout(done, 5000);
         })
 
         afterAll(async function (done) {
             console.info('AccessibilityEventTest: afterAll');
             commonEvent.unsubscribe(subScriber);
             isConnected = false;
-            done();
+            config.disableAbility('com.example.accessibilityxts/AccessibilityExtAbility').then(() => {
+                console.info(`AccessibilityEventTest disableAbility: then`);
+            }).catch((err) => {
+                console.error(`AccessibilityEventTest disableAbility has error: ${err.code}`);
+            });
+            setTimeout(done, 5000);
         })
 
         beforeEach(async function (done) {

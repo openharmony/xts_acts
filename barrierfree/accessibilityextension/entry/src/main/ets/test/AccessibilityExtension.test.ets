@@ -14,6 +14,7 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import commonEvent from '@ohos.commonEvent'
+import config from '@ohos.accessibility.config'
 
 export default function abilityTest() {
     let isCalled: boolean = false;
@@ -57,12 +58,12 @@ export default function abilityTest() {
          */
         it('AccessibilityExtensionTest_Connect_0100', 0, async function (done) {
             console.info('AccessibilityExtensionTest_Connect_0100: start');
-            await globalThis.abilityContext.startAbility({
-                deviceId: "",
-                bundleName: "com.example.acetest",
-                abilityName: "MainAbility",
-                action: "action1",
-                parameters: {},
+            config.enableAbility('com.example.accessibilityxts/AccessibilityExtAbility',
+                                    ["retrieve", "touchGuide", "gesture"]
+            ).then(() => {
+                console.info(`AccessibilityExtensionTest enableAbility: then`);
+            }).catch((err) => {
+                console.error(`AccessibilityExtensionTest enableAbility has error: ${err.code}`);
             });
 
             setTimeout(() => {
@@ -82,11 +83,10 @@ export default function abilityTest() {
          */
         it('AccessibilityExtensionTest_Disconnect_0200', 0, async function (done) {
             console.info('AccessibilityExtensionTest_Disconnect_0200 start');
-            let commonEventPublishData = {
-                data: 'disable'
-            }
-            commonEvent.publish('disableExtAbility', commonEventPublishData, (err) => {
-                console.info("AccessibilityExtensionTest_Disconnect_0200 publish event: " + JSON.stringify(commonEventPublishData));
+            config.disableAbility('com.example.accessibilityxts/AccessibilityExtAbility').then(() => {
+                console.info(`AccessibilityExtensionTest disableAbility: then`);
+            }).catch((err) => {
+                console.error(`AccessibilityExtensionTest disableAbility has error: ${err.code}`);
             });
 
             setTimeout(() => {

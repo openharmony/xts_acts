@@ -44,35 +44,33 @@ export default function killProcessWithAccountTest() {
    
 
     beforeEach(async (done) => {
-      console.log('======>beforeEach  killProcessWithAccountTest<=======');
+      console.log('======>beforeEach  killProcessWithAccountTest<=======' + flag);
       if(flag == false){
-        setTimeout(()=>{
-          globalThis.abilityContext.startAbilityWithAccount(
+        setTimeout(async ()=>{
+          await globalThis.abilityContext.startAbilityWithAccount(
             {
               bundleName: 'com.acts.killprocesswithaccountpackage',
               abilityName: 'com.acts.killprocesswithaccountpackage.MainAbility'
-            }, ACCOUNT_ID,
-            {
-              windowMode: 2,
-              displayId: 1
-            }).then(() => {
+            }, ACCOUNT_ID).then(() => {
             console.log(" ====>ACTS_KillProcessWithAccount startability ====> success! ")
-            done();
+          }).catch((error) => {
+            console.log(" ====>ACTS_KillProcessWithAccount startability ====> error: " + JSON.stringify(error))
           })
+          sleep(500);
+          done();
         },1000)
       }else{
-        globalThis.abilityContext.startAbilityWithAccount(
+        await globalThis.abilityContext.startAbilityWithAccount(
           {
             bundleName: 'com.acts.killprocesswithaccountpackage',
             abilityName: 'com.acts.killprocesswithaccountpackage.MainAbility'
-          }, ACCOUNT_ID,
-          {
-            windowMode: 2,
-            displayId: 1
-          }).then(() => {
+          }, ACCOUNT_ID).then(() => {
           console.log(" ====>ACTS_KillProcessWithAccount startability ====> success! ")
-          done();
+        }).catch((error) => {
+          console.log(" ====>ACTS_KillProcessWithAccount startability ====> error: " + JSON.stringify(error))
         })
+        sleep(500);
+        done();
       }
     })
 

@@ -41,6 +41,7 @@ describe('UsbCoreJsFunctionsTestEx', function () {
           }).catch(error => {
             console.info('usb case setPortRolesEx error : ' + error);
           });
+          CheckEmptyUtils.sleep(8000)
           console.log('*************Usb Unit Begin switch to host*************');
         }
       } else {
@@ -84,7 +85,7 @@ describe('UsbCoreJsFunctionsTestEx', function () {
         console.info('usb JS_0100 requestRight error:' + error);
       });
       console.info('usb JS_0100 requestRight end:');
-      CheckEmptyUtils.sleep(3000)
+      CheckEmptyUtils.sleep(5000)
     }
 
     var device = JSON.parse(JSON.stringify(gDeviceList[0]));
@@ -126,7 +127,7 @@ describe('UsbCoreJsFunctionsTestEx', function () {
         console.info('usb JS_0110 requestRight error:' + error);
       });
       console.info('usb JS_0110 requestRight end:');
-      CheckEmptyUtils.sleep(3000)
+      CheckEmptyUtils.sleep(5000)
     }
 
     var device = JSON.parse(JSON.stringify(gDeviceList[0]));
@@ -167,7 +168,7 @@ describe('UsbCoreJsFunctionsTestEx', function () {
         console.info('usb JS_0120 requestRight error:' + error);
       });
       console.info('usb JS_0120 requestRight end:');
-      CheckEmptyUtils.sleep(3000)
+      CheckEmptyUtils.sleep(5000)
     }
 
     var device = JSON.parse(JSON.stringify(gDeviceList[0]));
@@ -211,7 +212,7 @@ describe('UsbCoreJsFunctionsTestEx', function () {
         console.info('usb JS_0130 requestRight error:' + error);
       });
       console.info('usb JS_0130 requestRight end:');
-      CheckEmptyUtils.sleep(3000)
+      CheckEmptyUtils.sleep(5000)
     }
 
     var device = JSON.parse(JSON.stringify(gDeviceList[0]));
@@ -223,10 +224,7 @@ describe('UsbCoreJsFunctionsTestEx', function () {
       console.info('usb connectDevice fail：' + err);
     }
     console.info('usb case connectDevice ret: ' + JSON.stringify(usbDevicePipe) + ' name ' + device.name);
-    expect(CheckEmptyUtils.isEmpty(usbDevicePipe)).assertFalse();
-    var isPipClose = usb.closePipe(usbDevicePipe);
-    console.info('usb case closePipe ret: ' + isPipClose);
-    expect(isPipClose).assertEqual(0);
+    expect(CheckEmptyUtils.isEmpty(usbDevicePipe)).assertTrue();
     console.info('usb SUB_USB_JS_0130 :  PASS');
   })
 
@@ -254,7 +252,7 @@ describe('UsbCoreJsFunctionsTestEx', function () {
         console.info('usb JS_0140 requestRight error:' + error);
       });
       console.info('usb JS_0140 requestRight end:');
-      CheckEmptyUtils.sleep(3000)
+      CheckEmptyUtils.sleep(5000)
     }
 
     var device = JSON.parse(JSON.stringify(gDeviceList[0]));
@@ -267,10 +265,7 @@ describe('UsbCoreJsFunctionsTestEx', function () {
     }
     console.info('usb case connectDevice ret: ' + JSON.stringify(usbDevicePipe) +
       ' manufacturerName ' + device.manufacturerName);
-    expect(CheckEmptyUtils.isEmpty(usbDevicePipe)).assertFalse();
-    var isPipClose = usb.closePipe(usbDevicePipe);
-    console.info('usb case closePipe ret: ' + isPipClose);
-    expect(isPipClose).assertEqual(0);
+    expect(CheckEmptyUtils.isEmpty(usbDevicePipe)).assertTrue();
     console.info('usb SUB_USB_JS_0140 :  PASS');
   })
 
@@ -298,7 +293,7 @@ describe('UsbCoreJsFunctionsTestEx', function () {
         console.info('usb SUB_USB_JS_0150 requestRight error:' + error);
       });
       console.info('usb SUB_USB_JS_0150 requestRight end:');
-      CheckEmptyUtils.sleep(3000)
+      CheckEmptyUtils.sleep(5000)
     }
 
     var device = JSON.parse(JSON.stringify(gDeviceList[0]));
@@ -342,7 +337,7 @@ describe('UsbCoreJsFunctionsTestEx', function () {
         console.info('usb SUB_USB_JS_0160 requestRight error:' + error);
       });
       console.info('usb SUB_USB_JS_0160 requestRight end:');
-      CheckEmptyUtils.sleep(3000)
+      CheckEmptyUtils.sleep(5000)
     }
 
     var device = JSON.parse(JSON.stringify(gDeviceList[0]));
@@ -386,7 +381,7 @@ describe('UsbCoreJsFunctionsTestEx', function () {
         console.info('usb SUB_USB_JS_0170 requestRight error:' + error);
       });
       console.info('usb SUB_USB_JS_0170 requestRight end:');
-      CheckEmptyUtils.sleep(3000)
+      CheckEmptyUtils.sleep(5000)
     }
 
     var device = JSON.parse(JSON.stringify(gDeviceList[0]));
@@ -430,7 +425,7 @@ describe('UsbCoreJsFunctionsTestEx', function () {
         console.info('usb SUB_USB_JS_0180 requestRight error:' + error);
       });
       console.info('usb SUB_USB_JS_0180 requestRight end:');
-      CheckEmptyUtils.sleep(3000)
+      CheckEmptyUtils.sleep(5000)
     }
 
     var device = JSON.parse(JSON.stringify(gDeviceList[0]));
@@ -474,7 +469,7 @@ describe('UsbCoreJsFunctionsTestEx', function () {
         console.info('usb SUB_USB_JS_0190 requestRight error:' + error);
       });
       console.info('usb SUB_USB_JS_0190 requestRight end:');
-      CheckEmptyUtils.sleep(3000)
+      CheckEmptyUtils.sleep(5000)
     }
 
     var device = JSON.parse(JSON.stringify(gDeviceList[0]));
@@ -517,7 +512,7 @@ describe('UsbCoreJsFunctionsTestEx', function () {
         console.info('usb SUB_USB_JS_0200 requestRight error:' + error);
       });
       console.info('usb SUB_USB_JS_0200 requestRight end:');
-      CheckEmptyUtils.sleep(3000)
+      CheckEmptyUtils.sleep(5000)
     }
 
     var device = JSON.parse(JSON.stringify(gDeviceList[0]));
@@ -560,7 +555,7 @@ describe('UsbCoreJsFunctionsTestEx', function () {
         console.info('usb SUB_USB_JS_0210 requestRight error:' + error);
       });
       console.info('usb SUB_USB_JS_0210 requestRight end:');
-      CheckEmptyUtils.sleep(3000)
+      CheckEmptyUtils.sleep(5000)
     }
 
     var device = JSON.parse(JSON.stringify(gDeviceList[0]));
@@ -668,6 +663,7 @@ describe('UsbCoreJsFunctionsTestEx', function () {
         expect(error).assertFalse();
         console.info('usb SUB_USB_JS_0690 error: ' + error);
       });
+      CheckEmptyUtils.sleep(5000);
     }
   })
 
@@ -700,6 +696,7 @@ describe('UsbCoreJsFunctionsTestEx', function () {
         expect(error).assertFalse();
         console.info('usb SUB_USB_JS_0700 error: ' + error);
       });
+      CheckEmptyUtils.sleep(5000);
     }
   })
 })

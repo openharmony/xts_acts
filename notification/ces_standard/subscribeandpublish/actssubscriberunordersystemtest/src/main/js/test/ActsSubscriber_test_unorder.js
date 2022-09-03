@@ -158,13 +158,24 @@ export default function ActsSubscriberTestUnorderSystem() {
           commonEvent.Support.COMMON_EVENT_NFC_ACTION_RF_FIELD_ON_DETECTED,
           commonEvent.Support.COMMON_EVENT_NFC_ACTION_RF_FIELD_OFF_DETECTED,
           commonEvent.Support.COMMON_EVENT_USER_ADDED,
-          commonEvent.Support.COMMON_EVENT_USER_REMOVED,
+          //commonEvent.Support.COMMON_EVENT_USER_REMOVED,
           commonEvent.Support.COMMON_EVENT_ABILITY_ADDED,
           commonEvent.Support.COMMON_EVENT_ABILITY_REMOVED,
           commonEvent.Support.COMMON_EVENT_ABILITY_UPDATED,
           commonEvent.Support.COMMON_EVENT_VISIBLE_ACCOUNTS_UPDATED,
           commonEvent.Support.COMMON_EVENT_ACCOUNT_DELETED,
-          commonEvent.Support.COMMON_EVENT_FOUNDATION_READY
+          commonEvent.Support.COMMON_EVENT_FOUNDATION_READY,
+          commonEvent.Support.COMMON_EVENT_THERMAL_LEVEL_CHANGED,
+          commonEvent.Support.COMMON_EVENT_PACKAGE_CACHE_CLEARED,
+          commonEvent.Support.COMMON_EVENT_USB_STATE,
+          commonEvent.Support.COMMON_EVENT_USB_PORT_CHANGED,
+          commonEvent.Support.COMMON_EVENT_VOLUME_REMOVED,
+          commonEvent.Support.COMMON_EVENT_VOLUME_UNMOUNTED,
+          commonEvent.Support.COMMON_EVENT_VOLUME_MOUNTED,
+          commonEvent.Support.COMMON_EVENT_VOLUME_BAD_REMOVAL,
+          commonEvent.Support.COMMON_EVENT_VOLUME_EJECT,
+          commonEvent.Support.COMMON_EVENT_SLOT_CHANGE,
+          commonEvent.Support.COMMON_EVENT_SPN_INFO_CHANGED
         ]
       }
 

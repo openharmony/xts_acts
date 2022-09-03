@@ -70,10 +70,24 @@
     ],
     "reqPermissions": [
       {
-        "name": "ohos.permission.SET_WALLPAPER"
+        "name": "ohos.permission.SET_WALLPAPER",
+        "reason": "need use ohos.permission.SET_WALLPAPER",
+        "usedScene": {
+          "ability": [
+            "com.acts.theme.wallpapertest.MainAbility"
+          ],
+          "when": "inuse"
+        }
       },
       {
-        "name": "ohos.permission.GET_WALLPAPER"
+        "name": "ohos.permission.GET_WALLPAPER",
+        "reason": "need use ohos.permission.GET_WALLPAPER",
+        "usedScene": {
+          "ability": [
+            "com.acts.theme.wallpapertest.MainAbility"
+          ],
+          "when": "inuse"
+        }
       }
     ],
     "js": [

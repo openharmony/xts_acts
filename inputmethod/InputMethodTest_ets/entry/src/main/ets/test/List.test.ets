@@ -12,16 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import inputmethohJsunit from './InputmethohJsunit.test.ets';
-import inputmethodEngineJsunit from './InputmethodEngineJsunit.test.ets';
-import inputRequestJsunit from './InputRequestJsunit.test.ets';
-import requestJsunit from './RequestJsunit.test.ets';
-import requestDownloadJsunit from './RequestDownloadTaskJsunit.test.ets';
+import inputMethodJSUnit from './inputMethodJSUnit';
+import inputMethodEngineJSUnit from './inputMethodEngineJSUnit';
 
 export default function testsuite() {
-  inputmethohJsunit();
-  inputmethodEngineJsunit();
-  inputRequestJsunit();
-  requestDownloadJsunit();
-  requestJsunit();
+  inputMethodJSUnit();
+  inputMethodEngineJSUnit();
 }

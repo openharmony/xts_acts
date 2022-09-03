@@ -14,6 +14,7 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import commonEvent from '@ohos.commonEvent'
+import config from '@ohos.accessibility.config'
 
 const passStr = 'pass';
 const failStr = 'fail';
@@ -48,21 +49,40 @@ export default function abilityTest() {
                 }
             });
 
-            await globalThis.abilityContext.startAbility({
-                deviceId: '',
-                bundleName: 'com.example.acetest',
-                abilityName: 'MainAbility',
-                action: 'action1',
-                parameters: {},
+            config.enableAbility('com.example.accessibilityxts/AccessibilityExtAbility',
+                                    ["retrieve", "touchGuide", "gesture"]
+            ).then(() => {
+                console.info(`AccessibilityElementTest enableAbility: then`);
+		
+            config.enableAbility('com.example.accessibilityxts/AccessibilityExtAbility1',
+                                    ["retrieve", "touchGuide", "gesture"]
+            ).then(() => {
+                console.info(`AccessibilityElementTest1 enableAbility: then`);
+            }).catch((err) => {
+                console.error(`AccessibilityElementTest1 enableAbility has error: ${err.code}`);
             });
-            setTimeout(done, 5000);
+            }).catch((err) => {
+                console.error(`AccessibilityElementTest enableAbility has error: ${err.code}`);
+            });
+
+
+            setTimeout(async () => {
+                done();
+            }, 5000);
         })
 
         afterAll(async function (done) {
             console.info('AccessibilityElementTest: afterAll');
             commonEvent.unsubscribe(subScriber);
             isConnect = false;
-            done();
+            config.disableAbility('com.example.accessibilityxts/AccessibilityExtAbility').then(() => {
+                console.info(`AccessibilityElementTest disableAbility: then`);
+            }).catch((err) => {
+                console.error(`AccessibilityElementTest disableAbility has error: ${err.code}`);
+            });
+            setTimeout(async () => {
+                done();
+            }, 5000);
         })
 
         beforeEach(async function (done) {

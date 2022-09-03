@@ -52,219 +52,219 @@ describe('HttpPlayerCompatibilityTest', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_MP4_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_MP4_0100
         * @tc.name      : 001.H264_AAC
         * @tc.desc      : Http playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('testHttpVideoPlayerFormatMp4_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_MP4_0100', 0, async function (done) {
         let path = VIDEOPLAYER_PATH + 'mp4/h264_aac_640x320_30r.mp4';
         await playVideoSource(path, 640, 320, 10100, PLAY_TIME, done);
         done();
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_MP4_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_MP4_0200
         * @tc.name      : 002.H264_MP3
         * @tc.desc      : Http playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('testHttpVideoPlayerFormatMp4_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_MP4_0200', 0, async function (done) {
         let path = VIDEOPLAYER_PATH + 'mp4/h264_mp3_640x480_25r.mp4';
         await playVideoSource(path, 640, 480, 10080, PLAY_TIME, done);
         done();
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_TS_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_TS_0100
         * @tc.name      : 001.H264_AAC
         * @tc.desc      : Http playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('testHttpVideoPlayerFormatTs_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_TS_0100', 0, async function (done) {
         let path = VIDEOPLAYER_PATH + 'mpeg_ts/h264_aac_640x480_30r.ts';
         await playVideoSource(path, 640, 480, 10161, PLAY_TIME, done);
         done();
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_TS_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_TS_0200
         * @tc.name      : 002.H264_MP3
         * @tc.desc      : Http playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('testHttpVideoPlayerFormatTs_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_TS_0200', 0, async function (done) {
         let path = VIDEOPLAYER_PATH + 'mpeg_ts/h264_mp3_640x480_25r.ts';
         await playVideoSource(path, 640, 480, 10169, PLAY_TIME, done);
         done();
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_MKV_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_MKV_0100
         * @tc.name      : 001.H264_AAC
         * @tc.desc      : Http playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('testHttpVideoPlayerFormatMkv_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_MKV_0100', 0, async function (done) {
         let path = VIDEO_PATH + 'H264_AAC.mkv';
         await playVideoSource(path, 720, 480, 10057, PLAY_TIME, done);
         done();
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_MKV_0200
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_MKV_0200
         * @tc.name      : 002.H264_MP3
         * @tc.desc      : Http playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('testHttpVideoPlayerFormatMkv_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_MKV_0200', 0, async function (done) {
         let path = VIDEO_PATH + 'H264_MP3.mkv';
         await playVideoSource(path, 720, 480, 10059, PLAY_TIME, done);
         done();
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_MKV_0500
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_MKV_0500
         * @tc.name      : 005.MPEG2_AAC
         * @tc.desc      : Http playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('testHttpVideoPlayerFormatMkv_0500', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_MKV_0300', 0, async function (done) {
         let path = VIDEO_PATH + 'MPEG2_AAC.mkv';
         await playVideoSource(path, 720, 480, 10057, PLAY_TIME, done);
         done();
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_MKV_0600
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_MKV_0600
         * @tc.name      : 006.MPEG2_MP3
         * @tc.desc      : Http playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('testHttpVideoPlayerFormatMkv_0600', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_MKV_0400', 0, async function (done) {
         let path = VIDEO_PATH + 'MPEG2_MP3.mkv';
         await playVideoSource(path, 720, 480, 10059, PLAY_TIME, done);
         done();
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_MKV_0800
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_MKV_0800
         * @tc.name      : 008.MPEG4_MP3
         * @tc.desc      : Http playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('testHttpVideoPlayerFormatMkv_0800', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_MKV_0500', 0, async function (done) {
         let path = VIDEO_PATH + 'MPEG4_MP3.mkv';
         await playVideoSource(path, 720, 480, 10059, PLAY_TIME, done);
         done();
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_WEBM_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_WEBM_0100
         * @tc.name      : 001.VP8_VORBIS
         * @tc.desc      : Http playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('testHttpVideoPlayerFormatWebm_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HTTP_FORMAT_WEBM_0100', 0, async function (done) {
         let path = VIDEO_PATH + 'VP8_VORBIS.webm';
         await playVideoSource(path, 720, 480, 10083, PLAY_TIME, done);
         done();
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_PLAYER_HTTP_FORMAT_MP3_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_HTTP_FORMAT_MP3_0100
         * @tc.name      : 001.MP3
         * @tc.desc      : Http playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('testHttpAudioPlayerFormatMp3_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_HTTP_FORMAT_MP3_0100', 0, async function (done) {
         let path = AUDIO_PATH + '01.mp3';
         await playAudioSource(path, 219600, PLAY_TIME, true, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_PLAYER_HTTP_FORMAT_AAC_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_HTTP_FORMAT_AAC_0100
         * @tc.name      : 001.AAC
         * @tc.desc      : Http playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('testHttpAudioPlayerFormatAac_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_HTTP_FORMAT_AAC_0100', 0, async function (done) {
         let path = AUDIOPLAYER_PATH + 'aac/aac_96ksr_64kbr_2ch.aac';
         await playAudioSource(path, 12198, PLAY_TIME, true, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_PLAYER_HTTP_FORMAT_WAV_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_HTTP_FORMAT_WAV_0100
         * @tc.name      : 001.MP3
         * @tc.desc      : Http playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('testHttpAudioPlayerFormatWav_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_HTTP_FORMAT_WAV_0100', 0, async function (done) {
         let path = AUDIOPLAYER_PATH + 'wav/pcm_48ksr_16kbr_1ch.wav';
         await playAudioSource(path, 5461, PLAY_TIME, true, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_PLAYER_HTTP_FORMAT_FLAC_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_HTTP_FORMAT_FLAC_0100
         * @tc.name      : 001.FLAC
         * @tc.desc      : Http playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('testHttpAudioPlayerFormatFlac_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_HTTP_FORMAT_FLAC_0100', 0, async function (done) {
         let path = AUDIOPLAYER_PATH + 'flac/flac_96ksr_64kbr_2ch.flac';
         await playAudioSource(path, 10000, PLAY_TIME, true, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_PLAYER_HTTP_FORMAT_M4A_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_HTTP_FORMAT_M4A_0100
         * @tc.name      : 001.M4A
         * @tc.desc      : Http playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('testHttpAudioPlayerFormatM4a_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_HTTP_FORMAT_M4A_0100', 0, async function (done) {
         let path = AUDIO_PATH + '55.m4a';
         await playAudioSource(path, 219575, PLAY_TIME, true, done);
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_PLAYER_HTTP_FORMAT_OGG_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_HTTP_FORMAT_OGG_0100
         * @tc.name      : 001.OGG
         * @tc.desc      : Http playback control test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level1
     */
-    it('testHttpAudioPlayerFormatOgg_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_PLAYER_HTTP_FORMAT_OGG_0100', 0, async function (done) {
         let path = AUDIOPLAYER_PATH + 'ogg/vorbis_48ksr_32kbr_1ch.ogg';
         await playAudioSource(path, 10009, PLAY_TIME, true, done);
     })

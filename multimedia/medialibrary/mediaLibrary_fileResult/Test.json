@@ -47,10 +47,9 @@
                 "chmod -R 777 /data/service/el2/100/hmdfs/account/files/*",
                 "hilog -Q pidoff",
                 "hilog -p off",
+                "hilog -b I",
                 "hilog -b D -D 0xD002B70", 
-                "aa start -a com.ohos.photos.MainAbility -b com.ohos.photos",
-                "sleep 10",
-                "cem publish -e usual.event.SCREEN_OFF",
+                "scanner_demo",
                 "sleep 10"
             ]
         },

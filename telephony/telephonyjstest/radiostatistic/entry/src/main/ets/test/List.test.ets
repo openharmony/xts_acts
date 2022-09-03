@@ -24,9 +24,9 @@ import dataJsunit from './DataJsunit.test.ets';
 export default function testsuite() {
   //other
   dataJsunit();
-  callJsunit();
   smsUiJsunit();
   convertOptionsJsunit();
   radioJsunit();
   radioSecondJsunit();
+  callJsunit();
 }

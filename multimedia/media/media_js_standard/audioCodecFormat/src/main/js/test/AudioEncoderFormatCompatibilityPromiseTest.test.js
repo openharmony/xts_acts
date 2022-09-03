@@ -386,14 +386,14 @@ describe('AudioEncoderFormatCompatibilityPromise', function () {
     }
 
     /* *
-        * @tc.number    : SUB_MEDIA_AUDIO_ENCODER_FORMAT_COMPATIBILITY_AAC_PROMISE_01_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIO_ENCODER_FORMAT_COMPATIBILITY_AAC_PROMISE_0100
         * @tc.name      : 01.test acc format compatibility
         * @tc.desc      : audio encoder format compatibility test
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */
-    it('SUB_MEDIA_AUDIO_ENCODER_FORMAT_COMPATIBILITY_AAC_PROMISE_01_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_ENCODER_FORMAT_COMPATIBILITY_AAC_PROMISE_0100', 0, async function (done) {
         console.info("case test acc format compatibility");
         await getFormatCaps();
         sampleRateList = formatSampleRate.toString().split(',');

@@ -48,7 +48,7 @@ struct Index {
   private formOnRequestEvent = "FMS_FormOnRequest_commonEvent";
   private formOnStateEvent = "FMS_FormOnState_commonEvent";
   
-  private publishCallBack() {
+  private publishCallBack = () => {
     console.debug("====>formOnErrorEvent Publish CallBack ====>");
   }
 

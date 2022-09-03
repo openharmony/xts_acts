@@ -49,7 +49,7 @@ export async function playVideoSource(url, width, height, duration, playTime, do
 
     await videoPlayer.prepare().then(() => {
         console.info('case prepare called');
-        expect(videoPlayer.duration).assertClose(duration, 500);
+        expect(Math.abs(videoPlayer.duration - duration)).assertLess(500);
         if (width != null & height != null) {
             expect(videoPlayer.width).assertEqual(width);
             expect(videoPlayer.height).assertEqual(height);
@@ -75,7 +75,7 @@ export async function playVideoSource(url, width, height, duration, playTime, do
         mediaTestBase.msleep(playTime);
     }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
     let endTime = videoPlayer.currentTime;
-    expect(endTime - startTime).assertClose(playTime, 1000);
+    expect(Math.abs(endTime - startTime - playTime)).assertLess(1000);
 
     await videoPlayer.seek(videoPlayer.duration / 3).then((seekDoneTime) => {
         console.info('case seek called and seekDoneTime is ' + seekDoneTime);
@@ -203,7 +203,7 @@ export async function testVideoSeek(url, duration, playTime, done) {
     videoPlayer.seek(videoPlayer.duration / 3).then((seekDoneTime) => {
         console.info('case seek called and seekDoneTime is ' + seekDoneTime);
     }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
-    expect(videoPlayer.duration).assertClose(duration, 500);
+    expect(Math.abs(videoPlayer.duration - duration)).assertLess(500);
     await videoPlayer.pause().then(() => {
         console.info('case pause called');
         expect(videoPlayer.state).assertEqual('paused');
@@ -224,7 +224,7 @@ export async function testVideoSeek(url, duration, playTime, done) {
         console.info('case setSpeed called and speedMode is ' + speedMode);
         expect(speedMode).assertEqual(media.PlaybackSpeed.SPEED_FORWARD_2_00_X);
     }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
-    expect(videoPlayer.duration).assertClose(duration, 500);
+    expect(Math.abs(videoPlayer.duration - duration)).assertLess(500);
     await videoPlayer.setVolume(0.5).then(() => {
         console.info('case setVolume called');
     }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);

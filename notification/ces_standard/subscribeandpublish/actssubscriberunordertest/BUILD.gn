@@ -20,6 +20,8 @@ ohos_js_hap_suite("ActsSubscriberUnorderTest") {
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsSubscriberUnorderTest"
+  subsystem_name = "notification"
+  part_name = "common_event_service"
 }
 ohos_js_assets("hjs_demo_js_assets") {
   js2abc = true
