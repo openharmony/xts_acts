@@ -1244,64 +1244,6 @@ export default function abilityTest() {
     })
 
     /*
-     * @tc.number: ACTS_AppSelectorTest_3300
-     * @tc.name: Multi-hap application with action and type configured in feature
-     * @tc.desc: Multi-hap application with action and type configured in feature,mainAbility is pulled up in feature
-     */
-    it('ACTS_AppSelectorTest_3300', 0, async function (done) {
-      console.log("ACTS_AppSelectorTest_3300 --- start")
-      cmdInstall = 'bm install -p /data/ActsImageAEntryRelyHap.hap;bm install -p /data/ActsImageBFeatureRelyHap.hap'
-      cmdUninstall = "bm uninstall -n imagearelyhap;bm uninstall -n imagebrelyhap"
-      let subscriber;
-      console.log('ACTS_AppSelectorTest_3300 cmd = ' + cmdInstall);
-      await abilityDelegator.executeShellCommand(cmdInstall);
-      await sleep(2000);
-
-      for (var i = 0; i < 10; i++) {
-        await sleep(2000);
-        subscriber = await commonEvent.createSubscriber(subscriberInfo);
-        globalThis.abilityContext.startAbility(
-          {
-            action: "ohos.want.action.viewData",
-            type: "image/png",
-            parameters: {
-              uri: "filePath"
-            }
-          }, async (error, data) => {
-            console.log("ACTS_AppSelectorTest_3300 startAbility " +
-              JSON.stringify(error) + "," + JSON.stringify(data));
-          })
-
-        await sleep(3000);
-        console.log("ACTS_AppSelectorTest_3300 findComponent");
-        let button = await driver.findComponent(BY.text('imagearelyhap').enabled(true))
-        console.log("ACTS_AppSelectorTest_3300 button " + JSON.stringify(button));
-        await button.click();
-        commonEvent.subscribe(subscriber, SubscribeCallBack);
-
-        async function SubscribeCallBack(err, data) {
-          console.log('ACTS_AppSelectorTest_3300 bundleName = ' + data.parameters.bundleName);
-          console.log('ACTS_AppSelectorTest_3300 abilityName = ' + data.parameters.abilityName);
-          console.log('ACTS_AppSelectorTest_3300 type = ' + data.parameters.type);
-          console.log('ACTS_AppSelectorTest_3300 uri = ' + data.parameters.uri);
-          console.log('ACTS_AppSelectorTest_3300 event = ' + data.event);
-          expect(data.event).assertEqual("AppSelector");
-          expect(data.parameters.abilityName).assertEqual("MainAbility");
-          expect(data.parameters.bundleName).assertEqual("imagearelyhap");
-          expect(data.parameters.type).assertEqual("image/png");
-          expect(data.parameters.uri).assertEqual("filePath");
-        }
-      }
-      await sleep(2000);
-      commonEvent.unsubscribe(subscriber, UnSubscribeCallBack)
-
-      function UnSubscribeCallBack() {
-        console.log("ACTS_AppSelectorTest_3300 UnSubscribeCallBack");
-        done();
-      }
-    })
-
-    /*
      * @tc.number: ACTS_AppSelectorTest_3400
      * @tc.name: Multi-hap application with action and type configured in feature
      * @tc.desc: Multi-hap application with action and type configured in feature,mainAbility is pulled up in feature
@@ -1489,6 +1431,64 @@ export default function abilityTest() {
           await driver.click(button.leftX, button.topY);
           done();
         })
+    })
+
+    /*
+     * @tc.number: ACTS_AppSelectorTest_3300
+     * @tc.name: Multi-hap application with action and type configured in feature
+     * @tc.desc: Multi-hap application with action and type configured in feature,mainAbility is pulled up in feature
+     */
+    it('ACTS_AppSelectorTest_3300', 0, async function (done) {
+      console.log("ACTS_AppSelectorTest_3300 --- start")
+      cmdInstall = 'bm install -p /data/ActsImageAEntryRelyHap.hap;bm install -p /data/ActsImageBFeatureRelyHap.hap'
+      cmdUninstall = "bm uninstall -n imagearelyhap;bm uninstall -n imagebrelyhap"
+      let subscriber;
+      console.log('ACTS_AppSelectorTest_3300 cmd = ' + cmdInstall);
+      await abilityDelegator.executeShellCommand(cmdInstall);
+      await sleep(2000);
+
+      for (var i = 0; i < 10; i++) {
+        await sleep(2000);
+        subscriber = await commonEvent.createSubscriber(subscriberInfo);
+        globalThis.abilityContext.startAbility(
+          {
+            action: "ohos.want.action.viewData",
+            type: "image/png",
+            parameters: {
+              uri: "filePath"
+            }
+          }, async (error, data) => {
+            console.log("ACTS_AppSelectorTest_3300 startAbility " +
+              JSON.stringify(error) + "," + JSON.stringify(data));
+          })
+        
+        commonEvent.subscribe(subscriber, SubscribeCallBack);
+        await sleep(3000);
+        console.log("ACTS_AppSelectorTest_3300 findComponent");
+        let button = await driver.findComponent(BY.text('imagearelyhap').enabled(true))
+        console.log("ACTS_AppSelectorTest_3300 button " + JSON.stringify(button));
+        await button.click();
+
+        async function SubscribeCallBack(err, data) {
+          console.log('ACTS_AppSelectorTest_3300 bundleName = ' + data.parameters.bundleName);
+          console.log('ACTS_AppSelectorTest_3300 abilityName = ' + data.parameters.abilityName);
+          console.log('ACTS_AppSelectorTest_3300 type = ' + data.parameters.type);
+          console.log('ACTS_AppSelectorTest_3300 uri = ' + data.parameters.uri);
+          console.log('ACTS_AppSelectorTest_3300 event = ' + data.event);
+          expect(data.event).assertEqual("AppSelector");
+          expect(data.parameters.abilityName).assertEqual("MainAbility");
+          expect(data.parameters.bundleName).assertEqual("imagearelyhap");
+          expect(data.parameters.type).assertEqual("image/png");
+          expect(data.parameters.uri).assertEqual("filePath");
+        }
+      }
+      await sleep(2000);
+      commonEvent.unsubscribe(subscriber, UnSubscribeCallBack)
+
+      function UnSubscribeCallBack() {
+        console.log("ACTS_AppSelectorTest_3300 UnSubscribeCallBack");
+        done();
+      }
     })
   })
 }
