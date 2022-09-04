@@ -693,7 +693,7 @@ describe('ImageReceiver', function () {
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_JPEG_0100
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_PROMISE_JPEG_0100
      * @tc.name      : getComponent-jpeg
      * @tc.desc      : 1.create ImageReceiver
      *                 2.call on
@@ -703,12 +703,12 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_JPEG_0100', 0, async function (done) {
-        getComponentP(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_JPEG_0100', JPEG)
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_PROMISE_JPEG_0100', 0, async function (done) {
+        getComponentP(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_PROMISE_JPEG_0100', JPEG)
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_YUV_U_0100
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_PROMISE_YUV_U_0100
      * @tc.name      : getComponent-YUV_U
      * @tc.desc      : 1.create ImageReceiver
      *                 2.call on
@@ -718,12 +718,12 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_YUV_U_0100', 0, async function (done) {
-        getComponentP(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_YUV_U_0100', YUV_U)
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_PROMISE_YUV_U_0100', 0, async function (done) {
+        getComponentP(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_PROMISE_YUV_U_0100', YUV_U)
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_YUV_U_0200
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_PROMISE_YUV_V_0100
      * @tc.name      : getComponent-YUV_V
      * @tc.desc      : 1.create ImageReceiver
      *                 2.call on
@@ -733,12 +733,12 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_YUV_U_0200', 0, async function (done) {
-        getComponentP(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_YUV_U_0200', YUV_V)
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_PROMISE_YUV_V_0100', 0, async function (done) {
+        getComponentP(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_PROMISE_YUV_V_0100', YUV_V)
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_YUV_U_0300
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_PROMISE_YUV_Y_0100
      * @tc.name      : getComponent-YUV_Y
      * @tc.desc      : 1.create ImageReceiver
      *                 2.call on
@@ -748,12 +748,12 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_YUV_U_0300', 0, async function (done) {
-        getComponentP(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_YUV_U_0300', YUV_Y)
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_PROMISE_YUV_Y_0100', 0, async function (done) {
+        getComponentP(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_PROMISE_YUV_Y_0100', YUV_Y)
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_JPEG_0200
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_CALLBACK_JPEG_0100
      * @tc.name      : getComponent-jpeg
      * @tc.desc      : 1.create ImageReceiver
      *                 2.call on
@@ -763,12 +763,12 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_JPEG_0200', 0, async function (done) {
-        getComponentCb(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_JPEG_0200', JPEG)
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_CALLBACK_JPEG_0100', 0, async function (done) {
+        getComponentCb(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_CALLBACK_JPEG_0100', JPEG)
     })
 	
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_YUV_U_0400
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_CALLBACK_YUV_Y_0100
      * @tc.name      : getComponent-YUV_Y
      * @tc.desc      : 1.create ImageReceiver
      *                 2.call on
@@ -778,12 +778,12 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_YUV_U_0400', 0, async function (done) {
-        getComponentCb(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_YUV_U_0400', YUV_Y)
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_CALLBACK_YUV_Y_0100', 0, async function (done) {
+        getComponentCb(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_CALLBACK_YUV_Y_0100', YUV_Y)
     })
 	
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_YUV_U_0500
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_CALLBACK_YUV_V_0100
      * @tc.name      : getComponent-YUV_V
      * @tc.desc      : 1.create ImageReceiver
      *                 2.call on
@@ -793,12 +793,12 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_YUV_U_0500', 0, async function (done) {
-        getComponentCb(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_YUV_U_0500', YUV_V)
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_CALLBACK_YUV_V_0100', 0, async function (done) {
+        getComponentCb(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_CALLBACK_YUV_V_0100', YUV_V)
     })
 	
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_YUV_U_0600
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_CALLBACK_YUV_U_0100
      * @tc.name      : getComponent-YUV_U
      * @tc.desc      : 1.create ImageReceiver
      *                 2.call on
@@ -808,8 +808,8 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_YUV_U_0600', 0, async function (done) {
-        getComponentCb(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_YUV_U_0600', YUV_U)
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_CALLBACK_YUV_U_0100', 0, async function (done) {
+        getComponentCb(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_GETCOMPONENT_CALLBACK_YUV_U_0100', YUV_U)
     })
 	
     /**
@@ -1075,7 +1075,7 @@ describe('ImageReceiver', function () {
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_0100
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0100
      * @tc.name      : on-1
      * @tc.desc      : 1.create ImageReceiver
      *                 2.call on
@@ -1083,12 +1083,12 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_0100', 0, async function (done) {
-        onErr(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_0100', 1)
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0100', 0, async function (done) {
+        onErr(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0100', 1)
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_0200
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0200
      * @tc.name      : on-null
      * @tc.desc      : 1.create ImageReceiver
      *                 2.call on
@@ -1096,12 +1096,12 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_0200', 0, async function (done) {
-        onErr(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_0200', null)
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0200', 0, async function (done) {
+        onErr(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0200', null)
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_0300
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0300
      * @tc.name      : on-{a : 1}
      * @tc.desc      : 1.create ImageReceiver
      *                 2.call on
@@ -1109,12 +1109,12 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_0300', 0, async function (done) {
-        onErr(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_0300', { a: 1 })
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0300', 0, async function (done) {
+        onErr(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0300', { a: 1 })
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_0400
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0400
      * @tc.name      : on-'a'
      * @tc.desc      : 1.create ImageReceiver
      *                 2.call on
@@ -1122,8 +1122,8 @@ describe('ImageReceiver', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_0400', 0, async function (done) {
-        onErr(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_0400', 'a')
+    it('SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0400', 0, async function (done) {
+        onErr(done, 'SUB_GRAPHIC_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0400', 'a')
     })
 })
 }
