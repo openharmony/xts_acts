@@ -326,32 +326,32 @@ describe('imageExif', function () {
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_DATETIMEORIGINAL_0100
-     * @tc.name      : getImageProperty(DateTimeOriginal)
+     * @tc.number    : SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0900
+     * @tc.name      : getImageProperty(DateTimeOriginal)-promise
      * @tc.desc      : 1.create imagesource
      *                 2.set property
-     *                 3.call getImageProperty(ImageLength)
+     *                 3.call getImageProperty(DateTimeOriginal)
      *                 4.The return value is not empty
      * @tc.size      : MEDIUM 
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_DATETIMEORIGINAL_0100', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0900', 0, async function (done) {
         await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
-            console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_DATETIMEORIGINAL_0100 create image source failed');
+            console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0900 create image source failed');
             expect(false).assertTrue();
             done();
         } else {
             imageSourceApi.getImageProperty("DateTimeOriginal")
                 .then(data => {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_DATETIMEORIGINAL_0100 DateTimeOriginal ' + data);
+                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0900 DateTimeOriginal ' + data);
                     expect(data != undefined && data != '').assertTrue();
                     done();
                 })
                 .catch(error => {
-                    console.log('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_DATETIMEORIGINAL_0100 error: ' + error);
+                    console.log('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0900 error: ' + error);
                     expect(false).assertFail();
                     done();
                 })

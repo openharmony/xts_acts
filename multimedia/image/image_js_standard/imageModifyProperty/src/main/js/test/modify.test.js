@@ -752,7 +752,7 @@ describe('imageModifyProperty', function () {
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_1100
+     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0100
      * @tc.name      : modifyImageProperty(Orientation)-promise
      * @tc.desc      : 1.create imagesource
      *                 2.call modifyImageProperty(key,value)
@@ -761,12 +761,12 @@ describe('imageModifyProperty', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_1100', 0, async function (done) {
-        modifyImageErrPromise(done, 'SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_1100', 'fd', "Orientation", "abcdef")
+    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0100', 0, async function (done) {
+        modifyImageErrPromise(done, 'SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0100', 'fd', "Orientation", "abcdef")
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_1200
+     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0200
      * @tc.name      : modifyImageProperty(GPSLatitude)-promise
      * @tc.desc      : 1.create imagesource
      *                 2.call modifyImageProperty(key,value)
@@ -775,12 +775,12 @@ describe('imageModifyProperty', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_1200', 0, async function (done) {
-        modifyImageErrPromise(done, 'SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_1200', 'fd', "GPSLatitude", "abc,3")
+    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0200', 0, async function (done) {
+        modifyImageErrPromise(done, 'SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0200', 'fd', "GPSLatitude", "abc,3")
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_1300
+     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0300
      * @tc.name      : modifyImageProperty(GPSLongitude)-promise
      * @tc.desc      : 1.create imagesource
      *                 2.call modifyImageProperty(key,value)
@@ -789,12 +789,12 @@ describe('imageModifyProperty', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_1300', 0, async function (done) {
-        modifyImageErrPromise(done, 'SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_1300', 'fd', "GPSLongitude", "abc,2")
+    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0300', 0, async function (done) {
+        modifyImageErrPromise(SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0300)
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_1400
+     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0400
      * @tc.name      : modifyImageProperty(GPSLatitudeRef)-promise
      * @tc.desc      : 1.create imagesource
      *                 2.call modifyImageProperty(key,value)
@@ -803,12 +803,12 @@ describe('imageModifyProperty', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_1400', 0, async function (done) {
-        modifyImageErrPromise(done, 'SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_1400', 'fd', "GPSLatitudeRef", "456")
+    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0400', 0, async function (done) {
+        modifyImageErrPromise(done, 'SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0400', 'fd', "GPSLatitudeRef", "456")
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_1500
+     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0500
      * @tc.name      : modifyImageProperty(GPSLongitudeRef)-promise
      * @tc.desc      : 1.create imagesource
      *                 2.call modifyImageProperty(key,value)
@@ -817,12 +817,12 @@ describe('imageModifyProperty', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_1500', 0, async function (done) {
-        modifyImageErrPromise(done, 'SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_1500', 'fd', "GPSLongitudeRef", "1234")
+    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0500', 0, async function (done) {
+        modifyImageErrPromise(done, 'SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0500', 'fd', "GPSLongitudeRef", "1234")
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_1600
+     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0600
      * @tc.name      : modifyImageProperty(Orientation)-promise
      * @tc.desc      : 1.create imagesource
      *                 2.call modifyImageProperty(key,value)
@@ -831,12 +831,12 @@ describe('imageModifyProperty', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_1600', 0, async function (done) {
-        modifyImageErrPromise(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_1600", "buffer", "Orientation", "abcdef")
+    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0600', 0, async function (done) {
+        modifyImageErrPromise(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0600", "buffer", "Orientation", "abcdef")
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_1700
+     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0700
      * @tc.name      : modifyImageProperty(GPSLatitude)-promise
      * @tc.desc      : 1.create imagesource
      *                 2.call modifyImageProperty(key,value)
@@ -845,12 +845,12 @@ describe('imageModifyProperty', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_1700', 0, async function (done) {
-        modifyImageErrPromise(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_1700", "buffer", "GPSLatitude", "abc,3")
+    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0700', 0, async function (done) {
+        modifyImageErrPromise(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0700", "buffer", "GPSLatitude", "abc,3")
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_1800
+     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0800
      * @tc.name      : modifyImageProperty(GPSLongitude)-promise
      * @tc.desc      : 1.create imagesource
      *                 2.call modifyImageProperty(key,value)
@@ -859,12 +859,12 @@ describe('imageModifyProperty', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_1800', 0, async function (done) {
-        modifyImageErrPromise(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_1800", "buffer", "GPSLongitude", "abc,2")
+    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0800', 0, async function (done) {
+        modifyImageErrPromise(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0800", "buffer", "GPSLongitude", "abc,2")
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_1900
+     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0900
      * @tc.name      : modifyImageProperty(GPSLatitudeRef)-promise
      * @tc.desc      : 1.create imagesource
      *                 2.call modifyImageProperty(key,value)
@@ -873,12 +873,12 @@ describe('imageModifyProperty', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_1900', 0, async function (done) {
-        modifyImageErrPromise(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_1900", "buffer", "GPSLatitudeRef", "456")
+    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0900', 0, async function (done) {
+        modifyImageErrPromise(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0900", "buffer", "GPSLatitudeRef", "456")
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_2000
+     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_1000
      * @tc.name      : modifyImageProperty(GPSLongitudeRef)-promise
      * @tc.desc      : 1.create imagesource
      *                 2.call modifyImageProperty(key,value)
@@ -887,12 +887,12 @@ describe('imageModifyProperty', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_2000', 0, async function (done) {
-        modifyImageErrPromise(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_2000", "buffer", "GPSLongitudeRef", "1234")
+    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_1000', 0, async function (done) {
+        modifyImageErrPromise(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_1000", "buffer", "GPSLongitudeRef", "1234")
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_1100
+     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0100
      * @tc.name      : modifyImageProperty(Orientation)-callback
      * @tc.desc      : 1.create imagesource
      *                 2.call modifyImageProperty(key,value)
@@ -901,12 +901,12 @@ describe('imageModifyProperty', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_1100', 0, async function (done) {
-        modifyErrCb(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_1100", "fd", "Orientation", "abcdef")
+    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0100', 0, async function (done) {
+        modifyErrCb(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0100", "fd", "Orientation", "abcdef")
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_1200
+     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0200
      * @tc.name      : modifyImageProperty(GPSLatitude)-callback
      * @tc.desc      : 1.create imagesource
      *                 2.call modifyImageProperty(key,value)
@@ -915,12 +915,12 @@ describe('imageModifyProperty', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_1200', 0, async function (done) {
-        modifyErrCb(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_1200", "fd", "GPSLatitude", "abc,3")
+    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0200', 0, async function (done) {
+        modifyErrCb(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0200", "fd", "GPSLatitude", "abc,3")
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_1300
+     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0300
      * @tc.name      : modifyImageProperty(GPSLongitude)-callback
      * @tc.desc      : 1.create imagesource
      *                 2.call modifyImageProperty(key,value)
@@ -929,12 +929,12 @@ describe('imageModifyProperty', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_1300', 0, async function (done) {
-        modifyErrCb(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_1300", "fd", "GPSLongitude", "abc,2")
+    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0300', 0, async function (done) {
+        modifyErrCb(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0300", "fd", "GPSLongitude", "abc,2")
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_1400
+     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0400
      * @tc.name      : modifyImageProperty(GPSLongitudeRef)-callback
      * @tc.desc      : 1.create imagesource
      *                 2.call modifyImageProperty(key,value)
@@ -943,12 +943,12 @@ describe('imageModifyProperty', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_1400', 0, async function (done) {
-        modifyErrCb(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_1400", "fd", "GPSLongitudeRef", "1234")
+    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0400', 0, async function (done) {
+        modifyErrCb(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0400", "fd", "GPSLongitudeRef", "1234")
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_1500
+     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0500
      * @tc.name      : modifyImageProperty(GPSLatitudeRef)-callback
      * @tc.desc      : 1.create imagesource
      *                 2.call modifyImageProperty(key,value)
@@ -957,12 +957,12 @@ describe('imageModifyProperty', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_1500', 0, async function (done) {
-        modifyErrCb(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_1500", "fd", "GPSLatitudeRef", "456")
+    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0500', 0, async function (done) {
+        modifyErrCb(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0500", "fd", "GPSLatitudeRef", "456")
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_1600
+     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0600
      * @tc.name      : modifyImageProperty(Orientation)-callback
      * @tc.desc      : 1.create imagesource
      *                 2.call modifyImageProperty(key,value)
@@ -971,12 +971,12 @@ describe('imageModifyProperty', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_1600', 0, async function (done) {
-        modifyErrCb(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_1600", "buffer", "Orientation", "abcdef")
+    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0600', 0, async function (done) {
+        modifyErrCb(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0600", "buffer", "Orientation", "abcdef")
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_1700
+     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0700
      * @tc.name      : modifyImageProperty(GPSLatitude)-callback
      * @tc.desc      : 1.create imagesource
      *                 2.call modifyImageProperty(key,value)
@@ -985,12 +985,12 @@ describe('imageModifyProperty', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_1700', 0, async function (done) {
-        modifyErrCb(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_1700", "buffer", "GPSLatitude", "abc,3")
+    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0700', 0, async function (done) {
+        modifyErrCb(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0700", "buffer", "GPSLatitude", "abc,3")
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_1800
+     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0800
      * @tc.name      : modifyImageProperty(GPSLongitude)-callback
      * @tc.desc      : 1.create imagesource
      *                 2.call modifyImageProperty(key,value)
@@ -999,12 +999,12 @@ describe('imageModifyProperty', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_1800', 0, async function (done) {
-        modifyErrCb(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_1800", "buffer", "GPSLongitude", "abc,2")
+    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0800', 0, async function (done) {
+        modifyErrCb(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0800", "buffer", "GPSLongitude", "abc,2")
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_1900
+     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0900
      * @tc.name      : modifyImageProperty(GPSLongitudeRef)-callback
      * @tc.desc      : 1.create imagesource
      *                 2.call modifyImageProperty(key,value)
@@ -1013,12 +1013,12 @@ describe('imageModifyProperty', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_1900', 0, async function (done) {
-        modifyErrCb(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_1900", "buffer", "GPSLongitudeRef", "1234")
+    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0900', 0, async function (done) {
+        modifyErrCb(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0900", "buffer", "GPSLongitudeRef", "1234")
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_2000
+     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_1000
      * @tc.name      : modifyImageProperty(GPSLatitudeRef)-callback
      * @tc.desc      : 1.create imagesource
      *                 2.call modifyImageProperty(key,value)
@@ -1027,12 +1027,12 @@ describe('imageModifyProperty', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_2000', 0, async function (done) {
-        modifyErrCb(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_2000", "buffer", "GPSLatitudeRef", "456")
+    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_1000', 0, async function (done) {
+        modifyErrCb(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_1000", "buffer", "GPSLatitudeRef", "456")
     })
     
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_2100
+     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0100
      * @tc.name      : modifyImageProperty(Orientation)-callback
      * @tc.desc      : 1.create imagesource
      *                 2.call modifyImageProperty(key,value)
@@ -1041,12 +1041,12 @@ describe('imageModifyProperty', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_2100', 0, async function (done) {
-        modifyErrCb1(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_2100", "fd", "Orientation", "abcdef")
+    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0100', 0, async function (done) {
+        modifyErrCb1(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0100", "fd", "Orientation", "abcdef")
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_2200
+     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0200
      * @tc.name      : modifyImageProperty(GPSLatitude)-callback
      * @tc.desc      : 1.create imagesource
      *                 2.call modifyImageProperty(key,value)
@@ -1055,12 +1055,12 @@ describe('imageModifyProperty', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_2200', 0, async function (done) {
-        modifyErrCb1(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_2200", "fd", "GPSLatitude", "abc,3")
+    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0200', 0, async function (done) {
+        modifyErrCb1(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0200", "fd", "GPSLatitude", "abc,3")
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_2300
+     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0300
      * @tc.name      : modifyImageProperty(GPSLongitude)-callback
      * @tc.desc      : 1.create imagesource
      *                 2.call modifyImageProperty(key,value)
@@ -1069,12 +1069,12 @@ describe('imageModifyProperty', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_2300', 0, async function (done) {
-        modifyErrCb1(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_2300", "fd", "GPSLongitude", "abc,2")
+    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0300', 0, async function (done) {
+        modifyErrCb1(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0300", "fd", "GPSLongitude", "abc,2")
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_2400
+     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0400
      * @tc.name      : modifyImageProperty(GPSLatitudeRef)-callback
      * @tc.desc      : 1.create imagesource
      *                 2.call modifyImageProperty(key,value)
@@ -1083,12 +1083,12 @@ describe('imageModifyProperty', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_2400', 0, async function (done) {
-        modifyErrCb1(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_2400", "fd", "GPSLatitudeRef", "1234")
+    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0400', 0, async function (done) {
+        modifyErrCb1(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0400", "fd", "GPSLatitudeRef", "1234")
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_2500
+     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0500
      * @tc.name      : modifyImageProperty(GPSLongitudeRef)-callback
      * @tc.desc      : 1.create imagesource
      *                 2.call modifyImageProperty(key,value)
@@ -1097,12 +1097,12 @@ describe('imageModifyProperty', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_2500', 0, async function (done) {
-        modifyErrCb1(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_2500", "fd", "GPSLongitudeRef", "567")
+    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0500', 0, async function (done) {
+        modifyErrCb1(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0500", "fd", "GPSLongitudeRef", "567")
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_2600
+     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0600
      * @tc.name      : modifyImageProperty(Orientation)-callback
      * @tc.desc      : 1.create imagesource
      *                 2.call modifyImageProperty(key,value)
@@ -1111,12 +1111,12 @@ describe('imageModifyProperty', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_2600', 0, async function (done) {
-        modifyErrCb1(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_2600", "buffer", "Orientation", "abcef")
+    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0600', 0, async function (done) {
+        modifyErrCb1(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0600", "buffer", "Orientation", "abcef")
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_2700
+     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0700
      * @tc.name      : modifyImageProperty(GPSLatitude)-callback
      * @tc.desc      : 1.create imagesource
      *                 2.call modifyImageProperty(key,value)
@@ -1125,12 +1125,12 @@ describe('imageModifyProperty', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_2700', 0, async function (done) {
-        modifyErrCb1(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_2700", "buffer", "GPSLatitude", "abc,3")
+    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0700', 0, async function (done) {
+        modifyErrCb1(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0700", "buffer", "GPSLatitude", "abc,3")
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_2800
+     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0800
      * @tc.name      : modifyImageProperty(GPSLongitude)-callback
      * @tc.desc      : 1.create imagesource
      *                 2.call modifyImageProperty(key,value)
@@ -1139,12 +1139,12 @@ describe('imageModifyProperty', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_2800', 0, async function (done) {
-        modifyErrCb1(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_2800", "buffer", "GPSLongitude", "abc,2")
+    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0800', 0, async function (done) {
+        modifyErrCb1(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0800", "buffer", "GPSLongitude", "abc,2")
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_2900
+     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0900
      * @tc.name      : modifyImageProperty(GPSLatitudeRef)-callback
      * @tc.desc      : 1.create imagesource
      *                 2.call modifyImageProperty(key,value)
@@ -1153,12 +1153,12 @@ describe('imageModifyProperty', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_2900', 0, async function (done) {
-        modifyErrCb1(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_2900", "buffer", "GPSLatitudeRef", "456")
+    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0900', 0, async function (done) {
+        modifyErrCb1(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0900", "buffer", "GPSLatitudeRef", "456")
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_3000
+     * @tc.number    : SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_1000
      * @tc.name      : modifyImageProperty(GPSLongitudeRef)-callback
      * @tc.desc      : 1.create imagesource
      *                 2.call modifyImageProperty(key,value)
@@ -1167,7 +1167,7 @@ describe('imageModifyProperty', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_3000', 0, async function (done) {
-        modifyErrCb1(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_CALLBACK_3000", "buffer", "GPSLongitudeRef", "1234")
+    it('SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_1000', 0, async function (done) {
+        modifyErrCb1(done, "SUB_GRAPHIC_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_1000", "buffer", "GPSLongitudeRef", "1234")
     })
 })}
