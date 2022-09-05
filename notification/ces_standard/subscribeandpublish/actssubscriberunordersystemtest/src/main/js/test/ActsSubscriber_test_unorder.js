@@ -16,11 +16,12 @@ import commonEvent from '@ohos.commonEvent'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
 export default function ActsSubscriberTestUnorderSystem() {
-  describe('ActsSubscriberTestUnorderSystem', async function (done) {
-    let TAG = 'Subscriber_Unorder_System ===>'
-    it('Subscriber_Unorder_System_001', 0, async function (done) {
-      console.info(TAG + 'Subscriber_Unorder_System_001 START')
-      const CommonEventSubscriberInfo = {
+  describe('SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_SYSTEM_TEST', async function () {
+    let TAG = 'SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_SYSTEM_TEST ===>'
+    console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_SYSTEM_TEST START`)
+    it('SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_SYSTEM_TEST_0100', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_SYSTEM_TEST START`)
+      let CommonEventSubscriberInfo = {
         events: [
           commonEvent.Support.COMMON_EVENT_SHUTDOWN,
           commonEvent.Support.COMMON_EVENT_BATTERY_CHANGED,
@@ -158,7 +159,7 @@ export default function ActsSubscriberTestUnorderSystem() {
           commonEvent.Support.COMMON_EVENT_NFC_ACTION_RF_FIELD_ON_DETECTED,
           commonEvent.Support.COMMON_EVENT_NFC_ACTION_RF_FIELD_OFF_DETECTED,
           commonEvent.Support.COMMON_EVENT_USER_ADDED,
-          //commonEvent.Support.COMMON_EVENT_USER_REMOVED,
+          // commonEvent.Support.COMMON_EVENT_USER_REMOVED,
           commonEvent.Support.COMMON_EVENT_ABILITY_ADDED,
           commonEvent.Support.COMMON_EVENT_ABILITY_REMOVED,
           commonEvent.Support.COMMON_EVENT_ABILITY_UPDATED,
@@ -178,41 +179,42 @@ export default function ActsSubscriberTestUnorderSystem() {
           commonEvent.Support.COMMON_EVENT_SPN_INFO_CHANGED
         ]
       }
-
-      let CommonEventSubscriber = await commonEvent.createSubscriber(CommonEventSubscriberInfo)
-      if (CommonEventSubscriber == undefined) {
-        console.info(TAG + ': createSubscriber failed! Err.Info ===> ' + JSON.stringify(CommonEventSubscriber))
+      let CommonEventSubscriber
+      commonEvent.createSubscriber(CommonEventSubscriberInfo).then((data) => {
+        console.info(`${TAG} createSubscriber success : ${CommonEventSubscriberInfo}`)
+        CommonEventSubscriber = data
+        expect(true).assertTrue()
+        commonEvent.subscribe(CommonEventSubscriber, (err, CommonEventData) => {
+          if (err.code) {
+            console.info(`${TAG} subscribe err : ${err.code}`)
+            expect(false).assertTrue()
+            done()
+          } else {
+            console.info(`${TAG} subscribe success : ${CommonEventData}`)
+            expect(true).assertTrue()
+          }
+        })
+      }).catch((err) => {
+        console.info(`${TAG} createSubscriber err ${err}`)
         expect(false).assertTrue()
         done()
-      } else {
-        console.info(TAG + ': createSubscriber successed! Subscriber.Info ===> ' + JSON.stringify(CommonEventSubscriber))
-        expect(true).assertTrue()
-      }
-
-      await commonEvent.subscribe(CommonEventSubscriber, (err, CommonEventData) => {
-        if (err.code) {
-          console.info(TAG + ': subscribe failed! Err.Info ===> ' + JSON.stringify(err.code))
-          expect(false).assertTrue()
-          done()
-        } else {
-          console.info(TAG + ': subscribe successed! CommonEventData.Info ===> ' + JSON.stringify(CommonEventData))
-          expect(true).assertTrue()
-        }
       })
 
       for (let i = 0; i < CommonEventSubscriberInfo.events.length; i++) {
         await commonEvent.publish(CommonEventSubscriberInfo.events[i], (err) => {
           if (err.code) {
-            console.info(TAG + ': publish failed! event.Info ===> ' + JSON.stringify(CommonEventSubscriberInfo.events[i]))
+            console.info(`${TAG} publish err : ${err.code}`)
             expect(false).assertTrue()
             done()
           } else {
-            console.info(TAG + ': publish successed! event.Info ===> ' + JSON.stringify(CommonEventSubscriberInfo.events[i]))
+            console.info(`${TAG} publish success : ${CommonEventSubscriberInfo.events[i]}`)
             expect(true).assertTrue()
             done()
           }
         })
       }
     })
+    console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_UNORDER_SYSTEM_TEST END`)
   })
+
 }
