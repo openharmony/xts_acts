@@ -18,7 +18,6 @@ group("toolchain") {
   deps = [ "//third_party/musl:libctest" ]
   if (is_standard_system) {
     deps += [
-      #":tar_testcases",
       ":tar_dllib",
     ]
   }
@@ -39,7 +38,7 @@ action("tar_testcases") {
   print("project_dirf-64:", project_dirf)
 
   test_path = string_replace(project_dirf, "/tar_files.py", "")
-  script = rebase_path("//test/xts/acts/toolchain/libc-test/tar_files.py")
+  script = rebase_path("//test/xts/acts/commonlibrary/toolchain/libc-test/tar_files.py")
 
   _outputs = [ "$target_out_dir/libc-test.tar" ]
   outputs = _outputs
@@ -70,7 +69,7 @@ action("tar_dllib") {
   print("project_dirf-64:", project_dirf)
 
   dllib_path = string_replace(project_dirf, "/tar_files.py", "")
-  script = rebase_path("//test/xts/acts/toolchain/libc-test/tar_files.py")
+  script = rebase_path("//test/xts/acts/commonlibrary/toolchain/libc-test/tar_files.py")
 
   _outputs = [ "$target_out_dir/libc-test-lib.tar" ]
   outputs = _outputs

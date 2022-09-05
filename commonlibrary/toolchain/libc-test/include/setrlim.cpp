@@ -22,7 +22,7 @@ namespace OHOS {
 int runtest::t_setrlim(int r, long lim)
 {
     struct rlimit rl;
-
+    //Gets the current stack size
     if (getrlimit(r, &rl)) {
         printf("getrlimit %d: %s\n", r, strerror(errno));
         return -1;

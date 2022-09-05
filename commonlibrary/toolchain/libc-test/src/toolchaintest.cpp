@@ -41,20 +41,19 @@ static vector<std::string> temp = runtest::GetFileNames(filepath);
 
 volatile int t_status = 0;
 
-static int h_sigCount = 0;
 static void handler(int sig)
 {
-    (void)sig;
-    h_sigCount++;
 }
 
-static int start(char *wrap, const char *argvs)
+static int start(const char *argvs)
 {
     int pid, space_size = 100*1024;
-
+    //Create a child process
+    //Set the process stack space
     pid = fork();
     if (pid == 0) {
         runtest::t_setrlim(RLIMIT_STACK, space_size);
+        //Overloading the subprocess space
         int exe = execl(argvs, "strptime", nullptr);
         printf("exe:%d %s exec failed: %s\n", exe, argvs, strerror(errno));
         exit(1);
@@ -64,12 +63,11 @@ static int start(char *wrap, const char *argvs)
 
 static int runTests(const char *argvs)
 {
-    char wrap[] = "";
     int timeoutsec = 5, timeout = 0;
     int status, pid;
     sigset_t set;
     void (*retfunc)(int);
-
+    //signal set
     sigemptyset(&set);
     sigaddset(&set, SIGCHLD);
     sigprocmask(SIG_BLOCK, &set, nullptr);
@@ -77,16 +75,19 @@ static int runTests(const char *argvs)
     if (retfunc == SIG_ERR) {
         printf("signal triggering failed:%s\n", strerror(errno));
     }
-    pid = start(wrap, argvs);
+    pid = start(argvs);
+    //The function system call failed
     if (pid == -1) {
         printf("%s fork failed: %s\n", argvs, strerror(errno));
         printf("FAIL %s [internal]\n", argvs);
         return -1;
     }
     struct timespec tp;
+    //Maximum blocking time
     tp.tv_sec = timeoutsec;
     tp.tv_nsec = 0;
     if (sigtimedwait(&set, nullptr, &tp) == -1) {
+        //Call it again
         if (errno == EAGAIN) {
             timeout = 1;
         } else {
@@ -96,11 +97,13 @@ static int runTests(const char *argvs)
             printf("%s kill failed: %s\n", argvs, strerror(errno));
         }
     }
+    //Waiting for the process to stop
     if (waitpid(pid, &status, 0) != pid) {
         printf("%s waitpid failed: %s\n", argvs, strerror(errno));
         printf("FAIL %s [internal]\n", argvs);
         return -1;
     }
+    //Process state
     if (WIFEXITED(status)) {
         if (WEXITSTATUS(status) == 0) {
             return t_status;
@@ -120,7 +123,7 @@ static int runTests(const char *argvs)
 /**
  * @tc.name      : toolchaintest.LibcTest
  * @tc.desc      : start test
- * @tc.level     : Level 2
+ * @tc.level     : Level 3
  */
 HWTEST_P(toolchaintest, LibcTest, Function | MediumTest | Level3)
 {
