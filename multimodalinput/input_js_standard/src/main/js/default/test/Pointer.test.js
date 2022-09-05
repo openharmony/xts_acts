@@ -35,7 +35,7 @@ describe('MultimodalInput_Pointer_test', function () {
                 expect(false).assertTrue();
             } else {
                 console.info(`MultimodalInput_Pointer_test::SetPointerVisibleTest_001 success`);
-                expect(true).assertTure();
+                expect(true).assertTrue();
             }
         };
         pointer.setPointerVisible(false, callback);
@@ -43,8 +43,8 @@ describe('MultimodalInput_Pointer_test', function () {
         pointer.isPointerVisible().then(data => {
             console.info(`MultimodalInput_Pointer_test::PointerVisibleTest_001 success, data=${JSON.stringify(data)}`);
             expect(data == false).assertTrue();
-        }, data => {
-            console.info(`MultimodalInput_Pointer_test::PointerVisibleTest_001 failed, err=${JSON.stringify(data)}`);
+        }, err => {
+            console.info(`MultimodalInput_Pointer_test::PointerVisibleTest_001 failed, err=${JSON.stringify(err)}`);
             expect(false).assertTrue();
         });
         console.info(`MultimodalInput_Pointer_test::PointerVisibleTest_001 exit`);
@@ -55,9 +55,9 @@ describe('MultimodalInput_Pointer_test', function () {
         pointer.setPointerVisible(true).then(data => {
             console.info(`MultimodalInput_Pointer_test::PointerVisibleTest_002 success, data=${JSON.stringify(data)}`);
             expect(true).assertTrue();
-        }, data => {
-            console.info(`MultimodalInput_Pointer_test::PointerVisibleTest_002 failed, err=${JSON.stringify(data)}`);
-            expect(false).assertTure();
+        }, err => {
+            console.info(`MultimodalInput_Pointer_test::PointerVisibleTest_002 failed, err=${JSON.stringify(err)}`);
+            expect(false).assertTrue();
         });
 
         var callback = function (err, data) {
@@ -91,7 +91,7 @@ describe('MultimodalInput_Pointer_test', function () {
                     expect(true).assertTrue();
                     console.info(`SetPointerStyle_001 success`);
                 }).catch((err) => {
-                    expect(false).assertTure();
+                    expect(false).assertTrue();
                     console.info("promise::catch", err);
                 });
             })
@@ -144,7 +144,7 @@ describe('MultimodalInput_Pointer_test', function () {
                     expect(data).assertTrue('Number');
                 }).catch((err) => {
                     console.info("promise::catch", err);
-                    expect(false).assertTure();
+                    expect(false).assertTrue();
                 });
             })
         })
