@@ -115,7 +115,7 @@ export default function abilityTest() {
 
       console.log('ACTS_AppSelectorTest_1200 cmd = ' + cmdInstall);
       await abilityDelegator.executeShellCommand(cmdInstall);
-      
+
       let subscriber = await commonEvent.createSubscriber(subscriberInfo);
       globalThis.abilityContext.startAbility(
         {
@@ -124,7 +124,7 @@ export default function abilityTest() {
           parameters: {
             uri: "filePath"
           }
-        }, async(error, data) => {
+        }, async (error, data) => {
 
           console.debug("ACTS_AppSelectorTest_1200 startAbility " +
             JSON.stringify(error) + "," + JSON.stringify(data));
@@ -138,7 +138,7 @@ export default function abilityTest() {
           console.log("ACTS_AppSelectorTest_1200 button " + JSON.stringify(button));
           await button.click();
         })
-    
+
       async function SubscribeCallBack(err, data) {
         console.log('ACTS_AppSelectorTest_1200 bundleName = ' + data.parameters.bundleName);
         console.log('ACTS_AppSelectorTest_1200 abilityName = ' + data.parameters.abilityName);
@@ -311,16 +311,21 @@ export default function abilityTest() {
           console.debug("ACTS_AppSelectorTest_1500 startAbility " +
             JSON.stringify(error) + "," + JSON.stringify(data));
           console.debug("ACTS_AppSelectorTest_1500 startAbility end");
+          await sleep(2000);
           commonEvent.subscribe(subscriber, SubscribeCallBack)
+          let component1 = await driver.findComponent(BY.text("使用以下方式打开"))
+          let text = await component1.getBounds()
+          console.log("ACTS_AppSelectorTest_1500 rectSerial " + JSON.stringify(text));
+
+
+          let component2 = await driver.findComponent(BY.text("imagebrelyhap"))
+          let button = await component2.getBounds()
+          console.log("ACTS_AppSelectorTest_1500 rectSerial " + JSON.stringify(button));
 
           await sleep(2000);
-          console.log("ACTS_AppSelectorTest_1500 findComponent");
-          let button = await driver.findComponent(BY.text('imagebrelyhap').enabled(true))
-          await driver.click(400, 400);
-
-          console.log("ACTS_AppSelectorTest_1500 button " + JSON.stringify(button));
-          await button.click();
-
+          await driver.click(text.leftX, text.topY);
+          await sleep(2000);
+          await driver.click(button.leftX, button.topY);
         })
 
       async function SubscribeCallBack(err, data) {
