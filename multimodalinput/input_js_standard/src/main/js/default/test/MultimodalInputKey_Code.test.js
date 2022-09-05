@@ -819,7 +819,7 @@ describe('Multimodalinput_KeyCode_test', function () {
         console.info(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_0010 exit`);
     })
 
-    it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_0100', 0, function () {
+    it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_1000', 0, function () {
         console.info(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_100 enter`);
 
         expect(inputkeyCode.KeyCode.KEYCODE_MOVE_HOME == 2081).assertTrue();
