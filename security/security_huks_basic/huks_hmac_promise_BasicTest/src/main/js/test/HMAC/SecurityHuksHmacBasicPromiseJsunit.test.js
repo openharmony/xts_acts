@@ -61,21 +61,21 @@ async function publicHmacGenFunc(srcKeyAlies, HuksOptions) {
   await huks
     .isKeyExist(srcKeyAlies, emptyOptions)
     .then(async (data) => {
-      console.log("isKeyExist111 data: " + JSON.stringify(data));
+      console.log("isKeyExist data: " + JSON.stringify(data));
       expect(data == true).assertTrue();
     })
     .catch((err) => {
-      console.error("isKeyExist111 err: " + JSON.stringify(err));
+      console.error("isKeyExist err: " + JSON.stringify(err));
       expect(null).assertFail();
     });
 
   await isKeyExist(srcKeyAlies, emptyOptions)
     .then((data) => {
-      console.log("isKeyExist111 data: " + JSON.stringify(data));
+      console.log("isKeyExist data: " + JSON.stringify(data));
       expect(data == true).assertTrue();
     })
     .catch((err) => {
-      console.error("isKeyExist111 err: " + JSON.stringify(err));
+      console.error("isKeyExist err: " + JSON.stringify(err));
       expect(null).assertFail();
     });
   HuksOptions.properties.splice(1, 1);
