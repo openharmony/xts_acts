@@ -44,7 +44,7 @@
         "type": "page",
         "isVisible": "true",
         "launchType": "standard",
-        "orientation": "followrecent",
+        "orientation": "followRecent",
         "language": "C++"
       }
     ],
