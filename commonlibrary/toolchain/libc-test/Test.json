@@ -15,8 +15,6 @@
                 "tar -xf /data/local/tmp/libc-test.tar -C /data/local/tmp/",
                 "tar -xf /data/local/tmp/libc-test-lib.tar -C /data/local/tmp/",
                 "chmod a+x -R /data/local/tmp/libc-test-lib",
-                "cp /data/local/tmp/libc-test-lib/{libdlopen_dso.so,libdlclose_reset_dso.so,libtls_get_new-dtv_dso.so} /",
-                "cp /data/local/tmp/libc-test-lib/{libtls_align_dso.so,libtls_init_dso.so} /src/functional/",
                 "chmod a+x -R /data/local/tmp/libc-test"
             ]
         }
