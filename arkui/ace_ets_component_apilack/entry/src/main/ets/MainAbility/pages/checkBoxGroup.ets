@@ -88,6 +88,7 @@ struct CheckBoxGroupSelectAll {
             })
           Checkbox({ name: 'checkbox1', group: 'checkboxGroup' })
             .selectedColor(0x39a2db)
+            .key("CheckboxOne")
             .onChange((value: boolean) => {
               console.info('Checkbox1 change is' + value)
             })

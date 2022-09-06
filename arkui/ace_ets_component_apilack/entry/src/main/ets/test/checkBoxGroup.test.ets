@@ -87,10 +87,11 @@ export default function checkBoxGroupSelectAllJsunit() {
       }
       await Utils.sleep(2000);
 
-      let strJson = getInspectorByKey('CheckboxGroup');
+      let strJson = getInspectorByKey('CheckboxOne');
       let obj = JSON.parse(strJson);
       console.info("[testcheckBoxGroupSelectAll0002] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.selectAll).assertEqual('false');
+      expect(obj.$attrs.selectedColor).assertEqual("#FF39A2DB");
+      console.info("[testcheckBoxGroupSelectAll0002] selectedColor value :" + obj.$attrs.selectedColor);
       console.info('testcheckBoxGroupSelectAll0002 END');
       done();
     });
