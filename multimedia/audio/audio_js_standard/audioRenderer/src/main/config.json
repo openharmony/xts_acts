@@ -6,7 +6,7 @@
         "target": 7
     },
       "vendor": "acts",
-      "bundleName": "ohos.acts.multimedia.audio.audiomanager",
+      "bundleName": "ohos.acts.multimedia.audio.audiorenderer",
       "version": {
           "code": 1000000,
           "name": "1.0.0"
@@ -35,7 +35,7 @@
               "visible": true,
               "labelId": 16777216,
               "icon": "$media:icon",
-              "name": "ohos.acts.multimedia.audio.audiomanager.MainAbility",
+              "name": "ohos.acts.multimedia.audio.audiorenderer.MainAbility",
               "description": "$string:mainability_description",
               "label": "$string:entry_MainAbility",
               "type": "page",
@@ -49,14 +49,14 @@
           "tv",
           "wearable"
       ],
-      "mainAbility": "ohos.acts.multimedia.audio.audiomanager.MainAbility",
+      "mainAbility": "ohos.acts.multimedia.audio.audiorenderer.MainAbility",
       "distro": {
           "moduleType": "entry",
           "installationFree": false,
           "deliveryWithInstall": true,
           "moduleName": "entry"
       },
-      "package": "ohos.acts.multimedia.audio.audiomanager",
+      "package": "ohos.acts.multimedia.audio.audiorenderer",
       "name": ".MyApplication",
       "js": [
           {
@@ -69,25 +69,6 @@
                   "autoDesignWidth": true
               }
           }
-      ],
-      "reqPermissions": [
-      
-      {
-        "name": "ohos.permission.GRANT_SENSITIVE_PERMISSIONS",
-        "reason": "use ohos.permission.GRANT_SENSITIVE_PERMISSIONS"
-      },
-      {
-        "name": "ohos.permission.MICROPHONE",
-        "reason": "use ohos.permission.MICROPHONE"
-      },
-      {
-        "name": "ohos.permission.ACCESS_NOTIFICATION_POLICY",
-        "reason": "use ohos.permission.ACCESS_NOTIFICATION_POLICY"
-      },
-      {
-        "name": "ohos.permission.MODIFY_AUDIO_SETTINGS",
-        "reason": "use ohos.permission.MODIFY_AUDIO_SETTINGS"
-      }
-    ]
+      ]
   }
 }

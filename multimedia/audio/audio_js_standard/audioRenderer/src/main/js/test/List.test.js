@@ -13,5 +13,5 @@
  * limitations under the License.
  */
 
-require('./AudioFramework.test.js')
+require('./AudioRenderer.test.js')
 
