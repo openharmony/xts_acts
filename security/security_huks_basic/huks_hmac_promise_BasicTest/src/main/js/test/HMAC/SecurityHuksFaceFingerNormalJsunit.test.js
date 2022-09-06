@@ -21,7 +21,7 @@ let challenge = stringToUint8Array("challenge_data");
 let versionInfo = stringToUint8Array("version_info");
 let keyAliasString = "key attest";
 
-function attestKey(str) {
+function attestKey(srcKeyAlies, HuksOptions) {
   return new Promise((resolve, reject) => {
     huks.attestKey(srcKeyAlies, HuksOptions, function (err, data) {
       try {
