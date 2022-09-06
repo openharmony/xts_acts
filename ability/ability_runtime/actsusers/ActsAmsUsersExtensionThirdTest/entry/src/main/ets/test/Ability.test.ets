@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "deccjsunit/index"
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import commonEvent from '@ohos.commonEvent'
 import osaccount from '@ohos.account.osAccount'
 
@@ -26,20 +26,11 @@ var osAccountManager
 const START_ABILITY_TIMEOUT = 6000;
 globalThis.number = 0;
 console.debug("====>in Ability.test====>");
-export default function abilityTest(abilityContext) {
+export default function abilityTest() {
   console.debug("====>in function abilityTest====>");
   describe('ActsInterfaceMultiUsersExtensionThirdTest', function () {
-    afterAll(function() {
-      osAccountManager = osaccount.getAccountManager();
-      console.debug("====>get AccountManager finish====");
-      osAccountManager.activateOsAccount(100, (err)=>{
-        console.debug("====>activateOsAccount localId: 100 err:" + JSON.stringify(err));
-        osAccountManager.removeOsAccount(101, (err)=>{
-          console.debug("====>remove localId: 101" + " err:" + JSON.stringify(err));
-        })
-      })
-    })
     console.debug("====>in ACTS_InterfaceMultiUsers====>");
+
     /*
      * @tc.number  : ACTS_ThirdPartyExtensionStartAbility_0100
      * @tc.name    : start new ability
@@ -57,7 +48,7 @@ export default function abilityTest(abilityContext) {
         if(data.event == "ACTS_InterfaceMultiUsersExtension_CommonEvent"){
           startresult = true
         }
-        abilityContext.disconnectAbility(globalThis.number).then((data)=>{
+        globalThis.abilityContext.disconnectAbility(globalThis.number).then((data)=>{
           console.debug("====>data is====>" + JSON.stringify(data));
         })
         console.log('====>disconnectAbility finish');
@@ -70,7 +61,7 @@ export default function abilityTest(abilityContext) {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>0100start connectAbility====>");
-          globalThis.number = await abilityContext.connectAbility(
+          globalThis.number = await globalThis.abilityContext.connectAbility(
             {
               bundleName: 'com.acts.actsinterfacemultiusersextensionthirdtest',
               abilityName: 'com.acts.actsinterfacemultiusersextensionthirdtest.ServiceAbility'
@@ -124,7 +115,7 @@ export default function abilityTest(abilityContext) {
         console.debug("====>UnSubscribeCallback====>");
         flag = false
         expect(startresult).assertEqual(false);
-        abilityContext.disconnectAbility(globalThis.number).then((data)=>{
+        globalThis.abilityContext.disconnectAbility(globalThis.number).then((data)=>{
           console.debug("====>data is====>" + JSON.stringify(data));
         })
         console.log('====>disconnectAbility finish');
@@ -158,7 +149,7 @@ export default function abilityTest(abilityContext) {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>0200start connectAbility====>");
-          globalThis.number = await abilityContext.connectAbility(
+          globalThis.number = await globalThis.abilityContext.connectAbility(
             {
               bundleName: 'com.acts.actsinterfacemultiusersextensionthirdtest',
               abilityName: 'com.acts.actsinterfacemultiusersextensionthirdtest.ServiceAbility'
@@ -189,7 +180,7 @@ export default function abilityTest(abilityContext) {
             if(data.event == "ACTS_InterfaceMultiUsersExtension_CommonEvent"){
               startresult = true
             }
-            abilityContext.disconnectAbility(globalThis.number).then((data)=>{
+            globalThis.abilityContext.disconnectAbility(globalThis.number).then((data)=>{
               console.debug("====>data is====>" + JSON.stringify(data));
             })
             console.log('====>disconnectAbility finish');
@@ -202,7 +193,7 @@ export default function abilityTest(abilityContext) {
               Subscriber = data;
               commonEvent.subscribe(Subscriber, SubscribeCallBack);
               console.debug("====>0300start connectAbility====>");
-              globalThis.number = await abilityContext.connectAbility(
+              globalThis.number = await globalThis.abilityContext.connectAbility(
                 {
                   bundleName: 'com.acts.actsinterfacemultiusersextensionthirdtest',
                   abilityName: 'com.acts.actsinterfacemultiusersextensionthirdtest.ServiceAbility'
@@ -256,7 +247,7 @@ export default function abilityTest(abilityContext) {
         console.debug("====>UnSubscribeCallback====>");
         flag = false
         expect(startresult).assertEqual(false);
-        abilityContext.disconnectAbility(globalThis.number).then((data)=>{
+        globalThis.abilityContext.disconnectAbility(globalThis.number).then((data)=>{
           console.debug("====>data is====>" + JSON.stringify(data));
         })
         console.log('====>disconnectAbility finish');
@@ -290,7 +281,7 @@ export default function abilityTest(abilityContext) {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>0400start connectAbility====>");
-          globalThis.number = await abilityContext.connectAbility(
+          globalThis.number = await globalThis.abilityContext.connectAbility(
             {
               bundleName: 'com.acts.actsinterfacemultiusersextensionthirdtest',
               abilityName: 'com.acts.actsinterfacemultiusersextensionthirdtest.ServiceAbility'
@@ -322,7 +313,7 @@ export default function abilityTest(abilityContext) {
         if(data.event == "ACTS_InterfaceMultiUsersExtension_CommonEvent"){
           startresult = true
         }
-        abilityContext.disconnectAbility(globalThis.number).then((data)=>{
+        globalThis.abilityContext.disconnectAbility(globalThis.number).then((data)=>{
           console.debug("====>data is====>" + JSON.stringify(data));
         })
         console.log('====>disconnectAbility finish');
@@ -335,7 +326,7 @@ export default function abilityTest(abilityContext) {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>0500start connectAbility====>");
-          globalThis.number = await abilityContext.connectAbility(
+          globalThis.number = await globalThis.abilityContext.connectAbility(
             {
               bundleName: 'com.acts.actsinterfacemultiusersextensionthirdtest',
               abilityName: 'com.acts.actsinterfacemultiusersextensionthirdtest.ServiceAbility'
@@ -389,7 +380,7 @@ export default function abilityTest(abilityContext) {
         console.debug("====>UnSubscribeCallback====>");
         flag = false
         expect(startresult).assertEqual(false);
-        abilityContext.disconnectAbility(globalThis.number).then((data)=>{
+        globalThis.abilityContext.disconnectAbility(globalThis.number).then((data)=>{
           console.debug("====>data is====>" + JSON.stringify(data));
         })
         console.log('====>disconnectAbility finish');
@@ -423,7 +414,7 @@ export default function abilityTest(abilityContext) {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>0600start connectAbility====>");
-          globalThis.number = await abilityContext.connectAbility(
+          globalThis.number = await globalThis.abilityContext.connectAbility(
             {
               bundleName: 'com.acts.actsinterfacemultiusersextensionthirdtest',
               abilityName: 'com.acts.actsinterfacemultiusersextensionthirdtest.ServiceAbility'
@@ -454,7 +445,7 @@ export default function abilityTest(abilityContext) {
             if(data.event == "ACTS_InterfaceMultiUsersExtension_CommonEvent"){
               startresult = true
             }
-            abilityContext.disconnectAbility(globalThis.number).then((data)=>{
+            globalThis.abilityContext.disconnectAbility(globalThis.number).then((data)=>{
               console.debug("====>data is====>" + JSON.stringify(data));
             })
             console.log('====>disconnectAbility finish');
@@ -467,7 +458,7 @@ export default function abilityTest(abilityContext) {
               Subscriber = data;
               commonEvent.subscribe(Subscriber, SubscribeCallBack);
               console.debug("====>0700start connectAbility====>");
-              globalThis.number = await abilityContext.connectAbility(
+              globalThis.number = await globalThis.abilityContext.connectAbility(
                 {
                   bundleName: 'com.acts.actsinterfacemultiusersextensionthirdtest',
                   abilityName: 'com.acts.actsinterfacemultiusersextensionthirdtest.ServiceAbility'
@@ -522,7 +513,7 @@ export default function abilityTest(abilityContext) {
         console.debug("====>UnSubscribeCallback====>");
         flag = false
         expect(startresult).assertEqual(false);
-        abilityContext.disconnectAbility(globalThis.number).then((data)=>{
+        globalThis.abilityContext.disconnectAbility(globalThis.number).then((data)=>{
           console.debug("====>data is====>" + JSON.stringify(data));
         })
         console.log('====>disconnectAbility finish');
@@ -556,7 +547,7 @@ export default function abilityTest(abilityContext) {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>0800start connectAbility====>");
-          globalThis.number = await abilityContext.connectAbility(
+          globalThis.number = await globalThis.abilityContext.connectAbility(
             {
               bundleName: 'com.acts.actsinterfacemultiusersextensionthirdtest',
               abilityName: 'com.acts.actsinterfacemultiusersextensionthirdtest.ServiceAbility'
@@ -586,7 +577,7 @@ export default function abilityTest(abilityContext) {
         if(data.event == "ACTS_TerminateSelf_CommonEvent"){
           startresult = true
         }
-        abilityContext.disconnectAbility(globalThis.number).then((data)=>{
+        globalThis.abilityContext.disconnectAbility(globalThis.number).then((data)=>{
           console.debug("====>data is====>" + JSON.stringify(data));
         })
         console.log('====>disconnectAbility finish');
@@ -599,7 +590,7 @@ export default function abilityTest(abilityContext) {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>0100start connectAbility====>");
-          globalThis.number = await abilityContext.connectAbility(
+          globalThis.number = await globalThis.abilityContext.connectAbility(
             {
               bundleName: 'com.acts.actsinterfacemultiusersextensionthirdtest',
               abilityName: 'com.acts.actsinterfacemultiusersextensionthirdtest.ServiceAbility'
@@ -652,7 +643,7 @@ export default function abilityTest(abilityContext) {
         console.debug("====>UnSubscribeCallback====>");
         flag = false
         expect(startresult).assertEqual(false);
-        abilityContext.disconnectAbility(globalThis.number).then((data)=>{
+        globalThis.abilityContext.disconnectAbility(globalThis.number).then((data)=>{
           console.debug("====>data is====>" + JSON.stringify(data));
         })
         console.log('====>disconnectAbility finish');
@@ -686,7 +677,7 @@ export default function abilityTest(abilityContext) {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>0200start connectAbility====>");
-          globalThis.number = await abilityContext.connectAbility(
+          globalThis.number = await globalThis.abilityContext.connectAbility(
             {
               bundleName: 'com.acts.actsinterfacemultiusersextensionthirdtest',
               abilityName: 'com.acts.actsinterfacemultiusersextensionthirdtest.ServiceAbility'
@@ -717,7 +708,7 @@ export default function abilityTest(abilityContext) {
         if(data.event == "ACTS_TerminateSelf_CommonEvent"){
           startresult = true
         }
-        abilityContext.disconnectAbility(globalThis.number).then((data)=>{
+        globalThis.abilityContext.disconnectAbility(globalThis.number).then((data)=>{
           console.debug("====>data is====>" + JSON.stringify(data));
         })
         console.log('====>disconnectAbility finish');
@@ -730,7 +721,7 @@ export default function abilityTest(abilityContext) {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>0300start connectAbility====>");
-          globalThis.number = await abilityContext.connectAbility(
+          globalThis.number = await globalThis.abilityContext.connectAbility(
             {
               bundleName: 'com.acts.actsinterfacemultiusersextensionthirdtest',
               abilityName: 'com.acts.actsinterfacemultiusersextensionthirdtest.ServiceAbility'
@@ -784,7 +775,7 @@ export default function abilityTest(abilityContext) {
         console.debug("====>UnSubscribeCallback====>");
         flag = false
         expect(startresult).assertEqual(false);
-        abilityContext.disconnectAbility(globalThis.number).then((data)=>{
+        globalThis.abilityContext.disconnectAbility(globalThis.number).then((data)=>{
           console.debug("====>data is====>" + JSON.stringify(data));
         })
         console.log('====>disconnectAbility finish');
@@ -820,7 +811,7 @@ export default function abilityTest(abilityContext) {
           Subscriber = data;
           commonEvent.subscribe(Subscriber, SubscribeCallBack);
           console.debug("====>0400start connectAbility====>");
-          globalThis.number = await abilityContext.connectAbility(
+          globalThis.number = await globalThis.abilityContext.connectAbility(
             {
               bundleName: 'com.acts.actsinterfacemultiusersextensionthirdtest',
               abilityName: 'com.acts.actsinterfacemultiusersextensionthirdtest.ServiceAbility'

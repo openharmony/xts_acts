@@ -26,9 +26,9 @@ export default class MainAbility extends Ability {
 
   onWindowStageCreate(windowStage) {
     console.log("MainAbility3 onWindowStageCreate")
-    globalThis.abilityContext = this.context
+    globalThis.abilityContext3 = this.context
     windowStage.setUIContent(this.context, "pages/index/second", null)
-    globalThis.abilityContext.terminateSelfWithResult(
+    globalThis.abilityContext3.terminateSelfWithResult(
       {
         resultCode:1,
         want:{
@@ -46,7 +46,7 @@ export default class MainAbility extends Ability {
 
   onForeground() {
     console.log("MainAbility3 onForeground")
-    globalThis.abilityContext.terminateSelfWithResult({
+    globalThis.abilityContext3.terminateSelfWithResult({
       resultCode: 1
     })
   }

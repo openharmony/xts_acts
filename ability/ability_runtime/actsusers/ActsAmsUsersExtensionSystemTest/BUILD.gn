@@ -14,7 +14,7 @@
 import("//test/xts/tools/build/suite.gni")
 
 ohos_js_hap_suite("ActsAmsUsersExtensionSystemTest") {
-  hap_profile = "entry/src/main/module.json"
+  hap_profile = "./entry/src/main/module.json"
   js_build_mode = "debug"
   deps = [
     ":actsamsusersextensionsystemtest_js_assets",
@@ -23,6 +23,8 @@ ohos_js_hap_suite("ActsAmsUsersExtensionSystemTest") {
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsAmsUsersExtensionSystemTest"
+  subsystem_name = "ability"
+  part_name = "ability_runtime"
 }
 
 ohos_app_scope("actsamsusersextensionsystemtest_app_profile") {
@@ -31,11 +33,11 @@ ohos_app_scope("actsamsusersextensionsystemtest_app_profile") {
 }
 
 ohos_js_assets("actsamsusersextensionsystemtest_js_assets") {
-  source_dir = "entry/src/main/ets"
+  source_dir = "./entry/src/main/ets"
 }
 
 ohos_resources("actsamsusersextensionsystemtest_resources") {
-  sources = [ "entry/src/main/resources" ]
+  sources = [ "./entry/src/main/resources" ]
   deps = [ ":actsamsusersextensionsystemtest_app_profile" ]
-  hap_profile = "entry/src/main/module.json"
+  hap_profile = "./entry/src/main/module.json"
 }

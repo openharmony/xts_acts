@@ -14,7 +14,7 @@
  */
 import abilityTest from './Ability.test.ets'
 
-export default function testsuite(context) {
+export default function testsuite() {
   console.debug("====>in list.test====>");
-  abilityTest(context)
+  abilityTest()
 }

@@ -76,7 +76,8 @@ export default class ServiceAbility extends ServiceExtensionAbility {
             abilityName: 'com.acts.actsinterfacemultiusersextensionthirdtest.MainAbility2'
           },{
           windowMode:0
-        },() => {
+        },(err,data) => {
+          console.debug("====>err is====>" + JSON.stringify(err));
           console.debug("====>startAbility end====>" );
         })
         var myStub7 = new Stub("com.acts.actsinterfacemultiusersextensionthirdtest.MainAbility");
@@ -90,7 +91,8 @@ export default class ServiceAbility extends ServiceExtensionAbility {
             abilityName: 'com.acts.error.MainAbility2'
           },{
           windowMode:0
-        },() => {
+        },(err,data) => {
+          console.debug("====>err is====>" + JSON.stringify(err));
           console.debug("====>startAbility end====>" );
         })
         var myStub2 = new Stub("com.acts.actsinterfacemultiusersextensionthirdtest.MainAbility");
@@ -124,9 +126,10 @@ export default class ServiceAbility extends ServiceExtensionAbility {
           {
             bundleName: 'com.acts.actsinterfacemultiusersextensionthirdtest',
             abilityName: 'com.acts.actsinterfacemultiusersextensionthirdtest.ServiceAbility2'
-          },() => {
-          console.debug("====>startAbility end====>" );
-        })
+          },(err,data) => {
+            console.debug("====>err is====>" + JSON.stringify(err));
+            console.debug("====>startAbility end====>" );
+          })
         var myStub8 = new Stub("com.acts.actsinterfacemultiusersextensionthirdtest.MainAbility");
         console.log('ThirdAbility onConnect before return:')
         return myStub8;
@@ -136,9 +139,10 @@ export default class ServiceAbility extends ServiceExtensionAbility {
           {
             bundleName: 'com.acts.error',
             abilityName: 'com.acts.error.ServiceAbility2'
-          },() => {
-          console.debug("====>startAbility end====>" );
-        })
+          },(err,data) => {
+            console.debug("====>err is====>" + JSON.stringify(err));
+            console.debug("====>startAbility end====>" );
+          })
         var myStub4 = new Stub("com.acts.actsinterfacemultiusersextensionthirdtest.MainAbility");
         console.log('ThirdAbility onConnect before return:')
         return myStub4;
@@ -178,9 +182,10 @@ export default class ServiceAbility extends ServiceExtensionAbility {
           {
             bundleName: 'com.acts.error',
             abilityName: 'com.acts.error.ServiceAbility2'
-          },() => {
-          console.debug("====>startAbility end====>" );
-        })
+          },(err,data) => {
+            console.debug("====>err is====>" + JSON.stringify(err));
+            console.debug("====>startAbility end====>" );
+          })
         var myStub6 = new Stub("com.acts.actsinterfacemultiusersextensionthirdtest.MainAbility");
         console.log('ThirdAbility onConnect before return:')
         return myStub6;

@@ -2,10 +2,12 @@
 {
     "description": "Configuration for hjunit demo Tests",
     "driver": {
-        "type": "JSUnitTest",
-        "test-timeout": "120000",
-        "package": "com.example.actsconnectabilitysystemabilitytest",
-        "shell-timeout": "60000"
+        "type": "OHJSUnitTest",
+        "test-timeout": "300000",
+        "bundle-name": "com.example.actsconnectabilitysystemabilitytest",
+        "module-name":"phone",
+        "shell-timeout": "300000",
+        "testcase-timeout": "30000"
     },
     "kits": [
         {
@@ -15,6 +17,7 @@
                 "acm switch -i 101"
             ],
             "teardown-command":[
+                "acm switch -i 101",
                 "acm delete -i 101"
             ]
         },

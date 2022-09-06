@@ -13,7 +13,7 @@
 
 import("//build/ohos_var.gni")
 
-group("actsusers") {
+group("actsusers900") {
   testonly = true
   if (is_standard_system) {
     deps = [

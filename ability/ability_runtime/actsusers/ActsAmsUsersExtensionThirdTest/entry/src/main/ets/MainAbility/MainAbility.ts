@@ -13,39 +13,42 @@
  * limitations under the License.
  */
 import Ability from '@ohos.application.Ability'
+import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
+import { Hypium } from '@ohos/hypium'
+import testsuite from '../test/List.test'
 
 export default class MainAbility extends Ability {
+    onCreate(want, launchParam) {
+        console.log('MainAbility onCreate')
+        globalThis.abilityWant = want;
+        globalThis.abilityContext = this.context;
+        var abilityDelegator: any
+        abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+        var abilityDelegatorArguments: any
+        abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+        console.info('start run testcase!!!')
+        Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
+    }
 
-  onCreate(want, launchParam) {
-    // Ability is creating, initialize resources for this ability
-    console.log("MainAbility onCreate");
-    globalThis.abilityWant = want;
-    globalThis.abilityContext = this.context
-  }
+    onDestroy() {
+        console.log('MainAbility onDestroy')
+    }
 
-  onDestroy() {
-    // Ability is destroying, release resources for this ability
-    console.log("MainAbility onDestroy");
-  }
+    onWindowStageCreate(windowStage) {
+        console.log('MainAbility onWindowStageCreate')
+        windowStage.setUIContent(this.context, 'MainAbility/pages/index/index', null)
+    }
 
-  onWindowStageCreate(windowStage) {
-    // Main window is created, set main page for this ability
-    console.log("MainAbility onWindowStageCreate");
-    windowStage.setUIContent(this.context, "pages/index/index", null);
-  }
+    onWindowStageDestroy() {
+        console.log('MainAbility onWindowStageDestroy')
+    }
 
-  onWindowStageDestroy() {
-    // Main window is destroyed, release UI related resources
-    console.log("MainAbility onWindowStageDestroy");
-  }
+    onForeground() {
+        console.log('MainAbility onForeground')
+    }
 
-  onForeground() {
-    // Ability has brought to foreground
-    console.log("MainAbility onForeground");
-  }
-
-  onBackground() {
-    // Ability has back to background
-    console.log("MainAbility onBackground");
-  }
+    onBackground() {
+        console.log('MainAbility onBackground')
+    }
+    
 };

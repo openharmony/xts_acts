@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "deccjsunit/index"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import commonEvent from '@ohos.commonEvent'
 
 
@@ -66,7 +66,7 @@ var unsubscriberInfoStartAbility_0200 = {
 const START_ABILITY_TIMEOUT = 1000;
 globalThis.number = 0;
 
-export default function abilityTest(abilityContext) {
+export default function abilityTest() {
   describe('ActssystemabilityTest', function () {
 
     /*
@@ -87,7 +87,7 @@ export default function abilityTest(abilityContext) {
         clearTimeout(id);
         expect(data.event).assertEqual("AMS_ConnectAbility_0100_commonEvent");
         console.debug("====>ACTS_ConnectAbility_0100 5  ");
-        abilityContext.disconnectAbility(
+        globalThis.abilityContext.disconnectAbility(
           connId,
           (error, data) => {
             console.log('featureAbilityTest DisconnectAbility result errCode : ' + error.code + " data: " + data)
@@ -114,7 +114,7 @@ export default function abilityTest(abilityContext) {
         expect().assertFail();
         console.debug('AMS_ConnectAbility_0100 timeout');
         commonEvent.unsubscribe(subscriber, unSubscribeCallback)
-        abilityContext.disconnectAbility(
+        globalThis.abilityContext.disconnectAbility(
           connId,
           (error, data) => {
             console.log('featureAbilityTest DisconnectAbility result errCode : ' + error.code + " data: " + data)
@@ -139,7 +139,7 @@ export default function abilityTest(abilityContext) {
 
       id = setTimeout(timeout, START_ABILITY_TIMEOUT);
       console.debug("====>ACTS_ConnectAbility_0100 3  ");
-      connId = await abilityContext.connectAbility(
+      connId = await globalThis.abilityContext.connectAbility(
         {
           bundleName: "com.example.actsconnectabilitysystemabilitytest",
           abilityName: "com.example.actsconnectabilitysystemabilitytest.ServiceAbility",
@@ -189,7 +189,7 @@ export default function abilityTest(abilityContext) {
         commonEvent.unsubscribe(subscriber, unSubscribeCallback)
       }
       id = setTimeout(timeout, START_ABILITY_TIMEOUT);
-      connId = await abilityContext.connectAbility(
+      connId = await globalThis.abilityContext.connectAbility(
         {
           bundleName: "com.example.actsconnectabilitysystemabilitytest",
           abilityName: "com.example.actsconnectabilitysystemabilitytest.ServiceAbilityone",
@@ -217,7 +217,7 @@ export default function abilityTest(abilityContext) {
         console.debug("====>ACTS_DisconnectAbility_0100 5 CallBack data:====>" + JSON.stringify(data));
         clearTimeout(id);
         console.debug("====>ACTS_DisconnectAbility_0100 6====>");
-        abilityContext.disconnectAbility(
+        globalThis.abilityContext.disconnectAbility(
           connId,
           (error, data) => {
             console.log('featureAbilityTest DisconnectAbility result errCode : ' + error.code + " data: " + data)
@@ -241,7 +241,7 @@ export default function abilityTest(abilityContext) {
         expect().assertFail();
         console.debug('AMS_DonnectAbility_0300 timeout');
         commonEvent.unsubscribe(subscriber, unSubscribeCallback)
-        abilityContext.disconnectAbility(
+        globalThis.abilityContext.disconnectAbility(
           connId,
           (error, data) => {
             console.log('featureAbilityTest DisconnectAbility result errCode : ' + error.code + " data: " + data)
@@ -249,7 +249,7 @@ export default function abilityTest(abilityContext) {
       }
       id = setTimeout(timeout, START_ABILITY_TIMEOUT);
       console.debug("====>ACTS_DisconnectAbility_0100 3====>");
-      connId = await abilityContext.connectAbility(
+      connId = await globalThis.abilityContext.connectAbility(
         {
           bundleName: "com.example.actsconnectabilitysystemabilitytest",
           abilityName: "com.example.actsconnectabilitysystemabilitytest.ServiceAbility",
@@ -283,7 +283,7 @@ export default function abilityTest(abilityContext) {
 
           console.debug("====>ACTS_DisconnectAbility_0200 1111 connectAbility2====>");
           console.debug("====>ACTS_DisconnectAbility_0200 66 Subscriber====>");
-          abilityContext.disconnectAbility(
+          globalThis.abilityContext.disconnectAbility(
             999,
             (error, data) => {
               console.log('ACTS_DisconnectAbility_0200 5 DisconnectAbility result errCode : '
@@ -309,7 +309,7 @@ export default function abilityTest(abilityContext) {
           console.debug('unsubscribe subscriberdisconnect');
           commonEvent.unsubscribe(subscriber, () => {
             console.debug('unsubscribe subscriber')
-            abilityContext.disconnectAbility(
+            globalThis.abilityContext.disconnectAbility(
               connId,
               (error, data) => {
                 console.log('ACTS_DisconnectAbility_0200 9 DisconnectAbility result errCode : '
@@ -326,7 +326,7 @@ export default function abilityTest(abilityContext) {
         console.debug("====>ACTS_DisconnectAbility_0200 10 Subscriber====>");
         subscriber = data;
         await commonEvent.subscribe(subscriber, subscribeCallBack)
-        connId = await abilityContext.connectAbility(
+        connId = await globalThis.abilityContext.connectAbility(
           {
             bundleName: "com.example.actsconnectabilitysystemabilitytest",
             abilityName: "com.example.actsconnectabilitysystemabilitytest.ServiceAbility",
@@ -358,7 +358,7 @@ export default function abilityTest(abilityContext) {
         console.debug("====>ACTS_DisconnectAbility_0300 4 CallBack data:====>" + JSON.stringify(data));
         clearTimeout(id);
         expect(data.event).assertEqual("AMS_ConnectAbility_0500_commonEvent");
-        abilityContext.disconnectAbility(
+        globalThis.abilityContext.disconnectAbility(
           connId,
           (error, data) => {
             console.log('ACTS_DisconnectAbility_0300 5 DisconnectAbility result errCode : '
@@ -382,7 +382,7 @@ export default function abilityTest(abilityContext) {
         expect().assertFail();
         console.debug('AMS_ConnectAbility_0500 timeout');
         commonEvent.unsubscribe(subscriber, unSubscribeCallback)
-        abilityContext.disconnectAbility(
+        globalThis.abilityContext.disconnectAbility(
           connId,
           (error, data) => {
             console.log('ACTS_DisconnectAbility_0300 7 DisconnectAbility result errCode : '
@@ -391,7 +391,7 @@ export default function abilityTest(abilityContext) {
       }
       id = setTimeout(timeout, START_ABILITY_TIMEOUT);
       console.debug("====>ACTS_DisconnectAbility_0300 3 ");
-      connId = await abilityContext.connectAbility(
+      connId = await globalThis.abilityContext.connectAbility(
         {
           bundleName: "com.example.actsconnectabilitysystemabilitytest",
           abilityName: "com.example.actsconnectabilitysystemabilitytest.ServiceAbility",
@@ -425,7 +425,7 @@ export default function abilityTest(abilityContext) {
 
           console.debug("====>ACTS_DisconnectAbility_0400 1111 connectAbility2====>");
           console.debug("====>ACTS_DisconnectAbility_0400 66 Subscriber====>");
-          abilityContext.disconnectAbility(
+          globalThis.abilityContext.disconnectAbility(
             999,
             (error, data) => {
               console.log('ACTS_DisconnectAbility_0400 5 DisconnectAbility result errCode : '
@@ -451,7 +451,7 @@ export default function abilityTest(abilityContext) {
           console.debug('unsubscribe subscriberdisconnect');
           commonEvent.unsubscribe(subscriber, () => {
             console.debug('unsubscribe subscriber')
-            abilityContext.disconnectAbility(
+            globalThis.abilityContext.disconnectAbility(
               connId,
               (error, data) => {
                 console.log('ACTS_DisconnectAbility_0400 9 DisconnectAbility result errCode : '
@@ -468,7 +468,7 @@ export default function abilityTest(abilityContext) {
         console.debug("====>ACTS_DisconnectAbility_0400 10 Subscriber====>");
         subscriber = data;
         await commonEvent.subscribe(subscriber, subscribeCallBack)
-        connId = await abilityContext.connectAbility(
+        connId = await globalThis.abilityContext.connectAbility(
           {
             bundleName: "com.example.actsconnectabilitysystemabilitytest",
             abilityName: "com.example.actsconnectabilitysystemabilitytest.ServiceAbility",
@@ -501,7 +501,7 @@ export default function abilityTest(abilityContext) {
         clearTimeout(id);
         expect(data.event).assertEqual("AMS_ConnectAbility_0700_commonEvent");
         console.debug("====>ACTS_ExtensionConnectAbility_0100 5  ");
-        abilityContext.disconnectAbility(
+        globalThis.abilityContext.disconnectAbility(
           connId,
           (error, data) => {
             console.log('featureAbilityTest DisconnectAbility result errCode : ' + error.code + " data: " + data)
@@ -525,7 +525,7 @@ export default function abilityTest(abilityContext) {
         expect().assertFail();
         console.debug('ACTS_ExtensionConnectAbility_0100 timeout');
         commonEvent.unsubscribe(subscriber, unSubscribeCallback)
-        abilityContext.disconnectAbility(
+        globalThis.abilityContext.disconnectAbility(
           connId,
           (error, data) => {
             console.log('featureAbilityTest DisconnectAbility result errCode : ' + error.code + " data: " + data)
@@ -533,7 +533,7 @@ export default function abilityTest(abilityContext) {
       }
       id = setTimeout(timeout, START_ABILITY_TIMEOUT);
       console.debug("====>ACTS_ExtensionConnectAbility_0100 3  ");
-      connId = await abilityContext.connectAbility(
+      connId = await globalThis.abilityContext.connectAbility(
         {
           bundleName: "com.example.actsconnectabilitysystemabilitytest",
           abilityName: "com.example.actsconnectabilitysystemabilitytest.ServiceAbility",
@@ -560,7 +560,7 @@ export default function abilityTest(abilityContext) {
         clearTimeout(id);
         expect(data.event).assertEqual("AMS_ConnectAbility_0800_commonEvent");
         console.debug("====>ACTS_ExtensionConnectAbility_0200 5  ");
-        abilityContext.disconnectAbility(
+        globalThis.abilityContext.disconnectAbility(
           connId,
           (error, data) => {
             console.log('featureAbilityTest DisconnectAbility result errCode : ' + error.code + " data: " + data)
@@ -583,7 +583,7 @@ export default function abilityTest(abilityContext) {
       function timeout() {
         console.debug('ACTS_ExtensionConnectAbility_0200 timeout');
         commonEvent.unsubscribe(subscriber, unSubscribeCallback)
-        abilityContext.disconnectAbility(
+        globalThis.abilityContext.disconnectAbility(
           connId,
           (error, data) => {
             console.log('featureAbilityTest DisconnectAbility result errCode : ' + error.code + " data: " + data)
@@ -591,7 +591,7 @@ export default function abilityTest(abilityContext) {
       }
       id = setTimeout(timeout, START_ABILITY_TIMEOUT);
       console.debug("====>ACTS_ExtensionConnectAbility_0200 3  ");
-      connId = await abilityContext.connectAbility(
+      connId = await globalThis.abilityContext.connectAbility(
         {
           bundleName: "com.example.actsconnectabilitysystemabilitytest",
           abilityName: "com.example.actsconnectabilitysystemabilitytest.ServiceAbility",
@@ -618,7 +618,7 @@ export default function abilityTest(abilityContext) {
         clearTimeout(id);
         expect(data.event).assertEqual("AMS_ConnectAbility_0900_commonEvent");
         console.debug("====>ACTS_ExtensionDisconnectAbility_0100 5  ");
-        abilityContext.disconnectAbility(
+        globalThis.abilityContext.disconnectAbility(
           connId,
           (error, data) => {
             console.log('featureAbilityTest DisconnectAbility result errCode : ' + error.code + " data: " + data)
@@ -642,7 +642,7 @@ export default function abilityTest(abilityContext) {
         expect().assertFail();
         console.debug('ACTS_ExtensionDisconnectAbility_0100 timeout');
         commonEvent.unsubscribe(subscriber, unSubscribeCallback)
-        abilityContext.disconnectAbility(
+        globalThis.abilityContext.disconnectAbility(
           connId,
           (error, data) => {
             console.log('featureAbilityTest DisconnectAbility result errCode : ' + error.code + " data: " + data)
@@ -650,7 +650,7 @@ export default function abilityTest(abilityContext) {
       }
       id = setTimeout(timeout, START_ABILITY_TIMEOUT);
       console.debug("====>ACTS_ExtensionDisconnectAbility_0100 3  ");
-      connId = await abilityContext.connectAbility(
+      connId = await globalThis.abilityContext.connectAbility(
         {
           bundleName: "com.example.actsconnectabilitysystemabilitytest",
           abilityName: "com.example.actsconnectabilitysystemabilitytest.ServiceAbility",
@@ -677,7 +677,7 @@ export default function abilityTest(abilityContext) {
         clearTimeout(id);
         expect(data.event).assertEqual("AMS_ConnectAbility_1000_commonEvent");
         console.debug("====>ACTS_ExtensionDisconnectAbility_0200 5  ");
-        abilityContext.disconnectAbility(
+        globalThis.abilityContext.disconnectAbility(
           connId,
           (error, data) => {
             console.log('featureAbilityTest DisconnectAbility result errCode : ' + error.code + " data: " + data)
@@ -701,7 +701,7 @@ export default function abilityTest(abilityContext) {
         expect().assertFail();
         console.debug('ACTS_ExtensionDisconnectAbility_0200 timeout');
         commonEvent.unsubscribe(subscriber, unSubscribeCallback)
-        abilityContext.disconnectAbility(
+        globalThis.abilityContext.disconnectAbility(
           connId,
           (error, data) => {
             console.log('featureAbilityTest DisconnectAbility result errCode : ' + error.code + " data: " + data)
@@ -709,7 +709,7 @@ export default function abilityTest(abilityContext) {
       }
       id = setTimeout(timeout, START_ABILITY_TIMEOUT);
       console.debug("====>ACTS_ExtensionDisconnectAbility_0200 3  ");
-      connId = await abilityContext.connectAbility(
+      connId = await globalThis.abilityContext.connectAbility(
         {
           bundleName: "com.example.actsconnectabilitysystemabilitytest",
           abilityName: "com.example.actsconnectabilitysystemabilitytest.ServiceAbility",
@@ -736,7 +736,7 @@ export default function abilityTest(abilityContext) {
         clearTimeout(id);
         expect(data.event).assertEqual("AMS_ConnectAbility_1100_commonEvent");
         console.debug("====>ACTS_ExtensionDisconnectAbility_0300 5  ");
-        abilityContext.disconnectAbility(
+        globalThis.abilityContext.disconnectAbility(
           connId,
           (error, data) => {
             console.log('featureAbilityTest DisconnectAbility result errCode : ' + error.code + " data: " + data)
@@ -759,7 +759,7 @@ export default function abilityTest(abilityContext) {
       function timeout() {
         console.debug('ACTS_ExtensionDisconnectAbility_0300 timeout');
         commonEvent.unsubscribe(subscriber, unSubscribeCallback)
-        abilityContext.disconnectAbility(
+        globalThis.abilityContext.disconnectAbility(
           connId,
           (error, data) => {
             console.log('featureAbilityTest DisconnectAbility result errCode : ' + error.code + " data: " + data)
@@ -767,7 +767,7 @@ export default function abilityTest(abilityContext) {
       }
       id = setTimeout(timeout, START_ABILITY_TIMEOUT);
       console.debug("====>ACTS_ExtensionDisconnectAbility_0300 3  ");
-      connId = await abilityContext.connectAbility(
+      connId = await globalThis.abilityContext.connectAbility(
         {
           bundleName: "com.example.actsconnectabilitysystemabilitytest",
           abilityName: "com.example.actsconnectabilitysystemabilitytest.ServiceAbility",
@@ -795,7 +795,7 @@ export default function abilityTest(abilityContext) {
         clearTimeout(id);
         expect(data.event).assertEqual("AMS_ConnectAbility_1200_commonEvent");
         console.debug("====>ACTS_ExtensionDisconnectAbility_0400 5  ");
-        abilityContext.disconnectAbility(
+        globalThis.abilityContext.disconnectAbility(
           connId,
           (error, data) => {
             console.log('featureAbilityTest DisconnectAbility result errCode : ' + error.code + " data: " + data)
@@ -818,7 +818,7 @@ export default function abilityTest(abilityContext) {
       function timeout() {
         console.debug('ACTS_ExtensionDisconnectAbility_0400 timeout');
         commonEvent.unsubscribe(subscriber, unSubscribeCallback)
-        abilityContext.disconnectAbility(
+        globalThis.abilityContext.disconnectAbility(
           connId,
           (error, data) => {
             console.log('featureAbilityTest DisconnectAbility result errCode : ' + error.code + " data: " + data)
@@ -826,7 +826,7 @@ export default function abilityTest(abilityContext) {
       }
       id = setTimeout(timeout, START_ABILITY_TIMEOUT);
       console.debug("====>ACTS_ExtensionDisconnectAbility_0400 3  ");
-      connId = await abilityContext.connectAbility(
+      connId = await globalThis.abilityContext.connectAbility(
         {
           bundleName: "com.example.actsconnectabilitysystemabilitytest",
           abilityName: "com.example.actsconnectabilitysystemabilitytest.ServiceAbility",

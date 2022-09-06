@@ -1,10 +1,12 @@
 {
     "description": "Configuration for hjunit demo Tests",
     "driver": {
-        "type": "JSUnitTest",
+        "type": "OHJSUnitTest",
         "test-timeout": "300000",
-        "package": "com.acts.actsinterfacemultiusersextensiontest",
-        "shell-timeout": "300000"
+        "bundle-name": "com.acts.actsinterfacemultiusersextensiontest",
+        "module-name":"phone",
+        "shell-timeout": "300000",
+        "testcase-timeout": "30000"
     },
     "kits": [
         {
@@ -12,6 +14,10 @@
             "run-command": [
                 "acm create -n user101 -t normal",
                 "acm switch -i 101"
+            ],
+            "teardown-command": [
+                "acm switch -i 100",
+                "acm delete -i 101"
             ]
         },
         {

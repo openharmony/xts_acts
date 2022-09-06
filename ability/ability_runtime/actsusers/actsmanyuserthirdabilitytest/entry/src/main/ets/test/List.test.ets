@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import abilityTest from './manyusersabilitytest.test.ets'
-export default function testsuite(context) {
+export default function testsuite() {
 
-  abilityTest(context)
+  abilityTest()
 }

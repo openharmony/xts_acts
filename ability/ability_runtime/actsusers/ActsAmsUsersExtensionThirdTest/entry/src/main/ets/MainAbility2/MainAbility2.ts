@@ -19,7 +19,7 @@ export default class MainAbility2 extends Ability {
 
   onCreate(want, launchParam) {
     console.log("MainAbility2 onCreate");
-    globalThis.abilityContext = this.context
+    globalThis.abilityContext2 = this.context
   }
 
   onDestroy() {
@@ -28,10 +28,10 @@ export default class MainAbility2 extends Ability {
 
   onWindowStageCreate(windowStage) {
     console.log("MainAbility2 onWindowStageCreate");
-    windowStage.setUIContent(this.context, "pages/index/second", null);
+    windowStage.setUIContent(this.context, "MainAbility/pages/index/second", null);
     commonEvent.publish("ACTS_InterfaceMultiUsersExtension_CommonEvent", () => {
       console.log("publish Publish ACTS_InterfaceMultiUsersExtension_CommonEvent callback")
-      globalThis.abilityContext.terminateSelf().then(() => {
+      globalThis.abilityContext2.terminateSelf().then(() => {
         commonEvent.publish("ACTS_TerminateSelf_CommonEvent", ()=>{
           console.log('terminateSelf promise');
         });

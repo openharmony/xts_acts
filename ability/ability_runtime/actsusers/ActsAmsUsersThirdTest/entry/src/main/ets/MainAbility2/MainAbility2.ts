@@ -16,7 +16,7 @@ import Ability from '@ohos.application.Ability'
 import commonEvent from '@ohos.commonEvent'
 function PublishCallBackOne() {
   console.debug("====>Publish CallBack ACTS_StartAbility_0100_CommonEvent====>");
-  globalThis.abilityContext.terminateSelf();
+  globalThis.abilityContext2.terminateSelf();
   console.debug("====>terminateSelf succese====>")
   commonEvent.publish("ACTS_TerminateSelf_CommonEvent", ()=>{
     console.debug("====>publish ACTS_TerminateSelf_CommonEvent====>")
@@ -34,7 +34,7 @@ export default class MainAbility extends Ability {
 
   onWindowStageCreate(windowStage) {
     console.log("MainAbility2 onWindowStageCreate")
-    globalThis.abilityContext = this.context
+    globalThis.abilityContext2 = this.context
     commonEvent.publish("ACTS_InterfaceMultiUsers_0100_Start_CommonEvent", PublishCallBackOne);
   }
 

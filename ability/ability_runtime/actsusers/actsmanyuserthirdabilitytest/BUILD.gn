@@ -21,8 +21,10 @@ ohos_js_hap_suite("ActsManyUsersAbilityTest") {
     ":actsmanyusersabilitytest_resources",
   ]
   ets2abc = true
-  certificate_profile = "signature/openharmony_sx_thirdparty.p7b"
+  certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsManyUsersAbilityTest"
+  subsystem_name = "ability"
+  part_name = "ability_runtime"
 }
 
 ohos_app_scope("actsmanyusersabilitytest_app_profile") {
