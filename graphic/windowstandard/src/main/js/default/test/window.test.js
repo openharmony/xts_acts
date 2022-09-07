@@ -2915,7 +2915,7 @@ describe('window_test', function () {
             if (!!data) {
                 tempWnd = data
                 expect(!!tempWnd).assertTrue();
-                tempWnd.loadContent('pages/index', (err, data) => {
+                tempWnd.loadContent('pages/two', (err, data) => {
                     console.log(msgStr + 'tempWnd.loadContent err' + JSON.stringify(err));
                     console.log(msgStr + 'tempWnd.loadContent data' + JSON.stringify(data));
                     console.log(msgStr + 'tempWnd.loadContent !!data' + !!data);
@@ -2985,11 +2985,11 @@ describe('window_test', function () {
         console.log(msgStr + 'window.create ' + baseWndType + '  , wnd: ' + tempWnd);
         expect(!!tempWnd).assertTrue();
         console.log(msgStr + 'tempWnd.loadContent start');
-        let load =  await tempWnd.loadContent('pages/index/index').catch((err) => {
+        let load =  await tempWnd.loadContent('pages/two/two').catch((err) => {
             unexpectedError(err, caseName, 'tempWnd.loadContent', done);
-            console.log(msgStr+'tempWnd.loadContent(pages/index/index) err='+JSON.stringify(err));
+            console.log(msgStr+'tempWnd.loadContent(pages/two/two) err='+JSON.stringify(err));
         });
-        console.log(msgStr+'tempWnd.loadContent(pages/index/index) load='+JSON.stringify(load));
+        console.log(msgStr+'tempWnd.loadContent(pages/two/two) load='+JSON.stringify(load));
         expect(!load).assertTrue();
         done();
     })

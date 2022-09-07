@@ -54,7 +54,8 @@
     "js": [
       {
         "pages": [
-          "pages/index/index"
+          "pages/index/index",
+          "pages/two/two"
         ],
         "name": "default",
         "window": {
