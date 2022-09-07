@@ -32,8 +32,6 @@ export default class MainAbility extends Ability {
         abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
         abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
 
-        await sleep(500)
-
         cmd = 'aa test -m entry_test -b com.example.aacommandrelyhap -s ' +
             'class ACTS_AACommand_01_3#ACTS_AACommand_finish_01_0700 -s unittest OpenHarmonyTestRunner'
         abilityDelegator.executeShellCommand(cmd, (err, data) => {
@@ -43,7 +41,7 @@ export default class MainAbility extends Ability {
             console.log('ACTS_AACommand_finish_01_0700 - executeShellCommand: end ')
         })
 
-        await sleep(3000)
+        await sleep(4000)
 
         cmd = 'aa dump -a'
         abilityDelegator.executeShellCommand(cmd, (err, data) => {
@@ -55,102 +53,6 @@ export default class MainAbility extends Ability {
 
         await sleep(2000)
 
-        cmd = 'aa test -b com.example.aacommandrelyhap -m entry_test  -s class ACTS_AACommand_01_3#ACTS_AACo' +
-            'mmand_print_01_0100 -s unittest OpenHarmonyTestRunner'
-        abilityDelegator.executeShellCommand(cmd, (err, data) => {
-            console.log('ACTS_AACommand_print_01_0100 - executeShellCommand: start ')
-            console.log('ACTS_AACommand_print_01_0100 start err: ' + JSON.stringify(err))
-            console.log('ACTS_AACommand_print_01_0100 stdResult = ' + data.stdResult)
-            globalThis.stdResult3 = data.stdResult;
-            console.log('ACTS_AACommand_print_01_0100 - executeShellCommand: end')
-        })
-
-        await sleep(3000)
-
-        cmd = 'aa test -m entry_test -b com.example.aacommandrelyhap -s class ACTS_AACommand_01_3#ACTS_AAComm' +
-            'and_print_01_0200 -s unittest OpenHarmonyTestRunner'
-        abilityDelegator.executeShellCommand(cmd, (err, data) => {
-            console.log('ACTS_AACommand_print_01_0200 - executeShellCommand: start ')
-            console.log('ACTS_AACommand_print_01_0200 start err: ' + JSON.stringify(err))
-            console.log('ACTS_AACommand_print_01_0200 stdResult = ' + data.stdResult)
-            globalThis.stdResult4 = data.stdResult;
-            console.log('ACTS_AACommand_print_01_0200 - executeShellCommand: end')
-        })
-
-        await sleep(3000)
-
-        cmd = 'aa test -m entry_test -b com.example.aacommandrelyhap -s class ACTS_AACommand_01_3#ACTS_' +
-            'AACommand_print_01_0300 -s unittest OpenHarmonyTestRunner'
-        abilityDelegator.executeShellCommand(cmd, (err, data) => {
-            console.log('ACTS_AACommand_print_01_0300 - executeShellCommand: start ')
-            console.log('ACTS_AACommand_print_01_0300 start err: ' + JSON.stringify(err))
-            console.log('ACTS_AACommand_print_01_0300 stdResult = ' + data.stdResult)
-            globalThis.stdResult5 = data.stdResult;
-            console.log('ACTS_AACommand_print_01_0300 - executeShellCommand: end')
-        })
-
-        await sleep(3000)
-
-        cmd = 'aa test -m entry_test -b com.example.aacommandrelyhap -s class ACTS_AACommand_01_3#ACTS_AAComma' +
-            'nd_print_01_0400 -s unittest OpenHarmonyTestRunner'
-        abilityDelegator.executeShellCommand(cmd, (err, data) => {
-            console.log('ACTS_AACommand_print_01_0400 - executeShellCommand: start ')
-            console.log('ACTS_AACommand_print_01_0400 start err: ' + JSON.stringify(err))
-            console.log('ACTS_AACommand_print_01_0400 stdResult = ' + data.stdResult)
-            globalThis.stdResult6 = data.stdResult;
-            console.log('ACTS_AACommand_print_01_0400 - executeShellCommand: end')
-        })
-
-        await sleep(3000)
-
-        cmd = 'aa test -m entry_test -b com.example.aacommandrelyhap -s class ACTS_AACommand_01_3#ACTS_AAComm' +
-            'and_print_01_0500 -s unittest OpenHarmonyTestRunner'
-        abilityDelegator.executeShellCommand(cmd, (err, data) => {
-            console.log('ACTS_AACommand_print_01_0500 - executeShellCommand: start ')
-            console.log('ACTS_AACommand_print_01_0500 start err: ' + JSON.stringify(err))
-            console.log('ACTS_AACommand_print_01_0500 stdResult = ' + data.stdResult)
-            globalThis.stdResult7 = data.stdResult;
-            console.log('ACTS_AACommand_print_01_0500 - executeShellCommand: end')
-        })
-
-        await sleep(3000)
-
-        cmd = 'aa test -m entry_test -b com.example.aacommandrelyhap -s class ACTS_AACommand_01_3#ACTS_AA' +
-            'Command_print_01_0600 -s unittest OpenHarmonyTestRunner'
-        abilityDelegator.executeShellCommand(cmd, (err, data) => {
-            console.log('ACTS_AACommand_print_01_0600 - executeShellCommand: start ')
-            console.log('ACTS_AACommand_print_01_0600 start err: ' + JSON.stringify(err))
-            console.log('ACTS_AACommand_print_01_0600 stdResult = ' + data.stdResult)
-            globalThis.stdResult8 = data.stdResult;
-            console.log('ACTS_AACommand_print_01_0600 - executeShellCommand: end')
-        })
-
-        await sleep(3000)
-
-        cmd = 'aa test -m entry_test -b com.example.aacommandrelyhap -s class ' +
-            'ACTS_AACommand_01_3#ACTS_AACommand_print_01_0700 -s unittest OpenHarmonyTestRunner'
-        abilityDelegator.executeShellCommand(cmd, (err, data) => {
-            console.log('ACTS_AACommand_print_01_0700 - executeShellCommand: start ')
-            console.log('ACTS_AACommand_print_01_0700 start err: ' + JSON.stringify(err))
-            console.log('ACTS_AACommand_print_01_0700 stdResult = ' + data.stdResult)
-            globalThis.stdResult9 = data.stdResult;
-            console.log('ACTS_AACommand_print_01_0700 - executeShellCommand: end')
-        })
-
-        await sleep(3000)
-
-        cmd = 'aa test -m entry_test -b com.example.aacommandrelyhap -s ' +
-            'class ACTS_AACommand_01_3#ACTS_AACommand_print_01_0800 -s unittest OpenHarmonyTestRunner'
-        abilityDelegator.executeShellCommand(cmd, (err, data) => {
-            console.log('ACTS_AACommand_print_01_0800 - executeShellCommand: start ')
-            console.log('ACTS_AACommand_print_01_0800 start err: ' + JSON.stringify(err))
-            console.log('ACTS_AACommand_print_01_0800 stdResult = ' + data.stdResult)
-            globalThis.stdResult10 = data.stdResult;
-            console.log('ACTS_AACommand_print_01_0800 - executeShellCommand: end')
-        })
-
-        await sleep(3000)
-
         cmd = 'aa test -m entry_test -b com.example.aacommandrelyhap -s class ' +
             'ACTS_AACommand_01_3#ACTS_AACommand_finish_01_0400 -s unittest OpenHarmonyTestRunner'
         abilityDelegator.executeShellCommand(cmd, (err, data) => {
@@ -161,7 +63,7 @@ export default class MainAbility extends Ability {
             console.log('ACTS_AACommand_finish_01_0400 - executeShellCommand: end')
         })
 
-        await sleep(3000)
+        await sleep(4000)
 
         cmd = 'aa dump -a'
         abilityDelegator.executeShellCommand(cmd, (err, data) => {
@@ -183,7 +85,7 @@ export default class MainAbility extends Ability {
             console.log('ACTS_AACommand_finish_01_0100 - executeShellCommand: end')
         })
 
-        await sleep(3000)
+        await sleep(4000)
 
         cmd = 'aa dump -a'
         abilityDelegator.executeShellCommand(cmd, (err, data) => {
@@ -205,7 +107,7 @@ export default class MainAbility extends Ability {
             console.log('ACTS_AACommand_finish_01_0500 - executeShellCommand: end')
         })
 
-        await sleep(3000)
+        await sleep(4000)
 
         cmd = 'aa dump -a'
         abilityDelegator.executeShellCommand(cmd, (err, data) => {
@@ -227,7 +129,7 @@ export default class MainAbility extends Ability {
             console.log('ACTS_AACommand_finish_01_0600 - executeShellCommand: end')
         })
 
-        await sleep(3000)
+        await sleep(4000)
 
         cmd = 'aa dump -a'
         abilityDelegator.executeShellCommand(cmd, (err, data) => {
@@ -249,7 +151,7 @@ export default class MainAbility extends Ability {
             console.log('ACTS_AACommand_finish_01_0900 - executeShellCommand: end')
         })
 
-        await sleep(3000)
+        await sleep(4000)
 
         cmd = 'aa dump -a'
         abilityDelegator.executeShellCommand(cmd, (err, data) => {
@@ -271,7 +173,7 @@ export default class MainAbility extends Ability {
             console.log('ACTS_AACommand_finish_01_1200 - executeShellCommand: end')
         })
 
-        await sleep(3000)
+        await sleep(4000)
 
         cmd = 'aa dump -a'
         abilityDelegator.executeShellCommand(cmd, (err, data) => {
@@ -293,7 +195,7 @@ export default class MainAbility extends Ability {
             console.log('ACTS_AACommand_finish_01_1300 - executeShellCommand: end')
         })
 
-        await sleep(3000)
+        await sleep(4000)
 
         cmd = 'aa dump -a'
         abilityDelegator.executeShellCommand(cmd, (err, data) => {
@@ -315,7 +217,7 @@ export default class MainAbility extends Ability {
             console.log('ACTS_AACommand_finish_01_1400 - executeShellCommand: end')
         })
 
-        await sleep(3000)
+        await sleep(4000)
 
         cmd = 'aa dump -a'
         abilityDelegator.executeShellCommand(cmd, (err, data) => {
@@ -337,7 +239,7 @@ export default class MainAbility extends Ability {
             console.log('ACTS_AACommand_finish_01_1500 - executeShellCommand: end')
         })
 
-        await sleep(3000)
+        await sleep(4000)
 
         cmd = 'aa dump -a'
         abilityDelegator.executeShellCommand(cmd, (err, data) => {
@@ -358,7 +260,7 @@ export default class MainAbility extends Ability {
             console.log('ACTS_AACommand_finish_01_0200 - executeShellCommand: end')
         })
 
-        await sleep(3000)
+        await sleep(4000)
 
         cmd = 'aa dump -a'
         abilityDelegator.executeShellCommand(cmd, (err, data) => {
