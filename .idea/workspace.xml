@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="826b3f1a-35ec-44f5-a0fa-738bb4ba4c7b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/arkui/ace_ets_component_apilack/entry/src/main/ets/MainAbility/pages/inspector.ets" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/arkui/ace_ets_component_apilack/entry/src/main/ets/MainAbility/pages/lazyForEach.ets" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/arkui/ace_ets_component_apilack/entry/src/main/ets/test/inspector.test.ets" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/arkui/ace_ets_component_apilack/entry/src/main/ets/test/lazyForEach.test.ets" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/arkui/ace_ets_component_apilack/entry/src/main/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/arkui/ace_ets_component_apilack/entry/src/main/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/arkui/ace_ets_component_apilack/entry/src/main/ets/test/List.test.ets" beforeDir="false" afterPath="$PROJECT_DIR$/arkui/ace_ets_component_apilack/entry/src/main/ets/test/List.test.ets" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="monthly_20220816" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="2DnUukPXey3C1GO4vnHmus2YbmX" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/arkui/ace_ets_component_apilack/entry/src/main/ets/MainAbility/pages" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\Desktop\xts824\xts_acts_0824\arkui\ace_ets_component_apilack\entry\src\main\ets\MainAbility\pages" />
+      <recent name="C:\Users\Administrator\Desktop\xts824\xts_acts_0824\arkui\ace_ets_component_apilack\entry\src\main\ets\test" />
+      <recent name="C:\Users\Administrator\Desktop\xts824\xts_acts_0824\arkui" />
+      <recent name="C:\Users\Administrator\Desktop\xts824\xts_acts_0824\arkui\ace_js_attribute_api\src\main\js\MainAbility\common\images" />
+      <recent name="C:\Users\Administrator\Desktop\xts824\xts_acts_0824\arkui\ace_js_attribute_api\src\main\js\MainAbility\pages" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>

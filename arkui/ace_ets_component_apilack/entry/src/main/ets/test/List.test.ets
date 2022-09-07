@@ -17,10 +17,22 @@ import alphabetIndexerOnSelectJsunit from './alphabetIndexer.test.ets';
 import checkBoxGroupSelectAllJsunit from './checkBoxGroup.test.ets';
 import circleNewJsunit from './circle.test.ets';
 import ellipseNeJsunit from './ellipse.test.ets';
+import gridMaxCountJsunit from './grid.test.ets';
+import gridItemOnSelectJsunit from './gridItem.test.ets';
+import inspectorJsunit from  './inspector.test.ets'
+import lazyForEachOnDataAddJsunit from './lazyForEach.test.ets';
+import pathNewTest from './path.test.ets';
+import polygonNewJsunit from './polygon.test.ets';
 
 export default function testsuite() {
   alphabetIndexerOnSelectJsunit()
   checkBoxGroupSelectAllJsunit()
   circleNewJsunit()
   ellipseNeJsunit()
+  gridMaxCountJsunit()
+  gridItemOnSelectJsunit()
+  inspectorJsunit()
+  lazyForEachOnDataAddJsunit()
+  pathNewTest()
+  polygonNewJsunit()
 }
