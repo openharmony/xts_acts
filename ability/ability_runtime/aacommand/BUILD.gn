@@ -19,8 +19,8 @@ group("aacommand") {
     deps = [
       "AACommand07:AACommand07",
       "AACommand08:AACommand08",
-      "AACommandPrintSync:AACommandPrintSync",
       "AACommandPrintOneTest:ActsAACommandPrintOneTest",
+      "AACommandPrintSync:AACommandPrintSync",
       "AACommandPrintSyncTest:ActsAACommandPrintSyncTest",
       "AACommandRelyHap:AACommandRelyHap",
       "AACommandpackage:AACommandpackage",
