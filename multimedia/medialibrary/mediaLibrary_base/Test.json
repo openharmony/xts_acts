@@ -48,7 +48,6 @@
                 "hilog -p off",
                 "hilog -b I",
                 "hilog -b D -D 0xD002B70", 
-                "setenforce 0",
                 "scanner_demo",
                 "sleep 10"
             ]

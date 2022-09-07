@@ -49,9 +49,6 @@
                 "hilog -b D -D 0xD002B70", 
                 "scanner_demo",
                 "sleep 10"
-            ],
-            "teardown-command":[
-               
             ]
         },
         {
