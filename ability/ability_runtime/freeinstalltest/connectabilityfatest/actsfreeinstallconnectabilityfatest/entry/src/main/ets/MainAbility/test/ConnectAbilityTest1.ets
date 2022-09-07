@@ -32,7 +32,7 @@ export default function ConnectAbilityTest1() {
         return new Promise((resolve) => setTimeout(resolve, time))
     }
 
-    describe('FreeInstall_FA_ConnectAbility', function () {
+    describe('FreeInstall_FA_ConnectAbilityOne', function () {
         beforeAll(async function (done) {
             console.info("FreeInstall_FA_ConnectAbility before all called");
             abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
