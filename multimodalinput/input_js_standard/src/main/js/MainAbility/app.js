@@ -13,9 +13,17 @@
  * limitations under the License.
  */
 
+import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
+import { Hypium } from '@ohos/hypium'
+import testsuite from '../test/ListMultimodalinput.test'
+
 export default {
     onCreate() {
-        console.info('AceApplication onCreate');
+        console.info('Application onCreate1111')
+        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+        let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+        console.info('start run testcase!!!')
+        Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite);
     },
     onDestroy() {
         console.info('AceApplication onDestroy');

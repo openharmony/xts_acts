@@ -14,17 +14,9 @@
  */
 
 import inputDevice from '@ohos.multimodalInput.inputDevice';
-import {
-  describe,
-  beforeAll,
-  beforeEach,
-  afterEach,
-  afterAll,
-  it,
-  expect
-} from 'deccjsunit/index'
-
-describe('MultimodalInput_test', function () {
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
+export default function MultimodalInput_Device_test() {
+describe('MultimodalInput_Device_test', function () {
 
   // 参数正确,返回一个数组
   it('inputDevice::getDeviceIds_test-01', 0, function () {
@@ -364,3 +356,4 @@ describe('MultimodalInput_test', function () {
   })
   
 })
+}

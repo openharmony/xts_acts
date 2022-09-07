@@ -15,17 +15,9 @@
 
 import pointer from '@ohos.multimodalInput.pointer'
 import window from '@ohos.window'
-import {
-    describe,
-    beforeAll,
-    beforeEach,
-    afterEach,
-    afterAll,
-    it,
-    expect
-} from 'deccjsunit/index'
-
-describe('MultimodalInput_Pointer_test', function () {
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
+  export default function MultimodalInput_Pointer_test() {
+  describe('MultimodalInput_Pointer_test', function () {
 
     it('MultimodalInput_Pointer_test::PointerVisibleTest_001', 0, function () {
         console.info(`MultimodalInput_Pointer_test::SetPointerVisibleTest_001 enter`);
@@ -294,7 +286,6 @@ describe('MultimodalInput_Pointer_test', function () {
     
         console.info('MultimodalInput_Pointer_test::Pointer_MIDDLE_BTN_NORTH_SOUTH_WEST_EAST_test = ' + pointer.PointerStyle.MIDDLE_BTN_NORTH_SOUTH_WEST_EAST);
         expect(pointer.PointerStyle.MIDDLE_BTN_NORTH_SOUTH_WEST_EAST == 38).assertTrue();
-
     })
-
 })
+}
