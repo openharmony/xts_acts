@@ -91,6 +91,50 @@ describe('I18nTest', function () {
     })
 
     /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_2310
+    * @tc.name isSuggested with zh param
+    * @tc.desc check the isSuggested
+    */
+    it('i18n_test_2310', 0, function () {
+        let value = I18n.isSuggested('zh');
+        console.log('i18n_test_2310 ' + value);
+        expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_2320
+    * @tc.name isSuggested with en param
+    * @tc.desc check the isSuggested
+    */
+    it('i18n_test_2320', 0, function () {
+        let value = I18n.isSuggested('en');
+        console.log('i18n_test_2320 ' + value);
+        expect(value).assertFalse();
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_2330
+    * @tc.name isSuggested with zh-CN param
+    * @tc.desc check the isSuggested
+    */
+    it('i18n_test_2330', 0, function () {
+        let value = I18n.isSuggested('zh', 'CN');
+        console.log('i18n_test_2330 ' + value);
+        expect(value).assertTrue();
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_2340
+    * @tc.name isSuggested with en-US param
+    * @tc.desc check the isSuggested
+    */
+    it('i18n_test_2340', 0, function () {
+        let value = I18n.isSuggested('en' , 'US');
+        console.log('i18n_test_2340 ' + value);
+        expect(value).assertTrue();
+    })
+
+    /* *
     * @tc.number  SUB_GLOBAL_I18N_JS_3800
     * @tc.name    getDisplayCountry with zh-Hans-CN and en-US and true param
     * @tc.desc    check the display country
