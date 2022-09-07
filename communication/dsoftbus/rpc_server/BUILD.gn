@@ -12,7 +12,7 @@
 # limitations under the License.
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsRpcJsServer") {
+ohos_hap_assist_suite("ActsRpcJsServer") {
   hap_profile = "./src/main/config.json"
   deps = [
     ":rpc_js_assets",
