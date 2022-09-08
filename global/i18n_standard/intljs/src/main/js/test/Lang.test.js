@@ -100,6 +100,37 @@ describe('LangTest', function () {
     })
 
     /* *
+    * @tc.number  SUB_GLOBAL_I18N_JS_CLOCK_0120
+    * @tc.name    test the set24HourClock interface
+    * @tc.desc    check the value of set24HourClock method
+    */
+    it('i18n_test_clock_0120', 0, function () {
+        console.log('i18n_test_clock_0120 ' + 'start');
+        let value = I18n.is24HourClock();
+        console.log('i18n_test_clock_0120 ' + value);
+        if(hour)
+        {
+            expect(value).assertTrue();
+            value = I18n.set24HourClock(false);
+            console.log('i18n_test_clock_0120 ' + value);
+            expect(value).assertTrue();
+            value = I18n.set24HourClock(true);
+            console.log('i18n_test_clock_0120 ' + value);
+            expect(value).assertTrue();
+        }
+        else
+        {
+            expect(value).assertFalse();
+            value = I18n.set24HourClock(true);
+            console.log('i18n_test_clock_0120 ' + value);
+            expect(value).assertTrue();
+            value = I18n.set24HourClock(false);
+            console.log('i18n_test_clock_0120 ' + value);
+            expect(value).assertTrue();
+        }
+    })
+
+    /* *
     * @tc.number  SUB_GLOBAL_I18N_JS_PREFERREDLANGUAGE_0100
     * @tc.name    test the getPreferredLanguageList interface with default value
     * @tc.desc    check the value of getPreferredLanguageList method
@@ -109,6 +140,47 @@ describe('LangTest', function () {
         let value = I18n.getPreferredLanguageList();
         console.log('i18n_test_preferredlanguage_0100 ' + value);
         expect(value.length).assertLarger(0);
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_PREFERREDLANGUAGE_0120
+    * @tc.name test the addPreferredLanguage interface
+    * @tc.desc check the value of addPreferredLanguage method
+    */
+    it('i18n_test_preferredlanguage_0120', 0, function () {
+        console.log('i18n_test_preferredlanguage_0120 ' + 'start');
+        let list = I18n.getPreferredLanguageList();
+        console.log('i18n_test_preferredlanguage_0120 ' + list);
+        expect(list.length).assertLarger(0);
+        if(list[0] != 'zh-Hans-CN'){
+            let value = I18n.addPreferredLanguage('zh-Hans-CN');
+            console.log('i18n_test_preferredlanguage_0120 ' + value);
+            expect(value).assertTrue();
+        }
+        else{
+            let value = I18n.addPreferredLanguage('en-Latn-US');
+            console.log('i18n_test_preferredlanguage_0120 ' + value);
+            expect(value).assertTrue();
+        }
+        console.log('i18n_test_preferredlanguage_0120 ' + I18n.getPreferredLanguageList());
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_PREFERREDLANGUAGE_0140
+    * @tc.name test the removePreferredLanguage interface
+    * @tc.desc check the value of removePreferredLanguage method
+    */
+    it('i18n_test_preferredlanguage_0140', 0, function () {
+        console.log('i18n_test_preferredlanguage_0140 ' + 'start');
+        let list = I18n.getPreferredLanguageList();
+        console.log('i18n_test_preferredlanguage_0140 ' + list);
+        expect(list.length).assertLarger(0);
+        if(list[1] == 'zh-Hans-CN'){
+            let value = I18n.removePreferredLanguage(1);
+            console.log('i18n_test_preferredlanguage_0140 ' + value);
+            expect(value).assertTrue();
+        }
+        console.log('i18n_test_preferredlanguage_0140 ' + I18n.getPreferredLanguageList());
     })
 
     /* *
