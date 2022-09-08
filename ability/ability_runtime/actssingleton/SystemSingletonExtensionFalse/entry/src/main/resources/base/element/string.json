@@ -1,0 +1,56 @@
+{
+  "string": [
+    {
+      "name": "entry_desc",
+      "value": "description"
+    },
+    {
+      "name": "MainAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "MainAbility_label",
+      "value": "label"
+    },
+    {
+      "name": "form_ServiceAbility1_desc",
+      "value": "form_description"
+    },
+    {
+      "name": "form_ServiceAbility1_label",
+      "value": "form_label"
+    },
+    {
+      "name": "form_ServiceAbility2_desc",
+      "value": "form_description"
+    },
+    {
+      "name": "form_ServiceAbility2_label",
+      "value": "form_label"
+    },
+    {
+      "name": "form_ServiceAbility3_desc",
+      "value": "form_description"
+    },
+    {
+      "name": "form_ServiceAbility3_label",
+      "value": "form_label"
+    },
+    {
+      "name": "form_ServiceAbility4_desc",
+      "value": "form_description"
+    },
+    {
+      "name": "form_ServiceAbility4_label",
+      "value": "form_label"
+    },
+    {
+      "name": "form_ServiceAbility5_desc",
+      "value": "form_description"
+    },
+    {
+      "name": "form_ServiceAbility5_label",
+      "value": "form_label"
+    }
+  ]
+}
