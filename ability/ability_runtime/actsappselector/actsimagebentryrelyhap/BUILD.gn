@@ -12,13 +12,11 @@
 # limitations under the License.
 import("//test/xts/tools/build/suite.gni")
 
-ohos_hap("ActsImageBEntryRelyHap") {
+ohos_hap_assist_suite("ActsImageBEntryRelyHap") {
   hap_profile = "entry/src/main/module.json"
   js_build_mode = "debug"
   hap_name = "ActsImageBEntryRelyHap"
-  subsystem_name = XTS_SUITENAME
-  final_hap_path =
-      "${SUITES_OUTPUT_ROOT}/${XTS_SUITENAME}/testcases/${hap_name}.hap"
+  
   testonly = true
   deps = [
     ":actsimagebentryrelyhap_js_assets",
@@ -26,6 +24,8 @@ ohos_hap("ActsImageBEntryRelyHap") {
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
+  subsystem_name = "ability"
+  part_name = "ability_runtime"
 }
 
 ohos_app_scope("actsimagebentryrelyhap_app_profile") {

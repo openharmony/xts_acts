@@ -16,9 +16,7 @@ ohos_hap("ActsImageDRelyHap") {
   hap_profile = "entry/src/main/module.json"
   js_build_mode = "debug"
   hap_name = "ActsImageDRelyHap"
-  subsystem_name = XTS_SUITENAME
-  final_hap_path =
-      "${SUITES_OUTPUT_ROOT}/${XTS_SUITENAME}/testcases/${hap_name}.hap"
+  
   testonly = true
   deps = [
     ":actsimagedrelyhap_js_assets",
@@ -26,6 +24,8 @@ ohos_hap("ActsImageDRelyHap") {
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
+  subsystem_name = "ability"
+  part_name = "ability_runtime"
 }
 
 ohos_app_scope("actsimagedrelyhap_app_profile") {
