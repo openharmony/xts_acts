@@ -605,7 +605,7 @@ describe('rdbstoreInsertTest', function () {
             })
         }catch(err){
             console.info(TAG + "Batch insert data error:  " + err)
-            expect(err == null).assertTrue();
+            expect(null).assertFail();;
         }
         done()
         console.info(TAG + "************* testRdbStorebatchInsertPromise0006 end *************");
@@ -628,7 +628,7 @@ describe('rdbstoreInsertTest', function () {
             })
         }catch(err){
             console.info(TAG + "Batch insert data error:  " + err)
-            expect(err == null).assertTrue();
+            expect(null).assertFail();
         }
         done()
         console.info(TAG + "************* testRdbStorebatchInsertPromise0007 end *************");
@@ -1045,14 +1045,14 @@ describe('rdbstoreInsertTest', function () {
                 rdbStore.batchInsert("testCallback6", "valueBuckets", (err, data) => {
                     console.info(TAG + "Affect row is " + data)
                     if(err != null){
-                        expect(err == null).assertTrue()
+                        expect(null).assertFail();
                     }else{
                         expect(data).assertEqual(-1)
                     }
                 })
             }catch(err){
                 console.info(TAG + "Batch insert data error:  " + err)
-                expect(err == null).assertTrue();
+                expect(null).assertFail();
             }
         })
         
@@ -1073,7 +1073,7 @@ describe('rdbstoreInsertTest', function () {
                 await rdbStore.batchInsert("testCallback7", (err,data) => {
                     console.info(TAG + "Affect row is " + data)
                     if(err != null){
-                        expect(err == null).assertTrue();
+                        expect(null).assertFail();
                     }else{
                         expect(data).assertEqual(-1)
                     }
@@ -1081,12 +1081,12 @@ describe('rdbstoreInsertTest', function () {
                     console.info(TAG + "Batch insert fail ,affect row number is: " + data)
                     expect(data).assertEqual(-1)
                 })
-            }).then((err) => {
-                expect(err == null).assertTrue();
+            }).catch((err) => {
+                expect(null).assertFail();
             })
         }catch(err){
             console.info(TAG + "Batch insert data error:  " + err)
-            expect(err == null).assertTrue();
+            expect(null).assertFail();
         }
         done()
         console.info(TAG + "************* testRdbStorebatchInsertCallback0007 end *************");

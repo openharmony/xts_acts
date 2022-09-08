@@ -1727,11 +1727,7 @@ describe('rdbPredicatesTest', function () {
             let predicates = await new dataRdb.RdbPredicates("AllDataType");
             var predicatesInit = predicates
             predicates.equalTo("stringValue", "ABCDEFGHIJKLMN").or().and().equalTo("integerValue", 1);
-            if(predicates == predicatesInit){
-                expect(true).assertTrue();
-            }else{
-                expect(null).assertFail();
-            }
+            expect(predicates == predicatesInit).assertTrue();
             console.info(TAG + "you should not start a request" + " with \"and\" or use or() before this function");
         }
         done();
@@ -1749,11 +1745,7 @@ describe('rdbPredicatesTest', function () {
             let predicates = await new dataRdb.RdbPredicates("AllDataType");
             var predicatesInit = predicates
             predicates.equalTo("stringValue", "ABCDEFGHIJKLMN").or().or().equalTo("integerValue", 1);
-            if(predicates == predicatesInit){
-                expect(true).assertTrue();
-            }else{
-                expect(null).assertFail();
-            }
+            expect(predicates == predicatesInit).assertTrue();
             console.info(TAG + "you are starting a sql request with predicate or or,"
             + "using function or() immediately after another or(). that is ridiculous.");
         }
