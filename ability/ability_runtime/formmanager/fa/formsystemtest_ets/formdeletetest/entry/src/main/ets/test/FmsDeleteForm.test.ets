@@ -16,7 +16,8 @@
 import featureAbility from '@ohos.ability.featureAbility';
 import commonEvent from '@ohos.commonEvent';
 import systemTime from '@ohos.systemTime';
-import { beforeEach, afterEach, describe, expect, it } from '@ohos/hypium'
+import { beforeAll, afterAll, beforeEach, afterEach, describe, expect, it } from '@ohos/hypium'
+import backgroundTaskManager from '@ohos.backgroundTaskManager';
 
 const onAcquiredForm_Event = {
     events: ["FMS_FormOnAcquired_commonEvent"],
@@ -44,6 +45,30 @@ let subscriberSupply;
 
 export default function test() {
     describe(`FmsDeleteFormTest`, () => {
+
+        let id = undefined;
+        beforeAll(async (done) => {
+            console.log("FMS_deleteForm beforeAll called");
+            let myReason = 'test FaShowOnLockTest';
+            let delayInfo = backgroundTaskManager.requestSuspendDelay(myReason, () => {
+                console.log("FMS_deleteForm Request suspension delay will time out.");
+            })
+            id = delayInfo.requestId;
+            console.log("FMS_deleteForm requestId is : " + id);
+            setTimeout(function () {
+                console.log("FMS_deleteForm beforeAll end");
+                done();
+            }, 1000);
+        })
+        
+        afterAll(async (done) => {
+            console.log("FMS_deleteForm afterAll called");
+            backgroundTaskManager.cancelSuspendDelay(id);
+            setTimeout(function () {
+                console.log("FMS_deleteForm afterAll end");
+                done();
+            }, 1000);
+        })
 
         beforeEach(async () => {
             subscriberOnAcquired = await commonEvent.createSubscriber(onAcquiredForm_Event);
