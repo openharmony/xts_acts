@@ -23,16 +23,22 @@ import inspectorJsunit from  './inspector.test.ets'
 import lazyForEachOnDataAddJsunit from './lazyForEach.test.ets';
 import pathNewTest from './path.test.ets';
 import polygonNewJsunit from './polygon.test.ets';
+import polyLineNeJsunit from './polyLine.test.ets';
+import rectNeJsunit from './rect.test.ets';
+import scrollOnScrollBeginJsunit from './scroll.test.ets';
 
 export default function testsuite() {
-  alphabetIndexerOnSelectJsunit()
-  checkBoxGroupSelectAllJsunit()
-  circleNewJsunit()
-  ellipseNeJsunit()
-  gridMaxCountJsunit()
-  gridItemOnSelectJsunit()
-  inspectorJsunit()
+//  alphabetIndexerOnSelectJsunit()
+//  checkBoxGroupSelectAllJsunit()
+//  circleNewJsunit()
+//  ellipseNeJsunit()
+//  gridMaxCountJsunit()
+//  gridItemOnSelectJsunit()
+//  inspectorJsunit()
   lazyForEachOnDataAddJsunit()
-  pathNewTest()
-  polygonNewJsunit()
+//  pathNewTest()
+//  polygonNewJsunit()
+//  polyLineNeJsunit()
+//  rectNeJsunit()
+//  scrollOnScrollBeginJsunit()
 }

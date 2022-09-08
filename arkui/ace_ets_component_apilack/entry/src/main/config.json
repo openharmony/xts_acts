@@ -81,7 +81,10 @@
           "pages/inspector",
           "pages/lazyForEach",
           "pages/path",
-          "pages/polygon"
+          "pages/polygon",
+          "pages/polyLine",
+          "pages/rect",
+          "pages/scroll"
         ],
         "name": ".MainAbility",
         "window": {

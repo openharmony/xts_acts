@@ -12,11 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+import events_emitter from '@ohos.events.emitter';
 import Log from '../common/Log.ets';
-
-var indexOne:number = 1;
-var indexTwo:number = 2;
 
 class BasicDataSource implements IDataSource {
   private listeners: DataChangeListener[] = []
@@ -101,9 +98,6 @@ class MyDataSource extends BasicDataSource {
   }
 
   public moveData(index1:number,index2:number):void{
-    indexOne = index1
-    indexTwo = index2
-
     if(index1 < index2){
       var temp = this.dataArray[index1]
       for(var i = index1; i  < index2 ;i++){
@@ -158,7 +152,10 @@ export default
 struct LazyForEachOnDataAdd {
   private data: MyDataSource = new MyDataSource()
   private scroller: Scroller = new Scroller()
-  @State index1:number = 1
+  @State result_101:boolean = true
+  @State result_102:boolean = true
+  @State result_103:boolean = true
+  @State result_104:boolean = true
 
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear LazyForEachOnDataAdd start`)
@@ -203,8 +200,29 @@ struct LazyForEachOnDataAdd {
                 }
                 .key("listItemOne")
                 .onClick(() => {
-                  this.data.pushData('/path/image' + this.data.totalCount())
-                  console.info("this.data.totalCount() is :" + this.data.totalCount() )
+                  try{
+                    this.data.pushData('/path/image' + this.data.totalCount())
+                    console.info("this.data.totalCount() is :" + this.data.totalCount())
+                  }catch(err){
+                    this.result_101 = false
+                    console.info("LazyForEachOnDataAdd_101 onClick emit action err: " + JSON.stringify(err.message))
+                  }
+
+                  try {
+                    var backData1 = {
+                      data: {
+                        "result1": this.result_101,
+                      }
+                    }
+                    let backEvent1 = {
+                      eventId: 101,
+                      priority: events_emitter.EventPriority.LOW
+                    }
+                    console.info("LazyForEachOnDataAdd_101 onClick start to emit action")
+                    events_emitter.emit(backEvent1, backData1)
+                  } catch (err) {
+                    console.info("LazyForEachOnDataAdd_101 onClick emit action err: " + JSON.stringify(err.message))
+                  }
                 })
               }, item => item)
             }
@@ -233,7 +251,28 @@ struct LazyForEachOnDataAdd {
                 }
                 .key("listItemTwo")
                 .onClick(() => {
-                  this.data.moveData(3, 1)
+                  try{
+                    this.data.moveData(3, 1)
+                  }catch(err){
+                    this.result_102 = false
+                    console.info("LazyForEachOnDataAdd_102 onClick emit action err: " + JSON.stringify(err.message))
+                  }
+
+                  try {
+                    var backData2 = {
+                      data: {
+                        "result2": this.result_102,
+                      }
+                    }
+                    let backEvent2 = {
+                      eventId: 102,
+                      priority: events_emitter.EventPriority.LOW
+                    }
+                    console.info("LazyForEachOnDataAdd_102 onClick start to emit action")
+                    events_emitter.emit(backEvent2, backData2)
+                  } catch (err) {
+                    console.info("LazyForEachOnDataAdd_102 onClick emit action err: " + JSON.stringify(err.message))
+                  }
                 })
               }, item => item)
             }
@@ -262,7 +301,29 @@ struct LazyForEachOnDataAdd {
                 }
                 .key("listItemThree")
                 .onClick(() => {
-                  this.data.popData()
+                  try{
+                    this.data.popData()
+                  }catch(err){
+                    this.result_103 = false
+                    console.info("LazyForEachOnDataAdd_103 onClick emit action err: " + JSON.stringify(err.message))
+                  }
+
+                  try {
+                    var backData3 = {
+                      data: {
+                        "result3": this.result_103,
+                      }
+                    }
+                    let backEvent3 = {
+                      eventId: 103,
+                      priority: events_emitter.EventPriority.LOW
+                    }
+                    console.info("LazyForEachOnDataAdd_103 onClick start to emit action")
+                    events_emitter.emit(backEvent3, backData3)
+                  } catch (err) {
+                    console.info("LazyForEachOnDataAdd_103 onClick emit action err: " + JSON.stringify(err.message))
+                  }
+
                 })
               }, item => item)
             }
@@ -291,7 +352,28 @@ struct LazyForEachOnDataAdd {
                 }
                 .key("listItemFour")
                 .onClick(() => {
-                  this.data.changeData(2)
+                  try{
+                    this.data.changeData(2)
+                  }catch(err){
+                    this.result_104 = false
+                    console.info("LazyForEachOnDataAdd_104 onClick emit action err: " + JSON.stringify(err.message))
+                  }
+
+                  try {
+                    var backData4 = {
+                      data: {
+                        "result4": this.result_104,
+                      }
+                    }
+                    let backEvent4 = {
+                      eventId: 104,
+                      priority: events_emitter.EventPriority.LOW
+                    }
+                    console.info("LazyForEachOnDataAdd_104 onClick start to emit action")
+                    events_emitter.emit(backEvent4, backData4)
+                  } catch (err) {
+                    console.info("LazyForEachOnDataAdd_104 onClick emit action err: " + JSON.stringify(err.message))
+                  }
                 })
               }, item => item)
             }

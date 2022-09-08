@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+import events_emitter from '@ohos.events.emitter';
 import router from '@system.router';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
 import Utils from './Utils.ets'
@@ -52,14 +53,125 @@ export default function lazyForEachOnDataAddJsunit() {
      */
     it('testlazyForEachOnDataAdd0001', 0, async function (done) {
       console.info('lazyForEachOnDataAdd testlazyForEachOnDataAdd0001 START');
-      await Utils.sleep(2000);
-      let strJson = getInspectorByKey('onDataAddText');
-      console.info("[testlazyForEachOnDataAdd0001] component width strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.width).assertEqual("300.00vp");
-      console.info("[testlazyForEachOnDataAdd0001] width value :" + obj.$attrs.width);
-      done();
+
+      var innerEvent1 = {
+        eventId: 101,
+        priority: events_emitter.EventPriority.LOW
+      }
+      var callback1 = (eventData) => {
+        console.info("eventData.data.result1 result is: " + eventData.data.result1);
+        try{
+          console.info("callback1 success" );
+          console.info("Lazy_101 eventData.data.result1 result is: " + eventData.data.result1);
+          expect(eventData.data.result1).assertEqual(true);
+          console.info('lazyForEachOnDataAdd testlazyForEachOnDataAdd0001 END');
+        }catch(err){
+          console.info("Lazy_101 on events_emitter err : " + JSON.stringify(err));
+        }
+        done();
+      }
+      try{
+        console.info("Lazy_101 click result is:" + JSON.stringify(sendEventByKey('listItemOne', 10, "")));
+        events_emitter.on(innerEvent1, callback1);
+      }catch(err){
+        console.info("Lazy_101 on events_emitter err : " + JSON.stringify(err));
+      }
+    });
+
+    /*
+     * @tc.number       SUB_ACE_BASIC_ETS_API_0002
+     * @tc.name         testlazyForEachOnDataAdd0002
+     * @tc.desic         acelazyForEachOnDataAddEtsTest0002
+     */
+    it('testlazyForEachOnDataAdd0002', 0, async function (done) {
+      console.info('lazyForEachOnDataAdd testlazyForEachOnDataAdd0002 START');
+
+      var innerEvent2 = {
+        eventId: 102,
+        priority: events_emitter.EventPriority.LOW
+      }
+      var callback2 = (eventData) => {
+        console.info("eventData.data.result2 result is: " + eventData.data.result2);
+        try{
+          console.info("callback2 success" );
+          console.info("Lazy_102 eventData.data.result2 result is: " + eventData.data.result2);
+          expect(eventData.data.result2).assertEqual(true);
+          console.info('lazyForEachOnDataAdd testlazyForEachOnDataAdd0002 END');
+        }catch(err){
+          console.info("Lazy_102 on events_emitter err : " + JSON.stringify(err));
+        }
+        done();
+      }
+      try{
+        console.info("Lazy_102 click result is:" + JSON.stringify(sendEventByKey('listItemTwo', 10, "")));
+        events_emitter.on(innerEvent2, callback2);
+      }catch(err){
+        console.info("Lazy_102 on events_emitter err : " + JSON.stringify(err));
+      }
+    });
+
+    /*
+     * @tc.number       SUB_ACE_BASIC_ETS_API_0003
+     * @tc.name         testlazyForEachOnDataAdd0003
+     * @tc.desic         acelazyForEachOnDataAddEtsTest0003
+     */
+    it('testlazyForEachOnDataAdd0003', 0, async function (done) {
+      console.info('lazyForEachOnDataAdd testlazyForEachOnDataAdd0003 START');
+
+      var innerEvent3 = {
+        eventId: 103,
+        priority: events_emitter.EventPriority.LOW
+      }
+      var callback3 = (eventData) => {
+        console.info("eventData.data.result3 result is: " + eventData.data.result3);
+        try{
+          console.info("callback3 success" );
+          console.info("Lazy_103 eventData.data.result3 result is: " + eventData.data.result3);
+          expect(eventData.data.result3).assertEqual(true);
+          console.info('lazyForEachOnDataAdd testlazyForEachOnDataAdd0003 END');
+        }catch(err){
+          console.info("Lazy_103 on events_emitter err : " + JSON.stringify(err));
+        }
+        done();
+      }
+      try{
+        console.info("Lazy_103 click result is:" + JSON.stringify(sendEventByKey('listItemThree', 10, "")));
+        events_emitter.on(innerEvent3, callback3);
+      }catch(err){
+        console.info("Lazy_103 on events_emitter err : " + JSON.stringify(err));
+      }
+    });
+
+    /*
+     * @tc.number       SUB_ACE_BASIC_ETS_API_0004
+     * @tc.name         testlazyForEachOnDataAdd0004
+     * @tc.desic         acelazyForEachOnDataAddEtsTest0004
+     */
+    it('testlazyForEachOnDataAdd0004', 0, async function (done) {
+      console.info('lazyForEachOnDataAdd testlazyForEachOnDataAdd0004 START');
+
+      var innerEvent4 = {
+        eventId: 104,
+        priority: events_emitter.EventPriority.LOW
+      }
+      var callback4 = (eventData) => {
+        console.info("eventData.data.result4 result is: " + eventData.data.result4);
+        try{
+          console.info("callback4 success" );
+          console.info("Lazy_104 eventData.data.result4 result is: " + eventData.data.result4);
+          expect(eventData.data.result4).assertEqual(true);
+          console.info('lazyForEachOnDataAdd testlazyForEachOnDataAdd0004 END');
+        }catch(err){
+          console.info("Lazy_104 on events_emitter err : " + JSON.stringify(err));
+        }
+        done();
+      }
+      try{
+        console.info("Lazy_104 click result is:" + JSON.stringify(sendEventByKey('listItemFour', 10, "")));
+        events_emitter.on(innerEvent4, callback4);
+      }catch(err){
+        console.info("Lazy_104 on events_emitter err : " + JSON.stringify(err));
+      }
     });
   })
 }
