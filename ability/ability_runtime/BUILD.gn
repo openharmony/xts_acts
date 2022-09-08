@@ -32,6 +32,7 @@ group("ability_runtime") {
       "actsqueryfunctiontest:actsqueryfunctiontest",
       "actsserviceabilityclienttest:serviceability",
       "actsshellcommandfunctionalitytest:actsshellcommandfunctionalitytest",
+      "actssingleton:actssingleton",
       "actsstartrunnertest:ActsStartRunnerTest",
       "actsstserviceabilityclientcase:ActsStServiceAbilityClientCaseTest",
       "actssupportfunction:actssupportfunction",
