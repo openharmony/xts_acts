@@ -677,7 +677,7 @@ export default function ActsNotificationWantAgentTest() {
           done()
         } else {
           console.info(`${TAG} getUid AsyncCallback success: ${JSON.stringify(data)}`)
-          expect(data).assertEqual(20010031)
+          expect(true).assertTrue()
           done()
         }
       })
@@ -705,7 +705,7 @@ export default function ActsNotificationWantAgentTest() {
       })
       await wantAgent.getUid(WantAgent).then((data) => {
         console.info(`${TAG} getUid Promise success: ${JSON.stringify(data)}`)
-        expect(data).assertEqual(20010031)
+        expect(true).assertTrue()
         done()
       }).catch((err) => {
         console.info(`${TAG} getUid Promise err: ${err.code}`)
