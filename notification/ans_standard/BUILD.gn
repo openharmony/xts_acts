@@ -16,12 +16,9 @@ group("ans_standard") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      #"actsansnotificationcancel:ActsAnsNotificationCancelTest",
       "actsNotificationSlotTest:ActsNotificationSlotTest",
       "actsNotificationWantAgentTest:ActsNotificationWantAgentTest",
-      "actsansslottest:ActsAnsSlotTest",
-      "actsnotificationshow:ActsNotificationShowTest",
-      "publish_test:publish_test",
+      "actsnotificationshow:ActsNotificationShowTest"
     ]
   }
 }
