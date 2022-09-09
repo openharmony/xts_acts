@@ -79,7 +79,7 @@ describe('ActsBmsAccessTokenTest', function () {
     });
 
     /*
-     * @tc.number: SUB_BMS_APPINFO_QUERYPERMISSION_0001
+     * @tc.number: SUB_BMS_APPINFO_QUERYPERMISSION_0008
      * @tc.name: getReqPermissionUpdateEntry
      * @tc.desc: get the reqPermissions and reqPermissionStates
      */
