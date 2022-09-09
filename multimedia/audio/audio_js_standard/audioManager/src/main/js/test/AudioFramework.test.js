@@ -21,22 +21,22 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 describe('audioFramework', function () {
     console.info('AudioFrameworkTest: Create AudioManger Object JS Framework');
     let audioManager = null;
-    var dRValue = null;
-    var dTValue = null;
-    var devId = null;
-    var devName = null;
-    var devAddr = null;
-    var sRate = null;
-    var cCount = null;
-    var cMask = null;
-    var audioMedia = 3;
-    var audioRingtone = 2;
-    var minVol = 0;
-    var maxVol = 15;
-    var lowVol = 5;
-    var highVol = 14;
-    var outOfRangeVol = 28;
-    var longValue = '28374837458743875804735081439085918459801437584738967509184509813904850914375904790589104801843';
+    let dRValue = null;
+    let dTValue = null;
+    let devId = null;
+    let devName = null;
+    let devAddr = null;
+    let sRate = null;
+    let cCount = null;
+    let cMask = null;
+    let audioMedia = 3;
+    let audioRingtone = 2;
+    let minVol = 0;
+    let maxVol = 15;
+    let lowVol = 5;
+    let highVol = 14;
+    let outOfRangeVol = 28;
+    let longValue = '28374837458743875804735081439085918459801437584738967509184509813904850914375904790589104801843';
     function getAudioManager() {
         audioManager = audio.getAudioManager();
         if (audioManager != null) {
@@ -51,8 +51,8 @@ describe('audioFramework', function () {
     }
 
     function displayDeviceProp(value, index, array) {
-        var devRoleName;
-        var devTypeName;
+        let devRoleName;
+        let devTypeName;
         if (value.deviceRole == 1) {
             devRoleName = 'INPUT_DEVICE';
         }
@@ -136,38 +136,38 @@ describe('audioFramework', function () {
      *@tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETAUDIOMANAGER_0200', 1, async function (done) {
-        const audioManager1 = audio.getAudioManager();
-        const audioManager2 = audio.getAudioManager();
-        const audioManager3 = audio.getAudioManager();
-        const audioManager4 = audio.getAudioManager();
-        const audioManager5 = audio.getAudioManager();
-        const audioManager6 = audio.getAudioManager();
-        const audioManager7 = audio.getAudioManager();
-        const audioManager8 = audio.getAudioManager();
-        const audioManager9 = audio.getAudioManager();
-        const audioManager10 = audio.getAudioManager();
-        const promise = audioManager.setVolume(audioMedia, lowVol);
-        promise.then(function () {
+        const AUDIOMANAGER1 = audio.getAudioManager();
+        const AUDIOMANAGER2 = audio.getAudioManager();
+        const AUDIOMANAGER3 = audio.getAudioManager();
+        const AUDIOMANAGER4 = audio.getAudioManager();
+        const AUDIOMANAGER5 = audio.getAudioManager();
+        const AUDIOMANAGER6 = audio.getAudioManager();
+        const AUDIOMANAGER7 = audio.getAudioManager();
+        const AUDIOMANAGER8 = audio.getAudioManager();
+        const AUDIOMANAGER9 = audio.getAudioManager();
+        const AUDIOMANAGER10 = audio.getAudioManager();
+        const PROMISE = audioManager.setVolume(audioMedia, lowVol);
+        PROMISE.then(function () {
             console.info('AudioFrameworkTest: Media setVolume promise: successful');
-            audioManager1.setVolume(audioMedia, highVol);
+            AUDIOMANAGER1.setVolume(audioMedia, highVol);
             console.info('AudioFrameworkTest:audioManager1 : Media setVolume promise: successful');
-            audioManager2.setVolume(audioMedia, highVol);
+            AUDIOMANAGER2.setVolume(audioMedia, highVol);
             console.info('AudioFrameworkTest:audioManager2 : Media setVolume promise: successful');
-            audioManager3.setVolume(audioMedia, highVol);
+            AUDIOMANAGER3.setVolume(audioMedia, highVol);
             console.info('AudioFrameworkTest:audioManager3 : Media setVolume promise: successful');
-            audioManager4.setVolume(audioMedia, lowVol);
+            AUDIOMANAGER4.setVolume(audioMedia, lowVol);
             console.info('AudioFrameworkTest:audioManager4 : Media setVolume promise: successful');
-            audioManager5.setVolume(audioMedia, highVol);
+            AUDIOMANAGER5.setVolume(audioMedia, highVol);
             console.info('AudioFrameworkTest:audioManager5 : Media setVolume promise: successful');
-            audioManager6.setVolume(audioMedia, lowVol);
+            AUDIOMANAGER6.setVolume(audioMedia, lowVol);
             console.info('AudioFrameworkTest:audioManager6 : Media setVolume promise: successful');
-            audioManager7.setVolume(audioMedia, highVol);
+            AUDIOMANAGER7.setVolume(audioMedia, highVol);
             console.info('AudioFrameworkTest:audioManager7 : Media setVolume promise: successful');
-            audioManager8.setVolume(audioMedia, lowVol);
+            AUDIOMANAGER8.setVolume(audioMedia, lowVol);
             console.info('AudioFrameworkTest:audioManager8 : Media setVolume promise: successful');
-            audioManager9.setVolume(audioMedia, highVol);
+            AUDIOMANAGER9.setVolume(audioMedia, highVol);
             console.info('AudioFrameworkTest:audioManager9 : Media setVolume promise: successful');
-            audioManager10.setVolume(audioMedia, lowVol);
+            AUDIOMANAGER10.setVolume(audioMedia, lowVol);
             console.info('AudioFrameworkTest:audioManager10 : Media setVolume promise: successful');
             audioManager.getVolume(audioMedia).then(function (data) {
                 if (data == lowVol) {
@@ -182,7 +182,7 @@ describe('audioFramework', function () {
                 console.info('AudioFrameworkTest: Media getVolume Promise: Error :' + err.message);
             });
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -195,8 +195,8 @@ describe('audioFramework', function () {
      *@tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_0100', 1, async function (done) {
-        const promise = audioManager.setVolume(audioMedia, lowVol);
-        promise.then(function () {
+        const PROMISE = audioManager.setVolume(audioMedia, lowVol);
+        PROMISE.then(function () {
             console.info('AudioFrameworkTest: Media setVolume promise: successful');
             audioManager.getVolume(audioMedia).then(function (data) {
                 if (data == lowVol) {
@@ -209,7 +209,7 @@ describe('audioFramework', function () {
                 }
             });
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -222,8 +222,8 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_0200', 2, async function (done) {
-        const promise = audioManager.setVolume(audioMedia, maxVol);
-        promise.then(function () {
+        const PROMISE = audioManager.setVolume(audioMedia, maxVol);
+        PROMISE.then(function () {
             console.info('AudioFrameworkTest: Media setVolume promise: successful');
             audioManager.getVolume(audioMedia).then(function (data) {
                 if (data == maxVol) {
@@ -236,7 +236,7 @@ describe('audioFramework', function () {
                 }
             });
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -249,8 +249,8 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_0300', 2, async function (done) {
-        const promise = audioManager.setVolume(audioMedia, minVol);
-        promise.then(function () {
+        const PROMISE = audioManager.setVolume(audioMedia, minVol);
+        PROMISE.then(function () {
             console.info('AudioFrameworkTest: Media setVolume promise: successful');
 
             audioManager.getVolume(audioMedia).then(function (data) {
@@ -264,7 +264,7 @@ describe('audioFramework', function () {
                 }
             });
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -427,8 +427,8 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_0900', 2, async function (done) {
-        const promise = audioManager.setVolume(audioRingtone, lowVol);
-        promise.then(function () {
+        const PROMISE = audioManager.setVolume(audioRingtone, lowVol);
+        PROMISE.then(function () {
             console.info('AudioFrameworkTest: Ringtone setVolume promise: successful');
             audioManager.getVolume(audioRingtone).then(function (data) {
                 if (data == lowVol) {
@@ -441,7 +441,7 @@ describe('audioFramework', function () {
                 }
             });
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -454,8 +454,8 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_1000', 2, async function (done) {
-        const promise = audioManager.setVolume(audioRingtone, maxVol);
-        promise.then(function () {
+        const PROMISE = audioManager.setVolume(audioRingtone, maxVol);
+        PROMISE.then(function () {
             console.info('AudioFrameworkTest: Ringtone setVolume promise: successful');
             audioManager.getVolume(audioRingtone).then(function (data) {
                 if (data == maxVol) {
@@ -468,7 +468,7 @@ describe('audioFramework', function () {
                 }
             });
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -481,8 +481,8 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_1100', 2, async function (done) {
-        const promise = audioManager.setVolume(audioRingtone, minVol);
-        promise.then(function () {
+        const PROMISE = audioManager.setVolume(audioRingtone, minVol);
+        PROMISE.then(function () {
             console.info('AudioFrameworkTest: Ringtone setVolume promise: successful');
             audioManager.getVolume(audioRingtone).then(function (data) {
                 if (data == minVol) {
@@ -495,7 +495,7 @@ describe('audioFramework', function () {
                 }
             });
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -747,8 +747,8 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_2100', 2, async function (done) {
-        const promise = audioManager.setVolume(audio.AudioVolumeType.MEDIA, lowVol);
-        promise.then(function () {
+        const PROMISE = audioManager.setVolume(audio.AudioVolumeType.MEDIA, lowVol);
+        PROMISE.then(function () {
             audioManager.getVolume(audio.AudioVolumeType.MEDIA).then(function (data) {
                 if (data == lowVol) {
                     console.info('AudioFrameworkTest: Media getVolume Promise: ENAME : PASS :' + data);
@@ -760,7 +760,7 @@ describe('audioFramework', function () {
                 }
             });
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -809,8 +809,8 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_2300', 2, async function (done) {
-        const promise = audioManager.setVolume(audio.AudioVolumeType.RINGTONE, highVol);
-        promise.then(function () {
+        const PROMISE = audioManager.setVolume(audio.AudioVolumeType.RINGTONE, highVol);
+        PROMISE.then(function () {
             console.info('AudioFrameworkTest: Ringtone setVolume promise: ENAME: successful');
             audioManager.getVolume(audio.AudioVolumeType.RINGTONE).then(function (data) {
                 if (data == highVol) {
@@ -823,7 +823,7 @@ describe('audioFramework', function () {
                 }
             });
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -872,8 +872,8 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_2500', 2, async function (done) {
-        const promise = audioManager.setVolume(audio.AudioVolumeType.MEDIA, lowVol);
-        promise.then(function () {
+        const PROMISE = audioManager.setVolume(audio.AudioVolumeType.MEDIA, lowVol);
+        PROMISE.then(function () {
             audioManager.setVolume(audio.AudioVolumeType.RINGTONE, maxVol);
             audioManager.getVolume(audio.AudioVolumeType.MEDIA).then(function (data) {
                 if (data == lowVol) {
@@ -886,7 +886,7 @@ describe('audioFramework', function () {
                 }
             });
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -936,8 +936,8 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETVOLUME_2700', 2, async function (done) {
-        const promise = audioManager.setVolume(audio.AudioVolumeType.RINGTONE, highVol);
-        promise.then(function () {
+        const PROMISE = audioManager.setVolume(audio.AudioVolumeType.RINGTONE, highVol);
+        PROMISE.then(function () {
             console.info('AudioFrameworkTest: Ringtone setVolume promise: ENAME: successful');
             audioManager.setVolume(audio.AudioVolumeType.MEDIA, lowVol);
             audioManager.getVolume(audio.AudioVolumeType.RINGTONE).then(function (data) {
@@ -951,7 +951,7 @@ describe('audioFramework', function () {
                 }
             });
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -1001,8 +1001,8 @@ describe('audioFramework', function () {
      *@tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETMAXVOLUME_0100', 1, async function (done) {
-        const promise = audioManager.getMaxVolume(audioMedia);
-        promise.then(function (data) {
+        const PROMISE = audioManager.getMaxVolume(audioMedia);
+        PROMISE.then(function (data) {
             if (data == maxVol) {
                 console.info('AudioFrameworkTest: Media getMaxVolume promise : PASS:' + data);
                 expect(true).assertTrue();
@@ -1012,7 +1012,7 @@ describe('audioFramework', function () {
                 expect(false).assertTrue();
             }
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -1051,8 +1051,8 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETMAXVOLUME_0300', 2, async function (done) {
-        const promise = audioManager.getMaxVolume(audioRingtone);
-        promise.then(function (data) {
+        const PROMISE = audioManager.getMaxVolume(audioRingtone);
+        PROMISE.then(function (data) {
             if (data == maxVol) {
                 console.info('AudioFrameworkTest: Ringtone getMaxVolume promise : PASS:' + data);
                 expect(true).assertTrue();
@@ -1062,7 +1062,7 @@ describe('audioFramework', function () {
                 expect(false).assertTrue();
             }
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -1102,8 +1102,8 @@ describe('audioFramework', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETMAXVOLUME_0500', 2, async function (done) {
         audioManager.setVolume(audioRingtone, lowVol);
-        const promise = audioManager.getMaxVolume(audioMedia);
-        promise.then(function (data) {
+        const PROMISE = audioManager.getMaxVolume(audioMedia);
+        PROMISE.then(function (data) {
             if (data == maxVol) {
                 console.info('AudioFrameworkTest: Media getMaxVolume promise : PASS:' + data);
                 expect(true).assertTrue();
@@ -1113,7 +1113,7 @@ describe('audioFramework', function () {
                 expect(false).assertTrue();
             }
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -1127,8 +1127,8 @@ describe('audioFramework', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETMAXVOLUME_0600', 2, async function (done) {
         audioManager.setVolume(audioMedia, lowVol);
-        const promise = audioManager.getMaxVolume(audioRingtone);
-        promise.then(function (data) {
+        const PROMISE = audioManager.getMaxVolume(audioRingtone);
+        PROMISE.then(function (data) {
             if (data == maxVol) {
                 console.info('AudioFrameworkTest: Ringtone getMaxVolume promise : PASS:' + data);
                 expect(true).assertTrue();
@@ -1139,7 +1139,7 @@ describe('audioFramework', function () {
             }
 
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -1208,8 +1208,8 @@ describe('audioFramework', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETMAXVOLUME_0900', 2, async function (done) {
         audioManager.setVolume(audioMedia, lowVol);
-        const promise = audioManager.getMaxVolume(audioMedia);
-        promise.then(function (data) {
+        const PROMISE = audioManager.getMaxVolume(audioMedia);
+        PROMISE.then(function (data) {
             if (data == maxVol) {
                 console.info('AudioFrameworkTest: Media getMaxVolume promise : PASS:' + data);
                 expect(true).assertTrue();
@@ -1219,7 +1219,7 @@ describe('audioFramework', function () {
                 expect(false).assertTrue();
             }
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -1233,8 +1233,8 @@ describe('audioFramework', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETMAXVOLUME_1000', 2, async function (done) {
         audioManager.setVolume(audioRingtone, lowVol);
-        const promise = audioManager.getMaxVolume(audioRingtone);
-        promise.then(function (data) {
+        const PROMISE = audioManager.getMaxVolume(audioRingtone);
+        PROMISE.then(function (data) {
             if (data == maxVol) {
                 console.info('AudioFrameworkTest: Ringtone getMaxVolume promise : PASS:' + data);
                 expect(true).assertTrue();
@@ -1244,7 +1244,7 @@ describe('audioFramework', function () {
                 expect(false).assertTrue();
             }
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -1311,8 +1311,8 @@ describe('audioFramework', function () {
      *@tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETMINVOLUME_0100', 1, async function (done) {
-        const promise = audioManager.getMinVolume(audioMedia);
-        promise.then(function (data) {
+        const PROMISE = audioManager.getMinVolume(audioMedia);
+        PROMISE.then(function (data) {
             if (data == minVol) {
                 console.info('AudioFrameworkTest: Media getMinVolume promise : PASS:' + data);
                 expect(true).assertTrue();
@@ -1322,7 +1322,7 @@ describe('audioFramework', function () {
                 expect(false).assertTrue();
             }
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -1361,8 +1361,8 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETMINVOLUME_0300', 2, async function (done) {
-        const promise = audioManager.getMinVolume(audioRingtone);
-        promise.then(function (data) {
+        const PROMISE = audioManager.getMinVolume(audioRingtone);
+        PROMISE.then(function (data) {
             if (data == minVol) {
                 console.info('AudioFrameworkTest: Ringtone getMinVolume promise : PASS:' + data);
                 expect(true).assertTrue();
@@ -1373,7 +1373,7 @@ describe('audioFramework', function () {
             }
 
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -1413,8 +1413,8 @@ describe('audioFramework', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETMINVOLUME_0500', 2, async function (done) {
         audioManager.setVolume(audioRingtone, lowVol);
-        const promise = audioManager.getMinVolume(audioMedia);
-        promise.then(function (data) {
+        const PROMISE = audioManager.getMinVolume(audioMedia);
+        PROMISE.then(function (data) {
             if (data == minVol) {
                 console.info('AudioFrameworkTest: Media getMinVolume promise : PASS:' + data);
                 expect(true).assertTrue();
@@ -1424,7 +1424,7 @@ describe('audioFramework', function () {
                 expect(false).assertTrue();
             }
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -1465,8 +1465,8 @@ describe('audioFramework', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETMINVOLUME_0700', 2, async function (done) {
         audioManager.setVolume(audioMedia, highVol);
-        const promise = audioManager.getMinVolume(audioRingtone);
-        promise.then(function (data) {
+        const PROMISE = audioManager.getMinVolume(audioRingtone);
+        PROMISE.then(function (data) {
             if (data == minVol) {
                 console.info('AudioFrameworkTest: Ringtone getMinVolume promise : PASS:' + data);
                 expect(true).assertTrue();
@@ -1476,7 +1476,7 @@ describe('audioFramework', function () {
                 expect(false).assertTrue();
             }
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -1517,8 +1517,8 @@ describe('audioFramework', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETMINVOLUME_0900', 2, async function (done) {
         audioManager.setVolume(audioMedia, lowVol);
-        const promise = audioManager.getMinVolume(audioMedia);
-        promise.then(function (data) {
+        const PROMISE = audioManager.getMinVolume(audioMedia);
+        PROMISE.then(function (data) {
             if (data == minVol) {
                 console.info('AudioFrameworkTest: Media getMinVolume promise : PASS:' + data);
                 expect(true).assertTrue();
@@ -1528,7 +1528,7 @@ describe('audioFramework', function () {
                 expect(false).assertTrue();
             }
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -1569,8 +1569,8 @@ describe('audioFramework', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETMINVOLUME_1100', 2, async function (done) {
         audioManager.setVolume(audioRingtone, lowVol);
-        const promise = audioManager.getMinVolume(audioRingtone)
-        promise.then(function (data) {
+        const PROMISE = audioManager.getMinVolume(audioRingtone)
+        PROMISE.then(function (data) {
             if (data == minVol) {
                 console.info('AudioFrameworkTest: Ringtone getMinVolume promise : PASS:' + data);
                 expect(true).assertTrue();
@@ -1580,7 +1580,7 @@ describe('audioFramework', function () {
                 expect(false).assertTrue();
             }
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -1620,17 +1620,9 @@ describe('audioFramework', function () {
      *@tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_0100', 1, async function (done) {
-        dRValue = null;
-        dTValue = null;
-        devId = null;
-        devName = null;
-        devAddr = null;
-        sRate = null;
-        cCount = null;
-        cMask = null;
-        const promise = audioManager.getDevices(1);
+        const PROMISE = audioManager.getDevices(1);
         // Getting all Output devices Enumb 1 = OUTPUT_DEVICES_FLAG
-        promise.then(function (value) {
+        PROMISE.then(function (value) {
             console.info('AudioFrameworkTest: Promise: getDevices OUTPUT_DEVICES_FLAG');
             value.forEach(displayDeviceProp);
             if (dTValue != null && dRValue != null && devId > 0 && sRate != null && cCount != null && cMask != null) {
@@ -1642,7 +1634,7 @@ describe('audioFramework', function () {
                 expect(false).assertTrue();
             }
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -1655,17 +1647,9 @@ describe('audioFramework', function () {
      *@tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_0200', 1, async function (done) {
-        dRValue = null;
-        dTValue = null;
-        devId = null;
-        devName = null;
-        devAddr = null;
-        sRate = null;
-        cCount = null;
-        cMask = null;
-        const promise = audioManager.getDevices(2);
+        const PROMISE = audioManager.getDevices(2);
         // Getting all Input Devices ENUM 2 = INPUT_DEVICES_FLAG
-        promise.then(function (value) {
+        PROMISE.then(function (value) {
             console.info('AudioFrameworkTest: Promise: getDevices INPUT_DEVICES_FLAG');
             value.forEach(displayDeviceProp);
 
@@ -1678,7 +1662,7 @@ describe('audioFramework', function () {
                 expect(false).assertTrue();
             }
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -1691,17 +1675,9 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_0300', 2, async function (done) {
-        dRValue = null;
-        dTValue = null;
-        devId = null;
-        devName = null;
-        devAddr = null;
-        sRate = null;
-        cCount = null;
-        cMask = null;
-        const promise = audioManager.getDevices(3);
+        const PROMISE = audioManager.getDevices(3);
         // Getting all devies connected 3 = ALL_DEVICES_FLAG
-        promise.then(function (value) {
+        PROMISE.then(function (value) {
 
             console.info('AudioFrameworkTest: Promise: getDevices ALL_DEVICES_FLAG');
             value.forEach(displayDeviceProp);
@@ -1715,7 +1691,7 @@ describe('audioFramework', function () {
                 expect(false).assertTrue();
             }
         });
-        await promise;
+        await PROMISE;
         done();
     })
     /**
@@ -1727,14 +1703,6 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_0400', 2, async function (done) {
-        dRValue = null;
-        dTValue = null;
-        devId = null;
-        devName = null;
-        devAddr = null;
-        sRate = null;
-        cCount = null;
-        cMask = null;
         audioManager.getDevices(1, (err, value) => {
             // Getting all Output devices Enumb 1 = OUTPUT_DEVICES_FLAG
             console.info('AudioFrameworkTest: Callback: getDevices OUTPUT_DEVICES_FLAG');
@@ -1769,14 +1737,6 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_0500', 2, async function (done) {
-        dRValue = null;
-        dTValue = null;
-        devId = null;
-        devName = null;
-        devAddr = null;
-        sRate = null;
-        cCount = null;
-        cMask = null;
         audioManager.getDevices(2, (err, value) => {
             // Getting all Input Devices ENUM 2 = INPUT_DEVICES_FLAG
 
@@ -1812,14 +1772,6 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_0600', 2, async function (done) {
-        dRValue = null;
-        dTValue = null;
-        devId = null;
-        devName = null;
-        devAddr = null;
-        sRate = null;
-        cCount = null;
-        cMask = null;
         audioManager.getDevices(3, (err, value) => {
             // Getting all devies connected 3 = ALL_DEVICES_FLAG
 
@@ -1855,16 +1807,8 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_0700', 2, async function (done) {
-        dRValue = null;
-        dTValue = null;
-        devId = null;
-        devName = null;
-        devAddr = null;
-        sRate = null;
-        cCount = null;
-        cMask = null;
-        const promise = audioManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG)
-        promise.then(function (value) {
+        const PROMISE = audioManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG)
+        PROMISE.then(function (value) {
 
             console.info('AudioFrameworkTest: Promise: getDevices OUTPUT_DEVICES_FLAG');
             value.forEach(displayDeviceProp);
@@ -1877,7 +1821,7 @@ describe('audioFramework', function () {
                 expect(false).assertTrue();
             }
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -1890,16 +1834,8 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_0800', 2, async function (done) {
-        dRValue = null;
-        dTValue = null;
-        devId = null;
-        devName = null;
-        devAddr = null;
-        sRate = null;
-        cCount = null;
-        cMask = null;
-        const promise = audioManager.getDevices(audio.DeviceFlag.INPUT_DEVICES_FLAG);
-        promise.then(function (value) {
+        const PROMISE = audioManager.getDevices(audio.DeviceFlag.INPUT_DEVICES_FLAG);
+        PROMISE.then(function (value) {
             console.info('AudioFrameworkTest: Promise: getDevices INPUT_DEVICES_FLAG');
             value.forEach(displayDeviceProp);
 
@@ -1912,7 +1848,7 @@ describe('audioFramework', function () {
                 expect(false).assertTrue();
             }
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -1925,16 +1861,8 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_0900', 2, async function (done) {
-        dRValue = null;
-        dTValue = null;
-        devId = null;
-        devName = null;
-        devAddr = null;
-        sRate = null;
-        cCount = null;
-        cMask = null;
-        const promise = audioManager.getDevices(audio.DeviceFlag.ALL_DEVICES_FLAG);
-        promise.then(function (value) {
+        const PROMISE = audioManager.getDevices(audio.DeviceFlag.ALL_DEVICES_FLAG);
+        PROMISE.then(function (value) {
             console.info('AudioFrameworkTest: Promise: getDevices ALL_DEVICES_FLAG');
             value.forEach(displayDeviceProp);
 
@@ -1947,7 +1875,7 @@ describe('audioFramework', function () {
                 expect(false).assertTrue();
             }
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -1960,14 +1888,6 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_1000', 2, async function (done) {
-        dRValue = null;
-        dTValue = null;
-        devId = null;
-        devName = null;
-        devAddr = null;
-        sRate = null;
-        cCount = null;
-        cMask = null;
         audioManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG, (err, value) => {
             console.info('AudioFrameworkTest: Callback: getDevices OUTPUT_DEVICES_FLAG');
             if (err) {
@@ -1999,14 +1919,6 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_1100', 2, async function (done) {
-        dRValue = null;
-        dTValue = null;
-        devId = null;
-        devName = null;
-        devAddr = null;
-        sRate = null;
-        cCount = null;
-        cMask = null;
         audioManager.getDevices(audio.DeviceFlag.INPUT_DEVICES_FLAG, (err, value) => {
             console.info('AudioFrameworkTest: Callback: getDevices INPUT_DEVICES_FLAG');
             if (err) {
@@ -2039,14 +1951,6 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_1200', 2, async function (done) {
-        dRValue = null;
-        dTValue = null;
-        devId = null;
-        devName = null;
-        devAddr = null;
-        sRate = null;
-        cCount = null;
-        cMask = null;
         audioManager.getDevices(audio.DeviceFlag.ALL_DEVICES_FLAG, (err, value) => {
             console.info('AudioFrameworkTest: Callback: getDevices ALL_DEVICES_FLAG');
             if (err) {
@@ -2078,9 +1982,9 @@ describe('audioFramework', function () {
      *@tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETRINGERMODE_0100', 1, async function (done) {
-        const promise = audioManager.setRingerMode(2);
+        const PROMISE = audioManager.setRingerMode(2);
         // Setting Ringtone Mode to Normal ENUM 2 = RINGER_MODE_NORMAL
-        promise.then(function () {
+        PROMISE.then(function () {
             console.info('AudioFrameworkTest: Promise: setRingerMode RINGER_MODE_NORMAL');
             audioManager.getRingerMode().then(function (value) {
                 if (value == 2) {
@@ -2093,7 +1997,7 @@ describe('audioFramework', function () {
                 }
             });
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -2106,9 +2010,9 @@ describe('audioFramework', function () {
      *@tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETRINGERMODE_0200', 1, async function (done) {
-        const promise = audioManager.setRingerMode(0);
+        const PROMISE = audioManager.setRingerMode(0);
         // Setting Ringtone Mode to Silent ENUM 0 = RINGER_MODE_SILENT
-        promise.then(function () {
+        PROMISE.then(function () {
             console.info('AudioFrameworkTest: Promise: setRingerMode RINGER_MODE_SILENT');
             audioManager.getRingerMode().then(function (value) {
                 if (value == 0) {
@@ -2121,7 +2025,7 @@ describe('audioFramework', function () {
                 }
             });
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -2134,9 +2038,9 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETRINGERMODE_0300', 2, async function (done) {
-        const promise = audioManager.setRingerMode(1);
+        const PROMISE = audioManager.setRingerMode(1);
         // Setting Ringtone Mode to Vibration ENUM 1 = RINGER_MODE_VIBRATE
-        promise.then(function () {
+        PROMISE.then(function () {
             console.info('AudioFrameworkTest: Promise: setRingerMode RINGER_MODE_VIBRATE');
             audioManager.getRingerMode().then(function (value) {
                 if (value == 1) {
@@ -2149,7 +2053,7 @@ describe('audioFramework', function () {
                 }
             });
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -2275,8 +2179,8 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETRINGERMODE_0700', 2, async function (done) {
-        const promise = audioManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_NORMAL);
-        promise.then(function () {
+        const PROMISE = audioManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_NORMAL);
+        PROMISE.then(function () {
             console.info('AudioFrameworkTest: Promise: setRingerMode RINGER_MODE_NORMAL');
             audioManager.getRingerMode().then(function (value) {
                 if (value == audio.AudioRingMode.RINGER_MODE_NORMAL) {
@@ -2289,7 +2193,7 @@ describe('audioFramework', function () {
                 }
             });
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -2302,8 +2206,8 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETRINGERMODE_0800', 2, async function (done) {
-        const promise = audioManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_SILENT);
-        promise.then(function () {
+        const PROMISE = audioManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_SILENT);
+        PROMISE.then(function () {
             console.info('AudioFrameworkTest: Promise: setRingerMode RINGER_MODE_SILENT');
             audioManager.getRingerMode().then(function (value) {
                 if (value == audio.AudioRingMode.RINGER_MODE_SILENT) {
@@ -2316,7 +2220,7 @@ describe('audioFramework', function () {
                 }
             });
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -2329,8 +2233,8 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETRINGERMODE_0900', 2, async function (done) {
-        const promise = audioManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_VIBRATE);
-        promise.then(function () {
+        const PROMISE = audioManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_VIBRATE);
+        PROMISE.then(function () {
             console.info('AudioFrameworkTest: Promise: setRingerMode RINGER_MODE_VIBRATE');
             audioManager.getRingerMode().then(function (value) {
                 if (value == audio.AudioRingMode.RINGER_MODE_VIBRATE) {
@@ -2343,7 +2247,7 @@ describe('audioFramework', function () {
                 }
             });
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -3463,8 +3367,8 @@ describe('audioFramework', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_ISACTIVE_0100', 1, async function (done) {
         console.log('AudioFrameworkTest: Promise : isActive Media: NOTE: audio NOT PLAYING as MEDIA for the test case to PASS');
-        const promise = audioManager.isActive(audioMedia);
-        promise.then(function (data) {
+        const PROMISE = audioManager.isActive(audioMedia);
+        PROMISE.then(function (data) {
             if (data == false) {
                 console.log('AudioFrameworkTest: Promise: isActive: Media: TRUE: PASS:' + data);
                 expect(true).assertTrue();
@@ -3474,7 +3378,7 @@ describe('audioFramework', function () {
                 expect(false).assertTrue();
             }
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -3515,8 +3419,8 @@ describe('audioFramework', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_ISACTIVE_0300', 2, async function (done) {
         console.log('AudioFrameworkTest: Promise : isActive Ringtone: NOTE: audio NOT PLAYING as MEDIA for the test case to PASS');
-        const promise = audioManager.isActive(audioRingtone);
-        promise.then(function (data) {
+        const PROMISE = audioManager.isActive(audioRingtone);
+        PROMISE.then(function (data) {
             if (data == false) {
                 console.log('AudioFrameworkTest: Promise: isActive: Ringtone: TRUE: PASS:' + data);
                 expect(true).assertTrue();
@@ -3526,7 +3430,7 @@ describe('audioFramework', function () {
                 expect(false).assertTrue();
             }
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -3567,8 +3471,8 @@ describe('audioFramework', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_ISACTIVE_0500', 2, async function (done) {
         console.log('AudioFrameworkTest: Promise : isActive Media: ENAME: NOTE: audio NOT PLAYING as MEDIA for the test case to PASS');
-        const promise = audioManager.isActive(audio.AudioVolumeType.MEDIA);
-        promise.then(function (data) {
+        const PROMISE = audioManager.isActive(audio.AudioVolumeType.MEDIA);
+        PROMISE.then(function (data) {
             if (data == false) {
                 console.log('AudioFrameworkTest: Promise: isActive: Media: ENAME: TRUE: PASS:' + data);
                 expect(true).assertTrue();
@@ -3578,7 +3482,7 @@ describe('audioFramework', function () {
                 expect(false).assertTrue();
             }
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -3619,8 +3523,8 @@ describe('audioFramework', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_ISACTIVE_0700', 2, async function (done) {
         console.log('AudioFrameworkTest: Promise : isActive Ringtone: ENAME: NOTE: audio NOT PLAYING as MEDIA for the test case to PASS');
-        const promise = audioManager.isActive(audio.AudioVolumeType.RINGTONE);
-        promise.then(function (data) {
+        const PROMISE = audioManager.isActive(audio.AudioVolumeType.RINGTONE);
+        PROMISE.then(function (data) {
             if (data == false) {
                 console.log('AudioFrameworkTest: Promise: isActive: Ringtone: ENAME: TRUE: PASS:' + data);
                 expect(true).assertTrue();
@@ -3630,7 +3534,7 @@ describe('audioFramework', function () {
                 expect(false).assertTrue();
             }
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -3929,8 +3833,8 @@ describe('audioFramework', function () {
      *@tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETAUDIOPARAMETER_0100', 1, async function (done) {
-        const promise = audioManager.setAudioParameter('VOICE_PHONE_STATUS', '8 bit');
-        promise.then(function () {
+        const PROMISE = audioManager.setAudioParameter('VOICE_PHONE_STATUS', '8 bit');
+        PROMISE.then(function () {
             console.info('AudioFrameworkTest: Audio Parameter Test: Promise : setAudioParameter');
             audioManager.getAudioParameter('VOICE_PHONE_STATUS').then(function (value) {
                 if (value == '8 bit') {
@@ -3943,7 +3847,7 @@ describe('audioFramework', function () {
                 }
             });
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -3956,8 +3860,8 @@ describe('audioFramework', function () {
      *@tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETAUDIOPARAMETER_0200', 1, async function (done) {
-        const promise = audioManager.setAudioParameter('VOICE_PHONE_STATUS', '4800');
-        promise.then(function () {
+        const PROMISE = audioManager.setAudioParameter('VOICE_PHONE_STATUS', '4800');
+        PROMISE.then(function () {
             console.info('AudioFrameworkTest: Audio Parameter Test: Promise : setAudioParameter');
             audioManager.getAudioParameter('VOICE_PHONE_STATUS').then(function (value) {
                 if (value == '4800') {
@@ -3970,7 +3874,7 @@ describe('audioFramework', function () {
                 }
             });
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -3983,8 +3887,8 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETAUDIOPARAMETER_0300', 2, async function (done) {
-        const promise = audioManager.setAudioParameter('VOICE_PHONE_STATUS', longValue);
-        promise.then(function () {
+        const PROMISE = audioManager.setAudioParameter('VOICE_PHONE_STATUS', longValue);
+        PROMISE.then(function () {
             console.info('AudioFrameworkTest: Audio Parameter Test: Promise : setAudioParameter');
             audioManager.getAudioParameter('VOICE_PHONE_STATUS').then(function (value) {
                 if (value == longValue) {
@@ -3997,7 +3901,7 @@ describe('audioFramework', function () {
                 }
             });
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -4010,8 +3914,8 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETAUDIOPARAMETER_0400', 2, async function (done) {
-        const promise = audioManager.setAudioParameter('VOICE_PHONE_STATUS', '10.000000234324324324');
-        promise.then(function () {
+        const PROMISE = audioManager.setAudioParameter('VOICE_PHONE_STATUS', '10.000000234324324324');
+        PROMISE.then(function () {
             console.info('AudioFrameworkTest: Audio Parameter Test: Promise : setAudioParameter');
             audioManager.getAudioParameter('VOICE_PHONE_STATUS').then(function (value) {
                 if (value == '10.000000234324324324') {
@@ -4024,7 +3928,7 @@ describe('audioFramework', function () {
                 }
             });
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -4037,8 +3941,8 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETAUDIOPARAMETER_0500', 2, async function (done) {
-        const promise = audioManager.setAudioParameter('VOICE_PHONE_STATUS', 'PPNumber');
-        promise.then(function () {
+        const PROMISE = audioManager.setAudioParameter('VOICE_PHONE_STATUS', 'PPNumber');
+        PROMISE.then(function () {
             console.info('AudioFrameworkTest: Audio Parameter Test: Promise : setAudioParameter');
             audioManager.getAudioParameter('VOICE_PHONE_STATUS').then(function (value) {
                 if (value == 'PPNumber') {
@@ -4051,7 +3955,7 @@ describe('audioFramework', function () {
                 }
             });
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -4064,8 +3968,8 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETAUDIOPARAMETER_0600', 2, async function (done) {
-        const promise = audioManager.setAudioParameter('VOICE_PHONE_STATUS', '[]\:";<>?,./~!@#$%^*()_+-={}|');
-        promise.then(function () {
+        const PROMISE = audioManager.setAudioParameter('VOICE_PHONE_STATUS', '[]\:";<>?,./~!@#$%^*()_+-={}|');
+        PROMISE.then(function () {
             console.info('AudioFrameworkTest: Audio Parameter Test: Promise : setAudioParameter');
             audioManager.getAudioParameter('VOICE_PHONE_STATUS').then(function (value) {
                 if (value == '[]\:";<>?,./~!@#$%^*()_+-={}|') {
@@ -4078,7 +3982,7 @@ describe('audioFramework', function () {
                 }
             });
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -4303,8 +4207,8 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETAUDIOPARAMETER_0100', 2, async function (done) {
-        const promise = audioManager.setAudioParameter('VOICE_PHONE_STATUS', '8 bit');
-        promise.then(function () {
+        const PROMISE = audioManager.setAudioParameter('VOICE_PHONE_STATUS', '8 bit');
+        PROMISE.then(function () {
             console.info('AudioFrameworkTest: Audio Parameter Test: Promise : setAudioParameter');
             audioManager.getAudioParameter('VOICE_PHONE_STATUS').then(function (value) {
                 if (value == '8 bit') {
@@ -4317,7 +4221,7 @@ describe('audioFramework', function () {
                 }
             });
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -4330,8 +4234,8 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETAUDIOPARAMETER_0200', 2, async function (done) {
-        const promise = audioManager.setAudioParameter('VOICE_PHONE_STATUS', '4800');
-        promise.then(function () {
+        const PROMISE = audioManager.setAudioParameter('VOICE_PHONE_STATUS', '4800');
+        PROMISE.then(function () {
             console.info('AudioFrameworkTest: Audio Parameter Test: Promise : setAudioParameter');
             audioManager.getAudioParameter('VOICE_PHONE_STATUS').then(function (value) {
                 if (value == '4800') {
@@ -4344,7 +4248,7 @@ describe('audioFramework', function () {
                 }
             });
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -4357,8 +4261,8 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETAUDIOPARAMETER_0300', 2, async function (done) {
-        const promise = audioManager.setAudioParameter('VOICE_PHONE_STATUS', longValue);
-        promise.then(function () {
+        const PROMISE = audioManager.setAudioParameter('VOICE_PHONE_STATUS', longValue);
+        PROMISE.then(function () {
             console.info('AudioFrameworkTest: Audio Parameter Test: Promise : setAudioParameter');
             audioManager.getAudioParameter('VOICE_PHONE_STATUS').then(function (value) {
                 if (value == longValue) {
@@ -4371,7 +4275,7 @@ describe('audioFramework', function () {
                 }
             });
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -4384,8 +4288,8 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETAUDIOPARAMETER_0400', 2, async function (done) {
-        const promise = audioManager.setAudioParameter('VOICE_PHONE_STATUS', '10.0000000000234');
-        promise.then(function () {
+        const PROMISE = audioManager.setAudioParameter('VOICE_PHONE_STATUS', '10.0000000000234');
+        PROMISE.then(function () {
             console.info('AudioFrameworkTest: Audio Parameter Test: Promise : setAudioParameter');
             audioManager.getAudioParameter('VOICE_PHONE_STATUS').then(function (value) {
                 if (value == '10.0000000000234') {
@@ -4398,7 +4302,7 @@ describe('audioFramework', function () {
                 }
             });
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -4411,8 +4315,8 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETAUDIOPARAMETER_0500', 2, async function (done) {
-        const promise = audioManager.setAudioParameter('VOICE_PHONE_STATUS', 'PPNumber');
-        promise.then(function () {
+        const PROMISE = audioManager.setAudioParameter('VOICE_PHONE_STATUS', 'PPNumber');
+        PROMISE.then(function () {
             console.info('AudioFrameworkTest: Audio Parameter Test: Promise : setAudioParameter');
             audioManager.getAudioParameter('VOICE_PHONE_STATUS').then(function (value) {
                 if (value == 'PPNumber') {
@@ -4425,7 +4329,7 @@ describe('audioFramework', function () {
                 }
             });
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -4438,8 +4342,8 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETAUDIOPARAMETER_0600', 2, async function (done) {
-        const promise = audioManager.setAudioParameter('VOICE_PHONE_STATUS', '[]\:";<>?,./~!@#$%^*()_+-={}|');
-        promise.then(function () {
+        const PROMISE = audioManager.setAudioParameter('VOICE_PHONE_STATUS', '[]\:";<>?,./~!@#$%^*()_+-={}|');
+        PROMISE.then(function () {
             console.info('AudioFrameworkTest: Audio Parameter Test: Promise : setAudioParameter');
             audioManager.getAudioParameter('VOICE_PHONE_STATUS').then(function (value) {
                 if (value == '[]\:";<>?,./~!@#$%^*()_+-={}|') {
@@ -4452,7 +4356,7 @@ describe('audioFramework', function () {
                 }
             });
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -4671,11 +4575,8 @@ describe('audioFramework', function () {
      *@tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_ONVOLUMECHANGE_0100', 1, async function (done) {
-
         audioManager.on('volumeChange', (VolumeEvent) => {
-
             console.log('AudioFrameworkTest: Volume Change Event is called');
-
             switch (VolumeEvent.volumeType) {
                 case audio.AudioVolumeType.MEDIA:
                     console.info('AudioFrameworkTest: Audio Volume Type : MEDIA');
@@ -4707,11 +4608,8 @@ describe('audioFramework', function () {
      *@tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_ONVOLUMECHANGE_0200', 1, async function (done) {
-
         audioManager.on('volumeChange', (VolumeEvent) => {
-
             console.log('AudioFrameworkTest: Volume Change Event is called');
-
             switch (VolumeEvent.volumeType) {
                 case audio.AudioVolumeType.RINGTONE:
                     console.info('AudioFrameworkTest: Audio Volume Type : RINGTONE');
@@ -4743,11 +4641,8 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_ONVOLUMECHANGE_0300', 2, async function (done) {
-
         audioManager.on('volumeChange', (VolumeEvent) => {
-
             console.log('AudioFrameworkTest: Volume Change Event is called');
-
             switch (VolumeEvent.volumeType) {
                 case audio.AudioVolumeType.VOICE_CALL:
                     console.info('AudioFrameworkTest: Audio Volume Type : VOICE_CALL');
@@ -4779,11 +4674,8 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_ONVOLUMECHANGE_0400', 2, async function (done) {
-
         audioManager.on('volumeChange', (VolumeEvent) => {
-
             console.log('AudioFrameworkTest: Volume Change Event is called');
-
             switch (VolumeEvent.volumeType) {
                 case audio.AudioVolumeType.VOICE_ASSISTANT:
                     console.info('AudioFrameworkTest: Audio Volume Type : VOICE_ASSISTANT');
@@ -4815,11 +4707,8 @@ describe('audioFramework', function () {
      *@tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_RINGERMODECHANGE_0100', 1, async function (done) {
-
         audioManager.on('ringerModeChange', (ringerMode) => {
-
             console.log('AudioFrameworkTest: RingerModeChange is called');
-
             switch (ringerMode) {
                 case audio.AudioRingMode.RINGER_MODE_SILENT:
                     console.info('AudioFrameworkTest: Ringer Mode Changed to : RINGER_MODE_SILENT : ' + ringerMode);
@@ -4844,11 +4733,8 @@ describe('audioFramework', function () {
      *@tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_RINGERMODECHANGE_0200', 1, async function (done) {
-
         audioManager.on('ringerModeChange', (ringerMode) => {
-
             console.log('AudioFrameworkTest: RingerModeChange is called');
-
             switch (ringerMode) {
                 case audio.AudioRingMode.RINGER_MODE_VIBRATE:
                     console.info('AudioFrameworkTest: Ringer Mode Changed to : RINGER_MODE_VIBRATE : ' + ringerMode);
@@ -4873,7 +4759,6 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_RINGERMODECHANGE_0300', 2, async function (done) {
-
         audioManager.on('ringerModeChange', (ringerMode) => {
             console.log('AudioFrameworkTest: RingerModeChange is called');
             switch (ringerMode) {
@@ -5144,14 +5029,6 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0100', 2, async function (done) {
-        dRValue = null;
-        dTValue = null;
-        devId = null;
-        devName = null;
-        devAddr = null;
-        sRate = null;
-        cCount = null;
-        cMask = null;
         let AudioRoutingManager = await audioManager.getRoutingManager();
         AudioRoutingManager.getDevices(1, (err, value) => {
             // Getting all Output devices Enumb 1 = OUTPUT_DEVICES_FLAG
@@ -5188,14 +5065,6 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0200', 2, async function (done) {
-        dRValue = null;
-        dTValue = null;
-        devId = null;
-        devName = null;
-        devAddr = null;
-        sRate = null;
-        cCount = null;
-        cMask = null;
         let AudioRoutingManager = await audioManager.getRoutingManager();
         AudioRoutingManager.getDevices(2, (err, value) => {
             // Getting all Input Devices ENUM 2 = INPUT_DEVICES_FLAG
@@ -5233,14 +5102,6 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0300', 2, async function (done) {
-        dRValue = null;
-        dTValue = null;
-        devId = null;
-        devName = null;
-        devAddr = null;
-        sRate = null;
-        cCount = null;
-        cMask = null;
         let AudioRoutingManager = await audioManager.getRoutingManager();
         AudioRoutingManager.getDevices(3, (err, value) => {
             // Getting all devies connected 3 = ALL_DEVICES_FLAG
@@ -5278,14 +5139,6 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0400', 2, async function (done) {
-        dRValue = null;
-        dTValue = null;
-        devId = null;
-        devName = null;
-        devAddr = null;
-        sRate = null;
-        cCount = null;
-        cMask = null;
         let AudioRoutingManager = await audioManager.getRoutingManager();
         AudioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG, (err, value) => {
             console.info('AudioFrameworkTest: Callback: getDevices OUTPUT_DEVICES_FLAG');
@@ -5319,14 +5172,6 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0500', 2, async function (done) {
-        dRValue = null;
-        dTValue = null;
-        devId = null;
-        devName = null;
-        devAddr = null;
-        sRate = null;
-        cCount = null;
-        cMask = null;
         let AudioRoutingManager = await audioManager.getRoutingManager();
         AudioRoutingManager.getDevices(audio.DeviceFlag.INPUT_DEVICES_FLAG, (err, value) => {
             console.info('AudioFrameworkTest: Callback: getDevices INPUT_DEVICES_FLAG');
@@ -5361,14 +5206,6 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0600', 2, async function (done) {
-        dRValue = null;
-        dTValue = null;
-        devId = null;
-        devName = null;
-        devAddr = null;
-        sRate = null;
-        cCount = null;
-        cMask = null;
         let AudioRoutingManager = await audioManager.getRoutingManager();
         AudioRoutingManager.getDevices(audio.DeviceFlag.ALL_DEVICES_FLAG, (err, value) => {
             console.info('AudioFrameworkTest: Callback: getDevices ALL_DEVICES_FLAG');
@@ -5402,14 +5239,6 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0700', 2, async function (done) {
-        dRValue = null;
-        dTValue = null;
-        devId = null;
-        devName = null;
-        devAddr = null;
-        sRate = null;
-        cCount = null;
-        cMask = null;
         let AudioRoutingManager = await audioManager.getRoutingManager();
         let value = await AudioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG);
         console.info('AudioFrameworkTest: Promise: getDevices OUTPUT_DEVICES_FLAG');
@@ -5435,14 +5264,6 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0800', 2, async function (done) {
-        dRValue = null;
-        dTValue = null;
-        devId = null;
-        devName = null;
-        devAddr = null;
-        sRate = null;
-        cCount = null;
-        cMask = null;
         audioManager.getRoutingManager(async (err, AudioRoutingManager) => {
             if (err) {
                 console.error(`AudioFrameworkTest: Callback: failed to get RoutingManager ${err.message}`);
@@ -5475,14 +5296,6 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0900', 2, async function (done) {
-        dRValue = null;
-        dTValue = null;
-        devId = null;
-        devName = null;
-        devAddr = null;
-        sRate = null;
-        cCount = null;
-        cMask = null;
         audioManager.getRoutingManager(async (err, AudioRoutingManager) => {
             if (err) {
                 console.error(`AudioFrameworkTest:Callback:failed to get RoutingManager ${err.message}`);

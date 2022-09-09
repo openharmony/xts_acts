@@ -22,12 +22,12 @@ import * as audioTestBase from '../../../../../AudioTestBase'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 
 describe('audioVoip', function () {
-    var mediaDir;
+    let mediaDir;
     let fdRead;
     let readpath;
     let fdPath;
     let filePath;
-    const audioManager = audio.getAudioManager();
+    const AUDIOMANAGER = audio.getAudioManager();
     console.info('AudioFrameworkRenderLog: Create AudioManger Object JS Framework');
 
     beforeAll(async function () {
@@ -99,10 +99,10 @@ describe('audioVoip', function () {
     }
 
     async function playbackPromise(AudioRendererOptions, pathName) {
-        var resultFlag = 'new';
+        let resultFlag = 'new';
         console.info('AudioFrameworkRenderLog: Promise : Audio Playback Function');
 
-        var audioRen;
+        let audioRen;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
             console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
@@ -157,7 +157,7 @@ describe('audioVoip', function () {
 
         console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-        var bufferSize;
+        let bufferSize;
         await audioRen.getBufferSize().then(async function (data) {
             console.info('AudioFrameworkRenderLog: getBufferSize :SUCCESS ' + data);
             bufferSize = data;
@@ -185,7 +185,7 @@ describe('audioVoip', function () {
             console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' + rlen);
             await audioRen.write(buf);
             if (rlen > (totalSize / 2)) {
-                await audioManager.getAudioScene().then(async function (data) {
+                await AUDIOMANAGER.getAudioScene().then(async function (data) {
                     console.info('AudioFrameworkRenderLog:AudioFrameworkAudioScene: getAudioScene : Value : ' + data);
                 }).catch((err) => {
                     console.info('AudioFrameworkRenderLog:AudioFrameworkAudioScene: getAudioScene : ERROR : ' + err.message);
@@ -235,10 +235,10 @@ describe('audioVoip', function () {
 
     async function recPromise(AudioCapturerOptions, fpath) {
 
-        var resultFlag = 'new';
+        let resultFlag = 'new';
         console.info('AudioFrameworkRecLog: Promise : Audio Recording Function');
 
-        var audioCap;
+        let audioCap;
 
         await audio.createAudioCapturer(AudioCapturerOptions).then(async function (data) {
             audioCap = data;
@@ -305,10 +305,10 @@ describe('audioVoip', function () {
 
         console.info('AudioFrameworkRecLog: AudioCapturer : STATE : ' + audioCap.state);
 
-        var bufferSize = await audioCap.getBufferSize();
+        let bufferSize = await audioCap.getBufferSize();
         console.info('AudioFrameworkRecLog: buffer size: ' + bufferSize);
 
-        var fd = fileio.openSync(fpath, 0o102, 0o777);
+        let fd = fileio.openSync(fpath, 0o102, 0o777);
         if (fd !== null) {
             console.info('AudioFrameworkRecLog: file fd created');
         }
@@ -328,13 +328,13 @@ describe('audioVoip', function () {
             return resultFlag;
         }
         await sleep(100);
-        var numBuffersToCapture = 45;
+        let numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------READ BUFFER---------');
-            var buffer = await audioCap.read(bufferSize, true);
+            let buffer = await audioCap.read(bufferSize, true);
             await sleep(50);
             console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
-            var number = fileio.writeSync(fd, buffer);
+            let number = fileio.writeSync(fd, buffer);
             console.info('AudioFrameworkRecLog:BufferRecLog: data written: ' + number);
             await sleep(50);
             numBuffersToCapture--;
@@ -376,26 +376,26 @@ describe('audioVoip', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_PLAY_0100', 2, async function (done) {
 
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_1,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
         await getFdRead("StarWars10s-1C-44100-2SW.wav");
-        var resultFlag = await playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        let resultFlag = await playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
@@ -413,25 +413,25 @@ describe('audioVoip', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_0100', 2, async function (done) {
 
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_VOICE_COMMUNICATION,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
 
         await getAbilityInfo("capture_js-44100-2C-16B.pcm");
-        var resultFlag = await recPromise(AudioCapturerOptions, mediaDir);
+        let resultFlag = await recPromise(AudioCapturerOptions, mediaDir);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
@@ -448,37 +448,37 @@ describe('audioVoip', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_RECPLAY_0100', 2, async function (done) {
 
-        var AudioStreamInfoCap = {
+        let AudioStreamInfoCap = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_VOICE_COMMUNICATION,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfoCap,
             capturerInfo: AudioCapturerInfo
         }
 
-        var AudioStreamInfoRen = {
+        let AudioStreamInfoRen = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_1,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfoRen,
             rendererInfo: AudioRendererInfo
         }
@@ -489,7 +489,7 @@ describe('audioVoip', function () {
 
         readpath = 'StarWars10s-1C-44100-2SW.wav';
         await getFdRead(readpath);
-        var resultFlag = await playbackPromise(AudioRendererOptions, readpath);
+        let resultFlag = await playbackPromise(AudioRendererOptions, readpath);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();

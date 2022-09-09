@@ -17,13 +17,12 @@ import audio from '@ohos.multimedia.audio';
 import fileio from '@ohos.fileio';
 import featureAbility from '@ohos.ability.featureAbility'
 import * as audioTestBase from '../../../../../AudioTestBase'
-
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 
 describe('audioCapturer', function () {
-    var audioCapCallBack;
-    var audioCapPromise;
-    var dirPath;
+    let audioCapCallBack;
+    let audioCapPromise;
+    let dirPath;
     async function getFd(fileName) {
         let context = await featureAbility.getContext();
         await context.getFilesDir().then((data) => {
@@ -40,7 +39,7 @@ describe('audioCapturer', function () {
             });
         });
     }
-    const audioManagerRec = audio.getAudioManager();
+    const AUDIOMANAGERREC = audio.getAudioManager();
     console.info('AudioFrameworkRecLog: Create AudioManger Object JS Framework');
     beforeAll(async function () {
         console.info('AudioFrameworkTest: beforeAll: Prerequisites at the test suite level');
@@ -74,10 +73,10 @@ describe('audioCapturer', function () {
 
     async function recPromise(AudioCapturerOptions, dirPath, AudioScene) {
 
-        var resultFlag = 'new';
+        let resultFlag = 'new';
         console.info('AudioFrameworkRecLog: Promise : Audio Recording Function');
 
-        var audioCap;
+        let audioCap;
         let isPass = false;
         await audio.createAudioCapturer(AudioCapturerOptions).then(async function (data) {
             audioCap = data;
@@ -156,10 +155,10 @@ describe('audioCapturer', function () {
 
         console.info('AudioFrameworkRecLog: AudioCapturer : STATE : ' + audioCap.state);
 
-        var bufferSize = await audioCap.getBufferSize();
+        let bufferSize = await audioCap.getBufferSize();
         console.info('AudioFrameworkRecLog: buffer size: ' + bufferSize);
 
-        var fd = fileio.openSync(dirPath, 0o102, 0o777);
+        let fd = fileio.openSync(dirPath, 0o102, 0o777);
         if (fd !== null) {
             console.info('AudioFrameworkRecLog: file fd created');
         }
@@ -179,13 +178,13 @@ describe('audioCapturer', function () {
             return resultFlag;
         }
         await sleep(100);
-        var numBuffersToCapture = 45;
+        let numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------READ BUFFER---------');
-            var buffer = await audioCap.read(bufferSize, true);
+            let buffer = await audioCap.read(bufferSize, true);
             await sleep(50);
             console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
-            var number = fileio.writeSync(fd, buffer);
+            let number = fileio.writeSync(fd, buffer);
             console.info('AudioFrameworkRecLog:BufferRecLog: data written: ' + number);
             await sleep(50);
             numBuffersToCapture--;
@@ -220,7 +219,7 @@ describe('audioCapturer', function () {
 
     async function recCallBack(AudioCapturerOptions, dirPath, AudioScene) {
 
-        var resultFlag = true;
+        let resultFlag = true;
         console.info('AudioFrameworkRecLog: CallBack : Audio Recording Function');
         audio.createAudioCapturer(AudioCapturerOptions, async (err, value) => {
             if (err) {
@@ -231,7 +230,7 @@ describe('audioCapturer', function () {
             }
         });
         await sleep(1000);
-        audioManagerRec.getAudioScene(async (err, getValue) => {
+        AUDIOMANAGERREC.getAudioScene((err, getValue) => {
             console.info('AudioFrameworkRecLog: ---------GET AUDIO SCENE---------');
             if (err) {
                 console.info('AudioFrameworkRecLog: getAudioScene : ERROR : ' + err.message);
@@ -257,7 +256,7 @@ describe('audioCapturer', function () {
             }
         });
         await sleep(1000);
-        audioCapCallBack.getCapturerInfo(async (err, audioParamsGet) => {
+        audioCapCallBack.getCapturerInfo((err, audioParamsGet) => {
             console.info('AudioFrameworkRecLog: ---------GET CAPTURER INFO---------');
             if (err) {
                 console.log('AudioFrameworkRecLog: CapturerInfo :ERROR: ' + err.message);
@@ -269,7 +268,7 @@ describe('audioCapturer', function () {
             }
         });
         await sleep(1000);
-        audioCapCallBack.start(async (err, value) => {
+        audioCapCallBack.start((err, value) => {
             console.info('AudioFrameworkRecLog: AudioCapturer : START SUCCESS');
             console.info('AudioFrameworkRecLog: ---------START---------');
             if (err) {
@@ -278,16 +277,15 @@ describe('audioCapturer', function () {
             } else {
                 console.info('AudioFrameworkRecLog: AudioCapturer : STATE : ' + audioCapCallBack.state);
                 console.info('AudioFrameworkRecLog: Capturer started :SUCCESS ');
-                await sleep(1000);
             }
         });
         await sleep(1000);
         console.info('AudioFrameworkRecLog: ---------GET BUFFER SIZE---------');
-        var bufferSize = await audioCapCallBack.getBufferSize();
+        let bufferSize = await audioCapCallBack.getBufferSize();
         console.info('AudioFrameworkRecLog: buffer size: ' + bufferSize);
         await sleep(1000);
         console.info('AudioFrameworkRecLog: ---------OPEN FILE---------');
-        var fd = fileio.openSync(dirPath, 0o102, 0o777);
+        let fd = fileio.openSync(dirPath, 0o102, 0o777);
         if (fd !== null) {
             console.info('AudioFrameworkRecLog: file fd created');
         } else {
@@ -305,13 +303,13 @@ describe('audioCapturer', function () {
             return resultFlag;
         }
 
-        var numBuffersToCapture = 45;
+        let numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------READ BUFFER---------');
-            var buffer = await audioCapCallBack.read(bufferSize, true);
+            let buffer = await audioCapCallBack.read(bufferSize, true);
             await sleep(50);
             console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
-            var number = fileio.writeSync(fd, buffer);
+            let number = fileio.writeSync(fd, buffer);
             console.info('AudioFrameworkRecLog:BufferRecLog: data written: ' + number);
             await sleep(50);
             numBuffersToCapture--;
@@ -358,20 +356,20 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 1
      */    
     it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_PREPARED_STATE_0100', 1, async function (done) {
-        var stateFlag;
-        var AudioStreamInfo = {
+        let stateFlag;
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
@@ -408,20 +406,20 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_PREPARED_STATE_EUNM_0100', 0, async function (done) {
-        var stateFlag;
-        var AudioStreamInfo = {
+        let stateFlag;
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
@@ -453,20 +451,20 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_RUNNING_STATE_0100', 1, async function (done) {
-        var stateFlag;
-        var AudioStreamInfo = {
+        let stateFlag;
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
@@ -524,20 +522,20 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_RUNNING_STATE_EUNM_0100', 1, async function (done) {
-        var stateFlag;
-        var AudioStreamInfo = {
+        let stateFlag;
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
@@ -596,20 +594,20 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_STOPPED_STATE_0100', 1, async function (done) {
-        var stateFlag;
-        var AudioStreamInfo = {
+        let stateFlag;
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
@@ -684,20 +682,20 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_STOPPED_STATE_EUNM_0100', 1, async function (done) {
-        var stateFlag;
-        var AudioStreamInfo = {
+        let stateFlag;
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
@@ -767,20 +765,20 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_RELEASED_STATE_0100', 2, async function (done) {
-        var stateFlag;
-        var AudioStreamInfo = {
+        let stateFlag;
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
@@ -855,20 +853,20 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_RELEASED_STATE_EUNM_0100', 1, async function (done) {
-        var stateFlag;
-        var AudioStreamInfo = {
+        let stateFlag;
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
@@ -944,20 +942,20 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_GET_BUFFER_SIZE_0100', 1, async function (done) {
-        var stateFlag;
-        var AudioStreamInfo = {
+        let stateFlag;
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
@@ -988,7 +986,7 @@ describe('audioCapturer', function () {
         });
         await sleep(1000);
         console.info('AudioFrameworkRecLog: ---------GET BUFFER SIZE---------');
-        var bufferSize = await audioCapCallBack.getBufferSize(async (err, cbbufferSize) => {
+        let bufferSize = await audioCapCallBack.getBufferSize(async (err, cbbufferSize) => {
             if (err) {
                 console.info('AudioFrameworkRecLog: Capturer release :ERROR : ' + err.message);
                 stateFlag = false;
@@ -1029,21 +1027,21 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_READ_BUFFER_0100', 1, async function (done) {
-        var stateFlag;
+        let stateFlag;
         await getFd("capture_CB_js-44100-2C-S16LE-checkcbreadbuffer.pcm");
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
@@ -1073,11 +1071,11 @@ describe('audioCapturer', function () {
         });
         await sleep(1000);
         console.info('AudioFrameworkRecLog: ---------GET BUFFER SIZE---------');
-        var bufferSize = await audioCapCallBack.getBufferSize();
+        let bufferSize = await audioCapCallBack.getBufferSize();
         console.info('AudioFrameworkRecLog: buffer size: ' + bufferSize);
         await sleep(1000);
         console.info('AudioFrameworkRecLog: ---------OPEN FILE---------');
-        var fd = fileio.openSync(dirPath, 0o102, 0o777);
+        let fd = fileio.openSync(dirPath, 0o102, 0o777);
         if (fd !== null) {
             console.info('AudioFrameworkRecLog: file fd created');
         } else {
@@ -1093,7 +1091,7 @@ describe('audioCapturer', function () {
             stateFlag = false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 45;
+        let numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             await new Promise((resolve, reject) => {
@@ -1107,7 +1105,7 @@ describe('audioCapturer', function () {
                         console.info('AudioFrameworkRecLog: AudioCapturer : readvalue : ' + buffer);
                         await sleep(50);
                         console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
-                        var number = fileio.writeSync(fd, buffer);
+                        let number = fileio.writeSync(fd, buffer);
                         console.info('AudioFrameworkRecLog:BufferRecLog: data written: ' + number);
                         await sleep(100);
                         stateFlag = true;
@@ -1149,20 +1147,20 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMOISE_PREPARED_STATE_0100', 0, async function (done) {
-        var stateFlag;
-        var AudioStreamInfo = {
+        let stateFlag;
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
@@ -1192,20 +1190,20 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMOISE_PREPARED_STATE_ENUM_0100', 0, async function (done) {
-        var stateFlag;
-        var AudioStreamInfo = {
+        let stateFlag;
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
@@ -1236,20 +1234,20 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMISE_RUNNING_STATE_0100', 0, async function (done) {
-        var stateFlag;
-        var AudioStreamInfo = {
+        let stateFlag;
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
@@ -1301,20 +1299,20 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMISE_RUNNING_STATE_ENUM_0100', 0, async function (done) {
-        var stateFlag;
-        var AudioStreamInfo = {
+        let stateFlag;
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
@@ -1366,20 +1364,20 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMISE_STOPPED_STATE_0100', 2, async function (done) {
-        var stateFlag;
-        var AudioStreamInfo = {
+        let stateFlag;
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
@@ -1442,20 +1440,20 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMISE_STOPPED_STATE_ENUM_0100', 2, async function (done) {
-        var stateFlag;
-        var AudioStreamInfo = {
+        let stateFlag;
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
@@ -1519,20 +1517,20 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMISE_RELEASED_STATE_0100', 2, async function (done) {
-        var stateFlag;
-        var AudioStreamInfo = {
+        let stateFlag;
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
@@ -1593,20 +1591,20 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMISE_RELEASED_STATE_ENUM_0100', 2, async function (done) {
-        var stateFlag;
-        var AudioStreamInfo = {
+        let stateFlag;
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
@@ -1668,20 +1666,20 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMISE_GET_BUFFER_SIZE_0100', 2, async function (done) {
-        var stateFlag;
-        var AudioStreamInfo = {
+        let stateFlag;
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
@@ -1708,7 +1706,7 @@ describe('audioCapturer', function () {
         });
         await sleep(1000);
         console.info('AudioFrameworkRecLog: ---------GET BUFFER SIZE---------');
-        var bufferSize = await audioCapPromise.getBufferSize();
+        let bufferSize = await audioCapPromise.getBufferSize();
         console.info('AudioFrameworkRecLog: buffer size: ' + bufferSize);
         stateFlag = true;
         console.info('AudioFrameworkRecLog: buffer size: ' + bufferSize);
@@ -1742,21 +1740,21 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMISE_READ_BUFFER_0100', 2, async function (done) {
-        var stateFlag;
+        let stateFlag;
         await getFd("capture_CB_js-44100-2C-S16LE-checkpromisereadbuffer.pcm");
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
@@ -1784,12 +1782,12 @@ describe('audioCapturer', function () {
         await sleep(1000);
 
         console.info('AudioFrameworkRecLog: ---------GET BUFFER SIZE---------');
-        var bufferSize = await audioCapPromise.getBufferSize();
+        let bufferSize = await audioCapPromise.getBufferSize();
         console.info('AudioFrameworkRecLog: buffer size: ' + bufferSize);
         stateFlag = true;
 
         console.info('AudioFrameworkRecLog: ---------OPEN FILE---------');
-        var fd = fileio.openSync(dirPath, 0o102, 0o777);
+        let fd = fileio.openSync(dirPath, 0o102, 0o777);
         if (fd !== null) {
             console.info('AudioFrameworkRecLog: file fd created');
         } else {
@@ -1805,14 +1803,14 @@ describe('audioCapturer', function () {
             stateFlag = false;
         }
         //await sleep(1000);
-        var numBuffersToCapture = 45;
+        let numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE PROMISE READ ---------');
             console.info('AudioFrameworkRecLog: buffer size: ' + bufferSize);
-            var buffer = await audioCapPromise.read(bufferSize, true);
+            let buffer = await audioCapPromise.read(bufferSize, true);
             console.info('AudioFrameworkRecLog: ---------AFTER PROMISE READ ---------');
             //await sleep(50);
-            var number = fileio.writeSync(fd, buffer);
+            let number = fileio.writeSync(fd, buffer);
             console.info('BufferRecLog: data written: ' + number);
             console.info('AudioFrameworkRecLog: ---------AFTER PROMISE WRITE ---------');
             //await sleep(100);
@@ -1849,25 +1847,25 @@ describe('audioCapturer', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_CB_0100', 2, async function (done) {
 
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
 
         await getFd("capture_CB_js-44100-2C-16B.pcm");
-        var resultFlag = await recCallBack(AudioCapturerOptions, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        let resultFlag = await recCallBack(AudioCapturerOptions, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(1000);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
@@ -1884,25 +1882,25 @@ describe('audioCapturer', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_CB_ENUM_0100', 2, async function (done) {
 
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: 44100,
             channels: 1,
             sampleFormat: 1,
             encodingType: 0
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: 1,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
 
         await getFd("capture_CB_js-44100-2C-16B.pcm");
-        var resultFlag = await recCallBack(AudioCapturerOptions, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        let resultFlag = await recCallBack(AudioCapturerOptions, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(1000);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
@@ -1918,25 +1916,25 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_0100', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
 
         await getFd("capture_js-44100-2C-16B.pcm");
-        var resultFlag = await recPromise(AudioCapturerOptions, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        let resultFlag = await recPromise(AudioCapturerOptions, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
 
@@ -1954,25 +1952,25 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_ENUM_0100', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: 44100,
             channels: 1,
             sampleFormat: 1,
             encodingType: 0
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: 1,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
 
         await getFd("capture_js-44100-2C-16B.pcm");
-        var resultFlag = await recPromise(AudioCapturerOptions, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        let resultFlag = await recPromise(AudioCapturerOptions, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
 
@@ -1990,23 +1988,23 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
       */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_0200', 2, async function (done) {
-        var audioStreamInfo44100 = {
+        let audioStreamInfo44100 = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_1,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW,
         };
-        var audioCapturerInfo44100 = {
+        let audioCapturerInfo44100 = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
-        var audioCapturerOptions44100 = {
+        let audioCapturerOptions44100 = {
             streamInfo: audioStreamInfo44100,
             capturerInfo: audioCapturerInfo44100,
         }
 
         await getFd("capture_js-44100-1C-16LE.pcm");
-        var resultFlag = await recPromise(audioCapturerOptions44100, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        let resultFlag = await recPromise(audioCapturerOptions44100, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
 
@@ -2024,24 +2022,24 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_ENUM_0200', 2, async function (done) {
-        var audioStreamInfo44100 = {
+        let audioStreamInfo44100 = {
             samplingRate: 44100,
             channels: 1,
             sampleFormat: 1,
             encodingType: 0,
         };
-        var audioCapturerInfo44100 = {
+        let audioCapturerInfo44100 = {
             source: 1,
             capturerFlags: 0
         }
-        var audioCapturerOptions44100 = {
+        let audioCapturerOptions44100 = {
             streamInfo: audioStreamInfo44100,
             capturerInfo: audioCapturerInfo44100,
         }
 
         await getFd("capture_js-44100-1C-16LE.pcm");
 
-        var resultFlag = await recPromise(audioCapturerOptions44100, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        let resultFlag = await recPromise(audioCapturerOptions44100, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
 
@@ -2059,23 +2057,23 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_0300', 2, async function (done) {
-        var audioStreamInfo96000 = {
+        let audioStreamInfo96000 = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_96000,
             channels: audio.AudioChannel.CHANNEL_1,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S24LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW,
         };
-        var audioCapturerInfo96000 = {
+        let audioCapturerInfo96000 = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
-        var audioCapturerOptions96000 = {
+        let audioCapturerOptions96000 = {
             streamInfo: audioStreamInfo96000,
             capturerInfo: audioCapturerInfo96000,
         }
 
         await getFd("capture_js-96000-1C-S24LE.pcm");
-        var resultFlag = await recPromise(audioCapturerOptions96000, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        let resultFlag = await recPromise(audioCapturerOptions96000, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
 
@@ -2093,23 +2091,23 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_ENUM_0300', 2, async function (done) {
-        var audioStreamInfo96000 = {
+        let audioStreamInfo96000 = {
             samplingRate: 96000,
             channels: 1,
             sampleFormat: 2,
             encodingType: 0,
         };
-        var audioCapturerInfo96000 = {
+        let audioCapturerInfo96000 = {
             source: 1,
             capturerFlags: 0
         }
-        var audioCapturerOptions96000 = {
+        let audioCapturerOptions96000 = {
             streamInfo: audioStreamInfo96000,
             capturerInfo: audioCapturerInfo96000,
         }
 
         await getFd("capture_js-96000-1C-S24LE.pcm");
-        var resultFlag = await recPromise(audioCapturerOptions96000, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        let resultFlag = await recPromise(audioCapturerOptions96000, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
 
@@ -2127,23 +2125,23 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_0400', 2, async function (done) {
-        var audioStreamInfo48000 = {
+        let audioStreamInfo48000 = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW,
         };
-        var audioCapturerInfo48000 = {
+        let audioCapturerInfo48000 = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
-        var audioCapturerOptions48000 = {
+        let audioCapturerOptions48000 = {
             streamInfo: audioStreamInfo48000,
             capturerInfo: audioCapturerInfo48000,
         }
 
         await getFd("capture_js-48000-2C-1S32LE.pcm");
-        var resultFlag = await recPromise(audioCapturerOptions48000, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        let resultFlag = await recPromise(audioCapturerOptions48000, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
 
@@ -2161,23 +2159,23 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_ENUM_0400', 2, async function (done) {
-        var audioStreamInfo48000 = {
+        let audioStreamInfo48000 = {
             samplingRate: 48000,
             channels: 2,
             sampleFormat: 1,
             encodingType: 0,
         };
-        var audioCapturerInfo48000 = {
+        let audioCapturerInfo48000 = {
             source: 1,
             capturerFlags: 0
         }
-        var audioCapturerOptions48000 = {
+        let audioCapturerOptions48000 = {
             streamInfo: audioStreamInfo48000,
             capturerInfo: audioCapturerInfo48000,
         }
 
         await getFd("capture_js-48000-2C-1S32LE.pcm");
-        var resultFlag = await recPromise(audioCapturerOptions48000, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        let resultFlag = await recPromise(audioCapturerOptions48000, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
 
@@ -2195,23 +2193,23 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_0500', 2, async function (done) {
-        var audioStreamInfo8000 = {
+        let audioStreamInfo8000 = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_8000,
             channels: audio.AudioChannel.CHANNEL_1,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_U8,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW,
         };
-        var audioCapturerInfo8000 = {
+        let audioCapturerInfo8000 = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
-        var audioCapturerOptions8000 = {
+        let audioCapturerOptions8000 = {
             streamInfo: audioStreamInfo8000,
             capturerInfo: audioCapturerInfo8000,
         }
 
         await getFd("capture_js-8000-1C-8B.pcm");
-        var resultFlag = await recPromise(audioCapturerOptions8000, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        let resultFlag = await recPromise(audioCapturerOptions8000, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
 
@@ -2229,23 +2227,23 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_ENUM_0500', 2, async function (done) {
-        var audioStreamInfo8000 = {
+        let audioStreamInfo8000 = {
             samplingRate: 8000,
             channels: 1,
             sampleFormat: 0,
             encodingType: 0,
         };
-        var audioCapturerInfo8000 = {
+        let audioCapturerInfo8000 = {
             source: 1,
             capturerFlags: 0
         }
-        var audioCapturerOptions8000 = {
+        let audioCapturerOptions8000 = {
             streamInfo: audioStreamInfo8000,
             capturerInfo: audioCapturerInfo8000,
         }
 
         await getFd("capture_js-8000-1C-8B.pcm");
-        var resultFlag = await recPromise(audioCapturerOptions8000, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        let resultFlag = await recPromise(audioCapturerOptions8000, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
 
@@ -2263,23 +2261,23 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_0600', 2, async function (done) {
-        var audioStreamInfo11025 = {
+        let audioStreamInfo11025 = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_11025,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW,
         };
-        var audioCapturerInfo11025 = {
+        let audioCapturerInfo11025 = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
-        var audioCapturerOptions11025 = {
+        let audioCapturerOptions11025 = {
             streamInfo: audioStreamInfo11025,
             capturerInfo: audioCapturerInfo11025,
         }
 
         await getFd("capture_js-11025-2C-16B.pcm");
-        var resultFlag = await recPromise(audioCapturerOptions11025, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        let resultFlag = await recPromise(audioCapturerOptions11025, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
 
@@ -2297,24 +2295,24 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_ENUM_0600', 2, async function (done) {
-        var audioStreamInfo11025 = {
+        let audioStreamInfo11025 = {
             samplingRate: 11025,
             channels: 2,
             sampleFormat: 1,
             encodingType: 0,
         };
-        var audioCapturerInfo11025 = {
+        let audioCapturerInfo11025 = {
             source: 1,
             capturerFlags: 0
         }
-        var audioCapturerOptions11025 = {
+        let audioCapturerOptions11025 = {
             streamInfo: audioStreamInfo11025,
             capturerInfo: audioCapturerInfo11025,
         }
 
         await getFd("capture_js-11025-2C-16B.pcm");
 
-        var resultFlag = await recPromise(audioCapturerOptions11025, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        let resultFlag = await recPromise(audioCapturerOptions11025, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
 
@@ -2332,23 +2330,23 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_0700', 2, async function (done) {
-        var audioStreamInfo12000 = {
+        let audioStreamInfo12000 = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_12000,
             channels: audio.AudioChannel.CHANNEL_1,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S24LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW,
         };
-        var audioCapturerInfo12000 = {
+        let audioCapturerInfo12000 = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
-        var audioCapturerOptions12000 = {
+        let audioCapturerOptions12000 = {
             streamInfo: audioStreamInfo12000,
             capturerInfo: audioCapturerInfo12000,
         }
 
         await getFd("capture_js-12000-1C-24B.pcm");
-        var resultFlag = await recPromise(audioCapturerOptions12000, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        let resultFlag = await recPromise(audioCapturerOptions12000, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
 
@@ -2366,23 +2364,23 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_ENUM_0700', 2, async function (done) {
-        var audioStreamInfo12000 = {
+        let audioStreamInfo12000 = {
             samplingRate: 12000,
             channels: 1,
             sampleFormat: 2,
             encodingType: 0
         };
-        var audioCapturerInfo12000 = {
+        let audioCapturerInfo12000 = {
             source: 1,
             capturerFlags: 0
         }
-        var audioCapturerOptions12000 = {
+        let audioCapturerOptions12000 = {
             streamInfo: audioStreamInfo12000,
             capturerInfo: audioCapturerInfo12000,
         }
 
         await getFd("capture_js-12000-1C-24B.pcm");
-        var resultFlag = await recPromise(audioCapturerOptions12000, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        let resultFlag = await recPromise(audioCapturerOptions12000, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
 
@@ -2400,23 +2398,23 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_0800', 2, async function (done) {
-        var audioStreamInfo16000 = {
+        let audioStreamInfo16000 = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_16000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW,
         };
-        var audioCapturerInfo16000 = {
+        let audioCapturerInfo16000 = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
-        var audioCapturerOptions16000 = {
+        let audioCapturerOptions16000 = {
             streamInfo: audioStreamInfo16000,
             capturerInfo: audioCapturerInfo16000,
         }
 
         await getFd("capture_js-16000-2C-32B.pcm");
-        var resultFlag = await recPromise(audioCapturerOptions16000, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        let resultFlag = await recPromise(audioCapturerOptions16000, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
 
@@ -2434,23 +2432,23 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_ENUM_0800', 2, async function (done) {
-        var audioStreamInfo16000 = {
+        let audioStreamInfo16000 = {
             samplingRate: 16000,
             channels: 2,
             sampleFormat: 3,
             encodingType: 0,
         };
-        var audioCapturerInfo16000 = {
+        let audioCapturerInfo16000 = {
             source: 1,
             capturerFlags: 0
         }
-        var audioCapturerOptions16000 = {
+        let audioCapturerOptions16000 = {
             streamInfo: audioStreamInfo16000,
             capturerInfo: audioCapturerInfo16000,
         }
 
         await getFd("capture_js-16000-2C-32B.pcm");
-        var resultFlag = await recPromise(audioCapturerOptions16000, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        let resultFlag = await recPromise(audioCapturerOptions16000, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
 
@@ -2468,23 +2466,23 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_0900', 2, async function (done) {
-        var audioStreamInfo22050 = {
+        let audioStreamInfo22050 = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_22050,
             channels: audio.AudioChannel.CHANNEL_1,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_U8,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW,
         };
-        var audioCapturerInfo22050 = {
+        let audioCapturerInfo22050 = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
-        var audioCapturerOptions22050 = {
+        let audioCapturerOptions22050 = {
             streamInfo: audioStreamInfo22050,
             capturerInfo: audioCapturerInfo22050,
         }
 
         await getFd("capture_js-22050-1C-8B.pcm");
-        var resultFlag = await recPromise(audioCapturerOptions22050, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        let resultFlag = await recPromise(audioCapturerOptions22050, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
 
@@ -2502,24 +2500,24 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_ENUM_0900', 2, async function (done) {
-        var audioStreamInfo22050 = {
+        let audioStreamInfo22050 = {
             samplingRate: 22050,
             channels: 1,
             sampleFormat: 0,
             encodingType: 0,
         };
-        var audioCapturerInfo22050 = {
+        let audioCapturerInfo22050 = {
             source: 1,
             capturerFlags: 0
         }
-        var audioCapturerOptions22050 = {
+        let audioCapturerOptions22050 = {
             streamInfo: audioStreamInfo22050,
             capturerInfo: audioCapturerInfo22050,
         }
 
         await getFd("capture_js-22050-1C-8B.pcm");
 
-        var resultFlag = await recPromise(audioCapturerOptions22050, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        let resultFlag = await recPromise(audioCapturerOptions22050, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
 
@@ -2537,24 +2535,24 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_1000', 2, async function (done) {
-        var audioStreamInfo24000 = {
+        let audioStreamInfo24000 = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_24000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW,
         };
-        var audioCapturerInfo24000 = {
+        let audioCapturerInfo24000 = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
-        var audioCapturerOptions24000 = {
+        let audioCapturerOptions24000 = {
             streamInfo: audioStreamInfo24000,
             capturerInfo: audioCapturerInfo24000,
         }
 
         await getFd("capture_js-24000-2C-16B.pcm");
 
-        var resultFlag = await recPromise(audioCapturerOptions24000, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        let resultFlag = await recPromise(audioCapturerOptions24000, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
 
@@ -2572,24 +2570,24 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_ENUM_1000', 2, async function (done) {
-        var audioStreamInfo24000 = {
+        let audioStreamInfo24000 = {
             samplingRate: 24000,
             channels: 2,
             sampleFormat: 1,
             encodingType: 0,
         };
-        var audioCapturerInfo24000 = {
+        let audioCapturerInfo24000 = {
             source: 1,
             capturerFlags: 0
         }
-        var audioCapturerOptions24000 = {
+        let audioCapturerOptions24000 = {
             streamInfo: audioStreamInfo24000,
             capturerInfo: audioCapturerInfo24000,
         }
 
         await getFd("capture_js-24000-2C-16B.pcm");
 
-        var resultFlag = await recPromise(audioCapturerOptions24000, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        let resultFlag = await recPromise(audioCapturerOptions24000, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
 
@@ -2607,24 +2605,24 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_1100', 2, async function (done) {
-        var audioStreamInfo32000 = {
+        let audioStreamInfo32000 = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_32000,
             channels: audio.AudioChannel.CHANNEL_1,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S24LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW,
         };
-        var audioCapturerInfo32000 = {
+        let audioCapturerInfo32000 = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
-        var audioCapturerOptions32000 = {
+        let audioCapturerOptions32000 = {
             streamInfo: audioStreamInfo32000,
             capturerInfo: audioCapturerInfo32000,
         }
 
         await getFd("capture_js-32000-1C-24B.pcm");
 
-        var resultFlag = await recPromise(audioCapturerOptions32000, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        let resultFlag = await recPromise(audioCapturerOptions32000, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
 
@@ -2642,24 +2640,24 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_ENUM_1100', 2, async function (done) {
-        var audioStreamInfo32000 = {
+        let audioStreamInfo32000 = {
             samplingRate: 32000,
             channels: 1,
             sampleFormat: 2,
             encodingType: 0,
         };
-        var audioCapturerInfo32000 = {
+        let audioCapturerInfo32000 = {
             source: 1,
             capturerFlags: 0
         }
-        var audioCapturerOptions32000 = {
+        let audioCapturerOptions32000 = {
             streamInfo: audioStreamInfo32000,
             capturerInfo: audioCapturerInfo32000,
         }
 
         await getFd("capture_js-32000-1C-24B.pcm");
 
-        var resultFlag = await recPromise(audioCapturerOptions32000, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        let resultFlag = await recPromise(audioCapturerOptions32000, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
 
@@ -2677,24 +2675,24 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_1200', 2, async function (done) {
-        var audioStreamInfo64000 = {
+        let audioStreamInfo64000 = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_64000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW,
         };
-        var audioCapturerInfo64000 = {
+        let audioCapturerInfo64000 = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
-        var audioCapturerOptions64000 = {
+        let audioCapturerOptions64000 = {
             streamInfo: audioStreamInfo64000,
             capturerInfo: audioCapturerInfo64000,
         }
 
         await getFd("capture_js-64000-2C-32B.pcm");
 
-        var resultFlag = await recPromise(audioCapturerOptions64000, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        let resultFlag = await recPromise(audioCapturerOptions64000, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
 
@@ -2713,24 +2711,24 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_ENUM_1200', 2, async function (done) {
-        var audioStreamInfo64000 = {
+        let audioStreamInfo64000 = {
             samplingRate: 64000,
             channels: 2,
             sampleFormat: 3,
             encodingType: 0,
         };
-        var audioCapturerInfo64000 = {
+        let audioCapturerInfo64000 = {
             source: 1,
             capturerFlags: 0
         }
-        var audioCapturerOptions64000 = {
+        let audioCapturerOptions64000 = {
             streamInfo: audioStreamInfo64000,
             capturerInfo: audioCapturerInfo64000,
         }
 
         await getFd("capture_js-64000-2C-32B.pcm");
 
-        var resultFlag = await recPromise(audioCapturerOptions64000, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        let resultFlag = await recPromise(audioCapturerOptions64000, dirPath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
 
@@ -2748,24 +2746,24 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RECORD_PROMISE_AUDIO_SCENE_DEFAULT_0100', 2, async function (done) {
-        var audioStreamInfo44100 = {
+        let audioStreamInfo44100 = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_1,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW,
         };
-        var audioCapturerInfo44100 = {
+        let audioCapturerInfo44100 = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
-        var audioCapturerOptions44100 = {
+        let audioCapturerOptions44100 = {
             streamInfo: audioStreamInfo44100,
             capturerInfo: audioCapturerInfo44100,
         }
 
         await getFd("capture_js-44100-1C-16LE.pcm");
 
-        var resultFlag = await recPromise(audioCapturerOptions44100, dirPath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        let resultFlag = await recPromise(audioCapturerOptions44100, dirPath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
@@ -2781,24 +2779,24 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RECORD_PROMISE_AUDIO_SCENE_DEFAULT_ENUM_0100', 2, async function (done) {
-        var audioStreamInfo44100 = {
+        let audioStreamInfo44100 = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_1,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW,
         };
-        var audioCapturerInfo44100 = {
+        let audioCapturerInfo44100 = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
-        var audioCapturerOptions44100 = {
+        let audioCapturerOptions44100 = {
             streamInfo: audioStreamInfo44100,
             capturerInfo: audioCapturerInfo44100,
         }
 
         await getFd("capture_js-44100-1C-16LE.pcm");
 
-        var resultFlag = await recPromise(audioCapturerOptions44100, dirPath, 0);
+        let resultFlag = await recPromise(audioCapturerOptions44100, dirPath, 0);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
 
@@ -2816,21 +2814,21 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMISE_GET_AUDIO_TIME_AFTER_START_0100', 2, async function (done) {
-        var stateFlag;
+        let stateFlag;
         await getFd("capture_CB_js-44100-2C-S16LE-checkcbreadbuffer.pcm");
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
@@ -2915,21 +2913,21 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMISE_GET_AUDIO_TIME_AFTER_READ_WRITE_0100', 2, async function (done) {
-        var stateFlag;
+        let stateFlag;
         await getFd("capture_CB_js-44100-2C-S16LE-checkcbreadbuffer.pcm");
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
@@ -2970,11 +2968,11 @@ describe('audioCapturer', function () {
         });
         await sleep(1000);
         console.info('AudioFrameworkRecLog: ---------GET BUFFER SIZE---------');
-        var bufferSize = await audioCapCallBack.getBufferSize();
+        let bufferSize = await audioCapCallBack.getBufferSize();
         console.info('AudioFrameworkRecLog: buffer size: ' + bufferSize);
         await sleep(1000);
         console.info('AudioFrameworkRecLog: ---------OPEN FILE---------');
-        var fd = fileio.openSync(dirPath, 0o102, 0o777);
+        let fd = fileio.openSync(dirPath, 0o102, 0o777);
         if (fd !== null) {
             console.info('AudioFrameworkRecLog: file fd created');
         } else {
@@ -2990,7 +2988,7 @@ describe('audioCapturer', function () {
             stateFlag = false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 45;
+        let numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             await new Promise((resolve, reject) => {
@@ -3013,7 +3011,7 @@ describe('audioCapturer', function () {
                         });
                         await sleep(50);
                         console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
-                        var number = fileio.writeSync(fd, buffer);
+                        let number = fileio.writeSync(fd, buffer);
                         console.info('AudioFrameworkRecLog:BufferRecLog: data written: ' + number);
                         await sleep(100);
                         stateFlag = true;
@@ -3066,21 +3064,21 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMISE_GET_AUDIO_TIME_AFTER_STOP_0100', 2, async function (done) {
-        var stateFlag;
+        let stateFlag;
         await getFd("capture_CB_js-44100-2C-S16LE-checkcbreadbuffer.pcm");
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
@@ -3121,11 +3119,11 @@ describe('audioCapturer', function () {
         });
         await sleep(1000);
         console.info('AudioFrameworkRecLog: ---------GET BUFFER SIZE---------');
-        var bufferSize = await audioCapCallBack.getBufferSize();
+        let bufferSize = await audioCapCallBack.getBufferSize();
         console.info('AudioFrameworkRecLog: buffer size: ' + bufferSize);
         await sleep(1000);
         console.info('AudioFrameworkRecLog: ---------OPEN FILE---------');
-        var fd = fileio.openSync(dirPath, 0o102, 0o777);
+        let fd = fileio.openSync(dirPath, 0o102, 0o777);
         if (fd !== null) {
             console.info('AudioFrameworkRecLog: file fd created');
         } else {
@@ -3141,7 +3139,7 @@ describe('audioCapturer', function () {
             stateFlag = false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 45;
+        let numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             await new Promise((resolve, reject) => {
@@ -3164,7 +3162,7 @@ describe('audioCapturer', function () {
                         });
                         await sleep(50);
                         console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
-                        var number = fileio.writeSync(fd, buffer);
+                        let number = fileio.writeSync(fd, buffer);
                         console.info('AudioFrameworkRecLog:BufferRecLog: data written: ' + number);
                         await sleep(100);
                         stateFlag = true;
@@ -3240,21 +3238,21 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_GET_AUDIO_TIME_0100', 2, async function (done) {
-        var stateFlag;
-        var audioCapCallBack;
-        var AudioStreamInfo = {
+        let stateFlag;
+        let audioCapCallBack;
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
@@ -3324,21 +3322,21 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMISE_STOP_BEFORE_START_0100', 2, async function (done) {
-        var stateFlag;
-        var audioCapPromise;
-        var AudioStreamInfo = {
+        let stateFlag;
+        let audioCapPromise;
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
@@ -3395,21 +3393,21 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_PROMISE_RELEASE_BEFORE_START_0100', 2, async function (done) {
-        var stateFlag;
-        var audioCapPromise;
-        var AudioStreamInfo = {
+        let stateFlag;
+        let audioCapPromise;
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
@@ -3464,20 +3462,20 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_REC_PR_VOICE_CHAT_GET_STREAM_INFO_0100', 2, async function (done) {
-        var audioCapGetgetStreamInfo;
-        var setFlag;
-        var audioStreamInfo44100 = {
+        let audioCapGetgetStreamInfo;
+        let setFlag;
+        let audioStreamInfo44100 = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var audioCapturerInfo44100 = {
+        let audioCapturerInfo44100 = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
-        var AudioCapturerOptionsInvalid = {
+        let AudioCapturerOptionsInvalid = {
             streamInfo: audioStreamInfo44100,
             capturerInfo: audioCapturerInfo44100,
         }
@@ -3540,19 +3538,19 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_REC_PR_VOICE_CHAT_GET_STREAM_INFO_ENUM_0100', 2, async function (done) {
-        var audioCapGetgetStreamInfo;
-        var setFlag;
-        var audioStreamInfo44100 = {
+        let audioCapGetgetStreamInfo;
+        let setFlag;
+        let audioStreamInfo44100 = {
             samplingRate: 44100,
             channels: 1,
             sampleFormat: 1,
             encodingType: 0,
         };
-        var audioCapturerInfo44100 = {
+        let audioCapturerInfo44100 = {
             source: 1,
             capturerFlags: 0
         }
-        var AudioCapturerOptionsInvalid = {
+        let AudioCapturerOptionsInvalid = {
             streamInfo: audioStreamInfo44100,
             capturerInfo: audioCapturerInfo44100,
         }
@@ -3617,20 +3615,20 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_REC_CB_VOICE_CHAT_GET_STREAM_INFO_0200', 2, async function (done) {
-        var audioCapGetgetStreamInfo;
-        var setFlag;
-        var audioStreamInfo44100 = {
+        let audioCapGetgetStreamInfo;
+        let setFlag;
+        let audioStreamInfo44100 = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var audioCapturerInfo44100 = {
+        let audioCapturerInfo44100 = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
-        var AudioCapturerOptionsInvalid = {
+        let AudioCapturerOptionsInvalid = {
             streamInfo: audioStreamInfo44100,
             capturerInfo: audioCapturerInfo44100,
         }
@@ -3696,19 +3694,19 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_REC_CB_VOICE_CHAT_GET_STREAM_INFO_ENUM_0200', 2, async function (done) {
-        var audioCapGetgetStreamInfo;
-        var setFlag;
-        var audioStreamInfo44100 = {
+        let audioCapGetgetStreamInfo;
+        let setFlag;
+        let audioStreamInfo44100 = {
             samplingRate: 44100,
             channels: 1,
             sampleFormat: 1,
             encodingType: 0,
         };
-        var audioCapturerInfo44100 = {
+        let audioCapturerInfo44100 = {
             source: 1,
             capturerFlags: 0
         }
-        var AudioCapturerOptionsInvalid = {
+        let AudioCapturerOptionsInvalid = {
             streamInfo: audioStreamInfo44100,
             capturerInfo: audioCapturerInfo44100,
         }
@@ -3775,20 +3773,20 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_REC_PR_VOICE_CHAT_GET_CAPTURER_INFO_0300', 2, async function (done) {
-        var audioCapGetgetCapturerInfo;
-        var setFlag;
-        var audioStreamInfo44100 = {
+        let audioCapGetgetCapturerInfo;
+        let setFlag;
+        let audioStreamInfo44100 = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var audioCapturerInfo44100 = {
+        let audioCapturerInfo44100 = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
-        var AudioCapturerOptionsInvalid = {
+        let AudioCapturerOptionsInvalid = {
             streamInfo: audioStreamInfo44100,
             capturerInfo: audioCapturerInfo44100,
         }
@@ -3847,19 +3845,19 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_REC_PR_VOICE_CHAT_GET_CAPTURER_INFO_ENUM_0300', 2, async function (done) {
-        var audioCapGetgetCapturerInfo;
-        var setFlag;
-        var audioStreamInfo44100 = {
+        let audioCapGetgetCapturerInfo;
+        let setFlag;
+        let audioStreamInfo44100 = {
             samplingRate: 44100,
             channels: 1,
             sampleFormat: 1,
             encodingType: 0,
         };
-        var audioCapturerInfo44100 = {
+        let audioCapturerInfo44100 = {
             source: 1,
             capturerFlags: 0
         }
-        var AudioCapturerOptionsInvalid = {
+        let AudioCapturerOptionsInvalid = {
             streamInfo: audioStreamInfo44100,
             capturerInfo: audioCapturerInfo44100,
         }
@@ -3918,20 +3916,20 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_REC_CB_VOICE_CHAT_GET_CAPTURER_INFO_0400', 2, async function (done) {
-        var audioCapGetgetCapturerInfo;
-        var setFlag;
-        var audioStreamInfo44100 = {
+        let audioCapGetgetCapturerInfo;
+        let setFlag;
+        let audioStreamInfo44100 = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var audioCapturerInfo44100 = {
+        let audioCapturerInfo44100 = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
-        var AudioCapturerOptionsInvalid = {
+        let AudioCapturerOptionsInvalid = {
             streamInfo: audioStreamInfo44100,
             capturerInfo: audioCapturerInfo44100,
         }
@@ -3994,19 +3992,19 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_REC_CB_VOICE_CHAT_GET_STREAM_INFO_ENUM_0400', 2, async function (done) {
-        var audioCapGetgetCapturerInfo;
-        var setFlag;
-        var audioStreamInfo44100 = {
+        let audioCapGetgetCapturerInfo;
+        let setFlag;
+        let audioStreamInfo44100 = {
             samplingRate: 44100,
             channels: 1,
             sampleFormat: 1,
             encodingType: 0,
         };
-        var audioCapturerInfo44100 = {
+        let audioCapturerInfo44100 = {
             source: 1,
             capturerFlags: 0
         }
-        var AudioCapturerOptionsInvalid = {
+        let AudioCapturerOptionsInvalid = {
             streamInfo: audioStreamInfo44100,
             capturerInfo: audioCapturerInfo44100,
         }
@@ -4068,22 +4066,22 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_REC_VOICE_CHAT_PR_ENUM_AUDIO_STREAM_INFO_INVALID_0100', 2, async function (done) {
-        var audioStreamInfo44100 = {
+        let audioStreamInfo44100 = {
             samplingRate: 0,
             channels: 1,
             sampleFormat: 1,
             encodingType: 0,
         };
-        var audioCapturerInfo44100 = {
+        let audioCapturerInfo44100 = {
             source: 1,
             capturerFlags: 0
         }
-        var AudioCapturerOptionsInvalid = {
+        let AudioCapturerOptionsInvalid = {
             streamInfo: audioStreamInfo44100,
             capturerInfo: audioCapturerInfo44100,
         }
 
-        var audioCap;
+        let audioCap;
 
         await audio.createAudioCapturer(AudioCapturerOptionsInvalid).then(async function (data) {
             if (data == undefined) {
@@ -4107,17 +4105,17 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_REC_VOICE_CHAT_PR_ENUM_AUDIO_CAPTURER_INFO_INVALID_0100', 2, async function (done) {
-        var audioStreamInfo44100 = {
+        let audioStreamInfo44100 = {
             samplingRate: 44100,
             channels: 1,
             sampleFormat: 1,
             encodingType: 0,
         };
-        var audioCapturerInfo44100 = {
+        let audioCapturerInfo44100 = {
             source: 1000,
             capturerFlags: 0
         }
-        var AudioCapturerOptionsInvalid = {
+        let AudioCapturerOptionsInvalid = {
             streamInfo: audioStreamInfo44100,
             capturerInfo: audioCapturerInfo44100,
         }
@@ -4145,19 +4143,19 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_ON_0100', 2, async function (done) {
-        var stateFlag;
-        var audioCapCallBack;
-        var AudioStreamInfo = {
+        let stateFlag;
+        let audioCapCallBack;
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
@@ -4260,19 +4258,19 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_ON_0200', 2, async function (done) {
-        var stateFlag;
-        var audioCapCallBack;
-        var AudioStreamInfo = {
+        let stateFlag;
+        let audioCapCallBack;
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
@@ -4341,19 +4339,19 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_ON_0300', 2, async function (done) {
-        var stateFlag;
-        var audioCapCallBack;
-        var AudioStreamInfo = {
+        let stateFlag;
+        let audioCapCallBack;
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
@@ -4438,19 +4436,19 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_ON_0400', 2, async function (done) {
-        var stateFlag;
-        var audioCapCallBack;
-        var AudioStreamInfo = {
+        let stateFlag;
+        let audioCapCallBack;
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
@@ -4554,21 +4552,21 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_READ_BUFFER_MARK_REACH_0100', 2, async function (done) {
-        var stateFlag;
+        let stateFlag;
         await getFd("capture_CB_js-44100-2C-S16LE-checkcbreadbuffer.pcm");
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
@@ -4610,11 +4608,11 @@ describe('audioCapturer', function () {
         });
         await sleep(1000);
         console.info('AudioFrameworkRecLog: ---------GET BUFFER SIZE---------');
-        var bufferSize = await audioCapCallBack.getBufferSize();
+        let bufferSize = await audioCapCallBack.getBufferSize();
         console.info('AudioFrameworkRecLog: buffer size: ' + bufferSize);
         await sleep(1000);
         console.info('AudioFrameworkRecLog: ---------OPEN FILE---------');
-        var fd = fileio.openSync(dirPath, 0o102, 0o777);
+        let fd = fileio.openSync(dirPath, 0o102, 0o777);
         if (fd !== null) {
             console.info('AudioFrameworkRecLog: file fd created');
         } else {
@@ -4630,7 +4628,7 @@ describe('audioCapturer', function () {
             stateFlag = false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 45;
+        let numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             await new Promise((resolve, reject) => {
@@ -4644,7 +4642,7 @@ describe('audioCapturer', function () {
                         console.info('AudioFrameworkRecLog: AudioCapturer : readvalue : ' + buffer);
                         await sleep(50);
                         console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
-                        var number = fileio.writeSync(fd, buffer);
+                        let number = fileio.writeSync(fd, buffer);
                         console.info('AudioFrameworkRecLog:BufferRecLog: data written: ' + number);
                         await sleep(100);
                         stateFlag = true;
@@ -4692,21 +4690,21 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_READ_BUFFER_MARK_REACH_0200', 2, async function (done) {
-        var stateFlag;
+        let stateFlag;
         await getFd("capture_CB_js-44100-2C-S16LE-checkcbreadbuffer.pcm");
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
@@ -4748,11 +4746,11 @@ describe('audioCapturer', function () {
         });
         await sleep(1000);
         console.info('AudioFrameworkRecLog: ---------GET BUFFER SIZE---------');
-        var bufferSize = await audioCapCallBack.getBufferSize();
+        let bufferSize = await audioCapCallBack.getBufferSize();
         console.info('AudioFrameworkRecLog: buffer size: ' + bufferSize);
         await sleep(1000);
         console.info('AudioFrameworkRecLog: ---------OPEN FILE---------');
-        var fd = fileio.openSync(dirPath, 0o102, 0o777);
+        let fd = fileio.openSync(dirPath, 0o102, 0o777);
         if (fd !== null) {
             console.info('AudioFrameworkRecLog: file fd created');
         } else {
@@ -4768,7 +4766,7 @@ describe('audioCapturer', function () {
             stateFlag = false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 45;
+        let numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             await new Promise((resolve, reject) => {
@@ -4782,7 +4780,7 @@ describe('audioCapturer', function () {
                         console.info('AudioFrameworkRecLog: AudioCapturer : readvalue : ' + buffer);
                         await sleep(50);
                         console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
-                        var number = fileio.writeSync(fd, buffer);
+                        let number = fileio.writeSync(fd, buffer);
                         console.info('AudioFrameworkRecLog:BufferRecLog: data written: ' + number);
                         await sleep(100);
                         stateFlag = true;
@@ -4824,21 +4822,21 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_READ_BUFFER_MARK_REACH_0300', 2, async function (done) {
-        var stateFlag;
+        let stateFlag;
         await getFd("capture_CB_js-44100-2C-S16LE-checkcbreadbuffer.pcm");
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
@@ -4880,11 +4878,11 @@ describe('audioCapturer', function () {
         });
         await sleep(1000);
         console.info('AudioFrameworkRecLog: ---------GET BUFFER SIZE---------');
-        var bufferSize = await audioCapCallBack.getBufferSize();
+        let bufferSize = await audioCapCallBack.getBufferSize();
         console.info('AudioFrameworkRecLog: buffer size: ' + bufferSize);
         await sleep(1000);
         console.info('AudioFrameworkRecLog: ---------OPEN FILE---------');
-        var fd = fileio.openSync(dirPath, 0o102, 0o777);
+        let fd = fileio.openSync(dirPath, 0o102, 0o777);
         if (fd !== null) {
             console.info('AudioFrameworkRecLog: file fd created');
         } else {
@@ -4900,7 +4898,7 @@ describe('audioCapturer', function () {
             stateFlag = false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 45;
+        let numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             await new Promise((resolve, reject) => {
@@ -4914,7 +4912,7 @@ describe('audioCapturer', function () {
                         console.info('AudioFrameworkRecLog: AudioCapturer : readvalue : ' + buffer);
                         await sleep(50);
                         console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
-                        var number = fileio.writeSync(fd, buffer);
+                        let number = fileio.writeSync(fd, buffer);
                         console.info('AudioFrameworkRecLog:BufferRecLog: data written: ' + number);
                         await sleep(100);
                         stateFlag = true;
@@ -4957,21 +4955,21 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_READ_BUFFER_MARK_REACH_0400', 2, async function (done) {
-        var stateFlag;
+        let stateFlag;
         await getFd("capture_CB_js-44100-2C-S16LE-checkcbreadbuffer.pcm");
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
@@ -5013,11 +5011,11 @@ describe('audioCapturer', function () {
         });
         await sleep(1000);
         console.info('AudioFrameworkRecLog: ---------GET BUFFER SIZE---------');
-        var bufferSize = await audioCapCallBack.getBufferSize();
+        let bufferSize = await audioCapCallBack.getBufferSize();
         console.info('AudioFrameworkRecLog: buffer size: ' + bufferSize);
         await sleep(1000);
         console.info('AudioFrameworkRecLog: ---------OPEN FILE---------');
-        var fd = fileio.openSync(dirPath, 0o102, 0o777);
+        let fd = fileio.openSync(dirPath, 0o102, 0o777);
         if (fd !== null) {
             console.info('AudioFrameworkRecLog: file fd created');
         } else {
@@ -5033,7 +5031,7 @@ describe('audioCapturer', function () {
             stateFlag = false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 45;
+        let numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             await new Promise((resolve, reject) => {
@@ -5047,7 +5045,7 @@ describe('audioCapturer', function () {
                         console.info('AudioFrameworkRecLog: AudioCapturer : readvalue : ' + buffer);
                         await sleep(50);
                         console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
-                        var number = fileio.writeSync(fd, buffer);
+                        let number = fileio.writeSync(fd, buffer);
                         console.info('AudioFrameworkRecLog:BufferRecLog: data written: ' + number);
                         await sleep(100);
                         stateFlag = true;
@@ -5090,21 +5088,21 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_READ_BUFFER_MARK_REACH_0500', 2, async function (done) {
-        var stateFlag;
+        let stateFlag;
         await getFd("capture_CB_js-44100-2C-S16LE-checkcbreadbuffer.pcm");
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
@@ -5146,11 +5144,11 @@ describe('audioCapturer', function () {
         });
         await sleep(1000);
         console.info('AudioFrameworkRecLog: ---------GET BUFFER SIZE---------');
-        var bufferSize = await audioCapCallBack.getBufferSize();
+        let bufferSize = await audioCapCallBack.getBufferSize();
         console.info('AudioFrameworkRecLog: buffer size: ' + bufferSize);
         await sleep(1000);
         console.info('AudioFrameworkRecLog: ---------OPEN FILE---------');
-        var fd = fileio.openSync(dirPath, 0o102, 0o777);
+        let fd = fileio.openSync(dirPath, 0o102, 0o777);
         if (fd !== null) {
             console.info('AudioFrameworkRecLog: file fd created');
         } else {
@@ -5166,7 +5164,7 @@ describe('audioCapturer', function () {
             stateFlag = false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 45;
+        let numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             await new Promise((resolve, reject) => {
@@ -5180,7 +5178,7 @@ describe('audioCapturer', function () {
                         console.info('AudioFrameworkRecLog: AudioCapturer : readvalue : ' + buffer);
                         await sleep(50);
                         console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
-                        var number = fileio.writeSync(fd, buffer);
+                        let number = fileio.writeSync(fd, buffer);
                         console.info('AudioFrameworkRecLog:BufferRecLog: data written: ' + number);
                         await sleep(100);
                         stateFlag = true;
@@ -5224,21 +5222,21 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_READ_BUFFER_MARK_REACH_0600', 2, async function (done) {
-        var stateFlag;
+        let stateFlag;
         await getFd("capture_CB_js-44100-2C-S16LE-checkcbreadbuffer.pcm");
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
@@ -5280,11 +5278,11 @@ describe('audioCapturer', function () {
         });
         await sleep(1000);
         console.info('AudioFrameworkRecLog: ---------GET BUFFER SIZE---------');
-        var bufferSize = await audioCapCallBack.getBufferSize();
+        let bufferSize = await audioCapCallBack.getBufferSize();
         console.info('AudioFrameworkRecLog: buffer size: ' + bufferSize);
         await sleep(1000);
         console.info('AudioFrameworkRecLog: ---------OPEN FILE---------');
-        var fd = fileio.openSync(dirPath, 0o102, 0o777);
+        let fd = fileio.openSync(dirPath, 0o102, 0o777);
         if (fd !== null) {
             console.info('AudioFrameworkRecLog: file fd created');
         } else {
@@ -5300,7 +5298,7 @@ describe('audioCapturer', function () {
             stateFlag = false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 45;
+        let numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             await new Promise((resolve, reject) => {
@@ -5314,7 +5312,7 @@ describe('audioCapturer', function () {
                         console.info('AudioFrameworkRecLog: AudioCapturer : readvalue : ' + buffer);
                         await sleep(50);
                         console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
-                        var number = fileio.writeSync(fd, buffer);
+                        let number = fileio.writeSync(fd, buffer);
                         console.info('AudioFrameworkRecLog:BufferRecLog: data written: ' + number);
                         await sleep(100);
                         stateFlag = true;
@@ -5358,21 +5356,21 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_READ_BUFFER_MARK_REACH_0700', 2, async function (done) {
-        var stateFlag;
+        let stateFlag;
         await getFd("capture_CB_js-44100-2C-S16LE-checkcbreadbuffer.pcm");
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
@@ -5414,11 +5412,11 @@ describe('audioCapturer', function () {
         });
         await sleep(1000);
         console.info('AudioFrameworkRecLog: ---------GET BUFFER SIZE---------');
-        var bufferSize = await audioCapCallBack.getBufferSize();
+        let bufferSize = await audioCapCallBack.getBufferSize();
         console.info('AudioFrameworkRecLog: buffer size: ' + bufferSize);
         await sleep(1000);
         console.info('AudioFrameworkRecLog: ---------OPEN FILE---------');
-        var fd = fileio.openSync(dirPath, 0o102, 0o777);
+        let fd = fileio.openSync(dirPath, 0o102, 0o777);
         if (fd !== null) {
             console.info('AudioFrameworkRecLog: file fd created');
         } else {
@@ -5434,7 +5432,7 @@ describe('audioCapturer', function () {
             stateFlag = false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 45;
+        let numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             await new Promise((resolve, reject) => {
@@ -5448,7 +5446,7 @@ describe('audioCapturer', function () {
                         console.info('AudioFrameworkRecLog: AudioCapturer : readvalue : ' + buffer);
                         await sleep(50);
                         console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
-                        var number = fileio.writeSync(fd, buffer);
+                        let number = fileio.writeSync(fd, buffer);
                         console.info('AudioFrameworkRecLog:BufferRecLog: data written: ' + number);
                         await sleep(100);
                         stateFlag = true;
@@ -5491,21 +5489,21 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_READ_BUFFER_MARK_REACH_0800', 2, async function (done) {
-        var stateFlag;
+        let stateFlag;
         await getFd("capture_CB_js-44100-2C-S16LE-checkcbreadbuffer.pcm");
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
@@ -5547,11 +5545,11 @@ describe('audioCapturer', function () {
         });
         await sleep(1000);
         console.info('AudioFrameworkRecLog: ---------GET BUFFER SIZE---------');
-        var bufferSize = await audioCapCallBack.getBufferSize();
+        let bufferSize = await audioCapCallBack.getBufferSize();
         console.info('AudioFrameworkRecLog: buffer size: ' + bufferSize);
         await sleep(1000);
         console.info('AudioFrameworkRecLog: ---------OPEN FILE---------');
-        var fd = fileio.openSync(dirPath, 0o102, 0o777);
+        let fd = fileio.openSync(dirPath, 0o102, 0o777);
         if (fd !== null) {
             console.info('AudioFrameworkRecLog: file fd created');
         } else {
@@ -5567,7 +5565,7 @@ describe('audioCapturer', function () {
             stateFlag = false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 45;
+        let numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             await new Promise((resolve, reject) => {
@@ -5581,7 +5579,7 @@ describe('audioCapturer', function () {
                         console.info('AudioFrameworkRecLog: AudioCapturer : readvalue : ' + buffer);
                         await sleep(50);
                         console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
-                        var number = fileio.writeSync(fd, buffer);
+                        let number = fileio.writeSync(fd, buffer);
                         console.info('AudioFrameworkRecLog:BufferRecLog: data written: ' + number);
                         await sleep(100);
                         stateFlag = true;
@@ -5624,21 +5622,21 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_READ_BUFFER_PERIOD_REACH_0100', 2, async function (done) {
-        var stateFlag;
+        let stateFlag;
         await getFd("capture_CB_js-44100-2C-S16LE-checkcbreadbuffer.pcm");
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
@@ -5678,11 +5676,11 @@ describe('audioCapturer', function () {
         });
         await sleep(1000);
         console.info('AudioFrameworkRecLog: ---------GET BUFFER SIZE---------');
-        var bufferSize = await audioCapCallBack.getBufferSize();
+        let bufferSize = await audioCapCallBack.getBufferSize();
         console.info('AudioFrameworkRecLog: buffer size: ' + bufferSize);
         await sleep(1000);
         console.info('AudioFrameworkRecLog: ---------OPEN FILE---------');
-        var fd = fileio.openSync(dirPath, 0o102, 0o777);
+        let fd = fileio.openSync(dirPath, 0o102, 0o777);
         if (fd !== null) {
             console.info('AudioFrameworkRecLog: file fd created');
         } else {
@@ -5698,7 +5696,7 @@ describe('audioCapturer', function () {
             stateFlag = false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 45;
+        let numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             await new Promise((resolve, reject) => {
@@ -5712,7 +5710,7 @@ describe('audioCapturer', function () {
                         console.info('AudioFrameworkRecLog: AudioCapturer : readvalue : ' + buffer);
                         await sleep(50);
                         console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
-                        var number = fileio.writeSync(fd, buffer);
+                        let number = fileio.writeSync(fd, buffer);
                         console.info('AudioFrameworkRecLog:BufferRecLog: data written: ' + number);
                         await sleep(100);
                         stateFlag = true;
@@ -5779,21 +5777,21 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_READ_BUFFER_PERIOD_REACH_0200', 2, async function (done) {
-        var stateFlag;
+        let stateFlag;
         await getFd("capture_CB_js-44100-2C-S16LE-checkcbreadbuffer.pcm");
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
@@ -5833,11 +5831,11 @@ describe('audioCapturer', function () {
         });
         await sleep(1000);
         console.info('AudioFrameworkRecLog: ---------GET BUFFER SIZE---------');
-        var bufferSize = await audioCapCallBack.getBufferSize();
+        let bufferSize = await audioCapCallBack.getBufferSize();
         console.info('AudioFrameworkRecLog: buffer size: ' + bufferSize);
         await sleep(1000);
         console.info('AudioFrameworkRecLog: ---------OPEN FILE---------');
-        var fd = fileio.openSync(dirPath, 0o102, 0o777);
+        let fd = fileio.openSync(dirPath, 0o102, 0o777);
         if (fd !== null) {
             console.info('AudioFrameworkRecLog: file fd created');
         } else {
@@ -5853,7 +5851,7 @@ describe('audioCapturer', function () {
             stateFlag = false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 45;
+        let numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             await new Promise((resolve, reject) => {
@@ -5867,7 +5865,7 @@ describe('audioCapturer', function () {
                         console.info('AudioFrameworkRecLog: AudioCapturer : readvalue : ' + buffer);
                         await sleep(50);
                         console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
-                        var number = fileio.writeSync(fd, buffer);
+                        let number = fileio.writeSync(fd, buffer);
                         console.info('AudioFrameworkRecLog:BufferRecLog: data written: ' + number);
                         await sleep(100);
                         stateFlag = true;
@@ -5934,21 +5932,21 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_READ_BUFFER_PERIOD_REACH_0300', 2, async function (done) {
-        var stateFlag;
+        let stateFlag;
         await getFd("capture_CB_js-44100-2C-S16LE-checkcbreadbuffer.pcm");
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
@@ -5988,11 +5986,11 @@ describe('audioCapturer', function () {
         });
         await sleep(1000);
         console.info('AudioFrameworkRecLog: ---------GET BUFFER SIZE---------');
-        var bufferSize = await audioCapCallBack.getBufferSize();
+        let bufferSize = await audioCapCallBack.getBufferSize();
         console.info('AudioFrameworkRecLog: buffer size: ' + bufferSize);
         await sleep(1000);
         console.info('AudioFrameworkRecLog: ---------OPEN FILE---------');
-        var fd = fileio.openSync(dirPath, 0o102, 0o777);
+        let fd = fileio.openSync(dirPath, 0o102, 0o777);
         if (fd !== null) {
             console.info('AudioFrameworkRecLog: file fd created');
         } else {
@@ -6008,7 +6006,7 @@ describe('audioCapturer', function () {
             stateFlag = false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 45;
+        let numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             await new Promise((resolve, reject) => {
@@ -6022,7 +6020,7 @@ describe('audioCapturer', function () {
                         console.info('AudioFrameworkRecLog: AudioCapturer : readvalue : ' + buffer);
                         await sleep(50);
                         console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
-                        var number = fileio.writeSync(fd, buffer);
+                        let number = fileio.writeSync(fd, buffer);
                         console.info('AudioFrameworkRecLog:BufferRecLog: data written: ' + number);
                         await sleep(100);
                         stateFlag = true;
@@ -6090,21 +6088,21 @@ describe('audioCapturer', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_READ_BUFFER_PERIOD_REACH_0400', 2, async function (done) {
-        var stateFlag;
+        let stateFlag;
         await getFd("capture_CB_js-44100-2C-S16LE-checkcbreadbuffer.pcm");
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
@@ -6144,11 +6142,11 @@ describe('audioCapturer', function () {
         });
         await sleep(1000);
         console.info('AudioFrameworkRecLog: ---------GET BUFFER SIZE---------');
-        var bufferSize = await audioCapCallBack.getBufferSize();
+        let bufferSize = await audioCapCallBack.getBufferSize();
         console.info('AudioFrameworkRecLog: buffer size: ' + bufferSize);
         await sleep(1000);
         console.info('AudioFrameworkRecLog: ---------OPEN FILE---------');
-        var fd = fileio.openSync(dirPath, 0o102, 0o777);
+        let fd = fileio.openSync(dirPath, 0o102, 0o777);
         if (fd !== null) {
             console.info('AudioFrameworkRecLog: file fd created');
         } else {
@@ -6164,7 +6162,7 @@ describe('audioCapturer', function () {
             stateFlag = false;
         }
         await sleep(1000);
-        var numBuffersToCapture = 45;
+        let numBuffersToCapture = 45;
         while (numBuffersToCapture) {
             console.info('AudioFrameworkRecLog: ---------BEFORE CHECK CB READ BUFFER---------');
             await new Promise((resolve, reject) => {
@@ -6178,7 +6176,7 @@ describe('audioCapturer', function () {
                         console.info('AudioFrameworkRecLog: AudioCapturer : readvalue : ' + buffer);
                         await sleep(50);
                         console.info('AudioFrameworkRecLog: ---------WRITE BUFFER---------');
-                        var number = fileio.writeSync(fd, buffer);
+                        let number = fileio.writeSync(fd, buffer);
                         console.info('AudioFrameworkRecLog:BufferRecLog: data written: ' + number);
                         await sleep(100);
                         stateFlag = true;
