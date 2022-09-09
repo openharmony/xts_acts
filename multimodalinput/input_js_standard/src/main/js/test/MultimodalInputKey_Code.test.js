@@ -13,17 +13,9 @@
  * limitations under the License.
  */
 import inputkeyCode from '@ohos.multimodalInput.keyCode';
-import {
-    describe,
-    beforeAll,
-    beforeEach,
-    afterEach,
-    afterAll,
-    it,
-    expect
-} from 'deccjsunit/index'
-
-describe('Multimodalinput_KeyCode_test', function () {
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
+  export default function MultimodalInput_KeyCode_test() {
+  describe('MultimodalInput_KeyCode_test', function () {
 
 
     it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_0010', 0, function () {
@@ -820,11 +812,11 @@ describe('Multimodalinput_KeyCode_test', function () {
     })
 
     it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_1000', 0, function () {
-        console.info(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_100 enter`);
+        console.info(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_1000 enter`);
 
         expect(inputkeyCode.KeyCode.KEYCODE_MOVE_HOME == 2081).assertTrue();
 
-        console.info(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_100 exit`);
+        console.info(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_1000 exit`);
     })
 
     it('Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_101', 0, function () {
@@ -2667,5 +2659,5 @@ describe('Multimodalinput_KeyCode_test', function () {
         console.info(`Multimodalinput_KeyCode_test::SUB_MMI_KeyCodeTest_348 exit`);
     })
 })
-
+  }
 

@@ -14,6 +14,12 @@
  */
 
 
-require('./InputDevice.test.js')
-require('./MultimodalInputKey_Code.test.js')
-require('./Pointer.test.js')
+
+import MultimodalInput_Device_test from './InputDevice.test.js'
+import MultimodalInput_KeyCode_test from './MultimodalInputKey_Code.test.js'
+import MultimodalInput_Pointer_test from './Pointer.test.js'
+export default function testsuite() {
+MultimodalInput_Device_test()
+MultimodalInput_KeyCode_test()
+MultimodalInput_Pointer_test()
+}
