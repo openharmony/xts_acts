@@ -18,21 +18,21 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 
 describe('audioRendererChange', function () {
 
-    var audioStreamManager;
-    var audioStreamManagerCB;
-    var Tag = "AFRenLog : ";
-    const audioManager = audio.getAudioManager();
+    let audioStreamManager;
+    let audioStreamManagerCB;
+    let Tag = 'AFRenLog : ';
+    const AUDIOMANAGER = audio.getAudioManager();
     console.info(Tag + 'Create AudioManger Object JS Framework');
 
     beforeAll(async function () {
-        await audioManager.getStreamManager().then(async function (data) {
+        await AUDIOMANAGER.getStreamManager().then(async function (data) {
             audioStreamManager = data;
             console.info(Tag + 'Get AudioStream Manager : Success ');
         }).catch((err) => {
             console.info(Tag + 'Get AudioStream Manager : ERROR : ' + err.message);
         });
 
-        audioManager.getStreamManager((err, data) => {
+        AUDIOMANAGER.getStreamManager((err, data) => {
             if (err) {
                 console.error(Tag + 'Get AudioStream Manager : ERROR : ' + err.message);
             }
@@ -72,26 +72,26 @@ describe('audioRendererChange', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_ON_RENDERER_CHANGE_0100', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
-        var resultFlag = false;
+        let resultFlag = false;
 
-        var audioRen;
+        let audioRen;
 
         audioStreamManagerCB.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
@@ -102,7 +102,7 @@ describe('audioRendererChange', function () {
                 console.info(Tag + 'Stream for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.usage);
                 console.info(Tag + 'Flag ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags);
                 console.info(Tag + 'State for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererState);
-                var devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
+                let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
                     console.info(Tag + 'Id:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].id);
                     console.info(Tag + 'Type:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType);
@@ -154,27 +154,27 @@ describe('audioRendererChange', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_ON_RENDERER_CHANGE_0200', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_1,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
             usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = false;
+        let resultFlag = false;
 
-        var audioRen;
+        let audioRen;
 
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -194,7 +194,7 @@ describe('audioRendererChange', function () {
                 console.info(Tag + 'Stream for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.usage);
                 console.info(Tag + 'Flag ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags);
                 console.info(Tag + 'State for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererState);
-                var devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
+                let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
                     console.info(Tag + 'Id:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].id);
                     console.info(Tag + 'Type:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType);
@@ -252,27 +252,27 @@ describe('audioRendererChange', function () {
      */
     it('SUB_MULTIMEDIA_ON_RENDERER_CHANGE_0300', 2, async function (done) {
 
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_24000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S24LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = false;
+        let resultFlag = false;
 
-        var audioRen;
+        let audioRen;
 
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -298,7 +298,7 @@ describe('audioRendererChange', function () {
                 console.info(Tag + 'Stream for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.usage);
                 console.info(Tag + 'Flag ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags);
                 console.info(Tag + 'State for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererState);
-                var devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
+                let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
                     console.info(Tag + 'Id:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].id);
                     console.info(Tag + 'Type:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType);
@@ -350,27 +350,27 @@ describe('audioRendererChange', function () {
      */
     it('SUB_MULTIMEDIA_ON_RENDERER_CHANGE_0400', 2, async function (done) {
 
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = false;
+        let resultFlag = false;
 
-        var audioRen;
+        let audioRen;
 
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -402,7 +402,7 @@ describe('audioRendererChange', function () {
                 console.info(Tag + 'Stream for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.usage);
                 console.info(Tag + 'Flag ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags);
                 console.info(Tag + 'State for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererState);
-                var devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
+                let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
                     console.info(Tag + 'Id:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].id);
                     console.info(Tag + 'Type:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType);
@@ -447,27 +447,27 @@ describe('audioRendererChange', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_ON_RENDERER_CHANGE_0500', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = false;
+        let resultFlag = false;
 
-        var audioRen;
+        let audioRen;
 
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -493,7 +493,7 @@ describe('audioRendererChange', function () {
                 console.info(Tag + 'Stream for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.usage);
                 console.info(Tag + 'Flag ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags);
                 console.info(Tag + 'State for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererState);
-                var devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
+                let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
                     console.info(Tag + 'Id:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].id);
                     console.info(Tag + 'Type:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType);
@@ -550,26 +550,26 @@ describe('audioRendererChange', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_ON_RENDERER_CHANGE_0600', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
-        var resultFlag = false;
+        let resultFlag = false;
 
-        var audioRen;
+        let audioRen;
 
         audioStreamManagerCB.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
@@ -580,7 +580,7 @@ describe('audioRendererChange', function () {
                 console.info(Tag + 'Stream for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.usage);
                 console.info(Tag + 'Flag ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags);
                 console.info(Tag + 'State for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererState);
-                var devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
+                let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
                     console.info(Tag + 'Id:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].id);
                     console.info(Tag + 'Type:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType);
@@ -631,26 +631,26 @@ describe('audioRendererChange', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_ON_RENDERER_CHANGE_0700', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
             usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
-        var resultFlag = false;
+        let resultFlag = false;
 
-        var audioRen;
+        let audioRen;
 
         audioStreamManager.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
@@ -661,7 +661,7 @@ describe('audioRendererChange', function () {
                 console.info(Tag + 'Stream for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.usage);
                 console.info(Tag + 'Flag ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags);
                 console.info(Tag + 'State for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererState);
-                var devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
+                let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
                     console.info(Tag + 'Id:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].id);
                     console.info(Tag + 'Type:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType);
@@ -712,26 +712,26 @@ describe('audioRendererChange', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_ON_RENDERER_CHANGE_0800', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
-        var resultFlag = false;
+        let resultFlag = false;
 
-        var audioRen;
+        let audioRen;
 
         audioStreamManager.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
@@ -742,7 +742,7 @@ describe('audioRendererChange', function () {
                 console.info(Tag + 'Stream for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.usage);
                 console.info(Tag + 'Flag ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags);
                 console.info(Tag + 'State for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererState);
-                var devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
+                let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
                     console.info(Tag + 'Id:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].id);
                     console.info(Tag + 'Type:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType);
@@ -793,26 +793,26 @@ describe('audioRendererChange', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_ON_RENDERER_CHANGE_0900', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MUSIC,
             usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
-        var resultFlag = false;
+        let resultFlag = false;
 
-        var audioRen;
+        let audioRen;
 
         audioStreamManager.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
@@ -823,7 +823,7 @@ describe('audioRendererChange', function () {
                 console.info(Tag + 'Stream for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.usage);
                 console.info(Tag + 'Flag ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags);
                 console.info(Tag + 'State for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererState);
-                var devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
+                let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
                     console.info(Tag + 'Id:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].id);
                     console.info(Tag + 'Type:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType);
@@ -874,26 +874,26 @@ describe('audioRendererChange', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_ON_RENDERER_CHANGE_1000', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MOVIE,
             usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
-        var resultFlag = false;
+        let resultFlag = false;
 
-        var audioRen;
+        let audioRen;
 
         audioStreamManager.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
@@ -904,7 +904,7 @@ describe('audioRendererChange', function () {
                 console.info(Tag + 'Stream for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.usage);
                 console.info(Tag + 'Flag ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags);
                 console.info(Tag + 'State for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererState);
-                var devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
+                let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
                     console.info(Tag + 'Id:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].id);
                     console.info(Tag + 'Type:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType);
@@ -956,26 +956,26 @@ describe('audioRendererChange', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_ON_RENDERER_CHANGE_1100', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SONIFICATION,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
-        var resultFlag = false;
+        let resultFlag = false;
 
-        var audioRen;
+        let audioRen;
 
         audioStreamManager.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
@@ -986,7 +986,7 @@ describe('audioRendererChange', function () {
                 console.info(Tag + 'Stream for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.usage);
                 console.info(Tag + 'Flag ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags);
                 console.info(Tag + 'State for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererState);
-                var devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
+                let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
                     console.info(Tag + 'Id:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].id);
                     console.info(Tag + 'Type:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType);
@@ -1038,26 +1038,26 @@ describe('audioRendererChange', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_ON_RENDERER_CHANGE_1200', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
-        var resultFlag = false;
+        let resultFlag = false;
 
-        var audioRen;
+        let audioRen;
 
         audioStreamManagerCB.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
@@ -1068,7 +1068,7 @@ describe('audioRendererChange', function () {
                 console.info(Tag + 'Stream for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.usage);
                 console.info(Tag + 'Flag ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags);
                 console.info(Tag + 'State for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererState);
-                var devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
+                let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
                     console.info(Tag + 'Id:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].id);
                     console.info(Tag + 'Type:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType);
@@ -1120,26 +1120,26 @@ describe('audioRendererChange', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_ON_RENDERER_CHANGE_1300', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MUSIC,
             usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
-        var resultFlag = false;
+        let resultFlag = false;
 
-        var audioRen;
+        let audioRen;
 
         audioStreamManager.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
@@ -1150,7 +1150,7 @@ describe('audioRendererChange', function () {
                 console.info(Tag + 'Stream for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.usage);
                 console.info(Tag + 'Flag ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags);
                 console.info(Tag + 'State for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererState);
-                var devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
+                let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
                     console.info(Tag + 'Id:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].id);
                     console.info(Tag + 'Type:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType);
@@ -1202,26 +1202,26 @@ describe('audioRendererChange', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_ON_RENDERER_CHANGE_1400', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MOVIE,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
-        var resultFlag = false;
+        let resultFlag = false;
 
-        var audioRen;
+        let audioRen;
 
         audioStreamManager.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
@@ -1232,7 +1232,7 @@ describe('audioRendererChange', function () {
                 console.info(Tag + 'Stream for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.usage);
                 console.info(Tag + 'Flag ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags);
                 console.info(Tag + 'State for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererState);
-                var devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
+                let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
                     console.info(Tag + 'Id:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].id);
                     console.info(Tag + 'Type:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType);
@@ -1284,26 +1284,26 @@ describe('audioRendererChange', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_ON_RENDERER_CHANGE_1500', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SONIFICATION,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
-        var resultFlag = false;
+        let resultFlag = false;
 
-        var audioRen;
+        let audioRen;
 
         audioStreamManager.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
@@ -1314,7 +1314,7 @@ describe('audioRendererChange', function () {
                 console.info(Tag + 'Stream for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.usage);
                 console.info(Tag + 'Flag ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags);
                 console.info(Tag + 'State for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererState);
-                var devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
+                let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
                     console.info(Tag + 'Id:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].id);
                     console.info(Tag + 'Type:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType);
@@ -1365,26 +1365,26 @@ describe('audioRendererChange', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_ON_RENDERER_CHANGE_1600', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SONIFICATION,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
-        var resultFlag = false;
+        let resultFlag = false;
 
-        var audioRen;
+        let audioRen;
 
         audioStreamManager.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
@@ -1395,7 +1395,7 @@ describe('audioRendererChange', function () {
                 console.info(Tag + 'Stream for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.usage);
                 console.info(Tag + 'Flag ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags);
                 console.info(Tag + 'State for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererState);
-                var devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
+                let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
                     console.info(Tag + 'Id:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].id);
                     console.info(Tag + 'Type:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType);
@@ -1446,26 +1446,26 @@ describe('audioRendererChange', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_ON_RENDERER_CHANGE_1700', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SONIFICATION,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
-        var resultFlag = false;
+        let resultFlag = false;
 
-        var audioRen;
+        let audioRen;
 
         audioStreamManager.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
@@ -1476,9 +1476,9 @@ describe('audioRendererChange', function () {
                 console.info(Tag + 'Stream for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.usage);
                 console.info(Tag + 'Flag ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags);
                 console.info(Tag + 'State for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererState);
-                var clientUid = AudioRendererChangeInfoArray[i].clientUid;
-                var renFlags = AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags;
-                var devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
+                let clientUid = AudioRendererChangeInfoArray[i].clientUid;
+                let renFlags = AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags;
+                let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
                     console.info(Tag + 'Id:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].id);
                     console.info(Tag + 'Type:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType);
@@ -1530,26 +1530,26 @@ describe('audioRendererChange', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_ON_RENDERER_CHANGE_1800', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
-        var resultFlag = false;
+        let resultFlag = false;
 
-        var audioRen;
+        let audioRen;
 
         audioStreamManagerCB.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
@@ -1561,12 +1561,12 @@ describe('audioRendererChange', function () {
                 console.info(Tag + 'Flag ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags);
                 console.info(Tag + 'State for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererState);
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    var Id = AudioRendererChangeInfoArray[i].deviceDescriptors[j].id;
-                    var dType = AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType;
-                    var dRole = AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole;
-                    var sRate = AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0];
-                    var cCount = AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0];
-                    var cMask = AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks;
+                    let Id = AudioRendererChangeInfoArray[i].deviceDescriptors[j].id;
+                    let dType = AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType;
+                    let dRole = AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole;
+                    let sRate = AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0];
+                    let cCount = AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0];
+                    let cMask = AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks;
                     console.info(Tag + 'Id:' + i + ':' + Id);
                     console.info(Tag + 'Type:' + i + ':' + dType);
                     console.info(Tag + 'Role:' + i + ':' + dRole);
@@ -1617,26 +1617,26 @@ describe('audioRendererChange', function () {
      */
     it('SUB_MULTIMEDIA_OFF_RENDERER_CHANGE_0100', 2, async function (done) {
 
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_32000,
             channels: audio.AudioChannel.CHANNEL_1,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_U8,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
-        var audioRen;
+        let resultFlag = true;
+        let audioRen;
 
         audioStreamManager.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
@@ -1694,25 +1694,25 @@ describe('audioRendererChange', function () {
      */
     it('SUB_MULTIMEDIA_OFF_RENDERER_CHANGE_0200', 2, async function (done) {
 
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_96000,
             channels: audio.AudioChannel.CHANNEL_1,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_ASSISTANT,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
-        var resultFlag = true;
-        var audioRen;
+        let resultFlag = true;
+        let audioRen;
 
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -1777,25 +1777,25 @@ describe('audioRendererChange', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_OFF_RENDERER_CHANGE_0300', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
-        var resultFlag = true;
-        var audioRen;
+        let resultFlag = true;
+        let audioRen;
 
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -1867,26 +1867,26 @@ describe('audioRendererChange', function () {
      */
     it('SUB_MULTIMEDIA_OFF_RENDERER_CHANGE_0400', 2, async function (done) {
 
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_8000,
             channels: audio.AudioChannel.CHANNEL_1,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
             usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
-        var audioRen;
+        let resultFlag = true;
+        let audioRen;
 
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -1958,26 +1958,26 @@ describe('audioRendererChange', function () {
      */
     it('SUB_MULTIMEDIA_OFF_RENDERER_CHANGE_0500', 2, async function (done) {
 
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_8000,
             channels: audio.AudioChannel.CHANNEL_1,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
             usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
-        var audioRen;
+        let resultFlag = true;
+        let audioRen;
 
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -2056,26 +2056,26 @@ describe('audioRendererChange', function () {
      */
     it('SUB_MULTIMEDIA_OFF_RENDERER_CHANGE_0600', 2, async function (done) {
 
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_32000,
             channels: audio.AudioChannel.CHANNEL_1,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_U8,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
-        var audioRen;
+        let resultFlag = true;
+        let audioRen;
 
         audioStreamManager.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
@@ -2087,12 +2087,12 @@ describe('audioRendererChange', function () {
                 console.info(Tag + 'Flag ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags);
                 console.info(Tag + 'State for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererState);
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    var Id = AudioRendererChangeInfoArray[i].deviceDescriptors[j].id;
-                    var dType = AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType;
-                    var dRole = AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole;
-                    var sRate = AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0];
-                    var cCount = AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0];
-                    var cMask = AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks;
+                    let Id = AudioRendererChangeInfoArray[i].deviceDescriptors[j].id;
+                    let dType = AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType;
+                    let dRole = AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole;
+                    let sRate = AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0];
+                    let cCount = AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0];
+                    let cMask = AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks;
                     console.info(Tag + 'Id:' + i + ':' + Id);
                     console.info(Tag + 'Type:' + i + ':' + dType);
                     console.info(Tag + 'Role:' + i + ':' + dRole);
@@ -2140,26 +2140,26 @@ describe('audioRendererChange', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_GET_RENDERER_CHANGE_PROMISE_0100', 2, async function (done) {
-        var audioCap;
-        var AudioStreamInfo = {
+        let audioCap;
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = false;
+        let resultFlag = false;
         audioStreamManager.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
                 console.info(Tag + '## RendererChange on is called for ' + i + ' ##');
@@ -2202,7 +2202,7 @@ describe('audioRendererChange', function () {
                     console.info(Tag + 'Stream' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.usage);
                     console.info(Tag + '' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags);
                     console.info(Tag + 'State for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererState);
-                    var devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
+                    let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                     for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
                         console.info(Tag + 'Id:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].id);
                         console.info(Tag + 'Type:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType);
@@ -2248,27 +2248,27 @@ describe('audioRendererChange', function () {
      */
     it('SUB_MULTIMEDIA_GET_RENDERER_CHANGE_PROMISE_0200', 2, async function (done) {
 
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = false;
+        let resultFlag = false;
 
-        var audioCap;
+        let audioCap;
 
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioCap = data;
@@ -2320,7 +2320,7 @@ describe('audioRendererChange', function () {
                     console.info(Tag + 'Stream' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.usage);
                     console.info(Tag + '' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags);
                     console.info(Tag + 'State for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererState);
-                    var devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
+                    let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                     for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
                         console.info(Tag + 'Id:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].id);
                         console.info(Tag + 'Type:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType);
@@ -2367,27 +2367,27 @@ describe('audioRendererChange', function () {
      */
     it('SUB_MULTIMEDIA_GET_RENDERER_CHANGE_PROMISE_0300', 2, async function (done) {
 
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = false;
+        let resultFlag = false;
 
-        var audioCap;
+        let audioCap;
 
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioCap = data;
@@ -2446,7 +2446,7 @@ describe('audioRendererChange', function () {
                     console.info(Tag + 'Stream' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.usage);
                     console.info(Tag + '' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags);
                     console.info(Tag + 'State for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererState);
-                    var devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
+                    let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                     for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
                         console.info(Tag + 'Id:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].id);
                         console.info(Tag + 'Type:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType);
@@ -2493,27 +2493,27 @@ describe('audioRendererChange', function () {
      */
     it('SUB_MULTIMEDIA_GET_RENDERER_CHANGE_PROMISE_0400', 2, async function (done) {
 
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = false;
+        let resultFlag = false;
 
-        var audioRen;
+        let audioRen;
 
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -2572,7 +2572,7 @@ describe('audioRendererChange', function () {
                     console.info(Tag + 'Stream' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.usage);
                     console.info(Tag + '' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags);
                     console.info(Tag + 'State for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererState);
-                    var devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
+                    let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                     for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
                         console.info(Tag + 'Id:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].id);
                         console.info(Tag + 'Type:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType);
@@ -2623,26 +2623,26 @@ describe('audioRendererChange', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_GET_RENDERER_CHANGE_PROMISE_0500', 2, async function (done) {
-        var audioCap;
-        var AudioStreamInfo = {
+        let audioCap;
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = false;
+        let resultFlag = false;
         audioStreamManager.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
                 console.info(Tag + '## RendererChange on is called for ' + i + ' ##');
@@ -2686,12 +2686,12 @@ describe('audioRendererChange', function () {
                     console.info(Tag + '' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags);
                     console.info(Tag + 'State for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererState);
                     for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
-                        var Id = AudioRendererChangeInfoArray[i].deviceDescriptors[j].id;
-                        var dType = AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType;
-                        var dRole = AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole;
-                        var sRate = AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0];
-                        var cCount = AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0];
-                        var cMask = AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks;
+                        let Id = AudioRendererChangeInfoArray[i].deviceDescriptors[j].id;
+                        let dType = AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType;
+                        let dRole = AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole;
+                        let sRate = AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0];
+                        let cCount = AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0];
+                        let cMask = AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks;
                         console.info(Tag + 'Id:' + i + ':' + Id);
                         console.info(Tag + 'Type:' + i + ':' + dType);
                         console.info(Tag + 'Role:' + i + ':' + dRole);
@@ -2734,26 +2734,26 @@ describe('audioRendererChange', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_GET_RENDERER_CHANGE_CALLBACK_0100', 2, async function (done) {
-        var audioCap;
-        var AudioStreamInfo = {
+        let audioCap;
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = false;
+        let resultFlag = false;
         audioStreamManager.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
                 console.info(Tag + '## RendererChange on is called for ' + i + ' ##');
@@ -2802,7 +2802,7 @@ describe('audioRendererChange', function () {
                         console.info(Tag + 'Stream' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.usage);
                         console.info(Tag + '' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags);
                         console.info(Tag + 'State for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererState);
-                        var devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
+                        let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                         for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
                             console.info(Tag + 'Id:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].id);
                             console.info(Tag + 'Type:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType);
@@ -2848,27 +2848,27 @@ describe('audioRendererChange', function () {
      */
     it('SUB_MULTIMEDIA_GET_RENDERER_CHANGE_CALLBACK_0200', 2, async function (done) {
 
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = false;
+        let resultFlag = false;
 
-        var audioCap;
+        let audioCap;
 
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioCap = data;
@@ -2926,7 +2926,7 @@ describe('audioRendererChange', function () {
                         console.info(Tag + 'Stream' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.usage);
                         console.info(Tag + '' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags);
                         console.info(Tag + 'State for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererState);
-                        var devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
+                        let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                         for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
                             console.info(Tag + 'Id:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].id);
                             console.info(Tag + 'Type:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType);
@@ -2972,27 +2972,27 @@ describe('audioRendererChange', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_GET_RENDERER_CHANGE_CALLBACK_0300', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = false;
+        let resultFlag = false;
 
-        var audioCap;
+        let audioCap;
 
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioCap = data;
@@ -3057,7 +3057,7 @@ describe('audioRendererChange', function () {
                         console.info(Tag + 'Stream' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.usage);
                         console.info(Tag + '' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags);
                         console.info(Tag + 'State for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererState);
-                        var devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
+                        let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                         for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
                             console.info(Tag + 'Id:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].id);
                             console.info(Tag + 'Type:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType);
@@ -3103,27 +3103,27 @@ describe('audioRendererChange', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_GET_RENDERER_CHANGE_CALLBACK_0400', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = false;
+        let resultFlag = false;
 
-        var audioRen;
+        let audioRen;
 
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -3188,7 +3188,7 @@ describe('audioRendererChange', function () {
                         console.info(Tag + 'Stream' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.usage);
                         console.info(Tag + '' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags);
                         console.info(Tag + 'State for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererState);
-                        var devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
+                        let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                         for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
                             console.info(Tag + 'Id:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].id);
                             console.info(Tag + 'Type:' + i + ':' + AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType);
@@ -3239,26 +3239,26 @@ describe('audioRendererChange', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_GET_RENDERER_CHANGE_CALLBACK_0500', 2, async function (done) {
-        var audioCap;
-        var AudioStreamInfo = {
+        let audioCap;
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = false;
+        let resultFlag = false;
         audioStreamManager.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
                 console.info(Tag + '## RendererChange on is called for ' + i + ' ##');
@@ -3308,12 +3308,12 @@ describe('audioRendererChange', function () {
                         console.info(Tag + '' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags);
                         console.info(Tag + 'State for ' + i + ' is:' + AudioRendererChangeInfoArray[i].rendererState);
                         for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
-                            var Id = AudioRendererChangeInfoArray[i].deviceDescriptors[j].id;
-                            var dType = AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType;
-                            var dRole = AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole;
-                            var sRate = AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0];
-                            var cCount = AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0];
-                            var cMask = AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks;
+                            let Id = AudioRendererChangeInfoArray[i].deviceDescriptors[j].id;
+                            let dType = AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType;
+                            let dRole = AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole;
+                            let sRate = AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0];
+                            let cCount = AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0];
+                            let cMask = AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks;
                             console.info(Tag + 'Id:' + i + ':' + Id);
                             console.info(Tag + 'Type:' + i + ':' + dType);
                             console.info(Tag + 'Role:' + i + ':' + dRole);

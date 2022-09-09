@@ -18,9 +18,9 @@ import * as audioTestBase from '../../../../../AudioTestBase'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 
 describe('audioCapturerChange', function () {
-    var audioStreamManager;
-    var audioStreamManagerCB;
-    var Tag = "AFCapLog : ";
+    let audioStreamManager;
+    let audioStreamManagerCB;
+    let Tag = "AFCapLog : ";
 
     const audioManager = audio.getAudioManager();
     console.info(Tag + 'Create AudioManger Object JS Framework');
@@ -81,25 +81,25 @@ describe('audioCapturerChange', function () {
      *@tc.level     : Level 1
      */
     it('SUB_MULTIMEDIA_AUDIO_ON_CAPTURER_CHANGE_0100', 1, async function (done) {
-        var audioCap;
-        var AudioStreamInfo = {
+        let audioCap;
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
 
-        var resultFlag = false;
+        let resultFlag = false;
         audioStreamManager.on('audioCapturerChange', (AudioCapturerChangeInfoArray) => {
             for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
                 console.info(Tag + ' ## CapChange on is called for element ' + i + ' ##');
@@ -108,7 +108,7 @@ describe('audioCapturerChange', function () {
                 console.info(Tag + 'Src for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.source);
                 console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
                 console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
-                var devDescriptor = AudioCapturerChangeInfoArray[i].deviceDescriptors;
+                let devDescriptor = AudioCapturerChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
                     console.info(Tag + 'Id:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id);
                     console.info(Tag + 'Type:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType);
@@ -160,26 +160,26 @@ describe('audioCapturerChange', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_ON_CAPTURER_CHANGE_0200', 2, async function (done) {
 
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
 
-        var resultFlag = false;
+        let resultFlag = false;
 
-        var audioCap;
+        let audioCap;
 
         await audio.createAudioCapturer(AudioCapturerOptions).then(async function (data) {
             audioCap = data;
@@ -198,7 +198,7 @@ describe('audioCapturerChange', function () {
                 console.info(Tag + 'Src for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.source);
                 console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
                 console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
-                var devDescriptor = AudioCapturerChangeInfoArray[i].deviceDescriptors;
+                let devDescriptor = AudioCapturerChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
                     console.info(Tag + 'Id:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id);
                     console.info(Tag + 'Type:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType);
@@ -249,26 +249,26 @@ describe('audioCapturerChange', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_ON_CAPTURER_CHANGE_0300', 2, async function (done) {
 
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
 
-        var resultFlag = false;
+        let resultFlag = false;
 
-        var audioCap;
+        let audioCap;
 
         await audio.createAudioCapturer(AudioCapturerOptions).then(async function (data) {
             audioCap = data;
@@ -293,7 +293,7 @@ describe('audioCapturerChange', function () {
                 console.info(Tag + 'Src for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.source);
                 console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
                 console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
-                var devDescriptor = AudioCapturerChangeInfoArray[i].deviceDescriptors;
+                let devDescriptor = AudioCapturerChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
                     console.info(Tag + 'Id:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id);
                     console.info(Tag + 'Type:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType);
@@ -345,26 +345,26 @@ describe('audioCapturerChange', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_ON_CAPTURER_CHANGE_0400', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
 
-        var resultFlag = false;
+        let resultFlag = false;
 
-        var audioCap;
+        let audioCap;
 
         await audio.createAudioCapturer(AudioCapturerOptions).then(async function (data) {
             audioCap = data;
@@ -395,7 +395,7 @@ describe('audioCapturerChange', function () {
                 console.info(Tag + 'Src for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.source);
                 console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
                 console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
-                var devDescriptor = AudioCapturerChangeInfoArray[i].deviceDescriptors;
+                let devDescriptor = AudioCapturerChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
                     console.info(Tag + 'Id:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id);
                     console.info(Tag + 'Type:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType);
@@ -440,26 +440,26 @@ describe('audioCapturerChange', function () {
      *@tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_ON_CAPTURER_CHANGE_0500', 0, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
 
-        var resultFlag = false;
+        let resultFlag = false;
 
-        var audioCap;
+        let audioCap;
 
         audioStreamManager.on('audioCapturerChange', (AudioCapturerChangeInfoArray) => {
             for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
@@ -469,7 +469,7 @@ describe('audioCapturerChange', function () {
                 console.info(Tag + 'Src for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.source);
                 console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
                 console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
-                var devDescriptor = AudioCapturerChangeInfoArray[i].deviceDescriptors;
+                let devDescriptor = AudioCapturerChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
                     console.info(Tag + 'Id:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id);
                     console.info(Tag + 'Type:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType);
@@ -521,26 +521,26 @@ describe('audioCapturerChange', function () {
      *@tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_ON_CAPTURER_CHANGE_0600', 0, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_VOICE_COMMUNICATION,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
 
-        var resultFlag = false;
+        let resultFlag = false;
 
-        var audioCap;
+        let audioCap;
 
         audioStreamManagerCB.on('audioCapturerChange', (AudioCapturerChangeInfoArray) => {
             for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
@@ -550,7 +550,7 @@ describe('audioCapturerChange', function () {
                 console.info(Tag + 'Src for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.source);
                 console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
                 console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
-                var devDescriptor = AudioCapturerChangeInfoArray[i].deviceDescriptors;
+                let devDescriptor = AudioCapturerChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
                     console.info(Tag + 'Id:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id);
                     console.info(Tag + 'Type:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType);
@@ -603,25 +603,25 @@ describe('audioCapturerChange', function () {
      *@tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_ON_CAPTURER_CHANGE_0700', 0, async function (done) {
-        var audioCap;
-        var AudioStreamInfo = {
+        let audioCap;
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
 
-        var resultFlag = false;
+        let resultFlag = false;
         audioStreamManager.on('audioCapturerChange', (AudioCapturerChangeInfoArray) => {
             for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
                 console.info(Tag + ' ## CapChange on is called for element ' + i + ' ##');
@@ -630,7 +630,7 @@ describe('audioCapturerChange', function () {
                 console.info(Tag + 'Src for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.source);
                 console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
                 console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
-                var devDescriptor = AudioCapturerChangeInfoArray[i].deviceDescriptors;
+                let devDescriptor = AudioCapturerChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
                     console.info(Tag + 'Id:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id);
                     console.info(Tag + 'Type:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType);
@@ -682,25 +682,25 @@ describe('audioCapturerChange', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_ON_CAPTURER_CHANGE_0800', 2, async function (done) {
-        var audioCap;
-        var AudioStreamInfo = {
+        let audioCap;
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
 
-        var resultFlag = false;
+        let resultFlag = false;
         audioStreamManager.on('audioCapturerChange', (AudioCapturerChangeInfoArray) => {
             for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
                 console.info(Tag + ' ## CapChange on is called for element ' + i + ' ##');
@@ -709,9 +709,9 @@ describe('audioCapturerChange', function () {
                 console.info(Tag + 'Src for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.source);
                 console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
                 console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
-                var clientUid = AudioCapturerChangeInfoArray[i].clientUid;
-                var capFlags = AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags;
-                var devDescriptor = AudioCapturerChangeInfoArray[i].deviceDescriptors;
+                let clientUid = AudioCapturerChangeInfoArray[i].clientUid;
+                let capFlags = AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags;
+                let devDescriptor = AudioCapturerChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
                     console.info(Tag + 'Id:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id);
                     console.info(Tag + 'Type:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType);
@@ -762,25 +762,25 @@ describe('audioCapturerChange', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_ON_CAPTURER_CHANGE_0900', 2, async function (done) {
-        var audioCap;
-        var AudioStreamInfo = {
+        let audioCap;
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
 
-        var resultFlag = false;
+        let resultFlag = false;
         audioStreamManager.on('audioCapturerChange', (AudioCapturerChangeInfoArray) => {
             for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
                 console.info(Tag + ' ## CapChange on is called for element ' + i + ' ##');
@@ -790,12 +790,12 @@ describe('audioCapturerChange', function () {
                 console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
                 console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
                 for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    var Id = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id;
-                    var dType = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType;
-                    var dRole = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceRole;
-                    var sRate = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0];
-                    var cCount = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0];
-                    var cMask = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks;
+                    let Id = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id;
+                    let dType = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType;
+                    let dRole = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceRole;
+                    let sRate = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0];
+                    let cCount = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0];
+                    let cMask = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks;
                     console.info(Tag + 'Id:' + i + ':' + Id);
                     console.info(Tag + 'Type:' + i + ':' + dType);
                     console.info(Tag + 'Role:' + i + ':' + dRole);
@@ -846,26 +846,26 @@ describe('audioCapturerChange', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_OFF_CAPTURER_CHANGE_0100', 1, async function (done) {
 
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
 
-        var audioCap;
+        let audioCap;
 
         audioStreamManager.on('audioCapturerChange', (AudioCapturerChangeInfoArray) => {
             for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
@@ -923,25 +923,25 @@ describe('audioCapturerChange', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_OFF_CAPTURER_CHANGE_0200', 1, async function (done) {
 
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
 
-        var resultFlag = true;
-        var audioCap;
+        let resultFlag = true;
+        let audioCap;
 
         await audio.createAudioCapturer(AudioCapturerOptions).then(async function (data) {
             audioCap = data;
@@ -1007,25 +1007,25 @@ describe('audioCapturerChange', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_OFF_CAPTURER_CHANGE_0300', 2, async function (done) {
 
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
 
-        var resultFlag = true;
-        var audioCap;
+        let resultFlag = true;
+        let audioCap;
 
         await audio.createAudioCapturer(AudioCapturerOptions).then(async function (data) {
             audioCap = data;
@@ -1098,25 +1098,25 @@ describe('audioCapturerChange', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_OFF_CAPTURER_CHANGE_0400', 2, async function (done) {
 
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
 
-        var resultFlag = true;
-        var audioCap;
+        let resultFlag = true;
+        let audioCap;
 
         await audio.createAudioCapturer(AudioCapturerOptions).then(async function (data) {
             audioCap = data;
@@ -1188,26 +1188,26 @@ describe('audioCapturerChange', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_OFF_CAPTURER_CHANGE_0500', 2, async function (done) {
 
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
 
-        var audioCap;
+        let audioCap;
 
         audioStreamManager.on('audioCapturerChange', (AudioCapturerChangeInfoArray) => {
             for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
@@ -1218,12 +1218,12 @@ describe('audioCapturerChange', function () {
                 console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
                 console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
                 for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    var Id = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id;
-                    var dType = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType;
-                    var dRole = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceRole;
-                    var sRate = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0];
-                    var cCount = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0];
-                    var cMask = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks;
+                    let Id = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id;
+                    let dType = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType;
+                    let dRole = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceRole;
+                    let sRate = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0];
+                    let cCount = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0];
+                    let cMask = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks;
                     console.info(Tag + 'Id:' + i + ':' + Id);
                     console.info(Tag + 'Type:' + i + ':' + dType);
                     console.info(Tag + 'Role:' + i + ':' + dRole);
@@ -1272,25 +1272,25 @@ describe('audioCapturerChange', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_AUDIO_GET_CAPTURER_CHANGE_PROMISE_0100', 2, async function (done) {
-        var audioCap;
-        var AudioStreamInfo = {
+        let audioCap;
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
 
-        var resultFlag = false;
+        let resultFlag = false;
         audioStreamManagerCB.on('audioCapturerChange', (AudioCapturerChangeInfoArray) => {
             for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
                 console.info(Tag + ' ## CapChange on is called for element ' + i + ' ##');
@@ -1331,7 +1331,7 @@ describe('audioCapturerChange', function () {
                     console.info(Tag + 'Src for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.source);
                     console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
                     console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
-                    var devDescriptor = AudioCapturerChangeInfoArray[i].deviceDescriptors;
+                    let devDescriptor = AudioCapturerChangeInfoArray[i].deviceDescriptors;
                     for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
                         console.info(Tag + 'Id:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id);
                         console.info(Tag + 'Type:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType);
@@ -1377,26 +1377,26 @@ describe('audioCapturerChange', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_GET_CAPTURER_CHANGE_PROMISE_0200', 2, async function (done) {
 
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
 
-        var resultFlag = false;
+        let resultFlag = false;
 
-        var audioCap;
+        let audioCap;
 
         await audio.createAudioCapturer(AudioCapturerOptions).then(async function (data) {
             audioCap = data;
@@ -1446,7 +1446,7 @@ describe('audioCapturerChange', function () {
                     console.info(Tag + 'Src for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.source);
                     console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
                     console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
-                    var devDescriptor = AudioCapturerChangeInfoArray[i].deviceDescriptors;
+                    let devDescriptor = AudioCapturerChangeInfoArray[i].deviceDescriptors;
                     for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
                         console.info(Tag + 'Id:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id);
                         console.info(Tag + 'Type:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType);
@@ -1493,26 +1493,26 @@ describe('audioCapturerChange', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_GET_CAPTURER_CHANGE_PROMISE_0300', 2, async function (done) {
 
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
 
-        var resultFlag = false;
+        let resultFlag = false;
 
-        var audioCap;
+        let audioCap;
 
         await audio.createAudioCapturer(AudioCapturerOptions).then(async function (data) {
             audioCap = data;
@@ -1569,7 +1569,7 @@ describe('audioCapturerChange', function () {
                     console.info(Tag + 'Src for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.source);
                     console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
                     console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
-                    var devDescriptor = AudioCapturerChangeInfoArray[i].deviceDescriptors;
+                    let devDescriptor = AudioCapturerChangeInfoArray[i].deviceDescriptors;
                     for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
                         console.info(Tag + 'Id:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id);
                         console.info(Tag + 'Type:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType);
@@ -1615,25 +1615,25 @@ describe('audioCapturerChange', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_GET_CAPTURER_CHANGE_PROMISE_0400', 2, async function (done) {
-        var audioCap;
-        var AudioStreamInfo = {
+        let audioCap;
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
 
-        var resultFlag = false;
+        let resultFlag = false;
         audioStreamManagerCB.on('audioCapturerChange', (AudioCapturerChangeInfoArray) => {
             for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
                 console.info(Tag + ' ## CapChange on is called for element ' + i + ' ##');
@@ -1675,12 +1675,12 @@ describe('audioCapturerChange', function () {
                     console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
                     console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
                     for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
-                        var Id = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id;
-                        var dType = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType;
-                        var dRole = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceRole;
-                        var sRate = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0];
-                        var cCount = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0];
-                        var cMask = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks;
+                        let Id = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id;
+                        let dType = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType;
+                        let dRole = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceRole;
+                        let sRate = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0];
+                        let cCount = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0];
+                        let cMask = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks;
                         console.info(Tag + 'Id:' + i + ':' + Id);
                         console.info(Tag + 'Type:' + i + ':' + dType);
                         console.info(Tag + 'Role:' + i + ':' + dRole);
@@ -1723,25 +1723,25 @@ describe('audioCapturerChange', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_GET_CAPTURER_CHANGE_CALLBACK_0100', 2, async function (done) {
-        var audioCap;
-        var AudioStreamInfo = {
+        let audioCap;
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
 
-        var resultFlag = false;
+        let resultFlag = false;
         audioStreamManager.on('audioCapturerChange', (AudioCapturerChangeInfoArray) => {
             for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
                 console.info(Tag + ' ## CapChange on is called for element ' + i + ' ##');
@@ -1788,7 +1788,7 @@ describe('audioCapturerChange', function () {
                         console.info(Tag + 'Src for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.source);
                         console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
                         console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
-                        var devDescriptor = AudioCapturerChangeInfoArray[i].deviceDescriptors;
+                        let devDescriptor = AudioCapturerChangeInfoArray[i].deviceDescriptors;
                         for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
                             console.info(Tag + 'Id:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id);
                             console.info(Tag + 'Type:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType);
@@ -1834,26 +1834,26 @@ describe('audioCapturerChange', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_GET_CAPTURER_CHANGE_CALLBACK_0200', 2, async function (done) {
 
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
 
-        var resultFlag = false;
+        let resultFlag = false;
 
-        var audioCap;
+        let audioCap;
 
         await audio.createAudioCapturer(AudioCapturerOptions).then(async function (data) {
             audioCap = data;
@@ -1909,7 +1909,7 @@ describe('audioCapturerChange', function () {
                         console.info(Tag + 'Src for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.source);
                         console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
                         console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
-                        var devDescriptor = AudioCapturerChangeInfoArray[i].deviceDescriptors;
+                        let devDescriptor = AudioCapturerChangeInfoArray[i].deviceDescriptors;
                         for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
                             console.info(Tag + 'Id:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id);
                             console.info(Tag + 'Type:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType);
@@ -1956,26 +1956,26 @@ describe('audioCapturerChange', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_GET_CAPTURER_CHANGE_CALLBACK_0300', 2, async function (done) {
 
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
 
-        var resultFlag = false;
+        let resultFlag = false;
 
-        var audioCap;
+        let audioCap;
 
         await audio.createAudioCapturer(AudioCapturerOptions).then(async function (data) {
             audioCap = data;
@@ -2038,7 +2038,7 @@ describe('audioCapturerChange', function () {
                         console.info(Tag + 'Src for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.source);
                         console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
                         console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
-                        var devDescriptor = AudioCapturerChangeInfoArray[i].deviceDescriptors;
+                        let devDescriptor = AudioCapturerChangeInfoArray[i].deviceDescriptors;
                         for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
                             console.info(Tag + 'Id:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id);
                             console.info(Tag + 'Type:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType);
@@ -2084,25 +2084,25 @@ describe('audioCapturerChange', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_GET_CAPTURER_CHANGE_CALLBACK_0400', 2, async function (done) {
-        var audioCap;
-        var AudioStreamInfo = {
+        let audioCap;
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioCapturerInfo = {
+        let AudioCapturerInfo = {
             source: audio.SourceType.SOURCE_TYPE_MIC,
             capturerFlags: 0
         }
 
-        var AudioCapturerOptions = {
+        let AudioCapturerOptions = {
             streamInfo: AudioStreamInfo,
             capturerInfo: AudioCapturerInfo
         }
 
-        var resultFlag = false;
+        let resultFlag = false;
         audioStreamManager.on('audioCapturerChange', (AudioCapturerChangeInfoArray) => {
             for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
                 console.info(Tag + ' ## CapChange on is called for element ' + i + ' ##');
@@ -2150,12 +2150,12 @@ describe('audioCapturerChange', function () {
                         console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
                         console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
                         for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
-                            var Id = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id;
-                            var dType = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType;
-                            var dRole = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceRole;
-                            var sRate = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0];
-                            var cCount = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0];
-                            var cMask = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks;
+                            let Id = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id;
+                            let dType = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType;
+                            let dRole = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceRole;
+                            let sRate = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0];
+                            let cCount = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0];
+                            let cMask = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks;
                             console.info(Tag + 'Id:' + i + ':' + Id);
                             console.info(Tag + 'Type:' + i + ':' + dType);
                             console.info(Tag + 'Role:' + i + ':' + dRole);

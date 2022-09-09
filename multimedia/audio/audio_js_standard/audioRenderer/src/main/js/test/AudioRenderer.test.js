@@ -23,7 +23,7 @@ describe('audioRenderer', function () {
 
     let fdRead;
     let readPath;
-    const audioManager = audio.getAudioManager();
+    const AUDIOMANAGER = audio.getAudioManager();
     console.info('AudioFrameworkRenderLog: Create AudioManger Object JS Framework');
     let fdPath;
     let filePath;
@@ -82,10 +82,10 @@ describe('audioRenderer', function () {
     }
 
     async function playbackPromise(AudioRendererOptions, pathName, AudioScene) {
-        var resultFlag = 'new';
+        let resultFlag = 'new';
         console.info('AudioFrameworkRenderLog: Promise : Audio Playback Function');
 
-        var audioRen;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -154,7 +154,7 @@ describe('audioRenderer', function () {
 
         console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-        var bufferSize;
+        let bufferSize;
         await audioRen.getBufferSize().then(async function (data) {
             console.info('AudioFrameworkRenderLog: getBufferSize :SUCCESS ' + data);
             bufferSize = data;
@@ -182,7 +182,7 @@ describe('audioRenderer', function () {
             console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' + rlen);
             await audioRen.write(buf);
             if (rlen > (totalSize / 2)) {
-                await audioManager.getAudioScene().then(async function (data) {
+                await AUDIOMANAGER.getAudioScene().then(async function (data) {
                     console.info('AudioFrameworkRenderLog:AudioFrameworkAudioScene: getAudioScene : Value : ' + data);
                 }).catch((err) => {
                     console.info('AudioFrameworkRenderLog:AudioFrameworkAudioScene: getAudioScene : ERROR : ' + err.message);
@@ -231,10 +231,10 @@ describe('audioRenderer', function () {
     }
 
     async function playbackPromise_93(AudioRendererOptions, pathName, AudioScene) {
-        var resultFlag = true;
+        let resultFlag = true;
         console.info('AudioFrameworkRenderLog: Promise : Audio Playback Function');
 
-        var audioRen;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -303,7 +303,7 @@ describe('audioRenderer', function () {
 
         console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-        var bufferSize = await audioRen.getBufferSize();
+        let bufferSize = await audioRen.getBufferSize();
         console.info('AudioFrameworkRenderLog: buffer size: ' + bufferSize);
 
         let ss = fileio.fdopenStreamSync(fdRead, 'r');
@@ -323,7 +323,7 @@ describe('audioRenderer', function () {
         }
         console.info('AudioFrameworkRenderLog: Renderer after read');
 
-        //var gettime = audioTimeMiddle-audioTimeStart;
+        //let gettime = audioTimeMiddle-audioTimeStart;
         if (audioTimeStart != 0) {
             console.info('AudioFrameworkRenderLog: getAudioTime : PASS : ' + audioTimeStart);
         }
@@ -361,10 +361,10 @@ describe('audioRenderer', function () {
     }
 
     async function playbackPromise_94(AudioRendererOptions, pathName, AudioScene) {
-        var resultFlag = true;
+        let resultFlag = true;
         console.info('AudioFrameworkRenderLog: Promise : Audio Playback Function');
 
-        var audioRen;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -423,7 +423,7 @@ describe('audioRenderer', function () {
         //console.info('AudioFrameworkRenderLog: Current Time in NANOSeconds : '+audioTime);
         console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-        var bufferSize = await audioRen.getBufferSize();
+        let bufferSize = await audioRen.getBufferSize();
         console.info('AudioFrameworkRenderLog: buffer size: ' + bufferSize);
 
         let ss = fileio.fdopenStreamSync(fdRead, 'r');
@@ -435,7 +435,7 @@ describe('audioRenderer', function () {
         totalSize = totalSize - 44;
         console.info('AudioFrameworkRenderLog: File size : Removing header: ' + totalSize);
         let rlen = 0;
-        var gettime = 0;
+        let gettime = 0;
         while (rlen < totalSize / 4) {
             let buf = new ArrayBuffer(bufferSize);
             rlen += ss.readSync(buf);
@@ -488,10 +488,10 @@ describe('audioRenderer', function () {
     }
 
     async function playbackPromise_95(AudioRendererOptions, pathName, AudioScene) {
-        var resultFlag = true;
+        let resultFlag = true;
         console.info('AudioFrameworkRenderLog: Promise : Audio Playback Function');
 
-        var audioRen;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -547,7 +547,7 @@ describe('audioRenderer', function () {
 
         console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-        var bufferSize = await audioRen.getBufferSize();
+        let bufferSize = await audioRen.getBufferSize();
         console.info('AudioFrameworkRenderLog: buffer size: ' + bufferSize);
 
         let ss = fileio.fdopenStreamSync(fdRead, 'r');
@@ -613,8 +613,8 @@ describe('audioRenderer', function () {
     }
 
     async function playbackPromise_102(AudioRendererOptions, pathName) {
-        var resultFlag = false;
-        var audioRen;
+        let resultFlag = false;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -651,7 +651,7 @@ describe('audioRenderer', function () {
 
         console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-        var bufferSize;
+        let bufferSize;
         await audioRen.getBufferSize().then(async function (data) {
             console.info('AudioFrameworkRenderLog: getBufferSize :SUCCESS ' + data);
             bufferSize = data;
@@ -707,8 +707,8 @@ describe('audioRenderer', function () {
     }
 
     async function playbackPromise_103(AudioRendererOptions, pathName) {
-        var resultFlag = false;
-        var audioRen;
+        let resultFlag = false;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -749,7 +749,7 @@ describe('audioRenderer', function () {
 
         console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-        var bufferSize;
+        let bufferSize;
         await audioRen.getBufferSize().then(async function (data) {
             console.info('AudioFrameworkRenderLog: getBufferSize :SUCCESS ' + data);
             bufferSize = data;
@@ -802,8 +802,8 @@ describe('audioRenderer', function () {
     }
 
     async function playbackPromise_104(AudioRendererOptions, pathName) {
-        var resultFlag = false;
-        var audioRen;
+        let resultFlag = false;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -844,7 +844,7 @@ describe('audioRenderer', function () {
 
         console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-        var bufferSize;
+        let bufferSize;
         await audioRen.getBufferSize().then(async function (data) {
             console.info('AudioFrameworkRenderLog: getBufferSize :SUCCESS ' + data);
             bufferSize = data;
@@ -897,8 +897,8 @@ describe('audioRenderer', function () {
     }
 
     async function playbackPromise_105(AudioRendererOptions, pathName) {
-        var resultFlag = false;
-        var audioRen;
+        let resultFlag = false;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -936,7 +936,7 @@ describe('audioRenderer', function () {
 
         console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-        var bufferSize;
+        let bufferSize;
         await audioRen.getBufferSize().then(async function (data) {
             console.info('AudioFrameworkRenderLog: getBufferSize :SUCCESS ' + data);
             bufferSize = data;
@@ -989,8 +989,8 @@ describe('audioRenderer', function () {
     }
 
     async function playbackPromise_106(AudioRendererOptions, pathName) {
-        var resultFlag = false;
-        var audioRen;
+        let resultFlag = false;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -1034,7 +1034,7 @@ describe('audioRenderer', function () {
 
         console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-        var bufferSize;
+        let bufferSize;
         await audioRen.getBufferSize().then(async function (data) {
             console.info('AudioFrameworkRenderLog: getBufferSize :SUCCESS ' + data);
             bufferSize = data;
@@ -1087,8 +1087,8 @@ describe('audioRenderer', function () {
     }
 
     async function playbackPromise_107(AudioRendererOptions, pathName) {
-        var resultFlag = false;
-        var audioRen;
+        let resultFlag = false;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -1129,7 +1129,7 @@ describe('audioRenderer', function () {
 
         console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-        var bufferSize;
+        let bufferSize;
         await audioRen.getBufferSize().then(async function (data) {
             console.info('AudioFrameworkRenderLog: getBufferSize :SUCCESS ' + data);
             bufferSize = data;
@@ -1182,10 +1182,10 @@ describe('audioRenderer', function () {
     }
 
     async function playbackPromise_113(AudioRendererOptions, pathName) {
-        var resultFlag = true;
+        let resultFlag = true;
         console.info('AudioFrameworkRenderLog: Promise : Audio Playback Function');
 
-        var audioRen;
+        let audioRen;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
             console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
@@ -1227,7 +1227,7 @@ describe('audioRenderer', function () {
 
         console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-        var bufferSize = await audioRen.getBufferSize();
+        let bufferSize = await audioRen.getBufferSize();
         console.info('AudioFrameworkRenderLog: buffer size: ' + bufferSize);
 
         let ss = fileio.fdopenStreamSync(fdRead, 'r');
@@ -1245,7 +1245,7 @@ describe('audioRenderer', function () {
             console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' + rlen);
             await audioRen.write(buf);
             if (rlen > (totalSize / 8)) {
-                await audioManager.getAudioScene().then(async function (data) {
+                await AUDIOMANAGER.getAudioScene().then(async function (data) {
                     console.info('AudioFrameworkAudioScene: getAudioScene : Value : ' + data);
                 }).catch((err) => {
                     console.info('AudioFrameworkAudioScene: getAudioScene : ERROR : ' + err.message);
@@ -1311,11 +1311,11 @@ describe('audioRenderer', function () {
 
     async function playbackCB(AudioRendererOptions, pathName) {
 
-        var resultFlag = 'new';
+        let resultFlag = 'new';
 
         console.info('AudioFrameworkRenderLog: CALLBACK : Audio Playback Function');
 
-        var audioRen;
+        let audioRen;
 
         audio.createAudioRenderer(AudioRendererOptions, (err, data) => {
             if (err) {
@@ -1356,7 +1356,7 @@ describe('audioRenderer', function () {
         }
         console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-        var samplingRate;
+        let samplingRate;
         audioRen.getStreamInfo(async (err, audioParamsGet) => {
             await sleep(100);
             if (err) {
@@ -1396,7 +1396,7 @@ describe('audioRenderer', function () {
             return resultFlag;
         }
 
-        var bufferSize;
+        let bufferSize;
         await audioRen.getBufferSize((err, data) => {
             if (err) {
                 console.info('AudioFrameworkRenderLog: getBufferSize :ERROR : ' + err.message);
@@ -1425,8 +1425,8 @@ describe('audioRenderer', function () {
         let rlen = 0;
         console.info('AudioFrameworkRenderLog: File size : Removing header: ' + totalSize);
         await sleep(100);
-        //     var waitTime = (totalSize/88200);
-        var waitTime;
+        //     let waitTime = (totalSize/88200);
+        let waitTime;
         switch (samplingRate) {
             case 44100:
                 waitTime = 45;
@@ -1548,27 +1548,27 @@ describe('audioRenderer', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_0100', 2, async function (done) {
 
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_1,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
         readPath = 'StarWars10s-1C-44100-2SW.wav'
         await getFdRead(readPath, done);
-        var resultFlag = await playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        let resultFlag = await playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
@@ -1586,27 +1586,27 @@ describe('audioRenderer', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_0200', 2, async function (done) {
 
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_24000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S24LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
         readPath = 'StarWars10s-2C-24000-3SW.wav'
         await getFdRead(readPath, done);
-        var resultFlag = await playbackPromise_93(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        let resultFlag = await playbackPromise_93(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100)
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
@@ -1625,27 +1625,27 @@ describe('audioRenderer', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_0300', 2, async function (done) {
 
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_24000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S24LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
         readPath = 'StarWars10s-2C-24000-3SW.wav'
         await getFdRead(readPath, done);
-        var resultFlag = await playbackPromise_94(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        let resultFlag = await playbackPromise_94(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100)
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
@@ -1663,27 +1663,27 @@ describe('audioRenderer', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_0400', 2, async function (done) {
 
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_24000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S24LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
         readPath = 'StarWars10s-2C-24000-3SW.wav'
         await getFdRead(readPath, done);
-        var resultFlag = await playbackPromise_95(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        let resultFlag = await playbackPromise_95(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100)
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
@@ -1700,28 +1700,28 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_0500', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        //var fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
+        //let fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
         readPath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readPath, done);
-        var resultFlag = await playbackPromise_102(AudioRendererOptions, filePath);
+        let resultFlag = await playbackPromise_102(AudioRendererOptions, filePath);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
@@ -1739,27 +1739,27 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_0600', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
-        //var fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
+        //let fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
         readPath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readPath, done);
-        var resultFlag = await playbackPromise_103(AudioRendererOptions, filePath);
+        let resultFlag = await playbackPromise_103(AudioRendererOptions, filePath);
         await sleep(100)
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
@@ -1777,28 +1777,28 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_0700', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        //var fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
+        //let fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
         readPath = 'StarWars10s-2C-48000-4SW.wav';
         await getFdRead(readPath, done);
-        var resultFlag = await playbackPromise_104(AudioRendererOptions, filePath);
+        let resultFlag = await playbackPromise_104(AudioRendererOptions, filePath);
         await sleep(100)
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
@@ -1816,26 +1816,26 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_0800', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
         readPath = 'StarWars10s-2C-48000-4SW.wav';
         await getFdRead(readPath, done);
-        var resultFlag = await playbackPromise_105(AudioRendererOptions, filePath);
+        let resultFlag = await playbackPromise_105(AudioRendererOptions, filePath);
         await sleep(100)
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
@@ -1853,27 +1853,27 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_0900', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
-        //var fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
+        //let fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
         readPath = 'StarWars10s-2C-48000-4SW.wav';
         await getFdRead(readPath, done);
-        var resultFlag = await playbackPromise_106(AudioRendererOptions, filePath);
+        let resultFlag = await playbackPromise_106(AudioRendererOptions, filePath);
         await sleep(100)
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
@@ -1891,28 +1891,28 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_1000', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        //var fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
+        //let fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
         readPath = 'StarWars10s-2C-48000-4SW.wav';
         await getFdRead(readPath, done);
-        var resultFlag = await playbackPromise_107(AudioRendererOptions, filePath);
+        let resultFlag = await playbackPromise_107(AudioRendererOptions, filePath);
         await sleep(100)
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
@@ -1929,27 +1929,27 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_1100', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_8000,
             channels: audio.AudioChannel.CHANNEL_1,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
         readPath = 'StarWars10s-1C-8000-2SW.wav'
         await getFdRead(readPath, done);
-        var resultFlag = await playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        let resultFlag = await playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
 
@@ -1967,27 +1967,27 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_1200', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_32000,
             channels: audio.AudioChannel.CHANNEL_1,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_U8,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
         readPath = 'StarWars10s-1C-32000-1SW.wav'
         await getFdRead(readPath, done);
-        var resultFlag = await playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        let resultFlag = await playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
 
@@ -2005,27 +2005,27 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_1300', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_64000,
             channels: audio.AudioChannel.CHANNEL_1,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S24LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
         readPath = 'StarWars10s-1C-64000-3SW.wav'
         await getFdRead(readPath, done);
-        var resultFlag = await playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        let resultFlag = await playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
@@ -2042,27 +2042,27 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_1400', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_96000,
             channels: audio.AudioChannel.CHANNEL_1,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
         readPath = 'StarWars10s-1C-96000-4SW.wav'
         await getFdRead(readPath, done);
-        var resultFlag = await playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        let resultFlag = await playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
@@ -2079,27 +2079,27 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_1500', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_11025,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_U8,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
         readPath = 'StarWars10s-2C-11025-1SW.wav'
         await getFdRead(readPath, done);
-        var resultFlag = await playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        let resultFlag = await playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
@@ -2116,27 +2116,27 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_1600', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_12000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
         readPath = 'StarWars10s-2C-12000-2SW.wav'
         await getFdRead(readPath, done);
-        var resultFlag = await playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+        let resultFlag = await playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
@@ -2153,27 +2153,27 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_1700', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
         readPath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readPath, done);
-        var resultFlag = await playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
+        let resultFlag = await playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(100);
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
@@ -2190,30 +2190,30 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_1800', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
             usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
         readPath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readPath, done);
         playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
-        audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
+        AUDIOMANAGER.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
             if (data == true) {
                 console.log('AudioFrameworkTest: Promise : isActive Media: PASS :' + data);
             }
@@ -2238,30 +2238,30 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_1900', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
         readPath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readPath, done);
         playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
-        audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
+        AUDIOMANAGER.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
             if (data == true) {
                 console.log('AudioFrameworkTest: Promise : isActive Media: PASS :' + data);
             }
@@ -2285,30 +2285,30 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_2000', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MUSIC,
             usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
         readPath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readPath, done);
         playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
-        audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
+        AUDIOMANAGER.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
             if (data == true) {
                 console.log('AudioFrameworkTest: Promise : isActive Media: PASS :' + data);
             }
@@ -2332,30 +2332,30 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_2100', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MOVIE,
             usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
         readPath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readPath, done);
         playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
-        audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
+        AUDIOMANAGER.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
             if (data == true) {
                 console.log('AudioFrameworkTest: Promise : isActive Media: PASS :' + data);
             }
@@ -2380,30 +2380,30 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_2200', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SONIFICATION,
             usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
         readPath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readPath, done);
         playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
-        audioManager.isActive(audio.AudioVolumeType.RINGTONE).then(function (data) {
+        AUDIOMANAGER.isActive(audio.AudioVolumeType.RINGTONE).then(function (data) {
             if (data == true) {
                 console.log('AudioFrameworkTest: Promise : isActive RINGTONE: PASS :' + data);
             }
@@ -2427,30 +2427,30 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_2300', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
         readPath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readPath, done);
         playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
-        audioManager.isActive(audio.AudioVolumeType.RINGTONE).then(function (data) {
+        AUDIOMANAGER.isActive(audio.AudioVolumeType.RINGTONE).then(function (data) {
             if (data == true) {
                 console.log('AudioFrameworkTest: Promise : isActive RINGTONE: PASS :' + data);
             }
@@ -2474,30 +2474,30 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_2400', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
             usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
         readPath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readPath, done);
         playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
-        audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
+        AUDIOMANAGER.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
             if (data == true) {
                 console.log('AudioFrameworkTest: Promise : isActive Media: PASS :' + data);
             }
@@ -2521,30 +2521,30 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_2500', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
         readPath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readPath, done);
         playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
-        audioManager.isActive(audio.AudioVolumeType.VOICE_ASSISTANT).then(function (data) {
+        AUDIOMANAGER.isActive(audio.AudioVolumeType.VOICE_ASSISTANT).then(function (data) {
             if (data == true) {
                 console.log('AudioFrameworkTest: Promise : isActive VOICE_ASSISTANT: PASS :' + data);
             }
@@ -2568,30 +2568,30 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_2600', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MUSIC,
             usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
         readPath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readPath, done);
         playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
-        audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
+        AUDIOMANAGER.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
             if (data == true) {
                 console.log('AudioFrameworkTest: Promise : isActive Media: PASS :' + data);
             }
@@ -2616,30 +2616,30 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_2700', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MOVIE,
             usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
         readPath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readPath, done);
         playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
-        audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
+        AUDIOMANAGER.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
             if (data == true) {
                 console.log('AudioFrameworkTest: Promise : isActive Media: PASS :' + data);
             }
@@ -2663,30 +2663,30 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_2800', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SONIFICATION,
             usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
         readPath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readPath, done);
         playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
-        audioManager.isActive(audio.AudioVolumeType.RINGTONE).then(function (data) {
+        AUDIOMANAGER.isActive(audio.AudioVolumeType.RINGTONE).then(function (data) {
             if (data == true) {
                 console.log('AudioFrameworkTest: Promise : isActive RINGTONE: PASS :' + data);
             }
@@ -2710,30 +2710,30 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_2900', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
         readPath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readPath, done);
         playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
-        audioManager.isActive(audio.AudioVolumeType.RINGTONE).then(function (data) {
+        AUDIOMANAGER.isActive(audio.AudioVolumeType.RINGTONE).then(function (data) {
             if (data == true) {
                 console.log('AudioFrameworkTest: Promise : isActive RINGTONE: PASS :' + data);
             }
@@ -2757,30 +2757,30 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_3000', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
         readPath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readPath, done);
         playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
-        audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
+        AUDIOMANAGER.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
             if (data == true) {
                 console.log('AudioFrameworkTest: Promise : isActive Media: PASS :' + data);
             }
@@ -2804,30 +2804,30 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_3100', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
         readPath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readPath, done);
         playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
-        audioManager.isActive(audio.AudioVolumeType.VOICE_CALL).then(function (data) {
+        AUDIOMANAGER.isActive(audio.AudioVolumeType.VOICE_CALL).then(function (data) {
             if (data == true) {
                 console.log('AudioFrameworkTest: Promise : isActive VOICE_CALL: PASS :' + data);
             }
@@ -2851,30 +2851,30 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_3200', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MUSIC,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
         readPath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readPath, done);
         playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
-        audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
+        AUDIOMANAGER.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
             if (data == true) {
                 console.log('AudioFrameworkTest: Promise : isActive Media: PASS :' + data);
             }
@@ -2898,30 +2898,30 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_3300', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MOVIE,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
         readPath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readPath, done);
         playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
-        audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
+        AUDIOMANAGER.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
             if (data == true) {
                 console.log('AudioFrameworkTest: Promise : isActive Media: PASS :' + data);
             }
@@ -2945,30 +2945,30 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_3400', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SONIFICATION,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
         readPath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readPath, done);
         playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
-        audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
+        AUDIOMANAGER.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
             if (data == true) {
                 console.log('AudioFrameworkTest: Promise : isActive Media: PASS :' + data);
             }
@@ -2992,30 +2992,30 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_3500', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
         readPath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readPath, done);
         playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
-        audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
+        AUDIOMANAGER.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
             if (data == true) {
                 console.log('AudioFrameworkTest: Promise : isActive Media: PASS :' + data);
             }
@@ -3039,30 +3039,30 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_3600', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
         readPath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readPath, done);
         playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
-        audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
+        AUDIOMANAGER.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
             if (data == true) {
                 console.log('AudioFrameworkTest: Promise : isActive Media: PASS :' + data);
             }
@@ -3087,30 +3087,30 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_3700', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
         readPath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readPath, done);
         playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
-        audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
+        AUDIOMANAGER.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
             if (data == true) {
                 console.log('AudioFrameworkTest: Promise : isActive Media: PASS :' + data);
             }
@@ -3135,30 +3135,30 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_3800', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MUSIC,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
         readPath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readPath, done);
         playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
-        audioManager.isActive(audio.AudioVolumeType.RINGTONE).then(function (data) {
+        AUDIOMANAGER.isActive(audio.AudioVolumeType.RINGTONE).then(function (data) {
             if (data == true) {
                 console.log('AudioFrameworkTest: Promise : isActive RENGITONE: PASS :' + data);
             }
@@ -3183,30 +3183,30 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_3900', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MOVIE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
         readPath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readPath, done);
         playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
-        audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
+        AUDIOMANAGER.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
             if (data == true) {
                 console.log('AudioFrameworkTest: Promise : isActive Media: PASS :' + data);
             }
@@ -3231,30 +3231,30 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_4000', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SONIFICATION,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
         readPath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readPath, done);
         playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
-        audioManager.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
+        AUDIOMANAGER.isActive(audio.AudioVolumeType.MEDIA).then(function (data) {
             if (data == true) {
                 console.log('AudioFrameworkTest: Promise : isActive Media: PASS :' + data);
             }
@@ -3278,30 +3278,30 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_4100', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
         readPath = 'StarWars10s-2C-48000-4SW.wav'
         await getFdRead(readPath, done);
         playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_DEFAULT);
         await sleep(2000);
-        audioManager.isActive(audio.AudioVolumeType.RINGTONE).then(function (data) {
+        AUDIOMANAGER.isActive(audio.AudioVolumeType.RINGTONE).then(function (data) {
             if (data == true) {
                 console.log('AudioFrameworkTest: Promise : isActive RINGTONE: PASS :' + data);
             }
@@ -3326,27 +3326,27 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_4200', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
             usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
 
-        var audioRen;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -3414,27 +3414,27 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_4300', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
 
-        var audioRen;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -3504,27 +3504,27 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_4400', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MUSIC,
             usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
 
-        var audioRen;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -3594,27 +3594,27 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_4500', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MOVIE,
             usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
 
-        var audioRen;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -3684,27 +3684,27 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_4600', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SONIFICATION,
             usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
 
-        var audioRen;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -3774,27 +3774,27 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_4700', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_UNKNOWN,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
 
-        var audioRen;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -3864,27 +3864,27 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_4800', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
             usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
 
-        var audioRen;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -3954,27 +3954,27 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_4900', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
 
-        var audioRen;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -4044,27 +4044,27 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_5000', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MUSIC,
             usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
 
-        var audioRen;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -4134,27 +4134,27 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_5100', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MOVIE,
             usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
 
-        var audioRen;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -4224,27 +4224,27 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_5200', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SONIFICATION,
             usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
 
-        var audioRen;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -4314,27 +4314,27 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_5300', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
 
-        var audioRen;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -4404,27 +4404,27 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_5400', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
 
-        var audioRen;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -4494,27 +4494,27 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_5500', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
 
-        var audioRen;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -4584,27 +4584,27 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_5600', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MUSIC,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
 
-        var audioRen;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -4674,27 +4674,27 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_5700', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MOVIE,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
 
-        var audioRen;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -4764,27 +4764,27 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_5800', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SONIFICATION,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
 
-        var audioRen;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -4854,27 +4854,27 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_5900', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
 
-        var audioRen;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -4944,27 +4944,27 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_6000', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_UNKNOWN,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
 
-        var audioRen;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -5034,27 +5034,27 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_6100', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SPEECH,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
 
-        var audioRen;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -5124,27 +5124,27 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_6200', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MUSIC,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
 
-        var audioRen;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -5214,27 +5214,27 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_6300', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MOVIE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
 
-        var audioRen;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -5304,27 +5304,27 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_6400', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_SONIFICATION,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
 
-        var audioRen;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -5394,27 +5394,27 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_6500', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        var resultFlag = true;
+        let resultFlag = true;
 
-        var audioRen;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -5484,26 +5484,26 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_6600', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
-        var resultFlag = true;
+        let resultFlag = true;
 
-        var audioRen;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -5556,26 +5556,26 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_6700', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
-        var resultFlag = true;
+        let resultFlag = true;
 
-        var audioRen;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -5643,26 +5643,26 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_6800', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
-        var resultFlag = true;
+        let resultFlag = true;
 
-        var audioRen;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -5732,26 +5732,26 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_6900', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
-        var resultFlag = true;
+        let resultFlag = true;
 
-        var audioRen;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -5822,26 +5822,26 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_7000', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
-        var resultFlag = true;
+        let resultFlag = true;
 
-        var audioRen;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -5921,33 +5921,33 @@ describe('audioRenderer', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_7100', 2, async function (done) {
 
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        // var fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
+        // let fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
         readPath = 'StarWars10s-2C-48000-4SW.wav';
         await getFdRead(readPath, done);
-        var AudioScene = audio.AudioScene.AUDIO_SCENE_DEFAULT;
+        let AudioScene = audio.AudioScene.AUDIO_SCENE_DEFAULT;
 
-        var resultFlag = true;
+        let resultFlag = true;
         console.info('AudioFrameworkRenderLog: Promise : Audio Playback Function');
 
-        var audioRen;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -6006,7 +6006,7 @@ describe('audioRenderer', function () {
 
         console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-        var bufferSize = await audioRen.getBufferSize();
+        let bufferSize = await audioRen.getBufferSize();
         console.info('AudioFrameworkRenderLog: buffer size: ' + bufferSize);
 
         let ss = fileio.fdopenStreamSync(fdRead, 'r');
@@ -6024,7 +6024,7 @@ describe('audioRenderer', function () {
             console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' + rlen);
             await audioRen.write(buf);
             if (rlen > (totalSize / 8)) {
-                await audioManager.getAudioScene().then(async function (data) {
+                await AUDIOMANAGER.getAudioScene().then(async function (data) {
                     console.info('AudioFrameworkAudioScene: getAudioScene : Value : ' + data);
                 }).catch((err) => {
                     console.info('AudioFrameworkAudioScene: getAudioScene : ERROR : ' + err.message);
@@ -6100,33 +6100,33 @@ describe('audioRenderer', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_7200', 2, async function (done) {
 
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_24000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S24LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        //var fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
+        //let fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
         readPath = 'StarWars10s-2C-24000-3SW.wav'
         await getFdRead(readPath, done);
-        var AudioScene = audio.AudioScene.AUDIO_SCENE_DEFAULT;
+        let AudioScene = audio.AudioScene.AUDIO_SCENE_DEFAULT;
 
-        var resultFlag = true;
+        let resultFlag = true;
         console.info('AudioFrameworkRenderLog: Promise : Audio Playback Function');
 
-        var audioRen;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -6185,7 +6185,7 @@ describe('audioRenderer', function () {
 
         console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-        var bufferSize = await audioRen.getBufferSize();
+        let bufferSize = await audioRen.getBufferSize();
         console.info('AudioFrameworkRenderLog: buffer size: ' + bufferSize);
 
         let ss = fileio.fdopenStreamSync(fdRead, 'r');
@@ -6203,7 +6203,7 @@ describe('audioRenderer', function () {
             console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' + rlen);
             await audioRen.write(buf);
             if (rlen > (totalSize / 8)) {
-                await audioManager.getAudioScene().then(async function (data) {
+                await AUDIOMANAGER.getAudioScene().then(async function (data) {
                     console.info('AudioFrameworkAudioScene: getAudioScene : Value : ' + data);
                 }).catch((err) => {
                     console.info('AudioFrameworkAudioScene: getAudioScene : ERROR : ' + err.message);
@@ -6278,33 +6278,33 @@ describe('audioRenderer', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_7300', 2, async function (done) {
 
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_1,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        //var fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
+        //let fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
         readPath = 'StarWars10s-1C-44100-2SW.wav'
         await getFdRead(readPath, done);
-        var AudioScene = audio.AudioScene.AUDIO_SCENE_DEFAULT;
+        let AudioScene = audio.AudioScene.AUDIO_SCENE_DEFAULT;
 
-        var resultFlag = true;
+        let resultFlag = true;
         console.info('AudioFrameworkRenderLog: Promise : Audio Playback Function');
 
-        var audioRen;
+        let audioRen;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
             console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS');
@@ -6335,7 +6335,7 @@ describe('audioRenderer', function () {
 
         console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-        var bufferSize = await audioRen.getBufferSize();
+        let bufferSize = await audioRen.getBufferSize();
         console.info('AudioFrameworkRenderLog: buffer size: ' + bufferSize);
 
         let ss = fileio.fdopenStreamSync(fdRead, 'r');
@@ -6353,7 +6353,7 @@ describe('audioRenderer', function () {
             console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' + rlen);
             await audioRen.write(buf);
             if (rlen > (totalSize / 8)) {
-                await audioManager.getAudioScene().then(async function (data) {
+                await AUDIOMANAGER.getAudioScene().then(async function (data) {
                     console.info('AudioFrameworkAudioScene: getAudioScene : Value : ' + data);
                 }).catch((err) => {
                     console.info('AudioFrameworkAudioScene: getAudioScene : ERROR : ' + err.message);
@@ -6434,33 +6434,33 @@ describe('audioRenderer', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_7400', 2, async function (done) {
 
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_96000,
             channels: audio.AudioChannel.CHANNEL_1,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        // var fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
+        // let fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
         readPath = 'StarWars10s-1C-96000-4SW.wav'
         await getFdRead(readPath, done);
-        var AudioScene = audio.AudioScene.AUDIO_SCENE_DEFAULT;
+        let AudioScene = audio.AudioScene.AUDIO_SCENE_DEFAULT;
 
-        var resultFlag = true;
+        let resultFlag = true;
         console.info('AudioFrameworkRenderLog: Promise : Audio Playback Function');
 
-        var audioRen;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -6520,7 +6520,7 @@ describe('audioRenderer', function () {
 
         console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
 
-        var bufferSize = await audioRen.getBufferSize();
+        let bufferSize = await audioRen.getBufferSize();
         console.info('AudioFrameworkRenderLog: buffer size: ' + bufferSize);
 
         let ss = fileio.fdopenStreamSync(fdRead, 'r');
@@ -6538,7 +6538,7 @@ describe('audioRenderer', function () {
             console.info('AudioFrameworkRenderLog:BufferAudioFramework: bytes read from file: ' + rlen);
             await audioRen.write(buf);
             if (rlen > (totalSize / 2)) {
-                await audioManager.getAudioScene().then(async function (data) {
+                await AUDIOMANAGER.getAudioScene().then(async function (data) {
                     console.info('AudioFrameworkAudioScene: getAudioScene : Value : ' + data);
                 }).catch((err) => {
                     console.info('AudioFrameworkAudioScene: getAudioScene : ERROR : ' + err.message);
@@ -6605,28 +6605,28 @@ describe('audioRenderer', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_7500', 2, async function (done) {
 
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_32000,
             channels: audio.AudioChannel.CHANNEL_1,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_U8,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        //var fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
+        //let fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
         readPath = 'StarWars10s-1C-32000-1SW.wav'
         await getFdRead(readPath, done);
-        var resultFlag = await playbackPromise_113(AudioRendererOptions, filePath);
+        let resultFlag = await playbackPromise_113(AudioRendererOptions, filePath);
         await sleep(100)
         console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
         expect(resultFlag).assertTrue();
@@ -6644,34 +6644,34 @@ describe('audioRenderer', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_7600', 2, async function (done) {
 
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
 
-        //var fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
+        //let fpath = mediaDir+'/StarWars10s-2C-48000-4SW.wav';
 
         readPath = 'StarWars10s-2C-48000-4SW.wav';
         await getFdRead(readPath, done);
-        var resultFlag = true;
+        let resultFlag = true;
         console.info('AudioFrameworkRenderLog: AudioRenderer : Path : ' + readPath);
 
         console.info('AudioFrameworkRenderLog: Promise : Audio Playback Function');
 
-        var audioRen;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -6736,26 +6736,26 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_7700', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
-        var resultFlag = false;
+        let resultFlag = false;
 
-        var audioRen;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -6815,26 +6815,26 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_7800', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
-        var resultFlag = false;
+        let resultFlag = false;
 
-        var audioRen;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -6910,26 +6910,26 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_7900', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
-        var resultFlag = false;
+        let resultFlag = false;
 
-        var audioRen;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -7007,26 +7007,26 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_8000', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
-        var resultFlag = false;
+        let resultFlag = false;
 
-        var audioRen;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -7104,26 +7104,26 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_8100', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
-        var resultFlag = false;
+        let resultFlag = false;
 
-        var audioRen;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -7262,26 +7262,26 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_8600', 2, async function (done) {
-        var AudioStreamInfo = {
+        let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_2,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
 
-        var AudioRendererInfo = {
+        let AudioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_RINGTONE,
             usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
             rendererFlags: 0
         }
 
-        var AudioRendererOptions = {
+        let AudioRendererOptions = {
             streamInfo: AudioStreamInfo,
             rendererInfo: AudioRendererInfo
         }
-        var resultFlag = false;
+        let resultFlag = false;
 
-        var audioRen;
+        let audioRen;
         let isPass = false;
         await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
             audioRen = data;
@@ -7381,18 +7381,18 @@ describe('audioRenderer', function () {
      * @tc.level     : Level 2
      */
     it("SUB_MULTIMEDIA_AUDIO_SETINTERRUPTMODE_0100", 2, async function (done) {
-        var audioStreamInfo = {
+        let audioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_1,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        var audioRendererInfo = {
+        let audioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MUSIC,
             usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
             rendererFlags: 0
         }
-        var audioRendererOptions = {
+        let audioRendererOptions = {
             streamInfo: audioStreamInfo,
             rendererInfo: audioRendererInfo
         }
@@ -7418,18 +7418,18 @@ describe('audioRenderer', function () {
      * @tc.require: Issue Number
      */
     it("SUB_MULTIMEDIA_AUDIO_SETINTERRUPTMODE_0200", 2, async function (done) {
-        var audioStreamInfo = {
+        let audioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_1,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        var audioRendererInfo = {
+        let audioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MUSIC,
             usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
             rendererFlags: 0
         }
-        var audioRendererOptions = {
+        let audioRendererOptions = {
             streamInfo: audioStreamInfo,
             rendererInfo: audioRendererInfo
         }
@@ -7455,18 +7455,18 @@ describe('audioRenderer', function () {
      * @tc.require: Issue Number
      */
     it("SUB_MULTIMEDIA_AUDIO_SETINTERRUPTMODE_0300", 2, async function (done) {
-        var audioStreamInfo = {
+        let audioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_1,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        var audioRendererInfo = {
+        let audioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MUSIC,
             usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
             rendererFlags: 0
         }
-        var audioRendererOptions = {
+        let audioRendererOptions = {
             streamInfo: audioStreamInfo,
             rendererInfo: audioRendererInfo
         }
@@ -7490,18 +7490,18 @@ describe('audioRenderer', function () {
      * @tc.require: Issue Number
      */
     it("SUB_MULTIMEDIA_AUDIO_SETINTERRUPTMODE_0400", 2, async function (done) {
-        var audioStreamInfo = {
+        let audioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_1,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        var audioRendererInfo = {
+        let audioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MUSIC,
             usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
             rendererFlags: 0
         }
-        var audioRendererOptions = {
+        let audioRendererOptions = {
             streamInfo: audioStreamInfo,
             rendererInfo: audioRendererInfo
         }
@@ -7525,18 +7525,18 @@ describe('audioRenderer', function () {
      * @tc.require: Issue Number
      */
     it("SUB_MULTIMEDIA_AUDIO_SETINTERRUPTMODE_0500", 2, async function (done) {
-        var audioStreamInfo = {
+        let audioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_1,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        var audioRendererInfo = {
+        let audioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MUSIC,
             usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
             rendererFlags: 0
         }
-        var audioRendererOptions = {
+        let audioRendererOptions = {
             streamInfo: audioStreamInfo,
             rendererInfo: audioRendererInfo
         }
@@ -7561,18 +7561,18 @@ describe('audioRenderer', function () {
    * @tc.require: Issue Number
    */
     it("SUB_MULTIMEDIA_AUDIO_SETINTERRUPTMODE_0600", 2, async function (done) {
-        var audioStreamInfo = {
+        let audioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
             channels: audio.AudioChannel.CHANNEL_1,
             sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
         }
-        var audioRendererInfo = {
+        let audioRendererInfo = {
             content: audio.ContentType.CONTENT_TYPE_MUSIC,
             usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
             rendererFlags: 0
         }
-        var audioRendererOptions = {
+        let audioRendererOptions = {
             streamInfo: audioStreamInfo,
             rendererInfo: audioRendererInfo
         }

@@ -19,8 +19,8 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 describe('audioEventManagement', function () {
     console.info('AudioFrameworkTest: Create AudioManger Object JS Framework');
     let audioManager = null;
-    var deviceRoleValue = null;
-    var deviceTypeValue = null;
+    let deviceRoleValue = null;
+    let deviceTypeValue = null;
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
@@ -34,8 +34,8 @@ describe('audioEventManagement', function () {
         }
     }
     function displayDeviceProp(value, index, array) {
-        var devRoleName;
-        var devTypeName;
+        let devRoleName;
+        let devTypeName;
         if (value.deviceRole == 1) {
             devRoleName = 'INPUT_DEVICE';
         }
@@ -100,10 +100,8 @@ describe('audioEventManagement', function () {
      *@tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_GETDEVICES_0100', 0, async function (done) {
-        deviceRoleValue = null;
-        deviceTypeValue = null;
-        const promise = audioManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG)
-        promise.then(function (value) {
+        const PROMISE = audioManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG)
+        PROMISE.then(function (value) {
 
             console.info('AudioFrameworkTest: Promise: getDevices OUTPUT_DEVICES_FLAG');
             value.forEach(displayDeviceProp);
@@ -116,7 +114,7 @@ describe('audioEventManagement', function () {
                 expect(false).assertTrue();
             }
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -129,11 +127,8 @@ describe('audioEventManagement', function () {
      *@tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_PR_GETDEVICES_OUTPUT_ENUM_0100', 0, async function (done) {
-        deviceRoleValue = null;
-        deviceTypeValue = null;
-        const promise = audioManager.getDevices(1)
-        promise.then(function (value) {
-
+        const PROMISE = audioManager.getDevices(1)
+        PROMISE.then(function (value) {
             console.info('AudioFrameworkTest: Promise: getDevices OUTPUT_DEVICES_FLAG');
             value.forEach(displayDeviceProp);
             if (deviceTypeValue != null && deviceRoleValue != null) {
@@ -145,7 +140,7 @@ describe('audioEventManagement', function () {
                 expect(false).assertTrue();
             }
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -158,10 +153,8 @@ describe('audioEventManagement', function () {
      *@tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_PR_GETDEVICES_INPUT_0100', 0, async function (done) {
-        deviceRoleValue = null;
-        deviceTypeValue = null;
-        const promise = audioManager.getDevices(audio.DeviceFlag.INPUT_DEVICES_FLAG);
-        promise.then(function (value) {
+        const PROMISE = audioManager.getDevices(audio.DeviceFlag.INPUT_DEVICES_FLAG);
+        PROMISE.then(function (value) {
             console.info('AudioFrameworkTest: Promise: getDevices INPUT_DEVICES_FLAG');
             value.forEach(displayDeviceProp);
             if (deviceTypeValue != null && deviceRoleValue != null) {
@@ -173,7 +166,7 @@ describe('audioEventManagement', function () {
                 expect(false).assertTrue();
             }
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -186,10 +179,8 @@ describe('audioEventManagement', function () {
      *@tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_PR_GETDEVICES_INTPUT_ENUM_0100', 0, async function (done) {
-        deviceRoleValue = null;
-        deviceTypeValue = null;
-        const promise = audioManager.getDevices(2);
-        promise.then(function (value) {
+        const PROMISE = audioManager.getDevices(2);
+        PROMISE.then(function (value) {
             console.info('AudioFrameworkTest: Promise: getDevices INPUT_DEVICES_FLAG');
             value.forEach(displayDeviceProp);
 
@@ -202,7 +193,7 @@ describe('audioEventManagement', function () {
                 expect(false).assertTrue();
             }
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -215,10 +206,8 @@ describe('audioEventManagement', function () {
      *@tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_PR_GETDEVICES_ALL_0100', 0, async function (done) {
-        deviceRoleValue = null;
-        deviceTypeValue = null;
-        const promise = audioManager.getDevices(audio.DeviceFlag.ALL_DEVICES_FLAG);
-        promise.then(function (value) {
+        const PROMISE = audioManager.getDevices(audio.DeviceFlag.ALL_DEVICES_FLAG);
+        PROMISE.then(function (value) {
             console.info('AudioFrameworkTest: Promise: getDevices ALL_DEVICES_FLAG');
             value.forEach(displayDeviceProp);
 
@@ -231,7 +220,7 @@ describe('audioEventManagement', function () {
                 expect(false).assertTrue();
             }
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -244,10 +233,8 @@ describe('audioEventManagement', function () {
      *@tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_PR_GETDEVICES_ALL_ENUM_0100', 0, async function (done) {
-        deviceRoleValue = null;
-        deviceTypeValue = null;
-        const promise = audioManager.getDevices(3);
-        promise.then(function (value) {
+        const PROMISE = audioManager.getDevices(3);
+        PROMISE.then(function (value) {
             console.info('AudioFrameworkTest: Promise: getDevices ALL_DEVICES_FLAG');
             value.forEach(displayDeviceProp);
 
@@ -260,7 +247,7 @@ describe('audioEventManagement', function () {
                 expect(false).assertTrue();
             }
         });
-        await promise;
+        await PROMISE;
         done();
     })
 
@@ -273,8 +260,6 @@ describe('audioEventManagement', function () {
      *@tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_CB_GETDEVICES_OUTPUT_0100', 0, async function (done) {
-        deviceRoleValue = null;
-        deviceTypeValue = null;
         audioManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG, (err, value) => {
             console.info('AudioFrameworkTest: Callback: getDevices OUTPUT_DEVICES_FLAG');
             if (err) {
@@ -306,8 +291,6 @@ describe('audioEventManagement', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_CB_GETDEVICES_OUTPUT_ENUM_0100', 2, async function (done) {
-        deviceRoleValue = null;
-        deviceTypeValue = null;
         audioManager.getDevices(1, (err, value) => {
             console.info('AudioFrameworkTest: Callback: getDevices OUTPUT_DEVICES_FLAG');
             if (err) {
@@ -339,8 +322,6 @@ describe('audioEventManagement', function () {
      *@tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_CB_GETDEVICES_INPUT_0100', 0, async function (done) {
-        deviceRoleValue = null;
-        deviceTypeValue = null;
         audioManager.getDevices(audio.DeviceFlag.INPUT_DEVICES_FLAG, (err, value) => {
             console.info('AudioFrameworkTest: Callback: getDevices INPUT_DEVICES_FLAG');
             if (err) {
@@ -373,8 +354,6 @@ describe('audioEventManagement', function () {
      *@tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_CB_GETDEVICES_INPUT_ENUM_0100', 0, async function (done) {
-        deviceRoleValue = null;
-        deviceTypeValue = null;
         audioManager.getDevices(2, (err, value) => {
             console.info('AudioFrameworkTest: Callback: getDevices INPUT_DEVICES_FLAG');
             if (err) {
@@ -407,8 +386,6 @@ describe('audioEventManagement', function () {
      *@tc.level     : Level 0
      */
     it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_CB_GETDEVICES_ALL_0100', 0, async function (done) {
-        deviceRoleValue = null;
-        deviceTypeValue = null;
         audioManager.getDevices(audio.DeviceFlag.ALL_DEVICES_FLAG, (err, value) => {
             console.info('AudioFrameworkTest: Callback: getDevices ALL_DEVICES_FLAG');
             if (err) {
@@ -440,8 +417,6 @@ describe('audioEventManagement', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_CB_GETDEVICES_ALL_ENUM_0100', 2, async function (done) {
-        deviceRoleValue = null;
-        deviceTypeValue = null;
         audioManager.getDevices(3, (err, value) => {
             console.info('AudioFrameworkTest: Callback: getDevices ALL_DEVICES_FLAG');
             if (err) {
@@ -756,6 +731,4 @@ describe('audioEventManagement', function () {
         await sleep(50);
         done();
     })
-
-
 })
