@@ -60,6 +60,18 @@ export default function test() {
             commonEvent.unsubscribe(subscriberOnDeleted, () => unsubscribeCallback("afterEach unsubscribe subscriberOnDeleted"));
             commonEvent.unsubscribe(subscriberOnRefresh, () => unsubscribeCallback("afterEach unsubscribe subscriberOnRefresh"));
             commonEvent.unsubscribe(subscriberSupply, () => unsubscribeCallback("afterEach unsubscribe subscriberSupply"));
+
+            let wantInfo = {
+                want: {
+                    bundleName: "com.ohos.st.formdynamicrefreshtest",
+                    abilityName: "com.ohos.st.formdynamicrefreshtest.TestAbility"
+                }
+            }
+            await featureAbility.startAbility(wantInfo).then((data) => {
+              console.log("FMS_timedRefresh startAbility data : " + JSON.stringify(data));
+            }).catch((err) => {
+              console.log("FMS_timedRefresh startAbility err : " + JSON.stringify(err));
+            })
             await sleep(1000);
         })
 

@@ -45,12 +45,12 @@ describe('display_test', function () {
             expect(dsp.rotation != null).assertTrue();
             expect(dsp.densityDPI != null).assertTrue();
             expect(dsp.name != null).assertTrue();
-            expect(dsp.alive).assertEqual(undefined);
-            expect(dsp.state).assertEqual(undefined);
+            expect(dsp.alive).assertTrue();
+            expect(dsp.state != null).assertTrue();
             expect(dsp.densityPixels != null).assertTrue();
             expect(dsp.scaledDensity !=null).assertTrue();
-            expect(dsp.xDPI).assertEqual(undefined);
-            expect(dsp.yDPI).assertEqual(undefined);
+            expect(dsp.xDPI != null).assertTrue();
+            expect(dsp.yDPI != null).assertTrue();
             done();
         }, (err) => {
             console.log('displayTest getDefaultDisplayTest1 getDefaultDisplay failed, err :' + JSON.stringify(err));
@@ -80,12 +80,12 @@ describe('display_test', function () {
                 expect(data.rotation != null).assertTrue();
                 expect(data.densityDPI != null).assertTrue();
                 expect(data.name != null).assertTrue();
-                expect(data.alive).assertEqual(undefined);
-                expect(data.state).assertEqual(undefined);
+                expect(data.alive).assertTrue();
+                expect(data.state != null).assertTrue();
                 expect(data.densityPixels != null).assertTrue();
                 expect(data.scaledDensity !=null).assertTrue();
-                expect(data.xDPI).assertEqual(undefined);
-                expect(data.yDPI).assertEqual(undefined);
+                expect(data.xDPI != null).assertTrue();
+                expect(data.yDPI != null).assertTrue();
                 done();
             }
         })
@@ -107,12 +107,12 @@ describe('display_test', function () {
             expect(dsp[0].rotation != null).assertTrue();
             expect(dsp[0].densityDPI != null).assertTrue();
             expect(dsp[0].name != null).assertTrue();
-            expect(dsp[0].alive).assertEqual(undefined);
-            expect(dsp[0].state).assertEqual(undefined);
+            expect(dsp[0].alive).assertTrue();
+            expect(dsp[0].state != null).assertTrue();
             expect(dsp[0].densityPixels != null).assertTrue();
             expect(dsp[0].scaledDensity !=null).assertTrue();
-            expect(dsp[0].xDPI).assertEqual(undefined);
-            expect(dsp[0].yDPI).assertEqual(undefined);
+            expect(dsp[0].xDPI != null).assertTrue();
+            expect(dsp[0].yDPI != null).assertTrue();
             done();
         }, (err) => {
             console.log('displayTest getAllDisplayTest1 getAllDisplay failed, err :' + JSON.stringify(err));
@@ -141,12 +141,12 @@ describe('display_test', function () {
                 expect(data[0].rotation != null).assertTrue();
                 expect(data[0].densityDPI != null).assertTrue();
                 expect(data[0].name != null).assertTrue();
-                expect(data[0].alive).assertEqual(undefined);
-                expect(data[0].state).assertEqual(undefined);
+                expect(data[0].alive).assertTrue();
+                expect(data[0].state != null).assertTrue();
                 expect(data[0].densityPixels != null).assertTrue();
                 expect(data[0].scaledDensity !=null).assertTrue();
-                expect(data[0].xDPI).assertEqual(undefined);
-                expect(data[0].yDPI).assertEqual(undefined);
+                expect(data[0].xDPI != null).assertTrue();
+                expect(data[0].yDPI != null).assertTrue();
                 done();
             }
         })
@@ -169,12 +169,12 @@ describe('display_test', function () {
             expect(dsp.rotation != null).assertTrue();
             expect(dsp.densityDPI != null).assertTrue();
             expect(dsp.name != null).assertTrue();
-            expect(dsp.alive).assertEqual(undefined);
-            expect(dsp.state).assertEqual(undefined);
+            expect(dsp.alive).assertTrue();
+            expect(dsp.state != null).assertTrue();
             expect(dsp.densityPixels != null).assertTrue();
             expect(dsp.scaledDensity !=null).assertTrue();
-            expect(dsp.xDPI).assertEqual(undefined);
-            expect(dsp.yDPI).assertEqual(undefined);
+            expect(dsp.xDPI != null).assertTrue();
+            expect(dsp.yDPI != null).assertTrue();
             done();
         } catch (err) {
             console.error('getDefaultDisplaySyncTest1 error ' + JSON.stringify(err));

@@ -50,8 +50,7 @@ describe("VibratorJsTest_misc_1", function () {
         console.info('afterEach caled')
     })
 
-    let errMessages = ['Param number is invalid', 'Wrong argument type. function expected',
-    'Wrong argument type', 'Wrong argument number']
+    let errMessages = ['Error: ParseParameter: "Get vibrate type fail"', 'Error: ParseParameter: "Wrong argument number"']
 
      let errMessage;
 	
@@ -194,7 +193,7 @@ describe("VibratorJsTest_misc_1", function () {
                 },
             }, 25);
         } catch (error) {
-            errMessage = error.toString().slice(39);
+            errMessage = error.toString();
             console.info('SubVibratorJsTest0007 error:' + error);
             expect(errMessage).assertEqual(errMessages[0]);
             done();
@@ -243,9 +242,9 @@ describe("VibratorJsTest_misc_1", function () {
         try {
             vibrator.vibrate();
         } catch (error) {
-            errMessage = error.toString().slice(7);
+            errMessage = error.toString();
             console.info('SubVibratorJsTest0009 error:' + error);
-            expect(errMessage).assertEqual(errMessages[2]);
+            expect(errMessage).assertEqual(errMessages[1]);
             done();
         }
     })
@@ -268,9 +267,9 @@ describe("VibratorJsTest_misc_1", function () {
             }, function () {
             }, 25);
         } catch (error) {
-            errMessage = error.toString().slice(39);
+            errMessage = error.toString();
             console.info('SubVibratorJsTest0010 error:' + error);
-            expect(errMessage).assertEqual(errMessages[3]);
+            expect(errMessage).assertEqual(errMessages[0]);
             done();
         }
     })

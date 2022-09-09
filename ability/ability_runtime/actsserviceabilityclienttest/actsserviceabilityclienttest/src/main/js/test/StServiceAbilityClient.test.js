@@ -93,6 +93,9 @@ describe('ActsStServiceAbilityTest', function () {
                 + " ,err=" + err + " ,data=" + data);
         });
     }
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
     let gSetTimeout = 1000
     beforeAll(async (done) => {
         console.debug('= ACTS_beforeAll ====<begin');
@@ -126,12 +129,12 @@ describe('ActsStServiceAbilityTest', function () {
     it('ACTS_JsServiceAbility_0100', 0, async function (done) {
         console.debug('ACTS_JsServiceAbility_0100====<begin');
         try {
-            commonEvent.createSubscriber(CommonEventSubscribeInfo0100).then(async (data) => {
+            await commonEvent.createSubscriber(CommonEventSubscribeInfo0100).then(async (data) => {
                 console.debug("=ACTS_JsServiceAbility_0100 createSubscriber .then(data)=======>"
                     + ("json data【") + JSON.stringify(data) + (" 】")
                     + " ,data=" + data);
                 subscriber0100 = data;
-                await commonEvent.subscribe(subscriber0100, async (err, data) => {
+                commonEvent.subscribe(subscriber0100, async (err, data) => {
                     console.debug("=ACTS_JsServiceAbility_0100 subscribe (err,data)=======>"
                         + ("json err【") + JSON.stringify(err) + (" 】")
                         + ("json data【") + JSON.stringify(data) + (" 】")
@@ -176,12 +179,12 @@ describe('ActsStServiceAbilityTest', function () {
     it('ACTS_JsServiceAbility_0200', 0, async function (done) {
         console.debug('ACTS_JsServiceAbility_0200====<begin');
         try {
-            commonEvent.createSubscriber(CommonEventSubscribeInfo0200).then(async (data) => {
+            await commonEvent.createSubscriber(CommonEventSubscribeInfo0200).then(async (data) => {
                 console.debug("=ACTS_JsServiceAbility_0200 createSubscriber .then(data)=======>"
                     + ("json data【") + JSON.stringify(data) + (" 】")
                     + " ,data=" + data);
                 subscriber0200 = data;
-                await commonEvent.subscribe(subscriber0200, async (err, data) => {
+                commonEvent.subscribe(subscriber0200, async (err, data) => {
                     console.debug("=ACTS_JsServiceAbility_0200 subscribe (err,data)=======>"
                         + ("json err【") + JSON.stringify(err) + (" 】")
                         + ("json data【") + JSON.stringify(data) + (" 】")
@@ -193,7 +196,7 @@ describe('ActsStServiceAbilityTest', function () {
                     done()
                 });
             })
-            await featureAbility.startAbility(
+            featureAbility.startAbility(
                 {
                     want:
                     {
@@ -223,12 +226,12 @@ describe('ActsStServiceAbilityTest', function () {
     it('ACTS_JsServiceAbility_0300', 0, async function (done) {
         console.debug('ACTS_JsServiceAbility_0300====<begin');
         try {
-            commonEvent.createSubscriber(CommonEventSubscribeInfo0300).then(async (data) => {
+            await commonEvent.createSubscriber(CommonEventSubscribeInfo0300).then(async (data) => {
                 console.debug("=ACTS_JsServiceAbility_0300 createSubscriber .then(data)=======>"
                     + ("json data【") + JSON.stringify(data) + (" 】")
                     + " ,data=" + data);
                 subscriber0300 = data;
-                await commonEvent.subscribe(subscriber0300, async (err, data) => {
+                commonEvent.subscribe(subscriber0300, async (err, data) => {
                     console.debug("=ACTS_JsServiceAbility_0300 subscribe (err,data)=======>"
                         + ("json err【") + JSON.stringify(err) + (" 】")
                         + ("json data【") + JSON.stringify(data) + (" 】")
@@ -296,12 +299,12 @@ describe('ActsStServiceAbilityTest', function () {
     it('ACTS_JsServiceAbility_0400', 0, async function (done) {
         console.debug('ACTS_JsServiceAbility_0400====<begin');
         try {
-            commonEvent.createSubscriber(CommonEventSubscribeInfo0400).then(async (data) => {
+            await commonEvent.createSubscriber(CommonEventSubscribeInfo0400).then(async (data) => {
                 console.debug("=ACTS_JsServiceAbility_0400 createSubscriber .then(data)=======>"
                     + ("json data【") + JSON.stringify(data) + (" 】")
                     + " ,data=" + data);
                 subscriber0400 = data;
-                await commonEvent.subscribe(subscriber0400, async (err, data) => {
+                commonEvent.subscribe(subscriber0400, async (err, data) => {
                     console.debug("=ACTS_JsServiceAbility_0400 subscribe (err,data)=======>"
                         + ("json err【") + JSON.stringify(err) + (" 】")
                         + ("json data【") + JSON.stringify(data) + (" 】")
@@ -364,12 +367,12 @@ describe('ActsStServiceAbilityTest', function () {
         console.log('ACTS_JsServiceAbility_0500====<begin');
         try {
             var mConnIdJsPromise;
-            commonEvent.createSubscriber(CommonEventSubscribeInfo0500).then(async (data) => {
+            await commonEvent.createSubscriber(CommonEventSubscribeInfo0500).then(async (data) => {
                 console.debug("=ACTS_JsServiceAbility_0500 createSubscriber .then(data)=======>"
                     + ("json data【") + JSON.stringify(data) + (" 】")
                     + " ,data=" + data);
                 subscriber0500 = data;
-                await commonEvent.subscribe(subscriber0500, async (err, data) => {
+                commonEvent.subscribe(subscriber0500, async (err, data) => {
                     console.debug("=ACTS_JsServiceAbility_0500 subscribe (err,data)=======>"
                         + ("json err【") + JSON.stringify(err) + (" 】")
                         + ("json data【") + JSON.stringify(data) + (" 】")
@@ -441,12 +444,12 @@ describe('ActsStServiceAbilityTest', function () {
         try {
             var currentAlertTimeout;
             var mConnIdJsAsyncCallback;
-            commonEvent.createSubscriber(CommonEventSubscribeInfo0600).then(async (data) => {
+            await commonEvent.createSubscriber(CommonEventSubscribeInfo0600).then(async (data) => {
                 console.debug("=ACTS_JsServiceAbility_0600 createSubscriber .then(data)=======>"
                     + ("json data【") + JSON.stringify(data) + (" 】")
                     + " ,data=" + data);
                 subscriber0600 = data;
-                await commonEvent.subscribe(subscriber0600, async (err, data) => {
+                commonEvent.subscribe(subscriber0600, async (err, data) => {
                     console.debug("=ACTS_JsServiceAbility_0600 subscribe (err,data)=======>"
                         + ("json err【") + JSON.stringify(err) + (" 】")
                         + ("json data【") + JSON.stringify(data) + (" 】")
@@ -526,23 +529,25 @@ describe('ActsStServiceAbilityTest', function () {
     it('ACTS_JsServiceAbility_0900', 0, async function (done) {
         console.debug('ACTS_JsServiceAbility_0900====<begin');
         try {
-            commonEvent.createSubscriber(CommonEventSubscribeInfo0900).then(async (data) => {
+            await commonEvent.createSubscriber(CommonEventSubscribeInfo0900).then(async (data) => {
                 console.debug("=ACTS_JsServiceAbility_0900 createSubscriber .then(data)=======>"
                     + ("json data【") + JSON.stringify(data) + (" 】")
                     + " ,data=" + data);
                 subscriber0900 = data;
-                await commonEvent.subscribe(subscriber0900, async (err, data) => {
+                commonEvent.subscribe(subscriber0900, async (err, data) => {
                     console.debug("=ACTS_JsServiceAbility_0900 subscribe (err,data)=======>"
                         + ("json err【") + JSON.stringify(err) + (" 】")
                         + ("json data【") + JSON.stringify(data) + (" 】")
                         + " ,err=" + err + " ,data=" + data);
                     expect("ACTS_SerivceAbilityServerSecond_onCommand_ServiceStartService_0900").assertEqual(
                         data.event);
+                        await sleep(1000)
                     unsubscribe("ACTS_JsServiceAbility_0900_unsubscribe", subscriber0900);
                     console.debug('ACTS_JsServiceAbility_0900====<end');
                     done();
                 });
             })
+            await sleep(500)
             featureAbility.startAbility(
                 {
                     want:
@@ -576,24 +581,26 @@ describe('ActsStServiceAbilityTest', function () {
     it('ACTS_JsServiceAbility_1000', 0, async function (done) {
         console.debug('ACTS_JsServiceAbility_1000====<begin');
         try {
-            commonEvent.createSubscriber(CommonEventSubscribeInfo1000).then(async (data) => {
+            await commonEvent.createSubscriber(CommonEventSubscribeInfo1000).then(async (data) => {
                 console.debug("=ACTS_JsServiceAbility_1000 createSubscriber .then(data)=======>"
                     + ("json data【") + JSON.stringify(data) + (" 】")
                     + " ,data=" + data);
                 subscriber1000 = data;
-                await commonEvent.subscribe(subscriber1000, async (err, data) => {
+                commonEvent.subscribe(subscriber1000, async (err, data) => {
                     console.debug("=ACTS_JsServiceAbility_1000 subscribe (err,data)=======>"
                         + ("json err【") + JSON.stringify(err) + (" 】")
                         + ("json data【") + JSON.stringify(data) + (" 】")
                         + " ,err=" + err + " ,data=" + data);
                     expect("ACTS_SerivceAbilityServerSecond_onCommand_ServiceStartService_1000").assertEqual(
                         data.event);
+                        await sleep(1000)
                     unsubscribe("ACTS_JsServiceAbility_1000_unsubscribe", subscriber1000);
                     console.debug('ACTS_JsServiceAbility_1000====<end');
                     done()
                 });
             })
-            await featureAbility.startAbility(
+            await sleep(500)
+            featureAbility.startAbility(
                 {
                     want:
                     {
@@ -624,12 +631,12 @@ describe('ActsStServiceAbilityTest', function () {
         console.log('ACTS_JsServiceAbility_1300====<begin');
         try {
             var mConnIdJsPromise;
-            commonEvent.createSubscriber(CommonEventSubscribeInfo1300).then(async (data) => {
+            await commonEvent.createSubscriber(CommonEventSubscribeInfo1300).then(async (data) => {
                 console.debug("=ACTS_JsServiceAbility_1300 createSubscriber .then(data)=======>"
                     + ("json data【") + JSON.stringify(data) + (" 】")
                     + " ,data=" + data);
                 subscriber1300 = data;
-                await commonEvent.subscribe(subscriber1300, async (err, data) => {
+                commonEvent.subscribe(subscriber1300, async (err, data) => {
                     console.debug("=ACTS_JsServiceAbility_1300 subscribe (err,data)=======>"
                         + ("json err【") + JSON.stringify(err) + (" 】")
                         + ("json data【") + JSON.stringify(data) + (" 】")
@@ -703,12 +710,12 @@ describe('ActsStServiceAbilityTest', function () {
         try {
             var currentAlertTimeout;
             var mConnIdJsAsyncCallback;
-            commonEvent.createSubscriber(CommonEventSubscribeInfo1400).then(async (data) => {
+            await commonEvent.createSubscriber(CommonEventSubscribeInfo1400).then(async (data) => {
                 console.debug("=ACTS_JsServiceAbility_1400 createSubscriber .then(data)=======>"
                     + ("json data【") + JSON.stringify(data) + (" 】")
                     + " ,data=" + data);
                 subscriber1400 = data;
-                await commonEvent.subscribe(subscriber1400, async (err, data) => {
+                commonEvent.subscribe(subscriber1400, async (err, data) => {
                     console.debug("=ACTS_JsServiceAbility_1400 subscribe (err,data)=======>"
                         + ("json err【") + JSON.stringify(err) + (" 】")
                         + ("json data【") + JSON.stringify(data) + (" 】")
@@ -784,12 +791,12 @@ describe('ActsStServiceAbilityTest', function () {
         console.log('ACTS_JsServiceAbility_1500====<begin');
         try {
             var mConnIdJsPromise;
-            commonEvent.createSubscriber(CommonEventSubscribeInfo1500).then(async (data) => {
+            await commonEvent.createSubscriber(CommonEventSubscribeInfo1500).then(async (data) => {
                 console.debug("=ACTS_JsServiceAbility_1500 createSubscriber .then(data)=======>"
                     + ("json data【") + JSON.stringify(data) + (" 】")
                     + " ,data=" + data);
                 subscriber1500 = data;
-                await commonEvent.subscribe(subscriber1500, async (err, data) => {
+                commonEvent.subscribe(subscriber1500, async (err, data) => {
                     console.debug("=ACTS_JsServiceAbility_1500 subscribe (err,data)=======>"
                         + ("json err【") + JSON.stringify(err) + (" 】")
                         + ("json data【") + JSON.stringify(data) + (" 】")

@@ -21,6 +21,7 @@
                 "label": "$string:entry_label",
                 "visible": true,
                 "orientation": "portrait",
+                "launchType": "singleton",
                 "skills": [
                     {
                         "actions": [

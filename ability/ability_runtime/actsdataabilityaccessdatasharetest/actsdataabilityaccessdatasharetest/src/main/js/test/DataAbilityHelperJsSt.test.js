@@ -63,8 +63,9 @@ describe('ActsDataAbilityHelperTest', function () {
                     console.log(TAG + ' insert err, data====>'
                         + 'json err [ ' + JSON.stringify(err) + ' ], json data [ ' + JSON.stringify(data) + ' ]');
                     expect(data).assertEqual(1);
+                    console.log(TAG + '====<end');
+                    done();
             })
-            done();
         } catch (err) {
             console.error(TAG + ' catch(err)====>' + err);
             expect(false).assertTrue();
@@ -122,7 +123,7 @@ describe('ActsDataAbilityHelperTest', function () {
                 columns,
                 predicates,
                 (err, data) => {
-                    console.log(TAG + ' insert err, data====>'
+                    console.log(TAG + ' query err, data====>'
                         + 'json err [ ' + JSON.stringify(err) + ' ], json data [ ' + JSON.stringify(data) + ' ]');
                     expect(typeof (data)).assertEqual("object");
                     console.log(TAG + '====<end');
