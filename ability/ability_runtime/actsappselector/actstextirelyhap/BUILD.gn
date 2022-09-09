@@ -33,4 +33,3 @@ ohos_resources("hjs_demo_resources") {
   sources = [ "./entry/src/main/resources" ]
   hap_profile = "./entry/src/main/config.json"
 }
-
