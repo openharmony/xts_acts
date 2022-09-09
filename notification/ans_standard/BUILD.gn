@@ -18,7 +18,7 @@ group("ans_standard") {
     deps = [
       "actsNotificationSlotTest:ActsNotificationSlotTest",
       "actsNotificationWantAgentTest:ActsNotificationWantAgentTest",
-      "actsnotificationshow:ActsNotificationShowTest"
+      "actsnotificationshow:ActsNotificationShowTest",
     ]
   }
 }
