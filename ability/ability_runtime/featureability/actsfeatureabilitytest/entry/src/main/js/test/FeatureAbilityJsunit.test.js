@@ -84,7 +84,7 @@ describe('ActsFeatureAbilityTest', function () {
          console.info('beforeEach called')
     })
 
-    afterEach(function() {
+    afterEach(async function(done) {
 
         /*
          * @tc.teardown: teardown invoked after each testcases
@@ -94,6 +94,22 @@ describe('ActsFeatureAbilityTest', function () {
          setTimeout(() => {}, 500);
          backgroundTaskManager.stopBackgroundRunning(featureAbility.getContext());
          setTimeout(() => {}, 500);
+
+        let wantInfo = {
+            want: {
+                bundleName: "com.example.actsfeatureabilitytest",
+                abilityName: "com.example.actsfeatureabilitytest.TestAbility"
+            }
+        }
+        await featureAbility.startAbility(wantInfo).then((data) => {
+          console.log("ACTS_wantConstant startAbility data : " + JSON.stringify(data));
+        }).catch((err) => {
+          console.log("ACTS_wantConstant startAbility err : " + JSON.stringify(err));
+        })
+        setTimeout(function () {
+            console.log("ACTS_wantConstant afterEach end");
+            done();
+        }, 500);
     })
 
     /**

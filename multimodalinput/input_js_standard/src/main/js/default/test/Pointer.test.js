@@ -240,6 +240,9 @@ describe('MultimodalInput_Pointer_test', function () {
    
         console.info('MultimodalInput_Pointer_test::Pointer_HELP_test = ' + pointer.PointerStyle.HELP);
         expect(pointer.PointerStyle.HELP == 20).assertTrue();
+		
+        console.info('MultimodalInput_Pointer_test::Pointer_MOVE_test = ' + pointer.PointerStyle.MOVE);
+        expect(pointer.PointerStyle.MOVE == 21).assertTrue();
    
         console.info('MultimodalInput_Pointer_test::Pointer_RESIZE_UP_DOWN_test = ' + pointer.PointerStyle.RESIZE_UP_DOWN);
         expect(pointer.PointerStyle.RESIZE_UP_DOWN == 22).assertTrue();
@@ -291,6 +294,7 @@ describe('MultimodalInput_Pointer_test', function () {
     
         console.info('MultimodalInput_Pointer_test::Pointer_MIDDLE_BTN_NORTH_SOUTH_WEST_EAST_test = ' + pointer.PointerStyle.MIDDLE_BTN_NORTH_SOUTH_WEST_EAST);
         expect(pointer.PointerStyle.MIDDLE_BTN_NORTH_SOUTH_WEST_EAST == 38).assertTrue();
+
     })
 
 })

@@ -43,7 +43,20 @@ export default function abilityTest() {
       await appManager.killProcessesByBundleName("com.example.multiinstancehapa");
       await appManager.killProcessesByBundleName("com.example.multiinstancehapb");
 
-      done();
+      let wantInfo = {
+        bundleName: "com.example.processmultiinstance",
+        abilityName: "com.example.processmultiinstance.MainAbility"
+      }
+      await globalThis.abilityContext.startAbility(wantInfo).then((data) => {
+        console.log("ACTS_Process_MultiInstance startAbility data: " + JSON.stringify(data));
+      }).catch((err) => {
+        console.log("ACTS_Process_MultiInstance startAbility err: " + JSON.stringify(err));
+      })
+
+      setTimeout(function () {
+        console.log("ACTS_Process_MultiInstance afterEach end");
+        done();
+      }, 500);
     })
 
     /**
