@@ -16,7 +16,7 @@ ohos_hap_assist_suite("ActsImageBEntryRelyHap") {
   hap_profile = "entry/src/main/module.json"
   js_build_mode = "debug"
   hap_name = "ActsImageBEntryRelyHap"
-  
+
   testonly = true
   deps = [
     ":actsimagebentryrelyhap_js_assets",

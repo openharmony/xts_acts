@@ -16,7 +16,7 @@ ohos_hap("ActsImageCFeatureRelyHap") {
   hap_profile = "entry/src/main/module.json"
   js_build_mode = "debug"
   hap_name = "ActsImageCFeatureRelyHap"
-  
+
   testonly = true
   deps = [
     ":actsimagecfeaturerelyhap_js_assets",

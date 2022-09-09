@@ -16,7 +16,7 @@ ohos_hap("ActsServiceAbilityBRelyHap") {
   hap_profile = "entry/src/main/module.json"
   js_build_mode = "debug"
   hap_name = "ActsServiceAbilityBRelyHap"
-  
+
   testonly = true
   deps = [
     ":actsserviceabilitybrelyhap_js_assets",
