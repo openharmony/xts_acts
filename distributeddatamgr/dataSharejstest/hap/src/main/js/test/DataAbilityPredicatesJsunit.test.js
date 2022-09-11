@@ -1910,11 +1910,7 @@ describe('dataAbilityPredicatesTest', function () {
             let dataAbilityPredicates = await new dataAbility.DataAbilityPredicates();
             var dataAbilityPredicatesInit = dataAbilityPredicates
             dataAbilityPredicates.equalTo("stringValue", "ABCDEFGHIJKLMN").or().and().equalTo("integerValue", 1);
-            if(dataAbilityPredicatesInit == dataAbilityPredicates){
-                expect(true).assertTrue();
-            }else{
-                expect(null).assertFail();
-            }
+            expect(dataAbilityPredicates == dataAbilityPredicatesInit).assertTrue();
             let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
 
             console.info(TAG + "you should not start a request" + " with \"and\" or use or() before this function");
@@ -1935,11 +1931,7 @@ describe('dataAbilityPredicatesTest', function () {
             var dataAbilityPredicatesInit = dataAbilityPredicates
             dataAbilityPredicates.equalTo("stringValue", "ABCDEFGHIJKLMN").or().or().equalTo("integerValue", 1);
             let predicates = dataAbility.createRdbPredicates("AllDataType", dataAbilityPredicates);
-            if(dataAbilityPredicatesInit == dataAbilityPredicates){
-                expect(true).assertTrue();
-            }else{
-                expect(null).assertFail();
-            }
+            expect(dataAbilityPredicates == dataAbilityPredicatesInit).assertTrue();
             console.info(TAG + "you are starting a sql request with predicate or or,"
                 + "using function or() immediately after another or(). that is ridiculous.");
         }
