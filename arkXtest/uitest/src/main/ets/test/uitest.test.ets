@@ -737,6 +737,8 @@ export default function UiTest() {
         let window2 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
         let mode2 = await window2.getWindowMode()
         expect(mode2 == WindowMode.FLOATING).assertTrue()
+        expect(mode2 != WindowMode.SECONDARY).assertTrue()
+        expect(mode2 != WindowMode.PRIMARY).assertTrue()
         await stopApplication('com.uitestScene.acts')
       }
       catch (err) {
@@ -906,7 +908,7 @@ export default function UiTest() {
       await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
-      let window = await driver.findWindow({bundleName:'com.uitestScene.acts',focused:true,actived:true})
+      let window = await driver.findWindow({bundleName:'com.uitestScene.acts',focused:true,actived:true,title:''})
       await window.focus()
       let isFocused = await window.isFocused()
       let isActived = await window.isActived()
