@@ -22,6 +22,7 @@ describe('ActsDataAbilityHelperTest', function () {
     let dataShareUri = ("datashare:///com.example.dataabilityserver_fa.DataAbility");
     let columns = ['id', 'name', 'introduction']
     let DAHelper;
+    let gSetTimeout = 500;
     let TAG = ''
 
     function sleep(delay) {
@@ -98,7 +99,7 @@ describe('ActsDataAbilityHelperTest', function () {
                 .then(function (data) {
                     console.log(TAG + ' then data====>'
                         + 'json data [ ' + JSON.stringify(data) + ' ]');
-                    expect(data).assertEqual(1);
+                    expect(data).assertEqual(2);
                     console.log(TAG + '====<end');
                     done();
                 }).catch(function (err) {
@@ -133,7 +134,7 @@ describe('ActsDataAbilityHelperTest', function () {
                 columns,
                 predicates,
                 (err, data) => {
-                    console.log(TAG + ' insert err, data====>'
+                    console.log(TAG + ' query err, data====>'
                         + 'json err [ ' + JSON.stringify(err) + ' ], json data [ ' + JSON.stringify(data) + ' ]');
                     expect(typeof (data)).assertEqual("object");
                     console.log(TAG + '====<end');
@@ -337,7 +338,7 @@ describe('ActsDataAbilityHelperTest', function () {
                 (err, data) => {
                     console.log(TAG +' batchInsert err, data====>'
                         + 'json err [ ' + JSON.stringify(err) + ' ], json data [ ' + JSON.stringify(data) + ' ]');
-                    expect(data).assertEqual(1);
+                    expect(data).assertEqual(3);
                     console.log(TAG +'====<end');
                     done();
                 });
@@ -363,11 +364,11 @@ describe('ActsDataAbilityHelperTest', function () {
                 {'name': 'JS', 'introduction': 'Guide'}, {'name': 'GO', 'introduction': 'Expert'});
             DAHelper.batchInsert(
                 dataAbilityUri,
-                predicates
+                vbs
             ).then((data) => {
                 console.log(TAG + ' then data====>'
                     + 'json data [ ' + JSON.stringify(data) + ' ]');
-                expect(data).assertEqual(1);
+                expect(data).assertEqual(3);
                 console.log(TAG + '====<end');
                 done();
             }).catch((err) => {
@@ -547,6 +548,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Obtains the MIME type of files.
     * @tc.desc: Check the return value of the interface (by AsyncCallback)
     */
+
     it('ACTS_DataAbilityAccessDataShare_GetFileTypes_0100', 0, async function (done) {
         TAG = 'ACTS_DataAbilityAccessDataShare_GetFileTypes_0100';
         console.log(TAG + '====<begin');
@@ -570,7 +572,7 @@ describe('ActsDataAbilityHelperTest', function () {
                         } else if (i == 1) {
                             expect(data[i]).assertEqual("type00");
                         } else if (i == 2) {
-                            expect(data[i]).assertEqual("tyep03");
+                            expect(data[i]).assertEqual("type03");
                         }
                     }
                     console.log(TAG + '====<end');
@@ -585,11 +587,12 @@ describe('ActsDataAbilityHelperTest', function () {
         }
     })
 
-    /*
+   /*
     * @tc.number: ACTS_DataAbilityAccessDataShare_GetFileTypes_0200
     * @tc.name: Obtains the MIME type of files.
     * @tc.desc: Check the return value of the interface (by promise)
     */
+
     it('ACTS_DataAbilityAccessDataShare_GetFileTypes_0200', 0, async function (done) {
         TAG = 'ACTS_DataAbilityAccessDataShare_GetFileTypes_0200';
         console.log(TAG + '====<begin');
@@ -611,7 +614,7 @@ describe('ActsDataAbilityHelperTest', function () {
                     } else if (i == 1) {
                         expect(data[i]).assertEqual("type00");
                     } else if (i == 2) {
-                        expect(data[i]).assertEqual("tyep03");
+                        expect(data[i]).assertEqual("type03");
                     }
                 }
                 console.log(TAG + '====<end');
@@ -667,7 +670,7 @@ describe('ActsDataAbilityHelperTest', function () {
     * @tc.name: Converts the given uri that refer to the Data ability into a normalized URI.
     * @tc.desc: Check the return value of the interface (by promise)
     */
-    it('ACTS_NormalizeUri_0100', 0, async function (done) {
+    it('ACTS_DataAbilityAccessDataShare_NormalizeUri_0200', 0, async function (done) {
         TAG = 'ACTS_DataAbilityAccessDataShare_NormalizeUri_0200';
         console.log(TAG + '====<begin');
         let ret = false;
