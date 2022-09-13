@@ -29,14 +29,14 @@ var GrantStatus = {
     PERMISSION_DENIED: -1,
     PERMISSION_GRANTED: 0,
 };
-const RESULT_SUCCESS = 0
-const RESULT_FAIL = -1
+const RESULT_SUCCESS = 0;
+const RESULT_FAIL = -1;
 const TIMEOUT = 5000;
 
-const DEFAULT_PERMISSION_FALG = 0
+const DEFAULT_PERMISSION_FALG = 0;
 var permissionNameUser = "ohos.permission.ALPHA";
 var permissionNameSystem = "ohos.permission.BETA";
-var tokenID = undefined
+var tokenID = undefined;
 export default function AccessTokenTest() {
 describe('AccessTokenTest', function () {
     console.info('##########start AccessTokenTest');
