@@ -752,39 +752,6 @@ export default function abilityTest() {
         })
 
         /*
-        * @tc.number  AccessibilityExtensionContextTest_getFocusElement_asyncCallback_3500
-        * @tc.name    AccessibilityExtensionContextTest_getFocusElement_asyncCallback_3500
-        * @tc.desc    The parameter input is null, test the getFocusElement() function,
-        *             The result of getFocusElement() should be AccessibilityElement type.
-        * @tc.size    SmallTest
-        * @tc.type    User
-        */
-        it('AccessibilityExtensionContextTest_getFocusElement_asyncCallback_3500', 0, async function (done) {
-            let caseName = 'AccessibilityExtensionContextTest_getFocusElement_asyncCallback_3500';
-            console.info(caseName + 'start');
-
-            if (isConnect) {
-                publishCaseExecute(caseName);
-
-                setTimeout(() => {
-                    if (caseResult != undefined) {
-                        console.info(caseName + ':' + caseResult.data);
-                        expect(passStr).assertEqual(caseResult.data);
-                        expect(caseName).assertEqual(caseResult.parameters.case);
-                    } else {
-                        console.info(caseName + ': caseResult is undefined');
-                        expect(null).assertFail();
-                    }
-                    done();
-                }, 5500);
-            } else {
-                console.error(caseName + ': extension not connected');
-                expect(null).assertFail();
-                done();
-            }
-        })
-
-        /*
         * @tc.number  AccessibilityExtensionContextTest_getFocusElement_asyncCallback_3600
         * @tc.name    AccessibilityExtensionContextTest_getFocusElement_asyncCallback_3600
         * @tc.desc    The parameter input is null, test the getFocusElement() function,

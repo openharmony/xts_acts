@@ -138,10 +138,6 @@ export class ExtensionContextTest {
                 displayId = -1;
                 this.getWindowsByIdPromise(caseName, displayId);
                 break;
-            case 'AccessibilityExtensionContextTest_getFocusElement_asyncCallback_3500':
-                await this.setAccessibilityFocus();
-                this.getFocusElementCallback(caseName, true);
-                break;
             case 'AccessibilityExtensionContextTest_getFocusElement_asyncCallback_3600':
                 await this.clearAccessibilityFocus();
                 this.getFocusElementCallback(caseName, false);
