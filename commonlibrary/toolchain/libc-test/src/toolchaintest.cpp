@@ -104,8 +104,8 @@ static int runTests(const char *argvs)
         return -1;
     }
     //Process state
-    if (WIFEXITED(status)) {
-        if (WEXITSTATUS(status) == 0) {
+    if (WIFEXITED(status)) { //The right exit
+        if (WEXITSTATUS(status) == 0) { //operate successfully
             return t_status;
         }
         printf("FAIL %s [status %d]\n", argvs, WEXITSTATUS(status));
