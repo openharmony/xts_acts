@@ -65,6 +65,22 @@ describe('bluetoothhostTest2', function() {
     })
 
     /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BR_Pair_0100
+     * @tc.name Test pairDevice of use invailded address
+     * @tc.desc Test pairDevice api
+     * @tc.size MEDIUM
+     * @ since 8
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('SUB_COMMUNICATION_BLUETOOTH_BR_Pair_0100', 0, async function (done) {
+        let result = bluetooth.pairDevice("11:22:55:66:33:44");
+        console.info("[bluetooth_js] onStartpair001 -> " + JSON.stringify(result));
+        expect(result).assertFalse();
+        done()
+    })
+
+    /**
      * @tc.number SUB_COMMUNICATION_BLUETOOTH_BR_Pair_0200
      * @tc.name testStartpair
      * @tc.desc Test pairDevice of use vailded address.
