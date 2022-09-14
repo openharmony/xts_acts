@@ -60,6 +60,101 @@ export default function addImage() {
             })
         }
 
+        async function createIncrementalSourceCb(done, testNum, type, opts) {
+            let testimagebuffer = testPng;
+            let incSouce;
+            console.info(`${testNum} 0001 ` + testimagebuffer.length);
+            let bufferSize = 5000;
+            let offset = 0;
+            if (type == 'sourceOpts') {
+                incSouce = image.createIncrementalSource(new ArrayBuffer(1), opts);
+            } else {
+                incSouce = image.createIncrementalSource(new ArrayBuffer(1));
+            }
+            let ret;
+            let isFinished = false;
+            while (offset < testimagebuffer.length) {
+                var oneStep = testimagebuffer.slice(offset, offset + bufferSize);
+                console.info(`${testNum} 0002 ` + oneStep.length);
+                if (oneStep.length < bufferSize) {
+                    isFinished = true;
+                }
+                ret = await new Promise(res => {
+                    incSouce.updateData(oneStep, isFinished, 0, oneStep.length, (err, ret) => {
+                        res(ret);
+                    })
+                })
+
+                if (!ret) {
+                    console.info(`${testNum} updateData failed`);
+                    expect(ret).assertTrue();
+                    break;
+                }
+                offset = offset + oneStep.length;
+                console.info(`${testNum} 0003 ` + offset);
+            }
+            if (ret) {
+                console.info(`${testNum} updateData success `);
+                let decodingOptions = {
+                    sampleSize: 1
+                };
+                incSouce.createPixelMap(decodingOptions, (err, pixelmap) => {
+                    console.info(`${testNum} 0004` + pixelmap);
+                    expect(pixelmap != undefined).assertTrue();
+                    done();
+                })
+            } else {
+                expect(false).assertTrue();
+                done();
+            }
+        }
+
+        async function createIncrementalSourcePromise(done, testNum, type, opts) {
+            let testimagebuffer = testPng;
+            let incSouce;
+            console.info(`${testNum} 0001 ` + testimagebuffer.length);
+            let bufferSize = 5000;
+            let offset = 0;
+            if (type == 'sourceOpts') {
+                console.info(`${testNum} have sourceopts`)
+                incSouce = image.createIncrementalSource(new ArrayBuffer(1), opts);
+            } else {
+                console.info(`${testNum} no sourceopts`)
+                incSouce = image.createIncrementalSource(new ArrayBuffer(1));
+            }
+            let ret;
+            let isFinished = false;
+            while (offset < testimagebuffer.length) {
+                var oneStep = testimagebuffer.slice(offset, offset + bufferSize);
+                console.info(`${testNum} 0002 ` + oneStep.length);
+                if (oneStep.length < bufferSize) {
+                    isFinished = true;
+                }
+                ret = await incSouce.updateData(oneStep, isFinished, 0, oneStep.length);
+                if (!ret) {
+                    console.info(`${testNum} updateData failed`);
+                    expect(ret).assertTrue();
+                    break;
+                }
+                offset = offset + oneStep.length;
+                console.info(`${testNum} 0003 ` + offset);
+            }
+            if (ret) {
+                console.info(`${testNum} updateData success `);
+                let decodingOptions = {
+                    sampleSize: 1
+                };
+                incSouce.createPixelMap(decodingOptions, (err, pixelmap) => {
+                    console.info(`${testNum} 0004` + pixelmap);
+                    expect(pixelmap != undefined).assertTrue();
+                    done();
+                })
+            } else {
+                expect(false).assertTrue();
+                done();
+            }
+        }
+
         /**
          * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_0100
          * @tc.name      : create pixelmap-promise (editable: true, pixelFormat: RGBA_8888, size: { height: 4, width: 6 }, bytes = buffer,scaleMode: 1, alphaType: 0)
@@ -199,52 +294,11 @@ export default function addImage() {
          * @tc.level     : Level 1
          */
         it('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_PROMISE_0100', 0, async function (done) {
-            try {
-                let testimagebuffer = testPng;
-                console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_PROMISE_0100 0003 ' + testimagebuffer.length);
-                let bufferSize = 5000;
-                let offset = 0;
-                const incSouce = image.createIncrementalSource(new ArrayBuffer(1));
-                let ret;
-                let isFinished = false;
-                while (offset < testimagebuffer.length) {
-                    console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_PROMISE_0100 0006 ' + testimagebuffer.length);
-                    var oneStep = testimagebuffer.slice(offset, offset + bufferSize);
-                    console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_PROMISE_0100 0007 ' + oneStep.length);
-                    if (oneStep.length < bufferSize) {
-                        isFinished = true;
-                    }
-                    ret = await incSouce.updateData(oneStep, isFinished, 0, oneStep.length);
-                    if (!ret) {
-                        console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_PROMISE_0100 updateData failed');
-                        expect(ret).assertTrue();
-                        break;
-                    }
-                    offset = offset + oneStep.length;
-                    console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_PROMISE_0100 0011 ' + offset);
-                }
-                if (ret) {
-                    console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_PROMISE_0100 updateData success ');
-                    let decodingOptions = {
-                        sampleSize: 1
-                    };
-                    incSouce.createPixelMap(decodingOptions, (err, pixelmap) => {
-                        console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_PROMISE_0100 0014' + pixelmap);
-                        expect(pixelmap != undefined).assertTrue();
-                        done();
-                    })
-                } else {
-                    expect(false).assertTrue();
-                    done();
-                }
-            } catch (error) {
-                expect(false).assertTrue();
-                console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_PROMISE_0100 updateData failed ' + error);
-            }
+            createIncrementalSourcePromise(done, 'SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_PROMISE_0100', 'noSourceOpts')
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_PROMISE_0200
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_CALLBACK_0100
          * @tc.name      : createIncrementalSource-updateData-png-promise
          * @tc.desc      : 1.create imagesource
          *                 2.update data
@@ -253,52 +307,46 @@ export default function addImage() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_PROMISE_0200', 0, async function (done) {
-            try {
-                let testimagebuffer = testPng;
-                console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_PROMISE_0200 0001 ' + testimagebuffer.length);
-                let bufferSize = 5000;
-                let offset = 0;
-                const incSouce = image.createIncrementalSource(new ArrayBuffer(1));
-                let ret;
-                let isFinished = false;
-                while (offset < testimagebuffer.length) {
-                    var oneStep = testimagebuffer.slice(offset, offset + bufferSize);
-                    console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_PROMISE_0200 0002 ' + oneStep.length);
-                    if (oneStep.length < bufferSize) {
-                        isFinished = true;
-                    }
-                    ret = await new Promise(res => {
-                        incSouce.updateData(oneStep, isFinished, 0, oneStep.length, (err, ret) => {
-                            res(ret);
-                        })
-                    })
-                    if (!ret) {
-                        console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_PROMISE_0200 updateData failed');
-                        expect(ret).assertTrue();
-                        break;
-                    }
-                    offset = offset + oneStep.length;
-                    console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_PROMISE_0200 0003 ' + offset);
-                }
-                if (ret) {
-                    console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_PROMISE_0200 updateData success ');
-                    let decodingOptions = {
-                        sampleSize: 1
-                    };
-                    incSouce.createPixelMap(decodingOptions, (err, pixelmap) => {
-                        console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_PROMISE_0200 0004' + pixelmap);
-                        expect(pixelmap != undefined).assertTrue();
-                        done();
-                    })
-                } else {
-                    expect(false).assertTrue();
-                    done();
-                }
-            } catch (error) {
-                expect(false).assertTrue();
-                console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_PROMISE_0200 updateData failed ' + error);
-            }
+        it('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_CALLBACK_0100', 0, async function (done) {
+            createIncrementalSourceCb(done, 'SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_CALLBACK_0100', 'noSourceOpts')
+        })
+
+        /**
+        * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_PROMISE_0300
+        * @tc.name      : createIncrementalSource-updateData-png-promise
+        * @tc.desc      : 1.create imagesource
+        *                 2.update data
+        *                 3.create pixelmap
+        * @tc.size      : MEDIUM 
+        * @tc.type      : Functional
+        * @tc.level     : Level 1
+        */
+        it('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_PROMISE_0300', 0, async function (done) {
+            let opts = {
+                sourceDensity: 240,
+                pixelFormat: 3,
+                size: { height: 4, width: 6 }
+            };
+            createIncrementalSourcePromise(done, 'SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_PROMISE_0300', 'sourceOpts', opts)
+        })
+
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_CALLBACK_0200
+         * @tc.name      : createIncrementalSource-updateData-png-callback
+         * @tc.desc      : 1.create imagesource
+         *                 2.update data
+         *                 3.create pixelmap
+         * @tc.size      : MEDIUM 
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_CALLBACK_0200', 0, async function (done) {
+            let opts = {
+                sourceDensity: 240,
+                pixelFormat: 3,
+                size: { height: 4, width: 6 }
+            };
+            createIncrementalSourceCb(done, 'SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_CALLBACK_0200', 'sourceOpts', opts)
         })
     })
 }
