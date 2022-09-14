@@ -1801,7 +1801,7 @@ describe('deviceKvStoreCallbackTest', function () {
             await kvStore.removeDeviceData('', function (err,data) {
                 if (err == undefined) {
                     console.info('testDeviceKvStoreRemoveDeviceData103 removeDeviceData success');
-                    expect(null).assertFail();
+                    expect(err == undefined).assertTrue();
                 } else {
                     console.info('testDeviceKvStoreRemoveDeviceData103 removeDeviceData fail');
                 }

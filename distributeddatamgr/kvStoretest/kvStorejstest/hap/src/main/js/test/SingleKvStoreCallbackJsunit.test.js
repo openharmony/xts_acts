@@ -1760,7 +1760,7 @@ describe('singleKvStoreCallbackTest', function () {
             await kvStore.removeDeviceData('', function (err,data) {
                 if (err == undefined) {
                     console.info('testSingleKvStoreRemoveDeviceData103 removeDeviceData success');
-                    expect(null).assertFail();
+                    expect(err == undefined).assertTrue();
                 } else {
                     console.info('testSingleKvStoreRemoveDeviceData103 removeDeviceData fail');
                 }
