@@ -38,7 +38,6 @@ export default function abilityTest() {
       prompt.showToast({
         message: 'CASE All End'
       })
-      disableAll(LOG_PREFIX + ' disableAll ')
       done()
     })
     /**
