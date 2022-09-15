@@ -352,17 +352,12 @@ export default function abilityTest() {
          */
         it('ACTS_AACommand_finish_01_0800', 0, async function (done) {
             var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
-            setTimeout(() => {
-                console.log('ACTS_AACommand_finish_01_0800 code:'+JSON.stringify(code))
-                if(code!=undefined){
-                    expect().assertFail();
-                }
-                done();
-            }, 3000)
-            var code = globalThis.abilityDelegator.finishTest(msg, 'ABCD',()=>{
+            globalThis.abilityDelegator.finishTest(msg, 'ABCD',()=>{
                 console.log(" ACTS_AACommand_finish_01_0800 finishTest  test  end ========> callback " )
                 expect().assertFail();
             })
+            await sleep(2000);
+            done();
         })
 
         /**
@@ -388,15 +383,9 @@ export default function abilityTest() {
          * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
          */
         it('ACTS_AACommand_finish_01_1000', 0, async function (done) {
-            var code = null
-            setTimeout(() => {
-                console.log('ACTS_AACommand_finish_01_1000 code:'+JSON.stringify(code))
-                if(code!=undefined){
-                    expect().assertFail();
-                }
-                done();
-            }, 3000)
-            code = globalThis.abilityDelegator.finishTest(null, 1)
+            globalThis.abilityDelegator.finishTest(null, 1)
+            await sleep(2000);
+            done()
         })
 
         /**
@@ -406,15 +395,9 @@ export default function abilityTest() {
          * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
          */
         it('ACTS_AACommand_finish_01_1100', 0, async function (done) {
-            var code=null
-            setTimeout(() => {
-                console.log('ACTS_AACommand_finish_01_1100 code:'+JSON.stringify(code))
-                if(code!=undefined){
-                    expect().assertFail();
-                }
-                done();
-            }, 3000)
-            code = globalThis.abilityDelegator.finishTest(undefined, 1)
+            globalThis.abilityDelegator.finishTest(undefined, 1)
+            await sleep(2000);
+            done()
         })
 
         /**
