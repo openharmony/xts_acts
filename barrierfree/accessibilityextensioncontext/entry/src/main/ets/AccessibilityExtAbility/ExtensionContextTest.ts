@@ -138,45 +138,21 @@ export class ExtensionContextTest {
                 displayId = -1;
                 this.getWindowsByIdPromise(caseName, displayId);
                 break;
-            case 'AccessibilityExtensionContextTest_getFocusElement_asyncCallback_3500':
-                await this.setAccessibilityFocus();
-                this.getFocusElementCallback(caseName, true);
-                break;
-            case 'AccessibilityExtensionContextTest_getFocusElement_asyncCallback_3600':
-                await this.clearAccessibilityFocus();
-                this.getFocusElementCallback(caseName, false);
-                break;
             case 'AccessibilityExtensionContextTest_getFocusElement_asyncCallback_3700':
                 await this.setAccessibilityFocus();
                 this.getFocusElementByTypeCallback(caseName, true, true);
-                break;
-            case 'AccessibilityExtensionContextTest_getFocusElement_asyncCallback_3800':
-                await this.setAccessibilityFocus();
-                this.getFocusElementByTypeCallback(caseName, true, false);
                 break;
             case 'AccessibilityExtensionContextTest_getFocusElement_asyncCallback_3900':
                 await this.clearAccessibilityFocus();
                 this.getFocusElementByTypeCallback(caseName, false, true);
                 break;
-            case 'AccessibilityExtensionContextTest_getFocusElement_asyncCallback_4000':
-                await this.clearAccessibilityFocus();
-                this.getFocusElementByTypeCallback(caseName, false, false);
-                break;
             case 'AccessibilityExtensionContextTest_getFocusElement_asyncPromise_4100':
                 await this.setAccessibilityFocus();
                 this.getFocusElementByTypePromise(caseName, true, true);
                 break;
-            case 'AccessibilityExtensionContextTest_getFocusElement_asyncPromise_4200':
-                await this.setAccessibilityFocus();
-                this.getFocusElementByTypePromise(caseName, true, false);
-                break;
             case 'AccessibilityExtensionContextTest_getFocusElement_asyncPromise_4300':
                 await this.clearAccessibilityFocus();
                 this.getFocusElementByTypePromise(caseName, false, true);
-                break;
-            case 'AccessibilityExtensionContextTest_getFocusElement_asyncPromise_4400':
-                await this.clearAccessibilityFocus();
-                this.getFocusElementByTypePromise(caseName, false, false);
                 break;
             case 'AccessibilityExtensionContextTest_gestureInject_asyncCallback_4500':
                 gesturePos1 = {positionX: 10, positionY: 10};
