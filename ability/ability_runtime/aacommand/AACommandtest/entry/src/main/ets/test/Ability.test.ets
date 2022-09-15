@@ -294,24 +294,6 @@ export default function abilityTest() {
         })
 
         /**
-         * @tc.number: ACTS_AACommand_finishTest_1200
-         * @tc.name: The parameters of the test command are valid, and the finishTest interface is called in Promise
-         *           mode. The msg parameter is valid(including Chinese and special characters) and the code parameter
-         *           is valid (Number.MAX_VALUE)
-         * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
-         */
-        it('ACTS_AACommand_finishTest_1200', 0, async function (done) {
-            console.log("ACTS_AACommand_finishTest_1200 --- start")
-            let
-                finishmsg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
-            finishmsg1 = 'TestFinished-ResultCode: -1'
-            expect(globalThis.stdResult21).assertContain(finishmsg);
-            expect(globalThis.stdResult21).assertContain(finishmsg1);
-            expect(globalThis.stdResult22.indexOf("com.example.aacommandrelyhap") == -1).assertTrue()
-            done()
-        })
-
-        /**
          * @tc.number: ACTS_AACommand_finishTest_1300
          * @tc.name: The parameters of the test command are valid, and the finishTest interface is called in Promise
          *           mode. The msg parameter is valid(including Chinese and special characters) and the code parameter
@@ -363,19 +345,6 @@ export default function abilityTest() {
         })
 
         /**
-                 * @tc.number: ACTS_AACommand_finishTest_0200
-                 * @tc.name: The parameters of the test command are valid, and the finishTest 
-                 *           interface is called in AsyncCallback
-                 *           mode. The msg parameter is invalid (null) and the code parameter is valid (1)
-                 * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
-                 */
-        it('ACTS_AACommand_finishTest_0200', 0, async function (done) {
-            console.log("ACTS_AACommand_finishTest_0200 --- start")
-            expect(globalThis.stdResult29.indexOf("com.example.aacommandrelyhap") >= 0).assertTrue()
-            done()
-        })
-
-        /**
          * @tc.number: ACTS_AACommand_finishTest_0300
          * @tc.name: The parameters of the test command are valid, and the finishTest interface is called in 
          *           AsyncCallback mode. The msg parameter is invalid (Undefined) and the code parameter is valid (1)
@@ -387,43 +356,6 @@ export default function abilityTest() {
             done()
         })
 
-        /**
-         * @tc.number: ACTS_AACommand_finishTest_0800
-         * @tc.name: The parameters of the test command are valid, and the finishTest interface is called in 
-         *           AsyncCallback
-         *           mode. The msg parameter is invalid(including Chinese and special characters) and the
-         *           code parameter is valid (“ABCD”)
-         * @tc.desc: Verify that the process of the test framework is not stopped by calling this interface.
-         */
-        it('ACTS_AACommand_finishTest_0800', 0, async function (done) {
-            console.log("ACTS_AACommand_finishTest_0800 --- start")
-            expect(globalThis.stdResult31.indexOf("com.example.aacommandrelyhap") >= 0).assertTrue()
-            done()
-        })
-
-        /**
-         * @tc.number: ACTS_AACommand_finishTest_1000
-         * @tc.name: The parameters of the test command are valid, and the finishTest interface is called in Promise
-         *           mode. The msg parameter is invalid(null) and the code parameter is valid (1)
-         * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
-         */
-        it('ACTS_AACommand_finishTest_1000', 0, async function (done) {
-            console.log("ACTS_AACommand_finishTest_1000 --- start")
-            expect(globalThis.stdResult32.indexOf("com.example.aacommandrelyhap") >= 0).assertTrue()
-            done()
-        })
-
-        /**
-         * @tc.number: ACTS_AACommand_finishTest_1100
-         * @tc.name: The parameters of the test command are valid, and the finishTest interface is called in Promise
-         *           mode. The msg parameter is invalid(undefined) and the code parameter is valid (1)
-         * @tc.desc: Verify that the process of the test framework can be stopped by calling this interface.
-         */
-        it('ACTS_AACommand_finishTest_1100', 0, async function (done) {
-            console.log("ACTS_AACommand_finishTest_1100 --- start")
-            expect(globalThis.stdResult33.indexOf("com.example.aacommandrelyhap") >= 0).assertTrue()
-            done()
-        })
         /**
         * @tc.number: ACTS_AACommand_finishTest_1600
         * @tc.name: The parameters of the test command are valid, and the finishTest interface is called in 
