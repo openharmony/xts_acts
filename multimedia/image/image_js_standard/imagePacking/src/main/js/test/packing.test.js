@@ -217,7 +217,7 @@ export default function imagePacking() {
         }
 
         /**
-         * @tc.number    : SUB_IMAGE_packing_P_001
+         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0100
          * @tc.name      : SUB_IMAGE_packing_P_001
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
@@ -226,13 +226,13 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it('SUB_IMAGE_packing_P_001', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0100', 0, async function (done) {
             let packOpts = { format: "image/jpeg", quality: 99 }
-            packingPromise(done, 'SUB_IMAGE_packing_P_001', 2, packOpts)
+            packingPromise(done, 'SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0100', 2, packOpts)
         })
 
         /**
-         * @tc.number    : SUB_IMAGE_packing_P_002
+         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0200
          * @tc.name      : SUB_IMAGE_packing_P_002 - Promise - RGB565 quality 123
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
@@ -241,13 +241,13 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it('SUB_IMAGE_packing_P_002', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0200', 0, async function (done) {
             let packOpts = { format: "image/jpeg", quality: 123 }
-            packingPromiseFail(done, 'SUB_IMAGE_packing_P_002', 2, packOpts)
+            packingPromiseFail(done, 'SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0200', 2, packOpts)
         })
 
         /**
-         * @tc.number    : SUB_IMAGE_packing_P_003
+         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0300
          * @tc.name      : SUB_IMAGE_packing_P_003 - Promise - RGB565 quality null
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
@@ -256,13 +256,13 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it('SUB_IMAGE_packing_P_003', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0300', 0, async function (done) {
             let packOpts = { format: "image/jpeg" }
-            packingPromiseFail(done, 'SUB_IMAGE_packing_P_003', 2, packOpts)
+            packingPromiseFail(done, 'SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0300', 2, packOpts)
         })
 
         /**
-         * @tc.number    : SUB_IMAGE_packing_P_004
+         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0400
          * @tc.name      : SUB_IMAGE_packing_P_004 - Promise - RGB565 format null
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
@@ -271,13 +271,13 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it('SUB_IMAGE_packing_P_004', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0400', 0, async function (done) {
             let packOpts = { quality: 99 }
-            packingPromiseFail(done, 'SUB_IMAGE_packing_P_004', 2, packOpts)
+            packingPromiseFail(done, 'SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0400', 2, packOpts)
         })
 
         /**
-         * @tc.number    : SUB_IMAGE_packing_P_005
+         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0500
          * @tc.name      : SUB_IMAGE_packing_P_005 - Promise - RGB565 wrong format
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
@@ -286,13 +286,13 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it('SUB_IMAGE_packing_P_005', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0500', 0, async function (done) {
             let packOpts = { format: "image/png", quality: 99 }
-            packingPromiseFail(done, 'SUB_IMAGE_packing_P_005', 2, packOpts)
+            packingPromiseFail(done, 'SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0500', 2, packOpts)
         })
 
         /**
-         * @tc.number    : SUB_IMAGE_packing_P_006
+         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0600
          * @tc.name      : SUB_IMAGE_packing_P_006
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
@@ -301,13 +301,13 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it('SUB_IMAGE_packing_P_006', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0600', 0, async function (done) {
             let packOpts = { format: "image/jpeg", quality: 50 }
-            packingPromise(done, 'SUB_IMAGE_packing_P_006', 5, packOpts)
+            packingPromise(done, 'SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0600', 5, packOpts)
         })
 
         /**
-         * @tc.number    : SUB_IMAGE_packing_P_007
+         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0700
          * @tc.name      : SUB_IMAGE_packing_P_007 - Promise - RGB888 quality 123
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
@@ -316,13 +316,13 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it('SUB_IMAGE_packing_P_007', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0700', 0, async function (done) {
             let packOpts = { format: "image/jpeg", quality: 123 }
-            packingPromiseFail(done, 'SUB_IMAGE_packing_P_007', 5, packOpts)
+            packingPromiseFail(done, 'SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0700', 5, packOpts)
         })
 
         /**
-         * @tc.number    : SUB_IMAGE_packing_P_008
+         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0800
          * @tc.name      : SUB_IMAGE_packing_P_008 - Promise - RGB888 quality null
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
@@ -331,13 +331,13 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it('SUB_IMAGE_packing_P_008', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0800', 0, async function (done) {
             let packOpts = { format: "image/jpeg" }
-            packingPromiseFail(done, 'SUB_IMAGE_packing_P_008', 5, packOpts)
+            packingPromiseFail(done, 'SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0800', 5, packOpts)
         })
 
         /**
-         * @tc.number    : SUB_IMAGE_packing_P_009
+         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0900
          * @tc.name      : SUB_IMAGE_packing_P_009 - Promise - RGB888 format null
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
@@ -346,13 +346,13 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it('SUB_IMAGE_packing_P_009', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0900', 0, async function (done) {
             let packOpts = { quality: 99 }
-            packingPromiseFail(done, 'SUB_IMAGE_packing_P_009', 5, packOpts)
+            packingPromiseFail(done, 'SUB_GRAPHIC_IMAGE_PACKING_PROMISE_0900', 5, packOpts)
         })
 
         /**
-         * @tc.number    : SUB_IMAGE_packing_P_010
+         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_PROMISE_1000
          * @tc.name      : SUB_IMAGE_packing_P_010 - Promise - RGB888 wrong format
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
@@ -361,13 +361,13 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it('SUB_IMAGE_packing_P_010', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_PACKING_PROMISE_1000', 0, async function (done) {
             let packOpts = { format: "image/png", quality: 99 }
-            packingPromiseFail(done, 'SUB_IMAGE_packing_P_010', 5, packOpts)
+            packingPromiseFail(done, 'SUB_GRAPHIC_IMAGE_PACKING_PROMISE_1000', 5, packOpts)
         })
 
         /**
-         * @tc.number    : SUB_IMAGE_packingCb_001
+         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0100
          * @tc.name      : SUB_IMAGE_packingCb_001
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
@@ -376,13 +376,13 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it('SUB_IMAGE_packingCb_001', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0100', 0, async function (done) {
             let packOpts = { format: "image/jpeg", quality: 99 }
-            packingCb(done, 'SUB_IMAGE_packingCb_001', 2, packOpts)
+            packingCb(done, 'SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0100', 2, packOpts)
         })
 
         /**
-         * @tc.number    : SUB_IMAGE_packingCb_002
+         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0200
          * @tc.name      : SUB_IMAGE_packingCb_002 - callback - RGB565 quality 123
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
@@ -391,14 +391,14 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it('SUB_IMAGE_packingCb_002', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0200', 0, async function (done) {
             let packOpts = { format: "image/jpeg", quality: 123 }
-            packingCbFail(done, 'SUB_IMAGE_packingCb_002', 2, packOpts)
+            packingCbFail(done, 'SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0200', 2, packOpts)
 
         })
 
         /**
-         * @tc.number    : SUB_IMAGE_packingCb_003
+         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0300
          * @tc.name      : SUB_IMAGE_packingCb_003 - callback - RGB565 quality null
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
@@ -407,13 +407,13 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it('SUB_IMAGE_packingCb_003', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0300', 0, async function (done) {
             let packOpts = { format: "image/jpeg" }
-            packingCbFail(done, 'SUB_IMAGE_packingCb_003', 2, packOpts)
+            packingCbFail(done, 'SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0300', 2, packOpts)
         })
 
         /**
-         * @tc.number    : SUB_IMAGE_packingCb_004
+         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0400
          * @tc.name      : SUB_IMAGE_packingCb_004 - callback - RGB565 format null
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
@@ -422,13 +422,13 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it('SUB_IMAGE_packingCb_004', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0400', 0, async function (done) {
             let packOpts = { quality: 99 }
-            packingCbFail(done, 'SUB_IMAGE_packingCb_004', 2, packOpts)
+            packingCbFail(done, 'SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0400', 2, packOpts)
         })
 
         /**
-         * @tc.number    : SUB_IMAGE_packingCb_005
+         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0500
          * @tc.name      : SUB_IMAGE_packingCb_005 - callback - RGB565 wrong format
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
@@ -437,13 +437,13 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it('SUB_IMAGE_packingCb_005', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0500', 0, async function (done) {
             let packOpts = { format: "image/png", quality: 99 }
-            packingCbFail(done, 'SUB_IMAGE_packingCb_005', 2, packOpts)
+            packingCbFail(done, 'SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0500', 2, packOpts)
         })
 
         /**
-         * @tc.number    : SUB_IMAGE_packingCb_006
+         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0600
          * @tc.name      : SUB_IMAGE_packingCb_006
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
@@ -452,13 +452,13 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it('SUB_IMAGE_packingCb_006', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0600', 0, async function (done) {
             let packOpts = { format: "image/jpeg", quality: 50 }
-            packingCb(done, 'SUB_IMAGE_packingCb_006', 5, packOpts)
+            packingCb(done, 'SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0600', 5, packOpts)
         })
 
         /**
-         * @tc.number    : SUB_IMAGE_packingCb_007
+         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0700
          * @tc.name      : SUB_IMAGE_packingCb_007 - callback - RGB888 quality 123
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
@@ -467,14 +467,14 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it('SUB_IMAGE_packingCb_007', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0700', 0, async function (done) {
             let packOpts = { format: "image/jpeg", quality: 123 }
-            packingCbFail(done, 'SUB_IMAGE_packingCb_007', 5, packOpts)
+            packingCbFail(done, 'SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0700', 5, packOpts)
 
         })
 
         /**
-         * @tc.number    : SUB_IMAGE_packingCb_008
+         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0800
          * @tc.name      : SUB_IMAGE_packingCb_008 - callback - RGB888 quality null
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
@@ -483,13 +483,13 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it('SUB_IMAGE_packingCb_008', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0800', 0, async function (done) {
             let packOpts = { format: "image/jpeg" }
-            packingCbFail(done, 'SUB_IMAGE_packingCb_008', 5, packOpts)
+            packingCbFail(done, 'SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0800', 5, packOpts)
         })
 
         /**
-         * @tc.number    : SUB_IMAGE_packingCb_009
+         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0900
          * @tc.name      : SUB_IMAGE_packingCb_009 - callback - RGB888 format null
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
@@ -498,13 +498,13 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it('SUB_IMAGE_packingCb_009', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0900', 0, async function (done) {
             let packOpts = { quality: 99 }
-            packingCbFail(done, 'SUB_IMAGE_packingCb_009', 5, packOpts)
+            packingCbFail(done, 'SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_0900', 5, packOpts)
         })
 
         /**
-         * @tc.number    : SUB_IMAGE_packingCb_010
+         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_1000
          * @tc.name      : SUB_IMAGE_packingCb_010 - callback - RGB888 wrong format
          * @tc.desc      : 1.create PixelMap
          *                 2.create ImagePacker
@@ -513,13 +513,13 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : level 0
          */
-        it('SUB_IMAGE_packingCb_010', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_1000', 0, async function (done) {
             let packOpts = { format: "image/png", quality: 99 }
-            packingCbFail(done, 'SUB_IMAGE_packingCb_010', 5, packOpts)
+            packingCbFail(done, 'SUB_GRAPHIC_IMAGE_PACKING_CALLBACK_1000', 5, packOpts)
         })
 
         /**
-             * @tc.number    : TC_062
+             * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0100
              * @tc.name      : packing ImageSource - promise
              * @tc.desc      : 1.create ImageSource
              *                 2.call packing
@@ -529,36 +529,36 @@ export default function imagePacking() {
              * @tc.type      : Functional
              * @tc.level     : Level 1
              */
-        it('TC_062', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0100', 0, async function (done) {
             try {
                 await getFd('test.png');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info('TC_062 create image source failed');
+                    console.info('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0100 create image source failed');
                     expect(false).assertTrue();
                     done();
                 } else {
                     const imagePackerApi = image.createImagePacker();
                     if (imagePackerApi == undefined) {
-                        console.info('TC_062 create image packer failed');
+                        console.info('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0100 create image packer failed');
                         expect(false).assertTrue();
                         done();
                     } else {
                         let packOpts = { format: "image/jpeg", quality: 99 }
                         imagePackerApi.packing(imageSourceApi, packOpts)
                             .then(data => {
-                                console.info('TC_062 success');
+                                console.info('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0100 success');
                                 expect(data != undefined).assertTrue();
                                 done();
                             }).catch(error => {
-                                console.log('TC_062 error: ' + error);
+                                console.log('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0100 error: ' + error);
                                 expect(false).assertFail();
                                 done();
                             })
                     }
                 }
             } catch (error) {
-                console.info('TC_062 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0100 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
@@ -566,7 +566,7 @@ export default function imagePacking() {
         })
 
         /**
-         * @tc.number    : TC_062-1 
+         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0100 
          * @tc.name      : packing ImageSource - callback
          * @tc.desc      : 1.create ImageSource
          *                 2.call packing
@@ -576,38 +576,38 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_062-1', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0100', 0, async function (done) {
             try {
                 await getFd('test.png');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info('TC_062-1 create image source failed');
+                    console.info('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0100 create image source failed');
                     expect(false).assertTrue();
                     done();
                 } else {
                     const imagePackerApi = image.createImagePacker();
                     if (imagePackerApi == undefined) {
-                        console.info('TC_062-1 create image packer failed');
+                        console.info('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0100 create image packer failed');
                         expect(false).assertTrue();
                         done();
                     } else {
                         let packOpts = { format: "image/jpeg", quality: 1 }
                         imagePackerApi.packing(imageSourceApi, packOpts, (err, data) => {
-                            console.info('TC_062-1 success' + JSON.stringify(data));
+                            console.info('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0100 success' + JSON.stringify(data));
                             expect(data != undefined).assertTrue();
                             done();
                         })
                     }
                 }
             } catch (error) {
-                console.info('TC_062-1 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0100 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
         })
 
         /**
-         * @tc.number    : TC_062-2
+         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0200
          * @tc.name      : packing ImageSource - callback - wrong format
          * @tc.desc      : 1.create ImageSource
          *                 2.call packing
@@ -617,24 +617,24 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_062-2', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0200', 0, async function (done) {
             try {
                 await getFd('test.png');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info('TC_062-2 create image source failed');
+                    console.info('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0200 create image source failed');
                     expect(false).assertTrue();
                     done();
                 } else {
                     const imagePackerApi = image.createImagePacker();
                     if (imagePackerApi == undefined) {
-                        console.info('TC_062-2 create image packer failed');
+                        console.info('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0200 create image packer failed');
                         expect(false).assertTrue();
                         done();
                     } else {
                         let packOpts = { format: "image/gif", quality: 98 }
                         imagePackerApi.packing(imageSourceApi, packOpts, (err, data) => {
-                            console.info('TC_062-2 success');
+                            console.info('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0200 success');
                             expect(data == undefined).assertTrue();
                             console.info(data);
                             done();
@@ -642,14 +642,14 @@ export default function imagePacking() {
                     }
                 }
             } catch (error) {
-                console.info('TC_062-2 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0200 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
         })
 
         /**
-         * @tc.number    : TC_062-3
+         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0300
          * @tc.name      : packing ImageSource - callback - wrong quality
          * @tc.desc      : 1.create ImageSource
          *                 2.call packing
@@ -659,24 +659,24 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_062-3', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0300', 0, async function (done) {
             try {
                 await getFd('test.png');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info('TC_062-3 create image source failed');
+                    console.info('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0300 create image source failed');
                     expect(false).assertTrue();
                     done();
                 } else {
                     const imagePackerApi = image.createImagePacker();
                     if (imagePackerApi == undefined) {
-                        console.info('TC_062-3 create image packer failed');
+                        console.info('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0300 create image packer failed');
                         expect(false).assertTrue();
                         done();
                     } else {
                         let packOpts = { format: "image/jpeg", quality: 101 }
                         imagePackerApi.packing(imageSourceApi, packOpts, (err, data) => {
-                            console.info('TC_062-3 success');
+                            console.info('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0300 success');
                             expect(data == undefined).assertTrue();
                             console.info(data);
                             done();
@@ -684,14 +684,14 @@ export default function imagePacking() {
                     }
                 }
             } catch (error) {
-                console.info('TC_062-3 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0300 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
         })
 
         /**
-         * @tc.number    : TC_062-4 
+         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_CREATEIMAGEPACKER_0100 
          * @tc.name      : createImagePacker
          * @tc.desc      : 1.create ImageSource
          *                 2.call packing
@@ -701,35 +701,35 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_062-4', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_PACKING_CREATEIMAGEPACKER_0100', 0, async function (done) {
             try {
                 await getFd('test.png');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info('TC_062-4 create image source failed');
+                    console.info('SUB_GRAPHIC_IMAGE_PACKING_CREATEIMAGEPACKER_0100 create image source failed');
                     expect(false).assertTrue();
                     done();
                 } else {
                     const imagePackerApi = image.createImagePacker();
                     if (imagePackerApi == undefined) {
-                        console.info('TC_062-4 create image packer failed');
+                        console.info('SUB_GRAPHIC_IMAGE_PACKING_CREATEIMAGEPACKER_0100 create image packer failed');
                         expect(false).assertTrue();
                         done();
                     } else {
-                        console.info('TC_062-4 create image packer success');
+                        console.info('SUB_GRAPHIC_IMAGE_PACKING_CREATEIMAGEPACKER_0100 create image packer success');
                         expect(true).assertTrue();
                         done();
                     }
                 }
             } catch (error) {
-                console.info('TC_062-4 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_PACKING_CREATEIMAGEPACKER_0100 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
         })
 
         /**
-         * @tc.number    : TC_062-5
+         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0200
          * @tc.name      : packing ImageSource - promise - no quality
          * @tc.desc      : 1.create ImageSource
          *                 2.call packing
@@ -740,44 +740,44 @@ export default function imagePacking() {
          * @tc.level     : Level 1
          */
 
-        it('TC_062-5', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0200', 0, async function (done) {
             try {
                 await getFd('test.png');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info('TC_062-5 create image source failed');
+                    console.info('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0200 create image source failed');
                     expect(false).assertTrue();
                     done();
                 } else {
                     const imagePackerApi = image.createImagePacker();
                     if (imagePackerApi == undefined) {
-                        console.info('TC_062-5 create image packer failed');
+                        console.info('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0200 create image packer failed');
                         expect(false).assertTrue();
                         done();
                     } else {
                         let packOpts = { format: "image/jpeg" }
                         imagePackerApi.packing(imageSourceApi, packOpts)
                             .then(data => {
-                                console.info('TC_062-5 failed');
+                                console.info('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0200 failed');
                                 expect(data == undefined).assertTrue();
                                 done();
                             }).catch(error => {
-                                console.log('TC_062-5 error: ' + error);
-                                console.log('TC_062-5 success');
+                                console.log('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0200 error: ' + error);
+                                console.log('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0200 success');
                                 expect(true).assertTrue();
                                 done();
                             })
                     }
                 }
             } catch (error) {
-                console.info('TC_062-5 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0200 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
         })
 
         /**
-         * @tc.number    : TC_062-6
+         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0300
          * @tc.name      : packing ImageSource - promise - no format
          * @tc.desc      : 1.create ImageSource
          *                 2.call packing
@@ -787,44 +787,44 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_062-6', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0300', 0, async function (done) {
             try {
                 await getFd('test.png');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info('TC_062-6 create image source failed');
+                    console.info('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0300 create image source failed');
                     expect(false).assertTrue();
                     done();
                 } else {
                     const imagePackerApi = image.createImagePacker();
                     if (imagePackerApi == undefined) {
-                        console.info('TC_062-6 create image packer failed');
+                        console.info('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0300 create image packer failed');
                         expect(false).assertTrue();
                         done();
                     } else {
                         let packOpts = { quality: 50 }
                         imagePackerApi.packing(imageSourceApi, packOpts)
                             .then(data => {
-                                console.info('TC_062-6 failed');
+                                console.info('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0300 failed');
                                 expect(data == undefined).assertTrue();
                                 done();
                             }).catch(error => {
-                                console.log('TC_062-6 error: ' + error);
-                                console.log('TC_062-6 success');
+                                console.log('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0300 error: ' + error);
+                                console.log('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0300 success');
                                 expect(true).assertTrue();
                                 done();
                             })
                     }
                 }
             } catch (error) {
-                console.info('TC_062-6 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_PROMISE_0300 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
         })
 
         /**
-             * @tc.number    : TC_062-7 
+             * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0400 
              * @tc.name      : packing ImageSource - callback - quality 100
              * @tc.desc      : 1.create ImageSource
              *                 2.call packing
@@ -835,18 +835,18 @@ export default function imagePacking() {
              * @tc.level     : Level 1
              */
 
-        it('TC_062-7', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0400', 0, async function (done) {
             try {
                 await getFd('test.png');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info('TC_062-7 create image source failed');
+                    console.info('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0400 create image source failed');
                     expect(false).assertTrue();
                     done();
                 } else {
                     const imagePackerApi = image.createImagePacker();
                     if (imagePackerApi == undefined) {
-                        console.info('TC_062-7 create image packer failed');
+                        console.info('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0400 create image packer failed');
                         expect(false).assertTrue();
                         done();
                     } else {
@@ -854,31 +854,31 @@ export default function imagePacking() {
                         imagePackerApi.packing(imageSourceApi, packOpts, (err, data) => {
                             if (err) {
                                 expect(false).assertTrue();
-                                console.info('TC_062-7 error: ' + err);
+                                console.info('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0400 error: ' + err);
                                 done();
                                 return
                             }
                             if (data != undefined) {
-                                console.info('TC_062-7 success');
+                                console.info('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0400 success');
                                 expect(true).assertTrue();
                                 done();
                             } else {
                                 except(false).assertTrue();
-                                console.info('TC_062-7 failed');
+                                console.info('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0400 failed');
                                 done();
                             }
                         })
                     }
                 }
             } catch (error) {
-                console.info('TC_062-7 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0400 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
         })
 
         /**
-         * @tc.number    : TC_062-8 
+         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0500 
          * @tc.name      : packing ImageSource - callback - quality 0
          * @tc.desc      : 1.create ImageSource
          *                 2.call packing
@@ -888,38 +888,38 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_062-8', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0500', 0, async function (done) {
             try {
                 await getFd('test.png');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info('TC_062-8 create image source failed');
+                    console.info('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0500 create image source failed');
                     expect(false).assertTrue();
                     done();
                 } else {
                     const imagePackerApi = image.createImagePacker();
                     if (imagePackerApi == undefined) {
-                        console.info('TC_062-8 create image packer failed');
+                        console.info('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0500 create image packer failed');
                         expect(false).assertTrue();
                         done();
                     } else {
                         let packOpts = { format: "image/jpeg", quality: 0 }
                         imagePackerApi.packing(imageSourceApi, packOpts, (err, data) => {
-                            console.info('TC_062-8 success');
+                            console.info('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0500 success');
                             expect(data != undefined).assertTrue();
                             done();
                         })
                     }
                 }
             } catch (error) {
-                console.info('TC_062-8 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0500 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
         })
 
         /**
-         * @tc.number    : TC_062-9 
+         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0600 
          * @tc.name      : packing ImageSource - callback - quality -1
          * @tc.desc      : 1.create ImageSource
          *                 2.call packing
@@ -929,38 +929,38 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_062-9', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0600', 0, async function (done) {
             try {
                 await getFd('test.png');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info('TC_062-9 create image source failed');
+                    console.info('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0600 create image source failed');
                     expect(false).assertTrue();
                     done();
                 } else {
                     const imagePackerApi = image.createImagePacker();
                     if (imagePackerApi == undefined) {
-                        console.info('TC_062-9 create image packer failed');
+                        console.info('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0600 create image packer failed');
                         expect(false).assertTrue();
                         done();
                     } else {
                         let packOpts = { format: "image/jpeg", quality: -1 }
                         imagePackerApi.packing(imageSourceApi, packOpts, (err, data) => {
-                            console.info('TC_062-9 success');
+                            console.info('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0600 success');
                             expect(data == undefined).assertTrue();
                             done();
                         })
                     }
                 }
             } catch (error) {
-                console.info('TC_062-9 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0600 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
         })
 
         /**
-         * @tc.number    : TC_063
+         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_RELEASE_IMAGEPACKER_PROMISE_0100
          * @tc.name      : release ImagePacker - promise
          * @tc.desc      : 1.create ImagePacker
          *                 2.call release
@@ -969,19 +969,19 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_063', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_PACKING_RELEASE_IMAGEPACKER_PROMISE_0100', 0, async function (done) {
             const imagePackerApi = image.createImagePacker();
             if (imagePackerApi == undefined) {
-                console.info('TC_063 create image packer failed');
+                console.info('SUB_GRAPHIC_IMAGE_PACKING_RELEASE_IMAGEPACKER_PROMISE_0100 create image packer failed');
                 expect(false).assertTrue();
                 done();
             } else {
                 imagePackerApi.release().then(() => {
-                    console.info('TC_063 success');
+                    console.info('SUB_GRAPHIC_IMAGE_PACKING_RELEASE_IMAGEPACKER_PROMISE_0100 success');
                     expect(true).assertTrue();
                     done();
                 }).catch(() => {
-                    console.log('TC_063 error: ' + error);
+                    console.log('SUB_GRAPHIC_IMAGE_PACKING_RELEASE_IMAGEPACKER_PROMISE_0100 error: ' + error);
                     expect(false).assertTrue();
                     done();
                 })
@@ -989,7 +989,7 @@ export default function imagePacking() {
         })
 
         /**
-         * @tc.number    : TC_063-1 
+         * @tc.number    : SUB_GRAPHIC_IMAGE_PACKING_RELEASE_IMAGEPACKER_CALLBACK_0100 
          * @tc.name      : release ImagePacker - callback
          * @tc.desc      : 1.create ImagePacker
          *                 2.call release
@@ -998,15 +998,15 @@ export default function imagePacking() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_063-1', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_PACKING_RELEASE_IMAGEPACKER_CALLBACK_0100', 0, async function (done) {
             const imagePackerApi = image.createImagePacker();
             if (imagePackerApi == undefined) {
-                console.info('TC_063-1 create image packer failed');
+                console.info('SUB_GRAPHIC_IMAGE_PACKING_RELEASE_IMAGEPACKER_CALLBACK_0100 create image packer failed');
                 expect(false).assertTrue();
                 done();
             } else {
                 imagePackerApi.release(() => {
-                    console.info('TC_063-1 success');
+                    console.info('SUB_GRAPHIC_IMAGE_PACKING_RELEASE_IMAGEPACKER_CALLBACK_0100 success');
                     expect(true).assertTrue();
                     done();
                 })

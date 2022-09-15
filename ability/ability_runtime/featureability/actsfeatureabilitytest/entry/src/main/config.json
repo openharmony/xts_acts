@@ -22,7 +22,7 @@
     "name": ".MyApplication",
     "mainAbility": "com.example.actsfeatureabilitytest.MainAbility",
     "deviceType": [
-      "phone"
+      "default"
     ],
     "distro": {
       "deliveryWithInstall": true,

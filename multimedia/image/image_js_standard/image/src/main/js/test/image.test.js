@@ -65,7 +65,7 @@ export default function imageJsTest() {
         })
 
         /**
-             * @tc.number    : TC_001
+             * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_0500
              * @tc.name      : create pixelmap-promise (editable: true, pixelFormat: RGBA_8888, size: { height: 4, width: 6 }, bytes = buffer)
              * @tc.desc      : 1.create InitializationOptions object
              *                 2.set editable,pixeFormat,size
@@ -75,25 +75,25 @@ export default function imageJsTest() {
              * @tc.type      : Functional
              * @tc.level     : Level 0
              */
-        it('TC_001', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_0500', 0, async function (done) {
             const Color = new ArrayBuffer(96);
             let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
             image.createPixelMap(Color, opts)
                 .then(pixelmap => {
                     globalpixelmap = pixelmap;
                     expect(pixelmap != undefined).assertTrue();
-                    console.info('TC_001 success');
+                    console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_0500 success');
                     done();
                 })
                 .catch(error => {
-                    console.log('TC_001 error: ' + error);
+                    console.log('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_0500 error: ' + error);
                     expect().assertFail();
                     done();
                 })
         })
 
         /**
-         * @tc.number    : TC_001-1
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_0500
          * @tc.name      : create pixelmap-callback (editable: false, pixelFormat: RGBA_8888, size: { height: 4, width: 6 },bytes = buffer)
          * @tc.desc      : 1.create InitializationOptions object
          *                 2.set editable,pixelFormat,size
@@ -103,19 +103,19 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
         */
-        it('TC_001-1', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_0500', 0, async function (done) {
             const Color = new ArrayBuffer(96);
             let opts = { editable: false, pixelFormat: 3, size: { height: 4, width: 6 } }
             image.createPixelMap(Color, opts, (err, pixelmap) => {
                 globalpixelmap = pixelmap;
                 expect(pixelmap != undefined).assertTrue();
-                console.info('TC_001-1 success');
+                console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_0500 success');
                 done();
             })
         })
 
         /**
-         * @tc.number    : TC_001-2
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_0600
          * @tc.name      : createpixelmap-promise (editable: true, pixelFormat: RGB_565, size: { height: 6, width: 8 },bytes = buffer)
          * @tc.desc      : 1.create InitializationOptions object
          *                 2.set editable,pixelFormat,size
@@ -125,25 +125,25 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('TC_001-2', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_0600', 0, async function (done) {
             const Color = new ArrayBuffer(96);
             let opts = { editable: true, pixelFormat: 2, size: { height: 6, width: 8 } }
             image.createPixelMap(Color, opts)
                 .then(pixelmap => {
                     globalpixelmap = pixelmap;
                     expect(pixelmap != undefined).assertTrue();
-                    console.info('TC_001-2 success');
+                    console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_0600 success');
                     done();
                 })
                 .catch(error => {
-                    console.log('TC_001-2 error: ' + error);
+                    console.log('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_0600 error: ' + error);
                     expect().assertFail();
                     done();
                 })
         })
 
         /**
-         * @tc.number    : TC_001-3
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_0600
          * @tc.name      : createpixelmap-callback (editable: false, pixelFormat: RGB_565, size: { height: 6, width: 8 },bytes = buffer)
          * @tc.desc      : 1.create InitializationOptions object
          *                 2.set editable,pixelFormat,size
@@ -153,20 +153,20 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('TC_001-3', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_0600', 0, async function (done) {
             const Color = new ArrayBuffer(96);
             let opts = { editable: false, pixelFormat: 2, size: { height: 6, width: 8 } }
             image.createPixelMap(Color, opts, (err, pixelmap) => {
                 globalpixelmap = pixelmap;
                 expect(pixelmap != undefined).assertTrue();
-                console.info('TC_001-3 success');
+                console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_0600 success');
                 done();
 
             })
         })
 
         /**
-         * @tc.number    : TC_001-4
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_0700
          * @tc.name      : createpixelmap-promise(editable: true, pixelFormat: unkonwn, size: { height: 6, width: 8 })
          * @tc.desc      : 1.create InitializationOptions object
          *                 2.set editable,pixelFormat,size
@@ -176,25 +176,25 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('TC_001-4', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_0700', 0, async function (done) {
             const Color = new ArrayBuffer(96);
             let opts = { editable: true, pixelFormat: 0, size: { height: 6, width: 8 } }
             image.createPixelMap(Color, opts)
                 .then(pixelmap => {
                     globalpixelmap = pixelmap;
                     expect(pixelmap != undefined).assertTrue();
-                    console.info('TC_001-4 success');
+                    console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_0700 success');
                     done();
                 })
                 .catch(error => {
-                    console.log('TC_001-4 error: ' + error);
+                    console.log('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_0700 error: ' + error);
                     expect().assertFail();
                     done();
                 })
         })
 
         /**
-         * @tc.number    : TC_001-5
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_0700
          * @tc.name      : create pixelmap-callback(editable: false, pixelFormat: unkonwn, size: { height: 6, width: 8 })
          * @tc.desc      : 1.create InitializationOptions object
          *                 2.set editable,pixelFormat,size
@@ -204,19 +204,19 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('TC_001-5', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_0700', 0, async function (done) {
             const Color = new ArrayBuffer(96);
             let opts = { editable: false, pixelFormat: 0, size: { height: 6, width: 8 } }
             image.createPixelMap(Color, opts, (err, pixelmap) => {
                 globalpixelmap = pixelmap;
                 expect(pixelmap != undefined).assertTrue();
-                console.info('TC_001-5 success');
+                console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_0700 success');
                 done();
             })
         })
 
         /**
-         * @tc.number    : TC_001-6
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_0800
          * @tc.name      : create pixelmap-callback(editable: true, pixelFormat: RGBA_8888, size: { height: 6, width: 8 } bytes > buffer )
          * @tc.desc      : 1.create InitializationOptions object
          *                 2.set editable,pixeFormat,size
@@ -226,19 +226,19 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('TC_001-6', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_0800', 0, async function (done) {
             const Color = new ArrayBuffer(96);
             let opts = { editable: true, pixelFormat: 3, size: { height: 6, width: 8 } }
             image.createPixelMap(Color, opts, (err, pixelmap) => {
                 globalpixelmap = pixelmap;
                 expect(pixelmap != undefined).assertTrue();
-                console.info('TC_001-6 success');
+                console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_0800 success');
                 done();
             })
         })
 
         /**
-         * @tc.number    : TC_001-7
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_0900
          * @tc.name      : create pixelmap-callback(editable: true, pixelFormat: RGB_565, size: { height: 2, width: 3 }, bytes < buffer)
          * @tc.desc      : 1.create InitializationOptions object
          *                 2.set editable,pixeFormat,size
@@ -248,19 +248,19 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('TC_001-7', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_0900', 0, async function (done) {
             const Color = new ArrayBuffer(96);
             let opts = { editable: true, pixelFormat: 2, size: { height: 2, width: 3 } }
             image.createPixelMap(Color, opts, (err, pixelmap) => {
                 globalpixelmap = pixelmap;
                 expect(pixelmap != undefined).assertTrue();
-                console.info('TC_001-7 success');
+                console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_0900 success');
                 done();
             })
         })
 
         /**
-         * @tc.number    : TC_001-8
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_1000
          * @tc.name      : create pixelmap-callback(editable: true, pixelFormat: unkonwn, size: { height: -1, width: -1 })
          * @tc.desc      : 1.create InitializationOptions object
          *                 2.set editable,pixeFormat,size
@@ -270,19 +270,19 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('TC_001-8', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_1000', 0, async function (done) {
             const Color = new ArrayBuffer(96);
             let opts = { editable: true, pixelFormat: 0, size: { height: -1, width: -1 } }
             image.createPixelMap(Color, opts, (err, pixelmap) => {
                 globalpixelmap = pixelmap;
                 expect(pixelmap == undefined).assertTrue();
-                console.info('TC_001-8 success');
+                console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_1000 success');
                 done();
             })
         })
 
         /**
-         * @tc.number    : TC_001-9
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_1100
          * @tc.name      : create pixelmap-callback(editable: true, pixelFormat: unsupported format, size: { height: 6, width: 8 })
          * @tc.desc      : 1.create InitializationOptions object
          *                 2.set editable,pixeFormat,size(Unsupported formats are converted to RGBA_8888)
@@ -292,19 +292,19 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('TC_001-9', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_1100', 0, async function (done) {
             const Color = new ArrayBuffer(96);
             let opts = { editable: true, pixelFormat: 21, size: { height: 6, width: 8 } }
             image.createPixelMap(Color, opts, (err, pixelmap) => {
                 globalpixelmap = pixelmap;
                 expect(pixelmap != undefined).assertTrue();
-                console.info('TC_001-9 success');
+                console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_1100 success');
                 done();
             })
         })
 
         /**
-         * @tc.number    : TC_020
+         * @tc.number    : SUB_GRAPHIC_IMAGE_READPIXELSTOBUFFER_PROMISE_0100
          * @tc.name      : readPixelsToBuffer-promise
          * @tc.desc      : read all pixels to an buffer
          *                 1.create PixelMap,buffer
@@ -314,8 +314,8 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_020', 0, async function (done) {
-            console.info('TC_020 in');
+        it('SUB_GRAPHIC_IMAGE_READPIXELSTOBUFFER_PROMISE_0100', 0, async function (done) {
+            console.info('SUB_GRAPHIC_IMAGE_READPIXELSTOBUFFER_PROMISE_0100 in');
             const color = new ArrayBuffer(96);
             var bufferArr = new Uint8Array(color);
             for (var i = 0; i < bufferArr.length; i++) {
@@ -327,7 +327,7 @@ export default function imageJsTest() {
                 .then(pixelmap => {
                     globalpixelmap = pixelmap;
                     if (pixelmap == undefined) {
-                        console.info('TC_020 createPixelMap failed');
+                        console.info('SUB_GRAPHIC_IMAGE_READPIXELSTOBUFFER_PROMISE_0100 createPixelMap failed');
                         expect(false).assertTrue()
                         done();
                     }
@@ -339,31 +339,31 @@ export default function imageJsTest() {
                             if (bufferArr2[i] != tcBuf020[i]) {
                                 res = false;
                                 console.info('TC_20_buffer' + bufferArr2[i]);
-                                console.info('TC_020 failed');
+                                console.info('SUB_GRAPHIC_IMAGE_READPIXELSTOBUFFER_PROMISE_0100 failed');
                                 expect(false).assertTrue();
                                 done();
                                 break;
                             }
                         }
                         if (res) {
-                            console.info('TC_020 success');
+                            console.info('SUB_GRAPHIC_IMAGE_READPIXELSTOBUFFER_PROMISE_0100 success');
                             expect(true).assertTrue()
                             done();
                         }
                     }).catch(error => {
-                        console.log('TC_020 read error: ' + error);
+                        console.log('SUB_GRAPHIC_IMAGE_READPIXELSTOBUFFER_PROMISE_0100 read error: ' + error);
                         expect().assertFail();
                         done();
                     })
                 }).catch(error => {
-                    console.log('TC_020 error: ' + error);
+                    console.log('SUB_GRAPHIC_IMAGE_READPIXELSTOBUFFER_PROMISE_0100 error: ' + error);
                     expect().assertFail();
                     done();
                 })
         })
 
         /**
-         * @tc.number    : TC_020-1
+         * @tc.number    : SUB_GRAPHIC_IMAGE_READPIXELSTOBUFFER_CALLBACK_0100
          * @tc.name      : readPixelsToBuffer-callback
          * @tc.desc      : read all pixels to an buffer
          *                 1.create PixelMap,buffer
@@ -373,8 +373,8 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_020-1', 0, async function (done) {
-            console.info('TC_020-1 in');
+        it('SUB_GRAPHIC_IMAGE_READPIXELSTOBUFFER_CALLBACK_0100', 0, async function (done) {
+            console.info('SUB_GRAPHIC_IMAGE_READPIXELSTOBUFFER_CALLBACK_0100 in');
             const color = new ArrayBuffer(96);
             var bufferArr = new Uint8Array(color);
             for (var i = 0; i < bufferArr.length; i++) {
@@ -385,7 +385,7 @@ export default function imageJsTest() {
             image.createPixelMap(color, opts, (err, pixelmap) => {
                 globalpixelmap = pixelmap;
                 if (pixelmap == undefined) {
-                    console.info('TC_020-1 createPixelMap failed');
+                    console.info('SUB_GRAPHIC_IMAGE_READPIXELSTOBUFFER_CALLBACK_0100 createPixelMap failed');
                     expect(false).assertTrue();
                     done();
                 } else {
@@ -396,14 +396,14 @@ export default function imageJsTest() {
                         for (var i = 0; i < bufferArr.length; i++) {
                             if (bufferArr[i] != tcBuf020_1[i]) {
                                 res = false;
-                                console.info('TC_020-1 failed');
+                                console.info('SUB_GRAPHIC_IMAGE_READPIXELSTOBUFFER_CALLBACK_0100 failed');
                                 expect(false).assertTrue();
                                 done();
                                 break;
                             }
                         }
                         if (res) {
-                            console.info('TC_020-1 success');
+                            console.info('SUB_GRAPHIC_IMAGE_READPIXELSTOBUFFER_CALLBACK_0100 success');
                             expect(true).assertTrue()
                             done();
                         }
@@ -413,7 +413,7 @@ export default function imageJsTest() {
         })
 
         /**
-         * @tc.number    : TC_020-2
+         * @tc.number    : SUB_GRAPHIC_IMAGE_READPIXELSTOBUFFER_CALLBACK_0200
          * @tc.name      : readPixelsToBuffer-callback(buffer:0)
          * @tc.desc      : read all pixels to an buffer
          *                 1.create PixelMap,buffer
@@ -423,8 +423,8 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_020-2', 0, async function (done) {
-            console.info('TC_020-2 in');
+        it('SUB_GRAPHIC_IMAGE_READPIXELSTOBUFFER_CALLBACK_0200', 0, async function (done) {
+            console.info('SUB_GRAPHIC_IMAGE_READPIXELSTOBUFFER_CALLBACK_0200 in');
             const color = new ArrayBuffer(96);
             var bufferArr = new Uint8Array(color);
             for (var i = 0; i < bufferArr.length; i++) {
@@ -435,7 +435,7 @@ export default function imageJsTest() {
             image.createPixelMap(color, opts, (err, pixelmap) => {
                 globalpixelmap = pixelmap;
                 if (pixelmap == undefined) {
-                    console.info('TC_020-2 createPixelMap failed');
+                    console.info('SUB_GRAPHIC_IMAGE_READPIXELSTOBUFFER_CALLBACK_0200 createPixelMap failed');
                     expect(false).assertTrue();
                     done();
                 } else {
@@ -446,14 +446,14 @@ export default function imageJsTest() {
                         for (var i = 0; i < bufferArr.length; i++) {
                             if (bufferArr[i] == 0) {
                                 res = false;
-                                console.info('TC_020-2 failed');
+                                console.info('SUB_GRAPHIC_IMAGE_READPIXELSTOBUFFER_CALLBACK_0200 failed');
                                 expect(false).assertTrue();
                                 done();
                                 break;
                             }
                         }
                         if (res) {
-                            console.info('TC_020-2 success');
+                            console.info('SUB_GRAPHIC_IMAGE_READPIXELSTOBUFFER_CALLBACK_0200 success');
                             expect(true).assertTrue()
                             done();
                         }
@@ -463,7 +463,7 @@ export default function imageJsTest() {
         })
 
         /**
-         * @tc.number    : TC_021
+         * @tc.number    : SUB_GRAPHIC_IMAGE_READPIXELS_PROMISE_0100
          * @tc.name      : readPixels-promise
          * @tc.desc      : 1.create PixelMap
          *                 2.call readPixels
@@ -473,7 +473,7 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_021', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_READPIXELS_PROMISE_0100', 0, async function (done) {
             const color = new ArrayBuffer(96);
             var bufferArr = new Uint8Array(color);
             for (var i = 0; i < bufferArr.length; i++) {
@@ -484,7 +484,7 @@ export default function imageJsTest() {
                 .then(pixelmap => {
                     globalpixelmap = pixelmap;
                     if (pixelmap == undefined) {
-                        console.info('TC_021 createPixelMap failed');
+                        console.info('SUB_GRAPHIC_IMAGE_READPIXELS_PROMISE_0100 createPixelMap failed');
                         expect(false).assertTrue()
                         done();
                     }
@@ -500,28 +500,28 @@ export default function imageJsTest() {
                         for (var i = 0; i < bufferArr2.length; i++) {
                             if (bufferArr2[i] != tcBuf021[i]) {
                                 res = false;
-                                console.info('TC_021 failed');
+                                console.info('SUB_GRAPHIC_IMAGE_READPIXELS_PROMISE_0100 failed');
                                 expect(false).assertTrue();
                                 done();
                                 break;
                             }
                         }
                         if (res) {
-                            console.info('TC_021 success');
+                            console.info('SUB_GRAPHIC_IMAGE_READPIXELS_PROMISE_0100 success');
                             expect(true).assertTrue()
                             done();
                         }
                     })
                 })
                 .catch(error => {
-                    console.log('TC_021 error: ' + error);
+                    console.log('SUB_GRAPHIC_IMAGE_READPIXELS_PROMISE_0100 error: ' + error);
                     expect().assertFail();
                     done();
                 })
         })
 
         /**
-         * @tc.number    : TC_021-1
+         * @tc.number    : SUB_GRAPHIC_IMAGE_READPIXELS_CALLBACK_0100
          * @tc.name      : readPixels-callback
          * @tc.desc      : 1.create PixelMap
          *                 2.call readPixels
@@ -531,7 +531,7 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_021-1', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_READPIXELS_CALLBACK_0100', 0, async function (done) {
             const color = new ArrayBuffer(96);
             var bufferArr = new Uint8Array(color);
             for (var i = 0; i < bufferArr.length; i++) {
@@ -541,7 +541,7 @@ export default function imageJsTest() {
             image.createPixelMap(color, opts, (err, pixelmap) => {
                 globalpixelmap = pixelmap;
                 if (pixelmap == undefined) {
-                    console.info('TC_020-1 createPixelMap failed');
+                    console.info('SUB_GRAPHIC_IMAGE_READPIXELSTOBUFFER_CALLBACK_0100 createPixelMap failed');
                     expect(false).assertTrue();
                     done();
                 } else {
@@ -555,17 +555,17 @@ export default function imageJsTest() {
                         var bufferArr = new Uint8Array(area.pixels);
                         var res = true;
                         for (var i = 0; i < bufferArr.length; i++) {
-                            console.info('TC_021-1 buffer ' + bufferArr[i]);
+                            console.info('SUB_GRAPHIC_IMAGE_READPIXELS_CALLBACK_0100 buffer ' + bufferArr[i]);
                             if (bufferArr[i] != tcBuf021_1[i]) {
                                 res = false;
-                                console.info('TC_021-1 failed');
+                                console.info('SUB_GRAPHIC_IMAGE_READPIXELS_CALLBACK_0100 failed');
                                 expect(false).assertTrue();
                                 done();
                                 break;
                             }
                         }
                         if (res) {
-                            console.info('TC_021-1 success');
+                            console.info('SUB_GRAPHIC_IMAGE_READPIXELS_CALLBACK_0100 success');
                             expect(true).assertTrue()
                             done();
                         }
@@ -575,7 +575,7 @@ export default function imageJsTest() {
         })
 
         /**
-         * @tc.number    : TC_021-2
+         * @tc.number    : SUB_GRAPHIC_IMAGE_READPIXELS_CALLBACK_0200
          * @tc.name      : readPixels-callback( region: { size: { height: 1, width: 2 }, x: -1, y: -1 })
          * @tc.desc      : 1.create PixelMap
          *                 2.call readPixels
@@ -585,7 +585,7 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_021-2', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_READPIXELS_CALLBACK_0200', 0, async function (done) {
             const color = new ArrayBuffer(96);
             var bufferArr = new Uint8Array(color);
             for (var i = 0; i < bufferArr.length; i++) {
@@ -596,7 +596,7 @@ export default function imageJsTest() {
                 globalpixelmap = pixelmap;
                 if (pixelmap == undefined) {
                     expect(false).assertTrue();
-                    console.info('TC_021-2 create pixelmap fail');
+                    console.info('SUB_GRAPHIC_IMAGE_READPIXELS_CALLBACK_0200 create pixelmap fail');
                     done();
                 } else {
                     const area = {
@@ -606,12 +606,12 @@ export default function imageJsTest() {
                         region: { size: { height: 1, width: 2 }, x: -1, y: -1 }
                     }
                     pixelmap.readPixels(area).then(() => {
-                        console.info('TC_021-2 failed');
+                        console.info('SUB_GRAPHIC_IMAGE_READPIXELS_CALLBACK_0200 failed');
                         expect(false).assertTrue();
                         done();
                     }).catch(() => {
                         expect(true).assertTrue();
-                        console.info('TC_021-2 success');
+                        console.info('SUB_GRAPHIC_IMAGE_READPIXELS_CALLBACK_0200 success');
                         done();
                     })
                 }
@@ -619,7 +619,7 @@ export default function imageJsTest() {
         })
 
         /**
-         * @tc.number    : TC_021-3
+         * @tc.number    : SUB_GRAPHIC_IMAGE_READPIXELS_PROMISE_0200
          * @tc.name      : readPixels-promise(buffer:0)
          * @tc.desc      : 1.create PixelMap
          *                 2.call readPixels
@@ -629,7 +629,7 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_021-3', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_READPIXELS_PROMISE_0200', 0, async function (done) {
             const color = new ArrayBuffer(96);
             var bufferArr = new Uint8Array(color);
             for (var i = 0; i < bufferArr.length; i++) {
@@ -640,7 +640,7 @@ export default function imageJsTest() {
                 globalpixelmap = pixelmap;
                 if (pixelmap == undefined) {
                     expect(false).assertTrue();
-                    console.info('TC_021-3 create pixelmap failed');
+                    console.info('SUB_GRAPHIC_IMAGE_READPIXELS_PROMISE_0200 create pixelmap failed');
                     done();
                 } else {
                     const area = {
@@ -650,12 +650,12 @@ export default function imageJsTest() {
                         region: { size: { height: 1, width: 2 }, x: 0, y: 0 }
                     }
                     pixelmap.readPixels(area).then(() => {
-                        console.info('TC_021-3 failed');
+                        console.info('SUB_GRAPHIC_IMAGE_READPIXELS_PROMISE_0200 failed');
                         expect(false).assertTrue();
                         done();
                     }).catch(() => {
                         expect(true).assertTrue();
-                        console.info('TC_021-3 success');
+                        console.info('SUB_GRAPHIC_IMAGE_READPIXELS_PROMISE_0200 success');
                         done();
                     })
                 }
@@ -663,7 +663,7 @@ export default function imageJsTest() {
         })
 
         /**
-         * @tc.number    : TC_021-4
+         * @tc.number    : SUB_GRAPHIC_IMAGE_READPIXELS_PROMISE_0300
          * @tc.name      : readPixels-promise(offset > buffer)
          * @tc.desc      : 1.create PixelMap
          *                 2.call readPixels
@@ -673,7 +673,7 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_021-4', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_READPIXELS_PROMISE_0300', 0, async function (done) {
             const color = new ArrayBuffer(96);
             var bufferArr = new Uint8Array(color);
             for (var i = 0; i < bufferArr.length; i++) {
@@ -684,7 +684,7 @@ export default function imageJsTest() {
                 globalpixelmap = pixelmap;
                 if (pixelmap == undefined) {
                     expect(false).assertTrue();
-                    console.info('TC_021-4 createPixelMap success');
+                    console.info('SUB_GRAPHIC_IMAGE_READPIXELS_PROMISE_0300 createPixelMap success');
                     done();
                 }
                 const area = {
@@ -694,19 +694,19 @@ export default function imageJsTest() {
                     region: { size: { height: 1, width: 2 }, x: 0, y: 0 }
                 }
                 pixelmap.readPixels(area).then(() => {
-                    console.info('TC_021-4 failed');
+                    console.info('SUB_GRAPHIC_IMAGE_READPIXELS_PROMISE_0300 failed');
                     expect(false).assertTrue();
                     done();
                 }).catch(() => {
                     expect(true).assertTrue();
-                    console.info('TC_021-4 success');
+                    console.info('SUB_GRAPHIC_IMAGE_READPIXELS_PROMISE_0300 success');
                     done();
                 })
             })
         })
 
         /**
-         * @tc.number    : TC_021-5
+         * @tc.number    : SUB_GRAPHIC_IMAGE_READPIXELS_PROMISE_0400
          * @tc.name      : readPixels-promise(region: { size: { height: -1, width:-1}, x: 0, y: 0 })
          * @tc.desc      : 1.create PixelMap
          *                 2.call readPixels
@@ -716,7 +716,7 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_021-5', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_READPIXELS_PROMISE_0400', 0, async function (done) {
             const color = new ArrayBuffer(96);
             var bufferArr = new Uint8Array(color);
             for (var i = 0; i < bufferArr.length; i++) {
@@ -727,7 +727,7 @@ export default function imageJsTest() {
                 globalpixelmap = pixelmap;
                 if (pixelmap == undefined) {
                     expect(false).assertTrue();
-                    console.info('TC_021-5 createPixelMap success');
+                    console.info('SUB_GRAPHIC_IMAGE_READPIXELS_PROMISE_0400 createPixelMap success');
                     done();
                 }
                 const area = {
@@ -737,19 +737,19 @@ export default function imageJsTest() {
                     region: { size: { height: -1, width: -1 }, x: 0, y: 0 }
                 }
                 pixelmap.readPixels(area).then(() => {
-                    console.info('TC_021-5 failed');
+                    console.info('SUB_GRAPHIC_IMAGE_READPIXELS_PROMISE_0400 failed');
                     expect(false).assertTrue();
                     done();
                 }).catch(() => {
                     expect(true).assertTrue();
-                    console.info('TC_021-5 success');
+                    console.info('SUB_GRAPHIC_IMAGE_READPIXELS_PROMISE_0400 success');
                     done();
                 })
             })
         })
 
         /**
-         * @tc.number    : TC_022
+         * @tc.number    : SUB_GRAPHIC_IMAGE_WRITEPIXELS_PROMISE_0100
          * @tc.name      : writePixels-promise
          * @tc.desc      : 1.create PixelMap
          *                 2.call writePixels
@@ -759,14 +759,14 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_022', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_WRITEPIXELS_PROMISE_0100', 0, async function (done) {
             const color = new ArrayBuffer(96);
             let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
             image.createPixelMap(color, opts)
                 .then(pixelmap => {
                     globalpixelmap = pixelmap;
                     if (pixelmap == undefined) {
-                        console.info('TC_022 createPixelMap failed');
+                        console.info('SUB_GRAPHIC_IMAGE_WRITEPIXELS_PROMISE_0100 createPixelMap failed');
                         expect(false).assertTrue()
                         done();
                     }
@@ -796,14 +796,14 @@ export default function imageJsTest() {
                             for (var i = 0; i < readArr.length; i++) {
                                 if (readArr[i] != tcBuf022[i]) {
                                     res = false;
-                                    console.info('TC_022 failed');
+                                    console.info('SUB_GRAPHIC_IMAGE_WRITEPIXELS_PROMISE_0100 failed');
                                     expect(false).assertTrue();
                                     done();
                                     break;
                                 }
                             }
                             if (res) {
-                                console.info('TC_022 success');
+                                console.info('SUB_GRAPHIC_IMAGE_WRITEPIXELS_PROMISE_0100 success');
                                 expect(true).assertTrue()
                                 done();
                             }
@@ -811,14 +811,14 @@ export default function imageJsTest() {
                     })
                 })
                 .catch(error => {
-                    console.log('TC_022 error: ' + error);
+                    console.log('SUB_GRAPHIC_IMAGE_WRITEPIXELS_PROMISE_0100 error: ' + error);
                     expect().assertFail();
                     done();
                 })
         })
 
         /**
-        * @tc.number    : TC_022-1
+        * @tc.number    : SUB_GRAPHIC_IMAGE_WRITEPIXELS_CALLBACK_0100
         * @tc.name      : writePixels-callback
         * @tc.desc      : 1.create PixelMap
         *                 2.call writePixels
@@ -828,14 +828,14 @@ export default function imageJsTest() {
         * @tc.type      : Functional
         * @tc.level     : Level 1
        */
-        it('TC_022-1', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_WRITEPIXELS_CALLBACK_0100', 0, async function (done) {
             try {
                 const color = new ArrayBuffer(96);
                 let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
                 image.createPixelMap(color, opts, (err, pixelmap) => {
                     globalpixelmap = pixelmap;
                     if (pixelmap == undefined) {
-                        console.info('TC_022-1 createPixelMap failed');
+                        console.info('SUB_GRAPHIC_IMAGE_WRITEPIXELS_CALLBACK_0100 createPixelMap failed');
                         expect(false).assertTrue()
                         done();
                     }
@@ -862,14 +862,14 @@ export default function imageJsTest() {
                             for (var i = 0; i < readArr.length; i++) {
                                 if (readArr[i] != tcBuf022[i]) {
                                     res = false;
-                                    console.info('TC_022-1 failed');
+                                    console.info('SUB_GRAPHIC_IMAGE_WRITEPIXELS_CALLBACK_0100 failed');
                                     expect(false).assertTrue();
                                     done();
                                     break;
                                 }
                             }
                             if (res) {
-                                console.info('TC_022-1 success');
+                                console.info('SUB_GRAPHIC_IMAGE_WRITEPIXELS_CALLBACK_0100 success');
                                 expect(true).assertTrue()
                                 done();
                             }
@@ -877,14 +877,14 @@ export default function imageJsTest() {
                     })
                 })
             } catch (error) {
-                console.info('TC_022-1 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_WRITEPIXELS_CALLBACK_0100 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
         })
 
         /**
-         * @tc.number    : TC_023
+         * @tc.number    : SUB_GRAPHIC_IMAGE_WRITEBUFFERTOPIXELS_PROMISE_0100
          * @tc.name      : writeBufferToPixels-promise
          * @tc.desc      : 1.create PixelMap,buffer
          *                 2.call writeBufferToPixels
@@ -894,14 +894,14 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_023', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_WRITEBUFFERTOPIXELS_PROMISE_0100', 0, async function (done) {
             const color = new ArrayBuffer(96);
             let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
             image.createPixelMap(color, opts)
                 .then(pixelmap => {
                     globalpixelmap = pixelmap;
                     if (pixelmap == undefined) {
-                        console.info('TC_023 createPixelMap failed');
+                        console.info('SUB_GRAPHIC_IMAGE_WRITEBUFFERTOPIXELS_PROMISE_0100 createPixelMap failed');
                         expect(false).assertTrue()
                         done();
                     }
@@ -919,14 +919,14 @@ export default function imageJsTest() {
                             for (var i = 0; i < bufferArr.length; i++) {
                                 if (bufferArr[i] == 0) {
                                     res = false;
-                                    console.info('TC_023 failed');
+                                    console.info('SUB_GRAPHIC_IMAGE_WRITEBUFFERTOPIXELS_PROMISE_0100 failed');
                                     expect(false).assertTrue()
                                     done();
                                     break;
                                 }
                             }
                             if (res) {
-                                console.info('TC_023 success');
+                                console.info('SUB_GRAPHIC_IMAGE_WRITEBUFFERTOPIXELS_PROMISE_0100 success');
                                 expect(true).assertTrue();
                                 done();
                             }
@@ -934,14 +934,14 @@ export default function imageJsTest() {
                     })
                 })
                 .catch(error => {
-                    console.log('TC_023 error: ' + error);
+                    console.log('SUB_GRAPHIC_IMAGE_WRITEBUFFERTOPIXELS_PROMISE_0100 error: ' + error);
                     expect().assertFail();
                     done();
                 })
         })
 
         /**
-         * @tc.number    : TC_023-1
+         * @tc.number    : SUB_GRAPHIC_IMAGE_WRITEBUFFERTOPIXELS_CALLBACK_0100
          * @tc.name      : writeBufferToPixels-callback
          * @tc.desc      : 1.create PixelMap,buffer
          *                 2.call writeBufferToPixels
@@ -951,7 +951,7 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_023-1', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_WRITEBUFFERTOPIXELS_CALLBACK_0100', 0, async function (done) {
             const color = new ArrayBuffer(96);
             var bufferArr = new Uint8Array(color);
             for (var i = 0; i < bufferArr.length; i++) {
@@ -962,7 +962,7 @@ export default function imageJsTest() {
                 globalpixelmap = pixelmap;
                 if (pixelmap == undefined) {
                     expect(false).assertTrue()
-                    console.info('TC_023-1 failed');
+                    console.info('SUB_GRAPHIC_IMAGE_WRITEBUFFERTOPIXELS_CALLBACK_0100 failed');
                     done();
                 }
                 const writeColor = new ArrayBuffer(96);
@@ -975,7 +975,7 @@ export default function imageJsTest() {
                             if (res) {
                                 if (bufferArr[i] == 0) {
                                     res = false;
-                                    console.info('TC_023-1 Success');
+                                    console.info('SUB_GRAPHIC_IMAGE_WRITEBUFFERTOPIXELS_CALLBACK_0100 Success');
                                     expect(true).assertTrue()
                                     done();
                                     break;
@@ -983,7 +983,7 @@ export default function imageJsTest() {
                             }
                         }
                         if (res) {
-                            console.info('TC_023-1 no change after writeBuffer');
+                            console.info('SUB_GRAPHIC_IMAGE_WRITEBUFFERTOPIXELS_CALLBACK_0100 no change after writeBuffer');
                             expect(false).assertTrue();
                             done();
                         }
@@ -993,7 +993,7 @@ export default function imageJsTest() {
         })
 
         /**
-         * @tc.number    : TC_024
+         * @tc.number    : SUB_GRAPHIC_IMAGE_GETIMAGEINFO_PIXELMAP_PROMISE_0100
          * @tc.name      : getImageInfo-pixelmap-promise
          * @tc.desc      : 1.create PixelMap,ImageInfo
          *                 2.call getImageInfo
@@ -1003,45 +1003,45 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_024', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_PIXELMAP_PROMISE_0100', 0, async function (done) {
             const color = new ArrayBuffer(96);
             let opts = { editable: true, pixelFormat: 2, size: { height: 6, width: 8 } }
             image.createPixelMap(color, opts)
                 .then(pixelmap => {
                     globalpixelmap = pixelmap;
                     if (pixelmap == undefined) {
-                        console.info('TC_024 createPixelMap failed');
+                        console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_PIXELMAP_PROMISE_0100 createPixelMap failed');
                         expect(false).assertTrue()
                         done();
                     }
                     pixelmap.getImageInfo().then(imageInfo => {
                         if (imageInfo == undefined) {
-                            console.info('TC_024 imageInfo is empty');
+                            console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_PIXELMAP_PROMISE_0100 imageInfo is empty');
                             expect(false).assertTrue()
                             done();
                         }
                         if (imageInfo.size.height == 4 && imageInfo.size.width == 6) {
-                            console.info('TC_024 success ');
+                            console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_PIXELMAP_PROMISE_0100 success ');
                             expect(true).assertTrue()
                             done();
                         }
                         done();
                     }).catch(error => {
-                        console.log('TC_024 getimageinfo error: ' + error);
+                        console.log('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_PIXELMAP_PROMISE_0100 getimageinfo error: ' + error);
                         expect().assertFail();
                         done();
                     })
                     done();
                 })
                 .catch(error => {
-                    console.log('TC_024 error: ' + error);
+                    console.log('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_PIXELMAP_PROMISE_0100 error: ' + error);
                     expect().assertFail();
                     done();
                 })
         })
 
         /**
-         * @tc.number    : TC_024-1
+         * @tc.number    : SUB_GRAPHIC_IMAGE_GETIMAGEINFO_PIXELMAP_CALLBACK_0100
          * @tc.name      : getImageInfo-pixelmap-callback
          * @tc.desc      : 1.create PixelMap,ImageInfo
          *                 2.call getImageInfo
@@ -1051,24 +1051,24 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_024-1', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_PIXELMAP_CALLBACK_0100', 0, async function (done) {
             const color = new ArrayBuffer(96);
             let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
             image.createPixelMap(color, opts, (err, pixelmap) => {
                 if (pixelmap == undefined) {
                     globalpixelmap = pixelmap;
                     expect(false).assertTrue()
-                    console.info('TC_024-1 create pixelmap fail');
+                    console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_PIXELMAP_CALLBACK_0100 create pixelmap fail');
                     done();
                 }
                 pixelmap.getImageInfo((err, imageInfo) => {
                     if (imageInfo == undefined) {
-                        console.info('TC_024-1 imageInfo is empty');
+                        console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_PIXELMAP_CALLBACK_0100 imageInfo is empty');
                         expect(false).assertTrue()
                         done();
                     }
                     if (imageInfo.size.height == 4 && imageInfo.size.width == 6) {
-                        console.info('TC_024-1 imageInfo success');
+                        console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_PIXELMAP_CALLBACK_0100 imageInfo success');
                         expect(true).assertTrue()
                         done();
                     }
@@ -1078,7 +1078,7 @@ export default function imageJsTest() {
         })
 
         /**
-         * @tc.number    : TC_025-1
+         * @tc.number    : SUB_GRAPHIC_IMAGE_GETBYTESNUMBERPERROW_0100
          * @tc.name      : getBytesNumberPerRow
          * @tc.desc      : 1.create PixelMap
          *                 2.set PixelMap
@@ -1089,7 +1089,7 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_025-1', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_GETBYTESNUMBERPERROW_0100', 0, async function (done) {
             const color = new ArrayBuffer(96);
             let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
             const expectNum = 4 * opts.size.width;
@@ -1101,7 +1101,7 @@ export default function imageJsTest() {
                     done();
                 } else {
                     const num = pixelmap.getBytesNumberPerRow();
-                    console.info('TC_025-1 num is ' + num);
+                    console.info('SUB_GRAPHIC_IMAGE_GETBYTESNUMBERPERROW_0100 num is ' + num);
                     expect(num == expectNum).assertTrue();
                     if (num == expectNum) {
                         console.info('TC_25-1 success');
@@ -1114,7 +1114,7 @@ export default function imageJsTest() {
         })
 
         /**
-         * @tc.number    : TC_026-1
+         * @tc.number    : SUB_GRAPHIC_IMAGE_GETBYTESNUMBERPERROW_0200
          * @tc.name      : getPixelBytesNumber
          * @tc.desc      : 1.create PixelMap
          *                 2.set Pixel
@@ -1125,7 +1125,7 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_026-1', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_GETBYTESNUMBERPERROW_0200', 0, async function (done) {
             const color = new ArrayBuffer(96);
             let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
             const expectNum = 4 * opts.size.width * opts.size.height;
@@ -1133,16 +1133,16 @@ export default function imageJsTest() {
                 globalpixelmap = pixelmap;
                 if (pixelmap == undefined) {
                     expect(false).assertTrue()
-                    console.info('TC_026-1 create pixelmap fail');
+                    console.info('SUB_GRAPHIC_IMAGE_GETBYTESNUMBERPERROW_0200 create pixelmap fail');
                     done();
                 } else {
                     const num = pixelmap.getPixelBytesNumber();
-                    console.info('TC_026-1 num is ' + num);
+                    console.info('SUB_GRAPHIC_IMAGE_GETBYTESNUMBERPERROW_0200 num is ' + num);
                     expect(num == expectNum).assertTrue();
                     if (num == expectNum) {
-                        console.info('TC_026-1 success');
+                        console.info('SUB_GRAPHIC_IMAGE_GETBYTESNUMBERPERROW_0200 success');
                     } else {
-                        console.info('TC_026-1 fail');
+                        console.info('SUB_GRAPHIC_IMAGE_GETBYTESNUMBERPERROW_0200 fail');
                     }
                     done();
                 }
@@ -1150,7 +1150,7 @@ export default function imageJsTest() {
         })
 
         /**
-         * @tc.number    : TC_027
+         * @tc.number    : SUB_GRAPHIC_IMAGE_RELEASE_PIXELMAP_PROMISE_0100
          * @tc.name      : release-pixelmap-promise
          * @tc.desc      : 1.create PixelMap
          *                 2.set Pixel
@@ -1160,34 +1160,34 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_027', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_RELEASE_PIXELMAP_PROMISE_0100', 0, async function (done) {
             const color = new ArrayBuffer(96);
             let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
             image.createPixelMap(color, opts).then(pixelmap => {
                 globalpixelmap = pixelmap;
                 if (pixelmap == undefined) {
-                    console.info('TC_027 createPixelMap failed');
+                    console.info('SUB_GRAPHIC_IMAGE_RELEASE_PIXELMAP_PROMISE_0100 createPixelMap failed');
                     expect(false).assertTrue()
                     done();
                 }
                 pixelmap.release().then(() => {
-                    console.info('TC_027 success');
+                    console.info('SUB_GRAPHIC_IMAGE_RELEASE_PIXELMAP_PROMISE_0100 success');
                     expect(true).assertTrue();
                     done();
                 }).catch(error => {
-                    console.log('TC_027 error: ' + error);
+                    console.log('SUB_GRAPHIC_IMAGE_RELEASE_PIXELMAP_PROMISE_0100 error: ' + error);
                     expect().assertFail();
                     done();
                 })
             }).catch(error => {
-                console.log('TC_027 createPixelMap failed error: ' + error);
+                console.log('SUB_GRAPHIC_IMAGE_RELEASE_PIXELMAP_PROMISE_0100 createPixelMap failed error: ' + error);
                 expect().assertFail();
                 done();
             })
         })
 
         /**
-         * @tc.number    : TC_027-1
+         * @tc.number    : SUB_GRAPHIC_IMAGE_RELEASE_PIXELMAP_CALLBACK_0100
          * @tc.name      : release-pixelmap-callback
          * @tc.desc      : 1.create PixelMap
          *                 2.set Pixel
@@ -1197,19 +1197,19 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_027-1', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_RELEASE_PIXELMAP_CALLBACK_0100', 0, async function (done) {
             const color = new ArrayBuffer(96);
             let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
             image.createPixelMap(color, opts, (err, pixelmap) => {
                 globalpixelmap = pixelmap;
                 if (pixelmap == undefined) {
-                    console.info('TC_027-1 createPixelMap failed');
+                    console.info('SUB_GRAPHIC_IMAGE_RELEASE_PIXELMAP_CALLBACK_0100 createPixelMap failed');
                     expect(false).assertTrue()
                     done();
                 }
                 pixelmap.release(() => {
                     expect(true).assertTrue();
-                    console.log('TC_027-1 success');
+                    console.log('SUB_GRAPHIC_IMAGE_RELEASE_PIXELMAP_CALLBACK_0100 success');
                     done();
                 })
             })
@@ -1218,7 +1218,7 @@ export default function imageJsTest() {
 
 
         /**
-         * @tc.number    : TC_041
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_0100
          * @tc.name      : createImageSource(uri)-jpg
          * @tc.desc      : 1.set uri
          *                 2.call createImageSource(uri)
@@ -1227,23 +1227,23 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('TC_041', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_0100', 0, async function (done) {
             try {
                 await getFd('test.jpg');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 expect(imageSourceApi != undefined).assertTrue();
-                console.info('TC_041 success');
+                console.info('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_0100 success');
                 fileio.closeSync(fdNumber);
                 done();
             } catch (error) {
-                console.info('TC_041 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_0100 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
         })
 
         /**
-         * @tc.number    : TC_041-1
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_0200
          * @tc.name      : createImageSource(uri)-bmp
          * @tc.desc      : 1.seturi
          *                 2.call createImageSource(uri)
@@ -1252,22 +1252,22 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('TC_041-1', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_0200', 0, async function (done) {
             try {
                 await getFd('test.bmp');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 expect(imageSourceApi != undefined).assertTrue();
-                console.info('TC_041-1 success');
+                console.info('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_UR_0200 success');
                 done();
             } catch (error) {
-                console.info('TC_041-1 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_0200 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
         })
 
         /**
-         * @tc.number    : TC_041-2
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_0300
          * @tc.name      : createImageSource(uri)-gif
          * @tc.desc      : 1.seturi
          *                 2.call createImageSource(uri)
@@ -1276,15 +1276,15 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('TC_041-2', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_0300', 0, async function (done) {
             try {
                 await getFd('test.gif');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 expect(imageSourceApi != undefined).assertTrue();
-                console.info('TC_041-2 success');
+                console.info('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_0300 success');
                 done();
             } catch (error) {
-                console.info('TC_041-2 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_0300 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
@@ -1292,7 +1292,7 @@ export default function imageJsTest() {
         })
 
         /**
-         * @tc.number    : TC_041-3
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_0400
          * @tc.name      : createImageSource(uri)-png
          * @tc.desc      : 1.seturi
          *                 2.call createImageSource(uri)
@@ -1301,15 +1301,15 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('TC_041-3', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_0400', 0, async function (done) {
             try {
                 await getFd('test.png');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 expect(imageSourceApi != undefined).assertTrue();
-                console.info('TC_041-3 success');
+                console.info('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_0400 success');
                 done();
             } catch (error) {
-                console.info('TC_041-3 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_0400 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
@@ -1317,7 +1317,7 @@ export default function imageJsTest() {
         })
 
         /**
-         * @tc.number    : TC_041-4
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_ERROR_SUFFIXFILE_0100
          * @tc.name      : createImageSource(uri)-wrong suffix file 
          * @tc.desc      : 1.call createImageSource(uri)
          *                 2.Incoming wrong suffix file 
@@ -1326,15 +1326,15 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('TC_041-4', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_ERROR_SUFFIXFILE_0100', 0, async function (done) {
             const imageSourceApi = image.createImageSource('file:///data/local/tmp/test.123');
             expect(imageSourceApi == undefined).assertTrue();
-            console.info('TC_041-4 success');
+            console.info('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_ERROR_SUFFIXFILE_0100 success');
             done();
         })
 
         /**
-         * @tc.number    : TC_041-5
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_ERROR_URI_0100
          * @tc.name      : createImageSource(uri)-wrong uri
          * @tc.desc      : 1.call createImageSource(uri)
          *                 2.set wrong uri
@@ -1343,21 +1343,21 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('TC_041-5', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_ERROR_URI_0100', 0, async function (done) {
             try {
                 const imageSourceApi = image.createImageSource('file:///multimedia/test.jpg');
                 expect(imageSourceApi == undefined).assertTrue();
-                console.info('TC_041-5 success');
+                console.info('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_ERROR_URI_0100 success');
                 done();
             } catch (error) {
-                console.info('TC_041-5 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_ERROR_URI_0100 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
         })
 
         /**
-         * @tc.number    : TC_042
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_0100
          * @tc.name      : createImageSource(fd)
          * @tc.desc      : 1.call createImageSource
          *                 2.set fd
@@ -1366,19 +1366,19 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('TC_042', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_0100', 0, async function (done) {
             try {
                 await getFd('test.jpg');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info('TC_042 create image source failed');
+                    console.info('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_0100 create image source failed');
                     expect(false).assertTrue();
                     done();
                 } else {
                     imageSourceApi.getImageInfo((err, imageInfo) => {
                         if (err) {
                             expect(false).assertTrue();
-                            console.info('TC_042 err: ' + err);
+                            console.info('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_0100 err: ' + err);
                             done();
                             return
                         }
@@ -1387,7 +1387,7 @@ export default function imageJsTest() {
                             fileio.closeSync(fdNumber);
                             done();
                         } else {
-                            console.info('TC_042 failed');
+                            console.info('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_0100 failed');
                             expect(false).assertTrue();
                             done();
                         }
@@ -1395,14 +1395,14 @@ export default function imageJsTest() {
                     })
                 }
             } catch (error) {
-                console.info('TC_042 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_FD_0100 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
         })
 
         /**
-         * @tc.number    : TC_042-1
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_0200
          * @tc.name      : createImageSource(fd) fd<0
          * @tc.desc      : 1.call createImageSource
          *                 2.set wrong fd
@@ -1411,15 +1411,15 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('TC_042-1', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_0200', 0, async function (done) {
             const imageSourceApi = image.createImageSource(-2);
             expect(imageSourceApi == undefined).assertTrue();
-            console.info('TC_042-1 success');
+            console.info('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_0200 success');
             done();
         })
 
         /**
-         * @tc.number    : TC_043
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_0300
          * @tc.name      : createImageSource(data)
          * @tc.desc      : 1.setdata
          *                 2.createImageSource
@@ -1428,16 +1428,16 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('TC_043', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_0300', 0, async function (done) {
             const data = testJpg.buffer;
             const imageSourceApi = image.createImageSource(data);
             if (imageSourceApi == undefined) {
-                console.info('TC_043 create image source failed');
+                console.info('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_0300 create image source failed');
                 expect(false).assertTrue();
                 done();
             } else {
                 imageSourceApi.getImageInfo((err, imageInfo) => {
-                    console.info('TC_043 imageInfo');
+                    console.info('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_0300 imageInfo');
                     expect(imageInfo != undefined).assertTrue();
                     done();
                 })
@@ -1445,7 +1445,7 @@ export default function imageJsTest() {
         })
 
         /**
-         * @tc.number    : TC_043-1
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_0400
          * @tc.name      : createImageSource(data) buffer:0
          * @tc.desc      : 1.setdata
          *                 2.createImageSource
@@ -1454,16 +1454,16 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('TC_043-1', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_0400', 0, async function (done) {
             const data = new ArrayBuffer(0);
             const imageSourceApi = image.createImageSource(data);
             expect(imageSourceApi == undefined).assertTrue();
-            console.info('TC_043-1 success');
+            console.info('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_0400 success');
             done();
         })
 
         /**
-         * @tc.number    : TC_044
+         * @tc.number    : SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_PROMISE_JPG_0100
          * @tc.name      : release-imagesource-promise-jpg
          * @tc.desc      : 1.create ImageSource
          *                 2.call release()
@@ -1472,34 +1472,34 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_044', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_PROMISE_JPG_0100', 0, async function (done) {
             try {
                 await getFd('test.jpg');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info('TC_044 create image source failed');
+                    console.info('SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_PROMISE_JPG_0100 create image source failed');
                     expect(false).assertTrue();
                     done();
                 } else {
                     imageSourceApi.release().then(() => {
-                        console.info('TC_044 success');
+                        console.info('SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_PROMISE_JPG_0100 success');
                         expect(true).assertTrue();
                         done();
                     }).catch(error => {
-                        console.info('TC_044 error');
+                        console.info('SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_PROMISE_JPG_0100 error');
                         expect(false).assertTrue();
                         done();
                     })
                 }
             } catch (error) {
-                console.info('TC_044 err:' + error);
+                console.info('SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_PROMISE_JPG_0100 err:' + error);
                 expect(false).assertTrue();
                 done();
             }
         })
 
         /**
-         * @tc.number    : TC_044-1
+         * @tc.number    : SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_CALLBACK_JPG_0100
          * @tc.name      : release-imagesource-callback-jpg
          * @tc.desc      : 1.create ImageSource
          *                 2.call release()
@@ -1508,30 +1508,30 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_044-1', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_CALLBACK_JPG_0100', 0, async function (done) {
             try {
                 await getFd('test.jpg');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info('TC_044-1 create image source failed');
+                    console.info('SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_CALLBACK_JPG_0100 create image source failed');
                     expect(false).assertTrue();
                     done();
                 } else {
                     imageSourceApi.release(() => {
-                        console.info('TC_044-1 Success');
+                        console.info('SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_CALLBACK_JPG_0100 Success');
                         expect(true).assertTrue();
                         done();
                     })
                 }
             } catch (error) {
-                console.info('TC_044-1 err:' + error);
+                console.info('SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_CALLBACK_JPG_0100 err:' + error);
                 expect(false).assertTrue();
                 done();
             }
         })
 
         /**
-         * @tc.number    : TC_045
+         * @tc.number    : SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0100
          * @tc.name      : getImageInfo(callback: AsyncCallback<ImageInfo>)-jpg
          * @tc.desc      : 1.create imageSource
          *                 2.imageSourcecall getImageInfo(ImageInfo)
@@ -1541,37 +1541,37 @@ export default function imageJsTest() {
          * @tc.level     : Level 1
          */
 
-        it('TC_045', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0100', 0, async function (done) {
             try {
                 await getFd('test.jpg');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info('TC_045 create image source failed');
+                    console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0100 create image source failed');
                     expect(false).assertTrue();
                     done();
                 } else {
                     imageSourceApi.getImageInfo((err, imageInfo) => {
                         if (err) {
                             expect(false).assertTrue();
-                            console.info('TC_045 err:' + err);
+                            console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0100 err:' + err);
                             done();
                             return
                         }
                         if (imageInfo != undefined) {
-                            console.info('TC_045 imageInfo.size.height:' + imageInfo.size.height);
-                            console.info('TC_045 imageInfo.size.width:' + imageInfo.size.width);
+                            console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0100 imageInfo.size.height:' + imageInfo.size.height);
+                            console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0100 imageInfo.size.width:' + imageInfo.size.width);
                             expect(true).assertTrue();
                             fileio.closeSync(fdNumber);
                             done();
                         } else {
-                            console.info('TC_045 failed');
+                            console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0100 failed');
                             expect(false).assertTrue();
                             done();
                         }
                     })
                 }
             } catch (error) {
-                console.info('TC_045 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0100 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
@@ -1579,7 +1579,7 @@ export default function imageJsTest() {
 
 
         /**
-         * @tc.number    : TC_045-1
+         * @tc.number    : SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0200
          * @tc.name      : getImageInfo(callback: AsyncCallback<ImageInfo>)-bmp
          * @tc.desc      : 1.create imageSource
          *                 2.imageSourcecall getImageInfo(ImageInfo)
@@ -1588,31 +1588,31 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_045-1', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0200', 0, async function (done) {
             try {
                 await getFd('test.bmp');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info('TC_045-1 create image source failed');
+                    console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0200 create image source failed');
                     expect(false).assertTrue();
                     done();
                 } else {
                     imageSourceApi.getImageInfo((err, imageInfo) => {
                         expect(imageInfo != undefined).assertTrue();
-                        console.info('TC_045-1 imageInfo.size.height:' + imageInfo.size.height);
-                        console.info('TC_045-1 imageInfo.size.width:' + imageInfo.size.width);
+                        console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0200 imageInfo.size.height:' + imageInfo.size.height);
+                        console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0200 imageInfo.size.width:' + imageInfo.size.width);
                         done();
                     })
                 }
             } catch (error) {
-                console.info('TC_045-1 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0200 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
         })
 
         /**
-         * @tc.number    : TC_045-2
+         * @tc.number    : SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0300
          * @tc.name      : getImageInfo(callback: AsyncCallback<ImageInfo>)-png
          * @tc.desc      : 1.create imageSource
          *                 2.imageSourcecall getImageInfo(ImageInfo)
@@ -1621,31 +1621,31 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_045-2', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0300', 0, async function (done) {
             try {
                 await getFd('test.png');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info('TC_045-2 create image source failed');
+                    console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0300 create image source failed');
                     expect(false).assertTrue();
                     done();
                 } else {
                     imageSourceApi.getImageInfo((err, imageInfo) => {
                         expect(imageInfo != undefined).assertTrue();
-                        console.info('TC_045-2 imageInfo.size.height:' + imageInfo.size.height);
-                        console.info('TC_045-2 imageInfo.size.width:' + imageInfo.size.width);
+                        console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0300 imageInfo.size.height:' + imageInfo.size.height);
+                        console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0300 imageInfo.size.width:' + imageInfo.size.width);
                         done();
                     })
                 }
             } catch (error) {
-                console.info('TC_045-2 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0300 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
         })
 
         /**
-         * @tc.number    : TC_045-3
+         * @tc.number    : SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0400
          * @tc.name      : getImageInfo(callback: AsyncCallback<ImageInfo>)-gif
          * @tc.desc      : 1.create ImageInfo
          *                 2.call getImageInfo(index, ImageInfo)
@@ -1654,44 +1654,44 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_045-3', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0400', 0, async function (done) {
             try {
                 await getFd('test.gif');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info('TC_045-3 create image source failed');
+                    console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0400 create image source failed');
                     expect(false).assertTrue();
                     done();
                 } else {
                     imageSourceApi.getImageInfo((err, imageInfo) => {
                         if (err) {
                             expect(false).assertTrue();
-                            console.info('TC_045-3 error' + err);
+                            console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0400 error' + err);
                             done();
                             return
                         }
                         if (imageInfo != undefined && imageInfo != null) {
                             expect(true).assertTrue();
-                            console.info('TC_045-3 imageInfo.size.height:' + imageInfo.size.height);
-                            console.info('TC_045-3 imageInfo.size.width:' + imageInfo.size.width);
-                            console.info('TC_045-3 success')
+                            console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0400 imageInfo.size.height:' + imageInfo.size.height);
+                            console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0400 imageInfo.size.width:' + imageInfo.size.width);
+                            console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0400 success')
                             done();
                         } else {
                             expect(false).assertTrue();
-                            console.info('TC_045-3 failed')
+                            console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0400 failed')
                             done();
                         }
                     })
                 }
             } catch (error) {
-                console.info('TC_045-3 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0400 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
         })
 
         /**
-         * @tc.number    : TC_046
+         * @tc.number    : SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0500
          * @tc.name      : getImageInfo(index: number, callback: AsyncCallback<ImageInfo>)-jpg
          * @tc.desc      : 1.create ImageInfo
          *                 2.call getImageInfo(index, ImageInfo)
@@ -1700,31 +1700,31 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_046', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0500', 0, async function (done) {
             try {
                 await getFd('test.jpg');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info('TC_046 create image source failed');
+                    console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0500 create image source failed');
                     expect(false).assertTrue();
                     done();
                 } else {
                     imageSourceApi.getImageInfo(0, (err, imageInfo) => {
                         expect(imageInfo != undefined).assertTrue();
-                        console.info('TC_046 imageInfo.size.height:' + imageInfo.size.height);
-                        console.info('TC_046 imageInfo.size.width:' + imageInfo.size.width);
+                        console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0500 imageInfo.size.height:' + imageInfo.size.height);
+                        console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0500 imageInfo.size.width:' + imageInfo.size.width);
                         done();
                     })
                 }
             } catch (error) {
-                console.info('TC_046 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0500 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
         })
 
         /**
-         * @tc.number    : TC_046-1
+         * @tc.number    : SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0600
          * @tc.name      : getImageInfo(index: number, callback: AsyncCallback<ImageInfo>)-bmp
          * @tc.desc      : 1.create ImageInfo
          *                 2.call getImageInfo(index, ImageInfo)
@@ -1733,31 +1733,31 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_046-1', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0600', 0, async function (done) {
             try {
                 await getFd('test.bmp');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info('TC_046-1 create image source failed');
+                    console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0600 create image source failed');
                     expect(false).assertTrue();
                     done();
                 } else {
                     imageSourceApi.getImageInfo(0, (err, imageInfo) => {
                         expect(imageInfo != undefined).assertTrue();
-                        console.info('TC_046-1 imageInfo.size.height:' + imageInfo.size.height);
-                        console.info('TC_046-1 imageInfo.size.width:' + imageInfo.size.width);
+                        console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0600 imageInfo.size.height:' + imageInfo.size.height);
+                        console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0600 imageInfo.size.width:' + imageInfo.size.width);
                         done();
                     })
                 }
             } catch (error) {
-                console.info('TC_046-1 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0600 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
         })
 
         /**
-         * @tc.number: TC_046-2
+         * @tc.number: SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0700
          * @tc.name  : getImageInfo(index: number, callback: AsyncCallback<ImageInfo>)-png
          * @tc.desc  : 1.create ImageInfo
          *             2.call getImageInfo(index, ImageInfo)
@@ -1766,24 +1766,24 @@ export default function imageJsTest() {
          * @tc.type  : Functional
          * @tc.level : Level 1
          */
-        it('TC_046-2', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0700', 0, async function (done) {
             try {
                 await getFd('test.png');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info('TC_046-2 create image source failed');
+                    console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0700 create image source failed');
                     expect(false).assertTrue();
                     done();
                 } else {
                     imageSourceApi.getImageInfo(0, (err, imageInfo) => {
                         expect(imageInfo != undefined).assertTrue();
-                        console.info('TC_046-2 imageInfo.size.height:' + imageInfo.size.height);
-                        console.info('TC_046-2 imageInfo.size.width:' + imageInfo.size.width);
+                        console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0700 imageInfo.size.height:' + imageInfo.size.height);
+                        console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0700 imageInfo.size.width:' + imageInfo.size.width);
                         done();
                     })
                 }
             } catch {
-                console.info('TC_046-2 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0700 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
@@ -1791,7 +1791,7 @@ export default function imageJsTest() {
         })
 
         /**
-         * @tc.number: TC_046-3
+         * @tc.number: SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0800
          * @tc.name  : getImageInfo(index: number, callback: AsyncCallback<ImageInfo>)-gif
          * @tc.desc  : 1.create ImageInfo
          *             2.call getImageInfo(index, ImageInfo)
@@ -1800,44 +1800,44 @@ export default function imageJsTest() {
          * @tc.type  : Functional
          * @tc.level : Level 1
          */
-        it('TC_046-3', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0800', 0, async function (done) {
             try {
                 await getFd('test.gif');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info('TC_046-3 create image source failed');
+                    console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0800 create image source failed');
                     expect(false).assertTrue();
                     done();
                 } else {
                     imageSourceApi.getImageInfo(0, (err, imageInfo) => {
                         if (err) {
                             expect(false).assertTrue();
-                            console.info('TC_046-3 error' + err);
+                            console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0800 error' + err);
                             done();
                             return
                         }
                         if (imageInfo != undefined && imageInfo != null) {
                             expect(true).assertTrue();
-                            console.info('TC_046-3 imageInfo.size.height:' + imageInfo.size.height);
-                            console.info('TC_046-3 imageInfo.size.width:' + imageInfo.size.width);
-                            console.info('TC_046-3 success')
+                            console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0800 imageInfo.size.height:' + imageInfo.size.height);
+                            console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0800 imageInfo.size.width:' + imageInfo.size.width);
+                            console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0800 success')
                             done();
                         } else {
                             expect(false).assertTrue();
-                            console.info('TC_046-3 failed')
+                            console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0800 failed')
                             done();
                         }
                     })
                 }
             } catch (error) {
-                console.info('TC_046-3 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_CALLBACK_0800 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
         })
 
         /**
-         * @tc.number: TC_046-4
+         * @tc.number: SUB_GRAPHIC_IMAGE_GETIMAGEINFO_INDEX_CALLBACK_GIF_0100
          * @tc.name  : getImageInfo(index: number, callback: AsyncCallback<ImageInfo>)-gif(frame:1)-index:1
          * @tc.desc  : 1.create ImageInfo
          *             2.call getImageInfo(index, ImageInfo)
@@ -1846,12 +1846,12 @@ export default function imageJsTest() {
          * @tc.type  : Functional
          * @tc.level : Level 1
          */
-        it('TC_046-4', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_INDEX_CALLBACK_GIF_0100', 0, async function (done) {
             try {
                 await getFd('test.gif');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info('TC_046-4 create image source failed');
+                    console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_INDEX_CALLBACK_GIF_0100 create image source failed');
                     expect(false).assertTrue();
                     done();
                 } else {
@@ -1866,14 +1866,14 @@ export default function imageJsTest() {
                     })
                 }
             } catch (error) {
-                console.info('TC_046-4 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_INDEX_CALLBACK_GIF_0100 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
         })
 
         /**
-         * @tc.number: TC_046-5
+         * @tc.number: SUB_GRAPHIC_IMAGE_GETIMAGEINFO_INDEX_CALLBACK_GIF_0200
          * @tc.name  : getImageInfo(index: number, callback: AsyncCallback<ImageInfo>)-gif-index:-1
          * @tc.desc  : 1.create ImageInfo
          *             2.call getImageInfo(index, ImageInfo)
@@ -1882,12 +1882,12 @@ export default function imageJsTest() {
          * @tc.type  : Functional
          * @tc.level : Level 1
          */
-        it('TC_046-5', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_INDEX_CALLBACK_GIF_0200', 0, async function (done) {
             try {
                 await getFd('test.gif');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info('TC_046-5 create image source failed');
+                    console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_INDEX_CALLBACK_GIF_0200 create image source failed');
                     expect(false).assertTrue();
                     done();
                 } else {
@@ -1897,14 +1897,14 @@ export default function imageJsTest() {
                     })
                 }
             } catch (error) {
-                console.info('TC_046-5 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_INDEX_CALLBACK_GIF_0200 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
         })
 
         /**
-         * @tc.number    : TC_047
+         * @tc.number    : SUB_GRAPHIC_IMAGE_GETIMAGEINFO_PROMISE_0100
          * @tc.name      : getImageInfo(index?: number): Promise<ImageInfo>-jpg
          * @tc.desc      : 1.create imagesource
          *                 2.call getImageInfo(index)
@@ -1913,37 +1913,37 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_047', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_PROMISE_0100', 0, async function (done) {
             try {
                 await getFd('test.jpg');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info('TC_047 create image source failed');
+                    console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_PROMISE_0100 create image source failed');
                     expect(false).assertTrue();
                     done();
                 } else {
                     imageSourceApi.getImageInfo(0)
                         .then(imageInfo => {
                             expect(imageInfo != undefined).assertTrue();
-                            console.info('TC_047 imageInfo');
+                            console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_PROMISE_0100 imageInfo');
                             console.info('imageInfo.size.height:' + imageInfo.size.height);
                             console.info('imageInfo.size.width:' + imageInfo.size.width);
                             done();
                         }).catch(error => {
-                            console.log('TC_047 error: ' + error);
+                            console.log('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_PROMISE_0100 error: ' + error);
                             expect().assertFail();
                             done();
                         })
                 }
             } catch (error) {
-                console.info('TC_047 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_PROMISE_0100 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
         })
 
         /**
-         * @tc.number    : TC_047-1
+         * @tc.number    : SUB_GRAPHIC_IMAGE_GETIMAGEINFO_PROMISE_0200
          * @tc.name      : getImageInfo(index?: number): Promise<ImageInfo>-bmp
          * @tc.desc      : 1.create imagesource
          *                 2.call getImageInfo(index)
@@ -1952,37 +1952,37 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_047-1', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_PROMISE_0200', 0, async function (done) {
             try {
                 await getFd('test.bmp');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info('TC_047-1 create image source failed');
+                    console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_PROMISE_0200 create image source failed');
                     expect(false).assertTrue();
                     done();
                 } else {
                     imageSourceApi.getImageInfo(0)
                         .then(imageInfo => {
                             expect(imageInfo != undefined).assertTrue();
-                            console.info('TC_047-1 imageInfo');
+                            console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_PROMISE_0200 imageInfo');
                             console.info('imageInfo.size.height:' + imageInfo.size.height);
                             console.info('imageInfo.size.width:' + imageInfo.size.width);
                             done();
                         }).catch(error => {
-                            console.log('TC_047-1 error: ' + error);
+                            console.log('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_PROMISE_0200 error: ' + error);
                             expect().assertFail();
                             done();
                         })
                 }
             } catch (error) {
-                console.info('TC_047-1 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_PROMISE_0200 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
         })
 
         /**
-         * @tc.number    : TC_047-2
+         * @tc.number    : SUB_GRAPHIC_IMAGE_GETIMAGEINFO_PROMISE_0300
          * @tc.name      : getImageInfo(index?: number): Promise<ImageInfo>-png
          * @tc.desc      : 1.create imagesource
          *                 2.call getImageInfo(index)
@@ -1991,37 +1991,37 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_047-2', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_PROMISE_0300', 0, async function (done) {
             try {
                 await getFd('test.png');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info('TC_047-2 create image source failed');
+                    console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_PROMISE_0300 create image source failed');
                     expect(false).assertTrue();
                     done();
                 } else {
                     imageSourceApi.getImageInfo(0)
                         .then(imageInfo => {
                             expect(imageInfo != undefined).assertTrue();
-                            console.info('TC_047-2 imageInfo');
+                            console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_PROMISE_0300 imageInfo');
                             console.info('imageInfo.size.height:' + imageInfo.size.height);
                             console.info('imageInfo.size.width:' + imageInfo.size.width);
                             done();
                         }).catch(error => {
-                            console.log('TC_047-2 error: ' + error);
+                            console.log('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_PROMISE_0300 error: ' + error);
                             expect().assertFail();
                             done();
                         })
                 }
             } catch (error) {
-                console.info('TC_047-2 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_PROMISE_0300 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
         })
 
         /**
-         * @tc.number    : TC_047-3
+         * @tc.number    : SUB_GRAPHIC_IMAGE_GETIMAGEINFO_PROMISE_0400
          * @tc.name      : getImageInfo(index?: number): Promise<ImageInfo>-gif
          * @tc.desc      : 1.create imagesource
          *                 2.call getImageInfo(index)
@@ -2030,12 +2030,12 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_047-3', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_PROMISE_0400', 0, async function (done) {
             try {
                 await getFd('test.gif');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info('TC_047-3 create image source failed');
+                    console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_PROMISE_0400 create image source failed');
                     expect(false).assertTrue();
                     done();
                 } else {
@@ -2043,29 +2043,29 @@ export default function imageJsTest() {
                         .then(imageInfo => {
                             if (imageInfo != undefined && imageInfo != null) {
                                 expect(true).assertTrue();
-                                console.info('TC_047-3 imageInfo.size.height:' + imageInfo.size.height);
-                                console.info('TC_047-3 imageInfo.size.width:' + imageInfo.size.width);
+                                console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_PROMISE_0400 imageInfo.size.height:' + imageInfo.size.height);
+                                console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_PROMISE_0400 imageInfo.size.width:' + imageInfo.size.width);
                                 done();
                             } else {
                                 expect(false).assertTrue();
-                                console.info('TC_047-3 failed');
+                                console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_PROMISE_0400 failed');
                                 done();
                             }
                         }).catch(error => {
-                            console.log('TC_047-3 error: ' + error);
+                            console.log('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_PROMISE_0400 error: ' + error);
                             expect().assertFail();
                             done();
                         })
                 }
             } catch (error) {
-                console.info('TC_047-3 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_PROMISE_0400 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
         })
 
         /**
-         * @tc.number: TC_047-4
+         * @tc.number: SUB_GRAPHIC_IMAGE_GETIMAGEINFO_INDEX_PROMISE_GIF_0100
          * @tc.name  : getImageInfo(index?: number): Promise<ImageInfo>-gif(frame:1)-index:1
          * @tc.desc  : 1.create imagesource
          *             2.call getImageInfo(index=1)
@@ -2074,35 +2074,35 @@ export default function imageJsTest() {
          * @tc.type  : Functional
          * @tc.level : Level 1
          */
-        it('TC_047-4', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_INDEX_PROMISE_GIF_0100', 0, async function (done) {
             try {
                 await getFd('test.gif');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info('TC_047-4 create image source failed');
+                    console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_INDEX_PROMISE_GIF_0100 create image source failed');
                     expect(false).assertTrue();
                     done();
                 } else {
                     imageSourceApi.getImageInfo(1)
                         .then(() => {
-                            console.log('TC_047-4 failed');
+                            console.log('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_INDEX_PROMISE_GIF_0100 failed');
                             expect().assertFail();
                             done();
                         }).catch(error => {
-                            console.log('TC_047-4 success');
+                            console.log('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_INDEX_PROMISE_GIF_0100 success');
                             expect(true).assertTrue();
                             done();
                         })
                 }
             } catch (error) {
-                console.info('TC_047-4 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_INDEX_PROMISE_GIF_0100 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
         })
 
         /**
-         * @tc.number    : TC_047-5
+         * @tc.number    : SUB_GRAPHIC_IMAGE_GETIMAGEINFO_INDEX_PROMISE_GIF_0200
          * @tc.name      : getImageInfo(index?: number): Promise<ImageInfo>-gif-index:-1
          * @tc.desc      : 1.create imagesource
          *                 2.call getImageInfo(index=-1)
@@ -2111,35 +2111,35 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_047-5', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_INDEX_PROMISE_GIF_0200', 0, async function (done) {
             try {
                 await getFd('test.gif');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info('TC_047-5 create image source failed');
+                    console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_INDEX_PROMISE_GIF_0200 create image source failed');
                     expect(false).assertTrue();
                     done();
                 } else {
                     imageSourceApi.getImageInfo(-1)
                         .then(() => {
-                            console.log('TC_047-5 failed');
+                            console.log('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_INDEX_PROMISE_GIF_0200 failed');
                             expect().assertFail();
                             done();
                         }).catch(error => {
-                            console.log('TC_047-5 success');
+                            console.log('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_INDEX_PROMISE_GIF_0200 success');
                             expect(true).assertTrue();
                             done();
                         })
                 }
             } catch (error) {
-                console.info('TC_047-5 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_GETIMAGEINFO_INDEX_PROMISE_GIF_0200 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
         })
 
         /**
-         * @tc.number    : TC_050-14
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_JPG_0100
          * @tc.name      : createPixelMap-promise-jpg
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -2149,35 +2149,35 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_050-14', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_JPG_0100', 0, async function (done) {
             try {
                 await getFd('test.jpg');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info('TC_050-14 create image source failed');
+                    console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_JPG_0100 create image source failed');
                     expect(false).assertTrue();
                     done();
                 } else {
                     imageSourceApi.createPixelMap().then(pixelmap => {
                         globalpixelmap = pixelmap;
-                        console.info('TC_050-14 success ');
+                        console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_JPG_0100 success ');
                         expect(pixelmap != undefined).assertTrue();
                         done();
                     }).catch(error => {
-                        console.log('TC_050-14 error: ' + error);
+                        console.log('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_JPG_0100 error: ' + error);
                         expect().assertFail();
                         done();
                     })
                 }
             } catch (error) {
-                console.info('TC_050-14 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_JPG_0100 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
         })
 
         /**
-         * @tc.number    : TC_050-15
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_JPG_0100
          * @tc.name      : createPixelMap-callback-jpg
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -2187,31 +2187,31 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_050-15', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_JPG_0100', 0, async function (done) {
             try {
                 await getFd('test.jpg');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info('TC_050-15 create image source failed');
+                    console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_JPG_0100 create image source failed');
                     expect(false).assertTrue();
                     done();
                 } else {
                     imageSourceApi.createPixelMap((err, pixelmap) => {
                         globalpixelmap = pixelmap;
-                        console.info('TC_050-15 success ');
+                        console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_JPG_0100 success ');
                         expect(pixelmap != undefined).assertTrue();
                         done();
                     })
                 }
             } catch (error) {
-                console.info('TC_050-15 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_JPG_0100 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
         })
 
         /**
-         * @tc.number    : TC_053
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_0100
          * @tc.name      : createIncrementalSource-updateData-png
          * @tc.desc      : 1.create imagesource
          *                 2.update data
@@ -2220,38 +2220,38 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_053', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_0100', 0, async function (done) {
             try {
                 let testimagebuffer = testPng;
-                console.info('TC_053 0003 ' + testimagebuffer.length);
+                console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_0100 0003 ' + testimagebuffer.length);
                 let bufferSize = testimagebuffer.length;
                 let offset = 0;
                 const incSouce = image.createIncrementalSource(new ArrayBuffer(1));
                 let ret;
                 let isFinished = false;
                 while (offset < testimagebuffer.length) {
-                    console.info('TC_053 0006 ' + testimagebuffer.length);
+                    console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_0100 0006 ' + testimagebuffer.length);
                     var oneStep = testimagebuffer.slice(offset, offset + bufferSize);
-                    console.info('TC_053 0007 ' + oneStep.length);
+                    console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_0100 0007 ' + oneStep.length);
                     if (oneStep.length < bufferSize) {
                         isFinished = true;
                     }
                     ret = await incSouce.updateData(oneStep, isFinished, 0, oneStep.length);
                     if (!ret) {
-                        console.info('TC_053 updateData failed');
+                        console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_0100 updateData failed');
                         expect(ret).assertTrue();
                         break;
                     }
                     offset = offset + oneStep.length;
-                    console.info('TC_053 0011 ' + offset);
+                    console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_0100 0011 ' + offset);
                 }
                 if (ret) {
-                    console.info('TC_053 updateData success ');
+                    console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_0100 updateData success ');
                     let decodingOptions = {
                         sampleSize: 1
                     };
                     incSouce.createPixelMap(decodingOptions, (err, pixelmap) => {
-                        console.info('TC_053 0014' + pixelmap);
+                        console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_0100 0014' + pixelmap);
                         expect(pixelmap != undefined).assertTrue();
                         done();
                     })
@@ -2259,12 +2259,12 @@ export default function imageJsTest() {
                     done();
                 }
             } catch (error) {
-                console.info('TC_053 updateData failed ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_0100 updateData failed ' + error);
             }
         })
 
         /**
-         * @tc.number    : TC_053-1
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_0200
          * @tc.name      : createIncrementalSource-updateData-jpg
          * @tc.desc      : 1.create imagesource
          *                 2.update data
@@ -2273,33 +2273,33 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_053-1', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_0200', 0, async function (done) {
             try {
                 let testimagebuffer = testJpg;
-                console.info('TC_053-1 0003 ' + testimagebuffer.length);
+                console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_0200 0003 ' + testimagebuffer.length);
                 let bufferSize = testimagebuffer.length;
                 let offset = 0;
                 const incSouce = image.createIncrementalSource(new ArrayBuffer(1));
                 let isFinished = false;
                 let ret;
                 while (offset < testimagebuffer.length) {
-                    console.info('TC_053-1 0006 ' + testimagebuffer.length);
+                    console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_0200 0006 ' + testimagebuffer.length);
                     var oneStep = testimagebuffer.slice(offset, offset + bufferSize);
-                    console.info('TC_053-1 0007 ' + oneStep.length);
+                    console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_0200 0007 ' + oneStep.length);
                     if (oneStep.length < bufferSize) {
                         isFinished = true;
                     }
                     ret = await incSouce.updateData(oneStep, isFinished, 0, oneStep.length);
                     if (!ret) {
-                        console.info('TC_053-1 updateData failed');
+                        console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_0200 updateData failed');
                         expect(ret).assertTrue();
                         break;
                     }
                     offset = offset + oneStep.length;
-                    console.info('TC_053-1 0011 ' + offset);
+                    console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_0200 0011 ' + offset);
                 }
                 if (ret) {
-                    console.info('TC_053-1 updateData success ');
+                    console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_0200 updateData success ');
                     let decodingOptions = {
                         sampleSize: 1
                     };
@@ -2311,12 +2311,12 @@ export default function imageJsTest() {
                     done();
                 }
             } catch (error) {
-                console.info('TC_053-1 updateData failed ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_0200 updateData failed ' + error);
             }
         })
 
         /**
-         * @tc.number    : TC_064
+         * @tc.number    : SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_PROMISE_0100
          * @tc.name      : release ImageSource - promise - png  
          * @tc.desc      : 1.create ImageSource
          *                 2.call release()
@@ -2325,34 +2325,34 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_064', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_PROMISE_0100', 0, async function (done) {
             try {
                 await getFd('test.png');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info('TC_064 create image source failed');
+                    console.info('SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_PROMISE_0100 create image source failed');
                     expect(false).assertTrue();
                     done();
                 } else {
                     imageSourceApi.release().then(() => {
-                        console.info('TC_064 success');
+                        console.info('SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_PROMISE_0100 success');
                         expect(true).assertTrue();
                         done();
                     }).catch(error => {
-                        console.log('TC_064 error: ' + error);
+                        console.log('SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_PROMISE_0100 error: ' + error);
                         expect().assertFail();
                         done();
                     })
                 }
             } catch (error) {
-                console.info('TC_064 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_PROMISE_0100 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
         })
 
         /**
-         * @tc.number    : TC_064-1
+         * @tc.number    : SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_CALLBACK_0100
          * @tc.name      : release ImageSource - callback - png 
          * @tc.desc      : 1.create ImageSource
          *                 2.call release()
@@ -2361,37 +2361,37 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_064-1', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_CALLBACK_0100', 0, async function (done) {
             try {
                 await getFd('test.png');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info('TC_064-1 create image source failed');
+                    console.info('SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_CALLBACK_0100 create image source failed');
                     expect(false).assertTrue();
                     done();
                 } else {
                     imageSourceApi.release(async (err) => {
                         if (err) {
-                            console.info('TC_064-1 err:' + err);
+                            console.info('SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_CALLBACK_0100 err:' + err);
                             expect(false).assertTrue();
                             done();
                             return
                         }
-                        console.info('TC_064-1 Success');
+                        console.info('SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_CALLBACK_0100 Success');
                         expect(true).assertTrue();
                         expect(true).assertTrue();
                         done();
                     })
                 }
             } catch (error) {
-                console.info('TC_064-1 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_CALLBACK_0100 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
         })
 
         /**
-         * @tc.number    : TC_065
+         * @tc.number    : SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_PROMISE_0200
          * @tc.name      : release ImageSource - promise - bmp 
          * @tc.desc      : 1.create ImageSource
          *                 2.call release()
@@ -2400,34 +2400,34 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_065', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_PROMISE_0200', 0, async function (done) {
             try {
                 await getFd('test.bmp');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info('TC_065 create image source failed');
+                    console.info('SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_PROMISE_0200 create image source failed');
                     expect(false).assertTrue();
                     done();
                 } else {
                     imageSourceApi.release().then(() => {
-                        console.info('TC_065 success');
+                        console.info('SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_PROMISE_0200 success');
                         expect(true).assertTrue();
                         done();
                     }).catch(error => {
-                        console.log('TC_065 error: ' + error);
+                        console.log('SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_PROMISE_0200 error: ' + error);
                         expect().assertFail();
                         done();
                     })
                 }
             } catch (error) {
-                console.info('TC_065 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_PROMISE_0200 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
         })
 
         /**
-         * @tc.number    : TC_065-1
+         * @tc.number    : SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_CALLBACK_0200
          * @tc.name      : release ImageSource - callback - bmp 
          * @tc.desc      : 1.create ImageSource
          *                 2.create SourceStream
@@ -2436,30 +2436,30 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_065-1', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_CALLBACK_0200', 0, async function (done) {
             try {
                 await getFd('test.bmp');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info('TC_065-1 create image source failed');
+                    console.info('SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_CALLBACK_0200 create image source failed');
                     expect(false).assertTrue();
                     done();
                 } else {
                     imageSourceApi.release(async () => {
-                        console.info('TC_065-1 Success');
+                        console.info('SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_CALLBACK_0200 Success');
                         expect(true).assertTrue();
                         done();
                     })
                 }
             } catch (error) {
-                console.info('TC_065-1 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_CALLBACK_0200 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
         })
 
         /**
-         * @tc.number    : TC_066
+         * @tc.number    : SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_PROMISE_0300
          * @tc.name      : release ImageSource - promise - gif
          * @tc.desc      : 1.create ImageSource
          *                 2.call release()
@@ -2468,34 +2468,34 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_066', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_PROMISE_0300', 0, async function (done) {
             try {
                 await getFd('test.gif');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info('TC_066 create image source failed');
+                    console.info('SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_PROMISE_0300 create image source failed');
                     expect(false).assertTrue();
                     done();
                 } else {
                     imageSourceApi.release().then(() => {
-                        console.info('TC_066 success');
+                        console.info('SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_PROMISE_0300 success');
                         expect(true).assertTrue();
                         done();
                     }).catch(error => {
-                        console.log('TC_066 error: ' + error);
+                        console.log('SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_PROMISE_0300 error: ' + error);
                         expect().assertFail();
                         done();
                     })
                 }
             } catch (error) {
-                console.info('TC_066 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_PROMISE_0300 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
         })
 
         /**
-         * @tc.number    : TC_066-1
+         * @tc.number    : SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_CALLBACK_0300
          * @tc.name      : release ImageSource - callback - gif
          * @tc.desc      : 1.create ImageSource
          *                 2.call release()
@@ -2504,30 +2504,30 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_066-1', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_CALLBACK_0300', 0, async function (done) {
             try {
                 await getFd('test.gif');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info('TC_066-1 create image source failed');
+                    console.info('SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_CALLBACK_0300 create image source failed');
                     expect(false).assertTrue();
                     done();
                 } else {
                     imageSourceApi.release(() => {
-                        console.info('TC_066-1 Success');
+                        console.info('SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_CALLBACK_0300 Success');
                         expect(true).assertTrue();
                         done();
                     })
                 }
             } catch (error) {
-                console.info('TC_066-1 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_RELEASE_IMAGESOURCE_CALLBACK_0300 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
         })
 
         /**
-         * @tc.number    : TC_067-14
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_0800
          * @tc.name      : createPixelMap-promise-gif
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -2537,36 +2537,36 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_067-14', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_0800', 0, async function (done) {
             try {
                 await getFd('moving_test.gif');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info('TC_067-14 create image source failed');
+                    console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_0800 create image source failed');
                     expect(false).assertTrue();
                     done();
                 } else {
                     imageSourceApi.createPixelMap().then(pixelmap => {
                         globalpixelmap = pixelmap;
-                        console.info('TC_067-14 success ');
+                        console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_0800 success ');
                         expect(pixelmap !== undefined).assertTrue();
                         done();
                     }).catch(error => {
-                        console.log('TC_067-14 error: ' + error);
+                        console.log('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_0800 error: ' + error);
                         expect().assertFail();
                         done();
                     })
                 }
             } catch (error) {
-                console.info('TC_067-14 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_0800 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
         })
 
         /**
-         * @tc.number    : TC_067-15
-         * @tc.name      : createPixelMap-pcallback-gif
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_1200
+         * @tc.name      : createPixelMap-callback-gif
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
          *                 3.create PixelMap
@@ -2575,31 +2575,31 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_067-15', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_1200', 0, async function (done) {
             try {
                 await getFd('moving_test.gif');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info('TC_067-15 create image source failed');
+                    console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_1200 create image source failed');
                     expect(false).assertTrue();
                     done();
                 } else {
                     imageSourceApi.createPixelMap((err, pixelmap) => {
                         globalpixelmap = pixelmap;
-                        console.info('TC_067-15 success ');
+                        console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_1200 success ');
                         expect(pixelmap !== undefined).assertTrue();
                         done();
                     })
                 }
             } catch (error) {
-                console.info('TC_067-15 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_1200 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
         })
 
         /**
-         * @tc.number    : TC_068-14
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_0900
          * @tc.name      : createPixelMap-promise-bmp
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -2609,35 +2609,35 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_068-14', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_0900', 0, async function (done) {
             try {
                 await getFd('test.bmp');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info('TC_068-14 create image source failed');
+                    console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_0900 create image source failed');
                     expect(false).assertTrue();
                     done();
                 } else {
                     imageSourceApi.createPixelMap().then(pixelmap => {
                         globalpixelmap = pixelmap;
-                        console.info('TC_068-14 success ');
+                        console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_0900 success ');
                         expect(pixelmap != undefined).assertTrue();
                         done();
                     }).catch(error => {
-                        console.log('TC_068-14 error: ' + error);
+                        console.log('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_0900 error: ' + error);
                         expect().assertFail();
                         done();
                     })
                 }
             } catch (error) {
-                console.info('TC_068-14 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_0900 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
         })
 
         /**
-         * @tc.number    : TC_068-15
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_1300
          * @tc.name      : createPixelMap-callback-bmp
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -2647,31 +2647,31 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_068-15', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_1300', 0, async function (done) {
             try {
                 await getFd('test.bmp');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info('TC_068-15 create image source failed');
+                    console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_1300 create image source failed');
                     expect(false).assertTrue();
                     done();
                 } else {
                     imageSourceApi.createPixelMap((err, pixelmap) => {
                         globalpixelmap = pixelmap;
-                        console.info('TC_068-15 success ');
+                        console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_1300 success ');
                         expect(pixelmap != undefined).assertTrue();
                         done();
                     })
                 }
             } catch (error) {
-                console.info('TC_068-15 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_1300 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
         })
 
         /**
-         * @tc.number    : TC_163-14
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_1000
          * @tc.name      : createPixelMap-promise-png
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -2681,35 +2681,35 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_163-14', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_1000', 0, async function (done) {
             try {
                 await getFd('test.png');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info('TC_163-14 create image source failed');
+                    console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_1000 create image source failed');
                     expect(false).assertTrue();
                     done();
                 } else {
                     imageSourceApi.createPixelMap().then(pixelmap => {
                         globalpixelmap = pixelmap;
-                        console.info('TC_163-14 success');
+                        console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_1000 success');
                         expect(pixelmap != undefined).assertTrue();
                         done();
                     }).catch(error => {
-                        console.log('TC_163-14 error: ' + error);
+                        console.log('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_1000 error: ' + error);
                         expect().assertFail();
                         done();
                     })
                 }
             } catch (error) {
-                console.info('TC_163-14 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_1000 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
         })
 
         /**
-         * @tc.number    : TC_163-15
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_1400
          * @tc.name      : createPixelMap-callback-png
          * @tc.desc      : 1.create imagesource
          *                 2.set index and DecodeOptions
@@ -2719,31 +2719,31 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_163-15', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_1400', 0, async function (done) {
             try {
                 await getFd('test.png');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info('TC_163-15 create image source failed');
+                    console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_1400 create image source failed');
                     expect(false).assertTrue();
                     done();
                 } else {
                     imageSourceApi.createPixelMap((err, pixelmap) => {
                         globalpixelmap = pixelmap;
-                        console.info('TC_163-15 success');
+                        console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_1400 success');
                         expect(pixelmap != undefined).assertTrue();
                         done();
                     })
                 }
             } catch (error) {
-                console.info('TC_163-15 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_1400 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
         })
 
         /**
-         * @tc.number    : TC_164
+         * @tc.number    : SUB_GRAPHIC_IMAGE_IMAGESOURCE_SUPPORTEDFORMATS_0100
          * @tc.name      : imagesource supportedFormats
          * @tc.desc      : 1.create imagesource
          *                 2.call supportedFormats
@@ -2751,29 +2751,29 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('TC_164', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_IMAGESOURCE_SUPPORTEDFORMATS_0100', 0, async function (done) {
             try {
                 await getFd('test.jpg');
                 const imageSourceApi = image.createImageSource(fdNumber);
                 if (imageSourceApi == undefined) {
-                    console.info('TC_164 create image source failed');
+                    console.info('SUB_GRAPHIC_IMAGE_IMAGESOURCE_SUPPORTEDFORMATS_0100 create image source failed');
                     expect(false).assertTrue();
                     done();
                 } else {
                     expect(imageSourceApi.supportedFormats != undefined).assertTrue();
                     console.info(imageSourceApi.supportedFormats);
-                    console.info('TC_164 success ');
+                    console.info('SUB_GRAPHIC_IMAGE_IMAGESOURCE_SUPPORTEDFORMATS_0100 success ');
                     done();
                 }
             } catch (error) {
-                console.info('TC_164 error: ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_IMAGESOURCE_SUPPORTEDFORMATS_0100 error: ' + error);
                 expect(false).assertTrue();
                 done();
             }
         })
 
         /**
-         * @tc.number    : TC_166
+         * @tc.number    : SUB_GRAPHIC_IMAGE_IMAGEPACKER_SUPPORTEDFORMATS_0100
          * @tc.name      : imagepacker supportedFormats
          * @tc.desc      : 1.create imagepacker
          *                 2.call supportedFormats
@@ -2781,22 +2781,22 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('TC_166', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_IMAGEPACKER_SUPPORTEDFORMATS_0100', 0, async function (done) {
             const imagePackerApi = image.createImagePacker();
             if (imagePackerApi == undefined) {
-                console.info('TC_166 create image packer failed');
+                console.info('SUB_GRAPHIC_IMAGE_IMAGEPACKER_SUPPORTEDFORMATS_0100 create image packer failed');
                 expect(false).assertTrue();
                 done();
             } else {
                 expect(imagePackerApi.supportedFormats != undefined).assertTrue();
                 console.info(imagePackerApi.supportedFormats);
-                console.info('TC_166 success ');
+                console.info('SUB_GRAPHIC_IMAGE_IMAGEPACKER_SUPPORTEDFORMATS_0100 success ');
                 done();
             }
         })
 
         /**
-         * @tc.number    : TC_168
+         * @tc.number    : SUB_GRAPHIC_IMAGE_ISEDITABLE_0100
          * @tc.name      : isEditable
          * @tc.desc      : 1.create pixelmap
          *                 2.call isEditable 
@@ -2805,24 +2805,24 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('TC_168', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_ISEDITABLE_0100', 0, async function (done) {
             const Color = new ArrayBuffer(96);
             let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
             image.createPixelMap(Color, opts, (error, pixelmap) => {
                 if (pixelmap == undefined) {
-                    console.info('TC_168 create pixelmap failed');
+                    console.info('SUB_GRAPHIC_IMAGE_ISEDITABLE_0100 create pixelmap failed');
                     expect(false).assertTrue();
                     done();
                 } else {
                     expect(pixelmap.isEditable == true).assertTrue();
-                    console.info('TC_168 success ');
+                    console.info('SUB_GRAPHIC_IMAGE_ISEDITABLE_0100 success ');
                     done();
                 }
             })
         })
 
         /**
-         * @tc.number    : editable_001
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_EDITABLE_0100
          * @tc.name      : create pixelmap-callback (editable: true, pixelFormat: ARGB_8888,
          *                 size: { height: 4, width: 6 },bytes = buffer)
          * @tc.desc      : 1.create InitializationOptions object
@@ -2833,22 +2833,22 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('editable_001', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_EDITABLE_0100', 0, async function (done) {
             const Color = new ArrayBuffer(96);
             let edit = true;
             let opts = { editable: true, pixelFormat: 1, size: { height: 4, width: 6 } }
             image.createPixelMap(Color, opts, (err, pixelmap) => {
                 expect(pixelmap != undefined).assertTrue();
-                console.info('editable_001 editable: ' + pixelmap.isEditable);
+                console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_EDITABLE_0100 editable: ' + pixelmap.isEditable);
                 expect(pixelmap.isEditable == opts.editable).assertTrue();
-                console.info('editable_001 edit: ' + edit);
+                console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_EDITABLE_0100 edit: ' + edit);
                 expect(pixelmap.isEditable == edit).assertTrue();
                 done();
             })
         })
 
         /**
-         * @tc.number    : editable_002
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_EDITABLE_0200
          * @tc.name      : create pixelmap-callback (editable: false, pixelFormat: ARGB_8888,
          *                 size: { height: 4, width: 6 },bytes = buffer)
          * @tc.desc      : 1.create InitializationOptions object
@@ -2859,22 +2859,22 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('editable_002', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_EDITABLE_0200', 0, async function (done) {
             const Color = new ArrayBuffer(96);
             let edit = false;
             let opts = { editable: false, pixelFormat: 1, size: { height: 4, width: 6 } }
             image.createPixelMap(Color, opts, (err, pixelmap) => {
                 expect(pixelmap != undefined).assertTrue();
-                console.info('editable_002 editable: ' + pixelmap.isEditable);
+                console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_EDITABLE_0200 editable: ' + pixelmap.isEditable);
                 expect(pixelmap.isEditable == opts.editable).assertTrue();
-                console.info('editable_002 edit: ' + edit);
+                console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_EDITABLE_0200 edit: ' + edit);
                 expect(pixelmap.isEditable == edit).assertTrue();
                 done();
             })
         })
 
         /**
-         * @tc.number    : editable_003
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_EDITABLE_0100
          * @tc.name      : create pixelmap-promise (editable: true, pixelFormat: RGB_565,
          *                 size: { height: 4, width: 6 }, bytes = buffer)
          * @tc.desc      : 1.create InitializationOptions object
@@ -2885,27 +2885,27 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('editable_003', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_EDITABLE_0100', 0, async function (done) {
             const Color = new ArrayBuffer(96);
             let edit = true;
             let opts = { editable: true, pixelFormat: 2, size: { height: 4, width: 6 } }
             image.createPixelMap(Color, opts)
                 .then(pixelmap => {
-                    console.info('editable_003 editable: ' + pixelmap.isEditable);
+                    console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_EDITABLE_0100 editable: ' + pixelmap.isEditable);
                     expect(pixelmap != undefined).assertTrue();
                     expect(pixelmap.isEditable == opts.editable).assertTrue();
                     expect(pixelmap.isEditable == edit).assertTrue();
                     done();
                 })
                 .catch(error => {
-                    console.log('editable_003 err' + error);
+                    console.log('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_EDITABLE_0100 err' + error);
                     expect(false).assertTrue();
                     done();
                 })
         })
 
         /**
-         * @tc.number    : editable_004
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_EDITABLE_0200
          * @tc.name      : create pixelmap-promise (editable: false, pixelFormat: RGB_565,
          *                 size: { height: 4, width: 6 }, bytes = buffer)
          * @tc.desc      : 1.create InitializationOptions object
@@ -2916,20 +2916,20 @@ export default function imageJsTest() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('editable_004', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_EDITABLE_0200', 0, async function (done) {
             const Color = new ArrayBuffer(96);
             let edit = false;
             let opts = { editable: false, pixelFormat: 2, size: { height: 4, width: 6 } }
             image.createPixelMap(Color, opts)
                 .then(pixelmap => {
-                    console.info('editable_004 editable: ' + pixelmap.isEditable);
+                    console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_EDITABLE_0200 editable: ' + pixelmap.isEditable);
                     expect(pixelmap != undefined).assertTrue();
                     expect(pixelmap.isEditable == opts.editable).assertTrue();
                     expect(pixelmap.isEditable == edit).assertTrue();
                     done();
                 })
                 .catch(error => {
-                    console.log('editable_004 err' + error);
+                    console.log('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_EDITABLE_0200 err' + error);
                     expect(false).assertTrue();
                     done();
                 })

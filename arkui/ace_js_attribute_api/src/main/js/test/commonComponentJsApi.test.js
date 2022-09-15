@@ -152,7 +152,6 @@ describe('aceJsApiAndAttr', function () {
         done();
     });
 
-
     /**
       * @tc.number    SUB_ACE_BASIC_COMPONENT_JS_API_0500
       * @tc.name      testDivComponent

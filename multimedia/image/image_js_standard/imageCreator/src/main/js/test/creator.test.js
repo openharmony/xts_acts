@@ -171,7 +171,7 @@ describe('ImageCreator', function () {
     }
 
     /**
-    * @tc.number    : Creator_001
+    * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0100
     * @tc.name      : createImageCreator
     * @tc.desc      : 1.set width,height,format,capacity
     *                 2.create ImageCreator
@@ -180,11 +180,11 @@ describe('ImageCreator', function () {
     * @tc.type      : Functional
     * @tc.level     : Level 0
     */
-    it('Creator_001', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0100', 0, async function (done) {
         var creator = image.createImageCreator(WIDTH, HEIGHT, FORMAT, CAPACITY);
         if (creator == undefined) {
             expect(false).assertTrue();
-            console.info('creator_001 undefined')
+            console.info('SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0100 undefined')
             done();
         } else {
             expect(creator.size.width == WIDTH).assertTrue();
@@ -196,7 +196,7 @@ describe('ImageCreator', function () {
     })
 
     /**
-     * @tc.number    : Creator_001-1
+     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0200
      * @tc.name      : createImageCreator
      * @tc.desc      : 1.set width,height,format,capacity
      *                 2.create ImageCreator
@@ -205,12 +205,12 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Creator_001-1', 0, async function (done) {
-        createCreator(done, 'Creator_001-1', WIDTH, HEIGHT, FORMAT, 'hd!');
+    it('SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0200', 0, async function (done) {
+        createCreator(done, 'SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0200', WIDTH, HEIGHT, FORMAT, 'hd!');
     })
 
     /**
-     * @tc.number    : Creator_001-2
+     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0300
      * @tc.name      : createImageCreator
      * @tc.desc      : 1.set width,height,format,capacity
      *                 2.create ImageCreator
@@ -219,12 +219,12 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Creator_001-2', 0, async function (done) {
-        createCreator(done, 'Creator_001-2', WIDTH, HEIGHT, null, CAPACITY);
+    it('SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0300', 0, async function (done) {
+        createCreator(done, 'SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0300', WIDTH, HEIGHT, null, CAPACITY);
     })
 
     /**
-     * @tc.number    : Creator_001-3
+     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0400
      * @tc.name      : createImageCreator
      * @tc.desc      : 1.set width,height,format,capacity
      *                 2.create ImageCreator
@@ -233,12 +233,12 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Creator_001-3', 0, async function (done) {
-        createCreator(done, 'Creator_001-3', WIDTH, null, FORMAT, CAPACITY);
+    it('SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0400', 0, async function (done) {
+        createCreator(done, 'SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0400', WIDTH, null, FORMAT, CAPACITY);
     })
 
     /**
-     * @tc.number    : Creator_001-4
+     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0500
      * @tc.name      : createImageCreator
      * @tc.desc      : 1.set width,height,format,capacity
      *                 2.create ImageCreator
@@ -247,12 +247,12 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Creator_001-4', 0, async function (done) {
-        createCreator(done, 'Creator_001-4', null, HEIGHT, FORMAT, CAPACITY);
+    it('SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0500', 0, async function (done) {
+        createCreator(done, 'SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0500', null, HEIGHT, FORMAT, CAPACITY);
     })
 
     /**
-     * @tc.number    : Creator_001-5
+     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0600
      * @tc.name      : createImageCreator
      * @tc.desc      : 1.set width,height,format,capacity
      *                 2.create ImageCreator
@@ -261,12 +261,12 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Creator_001-5', 0, async function (done) {
-        createCreator(done, 'Creator_001-5', WIDTH, HEIGHT, FORMAT, null);
+    it('SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0600', 0, async function (done) {
+        createCreator(done, 'SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0600', WIDTH, HEIGHT, FORMAT, null);
     })
 
     /**
-     * @tc.number    : Creator_001-6
+     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0700
      * @tc.name      : createImageCreator
      * @tc.desc      : 1.set width,height,format,capacity
      *                 2.create ImageCreator
@@ -275,12 +275,12 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Creator_001-6', 0, async function (done) {
-        createCreator(done, 'Creator_001-6', false, HEIGHT, FORMAT, CAPACITY);
+    it('SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0700', 0, async function (done) {
+        createCreator(done, 'SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0700', false, HEIGHT, FORMAT, CAPACITY);
     })
 
     /**
-     * @tc.number    : Creator_001-7
+     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0800
      * @tc.name      : createImageCreator
      * @tc.desc      : 1.set width,height,format,capacity
      *                 2.create ImageCreator
@@ -289,12 +289,12 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Creator_001-7', 0, async function (done) {
-        createCreator(done, 'Creator_001-7', { a: 10 }, HEIGHT, FORMAT, CAPACITY);
+    it('SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0800', 0, async function (done) {
+        createCreator(done, 'SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0800', { a: 10 }, HEIGHT, FORMAT, CAPACITY);
     })
 
     /**
-     * @tc.number    : Creator_001-8
+     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0900
      * @tc.name      : createImageCreator
      * @tc.desc      : 1.set width,height,format,capacity
      *                 2.create ImageCreator
@@ -303,12 +303,12 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Creator_001-8', 0, async function (done) {
-        createCreator(done, 'Creator_001-8', WIDTH, false, FORMAT, CAPACITY);
+    it('SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0900', 0, async function (done) {
+        createCreator(done, 'SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_0900', WIDTH, false, FORMAT, CAPACITY);
     })
 
     /**
-     * @tc.number    : Creator_001-9
+     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_1000
      * @tc.name      : createImageCreator
      * @tc.desc      : 1.set width,height,format,capacity
      *                 2.create ImageCreator
@@ -317,13 +317,13 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Creator_001-9', 0, async function (done) {
-        createCreator(done, 'Creator_001-9', WIDTH, HEIGHT, 'form.', CAPACITY);
+    it('SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_1000', 0, async function (done) {
+        createCreator(done, 'SUB_GRAPHIC_IMAGE_CREATOR_CREATEIMAGECREATOR_1000', WIDTH, HEIGHT, 'form.', CAPACITY);
     })
 
 
     /**
-     * @tc.number    : Creator_002
+     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_RELEASE_PROMISE_0100
      * @tc.name      : release-promise
      * @tc.desc      : 1.create ImageCreator
      *                 2.call release
@@ -332,11 +332,11 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Creator_002', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_CREATOR_RELEASE_PROMISE_0100', 0, async function (done) {
         var creator = image.createImageCreator(WIDTH, HEIGHT, FORMAT, CAPACITY);
         if (creator != undefined) {
             creator.release().then(() => {
-                console.info('Creator_002 release ');
+                console.info('SUB_GRAPHIC_IMAGE_CREATOR_RELEASE_PROMISE_0100 release ');
                 expect(true).assertTrue();
                 done();
             }).catch(error => {
@@ -345,13 +345,13 @@ describe('ImageCreator', function () {
             })
         } else {
             expect(false).assertTrue();
-            console.info('Creator_002 finished');
+            console.info('SUB_GRAPHIC_IMAGE_CREATOR_RELEASE_PROMISE_0100 finished');
             done()
         }
     })
 
     /**
-     * @tc.number    : Creator_003
+     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_RELEASE_CALLBACK_0100
      * @tc.name      : release-callback
      * @tc.desc      : 1.create ImageCreator
      *                 2.call release
@@ -360,29 +360,29 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Creator_003', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_CREATOR_RELEASE_CALLBACK_0100', 0, async function (done) {
         var creator = image.createImageCreator(WIDTH, HEIGHT, FORMAT, CAPACITY);
         if (creator != undefined) {
             creator.release((err) => {
                 if (err) {
-                    console.info('Creator_003 release call back' + err);
+                    console.info('SUB_GRAPHIC_IMAGE_CREATOR_RELEASE_CALLBACK_0100 release call back' + err);
                     expect(false).assertTrue();
                     done();
                     return;
                 }
-                console.info('Creator_003 release call back');
+                console.info('SUB_GRAPHIC_IMAGE_CREATOR_RELEASE_CALLBACK_0100 release call back');
                 expect(true).assertTrue();
                 done();
             });
         } else {
             expect(false).assertTrue();
-            console.info('Creator_003 finished');
+            console.info('SUB_GRAPHIC_IMAGE_CREATOR_RELEASE_CALLBACK_0100 finished');
             done()
         }
     })
 
     /**
-     * @tc.number    : Creator_004
+     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_DEQUEUEIMAGE_PROMISE_0100
      * @tc.name      : dequeueImage-promise
      * @tc.desc      : 1.create ImageCreator
      *                 2.call dequeueImage
@@ -391,27 +391,27 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Creator_004', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_CREATOR_DEQUEUEIMAGE_PROMISE_0100', 0, async function (done) {
         var creator = image.createImageCreator(WIDTH, HEIGHT, FORMAT, CAPACITY);
         if (creator != undefined) {
             creator.dequeueImage().then(img => {
-                console.info('Creator_004 dequeueImage Success');
+                console.info('SUB_GRAPHIC_IMAGE_CREATOR_DEQUEUEIMAGE_PROMISE_0100 dequeueImage Success');
                 expect(img != undefined).assertTrue();
                 done();
             }).catch(error => {
-                console.log('Creator_004 error: ' + error);
+                console.log('SUB_GRAPHIC_IMAGE_CREATOR_DEQUEUEIMAGE_PROMISE_0100 error: ' + error);
                 expect(false).assertTrue();
                 done();
             })
         } else {
             expect(false).assertTrue();
-            console.info('Creator_004 finished');
+            console.info('SUB_GRAPHIC_IMAGE_CREATOR_DEQUEUEIMAGE_PROMISE_0100 finished');
             done();
         }
     })
 
     /**
-     * @tc.number    : Creator_005
+     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_DEQUEUEIMAGE_CALLBACK_0100
      * @tc.name      : dequeueImage-callback
      * @tc.desc      : 1.create ImageCreator
      *                 2.call dequeueImage
@@ -420,29 +420,29 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Creator_005', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_CREATOR_DEQUEUEIMAGE_CALLBACK_0100', 0, async function (done) {
         var creator = image.createImageCreator(WIDTH, HEIGHT, FORMAT, CAPACITY);
         if (creator != undefined) {
             creator.dequeueImage((err, img) => {
                 if (err) {
-                    console.info('Creator_005 err:' + err);
+                    console.info('SUB_GRAPHIC_IMAGE_CREATOR_DEQUEUEIMAGE_CALLBACK_0100 err:' + err);
                     expect(false).assertTrue();
                     done();
                     return;
                 }
-                console.info('Creator_005 dequeueImage call back Success');
+                console.info('SUB_GRAPHIC_IMAGE_CREATOR_DEQUEUEIMAGE_CALLBACK_0100 dequeueImage call back Success');
                 expect(img != undefined).assertTrue();
                 done();
             });
         } else {
             expect(false).assertTrue();
-            console.info('Creator_005 finished');
+            console.info('SUB_GRAPHIC_IMAGE_CREATOR_DEQUEUEIMAGE_CALLBACK_0100 finished');
             done()
         }
     })
 
     /**
-     * @tc.number    : Creator_006
+     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0200
      * @tc.name      : queueImage-promise
      * @tc.desc      : 1.create ImageCreator
      *                 2.call dequeueImage
@@ -452,7 +452,7 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Creator_006', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0200', 0, async function (done) {
         var creator = image.createImageCreator(WIDTH, HEIGHT, FORMAT, CAPACITY);
         if (creator != undefined) {
             creator.dequeueImage().then(img => {
@@ -480,12 +480,12 @@ describe('ImageCreator', function () {
                     console.info("this is img " + img);
 
                     creator.queueImage(img).then(() => {
-                        console.info('Creator_006 queueImage Success');
+                        console.info('SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0200 queueImage Success');
                         var dummy = creator.test;
                         expect(true).assertTrue();
                         done();
                     }).catch(error => {
-                        console.info('Creator_006 queueImage error: ' + error);
+                        console.info('SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0200 queueImage error: ' + error);
                         expect(false).assertTrue();
                         done();
                     })
@@ -493,13 +493,13 @@ describe('ImageCreator', function () {
             })
         } else {
             expect(false).assertTrue();
-            console.info('Creator_006 createImageCreator failed');
+            console.info('SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0200 createImageCreator failed');
             done()
         }
     })
 
     /**
-     * @tc.number    : Creator_006-1
+     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0300
      * @tc.name      : queueImage-promise-1
      * @tc.desc      : 1.create ImageCreator
      *                 2.call queueImage
@@ -507,12 +507,12 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Creator_006-1', 0, async function (done) {
-        queueImageError(done, 'Creator_006-1', 1);
+    it('SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0300', 0, async function (done) {
+        queueImageError(done, 'SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0300', 1);
     })
 
     /**
-     * @tc.number    : Creator_006-2
+     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0400
      * @tc.name      : queueImage-promise-null
      * @tc.desc      : 1.create ImageCreator
      *                 2.call queueImage
@@ -520,12 +520,12 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Creator_006-2', 0, async function (done) {
-        queueImageError(done, 'Creator_006-2', null);
+    it('SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0400', 0, async function (done) {
+        queueImageError(done, 'SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0400', null);
     })
 
     /**
-     * @tc.number    : Creator_006-3
+     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0500
      * @tc.name      : queueImage-promise-'a'
      * @tc.desc      : 1.create ImageCreator
      *                 2.call queueImage
@@ -533,12 +533,12 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Creator_006-3', 0, async function (done) {
-        queueImageError(done, 'Creator_006-3', 'a');
+    it('SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0500', 0, async function (done) {
+        queueImageError(done, 'SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0500', 'a');
     })
 
     /**
-     * @tc.number    : Creator_006-4
+     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0600
      * @tc.name      : on-{a : 1}
      * @tc.desc      : 1.create ImageCreator
      *                 2.call queueImage
@@ -546,12 +546,12 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Creator_006-4', 0, async function (done) {
-        queueImageError(done, 'Creator_006-4', { a: 1 });
+    it('SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0600', 0, async function (done) {
+        queueImageError(done, 'SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0600', { a: 1 });
     })
 
     /**
-     * @tc.number    : Creator_007
+     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0200
      * @tc.name      : queueImage-callback
      * @tc.desc      : 1.create ImageCreator
      *                 2.call dequeueImage
@@ -561,12 +561,12 @@ describe('ImageCreator', function () {
      * @tc.level     : Level 0
      */
 
-    it('Creator_007', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0200', 0, async function (done) {
         var creator = image.createImageCreator(WIDTH, HEIGHT, FORMAT, CAPACITY);
         if (creator != undefined) {
             creator.dequeueImage((err, img) => {
                 if (err || img == undefined) {
-                    console.log('Creator_007 dequeueImage error:' + err);
+                    console.log('SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0200 dequeueImage error:' + err);
                     expect(false).assertTrue();
                     done();
                     return;
@@ -575,7 +575,7 @@ describe('ImageCreator', function () {
                 img.getComponent(JPEG, (err, component) => {
                     if (err) {
                         expect(false).assertTrue();
-                        console.log('Creator_007 getComponent error:' + err);
+                        console.log('SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0200 getComponent error:' + err);
                         done();
                         return;
                     }
@@ -592,11 +592,11 @@ describe('ImageCreator', function () {
                     console.info("this is img " + img);
                     creator.queueImage(img, (err) => {
                         if (err) {
-                            console.info('Creator_007 queueImage err: ' + err);
+                            console.info('SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0200 queueImage err: ' + err);
                             expect(false).assertTrue();
                             done();
                         }
-                        console.info('Creator_007 queueImage Success');
+                        console.info('SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0200 queueImage Success');
                         var dummy = creator.test;
                         expect(true).assertTrue();
                         done();
@@ -605,13 +605,13 @@ describe('ImageCreator', function () {
             })
         } else {
             expect(false).assertTrue();
-            console.info('Creator_007 createImageCreator failed');
+            console.info('SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0200 createImageCreator failed');
             done();
         }
     })
 
     /**
-     * @tc.number    : Creator_007-1
+     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0300
      * @tc.name      : queueImage-callback
      * @tc.desc      : 1.create ImageCreator
      *                 2.call dequeueImage
@@ -621,12 +621,12 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Creator_007-1', 0, async function (done) {
-        queueImageCbError(done, 'Creator_007-1', 1);
+    it('SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0300', 0, async function (done) {
+        queueImageCbError(done, 'SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0300', 1);
     })
 
     /**
-     * @tc.number    : Creator_007-2
+     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0400
      * @tc.name      : queueImage-callback
      * @tc.desc      : 1.create ImageCreator
      *                 2.call dequeueImage
@@ -636,12 +636,12 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Creator_007-2', 0, async function (done) {
-        queueImageCbError(done, 'Creator_007-2', null);
+    it('SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0400', 0, async function (done) {
+        queueImageCbError(done, 'SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0400', null);
     })
 
     /**
-     * @tc.number    : Creator_007-3
+     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0500
      * @tc.name      : queueImage-callback
      * @tc.desc      : 1.create ImageCreator
      *                 2.call dequeueImage
@@ -651,12 +651,12 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Creator_007-3', 0, async function (done) {
-        queueImageCbError(done, 'Creator_007-3', 'a');
+    it('SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0500', 0, async function (done) {
+        queueImageCbError(done, 'SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0500', 'a');
     })
 
     /**
-     * @tc.number    : Creator_007-4
+     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0600
      * @tc.name      : queueImage-callback
      * @tc.desc      : 1.create ImageCreator
      *                 2.call dequeueImage
@@ -666,12 +666,12 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Creator_007-4', 0, async function (done) {
-        queueImageCbError(done, 'Creator_007-4', { a: 1 });
+    it('SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0600', 0, async function (done) {
+        queueImageCbError(done, 'SUB_GRAPHIC_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0600', { a: 1 });
     })
 
     /**
-        * @tc.number    : Creator_008
+        * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_ON_0100
         * @tc.name      : on
         * @tc.desc      : 1.create ImageCreator
         *                 2.call on
@@ -680,7 +680,7 @@ describe('ImageCreator', function () {
         * @tc.type      : Functional
         * @tc.level     : Level 0
         */
-    it('Creator_008', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_CREATOR_ON_0100', 0, async function (done) {
         var creator = image.createImageCreator(WIDTH, HEIGHT, FORMAT, CAPACITY)
         expect(creator != undefined).assertTrue();
         if (creator == undefined) {
@@ -689,25 +689,25 @@ describe('ImageCreator', function () {
         }
         creator.on('imageRelease', (err) => {
             if (err) {
-                console.info('Creator_008 on release faild' + err);
+                console.info('SUB_GRAPHIC_IMAGE_CREATOR_ON_0100 on release faild' + err);
                 expect(false).assertTrue();
                 done();
                 return;
             }
-            console.info('Creator_008 on call back IN');
+            console.info('SUB_GRAPHIC_IMAGE_CREATOR_ON_0100 on call back IN');
             expect(true).assertTrue();
             done();
         })
         creator.dequeueImage((err, img) => {
             if (err || img == undefined) {
-                console.info('Creator_008 dequeueImage fail: ' + err);
+                console.info('SUB_GRAPHIC_IMAGE_CREATOR_ON_0100 dequeueImage fail: ' + err);
                 expect(false).assertTrue();
                 done();
                 return;
             }
             img.getComponent(JPEG, (err, component) => {
                 if (err || component == undefined) {
-                    console.info('Creator_008 getComponent err:' + err);
+                    console.info('SUB_GRAPHIC_IMAGE_CREATOR_ON_0100 getComponent err:' + err);
                     expect(false).assertTrue();
                     done();
                     return;
@@ -723,12 +723,12 @@ describe('ImageCreator', function () {
                 }
                 creator.queueImage(img, (err) => {
                     if (err) {
-                        console.info('Creator_008 queueImage failerr: ' + err);
+                        console.info('SUB_GRAPHIC_IMAGE_CREATOR_ON_0100 queueImage failerr: ' + err);
                         expect(false).assertTrue();
                         done();
                         return;
                     }
-                    console.info('Creator_008 queueImage Success');
+                    console.info('SUB_GRAPHIC_IMAGE_CREATOR_ON_0100 queueImage Success');
                     expect(true).assertTrue();
                     var dummy = creator.test;
                 })
@@ -737,7 +737,7 @@ describe('ImageCreator', function () {
     })
 
     /**
-     * @tc.number    : Creator_008-1
+     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_ON_0200
      * @tc.name      : on-1
      * @tc.desc      : 1.create ImageCreator
      *                 2.call on
@@ -745,12 +745,12 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Creator_008-1', 0, async function (done) {
-        onErr(done, 'Creator_008-1', 1);
+    it('SUB_GRAPHIC_IMAGE_CREATOR_ON_0200', 0, async function (done) {
+        onErr(done, 'SUB_GRAPHIC_IMAGE_CREATOR_ON_0200', 1);
     })
 
     /**
-     * @tc.number    : Creator_008-2
+     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_ON_0300
      * @tc.name      : on-null
      * @tc.desc      : 1.create ImageCreator
      *                 2.call on
@@ -758,12 +758,12 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Creator_008-2', 0, async function (done) {
-        onErr(done, 'Creator_008-2', null);
+    it('SUB_GRAPHIC_IMAGE_CREATOR_ON_0300', 0, async function (done) {
+        onErr(done, 'SUB_GRAPHIC_IMAGE_CREATOR_ON_0300', null);
     })
 
     /**
-     * @tc.number    : Creator_008-3
+     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_ON_0400
      * @tc.name      : on-{a : 1}
      * @tc.desc      : 1.create ImageCreator
      *                 2.call on
@@ -771,12 +771,12 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Creator_008-3', 0, async function (done) {
-        onErr(done, 'Creator_008-3', { a: 1 });
+    it('SUB_GRAPHIC_IMAGE_CREATOR_ON_0400', 0, async function (done) {
+        onErr(done, 'SUB_GRAPHIC_IMAGE_CREATOR_ON_0400', { a: 1 });
     })
 
     /**
-     * @tc.number    : Creator_008-4
+     * @tc.number    : SUB_GRAPHIC_IMAGE_CREATOR_ON_0500
      * @tc.name      : on-'a'
      * @tc.desc      : 1.create ImageCreator
      *                 2.call on
@@ -784,7 +784,7 @@ describe('ImageCreator', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('Creator_008-4', 0, async function (done) {
-        onErr(done, 'Creator_008-4', 'a');
+    it('SUB_GRAPHIC_IMAGE_CREATOR_ON_0500', 0, async function (done) {
+        onErr(done, 'SUB_GRAPHIC_IMAGE_CREATOR_ON_0500', 'a');
     })
 })

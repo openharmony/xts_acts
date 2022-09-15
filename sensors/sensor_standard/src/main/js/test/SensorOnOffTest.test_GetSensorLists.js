@@ -65,7 +65,6 @@ describe("SensorJsTest_sensor_35", function () {
  it("getSensorLists_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
     console.info("---------------------------getSensorLists_SensorJsTest001----------------------------------");
     sensor.getSensorList().then((data) => {
-        console.info("---------------------------getSensorLists_SensorJsTest001 in-----------" + data.length);
         for (let i = 0; i < data.length; i++) {
             console.info("getSensorLists_SensorJsTest001 " + JSON.stringify(data[i]));
         }
@@ -88,7 +87,6 @@ it("getSensorLists_SensorJsTest002", TestType.FUNCTION | Size.MEDIUMTEST | Level
             console.info('getSensorLists_SensorJsTest002 error');
             expect(false).assertTrue();
         } else {
-            console.info("---------------------------getSensorLists_SensorJsTest002 in-----------" + data.length);
             for (let i = 0; i < data.length; i++) {
                 console.info("getSensorLists_SensorJsTest002 " + JSON.stringify(data[i]));
             }
@@ -164,7 +162,6 @@ it("getSensorLists_SensorJsTest002", TestType.FUNCTION | Size.MEDIUMTEST | Level
             expect(true).assertTrue();
             done()
         } else {
-            console.info("---------------------------getSensorLists_SensorJsTest006 in-----------" + data.length);
             for (let i = 0; i < data.length; i++) {
                 console.info("getSensorLists_SensorJsTest006 " + JSON.stringify(data[i]));
             }
@@ -177,7 +174,6 @@ it("getSensorLists_SensorJsTest002", TestType.FUNCTION | Size.MEDIUMTEST | Level
             expect(true).assertTrue();
             done()
         } else {
-            console.info("---------------------------getSensorLists_SensorJsTest006 in-----------" + data.length);
             for (let i = 0; i < data.length; i++) {
                 console.info("getSensorLists_SensorJsTest006 " + JSON.stringify(data[i]));
             }

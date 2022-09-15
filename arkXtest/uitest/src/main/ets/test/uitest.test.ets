@@ -737,6 +737,8 @@ export default function UiTest() {
         let window2 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
         let mode2 = await window2.getWindowMode()
         expect(mode2 == WindowMode.FLOATING).assertTrue()
+        expect(mode2 != WindowMode.SECONDARY).assertTrue()
+        expect(mode2 != WindowMode.PRIMARY).assertTrue()
         await stopApplication('com.uitestScene.acts')
       }
       catch (err) {
@@ -906,7 +908,7 @@ export default function UiTest() {
       await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
       let driver = UiDriver.create()
       await driver.delayMs(waitUiReadyMs)
-      let window = await driver.findWindow({bundleName:'com.uitestScene.acts',focused:true,actived:true})
+      let window = await driver.findWindow({bundleName:'com.uitestScene.acts',focused:true,actived:true,title:''})
       await window.focus()
       let isFocused = await window.isFocused()
       let isActived = await window.isActived()
@@ -1159,6 +1161,32 @@ export default function UiTest() {
       await driver.delayMs(waitUiReadyMs)
       let text = await driver.findComponent(BY.text('four'))
       expect(text == null).assertTrue()
+      await stopApplication('com.uitestScene.acts')
+    })
+
+    /*
+     * @tc.number: uiTest_5800
+     * @tc.name: testSplit 
+     * @tc.desc: change this UiWindow into split screen mode.
+     */
+    it('testSplit', 0, async function () {
+      await startAbility('com.uitestScene.acts', 'com.uitestScene.acts.MainAbility')
+      let driver = UiDriver.create()
+      await driver.delayMs(waitUiReadyMs)
+      let window1 = await driver.findWindow({bundleName:'com.uitestScene.acts'})
+      try {
+        await window1.split()
+        await driver.delayMs(waitUiReadyMs)
+        let window2 = await driver.findWindow({bundleName:'com.ohos.systemui'})
+        expect(window2 == null).assertTrue()
+      }
+      catch (err) {
+        if (err.message == 'this device can not support this action') {
+          expect(window1 != null).assertTrue()
+        } else {
+          expect(false).assertTrue()
+        }
+      }
       await stopApplication('com.uitestScene.acts')
     })
   })

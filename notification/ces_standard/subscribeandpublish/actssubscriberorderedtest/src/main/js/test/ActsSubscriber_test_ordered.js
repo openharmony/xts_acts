@@ -16,8 +16,9 @@ import Subscriber from '@ohos.commonEvent'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
 export default function ActsSubscriberTestOrder() {
-describe('ActsSubscriberTestOrder', function () {
-    console.info('===========ActsSubscriberTestOrder start====================>');
+    describe('SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST', function () {
+        let TAG = 'SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST ===>'
+        console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST START`)
     let num2 = 0;
     let order = false;
     let commonEventSubscriber0100;
@@ -40,12 +41,12 @@ describe('ActsSubscriberTestOrder', function () {
     }
 
     /*
-     * @tc.number    : ActsSubscriberTestOrder_0100
+     * @tc.number    : SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST_0100
      * @tc.name      : verify subscribe and publish : Check subscribe same event and publish common ordered event
      * @tc.desc      : Check the subscriber can receive event "publish_event0100" type of the interface (by Promise)
      */
-    it('ActsSubscriberTestOrder_0100', 0, async function (done) {
-        console.info('===============ActsSubscriberTestOrder_0100===============>');
+    it('SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST_0100', 0, async function (done) {
+        console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST_0100 START`)
 
         let commonEventSubscribeInfo1 = {
             events: ['publish_event0100'],
@@ -148,16 +149,17 @@ describe('ActsSubscriberTestOrder', function () {
                 }, 100);
             });
         })
+        console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST_0100 END`)
     })
 
     /*
-     * @tc.number    : ActsSubscriberTestOrder_0200
+     * @tc.number    : SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST_0200
      * @tc.name      : verify subscribe and publish : Check subscribe different event
      *                 and twice publish common ordered event and check unsubscribe event
      * @tc.desc      : Check the subscriber can receive event "publish_event0200" type of the interface (by Promise)
      */
-    it ('ActsSubscriberTestOrder_0200', 0, async function (done) {
-        console.info('===============ActsSubscriberTestOrder_0200===============>');
+    it ('SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST_0200', 0, async function (done) {
+        console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST_0200 START`)
 
         let commonEventSubscribeInfo1 = {
             events: ['publish_event0200',
@@ -253,16 +255,17 @@ describe('ActsSubscriberTestOrder', function () {
                 }, 100);
             });
         })
+        console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST_0200 END`)
     })
 
     /*
-     * @tc.number    : ActsSubscriberTestOrder_0300
+     * @tc.number    : SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST_0300
      * @tc.name      : verify subscribe and publish : Check subscribe different events
      *                 and some publish common ordered events
      * @tc.desc      : Check the subscriber can receive event "publish_event0301" type of the interface (by Promise)
      */
-    it ('ActsSubscriberTestOrder_0300', 0, async function (done) {
-        console.info('===============ActsSubscriberTestOrder_0300===============>');
+    it ('SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST_0300', 0, async function (done) {
+        console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST_0300 START`)
 
         let commonEventSubscribeInfo1 = {
             events: ['publish_event0301'],
@@ -361,16 +364,17 @@ describe('ActsSubscriberTestOrder', function () {
                 }
             });
         })
+        console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST_0300 END`)
     })
 
     /*
-     * @tc.number    : ActsSubscriberTestOrder_0400
+     * @tc.number    : SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST_0400
      * @tc.name      : verify subscribe and publish : Check subscribe same events
      *                 and publish common ordered events and check abort event
      * @tc.desc      : Check the subscriber can receive event "publish_eventOrder0400" type of the interface by promise
      */
-    it ('ActsSubscriberTestOrder_0400', 0, async function (done) {
-        console.info('===============ActsSubscriberTestOrder_0400===============>');
+    it ('SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST_0400', 0, async function (done) {
+        console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST_0400 START`)
 
         let commonEventSubscribeInfo1 = {
             events: ['publish_eventOrder0400'],
@@ -444,15 +448,16 @@ describe('ActsSubscriberTestOrder', function () {
                 }, 100);
             })
         })
+        console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST_0400 END`)
     })
 
     /*
-     * @tc.number    : ActsSubscriberTestOrder_0500
+     * @tc.number    : SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST_0500
      * @tc.name      : verify subscribe and publish : Check subscriber same events
      * @tc.desc      : Check the subscriber can receive event "publish_event0500" type of the interface (by promise)
      */
-    it ('ActsSubscriberTestOrder_0500', 0, async function (done) {
-        console.info('===============ActsSubscriberTestOrder_0500===============>');
+    it ('SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST_0500', 0, async function (done) {
+        console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST_0500 START`)
 
         let commonEventSubscribeInfo1 = {
             events: ['publish_event0500'],
@@ -531,6 +536,8 @@ describe('ActsSubscriberTestOrder', function () {
                 }, 100);
             })
         })
+        console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST_0400 END`)
     })
+    console.info(`${TAG} SUB_NOTIFICATION_CES_SUBSCRIBER_ORDER_TEST END`)
 })
 }

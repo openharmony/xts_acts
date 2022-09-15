@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 import ActsDataAbilityHelperTest from './DataAbilityHelperJsSt.test.js'
+import ActsDataAbilityHelperPermissionTest from './DataAbilityHelperJsStPermission.test.js'
 export default function testsuite() {
 ActsDataAbilityHelperTest()
+ActsDataAbilityHelperPermissionTest()
 }

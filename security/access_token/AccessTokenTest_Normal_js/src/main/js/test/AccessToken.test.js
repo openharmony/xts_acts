@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except compliance with the License.
  * You may obtain a copy of the License at
@@ -29,14 +29,14 @@ var GrantStatus = {
     PERMISSION_DENIED: -1,
     PERMISSION_GRANTED: 0,
 };
-const RESULT_SUCCESS = 0
-const RESULT_FAIL = -1
+const RESULT_SUCCESS = 0;
+const RESULT_FAIL = -1;
 const TIMEOUT = 5000;
 
-const DEFAULT_PERMISSION_FALG = 0
+const DEFAULT_PERMISSION_FALG = 0;
 var permissionNameUser = "ohos.permission.ALPHA";
 var permissionNameSystem = "ohos.permission.BETA";
-var tokenID = undefined
+var tokenID = undefined;
 export default function AccessTokenTest() {
 describe('AccessTokenTest', function () {
     console.info('##########start AccessTokenTest');
@@ -47,7 +47,6 @@ describe('AccessTokenTest', function () {
         tokenID = appInfo.accessTokenId;
         console.info("AccessTokenTest accessTokenId:" + appInfo.accessTokenId + ", name:" + appInfo.name
             + ", bundleName:" + appInfo.bundleName)
-        // setTimeout(done(),TIMEOUT);
 
         console.info("sleep begin");
         sleep(TIMEOUT);

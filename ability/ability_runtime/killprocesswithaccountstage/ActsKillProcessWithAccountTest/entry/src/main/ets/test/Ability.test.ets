@@ -42,6 +42,22 @@ export default function killProcessWithAccountTest() {
       })
     })
    
+    afterEach(async (done) => {
+      console.log("ACTS_KillProcessWithAccount afterEach called");
+      let wantInfo = {
+        bundleName: "com.acts.killprocesswithaccount",
+        abilityName: "com.acts.killprocesswithaccount.MainAbility"
+      }
+      await globalThis.abilityContext.startAbility(wantInfo).then((data) => {
+        console.log("ACTS_KillProcessWithAccount startAbility data : " + JSON.stringify(data));
+      }).catch((err) => {
+        console.log("ACTS_KillProcessWithAccount startAbility err : " + JSON.stringify(err));
+      })
+      setTimeout(function () {
+        console.log("ACTS_KillProcessWithAccount afterEach end");
+        done();
+      }, 500);
+    })
 
     beforeEach(async (done) => {
       console.log('======>beforeEach  killProcessWithAccountTest<=======' + flag);
