@@ -98,11 +98,11 @@ long GetCurrentTimeMillis()
 }
 
 /**
- * @tc.number     Security_AppSecurity_PermissionManager_L1_UpdatePermissionFlags_001
+ * @tc.number     SUB_SEC_AppSEC_PermissionMgmt_PMS_6200
  * @tc.name       Update permission flags
  * @tc.desc       [C- SECURITY -1000]
  */
-HWTEST_F(ActsPMSUpdatePermissionTest, testSecPMUpdatePMFlags_001, Function | MediumTest | Level2)
+HWTEST_F(ActsPMSUpdatePermissionTest, testSecPMUpdatePMFlags_6200, Function | MediumTest | Level2)
 {
     SaveOrUpdatePermissions(TEST_APP_ID, g_systemPers, SYS_PERM_NUM, FIRST_INSTALL);
 
@@ -130,11 +130,11 @@ HWTEST_F(ActsPMSUpdatePermissionTest, testSecPMUpdatePMFlags_001, Function | Med
 }
 
 /**
- * @tc.number     Security_AppSecurity_PermissionManager_L1_UpdatePermissionFlags_002
+ * @tc.number     SUB_SEC_AppSEC_PermissionMgmt_PMS_6300
  * @tc.name       Update permission flags (No reminds after rejection)
  * @tc.desc       [C- SECURITY -1000]
  */
-HWTEST_F(ActsPMSUpdatePermissionTest, testSecPMUpdatePMFlags_002, Function | MediumTest | Level2)
+HWTEST_F(ActsPMSUpdatePermissionTest, testSecPMUpdatePMFlags_6300, Function | MediumTest | Level2)
 {
     SaveOrUpdatePermissions(TEST_APP_ID, g_systemPers, SYS_PERM_NUM, FIRST_INSTALL);
 
@@ -162,11 +162,11 @@ HWTEST_F(ActsPMSUpdatePermissionTest, testSecPMUpdatePMFlags_002, Function | Med
 }
 
 /**
- * @tc.number     Security_AppSecurity_PermissionManager_L1_UpdatePermissionFlags_003
+ * @tc.number     SUB_SEC_AppSEC_PermissionMgmt_PMS_6400
  * @tc.name       Update permission flags (Name does not exist)
  * @tc.desc       [C- SECURITY -1000]
  */
-HWTEST_F(ActsPMSUpdatePermissionTest, testSecPMUpdatePMFlags_003, Function | MediumTest | Level2)
+HWTEST_F(ActsPMSUpdatePermissionTest, testSecPMUpdatePMFlags_6400, Function | MediumTest | Level2)
 {
     SaveOrUpdatePermissions(TEST_APP_ID, g_systemPers, SYS_PERM_NUM, FIRST_INSTALL);
 
@@ -199,11 +199,11 @@ HWTEST_F(ActsPMSUpdatePermissionTest, testSecPMUpdatePMFlags_003, Function | Med
 }
 
 /**
- * @tc.number     Security_AppSecurity_PermissionManager_L1_UpdatePermissionFlags_004
+ * @tc.number     SUB_SEC_AppSEC_PermissionMgmt_PMS_6500
  * @tc.name       Update permission flags (Name empty)
  * @tc.desc       [C- SECURITY -1000]
  */
-HWTEST_F(ActsPMSUpdatePermissionTest, testSecPMUpdatePMFlags_004, Function | MediumTest | Level2)
+HWTEST_F(ActsPMSUpdatePermissionTest, testSecPMUpdatePMFlags_6500, Function | MediumTest | Level2)
 {
     SaveOrUpdatePermissions(TEST_APP_ID, g_systemPers, SYS_PERM_NUM, FIRST_INSTALL);
 
@@ -236,11 +236,11 @@ HWTEST_F(ActsPMSUpdatePermissionTest, testSecPMUpdatePMFlags_004, Function | Med
 }
 
 /**
- * @tc.number     Security_AppSecurity_PermissionManager_L1_UpdatePermissionFlags_005
+ * @tc.number     SUB_SEC_AppSEC_PermissionMgmt_PMS_6600
  * @tc.name       Update permission flags (Name invalid)
  * @tc.desc       [C- SECURITY -1000]
  */
-HWTEST_F(ActsPMSUpdatePermissionTest, testSecPMUpdatePMFlags_005, Function | MediumTest | Level2)
+HWTEST_F(ActsPMSUpdatePermissionTest, testSecPMUpdatePMFlags_6600, Function | MediumTest | Level2)
 {
     SaveOrUpdatePermissions(TEST_APP_ID, g_systemPers, SYS_PERM_NUM, FIRST_INSTALL);
 
@@ -269,11 +269,11 @@ HWTEST_F(ActsPMSUpdatePermissionTest, testSecPMUpdatePMFlags_005, Function | Med
 }
 
 /**
- * @tc.number     Security_AppSecurity_PermissionManager_L1_UpdatePermissionFlags_006
+ * @tc.number     SUB_SEC_AppSEC_PermissionMgmt_PMS_6700
  * @tc.name       Updatepermissionflags interface stability test
  * @tc.desc       [C- SECURITY -1000]
  */
-HWTEST_F(ActsPMSUpdatePermissionTest, testSecPMUpdatePMFlags_006, Function | MediumTest | Level2)
+HWTEST_F(ActsPMSUpdatePermissionTest, testSecPMUpdatePMFlags_6700, Function | MediumTest | Level2)
 {
     SaveOrUpdatePermissions(TEST_APP_ID, g_systemPers, SYS_PERM_NUM, FIRST_INSTALL);
 
@@ -302,11 +302,11 @@ HWTEST_F(ActsPMSUpdatePermissionTest, testSecPMUpdatePMFlags_006, Function | Med
 }
 
 /**
- * @tc.number     Security_AppSecurity_PermissionManager_L1_UpdatePermissionFlags_007
+ * @tc.number     SUB_SEC_AppSEC_PermissionMgmt_PMS_6800
  * @tc.name       Updatepermissionflags interface performace test
  * @tc.desc       [C- SECURITY -1000]
  */
-HWTEST_F(ActsPMSUpdatePermissionTest, testSecPMUpdatePMFlags_007, Function | MediumTest | Level2)
+HWTEST_F(ActsPMSUpdatePermissionTest, testSecPMUpdatePMFlags_6800, Function | MediumTest | Level2)
 {
     SaveOrUpdatePermissions(TEST_APP_ID, g_systemPers, SYS_PERM_NUM, FIRST_INSTALL);
 
