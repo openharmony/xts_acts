@@ -17,6 +17,7 @@ _all_test_packages = [
   "${ACTS_ROOT}/arkXtest:arkXtest",
   "${ACTS_ROOT}/global:global",
   "${ACTS_ROOT}/security:security",
+  "${ACTS_ROOT}/accessControl:accessControl",
   "${ACTS_ROOT}/useriam:useriam",
   "${ACTS_ROOT}/multimedia:multimedia",
   "${ACTS_ROOT}/bundlemanager:appexecfwk",
