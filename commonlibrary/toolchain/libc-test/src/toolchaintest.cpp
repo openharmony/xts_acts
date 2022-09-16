@@ -137,5 +137,5 @@ HWTEST_P(toolchaintest, LibcTest, Function | MediumTest | Level3)
         EXPECT_EQ(-1, ret) << "test  " << testName  << "  failed" << endl;
     }
 }
-INSTANTIATE_TEST_CASE_P(libcTest, toolchaintest, testing::ValuesIn(temp.begin(), temp.end()));
+INSTANTIATE_TEST_SUITE_P(libcTest, toolchaintest, testing::ValuesIn(temp.begin(), temp.end()));
 } // namespace OHOS
