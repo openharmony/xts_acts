@@ -3,6 +3,7 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "300000",
+        "testcase-timeout": "300000",
         "shell-timeout": "60000",
         "bundle-name": "ohos.resmgr.test",
         "package-name": "ohos.resmgr.test"
