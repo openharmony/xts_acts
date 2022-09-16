@@ -24,15 +24,15 @@ import ActsAccountNoPermission from './NoPermission.test.js'
 import ActsAccountChangeOnOff from './OnOff.js'
 import ActsAccountAuthenticator from './Authenticator.test.js'
 export default function testsuite() {
-    ActsAccountAddAccount()
-    ActsAccountAppAccess()
-    ActsAccountAssociatedData()
-    ActsCreatAppAccountManager()
-    ActsAccountCredential()
-    ActsAccountDeleteAccount()
-    ActsAccountSetGetExtraInfo()
-    ActsAccountNoPermission()
-    ActsAccountOAuthToken()
-    ActsAccountChangeOnOff()
+    // ActsAccountAddAccount()
+    // ActsAccountAppAccess()
+    // ActsAccountAssociatedData()
+    // ActsCreatAppAccountManager()
+    // ActsAccountCredential()
+    // ActsAccountDeleteAccount()
+    // ActsAccountSetGetExtraInfo()
+    // ActsAccountNoPermission()
+    // ActsAccountOAuthToken()
+    // ActsAccountChangeOnOff()
     ActsAccountAuthenticator()
 }
