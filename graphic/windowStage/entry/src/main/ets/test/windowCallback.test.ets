@@ -1418,6 +1418,57 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       })
     })
     /**
+    * @tc.number     SUB_WINDOW_SETDENSITTYDPI_JSAPI_002
+    * @tc.name       Test setDensityDpiTest2
+    * @tc.desc       Verify Sets the screen pixel
+    */
+    it('setDensityDpiTest2', 0, async function (done) {
+      let caseName = 'setDensityDpiTest2';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let screens = await screenManager.getAllScreens().catch(errScreen => {
+        unexpectedError(errScreen, caseName, 'screenManager.getAllScreen', done);
+      })
+      console.log(msgStr + 'screenManager.getAllScreen' + JSON.stringify(screens));
+      expect(!!screens).assertTrue();
+
+      let currentDeviceDefaultDpi;
+      let currentDeviceDefault = null;
+      display.getDefaultDisplay(async(err, data) => {
+        if (err.code) {
+          console.error('Failed to obtain the default display object. Code:  ' + JSON.stringify(err));
+          return;
+        }
+        console.info('Succeeded in obtaining the default display object. Data:' + JSON.stringify(data));
+        currentDeviceDefault = data;
+        currentDeviceDefaultDpi = parseInt(currentDeviceDefault.densityDPI)
+        let dpiItem = [-80, 80, 1000, 160, 0, 320, 188.88, 0, 640, 300,currentDeviceDefaultDpi];
+        for (let i = 0;i < dpiItem.length; i++) {
+          await sleep(1000);
+          screens[0].setDensityDpi(dpiItem[i],(errDpi,dataDpi)=>{
+            if (errDpi.code) {
+              console.error('Failed to set DensityDpi. Cause: ' + JSON.stringify(err)+ dpiItem[i]);
+              return;
+            }
+            console.log(msgStr + 'screen.setDensityDpi success set DPI ' + dpiItem[i]);
+            display.getDefaultDisplay((error,result)=>{
+              if (error.code) {
+                console.error(msgStr + 'screen.setDensityDpi display.getDefaultDisplay failed');
+                return;
+                console.log(msgStr + 'screen.setDensityDpi display.getDefaultDisplay' + JSON.stringify(result));
+                let isEqual = Number(result.densityDPI) == parseInt(dpiItem[i])
+                console.log(msgStr + 'same ? ' + isEqual)
+                expect(isEqual).assertTrue()
+              }
+            })
+          })
+        }
+      });
+
+      console.log(msgStr + 'done ');
+      done();
+    })
+    /**
     * @tc.number     SUB_WINDOW_SETPREFERREDORIENTATION_JSAPI_002
     * @tc.name       Test setPreferredOrientationTest2
     * @tc.desc       Sets the display direction property of the window
