@@ -29,6 +29,16 @@ export default function FaSetDisplayOrientationTest() {
 
     afterEach(async (done) => {
       console.log(TAG1 + "afterEach called");
+      let wantInfo = {
+        bundleName: "com.example.supportfunctionhaptest",
+        abilityName: "MainAbility"
+      }
+      await globalThis.abilityTestContext.startAbility(wantInfo).then((data) => {
+        console.log(TAG1 + "startAbility data : " + JSON.stringify(data));
+      }).catch((err) => {
+        console.log(TAG1 + "startAbility err : " + JSON.stringify(err));
+      })
+
       let cmd1 = "aa force-stop ohos.acts.aafwk.test.fasupportfunction";
       let cmd2 = "aa force-stop ohos.acts.aafwk.test.fasupportfunctionthree";
 

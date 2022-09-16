@@ -1827,5 +1827,599 @@ export default function abilityTest() {
             expect(ret).assertEqual(undefined);
             done();
         })
+
+        /*
+         * @tc.number  AccessibilityConfigTest_captionsStyle_asyncCallback_0100
+         * @tc.name    AccessibilityConfigTest_captionsStyle_asyncCallback_0100
+         * @tc.desc    Test captionsStyle.set() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_captionsStyle_asyncCallback_0100', 0, async function(done) {
+            console.info('AccessibilityConfigTest_captionsStyle_asyncCallback_0100');
+            config.captionsStyle.set({
+                fontFamily: 'monospacedSerif',
+                fontScale: 10,
+                fontColor: 'blue',
+                fontEdgeType: 'none',
+                backgroundColor: 'blue',
+                windowColor: 'blue'
+            }, (err, result) => {
+                if (err.code != 0) {
+                    console.error(`AccessibilityConfigTest_captionsStyle_asyncCallback_0100 has error: ${err.code}`);
+                    expect(null).assertFail();
+                    done();
+                }
+                expect(result).assertEqual(undefined);
+                done();
+            });
+        })
+
+        /*
+         * @tc.number  AccessibilityConfigTest_captionsStyle_asyncCallback_0200
+         * @tc.name    AccessibilityConfigTest_captionsStyle_asyncCallback_0200
+         * @tc.desc    Test captionsStyle.set() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_captionsStyle_asyncCallback_0200', 0, async function(done) {
+            console.info('AccessibilityConfigTest_captionsStyle_asyncCallback_0200');
+            config.captionsStyle.set({
+                fontFamily: 'serif',
+                fontScale: 10,
+                fontColor: 'blue',
+                fontEdgeType: 'none',
+                backgroundColor: 'blue',
+                windowColor: 'blue'
+            }, (err, result) => {
+                if (err.code != 0) {
+                    console.error(`AccessibilityConfigTest_captionsStyle_asyncCallback_0200 has error: ${err.code}`);
+                    expect(null).assertFail();
+                    done();
+                }
+                expect(result).assertEqual(undefined);
+                done();
+            });
+        })
+
+        /*
+         * @tc.number  AccessibilityConfigTest_captionsStyle_asyncCallback_0300
+         * @tc.name    AccessibilityConfigTest_captionsStyle_asyncCallback_0300
+         * @tc.desc    Test captionsStyle.set() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_captionsStyle_asyncCallback_0300', 0, async function(done) {
+            console.info('AccessibilityConfigTest_captionsStyle_asyncCallback_0300');
+            config.captionsStyle.set({
+                fontFamily: 'monospacedSansSerif',
+                fontScale: 10,
+                fontColor: 'blue',
+                fontEdgeType: 'none',
+                backgroundColor: 'blue',
+                windowColor: 'blue'
+            }, (err, result) => {
+                if (err.code != 0) {
+                    console.error(`AccessibilityConfigTest_captionsStyle_asyncCallback_0300 has error: ${err.code}`);
+                    expect(null).assertFail();
+                    done();
+                }
+                expect(result).assertEqual(undefined);
+                done();
+            });
+        })
+
+        /*
+         * @tc.number  AccessibilityConfigTest_captionsStyle_asyncCallback_0400
+         * @tc.name    AccessibilityConfigTest_captionsStyle_asyncCallback_0400
+         * @tc.desc    Test captionsStyle.set() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_captionsStyle_asyncCallback_0400', 0, async function(done) {
+            console.info('AccessibilityConfigTest_captionsStyle_asyncCallback_0400');
+            config.captionsStyle.set({
+                fontFamily: 'sansSerif',
+                fontScale: 10,
+                fontColor: 'blue',
+                fontEdgeType: 'none',
+                backgroundColor: 'blue',
+                windowColor: 'blue'
+            }, (err, result) => {
+                if (err.code != 0) {
+                    console.error(`AccessibilityConfigTest_captionsStyle_asyncCallback_0400 has error: ${err.code}`);
+                    expect(null).assertFail();
+                    done();
+                }
+                expect(result).assertEqual(undefined);
+                done();
+            });
+        })
+
+        /*
+         * @tc.number  AccessibilityConfigTest_captionsStyle_asyncCallback_0500
+         * @tc.name    AccessibilityConfigTest_captionsStyle_asyncCallback_0500
+         * @tc.desc    Test captionsStyle.set() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_captionsStyle_asyncCallback_0500', 0, async function(done) {
+            console.info('AccessibilityConfigTest_captionsStyle_asyncCallback_0500');
+            config.captionsStyle.set({
+                fontFamily: 'casual',
+                fontScale: 10,
+                fontColor: 'blue',
+                fontEdgeType: 'none',
+                backgroundColor: 'blue',
+                windowColor: 'blue'
+            }, (err, result) => {
+                if (err.code != 0) {
+                    console.error(`AccessibilityConfigTest_captionsStyle_asyncCallback_0500 has error: ${err.code}`);
+                    expect(null).assertFail();
+                    done();
+                }
+                expect(result).assertEqual(undefined);
+                done();
+            });
+        })
+
+        /*
+         * @tc.number  AccessibilityConfigTest_captionsStyle_asyncCallback_0600
+         * @tc.name    AccessibilityConfigTest_captionsStyle_asyncCallback_0600
+         * @tc.desc    Test captionsStyle.set() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_captionsStyle_asyncCallback_0600', 0, async function(done) {
+            console.info('AccessibilityConfigTest_captionsStyle_asyncCallback_0600');
+            config.captionsStyle.set({
+                fontFamily: 'cursive',
+                fontScale: 10,
+                fontColor: 'blue',
+                fontEdgeType: 'none',
+                backgroundColor: 'blue',
+                windowColor: 'blue'
+            }, (err, result) => {
+                if (err.code != 0) {
+                    console.error(`AccessibilityConfigTest_captionsStyle_asyncCallback_0600 has error: ${err.code}`);
+                    expect(null).assertFail();
+                    done();
+                }
+                expect(result).assertEqual(undefined);
+                done();
+            });
+        })
+
+        /*
+         * @tc.number  AccessibilityConfigTest_captionsStyle_asyncCallback_0700
+         * @tc.name    AccessibilityConfigTest_captionsStyle_asyncCallback_0700
+         * @tc.desc    Test captionsStyle.set() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_captionsStyle_asyncCallback_0700', 0, async function(done) {
+            console.info('AccessibilityConfigTest_captionsStyle_asyncCallback_0700');
+            config.captionsStyle.set({
+                fontFamily: 'smallCapitals',
+                fontScale: 10,
+                fontColor: 'blue',
+                fontEdgeType: 'none',
+                backgroundColor: 'blue',
+                windowColor: 'blue'
+            }, (err, result) => {
+                if (err.code != 0) {
+                    console.error(`AccessibilityConfigTest_captionsStyle_asyncCallback_0700 has error: ${err.code}`);
+                    expect(null).assertFail();
+                    done();
+                }
+                expect(result).assertEqual(undefined);
+                done();
+            });
+        })
+
+        /*
+         * @tc.number  AccessibilityConfigTest_captionsStyle_asyncCallback_0800
+         * @tc.name    AccessibilityConfigTest_captionsStyle_asyncCallback_0800
+         * @tc.desc    Test captionsStyle.set() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_captionsStyle_asyncCallback_0800', 0, async function(done) {
+            console.info('AccessibilityConfigTest_captionsStyle_asyncCallback_0800');
+            config.captionsStyle.set({
+                fontFamily: 'default',
+                fontScale: 10,
+                fontColor: 'blue',
+                fontEdgeType: 'raised',
+                backgroundColor: 'blue',
+                windowColor: 'blue'
+            }, (err, result) => {
+                if (err.code != 0) {
+                    console.error(`AccessibilityConfigTest_captionsStyle_asyncCallback_0800 has error: ${err.code}`);
+                    expect(null).assertFail();
+                    done();
+                }
+                expect(result).assertEqual(undefined);
+                done();
+            });
+        })
+
+        /*
+         * @tc.number  AccessibilityConfigTest_captionsStyle_asyncCallback_0900
+         * @tc.name    AccessibilityConfigTest_captionsStyle_asyncCallback_0900
+         * @tc.desc    Test captionsStyle.set() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_captionsStyle_asyncCallback_0900', 0, async function(done) {
+            console.info('AccessibilityConfigTest_captionsStyle_asyncCallback_0900');
+            config.captionsStyle.set({
+                fontFamily: 'default',
+                fontScale: 10,
+                fontColor: 'blue',
+                fontEdgeType: 'depressed',
+                backgroundColor: 'blue',
+                windowColor: 'blue'
+            }, (err, result) => {
+                if (err.code != 0) {
+                    console.error(`AccessibilityConfigTest_captionsStyle_asyncCallback_0900 has error: ${err.code}`);
+                    expect(null).assertFail();
+                    done();
+                }
+                expect(result).assertEqual(undefined);
+                done();
+            });
+        })
+    
+            /*
+         * @tc.number  AccessibilityConfigTest_captionsStyle_asyncCallback_1000
+         * @tc.name    AccessibilityConfigTest_captionsStyle_asyncCallback_1000
+         * @tc.desc    Test captionsStyle.set() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_captionsStyle_asyncCallback_1000', 0, async function(done) {
+            console.info('AccessibilityConfigTest_captionsStyle_asyncCallback_1000');
+            config.captionsStyle.set({
+                fontFamily: 'default',
+                fontScale: 10,
+                fontColor: 'blue',
+                fontEdgeType: 'uniform',
+                backgroundColor: 'blue',
+                windowColor: 'blue'
+            }, (err, result) => {
+                if (err.code != 0) {
+                    console.error(`AccessibilityConfigTest_captionsStyle_asyncCallback_1000 has error: ${err.code}`);
+                    expect(null).assertFail();
+                    done();
+                }
+                expect(result).assertEqual(undefined);
+                done();
+            });
+        })
+
+        /*
+         * @tc.number  AccessibilityConfigTest_captionsStyle_asyncCallback_1100
+         * @tc.name    AccessibilityConfigTest_captionsStyle_asyncCallback_1100
+         * @tc.desc    Test captionsStyle.set() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_captionsStyle_asyncCallback_1100', 0, async function(done) {
+            console.info('AccessibilityConfigTest_captionsStyle_asyncCallback_1100');
+            config.captionsStyle.set({
+                fontFamily: 'default',
+                fontScale: 10,
+                fontColor: 'blue',
+                fontEdgeType: 'dropShadow',
+                backgroundColor: 'blue',
+                windowColor: 'blue'
+            }, (err, result) => {
+                if (err.code != 0) {
+                    console.error(`AccessibilityConfigTest_captionsStyle_asyncCallback_1100 has error: ${err.code}`);
+                    expect(null).assertFail();
+                    done();
+                }
+                expect(result).assertEqual(undefined);
+                done();
+            });
+        })
+
+        /*
+         * @tc.number  AccessibilityConfigTest_captionsStyle_asyncPromise_0100
+         * @tc.name    AccessibilityConfigTest_captionsStyle_asyncPromise_0100
+         * @tc.desc    Test captionsStyle.set() function in promise mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_captionsStyle_asyncPromise_0100', 0, async function(done) {
+            console.info('AccessibilityConfigTest_captionsStyle_asyncPromise_0100');
+            config.captionsStyle.set({
+                fontFamily: 'monospacedSerif',
+                fontScale: 10,
+                fontColor: 'blue',
+                fontEdgeType: 'none',
+                backgroundColor: 'blue',
+                windowColor: 'blue'
+            }).then((result) => {
+                console.info(`AccessibilityConfigTest_captionsStyle_asyncPromise_0100 result: ${result}`);
+                expect(result).assertEqual(undefined);
+                done();
+            }).catch((err) => {
+                console.error(`AccessibilityConfigTest_captionsStyle_asyncPromise_0100 has error: ${err.code}`);
+                expect(null).assertFail();
+                done();
+            });
+        })
+
+        /*
+         * @tc.number  AccessibilityConfigTest_captionsStyle_asyncPromise_0200
+         * @tc.name    AccessibilityConfigTest_captionsStyle_asyncPromise_0200
+         * @tc.desc    Test captionsStyle.set() function in promise mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_captionsStyle_asyncPromise_0200', 0, async function(done) {
+            console.info('AccessibilityConfigTest_captionsStyle_asyncPromise_0200');
+            config.captionsStyle.set({
+                fontFamily: 'serif',
+                fontScale: 10,
+                fontColor: 'blue',
+                fontEdgeType: 'none',
+                backgroundColor: 'blue',
+                windowColor: 'blue'
+            }).then((result) => {
+                console.info(`AccessibilityConfigTest_captionsStyle_asyncPromise_0200 result: ${result}`);
+                expect(result).assertEqual(undefined);
+                done();
+            }).catch((err) => {
+                console.error(`AccessibilityConfigTest_captionsStyle_asyncPromise_0200 has error: ${err.code}`);
+                expect(null).assertFail();
+                done();
+            });
+        })
+
+        /*
+         * @tc.number  AccessibilityConfigTest_captionsStyle_asyncPromise_0300
+         * @tc.name    AccessibilityConfigTest_captionsStyle_asyncPromise_0300
+         * @tc.desc    Test captionsStyle.set() function in promise mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_captionsStyle_asyncPromise_0300', 0, async function(done) {
+            console.info('AccessibilityConfigTest_captionsStyle_asyncPromise_0300');
+            config.captionsStyle.set({
+                fontFamily: 'monospacedSansSerif',
+                fontScale: 10,
+                fontColor: 'blue',
+                fontEdgeType: 'none',
+                backgroundColor: 'blue',
+                windowColor: 'blue'
+            }).then((result) => {
+                console.info(`AccessibilityConfigTest_captionsStyle_asyncPromise_0300 result: ${result}`);
+                expect(result).assertEqual(undefined);
+                done();
+            }).catch((err) => {
+                console.error(`AccessibilityConfigTest_captionsStyle_asyncPromise_0300 has error: ${err.code}`);
+                expect(null).assertFail();
+                done();
+            });
+        })
+
+        /*
+         * @tc.number  AccessibilityConfigTest_captionsStyle_asyncPromise_0400
+         * @tc.name    AccessibilityConfigTest_captionsStyle_asyncPromise_0400
+         * @tc.desc    Test captionsStyle.set() function in promise mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_captionsStyle_asyncPromise_0400', 0, async function(done) {
+            console.info('AccessibilityConfigTest_captionsStyle_asyncPromise_0400');
+            config.captionsStyle.set({
+                fontFamily: 'sansSerif',
+                fontScale: 10,
+                fontColor: 'blue',
+                fontEdgeType: 'none',
+                backgroundColor: 'blue',
+                windowColor: 'blue'
+            }).then((result) => {
+                console.info(`AccessibilityConfigTest_captionsStyle_asyncPromise_0400 result: ${result}`);
+                expect(result).assertEqual(undefined);
+                done();
+            }).catch((err) => {
+                console.error(`AccessibilityConfigTest_captionsStyle_asyncPromise_0400 has error: ${err.code}`);
+                expect(null).assertFail();
+                done();
+            });
+        })
+
+        /*
+         * @tc.number  AccessibilityConfigTest_captionsStyle_asyncPromise_0500
+         * @tc.name    AccessibilityConfigTest_captionsStyle_asyncPromise_0500
+         * @tc.desc    Test captionsStyle.set() function in promise mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_captionsStyle_asyncPromise_0500', 0, async function(done) {
+            console.info('AccessibilityConfigTest_captionsStyle_asyncPromise_0500');
+            config.captionsStyle.set({
+                fontFamily: 'casual',
+                fontScale: 10,
+                fontColor: 'blue',
+                fontEdgeType: 'none',
+                backgroundColor: 'blue',
+                windowColor: 'blue'
+            }).then((result) => {
+                console.info(`AccessibilityConfigTest_captionsStyle_asyncPromise_0500 result: ${result}`);
+                expect(result).assertEqual(undefined);
+                done();
+            }).catch((err) => {
+                console.error(`AccessibilityConfigTest_captionsStyle_asyncPromise_0500 has error: ${err.code}`);
+                expect(null).assertFail();
+                done();
+            });
+        })
+
+        /*
+         * @tc.number  AccessibilityConfigTest_captionsStyle_asyncPromise_0600
+         * @tc.name    AccessibilityConfigTest_captionsStyle_asyncPromise_0600
+         * @tc.desc    Test captionsStyle.set() function in promise mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_captionsStyle_asyncPromise_0600', 0, async function(done) {
+            console.info('AccessibilityConfigTest_captionsStyle_asyncPromise_0600');
+            config.captionsStyle.set({
+                fontFamily: 'cursive',
+                fontScale: 10,
+                fontColor: 'blue',
+                fontEdgeType: 'none',
+                backgroundColor: 'blue',
+                windowColor: 'blue'
+            }).then((result) => {
+                console.info(`AccessibilityConfigTest_captionsStyle_asyncPromise_0600 result: ${result}`);
+                expect(result).assertEqual(undefined);
+                done();
+            }).catch((err) => {
+                console.error(`AccessibilityConfigTest_captionsStyle_asyncPromise_0600 has error: ${err.code}`);
+                expect(null).assertFail();
+                done();
+            });
+        })
+
+        /*
+         * @tc.number  AccessibilityConfigTest_captionsStyle_asyncPromise_0700
+         * @tc.name    AccessibilityConfigTest_captionsStyle_asyncPromise_0700
+         * @tc.desc    Test captionsStyle.set() function in promise mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_captionsStyle_asyncPromise_0700', 0, async function(done) {
+            console.info('AccessibilityConfigTest_captionsStyle_asyncPromise_0700');
+            config.captionsStyle.set({
+                fontFamily: 'smallCapitals',
+                fontScale: 10,
+                fontColor: 'blue',
+                fontEdgeType: 'none',
+                backgroundColor: 'blue',
+                windowColor: 'blue'
+            }).then((result) => {
+                console.info(`AccessibilityConfigTest_captionsStyle_asyncPromise_0700 result: ${result}`);
+                expect(result).assertEqual(undefined);
+                done();
+            }).catch((err) => {
+                console.error(`AccessibilityConfigTest_captionsStyle_asyncPromise_0700 has error: ${err.code}`);
+                expect(null).assertFail();
+                done();
+            });
+        })
+
+        /*
+         * @tc.number  AccessibilityConfigTest_captionsStyle_asyncPromise_0800
+         * @tc.name    AccessibilityConfigTest_captionsStyle_asyncPromise_0800
+         * @tc.desc    Test captionsStyle.set() function in promise mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_captionsStyle_asyncPromise_0800', 0, async function(done) {
+            console.info('AccessibilityConfigTest_captionsStyle_asyncPromise_0800');
+            config.captionsStyle.set({
+                fontFamily: 'default',
+                fontScale: 10,
+                fontColor: 'blue',
+                fontEdgeType: 'raised',
+                backgroundColor: 'blue',
+                windowColor: 'blue'
+            }).then((result) => {
+                console.info(`AccessibilityConfigTest_captionsStyle_asyncPromise_0800 result: ${result}`);
+                expect(result).assertEqual(undefined);
+                done();
+            }).catch((err) => {
+                console.error(`AccessibilityConfigTest_captionsStyle_asyncPromise_0800 has error: ${err.code}`);
+                expect(null).assertFail();
+                done();
+            });
+        })
+
+        /*
+         * @tc.number  AccessibilityConfigTest_captionsStyle_asyncPromise_0900
+         * @tc.name    AccessibilityConfigTest_captionsStyle_asyncPromise_0900
+         * @tc.desc    Test captionsStyle.set() function in promise mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_captionsStyle_asyncPromise_0900', 0, async function(done) {
+            console.info('AccessibilityConfigTest_captionsStyle_asyncPromise_0900');
+            config.captionsStyle.set({
+                fontFamily: 'default',
+                fontScale: 10,
+                fontColor: 'blue',
+                fontEdgeType: 'depressed',
+                backgroundColor: 'blue',
+                windowColor: 'blue'
+            }).then((result) => {
+                console.info(`AccessibilityConfigTest_captionsStyle_asyncPromise_0900 result: ${result}`);
+                expect(result).assertEqual(undefined);
+                done();
+            }).catch((err) => {
+                console.error(`AccessibilityConfigTest_captionsStyle_asyncPromise_0900 has error: ${err.code}`);
+                expect(null).assertFail();
+                done();
+            });
+        })
+
+        /*
+         * @tc.number  AccessibilityConfigTest_captionsStyle_asyncPromise_1000
+         * @tc.name    AccessibilityConfigTest_captionsStyle_asyncPromise_1000
+         * @tc.desc    Test captionsStyle.set() function in promise mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_captionsStyle_asyncPromise_1000', 0, async function(done) {
+            console.info('AccessibilityConfigTest_captionsStyle_asyncPromise_1000');
+            config.captionsStyle.set({
+                fontFamily: 'default',
+                fontScale: 10,
+                fontColor: 'blue',
+                fontEdgeType: 'uniform',
+                backgroundColor: 'blue',
+                windowColor: 'blue'
+            }).then((result) => {
+                console.info(`AccessibilityConfigTest_captionsStyle_asyncPromise_1000 result: ${result}`);
+                expect(result).assertEqual(undefined);
+                done();
+            }).catch((err) => {
+                console.error(`AccessibilityConfigTest_captionsStyle_asyncPromise_1000 has error: ${err.code}`);
+                expect(null).assertFail();
+                done();
+            });
+        })
+
+        /*
+         * @tc.number  AccessibilityConfigTest_captionsStyle_asyncPromise_1100
+         * @tc.name    AccessibilityConfigTest_captionsStyle_asyncPromise_1100
+         * @tc.desc    Test captionsStyle.set() function in promise mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigTest_captionsStyle_asyncPromise_1100', 0, async function(done) {
+            console.info('AccessibilityConfigTest_captionsStyle_asyncPromise_1100');
+            config.captionsStyle.set({
+                fontFamily: 'default',
+                fontScale: 10,
+                fontColor: 'blue',
+                fontEdgeType: 'dropShadow',
+                backgroundColor: 'blue',
+                windowColor: 'blue'
+            }).then((result) => {
+                console.info(`AccessibilityConfigTest_captionsStyle_asyncPromise_1100 result: ${result}`);
+                expect(result).assertEqual(undefined);
+                done();
+            }).catch((err) => {
+                console.error(`AccessibilityConfigTest_captionsStyle_asyncPromise_1100 has error: ${err.code}`);
+                expect(null).assertFail();
+                done();
+            });
+        })
     })
 }

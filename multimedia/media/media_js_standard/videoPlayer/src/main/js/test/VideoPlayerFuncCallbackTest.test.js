@@ -264,7 +264,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
                 console.info('case play success!!');
                 mediaTestBase.msleep(PLAY_TIME);
                 let endTime = videoPlayer.currentTime;
-                expect(endTime - startTime).assertClose(PLAY_TIME, DELTA_TIME);
+                expect(Math.abs(endTime - startTime - PLAY_TIME)).assertLess(DELTA_TIME);
                 toNextStep(videoPlayer, steps, done);
             } else if ((err != null) && (steps[0] == ERROR_EVENT)) {
                 steps.shift();
@@ -338,24 +338,24 @@ describe('VideoPlayerFuncCallbackTest', function () {
         });
     });
 
-    function checkSeekTime(seekMode, seekTime, seekDoneTime) {
+    function checkSeekTime(videoPlayer, seekMode, seekTime, seekDoneTime) {
         switch (seekMode) {
             case media.SeekMode.SEEK_NEXT_SYNC:
                 if (seekTime == 0) {
-                    expect(seekDoneTime + DELTA_SEEK_TIME).assertClose(DELTA_SEEK_TIME, DELTA_SEEK_TIME);
+                    expect(seekDoneTime).assertLess(DELTA_SEEK_TIME);
                 } else if (seekTime == DURATION_TIME) {
-                    expect(seekDoneTime).assertClose(DURATION_TIME, DELTA_SEEK_TIME);
+                    expect(Math.abs(videoPlayer.currentTime - DURATION_TIME)).assertLess(DELTA_SEEK_TIME);
                 } else {
-                    expect(seekDoneTime).assertClose(NEXT_FRAME_TIME, DELTA_SEEK_TIME);
+                    expect(Math.abs(videoPlayer.currentTime - NEXT_FRAME_TIME)).assertLess(DELTA_SEEK_TIME);
                 }
                 break;
             case media.SeekMode.SEEK_PREV_SYNC:
                 if (seekTime == 0) {
-                    expect(seekDoneTime + DELTA_SEEK_TIME).assertClose(DELTA_SEEK_TIME, DELTA_SEEK_TIME);
+                    expect(seekDoneTime).assertLess(DELTA_SEEK_TIME);
                 } else if (seekTime == DURATION_TIME) {
-                    expect(seekDoneTime).assertClose(NEXT_FRAME_TIME, DELTA_SEEK_TIME);
+                    expect(Math.abs(videoPlayer.currentTime - NEXT_FRAME_TIME)).assertLess(DELTA_SEEK_TIME);
                 } else {
-                    expect(seekDoneTime).assertClose(PREV_FRAME_TIME, DELTA_SEEK_TIME);
+                    expect(Math.abs(videoPlayer.currentTime - PREV_FRAME_TIME)).assertLess(DELTA_SEEK_TIME);
                 }
                 break;
             default:
@@ -372,7 +372,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
                 if (seekTime > DURATION_TIME) {
                     seekTime = DURATION_TIME;
                 }
-                checkSeekTime(media.SeekMode.SEEK_PREV_SYNC, seekTime, seekDoneTime);
+                checkSeekTime(videoPlayer, media.SeekMode.SEEK_PREV_SYNC, seekTime, seekDoneTime);
                 console.info('case seek success and seekDoneTime is '+ seekDoneTime);
                 toNextStep(videoPlayer, steps, done);
             } else if ((err != null) && (steps[0] == ERROR_EVENT)) {
@@ -395,7 +395,7 @@ describe('VideoPlayerFuncCallbackTest', function () {
                 if (seekTime > DURATION_TIME) {
                     seekTime = DURATION_TIME;
                 }
-                checkSeekTime(seekMode, seekTime, seekDoneTime);
+                checkSeekTime(videoPlayer, seekMode, seekTime, seekDoneTime);
                 console.info('case seek success and seekDoneTime is '+ seekDoneTime);
                 toNextStep(videoPlayer, steps, done);
             } else if ((err != null) && (steps[0] == ERROR_EVENT)) {
@@ -429,19 +429,19 @@ describe('VideoPlayerFuncCallbackTest', function () {
         if (videoPlayer.state == 'playing') {
             switch (speedValue) {
                 case media.PlaybackSpeed.SPEED_FORWARD_0_75_X:
-                    expect(endTime - startTime).assertClose(0.75 * 1000, DELTA_TIME);
+                    expect(Math.abs(endTime - startTime - (0.75 * 1000))).assertLess(DELTA_TIME * 0.75);
                     break;
                 case media.PlaybackSpeed.SPEED_FORWARD_1_00_X:
-                    expect(endTime - startTime).assertClose(1000, DELTA_TIME);
+                    expect(Math.abs(endTime - startTime - (1000))).assertLess(DELTA_TIME);
                     break;
                 case media.PlaybackSpeed.SPEED_FORWARD_1_25_X:
-                    expect(endTime - startTime).assertClose(1.25 * 1000, DELTA_TIME);
+                    expect(Math.abs(endTime - startTime - (1.25 * 1000))).assertLess(DELTA_TIME * 1.25);
                     break;
                 case media.PlaybackSpeed.SPEED_FORWARD_1_75_X:
-                    expect(endTime - startTime).assertClose(1.75 * 1000, DELTA_TIME);
+                    expect(Math.abs(endTime - startTime - (1.75 * 1000))).assertLess(DELTA_TIME * 1.75);
                     break;
                 case media.PlaybackSpeed.SPEED_FORWARD_2_00_X:
-                    expect(endTime - startTime).assertClose(2 * 1000, DELTA_TIME);
+                    expect(Math.abs(endTime - startTime - (2 * 1000))).assertLess(DELTA_TIME * 2);
                     break;
             }
         } else {

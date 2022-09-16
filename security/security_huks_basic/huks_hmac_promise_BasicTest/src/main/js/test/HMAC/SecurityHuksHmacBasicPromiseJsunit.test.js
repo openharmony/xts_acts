@@ -22,6 +22,7 @@ import { stringToArray } from "../../../../../../utils/param/publicFunc.js";
 var handle;
 let srcData63Kb = Data.Date63KB;
 let srcData65Kb = Data.Date65KB;
+let emptyOptions = { properties: [] };
 
 async function publicHmacGenFunc(srcKeyAlies, HuksOptions) {
   HuksOptions.properties.splice(1, 0, HuksHmac.HuksKeySIZE);
@@ -32,10 +33,94 @@ async function publicHmacGenFunc(srcKeyAlies, HuksOptions) {
       expect(data.errorCode == 0).assertTrue();
     })
     .catch((err) => {
-      console.log("test generateKey err information: " + JSON.stringify(err));
+      console.error("test generateKey err information: " + JSON.stringify(err));
+      expect(null).assertFail();
+    });
+
+  await huks
+    .getKeyProperties(srcKeyAlies, HuksOptions)
+    .then(async (data) => {
+      console.log(`test finish data ${JSON.stringify(data)}`);
+      expect(data.errorCode == 0).assertTrue();
+    })
+    .catch((err) => {
+      console.error("test init err: " + JSON.stringify(err));
+      expect(null).assertFail();
+    });
+
+  await getKeyProperties(srcKeyAlies, HuksOptions)
+    .then((data) => {
+      console.log("test generateKey data: " + JSON.stringify(data));
+      expect(data.errorCode == 0).assertTrue();
+    })
+    .catch((err) => {
+      console.error("test init err: " + JSON.stringify(err));
+      expect(null).assertFail();
+    });
+
+  await huks
+    .isKeyExist(srcKeyAlies, emptyOptions)
+    .then(async (data) => {
+      console.log("isKeyExist data: " + JSON.stringify(data));
+      expect(data == true).assertTrue();
+    })
+    .catch((err) => {
+      console.error("isKeyExist err: " + JSON.stringify(err));
+      expect(null).assertFail();
+    });
+
+  await isKeyExist(srcKeyAlies, emptyOptions)
+    .then((data) => {
+      console.log("isKeyExist data: " + JSON.stringify(data));
+      expect(data == true).assertTrue();
+    })
+    .catch((err) => {
+      console.error("isKeyExist err: " + JSON.stringify(err));
       expect(null).assertFail();
     });
   HuksOptions.properties.splice(1, 1);
+}
+
+function getKeyProperties(srcKeyAlies, HuksOptions) {
+  return new Promise((resolve, reject) => {
+    huks.getKeyProperties(srcKeyAlies, HuksOptions, function (err, data) {
+      try {
+        if (err.code != 0) {
+          console.error(
+            "test generateKey err information: " + JSON.stringify(err)
+          );
+          reject(err);
+        } else {
+          resolve(data);
+        }
+      } catch (e) {
+        console.error(
+          "test generateKey err information:: " + JSON.stringify(e)
+        );
+        reject(e);
+      }
+    });
+  });
+}
+
+function isKeyExist(srcKeyAlies, emptyOptions) {
+  return new Promise((resolve, reject) => {
+    huks.isKeyExist(srcKeyAlies, emptyOptions, function (err, data) {
+      try {
+        if (err.code != 0) {
+          console.error(
+            "test isKeyExist err information: " + JSON.stringify(err)
+          );
+          reject(err);
+        } else {
+          resolve(data);
+        }
+      } catch (e) {
+        console.error("test isKeyExist err information: " + JSON.stringify(e));
+        reject(e);
+      }
+    });
+  });
 }
 
 async function publicHmacInitFunc(srcKeyAlies, HuksOptions) {

@@ -24,6 +24,7 @@ describe("SensorJsTest_sensor_20", function () {
         expect(typeof(data.y)).assertEqual("number");
         expect(typeof(data.z)).assertEqual("number");
         expect(typeof(data.w)).assertEqual("number");
+		expect(typeof (data.timestamp)).assertEqual("number");
     }
 
     function callback2(data) {
@@ -32,6 +33,7 @@ describe("SensorJsTest_sensor_20", function () {
         expect(typeof(data.y)).assertEqual("number");
         expect(typeof(data.z)).assertEqual("number");
         expect(typeof(data.w)).assertEqual("number");
+		expect(typeof (data.timestamp)).assertEqual("number");
     }
 
     beforeAll(function() {
@@ -147,7 +149,7 @@ describe("SensorJsTest_sensor_20", function () {
             expect(false).assertTrue();
             done();
         }
-        try{
+        try {
             sensor.once(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, onceSensorCallback, 5);
         } catch (error) {
             console.info('rotatingvector_SensorJsTest005 error' +error);
@@ -239,7 +241,11 @@ describe("SensorJsTest_sensor_20", function () {
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback2);
         setTimeout(()=>{
             console.info('----------------------rotatingvector_SensorJsTest010 off in---------------------------');
-            sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback);
+            try {
+			sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback);
+			} catch (error) {
+            console.info("rotatingvector_SensorJsTest010 error:" + error);
+			}
             console.info('----------------------rotatingvector_SensorJsTest010 off end---------------------------');
         }, 500);
         setTimeout(()=>{
@@ -278,7 +284,11 @@ describe("SensorJsTest_sensor_20", function () {
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback2, {'interval': 100000000});
         setTimeout(()=>{
             console.info('----------------------rotatingvector_SensorJsTest012 off in---------------------------');
-            sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback);
+            try {
+			sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback);
+			} catch (error) {
+            console.info("rotatingvector_SensorJsTest012 error:" + error);
+			}
             console.info('----------------------rotatingvector_SensorJsTest012 off end---------------------------');
         }, 500);
         setTimeout(()=>{

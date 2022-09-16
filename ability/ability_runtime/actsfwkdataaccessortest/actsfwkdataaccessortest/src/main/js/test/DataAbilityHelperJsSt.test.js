@@ -41,6 +41,7 @@ describe('ActsDataAbilityHelperTest', function () {
         } catch (err) {
             console.error('=ACTS_beforeAll acquireDataAbilityHelper catch(err)====>:' + err);
         }
+        sleep(300);
         console.debug('= ACTS_beforeAll ====<end');
         done();
     })
@@ -49,6 +50,15 @@ describe('ActsDataAbilityHelperTest', function () {
         console.debug('= ACTS_afterAll ====<end');
         done();
     })
+
+    function sleep(delay) {
+        let start = new Date().getTime();
+        while (true) {
+            if (new Date().getTime() - start > delay) {
+                break;
+            }
+        }
+    }
 
     /*
     * @tc.number: ACTS_AcquireDataAbilityHelper_0100

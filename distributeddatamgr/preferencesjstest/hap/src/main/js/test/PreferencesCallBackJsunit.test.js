@@ -487,5 +487,19 @@ describe('preferencesCallBackTest', function () {
         })
         done();
     })
+
+    /**
+     * @tc.name get defaultValue callback interface test
+     * @tc.number SUB_DDM_Preferences_Get_CallBack_0250
+     * @tc.desc get defaultValue callback interface test
+     */
+     it('testPreferencesGetDefValue0173', 0, async function (done) {
+        await mPreferences.clear();
+        await mPreferences.get(KEY_TEST_BOOLEAN_ELEMENT, true, function (err, ret) {
+            expect(true).assertEqual(ret);
+            done();
+        })
+    })
+
 })
 }

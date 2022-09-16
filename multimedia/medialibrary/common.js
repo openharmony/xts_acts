@@ -36,11 +36,18 @@ const FILE_TYPE = mediaLibrary.MediaType.FILE;
 
 const FILEKEY = mediaLibrary.FileKey;
 const { RELATIVE_PATH, ALBUM_NAME, MEDIA_TYPE } = FILEKEY
-const sleep = async function sleep(times = 10) {
-    await new Promise(res => setTimeout(res, times));
-}
 
-const allFetchOp = function (others = {}) {
+const sleep = async function sleep(times) {
+    if (!times) {
+        times = 10;
+    }
+    await new Promise((res) => setTimeout(res, times));
+};
+
+const allFetchOp = function (others) {
+    if (!others) {
+        others = {};
+    }
     return {
         selections: '',
         selectionArgs: [],
@@ -48,7 +55,10 @@ const allFetchOp = function (others = {}) {
     };
 }
 
-const fetchOps = function (testNum, path, type, others = {}) {
+const fetchOps = function (testNum, path, type, others) {
+    if (!others) {
+        others = {};
+    }
     let ops = {
         selections: FILEKEY.RELATIVE_PATH + '= ? AND ' + FILEKEY.MEDIA_TYPE + '=?',
         selectionArgs: [path, type.toString()],
@@ -84,8 +94,10 @@ const fileIdFetchOps = function (testNum, id) {
     return ops;
 };
 
-const albumFetchOps = function (testNum, path, albumName, type,
-    others = { order: FILEKEY.DATE_ADDED + " DESC", }) {
+const albumFetchOps = function (testNum, path, albumName, type, others) {
+    if (!others) {
+        others = { order: FILEKEY.DATE_ADDED + " DESC", };
+    }
     let ops = {
         selections: RELATIVE_PATH + '= ? AND ' + ALBUM_NAME + '= ? AND ' + MEDIA_TYPE + '= ?',
         selectionArgs: [path, albumName, type.toString()],
@@ -96,8 +108,10 @@ const albumFetchOps = function (testNum, path, albumName, type,
 }
 
 // albums of two resource types
-const albumTwoTypesFetchOps = function (testNum, paths, albumName, types,
-    others = { order: FILEKEY.DATE_ADDED + " DESC", }) {
+const albumTwoTypesFetchOps = function (testNum, paths, albumName, types, others) {
+    if (!others) {
+        others = { order: FILEKEY.DATE_ADDED + " DESC" };
+    }
     try {
         let ops = {
             selections: '(' + RELATIVE_PATH + '= ? or ' +
@@ -116,7 +130,10 @@ const albumTwoTypesFetchOps = function (testNum, paths, albumName, types,
 }
 
 // albums of three resource types
-const albumThreeTypesFetchOps = function (testNum, paths, albumName, types, others = { order: FILEKEY.DATE_ADDED, }) {
+const albumThreeTypesFetchOps = function (testNum, paths, albumName, types, others) {
+    if (!others) {
+        others = { order: FILEKEY.DATE_ADDED + " DESC" };
+    }
     try {
         let ops = {
             selections: '(' + RELATIVE_PATH + '= ? or ' +
@@ -181,9 +198,12 @@ const checkAlbumsCount = function (done, testNum, albumList, expectCount) {
     return albumsCount == expectCount;
 }
 
-const getPermission = async function (name = 'ohos.acts.multimedia.mediaLibrary') {
+const getPermission = async function (name) {
+    if (!name) {
+        name = "ohos.acts.multimedia.mediaLibrary";
+    }
     console.info('getPermission start', name)
-    let appInfo = await bundle.getApplicationInfo('ohos.acts.multimedia.mediaLibrary', 0, 100);
+    let appInfo = await bundle.getApplicationInfo(name, 0, 100);
     let tokenID = appInfo.accessTokenId;
     let atManager = abilityAccessCtrl.createAtManager();
     let result1 = await atManager.grantUserGrantedPermission(tokenID, "ohos.permission.MEDIA_LOCATION", 1);

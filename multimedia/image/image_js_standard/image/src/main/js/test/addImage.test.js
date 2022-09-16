@@ -61,7 +61,7 @@ export default function addImage() {
         }
 
         /**
-         * @tc.number    : addImage_001
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_0100
          * @tc.name      : create pixelmap-promise (editable: true, pixelFormat: RGBA_8888, size: { height: 4, width: 6 }, bytes = buffer,scaleMode: 1, alphaType: 0)
          * @tc.desc      : 1.create InitializationOptions object
          *                 2.set editable,pixeFormat,size
@@ -71,13 +71,13 @@ export default function addImage() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('add_01_001', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_0100', 0, async function (done) {
             let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 }, scaleMode: 1, alphaType: 0 }
-            createPixMapPromise(done, 'add_01_001', opts);
+            createPixMapPromise(done, 'SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_0100', opts);
         })
 
         /**
-         * @tc.number    : add_01_002
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_0200
          * @tc.name      : create pixelmap-promise (editable: true, pixelFormat: RGBA_8888, size: { height: 4, width: 6 }, bytes = buffer,scaleMode: 1, alphaType: 1)
          * @tc.desc      : 1.create InitializationOptions object
          *                 2.set editable,pixeFormat,size
@@ -87,13 +87,13 @@ export default function addImage() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('add_01_002', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_0200', 0, async function (done) {
             let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 }, scaleMode: 1, alphaType: 1 }
-            createPixMapPromise(done, 'add_01_002', opts);
+            createPixMapPromise(done, 'SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_0200', opts);
         })
 
         /**
-         * @tc.number    : add_01_003
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_0300
          * @tc.name      : create pixelmap-promise (editable: true, pixelFormat: RGBA_8888, size: { height: 4, width: 6 }, bytes = buffer,scaleMode: 0, alphaType: 2)
          * @tc.desc      : 1.create InitializationOptions object
          *                 2.set editable,pixeFormat,size
@@ -103,13 +103,13 @@ export default function addImage() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('add_01_003', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_0300', 0, async function (done) {
             let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 }, scaleMode: 0, alphaType: 2 }
-            createPixMapPromise(done, 'add_01_003', opts);
+            createPixMapPromise(done, 'SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_0300', opts);
         })
 
         /**
-         * @tc.number    : add_01_004
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_0400
          * @tc.name      : create pixelmap-promise (editable: true, pixelFormat: RGBA_8888, size: { height: 4, width: 6 }, bytes = buffer,scaleMode: 0, alphaType: 3)
          * @tc.desc      : 1.create InitializationOptions object
          *                 2.set editable,pixeFormat,size
@@ -119,13 +119,13 @@ export default function addImage() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('add_01_004', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_0400', 0, async function (done) {
             let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 }, scaleMode: 0, alphaType: 3 }
-            createPixMapPromise(done, 'add_01_004', opts);
+            createPixMapPromise(done, 'SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_PROMISE_0400', opts);
         })
 
         /**
-         * @tc.number    : add_02_001
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_0100
          * @tc.name      : create pixelmap-callback (editable: true, pixelFormat: RGBA_8888, size: { height: 4, width: 6 }, bytes = buffer,scaleMode: 0, alphaType: 0)
          * @tc.desc      : 1.create InitializationOptions object
          *                 2.set editable,pixeFormat,size
@@ -135,13 +135,13 @@ export default function addImage() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('add_02_001', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_0100', 0, async function (done) {
             let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 }, scaleMode: 0, alphaType: 0 }
-            createPixMapCb(done, 'add_02_001', opts);
+            createPixMapCb(done, 'SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_0100', opts);
         })
 
         /**
-         * @tc.number    : add_02_002
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_0200
          * @tc.name      : create pixelmap-callback (editable: true, pixelFormat: RGBA_8888, size: { height: 4, width: 6 }, bytes = buffer,scaleMode: 0, alphaType: 1)
          * @tc.desc      : 1.create InitializationOptions object
          *                 2.set editable,pixeFormat,size
@@ -151,13 +151,13 @@ export default function addImage() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('add_02_002', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_0200', 0, async function (done) {
             let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 }, scaleMode: 0, alphaType: 1 }
-            createPixMapCb(done, 'add_02_002', opts);
+            createPixMapCb(done, 'SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_0200', opts);
         })
 
         /**
-         * @tc.number    : add_02_003
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_0300
          * @tc.name      : create pixelmap-callback (editable: true, pixelFormat: RGBA_8888, size: { height: 4, width: 6 }, bytes = buffer,scaleMode: 1, alphaType: 2)
          * @tc.desc      : 1.create InitializationOptions object
          *                 2.set editable,pixeFormat,size
@@ -167,13 +167,13 @@ export default function addImage() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('add_02_003', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_0300', 0, async function (done) {
             let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 }, scaleMode: 1, alphaType: 2 }
-            createPixMapCb(done, 'add_02_003', opts);
+            createPixMapCb(done, 'SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_0300', opts);
         })
 
         /**
-         * @tc.number    : add_02_004
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_0400
          * @tc.name      : create pixelmap-callback (editable: true, pixelFormat: RGBA_8888, size: { height: 4, width: 6 }, bytes = buffer,scaleMode: 1, alphaType: 3)
          * @tc.desc      : 1.create InitializationOptions object
          *                 2.set editable,pixeFormat,size
@@ -183,13 +183,13 @@ export default function addImage() {
          * @tc.type      : Functional
          * @tc.level     : Level 0
          */
-        it('add_02_004', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_0400', 0, async function (done) {
             let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 }, scaleMode: 1, alphaType: 3 }
-            createPixMapCb(done, 'add_02_004', opts);
+            createPixMapCb(done, 'SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_0400', opts);
         })
 
         /**
-         * @tc.number    : add_053
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_PROMISE_0100
          * @tc.name      : createIncrementalSource-updateData-png-promise
          * @tc.desc      : 1.create imagesource
          *                 2.update data
@@ -198,38 +198,38 @@ export default function addImage() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('add_053', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_PROMISE_0100', 0, async function (done) {
             try {
                 let testimagebuffer = testPng;
-                console.info('add_053 0003 ' + testimagebuffer.length);
+                console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_PROMISE_0100 0003 ' + testimagebuffer.length);
                 let bufferSize = 5000;
                 let offset = 0;
                 const incSouce = image.createIncrementalSource(new ArrayBuffer(1));
                 let ret;
                 let isFinished = false;
                 while (offset < testimagebuffer.length) {
-                    console.info('add_053 0006 ' + testimagebuffer.length);
+                    console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_PROMISE_0100 0006 ' + testimagebuffer.length);
                     var oneStep = testimagebuffer.slice(offset, offset + bufferSize);
-                    console.info('add_053 0007 ' + oneStep.length);
+                    console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_PROMISE_0100 0007 ' + oneStep.length);
                     if (oneStep.length < bufferSize) {
                         isFinished = true;
                     }
                     ret = await incSouce.updateData(oneStep, isFinished, 0, oneStep.length);
                     if (!ret) {
-                        console.info('add_053 updateData failed');
+                        console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_PROMISE_0100 updateData failed');
                         expect(ret).assertTrue();
                         break;
                     }
                     offset = offset + oneStep.length;
-                    console.info('add_053 0011 ' + offset);
+                    console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_PROMISE_0100 0011 ' + offset);
                 }
                 if (ret) {
-                    console.info('add_053 updateData success ');
+                    console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_PROMISE_0100 updateData success ');
                     let decodingOptions = {
                         sampleSize: 1
                     };
                     incSouce.createPixelMap(decodingOptions, (err, pixelmap) => {
-                        console.info('add_053 0014' + pixelmap);
+                        console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_PROMISE_0100 0014' + pixelmap);
                         expect(pixelmap != undefined).assertTrue();
                         done();
                     })
@@ -239,12 +239,12 @@ export default function addImage() {
                 }
             } catch (error) {
                 expect(false).assertTrue();
-                console.info('add_053 updateData failed ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_PROMISE_0100 updateData failed ' + error);
             }
         })
 
         /**
-         * @tc.number    : add_053-1
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_PROMISE_0200
          * @tc.name      : createIncrementalSource-updateData-png-promise
          * @tc.desc      : 1.create imagesource
          *                 2.update data
@@ -253,10 +253,10 @@ export default function addImage() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it('add_053-1', 0, async function (done) {
+        it('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_PROMISE_0200', 0, async function (done) {
             try {
                 let testimagebuffer = testPng;
-                console.info('add_053-1 0001 ' + testimagebuffer.length);
+                console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_PROMISE_0200 0001 ' + testimagebuffer.length);
                 let bufferSize = 5000;
                 let offset = 0;
                 const incSouce = image.createIncrementalSource(new ArrayBuffer(1));
@@ -264,7 +264,7 @@ export default function addImage() {
                 let isFinished = false;
                 while (offset < testimagebuffer.length) {
                     var oneStep = testimagebuffer.slice(offset, offset + bufferSize);
-                    console.info('add_053-1 0002 ' + oneStep.length);
+                    console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_PROMISE_0200 0002 ' + oneStep.length);
                     if (oneStep.length < bufferSize) {
                         isFinished = true;
                     }
@@ -274,20 +274,20 @@ export default function addImage() {
                         })
                     })
                     if (!ret) {
-                        console.info('add_053-1 updateData failed');
+                        console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_PROMISE_0200 updateData failed');
                         expect(ret).assertTrue();
                         break;
                     }
                     offset = offset + oneStep.length;
-                    console.info('add_053-1 0003 ' + offset);
+                    console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_PROMISE_0200 0003 ' + offset);
                 }
                 if (ret) {
-                    console.info('add_053-1 updateData success ');
+                    console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_PROMISE_0200 updateData success ');
                     let decodingOptions = {
                         sampleSize: 1
                     };
                     incSouce.createPixelMap(decodingOptions, (err, pixelmap) => {
-                        console.info('add_053-1 0004' + pixelmap);
+                        console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_PROMISE_0200 0004' + pixelmap);
                         expect(pixelmap != undefined).assertTrue();
                         done();
                     })
@@ -297,7 +297,7 @@ export default function addImage() {
                 }
             } catch (error) {
                 expect(false).assertTrue();
-                console.info('add_053-1 updateData failed ' + error);
+                console.info('SUB_GRAPHIC_IMAGE_CREATEINCREMENTALSOURCE_UPDATEDATA_PNG_PROMISE_0200 updateData failed ' + error);
             }
         })
     })

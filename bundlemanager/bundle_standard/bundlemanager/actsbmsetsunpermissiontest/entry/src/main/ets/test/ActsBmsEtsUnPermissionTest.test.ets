@@ -44,10 +44,10 @@ export default function actsBmsJsUnPermissionTest() {
 
         /**
         * @tc.number    getApplicationInfos_1300
-        * @tc.name      getApplicationInfos_1300
+        * @tc.name      getApplicationInfosUnPermission
         * @tc.desc      test getAllApplicationInfo 
         */
-        it('getApplicationInfos_1300', 0, async function (done) {
+        it('getApplicationInfosUnPermission', 0, async function (done) {
             await bundle.getAllApplicationInfo(DEFAULT_FLAG).then(data => {
                 expect().assertFail();
             }).catch(err => {
@@ -62,10 +62,10 @@ export default function actsBmsJsUnPermissionTest() {
 
         /**
         * @tc.number    getBundleInfo_2000
-        * @tc.name      getBundleInfo_2000
+        * @tc.name      getBundleInfoUnPermission
         * @tc.desc      test getBundleInfo
         */
-        it('getBundleInfo_2000', 0, async function (done) {
+        it('getBundleInfoUnPermission', 0, async function (done) {
             await bundle.getBundleInfo(BUNDLE_NAME_OTHER, DEFAULT_FLAG, { userId: userId }).then(data => {
                 expect().assertFail();
             }).catch(err => {
@@ -80,10 +80,10 @@ export default function actsBmsJsUnPermissionTest() {
 
         /**
         * @tc.number    getApplicationInfo_1800
-        * @tc.name      getApplicationInfo_1800
+        * @tc.name      getApplicationInfoUnPermission
         * @tc.desc      test getApplicationInfo 
         */
-        it('getApplicationInfo_1800', 0, async function (done) {
+        it('getApplicationInfoUnPermission', 0, async function (done) {
             await bundle.getApplicationInfo(BUNDLE_NAME_OTHER, DEFAULT_FLAG).then(data => {
                 expect().assertFail();
             }).catch(err => {
@@ -98,10 +98,10 @@ export default function actsBmsJsUnPermissionTest() {
 
         /*
          * @tc.number: SUB_BMS_HAP_STATUS_0011
-         * @tc.name: test hasInstalled
+         * @tc.name: hasInstalledUnPermissionSelf
          * @tc.desc: test hasInstalled without permission
         */
-        it('SUB_BMS_HAP_STATUS_0011', 0, async function (done) {
+        it('hasInstalledUnPermissionSelf', 0, async function (done) {
             let flag = 0;
             pkg.hasInstalled({
                 bundleName: SELF_BUNDLENAME,
@@ -124,10 +124,10 @@ export default function actsBmsJsUnPermissionTest() {
 
         /*
          * @tc.number: SUB_BMS_HAP_STATUS_0012
-         * @tc.name: test hasInstalled
+         * @tc.name: hasInstalledUnPermissionOther
          * @tc.desc: test hasInstalled without permission
         */
-        it('SUB_BMS_HAP_STATUS_0012', 0, async function (done) {
+        it('hasInstalledUnPermissionOther', 0, async function (done) {
             let flag = 0;
             pkg.hasInstalled({
                 bundleName: BUNDLE_NAME_OTHER,
@@ -150,10 +150,10 @@ export default function actsBmsJsUnPermissionTest() {
 
         /*
          * @tc.number: SUB_BMS_APPINFO_GETABILITYICON_0006
-         * @tc.name: test getAbilityIcon
+         * @tc.name: getAbilityIconUnPermission
          * @tc.desc: test getAbilityIcon without permission
         */
-        it('SUB_BMS_APPINFO_GETABILITYICON_0006', 0, async function (done) {
+        it('getAbilityIconUnPermission', 0, async function (done) {
             await bundle.getAbilityIcon(BUNDLE_NAME_OTHER, ABILITIY_NAME_OTHER).then(pixelmap => {
                 expect(pixelmap).assertFail();
             }).catch(err => {
@@ -166,8 +166,8 @@ export default function actsBmsJsUnPermissionTest() {
         });
 
         /*
-         * @tc.number: getAbilityInfo_100
-         * @tc.name: test getAbilityInfo
+         * @tc.number: SUB_BMS_APPINFO_GETABILITYINFO_0008
+         * @tc.name: getAbilityInfoUnPermissionSelf
          * @tc.desc: test getAbilityInfo
         */
         it('getAbilityInfo_200', 0, async function (done) {
@@ -199,10 +199,10 @@ export default function actsBmsJsUnPermissionTest() {
 
         /*
         * @tc.number: SUB_BMS_APPINFO_EXTENSION_0019
-        * @tc.name: test queryExtensionAbilityInfos api
+        * @tc.name: queryExtensionAbilityInfosUnPermission
         * @tc.desc: test queryExtensionAbilityInfos no permission
         */
-        it('SUB_BMS_APPINFO_EXTENSION_0019', 0, async function (done) {
+        it('queryExtensionAbilityInfosUnPermission', 0, async function (done) {
             await bundle.queryExtensionAbilityInfos(
                 {
                     "bundleName": BUNDLE_NAME1,

@@ -573,7 +573,7 @@ export default function inputMethodEngineJSUnit() {
     it('inputMethodEngine_test_044', 0, async function (done) {
       let keyType = inputMethodEngine.WINDOW_TYPE_INPUT_METHOD_FLOAT;
       console.error("inputMethodEngine_test_044 result:" + keyType);
-      expect(keyType == null).assertTrue();
+      expect(keyType == 2105).assertTrue();
       done();
     });
 
@@ -581,8 +581,8 @@ export default function inputMethodEngineJSUnit() {
       if (textInputClient == null) {
         expect(textInputClient == null).assertEqual(true);
       } else {
-        textInputClient.moveCursor(1, (value) => {
-          console.info("inputMethodEngine_test_045 getBackward:" + value);
+        textInputClient.moveCursor(inputMethodEngine.CURSOR_UP, (value) => {
+          console.info("inputMethodEngine_test_045 moveCursor:" + value);
           expect(value == null).assertEqual(true);
         });
       }
@@ -593,12 +593,38 @@ export default function inputMethodEngineJSUnit() {
       if (textInputClient == null) {
         expect(textInputClient == null).assertEqual(true);
       } else {
-        let promise = textInputClient.moveCursor(1);
-        promise.then(res => {
-          console.info("inputMethodEngine_test_046 getBackward promise result-----" + JSON.stringify(res));
+        textInputClient.moveCursor(inputMethodEngine.CURSOR_DOWN, (value) => {
+          console.info("inputMethodEngine_test_046 moveCursor:" + value);
+          expect(value == null).assertEqual(true);
+        });
+      }
+      done();
+    })
+
+    it('inputMethodEngine_test_047', 0, async function (done) {
+      if (textInputClient == null) {
+        expect(textInputClient == null).assertEqual(true);
+      } else {
+        textInputClient.moveCursor(inputMethodEngine.CURSOR_LEFT).then(res => {
+          console.info("inputMethodEngine_test_047 moveCursor promise result-----" + JSON.stringify(res));
           expect(res == null).assertEqual(true);
         }).catch(err => {
-          console.info("inputMethodEngine_test_046 getBackward promise error----" + JSON.stringify(err));
+          console.info("inputMethodEngine_test_047 moveCursor promise error----" + JSON.stringify(err));
+          expect().assertFail();
+        });
+      }
+      done();
+    })
+
+    it('inputMethodEngine_test_048', 0, async function (done) {
+      if (textInputClient == null) {
+        expect(textInputClient == null).assertEqual(true);
+      } else {
+        textInputClient.moveCursor(inputMethodEngine.CURSOR_RIGHT).then(res => {
+          console.info("inputMethodEngine_test_048 moveCursor promise result-----" + JSON.stringify(res));
+          expect(res == null).assertEqual(true);
+        }).catch(err => {
+          console.info("inputMethodEngine_test_048 moveCursor promise error----" + JSON.stringify(err));
           expect().assertFail();
         });
       }

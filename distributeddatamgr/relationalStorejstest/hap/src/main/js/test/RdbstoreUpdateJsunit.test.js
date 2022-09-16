@@ -38,7 +38,7 @@ describe('rdbStoreUpdateTest', function () {
         console.info(TAG + 'afterEach')
         await rdbStore.executeSql("DELETE FROM test");
         rdbStore = null
-        await dataRdb.deleteRdbStore("Delete.db");
+        await dataRdb.deleteRdbStore("UpdataTest.db");
     })
 
     afterAll(async function () {

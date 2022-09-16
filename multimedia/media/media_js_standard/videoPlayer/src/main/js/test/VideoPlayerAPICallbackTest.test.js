@@ -305,24 +305,24 @@ describe('VideoPlayerAPICallbackTest', function () {
         });
     });
 
-    function checkSeekTime(seekMode, seekTime, seekDoneTime) {
+    function checkSeekTime(videoPlayer, seekMode, seekTime, seekDoneTime) {
         switch (seekMode) {
             case media.SeekMode.SEEK_NEXT_SYNC:
                 if (seekTime == 0) {
-                    expect(seekDoneTime + DELTA_TIME).assertClose(DELTA_TIME, DELTA_TIME);
+                    expect(seekDoneTime).assertLess(DELTA_TIME);
                 } else if (seekTime == DURATION_TIME) {
-                    expect(seekDoneTime).assertClose(DURATION_TIME, DELTA_TIME);
+                    expect(Math.abs(videoPlayer.currentTime - DURATION_TIME)).assertLess(DELTA_TIME);
                 } else {
-                    expect(seekDoneTime).assertClose(NEXT_FRAME_TIME, DELTA_TIME);
+                    expect(Math.abs(videoPlayer.currentTime - NEXT_FRAME_TIME)).assertLess(DELTA_TIME);
                 }
                 break;
             case media.SeekMode.SEEK_PREV_SYNC:
                 if (seekTime == 0) {
-                    expect(seekDoneTime + DELTA_TIME).assertClose(DELTA_TIME, DELTA_TIME);
+                    expect(seekDoneTime).assertLess(DELTA_TIME);
                 } else if (seekTime == DURATION_TIME) {
-                    expect(seekDoneTime).assertClose(NEXT_FRAME_TIME, DELTA_TIME);
+                    expect(Math.abs(videoPlayer.currentTime - NEXT_FRAME_TIME)).assertLess(DELTA_TIME);
                 } else {
-                    expect(seekDoneTime).assertClose(PREV_FRAME_TIME, DELTA_TIME);
+                    expect(Math.abs(videoPlayer.currentTime - PREV_FRAME_TIME)).assertLess(DELTA_TIME);
                 }
                 break;
             default:
@@ -336,7 +336,7 @@ describe('VideoPlayerAPICallbackTest', function () {
         steps.shift();
         videoPlayer.seek(seekTime, media.SeekMode.SEEK_NEXT_SYNC, (err, seekDoneTime) => {
             if (err == null) {
-                checkSeekTime(media.SeekMode.SEEK_NEXT_SYNC, seekTime, seekDoneTime);
+                checkSeekTime(videoPlayer, media.SeekMode.SEEK_NEXT_SYNC, seekTime, seekDoneTime);
                 console.info('case seek success and seekDoneTime is '+ seekDoneTime);
                 toNextStep(videoPlayer, steps, done);
             } else if ((err != null) && (steps[0] == ERROR_EVENT)) {

@@ -597,12 +597,15 @@ describe('rdbstoreInsertTest', function () {
         }
         const valueBuckets = [valueBucket1, valueBucket2, valueBucket3]
         try{
-            await rdbStore.batchInsert("test6","valueBuckets").catch((err) =>{
-                expect(err != null).assertTrue();
+            await rdbStore.batchInsert("test6","valueBuckets").then((number) => {
+                console.info(TAG + "Affect row is " + number)
+                expect(number).assertEqual(-1)
+            }).catch((err) =>{
+                expect(err == null).assertTrue();
             })
         }catch(err){
             console.info(TAG + "Batch insert data error:  " + err)
-            expect(err != null).assertTrue();
+            expect(null).assertFail();;
         }
         done()
         console.info(TAG + "************* testRdbStorebatchInsertPromise0006 end *************");
@@ -617,12 +620,15 @@ describe('rdbstoreInsertTest', function () {
         console.info(TAG + "************* testRdbStorebatchInsertPromise0007 start *************");
         await rdbStore.executeSql(CREATE_TABLE_NAME + "7" + CREATE_TABLE)
         try{
-            await rdbStore.batchInsert("test7").catch((err) =>{
-                expect(err != null).assertTrue();
+            await rdbStore.batchInsert("test7").then((number) => {
+                console.info(TAG + "BatchInsert without data,affect row number is " + number)
+                expect(number).assertEqual(0)
+            }).catch((err) =>{
+                expect(err == null).assertTrue();
             })
         }catch(err){
             console.info(TAG + "Batch insert data error:  " + err)
-            expect(err != null).assertTrue();
+            expect(null).assertFail();
         }
         done()
         console.info(TAG + "************* testRdbStorebatchInsertPromise0007 end *************");
@@ -1036,16 +1042,17 @@ describe('rdbstoreInsertTest', function () {
         const valueBuckets = [valueBucket1, valueBucket2, valueBucket3]
         await rdbStore.executeSql(CREATE_TABLE_NAME + "Callback6" + CREATE_TABLE).then(async () => {
             try{
-                await rdbStore.batchInsert("testCallback6", "valueBuckets", (err, data) => {
+                rdbStore.batchInsert("testCallback6", "valueBuckets", (err, data) => {
+                    console.info(TAG + "Affect row is " + data)
                     if(err != null){
-                        expect(err != null).assertTrue()
+                        expect(null).assertFail();
                     }else{
-                        expect(false).assertTrue()
+                        expect(data).assertEqual(-1)
                     }
                 })
             }catch(err){
                 console.info(TAG + "Batch insert data error:  " + err)
-                expect(err != null).assertTrue();
+                expect(null).assertFail();
             }
         })
         
@@ -1064,14 +1071,22 @@ describe('rdbstoreInsertTest', function () {
         try{
             await rdbStore.executeSql(CREATE_TABLE_NAME + "Callback7" + CREATE_TABLE).then(async () => {
                 await rdbStore.batchInsert("testCallback7", (err,data) => {
+                    console.info(TAG + "Affect row is " + data)
                     if(err != null){
-                        expect(err != null).assertTrue();
+                        expect(null).assertFail();
+                    }else{
+                        expect(data).assertEqual(-1)
                     }
+                }).then((data) => {
+                    console.info(TAG + "Batch insert fail ,affect row number is: " + data)
+                    expect(data).assertEqual(-1)
                 })
+            }).catch((err) => {
+                expect(null).assertFail();
             })
         }catch(err){
             console.info(TAG + "Batch insert data error:  " + err)
-            expect(err != null).assertTrue();
+            expect(null).assertFail();
         }
         done()
         console.info(TAG + "************* testRdbStorebatchInsertCallback0007 end *************");

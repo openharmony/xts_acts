@@ -108,6 +108,10 @@
 	  {
         "name":"ohos.permission.INTERNET",
         "reason":"need use ohos.permission.INTERNET"
+      },
+      {
+        "name":"ohos.permission.GRANT_SENSITIVE_PERMISSIONS",
+        "reason":"need use ohos.permission.GRANT_SENSITIVE_PERMISSIONS"
       }
     ],
     "js": [

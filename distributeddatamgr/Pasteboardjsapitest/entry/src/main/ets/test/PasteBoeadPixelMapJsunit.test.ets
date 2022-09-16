@@ -24,7 +24,7 @@ export default function pasteBoardTest(){
         console.info('start################################start');
 
          /**
-         * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_TEST_0100
+         * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_TEST_0100 
          * @tc.name      Create pixelMap data
          * @tc.desc      Test pasteBoard API functionality.
          * @tc.size      : MEDIUM
@@ -172,12 +172,250 @@ export default function pasteBoardTest(){
                             expect(uri).assertEqual(data.getRecordAt(0).uri)
                             expect('text/uri').assertEqual(data.getRecordAt(0).mimeType)
                             console.info(data.getRecordAt(0).mimeType)
+                            console.info(data.getProperty().mimeTypes[0]);
+                            expect("text/uri").assertEqual(data.getProperty().mimeTypes[0]);
                         })
                     })
                 })
             })
             done();
         })
-    });
 
+        /**
+         * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_TEST_0500
+         * @tc.name      Create PixelMap data with string type parameters;
+         * @tc.desc      Test pasteBoard API functionality.
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+        */
+        it('SUB_PASTEBOARD_FUNCTION_ETS_TEST_0500', 0, async function (done) {
+            console.info("SUB_PASTEBOARD_FUNCTION_ETS_TEST_0500 start")
+            var systemPasteBoard = pasteboard.getSystemPasteboard();
+            await systemPasteBoard.clear().then(async () => {
+                var pasteData = null;
+                var pixelMap = "pixelMap";
+                try{
+                    pasteData = pasteboard.createPixelMapData(pixelMap)
+                }catch(err){
+                    console.info("Create pixleMap data fail " + err)
+                }
+                expect(pasteData == null).assertTrue();
+            })
+            done();
+        })
+
+        /**
+         * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_TEST_0600
+         * @tc.name      Create PixelMap data with parameter is null;
+         * @tc.desc      Test pasteBoard API functionality.
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+        */
+         it('SUB_PASTEBOARD_FUNCTION_ETS_TEST_0600', 0, async function (done) {
+            console.info("SUB_PASTEBOARD_FUNCTION_ETS_TEST_0600 start")
+            var systemPasteBoard = pasteboard.getSystemPasteboard();
+            await systemPasteBoard.clear().then(async () => {
+                var pasteData = undefined;
+                var pixelMap = null;
+                try{
+                    pasteData = pasteboard.createPixelMapData(pixelMap)
+                }catch(err){
+                    console.info("Create pixleMap data fail " + err)
+                }
+                expect(pasteData == null).assertTrue();
+            })
+            done();
+        })
+
+        /**
+         * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_TEST_0700
+         * @tc.name      Create PixelMap record with string type parameters; 
+         * @tc.desc      Test pasteBoard API functionality.
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+        */
+         it('SUB_PASTEBOARD_FUNCTION_ETS_TEST_0700', 0, async function (done) {
+            console.info("SUB_PASTEBOARD_FUNCTION_ETS_TEST_0700 start")
+            var systemPasteBoard = pasteboard.getSystemPasteboard();
+            await systemPasteBoard.clear().then(async () => {
+                var pixelMapRecord = undefined;
+                var pixelMap = "pixelMap";
+                try{
+                    pixelMapRecord = pasteboard.createPixelMapRecord(pixelMap)
+                }catch(err){
+                    console.info("Create pixleMap data fail " + err)
+                }
+                expect(pixelMapRecord == null).assertTrue();
+            })
+            done();
+        })
+
+        /**
+         * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_TEST_0800
+         * @tc.name      Create PixelMap record with parameter is null;
+         * @tc.desc      Test pasteBoard API functionality.
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+        */
+         it('SUB_PASTEBOARD_FUNCTION_ETS_TEST_0800', 0, async function (done) {
+            console.info("SUB_PASTEBOARD_FUNCTION_ETS_TEST_0800 start")
+            var systemPasteBoard = pasteboard.getSystemPasteboard();
+            await systemPasteBoard.clear().then(async () => {
+                var pixelMapRecord = undefined;
+                var pixelMap = null;
+                try{
+                    pixelMapRecord = pasteboard.createPixelMapRecord(pixelMap)
+                }catch(err){
+                    console.info("Create pixleMap data fail " + err)
+                }
+                expect(pixelMapRecord == null).assertTrue();
+            })
+            done();
+        })
+
+        /**
+         * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_TEST_0900
+         * @tc.name      Add a PixelMap record to pasteData with string type parameters;
+         * @tc.desc      Test pasteBoard API functionality.
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+        */
+         it('SUB_PASTEBOARD_FUNCTION_ETS_TEST_0900', 0, async function (done) {
+            console.info("SUB_PASTEBOARD_FUNCTION_ETS_TEST_0900 start")
+            var uri = "https://www.baidu.com/"
+            var systemPasteBoard = pasteboard.getSystemPasteboard();
+            await systemPasteBoard.clear().then(async () => {
+                var pasteData = undefined;
+                var pixelMap = "pixelMap";
+                pasteData = pasteboard.createUriData(uri)
+                try{
+                    pasteData.addPixelMapRecord(pixelMap)
+                }catch(err){
+                    console.info("Create pixleMap data fail " + err)
+                }
+                let ret = pasteData.getRecordCount();
+                expect(ret).assertEqual(1);
+            })
+            done();
+        })
+
+        /**
+         * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_TEST_1000
+         * @tc.name      Add a PixelMap record to pasteData with parameter is null;
+         * @tc.desc      Test pasteBoard API functionality.
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+        */
+         it('SUB_PASTEBOARD_FUNCTION_ETS_TEST_1000', 0, async function (done) {
+            console.info("SUB_PASTEBOARD_FUNCTION_ETS_TEST_1000 start")
+            var uri = "https://www.baidu.com/"
+            var systemPasteBoard = pasteboard.getSystemPasteboard();
+            await systemPasteBoard.clear().then(async () => {
+                var pasteData = undefined;
+                var pixelMap = null;
+                pasteData = pasteboard.createUriData(uri)
+                try{
+                    pasteData.addPixelMapRecord(pixelMap)
+                }catch(err){
+                    console.info("Create pixleMap data fail " + err)
+                }
+                let ret = pasteData.getRecordCount();
+                expect(ret).assertEqual(1);
+            })
+            done();
+        })
+		/**
+         * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_TEST_1100
+         * @tc.name      Set pasteData Property's sharOption for  InApp
+         * @tc.desc      Test pasteBoard SetProperty API functionality.
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+        */
+       it('SUB_PASTEBOARD_FUNCTION_ETS_TEST_1100', 0, async function (done) {
+            var pasteData = pasteboard.createHtmlData('application/xml');
+            console.info("SUB_PASTEBOARD_FUNCTION_ETS_TEST_1100 start")
+            var systemPasteBoard = pasteboard.getSystemPasteboard();
+            await systemPasteBoard.clear().then(async () => {
+                let prop = pasteData.getProperty();
+                prop.shareOption = pasteboard.ShareOption.InApp;
+                pasteData.setProperty(prop);
+                var property = pasteData.getProperty();
+                expect(0).assertEqual(property.shareOption)
+                console.info("SUB_PASTEBOARD_FUNCTION_ETS_TEST_1100 end")
+            })
+            done();
+        })
+		/**
+         * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_TEST_1200
+         * @tc.name      Set pasteData Property's sharOption for LocalDevice
+         * @tc.desc      Test pasteBoard SetProperty API functionality.
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+        */
+       it('SUB_PASTEBOARD_FUNCTION_ETS_TEST_1200', 0, async function (done) {
+            var pasteData = pasteboard.createPlainTextData("hello");
+            console.info("SUB_PASTEBOARD_FUNCTION_ETS_TEST_1200 start")
+            var systemPasteBoard = pasteboard.getSystemPasteboard();
+            await systemPasteBoard.clear().then(async () => {
+                let prop = pasteData.getProperty();
+                prop.shareOption = pasteboard.ShareOption.LocalDevice;
+                pasteData.setProperty(prop);
+                var property = pasteData.getProperty();
+                expect(1).assertEqual(property.shareOption)
+                console.info("SUB_PASTEBOARD_FUNCTION_ETS_TEST_1200 end")
+            })
+            done();
+        })
+		/**
+         * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_TEST_1300
+         * @tc.name      Set pasteData Property's sharOption for CrossDevice
+         * @tc.desc      Test pasteBoard SetProperty API functionality.
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+        */
+       it('SUB_PASTEBOARD_FUNCTION_ETS_TEST_1300', 0, async function (done) {
+            var pasteData = pasteboard.createPlainTextData("hello");
+            console.info("SUB_PASTEBOARD_FUNCTION_ETS_TEST_1300 start")
+            var systemPasteBoard = pasteboard.getSystemPasteboard();
+            await systemPasteBoard.clear().then(async () => {
+                let prop = pasteData.getProperty();
+                prop.shareOption = pasteboard.ShareOption.CrossDevice;
+                pasteData.setProperty(prop);
+                var property = pasteData.getProperty();
+                expect(2).assertEqual(property.shareOption)
+                console.info("SUB_PASTEBOARD_FUNCTION_ETS_TEST_1300 end")
+            })
+            done();
+        })
+		/**
+         * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_TEST_1400
+         * @tc.name      Set pasteData Property's sharOption for default
+         * @tc.desc      Test pasteBoard SetProperty API functionality.
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+        */
+       it('SUB_PASTEBOARD_FUNCTION_ETS_TEST_1400', 0, async function (done) {
+            var pasteData = pasteboard.createPlainTextData("hello");
+            console.info("SUB_PASTEBOARD_FUNCTION_ETS_TEST_1400 start")
+            var systemPasteBoard = pasteboard.getSystemPasteboard();
+            await systemPasteBoard.clear().then(async () => {
+                let prop = pasteData.getProperty();
+                pasteData.setProperty(prop);
+                var property = pasteData.getProperty();
+                expect(2).assertEqual(property.shareOption)
+                console.info("SUB_PASTEBOARD_FUNCTION_ETS_TEST_1400 end")
+            })
+            done();
+        })
+    });
 }

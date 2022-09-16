@@ -23,6 +23,10 @@ import fileioDirListfile from './module_fileio/class_dir/listfile.test.js'
 import fileioDirRead from './module_fileio/class_dir/read.test.js'
 import fileioDirent from './module_fileio/class_dirent/all.test.js'
 import fileioStream from './module_fileio/class_stream/all.test.js'
+import fileioRandomAccessFileClose from './module_fileio/class_randomAccessFile/close.test.js'
+import fileioRandomAccessFileRead from './module_fileio/class_randomAccessFile/read.test.js'
+import fileioRandomAccessFileSetFilePointer from './module_fileio/class_randomAccessFile/setFilePointer.test.js'
+import fileioRandomAccessFileWrite from './module_fileio/class_randomAccessFile/write.test.js'
 import fileioStreamClose from './module_fileio/class_stream/close.test.js'
 import fileioStreamFlush from './module_fileio/class_stream/flush.test.js'
 import fileioStreamRead from './module_fileio/class_stream/read.test.js'
@@ -33,6 +37,7 @@ import fileioChmod from './module_fileio/members/chmod.test.js'
 import fileioChown from './module_fileio/members/chown.test.js'
 import fileioClose from './module_fileio/members/close.test.js'
 import fileioCopyfile from './module_fileio/members/copyFile.test.js'
+import fileioCreateRandomAccessFile from './module_fileio/members/createRandomAccessFile.test.js'
 import fileioCreateStream from './module_fileio/members/createStream.test.js'
 import fileioFchmod from './module_fileio/members/fchmod.test.js'
 import fileioFchown from './module_fileio/members/fchown.test.js'
@@ -71,6 +76,10 @@ export default function testsuite() {
     fileioDirRead()
     fileioDirent()
     fileioStream()
+    fileioRandomAccessFileClose()
+    fileioRandomAccessFileRead()
+    fileioRandomAccessFileSetFilePointer()
+    fileioRandomAccessFileWrite()
     fileioStreamClose()
     fileioStreamFlush()
     fileioStreamRead()
@@ -81,6 +90,7 @@ export default function testsuite() {
     fileioChown()
     fileioClose()
     fileioCopyfile()
+    fileioCreateRandomAccessFile()
     fileioCreateStream()
     fileioFchmod()
     fileioFchown()

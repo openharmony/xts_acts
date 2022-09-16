@@ -58,8 +58,8 @@ export default function fileAssetPromise2Test(abilityContext) {
                     selections: FILEKEY.ID + '= ?',
                     selectionArgs: [id + ''],
                 };
-                const fetchFileResult2 = await media.getFileAssets(currentfetchOp);
-                const currentAsset = await fetchFileResult2.getFirstObject();
+                const fetchFileResultById = await media.getFileAssets(currentfetchOp);
+                const currentAsset = await fetchFileResultById.getFirstObject();
                 expect(currentAsset[prop]).assertEqual(val);
 
                 asset[prop] = oldVal;
@@ -206,7 +206,7 @@ export default function fileAssetPromise2Test(abilityContext) {
                 const fetchFileResult = await media.getFileAssets(fetchOp);
                 const asset = await fetchFileResult.getFirstObject();
                 const isDir = await asset.isDirectory();
-                expect(!isDir).assertTrue();
+                expect(isDir).assertEqual(false);
                 done();
             } catch (error) {
                 console.info('FileAsset isDirectory 001 failed, message = ' + error);

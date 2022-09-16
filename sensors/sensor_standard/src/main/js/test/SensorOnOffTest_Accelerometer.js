@@ -22,6 +22,7 @@ describe("SensorJsTest_sensor_3", function () {
         expect(typeof (data.x)).assertEqual("number");
         expect(typeof (data.y)).assertEqual("number");
         expect(typeof (data.z)).assertEqual("number");
+        expect(typeof (data.timestamp)).assertEqual("number");
     }
 
     function callback2(data) {
@@ -29,6 +30,7 @@ describe("SensorJsTest_sensor_3", function () {
         expect(typeof (data.x)).assertEqual("number");
         expect(typeof (data.y)).assertEqual("number");
         expect(typeof (data.z)).assertEqual("number");
+        expect(typeof (data.timestamp)).assertEqual("number");
     }
 
     beforeAll(function () {
@@ -243,7 +245,11 @@ describe("SensorJsTest_sensor_3", function () {
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback2);
         setTimeout(() => {
             console.info('----------------------Accelerometer_SensorJsTest010 off in---------------------------');
-            sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback);
+            try {
+			sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback);
+			} catch (error) {
+            console.info("Accelerometer_SensorJsTest010 error:" + error);
+			}
             console.info('----------------------Accelerometer_SensorJsTest010 off end---------------------------');
         }, 500);
         setTimeout(() => {
@@ -282,7 +288,12 @@ describe("SensorJsTest_sensor_3", function () {
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback2, { 'interval': 100000000 });
         setTimeout(() => {
             console.info('----------------------Accelerometer_SensorJsTest012 off in---------------------------');
-            sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback);
+            try {
+			sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback);
+			} catch (error) {
+            console.info("Accelerometer_SensorJsTest012 error:" + error);
+			}
+            console
             console.info('----------------------Accelerometer_SensorJsTest012 off end---------------------------');
         }, 500);
         setTimeout(() => {

@@ -15,6 +15,9 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 export default function abilityTest() {
     describe('ACTS_AACommand_01_3', function () {
         /**

@@ -15,7 +15,8 @@
 
 import featureAbility from "@ohos.ability.featureAbility";
 import commonEvent from '@ohos.commonEvent';
-import { beforeAll, beforeEach, afterEach, describe, expect, it } from '@ohos/hypium'
+import { beforeAll, afterAll, beforeEach, afterEach, describe, expect, it } from '@ohos/hypium'
+import backgroundTaskManager from '@ohos.backgroundTaskManager';
 
 var onAcquiredForm_Event = {
     events: ["FMS_FormOnAcquired_commonEvent"],
@@ -47,8 +48,28 @@ var subscriberSupply;
 export default function test() {
     describe(`FmsStateFormTest`, () => {
 
+        let id = undefined;
         beforeAll(async (done) => {
-            done();
+            console.log("FMS_disableFormsUpdate beforeAll called");
+            let myReason = 'test FaShowOnLockTest';
+            let delayInfo = backgroundTaskManager.requestSuspendDelay(myReason, () => {
+                console.log("FMS_disableFormsUpdate Request suspension delay will time out.");
+            })
+            id = delayInfo.requestId;
+            console.log("FMS_disableFormsUpdate requestId is : " + id);
+            setTimeout(function () {
+                console.log("FMS_disableFormsUpdate beforeAll end");
+                done();
+            }, 1000);
+        })
+        
+        afterAll(async (done) => {
+            console.log("FMS_disableFormsUpdate afterAll called");
+            backgroundTaskManager.cancelSuspendDelay(id);
+            setTimeout(function () {
+                console.log("FMS_disableFormsUpdate afterAll end");
+                done();
+            }, 1000);
         })
 
         beforeEach(async () => {

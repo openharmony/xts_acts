@@ -117,6 +117,9 @@ describe('PlayerLocalTestAudioAPI', function () {
             case SEEK_STATE:
                 console.info(`case seek to time is ${mySteps[SECOND_INDEX]}`);
                 audioPlayer.seek(mySteps[SECOND_INDEX]);
+                mySteps.shift();
+                mySteps.shift();
+                nextStep(mySteps, done);
                 break;
             case VOLUME_STATE:
                 console.info(`case to setVolume`);
@@ -195,36 +198,25 @@ describe('PlayerLocalTestAudioAPI', function () {
                 console.info(`case seek filed,errcode is ${seekDoneTime}`);
                 return;
             }
-            if (mySteps[0] != SEEK_STATE) {
-                return;
-            }
-            mySteps.shift();
-            mySteps.shift();
-            console.info(`case seekDoneTime is ${seekDoneTime}`);
-            console.info(`case seek called`);
-            expect(audioPlayer.currentTime + DELTA_TIME).assertClose(seekDoneTime + DELTA_TIME, DELTA_TIME);
-            console.info(`case loop is ${audioPlayer.loop}`);
-            if ((audioPlayer.loop == true) && (seekDoneTime == DURATION_TIME)) {
-                console.info('case loop is true');
-                mediaTestBase.msleep(PLAY_STATE);
-            }
-            if ((seekDoneTime < audioPlayer.duration) || (audioPlayer.state == 'paused')) {
-                nextStep(mySteps,done);
-            }
+            console.info(`case timeUpdate, seekDoneTime is ${seekDoneTime}`);
         });
         audioPlayer.on('volumeChange', () => {
-            console.info(`case setvolume called`);
-            mySteps.shift();
-            mySteps.shift();
-            if (audioPlayer.state == 'playing') {
-                mediaTestBase.msleep(PLAY_TIME);
+            if (mySteps[0] != VOLUME_STATE) {
+                console.info(`case setvolume called by system`);
+            } else {
+                console.info(`case setvolume called`);
+                mySteps.shift();
+                mySteps.shift();
+                if (audioPlayer.state == 'playing') {
+                    mediaTestBase.msleep(PLAY_TIME);
+                }
+                nextStep(mySteps,done);
             }
-            nextStep(mySteps,done);
         });
         audioPlayer.on('finish', () => {
             mySteps.shift();
             expect(audioPlayer.state).assertEqual('stopped');
-            expect(audioPlayer.currentTime).assertClose(audioPlayer.duration, DELTA_TIME);
+            expect(Math.abs(audioPlayer.currentTime - audioPlayer.duration)).assertLess(DELTA_TIME);
             console.info(`case finish called`);
             nextStep(mySteps,done);
         });
