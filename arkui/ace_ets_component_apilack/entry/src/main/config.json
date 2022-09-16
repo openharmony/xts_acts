@@ -75,7 +75,16 @@
           "pages/alphabetIndexer",
           "pages/checkBoxGroup",
           "pages/circle",
-          "pages/ellipse"
+          "pages/ellipse",
+          "pages/grid",
+          "pages/gridItem",
+          "pages/inspector",
+          "pages/lazyForEach",
+          "pages/path",
+          "pages/polygon",
+          "pages/polyLine",
+          "pages/rect",
+          "pages/scroll"
         ],
         "name": ".MainAbility",
         "window": {
