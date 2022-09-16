@@ -84,10 +84,10 @@ export default function inputMethodJSUnit() {
       console.info("inputmethoh_test_006 result:" + JSON.stringify(inputMethodCtrl));
       inputMethodCtrl.stopInput().then(data => {
         console.info("inputmethoh_test_006 stopInput result----" + data);
-        expect(data == true).assertTrue()
+        expect(data == true).assertTrue();
       }).catch(err => {
         console.info("inputmethoh_test_006 stopInput is err: " + JSON.stringify(err));
-        expect().assertFail()
+        expect().assertFail();
       });
       done();
     });
@@ -118,12 +118,12 @@ export default function inputMethodJSUnit() {
         packageName:"com.example.kikakeyboard",
         methodId:"ServiceExtAbility"
       }
-
       inputMethod.switchInputMethod(inputMethodProperty).then(data => {
         console.info("inputmethod_test_switchInputMethod_001 data:" + data)
         expect(data == true).assertTrue();
       }).catch( err=> {
         console.info("inputmethod_test_switchInputMethod_001 err:" + err)
+        expect().assertFail();
       })
       console.info("************* inputmethod_test_switchInputMethod_001 Test end*************");
       done();
@@ -144,7 +144,7 @@ export default function inputMethodJSUnit() {
       inputMethod.switchInputMethod(inputMethodProperty, (err, data)=>{
         if(err){
           console.info("inputmethod_test_switchInputMethod_002 error:" + err);
-          expect().assertFail()
+          expect().assertFail();
         }
         console.info("inputmethod_test_switchInputMethod_002 data:" + data)
         expect(data == true).assertTrue();
@@ -164,8 +164,10 @@ export default function inputMethodJSUnit() {
       inputMethodCtrl.showSoftKeyboard((data)=>{
         if(data == undefined){
           console.info("showSoftKeyboard callbace success" );
+          expect(true).assertTrue();
         }else{
           console.info('showSoftKeyboard callbace failed : ' + JSON.stringify(err))
+          expect().assertFail();
         }
       });
       console.info("************* inputmethod_test_showSoftKeyboard_001 Test end*************");
@@ -182,8 +184,10 @@ export default function inputMethodJSUnit() {
       let inputMethodCtrl = inputMethod.getInputMethodController()
       inputMethodCtrl.showSoftKeyboard().then((data) =>{
         console.info("showSoftKeyboard promise success" );
+        expect(true).assertTrue();
       }).catch((err) => {
         console.info('showSoftKeyboard promise failed : ' + JSON.stringify(err))
+        expect().assertFail();
       })
       console.info("************* inputmethod_test_showSoftKeyboard_002 Test end*************");
       done();
@@ -200,8 +204,10 @@ export default function inputMethodJSUnit() {
       inputMethodCtrl.hideSoftKeyboard((data)=>{
         if(data == undefined){
           console.info("hideSoftKeyboard callbace success" );
+          expect(true).assertTrue();
         }else{
           console.info('hideSoftKeyboard callbace failed : ' + JSON.stringify(err))
+          expect().assertFail();
         }
       });
       console.info("************* inputmethod_test_hideSoftKeyboard_001 Test end*************");
@@ -218,10 +224,71 @@ export default function inputMethodJSUnit() {
       let inputMethodCtrl = inputMethod.getInputMethodController()
       inputMethodCtrl.hideSoftKeyboard().then((data) =>{
         console.info("hideSoftKeyboard promise success" );
+        expect(true).assertTrue();
       }).catch((err) => {
         console.info('hideSoftKeyboard promise failed : ' + JSON.stringify(err))
+        expect().assertFail();
       })
       console.info("************* inputmethod_test_hideSoftKeyboard_002 Test end*************");
+      done();
+    });
+
+    /*
+     * @tc.number  inputmethod_test_getCurrentInputMethod_001
+     * @tc.name    return The InputMethodProperty object of the current input method.
+     * @tc.desc    Function test
+     * @tc.level   2
+     */
+    it('inputmethod_test_getCurrentInputMethod_001', 0, async function (done) {
+      let  currentIme = inputMethod.getCurrentInputMethod();
+      console.info("inputmethod_test_getCurrentInputMethod_001 currentIme---" + JSON.stringify(currentIme));
+      console.info(currentIme.packageName);
+      console.info(currentIme.methodId);
+      expect(currentIme.packageName != null).assertTrue();
+      expect(currentIme.methodId != null).assertTrue();
+      console.info("************* inputmethod_test_getCurrentInputMethod_001 Test end*************");
+      done();
+    });
+
+    /*
+     * @tc.number  inputmethod_test_listInputMethod_001
+     * @tc.name    param enable :
+     *             if true, collect enabled input methods.
+     * @tc.desc    Function test
+     * @tc.level   2
+     */
+    it('inputmethod_test_listInputMethod_001', 0, async function (done) {
+      let inputMethodSetting = inputMethod.getInputMethodSetting();
+      console.info("inputmethod_test_listInputMethod_001 result:" + JSON.stringify(inputMethodSetting));
+      inputMethodSetting.listInputMethod(true, (err, arr) => {
+        if (err) {
+          console.error("inputmethod_test_listInputMethod_001 failed because: " + JSON.stringify(err));
+          expect().assertFail();
+        };
+        console.info("inputmethod_test_listInputMethod_001 listInputMethod result---" + JSON.stringify(arr));
+        expect(arr != null).assertTrue();
+      });
+      done();
+    });
+
+    /*
+     * @tc.number  inputmethod_test_listInputMethod_002
+     * @tc.name    param enable :
+     *             if false, collect disabled input methods.
+     * @tc.desc    Function test
+     * @tc.level   2
+     */
+    it('inputmethod_test_listInputMethod_002', 0, async function (done) {
+      let inputMethodSetting = inputMethod.getInputMethodSetting();
+      console.info("inputmethod_test_listInputMethod_002 result:" + JSON.stringify(inputMethodSetting));
+      inputMethodSetting.listInputMethod(false, (err, arr) => {
+        if (err) {
+          console.error("inputmethod_test_listInputMethod_002 failed because: " + JSON.stringify(err));
+          expect().assertFail();
+        };
+        console.info("inputmethod_test_listInputMethod_002 listInputMethod result---" + JSON.stringify(arr));
+        expect(arr != null).assertTrue();
+      });
       done();
     });
   })
