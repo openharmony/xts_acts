@@ -7414,16 +7414,16 @@ describe('ActsRpcClientJsTest', function(){
     });
 
     /*
-     * @tc.number  SUB_Softbus_RPC_IRemoteObject_00900
+     * @tc.number  SUB_Softbus_IPC_Compatility_IRemoteObject_00900
      * @tc.name    IRemoteObject sendRequestAsync API Test
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("SUB_Softbus_RPC_IRemoteObject_00900", 0,async function(done){
-        console.info("---------------------start SUB_Softbus_RPC_IRemoteObject_00900---------------------------");
+    it("SUB_Softbus_IPC_Compatility_IRemoteObject_00900", 0,async function(done){
+        console.info("---------------------start SUB_Softbus_IPC_Compatility_IRemoteObject_00900---------------------------");
         try{
             var data = rpc.MessageParcel.create();
-            console.info("SUB_Softbus_RPC_IRemoteObject_00900: create object successfully.");
+            console.info("SUB_Softbus_IPC_Compatility_IRemoteObject_00900: create object successfully.");
             var reply = rpc.MessageParcel.create();
             var option = new rpc.MessageOption();
             expect(data.writeByte(1)).assertTrue()
@@ -7438,7 +7438,7 @@ describe('ActsRpcClientJsTest', function(){
             expect(data.writeSequenceable(new MySequenceable(1, "aaa"))).assertTrue()
 
             await gIRemoteObject.sendRequestAsync(CODE_ALL_TYPE, data, reply, option, (err, result) => {
-                console.info("SUB_Softbus_RPC_IRemoteObject_00900:sendRequest done, error code: " + result.errCode)
+                console.info("SUB_Softbus_IPC_Compatility_IRemoteObject_00900:sendRequest done, error code: " + result.errCode)
                 expect(result.errCode).assertEqual(0)
                 expect(result.reply.readByte()).assertEqual(1)
                 expect(result.reply.readShort()).assertEqual(2)
@@ -7455,12 +7455,12 @@ describe('ActsRpcClientJsTest', function(){
                 expect(s.str).assertEqual("aaa")
             });
         } catch (error) {
-            console.info("SUB_Softbus_RPC_IRemoteObject_00900:error = " + error);
+            console.info("SUB_Softbus_IPC_Compatility_IRemoteObject_00900:error = " + error);
         }
         data.reclaim();
         reply.reclaim();
         done();
-        console.info("---------------------end SUB_Softbus_RPC_IRemoteObject_00900---------------------------");
+        console.info("---------------------end SUB_Softbus_IPC_Compatility_IRemoteObject_00900---------------------------");
     });
 
 

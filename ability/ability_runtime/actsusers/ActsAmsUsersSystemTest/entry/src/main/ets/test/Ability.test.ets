@@ -16,6 +16,7 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "
 import commonEvent from '@ohos.commonEvent'
 import appManager from '@ohos.application.appManager'
 import osaccount from '@ohos.account.osAccount'
+import backgroundTaskManager from '@ohos.backgroundTaskManager';
 
 var subscriberInfo_MainAbility = {
   events: ["ACTS_InterfaceMultiUsers_0100_Start_CommonEvent","ACTS_TerminateSelf_CommonEvent"]
@@ -39,6 +40,31 @@ export default function abilityTest() {
         // })
     //   })
     // })
+
+    let id = undefined;
+    beforeAll(async (done) => {
+        console.log("ACTS_InterfaceMultiUsers beforeAll called");
+        let myReason = 'test FaShowOnLockTest';
+        let delayInfo = backgroundTaskManager.requestSuspendDelay(myReason, () => {
+            console.log("ACTS_InterfaceMultiUsers Request suspension delay will time out.");
+        })
+        id = delayInfo.requestId;
+        console.log("ACTS_InterfaceMultiUsers requestId is : " + id);
+        setTimeout(function () {
+            console.log("ACTS_InterfaceMultiUsers beforeAll end");
+            done();
+        }, 1000);
+    })
+        
+    afterAll(async (done) => {
+        console.log("ACTS_InterfaceMultiUsers afterAll called");
+        backgroundTaskManager.cancelSuspendDelay(id);
+        setTimeout(function () {
+            console.log("ACTS_InterfaceMultiUsers afterAll end");
+            done();
+        }, 1000);
+    })
+
     console.debug("====>in ACTS_InterfaceMultiUsers====>");
     /*
      * @tc.number  : ACTS_startAbility_0100

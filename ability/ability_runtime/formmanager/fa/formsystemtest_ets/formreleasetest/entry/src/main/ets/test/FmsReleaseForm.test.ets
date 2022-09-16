@@ -56,6 +56,18 @@ export default function test() {
             commonEvent.unsubscribe(subscriberOnAcquired, () => unsubscribeCallback("afterEach unsubscribe subscriberOnAcquired"));
             commonEvent.unsubscribe(subscriberOnDeleted, () => unsubscribeCallback("afterEach unsubscribe subscriberOnDeleted"));
             commonEvent.unsubscribe(subscriberOnReleased, () => unsubscribeCallback("afterEach unsubscribe subscriberOnReleased"));
+
+            let wantInfo = {
+                want: {
+                    bundleName: "com.ohos.st.formreleasetest",
+                    abilityName: "com.ohos.st.formreleasetest.TestAbility"
+                }
+            }
+            await featureAbility.startAbility(wantInfo).then((data) => {
+              console.log("FMS_releaseForm startAbility data : " + JSON.stringify(data));
+            }).catch((err) => {
+              console.log("FMS_releaseForm startAbility err : " + JSON.stringify(err));
+            })
             await sleep(1000);
         })
 

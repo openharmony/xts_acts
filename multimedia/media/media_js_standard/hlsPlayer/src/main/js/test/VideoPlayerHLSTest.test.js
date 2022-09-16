@@ -81,7 +81,7 @@ describe('VideoPlayerHLSTest', function () {
         * @tc.level     : Level1
     */
     it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_HLS_AudioOnly_0100', 0, async function (done) {
-        await playVideoSource(HTTP_PATH + '05.hls/audio_only/index.m3u8', 0, 0, 10033, PLAY_TIME, done);
+        await playVideoSource(HTTP_PATH + '05.hls/audio_only/index.m3u8', 0, 0, 219600, PLAY_TIME, done);
         done();
     })
 

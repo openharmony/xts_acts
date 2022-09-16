@@ -1959,11 +1959,11 @@ describe('singleKvStorePromiseTest', function () {
     it('testSingleKvStoreRemoveDeviceData003', 0, async function (done) {
         console.info('testSingleKvStoreRemoveDeviceData003');
         try {
-            await kvStore.removeDeviceData('').then((err) => {
+            await kvStore.removeDeviceData('').then(() => {
                 console.info('testSingleKvStoreRemoveDeviceData003 removeDeviceData success');
-                expect(null).assertFail();
             }).catch((err) => {
                 console.info('testSingleKvStoreRemoveDeviceData003 removeDeviceData fail ' + err);
+                expect(null).assertFail();
             });
         }catch(e) {
             console.info('testSingleKvStoreRemoveDeviceData003 e ' + e);

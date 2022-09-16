@@ -20,11 +20,13 @@ describe("SensorJsTest_sensor_7", function () {
     function callback(data) {
         console.info("callback" + JSON.stringify(data));
         expect(typeof (data.status)).assertEqual("number");
+		expect(typeof (data.timestamp)).assertEqual("number");
     }
 
     function callback2(data) {
         console.info("callback2" + JSON.stringify(data));
         expect(typeof (data.status)).assertEqual("number");
+		expect(typeof (data.timestamp)).assertEqual("number");
     }
 
     beforeAll(function () {
@@ -232,7 +234,11 @@ describe("SensorJsTest_sensor_7", function () {
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback2);
         setTimeout(() => {
             console.info('----------------------Hall_SensorJsTest010 off in---------------------------');
-            sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback);
+            try {
+			sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback);
+			} catch (error) {
+            console.info("Hall_SensorJsTest010 error:" + error);
+			}
             console.info('----------------------Hall_SensorJsTest010 off end---------------------------');
         }, 500);
         setTimeout(() => {
@@ -271,7 +277,11 @@ describe("SensorJsTest_sensor_7", function () {
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback2, { 'interval': 100000000 });
         setTimeout(() => {
             console.info('----------------------Hall_SensorJsTest012 off in---------------------------');
-            sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback);
+            try {
+			sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback);
+			} catch (error) {
+            console.info("Hall_SensorJsTest012 error:" + error);
+			}
             console.info('----------------------Hall_SensorJsTest012 off end---------------------------');
         }, 500);
         setTimeout(() => {

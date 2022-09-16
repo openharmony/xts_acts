@@ -73,7 +73,7 @@ export default class DataShareExtAbility extends Extension {
         console.log('[DataShareServer]: [insert]  value = ' + value);
         console.log('[DataShareServer]: [insert]  value = ' + JSON.stringify(value));
         await rdbStore.insert(TBL_NAME, value, function (err, ret) {
-            console.log('zhoujun: [DataShareTest] <<Provider>> [insert] callback ret:' + ret);
+            console.log('[DataShareServer]: <<Provider>> [insert] callback ret:' + ret);
             if (callback != undefined) {
                 callback(err, ret);
             }
@@ -84,7 +84,7 @@ export default class DataShareExtAbility extends Extension {
     async update(uri, predicates, value, callback) {
         console.log('[DataShareServer]: [update] enter');
         if (predicates == null || predicates == undefined) {
-            console.error('zhoujun: [DataShareTest] <<Provider>> [update] invalid predicates');
+            console.error('[DataShareServer]: <<Provider>> [update] invalid predicates');
             return;
         }
         console.log('[DataShareServer]: [update]  values = ' + value);
@@ -165,7 +165,7 @@ export default class DataShareExtAbility extends Extension {
     async batchInsert(uri: string, valueBuckets, callback) {
         console.log('[DataShareServer]: [batchInsert] enter');
         if (valueBuckets == null || valueBuckets.length == undefined) {
-            console.error('zhoujun: [DataShareTest] <<Provider>> [batchInsert] invalid valueBuckets');
+            console.error('[DataShareServer]: <<Provider>> [batchInsert] invalid valueBuckets');
             return;
         }
         console.log('[DataShareServer]: [batchInsert] valueBuckets.length:' + valueBuckets.length);
@@ -184,7 +184,7 @@ export default class DataShareExtAbility extends Extension {
 
     async normalizeUri(uri: string, callback) {
         console.log('[DataShareServer]: [normalizeUri] enter');
-        let ret = "normalize+" + uri;
+        let ret = uri;
         let err = {"code":0};
         await callback(err, ret);
         console.log('[DataShareServer]: [normalizeUri] leave, ret:' + ret);
@@ -192,7 +192,7 @@ export default class DataShareExtAbility extends Extension {
 
     async denormalizeUri(uri: string, callback) {
         console.log('[DataShareServer]: [denormalizeUri] enter');
-        let ret = "denormalize+" + uri;
+        let ret = uri;
         let err = {"code":0};
         await callback(err, ret);
         console.log('[DataShareServer]: [denormalizeUri] leave, ret:' + ret);

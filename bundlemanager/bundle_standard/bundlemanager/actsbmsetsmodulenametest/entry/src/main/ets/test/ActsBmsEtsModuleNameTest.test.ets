@@ -66,335 +66,335 @@ export default function actsBmsJsModuleNameTest() {
         });
 
         /*
-        * @tc.number: GetabilityInfo_0100
-        * @tc.name: test getAbilityInfo
+        * @tc.number: SUB_BMS_APPINFO_QUERYMODULE_0030
+        * @tc.name: getAbilityInfoEmptyModule
         * @tc.desc: test empty moduleName
         */
-        it('GetabilityInfo_0100', 0, async function (done) {
+        it('getAbilityInfoEmptyModule', 0, async function (done) {
             await bundle.getAbilityInfo(BUNDLE_NAME, MODULE_NAME1, ABILITY_NAME)
                 .then(data => {
                     expect(data).assertFail();
                 }).catch((err) => {
-                    console.error('[GetabilityInfo_0100]Operation failed. Err: ' + JSON.stringify(err));
+                    console.error('[getAbilityInfoEmptyModule]Operation failed. Err: ' + JSON.stringify(err));
                     expect(err).assertEqual(INVALID_CODE);
                 });
             bundle.getAbilityInfo(BUNDLE_NAME, MODULE_NAME1, ABILITY_NAME, (err, data) => {
                 expect(err).assertEqual(INVALID_CODE);
                 if (err) {
-                    console.error('[GetabilityInfo_0100]Operation failed. Err: ' + JSON.stringify(err));
+                    console.error('[getAbilityInfoEmptyModule]Operation failed. Err: ' + JSON.stringify(err));
                 }
-                console.info("'[GetabilityInfo_0100]Return data: " + JSON.stringify(data));
+                console.info("'[getAbilityInfoEmptyModule]Return data: " + JSON.stringify(data));
                 done();
             });
         });
 
         /*
-        * @tc.number: GetabilityInfo_0200
-        * @tc.name: test getAbilityInfo
+        * @tc.number: SUB_BMS_APPINFO_QUERYMODULE_0020
+        * @tc.name: getAbilityInfoInvalidModule
         * @tc.desc: test non-existent moduleName
         */
-        it('GetabilityInfo_0200', 0, async function (done) {
+        it('getAbilityInfoInvalidModule', 0, async function (done) {
             await bundle.getAbilityInfo(BUNDLE_NAME, MODULE_NAME2, ABILITY_NAME)
                 .then(data => {
                     expect(data).assertFail();
                 }).catch((err) => {
-                    console.error('[GetabilityInfo_0200]Operation failed. Err: ' + JSON.stringify(err));
+                    console.error('[getAbilityInfoInvalidModule]Operation failed. Err: ' + JSON.stringify(err));
                     expect(err).assertEqual(INVALID_CODE);
                 });
             bundle.getAbilityInfo(BUNDLE_NAME, MODULE_NAME2, ABILITY_NAME, (err, data) => {
                 expect(err).assertEqual(INVALID_CODE);
                 if (err) {
-                    console.error('[GetabilityInfo_0200]Operation failed. Err: ' + JSON.stringify(err));
+                    console.error('[getAbilityInfoInvalidModule]Operation failed. Err: ' + JSON.stringify(err));
                 }
-                console.info("'[GetabilityInfo_0200]Return data : " + JSON.stringify(data));
+                console.info("'[getAbilityInfoInvalidModule]Return data : " + JSON.stringify(data));
                 done();
             });
         });
 
         /*
-        * @tc.number: GetabilityInfo_0300
-        * @tc.name: test getAbilityInfo
+        * @tc.number: SUB_BMS_APPINFO_QUERYMODULE_0018
+        * @tc.name: getAbilityInfoHasModule
         * @tc.desc: test existent moduleName
         */
-        it('GetabilityInfo_0300', 0, async function (done) {
+        it('getAbilityInfoHasModule', 0, async function (done) {
             await bundle.getAbilityInfo(BUNDLE_NAME, MODULE_NAME3, ABILITY_NAME)
                 .then(data => {
-                    console.info('[GetabilityInfo_0300]Return data successful: ' + JSON.stringify(data));
+                    console.info('[getAbilityInfoHasModule]Return data successful: ' + JSON.stringify(data));
                     checkDataInfo(data);
                 }).catch((err) => {
-                    console.error('[GetabilityInfo_0300]Operation . Err: ' + JSON.stringify(err));
+                    console.error('[getAbilityInfoHasModule]Operation . Err: ' + JSON.stringify(err));
                     expect(err).assertFail();
                 });
             bundle.getAbilityInfo(BUNDLE_NAME, MODULE_NAME3, ABILITY_NAME, (err, data) => {
                 checkDataInfo(data);
                 expect(err).assertEqual(SUCCESS_CODE);
                 if (err) {
-                    console.error('[GetabilityInfo_0300]Operation failed. Err: ' + JSON.stringify(err));
+                    console.error('[getAbilityInfoHasModule]Operation failed. Err: ' + JSON.stringify(err));
                 }
-                console.info("'[GetabilityInfo_0300]Return data: " + JSON.stringify(data));
+                console.info("'[getAbilityInfoHasModule]Return data: " + JSON.stringify(data));
                 done();
             });
         });
 
         /*
-        * @tc.number: GetAbilityIcon_0100
-        * @tc.name: test getAbilityIcon
+        * @tc.number: SUB_BMS_APPINFO_QUERYMODULE_0031
+        * @tc.name: getAbilityIconEmptyModule
         * @tc.desc: test empty moduleName
         */
-        it('GetAbilityIcon_0100', 0, async function (done) {
+        it('getAbilityIconEmptyModule', 0, async function (done) {
             await bundle.getAbilityIcon(BUNDLE_NAME, MODULE_NAME1, ABILITY_NAME)
                 .then(data => {
                     expect(data).assertFail();
                 }).catch((err) => {
-                    console.error('[GetAbilityIcon_0100]Operation failed. Err: ' + JSON.stringify(err));
+                    console.error('[getAbilityIconEmptyModule]Operation failed. Err: ' + JSON.stringify(err));
                     expect(err).assertEqual(INVALID_CODE);
                 });
             bundle.getAbilityIcon(BUNDLE_NAME, MODULE_NAME1, ABILITY_NAME, (err, data) => {
                 expect(err).assertEqual(INVALID_CODE);
                 if (err) {
-                    console.error('[GetAbilityIcon_0100]Operation failed. Err: ' + JSON.stringify(err));
+                    console.error('[getAbilityIconEmptyModule]Operation failed. Err: ' + JSON.stringify(err));
                 }
-                console.info("'[GetAbilityIcon_0100]Return data: " + JSON.stringify(data));
+                console.info("'[getAbilityIconEmptyModule]Return data: " + JSON.stringify(data));
                 done();
             });
         });
 
         /*
-        * @tc.number: GetAbilityIcon_0200
-        * @tc.name: test getAbilityIcon
+        * @tc.number: SUB_BMS_APPINFO_QUERYMODULE_0028
+        * @tc.name: getAbilityIconInvalidModule
         * @tc.desc: test non-existent moduleName
         */
-        it('GetAbilityIcon_0200', 0, async function (done) {
+        it('getAbilityIconInvalidModule', 0, async function (done) {
             await bundle.getAbilityIcon(BUNDLE_NAME, MODULE_NAME2, ABILITY_NAME)
                 .then(data => {
                     expect(data).assertFail();
                 }).catch((err) => {
-                    console.error('[GetAbilityIcon_0200]Operation successful. Err: ' + JSON.stringify(err));
+                    console.error('[getAbilityIconInvalidModule]Operation successful. Err: ' + JSON.stringify(err));
                     expect(err).assertEqual(INVALID_CODE);
                 });
             bundle.getAbilityIcon(BUNDLE_NAME, MODULE_NAME2, ABILITY_NAME, (err, data) => {
                 expect(err).assertEqual(INVALID_CODE);
                 if (err) {
-                    console.error('[GetAbilityIcon_0200]Operation failed. Err: ' + JSON.stringify(err));
+                    console.error('[getAbilityIconInvalidModule]Operation failed. Err: ' + JSON.stringify(err));
                 }
-                console.info("'[GetAbilityIcon_0200]Return data: " + JSON.stringify(data));
+                console.info("'[getAbilityIconInvalidModule]Return data: " + JSON.stringify(data));
                 done();
             });
         });
 
         /*
-        * @tc.number: GetAbilityIcon_0300
-        * @tc.name: test getAbilityIcon
+        * @tc.number: SUB_BMS_APPINFO_QUERYMODULE_0026
+        * @tc.name: getAbilityIconHasModule
         * @tc.desc: test existent moduleName
         */
-        it('GetAbilityIcon_0300', 0, async function (done) {
+        it('getAbilityIconHasModule', 0, async function (done) {
             await bundle.getAbilityIcon(BUNDLE_NAME, MODULE_NAME3, ABILITY_NAME)
                 .then(data => {
-                    console.info('[GetAbilityIcon_0300]Return data successful: ' + JSON.stringify(data));
+                    console.info('[getAbilityIconHasModule]Return data successful: ' + JSON.stringify(data));
                     expect(data.getBytesNumberPerRow()).assertLarger(0);
                 }).catch((err) => {
-                    console.error('[GetAbilityIcon_0300]Operation failed. Err: ' + JSON.stringify(err));
+                    console.error('[getAbilityIconHasModule]Operation failed. Err: ' + JSON.stringify(err));
                     expect(err).assertFail();
                 });
             bundle.getAbilityIcon(BUNDLE_NAME, MODULE_NAME3, ABILITY_NAME, (err, data) => {
                 expect(err).assertEqual(SUCCESS_CODE);
                 expect(data.getBytesNumberPerRow()).assertLarger(0);
                 if (err) {
-                    console.error('[GetAbilityIcon_0300]Operation failed. Err: ' + JSON.stringify(err));
+                    console.error('[getAbilityIconHasModule]Operation failed. Err: ' + JSON.stringify(err));
                 }
-                console.info("'[GetAbilityIcon_0300]Return data: " + JSON.stringify(data));
+                console.info("'[getAbilityIconHasModule]Return data: " + JSON.stringify(data));
                 done();
             });
         });
 
         /*
-        * @tc.number: GetAbilityLabel_0100
-        * @tc.name: test getAbilityLabel
+        * @tc.number: SUB_BMS_APPINFO_QUERYMODULE_0032
+        * @tc.name: getAbilityLabelEmptyModule
         * @tc.desc: test empty moduleName
         */
-        it('GetAbilityLabel_0100', 0, async function (done) {
+        it('getAbilityLabelEmptyModule', 0, async function (done) {
             await bundle.getAbilityLabel(BUNDLE_NAME, MODULE_NAME1, ABILITY_NAME)
                 .then(data => {
                     expect(data).assertFail();
                 }).catch((err) => {
-                    console.error('[GetAbilityLabel_0100]Operation failed. Err: ' + JSON.stringify(err));
+                    console.error('[getAbilityLabelEmptyModule]Operation failed. Err: ' + JSON.stringify(err));
                     expect(err).assertEqual(INVALID_CODE);
                 });
             bundle.getAbilityLabel(BUNDLE_NAME, MODULE_NAME1, ABILITY_NAME, (err, data) => {
                 expect(err).assertEqual(INVALID_CODE);
                 if (err) {
-                    console.error('[GetAbilityLabel_0100]Operation failed. Err: ' + JSON.stringify(err));
+                    console.error('[getAbilityLabelEmptyModule]Operation failed. Err: ' + JSON.stringify(err));
                 }
-                console.info("'[GetAbilityLabel_0100]Return data: " + JSON.stringify(data));
+                console.info("'[getAbilityLabelEmptyModule]Return data: " + JSON.stringify(data));
                 done();
             });
         });
 
         /*
-        * @tc.number: GetAbilityLabel_0200
-        * @tc.name: test getAbilityLabel
+        * @tc.number: SUB_BMS_APPINFO_QUERYMODULE_0024
+        * @tc.name: getAbilityLabelInvalidModule
         * @tc.desc: test non-existent moduleName
         */
-        it('GetAbilityLabel_0200', 0, async function (done) {
+        it('getAbilityLabelInvalidModule', 0, async function (done) {
             await bundle.getAbilityLabel(BUNDLE_NAME, MODULE_NAME2, ABILITY_NAME)
                 .then(data => {
                     expect(data).assertFail();
                 }).catch((err) => {
-                    console.error('[GetAbilityLabel_0200]Operation . Err: ' + JSON.stringify(err));
+                    console.error('[getAbilityLabelInvalidModule]Operation . Err: ' + JSON.stringify(err));
                     expect(err).assertEqual(INVALID_CODE);
                 });
             bundle.getAbilityLabel(BUNDLE_NAME, MODULE_NAME2, ABILITY_NAME, (err, data) => {
                 expect(err).assertEqual(INVALID_CODE);
                 if (err) {
-                    console.error('[GetAbilityLabel_0200]Operation failed. Err: ' + JSON.stringify(err));
+                    console.error('[getAbilityLabelInvalidModule]Operation failed. Err: ' + JSON.stringify(err));
                 }
-                console.info("'[GetAbilityLabel_0200]Return data: " + JSON.stringify(data));
+                console.info("'[getAbilityLabelInvalidModule]Return data: " + JSON.stringify(data));
                 done();
             });
         });
 
         /*
-        * @tc.number: GetAbilityLabel_0300
-        * @tc.name: test getAbilityLabel
+        * @tc.number: SUB_BMS_APPINFO_QUERYMODULE_0022
+        * @tc.name: getAbilityLabelHasModule
         * @tc.desc: test existent moduleName
         */
-        it('GetAbilityLabel_0300', 0, async function (done) {
+        it('getAbilityLabelHasModule', 0, async function (done) {
             await bundle.getAbilityLabel(BUNDLE_NAME, MODULE_NAME3, ABILITY_NAME)
                 .then(data => {
-                    console.info('[GetAbilityLabel_0300]Return data successful: ' + JSON.stringify(data));
+                    console.info('[getAbilityLabelHasModule]Return data successful: ' + JSON.stringify(data));
                     expect(data).assertEqual("bmsfirstright");
                 }).catch((err) => {
-                    console.error('[GetAbilityLabel_0300]Operation failed. Err: ' + JSON.stringify(err));
+                    console.error('[getAbilityLabelHasModule]Operation failed. Err: ' + JSON.stringify(err));
                     expect(err).assertFail();
                 });
             bundle.getAbilityLabel(BUNDLE_NAME, MODULE_NAME3, ABILITY_NAME, (err, data) => {
                 expect(err).assertNull();
                 if (err) {
-                    console.error('[GetAbilityLabel_0300]Operation failed. Err: ' + JSON.stringify(err));
+                    console.error('[getAbilityLabelHasModule]Operation failed. Err: ' + JSON.stringify(err));
                 }
                 expect(data).assertEqual("bmsfirstright");
-                console.info("'[GetAbilityLabel_0300]Return data: " + JSON.stringify(data));
+                console.info("'[getAbilityLabelHasModule]Return data: " + JSON.stringify(data));
                 done();
             });
         });
 
         /*
-        * @tc.number: IsAbilityEnabled_0100
-        * @tc.name: test isAbilityEnabled
+        * @tc.number: SUB_BMS_APPINFO_QUERYMODULE_0010
+        * @tc.name: isAbilityEnabledEmptyModule
         * @tc.desc: test empty moduleName
         */
-        it('IsAbilityEnabled_0100', 0, async function (done) {
+        it('isAbilityEnabledEmptyModule', 0, async function (done) {
             let abilityInfo = generateAbilityInfoForTest(ABILITY_INFO_ONE.bundleName, ABILITY_INFO_ONE.name, ABILITY_INFO_ONE.moduleName);
             await bundle.isAbilityEnabled(abilityInfo)
                 .then(data => {
-                    console.info('[IsAbilityEnabled_0100]Return data successful: ' + JSON.stringify(data));
+                    console.info('[isAbilityEnabledEmptyModule]Return data successful: ' + JSON.stringify(data));
                     expect(data).assertTrue();
                 }).catch((err) => {
-                    console.error('[IsAbilityEnabled_0100]Operation failed. Err: ' + JSON.stringify(err));
+                    console.error('[isAbilityEnabledEmptyModule]Operation failed. Err: ' + JSON.stringify(err));
                     expect(err).assertFail();
                 });
             bundle.isAbilityEnabled(abilityInfo, (err, data) => {
                 expect(err).assertEqual(SUCCESS_CODE);
                 if (err) {
-                    console.error('[IsAbilityEnabled_0100]Operation failed. Err: ' + JSON.stringify(err));
+                    console.error('[isAbilityEnabledEmptyModule]Operation failed. Err: ' + JSON.stringify(err));
                 }
                 expect(data).assertTrue();
-                console.info("'[IsAbilityEnabled_0100]Return data: " + JSON.stringify(data));
+                console.info("'[isAbilityEnabledEmptyModule]Return data: " + JSON.stringify(data));
                 done();
             });
         });
 
         /*
-        * @tc.number: IsAbilityEnabled_0200
-        * @tc.name: test isAbilityEnabled
+        * @tc.number: SUB_BMS_APPINFO_QUERYMODULE_0011
+        * @tc.name: isAbilityEnabledInvalidModule
         * @tc.desc: test non-existent moduleName
         */
-        it('IsAbilityEnabled_0200', 0, async function (done) {
+        it('isAbilityEnabledInvalidModule', 0, async function (done) {
             let abilityInfo = generateAbilityInfoForTest(ABILITY_INFO_TWO.bundleName, ABILITY_INFO_TWO.name, ABILITY_INFO_TWO.moduleName);
             await bundle.isAbilityEnabled(abilityInfo)
                 .then(data => {
                     expect(data).assertEqual(false);
                 }).catch((err) => {
-                    console.error('[IsAbilityEnabled_0200]Operation failed. Err: ' + JSON.stringify(err));
+                    console.error('[isAbilityEnabledInvalidModule]Operation failed. Err: ' + JSON.stringify(err));
                     expect(err).assertFail();
                 });
             bundle.isAbilityEnabled(abilityInfo, (err, data) => {
                 expect(data).assertEqual(false);
                 if (err) {
-                    console.error('[IsAbilityEnabled_0200]Operation failed. Err: ' + JSON.stringify(err));
+                    console.error('[isAbilityEnabledInvalidModule]Operation failed. Err: ' + JSON.stringify(err));
                 }
                 expect(err).assertEqual(SUCCESS_CODE);
-                console.info("'[IsAbilityEnabled_0200]Return data: " + JSON.stringify(data));
+                console.info("'[isAbilityEnabledInvalidModule]Return data: " + JSON.stringify(data));
                 done();
             });
         });
 
         /*
-        * @tc.number: IsAbilityEnabled_0300
-        * @tc.name: test isAbilityEnabled
+        * @tc.number: SUB_BMS_APPINFO_QUERYMODULE_0008
+        * @tc.name: isAbilityEnabledHasModule
         * @tc.desc: test existent moduleName
         */
-        it('IsAbilityEnabled_0300', 0, async function (done) {
+        it('isAbilityEnabledHasModule', 0, async function (done) {
             let abilityInfo = generateAbilityInfoForTest(ABILITY_INFO_THREE.bundleName, ABILITY_INFO_THREE.name, ABILITY_INFO_THREE.moduleName);
             await bundle.isAbilityEnabled(abilityInfo)
                 .then(data => {
-                    console.info('[IsAbilityEnabled_0300]Return data successful: ' + JSON.stringify(data));
+                    console.info('[isAbilityEnabledHasModule]Return data successful: ' + JSON.stringify(data));
                     expect(data).assertTrue();
                 }).catch((err) => {
-                    console.error('[IsAbilityEnabled_0300]Operation failed. Err: ' + JSON.stringify(err));
+                    console.error('[isAbilityEnabledHasModule]Operation failed. Err: ' + JSON.stringify(err));
                     expect(err).assertFail();
                 });
             bundle.isAbilityEnabled(abilityInfo, (err, data) => {
                 expect(err).assertEqual(SUCCESS_CODE);
                 if (err) {
-                    console.error('[IsAbilityEnabled_0300]Operation failed. Err: ' + JSON.stringify(err));
+                    console.error('[isAbilityEnabledHasModule]Operation failed. Err: ' + JSON.stringify(err));
                 }
                 expect(data).assertTrue();
-                console.info("'[IsAbilityEnabled_0300]Return data: " + JSON.stringify(data));
+                console.info("'[isAbilityEnabledHasModule]Return data: " + JSON.stringify(data));
                 done();
             });
         });
 
         /*
-        * @tc.number: IsAbilityEnabled_0400
-        * @tc.name: test isAbilityEnabled
+        * @tc.number: SUB_BMS_APPINFO_QUERYMODULE_0012
+        * @tc.name: isAbilityEnabledUndefinedModule
         * @tc.desc: test empty moduleName
         */
-        it('IsAbilityEnabled_0400', 0, async function (done) {
+        it('isAbilityEnabledUndefinedModule', 0, async function (done) {
             let abilityInfo = generateAbilityInfoForTest(ABILITY_INFO_FOUR.bundleName, ABILITY_INFO_FOUR.name, ABILITY_INFO_FOUR.moduleName);
             await bundle.isAbilityEnabled(abilityInfo)
                 .then(data => {
                     expect(data).assertFail();
                 }).catch((err) => {
-                    console.error('[IsAbilityEnabled_0400]Operation failed. Err: ' + JSON.stringify(err));
+                    console.error('[isAbilityEnabledUndefinedModule]Operation failed. Err: ' + JSON.stringify(err));
                     expect(err).assertEqual(INVALID_PARAM);
                 });
             bundle.isAbilityEnabled(abilityInfo, (err, data) => {
                 expect(data).assertEqual(undefined);
                 if (err) {
-                    console.error('[IsAbilityEnabled_0400]Operation failed. Err: ' + JSON.stringify(err));
+                    console.error('[isAbilityEnabledUndefinedModule]Operation failed. Err: ' + JSON.stringify(err));
                 }
                 expect(err).assertEqual(INVALID_PARAM);
-                console.info("'[IsAbilityEnabled_0400]Return data: " + JSON.stringify(data));
+                console.info("'[isAbilityEnabledUndefinedModule]Return data: " + JSON.stringify(data));
                 done();
             });
         });
 
         /*
-        * @tc.number: QueryAbilityByWant_0100
-        * @tc.name: test queryAbilityByWant
+        * @tc.number: SUB_BMS_APPINFO_QUERYMODULE_0033
+        * @tc.name: queryAbilityByWantEmptyModule
         * @tc.desc: test empty moduleName
         */
-        it('QueryAbilityByWant_0100', 0, async function (done) {
+        it('queryAbilityByWantEmptyModule', 0, async function (done) {
             await bundle.queryAbilityByWant({
                 bundleName: BUNDLE_NAME,
                 abilityName: ABILITY_NAME,
                 moduleName: MODULE_NAME1
             }, DEFAULT_FLAG, userId).then(data => {
                 checkDataInfo(data[0]);
-                console.info("'[QueryAbilityByWant_0100]Return data : " + JSON.stringify(data));
+                console.info("'[queryAbilityByWantEmptyModule]Return data : " + JSON.stringify(data));
             }).catch(err => {
-                console.info("[QueryAbilityByWant_0100]Operation failed. Err: " + JSON.stringify(err));
+                console.info("[queryAbilityByWantEmptyModule]Operation failed. Err: " + JSON.stringify(err));
                 expect(err).assertFail();
             });
             bundle.queryAbilityByWant({
@@ -404,20 +404,20 @@ export default function actsBmsJsModuleNameTest() {
             }, DEFAULT_FLAG, userId, (err, data) => {
                 expect(err).assertEqual(SUCCESS_CODE);
                 if (err) {
-                    console.error('[QueryAbilityByWant_0100]Operation failed. Err: ' + JSON.stringify(err));
+                    console.error('[queryAbilityByWantEmptyModule]Operation failed. Err: ' + JSON.stringify(err));
                 }
                 checkDataInfo(data[0]);
-                console.info("'[QueryAbilityByWant_0100]Return data : " + JSON.stringify(data));
+                console.info("'[queryAbilityByWantEmptyModule]Return data : " + JSON.stringify(data));
                 done();
             });
         });
 
         /*
-        * @tc.number: QueryAbilityByWant_0200
-        * @tc.name: test queryAbilityByWant
+        * @tc.number: SUB_BMS_APPINFO_QUERYMODULE_0002
+        * @tc.name: queryAbilityByWantInvalidModule
         * @tc.desc: test non-existent moduleName
         */
-        it('QueryAbilityByWant_0200', 0, async function (done) {
+        it('queryAbilityByWantInvalidModule', 0, async function (done) {
             await bundle.queryAbilityByWant({
                 bundleName: BUNDLE_NAME,
                 abilityName: ABILITY_NAME,
@@ -425,7 +425,7 @@ export default function actsBmsJsModuleNameTest() {
             }, DEFAULT_FLAG, userId).then(data => {
                 expect(data).assertFail();
             }).catch(err => {
-                console.error('[QueryAbilityByWant_0200]Operation failed. Err: ' + JSON.stringify(err));
+                console.error('[queryAbilityByWantInvalidModule]Operation failed. Err: ' + JSON.stringify(err));
                 expect(err).assertEqual(INVALID_CODE);
             });
             bundle.queryAbilityByWant({
@@ -433,29 +433,29 @@ export default function actsBmsJsModuleNameTest() {
                 abilityName: ABILITY_NAME,
                 moduleName: MODULE_NAME2
             }, DEFAULT_FLAG, userId, (err, data) => {
-                console.info("'[QueryAbilityByWant_0200]Return data " + JSON.stringify(data));
+                console.info("'[queryAbilityByWantInvalidModule]Return data " + JSON.stringify(data));
                 expect(data).assertEqual("QueryAbilityInfos failed");
-                console.error('[QueryAbilityByWant_0200]Operation failed. Err: ' + JSON.stringify(err));
+                console.error('[queryAbilityByWantInvalidModule]Operation failed. Err: ' + JSON.stringify(err));
                 expect(err).assertEqual(INVALID_CODE);
                 done();
             });
         });
 
         /*
-        * @tc.number: QueryAbilityByWant_0300
-        * @tc.name: test queryAbilityByWant
+        * @tc.number: SUB_BMS_APPINFO_QUERYMODULE_0001
+        * @tc.name: queryAbilityByWantHasModule
         * @tc.desc: test existent moduleName
         */
-        it('QueryAbilityByWant_0300', 0, async function (done) {
+        it('queryAbilityByWantHasModule', 0, async function (done) {
             await bundle.queryAbilityByWant({
                 bundleName: BUNDLE_NAME,
                 abilityName: ABILITY_NAME,
                 moduleName: MODULE_NAME3
             }, DEFAULT_FLAG, userId).then(data => {
                 checkDataInfo(data[0]);
-                console.info("'[QueryAbilityByWant_0300]Return data : " + JSON.stringify(data));
+                console.info("'[queryAbilityByWantHasModule]Return data : " + JSON.stringify(data));
             }).catch(err => {
-                console.info("[QueryAbilityByWant_0300]Operation failed. Err: " + JSON.stringify(err));
+                console.info("[queryAbilityByWantHasModule]Operation failed. Err: " + JSON.stringify(err));
                 expect(err).assertFail();
             });
             bundle.queryAbilityByWant({
@@ -465,10 +465,10 @@ export default function actsBmsJsModuleNameTest() {
             }, DEFAULT_FLAG, userId, (err, data) => {
                 expect(err).assertEqual(SUCCESS_CODE);
                 if (err) {
-                    console.error('[QueryAbilityByWant_0300]Operation failed. Err: ' + JSON.stringify(err));
+                    console.error('[queryAbilityByWantHasModule]Operation failed. Err: ' + JSON.stringify(err));
                 }
                 checkDataInfo(data[0]);
-                console.info("'[QueryAbilityByWant_0300]Return data : " + JSON.stringify(data));
+                console.info("'[queryAbilityByWantHasModule]Return data : " + JSON.stringify(data));
                 done();
             });
         });

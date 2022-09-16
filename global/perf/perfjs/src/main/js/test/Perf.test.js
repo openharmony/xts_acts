@@ -634,7 +634,7 @@ describe('PerfTest', function () {
         let value = 'test';
         let startTime = new Date().getTime();
         for(let i = 0; i < EXETIME; i++){
-            value = I18n.Util.unitConvert({unit: 'hour', measureSystem: 'SI'},
+            value = I18n.I18NUtil.unitConvert({unit: 'hour', measureSystem: 'SI'},
                                         {unit: 'second', measureSystem: 'SI'},
                                         10,
                                         'zh-CN',
@@ -1068,7 +1068,7 @@ describe('PerfTest', function () {
         let value = false;
         let startTime = new Date().getTime();
         for(let i = 0; i < EXETIME; i++){
-            value = I18n.Character.isDigit('abc');
+            value = I18n.Unicode.isDigit('abc');
         }
         let exeTime = new Date().getTime() - startTime;
         let avgTime = exeTime/EXETIME;
@@ -1094,7 +1094,7 @@ describe('PerfTest', function () {
         let value = false;
         let startTime = new Date().getTime();
         for(let i = 0; i < EXETIME; i++){
-            value = I18n.Character.isSpaceChar('abc');
+            value = I18n.Unicode.isSpaceChar('abc');
         }
         let exeTime = new Date().getTime() - startTime;
         let avgTime = exeTime/EXETIME;
@@ -1121,7 +1121,7 @@ describe('PerfTest', function () {
         let value = false;
         let startTime = new Date().getTime();
         for(let i = 0; i < EXETIME; i++){
-            value = I18n.Character.isWhitespace('abc');
+            value = I18n.Unicode.isWhitespace('abc');
         }
         let exeTime = new Date().getTime() - startTime;
         let avgTime = exeTime/EXETIME;
@@ -1147,7 +1147,7 @@ describe('PerfTest', function () {
         let value = false;
         let startTime = new Date().getTime();
         for(let i = 0; i < EXETIME; i++){
-            value = I18n.Character.isRTL('abc');
+            value = I18n.Unicode.isRTL('abc');
         }
         let exeTime = new Date().getTime() - startTime;
         let avgTime = exeTime/EXETIME;
@@ -1173,7 +1173,7 @@ describe('PerfTest', function () {
         let value = false;
         let startTime = new Date().getTime();
         for(let i = 0; i < EXETIME; i++){
-            value = I18n.Character.isIdeograph('abc');
+            value = I18n.Unicode.isIdeograph('abc');
         }
         let exeTime = new Date().getTime() - startTime;
         let avgTime = exeTime/EXETIME;
@@ -1199,7 +1199,7 @@ describe('PerfTest', function () {
         let value = false;
         let startTime = new Date().getTime();
         for(let i = 0; i < EXETIME; i++){
-            value = I18n.Character.isLetter('abc');
+            value = I18n.Unicode.isLetter('abc');
         }
         let exeTime = new Date().getTime() - startTime;
         let avgTime = exeTime/EXETIME;
@@ -1225,7 +1225,7 @@ describe('PerfTest', function () {
         let value = false;
         let startTime = new Date().getTime();
         for(let i = 0; i < EXETIME; i++){
-            value = I18n.Character.isLowerCase('abc');
+            value = I18n.Unicode.isLowerCase('abc');
         }
         let exeTime = new Date().getTime() - startTime;
         let avgTime = exeTime/EXETIME;
@@ -1251,7 +1251,7 @@ describe('PerfTest', function () {
         let value = false;
         let startTime = new Date().getTime();
         for(let i = 0; i < EXETIME; i++){
-            value = I18n.Character.isUpperCase('ABC');
+            value = I18n.Unicode.isUpperCase('ABC');
         }
         let exeTime = new Date().getTime() - startTime;
         let avgTime = exeTime/EXETIME;
@@ -1277,7 +1277,7 @@ describe('PerfTest', function () {
         let value = 'test';
         let startTime = new Date().getTime();
         for(let i = 0; i < EXETIME; i++){
-            value = I18n.Character.getType('a');
+            value = I18n.Unicode.getType('a');
         }
         let exeTime = new Date().getTime() - startTime;
         let avgTime = exeTime/EXETIME;
@@ -2101,7 +2101,7 @@ describe('PerfTest', function () {
         let value = 'test';
         let startTime = new Date().getTime();
         for(let i = 0; i < EXETIME; i++){
-            value = I18n.Util.getDateOrder('zh');
+            value = I18n.I18NUtil.getDateOrder('zh');
         }
         let exeTime = new Date().getTime() - startTime;
         let avgTime = exeTime/EXETIME;

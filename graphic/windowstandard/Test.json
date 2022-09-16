@@ -5,7 +5,8 @@
         "test-timeout": "800000",
         "shell-timeout": "800000",
         "bundle-name": "com.test.window",
-        "package-name": "com.test.window"
+        "package-name": "com.test.window",
+        "testcase-timeout": "300000"
     },
     "kits": [
         {

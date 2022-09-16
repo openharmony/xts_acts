@@ -1332,7 +1332,12 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       })
       console.log(msgStr + 'screenManager.getAllScreen' + JSON.stringify(screens));
       expect(!!screens).assertTrue();
-      let dpiItem = [-80, 80, 1000, 160, 0, 320, 188.88, 0, 640, 300];
+      let currentDeviceDefault = await display.getDefaultDisplay().catch(err => {
+        console.log(msgStr + 'screen.setDensityDpi display.getDefaultDisplay failed current device');
+      });
+      console.log(msgStr + 'screen.setDensityDpi display.getDefaultDisplay current device' + JSON.stringify(currentDeviceDefault));
+      let currentDeviceDefaultDpi = parseInt(currentDeviceDefault.densityDPI)
+      let dpiItem = [-80, 80, 1000, 160, 0, 320, 188.88, 0, 640, 300,currentDeviceDefaultDpi];
       for (let i = 0;i < dpiItem.length; i++) {
         await sleep(1000);
         await screens[0].setDensityDpi(dpiItem[i]).then(async () => {

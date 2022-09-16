@@ -381,16 +381,16 @@ describe("VibratorJsTest_misc_2", function () {
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0150
      */
-    it("VibratorJsTest015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        vibrator.vibrate("").then(() => {
-            console.log("VibratorJsTest015  vibrate error");
-            expect(false).assertTrue();
+	   it("VibratorJsTest015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        vibrator.stop("preset").then(() => {
+            console.log("VibratorJsTest015  off success");
+            expect(true).assertTrue();
             setTimeout(() => {
                 done();
             }, 500);
         }, (error) => {
-            expect(true).assertTrue();
-            console.log("VibratorJsTest015  vibrate success");
+            expect(false).assertTrue();
+            console.log("VibratorJsTest015  off error");
             setTimeout(() => {
                 done();
             }, 500);
@@ -424,15 +424,15 @@ describe("VibratorJsTest_misc_2", function () {
      * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0170
      */
     it("VibratorJsTest017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        vibrator.stop("preset").then(() => {
-            console.log("VibratorJsTest017  off success");
-            expect(true).assertTrue();
+        vibrator.vibrate("").then(() => {
+            console.log("VibratorJsTest017  vibrate error");
+            expect(false).assertTrue();
             setTimeout(() => {
                 done();
             }, 500);
         }, (error) => {
-            expect(false).assertTrue();
-            console.log("VibratorJsTest017  off error");
+            expect(true).assertTrue();
+            console.log("VibratorJsTest017  vibrate success");
             setTimeout(() => {
                 done();
             }, 500);

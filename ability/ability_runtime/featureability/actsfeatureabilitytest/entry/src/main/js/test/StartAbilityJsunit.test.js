@@ -23,6 +23,24 @@ const errCode1 = 202;
 export default function startAbilityTest() {
 describe('StartAbilityTest', function () {
   
+    afterEach(async function(done) {
+        let wantInfo = {
+            want: {
+                bundleName: "com.example.actsfeatureabilitytest",
+                abilityName: "com.example.actsfeatureabilitytest.TestAbility"
+            }
+        }
+        await featureAbility.startAbility(wantInfo).then((data) => {
+          console.log("SUB_AA_JsApi_StartAbility startAbility data : " + JSON.stringify(data));
+        }).catch((err) => {
+          console.log("SUB_AA_JsApi_StartAbility startAbility err : " + JSON.stringify(err));
+        })
+        setTimeout(function () {
+            console.log("SUB_AA_JsApi_StartAbility afterEach end");
+            done();
+        }, 500);
+    })
+    
     /*
     * @tc.number: SUB_AA_JsApi_StartAbility_0100
     * @tc.name: testAbility0100.
