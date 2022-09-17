@@ -16,6 +16,10 @@
 import Ability from '@ohos.application.Ability'
 import commonEvent from '@ohos.commonEvent'
 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 export default class MainAbility extends Ability {
     onCreate(want, launchParam) {
         // Ability is creating, initialize resources for this ability
@@ -48,6 +52,7 @@ export default class MainAbility extends Ability {
     }
 
     onForeground() {
+        sleep(1000)
         // Ability has brought to foreground
         console.log("ACTS_NewWant MainAbility onForeground")
         if (globalThis.abilityWant.action == 'startHapC') {
