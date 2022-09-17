@@ -42,7 +42,6 @@
                 "rm -rf /data/local/tmp/libc-test/src/functionalext/supplement/manual/unistd/ttyname",
                 "rm -rf /data/local/tmp/libc-test/src/functionalext/supplement/manual/unistd/tcgetpgrp",
                 "rm -rf /data/local/tmp/libc-test/src/functionalext/supplement/manual/unistd/isatty",
-                "rm -rf /data/local/tmp/libc-test/src/functionalext/supplement/manual/network/gethostbyname2_r",
                 "rm -rf /data/local/tmp/libc-test/src/functionalext/supplement/fcntl/posix_fallocate",
                 "rm -rf /data/local/tmp/libc-test/src/functionalext/supplement/fcntl/posix_fadvise",
                 "rm -rf /data/local/tmp/libc-test/src/functionalext/supplement/passwd/getgrnam_r",
@@ -148,9 +147,9 @@
                 "rm -rf /data/local/tmp/libc-test/src/math/nearbyintl",
                 "rm -rf /data/local/tmp/libc-test/src/math/fenv",
                 "rm -rf /data/local/tmp/libc-test/src/math/asinhl",
-                "rm -rf /data/local/tmp/libc-test/src/functionalext/supplement/manual/network/res_send",
                 "rm -rf /data/local/tmp/libc-test/src/functionalext/info/fatal_message",
-                "rm -rf /data/local/tmp/libc-test/src/functional/utime"
+                "rm -rf /data/local/tmp/libc-test/src/functional/utime",
+                "rm -rf /data/local/tmp/libc-test/src/functionalext/supplement/manual/network"
             ]
         }
     ],
