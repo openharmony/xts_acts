@@ -39,7 +39,7 @@ export default function fileTestCallbackTest(abilityContext) {
         beforeAll(async function () {
             console.info('beforeAll case');
             await getPermission();
-            await checkPresetsAssets(media, 'ActsMediaLibraryFile')
+            await checkPresetsAssets(media, 'ActsMediaLibraryFileTest')
         });
         beforeEach(function () {
             console.info('beforeEach case');

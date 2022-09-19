@@ -35,7 +35,7 @@ export default function filekeyTestPromiseTest(abilityContext) {
 
         beforeAll(async function () {
             console.info('beforeAll case');
-            await checkPresetsAssets(media, 'ActsMediaLibraryFileKey')
+            await checkPresetsAssets(media, 'ActsMediaLibraryFileKeyTest')
         });
         beforeEach(function () {
             console.info('beforeEach case');
