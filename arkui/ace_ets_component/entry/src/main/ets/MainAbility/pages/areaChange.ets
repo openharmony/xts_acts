@@ -54,17 +54,17 @@ struct AreaExample {
           this.onActionCalled = true;
           console.info('onAreaChange current action state is: ' + this.onActionCalled);
           try {
-            var backData = {
+            var backData1 = {
               data: {
                 "ACTION": this.onActionCalled,
               }
             }
-            var backEvent = {
+            var backEvent1 = {
               eventId: 62,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("onAreaChange start to emit action state")
-            events_emitter.emit(backEvent, backData)
+            events_emitter.emit(backEvent1, backData1)
           } catch (err) {
             console.info("onAreaChange emit action state err: " + JSON.stringify(err.message))
           }

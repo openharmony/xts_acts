@@ -164,6 +164,7 @@ export default function swiperJsunit() {
       let callback = (indexEvent) => {
         console.info("swiperTest_0800 get state result is: " + JSON.stringify(indexEvent));
         expect(indexEvent.data.ACTION).assertEqual(true);
+        done();
       }
       let indexEvent = {
         eventId: 205,
@@ -177,7 +178,6 @@ export default function swiperJsunit() {
       console.info("swiperTest_0800 click result is: " + JSON.stringify(sendEventByKey('button1', 10, "")));
       await Utils.sleep(1000);
       console.info('swiperTest_0800 END');
-      done();
     });
 
     it('swiperTest_0900', 0, async function (done) {
@@ -186,6 +186,7 @@ export default function swiperJsunit() {
       let callback = (indexEvent) => {
         console.info("swiperTest_0900 get state result is: " + JSON.stringify(indexEvent));
         expect(indexEvent.data.ACTION).assertEqual(true);
+        done();
       }
       let indexEvent = {
         eventId: 206,
@@ -199,7 +200,6 @@ export default function swiperJsunit() {
       console.info("swiperTest_0900 click result is: " + JSON.stringify(sendEventByKey('button2', 10, "")));
       await Utils.sleep(1000);
       console.info('swiperTest_0900 END');
-      done();
     });
 
     it('swiperTest_1000', 0, async function (done) {
@@ -208,6 +208,7 @@ export default function swiperJsunit() {
       let callbackOne = (indexEventOne) => {
         console.info("swiperTest_1000 get state result is: " + JSON.stringify(indexEventOne));
         expect(indexEventOne.data.ACTION).assertEqual(true);
+        done();
       }
       let indexEventOne = {
         eventId: 206,
@@ -223,6 +224,7 @@ export default function swiperJsunit() {
       let callback = (indexEvent) => {
         console.info("swiperTest_1000 get state result is: " + JSON.stringify(indexEvent));
         expect(indexEvent.data.ACTION).assertEqual(true);
+        done();
       }
       let indexEvent = {
         eventId: 204,
@@ -234,7 +236,6 @@ export default function swiperJsunit() {
         console.info("swiperTest_1000 on events_emitter err : " + JSON.stringify(err));
       }
       console.info('swiperTest_1000 END');
-      done();
     });
 
     it('swiperTest_1100', 0, async function (done) {
