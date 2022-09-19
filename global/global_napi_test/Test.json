@@ -3,6 +3,7 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "600000",
+        "testcase-timeout": "300000",
 	    "bundle-name": "ohos.global.napitest",
         "package-name": "ohos.global.napitest",
         "shell-timeout": "600000"
