@@ -144,6 +144,11 @@ export default function inspectorJsunit() {
       }
     });
 
+    /*
+     * @tc.number       SUB_ACE_BASIC_ETS_API_0005
+     * @tc.name         testInspectorTestAdd0005
+     * @tc.desic         aceTestInspectorTestAdd0005
+     */
     it('testInspectorTestAdd0005', 0, async function (done) {
       console.info('testInspectorTestAdd0005 START');
       try {
@@ -164,9 +169,9 @@ export default function inspectorJsunit() {
     });
 
     /*
-     * @tc.number       SUB_ACE_BASIC_ETS_API_0004
-     * @tc.name         testInspectorTestAdd0004
-     * @tc.desic         aceTestInspectorTestAdd0004
+     * @tc.number       SUB_ACE_BASIC_ETS_API_0006
+     * @tc.name         testInspectorTestAdd0006
+     * @tc.desic         aceTestInspectorTestAdd0006
      */
     it('testInspectorTestAdd0006', 0, async function (done) {
       var innerEvent3 = {

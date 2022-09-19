@@ -55,7 +55,7 @@ export default function lazyForEachOnDataAddJsunit() {
       console.info('lazyForEachOnDataAdd testlazyForEachOnDataAdd0001 START');
 
       var innerEvent1 = {
-        eventId: 101,
+        eventId: 201,
         priority: events_emitter.EventPriority.LOW
       }
       var callback1 = (eventData) => {
@@ -87,7 +87,7 @@ export default function lazyForEachOnDataAddJsunit() {
       console.info('lazyForEachOnDataAdd testlazyForEachOnDataAdd0002 START');
 
       var innerEvent2 = {
-        eventId: 102,
+        eventId: 202,
         priority: events_emitter.EventPriority.LOW
       }
       var callback2 = (eventData) => {
@@ -119,7 +119,7 @@ export default function lazyForEachOnDataAddJsunit() {
       console.info('lazyForEachOnDataAdd testlazyForEachOnDataAdd0003 START');
 
       var innerEvent3 = {
-        eventId: 103,
+        eventId: 203,
         priority: events_emitter.EventPriority.LOW
       }
       var callback3 = (eventData) => {
@@ -151,7 +151,7 @@ export default function lazyForEachOnDataAddJsunit() {
       console.info('lazyForEachOnDataAdd testlazyForEachOnDataAdd0004 START');
 
       var innerEvent4 = {
-        eventId: 104,
+        eventId: 204,
         priority: events_emitter.EventPriority.LOW
       }
       var callback4 = (eventData) => {

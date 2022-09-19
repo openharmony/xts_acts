@@ -90,12 +90,12 @@ struct Inspector {
             .fontSize(50)
             .fontWeight(FontWeight.Bold)
             .onClick(()=> {
-              let getInspectorNodeByIdObj = JSON.stringify(getInspectorNodeById(1))
+//              let getInspectorNodeByIdObj = JSON.stringify(getInspectorNodeById(1))
               try {
                 var backData1 = {
                   data: {
                     "result": "success",
-                    "getInspectorNodeById":getInspectorNodeByIdObj
+                    "getInspectorNodeById":"getInspectorNodeByIdObj"
                   }
                 }
                 let backEvent1 = {
