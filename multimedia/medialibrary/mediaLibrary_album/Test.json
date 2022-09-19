@@ -53,7 +53,7 @@
         },
         {
             "test-file-name": [
-                "ActsMediaLibraryAlbum.hap"
+                "ActsMediaLibraryAlbumTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
