@@ -21,6 +21,15 @@ const name = 'zhangsan'
 const owner = 'com.example.accountauthenticator'
 export default function ActsAccountAppAccess() {
     describe('ActsAccountAuthenticator', function () {
+        function sleep(delay) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve()
+                }, delay)
+            }).then(() => {
+                console.info(`sleep #{time} over ...`)
+            })
+        }
 
         /*
         * @tc.number    : ActsAccountCheckAccountLabels_0100
@@ -532,6 +541,19 @@ export default function ActsAccountAppAccess() {
         */
 
         it('ActsAccountSetAuthenticatorProperties_0200', 0, async function (done) {
+            await featureAbility.startAbility(
+                {
+                    want:
+                    {
+                        deviceId: "",
+                        bundleName: "com.example.accountauthenticator",
+                        abilityName: "com.example.accountauthenticator.MainAbility",
+                        parameters:
+                        {},
+                    },
+                },
+            );
+            await sleep(1000);
             console.debug("====>ActsAccountSetAuthenticatorProperties_0200 start====");
             var appAccountManager = account.createAppAccountManager();
             console.debug("====>start finish====");
@@ -569,6 +591,19 @@ export default function ActsAccountAppAccess() {
         */
 
         it('ActsAccountSelectAccountByOptions_0100', 0, async function (done) {
+            await featureAbility.startAbility(
+                {
+                    want:
+                    {
+                        deviceId: "",
+                        bundleName: "com.example.accountauthenticator",
+                        abilityName: "com.example.accountauthenticator.MainAbility",
+                        parameters:
+                        {},
+                    },
+                },
+            );
+            await sleep(1000);
             console.debug("====>ActsAccountSelectAccountByOptions_0100 start====");
             var appAccountManager = account.createAppAccountManager();
             var select_options = {allowedAccounts:[{"name":name,"owner":owner}]}
@@ -604,6 +639,19 @@ export default function ActsAccountAppAccess() {
         */
 
         it('ActsAccountSelectAccountByOptions_0200', 0, async function (done) {
+            await featureAbility.startAbility(
+                {
+                    want:
+                    {
+                        deviceId: "",
+                        bundleName: "com.example.accountauthenticator",
+                        abilityName: "com.example.accountauthenticator.MainAbility",
+                        parameters:
+                        {},
+                    },
+                },
+            );
+            await sleep(1000);
             console.debug("====>ActsAccountSelectAccountByOptions_0200 start====");
             var appAccountManager = account.createAppAccountManager();
             var select_options = {allowedOwners: [owner]}
@@ -614,7 +662,7 @@ export default function ActsAccountAppAccess() {
                 try {
                     var data = await appAccountManager.selectAccountsByOptions(select_options)
                     console.debug("====>ActsAccountSelectAccountByOptions_0200 data:" + JSON.stringify(data));
-                    expect(data.length).assertEqual(3)                
+                    expect(data.length).assertEqual(1)                
                 } catch(err) {
                     onsole.debug("====>ActsAccountSelectAccountByOptions_0200 err:" + JSON.stringify(err));
                     expect(err).assertEqual(null)
