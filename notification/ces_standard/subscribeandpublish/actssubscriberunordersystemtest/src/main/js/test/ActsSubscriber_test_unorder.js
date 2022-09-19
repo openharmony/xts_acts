@@ -159,7 +159,7 @@ export default function ActsSubscriberTestUnorderSystem() {
           commonEvent.Support.COMMON_EVENT_NFC_ACTION_RF_FIELD_ON_DETECTED,
           commonEvent.Support.COMMON_EVENT_NFC_ACTION_RF_FIELD_OFF_DETECTED,
           commonEvent.Support.COMMON_EVENT_USER_ADDED,
-          // commonEvent.Support.COMMON_EVENT_USER_REMOVED,
+          commonEvent.Support.COMMON_EVENT_USER_REMOVED,
           commonEvent.Support.COMMON_EVENT_ABILITY_ADDED,
           commonEvent.Support.COMMON_EVENT_ABILITY_REMOVED,
           commonEvent.Support.COMMON_EVENT_ABILITY_UPDATED,
@@ -176,7 +176,8 @@ export default function ActsSubscriberTestUnorderSystem() {
           commonEvent.Support.COMMON_EVENT_VOLUME_BAD_REMOVAL,
           commonEvent.Support.COMMON_EVENT_VOLUME_EJECT,
           commonEvent.Support.COMMON_EVENT_SLOT_CHANGE,
-          commonEvent.Support.COMMON_EVENT_SPN_INFO_CHANGED
+          commonEvent.Support.COMMON_EVENT_SPN_INFO_CHANGED,
+          commonEvent.Support.COMMON_EVENT_QUICK_FIX_APPLY_RESULT
         ]
       }
       let CommonEventSubscriber
