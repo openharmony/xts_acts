@@ -780,5 +780,106 @@ describe("VibratorJsTest_misc_3", function () {
         })
         done();
     })
+	    /*
+     * @tc.name:VibratorJsTest040
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0500
+     */
+    it("VibratorJsTest040", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        vibrator.vibrate({
+            type: "time",
+            duration: 1000
+        }, {
+			id:0,
+            usage: "unknown"
+        }, (error)=>{
+            if (error) {
+                console.info('VibratorJsTest040 vibrator error');
+                expect(false).assertTrue();
+            } else {
+                console.info('VibratorJsTest040 vibrator success');
+                expect(true).assertTrue();
+            }
+            setTimeout(()=>{
+                done();
+            }, 500);
+        });
+    })
+
+    /*
+     * @tc.name:VibratorJsTest041
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0510
+     */
+    it("VibratorJsTest041", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        vibrator.vibrate({
+            type: "",
+            duration: 1000
+        }, {
+			id:1,
+            usage: "unknown"
+        }, (error)=>{
+            if (error) {
+                expect(true).assertTrue();
+            } else {
+                expect(false).assertTrue();
+            }
+            setTimeout(()=>{
+                done();
+            }, 500);
+        });
+    })
+
+    /*
+     * @tc.name:VibratorJsTest042
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0520
+     */
+    it("VibratorJsTest042", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        vibrator.vibrate({
+            type: "preset",
+            effectId: "haptic.clock.timer",
+            count: 1,
+        }, {
+			id:"xxx",
+            usage: "unknown"
+        }, (error)=>{
+            if (error) {
+                console.info('VibratorJsTest042 vibrator error');
+                expect(false).assertTrue();
+            } else {
+                console.info('VibratorJsTest042 vibrator success');
+                expect(true).assertTrue();
+            }
+            setTimeout(()=>{
+                done();
+            }, 500);
+        });
+    })
+
+    /*
+     * @tc.name:VibratorJsTest043
+     * @tc.desc:Verification results of the incorrect parameters of the test interface.
+     * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0530
+     */
+    it("VibratorJsTest043", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        vibrator.vibrate({
+            type: "preset",
+            effectId: "",
+            count: 3,
+        }, {
+			id:null,
+            usage: "unknown"
+        }, (error)=>{
+            if (error) {
+                expect(true).assertTrue();
+            } else {
+                expect(false).assertTrue();
+            }
+            setTimeout(()=>{
+                done();
+            }, 500);
+        });
+    })
     })
 	}
