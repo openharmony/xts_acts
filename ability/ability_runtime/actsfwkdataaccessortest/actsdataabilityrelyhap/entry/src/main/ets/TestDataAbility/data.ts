@@ -12,8 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import dataAbility from '@ohos.data.dataAbility'
 import featureAbility from '@ohos.ability.featureAbility'
+import dataAbility from '@ohos.data.dataAbility'
 import fileio from '@ohos.fileio'
 import dataRdb from '@ohos.data.rdb'
 
