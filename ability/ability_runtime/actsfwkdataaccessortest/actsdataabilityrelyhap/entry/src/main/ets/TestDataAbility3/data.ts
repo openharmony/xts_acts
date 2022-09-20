@@ -30,7 +30,7 @@ let returnError = 0;
 let returnError1 = -1;
 let returnError2 = -2;
 let returnError3 = -3;
-let dataAbilityUri = ("dataability:///com.example.myapplication.DataAbility2");
+let dataAbilityUri = ("dataability:///com.example.myapplication.DataAbility3");
 
 export default {
 
@@ -60,7 +60,7 @@ export default {
             err = "Error age"
             callback(err, returnError2);
         }
-        if (valueBucket.name != "ActsDataAbilityHelperTest") {
+        if (valueBucket.name != "ActsDataAbilityHelperPermissionTest") {
             err = "Error name"
             callback(err, returnError2);
         }
@@ -107,7 +107,7 @@ export default {
             err = "Error age"
             callback(err, returnError2);
         }
-        if (valueBucket.name != "ActsDataAbilityHelperTest") {
+        if (valueBucket.name != "ActsDataAbilityHelperPermissionTest") {
             err = "Error name"
             callback(err, returnError2);
         }
@@ -161,44 +161,6 @@ export default {
         }
         console.log(TAG + "batchInsert values.length:" + values.length + ' ,json=' + JSON.stringify(values.length))
         callback(err, values.length);
-    },
-
-    getType(uri, callback) {
-        console.info(TAG + '==================== DataAbility test interface by getType ================');
-        let err = "Error Uri"
-        if (uri != dataAbilityUri) {
-            console.debug(TAG + ' uri != dataAbilityUri')
-            callback(err, returnError1);
-        }
-        callback("success", uri);
-    },
-
-    getFileTypes(uri, mimeTypeFilter, callback) {
-        console.info(TAG + '==================== DataAbility test interface by GetFileTypes ================');
-        let err = "Error Uri"
-        if (uri != dataAbilityUri) {
-            console.debug(TAG + ' uri != dataAbilityUri')
-            callback(err, returnError1);
-        }
-        let type1 = " ";
-        let type2 = " ";
-        let type3 = " ";
-        let types;
-        if (mimeTypeFilter == "*/*") {
-            type1 = ("hap");
-            type2 = ("jpg");
-            type3 = ("image/png");
-            types = [type1, type2, type3];
-        } else if (mimeTypeFilter == "image/*") {
-            type1 = ("image/png");
-            types = [type1];
-        } else if (mimeTypeFilter == "*/jpg") {
-            type1 = ("jpg");
-            types = [type1];
-        }
-
-        console.log(TAG + "GetFileTypes callback ret:" + JSON.stringify(types))
-        callback("success", types);
     },
 
     openFile(uri, mode, callback) {
