@@ -16,6 +16,15 @@
 import Ability from '@ohos.application.Ability'
 import commonEvent from '@ohos.commonEvent'
 
+function sleep(delay) {
+    let start = new Date().getTime();
+    while (true) {
+        if (new Date().getTime() - start > delay) {
+            break;
+        }
+    }
+}
+
 export default class MainAbility extends Ability {
     onCreate(want, launchParam) {
         // Ability is creating, initialize resources for this ability
@@ -48,6 +57,7 @@ export default class MainAbility extends Ability {
     }
 
     onForeground() {
+        sleep(1000)
         // Ability has brought to foreground
         console.log("ACTS_NewWant MainAbility onForeground")
         if (globalThis.abilityWant.action == 'startStandard0400') {

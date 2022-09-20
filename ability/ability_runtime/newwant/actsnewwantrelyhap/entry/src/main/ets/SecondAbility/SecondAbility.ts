@@ -16,6 +16,15 @@
 import Ability from '@ohos.application.Ability'
 import commonEvent from '@ohos.commonEvent'
 
+function sleep(delay) {
+    let start = new Date().getTime();
+    while (true) {
+        if (new Date().getTime() - start > delay) {
+            break;
+        }
+    }
+}
+
 export default class SecondAbility extends Ability {
 
     onCreate(want, launchParam) {
@@ -48,6 +57,7 @@ export default class SecondAbility extends Ability {
     }
 
     onForeground() {
+        sleep(1000)
         // Ability has brought to foreground
         var connId;
         console.log("ACTS_NewWant SecondAbility onForeground")
