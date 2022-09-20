@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import Subscriber from '@ohos.commonEvent'
+import commonEvent from '@ohos.commonEvent'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
 export default function ActsSubscriberTestOrder() {
@@ -124,28 +124,28 @@ export default function ActsSubscriberTestOrder() {
             })
         }
 
-        Subscriber.createSubscriber(
+        commonEvent.createSubscriber(
             commonEventSubscribeInfo1
         ).then((data)=>{
             console.info('===============ActsSubscriberTestOrder_0100==========createSubscriber promise1');
             commonEventSubscriber0100 = data;
             data.getSubscribeInfo().then(()=>{
                 console.info('===============ActsSubscriberTestOrder_0100=========getSubscribeInfo promise1');
-                Subscriber.subscribe(commonEventSubscriber0100, subscriberCallBack0100);
+                commonEvent.subscribe(commonEventSubscriber0100, subscriberCallBack0100);
             });
         })
 
-        Subscriber.createSubscriber(
+        commonEvent.createSubscriber(
             commonEventSubscribeInfo2
         ).then((data)=>{
             console.info('===============ActsSubscriberTestOrder_0100==========createSubscriber promise2');
             commonEventSubscriber0101 = data;
             data.getSubscribeInfo().then(()=>{
                 console.info('===============ActsSubscriberTestOrder_0100=========getSubscribeInfo promise2');
-                Subscriber.subscribe(commonEventSubscriber0101, subscriberCallBack0101);
+                commonEvent.subscribe(commonEventSubscriber0101, subscriberCallBack0101);
                 setTimeout(function(){
                     console.debug('===================ActsSubscriberTestOrder_0100 delay 100ms==================');
-                    Subscriber.publish('publish_event0100', commonEventPublishData, publishCallback);
+                    commonEvent.publish('publish_event0100', commonEventPublishData, publishCallback);
                 }, 100);
             });
         })
@@ -222,36 +222,36 @@ export default function ActsSubscriberTestOrder() {
             })
         }
 
-        Subscriber.createSubscriber(
+        commonEvent.createSubscriber(
             commonEventSubscribeInfo1,
         ).then((data)=>{
             console.info('===============ActsSubscriberTestOrder_0200==========createSubscriber promise1');
             commonEventSubscriber0200 = data;
             data.getSubscribeInfo().then(()=>{
                 console.info('===============ActsSubscriberTestOrder_0200=========getSubscribeInfo promise1');
-                Subscriber.subscribe(commonEventSubscriber0200, subscriberCallBack0200);
+                commonEvent.subscribe(commonEventSubscriber0200, subscriberCallBack0200);
             });
         })
 
-        Subscriber.createSubscriber(
+        commonEvent.createSubscriber(
             commonEventSubscribeInfo2,
         ).then((data)=>{
             console.info('===============ActsSubscriberTestOrder_0200==========createSubscriber promise2');
             commonEventSubscriber0201 = data;
             data.getSubscribeInfo().then(()=>{
                 console.info('===============ActsSubscriberTestOrder_0200=========getSubscribeInfo promise2');
-                Subscriber.subscribe(commonEventSubscriber0201, subscriberCallBack0201);
+                commonEvent.subscribe(commonEventSubscriber0201, subscriberCallBack0201);
                 setTimeout(function(){
                     console.debug('===================ActsSubscriberTestOrder_0200 delay 100ms==================');
-                    Subscriber.unsubscribe(commonEventSubscriber0200, unsubscribeCallback);
+                    commonEvent.unsubscribe(commonEventSubscriber0200, unsubscribeCallback);
                 }, 100);
                 setTimeout(function(){
                     console.debug('===================ActsSubscriberTestOrder_0200 delay 100ms==================');
-                    Subscriber.publish('publish_event0200', commonEventPublishData1, publishCallback);
+                    commonEvent.publish('publish_event0200', commonEventPublishData1, publishCallback);
                 }, 100);
                 setTimeout(function(){
                     console.debug('===================ActsSubscriberTestOrder_0200 delay 100ms==================');
-                    Subscriber.publish('publish_event0201', commonEventPublishData2, publishCallback);
+                    commonEvent.publish('publish_event0201', commonEventPublishData2, publishCallback);
                 }, 100);
             });
         })
@@ -336,30 +336,30 @@ export default function ActsSubscriberTestOrder() {
             })
         }
 
-        Subscriber.createSubscriber(
+        commonEvent.createSubscriber(
             commonEventSubscribeInfo1,
         ).then((data)=>{
             console.info('===============ActsSubscriberTestOrder_0300==========createSubscriber promise1');
             commonEventSubscriber0300 = data;
             data.getSubscribeInfo().then(()=>{
                 console.info('===============ActsSubscriberTestOrder_0300=========getSubscribeInfo promise1');
-                Subscriber.subscribe(commonEventSubscriber0300, subscriberCallBack0300);
+                commonEvent.subscribe(commonEventSubscriber0300, subscriberCallBack0300);
             });
         })
 
-        Subscriber.createSubscriber(
+        commonEvent.createSubscriber(
             commonEventSubscribeInfo2,
         ).then((data)=>{
             console.info('===============ActsSubscriberTestOrder_0300==========createSubscriber promise2');
             commonEventSubscriber0301 = data;
             data.getSubscribeInfo().then(()=>{
                 console.info('===============ActsSubscriberTestOrder_0300=========getSubscribeInfo promise2');
-                Subscriber.subscribe(commonEventSubscriber0301, subscriberCallBack0301);
+                commonEvent.subscribe(commonEventSubscriber0301, subscriberCallBack0301);
                 let numindex = 0;
                 for (; numindex < 3; ++numindex) {
                     setTimeout(function(){
                         console.debug('===================ActsSubscriberTestOrder_0300 delay 100ms==================');
-                        Subscriber.publish('publish_event0301', commonEventPublishData2, publishCallback);
+                        commonEvent.publish('publish_event0301', commonEventPublishData2, publishCallback);
                     }, 100);
                 }
             });
@@ -421,7 +421,7 @@ export default function ActsSubscriberTestOrder() {
             expect().assertFail();
         }
 
-        Subscriber.createSubscriber(
+        commonEvent.createSubscriber(
             commonEventSubscribeInfo1
         ).then((data)=>{
             console.info('===============ActsSubscriberTestOrder_0400==========createSubscriber promise1');
@@ -429,11 +429,11 @@ export default function ActsSubscriberTestOrder() {
             data.getSubscribeInfo().then((data)=>{
                 console.info('===============ActsSubscriberTestOrder_0400=========getSubscribeInfo promise1');
                 expect(data.events[0]).assertEqual('publish_eventOrder0400');
-                Subscriber.subscribe(commonEventSubscriber0400, subscriberCallBack0400);
+                commonEvent.subscribe(commonEventSubscriber0400, subscriberCallBack0400);
             })
         })
 
-        Subscriber.createSubscriber(
+        commonEvent.createSubscriber(
             commonEventSubscribeInfo2
         ).then((data)=>{
             console.info('===============ActsSubscriberTestOrder_0400==========createSubscriber promise2');
@@ -441,10 +441,10 @@ export default function ActsSubscriberTestOrder() {
             data.getSubscribeInfo().then((data)=>{
                 console.info('===============ActsSubscriberTestOrder_0400=========getSubscribeInfo promise2');
                 expect(data.events[0]).assertEqual('publish_eventOrder0400');
-                Subscriber.subscribe(commonEventSubscriber0401, subscriberCallBack0401);
+                commonEvent.subscribe(commonEventSubscriber0401, subscriberCallBack0401);
                 setTimeout(function(){
                     console.debug('===================ActsSubscriberTestOrder_0400 delay 100mss==================');
-                    Subscriber.publish('publish_eventOrder0400', commonEventPublishData, publishCallback);
+                    commonEvent.publish('publish_eventOrder0400', commonEventPublishData, publishCallback);
                 }, 100);
             })
         })
@@ -509,7 +509,7 @@ export default function ActsSubscriberTestOrder() {
               })
         }
 
-        Subscriber.createSubscriber(
+        commonEvent.createSubscriber(
             commonEventSubscribeInfo1
         ).then((data)=>{
             console.info('===============ActsSubscriberTestOrder_0500==========createSubscriber promise1');
@@ -517,11 +517,11 @@ export default function ActsSubscriberTestOrder() {
             data.getSubscribeInfo().then((data)=>{
                 console.info('===============ActsSubscriberTestOrder_0500==========getSubscribeInfo promise1');
                 expect(data.events[0]).assertEqual('publish_event0500');
-                Subscriber.subscribe(commonEventSubscriber0500, subscriberCallBack0500);
+                commonEvent.subscribe(commonEventSubscriber0500, subscriberCallBack0500);
             })
         })
 
-        Subscriber.createSubscriber(
+        commonEvent.createSubscriber(
             commonEventSubscribeInfo2
         ).then((data)=>{
             console.info('===============ActsSubscriberTestOrder_0500==========createSubscriber promise2');
@@ -529,10 +529,10 @@ export default function ActsSubscriberTestOrder() {
             data.getSubscribeInfo().then((data)=>{
                 console.info('===============ActsSubscriberTestOrder_0500==========getSubscribeInfo promise2');
                 expect(data.events[0]).assertEqual('publish_event0500');
-                Subscriber.subscribe(commonEventSubscriber0501, subscriberCallBack0501);
+                commonEvent.subscribe(commonEventSubscriber0501, subscriberCallBack0501);
                 setTimeout(function(){
                     console.debug('===================ActsSubscriberTestOrder_0500 delay 100ms==================');
-                    Subscriber.publish('publish_event0500', commonEventPublishData, publishCallback);
+                    commonEvent.publish('publish_event0500', commonEventPublishData, publishCallback);
                 }, 100);
             })
         })

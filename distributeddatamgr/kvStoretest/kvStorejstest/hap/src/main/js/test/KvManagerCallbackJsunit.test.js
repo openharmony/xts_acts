@@ -911,7 +911,7 @@ describe('kvManagerCallbackTest', function () {
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORE_PUT_1000
+     * @tc.number SUB_DISTRIBUTEDDATAMGR_KVSTORE_PUT_CALLBACK_1000
      * @tc.name [JS-API8]KVStore.Put
      * @tc.desc Test Js Api KVManager.Put testcase 100
      */

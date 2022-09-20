@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except compliance with the License.
  * You may obtain a copy of the License at
@@ -47,7 +47,6 @@ describe('AccessTokenTest', function () {
         tokenID = appInfo.accessTokenId;
         console.info("AccessTokenTest accessTokenId:" + appInfo.accessTokenId + ", name:" + appInfo.name
             + ", bundleName:" + appInfo.bundleName)
-        // setTimeout(done(),TIMEOUT);
 
         console.info("sleep begin");
         sleep(TIMEOUT);

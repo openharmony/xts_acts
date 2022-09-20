@@ -58,11 +58,11 @@ describe('ActsBmsGetBackGroundModes', function () {
     });
 
     /*
-    * @tc.number: bms_backGroundModes_0100
-    * @tc.name: Get the backgroundModes information of the application through queryAbilityByWant
+    * @tc.number: SUB_BMS_APPINFO_QUERY_0085
+    * @tc.name: getBackgroundModesMultiAbility
     * @tc.desc: Get the information of the background modes from multi-ability application
     */
-    it('bms_backGroundModes_0100', 0, async function (done) {
+    it('getBackgroundModesMultiAbility', 0, async function (done) {
         let dataInfos = await bundle.queryAbilityByWant({
             action: 'action.system.home',
             entities: ['entity.system.home'],
@@ -100,12 +100,12 @@ describe('ActsBmsGetBackGroundModes', function () {
     });
 
     /*
-    * @tc.number: bms_backGroundModes_0200
-    * @tc.name: Get the backgroundModes information of the application through queryAbilityByWant 
+    * @tc.number: SUB_BMS_APPINFO_QUERY_0086
+    * @tc.name: getBackgroundModesAllModes
     * @tc.desc: Get all background modes information, and each ability of the application
     *               contains one of the background mode
     */
-    it('bms_backGroundModes_0200', 0, async function (done) {
+    it('getBackgroundModesAllModes', 0, async function (done) {
         let dataInfos = await bundle.queryAbilityByWant({
             action: 'action.system.home',
             entities: ['entity.system.home'],
@@ -121,11 +121,11 @@ describe('ActsBmsGetBackGroundModes', function () {
     });
 
     /*
-    * @tc.number: bms_backGroundModes_0300
-    * @tc.name: Get the backgroundModes information of the application through queryAbilityByWant 
+    * @tc.number: SUB_BMS_APPINFO_QUERY_0087
+    * @tc.name: getBackgroundModesInvalidModes
     * @tc.desc: Read the backgroundModes information of the app's ability and replace invalid attributes 
     */
-    it('bms_backGroundModes_0300', 0, async function (done) {
+    it('getBackgroundModesInvalidModes', 0, async function (done) {
         let dataInfos = await bundle.queryAbilityByWant({
             action: 'action.system.home',
             entities: ['entity.system.home'],
@@ -160,11 +160,11 @@ describe('ActsBmsGetBackGroundModes', function () {
     });
 
     /*
-    * @tc.number: bms_backGroundModes_0400
-    * @tc.name: Get the backgroundModes information of the application through queryAbilityByWant 
+    * @tc.number: SUB_BMS_APPINFO_QUERY_0088
+    * @tc.name: getBackgroundModesNotModes
     * @tc.desc: Read the backgroundModes information of the app's ability and replace invalid attributes 
     */
-    it('bms_backGroundModes_0400', 0, async function (done) {
+    it('getBackgroundModesNotModes', 0, async function (done) {
         let dataInfos = await bundle.queryAbilityByWant({
             action: 'action.system.home',
             entities: ['entity.system.home'],
@@ -181,11 +181,11 @@ describe('ActsBmsGetBackGroundModes', function () {
     });
 
     /*
-    * @tc.number: bms_backGroundModes_0500
-    * @tc.name: Get the backgroundModes information of the application through queryAbilityByWant 
+    * @tc.number: SUB_BMS_APPINFO_QUERY_0089
+    * @tc.name: getBackgroundModesMultiHap
     * @tc.desc: Get the backgroundModes information of the multi-hap package of the application 
     */
-    it('bms_backGroundModes_0500', 0, async function (done) {
+    it('getBackgroundModesMultiHap', 0, async function (done) {
         let dataInfos = await bundle.queryAbilityByWant({
             action: 'action.system.home',
             entities: ['entity.system.home'],

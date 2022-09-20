@@ -32,7 +32,6 @@ export default function abilityTest() {
             var msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146'
             globalThis.abilityDelegator.printSync(msg);
             console.log("ACTS_AACommand_printSync_01_0100 printSync end ====> " )
-            await sleep(1000)
             var finishmsg = 'ACTS_AACommand_printSync_01_0100 end'
             globalThis.abilityDelegator.finishTest(finishmsg, 1).then((data)=>{
                 console.log("ACTS_AACommand_printSync_01_0100 finishTest  test  end ========> callback " )
@@ -63,7 +62,6 @@ export default function abilityTest() {
             '9aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaae'
             globalThis.abilityDelegator.printSync(msg);
             console.log("ACTS_AACommand_printSync_01_0200 printSync end ====> " )
-            await sleep(1000)
             var finishmsg = 'ACTS_AACommand_printSync_01_0200 end'
             globalThis.abilityDelegator.finishTest(finishmsg, 1).then(()=>{
                 console.log("ACTS_AACommand_printSync_01_0200 print  test  end ========> callback " )
@@ -93,7 +91,6 @@ export default function abilityTest() {
             'fffffffffff'
             globalThis.abilityDelegator.printSync(msg);
             console.log("ACTS_AACommand_printSync_01_0300 printSync end ====> " )
-            await sleep(1000)
             var finishmsg = 'ACTS_AACommand_printSync_01_0300 end'
             globalThis.abilityDelegator.finishTest(finishmsg, 1).then(()=>{
                 console.log("ACTS_AACommand_printSync_01_0300 print  test  end ========> callback " )
@@ -111,7 +108,6 @@ export default function abilityTest() {
         it('ACTS_AACommand_printSync_01_0400', 0, async function (done) {
             globalThis.abilityDelegator.printSync(null);
             console.log("ACTS_AACommand_printSync_01_0300 printSync end ====> " )
-            await sleep(1000)
             var finishmsg = 'ACTS_AACommand_printSync_01_0400 end'
             globalThis.abilityDelegator.finishTest(finishmsg, 1).then(()=>{
                 console.log("ACTS_AACommand_printSync_01_0400 print  test  end ========> callback " )

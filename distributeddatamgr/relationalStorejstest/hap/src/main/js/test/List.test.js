@@ -26,6 +26,7 @@ import rdbstoreStoreExcuteSqlTest from './RdbstoreStoreExcuteSqlJsunit.test.js'
 import rdbstoreTransactionTest from './RdbstoreTransactionJsunit.test.js'
 import rdbStoreUpdateTest from './RdbstoreUpdateJsunit.test.js'
 import rdbstoreQueryTest from './RdbstoreQuery.test.js'
+import rdbStoreEncryptionTest from './RdbstoreEncryptionJsunit.test.js'
 export default function testsuite() {
 rdbStoreBackupRestoreCallbackTest()
 rdbStoreBackupRestoreWithFAContextTest()
@@ -41,4 +42,5 @@ rdbstoreStoreExcuteSqlTest()
 rdbstoreTransactionTest()
 rdbStoreUpdateTest()
 rdbstoreQueryTest()
+rdbStoreEncryptionTest()
 }

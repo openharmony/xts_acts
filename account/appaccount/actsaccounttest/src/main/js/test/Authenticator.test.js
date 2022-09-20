@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 import account from '@ohos.account.appAccount'
+import featureAbility from '@ohos.ability.featureAbility'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index'
 
 const NAMELIMIT = 512;
@@ -22,6 +23,18 @@ const owner = 'com.example.accountauthenticator'
 export default function ActsAccountAppAccess() {
     describe('ActsAccountAuthenticator', function () {
 
+        function sleep(delay) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve()
+                }, delay)
+            }).then(() => {
+                console.info(`sleep #{time} over ...`)
+            })
+        }
+        beforeAll(async function (done) {            
+            done();
+        });
         /*
         * @tc.number    : ActsAccountCheckAccountLabels_0100
         * @tc.name      : Check Account Labels callback form
@@ -568,7 +581,21 @@ export default function ActsAccountAppAccess() {
         * @tc.desc      : 
         */
 
-        it('ActsAccountSelectAccountByOptions_0100', 0, async function (done) {
+        it('ActsAccountSelectAccountByOptions_0100', 0, async function (done) {  
+            await featureAbility.startAbility(
+                {
+                    want:
+                    {
+                        deviceId: "",
+                        bundleName: "com.example.accountauthenticator",
+                        abilityName: "com.example.accountauthenticator.MainAbility",
+                        action: "action1",
+                        parameters:
+                        {},
+                    },
+                },
+            )          
+            await sleep(1000)
             console.debug("====>ActsAccountSelectAccountByOptions_0100 start====");
             var appAccountManager = account.createAppAccountManager();
             var select_options = {allowedAccounts:[{"name":name,"owner":owner}]}
@@ -579,9 +606,9 @@ export default function ActsAccountAppAccess() {
                 try {
                     var data = await appAccountManager.selectAccountsByOptions(select_options)
                     console.debug("====>ActsAccountSelectAccountByOptions_0100 data:" + JSON.stringify(data));
-                    expect(data.length).assertEqual(1)                
+                    expect(data.length).assertEqual(1) 
                 } catch(err) {
-                    onsole.debug("====>ActsAccountSelectAccountByOptions_0100 err:" + JSON.stringify(err));
+                    console.debug("====>ActsAccountSelectAccountByOptions_0100 err:" + JSON.stringify(err));
                     expect(err).assertEqual(null)
                 }
                 try{
@@ -593,7 +620,7 @@ export default function ActsAccountAppAccess() {
                     console.debug('====>ActsAccountSelectAccountByOptions_0100 deleteAccount_err')
                     expect().assertFail()
                     done();
-                }    
+                }  
             });        
         });
 
@@ -604,6 +631,20 @@ export default function ActsAccountAppAccess() {
         */
 
         it('ActsAccountSelectAccountByOptions_0200', 0, async function (done) {
+            await featureAbility.startAbility(
+                {
+                    want:
+                    {
+                        deviceId: "",
+                        bundleName: "com.example.accountauthenticator",
+                        abilityName: "com.example.accountauthenticator.MainAbility",
+                        action: "action1",
+                        parameters:
+                        {},
+                    },
+                },
+            )
+            await sleep(1000)
             console.debug("====>ActsAccountSelectAccountByOptions_0200 start====");
             var appAccountManager = account.createAppAccountManager();
             var select_options = {allowedOwners: [owner]}
@@ -616,7 +657,7 @@ export default function ActsAccountAppAccess() {
                     console.debug("====>ActsAccountSelectAccountByOptions_0200 data:" + JSON.stringify(data));
                     expect(data.length).assertEqual(3)                
                 } catch(err) {
-                    onsole.debug("====>ActsAccountSelectAccountByOptions_0200 err:" + JSON.stringify(err));
+                    console.debug("====>ActsAccountSelectAccountByOptions_0200 err:" + JSON.stringify(err));
                     expect(err).assertEqual(null)
                 }
                 try{
@@ -640,6 +681,20 @@ export default function ActsAccountAppAccess() {
         */
 
         it('ActsAccountSelectAccountByOptions_0300', 0, async function (done) {
+            await featureAbility.startAbility(
+                {
+                    want:
+                    {
+                        deviceId: "",
+                        bundleName: "com.example.accountauthenticator",
+                        abilityName: "com.example.accountauthenticator.MainAbility",
+                        action: "action1",
+                        parameters:
+                        {},
+                    },
+                },
+            )
+            await sleep(1000)
             console.debug("====>ActsAccountSelectAccountByOptions_0300 start====");
             var appAccountManager = account.createAppAccountManager();
             var options = {requiredLabels: ["male", "30-40"]}
@@ -652,7 +707,7 @@ export default function ActsAccountAppAccess() {
                     console.debug("====>ActsAccountSelectAccountByOptions_0300 data:" + JSON.stringify(data));
                     expect(data.length).assertEqual(1)                
                 } catch(err) {
-                    onsole.debug("====>ActsAccountSelectAccountByOptions_0300 err:" + JSON.stringify(err));
+                    console.debug("====>ActsAccountSelectAccountByOptions_0300 err:" + JSON.stringify(err));
                     expect(err).assertEqual(null)
                 }
                 try{

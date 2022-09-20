@@ -32,7 +32,7 @@ const PROFILE_JSON_STRING = "{\"src\":[\"MainAbility/pages/index/index\",\"MainA
 export default function getProfileByExtensionAbility() {
   describe('getProfileByExtensionAbility', function () {
    /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0011
+    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0021
     * @tc.name: getProfileByExtensionInvalidModulePro
     * @tc.desc: Check the invalid moduleName (by promise)
     * @tc.level   0
@@ -50,7 +50,7 @@ export default function getProfileByExtensionAbility() {
     })
 
    /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0015
+    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0031
     * @tc.name: getProfileByExtensionEmptyModulePro
     * @tc.desc: Check the Empty moduleName (by promise)
     * @tc.level   0
@@ -68,7 +68,7 @@ export default function getProfileByExtensionAbility() {
     })
 
    /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0017
+    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0028
     * @tc.name: getProfileByExtensionEmptyModuleCall
     * @tc.desc: Check the invalid moduleName (by callback)
     * @tc.level   0
@@ -87,7 +87,7 @@ export default function getProfileByExtensionAbility() {
     })
 
    /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0034
+    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0037
     * @tc.name: getProfileByExtensionEmptyModuleCall
     * @tc.desc: Check the Empty moduleName (by callback)
     * @tc.level   0
@@ -106,7 +106,7 @@ export default function getProfileByExtensionAbility() {
     })
 
    /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0012
+    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0013
     * @tc.name: getProfileByExtensionInvalidAbilityPro
     * @tc.desc: Check the invalid abilityName (by promise)
     * @tc.level   0
@@ -124,7 +124,7 @@ export default function getProfileByExtensionAbility() {
     })
 
    /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0029
+    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0032
     * @tc.name: getProfileByExtensionEmptyAbilityPro
     * @tc.desc: Check the Empty abilityName (by promise)
     * @tc.level   0
@@ -142,7 +142,7 @@ export default function getProfileByExtensionAbility() {
     })
 
    /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0022
+    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0023
     * @tc.name: getProfileByExtensionInvalidAbilityCall
     * @tc.desc: Check the invalid abilityName (by callback)
     * @tc.level   0
@@ -161,7 +161,7 @@ export default function getProfileByExtensionAbility() {
     })
 
    /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0035
+    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0038
     * @tc.name: getProfileByExtensionEmptyAbilityCall
     * @tc.desc: Check the Empty abilityName (by callback)
     * @tc.level   0
@@ -180,7 +180,7 @@ export default function getProfileByExtensionAbility() {
     })
 
    /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0024
+    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0025
     * @tc.name: getProfileByExtensionAbilityCallback
     * @tc.desc: Check the valid metadataName (by callback)
     * @tc.level   0
@@ -200,7 +200,7 @@ export default function getProfileByExtensionAbility() {
     })
 
    /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0026
+    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0027
     * @tc.name: getProfileByExtensionInvalidMetaDataCall
     * @tc.desc: Check the invalid metadataName (by callback)
     * @tc.level   0
@@ -219,7 +219,7 @@ export default function getProfileByExtensionAbility() {
     })
 
    /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0036
+    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0039
     * @tc.name: getProfileByExtensionEmptyMetaDataCall
     * @tc.desc: Check the empty metadataName (by callback)
     * @tc.level   0
@@ -241,7 +241,7 @@ export default function getProfileByExtensionAbility() {
     })
 
    /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0002
+    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0003
     * @tc.name: getProfileByExtensionAbilityPromise
     * @tc.desc: Check the valid metadataName (by promise)
     * @tc.level   0
@@ -261,7 +261,7 @@ export default function getProfileByExtensionAbility() {
     })
 
    /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0004
+    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0016
     * @tc.name: getProfileByExtensionInvalidMetaDataPro
     * @tc.desc: Check the invalid metadataName (by promise)
     * @tc.level   0
@@ -279,7 +279,7 @@ export default function getProfileByExtensionAbility() {
     })
 
    /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0030
+    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0033
     * @tc.name: getProfileByExtensionEmptyMetaDataPro
     * @tc.desc: Check the empty metadataName (by promise)
     * @tc.level   0
@@ -301,7 +301,7 @@ export default function getProfileByExtensionAbility() {
     })
   
    /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0009
+    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0010
     * @tc.name: getProfileByExtensionAbilityNoMetaDataPro
     * @tc.desc: without metadataName (by promise)
     * @tc.level   0
@@ -323,7 +323,7 @@ export default function getProfileByExtensionAbility() {
     })
 
    /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0048
+    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0049
     * @tc.name: getProfileByExtensionAbilityNoProfilePro
     * @tc.desc: no profile configured under the ability (by promise)
     * @tc.level   0
@@ -341,7 +341,7 @@ export default function getProfileByExtensionAbility() {
     })
 
    /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0045
+    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0043
     * @tc.name: getProfileByExtensionNotPrefixPro
     * @tc.desc: resource has no prefix '$profile:' (by promise)
     * @tc.level   0
@@ -359,7 +359,7 @@ export default function getProfileByExtensionAbility() {
     })
 
    /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0044
+    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0042
     * @tc.name: getProfileByExtensionNotPrefixCall
     * @tc.desc: resource has no prefix '$profile:' (by callback)
     * @tc.level   0
@@ -378,7 +378,7 @@ export default function getProfileByExtensionAbility() {
     })
 
    /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0007
+    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0019
     * @tc.name: getProfileByExtensionNotSuffixPro
     * @tc.desc: profile is .txt suffix (by promise)
     * @tc.level   0
@@ -397,7 +397,7 @@ export default function getProfileByExtensionAbility() {
     })
 
    /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0040
+    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0041
     * @tc.name: getProfileByExtensionNotSuffixCall
     * @tc.desc: profile is .txt suffix (by callback)
     * @tc.level   0
@@ -416,7 +416,7 @@ export default function getProfileByExtensionAbility() {
     })
 
    /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0008
+    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0020
     * @tc.name: getProfileByExtensionNoJsonPro
     * @tc.desc: profile is invalid json format (by promise)
     * @tc.level   0
@@ -434,7 +434,7 @@ export default function getProfileByExtensionAbility() {
     })
 
    /*
-    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0046
+    * @tc.number: SUB_BMS_APPINFO_QUERYMETAFILE_0047
     * @tc.name: getProfileByExtensionNoJsonCall
     * @tc.desc: profile is invalid json format (by callback)
     * @tc.level   0

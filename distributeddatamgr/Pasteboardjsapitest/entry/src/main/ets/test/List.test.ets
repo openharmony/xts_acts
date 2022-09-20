@@ -15,7 +15,9 @@
 
 import pasteBoardJEtsunitTest from './PasteBoardEtsunitTest';
 import pasteBoardTest from './PasteBoeadPixelMapJsunit.test';
+import pasteBoardSupportBinaryDataTest from './PasteBoardSupportBinaryData.test';
 export default function testsuite() {
+  pasteBoardSupportBinaryDataTest()
   pasteBoardJEtsunitTest()
   pasteBoardTest()
 }
