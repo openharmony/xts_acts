@@ -389,7 +389,7 @@ export default function webJsunit() {
      */
     it('overviewModeAccessTrue',0,async function(done){
       emitKey="emitOnPrompt";
-      Utils.registerEventTwo("overviewModeAccessTrue",170,done);
+      Utils.registerLargerEvent("overviewModeAccessTrue",170,done);
       sendEventByKey('webcomponent',10,'');
     })
     /* 
