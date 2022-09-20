@@ -12,9 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-import featureAbility from '@ohos.ability.featureAbility'
 import account_appAccount from '@ohos.account.appAccount';
+import featureAbility from '@ohos.ability.featureAbility'
 
 export default {
     data: {
@@ -24,26 +23,28 @@ export default {
         this.title = this.$t('strings.world');
     },
     onShow() {
-        console.info('ServiceAbility onStart');
+        console.info('====>ServiceAbility onStart');
         var accountMgr = account_appAccount.createAppAccountManager();
-        console.info('ServiceAbility lcc addAccount 01 onStart');
+        console.info('====>ServiceAbility addAccount 01 onStart');
         accountMgr.addAccount("zhangsan", "",(data)=>{
-            console.info('ServiceAbility lcc enableAppAccess 01 onStart');
+            console.info('====>ServiceAbility enableAppAccess 01 onStart');
             accountMgr.enableAppAccess("zhangsan", "com.example.actsaccounttest");
-            console.info('ServiceAbility lcc addAccount 02 onStart');
+            console.info('====>ServiceAbility addAccount 02 onStart');
             accountMgr.addAccount("lisi", "",(err)=>{
-                console.info('ServiceAbility lcc enableAppAccess 02 onStart');
+                console.info('====>ServiceAbility enableAppAccess 02 onStart');
                 accountMgr.enableAppAccess("lisi", "com.example.actsaccounttest");
-                console.info('ServiceAbility lcc addAccount 03 onStart');
+                console.info('====>ServiceAbility addAccount 03 onStart');
                 accountMgr.addAccount("wangwu", "",(err)=>{
-                    console.info('ServiceAbility lcc enableAppAccess 03 onStart');
+                    console.info('====>ServiceAbility enableAppAccess 03 onStart');
                     accountMgr.enableAppAccess("wangwu", "com.example.actsaccounttest",(err)=>{
                         featureAbility.terminateSelf();
-                        console.info('ServiceAbility add end');
+                        console.info('====>ServiceAbility add end');
                     });
                 });
             });
         });
         console.info('ServiceAbility onStart end');
-    }
+    },
+    onReady() {
+    },
 }
