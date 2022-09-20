@@ -27,6 +27,7 @@ import getQueryAbilityByWant from './GetQueryAbilityByWant.test.ets';
 import isDefaultApplicationTest from './IsDefaultApplication.test.ets';
 import getWindowPorperties from './getWindowProperties.test.ets';
 import GetSecondModuleTest from './GetSecondModule.test.ets';
+import GetInfoSync from './GetInfoSync.test.ets';
 
 export default function testsuite() {
   getBundleArchiveInfo();
@@ -48,4 +49,5 @@ export default function testsuite() {
   isApplicationEnabledETSUnit();
   getWindowPorperties();
   GetSecondModuleTest();
+  GetInfoSync();
 }
