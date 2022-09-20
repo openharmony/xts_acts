@@ -55,6 +55,7 @@ struct Index {
     @State cacheError:boolean=false
     @State mixedSwitch:boolean=false
     @State mixedAllSwitch:boolean=false
+    @State overViewFalseHeight:number=0
     onPageShow(){
         let valueChangeEvent={
             eventId:10,
@@ -207,6 +208,28 @@ struct Index {
                     this.geoShow=false
                 }
             })
+            .onBlur(()=>{
+                console.info("onBlur==>") 
+                this.controller.requestFocus()
+            })
+            TextInput({placeholder:"inputs your words"})
+            .key('textInput')
+            .type(InputType.Normal)
+            .placeholderColor(Color.Blue)
+            .placeholderFont({size:20,weight:FontWeight.Normal,family:"sans-serif",style:FontStyle.Normal})
+            .enterKeyType(EnterKeyType.Next)
+            .caretColor(Color.Green)
+            .height(60)
+            .fontSize(30)
+            .fontWeight(FontWeight.Bold)
+            .fontFamily("cursive")
+            .fontStyle(FontStyle.Italic)
+            .fontColor(Color.Red)
+            .maxLength(20)
+            .border({width:1,color:0x317AF7,radius:10,style:BorderStyle.Solid})
+            .onClick(()=>{
+                console.info("TextInput click")
+            })
             Row(){
                 Button("web click").key('webcomponent').onClick(async ()=>{
                     console.info("key==>"+this.str)
@@ -301,7 +324,8 @@ struct Index {
                         }
                         case "emitGetRequestFocus":{
                             this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/second.html"})
-                            this.controller.requestFocus()
+                            await Utils.sleep(2000)
+                            sendEventByKey('textInput',10,'')
                             break;
                         }
                         case "emitAccessBackward":{
@@ -489,9 +513,11 @@ struct Index {
                             await Utils.sleep(1000)
                             this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/overview.html"})
                             setTimeout(()=>{
+                                let webPageHeight=this.controller.getPageHeight()
                                 this.controller.runJavaScript({script:"getViewResult()",callback:(res)=>{
+                                    this.overViewFalseHeight=parseInt(res)
 				                    console.info("getViewResult==>"+res)
-                                    Utils.emitEventTwo(1150,res,168)
+                                    Utils.emitEventTwo(webPageHeight,res,168)
                                 }})
                             },3000)
                             break;
@@ -503,7 +529,7 @@ struct Index {
                             setTimeout(()=>{
                                 this.controller.runJavaScript({script:"getViewResult()",callback:(res)=>{
 				                    console.info("getViewResult==>"+res)
-                                    Utils.emitEventTwo(2350,res,170)
+                                    Utils.emitEventTwo(this.overViewFalseHeight,parseInt(res),170)
                                 }})
                             },3000)
                             break;
