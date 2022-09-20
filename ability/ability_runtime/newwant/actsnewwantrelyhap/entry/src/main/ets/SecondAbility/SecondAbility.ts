@@ -16,8 +16,13 @@
 import Ability from '@ohos.application.Ability'
 import commonEvent from '@ohos.commonEvent'
 
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+function sleep(delay) {
+    let start = new Date().getTime();
+    while (true) {
+        if (new Date().getTime() - start > delay) {
+            break;
+        }
+    }
 }
 
 export default class SecondAbility extends Ability {
