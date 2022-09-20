@@ -249,7 +249,7 @@ export default function alphabetIndexerOnSelectJsunit() {
           console.info("onRequestPopupData_0012 get event state result is: " + JSON.stringify(eventData));
           expect(eventData.data.STATUS).assertEqual(true);
         }
-        sendEventByKey('alphabetIndexer', 10, "")
+//        sendEventByKey('alphabetIndexer', 10, "")
         console.info("onSelect_0012 click result is: " + JSON.stringify(sendEventByKey('alphabetIndexer', 10, "")));
         events_emitter.on(innerEventOne, callback1);
       } catch (err) {
