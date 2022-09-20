@@ -125,7 +125,7 @@ describe('bluetoothhostTest_host_1', function () {
         let conn = a2dpSrc.connect('11:22:33:44:55:77');
         await sleep(6000);
         console.info('[bluetooth_js]a2dp connect result:' + JSON.stringify(conn));
-        expect(conn).assertTrue();
+        expect(conn).assertFalse();
         a2dpSrc.off('connectionStateChange', StateChangeParam);
         done();
     })
