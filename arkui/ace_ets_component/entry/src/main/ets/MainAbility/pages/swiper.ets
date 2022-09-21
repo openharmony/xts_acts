@@ -210,7 +210,7 @@ struct SwiperExample {
         this.loop = eventData.data.loop;
       }
       if (eventData.data.duration != null) {
-        this.duration = parseInt(eventData.data.duration);
+        this.duration = eventData.data.duration;
       }
       if (eventData.data.vertical != null) {
         this.vertical = eventData.data.vertical;

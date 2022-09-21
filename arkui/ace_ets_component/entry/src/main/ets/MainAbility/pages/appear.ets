@@ -22,7 +22,7 @@ import prompt from '@system.prompt'
 @Component
 struct AppearExample {
   @State isShow: boolean = true
-  @State appearFlag: boolean = false
+  @State appearFlag: string = "appearStatusOff"
   @State disAppearFlag: boolean = false
   private changeAppear: string = 'Hide Text'
   private myText: string = 'Text for onAppear'
@@ -52,26 +52,41 @@ struct AppearExample {
         .key('appear')
         .onClick(() => {
           this.isShow = !this.isShow
+          try {
+            var backData = {
+              data: {
+                "ACTION": this.isShow,
+              }
+            }
+            var backEvent = {
+              eventId: 58,
+              priority: events_emitter.EventPriority.LOW
+            }
+            console.info("appearFlag start to emit action state")
+            events_emitter.emit(backEvent, backData)
+          } catch {
+            console.info("appearFlag emit action state err: " + JSON.stringify(err.message))
+          }
         }).margin(3).backgroundColor(0x2788D9)
       if (this.isShow) {
         Text(this.myText)
           .onAppear(() => {
-            this.appearFlag = true
+            this.appearFlag = "appearStatusOn"
             this.changeAppear = 'Show Text'
             console.info('appearFlag current action state is: ' + this.appearFlag);
             prompt.showToast({ message: 'The text is shown', duration: 2000 })
             try {
-              var backData = {
+              var backData2 = {
                 data: {
-                  "ACTION": this.appearFlag,
+                  "APPEAR": this.appearFlag,
                 }
               }
-              var backEvent = {
+              var backEvent2 = {
                 eventId: 59,
                 priority: events_emitter.EventPriority.LOW
               }
               console.info("appearFlag start to emit action state")
-              events_emitter.emit(backEvent, backData)
+              events_emitter.emit(backEvent2, backData2)
             } catch {
               console.info("appearFlag emit action state err: " + JSON.stringify(err.message))
             }
@@ -82,17 +97,17 @@ struct AppearExample {
             console.info('disAppearFlag current action state is: ' + this.disAppearFlag);
             prompt.showToast({ message: 'The text is hidden', duration: 2000 })
             try {
-              var backData = {
+              var backData1 = {
                 data: {
                   "ACTION": this.disAppearFlag,
                 }
               }
-              var backEvent = {
+              var backEvent1 = {
                 eventId: 60,
                 priority: events_emitter.EventPriority.LOW
               }
               console.info("disAppearFlag start to emit action state")
-              events_emitter.emit(backEvent, backData)
+              events_emitter.emit(backEvent1, backData1)
             } catch {
               console.info("disAppearFlag emit action state err: " + JSON.stringify(err.message))
             }
