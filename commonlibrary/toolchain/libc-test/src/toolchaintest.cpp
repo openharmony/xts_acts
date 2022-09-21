@@ -36,7 +36,7 @@ using namespace testing;
 namespace OHOS {
 class toolchaintest : public ::testing::TestWithParam<string> {};
 
-static string filepath = "/data/local/tmp/libc-test/src";
+static string filepath = "/data/local/tmp/libc-test";
 static vector<std::string> temp = runtest::GetFileNames(filepath);
 
 volatile int t_status = 0;
