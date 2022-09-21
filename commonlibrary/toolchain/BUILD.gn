@@ -14,17 +14,19 @@ import("//build/ohos_var.gni")
 import("//test/xts/tools/build/suite.gni")
 
 group("toolchain") {
-  testonly = true
-  deps = [ "//third_party/musl:libctest" ]
-  if (is_standard_system) {
-    deps += [ ":tar_dllib" ]
+  if (!(product_name == "m40")) {
+    testonly = true
+    deps = [ "//third_party/musl:libctest" ]
+      if (is_standard_system) {
+        deps += [ ":tar_dllib" ]
+      }
   }
 }
 
 action("tar_testcases") {
   testonly = true
   deps = [
-    "libc-test:ActToolChainTest",
+    "libc-test:ActsToolChainTest",
     "//third_party/musl:libctest",
   ]
   project_dir = rebase_path(".")

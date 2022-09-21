@@ -1,16 +1,16 @@
 {
-    "description": "Configuration for ActToolChainTest Tests",
+    "description": "Configuration for ActsToolChainTest Tests",
     "driver": {
         "type": "CppTest",
         "native-test-timeout": "3600000",
-        "module-name": "ActToolChainTest",
+        "module-name": "ActsToolChainTest",
         "runtime-hint": "100s",
         "native-test-device-path": "/data/local/tmp"
     },
     "kits": [
         {
             "push": [
-                "ActToolChainTest->/data/local/tmp/ActToolChainTest",
+                "ActsToolChainTest->/data/local/tmp/ActsToolChainTest",
                 "libc-test.tar->/data/local/tmp/libc-test.tar",
                 "libc-test-lib.tar->/data/local/tmp/libc-test-lib.tar"
             ],
