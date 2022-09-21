@@ -17,9 +17,9 @@ group("toolchain") {
   if (!(product_name == "m40")) {
     testonly = true
     deps = [ "//third_party/musl:libctest" ]
-      if (is_standard_system) {
-        deps += [ ":tar_dllib" ]
-      }
+    if (is_standard_system) {
+      deps += [ ":tar_dllib" ]
+    }
   }
 }
 
