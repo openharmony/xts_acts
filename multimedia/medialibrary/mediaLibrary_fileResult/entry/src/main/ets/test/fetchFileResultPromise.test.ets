@@ -34,7 +34,7 @@ export default function fetchFileResultPromiseTest(abilityContext) {
         const media = mediaLibrary.getMediaLibrary(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
-            await checkPresetsAssets(media, 'ActsMediaLibraryFileResult');
+            await checkPresetsAssets(media, 'ActsMediaLibraryFileResultTest');
         });
         beforeEach(function () {
             console.info('beforeEach case');

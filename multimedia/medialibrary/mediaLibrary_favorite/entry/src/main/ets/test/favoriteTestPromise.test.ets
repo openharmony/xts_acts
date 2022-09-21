@@ -31,7 +31,7 @@ export default function favoriteTestPromiseTest(abilityContext) {
         var media = mediaLibrary.getMediaLibrary(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
-            await checkPresetsAssets(media, 'ActsMediaLibraryFavorite');
+            await checkPresetsAssets(media, 'ActsMediaLibraryFavoriteTest');
         });
         beforeEach(function () {
             console.info('beforeEach case');

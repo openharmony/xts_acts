@@ -33,7 +33,7 @@ export default function albumGetFileAssetsPromiseTest(abilityContext) {
         const media = mediaLibrary.getMediaLibrary(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
-            await checkPresetsAssets(media, 'ActsMediaLibraryAlbum');
+            await checkPresetsAssets(media, 'ActsMediaLibraryAlbumTest');
         });
         beforeEach(function () {
             console.info('beforeEach case');
