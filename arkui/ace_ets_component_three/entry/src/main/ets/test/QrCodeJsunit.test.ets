@@ -157,7 +157,7 @@ export default function qrCodeJsunit() {
       var strJson = getInspectorByKey('QrCodeColor');
       var obj = JSON.parse(strJson);
       console.info("[test_qrCode_005] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.color).assertEqual('#0000014C');
+      expect(obj.$attrs.color).assertEqual('#FF00014C');
       done();
     });
 
@@ -209,7 +209,7 @@ export default function qrCodeJsunit() {
       var strJson = getInspectorByKey('QrCodeColor');
       var obj = JSON.parse(strJson);
       console.info("[test_qrCode_007] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.backgroundColor).assertEqual('#0000014D');
+      expect(obj.$attrs.backgroundColor).assertEqual('#FF00014D');
       done();
     });
   })
