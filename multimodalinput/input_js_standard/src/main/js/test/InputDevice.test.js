@@ -272,12 +272,13 @@ describe('MultimodalInput_Device_test', function () {
    * @tc.name MultimodalInputDevice_getDeviceIds_Promise_test
    * @tc.desc inputdevice interface getDeviceIds & supportKeys test
    */
-  it("MultimodalInputDevice_getDeviceIds_Promise_test", 0, function () {
+  it("MultimodalInputDevice_getDeviceIds_Promise_test", 0, async function (done) {
     console.info(`MultimodalInputDevice_getDeviceIds_Promise_test enter`);
     inputDevice.getDeviceIds().then((data, err) => {
       if (err) {
         console.info(`MultimodalInputDevice_getDeviceIds_Promise_test err`);
         expect(false).assertTrue();
+        done();
       } else {
         console.info(`MultimodalInputDevice_getDeviceIds_Promise_test data`);
         for (let i = 0; i < data.length; ++i) {
@@ -285,6 +286,7 @@ describe('MultimodalInput_Device_test', function () {
             expect(res).assertInstanceOf('Array');
           });
         }
+        done();
       }
       console.info(`MultimodalInputDevice_getDeviceIds_Promise_test exit`);
     });
@@ -295,16 +297,18 @@ describe('MultimodalInput_Device_test', function () {
    * @tc.name MultimodalInputDevice_getDevice_Promise_test
    * @tc.desc inputdevice interface getDevice test
    */
-  it("MultimodalInputDevice_getDevice_Promise_test", 0, function () {
+  it("MultimodalInputDevice_getDevice_Promise_test", 0, async function (done) {
     console.info(`MultimodalInputDevice_getDevice_Promise_test enter`);
     inputDevice.getDevice(-1).then((data, err) => {
       if (err) {
         console.info(`MultimodalInputDevice_getDevice_Promise_test err`);
         expect(false).assertTrue();
         console.info(`MultimodalInputDevice_getDevice_Promise_test ${JSON.stringify(err)}`);
+        done();
       } else {
         console.info(`MultimodalInputDevice_getDevice_Promise_test data`);
         expect(JSON.stringify(data) !== "{}").assertTrue();
+        done();
       }
       console.info(`MultimodalInputDevice_getDevice_Promise_test exit`);
     });
