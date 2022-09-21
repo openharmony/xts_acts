@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+import events_emitter from '@ohos.events.emitter';
 import router from '@system.router';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
 import Utils from './Utils.ets'
@@ -196,6 +197,31 @@ export default function videoOnFullscreenChangeJsunit() {
       expect(obj.$attrs.textAlign).assertEqual(undefined);
       console.info("[testvideoOnFullscreenChange0010] textAlign value :" + obj.$attrs.textAlign);
       done();
+    });
+
+    it('testvideoOnFullscreenChange0011', 0, async function (done) {
+      console.info('videoOnFullscreenChange testvideoOnFullscreenChange0011 START');
+      var innerEvent = {
+        eventId: 101,
+        priority: events_emitter.EventPriority.LOW
+      }
+      var callback = (eventData) => {
+        try{
+          console.info("callback success" );
+          console.info("eventData.data.result result is: " + eventData.data.result);
+          expect(eventData.data.result).assertEqual("success");
+          console.info("video_101 end: ");
+        }catch(err){
+          console.info("video_101 on events_emitter err : " + JSON.stringify(err));
+        }
+        done();
+      }
+      try {
+        events_emitter.on(innerEvent, callback);
+        console.info("video_101 click result is: " + JSON.stringify(sendEventByKey('fullScreen', 10, "")));
+      } catch (err) {
+        console.info("video_101 on events_emitter err : " + JSON.stringify(err));
+      }
     });
   })
 }

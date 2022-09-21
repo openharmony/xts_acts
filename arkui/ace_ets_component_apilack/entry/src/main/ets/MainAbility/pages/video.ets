@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+import events_emitter from '@ohos.events.emitter';
 import Log from '../common/Log.ets';
 const TAG = 'ets_apiLack_add';
 
@@ -52,6 +53,21 @@ struct VideoOnFullscreenChange {
           console.info('screen is changed')
           console.error('screen is changed')
           console.warn('screen is changed')
+          try{
+            var backData = {
+              data: {
+                "result": "success"
+              }
+            }
+            let backEvent = {
+              eventId: 101,
+              priority: events_emitter.EventPriority.LOW
+            }
+            console.info("video_101 onClick start to emit action state")
+            events_emitter.emit(backEvent, backData)
+          } catch(err) {
+            console.info("video_101 onClick emit action state err: " + JSON.stringify(err.message))
+          }
         })
         .onPause(() => {
           console.error('onPause');
@@ -75,10 +91,15 @@ struct VideoOnFullscreenChange {
           console.error('onUpdateis ' + e.time);
         })
       Row() {
-        Button("FullScreen").onClick(() => {
-          this.controller.requestFullscreen(true)
+        Button("FullScreen")
+          .key("fullScreen")
+          .onClick(() => {
+            this.controller.requestFullscreen(true)
         });
-        Button("ExitFullScreen").onClick(() => {
+
+        Button("ExitFullScreen")
+          .key("exitFullScreen")
+          .onClick(() => {
           this.controller.exitFullscreen()
         });
       }

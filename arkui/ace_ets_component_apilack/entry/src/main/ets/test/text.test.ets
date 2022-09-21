@@ -198,5 +198,29 @@ export default function textMinFontSizeJsunit() {
       console.info("[testtextMinFontSize0010] textAlign value :" + obj.$attrs.textAlign);
       done();
     });
+
+    it('testtextMinFontSize0011', 0, async function (done) {
+      console.info('textMinFontSize testtextMinFontSize0011 START');
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('minFontSizeText');
+      console.info("[testtextMinFontSize0011] component minFontSize strJson:" + strJson);
+      let obj = JSON.parse(strJson);
+      expect(obj.$type).assertEqual('Text');
+      expect(obj.$attrs.minFontSize).assertEqual(undefined);
+      console.info("[testtextMinFontSize0011] minFontSize value :" + obj.$attrs.minFontSize);
+      done();
+    });
+
+    it('testtextCopyOptionText0001', 0, async function (done) {
+      console.info('textMinFontSize testtextCopyOptionText0001 START');
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('copyOptionText');
+      console.info("[testtextCopyOptionText0001] component copyOption strJson:" + strJson);
+      let obj = JSON.parse(strJson);
+      expect(obj.$type).assertEqual('Text');
+      expect(obj.$attrs.copyOption).assertEqual(undefined);
+      console.info("[testtextCopyOptionText0001] copyOption value :" + obj.$attrs.copyOption);
+      done();
+    });
   })
 }
