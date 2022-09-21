@@ -9,7 +9,7 @@
     },
     "kits": [
         {
-		    "type": "PushKit",
+            "type": "PushKit",
             "pre-push" : [
                 "mount -o rw,remount /",
                 "rm /data/media/*",
