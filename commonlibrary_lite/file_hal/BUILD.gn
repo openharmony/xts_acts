@@ -22,7 +22,7 @@ hctest_suite("ActsUtilsFileTest") {
 
   include_dirs = [
     "src",
-    "//utils/native/lite/include",
+    "//commonlibrary/utils_lite/include",
   ]
   cflags = [ "-Wno-error" ]
 }

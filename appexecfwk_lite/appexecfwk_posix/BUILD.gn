@@ -29,7 +29,7 @@ hcpptest_suite("ActsBundleMgrTest") {
     "//foundation/systemabilitymgr/samgr_lite/interfaces/kits/samgr",
     "//foundation/systemabilitymgr/samgr_lite/interfaces/kits/registry",
     "//third_party/googletest/googletest/include",
-    "//utils/native/lite/include",
+    "//commonlibrary/utils_lite/include",
     "${aafwk_lite_path}/interfaces/innerkits/intent_lite",
     "//third_party/cJSON",
   ]

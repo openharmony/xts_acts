@@ -23,7 +23,7 @@ hctest_suite("ActsSecurityHichainBasicDeps") {
 
   include_dirs = [
     "//commonlibrary/c_utils/base/include",
-    "//utils/native/lite/include",
+    "//commonlibrary/utils_lite/include",
     "//test/xts/tools/lite/hctest/include",
     "//third_party/unity/src",
     "//foundation/systemabilitymgr/samgr_lite/interfaces/kits/samgr",
