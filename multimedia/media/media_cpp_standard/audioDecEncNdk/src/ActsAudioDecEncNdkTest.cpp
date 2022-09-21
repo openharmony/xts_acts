@@ -244,11 +244,19 @@ HWTEST_F(ActsAudioDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_AUDIO_DEC_ENC_FUNCTION_040
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->PrepareEnc());
     aDecEncSample->SetReadPath(READPATH, ES_AAC_48000_32_1, ES_AAC_48000_32_1_Length);
     aDecEncSample->SetSavePath("/data/media/AAC_48000_32_1_out4.aac");
+    aDecEncSample->SetEosState(false);
 
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->StartEnc());
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->StartDec());
-    while (aDecEncSample->GetFrameCount() < 100) {};
+    while (aDecEncSample->GetFrameCount() < 50) {};
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->FlushDec());
+    ASSERT_EQ(AV_ERR_OK, aDecEncSample->FlushEnc());
+    aDecEncSample->ReRead();
+    aDecEncSample->ResetDecParam();
+    aDecEncSample->ResetEncParam();
+    aDecEncSample->SetSavePath("/data/media/AAC_48000_32_1_out4_2.aac");
+    aDecEncSample->SetEosState(true);
+    ASSERT_EQ(AV_ERR_OK, aDecEncSample->StartEnc());
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->StartDec());
 
     while (!aDecEncSample->GetEncEosState()) {};
@@ -341,11 +349,19 @@ HWTEST_F(ActsAudioDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_AUDIO_DEC_ENC_FUNCTION_060
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->PrepareEnc());
     aDecEncSample->SetReadPath(READPATH, ES_AAC_48000_32_1, ES_AAC_48000_32_1_Length);
     aDecEncSample->SetSavePath("/data/media/AAC_48000_32_1_out6.aac");
+    aDecEncSample->SetEosState(false);
 
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->StartEnc());
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->StartDec());
-    while (aDecEncSample->GetFrameCount() < 100) {};
+    while (aDecEncSample->GetFrameCount() < 50) {};
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->StopDec());
+    ASSERT_EQ(AV_ERR_OK, aDecEncSample->StopEnc());
+    aDecEncSample->ReRead();
+    aDecEncSample->ResetDecParam();
+    aDecEncSample->ResetEncParam();
+    aDecEncSample->SetSavePath("/data/media/AAC_48000_32_1_out6_2.aac");
+    aDecEncSample->SetEosState(true);
+    ASSERT_EQ(AV_ERR_OK, aDecEncSample->StartEnc());
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->StartDec());
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->CalcuError());
 
