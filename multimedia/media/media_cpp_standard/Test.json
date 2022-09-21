@@ -11,6 +11,10 @@
         {
 		    "type": "PushKit",
             "pre-push" : [
+                "mount -o rw,remount /",
+                "rm /data/media/*",
+                "mkdir -p /data/media/",
+                "mkdir -p /data/local/tmp/"
             ],
             "push": [
                 "ActsAvcodecNdkTest->/data/local/tmp/ActsAvcodecNdkTest",
