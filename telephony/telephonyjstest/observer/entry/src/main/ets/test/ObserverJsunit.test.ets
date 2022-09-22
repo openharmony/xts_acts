@@ -67,12 +67,10 @@ export default function observerJsunit() {
      */
     it('Telephony_observer_observer_DataConnectState_0200', 0, function (done) {
       console.log("************* Telephony_observer_observer_DataConnectState_0200 Test start *************")
-      if (utils.notCheck) {
-        expect(true).assertTrue()
-        done()
-      }
-      //      console.log(observer.DataConnectState)
+      console.log("Telephony_observer_observer_DataConnectState_0200" + observer.DataConnectState)
+      expect(observer.DataConnectState == undefined).assertTrue();
       console.log("************* Telephony_observer_observer_DataConnectState_0200 Test end *************")
+      done();
     })
 
     /*
@@ -82,11 +80,8 @@ export default function observerJsunit() {
      */
     it('Telephony_observer_observer_RatType_0100', 0, async function (done) {
       console.log("************* Telephony_observer_observer_RatType_0100 Test start *************")
-      if (utils.notCheck) {
-        expect(true).assertTrue()
-        done()
-      }
-      //      console.log(observer.RatType)
+      console.log("Telephony_observer_observer_RatType_0100" +observer.RatType)
+      expect(observer.RatType == undefined).assertTrue();
       console.log("************* Telephony_observer_observer_RatType_0100 Test end *************")
       done()
     })
@@ -103,7 +98,7 @@ export default function observerJsunit() {
         done()
         return
       })
-      setTimeout(timeout, 3000)
+     //setTimeout(timeout, 3000)
       console.log("************* Telephony_observer_observer_on_networkStateChange_0100 Test end *************")
       done()
     })
@@ -122,7 +117,7 @@ export default function observerJsunit() {
         done()
         return
       })
-      setTimeout(timeout, 3000)
+      //setTimeout(timeout, 3000)
       console.log("************* Telephony_observer_observer_on_networkStateChange_0200 Test end *************")
       done()
     })
@@ -139,7 +134,7 @@ export default function observerJsunit() {
         done()
         return
       })
-      setTimeout(timeout, 3000)
+      //setTimeout(timeout, 3000)
       console.log("************* Telephony_observer_observer_off_networkStateChange_0100 Test end *************")
       done()
     })
@@ -156,7 +151,7 @@ export default function observerJsunit() {
         done()
         return
       })
-      setTimeout(timeout, 3000)
+     //setTimeout(timeout, 3000)
       console.log("************* Telephony_observer_observer_on_signalInfoChange_0100 Test end *************")
       done()
     })
@@ -175,7 +170,7 @@ export default function observerJsunit() {
         done()
         return
       })
-      setTimeout(timeout, 3000)
+      //setTimeout(timeout, 3000)
       console.log("************* Telephony_observer_observer_on_signalInfoChange_0200 Test end *************")
       done()
     })
@@ -192,7 +187,7 @@ export default function observerJsunit() {
         done()
         return
       })
-      setTimeout(timeout, 3000)
+      //setTimeout(timeout, 3000)
       console.log("************* Telephony_observer_observer_off_signalInfoChange_0100 Test end *************")
       done()
     })
@@ -211,7 +206,7 @@ export default function observerJsunit() {
         done()
         return
       })
-      setTimeout(timeout, 3000)
+      //setTimeout(timeout, 3000)
       console.log("************* Telephony_observer_observer_on_cellularDataConnectionStateChange_0100 Test end *************")
       done()
     })
@@ -230,7 +225,7 @@ export default function observerJsunit() {
         done()
         return
       })
-      setTimeout(timeout, 3000)
+      //setTimeout(timeout, 3000)
       console.log("************* Telephony_observer_observer_on_cellularDataConnectionStateChange_0200 Test end *************")
       done()
     })
@@ -247,7 +242,7 @@ export default function observerJsunit() {
         done()
         return
       })
-      setTimeout(timeout, 3000)
+      //setTimeout(timeout, 3000)
       console.log("************* Telephony_observer_observer_off_cellularDataConnectionStateChange_0100 Test end *************")
       done()
     })
@@ -264,7 +259,7 @@ export default function observerJsunit() {
         done()
         return
       })
-      setTimeout(timeout, 3000)
+      //setTimeout(timeout, 3000)
       console.log("************* Telephony_observer_observer_on_cellularDataFlowChange_0100 Test end *************")
       done()
     })
@@ -283,7 +278,7 @@ export default function observerJsunit() {
         done()
         return
       })
-      setTimeout(timeout, 3000)
+      //setTimeout(timeout, 3000)
       console.log("************* Telephony_observer_observer_on_cellularDataFlowChange_0200 Test end *************")
       done()
     })
@@ -300,7 +295,7 @@ export default function observerJsunit() {
         done()
         return
       })
-      setTimeout(timeout, 3000)
+      //setTimeout(timeout, 3000)
       console.log("************* Telephony_observer_observer_off_cellularDataFlowChange_0100 Test end *************")
       done()
     })
@@ -317,7 +312,7 @@ export default function observerJsunit() {
         done()
         return
       })
-      setTimeout(timeout, 3000)
+      //setTimeout(timeout, 3000)
       console.log("************* Telephony_observer_observer_on_callStateChange_0100 Test end *************")
       done()
     })
@@ -336,7 +331,7 @@ export default function observerJsunit() {
         done()
         return
       })
-      setTimeout(timeout, 3000)
+      //setTimeout(timeout, 3000)
       console.log("************* Telephony_observer_observer_on_callStateChange_0200 Test end *************")
       done()
     })
@@ -353,7 +348,7 @@ export default function observerJsunit() {
         done()
         return
       })
-      setTimeout(timeout, 3000)
+      //setTimeout(timeout, 3000)
       console.log("************* Telephony_observer_observer_off_callStateChange_0100 Test end *************")
       done()
     })
@@ -370,7 +365,7 @@ export default function observerJsunit() {
         done()
         return
       })
-      setTimeout(timeout, 3000)
+      //setTimeout(timeout, 3000)
       console.log("************* Telephony_observer_observer_on_simStateChange_0100 Test end *************")
       done()
     })
@@ -389,7 +384,7 @@ export default function observerJsunit() {
         done()
         return
       })
-      setTimeout(timeout, 3000)
+      //setTimeout(timeout, 3000)
       console.log("************* Telephony_observer_observer_on_simStateChange_0200 Test end *************")
       done()
     })
@@ -406,7 +401,7 @@ export default function observerJsunit() {
         done()
         return
       })
-      setTimeout(timeout, 3000)
+      //setTimeout(timeout, 3000)
       console.log("************* Telephony_observer_observer_off_simStateChange_0100 Test end *************")
       done()
     })
