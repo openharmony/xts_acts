@@ -182,30 +182,6 @@ export default function pasteBoardTest(){
         })
 
         /**
-         * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_TEST_0500
-         * @tc.name      Create PixelMap data with string type parameters;
-         * @tc.desc      Test pasteBoard API functionality.
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 2
-        */
-        it('SUB_PASTEBOARD_FUNCTION_ETS_TEST_0500', 0, async function (done) {
-            console.info("SUB_PASTEBOARD_FUNCTION_ETS_TEST_0500 start")
-            var systemPasteBoard = pasteboard.getSystemPasteboard();
-            await systemPasteBoard.clear().then(async () => {
-                var pasteData = null;
-                var pixelMap = "pixelMap";
-                try{
-                    pasteData = pasteboard.createPixelMapData(pixelMap)
-                }catch(err){
-                    console.info("Create pixleMap data fail " + err)
-                }
-                expect(pasteData == null).assertTrue();
-            })
-            done();
-        })
-
-        /**
          * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_TEST_0600
          * @tc.name      Create PixelMap data with parameter is null;
          * @tc.desc      Test pasteBoard API functionality.
@@ -225,30 +201,6 @@ export default function pasteBoardTest(){
                     console.info("Create pixleMap data fail " + err)
                 }
                 expect(pasteData == null).assertTrue();
-            })
-            done();
-        })
-
-        /**
-         * @tc.number    SUB_PASTEBOARD_FUNCTION_ETS_TEST_0700
-         * @tc.name      Create PixelMap record with string type parameters; 
-         * @tc.desc      Test pasteBoard API functionality.
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 2
-        */
-         it('SUB_PASTEBOARD_FUNCTION_ETS_TEST_0700', 0, async function (done) {
-            console.info("SUB_PASTEBOARD_FUNCTION_ETS_TEST_0700 start")
-            var systemPasteBoard = pasteboard.getSystemPasteboard();
-            await systemPasteBoard.clear().then(async () => {
-                var pixelMapRecord = undefined;
-                var pixelMap = "pixelMap";
-                try{
-                    pixelMapRecord = pasteboard.createPixelMapRecord(pixelMap)
-                }catch(err){
-                    console.info("Create pixleMap data fail " + err)
-                }
-                expect(pixelMapRecord == null).assertTrue();
             })
             done();
         })
