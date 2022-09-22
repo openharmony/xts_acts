@@ -51,7 +51,7 @@
         },
         {
             "test-file-name": [
-                "ActsUserFileMgrAlbum.hap"
+                "ActsUserFileMgrAlbumJsTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

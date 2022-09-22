@@ -18,8 +18,8 @@ import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 import bundle from '@ohos.bundle';
 
 const presetsCount = {
-    ActsUserFileMgrAlbum: { albumsCount: 9, assetsCount: 9 },
-    ActsUserFileMgrBase: { albumsCount: 42, assetsCount: 84 },
+    ActsUserFileMgrAlbumJsTest: { albumsCount: 9, assetsCount: 9 },
+    ActsUserFileMgrBaseJsTest: { albumsCount: 42, assetsCount: 84 },
 }
 
 const IMAGE_TYPE = userfile_manager.MediaType.IMAGE;
