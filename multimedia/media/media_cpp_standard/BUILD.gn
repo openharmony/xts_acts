@@ -29,7 +29,7 @@ ohos_moduletest_suite("ActsAvcodecNdkTest") {
     "videoDecEncNdk/include",
     "//foundation/multimedia/audio_framework/interfaces/inner_api/native/audiocommon/include",
     "//foundation/multimedia/player_framework/interfaces/kits/c",
-    "//utils/native/base/include",
+    "//commonlibrary/c_utils/base/include",
     "//base/hiviewdfx/hisysevent/interfaces/native/innerkits/hisysevent/include",
   ]
 
@@ -51,6 +51,7 @@ ohos_moduletest_suite("ActsAvcodecNdkTest") {
     "",
   ]
 
+  external_deps = [ "c_utils:utils" ]
   deps = [
     "//foundation/graphic/graphic_2d/frameworks/surface:surface",
     "//foundation/multimedia/player_framework/interfaces/kits/c:native_media_adec",
@@ -59,7 +60,6 @@ ohos_moduletest_suite("ActsAvcodecNdkTest") {
     "//foundation/multimedia/player_framework/interfaces/kits/c:native_media_core",
     "//foundation/multimedia/player_framework/interfaces/kits/c:native_media_vdec",
     "//foundation/multimedia/player_framework/interfaces/kits/c:native_media_venc",
-    "//utils/native/base:utils",
   ]
 
   subsystem_name = "multimedia"
