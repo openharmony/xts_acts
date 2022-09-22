@@ -31,7 +31,7 @@ export default function fileAssetCommitModifyPromise(abilityContext) {
         const userfile_mgr = userfile_manager.getUserFileMgr(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
-            await checkPresetsAssets(userfile_mgr, 'ActsUserFileMgrFileAsset')
+            await checkPresetsAssets(userfile_mgr, 'ActsUserFileMgrFileAssetJsTest')
         });
         beforeEach(function () {
             console.info('beforeEach case');

@@ -36,7 +36,7 @@
         },
         {
             "test-file-name": [
-                "ActsUserFileMgrNoPermission.hap"
+                "ActsUserFileMgrNoPermissionJsTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
