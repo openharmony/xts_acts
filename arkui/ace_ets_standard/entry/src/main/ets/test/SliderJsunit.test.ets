@@ -67,7 +67,7 @@ export default function sliderJsunit() {
       console.info("component obj is  Slider: " + JSON.stringify(obj.$attrs.constructor));
       expect(obj.$attrs.showTips).assertEqual("false")
       expect(obj.$attrs.showSteps).assertEqual("false")
-      expect(obj.$attrs.constructor.value).assertEqual(40.000000.toFixed(6))
+      expect(obj.$attrs.constructor.value).assertEqual(10.000000.toFixed(6))
       expect(obj.$attrs.constructor.min).assertEqual(0.000000.toFixed(6))
       expect(obj.$attrs.constructor.max).assertEqual(100.000000.toFixed(6))
       expect(obj.$attrs.constructor.step).assertEqual(1.000000.toFixed(6))
