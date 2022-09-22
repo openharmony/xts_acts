@@ -553,7 +553,7 @@ export default function test() {
 
             const systemstatus = await formHost.isSystemReady();
             console.info(`${tcNumber} systemstatus: ${JSON.stringify(systemstatus)}`);
-            expect(systemstatus).assertEqual(undefined);
+            expect(systemstatus).assertTrue()
             done();
         });
     });
