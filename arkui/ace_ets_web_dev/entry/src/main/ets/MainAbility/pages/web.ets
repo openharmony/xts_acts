@@ -622,9 +622,12 @@ struct Index {
                             break;
                         }
                         case "emitOnHttpErrorReceive":{                           
-                            this.controller.loadUrl({url:'http://example.com/path/does/not/exist/index.jsp'})
-                            setTimeout(()=>{     
-                                Utils.emitEvent(this.httpErrorReceive,66)                                                                                
+                            this.controller.loadUrl({url:'https://example1.com/path/does/not/exist/index.jsp'})
+                            setTimeout(()=>{
+                                this.controller.loadUrl({url:'https://example1.com/path/does/not/exist/index.jsp'})    
+                                setTimeout(()=>{     
+                                    Utils.emitEvent(this.httpErrorReceive,66)                                                                                
+                                },3000)
                             },3000)
                             break;
                         }
