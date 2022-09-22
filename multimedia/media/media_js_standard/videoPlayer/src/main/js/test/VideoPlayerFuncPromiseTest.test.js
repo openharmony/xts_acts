@@ -1233,7 +1233,7 @@ describe('VideoPlayerFuncPromiseTest', function () {
             expect(videoPlayer.state).assertEqual('playing');
         }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
         endTime = videoPlayer.currentTime;
-        checkTime(PLAY_TIME * 2, (endTime - startTime), DELTA_TIME);
+        checkTime(PLAY_TIME * 2, (endTime - startTime), DELTA_TIME * 2);
     })
 })
 }
