@@ -1,0 +1,171 @@
+/*
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import userfile_manager from '@ohos.filemanagement.userfile_manager';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
+import image from '@ohos.multimedia.image';
+import {
+    sleep,
+    IMAGE_TYPE,
+    VIDEO_TYPE,
+    AUDIO_TYPE,
+    checkPresetsAssets,
+    checkAssetsCount,
+    nameFetchOps,
+} from '../../../../../../common';
+
+export default function fileAssetGetThumbnailPromise(abilityContext) {
+    describe('fileAssetGetThumbnailPromise', function () {
+        image.createPixelMap(new ArrayBuffer(4096), { size: { height: 1, width: 2 } }).then((pixelmap) => { });
+        const userfile_mgr = userfile_manager.getUserFileMgr(abilityContext);
+        beforeAll(async function () {
+            console.info('beforeAll case');
+            await checkPresetsAssets(userfile_mgr, 'ActsUserFileMgrGetThumbnailTest');
+        });
+        beforeEach(function () {
+            console.info('beforeEach case');
+        });
+        afterEach(async function () {
+            console.info('afterEach case');
+            await sleep()
+        });
+        afterAll(function () {
+            console.info('afterAll case');
+        });
+
+        async function testGetThumbnail(done, testNum, media_type, dOp, size,) {
+            try {
+                let fetchFileResult = await userfile_mgr.getFileAssets(media_type, dOp);
+                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 1);
+                if (!checkAssetCountPass) return;
+                let asset = await fetchFileResult.getFirstObject();
+                console.info(`${testNum}:displayName ${asset.displayName}`)
+                let pixelmap;
+                if (size == 'default') {
+                    size = { width: 256, height: 256 };
+                    pixelmap = await asset.getThumbnail()
+                } else {
+                    pixelmap = await asset.getThumbnail(size)
+                }
+                let info = await pixelmap.getImageInfo();
+                console.info(`${testNum}:: width :${info.size.width} height :${info.size.height}`);
+                expect(info.size.width).assertEqual(size.width);
+                expect(info.size.height).assertEqual(size.height);
+                done();
+            } catch (error) {
+                console.info(`${testNum}:: error :${error}`);
+                expect(false).assertTrue();
+                done();
+            }
+        }
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_PROMISE_01_001
+         * @tc.name      : getThumbnail
+         * @tc.desc      : getThumbnail(image) by no arg
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_PROMISE_01_001', 0, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_PROMISE_01_001';
+            let media_type = [IMAGE_TYPE];
+            let dOp = nameFetchOps(testNum, 'Pictures/Thumbnail/', '01.jpg');
+            let size = 'default';
+            await testGetThumbnail(done, testNum, media_type, dOp, size,);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_PROMISE_01_002
+         * @tc.name      : getThumbnail
+         * @tc.desc      : getThumbnail(image) by { width: 128, height: 128 }
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_PROMISE_01_002', 0, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_PROMISE_01_002';
+            let media_type = [IMAGE_TYPE];
+            let dOp = nameFetchOps(testNum, 'Pictures/Thumbnail/', '02.jpg');
+            let size = { width: 128, height: 128 };
+            await testGetThumbnail(done, testNum, media_type, dOp, size)
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_PROMISE_02_001
+         * @tc.name      : getThumbnail
+         * @tc.desc      : getThumbnail(audio) by no arg
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_PROMISE_02_001', 0, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_PROMISE_02_001';
+            let media_type = [AUDIO_TYPE];
+            let dOp = nameFetchOps(testNum, 'Audios/Thumbnail/', '01.mp3');
+            let size = 'default';
+            await testGetThumbnail(done, testNum, media_type, dOp, size,);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_PROMISE_02_002
+         * @tc.name      : getThumbnail
+         * @tc.desc      : getThumbnail(audio) by { width: 128, height: 128 }
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_PROMISE_02_002', 0, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_PROMISE_02_002';
+            let media_type = [AUDIO_TYPE];
+            let dOp = nameFetchOps(testNum, 'Audios/Thumbnail/', '02.mp3');
+            let size = { width: 128, height: 128 };
+            await testGetThumbnail(done, testNum, media_type, dOp, size)
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_PROMISE_03_001
+         * @tc.name      : getThumbnail
+         * @tc.desc      : getThumbnail(video) by no arg
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_PROMISE_03_001', 0, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_PROMISE_03_001';
+            let media_type = [VIDEO_TYPE];
+            let dOp = nameFetchOps(testNum, 'Videos/Thumbnail/', '01.mp4');
+            let size = 'default';
+            await testGetThumbnail(done, testNum, media_type, dOp, size,);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_PROMISE_03_002
+         * @tc.name      : getThumbnail
+         * @tc.desc      : getThumbnail(video) by { width: 128, height: 128 }
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_PROMISE_03_002', 0, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_PROMISE_03_002';
+            let media_type = [VIDEO_TYPE];
+            let dOp = nameFetchOps(testNum, 'Videos/Thumbnail/', '02.mp4');
+            let size = { width: 128, height: 128 };
+            await testGetThumbnail(done, testNum, media_type, dOp, size)
+        });
+    });
+}
+
