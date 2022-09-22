@@ -51,7 +51,7 @@
         },
         {
             "test-file-name": [
-                "ActsUserFileMgrBase.hap"
+                "ActsUserFileMgrBaseJsTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

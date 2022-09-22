@@ -21,7 +21,7 @@ ohos_js_hap_suite("userfilemgr_base_js_hap") {
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "ActsUserFileMgrBase"
+  hap_name = "ActsUserFileMgrBaseJsTest"
 }
 
 ohos_app_scope("medialibrary_app_profile") {

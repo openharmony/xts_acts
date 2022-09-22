@@ -59,7 +59,7 @@
         },
         {
             "test-file-name": [
-                "ActsUserFileMgrFileAsset.hap"
+                "ActsUserFileMgrFileAssetJsTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
