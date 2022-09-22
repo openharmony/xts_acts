@@ -33,7 +33,7 @@ export default function fetchFileResultCallbackTest(abilityContext) {
         beforeAll(async function () {
             console.info('beforeAll case');
             await getPermission();
-            await checkPresetsAssets(media, 'ActsMediaLibraryFileResult');
+            await checkPresetsAssets(media, 'ActsMediaLibraryFileResultTest');
         });
         beforeEach(function () {
             console.info('beforeEach case');

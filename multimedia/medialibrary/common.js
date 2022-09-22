@@ -17,16 +17,16 @@ import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 import bundle from '@ohos.bundle';
 
 const presetsCount = {
-    ActsMediaLibraryAlbum: { albumsCount: 7, assetsCount: 19 },
-    ActsMediaLibraryFavorite: { albumsCount: 6, assetsCount: 32 },
+    ActsMediaLibraryAlbumTest: { albumsCount: 7, assetsCount: 19 },
+    ActsMediaLibraryFavoriteTest: { albumsCount: 6, assetsCount: 32 },
     ActsMediaLibraryAlbumFileResultCb: { albumsCount: 5, assetsCount: 118 },
-    ActsMediaLibraryFile: { albumsCount: 6, assetsCount: 21 },
-    ActsMediaLibraryFileAsset: { albumsCount: 27, assetsCount: 72 },
+    ActsMediaLibraryFileTest: { albumsCount: 6, assetsCount: 21 },
+    ActsMediaLibraryFileAssetTest: { albumsCount: 27, assetsCount: 72 },
     ActsMediaLibraryFileAssetUri: { albumsCount: 3, assetsCount: 6 },
-    ActsMediaLibraryFileKey: { albumsCount: 2, assetsCount: 2 },
-    ActsMediaLibraryFileResult: { albumsCount: 4, assetsCount: 13 },
+    ActsMediaLibraryFileKeyTest: { albumsCount: 2, assetsCount: 2 },
+    ActsMediaLibraryFileResultTest: { albumsCount: 4, assetsCount: 13 },
     ActsMediaLibraryGetThumbnail: { albumsCount: 3, assetsCount: 3 },
-    ActsMediaLibraryBase: { albumsCount: 11, assetsCount: 11 },
+    ActsMediaLibraryBaseTest: { albumsCount: 11, assetsCount: 11 },
 }
 
 const IMAGE_TYPE = mediaLibrary.MediaType.IMAGE;
