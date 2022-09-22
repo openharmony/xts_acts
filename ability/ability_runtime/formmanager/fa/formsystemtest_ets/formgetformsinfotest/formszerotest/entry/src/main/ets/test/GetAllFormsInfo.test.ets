@@ -44,7 +44,6 @@ export const getAllFormsInfoTest = (describeName, filterParameter) => {
           expect(dataD.length).assertEqual(0);
           expect(JSON.stringify(dataD)).assertEqual(`[]`);
           expect(error.code).assertEqual(ERR_OK_CODE);
-          expect(error.message).assertEqual(ERR_OK);
           done();
           console.log(`==========${callbackName} ${describeName} end==========`);
         });
