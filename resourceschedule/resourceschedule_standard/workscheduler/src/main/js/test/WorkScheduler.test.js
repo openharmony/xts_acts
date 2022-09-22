@@ -13,13 +13,44 @@
  * limitations under the License.
  */
 import workScheduler from '@ohos.workScheduler'
+import WorkSchedulerExtensionAbility from '@ohos.WorkSchedulerExtensionAbility'
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
 export default function WorkSchedulerJsTest() {
 describe("WorkSchedulerJsTest", function () {
+    let workInfo = {
+        workId: 0,
+        bundleName: "ohos.acts.resourceschedule.workscheduler.js.function",
+        abilityName: "com.mytest.abilityName"
+    }
+
+    function workStart(workInfo, callback) {
+        let result = null
+        try{
+            WorkSchedulerExtensionAbility.onWorkStart(workInfo)
+            result = true
+        } catch(err) {
+            result = err
+        }
+        callback(result)
+    }
+
+    function workStop(workInfo, callback) {
+        let result = null
+        try{
+            WorkSchedulerExtensionAbility.onWorkStop(workInfo)
+            result = true
+        } catch(err) {
+            result = err
+        }
+        callback(result)
+    }
     beforeAll(function() {
-       
+
+        workStart(workInfo,function(data) {
+            console.info("onWorkStart finish,result: " + data)
+        })
         /*
          * @tc.setup: setup invoked before all testcases
          */
@@ -28,6 +59,9 @@ describe("WorkSchedulerJsTest", function () {
 
     afterAll(function() {
         
+        workStop(workInfo, function(data) {
+            console.info("onWorkStop finish,result: " + data)
+        })
         /*
          * @tc.teardown: teardown invoked after all testcases
          */
