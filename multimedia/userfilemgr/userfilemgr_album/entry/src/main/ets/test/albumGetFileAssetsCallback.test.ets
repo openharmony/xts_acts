@@ -32,7 +32,7 @@ export default function albumGetFileAssetsCallback(abilityContext) {
         const userfile_mgr = userfile_manager.getUserFileMgr(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
-            await checkPresetsAssets(userfile_mgr, 'ActsUserFileMgrAlbumJsTest');
+            await checkPresetsAssets(userfile_mgr, 'ActsUserFileMgrAlbum');
         });
         beforeEach(function () {
             console.info('beforeEach case');
