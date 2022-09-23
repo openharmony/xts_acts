@@ -54,18 +54,6 @@ export default function userFileMgrNoPermissionPromise(abilityContext) {
             }
         }
 
-        const createAssetTest = async function (done, testNum, type, name, path) {
-            try {
-                await userfile_mgr.createAsset(type, name, path);
-                expect(false).assertTrue();
-                done();
-            } catch (error) {
-                console.info(`${testNum}, failed error: ${error}`)
-                expect(true).assertTrue();
-                done();
-            }
-        }
-
         const getAlbumsTest = async function (done, testNum, media_type) {
             try {
                 await userfile_mgr.getAlbums(media_type, allFetchOp());
@@ -118,56 +106,6 @@ export default function userFileMgrNoPermissionPromise(abilityContext) {
             const testNum = 'SUB_USERFILE_MGR_GETFILEASSETS_NOPERMISSION_PROMISE_03';
             let media_type = [VIDEO_TYPE];
             await getFileAssetsTest(done, testNum, media_type);
-        });
-
-        //---------------------------------------------------------------------------------------
-
-        /**
-         * @tc.number    : SUB_USERFILE_MGR_CREATEASSET_NOPERMISSION_PROMISE_01
-         * @tc.name      : createAsset
-         * @tc.desc      : createAsset(image) with no permission
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_USERFILE_MGR_CREATEASSET_NOPERMISSION_PROMISE_01', 0, async function (done) {
-            const testNum = 'SUB_USERFILE_MGR_CREATEASSET_NOPERMISSION_PROMISE_01';
-            let type = IMAGE_TYPE;
-            let name = new Date().getTime() + '.jpg';
-            let path = 'Pictures/Create/';
-            await createAssetTest(done, testNum, type, name, path);
-        });
-
-        /**
-         * @tc.number    : SUB_USERFILE_MGR_CREATEASSET_NOPERMISSION_PROMISE_02
-         * @tc.name      : createAsset
-         * @tc.desc      : createAsset(audio) with no permission
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_USERFILE_MGR_CREATEASSET_NOPERMISSION_PROMISE_02', 0, async function (done) {
-            const testNum = 'SUB_USERFILE_MGR_CREATEASSET_NOPERMISSION_PROMISE_02';
-            let type = AUDIO_TYPE;
-            let name = new Date().getTime() + '.mp3';
-            let path = 'Audios/Create/';
-            await createAssetTest(done, testNum, type, name, path);
-        });
-
-        /**
-         * @tc.number    : SUB_USERFILE_MGR_CREATEASSET_NOPERMISSION_PROMISE_03
-         * @tc.name      : createAsset
-         * @tc.desc      : createAsset(video) with no permission
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_USERFILE_MGR_CREATEASSET_NOPERMISSION_PROMISE_03', 0, async function (done) {
-            const testNum = 'SUB_USERFILE_MGR_CREATEASSET_NOPERMISSION_PROMISE_03';
-            let type = VIDEO_TYPE;
-            let name = new Date().getTime() + '.mp4';
-            let path = 'Videos/Create/';
-            await createAssetTest(done, testNum, type, name, path);
         });
 
         //--------------------------------------------------------------------------------------
