@@ -70,6 +70,14 @@
               {
                 "name":"ohos.permission.CLEAN_BACKGROUND_PROCESSES",
                 "reason":"need use ohos.permission.GET_RUNNING_INFO"
+              },
+              {
+                "name":"ohos.permission.START_ABILITIES_FROM_BACKGROUND",
+                "reason":"need use ohos.permission.START_ABILITIES_FROM_BACKGROUND"
+              },
+              {
+                "name":"ohos.permission.START_INVISIBLE_ABILITY",
+                "reason":"need use ohos.permission.START_INVISIBLE_ABILITY"
               }
           ]
     }
