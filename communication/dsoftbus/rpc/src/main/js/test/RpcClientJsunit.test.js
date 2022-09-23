@@ -5741,8 +5741,8 @@ describe('ActsRpcClientJsTest', function(){
             let rawdata = [1, 2, 3];
             let option = new rpc.MessageOption();
             let reply = rpc.MessageParcel.create();
-            expect(data.writeInt(K)).assertTrue();
-            let result = data.writeRawData(rawdata, K);
+            expect(data.writeInt(rawdata.length)).assertTrue();
+            let result = data.writeRawData(rawdata, rawdata.length);
             console.info("SUB_Softbus_IPC_Compatility_MessageParcel_15000:run writeRawDatais is " + result);
             expect(result).assertTrue();
             if (gIRemoteObject == undefined){
@@ -5861,8 +5861,8 @@ describe('ActsRpcClientJsTest', function(){
             let rawdata = [1, 2, 3];
             let option = new rpc.MessageOption();
             let reply = rpc.MessageParcel.create();
-            expect(data.writeInt(K)).assertTrue();
-            let result = data.writeRawData(rawdata, K);
+            expect(data.writeInt(rawdata.length)).assertTrue();
+            let result = data.writeRawData(rawdata, rawdata.length);
             console.info("SUB_Softbus_IPC_Compatility_MessageParcel_15400:run writeRawData is " + result);
             expect(result).assertTrue();
             if (gIRemoteObject == undefined){
