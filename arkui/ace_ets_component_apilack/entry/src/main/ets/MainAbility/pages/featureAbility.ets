@@ -14,40 +14,26 @@
  */
 
 import Log from '../common/Log.ets';
-import inputEventClient from '@ohos.multimodalInput.inputEventClient';
+
 const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-export default struct CommonBackgroundBlurStyle {
-  @State value: string = ''
+export default struct FeatureAbilityStartAbility {
   aboutToAppear() {
-    Log.showInfo(TAG, `aboutToAppear CommonBackgroundBlurStyle start`)
+    Log.showInfo(TAG, `aboutToAppear FeatureAbilityStartAbility start`)
   }
 
   aboutToDisappear() {
-    Log.showInfo(TAG, `aboutToDisAppear CommonBackgroundBlurStyle end`)
-  }
-
-  onPageHide(): void  {
-    Log.showInfo(TAG, `onPageHide CommonBackgroundBlurStyle start`)
-  }
-
-  onBackPress(): void  {
-    Log.showInfo(TAG, `onBackPress CommonBackgroundBlurStyle start`)
-  }
-
-  @Styles pressedStyles() {
-    .backgroundColor('red')
-    .opacity(1)
+    Log.showInfo(TAG, `aboutToDisAppear FeatureAbilityStartAbility end`)
   }
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
 
-      Text("common-BackgroundBlurStyle")
+      Text("featureAbility-StartAbility")
         .width(320)
-        .height(50)
+        .height(70)
         .fontSize(20)
         .opacity(1)
         .align(Alignment.TopStart)
@@ -57,37 +43,17 @@ export default struct CommonBackgroundBlurStyle {
         .padding(10)
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
-        .key("backgroundBlurStyleText")
-        .backgroundBlurStyle(BlurStyle.Thick)
-
-      Text("common-BorderImage")
-        .width(320)
-        .height(50)
-        .fontSize(20)
-        .opacity(1)
-        .align(Alignment.TopStart)
-        .fontColor(0xCCCCCC)
-        .lineHeight(25)
-        .border({ width: 1 })
-        .padding(10)
-        .textAlign(TextAlign.Center)
-        .textOverflow({ overflow: TextOverflow.None })
-        .key("borderImageText")
-        .borderImage({
-          source: {
-            angle: 90,
-            direction: GradientDirection.Left,
-            colors: [[0xAEE1E1, 0.0], [0xD3E0DC, 0.3], [0xFCD1D1, 1.0]]
-          },
-          slice: { top: 10, bottom: 10, left: 10, right: 10 },
-          width: { top: "10px", bottom: "10px", left: "10px", right: "10px" },
-          repeat: RepeatMode.Stretch,
-          fill: false
+        .key("startAbilityText")
+        .onClick(() => {
+          FeatureAbility.startAbility({
+            bundleName: "com.example.testapp",
+            abilityName: "com.example.testApp.MainAbility"
+          })
         })
 
-      Text("common-HoverEffectHighlight")
+      Text("featureAbility-StartAbilityForResult")
         .width(320)
-        .height(50)
+        .height(70)
         .fontSize(20)
         .opacity(1)
         .align(Alignment.TopStart)
@@ -97,65 +63,16 @@ export default struct CommonBackgroundBlurStyle {
         .padding(10)
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
-        .key("hoverEffectText")
-        .hoverEffect(HoverEffect.Highlight)
-
-      Text("common-HoverEffectScale")
-        .width(320)
-        .height(50)
-        .fontSize(20)
-        .opacity(1)
-        .align(Alignment.TopStart)
-        .fontColor(0xCCCCCC)
-        .lineHeight(25)
-        .border({ width: 1 })
-        .padding(10)
-        .textAlign(TextAlign.Center)
-        .textOverflow({ overflow: TextOverflow.None })
-        .key("hoverEffectScaleText")
-        .hoverEffect(HoverEffect.Scale)
-
-      Text("common-OnKeyEvent")
-        .width(320)
-        .height(50)
-        .fontSize(20)
-        .opacity(1)
-        .align(Alignment.TopStart)
-        .fontColor(0xCCCCCC)
-        .lineHeight(25)
-        .border({ width: 1 })
-        .padding(10)
-        .textAlign(TextAlign.Center)
-        .textOverflow({ overflow: TextOverflow.None })
-        .key("onKeyEventText")
-
-      Button('common-OnKeyEvent')
-        .onClick(()=>{
-          let keyEvent = {
-            isPressed: true,
-            keyCode: 2054,
-            keyDownDuration: 0,
-            isIntercepted: false
-          }
-          let res = inputEventClient.injectEvent({KeyEvent: keyEvent});
-        })
-        .key("onKeyEventButton")
-        .onKeyEvent((event: KeyEvent) => {
-          if (event.keyCode === 2054) {
-            console.info("onKeyEvent 2054 inject Success ");
-          }
-          if (event.type === KeyType.Down) {
-            Log.showInfo(TAG, `Down`)
-          }
-          if (event.type === KeyType.Up) {
-            Log.showInfo(TAG, `Up`)
-          }
-          Log.showInfo(TAG, 'KeyType:' + event.type + ';keyCode:' + event.keyCode + ';keyText:' + event.keyText)
+        .key("startAbilityForResultText")
+        .onClick(() => {
+          FeatureAbility.startAbilityForResult({
+            bundleName: "com.example.testapp",
+            abilityName: "com.example.testApp.MainAbility" })
         })
 
-      Text("common-TabIndex")
+      Text("featureAbility-FinishWithResult")
         .width(320)
-        .height(50)
+        .height(70)
         .fontSize(20)
         .opacity(1)
         .align(Alignment.TopStart)
@@ -165,67 +82,14 @@ export default struct CommonBackgroundBlurStyle {
         .padding(10)
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
-        .key("tabIndexText")
-        .tabIndex(1)
-
-      Text("common-ParallelGesture" + '\n' + this.value)
-        .width(320)
-        .height(100)
-        .fontSize(12)
-        .opacity(1)
-        .align(Alignment.TopStart)
-        .fontColor(0xCCCCCC)
-        .lineHeight(15)
-        .border({ width: 1 })
-        .padding(10)
-        .textAlign(TextAlign.Center)
-        .textOverflow({ overflow: TextOverflow.None })
-        .key("parallelGestureText")
-        .parallelGesture(TapGesture().onAction(() => {
-          // 并行手势
-          this.value = 'gesture onAction'
-        }))
-
-      Text("common-Sepia")
-        .width(320)
-        .height(50)
-        .fontSize(20)
-        .opacity(1)
-        .align(Alignment.TopStart)
-        .fontColor(0xCCCCCC)
-        .lineHeight(25)
-        .border({ width: 1 })
-        .padding(10)
-        .textAlign(TextAlign.Center)
-        .textOverflow({ overflow: TextOverflow.None })
-        .key("sepiaText")
-        .backgroundColor('#E78282')
-        .sepia(1)
-
-      Button('Button 1')
-        .id('target')
-
-      Text("common-AlignRules")
-        .width(260)
-        .height(50)
-        .fontSize(20)
-        .opacity(1)
-        .align(Alignment.TopStart)
-        .fontColor(0xCCCCCC)
-        .lineHeight(25)
-        .border({ width: 1 })
-        .padding(10)
-        .textAlign(TextAlign.Center)
-        .textOverflow({ overflow: TextOverflow.None })
-        .key("alignRulesText")
-        .alignRules({
-          top: { anchor: 'target', align: VerticalAlign.Bottom },
-          right: { anchor: "target", align: HorizontalAlign.Center }
+        .key("finishWithResultText")
+        .onClick(() => {
+          FeatureAbility.finishWithResult({ code: 200, result: null })
         })
 
-      Text("common-StateStyles")
+      Text("featureAbility-GetDeviceList")
         .width(320)
-        .height(50)
+        .height(70)
         .fontSize(20)
         .opacity(1)
         .align(Alignment.TopStart)
@@ -235,14 +99,14 @@ export default struct CommonBackgroundBlurStyle {
         .padding(10)
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
-        .key("stateStylesText")
-        .stateStyles({
-          pressed: this.pressedStyles
+        .key("getDeviceListText")
+        .onClick(() => {
+          FeatureAbility.getDeviceList(1)
         })
 
-      Text("common-OnVisibleAreaChange")
+      Text("featureAbility-CallAbility")
         .width(320)
-        .height(50)
+        .height(70)
         .fontSize(20)
         .opacity(1)
         .align(Alignment.TopStart)
@@ -252,11 +116,19 @@ export default struct CommonBackgroundBlurStyle {
         .padding(10)
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
-        .key("onVisibleAreaChangeText")
+        .key("callAbilityText")
+        .onClick(() => {
+          FeatureAbility.callAbility({
+            bundleName: "com.example.testapp",
+            abilityName: "com.example.testApp.MainAbility",
+            messageCode: 200,
+            abilityType: 1
+          })
+        })
 
-      Text("common-OnPageHide")
+      Text("featureAbility-ContinueAbility")
         .width(320)
-        .height(50)
+        .height(70)
         .fontSize(20)
         .opacity(1)
         .align(Alignment.TopStart)
@@ -266,11 +138,14 @@ export default struct CommonBackgroundBlurStyle {
         .padding(10)
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
-        .key("onPageHideText")
+        .key("continueAbilityText")
+        .onClick(() => {
+          FeatureAbility.continueAbility()
+        })
 
-      Text("common-OnBackPress")
+      Text("featureAbility-SubscribeAbilityEvent")
         .width(320)
-        .height(50)
+        .height(70)
         .fontSize(20)
         .opacity(1)
         .align(Alignment.TopStart)
@@ -280,7 +155,110 @@ export default struct CommonBackgroundBlurStyle {
         .padding(10)
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
-        .key("onBackPressText")
+        .key("subscribeAbilityEventText")
+        .onClick(() => {
+          FeatureAbility.subscribeAbilityEvent({
+            bundleName: "com.example.testapp",
+            abilityName: "com.example.testApp.MainAbility",
+            messageCode: 200,
+            abilityType: 1
+          }, () => {
+          })
+        })
+
+      Text("featureAbility-UnsubscribeAbilityEvent")
+        .width(320)
+        .height(70)
+        .fontSize(20)
+        .opacity(1)
+        .align(Alignment.TopStart)
+        .fontColor(0xCCCCCC)
+        .lineHeight(25)
+        .border({ width: 1 })
+        .padding(10)
+        .textAlign(TextAlign.Center)
+        .textOverflow({ overflow: TextOverflow.None })
+        .key("unsubscribeAbilityEventText")
+        .onClick(() => {
+          FeatureAbility.unsubscribeAbilityEvent({
+            bundleName: "com.example.testapp",
+            abilityName: "com.example.testApp.MainAbility",
+            messageCode: 200,
+            abilityType: 1
+          })
+        })
+
+      Text("featureAbility-SendMsg")
+        .width(320)
+        .height(70)
+        .fontSize(20)
+        .opacity(1)
+        .align(Alignment.TopStart)
+        .fontColor(0xCCCCCC)
+        .lineHeight(25)
+        .border({ width: 1 })
+        .padding(10)
+        .textAlign(TextAlign.Center)
+        .textOverflow({ overflow: TextOverflow.None })
+        .key("sendMsgText")
+        .onClick(() => {
+          FeatureAbility.sendMsg({
+            deviceId: '1001',
+            bundleName: "com.example.testapp",
+            abilityName: "com.example.testApp.MainAbility",
+            message: 'success',
+            success: () => {
+              Log.showInfo(TAG, `FeatureAbility.sendMsg success`)
+            },
+            fail: (data, code) => {
+              Log.showInfo(TAG, `FeatureAbility.sendMsg fail: data: ${data},code: ${code}`)
+            },
+            complete: () => {
+              Log.showInfo(TAG, `FeatureAbility.sendMsg complete`)
+            }
+          })
+        })
+
+      Text("featureAbility-SubscribeMsg")
+        .width(320)
+        .height(70)
+        .fontSize(20)
+        .opacity(1)
+        .align(Alignment.TopStart)
+        .fontColor(0xCCCCCC)
+        .lineHeight(25)
+        .border({ width: 1 })
+        .padding(10)
+        .textAlign(TextAlign.Center)
+        .textOverflow({ overflow: TextOverflow.None })
+        .key("subscribeMsgText")
+        .onClick(() => {
+          FeatureAbility.subscribeMsg({
+            success: (data) => {
+              Log.showInfo(TAG, `FeatureAbility.subscribeMsg success: data: ${JSON.stringify(data)}`)
+            },
+            fail: (data, code) => {
+              Log.showInfo(TAG, `FeatureAbility.subscribeMsg fail: data: ${data},code: ${code}`)
+            }
+          })
+        })
+
+      Text("featureAbility-UnsubscribeMsg")
+        .width(320)
+        .height(70)
+        .fontSize(20)
+        .opacity(1)
+        .align(Alignment.TopStart)
+        .fontColor(0xCCCCCC)
+        .lineHeight(25)
+        .border({ width: 1 })
+        .padding(10)
+        .textAlign(TextAlign.Center)
+        .textOverflow({ overflow: TextOverflow.None })
+        .key("unsubscribeMsgText")
+        .onClick(() => {
+          FeatureAbility.unsubscribeMsg()
+        })
 
     }.width("100%").height("100%")
   }

@@ -13,35 +13,42 @@
  * limitations under the License.
  */
 
+
 import Log from '../common/Log.ets';
-
-let varA = AppStorage.Link('varA')
-
-Environment.EnvProp("accessibilityEnabled", "default")
-
-PersistentStorage.PersistProp("highScore", 0)
+import router1 from '@ohos.router'
+import router2 from '@system.router'
 const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-export default struct Common_ts_ets_apiStaticClear {
-  @StorageLink('varA') varA: number = 2
-  private label: string = 'count'
-  @StorageLink('highScore') highScore: number = 0
-
+export default struct RouterEnableAlertBeforeBackPage {
   aboutToAppear() {
-    Log.showInfo(TAG, `aboutToAppear Common_ts_ets_apiStaticClear start`)
+    Log.showInfo(TAG, `aboutToAppear RouterEnableAlertBeforeBackPage start`)
+
+    router1.enableAlertBeforeBackPage({
+      message: 'Message Info'
+    })
+
+    router2.enableAlertBeforeBackPage({
+      message: 'Message Info',
+      success: function () {
+        console.log('success')
+      },
+      cancel: function () {
+        console.log('fail')
+      },
+    })
   }
 
   aboutToDisappear() {
-    Log.showInfo(TAG, `aboutToDisAppear Common_ts_ets_apiStaticClear end`)
+    Log.showInfo(TAG, `aboutToDisAppear RouterEnableAlertBeforeBackPage end`)
   }
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
 
-      Text(`${this.label}: ${this.varA}`)
-        .width(320)
+      Text("ohos-router-EnableAlertBeforeBackPage")
+        .width(100)
         .height(70)
         .fontSize(20)
         .opacity(1)
@@ -52,13 +59,13 @@ export default struct Common_ts_ets_apiStaticClear {
         .padding(10)
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
-        .key("labelA")
+        .key("enableAlertBeforeBackPageText")
         .onClick(() => {
-          AppStorage.Set<number>('varA', AppStorage.Get<number>('varA') + 1)
+          router1.back()
         })
 
-      Text("common_ts_ets_api-StaticClear")
-        .width(320)
+      Text("router-DisableAlertBeforeBackPage")
+        .width(100)
         .height(70)
         .fontSize(20)
         .opacity(1)
@@ -69,13 +76,13 @@ export default struct Common_ts_ets_apiStaticClear {
         .padding(10)
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
-        .key("staticClearText")
+        .key("disableAlertBeforeBackPageText")
         .onClick(() => {
-          AppStorage.staticClear()
+          router1.disableAlertBeforeBackPage()
         })
 
-      Text("common_ts_ets_api-EnvProp")
-        .width(320)
+      Text("router-EnableAlertBeforeBackPage")
+        .width(100)
         .height(70)
         .fontSize(20)
         .opacity(1)
@@ -86,30 +93,13 @@ export default struct Common_ts_ets_apiStaticClear {
         .padding(10)
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
-        .key("EnvPropText")
+        .key("enableAlertBeforeBackPageText1")
         .onClick(() => {
-          var enable = AppStorage.Get("accessibilityEnabled");
-          console.log(enable.toString())
-          try {
-            var backData = {
-              data: {
-                "Result": (enable != null)
-              }
-            }
-            let backEvent = {
-              eventId: 60231,
-              priority: events_emitter.EventPriority.LOW
-            }
-            console.info("PersistProp start to emit action state")
-            events_emitter.emit(backEvent, backData)
-          } catch (err) {
-            console.info("PersistProp emit action state err: " + JSON.stringify(err.message))
-          }
-
+          router2.back()
         })
 
-      Text(`common_ts_ets_api-PersistProp : ${this.highScore}`)
-        .width(320)
+      Text("router-DisableAlertBeforeBackPage")
+        .width(100)
         .height(70)
         .fontSize(20)
         .opacity(1)
@@ -120,24 +110,9 @@ export default struct Common_ts_ets_apiStaticClear {
         .padding(10)
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
-        .key("PersistPropText")
+        .key("disableAlertBeforeBackPageText")
         .onClick(() => {
-          this.highScore = this.highScore + 1
-          try {
-            var backData = {
-              data: {
-                "Score": this.highScore
-              }
-            }
-            let backEvent = {
-              eventId: 60230,
-              priority: events_emitter.EventPriority.LOW
-            }
-            console.info("PersistProp start to emit action state")
-            events_emitter.emit(backEvent, backData)
-          } catch (err) {
-            console.info("PersistProp emit action state err: " + JSON.stringify(err.message))
-          }
+          router2.disableAlertBeforeBackPage()
         })
 
     }.width("100%").height("100%")

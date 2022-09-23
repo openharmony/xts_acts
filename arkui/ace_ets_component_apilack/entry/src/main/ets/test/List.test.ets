@@ -16,8 +16,11 @@
 import alphabetIndexerOnSelectJsunit from './alphabetIndexer.test.ets';
 import checkBoxGroupSelectAllJsunit from './checkBoxGroup.test.ets';
 import circleNewJsunit from './circle.test.ets';
+import curvesStepsJsunit from './curves.test.ets';
 import commonBackgroundBlurStyleJsunit from './common.test.ets';
+import common_ts_ets_apiStaticClearJsunit from './common_ts_ets_api.test.ets';
 import ellipseNeJsunit from './ellipse.test.ets';
+import featureAbilityStartAbilityJsunit from './featureAbility.test.ets';
 import gaugeColorsJsunit from './gauge.test.ets';
 import gestureSetDirectionJsunit from './gesture.test.ets';
 import gridMaxCountJsunit from './grid.test.ets';
@@ -31,6 +34,7 @@ import listNewJsunit from './listTest.test.ets';
 import list_itemOnSelectJsunit from './list_item.test.ets';
 import mediaQueryOffJsunit from './mediaQuery.test.ets';
 import navigatorTargetJsunit from './navigator.test.ets'
+import panelBackgroundMaskJsunit from './panel.test.ets';
 import pathNewTest from './path.test.ets';
 import polygonNewJsunit from './polygon.test.ets';
 import polyLineNeJsunit from './polyLine.test.ets';
@@ -54,42 +58,45 @@ import webGetTitleJsunit from './web.test.ets';
 import xcomponentGetXComponentContextJsunit from './xcomponent.test.ets';
 
 export default function testsuite() {
-  lazyForEachOnDataAddJsunit()
-  alphabetIndexerOnSelectJsunit()
-  checkBoxGroupSelectAllJsunit()
-  circleNewJsunit()
+//  lazyForEachOnDataAddJsunit()
+//  alphabetIndexerOnSelectJsunit()
+//  checkBoxGroupSelectAllJsunit()
+//  circleNewJsunit()
+  curvesStepsJsunit()
+  common_ts_ets_apiStaticClearJsunit()
   commonBackgroundBlurStyleJsunit()
-  ellipseNeJsunit()
-  gaugeColorsJsunit()
-  gestureSetDirectionJsunit()
-  grid_rowOnBreakpointChangeJsunit()
-  gridMaxCountJsunit()
-  gridItemOnSelectJsunit()
-  inspectorJsunit()
-  lineNeJsunit()
-  listNewJsunit()
-  list_itemOnSelectJsunit()
-  mediaQueryOffJsunit()
-  navigatorTargetJsunit()
-  pathNewTest()
-  polygonNewJsunit()
-  polyLineNeJsunit()
-  progressScaleCountJsunit()
-  promptShowDialogJsunit()
-  rectNeJsunit()
-  scrollOnScrollBeginJsunit()
-  searchOnCutJsunit()
-  selectOnSelectJsunit()
-  sideBarShowSideBarJsunit()
-  stackAlignContentJsunit()
-  stateManagementGetSharedJsunit()
+//  ellipseNeJsunit()
+  featureAbilityStartAbilityJsunit()
+//  gaugeColorsJsunit()
+//  gestureSetDirectionJsunit()
+//  gridMaxCountJsunit()
+//  gridItemOnSelectJsunit()
+//  inspectorJsunit()
+//  lineNeJsunit()
+//  listNewJsunit()
+//  list_itemOnSelectJsunit()
+//  mediaQueryOffJsunit()
+//  navigatorTargetJsunit()
+  panelBackgroundMaskJsunit()
+//  pathNewTest()
+//  polygonNewJsunit()
+//  polyLineNeJsunit()
+//  progressScaleCountJsunit()
+//  promptShowDialogJsunit()
+//  rectNeJsunit()
+//  scrollOnScrollBeginJsunit()
+//  searchOnCutJsunit()
+//  selectOnSelectJsunit()
+//  sideBarShowSideBarJsunit()
+//  stackAlignContentJsunit()
+//  stateManagementGetSharedJsunit()
   swiperCurveJsunit()
   tabsBarPositionJsunit()
-  textMinFontSizeJsunit()
+//  textMinFontSizeJsunit()
   textAreaOnCutJsunit()
   textInputOnEditChangeJsunit()
   textPickerDefaultPickerItemHeightJsunit()
-  videoOnFullscreenChangeJsunit()
-  webGetTitleJsunit()
-  xcomponentGetXComponentContextJsunit()
+//  videoOnFullscreenChangeJsunit()
+//  webGetTitleJsunit()
+//  xcomponentGetXComponentContextJsunit()
 }

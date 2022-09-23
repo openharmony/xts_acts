@@ -68,36 +68,37 @@ struct SwiperCurve {
 
       Column({ space: 5 }) {
 
-      Swiper(this.swiperController) {
-        LazyForEach(this.data, (item: string) => {
-          Text(item).width('90%').height(160).backgroundColor(0xAFEEEE).textAlign(TextAlign.Center).fontSize(20)
-        }, item => item)
-      }
-      .cachedCount(2)
-      .index(1)
-      .autoPlay(true)
-      .interval(4000)
-      .indicator(true) // 默认开启指示点
-      .loop(false) // 默认开启循环播放
-      .duration(1000)
-      .vertical(false) // 默认横向切换
-      .itemSpace(0)
-      .curve(Curve.Linear) // 动画曲线
-      .onChange((index: number) => {
-        console.info(index.toString())
-      })
+        Swiper(this.swiperController) {
+          LazyForEach(this.data, (item: string) => {
+            Text(item).width('90%').height(160).backgroundColor(0xAFEEEE).textAlign(TextAlign.Center).fontSize(20)
+          }, item => item)
+        }
+        .key("swiper")
+        .cachedCount(2)
+        .index(1)
+        .autoPlay(true)
+        .interval(4000)
+        .indicator(true) // 默认开启指示点
+        .loop(false) // 默认开启循环播放
+        .duration(1000)
+        .vertical(false) // 默认横向切换
+        .itemSpace(0)
+        .curve(Curve.Linear) // 动画曲线
+        .onChange((index: number) => {
+          console.info(index.toString())
+        })
 
-      Flex({ justifyContent: FlexAlign.SpaceAround }) {
-        Button('next')
-          .onClick(() => {
-            this.swiperController.showNext()
-          })
-        Button('preview')
-          .onClick(() => {
-            this.swiperController.showPrevious()
-          })
-      }
-    }.margin({ top: 5 })
+        Flex({ justifyContent: FlexAlign.SpaceAround }) {
+          Button('next')
+            .onClick(() => {
+              this.swiperController.showNext()
+            })
+          Button('preview')
+            .onClick(() => {
+              this.swiperController.showPrevious()
+            })
+        }
+      }.margin({ top: 5 })
 
 
       Text("swiper-Curve")
@@ -113,7 +114,7 @@ struct SwiperCurve {
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
         .key("curveText")
-    
+
     }.width("100%").height("100%")
 
   }
