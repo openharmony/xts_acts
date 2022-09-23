@@ -120,28 +120,8 @@ export default function webJsunit() {
      *tc.desic return whether there exits cookie
      */
     it('existCookie',0,async function(done){
-      emitKey="emitOnConsole";
-      Utils.registerEvent("existCookie",false,414,done);
-      sendEventByKey('webcomponent',10,'');
-    })
-    /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_076                                                                                                                                                                  
-     *tc.name getLineNumber                                                                                                                                                                                                              
-     *tc.desic return the number of console message lines
-     */
-    it('getLineNumber',0,async function(done){
-      emitKey="emitOnConsole";
-      Utils.registerEvent("getLineNumber","51",420,done);
-      sendEventByKey('webcomponent',10,'');
-    })
-    /* 
-     *tc.number SUB_ACE_BASIC_ETS_API_077                                                                                                                                                                  
-     *tc.name getSourceId                                                                                                                                                                                                              
-     *tc.desic return the source url
-     */
-    it('getSourceId',0,async function(done){
       emitKey="emitLoaData";
-      Utils.registerEvent("getSourceId","file:///data/storage/el1/bundle/phone/resources/rawfile/index.html",422,done);
+      Utils.registerEvent("existCookie",false,414,done);
       sendEventByKey('webcomponent',10,'');
     })
     /* 
@@ -160,8 +140,58 @@ export default function webJsunit() {
      *tc.desic set whether it is allowed to zoom
      */
     it('zoomAccess',0,async function(done){
-      emitKey="emitSaveHttpAuthCredentials";
+      emitKey="emitGetOriginUsage";
       Utils.registerEvent("zoomAccess",false,428,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_082                                                                                                                                                                  
+     *tc.name getOriginUsage                                                                                                                                                                                                              
+     *tc.desic get origin usage
+     */
+    it('getOriginUsage',0,async function(done){
+      emitKey="emitGetOriginQuota";
+      Utils.registerEvent("getOriginUsage","24576",432,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_083                                                                                                                                                                 
+     *tc.name getOriginQuota                                                                                                                                                                                                              
+     *tc.desic get origin storage
+     */
+    it('getOriginQuota',0,async function(done){
+      emitKey="emitGetOrigins";
+      Utils.registerEvent("getOriginQuota","2575722086",434,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+     /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_084                                                                                                                                                                
+     *tc.name getOrigins                                                                                                                                                                                                              
+     *tc.desic get origins
+     */
+    it('getOrigins',0,async function(done){
+      emitKey="emitDeleteOrigin";
+      Utils.registerEvent("getOrigins","file:///",436,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_085                                                                                                                                                                
+     *tc.name deleteOrigin                                                                                                                                                                                                              
+     *tc.desic delete specific url usage
+     */
+    it('deleteOrigin',0,async function(done){
+      emitKey="emitDeleteAllData";
+      Utils.registerEvent("deleteOrigin",0,438,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_086                                                                                                                                                                
+     *tc.name deleteAllData                                                                                                                                                                                                              
+     *tc.desic delete all data
+     */
+    it('deleteAllData',0,async function(done){
+      emitKey="emitSaveHttpAuthCredentials";
+      Utils.registerEvent("deleteAllData",0,440,done);
       sendEventByKey('webcomponent',10,'');
     })
     /* 
@@ -190,8 +220,58 @@ export default function webJsunit() {
      *tc.desic delete credentials
      */
     it('deleteHttpAuthCredentials',0,async function(done){
-      emitKey="emitSearchAllAsync";
+      emitKey="emitGetOriginUsagePromise";
       Utils.registerEvent("deleteHttpAuthCredentials",false,446,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_090                                                                                                                                                                
+     *tc.name getOriginUsagePromise                                                                                                                                                                                                              
+     *tc.desic promise method
+     */
+    it('getOriginUsagePromise',0,async function(done){
+      emitKey="emitGetOriginQuotaPromise";
+      Utils.registerEvent("getOriginUsagePromise",'24576',447,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_091                                                                                                                                                                
+     *tc.name getOriginQuotaPromise                                                                                                                                                                                                              
+     *tc.desic promise method
+     */
+    it('getOriginQuotaPromise',0,async function(done){
+      emitKey="emitGetOriginsPromise";
+      Utils.registerEvent("getOriginQuotaPromise",'2575722086',448,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_092                                                                                                                                                                
+     *tc.name getOriginsPromise                                                                                                                                                                                                              
+     *tc.desic promise method
+     */
+    it('getOriginsPromise',0,async function(done){
+      emitKey="emitOnConsole";
+      Utils.registerEvent("getOriginsPromise",'file:///',449,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_077                                                                                                                                                                  
+     *tc.name getSourceId                                                                                                                                                                                                              
+     *tc.desic return the source url
+     */
+    it('getSourceId',0,async function(done){
+      emitKey="emitOnConsole";
+      Utils.registerEvent("getSourceId","file:///data/storage/el1/bundle/phone/resources/rawfile/index.html",422,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_076                                                                                                                                                                  
+     *tc.name getLineNumber                                                                                                                                                                                                              
+     *tc.desic return the number of console message lines
+     */
+    it('getLineNumber',0,async function(done){
+      emitKey="emitSearchAllAsync";
+      Utils.registerEvent("getLineNumber","51",420,done);
       sendEventByKey('webcomponent',10,'');
     })
     /* 
