@@ -57,7 +57,7 @@ export default function pathNewTest() {
       console.info("[testpathNe0001] component width strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Shape');
-      expect(obj.$attrs.width).assertEqual("150.00px");
+      expect(obj.$attrs.width).assertEqual("100.00px");
       console.info("[testpathNe0001] width value :" + obj.$attrs.width);
       done();
     });
@@ -74,7 +74,7 @@ export default function pathNewTest() {
       console.info("[testpathNe0002] component height strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Shape');
-      expect(obj.$attrs.height).assertEqual("150.00px");
+      expect(obj.$attrs.height).assertEqual("100.00px");
       console.info("[testpathNe0002] height value :" + obj.$attrs.height);
       done();
     });

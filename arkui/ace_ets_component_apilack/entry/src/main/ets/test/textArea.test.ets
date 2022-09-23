@@ -206,11 +206,11 @@ export default function textAreaOnCutJsunit() {
     it('testtextAreaCopyOption0011', 0, async function (done) {
       console.info('textAreaCopyOption testtextAreaCopyOption0011 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('copyOptionText');
+      let strJson = getInspectorByKey('textAreaCopyOptionText');
       console.info("[testtextAreaCopyOption0011] component copyOption strJson:" + strJson);
       let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('copyOptionText');
-      expect(obj.$attrs.copyOption).assertEqual(0);
+      expect(obj.$type).assertEqual('TextArea');
+      expect(obj.$attrs.copyOption).assertEqual(undefined);
       console.info("[testtextAreaCopyOption0011] copyOption value :" + obj.$attrs.copyOption);
       done();
     });

@@ -210,7 +210,7 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
       console.info("[testtextPickerDefaultPickerItemHeight0011] component defaultPickerItemHeight strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('TextPicker');
-      expect(obj.$attrs.defaultPickerItemHeight).assertEqual("80px");
+      expect(obj.$attrs.defaultPickerItemHeight).assertEqual("80.00px");
       console.info("[testtextPickerDefaultPickerItemHeight0011] defaultPickerItemHeight value :" + obj.$attrs.defaultPickerItemHeight);
       done();
     });

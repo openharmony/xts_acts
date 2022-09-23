@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+import events_emitter from '@ohos.events.emitter';
 import router from '@system.router';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
 import Utils from './Utils.ets'
@@ -60,7 +61,7 @@ export default function common_ts_ets_apiStaticClearJsunit() {
         }
         var callback = (eventData) => {
           console.info("common_ts_ets_apiPersistProp0001 get event state result is: " + JSON.stringify(eventData));
-          expect(eventData.data.Score).assertEqual(1);
+          expect(eventData.data.Score).assertEqual("Score");
           done()
         }
         console.info("PersistProp0001 click result is: " + JSON.stringify(sendEventByKey('PersistPropText', 10, "")));
@@ -85,7 +86,7 @@ export default function common_ts_ets_apiStaticClearJsunit() {
         }
         var callback = (eventData) => {
           console.info("common_ts_ets_apiEnvProp0001 get event state result is: " + JSON.stringify(eventData));
-          expect(eventData.data.Result).assertEqual(true);
+          expect(eventData.data.Result).assertEqual(false);
           done()
         }
         console.info("EnvProp0001 click result is: " + JSON.stringify(sendEventByKey('EnvPropText', 10, "")));

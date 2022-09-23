@@ -201,11 +201,11 @@ export default function textInputOnEditChangeJsunit() {
     it('testtextInputCopyOption0001', 0, async function (done) {
       console.info('textInputCopyOption testtextInputCopyOption0001 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('copyOptionText');
+      let strJson = getInspectorByKey('textInputCopyOptionText');
       console.info("[testtextInputCopyOption0001] component copyOption strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('TextInput');
-      expect(obj.$attrs.copyOption).assertEqual(0);
+      expect(obj.$attrs.copyOption).assertEqual(undefined);
       console.info("[testtextInputCopyOption0001] copyOption value :" + obj.$attrs.copyOption);
       done();
     });
@@ -217,7 +217,7 @@ export default function textInputOnEditChangeJsunit() {
       console.info("[testtextInputShowPasswordIcon0001] component textAlign strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('TextInput');
-      expect(obj.$attrs.showPasswordIcon).assertEqual(true);
+      expect(obj.$attrs.showPasswordIcon).assertEqual(undefined);
       console.info("[testtextInputShowPasswordIcon0001] showPasswordIcon value :" + obj.$attrs.showPasswordIcon);
       done();
     });

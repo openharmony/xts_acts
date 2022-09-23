@@ -14,7 +14,7 @@
  */
 
 import Log from '../common/Log.ets';
-
+import uiAppearance from '@ohos.uiAppearance'
 const TAG = 'ets_apiLack_add';
 
 @Entry

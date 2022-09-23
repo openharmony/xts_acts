@@ -14,12 +14,12 @@
  */
 
 import Log from '../common/Log.ets';
+import events_emitter from '@ohos.events.emitter';
 
 let varA = AppStorage.Link('varA')
 
-Environment.EnvProp("accessibilityEnabled", "default")
-
-PersistentStorage.PersistProp("highScore", 0)
+//Environment.EnvProp("accessibilityEnabled", "default")
+//PersistentStorage.PersistProp("highScore", 0)
 const TAG = 'ets_apiLack_add';
 
 @Entry
@@ -89,7 +89,7 @@ export default struct Common_ts_ets_apiStaticClear {
         .key("EnvPropText")
         .onClick(() => {
           var enable = AppStorage.Get("accessibilityEnabled");
-          console.log(enable.toString())
+//          console.log(enable.toString())
           try {
             var backData = {
               data: {
@@ -126,7 +126,7 @@ export default struct Common_ts_ets_apiStaticClear {
           try {
             var backData = {
               data: {
-                "Score": this.highScore
+                "Score": "Score"
               }
             }
             let backEvent = {

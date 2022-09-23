@@ -81,7 +81,7 @@ struct TextAreaOnCut {
              * CrossDevice = 2,Share cross device.
              */
         .copyOption(0)
-        .key("copyOptionText")
+        .key("textAreaCopyOptionText")
 
     }.width("100%").height("100%")
   }

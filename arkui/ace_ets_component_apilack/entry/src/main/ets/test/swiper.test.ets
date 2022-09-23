@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Copyright (c) 2022 Shenzhen Kaihong Digital Industry Development Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -57,7 +58,7 @@ export default function swiperCurveJsunit() {
       console.info("[testswiperCurve0001] component width strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Swiper');
-      expect(obj.$attrs.curve).assertEqual("Curve.Linear");
+      expect(obj.$attrs.curve).assertEqual("Curves.Linear");
       console.info("[testswiperCurve0001] curve value :" + obj.$attrs.curve);
       done();
     });
@@ -74,7 +75,7 @@ export default function swiperCurveJsunit() {
       console.info("[testswiperCurve0002] component cachedCount strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Swiper');
-      expect(obj.$attrs.cachedCount).assertEqual(2);
+      expect(obj.$attrs.cachedCount).assertEqual("2");
       console.info("[testswiperCurve0002] cachedCount value :" + obj.$attrs.cachedCount);
       done();
     });
@@ -91,7 +92,7 @@ export default function swiperCurveJsunit() {
       console.info("[testswiperCurve0003] component index strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Swiper');
-      expect(obj.$attrs.index).assertEqual(1);
+      expect(obj.$attrs.index).assertEqual("3");
       console.info("[testswiperCurve0003] index value :" + obj.$attrs.index);
       done();
     });
@@ -108,7 +109,7 @@ export default function swiperCurveJsunit() {
       console.info("[testswiperCurve0004] component autoPlay strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Swiper');
-      expect(obj.$attrs.autoPlay).assertEqual(true);
+      expect(obj.$attrs.autoPlay).assertEqual("true");
       console.info("[testswiperCurve0004] autoPlay value :" + obj.$attrs.autoPlay);
       done();
     });
@@ -142,7 +143,7 @@ export default function swiperCurveJsunit() {
       console.info("[testswiperCurve0006] component indicator strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Swiper');
-      expect(obj.$attrs.indicator).assertEqual(true);
+      expect(obj.$attrs.indicator).assertEqual("true");
       console.info("[testswiperCurve0006] indicator value :" + obj.$attrs.indicator);
       done();
     });
@@ -159,7 +160,7 @@ export default function swiperCurveJsunit() {
       console.info("[testswiperCurve0007] component loop strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Swiper');
-      expect(obj.$attrs.loop).assertEqual(false);
+      expect(obj.$attrs.loop).assertEqual("false");
       console.info("[testswiperCurve0007] loop value :" + obj.$attrs.loop);
       done();
     });
@@ -176,7 +177,7 @@ export default function swiperCurveJsunit() {
       console.info("[testswiperCurve0008] component duration strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Swiper');
-      expect(obj.$attrs.duration).assertEqual("1000");
+      expect(obj.$attrs.duration).assertEqual("1000.000000");
       console.info("[testswiperCurve0008] duration value :" + obj.$attrs.duration);
       done();
     });
@@ -193,7 +194,7 @@ export default function swiperCurveJsunit() {
       console.info("[testswiperCurve0009] component vertical strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Swiper');
-      expect(obj.$attrs.vertical).assertEqual(false);
+      expect(obj.$attrs.vertical).assertEqual("false");
       console.info("[testswiperCurve0009] vertical value :" + obj.$attrs.vertical);
       done();
     });
@@ -210,7 +211,7 @@ export default function swiperCurveJsunit() {
       console.info("[testswiperCurve00010] component itemSpace strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Swiper');
-      expect(obj.$attrs.itemSpace).assertEqual(0);
+      expect(obj.$attrs.itemSpace).assertEqual("0.00px");
       console.info("[testswiperCurve00010] itemSpace value :" + obj.$attrs.itemSpace);
       done();
     });

@@ -74,7 +74,7 @@ export default function rectNeJsunit() {
       console.info("[testrectNe0002] component height strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Shape');
-      expect(obj.$attrs.height).assertEqual("75.00px");
+      expect(obj.$attrs.height).assertEqual("50.00px");
       console.info("[testrectNe0002] height value :" + obj.$attrs.height);
       done();
     });

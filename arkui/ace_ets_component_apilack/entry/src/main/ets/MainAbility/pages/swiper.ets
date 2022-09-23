@@ -82,7 +82,7 @@ struct SwiperCurve {
         .loop(false) // 默认开启循环播放
         .duration(1000)
         .vertical(false) // 默认横向切换
-        .itemSpace(0)
+        .itemSpace("0px")
         .curve(Curve.Linear) // 动画曲线
         .onChange((index: number) => {
           console.info(index.toString())

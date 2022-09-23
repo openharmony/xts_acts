@@ -51,7 +51,7 @@ export default struct RectNe {
         .textOverflow({ overflow: TextOverflow.None })
         .key("neText")
 
-      Rect({ width: '90%', height: 50 }).radiusHeight(20).radiusWidth(20)
+      Rect({ width: '90%', height: "50px" }).radiusHeight(20).radiusWidth(20)
       .key("Rect")
 
     }.width("100%").height("100%")

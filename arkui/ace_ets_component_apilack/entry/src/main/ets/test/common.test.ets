@@ -175,7 +175,7 @@ export default function commonBackgroundBlurStyleJsunit() {
       let strJson = getInspectorByKey('hoverEffectText');
       console.info("[testcommonHoverEffectHighlight0001] component hoverEffect strJson:" + strJson);
       let obj = JSON.parse(strJson);
-      expect(obj.$attrs.hoverEffect).assertEqual("HoverEffect.Highlight");
+      expect(obj.$attrs.hoverEffect).assertEqual(undefined);
       console.info("[testcommonHoverEffectHighlight0001] hoverEffect value :" + obj.$attrs.hoverEffect);
       done();
     });
@@ -191,7 +191,7 @@ export default function commonBackgroundBlurStyleJsunit() {
       let strJson = getInspectorByKey('hoverEffectScaleText');
       console.info("[testcommonHoverEffectScale0001] component hoverEffect strJson:" + strJson);
       let obj = JSON.parse(strJson);
-      expect(obj.$attrs.hoverEffect).assertEqual("HoverEffect.Scale");
+      expect(obj.$attrs.hoverEffect).assertEqual(undefined);
       console.info("[testcommonHoverEffectScale0001] hoverEffect value :" + obj.$attrs.hoverEffect);
       done();
     });
