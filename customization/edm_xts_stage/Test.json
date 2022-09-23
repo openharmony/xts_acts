@@ -1,9 +1,10 @@
 {
     "description": "Configuration for hjunit demo Tests",
     "driver": {
-        "type": "JSUnitTest",
+        "type": "OHJSUnitTest",
         "test-timeout": "180000",
-        "package": "com.example.myapplication",
+        "bundle-name": "com.example.myapplication",
+        "module-name": "phone",
         "shell-timeout": "600000"
     },
     "kits": [
