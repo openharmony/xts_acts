@@ -22,189 +22,191 @@ import wantConstant from '@ohos.ability.wantConstant';
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
 
 export default function StartAbilityTest() {
-    var TAG = "";
+  var TAG = "";
 
-    describe('StartAbilityTest', function () {
-        var delegator = AbilityDelegatorRegistry.getAbilityDelegator();
-        beforeAll(async function (done) {
-            console.info("StartAbilityTest before all called");
-            var cmd = "bm install -p data/test/MockService.hap";
-            console.info("cmd : " + cmd)
-            delegator.executeShellCommand(cmd, (err: any, d: any) => {
-                console.info("executeShellCommand : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
-            })
-            await Utils.sleep(500);
-            var cmd1 = "mkdir /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry";
-            delegator.executeShellCommand(cmd1, (err: any, d: any) => {
-                console.info("executeShellCommand1 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
-            })
-            await Utils.sleep(500);
-            var cmd2 = "mkdir /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry/files";
-            delegator.executeShellCommand(cmd2, (err: any, d: any) => {
-                console.info("executeShellCommand2 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
-            })
-            await Utils.sleep(500);
-            var cmd3 = "cp data/test/AtomizationFaEntry.hap /data/app/el2/100/base/com.ohos.hag.famanager/haps/" +
-            "entry/files";
-            delegator.executeShellCommand(cmd3, (err: any, d: any) => {
-                console.info("executeShellCommand3 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
-                done();
-            })
-        });
+  describe('StartAbilityTest', function () {
+    var delegator = AbilityDelegatorRegistry.getAbilityDelegator();
+    beforeAll(async function (done) {
+      console.info("StartAbilityTest before all called");
+      var cmd = "bm install -p data/test/MockService.hap";
+      console.info("cmd : " + cmd)
+      delegator.executeShellCommand(cmd, (err: any, d: any) => {
+        console.info("executeShellCommand : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
+      })
+      await Utils.sleep(500);
+      var cmd1 = "mkdir /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry";
+      delegator.executeShellCommand(cmd1, (err: any, d: any) => {
+        console.info("executeShellCommand1 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
+      })
+      await Utils.sleep(500);
+      var cmd2 = "mkdir /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry/files";
+      delegator.executeShellCommand(cmd2, (err: any, d: any) => {
+        console.info("executeShellCommand2 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
+      })
+      await Utils.sleep(500);
+      var cmd3 = "cp data/test/AtomizationFaEntry.hap /data/app/el2/100/base/com.ohos.hag.famanager/haps/" +
+        "entry/files";
+      delegator.executeShellCommand(cmd3, (err: any, d: any) => {
+        console.info("executeShellCommand3 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
+        done();
+      })
+    });
 
-        afterEach(async function (done) {
-            console.info("StartAbilityTest after each called");
-            if ("FreeInstall_FA_StartAbility_2800" === TAG || "FreeInstall_FA_StartAbility_3900") {
-                var cmd5 = "bm uninstall -n com.example.qianyiyingyong.hmservice";
-                delegator.executeShellCommand(cmd5, (err: any, d: any) => {
-                    console.info("executeShellCommand5: err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
-                })
-            }
-            await Utils.sleep(500);
-            if ("FreeInstall_FA_StartAbility_3900" === TAG) {
-                var cmd4 = "bm uninstall -n com.ohos.hag.famanager";
-                delegator.executeShellCommand(cmd4, (err: any, d: any) => {
-                    console.info("executeShellCommand4: err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
-                })
-            }
-            await Utils.sleep(500);
-            done();
-        });
+    afterEach(async function (done) {
+      console.info("StartAbilityTest after each called");
+      if ("FreeInstall_FA_StartAbility_2800" === TAG || "FreeInstall_FA_StartAbility_3900") {
+        var cmd5 = "bm uninstall -n com.example.qianyiyingyong.hmservice";
+        delegator.executeShellCommand(cmd5, (err: any, d: any) => {
+          console.info("executeShellCommand5: err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
+        })
+      }
+      await Utils.sleep(500);
+      if ("FreeInstall_FA_StartAbility_3900" === TAG) {
+        var cmd4 = "bm uninstall -n com.ohos.hag.famanager";
+        delegator.executeShellCommand(cmd4, (err: any, d: any) => {
+          console.info("executeShellCommand4: err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
+        })
+      }
+      await Utils.sleep(500);
+      done();
+    });
 
-        /*
-         * @tc.number: FreeInstall_FA_StartAbility_2600
-         * @tc.name: startAbility: NoTargetBundleList,free install successfully.
-         * @tc.desc: Function test
-         * @tc.level   0
-         */
-        it("FreeInstall_FA_StartAbility_2600", 0, async function (done) {
-            console.log("------------start FreeInstall_FA_StartAbility_2600-------------");
-            TAG = "FreeInstall_FA_StartAbility_2600";
-            let details;
-            var str = {
-                'want': {
-                    "deviceId": "",
-                    "bundleName": "com.example.qianyiyingyong.hmservice",
-                    "abilityName": "com.example.qianyiyingyong.MainAbility",
-                    "moduleName": "entry",
-                    "flags": wantConstant.Flags.FLAG_INSTALL_ON_DEMAND,
-                }
-            }
-            await featureAbility.startAbility(str).then((data) => {
-                details = data;
-                console.info(TAG + ' StartAbility successful. Data: ' + JSON.stringify(data))
-            }).catch((error) => {
-                console.info(TAG + ' StartAbility failed. error: ' + JSON.stringify(error));
-            })
-            await Utils.sleep(2000);
-            expect(details).assertEqual(0);
-            done();
-        });
+    /*
+     * @tc.number: FreeInstall_FA_StartAbility_2600
+     * @tc.name: startAbility: NoTargetBundleList,free install successfully.
+     * @tc.desc: Function test
+     * @tc.level   0
+     */
+    it("FreeInstall_FA_StartAbility_2600", 0, async function (done) {
+      console.log("------------start FreeInstall_FA_StartAbility_2600-------------");
+      TAG = "FreeInstall_FA_StartAbility_2600";
+      setTimeout(async () => {
+        let details;
+        var str = {
+          'want': {
+            "deviceId": "",
+            "bundleName": "com.example.qianyiyingyong.hmservice",
+            "abilityName": "com.example.qianyiyingyong.MainAbility",
+            "moduleName": "entry",
+            "flags": wantConstant.Flags.FLAG_INSTALL_ON_DEMAND,
+          }
+        }
+        await featureAbility.startAbility(str).then((data) => {
+          details = data;
+          console.info(TAG + ' StartAbility successful. Data: ' + JSON.stringify(data))
+        }).catch((error) => {
+          console.info(TAG + ' StartAbility failed. error: ' + JSON.stringify(error));
+        })
+        expect(details).assertEqual(0);
+      }, 2000)
+      done();
+    });
 
-        /*
-         * @tc.number: FreeInstall_FA_StartAbility_2700
-         * @tc.name: startAbility: NoTargetBundleList and yuanzihua already installed,startAbility successfully.
-         * @tc.desc: Function test
-         * @tc.level   0
-         */
-        it("FreeInstall_FA_StartAbility_2700", 0, async function (done) {
-            console.log("------------start FreeInstall_FA_StartAbility_2700-------------");
-            TAG = "FreeInstall_FA_StartAbility_2700";
-            var cmd6 = "bm install -p data/test/AtomizationFaEntry.hap";
-            delegator.executeShellCommand(cmd6, (err: any, d: any) => {
-                console.info("executeShellCommand6: err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
-            })
-            await Utils.sleep(500);
-            let details;
-            var str = {
-                'want': {
-                    "deviceId": "",
-                    "bundleName": "com.example.qianyiyingyong.hmservice",
-                    "abilityName": "com.example.qianyiyingyong.MainAbility",
-                    "moduleName": "entry",
-                    "flags": wantConstant.Flags.FLAG_INSTALL_ON_DEMAND,
-                }
-            }
-            await featureAbility.startAbility(str).then((data) => {
-                details = data;
-                console.info(TAG + ' StartAbility successful. Data: ' + JSON.stringify(data))
-            }).catch((error) => {
-                console.info(TAG + ' StartAbility failed. error: ' + JSON.stringify(error));
-            })
-            await Utils.sleep(2000);
-            expect(details).assertEqual(0);
-            done();
-        });
+    /*
+     * @tc.number: FreeInstall_FA_StartAbility_2700
+     * @tc.name: startAbility: NoTargetBundleList and yuanzihua already installed,startAbility successfully.
+     * @tc.desc: Function test
+     * @tc.level   0
+     */
+    it("FreeInstall_FA_StartAbility_2700", 0, async function (done) {
+      console.log("------------start FreeInstall_FA_StartAbility_2700-------------");
+      TAG = "FreeInstall_FA_StartAbility_2700";
+      var cmd6 = "bm install -p data/test/AtomizationFaEntry.hap";
+      delegator.executeShellCommand(cmd6, (err: any, d: any) => {
+        console.info("executeShellCommand6: err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
+      })
+      setTimeout(async () => {
+        let details;
+        var str = {
+          'want': {
+            "deviceId": "",
+            "bundleName": "com.example.qianyiyingyong.hmservice",
+            "abilityName": "com.example.qianyiyingyong.MainAbility",
+            "moduleName": "entry",
+            "flags": wantConstant.Flags.FLAG_INSTALL_ON_DEMAND,
+          }
+        }
+        await featureAbility.startAbility(str).then((data) => {
+          details = data;
+          console.info(TAG + ' StartAbility2700 successful. Data: ' + JSON.stringify(data))
+        }).catch((error) => {
+          console.info(TAG + ' StartAbility2700 failed. error: ' + JSON.stringify(error));
+        })
+        expect(details).assertEqual(0);
+      }, 2000)
+      done();
+    });
 
-        /*
-         * @tc.number: FreeInstall_FA_StartAbility_2800
-         * @tc.name: startAbility: The same application does not need to check targetbundlelist,
-                     start feature hap successfully.
-         * @tc.desc: Function test
-         * @tc.level   0
-         */
-        it("FreeInstall_FA_StartAbility_2800", 0, async function (done) {
-            console.log("------------start FreeInstall_FA_StartAbility_2800-------------");
-            TAG = "FreeInstall_FA_StartAbility_2800";
-            var cmd7 = "rm /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry/files/AtomizationFaEntry.hap";
-            delegator.executeShellCommand(cmd7, (err: any, d: any) => {
-                console.info("executeShellCommand7 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
-            })
-            await Utils.sleep(500);
-            var cmd8 = "cp data/test/FaMyApplication1.hap /data/app/el2/100/base/com.ohos.hag.famanager/haps/" +
-            "entry/files";
-            delegator.executeShellCommand(cmd8, (err: any, d: any) => {
-                console.info("executeShellCommand8 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
-            })
-            await Utils.sleep(500);
-            let details;
-            var str = {
-                'want': {
-                    "bundleName": "com.open.harmony.startAbility",
-                    "abilityName": "com.example.myapplication1.MainAbility1",
-                    "moduleName": "myapplication1",
-                    "flags": wantConstant.Flags.FLAG_INSTALL_ON_DEMAND,
-                }
-            }
-            await featureAbility.startAbility(str).then((data) => {
-                details = data;
-                console.info(TAG + ' StartAbility successful. Data: ' + JSON.stringify(data))
-            }).catch((error) => {
-                console.info(TAG + ' StartAbility failed. error: ' + JSON.stringify(error));
-            })
-            await Utils.sleep(2000);
-            expect(details).assertEqual(0);
-            done();
-        });
+    /*
+     * @tc.number: FreeInstall_FA_StartAbility_2800
+     * @tc.name: startAbility: The same application does not need to check targetbundlelist,
+                 start feature hap successfully.
+     * @tc.desc: Function test
+     * @tc.level   0
+     */
+    it("FreeInstall_FA_StartAbility_2800", 0, async function (done) {
+      console.log("------------start FreeInstall_FA_StartAbility_2800-------------");
+      TAG = "FreeInstall_FA_StartAbility_2800";
+      var cmd7 = "rm /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry/files/AtomizationFaEntry.hap";
+      delegator.executeShellCommand(cmd7, (err: any, d: any) => {
+        console.info("executeShellCommand7 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
+      })
+      await Utils.sleep(500);
+      var cmd8 = "cp data/test/FaMyApplication1.hap /data/app/el2/100/base/com.ohos.hag.famanager/haps/" +
+        "entry/files";
+      delegator.executeShellCommand(cmd8, (err: any, d: any) => {
+        console.info("executeShellCommand8 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
+      })
+      setTimeout(async () => {
+        let details;
+        var str = {
+          'want': {
+            "bundleName": "com.open.harmony.startAbility",
+            "abilityName": "com.example.myapplication1.MainAbility1",
+            "moduleName": "myapplication1",
+            "flags": wantConstant.Flags.FLAG_INSTALL_ON_DEMAND,
+          }
+        }
+        await featureAbility.startAbility(str).then((data) => {
+          details = data;
+          console.info(TAG + ' StartAbility successful. Data: ' + JSON.stringify(data))
+        }).catch((error) => {
+          console.info(TAG + ' StartAbility failed. error: ' + JSON.stringify(error));
+        })
+        expect(details).assertEqual(0);
+      }, 2000)
+      done();
+    });
 
-        /*
-         * @tc.number: FreeInstall_FA_StartAbility_3900
-         * @tc.name: startAbility: The same application does not need to check targetbundlelist,add BACKGROUND flags
-                     start feature hap successfully.
-         * @tc.desc: Function test
-         * @tc.level   0
-         */
-        it("FreeInstall_FA_StartAbility_3900", 0, async function (done) {
-            console.log("------------start FreeInstall_FA_StartAbility_3900-------------");
-            TAG = "FreeInstall_FA_StartAbility_3900";
-            let details;
-            var str = {
-                'want': {
-                    "bundleName": "com.open.harmony.startAbility",
-                    "abilityName": "com.example.myapplication1.MainAbility1",
-                    "moduleName": "myapplication1",
-                    "flags": wantConstant.Flags.FLAG_INSTALL_WITH_BACKGROUND_MODE|wantConstant.Flags.FLAG_INSTALL_ON_DEMAND,
-                }
-            }
-            await featureAbility.startAbility(str).then((data) => {
-                details = data;
-                console.info(TAG + ' StartAbility successful. Data: ' + JSON.stringify(data))
-            }).catch((error) => {
-                console.info(TAG + ' StartAbility failed. error: ' + JSON.stringify(error));
-            })
-            await Utils.sleep(2000);
-            expect(details).assertEqual(0);
-            done();
-        });
-    })
+    /*
+     * @tc.number: FreeInstall_FA_StartAbility_3900
+     * @tc.name: startAbility: The same application does not need to check targetbundlelist,add BACKGROUND flags
+                 start feature hap successfully.
+     * @tc.desc: Function test
+     * @tc.level   0
+     */
+    it("FreeInstall_FA_StartAbility_3900", 0, async function (done) {
+      console.log("------------start FreeInstall_FA_StartAbility_3900-------------");
+      TAG = "FreeInstall_FA_StartAbility_3900";
+      setTimeout(async () => {
+        let details;
+        var str = {
+          'want': {
+            "bundleName": "com.open.harmony.startAbility",
+            "abilityName": "com.example.myapplication1.MainAbility1",
+            "moduleName": "myapplication1",
+            "flags": wantConstant.Flags.FLAG_INSTALL_WITH_BACKGROUND_MODE | wantConstant.Flags.FLAG_INSTALL_ON_DEMAND,
+          }
+        }
+        await featureAbility.startAbility(str).then((data) => {
+          details = data;
+          console.info(TAG + ' StartAbility successful. Data: ' + JSON.stringify(data))
+        }).catch((error) => {
+          console.info(TAG + ' StartAbility failed. error: ' + JSON.stringify(error));
+        })
+        expect(details).assertEqual(0);
+      }, 2000);
+      done();
+    });
+  })
 }
