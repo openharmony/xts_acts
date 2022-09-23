@@ -19,22 +19,30 @@ import circleNewJsunit from './circle.test.ets';
 import commonBackgroundBlurStyleJsunit from './common.test.ets';
 import ellipseNeJsunit from './ellipse.test.ets';
 import gaugeColorsJsunit from './gauge.test.ets';
+import gestureSetDirectionJsunit from './gesture.test.ets';
 import gridMaxCountJsunit from './grid.test.ets';
 import gridItemOnSelectJsunit from './gridItem.test.ets';
 import grid_colSpanJsunit from './grid_col.test.ets';
 import grid_rowOnBreakpointChangeJsunit from './grid_row.test.ets';
 import inspectorJsunit from  './inspector.test.ets'
 import lazyForEachOnDataAddJsunit from './lazyForEach.test.ets';
+import lineNeJsunit from './line.test.ets';
+import listNewJsunit from './listTest.test.ets';
+import list_itemOnSelectJsunit from './list_item.test.ets';
+import mediaQueryOffJsunit from './mediaQuery.test.ets';
 import navigatorTargetJsunit from './navigator.test.ets'
 import pathNewTest from './path.test.ets';
 import polygonNewJsunit from './polygon.test.ets';
 import polyLineNeJsunit from './polyLine.test.ets';
 import progressScaleCountJsunit from './progress.test.ets';
+import promptShowDialogJsunit from './prompt.test.ets';
 import rectNeJsunit from './rect.test.ets';
 import scrollOnScrollBeginJsunit from './scroll.test.ets';
 import searchOnCutJsunit from './search.test.ets'
+import selectOnSelectJsunit from './select.test.ets';
 import sideBarShowSideBarJsunit from './sideBar.test.ets';
 import stackAlignContentJsunit from './stack.test.ets';
+import stateManagementGetSharedJsunit from './stateManagement.test.ets';
 import swiperCurveJsunit from './swiper.test.ets';
 import tabsBarPositionJsunit from './tabs.test.ets';
 import textMinFontSizeJsunit from './text.test.ets';
@@ -43,6 +51,7 @@ import textInputOnEditChangeJsunit from './textInput.test.ets';
 import textPickerDefaultPickerItemHeightJsunit from './textPicker.test.ets';
 import videoOnFullscreenChangeJsunit from './video.test.ets';
 import webGetTitleJsunit from './web.test.ets';
+import xcomponentGetXComponentContextJsunit from './xcomponent.test.ets';
 
 export default function testsuite() {
   lazyForEachOnDataAddJsunit()
@@ -52,20 +61,28 @@ export default function testsuite() {
   commonBackgroundBlurStyleJsunit()
   ellipseNeJsunit()
   gaugeColorsJsunit()
+  gestureSetDirectionJsunit()
   grid_rowOnBreakpointChangeJsunit()
   gridMaxCountJsunit()
   gridItemOnSelectJsunit()
   inspectorJsunit()
+  lineNeJsunit()
+  listNewJsunit()
+  list_itemOnSelectJsunit()
+  mediaQueryOffJsunit()
   navigatorTargetJsunit()
   pathNewTest()
   polygonNewJsunit()
   polyLineNeJsunit()
   progressScaleCountJsunit()
+  promptShowDialogJsunit()
   rectNeJsunit()
   scrollOnScrollBeginJsunit()
   searchOnCutJsunit()
+  selectOnSelectJsunit()
   sideBarShowSideBarJsunit()
   stackAlignContentJsunit()
+  stateManagementGetSharedJsunit()
   swiperCurveJsunit()
   tabsBarPositionJsunit()
   textMinFontSizeJsunit()
@@ -74,4 +91,5 @@ export default function testsuite() {
   textPickerDefaultPickerItemHeightJsunit()
   videoOnFullscreenChangeJsunit()
   webGetTitleJsunit()
+  xcomponentGetXComponentContextJsunit()
 }

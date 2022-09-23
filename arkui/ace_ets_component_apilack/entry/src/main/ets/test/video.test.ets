@@ -202,7 +202,7 @@ export default function videoOnFullscreenChangeJsunit() {
     it('testvideoOnFullscreenChange0011', 0, async function (done) {
       console.info('videoOnFullscreenChange testvideoOnFullscreenChange0011 START');
       var innerEvent = {
-        eventId: 101,
+        eventId: 60227,
         priority: events_emitter.EventPriority.LOW
       }
       var callback = (eventData) => {

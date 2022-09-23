@@ -72,7 +72,7 @@ struct AlphabetIndexerOnSelect {
               }
             }
             let backEvent = {
-              eventId: 10201,
+              eventId: 60201,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("onSelect start to emit action state")
@@ -96,7 +96,7 @@ struct AlphabetIndexerOnSelect {
               }
             }
             let backEvent = {
-              eventId: 10202,
+              eventId: 60202,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("onRequestPopupData start to emit action state")
