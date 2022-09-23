@@ -562,7 +562,7 @@ export default function abilityTest() {
           + JSON.stringify(error) + ", " + JSON.stringify(data))
       })
 
-      
+
       function SubscribeCallBack(err, data) {
 
         console.debug("ACTS_NewWant_Test_0800====>Subscribe CallBack data:====>"
