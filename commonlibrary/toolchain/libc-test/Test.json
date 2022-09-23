@@ -171,8 +171,8 @@
                 "rm -rf /data/local/tmp/libc-test/getnameinfo",
                 "rm -rf /data/local/tmp/libc-test/res_querydomain",
                 "rm -rf /data/local/tmp/libc-test/gethostbyname2",
-                "rm -rf /data/local/tmp/libc-test/gethostbyaddr",
-                "rm -rf /data/local/tmp/libc-test/gethostbyname_r"
+                "rm -rf /data/local/tmp/libc-test/gethostbyname_r",
+                "rm -rf /data/local/tmp/libc-test/gethostbyaddr"
             ],
             "cleanup-apps": true
         }
