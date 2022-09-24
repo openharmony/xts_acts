@@ -49,7 +49,7 @@ export default struct PolyLineNe {
         .textOverflow({ overflow: TextOverflow.None })
         .key("neText")
 
-      Polyline().width(100).height(100).points([[0, 0], [0, 100], [100, 100]])
+      Polyline().width("100px").height("100px").points([[0, 0], [0, 100], [100, 100]])
       .key("Polyline")
 
     }.width("100%").height("100%")

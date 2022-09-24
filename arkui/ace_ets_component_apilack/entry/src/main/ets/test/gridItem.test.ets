@@ -57,7 +57,7 @@ export default function gridItemOnSelectJsunit() {
         done();
       }
       let indexEvent = {
-        eventId: 10200,
+        eventId: 60207,
         priority: events_emitter.EventPriority.LOW
       }
       sendEventByKey('onSelected', 10, "")

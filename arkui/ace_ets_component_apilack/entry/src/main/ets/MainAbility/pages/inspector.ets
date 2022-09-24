@@ -28,7 +28,7 @@ struct Inspector {
   onPageShow() {
     console.info('[inspector] page show called');
     var stateChangeEvent = {
-      eventId: 103,
+      eventId: 60211,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
@@ -76,7 +76,7 @@ struct Inspector {
                   }
                 }
                 let backEvent = {
-                  eventId: 101,
+                  eventId: 60208,
                   priority: events_emitter.EventPriority.LOW
                 }
                 console.info("inspector_101 onClick start to emit action state")
@@ -90,16 +90,17 @@ struct Inspector {
             .fontSize(50)
             .fontWeight(FontWeight.Bold)
             .onClick(()=> {
-//              let getInspectorNodeByIdObj = JSON.stringify(getInspectorNodeById(1))
               try {
+                let i = JSON.parse(JSON.stringify(getInspectorNodes()))["inspectors"][0]["id"]
+                let getInspectorNodeByIdObj = JSON.stringify(getInspectorNodeById(parseInt(i)))
+                console.info("getInspectorNodeByIdObj is " + getInspectorNodeByIdObj)
                 var backData1 = {
                   data: {
                     "result": "success",
-                    "getInspectorNodeById":"getInspectorNodeByIdObj"
                   }
                 }
                 let backEvent1 = {
-                  eventId: 102,
+                  eventId: 60209,
                   priority: events_emitter.EventPriority.LOW
                 }
                 console.info("inspector_102 onClick start to emit action state")
@@ -139,7 +140,7 @@ struct Inspector {
                   }
                 }
                 let backEvent2 = {
-                  eventId: 103,
+                  eventId: 60210,
                   priority: events_emitter.EventPriority.LOW
                 }
                 console.info("inspector_103 onClick start to emit action state")

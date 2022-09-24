@@ -87,7 +87,7 @@ export default function inspectorJsunit() {
     it('testInspectorTestAdd0003', 0, async function (done) {
       console.info("testInspectorTestAdd0003 start test");
       var innerEvent1 = {
-        eventId: 101,
+        eventId: 60208,
         priority: events_emitter.EventPriority.LOW
       }
       var callback1 = (eventData) => {
@@ -121,7 +121,7 @@ export default function inspectorJsunit() {
      */
     it('testInspectorTestAdd0004', 0, async function (done) {
       var innerEvent2 = {
-        eventId: 102,
+        eventId: 60209,
         priority: events_emitter.EventPriority.LOW
       }
       var callback2 = (eventData) => {
@@ -158,7 +158,7 @@ export default function inspectorJsunit() {
           }
         }
         var innerEvent = {
-          eventId: 103,
+          eventId: 60211,
           priority: events_emitter.EventPriority.LOW
         }
         events_emitter.emit(innerEvent, eventData);
@@ -175,12 +175,12 @@ export default function inspectorJsunit() {
      */
     it('testInspectorTestAdd0006', 0, async function (done) {
       var innerEvent3 = {
-        eventId: 103,
+        eventId: 60210,
         priority: events_emitter.EventPriority.LOW
       }
       var callback3 = (eventData) => {
         try{
-          console.info("callback2 success" );
+          console.info("callback3 success" );
           console.info("inspector_103 eventData.data.result result is: " + eventData.data.catchStatus);
           expect(eventData.data.catchStatus).assertEqual("callBackSuccess");
           console.info("inspector_103 end");

@@ -60,7 +60,7 @@ struct VideoOnFullscreenChange {
               }
             }
             let backEvent = {
-              eventId: 101,
+              eventId: 60227,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("video_101 onClick start to emit action state")

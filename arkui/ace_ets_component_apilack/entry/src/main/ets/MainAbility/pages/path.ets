@@ -50,7 +50,7 @@ export default struct PathNew {
         .textOverflow({ overflow: TextOverflow.None })
         .key("neText")
 
-      Path().width(100).height(100).commands('M150 0 L300 300 L0 300 Z')
+      Path().width("100px").height("100px").commands('M150 0 L300 300 L0 300 Z')
       .key("Path")
 
     }.width("100%").height("100%")

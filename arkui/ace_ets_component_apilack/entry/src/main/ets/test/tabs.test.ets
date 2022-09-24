@@ -197,5 +197,22 @@ export default function tabsBarPositionJsunit() {
       console.info("[testtabsBarPosition0010] textAlign value :" + obj.$attrs.textAlign);
       done();
     });
+
+    /*
+     * @tc.number       SUB_ACE_BASIC_ETS_API_0011
+     * @tc.name         testtabsBarPosition0011
+     * @tc.desic         acetabsBarPositionEtsTest0011
+     */
+    it('testtabsBarPosition0011', 0, async function (done) {
+      console.info('tabsBarPosition testtabsBarPosition0011 START');
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('barPositionTabs');
+      console.info("[testtabsBarPosition0011] component barPosition strJson:" + strJson);
+      let obj = JSON.parse(strJson);
+      expect(obj.$type).assertEqual('Tabs');
+      expect(obj.$attrs.barPosition).assertEqual("BarPosition.Start");
+      console.info("[testtabsBarPosition0011] barPosition value :" + obj.$attrs.barPosition);
+      done();
+    });
   })
 }

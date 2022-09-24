@@ -92,7 +92,7 @@ struct TextInputOnEditChange {
         .textAlign(TextAlign.Center)
         //设置复制选项时调用
         .copyOption(0)
-        .key("copyOptionText")
+        .key("textInputCopyOptionText")
 
       TextInput({placeholder:"textInput-ShowPasswordIcon"})
         .type(InputType.Password)
