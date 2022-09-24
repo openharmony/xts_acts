@@ -84,37 +84,45 @@ export default function GetResourceTest() {
      */
     it('getAllBundleInfoForResource', 0, async function (done) {
       await bundleManager.getAllBundleInfo(FLAG1).then(data => {
-        for (let i = 0; i < data.length; i++) {
-          if (data[i].name == BUNDLE_NAME) {
-            let applicationInfo = data[i].appInfo;
-            expect(applicationInfo.iconResource.bundleName).assertEqual(BUNDLE_NAME)
-            expect(applicationInfo.iconResource.moduleName).assertEqual(MODULE_NAME)
-            expect(applicationInfo.iconResource.id).assertLarger(0)
-            expect(applicationInfo.labelResource.bundleName).assertEqual(BUNDLE_NAME)
-            expect(applicationInfo.labelResource.moduleName).assertEqual(MODULE_NAME)
-            expect(applicationInfo.labelResource.id).assertLarger(0)
-            expect(applicationInfo.descriptionResource.bundleName).assertEqual(BUNDLE_NAME)
-            expect(applicationInfo.descriptionResource.moduleName).assertEqual(MODULE_NAME)
-            expect(applicationInfo.descriptionResource.id).assertLarger(0)
+        if (data.length > 0) {
+          for (let i = 0; i < data.length; i++) {
+            if (data[i].name == BUNDLE_NAME) {
+              let applicationInfo = data[i].appInfo;
+              expect(applicationInfo.iconResource.bundleName).assertEqual(BUNDLE_NAME)
+              expect(applicationInfo.iconResource.moduleName).assertEqual(MODULE_NAME)
+              expect(applicationInfo.iconResource.id).assertLarger(0)
+              expect(applicationInfo.labelResource.bundleName).assertEqual(BUNDLE_NAME)
+              expect(applicationInfo.labelResource.moduleName).assertEqual(MODULE_NAME)
+              expect(applicationInfo.labelResource.id).assertLarger(0)
+              expect(applicationInfo.descriptionResource.bundleName).assertEqual(BUNDLE_NAME)
+              expect(applicationInfo.descriptionResource.moduleName).assertEqual(MODULE_NAME)
+              expect(applicationInfo.descriptionResource.id).assertLarger(0)
+            }
           }
+        } else {
+          expect().assertFail();
         }
       }).catch(err => {
         expect().assertFail();
       });
       bundleManager.getAllBundleInfo(FLAG1, (err, data) => {
-        for (let i = 0; i < data.length; i++) {
-          if (data[i].name == BUNDLE_NAME) {
-            let applicationInfo = data[i].appInfo;
-            expect(applicationInfo.iconResource.bundleName).assertEqual(BUNDLE_NAME)
-            expect(applicationInfo.iconResource.moduleName).assertEqual(MODULE_NAME)
-            expect(applicationInfo.iconResource.id).assertLarger(0)
-            expect(applicationInfo.labelResource.bundleName).assertEqual(BUNDLE_NAME)
-            expect(applicationInfo.labelResource.moduleName).assertEqual(MODULE_NAME)
-            expect(applicationInfo.labelResource.id).assertLarger(0)
-            expect(applicationInfo.descriptionResource.bundleName).assertEqual(BUNDLE_NAME)
-            expect(applicationInfo.descriptionResource.moduleName).assertEqual(MODULE_NAME)
-            expect(applicationInfo.descriptionResource.id).assertLarger(0)
+        if (data.length > 0) {
+          for (let i = 0; i < data.length; i++) {
+            if (data[i].name == BUNDLE_NAME) {
+              let applicationInfo = data[i].appInfo;
+              expect(applicationInfo.iconResource.bundleName).assertEqual(BUNDLE_NAME)
+              expect(applicationInfo.iconResource.moduleName).assertEqual(MODULE_NAME)
+              expect(applicationInfo.iconResource.id).assertLarger(0)
+              expect(applicationInfo.labelResource.bundleName).assertEqual(BUNDLE_NAME)
+              expect(applicationInfo.labelResource.moduleName).assertEqual(MODULE_NAME)
+              expect(applicationInfo.labelResource.id).assertLarger(0)
+              expect(applicationInfo.descriptionResource.bundleName).assertEqual(BUNDLE_NAME)
+              expect(applicationInfo.descriptionResource.moduleName).assertEqual(MODULE_NAME)
+              expect(applicationInfo.descriptionResource.id).assertLarger(0)
+            }
           }
+        } else {
+          expect().assertFail();
         }
         expect(err).assertEqual(0)
         done();
@@ -128,37 +136,45 @@ export default function GetResourceTest() {
      */
     it('getAllApplicationInfoForResource', 0, async function (done) {
       await bundleManager.getAllApplicationInfo(FLAG2).then(data => {
-        for (let i = 0; i < data.length; i++) {
-          if (data[i].name == BUNDLE_NAME) {
-            let applicationInfo = data[i];
-            expect(applicationInfo.iconResource.bundleName).assertEqual(BUNDLE_NAME)
-            expect(applicationInfo.iconResource.moduleName).assertEqual(MODULE_NAME)
-            expect(applicationInfo.iconResource.id).assertLarger(0)
-            expect(applicationInfo.labelResource.bundleName).assertEqual(BUNDLE_NAME)
-            expect(applicationInfo.labelResource.moduleName).assertEqual(MODULE_NAME)
-            expect(applicationInfo.labelResource.id).assertLarger(0)
-            expect(applicationInfo.descriptionResource.bundleName).assertEqual(BUNDLE_NAME)
-            expect(applicationInfo.descriptionResource.moduleName).assertEqual(MODULE_NAME)
-            expect(applicationInfo.descriptionResource.id).assertLarger(0)
+        if (data.length > 0) {
+          for (let i = 0; i < data.length; i++) {
+            if (data[i].name == BUNDLE_NAME) {
+              let applicationInfo = data[i];
+              expect(applicationInfo.iconResource.bundleName).assertEqual(BUNDLE_NAME)
+              expect(applicationInfo.iconResource.moduleName).assertEqual(MODULE_NAME)
+              expect(applicationInfo.iconResource.id).assertLarger(0)
+              expect(applicationInfo.labelResource.bundleName).assertEqual(BUNDLE_NAME)
+              expect(applicationInfo.labelResource.moduleName).assertEqual(MODULE_NAME)
+              expect(applicationInfo.labelResource.id).assertLarger(0)
+              expect(applicationInfo.descriptionResource.bundleName).assertEqual(BUNDLE_NAME)
+              expect(applicationInfo.descriptionResource.moduleName).assertEqual(MODULE_NAME)
+              expect(applicationInfo.descriptionResource.id).assertLarger(0)
+            }
           }
+        } else {
+          expect().assertFail();
         }
       }).catch(err => {
         expect().assertFail();
       });
       bundleManager.getAllApplicationInfo(FLAG2, (err, data) => {
-        for (let i = 0; i < data.length; i++) {
-          if (data[i].name == BUNDLE_NAME) {
-            let applicationInfo = data[i];
-            expect(applicationInfo.iconResource.bundleName).assertEqual(BUNDLE_NAME)
-            expect(applicationInfo.iconResource.moduleName).assertEqual(MODULE_NAME)
-            expect(applicationInfo.iconResource.id).assertLarger(0)
-            expect(applicationInfo.labelResource.bundleName).assertEqual(BUNDLE_NAME)
-            expect(applicationInfo.labelResource.moduleName).assertEqual(MODULE_NAME)
-            expect(applicationInfo.labelResource.id).assertLarger(0)
-            expect(applicationInfo.descriptionResource.bundleName).assertEqual(BUNDLE_NAME)
-            expect(applicationInfo.descriptionResource.moduleName).assertEqual(MODULE_NAME)
-            expect(applicationInfo.descriptionResource.id).assertLarger(0)
+        if (data.length > 0) {
+          for (let i = 0; i < data.length; i++) {
+            if (data[i].name == BUNDLE_NAME) {
+              let applicationInfo = data[i];
+              expect(applicationInfo.iconResource.bundleName).assertEqual(BUNDLE_NAME)
+              expect(applicationInfo.iconResource.moduleName).assertEqual(MODULE_NAME)
+              expect(applicationInfo.iconResource.id).assertLarger(0)
+              expect(applicationInfo.labelResource.bundleName).assertEqual(BUNDLE_NAME)
+              expect(applicationInfo.labelResource.moduleName).assertEqual(MODULE_NAME)
+              expect(applicationInfo.labelResource.id).assertLarger(0)
+              expect(applicationInfo.descriptionResource.bundleName).assertEqual(BUNDLE_NAME)
+              expect(applicationInfo.descriptionResource.moduleName).assertEqual(MODULE_NAME)
+              expect(applicationInfo.descriptionResource.id).assertLarger(0)
+            }
           }
+        } else {
+          expect().assertFail();
         }
         expect(err).assertEqual(0)
         done();
@@ -228,7 +244,7 @@ export default function GetResourceTest() {
       bundleManager.queryAbilityByWant({
         bundleName: BUNDLE_NAME,
         abilityName: ABILITY_NAME
-      }, FLAG3, userId , (err,data) => {
+      }, FLAG3, userId, (err, data) => {
         let applicationInfo = data[0].applicationInfo;
         expect(applicationInfo.iconResource.bundleName).assertEqual(BUNDLE_NAME)
         expect(applicationInfo.iconResource.moduleName).assertEqual(MODULE_NAME)
@@ -264,7 +280,7 @@ export default function GetResourceTest() {
       }).catch((err) => {
         expect().assertFail();
       })
-      bundleManager.getBundleArchiveInfo(PATH, FLAG1,(err,data) => {
+      bundleManager.getBundleArchiveInfo(PATH, FLAG1, (err, data) => {
         let applicationInfo = data.appInfo;
         expect(applicationInfo.iconResource.bundleName).assertEqual(BUNDLE_NAME)
         expect(applicationInfo.iconResource.moduleName).assertEqual(MODULE_NAME)
