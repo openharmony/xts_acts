@@ -21,8 +21,10 @@ import commonBackgroundBlurStyleJsunit from './common.test.ets';
 import common_ts_ets_apiStaticClearJsunit from './common_ts_ets_api.test.ets';
 import ellipseNeJsunit from './ellipse.test.ets';
 import featureAbilityStartAbilityJsunit from './featureAbility.test.ets';
+import focusControlJsunit from './FocusControlJsunit.test.ets'
 import gaugeColorsJsunit from './gauge.test.ets';
 import gestureSetDirectionJsunit from './gesture.test.ets';
+import globalJsunit from './global.test.ets';
 import gridMaxCountJsunit from './grid.test.ets';
 import gridItemOnSelectJsunit from './gridItem.test.ets';
 import grid_colSpanJsunit from './grid_col.test.ets';
@@ -34,6 +36,7 @@ import listNewJsunit from './listTest.test.ets';
 import list_itemOnSelectJsunit from './list_item.test.ets';
 import mediaQueryOffJsunit from './mediaQuery.test.ets';
 import navigatorTargetJsunit from './navigator.test.ets'
+import pageRouteTest from './pageRoute.test.ets'
 import panelBackgroundMaskJsunit from './panel.test.ets';
 import pathNewTest from './path.test.ets';
 import polygonNewJsunit from './polygon.test.ets';
@@ -69,6 +72,7 @@ export default function testsuite() {
   featureAbilityStartAbilityJsunit()
   gaugeColorsJsunit()
   gestureSetDirectionJsunit()
+  globalJsunit()
   gridMaxCountJsunit()
   gridItemOnSelectJsunit()
   inspectorJsunit()
@@ -77,6 +81,7 @@ export default function testsuite() {
   list_itemOnSelectJsunit()
   mediaQueryOffJsunit()
   navigatorTargetJsunit()
+  pageRouteTest()
   panelBackgroundMaskJsunit()
   pathNewTest()
   polygonNewJsunit()

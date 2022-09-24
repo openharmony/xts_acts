@@ -14,6 +14,7 @@
  */
 
 import router from '@system.router';
+import events_emitter from '@ohos.events.emitter';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
 import Utils from './Utils.ets'
 
@@ -53,149 +54,44 @@ export default function panelBackgroundMaskJsunit() {
     it('testpanelBackgroundMask0001', 0, async function (done) {
       console.info('panelBackgroundMask testpanelBackgroundMask0001 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('backgroundMaskText');
-      console.info("[testpanelBackgroundMask0001] component width strJson:" + strJson);
+      let strJson = getInspectorByKey('panel');
       let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.width).assertEqual("100.00vp");
-      console.info("[testpanelBackgroundMask0001] width value :" + obj.$attrs.width);
+      console.info("get inspector value is: " + JSON.stringify(obj));
+      console.log(JSON.stringify(obj.$type))
+      expect(obj.$type).assertEqual('Panel')
+      console.log('Panel‘s backgroundMask is ' + JSON.stringify(obj.$attrs.backgroundMask))
+      expect(obj.$attrs.backgroundMask).assertEqual('#FFFF0000');
       done();
     });
 
     /*
      * @tc.number       SUB_ACE_BASIC_ETS_API_0002
-     * @tc.name         testpanelBackgroundMask0002
+     * @tc.name         testpanelOnHeightChange0002
      * @tc.desic         acepanelBackgroundMaskEtsTest0002
      */
-    it('testpanelBackgroundMask0002', 0, async function (done) {
-      console.info('panelBackgroundMask testpanelBackgroundMask0002 START');
-      await Utils.sleep(2000);
-      let strJson = getInspectorByKey('backgroundMaskText');
-      console.info("[testpanelBackgroundMask0002] component height strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.height).assertEqual("70.00vp");
-      console.info("[testpanelBackgroundMask0002] height value :" + obj.$attrs.height);
-      done();
+    it('testpanelOnHeightChange0002', 0, async function (done) {
+      console.info('panelBackgroundMask testpanelOnHeightChange0002 START');
+      var panelOnHeightChangeEvent = {
+        eventId: 10111,
+        priority: events_emitter.EventPriority.LOW
+      }
+      var callback1 = (backData) => {
+        console.info("testpanelOnHeightChange0002 backData.data.result is: " + backData.data.result);
+        try{
+          console.info("testpanelOnHeightChange0002 callback1 success" );
+          expect(backData.data.result).assertEqual("success");
+          done();
+        }catch(err){
+          console.info("testpanelOnHeightChange0002 on events_emitter err : " + JSON.stringify(err));
+        }
+      }
+      try {
+        console.info("testpanelOnHeightChange0002 click result is: " + JSON.stringify(sendEventByKey('onHeightChangeText', 10, "")));
+        events_emitter.on(panelOnHeightChangeEvent, callback1);
+      } catch (err) {
+        console.info("testpanelOnHeightChange0002 on events_emitter err : " + JSON.stringify(err));
+      }
     });
 
-    /*
-     * @tc.number       SUB_ACE_BASIC_ETS_API_0003
-     * @tc.name         testpanelBackgroundMask0003
-     * @tc.desic         acepanelBackgroundMaskEtsTest0003
-     */
-    it('testpanelBackgroundMask0003', 0, async function (done) {
-      console.info('panelBackgroundMask testpanelBackgroundMask0003 START');
-      await Utils.sleep(2000);
-      let strJson = getInspectorByKey('backgroundMaskText');
-      console.info("[testpanelBackgroundMask0003] component fontSize strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.fontSize).assertEqual("20.00fp");
-      console.info("[testpanelBackgroundMask0003] fontSize value :" + obj.$attrs.fontSize);
-      done();
-    });
-
-    /*
-     * @tc.number       SUB_ACE_BASIC_ETS_API_0004
-     * @tc.name         testpanelBackgroundMask0004
-     * @tc.desic         acepanelBackgroundMaskEtsTest0004
-     */
-    it('testpanelBackgroundMask0004', 0, async function (done) {
-      console.info('panelBackgroundMask testpanelBackgroundMask0004 START');
-      await Utils.sleep(2000);
-      let strJson = getInspectorByKey('backgroundMaskText');
-      console.info("[testpanelBackgroundMask0004] component opacity strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.opacity).assertEqual(1);
-      console.info("[testpanelBackgroundMask0004] opacity value :" + obj.$attrs.opacity);
-      done();
-    });
-
-    /*
-     * @tc.number       SUB_ACE_BASIC_ETS_API_0005
-     * @tc.name         testpanelBackgroundMask0005
-     * @tc.desic         acepanelBackgroundMaskEtsTest0005
-     */
-    it('testpanelBackgroundMask0005', 0, async function (done) {
-      console.info('panelBackgroundMask testpanelBackgroundMask0005 START');
-      await Utils.sleep(2000);
-      let strJson = getInspectorByKey('backgroundMaskText');
-      console.info("[testpanelBackgroundMask0005] component align strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.align).assertEqual("Alignment.TopStart");
-      console.info("[testpanelBackgroundMask0005] align value :" + obj.$attrs.align);
-      done();
-    });
-
-    /*
-     * @tc.number       SUB_ACE_BASIC_ETS_API_0006
-     * @tc.name         testpanelBackgroundMask0006
-     * @tc.desic         acepanelBackgroundMaskEtsTest0006
-     */
-    it('testpanelBackgroundMask0006', 0, async function (done) {
-      console.info('panelBackgroundMask testpanelBackgroundMask0006 START');
-      await Utils.sleep(2000);
-      let strJson = getInspectorByKey('backgroundMaskText');
-      console.info("[testpanelBackgroundMask0006] component fontColor strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.fontColor).assertEqual("#FFCCCCCC");
-      console.info("[testpanelBackgroundMask0006] fontColor value :" + obj.$attrs.fontColor);
-      done();
-    });
-
-    /*
-     * @tc.number       SUB_ACE_BASIC_ETS_API_0007
-     * @tc.name         testpanelBackgroundMask0007
-     * @tc.desic         acepanelBackgroundMaskEtsTest0007
-     */
-    it('testpanelBackgroundMask0007', 0, async function (done) {
-      console.info('panelBackgroundMask testpanelBackgroundMask0007 START');
-      await Utils.sleep(2000);
-      let strJson = getInspectorByKey('backgroundMaskText');
-      console.info("[testpanelBackgroundMask0007] component lineHeight strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.lineHeight).assertEqual("25.00fp");
-      console.info("[testpanelBackgroundMask0007] lineHeight value :" + obj.$attrs.lineHeight);
-      done();
-    });
-
-    /*
-     * @tc.number       SUB_ACE_BASIC_ETS_API_0009
-     * @tc.name         testpanelBackgroundMask0009
-     * @tc.desic         acepanelBackgroundMaskEtsTest0009
-     */
-    it('testpanelBackgroundMask0009', 0, async function (done) {
-      console.info('panelBackgroundMask testpanelBackgroundMask009 START');
-      await Utils.sleep(2000);
-      let strJson = getInspectorByKey('backgroundMaskText');
-      console.info("[testpanelBackgroundMask0009] component padding strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.padding).assertEqual("10.00vp");
-      console.info("[testpanelBackgroundMask0009] padding value :" + obj.$attrs.padding);
-      done();
-    });
-
-    /*
-     * @tc.number       SUB_ACE_BASIC_ETS_API_0010
-     * @tc.name         testpanelBackgroundMask0010
-     * @tc.desic         acepanelBackgroundMaskEtsTest0010
-     */
-    it('testpanelBackgroundMask0010', 0, async function (done) {
-      console.info('panelBackgroundMask testpanelBackgroundMask0010 START');
-      await Utils.sleep(2000);
-      let strJson = getInspectorByKey('backgroundMaskText');
-      console.info("[testpanelBackgroundMask0010] component textAlign strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.textAlign).assertEqual("TextAlign.Left");
-      console.info("[testpanelBackgroundMask0010] textAlign value :" + obj.$attrs.textAlign);
-      done();
-    });
   })
 }
