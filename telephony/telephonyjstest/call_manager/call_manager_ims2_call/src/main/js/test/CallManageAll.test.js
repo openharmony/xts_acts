@@ -262,38 +262,6 @@ describe('CallManageImsCall', function () {
 
 
     /**
-     * @tc.number  Telephony_CallManager_controlCamera_Async_0200
-     * @tc.name    Dial a call and after answering the call,run function controlCamera by
-     *             args cameraId CARMER_ID_NOT_EXIT by callback,
-     *             the callback function return error
-     * @tc.desc    Function test
-     */
-    it('Telephony_CallManager_controlCamera_Async_0200', 0, function (done) {
-        let caseName = 'Telephony_CallManager_controlCamera_Async_0200';
-        scenceInCalling({
-            caseName:caseName,
-            phoneNumber:AUTO_ACCEPT_NUMBER2,
-            checkState:CALL_STATUS_DIALING
-        }).then(data => {
-            callId = data.callId;
-            let cameraId = CARMER_ID_NOT_EXIT;
-            call.controlCamera(cameraId, (error) => {
-                if (error) {
-                    console.log(`${caseName} error,case success,error:${toString(error)}`);
-                    hangupCall2(caseName, done, callId);
-                    return;
-                }
-                console.log(`${caseName} case failed`);
-                expect().assertFail();
-                hangupCall2(caseName, done, callId);
-            });
-        }).catch(error => {
-            console.log(`${caseName} scenceInCalling error ,case failed,error:${toString(error)}`);
-            done();
-        });
-    });
-
-    /**
      * @tc.number  Telephony_CallManager_controlCamera_Promise_0200
      * @tc.name    Dial a call and after answering the call,run function controlCamera by args cameraId
      *             CARMER_ID_NOT_EXIT  by promise,the function return error
@@ -915,5 +883,36 @@ describe('CallManageImsCall', function () {
             done();
         }
     });
+        /**
+         * @tc.number  Telephony_CallManager_controlCamera_Async_0200
+         * @tc.name    Dial a call and after answering the call,run function controlCamera by
+         *             args cameraId CARMER_ID_NOT_EXIT by callback,
+         *             the callback function return error
+         * @tc.desc    Function test
+         */
+        it('Telephony_CallManager_controlCamera_Async_0200', 0, function (done) {
+            let caseName = 'Telephony_CallManager_controlCamera_Async_0200';
+            scenceInCalling({
+                caseName:caseName,
+                phoneNumber:AUTO_ACCEPT_NUMBER2,
+                checkState:CALL_STATUS_DIALING
+            }).then(data => {
+                callId = data.callId;
+                let cameraId = CARMER_ID_NOT_EXIT;
+                call.controlCamera(cameraId, (error) => {
+                    if (error) {
+                        console.log(`${caseName} error,case success,error:${toString(error)}`);
+                        hangupCall2(caseName, done, callId);
+                        return;
+                    }
+                    console.log(`${caseName} case failed`);
+                    expect().assertFail();
+                    hangupCall2(caseName, done, callId);
+                });
+            }).catch(error => {
+                console.log(`${caseName} scenceInCalling error ,case failed,error:${toString(error)}`);
+                done();
+            });
+        });
 });
 }
