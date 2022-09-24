@@ -447,7 +447,7 @@ OpenHarmony支持如下几种系统类型：
         sources = [
             "src/TestDemo.cpp"
         ]
-    
+
         include_dirs = [
             "src",
             ...
@@ -457,7 +457,7 @@ OpenHarmony支持如下几种系统类型：
         ]
         cflags = [ "-Wno-error" ]
     }
-    
+
     ```
 
 4.  acts目录下增加编译选项（BUILD.gn）样例：
@@ -581,55 +581,91 @@ OpenHarmony支持如下几种系统类型：
 
 用例编写语法采用 jasmine 的标准语法，格式支持ES6格式。
 
-1.  规范用例目录：测试用例存储到entry/src/main/js/test目录。
+**以FA 模式为例：**
+
+1.  规范用例目录：测试用例存储到 src/main/js/test目录。
 
     ```
-    ├── BUILD.gn   
-    │ └──entry
-    │ │ └──src
-    │ │ │ └──main
-    │ │ │ │ └──js
-    │ │ │ │ │ └──default               
-    │ │ │ │ │ │ └──pages
-    │ │ │ │ │ │ │ └──index             
-    │ │ │ │ │ │ │ │ └──index.js        # 入口文件
-    │ │ │ │ │ └──test                  # 测试代码存放目录  
-    │ │ │ └── resources                # hap资源存放目录
-    │ │ │ └── config.json              # hap配置文件
+    ├── BUILD.gn  
+    ├── Test.json                    # 资源依赖hap不需要Test.json文件
+    ├── signature
+    │ └──openharmony_sx.p7b          # 签名工具
+    └──src
+    │ └──main
+    │ │ └──js
+    │ │ │ └──MainAbility 
+    │ │ │ │ └──app.js
+    │ │ │ │ └──pages
+    │ │ │ │ │ └──index   
+    │ │ │ │ │ │ └──index.js                  
+    │ │ │ └──test                   # 测试代码存放目录  
+    │ │ │ │ │ └──List.test.js   
+    │ │ │ │ │ └──Ability.test.js 
+    │ │ │ └──TestAbility            # 测试框架入口模板文件，添加后无需修改 
+    │ │ │ │ └──app.js   
+    │ │ │ │ └──pages 
+    │ │ │ │ │ └──index  
+    │ │ │ │ │ │ └──index.js  
+    │ │ │ └──TestRunner             # 测试框架入口模板文件，添加后无需修改 
+    │ │ │ │ └──OpenHarmonyTestRunner.js   
+    │ └── resources                 # hap资源存放目录
+    │ └── config.json               # hap配置文件
     ```
 
-2.  index.js示例
+2.  OpenHarmonyTestRunner.js 示例
 
     ```
-    // 拉起js测试框架，加载测试用例
-    import {Core, ExpectExtend} from 'deccjsunit/index'
-    
+    //加载js 测试框架
+    import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
+
+    ...
+
+     export default {
+        ...
+        onRun() {
+            console.log('OpenHarmonyTestRunner onRun run')
+            var abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+            var abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+
+            var testAbilityName = abilityDelegatorArguments.parameters['-p'] + '.MainAbility'
+
+            var cmd = 'aa start -d 0 -a ' + testAbilityName + ' -b ' + abilityDelegatorArguments.bundleName
+            ...
+        }
+    };
+    ```
+
+3.  index.js示例
+
+    ```
     export default {
-        data: {
-            title: ""
-        },
-        onInit() {
-            this.title = this.$t('strings.world');
-        },
+        ...
         onShow() {
-            console.info('onShow finish')
-            const core = Core.getInstance()
-            const expectExtend = new ExpectExtend({
-                'id': 'extend'
-            })
-            core.addService('expect', expectExtend)
-            core.init()
-            const configService = core.getDefaultService('config')
-            configService.setConfig(this)
-            require('../../../test/List.test')
-            core.execute()
+            console.info('onShow finish!')
         },
-        onReady() {
-        },
+        ...
     }
     ```
 
-3.  单元测试用例示例
+4.  app.js示例
+
+    ```
+    //加载测试用例
+    import { Hypium } from '@ohos/hypium'
+    import testsuite from '../test/List.test'
+    export default {
+        onCreate() {
+            console.info('TestApplication onCreate');
+            var abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+            var abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+            console.info('start run testcase!!!')
+            Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
+        },
+        ...
+    };
+    ```
+
+5.  单元测试用例示例
 
     ```
     // Example1: 使用HJSUnit进行单元测试
@@ -643,6 +679,210 @@ OpenHarmony支持如下几种系统类型：
     ```
 
 
+FA_JS 模式测试模块下用例配置文件（BUILD.gn）样例：
+
+```
+import("//test/xts/tools/build/suite.gni")
+
+ohos_js_hap_suite("ActsDemoTest") {
+  hap_profile = "./src/main/config.json"
+  deps = [
+    ":hjs_demo_js_assets",
+    ":hjs_demo_resources",
+  ]
+  certificate_profile = "./signature/openharmony_sx.p7b"    //签名文件
+  hap_name = "ActsDemoTest"                                 //测试套件，以Acts开头，以Test结尾，采用驼峰式命名
+  part_name = "..."                                         //部件
+  subsystem_name = "..."                                    //子系统
+}
+ohos_js_assets("hjs_demo_js_assets") {
+  js2abc = true
+  hap_profile = "./src/main/config.json"
+  source_dir = "./src/main/js"
+}
+ohos_resources("hjs_demo_resources") {
+  sources = [ "./src/main/resources" ]
+  hap_profile = "./src/main/config.json"
+}
+```
+
+FA_TS 模式测试模块下用例配置文件（BUILD.gn）样例：
+
+```
+import("//test/xts/tools/build/suite.gni")
+
+ohos_js_hap_suite("ActsDemoTest") {
+  hap_profile = "./src/main/config.json"
+  deps = [
+    ":ace_demo_ets_assets",
+    ":ace_demo_ets_resources",
+    ":ace_demo_ets_test_assets",
+  ]
+  ets2abc = true
+  certificate_profile = "./signature/openharmony_sx.p7b"   //签名文件
+  hap_name = "ActsDemoTest"                                //测试套件，以Acts开头，以Test结尾，采用驼峰式命名
+  part_name = "..."                                        //部件
+  subsystem_name = "..."                                   //子系统
+}
+ohos_js_assets("ace_demo_ets_assets") {
+  source_dir = "./src/main/ets/MainAbility"
+}
+ohos_js_assets("ace_demo_ets_test_assets") {
+  source_dir = "./src/main/ets/TestAbility"
+}
+ohos_resources("ace_demo_ets_resources") {
+  sources = [ "./src/main/resources" ]
+  hap_profile = "./src/main/config.json"
+}
+```
+
+以Stage 模式为例**
+
+1. 规范用例目录：测试用例存储到 src/main/js/test目录。
+
+   ```
+   ├── BUILD.gn                     # 配置文件
+   ├── Test.json                    # 资源依赖hap不需要Test.json文件
+   ├── signature
+   │ └──openharmony_sx.p7b          # 签名工具
+   ├── AppScope
+   │ └──resource  
+   │ └──app.json
+   ├── entry
+   │ └──src
+   │ │ └──main
+   │ │ │ └──ets         
+   │ │ │ │ └──test                   # 测试代码存放目录  
+   │ │ │ │ │ └──List.test.ets   
+   │ │ │ │ │ └──Ability.test.ets 
+   │ │ │ │ └──MainAbility      
+   │ │ │ │ │ └──MainAbility.ts         
+   │ │ │ │ │ └──pages            
+   │ │ │ │ │ │ └──index 
+   │ │ │ │ │ │ │ └──index.ets     
+   │ │ │ │ └──TestAbility      
+   │ │ │ │ │ └──TestAbility.ts       # 测试用例启动入口 ability    
+   │ │ │ │ │ └──pages            
+   │ │ │ │ │ │ └──index.ets                
+   │ │ │ │ └──Application              
+   │ │ │ │ │ └──AbilityStage.ts   
+   │ │ │ │ └──TestRunner             # 测试框架入口模板文件，添加后无需修改 
+   │ │ │ │ │ └──OpenHarmonyTestRunner.js  
+   │ │ └── resources                 # hap资源存放目录
+   │ │ └── module.json               # hap配置文件
+   ```
+
+2. OpenHarmonyTestRunner.ts 示例
+
+   【注】在TestRunner目录下的 OpenHarmonyTestRunner.ts 文件中的 async onRun() 方法下存在拉起测试套入口xxxAbility的cmd 命令：
+
+   例如：
+
+   var cmd = 'aa start -d 0 -a TestAbility' + ' -b ' + abilityDelegatorArguments.bundleName
+
+   需与module.json中 "abilities" 下的 "name" 字段保持一致，保证拉起的是我们需要的测试入口。
+
+   ```
+   import TestRunner from '@ohos.application.testRunner'
+   import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
+
+   ...
+
+   export default class OpenHarmonyTestRunner implements TestRunner {
+       ...
+       async onRun() {
+           console.log('OpenHarmonyTestRunner onRun run')
+           abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+           abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+           var testAbilityName = abilityDelegatorArguments.bundleName + '.TestAbility'
+           let lMonitor = {
+               abilityName: testAbilityName,
+               onAbilityCreate: onAbilityCreateCallback,
+           };
+           abilityDelegator.addAbilityMonitor(lMonitor, addAbilityMonitorCallback)
+           var cmd = 'aa start -d 0 -a TestAbility' + ' -b ' + abilityDelegatorArguments.bundleName
+           ...
+       }
+   };
+   ```
+
+3. index.ets示例
+
+   ```
+   import router from '@ohos.router';
+
+   @Entry
+   @Component
+   struct Index {
+
+     aboutToAppear(){
+       console.info("start run testcase!!!!")
+     }
+
+     build() {
+       ...
+     }
+   }
+   ```
+
+4. app.js示例
+
+   ```
+   //加载测试用例
+   import Ability from '@ohos.application.Ability'
+   import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
+   import { Hypium } from '@ohos/hypium'
+   import testsuite from '../test/List.test'
+
+   export default class TestAbility extends Ability {
+       onCreate(want, launchParam) {
+           console.log('TestAbility onCreate')
+           var abilityDelegator: any
+           abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+           var abilityDelegatorArguments: any
+           abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+           console.info('start run testcase!!!')
+           Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
+       }
+       ...
+   };
+   ```
+
+Stage 模式测试模块下用例配置文件（BUILD.gn）样例：
+
+```
+import("//test/xts/tools/build/suite.gni")
+
+ohos_js_hap_suite("ActsDemoTest") {
+  hap_profile = "/src/main/module.json"
+  js_build_mode = "debug"
+  deps = [
+    ":edm_js_assets",
+    ":edm_resources",
+  ]
+  ets2abc = true
+  certificate_profile = "signature/openharmony_sx.p7b"     //签名文件
+  hap_name = "ActsDemoTest"                                //测试套件，以Acts开头，以Test结尾，采用驼峰式命名
+  subsystem_name = "customization"                         //子系统
+  part_name = "enterprise_device_management"               //部件
+}
+
+ohos_app_scope("edm_app_profile") {
+  app_profile = "AppScope/app.json"
+  sources = [ "AppScope/resources" ]
+}
+
+ohos_js_assets("edm_js_assets") {
+  source_dir = "/src/main/ets"
+}
+
+ohos_resources("edm_resources") {
+  sources = [ "/src/main/resources" ]
+  deps = [ ":edm_app_profile" ]
+  hap_profile = "/src/main/module.json"
+}
+```
+
 ### JS语言用例编译打包指导（适用于标准系统）<a name="section445519106559"></a>
 
 hap包编译请参考 [标准系统 JS用例源码编译Hap包指导](https://gitee.com/openharmony/xts_acts/wikis/%E6%A0%87%E5%87%86%E7%B3%BB%E7%BB%9F%20JS%E7%94%A8%E4%BE%8B%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91Hap%E5%8C%85%E6%8C%87%E5%AF%BC%20?sort_id=4427112)。
@@ -650,12 +890,26 @@ hap包编译请参考 [标准系统 JS用例源码编译Hap包指导](https://gi
 ### 全量编译指导（适用于标准系统）<a name="section159801435165220"></a>
 
 1.  全量编译
-test/xts/acts目录下执行编译命令：
+    test/xts/acts目录下执行编译命令：
     ```./build.sh suite=acts system_size=standard ```
 
-    测试用例输出目录：out/release/suites/acts/testcases
+2.  单个子系统编译
 
-    测试框架&用例整体输出目录：out/release/suites/acts（编译用例时会同步编译测试套执行框架）
+    test/xts/acts目录下执行编译命令：
+    ```./build.sh suite=acts system_size=standard target_subsystem=××××  ```
+
+3.  单模块编译
+
+    test/xts/acts目录下执行编译命令：
+
+    ```./build.sh suite=acts system_size=standard target_subsystem=××××
+    ./build.sh suite=acts system_size=standard suite=xxx
+    suite 后面添加的是BUILD.gn 中ohos_js_hap_suite模板的命名
+    ```
+
+    测试用例输出目录：out/rk3568/suites/acts/testcases
+
+    测试框架&用例整体输出目录：out/rk3568/suites/acts（编译用例时会同步编译测试套执行框架）
 
 ### 全量用例执行指导（适用于小型系统、标准系统）<a name="section159801435165220"></a>
 
@@ -673,14 +927,27 @@ Windows工作台下安装python3.7及以上版本，确保工作台和测试设�
 
 用例执行
 1.  在Windows工作台上，找到从Linux服务器上拷贝下来的测试套件用例目录，在Windows命令窗口进入对应目录，直接执行acts\run.bat。
+
 2.  界面启动后，输入用例执行指令。
 
     全量执行：```run acts ```
 
     模块执行(具体模块可以查看\acts\testcases\)：```run –l ActsSamgrTest ```
 
+    单包执行(具体模块可以查看\acts\testcases\)：（适用于OH驱动）
+
+    ```
+    run -l uitestActs -ta class:UiTestCase#testChecked  
+
+    uitestActs： 测试hap
+    UiTestCase: testsuite
+    testChecked: testcase
+    ```
+
+    ​
+
 3.  查看测试报告。
-进入acts\reports\，获取当前的执行记录，打开“summary_report.html”可以获取到测试报告。
+    进入acts\reports\，获取当前的执行记录，打开“summary_report.html”可以获取到测试报告。
 
 ## 相关仓<a name="section1371113476307"></a>
 
