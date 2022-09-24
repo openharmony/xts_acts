@@ -29,7 +29,7 @@ export default function ActsNotificationDistributedTest() {
               done()
             } else {
               console.info(`${TAG} isDistributedEnabled AsyncCallback success: ${data}`)
-              expect(data).assertTrue()
+              expect(data).assertEqual(false);
               done()
             }
           })
@@ -40,7 +40,7 @@ export default function ActsNotificationDistributedTest() {
           console.info(`${TAG} SUB_NOTIFICATION_ANS_IS_DISTRIBUTED_ENABLED_TEST_0200 START`)
           notification.isDistributedEnabled().then((data) => {
             console.info(`${TAG} isDistributedEnabled Promise success: ${data}`)
-            expect(data).assertTrue()
+            expect(data).assertEqual(false);
             done()
           }).catch((err) => {
             console.info(`${TAG} isDistributedEnabled Promise err: ${err.code}`)
