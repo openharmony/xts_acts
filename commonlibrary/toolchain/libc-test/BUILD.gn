@@ -27,7 +27,7 @@ config("module_private_config") {
 }
 
 ########################################################
-ohos_moduletest_suite("ActToolChainTest") {
+ohos_moduletest_suite("ActsToolChainTest") {
   configs = [ ":module_private_config" ]
   cflags_cc = [ "-DHILOG_ENABLE" ]
   defines = [ "_STANDARD_SYSTEM_" ]
