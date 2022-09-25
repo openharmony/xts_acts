@@ -2726,8 +2726,8 @@ describe('fileTest', function () {
         dstUri: 'internal://cache/../files/cache/File_Copy_002' + typeArray[i],
         success: function () {
           console.info('File_Copy_002 call copy success.');
-          fileio.unlinkSync(srcFpath);
-          fileio.unlinkSync(dstFpath);
+          file.delete('internal://cache/../files/File_Copy_002' + typeArray[i]);
+          file.delete('internal://cache/../files/cache/File_Copy_002' + typeArray[i]);
           done();
         },
         fail: function (data, code) {
