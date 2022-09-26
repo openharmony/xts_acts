@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import plugin from "plugin_component.js"
+import plugin from "../common/plugin_component.js"
 
 @Entry
 @Component
