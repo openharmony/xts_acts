@@ -163,7 +163,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_CAMERA_MANAGER_PROMISE', 0, async function (done) {
+    it('PP_GET_CAMERA_MANAGER_PROMISE', 0, async function (done) {
       console.info("--------------GET_CAMERA_MANAGER_PROMISE--------------");
       cameraManagerPromise = await cameraObj.getCameraManager(null);
       console.info(TAG + "Entering Get camera manager cameraManagerPromise: " + JSON.stringify(cameraManagerPromise));
@@ -187,7 +187,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('CAMERA_STATUS_CALLBACK', 0, async function (done) {
+    it('PP_CAMERA_STATUS_CALLBACK', 0, async function (done) {
       if (cameraManagerPromise == null || cameraManagerPromise == undefined) {
         console.info(TAG + 'Entering camera status callback cameraManagerPromise == null || undefined')
       } else {
@@ -220,7 +220,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_CAMERAS_PROMISE', 0, async function (done) {
+    it('PP_GET_CAMERAS_PROMISE', 0, async function (done) {
       console.info("--------------GET_CAMERAS_PROMISE--------------");
       camerasArrayPromise = await cameraManagerPromise.getCameras();
       console.info(TAG + "Entering Get Cameras: " + JSON.stringify(camerasArrayPromise));
@@ -257,7 +257,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('CREATE_CAMERA_INPUT_PROMISE', 0, async function (done) {
+    it('PP_CREATE_CAMERA_INPUT_PROMISE', 0, async function (done) {
       console.info("--------------CAMERA-0 STARTS HERE--------------");
       console.info("--------------CREATE_CAMERA_INPUT_PROMISE--------------");
       camera0InputPromise = await cameraManagerPromise.createCameraInput(camerasArrayPromise[0].cameraId);
@@ -283,7 +283,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('CREATE_CAMERA_INPUT_PROMISE_Camera1', 0, async function (done) {
+    it('PP_CREATE_CAMERA_INPUT_PROMISE_Camera1', 0, async function (done) {
       console.info("--------------CREATE_CAMERA_INPUT_PROMISE--------------");
       camera1InputPromise = await cameraManagerPromise.createCameraInput(camerasArrayPromise[1].cameraId);
       console.info(TAG + "Entering Create camerainput camera1InputPromise: " + JSON.stringify(camera1InputPromise));
@@ -308,7 +308,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('CAMERA_INPUT_CALLBACK_ON_ERROR', 0, async function (done) {
+    it('PP_CAMERA_INPUT_CALLBACK_ON_ERROR', 0, async function (done) {
       if (camera0InputPromise == null || camera0InputPromise == undefined) {
         console.info(TAG + "Entering CAMERA_INPUT_CALLBACK_ON_ERROR camera0InputPromise == null || undefined");
       } else {
@@ -341,7 +341,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('CREATE_PREVIEW_OUTPUT_SUCCESS_PROMISE', 0, async function (done) {
+    it('PP_CREATE_PREVIEW_OUTPUT_SUCCESS_PROMISE', 0, async function (done) {
       console.info(TAG + " Entering CREATE_PREVIEW_OUTPUT_SUCCESS_PROMISE to operate");
       previewOutputPromise = await cameraObj.createPreviewOutput(surfaceId);
       console.info(TAG + " Entering  createPreviewOutput success");
@@ -366,7 +366,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('PREVIEW_OUTPUT_CALLBACK_ON_ERROR', 0, async function (done) {
+    it('PP_PREVIEW_OUTPUT_CALLBACK_ON_ERROR', 0, async function (done) {
       if (previewOutputPromise == null || previewOutputPromise == undefined) {
         console.info(TAG + "Entering Preview output callback on error previewOutput == null || undefined");
       } else {
@@ -399,7 +399,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('CREATE_PHOTO_OUTPUT_SUCCESS_PROMISE', 0, async function (done) {
+    it('PP_CREATE_PHOTO_OUTPUT_SUCCESS_PROMISE', 0, async function (done) {
       console.info(TAG + "Entering CREATE_PHOTO_OUTPUT_SUCCESS_PROMISE to operate");
       console.info(TAG + 'Entering getImageReceiverSurfaceId')
       await getImageReceiverSurfaceId()
@@ -427,7 +427,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('PHOTO_OUTPUT_CALLBACK_ON_ERROR', 0, async function (done) {
+    it('PP_PHOTO_OUTPUT_CALLBACK_ON_ERROR', 0, async function (done) {
       if (photoOutputPromise == null || photoOutputPromise == undefined) {
         console.info(TAG + "Entering Photo output callback on error photoOutput == null || undefined");
       } else {
@@ -460,7 +460,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('CREATE_CAPTURE_SESSION_PROMISE', 0, async function (done) {
+    it('PP_CREATE_CAPTURE_SESSION_PROMISE', 0, async function (done) {
       console.info(TAG + "Entering CREATE_CAPTURE_SESSION_PROMISE to operate");
       CaptureSessionPromise = await cameraObj.createCaptureSession(null);
       console.info(TAG + "Entering createCaptureSession success");
@@ -487,7 +487,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('CAP_SES_CALLBACK_ON_ERROR', 0, async function (done) {
+    it('PP_CAP_SES_CALLBACK_ON_ERROR', 0, async function (done) {
       if (CaptureSessionPromise == null || CaptureSessionPromise == undefined) {
         console.info(TAG + "Entering CaptureSession callback on error captureSession == null || undefined");
       } else {
@@ -520,7 +520,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('CREATE_BEGIN_CONFIG_PROMISE', 0, async function (done) {
+    it('PP_CREATE_BEGIN_CONFIG_PROMISE', 0, async function (done) {
       if (CaptureSessionPromise == null || CaptureSessionPromise == undefined) {
         console.info(TAG + "Entering CaptureSession_Begin config captureSession == null || undefined");
       } else {
@@ -549,7 +549,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('ADD_INPUT_PROMISE', 0, async function (done) {
+    it('PP_ADD_INPUT_PROMISE_1', 0, async function (done) {
       if (CaptureSessionPromise == null || CaptureSessionPromise == undefined) {
         console.info(TAG + "Entering Add Input captureSession == null || undefined");
       } else {
@@ -580,7 +580,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('ADD_OUTPUT_PREVIEW_PROMISE', 0, async function (done) {
+    it('PP_ADD_OUTPUT_PREVIEW_PROMISE', 0, async function (done) {
       if (CaptureSessionPromise == null || CaptureSessionPromise == undefined) {
         console.info(TAG + "Entering Add preview Output captureSession == null || undefined");
       } else {
@@ -611,7 +611,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('REMOVE_PREVIEW_OUTPUT_SUCCESS', 0, async function (done) {
+    it('PP_REMOVE_PREVIEW_OUTPUT_SUCCESS', 0, async function (done) {
       if (CaptureSessionPromise == null || CaptureSessionPromise == undefined) {
         console.info(TAG + "Entering Remove preview Output captureSession == null || undefined");
       } else {
@@ -642,7 +642,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('ADD_OUTPUT_PREVIEW_PROMISE', 0, async function (done) {
+    it('PP_ADD_OUTPUT_PREVIEW_PROMISE', 0, async function (done) {
       if (CaptureSessionPromise == null || CaptureSessionPromise == undefined) {
         console.info(TAG + "Entering Add preview Output captureSession == null || undefined");
       } else {
@@ -673,7 +673,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('COMMIT_CONFIG_SUCCESS', 0, async function (done) {
+    it('PP_COMMIT_CONFIG_SUCCESS_0', 0, async function (done) {
       if (CaptureSessionPromise == null || CaptureSessionPromise == undefined) {
         console.info(TAG + "Entering commit config captureSession == null || undefined");
       } else {
@@ -704,7 +704,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('isMirrorSupported_PHOTO_OUTPUT', 0, async function (done) {
+    it('PP_isMirrorSupported_PHOTO_OUTPUT', 0, async function (done) {
       if (photoOutputPromise == null || photoOutputPromise == undefined) {
         console.info(TAG + "photoOutput == null || undefined");
       } else {
@@ -734,7 +734,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('setMirror_true', 0, async function (done) {
+    it('PP_setMirror_true', 0, async function (done) {
       if (photoOutputPromise == null || photoOutputPromise == undefined) {
         console.info(TAG + "photoOutput == null || undefined");
       } else {
@@ -763,7 +763,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('setMirror_false', 0, async function (done) {
+    it('PP_setMirror_false', 0, async function (done) {
       if (photoOutputPromise == null || photoOutputPromise == undefined) {
         console.info(TAG + "photoOutput == null || undefined");
       } else {
@@ -793,7 +793,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('CREATE_BEGIN_CONFIG_SUCCESS_PROMISE', 0, async function (done) {
+    it('PP_CREATE_BEGIN_CONFIG_SUCCESS_PROMISE', 0, async function (done) {
       if (CaptureSessionPromise == null || CaptureSessionPromise == undefined) {
         console.info(TAG + "Entering CREATE_BEGIN_CONFIG_SUCCESS captureSession == null || undefined");
       } else {
@@ -822,7 +822,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('REMOVE_INPUT_SUCCESS', 0, async function (done) {
+    it('PP_REMOVE_INPUT_SUCCESS', 0, async function (done) {
       if (CaptureSessionPromise == null || CaptureSessionPromise == undefined) {
         console.info(TAG + "Entering REMOVE_INPUT_SUCCESS captureSession == null || undefined");
       } else {
@@ -853,7 +853,8 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('ADD_INPUT_PROMISE', 0, async function (done) {
+   // FIXME: aaa
+    it('PP_ADD_INPUT_PROMISE_0', 0, async function (done) {
       if (CaptureSessionPromise == null || CaptureSessionPromise == undefined) {
         console.info(TAG + "Entering Add Input captureSession == null || undefined");
       } else {
@@ -884,7 +885,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('ADD_OUTPUT_PHOTO_SUCCESS', 0, async function (done) {
+    it('PP_ADD_OUTPUT_PHOTO_SUCCESS', 0, async function (done) {
       if (CaptureSessionPromise == null || CaptureSessionPromise == undefined) {
         console.info(TAG + "Entering Add output with photo output captureSession == null || undefined");
       } else {
@@ -915,7 +916,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('REMOVE_PHOTO_OUTPUT_SUCCESS', 0, async function (done) {
+    it('PP_REMOVE_PHOTO_OUTPUT_SUCCESS', 0, async function (done) {
       if (CaptureSessionPromise == null || CaptureSessionPromise == undefined) {
         console.info(TAG + "Entering REMOVE_INPUT_SUCCESS captureSession == null || undefined");
       } else {
@@ -946,7 +947,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('ADD_OUTPUT_PHOTO_SUCCESS', 0, async function (done) {
+    it('PP_ADD_OUTPUT_PHOTO_SUCCESS', 0, async function (done) {
       if (CaptureSessionPromise == null || CaptureSessionPromise == undefined) {
         console.info(TAG + "Entering ADD_OUTPUT_PHOTO_SUCCESS captureSession == null || undefined");
       } else {
@@ -969,36 +970,36 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       done();
     })
 
-    /**
-      * @tc.number    : COMMIT_CONFIG_SUCCESS
-      * @tc.name      : commit config api
-      * @tc.desc      : commit config api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('COMMIT_CONFIG_SUCCESS', 0, async function (done) {
-      if (CaptureSessionPromise == null || CaptureSessionPromise == undefined) {
-        console.info(TAG + "Entering commit config captureSession == null || undefined");
-      } else {
-        console.info(TAG + "Entering COMMIT_CONFIG_SUCCESS to operate");
-        const promise = await CaptureSessionPromise.commitConfig();
-        console.info(TAG + "Entering commit config commitConfig success");
-        if (promise == undefined) {
-          expect(true).assertTrue();
-          console.info(TAG + "Entering COMMIT_CONFIG_SUCCESS commitConfig PASSED");
-        }
-        else {
-          expect().assertFail();
-          console.info(TAG + "Entering COMMIT_CONFIG_SUCCESS commitConfig FAILED : ");
-          console.info(TAG + "Entering COMMIT_CONFIG_SUCCESS commitConfig ends here");
-        }
-        await sleep(1000);
-        done();
-      }
-      await sleep(1000);
-      done();
-    })
+    // /**
+    //   * @tc.number    : COMMIT_CONFIG_SUCCESS
+    //   * @tc.name      : commit config api
+    //   * @tc.desc      : commit config api
+    //   * @tc.size      : MEDIUM
+    //   * @tc.type      : Function
+    //   * @tc.level     : Level 0
+    // */
+    // it('PP_COMMIT_CONFIG_SUCCESS_1', 0, async function (done) {
+    //   if (CaptureSessionPromise == null || CaptureSessionPromise == undefined) {
+    //     console.info(TAG + "Entering commit config captureSession == null || undefined");
+    //   } else {
+    //     console.info(TAG + "Entering COMMIT_CONFIG_SUCCESS to operate");
+    //     const promise = await CaptureSessionPromise.commitConfig();
+    //     console.info(TAG + "Entering commit config commitConfig success");
+    //     if (promise == undefined) {
+    //       expect(true).assertTrue();
+    //       console.info(TAG + "Entering COMMIT_CONFIG_SUCCESS commitConfig PASSED");
+    //     }
+    //     else {
+    //       expect().assertFail();
+    //       console.info(TAG + "Entering COMMIT_CONFIG_SUCCESS commitConfig FAILED : ");
+    //       console.info(TAG + "Entering COMMIT_CONFIG_SUCCESS commitConfig ends here");
+    //     }
+    //     await sleep(1000);
+    //     done();
+    //   }
+    //   await sleep(1000);
+    //   done();
+    // })
 
     /**
       * @tc.number    : FOCUSSTATECHANGE_CALLBACK_ON_CAMERAINPUT
@@ -1008,7 +1009,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('FOCUSSTATECHANGE_CALLBACK_ON_CAMERAINPUT', 0, async function (done) {
+    it('PP_FOCUSSTATECHANGE_CALLBACK_ON_CAMERAINPUT', 0, async function (done) {
       if (camera0InputPromise == null || camera0InputPromise == undefined) {
         console.info(TAG + "Entering FocusStateChange callback previewOutput == null || undefined");
       } else {
@@ -1040,7 +1041,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('EXPOSURESTATECHANGE_CALLBACK_ON_CAMERAINPUT', 0, async function (done) {
+    it('PP_EXPOSURESTATECHANGE_CALLBACK_ON_CAMERAINPUT', 0, async function (done) {
       if (camera0InputPromise == null || camera0InputPromise == undefined) {
         console.info(TAG + "Entering ExposureStateChange callback previewOutput == null || undefined");
       } else {
@@ -1074,7 +1075,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('PREVIEW_OUTPUT_CALLBACK_ON_FRAME_START', 0, async function (done) {
+    it('PP_PREVIEW_OUTPUT_CALLBACK_ON_FRAME_START', 0, async function (done) {
       if (previewOutputPromise == null || previewOutputPromise == undefined) {
         console.info(TAG + "Entering Preview output callback on frame start previewOutput == null || undefined");
       } else {
@@ -1105,7 +1106,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('PREVIEW_OUTPUT_CALLBACK_ON_FRAME_END', 0, async function (done) {
+    it('PP_PREVIEW_OUTPUT_CALLBACK_ON_FRAME_END', 0, async function (done) {
       if (previewOutputPromise == null || previewOutputPromise == undefined) {
         console.info(TAG + "Entering Preview capture callback on frame end previewOutput == null || undefined");
       } else {
@@ -1137,7 +1138,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('PHOTO_CAP_CALLBACK_ON_CAPTURE_START', 0, async function (done) {
+    it('PP_PHOTO_CAP_CALLBACK_ON_CAPTURE_START', 0, async function (done) {
       if (photoOutputPromise == null || photoOutputPromise == undefined) {
         console.info(TAG + "Entering Photo capture callback on capture start photoOutput == null || undefined");
       } else {
@@ -1169,7 +1170,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('PHOTO_CAP_CALLBACK_ON_CAPTURE_END', 0, async function (done) {
+    it('PP_PHOTO_CAP_CALLBACK_ON_CAPTURE_END', 0, async function (done) {
       if (photoOutputPromise == null || photoOutputPromise == undefined) {
         console.info(TAG + "Entering Photo capture callback on capture end photoOutput == null || undefined");
       } else {
@@ -1202,7 +1203,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('PHOTO_CAP_CALLBACK_ON_FRAME_SHUTTER', 0, async function (done) {
+    it('PP_PHOTO_CAP_CALLBACK_ON_FRAME_SHUTTER', 0, async function (done) {
       if (photoOutputPromise == null || photoOutputPromise == undefined) {
         console.info(TAG + "Entering Photo capture callback on frame shutter photoOutput == null || undefined");
       } else {
@@ -1235,7 +1236,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('CAPTURE_SESSION_START_SUCCESS', 0, async function (done) {
+    it('PP_CAPTURE_SESSION_START_SUCCESS', 0, async function (done) {
       if (CaptureSessionPromise == null || CaptureSessionPromise == undefined) {
         console.info(TAG + "Entering capture session start captureSession == null || undefined");
       } else {
@@ -1261,7 +1262,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS', 0, async function (done) {
+    it('PP_PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS', 0, async function (done) {
       if (photoOutputPromise == null || photoOutputPromise == undefined) {
         console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS photoOutput == null || undefined");
       } else {
@@ -1287,14 +1288,14 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS1 
+      * @tc.number    : PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS1
       * @tc.name      : Photo output capture with photosettings api
       * @tc.desc      : Photo output capture with photosettings api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS1', 0, async function (done) {
+    it('PP_PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS1', 0, async function (done) {
       if (photoOutputPromise == null || photoOutputPromise == undefined) {
         console.info(TAG + "Entering Photo output capture with photosettings photoOutput == null || undefined");
       } else {
@@ -1321,14 +1322,14 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS2 
+      * @tc.number    : PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS2
       * @tc.name      : Photo output capture with photosettings api
       * @tc.desc      : Photo output capture with photosettings api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS2', 0, async function (done) {
+    it('PP_PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS2', 0, async function (done) {
       if (photoOutputPromise == null || photoOutputPromise == undefined) {
         console.info(TAG + "Entering Photo output capture with photosettings photoOutput == null || undefined");
       } else {
@@ -1355,14 +1356,14 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS3 
+      * @tc.number    : PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS3
       * @tc.name      : Photo output capture with photosettings api
       * @tc.desc      : Photo output capture with photosettings api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS3', 0, async function (done) {
+    it('PP_PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS3', 0, async function (done) {
       if (photoOutputPromise == null || photoOutputPromise == undefined) {
         console.info(TAG + "Entering Photo output capture with photosettings photoOutput == null || undefined");
       } else {
@@ -1389,14 +1390,14 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS4 
+      * @tc.number    : PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS4
       * @tc.name      : Photo output capture with photosettings api
       * @tc.desc      : Photo output capture with photosettings api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS4', 0, async function (done) {
+    it('PP_PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS4', 0, async function (done) {
       if (photoOutputPromise == null || photoOutputPromise == undefined) {
         console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS photoOutput == null || undefined");
       } else {
@@ -1431,7 +1432,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('HAS_FLASH', 0, async function (done) {
+    it('PP_HAS_FLASH', 0, async function (done) {
       console.info("--------------HAS_FLASH--------------");
       console.info(TAG + 'hasFlash called.')
       var hasFlashPromise = await camera0InputPromise.hasFlash();
@@ -1458,7 +1459,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('IS_FLASH_MODE_OPEN_SUPPORTED', 0, async function (done) {
+    it('PP_IS_FLASH_MODE_OPEN_SUPPORTED', 0, async function (done) {
       console.info(TAG + "Entering IS_FLASH_MODE_OPEN_SUPPORTED to operate");
       var isFMOpenSupported = await camera0InputPromise.isFlashModeSupported(cameraObj.FlashMode.FLASH_MODE_OPEN);
       console.info(TAG + "Entering IS_FLASH_MODE_OPEN_SUPPORTED SUCCESS ");
@@ -1485,7 +1486,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_FLASH_MODE_OPEN', 0, async function (done) {
+    it('PP_SET_FLASH_MODE_OPEN', 0, async function (done) {
       console.info(TAG + "Entering SET_FLASH_MODE_OPEN to operate");
       var SetFMOpen = await camera0InputPromise.setFlashMode(cameraObj.FlashMode.FLASH_MODE_OPEN);
       console.info(TAG + "setFlashModeOPEN: " + JSON.stringify(SetFMOpen))
@@ -1510,7 +1511,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_FLASH_MODE_OPEN', 0, async function (done) {
+    it('PP_GET_FLASH_MODE_OPEN', 0, async function (done) {
       console.info(TAG + "Entering GET_FLASH_MODE_OPEN to operate");
       var GetFMOpen = await camera0InputPromise.getFlashMode();
       console.info(TAG + "Entering GET_FLASH_MODE_OPEN success: " + JSON.stringify(GetFMOpen));
@@ -1537,7 +1538,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('IS_FLASH_MODE_ALWAYS_OPEN_SUPPORTED', 0, async function (done) {
+    it('PP_IS_FLASH_MODE_ALWAYS_OPEN_SUPPORTED', 0, async function (done) {
       console.info(TAG + "Entering IS_FLASH_MODE_ALWAYS_OPEN_SUPPORTED to operate");
       var isFMAlwaysOpenSupported = await camera0InputPromise.isFlashModeSupported(cameraObj.FlashMode.FLASH_MODE_ALWAYS_OPEN);
       console.info(TAG + "Entering IS_FLASH_MODE_ALWAYS_OPEN_SUPPORTED SUCCESS ");
@@ -1564,7 +1565,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_FLASH_MODE_ALWAYS_OPEN', 0, async function (done) {
+    it('PP_SET_FLASH_MODE_ALWAYS_OPEN', 0, async function (done) {
       console.info(TAG + "Entering SET_FLASH_MODE_ALWAYS_OPEN to operate");
       var SetFMAlwaysOpen = await camera0InputPromise.setFlashMode(cameraObj.FlashMode.FLASH_MODE_ALWAYS_OPEN);
       console.info(TAG + "setFlashModeOPEN: " + JSON.stringify(SetFMAlwaysOpen))
@@ -1589,7 +1590,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_FLASH_MODE_ALWAYS_OPEN', 0, async function (done) {
+    it('PP_GET_FLASH_MODE_ALWAYS_OPEN', 0, async function (done) {
       console.info(TAG + "Entering GET_FLASH_MODE_ALWAYS_OPEN to operate");
       var GetFMAlwaysOpen = await camera0InputPromise.getFlashMode();
       console.info(TAG + "Entering GET_FLASH_MODE_ALWAYS_OPEN success");
@@ -1616,7 +1617,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('IS_FLASH_MODE_AUTO_SUPPORTED', 0, async function (done) {
+    it('PP_IS_FLASH_MODE_AUTO_SUPPORTED', 0, async function (done) {
       console.info(TAG + "Entering IS_FLASH_MODE_AUTO_SUPPORTED to operate");
       var isFMAutoSupported = await camera0InputPromise.isFlashModeSupported(cameraObj.FlashMode.FLASH_MODE_AUTO);
       console.info(TAG + "Entering IS_FLASH_MODE_AUTO_SUPPORTED SUCCESS ");
@@ -1643,7 +1644,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_FLASH_MODE_AUTO', 0, async function (done) {
+    it('PP_SET_FLASH_MODE_AUTO', 0, async function (done) {
       console.info(TAG + "Entering SET_FLASH_MODE_AUTO to operate");
       var SetFMAlwaysAuto = await camera0InputPromise.setFlashMode(cameraObj.FlashMode.FLASH_MODE_AUTO);
       console.info(TAG + "SetFMAlwaysAuto: " + JSON.stringify(SetFMAlwaysAuto))
@@ -1668,7 +1669,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_FLASH_MODE_AUTO', 0, async function (done) {
+    it('PP_GET_FLASH_MODE_AUTO', 0, async function (done) {
       console.info(TAG + "Entering GET_FLASH_MODE_AUTO to operate");
       var GetFMAuto = await camera0InputPromise.getFlashMode();
       console.info(TAG + "Entering GET_FLASH_MODE_AUTO success");
@@ -1695,7 +1696,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('IS_FLASH_MODE_CLOSE_SUPPORTED', 0, async function (done) {
+    it('PP_IS_FLASH_MODE_CLOSE_SUPPORTED', 0, async function (done) {
       console.info(TAG + "Entering IS_FLASH_MODE_CLOSE_SUPPORTED to operate");
       var isFMCloseSupported = await camera0InputPromise.isFlashModeSupported(cameraObj.FlashMode.FLASH_MODE_CLOSE);
       console.info(TAG + "Entering IS_FLASH_MODE_CLOSE_SUPPORTED SUCCESS ");
@@ -1722,7 +1723,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_FLASH_MODE_CLOSE', 0, async function (done) {
+    it('PP_SET_FLASH_MODE_CLOSE', 0, async function (done) {
       console.info(TAG + "Entering SET_FLASH_MODE_CLOSE to operate");
       var SetFMClose = await camera0InputPromise.setFlashMode(cameraObj.FlashMode.FLASH_MODE_CLOSE);
       console.info(TAG + "setFlashModeOPEN: " + JSON.stringify(SetFMClose))
@@ -1747,7 +1748,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_FLASH_MODE_CLOSE', 0, async function (done) {
+    it('PP_GET_FLASH_MODE_CLOSE', 0, async function (done) {
       console.info(TAG + "Entering GET_FLASH_MODE_CLOSE to operate");
       var GetFMClose = await camera0InputPromise.getFlashMode();
       console.info(TAG + "Entering GET_FLASH_MODE_CLOSE success");
@@ -1775,7 +1776,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_ZOOM_RATIO_PROMISE', 0, async function (done) {
+    it('PP_GET_ZOOM_RATIO_PROMISE', 0, async function (done) {
       console.info("--------------GET_ZOOM_RATIO_PROMISE--------------");
       var getZoomRatioPromise = await camera0InputPromise.getZoomRatioRange();
       console.info(TAG + "Entering GET_ZOOM_RATIO_PROMISE getZoomRatioPromise: " + JSON.stringify(getZoomRatioPromise));
@@ -1801,7 +1802,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_GET_ZOOM_1_PROMISE', 0, async function (done) {
+    it('PP_SET_GET_ZOOM_1_PROMISE', 0, async function (done) {
       var setpromise = await camera0InputPromise.setZoomRatio(1);
       console.info(TAG + "setZoomRatio success: 1");
       console.info(TAG + "getZoomRatio called")
@@ -1827,7 +1828,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_GET_ZOOM_2_PROMISE', 0, async function (done) {
+    it('PP_SET_GET_ZOOM_2_PROMISE', 0, async function (done) {
       var setpromise = await camera0InputPromise.setZoomRatio(2);
       console.info(TAG + "setZoomRatio success: 2");
       console.info(TAG + "getZoomRatio called")
@@ -1853,7 +1854,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_GET_ZOOM_3_PROMISE', 0, async function (done) {
+    it('PP_SET_GET_ZOOM_3_PROMISE', 0, async function (done) {
       var setpromise = await camera0InputPromise.setZoomRatio(3);
       console.info(TAG + "setZoomRatio success: 3");
       console.info(TAG + "getZoomRatio called")
@@ -1879,7 +1880,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_GET_ZOOM_4_PROMISE', 0, async function (done) {
+    it('PP_SET_GET_ZOOM_4_PROMISE', 0, async function (done) {
       var setpromise = await camera0InputPromise.setZoomRatio(4);
       console.info(TAG + "setZoomRatio success: 4");
       console.info(TAG + "getZoomRatio called")
@@ -1905,7 +1906,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_GET_ZOOM_5_PROMISE', 0, async function (done) {
+    it('PP_SET_GET_ZOOM_5_PROMISE', 0, async function (done) {
       var setpromise = await camera0InputPromise.setZoomRatio(5);
       console.info(TAG + "setZoomRatio success: 5");
       console.info(TAG + "getZoomRatio called")
@@ -1931,7 +1932,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_GET_ZOOM_6_PROMISE', 0, async function (done) {
+    it('PP_SET_GET_ZOOM_6_PROMISE', 0, async function (done) {
       var setpromise = await camera0InputPromise.setZoomRatio(6);
       console.info(TAG + "setZoomRatio success: 6");
       console.info(TAG + "getZoomRatio called")
@@ -1958,7 +1959,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('IS_FOCUS_MODE_LOCKED_SUPPORTED', 0, async function (done) {
+    it('PP_IS_FOCUS_MODE_LOCKED_SUPPORTED', 0, async function (done) {
       console.info(TAG + "Entering IS_FOCUS_MODE_LOCKED_SUPPORTED to operate");
       var isFMLockedSupported = await camera0InputPromise.isFocusModeSupported(cameraObj.FocusMode.FOCUS_MODE_LOCKED);
       console.info(TAG + "Entering is focus mode locked supported SUCCESS ");
@@ -1985,7 +1986,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_FOCUS_MODE_LOCKED', 0, async function (done) {
+    it('PP_SET_FOCUS_MODE_LOCKED', 0, async function (done) {
       console.info(TAG + "Entering set focus mode locked to operate");
       await camera0InputPromise.setFocusMode(cameraObj.FocusMode.FOCUS_MODE_LOCKED)
         .then(function (data) {
@@ -2011,7 +2012,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_FOCUS_MODE_LOCKED', 0, async function (done) {
+    it('PP_GET_FOCUS_MODE_LOCKED', 0, async function (done) {
       console.info(TAG + "Entering GET_FOCUS_MODE_LOCKED to operate");
       await camera0InputPromise.getFocusMode()
         .then(function (data) {
@@ -2039,7 +2040,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_FOCAL_LENGTH', 0, async function (done) {
+    it('PP_GET_FOCAL_LENGTH', 0, async function (done) {
       console.info(TAG + "Entering GET_FOCAL_LENGTH to operate");
       await camera0InputPromise.getFocalLength()
         .then(function (data) {
@@ -2064,7 +2065,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_FOCUS_POINT', 0, async function (done) {
+    it('PP_SET_FOCUS_POINT', 0, async function (done) {
       console.info(TAG + "Entering set focus mode locked to operate");
       await camera0InputPromise.setFocusPoint(Point1)
         .then(function (data) {
@@ -2089,7 +2090,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_FOCUS_POINT', 0, async function (done) {
+    it('PP_GET_FOCUS_POINT', 0, async function (done) {
       console.info(TAG + "Entering GET_FOCUS_POINT to operate");
       await camera0InputPromise.getFocusPoint()
         .then(function (data) {
@@ -2115,7 +2116,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('IS_FOCUS_MODE_MANUAL_SUPPORTED', 0, async function (done) {
+    it('PP_IS_FOCUS_MODE_MANUAL_SUPPORTED', 0, async function (done) {
       console.info(TAG + "Entering IS_FOCUS_MODE_MANUAL_SUPPORTED to operate");
       var isFMmanualSupportedpromise = await camera0InputPromise.isFocusModeSupported(cameraObj.FocusMode.FOCUS_MODE_MANUAL);
       if (isFMmanualSupportedpromise != null || isFMmanualSupportedpromise != undefined) {
@@ -2141,7 +2142,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_FOCUS_MODE_MANUAL', 0, async function (done) {
+    it('PP_SET_FOCUS_MODE_MANUAL', 0, async function (done) {
       console.info(TAG + "Entering SET_FOCUS_MODE_MANUAL to operate");
       await camera0InputPromise.setFocusMode(cameraObj.FocusMode.FOCUS_MODE_MANUAL)
         .then(function (data) {
@@ -2167,7 +2168,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_FOCUS_MODE_MANUAL', 0, async function (done) {
+    it('PP_GET_FOCUS_MODE_MANUAL', 0, async function (done) {
       console.info(TAG + "Entering GET_FOCUS_MODE_MANUAL to operate");
       await camera0InputPromise.getFocusMode()
         .then(function (data) {
@@ -2195,7 +2196,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS', 0, async function (done) {
+    it('PP_PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS', 0, async function (done) {
       if (photoOutputPromise == null || photoOutputPromise == undefined) {
         console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS photoOutput == null || undefined");
       } else {
@@ -2228,7 +2229,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_FOCUS_POINT', 0, async function (done) {
+    it('PP_SET_FOCUS_POINT', 0, async function (done) {
       console.info(TAG + "Entering set focus mode locked to operate");
       await camera0InputPromise.setFocusPoint(Point2)
         .then(function (data) {
@@ -2253,7 +2254,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_FOCUS_POINT', 0, async function (done) {
+    it('PP_GET_FOCUS_POINT', 0, async function (done) {
       console.info(TAG + "Entering GET_FOCUS_POINT to operate");
       await camera0InputPromise.getFocusPoint()
         .then(function (data) {
@@ -2278,7 +2279,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('IS_FOCUS_MODE_CONTINUOUS_SUPPORTED', 0, async function (done) {
+    it('PP_IS_FOCUS_MODE_CONTINUOUS_SUPPORTED', 0, async function (done) {
       console.info(TAG + "Entering IS_FOCUS_MODE_CONTINUOUS_SUPPORTED to operate");
       var isFMContinuousSupportedpromise = await camera0InputPromise.isFocusModeSupported(cameraObj.FocusMode.FOCUS_MODE_CONTINUOUS_AUTO);
       if (isFMContinuousSupportedpromise != null || isFMContinuousSupportedpromise != undefined) {
@@ -2304,7 +2305,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_FOCUS_MODE_CONTINUOUS', 0, async function (done) {
+    it('PP_SET_FOCUS_MODE_CONTINUOUS', 0, async function (done) {
       console.info(TAG + "Entering SET_FOCUS_MODE_CONTINUOUS to operate");
       await camera0InputPromise.setFocusMode(cameraObj.FocusMode.FOCUS_MODE_CONTINUOUS_AUTO)
         .then(function (data) {
@@ -2330,7 +2331,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_FOCUS_MODE_CONTINUOUS', 0, async function (done) {
+    it('PP_GET_FOCUS_MODE_CONTINUOUS', 0, async function (done) {
       console.info(TAG + "Entering GET_FOCUS_MODE_CONTINUOUS to operate");
       await camera0InputPromise.getFocusMode()
         .then(function (data) {
@@ -2358,7 +2359,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS', 0, async function (done) {
+    it('PP_PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS', 0, async function (done) {
       if (photoOutputPromise == null || photoOutputPromise == undefined) {
         console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS photoOutput == null || undefined");
       } else {
@@ -2391,7 +2392,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_FOCUS_POINT', 0, async function (done) {
+    it('PP_SET_FOCUS_POINT', 0, async function (done) {
       console.info(TAG + "Entering set focus mode locked to operate");
       await camera0InputPromise.setFocusPoint(Point3)
         .then(function (data) {
@@ -2416,7 +2417,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_FOCUS_POINT', 0, async function (done) {
+    it('PP_GET_FOCUS_POINT', 0, async function (done) {
       console.info(TAG + "Entering GET_FOCUS_POINT to operate");
       await camera0InputPromise.getFocusPoint()
         .then(function (data) {
@@ -2441,7 +2442,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('IS_FOCUS_MODE_AUTO_SUPPORTED', 0, async function (done) {
+    it('PP_IS_FOCUS_MODE_AUTO_SUPPORTED', 0, async function (done) {
       console.info(TAG + "Entering IS_FOCUS_MODE_AUTO_SUPPORTED to operate");
       var isFMAutoSupportedpromise = await camera0InputPromise.isFocusModeSupported(cameraObj.FocusMode.FOCUS_MODE_AUTO);
       if (isFMAutoSupportedpromise != null || isFMAutoSupportedpromise != undefined) {
@@ -2467,7 +2468,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_FOCUS_MODE_AUTO', 0, async function (done) {
+    it('PP_SET_FOCUS_MODE_AUTO', 0, async function (done) {
       console.info(TAG + "Entering SET_FOCUS_MODE_AUTO to operate");
       var setFocusAuto = await camera0InputPromise.setFocusMode(cameraObj.FocusMode.FOCUS_MODE_AUTO)
         .then(function () {
@@ -2493,7 +2494,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_FOCUS_MODE_AUTO', 0, async function (done) {
+    it('PP_GET_FOCUS_MODE_AUTO', 0, async function (done) {
       console.info(TAG + "Entering GET_FOCUS_MODE_AUTO to operate");
       await camera0InputPromise.getFocusMode()
         .then(function (data) {
@@ -2520,7 +2521,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS', 0, async function (done) {
+    it('PP_PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS', 0, async function (done) {
       if (photoOutputPromise == null || photoOutputPromise == undefined) {
         console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS photoOutput == null || undefined");
       } else {
@@ -2554,7 +2555,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.level     : Level 0
     */
     /* EXPOSUREMODE Interface will be change
-    it('IS_EXPOSURE_MODE_LOCKED_SUPPORTED', 0, async function (done) {
+    it('PP_IS_EXPOSURE_MODE_LOCKED_SUPPORTED', 0, async function (done) {
       console.info(TAG + "Entering IS_EXPOSURE_MODE_LOCKED_SUPPORTED to operate");
       await camera0InputPromise.isExposureModeSupported(cameraObj.ExposureMode.EXPOSURE_MODE_LOCKED)
         .then(function (data) {
@@ -2580,7 +2581,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.level     : Level 0
     */
     /* EXPOSUREMODE Interface will be change
-    it('SET_EXPOSURE_MODE_LOCKED', 0, async function (done) {
+    it('PP_SET_EXPOSURE_MODE_LOCKED', 0, async function (done) {
       console.info(TAG + "Entering SET_EXPOSURE_MODE_Locked to operate");
       await camera0InputPromise.setExposureMode(cameraObj.ExposureMode.EXPOSURE_MODE_LOCKED)
         .then(function () {
@@ -2606,7 +2607,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_EXPOSURE_MODE_LOCKED', 0, async function (done) {
+    it('PP_GET_EXPOSURE_MODE_LOCKED', 0, async function (done) {
       console.info(TAG + "Entering GET_EXPOSURE_MODE_LOCKED to operate");
       await camera0InputPromise.getExposureMode()
         .then(function (data) {
@@ -2633,7 +2634,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.level     : Level 0
     */
     /* EXPOSUREMODE Interface will be change
-    it('IS_EXPOSURE_MODE_CONTINUOUS_AUTO_SUPPORTED', 0, async function (done) {
+    it('PP_IS_EXPOSURE_MODE_CONTINUOUS_AUTO_SUPPORTED', 0, async function (done) {
       console.info(TAG + "Entering IS_EXPOSURE_MODE_CONTINUOUS_AUTO_SUPPORTED to operate");
       await camera0InputPromise.isExposureModeSupported(cameraObj.ExposureMode.EXPOSURE_MODE_CONTINUOUS_AUTO)
         .then(function (data) {
@@ -2659,7 +2660,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.level     : Level 0
     */
     /* EXPOSUREMODE Interface will be change
-    it('SET_EXPOSURE_MODE_CONTINUOUS_AUTO', 0, async function (done) {
+    it('PP_SET_EXPOSURE_MODE_CONTINUOUS_AUTO', 0, async function (done) {
       console.info(TAG + "Entering SET_EXPOSURE_MODE_CONTINUOUS_AUTO to operate");
       await camera0InputPromise.setExposureMode(cameraObj.ExposureMode.EXPOSURE_MODE_CONTINUOUS_AUTO)
         .then(function () {
@@ -2685,7 +2686,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_EXPOSURE_MODE_CONTINUOUS_AUTO', 0, async function (done) {
+    it('PP_GET_EXPOSURE_MODE_CONTINUOUS_AUTO', 0, async function (done) {
       console.info(TAG + "Entering GET_EXPOSURE_MODE_CONTINUOUS_AUTO to operate");
       await camera0InputPromise.getExposureMode()
         .then(function (data) {
@@ -2711,7 +2712,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_EXPOSURE_BIAS_RANGE', 0, async function (done) {
+    it('PP_GET_EXPOSURE_BIAS_RANGE', 0, async function (done) {
       console.info(TAG + "Entering GET_EXPOSURE_BIAS_RANGE to operate");
       await camera0InputPromise.getExposureBiasRange()
         .then(function (data) {
@@ -2737,7 +2738,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_EXPOSURE_BIAS', 0, async function (done) {
+    it('PP_SET_EXPOSURE_BIAS', 0, async function (done) {
       console.info(TAG + "Entering SET_EXPOSURE_BIAS to operate");
       await camera0InputPromise.setExposureBias(-4)
         .then(function (data) {
@@ -2762,7 +2763,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_EXPOSURE_BIAS_VALUE', 0, async function (done) {
+    it('PP_GET_EXPOSURE_BIAS_VALUE', 0, async function (done) {
       console.info(TAG + "Entering GET_EXPOSURE_BIAS_VALUE to operate");
       await camera0InputPromise.getExposureValue()
         .then(function (data) {
@@ -2788,7 +2789,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_EXPOSURE_POINT', 0, async function (done) {
+    it('PP_SET_EXPOSURE_POINT', 0, async function (done) {
       console.info(TAG + "Entering SET_EXPOSURE_POINT to operate");
       await camera0InputPromise.setExposurePoint(Point1)
         .then(function (data) {
@@ -2813,7 +2814,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_EXPOSURE_POINT', 0, async function (done) {
+    it('PP_GET_EXPOSURE_POINT', 0, async function (done) {
       console.info(TAG + "Entering GET_EXPOSURE_POINT to operate");
       await camera0InputPromise.getExposurePoint()
         .then(function (data) {
@@ -2840,7 +2841,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.level     : Level 0
     */
     /* EXPOSUREMODE Interface will be change
-    it('IS_EXPOSURE_MODE_AUTO_SUPPORTED', 0, async function (done) {
+    it('PP_IS_EXPOSURE_MODE_AUTO_SUPPORTED', 0, async function (done) {
       console.info(TAG + "Entering IS_EXPOSURE_MODE_AUTO_SUPPORTED to operate");
       await camera0InputPromise.isExposureModeSupported(cameraObj.ExposureMode.EXPOSURE_MODE_AUTO)
         .then(function (data) {
@@ -2866,7 +2867,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.level     : Level 0
     */
     /* EXPOSUREMODE Interface will be change
-    it('SET_EXPOSURE_MODE_AUTO', 0, async function (done) {
+    it('PP_SET_EXPOSURE_MODE_AUTO', 0, async function (done) {
       console.info(TAG + "Entering SET_EXPOSURE_MODE_AUTO to operate");
       await camera0InputPromise.setExposureMode(cameraObj.ExposureMode.EXPOSURE_MODE_AUTO)
         .then(function () {
@@ -2893,7 +2894,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.level     : Level 0
     */
     /* EXPOSUREMODE Interface will be change
-    it('GET_EXPOSURE_MODE_AUTO', 0, async function (done) {
+    it('PP_GET_EXPOSURE_MODE_AUTO', 0, async function (done) {
       console.info(TAG + "Entering GET_EXPOSURE_MODE_AUTO to operate");
       await camera0InputPromise.getExposureMode()
         .then(function (data) {
@@ -2920,7 +2921,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS', 0, async function (done) {
+    it('PP_PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS', 0, async function (done) {
       if (photoOutputPromise == null || photoOutputPromise == undefined) {
         console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS photoOutput == null || undefined");
       } else {
@@ -2954,7 +2955,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_EXPOSURE_BIAS', 0, async function (done) {
+    it('PP_SET_EXPOSURE_BIAS', 0, async function (done) {
       console.info(TAG + "Entering SET_EXPOSURE_BIAS to operate");
       await camera0InputPromise.setExposureBias(1)
         .then(function (data) {
@@ -2979,7 +2980,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_EXPOSURE_BIAS_VALUE', 0, async function (done) {
+    it('PP_GET_EXPOSURE_BIAS_VALUE', 0, async function (done) {
       console.info(TAG + "Entering GET_EXPOSURE_BIAS_VALUE to operate");
       await camera0InputPromise.getExposureValue()
         .then(function (data) {
@@ -3005,7 +3006,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_EXPOSURE_POINT', 0, async function (done) {
+    it('PP_SET_EXPOSURE_POINT', 0, async function (done) {
       console.info(TAG + "Entering SET_EXPOSURE_POINT to operate");
       await camera0InputPromise.setExposurePoint(Point2)
         .then(function (data) {
@@ -3030,7 +3031,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_EXPOSURE_POINT', 0, async function (done) {
+    it('PP_GET_EXPOSURE_POINT', 0, async function (done) {
       console.info(TAG + "Entering GET_EXPOSURE_POINT to operate");
       await camera0InputPromise.getExposurePoint()
         .then(function (data) {
@@ -3056,7 +3057,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS1', 0, async function (done) {
+    it('PP_PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS1', 0, async function (done) {
       if (photoOutputPromise == null || photoOutputPromise == undefined) {
         console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS photoOutput == null || undefined");
       } else {
@@ -3090,7 +3091,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_EXPOSURE_BIAS', 0, async function (done) {
+    it('PP_SET_EXPOSURE_BIAS', 0, async function (done) {
       console.info(TAG + "Entering SET_EXPOSURE_BIAS to operate");
       await camera0InputPromise.setExposureBias(4)
         .then(function (data) {
@@ -3115,7 +3116,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_EXPOSURE_BIAS_VALUE', 0, async function (done) {
+    it('PP_GET_EXPOSURE_BIAS_VALUE', 0, async function (done) {
       console.info(TAG + "Entering GET_EXPOSURE_BIAS_VALUE to operate");
       await camera0InputPromise.getExposureValue()
         .then(function (data) {
@@ -3141,7 +3142,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_EXPOSURE_POINT', 0, async function (done) {
+    it('PP_SET_EXPOSURE_POINT', 0, async function (done) {
       console.info(TAG + "Entering SET_EXPOSURE_POINT to operate");
       await camera0InputPromise.setExposurePoint(Point3)
         .then(function (data) {
@@ -3166,7 +3167,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_EXPOSURE_POINT', 0, async function (done) {
+    it('PP_GET_EXPOSURE_POINT', 0, async function (done) {
       console.info(TAG + "Entering GET_EXPOSURE_POINT to operate");
       await camera0InputPromise.getExposurePoint()
         .then(function (data) {
@@ -3192,7 +3193,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS2', 0, async function (done) {
+    it('PP_PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS2', 0, async function (done) {
       if (photoOutputPromise == null || photoOutputPromise == undefined) {
         console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS photoOutput == null || undefined");
       } else {
@@ -3226,7 +3227,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_EXPOSURE_BIAS', 0, async function (done) {
+    it('PP_SET_EXPOSURE_BIAS', 0, async function (done) {
       console.info(TAG + "Entering SET_EXPOSURE_BIAS to operate");
       await camera0InputPromise.setExposureBias(-5)
         .then(function (data) {
@@ -3251,7 +3252,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_EXPOSURE_BIAS_VALUE', 0, async function (done) {
+    it('PP_GET_EXPOSURE_BIAS_VALUE', 0, async function (done) {
       console.info(TAG + "Entering GET_EXPOSURE_BIAS_VALUE to operate");
       await camera0InputPromise.getExposureValue()
         .then(function (data) {
@@ -3277,7 +3278,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('SET_EXPOSURE_BIAS', 0, async function (done) {
+    it('PP_SET_EXPOSURE_BIAS', 0, async function (done) {
       console.info(TAG + "Entering SET_EXPOSURE_BIAS to operate");
       await camera0InputPromise.setExposureBias(6)
         .then(function (data) {
@@ -3302,7 +3303,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_EXPOSURE_BIAS_VALUE', 0, async function (done) {
+    it('PP_GET_EXPOSURE_BIAS_VALUE', 0, async function (done) {
       console.info(TAG + "Entering GET_EXPOSURE_BIAS_VALUE to operate");
       await camera0InputPromise.getExposureValue()
         .then(function (data) {
@@ -3329,7 +3330,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('CAPTURE_SESSION_STOP_SUCCESS_PROMISE', 0, async function (done) {
+    it('PP_CAPTURE_SESSION_STOP_SUCCESS_PROMISE', 0, async function (done) {
       if (CaptureSessionPromise == null || CaptureSessionPromise == undefined) {
         console.info(TAG + "Entering capture session stop captureSession == null || undefined");
       } else {
@@ -3353,7 +3354,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('CAPTURE_SESSION_RELEASE_SUCCESS_PROMISE', 0, async function (done) {
+    it('PP_CAPTURE_SESSION_RELEASE_SUCCESS_PROMISE', 0, async function (done) {
       if (CaptureSessionPromise == null || CaptureSessionPromise == undefined) {
         console.info(TAG + "Entering capture session release captureSession == null || undefined");
       } else {
@@ -3377,7 +3378,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('PREVIEWOUTPUT_RELEASE_SUCCESS_PROMISE', 0, async function (done) {
+    it('PP_PREVIEWOUTPUT_RELEASE_SUCCESS_PROMISE', 0, async function (done) {
       if (previewOutputPromise == null || previewOutputPromise == undefined) {
         console.info(TAG + "Entering previewOutputPromise.release previewOutputPromise == null || undefined");
       } else {
@@ -3401,7 +3402,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('PHOTOOUTPUT_RELEASE_SUCCESS_PROMISE', 0, async function (done) {
+    it('PP_PHOTOOUTPUT_RELEASE_SUCCESS_PROMISE', 0, async function (done) {
       if (photoOutputPromise == null || photoOutputPromise == undefined) {
         console.info(TAG + "Entering PhotoOutput release photoOutputPromise == null || undefined");
       } else {
@@ -3425,7 +3426,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('CAMERAINPUT_RELEASE_SUCCESS_PROMISE', 0, async function (done) {
+    it('PP_CAMERAINPUT_RELEASE_SUCCESS_PROMISE', 0, async function (done) {
       if (camera0InputPromise == null || camera0InputPromise == undefined) {
         console.info(TAG + "Entering cameraInput release camera0InputPromise == null || undefined");
       } else {

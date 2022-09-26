@@ -131,7 +131,7 @@ export default function cameraJSUnitEnum(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_CAMERA_MANAGER_TC_001', 0, async function (done) {
+    it('EN_GET_CAMERA_MANAGER_TC_001', 0, async function (done) {
       console.info("--------------GET_CAMERA_MANAGER_TC_001--------------");
       cameraObj.getCameraManager(null, async (err, data) => {
         if (!err) {
@@ -162,7 +162,7 @@ export default function cameraJSUnitEnum(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('GET_CAMERAS_TC_002', 0, async function (done) {
+    it('EN_GET_CAMERAS_TC_002', 0, async function (done) {
       console.info("--------------GET_CAMERAS_TC_002--------------");
       cameraManager.getCameras(async (err, data) => {
         if (!err) {
@@ -210,7 +210,7 @@ export default function cameraJSUnitEnum(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('CREATE_CAMERA_INPUT_TC_003', 0, async function (done) {
+    it('EN_CREATE_CAMERA_INPUT_TC_003', 0, async function (done) {
       console.info("--------------CAMERA-0 STARTS HERE--------------");
       console.info("--------------CREATE_CAMERA_INPUT_TC_003--------------");
       cameraManager.createCameraInput(camerasArray[0].cameraId, async (err, data) => {
@@ -241,7 +241,7 @@ export default function cameraJSUnitEnum(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('CAMERA_STATUS', 0, async function (done) {
+    it('EN_CAMERA_STATUS', 0, async function (done) {
       console.info(TAG + "--------------CameraStatus ------------");
       console.info(TAG + "CameraStatus CAMERA_STATUS_APPEAR : " + cameraObj.CameraStatus.CAMERA_STATUS_APPEAR);
       expect(cameraObj.CameraStatus.CAMERA_STATUS_APPEAR).assertEqual(0);
@@ -263,7 +263,7 @@ export default function cameraJSUnitEnum(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('CAMERA_POSITION', 0, async function (done) {
+    it('EN_CAMERA_POSITION', 0, async function (done) {
       console.info(TAG + "--------------CameraPosition ------------")
       console.info(TAG + "CameraPosition CAMERA_POSITION_BACK : " + cameraObj.CameraPosition.CAMERA_POSITION_BACK);
       expect(cameraObj.CameraPosition.CAMERA_POSITION_BACK).assertEqual(1);
@@ -283,7 +283,7 @@ export default function cameraJSUnitEnum(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('CAMERA_TYPE', 0, async function (done) {
+    it('EN_CAMERA_TYPE', 0, async function (done) {
       console.info(TAG + "--------------CameraType ------------")
       console.info(TAG + "CameraType CAMERA_TYPE_UNSPECIFIED : " + cameraObj.CameraType.CAMERA_TYPE_UNSPECIFIED);
       expect(cameraObj.CameraType.CAMERA_TYPE_UNSPECIFIED).assertEqual(0);
@@ -307,7 +307,7 @@ export default function cameraJSUnitEnum(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('CONNECTION_TYPE', 0, async function (done) {
+    it('EN_CONNECTION_TYPE', 0, async function (done) {
       console.info(TAG + "--------------ConnectionType ------------")
       console.info(TAG + "ConnectionType CAMERA_CONNECTION_BUILT_IN : " + cameraObj.ConnectionType.CAMERA_CONNECTION_BUILT_IN);
       expect(cameraObj.ConnectionType.CAMERA_CONNECTION_BUILT_IN).assertEqual(0);
@@ -328,7 +328,7 @@ export default function cameraJSUnitEnum(surfaceId: any) {
       * @tc.level     : Level 0
     */
     /* CameraFormat Interface will be change
-    it('CAMERA_FORMAT', 0, async function (done) {
+    it('EN_CAMERA_FORMAT', 0, async function (done) {
       console.info(TAG + "--------------CameraFormat ------------")
       console.info(TAG + "CameraFormat CAMERA_FORMAT_YUV_420_SP : " + cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP);
       expect(cameraObj.CameraFormat.CAMERA_FORMAT_YUV_420_SP).assertEqual(1003);
@@ -347,7 +347,7 @@ export default function cameraJSUnitEnum(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('FLASHMODE', 0, async function (done) {
+    it('EN_FLASHMODE', 0, async function (done) {
       console.info(TAG + "--------------FlashMode ------------")
       console.info(TAG + "FlashMode FLASH_MODE_CLOSE : " + cameraObj.FlashMode.FLASH_MODE_CLOSE);
       expect(cameraObj.FlashMode.FLASH_MODE_CLOSE).assertEqual(0);
@@ -369,7 +369,7 @@ export default function cameraJSUnitEnum(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('FOCUSMODE', 0, async function (done) {
+    it('EN_FOCUSMODE', 0, async function (done) {
       console.info(TAG + "--------------FocusMode ------------")
       console.info(TAG + "FocusMode FOCUS_MODE_MANUAL : " + cameraObj.FocusMode.FOCUS_MODE_MANUAL);
       expect(cameraObj.FocusMode.FOCUS_MODE_MANUAL).assertEqual(0);
@@ -391,7 +391,7 @@ export default function cameraJSUnitEnum(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('FOCUSSTATE', 0, async function (done) {
+    it('EN_FOCUSSTATE', 0, async function (done) {
       console.info(TAG + "--------------FocusState ------------")
       console.info(TAG + "FocusState FOCUS_STATE_SCAN : " + cameraObj.FocusState.FOCUS_STATE_SCAN);
       expect(cameraObj.FocusState.FOCUS_STATE_SCAN).assertEqual(0);
@@ -412,7 +412,7 @@ export default function cameraJSUnitEnum(surfaceId: any) {
       * @tc.level     : Level 0
     */
     /* EXPOSUREMODE Interface will be change
-    it('EXPOSUREMODE', 0, async function (done) {
+    it('EN_EXPOSUREMODE', 0, async function (done) {
       console.info(TAG + "--------------ExposureMode ------------")
       console.info(TAG + "ExposureMode EXPOSURE_MODE_LOCKED : " + cameraObj.ExposureMode.EXPOSURE_MODE_LOCKED);
       expect(cameraObj.ExposureMode.EXPOSURE_MODE_LOCKED).assertEqual(0);
@@ -434,7 +434,7 @@ export default function cameraJSUnitEnum(surfaceId: any) {
       * @tc.level     : Level 0
     */
     /* ExposureState Interface will be change
-    it('ExposureState', 0, async function (done) {
+    it('EN_ExposureState', 0, async function (done) {
       console.info(TAG + "--------------ExposureState ------------")
       console.info(TAG + "ExposureState EXPOSURE_STATE_SCAN : " + cameraObj.ExposureState.EXPOSURE_STATE_SCAN);
       expect(cameraObj.ExposureState.EXPOSURE_STATE_SCAN).assertEqual(0);
@@ -443,7 +443,7 @@ export default function cameraJSUnitEnum(surfaceId: any) {
       await sleep(1000);
       done();
     })
-    */ 
+    */
 
     /**
       * @tc.number    : ImageRotation
@@ -453,7 +453,7 @@ export default function cameraJSUnitEnum(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('ImageRotation', 0, async function (done) {
+    it('EN_ImageRotation', 0, async function (done) {
       console.info(TAG + "--------------ImageRotation ------------")
       console.info(TAG + "ImageRotation ROTATION_0 : " + cameraObj.ImageRotation.ROTATION_0);
       expect(cameraObj.ImageRotation.ROTATION_0).assertEqual(0);
@@ -475,7 +475,7 @@ export default function cameraJSUnitEnum(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('QualityLevel', 0, async function (done) {
+    it('EN_QualityLevel', 0, async function (done) {
       console.info(TAG + "--------------QualityLevel ------------")
       console.info(TAG + "QualityLevel QUALITY_LEVEL_HIGH : " + cameraObj.QualityLevel.QUALITY_LEVEL_HIGH);
       expect(cameraObj.QualityLevel.QUALITY_LEVEL_HIGH).assertEqual(0);
@@ -496,7 +496,7 @@ export default function cameraJSUnitEnum(surfaceId: any) {
       * @tc.level     : Level 0
     */
     /* VideoStabilizationMode Interface will be change
-    it('VideoStabilization', 0, async function (done) {
+    it('EN_VideoStabilization', 0, async function (done) {
       console.info(TAG + "--------------VideoStabilization ------------")
       console.info(TAG + "VideoStabilization OFF : " + cameraObj.VideoStabilizationMode.OFF);
       expect(cameraObj.VideoStabilizationMode.OFF).assertEqual(0);
@@ -521,14 +521,14 @@ export default function cameraJSUnitEnum(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-   it('SUB_MULTIMEDIA_CAMERAINPUTERRORCODE_0100', 0, async function (done) {
+   it('EN_SUB_MULTIMEDIA_CAMERAINPUTERRORCODE_0100', 0, async function (done) {
     console.info(TAG + "--------------SUB_MULTIMEDIA_CAMERAINPUTERRORCODE_0100------------")
     console.info(TAG + "QualityLevel SUB_MULTIMEDIA_CAMERAINPUTERRORCODE_0100 : " + cameraObj.CameraInputErrorCode.ERROR_UNKNOWN);
     expect(cameraObj.CameraInputErrorCode.ERROR_UNKNOWN).assertEqual(-1);
     await sleep(1000);
     done();
   })
-  
+
   /**
     * @tc.number    : SUB_MULTIMEDIA_CAPTURESESSIONERRORCODE_0100
     * @tc.name      : CaptureSessionErrorCode ENAME
@@ -537,7 +537,7 @@ export default function cameraJSUnitEnum(surfaceId: any) {
     * @tc.type      : Function
     * @tc.level     : Level 0
   */
-   it('SUB_MULTIMEDIA_CAPTURESESSIONERRORCODE_0100', 0, async function (done) {
+   it('EN_SUB_MULTIMEDIA_CAPTURESESSIONERRORCODE_0100', 0, async function (done) {
     console.info(TAG + "--------------SUB_MULTIMEDIA_CAPTURESESSIONERRORCODE_0100------------")
     console.info(TAG + "QualityLevel SUB_MULTIMEDIA_CAPTURESESSIONERRORCODE_0100 : " + cameraObj.CaptureSessionErrorCode.ERROR_UNKNOWN);
     expect(cameraObj.CaptureSessionErrorCode.ERROR_UNKNOWN).assertEqual(-1);
@@ -553,7 +553,7 @@ export default function cameraJSUnitEnum(surfaceId: any) {
     * @tc.type      : Function
     * @tc.level     : Level 0
   */
-   it('SUB_MULTIMEDIA_PREVIEWOUTPUTERRORCODE_0100', 0, async function (done) {
+   it('EN_SUB_MULTIMEDIA_PREVIEWOUTPUTERRORCODE_0100', 0, async function (done) {
     console.info(TAG + "--------------SUB_MULTIMEDIA_PREVIEWOUTPUTERRORCODE_0100------------")
     console.info(TAG + "QualityLevel SUB_MULTIMEDIA_PREVIEWOUTPUTERRORCODE_0100 : " + cameraObj.PreviewOutputErrorCode.ERROR_UNKNOWN);
     expect(cameraObj.PreviewOutputErrorCode.ERROR_UNKNOWN).assertEqual(-1);
@@ -569,7 +569,7 @@ export default function cameraJSUnitEnum(surfaceId: any) {
     * @tc.type      : Function
     * @tc.level     : Level 0
   */
-   it('SUB_MULTIMEDIA_PHOTOOUTPUTERRORCODE_0100', 0, async function (done) {
+   it('EN_SUB_MULTIMEDIA_PHOTOOUTPUTERRORCODE_0100', 0, async function (done) {
     console.info(TAG + "--------------SUB_MULTIMEDIA_PHOTOOUTPUTERRORCODE_0100------------")
     console.info(TAG + "QualityLevel SUB_MULTIMEDIA_PHOTOOUTPUTERRORCODE_0100 : " + cameraObj.PhotoOutputErrorCode.ERROR_UNKNOWN);
     expect(cameraObj.PhotoOutputErrorCode.ERROR_UNKNOWN).assertEqual(-1);
@@ -585,7 +585,7 @@ export default function cameraJSUnitEnum(surfaceId: any) {
     * @tc.type      : Function
     * @tc.level     : Level 0
   */
-   it('SUB_MULTIMEDIA_VIDEOOUTPUTERRORCODE_0100', 0, async function (done) {
+   it('EN_SUB_MULTIMEDIA_VIDEOOUTPUTERRORCODE_0100', 0, async function (done) {
     console.info(TAG + "--------------SUB_MULTIMEDIA_VIDEOOUTPUTERRORCODE_0100------------")
     console.info(TAG + "QualityLevel SUB_MULTIMEDIA_VIDEOOUTPUTERRORCODE_0100 : " + cameraObj.VideoOutputErrorCode.ERROR_UNKNOWN);
     expect(cameraObj.VideoOutputErrorCode.ERROR_UNKNOWN).assertEqual(-1);
