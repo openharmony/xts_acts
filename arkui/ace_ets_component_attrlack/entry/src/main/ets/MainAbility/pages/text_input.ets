@@ -21,6 +21,8 @@ const TAG = 'ets_apiLack_add';
 @Component
 export default struct Text_inputPhoneNumber {
   @State text: string = ''
+  @State text1: string = 'PhoneNumber'
+  @State text2: string = 'Address'
 
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear Text_inputPhoneNumber start`)
@@ -48,6 +50,37 @@ export default struct Text_inputPhoneNumber {
         .onChange((value: string) => {
           this.text = value
         })
+
+      Text(this.text1).width('90%')
+      TextInput({ placeholder: 'input your word' })
+        .key('textInput1')
+        .type(InputType.PhoneNumber)
+        .placeholderColor("rgb(0,0,225)")
+        .placeholderFont({ size: 30, weight: 100, family: 'cursive', style: FontStyle.Italic })
+        .caretColor(Color.Blue)
+        .height(50)
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+        .fontFamily("sans-serif")
+        .fontStyle(FontStyle.Normal)
+        .fontColor(Color.Red)
+        .style(TextInputStyle.Default)
+
+      Text(this.text2).width('90%')
+      TextInput({ placeholder: 'input your word' })
+        .key('textInput2')
+        .type(InputType.PhoneNumber)
+        .placeholderColor("rgb(0,0,225)")
+        .placeholderFont({ size: 30, weight: 100, family: 'cursive', style: FontStyle.Italic })
+        .caretColor(Color.Blue)
+        .height(50)
+        .fontSize(30)
+        .fontWeight(FontWeight.Bold)
+        .fontFamily("sans-serif")
+        .fontStyle(FontStyle.Normal)
+        .fontColor(Color.Red)
+        .style(TextInputStyle.Inline)
+        .margin(10)
 
     }.width("100%").height("100%")
   }

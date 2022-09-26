@@ -23,14 +23,17 @@ import canvasActualBoundingBoxAscentJsunit from './canvas.test.ets';
 import checkBoxGroupJsunit from './checkBox.test.ets';
 import checkBoxGroupPartJsunit from './checkBoxGroup.test.ets';
 import commonColorModeJsunit from './common.test.ets';
+import configurationApiTest from './configuration.test.ets'
 import datePickerLunarJsunit from './datePicker.test.ets';
 import enumsCancelJsunit from './enums.test.ets';
 import gestureParallelJsunit from './gesture.test.ets';
 import listtestIdleJsunit from './listtest.test.ets';
+import list_item_groupJsunit from './list_item_group.test.ets'
 import loadingProgressCircularJsunit from './loadingProgress.test.ets';
 import progressScaleCountJsunit from './progress.test.ets';
 import radioGroupJsunit from './radio.test.ets';
 import refreshDragJsunit from './refresh.test.ets';
+import remoteWindowJsunit from './remoteWindow.test.ets'
 import sidebarIconsJsunit from './sidebar.test.ets';
 import sliderMovingJsunit from './slider.test.ets';
 import stateManagementDARKJsunit from './stateManagement.test.ets';
@@ -42,12 +45,13 @@ import webEditTextJsunit from './web.test.ets';
 import hoverEffectJsunit from './hoverEffect.test.ets';
 import responseTypeJsunit from './responseType.test.ets';
 import copyOptionJsunit from './copyOption.test.ets';
+import hitTestModeJsunit from './hitTestMode.test.ets';
+import colorEnumJsunit from './color.test.ets';
+import basicJsunit from './basic.test.ets';
 
 export default function testsuite() {
   animatorOnframeJsunit()
-  curvesEaseOutJsunit()
   routerStandardJsunit()
-  uiAppearanceALWAYS_DARKJsunit()
   appVersionCodeJsunit()
   alertDialogCenterStartJsunit()
   canvasActualBoundingBoxAscentJsunit()
@@ -55,22 +59,23 @@ export default function testsuite() {
   checkBoxGroupPartJsunit()
   commonColorModeJsunit()
   datePickerLunarJsunit()
-  enumsCancelJsunit()
   gestureParallelJsunit()
   listtestIdleJsunit()
   loadingProgressCircularJsunit()
   progressScaleCountJsunit()
   radioGroupJsunit()
-  refreshDragJsunit()
+  remoteWindowJsunit()
   sidebarIconsJsunit()
   sliderMovingJsunit()
   stateManagementDARKJsunit()
   stepperItemDisabledJsunit()
   swiperMaskJsunit()
-  text_inputPhoneNumberJsunit()
   unitsModuleNameJsunit()
   webEditTextJsunit()
   hoverEffectJsunit()
   responseTypeJsunit()
   copyOptionJsunit()
+  hitTestModeJsunit()
+  colorEnumJsunit()
+  basicJsunit()
 }

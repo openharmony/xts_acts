@@ -20,6 +20,8 @@ const TAG = 'ets_apiLack_add';
 @Entry
 @Component
 export default struct FormComponentFormDimension {
+  @State target: WindowAnimationTarget = undefined // 通过windowAnimationManager获取
+
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear Dimension start`)
   }
@@ -52,6 +54,7 @@ export default struct FormComponentFormDimension {
           .position({ x: px2vp(this.target?.windowBounds.left), y: px2vp(this.target?.windowBounds.top) })
           .width(px2vp(this.target?.windowBounds.width))
           .height(px2vp(this.target?.windowBounds.height))
+          .key('remoteWindow')
 
       }
       .width('100%')

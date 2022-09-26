@@ -14,7 +14,7 @@
  */
 
 import Log from '../common/Log.ets';
-
+import events_emitter from '@ohos.events.emitter';
 const TAG = 'ets_apiLack_add';
 
 @Entry
@@ -118,7 +118,26 @@ export default struct CommonColorMode {
         .textOverflow({ overflow: TextOverflow.None })
         .key("areaText")
         .onClick((event) => {
-          Log.showInfo(TAG, 'area: ' + JSON.stringify(event.target.area))
+          Log.showInfo(TAG, 'JSON.stringify area : ' + JSON.stringify(event.target.area))
+          const area = JSON.stringify(event.target.area)
+          console.info("area value1 is: " + area)
+          console.info("area value3 is: " + JSON.parse(JSON.stringify(event.target.area))["width"])
+          let value = JSON.parse(JSON.stringify(event.target.area))["width"]
+          try {
+            var backData = {
+              data: {
+                "STATUS": value
+              }
+            }
+            let backEvent = {
+              eventId: 60312,
+              priority: events_emitter.EventPriority.LOW
+            }
+            console.info("areaValue start to emit action state")
+            events_emitter.emit(backEvent, backData)
+          } catch (err) {
+            console.info("areaValue emit action state err: " + JSON.stringify(err.message))
+          }
         })
       Text("common-Repeat")
         .width(320)
@@ -263,6 +282,25 @@ export default struct CommonColorMode {
         .key("touchesText")
         .onTouch((event) => {
           Log.showInfo(TAG, 'touches: ' + JSON.stringify(event.touches))
+          const touchesValue = JSON.stringify(event.touches)
+          console.info("touches value1 is: " + touchesValue)
+          console.info("touches value3 is: " + JSON.stringify(event.touches)[0]["type"])
+          let value = JSON.stringify(event.touches)[0]["type"]
+          try {
+            var backData1 = {
+              data: {
+                "STATUS": value
+              }
+            }
+            let backEvent1 = {
+              eventId: 60313,
+              priority: events_emitter.EventPriority.LOW
+            }
+            console.info("touchesValue start to emit action state")
+            events_emitter.emit(backEvent1, backData1)
+          } catch (err) {
+            console.info("touchesValue emit action state err: " + JSON.stringify(err.message))
+          }
         })
 
       Text("common-ChangedTouches")
@@ -280,6 +318,25 @@ export default struct CommonColorMode {
         .key("changedTouchesText")
         .onTouch((event) => {
           Log.showInfo(TAG, 'changedTouches: ' + JSON.stringify(event.changedTouches))
+          const changedTouchesValue = JSON.stringify(event.changedTouches)
+          console.info("changedTouchesValue value1 is: " + changedTouchesValue)
+          console.info("changedTouchesValue value3 is: " + changedTouchesValue[0]["type"])
+          let value = changedTouchesValue[0]["type"]
+          try {
+            var backData2 = {
+              data: {
+                "STATUS": value
+              }
+            }
+            let backEvent2 = {
+              eventId: 60314,
+              priority: events_emitter.EventPriority.LOW
+            }
+            console.info("touchesValue start to emit action state")
+            events_emitter.emit(backEvent2, backData2)
+          } catch (err) {
+            console.info("touchesValue emit action state err: " + JSON.stringify(err.message))
+          }
         })
 
       Text("common-KeyCode")
