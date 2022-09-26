@@ -109,13 +109,13 @@ export default function systemTimerTest() {
         console.info('SUB_time_systemTimer_createTimer_0000 has failed for ' + err);
         expect().assertTrue();
         done();
-      }
+      };
     });
 
     /**
      * @tc.number SUB_time_systemTimer_createTimer_0001
      * @tc.name SUB_time_systemTimer_createTimer_0001
-     * @tc.desc Test createTimer() interfaces, type = TIMER_TYPE_REALTIME, repeat = true (callback)
+     * @tc.desc Test createTimer() interfaces, type = TIMER_TYPE_IDLE, repeat = true (callback)
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 0
@@ -123,16 +123,16 @@ export default function systemTimerTest() {
     it('SUB_time_systemTimer_createTimer_0001', 0, async function (done) {
       console.info('SUB_time_systemTimer_createTimer_0001 start.');
       let options = {
-        type: systemTimer.TIMER_TYPE_REALTIME,
+        type: systemTimer.TIMER_TYPE_IDLE,
         repeat: false
-      }
+      };
       try {
         systemTimer.createTimer(options, function (err, timerID) {
           if (err) {
             console.info('SUB_time_systemTimer_createTimer_0001 wrong since ' + err.code);
             expect().assertTrue();
             done();
-          }
+          };
           console.info('SUB_time_systemTimer_createTimer_0001 timerID: ' + timerID);
           expect(Number.isInteger(timerID)).assertTrue();
           done();
@@ -141,7 +141,7 @@ export default function systemTimerTest() {
         console.info('SUB_time_systemTimer_createTimer_0001 arv wrong since ' + e.code);
         expect().assertTrue();
         done();
-      }
+      };
     });
 
     /**
@@ -153,7 +153,7 @@ export default function systemTimerTest() {
      * @tc.level Level 2
      */
     it('SUB_time_systemTimer_createTimer_0002', 2, async function (done) {
-      console.info("SUB_time_systemTimer_createTimer_0002 start")
+      console.info("SUB_time_systemTimer_createTimer_0002 start");
       WantAgent.getBundleName(wantAgent, (err, data)=>{
         console.info('SUB_time_systemTimer_createTimer_0002 BundleName: ' + data);
       })
@@ -162,7 +162,7 @@ export default function systemTimerTest() {
         repeat: true,
         wantAgent: wantAgent,
         interval: interval_time
-      }
+      };
       try {
         console.info("SUB_time_systemTimer_createTimer_0002 create timer")
         systemTimer.createTimer(options, function (err, timerID) {
@@ -179,7 +179,7 @@ export default function systemTimerTest() {
         console.info('SUB_time_systemTimer_createTimer_0002 arv wrong since ' + e);
         expect().assertTrue();
         done();
-      }
+      };
     });
 
     /**
@@ -191,11 +191,11 @@ export default function systemTimerTest() {
      * @tc.level Level 2
      */
     it('SUB_time_systemTimer_createTimer_0003', 2, async function (done) {
-      console.info("SUB_time_systemTimer_createTimer_0003 start")
+      console.info("SUB_time_systemTimer_createTimer_0003 start");
       let options = {
         type: systemTimer.TIMER_TYPE_EXACT,
         repeat: false
-      }
+      };
       try {
         console.info("SUB_time_systemTimer_createTimer_0003 create timer")
         systemTimer.createTimer(options, function (err, timerID) {
@@ -211,35 +211,35 @@ export default function systemTimerTest() {
         console.info('SUB_time_systemTimer_createTimer_0002 arv wrong since ' + e);
         expect().assertTrue();
         done();
-      }
+      };
     });
 
     /**
      * @tc.number SUB_time_systemTimer_createTimer_0004
      * @tc.name SUB_time_systemTimer_createTimer_0004
-     * @tc.desc Test createTimer() interfaces, type = TIMER_TYPE_IDLE, repeat = false, wantAgent(callback)
+     * @tc.desc Test createTimer() interfaces, type = TIMER_TYPE_REALTIME, repeat = false, wantAgent(callback)
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 2
      */
     it('SUB_time_systemTimer_createTimer_0004', 2, async function (done) {
-      console.info("SUB_time_systemTimer_createTimer_0004 start")
+      console.info("SUB_time_systemTimer_createTimer_0004 start");
       WantAgent.getBundleName(wantAgent, (err, data)=>{
         console.info("SUB_time_systemTimer_createTimer_0004 BundleName: " + data);
-      })
+      });
       let options = {
         type: systemTimer.TIMER_TYPE_REALTIME,
         repeat: true,
         wantAgent: wantAgent,
         interval: interval_time
-      }
+      };
       try {
         console.info("SUB_time_systemTimer_createTimer_0004 create timer")
         systemTimer.createTimer(options, function (err, timerID) {
           if (err) {
             expect().assertTrue();
             done();
-          }
+          };
           expect(Number.isInteger(timerID)).assertTrue();
           done();
         });
@@ -247,18 +247,18 @@ export default function systemTimerTest() {
         console.info('SUB_time_systemTimer_createTimer_0004 has failed for ' + e);
         expect().assertTrue();
         done();
-      }
+      };
     });
 
 
     /**
- * @tc.number SUB_time_systemTimer_createTimer_0005
- * @tc.name SUB_time_systemTimer_createTimer_0005
- * @tc.desc Test createTimer() interfaces, type = TIMER_TYPE_REALTIME, repeat = false (Callback)
- * @tc.size MEDIUM
- * @tc.type Function
- * @tc.level Level 0
- */
+     * @tc.number SUB_time_systemTimer_createTimer_0005
+     * @tc.name SUB_time_systemTimer_createTimer_0005
+     * @tc.desc Test createTimer() interfaces, type = TIMER_TYPE_REALTIME, repeat = false (Callback)
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 0
+     */
     it('SUB_time_systemTimer_createTimer_0005', 0, async function (done) {
       console.info('SUB_time_systemTimer_createTimer_0005 start.');
       let options = {
@@ -269,7 +269,6 @@ export default function systemTimerTest() {
         console.info('SUB_time_systemTimer_createTimer_0005 create timer.');
         systemTimer.createTimer(options).then((timerID) =>{
           console.info('SUB_time_systemTimer_createTimer_0005 timerID: ' + timerID);
-//          globalTimerID = timerID;
           expect(Number.isInteger(timerID)).assertTrue();
           done();
         }).catch(err => {
@@ -281,13 +280,13 @@ export default function systemTimerTest() {
         console.info('SUB_time_systemTimer_createTimer_0005 has failed for ' + err);
         expect().assertTrue();
         done();
-      }
+      };
     });
 
     /**
      * @tc.number SUB_time_systemTimer_createTimer_0006
      * @tc.name SUB_time_systemTimer_createTimer_0006
-     * @tc.desc Test createTimer() interfaces, type = TIMER_TYPE_REALTIME, repeat = true (callback)
+     * @tc.desc Test createTimer() interfaces, type = TIMER_TYPE_IDLE, repeat = true (callback)
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 0
@@ -295,9 +294,9 @@ export default function systemTimerTest() {
     it('SUB_time_systemTimer_createTimer_0006', 0, async function (done) {
       console.info('SUB_time_systemTimer_createTimer_0006 start.');
       let options = {
-        type: systemTimer.TIMER_TYPE_REALTIME,
+        type: systemTimer.TIMER_TYPE_IDLE,
         repeat: false
-      }
+      };
       try {
         systemTimer.createTimer(options).then((timerID) => {
           console.info('SUB_time_systemTimer_createTimer_0006 timerID: ' + timerID);
@@ -312,7 +311,7 @@ export default function systemTimerTest() {
         console.info('SUB_time_systemTimer_createTimer_0006 arv wrong since ' + e.code);
         expect().assertTrue();
         done();
-      }
+      };
     });
 
     /**
@@ -324,7 +323,7 @@ export default function systemTimerTest() {
      * @tc.level Level 2
      */
     it('SUB_time_systemTimer_createTimer_0007', 2, async function (done) {
-      console.info("SUB_time_systemTimer_createTimer_0007 start")
+      console.info("SUB_time_systemTimer_createTimer_0007 start");
       WantAgent.getBundleName(wantAgent, (err, data)=>{
         console.info('SUB_time_systemTimer_createTimer_0007 BundleName: ' + data);
       })
@@ -333,9 +332,9 @@ export default function systemTimerTest() {
         repeat: true,
         wantAgent: wantAgent,
         interval: interval_time
-      }
+      };
       try {
-        console.info("SUB_time_systemTimer_createTimer_0007 create timer")
+        console.info("SUB_time_systemTimer_createTimer_0007 create timer");
         systemTimer.createTimer(options).then((timerID) => {
           console.info('SUB_time_systemTimer_createTimer_0007 timerID: ' + timerID);
           expect(Number.isInteger(timerID)).assertTrue();
@@ -349,7 +348,7 @@ export default function systemTimerTest() {
         console.info('SUB_time_systemTimer_createTimer_0007 arv wrong since ' + e);
         expect().assertTrue();
         done();
-      }
+      };
     });
 
     /**
@@ -361,11 +360,11 @@ export default function systemTimerTest() {
      * @tc.level Level 2
      */
     it('SUB_time_systemTimer_createTimer_0008', 2, async function (done) {
-      console.info("SUB_time_systemTimer_createTimer_0008 start")
+      console.info("SUB_time_systemTimer_createTimer_0008 start");
       let options = {
         type: systemTimer.TIMER_TYPE_EXACT,
         repeat: false
-      }
+      };
       try {
         console.info("SUB_time_systemTimer_createTimer_0008 create timer")
         systemTimer.createTimer(options).then((timerID) => {
@@ -380,28 +379,28 @@ export default function systemTimerTest() {
         console.info('SUB_time_systemTimer_createTimer_0008 arv wrong since ' + e);
         expect().assertTrue();
         done();
-      }
+      };
     });
 
     /**
      * @tc.number SUB_time_systemTimer_createTimer_0009
      * @tc.name SUB_time_systemTimer_createTimer_0009
-     * @tc.desc Test createTimer() interfaces, type = TIMER_TYPE_IDLE, repeat = false, wantAgent(callback)
+     * @tc.desc Test createTimer() interfaces, type = TIMER_TYPE_REALTIME, repeat = false, wantAgent(callback)
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 2
      */
     it('SUB_time_systemTimer_createTimer_0009', 2, async function (done) {
-      console.info("SUB_time_systemTimer_createTimer_0009 start")
+      console.info("SUB_time_systemTimer_createTimer_0009 start");
       WantAgent.getBundleName(wantAgent, (err, data)=>{
         console.info("SUB_time_systemTimer_createTimer_0009 BundleName: " + data);
-      })
+      });
       let options = {
         type: systemTimer.TIMER_TYPE_REALTIME,
         repeat: true,
         wantAgent: wantAgent,
         interval: interval_time
-      }
+      };
       try {
         console.info("SUB_time_systemTimer_createTimer_0009 create timer")
         systemTimer.createTimer(options).then((timerID) => {
@@ -416,14 +415,8 @@ export default function systemTimerTest() {
         console.info('SUB_time_systemTimer_createTimer_0009 has failed for ' + e);
         expect().assertTrue();
         done();
-      }
+      };
     });
-
-
-
-
-
-
 
     /**
      * @tc.number SUB_time_systemTimer_startTimer_0001
@@ -434,11 +427,7 @@ export default function systemTimerTest() {
      * @tc.level Level 0
      */
     it('SUB_time_systemTimer_startTimer_0001', 0, async function (done) {
-      console.info("SUB_time_systemTimer_startTimer_0001 start")
-      let options = {
-        type: systemTimer.TIMER_TYPE_IDLE,
-        repeat: false,
-      }
+      console.info("SUB_time_systemTimer_startTimer_0001 start");
       try {
         console.info("SUB_time_systemTimer_startTimer_0001 start timer, timerID: " + globalTimerID)
         let triggerTime = new Date().getTime() + interval_time * 1.2;
@@ -455,7 +444,7 @@ export default function systemTimerTest() {
         console.info('SUB_time_systemTimer_startTimer_0001 has failed for ' + e);
         expect().assertTrue();
         done();
-      }
+      };
     });
 
     /**
@@ -467,27 +456,22 @@ export default function systemTimerTest() {
      * @tc.level Level 0
      */
     it('SUB_time_systemTimer_stopTimer_0001', 0, async function (done) {
-      console.info("SUB_time_systemTimer_stopTimer_0001 start")
-      let options = {
-        type: systemTimer.TIMER_TYPE_IDLE,
-        repeat: false,
-      }
+      console.info("SUB_time_systemTimer_stopTimer_0001 start");
       try {
         console.info("SUB_time_systemTimer_stopTimer_0001 stop timer, timerID: " + globalTimerID)
         systemTimer.stopTimer(globalTimerID, function (err, data) {
           if (err) {
             expect().assertTrue();
             done();
-          }
+          };
           console.info("SUB_time_systemTimer_stopTimer_0001 success to stop timerID: " + globalTimerID);
           done();
         });
-
       } catch (e) {
         console.info('SUB_time_systemTimer_stopTimer_0001 has failed for ' + e);
         expect().assertTrue();
         done();
-      }
+      };
     });
 
     /**
@@ -499,62 +483,57 @@ export default function systemTimerTest() {
      * @tc.level Level 0
      */
     it('SUB_time_systemTimer_destroyTimer_0001', 0, async function (done) {
-      console.info("SUB_time_systemTimer_destroyTimer_0001 start")
-      let options = {
-        type: systemTimer.TIMER_TYPE_IDLE,
-        repeat: false,
-      }
+      console.info("SUB_time_systemTimer_destroyTimer_0001 start");
       try {
         console.info("SUB_time_systemTimer_destroyTimer_0001 destroy timer, timerID: " + globalTimerID)
         systemTimer.destroyTimer(globalTimerID, function (err, data) {
           if (err) {
             expect().assertTrue();
             done();
-          }
+          };
           console.info("SUB_time_systemTimer_destroyTimer_0001 success to destroy timerID: " + globalTimerID);
           done();
         });
-
       } catch (e) {
         console.info('SUB_time_systemTimer_destroyTimer_0001 has failed for ' + e);
         expect().assertTrue();
         done();
-      }
+      };
     });
 
     /**
-     * @tc.number SUB_time_systemTimer_createTimer_0006
-     * @tc.name SUB_time_systemTimer_createTimer_0006
+     * @tc.number SUB_time_systemTimer_createTimer_0002
+     * @tc.name SUB_time_systemTimer_createTimer_0002
      * @tc.desc Test createTimer() interfaces, type = TIMER_TYPE_REALTIME, repeat = false (Promise)
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 0
      */
-    it('SUB_time_systemTimer_createTimer_0006', 0, async function (done) {
-      console.info('SUB_time_systemTimer_createTimer_0006 start.');
+    it('SUB_time_systemTimer_createTimer_0002', 0, async function (done) {
+      console.info('SUB_time_systemTimer_createTimer_0002 start.');
       let options = {
         type: systemTimer.TIMER_TYPE_REALTIME,
         repeat: false
       };
       try {
-        console.info('SUB_time_systemTimer_createTimer_0006 create timer.');
+        console.info('SUB_time_systemTimer_createTimer_0002 create timer.');
         systemTimer.createTimer(options).then((timerID)=>{
-          console.info('SUB_time_systemTimer_createTimer_0006 timerID:' + timerID);
+          console.info('SUB_time_systemTimer_createTimer_0002 timerID:' + timerID);
           expect(Number.isInteger(timerID)).assertTrue();
           globalTimerID = timerID;
           done();
-        }, error => {
+        }).catch( error => {
           // 捕获业务逻辑错误
-          console.info('SUB_time_systemTimer_createTimer_0006 failed to create timer.');
+          console.info('SUB_time_systemTimer_createTimer_0002 failed to create timer.');
           expect().assertTrue();
           done();
         });
       } catch (err) {
         // 捕获参数错误
-        console.info('SUB_time_systemTimer_createTimer_0006 has failed for ' + err);
+        console.info('SUB_time_systemTimer_createTimer_0002 has failed for ' + err);
         expect().assertTrue();
         done();
-      }
+      };
     });
 
     /**
@@ -567,10 +546,6 @@ export default function systemTimerTest() {
      */
     it('SUB_time_systemTimer_startTimer_0002', 0, async function (done) {
       console.info('SUB_time_systemTimer_startTimer_0002 start.');
-      let options = {
-        type: systemTimer.TIMER_TYPE_WAKEUP,
-        repeat: false
-      };
       try {
         console.info('SUB_time_systemTimer_startTimer_0002 start timer, timerID: ' + globalTimerID);
         let triggerTime = new Date().getTime() + interval_time * 2;
@@ -578,13 +553,12 @@ export default function systemTimerTest() {
           .then(()=>{
             console.info('SUB_time_systemTimer_startTimer_0002 timerID:' + globalTimerID);
             done();
-          })
-          .catch(()=>{
-            // 捕获业务逻辑错误
-            console.info('SUB_time_systemTimer_startTimer_0002 failed to start timer.');
-            expect().assertTrue();
-            done();
-          });
+          }).catch(()=>{
+          // 捕获业务逻辑错误
+          console.info('SUB_time_systemTimer_startTimer_0002 failed to start timer.');
+          expect().assertTrue();
+          done();
+        });
       } catch (err) {
         // 捕获参数错误
         console.info('SUB_time_systemTimer_startTimer_0002 has failed for ' + err);
@@ -603,29 +577,24 @@ export default function systemTimerTest() {
      */
     it('SUB_time_systemTimer_stopTimer_0002', 0, async function (done) {
       console.info('SUB_time_systemTimer_stopTimer_0002 start.');
-      let options = {
-        type: systemTimer.TIMER_TYPE_WAKEUP,
-        repeat: false
-      };
       try {
         console.info('SUB_time_systemTimer_stopTimer_0002 stop timer, timerID: ' + globalTimerID);
         systemTimer.stopTimer(globalTimerID)
           .then(()=>{
             console.info('SUB_time_systemTimer_stopTimer_0002 timerID:' + globalTimerID);
             done();
-          })
-          .catch(()=>{
-            // 捕获业务逻辑错误
-            console.info('SUB_time_systemTimer_stopTimer_0002 failed to stop timer.');
-            expect().assertTrue();
-            done();
-          });
+          }).catch(()=>{
+          // 捕获业务逻辑错误
+          console.info('SUB_time_systemTimer_stopTimer_0002 failed to stop timer.');
+          expect().assertTrue();
+          done();
+        });
       } catch (err) {
         // 捕获参数错误
         console.info('SUB_time_systemTimer_stopTimer_0002 has failed for ' + err);
         expect().assertTrue();
         done();
-      }
+      };
     });
 
     /**
@@ -638,35 +607,30 @@ export default function systemTimerTest() {
      */
     it('SUB_time_systemTimer_destroyTimer_0002', 0, async function (done) {
       console.info('SUB_time_systemTimer_destroyTimer_0002 start.');
-      let options = {
-        type: systemTimer.TIMER_TYPE_WAKEUP,
-        repeat: false
-      };
       try {
         console.info('SUB_time_systemTimer_destroyTimer_0002 destroy timer, timerID: ' + globalTimerID);
         systemTimer.destroyTimer(globalTimerID)
           .then(()=>{
             console.info('SUB_time_systemTimer_destroyTimer_0002 timerID:' + globalTimerID);
             done();
-          })
-          .catch(()=>{
-            // 捕获业务逻辑错误
-            console.info('SUB_time_systemTimer_destroyTimer_0002 failed to destroy timer.');
-            expect().assertTrue();
-            done();
-          });
+          }).catch(()=>{
+          // 捕获业务逻辑错误
+          console.info('SUB_time_systemTimer_destroyTimer_0002 failed to destroy timer.');
+          expect().assertTrue();
+          done();
+        });
       } catch (err) {
         // 捕获参数错误
         console.info('SUB_time_systemTimer_stopTimer_0002 has failed for ' + err);
         expect().assertTrue();
         done();
-      }
+      };
     });
 
     /**
       * @tc.number SUB_time_systemTimer_ALL_Promise_0008
       * @tc.name SUB_time_systemTimer_ALL_Promise_0008
-      * @tc.desc Test createTimer() interfaces, type = TIMER_TYPE_REALTIME, repeat = false (Promise)
+      * @tc.desc Test createTimer() interfaces, type = TIMER_TYPE_WAKEUP, repeat = false (Promise)
       * @tc.size MEDIUM
       * @tc.type Function
       * @tc.level Level 0
@@ -739,7 +703,7 @@ export default function systemTimerTest() {
     /**
      * @tc.number SUB_time_systemTimer_ALL_Callback_0009
      * @tc.name SUB_time_systemTimer_ALL_Callback_0009
-     * @tc.desc Test createTimer() interfaces, type = TIMER_TYPE_REALTIME, repeat = false (Promise)
+     * @tc.desc Test createTimer() interfaces, type = TIMER_TYPE_WAKEUP, repeat = false (Promise)
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 0
@@ -768,26 +732,22 @@ export default function systemTimerTest() {
                     });
                   })
                 } catch (err) {
-                  // 捕获stopTimer参数错误
                   console.info('SUB_time_systemTimer_ALL_Callback_0009 stopTimer with wrong arg: ' + err);
                   expect().assertTrue();
                   done();
                 }
               })
             } catch (err) {
-              // 捕获参数错误
               console.info('SUB_time_systemTimer_ALL_Callback_0009 startTimer with wrong arg: ' + err);
               expect().assertTrue();
               done();
             }
           })
       } catch (err) {
-        // 捕获参数错误
         console.info('SUB_time_systemTimer_ALL_Callback_0009 createTimer with wrong arg: ' + err);
         expect().assertTrue();
         done();
       }
     });
-
   });
 }

@@ -42,7 +42,6 @@ export default function ScreenLockPromiseTest(){
      */
     it("SUB_MISC_THEME_screenLock_API_Promise_001", 0, async function (done) {
       console.info("------------------start SUB_MISC_THEME_screenLock_API_Promise_001-------------------");
-      let isScreenLocked = true;
       try {
         screenLock.isScreenLocked().then((data) => {
           console.info("SUB_MISC_THEME_screenLock_API_Promise_001 isScreenLocked result is " + data);
@@ -66,7 +65,6 @@ export default function ScreenLockPromiseTest(){
      */
     it("SUB_MISC_THEME_screenLock_API_Promise_002", 0, async function (done) {
       console.info("------------------start SUB_MISC_THEME_screenLock_API_Promise_002-------------------");
-      let isScreenLocked = false;
       try {
         screenLock.isScreenLocked().then((data) => {
           console.info("SUB_MISC_THEME_screenLock_API_Promise_002 isScreenLocked result is " + data);
@@ -173,6 +171,5 @@ export default function ScreenLockPromiseTest(){
       console.info("------------------end SUB_MISC_THEME_screenLock_API_Promise_005-------------------");
       done();
     });
-
   })
 }
