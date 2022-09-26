@@ -67,8 +67,28 @@ class Stub extends rpc.RemoteObject {
     onRemoteRequest(code, data, reply, option) {
         try{
             console.info("onRemoteRequest: " + code)
-            console.info("-----------------syhsyhsysh:" + code)
-
+            if (code === 32){
+                console.info("case 32 start")
+                let tmp1 = data.readString()
+                let result =  reply.writeString("onRemoteRequest invoking")
+                return true
+            } else if (code === 33){
+                console.info("case 33 start")
+                let tmp1 = data.readString()
+                let result =  reply.writeString(tmp1)
+                return true
+            }else {
+                console.error("default case " + code)
+                return super.onRemoteRequest(code, data, reply, option)
+            }
+        } catch (error) {
+            console.info("onRemoteRequest: " + error);
+        }
+        return false
+    }
+    onRemoteRequestEx(code, data, reply, option) {
+        try{
+            console.info("onRemoteRequestEx: " + code)
             switch(code) {
                 case 1:
                 {
@@ -210,7 +230,7 @@ class Stub extends rpc.RemoteObject {
                 {
                     console.info("case 17 start")
                     var s = [new MySequenceable(null, null), new MySequenceable(null, null),
-                             new MySequenceable(null, null)];
+                        new MySequenceable(null, null)];
                     data.readSequenceableArray(s);
                     let result =  reply.writeSequenceableArray(s);
                     return true
@@ -286,7 +306,7 @@ class Stub extends rpc.RemoteObject {
                     let tmp8 = data.readCharArray()
                     let tmp9 = data.readStringArray()
                     let s = [new MySequenceable(null, null), new MySequenceable(null, null),
-                             new MySequenceable(null, null)]
+                        new MySequenceable(null, null)]
                     let tmp10 = data.readSequenceableArray(s)
                     let result1 =  reply.writeByteArray(tmp1)
                     let result2 =  reply.writeShortArray(tmp2)
@@ -460,12 +480,18 @@ class Stub extends rpc.RemoteObject {
                     reply.writeNoException()
                     return true
                 }
+                case 32:
+                {
+                    console.info("case 32 start")
+                    let tmp1 = data.readString()
+                    let result =  reply.writeString("onRemoteRequestEx invoking")
+                    return true
+                }
                 default:
-                    console.error("default case " + code)
-                    return super.onRemoteRequest(code, data, reply, option)
+                    this.onRemoteRequest(code, data, reply, option)
             }
         } catch (error) {
-            console.info("onRemoteRequest: " + error);
+            console.info("onRemoteRequestEx: " + error);
         }
         return false
     }
