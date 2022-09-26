@@ -5735,7 +5735,7 @@ describe('ActsRpcClientJsTest', function(){
     it("SUB_Softbus_IPC_Compatility_MessageParcel_15000", 0, async function(done){
         console.info("---------------------start SUB_Softbus_IPC_Compatility_MessageParcel_15000---------------------------");
         try{
-            let maxsize = 1024;
+            let maxsize = 3;
             let data = rpc.MessageParcel.create();
             let Capacity = data.getRawDataCapacity()
             console.info("SUB_Softbus_IPC_Compatility_MessageParcel_15000:run Capacity success, Capacity is " + Capacity);
@@ -5858,7 +5858,7 @@ describe('ActsRpcClientJsTest', function(){
      it("SUB_Softbus_IPC_Compatility_MessageParcel_15400", 0, async function(done){
         console.info("---------------------start SUB_Softbus_IPC_Compatility_MessageParcel_15400---------------------------");
         try{
-            let maxsize = 1024;
+            let maxsize = 3;
             let data = rpc.MessageParcel.create();
             let Capacity = data.getRawDataCapacity()
             console.info("SUB_Softbus_IPC_Compatility_MessageParcel_15400:run Capacity success, Capacity is " + Capacity);
