@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "hypium/index"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import {
     WANT1, ENTINFO1, SELFWANT, SELFHAPNAME, COMPANYNAME2, DESCRIPTION2,
     ENTINFO2, DEFAULT_USER_ID, TEST_USER_ID, ERR_USER_ID
@@ -283,12 +283,11 @@ export default function edmCallbackTest() {
         let dsmgr = await enterpriseDeviceManager.getDeviceSettingsManager();
         expect(dsmgr !== null).assertTrue();
         console.log('before setDateTime');
-        await dsmgr.setDateTime(SELFWANT, 1526003846000, (error, data) => {
-            console.log("setDateTime ===data: " + data);
-            console.log("setDateTime ===error: " + error);
-        });
-        await enterpriseDeviceManager.disableSuperAdmin(SELFHAPNAME);
-        done();
+        await dsmgr.setDateTime(SELFWANT, 1526003846000, OnReceiveEvent);
+        async function OnReceiveEvent() {
+            await enterpriseDeviceManager.disableSuperAdmin(SELFHAPNAME);
+            done();
+        }
     })
   })
 }
