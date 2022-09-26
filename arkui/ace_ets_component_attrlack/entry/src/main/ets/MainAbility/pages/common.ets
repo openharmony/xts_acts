@@ -121,8 +121,6 @@ export default struct CommonColorMode {
           Log.showInfo(TAG, 'JSON.stringify area : ' + JSON.stringify(event.target.area))
           const area = JSON.stringify(event.target.area)
           console.info("area value is: " + area)
-          console.info("area.position value is: " + area.position)
-          console.info("area.position value is: " + area.position.x)
           try {
             var backData = {
               data: {
