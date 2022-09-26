@@ -35,6 +35,11 @@ function sleep(time) {
 
 export default function ApiCoverTest() {
   describe('ApiCoverTestTest', function () {
+    afterEach(async (done) => {
+      setTimeout(function () {
+        done();
+      }, 2000);
+    })
 
     /*
      * @tc.number  SUB_AA_ABILITY_Extension_API_001
