@@ -70,6 +70,8 @@ describe('ActsRpcClientJsTest', function(){
     const CODE_FILESDIR = 29;
     const CODE_WRITE_REMOTEOBJECTARRAY_1 = 30;
     const CODE_WRITE_REMOTEOBJECTARRAY_2 = 31;
+    const CODE_ONREMOTEREQUESTEX_OR_ONREMOTEREQUEST = 32;
+    const CODE_ONREMOTEREQUESTEX = 33;
 
     function connectAbility() {
         let want = {
@@ -5735,22 +5737,18 @@ describe('ActsRpcClientJsTest', function(){
     it("SUB_Softbus_IPC_Compatility_MessageParcel_15000", 0, async function(done){
         console.info("---------------------start SUB_Softbus_IPC_Compatility_MessageParcel_15000---------------------------");
         try{
-            let maxsize = 3;
             let data = rpc.MessageParcel.create();
-            let Capacity = data.getRawDataCapacity()
-            console.info("SUB_Softbus_IPC_Compatility_MessageParcel_15000:run Capacity success, Capacity is " + Capacity);
             let rawdata = [1, 2, 3];
             let option = new rpc.MessageOption();
             let reply = rpc.MessageParcel.create();
-            expect(data.writeInt(maxsize)).assertTrue();
-            let result = data.writeRawData(rawdata, maxsize);
+            expect(data.writeInt(rawdata.length)).assertTrue();
+            let result = data.writeRawData(rawdata, rawdata.length);
             console.info("SUB_Softbus_IPC_Compatility_MessageParcel_15000:run writeRawDatais is " + result);
             expect(result).assertTrue();
             if (gIRemoteObject == undefined){
                 console.info("SUB_Softbus_IPC_Compatility_MessageParcel_15000: gIRemoteObject undefined");
             }
             await gIRemoteObject.sendRequest(CODE_WRITE_RAWDATA, data, reply, option).then((result) => {
-                console.info("SUB_Softbus_IPC_Compatility_MessageParcel_15000: result is " + result.errCode);
                 expect(result.errCode == 0).assertTrue();
                 let size = result.reply.readInt();
                 console.info("SUB_Softbus_IPC_Compatility_MessageParcel_15000:run readIntis is " + size);
@@ -5858,22 +5856,19 @@ describe('ActsRpcClientJsTest', function(){
      it("SUB_Softbus_IPC_Compatility_MessageParcel_15400", 0, async function(done){
         console.info("---------------------start SUB_Softbus_IPC_Compatility_MessageParcel_15400---------------------------");
         try{
-            let maxsize = 3;
             let data = rpc.MessageParcel.create();
             let Capacity = data.getRawDataCapacity()
-            console.info("SUB_Softbus_IPC_Compatility_MessageParcel_15400:run Capacity success, Capacity is " + Capacity);
             let rawdata = [1, 2, 3];
             let option = new rpc.MessageOption();
             let reply = rpc.MessageParcel.create();
-            expect(data.writeInt(maxsize)).assertTrue();
-            let result = data.writeRawData(rawdata, maxsize);
+            expect(data.writeInt(rawdata.length)).assertTrue();
+            let result = data.writeRawData(rawdata, rawdata.length);
             console.info("SUB_Softbus_IPC_Compatility_MessageParcel_15400:run writeRawData is " + result);
             expect(result).assertTrue();
             if (gIRemoteObject == undefined){
                 console.info("SUB_Softbus_IPC_Compatility_MessageParcel_15400: gIRemoteObject undefined");
             }
             await gIRemoteObject.sendRequestAsync(CODE_WRITE_RAWDATA, data, reply, option).then((result) => {
-                console.info("SUB_Softbus_IPC_Compatility_MessageParcel_15400: sendRequestAsync is " + result.errCode);
                 expect(result.errCode == 0).assertTrue();
                 let size = result.reply.readInt();
                 console.info("SUB_Softbus_IPC_Compatility_MessageParcel_15400:run readInt is " + size);
@@ -5890,7 +5885,156 @@ describe('ActsRpcClientJsTest', function(){
         done();
         console.info("---------------------end SUB_Softbus_IPC_Compatility_MessageParcel_15400---------------------------");
     });
+    
+    /*
+    * @tc.number  SUB_Softbus_IPC_Compatility_MessageParcel_15500
+    * @tc.name    Invoke the writestring interface to write data to the messageparcel instance SendRequest Asynchronous
+    *               Authentication onRemoteRequestEx Server Processing
+    * @tc.desc    Function test
+    * @tc.level   0
+    */
+    it("SUB_Softbus_IPC_Compatility_MessageParcel_15500", 0, async function(done){
+        console.info("---------------------start SUB_Softbus_IPC_Compatility_MessageParcel_15500---------------------------");
+        try{
+            var data = rpc.MessageParcel.create();
+            console.info("SUB_Softbus_IPC_Compatility_MessageParcel_15500: create object successfully.");
+            var reply = rpc.MessageParcel.create();
+            var option = new rpc.MessageOption();
+            var token = 'onRemoteRequestEx invoking';
+            var result = data.writeString(token);
+            console.info("SUB_Softbus_IPC_Compatility_MessageParcel_15500:run writeStringis is " + result);
+            expect(result == true).assertTrue();
+            if (gIRemoteObject == undefined)
+            {
+                console.info("SUB_Softbus_IPC_Compatility_MessageParcel_15500: gIRemoteObject is undefined");
+            }
+            await gIRemoteObject.sendRequest(CODE_ONREMOTEREQUESTEX, data, reply, option).then((result) => {
+                console.info("SUB_Softbus_IPC_Compatility_MessageParcel_15500: sendRequestis is " + result.errCode);
+                var replyReadResult = result.reply.readString();
+                console.info("SUB_Softbus_IPC_Compatility_MessageParcel_15500: run readString is " + replyReadResult);
+                expect(replyReadResult).assertEqual(token);
+            });
+            data.reclaim();
+            reply.reclaim();
+            done();
+        } catch (error) {
+            console.info("SUB_Softbus_IPC_Compatility_MessageParcel_15500:error = " + error);
+        }
+        console.info("---------------------end SUB_Softbus_IPC_Compatility_MessageParcel_15500---------------------------");
+    });
 
+    /*
+    * @tc.number  SUB_Softbus_IPC_Compatility_MessageParcel_15600
+    * @tc.name    Invoke the writestring interface to write data to the messageparcel instance sendRequestAsync Asynchronous
+    *               Authentication onRemoteRequestEx Server Processing
+    * @tc.desc    Function test
+    * @tc.level   0
+    */
+    it("SUB_Softbus_IPC_Compatility_MessageParcel_15600", 0, async function(done){
+        console.info("---------------------start SUB_Softbus_IPC_Compatility_MessageParcel_15600---------------------------");
+        try{
+            var data = rpc.MessageParcel.create();
+            console.info("SUB_Softbus_IPC_Compatility_MessageParcel_15600: create object successfully.");
+            var reply = rpc.MessageParcel.create();
+            var option = new rpc.MessageOption();
+            var token = 'onRemoteRequestEx invoking';
+            var result = data.writeString(token);
+            console.info("SUB_Softbus_IPC_Compatility_MessageParcel_15600:run writeStringis is " + result);
+            expect(result == true).assertTrue();
+            if (gIRemoteObject == undefined)
+            {
+                console.info("SUB_Softbus_IPC_Compatility_MessageParcel_15600: gIRemoteObject is undefined");
+            }
+            await gIRemoteObject.sendRequestAsync(CODE_ONREMOTEREQUESTEX, data, reply, option).then((result) => {
+                console.info("SUB_Softbus_IPC_Compatility_MessageParcel_15600: sendRequestis is " + result.errCode);
+                var replyReadResult = result.reply.readString();
+                console.info("SUB_Softbus_IPC_Compatility_MessageParcel_15600: run readString is " + replyReadResult);
+                expect(replyReadResult).assertEqual(token);
+            });
+            data.reclaim();
+            reply.reclaim();
+            done();
+        } catch (error) {
+            console.info("SUB_Softbus_IPC_Compatility_MessageParcel_15600:error = " + error);
+        }
+        console.info("---------------------end SUB_Softbus_IPC_Compatility_MessageParcel_15600---------------------------");
+    });
+
+    /*
+    * @tc.number  SUB_Softbus_IPC_Compatility_MessageParcel_15700
+    * @tc.name    Invoke the writestring interface to write data to the messageparcel instance. SendRequest asynchronously
+    *               verifies the priority processing levels of onRemoteRequestEx and onRemoteRequest
+    * @tc.desc    Function test
+    * @tc.level   0
+    */
+    it("SUB_Softbus_IPC_Compatility_MessageParcel_15700", 0, async function(done){
+        console.info("---------------------start SUB_Softbus_IPC_Compatility_MessageParcel_15700---------------------------");
+        try{
+            var data = rpc.MessageParcel.create();
+            console.info("SUB_Softbus_IPC_Compatility_MessageParcel_15700: create object successfully.");
+            var reply = rpc.MessageParcel.create();
+            var option = new rpc.MessageOption();
+            var token = "onRemoteRequest or onRemoteRequestEx invoking";
+            var result = data.writeString(token);
+            console.info("SUB_Softbus_IPC_Compatility_MessageParcel_15700:run writeStringis is " + result);
+            expect(result == true).assertTrue();
+            if (gIRemoteObject == undefined)
+            {
+                console.info("SUB_Softbus_IPC_Compatility_MessageParcel_15700: gIRemoteObject is undefined");
+            }
+            await gIRemoteObject.sendRequest(CODE_ONREMOTEREQUESTEX_OR_ONREMOTEREQUEST, data, reply, option).then((result) => {
+                console.info("SUB_Softbus_IPC_Compatility_MessageParcel_15700: sendRequestis is " + result.errCode);
+                var replyReadResult = result.reply.readString();
+                console.info("SUB_Softbus_IPC_Compatility_MessageParcel_15700: run readString is " + replyReadResult);
+                expect(replyReadResult).assertEqual("onRemoteRequestEx invoking");
+            });
+            data.reclaim();
+            reply.reclaim();
+            done();
+        } catch (error) {
+            console.info("SUB_Softbus_IPC_Compatility_MessageParcel_15700:error = " + error);
+        }
+        console.info("---------------------end SUB_Softbus_IPC_Compatility_MessageParcel_15700---------------------------");
+    });
+
+    /*
+    * @tc.number  SUB_Softbus_IPC_Compatility_MessageParcel_15800
+    * @tc.name   Invoke the writestring interface to write data to the messageparcel instance. sendRequestAsync asynchronously verifies
+    *               the priority processing levels of onRemoteRequestEx and onRemoteRequest
+    * @tc.desc    Function test
+    * @tc.level   0
+    */
+    it("SUB_Softbus_IPC_Compatility_MessageParcel_15800", 0, async function(done){
+        console.info("---------------------start SUB_Softbus_IPC_Compatility_MessageParcel_15800---------------------------");
+        try{
+            var data = rpc.MessageParcel.create();
+            console.info("SUB_Softbus_IPC_Compatility_MessageParcel_15800: create object successfully.");
+            var reply = rpc.MessageParcel.create();
+            var option = new rpc.MessageOption();
+            var token = 'onRemoteRequest or onRemoteRequestEx invoking';
+            var result = data.writeString(token);
+            console.info("SUB_Softbus_IPC_Compatility_MessageParcel_15800:run writeStringis is " + result);
+            expect(result == true).assertTrue();
+            if (gIRemoteObject == undefined)
+            {
+                console.info("SUB_Softbus_IPC_Compatility_MessageParcel_15800: gIRemoteObject is undefined");
+            }
+            await gIRemoteObject.sendRequestAsync(CODE_ONREMOTEREQUESTEX_OR_ONREMOTEREQUEST, data, reply, option).then((result) => {
+                console.info("SUB_Softbus_IPC_Compatility_MessageParcel_15800: sendRequestis is " + result.errCode);
+                var replyReadResult = result.reply.readString();
+                console.info("SUB_Softbus_IPC_Compatility_MessageParcel_15800: run readString is " + replyReadResult);
+                expect(replyReadResult).assertEqual("onRemoteRequestEx invoking");
+            });
+            data.reclaim();
+            reply.reclaim();
+            done();
+        } catch (error) {
+            console.info("SUB_Softbus_IPC_Compatility_MessageParcel_15800:error = " + error);
+        }
+        console.info("---------------------end SUB_Softbus_IPC_Compatility_MessageParcel_15800---------------------------");
+    });
+
+    
     /*
      * @tc.number  SUB_Softbus_IPC_Compatility_MessageOption_00100
      * @tc.name    Basic method of testing messageoption
