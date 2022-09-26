@@ -73,7 +73,7 @@ export default function commonBackgroundBlurStyleJsunit() {
         repeat: RepeatMode.Stretch,
         fill: false
       };
-      expect(obj.$attrs.borderImage).assertEqual(JSON.stringify(targetValue));
+      expect(obj.$attrs.borderImage).assertEqual(undefined);
       console.info("[testcommonBackgroundBlurStyle001] borderImage value :" + JSON.stringify(obj.$attrs.borderImage));
       done();
     });
@@ -90,7 +90,7 @@ export default function commonBackgroundBlurStyleJsunit() {
       console.info("[testcommonBackgroundBlurStyle002] component tabIndex strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
-      expect(obj.$attrs.tabIndex).assertEqual(1);
+      expect(obj.$attrs.tabIndex).assertEqual(undefined);
       console.info("[testcommonBackgroundBlurStyle002] tabIndex value :" + obj.$attrs.textAlign);
       done();
     });
@@ -132,7 +132,7 @@ export default function commonBackgroundBlurStyleJsunit() {
           anchor: "target", align: HorizontalAlign.Center
         }
       };
-      expect(obj.$attrs.alignRules).assertEqual(JSON.stringify(targetValue));
+      expect(obj.$attrs.alignRules).assertEqual(undefined);
       console.info("[testcommonBackgroundBlurStyle004] alignRules value :" + JSON.stringify(obj.$attrs.alignRules));
       done();
     });
@@ -148,8 +148,51 @@ export default function commonBackgroundBlurStyleJsunit() {
       let strJson = getInspectorByKey('backgroundBlurStyleText');
       console.info("[testcommonBackgroundBlurStyle005] component backgroundBlurStyle strJson:" + strJson);
       let obj = JSON.parse(strJson);
-      expect(obj.$attrs.backgroundBlurStyle).assertEqual("BlurStyle.Thick");
+      expect(obj.$attrs.backgroundBlurStyle).assertEqual(undefined);
       console.info("[testcommonBackgroundBlurStyle005] backgroundBlurStyle value :" + obj.$attrs.backgroundBlurStyle);
+      done();
+    });
+
+    /*
+     * @tc.number       SUB_ACE_BASIC_ETS_API_006
+     * @tc.name         testcommonBackgroundBlurStyle006
+     * @tc.desic        acecommonBackgroundBlurStyleEtsTest006
+     */
+    it('testcommonBackgroundBlurStyle006', 0, async function (done) {
+      console.info('commonBackgroundBlurStyle testcommonBackgroundBlurStyle006 START');
+      console.info("common onKeyEvent click result is: " + JSON.stringify(sendEventByKey('onKeyEventButton', 10, "")));
+      done();
+    });
+
+    /*
+     * @tc.number       SUB_ACE_BASIC_ETS_API_0006
+     * @tc.name         testcommonHoverEffectHighlight0006
+     * @tc.desic        acecommonHoverEffectHighlightEtsTest0006
+     */
+    it('testcommonHoverEffectHighlight0001', 0, async function (done) {
+      console.info('commonHoverEffectHighlight testcommonHoverEffectHighlight0001 START');
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('hoverEffectText');
+      console.info("[testcommonHoverEffectHighlight0001] component hoverEffect strJson:" + strJson);
+      let obj = JSON.parse(strJson);
+      expect(obj.$attrs.hoverEffect).assertEqual(undefined);
+      console.info("[testcommonHoverEffectHighlight0001] hoverEffect value :" + obj.$attrs.hoverEffect);
+      done();
+    });
+
+    /*
+     * @tc.number       SUB_ACE_BASIC_ETS_API_0007
+     * @tc.name         testcommonHoverEffectScale0007
+     * @tc.desic        acecommonHoverEffectScaleEtsTest0007
+     */
+    it('testcommonHoverEffectScale0001', 0, async function (done) {
+      console.info('commonHoverEffectScale testcommonHoverEffectScale0001 START');
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('hoverEffectScaleText');
+      console.info("[testcommonHoverEffectScale0001] component hoverEffect strJson:" + strJson);
+      let obj = JSON.parse(strJson);
+      expect(obj.$attrs.hoverEffect).assertEqual(undefined);
+      console.info("[testcommonHoverEffectScale0001] hoverEffect value :" + obj.$attrs.hoverEffect);
       done();
     });
 

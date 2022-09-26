@@ -14,14 +14,13 @@
  */
 
 import Log from '../common/Log.ets';
-
+import inputEventClient from '@ohos.multimodalInput.inputEventClient';
 const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
 export default struct CommonBackgroundBlurStyle {
   @State value: string = ''
-
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear CommonBackgroundBlurStyle start`)
   }
@@ -113,7 +112,7 @@ export default struct CommonBackgroundBlurStyle {
         .padding(10)
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
-        .key("hoverEffectText")
+        .key("hoverEffectScaleText")
         .hoverEffect(HoverEffect.Scale)
 
       Text("common-OnKeyEvent")
@@ -131,8 +130,20 @@ export default struct CommonBackgroundBlurStyle {
         .key("onKeyEventText")
 
       Button('common-OnKeyEvent')
+        .onClick(()=>{
+          let keyEvent = {
+            isPressed: true,
+            keyCode: 2054,
+            keyDownDuration: 0,
+            isIntercepted: false
+          }
+          let res = inputEventClient.injectEvent({KeyEvent: keyEvent});
+        })
         .key("onKeyEventButton")
         .onKeyEvent((event: KeyEvent) => {
+          if (event.keyCode === 2054) {
+            console.info("onKeyEvent 2054 inject Success ");
+          }
           if (event.type === KeyType.Down) {
             Log.showInfo(TAG, `Down`)
           }

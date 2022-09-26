@@ -65,6 +65,7 @@ struct SideBarShowSideBar {
     .showSideBar(true)
     .autoHide(false)
     .sideBarWidth(240)
+    .sideBarPosition(SideBarPosition.End)
     .minSideBarWidth(210)
     .maxSideBarWidth(260)
     .onChange((value: boolean) => {

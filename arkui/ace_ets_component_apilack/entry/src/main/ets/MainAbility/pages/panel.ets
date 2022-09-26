@@ -13,14 +13,14 @@
  * limitations under the License.
  */
 
+import events_emitter from '@ohos.events.emitter';
 import Log from '../common/Log.ets';
 const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
 export default struct PanelBackgroundMask {
-  @State show1: boolean = false
-  @State show2: boolean = false
+  @State mode: PanelMode = PanelMode.Full
 
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear PanelBackgroundMask start`)
@@ -31,24 +31,7 @@ export default struct PanelBackgroundMask {
   }
 
   build() {
-    //    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center }) {
     Column() {
-      Text("panel-BackgroundMask")
-        .width(100)
-        .height(70)
-        .fontSize(20)
-        .opacity(1)
-        .align(Alignment.TopStart)
-        .fontColor(0xCCCCCC)
-        .lineHeight(25)
-        .border({ width: 1 })
-        .padding(10)
-        .textAlign(TextAlign.Center)
-        .textOverflow({ overflow: TextOverflow.None })
-        .key("backgroundMaskText")
-        .onClick(() => {
-          this.show1 = !this.show1
-        })
 
       Text("panel-OnHeightChange")
         .width(100)
@@ -64,40 +47,43 @@ export default struct PanelBackgroundMask {
         .textOverflow({ overflow: TextOverflow.None })
         .key("onHeightChangeText")
         .onClick(() => {
-          this.show2 = !this.show2
+          this.mode = PanelMode.Half
         })
 
-      Panel(this.show1) {
+      Panel(true) {
         Column() {
           Text("panel-BackgroundMask").fontSize(30)
         }
       }
+      .key("panel")
+      .mode(this.mode)
       .backgroundColor('green')
       .type(PanelType.Foldable)
-      .mode(PanelMode.Half)
       .dragBar(false)
       .halfHeight(300)
       .onChange((width: number, height: number, mode: PanelMode) => {
         Log.showInfo(TAG, `width:${width},height:${height},mode:${mode}`)
       })
       .backgroundMask('red')
-
-      Panel(this.show2) {
-        Column() {
-          Text("panel-OnHeightChange").fontSize(30)
-        }
-      }
-      .backgroundColor('red')
-      .type(PanelType.Foldable)
-      .mode(PanelMode.Half)
-      .dragBar(false)
-      .halfHeight(300)
-      .onChange((width: number, height: number, mode: PanelMode) => {
-        console.log(`width:${width},height:${height},mode:${mode}`)
-      })
       .onHeightChange((value: number) => {
         Log.showInfo(TAG, 'onHeightChange: ' + value)
-      })
+        try {
+          var backData = {
+            data: {
+              "result":"success"
+            }
+          }
+          let backEvent = {
+            eventId: 10111,
+            priority: events_emitter.EventPriority.LOW
+          }
+          console.info("onHeightChange start to emit action state")
+          events_emitter.emit(backEvent, backData)
+        } catch (err) {
+          console.info("testpanelOnHeightChange0002 emit action state err: " + JSON.stringify(err.message))
+        }
+       })
+
     }.width("100%").height("100%")
   }
 }
