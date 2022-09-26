@@ -23,6 +23,7 @@ import canvasActualBoundingBoxAscentJsunit from './canvas.test.ets';
 import checkBoxGroupJsunit from './checkBox.test.ets';
 import checkBoxGroupPartJsunit from './checkBoxGroup.test.ets';
 import commonColorModeJsunit from './common.test.ets';
+import configurationApiTest from './configuration.test.ets'
 import datePickerLunarJsunit from './datePicker.test.ets';
 import enumsCancelJsunit from './enums.test.ets';
 import gestureParallelJsunit from './gesture.test.ets';
@@ -45,9 +46,7 @@ import copyOptionJsunit from './copyOption.test.ets';
 
 export default function testsuite() {
   animatorOnframeJsunit()
-  curvesEaseOutJsunit()
   routerStandardJsunit()
-  uiAppearanceALWAYS_DARKJsunit()
   appVersionCodeJsunit()
   alertDialogCenterStartJsunit()
   canvasActualBoundingBoxAscentJsunit()
@@ -55,13 +54,11 @@ export default function testsuite() {
   checkBoxGroupPartJsunit()
   commonColorModeJsunit()
   datePickerLunarJsunit()
-  enumsCancelJsunit()
   gestureParallelJsunit()
   listtestIdleJsunit()
   loadingProgressCircularJsunit()
   progressScaleCountJsunit()
   radioGroupJsunit()
-  refreshDragJsunit()
   sidebarIconsJsunit()
   sliderMovingJsunit()
   stateManagementDARKJsunit()
