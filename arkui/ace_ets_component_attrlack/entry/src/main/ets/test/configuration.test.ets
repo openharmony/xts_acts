@@ -46,6 +46,7 @@ export default function configurationApiTest() {
       expect(localeInfo.colorMode).assertEqual('COLOR_MODE_LIGHT');
       expect(localeInfo.fontScale).assertEqual('ltr');
       console.info('testConfigurationGetLocale END');
+      done();
     });
   })
 }

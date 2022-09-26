@@ -93,11 +93,13 @@
           "pages/gridCol",
           "pages/gridRow",
           "pages/listtest",
+          "pages/list_item_group",
           "pages/loadingProgress",
           "pages/pluginComponent",
           "pages/progress",
           "pages/radio",
           "pages/refresh",
+          "pages/remoteWindow",
           "pages/router",
           "pages/scroll_edge",
           "pages/sidebar",
@@ -110,7 +112,9 @@
           "pages/web",
           "pages/copyOption",
           "pages/responseType",
-          "pages/hoverEffect"
+          "pages/hoverEffect",
+          "pages/hitTestMode",
+          "pages/color"
         ],
         "name": ".MainAbility",
         "window": {
