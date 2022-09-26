@@ -343,9 +343,22 @@ OpenHarmony支持如下几种系统类型：
     }
     ```
 
-5.  测试套件编译命令。
+5.  测试套件编译命令_两种编译方式。
 
-    随版本编译，debug版本编译时会同步编译acts测试套件
+    方式一：
+
+    ```
+    ./test/xts/tools/lite/build.sh product=wifiiot xts=acts
+    ```
+
+    方式二：
+
+    ```
+    hb set
+    选择 设备类型
+    hb build --gn-args build_xts=true
+    (注)：若不追加--gn-args build_xts=true，不会编译acts测试套件。
+    ```
 
     >![](figures/icon-note.gif) **说明：** 
     >acts测试套件编译中间件为静态库，最终链接到版本镜像中 。
@@ -476,9 +489,31 @@ OpenHarmony支持如下几种系统类型：
     }
     ```
 
-5.  测试套件编译命令。
+5.  测试套件编译命令_两种编译方式。
 
-    随版本编译，debug版本编译时会同步编译acts测试套件
+    L1_LiteOS：
+
+    ```
+    方式一：
+    python3 build.py -p ipcamera_hispark_taurus@hisilicon --gn-args build_xts=true 
+    方式二：
+    hb set
+    选择 设备类型
+    hb build --gn-args build_xts=true
+    (注)：若不追加--gn-args build_xts=true，不会编译acts测试套件。
+    ```
+
+    L1_Linux：
+
+    ```
+    方式一：
+    python3 build.py -p ipcamera_hispark_taurus_linux@hisilicon --gn-args build_xts=true 
+    方式二：
+    hb set
+    选择 设备类型
+    hb build --gn-args build_xts=true
+    (注)：若不追加--gn-args build_xts=true，不会编译acts测试套件。
+    ```
 
     >![](figures/icon-note.gif) **说明：** 
     >小型系统acts独立编译成可执行文件（bin格式）， 在编译产物的suites\\acts目录下归档。
@@ -891,19 +926,25 @@ hap包编译请参考 [标准系统 JS用例源码编译Hap包指导](https://gi
 
 1.  全量编译
     test/xts/acts目录下执行编译命令：
-    ```./build.sh suite=acts system_size=standard ```
+
+    ```
+    ./build.sh product_name=rk3568 system_size=standard
+    ```
 
 2.  单个子系统编译
 
     test/xts/acts目录下执行编译命令：
-    ```./build.sh suite=acts system_size=standard target_subsystem=××××  ```
+
+    ```
+    ./build.sh product_name=rk3568 system_size=standard target_subsystem=××××
+    ```
 
 3.  单模块编译
 
     test/xts/acts目录下执行编译命令：
 
     ```./build.sh suite=acts system_size=standard target_subsystem=××××
-    ./build.sh suite=acts system_size=standard suite=xxx
+    ./build.sh product_name=rk3568 system_size=standard suite=xxx
     suite 后面添加的是BUILD.gn 中ohos_js_hap_suite模板的命名
     ```
 
