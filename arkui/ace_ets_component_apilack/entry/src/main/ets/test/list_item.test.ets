@@ -96,5 +96,18 @@ export default function list_itemOnSelectJsunit() {
       console.info("[testlist_itemOnSelect0003] sticky value :" + obj.$attrs.sticky);
       done();
     });
+
+    /*
+     * @tc.number       SUB_ACE_BASIC_ETS_API_0004
+     * @tc.name         testlist_itemSwipeAction0004
+     * @tc.desic         acelist_itemSwipeActionEtsTest0004
+     */
+    it('testlist_itemSwipeAction0004', 0, async function (done) {
+      console.info('selectOnSelect testlist_itemSwipeAction0004 START');
+      await Utils.sleep(2000);
+      let obj = JSON.stringify(sendEventByKey('Del', 10, ""))
+      expect(obj).assertEqual('false');
+      done();
+    });
   })
 }

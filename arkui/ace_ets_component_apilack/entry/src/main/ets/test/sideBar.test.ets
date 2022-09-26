@@ -79,5 +79,21 @@ export default function sideBarShowSideBarJsunit() {
       done();
     });
 
+    /*
+     * @tc.number       SUB_ACE_BASIC_ETS_API_0003
+     * @tc.name         testsideBarShowSideBar0003
+     * @tc.desic        acesideBarShowSideBarEtsTest0003
+     */
+    it('testsideBarShowSideBar0003', 0, async function (done) {
+      console.info('sideBarShowSideBar testsideBarShowSideBar0003 START');
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('SideBarContainer');
+      console.info("[testsideBarShowSideBar0003] component autoHide strJson:" + strJson);
+      let obj = JSON.parse(strJson);
+      expect(obj.$type).assertEqual('SideBarContainer');
+      expect(obj.$attrs.sideBarPosition).assertEqual(undefined);
+      console.info("[testsideBarShowSideBar0003] autoHide value :" + obj.$attrs.autoHide);
+      done();
+    });
   })
 }
