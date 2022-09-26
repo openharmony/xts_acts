@@ -68,15 +68,13 @@ describe('basicabilityapi', function () {
         let promise1 = new Promise((resolve, reject) => {
             intervalID = setInterval(function () {
                 if(res === testTimes ){
-                    resolve(null);
                     clearInterval(intervalID);
-                }else{
-                    res++;
-                    console.info('testClearInterval res = ' + res);
                 }
+                res++;
+                console.info('testClearInterval res = ' + res);
+                resolve();
             }, 100);
-        })
-
+        });
         Promise.all([promise1]).then(() => {
             console.info('testClearInterval finally');
             expect(testTimes).assertEqual(res);
@@ -485,6 +483,39 @@ describe('basicabilityapi', function () {
             console.info('testSetInterval SUCCESS');
             clearInterval(intervalID);
             console.info('testSetInterval END');
+            done();
+        }, 1000);
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASICABILITY_JS_API_1500
+     * @tc.name      testRequestAnimationFrame
+     * @tc.desc      Sets a vsync after which a function will be executed.
+     */
+     it('testRequestAnimationFrame', 0, async function (done) {
+        console.info('testRequestAnimationFrame START');
+        let requestId = requestAnimationFrame(function () {
+            console.info('testRequestAnimationFrame success');
+            expect(true).assertTrue();
+            done();
+        });
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASICABILITY_JS_API_1600
+     * @tc.name      testCancelAnimationFrame
+     * @tc.desc      Indicates the vsync callback ID returned by "requestAnimationFrame()".
+     */
+     it('testCancelAnimationFrame', 0, async function (done) {
+        console.info('testCancelAnimationFrame START');
+        let result = true;
+        let requestId = requestAnimationFrame(function () {
+            console.info('testCancelAnimationFrame fail');
+            result = false;
+        });
+        cancelAnimationFrame(requestId);
+        await setTimeout(function () {
+            expect(result).assertTrue();
             done();
         }, 1000);
     });
