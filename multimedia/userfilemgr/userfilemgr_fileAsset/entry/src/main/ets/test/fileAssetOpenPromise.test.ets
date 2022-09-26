@@ -32,7 +32,7 @@ export default function fileAssetOpenPromise(abilityContext) {
         const userfile_mgr = userfile_manager.getUserFileMgr(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
-            await checkPresetsAssets(userfile_mgr, 'ActsUserFileMgrFileAssetJsTest')
+            await checkPresetsAssets(userfile_mgr, 'ActsUserFileMgrFileAsset')
         });
         beforeEach(function () {
             console.info('beforeEach case');

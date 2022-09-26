@@ -33,7 +33,7 @@ export default function fileAssetCommitModifyCallback(abilityContext) {
         beforeAll(async function () {
             console.info('beforeAll case');
             await getPermission();
-            await checkPresetsAssets(userfile_mgr, 'ActsUserFileMgrFileAssetJsTest')
+            await checkPresetsAssets(userfile_mgr, 'ActsUserFileMgrFileAsset')
         });
         beforeEach(function () {
             console.info('beforeEach case');

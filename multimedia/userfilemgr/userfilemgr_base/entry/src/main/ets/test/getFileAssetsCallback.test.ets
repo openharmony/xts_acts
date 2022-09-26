@@ -32,7 +32,7 @@ export default function getFileAssetsCallback(abilityContext) {
         const userfile_mgr = userfile_manager.getUserFileMgr(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
-            await checkPresetsAssets(userfile_mgr, 'ActsUserFileMgrBaseJsTest');
+            await checkPresetsAssets(userfile_mgr, 'ActsUserFileMgrBase');
         });
         beforeEach(function () {
             console.info('beforeEach case');

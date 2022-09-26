@@ -35,7 +35,7 @@ export default function getAlbumsCallback(abilityContext) {
         beforeAll(async function () {
             console.info('beforeAll case');
             await getPermission();
-            await checkPresetsAssets(userfile_mgr, 'ActsUserFileMgrAlbumJsTest');
+            await checkPresetsAssets(userfile_mgr, 'ActsUserFileMgrAlbum');
         });
         beforeEach(function () {
             console.info('beforeEach case');
