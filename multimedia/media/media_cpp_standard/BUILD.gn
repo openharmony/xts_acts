@@ -31,7 +31,7 @@ ohos_moduletest_suite("ActsAvcodecNdkTest") {
     "//foundation/multimedia/player_framework/interfaces/inner_api/native",
     "//foundation/multimedia/player_framework/interfaces/kits/c",
     "//foundation/multimedia/player_framework/frameworks/native/capi/common",
-    "//utils/native/base/include",
+    "//commonlibrary/c_utils/base/include",
     "//graphic/graphic_2d/interfaces/kits/surface",
     "//graphic/graphic_2d/interfaces/inner_api/surface",
     "//foundation/graphic/graphic_2d/frameworks/surface/include",
@@ -64,9 +64,11 @@ ohos_moduletest_suite("ActsAvcodecNdkTest") {
     "//foundation/multimedia/player_framework/interfaces/kits/c:native_media_core",
     "//foundation/multimedia/player_framework/interfaces/kits/c:native_media_vdec",
     "//foundation/multimedia/player_framework/interfaces/kits/c:native_media_venc",
-    "//utils/native/base:utils",
   ]
-  external_deps = [ "hiviewdfx_hilog_native:libhilog" ]
+  external_deps = [
+    "c_utils:utils",
+    "hiviewdfx_hilog_native:libhilog",
+  ]
 
   part_name = "multimedia_player_framework"
   subsystem_name = "multimedia"
