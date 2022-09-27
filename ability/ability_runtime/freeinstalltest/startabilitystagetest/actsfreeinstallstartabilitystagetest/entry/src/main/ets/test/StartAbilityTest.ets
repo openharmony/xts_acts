@@ -820,7 +820,7 @@ export default function startAbilityTest(abilityContext) {
       abilityForeground(TAG);
       await sleep(1000);
       abilityBackground(TAG);
-      await sleep(5000);
+      await sleep(2000);
       var str = {
         "bundleName": "com.example.qianyiyingyong.hmservice",
         "abilityName": "com.example.qianyiyingyong.MainAbility",
@@ -855,7 +855,7 @@ export default function startAbilityTest(abilityContext) {
       abilityForeground(TAG);
       await sleep(1000);
       abilityBackground(TAG);
-      await sleep(5000);
+      await sleep(2000);
       var str = {
         "bundleName": "com.example.qianyiyingyong.hmservice",
         "abilityName": "com.example.qianyiyingyong.MainAbility",
@@ -916,7 +916,7 @@ export default function startAbilityTest(abilityContext) {
         console.log(TAG + ": startAbility fail. err: " + JSON.stringify(error));
         expect(error.code == 3).assertTrue();
       });
-      await sleep(35000);
+      await sleep(2000);
       console.info("------------end FreeInstall_Stage_Local_StartAbility_2500-------------");
       done();
     });
@@ -1168,7 +1168,7 @@ export default function startAbilityTest(abilityContext) {
       }).catch((error) => {
         console.log(TAG + ": Mainability2 startAbility fail. err: " + JSON.stringify(error));
       });
-      await sleep(5000);
+      await sleep(2000);
       abilityBackground(TAG);
       await sleep(1000);
       var str2 = {
@@ -1215,7 +1215,7 @@ export default function startAbilityTest(abilityContext) {
       }).catch((error) => {
         console.log(TAG + ": Mainability2 startAbility fail. err: " + JSON.stringify(error));
       });
-      await sleep(5000);
+      await sleep(2000);
       abilityBackground(TAG);
       await sleep(1000);
       var str2 = {
