@@ -17,6 +17,15 @@ import ServiceExtension from '@ohos.application.ServiceExtensionAbility';
 import Want from '@ohos.application.Want';
 import rpc from "@ohos.rpc";
 
+function sleep(delay) {
+    let start = new Date().getTime();
+    while (true) {
+        if (new Date().getTime() - start > delay) {
+            break;
+        }
+    }
+}
+
 export default class ServiceAbility extends ServiceExtension {
     onCreate(want: Want) {
         globalThis.abilityWant = want;
@@ -28,6 +37,7 @@ export default class ServiceAbility extends ServiceExtension {
     }
 
     onConnect(want) {
+        sleep(1000)
         var connId;
         console.log('ACTS_NewWant ServiceAbility onConnect, want:' + want.abilityName);
         globalThis.extensionContext = this.context
