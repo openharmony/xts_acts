@@ -626,7 +626,7 @@ describe('RecorderLocalTestAudioFUNC', function () {
         let trackArray = videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig);
         initAudioRecorder();
         let mySteps = new Array(PRE_STATE, START_STATE, PAUSE_STATE, RESUME_STATE, PAUSE_STATE,
-            STOP_STATE, RELEASE_STATE, CHECK_STATE, trackArray, RECORDER_TIME, END_STATE);
+            STOP_STATE, RELEASE_STATE, CHECK_STATE, trackArray, RECORDER_TIME * 2, END_STATE);
         setCallback(mySteps, done);
         audioRecorder.prepare(audioConfig);
     })
