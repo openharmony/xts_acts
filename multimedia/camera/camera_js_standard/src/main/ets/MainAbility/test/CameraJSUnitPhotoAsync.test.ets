@@ -726,31 +726,31 @@ export default function cameraJSUnitPhotoAsync(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('PA_COMMIT_CONFIG_SUCCESS_01', 0, async function (done) {
-      if (captureSession == null || captureSession == undefined) {
-        console.info(TAG + "Entering CommitConfig captureSession == null || undefined");
-      } else {
-        console.info(TAG + "Entering COMMIT_CONFIG_SUCCESS to operate");
-        captureSession.commitConfig(async (err, data) => {
-          if (!err) {
-            console.info(TAG + "Entering commitConfig success");
-            if (data != null || data != undefined) {
-              console.info(TAG + "Entering CommitConfig data is not null || undefined");
-              expect(true).assertTrue();
-              console.info(TAG + "Entering COMMIT_CONFIG_SUCCESS PASSED");
-            }
-          } else {
-            expect().assertFail();
-            console.info(TAG + "Entering COMMIT_CONFIG_SUCCESS FAILED : " + err.message);
-            console.info(TAG + "Entering COMMIT_CONFIG_SUCCESS ends here");
-          }
-          await sleep(1000);
-          done();
-        })
-        await sleep(1000);
-        done();
-      }
-    })
+    // it('PA_COMMIT_CONFIG_SUCCESS_01', 0, async function (done) {
+    //   if (captureSession == null || captureSession == undefined) {
+    //     console.info(TAG + "Entering CommitConfig captureSession == null || undefined");
+    //   } else {
+    //     console.info(TAG + "Entering COMMIT_CONFIG_SUCCESS to operate");
+    //     captureSession.commitConfig(async (err, data) => {
+    //       if (!err) {
+    //         console.info(TAG + "Entering commitConfig success");
+    //         if (data != null || data != undefined) {
+    //           console.info(TAG + "Entering CommitConfig data is not null || undefined");
+    //           expect(true).assertTrue();
+    //           console.info(TAG + "Entering COMMIT_CONFIG_SUCCESS PASSED");
+    //         }
+    //       } else {
+    //         expect().assertFail();
+    //         console.info(TAG + "Entering COMMIT_CONFIG_SUCCESS FAILED : " + err.message);
+    //         console.info(TAG + "Entering COMMIT_CONFIG_SUCCESS ends here");
+    //       }
+    //       await sleep(1000);
+    //       done();
+    //     })
+    //     await sleep(1000);
+    //     done();
+    //   }
+    // })
 
     /**
       * @tc.number    : isMirrorSupported_PHOTO_OUTPUT
@@ -848,31 +848,31 @@ export default function cameraJSUnitPhotoAsync(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('PA_BEGIN_CONFIG_SUCCESS_02', 0, async function (done) {
-      if (captureSession == null || captureSession == undefined) {
-        console.info(TAG + "Entering BeginConfig captureSession == null || undefined");
-      } else {
-        console.info(TAG + "Entering BEGIN_CONFIG_SUCCESS to operate");
-        captureSession.beginConfig(async (err, data) => {
-          if (!err) {
-            console.info(TAG + "Entering  beginConfig success");
-            if (data != null || data != undefined) {
-              console.info(TAG + "Entering BeginConfig data is not null || undefined");
-              expect(true).assertTrue();
-              console.info(TAG + "Entering BEGIN_CONFIG_SUCCESS beginConfig PASSED");
-            }
-          } else {
-            expect().assertFail();
-            console.info(TAG + "Entering BEGIN_CONFIG_SUCCESS FAILED : " + err.message);
-            console.info(TAG + "Entering BEGIN_CONFIG_SUCCESS ends here");
-          }
-          await sleep(1000);
-          done();
-        })
-        await sleep(1000);
-        done();
-      }
-    })
+    // it('PA_BEGIN_CONFIG_SUCCESS_02', 0, async function (done) {
+    //   if (captureSession == null || captureSession == undefined) {
+    //     console.info(TAG + "Entering BeginConfig captureSession == null || undefined");
+    //   } else {
+    //     console.info(TAG + "Entering BEGIN_CONFIG_SUCCESS to operate");
+    //     captureSession.beginConfig(async (err, data) => {
+    //       if (!err) {
+    //         console.info(TAG + "Entering  beginConfig success");
+    //         if (data != null || data != undefined) {
+    //           console.info(TAG + "Entering BeginConfig data is not null || undefined");
+    //           expect(true).assertTrue();
+    //           console.info(TAG + "Entering BEGIN_CONFIG_SUCCESS beginConfig PASSED");
+    //         }
+    //       } else {
+    //         expect().assertFail();
+    //         console.info(TAG + "Entering BEGIN_CONFIG_SUCCESS FAILED : " + err.message);
+    //         console.info(TAG + "Entering BEGIN_CONFIG_SUCCESS ends here");
+    //       }
+    //       await sleep(1000);
+    //       done();
+    //     })
+    //     await sleep(1000);
+    //     done();
+    //   }
+    // })
 
     /**
       * @tc.number    : REMOVE_INPUT_SUCCESS
@@ -3794,4 +3794,3 @@ export default function cameraJSUnitPhotoAsync(surfaceId: any) {
     })
   })
 }
-
