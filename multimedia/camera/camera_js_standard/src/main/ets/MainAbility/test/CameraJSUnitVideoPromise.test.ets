@@ -35,6 +35,8 @@ var photoOutputPromise
 let fdPath;
 let fileAsset;
 let fdNumber;
+var captureSessionCommitConfig
+var _videoOutput
 
 var minFrameRate_Grp0=12;
 var maxFrameRate_Grp0=12;
@@ -1703,73 +1705,6 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : COMMIT_CONFIG_SUCCESS
-      * @tc.name      : commit config api
-      * @tc.desc      : commit config api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('VP_COMMIT_CONFIG_SUCCESS', 0, async function (done) {
-      // FIXME: 流程不对
-      console.info(TAG + "Entering commitConfig success");
-      // 创建Context对象
-      let context = featureAbility.getContext()
-      //创建会话
-      let captureSession
-      await cameraObj.createCaptureSession((context), (err, session) => {
-          if (err) {
-              console.error(TAG + 'Failed to create the CaptureSession instance. ${err.message}');
-              return;
-          }
-          console.log(TAG + 'Callback returned with the CaptureSession instance.' + session);
-          captureSession = session
-      });
-      // 开始配置会话
-      await captureSession.beginConfig((err) => {
-          if (err) {
-              console.error(TAG + 'Failed to start the configuration. ${err.message}');
-              return;
-          }
-          console.log(TAG + 'Callback invoked to indicate the begin config success.');
-      });
-      const promise = await captureSessionPromise.commitConfig();
-
-      if (promise == undefined) {
-        expect(true).assertTrue();
-        console.info(TAG + "Entering COMMIT_CONFIG_SUCCESS commitConfig PASSED");
-      } else {
-        expect().assertFail()
-        console.info(TAG + "Entering COMMIT_CONFIG_SUCCESS commitConfig FAILED : ");
-        console.info(TAG + "Entering COMMIT_CONFIG_SUCCESS commitConfig ends here");
-      }
-      await sleep(1);
-      done();
-
-      // if (captureSessionPromise == null || captureSessionPromise == undefined) {
-      //   console.info(TAG + "Entering Commit config captureSession == null || undefined");
-      // } else {
-      //   console.info(TAG + "Entering COMMIT_CONFIG_SUCCESS to operate");
-      //   const promise = await captureSessionPromise.commitConfig();
-      //   console.info(TAG + "Entering commitConfig success");
-      //   // FIXME: 预期就是失败的
-      //   if (promise == undefined) {
-      //     expect().assertFail()
-      //     console.info(TAG + "Entering COMMIT_CONFIG_SUCCESS commitConfig PASSED");
-      //   }
-      //   else {
-      //     expect(true).assertTrue();
-      //     console.info(TAG + "Entering COMMIT_CONFIG_SUCCESS commitConfig FAILED : ");
-      //     console.info(TAG + "Entering COMMIT_CONFIG_SUCCESS commitConfig ends here");
-      //   }
-      //   await sleep(1);
-      //   done();
-      // }
-      // await sleep(1);
-      // done();
-    })
-
-    /**
       * @tc.number    : PREVIEW_OUTPUT_CALLBACK_ON_FRAME_START
       * @tc.name      : Preview output callback on frame start api
       * @tc.desc      : Preview output callback on frame start api
@@ -1993,32 +1928,6 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
         await sleep(1);
         done();
       }
-    })
-
-    /**
-      * @tc.number    : CAPTURE_SESSION_START_SUCCESS
-      * @tc.name      : capture session start api
-      * @tc.desc      : capture session start api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('VP_CAPTURE_SESSION_START_SUCCESS', 0, async function (done) {
-      // FIXME: 复杂
-      if (captureSessionPromise == null || captureSessionPromise == undefined) {
-        console.info(TAG + "Entering capture session start captureSession == null || undefined");
-      } else {
-        console.info(TAG + "Entering CAPTURE_SESSION_START_SUCCESS to operate");
-        await captureSessionPromise.start();
-        console.info(TAG + "Entering captureSession start success");
-        expect(true).assertTrue();
-        console.info(TAG + "Entering CAPTURE_SESSION_START_SUCCESS PASSED");
-        console.info(TAG + "Entering CAPTURE_SESSION_START_SUCCESS ends here");
-        await sleep(1);
-        done();
-      }
-      await sleep(1);
-      done();
     })
 
     /**
@@ -2477,141 +2386,6 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       await sleep(1);
       done();
     })
-
-    /**
-      * @tc.number    : SET_GET_ZOOM_2_PROMISE
-      * @tc.name      : Zoom camera-0 cameraId api
-      * @tc.desc      : Zoom camera-0 cameraId api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    // FIXME: no use testcase
-    // it('VP_SET_GET_ZOOM_2_PROMISE', 0, async function (done) {
-    //   var setpromise = await camera0InputPromise.setZoomRatio(2);
-    //   console.info(TAG + "setZoomRatio success: 2");
-    //   console.info(TAG + "getZoomRatio called")
-    //   var getpromise2 = await camera0InputPromise.getZoomRatio();
-    //   // FIXME: 拿到的 zoomRatio 是 1
-    //   console.info(TAG + "getZoomRatio success: " + getpromise2);
-    //   if (getpromise2 != null && getpromise2 != undefined) {
-    //     expect(getpromise2).assertEqual(2);
-    //     console.info(TAG + "SET_GET_ZOOM_2_PROMISE PASSED ");
-    //   } else {
-    //     console.info(TAG + "SET_GET_ZOOM_2_PROMISE FAILED");
-    //     expect().assertFail();
-    //   }
-    //   await sleep(1);
-    //   done();
-    // })
-
-    /**
-      * @tc.number    : SET_GET_ZOOM_3_PROMISE
-      * @tc.name      : Zoom camera-0 cameraId api
-      * @tc.desc      : Zoom camera-0 cameraId api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    // FIXME: no use testcase
-    // it('VP_SET_GET_ZOOM_3_PROMISE', 0, async function (done) {
-    //   var setpromise = await camera0InputPromise.setZoomRatio(3);
-    //   console.info(TAG + "setZoomRatio success: 3");
-    //   console.info(TAG + "getZoomRatio called")
-    //   var getpromise3 = await camera0InputPromise.getZoomRatio();
-    //   console.info(TAG + "getZoomRatio success: " + getpromise3);
-    //   if (getpromise3 != null && getpromise3 != undefined) {
-    //     expect(getpromise3).assertEqual(3);
-    //     console.info(TAG + "SET_GET_ZOOM_3_PROMISE PASSED ");
-    //   }
-    //   else {
-    //     console.info(TAG + "SET_GET_ZOOM_3_PROMISE FAILED");
-    //     expect().assertFail();
-    //   }
-    //   await sleep(1);
-    //   done();
-    // })
-
-    // /**
-    //   * @tc.number    : SET_GET_ZOOM_4_PROMISE
-    //   * @tc.name      : Zoom camera-0 cameraId api
-    //   * @tc.desc      : Zoom camera-0 cameraId api
-    //   * @tc.size      : MEDIUM
-    //   * @tc.type      : Function
-    //   * @tc.level     : Level 0
-    // */
-    // FIXME: no use testcase
-    // it('VP_SET_GET_ZOOM_4_PROMISE', 0, async function (done) {
-    //   var setpromise = await camera0InputPromise.setZoomRatio(4);
-    //   console.info(TAG + "setZoomRatio success: 4");
-    //   console.info(TAG + "getZoomRatio called")
-    //   var getpromise4 = await camera0InputPromise.getZoomRatio();
-    //   console.info(TAG + "getZoomRatio success: " + getpromise4);
-    //   if (getpromise4 != null && getpromise4 != undefined) {
-    //     expect(getpromise4).assertEqual(4);
-    //     console.info(TAG + "SET_GET_ZOOM_4_PROMISE PASSED ");
-    //   }
-    //   else {
-    //     console.info(TAG + "SET_GET_ZOOM_4_PROMISE FAILED");
-    //     expect().assertFail();
-    //   }
-    //   await sleep(1);
-    //   done();
-    // })
-
-    /**
-      * @tc.number    : SET_GET_ZOOM_5_PROMISE
-      * @tc.name      : Zoom camera-0 cameraId api
-      * @tc.desc      : Zoom camera-0 cameraId api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-   // FIXME: no use testcase
-    // it('VP_SET_GET_ZOOM_5_PROMISE', 0, async function (done) {
-    //   var setpromise = await camera0InputPromise.setZoomRatio(5);
-    //   console.info(TAG + "setZoomRatio success: 5");
-    //   console.info(TAG + "getZoomRatio called")
-    //   var getpromise5 = await camera0InputPromise.getZoomRatio();
-    //   console.info(TAG + "getZoomRatio success: " + getpromise5);
-    //   if (getpromise5 != null && getpromise5 != undefined) {
-    //     expect(getpromise5).assertEqual(5);
-    //     console.info(TAG + "SET_GET_ZOOM_5_PROMISE PASSED ");
-    //   }
-    //   else {
-    //     console.info(TAG + "SET_GET_ZOOM_5_PROMISE FAILED");
-    //     expect().assertFail();
-    //   }
-    //   await sleep(1);
-    //   done();
-    // })
-
-    /**
-      * @tc.number    : SET_GET_ZOOM_6_PROMISE
-      * @tc.name      : Zoom camera-0 cameraId api
-      * @tc.desc      : Zoom camera-0 cameraId api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-   // FIXME: no use testcase
-    // it('VP_SET_GET_ZOOM_6_PROMISE', 0, async function (done) {
-    //   var setpromise = await camera0InputPromise.setZoomRatio(6);
-    //   console.info(TAG + "setZoomRatio success: 6");
-    //   console.info(TAG + "getZoomRatio called")
-    //   var getpromise6 = await camera0InputPromise.getZoomRatio();
-    //   console.info(TAG + "getZoomRatio success: " + getpromise6);
-    //   if (getpromise6 != null && getpromise6 != undefined) {
-    //     expect(getpromise6).assertEqual(6);
-    //     console.info(TAG + "SET_GET_ZOOM_6_PROMISE PASSED ");
-    //   }
-    //   else {
-    //     console.info(TAG + "SET_GET_ZOOM_6_PROMISE FAILED");
-    //     expect().assertFail();
-    //   }
-    //   await sleep(1);
-    //   done();
-    // })
 
     // FOCUS promise API's
     /**
@@ -3112,59 +2886,6 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : IS_EXPOSURE_MODE_LOCKED_SUPPORTED
-      * @tc.name      : check is exposure mode locked supported-camera0Input api
-      * @tc.desc      : check is exposure mode locked supported-camera0Input api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    /* EXPOSUREMODE Interface will be change
-    it('VP_IS_EXPOSURE_MODE_LOCKED_SUPPORTED', 0, async function (done) {
-      console.info(TAG + "Entering IS_EXPOSURE_MODE_LOCKED_SUPPORTED to operate");
-      await camera0InputPromise.isExposureModeSupported(cameraObj.ExposureMode.EXPOSURE_MODE_LOCKED)
-        .then(function (data) {
-          console.info(TAG + "Entering IS_EXPOSURE_MODE_LOCKED_SUPPORTED PASSED: " + data);
-          expect(data).assertEqual(false);
-        })
-        .catch((err) => {
-          console.info(TAG + "IS_EXPOSURE_MODE_LOCKED_SUPPORTED FAILED : " + err.message);
-          expect().assertFail();
-        });
-      console.info(TAG + "IS_EXPOSURE_MODE_LOCKED_SUPPORTED ends here");
-      await sleep(1);
-      done();
-    })
-    */
-
-    /**
-      * @tc.number    : SET_EXPOSURE_MODE_LOCKED
-      * @tc.name      : set exposure mode locked camera0 api
-      * @tc.desc      : set exposure mode locked camera0 api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    /* EXPOSUREMODE Interface will be change
-    it('VP_SET_EXPOSURE_MODE_LOCKED', 0, async function (done) {
-      console.info(TAG + "Entering SET_EXPOSURE_MODE_Locked to operate");
-      await camera0InputPromise.setExposureMode(cameraObj.ExposureMode.EXPOSURE_MODE_LOCKED)
-        .then(function () {
-          console.info(TAG + "Entering set exposure mode auto SUCCESS, current ExposureMode is: " + cameraObj.ExposureMode.EXPOSURE_MODE_LOCKED);
-          console.info(TAG + "Entering SET_EXPOSURE_MODE_Locked FAILED")
-          expect().assertFail()
-        })
-        .catch((err) => {
-          console.info(TAG + "Entering SET_EXPOSURE_MODE_LOCKED PASSED : " + err.message);
-          expect(true).assertTrue();
-        });
-      console.info(TAG + "Entering SET_EXPOSURE_MODE_LOCKED ends here");
-      await sleep(1);
-      done();
-    })
-    */
-
-    /**
       * @tc.number    : GET_EXPOSURE_MODE_LOCKED
       * @tc.name      : get exposure mode locked camera0 api
       * @tc.desc      : get exposure mode locked camera0 api
@@ -3275,22 +2996,22 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    // it('VP_SET_EXPOSURE_BIAS', 0, async function (done) {
-    //   console.info(TAG + "Entering SET_EXPOSURE_BIAS to operate");
-    //   await camera0InputPromise.setExposureBias(-4)
-    //     .then(function (data) {
-    //       console.info(TAG + "Entering set exposure bias SUCCESS, current Exposurebias is: " + JSON.stringify(data));
-    //       console.info(TAG + "Entering SET_EXPOSURE_BIAS PASSED")
-    //       expect(true).assertTrue();
-    //     })
-    //     .catch((err) => {
-    //       console.info(TAG + "Entering SET_EXPOSURE_BIAS FAILED : " + err.message);
-    //       expect().assertFail();
-    //     });
-    //   console.info(TAG + "Entering SET_EXPOSURE_BIAS ends here");
-    //   await sleep(1);
-    //   done();
-    // })
+    it('VP_SET_EXPOSURE_BIAS', 0, async function (done) {
+      console.info(TAG + "Entering SET_EXPOSURE_BIAS to operate");
+      await camera0InputPromise.setExposureBias(-4)
+        .then(function (data) {
+          console.info(TAG + "Entering set exposure bias SUCCESS, current Exposurebias is: " + JSON.stringify(data));
+          console.info(TAG + "Entering SET_EXPOSURE_BIAS PASSED")
+          expect(true).assertTrue();
+        })
+        .catch((err) => {
+          console.info(TAG + "Entering SET_EXPOSURE_BIAS FAILED : " + err.message);
+          expect().assertFail();
+        });
+      console.info(TAG + "Entering SET_EXPOSURE_BIAS ends here");
+      await sleep(1);
+      done();
+    })
 
     /**
       * @tc.number    : GET_EXPOSURE_VALUE_exposure mode locked
@@ -3300,25 +3021,13 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('VP_SET_GET_EXPOSURE_VALUE_NEG4', 0, async function (done) {
-      console.info(TAG + "Entering VP_SET_GET_EXPOSURE_VALUE_NEG4 to operate");
-      await camera0InputPromise.setExposureBias(-4)
-        .then(function (data) {
-          console.info(TAG + "Entering set exposure bias SUCCESS, current Exposurebias is: " + JSON.stringify(data));
-          console.info(TAG + "Entering SET_EXPOSURE_BIAS PASSED")
-          // expect(true).assertTrue();
-        })
-        .catch((err) => {
-          console.info(TAG + "Entering SET_EXPOSURE_BIAS FAILED : " + err.message);
-          expect().assertFail();
-        });
-      console.info(TAG + "Entering SET_EXPOSURE_BIAS ends here");
-
+    it('VP_SET_GET_EXPOSURE_VALUE', 0, async function (done) {
+      console.info(TAG + "Entering VP_SET_GET_EXPOSURE_VALUE to operate");
       await camera0InputPromise.getExposureValue()
         .then(function (data) {
           console.info(TAG + "Entering getExposureValue SUCCESS");
           console.info(TAG + "Current ExposureValue is: " + JSON.stringify(data));
-          expect(data).assertEqual(-4);
+          expect(true).assertTrue();
           console.info(TAG + "GET_EXPOSURE_VALUE PASSED");
         })
         .catch((err) => {
@@ -3329,87 +3038,6 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       await sleep(1);
       done();
     })
-
-    /**
-      * @tc.number    : IS_EXPOSURE_MODE_AUTO_SUPPORTED
-      * @tc.name      : check is exposure mode auto supported-camera0Input api
-      * @tc.desc      : check is exposure mode auto supported-camera0Input api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    /* EXPOSUREMODE Interface will be change
-    it('VP_IS_EXPOSURE_MODE_AUTO_SUPPORTED', 0, async function (done) {
-      console.info(TAG + "Entering IS_EXPOSURE_MODE_AUTO_SUPPORTED to operate");
-      await camera0InputPromise.isExposureModeSupported(cameraObj.ExposureMode.EXPOSURE_MODE_AUTO)
-        .then(function (data) {
-          console.info(TAG + "Entering IS_EXPOSURE_MODE_AUTO_SUPPORTED PASSED: " + data);
-          expect(data).assertEqual(true);
-        })
-        .catch((err) => {
-          console.info(TAG + "IS_EXPOSURE_MODE_AUTO_SUPPORTED FAILED: " + err.message);
-          expect().assertFail();
-        });
-      console.info(TAG + "IS_EXPOSURE_MODE_AUTO_SUPPORTED ends here");
-      await sleep(1);
-      done();
-    })
-    */
-
-    /**
-      * @tc.number    : SET_EXPOSURE_MODE_AUTO
-      * @tc.name      : set exposure mode auto camera0 api
-      * @tc.desc      : set exposure mode auto camera0 api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    /* EXPOSUREMODE Interface will be change
-    it('VP_SET_EXPOSURE_MODE_AUTO', 0, async function (done) {
-      console.info(TAG + "Entering SET_EXPOSURE_MODE_AUTO to operate");
-      await camera0InputPromise.setExposureMode(cameraObj.ExposureMode.EXPOSURE_MODE_AUTO)
-        .then(function () {
-          console.info(TAG + "Entering set exposure mode auto SUCCESS, current ExposureMode is: " + cameraObj.ExposureMode.EXPOSURE_MODE_AUTO);
-          console.info(TAG + "Entering SET_EXPOSURE_MODE_AUTO PASSED")
-          expect(cameraObj.ExposureMode.EXPOSURE_MODE_AUTO).assertEqual(1);
-        })
-        .catch((err) => {
-          console.info(TAG + "Entering SET_EXPOSURE_MODE_AUTO FAILED : " + err.message);
-          expect().assertFail();
-        });
-      console.info(TAG + "Entering SET_EXPOSURE_MODE_AUTO ends here");
-      await sleep(1);
-      done();
-    })
-    */
-
-    /**
-      * @tc.number    : GET_EXPOSURE_MODE_AUTO
-      * @tc.name      : get exposure mode auto camera0 api
-      * @tc.desc      : get exposure mode auto camera0 api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    /* EXPOSUREMODE Interface will be change
-    it('VP_GET_EXPOSURE_MODE_AUTO', 0, async function (done) {
-      console.info(TAG + "Entering GET_EXPOSURE_MODE_AUTO to operate");
-      await camera0InputPromise.getExposureMode()
-        .then(function (data) {
-          console.info(TAG + "Entering get exposure mode auto SUCCESS");
-          console.info(TAG + "Current exposureMode is: " + data);
-          expect(data).assertEqual(1);
-          console.info(TAG + "GET_EXPOSURE_MODE_AUTO PASSED");
-        })
-        .catch((err) => {
-          expect().assertFail();
-          console.info(TAG + "GET_EXPOSURE_MODE_AUTO FAILED: " + err.message);
-        });
-      console.info(TAG + "GET_EXPOSURE_MODE_AUTO ends here");
-      await sleep(1);
-      done();
-    })
-    */
 
     /**
       * @tc.number    : SET_EXPOSURE_POINT_exposure mode auto
@@ -3461,150 +3089,6 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       await sleep(1);
       done();
     })
-
-    /**
-      * @tc.number    : SET_EXPOSURE_BIAS_exposure mode auto
-      * @tc.name      : set exposure bias camera0 api
-      * @tc.desc      : set exposure bias camera0 api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    // it('VP_SET_EXPOSURE_BIAS', 0, async function (done) {
-    //   console.info(TAG + "Entering SET_EXPOSURE_BIAS to operate");
-    //   await camera0InputPromise.setExposureBias(1)
-    //     .then(function (data) {
-    //       console.info(TAG + "Entering set exposure bias SUCCESS, current Exposurebias is: " + JSON.stringify(data));
-    //       console.info(TAG + "Entering SET_EXPOSURE_BIAS PASSED")
-    //       expect(true).assertTrue();
-    //     })
-    //     .catch((err) => {
-    //       console.info(TAG + "Entering SET_EXPOSURE_BIAS FAILED : " + err.message);
-    //       expect().assertFail();
-    //     });
-    //   console.info(TAG + "Entering SET_EXPOSURE_BIAS ends here");
-    //   await sleep(1);
-    //   done();
-    // })
-
-    /**
-      * @tc.number    : GET_EXPOSURE_VALUE_exposure mode auto
-      * @tc.name      : get exposure value camera0 api
-      * @tc.desc      : get exposure value camera0 api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('VP_GET_EXPOSURE_VALUE_POS1', 0, async function (done) {
-      console.info(TAG + "Entering GET_EXPOSURE_VALUE to operate");
-      await camera0InputPromise.setExposureBias(1)
-        .then(function (data) {
-          console.info(TAG + "Entering set exposure bias SUCCESS, current Exposurebias is: " + JSON.stringify(data));
-          console.info(TAG + "Entering SET_EXPOSURE_BIAS PASSED")
-          // expect(true).assertTrue();
-        })
-        .catch((err) => {
-          console.info(TAG + "Entering SET_EXPOSURE_BIAS FAILED : " + err.message);
-          expect().assertFail();
-        });
-      console.info(TAG + "Entering SET_EXPOSURE_BIAS ends here");
-
-      await camera0InputPromise.getExposureValue()
-        .then(function (data) {
-          console.info(TAG + "Entering getExposureValue SUCCESS");
-          console.info(TAG + "Current ExposureValue is: " + JSON.stringify(data));
-          expect(data).assertEqual(1);
-          console.info(TAG + "GET_EXPOSURE_VALUE PASSED");
-        })
-        .catch((err) => {
-          expect().assertFail();
-          console.info(TAG + "GET_EXPOSURE_VALUE FAILED : " + err.message);
-        });
-      console.info(TAG + "GET_EXPOSURE_VALUE ends here");
-      await sleep(1);
-      done();
-    })
-
-    /**
-      * @tc.number    : IS_EXPOSURE_MODE_CONTINUOUS_AUTO
-      * @tc.name      : check is exposure mode continuous auto supported-camera0Input api
-      * @tc.desc      : check is exposure mode continuous auto supported-camera0Input api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    /* EXPOSUREMODE Interface will be change
-    it('VP_IS_EXPOSURE_MODE_CONTINUOUS_AUTO', 0, async function (done) {
-      console.info(TAG + "Entering IS_EXPOSURE_MODE_CONTINUOUS_AUTO to operate");
-      await camera0InputPromise.isExposureModeSupported(cameraObj.ExposureMode.EXPOSURE_MODE_CONTINUOUS_AUTO)
-        .then(function (data) {
-          console.info(TAG + "Entering IS_EXPOSURE_MODE_CONTINUOUS_AUTO PASSED: " + data);
-          expect(data).assertEqual(false);
-        })
-        .catch((err) => {
-          console.info(TAG + "IS_EXPOSURE_MODE_CONTINUOUS_AUTO FAILED : " + err.message);
-          expect().assertFail();
-        });
-      console.info(TAG + "IS_EXPOSURE_MODE_CONTINUOUS_AUTO ends here");
-      await sleep(1);
-      done();
-    })
-    */
-
-    /**
-      * @tc.number    : SET_EXPOSURE_MODE_CONTINUOUS_AUTO
-      * @tc.name      : set exposure mode continuous auto camera0 api
-      * @tc.desc      : set exposure mode continuous auto camera0 api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    /* EXPOSUREMODE Interface will be change
-    it('VP_SET_EXPOSURE_MODE_CONTINUOUS_AUTO', 0, async function (done) {
-      console.info(TAG + "Entering SET_EXPOSURE_MODE_CONTINUOUS_AUTO to operate");
-      await camera0InputPromise.setExposureMode(cameraObj.ExposureMode.EXPOSURE_MODE_CONTINUOUS_AUTO)
-        .then(function () {
-          console.info(TAG + "Entering set exposure mode auto SUCCESS, current ExposureMode is: " + cameraObj.ExposureMode.EXPOSURE_MODE_CONTINUOUS_AUTO);
-          console.info(TAG + "Entering SET_EXPOSURE_MODE_CONTINUOUS_AUTO FAILED")
-          expect().assertFail();
-        })
-        .catch((err) => {
-          console.info(TAG + "Entering SET_EXPOSURE_MODE_CONTINUOUS_AUTO PASSED : " + err.message);
-          expect(true).assertTrue();
-        });
-      console.info(TAG + "Entering SET_EXPOSURE_MODE_CONTINUOUS_AUTO ends here");
-      await sleep(1);
-      done();
-    })
-    */
-
-    /**
-      * @tc.number    : GET_EXPOSURE_MODE_CONTINUOUS_AUTO
-      * @tc.name      : get exposure mode continuous auto camera0 api
-      * @tc.desc      : get exposure mode continuous auto camera0 api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    /* EXPOSUREMODE Interface will be change
-    it('VP_GET_EXPOSURE_MODE_CONTINUOUS_AUTO', 0, async function (done) {
-      console.info(TAG + "Entering GET_EXPOSURE_MODE_CONTINUOUS_AUTO to operate");
-      await camera0InputPromise.getExposureMode()
-        .then(function (data) {
-          console.info(TAG + "Entering get exposure mode auto SUCCESS");
-          console.info(TAG + "Current exposureMode is: " + data);
-          expect(true).assertTrue();
-          console.info(TAG + "GET_EXPOSURE_MODE_CONTINUOUS_AUTO PASSED");
-        })
-        .catch((err) => {
-          expect().assertFail();
-          console.info(TAG + "GET_EXPOSURE_MODE_CONTINUOUS_AUTO FAILED : " + err.message);
-        });
-      console.info(TAG + "GET_EXPOSURE_MODE_CONTINUOUS_AUTO ends here");
-      await sleep(1);
-      done();
-    })
-    */
 
     /**
       * @tc.number    : SET_EXPOSURE_POINT
@@ -3680,116 +3164,6 @@ export default function cameraJSUnitVideoPromise(surfaceId: any) {
       console.info(TAG + "Entering SET_EXPOSURE_BIAS ends here");
       await sleep(1);
       done();
-    })
-
-    /**
-      * @tc.number    : GET_EXPOSURE_VALUE
-      * @tc.name      : get exposure value camera0 api
-      * @tc.desc      : get exposure value camera0 api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('VP_SET_GET_EXPOSURE_VALUE_POS4', 0, async function (done) {
-      console.info(TAG + "Entering GET_EXPOSURE_VALUE to operate");
-      await camera0InputPromise.setExposureBias(4)
-        .then(function (data) {
-          console.info(TAG + "Entering set exposure bias SUCCESS, current Exposurebias is: " + JSON.stringify(data));
-          console.info(TAG + "Entering SET_EXPOSURE_BIAS PASSED")
-          // expect(true).assertTrue();
-        })
-        .catch((err) => {
-          console.info(TAG + "Entering SET_EXPOSURE_BIAS FAILED : " + err.message);
-          expect().assertFail();
-        });
-      console.info(TAG + "Entering SET_EXPOSURE_BIAS ends here");
-
-      await camera0InputPromise.getExposureValue()
-        .then(function (data) {
-          console.info(TAG + "Entering getExposureValue SUCCESS");
-          console.info(TAG + "Current ExposureValue is: " + JSON.stringify(data));
-          expect(data).assertEqual(4);
-          console.info(TAG + "GET_EXPOSURE_VALUE PASSED");
-        })
-        .catch((err) => {
-          expect().assertFail();
-          console.info(TAG + "GET_EXPOSURE_VALUE FAILED : " + err.message);
-        });
-      console.info(TAG + "GET_EXPOSURE_VALUE ends here");
-      await sleep(1);
-      done();
-    })
-
-    /**
-      * @tc.number    : VIDEO_OUTPUT_START_PROMISE
-      * @tc.name      : VideoOutput start promise api
-      * @tc.desc      : VideoOutput start promise api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('VP_VIDEO_OUTPUT_START_PROMISE', 0, async function (done) {
-      if (videoOutputPromise == null || videoOutputPromise == undefined) {
-        console.info(TAG + 'Entering Video Output start videoOutputPromise == null || undefined')
-      } else {
-        console.info(TAG + 'Entering VIDEO_OUTPUT_START_PROMISE to operate')
-        await videoOutputPromise.start()
-        expect(true).assertTrue()
-        console.info(TAG + 'Entering VIDEO_OUTPUT_START_PROMISE PASSED')
-        console.info(TAG + 'Entering VIDEO_OUTPUT_START_PROMISE ends here')
-        await sleep(1)
-        done()
-      }
-      await sleep(1)
-      done()
-    })
-
-    /**
-      * @tc.number    : VIDEO_OUTPUT_STOP_PROMISE
-      * @tc.name      : VideoOutput stop promise api
-      * @tc.desc      : VideoOutput stop promise api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('VP_VIDEO_OUTPUT_STOP_PROMISE', 0, async function (done) {
-      if (videoOutputPromise == null || videoOutputPromise == undefined) {
-        console.info(TAG + 'Entering Video Output Stop videoOutputPromise == null || undefined')
-      } else {
-        console.info(TAG + 'Entering VIDEO_OUTPUT_STOP_PROMISE to operate')
-        await videoOutputPromise.stop()
-        expect(true).assertTrue()
-        console.info(TAG + 'Entering VIDEO_OUTPUT_STOP_PROMISE PASSED')
-        console.info(TAG + 'Entering VIDEO_OUTPUT_STOP_PROMISE ends here')
-        await sleep(1)
-        done()
-      }
-      await sleep(1)
-      done()
-    })
-
-    /**
-      * @tc.number    : CAPTURE_SESSION_STOP_PROMISE
-      * @tc.name      : CaptureSession stop promise api
-      * @tc.desc      : CaptureSession stop promise api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('VP_CAPTURE_SESSION_STOP_PROMISE', 0, async function (done) {
-      if (captureSessionPromise == null || captureSessionPromise == undefined) {
-        console.info(TAG + 'Entering Capture Session Stop captureSessionPromise == null || undefined')
-      } else {
-        console.info(TAG + 'Entering CAPTURE_SESSION_STOP_PROMISE to operate')
-        await captureSessionPromise.stop()
-        expect(true).assertTrue()
-        console.info(TAG + 'Entering CAPTURE_SESSION_STOP_PROMISE PASSED')
-        console.info(TAG + 'Entering CAPTURE_SESSION_STOP_PROMISE ends here')
-        await sleep(1)
-        done()
-      }
-      await sleep(1)
-      done()
     })
 
     /**

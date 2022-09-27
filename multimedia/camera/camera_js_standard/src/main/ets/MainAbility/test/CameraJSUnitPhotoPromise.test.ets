@@ -583,6 +583,8 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
 
       let CaptureSessionPromise = await cameraObj.createCaptureSession(null);
 
+      await CaptureSessionPromise.beginConfig();
+
       console.info(TAG + "Entering ADD_INPUT_PROMISE to operate");
       try {
         await CaptureSessionPromise.addInput(camera1InputPromise);
@@ -692,59 +694,6 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       await sleep(1000);
       done();
     })
-
-    /**
-      * @tc.number    : COMMIT_CONFIG_SUCCESS
-      * @tc.name      : commit config api
-      * @tc.desc      : commit config api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    // it('PP_COMMIT_CONFIG_SUCCESS_0', 0, async function (done) {
-    //   //创建会话
-    //   let CaptureSessionPromise = await cameraObj.createCaptureSession(null);
-    //   // 开始配置会话
-    //   await CaptureSessionPromise.beginConfig();
-
-    //   let cameraManager = await cameraObj.getCameraManager(null);
-
-    //   // 获取相机列表
-    //   let cameraArray = await cameraManager.getCameras();
-
-    //   // 创建相机输入流
-    //   let cameraInput = await cameraManager.createCameraInput(cameraArray[0].cameraId);
-
-    //   // 创建预览输出流
-    //   let previewOutput = await cameraObj.createPreviewOutput(surfaceId);
-
-    //   // 创建ImageReceiver对象，并设置照片参数
-    //   let imageReceiver = await image.createImageReceiver(640, 480, 4, 8);
-    //   // 获取照片显示SurfaceId
-    //   let photoSurfaceId = await imageReceiver.getReceivingSurfaceId();
-    //   // 创建拍照输出流
-    //   let photoOutput = await cameraObj.createPhotoOutput((photoSurfaceId));
-    //   // 向会话中添加相机输入流
-    //   await CaptureSessionPromise.addInput(cameraInput);
-    //   // 向会话中添加预览输入流
-    //   await CaptureSessionPromise.addOutput(previewOutput);
-    //   // 向会话中添加拍照输出流
-    //   await CaptureSessionPromise.addOutput(photoOutput);
-
-    //   try {
-    //     console.info(TAG + "Entering COMMIT_CONFIG_SUCCESS to operate");
-    //     await CaptureSessionPromise.commitConfig();
-    //     console.info(TAG + "Entering commit config commitConfig success");
-    //     expect(true).assertTrue();
-    //     console.info(TAG + "Entering COMMIT_CONFIG_SUCCESS commitConfig PASSED");
-    //   } catch(err) {
-    //     expect().assertFail();
-    //     console.info(TAG + "Entering COMMIT_CONFIG_SUCCESS commitConfig FAILED : ");
-    //     console.info(TAG + "Entering COMMIT_CONFIG_SUCCESS commitConfig ends here");
-    //   }
-    //   await sleep(1000);
-    //   done();
-    // })
 
     /**
       * @tc.number    : isMirrorSupported_PHOTO_OUTPUT
@@ -871,6 +820,27 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.level     : Level 0
     */
     it('PP_REMOVE_INPUT_SUCCESS', 0, async function (done) {
+      let cameraManager = await cameraObj.getCameraManager(null);
+
+      // 获取相机列表
+      let cameraArray = await cameraManager.getCameras();
+
+      for(let cameraIndex = 0; cameraIndex < cameraArray.length; cameraIndex++) {
+        console.log(TAG +'cameraId : ' + cameraArray[cameraIndex].cameraId)                          // 获取相机ID
+        console.log(TAG +'cameraPosition : ' + cameraArray[cameraIndex].cameraPosition)              // 获取相机位置
+        console.log(TAG +'cameraType : ' + cameraArray[cameraIndex].cameraType)                      // 获取相机类型
+        console.log(TAG +'connectionType : ' + cameraArray[cameraIndex].connectionType)              // 获取相机连接类型
+      }
+
+      // 创建相机输入流
+      camera1InputPromise = await cameraManager.createCameraInput(cameraArray[0].cameraId);
+
+      let CaptureSessionPromise = await cameraObj.createCaptureSession(null);
+
+      await CaptureSessionPromise.beginConfig();
+
+      await CaptureSessionPromise.addInput(camera1InputPromise);
+
       try {
         console.info(TAG + "Entering REMOVE_INPUT_SUCCESS to operate");
         await CaptureSessionPromise.removeInput(camera1InputPromise);
@@ -1009,37 +979,6 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       await sleep(1000);
       done();
     })
-
-    /**
-      * @tc.number    : COMMIT_CONFIG_SUCCESS
-      * @tc.name      : commit config api
-      * @tc.desc      : commit config api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-   it('PP_COMMIT_CONFIG_SUCCESS_1', 0, async function (done) {
-     if (CaptureSessionPromise == null || CaptureSessionPromise == undefined) {
-       console.info(TAG + "Entering commit config captureSession == null || undefined");
-     } else {
-       console.info(TAG + "Entering COMMIT_CONFIG_SUCCESS to operate");
-       const promise = await CaptureSessionPromise.commitConfig();
-       console.info(TAG + "Entering commit config commitConfig success");
-       if (promise == undefined) {
-         expect(true).assertTrue();
-         console.info(TAG + "Entering COMMIT_CONFIG_SUCCESS commitConfig PASSED");
-       }
-       else {
-         expect().assertFail();
-         console.info(TAG + "Entering COMMIT_CONFIG_SUCCESS commitConfig FAILED : ");
-         console.info(TAG + "Entering COMMIT_CONFIG_SUCCESS commitConfig ends here");
-       }
-       await sleep(1000);
-       done();
-     }
-     await sleep(1000);
-     done();
-   })
 
     /**
       * @tc.number    : FOCUSSTATECHANGE_CALLBACK_ON_CAMERAINPUT
@@ -1267,32 +1206,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
         done();
       }
     })
-
-    /**
-      * @tc.number    : CAPTURE_SESSION_START_SUCCESS
-      * @tc.name      : capture session start api
-      * @tc.desc      : capture session start api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('PP_CAPTURE_SESSION_START_SUCCESS', 0, async function (done) {
-      if (CaptureSessionPromise == null || CaptureSessionPromise == undefined) {
-        console.info(TAG + "Entering capture session start captureSession == null || undefined");
-      } else {
-        console.info(TAG + "Entering CAPTURE_SESSION_START_SUCCESS to operate");
-        await CaptureSessionPromise.start();
-        console.info(TAG + "Entering captureSession start success");
-        expect(true).assertTrue();
-        console.info(TAG + "Entering CAPTURE_SESSION_START_SUCCESS PASSED");
-        console.info(TAG + "Entering CAPTURE_SESSION_START_SUCCESS ends here");
-        await sleep(1000);
-        done();
-      }
-      await sleep(1000);
-      done();
-    })
-
+    
     //Location
     /**
       * @tc.number    : PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS
@@ -1303,28 +1217,66 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.level     : Level 0
     */
     it('PP_PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS', 0, async function (done) {
-      if (photoOutputPromise == null || photoOutputPromise == undefined) {
-        console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS photoOutput == null || undefined");
-      } else {
-        console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS to operate");
-        photoOutputPromise.capture(async (err, data) => {
-          if (!err) {
-            console.info(TAG + "Entering photoOutput capture without photosettings success");
-            if (data != null || data != undefined) {
-              console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS PASSED");
-              expect(true).assertTrue();
-            }
-          } else {
-            expect().assertFail();
-            console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS FAILED : " + err.message);
-            console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS ends here");
-          }
-          await sleep(1000);
-          done();
+      let captureSession = await cameraObj.createCaptureSession(null);
+      // 开始配置会话
+      await captureSession.beginConfig();
+
+      let cameraManager = await cameraObj.getCameraManager(null);
+
+      // // 注册回调函数监听相机状态变化，获取状态变化的相机信息
+      // cameraManager.on('cameraStatus', (cameraStatusInfo) => {
+      //   console.log('camera : ' + cameraStatusInfo.camera.cameraId);
+      //   console.log('status: ' + cameraStatusInfo.status);
+      // })
+
+      // 获取相机列表
+      let cameraArray = await cameraManager.getCameras();
+      for(let cameraIndex = 0; cameraIndex < cameraArray.length; cameraIndex++) {
+        console.log(TAG + 'cameraId : ' + cameraArray[cameraIndex].cameraId)                          // 获取相机ID
+        console.log(TAG + 'cameraPosition : ' + cameraArray[cameraIndex].cameraPosition)              // 获取相机位置
+        console.log(TAG + 'cameraType : ' + cameraArray[cameraIndex].cameraType)                      // 获取相机类型
+        console.log(TAG + 'connectionType : ' + cameraArray[cameraIndex].connectionType)              // 获取相机连接类型
+      }
+
+      // 创建相机输入流
+      let cameraInput = await cameraManager.createCameraInput(cameraArray[0].cameraId);
+
+      // 创建预览输出流
+      let previewOutput = await cameraObj.createPreviewOutput(surfaceId);
+
+      // 创建ImageReceiver对象，并设置照片参数
+      let imageReceiver = await image.createImageReceiver(640, 480, 4, 8);
+      // 获取照片显示SurfaceId
+      let photoSurfaceId = await imageReceiver.getReceivingSurfaceId();
+      // 创建拍照输出流
+      let photoOutput = await cameraObj.createPhotoOutput((photoSurfaceId));
+      // 向会话中添加相机输入流
+      await captureSession.addInput(cameraInput);
+      // 向会话中添加预览输入流
+      await captureSession.addOutput(previewOutput);
+      // 向会话中添加拍照输出流
+      await captureSession.addOutput(photoOutput);
+
+      // 提交会话配置
+      await captureSession.commitConfig();
+
+      console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS to operate");
+      photoOutput.capture()
+      .then(() => {
+          expect(true).assertTrue();
+          console.info(TAG + "Entering photoOutput capture without settings success");
+          // await sleep(1000);
+          // done();
         })
+        .catch((err) => {
+          expect().assertFail();
+          console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS FAILED : " + err.message);
+          console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS ends here");
+          // await sleep(1000);
+          // done();
+        });
         await sleep(1000);
         done();
-      }
     })
 
     /**
@@ -1336,27 +1288,59 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.level     : Level 0
     */
     it('PP_PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS1', 0, async function (done) {
-      if (photoOutputPromise == null || photoOutputPromise == undefined) {
-        console.info(TAG + "Entering Photo output capture with photosettings photoOutput == null || undefined");
-      } else {
-        console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS to operate");
-        await photoOutputPromise.capture(photosettings1)
-          .then(function (data) {
-            console.info(TAG + "Entering photoOutput capture with settings success");
-            if (data != null || data != undefined) {
-              console.info(TAG + "Entering photoOutput capture with photosettings1 data is not null || undefined");
-              console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS1 PASSED");
-              expect(true).assertTrue();
-            }
-          })
-          .catch((err) => {
-            expect().assertFail();
-            console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS1 FAILED:" + err.message);
-            console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS1  ends here");
-          });
-        await sleep(1000);
-        done();
+      let captureSession = await cameraObj.createCaptureSession(null);
+      // 开始配置会话
+      await captureSession.beginConfig();
+
+      let cameraManager = await cameraObj.getCameraManager(null);
+
+      // // 注册回调函数监听相机状态变化，获取状态变化的相机信息
+      // cameraManager.on('cameraStatus', (cameraStatusInfo) => {
+      //   console.log('camera : ' + cameraStatusInfo.camera.cameraId);
+      //   console.log('status: ' + cameraStatusInfo.status);
+      // })
+
+      // 获取相机列表
+      let cameraArray = await cameraManager.getCameras();
+      for(let cameraIndex = 0; cameraIndex < cameraArray.length; cameraIndex++) {
+        console.log(TAG + 'cameraId : ' + cameraArray[cameraIndex].cameraId)                          // 获取相机ID
+        console.log(TAG + 'cameraPosition : ' + cameraArray[cameraIndex].cameraPosition)              // 获取相机位置
+        console.log(TAG + 'cameraType : ' + cameraArray[cameraIndex].cameraType)                      // 获取相机类型
+        console.log(TAG + 'connectionType : ' + cameraArray[cameraIndex].connectionType)              // 获取相机连接类型
       }
+
+      // 创建相机输入流
+      let cameraInput = await cameraManager.createCameraInput(cameraArray[0].cameraId);
+
+      // 创建预览输出流
+      let previewOutput = await cameraObj.createPreviewOutput(surfaceId);
+
+      // 创建ImageReceiver对象，并设置照片参数
+      let imageReceiver = await image.createImageReceiver(640, 480, 4, 8);
+      // 获取照片显示SurfaceId
+      let photoSurfaceId = await imageReceiver.getReceivingSurfaceId();
+      // 创建拍照输出流
+      let photoOutput = await cameraObj.createPhotoOutput((photoSurfaceId));
+      // 向会话中添加相机输入流
+      await captureSession.addInput(cameraInput);
+      // 向会话中添加预览输入流
+      await captureSession.addOutput(previewOutput);
+      // 向会话中添加拍照输出流
+      await captureSession.addOutput(photoOutput);
+
+      // 提交会话配置
+      await captureSession.commitConfig();
+
+      photoOutput.capture(photosettings1)
+        .then(() => {
+          expect(true).assertTrue();
+          console.info(TAG + "Entering photoOutput capture with settings success");
+        })
+        .catch((err) => {
+          expect().assertFail();
+          console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS1 FAILED:" + err.message);
+          console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS1  ends here");
+        });
       await sleep(1000);
       done();
     })
@@ -1370,29 +1354,65 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.level     : Level 0
     */
     it('PP_PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS2', 0, async function (done) {
-      if (photoOutputPromise == null || photoOutputPromise == undefined) {
-        console.info(TAG + "Entering Photo output capture with photosettings photoOutput == null || undefined");
-      } else {
-        console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS2 to operate");
-        await photoOutputPromise.capture(photosettings2)
-          .then(function (data) {
-            console.info(TAG + "Entering photoOutput capture with settings success");
-            if (data != null || data != undefined) {
-              console.info(TAG + "Entering photoOutput capture with photosettings2 data is not null || undefined");
-              console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS2 PASSED");
-              expect(true).assertTrue();
-            }
-          })
-          .catch((err) => {
-            expect().assertFail();
-            console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS2 FAILED:" + err.message);
-            console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS2 ends here");
-          });
-        await sleep(1000);
-        done();
+      let captureSession = await cameraObj.createCaptureSession(null);
+      // 开始配置会话
+      await captureSession.beginConfig();
+
+      let cameraManager = await cameraObj.getCameraManager(null);
+
+      // // 注册回调函数监听相机状态变化，获取状态变化的相机信息
+      // cameraManager.on('cameraStatus', (cameraStatusInfo) => {
+      //   console.log('camera : ' + cameraStatusInfo.camera.cameraId);
+      //   console.log('status: ' + cameraStatusInfo.status);
+      // })
+
+      // 获取相机列表
+      let cameraArray = await cameraManager.getCameras();
+      for(let cameraIndex = 0; cameraIndex < cameraArray.length; cameraIndex++) {
+        console.log(TAG + 'cameraId : ' + cameraArray[cameraIndex].cameraId)                          // 获取相机ID
+        console.log(TAG + 'cameraPosition : ' + cameraArray[cameraIndex].cameraPosition)              // 获取相机位置
+        console.log(TAG + 'cameraType : ' + cameraArray[cameraIndex].cameraType)                      // 获取相机类型
+        console.log(TAG + 'connectionType : ' + cameraArray[cameraIndex].connectionType)              // 获取相机连接类型
       }
-      await sleep(1000);
-      done();
+
+      // 创建相机输入流
+      let cameraInput = await cameraManager.createCameraInput(cameraArray[0].cameraId);
+
+      // 创建预览输出流
+      let previewOutput = await cameraObj.createPreviewOutput(surfaceId);
+
+      // 创建ImageReceiver对象，并设置照片参数
+      let imageReceiver = await image.createImageReceiver(640, 480, 4, 8);
+      // 获取照片显示SurfaceId
+      let photoSurfaceId = await imageReceiver.getReceivingSurfaceId();
+      // 创建拍照输出流
+      let photoOutput = await cameraObj.createPhotoOutput((photoSurfaceId));
+      // 向会话中添加相机输入流
+      await captureSession.addInput(cameraInput);
+      // 向会话中添加预览输入流
+      await captureSession.addOutput(previewOutput);
+      // 向会话中添加拍照输出流
+      await captureSession.addOutput(photoOutput);
+
+      // 提交会话配置
+      await captureSession.commitConfig();
+
+      photoOutput.capture(photosettings2)
+        .then(() => {
+          expect(true).assertTrue();
+          console.info(TAG + "Entering photoOutput capture with settings success");
+          // await sleep(1000);
+          // done();
+        })
+        .catch((err) => {
+          expect().assertFail();
+          console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS2 FAILED:" + err.message);
+          console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS2 ends here");
+          // await sleep(1000);
+          // done();
+        });
+        await sleep(1000);
+          done();
     })
 
     /**
@@ -1404,29 +1424,64 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.level     : Level 0
     */
     it('PP_PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS3', 0, async function (done) {
-      if (photoOutputPromise == null || photoOutputPromise == undefined) {
-        console.info(TAG + "Entering Photo output capture with photosettings photoOutput == null || undefined");
-      } else {
-        console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS3 to operate");
-        await photoOutputPromise.capture(photosettings3)
-          .then(function (data) {
-            console.info(TAG + "Entering photoOutput capture with settings success");
-            if (data != null || data != undefined) {
-              console.info(TAG + "Entering photoOutput capture with photosettings3 data is not null || undefined");
-              console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS3 PASSED");
-              expect(true).assertTrue();
-            }
-          })
-          .catch((err) => {
-            expect().assertFail();
-            console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS3 :" + err.message);
-            console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS3  ends here");
-          });
-        await sleep(1000);
-        done();
+      let captureSession = await cameraObj.createCaptureSession(null);
+      // 开始配置会话
+      await captureSession.beginConfig();
+
+      let cameraManager = await cameraObj.getCameraManager(null);
+
+      // // 注册回调函数监听相机状态变化，获取状态变化的相机信息
+      // cameraManager.on('cameraStatus', (cameraStatusInfo) => {
+      //   console.log('camera : ' + cameraStatusInfo.camera.cameraId);
+      //   console.log('status: ' + cameraStatusInfo.status);
+      // })
+
+      // 获取相机列表
+      let cameraArray = await cameraManager.getCameras();
+      for(let cameraIndex = 0; cameraIndex < cameraArray.length; cameraIndex++) {
+        console.log(TAG + 'cameraId : ' + cameraArray[cameraIndex].cameraId)                          // 获取相机ID
+        console.log(TAG + 'cameraPosition : ' + cameraArray[cameraIndex].cameraPosition)              // 获取相机位置
+        console.log(TAG + 'cameraType : ' + cameraArray[cameraIndex].cameraType)                      // 获取相机类型
+        console.log(TAG + 'connectionType : ' + cameraArray[cameraIndex].connectionType)              // 获取相机连接类型
       }
-      await sleep(1000);
-      done();
+
+      // 创建相机输入流
+      let cameraInput = await cameraManager.createCameraInput(cameraArray[0].cameraId);
+
+      // 创建预览输出流
+      let previewOutput = await cameraObj.createPreviewOutput(surfaceId);
+
+      // 创建ImageReceiver对象，并设置照片参数
+      let imageReceiver = await image.createImageReceiver(640, 480, 4, 8);
+      // 获取照片显示SurfaceId
+      let photoSurfaceId = await imageReceiver.getReceivingSurfaceId();
+      // 创建拍照输出流
+      let photoOutput = await cameraObj.createPhotoOutput((photoSurfaceId));
+      // 向会话中添加相机输入流
+      await captureSession.addInput(cameraInput);
+      // 向会话中添加预览输入流
+      await captureSession.addOutput(previewOutput);
+      // 向会话中添加拍照输出流
+      await captureSession.addOutput(photoOutput);
+
+      // 提交会话配置
+      await captureSession.commitConfig();
+      photoOutput.capture(photosettings3)
+        .then(() =>  {
+          expect(true).assertTrue();
+          console.info(TAG + "Entering photoOutput capture with settings success");
+          // await sleep(1000);
+          // done();
+        })
+        .catch((err) => {
+          expect().assertFail();
+          console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS3 :" + err.message);
+          console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS3  ends here");
+          // await sleep(1000);
+          // done();
+        });
+        await sleep(1000);
+          done();
     })
 
     /**
@@ -1438,29 +1493,62 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.level     : Level 0
     */
     it('PP_PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS4', 0, async function (done) {
-      if (photoOutputPromise == null || photoOutputPromise == undefined) {
-        console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS photoOutput == null || undefined");
-      } else {
-        console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS4 to operate");
-        await photoOutputPromise.capture(photosettings4)
-          .then(function (data) {
-            console.info(TAG + "Entering photoOutput capture with settings success");
-            if (data != null || data != undefined) {
-              console.info(TAG + "Entering photoOutput capture with photosettings4 data is not null || undefined");
-              console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS4 PASSED");
-              expect(true).assertTrue();
-            }
-          })
-          .catch((err) => {
-            expect().assertFail();
-            console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS4 FAILED : " + err.message);
-            console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS4 ends here");
-          });
-        await sleep(1000);
-        done();
+      let captureSession = await cameraObj.createCaptureSession(null);
+      // 开始配置会话
+      await captureSession.beginConfig();
+
+      let cameraManager = await cameraObj.getCameraManager(null);
+
+      // // 注册回调函数监听相机状态变化，获取状态变化的相机信息
+      // cameraManager.on('cameraStatus', (cameraStatusInfo) => {
+      //   console.log('camera : ' + cameraStatusInfo.camera.cameraId);
+      //   console.log('status: ' + cameraStatusInfo.status);
+      // })
+
+      // 获取相机列表
+      let cameraArray = await cameraManager.getCameras();
+      for(let cameraIndex = 0; cameraIndex < cameraArray.length; cameraIndex++) {
+        console.log(TAG + 'cameraId : ' + cameraArray[cameraIndex].cameraId)                          // 获取相机ID
+        console.log(TAG + 'cameraPosition : ' + cameraArray[cameraIndex].cameraPosition)              // 获取相机位置
+        console.log(TAG + 'cameraType : ' + cameraArray[cameraIndex].cameraType)                      // 获取相机类型
+        console.log(TAG + 'connectionType : ' + cameraArray[cameraIndex].connectionType)              // 获取相机连接类型
       }
-      await sleep(1000);
-      done();
+
+      // 创建相机输入流
+      let cameraInput = await cameraManager.createCameraInput(cameraArray[0].cameraId);
+
+      // 创建预览输出流
+      let previewOutput = await cameraObj.createPreviewOutput(surfaceId);
+
+      // 创建ImageReceiver对象，并设置照片参数
+      let imageReceiver = await image.createImageReceiver(640, 480, 4, 8);
+      // 获取照片显示SurfaceId
+      let photoSurfaceId = await imageReceiver.getReceivingSurfaceId();
+      // 创建拍照输出流
+      let photoOutput = await cameraObj.createPhotoOutput((photoSurfaceId));
+      // 向会话中添加相机输入流
+      await captureSession.addInput(cameraInput);
+      // 向会话中添加预览输入流
+      await captureSession.addOutput(previewOutput);
+      // 向会话中添加拍照输出流
+      await captureSession.addOutput(photoOutput);
+
+      // 提交会话配置
+      await captureSession.commitConfig();
+      photoOutput.capture(photosettings4)
+        .then(async () => {
+          expect(true).assertTrue();
+          console.info(TAG + "Entering photoOutput capture with settings success");
+          await sleep(1000);
+          done();
+        })
+        .catch(async (err) => {
+          expect().assertFail();
+          console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS4 FAILED : " + err.message);
+          console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS4 ends here");
+          await sleep(1000);
+          done();
+        });
     })
 
     //FLASH Function API scripts
@@ -1860,136 +1948,6 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       done();
     })
 
-    /**
-      * @tc.number    : SET_GET_ZOOM_2_PROMISE
-      * @tc.name      : Zoom camera-0 cameraId api
-      * @tc.desc      : Zoom camera-0 cameraId api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-//    it('PP_SET_GET_ZOOM_2_PROMISE', 0, async function (done) {
-//      var setpromise = await camera0InputPromise.setZoomRatio(2);
-//      console.info(TAG + "setZoomRatio success: 2");
-//      console.info(TAG + "getZoomRatio called")
-//      var getpromise2 = await camera0InputPromise.getZoomRatio();
-//      console.info(TAG + "getZoomRatio success: " + getpromise2);
-//      if (getpromise2 != null && getpromise2 != undefined) {
-//        expect(getpromise2).assertEqual(2);
-//        console.info(TAG + "SET_GET_ZOOM_2_PROMISE PASSED ");
-//      }
-//      else {
-//        console.info(TAG + "SET_GET_ZOOM_2_PROMISE FAILED");
-//        expect().assertFail();
-//      }
-//      await sleep(1000);
-//      done();
-//    })
-
-    /**
-      * @tc.number    : SET_GET_ZOOM_3_PROMISE
-      * @tc.name      : Zoom camera-0 cameraId api
-      * @tc.desc      : Zoom camera-0 cameraId api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-//    it('PP_SET_GET_ZOOM_3_PROMISE', 0, async function (done) {
-//      var setpromise = await camera0InputPromise.setZoomRatio(3);
-//      console.info(TAG + "setZoomRatio success: 3");
-//      console.info(TAG + "getZoomRatio called")
-//      var getpromise3 = await camera0InputPromise.getZoomRatio();
-//      console.info(TAG + "getZoomRatio success: " + getpromise3);
-//      if (getpromise3 != null && getpromise3 != undefined) {
-//        expect(getpromise3).assertEqual(3);
-//        console.info(TAG + "SET_GET_ZOOM_3_PROMISE PASSED ");
-//      }
-//      else {
-//        console.info(TAG + "SET_GET_ZOOM_3_PROMISE FAILED");
-//        expect().assertFail();
-//      }
-//      await sleep(1000);
-//      done();
-//    })
-
-    /**
-      * @tc.number    : SET_GET_ZOOM_4_PROMISE
-      * @tc.name      : Zoom camera-0 cameraId api
-      * @tc.desc      : Zoom camera-0 cameraId api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-//    it('PP_SET_GET_ZOOM_4_PROMISE', 0, async function (done) {
-//      var setpromise = await camera0InputPromise.setZoomRatio(4);
-//      console.info(TAG + "setZoomRatio success: 4");
-//      console.info(TAG + "getZoomRatio called")
-//      var getpromise4 = await camera0InputPromise.getZoomRatio();
-//      console.info(TAG + "getZoomRatio success: " + getpromise4);
-//      if (getpromise4 != null && getpromise4 != undefined) {
-//        expect(getpromise4).assertEqual(4);
-//        console.info(TAG + "SET_GET_ZOOM_4_PROMISE PASSED ");
-//      }
-//      else {
-//        console.info(TAG + "SET_GET_ZOOM_4_PROMISE FAILED");
-//        expect().assertFail();
-//      }
-//      await sleep(1000);
-//      done();
-//    })
-
-    /**
-      * @tc.number    : SET_GET_ZOOM_5_PROMISE
-      * @tc.name      : Zoom camera-0 cameraId api
-      * @tc.desc      : Zoom camera-0 cameraId api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-//    it('PP_SET_GET_ZOOM_5_PROMISE', 0, async function (done) {
-//      var setpromise = await camera0InputPromise.setZoomRatio(5);
-//      console.info(TAG + "setZoomRatio success: 5");
-//      console.info(TAG + "getZoomRatio called")
-//      var getpromise5 = await camera0InputPromise.getZoomRatio();
-//      console.info(TAG + "getZoomRatio success: " + getpromise5);
-//      if (getpromise5 != null && getpromise5 != undefined) {
-//        expect(getpromise5).assertEqual(5);
-//        console.info(TAG + "SET_GET_ZOOM_5_PROMISE PASSED ");
-//      }
-//      else {
-//        console.info(TAG + "SET_GET_ZOOM_5_PROMISE FAILED");
-//        expect().assertFail();
-//      }
-//      await sleep(1000);
-//      done();
-//    })
-
-    /**
-      * @tc.number    : SET_GET_ZOOM_6_PROMISE
-      * @tc.name      : Zoom camera-0 cameraId api
-      * @tc.desc      : Zoom camera-0 cameraId api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-//    it('PP_SET_GET_ZOOM_6_PROMISE', 0, async function (done) {
-//      var setpromise = await camera0InputPromise.setZoomRatio(6);
-//      console.info(TAG + "setZoomRatio success: 6");
-//      console.info(TAG + "getZoomRatio called")
-//      var getpromise6 = await camera0InputPromise.getZoomRatio();
-//      console.info(TAG + "getZoomRatio success: " + getpromise6);
-//      if (getpromise6 != null && getpromise6 != undefined) {
-//        expect(getpromise6).assertEqual(6);
-//        console.info(TAG + "SET_GET_ZOOM_6_PROMISE PASSED ");
-//      }
-//      else {
-//        console.info(TAG + "SET_GET_ZOOM_6_PROMISE FAILED");
-//        expect().assertFail();
-//      }
-//      await sleep(1000);
-//      done();
-//    })
-
     // FOCUS promise API's
     /**
       * @tc.number    : IS_FOCUS_MODE_LOCKED_SUPPORTED
@@ -2007,7 +1965,7 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
         expect(true).assertTrue();
         console.info(TAG + "is focus mode locked supported : " + isFMLockedSupported);
         console.info(TAG + "Entering IS_FOCUS_MODE_LOCKED_SUPPORTED PASSED");
-      } catch(err) {
+      } catch (err) {
         expect().assertFail();
         console.info(TAG + "Entering IS_FOCUS_MODE_LOCKED_SUPPORTED FAILED : ");
       }
@@ -2228,39 +2186,6 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS
-      * @tc.name      : Photo output capture without photosettings api
-      * @tc.desc      : Photo output capture without photosettings api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('PP_PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS', 0, async function (done) {
-      if (photoOutputPromise == null || photoOutputPromise == undefined) {
-        console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS photoOutput == null || undefined");
-      } else {
-        console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS to operate");
-        photoOutputPromise.capture(async (err, data) => {
-          if (!err) {
-            console.info(TAG + "Entering photoOutput capture without photosettings success");
-            if (data != null || data != undefined) {
-              console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS PASSED");
-              expect(true).assertTrue();
-            }
-          } else {
-            expect().assertFail();
-            console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS FAILED : " + err.message);
-            console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS ends here");
-          }
-          await sleep(1000);
-          done();
-        })
-        await sleep(1000);
-        done();
-      }
-    })
-
-    /**
       * @tc.number    : SET_FOCUS_POINT
       * @tc.name      : set focus Point camera0 api
       * @tc.desc      : set focus Point camera0 api
@@ -2398,30 +2323,27 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.type      : Function
       * @tc.level     : Level 0
     */
-    it('PP_PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS', 0, async function (done) {
-      if (photoOutputPromise == null || photoOutputPromise == undefined) {
-        console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS photoOutput == null || undefined");
-      } else {
-        console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS to operate");
-        photoOutputPromise.capture(async (err, data) => {
-          if (!err) {
-            console.info(TAG + "Entering photoOutput capture without photosettings success");
-            if (data != null || data != undefined) {
-              console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS PASSED");
-              expect(true).assertTrue();
-            }
-          } else {
-            expect().assertFail();
-            console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS FAILED : " + err.message);
-            console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS ends here");
-          }
-          await sleep(1000);
-          done();
-        })
-        await sleep(1000);
-        done();
-      }
-    })
+//    it('PP_PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS', 0, async function (done) {
+//      if (photoOutputPromise == null || photoOutputPromise == undefined) {
+//        console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS photoOutput == null || undefined");
+//      } else {
+//        console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS to operate");
+//        photoOutputPromise.capture()
+//          .then(() => {
+//            expect(true).assertTrue();
+//            console.info(TAG + "Entering photoOutput capture without settings success");
+//            await sleep(1000);
+//            done();
+//          })
+//          .catch((err) => {
+//            expect().assertFail();
+//            console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS FAILED : " + err.message);
+//            console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS ends here");
+//            await sleep(1000);
+//            done();
+//          });
+//      }
+//    })
 
     /**
       * @tc.number    : SET_FOCUS_POINT
@@ -2553,92 +2475,6 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS
-      * @tc.name      : Photo output capture without photosettings api
-      * @tc.desc      : Photo output capture without photosettings api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('PP_PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS', 0, async function (done) {
-      if (photoOutputPromise == null || photoOutputPromise == undefined) {
-        console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS photoOutput == null || undefined");
-      } else {
-        console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS to operate");
-        photoOutputPromise.capture(async (err, data) => {
-          if (!err) {
-            console.info(TAG + "Entering photoOutput capture without photosettings success");
-            if (data != null || data != undefined) {
-              console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS PASSED");
-              expect(true).assertTrue();
-            }
-          } else {
-            expect().assertFail();
-            console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS FAILED : " + err.message);
-            console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS ends here");
-          }
-          await sleep(1000);
-          done();
-        })
-        await sleep(1000);
-        done();
-      }
-    })
-
-    /**
-      * @tc.number    : IS_EXPOSURE_MODE_LOCKED_SUPPORTED
-      * @tc.name      : check is exposure mode locked supported-camera0Input api
-      * @tc.desc      : check is exposure mode locked supported-camera0Input api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    /* EXPOSUREMODE Interface will be change
-    it('PP_IS_EXPOSURE_MODE_LOCKED_SUPPORTED', 0, async function (done) {
-      console.info(TAG + "Entering IS_EXPOSURE_MODE_LOCKED_SUPPORTED to operate");
-      await camera0InputPromise.isExposureModeSupported(cameraObj.ExposureMode.EXPOSURE_MODE_LOCKED)
-        .then(function (data) {
-          console.info(TAG + "Entering IS_EXPOSURE_MODE_LOCKED_SUPPORTED PASSED: " + data);
-          expect(data).assertEqual(false);
-        })
-        .catch((err) => {
-          console.info(TAG + "IS_EXPOSURE_MODE_LOCKED_SUPPORTED FAILED : " + err.message);
-          expect().assertFail();
-        });
-      console.info(TAG + "IS_EXPOSURE_MODE_LOCKED_SUPPORTED ends here");
-      await sleep(1000);
-      done();
-    })
-    */
-
-    /**
-      * @tc.number    : SET_EXPOSURE_MODE_LOCKED
-      * @tc.name      : set exposure mode locked camera0 api
-      * @tc.desc      : set exposure mode locked camera0 api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    /* EXPOSUREMODE Interface will be change
-    it('PP_SET_EXPOSURE_MODE_LOCKED', 0, async function (done) {
-      console.info(TAG + "Entering SET_EXPOSURE_MODE_Locked to operate");
-      await camera0InputPromise.setExposureMode(cameraObj.ExposureMode.EXPOSURE_MODE_LOCKED)
-        .then(function () {
-          console.info(TAG + "Entering set exposure mode auto SUCCESS, current ExposureMode is: " + cameraObj.ExposureMode.EXPOSURE_MODE_LOCKED);
-          console.info(TAG + "Entering SET_EXPOSURE_MODE_Locked FAILED")
-          expect().assertFail()
-        })
-        .catch((err) => {
-          console.info(TAG + "Entering SET_EXPOSURE_MODE_LOCKED PASSED : " + err.message);
-          expect(true).assertTrue();
-        });
-      console.info(TAG + "Entering SET_EXPOSURE_MODE_LOCKED ends here");
-      await sleep(1000);
-      done();
-    })
-    */
-
-    /**
       * @tc.number    : GET_EXPOSURE_MODE_LOCKED
       * @tc.name      : get exposure mode locked camera0 api
       * @tc.desc      : get exposure mode locked camera0 api
@@ -2663,59 +2499,6 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       await sleep(1000);
       done();
     })
-
-    /**
-      * @tc.number    : IS_EXPOSURE_MODE_CONTINUOUS_AUTO_SUPPORTED
-      * @tc.name      : check is exposure mode continuous auto supported-camera0Input api
-      * @tc.desc      : check is exposure mode continuous auto supported-camera0Input api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    /* EXPOSUREMODE Interface will be change
-    it('PP_IS_EXPOSURE_MODE_CONTINUOUS_AUTO_SUPPORTED', 0, async function (done) {
-      console.info(TAG + "Entering IS_EXPOSURE_MODE_CONTINUOUS_AUTO_SUPPORTED to operate");
-      await camera0InputPromise.isExposureModeSupported(cameraObj.ExposureMode.EXPOSURE_MODE_CONTINUOUS_AUTO)
-        .then(function (data) {
-          console.info(TAG + "Entering IS_EXPOSURE_MODE_CONTINUOUS_AUTO_SUPPORTED PASSED: " + data);
-          expect(data).assertEqual(false);
-        })
-        .catch((err) => {
-          console.info(TAG + "IS_EXPOSURE_MODE_CONTINUOUS_AUTO_SUPPORTED FAILED : " + err.message);
-          expect().assertFail();
-        });
-      console.info(TAG + "IS_EXPOSURE_MODE_CONTINUOUS_AUTO_SUPPORTED ends here");
-      await sleep(1000);
-      done();
-    })
-    */
-
-    /**
-      * @tc.number    : SET_EXPOSURE_MODE_CONTINUOUS_AUTO
-      * @tc.name      : set exposure mode continuous auto camera0 api
-      * @tc.desc      : set exposure mode continuous auto camera0 api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    /* EXPOSUREMODE Interface will be change
-    it('PP_SET_EXPOSURE_MODE_CONTINUOUS_AUTO', 0, async function (done) {
-      console.info(TAG + "Entering SET_EXPOSURE_MODE_CONTINUOUS_AUTO to operate");
-      await camera0InputPromise.setExposureMode(cameraObj.ExposureMode.EXPOSURE_MODE_CONTINUOUS_AUTO)
-        .then(function () {
-          console.info(TAG + "Entering set exposure mode auto SUCCESS, current ExposureMode is: " + cameraObj.ExposureMode.EXPOSURE_MODE_CONTINUOUS_AUTO);
-          console.info(TAG + "Entering SET_EXPOSURE_MODE_CONTINUOUS_AUTO FAILED")
-          expect().assertFail();
-        })
-        .catch((err) => {
-          console.info(TAG + "Entering SET_EXPOSURE_MODE_CONTINUOUS_AUTO PASSED : " + err.message);
-          expect(true).assertTrue();
-        });
-      console.info(TAG + "Entering SET_EXPOSURE_MODE_CONTINUOUS_AUTO ends here");
-      await sleep(1000);
-      done();
-    })
-    */
 
     /**
       * @tc.number    : GET_EXPOSURE_MODE_CONTINUOUS_AUTO
@@ -2872,121 +2655,6 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : IS_EXPOSURE_MODE_AUTO_SUPPORTED
-      * @tc.name      : check is exposure mode auto supported-camera0Input api
-      * @tc.desc      : check is exposure mode auto supported-camera0Input api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    /* EXPOSUREMODE Interface will be change
-    it('PP_IS_EXPOSURE_MODE_AUTO_SUPPORTED', 0, async function (done) {
-      console.info(TAG + "Entering IS_EXPOSURE_MODE_AUTO_SUPPORTED to operate");
-      await camera0InputPromise.isExposureModeSupported(cameraObj.ExposureMode.EXPOSURE_MODE_AUTO)
-        .then(function (data) {
-          console.info(TAG + "Entering IS_EXPOSURE_MODE_AUTO_SUPPORTED PASSED: " + data);
-          expect(data).assertEqual(true);
-        })
-        .catch((err) => {
-          console.info(TAG + "IS_EXPOSURE_MODE_AUTO_SUPPORTED FAILED: " + err.message);
-          expect().assertFail();
-        });
-      console.info(TAG + "IS_EXPOSURE_MODE_AUTO_SUPPORTED ends here");
-      await sleep(1000);
-      done();
-    })
-    */
-
-    /**
-      * @tc.number    : SET_EXPOSURE_MODE_AUTO
-      * @tc.name      : set exposure mode auto camera0 api
-      * @tc.desc      : set exposure mode auto camera0 api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    /* EXPOSUREMODE Interface will be change
-    it('PP_SET_EXPOSURE_MODE_AUTO', 0, async function (done) {
-      console.info(TAG + "Entering SET_EXPOSURE_MODE_AUTO to operate");
-      await camera0InputPromise.setExposureMode(cameraObj.ExposureMode.EXPOSURE_MODE_AUTO)
-        .then(function () {
-          console.info(TAG + "Entering set exposure mode auto SUCCESS, current ExposureMode is: " + cameraObj.ExposureMode.EXPOSURE_MODE_AUTO);
-          console.info(TAG + "Entering SET_EXPOSURE_MODE_AUTO PASSED")
-          expect(cameraObj.ExposureMode.EXPOSURE_MODE_AUTO).assertEqual(1);
-        })
-        .catch((err) => {
-          console.info(TAG + "Entering SET_EXPOSURE_MODE_AUTO FAILED : " + err.message);
-          expect().assertFail();
-        });
-      console.info(TAG + "Entering SET_EXPOSURE_MODE_AUTO ends here");
-      await sleep(1000);
-      done();
-    })
-    */
-
-    /**
-      * @tc.number    : GET_EXPOSURE_MODE_AUTO
-      * @tc.name      : get exposure mode auto camera0 api
-      * @tc.desc      : get exposure mode auto camera0 api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    /* EXPOSUREMODE Interface will be change
-    it('PP_GET_EXPOSURE_MODE_AUTO', 0, async function (done) {
-      console.info(TAG + "Entering GET_EXPOSURE_MODE_AUTO to operate");
-      await camera0InputPromise.getExposureMode()
-        .then(function (data) {
-          console.info(TAG + "Entering get exposure mode auto SUCCESS");
-          console.info(TAG + "Current exposureMode is: " + data);
-          expect(data).assertEqual(1);
-          console.info(TAG + "GET_EXPOSURE_MODE_AUTO PASSED");
-        })
-        .catch((err) => {
-          expect().assertFail();
-          console.info(TAG + "GET_EXPOSURE_MODE_AUTO FAILED: " + err.message);
-        });
-      console.info(TAG + "GET_EXPOSURE_MODE_AUTO ends here");
-      await sleep(1000);
-      done();
-    })
-    */
-
-    /**
-      * @tc.number    : PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS
-      * @tc.name      : Photo output capture without photosettings api
-      * @tc.desc      : Photo output capture without photosettings api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('PP_PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS', 0, async function (done) {
-      if (photoOutputPromise == null || photoOutputPromise == undefined) {
-        console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS photoOutput == null || undefined");
-      } else {
-        console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS to operate");
-        photoOutputPromise.capture(async (err, data) => {
-          if (!err) {
-            console.info(TAG + "Entering photoOutput capture without photosettings success");
-            if (data != null || data != undefined) {
-              console.info(TAG + "Entering photoOutput capture without photosettings data is not null || undefined");
-              console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS PASSED");
-              expect(true).assertTrue();
-            }
-          } else {
-            expect().assertFail();
-            console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS FAILED : " + err.message);
-            console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITHOUT_PHOTOSETTINGS ends here");
-          }
-          await sleep(1000);
-          done();
-        })
-        await sleep(1000);
-        done();
-      }
-    })
-
-    /**
       * @tc.number    : SET_EXPOSURE_BIAS
       * @tc.name      : set exposure bias camera0 api
       * @tc.desc      : set exposure bias camera0 api
@@ -3089,40 +2757,6 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
     })
 
     /**
-      * @tc.number    : PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS Rotation-0 & Quality-0
-      * @tc.name      : Photo output capture with photosettings api
-      * @tc.desc      : Photo output capture with photosettings api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('PP_PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS1', 0, async function (done) {
-      if (photoOutputPromise == null || photoOutputPromise == undefined) {
-        console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS photoOutput == null || undefined");
-      } else {
-        console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS to operate");
-        await photoOutputPromise.capture(photosettings1)
-          .then(function (data) {
-            console.info(TAG + "Entering photoOutput capture with Rotation-0 & Quality-0 success");
-            if (data != null || data != undefined) {
-              console.info(TAG + "Entering photoOutput capture with photosettings1 data is not null || undefined");
-              console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS  Rotation-0 & Quality-0 PASSED");
-              expect(true).assertTrue();
-            }
-          })
-          .catch((err) => {
-            expect().assertFail();
-            console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS Rotation-0 & Quality-0 FAILED:" + err.message);
-            console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS Rotation-0 & Quality-0 ends here");
-          });
-        await sleep(1000);
-        done();
-      }
-      await sleep(1000);
-      done();
-    })
-
-    /**
       * @tc.number    : SET_EXPOSURE_BIAS
       * @tc.name      : set exposure bias camera0 api
       * @tc.desc      : set exposure bias camera0 api
@@ -3220,40 +2854,6 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
           console.info(TAG + "GET_EXPOSURE_POINT FAILED : " + err.message);
         });
       console.info(TAG + "GET_EXPOSURE_POINT ends here");
-      await sleep(1000);
-      done();
-    })
-
-    /**
-      * @tc.number    : PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS2
-      * @tc.name      : Photo output capture with photosettings api
-      * @tc.desc      : Photo output capture with photosettings api
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('PP_PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS2', 0, async function (done) {
-      if (photoOutputPromise == null || photoOutputPromise == undefined) {
-        console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS photoOutput == null || undefined");
-      } else {
-        console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS to operate");
-        await photoOutputPromise.capture(photosettings2)
-          .then(function (data) {
-            console.info(TAG + "Entering photoOutput capture with location settings success");
-            if (data != null || data != undefined) {
-              console.info(TAG + "Entering photoOutput capture with photosettings2 data is not null || undefined");
-              console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS2 PASSED");
-              expect(true).assertTrue();
-            }
-          })
-          .catch((err) => {
-            expect().assertFail();
-            console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS2 FAILED : " + err.message);
-            console.info(TAG + "Entering PHOTOOUTPUT_CAPTURE_WITH_PHOTOSETTINGS2 ends here");
-          });
-        await sleep(1000);
-        done();
-      }
       await sleep(1000);
       done();
     })
@@ -3370,16 +2970,51 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       * @tc.level     : Level 0
     */
     it('PP_CAPTURE_SESSION_STOP_SUCCESS_PROMISE', 0, async function (done) {
-      if (CaptureSessionPromise == null || CaptureSessionPromise == undefined) {
-        console.info(TAG + "Entering capture session stop captureSession == null || undefined");
-      } else {
-        console.info(TAG + "Entering CAPTURE_SESSION_STOP_SUCCESS_PROMISE to operate");
+      let cameraManager = await cameraObj.getCameraManager(null);
+
+      // 获取相机列表
+      let cameraArray = await cameraManager.getCameras();
+
+      for(let cameraIndex = 0; cameraIndex < cameraArray.length; cameraIndex++) {
+        console.log(TAG +'cameraId : ' + cameraArray[cameraIndex].cameraId)                          // 获取相机ID
+        console.log(TAG +'cameraPosition : ' + cameraArray[cameraIndex].cameraPosition)              // 获取相机位置
+        console.log(TAG +'cameraType : ' + cameraArray[cameraIndex].cameraType)                      // 获取相机类型
+        console.log(TAG +'connectionType : ' + cameraArray[cameraIndex].connectionType)              // 获取相机连接类型
+      }
+
+      // 创建相机输入流
+      camera1InputPromise = await cameraManager.createCameraInput(cameraArray[0].cameraId);
+
+      let CaptureSessionPromise = await cameraObj.createCaptureSession(null);
+
+      await CaptureSessionPromise.beginConfig();
+
+      await CaptureSessionPromise.addInput(camera1InputPromise);
+
+
+
+      // 创建ImageReceiver对象，并设置照片参数
+      let imageReceiver = await image.createImageReceiver(640, 480, 4, 8);
+      // 获取照片显示SurfaceId
+      let photoSurfaceId = await imageReceiver.getReceivingSurfaceId();
+      // 创建拍照输出流
+      let photoOutput = await cameraObj.createPhotoOutput((photoSurfaceId));
+      // 向会话中添加拍照输出流
+      await CaptureSessionPromise.addOutput(photoOutput);
+
+      console.info(TAG + "Entering COMMIT_CONFIG_SUCCESS to operate");
+      await CaptureSessionPromise.commitConfig();
+
+      await CaptureSessionPromise.start();
+
+      console.info(TAG + "Entering CAPTURE_SESSION_STOP_SUCCESS_PROMISE to operate");
+      try {
         await CaptureSessionPromise.stop();
         expect(true).assertTrue();
         console.info(TAG + "Entering CAPTURE_SESSION_STOP_SUCCESS_PROMISE captureSession.stop PASSED");
-        console.info(TAG + "Entering CAPTURE_SESSION_STOP_SUCCESS_PROMISE captureSession.stop ends here");
-        await sleep(1000);
-        done();
+      } catch(err) {
+        expect().assertFail();
+        console.info(TAG + "Entering CAPTURE_SESSION_STOP_SUCCESS_PROMISE captureSession.stop FAILED");
       }
       await sleep(1000);
       done();
