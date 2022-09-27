@@ -65,6 +65,12 @@
         "launchType": "standard"
       }
     ],
+	"reqPermissions": [
+		{
+			"name":"ohos.permission.MANAGE_SECURE_SETTINGS",
+			"reason":"need use ohos.permission.,MANAGE_SECURE_SETTINGS"
+		}
+	],
     "js": [
       {
         "mode": {
