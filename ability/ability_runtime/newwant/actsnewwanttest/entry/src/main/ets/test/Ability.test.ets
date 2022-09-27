@@ -38,6 +38,24 @@ let flagNewWant = false;
 export default function abilityTest() {
   describe('ActsNewWantTest', function () {
 
+  afterEach(async (done) => {
+      console.log("ACTS_NewWant afterEach called");
+      let wantInfo = {
+        bundleName: "com.example.newwanttest",
+        abilityName: "com.example.newwanttest.MainAbility"
+      }
+      await globalThis.abilityTestContext.startAbility(wantInfo).then((data) => {
+        console.log("ACTS_NewWant startAbility data : " + JSON.stringify(data));
+      }).catch((err) => {
+        console.log("ACTS_NewWant startAbility err : " + JSON.stringify(err));
+      })
+
+      setTimeout(function () {
+        console.log("ACTS_NewWant afterEach end");
+        done();
+      }, 1000);
+    })
+
     /**
      * @tc.number: ACTS_NewWant_Test_0100
      * @tc.name: Starting standard Ability for the first time does not trigger onNewWant.

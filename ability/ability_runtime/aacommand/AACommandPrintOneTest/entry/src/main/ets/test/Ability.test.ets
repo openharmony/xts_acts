@@ -20,6 +20,25 @@ let msgcopy: any
 
 export default function abilityTest() {
     describe('ActsAACommandPrinOneTest', function () {
+
+        afterEach(async (done) => {
+            console.log("ActsAACommandPrinOneTest afterEach called");
+            let wantInfo = {
+                bundleName: "com.example.aacommandprintonetest",
+                abilityName: "MainAbility"
+            }
+            await globalThis.abilityTestContext.startAbility(wantInfo).then((data) => {
+                console.log("ActsAACommandPrinOneTest startAbility data : " + JSON.stringify(data));
+            }).catch((err) => {
+                console.log("ActsAACommandPrinOneTest startAbility err : " + JSON.stringify(err));
+            })
+
+            setTimeout(function () {
+                console.log("ActsAACommandPrinOneTest afterEach end");
+                done();
+            }, 1000);
+        })
+
         /**
          * @tc.number: ACTS_AACommand_print_0100
          * @tc.name: The -b, -p, -s, -w and other parameters of the test command are valid, and the print interface is
