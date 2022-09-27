@@ -19,8 +19,6 @@ import CertificateJsunit from "./Certificate.test.js";
 
 
 export default function testsuite() {
-  // SecurityRandomJsunit();
-  // DigestAlgorithmJsunit();
   CertificateJsunit();
   DigestAlgorithmJsunit();
   SecurityRandomJsunit();
