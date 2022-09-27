@@ -635,6 +635,7 @@ LITE_TEST_CASE(LwipFuncTestSuite, testSelectTimeout, Function | MediumTest | Lev
     tSelect.stack_size = DEF_TASK_STACK;
     tSelect.priority = DEF_TASK_PRIORITY;
 
+    g_selectFlag = 1;
     g_selectTimeout = 2;
     osThreadId_t serverTaskId = osThreadNew((osThreadFunc_t)SelectServerTask, NULL, &tSelect);
     TEST_ASSERT_NOT_NULL(serverTaskId);
