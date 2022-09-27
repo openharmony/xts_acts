@@ -125,6 +125,13 @@ export default function actsWifiCandidateNetWorkTest() {
                 "preSharedKey": "12345678",
                 "isHiddenSsid": false,
                 "securityType": wifiSecurityType.WIFI_SEC_TYPE_PSK,
+                "netId": -1,
+                "ipType": 1,
+                "creatorUid": 7,
+                "disableReason": 0,
+                "randomMacType": 0,
+                "randomMacAddr": "11:22:33:44:55:66",
+                "staticIp": {"ipAddress": 1284752956,"gateway": 1284752936},
             };
             await wifi.addCandidateConfig(wifiDeviceConfig)
                 .then(netWorkId => {
