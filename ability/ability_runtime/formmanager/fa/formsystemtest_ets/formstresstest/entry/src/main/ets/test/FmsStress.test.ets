@@ -69,6 +69,16 @@ export default function test() {
             commonEvent.unsubscribe(onAcquiredEventSubscriber, () => unsubscribeCallback("afterEach unsubscribe onAcquiredEventSubscriber"));
             commonEvent.unsubscribe(onSupplyEventSubscriber, () => unsubscribeCallback("afterEach unsubscribe onSupplyEventSubscriber"));
             await sleep(1000);
+            await featureAbility.startAbility({
+                want: {
+                    bundleName: "com.ohos.st.formstresstest",
+                    abilityName: "com.ohos.st.formstresstest.MainAbility"
+                }
+            }).then((data) => {
+                console.log("FmsStressTest startAbility data: " + JSON.stringify(data));
+            }).catch((err) => {
+                console.log("FmsStressTest startAbility err: " + JSON.stringify(err));
+            })
         })
 
         const subscribeDeletedEvent = (tcNumber, expectedDeletedFormAmount, done) => {

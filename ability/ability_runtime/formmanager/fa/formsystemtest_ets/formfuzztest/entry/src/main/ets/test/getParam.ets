@@ -148,7 +148,13 @@ const functionTest = function () {
 const getFuzzData = (datatype: string) => {
   switch (datatype) {
     case 'ARRAY':
-      return arrayTest();
+      let array1 = arrayTest();
+      let array2 = abc.join("")
+      if (isNaN(Number(array2))) {
+        return array1;
+      } else {
+        getFuzzData(DATA_TYPE_LIST[0]);
+      }
     case 'BOOLEAN':
       return booleanTest();
     case 'FUNCTION':
