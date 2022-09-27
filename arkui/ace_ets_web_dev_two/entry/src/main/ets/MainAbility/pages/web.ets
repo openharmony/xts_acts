@@ -273,7 +273,7 @@ struct Index {
                                     .then(quota=>{
                                         console.log('usage: '+quota)
                                         setTimeout(()=>{
-                                            if (result > 2500000000) {
+                                            if (quota > 2500000000) {
                                                 this.text = "true"
                                             } else {
                                                 this.text = "false"
