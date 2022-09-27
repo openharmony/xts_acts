@@ -75,7 +75,8 @@ describe('bluetoothhostTest2', function() {
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BR_Pair_0200', 0, async function (done) {
         function PinRequiredParam(data) {
-            console.info("[bluetooth_js] pinRequired on:" + JSON.stringify(data));
+            console.info("[bluetooth_js] pinRequired on:" + 
+                JSON.stringify(data.deviceId)+JSON.stringify(data.pinCode));
             bluetooth.setDevicePairingConfirmation(data.deviceId,false);
         }
         bluetooth.BLE.on('pinRequired', PinRequiredParam);
@@ -284,5 +285,6 @@ describe('bluetoothhostTest2', function() {
 
 })
 }
+
 
 
