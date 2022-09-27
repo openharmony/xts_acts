@@ -120,11 +120,13 @@ export default struct CommonColorMode {
         .onClick((event) => {
           Log.showInfo(TAG, 'JSON.stringify area : ' + JSON.stringify(event.target.area))
           const area = JSON.stringify(event.target.area)
-          console.info("area value is: " + area)
+          console.info("area value1 is: " + area)
+          console.info("area value3 is: " + JSON.parse(JSON.stringify(event.target.area))["width"])
+          let value = JSON.parse(JSON.stringify(event.target.area))["width"]
           try {
             var backData = {
               data: {
-                "STATUS": area
+                "STATUS": value
               }
             }
             let backEvent = {
@@ -280,12 +282,14 @@ export default struct CommonColorMode {
         .key("touchesText")
         .onTouch((event) => {
           Log.showInfo(TAG, 'touches: ' + JSON.stringify(event.touches))
-          const touches = JSON.stringify(event.touches)
-          const touchesValue = JSON.parse(touches)
+          const touchesValue = JSON.stringify(event.touches)
+          console.info("touches value1 is: " + touchesValue)
+          console.info("touches value3 is: " + JSON.stringify(event.touches)[0]["type"])
+          let value = JSON.stringify(event.touches)[0]["type"]
           try {
             var backData1 = {
               data: {
-                "STATUS": touchesValue
+                "STATUS": value
               }
             }
             let backEvent1 = {
@@ -314,12 +318,14 @@ export default struct CommonColorMode {
         .key("changedTouchesText")
         .onTouch((event) => {
           Log.showInfo(TAG, 'changedTouches: ' + JSON.stringify(event.changedTouches))
-          const changedTouches = JSON.stringify(event.changedTouches)
-          const changedTouchesValue = JSON.parse(changedTouches)
+          const changedTouchesValue = JSON.stringify(event.changedTouches)
+          console.info("changedTouchesValue value1 is: " + changedTouchesValue)
+          console.info("changedTouchesValue value3 is: " + changedTouchesValue[0]["type"])
+          let value = changedTouchesValue[0]["type"]
           try {
             var backData2 = {
               data: {
-                "STATUS": changedTouches
+                "STATUS": value
               }
             }
             let backEvent2 = {

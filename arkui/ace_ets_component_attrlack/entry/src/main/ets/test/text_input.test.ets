@@ -61,5 +61,29 @@ export default function text_inputPhoneNumberJsunit() {
       console.info("[testtext_inputPhoneNumber0001] type value :" + obj.$attrs.type);
       done();
     });
+
+    it('testtextInputStyle0001', 0, async function (done) {
+      console.info('textInputStyle testtextInputStyle0001 START');
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('textInput1');
+      console.info("[testtextInputStyle0001] strJson:" + strJson);
+      let obj = JSON.parse(strJson);
+      expect(obj.$type).assertEqual('TextInput');
+      expect(obj.$attrs.style).assertEqual('TextInputStyle.Default');
+      console.info("[testtextInputStyle0001] textInput1 InputStyle value :" + obj.$attrs.style);
+      done();
+    });
+
+    it('testtextInputStyle0002', 0, async function (done) {
+      console.info('textInputStyle testtextInputStyle0002 START');
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('textInput2');
+      console.info("[testtextInputStyle0002] strJson:" + strJson);
+      let obj = JSON.parse(strJson);
+      expect(obj.$type).assertEqual('TextInput');
+      expect(obj.$attrs.style).assertEqual('TextInputStyle.Inline');
+      console.info("[testtextInputStyle0002] textInput2 inputStyle value :" + obj.$attrs.style);
+      done();
+    });
   })
 }

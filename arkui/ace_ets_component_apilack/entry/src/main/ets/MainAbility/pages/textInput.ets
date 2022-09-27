@@ -90,7 +90,7 @@ struct TextInputOnEditChange {
         .border({ width: 1 })
         .padding(10)
         .textAlign(TextAlign.Center)
-        //设置复制选项时调用
+          //设置复制选项时调用
         .copyOption(0)
         .key("textInputCopyOptionText")
 
@@ -108,7 +108,7 @@ struct TextInputOnEditChange {
           //设置密码显示/隐藏图标时调用
         .showPasswordIcon(true)
         .key("showPasswordIconText")
-    
+
     }.width("100%").height("100%")
   }
 }
