@@ -14,32 +14,24 @@
  * limitations under the License.
  */
 import router from '@ohos.router';
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
-import { Hypium } from '@ohos/hypium'
-import testsuite from '../../test/List.test'
 
 @Entry
 @Component
 struct Index {
-  @State message: string = 'CreateFormAbility'
+  @State message: string = 'FormHostAbility'
   @State isShowing: boolean = true;
 
   @State formId: number = 0;
   @State bundle: string = "com.example.apicoverhaptest";
   @State ability: string = "FormAbility";
   @State moduleName: string = "phone";
-  @State name: string = "form1";
-  private dimension: FormDimension = FormDimension.Dimension_2_2;
+  @State name: string = "widget";
+  private dimension: FormDimension = FormDimension.Dimension_2_1;
   private temporary = false;
-
-  aboutToAppear() {
-    this.isShowing = globalThis.isCreateForm
-  }
 
   build() {
     Row() {
       Column() {
-        if (this.isShowing) {
           FormComponent({
             id: this.formId,
             name: this.name,
@@ -52,9 +44,13 @@ struct Index {
           .allowUpdate(this.allowUpate)
           .visibility(this.isShowing ? Visibility.Visible : Visibility.Hidden)
           .onAcquired((form) => {
-            console.log("[FormComponent.host] get form, form id:" + form.id);
+            console.log("[FormComponent.FormHostAbility] get form, form id:" + form.id);
+            globalThis.formId21 = form.id
           })
-        }
+          .onError((error) => {
+            console.log("[FormComponent.FormHostAbility] error code:" + error.errcode);
+            console.log("[FormComponent.FormHostAbility] error msg:" + error.msg);
+          })
         Text(this.message)
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
