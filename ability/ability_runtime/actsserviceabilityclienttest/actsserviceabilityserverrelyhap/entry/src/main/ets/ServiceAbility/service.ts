@@ -48,7 +48,6 @@ class StubTest extends rpc.RemoteObject {
         console.log('ACTS_SerivceAbilityServer ====< method called.')
     }
 }
-
 export default {
     onStart(want) {
         console.debug('ACTS_SerivceAbilityServer 0425 ====>onStart .ts 0851 ='
@@ -60,9 +59,9 @@ export default {
         commonEvent.publish("ACTS_SerivceAbilityServer_onStop", (err) => { });
         particleAbility.terminateSelf().then((data) => {
             console.log('ACTS_SerivceAbilityServer terminateSelf data:' + JSON.stringify(data));
-          }).catch((error) => {
+        }).catch((error) => {
             console.log('ACTS_SerivceAbilityServer terminateSelf error:' + JSON.stringify(error));
-          });
+        });
     },
     onCommand(want, restart, startId) {
         console.debug('ACTS_SerivceAbilityServer ====>onCommand='
@@ -81,9 +80,9 @@ export default {
             );
             particleAbility.terminateSelf().then((data) => {
                 console.log('ACTS_SerivceAbilityServer terminateSelf data:' + JSON.stringify(data));
-              }).catch((error) => {
+            }).catch((error) => {
                 console.log('ACTS_SerivceAbilityServer terminateSelf error:' + JSON.stringify(error));
-              });
+            });
         } else if (want.action == 'ServiceStartService_1000') {
             particleAbility.startAbility(
                 {
@@ -96,11 +95,11 @@ export default {
                 }, (err, data) => {
                     console.debug('ACTS_SerivceAbilityServer start Ability 1000 callback====='
                         + err + ', data= ' + data + " , JSON." + JSON.stringify(data));
-                        particleAbility.terminateSelf().then((data) => {
-                            console.log('ACTS_SerivceAbilityServer terminateSelf data:' + JSON.stringify(data));
-                          }).catch((error) => {
-                            console.log('ACTS_SerivceAbilityServer terminateSelf error:' + JSON.stringify(error));
-                          });
+                    particleAbility.terminateSelf().then((data) => {
+                        console.log('ACTS_SerivceAbilityServer terminateSelf data:' + JSON.stringify(data));
+                    }).catch((error) => {
+                        console.log('ACTS_SerivceAbilityServer terminateSelf error:' + JSON.stringify(error));
+                    });
                 }
             );
         } else {
@@ -110,11 +109,11 @@ export default {
                         || want.action == 'PageStartService_0301' || want.action == 'PageStartService_0401') {
                         console.debug('ACTS_SerivceAbilityServer_onCommand 100 200 301 401.terminateSelf()=====>'
                             + want.action);
-                            particleAbility.terminateSelf().then((data) => {
-                                console.log('ACTS_SerivceAbilityServer terminateSelf data:' + JSON.stringify(data));
-                              }).catch((error) => {
-                                console.log('ACTS_SerivceAbilityServer terminateSelf error:' + JSON.stringify(error));
-                              });
+                        particleAbility.terminateSelf().then((data) => {
+                            console.log('ACTS_SerivceAbilityServer terminateSelf data:' + JSON.stringify(data));
+                        }).catch((error) => {
+                            console.log('ACTS_SerivceAbilityServer terminateSelf error:' + JSON.stringify(error));
+                        });
                     }
                 } else {
                     console.debug('ACTS_SerivceAbilityServer_onCommand publish err=====>' + err);
@@ -127,6 +126,7 @@ export default {
         try {
             console.debug('ACTS_SerivceAbilityServer ====>onConnect='
                 + want + " , JSON." + JSON.stringify(want));
+            commonEvent.publish("ACTS_SerivceAbilityServer_onConnect" + "_" + want.action, (err) => { });
             function onConnectCallback(element, remote) {
                 console.debug('ACTS_SerivceAbilityServer_onConnectCallback ====> mConnIdJs='
                     + JSON.stringify(mConnIdJs) + " , " + mConnIdJs);
@@ -157,8 +157,6 @@ export default {
                         onFailed: onFailedCallback,
                     },
                 )
-            } else {
-                commonEvent.publish("ACTS_SerivceAbilityServer_onConnect" + "_" + want.action, (err) => { });
             }
         } catch (err) {
             console.log("ACTS_SerivceAbilityServer ====< error:" + err)
@@ -169,27 +167,22 @@ export default {
     onDisconnect(want) {
         console.debug('ACTS_SerivceAbilityServer ====>onDisConnect='
             + want + " , JSON." + JSON.stringify(want));
-        commonEvent.publish("ACTS_SerivceAbilityServer_onDisConnect", (err) => {
-            if (err.code) {
-                console.debug('ACTS_SerivceAbilityServer_onDisConnect publish err=====>' + err);
-            } else {
-                console.debug('ACTS_SerivceAbilityServer_onDisConnect featureAbility.terminateSelf()=====<'
-                    + want.action);
-                if (want.action == 'ServiceConnectService_1300' || want.action == 'ServiceConnectService_1400'
-                    || want.action == 'ServiceConnectService_1500' || want.action == 'ServiceConnectService_1501'
-                    || want.action == 'ServiceConnectService_1600' || want.action == 'ServiceConnectService_1601'
-                ) {
-                    particleAbility.disconnectAbility(mConnIdJs, (err) => {
-                        console.debug("=ACTS_SerivceAbilityServer_onDisConnect 13 14 15 16 err====>"
-                            + ("json err=") + JSON.stringify(err) + " , " + want.action);
-                    })
-                }
-                particleAbility.terminateSelf().then((data) => {
-                    console.log('ACTS_SerivceAbilityServer terminateSelf data:' + JSON.stringify(data));
-                  }).catch((error) => {
-                    console.log('ACTS_SerivceAbilityServer terminateSelf error:' + JSON.stringify(error));
-                  });
-            }
+        commonEvent.publish("ACTS_SerivceAbilityServer_onDisConnect_" + want.action, (err) => {
+            console.debug('ACTS_SerivceAbilityServer_onDisConnect ===' + want.action);
+        });
+        if (want.action == 'ServiceConnectService_1300' || want.action == 'ServiceConnectService_1400'
+            || want.action == 'ServiceConnectService_1500' || want.action == 'ServiceConnectService_1501'
+            || want.action == 'ServiceConnectService_1600' || want.action == 'ServiceConnectService_1601'
+        ) {
+            particleAbility.disconnectAbility(mConnIdJs, (err) => {
+                console.debug("=ACTS_SerivceAbilityServer_onDisConnect 13 14 15 16 err====>"
+                    + ("json err=") + JSON.stringify(err) + " , " + want.action);
+            })
+        }
+        particleAbility.terminateSelf().then((data) => {
+            console.log('ACTS_SerivceAbilityServer terminateSelf data:' + JSON.stringify(data));
+        }).catch((error) => {
+            console.log('ACTS_SerivceAbilityServer terminateSelf error:' + JSON.stringify(error));
         });
     },
     onReady() {
