@@ -255,8 +255,12 @@ struct Index {
                                     console.log('error:' + error);
                                     return;
                                 }
-                                this.text = result.toString();
-                                console.log("usage is:" + this.text)
+                                if (result > 2500000000) {
+                                    this.text = "true"
+                                } else {
+                                    this.text = "false"
+                                }
+                                console.log("usage is:" + result)
                             })
                             setTimeout(()=>{
                                 Utils.emitEvent(this.text,434)
@@ -269,7 +273,12 @@ struct Index {
                                     .then(quota=>{
                                         console.log('usage: '+quota)
                                         setTimeout(()=>{
-                                            Utils.emitEvent(quota.toString(),448)
+                                            if (result > 2500000000) {
+                                                this.text = "true"
+                                            } else {
+                                                this.text = "false"
+                                            }
+                                            Utils.emitEvent(this.text,448)
                                         },3000) 
                                     })
                                     .catch(error=>{
