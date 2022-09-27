@@ -1,5 +1,4 @@
-/*
- * Copyright (C) 2022 Huawei Device Co., Ltd.
+/* Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -34,26 +33,26 @@ using namespace std;
 using namespace testing::ext;
 using namespace testing;
 namespace OHOS {
-class toolchaintest : public ::testing::TestWithParam<string> {};
+class Toolchaintest : public ::testing::TestWithParam<string> {};
 
-static string filepath = "/data/local/tmp/libc-test";
-static vector<std::string> temp = runtest::GetFileNames(filepath);
+static string g_filepath = "/data/local/tmp/libc-test";
+static vector<std::string> temp = Runtest::GetFileNames(g_filepath);
 
-volatile int t_status = 0;
+volatile int g_tStatus = 0;
 
-static void handler(int sig)
+static void Handler(int sig)
 {
 }
 
-static int start(const char *argvs)
+static int Start(const char *argvs)
 {
-    int pid, space_size = 100*1024;
-    //Create a child process
-    //Set the process stack space
+    int pid, spaceSize = 100 * 1024;
+    // Create a child process
+    // Set the process stack space
     pid = fork();
     if (pid == 0) {
-        runtest::t_setrlim(RLIMIT_STACK, space_size);
-        //Overloading the subprocess space
+        Runtest::TSetrlim(RLIMIT_STACK, spaceSize);
+        // Overloading the subprocess space
         int exe = execl(argvs, "strptime", nullptr);
         printf("exe:%d %s exec failed: %s\n", exe, argvs, strerror(errno));
         exit(1);
@@ -61,33 +60,33 @@ static int start(const char *argvs)
     return pid;
 }
 
-static int runTests(const char *argvs)
+static int RunTests(const char *argvs)
 {
     int timeoutsec = 5, timeout = 0;
     int status, pid;
     sigset_t set;
     void (*retfunc)(int);
-    //signal set
+    // signal set
     sigemptyset(&set);
     sigaddset(&set, SIGCHLD);
     sigprocmask(SIG_BLOCK, &set, nullptr);
-    retfunc = signal(SIGCHLD, handler);
+    retfunc = signal(SIGCHLD, Handler);
     if (retfunc == SIG_ERR) {
         printf("signal triggering failed:%s\n", strerror(errno));
     }
-    pid = start(argvs);
-    //The function system call failed
+    pid = Start(argvs);
+    // The function system call failed
     if (pid == -1) {
         printf("%s fork failed: %s\n", argvs, strerror(errno));
         printf("FAIL %s [internal]\n", argvs);
         return -1;
     }
     struct timespec tp;
-    //Maximum blocking time
+    // Maximum blocking time
     tp.tv_sec = timeoutsec;
     tp.tv_nsec = 0;
     if (sigtimedwait(&set, nullptr, &tp) == -1) {
-        //Call it again
+        // Call it again
         if (errno == EAGAIN) {
             timeout = 1;
         } else {
@@ -97,16 +96,16 @@ static int runTests(const char *argvs)
             printf("%s kill failed: %s\n", argvs, strerror(errno));
         }
     }
-    //Waiting for the process to stop
+    // Waiting for the process to stop
     if (waitpid(pid, &status, 0) != pid) {
         printf("%s waitpid failed: %s\n", argvs, strerror(errno));
         printf("FAIL %s [internal]\n", argvs);
         return -1;
     }
-    //Process state
-    if (WIFEXITED(status)) { //The right exit
-        if (WEXITSTATUS(status) == 0) { //operate successfully
-            return t_status;
+    // Process state
+    if (WIFEXITED(status)) { // The right exit
+        if (WEXITSTATUS(status) == 0) { // operate successfully
+            return g_tStatus;
         }
         printf("FAIL %s [status %d]\n", argvs, WEXITSTATUS(status));
     } else if (timeout) {
@@ -121,15 +120,15 @@ static int runTests(const char *argvs)
 
 
 /**
- * @tc.name      : toolchaintest.LibcTest
+ * @tc.name      : Toolchaintest.LibcTest
  * @tc.desc      : start test
  * @tc.level     : Level 3
  */
-HWTEST_P(toolchaintest, LibcTest, Function | MediumTest | Level3)
+HWTEST_P(Toolchaintest, LibcTest, Function | MediumTest | Level3)
 {
     int ret;
     string testName = GetParam();
-    ret = runTests(testName.c_str());
+    ret = RunTests(testName.c_str());
     if (ret == 0) {
         EXPECT_EQ(0, ret) << "test  " << testName  << "  succeed" << endl;
     } else {
@@ -137,5 +136,5 @@ HWTEST_P(toolchaintest, LibcTest, Function | MediumTest | Level3)
         EXPECT_EQ(-1, ret) << "test  " << testName  << "  failed" << endl;
     }
 }
-INSTANTIATE_TEST_SUITE_P(libcTest, toolchaintest, testing::ValuesIn(temp.begin(), temp.end()));
+INSTANTIATE_TEST_SUITE_P(libcTest, Toolchaintest, testing::ValuesIn(temp.begin(), temp.end()));
 } // namespace OHOS
