@@ -18,7 +18,7 @@
             "type": "ShellKit",
             "run-command": [
                 "mkdir -p /data/app/el2/100/base/ohos.acts.multimedia.audio.audiocapturer/haps/entry/files",
-                "chmod 777 -R /data/app/el2/100/base/ohos.acts.multimedia.audio.audiocapturer/haps/entry/files"
+                "chmod 777 -R /data/app/el2/100/base/ohos.acts.multimedia.audio.audiocapturer/haps/entry"
             ],
             "cleanup-apps": true
         },
