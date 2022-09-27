@@ -593,10 +593,8 @@ export default function abilityTest() {
         console.debug("ACTS_NewWant_Test_0800====>flagOnNewWant:====>"
           + flagOnNewWant)
 
-        if ((flagOnCreate == 0 && flagOnWindowStageCreate == 0
-          && flagOnForeground == 2 && flagOnNewWant == 1)
-          || (flagOnCreate == 1 && flagOnWindowStageCreate == 1
-          && flagOnForeground == 2 && flagOnNewWant == 0)) {
+        if (flagOnCreate == 0 && flagOnWindowStageCreate == 0
+          && flagOnForeground == 2 && flagOnNewWant == 1) {
             flagNewWant = true;
             commonEvent.unsubscribe(Subscriber, UnSubscribeCallback);
         }
