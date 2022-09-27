@@ -133,6 +133,7 @@
                  returnValue = value.netId;
              }
          });
+         console.info("netAvailable end");
          netConn.on('netCapabilitiesChange', (value) => {
              if (value === undefined) {
                  console.info("${caseName} netCapabilitiesChange fail");
@@ -144,6 +145,7 @@
 
              }
          });
+         console.info("netCapabilitiesChange end");
          netConn.on('netConnectionPropertiesChange', (value) => {
              if (value === undefined) {
                  console.info("${caseName} netConnectionPropertiesChange fail");
@@ -153,6 +155,7 @@
                  console.info("${caseName} netConnectionPropertiesChange handle =:" + value.netHandle.netId);
              }
          });
+         console.info("netConnectionPropertiesChange end");
          netConn.on('netLost', (value) => {
              if (error) {
                  console.info("${caseName} netLost fail");
@@ -162,6 +165,7 @@
                  console.info("${caseName} netLost : " + value.netId);
              }
          });
+         console.info("netLost end");
          netConn.on('netUnavailable', (value) => {
              if (error) {
                  console.info("${caseName} netUnavailable fail");
@@ -171,6 +175,7 @@
                  console.info("${caseName} netUnavailable: " + value.netId);
              }
          });
+         console.info("netUnavailable end");
          netConn.on('netBlockStatuschange', (value) => {
              if (error) {
                  console.info("${caseName} netBlockStatusChange fail");
@@ -180,11 +185,13 @@
                  console.info("${caseName} netBlockStatusChange : " + value.netHandle.netId);
              }
          });
+         console.info("netBlockStatuschange end");
          netConn.register((error) => {
              if (error) {
                  console.info("${caseName} register fail: ${error}");
              }
          });
+         console.info("register end");
          await sleep(DELAY);
          netConn.unregister((error) => {
              if (error) {
@@ -192,6 +199,7 @@
                  done();
              }
          });
+         console.info("unregister end");
          done();
      });
 
@@ -1304,7 +1312,7 @@
              } else {
                  console.info("${caseName} netAvailable : " + value.netId);
                  VALUE = value.netId;
-                 expect(VALUE).assertEqual(ETH_100);
+                 expect(VALUE >= ETH_100).assertTrue();
              }
          });
          netConn.on('netBlockStatusChange', (error, value) => {
