@@ -206,29 +206,12 @@ export default function remoteWindowJsunit() {
     it('testRemoteWindow0011', 0, async function (done) {
       console.info('RemoteWindow testRemoteWindow0011 START');
       await Utils.sleep(2000);
-      let strJson = getInspectorByKey('formComponentFormDimensionWindowBoundsText');
-      console.info("[testRemoteWindow0011] component textAlign strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Swiper');
-      expect(obj.$attrs.indicatorStyle).assertEqual({ mask: false });
-      console.info("[testRemoteWindow0011] indicatorStyle value :" + obj.$attrs.indicatorStyle);
-      done();
-    });
-
-    /*
-     * @tc.number       SUB_ACE_BASIC_ETS_API_0012
-     * @tc.name         testRemoteWindow0011
-     * @tc.desic        aceRemoteWindowEtsTest0011
-     */
-    it('testRemoteWindow0012', 0, async function (done) {
-      console.info('RemoteWindow testRemoteWindow0012 START');
-      await Utils.sleep(2000);
       let strJson = getInspectorByKey('remoteWindow');
-      console.info("[testRemoteWindow0012] component textAlign strJson:" + strJson);
+      console.info("[testRemoteWindow0011] component textAlign strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$attrs.target).assertNotEqual(undefined);
       expect(obj.$attrs.target.missionId).assertNotEqual(undefined);
-      console.info("[testRemoteWindow0012] missionId value :" + obj.$attrs.target.missionId);
+      console.info("[testRemoteWindow0011] missionId value :" + obj.$attrs.target.missionId);
       done();
     });
   })

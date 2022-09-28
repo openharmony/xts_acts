@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2022 Shenzhen Kaihong Digital Industry Development Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -46,7 +45,7 @@ export default struct DomCreateElement {
         .textOverflow({ overflow: TextOverflow.None })
         .key("createElementText")
         .onClick(() => {
-          dom.createElement('div')
+//          dom.createElement('div')
         })
 
     }.width("100%").height("100%")

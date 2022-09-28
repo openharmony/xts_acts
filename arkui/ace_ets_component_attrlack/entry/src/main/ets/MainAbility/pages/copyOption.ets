@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2022 Shenzhen Kaihong Digital Industry Development Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -46,7 +45,7 @@ struct CopyOption {
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
         .key("InAppText")
-        .copyOption(CopyOption.InApp)
+//        .copyOption(CopyOption.InApp)
         .visibility(Visibility.None)
 
       Text("copyOption-LocalDevice")
@@ -62,7 +61,7 @@ struct CopyOption {
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
         .key("LocalDeviceText")
-        .copyOption(CopyOption.LocalDevice)
+//        .copyOption(CopyOption.LocalDevice)
         .visibility(Visibility.None)
 
     }.width("100%").height("100%")

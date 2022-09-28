@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2022 Shenzhen Kaihong Digital Industry Development Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -40,14 +39,14 @@ struct HitTestMode {
         .key("Block")
         .width("100%")
         .height("100%")
-        .hitTestBehavior(HitTestMode.Block)
+//        .hitTestBehavior(HitTestMode.Block)
         .onTouch((event) => {
           console.info('HitTestMode inner stack touched type: ' + event.type)
         })
 
         Text('Transparent')
           .key("Transparent")
-          .hitTestBehavior(HitTestMode.Transparent)
+//          .hitTestBehavior(HitTestMode.Transparent)
           .width("100%")
           .height("50%")
           .onTouch((event) => {
