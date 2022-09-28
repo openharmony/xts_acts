@@ -23,7 +23,6 @@ import {
     AUDIO_TYPE,
     VIDEO_TYPE,
     FILE_TYPE,
-    FILEKEY,
     checkPresetsAssets,
     checkAssetsCount,
     fetchOps,
@@ -36,7 +35,7 @@ export default function mediafetchoptionsCallback(abilityContext) {
         beforeAll(async function () {
             console.info('beforeAll case');
             await getPermission();
-            await checkPresetsAssets(media, 'ActsMediaLibraryFileAssetUri');
+            await checkPresetsAssets(media, 'ActsMediaLibraryMediafetchoptionsTest');
         });
         beforeEach(function () {
             console.info('beforeEach case');

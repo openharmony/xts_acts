@@ -24,7 +24,6 @@ import {
     albumFetchOps,
     albumTwoTypesFetchOps,
     albumThreeTypesFetchOps,
-    checkPresetsAssets,
     checkAlbumsCount,
 } from '../../../../../../common';
 
@@ -33,7 +32,6 @@ export default function albumGetFileAssetsPromiseTest(abilityContext) {
         const media = mediaLibrary.getMediaLibrary(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
-            await checkPresetsAssets(media, 'ActsMediaLibraryAlbumTest');
         });
         beforeEach(function () {
             console.info('beforeEach case');

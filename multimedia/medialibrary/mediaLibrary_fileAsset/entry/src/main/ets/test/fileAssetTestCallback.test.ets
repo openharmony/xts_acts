@@ -22,7 +22,6 @@ import {
     VIDEO_TYPE,
     AUDIO_TYPE,
     FILE_TYPE,
-    checkPresetsAssets,
     checkAssetsCount,
     fetchOps,
     isNum,
@@ -33,7 +32,6 @@ export default function fileAssetTestCallbackTest(abilityContext) {
         const media = mediaLibrary.getMediaLibrary(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
-            await checkPresetsAssets(media, 'ActsMediaLibraryFileAssetTest')
         });
         beforeEach(function () {
             console.info('beforeEach case');

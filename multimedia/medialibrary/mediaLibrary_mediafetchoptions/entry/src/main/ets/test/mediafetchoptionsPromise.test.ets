@@ -24,10 +24,8 @@ import {
     VIDEO_TYPE,
     FILE_TYPE,
     FILEKEY,
-    checkPresetsAssets,
     checkAssetsCount,
     fetchOps,
-    getPermission,
 } from '../../../../../../common';
 
 export default function mediafetchoptionsPromise(abilityContext) {
@@ -35,7 +33,6 @@ export default function mediafetchoptionsPromise(abilityContext) {
         const media = mediaLibrary.getMediaLibrary(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
-            await checkPresetsAssets(media, 'ActsMediaLibraryFileAssetUri');
         });
         beforeEach(function () {
             console.info('beforeEach case');

@@ -22,7 +22,6 @@ import {
     IMAGE_TYPE,
     VIDEO_TYPE,
     AUDIO_TYPE,
-    FILEKEY,
     checkPresetsAssets,
     checkAssetsCount,
     fetchOps,
@@ -35,7 +34,7 @@ export default function getThumbnailCallback(abilityContext) {
         beforeAll(async function () {
             console.info('beforeAll case');
             await getPermission();
-            await checkPresetsAssets(media, 'ActsMediaLibraryGetThumbnail');
+            await checkPresetsAssets(media, 'ActsMediaLibraryGetThumbnailTest');
         });
         beforeEach(function () {
             console.info('beforeEach case');

@@ -22,7 +22,6 @@ import {
     AUDIO_TYPE,
     FILE_TYPE,
     FILEKEY,
-    checkPresetsAssets,
     checkAssetsCount,
     fetchOps,
     getPermission,
@@ -36,7 +35,6 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
         beforeAll(async function () {
             console.info('beforeAll case');
             await getPermission();
-            await checkPresetsAssets(media, 'ActsMediaLibraryBaseTest');
         });
         beforeEach(function () {
             console.info('beforeEach case');

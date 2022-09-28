@@ -25,6 +25,7 @@ import {
     getPermission,
     albumFetchOps,
     fileIdFetchOps,
+    checkPresetsAssets,
 } from "../../../../../../common";
 
 export default function trashCallback(abilityContext) {
@@ -32,6 +33,7 @@ export default function trashCallback(abilityContext) {
         beforeAll(async function () {
             await getPermission();
             console.info("beforeAll case");
+            await checkPresetsAssets(media, 'ActsMediaLibraryTrashJsTest');
         });
         beforeEach(function () {
             console.info("beforeEach case");

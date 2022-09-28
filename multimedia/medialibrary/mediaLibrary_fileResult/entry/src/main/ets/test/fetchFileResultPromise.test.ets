@@ -19,12 +19,8 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import {
     sleep,
     IMAGE_TYPE,
-    VIDEO_TYPE,
-    AUDIO_TYPE,
     FILE_TYPE,
     FILEKEY,
-    checkPresetsAssets,
-    nameFetchOps,
     checkAssetsCount,
     fetchOps,
 } from '../../../../../../common';
@@ -34,7 +30,6 @@ export default function fetchFileResultPromiseTest(abilityContext) {
         const media = mediaLibrary.getMediaLibrary(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
-            await checkPresetsAssets(media, 'ActsMediaLibraryFileResultTest');
         });
         beforeEach(function () {
             console.info('beforeEach case');
