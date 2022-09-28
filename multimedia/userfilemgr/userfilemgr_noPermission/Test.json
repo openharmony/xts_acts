@@ -30,7 +30,7 @@
                 "hilog -p off",
                 "hilog -b I",
                 "hilog -b D -D 0xD002B70", 
-                "scanner_demo",
+                "scanner",
                 "sleep 10"
             ]
         },
