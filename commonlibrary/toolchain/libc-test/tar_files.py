@@ -30,7 +30,7 @@ def copyFiles(sourceDir, targetDir):
         if not os.path.isfile(sourceF):
             if os.path.isdir(sourceF):
                 copyFiles(sourceF, targetF)
-                continue
+            continue
         if os.path.exists(targetDir):
             copyFileCounts += 1
             with open(targetF, "wb") as fp:
