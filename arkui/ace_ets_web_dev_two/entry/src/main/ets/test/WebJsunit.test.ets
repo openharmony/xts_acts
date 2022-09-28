@@ -151,7 +151,7 @@ export default function webJsunit() {
      */
     it('getOriginUsage',0,async function(done){
       emitKey="emitGetOriginQuota";
-      Utils.registerEvent("getOriginUsage","24576",432,done);
+      Utils.registerEvent("getOriginUsage","true",432,done);
       sendEventByKey('webcomponent',10,'');
     })
     /* 
@@ -231,7 +231,7 @@ export default function webJsunit() {
      */
     it('getOriginUsagePromise',0,async function(done){
       emitKey="emitGetOriginQuotaPromise";
-      Utils.registerEvent("getOriginUsagePromise",'24576',447,done);
+      Utils.registerEvent("getOriginUsagePromise",'true',447,done);
       sendEventByKey('webcomponent',10,'');
     })
     /* 
