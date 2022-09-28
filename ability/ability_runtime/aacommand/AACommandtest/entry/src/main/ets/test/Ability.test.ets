@@ -28,7 +28,7 @@ export default function abilityTest() {
                 bundleName: "com.example.aacommandtest",
                 abilityName: "MainAbility"
             }
-            await globalThis.abilityTestContext.startAbility(wantInfo).then((data) => {
+            await globalThis.abilityContext.startAbility(wantInfo).then((data) => {
                 console.log("ActsAACommandTest startAbility data : " + JSON.stringify(data));
             }).catch((err) => {
                 console.log("ActsAACommandTest startAbility err : " + JSON.stringify(err));

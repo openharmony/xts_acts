@@ -32,6 +32,7 @@ async function startAbilityTest(TAG, context) {
 
 export default class MainAbility extends Ability {
     async onCreate(want, launchParam) {
+        globalThis.abilityContext = this.context;
         console.log('MainAbility onCreate')
         let cmd: any
         let abilityDelegatorArguments: any
@@ -315,8 +316,6 @@ export default class MainAbility extends Ability {
     onWindowStageCreate(windowStage) {
         console.log('MainAbility onWindowStageCreate')
         windowStage.setUIContent(this.context, 'pages/index', null)
-
-        globalThis.abilityContext = this.context;
     }
 
     onWindowStageDestroy() {

@@ -19,6 +19,7 @@ import testsuite from '../test/List.test'
 
 export default class TestAbility extends Ability {
     onCreate(want, launchParam) {
+        globalThis.abilityContext = this.context;
         console.info('TestAbility onCreate')
         let abilityDelegatorArguments: any
         let abilityDelegator: any
@@ -34,7 +35,6 @@ export default class TestAbility extends Ability {
     onWindowStageCreate(windowStage) {
         console.log('TestAbility onWindowStageCreate')
         windowStage.setUIContent(this.context, 'TestAbility/pages/index', null)
-        globalThis.abilityContext = this.context;
     }
 
     onWindowStageDestroy() {

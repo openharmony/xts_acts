@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium'
+import { describe, it, expect, afterEach } from '@ohos/hypium'
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
 
 let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
@@ -36,6 +36,24 @@ function test(time) {
 
 export default function abilityStageMonitorTest() {
   describe('ActsAbilityTest', function () {
+
+    afterEach(async (done) => {
+      console.log("SUB_AA_AbilityStageMonitor afterEach called");
+      let wantInfo = {
+        bundleName: "com.example.abilitystagemonitortest",
+        abilityName: "TestAbility"
+      }
+      await globalThis.abilityContext.startAbility(wantInfo).then((data) => {
+        console.log("SUB_AA_AbilityStageMonitor startAbility data : " + JSON.stringify(data));
+      }).catch((err) => {
+        console.log("SUB_AA_AbilityStageMonitor startAbility err : " + JSON.stringify(err));
+      })
+
+      setTimeout(function () {
+        console.log("SUB_AA_AbilityStageMonitor afterEach called");
+        done();
+      }, 1000);
+    })
 
     /**
          * @tc.number: SUB_AA_AbilityStageMonitor_0100
