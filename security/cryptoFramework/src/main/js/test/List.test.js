@@ -16,10 +16,12 @@
 import SecurityRandomJsunit from "./SecurityRandom.test.js";
 import DigestAlgorithmJsunit from "./DigestAlgorithm.test.js";
 import CertificateJsunit from "./Certificate.test.js";
+import SymmetricCryptographyJsunit from "./SymmetricCryptography.test.js";
 
 
 export default function testsuite() {
   CertificateJsunit();
   DigestAlgorithmJsunit();
+  SymmetricCryptographyJsunit();
   SecurityRandomJsunit();
 }
