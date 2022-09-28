@@ -26,16 +26,17 @@ import {
     checkPresetsAssets,
     checkAlbumsCount,
     getPermission,
+    isNum,
 } from '../../../../../../common';
 
 
-export default function getAlbumsCallback(abilityContext) {
-    describe('getAlbumsCallback', function () {
+export default function getAlbumsCallbackTest(abilityContext) {
+    describe('getAlbumsCallbackTest', function () {
         const userfile_mgr = userfile_manager.getUserFileMgr(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
             await getPermission();
-            await checkPresetsAssets(userfile_mgr, 'ActsUserFileMgrAlbum');
+            await checkPresetsAssets(userfile_mgr, 'ActsUserFileMgrAlbumJsTest');
         });
         beforeEach(function () {
             console.info('beforeEach case');
@@ -61,7 +62,7 @@ export default function getAlbumsCallback(abilityContext) {
         const props = {
             albumName: 'Static',
             albumUri: 'datashare:///userfile_mgr/album/',
-            count: 1
+            count: 4
         }
         const checkProps = async function (done, testNum, album, relativePaths) {
             printAlbumMessage(testNum, album);
@@ -73,6 +74,7 @@ export default function getAlbumsCallback(abilityContext) {
             }
             expect(album.albumName).assertEqual(props.albumName);
             expect(album.count).assertEqual(props.count);
+            expect(isNum(album.dateModified)).assertTrue();
             if (Array.isArray(relativePaths)) {
                 let i = relativePaths.indexOf(album.relativePath);
                 if (i > -1) {
@@ -85,7 +87,7 @@ export default function getAlbumsCallback(abilityContext) {
                 expect(album.relativePath).assertEqual(relativePaths);
             }
         }
-        const checkAlbumInfo = async function (done, testNum, media_type, fetchOp, relativePaths, expectAlbumCount) {
+        const checkAlbumInfo = async function (done, testNum, media_type, fetchOp, relativePaths) {
             try {
                 userfile_mgr.getAlbums(media_type, fetchOp, async (err, albumList) => {
                     if(err) {
@@ -94,6 +96,7 @@ export default function getAlbumsCallback(abilityContext) {
                         done();
                         return;
                     }
+                    let expectAlbumCount = 1;
                     const albumCountPass = await checkAlbumsCount(done, testNum, albumList, expectAlbumCount);
                     if (!albumCountPass) return;
                     const album = albumList[0];
@@ -120,8 +123,7 @@ export default function getAlbumsCallback(abilityContext) {
             let media_type = [IMAGE_TYPE];
             let currentFetchOp = albumFetchOps(testNum, 'Pictures/', 'Static');
             let relativePaths = 'Pictures/';
-            let expectAlbumCount = 1;
-            await checkAlbumInfo(done, testNum, media_type, currentFetchOp, relativePaths, expectAlbumCount);
+            await checkAlbumInfo(done, testNum, media_type, currentFetchOp, relativePaths);
         });
 
         /**
@@ -137,8 +139,7 @@ export default function getAlbumsCallback(abilityContext) {
             let media_type = [AUDIO_TYPE];
             let currentFetchOp = albumFetchOps(testNum, 'Audios/', 'Static');
             let relativePaths = 'Audios/';
-            let expectAlbumCount = 1;
-            await checkAlbumInfo(done, testNum, media_type, currentFetchOp, relativePaths, expectAlbumCount);
+            await checkAlbumInfo(done, testNum, media_type, currentFetchOp, relativePaths);
         });
 
         /**
@@ -154,8 +155,7 @@ export default function getAlbumsCallback(abilityContext) {
             let media_type = [VIDEO_TYPE];
             let currentFetchOp = albumFetchOps(testNum, 'Videos/', 'Static');
             let relativePaths = 'Videos/';
-            let expectAlbumCount = 1;
-            await checkAlbumInfo(done, testNum, media_type, currentFetchOp, relativePaths, expectAlbumCount);
+            await checkAlbumInfo(done, testNum, media_type, currentFetchOp, relativePaths);
         });
 
         /**

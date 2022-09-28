@@ -18,15 +18,20 @@ import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 import bundle from '@ohos.bundle';
 
 const presetsCount = {
-    ActsUserFileMgrAlbum: { albumsCount: 9, assetsCount: 9 },
-    ActsUserFileMgrBase: { albumsCount: 42, assetsCount: 84 },
+    ActsUserFileMgrAlbumJsTest: { albumsCount: 9, assetsCount: 9 },
+    ActsUserFileMgrBaseJsTest: { albumsCount: 12, assetsCount: 24 },
+    ActsUserFileMgrFileAssetJsTest: { albumsCount: 45, assetsCount: 116 },
 }
 
 const IMAGE_TYPE = userfile_manager.MediaType.IMAGE;
 const VIDEO_TYPE = userfile_manager.MediaType.VIDEO;
 const AUDIO_TYPE = userfile_manager.MediaType.AUDIO;
+const FILE_TYPE = userfile_manager.MediaType.FILE;
 
 const FILEKEY = userfile_manager.FileKey;
+const AUDIOKEY = userfile_manager.AudioKey;
+const IMAGEVIDEOKEY = userfile_manager.ImageVideoKey;
+const ALBUMKEY = userfile_manager.AlbumKey;
 const sleep = async function sleep(times) {
     if (times == undefined) {
         times = 10
@@ -41,29 +46,66 @@ const allFetchOp = function () {
     };
 }
 
-const fetchOps = function (testNum, path) {
+const fileFetchOps = function (testNum, path) {
     let ops = {
-        selections: 'relative_path' + '= ?',
+        selections: FILEKEY.RELATIVE_PATH + '= ?',
         selectionArgs: [path],
     };
-    console.info(`${testNum}: fetchOps${JSON.stringify(ops)}`)
+    console.info(`${testNum}: fileFetchOps${JSON.stringify(ops)}`)
     return ops
 }
-const nameFetchOps = function (testNum, path, displayName) {
+
+const audioFetchOps = function (testNum, path) {
     let ops = {
-        selections: 'relative_path' + '= ? AND ' + FILEKEY.DISPLAY_NAME + '= ?',
+        selections: AUDIOKEY.RELATIVE_PATH + '= ?',
+        selectionArgs: [path],
+    };
+    console.info(`${testNum}: audioFetchOps${JSON.stringify(ops)}`)
+    return ops
+}
+
+const imageVideoFetchOps = function (testNum, path) {
+    let ops = {
+        selections: IMAGEVIDEOKEY.RELATIVE_PATH + '= ?',
+        selectionArgs: [path],
+    };
+    console.info(`${testNum}: imageVideoFetchOps${JSON.stringify(ops)}`)
+    return ops
+}
+
+const fileNameFetchOps = function (testNum, path, displayName) {
+    let ops = {
+        selections: FILEKEY.RELATIVE_PATH + '= ? AND ' + FILEKEY.DISPLAY_NAME + '= ?',
         selectionArgs: [path, displayName],
     };
-    console.info(`${testNum}: fetchOps${JSON.stringify(ops)}`)
+    console.info(`${testNum}: fileNameFetchOps${JSON.stringify(ops)}`)
+    return ops
+}
+
+const audioNameFetchOps = function (testNum, path, displayName) {
+    let ops = {
+        selections: AUDIOKEY.RELATIVE_PATH + '= ? AND ' + AUDIOKEY.DISPLAY_NAME + '= ?',
+        selectionArgs: [path, displayName],
+    };
+    console.info(`${testNum}: audioNameFetchOps${JSON.stringify(ops)}`)
+    return ops
+}
+
+const imageVideoNameFetchOps = function (testNum, path, displayName) {
+    let ops = {
+        selections: IMAGEVIDEOKEY.RELATIVE_PATH + '= ? AND ' + IMAGEVIDEOKEY.DISPLAY_NAME + '= ?',
+        selectionArgs: [path, displayName],
+    };
+    console.info(`${testNum}: imageVideoNameFetchOps${JSON.stringify(ops)}`)
     return ops
 }
 
 const albumFetchOps = function (testNum, path, albumName) {
     let ops = {
-        selections: 'relative_path' + '= ? AND ' + 'bucket_display_name' + '= ?',
+        selections: ALBUMKEY.RELATIVE_PATH + '= ? AND ' + 'bucket_display_name' + '= ?',
         selectionArgs: [path, albumName],
     };
-    console.info(`${testNum}: fetchOps${JSON.stringify(ops)}`)
+    console.info(`${testNum}: albumFetchOps${JSON.stringify(ops)}`)
     return ops
 }
 
@@ -148,11 +190,16 @@ export {
     IMAGE_TYPE,
     VIDEO_TYPE,
     AUDIO_TYPE,
+    FILE_TYPE,
     FILEKEY,
     sleep,
     allFetchOp,
-    fetchOps,
-    nameFetchOps,
+    fileFetchOps,
+    audioFetchOps,
+    imageVideoFetchOps,
+    fileNameFetchOps,
+    audioNameFetchOps,
+    imageVideoNameFetchOps,
     albumFetchOps,
     checkPresetsAssets,
     checkAssetsCount,

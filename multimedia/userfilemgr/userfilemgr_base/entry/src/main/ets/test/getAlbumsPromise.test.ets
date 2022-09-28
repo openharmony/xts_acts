@@ -27,12 +27,12 @@ import {
     checkAlbumsCount,
 } from '../../../../../../common';
 
-export default function getAlbumsPromise(abilityContext) {
-    describe('getAlbumsPromise', function () {
+export default function getAlbumsPromiseTest(abilityContext) {
+    describe('getAlbumsPromiseTest', function () {
         const userfile_mgr = userfile_manager.getUserFileMgr(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
-            await checkPresetsAssets(userfile_mgr, 'ActsUserFileMgrAlbum');
+            await checkPresetsAssets(userfile_mgr, 'ActsUserFileMgrAlbumJsTest');
         });
         beforeEach(function () {
             console.info('beforeEach case');
@@ -58,7 +58,7 @@ export default function getAlbumsPromise(abilityContext) {
         const props = {
             albumName: 'Static',
             albumUri: 'datashare:///userfile_mgr/album/',
-            count: 1
+            count: 4
         }
         const checkProps = async function (done, testNum, album, relativePaths) {
             printAlbumMessage(testNum, album);
