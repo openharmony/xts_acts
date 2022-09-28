@@ -21,19 +21,20 @@ import {
     IMAGE_TYPE,
     VIDEO_TYPE,
     AUDIO_TYPE,
+    audioNameFetchOps,
+    imageVideoNameFetchOps,
     checkPresetsAssets,
     checkAssetsCount,
     getPermission,
-    nameFetchOps,
 } from '../../../../../../common';
 
-export default function fileAssetCommitModifyCallback(abilityContext) {
-    describe('fileAssetCommitModifyCallback', function () {
+export default function fileAssetCommitModifyCallbackTest(abilityContext) {
+    describe('fileAssetCommitModifyCallbackTest', function () {
         const userfile_mgr = userfile_manager.getUserFileMgr(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
             await getPermission();
-            await checkPresetsAssets(userfile_mgr, 'ActsUserFileMgrFileAsset')
+            await checkPresetsAssets(userfile_mgr, 'ActsUserFileMgrFileAssetJsTest')
         });
         beforeEach(function () {
             console.info('beforeEach case');
@@ -84,7 +85,7 @@ export default function fileAssetCommitModifyCallback(abilityContext) {
         it('SUB_USERFILE_MGR_FILEASSET_COMMITMODIFY_CALLBACK_01', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_COMMITMODIFY_CALLBACK_01';
             let media_type = [IMAGE_TYPE];
-            let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyCb/', '01.jpg');
+            let fetchOp = imageVideoNameFetchOps(testNum, 'Pictures/ModifyCb/', '01.jpg');
             let prop = 'displayName'
             let val = IMAGE_TYPE.toString() + '.jpg'
             await checkCommitModify(done, testNum, media_type, fetchOp, prop, val)
@@ -101,7 +102,7 @@ export default function fileAssetCommitModifyCallback(abilityContext) {
         it('SUB_USERFILE_MGR_FILEASSET_COMMITMODIFY_CALLBACK_02', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_COMMITMODIFY_CALLBACK_02';
             let media_type = [AUDIO_TYPE];
-            let fetchOp = nameFetchOps(testNum, 'Audios/ModifyCb/', '01.mp3');
+            let fetchOp = audioNameFetchOps(testNum, 'Audios/ModifyCb/', '01.mp3');
             let prop = 'displayName'
             let val = AUDIO_TYPE.toString() + '.mp3'
             await checkCommitModify(done, testNum, media_type, fetchOp, prop, val)
@@ -118,7 +119,7 @@ export default function fileAssetCommitModifyCallback(abilityContext) {
         it('SUB_USERFILE_MGR_FILEASSET_COMMITMODIFY_CALLBACK_03', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_COMMITMODIFY_CALLBACK_03';
             let media_type = [VIDEO_TYPE];
-            let fetchOp = nameFetchOps(testNum, 'Videos/ModifyCb/', '01.mp4');
+            let fetchOp = imageVideoNameFetchOps(testNum, 'Videos/ModifyCb/', '01.mp4');
             let prop = 'displayName'
             let val = VIDEO_TYPE.toString() + '.mp4'
             await checkCommitModify(done, testNum, media_type, fetchOp, prop, val)

@@ -21,13 +21,14 @@ import {
     VIDEO_TYPE,
     AUDIO_TYPE,
     checkPresetsAssets,
-    nameFetchOps,
+    audioNameFetchOps,
+    imageVideoNameFetchOps,
     checkAssetsCount,
     getPermission,
 } from '../../../../../../common';
 
-export default function fileAssetFavoriteCallback(abilityContext) {
-    describe('fileAssetFavoriteCallback', function () {
+export default function fileAssetFavoriteCallbackTest(abilityContext) {
+    describe('fileAssetFavoriteCallbackTest', function () {
         var userfile_mgr = userfile_manager.getUserFileMgr(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
@@ -130,7 +131,7 @@ export default function fileAssetFavoriteCallback(abilityContext) {
         it('SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_01_001', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_01_001'
             let media_type = [IMAGE_TYPE];
-            let currentFetchOp = nameFetchOps(testNum, 'Pictures/FavCb/', '01.jpg')
+            let currentFetchOp = imageVideoNameFetchOps(testNum, 'Pictures/FavCb/', '01.jpg')
             await favoriteDefaultState(done, testNum, media_type, currentFetchOp)
         });
 
@@ -145,7 +146,7 @@ export default function fileAssetFavoriteCallback(abilityContext) {
         it('SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_01_002', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_01_002'
             let media_type = [IMAGE_TYPE];
-            let currentFetchOp = nameFetchOps(testNum, 'Pictures/FavCb/', '02.jpg')
+            let currentFetchOp = imageVideoNameFetchOps(testNum, 'Pictures/FavCb/', '02.jpg')
             await favoriteByTrue(done, testNum, media_type, currentFetchOp)
         });
 
@@ -160,7 +161,7 @@ export default function fileAssetFavoriteCallback(abilityContext) {
         it('SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_01_003', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_01_003'
             let media_type = [IMAGE_TYPE];
-            let currentFetchOp = nameFetchOps(testNum, 'Pictures/FavCb/', '03.jpg')
+            let currentFetchOp = imageVideoNameFetchOps(testNum, 'Pictures/FavCb/', '03.jpg')
             await favoriteByFalse(done, testNum, media_type, currentFetchOp)
         });
 
@@ -175,7 +176,7 @@ export default function fileAssetFavoriteCallback(abilityContext) {
         it('SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_02_001', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_02_001'
             let media_type = [AUDIO_TYPE];
-            let currentFetchOp = nameFetchOps(testNum, 'Audios/FavCb/', '01.mp3')
+            let currentFetchOp = audioNameFetchOps(testNum, 'Audios/FavCb/', '01.mp3')
             await favoriteDefaultState(done, testNum, media_type, currentFetchOp)
         });
 
@@ -190,7 +191,7 @@ export default function fileAssetFavoriteCallback(abilityContext) {
         it('SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_02_002', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_02_002'
             let media_type = [AUDIO_TYPE];
-            let currentFetchOp = nameFetchOps(testNum, 'Audios/FavCb/', '02.mp3')
+            let currentFetchOp = audioNameFetchOps(testNum, 'Audios/FavCb/', '02.mp3')
             await favoriteByTrue(done, testNum, media_type, currentFetchOp)
         });
 
@@ -205,7 +206,7 @@ export default function fileAssetFavoriteCallback(abilityContext) {
         it('SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_02_003', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_02_003'
             let media_type = [AUDIO_TYPE];
-            let currentFetchOp = nameFetchOps(testNum, 'Audios/FavCb/', '03.mp3')
+            let currentFetchOp = audioNameFetchOps(testNum, 'Audios/FavCb/', '03.mp3')
             await favoriteByFalse(done, testNum, media_type, currentFetchOp)
         });
 
@@ -220,7 +221,7 @@ export default function fileAssetFavoriteCallback(abilityContext) {
         it('SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_03_001', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_03_001'
             let media_type = [VIDEO_TYPE];
-            let currentFetchOp = nameFetchOps(testNum, 'Videos/FavCb/', '01.mp4')
+            let currentFetchOp = imageVideoNameFetchOps(testNum, 'Videos/FavCb/', '01.mp4')
             await favoriteDefaultState(done, testNum, media_type, currentFetchOp)
         });
 
@@ -235,7 +236,7 @@ export default function fileAssetFavoriteCallback(abilityContext) {
         it('SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_03_002', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_03_002'
             let media_type = [VIDEO_TYPE];
-            let currentFetchOp = nameFetchOps(testNum, 'Videos/FavCb/', '02.mp4')
+            let currentFetchOp = imageVideoNameFetchOps(testNum, 'Videos/FavCb/', '02.mp4')
             await favoriteByTrue(done, testNum, media_type, currentFetchOp)
         });
 
@@ -250,7 +251,7 @@ export default function fileAssetFavoriteCallback(abilityContext) {
         it('SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_03_003', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_03_003'
             let media_type = [VIDEO_TYPE];
-            let currentFetchOp = nameFetchOps(testNum, 'Videos/FavCb/', '03.mp4')
+            let currentFetchOp = imageVideoNameFetchOps(testNum, 'Videos/FavCb/', '03.mp4')
             await favoriteByFalse(done, testNum, media_type, currentFetchOp)
         });
     });

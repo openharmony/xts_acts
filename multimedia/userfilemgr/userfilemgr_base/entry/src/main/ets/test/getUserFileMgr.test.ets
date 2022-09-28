@@ -17,8 +17,8 @@ import userfile_manager from '@ohos.filemanagement.userfile_manager';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 import { sleep } from '../../../../../../common';
 
-export default function getUserFileMgr(abilityContext) {
-    describe('getUserFileMgr', function () {
+export default function getUserFileMgrTest(abilityContext) {
+    describe('getUserFileMgrTest', function () {
         const userfile_mgr = userfile_manager.getUserFileMgr(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
