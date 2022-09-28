@@ -61,7 +61,8 @@
           "pages/index",
           "pages/webStyle",
           "pages/webProp",
-          "pages/webEvent"
+          "pages/webEvent",
+          "pages/webExtra"
         ],
         "name": ".MainAbility",
         "window": {
