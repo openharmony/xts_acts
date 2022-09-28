@@ -1183,5 +1183,75 @@ export default function settingUiJsunit() {
         return;
       }
     });
+	
+    it('settings_get_value_113',0,async function(done){
+      try{console.info('test settings_get_value_113 start');
+        settings.enableAirplaneMode(false,(err,data)=>{console.info('settings  test enableAirplaneMode callback ssss');
+        console.info('settings test enableAirplaneMode callback err'+JSON.stringify(err.code));
+        expect(JSON.stringify(err.code)).assertEqual("801");
+        done();
+		})
+      }catch(err){console.info('settings  test enableAirplaneMode try catch err');
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+	});
+    
+    it('settings_get_value_114',0,async function(done){
+      try{
+        settings.enableAirplaneMode(false).then((data)=>{
+          console.info('settings test enableAirplaneMode promise data'+JSON.stringify(data));
+          expect(false).assertTrue();
+          done();
+        }).catch((err)=>{
+          console.info('settings test enableAirplaneMode promise err'+JSON.stringify(err.code));
+          expect(JSON.stringify(err.code)).assertEqual("801");
+          done();
+          return;
+        })
+      }catch(err){
+        console.info('settings test enableAirplaneMode try catch err'+JSON.stringify(err));
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+    });
+
+    it('settings_get_value_115',0,async function (done) {
+      try{
+        settings.canShowFloating((err,data)=>{
+          console.info('settings test canShowFloating promise err'+JSON.stringify(err.code));
+          expect(JSON.stringify(err.code)).assertEqual("801");
+          done();
+        })
+      }catch(err){
+        console.info('settings test canShowFloating promise err'+toString(err));
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+    });
+    
+    it('settings_get_value_116',0,async function (done) {
+      try{
+        let str = {"code":801};
+        settings.canShowFloating().then((data)=>{
+          console.info('settings test canShowFloating promise err'+toString(data));
+          expect(toString(err)).assertEqual(str);
+          done();
+        }).catch((err)=>{
+          console.info('settings test canShowFloating promise err'+JSON.stringify(err.code));
+          expect(JSON.stringify(err.code)).assertEqual("801");
+          done();
+          return;
+        })
+      }catch(err){
+        console.info('settings test canShowFloating promise err'+toString(err));
+        expect(true).assertTrue();
+        done();
+        return;
+      }
+    });
   })
 }
