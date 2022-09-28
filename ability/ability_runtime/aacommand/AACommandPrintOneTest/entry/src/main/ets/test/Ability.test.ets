@@ -27,7 +27,7 @@ export default function abilityTest() {
                 bundleName: "com.example.aacommandprintonetest",
                 abilityName: "MainAbility"
             }
-            await globalThis.abilityTestContext.startAbility(wantInfo).then((data) => {
+            await globalThis.abilityContext.startAbility(wantInfo).then((data) => {
                 console.log("ActsAACommandPrinOneTest startAbility data : " + JSON.stringify(data));
             }).catch((err) => {
                 console.log("ActsAACommandPrinOneTest startAbility err : " + JSON.stringify(err));

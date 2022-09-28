@@ -15,6 +15,7 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import commonEvent from '@ohos.commonEvent'
+import backgroundTaskManager from '@ohos.backgroundTaskManager';
 
 let subscriberInfo = {
   events: ['onCreateMain_To_Test_CommonEvent',
@@ -38,22 +39,29 @@ let flagNewWant = false;
 export default function abilityTest() {
   describe('ActsNewWantTest', function () {
 
-  afterEach(async (done) => {
-      console.log("ACTS_NewWant afterEach called");
-      let wantInfo = {
-        bundleName: "com.example.newwanttest",
-        abilityName: "com.example.newwanttest.MainAbility"
-      }
-      await globalThis.abilityTestContext.startAbility(wantInfo).then((data) => {
-        console.log("ACTS_NewWant startAbility data : " + JSON.stringify(data));
-      }).catch((err) => {
-        console.log("ACTS_NewWant startAbility err : " + JSON.stringify(err));
-      })
-
-      setTimeout(function () {
-        console.log("ACTS_NewWant afterEach end");
-        done();
-      }, 1000);
+    let TAG1 = 'ACTS_NewWant_Test : '
+    let id = undefined;
+    beforeAll(async (done) => {
+        console.log(TAG1 + "beforeAll called");
+        let myReason = 'test ActsNewWantTest';
+        let delayInfo = backgroundTaskManager.requestSuspendDelay(myReason, () => {
+            console.log(TAG1 + "Request suspension delay will time out.");
+        })
+        id = delayInfo.requestId;
+        console.log(TAG1 + "requestId is : " + id);
+        setTimeout(function () {
+            console.log(TAG1 + "beforeAll end");
+            done();
+        }, 1000);
+    })
+        
+    afterAll(async (done) => {
+        console.log(TAG1 + "afterAll called");
+        backgroundTaskManager.cancelSuspendDelay(id);
+        setTimeout(function () {
+            console.log(TAG1 + "afterAll end");
+            done();
+        }, 1000);
     })
 
     /**
