@@ -1,5 +1,4 @@
-/*
- * Copyright (C) 2021 Huawei Device Co., Ltd.
+/* Copyright (C) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -19,11 +18,11 @@
 
 #include "runtest.h"
 namespace OHOS {
-int runtest::t_setrlim(int r, long lim)
+int Runtest::TSetrlim(int r, long lim)
 {
     struct rlimit rl;
-    //Gets the current stack size
-    if (getrlimit(r, &rl)) {
+    // Gets the current stack size
+    if (getrlimit(r, &rl) != 0) {
         printf("getrlimit %d: %s\n", r, strerror(errno));
         return -1;
     }
@@ -35,7 +34,7 @@ int runtest::t_setrlim(int r, long lim)
     }
     rl.rlim_max = lim;
     rl.rlim_cur = lim;
-    if (setrlimit(r, &rl)) {
+    if (setrlimit(r, &rl) != 0) {
         printf("setrlimit(%d, %ld): %s\n", r, lim, strerror(errno));
         return -1;
     }
