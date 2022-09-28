@@ -197,22 +197,5 @@ export default function remoteWindowJsunit() {
       console.info("[testRemoteWindow0010] textAlign value :" + obj.$attrs.textAlign);
       done();
     });
-
-    /*
-     * @tc.number       SUB_ACE_BASIC_ETS_API_0011
-     * @tc.name         testRemoteWindow0011
-     * @tc.desic        aceRemoteWindowEtsTest0011
-     */
-    it('testRemoteWindow0011', 0, async function (done) {
-      console.info('RemoteWindow testRemoteWindow0011 START');
-      await Utils.sleep(2000);
-      let strJson = getInspectorByKey('remoteWindow');
-      console.info("[testRemoteWindow0011] component textAlign strJson:" + strJson);
-      let obj = JSON.parse(strJson);
-      expect(obj.$attrs.target).assertNotEqual(undefined);
-      expect(obj.$attrs.target.missionId).assertNotEqual(undefined);
-      console.info("[testRemoteWindow0011] missionId value :" + obj.$attrs.target.missionId);
-      done();
-    });
   })
 }
