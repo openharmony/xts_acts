@@ -20,6 +20,13 @@ import cameraJSUnitPhotoPromise from './CameraJSUnitPhotoPromise.test.ets'
 import cameraJSUnitVideoAsync from './CameraJSUnitVideoAsync.test.ets'
 import cameraJSUnitVideoPromise from './CameraJSUnitVideoPromise.test.ets'
 
+import cameraSessionFlashTest from './CameraSessionFlashTest.test.ets'
+import cameraSessionExposureTest from './CameraSessionExposureTest.test.ets'
+import cameraSessionFocusTest from './CameraSessionFocusTest.test.ets'
+import cameraSessionZoomRatioTest from './CameraSessionZoomRatioTest.test.ets'
+import cameraSessionVideoStabilizationTest from './CameraSessionVideoStabilizationTest.test.ets'
+import cameraSessionBaseTest from './CameraSessionBaseTest.test.ets'
+
 let TAG = 'CameraModuleTest: '
 
 export default function cameraKit(surfaceId: any) {
@@ -32,4 +39,10 @@ export default function cameraKit(surfaceId: any) {
   cameraJSUnitPhotoPromise(surfaceId)
   cameraJSUnitVideoAsync(surfaceId)
   cameraJSUnitVideoPromise(surfaceId)
+  cameraSessionFlashTest(surfaceId)
+  cameraSessionExposureTest(surfaceId)
+  cameraSessionFocusTest(surfaceId)
+  cameraSessionZoomRatioTest(surfaceId)
+  cameraSessionVideoStabilizationTest(surfaceId)
+  cameraSessionBaseTest(surfaceId)
 }
