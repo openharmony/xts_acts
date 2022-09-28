@@ -19,6 +19,7 @@ group("security") {
     deps = [
       "access_token/AccessTokenTest_Normal_js:ActsAccessTokenApiJSNormalTest",
       "cipher/datacipher:datacipher",
+      "cryptoFramework:ActsCryptoFrameworkJSNormalTest",
       "security_huks_basic",
     ]
   }
