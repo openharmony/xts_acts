@@ -82,6 +82,12 @@ struct RefreshDrag {
       })
       .onStateChange((refreshStatus: RefreshStatus) => {
         console.info('Refresh onStatueChange state is ' + refreshStatus)
+        if(refreshStatus === RefreshStatus.Drag){
+          console.info("refreshStatus RefreshStatus.Drag")
+        }
+        if(refreshStatus === RefreshStatus.Refresh){
+          console.info("refreshStatus RefreshStatus.Refresh")
+        }
         try {
           var backDataTwo = {
             data: {

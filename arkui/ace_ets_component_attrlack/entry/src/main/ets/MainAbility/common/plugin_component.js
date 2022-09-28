@@ -50,6 +50,9 @@ export default {
                 want: {
                     bundleName: "com.example.myapplication",
                     abilityName: "com.example.myapplication.MainAbility",
+                    "parameters": {
+                        DIMENSION_KEY: FormDimension.Dimension_1_2
+                    }
                 },
                 name: "plugintemplate",
                 data: {

@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Copyright (c) 2022 Shenzhen Kaihong Digital Industry Development Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,22 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import Ability from '@ohos.application.Ability'
-import ConfigurationConstant from '@ohos.application.ConfigurationConstant'
 
-export default {
-    data: {
-        title: "",
-        "array": [
-            {"value": "列表文本"},
-            {"value": "列表文本"},
-            {"value": "列表文本"},
-            {"value": "列表文本"},
-        ],
-    },
-    click()
-    {
-        console.log('scrollArrow begin...')
-        this.$element("list").scrollArrow({ reverse: true, smooth: false });
-    }
+import Log from '../common/Log.ets';
+const TAG = 'ets_apiLack_add';
+import events_emitter from '@ohos.events.emitter';
+
+@Entry
+@Component
+export default
+struct ImageExample {
+  build() {
+    Column() {
+      Column() {
+        Column() {
+          Image($rawfile('test.png'))
+            .width(240).height(240)
+            .colorFilter([1,2,3])
+            .overlay('colorFilter', { align: Alignment.Bottom, offset: { x: 0, y: -15 } })
+        }.border({ color: Color.Black, width: 2 })
+      }.width('100%')
+    }.padding({ top: 20 })
+  }
 }

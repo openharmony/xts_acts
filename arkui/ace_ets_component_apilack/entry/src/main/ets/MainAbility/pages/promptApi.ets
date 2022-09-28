@@ -44,23 +44,19 @@ export default struct PromptShowDialog {
         .padding(10)
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
-        .key("showDialogText")
         .onClick(() => {
-          try {
-            var backData = {
-              data: {
-                "STATUS": true
-              }
-            }
-            let backEvent = {
-              eventId: 60220,
-              priority: events_emitter.EventPriority.LOW
-            }
-            console.info("showDialog start to emit action state")
-            events_emitter.emit(backEvent, backData)
-          } catch (err) {
-            console.info("showDialog emit action state err: " + JSON.stringify(err.message))
-          }
+          prompt.showDialog({
+            title: 'Title Info',
+            message: 'Message Info',
+            buttons: [
+              { text: 'button1', color: 'red' },
+              { text: 'button2', color: 'blue' }
+            ]
+          }).then(data => {
+            console.info('showDialog success, click button: ' + data.index)
+          }).catch(err => {
+            console.info('showDialog error: ' + err)
+          })
         })
 
       Text("prompt-ShowActionMenu")
@@ -75,23 +71,19 @@ export default struct PromptShowDialog {
         .padding(10)
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
-        .key("showActionMenuText")
         .onClick(() => {
-          try {
-            var backData1 = {
-              data: {
-                "STATUS": true
-              }
-            }
-            let backEvent1 = {
-              eventId: 60221,
-              priority: events_emitter.EventPriority.LOW
-            }
-            console.info("showActionMenu start to emit action state")
-            events_emitter.emit(backEvent1, backData1)
-          } catch (err) {
-            console.info("showActionMenu emit action state err: " + JSON.stringify(err.message))
-          }
+          prompt.showActionMenu({
+            title: 'Title Info',
+            buttons: [
+              { text: 'item1', color: '#666666' },
+              { text: 'item2', color: '#000000' }
+            ]
+          }).then(data => {
+            var result=true
+            console.info('showDialog success, click button: ' + data.index)
+          }).catch(err => {
+            console.info('showDialog error: ' + err)
+          })
         })
 
     }.width("100%").height("100%")

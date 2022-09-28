@@ -22,6 +22,7 @@ export default
 struct CircleNe {
   @State w: string = "100px";
   @State h: string = "100px";
+
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear CircleNew start`)
   }
@@ -51,6 +52,10 @@ struct CircleNe {
         .width(`${this.w}`)
         .height(`${this.h}`)
         .key('circle')
+
+      Image($rawfile('test.png'))
+        .mask(new Circle({ width: '150px', height: '150px' }).fill(Color.Gray))
+        .width('500px').height('280px')
     
     }.width("100%").height("100%")
   }

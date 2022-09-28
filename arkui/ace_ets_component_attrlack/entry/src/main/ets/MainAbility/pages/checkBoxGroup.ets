@@ -66,6 +66,10 @@ struct CheckBoxGroupPart {
         .selectedColor(0xed6f21)
         .onChange((itemName:CheckboxGroupResult) => {
           console.info("TextPicker::dialogResult is" + JSON.stringify(itemName))
+          console.info("TextPicker::dialogResult is" + JSON.stringify(itemName.status))
+          if(itemName.status === SelectStatus.Part){
+            console.info("CheckboxGroup SelectStatus.Part")
+          }
           try {
             var backData = {
               data: {

@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Copyright (c) 2022 Shenzhen Kaihong Digital Industry Development Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,26 +15,24 @@
  */
 
 import Log from '../common/Log.ets';
+
 const TAG = 'ets_apiLack_add';
-let my_line = new Line()
 
 @Entry
 @Component
-export default
-struct LineNe {
-
+export default struct DomCreateElement {
   aboutToAppear() {
-    Log.showInfo(TAG, `aboutToAppear LineNe start`)
+    Log.showInfo(TAG, `aboutToAppear DomCreateElement start`)
   }
 
-  aboutToDisappear(){
-    Log.showInfo(TAG, `aboutToDisAppear LineNe end`)
+  aboutToDisappear() {
+    Log.showInfo(TAG, `aboutToDisAppear DomCreateElement end`)
   }
 
-  build(){
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
 
-      Text("line-Ne")
+      Text("dom-CreateElement")
         .width(100)
         .height(70)
         .fontSize(20)
@@ -45,10 +44,11 @@ struct LineNe {
         .padding(10)
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
-        .key("neText")
-      Line({ width: 50, height: 100 }).startPoint([0, 0]).endPoint([50, 100]).key("line1")
-      Line().width(200).height(200).startPoint([50, 50]).endPoint([150, 400]).key("line2")
+        .key("createElementText")
+        .onClick(() => {
+          dom.createElement('div')
+        })
+
     }.width("100%").height("100%")
   }
 }
-

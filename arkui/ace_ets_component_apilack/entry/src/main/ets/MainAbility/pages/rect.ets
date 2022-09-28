@@ -54,6 +54,10 @@ export default struct RectNe {
       Rect({ width: '90%', height: "50px" }).radiusHeight(20).radiusWidth(20)
       .key("Rect")
 
+      Image($rawfile('test.png'))
+        .mask(new Rect({ width: '150px', height: '150px' }).fill(Color.Gray))
+        .width('500px').height('280px')
+
     }.width("100%").height("100%")
   }
 }
