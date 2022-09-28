@@ -48,6 +48,16 @@ class StubTest extends rpc.RemoteObject {
         console.log('ACTS_SerivceAbilityServer ====< method called.')
     }
 }
+
+function sleep(delay) {
+    let start = new Date().getTime();
+    while (true) {
+        if (new Date().getTime() - start > delay) {
+            break;
+        }
+    }
+}
+
 export default {
     onStart(want) {
         console.debug('ACTS_SerivceAbilityServer 0425 ====>onStart .ts 0851 ='
@@ -78,6 +88,7 @@ export default {
                     },
                 }
             );
+	    sleep(600)
             particleAbility.terminateSelf().then((data) => {
                 console.log('ACTS_SerivceAbilityServer terminateSelf data:' + JSON.stringify(data));
             }).catch((error) => {
