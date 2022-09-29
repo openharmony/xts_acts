@@ -195,7 +195,7 @@ export default function applicationBundleJsunit() {
                     let endTime = Utils.getNowTime();
                     Utils.getDurationTime(TAG_TEST_0300_001, startTime, endTime);
                     errors = error;
-                    if (errors) {
+                    if (errors.code != 0) {
                         expect(errors).assertFail();
                         console.info(TAG_TEST_0300_001 + 'UserId callBack error: ' + error);
                     }
@@ -223,7 +223,7 @@ export default function applicationBundleJsunit() {
                 Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, (error, data) => {
                     let endTime = Utils.getNowTime();
                     errors = error;
-                    if (errors) {
+                    if (errors.code != 0) {
                         expect(errors).assertFail();
                         console.info(TAG_TEST_0400_001 + 'UserId callBack error: ' + error);
                     }
@@ -232,7 +232,7 @@ export default function applicationBundleJsunit() {
                     datas = data;
                 });
             await Utils.sleep(2000);
-            console.info(TAG_TEST_0400_001 + 'noUserId callBack data is: ' + JSON.stringify(datas));
+            console.info(TAG_TEST_0400_001 + 'noUserId callBack datas is: ' + JSON.stringify(datas));
             expectData(TAG_TEST_0400_001, datas);
             getApplicationInfoSuccess(TAG_TEST_0400_001, datas);
             done();
