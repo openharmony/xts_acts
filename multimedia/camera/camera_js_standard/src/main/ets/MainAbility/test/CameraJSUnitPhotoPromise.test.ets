@@ -2991,7 +2991,8 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
 
       await CaptureSessionPromise.addInput(camera1InputPromise);
 
-
+      // 创建预览输出流
+      let previewOutput = await cameraObj.createPreviewOutput(surfaceId);
 
       // 创建ImageReceiver对象，并设置照片参数
       let imageReceiver = await image.createImageReceiver(640, 480, 4, 8);
@@ -2999,6 +3000,8 @@ export default function cameraJSUnitPhotoPromise(surfaceId: any) {
       let photoSurfaceId = await imageReceiver.getReceivingSurfaceId();
       // 创建拍照输出流
       let photoOutput = await cameraObj.createPhotoOutput((photoSurfaceId));
+      // 向会话中添加预览输入流
+      await CaptureSessionPromise.addOutput(previewOutput);
       // 向会话中添加拍照输出流
       await CaptureSessionPromise.addOutput(photoOutput);
 
