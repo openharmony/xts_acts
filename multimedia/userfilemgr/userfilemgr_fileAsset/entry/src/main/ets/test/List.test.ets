@@ -25,6 +25,7 @@ import fileAssetOpenCallbackTest from './fileAssetOpenCallback.test.ets'
 import fileAssetOpenPromiseTest from './fileAssetOpenPromise.test.ets'
 import fileAssetTrashCallbackTest from './fileAssetTrashCallback.test.ets'
 import fileAssetTrashPromiseTest from './fileAssetTrashPromise.test.ets'
+import fileKeyTest from './fileKeyTest.test.ets'
 export default function testsuite(abilityContext) {
   fileAssetCommitModifyCallbackTest(abilityContext)
   fileAssetCommitModifyPromiseTest(abilityContext)
@@ -38,4 +39,5 @@ export default function testsuite(abilityContext) {
   fileAssetOpenPromiseTest(abilityContext)
   fileAssetTrashCallbackTest(abilityContext)
   fileAssetTrashPromiseTest(abilityContext)
+  fileKeyTest(abilityContext)
 }
