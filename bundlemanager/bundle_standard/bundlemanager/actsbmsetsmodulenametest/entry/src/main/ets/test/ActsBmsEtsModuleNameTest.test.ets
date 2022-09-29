@@ -295,7 +295,7 @@ export default function actsBmsJsModuleNameTest() {
           expect(err).assertFail();
         });
       bundle.isAbilityEnabled(abilityInfo, (err, data) => {
-        expect(err).assertEqual(SUCCESS_CODE);
+        expect(err.code).assertEqual(SUCCESS_CODE);
         if (err) {
           console.error('[isAbilityEnabledEmptyModule]Operation failed. Err: ' + JSON.stringify(err));
         }
@@ -324,7 +324,7 @@ export default function actsBmsJsModuleNameTest() {
         if (err) {
           console.error('[isAbilityEnabledInvalidModule]Operation failed. Err: ' + JSON.stringify(err));
         }
-        expect(err).assertEqual(SUCCESS_CODE);
+        expect(err.code).assertEqual(SUCCESS_CODE);
         console.info("'[isAbilityEnabledInvalidModule]Return data: " + JSON.stringify(data));
         done();
       });
@@ -346,7 +346,7 @@ export default function actsBmsJsModuleNameTest() {
           expect(err).assertFail();
         });
       bundle.isAbilityEnabled(abilityInfo, (err, data) => {
-        expect(err).assertEqual(SUCCESS_CODE);
+        expect(err.code).assertEqual(SUCCESS_CODE);
         if (err) {
           console.error('[isAbilityEnabledHasModule]Operation failed. Err: ' + JSON.stringify(err));
         }
@@ -368,14 +368,14 @@ export default function actsBmsJsModuleNameTest() {
           expect(data).assertFail();
         }).catch((err) => {
           console.error('[isAbilityEnabledUndefinedModule]Operation failed. Err: ' + JSON.stringify(err));
-          expect(err).assertEqual(INVALID_PARAM);
+          expect(err.code).assertEqual(INVALID_PARAM);
         });
       bundle.isAbilityEnabled(abilityInfo, (err, data) => {
         expect(data).assertEqual(undefined);
         if (err) {
           console.error('[isAbilityEnabledUndefinedModule]Operation failed. Err: ' + JSON.stringify(err));
         }
-        expect(err).assertEqual(INVALID_PARAM);
+        expect(err.code).assertEqual(INVALID_PARAM);
         console.info("'[isAbilityEnabledUndefinedModule]Return data: " + JSON.stringify(data));
         done();
       });

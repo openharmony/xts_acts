@@ -51,10 +51,10 @@ export default function actsBmsJsUnPermissionTest() {
             await bundle.getAllApplicationInfo(DEFAULT_FLAG).then(data => {
                 expect().assertFail();
             }).catch(err => {
-                expect(err).assertEqual(INVALID_CODE);
+                expect(err.code).assertEqual(INVALID_CODE);
             });
             bundle.getAllApplicationInfo(DEFAULT_FLAG, (err, data) => {
-                expect(err).assertEqual(INVALID_CODE);
+                expect(err.code).assertEqual(INVALID_CODE);
                 expect(data).assertEqual(undefined);
                 done();
             });

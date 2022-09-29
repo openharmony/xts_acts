@@ -967,7 +967,7 @@ it('ACTS_ZipFile_4500', 0, async function (done) {
               done();
             }).catch((err) => {
               console.log("ACTS_ZipFile_4500 err: " + err);
-              expect(err.code).assertEqual(zlib.ErrorCode.ERROR_CODE_ERRNO);
+              expect(err).assertEqual(zlib.ErrorCode.ERROR_CODE_ERRNO);
               done();
             })
           }).catch(function (error) {

@@ -303,7 +303,7 @@ export default function applicationBundleJsunit() {
           });
           Bundle.getApplicationInfo(BUNDLE_OTHER, FLAG_DEFAULT, (err, data) => {
             console.info('noUserId promise data is: ' + data);
-            expect(err).assertEqual(0);
+            expect(err.code).assertEqual(0);
             getApplicationInfoSuccessOther(data);
             done();
           });
@@ -347,7 +347,7 @@ export default function applicationBundleJsunit() {
             await Bundle.getApplicationInfo(null, FLAG_DEFAULT).then((data) => {
                 expect(data).assertFail();
             }).catch((error) => {
-                expect(error).assertEqual(1);
+                expect(error.code).assertEqual(1);
             });
             await Bundle.getApplicationInfo(BUNDLE_NAME, null).then((data) => {
                 expect(data).assertFail();
@@ -359,10 +359,8 @@ export default function applicationBundleJsunit() {
                 expect(JSON.stringify(data)).assertEqual(undefined);
                 Bundle.getApplicationInfo(null, FLAG_DEFAULT, (err, data) => {
                     expect(err.code).assertEqual(1);
-                    expect(data).assertEqual("type mismatch");
                     Bundle.getApplicationInfo(BUNDLE_NAME, null, (err, data) => {
                         expect(err.code).assertEqual(1);
-                        expect(data).assertEqual("type mismatch");
                         done();
                     });
                 });

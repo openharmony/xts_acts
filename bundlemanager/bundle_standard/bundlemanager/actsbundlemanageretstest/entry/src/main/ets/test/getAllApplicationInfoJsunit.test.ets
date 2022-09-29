@@ -187,7 +187,7 @@ export default function getAllApplicationBundleTest() {
                 Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, userId, (error, data) => {
                     let endTime = Utils.getNowTime();
                     Utils.getDurationTime(TAG_TEST_0300_001, startTime, endTime);
-                    if (error) {
+                    if (error.code != 0) {
                         expect(error).assertFail();
                         console.info(TAG_TEST_0300_001 + 'UserId callBack error: ' + error);
                     }
@@ -214,7 +214,7 @@ export default function getAllApplicationBundleTest() {
             Bundle.getAllApplicationInfo(Bundle.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, (error, data) => {
                 let endTime = Utils.getNowTime();
                 Utils.getDurationTime(TAG_TEST_0400_001, startTime, endTime);
-                if (error) {
+                if (error.code != 0) {
                     expect(error).assertFail();
                     console.info(TAG_TEST_0400_001 + 'UserId callBack error: ' + error);
                 }
@@ -249,7 +249,7 @@ export default function getAllApplicationBundleTest() {
                 expect(error).assertFail();
             });
             Bundle.getAllApplicationInfo(DEFAULT_FLAG, (err, data) => {
-                expect(err).assertEqual(0);
+                expect(err.code).assertEqual(0);
                 expect(data.length).assertLarger(10);
                 let flag = 0;
                 for(let i in data){
@@ -272,19 +272,17 @@ export default function getAllApplicationBundleTest() {
             await Bundle.getAllApplicationInfo(null).then((data) => {
                 expect(data).assertFail();
             }).catch((error) => {
-                expect(error).assertEqual(1);
+                expect(error.code).assertEqual(1);
             });
             await Bundle.getAllApplicationInfo(undefined).then((data) => {
                 expect(data).assertFail();
             }).catch((error) => {
-                expect(error).assertEqual(1);
+                expect(error.code).assertEqual(1);
             });
             Bundle.getAllApplicationInfo(undefined, (err, data) => {
-                expect(err).assertEqual(1);
-                expect(data).assertEqual("type mismatch");
+                expect(err.code).assertEqual(1);
                 Bundle.getAllApplicationInfo(null, (err, data) => {
-                    expect(err).assertEqual(1);
-                    expect(data).assertEqual("type mismatch");
+                    expect(err.code).assertEqual(1);
                     done();
                 });
             });

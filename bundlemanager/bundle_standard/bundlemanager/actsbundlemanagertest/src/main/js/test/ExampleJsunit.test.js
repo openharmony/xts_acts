@@ -739,7 +739,7 @@ describe('ActsBundleManagerTest', function () {
         await demo.getApplicationInfo(NAME1,
             demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION | demo.BundleFlag.GET_APPLICATION_INFO_WITH_METADATA,
             userId, (error, datainfo) => {
-                if (error) {
+                if (error.code != 0) {
                     console.info("testGetApplicationInfoMetaDataCallback fail:" + JSON.stringify(error));
                     expect(error).assertFail();
                     done();
@@ -1005,7 +1005,7 @@ describe('ActsBundleManagerTest', function () {
      */
     it('testGetApplicationInfoDifferentParamCallback', 0, async function (done) {
         await demo.getApplicationInfo(NAME1, demo.BundleFlag.GET_BUNDLE_DEFAULT, userId, (error, datainfo) => {
-            if (error) {
+            if (error.code != 0) {
                 console.info("testGetApplicationInfoDifferentParamCallback fail" + JSON.stringify(error));
                 expect(error).assertFail();
                 done();
@@ -1066,7 +1066,7 @@ describe('ActsBundleManagerTest', function () {
     it('testGetApplicationInfoCallback', 0, async function (done) {
         await demo.getApplicationInfo(NAME1, demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, userId,
             (error, datainfo) => {
-                if (error) {
+                if (error.code != 0) {
                     console.info("testGetApplicationInfoCallback fail:" + JSON.stringify(error));
                     expect(error).assertFail();
                     done();
