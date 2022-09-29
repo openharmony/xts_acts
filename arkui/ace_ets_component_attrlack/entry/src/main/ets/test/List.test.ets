@@ -23,7 +23,6 @@ import canvasActualBoundingBoxAscentJsunit from './canvas.test.ets';
 import checkBoxGroupJsunit from './checkBox.test.ets';
 import checkBoxGroupPartJsunit from './checkBoxGroup.test.ets';
 import commonColorModeJsunit from './common.test.ets';
-import configurationApiTest from './configuration.test.ets'
 import datePickerLunarJsunit from './datePicker.test.ets';
 import enumsCancelJsunit from './enums.test.ets';
 import gestureParallelJsunit from './gesture.test.ets';
@@ -47,7 +46,6 @@ import responseTypeJsunit from './responseType.test.ets';
 import copyOptionJsunit from './copyOption.test.ets';
 import hitTestModeJsunit from './hitTestMode.test.ets';
 import colorEnumJsunit from './color.test.ets';
-import basicJsunit from './basic.test.ets';
 
 export default function testsuite() {
   animatorOnframeJsunit()
@@ -77,5 +75,4 @@ export default function testsuite() {
   copyOptionJsunit()
   hitTestModeJsunit()
   colorEnumJsunit()
-  basicJsunit()
 }

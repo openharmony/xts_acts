@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2022 Shenzhen Kaihong Digital Industry Development Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -43,29 +42,29 @@ export default function pageRouteTest() {
       done()
     });
 
-        afterEach(async function () {
-            await Utils.sleep(1000);
-            console.info("pageRouteTest after each called");
-        })
-
-        it('testOnPageHide01', 0, function () {
-            console.info('[testOnPageHide01] START');
-            var callback = (eventData) => {
-                console.info("[testOnPageHide01] get event state result is: " + JSON.stringify(eventData));
-                expect(eventData.data.value).assertEqual('onPageHide')
-                done()
-            }
-            var innerEvent = {
-                eventId: 10,
-                priority: events_emitter.EventPriority.LOW
-            }
-            try {
-                events_emitter.on(innerEvent, callback)
-                console.info("testOnPageHide01 click result is: " + JSON.stringify(sendEventByKey('next', 10, "")));
-            } catch (err) {
-                console.info("[testOnPageHide01] on events_emitter err : " + JSON.stringify(err));
-            }
-            console.info('[testOnPageHide01] testSendTouchEvent END');
-        });
+    afterEach(async function () {
+      await Utils.sleep(1000);
+      console.info("pageRouteTest after each called");
     })
+
+    it('testOnPageHide01', 0, async function (done) {
+      console.info('[testOnPageHide01] START');
+      var callback = (eventData) => {
+        console.info("[testOnPageHide01] get event state result is: " + JSON.stringify(eventData));
+        expect(eventData.data.value).assertEqual('onPageHide')
+        done();
+      }
+      var innerEvent = {
+        eventId: 10,
+        priority: events_emitter.EventPriority.LOW
+      }
+      try {
+        events_emitter.on(innerEvent, callback)
+        console.info("testOnPageHide01 click result is: " + JSON.stringify(sendEventByKey('next', 10, "")));
+      } catch (err) {
+        console.info("[testOnPageHide01] on events_emitter err : " + JSON.stringify(err));
+      }
+      console.info('[testOnPageHide01] testSendTouchEvent END');
+    });
+  })
 }

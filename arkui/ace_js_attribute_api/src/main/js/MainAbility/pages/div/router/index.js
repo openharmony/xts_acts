@@ -15,7 +15,39 @@
 
 export default {
     data: {
-        title: "",
+        appData: 'localData',
+        appVersion:'1.0',
+    },
+    onInit() {
+        this.appData = this.$app.$def.globalData.appData;
+        this.appVersion = this.$app.$def.globalData.appVersion;
+    },
+    invokeGlobalMethod() {
+        this.$app.$def.globalMethod();
+    },
+    getAppVersion() {
+        this.appVersion = this.$app.$def.globalData.appVersion;
+    },
+    onNewRequest(){
+        console.info("div onNewRequest ")
+    },
+    onStartContinuation() {
+        console.info('div onStartContinuation');
+        return true;
+    },
+    onRestoreData(data) {
+        console.info('div onRestoreData' + data);
+        return true;
+    },
+    onSaveData(data) {
+        console.info('div onSaveData');
+        return true;
+    },
+    onCompleteContinuation(result) {
+        console.info('onCompleteContinuation:' + result);
+    },
+    onConfigurationUpdated(configuration) {
+        console.info('ActsProcessManageJsTest onConfigurationUpdated:' + JSON.stringify(configuration));
     },
     functionTest1() {
         var div = this.$element('div1');

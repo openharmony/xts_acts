@@ -32,7 +32,10 @@ export default {
         function2.setAttribute("type", "password")
     },
     functionTest3() {
-
+        var elem = dom.createElement("button");
+        elem.setAttribute("value", "buttoncreateElement");
+        var testDiv = this.$element('testDiv');
+        testDiv.addChild(elem);
     },
     functionTest4() {
         var function2 = this.$element('function2');

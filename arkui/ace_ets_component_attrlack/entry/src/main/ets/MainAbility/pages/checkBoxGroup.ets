@@ -15,6 +15,7 @@
 
 import Log from '../common/Log.ets';
 import events_emitter from '@ohos.events.emitter';
+import Utils from '../../test/Utils.ets'
 const TAG = 'ets_apiLack_add';
 
 @Entry
@@ -66,6 +67,7 @@ struct CheckBoxGroupPart {
         .selectedColor(0xed6f21)
         .onChange((itemName:CheckboxGroupResult) => {
           console.info("TextPicker::dialogResult is" + JSON.stringify(itemName))
+          console.info("TextPicker::dialogResult is" + JSON.stringify(itemName.status))
           try {
             var backData = {
               data: {
@@ -80,6 +82,10 @@ struct CheckBoxGroupPart {
             events_emitter.emit(backEvent, backData)
           } catch (err) {
             console.info("Part emit action state err: " + JSON.stringify(err.message))
+          }
+          Utils.sleep(1000);
+          if(itemName.status === SelectStatus.Part){
+            console.info("CheckboxGroup SelectStatus.Part")
           }
         })
       Text('select all').fontSize(20)

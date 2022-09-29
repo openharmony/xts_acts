@@ -13,26 +13,26 @@
  * limitations under the License.
  */
 
+import prompt from '@ohos.prompt'
 import Log from '../common/Log.ets';
-
+import events_emitter from '@ohos.events.emitter';
 const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-export default
-struct CopyOption {
-
+export default struct PromptShowDialog {
   aboutToAppear() {
-    Log.showInfo(TAG, `aboutToAppear CopyOption start`)
+    Log.showInfo(TAG, `aboutToAppear PromptShowDialog start`)
   }
 
-  aboutToDisappear(){
-    Log.showInfo(TAG, `aboutToDisAppear CopyOption end`)
+  aboutToDisappear() {
+    Log.showInfo(TAG, `aboutToDisAppear PromptShowDialog end`)
   }
 
-  build(){
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
-      Text("copyOption-InApp")
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+
+      Text("prompt-ShowDialog")
         .width(100)
         .height(70)
         .fontSize(20)
@@ -44,11 +44,22 @@ struct CopyOption {
         .padding(10)
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
-        .key("InAppText")
-//        .copyOption(CopyOption.InApp)
-        .visibility(Visibility.None)
+        .onClick(() => {
+          prompt.showDialog({
+            title: 'Title Info',
+            message: 'Message Info',
+            buttons: [
+              { text: 'button1', color: 'red' },
+              { text: 'button2', color: 'blue' }
+            ]
+          }).then(data => {
+            console.info('showDialog success, click button: ' + data.index)
+          }).catch(err => {
+            console.info('showDialog error: ' + err)
+          })
+        })
 
-      Text("copyOption-LocalDevice")
+      Text("prompt-ShowActionMenu")
         .width(100)
         .height(70)
         .fontSize(20)
@@ -60,10 +71,22 @@ struct CopyOption {
         .padding(10)
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
-        .key("LocalDeviceText")
-//        .copyOption(CopyOption.LocalDevice)
-        .visibility(Visibility.None)
+        .onClick(() => {
+          prompt.showActionMenu({
+            title: 'Title Info',
+            buttons: [
+              { text: 'item1', color: '#666666' },
+              { text: 'item2', color: '#000000' }
+            ]
+          }).then(data => {
+            var result=true
+            console.info('showDialog success, click button: ' + data.index)
+          }).catch(err => {
+            console.info('showDialog error: ' + err)
+          })
+        })
 
     }.width("100%").height("100%")
   }
 }
+

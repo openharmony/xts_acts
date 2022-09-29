@@ -21,7 +21,6 @@ const TAG = 'ets_apiLack_add';
 @Component
 export default
 struct ShapeNe {
-
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear ShapeNe start`)
   }
@@ -46,6 +45,16 @@ struct ShapeNe {
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
         .key("neText")
+
+      Shape() {
+        Path().width(300).height(10).commands('M0 0 L900 0')
+      }
+      .viewPort({ x: 0, y: -5, width: 300, height: 20 })
+      .stroke(0xEE8443).strokeWidth(10).strokeDashArray([20]).strokeDashOffset(10)
+
+      Shape() {
+        Path().width(300).height(10).commands('M0 0 L900 0')
+      }.viewPort({ x: 0, y: -5, width: 300, height: 20 }).stroke(0xEE8443).strokeWidth(10).strokeOpacity(0.5)
     
     }.width("100%").height("100%")
   }

@@ -53,6 +53,10 @@ export default struct PathNew {
       Path().width("100px").height("100px").commands('M150 0 L300 300 L0 300 Z')
       .key("Path")
 
+      Image($rawfile('test.png'))
+        .mask(new Path({ width: '150px', height: '150px' }).fill(Color.Gray))
+        .width('500px').height('280px')
+
     }.width("100%").height("100%")
   }
 }
