@@ -15,6 +15,12 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "param set persist.ace.testmode.enabled 1"
+            ]
         }
     ]
 }
