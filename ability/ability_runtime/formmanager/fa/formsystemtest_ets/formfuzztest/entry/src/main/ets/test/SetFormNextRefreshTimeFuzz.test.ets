@@ -104,7 +104,7 @@ export const setFormNextRefreshTimeFuzzTest = (describeName, filterParameter) =>
           formProvider.setFormNextRefreshTime(formId, nextTime, (error, data) => {
             console.log(`${callbackName} ${tcNumber} setFormNextRefreshTime data: ${JSON.stringify(data)} error: ${JSON.stringify(error)}`);
             expect(data).assertUndefined();
-            if (`NUMBER` === dataType) {
+            if (`number` === typeof nextTime) {
               if (ERR_NOT_EXIST_ID_CODE === error.code) {
                 expect(error.message).assertEqual(ERR_NOT_EXIST_ID);
               } else if (ERR_ADD_INVALID_PARAM_CODE === error.code) {
@@ -147,7 +147,7 @@ export const setFormNextRefreshTimeFuzzTest = (describeName, filterParameter) =>
           expect().assertFail();
         } catch (error) {
           console.log(`${promiseName} ${tcNumber} exception caught: ${JSON.stringify(error)}`);
-          if (`NUMBER` === dataType) {
+          if (`number` === typeof nextTime) {
             if (ERR_NOT_EXIST_ID_CODE === error.code) {
               expect(error.message).assertEqual(ERR_NOT_EXIST_ID);
             } else if (ERR_ADD_INVALID_PARAM_CODE === error.code) {

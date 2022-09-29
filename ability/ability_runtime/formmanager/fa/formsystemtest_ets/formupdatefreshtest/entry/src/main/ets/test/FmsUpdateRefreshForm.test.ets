@@ -65,7 +65,6 @@ export default function test() {
             commonEvent.unsubscribe(subscriberOnDeleted, () => unsubscribeCallback("afterEach unsubscribe subscriberOnDeleted"));
             commonEvent.unsubscribe(subscriberOnRefresh, () => unsubscribeCallback("afterEach unsubscribe subscriberOnRefresh"));
             commonEvent.unsubscribe(subscriberOnRequest, () => unsubscribeCallback("afterEach unsubscribe subscriberOnRequest"));
-            await sleep(1000);
             await featureAbility.startAbility({
                 want: {
                     bundleName: "com.ohos.st.formupdaterefreshtest",
@@ -76,6 +75,7 @@ export default function test() {
             }).catch((err) => {
                 console.log("FmsUpdateRefreshFormTest startAbility err: " + JSON.stringify(err));
             })
+            await sleep(2000);
         })
         /**
          * @tc.number: FMS_updateForm_0100
