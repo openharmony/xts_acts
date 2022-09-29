@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,19 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, it, expect} from 'hypium/index';
+
 import request from '@system.request';
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index";
 
 export default function requestSystemJSUnit() {
   describe('requestSystemJSUnit', function () {
     console.info('****************start requestSystemTest*****************')
-
-    /**
-     * sleep function.
-     */
-    function sleep(date, time){
-      while(Date.now() - date <= time);
-    }
 
     /**
      * @tc.name: ohos.SUB_REQUESTSYSTEM_UPLOAD_API_0001
@@ -70,14 +63,13 @@ export default function requestSystemJSUnit() {
       }
       try{
         let result = request.upload(UploadRequestOptions);
-        sleep(500)
         console.info('SUB_REQUESTSYSTEM_UPLOAD_API_0001 upload err:' + result);
-        expect(true).assertEqual(true)
+        expect(true).assertEqual(true);
       }catch(err){
         console.info('SUB_REQUESTSYSTEM_UPLOAD_API_0001 upload err:' + err);
       }
       console.info("-----------------------SUB_REQUESTSYSTEM_UPLOAD_API_0001 end-----------------------");
-      done()
+      done();
     });
 
     /**
@@ -109,15 +101,14 @@ export default function requestSystemJSUnit() {
         }
       }
       try{
-        let result = request.download(DownloadRequestOptions)
-        sleep(500)
+        let result = request.download(DownloadRequestOptions);
         console.info('SUB_REQUESTSYSTEM_DOWNLOAD_API_0001 upload err:' + result);
-        expect(result == null).assertEqual(true)
+        expect(result == null).assertEqual(true);
       }catch(err){
         console.info('SUB_REQUESTSYSTEM_DOWNLOAD_API_0001 download complete' + err);
       }
-      done()
       console.info("-----------------------SUB_REQUESTSYSTEM_DOWNLOAD_API_0001 end-----------------------");
+      done();
     });
 
     /**
@@ -145,12 +136,11 @@ export default function requestSystemJSUnit() {
           console.info('SUB_REQUESTSYSTEM_DOWNLOADCOMPLETE_API_0001 download complete');
         }
       }
-      let result = request.onDownloadComplete(OnDownloadCompleteOptions)
-      sleep(500)
+      let result = request.onDownloadComplete(OnDownloadCompleteOptions);
       console.info('SUB_REQUESTSYSTEM_DOWNLOADCOMPLETE_API_0001 upload err:' + result);
-      expect(result == null).assertEqual(true)
-      done()
+      expect(result == null).assertEqual(true);
       console.info("-----------------------SUB_REQUESTSYSTEM_DOWNLOADCOMPLETE_API_0001 end-----------------------");
+      done();
     });
   })
 }

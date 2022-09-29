@@ -15,7 +15,7 @@
 
 import requestUploadJSUnit from './requestUpload.test';
 import requestDownloadJSUnit from './requestDownload.test';
-import requestSystemJSUnit from './requestSystemJSUnit';
+import requestSystemJSUnit from './requestSystem.test';
 
 export default function testsuite() {
   requestUploadJSUnit()
