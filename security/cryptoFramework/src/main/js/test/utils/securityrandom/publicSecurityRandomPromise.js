@@ -48,7 +48,7 @@ async function testSecurityRandomEnumPromise() {
     expect(401).assertEqual(cryptoFramework.Result.INVALID_PARAMS);
     expect(801).assertEqual(cryptoFramework.Result.NOT_SUPPORT);
     expect(17620001).assertEqual(cryptoFramework.Result.ERR_OUT_OF_MEMORY);
-    expect(17620002).assertEqual(cryptoFramework.Result.ERR_INTERNAL_ERROR);
+    expect(17620002).assertEqual(cryptoFramework.Result.ERR_EXTERNAL_ERROR);
     expect(17630001).assertEqual(cryptoFramework.Result.ERR_CRYPTO_OPERATION);
     expect(17630002).assertEqual(cryptoFramework.Result.ERR_CERT_SIGNATURE_FAILURE);
     expect(17630003).assertEqual(cryptoFramework.Result.ERR_CERT_NOT_YET_VALID);
