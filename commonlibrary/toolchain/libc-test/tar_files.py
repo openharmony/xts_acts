@@ -33,13 +33,13 @@ def copyFiles(sourceDir, targetDir):
             continue
         if os.path.exists(targetDir):
             copyFileCounts += 1
-            with open(targetF, "wb") as fp:
-                fp.write(open(sourceF, "rb").read())
+            with open(targetF, "wb") as target_open:
+                target_open.write(open(sourceF, "rb").read())
         elif not os.path.exists(targetDir):
             os.makedirs(targetDir)
             copyFileCounts += 1
-            with open(targetF, "wb") as fp:
-                fp.write(open(sourceF, "rb").read())
+            with open(targetF, "wb") as target_open:
+                target_open.write(open(sourceF, "rb").read())
 
 def make_targz_one_by_one(output_filename, source_dir):
     tar = tarfile.open(output_filename,"w")
