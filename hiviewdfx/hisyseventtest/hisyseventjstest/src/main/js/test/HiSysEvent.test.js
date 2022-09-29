@@ -34,6 +34,175 @@ describe('hiSysEventJsTest', function () {
     })
 
 	/**
+	 * @tc.number DFX_DFT_HiSysEvent_JS_2400
+	 * @tc.name testHiSysEventApi24
+	 * @tc.desc HiSysEvent查询接口测试-查询成功回调函数被调用（查询一个事件）
+	 */
+	it('testHiSysEventApi24', 1, async function (done){
+		console.info('testHiSysEventApi24 start')
+		hiSysEvent.write({
+			domain: "ACCOUNT",
+			name: "PERMISSION_EXCEPTION",
+			eventType: hiSysEvent.EventType.SECURITY,
+			params: {
+				PID: 487,
+				UID: 103,
+				PACKAGE_NAME: "com.ohos.hisysevent.test",
+				PROCESS_NAME: "syseventservice",
+				MSG: "no msg."
+			}
+		},(err, value) => {
+			console.log('testHiSysEventApi24 into json-callback');
+			if (err) {
+				console.error('in testHiSysEventApi24 test callback: err.code = ' + err.code)
+				result = err.code
+			} else {
+				console.info('in testHiSysEventApi24 test callback: result = ' + value)
+				result = value;
+			}
+		});
+		setTimeout(() => {
+			let ret = hiSysEvent.query({
+				beginTime: -1,
+				endTime: -1,
+				maxEvents: 1,
+			}, [{
+				domain: "ACCOUNT",
+				names: ["PERMISSION_EXCEPTION"],
+			}], {
+				onQuery: function (infos, seqs) {
+					console.info(`testHiSysEventApi24: onQuery...`)
+					expect(infos.length >= 0).assertTrue()
+					expect(seqs.length >= 0).assertTrue()
+					console.info(`testHiSysEventApi24: infos.size is ${infos.length}, seqs.length is ${seqs.length}`)
+					if (infos instanceof Array) {
+						for (let i = 0; i < infos.length; i++) {
+							let item = infos[i];
+							console.info(`testHiSysEventApi24: domain is ${item.domain}, name is ${item.name},
+                                                               eventType is ${item.eventType}`)
+							if (item.params instanceof Object) {
+								for (const key in item.params) {
+									console.info(`testHiSysEventApi24: ${key}: ${item.params[key]}`)
+								}
+							}
+						}
+					}
+					if (seqs instanceof Array) {
+						for (let i = 0; i < seqs.length; i++) {
+							let item = seqs[i];
+							console.info(`testHiSysEventApi24: seq${i}: ${item}`)
+						}
+					}
+				},
+				onComplete: function(reason, total) {
+					console.info(`testHiSysEventApi24: onComplete...`)
+					console.info(`testHiSysEventApi24: reason is ${reason}, total is ${total}`)
+					console.info(`testHiSysEventApi24 end`)
+					done();
+				}
+			})
+			console.info(`ret::::::::::::${ret}`)
+			if (ret == -19) { // -19: no permission
+				expect(true)
+				console.info(`testHiSysEventApi24 end`)
+				done();
+			} else {
+				expect(ret).assertEqual(0)
+			}
+		}, 1000);
+	})
+
+	/**
+	 * @tc.number DFX_DFT_HiSysEvent_JS_2500
+	 * @tc.name testHiSysEventApi25
+	 * @tc.desc HiSysEvent查询接口测试-查询成功回调函数被调用（查询多个事件）
+	 */
+	it('testHiSysEventApi25', 1, async function (done) {
+		console.info('testHiSysEventApi25 start')
+		hiSysEvent.write({
+			domain: "HIVIEWDFX",
+			name: "SYS_USAGE",
+			eventType: hiSysEvent.EventType.STATISTIC,
+		},(err, value) => {
+			console.log('testHiSysEventApi25 into json-callback');
+			if (err) {
+				console.error('in testHiSysEventApi25 test callback: err.code = ' + err.code)
+				result = err.code
+			} else {
+				console.info('in testHiSysEventApi25 test callback: result = ' + value)
+				result = value;
+			}
+		});
+		console.info('add second..')
+		setTimeout(() => {
+			hiSysEvent.write({
+				domain: "HIVIEWDFX",
+				name: "PLUGIN_STATS",
+				eventType: hiSysEvent.EventType.STATISTIC,
+			},(err, value) => {
+				console.log('testHiSysEventApi25 into json-callback');
+				if (err) {
+					console.error('in testHiSysEventApi25 test callback: err.code = ' + err.code)
+					result = err.code
+				} else {
+					console.info('in testHiSysEventApi25 test callback: result = ' + value)
+					result = value;
+				}
+			})
+		},1000)
+		setTimeout(() => {
+			let ret = hiSysEvent.query({
+				beginTime: -1,
+				endTime: -1,
+				maxEvents: 5,
+			}, [{
+				domain: "HIVIEWDFX",
+				names: ["SYS_USAGE","PLUGIN_STATS"],
+			}], {
+				onQuery: function (infos, seqs) {
+					console.info(`testHiSysEventApi25: onQuery...`)
+					expect(infos.length >= 0).assertTrue()
+					expect(seqs.length >= 0).assertTrue()
+					console.info(`testHiSysEventApi25: infos.size is ${infos.length}, seqs.length is ${seqs.length}`)
+					if (infos instanceof Array) {
+						for (let i = 0; i < infos.length; i++) {
+							let item = infos[i];
+							console.info(`testHiSysEventApi25: domain is ${item.domain}, name is ${item.name},
+                                                               eventType is ${item.eventType}`)
+							if (item.params instanceof Object) {
+								for (const key in item.params) {
+									console.info(`testHiSysEventApi25: ${key}: ${item.params[key]}`)
+								}
+							}
+						}
+					}
+					if (seqs instanceof Array) {
+						for (let i = 0; i < seqs.length; i++) {
+							let item = seqs[i];
+							console.info(`testHiSysEventApi25: seq${i}: ${item}`)
+						}
+					}
+				},
+				onComplete: function(reason, total) {
+					console.info(`testHiSysEventApi25: onComplete...`)
+					console.info(`testHiSysEventApi25: reason is ${reason}, total is ${total}`)
+					console.info(`testHiSysEventApi25 end`)
+					done();
+				}
+			})
+			console.info(`ret::::::::::::${ret}`)
+			if (ret == -19) { // -19: no permission
+				expect(true)
+				console.info(`testHiSysEventApi24 end`)
+				done();
+			} else {
+				expect(ret).assertEqual(0)
+			}
+		}, 1000);
+	})
+
+
+	/**
 	 * @tc.number DFX_DFT_HiSysEvent_JS_0100
 	 * @tc.name testHiSysEventApi01
 	 * @tc.desc 添加Js打点事件-callback方式进行回调处理
@@ -350,7 +519,7 @@ describe('hiSysEventJsTest', function () {
 			}
 		}
 		let result = hiSysEvent.addWatcher(watcher)
-		expect(result).assertEqual(0)
+		expect(result == -19).assertTrue();
 		console.info('testHiSysEventApi12 end')
 		done();
 	})
@@ -384,7 +553,7 @@ describe('hiSysEventJsTest', function () {
 			}
 		}
 		let result = hiSysEvent.addWatcher(watcher)
-		expect(result).assertEqual(0)
+		expect(result == -19).assertTrue();
 		console.info('testHiSysEventApi13 end')
 		done();
 	})
@@ -418,7 +587,7 @@ describe('hiSysEventJsTest', function () {
 			}
 		}
 		let result = hiSysEvent.addWatcher(watcher)
-		expect(result).assertEqual(0)
+		expect(result == -19).assertTrue();
 		console.info('testHiSysEventApi14 end')
 		done();
 	})
@@ -453,7 +622,7 @@ describe('hiSysEventJsTest', function () {
 			}
 		}
 		let result = hiSysEvent.addWatcher(watcher)
-		expect(result).assertEqual(0)
+		expect(result == -19).assertTrue();
 		console.info('testHiSysEventApi15 end')
 		done();
 	})
@@ -488,7 +657,7 @@ describe('hiSysEventJsTest', function () {
 			}
 		}
 		let result = hiSysEvent.addWatcher(watcher)
-		expect(result).assertEqual(0)
+		expect(result == -19).assertTrue();
 		console.info('testHiSysEventApi16 end')
 		done();
 	})
@@ -523,7 +692,7 @@ describe('hiSysEventJsTest', function () {
 			}
 		}
 		let result = hiSysEvent.addWatcher(watcher)
-		expect(result).assertEqual(0)
+		expect(result == -19).assertTrue();
 		console.info('testHiSysEventApi17 end')
 		done();
 	})
@@ -557,10 +726,10 @@ describe('hiSysEventJsTest', function () {
 			}
 		}
 		let result = hiSysEvent.addWatcher(watcher)
-		expect(result).assertEqual(0)
+		expect(result == -19).assertTrue();
 		setTimeout(() => {
             result = hiSysEvent.removeWatcher(watcher)
-            expect(result).assertEqual(0)
+			expect(result == -19).assertTrue();
             done()
             console.info('testHiSysEventApi18 end')
         }, 1000)
@@ -596,10 +765,10 @@ describe('hiSysEventJsTest', function () {
 			}
 		}
 		let result = hiSysEvent.addWatcher(watcher)
-		expect(result).assertEqual(0)
+		expect(result == -19).assertTrue();
 		setTimeout(() => {
             result = hiSysEvent.removeWatcher(watcher)
-            expect(result).assertEqual(0)
+			expect(result == -19).assertTrue();
             done()
             console.info('testHiSysEventApi19 end')
         }, 1000)
@@ -635,10 +804,10 @@ describe('hiSysEventJsTest', function () {
 			}
 		}
 		let result = hiSysEvent.addWatcher(watcher)
-		expect(result).assertEqual(0)
+		expect(result == -19).assertTrue();
 		setTimeout(() => {
             result = hiSysEvent.removeWatcher(watcher)
-            expect(result).assertEqual(0)
+			expect(result == -19).assertTrue();
             done()
             console.info('testHiSysEventApi20 end')
         }, 1000)
@@ -675,10 +844,10 @@ describe('hiSysEventJsTest', function () {
 			}
 		}
 		let result = hiSysEvent.addWatcher(watcher)
-		expect(result).assertEqual(0)
+		expect(result == -19).assertTrue();
 		setTimeout(() => {
             result = hiSysEvent.removeWatcher(watcher)
-            expect(result).assertEqual(0)
+			expect(result == -19).assertTrue();
             done()
             console.info('testHiSysEventApi21 end')
         }, 1000)
@@ -715,10 +884,10 @@ describe('hiSysEventJsTest', function () {
 			}
 		}
 		let result = hiSysEvent.addWatcher(watcher)
-		expect(result).assertEqual(0)
+		expect(result == -19).assertTrue();
 		setTimeout(() => {
             result = hiSysEvent.removeWatcher(watcher)
-            expect(result).assertEqual(0)
+			expect(result == -19).assertTrue();
             done()
             console.info('testHiSysEventApi22 end')
         }, 1000)
@@ -755,168 +924,15 @@ describe('hiSysEventJsTest', function () {
 			}
 		}
 		let result = hiSysEvent.addWatcher(watcher)
-		expect(result).assertEqual(0)
+		expect(result == -19).assertTrue();
 		setTimeout(() => {
             result = hiSysEvent.removeWatcher(watcher)
-            expect(result).assertEqual(0)
+			expect(result == -19).assertTrue();
             done()
             console.info('testHiSysEventApi23 end')
         }, 1000)
 		done();
 	})
 
-	/**
-	 * @tc.number DFX_DFT_HiSysEvent_JS_2400
-	 * @tc.name testHiSysEventApi24
-	 * @tc.desc HiSysEvent查询接口测试-查询成功回调函数被调用（查询一个事件）
-	 */
-	it('testHiSysEventApi24', 1, async function (done) {
-		console.info('testHiSysEventApi24 start')
-		hiSysEvent.write({
-			domain: "ACCOUNT",
-			name: "PERMISSION_EXCEPTION",
-			eventType: hiSysEvent.EventType.SECURITY,
-			params: {
-				PID: 487,
-				UID: 103,
-				PACKAGE_NAME: "com.ohos.hisysevent.test",
-				PROCESS_NAME: "syseventservice",
-				MSG: "no msg."
-			}
-		},(err, value) => {
-			console.log('testHiSysEventApi24 into json-callback');
-			if (err) {
-				console.error('in testHiSysEventApi24 test callback: err.code = ' + err.code)
-                result = err.code
-			} else {
-				console.info('in testHiSysEventApi24 test callback: result = ' + value)
-                result = value;
-			}
-		});
-		setTimeout(() => {
-            let ret = hiSysEvent.query({
-                beginTime: -1,
-                endTime: -1,
-                maxEvents: 1,
-            }, [{
-                domain: "ACCOUNT",
-                names: ["PERMISSION_EXCEPTION"],
-            }], {
-                onQuery: function (infos, seqs) {
-                    console.info(`testHiSysEventApi24: onQuery...`)
-                    expect(infos.length >= 0).assertTrue()
-                    expect(seqs.length >= 0).assertTrue()
-                    console.info(`testHiSysEventApi24: infos.size is ${infos.length}, seqs.length is ${seqs.length}`)
-                    if (infos instanceof Array) {
-                        for (let i = 0; i < infos.length; i++) {
-                            let item = infos[i];
-                            console.info(`testHiSysEventApi24: domain is ${item.domain}, name is ${item.name},
-                                                               eventType is ${item.eventType}`)
-                            if (item.params instanceof Object) {
-                                for (const key in item.params) {
-                                    console.info(`testHiSysEventApi24: ${key}: ${item.params[key]}`)
-                                }
-                            }
-                        }
-                    }
-                    if (seqs instanceof Array) {
-                        for (let i = 0; i < seqs.length; i++) {
-                            let item = seqs[i];
-                            console.info(`testHiSysEventApi24: seq${i}: ${item}`)
-                        }
-                    }
-                },
-                onComplete: function(reason, total) {
-                    console.info(`testHiSysEventApi24: onComplete...`)
-                    console.info(`testHiSysEventApi24: reason is ${reason}, total is ${total}`)
-                    done()
-                    console.info(`testHiSysEventApi24 end`)
-                }
-            })
-            expect(ret).assertEqual(0)
-        }, 1000);
-	})
-
-	/**
-	 * @tc.number DFX_DFT_HiSysEvent_JS_2500
-	 * @tc.name testHiSysEventApi25
-	 * @tc.desc HiSysEvent查询接口测试-查询成功回调函数被调用（查询多个事件）
-	 */
-	it('testHiSysEventApi25', 1, async function (done) {
-		console.info('testHiSysEventApi25 start')
-		hiSysEvent.write({
-			domain: "HIVIEWDFX",
-			name: "SYS_USAGE",
-			eventType: hiSysEvent.EventType.STATISTIC,
-		},(err, value) => {
-			console.log('testHiSysEventApi25 into json-callback');
-			if (err) {
-				console.error('in testHiSysEventApi25 test callback: err.code = ' + err.code)
-                result = err.code
-			} else {
-				console.info('in testHiSysEventApi25 test callback: result = ' + value)
-                result = value;
-			}
-		});
-		console.info('add second..')
-		setTimeout(() => {
-			hiSysEvent.write({
-				domain: "HIVIEWDFX",
-				name: "PLUGIN_STATS",
-				eventType: hiSysEvent.EventType.STATISTIC,
-			},(err, value) => {
-				console.log('testHiSysEventApi25 into json-callback');
-				if (err) {
-					console.error('in testHiSysEventApi25 test callback: err.code = ' + err.code)
-					result = err.code
-				} else {
-					console.info('in testHiSysEventApi25 test callback: result = ' + value)
-					result = value;
-				}
-			})
-		},1000)
-		setTimeout(() => {
-            let ret = hiSysEvent.query({
-                beginTime: -1,
-                endTime: -1,
-                maxEvents: 5,
-            }, [{
-                domain: "HIVIEWDFX",
-                names: ["SYS_USAGE","PLUGIN_STATS"],
-            }], {
-                onQuery: function (infos, seqs) {
-                    console.info(`testHiSysEventApi25: onQuery...`)
-                    expect(infos.length >= 0).assertTrue()
-                    expect(seqs.length >= 0).assertTrue()
-                    console.info(`testHiSysEventApi25: infos.size is ${infos.length}, seqs.length is ${seqs.length}`)
-                    if (infos instanceof Array) {
-                        for (let i = 0; i < infos.length; i++) {
-                            let item = infos[i];
-                            console.info(`testHiSysEventApi25: domain is ${item.domain}, name is ${item.name},
-                                                               eventType is ${item.eventType}`)
-                            if (item.params instanceof Object) {
-                                for (const key in item.params) {
-                                    console.info(`testHiSysEventApi25: ${key}: ${item.params[key]}`)
-                                }
-                            }
-                        }
-                    }
-                    if (seqs instanceof Array) {
-                        for (let i = 0; i < seqs.length; i++) {
-                            let item = seqs[i];
-                            console.info(`testHiSysEventApi25: seq${i}: ${item}`)
-                        }
-                    }
-                },
-                onComplete: function(reason, total) {
-                    console.info(`testHiSysEventApi25: onComplete...`)
-                    console.info(`testHiSysEventApi25: reason is ${reason}, total is ${total}`)
-                    done()
-                    console.info(`testHiSysEventApi25 end`)
-                }
-            })
-            expect(ret).assertEqual(0)
-        }, 1000);
-	})
 })
 }
