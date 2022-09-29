@@ -149,9 +149,9 @@ const getFuzzData = (datatype: string) => {
   switch (datatype) {
     case 'ARRAY':
       let array1 = arrayTest();
-      let array2 = array1.join("")
-      if (isNaN(Number(array2))) {
-        return array1;
+      let array2 = array1
+      if (isNaN(Number(array1.join("")))) {
+        return array2;
       } else {
         getFuzzData(DATA_TYPE_LIST[0]);
       }
