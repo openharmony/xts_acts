@@ -42,7 +42,7 @@ export default function IsApplicationEnabledETSUnit() {
             Bundle.isApplicationEnabled(BUNDLE_NAME, (error, data) => {
                 let timeNewStamp = Utils.getNowTime();
                 Utils.getDurationTime('[context_isApplicationEnabled_test_0200]', timeOldStamp, timeNewStamp);
-                expect(error).assertEqual(undefined);
+                expect(error.code).assertEqual(undefined);
                 expect(data).assertTrue();
                 done();
             });
@@ -70,13 +70,13 @@ export default function IsApplicationEnabledETSUnit() {
                 expect(error).assertEqual(2);
             });
             Bundle.isApplicationEnabled(BUNDLE_NAME_ERROR, (error, data) => {
-                expect(error).assertEqual(undefined);
+                expect(error.code).assertEqual(undefined);
                 expect(data).assertFalse();
                 Bundle.isApplicationEnabled("", (error, data) => {
-                    expect(error).assertEqual(undefined);
+                    expect(error.code).assertEqual(undefined);
                     expect(data).assertFalse();
                     Bundle.isApplicationEnabled(undefined, (error, data) => {
-                        expect(error).assertEqual(2);
+                        expect(error.code).assertEqual(2);
                         expect(data).assertEqual(undefined);
                         done();
                     });
@@ -98,7 +98,7 @@ export default function IsApplicationEnabledETSUnit() {
             });
             timeOldStamp = await Utils.getNowTime();
             Bundle.isApplicationEnabled(BUNDLE_NAME_OTHER, (error, data) => {
-                expect(error).assertEqual(undefined);
+                expect(error.code).assertEqual(undefined);
                 expect(data).assertTrue();
                 done();
             });

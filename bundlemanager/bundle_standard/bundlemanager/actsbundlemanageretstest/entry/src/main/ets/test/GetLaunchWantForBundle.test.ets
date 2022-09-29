@@ -44,7 +44,7 @@ export default function getLaunchWantForBundle() {
                 expect(err).assertFail();
             });
             bundleMgr.getLaunchWantForBundle(NAME1, (err, res) => {
-                expect(err).assertEqual(0);
+                expect(err.code).assertEqual(0);
                 expect(res.bundleName).assertEqual(NAME1);
                 expect(res.abilityName).assertEqual(ABILITYNAME1);
                 expect(res.deviceId).assertEqual('');
@@ -74,7 +74,7 @@ export default function getLaunchWantForBundle() {
                 expect(err).assertFail();
             });
             bundleMgr.getLaunchWantForBundle(NAME2, (err, res) => {
-                expect(err).assertEqual(0);
+                expect(err.code).assertEqual(0);
                 expect(res.bundleName).assertEqual(NAME2);
                 expect(res.abilityName).assertEqual(ABILITYNAME2);
                 expect(res.deviceId).assertEqual('');
@@ -96,11 +96,11 @@ export default function getLaunchWantForBundle() {
             await bundleMgr.getLaunchWantForBundle(NAME3).then(res => {
                 expect().assertFail();
             }).catch(err => {
-                expect(err).assertEqual(1);
+                expect(err.code).assertEqual(1);
             });
             bundleMgr.getLaunchWantForBundle(NAME3, (err, res) => {
                 if (err) {
-                    expect(err).assertEqual(1);
+                    expect(err.code).assertEqual(1);
                     done();
                     return;
                 }
@@ -122,11 +122,11 @@ export default function getLaunchWantForBundle() {
             await bundleMgr.getLaunchWantForBundle(null).then(res => {
                 expect().assertFail();
             }).catch(err => {
-                expect(err).assertEqual(1);
+                expect(err.code).assertEqual(1);
             });
             bundleMgr.getLaunchWantForBundle(null, (err, res) => {
                 if (err) {
-                    expect(err).assertEqual(1);
+                    expect(err.code).assertEqual(1);
                     done();
                     return;
                 }

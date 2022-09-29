@@ -909,7 +909,7 @@ describe('ActsBundleManagerTest', function () {
                 done();
             }).catch(err => {
                 console.info("testGetApplicationInfoNotExistCallback err" + JSON.stringify(err));
-                expect(err).assertEqual(1);
+                expect(err.code).assertEqual(1);
                 done();
             });
     })
@@ -924,7 +924,7 @@ describe('ActsBundleManagerTest', function () {
             userId, (error, datainfo) => {
                 if (error) {
                     console.info("testGetApplicationInfoNotExistPromise fail" + JSON.stringify(error));
-                    expect(error).assertEqual(1);
+                    expect(error.code).assertEqual(1);
                     done();
                     return;
                 }
@@ -947,7 +947,7 @@ describe('ActsBundleManagerTest', function () {
                 done();
             }).catch(error => {
                 console.info("testGetApplicationInfoInvalidParamPromise err" + JSON.stringify(error));
-                expect(error).assertEqual(1);
+                expect(error.code).assertEqual(1);
                 done();
             });
     })
@@ -962,7 +962,7 @@ describe('ActsBundleManagerTest', function () {
             userId, (error, datainfo) => {
                 if (error) {
                     console.info("testGetApplicationInfoInvalidParamCallback fail" + JSON.stringify(error));
-                    expect(error).assertEqual(1);
+                    expect(error.code).assertEqual(1);
                     done();
                     return;
                 }
