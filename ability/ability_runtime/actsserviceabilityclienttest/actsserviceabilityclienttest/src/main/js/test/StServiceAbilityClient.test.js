@@ -377,17 +377,19 @@ describe('ActsStServiceAbilityTest', function () {
                         + ("json err【") + JSON.stringify(err) + (" 】")
                         + ("json data【") + JSON.stringify(data) + (" 】")
                         + " ,err=" + err + " ,data=" + data);
-                    if (data.event != "ACTS_SerivceAbilityServer_onDisConnect") {
-                        expect("ACTS_SerivceAbilityServer_onConnect_PageConnectService_0500").assertEqual(
-                            data.event);
-                        featureAbility.disconnectAbility(mConnIdJsPromise).then(() => {
+                    if (data.event == "ACTS_SerivceAbilityServer_onConnect_PageConnectService_0500") {
+                        console.info("ACTS_JsServiceAbility_0500 disconnnectAbility start")
+                        featureAbility.disconnectAbility(mConnIdJsPromise).then((err) => {
+                            console.debug("=ACTS_JsServiceAbility_0500 disconnectAbility err====>"
+                            + ("json err=") + JSON.stringify(err));
                         }).catch(err => {
-                            expect(".catch").assertEqual(err);
-                            console.debug('ACTS_JsServiceAbility_0500====<end .catch(err)');
-                            done();
+                            expect().assertFail()
+                            console.debug('ACTS_JsServiceAbility_0500==== err: ' + JSON.stringify(err));
+                            done()
                         })
                     } else {
-                        expect("ACTS_SerivceAbilityServer_onDisConnect").assertEqual(data.event);
+                        expect("ACTS_SerivceAbilityServer_onDisConnect_PageConnectService_0500")
+                            .assertEqual(data.event);
                         unsubscribe("ACTS_JsServiceAbility_0500_unsubscribe", subscriber0500);
                         console.debug('ACTS_JsServiceAbility_0500====<end');
                         done();
