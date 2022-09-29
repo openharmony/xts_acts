@@ -67,11 +67,6 @@ export default {
     onStop() {
         console.debug('ACTS_SerivceAbilityServer ====<onStop');
         commonEvent.publish("ACTS_SerivceAbilityServer_onStop", (err) => { });
-        particleAbility.terminateSelf().then((data) => {
-            console.log('ACTS_SerivceAbilityServer terminateSelf data:' + JSON.stringify(data));
-        }).catch((error) => {
-            console.log('ACTS_SerivceAbilityServer terminateSelf error:' + JSON.stringify(error));
-        });
     },
     onCommand(want, restart, startId) {
         console.debug('ACTS_SerivceAbilityServer ====>onCommand='
@@ -88,12 +83,7 @@ export default {
                     },
                 }
             );
-	    sleep(600)
-            particleAbility.terminateSelf().then((data) => {
-                console.log('ACTS_SerivceAbilityServer terminateSelf data:' + JSON.stringify(data));
-            }).catch((error) => {
-                console.log('ACTS_SerivceAbilityServer terminateSelf error:' + JSON.stringify(error));
-            });
+	        sleep(600)
         } else if (want.action == 'ServiceStartService_1000') {
             particleAbility.startAbility(
                 {
@@ -106,11 +96,6 @@ export default {
                 }, (err, data) => {
                     console.debug('ACTS_SerivceAbilityServer start Ability 1000 callback====='
                         + err + ', data= ' + data + " , JSON." + JSON.stringify(data));
-                    particleAbility.terminateSelf().then((data) => {
-                        console.log('ACTS_SerivceAbilityServer terminateSelf data:' + JSON.stringify(data));
-                    }).catch((error) => {
-                        console.log('ACTS_SerivceAbilityServer terminateSelf error:' + JSON.stringify(error));
-                    });
                 }
             );
         } else {
@@ -118,13 +103,8 @@ export default {
                 if (!err.code) {
                     if (want.action == 'PageStartService_0100' || want.action == 'PageStartService_0200'
                         || want.action == 'PageStartService_0301' || want.action == 'PageStartService_0401') {
-                        console.debug('ACTS_SerivceAbilityServer_onCommand 100 200 301 401.terminateSelf()=====>'
+                        console.debug('ACTS_SerivceAbilityServer_onCommand 100 200 301 401.=====>'
                             + want.action);
-                        particleAbility.terminateSelf().then((data) => {
-                            console.log('ACTS_SerivceAbilityServer terminateSelf data:' + JSON.stringify(data));
-                        }).catch((error) => {
-                            console.log('ACTS_SerivceAbilityServer terminateSelf error:' + JSON.stringify(error));
-                        });
                     }
                 } else {
                     console.debug('ACTS_SerivceAbilityServer_onCommand publish err=====>' + err);
@@ -190,11 +170,6 @@ export default {
                     + ("json err=") + JSON.stringify(err) + " , " + want.action);
             })
         }
-        particleAbility.terminateSelf().then((data) => {
-            console.log('ACTS_SerivceAbilityServer terminateSelf data:' + JSON.stringify(data));
-        }).catch((error) => {
-            console.log('ACTS_SerivceAbilityServer terminateSelf error:' + JSON.stringify(error));
-        });
     },
     onReady() {
         console.debug('ACTS_SerivceAbilityServer ====<onReady');

@@ -61,11 +61,6 @@ export default {
     onStop() {
         console.debug('ACTS_SerivceAbilityServerSecond ====<onStop');
         commonEvent.publish("ACTS_SerivceAbilityServerSecond_onStop", (err) => { });
-        particleAbility.terminateSelf().then((data) => {
-            console.log('ACTS_SerivceAbilityServer terminateSelf data:' + JSON.stringify(data));
-        }).catch((error) => {
-            console.log('ACTS_SerivceAbilityServer terminateSelf error:' + JSON.stringify(error));
-        });
     },
     onCommand(want, restart, startId) {
         console.debug('ACTS_SerivceAbilityServerSecond ====>onCommand='
@@ -76,11 +71,6 @@ export default {
             "err: " + JSON.stringify(err))
          });
         sleep(500)
-        particleAbility.terminateSelf().then((data) => {
-            console.log('ACTS_SerivceAbilityServer terminateSelf data:' + JSON.stringify(data));
-        }).catch((error) => {
-            console.log('ACTS_SerivceAbilityServer terminateSelf error:' + JSON.stringify(error));
-        });
     },
     onConnect(want) {
         console.info('ACTS_SerivceAbilityServerSecond ====< onConnect');
@@ -165,7 +155,7 @@ export default {
             if (err.code) {
                 console.debug('ACTS_SerivceAbilityServerSecond_onDisConnect publish err=====>' + err);
             } else {
-                console.debug('ACTS_SerivceAbilityServerSecond_onDisConnect featureAbility.terminateSelf()=====<'
+                console.debug('ACTS_SerivceAbilityServerSecond_onDisConnect =====<'
                     + want.action);
                 if (want.action == 'ServiceConnectService_1500' || want.action == 'ServiceConnectService_1501'
                     || want.action == 'ServiceConnectService_1600' || want.action == 'ServiceConnectService_1601'
@@ -175,11 +165,6 @@ export default {
                             + ("json err=") + JSON.stringify(err) + " , " + want.action);
                     })
                 }
-                particleAbility.terminateSelf().then((data) => {
-                    console.log('ACTS_SerivceAbilityServer terminateSelf data:' + JSON.stringify(data));
-                }).catch((error) => {
-                    console.log('ACTS_SerivceAbilityServer terminateSelf error:' + JSON.stringify(error));
-                });
             }
         });
     },
