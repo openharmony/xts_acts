@@ -149,7 +149,7 @@
           "pages/stepper/style/index",
           "pages/stepperItem/router/index",
           "pages/stepperItem/prop/index",
-          "pages/stepperItem/style/index",
+          "pages/stepperItem/style/style",
           "pages/swiper/router/index",
           "pages/swiper/prop/index",
           "pages/swiper/style/index",
