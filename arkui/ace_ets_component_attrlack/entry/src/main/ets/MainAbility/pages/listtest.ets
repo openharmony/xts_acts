@@ -100,7 +100,9 @@ struct ListIdle {
           .chainAnimation(false) // 联动特效关闭
           .onScroll((scrollOffset: 5, scrollState:ScrollState) => {
             console.info('scrollOffset' + scrollOffset)
-            console.info('scrollState   ' + scrollState)
+            console.info('scrollState   ' + ScrollState.Scroll)
+            console.info('scrollState   ' + ScrollState.Idle)
+            console.info('scrollState   ' + ScrollState.Fling)
           })
           .onClick(()=>{
             try {

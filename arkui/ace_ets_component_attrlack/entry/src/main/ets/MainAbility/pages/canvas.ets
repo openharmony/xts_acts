@@ -59,13 +59,11 @@ struct CanvasActualBoundingBoxAscent {
           this.context.fillText("fontBoundingBoxDescent:" + this.context.measureText("Hello World!").fontBoundingBoxDescent, 20, 600)
           this.context.fillText("hangingBaseline:" + this.context.measureText("Hello World!").hangingBaseline, 20, 650)
           this.context.fillText("ideographicBaseline" + this.context.measureText("Hello World!").ideographicBaseline, 20, 700)
-          //this.context.fillText("antialias" + this.context.measureText("Hello World!").antialias, 20, 700)
+//          this.context.fillText("antialias" + this.context.measureText("Hello World!").antialias, 20, 700)
         })
     }
     .width('100%')
     .height('100%')
-
-
   }
 }
 

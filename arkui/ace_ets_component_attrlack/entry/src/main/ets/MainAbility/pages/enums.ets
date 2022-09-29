@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2022 Shenzhen Kaihong Digital Industry Development Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -563,7 +562,7 @@ struct EnumsCancel {
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
         .key("CrossDeviceText")
-        .copyOption(CopyOption.CrossDevice)
+//        .copyOption(CopyOptions.CrossDevice)
         .visibility(Visibility.None)
 
       Button('Touch').backgroundColor(0x2788D9).height(40).width(80)

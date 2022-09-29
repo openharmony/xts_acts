@@ -22,6 +22,9 @@ const TAG = 'ets_apiLack_add';
 @Component
 export default struct CurvesSteps {
   @State curveApi:string = "success"
+  @State curve1:ICurve = Curves.springMotion(0.40, 0.99, 0)
+  @State curve2:ICurve = Curves.responsiveSpringMotion(0.40, 0.99, 0);
+
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear CurvesSteps start`)
   }
@@ -58,6 +61,8 @@ export default struct CurvesSteps {
             var backData = {
               data: {
                 "curveApi": this.curveApi,
+                "curveSpringMotion": this.curve1,
+                "curveResSpringMotion": this.curve2
               }
             }
             let backEvent = {

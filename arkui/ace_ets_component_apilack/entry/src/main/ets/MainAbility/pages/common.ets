@@ -21,6 +21,7 @@ const TAG = 'ets_apiLack_add';
 @Component
 export default struct CommonBackgroundBlurStyle {
   @State value: string = ''
+
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear CommonBackgroundBlurStyle start`)
   }
@@ -40,6 +41,42 @@ export default struct CommonBackgroundBlurStyle {
   @Styles pressedStyles() {
     .backgroundColor('red')
     .opacity(1)
+  }
+
+  buttonTab(){
+    let keyEventDown = {
+      isPressed: true,
+      keyCode: 2049,
+      keyDownDuration: 0,
+      isIntercepted: false
+    }
+    let res1 = inputEventClient.injectEvent({KeyEvent: keyEventDown});
+
+    let keyEventUp = {
+      isPressed: false,
+      keyCode: 2049,
+      keyDownDuration: 0,
+      isIntercepted: false
+    }
+    let res2 = inputEventClient.injectEvent({KeyEvent: keyEventUp});
+  }
+
+  buttonOnKey(){
+    let keyEventDown = {
+      isPressed: true,
+      keyCode: 2054,
+      keyDownDuration: 0,
+      isIntercepted: false
+    }
+    let res3 = inputEventClient.injectEvent({KeyEvent: keyEventDown});
+
+    let keyEventUp = {
+      isPressed: false,
+      keyCode: 2054,
+      keyDownDuration: 0,
+      isIntercepted: false
+    }
+    let res4 = inputEventClient.injectEvent({KeyEvent: keyEventUp});
   }
 
   build() {
@@ -131,13 +168,8 @@ export default struct CommonBackgroundBlurStyle {
 
       Button('common-OnKeyEvent')
         .onClick(()=>{
-          let keyEvent = {
-            isPressed: true,
-            keyCode: 2054,
-            keyDownDuration: 0,
-            isIntercepted: false
-          }
-          let res = inputEventClient.injectEvent({KeyEvent: keyEvent});
+          this.buttonTab()
+          this.buttonOnKey()
         })
         .key("onKeyEventButton")
         .onKeyEvent((event: KeyEvent) => {
