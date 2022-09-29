@@ -21,14 +21,16 @@ import {
     IMAGE_TYPE,
     VIDEO_TYPE,
     AUDIO_TYPE,
+    audioFetchOps,
+    imageVideoFetchOps,
+    audioNameFetchOps,
+    imageVideoNameFetchOps,
     checkPresetsAssets,
     checkAssetsCount,
-    fetchOps,
-    nameFetchOps,
     isNum,
 } from '../../../../../../common';
-export default function fileAssetOpenPromise(abilityContext) {
-    describe('fileAssetOpenPromise', function () {
+export default function fileAssetOpenPromiseTest(abilityContext) {
+    describe('fileAssetOpenPromiseTest', function () {
         const userfile_mgr = userfile_manager.getUserFileMgr(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
@@ -192,7 +194,7 @@ export default function fileAssetOpenPromise(abilityContext) {
         it('SUB_USERFILE_MGR_FILEASSET_OPEN_PROMISE_01_001', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_OPEN_PROMISE_01_001';
             let media_type = [IMAGE_TYPE];
-            let fetchOp = fetchOps(testNum, 'Pictures/R_Pro/');
+            let fetchOp = imageVideoFetchOps(testNum, 'Pictures/R_Pro/');
             let assetProps = {
                 bytesRead: 4096,
             };
@@ -211,7 +213,7 @@ export default function fileAssetOpenPromise(abilityContext) {
         it('SUB_USERFILE_MGR_FILEASSET_OPEN_PROMISE_01_002', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_OPEN_PROMISE_01_002';
             let media_type = [IMAGE_TYPE];
-            let fetchOp = fetchOps(testNum, 'Pictures/W_Pro/');
+            let fetchOp = imageVideoFetchOps(testNum, 'Pictures/W_Pro/');
             let assetProps = {
                 write: 4096,
             };
@@ -230,7 +232,7 @@ export default function fileAssetOpenPromise(abilityContext) {
         it('SUB_USERFILE_MGR_FILEASSET_OPEN_PROMISE_01_003', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_OPEN_PROMISE_01_003';
             let media_type = [IMAGE_TYPE];
-            let fetchOp = fetchOps(testNum, 'Pictures/RW_Pro/');
+            let fetchOp = imageVideoFetchOps(testNum, 'Pictures/RW_Pro/');
             let assetProps = {
                 bytesRead: 4096,
                 write: 4096,
@@ -250,7 +252,7 @@ export default function fileAssetOpenPromise(abilityContext) {
         it('SUB_USERFILE_MGR_FILEASSET_OPEN_PROMISE_02_001', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_OPEN_PROMISE_02_001';
             let media_type = [AUDIO_TYPE];
-            let fetchOp = fetchOps(testNum, 'Audios/R_Pro/');
+            let fetchOp = audioFetchOps(testNum, 'Audios/R_Pro/');
             let assetProps = {
                 bytesRead: 4096,
             };
@@ -269,7 +271,7 @@ export default function fileAssetOpenPromise(abilityContext) {
         it('SUB_USERFILE_MGR_FILEASSET_OPEN_PROMISE_02_002', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_OPEN_PROMISE_02_002';
             let media_type = [AUDIO_TYPE];
-            let fetchOp = fetchOps(testNum, 'Audios/W_Pro/');
+            let fetchOp = audioFetchOps(testNum, 'Audios/W_Pro/');
             let assetProps = {
                 write: 4096,
             };
@@ -288,7 +290,7 @@ export default function fileAssetOpenPromise(abilityContext) {
         it('SUB_USERFILE_MGR_FILEASSET_OPEN_PROMISE_02_003', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_OPEN_PROMISE_02_003';
             let media_type = [AUDIO_TYPE];
-            let fetchOp = fetchOps(testNum, 'Audios/RW_Pro/');
+            let fetchOp = audioFetchOps(testNum, 'Audios/RW_Pro/');
             let assetProps = {
                 bytesRead: 4096,
                 write: 4096,
@@ -308,7 +310,7 @@ export default function fileAssetOpenPromise(abilityContext) {
         it('SUB_USERFILE_MGR_FILEASSET_OPEN_PROMISE_03_001', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_OPEN_PROMISE_03_001';
             let media_type = [VIDEO_TYPE];
-            let fetchOp = fetchOps(testNum, 'Videos/R_Pro/');
+            let fetchOp = imageVideoFetchOps(testNum, 'Videos/R_Pro/');
             let assetProps = {
                 bytesRead: 4096,
             };
@@ -327,7 +329,7 @@ export default function fileAssetOpenPromise(abilityContext) {
         it('SUB_USERFILE_MGR_FILEASSET_OPEN_PROMISE_03_002', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_OPEN_PROMISE_03_002';
             let media_type = [VIDEO_TYPE];
-            let fetchOp = fetchOps(testNum, 'Videos/W_Pro/');
+            let fetchOp = imageVideoFetchOps(testNum, 'Videos/W_Pro/');
             let assetProps = {
                 write: 4096,
             };
@@ -346,7 +348,7 @@ export default function fileAssetOpenPromise(abilityContext) {
         it('SUB_USERFILE_MGR_FILEASSET_OPEN_PROMISE_03_003', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_OPEN_PROMISE_03_003';
             let media_type = [VIDEO_TYPE];
-            let fetchOp = fetchOps(testNum, 'Videos/RW_Pro/');
+            let fetchOp = imageVideoFetchOps(testNum, 'Videos/RW_Pro/');
             let assetProps = {
                 bytesRead: 4096,
                 write: 4096,
@@ -368,7 +370,7 @@ export default function fileAssetOpenPromise(abilityContext) {
         it('SUB_USERFILE_MGR_FILEASSET_CLOSE_PROMISE_01', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_CLOSE_PROMISE_01';
             let media_type = [IMAGE_TYPE];
-            let fetchOp = nameFetchOps(testNum, 'Pictures/openClose/', '02.jpg');
+            let fetchOp = imageVideoNameFetchOps(testNum, 'Pictures/openClose/', '02.jpg');
             await closeTest(done, testNum, media_type, fetchOp)
         });
 
@@ -383,7 +385,7 @@ export default function fileAssetOpenPromise(abilityContext) {
         it('SUB_USERFILE_MGR_FILEASSET_CLOSE_PROMISE_02', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_CLOSE_PROMISE_03';
             let media_type = [AUDIO_TYPE];
-            let fetchOp = nameFetchOps(testNum, 'Audios/openClose/', '02.mp3');
+            let fetchOp = audioNameFetchOps(testNum, 'Audios/openClose/', '02.mp3');
             await closeTest(done, testNum, media_type, fetchOp)
         });
 
@@ -398,7 +400,7 @@ export default function fileAssetOpenPromise(abilityContext) {
         it('SUB_USERFILE_MGR_FILEASSET_CLOSE_PROMISE_03', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_CLOSE_PROMISE_03';
             let media_type = [VIDEO_TYPE];
-            let fetchOp = nameFetchOps(testNum, 'Videos/openClose/', '02.mp4');
+            let fetchOp = imageVideoNameFetchOps(testNum, 'Videos/openClose/', '02.mp4');
             await closeTest(done, testNum, media_type, fetchOp)
         });
     });

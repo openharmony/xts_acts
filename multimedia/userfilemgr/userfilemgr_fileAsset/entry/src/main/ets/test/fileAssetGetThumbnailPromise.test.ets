@@ -23,11 +23,12 @@ import {
     AUDIO_TYPE,
     checkPresetsAssets,
     checkAssetsCount,
-    nameFetchOps,
+    audioNameFetchOps,
+    imageVideoNameFetchOps,
 } from '../../../../../../common';
 
-export default function fileAssetGetThumbnailPromise(abilityContext) {
-    describe('fileAssetGetThumbnailPromise', function () {
+export default function fileAssetGetThumbnailPromiseTest(abilityContext) {
+    describe('fileAssetGetThumbnailPromiseTest', function () {
         image.createPixelMap(new ArrayBuffer(4096), { size: { height: 1, width: 2 } }).then((pixelmap) => { });
         const userfile_mgr = userfile_manager.getUserFileMgr(abilityContext);
         beforeAll(async function () {
@@ -82,7 +83,7 @@ export default function fileAssetGetThumbnailPromise(abilityContext) {
         it('SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_PROMISE_01_001', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_PROMISE_01_001';
             let media_type = [IMAGE_TYPE];
-            let dOp = nameFetchOps(testNum, 'Pictures/Thumbnail/', '01.jpg');
+            let dOp = imageVideoNameFetchOps(testNum, 'Pictures/Thumbnail/', '01.jpg');
             let size = 'default';
             await testGetThumbnail(done, testNum, media_type, dOp, size,);
         });
@@ -98,7 +99,7 @@ export default function fileAssetGetThumbnailPromise(abilityContext) {
         it('SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_PROMISE_01_002', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_PROMISE_01_002';
             let media_type = [IMAGE_TYPE];
-            let dOp = nameFetchOps(testNum, 'Pictures/Thumbnail/', '02.jpg');
+            let dOp = imageVideoNameFetchOps(testNum, 'Pictures/Thumbnail/', '02.jpg');
             let size = { width: 128, height: 128 };
             await testGetThumbnail(done, testNum, media_type, dOp, size)
         });
@@ -114,7 +115,7 @@ export default function fileAssetGetThumbnailPromise(abilityContext) {
         it('SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_PROMISE_02_001', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_PROMISE_02_001';
             let media_type = [AUDIO_TYPE];
-            let dOp = nameFetchOps(testNum, 'Audios/Thumbnail/', '01.mp3');
+            let dOp = audioNameFetchOps(testNum, 'Audios/Thumbnail/', '01.mp3');
             let size = 'default';
             await testGetThumbnail(done, testNum, media_type, dOp, size,);
         });
@@ -130,7 +131,7 @@ export default function fileAssetGetThumbnailPromise(abilityContext) {
         it('SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_PROMISE_02_002', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_PROMISE_02_002';
             let media_type = [AUDIO_TYPE];
-            let dOp = nameFetchOps(testNum, 'Audios/Thumbnail/', '02.mp3');
+            let dOp = audioNameFetchOps(testNum, 'Audios/Thumbnail/', '02.mp3');
             let size = { width: 128, height: 128 };
             await testGetThumbnail(done, testNum, media_type, dOp, size)
         });
@@ -146,7 +147,7 @@ export default function fileAssetGetThumbnailPromise(abilityContext) {
         it('SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_PROMISE_03_001', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_PROMISE_03_001';
             let media_type = [VIDEO_TYPE];
-            let dOp = nameFetchOps(testNum, 'Videos/Thumbnail/', '01.mp4');
+            let dOp = imageVideoNameFetchOps(testNum, 'Videos/Thumbnail/', '01.mp4');
             let size = 'default';
             await testGetThumbnail(done, testNum, media_type, dOp, size,);
         });
@@ -162,7 +163,7 @@ export default function fileAssetGetThumbnailPromise(abilityContext) {
         it('SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_PROMISE_03_002', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_PROMISE_03_002';
             let media_type = [VIDEO_TYPE];
-            let dOp = nameFetchOps(testNum, 'Videos/Thumbnail/', '02.mp4');
+            let dOp = imageVideoNameFetchOps(testNum, 'Videos/Thumbnail/', '02.mp4');
             let size = { width: 128, height: 128 };
             await testGetThumbnail(done, testNum, media_type, dOp, size)
         });

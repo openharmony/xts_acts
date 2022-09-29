@@ -20,14 +20,16 @@ import {
     IMAGE_TYPE,
     VIDEO_TYPE,
     AUDIO_TYPE,
+    audioFetchOps,
+    imageVideoFetchOps,
+    audioNameFetchOps,
+    imageVideoNameFetchOps,
+    isNum,
     checkPresetsAssets,
     checkAssetsCount,
-    fetchOps,
-    nameFetchOps,
-    isNum,
 } from '../../../../../../common';
-export default function fileAssetOpenCallback(abilityContext) {
-    describe('fileAssetOpenCallback', function () {
+export default function fileAssetOpenCallbackTest(abilityContext) {
+    describe('fileAssetOpenCallbackTest', function () {
         const userfile_mgr = userfile_manager.getUserFileMgr(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
@@ -216,7 +218,7 @@ export default function fileAssetOpenCallback(abilityContext) {
         it('SUB_USERFILE_MGR_FILEASSET_OPEN_CALLBACK_01_001', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_OPEN_CALLBACK_01_001';
             let media_type = [IMAGE_TYPE];
-            let fetchOp = fetchOps(testNum, 'Pictures/R_Cb/');
+            let fetchOp = imageVideoFetchOps(testNum, 'Pictures/R_Cb/');
             let assetProps = {
                 bytesRead: 4096,
             };
@@ -235,7 +237,7 @@ export default function fileAssetOpenCallback(abilityContext) {
         it('SUB_USERFILE_MGR_FILEASSET_OPEN_CALLBACK_01_002', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_OPEN_CALLBACK_01_002';
             let media_type = [IMAGE_TYPE];
-            let fetchOp = fetchOps(testNum, 'Pictures/W_Cb/');
+            let fetchOp = imageVideoFetchOps(testNum, 'Pictures/W_Cb/');
             let assetProps = {
                 write: 4096,
             };
@@ -254,7 +256,7 @@ export default function fileAssetOpenCallback(abilityContext) {
         it('SUB_USERFILE_MGR_FILEASSET_OPEN_CALLBACK_01_003', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_OPEN_CALLBACK_01_003';
             let media_type = [IMAGE_TYPE];
-            let fetchOp = fetchOps(testNum, 'Pictures/RW_Cb/');
+            let fetchOp = imageVideoFetchOps(testNum, 'Pictures/RW_Cb/');
             let assetProps = {
                 bytesRead: 4096,
                 write: 4096,
@@ -274,7 +276,7 @@ export default function fileAssetOpenCallback(abilityContext) {
         it('SUB_USERFILE_MGR_FILEASSET_OPEN_CALLBACK_02_001', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_OPEN_CALLBACK_02_001';
             let media_type = [AUDIO_TYPE];
-            let fetchOp = fetchOps(testNum, 'Audios/R_Cb/');
+            let fetchOp = audioFetchOps(testNum, 'Audios/R_Cb/');
             let assetProps = {
                 bytesRead: 4096,
             };
@@ -293,7 +295,7 @@ export default function fileAssetOpenCallback(abilityContext) {
         it('SUB_USERFILE_MGR_FILEASSET_OPEN_CALLBACK_02_002', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_OPEN_CALLBACK_02_002';
             let media_type = [AUDIO_TYPE];
-            let fetchOp = fetchOps(testNum, 'Audios/W_Cb/');
+            let fetchOp = audioFetchOps(testNum, 'Audios/W_Cb/');
             let assetProps = {
                 write: 4096,
             };
@@ -312,7 +314,7 @@ export default function fileAssetOpenCallback(abilityContext) {
         it('SUB_USERFILE_MGR_FILEASSET_OPEN_CALLBACK_02_003', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_OPEN_CALLBACK_02_003';
             let media_type = [AUDIO_TYPE];
-            let fetchOp = fetchOps(testNum, 'Audios/RW_Cb/');
+            let fetchOp = audioFetchOps(testNum, 'Audios/RW_Cb/');
             let assetProps = {
                 bytesRead: 4096,
                 write: 4096,
@@ -332,7 +334,7 @@ export default function fileAssetOpenCallback(abilityContext) {
         it('SUB_USERFILE_MGR_FILEASSET_OPEN_CALLBACK_03_001', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_OPEN_CALLBACK_03_001';
             let media_type = [VIDEO_TYPE];
-            let fetchOp = fetchOps(testNum, 'Videos/R_Cb/');
+            let fetchOp = imageVideoFetchOps(testNum, 'Videos/R_Cb/');
             let assetProps = {
                 bytesRead: 4096,
             };
@@ -351,7 +353,7 @@ export default function fileAssetOpenCallback(abilityContext) {
         it('SUB_USERFILE_MGR_FILEASSET_OPEN_CALLBACK_03_002', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_OPEN_CALLBACK_03_002';
             let media_type = [VIDEO_TYPE];
-            let fetchOp = fetchOps(testNum, 'Videos/W_Cb/');
+            let fetchOp = imageVideoFetchOps(testNum, 'Videos/W_Cb/');
             let assetProps = {
                 write: 4096,
             };
@@ -370,7 +372,7 @@ export default function fileAssetOpenCallback(abilityContext) {
         it('SUB_USERFILE_MGR_FILEASSET_OPEN_CALLBACK_03_003', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_OPEN_CALLBACK_03_003';
             let media_type = [VIDEO_TYPE];
-            let fetchOp = fetchOps(testNum, 'Videos/RW_Cb/');
+            let fetchOp = imageVideoFetchOps(testNum, 'Videos/RW_Cb/');
             let assetProps = {
                 bytesRead: 4096,
                 write: 4096,
@@ -392,7 +394,7 @@ export default function fileAssetOpenCallback(abilityContext) {
         it('SUB_USERFILE_MGR_FILEASSET_CLOSE_CALLBACK_01', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_CLOSE_CALLBACK_01';
             let media_type = [IMAGE_TYPE];
-            let fetchOp = nameFetchOps(testNum, 'Pictures/openClose/', '01.jpg');
+            let fetchOp = imageVideoNameFetchOps(testNum, 'Pictures/openClose/', '01.jpg');
             await closeTest(done, testNum, media_type, fetchOp)
         });
 
@@ -407,7 +409,7 @@ export default function fileAssetOpenCallback(abilityContext) {
         it('SUB_USERFILE_MGR_FILEASSET_CLOSE_CALLBACK_02', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_CLOSE_CALLBACK_02';
             let media_type = [AUDIO_TYPE];
-            let fetchOp = nameFetchOps(testNum, 'Audios/openClose/', '01.mp3');
+            let fetchOp = audioNameFetchOps(testNum, 'Audios/openClose/', '01.mp3');
             await closeTest(done, testNum, media_type, fetchOp)
         });
 
@@ -422,7 +424,7 @@ export default function fileAssetOpenCallback(abilityContext) {
         it('SUB_USERFILE_MGR_FILEASSET_CLOSE_CALLBACK_03', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_CLOSE_CALLBACK_03';
             let media_type = [VIDEO_TYPE];
-            let fetchOp = nameFetchOps(testNum, 'Videos/openClose/', '01.mp4');
+            let fetchOp = imageVideoNameFetchOps(testNum, 'Videos/openClose/', '01.mp4');
             await closeTest(done, testNum, media_type, fetchOp)
         });
     });

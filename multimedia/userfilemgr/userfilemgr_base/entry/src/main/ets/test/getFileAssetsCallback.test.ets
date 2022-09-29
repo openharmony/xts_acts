@@ -20,15 +20,18 @@ import {
     IMAGE_TYPE,
     VIDEO_TYPE,
     AUDIO_TYPE,
+    FILE_TYPE,
+    allFetchOp,
+    fileFetchOps,
+    audioFetchOps,
+    imageVideoFetchOps,
     checkPresetsAssets,
     checkAssetsCount,
-    allFetchOp,
-    fetchOps,
 } from '../../../../../../common';
 
 
-export default function getFileAssetsCallback(abilityContext) {
-    describe('getFileAssetsCallback', function () {
+export default function getFileAssetsCallbackTest(abilityContext) {
+    describe('getFileAssetsCallbackTest', function () {
         const userfile_mgr = userfile_manager.getUserFileMgr(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
@@ -61,20 +64,123 @@ export default function getFileAssetsCallback(abilityContext) {
             },
         }
 
-        async function checkFileAssetAttr(done, testNum, media_type, fetchOps, type, count) {
+        async function getFirstObjectTest(done, testNum, media_type, fetchOps) {
             try {
                 const fetchFileResult = await userfile_mgr.getFileAssets(media_type, fetchOps);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, count);
+                let expectCount = 4;
+                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, expectCount);
                 if (!checkAssetCountPass) return;
                 fetchFileResult.getFirstObject(async (err, asset) => {
                     if (err) {
                         console.info(`${testNum} err : ${err}`)
                         expect.assertFail();
+                        fetchFileResult.close();
+                        done();
+                        return;
+                    }
+                    expect(asset != undefined).assertTrue();
+                    fetchFileResult.close();
+                });
+                done();
+            } catch (error) {
+                console.info(`${testNum}:: error :${error}`);
+                expect(false).assertTrue();
+                done();
+            }
+        }
+
+        async function getLastObjectTest(done, testNum, media_type, fetchOps) {
+            try {
+                const fetchFileResult = await userfile_mgr.getFileAssets(media_type, fetchOps);
+                let expectCount = 4;
+                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, expectCount);
+                if (!checkAssetCountPass) return;
+                fetchFileResult.getLastObject(async (err, asset) => {
+                    if (err) {
+                        console.info(`${testNum} err : ${err}`)
+                        expect.assertFail();
+                        fetchFileResult.close();
+                        done();
+                        return;
+                    }
+                    expect(asset != undefined).assertTrue();
+                    fetchFileResult.close();
+                });
+                done();
+            } catch (error) {
+                console.info(`${testNum}:: error :${error}`);
+                expect(false).assertTrue();
+                done();
+            }
+        }
+
+        async function getPositionObjectTest(done, testNum, media_type, fetchOps, pos) {
+            try {
+                const fetchFileResult = await userfile_mgr.getFileAssets(media_type, fetchOps);
+                let expectCount = 4;
+                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, expectCount);
+                if (!checkAssetCountPass) return;
+                fetchFileResult.getPositionObject(pos, async (err, asset) => {
+                    if (err) {
+                        console.info(`${testNum} err : ${err}`)
+                        expect.assertFail();
+                        fetchFileResult.close();
+                        done();
+                        return;
+                    }
+                    expect(asset != undefined).assertTrue();
+                    fetchFileResult.close();
+                });
+                done();
+            } catch (error) {
+                console.info(`${testNum}:: error :${error}`);
+                expect(false).assertTrue();
+                done();
+            }
+        }
+
+        async function isAfterLastTest(done, testNum, media_type, fetchOps) {
+            try {
+                let fetchFileResult = await userfile_mgr.getFileAssets(media_type, fetchOps);
+                let expectCount = 4;
+                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, expectCount);
+                if (!checkAssetCountPass) return;
+                let asset = await fetchFileResult.getFirstObject();
+                for (var i = 1; i < expectCount; i++) {
+                    asset = await fetchFileResult.getNextObject();
+                    if (i == expectCount - 1) {
+                        let result = fetchFileResult.isAfterLast();
+                        expect(result).assertTrue();
+                        fetchFileResult.close();
+                        done();
+                    }
+                }
+                done();
+            } catch (error) {
+                console.info(`${testNum} error ${error}`);
+                expect(false).assertTrue();
+                done();
+            }
+        }
+
+        async function checkFileAssetAttr(done, testNum, media_type, fetchOps, type) {
+            try {
+                const fetchFileResult = await userfile_mgr.getFileAssets(media_type, fetchOps);
+                let expectCount = 4;
+                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, expectCount);
+                if (!checkAssetCountPass) return;
+                fetchFileResult.getFirstObject(async (err, asset) => {
+                    if (err) {
+                        console.info(`${testNum} err : ${err}`)
+                        expect.assertFail();
+                        fetchFileResult.close();
                         done();
                         return;
                     }
                     expect(asset.displayName).assertEqual(props[type].displayName);
                     expect(asset.mediaType.toString()).assertEqual(props[type].mediaType);
+                    expect(asset.uri != undefined).assertTrue();
+                    fetchFileResult.close();
                     done();
                 });
             } catch (error) {
@@ -85,70 +191,319 @@ export default function getFileAssetsCallback(abilityContext) {
         }
 
         /**
-         * @tc.number    : SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_01
+         * @tc.number    : SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_01_001
+         * @tc.name      : getFirstObject
+         * @tc.desc      : getFirstObject query image assets
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_01_001', 0, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_01_001';
+            let media_type = [IMAGE_TYPE];
+            let currentFetchOps = imageVideoFetchOps(testNum, 'Pictures/Static/');
+            await getFirstObjectTest(done, testNum, media_type, currentFetchOps)
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_01_002
+         * @tc.name      : getFirstObject
+         * @tc.desc      : getFirstObject query audio assets
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_01_002', 0, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_01_002';
+            let media_type = [AUDIO_TYPE];
+            let currentFetchOps = audioFetchOps(testNum, 'Audios/Static/');
+            await getFirstObjectTest(done, testNum, media_type, currentFetchOps)
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_01_003
+         * @tc.name      : getFirstObject
+         * @tc.desc      : getFirstObject query video assets
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_01_003', 0, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_01_003';
+            let media_type = [VIDEO_TYPE];
+            let currentFetchOps = imageVideoFetchOps(testNum, 'Videos/Static/');
+            await getFirstObjectTest(done, testNum, media_type, currentFetchOps)
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_01_004
+         * @tc.name      : getFirstObject
+         * @tc.desc      : getFirstObject query file assets
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_01_004', 0, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_01_004';
+            let media_type = [FILE_TYPE];
+            let currentFetchOps = fileFetchOps(testNum, 'Documents/Static/');
+            await getFirstObjectTest(done, testNum, media_type, currentFetchOps)
+        });
+
+        //------------------------------------------------------------------------------
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_02_001
+         * @tc.name      : getLastObject
+         * @tc.desc      : getLastObject query image assets
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_02_001', 0, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_02_001';
+            let media_type = [IMAGE_TYPE];
+            let currentFetchOps = imageVideoFetchOps(testNum, 'Pictures/Static/');
+            await getLastObjectTest(done, testNum, media_type, currentFetchOps)
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_02_002
+         * @tc.name      : getLastObject
+         * @tc.desc      : getLastObject query audio assets
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_02_002', 0, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_02_002';
+            let media_type = [AUDIO_TYPE];
+            let currentFetchOps = audioFetchOps(testNum, 'Audios/Static/');
+            await getLastObjectTest(done, testNum, media_type, currentFetchOps)
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_02_003
+         * @tc.name      : getLastObject
+         * @tc.desc      : getLastObject query video assets
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_02_003', 0, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_02_003';
+            let media_type = [VIDEO_TYPE];
+            let currentFetchOps = imageVideoFetchOps(testNum, 'Videos/Static/');
+            await getLastObjectTest(done, testNum, media_type, currentFetchOps)
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_02_004
+         * @tc.name      : getLastObject
+         * @tc.desc      : getLastObject query file assets
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_02_004', 0, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_02_004';
+            let media_type = [FILE_TYPE];
+            let currentFetchOps = fileFetchOps(testNum, 'Documents/Static/');
+            await getLastObjectTest(done, testNum, media_type, currentFetchOps)
+        });
+
+        //------------------------------------------------------------------------------
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_03_001
+         * @tc.name      : getPositionObject
+         * @tc.desc      : getPositionObject query image assets
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_03_001', 0, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_03_001';
+            let media_type = [IMAGE_TYPE];
+            let currentFetchOps = imageVideoFetchOps(testNum, 'Pictures/Static/');
+            let pos = 0;
+            await getPositionObjectTest(done, testNum, media_type, currentFetchOps, pos);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_03_002
+         * @tc.name      : getPositionObject
+         * @tc.desc      : getPositionObject query audio assets
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_03_002', 0, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_03_002';
+            let media_type = [AUDIO_TYPE];
+            let currentFetchOps = audioFetchOps(testNum, 'Audios/Static/');
+            let pos = 0;
+            await getPositionObjectTest(done, testNum, media_type, currentFetchOps, pos);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_03_003
+         * @tc.name      : getPositionObject
+         * @tc.desc      : getPositionObject query video assets
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_03_003', 0, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_03_003';
+            let media_type = [VIDEO_TYPE];
+            let currentFetchOps = imageVideoFetchOps(testNum, 'Videos/Static/');
+            let pos = 0;
+            await getPositionObjectTest(done, testNum, media_type, currentFetchOps, pos);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_03_004
+         * @tc.name      : getPositionObject
+         * @tc.desc      : getPositionObject query file assets
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_03_004', 0, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_03_004';
+            let media_type = [FILE_TYPE];
+            let currentFetchOps = fileFetchOps(testNum, 'Documents/Static/');
+            let pos = 0;
+            await getPositionObjectTest(done, testNum, media_type, currentFetchOps, pos);
+        });
+
+        //------------------------------------------------------------------------------
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_04_001
+         * @tc.name      : isAfterLast
+         * @tc.desc      : isAfterLast query image assets
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_04_001', 0, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_04_001';
+            let media_type = [IMAGE_TYPE];
+            let currentFetchOps = imageVideoFetchOps(testNum, 'Pictures/Static/');
+            await isAfterLastTest(done, testNum, media_type, currentFetchOps);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_04_002
+         * @tc.name      : isAfterLast
+         * @tc.desc      : isAfterLast query audio assets
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_04_002', 0, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_04_002';
+            let media_type = [AUDIO_TYPE];
+            let currentFetchOps = audioFetchOps(testNum, 'Audios/Static/');
+            await isAfterLastTest(done, testNum, media_type, currentFetchOps);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_04_003
+         * @tc.name      : isAfterLast
+         * @tc.desc      : isAfterLast query video assets
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_04_003', 0, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_04_003';
+            let media_type = [VIDEO_TYPE];
+            let currentFetchOps = imageVideoFetchOps(testNum, 'Videos/Static/');
+            await isAfterLastTest(done, testNum, media_type, currentFetchOps);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_04_004
+         * @tc.name      : isAfterLast
+         * @tc.desc      : isAfterLast query file assets
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_04_004', 0, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_04_004';
+            let media_type = [FILE_TYPE];
+            let currentFetchOps = fileFetchOps(testNum, 'Documents/Static/');
+            await isAfterLastTest(done, testNum, media_type, currentFetchOps);
+        });
+
+        //------------------------------------------------------------------------------
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_05_001
          * @tc.name      : getFileAssets
          * @tc.desc      : query image assets
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_01', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_01';
+        it('SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_05_001', 0, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_05_001';
             let media_type = [IMAGE_TYPE];
-            let currentFetchOps = fetchOps(testNum, 'Pictures/Static/');
+            let currentFetchOps = imageVideoFetchOps(testNum, 'Pictures/Static/');
             let type = 'image';
-            let count = 1;
-            await checkFileAssetAttr(done, testNum, media_type, currentFetchOps, type, count)
+            await checkFileAssetAttr(done, testNum, media_type, currentFetchOps, type);
         });
 
         /**
-         * @tc.number    : SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_02
+         * @tc.number    : SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_05_002
          * @tc.name      : getFileAssets
          * @tc.desc      : query audio assets
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_02', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_02';
+        it('SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_05_002', 0, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_05_002';
             let media_type = [AUDIO_TYPE];
-            let currentFetchOps = fetchOps(testNum, 'Audios/Static/');
+            let currentFetchOps = audioFetchOps(testNum, 'Audios/Static/');
             let type = 'audio';
-            let count = 1;
-            await checkFileAssetAttr(done, testNum, media_type, currentFetchOps, type, count)
+            await checkFileAssetAttr(done, testNum, media_type, currentFetchOps, type);
         });
 
         /**
-         * @tc.number    : SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_03
+         * @tc.number    : SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_05_003
          * @tc.name      : getFileAssets
          * @tc.desc      : query video assets
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_03', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_03';
+        it('SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_05_003', 0, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_05_003';
             let media_type = [VIDEO_TYPE];
-            let currentFetchOps = fetchOps(testNum, 'Videos/Static/');
+            let currentFetchOps = imageVideoFetchOps(testNum, 'Videos/Static/');
             let type = 'video';
-            let count = 1;
-            await checkFileAssetAttr(done, testNum, media_type, currentFetchOps, type, count)
+            await checkFileAssetAttr(done, testNum, media_type, currentFetchOps, type);
         });
 
         /**
-         * @tc.number    : SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_04
+         * @tc.number    : SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_05_004
          * @tc.name      : getFileAssets
          * @tc.desc      : query assets by abnormal
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_04', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_04';
+        it('SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_05_004', 0, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETFILEASSETS_CALLBACK_05_004';
             try {
                 let media_type = [-1];
-                let currentFetchOps = allFetchOp();
-                userfile_mgr.getFileAssets(media_type, fetchOps, async (err, fetchFileResult) => {
+                let currentFetchOps: userfile_manager.MediaFetchOptions = allFetchOp();
+                userfile_mgr.getFileAssets(media_type, currentFetchOps, async (err, fetchFileResult) => {
                     console.info(`${testNum}, err: ${err}`);
                     if (err != undefined) {
                         expect(true).assertTrue();
