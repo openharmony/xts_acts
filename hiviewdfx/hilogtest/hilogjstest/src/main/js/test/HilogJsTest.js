@@ -260,7 +260,7 @@ describe('HilogJsTest', function () {
     it('testHilogJsApi17', 2, function () {
         console.info('testHilogJsApi17 start');
         try{
-            hilog.debug(0x3200, "HILOGTEST", "%{public}f", [2.1])
+            hilog.debug(0x3200, "HILOGTEST", "%{public}d", [2.1])
         }catch(error){
             console.log(`testHilogJsApi17 got an error: ${JSON.stringify(error)}`)
             expect().assertFail();
