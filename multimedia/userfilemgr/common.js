@@ -111,8 +111,8 @@ const albumFetchOps = function (testNum, path, albumName) {
 
 const checkPresetsAssets = async function (userfilemgr, hapName) {
     console.info('checkPresetsAssets start')
-    let albumList = await userfilemgr.getAlbums([IMAGE_TYPE, VIDEO_TYPE, AUDIO_TYPE], allFetchOp());
-    let albumsCount = albumList.length;
+    let fetchAlbumResult = await userfilemgr.getAlbums([IMAGE_TYPE, VIDEO_TYPE, AUDIO_TYPE], allFetchOp());
+    let albumsCount = fetchAlbumResult.getCount();
     let fetchFileResult = await userfilemgr.getFileAssets([IMAGE_TYPE, VIDEO_TYPE, AUDIO_TYPE],
         allFetchOp());
     let assetsCount = await fetchFileResult.getCount();
@@ -124,7 +124,7 @@ const checkPresetsAssets = async function (userfilemgr, hapName) {
 
 const checkAssetsCount = async function (done, testNum, fetchFileResult, expectCount) {
     if (!fetchFileResult) {
-        console.info(`${testNum}:: fetchFileResult error:`);
+        console.info(`${testNum}:: fetchFileResult is undefined`);
         expect(false).assertTrue();
         done();
         return false
@@ -136,22 +136,6 @@ const checkAssetsCount = async function (done, testNum, fetchFileResult, expectC
         done();
     }
     return count == expectCount;
-}
-
-const checkAlbumsCount = function (done, testNum, albumList, expectCount) {
-    if (!Array.isArray(albumList)) {
-        console.info(`${testNum}:: albumList error:`);
-        expect(false).assertTrue();
-        done();
-        return false
-    }
-    let albumsCount = albumList.length;
-    if (albumsCount != expectCount) {
-        console.info(`${testNum}:: albumsCount: expectCount - ${albumsCount} : ${expectCount}`);
-        expect(albumsCount).assertEqual(expectCount);
-        done();
-    }
-    return albumsCount == expectCount;
 }
 
 const getPermission = async function (name = 'ohos.acts.multimedia.userfilemgr') {
@@ -203,6 +187,5 @@ export {
     albumFetchOps,
     checkPresetsAssets,
     checkAssetsCount,
-    checkAlbumsCount,
     isNum,
 };

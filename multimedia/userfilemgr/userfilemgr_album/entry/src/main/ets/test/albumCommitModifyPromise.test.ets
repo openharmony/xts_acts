@@ -23,7 +23,7 @@ import {
     AUDIO_TYPE,
     albumFetchOps,
     checkPresetsAssets,
-    checkAlbumsCount,
+    checkAssetsCount,
     getPermission,
 } from '../../../../../../common';
 
@@ -49,10 +49,10 @@ export default function albumCommitModifyPromise(abilityContext) {
 
         const albumCommitModify = async function (done, testNum, media_type, fetchOp, expectAlbumCount) {
             try {
-                const albumList = await userfile_mgr.getAlbums(media_type, fetchOp);
-                const albumCountPass = await checkAlbumsCount(done, testNum, albumList, expectAlbumCount);
+                const fetchAlbumResult = await userfile_mgr.getAlbums(media_type, fetchOp);
+                const albumCountPass = await checkAssetsCount(done, testNum, fetchAlbumResult, expectAlbumCount);
                 if (!albumCountPass) return;
-                const album = albumList[0];
+                const album = await fetchAlbumResult.getFirstObject();
                 const newName = 'albumName' + media_type.toString();
                 album.albumName = newName;
                 await album.commitModify();

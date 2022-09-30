@@ -24,7 +24,7 @@ import {
     allFetchOp,
     albumFetchOps,
     checkPresetsAssets,
-    checkAlbumsCount,
+    checkAssetsCount,
 } from '../../../../../../common';
 
 export default function albumGetFileAssetsCallback(abilityContext) {
@@ -47,14 +47,13 @@ export default function albumGetFileAssetsCallback(abilityContext) {
 
         const checkAlbumAssetsCount = async function (done, testNum, media_type, fetchOp, expectAssetsCount, expectAlbumCount = 1) {
             try {
-                const albumList = await userfile_mgr.getAlbums(media_type, fetchOp);
-                // check album length
-                const albumCountPass = await checkAlbumsCount(done, testNum, albumList, expectAlbumCount);
+                const fetchAlbumResult = await userfile_mgr.getAlbums(media_type, fetchOp);
+                const albumCountPass = await checkAssetsCount(done, testNum, fetchAlbumResult, expectAlbumCount);
                 if (!albumCountPass) return;
-                const album = albumList[0];
+                const album = await fetchAlbumResult.getFirstObject();
                 album.getFileAssets(media_type, allFetchOp(), (error, fetchFileResult) => {
                     if (error != undefined) {
-                        console.info(`${testNum} fetchFileResult error: ${error}`);
+                        console.info(`${testNum} getFileAssets error: ${error}`);
                         expect(false).assertTrue();
                         done();
                         return;

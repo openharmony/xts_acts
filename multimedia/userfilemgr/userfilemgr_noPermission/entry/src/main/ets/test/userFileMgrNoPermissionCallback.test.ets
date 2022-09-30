@@ -82,7 +82,7 @@ export default function userFileMgrNoPermissionCallback(abilityContext) {
 
         const getAlbumsTest = async function (done, testNum, media_type) {
             try {
-                await userfile_mgr.getAlbums(media_type, allFetchOp(), async (err, albumList) => {
+                await userfile_mgr.getAlbums(media_type, allFetchOp(), async (err, fetchAlbumResult) => {
                     if (err != undefined) {
                         console.info(`${testNum}, err: ${err}`);
                         expect(true).assertTrue();

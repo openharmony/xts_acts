@@ -24,7 +24,7 @@ import {
     allFetchOp,
     albumFetchOps,
     checkPresetsAssets,
-    checkAlbumsCount,
+    checkAssetsCount,
     getPermission,
     isNum,
 } from '../../../../../../common';
@@ -89,17 +89,17 @@ export default function getAlbumsCallbackTest(abilityContext) {
         }
         const checkAlbumInfo = async function (done, testNum, media_type, fetchOp, relativePaths) {
             try {
-                userfile_mgr.getAlbums(media_type, fetchOp, async (err, albumList) => {
+                userfile_mgr.getAlbums(media_type, fetchOp, async (err, fetchAlbumResult) => {
                     if(err) {
-                        console.info(`${testNum}, err: ${err}`)
+                        console.info(`${testNum} getAlbums err: ${err}`)
                         expect(false).assertTrue();
                         done();
                         return;
                     }
                     let expectAlbumCount = 1;
-                    const albumCountPass = await checkAlbumsCount(done, testNum, albumList, expectAlbumCount);
+                    const albumCountPass = await checkAssetsCount(done, testNum, fetchAlbumResult, expectAlbumCount);
                     if (!albumCountPass) return;
-                    const album = albumList[0];
+                    const album = fetchAlbumResult.getFirstObject();
                     checkProps(done, testNum, album, relativePaths);
                     done();
                 });
@@ -171,7 +171,7 @@ export default function getAlbumsCallbackTest(abilityContext) {
             try {
                 let media_type = [-1];
                 let currentFetchOp = allFetchOp();
-                userfile_mgr.getAlbums(media_type, currentFetchOp, async (err, albumList) => {
+                userfile_mgr.getAlbums(media_type, currentFetchOp, async (err, fetchAlbumResult) => {
                     console.info(`${testNum}, err: ${err}`);
                     if (err != undefined) {
                         expect(true).assertTrue();

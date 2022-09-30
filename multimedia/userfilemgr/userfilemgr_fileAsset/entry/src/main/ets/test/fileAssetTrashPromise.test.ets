@@ -70,8 +70,8 @@ export default function fileAssetTrashPromiseTest(abilityContext) {
                 let count = databaseFetchFileResult.getCount();
                 //album info
                 if (!noAlbum) {
-                    let albumList = await userfile_mgr.getAlbums(media_type, ablumFetchOps);
-                    let album = albumList[0];
+                    let fetchAlbumResult = await userfile_mgr.getAlbums(media_type, ablumFetchOps);
+                    let album = await fetchAlbumResult.getFirstObject();
                     let op: userfile_manager.MediaFetchOptions = allFetchOp();
                     let albumFetchFileResult = await album.getFileAssets(media_type, op);
                     let albumFilesCount = albumFetchFileResult.getCount();
@@ -88,8 +88,8 @@ export default function fileAssetTrashPromiseTest(abilityContext) {
                 expect(databaseCount).assertEqual(count - 1);
                 //album info
                 if (!noAlbum) {
-                    var albumList = await userfile_mgr.getAlbums(media_type, ablumFetchOps);
-                    var album = albumList[0];
+                    var fetchAlbumResult = await userfile_mgr.getAlbums(media_type, ablumFetchOps);
+                    var album = await fetchAlbumResult.getFirstObject();
                     let op: userfile_manager.MediaFetchOptions = allFetchOp();
                     var albumFetchFileResult = await album.getFileAssets(media_type, op);
                     var albumFilesCount = albumFetchFileResult.getCount();
@@ -116,8 +116,8 @@ export default function fileAssetTrashPromiseTest(abilityContext) {
                 expect(databaseCount).assertEqual(count);
                 //album info
                 if (!noAlbum) {
-                    let albumList = await userfile_mgr.getAlbums(media_type, ablumFetchOps);
-                    let album = albumList[0];
+                    let fetchAlbumResult = await userfile_mgr.getAlbums(media_type, ablumFetchOps);
+                    let album = await fetchAlbumResult.getFirstObject();
                     let op: userfile_manager.MediaFetchOptions = allFetchOp();
                     let albumFetchFileResult = await album.getFileAssets(media_type, op);
                     let albumFilesCount = albumFetchFileResult.getCount();
