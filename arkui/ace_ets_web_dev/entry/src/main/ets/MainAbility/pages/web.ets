@@ -56,6 +56,10 @@ struct Index {
     @State mixedSwitch:boolean=false
     @State mixedAllSwitch:boolean=false
     @State overViewFalseHeight:number=0
+    @State isAuthFlag:boolean=false
+    @State conFirmFlag:boolean=false
+    @State sslErrorFlag:boolean=false
+    @State clientFlag:boolean=false
     onPageShow(){
         let valueChangeEvent={
             eventId:10,
@@ -211,6 +215,59 @@ struct Index {
             .onBlur(()=>{
                 console.info("onBlur==>") 
                 this.controller.requestFocus()
+            })
+            .onHttpAuthRequest((event)=>{
+                console.info("onHttpAuthRequest==>")
+                if(this.isAuthFlag){
+                    console.info("isAuthFlag==>")
+                    let isHttpAuth=event.handler.isHttpAuthInfoSaved()
+                    Utils.emitEvent(isHttpAuth,192)
+                    this.isAuthFlag=false
+                }else if(this.conFirmFlag){
+                    console.info("conFirmFlag==>")
+                    let flag=event.handler.confirm("1111","2222")
+                    Utils.emitEvent(flag,194)
+                    this.conFirmFlag=false
+                }else{
+                    console.info("cancel==>")
+                    event.handler.cancel()
+                }
+                return false
+            })
+            .onSslErrorEventReceive((event)=>{
+                console.info("onSslErrorEventReceive==>")
+                if(this.sslErrorFlag){
+                    event.handler.handleCancel()
+                    setTimeout(()=>{
+                        let sslError=event.error
+                        Utils.emitEvent(sslError,198)
+                    },3000)
+                    this.sslErrorFlag=false
+                }else{
+                    event.handler.handleConfirm()
+                    setTimeout(()=>{
+                        let webTitle=this.controller.getTitle()
+                        Utils.emitEvent(webTitle,200)
+                    },3000)
+                }
+            })
+            .onClientAuthenticationRequest((event)=>{
+                console.info("onClientAuthenticationRequest==>")
+                if(this.clientFlag){
+                    event.handler.cancel()
+                    setTimeout(()=>{
+                        let webTitle=this.controller.getTitle()
+                        Utils.emitEvent(webTitle,202)
+                    },3000)
+                    event.handler.confirm("/system/etc/user.pk8", "/system/etc/chain-user.pem")
+                    this.clientFlag=false
+                }else{
+                    event.handler.ignore()
+                    setTimeout(()=>{
+                        let webTitle=this.controller.getTitle()
+                        Utils.emitEvent(webTitle,204)
+                    },3000)
+                }
             })
             TextInput({placeholder:"inputs your words"})
             .key('textInput')
@@ -787,6 +844,40 @@ struct Index {
                         case "emitGetCookieManager":{                                                                                 
                             let getCookieManagerCalled = this.controller.getCookieManager().setCookie("https://weibo.com","a=b")
                             Utils.emitEvent(getCookieManagerCalled,89)                                                              
+                            break;
+                        }
+                        case "emitIsHttpAuthInfoSaved":{
+                            this.isAuthFlag=true;
+                            await Utils.sleep(1000)
+                            this.controller.loadUrl({url:"http://httpbin.org/basic-auth/1111/2222"})
+                            break;
+                        }
+                        case "emitHttpAuthRequestConfirm":{
+                            this.conFirmFlag=true;
+                            await Utils.sleep(1000)
+                            this.controller.loadUrl({url:"http://httpbin.org/basic-auth/1111/2222"})
+                            break;
+                        }
+                        case "emitHttpAuthRequestCancel":{
+                            this.conFirmFlag=false;
+                            await Utils.sleep(1000)
+                            this.controller.loadUrl({url:"http://httpbin.org/basic-auth/1111/2222"})
+                            setTimeout(()=>{
+                                let webTitle=this.controller.getTitle()
+                                Utils.emitEvent(webTitle,196)
+                            },3000)
+                            break;
+                        }
+                        case "emitSslCancel":{
+                            this.sslErrorFlag=true
+                            await Utils.sleep(1000)
+                            this.controller.loadUrl({url:"https://expired.badssl.com/"})
+                            break;
+                        }
+                        case "emitSslConfirm":{
+                            this.sslErrorFlag=false
+                            await Utils.sleep(1000)
+                            this.controller.loadUrl({url:"https://expired.badssl.com/"})
                             break;
                         }
                         default:
