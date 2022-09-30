@@ -21,8 +21,8 @@ ohos_js_hap_suite("storagefileio_js_test") {
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsStorageFileIoJSTest"
-  subsystem_name = "distributeddatamgr"
-  part_name = "distributedfilejs"
+  subsystem_name = "filemanagement"
+  part_name = "file_api"
 }
 ohos_js_assets("storagefileio_js_assets") {
   js2abc = true
