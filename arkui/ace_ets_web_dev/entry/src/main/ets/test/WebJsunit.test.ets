@@ -688,8 +688,58 @@ export default function webJsunit() {
      *tc.desic Gets network cookie manager
      */
     it('getCookieManager',0,async function(done){
-      emitKey="emitGetCookieManager";
+      emitKey="emitIsHttpAuthInfoSaved";
       Utils.registerEvent("getCookieManager",true,89,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_066                                                                                                                                                                      
+     *tc.name isHttpAuthInfoSaved                                                                                                                                                                                                                 
+     *tc.desic isHttpAuthInfoSaved
+     */
+    it('isHttpAuthInfoSaved',0,async function(done){
+      emitKey="emitHttpAuthRequestConfirm";
+      Utils.registerEvent("isHttpAuthInfoSaved",false,192,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_067                                                                                                                                                                      
+     *tc.name httpAuthRequestConfirm                                                                                                                                                                                                                 
+     *tc.desic confirm
+     */
+    it('httpAuthRequestConfirm',0,async function(done){
+      emitKey="emitHttpAuthRequestCancel";
+      Utils.registerEvent("httpAuthRequestConfirm",true,194,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_068                                                                                                                                                                     
+     *tc.name httpAuthRequestCancel                                                                                                                                                                                                                 
+     *tc.desic cancel
+     */
+    it('httpAuthRequestCancel',0,async function(done){
+      emitKey="emitSslCancel";
+      Utils.registerContainEvent("httpAuthRequestCancel","httpbin",196,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_069                                                                                                                                                                     
+     *tc.name sslCancel                                                                                                                                                                                                                 
+     *tc.desic cancel
+     */
+    it('sslCancel',0,async function(done){
+      emitKey="emitSslConfirm";
+      Utils.registerEvent("sslCancel",2,198,done);
+      sendEventByKey('webcomponent',10,'');
+    })
+    /* 
+     *tc.number SUB_ACE_BASIC_ETS_API_070                                                                                                                                                                     
+     *tc.name sslConfirm                                                                                                                                                                                                                 
+     *tc.desic confirm
+     */
+    it('sslConfirm',0,async function(done){
+      emitKey="emitSslConfirm";
+      Utils.registerContainEvent("sslConfirm","expired",200,done);
       sendEventByKey('webcomponent',10,'');
     })
   })
