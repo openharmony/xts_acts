@@ -1101,6 +1101,37 @@ export default function cameraJSUnitVideoAsync(surfaceId: any) {
       }
     })
 
+    /**
+      * @tc.number    : VA_COMMIT_CONFIG_CALLBACK_0100
+      * @tc.name      : CommitConfig async api
+      * @tc.desc      : CommitConfig async api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 0
+    */
+   it('VA_COMMIT_CONFIG_CALLBACK_0100', 0, async function (done) {
+    if (captureSession == null || captureSession == undefined) {
+      console.info(TAG + 'Entering CommitConfig captureSession == null || undefined')
+    } else {
+      console.info(TAG + 'Entering VA_COMMIT_CONFIG_CALLBACK_0100 to operate')
+      await sleep(1)
+      captureSession.commitConfig(async (err, data) => {
+        if (!err) {
+          console.info(TAG + 'Entering CommitConfig data is not null || undefined')
+          console.info(TAG + 'Entering VA_COMMIT_CONFIG_CALLBACK_0100 success')
+        } else {
+          console.info(TAG + 'Entering VA_COMMIT_CONFIG_CALLBACK_0100 err: ' + err.message)
+        }
+        expect(true).assertTrue();
+        console.info(TAG + 'Entering VA_COMMIT_CONFIG_CALLBACK_0100 ends here')
+        await sleep(1)
+        done()
+      })
+      await sleep(1)
+      done()
+    }
+  })
+
     //framerate
     /**
       * @tc.number    : GET_FRAME_RATE_RANGE
