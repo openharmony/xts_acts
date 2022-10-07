@@ -54,10 +54,10 @@ export default function fileAssetCommitModifyPromiseTest(abilityContext) {
                 let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchAssetResult, 1);
                 if (!checkAssetCountPass) return;
                 const asset = await fetchAssetResult.getFirstObject();
-                const oldVal = asset[prop]
-                asset[prop] = val;
+                const oldVal = asset.get(prop)
+                asset.set(prop, val);
                 await asset.commitModify();
-                asset[prop] = oldVal;
+                asset.set(prop, oldVal.toString());
                 await asset.commitModify();
                 fetchAssetResult.close();
                 done();
@@ -79,7 +79,7 @@ export default function fileAssetCommitModifyPromiseTest(abilityContext) {
         it('SUB_USERFILE_MGR_FILEASSET_COMMITMODIFY_PROMISE_01', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_COMMITMODIFY_PROMISE_01';
             let fetchOp = imageVideoNameFetchOps(testNum, 'Pictures/ModifyPro/', '01.jpg');
-            let prop = 'displayName';
+            let prop = 'display_name';
             let val = IMAGE_TYPE.toString() + '.jpg';
             let isAudio = false;
             await checkCommitModify(done, testNum, fetchOp, prop, val, isAudio);
@@ -96,7 +96,7 @@ export default function fileAssetCommitModifyPromiseTest(abilityContext) {
         it('SUB_USERFILE_MGR_FILEASSET_COMMITMODIFY_PROMISE_02', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_COMMITMODIFY_PROMISE_02';
             let fetchOp = audioNameFetchOps(testNum, 'Audios/ModifyPro/', '01.mp3');
-            let prop = 'displayName';
+            let prop = 'display_name';
             let val = AUDIO_TYPE.toString() + '.mp3';
             let isAudio = true;
             await checkCommitModify(done, testNum, fetchOp, prop, val, isAudio);
@@ -113,7 +113,7 @@ export default function fileAssetCommitModifyPromiseTest(abilityContext) {
         it('SUB_USERFILE_MGR_FILEASSET_COMMITMODIFY_PROMISE_03', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_COMMITMODIFY_PROMISE_03';
             let fetchOp = imageVideoNameFetchOps(testNum, 'Videos/ModifyPro/', '01.mp4');
-            let prop = 'displayName';
+            let prop = 'display_name';
             let val = VIDEO_TYPE.toString() + '.mp4';
             let isAudio = false;
             await checkCommitModify(done, testNum, fetchOp, prop, val, isAudio);
