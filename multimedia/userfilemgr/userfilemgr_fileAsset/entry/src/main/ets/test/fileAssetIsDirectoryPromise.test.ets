@@ -18,23 +18,17 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 
 import {
     sleep,
-    IMAGE_TYPE,
-    VIDEO_TYPE,
-    AUDIO_TYPE,
-    FILE_TYPE,
-    fileNameFetchOps,
     audioNameFetchOps,
     imageVideoNameFetchOps,
     checkPresetsAssets,
-    checkAssetsCount,
 } from '../../../../../../common';
 
 export default function fileAssetIsDirectoryPromiseTest(abilityContext) {
     describe('fileAssetIsDirectoryPromiseTest', function () {
-        const userfile_mgr = userfile_manager.getUserFileMgr(abilityContext);
+        const userfilemgr = userfile_manager.getUserFileMgr(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
-            await checkPresetsAssets(userfile_mgr, 'ActsUserFileMgrFileAssetJsTest')
+            await checkPresetsAssets(userfilemgr, 'ActsUserFileMgrFileAssetJsTest')
         });
         beforeEach(function () {
             console.info('beforeEach case');
@@ -47,15 +41,19 @@ export default function fileAssetIsDirectoryPromiseTest(abilityContext) {
             console.info('afterAll case');
         });
 
-        const isDirectoryTest = async function (done, testNum, media_type, fetchOp) {
+        const isDirectoryTest = async function (done, testNum, fetchOp, isAudio) {
             try {
-                const fetchFileResult = await userfile_mgr.getFileAssets(media_type, fetchOp);
-                const asset = await fetchFileResult.getFirstObject();
+                let fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOp);
+                if (isAudio) {
+                    fetchAssetResult = await userfilemgr.getAudioAssets(fetchOp);
+                }
+                const asset = await fetchAssetResult.getFirstObject();
+                fetchAssetResult.close();
                 const isDir = await asset.isDirectory();
                 expect(isDir).assertEqual(false);
                 done();
             } catch (error) {
-                console.info(`${testNum} error : ${error}`)
+                console.info(`${testNum} error : ${error}`);
                 expect(false).assertTrue();
                 done();
             }
@@ -70,10 +68,10 @@ export default function fileAssetIsDirectoryPromiseTest(abilityContext) {
          * @tc.level     : Level 0
          */
         it('SUB_USERFILE_MGR_FILEASSET_ISDIRECTORY_PROMISE_01', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_FILEASSET_ISDIRECTORY_PROMISE_01'
-            let media_type = [IMAGE_TYPE];
+            let testNum = 'SUB_USERFILE_MGR_FILEASSET_ISDIRECTORY_PROMISE_01';
             let fetchOp = imageVideoNameFetchOps(testNum, 'Pictures/Static/', '01.jpg');
-            await isDirectoryTest(done, testNum, media_type, fetchOp)
+            let isAudio = false;
+            await isDirectoryTest(done, testNum, fetchOp, isAudio);
         });
 
         /**
@@ -85,10 +83,10 @@ export default function fileAssetIsDirectoryPromiseTest(abilityContext) {
          * @tc.level     : Level 0
          */
         it('SUB_USERFILE_MGR_FILEASSET_ISDIRECTORY_PROMISE_02', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_FILEASSET_ISDIRECTORY_PROMISE_02'
-            let media_type = [AUDIO_TYPE];
+            let testNum = 'SUB_USERFILE_MGR_FILEASSET_ISDIRECTORY_PROMISE_02';
             let fetchOp = audioNameFetchOps(testNum, 'Audios/Static/', '01.mp3');
-            await isDirectoryTest(done, testNum, media_type, fetchOp)
+            let isAudio = true;
+            await isDirectoryTest(done, testNum, fetchOp, isAudio);
         });
 
         /**
@@ -100,25 +98,10 @@ export default function fileAssetIsDirectoryPromiseTest(abilityContext) {
          * @tc.level     : Level 0
          */
         it('SUB_USERFILE_MGR_FILEASSET_ISDIRECTORY_PROMISE_03', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_FILEASSET_ISDIRECTORY_PROMISE_03'
-            let media_type = [VIDEO_TYPE];
+            let testNum = 'SUB_USERFILE_MGR_FILEASSET_ISDIRECTORY_PROMISE_03';
             let fetchOp = imageVideoNameFetchOps(testNum, 'Videos/Static/', '01.mp4');
-            await isDirectoryTest(done, testNum, media_type, fetchOp)
-        });
-
-        /**
-         * @tc.number    : SUB_USERFILE_MGR_FILEASSET_ISDIRECTORY_PROMISE_04
-         * @tc.name      : isDirectory
-         * @tc.desc      : file asset isDirectory
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_USERFILE_MGR_FILEASSET_ISDIRECTORY_PROMISE_04', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_FILEASSET_ISDIRECTORY_PROMISE_04'
-            let media_type = [FILE_TYPE];
-            let fetchOp = fileNameFetchOps(testNum, 'Documents/Static/', '01.dat');
-            await isDirectoryTest(done, testNum, media_type, fetchOp)
+            let isAudio = false;
+            await isDirectoryTest(done, testNum, fetchOp, isAudio);
         });
     });
 }

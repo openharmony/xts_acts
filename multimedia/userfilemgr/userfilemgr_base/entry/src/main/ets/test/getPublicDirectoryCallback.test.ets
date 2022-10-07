@@ -23,7 +23,7 @@ import {
 
 export default function getPublicDirectoryCallbackTest(abilityContext) {
     describe('getPublicDirectoryCallbackTest', function () {
-        const userfile_mgr = userfile_manager.getUserFileMgr(abilityContext);
+        const userfilemgr = userfile_manager.getUserFileMgr(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
         });
@@ -40,7 +40,7 @@ export default function getPublicDirectoryCallbackTest(abilityContext) {
 
         const getetPublicDirectoryTest = async (done, testNum, dir, val) => {
             try {
-                userfile_mgr.getPublicDirectory(dir, async (err, res) => {
+                userfilemgr.getPublicDirectory(dir, async (err, res) => {
                     if (err) {
                         console.info(`${testNum} err : ${err}`)
                         expect.assertFail();

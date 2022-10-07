@@ -30,11 +30,11 @@ import {
 
 export default function fileAssetCommitModifyCallbackTest(abilityContext) {
     describe('fileAssetCommitModifyCallbackTest', function () {
-        const userfile_mgr = userfile_manager.getUserFileMgr(abilityContext);
+        const userfilemgr = userfile_manager.getUserFileMgr(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
             await getPermission();
-            await checkPresetsAssets(userfile_mgr, 'ActsUserFileMgrFileAssetJsTest')
+            await checkPresetsAssets(userfilemgr, 'ActsUserFileMgrFileAssetJsTest')
         });
         beforeEach(function () {
             console.info('beforeEach case');
@@ -47,12 +47,15 @@ export default function fileAssetCommitModifyCallbackTest(abilityContext) {
             console.info('afterAll case');
         });
 
-        const checkCommitModify = async function (done, testNum, media_type, fetchOp, prop, val) {
+        const checkCommitModify = async function (done, testNum, fetchOp, prop, val, isAudio) {
             try {
-                const fetchFileResult = await userfile_mgr.getFileAssets(media_type, fetchOp);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 1);
+                let fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOp);
+                if (isAudio) {
+                    fetchAssetResult = await userfilemgr.getAudioAssets(fetchOp);
+                }
+                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchAssetResult, 1);
                 if (!checkAssetCountPass) return;
-                const asset = await fetchFileResult.getFirstObject();
+                const asset = await fetchAssetResult.getFirstObject();
                 const oldVal = asset[prop]
                 asset[prop] = val;
                 await asset.commitModify(async (err) => {
@@ -64,7 +67,7 @@ export default function fileAssetCommitModifyCallbackTest(abilityContext) {
                     }
                     asset[prop] = oldVal;
                     await asset.commitModify();
-                    await fetchFileResult.close();
+                    fetchAssetResult.close();
                     done();
                 });
             } catch (error) {
@@ -84,11 +87,11 @@ export default function fileAssetCommitModifyCallbackTest(abilityContext) {
          */
         it('SUB_USERFILE_MGR_FILEASSET_COMMITMODIFY_CALLBACK_01', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_COMMITMODIFY_CALLBACK_01';
-            let media_type = [IMAGE_TYPE];
             let fetchOp = imageVideoNameFetchOps(testNum, 'Pictures/ModifyCb/', '01.jpg');
-            let prop = 'displayName'
-            let val = IMAGE_TYPE.toString() + '.jpg'
-            await checkCommitModify(done, testNum, media_type, fetchOp, prop, val)
+            let prop = 'displayName';
+            let val = IMAGE_TYPE.toString() + '.jpg';
+            let isAudio = false;
+            await checkCommitModify(done, testNum, fetchOp, prop, val, isAudio);
         });
 
         /**
@@ -101,11 +104,11 @@ export default function fileAssetCommitModifyCallbackTest(abilityContext) {
          */
         it('SUB_USERFILE_MGR_FILEASSET_COMMITMODIFY_CALLBACK_02', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_COMMITMODIFY_CALLBACK_02';
-            let media_type = [AUDIO_TYPE];
             let fetchOp = audioNameFetchOps(testNum, 'Audios/ModifyCb/', '01.mp3');
-            let prop = 'displayName'
-            let val = AUDIO_TYPE.toString() + '.mp3'
-            await checkCommitModify(done, testNum, media_type, fetchOp, prop, val)
+            let prop = 'displayName';
+            let val = AUDIO_TYPE.toString() + '.mp3';
+            let isAudio = true;
+            await checkCommitModify(done, testNum, fetchOp, prop, val, isAudio);
         });
 
         /**
@@ -118,11 +121,11 @@ export default function fileAssetCommitModifyCallbackTest(abilityContext) {
          */
         it('SUB_USERFILE_MGR_FILEASSET_COMMITMODIFY_CALLBACK_03', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_COMMITMODIFY_CALLBACK_03';
-            let media_type = [VIDEO_TYPE];
             let fetchOp = imageVideoNameFetchOps(testNum, 'Videos/ModifyCb/', '01.mp4');
-            let prop = 'displayName'
-            let val = VIDEO_TYPE.toString() + '.mp4'
-            await checkCommitModify(done, testNum, media_type, fetchOp, prop, val)
+            let prop = 'displayName';
+            let val = VIDEO_TYPE.toString() + '.mp4';
+            let isAudio = false;
+            await checkCommitModify(done, testNum, fetchOp, prop, val, isAudio);
         });
     });
 }

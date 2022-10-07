@@ -18,23 +18,17 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 
 import {
     sleep,
-    IMAGE_TYPE,
-    VIDEO_TYPE,
-    AUDIO_TYPE,
-    FILE_TYPE,
     checkPresetsAssets,
-    checkAssetsCount,
-    fileNameFetchOps,
     audioNameFetchOps,
     imageVideoNameFetchOps,
 } from '../../../../../../common';
 
 export default function fileAssetIsDirectoryCallbackTest(abilityContext) {
     describe('fileAssetIsDirectoryCallbackTest', function () {
-        const userfile_mgr = userfile_manager.getUserFileMgr(abilityContext);
+        const userfilemgr = userfile_manager.getUserFileMgr(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
-            await checkPresetsAssets(userfile_mgr, 'ActsUserFileMgrFileAssetJsTest')
+            await checkPresetsAssets(userfilemgr, 'ActsUserFileMgrFileAssetJsTest')
         });
         beforeEach(function () {
             console.info('beforeEach case');
@@ -47,10 +41,14 @@ export default function fileAssetIsDirectoryCallbackTest(abilityContext) {
             console.info('afterAll case');
         });
 
-        const isDirectoryTest = async function (done, testNum, media_type, fetchOp) {
+        const isDirectoryTest = async function (done, testNum, fetchOp, isAudio) {
             try {
-                const fetchFileResult = await userfile_mgr.getFileAssets(media_type, fetchOp);
-                const asset = await fetchFileResult.getFirstObject();
+                let fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOp);
+                if (isAudio) {
+                    fetchAssetResult = await userfilemgr.getAudioAssets(fetchOp);
+                }
+                const asset = await fetchAssetResult.getFirstObject();
+                fetchAssetResult.close();
                 asset.isDirectory((err, isDir) =>{
                     if (err) {
                         console.info(`${testNum} err : ${err}`);
@@ -77,10 +75,10 @@ export default function fileAssetIsDirectoryCallbackTest(abilityContext) {
          * @tc.level     : Level 0
          */
         it('SUB_USERFILE_MGR_FILEASSET_ISDIRECTORY_CALLBACK_01', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_ISDIRECTORY_CALLBACK_001'
-            let media_type = [IMAGE_TYPE];
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_ISDIRECTORY_CALLBACK_001';
             let fetchOp = imageVideoNameFetchOps(testNum, 'Pictures/Static/', '01.jpg');
-            await isDirectoryTest(done, testNum, media_type, fetchOp)
+            let isAudio = false;
+            await isDirectoryTest(done, testNum, fetchOp, isAudio);
         });
 
         /**
@@ -92,10 +90,10 @@ export default function fileAssetIsDirectoryCallbackTest(abilityContext) {
          * @tc.level     : Level 0
          */
         it('SUB_USERFILE_MGR_FILEASSET_ISDIRECTORY_CALLBACK_02', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_ISDIRECTORY_CALLBACK_001'
-            let media_type = [AUDIO_TYPE];
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_ISDIRECTORY_CALLBACK_001';
             let fetchOp = audioNameFetchOps(testNum, 'Audios/Static/', '01.mp3');
-            await isDirectoryTest(done, testNum, media_type, fetchOp)
+            let isAudio = true;
+            await isDirectoryTest(done, testNum, fetchOp, isAudio);
         });
 
         /**
@@ -107,25 +105,10 @@ export default function fileAssetIsDirectoryCallbackTest(abilityContext) {
          * @tc.level     : Level 0
          */
         it('SUB_USERFILE_MGR_FILEASSET_ISDIRECTORY_CALLBACK_03', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_ISDIRECTORY_CALLBACK_001'
-            let media_type = [VIDEO_TYPE];
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_ISDIRECTORY_CALLBACK_001';
             let fetchOp = imageVideoNameFetchOps(testNum, 'Videos/Static/', '01.mp4');
-            await isDirectoryTest(done, testNum, media_type, fetchOp)
-        });
-
-        /**
-         * @tc.number    : SUB_USERFILE_MGR_FILEASSET_ISDIRECTORY_CALLBACK_04
-         * @tc.name      : isDirectory
-         * @tc.desc      : file asset isDirectory
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_USERFILE_MGR_FILEASSET_ISDIRECTORY_CALLBACK_04', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_ISDIRECTORY_CALLBACK_001'
-            let media_type = [FILE_TYPE];
-            let fetchOp = fileNameFetchOps(testNum, 'Documents/Static/', '01.dat');
-            await isDirectoryTest(done, testNum, media_type, fetchOp)
+            let isAudio = false;
+            await isDirectoryTest(done, testNum, fetchOp, isAudio);
         });
     });
 }

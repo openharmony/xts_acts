@@ -23,7 +23,7 @@ import {
 
 export default function getPublicDirectoryPromiseTest(abilityContext) {
     describe('getPublicDirectoryPromiseTest', function () {
-        const userfile_mgr = userfile_manager.getUserFileMgr(abilityContext);
+        const userfilemgr = userfile_manager.getUserFileMgr(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
         });
@@ -40,7 +40,7 @@ export default function getPublicDirectoryPromiseTest(abilityContext) {
 
         const getetPublicDirectoryTest = async (done, testNum, dir, val) => {
             try {
-                let res = await userfile_mgr.getPublicDirectory(dir);
+                let res = await userfilemgr.getPublicDirectory(dir);
                 expect(res).assertEqual(val);
                 done();
             } catch (error) {

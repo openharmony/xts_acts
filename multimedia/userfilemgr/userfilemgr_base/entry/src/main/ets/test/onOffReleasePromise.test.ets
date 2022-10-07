@@ -18,11 +18,6 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 
 import {
     sleep,
-    IMAGE_TYPE,
-    VIDEO_TYPE,
-    AUDIO_TYPE,
-    FILE_TYPE,
-    fileFetchOps,
     audioFetchOps,
     imageVideoFetchOps,
     checkPresetsAssets,
@@ -32,10 +27,10 @@ import {
 
 export default function onOffReleasePromiseTest(abilityContext) {
     describe('onOffReleasePromiseTest', function () {
-        const userfile_mgr = userfile_manager.getUserFileMgr(abilityContext);
+        const userfilemgr = userfile_manager.getUserFileMgr(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
-            await checkPresetsAssets(userfile_mgr, 'ActsUserFileMgrAlbumJsTest');
+            await checkPresetsAssets(userfilemgr, 'ActsUserFileMgrAlbumJsTest');
         });
         beforeEach(function () {
             console.info('beforeEach case');
@@ -48,14 +43,18 @@ export default function onOffReleasePromiseTest(abilityContext) {
             console.info('afterAll case');
         });
 
-        const onTest = async (done, testNum, media_type, fetchOps, type, newName) => {
+        const onTest = async (done, testNum, fetchOps, type, newName, isAudio) => {
             try {
                 let count = 0;
-                userfile_mgr.on(type, () => { count++; });
-                const fetchFileResult = await userfile_mgr.getFileAssets(media_type, fetchOps);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 1);
+                userfilemgr.on(type, () => { count++; });
+                let fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOps);
+                if (isAudio) {
+                    fetchAssetResult = await userfilemgr.getAudioAssets(fetchOps);
+                }
+                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchAssetResult, 1);
                 if (!checkAssetCountPass) return;
-                const asset = await fetchFileResult.getFirstObject();
+                const asset = await fetchAssetResult.getFirstObject();
+                fetchAssetResult.close();
                 asset.displayName = newName;
                 await asset.commitModify();
                 await sleep(1000)
@@ -67,18 +66,22 @@ export default function onOffReleasePromiseTest(abilityContext) {
                 done();
             }
         }
-        const offTest = async (done, testNum, media_type, fetchOps, type, newName) => {
+        const offTest = async (done, testNum, fetchOps, type, newName, isAudio) => {
             try {
                 let count = 0;
-                userfile_mgr.on(type, () => {
+                userfilemgr.on(type, () => {
                     count++;
                 });
-                const fetchFileResult = await userfile_mgr.getFileAssets(media_type, fetchOps);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 1);
+                let fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOps);
+                if (isAudio) {
+                    fetchAssetResult = await userfilemgr.getAudioAssets(fetchOps);
+                }
+                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchAssetResult, 1);
                 if (!checkAssetCountPass) return;
-                const asset = await fetchFileResult.getFirstObject();
+                const asset = await fetchAssetResult.getFirstObject();
+                fetchAssetResult.close();
                 asset.displayName = newName;
-                userfile_mgr.off(type);
+                userfilemgr.off(type);
                 await asset.commitModify();
                 await sleep(1000)
                 expect(count).assertEqual(0);
@@ -100,11 +103,11 @@ export default function onOffReleasePromiseTest(abilityContext) {
          */
         it('SUB_USERFILE_MGR_ON_PROMISE_01', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_ON_PROMISE_01';
-            let media_type = [IMAGE_TYPE];
             let currentFetchOps = imageVideoFetchOps(testNum, 'Pictures/On/');
             let type = 'imageChange';
             let newName = 'imageChange.jpg';
-            await onTest(done, testNum, media_type, currentFetchOps, type, newName)
+            let isAudio = false;
+            await onTest(done, testNum, currentFetchOps, type, newName, isAudio)
         });
 
         /** 
@@ -117,11 +120,11 @@ export default function onOffReleasePromiseTest(abilityContext) {
          */
         it('SUB_USERFILE_MGR_ON_PROMISE_02', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_ON_PROMISE_02';
-            let media_type = [AUDIO_TYPE];
             let currentFetchOps = audioFetchOps(testNum, 'Audios/On/');
             let type = 'audioChange';
             let newName = 'audioChange.mp3';
-            await onTest(done, testNum, media_type, currentFetchOps, type, newName)
+            let isAudio = true;
+            await onTest(done, testNum, currentFetchOps, type, newName, isAudio)
         });
 
         /** 
@@ -134,28 +137,11 @@ export default function onOffReleasePromiseTest(abilityContext) {
          */
         it('SUB_USERFILE_MGR_ON_PROMISE_03', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_ON_PROMISE_03';
-            let media_type = [VIDEO_TYPE];
             let currentFetchOps = imageVideoFetchOps(testNum, 'Videos/On/');
             let type = 'videoChange';
             let newName = 'videoChange.mp4';
-            await onTest(done, testNum, media_type, currentFetchOps, type, newName)
-        });
-
-        /** 
-         * @tc.number    : SUB_USERFILE_MGR_ON_PROMISE_04
-         * @tc.name      : ON
-         * @tc.desc      : ON file ASSET
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_USERFILE_MGR_ON_PROMISE_04', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_ON_PROMISE_04';
-            let media_type = [FILE_TYPE];
-            let currentFetchOps = fileFetchOps(testNum, 'Documents/On/');
-            let type = 'fileChange';
-            let newName = 'fileChange.dat';
-            await onTest(done, testNum, media_type, currentFetchOps, type, newName)
+            let isAudio = false;
+            await onTest(done, testNum, currentFetchOps, type, newName, isAudio)
         });
 
         /**
@@ -168,11 +154,11 @@ export default function onOffReleasePromiseTest(abilityContext) {
          */
         it('SUB_USERFILE_MGR_OFF_PROMISE_01', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_OFF_PROMISE_01';
-            let media_type = [IMAGE_TYPE];
             let currentFetchOps = imageVideoFetchOps(testNum, 'Pictures/Off/');
             let type = 'imageChange';
             let newName = 'imageChange.jpg';
-            await offTest(done, testNum,media_type, currentFetchOps, type, newName)
+            let isAudio = false;
+            await offTest(done, testNum,currentFetchOps, type, newName, isAudio)
         });
 
         /**
@@ -185,11 +171,11 @@ export default function onOffReleasePromiseTest(abilityContext) {
          */
         it('SUB_USERFILE_MGR_OFF_PROMISE_02', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_OFF_PROMISE_02';
-            let media_type = [AUDIO_TYPE];
             let currentFetchOps = audioFetchOps(testNum, 'Audios/Off/');
             let type = 'audioChange';
             let newName = 'audioChange.mp3';
-            await offTest(done, testNum,media_type, currentFetchOps, type, newName)
+            let isAudio = true;
+            await offTest(done, testNum,currentFetchOps, type, newName, isAudio)
         });
 
         /**
@@ -202,28 +188,11 @@ export default function onOffReleasePromiseTest(abilityContext) {
          */
         it('SUB_USERFILE_MGR_OFF_PROMISE_03', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_OFF_PROMISE_03';
-            let media_type = [VIDEO_TYPE];
             let currentFetchOps = imageVideoFetchOps(testNum, 'Videos/Off/');
             let type = 'videoChange';
             let newName = 'videoChange.mp4';
-            await offTest(done, testNum,media_type, currentFetchOps, type, newName)
-        });
-
-        /**
-         * @tc.number    : SUB_USERFILE_MGR_OFF_PROMISE_04
-         * @tc.name      : off
-         * @tc.desc      : off file ASSET
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_USERFILE_MGR_OFF_PROMISE_04', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_OFF_PROMISE_04';
-            let media_type = [FILE_TYPE];
-            let currentFetchOps = fileFetchOps(testNum, 'Documents/Off/');
-            let type = 'fileChange';
-            let newName = 'fileChange.dat';
-            await offTest(done, testNum,media_type, currentFetchOps, type, newName)
+            let isAudio = false;
+            await offTest(done, testNum,currentFetchOps, type, newName, isAudio)
         });
 
         /**
@@ -237,7 +206,7 @@ export default function onOffReleasePromiseTest(abilityContext) {
         it('SUB_USERFILE_MGR_PROMISE_PROMISE_01', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_PROMISE_PROMISE_01';
             try {
-                await userfile_mgr.release();
+                await userfilemgr.release();
                 expect(true).assertTrue();
                 done();
             } catch (error) {

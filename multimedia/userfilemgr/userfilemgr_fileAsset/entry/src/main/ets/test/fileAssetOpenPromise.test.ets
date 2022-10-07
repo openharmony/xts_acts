@@ -31,10 +31,10 @@ import {
 } from '../../../../../../common';
 export default function fileAssetOpenPromiseTest(abilityContext) {
     describe('fileAssetOpenPromiseTest', function () {
-        const userfile_mgr = userfile_manager.getUserFileMgr(abilityContext);
+        const userfilemgr = userfile_manager.getUserFileMgr(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
-            await checkPresetsAssets(userfile_mgr, 'ActsUserFileMgrFileAssetJsTest')
+            await checkPresetsAssets(userfilemgr, 'ActsUserFileMgrFileAssetJsTest')
         });
         beforeEach(function () {
             console.info('beforeEach case');
@@ -47,14 +47,18 @@ export default function fileAssetOpenPromiseTest(abilityContext) {
             console.info('afterAll case');
         });
         
-        const rOpenTest = async function (done, testNum, media_type, fetchOp, assetProps, expectCount) {
+        const rOpenTest = async function (done, testNum, fetchOp, assetProps, expectCount, isAudio) {
             let asset;
             let fd;
             try {
-                let fetchFileResult = await userfile_mgr.getFileAssets(media_type, fetchOp);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, expectCount);
+                let fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOp);
+                if (isAudio) {
+                    fetchAssetResult = await userfilemgr.getAudioAssets(fetchOp);
+                }
+                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchAssetResult, expectCount);
                 if (!checkAssetCountPass) return;
-                asset = await fetchFileResult.getFirstObject();
+                asset = await fetchAssetResult.getFirstObject();
+                fetchAssetResult.close();
                 fd = await asset.open('r');
                 expect(isNum(fd)).assertTrue();
                 let buf = new ArrayBuffer(4096);
@@ -77,16 +81,19 @@ export default function fileAssetOpenPromiseTest(abilityContext) {
             }
         }
 
-        const wOpenTest = async function (done, testNum, media_type, fetchOp, assetProps, expectCount) {
+        const wOpenTest = async function (done, testNum, fetchOp, assetProps, expectCount, isAudio) {
             let asset, asset1;
             let fd, fd1;
             try {
-
-                let fetchFileResult = await userfile_mgr.getFileAssets(media_type, fetchOp);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, expectCount);
+                let fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOp);
+                if (isAudio) {
+                    fetchAssetResult = await userfilemgr.getAudioAssets(fetchOp);
+                }
+                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchAssetResult, expectCount);
                 if (!checkAssetCountPass) return;
-                asset = await fetchFileResult.getFirstObject();
-                asset1 = await fetchFileResult.getNextObject();
+                asset = await fetchAssetResult.getFirstObject();
+                asset1 = await fetchAssetResult.getNextObject();
+                fetchAssetResult.close();
 
                 fd = await asset.open('w');
                 expect(isNum(fd)).assertTrue();
@@ -115,20 +122,23 @@ export default function fileAssetOpenPromiseTest(abilityContext) {
             }
         }
 
-        const rwOpenTest = async function (done, testNum, media_type, fetchOp, assetProps, expectCount) {
+        const rwOpenTest = async function (done, testNum, fetchOp, assetProps, expectCount, isAudio) {
             let asset, asset1;
             let fd, fd1;
             try {
-                let fetchFileResult = await userfile_mgr.getFileAssets(media_type, fetchOp);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, expectCount);
+                let fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOp);
+                if (isAudio) {
+                    fetchAssetResult = await userfilemgr.getAudioAssets(fetchOp);
+                }
+                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchAssetResult, expectCount);
                 if (!checkAssetCountPass) return;
-                asset = await fetchFileResult.getFirstObject();
+                asset = await fetchAssetResult.getFirstObject();
                 fd = await asset.open('rw');
                 expect(isNum(fd)).assertTrue();
                 let buf = new ArrayBuffer(4096);
                 let res = await fileio.read(fd, buf);
                 expect(res.bytesRead).assertEqual(assetProps.bytesRead);
-                asset1 = await fetchFileResult.getNextObject();
+                asset1 = await fetchAssetResult.getNextObject();
                 fd1 = await asset1.open('r');
                 expect(isNum(fd1)).assertTrue();
                 let buf1 = new ArrayBuffer(4096);
@@ -139,6 +149,7 @@ export default function fileAssetOpenPromiseTest(abilityContext) {
                 console.info(`fd1:${fd1},fd:${fd}`)
                 await asset.close(fd);
                 await asset1.close(fd1);
+                fetchAssetResult.close();
                 done();
             } catch (error) {
                 console.info(`${testNum} :: error: ${error}`);
@@ -149,14 +160,17 @@ export default function fileAssetOpenPromiseTest(abilityContext) {
             }
         }
 
-        const closeTest = async function (done, testNum, media_type, fetchOp) {
+        const closeTest = async function (done, testNum, fetchOp, isAudio) {
             let asset;
             let fd;
             try {
-                let fetchFileResult = await userfile_mgr.getFileAssets(media_type, fetchOp);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 1);
+                let fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOp);
+                if (isAudio) {
+                    fetchAssetResult = await userfilemgr.getAudioAssets(fetchOp);
+                }
+                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchAssetResult, 1);
                 if (!checkAssetCountPass) return;
-                const asset = await fetchFileResult.getFirstObject();
+                const asset = await fetchAssetResult.getFirstObject();
                 fd = await asset.open('r');
                 expect(isNum(fd)).assertTrue();
                 await asset.close(fd);
@@ -193,13 +207,13 @@ export default function fileAssetOpenPromiseTest(abilityContext) {
          */
         it('SUB_USERFILE_MGR_FILEASSET_OPEN_PROMISE_01_001', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_OPEN_PROMISE_01_001';
-            let media_type = [IMAGE_TYPE];
             let fetchOp = imageVideoFetchOps(testNum, 'Pictures/R_Pro/');
             let assetProps = {
                 bytesRead: 4096,
             };
             let expectCount = 1;
-            await rOpenTest(done, testNum, media_type, fetchOp, assetProps, expectCount)
+            let isAudio = false;
+            await rOpenTest(done, testNum, fetchOp, assetProps, expectCount, isAudio);
         });
 
         /**
@@ -212,13 +226,13 @@ export default function fileAssetOpenPromiseTest(abilityContext) {
          */
         it('SUB_USERFILE_MGR_FILEASSET_OPEN_PROMISE_01_002', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_OPEN_PROMISE_01_002';
-            let media_type = [IMAGE_TYPE];
             let fetchOp = imageVideoFetchOps(testNum, 'Pictures/W_Pro/');
             let assetProps = {
                 write: 4096,
             };
             let expectCount = 2;
-            await wOpenTest(done, testNum, media_type, fetchOp, assetProps, expectCount)
+            let isAudio = false;
+            await wOpenTest(done, testNum, fetchOp, assetProps, expectCount, isAudio);
         });
 
         /**
@@ -231,14 +245,14 @@ export default function fileAssetOpenPromiseTest(abilityContext) {
          */
         it('SUB_USERFILE_MGR_FILEASSET_OPEN_PROMISE_01_003', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_OPEN_PROMISE_01_003';
-            let media_type = [IMAGE_TYPE];
             let fetchOp = imageVideoFetchOps(testNum, 'Pictures/RW_Pro/');
             let assetProps = {
                 bytesRead: 4096,
                 write: 4096,
             };
             let expectCount = 2;
-            await rwOpenTest(done, testNum, media_type, fetchOp, assetProps, expectCount)
+            let isAudio = false;
+            await rwOpenTest(done, testNum, fetchOp, assetProps, expectCount, isAudio);
         });
 
         /**
@@ -251,13 +265,13 @@ export default function fileAssetOpenPromiseTest(abilityContext) {
          */
         it('SUB_USERFILE_MGR_FILEASSET_OPEN_PROMISE_02_001', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_OPEN_PROMISE_02_001';
-            let media_type = [AUDIO_TYPE];
             let fetchOp = audioFetchOps(testNum, 'Audios/R_Pro/');
             let assetProps = {
                 bytesRead: 4096,
             };
             let expectCount = 1;
-            await rOpenTest(done, testNum, media_type, fetchOp, assetProps, expectCount)
+            let isAudio = true;
+            await rOpenTest(done, testNum, fetchOp, assetProps, expectCount, isAudio);
         });
 
         /**
@@ -270,13 +284,13 @@ export default function fileAssetOpenPromiseTest(abilityContext) {
          */
         it('SUB_USERFILE_MGR_FILEASSET_OPEN_PROMISE_02_002', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_OPEN_PROMISE_02_002';
-            let media_type = [AUDIO_TYPE];
             let fetchOp = audioFetchOps(testNum, 'Audios/W_Pro/');
             let assetProps = {
                 write: 4096,
             };
             let expectCount = 2;
-            await wOpenTest(done, testNum, media_type, fetchOp, assetProps, expectCount)
+            let isAudio = true;
+            await wOpenTest(done, testNum, fetchOp, assetProps, expectCount, isAudio);
         });
 
         /**
@@ -289,14 +303,14 @@ export default function fileAssetOpenPromiseTest(abilityContext) {
          */
         it('SUB_USERFILE_MGR_FILEASSET_OPEN_PROMISE_02_003', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_OPEN_PROMISE_02_003';
-            let media_type = [AUDIO_TYPE];
             let fetchOp = audioFetchOps(testNum, 'Audios/RW_Pro/');
             let assetProps = {
                 bytesRead: 4096,
                 write: 4096,
             };
             let expectCount = 2;
-            await rwOpenTest(done, testNum, media_type, fetchOp, assetProps, expectCount)
+            let isAudio = true;
+            await rwOpenTest(done, testNum, fetchOp, assetProps, expectCount, isAudio);
         });
 
         /**
@@ -309,13 +323,13 @@ export default function fileAssetOpenPromiseTest(abilityContext) {
          */
         it('SUB_USERFILE_MGR_FILEASSET_OPEN_PROMISE_03_001', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_OPEN_PROMISE_03_001';
-            let media_type = [VIDEO_TYPE];
             let fetchOp = imageVideoFetchOps(testNum, 'Videos/R_Pro/');
             let assetProps = {
                 bytesRead: 4096,
             };
             let expectCount = 1;
-            await rOpenTest(done, testNum, media_type, fetchOp, assetProps, expectCount)
+            let isAudio = false;
+            await rOpenTest(done, testNum, fetchOp, assetProps, expectCount, isAudio);
         });
 
         /**
@@ -328,13 +342,13 @@ export default function fileAssetOpenPromiseTest(abilityContext) {
          */
         it('SUB_USERFILE_MGR_FILEASSET_OPEN_PROMISE_03_002', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_OPEN_PROMISE_03_002';
-            let media_type = [VIDEO_TYPE];
             let fetchOp = imageVideoFetchOps(testNum, 'Videos/W_Pro/');
             let assetProps = {
                 write: 4096,
             };
             let expectCount = 2;
-            await wOpenTest(done, testNum, media_type, fetchOp, assetProps, expectCount)
+            let isAudio = false;
+            await wOpenTest(done, testNum, fetchOp, assetProps, expectCount, isAudio);
         });
 
         /**
@@ -347,14 +361,14 @@ export default function fileAssetOpenPromiseTest(abilityContext) {
          */
         it('SUB_USERFILE_MGR_FILEASSET_OPEN_PROMISE_03_003', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_OPEN_PROMISE_03_003';
-            let media_type = [VIDEO_TYPE];
             let fetchOp = imageVideoFetchOps(testNum, 'Videos/RW_Pro/');
             let assetProps = {
                 bytesRead: 4096,
                 write: 4096,
             };
             let expectCount = 2;
-            await rwOpenTest(done, testNum, media_type, fetchOp, assetProps, expectCount)
+            let isAudio = false;
+            await rwOpenTest(done, testNum, fetchOp, assetProps, expectCount, isAudio);
         });
 
         //--------------------------------------------------------------------------------
@@ -369,9 +383,9 @@ export default function fileAssetOpenPromiseTest(abilityContext) {
          */
         it('SUB_USERFILE_MGR_FILEASSET_CLOSE_PROMISE_01', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_CLOSE_PROMISE_01';
-            let media_type = [IMAGE_TYPE];
             let fetchOp = imageVideoNameFetchOps(testNum, 'Pictures/openClose/', '02.jpg');
-            await closeTest(done, testNum, media_type, fetchOp)
+            let isAudio = false;
+            await closeTest(done, testNum, fetchOp, isAudio);
         });
 
         /**
@@ -384,9 +398,9 @@ export default function fileAssetOpenPromiseTest(abilityContext) {
          */
         it('SUB_USERFILE_MGR_FILEASSET_CLOSE_PROMISE_02', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_CLOSE_PROMISE_03';
-            let media_type = [AUDIO_TYPE];
             let fetchOp = audioNameFetchOps(testNum, 'Audios/openClose/', '02.mp3');
-            await closeTest(done, testNum, media_type, fetchOp)
+            let isAudio = true;
+            await closeTest(done, testNum, fetchOp, isAudio);
         });
 
         /**
@@ -399,9 +413,9 @@ export default function fileAssetOpenPromiseTest(abilityContext) {
          */
         it('SUB_USERFILE_MGR_FILEASSET_CLOSE_PROMISE_03', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_CLOSE_PROMISE_03';
-            let media_type = [VIDEO_TYPE];
             let fetchOp = imageVideoNameFetchOps(testNum, 'Videos/openClose/', '02.mp4');
-            await closeTest(done, testNum, media_type, fetchOp)
+            let isAudio = false;
+            await closeTest(done, testNum, fetchOp, isAudio);
         });
     });
 }

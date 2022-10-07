@@ -17,12 +17,7 @@ import userfile_manager from '@ohos.filemanagement.userfile_manager';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "deccjsunit/index";
 import {
     sleep,
-    IMAGE_TYPE,
-    AUDIO_TYPE,
-    VIDEO_TYPE,
-    FILE_TYPE,
     allFetchOp,
-    fileNameFetchOps,
     audioNameFetchOps,
     imageVideoNameFetchOps,
     albumFetchOps,
@@ -31,7 +26,7 @@ import {
 
 export default function fileAssetTrashCallbackTest(abilityContext) {
     describe("fileAssetTrashCallbackTest", function () {
-        const userfile_mgr = userfile_manager.getUserFileMgr(abilityContext);
+        const userfilemgr = userfile_manager.getUserFileMgr(abilityContext);
         beforeAll(async function () {
             console.info("beforeAll case");
         });
@@ -46,21 +41,24 @@ export default function fileAssetTrashCallbackTest(abilityContext) {
             console.info("afterAll case");
         });
 
-        const isTrashTest = async function (done, testNum, media_type, fetchOp) {
+        const isTrashTest = async function (done, testNum, fetchOp, isAudio) {
             try {
-                let fetchFileResult = await userfile_mgr.getFileAssets(media_type, fetchOp);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 1);
+                let fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOp);
+                if (isAudio) {
+                    fetchAssetResult = await userfilemgr.getAudioAssets(fetchOp);
+                }
+                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchAssetResult, 1);
                 if (!checkAssetCountPass) return;
-                let asset = await fetchFileResult.getFirstObject();
+                let asset = await fetchAssetResult.getFirstObject();
                 asset.isTrash(async (err, isTrash) => {
                     if (err) {
                         expect(false).assertTrue();
-                        await fetchFileResult.close();
+                        await fetchAssetResult.close();
                         done();
                         return;
                     }
                     expect(isTrash).assertEqual(false);
-                    await fetchFileResult.close();
+                    fetchAssetResult.close();
                     done()
                 });
             } catch (error) {
@@ -70,22 +68,29 @@ export default function fileAssetTrashCallbackTest(abilityContext) {
             }
         }
 
-        async function setTrash(done, testNum, media_type, databasefFetchOps, ablumFetchOps, noAlbum, expectAssetNum = 3) {
+        async function setTrash(done, testNum, databasefFetchOps, ablumFetchOps, noAlbum, isAudio) {
+            let expectAssetNum = 3
             try {
                 // database info
-                let databaseFetchFileResult = await userfile_mgr.getFileAssets(media_type, databasefFetchOps);
+                let databaseFetchFileResult = await userfilemgr.getPhotoAssets(databasefFetchOps);
+                if (isAudio) {
+                    databaseFetchFileResult = await userfilemgr.getAudioAssets(databasefFetchOps);
+                }
                 let count = databaseFetchFileResult.getCount();
                 //album info
                 if (!noAlbum) {
-                    let fetchAlbumResult = await userfile_mgr.getAlbums(media_type, ablumFetchOps);
+                    let fetchAlbumResult = await userfilemgr.getPhotoAlbums(ablumFetchOps);
                     let album = await fetchAlbumResult.getFirstObject();
                     let op: userfile_manager.MediaFetchOptions = allFetchOp();
-                    let albumFetchFileResult = await album.getFileAssets(media_type, op);
+                    let albumFetchFileResult = await album.getPhotoAssets(op);
                     let albumFilesCount = albumFetchFileResult.getCount();
                     expect(albumFilesCount).assertEqual(expectAssetNum);
+                    fetchAlbumResult.close();
                 }
                 // file info
                 let asset = await databaseFetchFileResult.getFirstObject();
+                let istrash = await asset.isTrash();
+                console.info(`${testNum} istrash: ${istrash}`);
                 // trash operation
                 asset.trash(true, async (err) => {
                     if (err) {
@@ -104,18 +109,23 @@ export default function fileAssetTrashCallbackTest(abilityContext) {
                         expect(trashState).assertTrue();
                         try {
                             // after trash database info
-                            databaseFetchFileResult = await userfile_mgr.getFileAssets(media_type, databasefFetchOps);
+                            databaseFetchFileResult = await userfilemgr.getPhotoAssets(databasefFetchOps);
+                            if (isAudio) {
+                                databaseFetchFileResult = await userfilemgr.getAudioAssets(databasefFetchOps);
+                            }
                             let databaseCount = databaseFetchFileResult.getCount();
+                            databaseFetchFileResult.close();
 
                             expect(databaseCount).assertEqual(count - 1);
                             //album info
                             if (!noAlbum) {
-                                let fetchAlbumResult = await userfile_mgr.getAlbums(media_type, ablumFetchOps);
+                                let fetchAlbumResult = await userfilemgr.getPhotoAlbums(ablumFetchOps);
                                 let album = await fetchAlbumResult.getFirstObject();
                                 let op: userfile_manager.MediaFetchOptions = allFetchOp();
-                                let albumFetchFileResult = await album.getFileAssets(media_type, op);
+                                let albumFetchFileResult = await album.getPhotoAssets(op);
                                 let albumFilesCount = albumFetchFileResult.getCount();
                                 expect(albumFilesCount).assertEqual(expectAssetNum - 1);
+                                fetchAlbumResult.close();
                             }
                             await asset.trash(false);
                             done();
@@ -133,9 +143,13 @@ export default function fileAssetTrashCallbackTest(abilityContext) {
             }
         }
 
-        async function recovery(done, testNum, media_type, databasefFetchOps, ablumFetchOps, noAlbum, expectAssetNum = 3) {
+        async function recovery(done, testNum, databasefFetchOps, ablumFetchOps, noAlbum, isAudio) {
+            let expectAssetNum = 3;
             try {
-                let databaseFetchFileResult = await userfile_mgr.getFileAssets(media_type, databasefFetchOps);
+                let databaseFetchFileResult = await userfilemgr.getPhotoAssets(databasefFetchOps);
+                if (isAudio) {
+                    databaseFetchFileResult = await userfilemgr.getAudioAssets(databasefFetchOps);
+                }
                 let count = databaseFetchFileResult.getCount();
                 let asset = await databaseFetchFileResult.getFirstObject();
                 await asset.trash(true);
@@ -155,17 +169,22 @@ export default function fileAssetTrashCallbackTest(abilityContext) {
                         }
                         expect(trashState).assertFalse();
                         try {
-                            databaseFetchFileResult = await userfile_mgr.getFileAssets(media_type, databasefFetchOps);
+                            databaseFetchFileResult = await userfilemgr.getPhotoAssets(databasefFetchOps);
+                            if (isAudio) {
+                                databaseFetchFileResult = await userfilemgr.getAudioAssets(databasefFetchOps);
+                            }
                             let databaseCount = databaseFetchFileResult.getCount();
+                            databaseFetchFileResult.close();
                             expect(databaseCount).assertEqual(count);
                             //album info
                             if (!noAlbum) {
-                                let fetchAlbumResult = await userfile_mgr.getAlbums(media_type, ablumFetchOps);
+                                let fetchAlbumResult = await userfilemgr.getPhotoAlbums(ablumFetchOps);
                                 let album = await fetchAlbumResult.getFirstObject();
                                 let op: userfile_manager.MediaFetchOptions = allFetchOp();
-                                let albumFetchFileResult = await album.getFileAssets(media_type, op);
+                                let albumFetchFileResult = await album.getPhotoAssets(op);
                                 let albumFilesCount = albumFetchFileResult.getCount();
                                 expect(albumFilesCount).assertEqual(expectAssetNum);
+                                fetchAlbumResult.close();
                             }
                             done();
                         } catch (error) {
@@ -192,9 +211,9 @@ export default function fileAssetTrashCallbackTest(abilityContext) {
          */
         it('SUB_USERFILE_MGR_FILEASSET_TRASH_CALLBACK_01_001', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_TRASH_CALLBACK_01_001'
-            let media_type = [IMAGE_TYPE];
-            let currentFetchOp = imageVideoNameFetchOps(testNum, 'Pictures/trashCb/', '01.jpg')
-            await isTrashTest(done, testNum, media_type, currentFetchOp)
+            let currentFetchOp = imageVideoNameFetchOps(testNum, 'Pictures/trashCb/', '01.jpg');
+            let isAudio = false;
+            await isTrashTest(done, testNum, currentFetchOp, isAudio)
         });
 
         /**
@@ -207,11 +226,11 @@ export default function fileAssetTrashCallbackTest(abilityContext) {
          */
         it('SUB_USERFILE_MGR_FILEASSET_TRASH_CALLBACK_01_002', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_TRASH_CALLBACK_01_002'
-            let media_type = [IMAGE_TYPE];
             let rOps = imageVideoNameFetchOps(testNum, "Pictures/trashCb/", '02.jpg');
             let aOps = albumFetchOps(testNum, "Pictures/", "trashCb");
             let noAlbum = false;
-            await setTrash(done, testNum, media_type, rOps, aOps, noAlbum);
+            let isAudio = false;
+            await setTrash(done, testNum, rOps, aOps, noAlbum, isAudio);
         });
 
         /**
@@ -224,11 +243,11 @@ export default function fileAssetTrashCallbackTest(abilityContext) {
          */
         it('SUB_USERFILE_MGR_FILEASSET_TRASH_CALLBACK_01_003', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_TRASH_CALLBACK_01_003'
-            let media_type = [IMAGE_TYPE];
             let rOps = imageVideoNameFetchOps(testNum, "Pictures/trashCb/", '03.jpg');
             let aOps = albumFetchOps(testNum, "Pictures/", "trashCb");
             let noAlbum = false;
-            await recovery(done, testNum, media_type, rOps, aOps, noAlbum);
+            let isAudio = false;
+            await recovery(done, testNum, rOps, aOps, noAlbum, isAudio);
         });
 
         /**
@@ -241,9 +260,9 @@ export default function fileAssetTrashCallbackTest(abilityContext) {
          */
         it('SUB_USERFILE_MGR_FILEASSET_TRASH_CALLBACK_02_001', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_TRASH_CALLBACK_02_001'
-            let media_type = [AUDIO_TYPE];
-            let currentFetchOp = audioNameFetchOps(testNum, 'Audios/trashCb/', '01.mp3')
-            await isTrashTest(done, testNum, media_type, currentFetchOp)
+            let currentFetchOp = audioNameFetchOps(testNum, 'Audios/trashCb/', '01.mp3');
+            let isAudio = true;
+            await isTrashTest(done, testNum, currentFetchOp, isAudio)
         });
 
         /**
@@ -256,11 +275,11 @@ export default function fileAssetTrashCallbackTest(abilityContext) {
          */
         it('SUB_USERFILE_MGR_FILEASSET_TRASH_CALLBACK_02_002', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_TRASH_CALLBACK_02_002'
-            let media_type = [AUDIO_TYPE];
             let rOps = audioNameFetchOps(testNum, "Audios/trashCb/", '02.mp3');
             let aOps = albumFetchOps(testNum, "Audios/", "trashCb");
-            let noAlbum = false;
-            await setTrash(done, testNum, media_type, rOps, aOps, noAlbum);
+            let noAlbum = true;
+            let isAudio = true;
+            await setTrash(done, testNum, rOps, aOps, noAlbum, isAudio);
         });
 
         /**
@@ -273,11 +292,11 @@ export default function fileAssetTrashCallbackTest(abilityContext) {
          */
         it('SUB_USERFILE_MGR_FILEASSET_TRASH_CALLBACK_02_003', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_TRASH_CALLBACK_02_003'
-            let media_type = [AUDIO_TYPE];
             let rOps = audioNameFetchOps(testNum, "Audios/trashCb/", '03.mp3');
             let aOps = albumFetchOps(testNum, "Audios/", "trashCb");
-            let noAlbum = false;
-            await recovery(done, testNum, media_type, rOps, aOps, noAlbum);
+            let noAlbum = true;
+            let isAudio = true;
+            await recovery(done, testNum, rOps, aOps, noAlbum, isAudio);
         });
 
         /**
@@ -290,9 +309,9 @@ export default function fileAssetTrashCallbackTest(abilityContext) {
          */
         it('SUB_USERFILE_MGR_FILEASSET_TRASH_CALLBACK_03_001', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_TRASH_CALLBACK_03_001'
-            let media_type = [VIDEO_TYPE];
-            let currentFetchOp = imageVideoNameFetchOps(testNum, 'Videos/trashCb/', '01.mp4')
-            await isTrashTest(done, testNum, media_type, currentFetchOp)
+            let currentFetchOp = imageVideoNameFetchOps(testNum, 'Videos/trashCb/', '01.mp4');
+            let isAudio = false;
+            await isTrashTest(done, testNum, currentFetchOp, isAudio)
         });
 
         /**
@@ -305,11 +324,11 @@ export default function fileAssetTrashCallbackTest(abilityContext) {
          */
         it('SUB_USERFILE_MGR_FILEASSET_TRASH_CALLBACK_03_002', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_TRASH_CALLBACK_03_002'
-            let media_type = [VIDEO_TYPE];
             let rOps = imageVideoNameFetchOps(testNum, "Videos/trashCb/", '02.mp4');
             let aOps = albumFetchOps(testNum, "Videos/", "trashCb");
-            let noAlbum = false;
-            await setTrash(done, testNum, media_type, rOps, aOps, noAlbum);
+            let noAlbum = true;
+            let isAudio = false;
+            await setTrash(done, testNum, rOps, aOps, noAlbum, isAudio);
         });
 
         /**
@@ -322,60 +341,11 @@ export default function fileAssetTrashCallbackTest(abilityContext) {
          */
         it('SUB_USERFILE_MGR_FILEASSET_TRASH_CALLBACK_03_003', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_TRASH_CALLBACK_03_003'
-            let media_type = [VIDEO_TYPE];
             let rOps = imageVideoNameFetchOps(testNum, "Videos/trashCb/", '03.mp4');
             let aOps = albumFetchOps(testNum, "Videos/", "trashCb");
-            let noAlbum = false;
-            await recovery(done, testNum, media_type, rOps, aOps, noAlbum);
-        });
-
-        /**
-         * @tc.number    : SUB_USERFILE_MGR_FILEASSET_TRASH_CALLBACK_04_001
-         * @tc.name      : isTrash
-         * @tc.desc      : isTrash(file) result false
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_USERFILE_MGR_FILEASSET_TRASH_CALLBACK_04_001', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_FILEASSET_TRASH_CALLBACK_04_001'
-            let media_type = [FILE_TYPE];
-            let currentFetchOp = fileNameFetchOps(testNum, 'Documents/trashCb/', '01.dat')
-            await isTrashTest(done, testNum, media_type, currentFetchOp)
-        });
-
-        /**
-         * @tc.number    : SUB_USERFILE_MGR_FILEASSET_TRASH_CALLBACK_04_002
-         * @tc.name      : trash
-         * @tc.desc      : trash(file) by true
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_USERFILE_MGR_FILEASSET_TRASH_CALLBACK_04_002', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_FILEASSET_TRASH_CALLBACK_04_002'
-            let media_type = [FILE_TYPE];
-            let rOps = fileNameFetchOps(testNum, "Documents/trashCb/", '02.dat');
-            let aOps = albumFetchOps(testNum, "Documents/", "trashCb");
             let noAlbum = true;
-            await setTrash(done, testNum, media_type, rOps, aOps, noAlbum);
-        });
-
-        /**
-         * @tc.number    : SUB_USERFILE_MGR_FILEASSET_TRASH_CALLBACK_04_003
-         * @tc.name      : trash
-         * @tc.desc      : trash(file) by false
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_USERFILE_MGR_FILEASSET_TRASH_CALLBACK_04_003', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_FILEASSET_TRASH_CALLBACK_04_003'
-            let media_type = [FILE_TYPE];
-            let rOps = fileNameFetchOps(testNum, "Documents/trashCb/", '03.dat');
-            let aOps = albumFetchOps(testNum, "Documents/", "trashCb");
-            let noAlbum = true;
-            await recovery(done, testNum, media_type, rOps, aOps, noAlbum);
+            let isAudio = false;
+            await recovery(done, testNum, rOps, aOps, noAlbum, isAudio);
         });
     });
 }

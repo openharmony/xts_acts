@@ -17,9 +17,6 @@ import userfile_manager from '@ohos.filemanagement.userfile_manager';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 import {
     sleep,
-    IMAGE_TYPE,
-    VIDEO_TYPE,
-    AUDIO_TYPE,
     checkPresetsAssets,
     audioNameFetchOps,
     imageVideoNameFetchOps,
@@ -28,10 +25,10 @@ import {
 
 export default function fileAssetFavoritePromiseTest(abilityContext) {
     describe('fileAssetFavoritePromiseTest', function () {
-        var userfile_mgr = userfile_manager.getUserFileMgr(abilityContext);
+        var userfilemgr = userfile_manager.getUserFileMgr(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
-            await checkPresetsAssets(userfile_mgr, 'ActsUserFileMgrFavorite');
+            await checkPresetsAssets(userfilemgr, 'ActsUserFileMgrFavorite');
         });
         beforeEach(function () {
             console.info('beforeEach case');
@@ -44,53 +41,62 @@ export default function fileAssetFavoritePromiseTest(abilityContext) {
             console.info('afterAll case');
         });
 
-        const favoriteDefaultState = async function (done, testNum, media_type, fetchOp) {
+        const favoriteDefaultState = async function (done, testNum, fetchOp, isAudio) {
             try {
-                let fetchFileResult = await userfile_mgr.getFileAssets(media_type, fetchOp);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 1);
+                let fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOp);
+                if (isAudio) {
+                    fetchAssetResult = await userfilemgr.getAudioAssets(fetchOp);
+                }
+                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchAssetResult, 1);
                 if (!checkAssetCountPass) return;
-                let asset = await fetchFileResult.getFirstObject();
+                let asset = await fetchAssetResult.getFirstObject();
                 let isFavorite = await asset.isFavorite();
                 expect(isFavorite).assertEqual(false);
-                await fetchFileResult.close();
+                fetchAssetResult.close();
                 done()
             } catch (error) {
-                console.info(`${testNum} failed error: ${error}`)
+                console.info(`${testNum} failed error: ${error}`);
                 expect(false).assertTrue();
                 done();
             }
         }
-        const favoriteByTrue = async function (done, testNum, media_type, fetchOp) {
+        const favoriteByTrue = async function (done, testNum, fetchOp, isAudio) {
             try {
-                const fetchFileResult = await userfile_mgr.getFileAssets(media_type, fetchOp);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 1);
+                let fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOp);
+                if (isAudio) {
+                    fetchAssetResult = await userfilemgr.getAudioAssets(fetchOp);
+                }
+                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchAssetResult, 1);
                 if (!checkAssetCountPass) return;
-                const asset = await fetchFileResult.getFirstObject();
+                const asset = await fetchAssetResult.getFirstObject();
                 await asset.favorite(true);
                 let isFavorite = await asset.isFavorite();
                 expect(isFavorite).assertEqual(true);
-                await fetchFileResult.close();
+                fetchAssetResult.close();
                 done();
             } catch (error) {
-                console.info(`${testNum} failed error: ${error}`)
+                console.info(`${testNum} failed error: ${error}`);
                 expect(false).assertTrue();
                 done();
             }
         }
-        const favoriteByFalse = async function (done, testNum, media_type, fetchOp) {
+        const favoriteByFalse = async function (done, testNum, fetchOp, isAudio) {
             try {
-                const fetchFileResult = await userfile_mgr.getFileAssets(media_type, fetchOp);
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchFileResult, 1);
+                let fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOp);
+                if (isAudio) {
+                    fetchAssetResult = await userfilemgr.getAudioAssets(fetchOp);
+                }
+                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchAssetResult, 1);
                 if (!checkAssetCountPass) return;
-                const asset = await fetchFileResult.getFirstObject();
+                const asset = await fetchAssetResult.getFirstObject();
                 await asset.favorite(true);
                 await asset.favorite(false);
                 let isFavorite = await asset.isFavorite();
                 expect(isFavorite).assertEqual(false);
-                await fetchFileResult.close();
+                fetchAssetResult.close();
                 done();
             } catch (error) {
-                console.info(`${testNum} failed error: ${error}`)
+                console.info(`${testNum} failed error: ${error}`);
                 expect(false).assertTrue();
                 done();
             }
@@ -106,9 +112,9 @@ export default function fileAssetFavoritePromiseTest(abilityContext) {
          */
         it('SUB_USERFILE_MGR_FILEASSET_FAVORITE_PROMISE_01_001', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_FAVORITE_PROMISE_01_001';
-            let media_type = [IMAGE_TYPE];
-            let currentFetchOp = imageVideoNameFetchOps(testNum, 'Pictures/FavPro/', '01.jpg')
-            await favoriteDefaultState(done, testNum, media_type, currentFetchOp)
+            let currentFetchOp = imageVideoNameFetchOps(testNum, 'Pictures/FavPro/', '01.jpg');
+            let isAudio = false;
+            await favoriteDefaultState(done, testNum, currentFetchOp, isAudio);
         });
 
         /**
@@ -121,9 +127,9 @@ export default function fileAssetFavoritePromiseTest(abilityContext) {
          */
         it('SUB_USERFILE_MGR_FILEASSET_FAVORITE_PROMISE_01_002', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_FAVORITE_PROMISE_01_002';
-            let media_type = [IMAGE_TYPE];
-            let currentFetchOp = imageVideoNameFetchOps(testNum, 'Pictures/FavPro/', '02.jpg')
-            await favoriteByTrue(done, testNum, media_type, currentFetchOp)
+            let currentFetchOp = imageVideoNameFetchOps(testNum, 'Pictures/FavPro/', '02.jpg');
+            let isAudio = false;
+            await favoriteByTrue(done, testNum, currentFetchOp, isAudio);
         });
 
         /**
@@ -136,9 +142,9 @@ export default function fileAssetFavoritePromiseTest(abilityContext) {
          */
         it('SUB_USERFILE_MGR_FILEASSET_FAVORITE_PROMISE_01_003', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_FAVORITE_PROMISE_01_003';
-            let media_type = [IMAGE_TYPE];
-            let currentFetchOp = imageVideoNameFetchOps(testNum, 'Pictures/FavPro/', '03.jpg')
-            await favoriteByFalse(done, testNum, media_type, currentFetchOp)
+            let currentFetchOp = imageVideoNameFetchOps(testNum, 'Pictures/FavPro/', '03.jpg');
+            let isAudio = false;
+            await favoriteByFalse(done, testNum, currentFetchOp, isAudio);
         });
 
         /**
@@ -151,9 +157,9 @@ export default function fileAssetFavoritePromiseTest(abilityContext) {
          */
         it('SUB_USERFILE_MGR_FILEASSET_FAVORITE_PROMISE_02_001', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_FAVORITE_PROMISE_02_001';
-            let media_type = [AUDIO_TYPE];
-            let currentFetchOp = audioNameFetchOps(testNum, 'Audios/FavPro/', '01.mp3')
-            await favoriteDefaultState(done, testNum, media_type, currentFetchOp)
+            let currentFetchOp = audioNameFetchOps(testNum, 'Audios/FavPro/', '01.mp3');
+            let isAudio = true;
+            await favoriteDefaultState(done, testNum, currentFetchOp, isAudio);
         });
 
         /**
@@ -166,9 +172,9 @@ export default function fileAssetFavoritePromiseTest(abilityContext) {
          */
         it('SUB_USERFILE_MGR_FILEASSET_FAVORITE_PROMISE_02_002', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_FAVORITE_PROMISE_02_002';
-            let media_type = [AUDIO_TYPE];
-            let currentFetchOp = audioNameFetchOps(testNum, 'Audios/FavPro/', '02.mp3')
-            await favoriteByTrue(done, testNum, media_type, currentFetchOp)
+            let currentFetchOp = audioNameFetchOps(testNum, 'Audios/FavPro/', '02.mp3');
+            let isAudio = true;
+            await favoriteByTrue(done, testNum, currentFetchOp, isAudio);
         });
 
         /**
@@ -181,9 +187,9 @@ export default function fileAssetFavoritePromiseTest(abilityContext) {
          */
         it('SUB_USERFILE_MGR_FILEASSET_FAVORITE_PROMISE_03_003', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_FAVORITE_PROMISE_03_003';
-            let media_type = [AUDIO_TYPE];
-            let currentFetchOp = audioNameFetchOps(testNum, 'Audios/FavPro/', '03.mp3')
-            await favoriteByFalse(done, testNum, media_type, currentFetchOp)
+            let currentFetchOp = audioNameFetchOps(testNum, 'Audios/FavPro/', '03.mp3');
+            let isAudio = true;
+            await favoriteByFalse(done, testNum, currentFetchOp, isAudio);
         });
 
         /**
@@ -196,9 +202,9 @@ export default function fileAssetFavoritePromiseTest(abilityContext) {
          */
         it('SUB_USERFILE_MGR_FILEASSET_FAVORITE_PROMISE_03_001', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_FAVORITE_PROMISE_03_001';
-            let media_type = [VIDEO_TYPE];
-            let currentFetchOp = imageVideoNameFetchOps(testNum, 'Videos/FavPro/', '01.mp4')
-            await favoriteDefaultState(done, testNum, media_type, currentFetchOp)
+            let currentFetchOp = imageVideoNameFetchOps(testNum, 'Videos/FavPro/', '01.mp4');
+            let isAudio = false;
+            await favoriteDefaultState(done, testNum, currentFetchOp, isAudio);
         });
 
         /**
@@ -211,9 +217,9 @@ export default function fileAssetFavoritePromiseTest(abilityContext) {
          */
         it('SUB_USERFILE_MGR_FILEASSET_FAVORITE_PROMISE_03_002', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_FAVORITE_PROMISE_03_002';
-            let media_type = [VIDEO_TYPE];
-            let currentFetchOp = imageVideoNameFetchOps(testNum, 'Videos/FavPro/', '02.mp4')
-            await favoriteByTrue(done, testNum, media_type, currentFetchOp)
+            let currentFetchOp = imageVideoNameFetchOps(testNum, 'Videos/FavPro/', '02.mp4');
+            let isAudio = false;
+            await favoriteByTrue(done, testNum, currentFetchOp, isAudio);
         });
 
         /**
@@ -226,9 +232,9 @@ export default function fileAssetFavoritePromiseTest(abilityContext) {
          */
         it('SUB_USERFILE_MGR_FILEASSET_FAVORITE_PROMISE_03_003', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_FAVORITE_PROMISE_03_003';
-            let media_type = [VIDEO_TYPE];
-            let currentFetchOp = imageVideoNameFetchOps(testNum, 'Videos/FavPro/', '03.mp4')
-            await favoriteByFalse(done, testNum, media_type, currentFetchOp)
+            let currentFetchOp = imageVideoNameFetchOps(testNum, 'Videos/FavPro/', '03.mp4');
+            let isAudio = false;
+            await favoriteByFalse(done, testNum, currentFetchOp, isAudio);
         });
     });
 }

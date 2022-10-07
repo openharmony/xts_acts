@@ -19,7 +19,7 @@ import { sleep } from '../../../../../../common';
 
 export default function getUserFileMgrTest(abilityContext) {
     describe('getUserFileMgrTest', function () {
-        const userfile_mgr = userfile_manager.getUserFileMgr(abilityContext);
+        const userfilemgr = userfile_manager.getUserFileMgr(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
         });
@@ -44,7 +44,7 @@ export default function getUserFileMgrTest(abilityContext) {
          */
         it('SUB_USERFILE_MGR_GETUSERFILEMGR_00', 0, async function (done) {
             try {
-                expect(userfile_mgr != undefined).assertTrue();
+                expect(userfilemgr != undefined).assertTrue();
                 done();
             } catch (error) {
                 console.info(`SUB_USERFILE_MGR_GETUSERFILEMGR_00 failed, error: ${error}`);
