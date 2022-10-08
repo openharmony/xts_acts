@@ -42,7 +42,6 @@ struct Index {
     @State imageAccess:boolean=true
     @State geolocationAccess:boolean=true
     @State onlineImageAccess:boolean=true
-    @State fileFromUrlAccess:boolean=true
     @State databaseAccess:boolean=true
     @State overviewModeAccess:boolean=false
     @State initialScale:number=100
@@ -101,7 +100,6 @@ struct Index {
             .domStorageAccess(this.domStorageAccess)
             .geolocationAccess(this.geolocationAccess)
             .onlineImageAccess(this.onlineImageAccess)
-            .fileFromUrlAccess(this.fileFromUrlAccess)
             .databaseAccess(this.databaseAccess)
             .cacheMode(this.cacheMode)
             .initialScale(this.initialScale)
@@ -468,30 +466,6 @@ struct Index {
                                 this.controller.runJavaScript({script:"getImageLoadResult()",callback:(res)=>{
 				                    console.info("getImageLoadResult==>"+res)
                                     Utils.emitEvent(res,158)
-                                }})
-                            },3000)
-                            break;
-                        }
-                        case "emitFileFromUrlAccessFalse":{
-                            this.fileFromUrlAccess=false
-                            await Utils.sleep(2000)
-                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/fileFromUrlAccess.html"})
-                            setTimeout(()=>{
-                                this.controller.runJavaScript({script:"getFileResult()",callback:(res)=>{
-				                    console.info("getFileResult==>"+res)
-                                    Utils.emitEvent(res,160)
-                                }})
-                            },3000)
-                            break;
-                        }
-                        case "emitFileFromUrlAccessTrue":{
-                            this.fileFromUrlAccess=true
-                            await Utils.sleep(2000)
-                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/fileFromUrlAccess.html"})
-                            setTimeout(()=>{
-                                this.controller.runJavaScript({script:"getFileResult()",callback:(res)=>{
-				                    console.info("getFileResult==>"+res)
-                                    Utils.emitEvent(res,162)
                                 }})
                             },3000)
                             break;
