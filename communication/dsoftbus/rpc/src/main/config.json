@@ -30,6 +30,7 @@
     "mainAbility": ".MainAbility",
     "srcPath": "",
     "deviceType": [
+      "default",
       "phone"
     ],
     "distro": {

@@ -16,6 +16,7 @@
         "package": "com.test.window",
         "name": ".entry",
         "deviceType": [
+      "default",
             "phone"
         ],
         "distro": {

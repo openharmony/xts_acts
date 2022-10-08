@@ -18,6 +18,7 @@
     "name": ".FormDeleteSTApp",
     "mainAbility": ".MainAbility",
     "deviceType": [
+      "default",
       "phone"
     ],
     "distro": {
