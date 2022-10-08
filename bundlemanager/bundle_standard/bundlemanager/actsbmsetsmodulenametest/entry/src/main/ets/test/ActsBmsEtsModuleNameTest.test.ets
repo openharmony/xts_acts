@@ -19,12 +19,15 @@ import account from '@ohos.account.osAccount'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'hypium/index'
 
 const ABILITY_NAME = 'com.example.bmsmodulename.MainAbility';
+const ABILITY_NAME1 = 'com.example.myapplication2.MainAbility';
 const BUNDLE_NAME = 'com.example.bmsmodulename';
+const BUNDLE_NAME1 = 'com.example.myapplication2';
 const MODULE_NAME1 = '';
 const MODULE_NAME2 = 'noModule';
 const MODULE_NAME3 = 'entry';
 const MODULE_NAME4 = undefined;
 const MODULE_NAME5 = null;
+const MODULE_NAME6 = 'feature';
 const DEFAULT_FLAG = bundle.BundleFlag.GET_BUNDLE_DEFAULT;
 const SUCCESS_CODE = 0;
 const INVALID_CODE = 1;
@@ -604,6 +607,64 @@ export default function actsBmsJsModuleNameTest() {
     });
 
 
+    /*
+    * @tc.number: SUB_BMS_APPINFO_QUERYMODULE_0027
+    * @tc.name: getAbilityIconMultiHap
+    * @tc.desc: test existent moduleName
+    */
+    it('getAbilityIconMultiHap', 0, async function (done) {
+      await bundle.getAbilityIcon(BUNDLE_NAME1, MODULE_NAME6, ABILITY_NAME1)
+        .then(data => {
+          expect(data.getBytesNumberPerRow()).assertLarger(0);
+        }).catch((err) => {
+          expect(err).assertFail();
+        });
+      bundle.getAbilityIcon(BUNDLE_NAME1, MODULE_NAME6, ABILITY_NAME1, (err, data) => {
+        expect(err).assertEqual(SUCCESS_CODE);
+        expect(data.getBytesNumberPerRow()).assertLarger(0);
+        done();
+      });
+    });
+
+    /*
+    * @tc.number: SUB_BMS_APPINFO_QUERYMODULE_0019
+    * @tc.name: getAbilityInfoMultiHap
+    * @tc.desc: test existent moduleName
+    */
+    it('getAbilityInfoMultiHap', 0, async function (done) {
+      await bundle.getAbilityInfo(BUNDLE_NAME1, MODULE_NAME6, ABILITY_NAME1)
+        .then(data => {
+          checkAbilityInfo(data);
+        }).catch((err) => {
+          expect(err).assertFail();
+        });
+      bundle.getAbilityInfo(BUNDLE_NAME1, MODULE_NAME6, ABILITY_NAME1, (err, data) => {
+        checkAbilityInfo(data);
+	expect(err).assertEqual(SUCCESS_CODE);
+        done();
+      });
+    });
+
+    /*
+    * @tc.number: SUB_BMS_APPINFO_QUERYMODULE_0023
+    * @tc.name: getAbilityLabelMultiHap
+    * @tc.desc: test existent moduleName
+    */
+    it('getAbilityLabelMultiHap', 0, async function (done) {
+      await bundle.getAbilityLabel(BUNDLE_NAME1, MODULE_NAME6, ABILITY_NAME1)
+        .then(data => {
+          expect(data).assertEqual("bmsscenethree");
+        }).catch((err) => {
+          expect(err).assertFail();
+        });
+      bundle.getAbilityLabel(BUNDLE_NAME1, MODULE_NAME6, ABILITY_NAME1, (err, data) => {
+        expect(data).assertEqual("bmsscenethree");
+        expect(err).assertNull();
+        done();
+      });
+    });
+
+
     function checkDataInfo(data) {
       expect(typeof (data.bundleName)).assertEqual("string");
       expect(data.bundleName).assertEqual("com.example.bmsmodulename");
@@ -654,6 +715,55 @@ export default function actsBmsJsModuleNameTest() {
       console.log("---checkDataInfo End---  ");
     }
 
+    function checkAbilityInfo(data) {
+      expect(typeof (data.bundleName)).assertEqual("string");
+      expect(data.bundleName).assertEqual("com.example.myapplication2");
+      expect(typeof (data.name)).assertEqual("string");
+      expect(data.name).assertEqual("com.example.myapplication2.MainAbility");
+      expect(data.label).assertEqual("$string:app_name");
+      expect(typeof (data.label)).assertEqual("string");
+      expect(data.description).assertEqual("$string:mainability_description");
+      expect(typeof (data.description)).assertEqual("string");
+      expect(data.icon).assertEqual("$media:icon");
+      expect(typeof (data.icon)).assertEqual("string");
+      expect(data.isVisible).assertEqual(false);
+      expect(data.deviceTypes[0]).assertEqual("default");
+      expect(typeof (data.process)).assertEqual("string");
+      expect(data.process).assertEqual("com.example.myapplication2");
+      expect(typeof (data.uri)).assertEqual("string");
+      expect(data.uri).assertEqual("");
+      expect(data.moduleName).assertEqual("feature");
+      expect(typeof (data.moduleName)).assertEqual("string");
+      expect(typeof (data.applicationInfo)).assertEqual("object");
+      let info = data.applicationInfo;
+      expect(typeof (info)).assertEqual("object");
+      expect(typeof (info.name)).assertEqual("string");
+      expect(info.name).assertEqual("com.example.myapplication2");
+      expect(typeof (info.codePath)).assertEqual("string");
+      expect(info.codePath).assertEqual("/data/app/el1/bundle/public/com.example.myapplication2");
+      expect(typeof (info.accessTokenId)).assertEqual("number");
+      expect(info.accessTokenId > 0).assertTrue();
+      expect(typeof (info.description)).assertEqual("string");
+      expect(info.description).assertEqual("$string:entry_description");
+      expect(typeof (info.descriptionId)).assertEqual("number");
+      expect(info.descriptionId).assertLarger(0);
+      expect(typeof (info.icon)).assertEqual("string");
+      expect(info.icon).assertEqual("$media:icon");
+      expect(typeof (info.iconId)).assertEqual("number");
+      expect(info.iconId > 0).assertTrue();
+      expect(typeof (info.label)).assertEqual("string");
+      expect(info.label).assertEqual("$string:app_name");
+      expect(typeof (info.labelId)).assertEqual("number");
+      expect(info.labelId > 0).assertTrue();
+      expect(info.systemApp).assertEqual(false);
+      expect(typeof (info.entryDir)).assertEqual("string");
+      expect(info.entryDir)
+        .assertEqual("/data/app/el1/bundle/public/com.example.myapplication2/com.example.myapplication1");
+      expect(typeof (info.process)).assertEqual("string");
+      expect(info.process).assertEqual("com.example.myapplication2");
+      expect(Array.isArray(info.permissions)).assertEqual(true);
+      console.log("---checkDataInfo End---  ");
+    }
         function generateAbilityInfoForTest(bundleName, name, moduleName) {
             let map1 = new Map([
                 ["", [{

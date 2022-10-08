@@ -10,7 +10,9 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsBmsEtsModuleNameTest.hap"
+                "ActsBmsEtsModuleNameTest.hap",
+                "bmsJstest2.hap",
+                "bmsJstest3.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
