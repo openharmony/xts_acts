@@ -76,7 +76,7 @@ export const releaseFormFuzzTest = (describeName, filterParameter) => {
           expect().assertFail();
         } catch (error) {
           console.log(`${promiseName} ${tcNumber} exception caught: ${JSON.stringify(error)}`);
-          if (`STRING` === dataType) {
+          if (`string` === typeof formId) {
             expect(error.code).assertEqual(ERR_ADD_INVALID_PARAM_CODE);
             expect(error.message).assertEqual(ERR_ADD_INVALID_PARAM);
           } else {
@@ -137,7 +137,7 @@ export const releaseFormFuzzTest = (describeName, filterParameter) => {
           expect().assertFail();
         } catch (error) {
           console.log(`${promiseName} ${tcNumber} exception caught: ${JSON.stringify(error)}`);
-          if (`STRING` === dataType) {
+          if (`string` === typeof formId) {
             expect(error.code).assertEqual(ERR_ADD_INVALID_PARAM_CODE);
             expect(error.message).assertEqual(ERR_ADD_INVALID_PARAM);
           } else {
@@ -166,7 +166,7 @@ export const releaseFormFuzzTest = (describeName, filterParameter) => {
           formHost.releaseForm(formId, isReleaseCache, (error, data) => {
             console.log(`${callbackName} ${tcNumber} releaseForm data: ${JSON.stringify(data)} error: ${JSON.stringify(error)}`);
             expect(data).assertUndefined();
-            if (`BOOLEAN` === dataType) {
+            if (`boolean` === typeof isReleaseCache) {
               expect(error.code).assertEqual(ERR_NOT_EXIST_ID_CODE);
               expect(error.message).assertEqual(ERR_NOT_EXIST_ID);
             } else {
@@ -203,7 +203,7 @@ export const releaseFormFuzzTest = (describeName, filterParameter) => {
           expect().assertFail();
         } catch (error) {
           console.log(`${promiseName} ${tcNumber} exception caught: ${JSON.stringify(error)}`);
-          if (`BOOLEAN` === dataType) {
+          if (`boolean` === typeof isReleaseCache) {
             expect(error.code).assertEqual(ERR_NOT_EXIST_ID_CODE);
             expect(error.message).assertEqual(ERR_NOT_EXIST_ID);
           } else {

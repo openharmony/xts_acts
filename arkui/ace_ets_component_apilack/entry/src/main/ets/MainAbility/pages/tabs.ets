@@ -59,6 +59,7 @@ struct TabsBarPosition {
         }.tabBar('yellow')
 
       }
+      .key("barPositionTabs")
       .vertical(true).scrollable(true).barMode(BarMode.Fixed)
       .barWidth(70).barHeight(150).animationDuration(400)
       .onChange((index: number) => {

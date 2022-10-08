@@ -230,7 +230,7 @@ export default function alphabetIndexerOnSelectJsunit() {
           expect(indexEvent.data.STATUS).assertEqual(true);
         }
         let indexEvent = {
-          eventId: 10201,
+          eventId: 60201,
           priority: events_emitter.EventPriority.LOW
         }
         sendEventByKey('alphabetIndexer', 10, "")
@@ -242,14 +242,13 @@ export default function alphabetIndexerOnSelectJsunit() {
       await Utils.sleep(2000);
       try {
         var innerEventOne = {
-          eventId: 10202,
+          eventId: 60202,
           priority: events_emitter.EventPriority.LOW
         }
         var callback1 = (eventData) => {
           console.info("onRequestPopupData_0012 get event state result is: " + JSON.stringify(eventData));
           expect(eventData.data.STATUS).assertEqual(true);
         }
-        sendEventByKey('alphabetIndexer', 10, "")
         console.info("onSelect_0012 click result is: " + JSON.stringify(sendEventByKey('alphabetIndexer', 10, "")));
         events_emitter.on(innerEventOne, callback1);
       } catch (err) {

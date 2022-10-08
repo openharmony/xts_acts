@@ -12,7 +12,7 @@
             "server": "NfsServer",
             "mount": [
                 {
-                    "source": "testcases/aafwk",
+                    "source": "testcases/ability",
                     "target": "/test_root/aafwk"
                 },{
                     "source": "resource/aafwk",

@@ -28,7 +28,7 @@ struct Index {
   @State bundle: string = "com.example.apicoverhaptest";
   @State ability: string = "FormAbility";
   @State moduleName: string = "phone";
-  @State name: string = "widget";
+  @State name: string = "form1";
   private dimension: FormDimension = FormDimension.Dimension_2_2;
   private temporary = false;
 

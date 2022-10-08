@@ -21,6 +21,7 @@
                 "label": "$string:entry_label",
                 "visible": true,
                 "orientation": "portrait",
+                "launchType": "singleton",
                 "skills": [
                     {
                         "actions": [
@@ -73,6 +74,10 @@
           {
             "name":"ohos.permission.CLEAN_APPLICATION_DATA",
             "reason":"need use ohos.permission.CLEAN_APPLICATION_DATA"
+          },
+          {
+            "name":"ohos.permission.START_ABILITIES_FROM_BACKGROUND",
+            "reason":"need use ohos.permission.START_ABILITIES_FROM_BACKGROUND"
           }
         ]
 

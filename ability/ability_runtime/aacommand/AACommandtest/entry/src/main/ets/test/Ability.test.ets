@@ -22,6 +22,24 @@ let finishmsg1: any
 export default function abilityTest() {
     describe('ACTS_AACommand_Test', function () {
 
+        afterEach(async (done) => {
+            console.log("ActsAACommandTest afterEach called");
+            let wantInfo = {
+                bundleName: "com.example.aacommandtest",
+                abilityName: "MainAbility"
+            }
+            await globalThis.abilityContext.startAbility(wantInfo).then((data) => {
+                console.log("ActsAACommandTest startAbility data : " + JSON.stringify(data));
+            }).catch((err) => {
+                console.log("ActsAACommandTest startAbility err : " + JSON.stringify(err));
+            })
+
+            setTimeout(function () {
+                console.log("ActsAACommandTest afterEach end");
+                done();
+            }, 1000);
+        })
+
         /**
          * @tc.number: ACTS_AACommand_0100
          * @tc.name: -b, -s unittest, -p, -s class, -s level, -s size, -s testType, -s timeout,

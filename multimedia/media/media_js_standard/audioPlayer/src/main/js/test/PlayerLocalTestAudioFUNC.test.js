@@ -458,7 +458,8 @@ describe('PlayerLocalTestAudioFUNC', function () {
             console.info('case wait for next player');
         }
         playAudioSource(fdPath, DURATION_TIME, PLAY_TIME, true, waitForDone);
-        mediaTestBase.msleep(1000);
+        await mediaTestBase.msleepAsync(1000).then(
+            () => {}, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
         playAudioSource(fdPath, DURATION_TIME, PLAY_TIME, true, done);
     })
 })

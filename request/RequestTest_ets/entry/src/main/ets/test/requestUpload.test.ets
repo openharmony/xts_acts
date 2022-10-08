@@ -1,4 +1,3 @@
-// @ts-nocheck
 /*
  * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,9 +13,9 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index";
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 import request from "@ohos.request";
+import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index";
 
 export default function requestUploadJSUnit() {
   describe('requestUploadTest', function () {

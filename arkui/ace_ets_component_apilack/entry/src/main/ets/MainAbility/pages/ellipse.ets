@@ -22,6 +22,7 @@ export default
 struct EllipseNe {
   @State w: string = "300.00px";
   @State h: string = "300.00px";
+
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear EllipseNe start`)
   }
@@ -46,6 +47,11 @@ struct EllipseNe {
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
         .key("neText")
+
+      Image($rawfile('test.png'))
+        .mask(new Ellipse({ width: '150px', height: '150px' }).fill(Color.Gray))
+        .width('500px').height('280px')
+
       Ellipse().width(`${this.w}`).height(`${this.h}`).key('ellipse')
     }.width('100%').height('100%')
   }

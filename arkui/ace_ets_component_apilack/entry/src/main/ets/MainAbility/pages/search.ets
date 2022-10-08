@@ -97,8 +97,6 @@ export default struct SearchOnCut {
         .searchButton('Search')
         .textFont({ size: 20 })
         .placeholderFont({ size: 20 })
-//          编译报错
-//        .copyOption(CopyOption.InApp)
         .key("CopyOption")
 
     }.width("100%").height("100%")

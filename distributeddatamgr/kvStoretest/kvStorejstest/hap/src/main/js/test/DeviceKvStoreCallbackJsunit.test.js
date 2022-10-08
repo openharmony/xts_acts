@@ -1801,16 +1801,14 @@ describe('deviceKvStoreCallbackTest', function () {
             await kvStore.removeDeviceData('', function (err,data) {
                 if (err == undefined) {
                     console.info('testDeviceKvStoreRemoveDeviceData103 removeDeviceData success');
-                    expect(err == undefined).assertTrue();
-                } else {
-                    console.info('testDeviceKvStoreRemoveDeviceData103 removeDeviceData fail ' + err);
                     expect(null).assertFail();
+                } else {
+                    console.info('testDeviceKvStoreRemoveDeviceData103 removeDeviceData fail');
                 }
                 done();
             });
         }catch(e) {
             console.info('testDeviceKvStoreRemoveDeviceData103 e ' + e);
-            expect(null).assertFail();
             done();
         }
     })

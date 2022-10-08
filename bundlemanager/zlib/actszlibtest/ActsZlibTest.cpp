@@ -1245,6 +1245,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzUnGetc, Function | MediumTest | Level2)
     file = gzopen(TESTFILE, "rb");
     ASSERT_TRUE(file != NULL);
     ASSERT_FALSE(gzungetc(' ', file) != ' ');
+    gzclose(file);
 #endif
 }
 
@@ -1264,6 +1265,7 @@ HWTEST_F(ActsZlibTest, ActsZlibTestGzVprintf, Function | MediumTest | Level2)
 
     int err = TestGzPrintf(file, ", %s!", "hello");
     fprintf(stderr, "gzvprintf result: %d\n", err);
+    gzclose(file);
 #endif
 }
 

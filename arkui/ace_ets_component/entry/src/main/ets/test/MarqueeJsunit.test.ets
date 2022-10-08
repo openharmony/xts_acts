@@ -52,6 +52,7 @@ export default function marqueeJsunit() {
       let callback = (indexEvent) => {
         console.info("testMarquee_0100 get state result is: " + JSON.stringify(indexEvent));
         expect(indexEvent.data.start).assertEqual(true);
+        done();
       }
       let indexEvent = {
         eventId: 130,
@@ -67,6 +68,7 @@ export default function marqueeJsunit() {
       var callback1 = (eventData) => {
         console.info("testMarquee_0100 get event state result is: " + JSON.stringify(eventData));
         expect(eventData.data.fontColor).assertEqual(Color.Blue);
+        done();
       }
       var innerEventOne = {
         eventId: 127,
@@ -78,7 +80,6 @@ export default function marqueeJsunit() {
         console.info("testMarquee_0100 on events_emitter err : " + JSON.stringify(err));
       }
       console.info('testMarquee_0100 END');
-      done();
     });
 
     it('testMarquee_0200', 0, async function (done) {
@@ -87,6 +88,7 @@ export default function marqueeJsunit() {
       let callback = (indexEvent) => {
         console.info("testMarquee_0200 get state result is: " + JSON.stringify(indexEvent));
         expect(indexEvent.data.start).assertEqual(true);
+        done();
       }
       let indexEvent = {
         eventId: 130,
@@ -102,6 +104,7 @@ export default function marqueeJsunit() {
       var callback1 = (eventData) => {
         console.info("testMarquee_0200 get event state result is: " + JSON.stringify(eventData));
         expect(eventData.data.fontSize).assertEqual(50);
+        done();
       }
       var innerEventOne = {
         eventId: 128,
@@ -113,7 +116,6 @@ export default function marqueeJsunit() {
         console.info("testMarquee_0200 on events_emitter err : " + JSON.stringify(err));
       }
       console.info('testMarquee_0200 END');
-      done();
     });
 
     it('testMarquee_0300', 0, async function (done) {
@@ -122,6 +124,7 @@ export default function marqueeJsunit() {
       let callback = (indexEvent) => {
         console.info("testMarquee_0300 get state result is: " + JSON.stringify(indexEvent));
         expect(indexEvent.data.start).assertEqual(true);
+        done();
       }
       let indexEvent = {
         eventId: 130,
@@ -137,6 +140,7 @@ export default function marqueeJsunit() {
       var callback1 = (eventData) => {
         console.info("testMarquee_0300 get event state result is: " + JSON.stringify(eventData));
         expect(eventData.data.ACTION).assertEqual(true);
+        done();
       }
       var innerEventOne = {
         eventId: 129,
@@ -148,7 +152,6 @@ export default function marqueeJsunit() {
         console.info("testMarquee_0300 on events_emitter err : " + JSON.stringify(err));
       }
       console.info('testMarquee_0300 END');
-      done();
     });
   })
 }

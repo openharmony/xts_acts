@@ -20,6 +20,7 @@ import rpc from '@ohos.rpc';
 export default class ServiceAbility extends ServiceExtension {
     onCreate(want:Want) {
         globalThis.abilityWant = want;
+        globalThis.serviceContext = this.context
         let direction = this.context.config.direction
         let pointerDervice = this.context.config.hasPointerDevice
         let AbilityInfo = this.context.extensionAbilityInfo.bundleName

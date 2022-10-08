@@ -77,7 +77,7 @@ export default function checkBoxGroupSelectAllJsunit() {
           }
         }
         var innerEvent = {
-          eventId: 908,
+          eventId: 60203,
           priority: events_emitter.EventPriority.LOW
         }
         console.info("[testcheckBoxGroupSelectAll0002] start to publish emit");

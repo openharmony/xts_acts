@@ -39,7 +39,7 @@ ohos_static_library("libdeqpgles2func0001") {
   deps = common_depends
   external_deps = [
     "hilog_native:libhilog",
-    "multimedia_image_standard:image_native",
+    "multimedia_image_framework:image_native",
   ]
   configs = [ ":deqp_platform_ohos_config" ]
   public_deps = [ "//foundation/ace/ace_engine/build/external_config/flutter/skia:ace_skia_ohos" ]

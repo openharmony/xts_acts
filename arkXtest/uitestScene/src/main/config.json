@@ -49,7 +49,7 @@
         "formsEnabled": false,
         "label": "$string:entry_MainAbility",
         "type": "page",
-        "launchType": "standard"
+        "launchType": "singleton"
       }
     ],
     "js": [

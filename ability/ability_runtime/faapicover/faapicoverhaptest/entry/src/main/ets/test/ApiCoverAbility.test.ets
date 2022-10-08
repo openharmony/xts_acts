@@ -16,6 +16,7 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "
 
 import FormInfo from '@ohos.application.formInfo';
 import formError from '@ohos.application.formError';
+import featureAbility from '@ohos.ability.featureAbility'
 export default function ApiCoverTest() {
   describe('ApiCoverTestTest', function () {
 
@@ -75,5 +76,40 @@ export default function ApiCoverTest() {
       expect(1).assertEqual(FormInfo.FormState.READY)
       done();
     });
+    /*
+     * @tc.number  SUB_AA_OpenHarmony_CoverApiContext_0100
+     * @tc.name    Test getExternalCacheDir by callback.
+     * @tc.desc    Function test
+     * @tc.level   0
+     */
+    it('SUB_AA_OpenHarmony_CoverApiContext_0100', 0, async function (done) {
+        console.log("------------start SUB_AA_OpenHarmony_CoverApi_0500-------------");
+        let appContext = featureAbility.getContext()
+        appContext.getExternalCacheDir((err, data) => {
+          console.info('SUB_AA_OpenHarmony_CoverApiContext_0100 successful. data: ' + JSON.stringify(data));
+          expect(true).assertTrue()
+          done()
+        })
+    })
+
+    /*
+     * @tc.number  SUB_AA_OpenHarmony_CoverApiContext_0200
+     * @tc.name    Test getExternalCacheDir by promise.
+     * @tc.desc    Function test
+     * @tc.level   0
+     */
+    it('SUB_AA_OpenHarmony_CoverApiContext_0200', 0, async function (done) {
+        console.log("------------start SUB_AA_OpenHarmony_CoverApi_0500-------------");
+        let appContext = featureAbility.getContext()
+        appContext.getExternalCacheDir().then((data)=>{
+          console.info('SUB_AA_OpenHarmony_CoverApiContext_0200 successful. data: ' + JSON.stringify(data));
+          expect(true).assertTrue()
+          done()
+        }).catch((err)=>{
+            expect().assertFalse();
+            done()
+        })
+    })
+
   })
 }

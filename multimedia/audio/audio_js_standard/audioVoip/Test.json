@@ -17,7 +17,8 @@
         {
             "type": "ShellKit",
             "run-command": [
-                "mkdir -p /data/app/el2/100/base/ohos.acts.multimedia.audio.audiovoip/haps/entry/files/media"
+                "mkdir -p /data/app/el2/100/base/ohos.acts.multimedia.audio.audiovoip/haps/entry/files",
+                "chmod 777 -R /data/app/el2/100/base/ohos.acts.multimedia.audio.audiovoip/haps/entry"
             ],
             "cleanup-apps": true
         },

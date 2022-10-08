@@ -49,7 +49,7 @@ export default struct PolygonNe {
         .textOverflow({ overflow: TextOverflow.None })
         .key("neText")
 
-      Polygon({ width: 100, height: 100 }).points([[0, 0], [50, 100], [100, 0]])
+      Polygon({ width: "100px", height: "100px" }).points([[0, 0], [50, 100], [100, 0]])
       .key("Polygon")
 
     }.width("100%").height("100%")

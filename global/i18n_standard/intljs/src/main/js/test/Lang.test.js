@@ -199,6 +199,18 @@ describe('LangTest', function () {
     })
 
     /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_PREFERREDLANGUAGE_1100
+    * @tc.name test the getAppPreferredLanguage interface
+    * @tc.desc check the value of getAppPreferredLanguage method
+    */
+    it('i18n_test_preferredlanguage_1100', 0, function () {
+        console.log('i18n_test_preferredlanguage_1100 ' + 'start');
+        let value = I18n.getAppPreferredLanguage();
+        console.log('i18n_test_preferredlanguage_1100 ' + value);
+        expect(value).assertEqual('zh-Hans');
+    })
+
+    /* *
     * @tc.number  SUB_GLOBAL_INTL_JS_TRANSFER_0100
     * @tc.name    transfer from lower to upper
     * @tc.desc    check the transfer result

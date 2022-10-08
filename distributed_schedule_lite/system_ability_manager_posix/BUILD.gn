@@ -67,7 +67,7 @@ hcpptest_suite("ActsSamgrTest") {
     "src",
     "src/utils",
     "include",
-    "//utils/native/native_lite/include",
+    "//commonlibrary/utils_lite/include",
     "//third_party/bounds_checking_function/include",
     "//foundation/systemabilitymgr/samgr_lite/interfaces/kits/registry",
     "//foundation/systemabilitymgr/samgr_lite/interfaces/kits/samgr",

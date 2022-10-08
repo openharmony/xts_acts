@@ -1760,16 +1760,14 @@ describe('singleKvStoreCallbackTest', function () {
             await kvStore.removeDeviceData('', function (err,data) {
                 if (err == undefined) {
                     console.info('testSingleKvStoreRemoveDeviceData103 removeDeviceData success');
-                    expect(err == undefined).assertTrue();
-                } else {
-                    console.info('testSingleKvStoreRemoveDeviceData103 removeDeviceData fail: ' + err);
                     expect(null).assertFail();
+                } else {
+                    console.info('testSingleKvStoreRemoveDeviceData103 removeDeviceData fail');
                 }
                 done();
             });
         }catch(e) {
             console.info('testSingleKvStoreRemoveDeviceData103 e ' + e);
-            expect(null).assertFail();
             done();
         }
     })
