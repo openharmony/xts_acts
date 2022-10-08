@@ -78,34 +78,6 @@ export default function edmCallbackTest() {
     })
 
     /**
-     * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_0006
-     * @tc.name test enableAdmin method in callback mode without user id
-     * @tc.desc enable admin in callback mode
-     */
-    it('enableAdmin_test_006', 0, async function (done) {
-        console.log(' enableAdmin()');
-        await enterpriseDeviceManager.enableAdmin(WANT1, ENTINFO1,
-            enterpriseDeviceManager.AdminType.ADMIN_TYPE_NORMAL, OnReceiveEvent);
-        async function OnReceiveEvent(err, datainfo) {
-            console.log('enterpriseDeviceManager.enableAdmin ADMIN_TYPE_NORMAL :' + datainfo);
-            expect(datainfo).assertTrue();
-
-            var isEnabled = await enterpriseDeviceManager.isAdminEnabled(WANT1);
-            console.log('enterpriseDeviceManager.isAdminEnabled :' + isEnabled);
-            expect(isEnabled).assertTrue();
-
-            var retValue = await enterpriseDeviceManager.disableAdmin(WANT1);
-            console.log('enterpriseDeviceManager.disableAdmin : ' + retValue);
-            expect(retValue).assertTrue();
-
-            isEnabled = await enterpriseDeviceManager.isAdminEnabled(WANT1);
-            console.log('enterpriseDeviceManager.isAdminEnabled : ' + isEnabled);
-            expect(isEnabled).assertFalse();
-            done();
-        }
-    })
-
-    /**
      * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_0008
      * @tc.name test enableAdmin method with user id in callback mode with default user id
      * @tc.desc enable admin in multi-user
