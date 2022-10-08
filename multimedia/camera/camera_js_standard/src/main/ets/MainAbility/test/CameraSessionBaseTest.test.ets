@@ -1156,8 +1156,7 @@ export default function cameraSessionTest(surfaceId: any) {
                             expect().assertFail();
                         }
                     })
-                    await sleep(500);   
-                    mCanAddOutput = true;   
+                    await sleep(500);    
                 } else {
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_CAN_ADDOUTPUT_CALLBACK_0100 FAILED with NoReviewOutput");
                     expect().assertFail();    
@@ -1336,7 +1335,6 @@ export default function cameraSessionTest(surfaceId: any) {
                         }
                     })
                     await sleep(500);   
-                    mCanAddOutput = true;   
                 } else {
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_CAN_ADDOUTPUT_CALLBACK_0101 FAILED with NoPhotoOutput");
                     expect().assertFail();    
@@ -1530,8 +1528,7 @@ export default function cameraSessionTest(surfaceId: any) {
                             expect().assertFail();
                         }
                     })
-                    await sleep(500);   
-                    mCanAddOutput = true;   
+                    await sleep(500);     
                 } else {
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_CAN_ADDOUTPUT_CALLBACK_0102 FAILED with NoVideoOutput");
                     expect().assertFail();    
