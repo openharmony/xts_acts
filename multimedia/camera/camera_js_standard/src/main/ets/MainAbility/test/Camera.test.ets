@@ -13,12 +13,7 @@
  * limitations under the License.
  */
 
-import cameraJSUnitEnum from './CameraJSUnitEnum.test.ets'
-import cameraJSUnitCameraFormat from './CameraJSUnitCameraFormat.test.ets'
-import cameraJSUnitPhotoAsync from './CameraJSUnitPhotoAsync.test.ets'
-import cameraJSUnitPhotoPromise from './CameraJSUnitPhotoPromise.test.ets'
-import cameraJSUnitVideoAsync from './CameraJSUnitVideoAsync.test.ets'
-import cameraJSUnitVideoPromise from './CameraJSUnitVideoPromise.test.ets'
+import cameraJSUnitOutput from './CameraJSUnitOutput.test.ets'
 
 import cameraSessionFlashTest from './CameraSessionFlashTest.test.ets'
 import cameraSessionExposureTest from './CameraSessionExposureTest.test.ets'
@@ -33,12 +28,7 @@ export default function cameraKit(surfaceId: any) {
   console.info(TAG + 'Entering cameraKit')
   console.info(TAG + 'surfaceId: ' + surfaceId)
 
-  cameraJSUnitEnum(surfaceId)
-  cameraJSUnitCameraFormat(surfaceId)
-  cameraJSUnitPhotoAsync(surfaceId)
-  cameraJSUnitPhotoPromise(surfaceId)
-  cameraJSUnitVideoAsync(surfaceId)
-  cameraJSUnitVideoPromise(surfaceId)
+  cameraJSUnitOutput(surfaceId)
   cameraSessionFlashTest(surfaceId)
   cameraSessionExposureTest(surfaceId)
   cameraSessionFocusTest(surfaceId)
