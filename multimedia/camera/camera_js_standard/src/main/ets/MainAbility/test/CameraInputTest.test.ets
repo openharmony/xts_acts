@@ -239,7 +239,7 @@ describe('CameraManagerTest', function () {
                     if (!err) {
                         expect(isEmpty(cameraInput)).assertFalse();
                         console.info(TAG + functionTag + "Entering cameraInput open with camera: " + camerasArray[i].cameraId);
-                        cameraInput.open().then(async () => {
+                        await cameraInput.open().then(async () => {
                             console.info(TAG + functionTag + "PASSED open with CameraID :" + camerasArray[i].cameraId);
                         }).catch((err) => {
                             successFlag = false;
