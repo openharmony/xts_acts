@@ -237,7 +237,7 @@ export default function cameraJSUnitOutput(surfaceId: any) {
     })
 
     afterAll(function () {
-      await closeFd();
+      closeFd();
       console.info('afterAll case');
     })
 
