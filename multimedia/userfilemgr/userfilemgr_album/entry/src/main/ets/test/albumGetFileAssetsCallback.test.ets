@@ -17,22 +17,18 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 
 import {
     sleep,
-    IMAGE_TYPE,
-    VIDEO_TYPE,
-    AUDIO_TYPE,
-    FILEKEY,
     allFetchOp,
     albumFetchOps,
     checkPresetsAssets,
-    checkAlbumsCount,
+    checkAssetsCount,
 } from '../../../../../../common';
 
 export default function albumGetFileAssetsCallback(abilityContext) {
     describe('albumGetFileAssetsCallback', function () {
-        const userfile_mgr = userfile_manager.getUserFileMgr(abilityContext);
+        const userfilemgr = userfile_manager.getUserFileMgr(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
-            await checkPresetsAssets(userfile_mgr, 'ActsUserFileMgrAlbumJsTest');
+            await checkPresetsAssets(userfilemgr, 'ActsUserFileMgrAlbumJsTest');
         });
         beforeEach(function () {
             console.info('beforeEach case');
@@ -45,23 +41,24 @@ export default function albumGetFileAssetsCallback(abilityContext) {
             console.info('afterAll case');
         });
 
-        const checkAlbumAssetsCount = async function (done, testNum, media_type, fetchOp, expectAssetsCount, expectAlbumCount = 1) {
+        const checkAlbumAssetsCount = async function (done, testNum, fetchOp, expectAlbumCount = 1, expectAssetsCount = 1) {
             try {
-                const albumList = await userfile_mgr.getAlbums(media_type, fetchOp);
-                // check album length
-                const albumCountPass = await checkAlbumsCount(done, testNum, albumList, expectAlbumCount);
+                const fetchAlbumResult = await userfilemgr.getPhotoAlbums(fetchOp);
+                const albumCountPass = await checkAssetsCount(done, testNum, fetchAlbumResult, expectAlbumCount);
                 if (!albumCountPass) return;
-                const album = albumList[0];
-                album.getFileAssets(media_type, allFetchOp(), (error, fetchFileResult) => {
+                const album = await fetchAlbumResult.getFirstObject();
+                fetchAlbumResult.close();
+                album.getPhotoAssets(allFetchOp(), (error, fetchAssetResult) => {
                     if (error != undefined) {
-                        console.info(`${testNum} fetchFileResult error: ${error}`);
+                        console.info(`${testNum} getPhotoAssets error: ${error}`);
                         expect(false).assertTrue();
                         done();
                         return;
                     }
-                    console.info(`${testNum}, getCount: ${fetchFileResult.getCount()} 
+                    console.info(`${testNum}, getCount: ${fetchAssetResult.getCount()} 
                         expectAssetsCount: ${expectAssetsCount}`);
-                    expect(fetchFileResult.getCount()).assertEqual(expectAssetsCount);
+                    expect(fetchAssetResult.getCount()).assertEqual(expectAssetsCount);
+                    fetchAssetResult.close();
                     done();
                 });
             } catch (error) {
@@ -72,51 +69,17 @@ export default function albumGetFileAssetsCallback(abilityContext) {
         }
 
         /**
-         * @tc.number    : SUB_USERFILE_MGR_ALBUM_GETFILEASSETS_CALLBACK_01
-         * @tc.name      : getFileAssets
-         * @tc.desc      : Album getFileAssets in IMAGE_TYPE
+         * @tc.number    : SUB_USERFILE_MGR_ALBUM_GETPHOTOASSETS_CALLBACK_01
+         * @tc.name      : getPhotoAssets
+         * @tc.desc      : Album getPhotoAssets
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_USERFILE_MGR_ALBUM_GETFILEASSETS_CALLBACK_01', 0, async function (done) {
-            const testNum = 'SUB_USERFILE_MGR_ALBUM_GETFILEASSETS_CALLBACK_01';
-            let media_type = [IMAGE_TYPE];
+        it('SUB_USERFILE_MGR_ALBUM_GETPHOTOASSETS_CALLBACK_01', 0, async function (done) {
+            const testNum = 'SUB_USERFILE_MGR_ALBUM_GETPHOTOASSETS_CALLBACK_01';
             let currentFetchOp = albumFetchOps(testNum, 'Pictures/', 'Static');
-            let assetsCount = 1;
-            await checkAlbumAssetsCount(done, testNum, media_type, currentFetchOp, assetsCount);
-        });
-
-        /**
-         * @tc.number    : SUB_USERFILE_MGR_ALBUM_GETFILEASSETS_CALLBACK_02
-         * @tc.name      : getFileAssets
-         * @tc.desc      : Album getFileAssets in AUDIO_TYPE
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_USERFILE_MGR_ALBUM_GETFILEASSETS_CALLBACK_02', 0, async function (done) {
-            const testNum = 'SUB_USERFILE_MGR_ALBUM_GETFILEASSETS_CALLBACK_02';
-            let media_type = [AUDIO_TYPE];
-            let currentFetchOp = albumFetchOps(testNum, 'Audios/', 'Static');
-            let assetsCount = 1;
-            await checkAlbumAssetsCount(done, testNum, media_type, currentFetchOp, assetsCount);
-        });
-
-        /**
-         * @tc.number    : SUB_USERFILE_MGR_ALBUM_GETFILEASSETS_CALLBACK_03
-         * @tc.name      : getFileAssets
-         * @tc.desc      : Album getFileAssets in VIDEO_TYPE
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_USERFILE_MGR_ALBUM_GETFILEASSETS_CALLBACK_03', 0, async function (done) {
-            const testNum = 'SUB_USERFILE_MGR_ALBUM_GETFILEASSETS_CALLBACK_03';
-            let media_type = [VIDEO_TYPE];
-            let currentFetchOp = albumFetchOps(testNum, 'Videos/', 'Static');
-            let assetsCount = 1;
-            await checkAlbumAssetsCount(done, testNum, media_type, currentFetchOp, assetsCount);
+            await checkAlbumAssetsCount(done, testNum, currentFetchOp);
         });
     });
 }

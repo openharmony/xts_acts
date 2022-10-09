@@ -18,23 +18,20 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 
 import {
     sleep,
-    IMAGE_TYPE,
-    VIDEO_TYPE,
-    AUDIO_TYPE,
     albumFetchOps,
     checkPresetsAssets,
-    checkAlbumsCount,
+    checkAssetsCount,
     getPermission,
 } from '../../../../../../common';
 
 
 export default function albumCommitModifyPromise(abilityContext) {
     describe('albumCommitModifyPromise', function () {
-        const userfile_mgr = userfile_manager.getUserFileMgr(abilityContext);
+        const userfilemgr = userfile_manager.getUserFileMgr(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
             await getPermission();
-            await checkPresetsAssets(userfile_mgr, 'ActsUserFileMgrAlbumJsTest');
+            await checkPresetsAssets(userfilemgr, 'ActsUserFileMgrAlbumJsTest');
         });
         beforeEach(function () {
             console.info('beforeEach case');
@@ -47,13 +44,14 @@ export default function albumCommitModifyPromise(abilityContext) {
             console.info('afterAll case');
         });
 
-        const albumCommitModify = async function (done, testNum, media_type, fetchOp, expectAlbumCount) {
+        const albumCommitModify = async function (done, testNum, fetchOp, expectAlbumCount = 1) {
             try {
-                const albumList = await userfile_mgr.getAlbums(media_type, fetchOp);
-                const albumCountPass = await checkAlbumsCount(done, testNum, albumList, expectAlbumCount);
+                const fetchAlbumResult = await userfilemgr.getPhotoAlbums(fetchOp);
+                const albumCountPass = await checkAssetsCount(done, testNum, fetchAlbumResult, expectAlbumCount);
                 if (!albumCountPass) return;
-                const album = albumList[0];
-                const newName = 'albumName' + media_type.toString();
+                const album = await fetchAlbumResult.getFirstObject();
+                const newName = 'newAlbumNamePromise';
+                fetchAlbumResult.close();
                 album.albumName = newName;
                 await album.commitModify();
                 expect(true).assertTrue();
@@ -68,49 +66,15 @@ export default function albumCommitModifyPromise(abilityContext) {
         /**
          * @tc.number    : SUB_USERFILE_MGR_ALBUM_COMMITMODIFY_PROMISE_01
          * @tc.name      : commitModify
-         * @tc.desc      : image album modify albumname
+         * @tc.desc      : album modify albumname
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
         it('SUB_USERFILE_MGR_ALBUM_COMMITMODIFY_PROMISE_01', 0, async function (done) {
             const testNum = 'SUB_USERFILE_MGR_ALBUM_COMMITMODIFY_PROMISE_01';
-            let media_type = [IMAGE_TYPE];
             let currentFetchOp = albumFetchOps(testNum, 'Pictures/', 'DynamicPro');
-            let expectAlbumCount = 1;
-            await albumCommitModify(done, testNum, media_type, currentFetchOp, expectAlbumCount);
-        });
-
-        /**
-         * @tc.number    : SUB_USERFILE_MGR_ALBUM_COMMITMODIFY_PROMISE_02
-         * @tc.name      : commitModify
-         * @tc.desc      : audio album modify albumname
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_USERFILE_MGR_ALBUM_COMMITMODIFY_PROMISE_02', 0, async function (done) {
-            const testNum = 'SUB_USERFILE_MGR_ALBUM_COMMITMODIFY_PROMISE_02';
-            let media_type = [AUDIO_TYPE];
-            let currentFetchOp = albumFetchOps(testNum, 'Audios/', 'DynamicPro');
-            let expectAlbumCount = 1;
-            await albumCommitModify(done, testNum, media_type, currentFetchOp, expectAlbumCount);
-        });
-
-        /**
-         * @tc.number    : SUB_USERFILE_MGR_ALBUM_COMMITMODIFY_PROMISE_03
-         * @tc.name      : commitModify
-         * @tc.desc      : video album modify albumname
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_USERFILE_MGR_ALBUM_COMMITMODIFY_PROMISE_03', 0, async function (done) {
-            const testNum = 'SUB_USERFILE_MGR_ALBUM_COMMITMODIFY_PROMISE_03';
-            let media_type = [VIDEO_TYPE];
-            let currentFetchOp = albumFetchOps(testNum, 'Videos/', 'DynamicPro');
-            let expectAlbumCount = 1;
-            await albumCommitModify(done, testNum, media_type, currentFetchOp, expectAlbumCount);
+            await albumCommitModify(done, testNum, currentFetchOp);
         });
     });
 }

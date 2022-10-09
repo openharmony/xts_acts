@@ -16,17 +16,21 @@
 import userfile_manager from '@ohos.filemanagement.userfile_manager';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 import bundle from '@ohos.bundle';
+import dataSharePredicates from '@ohos.data.dataSharePredicates';
 
 const presetsCount = {
-    ActsUserFileMgrAlbumJsTest: { albumsCount: 9, assetsCount: 9 },
-    ActsUserFileMgrBaseJsTest: { albumsCount: 42, assetsCount: 84 },
+    ActsUserFileMgrAlbumJsTest: { albumsCount: 3, assetsCount: 3 },
+    ActsUserFileMgrBaseJsTest: { albumsCount: 9, assetsCount: 18 },
+    ActsUserFileMgrFileAssetJsTest: { albumsCount: 45, assetsCount: 87 },
 }
 
 const IMAGE_TYPE = userfile_manager.MediaType.IMAGE;
 const VIDEO_TYPE = userfile_manager.MediaType.VIDEO;
 const AUDIO_TYPE = userfile_manager.MediaType.AUDIO;
 
-const FILEKEY = userfile_manager.FileKey;
+const AUDIOKEY = userfile_manager.AudioKey;
+const IMAGEVIDEOKEY = userfile_manager.ImageVideoKey;
+const ALBUMKEY = userfile_manager.AlbumKey;
 const sleep = async function sleep(times) {
     if (times == undefined) {
         times = 10
@@ -35,81 +39,92 @@ const sleep = async function sleep(times) {
 }
 
 const allFetchOp = function () {
+    let predicates = new dataSharePredicates.DataSharePredicates();
     return {
-        selections: '',
-        selectionArgs: [],
+        predicates: predicates
     };
 }
 
-const fetchOps = function (testNum, path) {
+const audioFetchOps = function (testNum, path) {
+    let predicates = new dataSharePredicates.DataSharePredicates();
+    predicates.equalTo(AUDIOKEY.RELATIVE_PATH, path);
     let ops = {
-        selections: 'relative_path' + '= ?',
-        selectionArgs: [path],
+        predicates: predicates
     };
-    console.info(`${testNum}: fetchOps${JSON.stringify(ops)}`)
+    console.info(`${testNum} queryOps: relative_path = ${path}`);
     return ops
 }
-const nameFetchOps = function (testNum, path, displayName) {
+
+const imageVideoFetchOps = function (testNum, path) {
+    let predicates = new dataSharePredicates.DataSharePredicates();
+    predicates.equalTo(IMAGEVIDEOKEY.RELATIVE_PATH, path);
     let ops = {
-        selections: 'relative_path' + '= ? AND ' + FILEKEY.DISPLAY_NAME + '= ?',
-        selectionArgs: [path, displayName],
+        predicates: predicates
     };
-    console.info(`${testNum}: fetchOps${JSON.stringify(ops)}`)
+    console.info(`${testNum} queryOps: relative_path = ${path}`);
+    return ops
+}
+
+const audioNameFetchOps = function (testNum, path, displayName) {
+    let predicates = new dataSharePredicates.DataSharePredicates();
+    predicates.equalTo(AUDIOKEY.RELATIVE_PATH, path)
+        .equalTo(AUDIOKEY.DISPLAY_NAME, displayName);
+    let ops = {
+        predicates: predicates
+    };
+    console.info(`${testNum} queryOps: relative_path = ${path} AND display_name = ${displayName}`);
+    return ops
+}
+
+const imageVideoNameFetchOps = function (testNum, path, displayName) {
+    let predicates = new dataSharePredicates.DataSharePredicates();
+    predicates.equalTo(IMAGEVIDEOKEY.RELATIVE_PATH, path)
+        .equalTo(IMAGEVIDEOKEY.DISPLAY_NAME, displayName);
+    let ops = {
+        predicates: predicates
+    };
+    console.info(`${testNum} queryOps: relative_path = ${path} AND display_name = ${displayName}`);
     return ops
 }
 
 const albumFetchOps = function (testNum, path, albumName) {
+    let predicates = new dataSharePredicates.DataSharePredicates();
+    predicates.equalTo(ALBUMKEY.RELATIVE_PATH, path)
+        .equalTo("bucket_display_name", albumName);
     let ops = {
-        selections: 'relative_path' + '= ? AND ' + 'bucket_display_name' + '= ?',
-        selectionArgs: [path, albumName],
+        predicates: predicates
     };
-    console.info(`${testNum}: fetchOps${JSON.stringify(ops)}`)
+    console.info(`${testNum} queryOps: relative_path = ${path} AND bucket_display_name = ${albumName}`);
     return ops
 }
 
 const checkPresetsAssets = async function (userfilemgr, hapName) {
     console.info('checkPresetsAssets start')
-    let albumList = await userfilemgr.getAlbums([IMAGE_TYPE, VIDEO_TYPE, AUDIO_TYPE], allFetchOp());
-    let albumsCount = albumList.length;
-    let fetchFileResult = await userfilemgr.getFileAssets([IMAGE_TYPE, VIDEO_TYPE, AUDIO_TYPE],
-        allFetchOp());
-    let assetsCount = await fetchFileResult.getCount();
+    let fetchAlbumResult = await userfilemgr.getPhotoAlbums(allFetchOp());
+    let albumsCount = fetchAlbumResult.getCount();
+    let fetchPhotoResult = await userfilemgr.getPhotoAssets(allFetchOp());
+    let fetchAudioResult = await userfilemgr.getAudioAssets(allFetchOp());
+    let assetsCount = fetchPhotoResult.getCount() + fetchAudioResult.getCount();
     console.info(`${hapName}:: assetsCount: ${assetsCount} albumsCount: ${albumsCount},
             presetsassetsCount: ${presetsCount[hapName].assetsCount} 
             presetsalbumsCount: ${presetsCount[hapName].albumsCount}`);
     console.info('checkPresetsAssets end')
 }
 
-const checkAssetsCount = async function (done, testNum, fetchFileResult, expectCount) {
-    if (!fetchFileResult) {
-        console.info(`${testNum}:: fetchFileResult error:`);
+const checkAssetsCount = async function (done, testNum, fetchAssetResult, expectCount) {
+    if (!fetchAssetResult) {
+        console.info(`${testNum}:: fetchAssetResult is undefined`);
         expect(false).assertTrue();
         done();
         return false
     }
-    let count = await fetchFileResult.getCount();
+    let count = await fetchAssetResult.getCount();
     if (count != expectCount) {
         console.info(`${testNum}:: count:expectCount - ${count} : ${expectCount}`);
         expect(count).assertEqual(expectCount);
         done();
     }
     return count == expectCount;
-}
-
-const checkAlbumsCount = function (done, testNum, albumList, expectCount) {
-    if (!Array.isArray(albumList)) {
-        console.info(`${testNum}:: albumList error:`);
-        expect(false).assertTrue();
-        done();
-        return false
-    }
-    let albumsCount = albumList.length;
-    if (albumsCount != expectCount) {
-        console.info(`${testNum}:: albumsCount: expectCount - ${albumsCount} : ${expectCount}`);
-        expect(albumsCount).assertEqual(expectCount);
-        done();
-    }
-    return albumsCount == expectCount;
 }
 
 const getPermission = async function (name = 'ohos.acts.multimedia.userfilemgr') {
@@ -148,14 +163,14 @@ export {
     IMAGE_TYPE,
     VIDEO_TYPE,
     AUDIO_TYPE,
-    FILEKEY,
     sleep,
     allFetchOp,
-    fetchOps,
-    nameFetchOps,
+    audioFetchOps,
+    imageVideoFetchOps,
+    audioNameFetchOps,
+    imageVideoNameFetchOps,
     albumFetchOps,
     checkPresetsAssets,
     checkAssetsCount,
-    checkAlbumsCount,
     isNum,
 };
