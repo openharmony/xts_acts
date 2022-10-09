@@ -67,7 +67,7 @@ let mVideoConfig = {
     audioSourceType: 1,
     videoSourceType: 0,
     profile: mVideoProfileCfg,
-    url: 'file:///data/media/02.mp4',
+    url: 'file:///data/media/CameraSessionVideoStabilization.mp4',
     orientationHint: 0,
     location: { latitude: 30, longitude: 130 },
     maxSize: 100,
@@ -180,7 +180,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
 
     async function getVideoReceiveSurface() {
         console.log(TAG + 'Entering getVideoReceiveSurface')
-        await getFd('02.mp4');
+        await getFd('CameraSessionVideoStabilization.mp4');
         mVideoConfig.url = mFdPath;
         media.createVideoRecorder((err, recorder) => {
             console.info(TAG + 'Entering create video receiver')

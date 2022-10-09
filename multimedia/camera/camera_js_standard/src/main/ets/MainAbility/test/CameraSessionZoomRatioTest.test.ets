@@ -69,7 +69,7 @@ let mVideoConfig = {
     audioSourceType: 1,
     videoSourceType: 0,
     profile: mVideoProfileCfg,
-    url: 'file:///data/media/02.mp4',
+    url: 'file:///data/media/CameraSessionZoomRatio.mp4',
     orientationHint: 0,
     location: { latitude: 30, longitude: 130 },
     maxSize: 100,
@@ -182,7 +182,7 @@ export default function cameraSessionZoomRatioTest(surfaceId: any) {
 
     async function getVideoReceiveSurface() {
         console.log(TAG + 'Entering getVideoReceiveSurface')
-        await getFd('02.mp4');
+        await getFd('CameraSessionZoomRatio.mp4');
         mVideoConfig.url = mFdPath;
         media.createVideoRecorder((err, recorder) => {
             console.info(TAG + 'Entering create video receiver')
@@ -987,8 +987,8 @@ export default function cameraSessionZoomRatioTest(surfaceId: any) {
 
         /**
         * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0103
-        * @tc.name      : Check capture session zoom ratio with callback(invalid value, max - 1)
-        * @tc.desc      : Check capture session zoom ratio with callback(invalid value, max - 1)
+        * @tc.name      : Check capture session zoom ratio with callback(invalid value, min - 1)
+        * @tc.desc      : Check capture session zoom ratio with callback(invalid value, min - 1)
         * @tc.size      : MEDIUM
         * @tc.type      : Function
         * @tc.level     : Level 0
@@ -1006,7 +1006,7 @@ export default function cameraSessionZoomRatioTest(surfaceId: any) {
     
                     await startCameraSession(mCameraInputArray[i]);
     
-                    mCameraSession.setZoomRatio((mZoomRatioMaxArray[i] - 1), async (err) => {
+                    mCameraSession.setZoomRatio((mZoomRatioMinArray[i] - 1), async (err) => {
                         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0103 callback");
                         if (!err) {
                             console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0103 PASSED with ZoomRatio is: " + (mZoomRatioMaxArray[i] - 1));
@@ -1020,7 +1020,7 @@ export default function cameraSessionZoomRatioTest(surfaceId: any) {
                     mCameraSession.getZoomRatio(async (err, data) => {
                         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0103 callback");
                         if (!err) {
-                            if (data != (mZoomRatioMaxArray[i] - 1)) {
+                            if (data != (mZoomRatioMinArray[i] - 1)) {
                                 console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0103 PASSED with ZoomRatio is: " + data);
                             } else {
                                 console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0103 FAILED with ZoomRatio is: " + data);
@@ -1045,8 +1045,8 @@ export default function cameraSessionZoomRatioTest(surfaceId: any) {
 
         /**
         * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0103
-        * @tc.name      : Check capture session set zoom ratio with promise(invalid value, max - 1)
-        * @tc.desc      : Check capture session set zoom ratio with promise(invalid value, max - 1)
+        * @tc.name      : Check capture session set zoom ratio with promise(invalid value, min - 1)
+        * @tc.desc      : Check capture session set zoom ratio with promise(invalid value, min - 1)
         * @tc.size      : MEDIUM
         * @tc.type      : Function
         * @tc.level     : Level 0
@@ -1064,14 +1064,14 @@ export default function cameraSessionZoomRatioTest(surfaceId: any) {
     
                     await startCameraSession(mCameraInputArray[i]);
     
-                    await mCameraSession.setZoomRatio((mZoomRatioMaxArray[i] - 1));
+                    await mCameraSession.setZoomRatio((mZoomRatioMinArray[i] - 1));
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0103 finish");
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0103 PASSED with ZoomRatio is: " + (mZoomRatioMaxArray[i] - 1));  
                     await sleep(500);
 
                     let zoomRatio = await mCameraSession.getZoomRatio();
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0103 finish");
-                    if (zoomRatio != (mZoomRatioMaxArray[i] - 1)) {
+                    if (zoomRatio != (mZoomRatioMinArray[i] - 1)) {
                         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0103 PASSED with ZoomRatio is: " + zoomRatio);
                     } else {
                         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0103 FAILED with ZoomRatio is: " + zoomRatio);
@@ -1091,8 +1091,8 @@ export default function cameraSessionZoomRatioTest(surfaceId: any) {
 
         /**
         * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_CALLBACK_0104
-        * @tc.name      : Check capture session zoom ratio with callback(invalid value, max - 0.1)
-        * @tc.desc      : Check capture session zoom ratio with callback(invalid value, max - 0.1)
+        * @tc.name      : Check capture session zoom ratio with callback(invalid value, min - 0.1)
+        * @tc.desc      : Check capture session zoom ratio with callback(invalid value, min - 0.1)
         * @tc.size      : MEDIUM
         * @tc.type      : Function
         * @tc.level     : Level 0
@@ -1149,8 +1149,8 @@ export default function cameraSessionZoomRatioTest(surfaceId: any) {
 
         /**
         * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0104
-        * @tc.name      : Check capture session set zoom ratio with promise(invalid value, max - 0.1)
-        * @tc.desc      : Check capture session set zoom ratio with promise(invalid value, max - 0.1)
+        * @tc.name      : Check capture session set zoom ratio with promise(invalid value, min - 0.1)
+        * @tc.desc      : Check capture session set zoom ratio with promise(invalid value, min - 0.1)
         * @tc.size      : MEDIUM
         * @tc.type      : Function
         * @tc.level     : Level 0
@@ -1168,14 +1168,14 @@ export default function cameraSessionZoomRatioTest(surfaceId: any) {
     
                     await startCameraSession(mCameraInputArray[i]);
     
-                    await mCameraSession.setZoomRatio((mZoomRatioMaxArray[i] - 0.1));
+                    await mCameraSession.setZoomRatio((mZoomRatioMinArray[i] - 0.1));
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0104 finish");
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0104 PASSED with ZoomRatio is: " + (mZoomRatioMaxArray[i] - 0.1));  
                     await sleep(500);
 
                     let zoomRatio = await mCameraSession.getZoomRatio();
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0104 finish");
-                    if (zoomRatio != (mZoomRatioMaxArray[i] - 0.1)) {
+                    if (zoomRatio != (mZoomRatioMinArray[i] - 0.1)) {
                         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0104 PASSED with ZoomRatio is: " + zoomRatio);
                     } else {
                         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_ZOOM_RATIO_PROMISE_0104 FAILED with ZoomRatio is: " + zoomRatio);

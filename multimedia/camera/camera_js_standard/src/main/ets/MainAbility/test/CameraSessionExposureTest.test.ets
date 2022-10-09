@@ -70,7 +70,7 @@ let mVideoConfig = {
     audioSourceType: 1,
     videoSourceType: 0,
     profile: mVideoProfileCfg,
-    url: 'file:///data/media/02.mp4',
+    url: 'file:///data/media/CameraSessionExposure.mp4',
     orientationHint: 0,
     location: { latitude: 30, longitude: 130 },
     maxSize: 100,
@@ -230,7 +230,7 @@ export default function cameraSessionExposureTest(surfaceId: any) {
 
     async function getVideoReceiveSurface() {
         console.log(TAG + 'Entering getVideoReceiveSurface')
-        await getFd('02.mp4');
+        await getFd('CameraSessionExposure.mp4');
         mVideoConfig.url = mFdPath;
         media.createVideoRecorder((err, recorder) => {
             console.info(TAG + 'Entering create video receiver')
@@ -239,11 +239,11 @@ export default function cameraSessionExposureTest(surfaceId: any) {
             console.info(TAG + 'videoRecorder.prepare called.')
             mVideoRecorder.prepare(mVideoConfig, (err) => {
                 console.info(TAG + 'videoRecorder.prepare success.')
-            })
-            mVideoRecorder.getInputSurface((err, id) => {
-                console.info(TAG + 'getInputSurface called')
-                mVideoSurface = id
-                console.info(TAG + 'getInputSurface surfaceId: ' + JSON.stringify(mVideoSurface))
+                mVideoRecorder.getInputSurface((err, id) => {
+                    console.info(TAG + 'getInputSurface called')
+                    mVideoSurface = id
+                    console.info(TAG + 'getInputSurface surfaceId: ' + JSON.stringify(mVideoSurface))
+                })
             })
         })
         console.log(TAG + 'Exit getVideoReceiveSurface')
