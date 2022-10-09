@@ -17,7 +17,8 @@ import audio from '@ohos.multimedia.audio';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 
 describe('audioEventManagement', function () {
-    console.info('AudioFrameworkTest: Create AudioManger Object JS Framework');
+    let TagFrmwk = "AudioFrameworkTest";
+    console.info(`${TagFrmwk}: Create AudioManger Object JS Framework`);
     let audioManager = null;
     let deviceRoleValue = null;
     let deviceTypeValue = null;
@@ -27,10 +28,10 @@ describe('audioEventManagement', function () {
     function getAudioManager() {
         audioManager = audio.getAudioManager();
         if (audioManager != null) {
-            console.info('AudioFrameworkTest: getAudioManger : PASS');
+            console.info(`${TagFrmwk}: getAudioManger : PASS`);
         }
         else {
-            console.info('AudioFrameworkTest: getAudioManger : FAIL');
+            console.info(`${TagFrmwk}: getAudioManger : FAIL`);
         }
     }
     function displayDeviceProp(value, index, array) {
@@ -65,29 +66,29 @@ describe('audioEventManagement', function () {
             devTypeName = 'ERROR : UNKNOWN :' + value.deviceType;
         }
 
-        console.info(`AudioFrameworkTest: device role: ${devRoleName}`);
+        console.info(`${TagFrmwk}: device role: ${devRoleName}`);
         deviceRoleValue = value.deviceRole;
-        console.info(`AudioFrameworkTest: device type: ${devTypeName}`);
+        console.info(`${TagFrmwk}: device type: ${devTypeName}`);
         deviceTypeValue = value.deviceType;
 
     }
 
     beforeAll(async function () {
-        console.info('AudioFrameworkTest: beforeAll: Prerequisites at the test suite level');
+        console.info(`${TagFrmwk}: beforeAll: Prerequisites at the test suite level`);
         await getAudioManager();
     })
 
     beforeEach(function () {
-        console.info('AudioFrameworkTest: beforeEach: Prerequisites at the test case level');
+        console.info(`${TagFrmwk}: beforeEach: Prerequisites at the test case level`);
     })
 
     afterEach(async function () {
-        console.info('AudioFrameworkTest: afterEach: Test case-level clearance conditions');
+        console.info(`${TagFrmwk}: afterEach: Test case-level clearance conditions`);
         await sleep(1000);
     })
 
-    afterAll(async function () {
-        console.info('AudioFrameworkTest: afterAll: Test suite-level cleanup condition');
+    afterAll(function () {
+        console.info(`${TagFrmwk}: afterAll: Test suite-level cleanup condition`);
 
     })
 
@@ -103,14 +104,14 @@ describe('audioEventManagement', function () {
         const PROMISE = audioManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG)
         PROMISE.then(function (value) {
 
-            console.info('AudioFrameworkTest: Promise: getDevices OUTPUT_DEVICES_FLAG');
+            console.info(`${TagFrmwk}: Promise: getDevices OUTPUT_DEVICES_FLAG`);
             value.forEach(displayDeviceProp);
             if (deviceTypeValue != null && deviceRoleValue != null) {
-                console.info('AudioFrameworkTest: Promise: getDevices : OUTPUT_DEVICES_FLAG :  PASS');
+                console.info(`${TagFrmwk}: Promise: getDevices : OUTPUT_DEVICES_FLAG :  PASS`);
                 expect(true).assertTrue();
             }
             else {
-                console.info('AudioFrameworkTest: Promise: getDevices : OUTPUT_DEVICES_FLAG :  FAIL');
+                console.info(`${TagFrmwk}: Promise: getDevices : OUTPUT_DEVICES_FLAG :  FAIL`);
                 expect(false).assertTrue();
             }
         });
@@ -129,14 +130,14 @@ describe('audioEventManagement', function () {
     it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_PR_GETDEVICES_OUTPUT_ENUM_0100', 0, async function (done) {
         const PROMISE = audioManager.getDevices(1)
         PROMISE.then(function (value) {
-            console.info('AudioFrameworkTest: Promise: getDevices OUTPUT_DEVICES_FLAG');
+            console.info(`${TagFrmwk}: Promise: getDevices OUTPUT_DEVICES_FLAG`);
             value.forEach(displayDeviceProp);
             if (deviceTypeValue != null && deviceRoleValue != null) {
-                console.info('AudioFrameworkTest: Promise: getDevices : OUTPUT_DEVICES_FLAG :  PASS');
+                console.info(`${TagFrmwk}: Promise: getDevices : OUTPUT_DEVICES_FLAG :  PASS`);
                 expect(true).assertTrue();
             }
             else {
-                console.info('AudioFrameworkTest: Promise: getDevices : OUTPUT_DEVICES_FLAG :  FAIL');
+                console.info(`${TagFrmwk}: Promise: getDevices : OUTPUT_DEVICES_FLAG :  FAIL`);
                 expect(false).assertTrue();
             }
         });
@@ -155,14 +156,14 @@ describe('audioEventManagement', function () {
     it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_PR_GETDEVICES_INPUT_0100', 0, async function (done) {
         const PROMISE = audioManager.getDevices(audio.DeviceFlag.INPUT_DEVICES_FLAG);
         PROMISE.then(function (value) {
-            console.info('AudioFrameworkTest: Promise: getDevices INPUT_DEVICES_FLAG');
+            console.info(`${TagFrmwk}: Promise: getDevices INPUT_DEVICES_FLAG`);
             value.forEach(displayDeviceProp);
             if (deviceTypeValue != null && deviceRoleValue != null) {
-                console.info('AudioFrameworkTest: Promise: getDevices : INPUT_DEVICES_FLAG :  PASS');
+                console.info(`${TagFrmwk}: Promise: getDevices : INPUT_DEVICES_FLAG :  PASS`);
                 expect(true).assertTrue();
             }
             else {
-                console.info('AudioFrameworkTest: Promise: getDevices : INPUT_DEVICES_FLAG :  FAIL');
+                console.info(`${TagFrmwk}: Promise: getDevices : INPUT_DEVICES_FLAG :  FAIL`);
                 expect(false).assertTrue();
             }
         });
@@ -181,15 +182,15 @@ describe('audioEventManagement', function () {
     it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_PR_GETDEVICES_INTPUT_ENUM_0100', 0, async function (done) {
         const PROMISE = audioManager.getDevices(2);
         PROMISE.then(function (value) {
-            console.info('AudioFrameworkTest: Promise: getDevices INPUT_DEVICES_FLAG');
+            console.info(`${TagFrmwk}: Promise: getDevices INPUT_DEVICES_FLAG`);
             value.forEach(displayDeviceProp);
 
             if (deviceTypeValue != null && deviceRoleValue != null) {
-                console.info('AudioFrameworkTest: Promise: getDevices : INPUT_DEVICES_FLAG :  PASS');
+                console.info(`${TagFrmwk}: Promise: getDevices : INPUT_DEVICES_FLAG :  PASS`);
                 expect(true).assertTrue();
             }
             else {
-                console.info('AudioFrameworkTest: Promise: getDevices : INPUT_DEVICES_FLAG :  FAIL');
+                console.info(`${TagFrmwk}: Promise: getDevices : INPUT_DEVICES_FLAG :  FAIL`);
                 expect(false).assertTrue();
             }
         });
@@ -208,15 +209,15 @@ describe('audioEventManagement', function () {
     it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_PR_GETDEVICES_ALL_0100', 0, async function (done) {
         const PROMISE = audioManager.getDevices(audio.DeviceFlag.ALL_DEVICES_FLAG);
         PROMISE.then(function (value) {
-            console.info('AudioFrameworkTest: Promise: getDevices ALL_DEVICES_FLAG');
+            console.info(`${TagFrmwk}: Promise: getDevices ALL_DEVICES_FLAG`);
             value.forEach(displayDeviceProp);
 
             if (deviceTypeValue != null && deviceRoleValue != null) {
-                console.info('AudioFrameworkTest: Promise: getDevices : ALL_DEVICES_FLAG :  PASS');
+                console.info(`${TagFrmwk}: Promise: getDevices : ALL_DEVICES_FLAG :  PASS`);
                 expect(true).assertTrue();
             }
             else {
-                console.info('AudioFrameworkTest: Promise: getDevices : ALL_DEVICES_FLAG :  FAIL');
+                console.info(`${TagFrmwk}: Promise: getDevices : ALL_DEVICES_FLAG :  FAIL`);
                 expect(false).assertTrue();
             }
         });
@@ -235,15 +236,15 @@ describe('audioEventManagement', function () {
     it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_PR_GETDEVICES_ALL_ENUM_0100', 0, async function (done) {
         const PROMISE = audioManager.getDevices(3);
         PROMISE.then(function (value) {
-            console.info('AudioFrameworkTest: Promise: getDevices ALL_DEVICES_FLAG');
+            console.info(`${TagFrmwk}: Promise: getDevices ALL_DEVICES_FLAG`);
             value.forEach(displayDeviceProp);
 
             if (deviceTypeValue != null && deviceRoleValue != null) {
-                console.info('AudioFrameworkTest: Promise: getDevices : ALL_DEVICES_FLAG :  PASS');
+                console.info(`${TagFrmwk}: Promise: getDevices : ALL_DEVICES_FLAG :  PASS`);
                 expect(true).assertTrue();
             }
             else {
-                console.info('AudioFrameworkTest: Promise: getDevices : ALL_DEVICES_FLAG :  FAIL');
+                console.info(`${TagFrmwk}: Promise: getDevices : ALL_DEVICES_FLAG :  FAIL`);
                 expect(false).assertTrue();
             }
         });
@@ -259,22 +260,22 @@ describe('audioEventManagement', function () {
      *@tc.type      : Function
      *@tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_CB_GETDEVICES_OUTPUT_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_CB_GETDEVICES_OUTPUT_0100', 0, function (done) {
         audioManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG, (err, value) => {
-            console.info('AudioFrameworkTest: Callback: getDevices OUTPUT_DEVICES_FLAG');
+            console.info(`${TagFrmwk}: Callback: getDevices OUTPUT_DEVICES_FLAG`);
             if (err) {
-                console.error(`AudioFrameworkTest: Callback: OUTPUT_DEVICES_FLAG: failed to get devices ${err.message}`);
+                console.error(`${TagFrmwk}: Callback: OUTPUT_DEVICES_FLAG: failed to get devices ${err.message}`);
                 expect().assertFail();
             }
             else {
-                console.info('AudioFrameworkTest: Callback: getDevices OUTPUT_DEVICES_FLAG');
+                console.info(`${TagFrmwk}: Callback: getDevices OUTPUT_DEVICES_FLAG`);
                 value.forEach(displayDeviceProp);
                 if (deviceTypeValue != null && deviceRoleValue != null) {
-                    console.info('AudioFrameworkTest: Callback: getDevices : OUTPUT_DEVICES_FLAG :  PASS');
+                    console.info(`${TagFrmwk}: Callback: getDevices : OUTPUT_DEVICES_FLAG :  PASS`);
                     expect(true).assertTrue();
                 }
                 else {
-                    console.info('AudioFrameworkTest: Callback: getDevices : OUTPUT_DEVICES_FLAG :  FAIL');
+                    console.info(`${TagFrmwk}: Callback: getDevices : OUTPUT_DEVICES_FLAG :  FAIL`);
                     expect(false).assertTrue();
                 }
             }
@@ -290,22 +291,22 @@ describe('audioEventManagement', function () {
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_CB_GETDEVICES_OUTPUT_ENUM_0100', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_CB_GETDEVICES_OUTPUT_ENUM_0100', 2, function (done) {
         audioManager.getDevices(1, (err, value) => {
-            console.info('AudioFrameworkTest: Callback: getDevices OUTPUT_DEVICES_FLAG');
+            console.info(`${TagFrmwk}: Callback: getDevices OUTPUT_DEVICES_FLAG`);
             if (err) {
-                console.error(`AudioFrameworkTest: Callback: OUTPUT_DEVICES_FLAG: failed to get devices ${err.message}`);
+                console.error(`${TagFrmwk}: Callback: OUTPUT_DEVICES_FLAG: failed to get devices ${err.message}`);
                 expect().assertFail();
             }
             else {
-                console.info('AudioFrameworkTest: Callback: getDevices OUTPUT_DEVICES_FLAG');
+                console.info(`${TagFrmwk}: Callback: getDevices OUTPUT_DEVICES_FLAG`);
                 value.forEach(displayDeviceProp);
                 if (deviceTypeValue != null && deviceRoleValue != null) {
-                    console.info('AudioFrameworkTest: Callback: getDevices : OUTPUT_DEVICES_FLAG :  PASS');
+                    console.info(`${TagFrmwk}: Callback: getDevices : OUTPUT_DEVICES_FLAG :  PASS`);
                     expect(true).assertTrue();
                 }
                 else {
-                    console.info('AudioFrameworkTest: Callback: getDevices : OUTPUT_DEVICES_FLAG :  FAIL');
+                    console.info(`${TagFrmwk}: Callback: getDevices : OUTPUT_DEVICES_FLAG :  FAIL`);
                     expect(false).assertTrue();
                 }
             }
@@ -321,23 +322,23 @@ describe('audioEventManagement', function () {
      *@tc.type      : Function
      *@tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_CB_GETDEVICES_INPUT_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_CB_GETDEVICES_INPUT_0100', 0, function (done) {
         audioManager.getDevices(audio.DeviceFlag.INPUT_DEVICES_FLAG, (err, value) => {
-            console.info('AudioFrameworkTest: Callback: getDevices INPUT_DEVICES_FLAG');
+            console.info(`${TagFrmwk}: Callback: getDevices INPUT_DEVICES_FLAG`);
             if (err) {
-                console.error(`AudioFrameworkTest: Callback: INPUT_DEVICES_FLAG: failed to get devices ${err.message}`);
+                console.error(`${TagFrmwk}: Callback: INPUT_DEVICES_FLAG: failed to get devices ${err.message}`);
                 expect().assertFail();
             }
             else {
-                console.info('AudioFrameworkTest: Callback: getDevices INPUT_DEVICES_FLAG');
+                console.info(`${TagFrmwk}: Callback: getDevices INPUT_DEVICES_FLAG`);
                 value.forEach(displayDeviceProp);
 
                 if (deviceTypeValue != null && deviceRoleValue != null) {
-                    console.info('AudioFrameworkTest: Callback: getDevices : INPUT_DEVICES_FLAG:  PASS');
+                    console.info(`${TagFrmwk}: Callback: getDevices : INPUT_DEVICES_FLAG:  PASS`);
                     expect(true).assertTrue();
                 }
                 else {
-                    console.info('AudioFrameworkTest: Callback: getDevices : INPUT_DEVICES_FLAG:  FAIL');
+                    console.info(`${TagFrmwk}: Callback: getDevices : INPUT_DEVICES_FLAG:  FAIL`);
                     expect(false).assertTrue();
                 }
             }
@@ -353,23 +354,23 @@ describe('audioEventManagement', function () {
      *@tc.type      : Function
      *@tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_CB_GETDEVICES_INPUT_ENUM_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_CB_GETDEVICES_INPUT_ENUM_0100', 0, function (done) {
         audioManager.getDevices(2, (err, value) => {
-            console.info('AudioFrameworkTest: Callback: getDevices INPUT_DEVICES_FLAG');
+            console.info(`${TagFrmwk}: Callback: getDevices INPUT_DEVICES_FLAG`);
             if (err) {
-                console.error(`AudioFrameworkTest: Callback: INPUT_DEVICES_FLAG: failed to get devices ${err.message}`);
+                console.error(`${TagFrmwk}: Callback: INPUT_DEVICES_FLAG: failed to get devices ${err.message}`);
                 expect().assertFail();
             }
             else {
-                console.info('AudioFrameworkTest: Callback: getDevices INPUT_DEVICES_FLAG');
+                console.info(`${TagFrmwk}: Callback: getDevices INPUT_DEVICES_FLAG`);
                 value.forEach(displayDeviceProp);
 
                 if (deviceTypeValue != null && deviceRoleValue != null) {
-                    console.info('AudioFrameworkTest: Callback: getDevices : INPUT_DEVICES_FLAG:  PASS');
+                    console.info(`${TagFrmwk}: Callback: getDevices : INPUT_DEVICES_FLAG:  PASS`);
                     expect(true).assertTrue();
                 }
                 else {
-                    console.info('AudioFrameworkTest: Callback: getDevices : INPUT_DEVICES_FLAG:  FAIL');
+                    console.info(`${TagFrmwk}: Callback: getDevices : INPUT_DEVICES_FLAG:  FAIL`);
                     expect(false).assertTrue();
                 }
             }
@@ -385,22 +386,22 @@ describe('audioEventManagement', function () {
      *@tc.type      : Function
      *@tc.level     : Level 0
      */
-    it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_CB_GETDEVICES_ALL_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_CB_GETDEVICES_ALL_0100', 0, function (done) {
         audioManager.getDevices(audio.DeviceFlag.ALL_DEVICES_FLAG, (err, value) => {
-            console.info('AudioFrameworkTest: Callback: getDevices ALL_DEVICES_FLAG');
+            console.info(`${TagFrmwk}: Callback: getDevices ALL_DEVICES_FLAG`);
             if (err) {
-                console.error(`AudioFrameworkTest: Callback: ALL_DEVICES_FLAG: failed to get devices ${err.message}`);
+                console.error(`${TagFrmwk}: Callback: ALL_DEVICES_FLAG: failed to get devices ${err.message}`);
                 expect().assertFail();
             }
             else {
-                console.info('AudioFrameworkTest: Callback: getDevices ALL_DEVICES_FLAG');
+                console.info(`${TagFrmwk}: Callback: getDevices ALL_DEVICES_FLAG`);
                 value.forEach(displayDeviceProp);
                 if (deviceTypeValue != null && deviceRoleValue != null) {
-                    console.info('AudioFrameworkTest: Callback: getDevices : ALL_DEVICES_FLAG:  PASS');
+                    console.info(`${TagFrmwk}: Callback: getDevices : ALL_DEVICES_FLAG:  PASS`);
                     expect(true).assertTrue();
                 }
                 else {
-                    console.info('AudioFrameworkTest: Callback: getDevices : ALL_DEVICES_FLAG:  FAIL');
+                    console.info(`${TagFrmwk}: Callback: getDevices : ALL_DEVICES_FLAG:  FAIL`);
                     expect(false).assertTrue();
                 }
             }
@@ -416,22 +417,22 @@ describe('audioEventManagement', function () {
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_CB_GETDEVICES_ALL_ENUM_0100', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_CB_GETDEVICES_ALL_ENUM_0100', 2, function (done) {
         audioManager.getDevices(3, (err, value) => {
-            console.info('AudioFrameworkTest: Callback: getDevices ALL_DEVICES_FLAG');
+            console.info(`${TagFrmwk}: Callback: getDevices ALL_DEVICES_FLAG`);
             if (err) {
-                console.error(`AudioFrameworkTest: Callback: ALL_DEVICES_FLAG: failed to get devices ${err.message}`);
+                console.error(`${TagFrmwk}: Callback: ALL_DEVICES_FLAG: failed to get devices ${err.message}`);
                 expect().assertFail();
             }
             else {
-                console.info('AudioFrameworkTest: Callback: getDevices ALL_DEVICES_FLAG');
+                console.info(`${TagFrmwk}: Callback: getDevices ALL_DEVICES_FLAG`);
                 value.forEach(displayDeviceProp);
                 if (deviceTypeValue != null && deviceRoleValue != null) {
-                    console.info('AudioFrameworkTest: Callback: getDevices : ALL_DEVICES_FLAG:  PASS');
+                    console.info(`${TagFrmwk}: Callback: getDevices : ALL_DEVICES_FLAG:  PASS`);
                     expect(true).assertTrue();
                 }
                 else {
-                    console.info('AudioFrameworkTest: Callback: getDevices : ALL_DEVICES_FLAG:  FAIL');
+                    console.info(`${TagFrmwk}: Callback: getDevices : ALL_DEVICES_FLAG:  FAIL`);
                     expect(false).assertTrue();
                 }
             }
@@ -450,19 +451,19 @@ describe('audioEventManagement', function () {
     it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_SETDEVICEACTIVE_PR_DEACTIVATE_0100', 2, async function (done) {
         await audioManager.setDeviceActive(audio.ActiveDeviceType.SPEAKER, false).then(function () {
             // Setting device active ENUM 2 = SPEAKER
-            console.info('AudioFrameworkTest: Device Test: Promise : setDeviceActive : SPEAKER: Deactivate');
+            console.info(`${TagFrmwk}: Device Test: Promise : setDeviceActive : SPEAKER: Deactivate`);
             audioManager.isDeviceActive(audio.ActiveDeviceType.SPEAKER).then(function (value) {
                 if (value == false) {
-                    console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive : SPEAKER: Deactivate : PASS :' + value);
+                    console.info(`${TagFrmwk}: Device Test: Promise : isDeviceActive : SPEAKER: Deactivate : PASS : ${value}`);
                     expect(true).assertTrue();
                 }
                 else {
-                    console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive : SPEAKER: Deactivate : FAIL :' + value);
+                    console.info(`${TagFrmwk}: Device Test: Promise : isDeviceActive : SPEAKER: Deactivate : FAIL : ${value}`);
                     expect(false).assertTrue();
                 }
             });
         }).catch((err) => {
-            console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive : SPEAKER: Deactivate : FAIL : Error :' + err.message);
+            console.info(`${TagFrmwk}: Device Test: Promise : isDeviceActive : SPEAKER: Deactivate : FAIL : Error : ${err.message}`);
             expect(false).assertTrue();
         });
         done();
@@ -478,23 +479,23 @@ describe('audioEventManagement', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_SETDEVICEACTIVE_PR_DEACTIVATE_ENUM_0100', 2, async function (done) {
         await audioManager.setDeviceActive(2, true).then(function () {
-            console.info('AudioFrameworkTest: Device Test: Promise : setDeviceActive : SPEAKER: Active');
+            console.info(`${TagFrmwk}: Device Test: Promise : setDeviceActive : SPEAKER: Active`);
         });
         await audioManager.setDeviceActive(2, false).then(function () {
             // Setting device active ENUM 2 = SPEAKER
-            console.info('AudioFrameworkTest: Device Test: Promise : setDeviceActive : SPEAKER: Deactivate');
+            console.info(`${TagFrmwk}: Device Test: Promise : setDeviceActive : SPEAKER: Deactivate`);
             audioManager.isDeviceActive(2).then(function (value) {
                 if (value == false) {
-                    console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive : SPEAKER: Deactivate : PASS :' + value);
+                    console.info(`${TagFrmwk}: Device Test: Promise : isDeviceActive : SPEAKER: Deactivate : PASS : ${value}`);
                     expect(true).assertTrue();
                 }
                 else {
-                    console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive : SPEAKER: Deactivate : FAIL :' + value);
+                    console.info(`${TagFrmwk}: Device Test: Promise : isDeviceActive : SPEAKER: Deactivate : FAIL : ${value}`);
                     expect(false).assertTrue();
                 }
             });
         }).catch((err) => {
-            console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive : SPEAKER: Deactivate : FAIL : Error :' + err.message);
+            console.info(`${TagFrmwk}: Device Test: Promise : isDeviceActive : SPEAKER: Deactivate : FAIL : Error : ${err.message}`);
             expect(false).assertTrue();
         });
         done();
@@ -510,19 +511,19 @@ describe('audioEventManagement', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_SETDEVICEACTIVE_PR_ACTIVATE_0100', 2, async function (done) {
         await audioManager.setDeviceActive(audio.ActiveDeviceType.SPEAKER, true).then(function () {
-            console.info('AudioFrameworkTest: Device Test: Promise : setDeviceActive : SPEAKER: Activate');
+            console.info(`${TagFrmwk}: Device Test: Promise : setDeviceActive : SPEAKER: Activate`);
             audioManager.isDeviceActive(audio.ActiveDeviceType.SPEAKER).then(function (value) {
                 if (value == true) {
-                    console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive : SPEAKER: Activate : PASS :' + value);
+                    console.info(`${TagFrmwk}: Device Test: Promise : isDeviceActive : SPEAKER: Activate : PASS : ${value}`);
                     expect(true).assertTrue();
                 }
                 else {
-                    console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive : SPEAKER: Activate : FAIL :' + value);
+                    console.info(`${TagFrmwk}: Device Test: Promise : isDeviceActive : SPEAKER: Activate : FAIL : ${value}`);
                     expect(false).assertTrue();
                 }
             });
         }).catch((err) => {
-            console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive : SPEAKER: Activate : FAIL :Error :' + err.message);
+            console.info(`${TagFrmwk}: Device Test: Promise : isDeviceActive : SPEAKER: Activate : FAIL :Error : ${err.message}`);
             expect(false).assertTrue();
         });
         done();
@@ -538,19 +539,19 @@ describe('audioEventManagement', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_SETDEVICEACTIVE_PR_ACTIVATE_ENUM_0100', 2, async function (done) {
         await audioManager.setDeviceActive(2, true).then(function () {
-            console.info('AudioFrameworkTest: Device Test: Promise : setDeviceActive : SPEAKER: Activate');
+            console.info(`${TagFrmwk}: Device Test: Promise : setDeviceActive : SPEAKER: Activate`);
             audioManager.isDeviceActive(2).then(function (value) {
                 if (value == true) {
-                    console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive : SPEAKER: Activate : PASS :' + value);
+                    console.info(`${TagFrmwk}: Device Test: Promise : isDeviceActive : SPEAKER: Activate : PASS : ${value}`);
                     expect(true).assertTrue();
                 }
                 else {
-                    console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive : SPEAKER: Activate : FAIL :' + value);
+                    console.info(`${TagFrmwk}: Device Test: Promise : isDeviceActive : SPEAKER: Activate : FAIL : ${value}`);
                     expect(false).assertTrue();
                 }
             });
         }).catch((err) => {
-            console.info('AudioFrameworkTest: Device Test: Promise : isDeviceActive : SPEAKER: Activate : FAIL :Error :' + err.message);
+            console.info(`${TagFrmwk}: Device Test: Promise : isDeviceActive : SPEAKER: Activate : FAIL :Error : ${err.message}`);
             expect(false).assertTrue();
         });
         done();
@@ -564,25 +565,25 @@ describe('audioEventManagement', function () {
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_SETDEVICEACTIVE_CB_DEACTIVATE_0100', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_SETDEVICEACTIVE_CB_DEACTIVATE_0100', 2, function (done) {
         audioManager.setDeviceActive(audio.ActiveDeviceType.SPEAKER, false, (err) => {
             if (err) {
-                console.error(`AudioFrameworkTest: Device Test: Callback : setDeviceActive : SPEAKER: Deactivate: Error: ${err.message}`);
+                console.error(`${TagFrmwk}: Device Test: Callback : setDeviceActive : SPEAKER: Deactivate: Error: ${err.message}`);
                 expect(false).assertTrue();
             }
             else {
-                console.info('AudioFrameworkTest: Device Test: Callback : setDeviceActive : SPEAKER: Active');
+                console.info(`${TagFrmwk}: Device Test: Callback : setDeviceActive : SPEAKER: Active`);
                 audioManager.isDeviceActive(audio.ActiveDeviceType.SPEAKER, (err, value) => {
                     if (err) {
-                        console.error(`AudioFrameworkTest: Device Test: Callback : isDeviceActive : SPEAKER: Deactivate: Error: ${err.message}`);
+                        console.error(`${TagFrmwk}: Device Test: Callback : isDeviceActive : SPEAKER: Deactivate: Error: ${err.message}`);
                         expect(false).assertTrue();
                     }
                     else if (value == false) {
-                        console.info('AudioFrameworkTest: Device Test: Callback : isDeviceActive : SPEAKER: Deactivate : PASS :' + value);
+                        console.info(`${TagFrmwk}: Device Test: Callback : isDeviceActive : SPEAKER: Deactivate : PASS : ${value}`);
                         expect(true).assertTrue();
                     }
                     else {
-                        console.info('AudioFrameworkTest: Device Test: Callback : isDeviceActive : SPEAKER: Deactivate : FAIL :' + value);
+                        console.info(`${TagFrmwk}: Device Test: Callback : isDeviceActive : SPEAKER: Deactivate : FAIL : ${value}`);
                         expect(false).assertTrue();
                     }
                     done();
@@ -602,26 +603,26 @@ describe('audioEventManagement', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_SETDEVICEACTIVE_CB_DEACTIVATE_ENUM_0100', 2, async function (done) {
         await audioManager.setDeviceActive(2, true).then(function () {
-            console.info('AudioFrameworkTest: Device Test: Promise : setDeviceActive : SPEAKER : Active');
+            console.info(`${TagFrmwk}: Device Test: Promise : setDeviceActive : SPEAKER : Active`);
         });
         audioManager.setDeviceActive(2, false, (err) => {
             if (err) {
-                console.error(`AudioFrameworkTest: Device Test: Callback : setDeviceActive : SPEAKER: Deactivate: Error: ${err.message}`);
+                console.error(`${TagFrmwk}: Device Test: Callback : setDeviceActive : SPEAKER: Deactivate: Error: ${err.message}`);
                 expect(false).assertTrue();
             }
             else {
-                console.info('AudioFrameworkTest: Device Test: Callback : setDeviceActive : SPEAKER: Active');
+                console.info(`${TagFrmwk}: Device Test: Callback : setDeviceActive : SPEAKER: Active`);
                 audioManager.isDeviceActive(2, (err, value) => {
                     if (err) {
-                        console.error(`AudioFrameworkTest: Device Test: Callback : isDeviceActive : SPEAKER: Deactivate: Error: ${err.message}`);
+                        console.error(`${TagFrmwk}: Device Test: Callback : isDeviceActive : SPEAKER: Deactivate: Error: ${err.message}`);
                         expect(false).assertTrue();
                     }
                     else if (value == false) {
-                        console.info('AudioFrameworkTest: Device Test: Callback : isDeviceActive : SPEAKER: Deactivate : PASS :' + value);
+                        console.info(`${TagFrmwk}: Device Test: Callback : isDeviceActive : SPEAKER: Deactivate : PASS : ${value}`);
                         expect(true).assertTrue();
                     }
                     else {
-                        console.info('AudioFrameworkTest: Device Test: Callback : isDeviceActive : SPEAKER: Deactivate : FAIL :' + value);
+                        console.info(`${TagFrmwk}: Device Test: Callback : isDeviceActive : SPEAKER: Deactivate : FAIL : ${value}`);
                         expect(false).assertTrue();
                     }
                     done();
@@ -640,25 +641,25 @@ describe('audioEventManagement', function () {
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_SETDEVICEACTIVE_CB_ACTIVATE_0100', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_SETDEVICEACTIVE_CB_ACTIVATE_0100', 2, function (done) {
         audioManager.setDeviceActive(audio.ActiveDeviceType.SPEAKER, true, (err) => {
             if (err) {
-                console.error(`AudioFrameworkTest: Device Test: Callback : setDeviceActive : SPEAKER: Active: Error: ${err.message}`);
+                console.error(`${TagFrmwk}: Device Test: Callback : setDeviceActive : SPEAKER: Active: Error: ${err.message}`);
                 expect(false).assertTrue();
             }
             else {
-                console.info('AudioFrameworkTest: Device Test: Callback : setDeviceActive : SPEAKER: Active');
+                console.info(`${TagFrmwk}: Device Test: Callback : setDeviceActive : SPEAKER: Active`);
                 audioManager.isDeviceActive(audio.ActiveDeviceType.SPEAKER, (err, value) => {
                     if (err) {
-                        console.error(`AudioFrameworkTest: Device Test: Callback : isDeviceActive : SPEAKER: Active: Error: ${err.message}`);
+                        console.error(`${TagFrmwk}: Device Test: Callback : isDeviceActive : SPEAKER: Active: Error: ${err.message}`);
                         expect(false).assertTrue();
                     }
                     else if (value == true) {
-                        console.info('AudioFrameworkTest: Device Test: Callback : isDeviceActive : SPEAKER: Active : PASS :' + value);
+                        console.info(`${TagFrmwk}: Device Test: Callback : isDeviceActive : SPEAKER: Active : PASS : ${value}`);
                         expect(true).assertTrue();
                     }
                     else {
-                        console.info('AudioFrameworkTest: Device Test: Callback : isDeviceActive : SPEAKER: Active : FAIL :' + value);
+                        console.info(`${TagFrmwk}: Device Test: Callback : isDeviceActive : SPEAKER: Active : FAIL : ${value}`);
                         expect(false).assertTrue();
                     }
                     done();
@@ -676,25 +677,25 @@ describe('audioEventManagement', function () {
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_SETDEVICEACTIVE_CB_ACTIVATE_ENUM_0100  ', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_AUDIO_MANAGER_SETDEVICEACTIVE_CB_ACTIVATE_ENUM_0100  ', 2, function (done) {
         audioManager.setDeviceActive(2, true, (err) => {
             if (err) {
-                console.error(`AudioFrameworkTest: Device Test: Callback : setDeviceActive : SPEAKER: Active: Error: ${err.message}`);
+                console.error(`${TagFrmwk}: Device Test: Callback : setDeviceActive : SPEAKER: Active: Error: ${err.message}`);
                 expect(false).assertTrue();
             }
             else {
-                console.info('AudioFrameworkTest: Device Test: Callback : setDeviceActive : SPEAKER: Active');
+                console.info(`${TagFrmwk}: Device Test: Callback : setDeviceActive : SPEAKER: Active`);
                 audioManager.isDeviceActive(2, (err, value) => {
                     if (err) {
-                        console.error(`AudioFrameworkTest: Device Test: Callback : isDeviceActive : SPEAKER: Active: Error: ${err.message}`);
+                        console.error(`${TagFrmwk}: Device Test: Callback : isDeviceActive : SPEAKER: Active: Error: ${err.message}`);
                         expect(false).assertTrue();
                     }
                     else if (value == true) {
-                        console.info('AudioFrameworkTest: Device Test: Callback : isDeviceActive : SPEAKER: Active : PASS :' + value);
+                        console.info(`${TagFrmwk}: Device Test: Callback : isDeviceActive : SPEAKER: Active : PASS : ${value}`);
                         expect(true).assertTrue();
                     }
                     else {
-                        console.info('AudioFrameworkTest: Device Test: Callback : isDeviceActive : SPEAKER: Active : FAIL :' + value);
+                        console.info(`${TagFrmwk}: Device Test: Callback : isDeviceActive : SPEAKER: Active : FAIL : ${value}`);
                         expect(false).assertTrue();
                     }
                     done();

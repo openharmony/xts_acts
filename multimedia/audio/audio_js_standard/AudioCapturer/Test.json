@@ -17,7 +17,8 @@
         {
             "type": "ShellKit",
             "run-command": [
-                "mkdir -p /data/app/el2/100/base/ohos.acts.multimedia.audio.audiocapturer/haps/entry/files/media"
+                "mkdir -p /data/app/el2/100/base/ohos.acts.multimedia.audio.audiocapturer/haps/entry/files",
+                "chmod 777 -R /data/app/el2/100/base/ohos.acts.multimedia.audio.audiocapturer/haps/entry"
             ],
             "cleanup-apps": true
         },
@@ -38,12 +39,8 @@
                 "./resource/audio/audioManager/StarWars10s-2C-16000-3SW.wav ->/data/app/el2/100/base/ohos.acts.multimedia.audio.audiocapturer/haps/entry/files/",
                 "./resource/audio/audioManager/StarWars10s-2C-22050-2SW.wav ->/data/app/el2/100/base/ohos.acts.multimedia.audio.audiocapturer/haps/entry/files/",
                 "./resource/audio/audioManager/StarWars10s-2C-24000-3SW.wav ->/data/app/el2/100/base/ohos.acts.multimedia.audio.audiocapturer/haps/entry/files/",
-                "./resource/audio/audioManager/StarWars10s-2C-48000-4SW.wav ->/data/app/el2/100/base/ohos.acts.multimedia.audio.audiocapturer/haps/entry/files/",
-                "./resource/audio/audioManager/Believer.wav ->/data/app/el2/100/base/ohos.acts.multimedia.audio.audiocapturer/haps/entry/files/media",
-                "./resource/audio/audioManager/file_example_WAV_1MG.wav ->/data/app/el2/100/base/ohos.acts.multimedia.audio.audiocapturer/haps/entry/files/media",
-                "./resource/audio/audioManager/safe_and_sound_32.wav ->/data/app/el2/100/base/ohos.acts.multimedia.audio.audiocapturer/haps/entry/files/media",
-                "./resource/audio/audioManager/test.mp3 ->/data/app/el2/100/base/ohos.acts.multimedia.audio.audiocapturer/haps/entry/files/media",
-                "./resource/audio/audioManager/test.mp4 ->/data/app/el2/100/base/ohos.acts.multimedia.audio.audiocapturer/haps/entry/files/media"
+                "./resource/audio/audioManager/StarWars10s-2C-48000-4SW.wav ->/data/app/el2/100/base/ohos.acts.multimedia.audio.audiocapturer/haps/entry/files/"
+           
             ]
         }
     ]
