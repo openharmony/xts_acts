@@ -26,7 +26,7 @@ export default function edmPromiseTest() {
      * @tc.name test enableAdmin method in promise mode without user id
      * @tc.desc enable admin in promise mode
      */
-     it('enableAdmin_test_001', 0, async function (done) {
+    it('enableAdmin_test_001', 0, async function (done) {
         await enterpriseDeviceManager.enableAdmin(WANT1, ENTINFO1,
             enterpriseDeviceManager.AdminType.ADMIN_TYPE_NORMAL);
         console.log('enterpriseDeviceManager.enableAdmin ADMIN_TYPE_NORMAL.');
@@ -69,7 +69,6 @@ export default function edmPromiseTest() {
     })
 
     /**
-<<<<<<< HEAD
      * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_0005
      * @tc.name test enableAdmin method in promise mode without user id
      * @tc.desc enable admin in promise mode
@@ -94,8 +93,6 @@ export default function edmPromiseTest() {
     })
 
     /**
-=======
->>>>>>> 9a8445303aa68dd521e7c822b4b6c47c1cbc6cbc
      * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_0007
      * @tc.name test enableAdmin method in promise mode with default user id
      * @tc.desc enable admin in multi-user

@@ -28,7 +28,7 @@ export default function edmCallbackTest() {
     * @tc.name test enableAdmin method in callback mode without user id
     * @tc.desc enable admin in callback mode
     */
-     it('enableAdmin_test_002', 0, async function (done) {
+    it('enableAdmin_test_002', 0, async function (done) {
         await enterpriseDeviceManager.enableAdmin(WANT1, ENTINFO1,
             enterpriseDeviceManager.AdminType.ADMIN_TYPE_NORMAL, OnReceiveEvent);
         async function OnReceiveEvent(err) {
@@ -76,7 +76,6 @@ export default function edmCallbackTest() {
     })
 
     /**
-<<<<<<< HEAD
      * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_0006
      * @tc.name test enableAdmin method in callback mode without user id
      * @tc.desc enable admin in callback mode
@@ -104,8 +103,6 @@ export default function edmCallbackTest() {
     })
 
     /**
-=======
->>>>>>> 9a8445303aa68dd521e7c822b4b6c47c1cbc6cbc
      * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_0008
      * @tc.name test enableAdmin method with user id in callback mode with default user id
      * @tc.desc enable admin in multi-user
@@ -282,7 +279,6 @@ export default function edmCallbackTest() {
             await enterpriseDeviceManager.disableSuperAdmin(SELFHAPNAME);
             done();
         }
-<<<<<<< HEAD
     })
 
     /**
@@ -474,8 +470,6 @@ export default function edmCallbackTest() {
         await enterpriseDeviceManager.disableSuperAdmin(SELFHAPNAME);
         console.log('enterpriseDeviceManager.disableSuperAdmin ADMIN_TYPE_SUPER.');
         done();
-=======
->>>>>>> 9a8445303aa68dd521e7c822b4b6c47c1cbc6cbc
     })
   })
 }
