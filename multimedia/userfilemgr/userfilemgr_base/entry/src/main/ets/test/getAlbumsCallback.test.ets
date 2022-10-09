@@ -18,24 +18,21 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 
 import {
     sleep,
-    IMAGE_TYPE,
-    VIDEO_TYPE,
-    AUDIO_TYPE,
-    allFetchOp,
     albumFetchOps,
     checkPresetsAssets,
-    checkAlbumsCount,
+    checkAssetsCount,
     getPermission,
+    isNum,
 } from '../../../../../../common';
 
 
-export default function getAlbumsCallback(abilityContext) {
-    describe('getAlbumsCallback', function () {
-        const userfile_mgr = userfile_manager.getUserFileMgr(abilityContext);
+export default function getAlbumsCallbackTest(abilityContext) {
+    describe('getAlbumsCallbackTest', function () {
+        const userfilemgr = userfile_manager.getUserFileMgr(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
             await getPermission();
-            await checkPresetsAssets(userfile_mgr, 'ActsUserFileMgrAlbumJsTest');
+            await checkPresetsAssets(userfilemgr, 'ActsUserFileMgrAlbumJsTest');
         });
         beforeEach(function () {
             console.info('beforeEach case');
@@ -59,8 +56,8 @@ export default function getAlbumsCallback(abilityContext) {
         }
 
         const props = {
-            albumName: 'Static',
-            albumUri: 'datashare:///userfile_mgr/album/',
+            albumName: 'myAlbum',
+            albumUri: 'datashare:///userfilemgr/album/',
             count: 1
         }
         const checkProps = async function (done, testNum, album, relativePaths) {
@@ -73,6 +70,7 @@ export default function getAlbumsCallback(abilityContext) {
             }
             expect(album.albumName).assertEqual(props.albumName);
             expect(album.count).assertEqual(props.count);
+            expect(isNum(album.dateModified)).assertTrue();
             if (Array.isArray(relativePaths)) {
                 let i = relativePaths.indexOf(album.relativePath);
                 if (i > -1) {
@@ -85,19 +83,21 @@ export default function getAlbumsCallback(abilityContext) {
                 expect(album.relativePath).assertEqual(relativePaths);
             }
         }
-        const checkAlbumInfo = async function (done, testNum, media_type, fetchOp, relativePaths, expectAlbumCount) {
+        const checkAlbumInfo = async function (done, testNum, fetchOp, relativePaths) {
             try {
-                userfile_mgr.getAlbums(media_type, fetchOp, async (err, albumList) => {
+                userfilemgr.getPhotoAlbums(fetchOp, async (err, fetchAlbumResult) => {
                     if(err) {
-                        console.info(`${testNum}, err: ${err}`)
+                        console.info(`${testNum} getPhotoAlbums err: ${err}`)
                         expect(false).assertTrue();
                         done();
                         return;
                     }
-                    const albumCountPass = await checkAlbumsCount(done, testNum, albumList, expectAlbumCount);
+                    let expectAlbumCount = 1;
+                    const albumCountPass = await checkAssetsCount(done, testNum, fetchAlbumResult, expectAlbumCount);
                     if (!albumCountPass) return;
-                    const album = albumList[0];
+                    const album = await fetchAlbumResult.getFirstObject();
                     checkProps(done, testNum, album, relativePaths);
+                    fetchAlbumResult.close();
                     done();
                 });
             } catch (error) {
@@ -108,84 +108,18 @@ export default function getAlbumsCallback(abilityContext) {
         }
 
         /**
-         * @tc.number    : SUB_USERFILE_MGR_GETALBUMS_CALLBACK_01
-         * @tc.name      : getAlbums
-         * @tc.desc      : Image type getAlbums by relativePath && albumName, print all album info
+         * @tc.number    : SUB_USERFILE_MGR_GETPHOTOALBUMS_CALLBACK_01
+         * @tc.name      : getPhotoAlbums
+         * @tc.desc      : getPhotoAlbums by relativePath && albumName, print all album info
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_USERFILE_MGR_GETALBUMS_CALLBACK_01', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_GETALBUMS_CALLBACK_01';
-            let media_type = [IMAGE_TYPE];
-            let currentFetchOp = albumFetchOps(testNum, 'Pictures/', 'Static');
+        it('SUB_USERFILE_MGR_GETPHOTOALBUMS_CALLBACK_01', 0, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETPHOTOALBUMS_CALLBACK_01';
+            let currentFetchOp = albumFetchOps(testNum, 'Pictures/', 'myAlbum');
             let relativePaths = 'Pictures/';
-            let expectAlbumCount = 1;
-            await checkAlbumInfo(done, testNum, media_type, currentFetchOp, relativePaths, expectAlbumCount);
-        });
-
-        /**
-         * @tc.number    : SUB_USERFILE_MGR_GETALBUMS_CALLBACK_02
-         * @tc.name      : getAlbums
-         * @tc.desc      : Audio type getAlbums by relativePath && albumName, print all album info
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_USERFILE_MGR_GETALBUMS_CALLBACK_02', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_GETALBUMS_CALLBACK_02';
-            let media_type = [AUDIO_TYPE];
-            let currentFetchOp = albumFetchOps(testNum, 'Audios/', 'Static');
-            let relativePaths = 'Audios/';
-            let expectAlbumCount = 1;
-            await checkAlbumInfo(done, testNum, media_type, currentFetchOp, relativePaths, expectAlbumCount);
-        });
-
-        /**
-         * @tc.number    : SUB_USERFILE_MGR_GETALBUMS_CALLBACK_03
-         * @tc.name      : getAlbums
-         * @tc.desc      : Video type getAlbums by relativePath && albumName, print all album info
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_USERFILE_MGR_GETALBUMS_CALLBACK_03', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_GETALBUMS_CALLBACK_03';
-            let media_type = [VIDEO_TYPE];
-            let currentFetchOp = albumFetchOps(testNum, 'Videos/', 'Static');
-            let relativePaths = 'Videos/';
-            let expectAlbumCount = 1;
-            await checkAlbumInfo(done, testNum, media_type, currentFetchOp, relativePaths, expectAlbumCount);
-        });
-
-        /**
-         * @tc.number    : SUB_USERFILE_MGR_GETALBUMS_CALLBACK_04
-         * @tc.name      : getAlbums
-         * @tc.desc      : getAlbums by abnormal
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_USERFILE_MGR_GETALBUMS_CALLBACK_04', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_GETALBUMS_CALLBACK_04';
-            try {
-                let media_type = [-1];
-                let currentFetchOp = allFetchOp();
-                userfile_mgr.getAlbums(media_type, currentFetchOp, async (err, albumList) => {
-                    console.info(`${testNum}, err: ${err}`);
-                    if (err != undefined) {
-                        expect(true).assertTrue();
-                        done();
-                        return;
-                    }
-                    expect(false).assertTrue();
-                    done();
-                });
-            } catch (error) {
-                console.info(`${testNum}, error: ${error}`);
-                expect(true).assertTrue();
-                done();
-            }
+            await checkAlbumInfo(done, testNum, currentFetchOp, relativePaths);
         });
     });
 }
