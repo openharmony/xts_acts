@@ -80,52 +80,52 @@ let mVideoConfig = {
 let mPicWidthMax = 8192;
 let mPicHeightMax = 8192;
 
-let mMeterringPoint = {
+let mMETERINGPoint = {
     x: mPicWidthMax / 2,
     y: mPicHeightMax / 2,
 }
 
-let mMeterringPointLT = {
+let mMETERINGPointLT = {
     x: 0,
     y: 0,
 }
 
-let mMeterringPointRT = {
+let mMETERINGPointRT = {
     x: mPicWidthMax,
     y: 0,
 }
 
-let mMeterringPointLB = {
+let mMETERINGPointLB = {
     x: 0,
     y: mPicHeightMax,
 }
 
-let mMeterringPointRB = {
+let mMETERINGPointRB = {
     x: mPicWidthMax,
     y: mPicHeightMax,
 }
 
-let mMeterringPointInvalidLT = {
+let mMETERINGPointInvalidLT = {
     x: -1,
     y: -1,
 }
 
-let mMeterringPointInvalidRT = {
+let mMETERINGPointInvalidRT = {
     x: (mPicWidthMax + 1),
     y: -1,
 }
 
-let mMeterringPointInvalidLB = {
+let mMETERINGPointInvalidLB = {
     x: -1,
     y: mPicHeightMax,
 }
 
-let mMeterringPointInvalidRB = {
+let mMETERINGPointInvalidRB = {
     x: (mPicWidthMax + 1),
     y: (mPicHeightMax + 1),
 }
 
-let mEnableCheckInvalidMeterringPoint = false;
+let mEnableCheckInvalidMETERINGPoint = false;
 
 export default function cameraSessionExposureTest(surfaceId: any) {
 
@@ -1231,48 +1231,48 @@ export default function cameraSessionExposureTest(surfaceId: any) {
         })
 
         /**
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0100
-        * @tc.name      : Check capture session set meterring point with callback
-        * @tc.desc      : Check capture session set meterring point with callback
+        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0100
+        * @tc.name      : Check capture session set METERING point with callback
+        * @tc.desc      : Check capture session set METERING point with callback
         * @tc.size      : MEDIUM
         * @tc.type      : Function
         * @tc.level     : Level 0
         */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0100', 0, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0100--------------");
+         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0100', 0, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0100--------------");
 
             if (isEmpty(mCameraInputArray)) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0100 FAILED with NoCamera");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0100 FAILED with NoCamera");
                 expect().assertFail();
                 done();
             } else {
                 for (let i = 0; i < mCameraInputArray.length; i++) {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0100 start for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0100 start for camera[" + i + "]");
     
                     await startCameraSession(mCameraInputArray[i]);
     
-                    mCameraSession.setMeterringPoint(mMeterringPoint, async (err) => {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0100 callback");
+                    mCameraSession.setMeteringPoint(mMETERINGPoint, async (err) => {
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0100 callback");
                         if (!err) {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0100 PASSED with MeterringPoint is: " + mMeterringPoint.x + ", " + mMeterringPoint.y);
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0100 PASSED with METERINGPoint is: " + mMETERINGPoint.x + ", " + mMETERINGPoint.y);
                         } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0100 FAILED : " + err.message);
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0100 FAILED : " + err.message);
                             expect().assertFail();
                         }
                     })
                     await sleep(500);
 
-                    mCameraSession.getMeterringPoint(async (err, data) => {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0100 callback");
+                    mCameraSession.getMeteringPoint(async (err, data) => {
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0100 callback");
                         if (!err) {
-                            if ((data.x == mMeterringPoint.x) && (data.y == mMeterringPoint.y)) {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0100 PASSED with MeterringPoint is: " + data.x + ", " + data.y);
+                            if ((data.x == mMETERINGPoint.x) && (data.y == mMETERINGPoint.y)) {
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0100 PASSED with METERINGPoint is: " + data.x + ", " + data.y);
                             } else {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0100 FAILED with MeterringPoint is: " + data.x + ", " + data.y);
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0100 FAILED with METERINGPoint is: " + data.x + ", " + data.y);
                                 expect().assertFail();
                             }
                         } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0100 FAILED : " + err.message);
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0100 FAILED : " + err.message);
                             expect().assertFail();
                         }
                     })
@@ -1280,103 +1280,103 @@ export default function cameraSessionExposureTest(surfaceId: any) {
                     
                     await stopCameraSession(mCameraInputArray[i]);
     
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0100 end for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0100 end for camera[" + i + "]");
                 }
     
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0100 ends here");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0100 ends here");
                 done();
             }
         })
 
         /**
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0100
-        * @tc.name      : Check capture session set meterring point with promise
-        * @tc.desc      : Check capture session set meterring point with promise
+        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0100
+        * @tc.name      : Check capture session set METERING point with promise
+        * @tc.desc      : Check capture session set METERING point with promise
         * @tc.size      : MEDIUM
         * @tc.type      : Function
         * @tc.level     : Level 0
         */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0100', 0, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0100--------------");
+         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0100', 0, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0100--------------");
 
             if (isEmpty(mCameraInputArray)) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0100 FAILED with NoCamera");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0100 FAILED with NoCamera");
                 expect().assertFail();
                 done();
             } else {
                 for (let i = 0; i < mCameraInputArray.length; i++) {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0100 start for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0100 start for camera[" + i + "]");
     
                     await startCameraSession(mCameraInputArray[i]);
     
-                    await mCameraSession.setMeterringPoint(mMeterringPoint);
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0100 finish");
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0100 PASSED with MeterringPoint is: " + mMeterringPoint.x + ", " + mMeterringPoint.y);  
+                    await mCameraSession.setMeteringPoint(mMETERINGPoint);
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0100 finish");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0100 PASSED with METERINGPoint is: " + mMETERINGPoint.x + ", " + mMETERINGPoint.y);  
                     await sleep(500);
 
-                    let meterringPoint = await mCameraSession.getMeterringPoint();
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0100 finish");
-                    if ((meterringPoint.x == mMeterringPoint.x) && (meterringPoint.y == mMeterringPoint.y)) {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0100 PASSED with MeterringPoint is: " + meterringPoint.x + ", " + meterringPoint.y);
+                    let METERINGPoint = await mCameraSession.getMeteringPoint();
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0100 finish");
+                    if ((METERINGPoint.x == mMETERINGPoint.x) && (METERINGPoint.y == mMETERINGPoint.y)) {
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0100 PASSED with METERINGPoint is: " + METERINGPoint.x + ", " + METERINGPoint.y);
                     } else {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0100 FAILED with MeterringPoint is: " + meterringPoint.x + ", " + meterringPoint.y);
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0100 FAILED with METERINGPoint is: " + METERINGPoint.x + ", " + METERINGPoint.y);
                         expect().assertFail();
                     }
                     await sleep(500);
                     
                     await stopCameraSession(mCameraInputArray[i]);
     
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0100 end for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0100 end for camera[" + i + "]");
                 }
     
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0100 ends here");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0100 ends here");
                 done();
             }
         })
 
         /**
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0101
-        * @tc.name      : Check capture session set meterring point with callback(left-top point)
-        * @tc.desc      : Check capture session set meterring point with callback(left-top point)
+        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0101
+        * @tc.name      : Check capture session set METERING point with callback(left-top point)
+        * @tc.desc      : Check capture session set METERING point with callback(left-top point)
         * @tc.size      : MEDIUM
         * @tc.type      : Function
         * @tc.level     : Level 0
         */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0101', 0, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0101--------------");
+         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0101', 0, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0101--------------");
 
             if (isEmpty(mCameraInputArray)) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0101 FAILED with NoCamera");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0101 FAILED with NoCamera");
                 expect().assertFail();
                 done();
             } else {
                 for (let i = 0; i < mCameraInputArray.length; i++) {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0101 start for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0101 start for camera[" + i + "]");
     
                     await startCameraSession(mCameraInputArray[i]);
     
-                    mCameraSession.setMeterringPoint(mMeterringPointLT, async (err) => {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0101 callback");
+                    mCameraSession.setMeteringPoint(mMETERINGPointLT, async (err) => {
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0101 callback");
                         if (!err) {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0101 PASSED with MeterringPoint is: " + mMeterringPointLT.x + ", " + mMeterringPointLT.y);
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0101 PASSED with METERINGPoint is: " + mMETERINGPointLT.x + ", " + mMETERINGPointLT.y);
                         } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0101 FAILED : " + err.message);
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0101 FAILED : " + err.message);
                             expect().assertFail();
                         }
                     })
                     await sleep(500);
 
-                    mCameraSession.getMeterringPoint(async (err, data) => {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0101 callback");
+                    mCameraSession.getMeteringPoint(async (err, data) => {
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0101 callback");
                         if (!err) {
-                            if ((data.x == mMeterringPointLT.x) && (data.y == mMeterringPointLT.y)) {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0101 PASSED with MeterringPoint is: " + data.x + ", " + data.y);
+                            if ((data.x == mMETERINGPointLT.x) && (data.y == mMETERINGPointLT.y)) {
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0101 PASSED with METERINGPoint is: " + data.x + ", " + data.y);
                             } else {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0101 FAILED with MeterringPoint is: " + data.x + ", " + data.y);
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0101 FAILED with METERINGPoint is: " + data.x + ", " + data.y);
                                 expect().assertFail();
                             }
                         } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0101 FAILED : " + err.message);
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0101 FAILED : " + err.message);
                             expect().assertFail();
                         }
                     })
@@ -1384,103 +1384,103 @@ export default function cameraSessionExposureTest(surfaceId: any) {
                     
                     await stopCameraSession(mCameraInputArray[i]);
     
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0101 end for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0101 end for camera[" + i + "]");
                 }
     
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0101 ends here");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0101 ends here");
                 done();
             }
         })
 
         /**
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0101
-        * @tc.name      : Check capture session set meterring point with promise(left-top point)
-        * @tc.desc      : Check capture session set meterring point with promise(left-top point)
+        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0101
+        * @tc.name      : Check capture session set METERING point with promise(left-top point)
+        * @tc.desc      : Check capture session set METERING point with promise(left-top point)
         * @tc.size      : MEDIUM
         * @tc.type      : Function
         * @tc.level     : Level 0
         */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0101', 0, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0101--------------");
+         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0101', 0, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0101--------------");
 
             if (isEmpty(mCameraInputArray)) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0101 FAILED with NoCamera");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0101 FAILED with NoCamera");
                 expect().assertFail();
                 done();
             } else {
                 for (let i = 0; i < mCameraInputArray.length; i++) {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0101 start for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0101 start for camera[" + i + "]");
     
                     await startCameraSession(mCameraInputArray[i]);
     
-                    await mCameraSession.setMeterringPoint(mMeterringPointLT);
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0101 finish");
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0101 PASSED with MeterringPoint is: " + mMeterringPointLT.x + ", " + mMeterringPointLT.y);  
+                    await mCameraSession.setMeteringPoint(mMETERINGPointLT);
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0101 finish");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0101 PASSED with METERINGPoint is: " + mMETERINGPointLT.x + ", " + mMETERINGPointLT.y);  
                     await sleep(500);
 
-                    let meterringPoint = await mCameraSession.getMeterringPoint();
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0101 finish");
-                    if ((meterringPoint.x == mMeterringPointLT.x) && (meterringPoint.y == mMeterringPointLT.y)) {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0101 PASSED with MeterringPoint is: " + meterringPoint.x + ", " + meterringPoint.y);
+                    let METERINGPoint = await mCameraSession.getMeteringPoint();
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0101 finish");
+                    if ((METERINGPoint.x == mMETERINGPointLT.x) && (METERINGPoint.y == mMETERINGPointLT.y)) {
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0101 PASSED with METERINGPoint is: " + METERINGPoint.x + ", " + METERINGPoint.y);
                     } else {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0101 FAILED with MeterringPoint is: " + meterringPoint.x + ", " + meterringPoint.y);
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0101 FAILED with METERINGPoint is: " + METERINGPoint.x + ", " + METERINGPoint.y);
                         expect().assertFail();
                     }
                     await sleep(500);
                     
                     await stopCameraSession(mCameraInputArray[i]);
     
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0101 end for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0101 end for camera[" + i + "]");
                 }
     
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0101 ends here");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0101 ends here");
                 done();
             }
         })
 
         /**
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0102
-        * @tc.name      : Check capture session set meterring point with callback(right-top point)
-        * @tc.desc      : Check capture session set meterring point with callback(right-top point)
+        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0102
+        * @tc.name      : Check capture session set METERING point with callback(right-top point)
+        * @tc.desc      : Check capture session set METERING point with callback(right-top point)
         * @tc.size      : MEDIUM
         * @tc.type      : Function
         * @tc.level     : Level 0
         */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0102', 0, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0102--------------");
+         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0102', 0, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0102--------------");
 
             if (isEmpty(mCameraInputArray)) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0102 FAILED with NoCamera");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0102 FAILED with NoCamera");
                 expect().assertFail();
                 done();
             } else {
                 for (let i = 0; i < mCameraInputArray.length; i++) {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0102 start for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0102 start for camera[" + i + "]");
     
                     await startCameraSession(mCameraInputArray[i]);
     
-                    mCameraSession.setMeterringPoint(mMeterringPointRT, async (err) => {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0102 callback");
+                    mCameraSession.setMeteringPoint(mMETERINGPointRT, async (err) => {
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0102 callback");
                         if (!err) {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0102 PASSED with MeterringPoint is: " + mMeterringPointRT.x + ", " + mMeterringPointRT.y);
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0102 PASSED with METERINGPoint is: " + mMETERINGPointRT.x + ", " + mMETERINGPointRT.y);
                         } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0102 FAILED : " + err.message);
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0102 FAILED : " + err.message);
                             expect().assertFail();
                         }
                     })
                     await sleep(500);
 
-                    mCameraSession.getMeterringPoint(async (err, data) => {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0102 callback");
+                    mCameraSession.getMeteringPoint(async (err, data) => {
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0102 callback");
                         if (!err) {
-                            if ((data.x == mMeterringPointRT.x) && (data.y == mMeterringPointRT.y)) {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0102 PASSED with MeterringPoint is: " + data.x + ", " + data.y);
+                            if ((data.x == mMETERINGPointRT.x) && (data.y == mMETERINGPointRT.y)) {
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0102 PASSED with METERINGPoint is: " + data.x + ", " + data.y);
                             } else {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0102 FAILED with MeterringPoint is: " + data.x + ", " + data.y);
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0102 FAILED with METERINGPoint is: " + data.x + ", " + data.y);
                                 expect().assertFail();
                             }
                         } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0102 FAILED : " + err.message);
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0102 FAILED : " + err.message);
                             expect().assertFail();
                         }
                     })
@@ -1488,103 +1488,103 @@ export default function cameraSessionExposureTest(surfaceId: any) {
                     
                     await stopCameraSession(mCameraInputArray[i]);
     
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0102 end for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0102 end for camera[" + i + "]");
                 }
     
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0102 ends here");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0102 ends here");
                 done();
             }
         })
 
         /**
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0102
-        * @tc.name      : Check capture session set meterring point with promise(right-top point)
-        * @tc.desc      : Check capture session set meterring point with promise(right-top point)
+        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0102
+        * @tc.name      : Check capture session set METERING point with promise(right-top point)
+        * @tc.desc      : Check capture session set METERING point with promise(right-top point)
         * @tc.size      : MEDIUM
         * @tc.type      : Function
         * @tc.level     : Level 0
         */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0102', 0, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0102--------------");
+         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0102', 0, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0102--------------");
 
             if (isEmpty(mCameraInputArray)) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0102 FAILED with NoCamera");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0102 FAILED with NoCamera");
                 expect().assertFail();
                 done();
             } else {
                 for (let i = 0; i < mCameraInputArray.length; i++) {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0102 start for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0102 start for camera[" + i + "]");
     
                     await startCameraSession(mCameraInputArray[i]);
     
-                    await mCameraSession.setMeterringPoint(mMeterringPointRT);
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0102 finish");
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0102 PASSED with MeterringPoint is: " + mMeterringPointRT.x + ", " + mMeterringPointRT.y);  
+                    await mCameraSession.setMeteringPoint(mMETERINGPointRT);
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0102 finish");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0102 PASSED with METERINGPoint is: " + mMETERINGPointRT.x + ", " + mMETERINGPointRT.y);  
                     await sleep(500);
 
-                    let meterringPoint = await mCameraSession.getMeterringPoint();
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0102 finish");
-                    if ((meterringPoint.x == mMeterringPointRT.x) && (meterringPoint.y == mMeterringPointRT.y)) {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0102 PASSED with MeterringPoint is: " + meterringPoint.x + ", " + meterringPoint.y);
+                    let METERINGPoint = await mCameraSession.getMeteringPoint();
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0102 finish");
+                    if ((METERINGPoint.x == mMETERINGPointRT.x) && (METERINGPoint.y == mMETERINGPointRT.y)) {
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0102 PASSED with METERINGPoint is: " + METERINGPoint.x + ", " + METERINGPoint.y);
                     } else {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0102 FAILED with MeterringPoint is: " + meterringPoint.x + ", " + meterringPoint.y);
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0102 FAILED with METERINGPoint is: " + METERINGPoint.x + ", " + METERINGPoint.y);
                         expect().assertFail();
                     }
                     await sleep(500);
                     
                     await stopCameraSession(mCameraInputArray[i]);
     
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0102 end for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0102 end for camera[" + i + "]");
                 }
     
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0102 ends here");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0102 ends here");
                 done();
             }
         })
 
         /**
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0103
-        * @tc.name      : Check capture session set meterring point with callback(left-bottom point)
-        * @tc.desc      : Check capture session set meterring point with callback(left-bottom point)
+        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0103
+        * @tc.name      : Check capture session set METERING point with callback(left-bottom point)
+        * @tc.desc      : Check capture session set METERING point with callback(left-bottom point)
         * @tc.size      : MEDIUM
         * @tc.type      : Function
         * @tc.level     : Level 0
         */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0103', 0, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0103--------------");
+         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0103', 0, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0103--------------");
 
             if (isEmpty(mCameraInputArray)) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0103 FAILED with NoCamera");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0103 FAILED with NoCamera");
                 expect().assertFail();
                 done();
             } else {
                 for (let i = 0; i < mCameraInputArray.length; i++) {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0103 start for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0103 start for camera[" + i + "]");
     
                     await startCameraSession(mCameraInputArray[i]);
     
-                    mCameraSession.setMeterringPoint(mMeterringPointLB, async (err) => {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0103 callback");
+                    mCameraSession.setMeteringPoint(mMETERINGPointLB, async (err) => {
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0103 callback");
                         if (!err) {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0103 PASSED with MeterringPoint is: " + mMeterringPointLB.x + ", " + mMeterringPointRB.y);
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0103 PASSED with METERINGPoint is: " + mMETERINGPointLB.x + ", " + mMETERINGPointRB.y);
                         } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0103 FAILED : " + err.message);
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0103 FAILED : " + err.message);
                             expect().assertFail();
                         }
                     })
                     await sleep(500);
 
-                    mCameraSession.getMeterringPoint(async (err, data) => {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0103 callback");
+                    mCameraSession.getMeteringPoint(async (err, data) => {
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0103 callback");
                         if (!err) {
-                            if ((data.x == mMeterringPointLB.x) && (data.y == mMeterringPointLB.y)) {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0103 PASSED with MeterringPoint is: " + data.x + ", " + data.y);
+                            if ((data.x == mMETERINGPointLB.x) && (data.y == mMETERINGPointLB.y)) {
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0103 PASSED with METERINGPoint is: " + data.x + ", " + data.y);
                             } else {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0103 FAILED with MeterringPoint is: " + data.x + ", " + data.y);
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0103 FAILED with METERINGPoint is: " + data.x + ", " + data.y);
                                 expect().assertFail();
                             }
                         } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0103 FAILED : " + err.message);
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0103 FAILED : " + err.message);
                             expect().assertFail();
                         }
                     })
@@ -1592,103 +1592,103 @@ export default function cameraSessionExposureTest(surfaceId: any) {
                     
                     await stopCameraSession(mCameraInputArray[i]);
     
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0103 end for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0103 end for camera[" + i + "]");
                 }
     
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0103 ends here");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0103 ends here");
                 done();
             }
         })
 
         /**
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0103
-        * @tc.name      : Check capture session set meterring point with promise(left-bottom point)
-        * @tc.desc      : Check capture session set meterring point with promise(left-bottom point)
+        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0103
+        * @tc.name      : Check capture session set METERING point with promise(left-bottom point)
+        * @tc.desc      : Check capture session set METERING point with promise(left-bottom point)
         * @tc.size      : MEDIUM
         * @tc.type      : Function
         * @tc.level     : Level 0
         */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0103', 0, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0103--------------");
+         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0103', 0, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0103--------------");
 
             if (isEmpty(mCameraInputArray)) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0103 FAILED with NoCamera");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0103 FAILED with NoCamera");
                 expect().assertFail();
                 done();
             } else {
                 for (let i = 0; i < mCameraInputArray.length; i++) {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0103 start for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0103 start for camera[" + i + "]");
     
                     await startCameraSession(mCameraInputArray[i]);
     
-                    await mCameraSession.setMeterringPoint(mMeterringPointLB);
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0103 finish");
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0103 PASSED with MeterringPoint is: " + mMeterringPointLB.x + ", " + mMeterringPointRB.y);  
+                    await mCameraSession.setMeteringPoint(mMETERINGPointLB);
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0103 finish");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0103 PASSED with METERINGPoint is: " + mMETERINGPointLB.x + ", " + mMETERINGPointRB.y);  
                     await sleep(500);
 
-                    let meterringPoint = await mCameraSession.getMeterringPoint();
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0103 finish");
-                    if ((meterringPoint.x == mMeterringPointLB.x) && (meterringPoint.y == mMeterringPointLB.y)) {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0103 PASSED with MeterringPoint is: " + meterringPoint.x + ", " + meterringPoint.y);
+                    let METERINGPoint = await mCameraSession.getMeteringPoint();
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0103 finish");
+                    if ((METERINGPoint.x == mMETERINGPointLB.x) && (METERINGPoint.y == mMETERINGPointLB.y)) {
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0103 PASSED with METERINGPoint is: " + METERINGPoint.x + ", " + METERINGPoint.y);
                     } else {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0103 FAILED with MeterringPoint is: " + meterringPoint.x + ", " + meterringPoint.y);
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0103 FAILED with METERINGPoint is: " + METERINGPoint.x + ", " + METERINGPoint.y);
                         expect().assertFail();
                     }
                     await sleep(500);
                     
                     await stopCameraSession(mCameraInputArray[i]);
     
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0103 end for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0103 end for camera[" + i + "]");
                 }
     
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0103 ends here");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0103 ends here");
                 done();
             }
         })
 
         /**
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0104
-        * @tc.name      : Check capture session set meterring point with callback(right-bottom point)
-        * @tc.desc      : Check capture session set meterring point with callback(right-bottom point)
+        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0104
+        * @tc.name      : Check capture session set METERING point with callback(right-bottom point)
+        * @tc.desc      : Check capture session set METERING point with callback(right-bottom point)
         * @tc.size      : MEDIUM
         * @tc.type      : Function
         * @tc.level     : Level 0
         */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0104', 0, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0104--------------");
+         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0104', 0, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0104--------------");
 
             if (isEmpty(mCameraInputArray)) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0104 FAILED with NoCamera");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0104 FAILED with NoCamera");
                 expect().assertFail();
                 done();
             } else {
                 for (let i = 0; i < mCameraInputArray.length; i++) {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0104 start for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0104 start for camera[" + i + "]");
     
                     await startCameraSession(mCameraInputArray[i]);
     
-                    mCameraSession.setMeterringPoint(mMeterringPointRB, async (err) => {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0104 callback");
+                    mCameraSession.setMeteringPoint(mMETERINGPointRB, async (err) => {
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0104 callback");
                         if (!err) {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0104 PASSED with MeterringPoint is: " + mMeterringPointRB.x + ", " + mMeterringPointRB.y);
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0104 PASSED with METERINGPoint is: " + mMETERINGPointRB.x + ", " + mMETERINGPointRB.y);
                         } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0104 FAILED : " + err.message);
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0104 FAILED : " + err.message);
                             expect().assertFail();
                         }
                     })
                     await sleep(500);
 
-                    mCameraSession.getMeterringPoint(async (err, data) => {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0104 callback");
+                    mCameraSession.getMeteringPoint(async (err, data) => {
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0104 callback");
                         if (!err) {
-                            if ((data.x == mMeterringPointRB.x) && (data.y == mMeterringPointRB.y)) {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0104 PASSED with MeterringPoint is: " + data.x + ", " + data.y);
+                            if ((data.x == mMETERINGPointRB.x) && (data.y == mMETERINGPointRB.y)) {
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0104 PASSED with METERINGPoint is: " + data.x + ", " + data.y);
                             } else {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0104 FAILED with MeterringPoint is: " + data.x + ", " + data.y);
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0104 FAILED with METERINGPoint is: " + data.x + ", " + data.y);
                                 expect().assertFail();
                             }
                         } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0104 FAILED : " + err.message);
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0104 FAILED : " + err.message);
                             expect().assertFail();
                         }
                     })
@@ -1696,46 +1696,46 @@ export default function cameraSessionExposureTest(surfaceId: any) {
                     
                     await stopCameraSession(mCameraInputArray[i]);
     
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0104 end for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0104 end for camera[" + i + "]");
                 }
     
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0104 ends here");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0104 ends here");
                 done();
             }
         })
 
         /**
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0104
-        * @tc.name      : Check capture session set meterring point with promise(right-bottom point)
-        * @tc.desc      : Check capture session set meterring point with promise(right-bottom point)
+        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0104
+        * @tc.name      : Check capture session set METERING point with promise(right-bottom point)
+        * @tc.desc      : Check capture session set METERING point with promise(right-bottom point)
         * @tc.size      : MEDIUM
         * @tc.type      : Function
         * @tc.level     : Level 0
         */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0104', 0, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0104--------------");
+         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0104', 0, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0104--------------");
 
             if (isEmpty(mCameraInputArray)) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0104 FAILED with NoCamera");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0104 FAILED with NoCamera");
                 expect().assertFail();
                 done();
             } else {
                 for (let i = 0; i < mCameraInputArray.length; i++) {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0104 start for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0104 start for camera[" + i + "]");
     
                     await startCameraSession(mCameraInputArray[i]);
     
-                    await mCameraSession.setMeterringPoint(mMeterringPointRB);
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0104 finish");
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0104 PASSED with MeterringPoint is: " + mMeterringPointRB.x + ", " + mMeterringPointRB.y);  
+                    await mCameraSession.setMeteringPoint(mMETERINGPointRB);
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0104 finish");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0104 PASSED with METERINGPoint is: " + mMETERINGPointRB.x + ", " + mMETERINGPointRB.y);  
                     await sleep(500);
 
-                    let meterringPoint = await mCameraSession.getMeterringPoint();
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0104 finish");
-                    if ((meterringPoint.x == mMeterringPointRB.x) && (meterringPoint.y == mMeterringPointRB.y)) {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0104 PASSED with MeterringPoint is: " + meterringPoint.x + ", " + meterringPoint.y);
+                    let METERINGPoint = await mCameraSession.getMeteringPoint();
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0104 finish");
+                    if ((METERINGPoint.x == mMETERINGPointRB.x) && (METERINGPoint.y == mMETERINGPointRB.y)) {
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0104 PASSED with METERINGPoint is: " + METERINGPoint.x + ", " + METERINGPoint.y);
                     } else {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0104 FAILED with MeterringPoint is: " + meterringPoint.x + ", " + meterringPoint.y);
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0104 FAILED with METERINGPoint is: " + METERINGPoint.x + ", " + METERINGPoint.y);
                         expect().assertFail();
                     }
     
@@ -1743,57 +1743,57 @@ export default function cameraSessionExposureTest(surfaceId: any) {
                     
                     await stopCameraSession(mCameraInputArray[i]);
     
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0104 end for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0104 end for camera[" + i + "]");
                 }
     
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0104 ends here");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0104 ends here");
                 done();
             }
         })
 
         /**
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0105
-        * @tc.name      : Check capture session set meterring point with callback(left-top invalid point)
-        * @tc.desc      : Check capture session set meterring point with callback(left-top invalid point)
+        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0105
+        * @tc.name      : Check capture session set METERING point with callback(left-top invalid point)
+        * @tc.desc      : Check capture session set METERING point with callback(left-top invalid point)
         * @tc.size      : MEDIUM
         * @tc.type      : Function
         * @tc.level     : Level 0
         */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0105', 0, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0105--------------");
+         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0105', 0, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0105--------------");
 
             if (isEmpty(mCameraInputArray)) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0105 FAILED with NoCamera");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0105 FAILED with NoCamera");
                 expect().assertFail();
                 done();
             } else {
                 for (let i = 0; i < mCameraInputArray.length; i++) {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0105 start for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0105 start for camera[" + i + "]");
     
                     await startCameraSession(mCameraInputArray[i]);
     
-                    mCameraSession.setMeterringPoint(mMeterringPointInvalidLT, async (err) => {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0105 callback");
+                    mCameraSession.setMeteringPoint(mMETERINGPointInvalidLT, async (err) => {
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0105 callback");
                         if (!err) {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0105 PASSED with MeterringPoint is: " + mMeterringPointInvalidLT.x + ", " + mMeterringPointInvalidLT.y);
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0105 PASSED with METERINGPoint is: " + mMETERINGPointInvalidLT.x + ", " + mMETERINGPointInvalidLT.y);
                         } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0105 FAILED : " + err.message);
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0105 FAILED : " + err.message);
                             expect().assertFail();
                         }
                     })
                     await sleep(500);
 
-                    mCameraSession.getMeterringPoint(async (err, data) => {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0105 callback");
+                    mCameraSession.getMeteringPoint(async (err, data) => {
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0105 callback");
                         if (!err) {
-                            if (((data.x != mMeterringPointInvalidLT.x) && (data.y != mMeterringPointInvalidLT.y)) || (mEnableCheckInvalidMeterringPoint == false)) {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0105 PASSED with MeterringPoint is: " + data.x + ", " + data.y);
+                            if (((data.x != mMETERINGPointInvalidLT.x) && (data.y != mMETERINGPointInvalidLT.y)) || (mEnableCheckInvalidMETERINGPoint == false)) {
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0105 PASSED with METERINGPoint is: " + data.x + ", " + data.y);
                             } else {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0105 FAILED with MeterringPoint is: " + data.x + ", " + data.y);
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0105 FAILED with METERINGPoint is: " + data.x + ", " + data.y);
                                 expect().assertFail();
                             }
                         } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0105 FAILED : " + err.message);
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0105 FAILED : " + err.message);
                             expect().assertFail();
                         }
                     })
@@ -1801,103 +1801,103 @@ export default function cameraSessionExposureTest(surfaceId: any) {
                     
                     await stopCameraSession(mCameraInputArray[i]);
     
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0105 end for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0105 end for camera[" + i + "]");
                 }
     
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0105 ends here");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0105 ends here");
                 done();
             }
         })
 
         /**
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0105
-        * @tc.name      : Check capture session set meterring point with promise(left-top invalid point)
-        * @tc.desc      : Check capture session set meterring point with promise(left-top invalid point)
+        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0105
+        * @tc.name      : Check capture session set METERING point with promise(left-top invalid point)
+        * @tc.desc      : Check capture session set METERING point with promise(left-top invalid point)
         * @tc.size      : MEDIUM
         * @tc.type      : Function
         * @tc.level     : Level 0
         */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0105', 0, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0105--------------");
+         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0105', 0, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0105--------------");
 
             if (isEmpty(mCameraInputArray)) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0105 FAILED with NoCamera");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0105 FAILED with NoCamera");
                 expect().assertFail();
                 done();
             } else {
                 for (let i = 0; i < mCameraInputArray.length; i++) {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0105 start for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0105 start for camera[" + i + "]");
     
                     await startCameraSession(mCameraInputArray[i]);
     
-                    await mCameraSession.setMeterringPoint(mMeterringPointInvalidLT);
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0105 finish");
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0105 PASSED with MeterringPoint is: " + mMeterringPointInvalidLT.x + ", " + mMeterringPointInvalidLT.y);  
+                    await mCameraSession.setMeteringPoint(mMETERINGPointInvalidLT);
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0105 finish");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0105 PASSED with METERINGPoint is: " + mMETERINGPointInvalidLT.x + ", " + mMETERINGPointInvalidLT.y);  
                     await sleep(500);
 
-                    let meterringPoint = await mCameraSession.getMeterringPoint();
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0105 finish");
-                    if (((meterringPoint.x != mMeterringPointInvalidLT.x) && (meterringPoint.y != mMeterringPointInvalidLT.y)) || (mEnableCheckInvalidMeterringPoint == false)) {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0105 PASSED with MeterringPoint is: " + meterringPoint.x + ", " + meterringPoint.y);
+                    let METERINGPoint = await mCameraSession.getMeteringPoint();
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0105 finish");
+                    if (((METERINGPoint.x != mMETERINGPointInvalidLT.x) && (METERINGPoint.y != mMETERINGPointInvalidLT.y)) || (mEnableCheckInvalidMETERINGPoint == false)) {
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0105 PASSED with METERINGPoint is: " + METERINGPoint.x + ", " + METERINGPoint.y);
                     } else {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0105 FAILED with MeterringPoint is: " + meterringPoint.x + ", " + meterringPoint.y);
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0105 FAILED with METERINGPoint is: " + METERINGPoint.x + ", " + METERINGPoint.y);
                         expect().assertFail();
                     }
                     await sleep(500);
                     
                     await stopCameraSession(mCameraInputArray[i]);
     
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0105 end for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0105 end for camera[" + i + "]");
                 }
     
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0105 ends here");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0105 ends here");
                 done();
             }
         })
 
         /**
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0106
-        * @tc.name      : Check capture session set meterring point with callback(right-top invalid point)
-        * @tc.desc      : Check capture session set meterring point with callback(right-top invalid point)
+        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0106
+        * @tc.name      : Check capture session set METERING point with callback(right-top invalid point)
+        * @tc.desc      : Check capture session set METERING point with callback(right-top invalid point)
         * @tc.size      : MEDIUM
         * @tc.type      : Function
         * @tc.level     : Level 0
         */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0106', 0, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0106--------------");
+         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0106', 0, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0106--------------");
 
             if (isEmpty(mCameraInputArray)) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0106 FAILED with NoCamera");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0106 FAILED with NoCamera");
                 expect().assertFail();
                 done();
             } else {
                 for (let i = 0; i < mCameraInputArray.length; i++) {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0106 start for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0106 start for camera[" + i + "]");
     
                     await startCameraSession(mCameraInputArray[i]);
     
-                    mCameraSession.setMeterringPoint(mMeterringPointInvalidRT, async (err) => {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0106 callback");
+                    mCameraSession.setMeteringPoint(mMETERINGPointInvalidRT, async (err) => {
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0106 callback");
                         if (!err) {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0106 PASSED with MeterringPoint is: " + mMeterringPointInvalidRT.x + ", " + mMeterringPointInvalidRT.y);
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0106 PASSED with METERINGPoint is: " + mMETERINGPointInvalidRT.x + ", " + mMETERINGPointInvalidRT.y);
                         } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0106 FAILED : " + err.message);
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0106 FAILED : " + err.message);
                             expect().assertFail();
                         }
                     })
                     await sleep(500);
 
-                    mCameraSession.getMeterringPoint(async (err, data) => {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0106 callback");
+                    mCameraSession.getMeteringPoint(async (err, data) => {
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0106 callback");
                         if (!err) {
-                            if (((data.x != mMeterringPointInvalidRT.x) && (data.y != mMeterringPointInvalidRT.y)) || (mEnableCheckInvalidMeterringPoint == false)) {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0106 PASSED with MeterringPoint is: " + data.x + ", " + data.y);
+                            if (((data.x != mMETERINGPointInvalidRT.x) && (data.y != mMETERINGPointInvalidRT.y)) || (mEnableCheckInvalidMETERINGPoint == false)) {
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0106 PASSED with METERINGPoint is: " + data.x + ", " + data.y);
                             } else {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0106 FAILED with MeterringPoint is: " + data.x + ", " + data.y);
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0106 FAILED with METERINGPoint is: " + data.x + ", " + data.y);
                                 expect().assertFail();
                             }
                         } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0106 FAILED : " + err.message);
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0106 FAILED : " + err.message);
                             expect().assertFail();
                         }
                     })
@@ -1905,103 +1905,103 @@ export default function cameraSessionExposureTest(surfaceId: any) {
                     
                     await stopCameraSession(mCameraInputArray[i]);
     
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0106 end for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0106 end for camera[" + i + "]");
                 }
     
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0106 ends here");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0106 ends here");
                 done();
             }
         })
 
         /**
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0106
-        * @tc.name      : Check capture session set meterring point with promise(right-top invalid point)
-        * @tc.desc      : Check capture session set meterring point with promise(right-top invalid point)
+        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0106
+        * @tc.name      : Check capture session set METERING point with promise(right-top invalid point)
+        * @tc.desc      : Check capture session set METERING point with promise(right-top invalid point)
         * @tc.size      : MEDIUM
         * @tc.type      : Function
         * @tc.level     : Level 0
         */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0106', 0, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0106--------------");
+         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0106', 0, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0106--------------");
 
             if (isEmpty(mCameraInputArray)) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0106 FAILED with NoCamera");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0106 FAILED with NoCamera");
                 expect().assertFail();
                 done();
             } else {
                 for (let i = 0; i < mCameraInputArray.length; i++) {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0106 start for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0106 start for camera[" + i + "]");
     
                     await startCameraSession(mCameraInputArray[i]);
     
-                    await mCameraSession.setMeterringPoint(mMeterringPointInvalidRT);
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0106 finish");
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0106 PASSED with MeterringPoint is: " + mMeterringPointInvalidRT.x + ", " + mMeterringPointInvalidRT.y);  
+                    await mCameraSession.setMeteringPoint(mMETERINGPointInvalidRT);
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0106 finish");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0106 PASSED with METERINGPoint is: " + mMETERINGPointInvalidRT.x + ", " + mMETERINGPointInvalidRT.y);  
                     await sleep(500);
 
-                    let meterringPoint = await mCameraSession.getMeterringPoint();
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0106 finish");
-                    if (((meterringPoint.x != mMeterringPointInvalidRT.x) && (meterringPoint.y != mMeterringPointInvalidRT.y)) || (mEnableCheckInvalidMeterringPoint == false)) {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0106 PASSED with MeterringPoint is: " + meterringPoint.x + ", " + meterringPoint.y);
+                    let METERINGPoint = await mCameraSession.getMeteringPoint();
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0106 finish");
+                    if (((METERINGPoint.x != mMETERINGPointInvalidRT.x) && (METERINGPoint.y != mMETERINGPointInvalidRT.y)) || (mEnableCheckInvalidMETERINGPoint == false)) {
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0106 PASSED with METERINGPoint is: " + METERINGPoint.x + ", " + METERINGPoint.y);
                     } else {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0106 FAILED with MeterringPoint is: " + meterringPoint.x + ", " + meterringPoint.y);
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0106 FAILED with METERINGPoint is: " + METERINGPoint.x + ", " + METERINGPoint.y);
                         expect().assertFail();
                     }
                     await sleep(500);
                     
                     await stopCameraSession(mCameraInputArray[i]);
     
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0106 end for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0106 end for camera[" + i + "]");
                 }
     
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0106 ends here");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0106 ends here");
                 done();
             }
         })
 
         /**
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0107
-        * @tc.name      : Check capture session set meterring point with callback(left-bottom invalid point)
-        * @tc.desc      : Check capture session set meterring point with callback(left-bottom invalid point)
+        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0107
+        * @tc.name      : Check capture session set METERING point with callback(left-bottom invalid point)
+        * @tc.desc      : Check capture session set METERING point with callback(left-bottom invalid point)
         * @tc.size      : MEDIUM
         * @tc.type      : Function
         * @tc.level     : Level 0
         */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0107', 0, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0107--------------");
+         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0107', 0, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0107--------------");
 
             if (isEmpty(mCameraInputArray)) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0107 FAILED with NoCamera");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0107 FAILED with NoCamera");
                 expect().assertFail();
                 done();
             } else {
                 for (let i = 0; i < mCameraInputArray.length; i++) {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0107 start for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0107 start for camera[" + i + "]");
     
                     await startCameraSession(mCameraInputArray[i]);
     
-                    mCameraSession.setMeterringPoint(mMeterringPointInvalidLB, async (err) => {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0107 callback");
+                    mCameraSession.setMeteringPoint(mMETERINGPointInvalidLB, async (err) => {
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0107 callback");
                         if (!err) {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0107 PASSED with MeterringPoint is: " + mMeterringPointInvalidLB.x + ", " + mMeterringPointInvalidRB.y);
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0107 PASSED with METERINGPoint is: " + mMETERINGPointInvalidLB.x + ", " + mMETERINGPointInvalidRB.y);
                         } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0107 FAILED : " + err.message);
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0107 FAILED : " + err.message);
                             expect().assertFail();
                         }
                     })
                     await sleep(500);
 
-                    mCameraSession.getMeterringPoint(async (err, data) => {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0107 callback");
+                    mCameraSession.getMeteringPoint(async (err, data) => {
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0107 callback");
                         if (!err) {
-                            if (((data.x != mMeterringPointInvalidLB.x) && (data.y != mMeterringPointInvalidLB.y)) || (mEnableCheckInvalidMeterringPoint == false)) {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0107 PASSED with MeterringPoint is: " + data.x + ", " + data.y);
+                            if (((data.x != mMETERINGPointInvalidLB.x) && (data.y != mMETERINGPointInvalidLB.y)) || (mEnableCheckInvalidMETERINGPoint == false)) {
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0107 PASSED with METERINGPoint is: " + data.x + ", " + data.y);
                             } else {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0107 FAILED with MeterringPoint is: " + data.x + ", " + data.y);
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0107 FAILED with METERINGPoint is: " + data.x + ", " + data.y);
                                 expect().assertFail();
                             }
                         } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0107 FAILED : " + err.message);
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0107 FAILED : " + err.message);
                             expect().assertFail();
                         }
                     })
@@ -2009,103 +2009,103 @@ export default function cameraSessionExposureTest(surfaceId: any) {
                     
                     await stopCameraSession(mCameraInputArray[i]);
     
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0107 end for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0107 end for camera[" + i + "]");
                 }
     
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0107 ends here");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0107 ends here");
                 done();
             }
         })
 
         /**
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0107
-        * @tc.name      : Check capture session set meterring point with promise(left-bottom invalid point)
-        * @tc.desc      : Check capture session set meterring point with promise(left-bottom invalid point)
+        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0107
+        * @tc.name      : Check capture session set METERING point with promise(left-bottom invalid point)
+        * @tc.desc      : Check capture session set METERING point with promise(left-bottom invalid point)
         * @tc.size      : MEDIUM
         * @tc.type      : Function
         * @tc.level     : Level 0
         */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0107', 0, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0107--------------");
+         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0107', 0, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0107--------------");
 
             if (isEmpty(mCameraInputArray)) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0107 FAILED with NoCamera");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0107 FAILED with NoCamera");
                 expect().assertFail();
                 done();
             } else {
                 for (let i = 0; i < mCameraInputArray.length; i++) {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0107 start for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0107 start for camera[" + i + "]");
     
                     await startCameraSession(mCameraInputArray[i]);
     
-                    await mCameraSession.setMeterringPoint(mMeterringPointInvalidLB);
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0107 finish");
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0107 PASSED with MeterringPoint is: " + mMeterringPointInvalidLB.x + ", " + mMeterringPointInvalidRB.y);  
+                    await mCameraSession.setMeteringPoint(mMETERINGPointInvalidLB);
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0107 finish");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0107 PASSED with METERINGPoint is: " + mMETERINGPointInvalidLB.x + ", " + mMETERINGPointInvalidRB.y);  
                     await sleep(500);
 
-                    let meterringPoint = await mCameraSession.getMeterringPoint();
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0107 finish");
-                    if (((meterringPoint.x != mMeterringPointInvalidLB.x) && (meterringPoint.y != mMeterringPointInvalidLB.y)) || (mEnableCheckInvalidMeterringPoint == false)) {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0107 PASSED with MeterringPoint is: " + meterringPoint.x + ", " + meterringPoint.y);
+                    let METERINGPoint = await mCameraSession.getMeteringPoint();
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0107 finish");
+                    if (((METERINGPoint.x != mMETERINGPointInvalidLB.x) && (METERINGPoint.y != mMETERINGPointInvalidLB.y)) || (mEnableCheckInvalidMETERINGPoint == false)) {
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0107 PASSED with METERINGPoint is: " + METERINGPoint.x + ", " + METERINGPoint.y);
                     } else {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0107 FAILED with MeterringPoint is: " + meterringPoint.x + ", " + meterringPoint.y);
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0107 FAILED with METERINGPoint is: " + METERINGPoint.x + ", " + METERINGPoint.y);
                         expect().assertFail();
                     }
                     await sleep(500);
                     
                     await stopCameraSession(mCameraInputArray[i]);
     
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0107 end for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0107 end for camera[" + i + "]");
                 }
     
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0107 ends here");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0107 ends here");
                 done();
             }
         })
 
         /**
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0108
-        * @tc.name      : Check capture session set meterring point with callback(right-bottom invalid point)
-        * @tc.desc      : Check capture session set meterring point with callback(right-bottom invalid point)
+        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0108
+        * @tc.name      : Check capture session set METERING point with callback(right-bottom invalid point)
+        * @tc.desc      : Check capture session set METERING point with callback(right-bottom invalid point)
         * @tc.size      : MEDIUM
         * @tc.type      : Function
         * @tc.level     : Level 0
         */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0108', 0, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0108--------------");
+         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0108', 0, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0108--------------");
 
             if (isEmpty(mCameraInputArray)) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0108 FAILED with NoCamera");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0108 FAILED with NoCamera");
                 expect().assertFail();
                 done();
             } else {
                 for (let i = 0; i < mCameraInputArray.length; i++) {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0108 start for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0108 start for camera[" + i + "]");
     
                     await startCameraSession(mCameraInputArray[i]);
     
-                    mCameraSession.setMeterringPoint(mMeterringPointInvalidRB, async (err) => {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0108 callback");
+                    mCameraSession.setMeteringPoint(mMETERINGPointInvalidRB, async (err) => {
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0108 callback");
                         if (!err) {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0108 PASSED with MeterringPoint is: " + mMeterringPointInvalidRB.x + ", " + mMeterringPointInvalidRB.y);
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0108 PASSED with METERINGPoint is: " + mMETERINGPointInvalidRB.x + ", " + mMETERINGPointInvalidRB.y);
                         } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0108 FAILED : " + err.message);
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0108 FAILED : " + err.message);
                             expect().assertFail();
                         }
                     })
                     await sleep(500);
 
-                    mCameraSession.getMeterringPoint(async (err, data) => {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0108 callback");
+                    mCameraSession.getMeteringPoint(async (err, data) => {
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0108 callback");
                         if (!err) {
-                            if (((data.x != mMeterringPointInvalidRB.x) && (data.y != mMeterringPointInvalidRB.y)) || (mEnableCheckInvalidMeterringPoint == false)) {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0108 PASSED with MeterringPoint is: " + data.x + ", " + data.y);
+                            if (((data.x != mMETERINGPointInvalidRB.x) && (data.y != mMETERINGPointInvalidRB.y)) || (mEnableCheckInvalidMETERINGPoint == false)) {
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0108 PASSED with METERINGPoint is: " + data.x + ", " + data.y);
                             } else {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0108 FAILED with MeterringPoint is: " + data.x + ", " + data.y);
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0108 FAILED with METERINGPoint is: " + data.x + ", " + data.y);
                                 expect().assertFail();
                             }
                         } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0108 FAILED : " + err.message);
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0108 FAILED : " + err.message);
                             expect().assertFail();
                         }
                     })
@@ -2113,56 +2113,56 @@ export default function cameraSessionExposureTest(surfaceId: any) {
                     
                     await stopCameraSession(mCameraInputArray[i]);
     
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0108 end for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0108 end for camera[" + i + "]");
                 }
     
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_CALLBACK_0108 ends here");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_CALLBACK_0108 ends here");
                 done();
             }
         })
 
         /**
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0108
-        * @tc.name      : Check capture session set meterring point with promise(right-bottom invalid point)
-        * @tc.desc      : Check capture session set meterring point with promise(right-bottom invalid point)
+        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0108
+        * @tc.name      : Check capture session set METERING point with promise(right-bottom invalid point)
+        * @tc.desc      : Check capture session set METERING point with promise(right-bottom invalid point)
         * @tc.size      : MEDIUM
         * @tc.type      : Function
         * @tc.level     : Level 0
         */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0108', 0, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0108--------------");
+         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0108', 0, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0108--------------");
 
             if (isEmpty(mCameraInputArray)) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0108 FAILED with NoCamera");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0108 FAILED with NoCamera");
                 expect().assertFail();
                 done();
             } else {
                 for (let i = 0; i < mCameraInputArray.length; i++) {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0108 start for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0108 start for camera[" + i + "]");
     
                     await startCameraSession(mCameraInputArray[i]);
     
-                    await mCameraSession.setMeterringPoint(mMeterringPointInvalidRB);
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0108 finish");
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0108 PASSED with MeterringPoint is: " + mMeterringPointInvalidRB.x + ", " + mMeterringPointInvalidRB.y);  
+                    await mCameraSession.setMeteringPoint(mMETERINGPointInvalidRB);
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0108 finish");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0108 PASSED with METERINGPoint is: " + mMETERINGPointInvalidRB.x + ", " + mMETERINGPointInvalidRB.y);  
                     await sleep(500);
 
-                    let meterringPoint = await mCameraSession.getMeterringPoint();
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0108 finish");
-                    if (((meterringPoint.x != mMeterringPointInvalidRB.x) && (meterringPoint.y != mMeterringPointInvalidRB.y)) || (mEnableCheckInvalidMeterringPoint == false)) {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0108 PASSED with MeterringPoint is: " + meterringPoint.x + ", " + meterringPoint.y);
+                    let METERINGPoint = await mCameraSession.getMeteringPoint();
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0108 finish");
+                    if (((METERINGPoint.x != mMETERINGPointInvalidRB.x) && (METERINGPoint.y != mMETERINGPointInvalidRB.y)) || (mEnableCheckInvalidMETERINGPoint == false)) {
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0108 PASSED with METERINGPoint is: " + METERINGPoint.x + ", " + METERINGPoint.y);
                     } else {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0108 FAILED with MeterringPoint is: " + meterringPoint.x + ", " + meterringPoint.y);
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0108 FAILED with METERINGPoint is: " + METERINGPoint.x + ", " + METERINGPoint.y);
                         expect().assertFail();
                     }
                     await sleep(500);
                     
                     await stopCameraSession(mCameraInputArray[i]);
     
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0108 end for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0108 end for camera[" + i + "]");
                 }
     
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERRING_POINT_PROMISE_0108 ends here");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_METERING_POINT_PROMISE_0108 ends here");
                 done();
             }
         })
