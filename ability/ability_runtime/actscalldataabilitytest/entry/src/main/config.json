@@ -16,7 +16,6 @@
   "module": {
     "mainAbility": ".MainAbility",
     "deviceType": [
-      "default",
       "default"
     ],
     "reqPermissions": [
