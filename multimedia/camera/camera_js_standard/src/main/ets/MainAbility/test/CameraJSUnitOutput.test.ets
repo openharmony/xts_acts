@@ -156,6 +156,9 @@ export default function cameraJSUnitOutput(surfaceId: any) {
       let permissionName3 = 'ohos.permission.MEDIA_LOCATION';
       let permissionName4 = 'ohos.permission.READ_MEDIA';
       let permissionName5 = 'ohos.permission.WRITE_MEDIA';
+      let permissionName6 = 'ohos.permission.START_ABILITIES_FROM_BACKGROUND';
+      let permissionName7 = 'ohos.permission.START_INVISIBLE_ABILITY';
+      let permissionName8 = 'ohos.permission.ABILITY_BACKGROUND_COMMUNICATION';
       await atManager.grantUserGrantedPermission(tokenID, permissionName1, 1).then((result) => {
         console.info('[permission] case grantUserGrantedPermission success :' + result);
       }).catch((err) => {
@@ -177,6 +180,21 @@ export default function cameraJSUnitOutput(surfaceId: any) {
         console.info('[permission] case grantUserGrantedPermission failed :' + err);
       });
       await atManager.grantUserGrantedPermission(tokenID, permissionName5, 1).then((result) => {
+        console.info('[permission] case grantUserGrantedPermission success :' + result);
+      }).catch((err) => {
+        console.info('[permission] case grantUserGrantedPermission failed :' + err);
+      });
+      await atManager.grantUserGrantedPermission(tokenID, permissionName6, 1).then((result) => {
+        console.info('[permission] case grantUserGrantedPermission success :' + result);
+      }).catch((err) => {
+        console.info('[permission] case grantUserGrantedPermission failed :' + err);
+      });
+      await atManager.grantUserGrantedPermission(tokenID, permissionName7, 1).then((result) => {
+        console.info('[permission] case grantUserGrantedPermission success :' + result);
+      }).catch((err) => {
+        console.info('[permission] case grantUserGrantedPermission failed :' + err);
+      });
+      await atManager.grantUserGrantedPermission(tokenID, permissionName8, 1).then((result) => {
         console.info('[permission] case grantUserGrantedPermission success :' + result);
       }).catch((err) => {
         console.info('[permission] case grantUserGrantedPermission failed :' + err);
@@ -219,6 +237,7 @@ export default function cameraJSUnitOutput(surfaceId: any) {
     })
 
     afterAll(function () {
+      await closeFd();
       console.info('afterAll case');
     })
 

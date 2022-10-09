@@ -22,6 +22,7 @@ import cameraSessionZoomRatioTest from './CameraSessionZoomRatioTest.test.ets'
 import cameraSessionVideoStabilizationTest from './CameraSessionVideoStabilizationTest.test.ets'
 import cameraSessionBaseTest from './CameraSessionBaseTest.test.ets'
 import cameraInputTest from './CameraInputTest.test.ets'
+import cameraManagerTest from './CameraManagerTest.test.ets'
 
 let TAG = 'CameraModuleTest: '
 
@@ -37,4 +38,5 @@ export default function cameraKit(surfaceId: any) {
   cameraSessionZoomRatioTest(surfaceId)
   cameraSessionVideoStabilizationTest(surfaceId)
   cameraSessionBaseTest(surfaceId)
+  cameraManagerTest(surfaceId)
 }
