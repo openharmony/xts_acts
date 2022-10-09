@@ -38,7 +38,7 @@ export default function getPublicDirectoryPromiseTest(abilityContext) {
             console.info('afterAll case');
         });
 
-        const getetPublicDirectoryTest = async (done, testNum, dir, val) => {
+        const getPublicDirectoryTest = async (done, testNum, dir, val) => {
             try {
                 let res = await userfilemgr.getPublicDirectory(dir);
                 expect(res).assertEqual(val);
@@ -62,7 +62,7 @@ export default function getPublicDirectoryPromiseTest(abilityContext) {
             let testNum = 'SUB_USERFILE_MGR_GETPUBLICDIRECTORY_PROMISE_01';
             let dir = userfile_manager.DirectoryType.DIR_CAMERA;
             let val = 'Camera/';
-            await getetPublicDirectoryTest(done, testNum, dir, val)
+            await getPublicDirectoryTest(done, testNum, dir, val)
         });
 
         /**
@@ -77,7 +77,7 @@ export default function getPublicDirectoryPromiseTest(abilityContext) {
             let testNum = 'SUB_USERFILE_MGR_GETPUBLICDIRECTORY_PROMISE_02';
             let dir = userfile_manager.DirectoryType.DIR_VIDEO;
             let val = 'Videos/';
-            await getetPublicDirectoryTest(done, testNum, dir, val)
+            await getPublicDirectoryTest(done, testNum, dir, val)
         });
 
         /**
@@ -92,7 +92,7 @@ export default function getPublicDirectoryPromiseTest(abilityContext) {
             let testNum = 'SUB_USERFILE_MGR_GETPUBLICDIRECTORY_PROMISE_03';
             let dir = userfile_manager.DirectoryType.DIR_IMAGE;
             let val = 'Pictures/';
-            await getetPublicDirectoryTest(done, testNum, dir, val)
+            await getPublicDirectoryTest(done, testNum, dir, val)
         });
 
         /**
@@ -107,7 +107,7 @@ export default function getPublicDirectoryPromiseTest(abilityContext) {
             let testNum = 'SUB_USERFILE_MGR_GETPUBLICDIRECTORY_PROMISE_04';
             let dir = userfile_manager.DirectoryType.DIR_AUDIO;
             let val = 'Audios/';
-            await getetPublicDirectoryTest(done, testNum, dir, val)
+            await getPublicDirectoryTest(done, testNum, dir, val)
         });
 
         /**
@@ -122,7 +122,7 @@ export default function getPublicDirectoryPromiseTest(abilityContext) {
             let testNum = 'SUB_USERFILE_MGR_GETPUBLICDIRECTORY_PROMISE_05';
             let dir = userfile_manager.DirectoryType.DIR_DOCUMENTS;
             let val = 'Documents/';
-            await getetPublicDirectoryTest(done, testNum, dir, val)
+            await getPublicDirectoryTest(done, testNum, dir, val)
         });
 
         /**
@@ -137,7 +137,7 @@ export default function getPublicDirectoryPromiseTest(abilityContext) {
             let testNum = 'SUB_USERFILE_MGR_GETPUBLICDIRECTORY_PROMISE_06';
             let dir = userfile_manager.DirectoryType.DIR_DOWNLOAD;
             let val = 'Download/';
-            await getetPublicDirectoryTest(done, testNum, dir, val)
+            await getPublicDirectoryTest(done, testNum, dir, val)
         });
     });
 }

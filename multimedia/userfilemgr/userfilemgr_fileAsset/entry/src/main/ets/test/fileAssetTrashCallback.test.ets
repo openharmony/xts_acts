@@ -43,9 +43,11 @@ export default function fileAssetTrashCallbackTest(abilityContext) {
 
         const isTrashTest = async function (done, testNum, fetchOp, isAudio) {
             try {
-                let fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOp);
+                let fetchAssetResult;
                 if (isAudio) {
                     fetchAssetResult = await userfilemgr.getAudioAssets(fetchOp);
+                } else {
+                    fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOp);
                 }
                 let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchAssetResult, 1);
                 if (!checkAssetCountPass) return;
@@ -72,9 +74,11 @@ export default function fileAssetTrashCallbackTest(abilityContext) {
             let expectAssetNum = 3
             try {
                 // database info
-                let databaseFetchFileResult = await userfilemgr.getPhotoAssets(databasefFetchOps);
+                let databaseFetchFileResult;
                 if (isAudio) {
                     databaseFetchFileResult = await userfilemgr.getAudioAssets(databasefFetchOps);
+                } else {
+                    databaseFetchFileResult = await userfilemgr.getPhotoAssets(databasefFetchOps);
                 }
                 let count = databaseFetchFileResult.getCount();
                 //album info
@@ -109,9 +113,11 @@ export default function fileAssetTrashCallbackTest(abilityContext) {
                         expect(trashState).assertTrue();
                         try {
                             // after trash database info
-                            databaseFetchFileResult = await userfilemgr.getPhotoAssets(databasefFetchOps);
+                            let databaseFetchFileResult;
                             if (isAudio) {
                                 databaseFetchFileResult = await userfilemgr.getAudioAssets(databasefFetchOps);
+                            } else {
+                                databaseFetchFileResult = await userfilemgr.getPhotoAssets(databasefFetchOps);
                             }
                             let databaseCount = databaseFetchFileResult.getCount();
                             databaseFetchFileResult.close();
@@ -146,9 +152,11 @@ export default function fileAssetTrashCallbackTest(abilityContext) {
         async function recovery(done, testNum, databasefFetchOps, ablumFetchOps, noAlbum, isAudio) {
             let expectAssetNum = 3;
             try {
-                let databaseFetchFileResult = await userfilemgr.getPhotoAssets(databasefFetchOps);
+                let databaseFetchFileResult;
                 if (isAudio) {
                     databaseFetchFileResult = await userfilemgr.getAudioAssets(databasefFetchOps);
+                } else {
+                    databaseFetchFileResult = await userfilemgr.getPhotoAssets(databasefFetchOps);
                 }
                 let count = databaseFetchFileResult.getCount();
                 let asset = await databaseFetchFileResult.getFirstObject();
@@ -169,9 +177,11 @@ export default function fileAssetTrashCallbackTest(abilityContext) {
                         }
                         expect(trashState).assertFalse();
                         try {
-                            databaseFetchFileResult = await userfilemgr.getPhotoAssets(databasefFetchOps);
+                            let databaseFetchFileResult;
                             if (isAudio) {
                                 databaseFetchFileResult = await userfilemgr.getAudioAssets(databasefFetchOps);
+                            } else {
+                                databaseFetchFileResult = await userfilemgr.getPhotoAssets(databasefFetchOps);
                             }
                             let databaseCount = databaseFetchFileResult.getCount();
                             databaseFetchFileResult.close();

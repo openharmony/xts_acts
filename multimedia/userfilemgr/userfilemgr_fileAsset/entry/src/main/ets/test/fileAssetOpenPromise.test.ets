@@ -51,9 +51,11 @@ export default function fileAssetOpenPromiseTest(abilityContext) {
             let asset;
             let fd;
             try {
-                let fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOp);
+                let fetchAssetResult;
                 if (isAudio) {
                     fetchAssetResult = await userfilemgr.getAudioAssets(fetchOp);
+                } else {
+                    fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOp);
                 }
                 let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchAssetResult, expectCount);
                 if (!checkAssetCountPass) return;
@@ -85,9 +87,11 @@ export default function fileAssetOpenPromiseTest(abilityContext) {
             let asset, asset1;
             let fd, fd1;
             try {
-                let fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOp);
+                let fetchAssetResult;
                 if (isAudio) {
                     fetchAssetResult = await userfilemgr.getAudioAssets(fetchOp);
+                } else {
+                    fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOp);
                 }
                 let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchAssetResult, expectCount);
                 if (!checkAssetCountPass) return;
@@ -126,9 +130,11 @@ export default function fileAssetOpenPromiseTest(abilityContext) {
             let asset, asset1;
             let fd, fd1;
             try {
-                let fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOp);
+                let fetchAssetResult;
                 if (isAudio) {
                     fetchAssetResult = await userfilemgr.getAudioAssets(fetchOp);
+                } else {
+                    fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOp);
                 }
                 let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchAssetResult, expectCount);
                 if (!checkAssetCountPass) return;
@@ -164,9 +170,11 @@ export default function fileAssetOpenPromiseTest(abilityContext) {
             let asset;
             let fd;
             try {
-                let fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOp);
+                let fetchAssetResult;
                 if (isAudio) {
                     fetchAssetResult = await userfilemgr.getAudioAssets(fetchOp);
+                } else {
+                    fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOp);
                 }
                 let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchAssetResult, 1);
                 if (!checkAssetCountPass) return;

@@ -43,9 +43,11 @@ export default function fileAssetIsDirectoryPromiseTest(abilityContext) {
 
         const isDirectoryTest = async function (done, testNum, fetchOp, isAudio) {
             try {
-                let fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOp);
+                let fetchAssetResult;
                 if (isAudio) {
                     fetchAssetResult = await userfilemgr.getAudioAssets(fetchOp);
+                } else {
+                    fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOp);
                 }
                 const asset = await fetchAssetResult.getFirstObject();
                 fetchAssetResult.close();

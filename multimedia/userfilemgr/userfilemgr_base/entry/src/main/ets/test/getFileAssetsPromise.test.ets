@@ -49,24 +49,25 @@ export default function getFileAssetsPromiseTest(abilityContext) {
         const props = {
             image: {
                 displayName: '01.jpg',
-                mediaType: IMAGE_TYPE.toString(),
+                fileType: IMAGE_TYPE.toString(),
             },
             video: {
                 displayName: '01.mp4',
-                relativePath: 'Videos/Static/',
-                mediaType: VIDEO_TYPE.toString(),
+                fileType: VIDEO_TYPE.toString(),
             },
             audio: {
                 displayName: '01.mp3',
-                mediaType: AUDIO_TYPE.toString(),
+                fileType: AUDIO_TYPE.toString(),
             },
         }
 
-        async function getFirstObjectTest(done, testNum, fetchOps, isAudio) {
+        async function getFirstObjectTest(done, testNum, fetchOp, isAudio) {
             try {
-                let fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOps);
+                let fetchAssetResult;
                 if (isAudio) {
-                    fetchAssetResult = await userfilemgr.getAudioAssets(fetchOps);
+                    fetchAssetResult = await userfilemgr.getAudioAssets(fetchOp);
+                } else {
+                    fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOp);
                 }
                 let expectCount = 4;
                 let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchAssetResult, expectCount);
@@ -82,11 +83,13 @@ export default function getFileAssetsPromiseTest(abilityContext) {
             }
         }
 
-        async function getLastObjectTest(done, testNum, fetchOps, isAudio) {
+        async function getLastObjectTest(done, testNum, fetchOp, isAudio) {
             try {
-                let fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOps);
+                let fetchAssetResult;
                 if (isAudio) {
-                    fetchAssetResult = await userfilemgr.getAudioAssets(fetchOps);
+                    fetchAssetResult = await userfilemgr.getAudioAssets(fetchOp);
+                } else {
+                    fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOp);
                 }
                 let expectCount = 4;
                 let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchAssetResult, expectCount);
@@ -102,11 +105,13 @@ export default function getFileAssetsPromiseTest(abilityContext) {
             }
         }
 
-        async function getPositionObjectTest(done, testNum, fetchOps, pos, isAudio) {
+        async function getPositionObjectTest(done, testNum, fetchOp, pos, isAudio) {
             try {
-                let fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOps);
+                let fetchAssetResult;
                 if (isAudio) {
-                    fetchAssetResult = await userfilemgr.getAudioAssets(fetchOps);
+                    fetchAssetResult = await userfilemgr.getAudioAssets(fetchOp);
+                } else {
+                    fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOp);
                 }
                 let expectCount = 4;
                 let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchAssetResult, expectCount);
@@ -122,11 +127,13 @@ export default function getFileAssetsPromiseTest(abilityContext) {
             }
         }
 
-        async function isAfterLastTest(done, testNum, fetchOps, isAudio) {
+        async function isAfterLastTest(done, testNum, fetchOp, isAudio) {
             try {
-                let fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOps);
+                let fetchAssetResult;
                 if (isAudio) {
-                    fetchAssetResult = await userfilemgr.getAudioAssets(fetchOps);
+                    fetchAssetResult = await userfilemgr.getAudioAssets(fetchOp);
+                } else {
+                    fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOp);
                 }
                 let expectCount = 4;
                 let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchAssetResult, expectCount);
@@ -148,11 +155,13 @@ export default function getFileAssetsPromiseTest(abilityContext) {
             }
         }
 
-        async function checkFileAssetAttr(done, testNum, fetchOps, type, isAudio) {
+        async function checkFileAssetAttr(done, testNum, fetchOp, type, isAudio) {
             try {
-                let fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOps);
+                let fetchAssetResult;
                 if (isAudio) {
-                    fetchAssetResult = await userfilemgr.getAudioAssets(fetchOps);
+                    fetchAssetResult = await userfilemgr.getAudioAssets(fetchOp);
+                } else {
+                    fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOp);
                 }
                 let expectCount = 4;
                 let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchAssetResult, expectCount);
@@ -166,7 +175,8 @@ export default function getFileAssetsPromiseTest(abilityContext) {
                         return;
                     }
                     expect(asset.displayName).assertEqual(props[type].displayName);
-                    expect(asset.mediaType.toString()).assertEqual(props[type].mediaType);
+                    expect(asset.fileType.toString()).assertEqual(props[type].fileType);
+                    expect(asset.uri != undefined).assertTrue();
                     fetchAssetResult.close();
                     done();
                 });

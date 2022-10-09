@@ -49,9 +49,11 @@ export default function fileAssetCommitModifyCallbackTest(abilityContext) {
 
         const checkCommitModify = async function (done, testNum, fetchOp, prop, val, isAudio) {
             try {
-                let fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOp);
+                let fetchAssetResult;
                 if (isAudio) {
                     fetchAssetResult = await userfilemgr.getAudioAssets(fetchOp);
+                } else {
+                    fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOp);
                 }
                 let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchAssetResult, 1);
                 if (!checkAssetCountPass) return;

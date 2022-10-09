@@ -43,11 +43,13 @@ export default function fileAssetGetThumbnailCallbackTest(abilityContext) {
             console.info('afterAll case');
         });
 
-        async function testGetThumbnail(done, testNum, dOp, size, isAudio) {
+        async function testGetThumbnail(done, testNum, fetchOp, size, isAudio) {
             try {
-                let fetchAssetResult = await userfilemgr.getPhotoAssets(dOp);
+                let fetchAssetResult;
                 if (isAudio) {
-                    fetchAssetResult = await userfilemgr.getAudioAssets(dOp);
+                    fetchAssetResult = await userfilemgr.getAudioAssets(fetchOp);
+                } else {
+                    fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOp);
                 }
                 let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchAssetResult, 1);
                 if (!checkAssetCountPass) return;
