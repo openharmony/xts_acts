@@ -226,7 +226,7 @@ export default function ImageP3() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_SETCOLORSPACE_PROMISE_0200", 0, async function (done) {
+        it("SUB_GRAPHIC_IMAGE_SETCOLORSPACE_PROMISE_0200", 1, async function (done) {
             let imageSource = image.createImageSource(testImg.buffer);
             setColorPromise(
                 done,
@@ -247,7 +247,7 @@ export default function ImageP3() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_SETCOLORSPACE_PROMISE_0300", 0, async function (done) {
+        it("SUB_GRAPHIC_IMAGE_SETCOLORSPACE_PROMISE_0300", 1, async function (done) {
             await getFd("colorspace.jpg");
             let imageSource = image.createImageSource(fdNumber);
             setColorPromise(
@@ -269,7 +269,7 @@ export default function ImageP3() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_SETCOLORSPACE_PROMISE_0400", 0, async function (done) {
+        it("SUB_GRAPHIC_IMAGE_SETCOLORSPACE_PROMISE_0400", 1, async function (done) {
             await getFd("DisplayP3.png");
             let imageSource = image.createImageSource(fdNumber);
             setColorPromise(
@@ -312,7 +312,7 @@ export default function ImageP3() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_SETCOLORSPACE_CALLBACK_0200", 0, async function (done) {
+        it("SUB_GRAPHIC_IMAGE_SETCOLORSPACE_CALLBACK_0200", 1, async function (done) {
             let imageSource = image.createImageSource(testP3.buffer);
             setColorCallBack(
                 done,
@@ -333,7 +333,7 @@ export default function ImageP3() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_SETCOLORSPACE_CALLBACK_0300", 0, async function (done) {
+        it("SUB_GRAPHIC_IMAGE_SETCOLORSPACE_CALLBACK_0300", 1, async function (done) {
             await getFd("DisplayP3.png");
             let imageSource = image.createImageSource(fdNumber);
             setColorCallBack(
@@ -355,7 +355,7 @@ export default function ImageP3() {
          * @tc.type      : Functional
          * @tc.level     : Level 1
          */
-        it("SUB_GRAPHIC_IMAGE_SETCOLORSPACE_CALLBACK_0400", 0, async function (done) {
+        it("SUB_GRAPHIC_IMAGE_SETCOLORSPACE_CALLBACK_0400", 1, async function (done) {
             await getFd("colorspace.jpg");
             let imageSource = image.createImageSource(fdNumber);
             setColorCallBack(
