@@ -1,5 +1,4 @@
-/*
- * Copyright (C) 2022 Huawei Device Co., Ltd.
+/* Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -23,19 +22,19 @@
 namespace OHOS {
 using namespace std;
 
-static vector<std::string> filenames;
-std::vector<std::string> runtest::GetFileNames(std::string path)
+static vector<std::string> g_filenames;
+std::vector<std::string> Runtest::GetFileNames(std::string path)
 {
     vector<string> tempName;
     GetTestNames(path, tempName);
     for (size_t i = 0; i < tempName.size(); i++) {
-        if ((tempName[i].find("stat", path.length()-1) != -1) ||
-            (tempName[i].find("sem_close-unmap", path.length()-1) != -1) ||
-            (tempName[i].find("runtest", path.length()-1) != -1)) {
+        if ((tempName[i].find("stat", path.length() - 1) != -1) ||
+            (tempName[i].find("sem_close-unmap", path.length() - 1) != -1) ||
+            (tempName[i].find("runtest", path.length() - 1) != -1)) {
             continue;
         }
-        filenames.push_back(tempName[i]);
+        g_filenames.push_back(tempName[i]);
     }
-    return filenames;
+    return g_filenames;
 }
 } // namespace OHOS

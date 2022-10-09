@@ -109,6 +109,36 @@ describe('BufferTest', function () {
   });
 
   /**
+   * @tc.name: testAlloc0017
+   * @tc.desc: Allocates a new Buffer for a fixed size bytes. If fill is undefined, the Buffer will be zero-filled.
+   * For example: buffer.alloc(10, string, encode);
+   * @tc.author: lengchangjing
+   */
+   it("testAlloc0017", 0, function () {
+    let encodeArr = ['utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary',
+                     'utf16le', 'utf-16le', 'base64', 'base64url', 'hex'];
+    for (const encode of encodeArr) {
+      let buf = buffer.alloc(10, "ab$#", encode);
+      expect(buf.length).assertEqual(10);
+    }
+  });
+
+  /**
+   * @tc.name: testAlloc0018
+   * @tc.desc: Allocates a new Buffer for a fixed size bytes. If fill is undefined, the Buffer will be zero-filled.
+   * For example: buffer.alloc(0).fill(string, encode);
+   * @tc.author: lengchangjing
+   */
+   it("testAlloc0018", 0, function () {
+    let encodeArr = ['utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary',
+                     'utf16le', 'utf-16le', 'base64', 'base64url', 'hex'];
+    for (const encode of encodeArr) {
+      let buf = buffer.alloc(0, "ab$#", encode);
+      expect(buf.length).assertEqual(0);
+    }
+  });
+
+  /**
    * @tc.name: testAlloc0019
    * @tc.desc: Allocates a new Buffer for a fixed size bytes. If fill is undefined, the Buffer will be zero-filled.
    * For example: buffer.alloc(5.5);
@@ -1017,6 +1047,22 @@ describe('BufferTest', function () {
   });
 
   /**
+   * @tc.name: testIndexOf0177
+   * @tc.desc: Returns true if value was found in buf, false otherwise.
+   * For example: let buf = buffer.from("13236"); buf.indexOf("a", 0, "utf8");
+   * @tc.author: lengchangjing
+   */
+   it("testIndexOf0177", 0, function () {
+    let encodeArr = ['utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary',
+                      'utf16le', 'utf-16le', 'base64', 'base64url', 'hex'];
+    let buf = buffer.from("13236");
+    for (const encode of encodeArr) {
+      let index = buf.indexOf("ab", 0, encode);
+      expect(index).assertEqual(-1);
+    }
+  });
+
+  /**
    * @tc.name: testLastIndexOf0180
    * @tc.desc: The index of the last occurrence of value in buf.
    * For example: let buf1 = buffer.from("13236"); buf1.lastIndexOf("3");
@@ -1074,6 +1120,22 @@ describe('BufferTest', function () {
     let buf1 = buffer.from("13236");
     let index = buf1.lastIndexOf("a");
     expect(index).assertEqual(-1);
+  });
+
+  /**
+   * @tc.name: testLastIndexOf0187
+   * @tc.desc: Returns true if value was found in buf, false otherwise.
+   * For example: let buf = buffer.from("13236"); buf.lastIndexOf("a", 0, "utf8");
+   * @tc.author: lengchangjing
+   */
+  it("testLastIndexOf0187", 0, function () {
+    let encodeArr = ['utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary',
+                      'utf16le', 'utf-16le', 'base64', 'base64url', 'hex'];
+    let buf = buffer.from("13236");
+    for (const encode of encodeArr) {
+      let index = buf.lastIndexOf("ab", 0, encode);
+      expect(index).assertEqual(-1);
+    }
   });
 
   /**
@@ -1150,6 +1212,22 @@ describe('BufferTest', function () {
     expect(flag).assertEqual(false);
   });
 
+  /**
+   * @tc.name: testIncludes0197
+   * @tc.desc: Returns true if value was found in buf, false otherwise.
+   * For example: let buf1 = buffer.from("13236"); buf1.includes("abc", 0, "utf8");
+   * @tc.author: lengchangjing
+   */
+  it("testIncludes0197", 0, function () {
+    let encodeArr = ['utf8', 'utf-8', 'ucs2', 'ucs-2', 'ascii', 'latin1', 'binary',
+                     'utf16le', 'utf-16le', 'base64', 'base64url', 'hex'];
+    for (const encode of encodeArr) {
+      let buf = buffer.from("13236");
+      let flag = buf.includes("abc", 0, encode);
+      expect(flag).assertEqual(false);
+    }
+  });
+ 
   /**
    * @tc.name: testSwap160200
    * @tc.desc: Interprets buf as an array of unsigned 16-bit integers and swaps the byte order in-place.
@@ -1421,20 +1499,36 @@ describe('BufferTest', function () {
     str = buf3.toString("base64");
     expect(str).assertEqual("F1FG");
 
-    let buf4 = buffer.from("F1FG刘", "binary")
-    str = buf4.toString("binary");
+    let buf4 = buffer.from("F1FG刘", "base64url")
+    str = buf4.toString("base64url");
+    expect(str).assertEqual("F1FG");
+
+    let buf5 = buffer.from("F1FG刘", "binary")
+    str = buf5.toString("binary");
     expect(str).assertEqual("F1FGå");
 
-    let buf5 = buffer.from("F1FG刘", "latin1")
-    str = buf5.toString("latin1");
+    let buf6 = buffer.from("F1FG刘", "latin1")
+    str = buf6.toString("latin1");
     expect(str).assertEqual("F1FGe");
 
-    let buf6 = buffer.from("F1FG刘", "ucs2")
-    str = buf6.toString("ucs2");
+    let buf7 = buffer.from("F1FG刘", "ucs2")
+    str = buf7.toString("ucs2");
     expect(str).assertEqual("F1FG刘");
 
-    let buf7 = buffer.from("F1FG刘", "utf-8")
-    str = buf7.toString("utf-8");
+    let buf8 = buffer.from("F1FG刘", "utf16le")
+    str = buf8.toString("utf16le");
+    expect(str).assertEqual("F1FG刘");
+
+    let buf9 = buffer.from("F1FG刘", "ucs2")
+    str = buf9.toString("ucs2");
+    expect(str).assertEqual("F1FG刘");
+
+    let buf10 = buffer.from("F1FG刘", "utf-8")
+    str = buf10.toString("utf-8");
+    expect(str).assertEqual("F1FG刘");
+
+    let buf11 = buffer.from("F1FG刘", "utf8")
+    str = buf11.toString("utf8");
     expect(str).assertEqual("F1FG刘");
   });
 
@@ -3223,10 +3317,54 @@ describe('BufferTest', function () {
    * @tc.desc: Returns the number of bytes in buf.
    * @tc.author: liuganlin
    */
-  it("testBufferLength0751", 0, function () {
+  it("testBufferLength0752", 0, function () {
     let buf = buffer.from("测试特殊字符$#@!");
     let len = buf.length;
     expect(len).assertEqual(22);
+  });
+  
+  /**
+   * @tc.name: testBufferByteOffset0755
+   * @tc.desc: Returns the offset of bytes in buf.
+   * @tc.author: lengchangjing
+   */
+  it("testBufferByteOffset0755", 0, function () {
+    let buf = buffer.from("1236");
+    let offset = buf.byteOffset;
+    expect(offset >= 0).assertTrue();
+  });
+
+  /**
+   * @tc.name: testBufferByteOffset0756
+   * @tc.desc: Returns the offset of bytes in buf.
+   * @tc.author: lengchangjing
+   */
+  it("testBufferByteOffset0756", 0, function () {
+    let buf = buffer.alloc(10);
+    let offset = buf.byteOffset;
+    expect(offset >= 0).assertTrue();
+  });
+
+  /**
+   * @tc.name: testBufferByteOffset0757
+   * @tc.desc: Returns the offset of bytes in buf.
+   * @tc.author: lengchangjing
+   */
+  it("testBufferByteOffset0757", 0, function () {
+    let buf = buffer.allocUninitializedFromPool(10);
+    let offset = buf.byteOffset;
+    expect(offset >= 0).assertTrue();
+  });
+  
+  /**
+   * @tc.name: testBufferByteOffset0758
+   * @tc.desc: Returns the offset of bytes in buf.
+   * @tc.author: lengchangjing
+   */
+  it("testBufferByteOffset0758", 0, function () {
+    let buf = buffer.allocUninitialized(10);
+    let offset = buf.byteOffset;
+    expect(offset >= 0).assertTrue();
   });
 
   /**

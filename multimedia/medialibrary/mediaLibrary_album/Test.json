@@ -47,13 +47,13 @@
                 "hilog -p off",
                 "hilog -b I",
                 "hilog -b D -D 0xD002B70", 
-                "scanner_demo",
+                "scanner",
                 "sleep 10"
             ]
         },
         {
             "test-file-name": [
-                "ActsMediaLibraryAlbum.hap"
+                "ActsMediaLibraryAlbumTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

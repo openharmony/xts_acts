@@ -1,0 +1,32 @@
+{
+  "string": [
+    {
+      "name": "entry_desc",
+      "value": "description"
+    },
+    {
+      "name": "MainAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "MainAbility_label",
+      "value": "label"
+    },
+    {
+      "name": "app_name",
+      "value": "actsserviceabilityarelyhap"
+    },
+    {
+      "name": "description_application",
+      "value": "demo for test"
+    },
+    {
+    "name": "service_ServiceAbility_desc",
+    "value": "service_description"
+    },
+    {
+    "name": "service_ServiceAbility_label",
+    "value": "service_label"
+    }
+  ]
+}

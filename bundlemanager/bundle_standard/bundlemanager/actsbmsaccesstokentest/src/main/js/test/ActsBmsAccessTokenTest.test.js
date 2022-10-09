@@ -91,8 +91,8 @@ describe('ActsBmsAccessTokenTest', function () {
                 expect(bundleInfo.reqPermissions[0]).assertEqual("ohos.permission.ALPHA");
                 expect(bundleInfo.reqPermissions[1]).assertEqual("ohos.permission.KEEP_BACKGROUND_RUNNING");
                 expect(bundleInfo.reqPermissions[2]).assertEqual("ohos.permission.LOCATION_IN_BACKGROUND");
-                expect(bundleInfo.reqPermissions[3]).assertEqual("ohos.permission.SYSTEM_FLOAT_WINDOW");
-                expect(bundleInfo.reqPermissions[4]).assertEqual("ohos.permission.USE_BLUETOOTH");
+                expect(bundleInfo.reqPermissions[3]).assertEqual("ohos.permission.USE_BLUETOOTH");
+                expect(bundleInfo.reqPermissions[4]).assertEqual("ohos.permission.VIBRATE");
                 expect(bundleInfo.reqPermissionStates.length).assertEqual(5);
                 expect(bundleInfo.reqPermissionStates[0]).assertEqual(bundle.GrantStatus.PERMISSION_DENIED);
                 expect(bundleInfo.reqPermissionStates[1]).assertEqual(bundle.GrantStatus.PERMISSION_GRANTED);
@@ -120,8 +120,8 @@ describe('ActsBmsAccessTokenTest', function () {
                 expect(bundleInfo.reqPermissions[1]).assertEqual("ohos.permission.BETA");
                 expect(bundleInfo.reqPermissions[2]).assertEqual("ohos.permission.KEEP_BACKGROUND_RUNNING");
                 expect(bundleInfo.reqPermissions[3]).assertEqual("ohos.permission.LOCATION_IN_BACKGROUND");
-                expect(bundleInfo.reqPermissions[4]).assertEqual("ohos.permission.SYSTEM_FLOAT_WINDOW");
-                expect(bundleInfo.reqPermissions[5]).assertEqual("ohos.permission.USE_BLUETOOTH");
+                expect(bundleInfo.reqPermissions[4]).assertEqual("ohos.permission.USE_BLUETOOTH");
+                expect(bundleInfo.reqPermissions[5]).assertEqual("ohos.permission.VIBRATE");
                 expect(bundleInfo.reqPermissionStates.length).assertEqual(6);
                 expect(bundleInfo.reqPermissionStates[0]).assertEqual(bundle.GrantStatus.PERMISSION_DENIED);
                 expect(bundleInfo.reqPermissionStates[1]).assertEqual(bundle.GrantStatus.PERMISSION_DENIED);

@@ -20,32 +20,37 @@ import argparse
 import tarfile
 import shutil
 
-copyFileCounts = 0
+copy_file_counts = 0
 
-def copyFiles(sourceDir, targetDir):
-    global copyFileCounts
-    for f in os.listdir(sourceDir):
-        sourceF = os.path.join(sourceDir, f)
-        targetF = os.path.join(targetDir, f)
-        if not os.path.isfile(sourceF):
-            if os.path.isdir(sourceF):
-                copyFiles(sourceF, targetF)
-        elif os.path.isfile(sourceF):
-            if os.path.exists(targetDir):
-                copyFileCounts += 1
-                open(targetF, "wb").write(open(sourceF, "rb").read())
-            elif not os.path.exists(targetDir):
-                os.makedirs(targetDir)
-                copyFileCounts += 1
-                open(targetF, "wb").write(open(sourceF, "rb").read())
+
+def copy_files(sourcedir, targetdir):
+    global copy_file_counts
+    for f in os.listdir(sourcedir):
+        source_f = os.path.join(sourcedir, f)
+        target_f = os.path.join(targetdir, f)
+        if not os.path.isfile(source_f):
+            if os.path.isdir(source_f):
+                copy_files(source_f, target_f)
+            continue
+        if os.path.exists(targetdir):
+            copy_file_counts += 1
+            with open(target_f, "wb") as fp: 
+                fp.write(open(source_f, "rb").read())
+        elif not os.path.exists(targetdir):
+            os.makedirs(targetdir)
+            copy_file_counts += 1
+            with open(target_f, "wb") as fp: 
+                fp.write(open(source_f, "rb").read())
+
 
 def make_targz_one_by_one(output_filename, source_dir):
-    tar = tarfile.open(output_filename,"w")
-    for root,dir,files in os.walk(source_dir):
-      for file in files:
-          pathfile = os.path.join(root, file)
-          tar.add(pathfile)
+    tar = tarfile.open(output_filename, "w")
+    for root, dirs, files in os.walk(source_dir):
+        for file in files:
+            pathfile = os.path.join(root, file)
+            tar.add(pathfile)
     tar.close()
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='manual to this script')
@@ -57,7 +62,7 @@ if __name__ == "__main__":
     print(args.output_path)
     print(args.temp_path)
 
-    copyFiles(args.input_path, args.temp_path)
+    copy_files(args.input_path, args.temp_path)
     make_targz_one_by_one(args.output_path, args.temp_path)
 
-    shutil.rmtree(args.temp_path) #delete middle files
+    shutil.rmtree(args.temp_path) # delete middle files

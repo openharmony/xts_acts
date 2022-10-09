@@ -51,8 +51,12 @@ export default struct RectNe {
         .textOverflow({ overflow: TextOverflow.None })
         .key("neText")
 
-      Rect({ width: '90%', height: 50 }).radiusHeight(20).radiusWidth(20)
+      Rect({ width: '90%', height: "50px" }).radiusHeight(20).radiusWidth(20)
       .key("Rect")
+
+      Image($rawfile('test.png'))
+        .mask(new Rect({ width: '150px', height: '150px' }).fill(Color.Gray))
+        .width('500px').height('280px')
 
     }.width("100%").height("100%")
   }

@@ -72,7 +72,7 @@ struct GridItemOnSelect {
                     }
                   }
                   let backEvent = {
-                    eventId: 10200,
+                    eventId: 60207,
                     priority: events_emitter.EventPriority.LOW
                   }
                   console.info("onSelect start to emit action state")

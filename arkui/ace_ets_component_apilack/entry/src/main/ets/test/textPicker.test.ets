@@ -197,5 +197,22 @@ export default function textPickerDefaultPickerItemHeightJsunit() {
       console.info("[testtextPickerDefaultPickerItemHeight0010] textAlign value :" + obj.$attrs.textAlign);
       done();
     });
+
+    /*
+     * @tc.number       SUB_ACE_BASIC_ETS_API_0011
+     * @tc.name         testtextPickerDefaultPickerItemHeight0011
+     * @tc.desic         acetextPickerDefaultPickerItemHeightEtsTest0011
+     */
+    it('testtextPickerDefaultPickerItemHeight0011', 0, async function (done) {
+      console.info('textPickerDefaultPickerItemHeight testtextPickerDefaultPickerItemHeight0011 START');
+      await Utils.sleep(2000);
+      let strJson = getInspectorByKey('defaultPickerItemHeightText');
+      console.info("[testtextPickerDefaultPickerItemHeight0011] component defaultPickerItemHeight strJson:" + strJson);
+      let obj = JSON.parse(strJson);
+      expect(obj.$type).assertEqual('TextPicker');
+      expect(obj.$attrs.defaultPickerItemHeight).assertEqual("80.00px");
+      console.info("[testtextPickerDefaultPickerItemHeight0011] defaultPickerItemHeight value :" + obj.$attrs.defaultPickerItemHeight);
+      done();
+    });
   })
 }

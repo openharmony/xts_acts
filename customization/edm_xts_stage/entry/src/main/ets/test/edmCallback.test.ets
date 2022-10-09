@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "hypium/index"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import {
     WANT1, ENTINFO1, SELFWANT, SELFHAPNAME, COMPANYNAME2, DESCRIPTION2,
     ENTINFO2, DEFAULT_USER_ID, TEST_USER_ID, ERR_USER_ID, SUBSCRIBE_EVENTS, SUBSCRIBE_INVALID_EVENTS
@@ -76,6 +76,7 @@ export default function edmCallbackTest() {
     })
 
     /**
+<<<<<<< HEAD
      * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_0006
      * @tc.name test enableAdmin method in callback mode without user id
      * @tc.desc enable admin in callback mode
@@ -103,6 +104,8 @@ export default function edmCallbackTest() {
     })
 
     /**
+=======
+>>>>>>> 9a8445303aa68dd521e7c822b4b6c47c1cbc6cbc
      * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_0008
      * @tc.name test enableAdmin method with user id in callback mode with default user id
      * @tc.desc enable admin in multi-user
@@ -279,6 +282,7 @@ export default function edmCallbackTest() {
             await enterpriseDeviceManager.disableSuperAdmin(SELFHAPNAME);
             done();
         }
+<<<<<<< HEAD
     })
 
     /**
@@ -470,6 +474,8 @@ export default function edmCallbackTest() {
         await enterpriseDeviceManager.disableSuperAdmin(SELFHAPNAME);
         console.log('enterpriseDeviceManager.disableSuperAdmin ADMIN_TYPE_SUPER.');
         done();
+=======
+>>>>>>> 9a8445303aa68dd521e7c822b4b6c47c1cbc6cbc
     })
   })
 }

@@ -1987,14 +1987,14 @@ describe('deviceKvStorePromiseTest', function () {
      * @tc.name [JS-API8]DeviceKvStore.RemoveDeviceData()
      * @tc.desc Test Js Api DeviceKvStore.RemoveDeviceData() testcase 003
      */
-    it('testDeviceKvStoreRemoveDeviceData003', 0, async function (done) {
+     it('testDeviceKvStoreRemoveDeviceData003', 0, async function (done) {
         console.info('testDeviceKvStoreRemoveDeviceData003');
         try {
-            await kvStore.removeDeviceData('').then(() => {
+            await kvStore.removeDeviceData('').then((data) => {
                 console.info('testDeviceKvStoreRemoveDeviceData003 removeDeviceData success');
+                expect(null).assertFail();
             }).catch((err) => {
                 console.info('testDeviceKvStoreRemoveDeviceData003 removeDeviceData fail ' + err);
-                expect(null).assertFail();
             });
         }catch(e) {
             console.info('testDeviceKvStoreRemoveDeviceData003 e ' + e);
@@ -2010,7 +2010,7 @@ describe('deviceKvStorePromiseTest', function () {
     it('testDeviceKvStoreRemoveDeviceData004', 0, async function (done) {
         console.info('testDeviceKvStoreRemoveDeviceData004');
         try {
-            await kvStore.removeDeviceData(null).then((err) => {
+            await kvStore.removeDeviceData(null).then((data) => {
                 console.info('testDeviceKvStoreRemoveDeviceData004 removeDeviceData success');
                 expect(null).assertFail();
             }).catch((err) => {

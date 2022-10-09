@@ -46,7 +46,7 @@ export default function StartAbilityForResult2() {
             })
             await Utils.sleep(500);
             var cmd3 = "cp data/test/AtomizationResultFaEntry.hap /data/app/el2/100/base/com.ohos.hag.famanager/haps/" +
-            "entry/files";
+                "entry/files";
             delegator.executeShellCommand(cmd3, (err: any, d: any) => {
                 console.info("executeShellCommand3 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
                 done();
@@ -92,10 +92,10 @@ export default function StartAbilityForResult2() {
             }
             featureAbility.startAbilityForResult(str1)
                 .then((data) => {
-                    console.info(TAG + ' StartAbilityForResultPromise successful. Data: ' + JSON.stringify(data))
+                    console.info(TAG + ' StartAbilityForResultPromise2200 successful. Data: ' + JSON.stringify(data))
                 }).catch((error) => {
-                console.info(TAG + ' StartAbilityForResultPromise failed. Cause: ' + JSON.stringify(error));
-            })
+                    console.info(TAG + ' StartAbilityForResultPromise2200 failed. Cause: ' + JSON.stringify(error));
+                })
             await Utils.sleep(3000);
             let wrong;
             var str = {
@@ -108,10 +108,10 @@ export default function StartAbilityForResult2() {
             }
             await featureAbility.startAbilityForResult(str)
                 .then((data) => {
-                    console.info(TAG + ' StartAbilityForResultPromise successful. Data: ' + JSON.stringify(data))
+                    console.info(TAG + ' StartAbilityForResultPromise2200 successful. Data: ' + JSON.stringify(data))
                 }).catch((error) => {
                     wrong = error;
-                    console.info(TAG + ' StartAbilityForResultPromise failed. Cause: ' + JSON.stringify(error));
+                    console.info(TAG + ' StartAbilityForResultPromise2200 failed. Cause: ' + JSON.stringify(error));
                 })
             await Utils.sleep(2000);
             expect(wrong.code).assertEqual(13);
@@ -128,7 +128,8 @@ export default function StartAbilityForResult2() {
         it("FreeInstall_FA_StartAbilityForResult_2300", 0, async function (done) {
             console.log("------------start FreeInstall_FA_StartAbilityForResult_2300-------------");
             TAG = "FreeInstall_FA_StartAbilityForResult_2300";
-            var cmd19 = "bm install -p data/test/AtomizationResultFaEntry.hap";
+            var cmd19 = "bm install -rp /data/test/AtomizationResultFaEntry.hap";
+            console.log("------------start FreeInstall_FA_StartAbilityForResult_2300------install-------");
             delegator.executeShellCommand(cmd19, (err: any, d: any) => {
                 console.info("executeShellCommand19: err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
             })
@@ -142,29 +143,30 @@ export default function StartAbilityForResult2() {
             }
             featureAbility.startAbilityForResult(str1)
                 .then((data) => {
-                    console.info(TAG + ' StartAbilityForResultPromise successful. Data: ' + JSON.stringify(data))
+                    console.info(TAG + ' StartAbilityForResultPromise2300 successful. Data1: ' + JSON.stringify(data))
                 }).catch((error) => {
-                console.info(TAG + ' StartAbilityForResultPromise failed. Cause: ' + JSON.stringify(error));
-            })
-            await Utils.sleep(3000);
-            let wrong;
-            var str = {
-                'want': {
-                    "bundleName": "com.example.qianyiyingyong.hmservice",
-                    "abilityName": "com.example.qianyiyingyong.MainAbility",
-                    "moduleName": "entry",
-                    "flags": wantConstant.Flags.FLAG_INSTALL_ON_DEMAND,
-                }
-            }
-            await featureAbility.startAbilityForResult(str)
-                .then((data) => {
-                    console.info(TAG + ' StartAbilityForResultPromise successful. Data: ' + JSON.stringify(data))
-                }).catch((error) => {
-                    wrong = error;
-                    console.info(TAG + ' StartAbilityForResultPromise failed. Cause: ' + JSON.stringify(error));
+                    console.info(TAG + ' StartAbilityForResultPromise2300 failed. Cause1: ' + JSON.stringify(error));
                 })
-            await Utils.sleep(2000);
-            expect(wrong.code).assertEqual(13);
+            await Utils.sleep(1000);
+            setTimeout(async () => {
+                var wrong;
+                var str = {
+                    'want': {
+                        "bundleName": "com.example.qianyiyingyong.hmservice",
+                        "abilityName": "com.example.qianyiyingyong.MainAbility",
+                        "moduleName": "entry",
+                        "flags": wantConstant.Flags.FLAG_INSTALL_ON_DEMAND,
+                    }
+                }
+                await featureAbility.startAbilityForResult(str)
+                    .then((data) => {
+                        console.info(TAG + ' StartAbilityForResultPromise2300 successful. 1Data: ' + JSON.stringify(data))
+                    }).catch((error) => {
+                        wrong = error;
+                        console.info(TAG + ' StartAbilityForResultPromise2300 failed. 1Cause: ' + JSON.stringify(error));
+                    })
+                    expect(wrong.code).assertEqual(13);
+            }, 2000)
             done();
         });
 
@@ -181,47 +183,45 @@ export default function StartAbilityForResult2() {
             delegator.executeShellCommand(cmd20, (err: any, d: any) => {
                 console.info("executeShellCommand20: err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
             })
-            await Utils.sleep(500);
             var cmd21 = "bm install -p data/test/MockServiceTimeout.hap";
             delegator.executeShellCommand(cmd21, (err: any, d: any) => {
                 console.info("executeShellCommand21: err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
             })
-            await Utils.sleep(500);
             var cmd1 = "mkdir -p /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry";
             delegator.executeShellCommand(cmd1, (err: any, d: any) => {
-                console.info("executeShellCommand1 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
+                console.info("executeShellCommand11 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
             })
-            await Utils.sleep(500);
             var cmd2 = "mkdir -p /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry/files";
             delegator.executeShellCommand(cmd2, (err: any, d: any) => {
-                console.info("executeShellCommand2 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
+                console.info("executeShellCommand21 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
             })
-            await Utils.sleep(500);
             var cmd3 = "cp data/test/AtomizationResultFaEntry.hap /data/app/el2/100/base/com.ohos.hag.famanager/haps/" +
-            "entry/files";
+                "entry/files";
             delegator.executeShellCommand(cmd3, (err: any, d: any) => {
-                console.info("executeShellCommand3 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
+                console.info("executeShellCommand31 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
             })
-            await Utils.sleep(500);
-            let wrong;
-            var str = {
-                'want': {
-                    "bundleName": "com.example.qianyiyingyong.hmservice",
-                    "abilityName": "com.example.qianyiyingyong.MainAbility",
-                    "moduleName": "entry",
-                    "flags": wantConstant.Flags.FLAG_INSTALL_ON_DEMAND,
+
+            setTimeout(async () => {
+                var wrong;
+                var str = {
+                    'want': {
+                        "bundleName": "com.example.qianyiyingyong.hmservice",
+                        "abilityName": "com.example.qianyiyingyong.MainAbility",
+                        "moduleName": "entry",
+                        "flags": wantConstant.Flags.FLAG_INSTALL_ON_DEMAND,
+                    }
                 }
-            }
-            featureAbility.startAbilityForResult(str)
-                .then((data) => {
-                    console.info(TAG + ' StartAbilityForResultPromise successful. Data: ' + JSON.stringify(data))
-                }).catch((error) => {
-                wrong = error;
-                console.info(TAG + ' StartAbilityForResultPromise failed. Cause: ' + JSON.stringify(error));
-            })
-            await Utils.sleep(35000);
-            expect(wrong.code).assertEqual(3);
+                await featureAbility.startAbilityForResult(str)
+                    .then((data) => {
+                        console.info(TAG + ' StartAbilityForResultPromise2600 successful. Data: ' + JSON.stringify(data))
+                    }).catch((error) => {
+                        wrong = error;
+                        console.info(TAG + ' StartAbilityForResultPromise2600 failed. Cause: ' + JSON.stringify(error));
+                    })
+                    expect(wrong.code).assertEqual(3)
+            }, 20000)
             done();
         });
+
     })
 }

@@ -1832,66 +1832,6 @@ describe('rdbResultSetTest', function () {
             console.log(TAG + "************* testBigData0001 end *************");
         }
     })
-
-    /**
-     * @tc.name big resultSet data test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_ResultSet_0251
-     * @tc.desc big resultSet data test
-     */
-    it('testBigData0002', 0, async function (done) {
-        console.log(TAG + "************* testBigData0002 start *************");
-        {
-            await createBigData(500);
-            let resultSet = await rdbStore.querySql("SELECT * FROM test");
-            let count = resultSet.rowCount;
-            expect(500).assertEqual(count);
-
-            resultSet.goToLastRow();
-            let i = resultSet.rowCount;
-            while (i >= 1) {
-                expect("test" + --i).assertEqual(resultSet.getString(1))
-                resultSet.goToPreviousRow();
-            }
-
-            resultSet.close()
-            expect(true).assertEqual(resultSet.isClosed)
-            resultSet = null;
-            done();
-            console.log(TAG + "************* testBigData0002 end *************");
-        }
-    })
-
-    /**
-     * @tc.name big resultSet data test
-     * @tc.number SUB_DDM_AppDataFWK_JSRDB_ResultSet_0252
-     * @tc.desc big resultSet data test
-     */
-     it('testBigData0003', 0, async function (done) {
-        console.log(TAG + "************* testBigData0003 start *************");
-        {
-            await createBigData(1);
-            let resultSet = await rdbStore.querySql("SELECT * FROM test");
-            let count = resultSet.rowCount;
-            expect(1).assertEqual(count);
-
-            resultSet.goToFirstRow();
-            expect(true).assertEqual(resultSet.isStarted);
-            expect("test0").assertEqual(resultSet.getString(1))
-
-            let rows = [1, 2, -1, -2];
-            for (const i of rows) {
-                resultSet.goToRow(i);
-                expect(true).assertEqual(resultSet.isStarted);
-                expect("").assertEqual(resultSet.getString(1))
-            }
-
-            resultSet.close()
-            expect(true).assertEqual(resultSet.isClosed)
-            resultSet = null;
-            done();
-            console.log(TAG + "************* testBigData0003 end *************");
-        }
-    })
     
     console.info(TAG + '*************Unit Test End*************');
 })

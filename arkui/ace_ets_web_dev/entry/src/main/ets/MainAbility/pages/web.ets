@@ -42,7 +42,6 @@ struct Index {
     @State imageAccess:boolean=true
     @State geolocationAccess:boolean=true
     @State onlineImageAccess:boolean=true
-    @State fileFromUrlAccess:boolean=true
     @State databaseAccess:boolean=true
     @State overviewModeAccess:boolean=false
     @State initialScale:number=100
@@ -55,6 +54,7 @@ struct Index {
     @State cacheError:boolean=false
     @State mixedSwitch:boolean=false
     @State mixedAllSwitch:boolean=false
+    @State overViewFalseHeight:number=0
     onPageShow(){
         let valueChangeEvent={
             eventId:10,
@@ -100,7 +100,6 @@ struct Index {
             .domStorageAccess(this.domStorageAccess)
             .geolocationAccess(this.geolocationAccess)
             .onlineImageAccess(this.onlineImageAccess)
-            .fileFromUrlAccess(this.fileFromUrlAccess)
             .databaseAccess(this.databaseAccess)
             .cacheMode(this.cacheMode)
             .initialScale(this.initialScale)
@@ -471,30 +470,6 @@ struct Index {
                             },3000)
                             break;
                         }
-                        case "emitFileFromUrlAccessFalse":{
-                            this.fileFromUrlAccess=false
-                            await Utils.sleep(2000)
-                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/fileFromUrlAccess.html"})
-                            setTimeout(()=>{
-                                this.controller.runJavaScript({script:"getFileResult()",callback:(res)=>{
-				                    console.info("getFileResult==>"+res)
-                                    Utils.emitEvent(res,160)
-                                }})
-                            },3000)
-                            break;
-                        }
-                        case "emitFileFromUrlAccessTrue":{
-                            this.fileFromUrlAccess=true
-                            await Utils.sleep(2000)
-                            this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/fileFromUrlAccess.html"})
-                            setTimeout(()=>{
-                                this.controller.runJavaScript({script:"getFileResult()",callback:(res)=>{
-				                    console.info("getFileResult==>"+res)
-                                    Utils.emitEvent(res,162)
-                                }})
-                            },3000)
-                            break;
-                        }
                         case "emitDatabaseAccessTrue":{
                             this.databaseAccess=true
                             await Utils.sleep(2000)
@@ -512,9 +487,11 @@ struct Index {
                             await Utils.sleep(1000)
                             this.controller.loadUrl({url:"file:///data/storage/el1/bundle/phone/resources/rawfile/overview.html"})
                             setTimeout(()=>{
+                                let webPageHeight=this.controller.getPageHeight()
                                 this.controller.runJavaScript({script:"getViewResult()",callback:(res)=>{
+                                    this.overViewFalseHeight=parseInt(res)
 				                    console.info("getViewResult==>"+res)
-                                    Utils.emitEventTwo(1150,res,168)
+                                    Utils.emitEventTwo(webPageHeight,res,168)
                                 }})
                             },3000)
                             break;
@@ -526,7 +503,7 @@ struct Index {
                             setTimeout(()=>{
                                 this.controller.runJavaScript({script:"getViewResult()",callback:(res)=>{
 				                    console.info("getViewResult==>"+res)
-                                    Utils.emitEventTwo(2350,res,170)
+                                    Utils.emitEventTwo(this.overViewFalseHeight,parseInt(res),170)
                                 }})
                             },3000)
                             break;
@@ -619,9 +596,12 @@ struct Index {
                             break;
                         }
                         case "emitOnHttpErrorReceive":{                           
-                            this.controller.loadUrl({url:'http://example.com/path/does/not/exist/index.jsp'})
-                            setTimeout(()=>{     
-                                Utils.emitEvent(this.httpErrorReceive,66)                                                                                
+                            this.controller.loadUrl({url:'https://example1.com/path/does/not/exist/index.jsp'})
+                            setTimeout(()=>{
+                                this.controller.loadUrl({url:'https://example1.com/path/does/not/exist/index.jsp'})    
+                                setTimeout(()=>{     
+                                    Utils.emitEvent(this.httpErrorReceive,66)                                                                                
+                                },3000)
                             },3000)
                             break;
                         }

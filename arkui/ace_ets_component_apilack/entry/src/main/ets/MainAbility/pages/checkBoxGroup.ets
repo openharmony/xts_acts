@@ -28,7 +28,7 @@ struct CheckBoxGroupSelectAll {
   onPageShow() {
     console.info('[CheckBoxGroup] page show called');
     var stateChangeEvent = {
-      eventId: 908,
+      eventId: 60203,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);

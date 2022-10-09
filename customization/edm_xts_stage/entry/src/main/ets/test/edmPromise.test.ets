@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "hypium/index"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import {
     WANT1, ENTINFO1, SELFWANT, SELFHAPNAME, COMPANYNAME2, DESCRIPTION2, ENTINFO2,
     DEFAULT_USER_ID, TEST_USER_ID, ERR_USER_ID, SUBSCRIBE_EVENTS, SUBSCRIBE_INVALID_EVENTS
@@ -69,6 +69,7 @@ export default function edmPromiseTest() {
     })
 
     /**
+<<<<<<< HEAD
      * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_0005
      * @tc.name test enableAdmin method in promise mode without user id
      * @tc.desc enable admin in promise mode
@@ -93,6 +94,8 @@ export default function edmPromiseTest() {
     })
 
     /**
+=======
+>>>>>>> 9a8445303aa68dd521e7c822b4b6c47c1cbc6cbc
      * @tc.number SUB_CUSTOMIZATION_ENTERPRISE_DEVICE_MANAGER_JS_0007
      * @tc.name test enableAdmin method in promise mode with default user id
      * @tc.desc enable admin in multi-user

@@ -55,6 +55,7 @@ export default function touchJsunit() {
           console.info("testTouch01 get backEvent result is: " + JSON.stringify(backEvent));
           console.info("testTouch01 get flag result is: " + JSON.stringify(backData.data.ACTION));
           expect(backData.data.ACTION).assertEqual(true);
+          done();
         }
         var backEvent = {
           eventId: 43,
@@ -66,7 +67,6 @@ export default function touchJsunit() {
       }
       console.info("testTouch01 click result is: " + JSON.stringify(sendEventByKey('touch', 10, "")));
       console.info('[testTouch01] END');
-      done();
     });
   })
 }

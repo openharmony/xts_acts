@@ -12,7 +12,7 @@
 # limitations under the License.
 
 import("//test/xts/tools/build/suite.gni")
-ohos_js_hap_suite("camera_standard_ets_hap") {
+ohos_js_hap_suite("camera_framework_ets_hap") {
   hap_profile = "./src/main/config.json"
   deps = [
     ":camera_ets_assets",

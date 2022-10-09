@@ -60,6 +60,8 @@ export default function touchAbleJsunit() {
       var callbackTwo = (eventData) => {
         console.info("[testTouchAble002] get event state result is: " + JSON.stringify(eventData));
         expect(eventData.data.ACTION).assertEqual('Ellipse Clicked')
+        console.info('[testTouchAble002] END');
+        done();
       }
       var innerEventTwo = {
         eventId: 237,
@@ -70,10 +72,7 @@ export default function touchAbleJsunit() {
       } catch (err) {
         console.info("[testTouchAble002] on events_emitter err : " + JSON.stringify(err));
       }
-      console.info('[testClickEvent001] sendEventByKey ' + JSON.stringify(sendEventByKey('ellipse', 10, "")));
-      await Utils.sleep(1000)
-      console.info('[testTouchAble002] END');
-      done();
+      console.info("testClickEvent002 click result is: " + JSON.stringify(sendEventByKey('ellipse', 10, "")));
     });
   })
 }
