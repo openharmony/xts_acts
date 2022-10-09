@@ -31,17 +31,16 @@ export default function edmCallbackTest() {
     it('enableAdmin_test_002', 0, async function (done) {
         await enterpriseDeviceManager.enableAdmin(WANT1, ENTINFO1,
             enterpriseDeviceManager.AdminType.ADMIN_TYPE_NORMAL, OnReceiveEvent);
-        async function OnReceiveEvent(err, datainfo) {
-            console.log('enterpriseDeviceManager.enableAdmin ADMIN_TYPE_NORMAL :' + datainfo);
-            expect(datainfo).assertTrue();
+        async function OnReceiveEvent(err) {
+            console.log('enterpriseDeviceManager.enableAdmin ADMIN_TYPE_NORMAL.');
+            expect(err == null).assertTrue();
 
             var isEnabled = await enterpriseDeviceManager.isAdminEnabled(WANT1);
             console.log('enterpriseDeviceManager.isAdminEnabled :' + isEnabled);
             expect(isEnabled).assertTrue();
 
-            var retValue = await enterpriseDeviceManager.disableAdmin(WANT1);
-            console.log('enterpriseDeviceManager.disableAdmin : ' + retValue);
-            expect(retValue).assertTrue();
+            await enterpriseDeviceManager.disableAdmin(WANT1);
+            console.log('enterpriseDeviceManager.disableAdmin.');
 
             isEnabled = await enterpriseDeviceManager.isAdminEnabled(WANT1);
             console.log('enterpriseDeviceManager.isAdminEnabled : ' + isEnabled);
@@ -58,17 +57,16 @@ export default function edmCallbackTest() {
     it('enableAdmin_test_004', 0, async function (done) {
         await enterpriseDeviceManager.enableAdmin(SELFWANT, ENTINFO1,
             enterpriseDeviceManager.AdminType.ADMIN_TYPE_SUPER, OnReceiveEvent);
-        async function OnReceiveEvent(err, datainfo) {
-            console.log('enterpriseDeviceManager.enableAdmin : ' + retValue);
-            expect(datainfo).assertTrue();
+        async function OnReceiveEvent(err) {
+            console.log('enterpriseDeviceManager.enableAdmin.');
+            expect(err == null).assertTrue();
 
             var isEnabled = await enterpriseDeviceManager.isSuperAdmin(SELFHAPNAME);
             console.log('enterpriseDeviceManager.isSuperAdmin :' + isEnabled);
             expect(isEnabled).assertTrue();
 
-            var retValue = await enterpriseDeviceManager.disableSuperAdmin(SELFHAPNAME);
-            console.log('enterpriseDeviceManager.disableSuperAdmin : ' + retValue);
-            expect(retValue).assertTrue();
+            await enterpriseDeviceManager.disableSuperAdmin(SELFHAPNAME);
+            console.log('enterpriseDeviceManager.disableSuperAdmin.');
 
             isEnabled = await enterpriseDeviceManager.isSuperAdmin(SELFHAPNAME);
             console.log('enterpriseDeviceManager.isSuperAdmin : ' + isEnabled);
@@ -85,17 +83,16 @@ export default function edmCallbackTest() {
     it('enableAdmin_test_008', 0, async function (done) {
         await enterpriseDeviceManager.enableAdmin(WANT1, ENTINFO1,
             enterpriseDeviceManager.AdminType.ADMIN_TYPE_NORMAL, DEFAULT_USER_ID, OnReceiveEvent);
-        async function OnReceiveEvent(err, datainfo) {
-            console.log('enterpriseDeviceManager.enableAdmin ADMIN_TYPE_NORMAL :' + datainfo);
-            expect(datainfo).assertTrue();
+        async function OnReceiveEvent(err) {
+            console.log('enterpriseDeviceManager.enableAdmin ADMIN_TYPE_NORMAL.');
+            expect(err == null).assertTrue();
 
             var isEnabled = await enterpriseDeviceManager.isAdminEnabled(WANT1, DEFAULT_USER_ID);
             console.log('enterpriseDeviceManager.isAdminEnabled :' + isEnabled);
             expect(isEnabled).assertTrue();
 
-            var retValue = await enterpriseDeviceManager.disableAdmin(WANT1, DEFAULT_USER_ID);
-            console.log('enterpriseDeviceManager.disableAdmin : ' + retValue);
-            expect(retValue).assertTrue();
+            await enterpriseDeviceManager.disableAdmin(WANT1, DEFAULT_USER_ID);
+            console.log('enterpriseDeviceManager.disableAdmin.');
 
             isEnabled = await enterpriseDeviceManager.isAdminEnabled(WANT1, DEFAULT_USER_ID);
             console.log('enterpriseDeviceManager.isAdminEnabled : ' + isEnabled);
@@ -112,17 +109,16 @@ export default function edmCallbackTest() {
     it('enableAdmin_test_012', 0, async function (done) {
         await enterpriseDeviceManager.enableAdmin(WANT1, ENTINFO1,
             enterpriseDeviceManager.AdminType.ADMIN_TYPE_NORMAL, TEST_USER_ID, OnReceiveEvent);
-        async function OnReceiveEvent(err, datainfo) {
-            console.log('enterpriseDeviceManager.enableAdmin ADMIN_TYPE_NORMAL :' + datainfo);
-            expect(datainfo).assertTrue();
+        async function OnReceiveEvent(err) {
+            console.log('enterpriseDeviceManager.enableAdmin ADMIN_TYPE_NORMAL.');
+            expect(err == null).assertTrue();
 
             var isEnabled = await enterpriseDeviceManager.isAdminEnabled(WANT1, TEST_USER_ID);
             console.log('enterpriseDeviceManager.isAdminEnabled :' + isEnabled);
             expect(isEnabled).assertTrue();
 
-            var retValue = await enterpriseDeviceManager.disableAdmin(WANT1, TEST_USER_ID);
-            console.log('enterpriseDeviceManager.disableAdmin : ' + retValue);
-            expect(retValue).assertTrue();
+            await enterpriseDeviceManager.disableAdmin(WANT1, TEST_USER_ID);
+            console.log('enterpriseDeviceManager.disableAdmin.');
 
             isEnabled = await enterpriseDeviceManager.isAdminEnabled(WANT1, TEST_USER_ID);
             console.log('enterpriseDeviceManager.isAdminEnabled : ' + isEnabled);
@@ -139,17 +135,16 @@ export default function edmCallbackTest() {
     it('enableAdmin_test_013', 0, async function (done) {
         await enterpriseDeviceManager.enableAdmin(WANT1, ENTINFO1,
             enterpriseDeviceManager.AdminType.ADMIN_TYPE_NORMAL, DEFAULT_USER_ID, OnReceiveEvent);
-        async function OnReceiveEvent(err, datainfo) {
-            console.log('enterpriseDeviceManager.enableAdmin ADMIN_TYPE_NORMAL :' + datainfo);
-            expect(datainfo).assertTrue();
+        async function OnReceiveEvent(err) {
+            console.log('enterpriseDeviceManager.enableAdmin ADMIN_TYPE_NORMAL.');
+            expect(err == null).assertTrue();
 
             var isEnabled = await enterpriseDeviceManager.isAdminEnabled(WANT1, TEST_USER_ID);
             console.log('enterpriseDeviceManager.isAdminEnabled :' + isEnabled);
             expect(isEnabled).assertFalse();
 
-            var retValue = await enterpriseDeviceManager.disableAdmin(WANT1, DEFAULT_USER_ID);
-            console.log('enterpriseDeviceManager.disableAdmin : ' + retValue);
-            expect(retValue).assertTrue();
+            await enterpriseDeviceManager.disableAdmin(WANT1, DEFAULT_USER_ID);
+            console.log('enterpriseDeviceManager.disableAdmin.');
 
             isEnabled = await enterpriseDeviceManager.isAdminEnabled(WANT1, DEFAULT_USER_ID);
             console.log('enterpriseDeviceManager.isAdminEnabled : ' + isEnabled);
@@ -166,9 +161,9 @@ export default function edmCallbackTest() {
     it('enableAdmin_test_014', 0, async function (done) {
         await enterpriseDeviceManager.enableAdmin(WANT1, ENTINFO1,
             enterpriseDeviceManager.AdminType.ADMIN_TYPE_NORMAL, TEST_USER_ID, OnReceiveEvent);
-        async function OnReceiveEvent(err, datainfo) {
-            console.log('enterpriseDeviceManager.enableAdmin ADMIN_TYPE_NORMAL :' + datainfo);
-            expect(datainfo).assertTrue();
+        async function OnReceiveEvent(err) {
+            console.log('enterpriseDeviceManager.enableAdmin ADMIN_TYPE_NORMAL.');
+            expect(err == null).assertTrue();
 
             var isEnabled = await enterpriseDeviceManager.isAdminEnabled(WANT1, TEST_USER_ID);
             console.log('enterpriseDeviceManager.isAdminEnabled :' + isEnabled);
@@ -186,9 +181,8 @@ export default function edmCallbackTest() {
             console.log('enterpriseDeviceManager.isAdminEnabled : ' + isEnabled);
             expect(isEnabled).assertTrue();
 
-            retValue = await enterpriseDeviceManager.disableAdmin(WANT1, TEST_USER_ID);
-            console.log('enterpriseDeviceManager.disableAdmin : ' + retValue);
-            expect(retValue).assertTrue();
+            await enterpriseDeviceManager.disableAdmin(WANT1, TEST_USER_ID);
+            console.log('enterpriseDeviceManager.disableAdmin.');
 
             isEnabled = await enterpriseDeviceManager.isAdminEnabled(WANT1, TEST_USER_ID);
             console.log('enterpriseDeviceManager.isAdminEnabled : ' + isEnabled);
@@ -203,26 +197,24 @@ export default function edmCallbackTest() {
      * @tc.desc set enterprise info in callback mode
      */
     it('setEnterpriseInfo_test_002', 0, async function (done) {
-        var retValue = await enterpriseDeviceManager.enableAdmin(SELFWANT, ENTINFO1,
+        await enterpriseDeviceManager.enableAdmin(SELFWANT, ENTINFO1,
             enterpriseDeviceManager.AdminType.ADMIN_TYPE_NORMAL);
-        console.log('enterpriseDeviceManager.enableAdmin ADMIN_TYPE_NORMAL : ' + retValue);
-        expect(retValue).assertTrue();
+        console.log('enterpriseDeviceManager.enableAdmin ADMIN_TYPE_NORMAL.');
         var isEnabled = await enterpriseDeviceManager.isAdminEnabled(SELFWANT);
         expect(isEnabled).assertTrue();
         console.log('enterpriseDeviceManager.isAdminEnabled : ' + isEnabled);
 
         await enterpriseDeviceManager.setEnterpriseInfo(SELFWANT, ENTINFO2, OnReceiveEvent);
-        async function OnReceiveEvent(err, datainfo) {
-            console.log('enterpriseDeviceManager.setEnterpriseInfo : ' + datainfo);
-            expect(datainfo).assertTrue();
+        async function OnReceiveEvent(err) {
+            console.log('enterpriseDeviceManager.setEnterpriseInfo.');
+            expect(err == null).assertTrue();
 
             var entInfo = await enterpriseDeviceManager.getEnterpriseInfo(SELFWANT);
             expect(entInfo.name).assertEqual(COMPANYNAME2);
             expect(entInfo.description).assertEqual(DESCRIPTION2);
 
-            retValue = await enterpriseDeviceManager.disableAdmin(SELFWANT);
-            console.log('enterpriseDeviceManager.disableAdmin : ' + retValue);
-            expect(retValue).assertTrue();
+            await enterpriseDeviceManager.disableAdmin(SELFWANT);
+            console.log('enterpriseDeviceManager.disableAdmin.');
 
             isEnabled = await enterpriseDeviceManager.isAdminEnabled(SELFWANT);
             console.log('enterpriseDeviceManager.isAdminEnabled : ' + isEnabled);
