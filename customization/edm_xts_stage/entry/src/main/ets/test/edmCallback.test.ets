@@ -261,7 +261,7 @@ export default function edmCallbackTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('subscribeManagedEvent_test_001', 0, async function (done) {
+    it('subscribeManagedEvent_test_001', 0, async function (done) {
         console.info('-----------subscribeManagedEvent_test_001 start-------------');
         await enterpriseDeviceManager.enableAdmin(SELFWANT, ENTINFO1,
             enterpriseDeviceManager.AdminType.ADMIN_TYPE_NORMAL, DEFAULT_USER_ID);
@@ -285,7 +285,7 @@ export default function edmCallbackTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('subscribeManagedEvent_test_003', 0, async function (done) {
+    it('subscribeManagedEvent_test_003', 0, async function (done) {
         console.info('-----------subscribeManagedEvent_test_003 start-------------');
         await enterpriseDeviceManager.enableAdmin(SELFWANT, ENTINFO1,
             enterpriseDeviceManager.AdminType.ADMIN_TYPE_NORMAL, DEFAULT_USER_ID);
@@ -308,7 +308,7 @@ export default function edmCallbackTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('subscribeManagedEvent_test_005', 0, async function (done) {
+    it('subscribeManagedEvent_test_005', 0, async function (done) {
         console.info('-----------subscribeManagedEvent_test_005 start-------------');
         await enterpriseDeviceManager.enableAdmin(SELFWANT, ENTINFO1,
             enterpriseDeviceManager.AdminType.ADMIN_TYPE_NORMAL, DEFAULT_USER_ID);
@@ -332,7 +332,7 @@ export default function edmCallbackTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('subscribeManagedEvent_test_007', 0, async function (done) {
+    it('subscribeManagedEvent_test_007', 0, async function (done) {
         console.info('-----------subscribeManagedEvent_test_007 start-------------');
         await enterpriseDeviceManager.enableAdmin(SELFWANT, ENTINFO1,
             enterpriseDeviceManager.AdminType.ADMIN_TYPE_SUPER, DEFAULT_USER_ID);
@@ -380,7 +380,7 @@ export default function edmCallbackTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-     it('unsubscribeManagedEvent_test_003', 0, async function (done) {
+    it('unsubscribeManagedEvent_test_003', 0, async function (done) {
         console.info('-----------unsubscribeManagedEvent_test_003 start-------------');
         await enterpriseDeviceManager.enableAdmin(SELFWANT, ENTINFO1,
             enterpriseDeviceManager.AdminType.ADMIN_TYPE_NORMAL, DEFAULT_USER_ID);
@@ -398,14 +398,14 @@ export default function edmCallbackTest() {
     })
 
     /**
-       * @tc.number    unsubscribeManagedEvent_test_001
+       * @tc.number    unsubscribeManagedEvent_test_005
        * @tc.desc      Test unsubscribeManagedEvent method in callback mode and unsubscribe when disable admin.
        * @tc.size      : MEDIUM
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-     it('unsubscribeManagedEvent_test_001', 0, async function (done) {
-        console.info('-----------unsubscribeManagedEvent_test_001 start-------------');
+    it('unsubscribeManagedEvent_test_005', 0, async function (done) {
+        console.info('-----------unsubscribeManagedEvent_test_005 start-------------');
         await enterpriseDeviceManager.enableAdmin(SELFWANT, ENTINFO1,
             enterpriseDeviceManager.AdminType.ADMIN_TYPE_NORMAL, DEFAULT_USER_ID);
         console.log('enterpriseDeviceManager.enableAdmin ADMIN_TYPE_NORMAL.');
@@ -422,14 +422,14 @@ export default function edmCallbackTest() {
     })
 
     /**
-       * @tc.number    unsubscribeManagedEvent_test_001
+       * @tc.number    unsubscribeManagedEvent_test_007
        * @tc.desc      Test unsubscribeManagedEvent method in callback mode and unsubscribe when enable super admin.
        * @tc.size      : MEDIUM
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-     it('unsubscribeManagedEvent_test_001', 0, async function (done) {
-        console.info('-----------unsubscribeManagedEvent_test_001 start-------------');
+    it('unsubscribeManagedEvent_test_007', 0, async function (done) {
+        console.info('-----------unsubscribeManagedEvent_test_007 start-------------');
         await enterpriseDeviceManager.enableAdmin(SELFWANT, ENTINFO1,
             enterpriseDeviceManager.AdminType.ADMIN_TYPE_SUPER, DEFAULT_USER_ID);
         console.log('enterpriseDeviceManager.enableAdmin ADMIN_TYPE_SUPER.');

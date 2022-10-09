@@ -296,7 +296,7 @@ export default function edmPromiseTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('subscribeManagedEvent_test_002', 0, async function (done) {
+    it('subscribeManagedEvent_test_002', 0, async function (done) {
         console.info('-----------subscribeManagedEvent_test_002 start-------------');
         await enterpriseDeviceManager.enableAdmin(SELFWANT, ENTINFO1,
             enterpriseDeviceManager.AdminType.ADMIN_TYPE_NORMAL, DEFAULT_USER_ID);
@@ -317,7 +317,7 @@ export default function edmPromiseTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('subscribeManagedEvent_test_004', 0, async function (done) {
+    it('subscribeManagedEvent_test_004', 0, async function (done) {
         console.info('-----------subscribeManagedEvent_test_004 start-------------');
         await enterpriseDeviceManager.enableAdmin(SELFWANT, ENTINFO1,
             enterpriseDeviceManager.AdminType.ADMIN_TYPE_NORMAL, DEFAULT_USER_ID);
@@ -338,7 +338,7 @@ export default function edmPromiseTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('subscribeManagedEvent_test_006', 0, async function (done) {
+    it('subscribeManagedEvent_test_006', 0, async function (done) {
         console.info('-----------subscribeManagedEvent_test_006 start-------------');
         await enterpriseDeviceManager.enableAdmin(SELFWANT, ENTINFO1,
             enterpriseDeviceManager.AdminType.ADMIN_TYPE_NORMAL, DEFAULT_USER_ID);
@@ -359,7 +359,7 @@ export default function edmPromiseTest() {
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-     it('subscribeManagedEvent_test_008', 0, async function (done) {
+    it('subscribeManagedEvent_test_008', 0, async function (done) {
         console.info('-----------subscribeManagedEvent_test_008 start-------------');
         await enterpriseDeviceManager.enableAdmin(SELFWANT, ENTINFO1,
             enterpriseDeviceManager.AdminType.ADMIN_TYPE_SUPER, DEFAULT_USER_ID);
@@ -402,7 +402,7 @@ export default function edmPromiseTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-     it('unsubscribeManagedEvent_test_004', 0, async function (done) {
+    it('unsubscribeManagedEvent_test_004', 0, async function (done) {
         console.info('-----------unsubscribeManagedEvent_test_004 start-------------');
         await enterpriseDeviceManager.enableAdmin(SELFWANT, ENTINFO1,
             enterpriseDeviceManager.AdminType.ADMIN_TYPE_NORMAL, DEFAULT_USER_ID);
@@ -423,7 +423,7 @@ export default function edmPromiseTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-     it('unsubscribeManagedEvent_test_006', 0, async function (done) {
+    it('unsubscribeManagedEvent_test_006', 0, async function (done) {
         console.info('-----------unsubscribeManagedEvent_test_006 start-------------');
         await enterpriseDeviceManager.enableAdmin(SELFWANT, ENTINFO1,
             enterpriseDeviceManager.AdminType.ADMIN_TYPE_NORMAL, DEFAULT_USER_ID);
@@ -444,7 +444,7 @@ export default function edmPromiseTest() {
        * @tc.type      : Function
        * @tc.level     : Level 1
        */
-     it('unsubscribeManagedEvent_test_008', 0, async function (done) {
+    it('unsubscribeManagedEvent_test_008', 0, async function (done) {
         console.info('-----------unsubscribeManagedEvent_test_008 start-------------');
         await enterpriseDeviceManager.enableAdmin(SELFWANT, ENTINFO1,
             enterpriseDeviceManager.AdminType.ADMIN_TYPE_SUPER, DEFAULT_USER_ID);
