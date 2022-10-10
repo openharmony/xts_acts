@@ -308,7 +308,6 @@ export default function screenLockJSUnit() {
                 });
             }catch(err){
                 console.info("SUB_MISC_THEME_screenLock_API_0009 failed: " + JSON.stringify(err));
-                expect().assertFalse();
                 done();
             }
             console.info("SUB_MISC_THEME_screenLock_API_0009 data: " + flag);
