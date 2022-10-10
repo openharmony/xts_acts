@@ -50,6 +50,9 @@ describe("SensorJsTest_sensor_1", function () {
         console.info('afterEach caled')
     })
 
+    let PARAMETER_ERROR_CODE = 401
+    let PARAMETER_ERROR_MSG = 'The parameter invalid.'
+
     let SENSOR_DATA_MATRIX = [
         {
             "rotation": [-0.7980074882507324, 0.5486301183700562, 0.24937734007835388, -0.17277367413043976,
@@ -282,17 +285,24 @@ describe("SensorJsTest_sensor_1", function () {
      * @tc.number:SUB_SensorsSystem_GeneralAlgorithm_JsTest_0100
      */
     it('SensorJsTest_077', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        sensor.getDirection([1, 2, 3, 1, 2, 3, 1, 2, 3, 0]).then((data) => {
-            for (let i = 0; i < data.length; i++) {
-                console.info("SensorJsTest_077 failed")
+        try {
+            sensor.getDirection([1, 2, 3, 1, 2, 3, 1, 2, 3, 0]).then((data) => {
+                for (let i = 0; i < data.length; i++) {
+                    console.info("SensorJsTest_077 failed")
+                    expect(false).assertTrue();
+                }
+                done()
+            }, (error) => {
                 expect(false).assertTrue();
-            }
+                console.info("SensorJsTest_077 success")
+                done()
+            })
+        } catch (err) {
+            console.info('exception ' + JSON.stringify(err))
+            expect(err.code).assertEqual(PARAMETER_ERROR_CODE)
+            expect(err.message).assertEqual(PARAMETER_ERROR_MSG)
             done()
-        }, (error) => {
-            expect(true).assertTrue();
-            console.info("SensorJsTest_077 success")
-            done()
-        })
+        }
     })
 
     let ANGLECHANGE_9_RESULT = [
@@ -652,15 +662,22 @@ describe("SensorJsTest_sensor_1", function () {
      */
     it('SensorJsTest_092', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('SensorJsTest_092 start')
-        sensor.createQuaternion([0.25, 0.14], (error, data) => {
-            if (error) {
-                console.info('SensorJsTest_092 failed');
-                expect(true).assertTrue();
-            } else {
-                expect(false).assertTrue();
-            }
+        try {
+            sensor.createQuaternion([0.25, 0.14], (error, data) => {
+                if (error) {
+                    console.info('SensorJsTest_092 failed');
+                    expect(false).assertTrue();
+                } else {
+                    expect(false).assertTrue();
+                }
+                done()
+            })
+        } catch (err) {
+            console.info('exception ' + JSON.stringify(err))
+            expect(err.code).assertEqual(PARAMETER_ERROR_CODE)
+            expect(err.message).assertEqual(PARAMETER_ERROR_MSG)
             done()
-        })
+        }
         console.info("SensorJsTest_092 end")
     })
 
@@ -693,15 +710,22 @@ describe("SensorJsTest_sensor_1", function () {
      */
     it('SensorJsTest_094', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('SensorJsTest_094 start')
-        sensor.createQuaternion([0, 0]).then((data) => {
-            console.info('SensorJsTest_094');
-            expect(false).assertTrue();
+        try {
+            sensor.createQuaternion([0, 0]).then((data) => {
+                console.info('SensorJsTest_094');
+                expect(false).assertTrue();
+                done()
+            }, (error) => {
+                expect(false).assertTrue();
+                console.info('promise failed')
+                done()
+            })
+        } catch (err) {
+            console.info('exception ' + JSON.stringify(err))
+            expect(err.code).assertEqual(PARAMETER_ERROR_CODE)
+            expect(err.message).assertEqual(PARAMETER_ERROR_MSG)
             done()
-        }, (error) => {
-            expect(true).assertTrue();
-            console.info('promise failed')
-            done()
-        })
+        }
         console.info("SensorJsTest_094 end")
     })
 
@@ -755,15 +779,22 @@ describe("SensorJsTest_sensor_1", function () {
      */
     it('SensorJsTest_097', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('SensorJsTest_097 start')
-        sensor.createQuaternion([0.25, 0.14]).then((data) => {
-            console.info('SensorJsTest_097');
-            expect(false).assertTrue();
+        try {
+            sensor.createQuaternion([0.25, 0.14]).then((data) => {
+                console.info('SensorJsTest_097');
+                expect(false).assertTrue();
+                done()
+            }, (error) => {
+                expect(false).assertTrue();
+                console.info('promise failed')
+                done()
+            })
+        } catch (err) {
+            console.info('exception ' + JSON.stringify(err))
+            expect(err.code).assertEqual(PARAMETER_ERROR_CODE)
+            expect(err.message).assertEqual(PARAMETER_ERROR_MSG)
             done()
-        }, (error) => {
-            expect(true).assertTrue();
-            console.info('promise failed')
-            done()
-        })
+        }
     })
 
     let createRotationMatrixResult = [
@@ -866,16 +897,23 @@ describe("SensorJsTest_sensor_1", function () {
      */
     it('SensorJsTest_102', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('SensorJsTest_102 start')
-        sensor.getGeomagneticDip([1, 2, 3, 4], (error, data) => {
-            if (error) {
-                console.info('SensorJsTest_102 success');
-                expect(true).assertTrue();
-            } else {
-                console.info("SensorJsTest_102 failed")
-                expect(false).assertTrue();
-            }
+        try {
+            sensor.getGeomagneticDip([1, 2, 3, 4], (error, data) => {
+                if (error) {
+                    console.info('SensorJsTest_102 success');
+                    expect(true).assertTrue();
+                } else {
+                    console.info("SensorJsTest_102 failed")
+                    expect(false).assertTrue();
+                }
+                done()
+            })
+        } catch (err) {
+            console.info('exception ' + JSON.stringify(err))
+            expect(err.code).assertEqual(PARAMETER_ERROR_CODE)
+            expect(err.message).assertEqual(PARAMETER_ERROR_MSG)
             done()
-        })
+        }
         console.info("SensorJsTest_102 end")
     })
 
