@@ -77,7 +77,7 @@ describe('audioCapturer', function () {
     eventEmitter.on(CREATE_EVENT, (audioCap, steps, done) => {
         console.log(`${Tag} emit: ${JSON.stringify(CREATE_EVENT)}`);
         steps.shift();
-        audio.createAudioCapturer(steps[0], async (err, data) => {
+        audio.createAudioCapturer(steps[0], (err, data) => {
             console.log(`${Tag} enter createAudioCapturer`);
             steps.shift();
             if (err && steps[0] == ERROR_EVENT) {
@@ -167,7 +167,7 @@ describe('audioCapturer', function () {
         while (numBuffersToCapture) {
             try {
                 await new Promise((resolve, reject) => {
-                    audioCap.read(bufferSize, true, async (err, buffer) => {
+                    audioCap.read(bufferSize, true, (err, buffer) => {
                         if (err) {
                             console.info(`${Tag} AudioFrameworkRecLog: Capturer release :ERROR :  ${JSON.stringify(err.message)}`);
                             reject(err);
@@ -436,7 +436,7 @@ describe('audioCapturer', function () {
         console.info(`${Tag} AudioFrameworkTest: afterEach: Test case-level clearance conditions`);
     })
 
-    afterAll(async function () {
+    afterAll(function () {
         console.info(`${Tag} AudioFrameworkTest: afterAll: Test suite-level cleanup condition`);
     })
 
@@ -547,7 +547,7 @@ describe('audioCapturer', function () {
      *@tc.type      : Function
      *@tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_PREPARED_STATE_0100', 1, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_PREPARED_STATE_0100', 1, function (done) {
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -577,7 +577,7 @@ describe('audioCapturer', function () {
      *@tc.type      : Function
      *@tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_RUNNING_STATE_0100', 1, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_RUNNING_STATE_0100', 1, function (done) {
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -606,7 +606,7 @@ describe('audioCapturer', function () {
      *@tc.type      : Function
      *@tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_STOPPED_STATE_0100', 1, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_STOPPED_STATE_0100', 1, function (done) {
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -635,7 +635,7 @@ describe('audioCapturer', function () {
      *@tc.type      : Function
      *@tc.level     : Level 1
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_GET_BUFFER_SIZE_0100', 1, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_GET_BUFFER_SIZE_0100', 1, function (done) {
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -710,7 +710,7 @@ describe('audioCapturer', function () {
             capturerInfo: AudioCapturerInfo
         }
         let audioCapPromise;
-        await audio.createAudioCapturer(AudioCapturerOptions).then(async function (data) {
+        await audio.createAudioCapturer(AudioCapturerOptions).then(function (data) {
             audioCapPromise = data;
             console.info(`${Tag} AudioFrameworkRecLog: AudioCapturer Created : Success : Stream Type: success`);
             expect(audioCapPromise.state).assertEqual(audio.AudioState.STATE_PREPARED);
@@ -2077,7 +2077,7 @@ describe('audioCapturer', function () {
             console.log(`${Tag} stop ok`);
         } catch (err) {
             console.log(`${Tag} stop err: ${JSON.stringify(err)}`);
-            expect(err.code).assertEqual(200);
+            expect(false).assertTrue();
         }
         done();
     })
@@ -2410,7 +2410,7 @@ describe('audioCapturer', function () {
             streamInfo: audioStreamInfo44100,
             capturerInfo: audioCapturerInfo44100,
         }
-        await audio.createAudioCapturer(AudioCapturerOptionsInvalid).then(async function (data) {
+        await audio.createAudioCapturer(AudioCapturerOptionsInvalid).then(function (data) {
             if (data == undefined) {
                 console.info(`${Tag} AudioFrameworkRecLog: AudioCapturer Created : Unsuccess : ${JSON.stringify(data)}`);
                 expect(true).assertTrue();
@@ -2449,7 +2449,7 @@ describe('audioCapturer', function () {
             capturerInfo: audioCapturerInfo44100,
         }
 
-        await audio.createAudioCapturer(AudioCapturerOptionsInvalid).then(async function (data) {
+        await audio.createAudioCapturer(AudioCapturerOptionsInvalid).then(function (data) {
             if (data == undefined) {
                 console.info(`${Tag} AudioFrameworkRecLog: AudioCapturer Created : Unsuccess : ${JSON.stringify(data)}`);
                 expect(true).assertTrue();
@@ -2473,7 +2473,7 @@ describe('audioCapturer', function () {
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_ON_0100', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_ON_0100', 2, function (done) {
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -2502,7 +2502,7 @@ describe('audioCapturer', function () {
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_ON_0200', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_ON_0200', 2, function (done) {
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -2531,7 +2531,7 @@ describe('audioCapturer', function () {
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_ON_0300', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_ON_0300', 2, function (done) {
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,
@@ -2560,7 +2560,7 @@ describe('audioCapturer', function () {
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_ON_0400', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_VOIP_CAP_CB_ON_0400', 2, function (done) {
         let AudioStreamInfo = {
             samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
             channels: audio.AudioChannel.CHANNEL_2,

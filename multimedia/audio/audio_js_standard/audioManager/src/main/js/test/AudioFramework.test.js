@@ -2906,20 +2906,20 @@ describe('audioFramework', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_1400', 2, async function (done) {
         await audioManager.setVolume(audioMedia, lowVol);
-        audioManager.mute(audioMedia, true, async (err) => {
+        audioManager.mute(audioMedia, true, (err) => {
             if (err) {
                 console.error(`${TagFrmwk}: Callback : SetVolume: Media : failed to set Mute Status ${err.message}`);
                 expect().assertFail();
                 done();
             } else {
                 console.log(`${TagFrmwk}: Set Stream Mute: Media: Callback : TRUE`);
-                audioManager.getVolume(audioMedia, async (err, value) => {
+                audioManager.getVolume(audioMedia, (err, value) => {
                     if (err) {
                         console.error(`Failed to obtain the volume. ${err.message}`);
                         expect(false).assertTrue();
                         done();
                     } else if (value == 0) {
-                        await audioManager.setVolume(audioMedia, highVol, (err) => {
+                        audioManager.setVolume(audioMedia, highVol, (err) => {
                             if (err) {
                                 console.error(`Failed to obtain the volume. ${err.message}`);
                                 expect(false).assertTrue();
@@ -2996,7 +2996,7 @@ describe('audioFramework', function () {
      */
     it('SUB_MULTIMEDIA_AUDIO_MANAGER_MUTE_1600', 2, async function (done) {
         await audioManager.setVolume(audioRingtone, highVol);
-        audioManager.mute(audioRingtone, true, async (err) => {
+        audioManager.mute(audioRingtone, true, (err) => {
             if (err) {
                 console.error(`${TagFrmwk}: Callback : SetVolume: Ringtone : failed to set Mute Status ${err.message}`);
                 expect().assertFail();
@@ -3082,7 +3082,7 @@ describe('audioFramework', function () {
             done();
             return;
         }
-        audioManager.mute(audio.AudioVolumeType.VOICE_CALL, true, async (err) => {
+        audioManager.mute(audio.AudioVolumeType.VOICE_CALL, true, (err) => {
             if (err) {
                 console.error(`${TagFrmwk}: Callback : SetVolume: VOICE_CALL : failed to set Mute Status ${err.message}`);
                 expect().assertFail();
@@ -5119,7 +5119,7 @@ describe('audioFramework', function () {
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0800', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0800', 2, function (done) {
         audioManager.getRoutingManager(async (err, AudioRoutingManager) => {
             if (err) {
                 console.error(`${TagFrmwk}: Callback: failed to get RoutingManager ${err.message}`);
@@ -5150,7 +5150,7 @@ describe('audioFramework', function () {
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0900', 2, async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0900', 2, function (done) {
         audioManager.getRoutingManager(async (err, AudioRoutingManager) => {
             if (err) {
                 console.error(`${TagFrmwk}:Callback:failed to get RoutingManager ${err.message}`);

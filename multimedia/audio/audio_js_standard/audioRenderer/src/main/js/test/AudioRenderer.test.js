@@ -1068,7 +1068,7 @@ describe('audioRenderer', function () {
             resultFlag = true;
             audioRen.on('periodReach', 73, (position) => {
                 console.log(`${TagFrmwk}: periodReach Event is called : ${position}`);
-                resultFlag = false;
+                resultFlag = true;
             });
         });
 
