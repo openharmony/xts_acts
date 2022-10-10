@@ -26,8 +26,9 @@ describe("HashSetTest", function () {
     try {
       let hashSet = new HashSet();
     } catch (err) {
-      expect(err.name).assertEqual("TypeError");
-      expect(err.message).assertEqual("Cannot create new HashSet");
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200012);
+      expect(err.message).assertEqual("The HashSet's constructor cannot be directly invoked");
     }
   });
               
@@ -532,6 +533,45 @@ describe("HashSetTest", function () {
     let arr1 = [1, 2, 3, 4, 5];
     for (let i = 0; i < arr.length; i++) {
       expect(arr[i]).assertEqual(arr1[i]);
+    }
+  });
+
+  /**
+   * @tc.name: testHas032
+   * @tc.desc: Determine whether the HashSet instance contains the specified element. For example: hashSet.has.bind({}, "a")().
+   * @tc.author: liuganlin
+   */
+  it("testHas032", 0, function () {
+    let hashSet = new HashSet();
+    hashSet.add(4);
+    hashSet.add(1);
+    hashSet.add(3);
+    hashSet.add(2);
+    hashSet.add(5);
+    try {
+      hashSet.has.bind({}, "a")();
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200011);
+      expect(err.message).assertEqual(`The has method cannot be bound`);
+    }
+  });
+
+  /**
+   * @tc.name: testAdd033
+   * @tc.desc: Add element to HashSet instance. For example: hashSet.add.bind({}, "a")().
+   * @tc.author: liuganlin
+   */
+  it("testAdd033", 0, function () {
+    let hashSet = new HashSet();
+    try {
+      hashSet.add.bind({}, "a")();
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200011);
+      expect(err.message).assertEqual(`The add method cannot be bound`);
     }
   });
 });

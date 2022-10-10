@@ -27,8 +27,9 @@ describe("HashMapTest", function () {
       let hashMap = new HashMap();
       expect(hashMap != undefined).assertEqual(true);
     } catch (err) {
-      expect(err.name).assertEqual("TypeError");
-      expect(err.message).assertEqual("Cannot create new HashMap");
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200012);
+      expect(err.message).assertEqual("The HashMap's constructor cannot be directly invoked");
     }
   });
       
@@ -734,6 +735,59 @@ describe("HashMapTest", function () {
       }
     }
     expect(flag).assertEqual(true);
+  });
+
+  /**
+   * @tc.name: testSet047
+   * @tc.desc: Add a pair of key value pairs to the HashMap. For example: hashMap.set.bind({}, 1, "A")().
+   * @tc.author: liuganlin
+   */
+  it("testSet047", 0, function () {
+    let hashMap = new HashMap();
+    try {
+      hashMap.set.bind({}, 1, "A")();
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200011);
+      expect(err.message).assertEqual(`The set method cannot be bound`);
+    }
+  });
+
+  /**
+   * @tc.name: testSetAll048
+   * @tc.desc: Copy key value pairs from one HashMap to another.
+   * @tc.author: liuganlin
+   */
+  it("testSetAll048", 0, function () {
+    let hashMap = new HashMap();
+    hashMap.set(1, "A");
+    hashMap.set(2, "B");
+    try {
+      hashMap.setAll([1, 2, 3]);
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "map" must be HashMap. Received value is: 1,2,3`);
+    }
+  });
+
+  /**
+   * @tc.name: testSet049
+   * @tc.desc: Add a pair of key value pairs to the HashMap. For example: hashMap.set.bind({}, "a", "b")().
+   * @tc.author: liuganlin
+   */
+  it("testSet049", 0, function () {
+    let hashMap = new HashMap();
+    try {
+      hashMap.set.bind({}, "a", "b")();
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200011);
+      expect(err.message).assertEqual(`The set method cannot be bound`);
+    }
   });
 });
 }

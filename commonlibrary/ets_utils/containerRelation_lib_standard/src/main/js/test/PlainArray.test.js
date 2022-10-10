@@ -26,8 +26,9 @@ describe("PlainArrayTest", function () {
     try {
       let plainArray = new PlainArray();
     } catch (err) {
-      expect(err.name).assertEqual("TypeError");
-      expect(err.message).assertEqual("Cannot create new PlainArray");
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200012);
+      expect(err.message).assertEqual("The PlainArray's constructor cannot be directly invoked");
     }
   });
                 
@@ -180,7 +181,7 @@ describe("PlainArrayTest", function () {
                   
   /**
    * @tc.name: testHas011
-   * @tc.desc: Check whether the PlainArray contains a specified element. For example: plainArray.has("a").
+   * @tc.desc: Check whether the PlainArray contains a specified element. For example: plainArray.has(6).
    * @tc.author: wangyong
    */
   it("testHas011", 0, function () {
@@ -190,7 +191,7 @@ describe("PlainArrayTest", function () {
     plainArray.add(3, "C");
     plainArray.add(4, "D");
     plainArray.add(5, "E");
-    let res = plainArray.has("a");
+    let res = plainArray.has(6);
     expect(res).assertEqual(false);
     let res1 = plainArray.has(1);
     expect(res1).assertEqual(true);
@@ -267,8 +268,6 @@ describe("PlainArrayTest", function () {
     plainArray.add(5, "E");
     let res = plainArray.getKeyAt(2);
     expect(res).assertEqual(3);
-    res = plainArray.getKeyAt(10);
-    expect(res).assertEqual(undefined);
   });
                   
   /**
@@ -307,8 +306,6 @@ describe("PlainArrayTest", function () {
     expect(res).assertEqual("C");
     let value = plainArray.get(3);
     expect(value).assertEqual(undefined);
-    res = plainArray.removeAt(12);
-    expect(res).assertEqual(undefined);
   });
                     
   /**
@@ -332,15 +329,19 @@ describe("PlainArrayTest", function () {
     }
     try {
       plainArray.removeRangeFrom(15, 5);
+      expect(true).assertEqual(false);
     } catch (err) {
-      expect(err.name).assertEqual("RangeError");
-      expect(err.message).assertEqual("the index is out-of-bounds");
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200001);
+      expect(err.message).assertEqual(`The value of "index" is out of range. It must be >= 0 && <= 2. Received value is: 15`);
     }
     try {
-      plainArray.removeRangeFrom(1, -1);
+      plainArray.removeRangeFrom(1, "a");
+      expect(true).assertEqual(false);
     } catch (err) {
-      expect(err.name).assertEqual("TypeError");
-      expect(err.message).assertEqual("the size cannot be less than 0");
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "size" must be number. Received value is: a`);
     }
   });
                     
@@ -365,9 +366,11 @@ describe("PlainArrayTest", function () {
     }
     try {
       plainArray.setValueAt(-1, "X");
+      expect(true).assertEqual(false);
     } catch (err) {
-      expect(err.name).assertEqual("RangeError");
-      expect(err.message).assertEqual("the index is out-of-bounds");
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200001);
+      expect(err.message).assertEqual(`The value of "index" is out of range. It must be >= 0 && <= 4. Received value is: -1`);
     }
   });
                     
@@ -444,8 +447,6 @@ describe("PlainArrayTest", function () {
     plainArray.add(5, "E");
     let res = plainArray.getValueAt(2);
     expect(res).assertEqual("C");
-    res = plainArray.getValueAt(12);
-    expect(res).assertEqual(undefined);
   });
                     
   /**
@@ -474,16 +475,18 @@ describe("PlainArrayTest", function () {
                       
   /**
    * @tc.name: testAdd026
-   * @tc.desc: Add a pair of key value pairs to the PlainArray.For example: plainArray.add("123", null).
+   * @tc.desc: Add a pair of key value pairs to the PlainArray.For example: plainArray.add("a", null).
    * @tc.author: wangyong
    */
   it("testAdd026", 0, function () {
     let plainArray = new PlainArray();
     try {
-      let res = plainArray.add("123", null);
+      let res = plainArray.add("a", null);
+      expect(true).assertEqual(false);
     } catch (err) {
-      expect(err.name).assertEqual("TypeError");
-      expect(err.message).assertEqual("the index is not integer");
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "key" must be number. Received value is: a`);
     }
   });
                       
@@ -567,8 +570,14 @@ describe("PlainArrayTest", function () {
     plainArray.add(3, "C");
     plainArray.add(4, "D");
     plainArray.add(5, "E");
-    let res = plainArray.getValueAt(50);
-    expect(res).assertEqual(undefined);
+    try {
+      plainArray.getValueAt(50);
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200001);
+      expect(err.message).assertEqual(`The value of "index" is out of range. It must be >= 0 && <= 4. Received value is: 50`);
+    }
   });
                       
   /**
@@ -584,16 +593,18 @@ describe("PlainArrayTest", function () {
                       
   /**
    * @tc.name: testRemoveAt033
-   * @tc.desc: Delete key value pairs according to index. For example: plainArray.removeAt(2).
+   * @tc.desc: Delete key value pairs according to index. For example: plainArray.removeAt("a").
    * @tc.author: wangyong
    */
   it("testRemoveAt033", 0, function () {
     let plainArray = new PlainArray();
     try {
-      let res = plainArray.removeAt(2);
+      let res = plainArray.removeAt("a");
+      expect(true).assertEqual(false);
     } catch (err) {
-      expect(err.name).assertEqual("RangeError");
-      expect(err.message).assertEqual("the index is out-of-bounds");
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "index" must be number. Received value is: a`);
     }
   });
                       
@@ -630,9 +641,11 @@ describe("PlainArrayTest", function () {
     plainArray.add(5, "E");
     try {
       plainArray.setValueAt(8, "V");
+      expect(true).assertEqual(false);
     } catch (err) {
-      expect(err.name).assertEqual("RangeError");
-      expect(err.message).assertEqual("the index is out-of-bounds");
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200001);
+      expect(err.message).assertEqual(`The value of "index" is out of range. It must be >= 0 && <= 4. Received value is: 8`);
     }
   });
                         
@@ -715,9 +728,11 @@ describe("PlainArrayTest", function () {
     plainArray.add(-2, "b");
     try {
       plainArray.add("a", "c");
+      expect(true).assertEqual(false);
     } catch (err) {
-      expect(err.name).assertEqual("TypeError");
-      expect(err.message).assertEqual("the index is not integer");
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "key" must be number. Received value is: a`);
     }
     let res = plainArray.get(-2);
     expect(res).assertEqual("b");
@@ -775,13 +790,121 @@ describe("PlainArrayTest", function () {
     let plainArray = new PlainArray();
     plainArray.add(-2, "b");
     try {
-      plainArray.add(1.23, "a");
+      plainArray.add("b", "a");
+      expect(true).assertEqual(false);
     } catch (err) {
-      expect(err.name).assertEqual("TypeError");
-      expect(err.message).assertEqual("the index is not integer");
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "key" must be number. Received value is: b`);
     }
     let res = plainArray.get(-2);
     expect(res).assertEqual("b");
+  });
+
+  /**
+   * @tc.name: testHas044
+   * @tc.desc: Check whether the PlainArray contains a specified element. For example: plainArray.has("a").
+   * @tc.author: liuganlin
+   */
+  it("testHas044", 0, function () {
+    let plainArray = new PlainArray();
+    plainArray.add(1, "A");
+    plainArray.add(2, "B");
+    plainArray.add(3, "C");
+    plainArray.add(4, "D");
+    plainArray.add(5, "E");
+    try {
+      plainArray.has("a");
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "key" must be number. Received value is: a`);
+    }
+  });
+
+  /**
+   * @tc.name: testGet045
+   * @tc.desc: Get the corresponding value through the key. For example: plainArray.get("a").
+   * @tc.author: liuganlin
+   */
+   it("testGet045", 0, function () {
+    let plainArray = new PlainArray();
+    plainArray.add(1, "A");
+    plainArray.add(2, "B");
+    plainArray.add(3, "C");
+    plainArray.add(4, "D");
+    plainArray.add(5, "E");
+    try {
+      plainArray.get("a");
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "key" must be number. Received value is: a`);
+    }
+  });
+
+  /**
+   * @tc.name: testGetIndexOfKey046
+   * @tc.desc: Find the index of the key value pair according to the corresponding key. 
+   * If no key is specified, return -1.
+   * @tc.author: liuganlin
+   */
+  it("testGetIndexOfKey046", 0, function () {
+    let plainArray = new PlainArray();
+    plainArray.add(1, "A");
+    plainArray.add(2, "B");
+    plainArray.add(3, "C");
+    plainArray.add(4, "D");
+    plainArray.add(5, "E");
+    try {
+      plainArray.getIndexOfKey("a");
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "key" must be number. Received value is: a`);
+    }
+  });
+
+  /**
+   * @tc.name: testGetKeyAt047
+   * @tc.desc: Find the key of the key value pair according to the corresponding index. 
+   * For example: plainArray.getKeyAt("a").
+   * @tc.author: liuganlin
+   */
+  it("testGetKeyAt047", 0, function () {
+    let plainArray = new PlainArray();
+    plainArray.add(1, "A");
+    plainArray.add(2, "B");
+    plainArray.add(3, "C");
+    plainArray.add(4, "D");
+    plainArray.add(5, "E");
+    try {
+      plainArray.getKeyAt("a");
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "index" must be number. Received value is: a`);
+    }
+  });
+
+  /**
+   * @tc.name: testReMoveAt048
+   * @tc.desc: Delete key value pairs according to index. For example: plainArray.removeAt(12).
+   * @tc.author: liuganlin
+   */
+  it("testReMoveAt048", 0, function () {
+    let plainArray = new PlainArray();
+    plainArray.add(1, "A");
+    plainArray.add(2, "B");
+    plainArray.add(3, "C");
+    plainArray.add(4, "D");
+    plainArray.add(5, "E");
+    let res = plainArray.removeAt(12);
+    expect(res).assertEqual(undefined);
   });
 });
 }

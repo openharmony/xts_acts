@@ -26,8 +26,9 @@ describe("DequeTest", function () {
     try {
       let deque = new Deque();
     } catch (err) {
-      expect(err.name).assertEqual("TypeError");
-      expect(err.message).assertEqual("Cannot create new deque");
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200012);
+      expect(err.message).assertEqual("The Deque's constructor cannot be directly invoked");
     }
   });
   
@@ -539,6 +540,40 @@ describe("DequeTest", function () {
     deque.insertEnd(6);
     let size = deque.length;
     expect(size).assertEqual(7);
+  });
+
+  /**
+   * @tc.name: testInsertFront036
+   * @tc.desc: Add element to deque instance header.For example: let a = [1, 2, 3, 4]; deque.insertFront.bind({}, "a")().
+   * @tc.author: liuganlin
+   */
+  it("testInsertFront036 ", 0, function () {
+    let deque = new Deque();
+    try {
+      deque.insertFront.bind({}, "a")();
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200011);
+      expect(err.message).assertEqual(`The insertFront method cannot be bound`);
+    }
+  });
+
+  /**
+   * @tc.name: testForEach037
+   * @tc.desc: Traversing elements in deque instances. For example: deque.forEach(123).
+   * @tc.author: wangyong
+   */
+  it("testForEach037", 0, function () {
+    let deque = new Deque();
+    try {
+      deque.forEach(123);
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "callbackfn" must be callable. Received value is: 123`);
+    }
   });
 });
 }

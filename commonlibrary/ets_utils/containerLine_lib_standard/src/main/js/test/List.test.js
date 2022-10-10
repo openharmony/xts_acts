@@ -27,8 +27,9 @@ describe("ListTest", function () {
       let list = new List();
       expect(list != undefined).assertEqual(true);
     } catch (err) {
-      expect(err.name).assertEqual("TypeError");
-      expect(err.message).assertEqual("cannot create new list");
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200012);
+      expect(err.message).assertEqual("The List's constructor cannot be directly invoked");
     }
   });
   
@@ -580,9 +581,11 @@ describe("ListTest", function () {
     list.add("b");
     try {
       let res = list.removeByIndex(5);
+      expect(true).assertEqual(false);
     } catch (err) {
-      expect(err.name).assertEqual("RangeError");
-      expect(err.message).assertEqual("the index is out-of-bounds");
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200001);
+      expect(err.message).assertEqual(`The value of "index" is out of range. It must be >= 0 && <= 4. Received value is: 5`);
     }
   });
     
@@ -612,9 +615,11 @@ describe("ListTest", function () {
     list.add("b");
     try {
       let res = list.insert("d", 8);
+      expect(true).assertEqual(false);
     } catch(err) {
-      expect(err.name).assertEqual("RangeError");
-      expect(err.message).assertEqual("the index is out-of-bounds");
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200001);
+      expect(err.message).assertEqual(`The value of "index" is out of range. It must be >= 0 && <= 5. Received value is: 8`);
     }
   });
     
@@ -657,9 +662,11 @@ describe("ListTest", function () {
     list.add("14");
     try {
       list.getSubList(2, 8);
+      expect(true).assertEqual(false);
     } catch (err) {
-      expect(err.name).assertEqual("RangeError");
-      expect(err.message).assertEqual("the fromIndex or the toIndex is out-of-bounds");
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200001);
+      expect(err.message).assertEqual(`The value of "toIndex" is out of range. It must be >= 0 && <= 5. Received value is: 8`);
     }
   });
     
@@ -678,9 +685,11 @@ describe("ListTest", function () {
     list.add("14");
     try {
       let res = list.getSubList(6, 8);
+      expect(true).assertEqual(false);
     } catch (err) {
-      expect(err.name).assertEqual("RangeError");
-      expect(err.message).assertEqual("the fromIndex or the toIndex is out-of-bounds");
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200001);
+      expect(err.message).assertEqual(`The value of "fromIndex" is out of range. It must be >= 0 && <= 4. Received value is: 6`);
     }
   });
     
@@ -699,9 +708,11 @@ describe("ListTest", function () {
     list.add("14");
     try {
       let res = list.getSubList(6, 2);
+      expect(true).assertEqual(false);
     } catch (err) {
-      expect(err.name).assertEqual("RangeError");
-      expect(err.message).assertEqual("the toIndex cannot be less than or equal to fromIndex");
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200001);
+      expect(err.message).assertEqual(`The value of "fromIndex" is out of range. It must be >= 0 && <= 1. Received value is: 6`);
     }
   });
     
@@ -882,9 +893,11 @@ describe("ListTest", function () {
     let list = new List();
     try {
       let res = list.removeByIndex(1);
+      expect(true).assertEqual(false);
     } catch (err) {
-      expect(err.name).assertEqual("RangeError");
-      expect(err.message).assertEqual("the index is out-of-bounds");
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200001);
+      expect(err.message).assertEqual(`The value of "index" is out of range. It must be >= 0 && <= 0. Received value is: 1`);
     }
   });
     
@@ -1070,6 +1083,137 @@ describe("ListTest", function () {
     let a = ["a", "b", "a", "b"];
     for (let i = 0; i < a.length; i++) {
       expect(arr[i]).assertEqual(a[i]);
+    }
+  });
+
+  /**
+   * @tc.name: testGet065
+   * @tc.desc: Gets the element corresponding to the specified index. For example: list.get.bind({}, 1)().
+   * @tc.author: wangyong
+   */
+  it("testGet065 ", 0, function () {
+    let list = new List();
+    try {
+      list.get.bind({}, 1)();
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200011);
+      expect(err.message).assertEqual(`The get method cannot be bound`);
+    }
+  });
+
+  /**
+   * @tc.name: testInsert066
+   * @tc.desc: Insert an element into the middle of the List instance. For example: list.insert("d", "a").
+   * @tc.author: liuganlin
+   */
+  it("testInsert066", 0, function () {
+    let list = new List();
+    list.add("a");
+    list.add("b");
+    list.add("c");
+    try {
+      list.insert("d", "a");
+      expect(true).assertEqual(false);
+    } catch(err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "index" must be number. Received value is: a`);
+    }
+  });
+
+  /**
+   * @tc.name: testRemoveByIndex067
+   * @tc.desc: In the List instance, delete the element based on its index. For example: list.removeByIndex("a").
+   * @tc.author: liuganlin
+   */
+  it("testRemoveByIndex067", 0, function () {
+    let list = new List();
+    try {
+      let res = list.removeByIndex("a");
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "index" must be number. Received value is: a`);
+    }
+  });
+
+  /**
+   * @tc.name: testSet068
+   * @tc.desc: Modify the element corresponding to the specified index. For example: list.set(6, "d").
+   * @tc.author: liuganlin
+   */
+  it("testSet068", 0, function () {
+    let list = new List();
+    list.add("a");
+    list.add("b");
+    list.add("c");
+    try {
+      list.set(6, "d");
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200001);
+      expect(err.message).assertEqual(`The value of "index" is out of range. It must be >= 0 && <= 2. Received value is: 6`);
+    }
+  });
+
+  /**
+   * @tc.name: testSet069
+   * @tc.desc: Modify the element corresponding to the specified index. For example: list.set("a", "d").
+   * @tc.author: liuganlin
+   */
+  it("testSet069", 0, function () {
+    let list = new List();
+    list.add("a");
+    list.add("b");
+    list.add("c");
+    try {
+      list.set("a", "d");
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "index" must be number. Received value is: a`);
+    }
+  });
+
+  /**
+   * @tc.name: testSort070
+   * @tc.desc: Arrange the elements in the List instance in descending order. For example: list.sort(123).
+   * @tc.author: liuganlin
+   */
+  it("testSort070", 0, function () {
+    let list = new List();
+    try {
+      list.sort(123);
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "comparator" must be callable. Received value is: 123`);
+    }
+  });
+
+  /**
+   * @tc.name: testGetSubList071
+   * @tc.desc: Intercepts an element within the specified range, including the element with the 
+   * starting index but not the element with the ending index. For example: list.getSubList(6, 2).
+   * @tc.author: liuganlin
+   */
+  it("testGetSubList071", 0, function () {
+    let list = new List();
+    list.add("4");
+    list.add("3");
+    try {
+      let res = list.getSubList("a", 2);
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "fromIndex" must be number. Received value is: a`);
     }
   });
   });

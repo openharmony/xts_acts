@@ -26,8 +26,9 @@ describe("LinkedListTest", function () {
     try {
       let linkedList = new LinkedList();
     } catch (err) {
-      expect(err.name).assertEqual("TypeError");
-      expect(err.message).assertEqual("Cannot create new linkedList");
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200012);
+      expect(err.message).assertEqual("The LinkedList's constructor cannot be directly invoked");
     }
   });
   
@@ -343,9 +344,11 @@ describe("LinkedListTest", function () {
     linkedList.add("b");
     try {
       let res = linkedList.removeByIndex(10);
+      expect(true).assertEqual(false);
     } catch (err) {
-      expect(err.name).assertEqual("RangeError");
-      expect(err.message).assertEqual("the index is out-of-bounds");
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200001);
+      expect(err.message).assertEqual(`The value of "index" is out of range. It must be >= 0 && <= 4. Received value is: 10`);
     }
   });
     
@@ -560,9 +563,11 @@ describe("LinkedListTest", function () {
     linkedList.add("b");
     try {
       let res = linkedList.insert(8, "d");
+      expect(true).assertEqual(false);
     } catch (err) {
-      expect(err.name).assertEqual("RangeError");
-      expect(err.message).assertEqual("the index is out-of-bounds");
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200001);
+      expect(err.message).assertEqual(`The value of "index" is out of range. It must be >= 0 && <= 5. Received value is: 8`);
     }
   });
     
@@ -807,9 +812,11 @@ describe("LinkedListTest", function () {
     let linkedList = new LinkedList();
     try {
       let res = linkedList.removeByIndex(1);
+      expect(true).assertEqual(false);
     } catch (err) {
-      expect(err.name).assertEqual("RangeError");
-      expect(err.message).assertEqual("the index is out-of-bounds");
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200001);
+      expect(err.message).assertEqual(`The value of "index" is out of range. It must be >= 0 && <= 0. Received value is: 1`);
     }
   });
     
@@ -985,6 +992,171 @@ describe("LinkedListTest", function () {
     let a = ["e", "a", "b"];
     for (let i = 0; i < a.length; i++) {
       expect(arr[i]).assertEqual(a[i]);
+    }
+  });
+
+  /**
+   * @tc.name: testAdd057
+   * @tc.desc: Add a element to the end of the LinkedList instance. For example: linkedList.add.bind({}, obj)().
+   * @tc.author: wangyong
+   */
+  it("testAdd059 ", 0, function () {
+    let linkedList = new LinkedList();
+    try {
+      linkedList.add.bind({}, "a")();
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200011);
+      expect(err.message).assertEqual(`The add method cannot be bound`);
+    }
+  });
+
+  /**
+   * @tc.name: testInsert058
+   * @tc.desc: Insert an element into the middle of the LinkedList instance. For example: linkedList.insert("a", "d").
+   * @tc.author: liuganlin
+   */
+  it("testInsert058", 0, function () {
+    let linkedList = new LinkedList();
+    linkedList.add("a");
+    linkedList.add("b");
+    linkedList.add("c");
+    try {
+      linkedList.insert("a", "d");
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "index" must be number. Received value is: a`);
+    }
+  });
+
+  /**
+   * @tc.name: testGet059
+   * @tc.desc: Gets the element corresponding to the specified index. For example: linkedList.get("a").
+   * @tc.author: liuganlin
+   */
+  it("testGet059", 0, function () {
+    let linkedList = new LinkedList();
+    try {
+      linkedList.get("a");
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "index" must be number. Received value is: a`);
+    }
+  });
+
+  /**
+   * @tc.name: testRemoveFirst060
+   * @tc.desc: Delete the header element of a LinkedList instance. For example: linkedList.removeFirst().
+   * @tc.author: liuganlin
+   */
+  it("testRemoveFirst060", 0, function () {
+    let linkedList = new LinkedList();
+    try {
+      linkedList.removeFirst();
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200010);
+      expect(err.message).assertEqual(`Container is empty`);
+    }
+  });
+
+  /**
+   * @tc.name: testRemoveLast061
+   * @tc.desc: Delete the end element of a LinkedList instance. linkedList.removeLast().
+   * @tc.author: liuganlin
+   */
+  it("testRemoveLast061", 0, function () {
+    let linkedList = new LinkedList();
+    try {
+      linkedList.removeLast();
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200010);
+      expect(err.message).assertEqual(`Container is empty`);
+    }
+  });
+
+  /**
+   * @tc.name: testRemoveByIndex062
+   * @tc.desc: In the linkedList instance, delete the element based on its subscript index. 
+   * For example: linkedList.removeByIndex("a").
+   * @tc.author: liuganlin
+   */
+  it("testRemoveByIndex062", 0, function () {
+    let linkedList = new LinkedList();
+    linkedList.add("a");
+    linkedList.add("b");
+    linkedList.add("c");
+    try {
+      linkedList.removeByIndex("a");
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "index" must be number. Received value is: a`);
+    }
+  });
+
+  /**
+   * @tc.name: testRemoveFirstFound063
+   * @tc.desc: Delete the specified element found for the first time. For example: linkedList.removeFirstFound("b").
+   * @tc.author: liuganlin
+   */
+  it("testRemoveFirstFound063", 0, function () {
+    let linkedList = new LinkedList();
+    try {
+      linkedList.removeFirstFound("b");
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200010);
+      expect(err.message).assertEqual(`Container is empty`);
+    }
+  });
+
+  /**
+   * @tc.name: testSet064
+   * @tc.desc: Modify the element corresponding to the specified index. For example: linkedList.set(6, "d").
+   * @tc.author: liuganlin
+   */
+  it("testSet064", 0, function () {
+    let linkedList = new LinkedList();
+    linkedList.add("a");
+    linkedList.add("b");
+    linkedList.add("c");
+    linkedList.add("a");
+    try {
+      linkedList.set(6, "d");
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200001);
+      expect(err.message).assertEqual(`The value of "index" is out of range. It must be >= 0 && <= 3. Received value is: 6`);
+    }
+  });
+
+  /**
+   * @tc.name: testSet065
+   * @tc.desc: Modify the element corresponding to the specified index. For example: linkedList.set("a", "d").
+   * @tc.author: liuganlin
+   */
+  it("testSet065", 0, function () {
+    let linkedList = new LinkedList();
+    linkedList.add("a");
+    try {
+      linkedList.set("a", "d");
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "index" must be number. Received value is: a`);
     }
   });
 });

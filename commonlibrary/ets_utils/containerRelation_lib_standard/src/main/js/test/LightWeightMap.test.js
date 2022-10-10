@@ -27,8 +27,9 @@ describe("LightWeightMapTest", function () {
       let lightWeightMap = new LightWeightMap();
       expect(lightWeightMap != undefined).assertEqual(true);
     } catch (err) {
-      expect(err.name).assertEqual("TypeError");
-      expect(err.message).assertEqual("Cannot create new TreeMap");
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200012);
+      expect(err.message).assertEqual("The LightWeightMap's constructor cannot be directly invoked");
     }
   });
             
@@ -651,31 +652,35 @@ describe("LightWeightMapTest", function () {
     lightWeightMap.set("e", "E");
     try {
       lightWeightMap.increaseCapacityTo("qwe");
+      expect(true).assertEqual(false);
     } catch (err) {
-      expect(err.name).assertEqual("TypeError");
-      expect(err.message).assertEqual("the size is not integer");
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "minimumCapacity" must be number. Received value is: qwe`);
     }
   });
                   
   /**
    * @tc.name: testRemoveAt038
-   * @tc.desc: Delete key value pairs according to index. For example: lightWeightMap.removeAt("123").
+   * @tc.desc: Delete key value pairs according to index. For example: lightWeightMap.removeAt("a").
    * @tc.author: wangyong
    */
   it("testRemoveAt038", 0, function () {
     let lightWeightMap = new LightWeightMap();
     try {
-      let res = lightWeightMap.removeAt("123");
+      let res = lightWeightMap.removeAt("a");
+      expect(true).assertEqual(false);
     } catch (err) {
-      expect(err.name).assertEqual("TypeError");
-      expect(err.message).assertEqual("index is not integer");
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "index" must be number. Received value is: a`);
     }
   });
                   
   /**
    * @tc.name: testGetValueAt039
    * @tc.desc: Get the value of the key value pair according to the corresponding index. 
-   * For example: lightWeightMap.getValueAt("123").
+   * For example: lightWeightMap.getValueAt("a").
    * @tc.author: wangyong
    */
   it("testGetValueAt039", 0, function () {
@@ -686,17 +691,19 @@ describe("LightWeightMapTest", function () {
     lightWeightMap.set(4, "D");
     lightWeightMap.set(5, "E");
     try {
-      let res = lightWeightMap.getValueAt("123");
+      let res = lightWeightMap.getValueAt("a");
+      expect(true).assertEqual(false);
     } catch (err) {
-      expect(err.name).assertEqual("TypeError");
-      expect(err.message).assertEqual("the index is not integer");
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "index" must be number. Received value is: a`);
     }
   });
                   
   /**
    * @tc.name: testGetKeyAt040
    * @tc.desc: Find the key of the key value pair according to the corresponding index. 
-   * For example: lightWeightMap.getKeyAt("123").
+   * For example: lightWeightMap.getKeyAt("a").
    * @tc.author: wangyong
    */
   it("testGetKeyAt040", 0, function () {
@@ -707,10 +714,12 @@ describe("LightWeightMapTest", function () {
     lightWeightMap.set(4, "D");
     lightWeightMap.set(5, "E");
     try {
-      let res = lightWeightMap.getKeyAt("123");
+      let res = lightWeightMap.getKeyAt("a");
+      expect(true).assertEqual(false);
     } catch (err) {
-      expect(err.name).assertEqual("TypeError");
-      expect(err.message).assertEqual("the index is not integer");
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "index" must be number. Received value is: a`);
     }
   });
                   
@@ -884,6 +893,128 @@ describe("LightWeightMapTest", function () {
     lightWeightMap1.set("d", "D1");
     let res = lightWeightMap.hasAll(lightWeightMap1);
     expect(res).assertEqual(false);
+  });
+
+  /**
+   * @tc.name: testHasAll051
+   * @tc.desc: Judge whether a lightweightmap contains all key value pairs in another lightweightmap.
+   * @tc.author: liuganlin
+   */
+  it("testHasAll051", 0, function () {
+    let lightWeightMap = new LightWeightMap();
+    try {
+      lightWeightMap.hasAll([1, 2, 3]);
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "map" must be LightWeightMap. Received value is: 1,2,3`);
+    }
+  });
+
+  /**
+   * @tc.name: testGetKeyAt052
+   * @tc.desc: Find the key of the key value pair according to the corresponding index. 
+   * For example: lightWeightMap.getKeyAt(6).
+   * @tc.author: liuganlin
+   */
+  it("testGetKeyAt052", 0, function () {
+    let lightWeightMap = new LightWeightMap();
+    lightWeightMap.set(1, "A");
+    lightWeightMap.set(2, "B");
+    lightWeightMap.set(3, "C");
+    lightWeightMap.set(4, "D");
+    lightWeightMap.set(5, "E");
+    try {
+      let res = lightWeightMap.getKeyAt(6);
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200001);
+      expect(err.message).assertEqual(`The value of "index" is out of range. It must be >= 0 && <= 4. Received value is: 6`);
+    }
+  });
+
+  /**
+   * @tc.name: testSetAll053
+   * @tc.desc: Copy key value pairs from one LightWeightMap to another.
+   * @tc.author: liuganlin
+   */
+  it("testSetAll053", 0, function () {
+    let lightWeightMap = new LightWeightMap();
+    lightWeightMap.set(1, "A");
+    lightWeightMap.set(2, "B");
+    try {
+      lightWeightMap.setAll([1, 2, 3]);
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "map" must be LightWeightMap. Received value is: 1,2,3`);
+    }
+  });
+
+  /**
+   * @tc.name: testSetValueAt054
+   * @tc.desc: Modify the value of the key value pair according to the corresponding index. 
+   * For example: lightWeightMap.setValueAt("a", "a").
+   * @tc.author: liuganlin
+   */
+  it("testSetValueAt054", 0, function () {
+    let lightWeightMap = new LightWeightMap();
+    lightWeightMap.set(1, "A");
+    lightWeightMap.set(2, "B");
+    try {
+      lightWeightMap.setValueAt("a", "a");
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "index" must be number. Received value is: a`);
+    }
+  });
+
+  /**
+   * @tc.name: testSetValueAt055
+   * @tc.desc: Modify the value of the key value pair according to the corresponding index. 
+   * For example: lightWeightMap.setValueAt(3, "a").
+   * @tc.author: liuganlin
+   */
+  it("testSetValueAt055", 0, function () {
+    let lightWeightMap = new LightWeightMap();
+    lightWeightMap.set(1, "A");
+    lightWeightMap.set(2, "B");
+    try {
+      lightWeightMap.setValueAt(3, "a");
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200001);
+      expect(err.message).assertEqual(`The value of "index" is out of range. It must be >= 0 && <= 1. Received value is: 3`);
+    }
+  });
+
+  /**
+   * @tc.name: testGetValueAt056
+   * @tc.desc: Get the value of the key value pair according to the corresponding index. 
+   * For example: lightWeightMap.getValueAt(6).
+   * @tc.author: liuganlin
+   */
+  it("testGetValueAt056", 0, function () {
+    let lightWeightMap = new LightWeightMap();
+    lightWeightMap.set(1, "A");
+    lightWeightMap.set(2, "B");
+    lightWeightMap.set(3, "C");
+    lightWeightMap.set(4, "D");
+    lightWeightMap.set(5, "E");
+    try {
+      lightWeightMap.getValueAt(6);
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200001);
+      expect(err.message).assertEqual(`The value of "index" is out of range. It must be >= 0 && <= 4. Received value is: 6`);
+    }
   });
 });
 }

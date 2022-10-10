@@ -26,8 +26,9 @@ describe("QueueTest", function () {
     try {
       let queue = new Queue();
     } catch (err) {
-      expect(err.name).assertEqual("TypeError");
-      expect(err.message).assertEqual("Cannot create new queue");
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200012);
+      expect(err.message).assertEqual("The Queue's constructor cannot be directly invoked");
     }
   });
   
@@ -303,6 +304,23 @@ describe("QueueTest", function () {
     let a = [8, "一", "二", 5, 6, "三", "四"];
     for (let i = 0; i < a.length; i++) {
       expect(arr[i]).assertEqual(a[i]);
+    }
+  });
+
+  /**
+   * @tc.name: testAdd020
+   * @tc.desc: Add element to Queue instance end. For example: queue.add.bind({}, 10)().
+   * @tc.author: wangyong
+   */
+  it("testAdd020 ", 0, function () {
+    let queue = new Queue();
+    try {
+      queue.add.bind({}, 10)();
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200011);
+      expect(err.message).assertEqual(`The add method cannot be bound`);
     }
   });
 });

@@ -27,8 +27,9 @@ describe("TreeMapTest", function () {
       let treeMap = new TreeMap();
       expect(treeMap != undefined).assertEqual(true);
     } catch (err) {
-      expect(err.name).assertEqual("TypeError");
-      expect(err.message).assertEqual("Cannot create new TreeMap");
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200012);
+      expect(err.message).assertEqual("The TreeMap's constructor cannot be directly invoked");
     }
   });
                             
@@ -630,6 +631,25 @@ describe("TreeMapTest", function () {
     treeMap.clear();
     let res1 = treeMap.isEmpty();
     expect(res1).assertEqual(true);
+  });
+
+  /**
+   * @tc.name: testSetAll041
+   * @tc.desc: Copy key value pairs from one HashMap to another. For example: treeMap.setAll([1, 2, 3]).
+   * @tc.author: liuganlin
+   */
+  it("testSetAll041", 0, function () {
+    let treeMap = new TreeMap();
+    treeMap.set(0, "a");
+    treeMap.set(1, "b");
+    try {
+      treeMap.setAll([1, 2, 3]);
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "map" must be TreeMap. Received value is: 1,2,3`);
+    }
   });
 });
 }

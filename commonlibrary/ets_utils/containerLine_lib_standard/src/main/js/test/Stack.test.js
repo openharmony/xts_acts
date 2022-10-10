@@ -27,8 +27,9 @@ describe("StackTest", function () {
       let stack = new Stack();
       expect(stack != undefined).assertEqual(true);
     } catch (err) {
-      expect(err.name).assertEqual("TypeError");
-      expect(err.message).assertEqual("Cannot create new stack");
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200012);
+      expect(err.message).assertEqual("The Stack's constructor cannot be directly invoked");
     }
   });
 
@@ -512,6 +513,23 @@ describe("StackTest", function () {
     let a = [8, "一", "二", 5, c, 6, "三", "四"];
     for (let i = 0; i < a.length; i++) {
       expect(arr[i]).assertEqual(a[i]);
+    }
+  });
+
+  /**
+   * @tc.name: testPush036
+   * @tc.desc: Insert element at top of stack. For example: stack.push.bind({}, 10)().
+   * @tc.author: wangyong
+   */
+  it("testPush036 ", 0, function () {
+    let stack = new Stack();
+    try {
+      stack.push.bind({}, 10)();
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200011);
+      expect(err.message).assertEqual(`The push method cannot be bound`);
     }
   });
 });

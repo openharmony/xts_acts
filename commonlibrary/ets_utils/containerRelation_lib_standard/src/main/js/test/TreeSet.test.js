@@ -27,8 +27,9 @@ describe("TreeSetTest", function () {
       let treeSet = new TreeSet();
       expect(treeSet != undefined).assertEqual(true);
     } catch (err) {
-      expect(err.name).assertEqual("TypeError");
-      expect(err.message).assertEqual("Cannot create new TreeSet");
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200012);
+      expect(err.message).assertEqual("The TreeSet's constructor cannot be directly invoked");
     }
   });
                               
@@ -555,6 +556,23 @@ describe("TreeSetTest", function () {
     let arr1 = [0, 1, 2, 3, 4];
     for (let i = 0; i < arr1.length; i++) {
       expect(arr[i]).assertEqual(arr1[i]);
+    }
+  });
+
+  /**
+   * @tc.name: testAdd038
+   * @tc.desc: Add element to TreeSet instance. For example: treeSet.add.bind({}, "a")().
+   * @tc.author: liuganlin
+   */   
+   it("testAdd038", 0, function () {
+    let treeSet = new TreeSet();
+    try {
+      treeSet.add.bind({}, "a")();
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200011);
+      expect(err.message).assertEqual(`The add method cannot be bound`);
     }
   });
 });

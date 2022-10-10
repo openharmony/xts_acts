@@ -27,8 +27,9 @@ describe("ArraylistTest", function () {
       let arrayList = new ArrayList();
       expect(arrayList != undefined).assertEqual(true);
     } catch (err) {
-      expect(err.name).assertEqual("TypeError");
-      expect(err.message).assertEqual("Cannot create new arrayList");
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200012);
+      expect(err.message).assertEqual("The ArrayList's constructor cannot be directly invoked");
     }
   });
 
@@ -526,13 +527,11 @@ describe("ArraylistTest", function () {
     arrayList.add("a");
     try {
       let res = arrayList.insert(8, -1);
+      expect(true).assertEqual(false);
     } catch (err) {
-      expect(err.name).assertEqual("RangeError");
-      if (err.message != "the index is out-of-bounds") {
-        expect(err.message).assertEqual("ArrayList: set out-of-bounds");
-      } else {
-        expect(err.message).assertEqual("the index is out-of-bounds");
-      }
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200001);
+      expect(err.message).assertEqual(`The value of "index" is out of range. It must be >= 0 && <= 4. Received value is: -1`);
     }
   });
 
@@ -550,13 +549,11 @@ describe("ArraylistTest", function () {
     arrayList.add("a");
     try {
       let res = arrayList.insert(8, 10);
+      expect(true).assertEqual(false);
     } catch (err) {
-      expect(err.name).assertEqual("RangeError");
-      if (err.message != "the index is out-of-bounds") {
-        expect(err.message).assertEqual("ArrayList: set out-of-bounds");
-      } else {
-        expect(err.message).assertEqual("the index is out-of-bounds");
-      }
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200001);
+      expect(err.message).assertEqual(`The value of "index" is out of range. It must be >= 0 && <= 4. Received value is: 10`);
     }
   });
 
@@ -574,13 +571,11 @@ describe("ArraylistTest", function () {
     arrayList.add("a");
     try {
       let res = arrayList.insert(8, 11);
+      expect(true).assertEqual(false);
     } catch (err) {
-      expect(err.name).assertEqual("RangeError");
-      if (err.message != "the index is out-of-bounds") {
-        expect(err.message).assertEqual("ArrayList: set out-of-bounds");
-      } else {
-        expect(err.message).assertEqual("the index is out-of-bounds");
-      }
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200001);
+      expect(err.message).assertEqual(`The value of "index" is out of range. It must be >= 0 && <= 4. Received value is: 11`);
     }
   });
 
@@ -709,13 +704,11 @@ describe("ArraylistTest", function () {
     arrayList.add("b");
     try {
       let res = arrayList.removeByIndex(5);
+      expect(true).assertEqual(false);
     } catch (err) {
-      expect(err.name).assertEqual("RangeError");
-      if (err.message != "the index is out-of-bounds") {
-        expect(err.message).assertEqual("removeByIndex is out-of-bounds");
-      } else {
-        expect(err.message).assertEqual("the index is out-of-bounds");
-      }
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200001);
+      expect(err.message).assertEqual(`The value of "index" is out of range. It must be >= 0 && <= 4. Received value is: 5`);
     }
   });
 
@@ -736,13 +729,11 @@ describe("ArraylistTest", function () {
     arrayList.add(1);
     try {
       let res = arrayList.removeByRange(3, 1);
+      expect(true).assertEqual(false);
     } catch (err) {
-      expect(err.name).assertEqual("RangeError");
-      if (err.message != "the fromIndex cannot be less than or equal to toIndex") {
-        expect(err.message).assertEqual("fromIndex cannot be less than or equal to toIndex");
-      } else {
-        expect(err.message).assertEqual("the fromIndex cannot be less than or equal to toIndex");
-      }
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200001);
+      expect(err.message).assertEqual(`The value of "fromIndex" is out of range. It must be >= 0 && <= 0. Received value is: 3`);
     }
   });
 
@@ -761,20 +752,18 @@ describe("ArraylistTest", function () {
     arrayList.add(1);
     try {
       let res = arrayList.removeByRange(6, 8);
+      expect(true).assertEqual(false);
     } catch (err) {
-      expect(err.name).assertEqual("RangeError");
-      if (err.message != "the fromIndex or the toIndex is out-of-bounds") {
-        expect(err.message).assertEqual("ArrayList: set out-of-bounds");
-      } else {
-        expect(err.message).assertEqual("the fromIndex or the toIndex is out-of-bounds");
-      }
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200001);
+      expect(err.message).assertEqual(`The value of "fromIndex" is out of range. It must be >= 0 && <= 4. Received value is: 6`);
     }
   });
 
   /**
    * @tc.name: testRemoveByRange039
    * @tc.desc: Deletes elements from a specified range, including elements at the start position and 
-   * elements at the end position. For example: removeByRange(0, 9).
+   * elements at the end position. For example: removeByRange(0, 7).
    * @tc.author: wangyong
    */
   it("testRemoveByRange039", 0, function () {
@@ -787,7 +776,7 @@ describe("ArraylistTest", function () {
     arrayList.add("b");
     arrayList.add("c");
     arrayList.add(1);
-    arrayList.removeByRange(0, 9);
+    arrayList.removeByRange(0, 8);
     let res = arrayList.length;
     let res1 = arrayList.getLastIndexOf(1);
     expect(res).assertEqual(0);
@@ -809,13 +798,11 @@ describe("ArraylistTest", function () {
     arrayList.add(14);
     try {
       let subArr = arrayList.subArrayList(4, 2);
+      expect(true).assertEqual(false);
     } catch (err) {
-      expect(err.name).assertEqual("RangeError");
-      if (err.message != "the fromIndex cannot be less than or equal to toIndex") {
-        expect(err.message).assertEqual("fromIndex cannot be less than or equal to toIndex");
-      } else {
-        expect(err.message).assertEqual("the fromIndex cannot be less than or equal to toIndex");
-      }
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200001);
+      expect(err.message).assertEqual(`The value of "fromIndex" is out of range. It must be >= 0 && <= 1. Received value is: 4`);
     }
   });
 
@@ -832,7 +819,7 @@ describe("ArraylistTest", function () {
     arrayList.add(1);
     arrayList.add(2);
     arrayList.add(14);
-    let subArr = arrayList.subArrayList(0, 6);
+    let subArr = arrayList.subArrayList(0, 5);
     let arr = [];
     arrayList.forEach((item, index) => {
       arr.push(item);
@@ -858,13 +845,11 @@ describe("ArraylistTest", function () {
     arrayList.add(14);
     try {
       let subArr = arrayList.subArrayList(6, 9);
+      expect(true).assertEqual(false);
     } catch (err) {
-      expect(err.name).assertEqual("RangeError");
-      if (err.message != "the fromIndex or the toIndex is out-of-bounds") {
-        expect(err.message).assertEqual("fromIndex or toIndex is out-of-bounds");
-      } else {
-        expect(err.message).assertEqual("the fromIndex or the toIndex is out-of-bounds");
-      }
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200001);
+      expect(err.message).assertEqual(`The value of "fromIndex" is out of range. It must be >= 0 && <= 4. Received value is: 6`);
     }
   });
 
@@ -901,13 +886,11 @@ describe("ArraylistTest", function () {
     arrayList.add(14);
     try {
       let res = arrayList.increaseCapacityTo();
+      expect(true).assertEqual(false);
     } catch (err) {
-      expect(err.name).assertEqual("TypeError");
-      if (err.message != "index is not integer") {
-        expect(err.message).assertEqual("newCapacity is not Integer");
-      } else {
-        expect(err.message).assertEqual("index is not integer");
-      }
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "newCapacity" must be number. Received value is: undefined`);
     }
   });
 
@@ -1058,9 +1041,137 @@ describe("ArraylistTest", function () {
     arrayList.add("b");
     arrayList.add("c");
     arrayList.add(1);
-    arrayList.removeByRange(0, 9);
-    let res = arrayList.length;
-    expect(res).assertEqual(0);
+    try {
+      arrayList.removeByRange(0, 9);
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200001);
+      expect(err.message).assertEqual(`The value of "toIndex" is out of range. It must be >= 0 && <= 8. Received value is: 9`);
+    }
+  });
+
+  /**
+   * @tc.name: testAdd053
+   * @tc.desc: Add a boolean type element to the end of the ArrayList instance. 
+   * For example: arrayList.add.bind({})().
+   * @tc.author: liuganlin
+   */
+  it("testAdd053 ", 0, function () {
+    let arrayList = new ArrayList();
+    try {
+      arrayList.add.bind({}, "a")()
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200011);
+      expect(err.message).assertEqual(`The add method cannot be bound`);
+    }
+  });
+
+  /**
+   * @tc.name: testInsert054
+   * @tc.desc: Inserting an element with an index greater than or equal to the length of
+   * the ArrayList instance will throw an exception. For example: arrayList.insert("a", -2).
+   * @tc.author: liuganlin
+   */
+  it("testInsert054", 0, function () {
+    let arrayList = new ArrayList();
+    arrayList.add(1);
+    try {
+      let res = arrayList.insert("a", "b");
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "index" must be number. Received value is: b`);
+    }
+  });
+
+  /**
+   * @tc.name: testRemoveByIndex055
+   * @tc.desc: In the ArrayList instance, delete the element based on its index index. 
+   * For example: arrayList.removeByIndex(-1).
+   * @tc.author: liuganlin
+   */
+  it("testRemoveByIndex055", 0, function () {
+    let arrayList = new ArrayList();
+    arrayList.add("a");
+    arrayList.add("b");
+    arrayList.add("c");
+    arrayList.add("a");
+    arrayList.add("b");
+    try {
+      let res = arrayList.removeByIndex("a");
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "index" must be number. Received value is: a`);
+    }
+  });
+
+  /**
+   * @tc.name: testRemoveByRange056
+   * @tc.desc: Deletes elements from a specified range, including elements at the start position and 
+   * elements at the end position. For example: arrayList.removeByRange(-3, 9).
+   * @tc.author: liuganlin
+   */
+  it("testRemoveByRange056", 0, function () {
+    let arrayList = new ArrayList();
+    arrayList.add(1);
+    arrayList.add("a");
+    try {
+      arrayList.removeByRange("a", 9);
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "fromIndex" must be number. Received value is: a`);
+    }
+  });
+
+  /**
+   * @tc.name: testReplaceAllElements057
+   * @tc.desc: Perform some operation on the elements in the ArrayList instance and return the ArrayList instance 
+   * after the operation. For example: arrayList.replaceAllElements(123).
+   * @tc.author: liuganlin
+   */
+  it("testReplaceAllElements057", 0, function () {
+    let arrayList = new ArrayList();
+    arrayList.add(4);
+    arrayList.add(3);
+    try {
+      arrayList.replaceAllElements(123);
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "callbackfn" must be callable. Received value is: 123`);
+    }
+  });
+
+  /**
+   * @tc.name: testSubArrayList058
+   * @tc.desc: Intercepts an element within the specified range, including the element with the 
+   * starting index but not the element with the ending index. For example: arrayList.subArrayList("a", 2).
+   * @tc.author: liuganlin
+   */
+  it("testSubArrayList058", 0, function () {
+    let arrayList = new ArrayList();
+    arrayList.add(4);
+    arrayList.add(3);
+    arrayList.add(1);
+    arrayList.add(2);
+    arrayList.add(14);
+    try {
+      arrayList.subArrayList("a", 2);
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "fromIndex" must be number. Received value is: a`);
+    }
   });
 });
 }

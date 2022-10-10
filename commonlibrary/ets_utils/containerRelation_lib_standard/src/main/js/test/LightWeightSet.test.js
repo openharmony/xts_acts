@@ -27,8 +27,9 @@ describe("LightWeightSetTest", function () {
       let lightWeightSet = new LightWeightSet();
       expect(lightWeightSet != undefined).assertEqual(true);
     } catch (err) {
-      expect(err.name).assertEqual("TypeError");
-      expect(err.message).assertEqual("Cannot create new TreeMap");
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200012);
+      expect(err.message).assertEqual("The LightWeightSet's constructor cannot be directly invoked");
     }
   });
               
@@ -526,9 +527,11 @@ describe("LightWeightSetTest", function () {
     lightWeightSet.add(5);
     try {
       lightWeightSet.increaseCapacityTo(3);
+      expect(true).assertEqual(false);
     } catch (err) {
-      expect(err.name).assertEqual("TypeError");
-      expect(err.message).assertEqual("the index is not integer");
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200001);
+      expect(err.message).assertEqual(`The value of "minimumCapacity" is out of range. It must be > 8. Received value is: 3`);
     }
   });
               
@@ -547,24 +550,28 @@ describe("LightWeightSetTest", function () {
     lightWeightSet.add(5);
     try {
       let res = lightWeightSet.increaseCapacityTo("qwe");
+      expect(true).assertEqual(false);
     } catch (err) {
-      expect(err.name).assertEqual("TypeError");
-      expect(err.message).assertEqual("the index is not integer");
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "minimumCapacity" must be number. Received value is: qwe`);
     }
   });
               
   /**
    * @tc.name: testRemoveAt032
-   * @tc.desc: Delete elements according to index. For example: lightWeightSet.removeAt("123").
+   * @tc.desc: Delete elements according to index. For example: lightWeightSet.removeAt("a").
    * @tc.author: wangyong
    */
   it("testRemoveAt032", 0, function () {
     let lightWeightSet = new LightWeightSet();
     try {
-      let res = lightWeightSet.removeAt("123");
+      let res = lightWeightSet.removeAt("a");
+      expect(true).assertEqual(false);
     } catch (err) {
-      expect(err.name).assertEqual("TypeError");
-      expect(err.message).assertEqual("the index is not integer");
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "index" must be number. Received value is: a`);
     }
   });
               
@@ -587,7 +594,7 @@ describe("LightWeightSetTest", function () {
               
   /**
    * @tc.name: testGetValueAt034
-   * @tc.desc: Get the element according to the corresponding index. For example: lightWeightSet.getValueAt("123").
+   * @tc.desc: Get the element according to the corresponding index. For example: lightWeightSet.getValueAt("a").
    * @tc.author: wangyong
    */
   it("testGetValueAt034", 0, function () {
@@ -598,10 +605,12 @@ describe("LightWeightSetTest", function () {
     lightWeightSet.add(4);
     lightWeightSet.add(5);
     try {
-      let res = lightWeightSet.getValueAt("123");
+      let res = lightWeightSet.getValueAt("a");
+      expect(true).assertEqual(false);
     } catch (err) {
-      expect(err.name).assertEqual("TypeError");
-      expect(err.message).assertEqual("the index is not integer");
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "index" must be number. Received value is: a`);
     }
   });
               
@@ -693,12 +702,8 @@ describe("LightWeightSetTest", function () {
     lightWeightSet.add(3);
     lightWeightSet.add(4);
     lightWeightSet.add(5);
-    try {
-      let res = lightWeightSet.remove("A");
-    } catch (err) {
-      expect(err.name).assertEqual("TypeError");
-      expect(err.message).assertEqual("the index is not integer");
-    }
+    let res = lightWeightSet.remove("A");
+    expect(res).assertEqual(undefined);
   });
               
   /**
@@ -754,6 +759,46 @@ describe("LightWeightSetTest", function () {
     let obj = [1,2];
     let res = lightWeightSet.equal(obj);
     expect(res).assertEqual(false);
+  });
+
+  /**
+   * @tc.name: testAddAll044
+   * @tc.desc: Copy all element from one LightWeightSet to another.
+   * @tc.author: liuganlin
+   */
+  it("testAddAll044", 0, function () {
+    let lightWeightSet = new LightWeightSet();
+    lightWeightSet.add(1);
+    lightWeightSet.add(2);
+    lightWeightSet.add(3);
+    try {
+      lightWeightSet.addAll([1, 2, 3]);
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "set" must be LightWeightSet. Received value is: 1,2,3`);
+    }
+  });
+
+  /**
+   * @tc.name: testHasAll045
+   * @tc.desc: Judge whether a lightWeightSet contains all elements in another lightWeightSet.
+   * @tc.author: liuganlin
+   */
+  it("testHasAll045", 0, function () {
+    let lightWeightSet = new LightWeightSet();
+    lightWeightSet.add("a");
+    lightWeightSet.add("b");
+    lightWeightSet.add("c");
+    try {
+      lightWeightSet.hasAll([1, 2, 3]);
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(401);
+      expect(err.message).assertEqual(`The type of "set" must be LightWeightSet. Received value is: 1,2,3`);
+    }
   });
 });
 }
