@@ -52,6 +52,14 @@ describe("VibratorJsTest_misc_3", function () {
         vibrator.stop("time");
         console.info('afterEach called')
     })
+
+    const OPERATION_FAIL_CODE = 14600101; 
+    const PERMISSION_ERROR_CODE = 201;
+    const PARAMETER_ERROR_CODE = 401;
+    
+    const OPERATION_FAIL_MSG = 'Device operation failed.'
+    const PERMISSION_ERROR_MSG = 'Permission denied.'
+    const PARAMETER_ERROR_MSG = 'The parameter invalid.'
 	
     /*
      * @tc.name:VibratorJsTest019
@@ -84,21 +92,28 @@ describe("VibratorJsTest_misc_3", function () {
      * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0300
      */
     it("VibratorJsTest020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        vibrator.vibrate({
-            type: "",
-            duration: 1000
-        }, {
-            usage: "unknown"
-        }, (error)=>{
-            if (error) {
-                expect(true).assertTrue();
-            } else {
-                expect(false).assertTrue();
-            }
-            setTimeout(()=>{
-                done();
-            }, 500);
-        });
+        try {
+            vibrator.vibrate({
+                type: "",
+                duration: 1000
+            }, {
+                usage: "unknown"
+            }, (error)=>{
+                if (error) {
+                    expect(true).assertTrue();
+                } else {
+                    expect(false).assertTrue();
+                }
+                setTimeout(()=>{
+                    done();
+                }, 500);
+            });
+        } catch (error) {
+            console.info(error);
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            done();
+        }
     })
 
     /*
@@ -133,22 +148,30 @@ describe("VibratorJsTest_misc_3", function () {
      * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0320
      */
     it("VibratorJsTest022", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        vibrator.vibrate({
-            type: "preset",
-            effectId: "",
-            count: 3,
-        }, {
-            usage: "unknown"
-        }, (error)=>{
-            if (error) {
-                expect(true).assertTrue();
-            } else {
-                expect(false).assertTrue();
-            }
-            setTimeout(()=>{
-                done();
-            }, 500);
-        });
+        try {
+            vibrator.vibrate({
+                type: "preset",
+                effectId: "",
+                count: 3,
+            }, {
+                usage: "unknown"
+            }, (error)=>{
+                if (error) {
+                    expect(true).assertTrue();
+                } else {
+                    expect(false).assertTrue();
+                }
+                setTimeout(()=>{
+                    done();
+                }, 500);
+            });
+        } catch (error) {
+            console.info(error);
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            done();
+        }
+        
     })
 
     /*
@@ -157,22 +180,30 @@ describe("VibratorJsTest_misc_3", function () {
      * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0330
      */
     it("VibratorJsTest023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        vibrator.vibrate({
-            type: "preset",
-            effectId: "haptic.clock.timer",
-            count: 3,
-        }, {
-            usage: ""
-        }, (error)=>{
-            if (error) {
-                expect(true).assertTrue();
-            } else {
-                expect(false).assertTrue();
-            }
-            setTimeout(()=>{
-                done();
-            }, 500);
-        });
+        try {
+            vibrator.vibrate({
+                type: "preset",
+                effectId: "haptic.clock.timer",
+                count: 3,
+            }, {
+                usage: ""
+            }, (error)=>{
+                if (error) {
+                    expect(true).assertTrue();
+                } else {
+                    expect(false).assertTrue();
+                }
+                setTimeout(()=>{
+                    done();
+                }, 500);
+            });
+        } catch (error) {
+            console.info(error);
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            done();
+        }
+        
     })
 
     /*
@@ -215,17 +246,24 @@ describe("VibratorJsTest_misc_3", function () {
      * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0360
      */
     it("VibratorJsTest026", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        await vibrator.vibrate({
-            type: "",
-            duration: 1000
-        }, {
-            usage: "unknown"
-        }).then(()=>{
-            expect(false).assertTrue();
-        }).catch((error)=>{
-            expect(true).assertTrue();
-        });
-        done();
+        try {
+            await vibrator.vibrate({
+                type: "",
+                duration: 1000
+            }, {
+                usage: "unknown"
+            }).then(()=>{
+                expect(false).assertTrue();
+            }).catch((error)=>{
+                expect(true).assertTrue();
+            });
+            done();
+        } catch (error) {
+            console.info(error);
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            done();
+        }
     })
 
     /*
@@ -254,19 +292,26 @@ describe("VibratorJsTest_misc_3", function () {
      * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0380
      */
     it("VibratorJsTest028", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        vibrator.vibrate({
-            type: "preset",
-            effectId: "",
-            count: 3,
-        }, {
-            usage: "unknown"
-        }).then(()=>{
-            expect(false).assertTrue();
+        try {
+            vibrator.vibrate({
+                type: "preset",
+                effectId: "",
+                count: 3,
+            }, {
+                usage: "unknown"
+            }).then(()=>{
+                expect(false).assertTrue();
+                done();
+            }).catch((error)=>{
+                expect(true).assertTrue();
+                done();
+            });
+        } catch (error) {
+            console.info(error);
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
-        }).catch((error)=>{
-            expect(true).assertTrue();
-            done();
-        });
+        }
     })
 
     /*
@@ -275,19 +320,26 @@ describe("VibratorJsTest_misc_3", function () {
      * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0390
      */
     it("VibratorJsTest029", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        vibrator.vibrate({
-            type: "preset",
-            effectId: "haptic.clock.timer",
-            count: 3,
-        }, {
-            usage: ""
-        }).then(()=>{
-            expect(false).assertTrue();
+        try {
+            vibrator.vibrate({
+                type: "preset",
+                effectId: "haptic.clock.timer",
+                count: 3,
+            }, {
+                usage: ""
+            }).then(()=>{
+                expect(false).assertTrue();
+                done();
+            }).catch((error)=>{
+                expect(true).assertTrue();
+                done();
+            });
+        } catch (error) {
+            console.info(error);
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
-        }).catch((error)=>{
-            expect(true).assertTrue();
-            done();
-        });
+        }
     })
 
     /*
@@ -812,22 +864,29 @@ describe("VibratorJsTest_misc_3", function () {
      * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0510
      */
     it("VibratorJsTest041", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        vibrator.vibrate({
-            type: "",
-            duration: 1000
-        }, {
-			id:1,
-            usage: "unknown"
-        }, (error)=>{
-            if (error) {
-                expect(true).assertTrue();
-            } else {
-                expect(false).assertTrue();
-            }
-            setTimeout(()=>{
-                done();
-            }, 500);
-        });
+        try {
+            vibrator.vibrate({
+                type: "",
+                duration: 1000
+            }, {
+                id:1,
+                usage: "unknown"
+            }, (error)=>{
+                if (error) {
+                    expect(true).assertTrue();
+                } else {
+                    expect(false).assertTrue();
+                }
+                setTimeout(()=>{
+                    done();
+                }, 500);
+            });
+        } catch (error) {
+            console.info(error);
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            done();
+        }
     })
 
     /*
@@ -863,23 +922,31 @@ describe("VibratorJsTest_misc_3", function () {
      * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0530
      */
     it("VibratorJsTest043", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        vibrator.vibrate({
-            type: "preset",
-            effectId: "",
-            count: 3,
-        }, {
-			id:null,
-            usage: "unknown"
-        }, (error)=>{
-            if (error) {
-                expect(true).assertTrue();
-            } else {
-                expect(false).assertTrue();
-            }
-            setTimeout(()=>{
-                done();
-            }, 500);
-        });
+        try {
+            vibrator.vibrate({
+                type: "preset",
+                effectId: "",
+                count: 3,
+            }, {
+                id:null,
+                usage: "unknown"
+            }, (error)=>{
+                if (error) {
+                    expect(true).assertTrue();
+                } else {
+                    expect(false).assertTrue();
+                }
+                setTimeout(()=>{
+                    done();
+                }, 500);
+            });
+        } catch (error) {
+            console.info(error);
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            done();
+        }
+        
     })
     })
 	}
