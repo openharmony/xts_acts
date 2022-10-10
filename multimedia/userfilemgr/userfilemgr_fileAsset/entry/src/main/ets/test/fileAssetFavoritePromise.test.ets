@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import userfile_manager from '@ohos.filemanagement.userfile_manager';
+import userFileManager from '@ohos.filemanagement.userFileManager';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 import {
     sleep,
@@ -25,7 +25,7 @@ import {
 
 export default function fileAssetFavoritePromiseTest(abilityContext) {
     describe('fileAssetFavoritePromiseTest', function () {
-        var userfilemgr = userfile_manager.getUserFileMgr(abilityContext);
+        var userfilemgr = userFileManager.getUserFileMgr(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
             await checkPresetsAssets(userfilemgr, 'ActsUserFileMgrFavorite');

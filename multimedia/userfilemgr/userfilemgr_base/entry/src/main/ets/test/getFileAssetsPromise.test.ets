@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import userfile_manager from '@ohos.filemanagement.userfile_manager';
+import userFileManager from '@ohos.filemanagement.userFileManager';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 import {
     sleep,
@@ -30,7 +30,7 @@ import {
 
 export default function getFileAssetsPromiseTest(abilityContext) {
     describe('getFileAssetsPromiseTest', function () {
-        const userfilemgr = userfile_manager.getUserFileMgr(abilityContext);
+        const userfilemgr = userFileManager.getUserFileMgr(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
             await checkPresetsAssets(userfilemgr, 'ActsUserFileMgrBaseJsTest');
@@ -127,6 +127,28 @@ export default function getFileAssetsPromiseTest(abilityContext) {
             }
         }
 
+        async function getPositionObjectErrCodeTest(done, testNum, fetchOp, pos, isAudio) {
+            try {
+                let fetchAssetResult;
+                if (isAudio) {
+                    fetchAssetResult = await userfilemgr.getAudioAssets(fetchOp);
+                } else {
+                    fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOp);
+                }
+                let expectCount = 4;
+                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchAssetResult, expectCount);
+                if (!checkAssetCountPass) return;
+                await fetchAssetResult.getPositionObject(pos);
+                expect(false).assertTrue();
+                fetchAssetResult.close();
+                done();
+            } catch (error) {
+                console.info(`${testNum}:: error :${error}`);
+                expect(true).assertTrue();
+                done();
+            }
+        }
+
         async function isAfterLastTest(done, testNum, fetchOp, isAudio) {
             try {
                 let fetchAssetResult;
@@ -183,6 +205,22 @@ export default function getFileAssetsPromiseTest(abilityContext) {
             } catch (error) {
                 console.info(`${testNum}:: error :${error}`);
                 expect(false).assertTrue();
+                done();
+            }
+        }
+
+        async function getFileAssetsErrCodeTest(done, testNum, fetchOp, isAudio) {
+            try {
+                let fetchAssetResult;
+                if (isAudio) {
+                    fetchAssetResult = await userfilemgr.getAudioAssets(fetchOp);
+                } else {
+                    fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOp);
+                }
+                expect(false).assertTrue();
+            } catch (error) {
+                console.info(`${testNum}:: error :${error}`);
+                expect(true).assertTrue();
                 done();
             }
         }
@@ -332,6 +370,40 @@ export default function getFileAssetsPromiseTest(abilityContext) {
         //------------------------------------------------------------------------------
 
         /**
+         * @tc.number    : SUB_USERFILE_MGR_GETPHOTOASSETS_ERRCODE_PROMISE_01
+         * @tc.name      : getPositionObject
+         * @tc.desc      : pos is not number
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+         it('SUB_USERFILE_MGR_GETPHOTOASSETS_ERRCODE_PROMISE_01', 0, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETPHOTOASSETS_ERRCODE_PROMISE_01';
+            let currentFetchOps = imageVideoFetchOps(testNum, 'Pictures/Static/');
+            let pos = 'aaa';
+            let isAudio = false;
+            await getPositionObjectTest(done, testNum, currentFetchOps, pos, isAudio);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_GETPHOTOASSETS_ERRCODE_PROMISE_02
+         * @tc.name      : getPositionObject
+         * @tc.desc      : pos is not number
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+         it('SUB_USERFILE_MGR_GETPHOTOASSETS_ERRCODE_PROMISE_02', 0, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETPHOTOASSETS_ERRCODE_PROMISE_02';
+            let currentFetchOps = imageVideoFetchOps(testNum, 'Audios/Static/');
+            let pos = 'aaa';
+            let isAudio = true;
+            await getPositionObjectTest(done, testNum, currentFetchOps, pos, isAudio);
+        });
+
+        //---------------------------------------------------------------------------------
+
+        /**
          * @tc.number    : SUB_USERFILE_MGR_GETPHOTOASSETS_PROMISE_04_001
          * @tc.name      : isAfterLast
          * @tc.desc      : isAfterLast query image assets
@@ -424,6 +496,38 @@ export default function getFileAssetsPromiseTest(abilityContext) {
             let type = 'video';
             let isAudio = false;
             await checkFileAssetAttr(done, testNum, currentFetchOps, type, isAudio);
+        });
+
+        //------------------------------------------------------------------------------
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_GETPHOTOASSETS_ERRCODE_PROMISE_01
+         * @tc.name      : getPhotoAssets
+         * @tc.desc      : invalid FetchOptions
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+         it('SUB_USERFILE_MGR_GETPHOTOASSETS_ERRCODE_PROMISE_01', 0, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETPHOTOASSETS_ERRCODE_PROMISE_01';
+            let currentFetchOps = imageVideoFetchOps(testNum, 'aaa/');
+            let isAudio = false;
+            await getFileAssetsErrCodeTest(done, testNum, currentFetchOps, isAudio);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_GETPHOTOASSETS_ERRCODE_PROMISE_02
+         * @tc.name      : getPhotoAssets
+         * @tc.desc      : invalid FetchOptions
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+         it('SUB_USERFILE_MGR_GETPHOTOASSETS_ERRCODE_PROMISE_02', 0, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETPHOTOASSETS_ERRCODE_PROMISE_02';
+            let currentFetchOps = audioFetchOps(testNum, 'aaa/');
+            let isAudio = true;
+            await getFileAssetsErrCodeTest(done, testNum, currentFetchOps, isAudio);
         });
     });
 }
