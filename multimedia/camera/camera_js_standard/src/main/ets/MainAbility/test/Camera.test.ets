@@ -32,11 +32,12 @@ export default function cameraKit(surfaceId: any) {
 
   cameraInputTest(surfaceId)
   cameraJSUnitOutput(surfaceId)
-  cameraManagerTest(surfaceId)
+  
   cameraSessionFlashTest(surfaceId)
   cameraSessionExposureTest(surfaceId)
   cameraSessionFocusTest(surfaceId)
   cameraSessionZoomRatioTest(surfaceId)
   cameraSessionVideoStabilizationTest(surfaceId)
   cameraSessionBaseTest(surfaceId)
+  cameraManagerTest(surfaceId)
 }
