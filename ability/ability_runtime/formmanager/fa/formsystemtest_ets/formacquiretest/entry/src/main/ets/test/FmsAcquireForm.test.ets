@@ -1564,7 +1564,7 @@ export default function test() {
             function onCastCallBack(_, data) {
                 console.info("!!!====>FMS_acquireForm_2600 onCastCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormCast_commonEvent");
-                expect(data.data).assertEqual("undefined");
+                expect(data.data).assertEqual("0");
                 commonEvent.unsubscribe(subscriberCast, () => unsubscribeOnCastCallback("FMS_acquireForm_2600"))
                 formId1 = data.parameters.formId;
                 console.info("!!!====>FMS_acquireForm_2600 formId1 " + formId1 + " formId2 " + formId2);
