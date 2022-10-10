@@ -50,6 +50,14 @@ describe("VibratorJsTest_misc_2", function () {
         console.info('afterEach caled')
     })
 
+    const OPERATION_FAIL_CODE = 14600101; 
+    const PERMISSION_ERROR_CODE = 201;
+    const PARAMETER_ERROR_CODE = 401;
+    
+    const OPERATION_FAIL_MSG = 'Device operation failed.'
+    const PERMISSION_ERROR_MSG = 'Permission denied.'
+    const PARAMETER_ERROR_MSG = 'The parameter invalid.'
+
     /*
      * @tc.name:VibratorJsTest001
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
@@ -277,19 +285,26 @@ describe("VibratorJsTest_misc_2", function () {
      * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0100
      */
     it("VibratorJsTest010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        function vibrateCallback(error) {
-            if (error) {
-                console.info('VibratorJsTest010  stop success');
-                expect(true).assertTrue();
-            } else {
-                console.info('VibratorJsTest010  stop off');
-                expect(false).assertTrue();
+        try {
+            function vibrateCallback(error) {
+                if (error) {
+                    console.info('VibratorJsTest010  stop success');
+                    expect(true).assertTrue();
+                } else {
+                    console.info('VibratorJsTest010  stop off');
+                    expect(false).assertTrue();
+                }
+                setTimeout(() => {
+                    done();
+                }, 500);
             }
-            setTimeout(() => {
-                done();
-            }, 500);
+            vibrator.stop("", vibrateCallback);
+        } catch (error) {
+            console.info(error);
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            done();
         }
-        vibrator.stop("", vibrateCallback);
     })
 
     /*
@@ -403,19 +418,26 @@ describe("VibratorJsTest_misc_2", function () {
      * @tc.number:SUB_SensorSystem_Vibrator_JsTest_0160
      */
     it("VibratorJsTest016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        vibrator.stop("").then(() => {
-            console.log("VibratorJsTest016  stop error");
-            expect(false).assertTrue();
-            setTimeout(() => {
-                done();
-            }, 500);
-        }, (error) => {
-            expect(true).assertTrue();
-            console.log("VibratorJsTest016  stop success");
-            setTimeout(() => {
-                done();
-            }, 500);
-        });
+        try {
+            vibrator.stop("").then(() => {
+                console.log("VibratorJsTest016  stop error");
+                expect(false).assertTrue();
+                setTimeout(() => {
+                    done();
+                }, 500);
+            }, (error) => {
+                expect(true).assertTrue();
+                console.log("VibratorJsTest016  stop success");
+                setTimeout(() => {
+                    done();
+                }, 500);
+            });
+        } catch (error) {
+            console.info(error);
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
+            done();
+        }
     })
 
     /*
