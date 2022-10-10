@@ -20,8 +20,6 @@ import fileAssetFavoritePromiseTest from './fileAssetFavoritePromise.test.ets'
 import fileAssetFileKeyTest from './fileAssetFileKey.test.ets'
 import fileAssetGetThumbnailCallbackTest from './fileAssetGetThumbnailCallback.test.ets'
 import fileAssetGetThumbnailPromiseTest from './fileAssetGetThumbnailPromise.test.ets'
-//import fileAssetIsDirectoryCallbackTest from './fileAssetIsDirectoryCallback.test.ets'
-//import fileAssetIsDirectoryPromiseTest from './fileAssetIsDirectoryPromise.test.ets'
 import fileAssetOpenCallbackTest from './fileAssetOpenCallback.test.ets'
 import fileAssetOpenPromiseTest from './fileAssetOpenPromise.test.ets'
 import fileAssetTrashCallbackTest from './fileAssetTrashCallback.test.ets'
@@ -34,8 +32,6 @@ export default function testsuite(abilityContext) {
   fileAssetFileKeyTest(abilityContext)
   fileAssetGetThumbnailCallbackTest(abilityContext)
   fileAssetGetThumbnailPromiseTest(abilityContext)
-  //fileAssetIsDirectoryCallbackTest(abilityContext)
-  //fileAssetIsDirectoryPromiseTest(abilityContext)
   fileAssetOpenCallbackTest(abilityContext)
   fileAssetOpenPromiseTest(abilityContext)
   fileAssetTrashCallbackTest(abilityContext)

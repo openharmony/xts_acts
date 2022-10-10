@@ -69,37 +69,6 @@ export default function albumGetFileAssetsCallback(abilityContext) {
             }
         }
 
-        const getPhotoAssetsErrCodeTest = async function (done, testNum, fetchOp, expectAlbumCount = 1, expectAssetsCount = 1) {
-            try {
-                const fetchAlbumResult = await userfilemgr.getPhotoAlbums(fetchOp);
-                const albumCountPass = await checkAssetsCount(done, testNum, fetchAlbumResult, expectAlbumCount);
-                if (!albumCountPass) return;
-                const album = await fetchAlbumResult.getFirstObject();
-                fetchAlbumResult.close();
-                let predicates = new dataSharePredicates.DataSharePredicates();
-                predicates.equalTo('222', '333');
-                let op = {
-                    fetchColumns: ['111'],
-                    predicates: predicates
-                };
-                album.getPhotoAssets(op, (error, fetchAssetResult) => {
-                    if (error != undefined) {
-                        console.info(`${testNum} getPhotoAssetsErrCodeTest error: ${error}`);
-                        expect(false).assertTrue();
-                        done();
-                        return;
-                    }
-                    expect(false).assertTrue();
-                    fetchAssetResult.close();
-                    done();
-                });
-            } catch (error) {
-                console.info(`${testNum}, error: ${error}`);
-                expect(true).assertTrue();
-                done();
-            }
-        }
-
         /**
          * @tc.number    : SUB_USERFILE_MGR_ALBUM_GETPHOTOASSETS_CALLBACK_01
          * @tc.name      : getPhotoAssets
@@ -112,20 +81,6 @@ export default function albumGetFileAssetsCallback(abilityContext) {
             const testNum = 'SUB_USERFILE_MGR_ALBUM_GETPHOTOASSETS_CALLBACK_01';
             let currentFetchOp = albumFetchOps(testNum, 'Pictures/', 'Static');
             await getPhotoAssetsTest(done, testNum, currentFetchOp);
-        });
-
-        /**
-         * @tc.number    : SUB_USERFILE_MGR_ALBUM_GETPHOTOASSETS_ERRCODE_CALLBACK_01
-         * @tc.name      : getPhotoAssets
-         * @tc.desc      : invalid AlbumFetchOptions
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-         it('SUB_USERFILE_MGR_ALBUM_GETPHOTOASSETS_ERRCODE_CALLBACK_01', 0, async function (done) {
-            const testNum = 'SUB_USERFILE_MGR_ALBUM_GETPHOTOASSETS_ERRCODE_CALLBACK_01';
-            let currentFetchOp = albumFetchOps(testNum, 'Pictures/', 'Static');
-            await getPhotoAssetsErrCodeTest(done, testNum, currentFetchOp);
         });
     });
 }

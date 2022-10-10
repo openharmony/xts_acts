@@ -163,36 +163,6 @@ export default function fileAssetFileKeyTest(abilityContext) {
         }
 
         /**
-         * @tc.number    : SUB_USERFILE_MGR_GETPHOTOALBUMSBYKEY_01
-         * @tc.name      : AlbumKey
-         * @tc.desc      : AlbumKey.URI
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        //it('SUB_USERFILE_MGR_GETPHOTOALBUMSBYKEY_01', 0, async function (done) {
-        //    let testNum = 'SUB_USERFILE_MGR_GETPHOTOALBUMSBYKEY_01';
-        //    let type = 'albumUri';
-        //    let fileKey = AlbumKey.URI;
-        //    await getAlbumsByKey(done, testNum, type, fileKey);
-        //});
-
-        /**
-         * @tc.number    : SUB_USERFILE_MGR_GETPHOTOALBUMSBYKEY_02
-         * @tc.name      : AlbumKey
-         * @tc.desc      : AlbumKey.ALBUM_NAME
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_USERFILE_MGR_GETPHOTOALBUMSBYKEY_02', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_GETPHOTOALBUMSBYKEY_02';
-            let type = 'albumName';
-            let fileKey = AlbumKey.ALBUM_NAME;
-            await getAlbumsByKey(done, testNum, type, fileKey);
-        });
-
-        /**
          * @tc.number    : SUB_USERFILE_MGR_GETPHOTOALBUMSBYKEY_03
          * @tc.name      : AlbumKey
          * @tc.desc      : AlbumKey.DATE_ADDED
@@ -224,20 +194,6 @@ export default function fileAssetFileKeyTest(abilityContext) {
 
         //------------------------------------------------------------------------------
 
-        /**
-         * @tc.number    : SUB_USERFILE_MGR_GETPHOTOASSETSBYKEY_01
-         * @tc.name      : ImageVideoKey
-         * @tc.desc      : ImageVideoKey.URI
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        //it('SUB_USERFILE_MGR_GETPHOTOASSETSBYKEY_01', 0, async function (done) {
-        //    let testNum = 'SUB_USERFILE_MGR_GETPHOTOASSETSBYKEY_01';
-        //    let fileKey = ImageVideoKey.URI;
-        //    await getPhotoAssetsByKey(done, testNum, fileKey);
-        //});
-//
         /**
          * @tc.number    : SUB_USERFILE_MGR_GETPHOTOASSETSBYKEY_02
          * @tc.name      : ImageVideoKey
@@ -395,20 +351,6 @@ export default function fileAssetFileKeyTest(abilityContext) {
         //----------------------------------------------------------------------------
 
         /**
-         * @tc.number    : SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_01
-         * @tc.name      : AUDIOKEY
-         * @tc.desc      : AUDIOKEY.URI
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_01', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_01';
-            let fileKey = AUDIOKEY.URI;
-            await getAudioAssetsByKey(done, testNum, fileKey);
-        });
-
-        /**
          * @tc.number    : SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_02
          * @tc.name      : AUDIOKEY
          * @tc.desc      : AUDIOKEY.DISPLAY_NAME
@@ -477,20 +419,6 @@ export default function fileAssetFileKeyTest(abilityContext) {
             let fileKey = AUDIOKEY.ARTIST;
             await getAudioAssetsByKey(done, testNum, fileKey);
         });
-
-        /**
-         * @tc.number    : SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_07
-         * @tc.name      : AUDIOKEY
-         * @tc.desc      : AUDIOKEY.AUDIOALBUM
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        //it('SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_07', 0, async function (done) {
-        //    let testNum = 'SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_07';
-        //    let fileKey = AUDIOKEY.AUDIOALBUM;
-        //    await getAudioAssetsByKey(done, testNum, fileKey);
-        //});
 
         /**
          * @tc.number    : SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_08

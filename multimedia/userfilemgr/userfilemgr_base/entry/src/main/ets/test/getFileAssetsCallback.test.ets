@@ -150,36 +150,6 @@ export default function getFileAssetsCallbackTest(abilityContext) {
             }
         }
 
-        async function getPositionObjectErrCodeTest(done, testNum, fetchOp, pos, isAudio) {
-            try {
-                let fetchAssetResult;
-                if (isAudio) {
-                    fetchAssetResult = await userfilemgr.getAudioAssets(fetchOp);
-                } else {
-                    fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOp);
-                }
-                let expectCount = 4;
-                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchAssetResult, expectCount);
-                if (!checkAssetCountPass) return;
-                fetchAssetResult.getPositionObject(pos, async (err, asset) => {
-                    if (err) {
-                        console.info(`${testNum} err : ${err}`)
-                        expect.assertFail();
-                        fetchAssetResult.close();
-                        done();
-                        return;
-                    }
-                    expect(false).assertTrue();
-                    fetchAssetResult.close();
-                    done();
-                });
-            } catch (error) {
-                console.info(`${testNum}:: error :${error}`);
-                expect(true).assertTrue();
-                done();
-            }
-        }
-
         async function isAfterLastTest(done, testNum, fetchOp, isAudio) {
             try {
                 let fetchAssetResult;
@@ -229,7 +199,6 @@ export default function getFileAssetsCallbackTest(abilityContext) {
                         return;
                     }
                     expect(asset.displayName).assertEqual(props[type].displayName);
-                    expect(asset.fileType.toString()).assertEqual(props[type].fileType);
                     expect(asset.uri != undefined).assertTrue();
                     fetchAssetResult.close();
                     done();
@@ -237,38 +206,6 @@ export default function getFileAssetsCallbackTest(abilityContext) {
             } catch (error) {
                 console.info(`${testNum}:: error :${error}`);
                 expect(false).assertTrue();
-                done();
-            }
-        }
-
-        async function getFileAssetsErrCodeTest(done, testNum, fetchOp, isAudio) {
-            try {
-                if (isAudio) {
-                    await userfilemgr.getAudioAssets(fetchOp, (err, fetchAssetResult) => {
-                        if (err != undefined) {
-                            console.info(`${testNum}:: getAudioAssets error :${err}`);
-                            expect(false).assertTrue();
-                            done();
-                            return;
-                        }
-                        expect(false).assertTrue();
-                        done();
-                    })
-                } else {
-                    await userfilemgr.getPhotoAssets(fetchOp, (err, fetchAssetResult) => {
-                        if (err != undefined) {
-                            console.info(`${testNum}:: getAudioAssets error :${err}`);
-                            expect(false).assertTrue();
-                            done();
-                            return;
-                        }
-                        expect(false).assertTrue();
-                        done();
-                    })
-                }
-            } catch (error) {
-                console.info(`${testNum}:: error :${error}`);
-                expect(true).assertTrue();
                 done();
             }
         }
@@ -418,40 +355,6 @@ export default function getFileAssetsCallbackTest(abilityContext) {
         //------------------------------------------------------------------------------
 
         /**
-         * @tc.number    : SUB_USERFILE_MGR_GETPOSITIONOBJECT_ERRCODE_CALLBACK_01
-         * @tc.name      : getPositionObject
-         * @tc.desc      : pos is not number
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-         it('SUB_USERFILE_MGR_GETPOSITIONOBJECT_ERRCODE_CALLBACK_01', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_GETPOSITIONOBJECT_ERRCODE_CALLBACK_01';
-            let currentFetchOps = imageVideoFetchOps(testNum, 'Pictures/Static/');
-            let pos = 'aaa';
-            let isAudio = false;
-            await getPositionObjectErrCodeTest(done, testNum, currentFetchOps, pos, isAudio);
-        });
-
-        /**
-         * @tc.number    : SUB_USERFILE_MGR_GETPOSITIONOBJECT_ERRCODE_CALLBACK_02
-         * @tc.name      : getPositionObject
-         * @tc.desc      : pos is not number
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-         it('SUB_USERFILE_MGR_GETPOSITIONOBJECT_ERRCODE_CALLBACK_02', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_GETPOSITIONOBJECT_ERRCODE_CALLBACK_02';
-            let currentFetchOps = imageVideoFetchOps(testNum, 'Audios/Static/');
-            let pos = 'aaa';
-            let isAudio = true;
-            await getPositionObjectErrCodeTest(done, testNum, currentFetchOps, pos, isAudio);
-        });
-
-        //-----------------------------------------------------------------------------------
-
-        /**
          * @tc.number    : SUB_USERFILE_MGR_GETPHOTOASSETS_CALLBACK_04_001
          * @tc.name      : isAfterLast
          * @tc.desc      : isAfterLast query image assets
@@ -544,38 +447,6 @@ export default function getFileAssetsCallbackTest(abilityContext) {
             let type = 'video';
             let isAudio = false;
             await checkFileAssetAttr(done, testNum, currentFetchOps, type, isAudio);
-        });
-
-        //------------------------------------------------------------------------------
-
-        /**
-         * @tc.number    : SUB_USERFILE_MGR_GETPHOTOASSETS_ERRCODE_CALLBACK_01
-         * @tc.name      : getPhotoAssets
-         * @tc.desc      : invalid FetchOptions
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-         it('SUB_USERFILE_MGR_GETPHOTOASSETS_ERRCODE_CALLBACK_01', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_GETPHOTOASSETS_ERRCODE_CALLBACK_01';
-            let currentFetchOps = imageVideoFetchOps(testNum, 'aaa/');
-            let isAudio = false;
-            await getFileAssetsErrCodeTest(done, testNum, currentFetchOps, isAudio);
-        });
-
-        /**
-         * @tc.number    : SUB_USERFILE_MGR_GETPHOTOASSETS_ERRCODE_CALLBACK_02
-         * @tc.name      : getPhotoAssets
-         * @tc.desc      : invalid FetchOptions
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-         it('SUB_USERFILE_MGR_GETPHOTOASSETS_ERRCODE_CALLBACK_02', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_GETPHOTOASSETS_ERRCODE_CALLBACK_02';
-            let currentFetchOps = audioFetchOps(testNum, 'aaa/');
-            let isAudio = true;
-            await getFileAssetsErrCodeTest(done, testNum, currentFetchOps, isAudio);
         });
     });
 }
