@@ -22,6 +22,7 @@
     "name": ".MyApplication",
     "mainAbility": "com.example.actsfeatureabilitytest.MainAbility",
     "deviceType": [
+      "default",
       "default"
     ],
     "distro": {

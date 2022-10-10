@@ -6,6 +6,7 @@
         "description": "$string:hap4_desc",
         "mainElement": "Hap4MainAbility1",
         "deviceTypes": [
+      "default",
             "phone"
         ],
         "deliveryWithInstall": true,

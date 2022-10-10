@@ -18,6 +18,7 @@
     "name": ".FormStHostAppB",
     "mainAbility": ".MainAbility",
     "deviceType": [
+      "default",
       "phone"
     ],
     "distro": {

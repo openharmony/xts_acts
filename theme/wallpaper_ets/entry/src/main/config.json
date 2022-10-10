@@ -19,6 +19,7 @@
     "mainAbility": "com.acts.theme.wallpapertest.MainAbility",
 
     "deviceType": [
+      "default",
       "phone",
       "tablet",
       "tv",

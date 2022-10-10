@@ -18,6 +18,7 @@
     "mainAbility": "com.example.bmsmainabilityfirstscene.MainAbility",
     "name": ".MyApplication",
     "deviceType": [
+      "default",
       "default"
     ],
     "distro": {

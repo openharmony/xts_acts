@@ -18,6 +18,7 @@
     "name": ".FormStateSTApp",
     "mainAbility": ".MainAbility",
     "deviceType": [
+      "default",
       "phone"
     ],
     "distro": {

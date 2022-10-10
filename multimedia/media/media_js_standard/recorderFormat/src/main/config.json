@@ -57,6 +57,7 @@
             }
         ],
         "deviceType": [
+      "default",
             "default",
             "tablet",
             "tv",

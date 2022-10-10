@@ -18,6 +18,7 @@
     "name": ".FormReleaseSTApp",
     "mainAbility": ".MainAbility",
     "deviceType": [
+      "default",
       "phone"
     ],
     "distro": {

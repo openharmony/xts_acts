@@ -17,6 +17,7 @@
         "package": "com.example.actsnotificationshow",
         "name": ".entry",
         "deviceType": [
+      "default",
             "phone"
         ],
         "distro": {
