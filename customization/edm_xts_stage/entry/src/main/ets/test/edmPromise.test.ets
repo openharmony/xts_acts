@@ -15,7 +15,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import {
     WANT1, ENTINFO1, SELFWANT, SELFHAPNAME, COMPANYNAME2, DESCRIPTION2, ENTINFO2,
-    DEFAULT_USER_ID, TEST_USER_ID, ERR_USER_ID
+    DEFAULT_USER_ID, TEST_USER_ID, ERR_USER_ID, SUBSCRIBE_EVENTS, SUBSCRIBE_INVALID_EVENTS
 } from "./commom.ets";
 import enterpriseDeviceManager from '@ohos.enterpriseDeviceManager'
 
@@ -286,6 +286,175 @@ export default function edmPromiseTest() {
         console.log('before setDateTime');
         await dsmgr.setDateTime(SELFWANT, 1526003846000);
         await enterpriseDeviceManager.disableSuperAdmin(SELFHAPNAME);
+        done();
+    })
+
+    /**
+     * @tc.number    subscribeManagedEvent_test_002
+     * @tc.desc      Test subscribeManagedEvent method in promise mode.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('subscribeManagedEvent_test_002', 0, async function (done) {
+        console.info('-----------subscribeManagedEvent_test_002 start-------------');
+        await enterpriseDeviceManager.enableAdmin(SELFWANT, ENTINFO1,
+            enterpriseDeviceManager.AdminType.ADMIN_TYPE_NORMAL, DEFAULT_USER_ID);
+        console.log('enterpriseDeviceManager.enableAdmin ADMIN_TYPE_NORMAL.');
+        await enterpriseDeviceManager.subscribeManagedEvent(SELFWANT, SUBSCRIBE_EVENTS).then(() => {
+        }).catch((error) => {
+            expect(error == null).assertTrue();
+        });
+        await enterpriseDeviceManager.disableAdmin(SELFWANT);
+        console.log('enterpriseDeviceManager.disableAdmin.');
+        done();
+    })
+
+    /**
+     * @tc.number    subscribeManagedEvent_test_004
+     * @tc.desc      Test subscribeManagedEvent method in promise mode and subscribe invalid managed events.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('subscribeManagedEvent_test_004', 0, async function (done) {
+        console.info('-----------subscribeManagedEvent_test_004 start-------------');
+        await enterpriseDeviceManager.enableAdmin(SELFWANT, ENTINFO1,
+            enterpriseDeviceManager.AdminType.ADMIN_TYPE_NORMAL, DEFAULT_USER_ID);
+        console.log('enterpriseDeviceManager.enableAdmin ADMIN_TYPE_NORMAL.');
+        await enterpriseDeviceManager.subscribeManagedEvent(SELFWANT, SUBSCRIBE_INVALID_EVENTS).then(() => {
+        }).catch((error) => {
+            expect(error.code == 9200008).assertTrue();
+        });
+        await enterpriseDeviceManager.disableAdmin(SELFWANT);
+        console.log('enterpriseDeviceManager.disableAdmin.');
+        done();
+    })
+
+    /**
+     * @tc.number    subscribeManagedEvent_test_006
+     * @tc.desc      Test subscribeManagedEvent method in promise mode and subscribe when disable admin.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('subscribeManagedEvent_test_006', 0, async function (done) {
+        console.info('-----------subscribeManagedEvent_test_006 start-------------');
+        await enterpriseDeviceManager.enableAdmin(SELFWANT, ENTINFO1,
+            enterpriseDeviceManager.AdminType.ADMIN_TYPE_NORMAL, DEFAULT_USER_ID);
+        console.log('enterpriseDeviceManager.enableAdmin ADMIN_TYPE_NORMAL.');
+        await enterpriseDeviceManager.disableAdmin(SELFWANT);
+        console.log('enterpriseDeviceManager.disableAdmin.');
+        await enterpriseDeviceManager.subscribeManagedEvent(SELFWANT, SUBSCRIBE_EVENTS).then(() => {
+        }).catch((error) => {
+            expect(error.code == 9200001).assertTrue();
+        });
+        done();
+    })
+
+    /**
+     * @tc.number    subscribeManagedEvent_test_008
+     * @tc.desc      Test subscribeManagedEvent method in promise mode and subscribe when enable super admin.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('subscribeManagedEvent_test_008', 0, async function (done) {
+        console.info('-----------subscribeManagedEvent_test_008 start-------------');
+        await enterpriseDeviceManager.enableAdmin(SELFWANT, ENTINFO1,
+            enterpriseDeviceManager.AdminType.ADMIN_TYPE_SUPER, DEFAULT_USER_ID);
+        console.log('enterpriseDeviceManager.enableAdmin ADMIN_TYPE_SUPER.');
+        await enterpriseDeviceManager.subscribeManagedEvent(SELFWANT, SUBSCRIBE_EVENTS).then(() => {
+        }).catch((error) => {
+            expect(error == null).assertTrue();
+        });
+        await enterpriseDeviceManager.disableSuperAdmin(SELFHAPNAME);
+        console.log('enterpriseDeviceManager.disableSuperAdmin ADMIN_TYPE_SUPER.');
+        done();
+    })
+  
+    /**
+       * @tc.number    unsubscribeManagedEvent_test_002
+       * @tc.desc      Test subscribeManagedEvent method in promise mode.
+       * @tc.size      : MEDIUM
+       * @tc.type      : Function
+       * @tc.level     : Level 1
+       */
+    it('unsubscribeManagedEvent_test_002', 0, async function (done) {
+        console.info('-----------unsubscribeManagedEvent_test_002 start-------------');
+        await enterpriseDeviceManager.enableAdmin(SELFWANT, ENTINFO1,
+            enterpriseDeviceManager.AdminType.ADMIN_TYPE_NORMAL, DEFAULT_USER_ID);
+        console.log('enterpriseDeviceManager.enableAdmin ADMIN_TYPE_NORMAL.');
+        
+        await enterpriseDeviceManager.unsubscribeManagedEvent(SELFWANT, SUBSCRIBE_EVENTS).then(() => {
+        }).catch((error) => {
+            expect(error == null).assertTrue();
+        });
+        await enterpriseDeviceManager.disableAdmin(SELFWANT);
+        console.log('enterpriseDeviceManager.disableAdmin.');
+        done();
+    })
+
+    /**
+       * @tc.number    unsubscribeManagedEvent_test_004
+       * @tc.desc      Test subscribeManagedEvent method in promise mode and unsubscribe invalid managed events.
+       * @tc.size      : MEDIUM
+       * @tc.type      : Function
+       * @tc.level     : Level 1
+       */
+    it('unsubscribeManagedEvent_test_004', 0, async function (done) {
+        console.info('-----------unsubscribeManagedEvent_test_004 start-------------');
+        await enterpriseDeviceManager.enableAdmin(SELFWANT, ENTINFO1,
+            enterpriseDeviceManager.AdminType.ADMIN_TYPE_NORMAL, DEFAULT_USER_ID);
+        console.log('enterpriseDeviceManager.enableAdmin ADMIN_TYPE_NORMAL.');
+        await enterpriseDeviceManager.unsubscribeManagedEvent(SELFWANT, SUBSCRIBE_INVALID_EVENTS).then(() => {
+        }).catch((error) => {
+                expect(error.code == 9200008).assertTrue();
+        });
+        await enterpriseDeviceManager.disableAdmin(SELFWANT);
+        console.log('enterpriseDeviceManager.disableAdmin.');
+        done();
+    })
+
+    /**
+       * @tc.number    unsubscribeManagedEvent_test_006
+       * @tc.desc      Test subscribeManagedEvent method in promise mode and unsubscribe when disable admin.
+       * @tc.size      : MEDIUM
+       * @tc.type      : Function
+       * @tc.level     : Level 1
+       */
+    it('unsubscribeManagedEvent_test_006', 0, async function (done) {
+        console.info('-----------unsubscribeManagedEvent_test_006 start-------------');
+        await enterpriseDeviceManager.enableAdmin(SELFWANT, ENTINFO1,
+            enterpriseDeviceManager.AdminType.ADMIN_TYPE_NORMAL, DEFAULT_USER_ID);
+        console.log('enterpriseDeviceManager.enableAdmin ADMIN_TYPE_NORMAL.');
+        await enterpriseDeviceManager.disableAdmin(SELFWANT);
+        console.log('enterpriseDeviceManager.disableAdmin.');
+        await enterpriseDeviceManager.unsubscribeManagedEvent(SELFWANT, SUBSCRIBE_EVENTS).then(() => {
+        }).catch((error) => {
+            expect(error.code == 9200001).assertTrue();
+        });
+        done();
+    })
+
+    /**
+       * @tc.number    unsubscribeManagedEvent_test_008
+       * @tc.desc      Test subscribeManagedEvent method in promise mode and unsubscribe when enable super admin.
+       * @tc.size      : MEDIUM
+       * @tc.type      : Function
+       * @tc.level     : Level 1
+       */
+    it('unsubscribeManagedEvent_test_008', 0, async function (done) {
+        console.info('-----------unsubscribeManagedEvent_test_008 start-------------');
+        await enterpriseDeviceManager.enableAdmin(SELFWANT, ENTINFO1,
+            enterpriseDeviceManager.AdminType.ADMIN_TYPE_SUPER, DEFAULT_USER_ID);
+        console.log('enterpriseDeviceManager.enableAdmin ADMIN_TYPE_SUPER.');
+        await enterpriseDeviceManager.unsubscribeManagedEvent(SELFWANT, SUBSCRIBE_EVENTS).then(() => {
+        }).catch((error) => {
+            expect(error == null).assertTrue();
+        });
+        await enterpriseDeviceManager.disableSuperAdmin(SELFHAPNAME);
+        console.log('enterpriseDeviceManager.disableSuperAdmin ADMIN_TYPE_SUPER.');
         done();
     })
   })
