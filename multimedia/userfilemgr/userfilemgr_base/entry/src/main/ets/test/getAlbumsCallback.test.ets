@@ -18,6 +18,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 
 import {
     sleep,
+    THROW_ERROR_CODE,
     albumFetchOps,
     checkPresetsAssets,
     checkAssetsCount,
@@ -107,6 +108,27 @@ export default function getAlbumsCallbackTest(abilityContext) {
             }
         }
 
+        const getPhotoAlbumsErrCodeTest = async function (done, testNum) {
+            try {
+                let invalidOps : userFileManager.FetchOptions;
+                userfilemgr.getPhotoAlbums(invalidOps, async (err, fetchAlbumResult) => {
+                    if(err) {
+                        console.info(`${testNum} getPhotoAlbums err: ${err}`)
+                        expect(false).assertTrue();
+                        done();
+                        return;
+                    }
+                    expect(false).assertTrue();
+                    fetchAlbumResult.close();
+                    done();
+                });
+            } catch (error) {
+                console.info(`${testNum}, errCode :${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(THROW_ERROR_CODE.toString());
+                done();
+            }
+        }
+
         /**
          * @tc.number    : SUB_USERFILE_MGR_GETPHOTOALBUMS_CALLBACK_01
          * @tc.name      : getPhotoAlbums
@@ -120,6 +142,19 @@ export default function getAlbumsCallbackTest(abilityContext) {
             let currentFetchOp = albumFetchOps(testNum, 'Pictures/', 'myAlbum');
             let relativePaths = 'Pictures/';
             await checkAlbumInfo(done, testNum, currentFetchOp, relativePaths);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_GETPHOTOALBUMS_ERRCODE_CALLBACK_01
+         * @tc.name      : getPhotoAlbums
+         * @tc.desc      : getPhotoAlbums by invalid
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+         it('SUB_USERFILE_MGR_GETPHOTOALBUMS_ERRCODE_CALLBACK_01', 0, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETPHOTOALBUMS_ERRCODE_CALLBACK_01';
+            await getPhotoAlbumsErrCodeTest(done, testNum);
         });
     });
 }

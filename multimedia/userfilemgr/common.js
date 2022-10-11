@@ -17,7 +17,6 @@ import userFileManager from '@ohos.filemanagement.userFileManager';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 import bundle from '@ohos.bundle';
 import dataSharePredicates from '@ohos.data.dataSharePredicates';
-import mediaLibrary from '@ohos.multimedia.mediaLibrary';
 
 const presetsCount = {
     ActsUserFileMgrAlbumJsTest: { albumsCount: 3, assetsCount: 3 },
@@ -32,7 +31,7 @@ const AUDIO_TYPE = userFileManager.FileType.AUDIO;
 const AUDIOKEY = userFileManager.AudioKey;
 const IMAGEVIDEOKEY = userFileManager.ImageVideoKey;
 const ALBUMKEY = userFileManager.AlbumKey;
-const FILEKEY = mediaLibrary.FileKey;
+const THROW_ERROR_CODE = 13900020;
 const sleep = async function sleep(times) {
     if (times == undefined) {
         times = 10
@@ -50,58 +49,58 @@ const allFetchOp = function () {
 
 const audioFetchOps = function (testNum, path) {
     let predicates = new dataSharePredicates.DataSharePredicates();
-    predicates.equalTo(FILEKEY.RELATIVE_PATH, path);
+    predicates.equalTo("relative_path", path);
     let ops = {
         fetchColumns: [],
         predicates: predicates
     };
-    console.info(`${testNum} queryOps: ${FILEKEY.RELATIVE_PATH} = ${path}`);
+    console.info(`${testNum} queryOps: relative_path = ${path}`);
     return ops
 }
 
 const imageVideoFetchOps = function (testNum, path) {
     let predicates = new dataSharePredicates.DataSharePredicates();
-    predicates.equalTo(FILEKEY.RELATIVE_PATH, path);
+    predicates.equalTo("relative_path", path);
     let ops = {
         fetchColumns: [],
         predicates: predicates
     };
-    console.info(`${testNum} queryOps: ${FILEKEY.RELATIVE_PATH} = ${path}`);
+    console.info(`${testNum} queryOps: relative_path = ${path}`);
     return ops
 }
 
 const audioNameFetchOps = function (testNum, path, displayName) {
     let predicates = new dataSharePredicates.DataSharePredicates();
-    predicates.equalTo(FILEKEY.RELATIVE_PATH, path)
+    predicates.equalTo("relative_path", path)
         .equalTo(AUDIOKEY.DISPLAY_NAME, displayName);
     let ops = {
         fetchColumns: [],
         predicates: predicates
     };
-    console.info(`${testNum} queryOps: ${FILEKEY.RELATIVE_PATH} = ${path} AND display_name = ${displayName}`);
+    console.info(`${testNum} queryOps: relative_path = ${path} AND display_name = ${displayName}`);
     return ops
 }
 
 const imageVideoNameFetchOps = function (testNum, path, displayName) {
     let predicates = new dataSharePredicates.DataSharePredicates();
-    predicates.equalTo(FILEKEY.RELATIVE_PATH, path)
+    predicates.equalTo("relative_path", path)
         .equalTo(IMAGEVIDEOKEY.DISPLAY_NAME, displayName);
     let ops = {
         fetchColumns: [],
         predicates: predicates
     };
-    console.info(`${testNum} queryOps: ${FILEKEY.RELATIVE_PATH} = ${path} AND display_name = ${displayName}`);
+    console.info(`${testNum} queryOps: relative_path = ${path} AND display_name = ${displayName}`);
     return ops
 }
 
 const albumFetchOps = function (testNum, path, albumName) {
     let predicates = new dataSharePredicates.DataSharePredicates();
-    predicates.equalTo(FILEKEY.RELATIVE_PATH, path)
-        .equalTo("bucket_display_name", albumName);
+    predicates.equalTo("relative_path", path)
+        .equalTo(ALBUMKEY.ALBUM_NAME, albumName);
     let ops = {
         predicates: predicates
     };
-    console.info(`${testNum} queryOps: ${FILEKEY.RELATIVE_PATH} = ${path} AND bucket_display_name = ${albumName}`);
+    console.info(`${testNum} queryOps: relative_path = ${path} AND bucket_display_name = ${albumName}`);
     return ops
 }
 
@@ -170,6 +169,7 @@ export {
     IMAGE_TYPE,
     VIDEO_TYPE,
     AUDIO_TYPE,
+    THROW_ERROR_CODE,
     sleep,
     allFetchOp,
     audioFetchOps,
