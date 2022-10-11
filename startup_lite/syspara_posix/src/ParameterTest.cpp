@@ -16,6 +16,7 @@
 #include <cstdio>
 #include "gtest/gtest.h"
 #include "parameter.h"
+#include "sysparam_errno.h"
 using namespace std;
 using namespace testing::ext;
 
@@ -179,12 +180,12 @@ HWTEST_F(ParameterTest, SUB_START_Para_Setting_ilLegal_value_0010, Function | Me
     char key1[] = "rw.sys.version.version";
     char value1[] = "abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuv11";
     ret = SetParameter(key1, value1);
-    EXPECT_EQ(ret, -9);
+    EXPECT_EQ(ret, SYSPARAM_INVALID_VALUE);
 
     char key2[] = "rw.sys.version.version";
     char value2[] = "abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuv222";
     ret = SetParameter(key2, value2);
-    EXPECT_EQ(ret, -9);
+    EXPECT_EQ(ret, SYSPARAM_INVALID_VALUE);
 }
 
 /**
