@@ -4618,8 +4618,8 @@ describe('audioFramework', function () {
 
     /**
      *@tc.number    : SUB_MULTIMEDIA_AUDIO_MANAGER_RINGERMODECHANGE_0300
-     *@tc.name      : RingerModeChange - RINGER_MODE_SILENT
-     *@tc.desc      : RingerModeChange - RINGER_MODE_SILENT
+     *@tc.name      : RingerModeChange - RINGER_MODE_NORMAL
+     *@tc.desc      : RingerModeChange - RINGER_MODE_NORMAL
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
