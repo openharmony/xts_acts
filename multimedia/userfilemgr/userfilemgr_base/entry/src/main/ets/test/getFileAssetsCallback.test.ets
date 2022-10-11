@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import userfile_manager from '@ohos.filemanagement.userfile_manager';
+import userFileManager from '@ohos.filemanagement.userFileManager';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 import {
     sleep,
@@ -29,7 +29,7 @@ import {
 
 export default function getFileAssetsCallbackTest(abilityContext) {
     describe('getFileAssetsCallbackTest', function () {
-        const userfilemgr = userfile_manager.getUserFileMgr(abilityContext);
+        const userfilemgr = userFileManager.getUserFileMgr(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
             await checkPresetsAssets(userfilemgr, 'ActsUserFileMgrBaseJsTest');
@@ -199,8 +199,7 @@ export default function getFileAssetsCallbackTest(abilityContext) {
                         return;
                     }
                     expect(asset.displayName).assertEqual(props[type].displayName);
-                    expect(asset.fileType.toString()).assertEqual(props[type].fileType);
-                    expect(asset.uri).assertEqual(props[type].uri);
+                    expect(asset.uri != undefined).assertTrue();
                     fetchAssetResult.close();
                     done();
                 });

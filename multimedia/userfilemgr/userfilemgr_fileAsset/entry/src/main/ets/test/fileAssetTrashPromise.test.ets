@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import userfile_manager from '@ohos.filemanagement.userfile_manager';
+import userFileManager from '@ohos.filemanagement.userFileManager';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "deccjsunit/index";
 import {
     sleep,
@@ -26,7 +26,7 @@ import {
 
 export default function fileAssetTrashPromiseTest(abilityContext) {
     describe("fileAssetTrashPromiseTest", function () {
-        const userfilemgr = userfile_manager.getUserFileMgr(abilityContext);
+        const userfilemgr = userFileManager.getUserFileMgr(abilityContext);
         beforeAll(async function () {
             console.info("beforeAll case");
         });
@@ -78,7 +78,7 @@ export default function fileAssetTrashPromiseTest(abilityContext) {
                 if (!noAlbum) {
                     let fetchAlbumResult = await userfilemgr.getPhotoAlbums(ablumFetchOps);
                     let album = await fetchAlbumResult.getFirstObject();
-                    let op: userfile_manager.MediaFetchOptions = allFetchOp();
+                    let op: userFileManager.FetchOptions = allFetchOp();
                     let albumFetchFileResult = await album.getPhotoAssets(op);
                     let albumFilesCount = albumFetchFileResult.getCount();
                     expect(albumFilesCount).assertEqual(expectAssetNum);
@@ -103,7 +103,7 @@ export default function fileAssetTrashPromiseTest(abilityContext) {
                 if (!noAlbum) {
                     var fetchAlbumResult = await userfilemgr.getPhotoAlbums(ablumFetchOps);
                     var album = await fetchAlbumResult.getFirstObject();
-                    let op: userfile_manager.MediaFetchOptions = allFetchOp();
+                    let op: userFileManager.FetchOptions = allFetchOp();
                     var albumFetchFileResult = await album.getPhotoAssets(op);
                     var albumFilesCount = albumFetchFileResult.getCount();
                     expect(albumFilesCount).assertEqual(expectAssetNum - 1);
@@ -143,7 +143,7 @@ export default function fileAssetTrashPromiseTest(abilityContext) {
                 if (!noAlbum) {
                     let fetchAlbumResult = await userfilemgr.getPhotoAlbums(ablumFetchOps);
                     let album = await fetchAlbumResult.getFirstObject();
-                    let op: userfile_manager.MediaFetchOptions = allFetchOp();
+                    let op: userFileManager.FetchOptions = allFetchOp();
                     let albumFetchFileResult = await album.getPhotoAssets(op);
                     let albumFilesCount = albumFetchFileResult.getCount();
                     expect(albumFilesCount).assertEqual(expectAssetNum);
