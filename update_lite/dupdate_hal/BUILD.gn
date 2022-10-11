@@ -21,8 +21,7 @@ hctest_suite("ActsUpdaterFuncTest") {
     "//base/update/ota_lite/interfaces/kits",
   ]
 
-  if(board_toolchain_type != "iccarm"){
-    cflags = [ "-Wno-error" ]
-    
+  if (board_toolchain_type != "iccarm"){
+    cflags = [ "-Wno-error" ]    
   }
 }
