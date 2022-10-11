@@ -48,6 +48,12 @@ lite_component("acts_component") {
         "//test/xts/acts/update_lite/dupdate_hal:ActsUpdaterFuncTest",
         "//test/xts/acts/startup_lite/bootstrap_hal:ActsBootstrapTest",
       ]
+    } else if (ohos_kernel_type == "uniproton") {
+      all_features += [
+        "//test/xts/acts/commonlibrary_lite/file_hal:ActsUtilsFileTest",
+        "//test/xts/acts/startup_lite/bootstrap_hal:ActsBootstrapTest",
+      ]
+      features += [ "//test/xts/acts/communication_lite/lwip_hal:ActsLwipTest" ]
     } else if (ohos_kernel_type == "liteos_a") {
       all_features += [
         "//test/xts/acts/kernel_lite:ActsKernelTest",
