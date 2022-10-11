@@ -106,7 +106,7 @@ export default function cameraManagerTest(surfaceId: any) {
         return false;
     }
 
-    function getCameraManagerInstance() {
+    async function getCameraManagerInstance() {
         mCameraManager = cameraObj.getCameraManager(null);
         if (isEmpty(mCameraManager)) {
             console.info(TAG + "getCameraManager FAILED");
@@ -115,7 +115,7 @@ export default function cameraManagerTest(surfaceId: any) {
         return true;
     }
 
-    function getSupportedOutputCapabilityInCallback(cameraDevice) {
+    async function getSupportedOutputCapabilityInCallback(cameraDevice) {
         if (isEmpty(mCameraManager)) {
             console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_PROMISE_0100 cameraManager == null || undefined")
             expect().assertFail();
@@ -138,7 +138,7 @@ export default function cameraManagerTest(surfaceId: any) {
         return outputCapabilityCallback;
     }
 
-    function getSupportedOutputCapabilityInPromise(cameraDevice) {
+    async function getSupportedOutputCapabilityInPromise(cameraDevice) {
         if (isEmpty(mCameraManager)) {
             console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_PROMISE_0100 cameraManager == null || undefined")
             expect().assertFail();
@@ -215,7 +215,7 @@ describe('CameraManagerTest', function () {
 
     beforeAll(async function () {
         await applyPermission();
-        getCameraManagerInstance();
+        await getCameraManagerInstance();
         await getImageReceiverSurfaceId();
         await getvideosurface();
         console.info('beforeAll case');
