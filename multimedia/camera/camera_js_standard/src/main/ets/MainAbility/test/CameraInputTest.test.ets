@@ -107,7 +107,7 @@ export default function CameraInputTest(surfaceId) {
         }
     }
 
-describe('CameraManagerTest', function () {
+describe('CameraInputTest', function () {
     console.info(TAG + '----------CameraInputTest--------------');
     beforeAll(async function () {
         await applyPermission();

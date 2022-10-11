@@ -41,11 +41,9 @@ let mFdNumber;
 
 // CAMERA-0 letiables
 let mCameraInputArray;
-let mCameraOutputCap;
-
-let mPreviewOutput;
-let mPhotoOutput;
-let mVideoOutput;
+let mPreviewOutputArray;
+let mPhotoOutputArray;
+let mVideoOutputArray;
 
 let mIsVideoStabilizationModeSupportedArray;
 
@@ -369,52 +367,58 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
     async function createOutputs() {
         console.info('Enter createOutputs');
 
-        mCameraOutputCap = await mCameraManager.getSupportedOutputCapability(mCameraDevicesArray[0]);
-        if (!isEmpty(mCameraOutputCap.previewProfiles)) {
-            console.info(TAG + "cameraOutputCap.previewProfiles.length: " + mCameraOutputCap.previewProfiles.length);      
-            for (let i = 0; i< mCameraOutputCap.previewProfiles.length; i++) {
-                mPreviewOutput = await mCameraManager.createPreviewOutput(mCameraOutputCap.previewProfiles[i], surfaceId);
-                if (!isEmpty(mPreviewOutput)) {
-                    break;
+        mPreviewOutputArray = new Array(mCameraDevicesArray.length);
+        mPhotoOutputArray = new Array(mCameraDevicesArray.length);
+        mVideoOutputArray = new Array(mCameraDevicesArray.length);
+
+        for (let i = 0; i < mCameraDevicesArray.length; i++) {
+            let cameraOutputCap = await mCameraManager.getSupportedOutputCapability(mCameraDevicesArray[i]);
+            if (!isEmpty(cameraOutputCap.previewProfiles)) {
+                console.info(TAG + "cameraOutputCap.previewProfiles.length: " + cameraOutputCap.previewProfiles.length);      
+                for (let i = 0; i< cameraOutputCap.previewProfiles.length; i++) {
+                    mPreviewOutputArray[i] = await mCameraManager.createPreviewOutput(cameraOutputCap.previewProfiles[i], surfaceId);
+                    if (!isEmpty(mPreviewOutputArray[i])) {
+                        break;
+                    }
+                }
+
+                if (isEmpty(mPreviewOutputArray[i])) {
+                    console.info(TAG + "createPreviewOutput FAILED");
                 }
             }
 
-            if (isEmpty(mPreviewOutput)) {
-                console.info(TAG + "createPreviewOutput FAILED");
-            }
-        }
-
-        if (!isEmpty(mCameraOutputCap.photoProfiles)) {
-            console.info(TAG + "cameraOutputCap.photoProfiles.length: " + mCameraOutputCap.photoProfiles.length);   
-            
-            for (let i = 0; i < mCameraOutputCap.photoProfiles.length; i++) {
-                mPhotoOutput = await mCameraManager.createPhotoOutput(mCameraOutputCap.photoProfiles[i], mPhoteSurface);
-                if (!isEmpty(mPhotoOutput)) {
-                    break;
+            if (!isEmpty(cameraOutputCap.photoProfiles)) {
+                console.info(TAG + "cameraOutputCap.photoProfiles.length: " + cameraOutputCap.photoProfiles.length);   
+                
+                for (let i = 0; i < cameraOutputCap.photoProfiles.length; i++) {
+                    mPhotoOutputArray[i] = await mCameraManager.createPhotoOutput(cameraOutputCap.photoProfiles[i], mPhoteSurface);
+                    if (!isEmpty(mPhotoOutputArray[i])) {
+                        break;
+                    }
                 }
-            }
 
-            if (isEmpty(mPhotoOutput)) {
-                console.info(TAG + "createPhotoOutput FAILED");
-            }
-
-            console.info(TAG + "createPhotoOutput: " + mPhotoOutput);
-        }
-
-        if (!isEmpty(mCameraOutputCap.videoProfiles)) {
-            console.info(TAG + "cameraOutputCap.videoProfiles.length: " + mCameraOutputCap.videoProfiles.length); 
-            for (let i = 0; i < mCameraOutputCap.videoProfiles.length; i++) {
-                mVideoOutput = await mCameraManager.createVideoOutput(mCameraOutputCap.videoProfiles[i], mVideoSurface);
-                if (!isEmpty(mVideoOutput)) {
-                    break;
+                if (isEmpty(mPhotoOutputArray[i])) {
+                    console.info(TAG + "createPhotoOutput FAILED");
                 }
+
+                console.info(TAG + "createPhotoOutput: " + mPhotoOutputArray[i]);
             }
 
-            if (isEmpty(mVideoOutput)) {
-                console.info(TAG + "createVideoOutput FAILED");
-            }
+            if (!isEmpty(cameraOutputCap.videoProfiles)) {
+                console.info(TAG + "cameraOutputCap.videoProfiles.length: " + cameraOutputCap.videoProfiles.length); 
+                for (let i = 0; i < cameraOutputCap.videoProfiles.length; i++) {
+                    mVideoOutputArray[i] = await mCameraManager.createVideoOutput(cameraOutputCap.videoProfiles[i], mVideoSurface);
+                    if (!isEmpty(mVideoOutputArray[i])) {
+                        break;
+                    }
+                }
 
-            console.info(TAG + "createVideoOutput: " + mPhotoOutput);  
+                if (isEmpty(mVideoOutputArray[i])) {
+                    console.info(TAG + "createVideoOutput FAILED");
+                }
+
+                console.info(TAG + "createVideoOutput: " + mPhotoOutputArray[i]);  
+            }
         }
 
         console.info('Exit createOutputs');
@@ -423,45 +427,47 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
     }
 
     async function releaseOutputs() {
-        if (!isEmpty(mPreviewOutput)) {
-            await mPreviewOutput.close();
-            await mPreviewOutput.release();
+        for (let i = 0; i < mCameraDevicesArray.length; i++) {
+            if (!isEmpty(mPreviewOutputArray[i])) {
+                await mPreviewOutputArray[i].close();
+                await mPreviewOutputArray[i].release();
+            }
+    
+            if (!isEmpty(mPhotoOutputArray[i])) {
+                await mPhotoOutputArray[i].close();
+                await mPhotoOutputArray[i].release();
+            }
+    
+            if (!isEmpty(mVideoOutputArray[i])) {
+                await mVideoOutputArray[i].close();
+                await mVideoOutputArray[i].release();
+            }
         }
-
-        if (!isEmpty(mPhotoOutput)) {
-            await mPhotoOutput.close();
-            await mPhotoOutput.release();
-        }
-
-        if (!isEmpty(mVideoOutput)) {
-            await mVideoOutput.close();
-            await mVideoOutput.release();
-        }
-
+        
         return true;
     }
 
-    async function startCameraSession(input:any) {
+    async function startCameraSession(idx:any) {
         console.info(TAG + "Enter startCameraSession");
 
-        if (!isEmpty(input)) {
+        if (!isEmpty(mCameraInputArray[idx])) {
             console.info(TAG + "Start to addInput");
-            await mCameraSession.addInput(input);
+            await mCameraSession.addInput(mCameraInputArray[idx]);
         }
         
-        if (!isEmpty(mPreviewOutput)) {
+        if (!isEmpty(mPreviewOutputArray[idx])) {
             console.info(TAG + "Start to addOutput mPreviewOutput");
-            await mCameraSession.addOutput(mPreviewOutput);
+            await mCameraSession.addOutput(mPreviewOutputArray[idx]);
         }
         
-        if (!isEmpty(mPhotoOutput)) {
+        if (!isEmpty(mPhotoOutputArray[idx])) {
             console.info(TAG + "Start to addOutput mPhotoOutput");
-            await mCameraSession.addOutput(mPhotoOutput);
+            await mCameraSession.addOutput(mPhotoOutputArray[idx]);
         }
 
-        if (!isEmpty(mVideoOutput)) {
+        if (!isEmpty(mVideoOutputArray[idx])) {
             console.info(TAG + "Start to addOutput mVideoOutput");
-            await mCameraSession.addOutput(mVideoOutput);
+            await mCameraSession.addOutput(mVideoOutputArray[idx]);
         }
 
         await commitCameraSessionConfig();
@@ -484,7 +490,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
         return true;
     }
 
-    async function stopCameraSession(input:any) {
+    async function stopCameraSession(idx:any) {
         console.info(TAG + "Enter stopCameraSession");
         /*
         mCameraSession.stop(async (err) => {
@@ -499,24 +505,24 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
         await sleep(1000);
         */
 
-        if (!isEmpty(input)) {
+        if (!isEmpty(mCameraInputArray[idx])) {
             console.info(TAG + "Start to removeInput input");
-            await mCameraSession.removeInput(input);
+            await mCameraSession.removeInput(mCameraInputArray[idx]);
         }
 
-        if (!isEmpty(mPreviewOutput)) {
+        if (!isEmpty(mPreviewOutputArray[idx])) {
             console.info(TAG + "Start to removeOutput mPreviewOutput");
-            await mCameraSession.removeOutput(mPreviewOutput);
+            await mCameraSession.removeOutput(mPreviewOutputArray[idx]);
         }
 
-        if (!isEmpty(mPhotoOutput)) {
+        if (!isEmpty(mPhotoOutputArray[idx])) {
             console.info(TAG + "Start to removeOutput mPhotoOutput");
-            await mCameraSession.removeOutput(mPhotoOutput);
+            await mCameraSession.removeOutput(mPhotoOutputArray[idx]);
         }
 
-        if (!isEmpty(mVideoOutput)) {
+        if (!isEmpty(mVideoOutputArray[idx])) {
             console.info(TAG + "Start to removeOutput mVideoOutput");
-            await mCameraSession.removeOutput(mVideoOutput);
+            await mCameraSession.removeOutput(mVideoOutputArray[idx]);
         }
 
         console.info(TAG + "Exit stopCameraSession");
@@ -580,7 +586,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
                 for (let i = 0; i < mCameraInputArray.length; i++) {
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0100 start for camera[" + i + "]");
     
-                    await startCameraSession(mCameraInputArray[i]);
+                    await startCameraSession(i);
     
                     mIsVideoStabilizationModeSupportedArray[i] = false;
     
@@ -606,7 +612,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
                     })
                     await sleep(1000);
                     
-                    await stopCameraSession(mCameraInputArray[i]);
+                    await stopCameraSession(i);
     
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0100 end for camera[" + i + "]");
                 }
@@ -635,7 +641,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
                 for (let i = 0; i < mCameraInputArray.length; i++) {
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0100 start for camera[" + i + "]");
     
-                    await startCameraSession(mCameraInputArray[i]);
+                    await startCameraSession(i);
     
                     let isVideoStabilizationModeSupported = await mCameraSession.isVideoStabilizationModeSupported(cameraObj.VideoStabilizationMode.OFF);
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0100 finish");
@@ -653,7 +659,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
     
                     await sleep(1000);
                     
-                    await stopCameraSession(mCameraInputArray[i]);
+                    await stopCameraSession(i);
     
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0100 end for camera[" + i + "]");
                 }
@@ -682,7 +688,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
                 for (let i = 0; i < mCameraInputArray.length; i++) {
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0100 start for camera[" + i + "]");
     
-                    await startCameraSession(mCameraInputArray[i]);
+                    await startCameraSession(i);
     
                     if (mIsVideoStabilizationModeSupportedArray[i] == true) {
                         mCameraSession.setVideoStabilizationMode(cameraObj.VideoStabilizationMode.OFF, async (err) => {
@@ -720,7 +726,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
                         }
                     }
                     
-                    await stopCameraSession(mCameraInputArray[i]);
+                    await stopCameraSession(i);
     
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0100 end for camera[" + i + "]");
                 }
@@ -749,7 +755,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
                 for (let i = 0; i < mCameraInputArray.length; i++) {
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0100 start for camera[" + i + "]");
     
-                    await startCameraSession(mCameraInputArray[i]);
+                    await startCameraSession(i);
     
                     if (mIsVideoStabilizationModeSupportedArray[i] == true) {
                         await mCameraSession.setVideoStabilizationMode(cameraObj.VideoStabilizationMode.OFF);
@@ -775,7 +781,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
                         }
                     }
                     
-                    await stopCameraSession(mCameraInputArray[i]);
+                    await stopCameraSession(i);
     
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0100 end for camera[" + i + "]");
                 }
@@ -804,7 +810,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
                 for (let i = 0; i < mCameraInputArray.length; i++) {
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0101 start for camera[" + i + "]");
     
-                    await startCameraSession(mCameraInputArray[i]);
+                    await startCameraSession(i);
     
                     mIsVideoStabilizationModeSupportedArray[i] = false;
     
@@ -830,7 +836,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
                     })
                     await sleep(1000);
                     
-                    await stopCameraSession(mCameraInputArray[i]);
+                    await stopCameraSession(i);
     
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0101 end for camera[" + i + "]");
                 }
@@ -859,7 +865,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
                 for (let i = 0; i < mCameraInputArray.length; i++) {
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0101 start for camera[" + i + "]");
     
-                    await startCameraSession(mCameraInputArray[i]);
+                    await startCameraSession(i);
     
                     let isVideoStabilizationModeSupported = await mCameraSession.isVideoStabilizationModeSupported(cameraObj.VideoStabilizationMode.LOW);
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0101 finish");
@@ -877,7 +883,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
     
                     await sleep(1000);
                     
-                    await stopCameraSession(mCameraInputArray[i]);
+                    await stopCameraSession(i);
     
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0101 end for camera[" + i + "]");
                 }
@@ -906,7 +912,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
                 for (let i = 0; i < mCameraInputArray.length; i++) {
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0101 start for camera[" + i + "]");
     
-                    await startCameraSession(mCameraInputArray[i]);
+                    await startCameraSession(i);
     
                     if (mIsVideoStabilizationModeSupportedArray[i] == true) {
                         mCameraSession.setVideoStabilizationMode(cameraObj.VideoStabilizationMode.LOW, async (err) => {
@@ -944,7 +950,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
                         }
                     }
                     
-                    await stopCameraSession(mCameraInputArray[i]);
+                    await stopCameraSession(i);
     
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0101 end for camera[" + i + "]");
                 }
@@ -973,7 +979,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
                 for (let i = 0; i < mCameraInputArray.length; i++) {
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0101 start for camera[" + i + "]");
     
-                    await startCameraSession(mCameraInputArray[i]);
+                    await startCameraSession(i);
     
                     if (mIsVideoStabilizationModeSupportedArray[i] == true) {
                         await mCameraSession.setVideoStabilizationMode(cameraObj.VideoStabilizationMode.LOW);
@@ -999,7 +1005,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
                         }
                     }
                     
-                    await stopCameraSession(mCameraInputArray[i]);
+                    await stopCameraSession(i);
     
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0101 end for camera[" + i + "]");
                 }
@@ -1028,7 +1034,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
                 for (let i = 0; i < mCameraInputArray.length; i++) {
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0102 start for camera[" + i + "]");
     
-                    await startCameraSession(mCameraInputArray[i]);
+                    await startCameraSession(i);
     
                     mIsVideoStabilizationModeSupportedArray[i] = false;
     
@@ -1054,7 +1060,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
                     })
                     await sleep(1000);
                     
-                    await stopCameraSession(mCameraInputArray[i]);
+                    await stopCameraSession(i);
     
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0102 end for camera[" + i + "]");
                 }
@@ -1083,7 +1089,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
                 for (let i = 0; i < mCameraInputArray.length; i++) {
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0102 start for camera[" + i + "]");
     
-                    await startCameraSession(mCameraInputArray[i]);
+                    await startCameraSession(i);
     
                     let isVideoStabilizationModeSupported = await mCameraSession.isVideoStabilizationModeSupported(cameraObj.VideoStabilizationMode.MIDDLE);
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0102 finish");
@@ -1101,7 +1107,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
     
                     await sleep(1000);
                     
-                    await stopCameraSession(mCameraInputArray[i]);
+                    await stopCameraSession(i);
     
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0102 end for camera[" + i + "]");
                 }
@@ -1130,7 +1136,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
                 for (let i = 0; i < mCameraInputArray.length; i++) {
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0102 start for camera[" + i + "]");
     
-                    await startCameraSession(mCameraInputArray[i]);
+                    await startCameraSession(i);
     
                     if (mIsVideoStabilizationModeSupportedArray[i] == true) {
                         mCameraSession.setVideoStabilizationMode(cameraObj.VideoStabilizationMode.MIDDLE, async (err) => {
@@ -1168,7 +1174,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
                         }
                     }
                     
-                    await stopCameraSession(mCameraInputArray[i]);
+                    await stopCameraSession(i);
     
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0102 end for camera[" + i + "]");
                 }
@@ -1197,7 +1203,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
                 for (let i = 0; i < mCameraInputArray.length; i++) {
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0102 start for camera[" + i + "]");
     
-                    await startCameraSession(mCameraInputArray[i]);
+                    await startCameraSession(i);
     
                     if (mIsVideoStabilizationModeSupportedArray[i] == true) {
                         await mCameraSession.setVideoStabilizationMode(cameraObj.VideoStabilizationMode.MIDDLE);
@@ -1223,7 +1229,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
                         }
                     }
                     
-                    await stopCameraSession(mCameraInputArray[i]);
+                    await stopCameraSession(i);
     
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0102 end for camera[" + i + "]");
                 }
@@ -1252,7 +1258,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
                 for (let i = 0; i < mCameraInputArray.length; i++) {
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0103 start for camera[" + i + "]");
     
-                    await startCameraSession(mCameraInputArray[i]);
+                    await startCameraSession(i);
     
                     mIsVideoStabilizationModeSupportedArray[i] = false;
     
@@ -1278,7 +1284,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
                     })
                     await sleep(1000);
                     
-                    await stopCameraSession(mCameraInputArray[i]);
+                    await stopCameraSession(i);
     
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0103 end for camera[" + i + "]");
                 }
@@ -1307,7 +1313,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
                 for (let i = 0; i < mCameraInputArray.length; i++) {
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0103 start for camera[" + i + "]");
     
-                    await startCameraSession(mCameraInputArray[i]);
+                    await startCameraSession(i);
     
                     let isVideoStabilizationModeSupported = await mCameraSession.isVideoStabilizationModeSupported(cameraObj.VideoStabilizationMode.HIGH);
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0103 finish");
@@ -1325,7 +1331,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
     
                     await sleep(1000);
                     
-                    await stopCameraSession(mCameraInputArray[i]);
+                    await stopCameraSession(i);
     
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0103 end for camera[" + i + "]");
                 }
@@ -1354,7 +1360,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
                 for (let i = 0; i < mCameraInputArray.length; i++) {
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0103 start for camera[" + i + "]");
     
-                    await startCameraSession(mCameraInputArray[i]);
+                    await startCameraSession(i);
     
                     if (mIsVideoStabilizationModeSupportedArray[i] == true) {
                         mCameraSession.setVideoStabilizationMode(cameraObj.VideoStabilizationMode.HIGH, async (err) => {
@@ -1392,7 +1398,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
                         }
                     }
                     
-                    await stopCameraSession(mCameraInputArray[i]);
+                    await stopCameraSession(i);
     
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0103 end for camera[" + i + "]");
                 }
@@ -1421,7 +1427,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
                 for (let i = 0; i < mCameraInputArray.length; i++) {
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0103 start for camera[" + i + "]");
     
-                    await startCameraSession(mCameraInputArray[i]);
+                    await startCameraSession(i);
     
                     if (mIsVideoStabilizationModeSupportedArray[i] == true) {
                         await mCameraSession.setVideoStabilizationMode(cameraObj.VideoStabilizationMode.HIGH);
@@ -1447,7 +1453,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
                         }
                     }
                     
-                    await stopCameraSession(mCameraInputArray[i]);
+                    await stopCameraSession(i);
     
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0103 end for camera[" + i + "]");
                 }
@@ -1476,7 +1482,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
                 for (let i = 0; i < mCameraInputArray.length; i++) {
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0104 start for camera[" + i + "]");
     
-                    await startCameraSession(mCameraInputArray[i]);
+                    await startCameraSession(i);
     
                     mIsVideoStabilizationModeSupportedArray[i] = false;
     
@@ -1502,7 +1508,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
                     })
                     await sleep(1000);
                     
-                    await stopCameraSession(mCameraInputArray[i]);
+                    await stopCameraSession(i);
     
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0104 end for camera[" + i + "]");
                 }
@@ -1531,7 +1537,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
                 for (let i = 0; i < mCameraInputArray.length; i++) {
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0104 start for camera[" + i + "]");
     
-                    await startCameraSession(mCameraInputArray[i]);
+                    await startCameraSession(i);
     
                     let isVideoStabilizationModeSupported = await mCameraSession.isVideoStabilizationModeSupported(cameraObj.VideoStabilizationMode.AUTO);
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0104 finish");
@@ -1549,7 +1555,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
     
                     await sleep(1000);
                     
-                    await stopCameraSession(mCameraInputArray[i]);
+                    await stopCameraSession(i);
     
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0104 end for camera[" + i + "]");
                 }
@@ -1578,7 +1584,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
                 for (let i = 0; i < mCameraInputArray.length; i++) {
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0104 start for camera[" + i + "]");
     
-                    await startCameraSession(mCameraInputArray[i]);
+                    await startCameraSession(i);
     
                     if (mIsVideoStabilizationModeSupportedArray[i] == true) {
                         mCameraSession.setVideoStabilizationMode(cameraObj.VideoStabilizationMode.AUTO, async (err) => {
@@ -1616,7 +1622,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
                         }
                     }
                     
-                    await stopCameraSession(mCameraInputArray[i]);
+                    await stopCameraSession(i);
     
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0104 end for camera[" + i + "]");
                 }
@@ -1645,7 +1651,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
                 for (let i = 0; i < mCameraInputArray.length; i++) {
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0104 start for camera[" + i + "]");
     
-                    await startCameraSession(mCameraInputArray[i]);
+                    await startCameraSession(i);
     
                     if (mIsVideoStabilizationModeSupportedArray[i] == true) {
                         await mCameraSession.setVideoStabilizationMode(cameraObj.VideoStabilizationMode.AUTO);
@@ -1671,7 +1677,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
                         }
                     }
                     
-                    await stopCameraSession(mCameraInputArray[i]);
+                    await stopCameraSession(i);
     
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0104 end for camera[" + i + "]");
                 }

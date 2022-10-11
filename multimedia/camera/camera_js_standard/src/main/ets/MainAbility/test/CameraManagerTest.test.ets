@@ -18,6 +18,8 @@ import image from '@ohos.multimedia.image';
 import fileio from '@ohos.fileio';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
 import bundle from '@ohos.bundle'
+import mediaLibrary from '@ohos.multimedia.mediaLibrary'
+import media from '@ohos.multimedia.media'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'deccjsunit/index';
 
 const TAG = "CameraUnitTest: ";
@@ -27,6 +29,37 @@ let mCameraManager;
 let photoSurfaceId;
 let videoSurfaceId;
 let mCameraDevicesArray;
+let fdPath;
+let fileAsset;
+let fdNumber;
+
+// 创建视频录制的参数
+let videoProfile = {
+    audioBitrate: 48000,
+    audioChannels: 2,
+    audioCodec: 'audio/mp4a-latm',
+    audioSampleRate: 48000,
+    fileFormat: 'mp4',
+    videoBitrate: 48000,
+    videoCodec: 'video/mp4v-es',
+    videoFrameWidth: 640,
+    videoFrameHeight: 480,
+    videoFrameRate: 30
+  }
+  
+  let videoConfig = {
+    audioSourceType: 1,
+    videoSourceType: 0,
+    profile: videoProfile,
+    url: 'file:///data/media/01.mp4',
+    orientationHint: 0,
+    location: { latitude: 30, longitude: 130 },
+    maxSize: 100,
+    maxDuration: 500
+  }
+  
+  // 创建录像输出流
+  let videoRecorder
 
 export default function cameraManagerTest(surfaceId: any) {
 
@@ -231,7 +264,7 @@ describe('CameraManagerTest', function () {
     })
 
     afterAll(function () {
-        await closeFd();
+        closeFd();
         console.info('afterAll case');
     })
 
