@@ -219,10 +219,6 @@ LITE_TEST_CASE(Broadcast01TestSuite, testSubscribe0020, Function | MediumTest | 
     subscriber->AddTopic((IUnknown *)fapi, &topic0);
     int result = subscriber->Subscribe((IUnknown *)fapi, NULL, &c1);
     TEST_ASSERT_EQUAL_INT(result != 0, TRUE);
-
-    Topic noExistTopic = -200;
-    result = subscriber->Subscribe((IUnknown *)fapi, &noExistTopic, &c1);
-    TEST_ASSERT_EQUAL_INT(result != 0, TRUE);
     
     CASE_ReleaseIUnknown(fapi);
 }
