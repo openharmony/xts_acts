@@ -74,7 +74,6 @@ export default function fileAssetFileKeyTest(abilityContext) {
                     }
                     const fetchCount = newAlbumResult.getCount();
                     const currentAlbum = await newAlbumResult.getFirstObject();
-                    //expect(currentAlbum.get(type)).assertEqual(album.get(type));
                     expect(currentAlbum[type]).assertEqual(album[type]);
                     expect(fetchCount > 0).assertTrue();
                     console.info(`${testNum} newAlbum : ${currentAlbum[type]} count: ${fetchCount}`)
@@ -141,7 +140,6 @@ export default function fileAssetFileKeyTest(abilityContext) {
                     fetchColumns: [],
                     predicates: predicates
                 };
-                
                 userfilemgr.getAudioAssets(ops, async (err, newAssetResult) => {
                     if (err) {
                         console.info(`${testNum}, err: ${err}`)
@@ -162,6 +160,20 @@ export default function fileAssetFileKeyTest(abilityContext) {
             }
         }
 
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_GETPHOTOALBUMSBYKEY_02
+         * @tc.name      : AlbumKey
+         * @tc.desc      : AlbumKey.ALBUM_NAME
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('SUB_USERFILE_MGR_GETPHOTOALBUMSBYKEY_02', 0, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETPHOTOALBUMSBYKEY_02';
+            let type = 'albumName';
+            let fileKey = AlbumKey.ALBUM_NAME;
+            await getAlbumsByKey(done, testNum, type, fileKey);
+        })
         /**
          * @tc.number    : SUB_USERFILE_MGR_GETPHOTOALBUMSBYKEY_03
          * @tc.name      : AlbumKey
@@ -417,6 +429,20 @@ export default function fileAssetFileKeyTest(abilityContext) {
         it('SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_06', 0, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_06';
             let fileKey = AUDIOKEY.ARTIST;
+            await getAudioAssetsByKey(done, testNum, fileKey);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_07
+         * @tc.name      : AUDIOKEY
+         * @tc.desc      : AUDIOKEY.AUDIOALBUM
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_07', 0, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_07';
+            let fileKey = AUDIOKEY.AUDIOALBUM;
             await getAudioAssetsByKey(done, testNum, fileKey);
         });
 

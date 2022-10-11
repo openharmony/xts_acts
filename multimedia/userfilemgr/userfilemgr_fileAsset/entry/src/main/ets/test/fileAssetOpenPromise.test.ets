@@ -18,9 +18,6 @@ import fileio from '@ohos.fileio';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 import {
     sleep,
-    IMAGE_TYPE,
-    VIDEO_TYPE,
-    AUDIO_TYPE,
     audioFetchOps,
     imageVideoFetchOps,
     audioNameFetchOps,
