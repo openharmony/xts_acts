@@ -543,7 +543,7 @@ describe('RecorderLocalTestAudioAPI', function () {
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_PAUSE_API_0500', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_PAUSE_API_0600', 0, async function (done) {
         initAudioRecorder();
         let mySteps = new Array(PRE_STATE, START_STATE, RESET_STATE, PAUSE_STATE, ERROR_STATE,
             RELEASE_STATE, END_STATE);
