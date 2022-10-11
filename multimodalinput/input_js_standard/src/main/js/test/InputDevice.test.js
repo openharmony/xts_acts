@@ -153,7 +153,7 @@ describe('MultimodalInput_Device_test', function () {
         console.info(res);
       });
     } catch (error) {
-      expect(error.message).assertEqual("SupportKeys: \"The second parameter type is wrong\"");
+      expect(error.message).assertEqual("Parameter error. The type of keys must be array.");
     }
     console.info(`inputDevice::supportKeys_test-02 exit`);
   })
@@ -297,18 +297,16 @@ describe('MultimodalInput_Device_test', function () {
    * @tc.name MultimodalInputDevice_getDevice_Promise_test
    * @tc.desc inputdevice interface getDevice test
    */
-  it("MultimodalInputDevice_getDevice_Promise_test", 0, async function (done) {
+  it("MultimodalInputDevice_getDevice_Promise_test", 0, async function () {
     console.info(`MultimodalInputDevice_getDevice_Promise_test enter`);
     inputDevice.getDevice(-1).then((data, err) => {
       if (err) {
         console.info(`MultimodalInputDevice_getDevice_Promise_test err`);
         expect(false).assertTrue();
         console.info(`MultimodalInputDevice_getDevice_Promise_test ${JSON.stringify(err)}`);
-        done();
       } else {
         console.info(`MultimodalInputDevice_getDevice_Promise_test data`);
         expect(JSON.stringify(data) !== "{}").assertTrue();
-        done();
       }
       console.info(`MultimodalInputDevice_getDevice_Promise_test exit`);
     });
