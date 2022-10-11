@@ -14,7 +14,8 @@
  */
 import commonEvent from '@ohos.commonEvent';
 import display from '@ohos.display'
-import accessibility from '@ohos.accessibility'
+import { GesturePath } from '@ohos.accessibility.GesturePath';
+import { GesturePoint } from '@ohos.accessibility.GesturePoint';
 
 export class ExtensionContextTest {
     private context = undefined;
@@ -52,14 +53,10 @@ export class ExtensionContextTest {
 
     private async processCase(caseName) {
         console.info('ExtensionContextTest processCase: ' + caseName);
-        let eventType: Array<string> = [];
         let bundleName: Array<string> = [];
         let windowId = -1;
         let displayId = -1;
-        let gesturePath = {};
-        let gesturePos1 = {};
-        let gesturePos2 = {};
-        let gesturePos3 = {};
+        let gesturePath;
 
         switch (caseName) {
             case 'AccessibilityExtensionContextTest_setTargetBundleName_asyncCallback_1500':
@@ -138,67 +135,43 @@ export class ExtensionContextTest {
                 displayId = -1;
                 this.getWindowsByIdPromise(caseName, displayId);
                 break;
-            case 'AccessibilityExtensionContextTest_getFocusElement_asyncCallback_3500':
-                await this.setAccessibilityFocus();
-                this.getFocusElementCallback(caseName, true);
-                break;
-            case 'AccessibilityExtensionContextTest_getFocusElement_asyncCallback_3600':
-                await this.clearAccessibilityFocus();
-                this.getFocusElementCallback(caseName, false);
-                break;
             case 'AccessibilityExtensionContextTest_getFocusElement_asyncCallback_3700':
                 await this.setAccessibilityFocus();
                 this.getFocusElementByTypeCallback(caseName, true, true);
-                break;
-            case 'AccessibilityExtensionContextTest_getFocusElement_asyncCallback_3800':
-                await this.setAccessibilityFocus();
-                this.getFocusElementByTypeCallback(caseName, true, false);
                 break;
             case 'AccessibilityExtensionContextTest_getFocusElement_asyncCallback_3900':
                 await this.clearAccessibilityFocus();
                 this.getFocusElementByTypeCallback(caseName, false, true);
                 break;
-            case 'AccessibilityExtensionContextTest_getFocusElement_asyncCallback_4000':
-                await this.clearAccessibilityFocus();
-                this.getFocusElementByTypeCallback(caseName, false, false);
-                break;
             case 'AccessibilityExtensionContextTest_getFocusElement_asyncPromise_4100':
                 await this.setAccessibilityFocus();
                 this.getFocusElementByTypePromise(caseName, true, true);
-                break;
-            case 'AccessibilityExtensionContextTest_getFocusElement_asyncPromise_4200':
-                await this.setAccessibilityFocus();
-                this.getFocusElementByTypePromise(caseName, true, false);
                 break;
             case 'AccessibilityExtensionContextTest_getFocusElement_asyncPromise_4300':
                 await this.clearAccessibilityFocus();
                 this.getFocusElementByTypePromise(caseName, false, true);
                 break;
-            case 'AccessibilityExtensionContextTest_getFocusElement_asyncPromise_4400':
-                await this.clearAccessibilityFocus();
-                this.getFocusElementByTypePromise(caseName, false, false);
-                break;
             case 'AccessibilityExtensionContextTest_gestureInject_asyncCallback_4500':
-                gesturePos1 = {positionX: 10, positionY: 10};
-                gesturePath = {points: [gesturePos1], durationTime: 100};
+                gesturePath = new GesturePath(100);
+                gesturePath.points.push(new GesturePoint(10, 10));
                 this.gestureInjectCallback(caseName, gesturePath);
                 break;
             case 'AccessibilityExtensionContextTest_gestureInject_asyncCallback_4600':
-                gesturePos1 = {positionX: 50, positionY: 50};
-                gesturePath = {points: [gesturePos1], durationTime: 60000};
+                gesturePath = new GesturePath(60000);
+                gesturePath.points.push(new GesturePoint(50, 50));
                 this.gestureInjectCallback(caseName, gesturePath);
                 break;
             case 'AccessibilityExtensionContextTest_gestureInject_asyncCallback_4700':
-                gesturePos1 = {positionX: 200, positionY: 200};
-                gesturePos2 = {positionX: 100, positionY: 100};
-                gesturePath = {points: [gesturePos1, gesturePos2], durationTime: 1000};
+                gesturePath = new GesturePath(1000);
+                gesturePath.points.push(new GesturePoint(200, 200),
+                                        new GesturePoint(100, 100));
                 this.gestureInjectCallback(caseName, gesturePath);
                 break;
             case 'AccessibilityExtensionContextTest_gestureInject_asyncCallback_4800':
-                gesturePos1 = {positionX: 50, positionY: 50};
-                gesturePos2 = {positionX: 100, positionY: 100};
-                gesturePos3 = {positionX: 1000, positionY: 1000};
-                gesturePath = {points: [gesturePos1, gesturePos2, gesturePos3], durationTime: 60000};
+                gesturePath = new GesturePath(60000);
+                gesturePath.points.push(new GesturePoint(50, 50),
+                                        new GesturePoint(100, 100),
+                                        new GesturePoint(1000, 1000));
                 this.gestureInjectCallback(caseName, gesturePath);
                 break;
             case 'AccessibilityExtensionContextTest_gestureInject_asyncCallback_4900':
@@ -206,26 +179,26 @@ export class ExtensionContextTest {
                 this.gestureInjectCallback(caseName, gesturePath);
                 break;
             case 'AccessibilityExtensionContextTest_gestureInject_asyncPromise_5000':
-                gesturePos1 = {positionX: 10, positionY: 10};
-                gesturePath = {points: [gesturePos1], durationTime: 100};
+                gesturePath = new GesturePath(100);
+                gesturePath.points.push(new GesturePoint(10, 10));
                 this.gestureInjectPromise(caseName, gesturePath);
                 break;
             case 'AccessibilityExtensionContextTest_gestureInject_asyncPromise_5100':
-                gesturePos1 = {positionX: 50, positionY: 50};
-                gesturePath = {points: [gesturePos1], durationTime: 60000};
+                gesturePath = new GesturePath(60000);
+                gesturePath.points.push(new GesturePoint(50, 50));
                 this.gestureInjectPromise(caseName, gesturePath);
                 break;
             case 'AccessibilityExtensionContextTest_gestureInject_asyncPromise_5200':
-                gesturePos1 = {positionX: 200, positionY: 200};
-                gesturePos2 = {positionX: 100, positionY: 100};
-                gesturePath = {points: [gesturePos1, gesturePos2], durationTime: 1000};
+                gesturePath = new GesturePath(1000);
+                gesturePath.points.push(new GesturePoint(200, 200),
+                                        new GesturePoint(100, 100));
                 this.gestureInjectPromise(caseName, gesturePath);
                 break;
             case 'AccessibilityExtensionContextTest_gestureInject_asyncPromise_5300':
-                gesturePos1 = {positionX: 50, positionY: 50};
-                gesturePos2 = {positionX: 100, positionY: 100};
-                gesturePos3 = {positionX: 1000, positionY: 1000};
-                gesturePath = {points: [gesturePos1, gesturePos2, gesturePos3], durationTime: 60000};
+                gesturePath = new GesturePath(60000);
+                gesturePath.points.push(new GesturePoint(50, 50),
+                                        new GesturePoint(100, 100),
+                                        new GesturePoint(1000, 1000));
                 this.gestureInjectPromise(caseName, gesturePath);
                 break;
             case 'AccessibilityExtensionContextTest_gestureInject_asyncPromise_5400':

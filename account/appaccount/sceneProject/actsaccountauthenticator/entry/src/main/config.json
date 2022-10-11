@@ -16,6 +16,7 @@
     "mainAbility": ".MainAbility",
     "deviceType": [
       "default",
+      "default",
       "tablet"
     ],
     "abilities": [
@@ -33,7 +34,7 @@
         "orientation": "unspecified",
         "visible": true,
         "srcPath": "MainAbility",
-        "name": ".MainAbility",
+        "name": "com.example.accountauthenticator.MainAbility",
         "srcLanguage": "js",
         "icon": "$media:icon",
         "description": "$string:MainAbility_desc",

@@ -1418,12 +1418,63 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       })
     })
     /**
-    * @tc.number     SUB_WINDOW_SETPREFERREDORIENTATION_JSAPI_001
-    * @tc.name       Test setPreferredOrientation
+    * @tc.number     SUB_WINDOW_SETDENSITTYDPI_JSAPI_002
+    * @tc.name       Test setDensityDpiTest2
+    * @tc.desc       Verify Sets the screen pixel
+    */
+    it('setDensityDpiTest2', 0, async function (done) {
+      let caseName = 'setDensityDpiTest2';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin');
+      let screens = await screenManager.getAllScreens().catch(errScreen => {
+        unexpectedError(errScreen, caseName, 'screenManager.getAllScreen', done);
+      })
+      console.log(msgStr + 'screenManager.getAllScreen' + JSON.stringify(screens));
+      expect(!!screens).assertTrue();
+
+      let currentDeviceDefaultDpi;
+      let currentDeviceDefault = null;
+      display.getDefaultDisplay(async(err, data) => {
+        if (err.code) {
+          console.error('Failed to obtain the default display object. Code:  ' + JSON.stringify(err));
+          return;
+        }
+        console.info('Succeeded in obtaining the default display object. Data:' + JSON.stringify(data));
+        currentDeviceDefault = data;
+        currentDeviceDefaultDpi = parseInt(currentDeviceDefault.densityDPI)
+        let dpiItem = [-80, 80, 1000, 160, 0, 320, 188.88, 0, 640, 300,currentDeviceDefaultDpi];
+        for (let i = 0;i < dpiItem.length; i++) {
+          await sleep(1000);
+          screens[0].setDensityDpi(dpiItem[i],(errDpi,dataDpi)=>{
+            if (errDpi.code) {
+              console.error('Failed to set DensityDpi. Cause: ' + JSON.stringify(err)+ dpiItem[i]);
+              return;
+            }
+            console.log(msgStr + 'screen.setDensityDpi success set DPI ' + dpiItem[i]);
+            display.getDefaultDisplay((error,result)=>{
+              if (error.code) {
+                console.error(msgStr + 'screen.setDensityDpi display.getDefaultDisplay failed');
+                return;
+                console.log(msgStr + 'screen.setDensityDpi display.getDefaultDisplay' + JSON.stringify(result));
+                let isEqual = Number(result.densityDPI) == parseInt(dpiItem[i])
+                console.log(msgStr + 'same ? ' + isEqual)
+                expect(isEqual).assertTrue()
+              }
+            })
+          })
+        }
+      });
+
+      console.log(msgStr + 'done ');
+      done();
+    })
+    /**
+    * @tc.number     SUB_WINDOW_SETPREFERREDORIENTATION_JSAPI_002
+    * @tc.name       Test setPreferredOrientationTest2
     * @tc.desc       Sets the display direction property of the window
     */
-    it('setPreferredOrientation', 0, async function (done) {
-      let caseName = 'setPreferredOrientation';
+    it('setPreferredOrientationTest2', 0, async function (done) {
+      let caseName = 'setPreferredOrientationTest2';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let mainWin = await windowStage.getMainWindow().catch(err => {
@@ -1446,12 +1497,12 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       done();
     })
     /**
-    * @tc.number     SUB_WINDOW_SETFORBIDSPLITMOVE_JSAPI_001
-    * @tc.name       Test setForbidSplitMove
+    * @tc.number     SUB_WINDOW_SETFORBIDSPLITMOVE_JSAPI_002
+    * @tc.name       Test setForbidSplitMoveTest2
     * @tc.desc       Sets whether Windows are forbidden to move in split screen mode
     */
-    it('setForbidSplitMove', 0, async function (done) {
-      let caseName = 'setForbidSplitMove';
+    it('setForbidSplitMoveTest2', 0, async function (done) {
+      let caseName = 'setForbidSplitMoveTest2';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let mainWin = await windowStage.getMainWindow().catch(err => {
@@ -1477,10 +1528,10 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       done();
     })
     /**
-* @tc.number     SUB_WINDOW_SNAPSHOT_JSAPI_002
-* @tc.name       Test snapshotTest2
-* @tc.desc       Scenario of screenshot of verification window
-*/
+    * @tc.number     SUB_WINDOW_SNAPSHOT_JSAPI_002
+    * @tc.name       Test snapshotTest2
+    * @tc.desc       Scenario of screenshot of verification window
+    */
     it('snapshotTest2', 0, async function (done) {
       let caseName = 'snapshotTest2';
       let msgStr = 'jsunittest ' + caseName + ' ';
@@ -1558,12 +1609,12 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
           controller.animationForShown = (context: ohosWindow.TransitionContext) => {
             let toWindow = context.toWindow
             animateTo({
-              duration: 1000, // 动画时长
-              tempo: 0.5, // 播放速率
-              curve: Curve.EaseInOut, // 动画曲线
-              delay: 0, // 动画延迟
-              iterations: 1, // 播放次数
-              playMode: PlayMode.Normal, // 动画模式
+              duration: 1000,
+              tempo: 0.5,
+              curve: Curve.EaseInOut,
+              delay: 0,
+              iterations: 1,
+              playMode: PlayMode.Normal,
             }, () => {
               var obj: ohosWindow.TranslateOptions;
               obj.x = 100.0;
@@ -1580,6 +1631,87 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
         }
       });
 
+    })
+    /**
+    * @tc.number     SUB_WINDOW_GETCUTOUTINFO_JSAPI_002
+    * @tc.name       Test getCutoutInfoTest2
+    * @tc.desc       Obtain information about unavailable screen areas such as the hole screen, fringe screen, and waterfall screen
+    */
+    it('getCutoutInfoTest2', 0, async function (done) {
+      let caseName = 'getCutoutInfoTest2';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin context==' + JSON.stringify(context));
+      let dpClass = display.getDefaultDisplaySync();
+      expect(!!dpClass).assertTrue();
+      dpClass.getCutoutInfo((err, data) => {
+        if (err && err.code) {
+          unexpectedError(err, caseName, 'displayClass.getCutoutInfo', done);
+        }else{
+          console.info(msgStr+'Succeeded in getting cutoutInfo. Data: ' + JSON.stringify(data));
+          done();
+        }
+      })
+    })
+    /**
+    * @tc.number     SUB_WINDOW_SHOWWITHANIMATION_JSAPI_002
+    * @tc.name       Test showWithAnimationTest2
+    * @tc.desc       Displays the current window, playing an animation in the process
+    */
+    it('showWithAnimationTest2', 0, async function (done) {
+      let caseName = 'showWithAnimationTest2';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin context==' + JSON.stringify(context));
+      let wndId = 'showWithAnimationTest2';
+      let baseType = ohosWindow.WindowType.TYPE_FLOAT;
+      ohosWindow.create(context, wndId, baseType, (err, data) => {
+        if (err && err.code) {
+          unexpectedError(err, caseName, 'ohosWindow.create ' + baseType, done);
+        } else {
+          let tempWnd=data;
+          console.log(msgStr + 'ohosWindow.create ' + baseType + ', tempWnd: ' + JSON.stringify(tempWnd));
+          expect(!!tempWnd).assertTrue();
+          tempWnd.showWithAnimation((error, animationData) => {
+            if (error && error.code) {
+              unexpectedError(error, caseName, 'Failed to show the window with animation', done);
+            }else {
+              console.info('Succeeded in showing the window with animation. Data: ' + JSON.stringify(animationData));
+              done();
+            }
+          })
+        }
+      })
+    })
+    /**
+    * @tc.number     SUB_WINDOW_HIDEWITHANIMATION_JSAPI_002
+    * @tc.name       Test hideWithAnimationTest2
+    * @tc.desc       Hide the current window and play an animation in the process
+    */
+    it('hideWithAnimationTest2', 0, async function (done) {
+      let caseName = 'hideWithAnimationTest2';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin context==' + JSON.stringify(context));
+      let wndId = 'hideWithAnimationTest2';
+      let baseType = ohosWindow.WindowType.TYPE_FLOAT;
+      ohosWindow.create(context, wndId, baseType, (creare_err, tempWnd) => {
+        if (creare_err && creare_err.code) {
+          unexpectedError(creare_err, caseName, 'ohosWindow.create ' + baseType, done);
+        }
+        expect(!!tempWnd).assertTrue();
+        ohosWindow.find(wndId, (findErr, findWnd) => {
+          if (findErr && findErr.code) {
+            unexpectedError(findErr, caseName, 'Failed to hide the window with animation', done);
+          }else {
+            findWnd.hideWithAnimation((err, data) => {
+              if (err && err.code) {
+                unexpectedError(err, caseName, 'Failed to hide the window with animation', done);
+              }else {
+                console.info('Succeeded in hiding the window with animation. Data: ' + JSON.stringify(data));
+                done();
+              }
+            })
+          }
+        })
+      })
     })
   })
 }

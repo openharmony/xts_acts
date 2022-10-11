@@ -17,7 +17,9 @@ group("graphic") {
   if (is_standard_system) {
     deps = [
       "effectKit:EffectKitTest",
+      "graphicColorSpace:ActsColorSpaceManagerTest",
       "graphicnapidrawingtest:ActsGraphicNapiDrawingTest",
+      "graphicnapitest:ActsGraphicNapiTest",
       "webGL:webGL_hap_test",
       "windowStage:ActsWindowStageTest",
       "windowstandard:window_hap_test",

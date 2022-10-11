@@ -6,6 +6,7 @@
         "description": "$string:phone_entry_dsc",
         "mainElement": "MainAbility",
         "deviceTypes": [
+      "default",
             "phone"
         ],
         "deliveryWithInstall": true,
@@ -58,6 +59,10 @@
             {
               "name":"ohos.permission.INSTALL_BUNDLE",
               "reason":"need use ohos.permission.INSTALL_BUNDLE"
+            },
+            {
+              "name":"ohos.permission.START_ABILITIES_FROM_BACKGROUND",
+              "reason":"need use ohos.permission.START_ABILITIES_FROM_BACKGROUND"
             }
          ]
 

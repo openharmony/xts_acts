@@ -6,6 +6,7 @@
     "description": "$string:phone_entry_dsc",
     "mainElement": "MainAbility",
     "deviceTypes": [
+      "default",
       "phone"
     ],
     "deliveryWithInstall": true,
@@ -115,7 +116,15 @@
       {
         "name":"ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS",
         "reason":"need use ohos.permission.GET_RUNNING_INFO"
-      }   
+      },
+      {
+        "name":"ohos.permission.START_ABILITIES_FROM_BACKGROUND",
+        "reason":"need use ohos.permission.START_ABILITIES_FROM_BACKGROUND"
+      },
+      {
+        "name":"ohos.permission.START_INVISIBLE_ABILITY",
+        "reason":"need use ohos.permission.START_INVISIBLE_ABILITY"
+      }
     ]
   }
 }

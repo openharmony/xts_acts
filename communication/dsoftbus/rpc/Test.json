@@ -13,7 +13,7 @@
         {
             "test-file-name": [
                 "ActsRpcHapTest.hap",
-                "./resource/dsoftbus/ipcserver/entry-release-standard-signed.hap"
+                "ActsRpcHapServer.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

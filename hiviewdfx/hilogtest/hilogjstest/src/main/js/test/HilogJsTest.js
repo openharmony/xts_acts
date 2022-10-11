@@ -119,7 +119,7 @@ describe('HilogJsTest', function () {
      */
     it('testHilogJsApi06', 2, function () {
         console.info('testHilogJsApi06 start');
-        const res = hilog.isLoggable(0xD001400, "HILOGTEST", hilog.LogLevel.DEBUG);
+        const res = hilog.isLoggable(0x3200, "HILOGTEST", hilog.LogLevel.DEBUG);
         expect(res).assertEqual(false);
         console.info('testHilogJsApi06 end');
     })
@@ -131,7 +131,7 @@ describe('HilogJsTest', function () {
      */
     it('testHilogJsApi07', 2, function () {
         console.info('testHilogJsApi07 start');
-        const res = hilog.isLoggable(0xD001400, "HILOGTEST", hilog.LogLevel.DEBUG);
+        const res = hilog.isLoggable(0x3200, "HILOGTEST", hilog.LogLevel.DEBUG);
         var tag = "";
         for (var i = 0; i < 1000; i++){
             tag += "HILOGTEST"
@@ -147,7 +147,7 @@ describe('HilogJsTest', function () {
      */
     it('testHilogJsApi08', 2, function () {
         console.info('testHilogJsApi08 start');
-        const res = hilog.isLoggable(0xD001400, "", hilog.LogLevel.DEBUG);
+        const res = hilog.isLoggable(0x3200, "", hilog.LogLevel.DEBUG);
         expect(res).assertEqual(false);
         console.info('testHilogJsApi08 end');
     })
@@ -159,7 +159,7 @@ describe('HilogJsTest', function () {
      */
     it('testHilogJsApi09', 2, function () {
         console.info('testHilogJsApi09 start');
-        const res = hilog.isLoggable(0xD001400, "HILOGTEST", hilog.LogLevel.ERROR);
+        const res = hilog.isLoggable(0x3200, "HILOGTEST", hilog.LogLevel.ERROR);
         expect(res).assertEqual(true);
         console.info('testHilogJsApi09 end');
     })
@@ -171,7 +171,7 @@ describe('HilogJsTest', function () {
      */
     it('testHilogJsApi10', 2, function () {
         console.info('testHilogJsApi10 start');
-        const res = hilog.isLoggable(0xD001400, "HILOGTEST", hilog.LogLevel.FATAL);
+        const res = hilog.isLoggable(0x3200, "HILOGTEST", hilog.LogLevel.FATAL);
         expect(res).assertEqual(true);
         console.info('testHilogJsApi10 end');
     })
@@ -183,7 +183,7 @@ describe('HilogJsTest', function () {
      */
     it('testHilogJsApi11', 2, function () {
         console.info('testHilogJsApi11 start');
-        const res = hilog.isLoggable(0xD001400, "HILOGTEST", hilog.LogLevel.INFO);
+        const res = hilog.isLoggable(0x3200, "HILOGTEST", hilog.LogLevel.INFO);
         expect(res).assertEqual(true);
         console.info('testHilogJsApi11 end');
     })
@@ -195,7 +195,7 @@ describe('HilogJsTest', function () {
      */
     it('testHilogJsApi12', 2, function () {
         console.info('testHilogJsApi12 start');
-        const res = hilog.isLoggable(0xD001400, "HILOGTEST", hilog.LogLevel.WARN);
+        const res = hilog.isLoggable(0x3200, "HILOGTEST", hilog.LogLevel.WARN);
         expect(res).assertEqual(true);
         console.info('testHilogJsApi12 end');
     })
@@ -207,7 +207,7 @@ describe('HilogJsTest', function () {
      */
     it('testHilogJsApi13', 2, function () {
         console.info('testHilogJsApi13 start');
-        const res = hilog.isLoggable(0xD001400, "HILOGTEST", 100);
+        const res = hilog.isLoggable(0x3200, "HILOGTEST", 100);
         expect(res).assertEqual(false);
         console.info('testHilogJsApi13 end');
     })
@@ -231,7 +231,7 @@ describe('HilogJsTest', function () {
      */
     it('testHilogJsApi15', 2, function () {
         console.info('testHilogJsApi15 start');
-        const res = hilog.isLoggable(0xFFFFFFF, "HILOGTEST", hilog.LogLevel.WARN);
+        const res = hilog.isLoggable(0x3200, "HILOGTEST", hilog.LogLevel.WARN);
         expect(res).assertEqual(true);
         console.info('testHilogJsApi15 end');
     })
@@ -244,7 +244,7 @@ describe('HilogJsTest', function () {
     it('testHilogJsApi16', 2, function () {
         console.info('testHilogJsApi16 start');
         try{
-            hilog.info(0x3200, "HILOGTEST", "%{public}s", ['hilogJs1800'])
+            hilog.debug(0x3200, "HILOGTEST", "%{public}s", ['hilogJs1800'])
         }catch(error){
             console.log(`testHilogJsApi16 got an error: ${JSON.stringify(error)}`)
             expect().assertFail();
@@ -260,7 +260,7 @@ describe('HilogJsTest', function () {
     it('testHilogJsApi17', 2, function () {
         console.info('testHilogJsApi17 start');
         try{
-            hilog.info(x3200, "HILOGTEST", "%{public}f", [2.1])
+            hilog.debug(0x3200, "HILOGTEST", "%{public}d", [2.1])
         }catch(error){
             console.log(`testHilogJsApi17 got an error: ${JSON.stringify(error)}`)
             expect().assertFail();
@@ -276,7 +276,7 @@ describe('HilogJsTest', function () {
     it('testHilogJsApi18', 2, function () {
         console.info('testHilogJsApi18 start');
         try{
-            hilog.info(x3200, "HILOGTEST", "%{public}d", [65535])
+            hilog.debug(0x3200, "HILOGTEST", "%{public}d", [65535])
         }catch(error){
             console.log(`testHilogJsApi18 got an error: ${JSON.stringify(error)}`)
             expect().assertFail();
@@ -292,7 +292,7 @@ describe('HilogJsTest', function () {
     it('testHilogJsApi19', 2, function () {
         console.info('testHilogJsApi19 start');
         try{
-            hilog.info(x3200, "HILOGTEST", "%{public}s", ["hilog info"])
+            hilog.debug(0x3200, "HILOGTEST", "%{public}s", ["hilog info"])
         }catch(error){
             console.log(`testHilogJsApi19 got an error: ${JSON.stringify(error)}`)
             expect().assertFail();
@@ -308,7 +308,7 @@ describe('HilogJsTest', function () {
     it('testHilogJsApi20', 2, function () {
         console.info('testHilogJsApi20 start');
         try{
-            hilog.info(0x3200, "HILOGTEST", "%{public}d", [2147483647])
+            hilog.debug(0x3200, "HILOGTEST", "%{public}d", [2147483647])
         }catch(error){
             console.log(`testHilogJsApi20 got an error: ${JSON.stringify(error)}`)
             expect().assertFail();
@@ -324,7 +324,7 @@ describe('HilogJsTest', function () {
     it('testHilogJsApi21', 2, function () {
         console.info('testHilogJsApi21 start');
         try{
-            hilog.info(0x3200, "HILOGTEST", "%{public}s", ["100%s%d%x%f"])
+            hilog.debug(0x3200, "HILOGTEST", "%{public}s", ["100%s%d%x%f"])
         }catch(error){
             console.log(`testHilogJsApi21 got an error: ${JSON.stringify(error)}`)
             expect().assertFail();
@@ -341,7 +341,7 @@ describe('HilogJsTest', function () {
     it('testHilogJsApi22', 2, function () {
         console.info('testHilogJsApi22 start');
         try{
-            hilog.info(0x3200, "HILOGTEST", "%{public}s", ["65536"])
+            hilog.debug(0x3200, "HILOGTEST", "%{public}s", ["65536"])
         }catch(error){
             console.log(`testHilogJsApi22 got an error: ${JSON.stringify(error)}`)
             expect().assertFail();
@@ -357,8 +357,8 @@ describe('HilogJsTest', function () {
     it('testHilogJsApi23', 2, function () {
         console.info('testHilogJsApi23 start');
         try{
-            hilog.info(0x3200, "HILOGTEST", "username:%{public}s, password:%{private}s.", ["username", "password"])
-            hilog.info(0x3200, "HILOGTEST", "username:%{public}s, password:%s.", ["username123", "password"])
+            hilog.debug(0x3200, "HILOGTEST", "username:%{public}s, password:%{private}s.", ["username", "password"])
+            hilog.debug(0x3200, "HILOGTEST", "username:%{public}s, password:%s.", ["username123", "password"])
         }catch(error){
             console.log(`testHilogJsApi23 got an error: ${JSON.stringify(error)}`)
             expect().assertFail();
@@ -374,7 +374,7 @@ describe('HilogJsTest', function () {
     it('testHilogJsApi24', 2, function () {
         console.info('testHilogJsApi24 start');
         try{
-            hilog.info(0x3200, "HILOGTEST", "%{public}s", ["hilog public"])
+            hilog.debug(0x3200, "HILOGTEST", "%{public}s", ["hilog public"])
         }catch(error){
             console.log(`testHilogJsApi24 got an error: ${JSON.stringify(error)}`)
             expect().assertFail();
@@ -390,7 +390,7 @@ describe('HilogJsTest', function () {
     it('testHilogJsApi25', 2, function () {
         console.info('testHilogJsApi25 start');
         try{
-            hilog.info(0x3200, "HILOGTEST", "%{nopublic}s", ["Hilogtest"])
+            hilog.debug(0x3200, "HILOGTEST", "%{nopublic}s", ["Hilogtest"])
         }catch(error){
             console.log(`testHilogJsApi25 got an error: ${JSON.stringify(error)}`)
             expect().assertFail();

@@ -6,6 +6,7 @@
       "description": "$string:entry_desc",
       "mainElement": "MainAbility",
       "deviceTypes": [
+      "default",
         "phone",
         "tablet"
       ],
@@ -52,6 +53,12 @@
         },
         {
           "name": "ohos.permission.DISTRIBUTED_DATASYNC"
+        },
+        {
+          "name":"ohos.permission.START_ABILITIES_FROM_BACKGROUND"
+        },
+        {
+          "name":"ohos.permission.START_INVISIBLE_ABILITY"
         }
       ],
       "extensionAbilities": [

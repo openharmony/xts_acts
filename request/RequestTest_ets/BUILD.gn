@@ -23,7 +23,7 @@ ohos_js_hap_suite("ActsRequestETSApiTest") {
   ets2abc = true
   subsystem_name = "request"
   part_name = "request"
-  certificate_profile = "./signature/openharmony_sx.p7b"
+  certificate_profile = "./signature/ActsRequestETSApiTest.p7b"
   hap_name = "ActsRequestETSApiTest"
 }
 

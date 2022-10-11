@@ -17,6 +17,7 @@
     "package": "com.example.third2",
     "name": ".MyApplication",
     "deviceType": [
+      "default",
       "default"
     ],
     "distro": {

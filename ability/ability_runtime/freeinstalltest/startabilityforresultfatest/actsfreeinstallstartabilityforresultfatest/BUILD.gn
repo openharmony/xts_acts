@@ -26,7 +26,9 @@ ohos_js_hap_suite("ActsFreeInstallStartAbilityForResultFaTest") {
   part_name = "ability_runtime"
 }
 ohos_js_assets("actsfreeinstallstartabilityforresultfatest_ets_assets") {
-  source_dir = "./entry/src/main/ets/MainAbility"
+  source_dir = "./entry/src/main/ets"
+  hap_profile = "entry/src/main/config.json"
+  ets2abc = true
 }
 ohos_resources("actsfreeinstallstartabilityforresultfatest_ets_resources") {
   sources = [ "./entry/src/main/resources" ]

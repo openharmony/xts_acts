@@ -36,7 +36,7 @@ export default function albumTestPromiseTest(abilityContext) {
         const media = mediaLibrary.getMediaLibrary(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
-            await checkPresetsAssets(media, 'ActsMediaLibraryAlbum');
+            await checkPresetsAssets(media, 'ActsMediaLibraryAlbumTest');
         });
         beforeEach(function () {
             console.info('beforeEach case');
@@ -50,13 +50,13 @@ export default function albumTestPromiseTest(abilityContext) {
         });
 
         function printAlbumMessage(testNum, album) {
-            console.info(`${testNum} album.albumId: ${album.albumId}`);
-            console.info(`${testNum} album.albumName: ${album.albumName}`);
-            console.info(`${testNum} album.albumUri: ${album.albumUri}`);
-            console.info(`${testNum} album.dateModified: ${album.dateModified}`);
-            console.info(`${testNum} album.count: ${album.count}`);
-            console.info(`${testNum} album.relativePath: ${album.relativePath}`);
-            console.info(`${testNum} album.coverUri: ${album.coverUri}`);
+            console.info(`${testNum} album.albumId: ${album.albumId}
+                album.albumName: ${album.albumName}
+                album.albumUri: ${album.albumUri}
+                album.dateModified: ${album.dateModified}
+                album.count: ${album.count}
+                album.relativePath: ${album.relativePath}
+                album.coverUri: ${album.coverUri}`);
         }
 
         const props = {
@@ -115,7 +115,6 @@ export default function albumTestPromiseTest(abilityContext) {
 
         const abnormalAlbumCount = async function (done, testNum, fetchOp) {
             try {
-                
                 const albumList = await media.getAlbums(fetchOp);
                 console.info(`${testNum}, albumList.length: ${albumList.length}`)
                 expect(albumList.length).assertEqual(0);
@@ -123,6 +122,19 @@ export default function albumTestPromiseTest(abilityContext) {
             } catch (error) {
                 console.info(`${testNum} error: ${error}`)
                 expect(false).assertTrue();
+                done();
+            }
+        }
+
+        const queryConditionAbnormal = async function (done, testNum, fetchOp) {
+            try {
+                console.info(`${testNum}, fetchOp: ${JSON.stringify(fetchOp)}`)
+                const albumList = await media.getAlbums(fetchOp);
+                expect(false).assertTrue();
+                done();
+            } catch (error) {
+                console.info(`${testNum},query condition abnormal error: ${error}`)
+                expect(true).assertTrue();
                 done();
             }
         }
@@ -139,8 +151,7 @@ export default function albumTestPromiseTest(abilityContext) {
                 expect(false).assertTrue();
                 done();
             } catch (error) {
-                console.info(`${testNum}, error.message: ${error.message}`)
-                console.info(`${testNum}, error.code: ${error.code}`)
+                console.info(`${testNum}, error.message: ${error.message} error.code: ${error.code}`)
                 expect(error.code!=undefined).assertTrue();
                 done();
             }
@@ -301,7 +312,7 @@ export default function albumTestPromiseTest(abilityContext) {
             };
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_PROMISE_002_07'
 
-            await abnormalAlbumCount(done, testNum, fileHasArgsfetchOp)
+            await queryConditionAbnormal(done, testNum, fileHasArgsfetchOp)
         });
 
         /**
@@ -318,7 +329,7 @@ export default function albumTestPromiseTest(abilityContext) {
                 selectionArgs: ['666'],
             };
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_GETALBUMASSETS_PROMISE_002_08'
-            await abnormalAlbumCount(done, testNum, fileHasArgsfetchOp)
+            await queryConditionAbnormal(done, testNum, fileHasArgsfetchOp)
         });
         // ------------------------------ 002 test end -------------------------
 

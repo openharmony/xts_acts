@@ -21,7 +21,7 @@ import {
     sleep,
     IMAGE_TYPE,
     AUDIO_TYPE,
-
+    checkAlbumsCount,
     FILEKEY,
     checkPresetsAssets,
     checkAssetsCount,
@@ -35,7 +35,7 @@ export default function filekeyTestPromiseTest(abilityContext) {
 
         beforeAll(async function () {
             console.info('beforeAll case');
-            await checkPresetsAssets(media, 'ActsMediaLibraryFileKey')
+            await checkPresetsAssets(media, 'ActsMediaLibraryFileKeyTest')
         });
         beforeEach(function () {
             console.info('beforeEach case');
@@ -308,6 +308,8 @@ export default function filekeyTestPromiseTest(abilityContext) {
                 }
                 console.info(`${testNum} currentFetchOp : ${JSON.stringify(currentFetchOp)}`)
                 const albumList = await media.getAlbums(currentFetchOp);
+                const albumCountPass = await checkAlbumsCount(done, testNum, albumList, 1);
+                if (!albumCountPass) return;
                 const album = albumList[0];
                 expect(album.albumName).assertEqual(albumName);
                 done();

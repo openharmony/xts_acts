@@ -500,14 +500,14 @@ describe('videoHardwareEncoderFuncCallback', function () {
 
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_HARDWARE_ENCODER_FUNCTION_CALLBACK_00_0100
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_HARDWARE_ENCODER_FUNCTION_CALLBACK_0100
         * @tc.name      : 000.test video software encoder capbility
         * @tc.desc      : basic encode function
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */ 
-    it('SUB_MEDIA_VIDEO_HARDWARE_ENCODER_FUNCTION_CALLBACK_00_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_HARDWARE_ENCODER_FUNCTION_CALLBACK_0100', 0, async function (done) {
         console.info("test video encoder capbility");
         let supportedEncForm = [];
         let supportedDecForm = [];
@@ -577,14 +577,14 @@ describe('videoHardwareEncoderFuncCallback', function () {
     })
 
     /* *
-    * @tc.number    : SUB_MEDIA_VIDEO_HARDWARE_ENCODER_FUNCTION_CALLBACK_01_0100
+    * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_HARDWARE_ENCODER_FUNCTION_CALLBACK_0200
     * @tc.name      : 001.test release after last frame
     * @tc.desc      : basic encode function
     * @tc.size      : MediumTest
     * @tc.type      : Function test
     * @tc.level     : Level1
     */ 
-    it('SUB_MEDIA_VIDEO_HARDWARE_ENCODER_FUNCTION_CALLBACK_01_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_HARDWARE_ENCODER_FUNCTION_CALLBACK_0200', 0, async function (done) {
         checkFormat(done);
         console.info("case test release after last frame");
         ES_FRAME_SIZE = H264_FRAME_SIZE_60FPS_320;
@@ -597,14 +597,14 @@ describe('videoHardwareEncoderFuncCallback', function () {
 
 
     /* *
-    * @tc.number    : SUB_MEDIA_VIDEO_HARDWARE_ENCODER_FUNCTION_CALLBACK_01_0200
+    * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_HARDWARE_ENCODER_FUNCTION_CALLBACK_0300
     * @tc.name      : 002.test stop at running state and restart
     * @tc.desc      : basic encode function
     * @tc.size      : MediumTest
     * @tc.type      : Function test
     * @tc.level     : Level1
     */ 
-    it('SUB_MEDIA_VIDEO_HARDWARE_ENCODER_FUNCTION_CALLBACK_01_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_HARDWARE_ENCODER_FUNCTION_CALLBACK_0300', 0, async function (done) {
         checkFormat(done);
         console.info("test stop at runnning state and restart");
         ES_FRAME_SIZE = H264_FRAME_SIZE_60FPS_320;
@@ -636,14 +636,14 @@ describe('videoHardwareEncoderFuncCallback', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_HARDWARE_ENCODER_FUNCTION_CALLBACK_01_0300
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_HARDWARE_ENCODER_FUNCTION_CALLBACK_0400
         * @tc.name      : 003.test stop at EOS and restart
         * @tc.desc      : basic encode function
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level1
     */ 
-    it('SUB_MEDIA_VIDEO_HARDWARE_ENCODER_FUNCTION_CALLBACK_01_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_HARDWARE_ENCODER_FUNCTION_CALLBACK_0400', 0, async function (done) {
         checkFormat(done);
         console.info('case test stop at EOS and restart');
         ES_FRAME_SIZE = H264_FRAME_SIZE_60FPS_320;
@@ -675,14 +675,14 @@ describe('videoHardwareEncoderFuncCallback', function () {
 
     
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_HARDWARE_ENCODER_FUNCTION_CALLBACK_01_0400
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_HARDWARE_ENCODER_FUNCTION_CALLBACK_0500
         * @tc.name      : 004.test flush at running state
         * @tc.desc      : basic encode function
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level1
     */ 
-    it('SUB_MEDIA_VIDEO_HARDWARE_ENCODER_FUNCTION_CALLBACK_01_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_HARDWARE_ENCODER_FUNCTION_CALLBACK_0500', 0, async function (done) {
         checkFormat(done);
         console.info('case test flush at running state');
         ES_FRAME_SIZE = H264_FRAME_SIZE_60FPS_320;
@@ -706,14 +706,14 @@ describe('videoHardwareEncoderFuncCallback', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_HARDWARE_ENCODER_FUNCTION_CALLBACK_01_0500
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_HARDWARE_ENCODER_FUNCTION_CALLBACK_0600
         * @tc.name      : 005.test flush at eos state
         * @tc.desc      : basic encode function
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */ 
-    it('SUB_MEDIA_VIDEO_HARDWARE_ENCODER_FUNCTION_CALLBACK_01_0500', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_HARDWARE_ENCODER_FUNCTION_CALLBACK_0600', 0, async function (done) {
         checkFormat(done);
         console.info("case test flush at eos state");
         ES_FRAME_SIZE = H264_FRAME_SIZE_60FPS_320;
@@ -738,14 +738,14 @@ describe('videoHardwareEncoderFuncCallback', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_HARDWARE_ENCODER_FUNCTION_CALLBACK_01_0600
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_HARDWARE_ENCODER_FUNCTION_CALLBACK_0700
         * @tc.name      : 006.test reconfigure
         * @tc.desc      : basic encode function
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */ 
-    it('SUB_MEDIA_VIDEO_HARDWARE_ENCODER_FUNCTION_CALLBACK_01_0600', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_HARDWARE_ENCODER_FUNCTION_CALLBACK_0700', 0, async function (done) {
         checkFormat(done);
         console.info("case test reconfigure");
         ES_FRAME_SIZE = H264_FRAME_SIZE_60FPS_320;
@@ -768,14 +768,14 @@ describe('videoHardwareEncoderFuncCallback', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MEDIA_VIDEO_HARDWARE_ENCODER_FUNCTION_CALLBACK_01_0700
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_HARDWARE_ENCODER_FUNCTION_CALLBACK_0800
         * @tc.name      : 007.test recreate videoencoder
         * @tc.desc      : basic encode function
         * @tc.size      : MediumTest
         * @tc.type      : Function test
         * @tc.level     : Level0
     */ 
-    it('SUB_MEDIA_VIDEO_HARDWARE_ENCODER_FUNCTION_CALLBACK_01_0700', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_VIDEO_HARDWARE_ENCODER_FUNCTION_CALLBACK_0800', 0, async function (done) {
         checkFormat(done);
         console.info('case test recreate videoencoder');
         ES_FRAME_SIZE = H264_FRAME_SIZE_60FPS_320;

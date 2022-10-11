@@ -17,7 +17,10 @@
     "package": "com.acts.requesttest",
     "name": ".MyApplication",
     "mainAbility": "com.acts.requesttest.MainAbility",
-    "deviceType": ["phone"],
+    "deviceType": [
+      "default",
+      "phone"
+    ],
     "distro": {
       "deliveryWithInstall": true,
       "moduleName": "entry",
@@ -60,6 +63,18 @@
         "label": "$string:TestAbility_label",
         "type": "page",
         "launchType": "standard"
+      }
+    ],
+    "reqPermissions": [
+      {
+        "name": "ohos.permission.INTERNET",
+        "reason": "need use ohos.permission.INTERNET",
+        "usedScene": {
+          "ability": [
+            "com.acts.request.test.MainAbility"
+          ],
+          "when": "inuse"
+        }
       }
     ],
     "js": [

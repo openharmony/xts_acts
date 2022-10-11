@@ -18,6 +18,7 @@
     "name": ".FormHostDeathRecipientSTApp",
     "mainAbility": ".MainAbility",
     "deviceType": [
+      "default",
       "phone"
     ],
     "distro": {

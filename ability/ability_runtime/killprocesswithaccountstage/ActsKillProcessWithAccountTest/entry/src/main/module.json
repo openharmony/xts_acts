@@ -6,6 +6,7 @@
         "description": "$string:phone_entry_dsc",
         "mainElement": "MainAbility",
         "deviceTypes": [
+      "default",
             "phone"
         ],
         "deliveryWithInstall": true,
@@ -21,6 +22,7 @@
                 "label": "$string:entry_label",
                 "visible": true,
                 "orientation": "portrait",
+                "launchType": "singleton",
                 "skills": [
                     {
                         "actions": [
@@ -34,7 +36,7 @@
             }
         ],
         "requestPermissions": [
-            {
+              {
                 "name":"ohos.permission.GET_BUNDLE_INFO_PRIVILEGED",
                 "reason":"need use ohos.permission.GET_BUNDLE_INFO_PRIVILEGED"
               },
@@ -69,6 +71,14 @@
               {
                 "name":"ohos.permission.CLEAN_BACKGROUND_PROCESSES",
                 "reason":"need use ohos.permission.GET_RUNNING_INFO"
+              },
+              {
+                "name":"ohos.permission.START_ABILITIES_FROM_BACKGROUND",
+                "reason":"need use ohos.permission.START_ABILITIES_FROM_BACKGROUND"
+              },
+              {
+                "name":"ohos.permission.START_INVISIBLE_ABILITY",
+                "reason":"need use ohos.permission.START_INVISIBLE_ABILITY"
               }
           ]
     }

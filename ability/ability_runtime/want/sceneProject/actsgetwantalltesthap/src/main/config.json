@@ -17,6 +17,7 @@
     "package": "com.example.actsgetwantallhap",
     "name": "com.example.actsgetwantalltesthap.MyApplication",
     "deviceType": [
+      "default",
       "phone"
     ],
     "distro": {

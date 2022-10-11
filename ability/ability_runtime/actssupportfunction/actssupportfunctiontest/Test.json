@@ -15,9 +15,7 @@
 				"FaSupportFunction.hap",
                 "FaSupportFunctionTwo.hap",
                 "FaSupportFunctionThree.hap",
-				"StageSupportFunction.hap",
-                "FaOnAndOffScreen.hap",
-                "StageOnAndOffScreen.hap"
+				"StageSupportFunction.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

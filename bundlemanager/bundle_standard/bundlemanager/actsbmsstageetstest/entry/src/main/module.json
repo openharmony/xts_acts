@@ -6,6 +6,7 @@
         "description": "$string:phone_entry_dsc",
         "mainElement": "MainAbility",
         "deviceTypes": [
+      "default",
             "default"
         ],
         "deliveryWithInstall": true,
@@ -51,6 +52,11 @@
                         "name": "ohos.ability.form3",
                         "value": "",
                         "resource": "$profile:form_config1"
+                    },
+                    {
+                        "name": "ohos.ability.form4",
+                        "value": "",
+                        "resource": "$profile:invalid"
                     }
                 ]
             },
@@ -91,6 +97,11 @@
                         "name": "ohos.extension.form3",
                         "value": "",
                         "resource": "$profile:form_config1"
+                    },
+                    {
+                        "name": "ohos.extension.form4",
+                        "value": "",
+                        "resource": "$profile:invalid"
                     }
                 ],
                 "name": "Form",

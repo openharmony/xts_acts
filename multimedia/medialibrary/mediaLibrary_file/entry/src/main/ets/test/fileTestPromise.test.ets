@@ -37,7 +37,7 @@ export default function fileTestPromiseTest(abilityContext) {
         const media = mediaLibrary.getMediaLibrary(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
-            await checkPresetsAssets(media, 'ActsMediaLibraryFile')
+            await checkPresetsAssets(media, 'ActsMediaLibraryFileTest')
         });
         beforeEach(function () {
             console.info('beforeEach case');
@@ -78,6 +78,7 @@ export default function fileTestPromiseTest(abilityContext) {
                 await creatAsset2.close(creatAssetFd2);
                 await asset.close(fd);
                 expect(creatAsset1.id != creatAsset2.id).assertTrue();
+                console.info(`${testNum} displayName1: ${displayName1}, displayName2 :${displayName2} `);
                 done();
             } catch (error) {
                 console.info(`${testNum} failed error: ${error}`)
@@ -130,7 +131,7 @@ export default function fileTestPromiseTest(abilityContext) {
                 fetchFileResult = await media.getFileAssets(idOP);
                 let newAsset = await fetchFileResult.getFirstObject();
                 expect(isNum(newAsset.dateModified)).assertTrue();
-                expect(newAsset.dateModified != asset.dateModified).assertTrue()
+                expect(newAsset.dateModified).assertEqual(asset.dateModified);
                 done();
             } catch (error) {
                 console.info(`${testNum} failed error: ${error}`)

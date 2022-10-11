@@ -1332,7 +1332,12 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       })
       console.log(msgStr + 'screenManager.getAllScreen' + JSON.stringify(screens));
       expect(!!screens).assertTrue();
-      let dpiItem = [-80, 80, 1000, 160, 0, 320, 188.88, 0, 640, 300];
+      let currentDeviceDefault = await display.getDefaultDisplay().catch(err => {
+        console.log(msgStr + 'screen.setDensityDpi display.getDefaultDisplay failed current device');
+      });
+      console.log(msgStr + 'screen.setDensityDpi display.getDefaultDisplay current device' + JSON.stringify(currentDeviceDefault));
+      let currentDeviceDefaultDpi = parseInt(currentDeviceDefault.densityDPI)
+      let dpiItem = [-80, 80, 1000, 160, 0, 320, 188.88, 0, 640, 300,currentDeviceDefaultDpi];
       for (let i = 0;i < dpiItem.length; i++) {
         await sleep(1000);
         await screens[0].setDensityDpi(dpiItem[i]).then(async () => {
@@ -1353,11 +1358,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
     })
     /**
     * @tc.number     SUB_WINDOW_SETPREFERREDORIENTATION_JSAPI_001
-    * @tc.name       Test setPreferredOrientation
+    * @tc.name       Test setPreferredOrientationTest1
     * @tc.desc       Sets the display direction property of the window
     */
-    it('setPreferredOrientation', 0, async function (done) {
-      let caseName = 'setPreferredOrientation';
+    it('setPreferredOrientationTest1', 0, async function (done) {
+      let caseName = 'setPreferredOrientationTest1';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let mainWin = await windowStage.getMainWindow().catch(err => {
@@ -1380,11 +1385,11 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
     })
     /**
     * @tc.number     SUB_WINDOW_SETFORBIDSPLITMOVE_JSAPI_001
-    * @tc.name       Test setForbidSplitMove
+    * @tc.name       Test setForbidSplitMoveTest1
     * @tc.desc       Sets whether Windows are forbidden to move in split screen mode
     */
-    it('setForbidSplitMove', 0, async function (done) {
-      let caseName = 'setForbidSplitMove';
+    it('setForbidSplitMoveTest1', 0, async function (done) {
+      let caseName = 'setForbidSplitMoveTest1';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let mainWin = await windowStage.getMainWindow().catch(err => {
@@ -1464,12 +1469,12 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       controller.animationForShown = (context: ohosWindow.TransitionContext) => {
         let toWindow = context.toWindow
         animateTo({
-          duration: 1000, // 动画时长
-          tempo: 0.5, // 播放速率
-          curve: Curve.EaseInOut, // 动画曲线
-          delay: 0, // 动画延迟
-          iterations: 1, // 播放次数
-          playMode: PlayMode.Normal, // 动画模式
+          duration: 1000,
+          tempo: 0.5,
+          curve: Curve.EaseInOut,
+          delay: 0,
+          iterations: 1,
+          playMode: PlayMode.Normal,
         }, () => {
           var obj: ohosWindow.TranslateOptions;
           obj.x = 100.0;
@@ -1483,6 +1488,79 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
         console.info(msgStr + 'complete transition end');
       }
       done();
+    })
+    /**
+    * @tc.number     SUB_WINDOW_GETCUTOUTINFO_JSAPI_001
+    * @tc.name       Test getCutoutInfoTest1
+    * @tc.desc       Obtain information about unavailable screen areas such as the hole screen, fringe screen, and waterfall screen
+    */
+    it('getCutoutInfoTest1', 0, async function (done) {
+      let caseName = 'getCutoutInfoTest1';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin context==' + JSON.stringify(context));
+      let dpClass = display.getDefaultDisplaySync();
+      expect(!!dpClass).assertTrue();
+      dpClass.getCutoutInfo().then((data) => {
+        console.info('Succeeded in getting cutoutInfo. Data: ' + JSON.stringify(data));
+        done();
+      }).catch(err=>{
+        unexpectedError(err, caseName, 'displayClass.getCutoutInfo', done);
+      });
+    })
+    /**
+    * @tc.number     SUB_WINDOW_SHOWWITHANIMATION_JSAPI_001
+    * @tc.name       Test showWithAnimationTest1
+    * @tc.desc       Displays the current window, playing an animation in the process
+    */
+    it('showWithAnimationTest1', 0, async function (done) {
+      let caseName = 'showWithAnimationTest1';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin context==' + JSON.stringify(context));
+      let wndId = 'showWithAnimationTest1';
+      let baseType = ohosWindow.WindowType.TYPE_FLOAT;
+      let tempWnd = await ohosWindow.create(context,wndId, baseType).catch((err) => {
+        unexpectedError(err, caseName, 'ohosWindow.create ' + baseType, done);
+      });
+      console.log(msgStr + 'ohosWindow.create ' + baseType + ', tempWnd: ' + JSON.stringify(tempWnd));
+      expect(!!tempWnd).assertTrue();
+      console.info('showWithAnimationTest1 ****' + Reflect.has(tempWnd,'showWithAnimation'))
+      await tempWnd.showWithAnimation().then((data)=> {
+        console.info('Succeeded in showing the window with animation. Data: ' + JSON.stringify(data));
+        done();
+      }).catch((err)=>{
+        unexpectedError(err, caseName, 'Failed to show the window with animation', done);
+      })
+    })
+    /**
+    * @tc.number     SUB_WINDOW_HIDEWITHANIMATION_JSAPI_001
+    * @tc.name       Test hideWithAnimationTest1
+    * @tc.desc       Hide the current window and play an animation in the process
+    */
+    it('hideWithAnimationTest1', 0, async function (done) {
+      let caseName = 'hideWithAnimationTest1';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      console.log(msgStr + 'begin context==' + JSON.stringify(context));
+      let wndId = 'hideWithAnimationTest1';
+      let baseType = ohosWindow.WindowType.TYPE_FLOAT;
+      let tempWnd = await ohosWindow.create(context,wndId, baseType).catch((err) => {
+        unexpectedError(err, caseName, 'ohosWindow.create ' + baseType, done);
+      });
+      console.log(msgStr + 'ohosWindow.create ' + baseType + ', tempWnd: ' + JSON.stringify(tempWnd));
+      expect(!!tempWnd).assertTrue();
+      let findWnd = await ohosWindow.find(wndId).catch((err) => {
+        expectedError(err, caseName, 'ohosWindow.find', done);
+      });
+      console.log(msgStr + 'find findWnd: ' + JSON.stringify(findWnd));
+      expect(!!findWnd).assertTrue();
+      console.info('hideWithAnimationTest1 ****' + Reflect.has(findWnd,'hideWithAnimation'))
+      console.info('hideWithAnimationTest1 ****' + Reflect.has(findWnd,'destroy'))
+      let promise = findWnd.hideWithAnimation();
+      promise.then((data)=> {
+        console.info('Succeeded in hiding the window with animation. Data: ' + JSON.stringify(data));
+        done();
+      }).catch((err)=>{
+        console.error('Failed to hide the window with animation. Cause: ' + JSON.stringify(err));
+      })
     })
   })
 }

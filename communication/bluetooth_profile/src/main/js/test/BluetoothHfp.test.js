@@ -16,59 +16,23 @@
 import bluetooth from '@ohos.bluetooth';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
-let hfpGatewayProfile = bluetooth.getProfile(4);
-
-
-let ProfileId = {
-    PROFILE_A2DP_SINK : 0,
+let ProfileId = {   
     PROFILE_A2DP_SOURCE : 1,
-    PROFILE_AVRCP_CT : 2,
-    PROFILE_AVRCP_TG : 3,
     PROFILE_HANDS_FREE_AUDIO_GATEWAY : 4,
-    PROFILE_HANDS_FREE_UNIT : 5,
     PROFILE_HID_HOST : 6,
     PROFILE_PAN_NETWORK : 7
 }
 
-function on(ON_VALUE_TEST_ELEMENT) {
-    return new Promise((resolve, reject) => {
-        hfpGatewayProfile.on(ON_VALUE_TEST_ELEMENT, function (err, data) {
-            if (err != undefined) {
-                reject(err);
-            } else {
-                resolve(data);
-            }
-        })
-    });
-}
-
-function off(OFF_VALUE_TEST_ELEMENT) {
-    return new Promise((resolve, reject) => {
-        hfpGatewayProfile.off(OFF_VALUE_TEST_ELEMENT, function (err, data) {
-            if (err != undefined) {
-                reject(err);
-            } else {
-                resolve(data);
-            }
-        })
-    });
-}
+let ProfileConnectionState=
+    {
+        STATE_CONNECTING : 1,
+        STATE_CONNECTED : 2,
+        STATE_DISCONNECTED : 0,
+        STATE_DISCONNECTING : 3,
+    };
 
 export default function bluetoothhostTest_host_3() {
 describe('bluetoothhostTest_host_3', function () {
-    beforeAll(function () {
-        console.info('beforeAll called')
-    })
-    beforeEach(function () {
-        console.info('beforeEach called')
-    })
-    afterEach(function () {
-        console.info('afterEach called')
-    })
-    afterAll(function () {
-        console.info('afterAll called')
-    })
-
     function sleep(delay) {
         return new Promise(resovle => setTimeout(resovle, delay))
     }
@@ -77,9 +41,10 @@ describe('bluetoothhostTest_host_3', function () {
         let sta = bluetooth.getState();
         switch(sta){
             case 0:
-                console.info('[bluetooth_js] bt turn off:'+ JSON.stringify(sta));
                 bluetooth.enableBluetooth();
-                await sleep(3000);
+                await sleep(5000);
+                let sta1 = bluetooth.getState();
+                console.info('[bluetooth_js] bt turn off:'+ JSON.stringify(sta1));
                 break;
             case 1:
                 console.info('[bluetooth_js] bt turning on:'+ JSON.stringify(sta));
@@ -89,84 +54,183 @@ describe('bluetoothhostTest_host_3', function () {
                 console.info('[bluetooth_js] bt turn on:'+ JSON.stringify(sta));
                 break;
             case 3:
-                console.info('[bluetooth_js] bt turning off:'+ JSON.stringify(sta));
                 bluetooth.enableBluetooth();
                 await sleep(3000);
+                let sta2 = bluetooth.getState();
+                console.info('[bluetooth_js] bt turning off:'+ JSON.stringify(sta2));
                 break;
             default:
                 console.info('[bluetooth_js] enable success');
         }
     }
-
+    beforeAll(function () {
+        console.info('beforeAll called')
+    })
+    beforeEach(async function(done) {
+        console.info('beforeEach called')
+        await tryToEnableBt()
+        done()
+    })
+    afterEach(function () {
+        console.info('afterEach called')
+    })
+    afterAll(function () {
+        console.info('afterAll called')
+    })
 
     /**
-     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_GET_PROFILE_0001
-     * @tc.name testgetprofile
-     * @tc.desc Test getProfile api.
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BR_HFP_Conn_1100
+     * @tc.name test Get HFP ConnectionState
+     * @tc.desc Test getProfileConnState api.
+     * @tc.size MEDIUM
+     * @ since 8
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 3
      */
-    it('SUB_COMMUNACATION_bluetooth_DEVICE_JS_HFP_GET_PROFILE_0001', 0, async function (done) {
-        console.info('[bluetooth_js] hfp get profile start');
-        await tryToEnableBt();
-        let proFile = bluetooth.getProfile(4);
-        console.info('[bluetooth_js] get profile:' + JSON.stringify(proFile));
-        expect(proFile != null).assertEqual(true);
+    it('SUB_COMMUNICATION_BLUETOOTH_BR_HFP_Conn_1100', 0, async function (done) {
+        let hfpSrcConn = 
+            bluetooth.getProfileConnState(ProfileId.PROFILE_HANDS_FREE_AUDIO_GATEWAY);
+        console.info('[bluetooth_js]get hfp result:' + JSON.stringify(hfpSrcConn));
+        expect(hfpSrcConn).assertEqual(ProfileConnectionState.STATE_DISCONNECTED);
         done();
     })
 
-
     /**
-     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_HFP_GATWAY_PROFILE_CONN_0001
-     * @tc.name testhfpGatewayProfileconnect
-     * @tc.desc Test hfpGatewayProfile connect api.
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BR_HFP_Conn_1200
+     * @tc.name test getDevice HFP State.
+     * @tc.desc Test getDeviceState api.
+     * @tc.size MEDIUM
+     * @ since 8
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 3
      */
-    it('SUB_COMMUNACATION_bluetooth_DEVICE_JS_HFP_GATWAY_PROFILE_CONN_0001', 0, async function (done) {
-        console.info('[bluetooth_js] hfpGatewayProfile the connect start');
-        await tryToEnableBt();
-        let conn = hfpGatewayProfile.connect('00:00:00:00:00:01');
-        expect(conn).assertTrue();
-        await sleep(2000);
-        let disConn = hfpGatewayProfile.disconnect('00:00:00:00:00:01');
-        console.info('[bluetooth_js] hfpGatewayProfile disconnect:' + disConn);
-        expect(disConn).assertTrue();
-        await sleep(2000);
+    it('SUB_COMMUNICATION_BLUETOOTH_BR_HFP_Conn_1200', 0, async function (done) {
+        let hfpSrc = bluetooth.getProfile(ProfileId.PROFILE_HANDS_FREE_AUDIO_GATEWAY);
+        let ret = hfpSrc.getDeviceState('11:22:33:44:55:66');
+        console.info('[bluetooth_js]hfp getDeviceState:' + JSON.stringify(ret));
+        expect(ret).assertEqual(ProfileConnectionState.STATE_DISCONNECTED);
         done();
     })
 
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BR_HFP_Conn_1300
+     * @tc.name test getDevice HFP State.
+     * @tc.desc Test getDeviceState api.
+     * @tc.size MEDIUM
+     * @ since 8
+     * @tc.type Function
+     * @tc.level Level 3
+     */
+    it('SUB_COMMUNICATION_BLUETOOTH_BR_HFP_Conn_1300', 0, async function (done) {
+        let hfpSrc = bluetooth.getProfile(ProfileId.PROFILE_HANDS_FREE_AUDIO_GATEWAY);
+        let ret = hfpSrc.getDeviceState('bluetooth1');
+        console.info('[bluetooth_js]hfp get valid mac DeviceState:' + JSON.stringify(ret));
+        expect(ret).assertEqual(ProfileConnectionState.STATE_DISCONNECTED);
+        done();
+    })
 
     /**
-     * @tc.number SUB_COMMUNACATION_bluetooth_DEVICE_JS_HFP_GATWAY_PROFILE_ON_0001
-     * @tc.name testhfpGatewayProfileon
-     * @tc.desc Test hfpGatewayProfile on api.
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BR_HFP_Conn_1400
+     * @tc.name test HFP Connect
+     * @tc.desc Test connect api.
+     * @tc.size MEDIUM
+     * @ since 8
      * @tc.type Function
-     * @tc.level Level 0
+     * @tc.level Level 1
      */
-    it('SUB_COMMUNACATION_bluetooth_DEVICE_JS_HFP_GATWAY_PROFILE_ON_0001', 0, async function (done) {
-        try {
-            await tryToEnableBt();
-            console.info('[bluetooth_js] hfpGatewayProfile the on start');
-            on("connectionStateChange", function (data) {
-                console.info("[bluetooth_js] hfpGateway_on data " + JSON.stringify(data));
-                expect(true).assertEqual(data !=null);
-            });
-        }catch(e) {
-            expect(null).assertFail();
+    it('SUB_COMMUNICATION_BLUETOOTH_BR_HFP_Conn_1400', 0, async function (done) {
+        function StateChangeParam(data) {
+            console.info("[bluetooth_js] hfp state " + JSON.stringify(data) +
+            'deviceId: ' + data.deviceId + 'state:'+ data.state);
+            expect(true).assertEqual(data !=null);
         }
-        try {
-            console.info('[bluetooth_js] hfpGatewayProfile the off test start');
-            off("connectionStateChange", function (data) {
-                console.info("[bluetooth_js] hfpGateway_off data-> " + JSON.stringify(data));
-                expect(true).assertEqual(data ==null);
-            });
-        }catch(e) {
-            expect(null).assertFail();
-        }
+        let hfpSrc = bluetooth.getProfile(ProfileId.PROFILE_HANDS_FREE_AUDIO_GATEWAY);
+        hfpSrc.on('connectionStateChange', StateChangeParam);
+        hfpSrc.connect('11:22:33:44:55:66');
+        await sleep(6000);
+        hfpSrc.off('connectionStateChange', StateChangeParam);
         done();
     })
+    
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BR_HFP_Conn_1500
+     * @tc.name test HFP disconnect
+     * @tc.desc Test disconnect api.
+     * @tc.size MEDIUM
+     * @ since 8
+     * @tc.type Function
+     * @tc.level Level 3
+     */
+      it('SUB_COMMUNICATION_BLUETOOTH_BR_HFP_Conn_1500', 0, async function (done) {
+        function StateChangeParam(data) {
+            console.info("[bluetooth_js] hfp state " + JSON.stringify(data) +
+            'deviceId: ' + data.deviceId + 'state:'+ data.state);
+            expect(true).assertEqual(data !=null);
+        }
+        let hfpSrc = bluetooth.getProfile(ProfileId.PROFILE_HANDS_FREE_AUDIO_GATEWAY);
+        hfpSrc.on('connectionStateChange', StateChangeParam);
+        await sleep(10000);
+        let conn = hfpSrc.disconnect('11:22:33:44:55:66');
+        console.info('[bluetooth_js]hfp disconnect result:' + JSON.stringify(conn));
+        expect(conn).assertFalse();
+        hfpSrc.off('connectionStateChange', StateChangeParam);
+        done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BR_HFP_Conn_1600
+     * @tc.name test a invaild HFP Connect
+     * @tc.desc Test connect api.
+     * @tc.size MEDIUM
+     * @ since 8
+     * @tc.type Function
+     * @tc.level Level 3
+     */
+    it('SUB_COMMUNICATION_BLUETOOTH_BR_HFP_Conn_1600', 0, async function (done) {
+        let hfpSrc = bluetooth.getProfile(ProfileId.PROFILE_HANDS_FREE_AUDIO_GATEWAY);
+        let conn1 = hfpSrc.connect('test');
+        console.info('[bluetooth_js]hfp vaild MAC disconnect :' + JSON.stringify(conn1));
+        expect(conn1).assertFalse();
+        done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BR_HFP_Conn_1700
+     * @tc.name test a invaild HFP disconnect
+     * @tc.desc Test disconnect api.
+     * @tc.size MEDIUM
+     * @ since 8
+     * @tc.type Function
+     * @tc.level Level 3
+     */
+    it('SUB_COMMUNICATION_BLUETOOTH_BR_HFP_Conn_1700', 0, async function (done) {
+        let hfpSrc = bluetooth.getProfile(ProfileId.PROFILE_HANDS_FREE_AUDIO_GATEWAY);
+        console.info('[bluetooth_js]hfp get profile result:' + JSON.stringify(hfpSrc));
+        let conn = hfpSrc.disconnect('test');
+        console.info('[bluetooth_js]hfp disconnect1 result:' + JSON.stringify(conn));
+        expect(conn).assertFalse();
+        done();
+    })
+
+    /**
+     * @tc.number SUB_COMMUNICATION_BLUETOOTH_BR_HFP_Conn_1800
+     * @tc.name test getDevice HFP State.
+     * @tc.desc Test getDeviceState api.
+     * @tc.size MEDIUM
+     * @ since 8
+     * @tc.type Function
+     * @tc.level Level 1
+     */
+    it('SUB_COMMUNICATION_BLUETOOTH_BR_HFP_Conn_1800', 0, async function (done) {
+        let hfpSrc = bluetooth.getProfile(ProfileId.PROFILE_HANDS_FREE_AUDIO_GATEWAY);
+        let retArray = hfpSrc.getConnectionDevices();
+        console.info('[bluetooth_js]hfp getConnectionDevices:' + JSON.stringify(retArray));
+        expect(true).assertEqual(retArray.length>=0);
+        done();
+    })
+
 
 })
 
 }
+

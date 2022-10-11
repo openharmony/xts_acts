@@ -1,0 +1,19 @@
+{
+    "description": "Configuration for ActsAceJsApiTest Tests",
+    "driver": {
+        "type": "OHJSUnitTest",
+        "test-timeout": "1000000",
+        "shell-timeout": "1000000",
+        "bundle-name": "com.example.acejsapi",
+        "package-name": "com.example.acejsapi"
+    },
+    "kits": [
+        {
+            "test-file-name": [
+                "ActsAceJsApiTest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        }
+    ]
+}

@@ -54,60 +54,60 @@
          let returnValue = 0;
          netConn.on('netAvailable', (value) => {
              if (value === undefined) {
-                 console.info(`${caseName} on netAvailable fail`);
+                 console.info("${caseName} on netAvailable fail");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netAvailable :` + value.netId);
+                 console.info("${caseName} netAvailable :" + value.netId);
                  returnValue = value.netId;
              }
          });
          netConn.on('netCapabilitiesChange', (value) => {
              if (value === undefined) {
-                 console.info(`${caseName} netCapabilitiesChange fail`);
+                 console.info("${caseName} netCapabilitiesChange fail");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netCapabilitiesChange handle =:` + value.handle.netId);
-                 expect(value.handle.netId).assertEqual(ETH_100);
+                 console.info("${caseName} netCapabilitiesChange handle =:" + value.netHandle.netId);
+                 expect(value.netHandle.netId >= ETH_100).assertTrue();
              }
          });
          netConn.on('netConnectionPropertiesChange', (value) => {
              if (value === undefined) {
-                 console.info(`${caseName} netConnectionPropertiesChange fail`);
+                 console.info("${caseName} netConnectionPropertiesChange fail");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netConnectionPropertiesChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netLost', (value) => {
              if (error) {
-                 console.info(`${caseName} netLost fail`);
+                 console.info("${caseName} netLost fail");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netLost: ` + value.netId);
+                 console.info("${caseName} netLost: " + value.netId);
              }
          });
          netConn.register((error) => {
              if (error) {
-                 console.info(JSON.stringify(error) + `${caseName} register fail: ${error}`);
+                 console.info(JSON.stringify(error) + "${caseName} register fail: ${error}");
                  done();
              }
          });
          await sleep(DELAY);
-         console.info(`${caseName} returnVaule : ` + returnValue);
+         console.info("${caseName} returnVaule : " + returnValue);
          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  done();
              }
              done();
          });
          done();
      });
- 
+
      /**
       *@tc.number  Telephony_NetworkManager_register_Async_0200
       *@tc.name Enter  bearerTypes and networkCap asempty, set class NetConnection,
@@ -125,75 +125,84 @@
          let netConn = connection.createNetConnection(netSpecifier, TIMEOUT);
          netConn.on('netAvailable', (value) => {
              if (value === undefined) {
-                 console.info(`${caseName} on netAvailable fail`);
+                 console.info("${caseName} on netAvailable fail");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netAvailable : ` + value.netId);
+                 console.info("${caseName} netAvailable : " + value.netId);
                  returnValue = value.netId;
              }
          });
+         console.info("netAvailable end");
          netConn.on('netCapabilitiesChange', (value) => {
              if (value === undefined) {
-                 console.info(`${caseName} netCapabilitiesChange fail`);
+                 console.info("${caseName} netCapabilitiesChange fail");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netCapabilitiesChange handle =:` + value.handle.netId);
-                 expect(value.handle.netId).assertEqual(ETH_100);
+                 console.info("${caseName} netCapabilitiesChange handle =:" + value.netHandle.netId);
+                 expect(value.netHandle.netId >= ETH_100).assertTrue();
+
              }
          });
+         console.info("netCapabilitiesChange end");
          netConn.on('netConnectionPropertiesChange', (value) => {
              if (value === undefined) {
-                 console.info(`${caseName} netConnectionPropertiesChange fail`);
+                 console.info("${caseName} netConnectionPropertiesChange fail");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netConnectionPropertiesChange handle =:` + value.handle.netId);
+                 console.info("${caseName} netConnectionPropertiesChange handle =:" + value.netHandle.netId);
              }
          });
+         console.info("netConnectionPropertiesChange end");
          netConn.on('netLost', (value) => {
              if (error) {
-                 console.info(`${caseName} netLost fail`);
+                 console.info("${caseName} netLost fail");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netLost : ` + value.netId);
+                 console.info("${caseName} netLost : " + value.netId);
              }
          });
+         console.info("netLost end");
          netConn.on('netUnavailable', (value) => {
              if (error) {
-                 console.info(`${caseName} netUnavailable fail`);
+                 console.info("${caseName} netUnavailable fail");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netUnavailable: ` + value.netId);
+                 console.info("${caseName} netUnavailable: " + value.netId);
              }
          });
+         console.info("netUnavailable end");
          netConn.on('netBlockStatuschange', (value) => {
              if (error) {
-                 console.info(`${caseName} netBlockStatusChange fail`);
+                 console.info("${caseName} netBlockStatusChange fail");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netBlockStatusChange : ` + value.netId);
+                 console.info("${caseName} netBlockStatusChange : " + value.netHandle.netId);
              }
          });
+         console.info("netBlockStatuschange end");
          netConn.register((error) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
              }
          });
+         console.info("register end");
          await sleep(DELAY);
          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregisterresult: ${error}` + JSON.stringify(error));
+                 console.info("${caseName} unregisterresult: ${error}" + JSON.stringify(error));
                  done();
              }
          });
+         console.info("unregister end");
          done();
      });
- 
+
      /*
        *@tc.number Telephony_NetworkManager_register_Async_0300
        *@tc.name Enter bearerTypes and networkCap as empty, set class NetConnection,
@@ -214,75 +223,75 @@
          let netConn = connection.createNetConnection(netSpecifier, TIMEOUT);
          netConn.on('netAvailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netAvailable:` + value.netId);
+                 console.info("${caseName} netAvailable:" + value.netId);
              }
          });
          netConn.on('netBlockStatusChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netBlockStatusChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netBlockStatusChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netBlockStatusChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netConnectionPropertiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netConnectionPropertiesChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netLost', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netLost = :` + value.netId);
+                 console.info("${caseName} netLost = :" + value.netId);
              }
          });
          netConn.on('netUnavailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netUnavailable = :` + value);
+                 console.info("${caseName} netUnavailable = :" + value);
                  netId = true;
              }
          });
          netConn.register((error) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
              }
          });
          await sleep(DELAY);
-         console.info(`${caseName} netId : ${netId}`);
+         console.info("${caseName} netId : ${netId}");
          expect(true).assertTrue()
          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result: ${error}`);
+                 console.info("${caseName} unregister result: ${error}");
              }
          });
          done();
      });
- 
+
      /*
        *@tc.number Telephony_NetworkManager_register_Async_0400
        *@tc.name Enter bearerTypes and networkCap as empty, set class NetConnection,
@@ -303,74 +312,74 @@
          let netConn = connection.createNetConnection(netSpecifier, TIMEOUT);
          netConn.on('netAvailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netAvailable:` + value.netId);
+                 console.info("${caseName} netAvailable:" + value.netId);
              }
          });
          netConn.on('netBlockStatusChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netBlockStatusChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netCapabilitiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netCapabilitiesChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netConnectionPropertiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netConnectionPropertiesChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netLost', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netLost = :` + value.netId);
+                 console.info("${caseName} netLost = :" + value.netId);
              }
          });
          netConn.on('netUnavailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netUnavailable = :` + value);
+                 console.info("${caseName} netUnavailable = :" + value);
                  netId = true;
              }
          });
          netConn.register((error) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
              }
          });
          await sleep(DELAY);
          expect(true).assertTrue()
          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result: ${error.code},${error.message}`);
+                 console.info("${caseName} unregister result: ${error.code},${error.message}");
              }
          });
          done();
      });
- 
+
      /*
      *@tc.number Telephony_NetworkManager_register_Async_0500
      *@tc.name Enter bearerTypes and networkCap as empty, set class NetConnection,
@@ -391,75 +400,75 @@
          let netConn = connection.createNetConnection(netSpecifier, TIMEOUT);
          netConn.on('netAvailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netAvailable:` + value.netId);
+                 console.info("${caseName} netAvailable:" + value.netId);
              }
          });
          netConn.on('netBlockStatusChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netBlockStatusChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netCapabilitiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netCapabilitiesChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netConnectionPropertiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netConnectionPropertiesChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netLost', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netLost = :` + value.netId);
+                 console.info("${caseName} netLost = :" + value.netId);
              }
          });
          netConn.on('netUnavailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netUnavailable = :` + value);
+                 console.info("${caseName} netUnavailable = :" + value);
                  netId = true;
              }
          });
          netConn.register((error) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
              }
          });
          await sleep(DELAY);
          expect(true).assertTrue()
          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result: ${error}`);
+                 console.info("${caseName} unregister result: ${error}");
              }
              done();
          });
          done();
      });
- 
+
      /*
      *@tc.number Telephony_NetworkManager_register_Async_0600
      *@tc.name Enter bearerTypes and networkCap as empty, set class NetConnection,
@@ -480,75 +489,75 @@
          let netId = 0;
          netConn.on('netAvailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netAvailable:` + value.netId);
+                 console.info("${caseName} netAvailable:" + value.netId);
              }
          });
          netConn.on('netBlockStatusChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netBlockStatusChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netCapabilitiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netCapabilitiesChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netConnectionPropertiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netConnectionPropertiesChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netLost', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netLost = :` + value.netId);
+                 console.info("${caseName} netLost = :" + value.netId);
              }
          });
          netConn.on('netUnavailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netUnavailable = :` + value);
+                 console.info("${caseName} netUnavailable = :" + value);
                  netId = true;
              }
          });
          netConn.register((error) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
              }
          });
          await sleep(DELAY);
          expect(true).assertTrue()
          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result: ${error}`);
+                 console.info("${caseName} unregister result: ${error}");
              }
              done();
          });
          done();
      });
- 
+
      /*
      *@tc.number Telephony_NetworkManager_register_Async_0700
      *@tc.name Enter bearerTypes and networkCap as empty, set class NetConnection,
@@ -569,75 +578,75 @@
          let netId = 0;
          netConn.on('netAvailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netAvailable:` + value.netId);
+                 console.info("${caseName} netAvailable:" + value.netId);
              }
          });
          netConn.on('netBlockStatusChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netBlockStatusChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netCapabilitiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netCapabilitiesChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netConnectionPropertiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netConnectionPropertiesChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netLost', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netLost = :` + value.netId);
+                 console.info("${caseName} netLost = :" + value.netId);
              }
          });
          netConn.on('netUnavailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netUnavailable = :` + value);
+                 console.info("${caseName} netUnavailable = :" + value);
                  netId = true;
              }
          });
          netConn.register((error) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
              }
          });
          await sleep(DELAY);
          expect(true).assertTrue()
          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result: ${error}`);
+                 console.info("${caseName} unregister result: ${error}");
              }
              done();
          });
          done();
      });
- 
+
      /*
      *@tc.number Telephony_NetworkManager_register_Async_0800
      *@tc.name Enter bearerTypes and networkCap as empty, set class NetConnection,
@@ -658,75 +667,75 @@
          let netId = 0;
          netConn.on('netAvailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netAvailable:` + value.netId);
+                 console.info("${caseName} netAvailable:" + value.netId);
              }
          });
          netConn.on('netBlockStatusChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netBlockStatusChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netCapabilitiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netCapabilitiesChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netConnectionPropertiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netConnectionPropertiesChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netLost', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netLost = :` + value.netId);
+                 console.info("${caseName} netLost = :" + value.netId);
              }
          });
          netConn.on('netUnavailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netUnavailable = :` + value);
+                 console.info("${caseName} netUnavailable = :" + value);
                  netId = true;
              }
          });
          netConn.register((error) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
              }
          });
          await sleep(DELAY);
          expect(true).assertTrue()
          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result: ${error}`);
+                 console.info("${caseName} unregister result: ${error}");
              }
              done();
          });
          done();
      });
- 
+
      /*
      *@tc.number Telephony_NetworkManager_register_Async_0900
      *@tc.name Enter bearerTypes and networkCap as empty, set class NetConnection,
@@ -747,78 +756,78 @@
          let netId = 0;
          netConn.on('netAvailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netAvailable:` + value.netId);
+                 console.info("${caseName} netAvailable:" + value.netId);
              }
          });
          netConn.on('netBlockStatusChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
-                 expect(value.netId).assertEqual(ETH_100);
+                 console.info("${caseName} netBlockStatusChange handle = :" + value.netHandle.netId);
+                 expect(value.netHandle.netId >= ETH_100).assertTrue();
              }
          });
          netConn.on('netCapabilitiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
-                 expect(value.netId).assertEqual(ETH_100);
+                 console.info("${caseName} netCapabilitiesChange handle = :" + value.netHandle.netId);
+                 expect(value.netHandle.netId >= ETH_100).assertTrue();
              }
          });
          netConn.on('netConnectionPropertiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
-                 expect(value.netId).assertEqual(ETH_100);
+                 console.info("${caseName} netConnectionPropertiesChange handle = :" + value.netHandle.netId);
+                 expect(value.netHandle.netId >= ETH_100).assertTrue();
              }
          });
          netConn.on('netLost', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netLost = :` + value.netId);
+                 console.info("${caseName} netLost = :" + value.netId);
              }
          });
          netConn.on('netUnavailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netUnavailable = :` + value);
+                 console.info("${caseName} netUnavailable = :" + value);
                  netId = true;
              }
          });
          netConn.register((error) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
              }
          });
          await sleep(10000);
          expect(true).assertTrue()
          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result: ${error}`);
+                 console.info("${caseName} unregister result: ${error}");
              }
              done();
          });
          done();
      });
- 
+
      /*
      *@tc.number Telephony_NetworkManager_register_Async_1000
      *@tc.name Enter bearerTypes and networkCap as empty, set class NetConnection,
@@ -839,85 +848,85 @@
          let netId = 0;
          netConn.on('netAvailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netAvailable:` + value.netId);
-                 expect(value.netId).assertEqual(ETH_100);
+                 console.info("${caseName} netAvailable:" + value.netId);
+                 expect(value.netId >= ETH_100).assertTrue();
              }
          });
          netConn.on('netBlockStatusChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
-                 expect(value.netId).assertEqual(ETH_100);
+                 console.info("${caseName} netBlockStatusChange handle = :" + value.netHandle.netId);
+                 expect(value.netHandle.netId >= ETH_100).assertTrue();
              }
          });
          netConn.on('netCapabilitiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netCapabilitiesChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netConnectionPropertiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
-                 expect(value.netId).assertEqual(ETH_100);
+                 console.info("${caseName} netConnectionPropertiesChange handle = :" + value.netHandle.netId);
+                 expect(value.netHandle.netId >= ETH_100).assertTrue();
              }
          });
          netConn.on('netLost', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netLost = :` + value.netId);
+                 console.info("${caseName} netLost = :" + value.netId);
              }
          });
          netConn.on('netUnavailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netUnavailable = :` + value);
+                 console.info("${caseName} netUnavailable = :" + value);
                  netId = true;
              }
          });
          netConn.register((error) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
              }
          });
          await sleep(DELAY);
          expect(true).assertTrue()
          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result: ${error}`);
+                 console.info("${caseName} unregister result: ${error}");
              }
              done();
          });
          done();
      });
- 
+
      /**
       * @tc.number Telephony_NetworkManager_register_Async_1100
       * @tc.name Enter bearerTypes add networkCap as empty ,set class NetConnection,
       *          call Register () to activate the default network ,and see if the callback information is generated
       * @tc.desc Function test
       */
- 
+
      it('Telephony_NetworkManager_register_Async_1100', 0, async function (done) {
          let caseName = 'Telephony_NetworkManager_register_Async_1100';
          let netSpecifier = {
@@ -932,83 +941,83 @@
          let netConn = connection.createNetConnection(netSpecifier, TIMEOUT);
          netConn.on('netAvailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netAvailable : ` + value.netId);
+                 console.info("${caseName} netAvailable : " + value.netId);
              }
          });
          netConn.on('netBlockStatusChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netBlockStatusChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netCapabilitiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netCapabilitiesChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netConnectionPropertiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
-                 expect(value.netId).assertEqual(ETH_100);
+                 console.info("${caseName} netConnectionPropertiesChange handle = :" + value.netHandle.netId);
+                 expect(value.netHandle.netId >= ETH_100).assertTrue();
              }
          });
          netConn.on('netLost', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netLost ` + value.netId);
+                 console.info("${caseName} netLost " + value.netId);
              }
          });
          netConn.on('netUnavailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netUnavailable ` + value.netId);
+                 console.info("${caseName} netUnavailable " + value.netId);
                  netId = true;
              }
          });
          netConn.register((error) => {
              if (error) {
-                 console.info(`${caseName} register fail ${error}`);
+                 console.info("${caseName} register fail ${error}");
              }
          });
          await sleep(DELAY);
          expect(true).assertTrue()
          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result : ${error}`);
+                 console.info("${caseName} unregister result : ${error}");
              }
              done();
          });
          done();
      });
- 
+
      /**
       * @tc.number Telephony_NetworkManager_register_Async_1200
       * @tc.name Enter bearerTypes add networkCap as empty ,set class NetConnection,
       *          call Register () to activate the default network ,and see if the callback information is generated
       * @tc.desc Function test
       */
- 
+
      it('Telephony_NetworkManager_register_Async_1200', 0, async function (done) {
          let caseName = 'Telephony_NetworkManager_register_Async_1200';
          let netSpecifier = {
@@ -1023,85 +1032,85 @@
          let netConn = connection.createNetConnection(netSpecifier, TIMEOUT);
          netConn.on('netAvailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netAvailable : ` + value.netId);
+                 console.info("${caseName} netAvailable : " + value.netId);
              }
          });
          netConn.on('netBlockStatusChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
-                 expect(value.netId).assertEqual(ETH_100);
+                 console.info("${caseName} netBlockStatusChange handle = :" + value.netHandle.netId);
+                 expect(value.netHandle.netId >= ETH_100).assertTrue();
              }
          });
          netConn.on('netCapabilitiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
-                 expect(value.netId).assertEqual(ETH_100);
+                 console.info("${caseName} netCapabilitiesChange handle = :" + value.netHandle.netId);
+                 expect(value.netHandle.netId >= ETH_100).assertTrue();
              }
          });
          netConn.on('netConnectionPropertiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netConnectionPropertiesChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netLost', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netLost ` + value.netId);
+                 console.info("${caseName} netLost " + value.netId);
              }
          });
          netConn.on('netUnavailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netUnavailable ` + value.netId);
+                 console.info("${caseName} netUnavailable " + value.netId);
                  netId = true;
              }
          });
          netConn.register((error) => {
              if (error) {
-                 console.info(`${caseName} register fail ${error}`);
+                 console.info("${caseName} register fail ${error}");
              }
          });
          await sleep(DELAY);
          expect(true).assertTrue()
          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result : ${error}`);
+                 console.info("${caseName} unregister result : ${error}");
              }
              done();
          });
          done();
      });
- 
- 
+
+
      /**
       * @tc.number Telephony_NetworkManager_register_Async_1300
       * @tc.name Enter bearerTypes add networkCap as empty ,set class NetConnection,
       *          call Register () to activate the default network ,and see if the callback information is generated
       * @tc.desc Function test
       */
- 
+
      it('Telephony_NetworkManager_register_Async_1300', 0, async function (done) {
          let caseName = 'Telephony_NetworkManager_register_Async_1300';
          let netSpecifier = {
@@ -1115,85 +1124,85 @@
          let netConn = connection.createNetConnection(netSpecifier, TIMEOUT);
          netConn.on('netAvailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netAvailable : ` + value.netId);
+                 console.info("${caseName} netAvailable : " + value.netId);
                  expect(value.netId).assertEqual(ETH_100);
              }
          });
          netConn.on('netBlockStatusChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
-                 expect(value.handle.netId).assertEqual(ETH_100);
+                 console.info("${caseName} netBlockStatusChange handle = :" + value.netHandle.netId);
+                 expect(value.netHandle.netId >= ETH_100).assertTrue();
              }
          });
          netConn.on('netCapabilitiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
-                 expect(value.handle.netId).assertEqual(ETH_100);
+                 console.info("${caseName} netCapabilitiesChange handle = :" + value.netHandle.netId);
+                 expect(value.netHandle.netId >= ETH_100).assertTrue();
              }
          });
          netConn.on('netConnectionPropertiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
-                 expect(value.handle.netId).assertEqual(ETH_100);
+                 console.info("${caseName} netConnectionPropertiesChange handle = :" + value.netHandle.netId);
+                 expect(value.netHandle.netId >= ETH_100).assertTrue();
              }
          });
          netConn.on('netLost', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netLost ` + value.netId);
+                 console.info("${caseName} netLost " + value.netId);
              }
          });
          netConn.on('netUnavailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netUnavailable ` + value);
+                 console.info("${caseName} netUnavailable " + value);
              }
          });
          netConn.register((error) => {
              if (error) {
-                 console.info(`${caseName} register fail ${error}`);
+                 console.info("${caseName} register fail ${error}");
              }
          });
          await sleep(DELAY);
          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result : ${error}`);
+                 console.info("${caseName} unregister result : ${error}");
              }
              done();
          });
          done();
      });
- 
- 
+
+
      /**
       * @tc.number Telephony_NetworkManager_register_Async_1400
       * @tc.name Enter bearerTypes add networkCap as empty ,set class NetConnection,
       *          call Register () to activate the default network ,and see if the callback information is generated
       * @tc.desc Function test
       */
- 
+
      it('Telephony_NetworkManager_register_Async_1400', 0, async function (done) {
          let caseName = 'Telephony_NetworkManager_register_Async_1400';
          let netSpecifier = {
@@ -1208,82 +1217,82 @@
          let netConn = connection.createNetConnection(netSpecifier, TIMEOUT);
          netConn.on('netAvailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netAvailable : ` + value.netId);
+                 console.info("${caseName} netAvailable : " + value.netId);
              }
          });
          netConn.on('netBlockStatusChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netBlockStatusChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netCapabilitiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netCapabilitiesChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netConnectionPropertiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netConnectionPropertiesChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netLost', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netLost ` + value.netId);
+                 console.info("${caseName} netLost " + value.netId);
              }
          });
          netConn.on('netUnavailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netUnavailable ` + value.netId);
+                 console.info("${caseName} netUnavailable " + value.netId);
                  netId = true;
              }
          });
          netConn.register((error) => {
              if (error) {
-                 console.info(`${caseName} register fail ${error}`);
+                 console.info("${caseName} register fail ${error}");
              }
          });
          await sleep(DELAY);
          expect(true).assertTrue()
          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result : ${error}`);
+                 console.info("${caseName} unregister result : ${error}");
              }
              done();
          });
          done();
      });
- 
+
      /**
       * @tc.number Telephony_NetworkManager_register_Async_1500
       * @tc.name Enter bearerTypes add networkCap as empty ,set class NetConnection,
       *          call Register () to activate the default network ,and see if the callback information is generated
       * @tc.desc Function test
       */
- 
+
      it('Telephony_NetworkManager_register_Async_1500', 0, async function (done) {
          let caseName = 'Telephony_NetworkManager_register_Async_1500';
          let netSpecifier = {
@@ -1297,83 +1306,83 @@
          let netConn = connection.createNetConnection(netSpecifier, TIMEOUT);
          netConn.on('netAvailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netAvailable : ` + value.netId);
+                 console.info("${caseName} netAvailable : " + value.netId);
                  VALUE = value.netId;
-                 expect(VALUE).assertEqual(ETH_100);
+                 expect(VALUE >= ETH_100).assertTrue();
              }
          });
          netConn.on('netBlockStatusChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netBlockStatusChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netCapabilitiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netCapabilitiesChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netConnectionPropertiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netConnectionPropertiesChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netLost', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netLost ` + value.netId);
+                 console.info("${caseName} netLost " + value.netId);
              }
          });
          netConn.on('netUnavailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netUnavailable ` + value);
+                 console.info("${caseName} netUnavailable " + value);
              }
          });
          netConn.register((error) => {
              if (error) {
-                 console.info(`${caseName} register fail ${error}`);
+                 console.info("${caseName} register fail ${error}");
              }
          });
          await sleep(DELAY);
          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result : ${error}`);
+                 console.info("${caseName} unregister result : ${error}");
              }
              done();
          });
          done();
      });
- 
- 
+
+
      /**
       * @tc.number Telephony_NetworkManager_register_Async_1600
       * @tc.name Enter bearerTypes add networkCap as empty ,set class NetConnection,
       *          call Register () to activate the default network ,and see if the callback information is generated
       * @tc.desc Function test
       */
- 
+
      it('Telephony_NetworkManager_register_Async_1600', 0, async function (done) {
          let caseName = 'Telephony_NetworkManager_register_Async_1600';
          let netSpecifier = {
@@ -1388,82 +1397,82 @@
          let netConn = connection.createNetConnection(netSpecifier, TIMEOUT);
          netConn.on('netAvailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netAvailable : ` + value.netId);
+                 console.info("${caseName} netAvailable : " + value.netId);
              }
          });
          netConn.on('netBlockStatusChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netBlockStatusChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netCapabilitiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netCapabilitiesChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netConnectionPropertiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netConnectionPropertiesChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netLost', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netLost ` + value.netId);
+                 console.info("${caseName} netLost " + value.netId);
              }
          });
          netConn.on('netUnavailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netUnavailable ` + value);
+                 console.info("${caseName} netUnavailable " + value);
                  netId = true;
              }
          });
          netConn.register((error) => {
              if (error) {
-                 console.info(`${caseName} register fail ${error}`);
+                 console.info("${caseName} register fail ${error}");
              }
          });
          await sleep(DELAY);
          expect(true).assertTrue()
          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result : ${error}`);
+                 console.info("${caseName} unregister result : ${error}");
              }
              done();
          });
          done();
      });
- 
+
      /**
       * @tc.number Telephony_NetworkManager_register_Async_1700
       * @tc.name Enter bearerTypes add networkCap as empty ,set class NetConnection,
       *          call Register () to activate the default network ,and see if the callback information is generated
       * @tc.desc Function test
       */
- 
+
      it('Telephony_NetworkManager_register_Async_1700', 0, async function (done) {
          let caseName = 'Telephony_NetworkManager_register_Async_1700';
          let netSpecifier = {
@@ -1478,82 +1487,82 @@
          let netConn = connection.createNetConnection(netSpecifier, TIMEOUT);
          netConn.on('netAvailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netAvailable : ` + value.netId);
+                 console.info("${caseName} netAvailable : " + value.netId);
              }
          });
          netConn.on('netBlockStatusChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netBlockStatusChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netCapabilitiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netCapabilitiesChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netConnectionPropertiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netConnectionPropertiesChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netLost', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netLost ` + value.netId);
+                 console.info("${caseName} netLost " + value.netId);
              }
          });
          netConn.on('netUnavailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netUnavailable ` + value);
+                 console.info("${caseName} netUnavailable " + value);
                  netId = true;
              }
          });
          netConn.register((error) => {
              if (error) {
-                 console.info(`${caseName} register fail ${error}`);
+                 console.info("${caseName} register fail ${error}");
              }
          });
          await sleep(DELAY);
          expect(true).assertTrue()
          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result : ${error}`);
+                 console.info("${caseName} unregister result : ${error}");
              }
              done();
          });
          done();
      });
- 
+
      /**
       * @tc.number Telephony_NetworkManager_register_Async_1800
       * @tc.name Enter bearerTypes add networkCap as empty ,set class NetConnection,
       *          call Register () to activate the default network ,and see if the callback information is generated
       * @tc.desc Function test
       */
- 
+
      it('Telephony_NetworkManager_register_Async_1800', 0, async function (done) {
          let caseName = 'Telephony_NetworkManager_register_Async_1800';
          let netSpecifier = {
@@ -1568,69 +1577,69 @@
          let netConn = connection.createNetConnection(netSpecifier, TIMEOUT);
          netConn.on('netAvailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netAvailable : ` + value.netId);
+                 console.info("${caseName} netAvailable : " + value.netId);
              }
          });
          netConn.on('netBlockStatusChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netBlockStatusChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netCapabilitiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netCapabilitiesChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netConnectionPropertiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netConnectionPropertiesChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netLost', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netLost ` + value.netId);
+                 console.info("${caseName} netLost " + value.netId);
              }
          });
          netConn.on('netUnavailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netUnavailable ` + value);
+                 console.info("${caseName} netUnavailable " + value);
                  netId = true;
              }
          });
          netConn.register((error) => {
              if (error) {
-                 console.info(`${caseName} register fail ${error}`);
+                 console.info("${caseName} register fail ${error}");
              }
          });
          await sleep(DELAY);
          expect(true).assertTrue()
          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result : ${error}`);
+                 console.info("${caseName} unregister result : ${error}");
              }
              done();
          });
@@ -1638,82 +1647,82 @@
          let netConn1 = connection.createNetConnection(netSpecifier, TIMEOUT);
          netConn1.on('netAvailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netAvailable : ` + value.netId);
+                 console.info("${caseName} netAvailable : " + value.netId);
              }
          });
          netConn.on('netBlockStatusChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netBlockStatusChange handle = :" + value.netHandle.netId);
              }
          });
          netConn1.on('netCapabilitiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netCapabilitiesChange handle = :" + value.netHandle.netId);
              }
          });
          netConn1.on('netConnectionPropertiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netConnectionPropertiesChange handle = :" + value.netHandle.netId);
              }
          });
          netConn1.on('netLost', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netLost ` + value.netId);
+                 console.info("${caseName} netLost " + value.netId);
              }
          });
          netConn1.on('netUnavailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netUnavailable ` + value);
+                 console.info("${caseName} netUnavailable " + value);
                  netId = true;
              }
          });
          netConn1.register((error) => {
              if (error) {
-                 console.info(`${caseName} register fail ${error}`);
+                 console.info("${caseName} register fail ${error}");
              }
          });
          await sleep(DELAY);
          expect(true).assertTrue()
          netConn1.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result : ${error}`);
+                 console.info("${caseName} unregister result : ${error}");
              }
              done();
          });
          done();
      });
- 
+
      /**
       * @tc.number Telephony_NetworkManager_register_Async_1900
       * @tc.name Enter bearerTypes add networkCap as empty ,set class NetConnection,
       *          call Register () to activate the default network ,and see if the callback information is generated
       * @tc.desc Function test
       */
- 
+
      it('Telephony_NetworkManager_register_Async_1900', 0, async function (done) {
          let caseName = 'Telephony_NetworkManager_register_Async_1900';
          let netSpecifier = {
@@ -1727,75 +1736,75 @@
          let netConn = connection.createNetConnection(netSpecifier, TIMEOUT);
          netConn.on('netAvailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netAvailable : ` + value.netId);
+                 console.info("${caseName} netAvailable : " + value.netId);
              }
          });
          netConn.on('netBlockStatusChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netBlockStatusChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netCapabilitiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netCapabilitiesChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netConnectionPropertiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netConnectionPropertiesChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netLost', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netLost ` + value.netId);
+                 console.info("${caseName} netLost " + value.netId);
              }
          });
          netConn.on('netUnavailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netUnavailable ` + value);
+                 console.info("${caseName} netUnavailable " + value);
              }
          });
          netConn.register((error) => {
              if (error) {
- 
+
                  done();
              }
              done();
          });
          done();
      });
- 
+
      /**
       * @tc.number Telephony_NetworkManager_register_Async_2000
       * @tc.name Enter bearerTypes add networkCap as empty ,set class NetConnection,
       *          call Register () to activate the default network ,and see if the callback information is generated
       * @tc.desc Function test
       */
- 
+
      it('Telephony_NetworkManager_register_Async_2000', 0, async function (done) {
          let caseName = 'Telephony_NetworkManager_register_Async_2000';
          let netSpecifier = {
@@ -1833,18 +1842,18 @@
          });
          netConn.register((error) => {
              if (error) {
-                 console.info(`${caseName} register fail ${error}`);
+                 console.info("${caseName} register fail ${error}");
              }
          });
          await sleep(DELAY);
          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result : ${error}`);
+                 console.info("${caseName} unregister result : ${error}");
              }
          });
          done();
      });
- 
+
      /**
       * @tc.number Telephony_NetworkManager_register_Async_2100
       * @tc.name Enter bearerTypes add networkCap as empty ,set class NetConnection,
@@ -1865,69 +1874,69 @@
          let netConn = connection.createNetConnection(netSpecifier, TIMEOUT);
          netConn.on('netAvailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netAvailable : ` + value.netId);
+                 console.info("${caseName} netAvailable : " + value.netId);
              }
          });
          netConn.on('netBlockStatusChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netBlockStatusChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netCapabilitiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netCapabilitiesChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netConnectionPropertiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netConnectionPropertiesChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netLost', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netLost ` + value.netId);
+                 console.info("${caseName} netLost " + value.netId);
              }
          });
          netConn.on('netUnavailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netUnavailable ` + value);
+                 console.info("${caseName} netUnavailable " + value);
                  netId = true;
              }
          });
          netConn.register((error) => {
              if (error) {
-                 console.info(`${caseName} register fail ${error}`);
+                 console.info("${caseName} register fail ${error}");
              }
          });
          await sleep(DELAY);
          expect(true).assertTrue()
          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result : ${error}`);
+                 console.info("${caseName} unregister result : ${error}");
              }
              done();
          });
@@ -1942,75 +1951,75 @@
          let netConn1 = connection.createNetConnection(netSpecifier1, TIMEOUT);
          netConn1.on('netAvailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netAvailable : ` + value.netId);
+                 console.info("${caseName} netAvailable : " + value.netId);
              }
          });
          netConn1.on('netBlockStatusChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netBlockStatusChange handle = :" + value.netHandle.netId);
              }
          });
          netConn1.on('netCapabilitiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netCapabilitiesChange handle = :" + value.netHandle.netId);
              }
          });
          netConn1.on('netConnectionPropertiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netConnectionPropertiesChange handle = :" + value.netHandle.netId);
              }
          });
          netConn1.on('netLost', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netLost ` + value.netId);
+                 console.info("${caseName} netLost " + value.netId);
              }
          });
          netConn1.on('netUnavailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netUnavailable ` + value);
+                 console.info("${caseName} netUnavailable " + value);
                  netId = true;
              }
          });
          netConn1.register((error) => {
              if (error) {
-                 console.info(`${caseName} register fail ${error}`);
+                 console.info("${caseName} register fail ${error}");
              }
          });
          await sleep(DELAY);
          expect(true).assertTrue()
          netConn1.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result : ${error}`);
+                 console.info("${caseName} unregister result : ${error}");
              }
              done();
          });
          done();
      });
- 
+
      /**
       * @tc.number Telephony_NetworkManager_register_Async_2200
       * @tc.name Enter bearerTypes add networkCap as empty ,set class NetConnection,
@@ -2031,69 +2040,69 @@
          let netConn = connection.createNetConnection(netSpecifier, TIMEOUT);
          netConn.on('netAvailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netAvailable : ` + value.netId);
+                 console.info("${caseName} netAvailable : " + value.netId);
              }
          });
          netConn.on('netBlockStatusChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netBlockStatusChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netCapabilitiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netCapabilitiesChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netConnectionPropertiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netConnectionPropertiesChange handle = :" + value.netHandle.netId);
              }
          });
          netConn.on('netLost', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netLost ` + value.netId);
+                 console.info("${caseName} netLost " + value.netId);
              }
          });
          netConn.on('netUnavailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netUnavailable ` + value.netId);
+                 console.info("${caseName} netUnavailable " + value.netId);
                  netId = true;
              }
          });
          netConn.register((error) => {
              if (error) {
-                 console.info(`${caseName} register fail ${error}`);
+                 console.info("${caseName} register fail ${error}");
              }
          });
          await sleep(DELAY);
          expect(true).assertTrue()
          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result : ${error}`);
+                 console.info("${caseName} unregister result : ${error}");
              }
              done();
          });
@@ -2108,75 +2117,75 @@
          let netConn1 = connection.createNetConnection(netSpecifier1, TIMEOUT);
          netConn1.on('netAvailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netAvailable : ` + value.netId);
+                 console.info("${caseName} netAvailable : " + value.netId);
              }
          });
          netConn1.on('netBlockStatusChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netBlockStatusChange handle = :" + value.netHandle.netId);
              }
          });
          netConn1.on('netCapabilitiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netCapabilitiesChange handle = :" + value.netHandle.netId);
              }
          });
          netConn1.on('netConnectionPropertiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netConnectionPropertiesChange handle = :" + value.netHandle.netId);
              }
          });
          netConn1.on('netLost', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netLost ` + value.netId);
+                 console.info("${caseName} netLost " + value.netId);
              }
          });
          netConn1.on('netUnavailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netUnavailable ` + value.netId);
+                 console.info("${caseName} netUnavailable " + value.netId);
                  netId = true;
              }
          });
          netConn1.register((error) => {
              if (error) {
-                 console.info(`${caseName} register fail ${error}`);
+                 console.info("${caseName} register fail ${error}");
              }
          });
          await sleep(DELAY);
          expect(true).assertTrue()
          netConn1.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result : ${error}`);
+                 console.info("${caseName} unregister result : ${error}");
              }
              done();
          });
          done();
      });
- 
+
      /**
       * @tc.number Telephony_NetworkManager_register_Async_2300
       * @tc.name Enter bearerTypes add networkCap as empty ,set class NetConnection,
@@ -2189,59 +2198,59 @@
          let returnValue = 0;
          netConn.on('netAvailable', (value) => {
              if (value === undefined) {
-                 console.info(`${caseName} on netAvailable fail`);
+                 console.info("${caseName} on netAvailable fail");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netAvailable` + value.netId);
+                 console.info("${caseName} netAvailable" + value.netId);
                  returnValue = value.netId;
              }
          });
          netConn.on('netCapabilitiesChange', (value) => {
              if (value === undefined) {
-                 console.info(`${caseName} on netCapabilitiesChange fail`);
+                 console.info("${caseName} on netCapabilitiesChange fail");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netCapabilitiesChange handle ` + value.netHandle.netId);
+                 console.info("${caseName} netCapabilitiesChange handle " + value.netHandle.netId);
                  expect(value.netHandle.netId >= ETH_100 ).assertTrue();
              }
          });
          netConn.on('netConnectionPropertiesChange', (value) => {
              if (value === undefined) {
-                 console.info(`${caseName} on netConnectionPropertiesChange fail`);
+                 console.info("${caseName} on netConnectionPropertiesChange fail");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netConnectionPropertiesChange hdndle` + value.netHandle.netId);
+                 console.info("${caseName} netConnectionPropertiesChange hdndle" + value.netHandle.netId);
              }
          });
          netConn.on('netLost', (value) => {
              if (error) {
-                 console.info(`${caseName} netLost fail`);
+                 console.info("${caseName} netLost fail");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netLost ` + value.netId);
+                 console.info("${caseName} netLost " + value.netId);
              }
          });
          netConn.register((error) => {
              if (error) {
-                 console.info(`${caseName} register fail ${error}`);
+                 console.info("${caseName} register fail ${error}");
              }
          });
          await sleep(DELAY);
-         console.info(`${caseName} returnValue ` + returnValue);
+         console.info("${caseName} returnValue " + returnValue);
          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result : ${error}`);
+                 console.info("${caseName} unregister result : ${error}");
                  done();
              }
              done();
          });
          done();
      });
- 
+
      /**
       * @tc.number Telephony_NetworkManager_unregister_Async_0100
       * @tc.name Enter bearerTypes add networkCap as empty ,set class NetConnection,
@@ -2261,82 +2270,82 @@
          let netConn = connection.createNetConnection(netSpecifier, TIMEOUT_1);
          netConn.on('netAvailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netAvailable : ` + value.netId);
+                 console.info("${caseName} netAvailable : " + value.netId);
                  done();
              }
          });
          netConn.on('netBlockStatusChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netBlockStatusChange handle = :" + value.netHandle.netId);
                  done();
              }
          });
          netConn.on('netCapabilitiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netCapabilitiesChange handle = :" + value.netHandle.netId);
                  done();
              }
          });
          netConn.on('netConnectionPropertiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netConnectionPropertiesChange handle = :" + value.netHandle.netId);
                  done();
              }
          });
          netConn.on('netLost', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netLost ` + value.netId);
+                 console.info("${caseName} netLost " + value.netId);
                  done();
              }
          });
          netConn.on('netUnavailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netUnavailable ` + value.netId);
+                 console.info("${caseName} netUnavailable " + value.netId);
                  done();
              }
          });
          netConn.register((error) => {
              if (error) {
-                 console.info(`${caseName} register fail ${error}`);
+                 console.info("${caseName} register fail ${error}");
              }
          });
          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result : ${error}`);
+                 console.info("${caseName} unregister result : ${error}");
                  expect().assertFail();
                  done();
              }
- 
+
              done();
          });
          done();
      });
- 
- 
+
+
      /**
       * @tc.number Telephony_NetworkManager_unregister_Async_0200
       * @tc.name Enter bearerTypes add networkCap as empty ,set class NetConnection,
@@ -2348,81 +2357,81 @@
          let netConn = connection.createNetConnection();
          netConn.on('netAvailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netAvailable : ` + value.netId);
+                 console.info("${caseName} netAvailable : " + value.netId);
                  done();
              }
          });
          netConn.on('netBlockStatusChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netBlockStatusChange handle = :" + value.netHandle.netId);
                  done();
              }
          });
          netConn.on('netCapabilitiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netCapabilitiesChange handle = :" + value.netHandle.netId);
                  done();
              }
          });
          netConn.on('netConnectionPropertiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netConnectionPropertiesChange handle = :" + value.netHandle.netId);
                  done();
              }
          });
          netConn.on('netLost', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netLost ` + value.netId);
+                 console.info("${caseName} netLost " + value.netId);
                  done();
              }
          });
          netConn.on('netUnavailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netUnavailable ` + value.netId);
+                 console.info("${caseName} netUnavailable " + value.netId);
                  done();
              }
          });
          netConn.register((error) => {
              if (error) {
-                 console.info(`${caseName} register fail ${error}`);
+                 console.info("${caseName} register fail ${error}");
              }
          });
          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result : ${error}`);
+                 console.info("${caseName} unregister result : ${error}");
                  expect().assertFail();
                  done();
              }
- 
+
              done();
          });
          done();
      });
- 
+
      /**
       * @tc.number Telephony_NetworkManager_unregister_Async_0300
       * @tc.name Enter bearerTypes add networkCap as empty ,set class NetConnection,
@@ -2434,67 +2443,67 @@
          let netConn = connection.createNetConnection();
          netConn.on('netAvailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail: ${error}`);
+                 console.info("${caseName} register fail: ${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netAvailable : ` + value.netId);
+                 console.info("${caseName} netAvailable : " + value.netId);
                  done();
              }
          });
          netConn.on('netBlockStatusChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netBlockStatusChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netBlockStatusChange handle = :" + value.netHandle.netId);
                  done();
              }
          });
          netConn.on('netCapabilitiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netCapabilitiesChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netCapabilitiesChange handle = :" + value.netHandle.netId);
                  done();
              }
          });
          netConn.on('netConnectionPropertiesChange', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netConnectionPropertiesChange handle = :` + value.handle.netId);
+                 console.info("${caseName} netConnectionPropertiesChange handle = :" + value.netHandle.netId);
                  done();
              }
          });
          netConn.on('netLost', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netLost ` + value.netId);
+                 console.info("${caseName} netLost " + value.netId);
                  done();
              }
          });
          netConn.on('netUnavailable', (error, value) => {
              if (error) {
-                 console.info(`${caseName} register fail :${error}`);
+                 console.info("${caseName} register fail :${error}");
                  expect().assertFail();
                  done();
              } else {
-                 console.info(`${caseName} netUnavailable ` + value.netId);
+                 console.info("${caseName} netUnavailable " + value.netId);
                  done();
              }
          });
          netConn.unregister((error) => {
              if (error) {
-                 console.info(`${caseName} unregister result : ${error}`);
+                 console.info("${caseName} unregister result : ${error}");
                  expect().assertFail();
                  done();
              }

@@ -25,6 +25,7 @@ export default function inputMethodEngineJSUnit() {
     let inputMethodEngineObject = inputMethodEngine.getInputMethodEngine();
     let textInputClient = null;
     let kbController = null;
+    let KeyboardDelegate = null;
 
     console.info("************* inputMethodEngine Test start*************");
     beforeEach(async function (done) {
@@ -47,6 +48,50 @@ export default function inputMethodEngineJSUnit() {
     afterEach(async function () {
       console.info("inputMethodEngine afterEach start:" + inputMethodEngineObject);
       await Utils.sleep(1000);
+    });
+
+    it('inputMethodEngine_testOff_000', 0 , async function (done) {
+      inputMethodEngineObject.off('inputStart', (kbController, textInputClient) => {
+        console.info("inputMethodEngine beforeEach inputStart:" + JSON.stringify(kbController));
+        console.info("inputMethodEngine beforeEach inputStart:" + JSON.stringify(textInputClient));
+      });
+      inputMethodEngineObject.off('keyboardShow', (err) => {
+        console.info("inputMethodEngine beforeEach keyboardShow:" + err);
+      });
+      inputMethodEngineObject.off('keyboardHide', (err) => {
+        console.info("inputMethodEngine beforeEach keyboardHide:" + err);
+      });
+      KeyboardDelegate = inputMethodEngine.createKeyboardDelegate();
+      KeyboardDelegate.off('keyDown', (keyEvent) => {
+        console.info("inputMethodEngine beforeEach keyDown:" + keyEvent.keyCode);
+        expect(keyEvent.keyCode).assertEqual('1');
+
+        console.info("inputMethodEngine beforeEach keyDown:" + keyEvent.keyAction);
+        expect(keyEvent.keyAction).assertEqual('1');
+
+      });
+      KeyboardDelegate.off('keyUp', (keyEvent) => {
+        console.info("inputMethodEngine beforeEach keyUp:" + keyEvent.keyCode);
+        expect(keyEvent.keyCode).assertEqual('1');
+        console.info("inputMethodEngine beforeEach keyDown:" + keyEvent.keyAction);
+        expect(keyEvent.keyAction).assertEqual('0');
+
+      });
+      KeyboardDelegate.off('cursorContextChange', (x, y, height) => {
+        console.info("inputMethodEngine beforeEach cursorContextChange x:" + x);
+        console.info("inputMethodEngine beforeEach cursorContextChange y:" + y);
+        console.info("inputMethodEngine beforeEach cursorContextChange height:" + height);
+      });
+      KeyboardDelegate.off('selectionChange', (oldBegin, oldEnd, newBegin, newEnd) => {
+        console.info("inputMethodEngine beforeEach selectionChange oldBegin:" + oldBegin);
+        console.info("inputMethodEngine beforeEach selectionChange oldEnd:" + oldEnd);
+        console.info("inputMethodEngine beforeEach selectionChange newBegin:" + newBegin);
+        console.info("inputMethodEngine beforeEach selectionChange newEnd:" + newEnd);
+      });
+      KeyboardDelegate.off('textChange', (text) => {
+        console.info("inputMethodEngine beforeEach textChange:" + text);
+      });
+      done();
     });
 
     it('inputMethodEngine_test_000', 0, async function (done) {
@@ -528,7 +573,7 @@ export default function inputMethodEngineJSUnit() {
     it('inputMethodEngine_test_044', 0, async function (done) {
       let keyType = inputMethodEngine.WINDOW_TYPE_INPUT_METHOD_FLOAT;
       console.error("inputMethodEngine_test_044 result:" + keyType);
-      expect(keyType == null).assertTrue();
+      expect(keyType == 2105).assertTrue();
       done();
     });
 
@@ -536,8 +581,8 @@ export default function inputMethodEngineJSUnit() {
       if (textInputClient == null) {
         expect(textInputClient == null).assertEqual(true);
       } else {
-        textInputClient.moveCursor(1, (value) => {
-          console.info("inputMethodEngine_test_045 getBackward:" + value);
+        textInputClient.moveCursor(inputMethodEngine.CURSOR_UP, (value) => {
+          console.info("inputMethodEngine_test_045 moveCursor:" + value);
           expect(value == null).assertEqual(true);
         });
       }
@@ -548,12 +593,38 @@ export default function inputMethodEngineJSUnit() {
       if (textInputClient == null) {
         expect(textInputClient == null).assertEqual(true);
       } else {
-        let promise = textInputClient.moveCursor(1);
-        promise.then(res => {
-          console.info("inputMethodEngine_test_046 getBackward promise result-----" + JSON.stringify(res));
+        textInputClient.moveCursor(inputMethodEngine.CURSOR_DOWN, (value) => {
+          console.info("inputMethodEngine_test_046 moveCursor:" + value);
+          expect(value == null).assertEqual(true);
+        });
+      }
+      done();
+    })
+
+    it('inputMethodEngine_test_047', 0, async function (done) {
+      if (textInputClient == null) {
+        expect(textInputClient == null).assertEqual(true);
+      } else {
+        textInputClient.moveCursor(inputMethodEngine.CURSOR_LEFT).then(res => {
+          console.info("inputMethodEngine_test_047 moveCursor promise result-----" + JSON.stringify(res));
           expect(res == null).assertEqual(true);
         }).catch(err => {
-          console.info("inputMethodEngine_test_046 getBackward promise error----" + JSON.stringify(err));
+          console.info("inputMethodEngine_test_047 moveCursor promise error----" + JSON.stringify(err));
+          expect().assertFail();
+        });
+      }
+      done();
+    })
+
+    it('inputMethodEngine_test_048', 0, async function (done) {
+      if (textInputClient == null) {
+        expect(textInputClient == null).assertEqual(true);
+      } else {
+        textInputClient.moveCursor(inputMethodEngine.CURSOR_RIGHT).then(res => {
+          console.info("inputMethodEngine_test_048 moveCursor promise result-----" + JSON.stringify(res));
+          expect(res == null).assertEqual(true);
+        }).catch(err => {
+          console.info("inputMethodEngine_test_048 moveCursor promise error----" + JSON.stringify(err));
           expect().assertFail();
         });
       }

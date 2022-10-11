@@ -36,7 +36,7 @@ export default function mediaLibraryTestCallback(abilityContext) {
         beforeAll(async function () {
             console.info('beforeAll case');
             await getPermission();
-            await checkPresetsAssets(media, 'ActsMediaLibraryBase');
+            await checkPresetsAssets(media, 'ActsMediaLibraryBaseTest');
         });
         beforeEach(function () {
             console.info('beforeEach case');
@@ -276,14 +276,14 @@ export default function mediaLibraryTestCallback(abilityContext) {
                 await asset.close(fd);
                 try {
                     media.createAsset(type, name, path, async (err, creatAsset) => {
-                        if (err || creatAsset == undefined) {
+                        if (err != undefined) {
                             expect(true).assertTrue();
                             done();
                             return;
-                        } else {
-                            expect(false).assertTrue();
-                            done();
                         }
+                        expect(false).assertTrue();
+                        done();
+                        
                     });
                 } catch (error) {
                     console.info(`${testNum}:: error :${error}`);
@@ -298,15 +298,15 @@ export default function mediaLibraryTestCallback(abilityContext) {
         }
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_001
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETFILEASSETS_001
          * @tc.name      : getFileAssets
          * @tc.desc      : query all assets
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_001', 0, async function (done) {
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_001';
+        it('SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETFILEASSETS_001', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETFILEASSETS_001';
             let currentFetchOps = fetchOps(testNum, 'Pictures/Static/', IMAGE_TYPE);
             let type = 'image';
             let count = 1;
@@ -314,15 +314,15 @@ export default function mediaLibraryTestCallback(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_002
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETFILEASSETS_002
          * @tc.name      : getFileAssets
          * @tc.desc      : query all assets
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_002', 0, async function (done) {
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_002';
+        it('SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETFILEASSETS_002', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETFILEASSETS_002';
             let currentFetchOps = fetchOps(testNum, 'Videos/Static/', VIDEO_TYPE);
             let type = 'video';
             let count = 1;
@@ -330,15 +330,15 @@ export default function mediaLibraryTestCallback(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_003
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETFILEASSETS_003
          * @tc.name      : getFileAssets
          * @tc.desc      : query all assets
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_003', 0, async function (done) {
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_003';
+        it('SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETFILEASSETS_003', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETFILEASSETS_003';
             let currentFetchOps = fetchOps(testNum, 'Audios/Static/', AUDIO_TYPE);
             let type = 'audio';
             let count = 1;
@@ -346,15 +346,15 @@ export default function mediaLibraryTestCallback(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_004
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETFILEASSETS_004
          * @tc.name      : getFileAssets
          * @tc.desc      : query all assets
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_004', 0, async function (done) {
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_004';
+        it('SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETFILEASSETS_004', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETFILEASSETS_004';
             let currentFetchOps = fetchOps(testNum, 'Documents/Static/', FILE_TYPE);
             let type = 'file';
             let count = 1;
@@ -362,15 +362,15 @@ export default function mediaLibraryTestCallback(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_005
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETFILEASSETS_005
          * @tc.name      : getFileAssets
          * @tc.desc      : query all assets
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_005', 0, async function (done) {
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_005';
+        it('SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETFILEASSETS_005', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETFILEASSETS_005';
             let currentFetchOps = imageAndVideofetchOp;
             let type = 'video';
             let count = 2;
@@ -379,15 +379,15 @@ export default function mediaLibraryTestCallback(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_006
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETFILEASSETS_006
          * @tc.name      : getFileAssets
          * @tc.desc      : query all assets
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_006', 0, async function (done) {
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_006';
+        it('SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETFILEASSETS_006', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETFILEASSETS_006';
             let currentFetchOps = imageAndVideoAndfilefetchOp;
             let type = 'file';
             let count = 3;
@@ -396,15 +396,15 @@ export default function mediaLibraryTestCallback(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_007
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETFILEASSETS_007
          * @tc.name      : getFileAssets
          * @tc.desc      : query all assets
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_007', 0, async function (done) {
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_006';
+        it('SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETFILEASSETS_007', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETFILEASSETS_006';
             let currentFetchOps = imageAndVideoAndfileAndAudiofetchOp;
             let type = 'audio';
             let count = 4;
@@ -413,157 +413,157 @@ export default function mediaLibraryTestCallback(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_008
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETFILEASSETS_008
          * @tc.name      : getFileAssets
          * @tc.desc      : query all assets
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_008', 0, async function (done) {
+        it('SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETFILEASSETS_008', 0, async function (done) {
             let currentFetchOps = {
                 selections: FILEKEY.MEDIA_TYPE + '= ?',
                 selectionArgs: [],
             };
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_008';
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETFILEASSETS_008';
             await getFileAssetsZero(done, testNum, currentFetchOps)
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_009
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETFILEASSETS_009
          * @tc.name      : getFileAssets
          * @tc.desc      : query all assets
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_009', 0, async function (done) {
+        it('SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETFILEASSETS_009', 0, async function (done) {
             let currentFetchOps = {
                 selections: FILEKEY.MEDIA_TYPE + 'abc= ?',
                 selectionArgs: [AUDIO_TYPE.toString()],
             };
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_009';
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETFILEASSETS_009';
             await getFileAssetsAbnormal(done, testNum, currentFetchOps)
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_010
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETFILEASSETS_010
          * @tc.name      : getFileAssets
          * @tc.desc      : query all assets
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_010', 0, async function (done) {
+        it('SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETFILEASSETS_010', 0, async function (done) {
             let currentFetchOps = {
                 selections: FILEKEY.MEDIA_TYPE + '= ?',
                 selectionArgs: [111],
             };
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_010';
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETFILEASSETS_010';
             await getFileAssetsZero(done, testNum, currentFetchOps)
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_011
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETFILEASSETS_011
          * @tc.name      : getFileAssets
          * @tc.desc      : query all assets
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_011', 0, async function (done) {
+        it('SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETFILEASSETS_011', 0, async function (done) {
             let currentFetchOps = {
                 selections: 'abc' + '= ?',
                 selectionArgs: [AUDIO_TYPE.toString()],
             };
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETFILEASSETS_011';
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETFILEASSETS_011';
             await getFileAssetsAbnormal(done, testNum, currentFetchOps)
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETPUBLICDIRECTORY_001
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETPUBLICDIRECTORY_001
          * @tc.name      : getPublicDirectory
          * @tc.desc      : getPublicDirectory DIR_CAMERA
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETPUBLICDIRECTORY_001', 0, async function (done) {
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETPUBLICDIRECTORY_001';
+        it('SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETPUBLICDIRECTORY_001', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETPUBLICDIRECTORY_001';
             let dir = mediaLibrary.DirectoryType.DIR_CAMERA;
             let val = 'Camera/';
             await checkGetPublicDirectory(done, testNum, dir, val)
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETPUBLICDIRECTORY_002
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETPUBLICDIRECTORY_002
          * @tc.name      : getPublicDirectory
          * @tc.desc      : getPublicDirectory DIR_VIDEO
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETPUBLICDIRECTORY_002', 0, async function (done) {
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETPUBLICDIRECTORY_002';
+        it('SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETPUBLICDIRECTORY_002', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETPUBLICDIRECTORY_002';
             let dir = mediaLibrary.DirectoryType.DIR_VIDEO;
             let val = 'Videos/';
             await checkGetPublicDirectory(done, testNum, dir, val)
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETPUBLICDIRECTORY_003
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETPUBLICDIRECTORY_003
          * @tc.name      : getPublicDirectory
          * @tc.desc      : getPublicDirectory DIR_IMAGE
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETPUBLICDIRECTORY_003', 0, async function (done) {
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETPUBLICDIRECTORY_003';
+        it('SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETPUBLICDIRECTORY_003', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETPUBLICDIRECTORY_003';
             let dir = mediaLibrary.DirectoryType.DIR_IMAGE;
             let val = 'Pictures/';
             await checkGetPublicDirectory(done, testNum, dir, val)
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETPUBLICDIRECTORY_004
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETPUBLICDIRECTORY_004
          * @tc.name      : getPublicDirectory
-         * @tc.desc      : getPublicDirectory DIR_IMAGE
+         * @tc.desc      : getPublicDirectory DIR_AUDIO
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETPUBLICDIRECTORY_004', 0, async function (done) {
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETPUBLICDIRECTORY_004';
+        it('SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETPUBLICDIRECTORY_004', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETPUBLICDIRECTORY_004';
             let dir = mediaLibrary.DirectoryType.DIR_AUDIO;
             let val = 'Audios/';
             await checkGetPublicDirectory(done, testNum, dir, val)
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETPUBLICDIRECTORY_005
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETPUBLICDIRECTORY_005
          * @tc.name      : getPublicDirectory
          * @tc.desc      : getPublicDirectory DIR_IMAGE
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETPUBLICDIRECTORY_005', 0, async function (done) {
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETPUBLICDIRECTORY_004';
+        it('SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETPUBLICDIRECTORY_005', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETPUBLICDIRECTORY_005';
             let dir = mediaLibrary.DirectoryType.DIR_DOCUMENTS;
             let val = 'Documents/';
             await checkGetPublicDirectory(done, testNum, dir, val)
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETPUBLICDIRECTORY_006
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETPUBLICDIRECTORY_006
          * @tc.name      : getPublicDirectory
          * @tc.desc      : getPublicDirectory 110
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_CALLBACK_GETPUBLICDIRECTORY_006', 0, async function (done) {
+        it('SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETPUBLICDIRECTORY_006', 0, async function (done) {
             try {
                 await media.getPublicDirectory(110);
                 console.info('MediaLibraryTest : getPublicDirectory 006 failed');
@@ -577,15 +577,30 @@ export default function mediaLibraryTestCallback(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_CALLBACK_CREATEASSET_001
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETPUBLICDIRECTORY_007
+         * @tc.name      : getPublicDirectory
+         * @tc.desc      : getPublicDirectory DIR_DOWNLOAD
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETPUBLICDIRECTORY_007', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETPUBLICDIRECTORY_007';
+            let dir = mediaLibrary.DirectoryType.DIR_DOWNLOAD;
+            let val = 'Download/';
+            await checkGetPublicDirectory(done, testNum, dir, val)
+        });
+
+        /**
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CALLBACK_CREATEASSET_001
          * @tc.name      : createAsset
          * @tc.desc      : Create File Asset image (does not exist)
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_CALLBACK_CREATEASSET_001', 0, async function (done) {
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_CALLBACK_CREATEASSET_001';
+        it('SUB_MEDIA_MEDIALIBRARY_CALLBACK_CREATEASSET_001', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CALLBACK_CREATEASSET_001';
             let currentFetchOps = fetchOps(testNum, 'Pictures/Static/', IMAGE_TYPE);
             let type = IMAGE_TYPE;
             let name = new Date().getTime() + '.jpg';
@@ -594,15 +609,15 @@ export default function mediaLibraryTestCallback(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_CALLBACK_CREATEASSET_002
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CALLBACK_CREATEASSET_002
          * @tc.name      : createAsset
          * @tc.desc      : Create File Asset image (existed)
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_CALLBACK_CREATEASSET_002', 0, async function (done) {
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_CALLBACK_CREATEASSET_002';
+        it('SUB_MEDIA_MEDIALIBRARY_CALLBACK_CREATEASSET_002', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CALLBACK_CREATEASSET_002';
             let currentFetchOps = fetchOps(testNum, 'Pictures/Static/', IMAGE_TYPE);
             let type = IMAGE_TYPE;
             let name = new Date().getTime() + '.jpg';
@@ -612,15 +627,15 @@ export default function mediaLibraryTestCallback(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_CALLBACK_CREATEASSET_003
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CALLBACK_CREATEASSET_003
          * @tc.name      : createAsset
          * @tc.desc      : Create File Asset video (does not exist)
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_CALLBACK_CREATEASSET_003', 0, async function (done) {
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_CALLBACK_CREATEASSET_003';
+        it('SUB_MEDIA_MEDIALIBRARY_CALLBACK_CREATEASSET_003', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CALLBACK_CREATEASSET_003';
             let currentFetchOps = fetchOps(testNum, 'Videos/Static/', VIDEO_TYPE);
             let type = VIDEO_TYPE;
             let name = new Date().getTime() + '.mp4';
@@ -629,15 +644,15 @@ export default function mediaLibraryTestCallback(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_CALLBACK_CREATEASSET_004
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CALLBACK_CREATEASSET_004
          * @tc.name      : createAsset
          * @tc.desc      : Create File Asset video (existed)
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_CALLBACK_CREATEASSET_004', 0, async function (done) {
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_CALLBACK_CREATEASSET_004';
+        it('SUB_MEDIA_MEDIALIBRARY_CALLBACK_CREATEASSET_004', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CALLBACK_CREATEASSET_004';
             let currentFetchOps = fetchOps(testNum, 'Videos/Static/', VIDEO_TYPE);
             let type = VIDEO_TYPE;
             let name = new Date().getTime() + '.mp4';
@@ -646,15 +661,15 @@ export default function mediaLibraryTestCallback(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_CALLBACK_CREATEASSET_005
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CALLBACK_CREATEASSET_005
          * @tc.name      : createAsset
          * @tc.desc      : Create File Asset audio (does not exist)
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_CALLBACK_CREATEASSET_005', 0, async function (done) {
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_CALLBACK_CREATEASSET_005';
+        it('SUB_MEDIA_MEDIALIBRARY_CALLBACK_CREATEASSET_005', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CALLBACK_CREATEASSET_005';
             let currentFetchOps = fetchOps(testNum, 'Audios/Static/', AUDIO_TYPE);
             let type = AUDIO_TYPE;
             let name = new Date().getTime() + '.mp3';
@@ -663,15 +678,15 @@ export default function mediaLibraryTestCallback(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_CALLBACK_CREATEASSET_006
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CALLBACK_CREATEASSET_006
          * @tc.name      : createAsset
          * @tc.desc      : Create File Asset audio (existed)
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_CALLBACK_CREATEASSET_006', 0, async function (done) {
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_CALLBACK_CREATEASSET_006';
+        it('SUB_MEDIA_MEDIALIBRARY_CALLBACK_CREATEASSET_006', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CALLBACK_CREATEASSET_006';
             let currentFetchOps = fetchOps(testNum, 'Audios/Static/', AUDIO_TYPE);
             let type = AUDIO_TYPE;
             let name = new Date().getTime() + '.mp3';
@@ -680,15 +695,15 @@ export default function mediaLibraryTestCallback(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_CALLBACK_CREATEASSET_007
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CALLBACK_CREATEASSET_007
          * @tc.name      : createAsset
          * @tc.desc      : Create File Asset file (does not exist)
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_CALLBACK_CREATEASSET_007', 0, async function (done) {
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_CALLBACK_CREATEASSET_007';
+        it('SUB_MEDIA_MEDIALIBRARY_CALLBACK_CREATEASSET_007', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CALLBACK_CREATEASSET_007';
             let currentFetchOps = fetchOps(testNum, 'Documents/Static/', FILE_TYPE);
             let type = FILE_TYPE;
             let name = new Date().getTime() + '.dat';
@@ -697,15 +712,15 @@ export default function mediaLibraryTestCallback(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_CALLBACK_CREATEASSET_008
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CALLBACK_CREATEASSET_008
          * @tc.name      : createAsset
          * @tc.desc      : Create File Asset file (existed)
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_CALLBACK_CREATEASSET_008', 0, async function (done) {
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_CALLBACK_CREATEASSET_008';
+        it('SUB_MEDIA_MEDIALIBRARY_CALLBACK_CREATEASSET_008', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CALLBACK_CREATEASSET_008';
             let currentFetchOps = fetchOps(testNum, 'Documents/Static/', FILE_TYPE);
             let type = FILE_TYPE;
             let name = new Date().getTime() + '.dat';
@@ -714,15 +729,15 @@ export default function mediaLibraryTestCallback(abilityContext) {
         });
 
         /**
-       * @tc.number    : SUB__MEDIA_MIDIALIBRARY_CALLBACK_CREATEASSET_001
+       * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CALLBACK_CREATEASSET_001
        * @tc.name      : createAsset
        * @tc.desc      : Create File Asset image (does not exist)
        * @tc.size      : MEDIUM
        * @tc.type      : Function
        * @tc.level     : Level 0
        */
-        it('SUB__MEDIA_MIDIALIBRARY_CALLBACK_CREATEASSET_009', 0, async function (done) {
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_CALLBACK_CREATEASSET_001';
+        it('SUB_MEDIA_MEDIALIBRARY_CALLBACK_CREATEASSET_009', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CALLBACK_CREATEASSET_001';
             let currentFetchOps = fetchOps(testNum, 'Pictures/Static/', IMAGE_TYPE);
             let type = IMAGE_TYPE;
             let name = new Date().getTime() + '.jpg';

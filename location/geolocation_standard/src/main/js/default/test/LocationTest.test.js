@@ -111,14 +111,14 @@ describe('geolocationTest_geo3', function () {
     })
 
     /**
-     * @tc.number LocSwitch_0003
-     * @tc.name SUB_HSS_LocationSystem_LocSwitch_0003
-     * @tc.desc Test requestrequestEnableLocation api .
+     * @tc.number SUB_HSS_LocationSystem_LocSwitch_0300
+     * @tc.name Test requestrequestEnableLocation api
+     * @tc.desc Enabling the Location Service Function for a Third-Party App - Callback
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_LocSwitch_0003', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_LocSwitch_0300', 0, async function (done) {
         geolocation.isLocationEnabled(async (err, data) => {
             if (err) {
                 console.info('[lbs_js] getLocationSwitchState callback err is : ' + JSON.stringify(err));
@@ -132,14 +132,14 @@ describe('geolocationTest_geo3', function () {
     });
 
     /**
-     * @tc.number LocSwitch_0004
-     * @tc.name SUB_HSS_LocationSystem_LocSwitch_0004
-     * @tc.desc Test requestrequestEnableLocation api .
+     * @tc.number LocSwitch_0400
+     * @tc.name Test requestrequestEnableLocation api.
+     * @tc.desc Enabling the Location Service Function for a Third-Party Application -Promise Mode
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_LocSwitch_0004', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_LocSwitch_0400', 0, async function (done) {
         await geolocation.isLocationEnabled().then((result1) => {
             console.info('[lbs_js] getLocationSwitchStateLocSwitch_0004 result: ' + JSON.stringify(result1));
             expect(result1).assertTrue();
@@ -150,32 +150,33 @@ describe('geolocationTest_geo3', function () {
     });
 
     /**
-     * @tc.number LocSwitch_0005
-     * @tc.name SUB_HSS_LocationSystem_LocSwitch_0005
-     * @tc.desc Test locationServiceState api .
+     * @tc.number SUB_HSS_LocationSystem_LocSwitch_0500
+     * @tc.name Test locationServiceState api .
+     * @tc.desc Subscribe to the location service status change.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_LocSwitch_0005', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_LocSwitch_0500', 0, async function (done) {
         console.log('just for overwriting,locationServiceState test need system api ');
         var locationServiceState = (state) => {
             console.log('locationServiceState: state: ' + JSON.stringify(state));
         }
         geolocation.on('locationServiceState', locationServiceState);
         geolocation.off('locationServiceState', locationServiceState);
+	expect(true).assertTrue();
         done();
     })
 
     /**
-     * @tc.number SUB_HSS_LocationSystem_SingleLoc_0001
+     * @tc.number SUB_HSS_LocationSystem_SingleLoc_0100
      * @tc.name Test getCurrentLocation
      * @tc.desc Initiate a single location request in a specified scenario and set the navigation scenario..
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_SingleLoc_0001', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_SingleLoc_0100', 0, async function (done) {
         let currentLocationRequest = { "priority": 0x200, "scenario": 0x301, "timeoutMs": 1000, "maxAccuracy": 0 };
         function getCurrentLocationCallback() {
             return new Promise((resolve, reject) => {
@@ -193,24 +194,25 @@ describe('geolocationTest_geo3', function () {
             })
         }
         console.info('getCurrentLocationCallback  start');
-        await getCurrentLocationCallback().then(() => {
-            console.info('getCurrentLocationCallback  resolve');
-        }, () => {
-            console.info('getCurrentLocationCallback  reject');
-        });
-        console.info('getCurrentLocationCallback  end');
+        await geolocation.getCurrentLocation(currentLocationRequest).then((result) => {
+            console.info("getCurrentLocation callback_0003, result:  " + JSON.stringify(result));
+            expect(true).assertEqual(result != null);
+        }).catch(error => {
+            console.info('getCurrentLocation callback_0003:' + JSON.stringify(error));
+            expect(true).assertEqual(JSON.stringify(error) != null);
+        })
         done();
     })
 
     /**
-     * @tc.number SUB_HSS_LocationSystem_SingleLoc_0002
+     * @tc.number SUB_HSS_LocationSystem_SingleLoc_0200
      * @tc.name Test getCurrentLocation
      * @tc.desc Initiate a single location request in a specified scenario and set the navigation scenario..
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_SingleLoc_0002', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_SingleLoc_0200', 0, async function (done) {
         let currentLocationRequest = { "priority": 0x203, "scenario": 0x301, "timeoutMs": 1000, "maxAccuracy": 0 };
         await geolocation.getCurrentLocation(currentLocationRequest).then((result) => {
             console.info('[lbs_js] getCurrentLocation promise result ' + JSON.stringify(result));
@@ -223,14 +225,14 @@ describe('geolocationTest_geo3', function () {
     })
 
     /**
-     * @tc.number SUB_HSS_LocationSystem_SingleLoc_0003
+     * @tc.number SUB_HSS_LocationSystem_SingleLoc_0300
      * @tc.name Test getCurrentLocation
      * @tc.desc Initiate a single location request in a specified scenario and set the track tracing scenario.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_SingleLoc_0003', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_SingleLoc_0300', 0, async function (done) {
         let currentLocationRequest = { "priority": 0x200, "scenario": 0x302, "timeoutMs": 1000, "maxAccuracy": 10 };
         function getCurrentLocationCallback() {
             return new Promise((resolve, reject) => {
@@ -248,24 +250,25 @@ describe('geolocationTest_geo3', function () {
             })
         }
         console.info('getCurrentLocationCallback  start');
-        await getCurrentLocationCallback().then(() => {
-            console.info('getCurrentLocationCallback  resolve');
-        }, () => {
-            console.info('getCurrentLocationCallback  reject');
-        });
-        console.info('getCurrentLocationCallback  end');
+        await geolocation.getCurrentLocation(currentLocationRequest).then((result) => {
+            console.info("getCurrentLocation callback_0003, result:  " + JSON.stringify(result));
+            expect(true).assertEqual(result != null);
+        }).catch(error => {
+            console.info('getCurrentLocation callback_0003:' + JSON.stringify(error));
+            expect(true).assertEqual(JSON.stringify(error) != null);
+        })
         done();
     })
 
     /**
-     * @tc.number SUB_HSS_LocationSystem_SingleLoc_0004
+     * @tc.number SUB_HSS_LocationSystem_SingleLoc_0400
      * @tc.name Test getCurrentLocation
      * @tc.desc Initiate a single location request in a specified scenario and set a car-sharing scenario.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_SingleLoc_0004', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_SingleLoc_0400', 0, async function (done) {
         let currentLocationRequest = { "priority": 0x200, "scenario": 0x303, "timeoutMs": 1000, "maxAccuracy": 10 };
         await geolocation.getCurrentLocation(currentLocationRequest).then((result) => {
             console.info('[lbs_js] getCurrentLocation promise result004 ' + JSON.stringify(result));
@@ -278,14 +281,14 @@ describe('geolocationTest_geo3', function () {
     })
 
     /**
-     * @tc.number SUB_HSS_LocationSystem_SingleLoc_0005
+     * @tc.number SUB_HSS_LocationSystem_SingleLoc_0500
      * @tc.name Test getCurrentLocation
      * @tc.desc Initiate a single location request in a specified scenario and set the life service scenario..
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_SingleLoc_0005', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_SingleLoc_0500', 0, async function (done) {
         let currentLocationRequest = { "priority": 0x200, "scenario": 0x304, "timeoutMs": 1000, "maxAccuracy": 0 };
         await geolocation.getCurrentLocation(currentLocationRequest).then((result) => {
             console.info('[lbs_js] getCurrentLocation promise result005 ' + JSON.stringify(result));
@@ -298,7 +301,7 @@ describe('geolocationTest_geo3', function () {
     })
 
     /**
-     * @tc.number SUB_HSS_LocationSystem_SingleLoc_0006
+     * @tc.number SUB_HSS_LocationSystem_SingleLoc_0600
      * @tc.name Test getCurrentLocation
      * @tc.desc Initiate a single location request in a specified scenario
      *           and set the scenario with no power consumption.
@@ -306,7 +309,7 @@ describe('geolocationTest_geo3', function () {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_SingleLoc_0006', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_SingleLoc_0600', 0, async function (done) {
         let currentLocationRequest1 = { "priority": 0x200, "scenario": 0x305, "timeoutMs": 1000, "maxAccuracy": 10 };
         let currentLocationRequest2 = { "priority": 0x200, "scenario": 0x301, "timeoutMs": 1000, "maxAccuracy": 10 };
         await geolocation.getCurrentLocation(currentLocationRequest1).then((result) => {
@@ -326,14 +329,14 @@ describe('geolocationTest_geo3', function () {
     })
 
     /**
-     * @tc.number SUB_HSS_LocationSystem_SingleLoc_0007
+     * @tc.number SUB_HSS_LocationSystem_SingleLoc_0700
      * @tc.name Test getCurrentLocation
      * @tc.desc Initiate a single location request with the parameter set to high-precision priority location request.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_SingleLoc_0007', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_SingleLoc_0700', 0, async function (done) {
         let currentLocationRequest = { "priority": 0x0201, "scenario": 0x0300, "timeoutMs": 1000, "maxAccuracy": 10 };
         await geolocation.getCurrentLocation(currentLocationRequest).then((result) => {
             console.info('[lbs_js] getCurrentLocation promise result007 ' + JSON.stringify(result));
@@ -346,14 +349,14 @@ describe('geolocationTest_geo3', function () {
     })
 
     /**
-     * @tc.number SUB_HSS_LocationSystem_SingleLoc_0008
+     * @tc.number SUB_HSS_LocationSystem_SingleLoc_0800
      * @tc.name Test getCurrentLocation
      * @tc.desc Initiate a single location request with parameters set to fast location and priority location request.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_SingleLoc_0008', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_SingleLoc_0800', 0, async function (done) {
         let currentLocationRequest = { "priority": 0x0203, "scenario": 0x0300, "timeoutMs": 1000, "maxAccuracy": 10 };
         await geolocation.getCurrentLocation(currentLocationRequest).then((result) => {
             console.info('[lbs_js] getCurrentLocation promise result010 ' + JSON.stringify(result));
@@ -366,14 +369,14 @@ describe('geolocationTest_geo3', function () {
     })
 
     /**
-     * @tc.number SUB_HSS_LocationSystem_SingleLoc_0009
+     * @tc.number SUB_HSS_LocationSystem_SingleLoc_0900
      * @tc.name Test getCurrentLocation
      * @tc.desc Initiate a single location request with parameters set to low power consumption.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_SingleLoc_0009', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_SingleLoc_0900', 0, async function (done) {
         let currentLocationRequest = { "priority": 0x0202, "scenario": 0x0300, "timeoutMs": 1000, "maxAccuracy": 0 };
         await geolocation.getCurrentLocation(currentLocationRequest).then((result) => {
             console.info('[lbs_js] getCurrentLocation promise result009 ' + JSON.stringify(result));
@@ -386,14 +389,14 @@ describe('geolocationTest_geo3', function () {
     })
 
     /**
-     * @tc.number SUB_HSS_LocationSystem_SingleLoc_0010
+     * @tc.number SUB_HSS_LocationSystem_SingleLoc_1000
      * @tc.name Test getCurrentLocation
      * @tc.desc Initiate a single location request and set the location reporting precision.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_SingleLoc_0010', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_SingleLoc_1000', 0, async function (done) {
         let currentLocationRequest = { "priority": 0x0200, "scenario": 0x0300, "timeoutMs": 1000, "maxAccuracy": 5 };
         let currentLocationRequest1 = { "priority": 0x0200, "scenario": 0x0300, "timeoutMs": 1000, "maxAccuracy": 2 };
         await geolocation.getCurrentLocation(currentLocationRequest).then((result) => {
@@ -412,7 +415,7 @@ describe('geolocationTest_geo3', function () {
     })
 
     /**
-     * @tc.number SUB_HSS_LocationSystem_SingleLoc_0011
+     * @tc.number SUB_HSS_LocationSystem_SingleLoc_1100
      * @tc.name Test getCurrentLocation
      * @tc.desc Initiate a single location request for specific configuration
      *          and set the reporting precision of abnormal location.
@@ -420,7 +423,7 @@ describe('geolocationTest_geo3', function () {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_SingleLoc_0011', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_SingleLoc_1100', 0, async function (done) {
         let currentLocationRequest = { "priority": 0x0201, "scenario": 0x0300, "timeoutMs": 1000, "maxAccuracy": 0 };
         let currentLocationRequest1 = { "priority": 0x0201, "scenario": 0x0300, "timeoutMs": 1000, "maxAccuracy": -1 };
         await geolocation.getCurrentLocation(currentLocationRequest).then((result) => {
@@ -440,14 +443,14 @@ describe('geolocationTest_geo3', function () {
     })
 
     /**
-    * @tc.number SUB_HSS_LocationSystem_SingleLoc_0012
+    * @tc.number SUB_HSS_LocationSystem_SingleLoc_1200
     * @tc.name Test getCurrentLocation
     * @tc.desc Initiate a single location request and set the location timeout interval.
     * @tc.size MEDIUM
     * @tc.type Function
     * @tc.level Level 2
     */
-    it('SUB_HSS_LocationSystem_SingleLoc_0012', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_SingleLoc_1200', 0, async function (done) {
         let currentLocationRequest = { "priority": 0x0201, "scenario": 0x0301, "timeoutMs": 1000, "maxAccuracy": 0 };
         let currentLocationRequest1 = { "priority": 0x0201, "scenario": 0x0301, "timeoutMs": 1000, "maxAccuracy": 0 };
         await geolocation.getCurrentLocation(currentLocationRequest).then((result) => {
@@ -467,14 +470,14 @@ describe('geolocationTest_geo3', function () {
     })
 
     /**
-    * @tc.number SUB_HSS_LocationSystem_SingleLoc_0013
+    * @tc.number SUB_HSS_LocationSystem_SingleLoc_1300
     * @tc.name Test getCurrentLocation
     * @tc.desc Initiate a specified single location request and set the exception location timeout interval.
     * @tc.size MEDIUM
     * @tc.type Function
     * @tc.level Level 2
     */
-    it('SUB_HSS_LocationSystem_SingleLoc_0013', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_SingleLoc_1300', 0, async function (done) {
         let currentLocationRequest = { "priority": 0x0201, "scenario": 0x0302, "timeoutMs": 0, "maxAccuracy": 0 };
         let currentLocationRequest1 = { "priority": 0x0201, "scenario": 0x0302, "timeoutMs": -1000, "maxAccuracy": 0 };
         await geolocation.getCurrentLocation(currentLocationRequest).then((result) => {
@@ -496,14 +499,14 @@ describe('geolocationTest_geo3', function () {
 
 
     /**
-     * @tc.number SUB_HSS_SendCommand_callback
+     * @tc.number SUB_HSS_SendCommand_0100
      * @tc.name Test sendCommand
      * @tc.desc Test sendCommand api .
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_SendCommand_callback', 0, async function (done) {
+    it('SUB_HSS_SendCommand_0100', 0, async function (done) {
         let requestInfo = { 'scenairo': 0x301, 'command': "command_1" };
         await geolocation.sendCommand(requestInfo, (err, result) => {
             if (err) {
@@ -516,14 +519,14 @@ describe('geolocationTest_geo3', function () {
     })
 
     /**
-     * @tc.number SUB_HSS_SendCommand_promise
+     * @tc.number SUB_HSS_SendCommand_0200
      * @tc.name Test sendCommand
      * @tc.desc Test sendCommand1 api .
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_SendCommand_promise', 0, async function (done) {
+    it('SUB_HSS_SendCommand_0200', 0, async function (done) {
         let requestInfo = { 'scenairo': 0x301, 'command': "command_1" };
         geolocation.sendCommand(requestInfo).then((result) => {
             console.info('sendCommand promise result:' + result);
@@ -536,14 +539,14 @@ describe('geolocationTest_geo3', function () {
     })
 
     /**
-     * @tc.number SUB_HSS_LocationSystem_LocRequest_0001
+     * @tc.number SUB_HSS_LocationSystem_LocRequest_0100
      * @tc.name Test locationChange
      * @tc.desc Initiate a request for continuous positioning in a specified scenario and set the navigation scenario.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_LocRequest_0001', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_LocRequest_0100', 0, async function (done) {
         enableLocationSwitch();
         let requestInfo = {"priority":0x200, "scenario":0x301, "timeInterval":5,
             "distanceInterval": 0, "maxAccuracy": 0};
@@ -557,14 +560,14 @@ describe('geolocationTest_geo3', function () {
     })
 
     /**
-     * @tc.number SUB_HSS_LocationSystem_LocRequest_0002
+     * @tc.number SUB_HSS_LocationSystem_LocRequest_0200
      * @tc.name Test locationChange
      * @tc.desc Initiate a request for continuous positioning in a specified scenario and set a track tracing scenario.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_LocRequest_0002', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_LocRequest_0200', 0, async function (done) {
         enableLocationSwitch();
         let requestInfo = {"priority":0x200, "scenario":0x302, "timeInterval":1,
             "distanceInterval": 5, "maxAccuracy": 10};
@@ -578,14 +581,14 @@ describe('geolocationTest_geo3', function () {
     })
 
     /**
-     * @tc.number SUB_HSS_LocationSystem_LocRequest_0003
+     * @tc.number SUB_HSS_LocationSystem_LocRequest_0300
      * @tc.name Test locationChange
      * @tc.desc Initiate a continuous location request in a specified scenario and set a car-sharing scenario.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_LocRequest_0003', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_LocRequest_0300', 0, async function (done) {
         enableLocationSwitch();
         let requestInfo = {"priority":0x200, "scenario":0x303, "timeInterval":5,
             "distanceInterval": 5, "maxAccuracy": 10};
@@ -599,14 +602,14 @@ describe('geolocationTest_geo3', function () {
     })
 
     /**
-     * @tc.number SUB_HSS_LocationSystem_LocRequest_0004
+     * @tc.number SUB_HSS_LocationSystem_LocRequest_0400
      * @tc.name Test locationChange
      * @tc.desc Initiate a continuous location request in a specified scenario and set a life service scenario.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_LocRequest_0004', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_LocRequest_0400', 0, async function (done) {
         enableLocationSwitch();
         let requestInfo = {"priority":0x200, "scenario":0x303, "timeInterval":1,
             "distanceInterval": 5, "maxAccuracy": 0};
@@ -620,7 +623,7 @@ describe('geolocationTest_geo3', function () {
     })
 
     /**
-     * @tc.number SUB_HSS_LocationSystem_LocRequest_0005
+     * @tc.number SUB_HSS_LocationSystem_LocRequest_0500
      * @tc.name Test locationChange
      * @tc.desc Initiate a continuous location request in a specified scenario
      *          and set the scenario with no power consumption.
@@ -628,7 +631,7 @@ describe('geolocationTest_geo3', function () {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_LocRequest_0005', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_LocRequest_0500', 0, async function (done) {
         enableLocationSwitch();
         let requestInfo = {"priority":0x200, "scenario":0x305, "timeInterval":1,
             "distanceInterval": 5, "maxAccuracy": 10};
@@ -648,7 +651,7 @@ describe('geolocationTest_geo3', function () {
     })
 
     /**
-     * @tc.number SUB_HSS_LocationSystem_LocRequest_0007
+     * @tc.number SUB_HSS_LocationSystem_LocRequest_0700
      * @tc.name Test locationChange
      * @tc.desc Initiate a specified continuous positioning request and
      *          set the parameter to high-precision priority positioning request.
@@ -656,7 +659,7 @@ describe('geolocationTest_geo3', function () {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_LocRequest_0007', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_LocRequest_0700', 0, async function (done) {
         enableLocationSwitch();
         let requestInfo = {"priority":0x201, "scenario":0x300, "timeInterval":1,
             "distanceInterval": 5, "maxAccuracy": 10};
@@ -670,7 +673,7 @@ describe('geolocationTest_geo3', function () {
     })
 
     /**
-     * @tc.number SUB_HSS_LocationSystem_LocRequest_0008
+     * @tc.number SUB_HSS_LocationSystem_LocRequest_0800
      * @tc.name Test locationChange
      * @tc.desc Initiate a specified continuous positioning request with the parameter
      *          set to fast positioning and priority positioning request.
@@ -678,7 +681,7 @@ describe('geolocationTest_geo3', function () {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_LocRequest_0008', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_LocRequest_0800', 0, async function (done) {
         enableLocationSwitch();
         let requestInfo = {"priority":0x203, "scenario":0x300, "timeInterval":5,
             "distanceInterval": 5, "maxAccuracy": 10};
@@ -692,7 +695,7 @@ describe('geolocationTest_geo3', function () {
     })
 
     /**
-     * @tc.number SUB_HSS_LocationSystem_LocRequest_0009
+     * @tc.number SUB_HSS_LocationSystem_LocRequest_0900
      * @tc.name Test locationChange
      * @tc.desc Initiate a specified continuous positioning request with the parameter
      *          set to low power consumption type.
@@ -700,7 +703,7 @@ describe('geolocationTest_geo3', function () {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_LocRequest_0009', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_LocRequest_0900', 0, async function (done) {
         enableLocationSwitch();
         let requestInfo = {"priority":0x202, "scenario":0x300, "timeInterval":1,
             "distanceInterval": 5, "maxAccuracy": 10}
@@ -714,14 +717,14 @@ describe('geolocationTest_geo3', function () {
     })
 
     /**
-     * @tc.number SUB_HSS_LocationSystem_LocRequest_0010
+     * @tc.number SUB_HSS_LocationSystem_LocRequest_1000
      * @tc.name Test locationChange
      * @tc.desc Initiate a specified continuous location request and set the reporting interval.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_LocRequest_0010', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_LocRequest_1000', 0, async function (done) {
         enableLocationSwitch();
         let requestInfo = {"priority":0x200, "scenario":0x301, "timeInterval":3,
             "distanceInterval": 0, "maxAccuracy": 0};
@@ -735,14 +738,14 @@ describe('geolocationTest_geo3', function () {
     })
 
     /**
-     * @tc.number SUB_HSS_LocationSystem_LocRequest_0011
+     * @tc.number SUB_HSS_LocationSystem_LocRequest_1100
      * @tc.name Test locationChange
      * @tc.desc Initiate a specified continuous location request and set the location reporting interval.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_LocRequest_0011', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_LocRequest_1100', 0, async function (done) {
         enableLocationSwitch();
         let requestInfo = {"priority":0x200, "scenario":0x301, "timeInterval":5,
             "distanceInterval": 0, "maxAccuracy": 0};
@@ -756,14 +759,14 @@ describe('geolocationTest_geo3', function () {
     })
 
     /**
-    * @tc.number SUB_HSS_LocationSystem_LocRequest_0012
+    * @tc.number SUB_HSS_LocationSystem_LocRequest_1200
     * @tc.name Test locationChange
     * @tc.desc Initiate a specified continuous location request and set the interval for reporting exceptions.
     * @tc.size MEDIUM
     * @tc.type Function
     * @tc.level Level 2
     */
-    it('SUB_HSS_LocationSystem_LocRequest_0012', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_LocRequest_1200', 0, async function (done) {
         enableLocationSwitch();
         let requestInfo = {"priority":0x200, "scenario":0x301, "timeInterval":0,
             "distanceInterval": 0, "maxAccuracy": 0};
@@ -777,14 +780,14 @@ describe('geolocationTest_geo3', function () {
     })
 
     /**
-    * @tc.number SUB_HSS_LocationSystem_LocRequest_0013
+    * @tc.number SUB_HSS_LocationSystem_LocRequest_1300
     * @tc.name Test locationChange
     * @tc.desc Initiate a specified continuous location request and set the interval for reporting abnormal locations.
     * @tc.size MEDIUM
     * @tc.type Function
     * @tc.level Level 2
     */
-    it('SUB_HSS_LocationSystem_LocRequest_0013', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_LocRequest_1300', 0, async function (done) {
         enableLocationSwitch();
         let requestInfo1 = {"priority":0x200, "scenario":0x301, "timeInterval":0,
             "distanceInterval": 0, "maxAccuracy": 0};
@@ -806,14 +809,14 @@ describe('geolocationTest_geo3', function () {
     })
 
     /**
-    * @tc.number SUB_HSS_LocationSystem_LocRequest_0014
+    * @tc.number SUB_HSS_LocationSystem_LocRequest_1400
     * @tc.name Test locationChange
     * @tc.desc Initiate a specified continuous positioning request and set the positioning reporting precision.
     * @tc.size MEDIUM
     * @tc.type Function
     * @tc.level Level 2
     */
-    it('SUB_HSS_LocationSystem_LocRequest_0014', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_LocRequest_1400', 0, async function (done) {
         enableLocationSwitch();
         let requestInfo1 = {"priority":0x200, "scenario":0x301, "timeInterval":0,
             "distanceInterval": 0, "maxAccuracy": 5};
@@ -835,14 +838,14 @@ describe('geolocationTest_geo3', function () {
     })
 
     /**
-    * @tc.number SUB_HSS_LocationSystem_LocRequest_0015
+    * @tc.number SUB_HSS_LocationSystem_LocRequest_1500
     * @tc.name Test locationChange
     * @tc.desc Initiate a specified continuous location request and set the reporting precision of abnormal location.
     * @tc.size MEDIUM
     * @tc.type Function
     * @tc.level Level 2
     */
-    it('SUB_HSS_LocationSystem_LocRequest_0015', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_LocRequest_1500', 0, async function (done) {
         enableLocationSwitch();
         let requestInfo1 = {"priority":0x200, "scenario":0x301, "timeInterval":0,
             "distanceInterval": 0, "maxAccuracy": 0};
@@ -864,14 +867,14 @@ describe('geolocationTest_geo3', function () {
     })
 
     /**
-     * @tc.number SUB_HSS_LocationSystem_LastLoc_0001
+     * @tc.number SUB_HSS_LocationSystem_LastLoc_0100
      * @tc.name Test getLastLocation
      * @tc.desc Obtain the last location after a single location.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_LastLoc_0001', 0, async function(done) {
+    it('SUB_HSS_LocationSystem_LastLoc_0100', 0, async function(done) {
         enableLocationSwitch();
         let requestInfo = {"priority":0x200, "scenario":0x301, "timeInterval":0,
             "distanceInterval": 0, "maxAccuracy": 0};
@@ -888,7 +891,8 @@ describe('geolocationTest_geo3', function () {
             ' longitude: ' + result.longitude +' altitude: ' + result.altitude
             +' accuracy: ' + result.accuracy+' speed: ' + result.speed +
             'timeStamp: ' + result.timeStamp+'direction:' + result.direction+' timeSinceBoot: '
-            + result.timeSinceBoot +'additions: ' + result.additions+' additionSize' + result.additionSize);
+            + result.timeSinceBoot +'additions: ' + result.additions+' additionSize' + result.additionSize
+            + 'isFromMock' +result.isFromMock);
         }).catch((error) => {
             console.info("[lbs_js] getLastLocation promise then error:" + JSON.stringify(error));
             console.info('[lbs_js] not support now');
@@ -898,14 +902,14 @@ describe('geolocationTest_geo3', function () {
     })
 
     /**
-     * @tc.number SUB_HSS_LocationSystem_LastLoc_0002
+     * @tc.number SUB_HSS_LocationSystem_LastLoc_0200
      * @tc.name Test getLastLocation
      * @tc.desc Obtain the last location after continuous positioning.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_LastLoc_0002', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_LastLoc_0200', 0, async function (done) {
         enableLocationSwitch();
         let requestInfo = {"priority":0x200, "scenario":0x301, "timeInterval":0,
             "distanceInterval": 0, "maxAccuracy": 0};
@@ -915,27 +919,34 @@ describe('geolocationTest_geo3', function () {
         };
         geolocation.on('locationChange', requestInfo, locationChange);
         geolocation.off('locationChange', locationChange);
-        geolocation.getLastLocation(async (err, data) => {
-            if (err) {
-                console.info('[LastLoc_0002]  getLastLocation callback err is : ' + JSON.stringify(err));
-            } else {
-                console.info('[LastLoc_0002] getLastLocation callback result: ' + JSON.stringify(data));
-                expect(data).assertTrue();
-            }
-            done()
-        })
+
+        function getLastLocationCallback(){
+            return new Promise((resolve, reject)=>{
+                geolocation.getLastLocation((err, data) => {
+                    if (err) {
+                        console.info('[LastLoc_0002]  getLastLocation callback err is : ' + JSON.stringify(err));
+                        expect(true).assertEqual(err !=null);
+                    } else {
+                        console.info('[LastLoc_0002] getLastLocation callback result: ' + JSON.stringify(data));
+                        expect(true).assertEqual(data !=null);
+                    }
+                    resolve();
+                });
+            })
+        }
+        await getLastLocationCallback();
         done();
     })
 
     /**
-     * @tc.number SUB_HSS_LocationSystem_Gnss_0001
+     * @tc.number SUB_HSS_LocationSystem_Gnss_0100
      * @tc.name Test gnssStatusChange
      * @tc.desc Monitoring Satellite Information Reporting
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_Gnss_0001', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_Gnss_0100', 0, async function (done) {
         await changedLocationMode();
         var gnssStatusCb = (satelliteStatusInfo) => {
             console.info('gnssStatusChange: ' + satelliteStatusInfo);
@@ -960,14 +971,14 @@ describe('geolocationTest_geo3', function () {
     })
 
     /**
-     * @tc.number SUB_HSS_LocationSystem_Gnss_0002
+     * @tc.number SUB_HSS_LocationSystem_Gnss_0200
      * @tc.name Test nmeaMessageChange
      * @tc.desc Monitoring NMEA Information Reporting
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_Gnss_0002', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_Gnss_0200', 0, async function (done) {
         await changedLocationMode();
         let requestInfo = {"priority":0x200, "scenario":0x301, "timeInterval":0,
             "distanceInterval": 0, "maxAccuracy": 0};
@@ -986,14 +997,14 @@ describe('geolocationTest_geo3', function () {
     })
 
     /**
-     * @tc.number SUB_HSS_LocationSystem_Batching_0001
+     * @tc.number SUB_HSS_LocationSystem_Batching_0100
      * @tc.name Test cachedGnssLocationsReporting
      * @tc.desc Setting the Gnss Batching Reporting Interval
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_Batching_0001', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_Batching_0100', 0, async function (done) {
         var cachedLocationsCb1 = (locations) => {
             console.log('cachedGnssLocationsReporting: locations: ' + JSON.stringify(locations));
             expect(true).assertEqual(locations !=null);
@@ -1012,14 +1023,14 @@ describe('geolocationTest_geo3', function () {
     })
 
     /**
-     * @tc.number SUB_HSS_LocationSystem_Batching_0002
+     * @tc.number SUB_HSS_LocationSystem_Batching_0200
      * @tc.name Test cachedGnssLocationsReporting
      * @tc.desc Setting the Gnss Batching Cache Queue to Be Reported When the Gnss Batching Cache Queue Is Full
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_Batching_0002', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_Batching_0200', 0, async function (done) {
         var cachedLocationsCb = (locations) => {
             console.log('cachedGnssLocationsReporting: locations: ' + JSON.stringify(locations));
             expect(true).assertEqual(locations !=null);
@@ -1033,14 +1044,14 @@ describe('geolocationTest_geo3', function () {
     })
 
     /**
-     * @tc.number SUB_HSS_LocationSystem_Batching_0003
+     * @tc.number SUB_HSS_LocationSystem_Batching_0300
      * @tc.name Test getCachedGnssLocationsSize
      * @tc.desc Obtains the number of GNSS data records in the batching process.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_Batching_0003', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_Batching_0300', 0, async function (done) {
         var cachedLocationsCb = (locations) => {
             console.log('cachedGnssLocationsReporting: locations: ' + JSON.stringify(locations));
             expect(true).assertEqual(locations !=null);
@@ -1050,29 +1061,33 @@ describe('geolocationTest_geo3', function () {
             "distanceInterval": 0, "maxAccuracy": 0};
         geolocation.on('cachedGnssLocationsReporting', CachedGnssLoactionsRequest, cachedLocationsCb);
         geolocation.off('cachedGnssLocationsReporting',cachedLocationsCb);
-        geolocation.getCachedGnssLocationsSize((err, data) => {
-            if (err) {
-                console.info('[lbs_js]  getCachedGnssLocationsSize callback err is : ' + err);
-                expect(true).assertTrue(err != null);
-                done();
-            }else {
-                console.info("[lbs_js] getCachedGnssLocationsSize callback data is: " + JSON.stringify(data));
-                expect(true).assertTrue(data != null);
-                done()
-            }
-        });
+        function getCachedGnssLocationsSizeCallback(){
+            return new Promise((resolve, reject)=>{
+                geolocation.getCachedGnssLocationsSize((err, data) => {
+                    if (err) {
+                        console.info('[lbs_js]  getCachedGnssLocationsSize callback err is : ' + JSON.stringify(err));
+                        expect(true).assertTrue(err != null);
+                    }else {
+                        console.info("[lbs_js] getCachedGnssLocationsSize callback data is: " + JSON.stringify(data));
+                        expect(true).assertTrue(data != null);
+                    }
+                    resolve();
+                });
+            })
+        }
+        await getCachedGnssLocationsSizeCallback();
         done();
     })
 
     /**
-     * @tc.number SUB_HSS_LocationSystem_Batching_0004
+     * @tc.number SUB_HSS_LocationSystem_Batching_0400
      * @tc.name Test getCachedGnssLocationsSize
      * @tc.desc Obtains the number of GNSS data records in the batching process.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_Batching_0004', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_Batching_0400', 0, async function (done) {
         var cachedLocationsCb = (locations) => {
             console.log('cachedGnssLocationsReporting: locations: ' + JSON.stringify(locations));
             expect(true).assertEqual(locations !=null);
@@ -1094,14 +1109,14 @@ describe('geolocationTest_geo3', function () {
     })
 
     /**
-     * @tc.number SUB_HSS_LocationSystem_Batching_0005
+     * @tc.number SUB_HSS_LocationSystem_Batching_0500
      * @tc.name Test flushCachedGnssLocations
      * @tc.desc Obtains the GNSS data of the current batching.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_Batching_0005', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_Batching_0500', 0, async function (done) {
         var cachedLocationsCb = (locations) => {
             console.log('cachedGnssLocationsReporting: locations: ' + JSON.stringify(locations));
             expect(true).assertEqual(locations !=null);
@@ -1111,29 +1126,33 @@ describe('geolocationTest_geo3', function () {
             "distanceInterval": 0, "maxAccuracy": 0};
         geolocation.on('cachedGnssLocationsReporting', CachedGnssLoactionsRequest, cachedLocationsCb);
         geolocation.off('cachedGnssLocationsReporting',cachedLocationsCb);
-        geolocation.flushCachedGnssLocations((err, data) => {
-            if (err) {
-                console.info('[lbs_js]  flushCachedGnssLocations callback err is : ' + err);
-                expect(true).assertTrue(err != null);
-                done();
-            }else {
-                console.info("[lbs_js] flushCachedGnssLocations callback data is: " + JSON.stringify(data));
-                expect(true).assertTrue(data);
-                done();
-            }
-        });
+        function flushCachedGnssLocationsCallback(){
+            return new Promise((resolve, reject)=>{
+                geolocation.flushCachedGnssLocations((err, data) => {
+                    if (err) {
+                        console.info('[lbs_js]  flushCachedGnssLocations callback err is : ' + JSON.stringify(err));
+                        expect(true).assertTrue(err != null);
+                    }else {
+                        console.info("[lbs_js] flushCachedGnssLocations callback data is: " + JSON.stringify(data));
+                        expect(true).assertTrue(data);
+                    }
+                    resolve();
+                });
+            })
+        }
+        await flushCachedGnssLocationsCallback();
         done();
     })
 
     /**
-     * @tc.number SUB_HSS_LocationSystem_Batching_0006
+     * @tc.number SUB_HSS_LocationSystem_Batching_0600
      * @tc.name Test flushCachedGnssLocations
      * @tc.desc Obtain the GNSS data of the current batching.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_HSS_LocationSystem_Batching_0006', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_Batching_0600', 0, async function (done) {
         var cachedLocationsCb = (locations) => {
             console.log('cachedGnssLocationsReporting: locations: ' + JSON.stringify(locations));
             expect(true).assertEqual(locations !=null);
@@ -1156,14 +1175,14 @@ describe('geolocationTest_geo3', function () {
     })
 
     /**
-    * @tc.number SUB_HSS_LocationSystem_GeoFence_0001
+    * @tc.number SUB_HSS_LocationSystem_GeoFence_0100
     * @tc.name Test fenceStatusChange
     * @tc.desc Gnss fence function test
     * @tc.size MEDIUM
     * @tc.type Function
     * @tc.level Level 1
     */
-    it('SUB_HSS_LocationSystem_GeoFence_0001', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_GeoFence_0100', 0, async function (done) {
         await changedLocationMode();
         let geofence = {"latitude": 31.12, "longitude": 121.11, "radius": 1,"expiration": ""};
         let geofenceRequest = {"priority":0x200, "scenario":0x301, "geofence": geofence};
@@ -1193,14 +1212,14 @@ describe('geolocationTest_geo3', function () {
     })
 
     /**
-     * @tc.number SUB_HSS_LocationSystem_GeoFence_0005
+     * @tc.number SUB_HSS_LocationSystem_GeoFence_0500
      * @tc.name Test fenceStatusChange
      * @tc.desc Test the function of locating the validity period of the fence.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 1
      */
-    it('SUB_HSS_LocationSystem_GeoFence_0005', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_GeoFence_0500', 0, async function (done) {
         await changedLocationMode();
         let geofence = {"latitude": 31.12, "longitude": 121.11, "radius": 1,"expiration": ""};
         let geofenceRequest = {"priority":0x203, "scenario":0x301, "geofence": geofence};

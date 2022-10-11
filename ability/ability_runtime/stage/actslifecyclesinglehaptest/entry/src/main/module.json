@@ -6,6 +6,7 @@
         "description": "$string:phone_entry_dsc",
         "mainElement": "MainAbility",
         "deviceTypes": [
+      "default",
             "phone",
             "tablet"
         ],
@@ -132,6 +133,16 @@
             "description": "$string:MainAbility12_desc",
             "icon": "$media:icon",
             "label": "$string:MainAbility12_label"
-          }]
+          }],
+      "requestPermissions": [
+        {
+          "name":"ohos.permission.START_ABILITIES_FROM_BACKGROUND",
+          "reason":"need use ohos.permission.START_ABILITIES_FROM_BACKGROUND"
+        },
+        {
+          "name":"ohos.permission.START_INVISIBLE_ABILITY",
+          "reason":"need use ohos.permission.START_INVISIBLE_ABILITY"
+        }
+      ]
     }
 }

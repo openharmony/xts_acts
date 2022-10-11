@@ -6,6 +6,7 @@
       "description": "$string:phone_entry_dsc",
       "mainElement": "MainAbility",
       "deviceTypes": [
+        "default",
         "phone"
       ],
       "deliveryWithInstall": true,
@@ -33,6 +34,39 @@
               ]
             }
           ]
+        },
+        {
+          "name": "SecondAbility",
+          "srcEntrance": "./ets/SecondAbility/SecondAbility.ts",
+          "description": "$string:phone_entry_main",
+          "icon": "$media:icon",
+          "label": "$string:entry_label",
+          "startWindowIcon": "$media:icon",
+          "startWindowBackground": "$color:white",
+          "visible": true,
+          "launchType": "singleton"
+        },
+        {
+          "name": "CreateFormAbility",
+          "srcEntrance": "./ets/CreateFormAbility/CreateFormAbility.ts",
+          "description": "$string:phone_entry_main",
+          "icon": "$media:icon",
+          "label": "$string:entry_label",
+          "startWindowIcon": "$media:icon",
+          "startWindowBackground": "$color:white",
+          "visible": true,
+          "launchType": "singleton"
+        },
+        {
+          "name": "FormHostAbility",
+          "srcEntrance": "./ets/FormHostAbility/FormHostAbility.ts",
+          "description": "$string:phone_entry_main",
+          "icon": "$media:icon",
+          "label": "$string:entry_label",
+          "startWindowIcon": "$media:icon",
+          "startWindowBackground": "$color:white",
+          "visible": true,
+          "launchType": "singleton"
         }
       ],
       "extensionAbilities": [
@@ -48,6 +82,31 @@
               "resource": "$profile:form_config"
             }
           ]
+        },
+        {
+          "name": "ServiceAbility",
+          "srcEntrance": "./ets/ServiceAbility/ServiceAbility.ts",
+          "label": "$string:MainAbility_label",
+          "description": "$string:MainAbility_desc",
+          "type": "service",
+          "visible": true
+        }
+      ],
+      "requestPermissions":[
+        {
+          "name":"ohos.permission.GET_RUNNING_INFO"
+        },
+        {
+          "name":"ohos.permission.REQUIRE_FORM"
+        },
+        {
+          "name":"ohos.permission.GET_BUNDLE_INFO_PRIVILEGED"
+        },
+        {
+          "name":"ohos.permission.START_ABILITIES_FROM_BACKGROUND"
+        },
+        {
+          "name":"ohos.permission.START_INVISIBLE_ABILITY"
         }
       ]
     }

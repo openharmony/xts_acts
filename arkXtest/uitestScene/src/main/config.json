@@ -19,6 +19,7 @@
     "mainAbility": ".MainAbility",
     "srcPath": "MainAbility",
     "deviceType": [
+      "default",
       "phone"
     ],
     "distro": {
@@ -49,7 +50,7 @@
         "formsEnabled": false,
         "label": "$string:entry_MainAbility",
         "type": "page",
-        "launchType": "standard"
+        "launchType": "singleton"
       }
     ],
     "js": [
@@ -63,7 +64,8 @@
           "pages/second",
           "pages/third",
           "pages/fourth",
-          "pages/screen"
+          "pages/screen",
+          "pages/drag"
         ],
         "name": ".MainAbility",
         "window": {

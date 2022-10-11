@@ -11,7 +11,6 @@
     "kits": [
         {
             "test-file-name": [
-                "aceTest.hap",
                 "ActsAccessibilityExtensionContextTest.hap"
             ],
             "type": "AppInstallKit",
@@ -19,9 +18,8 @@
         },
         {
             "type": "ShellKit",
-            "teardown-command":[
-                "bm uninstall -n com.example.accessibilityxts",
-                "bm uninstall -n com.example.acetest"
+            "run-command": [
+                "param set persist.ace.testmode.enabled 1"
             ]
         }
     ]

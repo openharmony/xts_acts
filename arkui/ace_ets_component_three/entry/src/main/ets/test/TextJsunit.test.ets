@@ -270,7 +270,7 @@ export default function textJsunit() {
       let strJsonNew = getInspectorByKey('text');
       let objNew = JSON.parse(strJsonNew);
       console.info("testText_1200 component objNew is: " + JSON.stringify(objNew.$attrs.fontColor));
-      expect(objNew.$attrs.fontColor).assertEqual('#00BC0229');
+      expect(objNew.$attrs.fontColor).assertEqual('#FFBC0229');
       console.info('testText_1200 END');
       done();
     });

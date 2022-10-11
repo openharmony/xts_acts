@@ -6,6 +6,7 @@
     "description": "$string:entry_test_desc",
     "mainElement": "MainAbility",
     "deviceTypes": [
+      "default",
       "phone",
       "tablet"
     ],
@@ -21,6 +22,7 @@
         "icon": "$media:icon",
         "label": "$string:MainAbility_label",
         "visible": true,
+        "launchType": "singleton",
         "skills": [
           {
             "entities": [

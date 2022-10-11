@@ -74,6 +74,18 @@ export default function StartAbilityForResult() {
                     console.info("executeShellCommand4: err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
                 })
                 await Utils.sleep(500);
+                var str = {
+                'want': {
+                    "bundleName": "com.open.harmony.startAbilityForResult",
+                    "abilityName": "com.open.harmony.startAbilityForResult.MainAbility",
+                   } 
+                }
+                await featureAbility.startAbility(str).then((data) => {
+                    console.info(' StartAbilityPromise successful. Data: ' + JSON.stringify(data))
+                }).catch((error) => {
+                    console.info(' StartAbilityPromise failed. Cause: ' + JSON.stringify(error));
+                })
+                 await Utils.sleep(500);
             }
 
             if ("FreeInstall_FA_StartAbilityForResult_3200" === TAG) {

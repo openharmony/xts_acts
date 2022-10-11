@@ -21,6 +21,7 @@ struct GlobalExample {
   private settings: RenderingContextSettings = new RenderingContextSettings (true)
   private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
   private offContext: OffscreenCanvasRenderingContext2D  = new OffscreenCanvasRenderingContext2D(300, 300, this.settings);
+  private img: ImageBitmap = new ImageBitmap("/images/bg.jpg")
   
   onPageShow() {
     console.info("global page called")
@@ -35,50 +36,33 @@ struct GlobalExample {
       Canvas(this.context)
         .width('100%').height('40%').backgroundColor('#00ffff')
         .onReady(() => {
-          this.context.imageSmoothingEnabled = false
+          this.offContext.imageSmoothingEnabled = false
           this.testImageBitmapSize();
           this.testOffscreenCanvas();
           this.testImageData();
-          this.testImage();
         })
     }.width('100%').height('100%')
   }
 
   testImageBitmapSize() {
-    let img = new ImageBitmap("/images/bg.jpg");
-    let width = img.width;
-    let height = img.height;
-    this.context.imageSmoothingEnabled = false;
-    this.context.drawImage(img, 30, 950, 160, 100);
+    let width = this.img.width;
+    let height = this.img.height;
+    this.offContext.imageSmoothingEnabled = false;
+    this.offContext.drawImage(this.img, 30, 950, 160, 100);
     console.log("imagebitmap_width=" + width);
     console.log("imagebitmap_height=" + height);
   }
 
   testOffscreenCanvas() {
-    var offCanvas2 = this.offContext.getContext("2d");
-    var img = new Image();
-    img.src = "/images/bg.jpg";
-    offCanvas2.drawImage(img, 0, 0, 100, 100);
-
-    var bitmap = offscreen.transferToImageBitmap();
-    this.ctx.transferFromImageBitmap(bitmap);
+    this.offContext.drawImage(this.img, 0, 0, 100, 100);
+    var bitmap = this.offContext.transferToImageBitmap();
+    this.context.transferFromImageBitmap(bitmap);
   }
 
   testImageData() {
-    var offCanvas2 = this.offContext.getContext("2d");
-    var imageData = offCanvas2.createImageData(100, 100);
+    var imageData = this.offContext.createImageData(100, 100);
     var imgData = imageData.data;
     console.log("imageData_width=" + imageData.width);
     console.log("imageData_height=" + imageData.height);
-  }
-
-  testImage() {
-    var img = new Image("/images/bg.jpg", 100, 100)
-      .onload(() => {
-      })
-      .onerror(() => {
-      });
-    console.log("img_width=" + img.width);
-    console.log("img_height=" + img.height);
   }
 }

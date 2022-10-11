@@ -19,6 +19,7 @@
   "module": {
     "mainAbility": ".MainAbility",
     "deviceType": [
+      "default",
       "phone",
       "tablet"
     ],
@@ -44,7 +45,7 @@
         "formsEnabled": false,
         "label": "$string:MainAbility_label",
         "type": "page",
-        "launchType": "standard"
+        "launchType": "singleton"
       },
       {
         "orientation": "unspecified",

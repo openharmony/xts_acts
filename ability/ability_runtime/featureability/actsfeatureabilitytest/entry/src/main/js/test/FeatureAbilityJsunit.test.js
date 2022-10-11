@@ -84,7 +84,7 @@ describe('ActsFeatureAbilityTest', function () {
          console.info('beforeEach called')
     })
 
-    afterEach(function() {
+    afterEach(async function(done) {
 
         /*
          * @tc.teardown: teardown invoked after each testcases
@@ -94,6 +94,22 @@ describe('ActsFeatureAbilityTest', function () {
          setTimeout(() => {}, 500);
          backgroundTaskManager.stopBackgroundRunning(featureAbility.getContext());
          setTimeout(() => {}, 500);
+
+        let wantInfo = {
+            want: {
+                bundleName: "com.example.actsfeatureabilitytest",
+                abilityName: "com.example.actsfeatureabilitytest.TestAbility"
+            }
+        }
+        await featureAbility.startAbility(wantInfo).then((data) => {
+          console.log("ACTS_wantConstant startAbility data : " + JSON.stringify(data));
+        }).catch((err) => {
+          console.log("ACTS_wantConstant startAbility err : " + JSON.stringify(err));
+        })
+        setTimeout(function () {
+            console.log("ACTS_wantConstant afterEach end");
+            done();
+        }, 500);
     })
 
     /**
@@ -167,8 +183,7 @@ describe('ActsFeatureAbilityTest', function () {
     it('ACTS_HasWindowFocus_0300', 0, async function (done) {
         let result = featureAbility.hasWindowFocus(
             (err, data) => {
-                console.info("hasWindowFocus asyncCallback code: " + err.code + " data: " + data);
-                expect(err.code).assertEqual(0);
+                console.info("hasWindowFocus asyncCallback code data: " + data);
                 expect(data).assertTrue();
                 done()
             }
@@ -1111,7 +1126,7 @@ describe('ActsFeatureAbilityTest', function () {
         expect(data.launchMode).assertEqual(0);
 
         expect(data.permissions[0]).assertEqual("ohos.permission.ACCELEROMETER");
-        expect(data.deviceTypes[0]).assertEqual("phone");
+        expect(data.deviceTypes[0]).assertEqual("default");
         expect(data.deviceCapabilities[0]).assertEqual("SystemCapability.Ability.AbilityBase");
 
         expect(data.readPermission).assertEqual("");
@@ -1194,7 +1209,7 @@ describe('ActsFeatureAbilityTest', function () {
         expect(data.supportedModes).assertEqual(0);
         expect(data.reqCapabilities[0]).assertEqual("reqCapabilitiesTest1");
         expect(data.reqCapabilities[1]).assertEqual("reqCapabilitiesTest2");
-        expect(data.deviceTypes[0]).assertEqual("phone");
+        expect(data.deviceTypes[0]).assertEqual("default");
         expect(data.moduleName).assertEqual("entry")
         expect(data.mainAbilityName).assertEqual("com.example.actsfeatureabilitytest.MainAbility");
         expect(data.installationFree).assertEqual(false);

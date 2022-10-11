@@ -26,13 +26,14 @@ import {
     checkAssetsCount,
     fetchOps,
     isNum,
+    fileIdFetchOps,
 } from '../../../../../../common';
 export default function fileAssetTestCallbackTest(abilityContext) {
     describe('fileAssetTestCallbackTest', function () {
         const media = mediaLibrary.getMediaLibrary(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
-            await checkPresetsAssets(media, 'ActsMediaLibraryFileAsset')
+            await checkPresetsAssets(media, 'ActsMediaLibraryFileAssetTest')
         });
         beforeEach(function () {
             console.info('beforeEach case');
@@ -76,6 +77,12 @@ export default function fileAssetTestCallbackTest(abilityContext) {
                     console.info(`fd1:${fd1},fd:${fd}`)
                     await asset.close(fd);
                     await asset1.close(fd1);
+                    await sleep(50);
+                    let newFetchFileResult = await media.getFileAssets(fileIdFetchOps(testNum, asset.id));
+                    let checkAssetCountPass = await checkAssetsCount(done, testNum, newFetchFileResult, 1);
+                    if (!checkAssetCountPass) return;
+                    let newAsset = await newFetchFileResult.getFirstObject();
+                    expect(newAsset.dateModified != asset.dateModified).assertTrue();
                     done();
                 });
 

@@ -6,6 +6,7 @@
     "description": "$string:entry_desc",
     "mainElement": "MainAbility",
     "deviceTypes": [
+      "default",
       "phone"
     ],
     "deliveryWithInstall": true,
@@ -60,6 +61,12 @@
         "description": "$string:MainAbility5_desc",
         "icon": "$media:icon",
         "label": "$string:MainAbility5_label"
+      }
+    ],
+    "requestPermissions": [
+      {
+        "name":"ohos.permission.START_ABILITIES_FROM_BACKGROUND",
+        "reason":"need use ohos.permission.START_ABILITIES_FROM_BACKGROUND"
       }
     ]
   }

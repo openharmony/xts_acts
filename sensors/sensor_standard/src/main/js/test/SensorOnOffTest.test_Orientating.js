@@ -23,6 +23,7 @@ describe("SensorJsTest_sensor_16", function () {
         expect(typeof(data.beta)).assertEqual("number");
         expect(typeof(data.gamma)).assertEqual("number");
         expect(typeof(data.alpha)).assertEqual("number");
+		expect(typeof (data.timestamp)).assertEqual("number");
     }
 
     function callback2(data) {
@@ -30,6 +31,7 @@ describe("SensorJsTest_sensor_16", function () {
         expect(typeof(data.beta)).assertEqual("number");
         expect(typeof(data.gamma)).assertEqual("number");
         expect(typeof(data.alpha)).assertEqual("number");
+		expect(typeof (data.timestamp)).assertEqual("number");
     }
 
     beforeAll(function () {
@@ -145,7 +147,7 @@ describe("SensorJsTest_sensor_16", function () {
             expect(false).assertTrue();
             done();
         }
-        try{
+        try {
             sensor.once(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, onceSensorCallback, 5);
         } catch (error) {
             console.info('orientating_SensorJsTest005 error' + error);
@@ -237,7 +239,11 @@ describe("SensorJsTest_sensor_16", function () {
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, callback2);
         setTimeout(()=>{
             console.info('----------------------orientating_SensorJsTest010 off in---------------------------');
-            sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, callback);
+            try {
+			sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, callback);
+			} catch (error) {
+            console.info("orientating_SensorJsTest010 error:" + error);
+			}
             console.info('----------------------orientating_SensorJsTest010 off end---------------------------');
         }, 500);
         setTimeout(()=>{
@@ -276,7 +282,11 @@ describe("SensorJsTest_sensor_16", function () {
         sensor.on(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, callback2, {'interval': 100000000});
         setTimeout(()=>{
             console.info('----------------------orientating_SensorJsTest012 off in---------------------------');
-            sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, callback);
+            try {
+			sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, callback);
+			} catch (error) {
+            console.info("orientating_SensorJsTest012 error:" + error);
+			}
             console.info('----------------------orientating_SensorJsTest012 off end---------------------------');
         }, 500);
         setTimeout(()=>{

@@ -25,7 +25,8 @@ import {
     checkAssetsCount,
     fetchOps,
     getPermission,
-} from '../../../../../../common';
+    checkAlbumsCount,
+} from "../../../../../../common";
 
 export default function filekeyTestCallbackTest(abilityContext) {
     describe('filekeyTestCallbackTest', function () {
@@ -34,7 +35,7 @@ export default function filekeyTestCallbackTest(abilityContext) {
         beforeAll(async function () {
             console.info('beforeAll case');
             await getPermission();
-            await checkPresetsAssets(media, 'ActsMediaLibraryFileKey')
+            await checkPresetsAssets(media, 'ActsMediaLibraryFileKeyTest')
         });
         beforeEach(function () {
             console.info('beforeEach case');
@@ -315,6 +316,8 @@ export default function filekeyTestCallbackTest(abilityContext) {
                 console.info(`${testNum} currentFetchOp : ${JSON.stringify(currentFetchOp)}`)
                 const albumList = await media.getAlbums(currentFetchOp);
                 const album = albumList[0];
+                const albumCountPass = await checkAlbumsCount(done, testNum, albumList, 1);
+                if (!albumCountPass) return;
                 expect(album.albumName).assertEqual(albumName);
                 done();
             } catch (error) {

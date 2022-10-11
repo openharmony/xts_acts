@@ -42,6 +42,7 @@ describe('UsbDevicePipeJsFunctionsTestA', function () {
           }).catch(error => {
             console.info('usb case setPortRoles error : ' + error);
           });
+          CheckEmptyUtils.sleep(8000)
           console.log('*************Usb Unit switch to host Begin*************');
         }
       } else {
@@ -177,6 +178,7 @@ describe('UsbDevicePipeJsFunctionsTestA', function () {
       console.info('usb case readData error : ' + JSON.stringify(error));
       expect(false).assertTrue();
     });
+    CheckEmptyUtils.sleep(3000);
   })
 
   /**
@@ -218,7 +220,7 @@ describe('UsbDevicePipeJsFunctionsTestA', function () {
       console.info('usb write error : ' + JSON.stringify(error));
       expect(false).assertTrue();
     });
-
+    CheckEmptyUtils.sleep(3000);
   })
 
   /**
@@ -428,6 +430,7 @@ describe('UsbDevicePipeJsFunctionsTestA', function () {
       console.info('usb' + caseName + ':  PASS');
       expect(false).assertTrue();
     });
+    CheckEmptyUtils.sleep(3000);
   }
 
   /**

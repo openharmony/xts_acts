@@ -89,12 +89,12 @@ protected:
 };
 
 /*
- * @tc.name: testSecPMPMS_126
+ * @tc.name: SUB_SEC_AppSEC_PermissionMgmt_PMS_5000
  * @tc.desc: revoke permissions to large and small PIDs
  * @tc.type: FUNC
  * @tc.require: AR000E07N7
  */
-HWTEST_F(ActsPMSRevokeRuntimeTest, testSecPMPMS_126, Function | MediumTest | Level3)
+HWTEST_F(ActsPMSRevokeRuntimeTest, testSecPMPMS_5000, Function | MediumTest | Level3)
 {
     SaveOrUpdatePermissions(TEST_APP_ID, g_systemPers, SYS_PERM_NUM, FIRST_INSTALL);
     LoadPermissions(TEST_APP_ID, MAX_PID);
@@ -113,12 +113,12 @@ HWTEST_F(ActsPMSRevokeRuntimeTest, testSecPMPMS_126, Function | MediumTest | Lev
 }
 
 /*
- * @tc.name: testSecPMPMS_127
+ * @tc.name: SUB_SEC_AppSEC_PermissionMgmt_PMS_5100
  * @tc.desc: revoke permissions while not load permiossion
  * @tc.type: FUNC
  * @tc.require: AR000F4FSI
  */
-HWTEST_F(ActsPMSRevokeRuntimeTest, testSecPMPMS_127, Function | MediumTest | Level2)
+HWTEST_F(ActsPMSRevokeRuntimeTest, testSecPMPMS_5100, Function | MediumTest | Level2)
 {
     SaveOrUpdatePermissions(TEST_APP_ID, g_systemPers, SYS_PERM_NUM, FIRST_INSTALL);
     int ret = g_interface->RevokeRuntimePermission(TEST_TASKID, g_systemPers[0].name);
@@ -129,12 +129,12 @@ HWTEST_F(ActsPMSRevokeRuntimeTest, testSecPMPMS_127, Function | MediumTest | Lev
 }
 
 /*
- * @tc.name: testSecPMPMS_128
+ * @tc.name: SUB_SEC_AppSEC_PermissionMgmt_PMS_5200
  * @tc.desc: revoke runtime app permissions
  * @tc.type: FUNC
  * @tc.require: AR000F4FSI
  */
-HWTEST_F(ActsPMSRevokeRuntimeTest, testSecPMPMS_128, Function | MediumTest | Level0)
+HWTEST_F(ActsPMSRevokeRuntimeTest, testSecPMPMS_5200, Function | MediumTest | Level0)
 {
     SaveOrUpdatePermissions(TEST_APP_ID, g_systemPers, SYS_PERM_NUM, FIRST_INSTALL);
     LoadPermissions(TEST_APP_ID, TEST_TASKID);
@@ -147,12 +147,12 @@ HWTEST_F(ActsPMSRevokeRuntimeTest, testSecPMPMS_128, Function | MediumTest | Lev
 }
 
 /*
- * @tc.name: testSecPMPMS_129
+ * @tc.name: SUB_SEC_AppSEC_PermissionMgmt_PMS_5300
  * @tc.desc: revoke permissions without request
  * @tc.type: FUNC
  * @tc.require: AR000F4FSI
  */
-HWTEST_F(ActsPMSRevokeRuntimeTest, testSecPMPMS_129, Function | MediumTest | Level2)
+HWTEST_F(ActsPMSRevokeRuntimeTest, testSecPMPMS_5300, Function | MediumTest | Level2)
 {
     SaveOrUpdatePermissions(TEST_APP_ID, g_systemPers, 1, FIRST_INSTALL);
     LoadPermissions(TEST_APP_ID, TEST_TASKID);
@@ -165,12 +165,12 @@ HWTEST_F(ActsPMSRevokeRuntimeTest, testSecPMPMS_129, Function | MediumTest | Lev
 }
 
 /*
- * @tc.name: testSecPMPMS_130
+ * @tc.name: SUB_SEC_AppSEC_PermissionMgmt_PMS_5400
  * @tc.desc: revoke system_grant permissions
  * @tc.type: FUNC
  * @tc.require: AR000F4FSI
  */
-HWTEST_F(ActsPMSRevokeRuntimeTest, testSecPMPMS_130, Function | MediumTest | Level2)
+HWTEST_F(ActsPMSRevokeRuntimeTest, testSecPMPMS_5400, Function | MediumTest | Level2)
 {
     SaveOrUpdatePermissions(TEST_APP_ID, g_systemPers, SYS_PERM_NUM, FIRST_INSTALL);
     LoadPermissions(TEST_APP_ID, TEST_TASKID);
@@ -183,12 +183,12 @@ HWTEST_F(ActsPMSRevokeRuntimeTest, testSecPMPMS_130, Function | MediumTest | Lev
 }
 
 /*
- * @tc.name: testSecPMPMS_131
+ * @tc.name: SUB_SEC_AppSEC_PermissionMgmt_PMS_5500
  * @tc.desc: revoke user_grant permissions
  * @tc.type: FUNC
  * @tc.require: AR000F4FSI
  */
-HWTEST_F(ActsPMSRevokeRuntimeTest, testSecPMPMS_131, Function | MediumTest | Level1)
+HWTEST_F(ActsPMSRevokeRuntimeTest, testSecPMPMS_5500, Function | MediumTest | Level1)
 {
     SaveOrUpdatePermissions(TEST_APP_ID, g_systemPers, SYS_PERM_NUM, FIRST_INSTALL);
     LoadPermissions(TEST_APP_ID, TEST_TASKID);
@@ -204,12 +204,12 @@ HWTEST_F(ActsPMSRevokeRuntimeTest, testSecPMPMS_131, Function | MediumTest | Lev
 }
 
 /*
- * @tc.name: testSecPMPMS_132
+ * @tc.name: SUB_SEC_AppSEC_PermissionMgmt_PMS_5600
  * @tc.desc: revoke unknown permissions
  * @tc.type: FUNC
  * @tc.require: AR000F4FSI
  */
-HWTEST_F(ActsPMSRevokeRuntimeTest, testSecPMPMS_132, Function | MediumTest | Level3)
+HWTEST_F(ActsPMSRevokeRuntimeTest, testSecPMPMS_5600, Function | MediumTest | Level3)
 {
     SaveOrUpdatePermissions(TEST_APP_ID, g_systemPers, SYS_PERM_NUM, FIRST_INSTALL);
     LoadPermissions(TEST_APP_ID, TEST_TASKID);
@@ -222,12 +222,12 @@ HWTEST_F(ActsPMSRevokeRuntimeTest, testSecPMPMS_132, Function | MediumTest | Lev
 }
 
 /*
- * @tc.name: testSecPMPMS_133
+ * @tc.name: SUB_SEC_AppSEC_PermissionMgmt_PMS_5700
  * @tc.desc: revoke runtime permissions after revoke permission
  * @tc.type: FUNC
  * @tc.require: AR000F4FSI
  */
-HWTEST_F(ActsPMSRevokeRuntimeTest, testSecPMPMS_133, Function | MediumTest | Level3)
+HWTEST_F(ActsPMSRevokeRuntimeTest, testSecPMPMS_5700, Function | MediumTest | Level3)
 {
     SaveOrUpdatePermissions(TEST_APP_ID, g_systemPers, SYS_PERM_NUM, FIRST_INSTALL);
     g_interface->GrantPermission(TEST_APP_ID, g_systemPers[0].name);
@@ -242,12 +242,12 @@ HWTEST_F(ActsPMSRevokeRuntimeTest, testSecPMPMS_133, Function | MediumTest | Lev
 }
 
 /*
- * @tc.name: testSecPMPMS_134
+ * @tc.name: SUB_SEC_AppSEC_PermissionMgmt_PMS_5800
  * @tc.desc: revoke runtime permissions after grant permission
  * @tc.type: FUNC
  * @tc.require: AR000F4FSI
  */
-HWTEST_F(ActsPMSRevokeRuntimeTest, testSecPMPMS_134, Function | MediumTest | Level2)
+HWTEST_F(ActsPMSRevokeRuntimeTest, testSecPMPMS_5800, Function | MediumTest | Level2)
 {
     SaveOrUpdatePermissions(TEST_APP_ID, g_systemPers, SYS_PERM_NUM, FIRST_INSTALL);
     g_interface->GrantPermission(TEST_APP_ID, g_systemPers[0].name);
@@ -261,12 +261,12 @@ HWTEST_F(ActsPMSRevokeRuntimeTest, testSecPMPMS_134, Function | MediumTest | Lev
 }
 
 /*
- * @tc.name: testSecPMPMS_135
+ * @tc.name: SUB_SEC_AppSEC_PermissionMgmt_PMS_5900
  * @tc.desc: revoke runtime permissions continuously
  * @tc.type: FUNC
  * @tc.require: AR000F4FSI
  */
-HWTEST_F(ActsPMSRevokeRuntimeTest, testSecPMPMS_135, Function | MediumTest | Level2)
+HWTEST_F(ActsPMSRevokeRuntimeTest, testSecPMPMS_5900, Function | MediumTest | Level2)
 {
     SaveOrUpdatePermissions(TEST_APP_ID, g_systemPers, SYS_PERM_NUM, FIRST_INSTALL);
     LoadPermissions(TEST_APP_ID, TEST_TASKID);
@@ -285,24 +285,24 @@ HWTEST_F(ActsPMSRevokeRuntimeTest, testSecPMPMS_135, Function | MediumTest | Lev
 }
 
 /*
- * @tc.name: testSecPMPMS_136
+ * @tc.name: SUB_SEC_AppSEC_PermissionMgmt_PMS_6000
  * @tc.desc: revoke permissions of unnormal task
  * @tc.type: FUNC
  * @tc.require: AR000F4FSI
  */
-HWTEST_F(ActsPMSRevokeRuntimeTest, testSecPMPMS_136, Function | MediumTest | Level3)
+HWTEST_F(ActsPMSRevokeRuntimeTest, testSecPMPMS_6000, Function | MediumTest | Level3)
 {
     int ret = g_interface->RevokeRuntimePermission(ABNORMAL_TASKID, g_systemPers[0].name);
     EXPECT_EQ(ret, PERM_ERRORCODE_TASKID_NOT_EXIST) << "revoke ret = " << ret << endl;
 }
 
 /*
- * @tc.name: testSecPMPMS_137
+ * @tc.name: SUB_SEC_AppSEC_PermissionMgmt_PMS_6100
  * @tc.desc: revoke permissions of unnormal permission
  * @tc.type: FUNC
  * @tc.require: AR000F4FSI
  */
-HWTEST_F(ActsPMSRevokeRuntimeTest, testSecPMPMS_137, Function | MediumTest | Level4)
+HWTEST_F(ActsPMSRevokeRuntimeTest, testSecPMPMS_6100, Function | MediumTest | Level4)
 {
     SaveOrUpdatePermissions(TEST_APP_ID, g_systemPers, SYS_PERM_NUM, FIRST_INSTALL);
     LoadPermissions(TEST_APP_ID, TEST_TASKID);

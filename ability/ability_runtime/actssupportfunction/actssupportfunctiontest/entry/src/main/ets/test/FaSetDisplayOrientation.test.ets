@@ -22,13 +22,23 @@ export default function FaSetDisplayOrientationTest() {
   describe('FaSetDisplayOrientationTest', function () {
 
     let TAG = "";
-    let TAG1 = "SUB_AA_OpenHarmony == ";
+    let TAG1 = "SUB_AA_OpenHarmony == FaSetDisplayOrientationTest : ";
     let sleepTimeOne = 1000;
     let sleepTimeTwo = 2000;
     let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 
     afterEach(async (done) => {
       console.log(TAG1 + "afterEach called");
+      let wantInfo = {
+        bundleName: "com.example.supportfunctionhaptest",
+        abilityName: "MainAbility"
+      }
+      await globalThis.abilityTestContext.startAbility(wantInfo).then((data) => {
+        console.log(TAG1 + "startAbility data : " + JSON.stringify(data));
+      }).catch((err) => {
+        console.log(TAG1 + "startAbility err : " + JSON.stringify(err));
+      })
+
       let cmd1 = "aa force-stop ohos.acts.aafwk.test.fasupportfunction";
       let cmd2 = "aa force-stop ohos.acts.aafwk.test.fasupportfunctionthree";
 
@@ -67,12 +77,12 @@ export default function FaSetDisplayOrientationTest() {
     })
 
     /*
-     * @tc.number  : SUB_AA_OpenHarmony_DisplayOrientation_0200
+     * @tc.number  : SUB_AA_OpenHarmony_DisplayOrientation_0500
      * @tc.name    : Verify getDisplayOrientation and setDisplayOrientation interfaces
      * @tc.desc    : Set the horizontal and vertical screen status of ability to UNSPECIFIED.
      */
-    it('SUB_AA_OpenHarmony_DisplayOrientation_0200', 0, async function (done) {
-      TAG = 'SUB_AA_OpenHarmony_DisplayOrientation_0200 == ';
+    it('SUB_AA_OpenHarmony_DisplayOrientation_0500', 0, async function (done) {
+      TAG = 'SUB_AA_OpenHarmony_DisplayOrientation_0500 == ';
       console.log(TAG + "begin");
 
       let displayOrientationBefore = undefined;
@@ -131,12 +141,12 @@ export default function FaSetDisplayOrientationTest() {
     })
 
     /*
-     * @tc.number  : SUB_AA_OpenHarmony_DisplayOrientation_0300
+     * @tc.number  : SUB_AA_OpenHarmony_DisplayOrientation_0600
      * @tc.name    : Verify getDisplayOrientation and setDisplayOrientation interfaces
      * @tc.desc    : Set the horizontal and vertical screen status of ability to LANDSCAPE.
      */
-    it('SUB_AA_OpenHarmony_DisplayOrientation_0300', 0, async function (done) {
-      TAG = 'SUB_AA_OpenHarmony_DisplayOrientation_0300 == ';
+    it('SUB_AA_OpenHarmony_DisplayOrientation_0600', 0, async function (done) {
+      TAG = 'SUB_AA_OpenHarmony_DisplayOrientation_0600 == ';
       console.log(TAG + "begin");
 
       let displayOrientationBefore = undefined;
@@ -198,12 +208,12 @@ export default function FaSetDisplayOrientationTest() {
     })
 
     /*
-     * @tc.number  : SUB_AA_OpenHarmony_DisplayOrientation_0400
+     * @tc.number  : SUB_AA_OpenHarmony_DisplayOrientation_0700
      * @tc.name    : Verify getDisplayOrientation and setDisplayOrientation interfaces
      * @tc.desc    : Set the horizontal and vertical screen status of ability to PORTRAIT.
      */
-    it('SUB_AA_OpenHarmony_DisplayOrientation_0400', 0, async function (done) {
-      TAG = 'SUB_AA_OpenHarmony_DisplayOrientation_0400 == ';
+    it('SUB_AA_OpenHarmony_DisplayOrientation_0700', 0, async function (done) {
+      TAG = 'SUB_AA_OpenHarmony_DisplayOrientation_0700 == ';
       console.log(TAG + "begin");
 
       let displayOrientationBefore = undefined;
@@ -265,13 +275,13 @@ export default function FaSetDisplayOrientationTest() {
     })
 
     /*
-     * @tc.number  : SUB_AA_OpenHarmony_DisplayOrientation_0500
+     * @tc.number  : SUB_AA_OpenHarmony_DisplayOrientation_0800
      * @tc.name    : Verify getDisplayOrientation and setDisplayOrientation interfaces
      * @tc.desc    : The same applies to setting ability1 to LANDSCAPE, and ability1 starts ability2 and sets the status
                      of ability2 to FOLLOW_RECENT.
      */
-    it('SUB_AA_OpenHarmony_DisplayOrientation_0500', 0, async function (done) {
-      TAG = 'SUB_AA_OpenHarmony_DisplayOrientation_0500 == ';
+    it('SUB_AA_OpenHarmony_DisplayOrientation_0800', 0, async function (done) {
+      TAG = 'SUB_AA_OpenHarmony_DisplayOrientation_0800 == ';
       console.log(TAG + "begin");
 
       let displayOrientationBefore1 = undefined;
@@ -349,13 +359,13 @@ export default function FaSetDisplayOrientationTest() {
     })
 
     /*
-     * @tc.number  : SUB_AA_OpenHarmony_DisplayOrientation_0600
+     * @tc.number  : SUB_AA_OpenHarmony_DisplayOrientation_0900
      * @tc.name    : Verify getDisplayOrientation and setDisplayOrientation interfaces
      * @tc.desc    : The same applies to setting ability1 to PORTRAIT, and ability1 starts ability2 and sets the status
                      of ability2 to FOLLOW_RECENT.
      */
-    it('SUB_AA_OpenHarmony_DisplayOrientation_0600', 0, async function (done) {
-      TAG = 'SUB_AA_OpenHarmony_DisplayOrientation_0600 == ';
+    it('SUB_AA_OpenHarmony_DisplayOrientation_0900', 0, async function (done) {
+      TAG = 'SUB_AA_OpenHarmony_DisplayOrientation_0900 == ';
       console.log(TAG + "begin");
 
       let displayOrientationBefore1 = undefined;
@@ -433,13 +443,13 @@ export default function FaSetDisplayOrientationTest() {
     })
 
     /*
-     * @tc.number  : SUB_AA_OpenHarmony_DisplayOrientation_0700
+     * @tc.number  : SUB_AA_OpenHarmony_DisplayOrientation_1000
      * @tc.name    : Verify getDisplayOrientation and setDisplayOrientation interfaces
      * @tc.desc    : Different haps set ability1 to LANDSCAPE, and ability1 starts ability2 and sets the status of
                      ability2 to FOLLOW_RECENT.
      */
-    it('SUB_AA_OpenHarmony_DisplayOrientation_0700', 0, async function (done) {
-      TAG = 'SUB_AA_OpenHarmony_DisplayOrientation_0700 == ';
+    it('SUB_AA_OpenHarmony_DisplayOrientation_1000', 0, async function (done) {
+      TAG = 'SUB_AA_OpenHarmony_DisplayOrientation_1000 == ';
       console.log(TAG + "begin");
 
       let displayOrientationBefore1 = undefined;
@@ -517,13 +527,13 @@ export default function FaSetDisplayOrientationTest() {
     })
 
     /*
-     * @tc.number  : SUB_AA_OpenHarmony_DisplayOrientation_0800
+     * @tc.number  : SUB_AA_OpenHarmony_DisplayOrientation_1100
      * @tc.name    : Verify getDisplayOrientation and setDisplayOrientation interfaces
      * @tc.desc    : Different haps set ability1 to PORTRAIT, and ability1 starts ability2 and sets the status of
                      ability2 to FOLLOW_RECENT.
      */
-    it('SUB_AA_OpenHarmony_DisplayOrientation_0800', 0, async function (done) {
-      TAG = 'SUB_AA_OpenHarmony_DisplayOrientation_0800 == ';
+    it('SUB_AA_OpenHarmony_DisplayOrientation_1100', 0, async function (done) {
+      TAG = 'SUB_AA_OpenHarmony_DisplayOrientation_1100 == ';
       console.log(TAG + "begin");
 
       let displayOrientationBefore1 = undefined;
@@ -601,13 +611,13 @@ export default function FaSetDisplayOrientationTest() {
     })
 
     /*
-     * @tc.number  : SUB_AA_OpenHarmony_DisplayOrientation_0900
+     * @tc.number  : SUB_AA_OpenHarmony_DisplayOrientation_1200
      * @tc.name    : Verify getDisplayOrientation and setDisplayOrientation interfaces
      * @tc.desc    : Different applications set ability1 to LANDSCAPE, and ability1 starts ability2 and sets the status
                      of ability2 to FOLLOW_RECENT.
      */
-    it('SUB_AA_OpenHarmony_DisplayOrientation_0900', 0, async function (done) {
-      TAG = 'SUB_AA_OpenHarmony_DisplayOrientation_0900 == ';
+    it('SUB_AA_OpenHarmony_DisplayOrientation_1200', 0, async function (done) {
+      TAG = 'SUB_AA_OpenHarmony_DisplayOrientation_1200 == ';
       console.log(TAG + "begin");
 
       let displayOrientationBefore1 = undefined;
@@ -685,13 +695,13 @@ export default function FaSetDisplayOrientationTest() {
     })
 
     /*
-     * @tc.number  : SUB_AA_OpenHarmony_DisplayOrientation_1000
+     * @tc.number  : SUB_AA_OpenHarmony_DisplayOrientation_1300
      * @tc.name    : Verify getDisplayOrientation and setDisplayOrientation interfaces
      * @tc.desc    : Different applications set ability1 to PORTRAIT, and ability1 starts ability2 and sets the status
                      of ability2 to FOLLOW_RECENT.
      */
-    it('SUB_AA_OpenHarmony_DisplayOrientation_1000', 0, async function (done) {
-      TAG = 'SUB_AA_OpenHarmony_DisplayOrientation_1000 == ';
+    it('SUB_AA_OpenHarmony_DisplayOrientation_1300', 0, async function (done) {
+      TAG = 'SUB_AA_OpenHarmony_DisplayOrientation_1300 == ';
       console.log(TAG + "begin");
 
       let displayOrientationBefore1 = undefined;
@@ -773,12 +783,12 @@ export default function FaSetDisplayOrientationTest() {
     })
 
     /*
-     * @tc.number  : SUB_AA_OpenHarmony_DisplayOrientation_1100
+     * @tc.number  : SUB_AA_OpenHarmony_DisplayOrientation_1400
      * @tc.name    : Verify setDisplayOrientation interfaces
      * @tc.desc    : SetDisplayOrientation input parameter is undefined.
      */
-    it('SUB_AA_OpenHarmony_DisplayOrientation_1100', 0, async function (done) {
-      TAG = 'SUB_AA_OpenHarmony_DisplayOrientation_1100 == ';
+    it('SUB_AA_OpenHarmony_DisplayOrientation_1400', 0, async function (done) {
+      TAG = 'SUB_AA_OpenHarmony_DisplayOrientation_1400 == ';
       console.log(TAG + "begin");
 
       let status1 = undefined;
@@ -837,12 +847,12 @@ export default function FaSetDisplayOrientationTest() {
     })
 
     /*
-    * @tc.number  : SUB_AA_OpenHarmony_DisplayOrientation_1200
+    * @tc.number  : SUB_AA_OpenHarmony_DisplayOrientation_1500
     * @tc.name    : Verify setDisplayOrientation interfaces
     * @tc.desc    : SetDisplayOrientation input parameter is -1.
     */
-    it('SUB_AA_OpenHarmony_DisplayOrientation_1200', 0, async function (done) {
-      TAG = 'SUB_AA_OpenHarmony_DisplayOrientation_1200 == ';
+    it('SUB_AA_OpenHarmony_DisplayOrientation_1500', 0, async function (done) {
+      TAG = 'SUB_AA_OpenHarmony_DisplayOrientation_1500 == ';
       console.log(TAG + "begin");
 
       let status1 = undefined;
@@ -901,12 +911,12 @@ export default function FaSetDisplayOrientationTest() {
     })
 
     /*
-    * @tc.number  : SUB_AA_OpenHarmony_DisplayOrientation_1300
+    * @tc.number  : SUB_AA_OpenHarmony_DisplayOrientation_1600
     * @tc.name    : Verify setDisplayOrientation interfaces
     * @tc.desc    : SetDisplayOrientation input parameter is a nonexistent enumeration value.
     */
-    it('SUB_AA_OpenHarmony_DisplayOrientation_1300', 0, async function (done) {
-      TAG = 'SUB_AA_OpenHarmony_DisplayOrientation_1300 == ';
+    it('SUB_AA_OpenHarmony_DisplayOrientation_1600', 0, async function (done) {
+      TAG = 'SUB_AA_OpenHarmony_DisplayOrientation_1600 == ';
       console.log(TAG + "begin");
 
       let status1 = undefined;
@@ -965,12 +975,12 @@ export default function FaSetDisplayOrientationTest() {
     })
 
     /*
-    * @tc.number  : SUB_AA_OpenHarmony_DisplayOrientation_1400
+    * @tc.number  : SUB_AA_OpenHarmony_DisplayOrientation_1700
     * @tc.name    : Verify setDisplayOrientation interfaces
     * @tc.desc    : SetDisplayOrientation input parameter is a value of string type.
     */
-    it('SUB_AA_OpenHarmony_DisplayOrientation_1400', 0, async function (done) {
-      TAG = 'SUB_AA_OpenHarmony_DisplayOrientation_1400 == ';
+    it('SUB_AA_OpenHarmony_DisplayOrientation_1700', 0, async function (done) {
+      TAG = 'SUB_AA_OpenHarmony_DisplayOrientation_1700 == ';
       console.log(TAG + "begin");
 
       let status1 = undefined;
@@ -1029,12 +1039,12 @@ export default function FaSetDisplayOrientationTest() {
     })
 
     /*
-    * @tc.number  : SUB_AA_OpenHarmony_DisplayOrientation_1500
+    * @tc.number  : SUB_AA_OpenHarmony_DisplayOrientation_1800
     * @tc.name    : Verify setDisplayOrientation interfaces
     * @tc.desc    : SetDisplayOrientation input parameter is of type array.
     */
-    it('SUB_AA_OpenHarmony_DisplayOrientation_1500', 0, async function (done) {
-      TAG = 'SUB_AA_OpenHarmony_DisplayOrientation_1500 == ';
+    it('SUB_AA_OpenHarmony_DisplayOrientation_1800', 0, async function (done) {
+      TAG = 'SUB_AA_OpenHarmony_DisplayOrientation_1800 == ';
       console.log(TAG + "begin");
 
       let status1 = undefined;
@@ -1093,12 +1103,12 @@ export default function FaSetDisplayOrientationTest() {
     })
 
     /*
-    * @tc.number  : SUB_AA_OpenHarmony_DisplayOrientation_1600
+    * @tc.number  : SUB_AA_OpenHarmony_DisplayOrientation_1900
     * @tc.name    : Verify setDisplayOrientation interfaces
     * @tc.desc    : SetDisplayOrientation input parameter is of type json.
     */
-    it('SUB_AA_OpenHarmony_DisplayOrientation_1600', 0, async function (done) {
-      TAG = 'SUB_AA_OpenHarmony_DisplayOrientation_1600 == ';
+    it('SUB_AA_OpenHarmony_DisplayOrientation_1900', 0, async function (done) {
+      TAG = 'SUB_AA_OpenHarmony_DisplayOrientation_1900 == ';
       console.log(TAG + "begin");
 
       let status1 = undefined;

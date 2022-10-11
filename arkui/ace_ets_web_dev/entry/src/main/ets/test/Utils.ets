@@ -115,4 +115,39 @@ export default class Utils {
             console.info(`[${testCaseName}] err:`+JSON.stringify(err));
         }
     }
+    static commitKey(emitKey){
+        try {
+            let backData = {
+                data: {
+                    "ACTION": emitKey
+                }
+            }
+            let backEvent = {
+                eventId:10,
+                priority:events_emitter.EventPriority.LOW
+            }
+            console.info("start send emitKey");
+            events_emitter.emit(backEvent, backData);
+      } catch (err) {
+            console.info("emit emitKey  err: " + JSON.stringify(err));
+      }
+    }
+    static registerLargerEvent(testCaseName,eventId,done){
+        console.info(`[${testCaseName}] START`);
+        try{
+            let callBack=(backData)=>{
+                console.info(`${testCaseName} get result is:`+JSON.stringify(backData));
+                expect(backData.data.actualValue).assertLarger(backData.data.expectedValue);
+                console.info(`[${testCaseName}] END`);
+                done()
+            }
+            let innerEvent = {
+                eventId:eventId,
+                priority:events_emitter.EventPriority.LOW
+            }
+            events_emitter.on(innerEvent,callBack)
+        }catch(err){
+            console.info(`[${testCaseName}] err:`+JSON.stringify(err));
+        }
+    }
 }

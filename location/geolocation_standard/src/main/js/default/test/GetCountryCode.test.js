@@ -90,13 +90,13 @@ describe('geolocationTest_4', function () {
     })
     
     /**
-     * @tc.number SUB_HSS_LocationSystem_CountryCode_0001
+     * @tc.number SUB_HSS_LocationSystem_CountryCode_0100
      * @tc.name Test getCountryCode
      * @tc.desc Obtaining Country Code Information
      * @tc.type Function
      * @tc.level since 9
      */
-    it('SUB_HSS_LocationSystem_CountryCode_0001', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_CountryCode_0100', 0, async function (done) {
         await geolocation.getCountryCode().then((result) => {
             console.info("[lbs_js] getCountryCode promise result: " + JSON.stringify(result));
             console.info("[lbs_js] country :" + result.country);
@@ -113,20 +113,21 @@ describe('geolocationTest_4', function () {
     })
 
     /**
-     * @tc.number SUB_HSS_LocationSystem_CountryCode_0002
+     * @tc.number SUB_HSS_LocationSystem_CountryCode_0200
      * @tc.name Test getCountryCode
      * @tc.desc Obtaining Country Code Information
      * @tc.type Function
      * @tc.level since 9
      */
-    it('SUB_HSS_LocationSystem_CountryCode_0002', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_CountryCode_0200', 0, async function (done) {
         function getCountryCodeCallback() {
             return new Promise((resolve, reject) => {
-                geolocation.getCountryCode((err) => {
+                geolocation.getCountryCode((err,data) => {
                     if (err) {
                         return console.info("getCountryCode callback err:  " + JSON.stringify(err));
                     } else {
-                        console.info("getCountryCode callback success");
+                        console.info("getCountryCode callback success"+ JSON.stringify(data));
+			expect(true).assertEqual(data != null);
                     }
                     resolve();
                 })
@@ -137,13 +138,13 @@ describe('geolocationTest_4', function () {
     })
 
     /**
-     * @tc.number SUB_HSS_LocationSystem_CountryCode_0003
+     * @tc.number SUB_HSS_LocationSystem_CountryCode_0300
      * @tc.name getCountryCode_on_off
      * @tc.desc The interception country code is changed.
      * @tc.type Function
      * @tc.level since 9
      */
-    it('SUB_HSS_LocationSystem_CountryCode_0003', 0, async function (done) {
+    it('SUB_HSS_LocationSystem_CountryCode_0300', 0, async function (done) {
         console.info("[lbs_js]countryCodeChange");
         geolocation.on('countryCodeChange', function (data) {
             console.info('[lbs_js] countryCodeChange' +JSON.stringify(data) );

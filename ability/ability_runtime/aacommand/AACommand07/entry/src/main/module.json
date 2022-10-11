@@ -6,8 +6,7 @@
     "description": "$string:entry_test_desc",
     "mainElement": "MainAbility",
     "deviceTypes": [
-      "phone",
-      "tablet"
+      "default"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,

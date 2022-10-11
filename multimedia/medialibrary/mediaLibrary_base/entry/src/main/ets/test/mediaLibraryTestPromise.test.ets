@@ -36,7 +36,7 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
         beforeAll(async function () {
             console.info('beforeAll case');
             await getPermission();
-            await checkPresetsAssets(media, 'ActsMediaLibraryBase');
+            await checkPresetsAssets(media, 'ActsMediaLibraryBaseTest');
         });
         beforeEach(function () {
             console.info('beforeEach case');
@@ -258,14 +258,14 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
             }
         }
         /**
-         * @tc.number    : SUB_MEDIA_MIDIALIBRARY_PROMISE_GETMEDIALIBRAY_001
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_PROMISE_GETMEDIALIBRAY_001
          * @tc.name      : getMediaLibrary
          * @tc.desc      : Obtains a MediaLibrary instance
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MIDIALIBRARY_PROMISE_GETMEDIALIBRAY_001', 0, async function (done) {
+        it('SUB_MEDIA_MEDIALIBRARY_PROMISE_GETMEDIALIBRAY_001', 0, async function (done) {
             try {
                 expect(media != undefined).assertTrue();
                 done();
@@ -277,15 +277,15 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_001
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_PROMISE_GETFILEASSETS_001
          * @tc.name      : getFileAssets
          * @tc.desc      : query all assets
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_001', 0, async function (done) {
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_001';
+        it('SUB_MEDIA_MEDIALIBRARY_PROMISE_GETFILEASSETS_001', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_PROMISE_GETFILEASSETS_001';
             let currentFetchOps = fetchOps(testNum, 'Pictures/Static/', IMAGE_TYPE);
             let type = 'image';
             let count = 1;
@@ -293,15 +293,15 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_002
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_PROMISE_GETFILEASSETS_002
          * @tc.name      : getFileAssets
          * @tc.desc      : query all assets
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_002', 0, async function (done) {
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_002';
+        it('SUB_MEDIA_MEDIALIBRARY_PROMISE_GETFILEASSETS_002', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_PROMISE_GETFILEASSETS_002';
             let currentFetchOps = fetchOps(testNum, 'Videos/Static/', VIDEO_TYPE);
             let type = 'video';
             let count = 1;
@@ -309,15 +309,15 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_003
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_PROMISE_GETFILEASSETS_003
          * @tc.name      : getFileAssets
          * @tc.desc      : query all assets
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_003', 0, async function (done) {
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_003';
+        it('SUB_MEDIA_MEDIALIBRARY_PROMISE_GETFILEASSETS_003', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_PROMISE_GETFILEASSETS_003';
             let currentFetchOps = fetchOps(testNum, 'Audios/Static/', AUDIO_TYPE);
             let type = 'audio';
             let count = 1;
@@ -325,15 +325,15 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_004
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_PROMISE_GETFILEASSETS_004
          * @tc.name      : getFileAssets
          * @tc.desc      : query all assets
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_004', 0, async function (done) {
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_004';
+        it('SUB_MEDIA_MEDIALIBRARY_PROMISE_GETFILEASSETS_004', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_PROMISE_GETFILEASSETS_004';
             let currentFetchOps = fetchOps(testNum, 'Documents/Static/', FILE_TYPE);
             let type = 'file';
             let count = 1;
@@ -341,15 +341,15 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_005
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_PROMISE_GETFILEASSETS_005
          * @tc.name      : getFileAssets
          * @tc.desc      : query all assets
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_005', 0, async function (done) {
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_005';
+        it('SUB_MEDIA_MEDIALIBRARY_PROMISE_GETFILEASSETS_005', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_PROMISE_GETFILEASSETS_005';
             let currentFetchOps = imageAndVideofetchOp;
             let type = 'video';
             let count = 2;
@@ -358,15 +358,15 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_006
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_PROMISE_GETFILEASSETS_006
          * @tc.name      : getFileAssets
          * @tc.desc      : query all assets
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_006', 0, async function (done) {
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_006';
+        it('SUB_MEDIA_MEDIALIBRARY_PROMISE_GETFILEASSETS_006', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_PROMISE_GETFILEASSETS_006';
             let currentFetchOps = imageAndVideoAndfilefetchOp;
             let type = 'file';
             let count = 3;
@@ -375,15 +375,15 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_007
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_PROMISE_GETFILEASSETS_007
          * @tc.name      : getFileAssets
          * @tc.desc      : query all assets
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_007', 0, async function (done) {
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_006';
+        it('SUB_MEDIA_MEDIALIBRARY_PROMISE_GETFILEASSETS_007', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_PROMISE_GETFILEASSETS_006';
             let currentFetchOps = imageAndVideoAndfileAndAudiofetchOp;
             let type = 'audio';
             let count = 4;
@@ -392,157 +392,157 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_008
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_PROMISE_GETFILEASSETS_008
          * @tc.name      : getFileAssets
          * @tc.desc      : query all assets
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_008', 0, async function (done) {
+        it('SUB_MEDIA_MEDIALIBRARY_PROMISE_GETFILEASSETS_008', 0, async function (done) {
             let currentFetchOps = {
                 selections: FILEKEY.MEDIA_TYPE + '= ?',
                 selectionArgs: [],
             };
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_008';
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_PROMISE_GETFILEASSETS_008';
             await getFileAssetsZero(done, testNum, currentFetchOps)
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_009
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_PROMISE_GETFILEASSETS_009
          * @tc.name      : getFileAssets
          * @tc.desc      : query all assets
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_009', 0, async function (done) {
+        it('SUB_MEDIA_MEDIALIBRARY_PROMISE_GETFILEASSETS_009', 0, async function (done) {
             let currentFetchOps = {
                 selections: FILEKEY.MEDIA_TYPE + 'abc= ?',
                 selectionArgs: [AUDIO_TYPE.toString()],
             };
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_009';
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_PROMISE_GETFILEASSETS_009';
             await getFileAssetsAbnormal(done, testNum, currentFetchOps)
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_010
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_PROMISE_GETFILEASSETS_010
          * @tc.name      : getFileAssets
          * @tc.desc      : query all assets
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_010', 0, async function (done) {
+        it('SUB_MEDIA_MEDIALIBRARY_PROMISE_GETFILEASSETS_010', 0, async function (done) {
             let currentFetchOps = {
                 selections: FILEKEY.MEDIA_TYPE + '= ?',
                 selectionArgs: [111],
             };
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_010';
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_PROMISE_GETFILEASSETS_010';
             await getFileAssetsZero(done, testNum, currentFetchOps)
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_011
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_PROMISE_GETFILEASSETS_011
          * @tc.name      : getFileAssets
          * @tc.desc      : query all assets
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_011', 0, async function (done) {
+        it('SUB_MEDIA_MEDIALIBRARY_PROMISE_GETFILEASSETS_011', 0, async function (done) {
             let currentFetchOps = {
                 selections: 'abc' + '= ?',
                 selectionArgs: [AUDIO_TYPE.toString()],
             };
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_PROMISE_GETFILEASSETS_011';
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_PROMISE_GETFILEASSETS_011';
             await getFileAssetsAbnormal(done, testNum, currentFetchOps)
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_PROMISE_GETPUBLICDIRECTORY_001
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_PROMISE_GETPUBLICDIRECTORY_001
          * @tc.name      : getPublicDirectory
          * @tc.desc      : getPublicDirectory DIR_CAMERA
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_PROMISE_GETPUBLICDIRECTORY_001', 0, async function (done) {
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_PROMISE_GETPUBLICDIRECTORY_001';
+        it('SUB_MEDIA_MEDIALIBRARY_PROMISE_GETPUBLICDIRECTORY_001', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_PROMISE_GETPUBLICDIRECTORY_001';
             let dir = mediaLibrary.DirectoryType.DIR_CAMERA;
             let val = 'Camera/';
             await checkGetPublicDirectory(done, testNum, dir, val)
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_PROMISE_GETPUBLICDIRECTORY_002
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_PROMISE_GETPUBLICDIRECTORY_002
          * @tc.name      : getPublicDirectory
          * @tc.desc      : getPublicDirectory DIR_VIDEO
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_PROMISE_GETPUBLICDIRECTORY_002', 0, async function (done) {
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_PROMISE_GETPUBLICDIRECTORY_002';
+        it('SUB_MEDIA_MEDIALIBRARY_PROMISE_GETPUBLICDIRECTORY_002', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_PROMISE_GETPUBLICDIRECTORY_002';
             let dir = mediaLibrary.DirectoryType.DIR_VIDEO;
             let val = 'Videos/';
             await checkGetPublicDirectory(done, testNum, dir, val)
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_PROMISE_GETPUBLICDIRECTORY_003
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_PROMISE_GETPUBLICDIRECTORY_003
          * @tc.name      : getPublicDirectory
          * @tc.desc      : getPublicDirectory DIR_IMAGE
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_PROMISE_GETPUBLICDIRECTORY_003', 0, async function (done) {
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_PROMISE_GETPUBLICDIRECTORY_003';
+        it('SUB_MEDIA_MEDIALIBRARY_PROMISE_GETPUBLICDIRECTORY_003', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_PROMISE_GETPUBLICDIRECTORY_003';
             let dir = mediaLibrary.DirectoryType.DIR_IMAGE;
             let val = 'Pictures/';
             await checkGetPublicDirectory(done, testNum, dir, val)
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_PROMISE_GETPUBLICDIRECTORY_004
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_PROMISE_GETPUBLICDIRECTORY_004
          * @tc.name      : getPublicDirectory
-         * @tc.desc      : getPublicDirectory DIR_IMAGE
+         * @tc.desc      : getPublicDirectory DIR_AUDIO
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_PROMISE_GETPUBLICDIRECTORY_004', 0, async function (done) {
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_PROMISE_GETPUBLICDIRECTORY_004';
+        it('SUB_MEDIA_MEDIALIBRARY_PROMISE_GETPUBLICDIRECTORY_004', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_PROMISE_GETPUBLICDIRECTORY_004';
             let dir = mediaLibrary.DirectoryType.DIR_AUDIO;
             let val = 'Audios/';
             await checkGetPublicDirectory(done, testNum, dir, val)
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_PROMISE_GETPUBLICDIRECTORY_005
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_PROMISE_GETPUBLICDIRECTORY_005
          * @tc.name      : getPublicDirectory
-         * @tc.desc      : getPublicDirectory DIR_IMAGE
+         * @tc.desc      : getPublicDirectory DIR_DOCUMENTS
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_PROMISE_GETPUBLICDIRECTORY_005', 0, async function (done) {
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_PROMISE_GETPUBLICDIRECTORY_004';
+        it('SUB_MEDIA_MEDIALIBRARY_PROMISE_GETPUBLICDIRECTORY_005', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_PROMISE_GETPUBLICDIRECTORY_005';
             let dir = mediaLibrary.DirectoryType.DIR_DOCUMENTS;
             let val = 'Documents/';
             await checkGetPublicDirectory(done, testNum, dir, val)
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_PROMISE_GETPUBLICDIRECTORY_006
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_PROMISE_GETPUBLICDIRECTORY_006
          * @tc.name      : getPublicDirectory
          * @tc.desc      : getPublicDirectory 110
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_PROMISE_GETPUBLICDIRECTORY_006', 0, async function (done) {
+        it('SUB_MEDIA_MEDIALIBRARY_PROMISE_GETPUBLICDIRECTORY_006', 0, async function (done) {
             try {
                 await media.getPublicDirectory(110);
                 console.info('MediaLibraryTest : getPublicDirectory 006 failed');
@@ -556,15 +556,31 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_001
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_PROMISE_GETPUBLICDIRECTORY_007
+         * @tc.name      : getPublicDirectory
+         * @tc.desc      : getPublicDirectory DIR_DOWNLOAD
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('SUB_MEDIA_MEDIALIBRARY_PROMISE_GETPUBLICDIRECTORY_007', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_PROMISE_GETPUBLICDIRECTORY_007';
+            let dir = mediaLibrary.DirectoryType.DIR_DOWNLOAD;
+            let val = 'Download/';
+            await checkGetPublicDirectory(done, testNum, dir, val)
+        });
+
+
+        /**
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_PROMISE_CREATEASSET_001
          * @tc.name      : createAsset
          * @tc.desc      : Create File Asset image (does not exist)
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_001', 0, async function (done) {
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_001';
+        it('SUB_MEDIA_MEDIALIBRARY_PROMISE_CREATEASSET_001', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_PROMISE_CREATEASSET_001';
             let currentFetchOps = fetchOps(testNum, 'Pictures/Static/', IMAGE_TYPE);
             let type = IMAGE_TYPE;
             let name = new Date().getTime() + '.jpg';
@@ -573,15 +589,15 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_002
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_PROMISE_CREATEASSET_002
          * @tc.name      : createAsset
          * @tc.desc      : Create File Asset image (existed)
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_002', 0, async function (done) {
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_002';
+        it('SUB_MEDIA_MEDIALIBRARY_PROMISE_CREATEASSET_002', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_PROMISE_CREATEASSET_002';
             let currentFetchOps = fetchOps(testNum, 'Pictures/Static/', IMAGE_TYPE);
             let type = IMAGE_TYPE;
             let name = new Date().getTime() + '.jpg';
@@ -591,15 +607,15 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_003
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_PROMISE_CREATEASSET_003
          * @tc.name      : createAsset
          * @tc.desc      : Create File Asset video (does not exist)
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_003', 0, async function (done) {
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_003';
+        it('SUB_MEDIA_MEDIALIBRARY_PROMISE_CREATEASSET_003', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_PROMISE_CREATEASSET_003';
             let currentFetchOps = fetchOps(testNum, 'Videos/Static/', VIDEO_TYPE);
             let type = VIDEO_TYPE;
             let name = new Date().getTime() + '.mp4';
@@ -608,15 +624,15 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_004
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_PROMISE_CREATEASSET_004
          * @tc.name      : createAsset
          * @tc.desc      : Create File Asset video (existed)
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_004', 0, async function (done) {
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_004';
+        it('SUB_MEDIA_MEDIALIBRARY_PROMISE_CREATEASSET_004', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_PROMISE_CREATEASSET_004';
             let currentFetchOps = fetchOps(testNum, 'Videos/Static/', VIDEO_TYPE);
             let type = VIDEO_TYPE;
             let name = new Date().getTime() + '.mp4';
@@ -625,15 +641,15 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_005
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_PROMISE_CREATEASSET_005
          * @tc.name      : createAsset
          * @tc.desc      : Create File Asset audio (does not exist)
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_005', 0, async function (done) {
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_005';
+        it('SUB_MEDIA_MEDIALIBRARY_PROMISE_CREATEASSET_005', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_PROMISE_CREATEASSET_005';
             let currentFetchOps = fetchOps(testNum, 'Audios/Static/', AUDIO_TYPE);
             let type = AUDIO_TYPE;
             let name = new Date().getTime() + '.mp3';
@@ -642,15 +658,15 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_006
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_PROMISE_CREATEASSET_006
          * @tc.name      : createAsset
          * @tc.desc      : Create File Asset audio (existed)
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_006', 0, async function (done) {
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_006';
+        it('SUB_MEDIA_MEDIALIBRARY_PROMISE_CREATEASSET_006', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_PROMISE_CREATEASSET_006';
             let currentFetchOps = fetchOps(testNum, 'Audios/Static/', AUDIO_TYPE);
             let type = AUDIO_TYPE;
             let name = new Date().getTime() + '.mp3';
@@ -659,15 +675,15 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_007
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_PROMISE_CREATEASSET_007
          * @tc.name      : createAsset
          * @tc.desc      : Create File Asset file (does not exist)
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_007', 0, async function (done) {
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_007';
+        it('SUB_MEDIA_MEDIALIBRARY_PROMISE_CREATEASSET_007', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_PROMISE_CREATEASSET_007';
             let currentFetchOps = fetchOps(testNum, 'Documents/Static/', FILE_TYPE);
             let type = FILE_TYPE;
             let name = new Date().getTime() + '.dat';
@@ -676,15 +692,15 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_008
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_PROMISE_CREATEASSET_008
          * @tc.name      : createAsset
          * @tc.desc      : Create File Asset file (existed)
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_008', 0, async function (done) {
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_008';
+        it('SUB_MEDIA_MEDIALIBRARY_PROMISE_CREATEASSET_008', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_PROMISE_CREATEASSET_008';
             let currentFetchOps = fetchOps(testNum, 'Documents/Static/', FILE_TYPE);
             let type = FILE_TYPE;
             let name = new Date().getTime() + '.dat';
@@ -693,15 +709,15 @@ export default function mediaLibraryTestPromiseTest(abilityContext) {
         });
 
         /**
-       * @tc.number    : SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_001
+       * @tc.number    : SUB_MEDIA_MEDIALIBRARY_PROMISE_CREATEASSET_001
        * @tc.name      : createAsset
        * @tc.desc      : Create File Asset image (does not exist)
        * @tc.size      : MEDIUM
        * @tc.type      : Function
        * @tc.level     : Level 0
        */
-        it('SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_009', 0, async function (done) {
-            let testNum = 'SUB__MEDIA_MIDIALIBRARY_PROMISE_CREATEASSET_001';
+        it('SUB_MEDIA_MEDIALIBRARY_PROMISE_CREATEASSET_009', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_PROMISE_CREATEASSET_001';
             let currentFetchOps = fetchOps(testNum, 'Pictures/Static/', IMAGE_TYPE);
             let type = IMAGE_TYPE;
             let name = new Date().getTime() + '.jpg';

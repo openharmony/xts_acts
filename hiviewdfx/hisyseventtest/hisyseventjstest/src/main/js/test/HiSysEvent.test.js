@@ -48,7 +48,7 @@ describe('hiSysEventJsTest', function () {
 			console.log('HiSysEvent into json-callback');
 			if (err) {
 				console.error(`HiSysEvent json-callback-error code=${err.code}`);
-				expect().assertFail();
+				expect(err.code == 0).assertFail();
 				done();
 			} else {
 				console.log(`HiSysEvent json-callback-success value=${value}`);
@@ -76,6 +76,11 @@ describe('hiSysEventJsTest', function () {
 				expect(value == 0).assertTrue();
 				done();
 			}
+		).catch(
+			(err) => {
+				console.error(`HiSysEvent json-callback-error code=${err.code}`);
+				expect(err.code == 0).assertFail();
+			}
 		)
 		console.info('testHiSysEventApi02 end')
 	})
@@ -95,7 +100,7 @@ describe('hiSysEventJsTest', function () {
 			console.log('HiSysEvent into json-callback');
 			if (err) {
 				console.error(`HiSysEvent json-callback-error code=${err.code}`);
-				expect().assertFail();
+				expect(err.code == 0).assertFail();
 				done();
 			} else {
 				console.log(`HiSysEvent json-callback-success value=${value}`);
@@ -114,14 +119,14 @@ describe('hiSysEventJsTest', function () {
 	it('testHiSysEventApi05', 3, async function (done) {
 		console.info('testHiSysEventApi05 start')
 		hiSysEvent.write({
-			domain: "RELIABILITY",
-			name: "STACK",
+			domain: "HIVIEWDFX",
+			name: "PLUGIN_STATS",
 			eventType: hiSysEvent.EventType.STATISTIC,
 		},(err, value) => {
 			console.log('HiSysEvent into json-callback');
 			if (err) {
 				console.error(`HiSysEvent json-callback-error code=${err.code}`);
-				expect().assertFail();
+				expect(err.code == 0).assertFail();
 				done();
 			} else {
 				console.log(`HiSysEvent json-callback-success value=${value}`);
@@ -140,14 +145,14 @@ describe('hiSysEventJsTest', function () {
 	it('testHiSysEventApi06', 3, async function (done) {
 		console.info('testHiSysEventApi06 start')
 		hiSysEvent.write({
-			domain: "RELIABILITY",
-			name: "STACK",
+			domain: "ACCOUNT",
+			name: "PERMISSION_EXCEPTION",
 			eventType: hiSysEvent.EventType.SECURITY,
 		},(err, value) => {
 			console.log('HiSysEvent into json-callback');
 			if (err) {
 				console.error(`HiSysEvent json-callback-error code=${err.code}`);
-				expect().assertFail();
+				expect(err.code == 0).assertFail();
 				done();
 			} else {
 				console.log(`HiSysEvent json-callback-success value=${value}`);
@@ -166,14 +171,14 @@ describe('hiSysEventJsTest', function () {
 	it('testHiSysEventApi07', 3, async function (done) {
 		console.info('testHiSysEventApi07 start')
 		hiSysEvent.write({
-			domain: "RELIABILITY",
-			name: "STACK",
+			domain: "HIVIEWDFX",
+			name: "PLUGIN_LOAD",
 			eventType: hiSysEvent.EventType.BEHAVIOR,
 		},(err, value) => {
 			console.log('HiSysEvent into json-callback');
 			if (err) {
 				console.error(`HiSysEvent json-callback-error code=${err.code}`);
-				expect().assertFail();
+				expect(err.code == 0).assertFail();
 				done();
 			} else {
 				console.log(`HiSysEvent json-callback-success value=${value}`);
@@ -206,7 +211,7 @@ describe('hiSysEventJsTest', function () {
 			console.log('HiSysEvent into json-callback');
 			if (err) {
 				console.error(`HiSysEvent json-callback-error code=${err.code}`);
-				expect().assertFail();
+				expect(err.code == 0).assertFail();
 				done();
 			} else {
 				console.log(`HiSysEvent json-callback-success value=${value}`);
@@ -225,8 +230,8 @@ describe('hiSysEventJsTest', function () {
 	it('testHiSysEventApi09', 3, async function (done) {
 		console.info('testHiSysEventApi09 start')
 		hiSysEvent.write({
-			domain: "RELIABILITY",
-			name: "STACK",
+			domain: "HIVIEWDFX",
+			name: "PLUGIN_STATS",
 			eventType: hiSysEvent.EventType.STATISTIC,
 			params: {
 				PID: 487,
@@ -239,7 +244,7 @@ describe('hiSysEventJsTest', function () {
 			console.log('HiSysEvent into json-callback');
 			if (err) {
 				console.error(`HiSysEvent json-callback-error code=${err.code}`);
-				expect().assertFail();
+				expect(err.code == 0).assertFail();
 				done();
 			} else {
 				console.log(`HiSysEvent json-callback-success value=${value}`);
@@ -258,8 +263,8 @@ describe('hiSysEventJsTest', function () {
 	it('testHiSysEventApi10', 3, async function (done) {
 		console.info('testHiSysEventApi10 start')
 		hiSysEvent.write({
-			domain: "RELIABILITY",
-			name: "STACK",
+			domain: "ACCOUNT",
+			name: "PERMISSION_EXCEPTION",
 			eventType: hiSysEvent.EventType.SECURITY,
 			params: {
 				PID: 487,
@@ -272,7 +277,7 @@ describe('hiSysEventJsTest', function () {
 			console.log('testHiSysEventApi10 into json-callback');
 			if (err) {
 				console.error(`testHiSysEventApi10 json-callback-error code=${err.code}`);
-				expect().assertFail();
+				expect(err.code == 0).assertFail();
 				done();
 			} else {
 				console.log(`testHiSysEventApi10 json-callback-success value=${value}`);
@@ -291,8 +296,8 @@ describe('hiSysEventJsTest', function () {
 	it('testHiSysEventApi11', 3, async function (done) {
 		console.info('testHiSysEventApi11 start')
 		hiSysEvent.write({
-			domain: "RELIABILITY",
-			name: "STACK",
+			domain: "HIVIEWDFX",
+			name: "PLUGIN_LOAD",
 			eventType: hiSysEvent.EventType.BEHAVIOR,
 			params: {
 				PID: 487,
@@ -305,7 +310,7 @@ describe('hiSysEventJsTest', function () {
 			console.log('testHiSysEventApi11 into json-callback');
 			if (err) {
 				console.error(`testHiSysEventApi11 json-callback-error code=${err.code}`);
-				expect().assertFail();
+				expect(err.code == 0).assertFail();
 				done();
 			} else {
 				console.log(`testHiSysEventApi11 json-callback-success value=${value}`);
@@ -768,8 +773,8 @@ describe('hiSysEventJsTest', function () {
 	it('testHiSysEventApi24', 1, async function (done) {
 		console.info('testHiSysEventApi24 start')
 		hiSysEvent.write({
-			domain: "RELIABILITY",
-			name: "STACK",
+			domain: "ACCOUNT",
+			name: "PERMISSION_EXCEPTION",
 			eventType: hiSysEvent.EventType.SECURITY,
 			params: {
 				PID: 487,
@@ -794,8 +799,8 @@ describe('hiSysEventJsTest', function () {
                 endTime: -1,
                 maxEvents: 1,
             }, [{
-                domain: "RELIABILITY",
-                names: ["STACK"],
+                domain: "ACCOUNT",
+                names: ["PERMISSION_EXCEPTION"],
             }], {
                 onQuery: function (infos, seqs) {
                     console.info(`testHiSysEventApi24: onQuery...`)
@@ -840,22 +845,8 @@ describe('hiSysEventJsTest', function () {
 	it('testHiSysEventApi25', 1, async function (done) {
 		console.info('testHiSysEventApi25 start')
 		hiSysEvent.write({
-			domain: "AAFWK",
-			name: "JS_ERROR",
-			eventType: hiSysEvent.EventType.SECURITY,
-		},(err, value) => {
-			console.log('testHiSysEventApi25 into json-callback');
-			if (err) {
-				console.error('in testHiSysEventApi25 test callback: err.code = ' + err.code)
-                result = err.code
-			} else {
-				console.info('in testHiSysEventApi25 test callback: result = ' + value)
-                result = value;
-			}
-		});
-		hiSysEvent.write({
-			domain: "AAFWK",
-			name: "LIFECYCLE_TIMEOUT",
+			domain: "HIVIEWDFX",
+			name: "SYS_USAGE",
 			eventType: hiSysEvent.EventType.STATISTIC,
 		},(err, value) => {
 			console.log('testHiSysEventApi25 into json-callback');
@@ -867,14 +858,31 @@ describe('hiSysEventJsTest', function () {
                 result = value;
 			}
 		});
+		console.info('add second..')
+		setTimeout(() => {
+			hiSysEvent.write({
+				domain: "HIVIEWDFX",
+				name: "PLUGIN_STATS",
+				eventType: hiSysEvent.EventType.STATISTIC,
+			},(err, value) => {
+				console.log('testHiSysEventApi25 into json-callback');
+				if (err) {
+					console.error('in testHiSysEventApi25 test callback: err.code = ' + err.code)
+					result = err.code
+				} else {
+					console.info('in testHiSysEventApi25 test callback: result = ' + value)
+					result = value;
+				}
+			})
+		},1000)
 		setTimeout(() => {
             let ret = hiSysEvent.query({
                 beginTime: -1,
                 endTime: -1,
                 maxEvents: 5,
             }, [{
-                domain: "AAFWK",
-                names: ["JS_ERROR","LIFECYCLE_TIMEOUT"],
+                domain: "HIVIEWDFX",
+                names: ["SYS_USAGE","PLUGIN_STATS"],
             }], {
                 onQuery: function (infos, seqs) {
                     console.info(`testHiSysEventApi25: onQuery...`)

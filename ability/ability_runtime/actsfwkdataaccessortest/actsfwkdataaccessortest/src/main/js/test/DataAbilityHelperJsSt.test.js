@@ -41,6 +41,7 @@ describe('ActsDataAbilityHelperTest', function () {
         } catch (err) {
             console.error('=ACTS_beforeAll acquireDataAbilityHelper catch(err)====>:' + err);
         }
+        sleep(300);
         console.debug('= ACTS_beforeAll ====<end');
         done();
     })
@@ -49,6 +50,15 @@ describe('ActsDataAbilityHelperTest', function () {
         console.debug('= ACTS_afterAll ====<end');
         done();
     })
+
+    function sleep(delay) {
+        let start = new Date().getTime();
+        while (true) {
+            if (new Date().getTime() - start > delay) {
+                break;
+            }
+        }
+    }
 
     /*
     * @tc.number: ACTS_AcquireDataAbilityHelper_0100
@@ -59,13 +69,13 @@ describe('ActsDataAbilityHelperTest', function () {
         console.log('ACTS_AcquireDataAbilityHelper_0100====<begin');
         console.debug("=ACTS_AcquireDataAbilityHelper_0100 dataAbilityUri====>" + dataAbilityUri)
         try {
-            var abilityHelper = featureAbility.acquireDataAbilityHelper(dataAbilityUri)
-            console.log('ACTS_AcquireDataAbilityHelper_0100 abilityHelper ====>: '
-                + abilityHelper + " ,JSON. " + JSON.stringify(abilityHelper))
             if(DAHelper == null){
+                var abilityHelper = featureAbility.acquireDataAbilityHelper(dataAbilityUri)
+                console.log('ACTS_AcquireDataAbilityHelper_0100 abilityHelper ====>: '
+                    + abilityHelper + " ,JSON. " + JSON.stringify(abilityHelper))
                 DAHelper = abilityHelper;
             }
-            expect(typeof (abilityHelper)).assertEqual("object");
+            expect(typeof (DAHelper)).assertEqual("object");
         } catch (err) {
             console.error('=ACTS_GetDataAbilityHelper_0100 acquireDataAbilityHelper catch(err)====>:' + err);
             expect(false).assertTrue();
@@ -8314,148 +8324,6 @@ describe('ActsDataAbilityHelperTest', function () {
                 + ("json err 【") + JSON.stringify(err) + (" 】 ,") + err);
             expect(false).assertTrue();
             console.debug('ACTS_ExecuteBatch_1200====<end catch');
-            done();
-        }
-    })
-
-    /*
-    * @tc.number: ACTS_Release_0100
-    * @tc.name: Releases the client resource of the Data ability.
-    * @tc.desc: Check the return value of the interface (by promise)
-    */
-    it('ACTS_Release_0100', 0, async function (done) {
-        console.log('ACTS_Release_0100====<begin');
-        var rDAHelper
-        try {
-            rDAHelper = featureAbility.acquireDataAbilityHelper(dataAbilityUri);
-            console.debug('ACTS_beforeAll rDAHelper ====>: ' + rDAHelper + " ,JSON. " + JSON.stringify(rDAHelper));
-            expect(typeof (rDAHelper)).assertEqual("object");
-            rDAHelper.release().then((data) => {
-                console.debug("=ACTS_Release_0100 then data====>"
-                    + ("json data 【") + JSON.stringify(data) + (" 】") + " , " + data);
-                expect(data).assertEqual(true);
-                console.log('ACTS_Release_0100====<end');
-                done();
-            }).catch(err => {
-                console.debug("=ACTS_Release_0100 catch err ====>"
-                    + ("json err 【") + JSON.stringify(err) + (" 】 "));
-                expect(false).assertTrue();
-                console.log('ACTS_Release_0100====<end .catch');
-                done();
-            });
-        } catch (err) {
-            console.error('=ACTS_Release_0100 release promise catch(err)====>:' + err);
-            expect(false).assertTrue();
-            console.log('ACTS_Release_0100====<end catch(err)');
-            done();
-        }
-    })
-
-    /*
-    * @tc.number: ACTS_Release_0200
-    * @tc.name: Releases the client resource of the Data ability.
-    * @tc.desc: Check the return value of the interface (by AsyncCallback)
-    */
-    it('ACTS_Release_0200', 0, async function (done) {
-        console.log('ACTS_Release_0200====<begin');
-        var rDAHelper
-        try {
-            rDAHelper = featureAbility.acquireDataAbilityHelper(dataAbilityUri);
-            console.debug('ACTS_beforeAll rDAHelper ====>: ' + rDAHelper + " ,JSON. " + JSON.stringify(rDAHelper));
-            expect(typeof (rDAHelper)).assertEqual("object");
-            rDAHelper.release((err, data) => {
-                console.debug("=ACTS_Release_0200 err,data=======>"
-                    + ("json err【") + JSON.stringify(err) + (" 】json data【") + JSON.stringify(data) + (" 】;"));
-                console.log('featureAbility  getDataAbilityHelper ACTS_Release_0200  data: ' + data)
-                expect(data).assertEqual(true);
-                console.log('ACTS_Release_0200====<end');
-                done();
-            },
-            );
-        } catch (err) {
-            console.error('=ACTS_Release_0200 release AsyncCallback catch(err)====>:' + err);
-            expect(false).assertTrue();
-            console.log('ACTS_Release_0200====<end catch');
-            done();
-        }
-    })
-
-    /*
-    * @tc.number: ACTS_Release_0300
-    * @tc.name: Releases the client resource of the Data ability.
-    * @tc.desc: Check the return value of the interface (by promise)
-    */
-    it('ACTS_Release_0300', 0, async function (done) {
-        console.log('ACTS_Release_0300====<begin');
-        var rDAHelper
-        try {
-            rDAHelper = featureAbility.acquireDataAbilityHelper(dataAbilityUri);
-            console.debug('ACTS_beforeAll rDAHelper ====>: ' + rDAHelper + " ,JSON. " + JSON.stringify(rDAHelper));
-            expect(typeof (rDAHelper)).assertEqual("object");
-            rDAHelper.release().then((data) => {
-                console.debug("=ACTS_Release_0300 then data====>"
-                    + ("json data 【") + JSON.stringify(data) + (" 】") + " , " + data);
-                expect(data).assertEqual(true);
-                rDAHelper.release().then((data) => {
-                    console.debug("=ACTS_Release_0300 then data====>"
-                        + ("json data 【") + JSON.stringify(data) + (" 】") + " , " + data);
-                    expect(data).assertEqual(false);
-                    console.log('ACTS_Release_0300====<end');
-                    done();
-                }).catch(err => {
-                    console.debug("=ACTS_Release_0300 catch err ====>"
-                        + ("json err 【") + JSON.stringify(err) + (" 】 "));
-                    expect(false).assertTrue();
-                    console.log('ACTS_Release_0300====<end .catch');
-                    done();
-                });
-            }).catch(err => {
-                console.debug("=ACTS_Release_0300 catch err ====>"
-                    + ("json err 【") + JSON.stringify(err) + (" 】 "));
-                expect(false).assertTrue();
-                console.log('ACTS_Release_0300====<end .catch');
-                done();
-            });
-        } catch (err) {
-            console.error('=ACTS_Release_0300 release promise catch(err)====>:' + err);
-            expect(false).assertTrue();
-            console.log('ACTS_Release_0300====<end catch(err)');
-            done();
-        }
-    })
-
-    /*
-    * @tc.number: ACTS_Release_0400
-    * @tc.name: Releases the client resource of the Data ability.
-    * @tc.desc: Check the return value of the interface (by AsyncCallback)
-    */
-    it('ACTS_Release_0400', 0, async function (done) {
-        console.log('ACTS_Release_0400====<begin');
-        var rDAHelper
-        try {
-            rDAHelper = featureAbility.acquireDataAbilityHelper(dataAbilityUri);
-            console.debug('ACTS_beforeAll rDAHelper ====>: ' + rDAHelper + " ,JSON. " + JSON.stringify(rDAHelper));
-            expect(typeof (rDAHelper)).assertEqual("object");
-            rDAHelper.release((err, data) => {
-                console.debug("=ACTS_Release_0400 err,data=======>"
-                    + ("json err【") + JSON.stringify(err) + (" 】json data【") + JSON.stringify(data) + (" 】;"));
-                console.log('featureAbility  getDataAbilityHelper ACTS_Release_0400  data: ' + data)
-                expect(data).assertEqual(true);
-                rDAHelper.release((err, data) => {
-                    console.debug("=ACTS_Release_0400 err,data=======>"
-                        + ("json err【") + JSON.stringify(err) + (" ,") + JSON.stringify(data) + (" 】;"));
-                    console.log('featureAbility  getDataAbilityHelper ACTS_Release_0400  data: ' + data)
-                    expect(data).assertEqual(false);
-                    console.log('ACTS_Release_0400====<end');
-                    done();
-                },
-                );
-            },
-            );
-        } catch (err) {
-            console.error('=ACTS_Release_0400 release AsyncCallback catch(err)====>:' + err);
-            expect(false).assertTrue();
-            console.log('ACTS_Release_0400====<end catch');
             done();
         }
     })

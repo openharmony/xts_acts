@@ -33,7 +33,7 @@ export default function favoriteTestCallbackTest(abilityContext) {
         beforeAll(async function () {
             console.info('beforeAll case');
             await getPermission();
-            await checkPresetsAssets(media, 'ActsMediaLibraryFavorite');
+            await checkPresetsAssets(media, 'ActsMediaLibraryFavoriteTest');
         });
         beforeEach(function () {
             console.info('beforeEach case');

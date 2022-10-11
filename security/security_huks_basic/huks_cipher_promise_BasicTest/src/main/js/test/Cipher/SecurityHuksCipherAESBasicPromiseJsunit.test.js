@@ -51,6 +51,7 @@ async function publicInitFunc(srcKeyAlies, HuksOptions) {
       console.log(`test init data: ${JSON.stringify(data)}`);
       handle = data.handle;
       expect(data.errorCode == 0).assertTrue();
+      expect(data.token == null).assertTrue();
     })
     .catch((err) => {
       console.log('test init err information: ' + JSON.stringify(err));

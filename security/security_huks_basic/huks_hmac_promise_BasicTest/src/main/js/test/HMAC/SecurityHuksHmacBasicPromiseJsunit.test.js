@@ -13,15 +13,16 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from '@ohos/hypium';
-import huks from '@ohos.security.huks';
-import Data from '../../../../../../utils/data.json';
-import { HuksHmac } from '../../../../../../utils/param/hmac/publicHmacParam.js';
-import { stringToArray } from '../../../../../../utils/param/publicFunc.js';
+import { describe, it, expect } from "@ohos/hypium";
+import huks from "@ohos.security.huks";
+import Data from "../../../../../../utils/data.json";
+import { HuksHmac } from "../../../../../../utils/param/hmac/publicHmacParam.js";
+import { stringToArray } from "../../../../../../utils/param/publicFunc.js";
 
 var handle;
 let srcData63Kb = Data.Date63KB;
 let srcData65Kb = Data.Date65KB;
+let emptyOptions = { properties: [] };
 
 async function publicHmacGenFunc(srcKeyAlies, HuksOptions) {
   HuksOptions.properties.splice(1, 0, HuksHmac.HuksKeySIZE);
@@ -32,10 +33,94 @@ async function publicHmacGenFunc(srcKeyAlies, HuksOptions) {
       expect(data.errorCode == 0).assertTrue();
     })
     .catch((err) => {
-      console.log('test generateKey err information: ' + JSON.stringify(err));
+      console.error("test generateKey err information: " + JSON.stringify(err));
+      expect(null).assertFail();
+    });
+
+  await huks
+    .getKeyProperties(srcKeyAlies, HuksOptions)
+    .then(async (data) => {
+      console.log(`test finish data ${JSON.stringify(data)}`);
+      expect(data.errorCode == 0).assertTrue();
+    })
+    .catch((err) => {
+      console.error("test init err: " + JSON.stringify(err));
+      expect(null).assertFail();
+    });
+
+  await getKeyProperties(srcKeyAlies, HuksOptions)
+    .then((data) => {
+      console.log("test generateKey data: " + JSON.stringify(data));
+      expect(data.errorCode == 0).assertTrue();
+    })
+    .catch((err) => {
+      console.error("test init err: " + JSON.stringify(err));
+      expect(null).assertFail();
+    });
+
+  await huks
+    .isKeyExist(srcKeyAlies, emptyOptions)
+    .then(async (data) => {
+      console.log("isKeyExist data: " + JSON.stringify(data));
+      expect(data == true).assertTrue();
+    })
+    .catch((err) => {
+      console.error("isKeyExist err: " + JSON.stringify(err));
+      expect(null).assertFail();
+    });
+
+  await isKeyExist(srcKeyAlies, emptyOptions)
+    .then((data) => {
+      console.log("isKeyExist data: " + JSON.stringify(data));
+      expect(data == true).assertTrue();
+    })
+    .catch((err) => {
+      console.error("isKeyExist err: " + JSON.stringify(err));
       expect(null).assertFail();
     });
   HuksOptions.properties.splice(1, 1);
+}
+
+function getKeyProperties(srcKeyAlies, HuksOptions) {
+  return new Promise((resolve, reject) => {
+    huks.getKeyProperties(srcKeyAlies, HuksOptions, function (err, data) {
+      try {
+        if (err.code != 0) {
+          console.error(
+            "test generateKey err information: " + JSON.stringify(err)
+          );
+          reject(err);
+        } else {
+          resolve(data);
+        }
+      } catch (e) {
+        console.error(
+          "test generateKey err information:: " + JSON.stringify(e)
+        );
+        reject(e);
+      }
+    });
+  });
+}
+
+function isKeyExist(srcKeyAlies, emptyOptions) {
+  return new Promise((resolve, reject) => {
+    huks.isKeyExist(srcKeyAlies, emptyOptions, function (err, data) {
+      try {
+        if (err.code != 0) {
+          console.error(
+            "test isKeyExist err information: " + JSON.stringify(err)
+          );
+          reject(err);
+        } else {
+          resolve(data);
+        }
+      } catch (e) {
+        console.error("test isKeyExist err information: " + JSON.stringify(e));
+        reject(e);
+      }
+    });
+  });
 }
 
 async function publicHmacInitFunc(srcKeyAlies, HuksOptions) {
@@ -63,19 +148,26 @@ async function publicHmacUpdateFunc(HuksOptions) {
     let count = Math.floor(inDataArray.length / dateSize);
     let remainder = inDataArray.length % dateSize;
     for (let i = 0; i < count; i++) {
-      HuksOptions.inData = new Uint8Array(stringToArray(huksOptionsInData).slice(dateSize * i, dateSize * (i + 1)));
+      HuksOptions.inData = new Uint8Array(
+        stringToArray(huksOptionsInData).slice(dateSize * i, dateSize * (i + 1))
+      );
       await update(handle, HuksOptions);
     }
     if (remainder !== 0) {
-      HuksOptions.inData = new Uint8Array(stringToArray(huksOptionsInData).slice(dateSize * count, inDataArray.length));
+      HuksOptions.inData = new Uint8Array(
+        stringToArray(huksOptionsInData).slice(
+          dateSize * count,
+          inDataArray.length
+        )
+      );
       await update(handle, HuksOptions);
     }
   }
 }
 
 async function publicHmacFinish(HuksOptions, thirdInderfaceName) {
-  if (thirdInderfaceName == 'finish') {
-    HuksOptions.inData = new Uint8Array(stringToArray('0'));
+  if (thirdInderfaceName == "finish") {
+    HuksOptions.inData = new Uint8Array(stringToArray("0"));
     await huks
       .finish(handle, HuksOptions)
       .then((data) => {
@@ -83,10 +175,10 @@ async function publicHmacFinish(HuksOptions, thirdInderfaceName) {
         expect(data.errorCode == 0).assertTrue();
       })
       .catch((err) => {
-        console.log('test finish err information: ' + err);
+        console.log("test finish err information: " + err);
         expect(null).assertFail();
       });
-  } else if (thirdInderfaceName == 'abort') {
+  } else if (thirdInderfaceName == "abort") {
     await huks
       .abort(handle, HuksOptions)
       .then((data) => {
@@ -94,7 +186,7 @@ async function publicHmacFinish(HuksOptions, thirdInderfaceName) {
         expect(data.errorCode == 0).assertTrue();
       })
       .catch((err) => {
-        console.log('test abort err information: ' + err);
+        console.log("test abort err information: " + err);
         expect(null).assertFail();
       });
   }
@@ -109,7 +201,7 @@ async function publicHmacDelete(srcKeyAlies, HuksOptions) {
       expect(data.errorCode == 0).assertTrue();
     })
     .catch((err) => {
-      console.log('test deleteKey err information: ' + JSON.stringify(err));
+      console.log("test deleteKey err information: " + JSON.stringify(err));
       expect(null).assertFail();
     });
 }
@@ -134,105 +226,124 @@ async function update(handle, HuksOptions) {
       expect(data.errorCode == 0).assertTrue();
     })
     .catch((err) => {
-      console.log('test update err information: ' + err);
+      console.log("test update err information: " + err);
       expect(null).assertFail();
     });
 }
 
 export default function SecurityHuksHmacBasicPromiseJsunit() {
-describe('SecurityHuksHmacBasicPromiseJsunit', function () {
-  it('testHmac101', 0, async function (done) {
-    const srcKeyAlies = 'testHmacDigestSHA1KeyAlias101';
-    let HuksOptions = {
-      properties: new Array(HuksHmac.HuksKeyAlg, HuksHmac.HuksKeyPurpose, HuksHmac.HuksTagDigestSHA1),
-      inData: srcData63Kb,
-    };
-    await publicHmacFunc(srcKeyAlies, HuksOptions, 'finish');
-    done();
-  });
+  describe("SecurityHuksHmacBasicPromiseJsunit", function () {
+    it("testHmac101", 0, async function (done) {
+      const srcKeyAlies = "testHmacDigestSHA1KeyAlias101";
+      let HuksOptions = {
+        properties: new Array(
+          HuksHmac.HuksKeyAlg,
+          HuksHmac.HuksKeyPurpose,
+          HuksHmac.HuksTagDigestSHA1
+        ),
+        inData: srcData63Kb,
+      };
+      await publicHmacFunc(srcKeyAlies, HuksOptions, "finish");
+      done();
+    });
 
-  it('testHmac102', 0, async function (done) {
-    const srcKeyAlies = 'testHmacDigestSHA1KeyAlias102';
-    let HuksOptions = {
-      properties: new Array(HuksHmac.HuksKeyAlg, HuksHmac.HuksKeyPurpose, HuksHmac.HuksTagDigestSHA1),
-      inData: srcData63Kb,
-    };
-    await publicHmacFunc(srcKeyAlies, HuksOptions, 'abort');
-    done();
-  });
+    it("testHmac102", 0, async function (done) {
+      const srcKeyAlies = "testHmacDigestSHA1KeyAlias102";
+      let HuksOptions = {
+        properties: new Array(
+          HuksHmac.HuksKeyAlg,
+          HuksHmac.HuksKeyPurpose,
+          HuksHmac.HuksTagDigestSHA1
+        ),
+        inData: srcData63Kb,
+      };
+      await publicHmacFunc(srcKeyAlies, HuksOptions, "abort");
+      done();
+    });
 
-  it('testHmac103', 0, async function (done) {
-    const srcKeyAlies = 'testHmacDigestSHA1KeyAlias103';
-    let HuksOptions = {
-      properties: new Array(HuksHmac.HuksKeyAlg, HuksHmac.HuksKeyPurpose, HuksHmac.HuksTagDigestSHA1),
-      inData: srcData65Kb,
-    };
-    await publicHmacFunc(srcKeyAlies, HuksOptions, 'finish');
-    done();
-  });
+    it("testHmac103", 0, async function (done) {
+      const srcKeyAlies = "testHmacDigestSHA1KeyAlias103";
+      let HuksOptions = {
+        properties: new Array(
+          HuksHmac.HuksKeyAlg,
+          HuksHmac.HuksKeyPurpose,
+          HuksHmac.HuksTagDigestSHA1
+        ),
+        inData: srcData65Kb,
+      };
+      await publicHmacFunc(srcKeyAlies, HuksOptions, "finish");
+      done();
+    });
 
-  it('testHmac104', 0, async function (done) {
-    const srcKeyAlies = 'testHmacDigestSHA1KeyAlias104';
-    let HuksOptions = {
-      properties: new Array(HuksHmac.HuksKeyAlg, HuksHmac.HuksKeyPurpose, HuksHmac.HuksTagDigestSHA1),
-      inData: srcData65Kb,
-    };
-    await publicHmacFunc(srcKeyAlies, HuksOptions, 'abort');
-    done();
-  });
-  it('testHmacSM3001', 0, async function (done) {
-    let srcKeyAlies = 'testHmacDigestSM3KeyAlias001';
-    let HuksOptions = {
-      properties: new Array(
-        HuksHmac.HuksKeyAlg,
-        HuksHmac.HuksKeyPurpose,
-        HuksHmac.HuksTagDigestSM3
-      ),
-      inData: srcData63Kb,
-    };
+    it("testHmac104", 0, async function (done) {
+      const srcKeyAlies = "testHmacDigestSHA1KeyAlias104";
+      let HuksOptions = {
+        properties: new Array(
+          HuksHmac.HuksKeyAlg,
+          HuksHmac.HuksKeyPurpose,
+          HuksHmac.HuksTagDigestSHA1
+        ),
+        inData: srcData65Kb,
+      };
+      await publicHmacFunc(srcKeyAlies, HuksOptions, "abort");
+      done();
+    });
 
-    await publicHmacFunc(srcKeyAlies, HuksOptions, 'finish');
-    done();
-  });
+    it("testHmacSM3101", 0, async function (done) {
+      let srcKeyAlies = "testHmacDigestSM3KeyAlias001";
+      let HuksOptions = {
+        properties: new Array(
+          HuksHmac.HuksKeyAlg,
+          HuksHmac.HuksKeyPurpose,
+          HuksHmac.HuksTagDigestSM3
+        ),
+        inData: srcData63Kb,
+      };
 
-  it('testHmacSM3002', 0, async function (done) {
-    let srcKeyAlies = 'testHmacDigestSM3KeyAlias002';
-    let HuksOptions = {
-      properties: new Array(
-        HuksHmac.HuksKeyAlg,
-        HuksHmac.HuksKeyPurpose,
-        HuksHmac.HuksTagDigestSM3
-      ),
-      inData: srcData63Kb,
-    };
-    await publicHmacFunc(srcKeyAlies, HuksOptions, 'abort');
-    done();
+      await publicHmacFunc(srcKeyAlies, HuksOptions, "finish");
+      done();
+    });
+
+    it("testHmacSM3102", 0, async function (done) {
+      let srcKeyAlies = "testHmacDigestSM3KeyAlias002";
+      let HuksOptions = {
+        properties: new Array(
+          HuksHmac.HuksKeyAlg,
+          HuksHmac.HuksKeyPurpose,
+          HuksHmac.HuksTagDigestSM3
+        ),
+        inData: srcData63Kb,
+      };
+      await publicHmacFunc(srcKeyAlies, HuksOptions, "abort");
+      done();
+    });
+
+    it("testHmacSM3103", 0, async function (done) {
+      let srcKeyAlies = "testHmacDigestSM3KeyAlias003";
+      let HuksOptions = {
+        properties: new Array(
+          HuksHmac.HuksKeyAlg,
+          HuksHmac.HuksKeyPurpose,
+          HuksHmac.HuksTagDigestSM3
+        ),
+        inData: srcData65Kb,
+      };
+      await publicHmacFunc(srcKeyAlies, HuksOptions, "finish");
+      done();
+    });
+
+    it("testHmacSM3104", 0, async function (done) {
+      let srcKeyAlies = "testHmacDigestSM3KeyAlias004";
+      let HuksOptions = {
+        properties: new Array(
+          HuksHmac.HuksKeyAlg,
+          HuksHmac.HuksKeyPurpose,
+          HuksHmac.HuksTagDigestSM3
+        ),
+        inData: srcData65Kb,
+      };
+      await publicHmacFunc(srcKeyAlies, HuksOptions, "abort");
+      done();
+    });
   });
-  it('testHmacSM3003', 0, async function (done) {
-    let srcKeyAlies = 'testHmacDigestSM3KeyAlias003';
-    let HuksOptions = {
-      properties: new Array(
-        HuksHmac.HuksKeyAlg,
-        HuksHmac.HuksKeyPurpose,
-        HuksHmac.HuksTagDigestSM3
-      ),
-      inData: srcData65Kb,
-    };
-    await publicHmacFunc(srcKeyAlies, HuksOptions, 'finish');
-    done();
-  });
-  it('testHmacSM3004', 0, async function (done) {
-    let srcKeyAlies = 'testHmacDigestSM3KeyAlias004';
-    let HuksOptions = {
-      properties: new Array(
-        HuksHmac.HuksKeyAlg,
-        HuksHmac.HuksKeyPurpose,
-        HuksHmac.HuksTagDigestSM3
-      ),
-      inData: srcData65Kb,
-    };
-    await publicHmacFunc(srcKeyAlies, HuksOptions, 'abort');
-    done();
-  });
-});
 }

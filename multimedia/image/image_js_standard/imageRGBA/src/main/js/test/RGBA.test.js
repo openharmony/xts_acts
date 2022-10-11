@@ -35,7 +35,7 @@ describe('Image', function () {
     })
 
     /**
-     * @tc.number    : RGBA_001
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0100
      * @tc.name      : create pixelmap-promise (editable: true, pixelFormat: RGBA_F16,
      *                                          size: { height: 4, width: 6 }, bytes = buffer)
      * @tc.desc      : 1.create InitializationOptions object
@@ -46,7 +46,7 @@ describe('Image', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('RGBA_001', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0100', 0, async function (done) {
         const Color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: 7, size: { height: 4, width: 6 } }
         image.createPixelMap(Color, opts)
@@ -56,14 +56,14 @@ describe('Image', function () {
                 done();
             })
             .catch(error => {
-                console.log('RGBA_001 err' + error);
+                console.log('SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0100 err' + error);
                 expect(false).assertTrue();
                 done();
             })
     })
 
     /**
-     * @tc.number    : RGBA_002
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0100
      * @tc.name      : create pixelmap-callback (editable: true, pixelFormat: RGBA_F16,
      *                                           size: { height: 4, width: 6 },bytes = buffer)
      * @tc.desc      : 1.create InitializationOptions object
@@ -74,12 +74,12 @@ describe('Image', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
     */
-    it('RGBA_002', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0100', 0, async function (done) {
         const Color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: 7, size: { height: 4, width: 6 } }
         image.createPixelMap(Color, opts, (err, pixelmap) => {
             if (err != undefined) {
-                console.info('RGBA_002 err: ' + err);
+                console.info('SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0100 err: ' + err);
                 expect(false).assertTrue();
                 done();
                 return;
@@ -91,7 +91,7 @@ describe('Image', function () {
     })
 
     /**
-     * @tc.number    : RGBA_003
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0200
      * @tc.name      : create pixelmap-promise (editable: false, pixelFormat: RGBA_F16,
      *                                          size: { height: 4, width: 6 }, bytes = buffer)
      * @tc.desc      : 1.create InitializationOptions object
@@ -102,7 +102,7 @@ describe('Image', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('RGBA_003', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0200', 0, async function (done) {
         const Color = new ArrayBuffer(96);
         let opts = { editable: false, pixelFormat: 7, size: { height: 4, width: 6 } }
         image.createPixelMap(Color, opts)
@@ -112,14 +112,14 @@ describe('Image', function () {
                 done();
             })
             .catch(error => {
-                console.log('RGBA_003 err' + error);
+                console.log('SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0200 err' + error);
                 expect(false).assertTrue();
                 done();
             })
     })
 
     /**
-    * @tc.number    : RGBA_004
+    * @tc.number    : SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0200
     * @tc.name      : create pixelmap-callback (editable: false, pixelFormat: RGBA_F16,
     *                                           size: { height: 4, width: 6 },bytes = buffer)
     * @tc.desc      : 1.create InitializationOptions object
@@ -130,12 +130,12 @@ describe('Image', function () {
     * @tc.type      : Functional
     * @tc.level     : Level 0
     */
-    it('RGBA_004', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0200', 0, async function (done) {
         const Color = new ArrayBuffer(96);
         let opts = { editable: false, pixelFormat: 7, size: { height: 4, width: 6 } }
         image.createPixelMap(Color, opts, (err, pixelmap) => {
             if (err != undefined) {
-                console.info('RGBA_002 err: ' + err);
+                console.info('SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0200 err: ' + err);
                 expect(false).assertTrue();
                 done();
                 return;
@@ -148,7 +148,7 @@ describe('Image', function () {
     })
 
     /**
-     * @tc.number    : RGBA_005
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0300
      * @tc.name      : create pixelmap-promise (editable: true, pixelFormat: ALPHA_8,
      *                                          size: { height: 4, width: 6 }, bytes = buffer)
      * @tc.desc      : 1.create InitializationOptions object
@@ -159,7 +159,7 @@ describe('Image', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('RGBA_005', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0300', 0, async function (done) {
         const Color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: 6, size: { height: 4, width: 6 } }
         image.createPixelMap(Color, opts)
@@ -169,14 +169,14 @@ describe('Image', function () {
                 done();
             })
             .catch(error => {
-                console.log('RGBA_005 err' + error);
+                console.log('SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0300 err' + error);
                 expect(false).assertTrue();
                 done();
             })
     })
 
     /**
-     * @tc.number    : RGBA_006
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0400
      * @tc.name      : create pixelmap-promise (editable: true, pixelFormat: RGB_565,
      *                                          size: { height: 4, width: 6 }, bytes = buffer)
      * @tc.desc      : 1.create InitializationOptions object
@@ -187,7 +187,7 @@ describe('Image', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('RGBA_006', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0400', 0, async function (done) {
         const Color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: 2, size: { height: 4, width: 6 } }
         image.createPixelMap(Color, opts)
@@ -197,14 +197,14 @@ describe('Image', function () {
                 done();
             })
             .catch(error => {
-                console.log('RGBA_006 err' + error);
+                console.log('SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0400 err' + error);
                 expect(false).assertTrue();
                 done();
             })
     })
 
     /**
-     * @tc.number    : RGBA_007
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0500
      * @tc.name      : create pixelmap-promise (editable: true, pixelFormat: ARGB_8888,
      *                                          size: { height: 4, width: 6 }, bytes = buffer)
      * @tc.desc      : 1.create InitializationOptions object
@@ -215,7 +215,7 @@ describe('Image', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('RGBA_007', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0500', 0, async function (done) {
         const Color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: 1, size: { height: 4, width: 6 } }
         image.createPixelMap(Color, opts)
@@ -225,14 +225,14 @@ describe('Image', function () {
                 done();
             })
             .catch(error => {
-                console.log('RGBA_007 err' + error);
+                console.log('SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0500 err' + error);
                 expect(false).assertTrue();
                 done();
             })
     })
 
     /**
-     * @tc.number    : RGBA_008
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0300
      * @tc.name      : create pixelmap-callback (editable: true, pixelFormat: ALPHA_8,
      *                                           size: { height: 4, width: 6 },bytes = buffer)
      * @tc.desc      : 1.create InitializationOptions object
@@ -243,12 +243,12 @@ describe('Image', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
     */
-    it('RGBA_008', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0300', 0, async function (done) {
         const Color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: 6, size: { height: 4, width: 6 } }
         image.createPixelMap(Color, opts, (err, pixelmap) => {
             if (err != undefined) {
-                console.info('RGBA_008 err: ' + err);
+                console.info('SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0300 err: ' + err);
                 expect(false).assertTrue();
                 done();
                 return;
@@ -261,7 +261,7 @@ describe('Image', function () {
     })
 
     /**
-     * @tc.number    : RGBA_009
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0400
      * @tc.name      : create pixelmap-callback (editable: true, pixelFormat: RGB_565,
      *                                           size: { height: 4, width: 6 },bytes = buffer)
      * @tc.desc      : 1.create InitializationOptions object
@@ -272,12 +272,12 @@ describe('Image', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
     */
-    it('RGBA_009', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0400', 0, async function (done) {
         const Color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: 2, size: { height: 4, width: 6 } }
         image.createPixelMap(Color, opts, (err, pixelmap) => {
             if (err != undefined) {
-                console.info('RGBA_009 err: ' + err);
+                console.info('SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0400 err: ' + err);
                 expect(false).assertTrue();
                 done();
                 return;
@@ -290,7 +290,7 @@ describe('Image', function () {
     })
 
     /**
-     * @tc.number    : RGBA_010
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0500
      * @tc.name      : create pixelmap-callback (editable: true, pixelFormat: ARGB_8888,
      *                                           size: { height: 4, width: 6 },bytes = buffer)
      * @tc.desc      : 1.create InitializationOptions object
@@ -301,12 +301,12 @@ describe('Image', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
     */
-    it('RGBA_010', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0500', 0, async function (done) {
         const Color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: 1, size: { height: 4, width: 6 } }
         image.createPixelMap(Color, opts, (err, pixelmap) => {
             if (err != undefined) {
-                console.info('RGBA_010 err: ' + err);
+                console.info('SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0500 err: ' + err);
                 expect(false).assertTrue();
                 done();
                 return;
@@ -318,7 +318,7 @@ describe('Image', function () {
     })
 
     /**
-     * @tc.number    : RGBA_011
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0600
      * @tc.name      : create pixelmap-callback(editable: true, pixelFormat: unkonwn, size: { height: -1, width: 8 })
      * @tc.desc      : 1.create InitializationOptions object
      *                 2.set editable,pixeFormat,size
@@ -328,14 +328,14 @@ describe('Image', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('RGBA_011', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0600', 0, async function (done) {
         const Color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: 0, size: { height: -1, width: 8 } }
         image.createPixelMap(Color, opts, (err, pixelmap) => {
             if (err) {
-                console.info('RGBA_011 err: ' + err);
+                console.info('SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0600 err: ' + err);
                 expect(pixelmap == undefined).assertTrue();
-                console.info('RGBA_011 pass');
+                console.info('SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0600 pass');
                 done();
             } else {
                 expect(false).assertTrue();
@@ -345,7 +345,7 @@ describe('Image', function () {
     })
 
     /**
-     * @tc.number    : RGBA_012
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0700
      * @tc.name      : create pixelmap-callback(editable: true, pixelFormat: ARGB_8888, size: { height: 6, width: -1 })
      * @tc.desc      : 1.create InitializationOptions object
      *                 2.set editable,pixeFormat,size
@@ -355,14 +355,14 @@ describe('Image', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-    it('RGBA_012', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0700', 0, async function (done) {
         const Color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: 1, size: { height: 6, width: -1 } }
         image.createPixelMap(Color, opts, (err, pixelmap) => {
             if (err) {
-                console.info('RGBA_012 err: ' + err);
+                console.info('SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0700 err: ' + err);
                 expect(pixelmap == undefined).assertTrue();
-                console.info('RGBA_012 pass');
+                console.info('SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0700 pass');
                 done();
             } else {
                 expect(false).assertTrue();
@@ -372,7 +372,7 @@ describe('Image', function () {
     })
 
     /**
-     * @tc.number    : RGBA_013
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0600
      * @tc.name      : create pixelmap-promise(editable: true, pixelFormat: unkonwn, size: { height: -1, width: 8 })
      * @tc.desc      : 1.create InitializationOptions object
      *                 2.set editable,pixeFormat,size
@@ -382,22 +382,22 @@ describe('Image', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
          */
-    it('RGBA_013', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0600', 0, async function (done) {
         const Color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: 0, size: { height: -1, width: 8 } }
         image.createPixelMap(Color, opts).then(pixelmap => {
             expect(false).assertTrue();
-            console.info('RGBA_013 failed');
+            console.info('SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0600 failed');
             done();
         }).catch(error => {
-            console.log('RGBA_013 err: ' + error);
+            console.log('SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0600 err: ' + error);
             expect(true).assertTrue();
             done();
         })
     })
 
     /**
-     * @tc.number    : RGBA_014
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0700
      * @tc.name      : create pixelmap-promise(editable: true, pixelFormat: unkonwn, size: { height: 6, width: -1 })
      * @tc.desc      : 1.create InitializationOptions object
      *                 2.set editable,pixeFormat,size
@@ -407,22 +407,22 @@ describe('Image', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
          */
-    it('RGBA_014', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0700', 0, async function (done) {
         const Color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: 0, size: { height: 6, width: -1 } }
         image.createPixelMap(Color, opts).then(pixelmap => {
             expect(false).assertTrue();
-            console.info('RGBA_014 failed');
+            console.info('SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0700 failed');
             done();
         }).catch(error => {
-            console.log('RGBA_014 error: ' + error);
+            console.log('SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0700 error: ' + error);
             expect(true).assertTrue();
             done();
         })
     })
 
     /**
-     * @tc.number    : RGBA_015
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0800
      * @tc.name      : create pixelmap-promise (editable: true, pixelFormat: BGRA8888,
      *                                          size: { height: 4, width: 6 }, bytes = buffer)
      * @tc.desc      : 1.create InitializationOptions object
@@ -433,25 +433,25 @@ describe('Image', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
      */
-     it('RGBA_015', 0, async function (done) {
+     it('SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0800', 0, async function (done) {
         const Color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: 4, size: { height: 4, width: 6 } }
         image.createPixelMap(Color, opts)
             .then(pixelmap => {
-                console.log('RGBA_015 pixelFormat: 4');
+                console.log('SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0800 pixelFormat: 4');
                 expect(pixelmap != undefined).assertTrue();
                 expect(pixelmap.isEditable == opts.editable).assertTrue();
                 done();
             })
             .catch(error => {
-                console.log('RGBA_015 err: ' + error);
+                console.log('SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_PROMISE_0800 err: ' + error);
                 expect(false).assertTrue();
                 done();
             })
     })
 
     /**
-     * @tc.number    : RGBA_016
+     * @tc.number    : SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0800
      * @tc.name      : create pixelmap-callback (editable: true, pixelFormat: BGRA8888,
      *                                           size: { height: 4, width: 6 },bytes = buffer)
      * @tc.desc      : 1.create InitializationOptions object
@@ -462,17 +462,17 @@ describe('Image', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 0
     */
-    it('RGBA_016', 0, async function (done) {
+    it('SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0800', 0, async function (done) {
         const Color = new ArrayBuffer(96);
         let opts = { editable: true, pixelFormat: 4, size: { height: 4, width: 6 } }
         image.createPixelMap(Color, opts, (err, pixelmap) => {
             if (err != undefined) {
-                console.log('RGBA_016 err: ' + err);
+                console.log('SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0800 err: ' + err);
                 expect(false).assertTrue();
                 done();
                 return;
             }
-            console.log('RGBA_016 pixelFormat: image.PixelMapFormat.BGRA_8888');
+            console.log('SUB_GRAPHIC_IMAGE_RGBA_CREATE_PIXELMAP_CALLBACK_0800 pixelFormat: image.PixelMapFormat.BGRA_8888');
             expect(pixelmap != undefined).assertTrue();
             expect(pixelmap.isEditable == opts.editable).assertTrue();
             done();

@@ -17,6 +17,7 @@
     "package": "com.example.finishwithresultemptytest",
     "name": ".MyApplication",
     "deviceType": [
+      "default",
       "phone"
     ],
     "distro": {

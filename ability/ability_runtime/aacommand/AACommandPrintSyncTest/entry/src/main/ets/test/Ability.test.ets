@@ -18,6 +18,25 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 let msg: any
 export default function abilityTest() {
     describe('ActsAbilityTest', function () {
+
+        afterEach(async (done) => {
+            console.log("ActsAACommandPrintSyncTest afterEach called");
+            let wantInfo = {
+                bundleName: "com.example.aacommandprintsynctest",
+                abilityName: "MainAbility"
+            }
+            await globalThis.abilityContext.startAbility(wantInfo).then((data) => {
+                console.log("ActsAACommandPrintSyncTest startAbility data : " + JSON.stringify(data));
+            }).catch((err) => {
+                console.log("ActsAACommandPrintSyncTest startAbility err : " + JSON.stringify(err));
+            })
+
+            setTimeout(function () {
+                console.log("ActsAACommandPrintSyncTest afterEach end");
+                done();
+            }, 1000);
+        })
+
         /**
          * @tc.number: ACTS_AACommand_printSync_0100
          * @tc.name: The -b, -p, -s, -w and other parameters of the test command are valid

@@ -58,10 +58,10 @@ static BOOL UtilsFileFuncTestSuiteTearDown(void)
 
 /**
  * @tc.number    : SUB_UTILS_FILE_OPERATION_0100
- * @tc.name      : File operation for file creation and close with parameter RDONLY
+ * @tc.name      : File operation for file create and close with parameter RDONLY
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-LITE_TEST_CASE(UtilsFileFuncTestSuite, testFileCreatAndClose001, Function | MediumTest | Level1)
+LITE_TEST_CASE(UtilsFileFuncTestSuite, testFileCreateAndClose001, Function | MediumTest | Level1)
 {
     char* fileName = "testfile101";
     int fd = UtilsFileOpen(fileName, O_RDONLY_FS | O_CREAT_FS, 0);
@@ -73,10 +73,10 @@ LITE_TEST_CASE(UtilsFileFuncTestSuite, testFileCreatAndClose001, Function | Medi
 
 /**
  * @tc.number    : SUB_UTILS_FILE_OPERATION_0200
- * @tc.name      : File operation for file creat and close with parameter WRONLY
+ * @tc.name      : File operation for file create and close with parameter WRONLY
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-LITE_TEST_CASE(UtilsFileFuncTestSuite, testFileCreatAndClose002, Function | MediumTest | Level1)
+LITE_TEST_CASE(UtilsFileFuncTestSuite, testFileCreateAndClose002, Function | MediumTest | Level1)
 {
     char* fileName = "testfile102";
     int fd = UtilsFileOpen(fileName, O_WRONLY_FS | O_CREAT_FS, 0);
@@ -88,10 +88,10 @@ LITE_TEST_CASE(UtilsFileFuncTestSuite, testFileCreatAndClose002, Function | Medi
 
 /**
  * @tc.number    : SUB_UTILS_FILE_OPERATION_0300
- * @tc.name      : File operation for file creat and close with parameter RDWR
+ * @tc.name      : File operation for file create and close with parameter RDWR
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-LITE_TEST_CASE(UtilsFileFuncTestSuite, testFileCreatAndClose003, Function | MediumTest | Level1)
+LITE_TEST_CASE(UtilsFileFuncTestSuite, testFileCreateAndClose003, Function | MediumTest | Level1)
 {
     char* fileName = "testfile103";
     int fd = UtilsFileOpen(fileName, O_RDWR_FS | O_CREAT_FS, 0);
@@ -188,10 +188,10 @@ LITE_TEST_CASE(UtilsFileFuncTestSuite, testFileOpenAndClose005, Function | Mediu
 
 /**
  * @tc.number    : SUB_UTILS_FILE_OPERATION_0900
- * @tc.name      : File operation for file creat and close with parameter RDONLY and EXCL
+ * @tc.name      : File operation for file create and close with parameter RDONLY and EXCL
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-LITE_TEST_CASE(UtilsFileFuncTestSuite, testFileCreatAndClose004, Function | MediumTest | Level1)
+LITE_TEST_CASE(UtilsFileFuncTestSuite, testFileCreateAndClose004, Function | MediumTest | Level1)
 {
     char* fileName = "testfile109";
     int fd = UtilsFileOpen(fileName, O_RDONLY_FS | O_CREAT_FS | O_EXCL_FS, 0);
@@ -207,10 +207,10 @@ LITE_TEST_CASE(UtilsFileFuncTestSuite, testFileCreatAndClose004, Function | Medi
 
 /**
  * @tc.number    : SUB_UTILS_FILE_OPERATION_1000
- * @tc.name      : File operation for file creation and close with parameter WRONLY and EXCL
+ * @tc.name      : File operation for file create and close with parameter WRONLY and EXCL
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-LITE_TEST_CASE(UtilsFileFuncTestSuite, testFileCreatAndClose005, Function | MediumTest | Level1)
+LITE_TEST_CASE(UtilsFileFuncTestSuite, testFileCreateAndClose005, Function | MediumTest | Level1)
 {
     char* fileName = "testfile110";
     int fd = UtilsFileOpen(fileName, O_WRONLY_FS | O_CREAT_FS | O_EXCL_FS, 0);
@@ -226,7 +226,7 @@ LITE_TEST_CASE(UtilsFileFuncTestSuite, testFileCreatAndClose005, Function | Medi
 
 /**
  * @tc.number    : SUB_UTILS_FILE_OPERATION_1100
- * @tc.name      : File operation for file creat and close with parameter RDWR and EXCL
+ * @tc.name      : File operation for file create and close with parameter RDWR and EXCL
  * @tc.desc      : [C- SOFTWARE -0200]
  */
 LITE_TEST_CASE(UtilsFileFuncTestSuite, testFileCreatAndClose006, Function | MediumTest | Level1)
@@ -245,10 +245,10 @@ LITE_TEST_CASE(UtilsFileFuncTestSuite, testFileCreatAndClose006, Function | Medi
 
 /**
  * @tc.number    : SUB_UTILS_FILE_OPERATION_1200
- * @tc.name      : File operation for file creation and close with parameter TRUNC and EXCL
+ * @tc.name      : File operation for file create and close with parameter TRUNC and EXCL
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-LITE_TEST_CASE(UtilsFileFuncTestSuite, testFileCreatAndClose007, Function | MediumTest | Level1)
+LITE_TEST_CASE(UtilsFileFuncTestSuite, testFileCreateAndClose007, Function | MediumTest | Level1)
 {
     char* fileName = "testfile112";
     int fd = UtilsFileOpen(fileName, O_RDWR_FS | O_CREAT_FS | O_EXCL_FS | O_TRUNC_FS, 0);
@@ -264,10 +264,10 @@ LITE_TEST_CASE(UtilsFileFuncTestSuite, testFileCreatAndClose007, Function | Medi
 
 /**
  * @tc.number    : SUB_UTILS_FILE_OPERATION_1300
- * @tc.name      : File operation for file creation and close with parameter APPEND and EXCL
+ * @tc.name      : File operation for file create and close with parameter APPEND and EXCL
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-LITE_TEST_CASE(UtilsFileFuncTestSuite, testFileCreatAndClose008, Function | MediumTest | Level1)
+LITE_TEST_CASE(UtilsFileFuncTestSuite, testFileCreateAndClose008, Function | MediumTest | Level1)
 {
     char* fileName = "testfile113";
     int fd = UtilsFileOpen(fileName, O_RDWR_FS | O_CREAT_FS | O_EXCL_FS | O_APPEND_FS, 0);
@@ -322,10 +322,10 @@ LITE_TEST_CASE(UtilsFileFuncTestSuite, testFileWrite002, Function | MediumTest |
 
 /**
  * @tc.number    : SUB_UTILS_FILE_OPERATION_1600
- * @tc.name      : Creat file with long file name
+ * @tc.name      : Create file with long file name
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-LITE_TEST_CASE(UtilsFileFuncTestSuite, testCreatLongNameFile, Function | MediumTest | Level1)
+LITE_TEST_CASE(UtilsFileFuncTestSuite, testCreateLongNameFile, Function | MediumTest | Level1)
 {
     char* fileName = "testLongFileName116-Ab123456789";
     int fd = UtilsFileOpen(fileName, O_RDONLY_FS | O_CREAT_FS, 0);
@@ -372,10 +372,10 @@ LITE_TEST_CASE(UtilsFileFuncTestSuite, testCloseNotExistFile, Function | MediumT
 
 /**
  * @tc.number    : SUB_UTILS_FILE_OPERATION_2100
- * @tc.name      : Creat file with invalid long file name
+ * @tc.name      : Create file with invalid long file name
  * @tc.desc      : [C- SOFTWARE -0200]
  */
-LITE_TEST_CASE(UtilsFileFuncTestSuite, testCreatInvalidlongNameFile, Function | MediumTest | Level1)
+LITE_TEST_CASE(UtilsFileFuncTestSuite, testCreateInvalidlongNameFile, Function | MediumTest | Level1)
 {
     char* fileName = "copyLongFileName403-Abcdefg123456789Abcdefg123456789Abcdefg123456789\
                     Abcdefg123456789Abcdefg123456789";

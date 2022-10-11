@@ -67,19 +67,19 @@ struct Index {
   private formOnDeletedEvent = "FMS_FormOnDeleted_commonEvent";
   private formOnReleasedEvent = "FMS_FormOnReleased_commonEvent";
 
-  private onAcquiredCallback() {
+  private onAcquiredCallback = () => {
     console.info(`${this.TAG} onAcquiredCallback`);
   }
 
-  private onRequestCallback() {
+  private onRequestCallback = () => {
     console.info(`====>${this.TAG} onRequestCallback====>`);
   }
 
-  private onDeletedCallback() {
+  private onDeletedCallback = () => {
     console.info(`${this.TAG} onDeletedCallback`);
   }
 
-  private onReleasedCallback() {
+  private onReleasedCallback = () => {
     console.info(`====>${this.TAG} onReleasedCallback====>`);
   }
 

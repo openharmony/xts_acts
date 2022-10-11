@@ -19,6 +19,7 @@
     "mainAbility": "com.actsbundle.napitest.MainAbility",
 
     "deviceType": [
+      "default",
       "default"
     ],
     "distro": {

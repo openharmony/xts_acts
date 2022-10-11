@@ -5311,6 +5311,50 @@ describe('TypesTest', function() {
      */
     it('testIsBigInt64Array001', 0, function() {
         var proc = new util.types();
+        var result = proc.isBigInt64Array(new BigInt64Array([]));
+        expect(result).assertEqual(true);
+    })
+    
+    /**
+     * @tc.name: testIsBigInt64Array002
+     * @tc.desc: Check whether the entered value is of bigint64array array type.
+     * @tc.author: wangjingwu
+     */
+     it('testIsBigInt64Array002', 0, function() {
+        var proc = new util.types();
+        var result = proc.isBigInt64Array(new Int32Array([]));
+        expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.name: testIsBigInt64Array003
+     * @tc.desc: Check whether the entered value is of bigint64array array type.
+     * @tc.author: wangjingwu
+     */
+     it('testIsBigInt64Array003', 0, function() {
+        var proc = new util.types();
+        var result = proc.isBigInt64Array(new Uint8Array([]));
+        expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.name: testIsBigInt64Array004
+     * @tc.desc: Check whether the entered value is of bigint64array array type.
+     * @tc.author: wangjingwu
+     */
+     it('testIsBigInt64Array004', 0, function() {
+        var proc = new util.types();
+        var result = proc.isBigInt64Array(new Float64Array([]));
+        expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.name: testIsBigInt64Array005
+     * @tc.desc: Check whether the entered value is of bigint64array array type.
+     * @tc.author: wangjingwu
+     */
+     it('testIsBigInt64Array005', 0, function() {
+        var proc = new util.types();
         var result = proc.isBigInt64Array(new Int8Array([]));
         expect(result).assertEqual(false);
     })
@@ -5322,9 +5366,65 @@ describe('TypesTest', function() {
      */
     it('testIsBigUint64Array001', 0, function() {
         var proc = new util.types();
+        var result = proc.isBigUint64Array(new BigUint64Array([]));
+        expect(result).assertEqual(true);
+    })
+
+    /**
+     * @tc.name: testIsBigUint64Array002
+     * @tc.desc: Check whether the entered value is of biguint64array array array type.
+     * @tc.author: wangjingwu
+     */
+     it('testIsBigUint64Array002', 0, function() {
+        var proc = new util.types();
         var result = proc.isBigUint64Array(new Int8Array([]));
         expect(result).assertEqual(false);
     })
+
+    /**
+     * @tc.name: testIsBigUint64Array002
+     * @tc.desc: Check whether the entered value is of biguint64array array array type.
+     * @tc.author: wangjingwu
+     */
+     it('testIsBigUint64Array002', 0, function() {
+        var proc = new util.types();
+        var result = proc.isBigUint64Array(new Float64Array([]));
+        expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.name: testIsBigUint64Array003
+     * @tc.desc: Check whether the entered value is of biguint64array array array type.
+     * @tc.author: wangjingwu
+     */
+     it('testIsBigUint64Array003', 0, function() {
+        var proc = new util.types();
+        var result = proc.isBigUint64Array(new Uint8Array([]));
+        expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.name: testIsBigUint64Array004
+     * @tc.desc: Check whether the entered value is of biguint64array array array type.
+     * @tc.author: wangjingwu
+     */
+     it('testIsBigUint64Array004', 0, function() {
+        var proc = new util.types();
+        var result = proc.isBigUint64Array(new BigInt64Array([]));
+        expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.name: testIsBigUint64Array005
+     * @tc.desc: Check whether the entered value is of biguint64array array array type.
+     * @tc.author: wangjingwu
+     */
+     it('testIsBigUint64Array005', 0, function() {
+        var proc = new util.types();
+        var result = proc.isBigUint64Array(new Int8Array([]));
+        expect(result).assertEqual(false);
+    })
+
 
     /**
      * @tc.name: testIsBooleanObject001
@@ -5554,9 +5654,8 @@ describe('TypesTest', function() {
      */
     it('testIsExternal001', 0, function() {
         var proc = new util.types();
-        const data = util.createExternalType();
-        var result = proc.isExternal(data);
-        expect(result).assertEqual(true);
+        var result = proc.isExternal(new Float32Array());
+        expect(result).assertEqual(false);
     })
 
     /**
@@ -6081,16 +6180,6 @@ describe('TypesTest', function() {
         expect(result).assertEqual(false);
     })
 
-    /**
-     * @tc.name: testIsModuleNamespaceObject001
-     * @tc.desc: Check whether the entered value is the module namespace object object type.
-     * @tc.author: bihu
-     */
-    it('testIsModuleNamespaceObject001', 0, function() {
-        var proc = new util.types();
-        var result = proc.isModuleNamespaceObject(util);
-        expect(result).assertEqual(false);
-    })
 
     /**
      * @tc.name: testIsModuleNamespaceObject002
@@ -6557,8 +6646,8 @@ describe('TypesTest', function() {
      */
     it('testIsSharedArrayBuffer001', 0, function() {
         var proc = new util.types();
-        var result = proc.isSharedArrayBuffer(new Int8Array([]));
-        expect(result).assertEqual(false);
+        var result = proc.isSharedArrayBuffer(new SharedArrayBuffer([]));
+        expect(result).assertEqual(true);
     })
 
     /**
@@ -7103,6 +7192,82 @@ describe('TypesTest', function() {
         var proc = new util.types();
         var result = proc.isWeakSet(new Map());
         expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.name: testUtilRandomUUID001
+     * @tc.desc: Generate a random RFC 4122 version 4 UUID.
+     * @tc.author: linhaoran
+     */
+    it('testUtilRandomUUID001', 0, async function () {
+        var result = util.randomUUID(true);
+        expect(result.length).assertEqual(36);
+    })
+    
+    /**
+     * @tc.name: testUtilRandomUUID002
+     * @tc.desc: Generate a random RFC 4122 version 4 UUID.
+     * @tc.author: linhaoran
+     */
+    it('testUtilRandomUUID002', 0, async function () {
+        var result = util.randomUUID(false);
+        expect(result.length).assertEqual(36);
+    })
+
+    /**
+     * @tc.name: testUtilRandomBinaryUUID001
+     * @tc.desc: Generate a random RFC 4122 version 4 UUID.
+     * @tc.author: linhaoran
+     */
+    it('testUtilRandomBinaryUUID001', 0, async function () {
+        var result = util.randomBinaryUUID(true);
+        expect(result.length).assertEqual(16);
+    })
+
+    /**
+     * @tc.name: testUtilRandomBinaryUUID002
+     * @tc.desc: Generate a random RFC 4122 version 4 UUID.
+     * @tc.author: linhaoran
+     */
+    it('testUtilRandomBinaryUUID002', 0, async function () {
+        var result = util.randomBinaryUUID(false);
+        expect(result.length).assertEqual(16);
+    })
+
+    /**
+     * @tc.name: testUtilParseUUID001
+     * @tc.desc: Generate a random RFC 4122 version 4 UUID.
+     * @tc.author: linhaoran
+     */
+    it('testUtilParseUUID001', 0, async function () {
+        var result = util.parseUUID('84bdf796-66cc-4655-9b89-d6218d100f9c');
+        expect(result.length).assertEqual(16);
+    })
+
+    /**
+     * @tc.name: testUtilParseUUID002
+     * @tc.desc: Generate a random RFC 4122 version 4 UUID.
+     * @tc.author: linhaoran
+     */
+    it('testUtilParseUUID002', 0, async function () {
+        try {
+            var result = util.parseUUID('84df796-66cc-4655-9b89-d6218d100f9c');
+        } catch(e) {
+            expect(e.message).assertEqual('this uuid parsing failed');
+        }
+    })
+
+    /**
+     * @tc.name: testUtilParseUUID003
+     * @tc.desc: Generate a random RFC 4122 version 4 UUID.
+     * @tc.author: linhaoran
+     */
+    it('testUtilParseUUID003', 0, async function () {
+        try {
+            var result = util.parseUUID('84Wdf796-66cc-4655-9b89-d6218d100f9c');
+        } catch(e) {
+            expect(e.message).assertEqual('this uuid parsing failed');
+        }
     })
 })
 }

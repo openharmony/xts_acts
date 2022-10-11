@@ -17,6 +17,7 @@
     "package": "com.amsst.actsabilitydelegatorcasetest",
     "name": ".MyApplication",
     "deviceType": [
+      "default",
       "phone"
     ],
     "distro": {

@@ -18,6 +18,7 @@
     "name": ".FormStHostAppNoPerm",
     "mainAbility": ".MainAbility",
     "deviceType": [
+      "default",
       "phone"
     ],
     "distro": {

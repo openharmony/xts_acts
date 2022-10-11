@@ -24,6 +24,41 @@ const STORE_CONFIG = {
 const COLOUNM_NAMES = ["id","data1","data2","data3","data4"];
 var rdbStore = undefined;
 
+function createUint8Array(length) {
+    let i = 0
+    let index = 0
+    let temp = null
+    let u8 = new Uint8Array(length)
+    length = typeof (length) === 'undefined' ? 9 : length
+    for (i = 1; i <= length; i++) {
+        u8[i - 1] = i
+    }
+    for (i = 1; i <= length; i++) {
+        index = parseInt(Math.random() * (length - i)) + i
+        if (index != i) {
+            temp = u8[i - 1]
+            u8[i - 1] = u8[index - 1]
+            u8[index - 1] = temp
+        }
+    }
+    return u8;
+}
+
+async function createBigData(size) {
+    await rdbStore.executeSql("DELETE FROM test");
+    let u8 = createUint8Array(32768);
+    let valueBucketArray = new Array();
+    for (let i = 0; i < size; i++) {
+        valueBucketArray.push({
+            "data1": "test" + i,
+            "data2": 18,
+            "data3": 100.5,
+            "data4": u8,
+        });
+    }
+    await rdbStore.batchInsert("test", valueBucketArray);
+}
+
 export default function rdbResultSetTest() {
 describe('rdbResultSetTest', function () {
     beforeAll(async function () {
@@ -214,20 +249,21 @@ describe('rdbResultSetTest', function () {
      * @tc.desc resultSet isStarted normal test
      */
     it('testIsStarted0003', 0, async function (done) {
-        console.info(TAG + '************* testIsStarted0003 start *************');
-        let predicates = await new dataRdb.RdbPredicates('test')
+        console.info(TAG + "************* testIsStarted0003 start *************");
+        let predicates = await new dataRdb.RdbPredicates("test")
         let resultSet = await rdbStore.query(predicates)
         try {
+            expect(false).assertEqual(resultSet.isStarted)
             expect(true).assertEqual(resultSet.goToNextRow())
             expect(true).assertEqual(resultSet.isStarted)
             expect(false).assertEqual(resultSet.goToPreviousRow())
-            expect(false).assertEqual(resultSet.isStarted)
+            expect(true).assertEqual(resultSet.isStarted)
         } catch (e) {
             expect(null).assertFail();
         }
         resultSet = null
         done();
-        console.info(TAG + '************* testIsStarted0003 end *************');
+        console.info(TAG + "************* testIsStarted0003 end *************");
     })
 
     /**
@@ -1766,6 +1802,34 @@ describe('rdbResultSetTest', function () {
             resultSet = null;
             done();
             console.info(TAG + '************* testcolumnNames0001 end *************');
+        }
+    })
+
+    /**
+     * @tc.name big resultSet data test
+     * @tc.number SUB_DDM_AppDataFWK_JSRDB_ResultSet_0250
+     * @tc.desc big resultSet data test
+     */
+     it('testBigData0001', 0, async function (done) {
+        console.log(TAG + "************* testBigData0001 start *************");
+        {
+            await createBigData(500);
+            let resultSet = await rdbStore.querySql("SELECT * FROM test");
+            let count = resultSet.rowCount;
+            expect(500).assertEqual(count);
+
+            resultSet.goToFirstRow();
+            let i = 0;
+            while (resultSet.isEnded == false) {
+                expect("test" + i++).assertEqual(resultSet.getString(1))
+                resultSet.goToNextRow();
+            }
+
+            resultSet.close()
+            expect(true).assertEqual(resultSet.isClosed)
+            resultSet = null;
+            done();
+            console.log(TAG + "************* testBigData0001 end *************");
         }
     })
     

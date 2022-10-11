@@ -44,7 +44,7 @@ describe('preferencesCallBackTest', function () {
 
     /**
      * @tc.name clear callback interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_CallBack_0010
+     * @tc.number SUB_DDM_Preferences_Clear_CallBack_0010
      * @tc.desc clear callback interface test
      */
     it('testPreferencesClear0012', 0, async function (done) {
@@ -59,7 +59,7 @@ describe('preferencesCallBackTest', function () {
 
     /**
      * @tc.name has string callback interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_CallBack_0020
+     * @tc.number SUB_DDM_Preferences_Has_CallBack_0020
      * @tc.desc has string callback interface test
      */
     it('testPreferencesHasKey0032', 0, async function (done) {
@@ -72,7 +72,7 @@ describe('preferencesCallBackTest', function () {
 
     /**
      * @tc.name has int callback interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_CallBack_0130
+     * @tc.number SUB_DDM_Preferences_Has_CallBack_0030
      * @tc.desc has int callback interface test
      */
     it('testPreferencesHasKey0033', 0, async function (done) {
@@ -85,7 +85,7 @@ describe('preferencesCallBackTest', function () {
 
     /**
      * @tc.name has float callback interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_CallBack_0140
+     * @tc.number SUB_DDM_Preferences_Has_CallBack_0040
      * @tc.desc has float callback interface test
      */
     it('testPreferencesHasKey0034', 0, async function (done) {
@@ -98,7 +98,7 @@ describe('preferencesCallBackTest', function () {
 
     /**
      * @tc.name has long callback interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_CallBack_0150
+     * @tc.number SUB_DDM_Preferences_Has_CallBack_0050
      * @tc.desc has long callback interface test
      */
     it('testPreferencesHasKey0035', 0, async function (done) {
@@ -111,7 +111,7 @@ describe('preferencesCallBackTest', function () {
 
     /**
      * @tc.name has boolean callback interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_CallBack_0160
+     * @tc.number SUB_DDM_Preferences_Has_CallBack_0060
      * @tc.desc has boolean callback interface test
      */
     it('testPreferencesHasKey0036', 0, async function (done) {
@@ -124,7 +124,7 @@ describe('preferencesCallBackTest', function () {
 
     /**
      * @tc.name get defaultValue callback interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_CallBack_0030
+     * @tc.number SUB_DDM_Preferences_Get_CallBack_0070
      * @tc.desc get defaultValue callback interface test
      */
     it('testPreferencesGetDefValue0062', 0, async function (done) {
@@ -137,7 +137,7 @@ describe('preferencesCallBackTest', function () {
 
     /**
      * @tc.name get float callback interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_CallBack_0040
+     * @tc.number SUB_DDM_Preferences_Get_CallBack_0080
      * @tc.desc get float callback interface test
      */
     it('testPreferencesGetFloat0072', 0, async function (done) {
@@ -151,7 +151,7 @@ describe('preferencesCallBackTest', function () {
 
     /**
      * @tc.name get int callback interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_CallBack_0050
+     * @tc.number SUB_DDM_Preferences_Get_CallBack_0090
      * @tc.desc get int callback interface test
      */
     it('testPreferencesGetInt0082', 0, async function (done) {
@@ -165,7 +165,7 @@ describe('preferencesCallBackTest', function () {
 
     /**
      * @tc.name get long callback interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_CallBack_0060
+     * @tc.number SUB_DDM_Preferences_Get_CallBack_0100
      * @tc.desc get long callback interface test
      */
     it('testPreferencesGetLong0092', 0, async function (done) {
@@ -181,7 +181,7 @@ describe('preferencesCallBackTest', function () {
 
     /**
      * @tc.name get String callback interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_CallBack_0070
+     * @tc.number SUB_DDM_Preferences_Get_CallBack_0110
      * @tc.desc get String callback interface test
      */
     it('testPreferencesGetString102', 0, async function (done) {
@@ -196,7 +196,7 @@ describe('preferencesCallBackTest', function () {
 
     /**
      * @tc.name put boolean callback interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_CallBack_0080
+     * @tc.number SUB_DDM_Preferences_Put_CallBack_0120
      * @tc.desc put boolean callback interface test
      */
     it('testPreferencesPutBoolean0122', 0, async function (done) {
@@ -213,7 +213,7 @@ describe('preferencesCallBackTest', function () {
 
     /**
      * @tc.name put float callback interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_CallBack_0090
+     * @tc.number SUB_DDM_Preferences_Put_CallBack_0130
      * @tc.desc put float callback interface test
      */
     it('testPreferencesPutFloat0132', 0, async function (done) {
@@ -230,7 +230,7 @@ describe('preferencesCallBackTest', function () {
 
     /**
      * @tc.name put int callback interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_CallBack_0100
+     * @tc.number SUB_DDM_Preferences_Put_CallBack_0140
      * @tc.desc put int callback interface test
      */
     it('testPreferencesPutInt0142', 0, async function (done) {
@@ -247,7 +247,7 @@ describe('preferencesCallBackTest', function () {
 
     /**
      * @tc.name put long callback interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_CallBack_0110
+     * @tc.number SUB_DDM_Preferences_Put_CallBack_0150
      * @tc.desc put long callback interface test
      */
     it('testPreferencesPutLong0152', 0, async function (done) {
@@ -265,7 +265,7 @@ describe('preferencesCallBackTest', function () {
 
     /**
      * @tc.name put String callback interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_CallBack_0120
+     * @tc.number SUB_DDM_Preferences_Put_CallBack_0160
      * @tc.desc put String callback interface test
      */
     it('testPreferencesPutString0162', 0, async function (done) {
@@ -282,7 +282,7 @@ describe('preferencesCallBackTest', function () {
 
     /**
      * @tc.name clear、put、get、flush String callback interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_CallBack_0120
+     * @tc.number SUB_DDM_Preferences_Flush_CallBack_0170
      * @tc.desc flush String callback interface test
      */
      it('testPreferencesCallback0172', 0, function (done) {
@@ -320,7 +320,7 @@ describe('preferencesCallBackTest', function () {
 
     /**
      * @tc.name put StringArray callback interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_CallBack_0001
+     * @tc.number SUB_DDM_Preferences_Put_CallBack_0180
      * @tc.desc put String callback interface test
      */
     it('testPreferencesPutStringArray0001', 0, async function (done) {
@@ -338,7 +338,7 @@ describe('preferencesCallBackTest', function () {
 
     /**
      * @tc.name put NumberArray callback interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_CallBack_0002
+     * @tc.number SUB_DDM_Preferences_Put_CallBack_0190
      * @tc.desc put String callback interface test
      */
     it('testPreferencesPutNumArray0001', 0, async function (done) {
@@ -356,7 +356,7 @@ describe('preferencesCallBackTest', function () {
 
     /**
      * @tc.name put BoolArray callback interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_CallBack_0003
+     * @tc.number SUB_DDM_Preferences_Put_CallBack_0200
      * @tc.desc put String callback interface test
      */
     it('testPreferencesPutBoolArray0001', 0, async function (done) {
@@ -374,7 +374,7 @@ describe('preferencesCallBackTest', function () {
 
     /**
      * @tc.name getAll callback interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_CallBack_0004
+     * @tc.number SUB_DDM_Preferences_GetAll_CallBack_0210
      * @tc.desc getAll callback interface test
      */
     it('testPreferencesGetAll0001', 0, async function (done) {
@@ -416,7 +416,7 @@ describe('preferencesCallBackTest', function () {
 
     /**
      * @tc.name getPreferences callback interface test
-     * @tc.number SUB_DDM_AppDataFWK_GetPreferencesTest_CallBack_0001
+     * @tc.number SUB_DDM_Preferences_GetPreferencesTest_CallBack_0220
      * @tc.desc getPreferences callback interface test
     */
     it('testPreferencesGetPreferences0001', 0, async function (done) {
@@ -435,7 +435,7 @@ describe('preferencesCallBackTest', function () {
 
     /**
      * @tc.name deletePreferences callback interface test
-     * @tc.number SUB_DDM_AppDataFWK_DeletePreferencesTest_CallBack_0001
+     * @tc.number SUB_DDM_Preferences_DeletePreferencesTest_CallBack_0230
      * @tc.desc deletePreferences callback interface test
     */
      it('testPreferencesDeletePreferences0001', 0, async function (done) {
@@ -463,7 +463,7 @@ describe('preferencesCallBackTest', function () {
 
     /**
      * @tc.name removePreferencesFromCache interface test
-     * @tc.number SUB_DDM_AppDataFWK_RemovePreferencesFromCache_CallBack_0001
+     * @tc.number SUB_DDM_Preferences_RemovePreferencesFromCache_CallBack_0240
      * @tc.desc removePreferencesFromCache interface test
      */
      it('testRemovePreferencesFromCache0001', 0, async function (done) {
@@ -487,5 +487,19 @@ describe('preferencesCallBackTest', function () {
         })
         done();
     })
+
+    /**
+     * @tc.name get defaultValue callback interface test
+     * @tc.number SUB_DDM_Preferences_Get_CallBack_0250
+     * @tc.desc get defaultValue callback interface test
+     */
+     it('testPreferencesGetDefValue0173', 0, async function (done) {
+        await mPreferences.clear();
+        await mPreferences.get(KEY_TEST_BOOLEAN_ELEMENT, true, function (err, ret) {
+            expect(true).assertEqual(ret);
+            done();
+        })
+    })
+
 })
 }

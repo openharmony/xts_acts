@@ -57,26 +57,26 @@ struct Index {
     events: ["FMS_TimeChange_commonEvent"],
   };
 
-  private publishOnErrorCallBack() {
+  private publishOnErrorCallBack = () => {
     this.canCreateForm = false;
     console.debug("====>formsystemhostc formOnErrorEventCallBack ====>");
   }
-  private publishOnDeletedCallBack() {
+  private publishOnDeletedCallBack = () => {
     this.canCreateForm = false;
     console.debug("====>formsystemhostc publishOnDeletedCallBack ====>");
   }
-  private publishOnReleasedCallBack() {
+  private publishOnReleasedCallBack = () => {
     this.canCreateForm = false;
     console.debug("====>formsystemhostc publishOnReleasedCallBackk ====>");
   }
-  private publishOnAcquiredCallBack() {
+  private publishOnAcquiredCallBack = () => {
     console.debug("====>formsystemhostc formOnAcquiredEventCallBack ====>");
   }
-  private publishCastCallBack() {
+  private publishCastCallBack = () => {
     console.debug("====>formsystemhostc formCastEventCallBack ====>");
   }
 
-  private deleteCallBack(err, data) {
+  private deleteCallBack = (err, data) => {
     console.info("!!!====>[FormComponent] deleteCallBack start:====>" + JSON.stringify(data));
     if(data.bundleName && data.bundleName != "com.ohos.st.formsystemhostc") {
       return;
@@ -90,7 +90,7 @@ struct Index {
     console.info("!!!====>[FormComponent] deleteCallBack end ====>");
   }
   
-  private timeChangeCallBack(err, data) {
+  private timeChangeCallBack = (err, data) => {
     console.info("!!!====>[FormComponent] timeChangeCallBack start:====>" + JSON.stringify(data));
     if(data.bundleName && data.bundleName != "com.ohos.st.formsystemhostc") {
       return;

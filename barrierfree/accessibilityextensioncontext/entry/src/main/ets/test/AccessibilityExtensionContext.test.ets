@@ -14,6 +14,7 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import commonEvent from '@ohos.commonEvent'
+import config from '@ohos.accessibility.config'
 
 const passStr = 'pass';
 const failStr = 'fail';
@@ -48,21 +49,27 @@ export default function abilityTest() {
                 }
             });
 
-            await globalThis.abilityContext.startAbility({
-                deviceId: '',
-                bundleName: 'com.example.acetest',
-                abilityName: 'MainAbility',
-                action: 'action1',
-                parameters: {},
+            config.enableAbility('com.example.accessibilityxts/AccessibilityExtAbility',
+                                    ["retrieve", "touchGuide", "gesture"]
+            ).then(() => {
+                console.info(`AccessibilityExtensionContextTest enableAbility: then`);
+            }).catch((err) => {
+                console.error(`AccessibilityExtensionContextTest enableAbility has error: ${err.code}`);
             });
-            setTimeout(done, 3000);
+
+            setTimeout(done, 5000);
         })
 
         afterAll(async function (done) {
             console.info('AccessibilityElementTest: afterAll');
             commonEvent.unsubscribe(subScriber);
             isConnect = false;
-            done();
+            config.disableAbility('com.example.accessibilityxts/AccessibilityExtAbility').then(() => {
+                console.info(`AccessibilityExtensionContextTest disableAbility: then`);
+            }).catch((err) => {
+                console.error(`AccessibilityExtensionContextTest disableAbility has error: ${err.code}`);
+            });
+            setTimeout(done, 5000);
         })
 
         beforeEach(async function (done) {
@@ -745,73 +752,6 @@ export default function abilityTest() {
         })
 
         /*
-        * @tc.number  AccessibilityExtensionContextTest_getFocusElement_asyncCallback_3500
-        * @tc.name    AccessibilityExtensionContextTest_getFocusElement_asyncCallback_3500
-        * @tc.desc    The parameter input is null, test the getFocusElement() function,
-        *             The result of getFocusElement() should be AccessibilityElement type.
-        * @tc.size    SmallTest
-        * @tc.type    User
-        */
-        it('AccessibilityExtensionContextTest_getFocusElement_asyncCallback_3500', 0, async function (done) {
-            let caseName = 'AccessibilityExtensionContextTest_getFocusElement_asyncCallback_3500';
-            console.info(caseName + 'start');
-
-            if (isConnect) {
-                publishCaseExecute(caseName);
-
-                setTimeout(() => {
-                    if (caseResult != undefined) {
-                        console.info(caseName + ':' + caseResult.data);
-                        expect(passStr).assertEqual(caseResult.data);
-                        expect(caseName).assertEqual(caseResult.parameters.case);
-                    } else {
-                        console.info(caseName + ': caseResult is undefined');
-                        expect(null).assertFail();
-                    }
-                    done();
-                }, 5500);
-            } else {
-                console.error(caseName + ': extension not connected');
-                expect(null).assertFail();
-                done();
-            }
-        })
-
-        /*
-        * @tc.number  AccessibilityExtensionContextTest_getFocusElement_asyncCallback_3600
-        * @tc.name    AccessibilityExtensionContextTest_getFocusElement_asyncCallback_3600
-        * @tc.desc    The parameter input is null, test the getFocusElement() function,
-        *             The result of getFocusElement() should be AccessibilityElement type.
-        * @tc.size    SmallTest
-        * @tc.type    User
-        */
-        it('AccessibilityExtensionContextTest_getFocusElement_asyncCallback_3600', 0, async function (done) {
-            let caseName = 'AccessibilityExtensionContextTest_getFocusElement_asyncCallback_3600';
-            console.info(caseName + 'start');
-
-            if (isConnect) {
-                publishCaseExecute(caseName);
-
-                setTimeout(() => {
-                    if (caseResult != undefined) {
-                        console.info(caseName + ':' + caseResult.data);
-                        expect(passStr).assertEqual(caseResult.data);
-                        expect(caseName).assertEqual(caseResult.parameters.case);
-                    } else {
-                        console.info(caseName + ': caseResult is undefined');
-                        expect(null).assertFail();
-                    }
-                    done();
-                }, 5500);
-            } else {
-                console.error(caseName + ': extension not connected');
-                expect(null).assertFail();
-                done();
-            }
-        })
-
-
-        /*
         * @tc.number  AccessibilityExtensionContextTest_getFocusElement_asyncCallback_3700
         * @tc.name    AccessibilityExtensionContextTest_getFocusElement_asyncCallback_3700
         * @tc.desc    The parameter input is true, test the getFocusElement() function,
@@ -821,39 +761,6 @@ export default function abilityTest() {
         */
         it('AccessibilityExtensionContextTest_getFocusElement_asyncCallback_3700', 0, async function (done) {
             let caseName = 'AccessibilityExtensionContextTest_getFocusElement_asyncCallback_3700';
-            console.info(caseName + 'start');
-
-            if (isConnect) {
-                publishCaseExecute(caseName);
-
-                setTimeout(() => {
-                    if (caseResult != undefined) {
-                        console.info(caseName + ':' + caseResult.data);
-                        expect(passStr).assertEqual(caseResult.data);
-                        expect(caseName).assertEqual(caseResult.parameters.case);
-                    } else {
-                        console.info(caseName + ': caseResult is undefined');
-                        expect(null).assertFail();
-                    }
-                    done();
-                }, 5500);
-            } else {
-                console.error(caseName + ': extension not connected');
-                expect(null).assertFail();
-                done();
-            }
-        })
-
-        /*
-        * @tc.number  AccessibilityExtensionContextTest_getFocusElement_asyncCallback_3800
-        * @tc.name    AccessibilityExtensionContextTest_getFocusElement_asyncCallback_3800
-        * @tc.desc    The parameter input is false, test the getFocusElement() function,
-        *             The result of getFocusElement() should be AccessibilityElement type.
-        * @tc.size    SmallTest
-        * @tc.type    User
-        */
-        it('AccessibilityExtensionContextTest_getFocusElement_asyncCallback_3800', 0, async function (done) {
-            let caseName = 'AccessibilityExtensionContextTest_getFocusElement_asyncCallback_3800';
             console.info(caseName + 'start');
 
             if (isConnect) {
@@ -911,39 +818,6 @@ export default function abilityTest() {
         })
 
         /*
-        * @tc.number  AccessibilityExtensionContextTest_getFocusElement_asyncCallback_4000
-        * @tc.name    AccessibilityExtensionContextTest_getFocusElement_asyncCallback_4000
-        * @tc.desc    The parameter input is false, test the getFocusElement() function,
-        *             The result of getFocusElement() should be AccessibilityElement type.
-        * @tc.size    SmallTest
-        * @tc.type    User
-        */
-        it('AccessibilityExtensionContextTest_getFocusElement_asyncCallback_4000', 0, async function (done) {
-            let caseName = 'AccessibilityExtensionContextTest_getFocusElement_asyncCallback_4000';
-            console.info(caseName + 'start');
-
-            if (isConnect) {
-                publishCaseExecute(caseName);
-
-                setTimeout(() => {
-                    if (caseResult != undefined) {
-                        console.info(caseName + ':' + caseResult.data);
-                        expect(passStr).assertEqual(caseResult.data);
-                        expect(caseName).assertEqual(caseResult.parameters.case);
-                    } else {
-                        console.info(caseName + ': caseResult is undefined');
-                        expect(null).assertFail();
-                    }
-                    done();
-                }, 5500);
-            } else {
-                console.error(caseName + ': extension not connected');
-                expect(null).assertFail();
-                done();
-            }
-        })
-
-        /*
         * @tc.number  AccessibilityExtensionContextTest_getFocusElement_asyncPromise_4100
         * @tc.name    AccessibilityExtensionContextTest_getFocusElement_asyncPromise_4100
         * @tc.desc    The parameter input is true, test the getFocusElement() function,
@@ -953,40 +827,6 @@ export default function abilityTest() {
         */
         it('AccessibilityExtensionContextTest_getFocusElement_asyncPromise_4100', 0, async function (done) {
             let caseName = 'AccessibilityExtensionContextTest_getFocusElement_asyncPromise_4100';
-            console.info(caseName + 'start');
-
-            if (isConnect) {
-                publishCaseExecute(caseName);
-
-                setTimeout(() => {
-                    if (caseResult != undefined) {
-                        console.info(caseName + ':' + caseResult.data);
-                        expect(passStr).assertEqual(caseResult.data);
-                        expect(caseName).assertEqual(caseResult.parameters.case);
-                    } else {
-                        console.info(caseName + ': caseResult is undefined');
-                        expect(null).assertFail();
-                    }
-                    done();
-                }, 5500);
-            } else {
-                console.error(caseName + ': extension not connected');
-                expect(null).assertFail();
-                done();
-            }
-        })
-
-
-        /*
-        * @tc.number  AccessibilityExtensionContextTest_getFocusElement_asyncPromise_4200
-        * @tc.name    AccessibilityExtensionContextTest_getFocusElement_asyncPromise_4200
-        * @tc.desc    The parameter input is false, test the getFocusElement() function,
-        *             The result of getFocusElement() should be AccessibilityElement type.
-        * @tc.size    SmallTest
-        * @tc.type    User
-        */
-        it('AccessibilityExtensionContextTest_getFocusElement_asyncPromise_4200', 0, async function (done) {
-            let caseName = 'AccessibilityExtensionContextTest_getFocusElement_asyncPromise_4200';
             console.info(caseName + 'start');
 
             if (isConnect) {
@@ -1020,39 +860,6 @@ export default function abilityTest() {
         */
         it('AccessibilityExtensionContextTest_getFocusElement_asyncPromise_4300', 0, async function (done) {
             let caseName = 'AccessibilityExtensionContextTest_getFocusElement_asyncPromise_4300';
-            console.info(caseName + 'start');
-
-            if (isConnect) {
-                publishCaseExecute(caseName);
-
-                setTimeout(() => {
-                    if (caseResult != undefined) {
-                        console.info(caseName + ':' + caseResult.data);
-                        expect(passStr).assertEqual(caseResult.data);
-                        expect(caseName).assertEqual(caseResult.parameters.case);
-                    } else {
-                        console.info(caseName + ': caseResult is undefined');
-                        expect(null).assertFail();
-                    }
-                    done();
-                }, 5500);
-            } else {
-                console.error(caseName + ': extension not connected');
-                expect(null).assertFail();
-                done();
-            }
-        })
-
-        /*
-        * @tc.number  AccessibilityExtensionContextTest_getFocusElement_asyncPromise_4400
-        * @tc.name    AccessibilityExtensionContextTest_getFocusElement_asyncPromise_4400
-        * @tc.desc    The parameter input is false, test the getFocusElement() function,
-        *             The result of getFocusElement() should be AccessibilityElement type.
-        * @tc.size    SmallTest
-        * @tc.type    User
-        */
-        it('AccessibilityExtensionContextTest_getFocusElement_asyncPromise_4400', 0, async function (done) {
-            let caseName = 'AccessibilityExtensionContextTest_getFocusElement_asyncPromise_4400';
             console.info(caseName + 'start');
 
             if (isConnect) {

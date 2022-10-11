@@ -55,27 +55,27 @@ struct Index {
     events: ["FMS_FormDelete_commonEvent"],
   };
 
-  private publishOnErrorCallBack() {
+  private publishOnErrorCallBack = () => {
     this.canCreateForm = false;
     console.debug("====>formsystemhostc formOnErrorEventCallBack ====>");
   }
-  private publishOnDeletedCallBack() {
+  private publishOnDeletedCallBack = () => {
     this.canCreateForm = false;
     console.debug("====>formsystemhostc publishOnDeletedCallBack ====>");
   }
-  private formOnDynamicRefreshCallBack() {
+  private formOnDynamicRefreshCallBack = () => {
     this.canCreateForm = false;
     console.debug("====>formsystemhostc formOnDynamicRefreshEventk ====>");
   }
-  private formOnRequestCallBack() {
+  private formOnRequestCallBack = () => {
     this.canCreateForm = false;
     console.debug("====>formsystemhostc formOnRequestCallBack ====>");
   }
-  private publishOnAcquiredCallBack() {
+  private publishOnAcquiredCallBack = () => {
     console.debug("====>formsystemhostc formOnAcquiredEventCallBack ====>");
   }
 
-  private deleteCallBack(err, data) {
+  private deleteCallBack = (err, data) => {
     console.info("!!!====>formsystemhost deleteCallBack start:====>" + JSON.stringify(data));
     if (data.bundleName && data.bundleName != "com.ohos.st.formsystemhost") {
       return;

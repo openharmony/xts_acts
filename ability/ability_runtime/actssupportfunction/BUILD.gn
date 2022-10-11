@@ -17,6 +17,7 @@ group("actssupportfunction") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "actsonandoffscreentest:ActsOnAndOffScreenTest",
       "actssupportfunctiontest:ActsSupportFunctionTest",
       "faonandoffscreen:FaOnAndOffScreen",
       "fasupportfunction:fasupportfunction",

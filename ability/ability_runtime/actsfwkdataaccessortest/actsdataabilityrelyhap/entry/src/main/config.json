@@ -18,6 +18,7 @@
     "mainAbility": ".MainAbility",
     "srcPath": "",
     "deviceType": [
+      "default",
       "phone"
     ],
     "distro": {
@@ -69,6 +70,18 @@
         "type": "data",
         "visible": true,
         "uri": "dataability://com.example.myapplication.DataAbility2"
+      },
+      {
+        "srcPath": "TestDataAbility3",
+        "name": ".TestDataAbility3",
+        "icon": "$media:icon",
+        "srcLanguage": "ets",
+        "description": "$string:description_testdataability",
+        "type": "data",
+        "visible": true,
+        "uri": "dataability://com.example.myapplication.DataAbility3",
+        "readPermission": "ohos.permission.READ_CONTACTS",
+        "writePermission": "ohos.permission.WRITE_CONTACTS"
       }
     ],
     "js": [

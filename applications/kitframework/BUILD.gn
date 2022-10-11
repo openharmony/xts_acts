@@ -21,7 +21,7 @@ hctest_suite("ActsKitFwkApiTest") {
   include_dirs = [
     "//test/xts/tools/lite/hctest/include",
     "//third_party/unity/src",
-    "//utils/native/lite/include",
+    "//commonlibrary/utils_lite/include",
     "//foundation/systemabilitymgr/samgr_lite/interfaces/kits/samgr",
     "//third_party/bounds_checking_function/include/",
     "//third_party/mbedtls/include/",

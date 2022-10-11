@@ -198,7 +198,8 @@ export default function ActsAccountNoPermission() {
                 expect(err).assertEqual(null);
                 appAccountManager.getAllAccounts(selfBundle, (err, data)=>{
                     console.debug("====>getAllAccounts 0700 err:" + JSON.stringify(err));
-                    expect(err.code).assertEqual(account.ResultCode.ERROR_PERMISSION_DENIED);
+                    expect(err).assertEqual(null);
+                    expect(data.length>0).assertEqual(true);
                     appAccountManager.deleteAccount("getAll_callback_nopermission", (err)=>{
                         console.debug("====>delete account 0700 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);

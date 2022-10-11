@@ -31,7 +31,7 @@ config("public_config") {
 
 ohos_shared_library("imagePixelmap") {
   sources = [ "./napi/imagePixelmap.cpp" ]
-  if (!(product_name == "m40")) {
+  if (use_musl) {
     if (target_cpu == "arm") {
       libs = [ "${clang_base_path}/../libcxx-ndk/lib/arm-linux-ohos/c++/libc++_shared.so" ]
     } else if (target_cpu == "arm64") {
@@ -45,7 +45,7 @@ ohos_shared_library("imagePixelmap") {
 
   deps = [
     "//foundation/arkui/napi:ace_napi",
-    "//foundation/multimedia/image_standard/frameworks/kits/js/common/pixelmap_ndk:pixelmap_ndk",
+    "//foundation/multimedia/image_framework/frameworks/kits/js/common/pixelmap_ndk:pixelmap_ndk",
   ]
 
   output_extension = "so"

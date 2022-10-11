@@ -491,5 +491,22 @@ describe('storagePromiseTest', function () {
         expect(MAX_VALUE_LENGTH).assertEqual(mPref.getSync("test", "defaultvalue"));
         done();
     })
+
+    /**
+     * @tc.name get string promise interface test
+     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Storage_0260
+     * @tc.desc get string promise interface test
+     */
+     it('testGetDefValue0260', 0, async function (done) {
+        await mPref.clear();
+        const promise = mPref.get(KEY_TEST_BOOLEAN_ELEMENT, true);
+        promise.then((ret) => {
+            expect(true).assertEqual(ret);
+        }).catch((err) => {
+            expect(null).assertFail();
+        });
+        await promise;
+        done();
+    })
 })
 }

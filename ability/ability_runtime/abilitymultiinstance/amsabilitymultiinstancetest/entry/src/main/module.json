@@ -6,6 +6,7 @@
         "description": "$string:phone_entry_dsc",
         "mainElement": "MainAbility",
         "deviceTypes": [
+            "default",
             "phone"
         ],
         "deliveryWithInstall": true,
@@ -74,6 +75,10 @@
             {
               "name":"ohos.permission.CLEAN_APPLICATION_DATA",
               "reason":"need use ohos.permission.CLEAN_APPLICATION_DATA"
+            },
+            {
+              "name":"ohos.permission.START_ABILITIES_FROM_BACKGROUND",
+              "reason":"need use ohos.permission.START_ABILITIES_FROM_BACKGROUND"
             }
           ]
     }

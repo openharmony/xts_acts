@@ -43,6 +43,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
           }).catch(error => {
             console.info('usb case setPortRoles error : ' + error);
           });
+          CheckEmptyUtils.sleep(8000)
           console.log('*************Usb Unit switch to host Begin*************');
         }
       } else {
@@ -171,6 +172,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       console.info('usb case readData error : ' + JSON.stringify(error));
       expect(false).assertTrue();
     });
+    CheckEmptyUtils.sleep(3000);
   })
 
   /**
@@ -212,7 +214,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       console.info('usb write error : ' + JSON.stringify(error));
       expect(false).assertTrue();
     });
-
+    CheckEmptyUtils.sleep(3000);
   })
 
   /**
@@ -260,14 +262,16 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     expect(true).assertTrue();
   })
 
-  function getTransferParam(iCmd, iReqType, iValue, iIndex) {
+  function getTransferParam(iCmd, iReqTarType, iReqType, iValue, iIndex) {
     var tmpUint8Array = new Uint8Array(512);
     var requestCmd = iCmd
+    var requestTargetType = iReqTarType
     var requestType = iReqType
     var value = iValue;
     var index = iIndex;
     var controlParam = {
       request: requestCmd,
+      target: requestTargetType,
       reqType: requestType,
       value: value,
       index: index,
@@ -411,6 +415,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       console.info('usb' + caseName + ':  PASS');
       expect(false).assertTrue();
     });
+    CheckEmptyUtils.sleep(3000);
   }
 
   /**
@@ -432,7 +437,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     }
 
     var timeout = 5000;
-    var controlParam = getTransferParam(6, (usb.USB_REQUEST_DIR_FROM_DEVICE << 7)
+    var controlParam = getTransferParam(6, usb.USB_REQUEST_TARGET_DEVICE, (usb.USB_REQUEST_DIR_FROM_DEVICE << 7)
         | (usb.USB_REQUEST_TYPE_STANDARD << 5) | (usb.USB_REQUEST_TARGET_DEVICE & 0x1f), (2 << 8), 0)
     callControlTransfer(testParam.pip, controlParam, timeout, 'SUB_USB_JS_0540 GetDescriptor')
   })
@@ -456,7 +461,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     }
 
     var timeout = 5000;
-    var controlParam = getTransferParam(0, (usb.USB_REQUEST_DIR_FROM_DEVICE << 7)
+    var controlParam = getTransferParam(0, usb.USB_REQUEST_TARGET_DEVICE, (usb.USB_REQUEST_DIR_FROM_DEVICE << 7)
         | (usb.USB_REQUEST_TYPE_STANDARD << 5) | (usb.USB_REQUEST_TARGET_DEVICE & 0x1f), 0, 0)
     callControlTransfer(testParam.pip, controlParam, timeout, 'SUB_USB_JS_0550 GetStatus')
   })
@@ -480,7 +485,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     }
 
     var timeout = 5000;
-    var controlParam = getTransferParam(8, (usb.USB_REQUEST_DIR_FROM_DEVICE << 7)
+    var controlParam = getTransferParam(8, usb.USB_REQUEST_TARGET_DEVICE, (usb.USB_REQUEST_DIR_FROM_DEVICE << 7)
         | (usb.USB_REQUEST_TYPE_STANDARD << 5) | (usb.USB_REQUEST_TARGET_DEVICE & 0x1f), 0, 0)
     callControlTransfer(testParam.pip, controlParam, timeout, 'SUB_USB_JS_0560 GetConfiguration')
   })
@@ -504,7 +509,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     }
 
     var timeout = 5000;
-    var controlParam = getTransferParam(10, (usb.USB_REQUEST_DIR_FROM_DEVICE << 7)
+    var controlParam = getTransferParam(10, usb.USB_REQUEST_TARGET_INTERFACE, (usb.USB_REQUEST_DIR_FROM_DEVICE << 7)
         | (usb.USB_REQUEST_TYPE_STANDARD << 5) | (usb.USB_REQUEST_TARGET_INTERFACE & 0x1f), 0, 1)
     callControlTransfer(testParam.pip, controlParam, timeout, 'SUB_USB_JS_0570 GetInterface')
   })
@@ -528,7 +533,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     }
 
     var timeout = 5000;
-    var controlParam = getTransferParam(1, (usb.USB_REQUEST_DIR_TO_DEVICE << 7)
+    var controlParam = getTransferParam(1, usb.USB_REQUEST_TARGET_DEVICE, (usb.USB_REQUEST_DIR_TO_DEVICE << 7)
         | (usb.USB_REQUEST_TYPE_STANDARD << 5) | (usb.USB_REQUEST_TARGET_DEVICE & 0x1f), 0, 0)
     callControlTransfer(testParam.pip, controlParam, timeout, 'SUB_USB_JS_0580 ClearFeature')
   })
@@ -552,7 +557,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     }
 
     var timeout = 5000;
-    var controlParam = getTransferParam(255, (usb.USB_REQUEST_DIR_FROM_DEVICE << 7)
+    var controlParam = getTransferParam(255, usb.USB_REQUEST_TARGET_INTERFACE, (usb.USB_REQUEST_DIR_FROM_DEVICE << 7)
         | (usb.USB_REQUEST_TYPE_STANDARD << 5) | (usb.USB_REQUEST_TARGET_INTERFACE & 0x1f), (2 << 8), 0)
     callControlTransfer(testParam.pip, controlParam, timeout, 'SUB_USB_JS_0590 ClearFeature')
   })
@@ -576,7 +581,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     }
 
     var timeout = 5000;
-    var controlParam = getTransferParam(255, (usb.USB_REQUEST_DIR_TO_DEVICE << 7)
+    var controlParam = getTransferParam(255, usb.USB_REQUEST_TARGET_ENDPOINT, (usb.USB_REQUEST_DIR_TO_DEVICE << 7)
         | (usb.USB_REQUEST_TYPE_CLASS << 5) | (usb.USB_REQUEST_TARGET_ENDPOINT & 0x1f), (2 << 8), 0)
     callControlTransfer(testParam.pip, controlParam, timeout, 'SUB_USB_JS_0600 ClearFeature')
   })
@@ -584,7 +589,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   /**
    * @tc.number    : SUB_USB_JS_0610
    * @tc.name      : controlTransfer
-   * @tc.desc      : 控制传输 ClearFeature: ccmd 255 reqType 5 value 512 index 0
+   * @tc.desc      : 控制传输 ClearFeature: cmd 255 reqType 5 value 512 index 0
    */
     it('SUB_USB_JS_0610', 0, function () {
       console.info('usb SUB_USB_JS_0610 begin');
@@ -600,7 +605,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
       }
 
       var timeout = 5000;
-      var controlParam = getTransferParam(255, (usb.USB_REQUEST_DIR_TO_DEVICE << 7)
+      var controlParam = getTransferParam(255, usb.USB_REQUEST_TARGET_OTHER, (usb.USB_REQUEST_DIR_TO_DEVICE << 7)
           | (usb.USB_REQUEST_TYPE_VENDOR << 5) | (usb.USB_REQUEST_TARGET_OTHER & 0x1f), (2 << 8), 0)
       callControlTransfer(testParam.pip, controlParam, timeout, 'SUB_USB_JS_0610 ClearFeature')
     })
@@ -624,7 +629,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
         }
 
         var timeout = 5000;
-        var controlParam = getTransferParam(255, (usb.USB_REQUEST_DIR_TO_DEVICE << 7)
+        var controlParam = getTransferParam(255, usb.USB_REQUEST_TARGET_OTHER, (usb.USB_REQUEST_DIR_TO_DEVICE << 7)
             | (usb.USB_REQUEST_TYPE_CLASS << 5) | (usb.USB_REQUEST_TARGET_OTHER & 0x1f), 0, 0)
         callControlTransfer(testParam.pip, controlParam, timeout, 'SUB_USB_JS_0620 ClearFeature')
       })

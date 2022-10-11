@@ -538,12 +538,12 @@ describe('HiAppEventApiTest', function () {
         console.info('testHiAppEventApi24 end')
     })
 
-  /**
+    /**
      * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_2500
      * @tc.name testHiAppEventApi25
      * @tc.desc HiAppEvent with predefined event and param.
      */
-   it('testHiAppEventApi25', 3, async function (done) {
+    it('testHiAppEventApi25', 3, async function (done) {
     console.info('testHiAppEventApi25 start')
     HiAppEvent.write(HiAppEvent.Event.USER_LOGIN, HiAppEvent.EventType.BEHAVIOR,
         {[HiAppEvent.Param.USER_ID]: 'userlogin', [HiAppEvent.Param.DISTRIBUTED_SERVICE_NAME]: 'HiAppEvent',
@@ -577,6 +577,60 @@ describe('HiAppEventApiTest', function () {
             }
         });
     console.info('testHiAppEventApi25 end')
+    })
+
+    /**
+     * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_2600
+     * @tc.name testHiAppEventApi26
+     * @tc.desc HiAppEvent write by Promise.
+     */
+    it('testHiAppEventApi26', 2, async function (done) {
+        console.info('testHiAppEventApi26 start')
+        HiAppEvent.write({
+            domain: "test_domain",
+            name: "write",
+            eventType: HiAppEvent.EventType.FAULT,
+            params: {
+                "key_int": 100, "key_string": "demo",
+                "key_bool":true, "key_float":1.1,"key_array_int": [1, 2, 3], "key_array_float": [1.1, 2.2, 3.3],
+                "key_array_str": ["a", "b", "c"], "key_array_bool": [true, false],"key_array_int2": [1, 2, 3],
+                "key_arr_float2": [1.1, 2.2, 3.3], "key_arr_str2": ["a", "b", "c"], "key_array_bool2": [true, false]
+            }
+        }).then((value) => {
+            console.log(`success to write event: ${value}`);
+            done();
+        }).catch((err) =>{
+            console.error(`failed to write event because ${err.code}`);
+        });
+        console.info('testHiAppEventApi26 end')
+    })
+
+    /**
+     * @tc.number DFX_DFT_HiviewKit_HiAppEvent_JSNAPI_2700
+     * @tc.name testHiAppEventApi27
+     * @tc.desc HiAppEvent write by  callback.
+     */
+    it('testHiAppEventApi27', 2, async function (done) {
+        console.info('testHiAppEventApi27 start')
+        HiAppEvent.write({
+            domain: "test_domain",
+            name: "test_event",
+            eventType: HiAppEvent.EventType.FAULT,
+            params: {
+                "key_int": 100, "key_string": "demo",
+                "key_bool":true, "key_float":1.1,"key_array_int": [1, 2, 3], "key_array_float": [1.1, 2.2, 3.3],
+                "key_array_str": ["a", "b", "c"], "key_array_bool": [true, false],"key_array_int2": [1, 2, 3],
+                "key_arr_float2": [1.1, 2.2, 3.3], "key_arr_str2": ["a", "b", "c"], "key_array_bool2": [true, false]
+            }
+        }, (err, value) => {
+            if (err) {
+                console.error(`failed to write event because ${err.code}`);
+                done();
+            }
+            console.log(`success to write event: ${value}`)
+            done();
+        });
+        console.info('testHiAppEventApi27 end')
     })
 })
 }

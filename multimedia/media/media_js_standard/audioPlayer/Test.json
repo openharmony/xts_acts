@@ -19,9 +19,12 @@
         {
             "type": "ShellKit",
             "run-command": [
-                "mkdir -p /data/app/el2/100/base/ohos.acts.multimedia.audio.audioplayer/haps/entry/files"
+                "mkdir -p /data/app/el2/100/base/ohos.acts.multimedia.audio.audioplayer/haps/entry/files",
+                "power-shell setmode 602"
             ],
-            "teardown-command": []
+            "teardown-command": [
+                "power-shell setmode 600"
+            ]
         },
         {
             "type": "PushKit",

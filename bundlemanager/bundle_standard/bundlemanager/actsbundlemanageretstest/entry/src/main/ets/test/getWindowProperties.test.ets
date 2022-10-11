@@ -51,9 +51,9 @@ const MAX_WINDOW_WIDTH_VALUE = 2560
 const MIN_WINDOW_WIDTH_VALUE = 1400
 const MAX_WINDOW_HEIGHT_VALUE = 300
 const MIN_WINDOW_HEIGHT_VALUE = 200
-const FULL_SCREEN_WINDOW_MODE = 0
-const SPLIT_WINDOW_MODE = 1
-const FLOATING_WINDOW_MODE = 2
+const FULL_SCREEN_WINDOW_MODE = bundle.SupportWindowMode.FULL_SCREEN 
+const SPLIT_WINDOW_MODE = bundle.SupportWindowMode.SPLIT 
+const FLOATING_WINDOW_MODE = bundle.SupportWindowMode.FLOATING 
 
 export default function getWindowPorperties() {
 

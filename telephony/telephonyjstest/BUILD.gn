@@ -24,5 +24,6 @@ group("telephonyjstest") {
     "radiostatistic:ActsRadiostatisticEtsTest",
     "sim:sim",
     "sms_mms:sms_mms",
+    "telephony_base:telephony_base",
   ]
 }
