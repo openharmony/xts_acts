@@ -739,7 +739,7 @@ describe('ActsBundleManagerTest', function () {
         await demo.getApplicationInfo(NAME1,
             demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION | demo.BundleFlag.GET_APPLICATION_INFO_WITH_METADATA,
             userId, (error, datainfo) => {
-                if (error) {
+                if (error.code != 0) {
                     console.info("testGetApplicationInfoMetaDataCallback fail:" + JSON.stringify(error));
                     expect(error).assertFail();
                     done();
@@ -909,7 +909,7 @@ describe('ActsBundleManagerTest', function () {
                 done();
             }).catch(err => {
                 console.info("testGetApplicationInfoNotExistCallback err" + JSON.stringify(err));
-                expect(err).assertEqual(1);
+                expect(err.code).assertEqual(1);
                 done();
             });
     })
@@ -924,7 +924,7 @@ describe('ActsBundleManagerTest', function () {
             userId, (error, datainfo) => {
                 if (error) {
                     console.info("testGetApplicationInfoNotExistPromise fail" + JSON.stringify(error));
-                    expect(error).assertEqual(1);
+                    expect(error.code).assertEqual(1);
                     done();
                     return;
                 }
@@ -947,7 +947,7 @@ describe('ActsBundleManagerTest', function () {
                 done();
             }).catch(error => {
                 console.info("testGetApplicationInfoInvalidParamPromise err" + JSON.stringify(error));
-                expect(error).assertEqual(1);
+                expect(error.code).assertEqual(1);
                 done();
             });
     })
@@ -962,7 +962,7 @@ describe('ActsBundleManagerTest', function () {
             userId, (error, datainfo) => {
                 if (error) {
                     console.info("testGetApplicationInfoInvalidParamCallback fail" + JSON.stringify(error));
-                    expect(error).assertEqual(1);
+                    expect(error.code).assertEqual(1);
                     done();
                     return;
                 }
@@ -1005,7 +1005,7 @@ describe('ActsBundleManagerTest', function () {
      */
     it('testGetApplicationInfoDifferentParamCallback', 0, async function (done) {
         await demo.getApplicationInfo(NAME1, demo.BundleFlag.GET_BUNDLE_DEFAULT, userId, (error, datainfo) => {
-            if (error) {
+            if (error.code != 0) {
                 console.info("testGetApplicationInfoDifferentParamCallback fail" + JSON.stringify(error));
                 expect(error).assertFail();
                 done();
@@ -1066,7 +1066,7 @@ describe('ActsBundleManagerTest', function () {
     it('testGetApplicationInfoCallback', 0, async function (done) {
         await demo.getApplicationInfo(NAME1, demo.BundleFlag.GET_APPLICATION_INFO_WITH_PERMISSION, userId,
             (error, datainfo) => {
-                if (error) {
+                if (error.code != 0) {
                     console.info("testGetApplicationInfoCallback fail:" + JSON.stringify(error));
                     expect(error).assertFail();
                     done();
