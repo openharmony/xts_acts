@@ -303,7 +303,13 @@ export default function cameraSessionTest(surfaceId: any) {
     async function createCameraSessionInstance() {
         console.info('Enter createCameraSessionInstance');
 
-        mCameraSession = await mCameraManager.createCaptureSession();
+        try {
+            mCameraSession = await mCameraManager.createCaptureSession();
+        }
+        catch {
+            console.info('createCaptureSession FAILED');
+        }
+
         if (isEmpty(mCameraSession)) {
             console.info(TAG + "createCaptureSession FAILED");
             return false;
