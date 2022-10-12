@@ -73,7 +73,7 @@ export default function isAbilityEnabledETSUnit() {
             });
             timeOldStamp = await Utils.getNowTime();
             Bundle.isAbilityEnabled(abilityInfo, (error, data) => {
-                if (error) {
+                if (error.code != 0) {
                     expect(error).assertFail();
                 }
                 let timeNewStamp = Utils.getNowTime();
@@ -114,16 +114,16 @@ export default function isAbilityEnabledETSUnit() {
                 expect(error).assertFail();
             });
             Bundle.isAbilityEnabled(abilityInfo1, (error, data) => {
-                expect(error).assertEqual(0);
+                expect(error.code).assertEqual(0);
                 expect(data).assertFalse();
                 Bundle.isAbilityEnabled(abilityInfo2, (error, data) => {
-                    expect(error).assertEqual(0);
+                    expect(error.code).assertEqual(0);
                     expect(data).assertFalse();
                     Bundle.isAbilityEnabled(abilityInfo3, (error, data) => {
-                        expect(error).assertEqual(0);
+                        expect(error.code).assertEqual(0);
                         expect(data).assertFalse();
                         Bundle.isAbilityEnabled(abilityInfo7, (error, data) => {
-                            expect(error).assertEqual(0);
+                            expect(error.code).assertEqual(0);
                             expect(data).assertFalse();
                             done();
                         });
@@ -144,26 +144,26 @@ export default function isAbilityEnabledETSUnit() {
             Bundle.isAbilityEnabled(abilityInfo4).then((data) => {
                 expect(data).assertFail();
             }).catch((error) => {
-                expect(error).assertEqual(2);
+                expect(error.code).assertEqual(2);
             });
             Bundle.isAbilityEnabled(abilityInfo5).then((data) => {
                 expect(data).assertFail();
             }).catch((error) => {
-                expect(error).assertEqual(2);
+                expect(error.code).assertEqual(2);
             });
             Bundle.isAbilityEnabled(abilityInfo6).then((data) => {
                 expect(data).assertFail();
             }).catch((error) => {
-                expect(error).assertEqual(2);
+                expect(error.code).assertEqual(2);
             });
             Bundle.isAbilityEnabled(abilityInfo4, (error, data) => {
-                expect(error).assertEqual(2);
+                expect(error.code).assertEqual(2);
                 expect(data).assertEqual(undefined);
                 Bundle.isAbilityEnabled(abilityInfo5, (error, data) => {
-                    expect(error).assertEqual(2);
+                    expect(error.code).assertEqual(2);
                     expect(data).assertEqual(undefined);
                     Bundle.isAbilityEnabled(abilityInfo6, (error, data) => {
-                        expect(error).assertEqual(2);
+                        expect(error.code).assertEqual(2);
                         expect(data).assertEqual(undefined);
                         done();
                     });
@@ -184,7 +184,7 @@ export default function isAbilityEnabledETSUnit() {
                 expect(error).assertFail();
             });
             Bundle.isAbilityEnabled(abilityInfo, (error, data) => {
-                expect(error).assertEqual(0);
+                expect(error.code).assertEqual(0);
                 expect(data).assertTrue();
                 done();
             });

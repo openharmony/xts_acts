@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 import commonEvent from '@ohos.commonEvent';
+import { GesturePath } from '@ohos.accessibility.GesturePath';
+import { GesturePoint } from '@ohos.accessibility.GesturePoint';
 
 export class GestureEventTest {
     private context = undefined;
@@ -38,239 +40,196 @@ export class GestureEventTest {
 
     private async processCase(caseName) {
         console.info('GestureEventTest processCase start');
-        let gesturePath = {};
-        let gesturePos1 = {};
-        let gesturePos2 = {};
-        let gesturePos3 = {};
-        let gesturePos4 = {};
-        let gesturePos5 = {};
-        let gesturePos6 = {};
-        let gesturePos7 = {};
-        let gesturePos8 = {};
-        let gesturePos9 = {};
-        let gesturePos10 = {};
-        let gesturePos11 = {};
+        let gesturePath = new GesturePath(100);
         switch (caseName) {
             case 'AccessibilityGestureEventTest_0100'://'left'
                 console.info('GestureEventTest processCase left');
-                gesturePos1 = {positionX: 676, positionY: 735};
-                gesturePos2 = {positionX: 567, positionY: 729};
-                gesturePos3 = {positionX: 444, positionY: 719};
-                gesturePos4 = {positionX: 255, positionY: 714};
-                gesturePos5 = {positionX: 153, positionY: 715};
-                gesturePos6 = {positionX: 15, positionY: 729};
-                gesturePath = {points: [gesturePos1, gesturePos2, gesturePos3, gesturePos4, gesturePos5, gesturePos6], durationTime: 100};
+                gesturePath.points.push(new GesturePoint(676, 735),
+                                        new GesturePoint(567, 729),
+                                        new GesturePoint(444, 719),
+                                        new GesturePoint(255, 714),
+                                        new GesturePoint(153, 715),
+                                        new GesturePoint(15, 729));
                 this.gestureInject(caseName, gesturePath);
                 break;
             case 'AccessibilityGestureEventTest_0200'://'leftThenRight'
                 console.info('GestureEventTest processCase leftThenRight');
-                gesturePos1 = {positionX: 685, positionY: 798};
-                gesturePos2 = {positionX: 575, positionY: 792};
-                gesturePos3 = {positionX: 446, positionY: 785};
-                gesturePos4 = {positionX: 285, positionY: 784};
-                gesturePos5 = {positionX: 206, positionY: 785};
-                gesturePos6 = {positionX: 87, positionY: 787};
-                gesturePos7 = {positionX: 401, positionY: 772};
-                gesturePos8 = {positionX: 535, positionY: 786};
-                gesturePos9 = {positionX: 714, positionY: 806};
-                gesturePath = {points: [gesturePos1, gesturePos2, gesturePos3, gesturePos4, gesturePos5,
-                                           gesturePos6, gesturePos7, gesturePos8, gesturePos9], durationTime: 100};
+                gesturePath.points.push(new GesturePoint(685, 798),
+                                        new GesturePoint(575, 792),
+                                        new GesturePoint(446, 785),
+                                        new GesturePoint(285, 784),
+                                        new GesturePoint(206, 785),
+                                        new GesturePoint(87, 787),
+                                        new GesturePoint(401, 772),
+                                        new GesturePoint(535, 786),
+                                        new GesturePoint(714, 806));
                 this.gestureInject(caseName, gesturePath);
                 break;
             case 'AccessibilityGestureEventTest_0300'://'leftThenUp'
-            console.info('GestureEventTest processCase leftThenUp');
-                gesturePos1 = {positionX: 652, positionY: 903};
-                gesturePos2 = {positionX: 570, positionY: 905};
-                gesturePos3 = {positionX: 460, positionY: 920};
-                gesturePos4 = {positionX: 280, positionY: 737};
-                gesturePos5 = {positionX: 281, positionY: 555};
-                gesturePos6 = {positionX: 285, positionY: 333};
-                gesturePos7 = {positionX: 284, positionY: 116};
-                gesturePath = {points: [gesturePos1, gesturePos2, gesturePos3, gesturePos4, gesturePos5,
-                                           gesturePos6, gesturePos7], durationTime: 100};
+                console.info('GestureEventTest processCase leftThenUp');
+                gesturePath.points.push(new GesturePoint(652, 903),
+                                        new GesturePoint(570, 905),
+                                        new GesturePoint(460, 920),
+                                        new GesturePoint(280, 737),
+                                        new GesturePoint(281, 555),
+                                        new GesturePoint(285, 333),
+                                        new GesturePoint(284, 116));
                 this.gestureInject(caseName, gesturePath);
                 break;
             case 'AccessibilityGestureEventTest_0400'://'leftThenDown'
-            console.info('GestureEventTest processCase leftThenDown');
-                gesturePos1 = {positionX: 583, positionY: 520};
-                gesturePos2 = {positionX: 468, positionY: 485};
-                gesturePos3 = {positionX: 377, positionY: 456};
-                gesturePos4 = {positionX: 289, positionY: 435};
-                gesturePos5 = {positionX: 283, positionY: 626};
-                gesturePos6 = {positionX: 308, positionY: 836};
-                gesturePos7 = {positionX: 335, positionY: 1108};
-                gesturePath = {points: [gesturePos1, gesturePos2, gesturePos3, gesturePos4, gesturePos5,
-                                           gesturePos6, gesturePos7], durationTime: 100};
+                console.info('GestureEventTest processCase leftThenDown');
+                gesturePath.points.push(new GesturePoint(583, 520),
+                                        new GesturePoint(468, 485),
+                                        new GesturePoint(377, 456),
+                                        new GesturePoint(289, 435),
+                                        new GesturePoint(283, 626),
+                                        new GesturePoint(308, 836),
+                                        new GesturePoint(335, 1108));
                 this.gestureInject(caseName, gesturePath);
                 break;
             case 'AccessibilityGestureEventTest_0500'://'right'
-            console.info('GestureEventTest processCase right');
-                gesturePos1 = {positionX: 77, positionY: 589};
-                gesturePos2 = {positionX: 185, positionY: 589};
-                gesturePos3 = {positionX: 318, positionY: 589};
-                gesturePos4 = {positionX: 499, positionY: 589};
-                gesturePos5 = {positionX: 630, positionY: 588};
-                gesturePath = {points: [gesturePos1, gesturePos2, gesturePos3, gesturePos4, gesturePos5], durationTime: 100};
+                console.info('GestureEventTest processCase right');
+                gesturePath.points.push(new GesturePoint(77, 589),
+                                        new GesturePoint(185, 589),
+                                        new GesturePoint(318, 589),
+                                        new GesturePoint(499, 589),
+                                        new GesturePoint(630, 588));
                 this.gestureInject(caseName, gesturePath);
                 break;
             case 'AccessibilityGestureEventTest_0600'://'rightThenLeft'
-            console.info('GestureEventTest processCase rightThenLeft');
-                gesturePos1 = {positionX: 174, positionY: 731};
-                gesturePos2 = {positionX: 251, positionY: 743};
-                gesturePos3 = {positionX: 393, positionY: 772};
-                gesturePos4 = {positionX: 673, positionY: 817};
-                gesturePos5 = {positionX: 591, positionY: 805};
-                gesturePos6 = {positionX: 511, positionY: 791};
-                gesturePos7 = {positionX: 423, positionY: 779};
-                gesturePos8 = {positionX: 333, positionY: 768};
-                gesturePos9 = {positionX: 244, positionY: 764};
-                gesturePos10 = {positionX: 167, positionY: 759};
-                gesturePos11 = {positionX: 71, positionY: 755};
-                gesturePath = {points: [gesturePos1, gesturePos2, gesturePos3, gesturePos4, gesturePos5,
-                                           gesturePos6, gesturePos7, gesturePos8, gesturePos9, gesturePos10,
-                                           gesturePos11], durationTime: 100};
+                console.info('GestureEventTest processCase rightThenLeft');
+                gesturePath.points.push(new GesturePoint(174, 731),
+                                        new GesturePoint(251, 743),
+                                        new GesturePoint(393, 772),
+                                        new GesturePoint(673, 817),
+                                        new GesturePoint(591, 805),
+                                        new GesturePoint(511, 791),
+                                        new GesturePoint(423, 779),
+                                        new GesturePoint(333, 768),
+                                        new GesturePoint(244, 764),
+                                        new GesturePoint(167, 759),
+                                        new GesturePoint(71, 755));
                 this.gestureInject(caseName, gesturePath);
                 break;
             case 'AccessibilityGestureEventTest_0700'://'rightThenUp'
-            console.info('GestureEventTest processCase rightThenUp');
-                gesturePos1 = {positionX: 117, positionY: 950};
-                gesturePos2 = {positionX: 216, positionY: 950};
-                gesturePos3 = {positionX: 311, positionY: 950};
-                gesturePos4 = {positionX: 438, positionY: 933};
-                gesturePos5 = {positionX: 491, positionY: 791};
-                gesturePos6 = {positionX: 478, positionY: 622};
-                gesturePos7 = {positionX: 471, positionY: 473};
-                gesturePos8 = {positionX: 464, positionY: 320};
-                gesturePos9 = {positionX: 458, positionY: 186};
-                gesturePath = {points: [gesturePos1, gesturePos2, gesturePos3, gesturePos4, gesturePos5,
-                                           gesturePos6, gesturePos7, gesturePos8, gesturePos9], durationTime: 100};
+                console.info('GestureEventTest processCase rightThenUp');
+                gesturePath.points.push(new GesturePoint(117, 950),
+                                        new GesturePoint(216, 950),
+                                        new GesturePoint(311, 950),
+                                        new GesturePoint(438, 933),
+                                        new GesturePoint(491, 791),
+                                        new GesturePoint(478, 622),
+                                        new GesturePoint(471, 473),
+                                        new GesturePoint(464, 320),
+                                        new GesturePoint(458, 186));
                 this.gestureInject(caseName, gesturePath);
                 break;
             case 'AccessibilityGestureEventTest_0800'://'rightThenDown'
-            console.info('GestureEventTest processCase rightThenDown');
-                gesturePos1 = {positionX: 204, positionY: 501};
-                gesturePos2 = {positionX: 307, positionY: 486};
-                gesturePos3 = {positionX: 422, positionY: 478};
-                gesturePos4 = {positionX: 547, positionY: 604};
-                gesturePos5 = {positionX: 440, positionY: 771};
-                gesturePos6 = {positionX: 348, positionY: 906};
-                gesturePath = {points: [gesturePos1, gesturePos2, gesturePos3, gesturePos4, gesturePos5,
-                                           gesturePos6], durationTime: 100};
+                console.info('GestureEventTest processCase rightThenDown');
+                gesturePath.points.push(new GesturePoint(204, 501),
+                                        new GesturePoint(307, 486),
+                                        new GesturePoint(422, 478),
+                                        new GesturePoint(547, 604),
+                                        new GesturePoint(440, 771),
+                                        new GesturePoint(348, 906));
                 this.gestureInject(caseName, gesturePath);
                 break;
             case 'AccessibilityGestureEventTest_0900'://'up'
-            console.info('GestureEventTest processCase up');
-                gesturePos1 = {positionX: 372, positionY: 1053};
-                gesturePos2 = {positionX: 355, positionY: 873};
-                gesturePos3 = {positionX: 320, positionY: 558};
-                gesturePos4 = {positionX: 296, positionY: 314};
-                gesturePos5 = {positionX: 285, positionY: 163};
-                gesturePath = {points: [gesturePos1, gesturePos2, gesturePos3, gesturePos4, gesturePos5], durationTime: 100};
+                console.info('GestureEventTest processCase up');
+                gesturePath.points.push(new GesturePoint(372, 1053),
+                                        new GesturePoint(355, 873),
+                                        new GesturePoint(320, 558),
+                                        new GesturePoint(296, 314),
+                                        new GesturePoint(285, 163));
                 this.gestureInject(caseName, gesturePath);
                 break;
             case 'AccessibilityGestureEventTest_1000'://'upThenLeft'
-            console.info('GestureEventTest processCase upThenLeft');
-                gesturePos1 = {positionX: 437, positionY: 1139};
-                gesturePos2 = {positionX: 437, positionY: 985};
-                gesturePos3 = {positionX: 453, positionY: 739};
-                gesturePos4 = {positionX: 466, positionY: 591};
-                gesturePos5 = {positionX: 483, positionY: 455};
-                gesturePos6 = {positionX: 489, positionY: 321};
-                gesturePos7 = {positionX: 383, positionY: 274};
-                gesturePos8 = {positionX: 258, positionY: 273};
-                gesturePos9 = {positionX: 179, positionY: 276};
-                gesturePos10 = {positionX: 102, positionY: 286};
-                gesturePos11 = {positionX: 3, positionY: 298};
-                gesturePath = {points: [gesturePos1, gesturePos2, gesturePos3, gesturePos4, gesturePos5,
-                                           gesturePos6, gesturePos7, gesturePos8, gesturePos9, gesturePos10,
-                                           gesturePos11], durationTime: 100};
+                console.info('GestureEventTest processCase upThenLeft');
+                gesturePath.points.push(new GesturePoint(437, 1139),
+                                        new GesturePoint(437, 985),
+                                        new GesturePoint(453, 739),
+                                        new GesturePoint(466, 591),
+                                        new GesturePoint(483, 455),
+                                        new GesturePoint(489, 321),
+                                        new GesturePoint(383, 274),
+                                        new GesturePoint(258, 273),
+                                        new GesturePoint(179, 276),
+                                        new GesturePoint(102, 286),
+                                        new GesturePoint(3, 298));
                 this.gestureInject(caseName, gesturePath);
                 break;
             case 'AccessibilityGestureEventTest_1100'://'upThenRight'
-            console.info('GestureEventTest processCase upThenRight');
-                gesturePos1 = {positionX: 332, positionY: 1143};
-                gesturePos2 = {positionX: 322, positionY: 973};
-                gesturePos3 = {positionX: 300, positionY: 779};
-                gesturePos4 = {positionX: 276, positionY: 627};
-                gesturePos5 = {positionX: 259, positionY: 496};
-                gesturePos6 = {positionX: 375, positionY: 406};
-                gesturePos7 = {positionX: 468, positionY: 409};
-                gesturePos8 = {positionX: 704, positionY: 436};
-                gesturePath = {points: [gesturePos1, gesturePos2, gesturePos3, gesturePos4, gesturePos5,
-                                           gesturePos6, gesturePos7, gesturePos8], durationTime: 100};
+                console.info('GestureEventTest processCase upThenRight');
+                gesturePath.points.push(new GesturePoint(332, 1143),
+                                        new GesturePoint(322, 973),
+                                        new GesturePoint(300, 779),
+                                        new GesturePoint(276, 627),
+                                        new GesturePoint(259, 496),
+                                        new GesturePoint(375, 406),
+                                        new GesturePoint(468, 409),
+                                        new GesturePoint(704, 436));
                 this.gestureInject(caseName, gesturePath);
                 break;
             case 'AccessibilityGestureEventTest_1200'://'upThenDown' 
-            console.info('GestureEventTest processCase upThenDown');
-                gesturePos1 = {positionX: 377, positionY: 1047};
-                gesturePos2 = {positionX: 368, positionY: 863};
-                gesturePos3 = {positionX: 355, positionY: 564};
-                gesturePos4 = {positionX: 339, positionY: 353};
-                gesturePos5 = {positionX: 331, positionY: 210};
-                gesturePos6 = {positionX: 361, positionY: 409};
-                gesturePos7 = {positionX: 375, positionY: 665};
-                gesturePos8 = {positionX: 380, positionY: 824};
-                gesturePos9 = {positionX: 386, positionY: 977};
-                gesturePos10 = {positionX: 393, positionY: 1177};
-                gesturePath = {points: [gesturePos1, gesturePos2, gesturePos3, gesturePos4, gesturePos5,
-                                           gesturePos6, gesturePos7, gesturePos8, gesturePos9, gesturePos10],
-                               durationTime: 100};
+                console.info('GestureEventTest processCase upThenDown');
+                gesturePath.points.push(new GesturePoint(377, 1047),
+                                        new GesturePoint(368, 863),
+                                        new GesturePoint(355, 564),
+                                        new GesturePoint(339, 353),
+                                        new GesturePoint(331, 210),
+                                        new GesturePoint(361, 409),
+                                        new GesturePoint(375, 665),
+                                        new GesturePoint(380, 824),
+                                        new GesturePoint(386, 977),
+                                        new GesturePoint(393, 1177));
                 this.gestureInject(caseName, gesturePath);
                 break;
             case 'AccessibilityGestureEventTest_1300'://'down'
-            console.info('GestureEventTest processCase down');
-                gesturePos1 = {positionX: 352, positionY: 250};
-                gesturePos2 = {positionX: 371, positionY: 462};
-                gesturePos3 = {positionX: 377, positionY: 828};
-                gesturePos4 = {positionX: 378, positionY: 956};
-                gesturePos5 = {positionX: 385, positionY: 1121};
-                gesturePath = {points: [gesturePos1, gesturePos2, gesturePos3, gesturePos4, gesturePos5], durationTime: 100};
+                console.info('GestureEventTest processCase down');
+                gesturePath.points.push(new GesturePoint(352, 250),
+                                        new GesturePoint(371, 462),
+                                        new GesturePoint(377, 828),
+                                        new GesturePoint(378, 956),
+                                        new GesturePoint(385, 1121));
                 this.gestureInject(caseName, gesturePath);
                 break;
             case 'AccessibilityGestureEventTest_1400'://'downThenLeft'
-            console.info('GestureEventTest processCase downThenLeft');
-                gesturePos1 = {positionX: 404, positionY: 177};
-                gesturePos2 = {positionX: 406, positionY: 318};
-                gesturePos3 = {positionX: 405, positionY: 459};
-                gesturePos4 = {positionX: 415, positionY: 764};
-                gesturePos5 = {positionX: 432, positionY: 910};
-                gesturePos6 = {positionX: 335, positionY: 935};
-                gesturePos7 = {positionX: 262, positionY: 934};
-                gesturePos8 = {positionX: 182, positionY: 933};
-                gesturePos9 = {positionX: 24, positionY: 929};
-                gesturePath = {points: [gesturePos1, gesturePos2, gesturePos3, gesturePos4, gesturePos5,
-                                           gesturePos6, gesturePos7, gesturePos8, gesturePos9], durationTime: 100};
+                console.info('GestureEventTest processCase downThenLeft');
+                gesturePath.points.push(new GesturePoint(404, 177),
+                                        new GesturePoint(406, 318),
+                                        new GesturePoint(405, 459),
+                                        new GesturePoint(415, 764),
+                                        new GesturePoint(432, 910),
+                                        new GesturePoint(335, 935),
+                                        new GesturePoint(262, 934),
+                                        new GesturePoint(182, 933),
+                                        new GesturePoint(24, 929));
                 this.gestureInject(caseName, gesturePath);
                 break;
             case 'AccessibilityGestureEventTest_1500'://'downThenRight'
-            console.info('GestureEventTest processCase downThenRight');
-                gesturePos1 = {positionX: 317, positionY: 247};
-                gesturePos2 = {positionX: 318, positionY: 393};
-                gesturePos3 = {positionX: 299, positionY: 614};
-                gesturePos4 = {positionX: 280, positionY: 766};
-                gesturePos5 = {positionX: 278, positionY: 919};
-                gesturePos6 = {positionX: 419, positionY: 961};
-                gesturePos7 = {positionX: 502, positionY: 957};
-                gesturePos8 = {positionX: 627, positionY: 939};
-                gesturePath = {points: [gesturePos1, gesturePos2, gesturePos3, gesturePos4, gesturePos5,
-                                           gesturePos6, gesturePos7, gesturePos8], durationTime: 100};
+                console.info('GestureEventTest processCase downThenRight');
+                gesturePath.points.push(new GesturePoint(317, 247),
+                                        new GesturePoint(318, 393),
+                                        new GesturePoint(299, 614),
+                                        new GesturePoint(280, 766),
+                                        new GesturePoint(278, 919),
+                                        new GesturePoint(419, 961),
+                                        new GesturePoint(502, 957),
+                                        new GesturePoint(627, 939));
                 this.gestureInject(caseName, gesturePath);
                 break;
             case 'AccessibilityGestureEventTest_1600'://'downThenUp'
-            console.info('GestureEventTest processCase downThenUp');
-                gesturePos1 = {positionX: 321, positionY: 213};
-                gesturePos2 = {positionX: 346, positionY: 407};
-                gesturePos3 = {positionX: 354, positionY: 664};
-                gesturePos4 = {positionX: 356, positionY: 833};
-                gesturePos5 = {positionX: 358, positionY: 970};
-                gesturePos6 = {positionX: 357, positionY: 738};
-                gesturePos7 = {positionX: 349, positionY: 603};
-                gesturePos8 = {positionX: 344, positionY: 450};
-                gesturePos9 = {positionX: 342, positionY: 304};
-                gesturePos10 = {positionX: 340, positionY: 115};
-                gesturePath = {points: [gesturePos1, gesturePos2, gesturePos3, gesturePos4, gesturePos5,
-                                           gesturePos6, gesturePos7, gesturePos8, gesturePos9, gesturePos10],
-                               durationTime: 100};
+                console.info('GestureEventTest processCase downThenUp');
+                gesturePath.points.push(new GesturePoint(321, 213),
+                                        new GesturePoint(346, 407),
+                                        new GesturePoint(354, 664),
+                                        new GesturePoint(356, 833),
+                                        new GesturePoint(358, 970),
+                                        new GesturePoint(357, 738),
+                                        new GesturePoint(349, 603),
+                                        new GesturePoint(344, 450),
+                                        new GesturePoint(342, 304),
+                                        new GesturePoint(340, 115));
                 this.gestureInject(caseName, gesturePath);
                 break;
             default:

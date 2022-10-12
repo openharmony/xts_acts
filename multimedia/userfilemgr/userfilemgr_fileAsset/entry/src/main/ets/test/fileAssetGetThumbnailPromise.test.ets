@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import userfile_manager from '@ohos.filemanagement.userfile_manager';
+import userFileManager from '@ohos.filemanagement.userFileManager';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 import image from '@ohos.multimedia.image';
 import {
@@ -27,7 +27,7 @@ import {
 export default function fileAssetGetThumbnailPromiseTest(abilityContext) {
     describe('fileAssetGetThumbnailPromiseTest', function () {
         image.createPixelMap(new ArrayBuffer(4096), { size: { height: 1, width: 2 } }).then((pixelmap) => { });
-        const userfilemgr = userfile_manager.getUserFileMgr(abilityContext);
+        const userfilemgr = userFileManager.getUserFileMgr(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
             await checkPresetsAssets(userfilemgr, 'ActsUserFileMgrGetThumbnailTest');

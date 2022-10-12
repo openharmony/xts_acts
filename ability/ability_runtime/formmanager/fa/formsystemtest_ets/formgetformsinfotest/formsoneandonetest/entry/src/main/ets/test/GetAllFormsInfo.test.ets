@@ -61,7 +61,6 @@ export const getAllFormsInfoTest = (describeName, filterParameter) => {
           tempDataB = dataB[0];
           tempDataC = dataC[0];
           expect(error.code).assertEqual(ERR_OK_CODE);
-          expect(error.message).assertEqual(ERR_OK);
         });
         await sleep(2000)
         checkDataB(tempDataB)

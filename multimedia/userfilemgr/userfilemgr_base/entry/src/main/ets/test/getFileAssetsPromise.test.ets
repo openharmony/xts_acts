@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 
-import userfile_manager from '@ohos.filemanagement.userfile_manager';
+import userFileManager from '@ohos.filemanagement.userFileManager';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 import {
     sleep,
     IMAGE_TYPE,
     VIDEO_TYPE,
     AUDIO_TYPE,
+    THROW_ERROR_CODE,
     checkPresetsAssets,
     checkAssetsCount,
-    allFetchOp,
     audioFetchOps,
     imageVideoFetchOps,
 } from '../../../../../../common';
@@ -30,7 +30,7 @@ import {
 
 export default function getFileAssetsPromiseTest(abilityContext) {
     describe('getFileAssetsPromiseTest', function () {
-        const userfilemgr = userfile_manager.getUserFileMgr(abilityContext);
+        const userfilemgr = userFileManager.getUserFileMgr(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
             await checkPresetsAssets(userfilemgr, 'ActsUserFileMgrBaseJsTest');
@@ -166,20 +166,12 @@ export default function getFileAssetsPromiseTest(abilityContext) {
                 let expectCount = 4;
                 let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchAssetResult, expectCount);
                 if (!checkAssetCountPass) return;
-                fetchAssetResult.getFirstObject(async (err, asset) => {
-                    if (err) {
-                        console.info(`${testNum} err : ${err}`)
-                        expect.assertFail();
-                        fetchAssetResult.close();
-                        done();
-                        return;
-                    }
-                    expect(asset.displayName).assertEqual(props[type].displayName);
-                    expect(asset.fileType.toString()).assertEqual(props[type].fileType);
-                    expect(asset.uri != undefined).assertTrue();
-                    fetchAssetResult.close();
-                    done();
-                });
+                let asset = await fetchAssetResult.getFirstObject();
+                expect(asset.displayName).assertEqual(props[type].displayName);
+                expect(asset.fileType.toString()).assertEqual(props[type].fileType);
+                expect(asset.uri != undefined).assertTrue();
+                fetchAssetResult.close();
+                done();
             } catch (error) {
                 console.info(`${testNum}:: error :${error}`);
                 expect(false).assertTrue();
@@ -187,6 +179,23 @@ export default function getFileAssetsPromiseTest(abilityContext) {
             }
         }
 
+        async function getFileAssetsErrCodeTest(done, testNum, isAudio) {
+            try {
+                let fetchAssetResult;
+                let invalidOps : userFileManager.FetchOptions;
+                if (isAudio) {
+                    fetchAssetResult = await userfilemgr.getAudioAssets(invalidOps);
+                } else {
+                    fetchAssetResult = await userfilemgr.getPhotoAssets(invalidOps);
+                }
+                expect(false).assertTrue();
+            } catch (error) {
+                console.info(`${testNum}:: errCode :${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(THROW_ERROR_CODE.toString());
+                done();
+            }
+        }
+//
         /**
          * @tc.number    : SUB_USERFILE_MGR_GETPHOTOASSETS_PROMISE_01_001
          * @tc.name      : getFirstObject
@@ -329,7 +338,7 @@ export default function getFileAssetsPromiseTest(abilityContext) {
             await getPositionObjectTest(done, testNum, currentFetchOps, pos, isAudio);
         });
 
-        //------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------
 
         /**
          * @tc.number    : SUB_USERFILE_MGR_GETPHOTOASSETS_PROMISE_04_001
@@ -424,6 +433,36 @@ export default function getFileAssetsPromiseTest(abilityContext) {
             let type = 'video';
             let isAudio = false;
             await checkFileAssetAttr(done, testNum, currentFetchOps, type, isAudio);
+        });
+
+        //------------------------------------------------------------------------------
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_GETPHOTOASSETS_ERRCODE_PROMISE_01
+         * @tc.name      : getPhotoAssets
+         * @tc.desc      : invalid FetchOptions
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('SUB_USERFILE_MGR_GETPHOTOASSETS_ERRCODE_PROMISE_01', 0, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETPHOTOASSETS_ERRCODE_PROMISE_01';
+            let isAudio = false;
+            await getFileAssetsErrCodeTest(done, testNum, isAudio);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_GETPHOTOASSETS_ERRCODE_PROMISE_02
+         * @tc.name      : getPhotoAssets
+         * @tc.desc      : invalid FetchOptions
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('SUB_USERFILE_MGR_GETPHOTOASSETS_ERRCODE_PROMISE_02', 0, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETPHOTOASSETS_ERRCODE_PROMISE_02';
+            let isAudio = true;
+            await getFileAssetsErrCodeTest(done, testNum, isAudio);
         });
     });
 }

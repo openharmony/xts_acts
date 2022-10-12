@@ -13,11 +13,12 @@
  * limitations under the License.
  */
 
-import userfile_manager from '@ohos.filemanagement.userfile_manager';
+import userFileManager from '@ohos.filemanagement.userFileManager';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 
 import {
     sleep,
+    THROW_ERROR_CODE,
     albumFetchOps,
     checkPresetsAssets,
     checkAssetsCount,
@@ -25,7 +26,7 @@ import {
 
 export default function getAlbumsPromiseTest(abilityContext) {
     describe('getAlbumsPromiseTest', function () {
-        const userfilemgr = userfile_manager.getUserFileMgr(abilityContext);
+        const userfilemgr = userFileManager.getUserFileMgr(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
             await checkPresetsAssets(userfilemgr, 'ActsUserFileMgrAlbumJsTest');
@@ -94,6 +95,20 @@ export default function getAlbumsPromiseTest(abilityContext) {
             }
         }
 
+        const getPhotoAlbumsErrCodeTest = async function (done, testNum) {
+            try {
+                let invalidOps : userFileManager.FetchOptions;
+                let fetchAlbumResult = await userfilemgr.getPhotoAlbums(invalidOps);
+                expect(false).assertTrue();
+                fetchAlbumResult.close();
+                done();
+            } catch (error) {
+                console.info(`${testNum}, errCode :${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(THROW_ERROR_CODE.toString());
+                done();
+            }
+        }
+
         /**
          * @tc.number    : SUB_USERFILE_MGR_GETPHOTOALBUMS_PROMISE_01
          * @tc.name      : getPhotoAlbums
@@ -107,6 +122,19 @@ export default function getAlbumsPromiseTest(abilityContext) {
             let currentFetchOp = albumFetchOps(testNum, 'Pictures/', 'myAlbum');
             let relativePaths = 'Pictures/';
             await checkAlbumInfo(done, testNum, currentFetchOp, relativePaths);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_GETPHOTOALBUMS_ERRCODE_PROMISE_01
+         * @tc.name      : getPhotoAlbums
+         * @tc.desc      : getPhotoAlbums by invalid
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+         it('SUB_USERFILE_MGR_GETPHOTOALBUMS_ERRCODE_PROMISE_01', 0, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETPHOTOALBUMS_ERRCODE_PROMISE_01';
+            await getPhotoAlbumsErrCodeTest(done, testNum);
         });
     });
 }

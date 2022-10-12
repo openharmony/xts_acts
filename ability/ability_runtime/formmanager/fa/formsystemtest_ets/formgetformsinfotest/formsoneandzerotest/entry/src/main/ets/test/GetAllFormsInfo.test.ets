@@ -58,7 +58,6 @@ export const getAllFormsInfoTest = (describeName, filterParameter) => {
           tempDataB = dataB[0]
           expect(JSON.stringify(dataD)).assertEqual(`[]`);
           expect(error.code).assertEqual(ERR_OK_CODE);
-          expect(error.message).assertEqual(ERR_OK);
           console.log(`==========${callbackName} ${describeName} end==========`);
         });
         await sleep(2000)

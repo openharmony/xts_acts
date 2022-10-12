@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import userfile_manager from '@ohos.filemanagement.userfile_manager';
+import userFileManager from '@ohos.filemanagement.userFileManager';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 
 import {
@@ -27,7 +27,7 @@ import {
 
 export default function albumCommitModifyPromise(abilityContext) {
     describe('albumCommitModifyPromise', function () {
-        const userfilemgr = userfile_manager.getUserFileMgr(abilityContext);
+        const userfilemgr = userFileManager.getUserFileMgr(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
             await getPermission();

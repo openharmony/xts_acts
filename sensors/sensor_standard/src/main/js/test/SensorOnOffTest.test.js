@@ -37,10 +37,9 @@ describe('SystemParameterTest', function () {
     })
 
     let testNullSensorId = -1;
-	
-	let errMessages = ['SubscribeSensor failed'];
 
-    let errMessage;
+    let errCode = 401
+    let errMessage = 'The parameter invalid.'
 
    /**
    * @tc.number SUB_SENSORS_Sensor_JSTest_0020
@@ -51,7 +50,7 @@ describe('SystemParameterTest', function () {
         console.info('testRegisterSensortest001 start');
 
         function onSensorCallback(data) {
-            console.info('testRegisterSensortest001  on error');
+            console.info('testRegisterSensortest001 callback in');
             expect(false).assertTrue();
             done();
         }
@@ -59,9 +58,9 @@ describe('SystemParameterTest', function () {
         try {
             sensor.on(testNullSensorId, onSensorCallback);
         } catch (error) {
-            console.info('testRegisterSensortest001 error' +error);
-            errMessage = error.toString().slice(12, 34);
-            expect(errMessage).assertEqual(errMessages[0]);
+            console.info('testRegisterSensortest001 error: ' + error.code + ' ,msg: ' + error.message);
+            expect(error.code).assertEqual(errCode)
+            expect(error.message).assertEqual(errMessage)
             done();
         }
         console.info('testRegisterSensortest001 end');

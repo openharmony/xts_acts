@@ -50,9 +50,13 @@ describe("VibratorJsTest_misc_1", function () {
         console.info('afterEach caled')
     })
 
-    let errMessages = ['Error: ParseParameter: "Get vibrate type fail"', 'Error: ParseParameter: "Wrong argument number"']
-
-     let errMessage;
+    const OPERATION_FAIL_CODE = 14600101; 
+    const PERMISSION_ERROR_CODE = 201;
+    const PARAMETER_ERROR_CODE = 401;
+    
+    const OPERATION_FAIL_MSG = 'Device operation failed.'
+    const PERMISSION_ERROR_MSG = 'Permission denied.'
+    const PARAMETER_ERROR_MSG = 'The parameter invalid.'
 	
     /*
      * @tc.name:SubVibratorJsTest0001
@@ -193,9 +197,9 @@ describe("VibratorJsTest_misc_1", function () {
                 },
             }, 25);
         } catch (error) {
-            errMessage = error.toString();
             console.info('SubVibratorJsTest0007 error:' + error);
-            expect(errMessage).assertEqual(errMessages[0]);
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
         }
     })
@@ -242,9 +246,9 @@ describe("VibratorJsTest_misc_1", function () {
         try {
             vibrator.vibrate();
         } catch (error) {
-            errMessage = error.toString();
             console.info('SubVibratorJsTest0009 error:' + error);
-            expect(errMessage).assertEqual(errMessages[1]);
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
         }
     })
@@ -267,9 +271,9 @@ describe("VibratorJsTest_misc_1", function () {
             }, function () {
             }, 25);
         } catch (error) {
-            errMessage = error.toString();
             console.info('SubVibratorJsTest0010 error:' + error);
-            expect(errMessage).assertEqual(errMessages[0]);
+            expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+            expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
         }
     })

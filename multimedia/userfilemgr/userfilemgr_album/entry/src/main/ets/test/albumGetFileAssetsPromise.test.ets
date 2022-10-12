@@ -14,11 +14,12 @@
  */
 
 
-import userfile_manager from '@ohos.filemanagement.userfile_manager';
+import userFileManager from '@ohos.filemanagement.userFileManager';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 
 import {
     sleep,
+    THROW_ERROR_CODE,
     allFetchOp,
     albumFetchOps,
     checkPresetsAssets,
@@ -27,7 +28,7 @@ import {
 
 export default function albumGetFileAssetsPromise(abilityContext) {
     describe('albumGetFileAssetsPromise', function () {
-        const userfilemgr = userfile_manager.getUserFileMgr(abilityContext);
+        const userfilemgr = userFileManager.getUserFileMgr(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
             await checkPresetsAssets(userfilemgr, 'ActsUserFileMgrAlbumJsTest');
@@ -43,14 +44,14 @@ export default function albumGetFileAssetsPromise(abilityContext) {
             console.info('afterAll case');
         });
 
-        const checkAlbumAssetsCount = async function (done, testNum, fetchOp, expectAlbumCount = 1, expectAssetsCount = 1) {
+        const getPhotoAssetsTest = async function (done, testNum, fetchOp, expectAlbumCount = 1, expectAssetsCount = 1) {
             try {
                 const fetchAlbumResult = await userfilemgr.getPhotoAlbums(fetchOp);
                 const albumCountPass = await checkAssetsCount(done, testNum, fetchAlbumResult, expectAlbumCount);
                 if (!albumCountPass) return;
                 const album = await fetchAlbumResult.getFirstObject();
                 fetchAlbumResult.close();
-                let op: userfile_manager.MediaFetchOptions = allFetchOp();
+                let op: userFileManager.FetchOptions = allFetchOp();
                 let fetchAssetResult = await album.getPhotoAssets(op);
                 if (fetchAssetResult == undefined) {
                     expect(false).assertTrue();
@@ -68,7 +69,26 @@ export default function albumGetFileAssetsPromise(abilityContext) {
                 done();
             }
         }
-        
+
+        const getPhotoAssetsErrCodeTest = async function (done, testNum, fetchOp, expectAlbumCount = 1, expectAssetsCount = 1) {
+            try {
+                const fetchAlbumResult = await userfilemgr.getPhotoAlbums(fetchOp);
+                const albumCountPass = await checkAssetsCount(done, testNum, fetchAlbumResult, expectAlbumCount);
+                if (!albumCountPass) return;
+                const album = await fetchAlbumResult.getFirstObject();
+                fetchAlbumResult.close();
+                let invalidOps : userFileManager.FetchOptions;
+                let fetchAssetResult = await album.getPhotoAssets(invalidOps);
+                expect(false).assertTrue();
+                fetchAssetResult.close();
+                done();
+            } catch (error) {
+                console.info(`${testNum}, errCode :${JSON.stringify(error)}`);
+                expect(error.code).assertEqual(THROW_ERROR_CODE.toString());
+                done();
+            }
+        }
+
         /**
          * @tc.number    : SUB_USERFILE_MGR_ALBUM_GETPHOTOASSETS_PROMISE_01
          * @tc.name      : getPhotoAssets
@@ -80,7 +100,21 @@ export default function albumGetFileAssetsPromise(abilityContext) {
         it('SUB_USERFILE_MGR_ALBUM_GETPHOTOASSETS_PROMISE_01', 0, async function (done) {
             const testNum = 'SUB_USERFILE_MGR_ALBUM_GETPHOTOASSETS_PROMISE_01';
             let currentFetchOp = albumFetchOps(testNum, 'Pictures/', 'Static');
-            await checkAlbumAssetsCount(done, testNum, currentFetchOp);
+            await getPhotoAssetsTest(done, testNum, currentFetchOp);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_ALBUM_GETPHOTOASSETS_ERRCODE_PROMISE_01
+         * @tc.name      : getPhotoAssets
+         * @tc.desc      : invalid AlbumFetchOptions
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('SUB_USERFILE_MGR_ALBUM_GETPHOTOASSETS_ERRCODE_PROMISE_01', 0, async function (done) {
+            const testNum = 'SUB_USERFILE_MGR_ALBUM_GETPHOTOASSETS_ERRCODE_PROMISE_01';
+            let currentFetchOp = albumFetchOps(testNum, 'Pictures/', 'Static');
+            await getPhotoAssetsErrCodeTest(done, testNum, currentFetchOp);
         });
     });
 }

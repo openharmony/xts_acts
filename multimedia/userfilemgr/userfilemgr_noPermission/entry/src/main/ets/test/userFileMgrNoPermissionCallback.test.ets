@@ -13,21 +13,18 @@
  * limitations under the License.
  */
 
-import userfile_manager from '@ohos.filemanagement.userfile_manager';
+import userFileManager from '@ohos.filemanagement.userFileManager';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 
 import {
     sleep,
-    IMAGE_TYPE,
-    VIDEO_TYPE,
-    AUDIO_TYPE,
     allFetchOp,
 } from '../../../../../../common';
 
 
 export default function userFileMgrNoPermissionCallback(abilityContext) {
     describe('userFileMgrNoPermissionCallback', function () {
-        const userfile_mgr = userfile_manager.getUserFileMgr(abilityContext);
+        const userfilemgr = userFileManager.getUserFileMgr(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
         });
@@ -42,9 +39,9 @@ export default function userFileMgrNoPermissionCallback(abilityContext) {
             console.info('afterAll case');
         });
 
-        const getFileAssetsTest = async function (done, testNum, media_type) {
+        const getPhotoAssetsTest = async function (done, testNum) {
             try {
-                await userfile_mgr.getFileAssets(media_type, allFetchOp(), async (err, fetchFileResult) => {
+                await userfilemgr.getPhotoAssets(allFetchOp(), async (err, fetchAssetResult) => {
                     if (err != undefined) {
                         console.info(`${testNum}, err: ${err}`);
                         expect(true).assertTrue();
@@ -61,9 +58,9 @@ export default function userFileMgrNoPermissionCallback(abilityContext) {
             }
         }
 
-        const getAlbumsTest = async function (done, testNum, media_type) {
+        const getPhotoAlbumsTest = async function (done, testNum) {
             try {
-                await userfile_mgr.getAlbums(media_type, allFetchOp(), async (err, fetchAlbumResult) => {
+                await userfilemgr.getPhotoAlbums(allFetchOp(), async (err, fetchAlbumResult) => {
                     if (err != undefined) {
                         console.info(`${testNum}, err: ${err}`);
                         expect(true).assertTrue();
@@ -82,88 +79,30 @@ export default function userFileMgrNoPermissionCallback(abilityContext) {
 
         /**
          * @tc.number    : SUB_USERFILE_MGR_GETFILEASSETS_NOPERMISSION_CALLBACK_01
-         * @tc.name      : getFileAssets
-         * @tc.desc      : getFileAssets(image) with no permission
+         * @tc.name      : getPhotoAssets
+         * @tc.desc      : getPhotoAssets(image) with no permission
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
         it('SUB_USERFILE_MGR_GETFILEASSETS_NOPERMISSION_CALLBACK_01', 0, async function (done) {
             const testNum = 'SUB_USERFILE_MGR_GETFILEASSETS_NOPERMISSION_CALLBACK_01';
-            let media_type = [IMAGE_TYPE];
-            await getFileAssetsTest(done, testNum, media_type);
-        });
-
-        /**
-         * @tc.number    : SUB_USERFILE_MGR_GETFILEASSETS_NOPERMISSION_CALLBACK_02
-         * @tc.name      : getFileAssets
-         * @tc.desc      : getFileAssets(audio) with no permission
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_USERFILE_MGR_GETFILEASSETS_NOPERMISSION_CALLBACK_02', 0, async function (done) {
-            const testNum = 'SUB_USERFILE_MGR_GETFILEASSETS_NOPERMISSION_CALLBACK_02';
-            let media_type = [AUDIO_TYPE];
-            await getFileAssetsTest(done, testNum, media_type);
-        });
-
-        /**
-         * @tc.number    : SUB_USERFILE_MGR_GETFILEASSETS_NOPERMISSION_CALLBACK_03
-         * @tc.name      : getFileAssets
-         * @tc.desc      : getFileAssets(video) with no permission
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_USERFILE_MGR_GETFILEASSETS_NOPERMISSION_CALLBACK_03', 0, async function (done) {
-            const testNum = 'SUB_USERFILE_MGR_GETFILEASSETS_NOPERMISSION_CALLBACK_03';
-            let media_type = [VIDEO_TYPE];
-            await getFileAssetsTest(done, testNum, media_type);
+            await getPhotoAssetsTest(done, testNum);
         });
 
         //--------------------------------------------------------------------------------------
 
         /**
-         * @tc.number    : SUB_USERFILE_MGR_GETALBUMS_NOPERMISSION_CALLBACK_01
-         * @tc.name      : getAlbums
-         * @tc.desc      : getAlbums(image) with no permission
+         * @tc.number    : SUB_USERFILE_MGR_GETPHOTOALBUMS_NOPERMISSION_CALLBACK_01
+         * @tc.name      : getPhotoAlbums
+         * @tc.desc      : getPhotoAlbums with no permission
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_USERFILE_MGR_GETALBUMS_NOPERMISSION_CALLBACK_01', 0, async function (done) {
-            const testNum = 'SUB_USERFILE_MGR_GETALBUMS_NOPERMISSION_CALLBACK_01';
-            let media_type = [IMAGE_TYPE];
-            await getAlbumsTest(done, testNum, media_type);
-        });
-
-        /**
-         * @tc.number    : SUB_USERFILE_MGR_GETALBUMS_NOPERMISSION_CALLBACK_02
-         * @tc.name      : getAlbums
-         * @tc.desc      : getAlbums(audio) with no permission
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_USERFILE_MGR_GETALBUMS_NOPERMISSION_CALLBACK_02', 0, async function (done) {
-            const testNum = 'SUB_USERFILE_MGR_GETALBUMS_NOPERMISSION_CALLBACK_02';
-            let media_type = [AUDIO_TYPE];
-            await getAlbumsTest(done, testNum, media_type);
-        });
-
-        /**
-         * @tc.number    : SUB_USERFILE_MGR_GETALBUMS_NOPERMISSION_CALLBACK_03
-         * @tc.name      : getAlbums
-         * @tc.desc      : getAlbums(video) with no permission
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_USERFILE_MGR_GETALBUMS_NOPERMISSION_CALLBACK_03', 0, async function (done) {
-            const testNum = 'SUB_USERFILE_MGR_GETALBUMS_NOPERMISSION_CALLBACK_03';
-            let media_type = [VIDEO_TYPE];
-            await getAlbumsTest(done, testNum, media_type);
+        it('SUB_USERFILE_MGR_GETPHOTOALBUMS_NOPERMISSION_CALLBACK_01', 0, async function (done) {
+            const testNum = 'SUB_USERFILE_MGR_GETPHOTOALBUMS_NOPERMISSION_CALLBACK_01';
+            await getPhotoAlbumsTest(done, testNum);
         });
     });
 }

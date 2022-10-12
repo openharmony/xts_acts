@@ -114,7 +114,7 @@ export default function getBundleArchiveInfo() {
         done()
       }).catch(err => {
         console.info("getBundleArchiveInfo fail" + JSON.stringify(err))
-        expect(err).assertEqual(1)
+        expect(err.code).assertEqual(1)
         done()
       })
     })
@@ -131,7 +131,7 @@ export default function getBundleArchiveInfo() {
         done()
       }).catch(err => {
         console.info("getBundleArchiveInfo fail" + JSON.stringify(err))
-        expect(err).assertEqual(1)
+        expect(err.code).assertEqual(1)
         done()
       })
     })
@@ -232,7 +232,7 @@ export default function getBundleArchiveInfo() {
       function OnReceiveEvent(err, datainfo) {
         if (err) {
           console.info("getBundleArchiveInfo error" + JSON.stringify(err));
-          expect(err).assertEqual(1);
+          expect(err.code).assertEqual(1);
           done();
           return;
         }
@@ -252,7 +252,7 @@ export default function getBundleArchiveInfo() {
       function OnReceiveEvent(err, datainfo) {
         if (err) {
           console.info("getBundleArchiveInfo error" + JSON.stringify(err));
-          expect(err).assertEqual(1);
+          expect(err.code).assertEqual(1);
           done();
           return;
         }

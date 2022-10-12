@@ -17,8 +17,6 @@ import getAlbumsCallbackTest from './getAlbumsCallback.test.ets'
 import getAlbumsPromiseTest from './getAlbumsPromise.test.ets'
 import getFileAssetsCallbackTest from './getFileAssetsCallback.test.ets'
 import getFileAssetsPromiseTest from './getFileAssetsPromise.test.ets'
-import getPublicDirectoryCallbackTest from './getPublicDirectoryCallback.test.ets'
-import getPublicDirectoryPromiseTest from './getPublicDirectoryPromise.test.ets'
 import getUserFileMgrTest from './getUserFileMgr.test.ets'
 import onOffReleasePromiseTest from './onOffReleasePromise.test.ets'
 export default function testsuite(abilityContext) {
@@ -26,8 +24,6 @@ export default function testsuite(abilityContext) {
   getAlbumsPromiseTest(abilityContext)
   getFileAssetsCallbackTest(abilityContext)
   getFileAssetsPromiseTest(abilityContext)
-  getPublicDirectoryCallbackTest(abilityContext)
-  getPublicDirectoryPromiseTest(abilityContext)
   getUserFileMgrTest(abilityContext)
   onOffReleasePromiseTest(abilityContext)
 }

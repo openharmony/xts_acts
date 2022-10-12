@@ -18,6 +18,7 @@
 #include "ohos_types.h"
 #include "parameter.h"
 #include "parameter_utils.h"
+#include "sysparam_errno.h"
 
 #define MAX_LEN 128
 #define INVALID_LEN 2
@@ -534,7 +535,7 @@ LITE_TEST_CASE(ParameterFuncTestSuite,
     char key[] = "none.exist.key";
     char value[MAX_LEN] = {0};
     ret = GetParameter(key, NULL, value, MAX_LEN);
-    TEST_ASSERT_EQUAL_INT(-9, ret);
+    TEST_ASSERT_EQUAL_INT(SYSPARAM_NOT_FOUND, ret);
 };
 
 /**
