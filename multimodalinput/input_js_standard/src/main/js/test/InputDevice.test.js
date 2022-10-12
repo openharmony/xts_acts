@@ -297,7 +297,7 @@ describe('MultimodalInput_Device_test', function () {
    * @tc.name MultimodalInputDevice_getDevice_Promise_test
    * @tc.desc inputdevice interface getDevice test
    */
-  it("MultimodalInputDevice_getDevice_Promise_test", 0, async function () {
+  it("MultimodalInputDevice_getDevice_Promise_test", 0, function () {
     console.info(`MultimodalInputDevice_getDevice_Promise_test enter`);
     inputDevice.getDevice(-1).then((data, err) => {
       if (err) {
