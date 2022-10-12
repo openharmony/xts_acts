@@ -1230,10 +1230,9 @@ export default function imageJsTest() {
         it('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_0100', 0, async function (done) {
             try {
                 await getFd('test.jpg');
-                const imageSourceApi = image.createImageSource(fdNumber);
+                const imageSourceApi = image.createImageSource(filePath);
                 expect(imageSourceApi != undefined).assertTrue();
                 console.info('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_0100 success');
-                fileio.closeSync(fdNumber);
                 done();
             } catch (error) {
                 console.info('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_0100 error: ' + error);
@@ -1255,7 +1254,7 @@ export default function imageJsTest() {
         it('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_0200', 0, async function (done) {
             try {
                 await getFd('test.bmp');
-                const imageSourceApi = image.createImageSource(fdNumber);
+                const imageSourceApi = image.createImageSource(filePath);
                 expect(imageSourceApi != undefined).assertTrue();
                 console.info('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_UR_0200 success');
                 done();
@@ -1279,7 +1278,7 @@ export default function imageJsTest() {
         it('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_0300', 0, async function (done) {
             try {
                 await getFd('test.gif');
-                const imageSourceApi = image.createImageSource(fdNumber);
+                const imageSourceApi = image.createImageSource(filePath);
                 expect(imageSourceApi != undefined).assertTrue();
                 console.info('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_0300 success');
                 done();
@@ -1304,7 +1303,7 @@ export default function imageJsTest() {
         it('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_0400', 0, async function (done) {
             try {
                 await getFd('test.png');
-                const imageSourceApi = image.createImageSource(fdNumber);
+                const imageSourceApi = image.createImageSource(filePath);
                 expect(imageSourceApi != undefined).assertTrue();
                 console.info('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_0400 success');
                 done();
@@ -1327,10 +1326,17 @@ export default function imageJsTest() {
          * @tc.level     : Level 0
          */
         it('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_ERROR_SUFFIXFILE_0100', 0, async function (done) {
-            const imageSourceApi = image.createImageSource('file:///data/local/tmp/test.123');
-            expect(imageSourceApi == undefined).assertTrue();
-            console.info('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_ERROR_SUFFIXFILE_0100 success');
-            done();
+            try {
+                await getFd('test.123');
+                let imageSourceApi = image.createImageSource(filePath);
+                expect(imageSourceApi == undefined).assertTrue();
+                console.info('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_ERROR_SUFFIXFILE_0100 success');
+                done();
+            } catch (error) {
+                expect(false).assertTrue();
+                console.info('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_ERROR_SUFFIXFILE_0100 err:' + error);
+                done();
+            }
         })
 
         /**
