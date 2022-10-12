@@ -54,7 +54,7 @@ export default function OnAndOffScreenTest() {
     async function slideScreen(TAG) {
       console.log(TAG + "slideScreen start");
       var driver = UiDriver.create();
-      await driver.swipe(1000, 3000, 1000, 500, 1200).then((data) => {
+      await driver.swipe(1000, 3000, 1000, 500).then((data) => {
         console.log(TAG + "swipe : " + JSON.stringify(data));
       }).catch((error) => {
         console.log(TAG + "swipe error = " + JSON.stringify(error));
