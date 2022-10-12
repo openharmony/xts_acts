@@ -545,7 +545,7 @@ export default function cameraSessionFlashTest(surfaceId: any) {
             sleep(100);
             await applyPermission();
             await getPhotoReceiverSurface();
-            //await getVideoReceiveSurface();
+            await getVideoReceiveSurface();
             await mgetCameraManagerInstance();
             await getCameraSupportDevicesArray();
             await createCameraSessionInstance();
@@ -569,7 +569,7 @@ export default function cameraSessionFlashTest(surfaceId: any) {
         afterAll(function () {
             releaseInputs();
             releaseOutputs();
-            //releaseVideoReceiveSurface();
+            releaseVideoReceiveSurface();
             releaseCameraSessionInstance();
             sleep(100);
             console.info('afterAll case');

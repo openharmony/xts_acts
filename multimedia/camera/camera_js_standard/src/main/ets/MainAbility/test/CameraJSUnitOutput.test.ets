@@ -43,7 +43,7 @@ let videoConfig = {
   audioSourceType: 1,
   videoSourceType: 0,
   profile: videoProfile,
-  url: 'file:///data/media/01.mp4',
+  url: 'file:///data/media/CameraOutput.mp4',
   orientationHint: 0,
   location: { latitude: 30, longitude: 130 },
   maxSize: 100,
@@ -115,7 +115,7 @@ export default function cameraJSUnitOutput(surfaceId: any) {
 
 
   async function getvideosurface() {
-    await getFd('02.mp4');
+    await getFd('CameraOutput.mp4');
     videoConfig.url = fdPath;
     media.createVideoRecorder((err, recorder) => {
       console.info(TAG + 'createVideoRecorder called')

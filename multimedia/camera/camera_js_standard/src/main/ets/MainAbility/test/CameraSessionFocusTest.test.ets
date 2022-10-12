@@ -590,7 +590,7 @@ export default function cameraSessionFocusTest(surfaceId: any) {
             sleep(100);
             await applyPermission();
             await getPhotoReceiverSurface();
-            //await getVideoReceiveSurface();
+            await getVideoReceiveSurface();
             await getCameraManagerInstance();
             await getCameraSupportDevicesArray();
             await createCameraSessionInstance();
@@ -614,7 +614,7 @@ export default function cameraSessionFocusTest(surfaceId: any) {
         afterAll(function () {
             releaseInputs();
             releaseOutputs();
-            //releaseVideoReceiveSurface();
+            releaseVideoReceiveSurface();
             releaseCameraSessionInstance();
             sleep(100);
             console.info('afterAll case');
