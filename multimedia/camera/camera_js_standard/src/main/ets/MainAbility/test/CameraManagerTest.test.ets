@@ -26,40 +26,38 @@ const TAG = "CameraUnitTest: ";
 
 // Define global variables
 let mCameraManager;
-let photoSurfaceId;
-let videoSurfaceId;
+let mPhotoSurfaceId;
 let mCameraDevicesArray;
-let fdPath;
-let fileAsset;
-let fdNumber;
+let mVideoSurface;
+let mVideoRecorder;
+let mFdPath;
+let mFileAsset;
+let mFdNumber;
 
-// 创建视频录制的参数
-let videoProfile = {
+let mVideoProfileCfg = {
     audioBitrate: 48000,
     audioChannels: 2,
     audioCodec: 'audio/mp4a-latm',
     audioSampleRate: 48000,
+    durationTime: 1000,
     fileFormat: 'mp4',
     videoBitrate: 48000,
     videoCodec: 'video/mp4v-es',
     videoFrameWidth: 640,
     videoFrameHeight: 480,
     videoFrameRate: 30
-  }
+}
   
-  let videoConfig = {
+let mVideoConfig = {
     audioSourceType: 1,
     videoSourceType: 0,
-    profile: videoProfile,
+    profile: mVideoProfileCfg,
     url: 'file:///data/media/CameraManager.mp4',
     orientationHint: 0,
     location: { latitude: 30, longitude: 130 },
     maxSize: 100,
     maxDuration: 500
-  }
-  
-  // 创建录像输出流
-  let videoRecorder
+}
 
 export default function cameraManagerTest(surfaceId: any) {
 
@@ -69,8 +67,8 @@ export default function cameraManagerTest(surfaceId: any) {
         console.log(TAG + 'before receiver check')
         if (receiver !== undefined) {
             console.log(TAG + 'Receiver is ok')
-            photoSurfaceId = await receiver.getReceivingSurfaceId()
-            console.log(TAG + 'Received id: ' + JSON.stringify(photoSurfaceId))
+            mPhotoSurfaceId = await receiver.getReceivingSurfaceId()
+            console.log(TAG + 'Received id: ' + JSON.stringify(mPhotoSurfaceId))
         } else {
             console.log(TAG + 'Receiver is not ok')
         }
@@ -90,15 +88,15 @@ export default function cameraManagerTest(surfaceId: any) {
             selectionArgs: [args],
           }
           let fetchFileResult = await mediaTest.getFileAssets(fetchOp);
-          fileAsset = await fetchFileResult.getAllObject();
-          fdNumber = await fileAsset[0].open('Rw');
-          fdPath = "fd://" + fdNumber.toString();
+          mFileAsset = await fetchFileResult.getAllObject();
+          mFdNumber = await mFileAsset[0].open('Rw');
+          mFdPath = "fd://" + mFdNumber.toString();
         }
       }
     
       async function closeFd() {
-        if (fileAsset != null) {
-          await fileAsset[0].close(fdNumber).then(() => {
+        if (mFileAsset != null) {
+          await mFileAsset[0].close(mFdNumber).then(() => {
             console.info('[mediaLibrary] case close fd success');
           }).catch((err) => {
             console.info('[mediaLibrary] case close fd failed');
@@ -108,24 +106,35 @@ export default function cameraManagerTest(surfaceId: any) {
         }
       }
 
-      async function getvideosurface() {
+      async function getVideoReceiveSurface() {
+        console.log(TAG + 'Entering getVideoReceiveSurface')
         await getFd('CameraManager.mp4');
-        videoConfig.url = fdPath;
+        mVideoConfig.url = mFdPath;
         media.createVideoRecorder((err, recorder) => {
-          console.info(TAG + 'createVideoRecorder called')
-          videoRecorder = recorder
-          console.info(TAG + 'videoRecorder is :' + JSON.stringify(videoRecorder))
-          console.info(TAG + 'videoRecorder.prepare called.')
-          videoRecorder.prepare(videoConfig, (err) => {
-            console.info(TAG + 'videoRecorder.prepare success.')
-          })
-          videoRecorder.getInputSurface((err, id) => {
-            console.info(TAG + 'getInputSurface called')
-            videoSurfaceId = id
-            console.info(TAG + 'getInputSurface surfaceId: ' + JSON.stringify(videoSurfaceId))
-          })
+            console.info(TAG + 'Entering create video receiver')
+            mVideoRecorder = recorder
+            console.info(TAG + 'videoRecorder is :' + JSON.stringify(mVideoRecorder))
+            console.info(TAG + 'videoRecorder.prepare called.')
+            mVideoRecorder.prepare(mVideoConfig, (err) => {
+                console.info(TAG + 'videoRecorder.prepare success.')
+                mVideoRecorder.getInputSurface((err, id) => {
+                    console.info(TAG + 'getInputSurface called')
+                    mVideoSurface = id
+                    console.info(TAG + 'getInputSurface surfaceId: ' + JSON.stringify(mVideoSurface))
+                })
+            })
         })
-      }
+        console.log(TAG + 'Exit getVideoReceiveSurface')
+    }
+
+    async function releaseVideoReceiveSurface() {
+        console.log(TAG + 'Entering releaseVideoReceiveSurface')
+        mVideoRecorder.release((err) => {
+            console.info(TAG + 'Entering release video receiver')
+        })
+        await closeFd();
+        console.log(TAG + 'Exit releaseVideoReceiveSurface')
+    }
 
     function sleep(ms) {
         console.info(TAG + "Entering sleep -> Promise constructor");
@@ -264,7 +273,7 @@ describe('CameraManagerTest', function () {
         await applyPermission();
         await getCameraManagerInstance();
         await getImageReceiverSurfaceId();
-        await getvideosurface();
+        await getVideoReceiveSurface();
         console.info('beforeAll case');
     })
   
@@ -278,7 +287,8 @@ describe('CameraManagerTest', function () {
     })
 
     afterAll(function () {
-        closeFd();
+        releaseVideoReceiveSurface();
+        sleep(1000);
         console.info('afterAll case');
     })
 
@@ -814,7 +824,7 @@ describe('CameraManagerTest', function () {
                 expect().assertFail();
             }
             for (let j = 0; j < photoProfilesArray.length; j++) {
-                mCameraManager.createPhotoOutput(photoProfilesArray[j], photoSurfaceId, async (err, data) => {
+                mCameraManager.createPhotoOutput(photoProfilesArray[j], mPhotoSurfaceId, async (err, data) => {
                     if (isEmpty(data)) {
                         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_PHOTO_OUTPUT_CALLBACK_0100 data == null || undefined")
                         expect().assertFail();
@@ -854,7 +864,7 @@ describe('CameraManagerTest', function () {
                 expect().assertFail();
             } 
             for (let j = 0; j < photoProfilesArray.length; j++) {
-                let photoOutputPromise = await mCameraManager.createPhotoOutput(photoProfilesArray[j], photoSurfaceId);
+                let photoOutputPromise = await mCameraManager.createPhotoOutput(photoProfilesArray[j], mPhotoSurfaceId);
                 if (isEmpty(photoOutputPromise)) {
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_PHOTO_OUTPUT_PROMISE_0100 photoOutputPromise == null || undefined")
                     expect().assertFail();

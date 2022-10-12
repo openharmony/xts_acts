@@ -616,7 +616,7 @@ export default function cameraSessionFocusTest(surfaceId: any) {
             releaseOutputs();
             releaseVideoReceiveSurface();
             releaseCameraSessionInstance();
-            sleep(100);
+            sleep(1000);
             console.info('afterAll case');
         })
 

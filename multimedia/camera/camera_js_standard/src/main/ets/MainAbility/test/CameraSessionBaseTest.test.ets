@@ -576,12 +576,12 @@ export default function cameraSessionTest(surfaceId: any) {
             await sleep(100);
         })
 
-        afterAll(async function () {
-            await releaseInputs();
-            await releaseOutputs();
-            await releaseVideoReceiveSurface();
+        afterAll(function () {
+            releaseInputs();
+            releaseOutputs();
+            releaseVideoReceiveSurface();
             releaseCameraSessionInstance();
-            await sleep(100);
+            sleep(1000);
             console.info('afterAll case');
         })
 
