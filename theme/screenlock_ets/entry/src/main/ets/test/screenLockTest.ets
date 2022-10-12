@@ -306,14 +306,12 @@ export default function screenLockJSUnit() {
                     console.info("SUB_MISC_THEME_screenLock_API_0009 screenLock.onSystemEvent end" + data)
                     done();
                 });
+                console.info("SUB_MISC_THEME_screenLock_API_0009 data: " + flag);
+                expect( flag == true ).assertTrue();
             }catch(err){
                 console.info("SUB_MISC_THEME_screenLock_API_0009 failed: " + JSON.stringify(err));
-                expect().assertFalse();
                 done();
             }
-            console.info("SUB_MISC_THEME_screenLock_API_0009 data: " + flag);
-            //这里的业务暂时为false，后续获取权限后为true
-            expect( flag == false).assertTrue();
             console.info("-----------------end SUB_MISC_THEME_screenLock_API_0009--------------------");
             done()
         });
