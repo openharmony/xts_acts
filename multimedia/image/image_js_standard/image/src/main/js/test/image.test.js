@@ -107,6 +107,12 @@ export default function imageJsTest() {
             const Color = new ArrayBuffer(96);
             let opts = { editable: false, pixelFormat: 3, size: { height: 4, width: 6 } }
             image.createPixelMap(Color, opts, (err, pixelmap) => {
+                if (err) {
+                    expect(false).assertTrue();
+                    console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_0500 err' + err);
+                    done();
+                    return
+                }
                 globalpixelmap = pixelmap;
                 expect(pixelmap != undefined).assertTrue();
                 console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_0500 success');
@@ -157,11 +163,16 @@ export default function imageJsTest() {
             const Color = new ArrayBuffer(96);
             let opts = { editable: false, pixelFormat: 2, size: { height: 6, width: 8 } }
             image.createPixelMap(Color, opts, (err, pixelmap) => {
+                if (err) {
+                    expect(false).assertTrue();
+                    console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_0600 err' + err);
+                    done();
+                    return
+                }
                 globalpixelmap = pixelmap;
                 expect(pixelmap != undefined).assertTrue();
                 console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_0600 success');
                 done();
-
             })
         })
 
@@ -208,6 +219,12 @@ export default function imageJsTest() {
             const Color = new ArrayBuffer(96);
             let opts = { editable: false, pixelFormat: 0, size: { height: 6, width: 8 } }
             image.createPixelMap(Color, opts, (err, pixelmap) => {
+                if (err) {
+                    expect(false).assertTrue();
+                    console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_0700 err' + err);
+                    done();
+                    return
+                }
                 globalpixelmap = pixelmap;
                 expect(pixelmap != undefined).assertTrue();
                 console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_0700 success');
@@ -230,6 +247,12 @@ export default function imageJsTest() {
             const Color = new ArrayBuffer(96);
             let opts = { editable: true, pixelFormat: 3, size: { height: 6, width: 8 } }
             image.createPixelMap(Color, opts, (err, pixelmap) => {
+                if (err) {
+                    expect(false).assertTrue();
+                    console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_0800 err' + err);
+                    done();
+                    return
+                }
                 globalpixelmap = pixelmap;
                 expect(pixelmap != undefined).assertTrue();
                 console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_0800 success');
@@ -252,6 +275,12 @@ export default function imageJsTest() {
             const Color = new ArrayBuffer(96);
             let opts = { editable: true, pixelFormat: 2, size: { height: 2, width: 3 } }
             image.createPixelMap(Color, opts, (err, pixelmap) => {
+                if (err) {
+                    expect(false).assertTrue();
+                    console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_0900 err' + err);
+                    done();
+                    return
+                }
                 globalpixelmap = pixelmap;
                 expect(pixelmap != undefined).assertTrue();
                 console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_0900 success');
@@ -274,9 +303,15 @@ export default function imageJsTest() {
             const Color = new ArrayBuffer(96);
             let opts = { editable: true, pixelFormat: 0, size: { height: -1, width: -1 } }
             image.createPixelMap(Color, opts, (err, pixelmap) => {
+                if (err) {
+                    expect(true).assertTrue();
+                    console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_1000 success' + err);
+                    done();
+                    return
+                }
                 globalpixelmap = pixelmap;
-                expect(pixelmap == undefined).assertTrue();
-                console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_1000 success');
+                expect(false).assertTrue();
+                console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_1000 fail');
                 done();
             })
         })
@@ -296,6 +331,12 @@ export default function imageJsTest() {
             const Color = new ArrayBuffer(96);
             let opts = { editable: true, pixelFormat: 21, size: { height: 6, width: 8 } }
             image.createPixelMap(Color, opts, (err, pixelmap) => {
+                if (err) {
+                    expect(false).assertTrue();
+                    console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_1100 err' + err);
+                    done();
+                    return
+                }
                 globalpixelmap = pixelmap;
                 expect(pixelmap != undefined).assertTrue();
                 console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_1100 success');
