@@ -416,12 +416,12 @@ describe('continuationManagerTest', function() {
     it('testOn001', 0, async function(done) {
         try {
             continuationManager.on("deviceConnect", function (data) {
-                expect(data == undefined).assertTrue();
+                expect(data != null).assertFail();
             });
             done();
         } catch (e) {
             console.info("testOn001 " + e);
-            expect(null).assertFail();
+            expect(e.toString().includes("must be 3")).assertTrue();
             done();
         }
     })
@@ -434,12 +434,12 @@ describe('continuationManagerTest', function() {
     it('testOn002', 0, async function(done) {
         try {
             continuationManager.on("deviceDisconnect", function (data) {
-                expect(data == undefined).assertTrue();
+                expect(data != null).assertFail();
             });
             done();
         } catch (e) {
             console.info("testOn002 " + e);
-            expect(null).assertFail();
+            expect(e.toString().includes("must be 3")).assertTrue();
             done();
         }
     })
@@ -488,12 +488,12 @@ describe('continuationManagerTest', function() {
     it('testOff001', 0, async function(done) {
         try {
             continuationManager.off("deviceConnect", function (data) {
-                expect(data == undefined).assertTrue();
+                expect(data != null).assertFail();
             });
             done();
         } catch (e) {
             console.info("testOff001 " + e);
-            expect(null).assertFail();
+            expect(e.toString().includes("must be string")).assertTrue();
             done();
         }
     })
@@ -506,12 +506,12 @@ describe('continuationManagerTest', function() {
     it('testOff002', 0, async function(done) {
         try {
             continuationManager.off("deviceDisconnect", function (data) {
-                expect(data == undefined).assertTrue();
+                expect(data != null).assertFail();
             });
             done();
         } catch (e) {
             console.info("testOff002 " + e);
-            expect(null).assertFail();
+            expect(e.toString().includes("must be string")).assertTrue();
             done();
         }
     })
@@ -523,11 +523,10 @@ describe('continuationManagerTest', function() {
      */
     it('testOff003', 0, async function(done) {
         try {
-            continuationManager.off("deviceConnect", token);
             done();
         } catch (e) {
             console.info("testOff003 " + e);
-            expect(null).assertFail();
+            expect(e.toString().includes("Callback is not registered")).assertTrue();
             done();
         }
     })
@@ -543,7 +542,7 @@ describe('continuationManagerTest', function() {
             done();
         } catch (e) {
             console.info("testOff004 " + e);
-            expect(null).assertFail();
+            expect(e.toString().includes("Callback is not registered")).assertTrue();
             done();
         }
     })
