@@ -879,6 +879,85 @@ describe('CameraManagerTest', function () {
     })
 
     /**
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_VIDEO_OUTPUT_CALLBACK_0100
+      * @tc.name      : Create camerainput from camera-0 cameraposition front & cameratype unspecified async api
+      * @tc.desc      : Create camerainput from camera-0 cameraposition front & cameratype unspecified async api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_VIDEO_OUTPUT_CALLBACK_0100', 0, async function (done) {
+        console.info("--------------SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_VIDEO_OUTPUT_CALLBACK_0100--------------");
+        let camerasArray = mCameraDevicesArray;
+        for (let i = 0; i < camerasArray.length; i++) {
+            let cameraOutputCap = await getSupportedOutputCapabilityInPromise(camerasArray[i]);
+            console.info("SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_VIDEO_OUTPUT_CALLBACK_0100 camera:" + camerasArray[i].cameraId);
+            if (isEmpty(cameraOutputCap)) {
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_VIDEO_OUTPUT_CALLBACK_0100 cameraOutputCap == null || undefined")
+                expect().assertFail();
+            }
+
+            let videoProfilesArray = cameraOutputCap.videoProfiles;
+            if (isEmpty(videoProfilesArray)) {
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_VIDEO_OUTPUT_CALLBACK_0100 videoProfilesArray == null || undefined")
+                expect().assertFail();
+            }
+            for (let j = 0; j < videoProfilesArray.length; j++) {
+                mCameraManager.createVideoOutput(videoProfilesArray[j], mVideoSurface, async (err, data) => {
+                    if (isEmpty(data)) {
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_VIDEO_OUTPUT_CALLBACK_0100 data == null || undefined")
+                        expect().assertFail();
+                    }
+                })
+                await sleep(10);
+                done();
+            }
+        }
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_VIDEO_OUTPUT_CALLBACK_0100 PASS");
+        await sleep(1000);
+        done();
+    })
+
+    /**
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_VIDEO_OUTPUT_PROMISE_0100
+      * @tc.name      : Create camerainput from camera-0 cameraposition front & cameratype unspecified async api
+      * @tc.desc      : Create camerainput from camera-0 cameraposition front & cameratype unspecified async api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 0
+    */
+    it('SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_VIDEO_OUTPUT_PROMISE_0100', 0, async function (done) {
+        console.info("--------------SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_VIDEO_OUTPUT_PROMISE_0100--------------");
+        let camerasArray = mCameraDevicesArray;
+        for (let i = 0; i < camerasArray.length; i++) {
+            let cameraOutputCap = await getSupportedOutputCapabilityInPromise(camerasArray[i]);
+            console.info("SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_VIDEO_OUTPUT_PROMISE_0100 camera:" + camerasArray[i].cameraId);
+            if (isEmpty(cameraOutputCap)) {
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_VIDEO_OUTPUT_PROMISE_0100 cameraOutputCap == null || undefined")
+                expect().assertFail();
+            }
+
+            let videoProfilesArray = cameraOutputCap.videoProfiles;
+            if (isEmpty(videoProfilesArray)) {
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_VIDEO_OUTPUT_PROMISE_0100 videoProfilesArray == null || undefined")
+                expect().assertFail();
+            }
+            for (let j = 0; j < videoProfilesArray.length; j++) {
+                let videoOutputPromise = await mCameraManager.createVideoOutput(videoProfilesArray[j], mVideoSurface);
+                if (isEmpty(videoOutputPromise)) {
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_VIDEO_OUTPUT_PROMISE_0100 videoOutputPromise == null || undefined")
+                    expect().assertFail();
+                }
+                await sleep(10);
+                done();
+            }
+        }
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_VIDEO_OUTPUT_PROMISE_0100 PASS");
+        await sleep(1000);
+        done();
+    })
+
+    /**
       * @tc.number    : SUB_MULTIMEDIA_CAMERA_CREATE_CAPTURE_SESSION_CALLBACK_0100
       * @tc.name      : Create CaptureSession instance api
       * @tc.desc      : Create CaptureSession instance api
