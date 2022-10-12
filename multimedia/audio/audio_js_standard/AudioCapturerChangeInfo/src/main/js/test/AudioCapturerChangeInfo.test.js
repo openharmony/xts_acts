@@ -20,52 +20,52 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 describe('audioCapturerChange', function () {
     let audioStreamManager;
     let audioStreamManagerCB;
-    let Tag = "AFCapLog : ";
+    let Tag = "AFCapLog";
 
     const audioManager = audio.getAudioManager();
-    console.info(Tag + 'Create AudioManger Object JS Framework');
+    console.info(`${Tag}: Create AudioManger Object JS Framework`);
 
     beforeAll(async function () {
-        console.info('AudioFrameworkTest: beforeAll: Prerequisites at the test suite level');
+        console.info(`AudioFrameworkTest: beforeAll: Prerequisites at the test suite level`);
         let permissionName1 = 'ohos.permission.MICROPHONE';
         let permissionNameList = [permissionName1];
         let appName = 'ohos.acts.multimedia.audio.audiocapturerchangeInfo';
         await audioTestBase.applyPermission(appName, permissionNameList);
         await sleep(100);
-        console.info('AudioFrameworkTest: beforeAll: END');
+        console.info(`AudioFrameworkTest: beforeAll: END`);
         await sleep(100);
-        await audioManager.getStreamManager().then(async function (data) {
+        await audioManager.getStreamManager().then((data) => {
             audioStreamManager = data;
-            console.info(Tag + ' Get AudioStream Manager : Success ');
+            console.info(`${Tag}:  Get AudioStream Manager : Success `);
         }).catch((err) => {
-            console.info(Tag + ' Get AudioStream Manager : ERROR : ' + err.message);
+            console.info(`${Tag}:  Get AudioStream Manager : ERROR :${err.message}`);
         });
 
         audioManager.getStreamManager((err, data) => {
             if (err) {
-                console.error(Tag + ' Get AudioStream Manager : ERROR : ' + err.message);
+                console.error(`${Tag}:  Get AudioStream Manager : ERROR :${err.message}`);
             }
             else {
                 audioStreamManagerCB = data;
-                console.info(Tag + ' Get AudioStream Manager : Success ');
+                console.info(`${Tag}:  Get AudioStream Manager : Success `);
             }
         });
         await sleep(1000);
-        console.info(Tag + ' beforeAll: END');
+        console.info(`${Tag}:  beforeAll: END`);
     })
 
     beforeEach(async function () {
-        console.info(Tag + ' beforeEach: Prerequisites at the test case level');
+        console.info(`${Tag}:  beforeEach: Prerequisites at the test case level`);
         await sleep(1000);
     })
 
     afterEach(function () {
-        console.info(Tag + ' afterEach: Test case-level clearance conditions');
+        console.info(`${Tag}:  afterEach: Test case-level clearance conditions`);
     })
 
     afterAll(async function () {
         await sleep(1000);
-        console.info(Tag + ' afterAll: Test suite-level cleanup condition');
+        console.info(`${Tag}:  afterAll: Test suite-level cleanup condition`);
     })
 
     function sleep(ms) {
@@ -101,22 +101,22 @@ describe('audioCapturerChange', function () {
 
         audioStreamManager.on('audioCapturerChange', async (AudioCapturerChangeInfoArray) => {
             for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
-                console.info(Tag + ' ## CapChange on is called for element ' + i + ' ##');
-                console.info(Tag + 'StrId for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].streamId);
-                console.info(Tag + 'CUid for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].clientUid);
-                console.info(Tag + 'Src for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.source);
-                console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
-                console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
+                console.info(`${Tag} : ## CapChange on is called for element ${i}  ##`);
+                console.info(`${Tag} : StreamId for ${i}  is: ${AudioCapturerChangeInfoArray[i].streamId}`);
+                console.info(`${Tag} : ClientUid for ${i}  is: ${AudioCapturerChangeInfoArray[i].clientUid}`);
+                console.info(`${Tag} : Content for ${i}  is: ${AudioCapturerChangeInfoArray[i].capturerInfo.source}`);
+                console.info(`${Tag} : Stream for ${i}  is: ${AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags}`);
+                console.info(`${Tag} : Flag ${i}  is: ${AudioCapturerChangeInfoArray[i].capturerState}`);;
                 let devDescriptor = AudioCapturerChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(Tag + 'Id:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id);
-                    console.info(Tag + 'Type:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType);
-                    console.info(Tag + 'Role:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceRole);
-                    console.info(Tag + 'Name:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].name);
-                    console.info(Tag + 'Addr:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].address);
-                    console.info(Tag + 'SR:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]);
-                    console.info(Tag + 'C' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]);
-                    console.info(Tag + 'CM:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks);
+                    console.info(`${Tag} : Id: ${i}  ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id}`);
+                    console.info(`${Tag} : Type: ${i}  ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
+                    console.info(`${Tag} : Role: ${i}  ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
+                    console.info(`${Tag} : Name: ${i}  ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].name}`);
+                    console.info(`${Tag} : Addr: ${i}  ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].address}`);
+                    console.info(`${Tag} : SR: ${i}  ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
+                    console.info(`${Tag} : C: ${i}  ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
+                    console.info(`${Tag} : CM: ${i}  ${AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
                 }
                 if (AudioCapturerChangeInfoArray[i].capturerState == 1 && devDescriptor != null) {
                     audioStreamManager.off('audioCapturerChange');
@@ -166,52 +166,40 @@ describe('audioCapturerChange', function () {
 
         let audioCap;
 
-        await audio.createAudioCapturer(AudioCapturerOptions).then(async function (data) {
+        await audio.createAudioCapturer(AudioCapturerOptions).then((data) => {
             audioCap = data;
-            console.info(Tag + 'AudioCapturer Created : Success : Stream Type: SUCCESS');
+            console.info(`${Tag}: AudioCapturer Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
-            console.info(Tag + 'AudioCapturer Created : ERROR : ' + err.message);
+            console.info(`${Tag}: AudioCapturer Created : ERROR :${err.message}`);
         });
 
         audioStreamManagerCB.on('audioCapturerChange', async (AudioCapturerChangeInfoArray) => {
             for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
-                console.info(Tag + ' ## CapChange on is called for element ' + i + ' ##');
-                console.info(Tag + 'StrId for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].streamId);
-                console.info(Tag + 'CUid for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].clientUid);
-                console.info(Tag + 'Src for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.source);
-                console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
-                console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
+                console.info(`${Tag}: CapChange on is called for element ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i])}`);
                 let devDescriptor = AudioCapturerChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(Tag + 'Id:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id);
-                    console.info(Tag + 'Type:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType);
-                    console.info(Tag + 'Role:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceRole);
-                    console.info(Tag + 'Name:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].name);
-                    console.info(Tag + 'Addr:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].address);
-                    console.info(Tag + 'SR:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]);
-                    console.info(Tag + 'C' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]);
-                    console.info(Tag + 'CM:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks);
+                    console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
                 if (AudioCapturerChangeInfoArray[i].capturerState == 2 && devDescriptor != null) {
                     resultFlag = true;
-                    console.info(Tag + '[CAPTURER-CHANGE-ON-002] ResultFlag for element ' + i + ' is: ' + resultFlag);
+                    console.info(`${Tag}: [CAPTURER-CHANGE-ON-002] ResultFlag for element ${i} is: ${resultFlag}`);
                     audioStreamManagerCB.off('audioCapturerChange');
-                    console.info(Tag + '[CAPTURER-CHANGE-ON-002] ######### CapturerChange Off is called #########');
+                    console.info(`${Tag}: [CAPTURER-CHANGE-ON-002] ######### CapturerChange Off is called #########`);
 
-                    await audioCap.release().then(async function () {
-                        console.info(Tag + 'Capturer release : SUCCESS');
+                    await audioCap.release().then(function () {
+                        console.info(`${Tag}: Capturer release : SUCCESS`);
                         done();
                     }).catch((err) => {
-                        console.info(Tag + 'Capturer release :ERROR : ' + err.message);
+                        console.info(`${Tag}: Capturer release :ERROR :${err.message}`);
                     });
                 }
             }
         });
 
-        await audioCap.start().then(async function () {
-            console.info(Tag + 'Capturer started :SUCCESS ');
+        await audioCap.start().then(() => {
+            console.info(`${Tag}: Capturer started :Success `);
         }).catch((err) => {
-            console.info(Tag + 'Capturer start :ERROR : ' + err.message);
+            console.info(`${Tag}: Capturer start :ERROR :${err.message}`);
         });
     })
 
@@ -246,65 +234,53 @@ describe('audioCapturerChange', function () {
 
         let audioCap;
 
-        await audio.createAudioCapturer(AudioCapturerOptions).then(async function (data) {
+        await audio.createAudioCapturer(AudioCapturerOptions).then((data) => {
             audioCap = data;
-            console.info(Tag + 'AudioCapturer Created : Success : Stream Type: SUCCESS');
+            console.info(`${Tag}: AudioCapturer Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
-            console.info(Tag + 'AudioCapturer Created : ERROR : ' + err.message);
+            console.info(`${Tag}: AudioCapturer Created : ERROR :${err.message}`);
         });
 
-        await audioCap.start().then(async function () {
-            console.info(Tag + 'Capturer started :SUCCESS ');
+        await audioCap.start().then(() => {
+            console.info(`${Tag}: Capturer started :Success `);
         }).catch((err) => {
-            console.info(Tag + 'Capturer start :ERROR : ' + err.message);
+            console.info(`${Tag}: Capturer start :ERROR :${err.message}`);
         });
 
         await sleep(100);
 
         audioStreamManager.on('audioCapturerChange', (AudioCapturerChangeInfoArray) => {
             for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
-                console.info(Tag + ' ## CapChange on is called for element ' + i + ' ##');
-                console.info(Tag + 'StrId for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].streamId);
-                console.info(Tag + 'CUid for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].clientUid);
-                console.info(Tag + 'Src for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.source);
-                console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
-                console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
+                console.info(`${Tag}: CapChange on is called for element ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i])}`);
                 let devDescriptor = AudioCapturerChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(Tag + 'Id:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id);
-                    console.info(Tag + 'Type:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType);
-                    console.info(Tag + 'Role:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceRole);
-                    console.info(Tag + 'Name:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].name);
-                    console.info(Tag + 'Addr:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].address);
-                    console.info(Tag + 'SR:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]);
-                    console.info(Tag + 'C' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]);
-                    console.info(Tag + 'CM:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks);
+                    console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
                 if (AudioCapturerChangeInfoArray[i].capturerState == 3 && devDescriptor != null) {
                     resultFlag = true;
-                    console.info(Tag + '[CAPTURER-CHANGE-ON-003] ResultFlag for element ' + i + ' is: ' + resultFlag);
+                    console.info(`${Tag}: [CAPTURER-CHANGE-ON-003] ResultFlag for element ${i} is: ${resultFlag}`);
                 }
             }
         });
 
         await sleep(100);
 
-        await audioCap.stop().then(async function () {
-            console.info(Tag + 'Capturer stopped : SUCCESS');
+        await audioCap.stop().then(() => {
+            console.info(`${Tag}: Capturer stopped : SUCCESS`);
         }).catch((err) => {
-            console.info(Tag + 'Capturer stop:ERROR : ' + err.message);
+            console.info(`${Tag}: Capturer stop:ERROR :${err.message}`);
         });
 
         await sleep(100);
 
         audioStreamManager.off('audioCapturerChange');
         await sleep(100);
-        console.info(Tag + '[CAPTURER-CHANGE-ON-003] ######### CapturerChange Off is called #########');
+        console.info(`${Tag}: [CAPTURER-CHANGE-ON-003] ######### CapturerChange Off is called #########`);
 
-        await audioCap.release().then(async function () {
-            console.info(Tag + 'Capturer release : SUCCESS');
+        await audioCap.release().then(function () {
+            console.info(`${Tag}: Capturer release : SUCCESS`);
         }).catch((err) => {
-            console.info(Tag + 'Capturer release :ERROR : ' + err.message);
+            console.info(`${Tag}: Capturer release :ERROR :${err.message}`);
         });
 
         expect(resultFlag).assertTrue();
@@ -342,65 +318,53 @@ describe('audioCapturerChange', function () {
 
         let audioCap;
 
-        await audio.createAudioCapturer(AudioCapturerOptions).then(async function (data) {
+        await audio.createAudioCapturer(AudioCapturerOptions).then((data) => {
             audioCap = data;
-            console.info(Tag + 'AudioCapturer Created : Success : Stream Type: SUCCESS');
+            console.info(`${Tag}: AudioCapturer Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
-            console.info(Tag + 'AudioCapturer Created : ERROR : ' + err.message);
+            console.info(`${Tag}: AudioCapturer Created : ERROR :${err.message}`);
         });
 
-        await audioCap.start().then(async function () {
-            console.info(Tag + 'Capturer started :SUCCESS ');
+        await audioCap.start().then(() => {
+            console.info(`${Tag}: Capturer started :Success `);
         }).catch((err) => {
-            console.info(Tag + 'Capturer start :ERROR : ' + err.message);
+            console.info(`${Tag}: Capturer start :ERROR :${err.message}`);
         });
 
-        await audioCap.stop().then(async function () {
-            console.info(Tag + 'Capturer stopped : SUCCESS');
+        await audioCap.stop().then(() => {
+            console.info(`${Tag}: Capturer stopped : SUCCESS`);
         }).catch((err) => {
-            console.info(Tag + 'Capturer stop:ERROR : ' + err.message);
+            console.info(`${Tag}: Capturer stop:ERROR :${err.message}`);
         });
 
         await sleep(100);
 
         audioStreamManagerCB.on('audioCapturerChange', (AudioCapturerChangeInfoArray) => {
             for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
-                console.info(Tag + ' ## CapChange on is called for element ' + i + ' ##');
-                console.info(Tag + 'StrId for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].streamId);
-                console.info(Tag + 'CUid for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].clientUid);
-                console.info(Tag + 'Src for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.source);
-                console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
-                console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
+                console.info(`${Tag}: CapChange on is called for element ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i])}`);
                 let devDescriptor = AudioCapturerChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(Tag + 'Id:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id);
-                    console.info(Tag + 'Type:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType);
-                    console.info(Tag + 'Role:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceRole);
-                    console.info(Tag + 'Name:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].name);
-                    console.info(Tag + 'Addr:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].address);
-                    console.info(Tag + 'SR:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]);
-                    console.info(Tag + 'C' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]);
-                    console.info(Tag + 'CM:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks);
+                    console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
                 if (AudioCapturerChangeInfoArray[i].capturerState == 4 && devDescriptor != null) {
                     resultFlag = true;
-                    console.info(Tag + '[CAPTURER-CHANGE-ON-004] ResultFlag for element ' + i + ' is: ' + resultFlag);
+                    console.info(`${Tag}: [CAPTURER-CHANGE-ON-004] ResultFlag for element ${i} is: ${resultFlag}`);
                 }
             }
         });
         await sleep(100);
 
-        await audioCap.release().then(async function () {
-            console.info(Tag + 'Capturer release : SUCCESS');
+        await audioCap.release().then(function () {
+            console.info(`${Tag}: Capturer release : SUCCESS`);
         }).catch((err) => {
-            console.info(Tag + 'Capturer release :ERROR : ' + err.message);
+            console.info(`${Tag}: Capturer release :ERROR :${err.message}`);
         });
 
         await sleep(100);
 
         audioStreamManagerCB.off('audioCapturerChange');
         await sleep(100);
-        console.info(Tag + '[CAPTURER-CHANGE-ON-004] ######### CapturerChange Off is called #########');
+        console.info(`${Tag}: [CAPTURER-CHANGE-ON-004] ######### CapturerChange Off is called #########`);
 
         expect(resultFlag).assertTrue();
         done();
@@ -437,22 +401,10 @@ describe('audioCapturerChange', function () {
 
         audioStreamManager.on('audioCapturerChange', (AudioCapturerChangeInfoArray) => {
             for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
-                console.info(Tag + ' ## CapChange on is called for element ' + i + ' ##');
-                console.info(Tag + 'StrId for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].streamId);
-                console.info(Tag + 'CUid for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].clientUid);
-                console.info(Tag + 'Src for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.source);
-                console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
-                console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
+                console.info(`${Tag}: CapChange on is called for element ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i])}`);
                 let devDescriptor = AudioCapturerChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(Tag + 'Id:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id);
-                    console.info(Tag + 'Type:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType);
-                    console.info(Tag + 'Role:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceRole);
-                    console.info(Tag + 'Name:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].name);
-                    console.info(Tag + 'Addr:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].address);
-                    console.info(Tag + 'SR:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]);
-                    console.info(Tag + 'C' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]);
-                    console.info(Tag + 'CM:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks);
+                    console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
                 if (AudioCapturerChangeInfoArray[i].capturerInfo.source == 0 && devDescriptor != null) {
                     audioStreamManager.off('audioCapturerChange');
@@ -503,49 +455,37 @@ describe('audioCapturerChange', function () {
 
         audioStreamManagerCB.on('audioCapturerChange', (AudioCapturerChangeInfoArray) => {
             for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
-                console.info(Tag + ' ## CapChange on is called for element ' + i + ' ##');
-                console.info(Tag + 'StrId for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].streamId);
-                console.info(Tag + 'CUid for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].clientUid);
-                console.info(Tag + 'Src for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.source);
-                console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
-                console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
+                console.info(`${Tag}: CapChange on is called for element ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i])}`);
                 let devDescriptor = AudioCapturerChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(Tag + 'Id:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id);
-                    console.info(Tag + 'Type:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType);
-                    console.info(Tag + 'Role:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceRole);
-                    console.info(Tag + 'Name:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].name);
-                    console.info(Tag + 'Addr:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].address);
-                    console.info(Tag + 'SR:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]);
-                    console.info(Tag + 'C' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]);
-                    console.info(Tag + 'CM:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks);
+                    console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
                 if (AudioCapturerChangeInfoArray[i].capturerInfo.source == 7 && devDescriptor != null) {
                     resultFlag = true;
-                    console.info(Tag + '[CAPTURER-CHANGE-ON-006] ResultFlag for element ' + i + ' is: ' + resultFlag);
+                    console.info(`${Tag}: [CAPTURER-CHANGE-ON-006] ResultFlag for element ${i} is: ${resultFlag}`);
                 }
             }
         });
         await sleep(100);
 
-        await audio.createAudioCapturer(AudioCapturerOptions).then(async function (data) {
+        await audio.createAudioCapturer(AudioCapturerOptions).then((data) => {
             audioCap = data;
-            console.info(Tag + 'AudioCapturer Created : Success : Stream Type: SUCCESS');
+            console.info(`${Tag}: AudioCapturer Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
-            console.info(Tag + 'AudioCapturer Created : ERROR : ' + err.message);
+            console.info(`${Tag}: AudioCapturer Created : ERROR :${err.message}`);
         });
 
         await sleep(100);
 
         audioStreamManagerCB.off('audioCapturerChange');
         await sleep(100);
-        console.info(Tag + '[CAPTURER-CHANGE-ON-006] ######### CapturerChange Off is called #########');
+        console.info(`${Tag}: [CAPTURER-CHANGE-ON-006] ######### CapturerChange Off is called #########`);
 
 
-        await audioCap.release().then(async function () {
-            console.info(Tag + 'Capturer release : SUCCESS');
+        await audioCap.release().then(function () {
+            console.info(`${Tag}: Capturer release : SUCCESS`);
         }).catch((err) => {
-            console.info(Tag + 'Capturer release :ERROR : ' + err.message);
+            console.info(`${Tag}: Capturer release :ERROR :${err.message}`);
         });
 
         expect(resultFlag).assertTrue();
@@ -581,22 +521,10 @@ describe('audioCapturerChange', function () {
         }
         audioStreamManager.on('audioCapturerChange', (AudioCapturerChangeInfoArray) => {
             for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
-                console.info(Tag + ' ## CapChange on is called for element ' + i + ' ##');
-                console.info(Tag + 'StrId for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].streamId);
-                console.info(Tag + 'CUid for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].clientUid);
-                console.info(Tag + 'Src for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.source);
-                console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
-                console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
+                console.info(`${Tag}: CapChange on is called for element ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i])}`);
                 let devDescriptor = AudioCapturerChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(Tag + 'Id:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id);
-                    console.info(Tag + 'Type:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType);
-                    console.info(Tag + 'Role:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceRole);
-                    console.info(Tag + 'Name:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].name);
-                    console.info(Tag + 'Addr:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].address);
-                    console.info(Tag + 'SR:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]);
-                    console.info(Tag + 'C' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]);
-                    console.info(Tag + 'CM:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks);
+                    console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
                 if (AudioCapturerChangeInfoArray[i].streamId != undefined && devDescriptor != null) {
                     audioStreamManager.off('audioCapturerChange');
@@ -644,24 +572,12 @@ describe('audioCapturerChange', function () {
         }
         audioStreamManager.on('audioCapturerChange', (AudioCapturerChangeInfoArray) => {
             for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
-                console.info(Tag + ' ## CapChange on is called for element ' + i + ' ##');
-                console.info(Tag + 'StrId for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].streamId);
-                console.info(Tag + 'CUid for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].clientUid);
-                console.info(Tag + 'Src for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.source);
-                console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
-                console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
+                console.info(`${Tag}: CapChange on is called for element ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i])}`);
                 let clientUid = AudioCapturerChangeInfoArray[i].clientUid;
                 let capFlags = AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags;
                 let devDescriptor = AudioCapturerChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(Tag + 'Id:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id);
-                    console.info(Tag + 'Type:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType);
-                    console.info(Tag + 'Role:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceRole);
-                    console.info(Tag + 'Name:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].name);
-                    console.info(Tag + 'Addr:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].address);
-                    console.info(Tag + 'SR:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]);
-                    console.info(Tag + 'C' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]);
-                    console.info(Tag + 'CM:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks);
+                    console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
                 if (clientUid != undefined && capFlags == 0 && devDescriptor != null) {
                     audioStreamManager.off('audioCapturerChange');
@@ -708,12 +624,7 @@ describe('audioCapturerChange', function () {
         }
         audioStreamManager.on('audioCapturerChange', (AudioCapturerChangeInfoArray) => {
             for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
-                console.info(Tag + ' ## CapChange on is called for element ' + i + ' ##');
-                console.info(Tag + 'StrId for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].streamId);
-                console.info(Tag + 'CUid for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].clientUid);
-                console.info(Tag + 'Src for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.source);
-                console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
-                console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
+                console.info(`${Tag}: CapChange on is called for element ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i])}`);
                 for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
                     let Id = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id;
                     let dType = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType;
@@ -721,14 +632,7 @@ describe('audioCapturerChange', function () {
                     let sRate = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0];
                     let cCount = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0];
                     let cMask = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks;
-                    console.info(Tag + 'Id:' + i + ':' + Id);
-                    console.info(Tag + 'Type:' + i + ':' + dType);
-                    console.info(Tag + 'Role:' + i + ':' + dRole);
-                    console.info(Tag + 'Name:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].name);
-                    console.info(Tag + 'Addr:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].address);
-                    console.info(Tag + 'SR:' + i + ':' + sRate);
-                    console.info(Tag + 'CC:' + i + ':' + cCount);
-                    console.info(Tag + 'CM:' + i + ':' + cMask);
+                    console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                     if (Id > 0 && dType == 15 && dRole == 1 && sRate != null && cCount != null && cMask != null) {
                         audioStreamManager.off('audioCapturerChange');
                         expect(true).assertTrue();
@@ -779,21 +683,9 @@ describe('audioCapturerChange', function () {
 
         audioStreamManager.on('audioCapturerChange', (AudioCapturerChangeInfoArray) => {
             for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
-                console.info(Tag + ' ## CapChange on is called for element ' + i + ' ##');
-                console.info(Tag + 'StrId for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].streamId);
-                console.info(Tag + 'CUid for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].clientUid);
-                console.info(Tag + 'Src for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.source);
-                console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
-                console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
+                console.info(`${Tag}: CapChange on is called for element ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i])}`);
                 for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(Tag + 'Id:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id);
-                    console.info(Tag + 'Type:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType);
-                    console.info(Tag + 'Role:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceRole);
-                    console.info(Tag + 'Name:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].name);
-                    console.info(Tag + 'Addr:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].address);
-                    console.info(Tag + 'SR:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]);
-                    console.info(Tag + 'C' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]);
-                    console.info(Tag + 'CM:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks);
+                    console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
                 audioStreamManager.off('audioCapturerChange');
                 expect(true).assertTrue();
@@ -850,21 +742,9 @@ describe('audioCapturerChange', function () {
 
         audioStreamManager.on('audioCapturerChange', (AudioCapturerChangeInfoArray) => {
             for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
-                console.info(Tag + ' ## CapChange on is called for element ' + i + ' ##');
-                console.info(Tag + 'StrId for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].streamId);
-                console.info(Tag + 'CUid for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].clientUid);
-                console.info(Tag + 'Src for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.source);
-                console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
-                console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
+                console.info(`${Tag}: CapChange on is called for element ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i])}`);
                 for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(Tag + 'Id:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id);
-                    console.info(Tag + 'Type:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType);
-                    console.info(Tag + 'Role:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceRole);
-                    console.info(Tag + 'Name:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].name);
-                    console.info(Tag + 'Addr:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].address);
-                    console.info(Tag + 'SR:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]);
-                    console.info(Tag + 'C' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]);
-                    console.info(Tag + 'CM:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks);
+                    console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
                 audioStreamManager.off('audioCapturerChange');
                 expect(true).assertTrue();
@@ -872,10 +752,10 @@ describe('audioCapturerChange', function () {
             }
         });
         await sleep(100);
-        await audioCap.release().then(async function () {
-            console.info(Tag + 'Capturer release : SUCCESS');
+        await audioCap.release().then(function () {
+            console.info(`${Tag}: Capturer release : SUCCESS`);
         }).catch((err) => {
-            console.info(Tag + 'Capturer release :ERROR : ' + err.message);
+            console.info(`${Tag}: Capturer release :ERROR :${err.message}`);
         });
     })
 
@@ -920,21 +800,9 @@ describe('audioCapturerChange', function () {
 
         audioStreamManager.on('audioCapturerChange', (AudioCapturerChangeInfoArray) => {
             for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
-                console.info(Tag + ' ## CapChange on is called for element ' + i + ' ##');
-                console.info(Tag + 'StrId for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].streamId);
-                console.info(Tag + 'CUid for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].clientUid);
-                console.info(Tag + 'Src for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.source);
-                console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
-                console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
+                console.info(`${Tag}: CapChange on is called for element ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i])}`);
                 for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(Tag + 'Id:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id);
-                    console.info(Tag + 'Type:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType);
-                    console.info(Tag + 'Role:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceRole);
-                    console.info(Tag + 'Name:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].name);
-                    console.info(Tag + 'Addr:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].address);
-                    console.info(Tag + 'SR:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]);
-                    console.info(Tag + 'C' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]);
-                    console.info(Tag + 'CM:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks);
+                    console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
                 audioStreamManager.off('audioCapturerChange');
                 expect(true).assertTrue();
@@ -943,10 +811,10 @@ describe('audioCapturerChange', function () {
         });
         await sleep(100);
 
-        await audioCap.release().then(async function () {
-            console.info(Tag + 'Capturer release : SUCCESS');
+        await audioCap.release().then(function () {
+            console.info(`${Tag}: Capturer release : SUCCESS`);
         }).catch((err) => {
-            console.info(Tag + 'Capturer release :ERROR : ' + err.message);
+            console.info(`${Tag}: Capturer release :ERROR :${err.message}`);
         });
     })
 
@@ -991,21 +859,9 @@ describe('audioCapturerChange', function () {
 
         audioStreamManager.on('audioCapturerChange', (AudioCapturerChangeInfoArray) => {
             for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
-                console.info(Tag + ' ## CapChange on is called for element ' + i + ' ##');
-                console.info(Tag + 'StrId for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].streamId);
-                console.info(Tag + 'CUid for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].clientUid);
-                console.info(Tag + 'Src for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.source);
-                console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
-                console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
+                console.info(`${Tag}: CapChange on is called for element ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i])}`);
                 for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(Tag + 'Id:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id);
-                    console.info(Tag + 'Type:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType);
-                    console.info(Tag + 'Role:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceRole);
-                    console.info(Tag + 'Name:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].name);
-                    console.info(Tag + 'Addr:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].address);
-                    console.info(Tag + 'SR:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]);
-                    console.info(Tag + 'C' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]);
-                    console.info(Tag + 'CM:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks);
+                    console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
                 audioStreamManager.off('audioCapturerChange');
                 expect(true).assertTrue();
@@ -1014,10 +870,10 @@ describe('audioCapturerChange', function () {
         });
         await sleep(100);
 
-        await audioCap.release().then(async function () {
-            console.info(Tag + 'Capturer release : SUCCESS');
+        await audioCap.release().then(function () {
+            console.info(`${Tag}: Capturer release : SUCCESS`);
         }).catch((err) => {
-            console.info(Tag + 'Capturer release :ERROR : ' + err.message);
+            console.info(`${Tag}: Capturer release :ERROR :${err.message}`);
         });
     })
 
@@ -1051,12 +907,7 @@ describe('audioCapturerChange', function () {
 
         audioStreamManager.on('audioCapturerChange', (AudioCapturerChangeInfoArray) => {
             for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
-                console.info(Tag + ' ## CapChange on is called for element ' + i + ' ##');
-                console.info(Tag + 'StrId for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].streamId);
-                console.info(Tag + 'CUid for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].clientUid);
-                console.info(Tag + 'Src for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.source);
-                console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
-                console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
+                console.info(`${Tag}: CapChange on is called for element ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i])}`);
                 for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
                     let Id = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id;
                     let dType = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType;
@@ -1064,14 +915,7 @@ describe('audioCapturerChange', function () {
                     let sRate = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0];
                     let cCount = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0];
                     let cMask = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks;
-                    console.info(Tag + 'Id:' + i + ':' + Id);
-                    console.info(Tag + 'Type:' + i + ':' + dType);
-                    console.info(Tag + 'Role:' + i + ':' + dRole);
-                    console.info(Tag + 'Name:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].name);
-                    console.info(Tag + 'Addr:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].address);
-                    console.info(Tag + 'SR:' + i + ':' + sRate);
-                    console.info(Tag + 'CC:' + i + ':' + cCount);
-                    console.info(Tag + 'CM:' + i + ':' + cMask);
+                    console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                     if (Id > 0 && dType == 15 && dRole == 1 && sRate != null && cCount != null && cMask != null) {
                         audioStreamManager.off('audioCapturerChange');
                         expect(true).assertTrue();
@@ -1118,31 +962,19 @@ describe('audioCapturerChange', function () {
         }
         audioStreamManagerCB.on('audioCapturerChange', (AudioCapturerChangeInfoArray) => {
             for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
-                console.info(Tag + ' ## CapChange on is called for element ' + i + ' ##');
-                console.info(Tag + 'StrId for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].streamId);
-                console.info(Tag + 'CUid for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].clientUid);
-                console.info(Tag + 'Src for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.source);
-                console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
-                console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
+                console.info(`${Tag}: CapChange on is called for element ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i])}`);
                 for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(Tag + 'Id:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id);
-                    console.info(Tag + 'Type:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType);
-                    console.info(Tag + 'Role:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceRole);
-                    console.info(Tag + 'Name:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].name);
-                    console.info(Tag + 'Addr:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].address);
-                    console.info(Tag + 'SR:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]);
-                    console.info(Tag + 'C' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]);
-                    console.info(Tag + 'CM:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks);
+                    console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
             }
         });
         await sleep(100);
 
-        await audio.createAudioCapturer(AudioCapturerOptions).then(async function (data) {
+        await audio.createAudioCapturer(AudioCapturerOptions).then((data) => {
             audioCap = data;
-            console.info(Tag + 'AudioCapturer Created : Success : Stream Type: SUCCESS');
+            console.info(`${Tag}: AudioCapturer Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
-            console.info(Tag + 'AudioCapturer Created : ERROR : ' + err.message);
+            console.info(`${Tag}: AudioCapturer Created : ERROR :${err.message}`);
             expect(false).assertTrue();
             done();
         });
@@ -1150,28 +982,17 @@ describe('audioCapturerChange', function () {
         await sleep(100);
 
         await audioStreamManagerCB.getCurrentAudioCapturerInfoArray().then(function (AudioCapturerChangeInfoArray) {
-            console.info('AFCapturerChangeLog: [GET_CAP_STA_1_PR] **** Get Promise Called ****');
+            console.info(`AFCapturerChangeLog: [GET_CAP_STA_1_PR] **** Get Promise Called ****`);
             if (AudioCapturerChangeInfoArray != null) {
                 for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
-                    console.info(Tag + 'StrId for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].streamId);
-                    console.info(Tag + 'CUid for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].clientUid);
-                    console.info(Tag + 'Src for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.source);
-                    console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
-                    console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
+                    console.info(`${Tag}: ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i])}`);
                     let devDescriptor = AudioCapturerChangeInfoArray[i].deviceDescriptors;
                     for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
-                        console.info(Tag + 'Id:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id);
-                        console.info(Tag + 'Type:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType);
-                        console.info(Tag + 'Role:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceRole);
-                        console.info(Tag + 'Name:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].name);
-                        console.info(Tag + 'Addr:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].address);
-                        console.info(Tag + 'SR:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]);
-                        console.info(Tag + 'C' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]);
-                        console.info(Tag + 'CM:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks);
+                        console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                     }
                     if (AudioCapturerChangeInfoArray[i].capturerState == 1 && devDescriptor != null) {
                         audioStreamManagerCB.off('audioCapturerChange');
-                        console.info('audioCapturerChange off success ');
+                        console.info(`audioCapturerChange off Success `);
                         expect(true).assertTrue();
                         done();
                     }
@@ -1183,10 +1004,10 @@ describe('audioCapturerChange', function () {
             done();
         });
 
-        await audioCap.release().then(async function () {
-            console.info(Tag + 'Capturer release : SUCCESS');
+        await audioCap.release().then(function () {
+            console.info(`${Tag}: Capturer release : SUCCESS`);
         }).catch((err) => {
-            console.info(Tag + 'Capturer release :ERROR : ' + err.message);
+            console.info(`${Tag}: Capturer release :ERROR :${err.message}`);
             expect(false).assertTrue();
             done();
         });
@@ -1220,41 +1041,30 @@ describe('audioCapturerChange', function () {
         }
         let audioCap;
 
-        await audio.createAudioCapturer(AudioCapturerOptions).then(async function (data) {
+        await audio.createAudioCapturer(AudioCapturerOptions).then((data) => {
             audioCap = data;
-            console.info(Tag + 'AudioCapturer Created : Success : Stream Type: SUCCESS');
+            console.info(`${Tag}: AudioCapturer Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
-            console.info(Tag + 'AudioCapturer Created : ERROR : ' + err.message);
+            console.info(`${Tag}: AudioCapturer Created : ERROR :${err.message}`);
         });
 
         await sleep(100);
 
         audioStreamManager.on('audioCapturerChange', (AudioCapturerChangeInfoArray) => {
             for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
-                console.info(Tag + ' ## CapChange on is called for element ' + i + ' ##');
-                console.info(Tag + 'StrId for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].streamId);
-                console.info(Tag + 'CUid for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].clientUid);
-                console.info(Tag + 'Src for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.source);
-                console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
-                console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
+                console.info(`${Tag}: CapChange on is called for element ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i])}`);
+                console.info(`${Tag}: ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i])}`);
                 for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(Tag + 'Id:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id);
-                    console.info(Tag + 'Type:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType);
-                    console.info(Tag + 'Role:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceRole);
-                    console.info(Tag + 'Name:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].name);
-                    console.info(Tag + 'Addr:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].address);
-                    console.info(Tag + 'SR:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]);
-                    console.info(Tag + 'C' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]);
-                    console.info(Tag + 'CM:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks);
+                    console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
             }
         });
 
         await sleep(100);
-        await audioCap.start().then(async function () {
-            console.info(Tag + 'Capturer started :SUCCESS ');
+        await audioCap.start().then(() => {
+            console.info(`${Tag}: Capturer started :Success `);
         }).catch((err) => {
-            console.info(Tag + 'Capturer start :ERROR : ' + err.message);
+            console.info(`${Tag}: Capturer start :ERROR :${err.message}`);
             expect(false).assertTrue();
             done();
         });
@@ -1262,24 +1072,13 @@ describe('audioCapturerChange', function () {
         await sleep(100);
 
         await audioStreamManager.getCurrentAudioCapturerInfoArray().then(function (AudioCapturerChangeInfoArray) {
-            console.info(Tag + '[GET_CAPTURER_STATE_2_PROMISE] **** Get Promise Called ****');
+            console.info(`${Tag}: [GET_CAPTURER_STATE_2_PROMISE] **** Get Promise Called ****`);
             if (AudioCapturerChangeInfoArray != null) {
                 for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
-                    console.info(Tag + 'StrId for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].streamId);
-                    console.info(Tag + 'CUid for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].clientUid);
-                    console.info(Tag + 'Src for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.source);
-                    console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
-                    console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
+                    console.info(`${Tag}: ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i])}`);
                     let devDescriptor = AudioCapturerChangeInfoArray[i].deviceDescriptors;
                     for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
-                        console.info(Tag + 'Id:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id);
-                        console.info(Tag + 'Type:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType);
-                        console.info(Tag + 'Role:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceRole);
-                        console.info(Tag + 'Name:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].name);
-                        console.info(Tag + 'Addr:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].address);
-                        console.info(Tag + 'SR:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]);
-                        console.info(Tag + 'C' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]);
-                        console.info(Tag + 'CM:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks);
+                        console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                     }
                     if (AudioCapturerChangeInfoArray[i].capturerState == 2 && devDescriptor != null) {
                         audioStreamManager.off('audioCapturerChange');
@@ -1294,10 +1093,10 @@ describe('audioCapturerChange', function () {
             done();
         });
 
-        await audioCap.release().then(async function () {
-            console.info(Tag + 'Capturer release : SUCCESS');
+        await audioCap.release().then(function () {
+            console.info(`${Tag}: Capturer release : SUCCESS`);
         }).catch((err) => {
-            console.info(Tag + 'Capturer release :ERROR : ' + err.message);
+            console.info(`${Tag}: Capturer release :ERROR :${err.message}`);
             expect(false).assertTrue();
             done();
         });
@@ -1332,71 +1131,49 @@ describe('audioCapturerChange', function () {
 
         let audioCap;
 
-        await audio.createAudioCapturer(AudioCapturerOptions).then(async function (data) {
+        await audio.createAudioCapturer(AudioCapturerOptions).then((data) => {
             audioCap = data;
-            console.info(Tag + 'AudioCapturer Created : Success : Stream Type: SUCCESS');
+            console.info(`${Tag}: AudioCapturer Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
-            console.info(Tag + 'AudioCapturer Created : ERROR : ' + err.message);
+            console.info(`${Tag}: AudioCapturer Created : ERROR :${err.message}`);
         });
 
-        await audioCap.start().then(async function () {
-            console.info(Tag + 'Capturer started :SUCCESS ');
+        await audioCap.start().then(() => {
+            console.info(`${Tag}: Capturer started :Success `);
         }).catch((err) => {
-            console.info(Tag + 'Capturer start :ERROR : ' + err.message);
+            console.info(`${Tag}: Capturer start :ERROR :${err.message}`);
         });
 
         await sleep(100);
 
         audioStreamManager.on('audioCapturerChange', (AudioCapturerChangeInfoArray) => {
             for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
-                console.info(Tag + ' ## CapChange on is called for element ' + i + ' ##');
-                console.info(Tag + 'StrId for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].streamId);
-                console.info(Tag + 'CUid for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].clientUid);
-                console.info(Tag + 'Src for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.source);
-                console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
-                console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
+                console.info(`${Tag}: CapChange on is called for element ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i])}`);
+                console.info(`${Tag}: ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i])}`);
                 for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(Tag + 'Id:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id);
-                    console.info(Tag + 'Type:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType);
-                    console.info(Tag + 'Role:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceRole);
-                    console.info(Tag + 'Name:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].name);
-                    console.info(Tag + 'Addr:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].address);
-                    console.info(Tag + 'SR:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]);
-                    console.info(Tag + 'C' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]);
-                    console.info(Tag + 'CM:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks);
+                    console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
             }
         });
 
         await sleep(100);
 
-        await audioCap.stop().then(async function () {
-            console.info(Tag + 'Capturer stopped : SUCCESS');
+        await audioCap.stop().then(() => {
+            console.info(`${Tag}: Capturer stopped : SUCCESS`);
         }).catch((err) => {
-            console.info(Tag + 'Capturer stop:ERROR : ' + err.message);
+            console.info(`${Tag}: Capturer stop:ERROR :${err.message}`);
         });
 
         await sleep(100);
 
         await audioStreamManager.getCurrentAudioCapturerInfoArray().then(function (AudioCapturerChangeInfoArray) {
-            console.info(Tag + '[GET_CAPTURER_STATE_3_PROMISE] **** Get Promise Called ****');
+            console.info(`${Tag}: [GET_CAPTURER_STATE_3_PROMISE] **** Get Promise Called ****`);
             if (AudioCapturerChangeInfoArray != null) {
                 for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
-                    console.info(Tag + 'StrId for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].streamId);
-                    console.info(Tag + 'CUid for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].clientUid);
-                    console.info(Tag + 'Src for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.source);
-                    console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
-                    console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
+                    console.info(`${Tag}: ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i])}`);
                     let devDescriptor = AudioCapturerChangeInfoArray[i].deviceDescriptors;
                     for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
-                        console.info(Tag + 'Id:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id);
-                        console.info(Tag + 'Type:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType);
-                        console.info(Tag + 'Role:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceRole);
-                        console.info(Tag + 'Name:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].name);
-                        console.info(Tag + 'Addr:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].address);
-                        console.info(Tag + 'SR:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]);
-                        console.info(Tag + 'C' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]);
-                        console.info(Tag + 'CM:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks);
+                        console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                     }
                     if (AudioCapturerChangeInfoArray[i].capturerState == 3 && devDescriptor != null) {
                         audioStreamManager.off('audioCapturerChange');
@@ -1411,10 +1188,10 @@ describe('audioCapturerChange', function () {
             done();
         });
 
-        await audioCap.release().then(async function () {
-            console.info(Tag + 'Capturer release : SUCCESS');
+        await audioCap.release().then(function () {
+            console.info(`${Tag}: Capturer release : SUCCESS`);
         }).catch((err) => {
-            console.info(Tag + 'Capturer release :ERROR : ' + err.message);
+            console.info(`${Tag}: Capturer release :ERROR :${err.message}`);
             expect(false).assertTrue();
             done();
         });
@@ -1450,44 +1227,29 @@ describe('audioCapturerChange', function () {
         let resultFlag = false;
         audioStreamManagerCB.on('audioCapturerChange', (AudioCapturerChangeInfoArray) => {
             for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
-                console.info(Tag + ' ## CapChange on is called for element ' + i + ' ##');
-                console.info(Tag + 'StrId for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].streamId);
-                console.info(Tag + 'CUid for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].clientUid);
-                console.info(Tag + 'Src for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.source);
-                console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
-                console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
+                console.info(`${Tag}: CapChange on is called for element ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i])}`);
+                console.info(`${Tag}: ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i])}`);
                 for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(Tag + 'Id:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id);
-                    console.info(Tag + 'Type:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType);
-                    console.info(Tag + 'Role:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceRole);
-                    console.info(Tag + 'Name:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].name);
-                    console.info(Tag + 'Addr:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].address);
-                    console.info(Tag + 'SR:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]);
-                    console.info(Tag + 'C' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]);
-                    console.info(Tag + 'CM:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks);
+                    console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
             }
         });
         await sleep(100);
 
-        await audio.createAudioCapturer(AudioCapturerOptions).then(async function (data) {
+        await audio.createAudioCapturer(AudioCapturerOptions).then((data) => {
             audioCap = data;
-            console.info(Tag + 'AudioCapturer Created : Success : Stream Type: SUCCESS');
+            console.info(`${Tag}: AudioCapturer Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
-            console.info(Tag + 'AudioCapturer Created : ERROR : ' + err.message);
+            console.info(`${Tag}: AudioCapturer Created : ERROR :${err.message}`);
         });
 
         await sleep(100);
 
         await audioStreamManagerCB.getCurrentAudioCapturerInfoArray().then(function (AudioCapturerChangeInfoArray) {
-            console.info('AFCapturerChangeLog: [GET_CAP_DD_PR] **** Get Promise Called ****');
+            console.info(`AFCapturerChangeLog: [GET_CAP_DD_PR] **** Get Promise Called ****`);
             if (AudioCapturerChangeInfoArray != null) {
                 for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
-                    console.info(Tag + 'StrId for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].streamId);
-                    console.info(Tag + 'CUid for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].clientUid);
-                    console.info(Tag + 'Src for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.source);
-                    console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
-                    console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
+                    console.info(`${Tag}: ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i])}`);
                     for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
                         let Id = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id;
                         let dType = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType;
@@ -1495,14 +1257,7 @@ describe('audioCapturerChange', function () {
                         let sRate = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0];
                         let cCount = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0];
                         let cMask = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks;
-                        console.info(Tag + 'Id:' + i + ':' + Id);
-                        console.info(Tag + 'Type:' + i + ':' + dType);
-                        console.info(Tag + 'Role:' + i + ':' + dRole);
-                        console.info(Tag + 'Name:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].name);
-                        console.info(Tag + 'Addr:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].address);
-                        console.info(Tag + 'SR:' + i + ':' + sRate);
-                        console.info(Tag + 'CC:' + i + ':' + cCount);
-                        console.info(Tag + 'CM:' + i + ':' + cMask);
+                        console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                         if (Id > 0 && dType == 15 && dRole == 1 && sRate != null && cCount != null && cMask != null) {
                             audioStreamManagerCB.off('audioCapturerChange');
                             expect(true).assertTrue();
@@ -1512,14 +1267,14 @@ describe('audioCapturerChange', function () {
                 }
             }
         }).catch((err) => {
-            console.log(Tag + 'getCurrentAudioCapturerInfoArray :ERROR: ' + err.message);
+            console.log(`${Tag}: getCurrentAudioCapturerInfoArray :ERROR:${err.message}`);
             resultFlag = false;
         });
 
-        await audioCap.release().then(async function () {
-            console.info(Tag + 'Capturer release : SUCCESS');
+        await audioCap.release().then(function () {
+            console.info(`${Tag}: Capturer release : SUCCESS`);
         }).catch((err) => {
-            console.info(Tag + 'Capturer release :ERROR : ' + err.message);
+            console.info(`${Tag}: Capturer release :ERROR :${err.message}`);
         });
 
         expect(resultFlag).assertTrue();
@@ -1556,68 +1311,46 @@ describe('audioCapturerChange', function () {
         let resultFlag = false;
         audioStreamManager.on('audioCapturerChange', (AudioCapturerChangeInfoArray) => {
             for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
-                console.info(Tag + ' ## CapChange on is called for element ' + i + ' ##');
-                console.info(Tag + 'StrId for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].streamId);
-                console.info(Tag + 'CUid for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].clientUid);
-                console.info(Tag + 'Src for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.source);
-                console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
-                console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
+                console.info(`${Tag}: CapChange on is called for element ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i])}`);
+                console.info(`${Tag}: ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i])}`);
                 for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(Tag + 'Id:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id);
-                    console.info(Tag + 'Type:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType);
-                    console.info(Tag + 'Role:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceRole);
-                    console.info(Tag + 'Name:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].name);
-                    console.info(Tag + 'Addr:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].address);
-                    console.info(Tag + 'SR:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]);
-                    console.info(Tag + 'C' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]);
-                    console.info(Tag + 'CM:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks);
+                    console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
             }
         });
         await sleep(100);
 
-        await audio.createAudioCapturer(AudioCapturerOptions).then(async function (data) {
+        await audio.createAudioCapturer(AudioCapturerOptions).then((data) => {
             audioCap = data;
-            console.info(Tag + 'AudioCapturer Created : Success : Stream Type: SUCCESS');
+            console.info(`${Tag}: AudioCapturer Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
-            console.info(Tag + 'AudioCapturer Created : ERROR : ' + err.message);
+            console.info(`${Tag}: AudioCapturer Created : ERROR :${err.message}`);
         });
 
         await sleep(100);
 
         audioStreamManager.getCurrentAudioCapturerInfoArray(async (err, AudioCapturerChangeInfoArray) => {
-            console.info(Tag + '[GET_CAPTURER_STATE_1_CALLBACK] **** Get Callback Called ****');
+            console.info(`${Tag}: [GET_CAPTURER_STATE_1_CALLBACK] **** Get Callback Called ****`);
             await sleep(100);
             if (err) {
-                console.log(Tag + 'getCurrentAudioCapturerInfoArray :ERROR: ' + err.message);
+                console.log(`${Tag}: getCurrentAudioCapturerInfoArray :ERROR:${err.message}`);
                 resultFlag = false;
             }
             else {
                 if (AudioCapturerChangeInfoArray != null) {
                     for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
-                        console.info(Tag + 'StrId for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].streamId);
-                        console.info(Tag + 'CUid for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].clientUid);
-                        console.info(Tag + 'Src for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.source);
-                        console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
-                        console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
+                        console.info(`${Tag}: ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i])}`);
                         let devDescriptor = AudioCapturerChangeInfoArray[i].deviceDescriptors;
                         for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
-                            console.info(Tag + 'Id:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id);
-                            console.info(Tag + 'Type:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType);
-                            console.info(Tag + 'Role:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceRole);
-                            console.info(Tag + 'Name:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].name);
-                            console.info(Tag + 'Addr:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].address);
-                            console.info(Tag + 'SR:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]);
-                            console.info(Tag + 'C' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]);
-                            console.info(Tag + 'CM:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks);
+                            console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                         }
                         if (AudioCapturerChangeInfoArray[i].capturerState == 1 && devDescriptor != null) {
                             audioStreamManager.off('audioCapturerChange');
-                            await audioCap.release().then(async function () {
-                                console.info(Tag + 'Capturer release : SUCCESS');
+                            await audioCap.release().then(function () {
+                                console.info(`${Tag}: Capturer release : SUCCESS`);
                                 done();
                             }).catch((err) => {
-                                console.info(Tag + 'Capturer release :ERROR : ' + err.message);
+                                console.info(`${Tag}: Capturer release :ERROR :${err.message}`);
                                 expect(false).assertTrue();
                                 done();
                             });
@@ -1659,78 +1392,56 @@ describe('audioCapturerChange', function () {
 
         let audioCap;
 
-        await audio.createAudioCapturer(AudioCapturerOptions).then(async function (data) {
+        await audio.createAudioCapturer(AudioCapturerOptions).then((data) => {
             audioCap = data;
-            console.info(Tag + 'AudioCapturer Created : Success : Stream Type: SUCCESS');
+            console.info(`${Tag}: AudioCapturer Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
-            console.info(Tag + 'AudioCapturer Created : ERROR : ' + err.message);
+            console.info(`${Tag}: AudioCapturer Created : ERROR :${err.message}`);
         });
 
         await sleep(100);
 
         audioStreamManagerCB.on('audioCapturerChange', (AudioCapturerChangeInfoArray) => {
             for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
-                console.info(Tag + ' ## CapChange on is called for element ' + i + ' ##');
-                console.info(Tag + 'StrId for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].streamId);
-                console.info(Tag + 'CUid for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].clientUid);
-                console.info(Tag + 'Src for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.source);
-                console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
-                console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
+                console.info(`${Tag}: CapChange on is called for element ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i])}`);
+                console.info(`${Tag}: ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i])}`);
                 for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(Tag + 'Id:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id);
-                    console.info(Tag + 'Type:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType);
-                    console.info(Tag + 'Role:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceRole);
-                    console.info(Tag + 'Name:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].name);
-                    console.info(Tag + 'Addr:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].address);
-                    console.info(Tag + 'SR:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]);
-                    console.info(Tag + 'C' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]);
-                    console.info(Tag + 'CM:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks);
+                    console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
             }
         });
 
         await sleep(100);
-        await audioCap.start().then(async function () {
-            console.info(Tag + 'Capturer started :SUCCESS ');
+        await audioCap.start().then(() => {
+            console.info(`${Tag}: Capturer started :Success `);
         }).catch((err) => {
-            console.info(Tag + 'Capturer start :ERROR : ' + err.message);
+            console.info(`${Tag}: Capturer start :ERROR :${err.message}`);
         });
 
         await sleep(100);
 
         audioStreamManagerCB.getCurrentAudioCapturerInfoArray(async (err, AudioCapturerChangeInfoArray) => {
-            console.info(Tag + '[GET_CAPTURER_STATE_2_CALLBACK] **** Get Callback Called ****');
+            console.info(`${Tag}: [GET_CAPTURER_STATE_2_CALLBACK] **** Get Callback Called ****`);
             await sleep(100);
             if (err) {
-                console.log(Tag + 'getCurrentAudioCapturerInfoArray :ERROR: ' + err.message);
+                console.log(`${Tag}: getCurrentAudioCapturerInfoArray :ERROR:${err.message}`);
                 resultFlag = false;
             }
             else {
                 if (AudioCapturerChangeInfoArray != null) {
                     for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
-                        console.info(Tag + 'StrId for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].streamId);
-                        console.info(Tag + 'CUid for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].clientUid);
-                        console.info(Tag + 'Src for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.source);
-                        console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
-                        console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
+                        console.info(`${Tag}: ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i])}`);
                         let devDescriptor = AudioCapturerChangeInfoArray[i].deviceDescriptors;
                         for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
-                            console.info(Tag + 'Id:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id);
-                            console.info(Tag + 'Type:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType);
-                            console.info(Tag + 'Role:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceRole);
-                            console.info(Tag + 'Name:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].name);
-                            console.info(Tag + 'Addr:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].address);
-                            console.info(Tag + 'SR:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]);
-                            console.info(Tag + 'C' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]);
-                            console.info(Tag + 'CM:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks);
+                            console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                         }
                         if (AudioCapturerChangeInfoArray[i].capturerState == 2 && devDescriptor != null) {
                             audioStreamManagerCB.off('audioCapturerChange');
-                            await audioCap.release().then(async function () {
-                                console.info(Tag + 'Capturer release : SUCCESS');
+                            await audioCap.release().then(function () {
+                                console.info(`${Tag}: Capturer release : SUCCESS`);
                                 done();
                             }).catch((err) => {
-                                console.info(Tag + 'Capturer release :ERROR : ' + err.message);
+                                console.info(`${Tag}: Capturer release :ERROR :${err.message}`);
                                 expect(false).assertTrue();
                                 done();
                             });
@@ -1772,85 +1483,63 @@ describe('audioCapturerChange', function () {
 
         let audioCap;
 
-        await audio.createAudioCapturer(AudioCapturerOptions).then(async function (data) {
+        await audio.createAudioCapturer(AudioCapturerOptions).then((data) => {
             audioCap = data;
-            console.info(Tag + 'AudioCapturer Created : Success : Stream Type: SUCCESS');
+            console.info(`${Tag}: AudioCapturer Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
-            console.info(Tag + 'AudioCapturer Created : ERROR : ' + err.message);
+            console.info(`${Tag}: AudioCapturer Created : ERROR :${err.message}`);
         });
 
-        await audioCap.start().then(async function () {
-            console.info(Tag + 'Capturer started :SUCCESS ');
+        await audioCap.start().then(() => {
+            console.info(`${Tag}: Capturer started :Success `);
         }).catch((err) => {
-            console.info(Tag + 'Capturer start :ERROR : ' + err.message);
+            console.info(`${Tag}: Capturer start :ERROR :${err.message}`);
         });
 
         await sleep(100);
 
         audioStreamManager.on('audioCapturerChange', (AudioCapturerChangeInfoArray) => {
             for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
-                console.info(Tag + ' ## CapChange on is called for element ' + i + ' ##');
-                console.info(Tag + 'StrId for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].streamId);
-                console.info(Tag + 'CUid for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].clientUid);
-                console.info(Tag + 'Src for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.source);
-                console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
-                console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
+                console.info(`${Tag}: CapChange on is called for element ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i])}`);
+                console.info(`${Tag}: ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i])}`);
                 for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(Tag + 'Id:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id);
-                    console.info(Tag + 'Type:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType);
-                    console.info(Tag + 'Role:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceRole);
-                    console.info(Tag + 'Name:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].name);
-                    console.info(Tag + 'Addr:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].address);
-                    console.info(Tag + 'SR:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]);
-                    console.info(Tag + 'C' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]);
-                    console.info(Tag + 'CM:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks);
+                    console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
             }
         });
 
         await sleep(100);
 
-        await audioCap.stop().then(async function () {
-            console.info(Tag + 'Capturer stopped : SUCCESS');
+        await audioCap.stop().then(() => {
+            console.info(`${Tag}: Capturer stopped : SUCCESS`);
         }).catch((err) => {
-            console.info(Tag + 'Capturer stop:ERROR : ' + err.message);
+            console.info(`${Tag}: Capturer stop:ERROR :${err.message}`);
         });
 
         await sleep(100);
 
         audioStreamManager.getCurrentAudioCapturerInfoArray(async (err, AudioCapturerChangeInfoArray) => {
-            console.info(Tag + '[GET_CAPTURER_STATE_3_CALLBACK] **** Get Callback Called ****');
+            console.info(`${Tag}: [GET_CAPTURER_STATE_3_CALLBACK] **** Get Callback Called ****`);
             await sleep(100);
             if (err) {
-                console.log(Tag + 'getCurrentAudioCapturerInfoArray :ERROR: ' + err.message);
+                console.log(`${Tag}: getCurrentAudioCapturerInfoArray :ERROR:${err.message}`);
                 resultFlag = false;
             }
             else {
                 if (AudioCapturerChangeInfoArray != null) {
                     for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
-                        console.info(Tag + 'StrId for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].streamId);
-                        console.info(Tag + 'CUid for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].clientUid);
-                        console.info(Tag + 'Src for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.source);
-                        console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
-                        console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
+                        console.info(`${Tag}: ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i])}`);
                         let devDescriptor = AudioCapturerChangeInfoArray[i].deviceDescriptors;
                         for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
-                            console.info(Tag + 'Id:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id);
-                            console.info(Tag + 'Type:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType);
-                            console.info(Tag + 'Role:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceRole);
-                            console.info(Tag + 'Name:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].name);
-                            console.info(Tag + 'Addr:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].address);
-                            console.info(Tag + 'SR:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]);
-                            console.info(Tag + 'C' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]);
-                            console.info(Tag + 'CM:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks);
+                            console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                         }
                         if (AudioCapturerChangeInfoArray[i].capturerState == 3 && devDescriptor != null) {
                             audioStreamManager.off('audioCapturerChange');
-                            await audioCap.release().then(async function () {
-                                console.info(Tag + 'Capturer release : SUCCESS');
+                            await audioCap.release().then(function () {
+                                console.info(`${Tag}: Capturer release : SUCCESS`);
                                 done();
                             }).catch((err) => {
-                                console.info(Tag + 'Capturer release :ERROR : ' + err.message);
+                                console.info(`${Tag}: Capturer release :ERROR :${err.message}`);
                                 expect(false).assertTrue();
                                 done();
                             });
@@ -1890,31 +1579,20 @@ describe('audioCapturerChange', function () {
 
         audioStreamManager.on('audioCapturerChange', (AudioCapturerChangeInfoArray) => {
             for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
-                console.info(Tag + ' ## CapChange on is called for element ' + i + ' ##');
-                console.info(Tag + 'StrId for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].streamId);
-                console.info(Tag + 'CUid for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].clientUid);
-                console.info(Tag + 'Src for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.source);
-                console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
-                console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
+                console.info(`${Tag}: CapChange on is called for element ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i])}`);
+                console.info(`${Tag}: ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i])}`);
                 for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(Tag + 'Id:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id);
-                    console.info(Tag + 'Type:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType);
-                    console.info(Tag + 'Role:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceRole);
-                    console.info(Tag + 'Name:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].name);
-                    console.info(Tag + 'Addr:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].address);
-                    console.info(Tag + 'SR:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]);
-                    console.info(Tag + 'C' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]);
-                    console.info(Tag + 'CM:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks);
+                    console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
             }
         });
         await sleep(100);
 
-        await audio.createAudioCapturer(AudioCapturerOptions).then(async function (data) {
+        await audio.createAudioCapturer(AudioCapturerOptions).then((data) => {
             audioCap = data;
-            console.info(Tag + 'AudioCapturer Created : Success : Stream Type: SUCCESS');
+            console.info(`${Tag}: AudioCapturer Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
-            console.info(Tag + 'AudioCapturer Created : ERROR : ' + err.message);
+            console.info(`${Tag}: AudioCapturer Created : ERROR :${err.message}`);
             expect(false).assertTrue();
             done();
         });
@@ -1922,20 +1600,16 @@ describe('audioCapturerChange', function () {
         await sleep(100);
 
         audioStreamManager.getCurrentAudioCapturerInfoArray(async (err, AudioCapturerChangeInfoArray) => {
-            console.info(Tag + '[GET_CAPTURER_DD_CALLBACK] **** Get Callback Called ****');
+            console.info(`${Tag}: [GET_CAPTURER_DD_CALLBACK] **** Get Callback Called ****`);
             await sleep(100);
             if (err) {
-                console.log(Tag + 'getCurrentAudioCapturerInfoArray :ERROR: ' + err.message);
+                console.log(`${Tag}: getCurrentAudioCapturerInfoArray :ERROR:${err.message}`);
                 resultFlag = false;
             }
             else {
                 if (AudioCapturerChangeInfoArray != null) {
                     for (let i = 0; i < AudioCapturerChangeInfoArray.length; i++) {
-                        console.info(Tag + 'StrId for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].streamId);
-                        console.info(Tag + 'CUid for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].clientUid);
-                        console.info(Tag + 'Src for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.source);
-                        console.info(Tag + 'Flag ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerInfo.capturerFlags);
-                        console.info(Tag + 'State for ' + i + 'is:' + AudioCapturerChangeInfoArray[i].capturerState);
+                        console.info(`${Tag}: ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i])}`);
                         for (let j = 0; j < AudioCapturerChangeInfoArray[i].deviceDescriptors.length; j++) {
                             let Id = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].id;
                             let dType = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].deviceType;
@@ -1943,21 +1617,14 @@ describe('audioCapturerChange', function () {
                             let sRate = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].sampleRates[0];
                             let cCount = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelCounts[0];
                             let cMask = AudioCapturerChangeInfoArray[i].deviceDescriptors[j].channelMasks;
-                            console.info(Tag + 'Id:' + i + ':' + Id);
-                            console.info(Tag + 'Type:' + i + ':' + dType);
-                            console.info(Tag + 'Role:' + i + ':' + dRole);
-                            console.info(Tag + 'Nam:' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].name);
-                            console.info(Tag + '' + i + ':' + AudioCapturerChangeInfoArray[i].deviceDescriptors[j].address);
-                            console.info(Tag + 'SR:' + i + ':' + sRate);
-                            console.info(Tag + 'CC:' + i + ':' + cCount);
-                            console.info(Tag + 'CM:' + i + ':' + cMask);
+                            console.info(`${Tag}:deviceDescriptors ${i} : ${JSON.stringify(AudioCapturerChangeInfoArray[i].deviceDescriptors[j])}`);
                             if (Id > 0 && dType == 15 && dRole == 1 && sRate != null && cCount != null && cMask != null) {
                                 audioStreamManager.off('audioCapturerChange');
-                                await audioCap.release().then(async function () {
-                                    console.info(Tag + 'Capturer release : SUCCESS');
+                                await audioCap.release().then(function () {
+                                    console.info(`${Tag}: Capturer release : SUCCESS`);
                                     done();
                                 }).catch((err) => {
-                                    console.info(Tag + 'Capturer release :ERROR : ' + err.message);
+                                    console.info(`${Tag}: Capturer release :ERROR :${err.message}`);
                                     expect(false).assertTrue();
                                     done();
                                 });

@@ -21,20 +21,20 @@ import account from '@ohos.account.osAccount';
 // apply permission for test hap
 export async function applyPermission(applictionName, permissionNames) {
     let userId = await account.getAccountManager().getOsAccountLocalIdFromProcess();
-    console.info('userid is :' + userId)
+    console.info(`userid is :${userId}`)
     let appInfo = await bundle.getApplicationInfo(applictionName, 0, userId);
     let atManager = abilityAccessCtrl.createAtManager();
     if (atManager != null) {
         let tokenID = appInfo.accessTokenId;
-        console.info('[permission] case accessTokenID is ' + tokenID);
+        console.info(`[permission] case accessTokenID is ${tokenID}`);
         for (let i = 0; i < permissionNames.length; i++) {
             await atManager.grantUserGrantedPermission(tokenID, permissionNames[i], 1).then((result) => {
-                console.info('[permission] case grantUserGrantedPermission success :' + result);
+                console.info(`[permission] case grantUserGrantedPermission success : ${result}`);
             }).catch((err) => {
-                console.info('[permission] case grantUserGrantedPermission failed :' + err);
+                console.info(`[permission] case grantUserGrantedPermission failed : ${err}`);
             });
         }
     } else {
-        console.info('[permission] case apply permission failed, createAtManager failed');
+        console.info(`[permission] case apply permission failed, createAtManager failed`);
     }
 }

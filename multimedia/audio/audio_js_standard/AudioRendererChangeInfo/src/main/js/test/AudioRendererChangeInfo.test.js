@@ -20,43 +20,43 @@ describe('audioRendererChange', function () {
 
     let audioStreamManager;
     let audioStreamManagerCB;
-    let Tag = 'AFRenLog : ';
+    let Tag = 'AFRenLog';
     const AUDIOMANAGER = audio.getAudioManager();
-    console.info(`${Tag} : 'Create AudioManger Object JS Framework`);
+    console.info(`${Tag} : Create AudioManger Object JS Framework`);
 
     beforeAll(async function () {
-        await AUDIOMANAGER.getStreamManager().then(async function (data) {
+        await AUDIOMANAGER.getStreamManager().then(function (data) {
             audioStreamManager = data;
-            console.info(`${Tag} : 'Get AudioStream Manager : Success `);
+            console.info(`${Tag} : Get AudioStream Manager : Success `);
         }).catch((err) => {
-            console.info(`${Tag} : 'Get AudioStream Manager : ERROR : ${err.message}`);
+            console.info(`${Tag} : Get AudioStream Manager : ERROR : ${err.message}`);
         });
 
         AUDIOMANAGER.getStreamManager((err, data) => {
             if (err) {
-                console.error(`${Tag} : 'Get AudioStream Manager : ERROR :  ${err.message}`);
+                console.error(`${Tag} : Get AudioStream Manager : ERROR :  ${err.message}`);
             }
             else {
                 audioStreamManagerCB = data;
-                console.info(`${Tag} : 'Get AudioStream Manager : Success `);
+                console.info(`${Tag} : Get AudioStream Manager : Success `);
             }
         });
         await sleep(1000);
 
-        console.info(`${Tag} : 'beforeAll: Prerequisites at the test suite level`);
+        console.info(`${Tag} : beforeAll: Prerequisites at the test suite level`);
     })
 
     beforeEach(async function () {
-        console.info(`${Tag} : 'beforeEach: Prerequisites at the test case level`);
+        console.info(`${Tag} : beforeEach: Prerequisites at the test case level`);
         await sleep(1000);
     })
 
     afterEach(function () {
-        console.info(`${Tag} : 'afterEach: Test case-level clearance conditions`);
+        console.info(`${Tag} : afterEach: Test case-level clearance conditions`);
     })
 
-    afterAll(async function () {
-        console.info(`${Tag} : 'afterAll: Test suite-level cleanup condition`);
+    afterAll(function () {
+        console.info(`${Tag} : afterAll: Test suite-level cleanup condition`);
     })
 
     function sleep(ms) {
@@ -121,7 +121,7 @@ describe('audioRendererChange', function () {
         });
         await sleep(100);
 
-        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+        await audio.createAudioRenderer(AudioRendererOptions).then(function (data) {
             audioRen = data;
             console.info(`${Tag} : AudioRender Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
@@ -134,7 +134,7 @@ describe('audioRendererChange', function () {
         await sleep(100);
         console.info(`${Tag} : [RENDERER-CHANGE-ON-001] ######### RendererChange Off is called #########`);
 
-        await audioRen.release().then(async function () {
+        await audioRen.release().then(function () {
             console.info(`${Tag} : Renderer release : SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer release :ERROR : ${err.message}`);
@@ -176,7 +176,7 @@ describe('audioRendererChange', function () {
 
         let audioRen;
 
-        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+        await audio.createAudioRenderer(AudioRendererOptions).then(function (data) {
             audioRen = data;
             console.info(`${Tag} : AudioRender Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
@@ -187,23 +187,10 @@ describe('audioRendererChange', function () {
 
         audioStreamManager.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-                console.info(`${Tag} : ## RendererChange on is called for ${i}  ##`);
-                console.info(`${Tag} : StreamId for ${i}  is:  ${AudioRendererChangeInfoArray[i].streamId}`);
-                console.info(`${Tag} : ClientUid for ${i}  is:  ${AudioRendererChangeInfoArray[i].clientUid}`);
-                console.info(`${Tag} : Content for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.content}`);
-                console.info(`${Tag} : Stream for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.usage}`);
-                console.info(`${Tag} : Flag ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags}`);
-                console.info(`${Tag} : State for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererState}`);
+                console.info(`${Tag} : ## RendererChange on is called for ${i}  ## ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
                 let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(`${Tag} : Id: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].id}`);
-                    console.info(`${Tag} : Type: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
-                    console.info(`${Tag} : Role: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
-                    console.info(`${Tag} : Name: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
-                    console.info(`${Tag} : Addr: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
-                    console.info(`${Tag} : SR: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
-                    console.info(`${Tag} : C: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
-                    console.info(`${Tag} : CM: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
+                    console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
                 if (AudioRendererChangeInfoArray[i].rendererState == 2 && devDescriptor != null) {
                     resultFlag = true;
@@ -214,7 +201,7 @@ describe('audioRendererChange', function () {
 
         await sleep(100);
 
-        await audioRen.start().then(async function () {
+        await audioRen.start().then(function () {
             console.info(`${Tag} : renderInstant started :SUCCESS `);
         }).catch((err) => {
             console.info(`${Tag} : renderInstant start :ERROR :  ${err.message}`);
@@ -227,16 +214,16 @@ describe('audioRendererChange', function () {
         console.info(`${Tag} : [RENDERER-CHANGE-ON-002] ######### RendererChange Off is called #########`);
 
 
-        await audioRen.stop().then(async function () {
+        await audioRen.stop().then(function () {
             console.info(`${Tag} : Renderer stopped : SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer stop:ERROR :  ${err.message}`);
         });
 
-        await audioRen.release().then(async function () {
+        await audioRen.release().then(function () {
             console.info(`${Tag} : Renderer release : SUCCESS`);
         }).catch((err) => {
-            console.info(`${Tag} : 'Renderer release :ERROR :  ${err.message}`);
+            console.info(`${Tag} : Renderer release :ERROR :  ${err.message}`);
         });
         expect(resultFlag).assertTrue();
         done();
@@ -274,14 +261,14 @@ describe('audioRendererChange', function () {
 
         let audioRen;
 
-        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+        await audio.createAudioRenderer(AudioRendererOptions).then(function (data) {
             audioRen = data;
             console.info(`${Tag} : AudioRender Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : AudioRender Created : ERROR :   ${err.message}`);
         });
 
-        await audioRen.start().then(async function () {
+        await audioRen.start().then(function () {
             console.info(`${Tag} : renderInstant started :SUCCESS `);
         }).catch((err) => {
             console.info(`${Tag} : renderInstant start :ERROR :   ${err.message}`);
@@ -291,23 +278,10 @@ describe('audioRendererChange', function () {
 
         audioStreamManager.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-                console.info(`${Tag} : ## RendererChange on is called for ${i}  ##`);
-                console.info(`${Tag} : StreamId for ${i}  is:  ${AudioRendererChangeInfoArray[i].streamId}`);
-                console.info(`${Tag} : ClientUid for ${i}  is:  ${AudioRendererChangeInfoArray[i].clientUid}`);
-                console.info(`${Tag} : Content for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.content}`);
-                console.info(`${Tag} : Stream for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.usage}`);
-                console.info(`${Tag} : Flag ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags}`);
-                console.info(`${Tag} : State for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererState}`);
+                console.info(`${Tag} : ## RendererChange on is called for ${i}  ## ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
                 let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(`${Tag} : Id: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].id}`);
-                    console.info(`${Tag} : Type: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
-                    console.info(`${Tag} : Role: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
-                    console.info(`${Tag} : Name: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
-                    console.info(`${Tag} : Addr: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
-                    console.info(`${Tag} : SR: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
-                    console.info(`${Tag} : C: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
-                    console.info(`${Tag} : CM: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
+                    console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
                 if (AudioRendererChangeInfoArray[i].rendererState == 3 && devDescriptor != null) {
                     resultFlag = true;
@@ -318,7 +292,7 @@ describe('audioRendererChange', function () {
 
         await sleep(100);
 
-        await audioRen.stop().then(async function () {
+        await audioRen.stop().then(function () {
             console.info(`${Tag} : Renderer stopped : SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer stop:ERROR :  ${err.message}`);
@@ -330,7 +304,7 @@ describe('audioRendererChange', function () {
         await sleep(100);
         console.info(`${Tag} : [RENDERER-CHANGE-ON-003] ######### RendererChange Off is called #########`);
 
-        await audioRen.release().then(async function () {
+        await audioRen.release().then(function () {
             console.info(`${Tag} : Renderer release : SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer release :ERROR :   ${err.message}`);
@@ -372,20 +346,20 @@ describe('audioRendererChange', function () {
 
         let audioRen;
 
-        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+        await audio.createAudioRenderer(AudioRendererOptions).then(function (data) {
             audioRen = data;
             console.info(`${Tag} : AudioRender Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : AudioRender Created : ERROR :  ${err.message}`);
         });
 
-        await audioRen.start().then(async function () {
+        await audioRen.start().then(function () {
             console.info(`${Tag} : renderInstant started :SUCCESS }`);
         }).catch((err) => {
             console.info(`${Tag} : renderInstant start :ERROR :  ${err.message}`);
         });
 
-        await audioRen.stop().then(async function () {
+        await audioRen.stop().then(function () {
             console.info(`${Tag} : Renderer stopped : SUCCESS}`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer stop:ERROR :  ${err.message}`);
@@ -396,22 +370,10 @@ describe('audioRendererChange', function () {
         audioStreamManager.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
                 console.info(`${Tag} : ## RendererChange on is called for ${i}  ##}`);
-                console.info(`${Tag} : StreamId for ${i}  is:  ${AudioRendererChangeInfoArray[i].streamId}`);
-                console.info(`${Tag} : ClientUid for ${i}  is:  ${AudioRendererChangeInfoArray[i].clientUid}`);
-                console.info(`${Tag} : Content for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.content}`);
-                console.info(`${Tag} : Stream for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.usage}`);
-                console.info(`${Tag} : Flag ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags}`);
-                console.info(`${Tag} : State for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererState}`);
+                console.info(`${Tag} : AudioRendererChangeInfo for ${i}  is:  ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
                 let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(`${Tag} : Id: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].id}`);
-                    console.info(`${Tag} : Type: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
-                    console.info(`${Tag} : Role: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
-                    console.info(`${Tag} : Name: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
-                    console.info(`${Tag} : Addr: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
-                    console.info(`${Tag} : SR: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
-                    console.info(`${Tag} : C: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
-                    console.info(`${Tag} : CM: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
+                    console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
                 if (AudioRendererChangeInfoArray[i].rendererState == 4 && devDescriptor != null) {
                     resultFlag = true;
@@ -422,7 +384,7 @@ describe('audioRendererChange', function () {
 
         await sleep(100);
 
-        await audioRen.release().then(async function () {
+        await audioRen.release().then(function () {
             console.info(`${Tag} : Renderer release : SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer release :ERROR :   ${err.message}`);
@@ -469,14 +431,14 @@ describe('audioRendererChange', function () {
 
         let audioRen;
 
-        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+        await audio.createAudioRenderer(AudioRendererOptions).then(function (data) {
             audioRen = data;
             console.info(`${Tag} : AudioRender Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : AudioRender Created : ERROR :   ${err.message}`);
         });
 
-        await audioRen.start().then(async function () {
+        await audioRen.start().then(function () {
             console.info(`${Tag} : renderInstant started :SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : renderInstant start :ERROR :   ${err.message}`);
@@ -487,22 +449,10 @@ describe('audioRendererChange', function () {
         audioStreamManager.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
                 console.info(`${Tag} : ## RendererChange on is called for ${i}  ##}`);
-                console.info(`${Tag} : StreamId for ${i}  is:  ${AudioRendererChangeInfoArray[i].streamId}`);
-                console.info(`${Tag} : ClientUid for ${i}  is:  ${AudioRendererChangeInfoArray[i].clientUid}`);
-                console.info(`${Tag} : Content for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.content}`);
-                console.info(`${Tag} : Stream for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.usage}`);
-                console.info(`${Tag} : Flag ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags}`);
-                console.info(`${Tag} : State for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererState}`);
+                console.info(`${Tag} : AudioRendererChangeInfo for ${i}  is:  ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
                 let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(`${Tag} : Id: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].id}`);
-                    console.info(`${Tag} : Type: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
-                    console.info(`${Tag} : Role: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
-                    console.info(`${Tag} : Name: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
-                    console.info(`${Tag} : Addr: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
-                    console.info(`${Tag} : SR: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
-                    console.info(`${Tag} : C: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
-                    console.info(`${Tag} : CM: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
+                    console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
                 if (AudioRendererChangeInfoArray[i].rendererState == 5 && devDescriptor != null) {
                     resultFlag = true;
@@ -513,7 +463,7 @@ describe('audioRendererChange', function () {
 
         await sleep(100);
 
-        await audioRen.pause().then(async function () {
+        await audioRen.pause().then(function () {
             console.info(`${Tag} : renderInstant Pause :SUCCESS `);
         }).catch((err) => {
             console.info(`${Tag} : renderInstant Pause :ERROR :   ${err.message}`);
@@ -525,13 +475,13 @@ describe('audioRendererChange', function () {
         await sleep(100);
         console.info(`${Tag} : [RENDERER-CHANGE-ON-005] ######### RendererChange Off is called #########`);
 
-        await audioRen.stop().then(async function () {
+        await audioRen.stop().then(function () {
             console.info(`${Tag} : Renderer stopped : SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer stop:ERROR :   ${err.message}`);
         });
 
-        await audioRen.release().then(async function () {
+        await audioRen.release().then(function () {
             console.info(`${Tag} : Renderer release : SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer release :ERROR :   ${err.message}`);
@@ -573,23 +523,10 @@ describe('audioRendererChange', function () {
 
         audioStreamManagerCB.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-                console.info(`${Tag} : ## RendererChange on is called for ${i}  ##`);
-                console.info(`${Tag} : StreamId for ${i}  is:  ${AudioRendererChangeInfoArray[i].streamId}`);
-                console.info(`${Tag} : ClientUid for ${i}  is:  ${AudioRendererChangeInfoArray[i].clientUid}`);
-                console.info(`${Tag} : Content for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.content}`);
-                console.info(`${Tag} : Stream for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.usage}`);
-                console.info(`${Tag} : Flag ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags}`);
-                console.info(`${Tag} : State for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererState}`);
+                console.info(`${Tag} : ## RendererChange on is called for ${i}  ## ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
                 let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(`${Tag} : Id: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].id}`);
-                    console.info(`${Tag} : Type: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
-                    console.info(`${Tag} : Role: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
-                    console.info(`${Tag} : Name: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
-                    console.info(`${Tag} : Addr: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
-                    console.info(`${Tag} : SR: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
-                    console.info(`${Tag} : C: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
-                    console.info(`${Tag} : CM: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
+                    console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
                 if (AudioRendererChangeInfoArray[i].rendererInfo.content == 5 && devDescriptor != null) {
                     resultFlag = true;
@@ -599,7 +536,7 @@ describe('audioRendererChange', function () {
         });
         await sleep(100);
 
-        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+        await audio.createAudioRenderer(AudioRendererOptions).then(function (data) {
             audioRen = data;
             console.info(`${Tag} : AudioRender Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
@@ -611,7 +548,7 @@ describe('audioRendererChange', function () {
         await sleep(100);
         console.info(`${Tag} : [RENDERER-CHANGE-ON-006] ######### RendererChange Off is called #########`);
 
-        await audioRen.release().then(async function () {
+        await audioRen.release().then(function () {
             console.info(`${Tag} : Renderer release : SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer release :ERROR :   ${err.message}`);
@@ -654,23 +591,10 @@ describe('audioRendererChange', function () {
 
         audioStreamManager.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-                console.info(`${Tag} : ## RendererChange on is called for ${i}  ##`);
-                console.info(`${Tag} : StreamId for ${i}  is:  ${AudioRendererChangeInfoArray[i].streamId}`);
-                console.info(`${Tag} : ClientUid for ${i}  is:  ${AudioRendererChangeInfoArray[i].clientUid}`);
-                console.info(`${Tag} : Content for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.content}`);
-                console.info(`${Tag} : Stream for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.usage}`);
-                console.info(`${Tag} : Flag ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags}`);
-                console.info(`${Tag} : State for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererState}`);
+                console.info(`${Tag} : ## RendererChange on is called for ${i}  ## ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
                 let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(`${Tag} : Id: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].id}`);
-                    console.info(`${Tag} : Type: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
-                    console.info(`${Tag} : Role: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
-                    console.info(`${Tag} : Name: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
-                    console.info(`${Tag} : Addr: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
-                    console.info(`${Tag} : SR: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
-                    console.info(`${Tag} : C: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
-                    console.info(`${Tag} : CM: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
+                    console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
                 if (AudioRendererChangeInfoArray[i].rendererInfo.content == 0 && devDescriptor != null) {
                     resultFlag = true;
@@ -680,7 +604,7 @@ describe('audioRendererChange', function () {
         });
         await sleep(100);
 
-        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+        await audio.createAudioRenderer(AudioRendererOptions).then(function (data) {
             audioRen = data;
             console.info(`${Tag} : AudioRender Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
@@ -692,7 +616,7 @@ describe('audioRendererChange', function () {
         await sleep(100);
         console.info(`${Tag} : [RENDERER-CHANGE-ON-007] ######### RendererChange Off is called #########`);
 
-        await audioRen.release().then(async function () {
+        await audioRen.release().then(function () {
             console.info(`${Tag} : Renderer release : SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer release :ERROR :   ${err.message}`);
@@ -735,23 +659,10 @@ describe('audioRendererChange', function () {
 
         audioStreamManager.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-                console.info(`${Tag} : ## RendererChange on is called for ${i}  ##`);
-                console.info(`${Tag} : StreamId for ${i}  is:  ${AudioRendererChangeInfoArray[i].streamId}`);
-                console.info(`${Tag} : ClientUid for ${i}  is:  ${AudioRendererChangeInfoArray[i].clientUid}`);
-                console.info(`${Tag} : Content for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.content}`);
-                console.info(`${Tag} : Stream for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.usage}`);
-                console.info(`${Tag} : Flag ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags}`);
-                console.info(`${Tag} : State for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererState}`);
+                console.info(`${Tag} : ## RendererChange on is called for ${i}  ## ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
                 let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(`${Tag} : Id: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].id}`);
-                    console.info(`${Tag} : Type: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
-                    console.info(`${Tag} : Role: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
-                    console.info(`${Tag} : Name: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
-                    console.info(`${Tag} : Addr: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
-                    console.info(`${Tag} : SR: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
-                    console.info(`${Tag} : C: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
-                    console.info(`${Tag} : CM: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
+                    console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
                 if (AudioRendererChangeInfoArray[i].rendererInfo.content == 1 && devDescriptor != null) {
                     resultFlag = true;
@@ -761,7 +672,7 @@ describe('audioRendererChange', function () {
         });
         await sleep(100);
 
-        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+        await audio.createAudioRenderer(AudioRendererOptions).then(function (data) {
             audioRen = data;
             console.info(`${Tag} : AudioRender Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
@@ -773,7 +684,7 @@ describe('audioRendererChange', function () {
         await sleep(100);
         console.info(`${Tag} : [RENDERER-CHANGE-ON-008] ######### RendererChange Off is called #########`);
 
-        await audioRen.release().then(async function () {
+        await audioRen.release().then(function () {
             console.info(`${Tag} : Renderer release : SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer release :ERROR :   ${err.message}`);
@@ -816,23 +727,10 @@ describe('audioRendererChange', function () {
 
         audioStreamManager.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-                console.info(`${Tag} : ## RendererChange on is called for ${i}  ##`);
-                console.info(`${Tag} : StreamId for ${i}  is:  ${AudioRendererChangeInfoArray[i].streamId}`);
-                console.info(`${Tag} : ClientUid for ${i}  is:  ${AudioRendererChangeInfoArray[i].clientUid}`);
-                console.info(`${Tag} : Content for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.content}`);
-                console.info(`${Tag} : Stream for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.usage}`);
-                console.info(`${Tag} : Flag ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags}`);
-                console.info(`${Tag} : State for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererState}`);
+                console.info(`${Tag} : ## RendererChange on is called for ${i}  ## ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
                 let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(`${Tag} : Id: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].id}`);
-                    console.info(`${Tag} : Type: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
-                    console.info(`${Tag} : Role: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
-                    console.info(`${Tag} : Name: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
-                    console.info(`${Tag} : Addr: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
-                    console.info(`${Tag} : SR: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
-                    console.info(`${Tag} : C: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
-                    console.info(`${Tag} : CM: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
+                    console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
                 if (AudioRendererChangeInfoArray[i].rendererInfo.content == 2 && devDescriptor != null) {
                     resultFlag = true;
@@ -842,7 +740,7 @@ describe('audioRendererChange', function () {
         });
         await sleep(100);
 
-        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+        await audio.createAudioRenderer(AudioRendererOptions).then(function (data) {
             audioRen = data;
             console.info(`${Tag} : AudioRender Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
@@ -854,7 +752,7 @@ describe('audioRendererChange', function () {
         await sleep(100);
         console.info(`${Tag} : [RENDERER-CHANGE-ON-009] ######### RendererChange Off is called #########`);
 
-        await audioRen.release().then(async function () {
+        await audioRen.release().then(function () {
             console.info(`${Tag} : Renderer release : SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer release :ERROR :   ${err.message}`);
@@ -897,23 +795,10 @@ describe('audioRendererChange', function () {
 
         audioStreamManager.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-                console.info(`${Tag} : ## RendererChange on is called for ${i}  ##`);
-                console.info(`${Tag} : StreamId for ${i}  is:  ${AudioRendererChangeInfoArray[i].streamId}`);
-                console.info(`${Tag} : ClientUid for ${i}  is:  ${AudioRendererChangeInfoArray[i].clientUid}`);
-                console.info(`${Tag} : Content for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.content}`);
-                console.info(`${Tag} : Stream for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.usage}`);
-                console.info(`${Tag} : Flag ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags}`);
-                console.info(`${Tag} : State for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererState}`);
+                console.info(`${Tag} : ## RendererChange on is called for ${i}  ## ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
                 let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(`${Tag} : Id: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].id}`);
-                    console.info(`${Tag} : Type: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
-                    console.info(`${Tag} : Role: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
-                    console.info(`${Tag} : Name: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
-                    console.info(`${Tag} : Addr: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
-                    console.info(`${Tag} : SR: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
-                    console.info(`${Tag} : C: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
-                    console.info(`${Tag} : CM: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
+                    console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
                 if (AudioRendererChangeInfoArray[i].rendererInfo.content == 3 && devDescriptor != null) {
                     resultFlag = true;
@@ -923,7 +808,7 @@ describe('audioRendererChange', function () {
         });
         await sleep(100);
 
-        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+        await audio.createAudioRenderer(AudioRendererOptions).then(function (data) {
             audioRen = data;
             console.info(`${Tag} : AudioRender Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
@@ -936,7 +821,7 @@ describe('audioRendererChange', function () {
         await sleep(100);
         console.info(`${Tag} : [RENDERER-CHANGE-ON-010] ######### RendererChange Off is called #########`);
 
-        await audioRen.release().then(async function () {
+        await audioRen.release().then(function () {
             console.info(`${Tag} : Renderer release : SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer release :ERROR :   ${err.message}`);
@@ -979,23 +864,10 @@ describe('audioRendererChange', function () {
 
         audioStreamManager.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-                console.info(`${Tag} : ## RendererChange on is called for ${i}  ##`);
-                console.info(`${Tag} : StreamId for ${i}  is:  ${AudioRendererChangeInfoArray[i].streamId}`);
-                console.info(`${Tag} : ClientUid for ${i}  is:  ${AudioRendererChangeInfoArray[i].clientUid}`);
-                console.info(`${Tag} : Content for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.content}`);
-                console.info(`${Tag} : Stream for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.usage}`);
-                console.info(`${Tag} : Flag ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags}`);
-                console.info(`${Tag} : State for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererState}`);
+                console.info(`${Tag} : ## RendererChange on is called for ${i}  ## ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
                 let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(`${Tag} : Id: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].id}`);
-                    console.info(`${Tag} : Type: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
-                    console.info(`${Tag} : Role: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
-                    console.info(`${Tag} : Name: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
-                    console.info(`${Tag} : Addr: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
-                    console.info(`${Tag} : SR: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
-                    console.info(`${Tag} : C: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
-                    console.info(`${Tag} : CM: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
+                    console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
                 if (AudioRendererChangeInfoArray[i].rendererInfo.content == 4 && devDescriptor != null) {
                     resultFlag = true;
@@ -1005,7 +877,7 @@ describe('audioRendererChange', function () {
         });
         await sleep(100);
 
-        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+        await audio.createAudioRenderer(AudioRendererOptions).then(function (data) {
             audioRen = data;
             console.info(`${Tag} : AudioRender Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
@@ -1018,7 +890,7 @@ describe('audioRendererChange', function () {
         await sleep(100);
         console.info(`${Tag} : [RENDERER-CHANGE-ON-011] ######### RendererChange Off is called #########`);
 
-        await audioRen.release().then(async function () {
+        await audioRen.release().then(function () {
             console.info(`${Tag} : Renderer release : SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer release :ERROR :   ${err.message}`);
@@ -1061,23 +933,10 @@ describe('audioRendererChange', function () {
 
         audioStreamManagerCB.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-                console.info(`${Tag} : ## RendererChange on is called for ${i}  ##`);
-                console.info(`${Tag} : StreamId for ${i}  is:  ${AudioRendererChangeInfoArray[i].streamId}`);
-                console.info(`${Tag} : ClientUid for ${i}  is:  ${AudioRendererChangeInfoArray[i].clientUid}`);
-                console.info(`${Tag} : Content for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.content}`);
-                console.info(`${Tag} : Stream for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.usage}`);
-                console.info(`${Tag} : Flag ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags}`);
-                console.info(`${Tag} : State for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererState}`);
+                console.info(`${Tag} : ## RendererChange on is called for ${i}  ## ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
                 let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(`${Tag} : Id: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].id}`);
-                    console.info(`${Tag} : Type: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
-                    console.info(`${Tag} : Role: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
-                    console.info(`${Tag} : Name: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
-                    console.info(`${Tag} : Addr: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
-                    console.info(`${Tag} : SR: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
-                    console.info(`${Tag} : C: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
-                    console.info(`${Tag} : CM: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
+                    console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
                 if (AudioRendererChangeInfoArray[i].rendererInfo.usage == 0 && devDescriptor != null) {
                     resultFlag = true;
@@ -1087,7 +946,7 @@ describe('audioRendererChange', function () {
         });
         await sleep(100);
 
-        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+        await audio.createAudioRenderer(AudioRendererOptions).then(function (data) {
             audioRen = data;
             console.info(`${Tag} : AudioRender Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
@@ -1100,7 +959,7 @@ describe('audioRendererChange', function () {
         await sleep(100);
         console.info(`${Tag} : [RENDERER-CHANGE-ON-012] ######### RendererChange Off is called #########`);
 
-        await audioRen.release().then(async function () {
+        await audioRen.release().then(function () {
             console.info(`${Tag} : Renderer release : SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer release :ERROR :   ${err.message}`);
@@ -1143,23 +1002,10 @@ describe('audioRendererChange', function () {
 
         audioStreamManager.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-                console.info(`${Tag} : ## RendererChange on is called for ${i}  ##`);
-                console.info(`${Tag} : StreamId for ${i}  is:  ${AudioRendererChangeInfoArray[i].streamId}`);
-                console.info(`${Tag} : ClientUid for ${i}  is:  ${AudioRendererChangeInfoArray[i].clientUid}`);
-                console.info(`${Tag} : Content for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.content}`);
-                console.info(`${Tag} : Stream for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.usage}`);
-                console.info(`${Tag} : Flag ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags}`);
-                console.info(`${Tag} : State for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererState}`);
+                console.info(`${Tag} : ## RendererChange on is called for ${i}  ## ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
                 let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(`${Tag} : Id: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].id}`);
-                    console.info(`${Tag} : Type: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
-                    console.info(`${Tag} : Role: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
-                    console.info(`${Tag} : Name: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
-                    console.info(`${Tag} : Addr: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
-                    console.info(`${Tag} : SR: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
-                    console.info(`${Tag} : C: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
-                    console.info(`${Tag} : CM: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
+                    console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
                 if (AudioRendererChangeInfoArray[i].rendererInfo.usage == 1 && devDescriptor != null) {
                     resultFlag = true;
@@ -1169,7 +1015,7 @@ describe('audioRendererChange', function () {
         });
         await sleep(100);
 
-        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+        await audio.createAudioRenderer(AudioRendererOptions).then(function (data) {
             audioRen = data;
             console.info(`${Tag} : AudioRender Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
@@ -1182,7 +1028,7 @@ describe('audioRendererChange', function () {
         await sleep(100);
         console.info(`${Tag} : [RENDERER-CHANGE-ON-013] ######### RendererChange Off is called #########`);
 
-        await audioRen.release().then(async function () {
+        await audioRen.release().then(function () {
             console.info(`${Tag} : Renderer release : SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer release :ERROR :   ${err.message}`);
@@ -1225,23 +1071,10 @@ describe('audioRendererChange', function () {
 
         audioStreamManager.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-                console.info(`${Tag} : ## RendererChange on is called for ${i}  ##`);
-                console.info(`${Tag} : StreamId for ${i}  is:  ${AudioRendererChangeInfoArray[i].streamId}`);
-                console.info(`${Tag} : ClientUid for ${i}  is:  ${AudioRendererChangeInfoArray[i].clientUid}`);
-                console.info(`${Tag} : Content for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.content}`);
-                console.info(`${Tag} : Stream for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.usage}`);
-                console.info(`${Tag} : Flag ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags}`);
-                console.info(`${Tag} : State for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererState}`);
+                console.info(`${Tag} : ## RendererChange on is called for ${i}  ## ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
                 let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(`${Tag} : Id: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].id}`);
-                    console.info(`${Tag} : Type: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
-                    console.info(`${Tag} : Role: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
-                    console.info(`${Tag} : Name: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
-                    console.info(`${Tag} : Addr: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
-                    console.info(`${Tag} : SR: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
-                    console.info(`${Tag} : C: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
-                    console.info(`${Tag} : CM: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
+                    console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
                 if (AudioRendererChangeInfoArray[i].rendererInfo.usage == 2 && devDescriptor != null) {
                     resultFlag = true;
@@ -1251,7 +1084,7 @@ describe('audioRendererChange', function () {
         });
         await sleep(100);
 
-        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+        await audio.createAudioRenderer(AudioRendererOptions).then(function (data) {
             audioRen = data;
             console.info(`${Tag} : AudioRender Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
@@ -1264,7 +1097,7 @@ describe('audioRendererChange', function () {
         await sleep(100);
         console.info(`${Tag} : [RENDERER-CHANGE-ON-014] ######### RendererChange Off is called #########`);
 
-        await audioRen.release().then(async function () {
+        await audioRen.release().then(function () {
             console.info(`${Tag} : Renderer release : SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer release :ERROR :   ${err.message}`);
@@ -1307,23 +1140,10 @@ describe('audioRendererChange', function () {
 
         audioStreamManager.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-                console.info(`${Tag} : ## RendererChange on is called for ${i}  ##`);
-                console.info(`${Tag} : StreamId for ${i}  is:  ${AudioRendererChangeInfoArray[i].streamId}`);
-                console.info(`${Tag} : ClientUid for ${i}  is:  ${AudioRendererChangeInfoArray[i].clientUid}`);
-                console.info(`${Tag} : Content for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.content}`);
-                console.info(`${Tag} : Stream for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.usage}`);
-                console.info(`${Tag} : Flag ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags}`);
-                console.info(`${Tag} : State for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererState}`);
+                console.info(`${Tag} : ## RendererChange on is called for ${i}  ## ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
                 let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(`${Tag} : Id: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].id}`);
-                    console.info(`${Tag} : Type: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
-                    console.info(`${Tag} : Role: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
-                    console.info(`${Tag} : Name: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
-                    console.info(`${Tag} : Addr: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
-                    console.info(`${Tag} : SR: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
-                    console.info(`${Tag} : C: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
-                    console.info(`${Tag} : CM: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
+                    console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
                 if (AudioRendererChangeInfoArray[i].rendererInfo.usage == 6 && devDescriptor != null) {
                     resultFlag = true;
@@ -1333,7 +1153,7 @@ describe('audioRendererChange', function () {
         });
         await sleep(100);
 
-        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+        await audio.createAudioRenderer(AudioRendererOptions).then(function (data) {
             audioRen = data;
             console.info(`${Tag} : AudioRender Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
@@ -1345,7 +1165,7 @@ describe('audioRendererChange', function () {
         await sleep(100);
         console.info(`${Tag} : [RENDERER-CHANGE-ON-015] ######### RendererChange Off is called #########`);
 
-        await audioRen.release().then(async function () {
+        await audioRen.release().then(function () {
             console.info(`${Tag} : Renderer release : SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer release :ERROR :   ${err.message}`);
@@ -1388,23 +1208,10 @@ describe('audioRendererChange', function () {
 
         audioStreamManager.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-                console.info(`${Tag} : ## RendererChange on is called for ${i}  ##`);
-                console.info(`${Tag} : StreamId for ${i}  is:  ${AudioRendererChangeInfoArray[i].streamId}`);
-                console.info(`${Tag} : ClientUid for ${i}  is:  ${AudioRendererChangeInfoArray[i].clientUid}`);
-                console.info(`${Tag} : Content for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.content}`);
-                console.info(`${Tag} : Stream for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.usage}`);
-                console.info(`${Tag} : Flag ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags}`);
-                console.info(`${Tag} : State for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererState}`);
+                console.info(`${Tag} : ## RendererChange on is called for ${i}  ## ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
                 let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(`${Tag} : Id: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].id}`);
-                    console.info(`${Tag} : Type: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
-                    console.info(`${Tag} : Role: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
-                    console.info(`${Tag} : Name: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
-                    console.info(`${Tag} : Addr: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
-                    console.info(`${Tag} : SR: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
-                    console.info(`${Tag} : C: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
-                    console.info(`${Tag} : CM: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
+                    console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
                 if (AudioRendererChangeInfoArray[i].streamId != undefined && devDescriptor != null) {
                     resultFlag = true;
@@ -1414,7 +1221,7 @@ describe('audioRendererChange', function () {
         });
         await sleep(100);
 
-        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+        await audio.createAudioRenderer(AudioRendererOptions).then(function (data) {
             audioRen = data;
             console.info(`${Tag} : AudioRender Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
@@ -1426,7 +1233,7 @@ describe('audioRendererChange', function () {
         await sleep(100);
         console.info(`${Tag} : [RENDERER-CHANGE-ON-015] ######### RendererChange Off is called #########`);
 
-        await audioRen.release().then(async function () {
+        await audioRen.release().then(function () {
             console.info(`${Tag} : Renderer release : SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer release :ERROR :   ${err.message}`);
@@ -1469,25 +1276,12 @@ describe('audioRendererChange', function () {
 
         audioStreamManager.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-                console.info(`${Tag} : ## RendererChange on is called for ${i}  ##`);
-                console.info(`${Tag} : StreamId for ${i}  is:  ${AudioRendererChangeInfoArray[i].streamId}`);
-                console.info(`${Tag} : ClientUid for ${i}  is:  ${AudioRendererChangeInfoArray[i].clientUid}`);
-                console.info(`${Tag} : Content for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.content}`);
-                console.info(`${Tag} : Stream for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.usage}`);
-                console.info(`${Tag} : Flag ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags}`);
-                console.info(`${Tag} : State for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererState}`);
+                console.info(`${Tag} : ## RendererChange on is called for ${i}  ## ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
                 let clientUid = AudioRendererChangeInfoArray[i].clientUid;
                 let renFlags = AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags;
                 let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(`${Tag} : Id: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].id}`);
-                    console.info(`${Tag} : Type: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
-                    console.info(`${Tag} : Role: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
-                    console.info(`${Tag} : Name: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
-                    console.info(`${Tag} : Addr: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
-                    console.info(`${Tag} : SR: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
-                    console.info(`${Tag} : C: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
-                    console.info(`${Tag} : CM: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
+                    console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
                 if (clientUid != undefined && renFlags == 0 && devDescriptor != null) {
                     resultFlag = true;
@@ -1498,7 +1292,7 @@ describe('audioRendererChange', function () {
         });
         await sleep(100);
 
-        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+        await audio.createAudioRenderer(AudioRendererOptions).then(function (data) {
             audioRen = data;
             console.info(`${Tag} : AudioRender Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
@@ -1510,7 +1304,7 @@ describe('audioRendererChange', function () {
         await sleep(100);
         console.info(`${Tag} : [RENDERER-CHANGE-ON-015] ######### RendererChange Off is called #########`);
 
-        await audioRen.release().then(async function () {
+        await audioRen.release().then(function () {
             console.info(`${Tag} : Renderer release : SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer release :ERROR :   ${err.message}`);
@@ -1553,13 +1347,7 @@ describe('audioRendererChange', function () {
 
         audioStreamManagerCB.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-                console.info(`${Tag} : ## RendererChange on is called for ${i}  ##`);
-                console.info(`${Tag} : StreamId for ${i}  is:  ${AudioRendererChangeInfoArray[i].streamId}`);
-                console.info(`${Tag} : ClientUid for ${i}  is:  ${AudioRendererChangeInfoArray[i].clientUid}`);
-                console.info(`${Tag} : Content for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.content}`);
-                console.info(`${Tag} : Stream for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.usage}`);
-                console.info(`${Tag} : Flag ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags}`);
-                console.info(`${Tag} : State for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererState}`);
+                console.info(`${Tag} : ## RendererChange on is called for ${i}  ## ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
                     let Id = AudioRendererChangeInfoArray[i].deviceDescriptors[j].id;
                     let dType = AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType;
@@ -1567,14 +1355,7 @@ describe('audioRendererChange', function () {
                     let sRate = AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0];
                     let cCount = AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0];
                     let cMask = AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks;
-                    console.info(`${Tag} : Id: ${i}  ${Id}`);
-                    console.info(`${Tag} : Type: ${i} ${dType}`);
-                    console.info(`${Tag} : Role: ${i} ${dRole}`);
-                    console.info(`${Tag} : Name: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
-                    console.info(`${Tag} : Addr: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
-                    console.info(`${Tag} : SR: ${i} ${sRate}`);
-                    console.info(`${Tag} : CC: ${i} ${cCount}`);
-                    console.info(`${Tag} : CM: ${i} ${cMask}`);
+                    console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                     if (Id > 0 && dType == 2 && dRole == 2 && sRate != null && cCount != null && cMask != null) {
                         resultFlag = true;
                     }
@@ -1583,7 +1364,7 @@ describe('audioRendererChange', function () {
         });
         await sleep(100);
 
-        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+        await audio.createAudioRenderer(AudioRendererOptions).then(function (data) {
             audioRen = data;
             console.info(`${Tag} : AudioRender Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
@@ -1596,7 +1377,7 @@ describe('audioRendererChange', function () {
         await sleep(100);
         console.info(`${Tag} : [RENDERER-CHANGE-ON-018] ######### RendererChange Off is called #########`);
 
-        await audioRen.release().then(async function () {
+        await audioRen.release().then(function () {
             console.info(`${Tag} : Renderer release : SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer release :ERROR :   ${err.message}`);
@@ -1640,22 +1421,9 @@ describe('audioRendererChange', function () {
 
         audioStreamManager.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-                console.info(`${Tag} : ## RendererChange on is called for ${i}  ##`);
-                console.info(`${Tag} : StreamId for ${i}  is:  ${AudioRendererChangeInfoArray[i].streamId}`);
-                console.info(`${Tag} : ClientUid for ${i}  is:  ${AudioRendererChangeInfoArray[i].clientUid}`);
-                console.info(`${Tag} : Content for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.content}`);
-                console.info(`${Tag} : Stream for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.usage}`);
-                console.info(`${Tag} : Flag ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags}`);
-                console.info(`${Tag} : State for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererState}`);
+                console.info(`${Tag} : ## RendererChange on is called for ${i}  ## ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(`${Tag} : Id: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].id}`);
-                    console.info(`${Tag} : Type: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
-                    console.info(`${Tag} : Role: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
-                    console.info(`${Tag} : Name: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
-                    console.info(`${Tag} : Addr: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
-                    console.info(`${Tag} : SR: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
-                    console.info(`${Tag} : C: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
-                    console.info(`${Tag} : CM: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
+                    console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
                 resultFlag = false;
             }
@@ -1667,14 +1435,14 @@ describe('audioRendererChange', function () {
         console.info(`${Tag} : [RENDERER-CHANGE-OFF-001] ######### RendererChange Off is called #########`);
         console.info(`${Tag} : [RENDERER-CHANGE-OFF-001] ResultFlag is:  ${resultFlag}`);
 
-        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+        await audio.createAudioRenderer(AudioRendererOptions).then(function (data) {
             audioRen = data;
             console.info(`${Tag} : AudioRender Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : AudioRender Created : ERROR :   ${err.message}`);
         });
 
-        await audioRen.release().then(async function () {
+        await audioRen.release().then(function () {
             console.info(`${Tag} : Renderer release : SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer release :ERROR :   ${err.message}`);
@@ -1714,7 +1482,7 @@ describe('audioRendererChange', function () {
         let resultFlag = true;
         let audioRen;
 
-        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+        await audio.createAudioRenderer(AudioRendererOptions).then(function (data) {
             audioRen = data;
             console.info(`${Tag} : AudioRender Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
@@ -1725,22 +1493,9 @@ describe('audioRendererChange', function () {
 
         audioStreamManager.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-                console.info(`${Tag} : ## RendererChange on is called for ${i}  ##`);
-                console.info(`${Tag} : StreamId for ${i}  is:  ${AudioRendererChangeInfoArray[i].streamId}`);
-                console.info(`${Tag} : ClientUid for ${i}  is:  ${AudioRendererChangeInfoArray[i].clientUid}`);
-                console.info(`${Tag} : Content for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.content}`);
-                console.info(`${Tag} : Stream for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.usage}`);
-                console.info(`${Tag} : Flag ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags}`);
-                console.info(`${Tag} : State for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererState}`);
+                console.info(`${Tag} : ## RendererChange on is called for ${i}  ## ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(`${Tag} : Id: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].id}`);
-                    console.info(`${Tag} : Type: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
-                    console.info(`${Tag} : Role: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
-                    console.info(`${Tag} : Name: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
-                    console.info(`${Tag} : Addr: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
-                    console.info(`${Tag} : SR: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
-                    console.info(`${Tag} : C: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
-                    console.info(`${Tag} : CM: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
+                    console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
                 resultFlag = false;
             }
@@ -1752,13 +1507,13 @@ describe('audioRendererChange', function () {
         console.info(`${Tag} : [RENDERER-CHANGE-OFF-002] ######### RendererChange Off is called #########`);
         console.info(`${Tag} : [RENDERER-CHANGE-OFF-002] ResultFlag is:  ${resultFlag}`);
 
-        await audioRen.start().then(async function () {
+        await audioRen.start().then(function () {
             console.info(`${Tag} : renderInstant started :SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : renderInstant start :ERROR :   ${err.message}`);
         });
 
-        await audioRen.release().then(async function () {
+        await audioRen.release().then(function () {
             console.info(`${Tag} : Renderer release : SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer release :ERROR :   ${err.message}`);
@@ -1797,14 +1552,14 @@ describe('audioRendererChange', function () {
         let resultFlag = true;
         let audioRen;
 
-        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+        await audio.createAudioRenderer(AudioRendererOptions).then(function (data) {
             audioRen = data;
             console.info(`${Tag} : AudioRender Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : AudioRender Created : ERROR :   ${err.message}`);
         });
 
-        await audioRen.start().then(async function () {
+        await audioRen.start().then(function () {
             console.info(`${Tag} : renderInstant started :SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : renderInstant start :ERROR :   ${err.message}`);
@@ -1814,22 +1569,9 @@ describe('audioRendererChange', function () {
 
         audioStreamManager.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-                console.info(`${Tag} : ## RendererChange on is called for ${i}  ##`);
-                console.info(`${Tag} : StreamId for ${i}  is:  ${AudioRendererChangeInfoArray[i].streamId}`);
-                console.info(`${Tag} : ClientUid for ${i}  is:  ${AudioRendererChangeInfoArray[i].clientUid}`);
-                console.info(`${Tag} : Content for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.content}`);
-                console.info(`${Tag} : Stream for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.usage}`);
-                console.info(`${Tag} : Flag ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags}`);
-                console.info(`${Tag} : State for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererState}`);
+                console.info(`${Tag} : ## RendererChange on is called for ${i}  ## ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(`${Tag} : Id: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].id}`);
-                    console.info(`${Tag} : Type: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
-                    console.info(`${Tag} : Role: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
-                    console.info(`${Tag} : Name: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
-                    console.info(`${Tag} : Addr: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
-                    console.info(`${Tag} : SR: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
-                    console.info(`${Tag} : C: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
-                    console.info(`${Tag} : CM: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
+                    console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
                 resultFlag = false;
             }
@@ -1841,13 +1583,13 @@ describe('audioRendererChange', function () {
         console.info(`${Tag} : [RENDERER-CHANGE-OFF-003] ######### RendererChange Off is called #########`);
         console.info(`${Tag} : [RENDERER-CHANGE-OFF-003] ResultFlag is:  ${resultFlag}`);
 
-        await audioRen.stop().then(async function () {
+        await audioRen.stop().then(function () {
             console.info(`${Tag} : Renderer stopped : SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer stop:ERROR :   ${err.message}`);
         });
 
-        await audioRen.release().then(async function () {
+        await audioRen.release().then(function () {
             console.info(`${Tag} : Renderer release : SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer release :ERROR :   ${err.message}`);
@@ -1888,20 +1630,20 @@ describe('audioRendererChange', function () {
         let resultFlag = true;
         let audioRen;
 
-        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+        await audio.createAudioRenderer(AudioRendererOptions).then(function (data) {
             audioRen = data;
             console.info(`${Tag} : AudioRender Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : AudioRender Created : ERROR :   ${err.message}`);
         });
 
-        await audioRen.start().then(async function () {
+        await audioRen.start().then(function () {
             console.info(`${Tag} : renderInstant started :SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : renderInstant start :ERROR :   ${err.message}`);
         });
 
-        await audioRen.stop().then(async function () {
+        await audioRen.stop().then(function () {
             console.info(`${Tag} : Renderer stopped : SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer stop:ERROR :   ${err.message}`);
@@ -1911,22 +1653,9 @@ describe('audioRendererChange', function () {
 
         audioStreamManager.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-                console.info(`${Tag} : [RENDERER-CHANGE-OFF-004] ######### RendererChange on is called for ${i}  ##########`);
-                console.info(`${Tag} : [RENDERER-CHANGE-OFF-004] StreamId for ${i}  is:  ${AudioRendererChangeInfoArray[i].streamId}`);
-                console.info(`${Tag} : [RENDERER-CHANGE-OFF-004] ClientUid for ${i}  is:  ${AudioRendererChangeInfoArray[i].clientUid}`);
-                console.info(`${Tag} : [RENDERER-CHANGE-OFF-004] Content for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.content}`);
-                console.info(`${Tag} : [RENDERER-CHANGE-OFF-004] Stream for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.usage}`);
-                console.info(`${Tag} : [RENDERER-CHANGE-OFF-004] Flag ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags}`);
-                console.info(`${Tag} : [RENDERER-CHANGE-OFF-004] State for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererState}`);
+                console.info(`${Tag} : [RENDERER-CHANGE-OFF-004] ## RendererChange on is called for ${i}  ## ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(`${Tag} : Id: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].id}`);
-                    console.info(`${Tag} : Type: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
-                    console.info(`${Tag} : Role: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
-                    console.info(`${Tag} : Name: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
-                    console.info(`${Tag} : Addr: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
-                    console.info(`${Tag} : SR: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
-                    console.info(`${Tag} : C: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
-                    console.info(`${Tag} : CM: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
+                    console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
                 resultFlag = false;
             }
@@ -1938,7 +1667,7 @@ describe('audioRendererChange', function () {
         console.info(`${Tag} : [RENDERER-CHANGE-OFF-004] ######### RendererChange Off is called #########`);
         console.info(`${Tag} : [RENDERER-CHANGE-OFF-004] ResultFlag is:  ${resultFlag}`);
 
-        await audioRen.release().then(async function () {
+        await audioRen.release().then(function () {
             console.info(`${Tag} : Renderer release : SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer release :ERROR :   ${err.message}`);
@@ -1979,14 +1708,14 @@ describe('audioRendererChange', function () {
         let resultFlag = true;
         let audioRen;
 
-        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+        await audio.createAudioRenderer(AudioRendererOptions).then(function (data) {
             audioRen = data;
             console.info(`${Tag} : AudioRender Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : AudioRender Created : ERROR :   ${err.message}`);
         });
 
-        await audioRen.start().then(async function () {
+        await audioRen.start().then(function () {
             console.info(`${Tag} : renderInstant started :SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : renderInstant start :ERROR :   ${err.message}`);
@@ -1996,22 +1725,9 @@ describe('audioRendererChange', function () {
 
         audioStreamManagerCB.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-                console.info(`${Tag} : ## RendererChange on is called for ${i}  ##`);
-                console.info(`${Tag} : StreamId for ${i}  is:  ${AudioRendererChangeInfoArray[i].streamId}`);
-                console.info(`${Tag} : ClientUid for ${i}  is:  ${AudioRendererChangeInfoArray[i].clientUid}`);
-                console.info(`${Tag} : Content for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.content}`);
-                console.info(`${Tag} : Stream for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.usage}`);
-                console.info(`${Tag} : Flag ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags}`);
-                console.info(`${Tag} : State for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererState}`);
+                console.info(`${Tag} : ## RendererChange on is called for ${i}  ## ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(`${Tag} : Id: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].id}`);
-                    console.info(`${Tag} : Type: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
-                    console.info(`${Tag} : Role: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
-                    console.info(`${Tag} : Name: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
-                    console.info(`${Tag} : Addr: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
-                    console.info(`${Tag} : SR: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
-                    console.info(`${Tag} : C: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
-                    console.info(`${Tag} : CM: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
+                    console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
                 resultFlag = false;
             }
@@ -2023,19 +1739,19 @@ describe('audioRendererChange', function () {
         console.info(`${Tag} : [RENDERER-CHANGE-OFF-005] ######### RendererChange Off is called #########`);
         console.info(`${Tag} : [RENDERER-CHANGE-OFF-005] ResultFlag is:  ${resultFlag}`);
 
-        await audioRen.pause().then(async function () {
+        await audioRen.pause().then(function () {
             console.info(`${Tag} : renderInstant Pause :SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : renderInstant Pause :ERROR :   ${err.message}`);
         });
 
-        await audioRen.stop().then(async function () {
+        await audioRen.stop().then(function () {
             console.info(`${Tag} : Renderer stopped : SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer stop:ERROR :   ${err.message}`);
         });
 
-        await audioRen.release().then(async function () {
+        await audioRen.release().then(function () {
             console.info(`${Tag} : Renderer release : SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer release :ERROR :   ${err.message}`);
@@ -2079,13 +1795,7 @@ describe('audioRendererChange', function () {
 
         audioStreamManager.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-                console.info(`${Tag} : ## RendererChange on is called for ${i}  ##`);
-                console.info(`${Tag} : StreamId for ${i}  is:  ${AudioRendererChangeInfoArray[i].streamId}`);
-                console.info(`${Tag} : ClientUid for ${i}  is:  ${AudioRendererChangeInfoArray[i].clientUid}`);
-                console.info(`${Tag} : Content for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.content}`);
-                console.info(`${Tag} : Stream for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.usage}`);
-                console.info(`${Tag} : Flag ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags}`);
-                console.info(`${Tag} : State for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererState}`);
+                console.info(`${Tag} : ## RendererChange on is called for ${i}  ## ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
                     let Id = AudioRendererChangeInfoArray[i].deviceDescriptors[j].id;
                     let dType = AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType;
@@ -2093,14 +1803,7 @@ describe('audioRendererChange', function () {
                     let sRate = AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0];
                     let cCount = AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0];
                     let cMask = AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks;
-                    console.info(`${Tag} : Id: ${i}  ${Id}`);
-                    console.info(`${Tag} : Type: ${i} ${dType}`);
-                    console.info(`${Tag} : Role: ${i} ${dRole}`);
-                    console.info(`${Tag} : Name: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
-                    console.info(`${Tag} : Addr: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
-                    console.info(`${Tag} : SR: ${i} ${sRate}`);
-                    console.info(`${Tag} : CC: ${i} ${cCount}`);
-                    console.info(`${Tag} : CM: ${i} ${cMask}`);
+                    console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                     if (Id > 0 && dType == 2 && dRole == 2 && sRate != null && cCount != null && cMask != null) {
                         resultFlag = false;
                     }
@@ -2114,14 +1817,14 @@ describe('audioRendererChange', function () {
         console.info(`${Tag} : [RENDERER-CHANGE-OFF-006] ######### RendererChange Off is called #########`);
         console.info(`${Tag} : [RENDERER-CHANGE-OFF-006] ResultFlag is:  ${resultFlag}`);
 
-        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+        await audio.createAudioRenderer(AudioRendererOptions).then(function (data) {
             audioRen = data;
             console.info(`${Tag} : AudioRender Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : AudioRender Created : ERROR :   ${err.message}`);
         });
 
-        await audioRen.release().then(async function () {
+        await audioRen.release().then(function () {
             console.info(`${Tag} : Renderer release : SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer release :ERROR :   ${err.message}`);
@@ -2162,28 +1865,15 @@ describe('audioRendererChange', function () {
         let resultFlag = false;
         audioStreamManager.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-                console.info(`${Tag} : ## RendererChange on is called for ${i}  ##`);
-                console.info(`${Tag} : StreamId for ${i}  is:  ${AudioRendererChangeInfoArray[i].streamId}`);
-                console.info(`${Tag} : ClientUid for ${i}  is:  ${AudioRendererChangeInfoArray[i].clientUid}`);
-                console.info(`${Tag} : Content for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.content}`);
-                console.info(`${Tag} : Stream for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.usage}`);
-                console.info(`${Tag} : Flag ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags}`);
-                console.info(`${Tag} : State for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererState}`);
+                console.info(`${Tag} : ## RendererChange on is called for ${i}  ## ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(`${Tag} : Id: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].id}`);
-                    console.info(`${Tag} : Type: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
-                    console.info(`${Tag} : Role: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
-                    console.info(`${Tag} : Name: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
-                    console.info(`${Tag} : Addr: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
-                    console.info(`${Tag} : SR: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
-                    console.info(`${Tag} : C: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
-                    console.info(`${Tag} : CM: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
+                    console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
             }
         });
         await sleep(100);
 
-        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+        await audio.createAudioRenderer(AudioRendererOptions).then(function (data) {
             audioCap = data;
             console.info(`${Tag} : AudioRenderer Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
@@ -2196,22 +1886,10 @@ describe('audioRendererChange', function () {
             console.info(`${Tag} : [GET_RENDERER_STATE_1_PROMISE] ######### Get Promise is called ##########`);
             if (AudioRendererChangeInfoArray != null) {
                 for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-                    console.info(`${Tag} : StreamId for ${i}  is:  ${AudioRendererChangeInfoArray[i].streamId}`);
-                    console.info(`${Tag} : ClientUid for ${i}  is:  ${AudioRendererChangeInfoArray[i].clientUid}`);
-                    console.info(`${Tag} : Con ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.content}`);
-                    console.info(`${Tag} : Stream  ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.usage}`);
-                    console.info(`${Tag} :  ${i} is:  ${AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags}`);
-                    console.info(`${Tag} : State for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererState}`);
+                    console.info(`${Tag} : AudioRendererChangeInfo for ${i}  is:  ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
                     let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                     for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
-                        console.info(`${Tag} : Id: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].id}`);
-                        console.info(`${Tag} : Type: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
-                        console.info(`${Tag} : Role: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
-                        console.info(`${Tag} : Name: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
-                        console.info(`${Tag} : Addr: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
-                        console.info(`${Tag} : SR: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
-                        console.info(`${Tag} : C: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
-                        console.info(`${Tag} : CM: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
+                        console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                     }
                     if (AudioRendererChangeInfoArray[i].rendererState == 1 && devDescriptor != null) {
                         resultFlag = true;
@@ -2228,7 +1906,7 @@ describe('audioRendererChange', function () {
         await sleep(100);
         console.info(`${Tag} : [GET_RENDERER_STATE_1_PROMISE] ######### RendererChange Off is called #########`);
 
-        await audioCap.release().then(async function () {
+        await audioCap.release().then(function () {
             console.info(`${Tag} : Renderer release : SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer release :ERROR :   ${err.message}`);
@@ -2270,7 +1948,7 @@ describe('audioRendererChange', function () {
 
         let audioCap;
 
-        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+        await audio.createAudioRenderer(AudioRendererOptions).then(function (data) {
             audioCap = data;
             console.info(`${Tag} : AudioRenderer Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
@@ -2281,28 +1959,15 @@ describe('audioRendererChange', function () {
 
         audioStreamManagerCB.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-                console.info(`${Tag} : ## RendererChange on is called for ${i}  ##`);
-                console.info(`${Tag} : StreamId for ${i}  is:  ${AudioRendererChangeInfoArray[i].streamId}`);
-                console.info(`${Tag} : ClientUid for ${i}  is:  ${AudioRendererChangeInfoArray[i].clientUid}`);
-                console.info(`${Tag} : Content for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.content}`);
-                console.info(`${Tag} : Stream for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.usage}`);
-                console.info(`${Tag} : Flag ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags}`);
-                console.info(`${Tag} : State for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererState}`);
+                console.info(`${Tag} : ## RendererChange on is called for ${i}  ## ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(`${Tag} : Id: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].id}`);
-                    console.info(`${Tag} : Type: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
-                    console.info(`${Tag} : Role: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
-                    console.info(`${Tag} : Name: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
-                    console.info(`${Tag} : Addr: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
-                    console.info(`${Tag} : SR: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
-                    console.info(`${Tag} : C: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
-                    console.info(`${Tag} : CM: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
+                    console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
             }
         });
 
         await sleep(100);
-        await audioCap.start().then(async function () {
+        await audioCap.start().then(function () {
             console.info(`${Tag} : Renderer started :SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer start :ERROR :   ${err.message}`);
@@ -2314,22 +1979,10 @@ describe('audioRendererChange', function () {
             console.info(`${Tag} : [GET_RENDERER_STATE_2_PROMISE] ######### Get Promise is called ##########`);
             if (AudioRendererChangeInfoArray != null) {
                 for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-                    console.info(`${Tag} : StreamId for ${i}  is:  ${AudioRendererChangeInfoArray[i].streamId}`);
-                    console.info(`${Tag} : ClientUid for ${i}  is:  ${AudioRendererChangeInfoArray[i].clientUid}`);
-                    console.info(`${Tag} : Con ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.content}`);
-                    console.info(`${Tag} : Stream  ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.usage}`);
-                    console.info(`${Tag} :  ${i} is:  ${AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags}`);
-                    console.info(`${Tag} : State for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererState}`);
+                    console.info(`${Tag} : AudioRendererChangeInfo for ${i}  is:  ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
                     let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                     for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
-                        console.info(`${Tag} : Id: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].id}`);
-                        console.info(`${Tag} : Type: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
-                        console.info(`${Tag} : Role: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
-                        console.info(`${Tag} : Name: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
-                        console.info(`${Tag} : Addr: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
-                        console.info(`${Tag} : SR: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
-                        console.info(`${Tag} : C: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
-                        console.info(`${Tag} : CM: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
+                        console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                     }
                     if (AudioRendererChangeInfoArray[i].rendererState == 2 && devDescriptor != null) {
                         resultFlag = true;
@@ -2346,7 +1999,7 @@ describe('audioRendererChange', function () {
         await sleep(100);
         console.info(`${Tag} : [GET_RENDERER_STATE_2_PROMISE] ######### RendererChange Off is called #########`);
 
-        await audioCap.release().then(async function () {
+        await audioCap.release().then(function () {
             console.info(`${Tag} : Renderer release : SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer release :ERROR :   ${err.message}`);
@@ -2389,14 +2042,14 @@ describe('audioRendererChange', function () {
 
         let audioCap;
 
-        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+        await audio.createAudioRenderer(AudioRendererOptions).then(function (data) {
             audioCap = data;
             console.info(`${Tag} : AudioRenderer Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : AudioRenderer Created : ERROR :   ${err.message}`);
         });
 
-        await audioCap.start().then(async function () {
+        await audioCap.start().then(function () {
             console.info(`${Tag} : Renderer started :SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer start :ERROR :   ${err.message}`);
@@ -2406,29 +2059,16 @@ describe('audioRendererChange', function () {
 
         audioStreamManager.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-                console.info(`${Tag} : ## RendererChange on is called for ${i}  ##`);
-                console.info(`${Tag} : StreamId for ${i}  is:  ${AudioRendererChangeInfoArray[i].streamId}`);
-                console.info(`${Tag} : ClientUid for ${i}  is:  ${AudioRendererChangeInfoArray[i].clientUid}`);
-                console.info(`${Tag} : Content for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.content}`);
-                console.info(`${Tag} : Stream for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.usage}`);
-                console.info(`${Tag} : Flag ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags}`);
-                console.info(`${Tag} : State for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererState}`);
+                console.info(`${Tag} : ## RendererChange on is called for ${i}  ## ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(`${Tag} : Id: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].id}`);
-                    console.info(`${Tag} : Type: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
-                    console.info(`${Tag} : Role: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
-                    console.info(`${Tag} : Name: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
-                    console.info(`${Tag} : Addr: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
-                    console.info(`${Tag} : SR: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
-                    console.info(`${Tag} : C: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
-                    console.info(`${Tag} : CM: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
+                    console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
             }
         });
 
         await sleep(100);
 
-        await audioCap.stop().then(async function () {
+        await audioCap.stop().then(function () {
             console.info(`${Tag} : Renderer stopped : SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer stop:ERROR :   ${err.message}`);
@@ -2440,22 +2080,10 @@ describe('audioRendererChange', function () {
             console.info(`${Tag} : [GET_RENDERER_STATE_3_PROMISE] ######### Get Promise is called ##########`);
             if (AudioRendererChangeInfoArray != null) {
                 for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-                    console.info(`${Tag} : StreamId for ${i}  is:  ${AudioRendererChangeInfoArray[i].streamId}`);
-                    console.info(`${Tag} : ClientUid for ${i}  is:  ${AudioRendererChangeInfoArray[i].clientUid}`);
-                    console.info(`${Tag} : Con ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.content}`);
-                    console.info(`${Tag} : Stream  ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.usage}`);
-                    console.info(`${Tag} :  ${i} is:  ${AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags}`);
-                    console.info(`${Tag} : State for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererState}`);
+                    console.info(`${Tag} : AudioRendererChangeInfo for ${i}  is:  ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
                     let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                     for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
-                        console.info(`${Tag} : Id: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].id}`);
-                        console.info(`${Tag} : Type: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
-                        console.info(`${Tag} : Role: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
-                        console.info(`${Tag} : Name: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
-                        console.info(`${Tag} : Addr: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
-                        console.info(`${Tag} : SR: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
-                        console.info(`${Tag} : C: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
-                        console.info(`${Tag} : CM: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
+                        console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                     }
                     if (AudioRendererChangeInfoArray[i].rendererState == 3 && devDescriptor != null) {
                         resultFlag = true;
@@ -2472,7 +2100,7 @@ describe('audioRendererChange', function () {
         await sleep(100);
         console.info(`${Tag} : [GET_RENDERER_STATE_3_PROMISE] ######### RendererChange Off is called #########`);
 
-        await audioCap.release().then(async function () {
+        await audioCap.release().then(function () {
             console.info(`${Tag} : Renderer release : SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer release :ERROR :   ${err.message}`);
@@ -2515,14 +2143,14 @@ describe('audioRendererChange', function () {
 
         let audioRen;
 
-        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+        await audio.createAudioRenderer(AudioRendererOptions).then(function (data) {
             audioRen = data;
             console.info(`${Tag} : AudioRender Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : AudioRender Created : ERROR :   ${err.message}`);
         });
 
-        await audioRen.start().then(async function () {
+        await audioRen.start().then(function () {
             console.info(`${Tag} : renderInstant started :SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : renderInstant start :ERROR :   ${err.message}`);
@@ -2532,29 +2160,16 @@ describe('audioRendererChange', function () {
 
         audioStreamManager.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-                console.info(`${Tag} : ## RendererChange on is called for ${i}  ##`);
-                console.info(`${Tag} : StreamId for ${i}  is:  ${AudioRendererChangeInfoArray[i].streamId}`);
-                console.info(`${Tag} : ClientUid for ${i}  is:  ${AudioRendererChangeInfoArray[i].clientUid}`);
-                console.info(`${Tag} : Content for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.content}`);
-                console.info(`${Tag} : Stream for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.usage}`);
-                console.info(`${Tag} : Flag ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags}`);
-                console.info(`${Tag} : State for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererState}`);
+                console.info(`${Tag} : ## RendererChange on is called for ${i}  ## ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(`${Tag} : Id: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].id}`);
-                    console.info(`${Tag} : Type: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
-                    console.info(`${Tag} : Role: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
-                    console.info(`${Tag} : Name: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
-                    console.info(`${Tag} : Addr: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
-                    console.info(`${Tag} : SR: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
-                    console.info(`${Tag} : C: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
-                    console.info(`${Tag} : CM: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
+                    console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
             }
         });
 
         await sleep(100);
 
-        await audioRen.pause().then(async function () {
+        await audioRen.pause().then(function () {
             console.info(`${Tag} : renderInstant Pause :SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : renderInstant Pause :ERROR :   ${err.message}`);
@@ -2566,22 +2181,10 @@ describe('audioRendererChange', function () {
             console.info(`${Tag} : [GET_RENDERER_STATE_5_PROMISE] ######### Get Promise is called ##########`);
             if (AudioRendererChangeInfoArray != null) {
                 for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-                    console.info(`${Tag} : StreamId for ${i}  is:  ${AudioRendererChangeInfoArray[i].streamId}`);
-                    console.info(`${Tag} : ClientUid for ${i}  is:  ${AudioRendererChangeInfoArray[i].clientUid}`);
-                    console.info(`${Tag} : Con ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.content}`);
-                    console.info(`${Tag} : Stream  ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.usage}`);
-                    console.info(`${Tag} :  ${i} is:  ${AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags}`);
-                    console.info(`${Tag} : State for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererState}`);
+                    console.info(`${Tag} : AudioRendererChangeInfo for ${i}  is:  ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
                     let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                     for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
-                        console.info(`${Tag} : Id: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].id}`);
-                        console.info(`${Tag} : Type: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
-                        console.info(`${Tag} : Role: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
-                        console.info(`${Tag} : Name: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
-                        console.info(`${Tag} : Addr: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
-                        console.info(`${Tag} : SR: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
-                        console.info(`${Tag} : C: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
-                        console.info(`${Tag} : CM: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
+                        console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                     }
                     if (AudioRendererChangeInfoArray[i].rendererState == 5 && devDescriptor != null) {
                         resultFlag = true;
@@ -2598,13 +2201,13 @@ describe('audioRendererChange', function () {
         await sleep(100);
         console.info(`${Tag} : [GET_RENDERER_STATE_5_PROMISE] ######### RendererChange Off is called #########`);
 
-        await audioRen.stop().then(async function () {
+        await audioRen.stop().then(function () {
             console.info(`${Tag} : Renderer stopped : SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer stop:ERROR :   ${err.message}`);
         });
 
-        await audioRen.release().then(async function () {
+        await audioRen.release().then(function () {
             console.info(`${Tag} : Renderer release : SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer release :ERROR :   ${err.message}`);
@@ -2645,28 +2248,15 @@ describe('audioRendererChange', function () {
         let resultFlag = false;
         audioStreamManager.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-                console.info(`${Tag} : ## RendererChange on is called for ${i}  ##`);
-                console.info(`${Tag} : StreamId for ${i}  is:  ${AudioRendererChangeInfoArray[i].streamId}`);
-                console.info(`${Tag} : ClientUid for ${i}  is:  ${AudioRendererChangeInfoArray[i].clientUid}`);
-                console.info(`${Tag} : Content for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.content}`);
-                console.info(`${Tag} : Stream for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.usage}`);
-                console.info(`${Tag} : Flag ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags}`);
-                console.info(`${Tag} : State for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererState}`);
+                console.info(`${Tag} : ## RendererChange on is called for ${i}  ## ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(`${Tag} : Id: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].id}`);
-                    console.info(`${Tag} : Type: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
-                    console.info(`${Tag} : Role: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
-                    console.info(`${Tag} : Name: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
-                    console.info(`${Tag} : Addr: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
-                    console.info(`${Tag} : SR: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
-                    console.info(`${Tag} : C: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
-                    console.info(`${Tag} : CM: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
+                    console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
             }
         });
         await sleep(100);
 
-        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+        await audio.createAudioRenderer(AudioRendererOptions).then(function (data) {
             audioCap = data;
             console.info(`${Tag} : AudioRenderer Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
@@ -2676,15 +2266,10 @@ describe('audioRendererChange', function () {
         await sleep(100);
 
         await audioStreamManager.getCurrentAudioRendererInfoArray().then(function (AudioRendererChangeInfoArray) {
-            console.info(`${Tag} : '[GET_RENDERER_DD_PROMISE] ######### Get Promise is called ##########`);
+            console.info(`${Tag} : [GET_RENDERER_DD_PROMISE] ######### Get Promise is called ##########`);
             if (AudioRendererChangeInfoArray != null) {
                 for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-                    console.info(`${Tag} : StreamId for ${i}  is:  ${AudioRendererChangeInfoArray[i].streamId}`);
-                    console.info(`${Tag} : ClientUid for ${i}  is:  ${AudioRendererChangeInfoArray[i].clientUid}`);
-                    console.info(`${Tag} : Con ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.content}`);
-                    console.info(`${Tag} : Stream  ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.usage}`);
-                    console.info(`${Tag} :  ${i} is:  ${AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags}`);
-                    console.info(`${Tag} : State for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererState}`);
+                    console.info(`${Tag} : AudioRendererChangeInfo for ${i}  is:  ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
                     for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
                         let Id = AudioRendererChangeInfoArray[i].deviceDescriptors[j].id;
                         let dType = AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType;
@@ -2692,14 +2277,7 @@ describe('audioRendererChange', function () {
                         let sRate = AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0];
                         let cCount = AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0];
                         let cMask = AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks;
-                        console.info(`${Tag} : Id: ${i}  ${Id}`);
-                        console.info(`${Tag} : Type: ${i} ${dType}`);
-                        console.info(`${Tag} : Role: ${i} ${dRole}`);
-                        console.info(`${Tag} : Name: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
-                        console.info(`${Tag} : Addr: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
-                        console.info(`${Tag} : SR: ${i} ${sRate}`);
-                        console.info(`${Tag} : CC: ${i} ${cCount}`);
-                        console.info(`${Tag} : CM: ${i} ${cMask}`);
+                        console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                         if (Id > 0 && dType == 2 && dRole == 2 && sRate != null && cCount != null && cMask != null) {
                             resultFlag = true;
                         }
@@ -2713,9 +2291,9 @@ describe('audioRendererChange', function () {
 
         audioStreamManager.off('audioRendererChange');
         await sleep(100);
-        console.info(`${Tag} : '[GET_RENDERER_DD_PROMISE] ######### RendererChange Off is called #########`);
+        console.info(`${Tag} : [GET_RENDERER_DD_PROMISE] ######### RendererChange Off is called #########`);
 
-        await audioCap.release().then(async function () {
+        await audioCap.release().then(function () {
             console.info(`${Tag} : Renderer release : SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer release :ERROR :   ${err.message}`);
@@ -2756,28 +2334,15 @@ describe('audioRendererChange', function () {
         let resultFlag = false;
         audioStreamManager.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-                console.info(`${Tag} : ## RendererChange on is called for ${i}  ##`);
-                console.info(`${Tag} : StreamId for ${i}  is:  ${AudioRendererChangeInfoArray[i].streamId}`);
-                console.info(`${Tag} : ClientUid for ${i}  is:  ${AudioRendererChangeInfoArray[i].clientUid}`);
-                console.info(`${Tag} : Content for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.content}`);
-                console.info(`${Tag} : Stream for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.usage}`);
-                console.info(`${Tag} : Flag ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags}`);
-                console.info(`${Tag} : State for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererState}`);
+                console.info(`${Tag} : ## RendererChange on is called for ${i}  ## ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(`${Tag} : Id: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].id}`);
-                    console.info(`${Tag} : Type: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
-                    console.info(`${Tag} : Role: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
-                    console.info(`${Tag} : Name: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
-                    console.info(`${Tag} : Addr: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
-                    console.info(`${Tag} : SR: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
-                    console.info(`${Tag} : C: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
-                    console.info(`${Tag} : CM: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
+                    console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
             }
         });
         await sleep(100);
 
-        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+        await audio.createAudioRenderer(AudioRendererOptions).then(function (data) {
             audioCap = data;
             console.info(`${Tag} : AudioRenderer Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
@@ -2796,22 +2361,10 @@ describe('audioRendererChange', function () {
             else {
                 if (AudioRendererChangeInfoArray != null) {
                     for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-                        console.info(`${Tag} : StreamId for ${i}  is:  ${AudioRendererChangeInfoArray[i].streamId}`);
-                        console.info(`${Tag} : ClientUid for ${i}  is:  ${AudioRendererChangeInfoArray[i].clientUid}`);
-                        console.info(`${Tag} : Con ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.content}`);
-                        console.info(`${Tag} : Stream  ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.usage}`);
-                        console.info(`${Tag} :  ${i} is:  ${AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags}`);
-                        console.info(`${Tag} : State for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererState}`);
+                        console.info(`${Tag} : AudioRendererChangeInfo for ${i}  is:  ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
                         let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                         for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
-                            console.info(`${Tag} : Id: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].id}`);
-                            console.info(`${Tag} : Type: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
-                            console.info(`${Tag} : Role: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
-                            console.info(`${Tag} : Name: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
-                            console.info(`${Tag} : Addr: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
-                            console.info(`${Tag} : SR: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
-                            console.info(`${Tag} : C: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
-                            console.info(`${Tag} : CM: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
+                            console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                         }
                         if (AudioRendererChangeInfoArray[i].rendererState == 1 && devDescriptor != null) {
                             resultFlag = true;
@@ -2828,7 +2381,7 @@ describe('audioRendererChange', function () {
         await sleep(100);
         console.info(`${Tag} : [GET_RENDERER_STATE_1_CALLBACK] ######### RendererChange Off is called #########`);
 
-        await audioCap.release().then(async function () {
+        await audioCap.release().then(function () {
             console.info(`${Tag} : Renderer release : SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer release :ERROR :   ${err.message}`);
@@ -2870,7 +2423,7 @@ describe('audioRendererChange', function () {
 
         let audioCap;
 
-        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+        await audio.createAudioRenderer(AudioRendererOptions).then(function (data) {
             audioCap = data;
             console.info(`${Tag} : AudioRenderer Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
@@ -2881,28 +2434,15 @@ describe('audioRendererChange', function () {
 
         audioStreamManagerCB.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-                console.info(`${Tag} : ## RendererChange on is called for ${i}  ##`);
-                console.info(`${Tag} : StreamId for ${i}  is:  ${AudioRendererChangeInfoArray[i].streamId}`);
-                console.info(`${Tag} : ClientUid for ${i}  is:  ${AudioRendererChangeInfoArray[i].clientUid}`);
-                console.info(`${Tag} : Content for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.content}`);
-                console.info(`${Tag} : Stream for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.usage}`);
-                console.info(`${Tag} : Flag ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags}`);
-                console.info(`${Tag} : State for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererState}`);
+                console.info(`${Tag} : ## RendererChange on is called for ${i}  ## ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(`${Tag} : Id: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].id}`);
-                    console.info(`${Tag} : Type: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
-                    console.info(`${Tag} : Role: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
-                    console.info(`${Tag} : Name: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
-                    console.info(`${Tag} : Addr: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
-                    console.info(`${Tag} : SR: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
-                    console.info(`${Tag} : C: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
-                    console.info(`${Tag} : CM: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
+                    console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
             }
         });
 
         await sleep(100);
-        await audioCap.start().then(async function () {
+        await audioCap.start().then(function () {
             console.info(`${Tag} : Renderer started :SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer start :ERROR :   ${err.message}`);
@@ -2920,22 +2460,10 @@ describe('audioRendererChange', function () {
             else {
                 if (AudioRendererChangeInfoArray != null) {
                     for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-                        console.info(`${Tag} : StreamId for ${i}  is:  ${AudioRendererChangeInfoArray[i].streamId}`);
-                        console.info(`${Tag} : ClientUid for ${i}  is:  ${AudioRendererChangeInfoArray[i].clientUid}`);
-                        console.info(`${Tag} : Con ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.content}`);
-                        console.info(`${Tag} : Stream  ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.usage}`);
-                        console.info(`${Tag} :  ${i} is:  ${AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags}`);
-                        console.info(`${Tag} : State for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererState}`);
+                        console.info(`${Tag} : AudioRendererChangeInfo for ${i}  is:  ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
                         let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                         for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
-                            console.info(`${Tag} : Id: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].id}`);
-                            console.info(`${Tag} : Type: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
-                            console.info(`${Tag} : Role: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
-                            console.info(`${Tag} : Name: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
-                            console.info(`${Tag} : Addr: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
-                            console.info(`${Tag} : SR: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
-                            console.info(`${Tag} : C: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
-                            console.info(`${Tag} : CM: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
+                            console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                         }
                         if (AudioRendererChangeInfoArray[i].rendererState == 2 && devDescriptor != null) {
                             resultFlag = true;
@@ -2952,7 +2480,7 @@ describe('audioRendererChange', function () {
         await sleep(100);
         console.info(`${Tag} : [GET_RENDERER_STATE_2_CALLBACK] ######### RendererChange Off is called #########`);
 
-        await audioCap.release().then(async function () {
+        await audioCap.release().then(function () {
             console.info(`${Tag} : Renderer release : SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer release :ERROR :   ${err.message}`);
@@ -2994,14 +2522,14 @@ describe('audioRendererChange', function () {
 
         let audioCap;
 
-        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+        await audio.createAudioRenderer(AudioRendererOptions).then(function (data) {
             audioCap = data;
             console.info(`${Tag} : AudioRenderer Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : AudioRenderer Created : ERROR :   ${err.message}`);
         });
 
-        await audioCap.start().then(async function () {
+        await audioCap.start().then(function () {
             console.info(`${Tag} : Renderer started :SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer start :ERROR :   ${err.message}`);
@@ -3011,29 +2539,16 @@ describe('audioRendererChange', function () {
 
         audioStreamManager.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-                console.info(`${Tag} : ## RendererChange on is called for ${i}  ##`);
-                console.info(`${Tag} : StreamId for ${i}  is:  ${AudioRendererChangeInfoArray[i].streamId}`);
-                console.info(`${Tag} : ClientUid for ${i}  is:  ${AudioRendererChangeInfoArray[i].clientUid}`);
-                console.info(`${Tag} : Content for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.content}`);
-                console.info(`${Tag} : Stream for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.usage}`);
-                console.info(`${Tag} : Flag ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags}`);
-                console.info(`${Tag} : State for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererState}`);
+                console.info(`${Tag} : ## RendererChange on is called for ${i}  ## ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(`${Tag} : Id: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].id}`);
-                    console.info(`${Tag} : Type: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
-                    console.info(`${Tag} : Role: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
-                    console.info(`${Tag} : Name: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
-                    console.info(`${Tag} : Addr: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
-                    console.info(`${Tag} : SR: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
-                    console.info(`${Tag} : C: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
-                    console.info(`${Tag} : CM: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
+                    console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
             }
         });
 
         await sleep(100);
 
-        await audioCap.stop().then(async function () {
+        await audioCap.stop().then(function () {
             console.info(`${Tag} : Renderer stopped : SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer stop:ERROR :   ${err.message}`);
@@ -3051,22 +2566,10 @@ describe('audioRendererChange', function () {
             else {
                 if (AudioRendererChangeInfoArray != null) {
                     for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-                        console.info(`${Tag} : StreamId for ${i}  is:  ${AudioRendererChangeInfoArray[i].streamId}`);
-                        console.info(`${Tag} : ClientUid for ${i}  is:  ${AudioRendererChangeInfoArray[i].clientUid}`);
-                        console.info(`${Tag} : Con ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.content}`);
-                        console.info(`${Tag} : Stream  ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.usage}`);
-                        console.info(`${Tag} :  ${i} is:  ${AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags}`);
-                        console.info(`${Tag} : State for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererState}`);
+                        console.info(`${Tag} : AudioRendererChangeInfo for ${i}  is:  ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
                         let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                         for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
-                            console.info(`${Tag} : Id: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].id}`);
-                            console.info(`${Tag} : Type: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
-                            console.info(`${Tag} : Role: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
-                            console.info(`${Tag} : Name: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
-                            console.info(`${Tag} : Addr: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
-                            console.info(`${Tag} : SR: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
-                            console.info(`${Tag} : C: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
-                            console.info(`${Tag} : CM: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
+                            console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                         }
                         if (AudioRendererChangeInfoArray[i].rendererState == 3 && devDescriptor != null) {
                             resultFlag = true;
@@ -3083,7 +2586,7 @@ describe('audioRendererChange', function () {
         await sleep(100);
         console.info(`${Tag} : [GET_RENDERER_STATE_3_CALLBACK] ######### RendererChange Off is called #########`);
 
-        await audioCap.release().then(async function () {
+        await audioCap.release().then(function () {
             console.info(`${Tag} : Renderer release : SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer release :ERROR :   ${err.message}`);
@@ -3125,14 +2628,14 @@ describe('audioRendererChange', function () {
 
         let audioRen;
 
-        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+        await audio.createAudioRenderer(AudioRendererOptions).then(function (data) {
             audioRen = data;
             console.info(`${Tag} : AudioRender Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : AudioRender Created : ERROR :   ${err.message}`);
         });
 
-        await audioRen.start().then(async function () {
+        await audioRen.start().then(function () {
             console.info(`${Tag} : renderInstant started :SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : renderInstant start :ERROR :   ${err.message}`);
@@ -3142,29 +2645,16 @@ describe('audioRendererChange', function () {
 
         audioStreamManager.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-                console.info(`${Tag} : ## RendererChange on is called for ${i}  ##`);
-                console.info(`${Tag} : StreamId for ${i}  is:  ${AudioRendererChangeInfoArray[i].streamId}`);
-                console.info(`${Tag} : ClientUid for ${i}  is:  ${AudioRendererChangeInfoArray[i].clientUid}`);
-                console.info(`${Tag} : Content for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.content}`);
-                console.info(`${Tag} : Stream for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.usage}`);
-                console.info(`${Tag} : Flag ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags}`);
-                console.info(`${Tag} : State for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererState}`);
+                console.info(`${Tag} : ## RendererChange on is called for ${i}  ## ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(`${Tag} : Id: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].id}`);
-                    console.info(`${Tag} : Type: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
-                    console.info(`${Tag} : Role: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
-                    console.info(`${Tag} : Name: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
-                    console.info(`${Tag} : Addr: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
-                    console.info(`${Tag} : SR: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
-                    console.info(`${Tag} : C: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
-                    console.info(`${Tag} : CM: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
+                    console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
             }
         });
 
         await sleep(100);
 
-        await audioRen.pause().then(async function () {
+        await audioRen.pause().then(function () {
             console.info(`${Tag} : renderInstant Pause :SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : renderInstant Pause :ERROR :   ${err.message}`);
@@ -3182,22 +2672,10 @@ describe('audioRendererChange', function () {
             else {
                 if (AudioRendererChangeInfoArray != null) {
                     for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-                        console.info(`${Tag} : StreamId for ${i}  is:  ${AudioRendererChangeInfoArray[i].streamId}`);
-                        console.info(`${Tag} : ClientUid for ${i}  is:  ${AudioRendererChangeInfoArray[i].clientUid}`);
-                        console.info(`${Tag} : Con ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.content}`);
-                        console.info(`${Tag} : Stream  ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.usage}`);
-                        console.info(`${Tag} :  ${i} is:  ${AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags}`);
-                        console.info(`${Tag} : State for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererState}`);
+                        console.info(`${Tag} : AudioRendererChangeInfo for ${i}  is:  ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
                         let devDescriptor = AudioRendererChangeInfoArray[i].deviceDescriptors;
                         for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
-                            console.info(`${Tag} : Id: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].id}`);
-                            console.info(`${Tag} : Type: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
-                            console.info(`${Tag} : Role: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
-                            console.info(`${Tag} : Name: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
-                            console.info(`${Tag} : Addr: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
-                            console.info(`${Tag} : SR: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
-                            console.info(`${Tag} : C: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
-                            console.info(`${Tag} : CM: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
+                            console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                         }
                         if (AudioRendererChangeInfoArray[i].rendererState == 5 && devDescriptor != null) {
                             resultFlag = true;
@@ -3214,13 +2692,13 @@ describe('audioRendererChange', function () {
         await sleep(100);
         console.info('AFRendLog: [GET_REN_STA_5_CB] ## RenCh Off is called ##');
 
-        await audioRen.stop().then(async function () {
+        await audioRen.stop().then(function () {
             console.info(`${Tag} : Renderer stopped : SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer stop:ERROR :   ${err.message}`);
         });
 
-        await audioRen.release().then(async function () {
+        await audioRen.release().then(function () {
             console.info(`${Tag} : Renderer release : SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer release :ERROR :   ${err.message}`);
@@ -3261,28 +2739,15 @@ describe('audioRendererChange', function () {
         let resultFlag = false;
         audioStreamManager.on('audioRendererChange', (AudioRendererChangeInfoArray) => {
             for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-                console.info(`${Tag} : ## RendererChange on is called for ${i}  ##`);
-                console.info(`${Tag} : StreamId for ${i}  is:  ${AudioRendererChangeInfoArray[i].streamId}`);
-                console.info(`${Tag} : ClientUid for ${i}  is:  ${AudioRendererChangeInfoArray[i].clientUid}`);
-                console.info(`${Tag} : Content for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.content}`);
-                console.info(`${Tag} : Stream for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.usage}`);
-                console.info(`${Tag} : Flag ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags}`);
-                console.info(`${Tag} : State for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererState}`);
+                console.info(`${Tag} : ## RendererChange on is called for ${i}  ## ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
                 for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
-                    console.info(`${Tag} : Id: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].id}`);
-                    console.info(`${Tag} : Type: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType}`);
-                    console.info(`${Tag} : Role: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceRole}`);
-                    console.info(`${Tag} : Name: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
-                    console.info(`${Tag} : Addr: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
-                    console.info(`${Tag} : SR: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0]}`);
-                    console.info(`${Tag} : C: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0]}`);
-                    console.info(`${Tag} : CM: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks}`);
+                    console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                 }
             }
         });
         await sleep(100);
 
-        await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+        await audio.createAudioRenderer(AudioRendererOptions).then(function (data) {
             audioCap = data;
             console.info(`${Tag} : AudioRenderer Created : Success : Stream Type: SUCCESS`);
         }).catch((err) => {
@@ -3292,7 +2757,7 @@ describe('audioRendererChange', function () {
         await sleep(100);
 
         audioStreamManager.getCurrentAudioRendererInfoArray(async (err, AudioRendererChangeInfoArray) => {
-            console.info(`${Tag} : '[GET_RENDERER_DD_CALLBACK] **** Get Callback Called ****`);
+            console.info(`${Tag} : [GET_RENDERER_DD_CALLBACK] **** Get Callback Called ****`);
             await sleep(100);
             if (err) {
                 console.log(`${Tag} : getCurrentAudioRendererInfoArray :ERROR:   ${err.message}`);
@@ -3301,12 +2766,7 @@ describe('audioRendererChange', function () {
             else {
                 if (AudioRendererChangeInfoArray != null) {
                     for (let i = 0; i < AudioRendererChangeInfoArray.length; i++) {
-                        console.info(`${Tag} : StreamId for ${i}  is:  ${AudioRendererChangeInfoArray[i].streamId}`);
-                        console.info(`${Tag} : ClientUid for ${i}  is:  ${AudioRendererChangeInfoArray[i].clientUid}`);
-                        console.info(`${Tag} : Con ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.content}`);
-                        console.info(`${Tag} : Stream  ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererInfo.usage}`);
-                        console.info(`${Tag} :  ${i} is:  ${AudioRendererChangeInfoArray[i].rendererInfo.rendererFlags}`);
-                        console.info(`${Tag} : State for ${i}  is:  ${AudioRendererChangeInfoArray[i].rendererState}`);
+                        console.info(`${Tag} : AudioRendererChangeInfo for ${i}  is:  ${JSON.stringify(AudioRendererChangeInfoArray[i])}`);
                         for (let j = 0; j < AudioRendererChangeInfoArray[i].deviceDescriptors.length; j++) {
                             let Id = AudioRendererChangeInfoArray[i].deviceDescriptors[j].id;
                             let dType = AudioRendererChangeInfoArray[i].deviceDescriptors[j].deviceType;
@@ -3314,14 +2774,7 @@ describe('audioRendererChange', function () {
                             let sRate = AudioRendererChangeInfoArray[i].deviceDescriptors[j].sampleRates[0];
                             let cCount = AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelCounts[0];
                             let cMask = AudioRendererChangeInfoArray[i].deviceDescriptors[j].channelMasks;
-                            console.info(`${Tag} : Id: ${i}  ${Id}`);
-                            console.info(`${Tag} : Type: ${i} ${dType}`);
-                            console.info(`${Tag} : Role: ${i} ${dRole}`);
-                            console.info(`${Tag} : Nam: ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].name}`);
-                            console.info(`${Tag} :  ${i}  ${AudioRendererChangeInfoArray[i].deviceDescriptors[j].address}`);
-                            console.info(`${Tag} : SR: ${i} ${sRate}`);
-                            console.info(`${Tag} : CC: ${i} ${cCount}`);
-                            console.info(`${Tag} : CM: ${i} ${cMask}`);
+                            console.info(`${Tag} : ${i}  ${JSON.stringify(AudioRendererChangeInfoArray[i].deviceDescriptors[j])}`);
                             if (Id > 0 && dType == 2 && dRole == 2 && sRate != null && cCount != null && cMask != null) {
                                 resultFlag = true;
                             }
@@ -3335,9 +2788,9 @@ describe('audioRendererChange', function () {
 
         audioStreamManager.off('audioRendererChange');
         await sleep(100);
-        console.info(`${Tag} : '[GET_RENDERER_DD_CALLBACK] ######### RendererChange Off is called #########`);
+        console.info(`${Tag} : [GET_RENDERER_DD_CALLBACK] ######### RendererChange Off is called #########`);
 
-        await audioCap.release().then(async function () {
+        await audioCap.release().then(function () {
             console.info(`${Tag} : Renderer release : SUCCESS`);
         }).catch((err) => {
             console.info(`${Tag} : Renderer release :ERROR :   ${err.message}`);
