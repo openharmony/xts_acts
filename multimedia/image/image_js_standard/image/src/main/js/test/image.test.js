@@ -1357,30 +1357,6 @@ export default function imageJsTest() {
         })
 
         /**
-         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_ERROR_SUFFIXFILE_0100
-         * @tc.name      : createImageSource(uri)-wrong suffix file 
-         * @tc.desc      : 1.call createImageSource(uri)
-         *                 2.Incoming wrong suffix file 
-         *                 3.imagesource null
-         * @tc.size      : MEDIUM 
-         * @tc.type      : Functional
-         * @tc.level     : Level 0
-         */
-        it('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_ERROR_SUFFIXFILE_0100', 0, async function (done) {
-            try {
-                await getFd('test.123');
-                let imageSourceApi = image.createImageSource(filePath);
-                expect(imageSourceApi == undefined).assertTrue();
-                console.info('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_ERROR_SUFFIXFILE_0100 success');
-                done();
-            } catch (error) {
-                expect(false).assertTrue();
-                console.info('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_ERROR_SUFFIXFILE_0100 err:' + error);
-                done();
-            }
-        })
-
-        /**
          * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_ERROR_URI_0100
          * @tc.name      : createImageSource(uri)-wrong uri
          * @tc.desc      : 1.call createImageSource(uri)
@@ -2244,6 +2220,12 @@ export default function imageJsTest() {
                     done();
                 } else {
                     imageSourceApi.createPixelMap((err, pixelmap) => {
+                        if(err){
+                            console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_JPG_0100 err: ' + err);
+                            expect(false).assertTrue();
+                            done();
+                            return
+                        }
                         globalpixelmap = pixelmap;
                         console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_JPG_0100 success ');
                         expect(pixelmap != undefined).assertTrue();
@@ -2785,6 +2767,45 @@ export default function imageJsTest() {
             } catch (error) {
                 console.info('SUB_GRAPHIC_IMAGE_CREATEPIXELMAP_CALLBACK_1400 error: ' + error);
                 expect(false).assertTrue();
+                done();
+            }
+        })
+
+        /**
+         * @tc.number    : SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_ERROR_SUFFIXFILE_0100
+         * @tc.name      : createImageSource(uri)-image with wrong suffix file 
+         * @tc.desc      : 1.call createImageSource(uri)
+         *                 2.Incoming wrong suffix file 
+         *                 3.imagesource null
+         * @tc.size      : MEDIUM 
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+         it('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_ERROR_SUFFIXFILE_0100', 0, async function (done) {
+            try {
+                await getFd('test.123');
+                let imageSourceApi = image.createImageSource(filePath);
+                if (imageSourceApi == undefined) {
+                    console.info('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_ERROR_SUFFIXFILE_0100 create image source failed');
+                    expect(false).assertTrue();
+                    done();
+                } else {
+                    imageSourceApi.createPixelMap((err, pixelmap) => {
+                        if (err){
+                            console.info('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_ERROR_SUFFIXFILE_0100 create pixelmap failed: ' + err);
+                            expect(false).assertTrue();
+                            done();
+                            return
+                        }
+                        globalpixelmap = pixelmap;
+                        console.info('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_ERROR_SUFFIXFILE_0100 success');
+                        expect(pixelmap != undefined).assertTrue();
+                        done();
+                    })
+                }
+            } catch (error) {
+                expect(false).assertTrue();
+                console.info('SUB_GRAPHIC_IMAGE_CREATEIMAGESOURCE_URI_ERROR_SUFFIXFILE_0100 err:' + error);
                 done();
             }
         })
