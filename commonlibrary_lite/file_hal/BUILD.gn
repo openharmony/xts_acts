@@ -24,8 +24,5 @@ hctest_suite("ActsUtilsFileTest") {
     "src",
     "//commonlibrary/utils_lite/include",
   ]
-
-  if (board_toolchain_type != "iccarm") {
-    cflags = [ "-Wno-error" ]
-  }
+  cflags = [ "-Wno-error" ]
 }

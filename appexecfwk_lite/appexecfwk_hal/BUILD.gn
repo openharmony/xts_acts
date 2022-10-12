@@ -21,8 +21,5 @@ hctest_suite("ActsBundleMgrTest") {
     "${appexecfwk_lite_path}/interfaces/kits/bundle_lite/slite",
     "${appexecfwk_lite_path}/interfaces/kits/bundle_lite",
   ]
-
-  if (board_toolchain_type != "iccarm") {
-    cflags = [ "-Wno-error" ]
-  }
+  cflags = [ "-Wno-error" ]
 }

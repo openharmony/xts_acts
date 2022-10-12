@@ -50,7 +50,5 @@ hctest_suite("ActsSamgrTest") {
       [ "//foundation/systemabilitymgr/samgr_lite/samgr/adapter:samgr_adapter" ]
   defines = [ "UNITY_INCLUDE_CONFIG_H" ]
 
-  if (board_toolchain_type != "iccarm") {
-    cflags = [ "-Wno-error" ]
-  }
+  cflags = [ "-Wno-error" ]
 }
