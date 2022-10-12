@@ -6,7 +6,6 @@
         "description": "$string:phone_entry_dsc",
         "mainElement": "MainAbility",
         "deviceTypes": [
-      "default",
             "phone"
         ],
         "deliveryWithInstall": true,
@@ -32,10 +31,6 @@
         }],
 
         "requestPermissions": [{
-            "name": "ohos.permission.READ_ACCESSIBILITY_CONFIG",
-            "reason": "need use ohos.permission.READ_ACCESSIBILITY_CONFIG"
-        },
-        {
             "name": "ohos.permission.WRITE_ACCESSIBILITY_CONFIG",
             "reason": "need use ohos.permission.WRITE_ACCESSIBILITY_CONFIG"
         }

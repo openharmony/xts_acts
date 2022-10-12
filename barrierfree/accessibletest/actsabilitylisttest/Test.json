@@ -23,6 +23,9 @@
         },        
         {
         "type": "ShellKit",
+        "run-command": [
+            "param set persist.ace.testmode.enabled 1"
+        ],
         "teardown-command":[
             "bm uninstall -n com.example.abilitylisttest",
             "bm uninstall -n com.example.accessibleaudibleability.hmservice",

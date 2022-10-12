@@ -18,6 +18,8 @@ group("barrierfree") {
   if (is_standard_system) {
     deps = [
       "accessibilityconfig:ActsAccessibilityConfigTest",
+      "accessibilityconfigreqreadpermission:ActsAccessibilityConfigReqReadPermissionTest",
+      "accessibilityconfigreqwritepermission:ActsAccessibilityConfigReqWritePermissionTest",
       "accessibilityelement:ActsAccessibilityElementTest",
       "accessibilityevent:ActsAccessibilityEventTest",
       "accessibilityextension:ActsAccessibilityExtensionTest",
