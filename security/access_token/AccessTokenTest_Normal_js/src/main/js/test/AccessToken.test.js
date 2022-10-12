@@ -177,9 +177,11 @@ describe('AccessTokenTest', function () {
      */
     it('Test_verifyAccessTokenSync_002', 0, function(){
         console.info("Test_verifyAccessTokenSync_002 start");
+        var atManager = abilityAccessCtrl.createAtManager();
         try {
             atManager.verifyAccessTokenSync(0, permissionNameUser);
         } catch (error) {
+            console.info("Test_verifyAccessTokenSync_002 tokenID" + JSON.stringify(error))
             expect(error.code).assertEqual(ERR_PARAM_INVALID);
         }
     })
@@ -191,9 +193,11 @@ describe('AccessTokenTest', function () {
      */
     it('Test_verifyAccessTokenSync_003', 0, function(){
         console.info("Test_verifyAccessTokenSync_003 start");
+        var atManager = abilityAccessCtrl.createAtManager();
         try {
             atManager.verifyAccessTokenSync(tokenID, "");
         } catch (error) {
+            console.info("Test_verifyAccessTokenSync_003 tokenID" + JSON.stringify(error))
             expect(error.code).assertEqual(ERR_PARAM_INVALID);
         }
     })
@@ -213,6 +217,7 @@ describe('AccessTokenTest', function () {
         try {
             atManager.verifyAccessTokenSync(tokenID, permissionName);
         } catch (error) {
+            console.info("Test_verifyAccessTokenSync_004 tokenID" + JSON.stringify(error))
             expect(error.code).assertEqual(ERR_PARAM_INVALID);
         }
     })
@@ -223,12 +228,14 @@ describe('AccessTokenTest', function () {
      * @tc.desc After the installation, user_grant permission is not granted by default(Promise).
      */
      it('Test_checkAccessToken_001', 0, async function(done){
-        console.info("Test_verifyAccessToken_001 start");
+        console.info("Test_checkAccessToken_001 start");
         var atManager = abilityAccessCtrl.createAtManager();
-        var result = await atManager.checkAccessToken(tokenID, permissionNameUser);
-        console.info("Test_checkAccessToken_001 tokenID" + tokenID + "-" + result)
-        expect(result).assertEqual(GrantStatus.PERMISSION_DENIED);
-
+        try {
+            atManager.checkAccessToken(tokenID, permissionNameUser);
+        } catch(error) {
+            console.info("Test_checkAccessToken_001 tokenID" + JSON.stringify(error))
+            expect(error.code).assertEqual(ERR_PARAM_INVALID);
+        }
         done();
     })
 
@@ -255,10 +262,11 @@ describe('AccessTokenTest', function () {
     it('Test_checkAccessToken_003', 0, async function(done){
         console.info("Test_checkAccessToken_003 start");
         var atManager = abilityAccessCtrl.createAtManager();
-        await atManager.checkAccessToken(0, permissionNameUser)
-        .catch((err) =>{
+        try {
+            atManager.checkAccessToken(0, permissionNameUser)
+        } catch(err) {
             expect(err.code).assertEqual(ERR_PARAM_INVALID);
-        })
+        }
 
         done();
     })
@@ -271,10 +279,11 @@ describe('AccessTokenTest', function () {
     it('Test_checkAccessToken_004', 0, async function(done){
         console.info("Test_checkAccessToken_004 start");
         var atManager = abilityAccessCtrl.createAtManager();
-        await atManager.checkAccessToken(tokenID, "")
-        .catch((err) =>{
+        try {
+            atManager.checkAccessToken(tokenID, "")
+        } catch(err) {
             expect(err.code).assertEqual(ERR_PARAM_INVALID);
-        })
+        }
 
         done();
     })
@@ -291,10 +300,11 @@ describe('AccessTokenTest', function () {
             + "testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest"
             + "testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest";
 
-        await atManager.checkAccessToken(tokenID, permissionName)
-        .catch((err) =>{
+        try {
+            atManager.checkAccessToken(tokenID, permissionName)
+        } catch (err) {
             expect(err.code).assertEqual(ERR_PARAM_INVALID);
-        })
+        }
 
         done();
     })
