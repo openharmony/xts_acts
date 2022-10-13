@@ -414,7 +414,7 @@ describe('PlayerLocalTestAudioAPI', function () {
     */
     it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_PAUSE_API_0300', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
-        let mySteps = new Array(PLAY_STATE, STOP_STATE, PAUSE_STATE, ERROR_STATE, END_STATE);
+        let mySteps = new Array(SRC_STATE, PLAY_STATE, STOP_STATE, PAUSE_STATE, ERROR_STATE, END_STATE);
         initAudioPlayer();
         setCallback(mySteps, done);
         audioPlayer.src = fdPath;
@@ -677,14 +677,14 @@ describe('PlayerLocalTestAudioAPI', function () {
     })
 
     /* *
-        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_RELEASE_API_0400
+        * @tc.number    : SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_RELEASE_API_0500
         * @tc.name      : 05.reset->release
         * @tc.desc      : Reliability Test
         * @tc.size      : MediumTest
         * @tc.type      : Reliability
         * @tc.level     : Level2
     */
-    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_RELEASE_API_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_MEDIA_AUDIOPLAYER_RELEASE_API_0500', 0, async function (done) {
         mediaTestBase.isFileOpen(fileDescriptor, done);
         let mySteps = new Array(SRC_STATE, PLAY_STATE, RESET_STATE, RELEASE_STATE, END_STATE);
         initAudioPlayer();
