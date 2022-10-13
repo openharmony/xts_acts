@@ -16,7 +16,7 @@
 #include "hks_cipher_test.h"
 
 #include "hctest.h"
-#include "iot_watchdog.h"
+
 #include "hks_api.h"
 #include "hks_param.h"
 #include "hks_test_cipher.h"
@@ -57,7 +57,6 @@ static void ExecHksInitialize(void const *argument)
 static BOOL HksCipherTestSetUp()
 {
     LiteTestPrint("setup\n");
-    IoTWatchDogDisable();
     osThreadId_t id;
     osThreadAttr_t attr;
     g_setPriority = osPriorityAboveNormal6;
@@ -81,7 +80,6 @@ static BOOL HksCipherTestSetUp()
 static BOOL HksCipherTestTearDown()
 {
     LiteTestPrint("tearDown\n");
-    IoTWatchDogEnable();
     return TRUE;
 }
 
