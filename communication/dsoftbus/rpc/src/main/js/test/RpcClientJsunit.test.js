@@ -70,8 +70,8 @@ export default function actsRpcClientJsTest() {
         const CODE_FILESDIR = 29;
         const CODE_WRITE_REMOTEOBJECTARRAY_1 = 30;
         const CODE_WRITE_REMOTEOBJECTARRAY_2 = 31;
-        const CODE_onRemoteMessageRequest_OR_ONREMOTEREQUEST = 32;
-        const CODE_onRemoteMessageRequest = 33;
+        const CODE_ONREMOTEMESSAGE_OR_ONREMOTE = 32;
+        const CODE_ONREMOTEMESSAGEREQUEST = 33;
 
         function connectAbility() {
             let want = {
@@ -5906,7 +5906,7 @@ export default function actsRpcClientJsTest() {
                 {
                     console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_15500: gIRemoteObject is undefined");
                 }
-                await gIRemoteObject.sendRequest(CODE_onRemoteMessageRequest, data, reply, option).then((result) => {
+                await gIRemoteObject.sendRequest(CODE_ONREMOTEMESSAGEREQUEST, data, reply, option).then((result) => {
                     console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_15500: sendRequestis is " + result.errCode);
                     var replyReadResult = result.reply.readString();
                     console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_15500: run readString is " + replyReadResult);
@@ -5942,7 +5942,7 @@ export default function actsRpcClientJsTest() {
                 {
                     console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_15600: gIRemoteObject is undefined");
                 }
-                await gIRemoteObject.sendMessageRequest(CODE_onRemoteMessageRequest, data, reply, option).then((result) => {
+                await gIRemoteObject.sendMessageRequest(CODE_ONREMOTEMESSAGEREQUEST, data, reply, option).then((result) => {
                     console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_15600: sendRequestis is " + result.errCode);
                     var replyReadResult = result.reply.readString();
                     console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_15600: run readString is " + replyReadResult);
@@ -5979,7 +5979,7 @@ export default function actsRpcClientJsTest() {
                 {
                     console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_15700: gIRemoteObject is undefined");
                 }
-                await gIRemoteObject.sendRequest(CODE_onRemoteMessageRequest_OR_ONREMOTEREQUEST, data, reply, option).then((result) => {
+                await gIRemoteObject.sendRequest(CODE_ONREMOTEMESSAGE_OR_ONREMOTE, data, reply, option).then((result) => {
                     console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_15700: sendRequestis is " + result.errCode);
                     var replyReadResult = result.reply.readString();
                     console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_15700: run readString is " + replyReadResult);
@@ -6014,7 +6014,7 @@ export default function actsRpcClientJsTest() {
                 {
                     console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_15800: gIRemoteObject is undefined");
                 }
-                await gIRemoteObject.sendMessageRequest(CODE_onRemoteMessageRequest_OR_ONREMOTEREQUEST, data, reply, option).then((result) => {
+                await gIRemoteObject.sendMessageRequest(CODE_ONREMOTEMESSAGE_OR_ONREMOTE, data, reply, option).then((result) => {
                     console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_15800: sendRequestis is " + result.errCode);
                     var replyReadResult = result.reply.readString();
                     console.info("SUB_Softbus_IPC_Compatibility_MessageParcel_15800: run readString is " + replyReadResult);
