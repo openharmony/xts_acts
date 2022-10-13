@@ -104,7 +104,6 @@ static uint32_t FileRead(const char *fileName, uint32_t offset, uint8_t *buf, ui
     }
 
     char filePath[PATH_MAX + 1] = {0};
-    (void)realpath(fileName, filePath);
     if (strstr(filePath, "../") != NULL) {
         HKS_TEST_LOG_E("invalid filePath, path %s", filePath);
         return 0;
@@ -148,7 +147,6 @@ static int32_t FileWrite(const char *fileName, uint32_t offset, const uint8_t *b
     if (memcpy_s(filePath, sizeof(filePath) - 1, fileName, strlen(fileName)) != EOK) {
         return HKS_ERROR_BAD_STATE;
     }
-    (void)realpath(fileName, filePath);
     if (strstr(filePath, "../") != NULL) {
         HKS_TEST_LOG_E("invalid filePath, path %s", filePath);
         return HKS_ERROR_INVALID_KEY_FILE;
@@ -182,22 +180,6 @@ static int32_t FileWrite(const char *fileName, uint32_t offset, const uint8_t *b
     return HKS_SUCCESS;
 }
 
-int32_t HksIsFileExist(const char *path, const char *fileName)
-{
-    if (fileName == NULL) {
-        return HKS_ERROR_NULL_POINTER;
-    }
-
-    char *fullFileName = NULL;
-    int32_t ret = GetFullFileName(path, fileName, &fullFileName);
-    if (ret != HKS_SUCCESS) {
-        return ret;
-    }
-
-    ret = IsFileExist(fullFileName);
-    HksTestFree(fullFileName);
-    return ret;
-}
 #else
 static uint32_t FileRead(const char *fileName, uint32_t offset, uint8_t *buf, uint32_t len)
 {
