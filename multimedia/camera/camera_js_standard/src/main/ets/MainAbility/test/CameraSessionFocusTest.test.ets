@@ -311,7 +311,7 @@ export default function cameraSessionFocusTest(surfaceId: any) {
             }
         })
 
-        await sleep(100);
+        await sleep(10);
 
         console.info('Exit beginCameraSessionConfig');
 
@@ -329,7 +329,7 @@ export default function cameraSessionFocusTest(surfaceId: any) {
             }
         })
 
-        await sleep(100);
+        await sleep(500);
 
         console.info('Exit commitCameraSessionConfig');
 
