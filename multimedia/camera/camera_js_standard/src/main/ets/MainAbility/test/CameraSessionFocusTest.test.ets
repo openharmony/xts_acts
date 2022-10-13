@@ -428,8 +428,8 @@ export default function cameraSessionFocusTest(surfaceId: any) {
             let cameraOutputCap = await mCameraManager.getSupportedOutputCapability(mCameraDevicesArray[i]);
             if (!isEmpty(cameraOutputCap.previewProfiles)) {
                 console.info(TAG + "cameraOutputCap.previewProfiles.length: " + cameraOutputCap.previewProfiles.length);      
-                for (let i = 0; i< cameraOutputCap.previewProfiles.length; i++) {
-                    mPreviewOutputArray[i] = await mCameraManager.createPreviewOutput(cameraOutputCap.previewProfiles[i], surfaceId);
+                for (let j = 0; j < cameraOutputCap.previewProfiles.length; j++) {
+                    mPreviewOutputArray[i] = await mCameraManager.createPreviewOutput(cameraOutputCap.previewProfiles[j], surfaceId);
                     if (!isEmpty(mPreviewOutputArray[i])) {
                         break;
                     }
@@ -443,8 +443,8 @@ export default function cameraSessionFocusTest(surfaceId: any) {
             if (!isEmpty(cameraOutputCap.photoProfiles)) {
                 console.info(TAG + "cameraOutputCap.photoProfiles.length: " + cameraOutputCap.photoProfiles.length);   
                 
-                for (let i = 0; i < cameraOutputCap.photoProfiles.length; i++) {
-                    mPhotoOutputArray[i] = await mCameraManager.createPhotoOutput(cameraOutputCap.photoProfiles[i], mPhoteSurface);
+                for (let j = 0; j < cameraOutputCap.photoProfiles.length; j++) {
+                    mPhotoOutputArray[i] = await mCameraManager.createPhotoOutput(cameraOutputCap.photoProfiles[j], mPhoteSurface);
                     if (!isEmpty(mPhotoOutputArray[i])) {
                         break;
                     }
@@ -459,8 +459,8 @@ export default function cameraSessionFocusTest(surfaceId: any) {
 
             if (!isEmpty(cameraOutputCap.videoProfiles)) {
                 console.info(TAG + "cameraOutputCap.videoProfiles.length: " + cameraOutputCap.videoProfiles.length); 
-                for (let i = 0; i < cameraOutputCap.videoProfiles.length; i++) {
-                    mVideoOutputArray[i] = await mCameraManager.createVideoOutput(cameraOutputCap.videoProfiles[i], mVideoSurface);
+                for (let j = 0; j < cameraOutputCap.videoProfiles.length; j++) {
+                    mVideoOutputArray[i] = await mCameraManager.createVideoOutput(cameraOutputCap.videoProfiles[j], mVideoSurface);
                     if (!isEmpty(mVideoOutputArray[i])) {
                         break;
                     }
