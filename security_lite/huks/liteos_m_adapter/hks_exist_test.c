@@ -116,7 +116,7 @@ static BOOL HksExistTestSetUp(void)
  */
 static BOOL HksExistTestTearDown(void)
 {
-    LiteTestPrint("tearDown\n");    
+    LiteTestPrint("tearDown\n");
     return TRUE;
 }
 

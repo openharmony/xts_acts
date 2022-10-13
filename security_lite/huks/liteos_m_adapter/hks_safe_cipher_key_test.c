@@ -57,7 +57,7 @@ static void ExecHksInitialize(void const *argument)
  */
 static BOOL HksSafeCipherKeyTestSetUp()
 {
-    LiteTestPrint("setup\n");  
+    LiteTestPrint("setup\n");
     osThreadId_t id;
     osThreadAttr_t attr;
     g_setPriority = osPriorityAboveNormal6;
