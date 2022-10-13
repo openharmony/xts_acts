@@ -188,7 +188,6 @@ static uint32_t FileRead(const char *fileName, uint32_t offset, uint8_t *buf, ui
         return HKS_ERROR_INVALID_ARGUMENT;
     }
 
-
     unsigned int fileSize;
     int32_t ret = UtilsFileStat(fileName, &fileSize);
     if (ret < 0) {
