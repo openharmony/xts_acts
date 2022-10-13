@@ -19,7 +19,7 @@ import events_emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
-export default
+
 struct ImageExample {
   build() {
     Column() {

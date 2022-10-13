@@ -20,7 +20,6 @@ const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-export default
 struct AlphabetIndexerOnSelect {
   private value: string[] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N']
   private content: string = "AlphabetIndexer Page"

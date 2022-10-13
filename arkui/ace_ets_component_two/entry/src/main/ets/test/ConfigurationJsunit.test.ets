@@ -52,6 +52,7 @@ export default function transFormJsunit() {
           console.info("configurationTest_0100 get configurationEvent result is: " + JSON.stringify(backData));
           expect(backData.data.COUNTRY).assertEqual('');
           expect(backData.data.DIR).assertEqual('ltr');
+          done();
         }
         var configurationEvent = {
           eventId: 78,
@@ -63,7 +64,6 @@ export default function transFormJsunit() {
       }
       console.info("testAppear01 click result is: " + JSON.stringify(sendEventByKey('button', 10, "")));
       console.info('[configurationTest01] END');
-      done();
     });
   })
 }

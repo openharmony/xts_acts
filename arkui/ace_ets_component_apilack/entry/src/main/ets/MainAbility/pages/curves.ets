@@ -20,7 +20,7 @@ const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-export default struct CurvesSteps {
+struct CurvesSteps {
   @State curveApi:string = "success"
   @State curve1:ICurve = Curves.springMotion(0.40, 0.99, 0)
   @State curve2:ICurve = Curves.responsiveSpringMotion(0.40, 0.99, 0);

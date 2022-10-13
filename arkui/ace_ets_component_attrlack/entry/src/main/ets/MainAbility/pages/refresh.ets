@@ -21,7 +21,6 @@ const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-export default
 struct RefreshDrag {
   dragRefresh() {
     var rect = Utils.getComponentRect("Refresh")

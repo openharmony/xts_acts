@@ -53,6 +53,7 @@ export default function aboutToDisappearJsunit() {
       let callback = (indexEvent) => {
         console.info("bindMenuTest_0100 get state result is: " + JSON.stringify(indexEvent));
         expect(indexEvent.data.ACTION).assertEqual(true);
+        done();
       }
       let indexEvent = {
         eventId: 64,
@@ -66,7 +67,6 @@ export default function aboutToDisappearJsunit() {
       console.info("bindMenuTest_0100 button click result is: " + JSON.stringify(sendEventByKey('button',10,"")));
       await Utils.sleep(1000);
       console.info('bindMenuTest_0100 END');
-      done();
     });
   })
 }

@@ -18,7 +18,6 @@ const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-export default
 struct TextPickerDefaultPickerItemHeight {
   private select: number = 1
   private fruits: string[] = ['1.apple', '2.orange','3.peach', '4.grape']

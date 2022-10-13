@@ -18,7 +18,6 @@ const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-export default
 struct CircleNe {
   @State w: string = "100px";
   @State h: string = "100px";

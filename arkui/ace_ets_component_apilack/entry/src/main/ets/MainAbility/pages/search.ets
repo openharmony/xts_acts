@@ -19,7 +19,7 @@ const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-export default struct SearchOnCut {
+struct SearchOnCut {
   controller: SearchController = new SearchController()
 
   aboutToAppear() {

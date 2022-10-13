@@ -18,7 +18,6 @@ const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-export default
 struct EllipseNe {
   @State w: string = "300.00px";
   @State h: string = "300.00px";

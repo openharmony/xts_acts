@@ -19,7 +19,7 @@ const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-export default struct FeatureAbilityStartAbility {
+struct FeatureAbilityStartAbility {
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear FeatureAbilityStartAbility start`)
   }
