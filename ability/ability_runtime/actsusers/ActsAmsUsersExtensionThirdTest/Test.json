@@ -3,7 +3,7 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "300000",
-        "bundle-name": "com.acts.actsinterfacemultiuserstest",
+        "bundle-name": "com.acts.actsinterfacemultiusersextensionthirdtest",
         "module-name":"phone",
         "shell-timeout": "300000",
         "testcase-timeout": "30000"
@@ -22,14 +22,10 @@
         },
         {
             "test-file-name": [
-                "ActsAmsUsersSystemTest.hap",
-                "ActsAmsUsersKillProcessAppA.hap",
-                "ActsAmsUsersKillProcessAppB.hap",
-                "ActsAmsUsersKillProcessAppC.hap",
-                "ActsAmsUsersApi7AppA.hap"
+                "ActsAmsUsersExtensionThirdTest.hap"
             ],
             "type": "AppInstallKit",
-            "cleanup-apps": false
+            "cleanup-apps": true
         }
     ]
 }
