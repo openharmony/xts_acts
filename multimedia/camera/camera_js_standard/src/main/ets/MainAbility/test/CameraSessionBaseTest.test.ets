@@ -397,39 +397,40 @@ export default function cameraSessionTest(surfaceId: any) {
                     console.info(TAG + "createPreviewOutput FAILED");
                 }
             }
+        }
 
-            if (!isEmpty(cameraOutputCap.photoProfiles)) {
-                console.info(TAG + "cameraOutputCap.photoProfiles.length: " + cameraOutputCap.photoProfiles.length);   
-                
-                for (let j = 0; j < cameraOutputCap.photoProfiles.length; j++) {
-                    mPhotoOutputArray[i] = await mCameraManager.createPhotoOutput(cameraOutputCap.photoProfiles[j], mPhoteSurface);
-                    if (!isEmpty(mPhotoOutputArray[i])) {
-                        break;
-                    }
+        let cameraOutputCap = await mCameraManager.getSupportedOutputCapability(mCameraDevicesArray[0]);
+        if (!isEmpty(cameraOutputCap.photoProfiles)) {
+            console.info(TAG + "cameraOutputCap.photoProfiles.length: " + cameraOutputCap.photoProfiles.length);   
+            
+            for (let j = 0; j < cameraOutputCap.photoProfiles.length; j++) {
+                mPhotoOutputArray[0] = await mCameraManager.createPhotoOutput(cameraOutputCap.photoProfiles[j], mPhoteSurface);
+                if (!isEmpty(mPhotoOutputArray[0])) {
+                    break;
                 }
-
-                if (isEmpty(mPhotoOutputArray[i])) {
-                    console.info(TAG + "createPhotoOutput FAILED");
-                }
-
-                console.info(TAG + "createPhotoOutput: " + mPhotoOutputArray[i]);
             }
 
-            if (!isEmpty(cameraOutputCap.videoProfiles)) {
-                console.info(TAG + "cameraOutputCap.videoProfiles.length: " + cameraOutputCap.videoProfiles.length); 
-                for (let j = 0; j < cameraOutputCap.videoProfiles.length; j++) {
-                    mVideoOutputArray[i] = await mCameraManager.createVideoOutput(cameraOutputCap.videoProfiles[j], mVideoSurface);
-                    if (!isEmpty(mVideoOutputArray[i])) {
-                        break;
-                    }
-                }
-
-                if (isEmpty(mVideoOutputArray[i])) {
-                    console.info(TAG + "createVideoOutput FAILED");
-                }
-
-                console.info(TAG + "createVideoOutput: " + mPhotoOutputArray[i]);  
+            if (isEmpty(mPhotoOutputArray[0])) {
+                console.info(TAG + "createPhotoOutput FAILED");
             }
+
+            console.info(TAG + "createPhotoOutput: " + mPhotoOutputArray[0]);
+        }
+
+        if (!isEmpty(cameraOutputCap.videoProfiles)) {
+            console.info(TAG + "cameraOutputCap.videoProfiles.length: " + cameraOutputCap.videoProfiles.length); 
+            for (let j = 0; j < cameraOutputCap.videoProfiles.length; j++) {
+                mVideoOutputArray[0] = await mCameraManager.createVideoOutput(cameraOutputCap.videoProfiles[j], mVideoSurface);
+                if (!isEmpty(mVideoOutputArray[0])) {
+                    break;
+                }
+            }
+
+            if (isEmpty(mVideoOutputArray[0])) {
+                console.info(TAG + "createVideoOutput FAILED");
+            }
+
+            console.info(TAG + "createVideoOutput: " + mPhotoOutputArray[0]);  
         }
 
         console.info('Exit createOutputs');
@@ -443,16 +444,16 @@ export default function cameraSessionTest(surfaceId: any) {
                 await mPreviewOutputArray[i].close();
                 await mPreviewOutputArray[i].release();
             }
-    
-            if (!isEmpty(mPhotoOutputArray[i])) {
-                await mPhotoOutputArray[i].close();
-                await mPhotoOutputArray[i].release();
-            }
-    
-            if (!isEmpty(mVideoOutputArray[i])) {
-                await mVideoOutputArray[i].close();
-                await mVideoOutputArray[i].release();
-            }
+        }
+
+        if (!isEmpty(mPhotoOutputArray[0])) {
+            await mPhotoOutputArray[0].close();
+            await mPhotoOutputArray[0].release();
+        }
+
+        if (!isEmpty(mVideoOutputArray[0])) {
+            await mVideoOutputArray[0].close();
+            await mVideoOutputArray[0].release();
         }
         
         return true;

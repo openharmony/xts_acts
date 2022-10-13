@@ -393,6 +393,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
                 }
             }
 
+            /*
             if (!isEmpty(cameraOutputCap.photoProfiles)) {
                 console.info(TAG + "cameraOutputCap.photoProfiles.length: " + cameraOutputCap.photoProfiles.length);   
                 
@@ -425,6 +426,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
 
                 console.info(TAG + "createVideoOutput: " + mPhotoOutputArray[i]);  
             }
+            */
         }
 
         console.info('Exit createOutputs');
@@ -439,6 +441,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
                 await mPreviewOutputArray[i].release();
             }
     
+            /*
             if (!isEmpty(mPhotoOutputArray[i])) {
                 await mPhotoOutputArray[i].close();
                 await mPhotoOutputArray[i].release();
@@ -448,6 +451,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
                 await mVideoOutputArray[i].close();
                 await mVideoOutputArray[i].release();
             }
+            */
         }
         
         return true;
@@ -466,6 +470,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
             await mCameraSession.addOutput(mPreviewOutputArray[idx]);
         }
         
+        /*
         if (!isEmpty(mPhotoOutputArray[idx])) {
             console.info(TAG + "Start to addOutput mPhotoOutput");
             await mCameraSession.addOutput(mPhotoOutputArray[idx]);
@@ -475,6 +480,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
             console.info(TAG + "Start to addOutput mVideoOutput");
             await mCameraSession.addOutput(mVideoOutputArray[idx]);
         }
+        */
 
         await commitCameraSessionConfig();
         await beginCameraSessionConfig();
@@ -521,6 +527,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
             await mCameraSession.removeOutput(mPreviewOutputArray[idx]);
         }
 
+        /*
         if (!isEmpty(mPhotoOutputArray[idx])) {
             console.info(TAG + "Start to removeOutput mPhotoOutput");
             await mCameraSession.removeOutput(mPhotoOutputArray[idx]);
@@ -530,6 +537,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
             console.info(TAG + "Start to removeOutput mVideoOutput");
             await mCameraSession.removeOutput(mVideoOutputArray[idx]);
         }
+        */
 
         console.info(TAG + "Exit stopCameraSession");
 
