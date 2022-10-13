@@ -15,7 +15,7 @@
 
 #include "hks_generate_random_test.h"
 #include "hctest.h"
-#include "iot_watchdog.h"
+
 #include "hks_api.h"
 #include "hks_param.h"
 #include "hks_test_api_performance.h"
@@ -54,7 +54,6 @@ static void ExecHksInitialize(void const *argument)
 static BOOL HksGenerateRandomTestSetUp()
 {
     LiteTestPrint("setup\n");
-    IoTWatchDogDisable();
     osThreadId_t id;
     osThreadAttr_t attr;
     g_setPriority = osPriorityAboveNormal6;
@@ -78,7 +77,6 @@ static BOOL HksGenerateRandomTestSetUp()
 static BOOL HksGenerateRandomTestTearDown()
 {
     LiteTestPrint("tearDown\n");
-    IoTWatchDogEnable();
     return TRUE;
 }
 
