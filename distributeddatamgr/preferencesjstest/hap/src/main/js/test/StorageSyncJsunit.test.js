@@ -36,6 +36,11 @@ describe('storageSyncTest', function () {
         storage.deleteStorageSync(PATH);
     })
 
+    /**
+     * @tc.name Clear test
+     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Clear_0010
+     * @tc.desc Clear test
+     */
     it('testClear001', 0, function () {
         mPref.putSync(KEY_TEST_STRING_ELEMENT, "test");
         mPref.putSync(KEY_TEST_INT_ELEMENT, 3);
@@ -290,7 +295,7 @@ describe('storageSyncTest', function () {
 
     /**
      * @tc.name get defaultValue callback interface test
-     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Sync_0170
+     * @tc.number SUB_DDM_AppDataFWK_JSPreferences_Sync_0210
      * @tc.desc get defaultValue callback interface test
      */
      it('testGetDefValue001', 0, async function (done) {
