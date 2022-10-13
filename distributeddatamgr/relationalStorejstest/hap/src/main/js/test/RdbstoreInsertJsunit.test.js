@@ -663,7 +663,7 @@ describe('rdbstoreInsertTest', function () {
             "blobType": u8,
         }
         const valueBuckets = [valueBucket1, valueBucket2, valueBucket3]
-        await rdbStore.executeSql(CREATE_TABLE_NAME + "callback1" + CREATE_TABLE).then(() => {
+        await rdbStore.executeSql(CREATE_TABLE_NAME + "callback1" + CREATE_TABLE).then(async() => {
             console.info(TAG + "Batch insert data start")
             await rdbStore.batchInsert("testcallback1", valueBuckets, async (err, data) => {
                 if(err != null){
