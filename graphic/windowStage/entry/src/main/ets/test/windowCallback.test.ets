@@ -47,7 +47,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       'TYPE_VOLUME_OVERLAY': 6,
       'TYPE_NAVIGATION_BAR': 7,
       'TYPE_FLOAT': 8,
-      'TYPE_FLOAT_CAMERA':9
+      'TYPE_FLOAT_CAMERA': 9
     }
     var windowLayoutModeArr = [];
     var windowLayoutModeDic = {
@@ -556,12 +556,12 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
               let contentColorIndex = cloneColorArr.SCC.indexOf(tempData.contentColor);
               if (backgroundIndex >= 0) {
                 cloneColorArr.SBC.splice(backgroundIndex, 1);
-              }else{
+              } else {
                 console.log(msgStr + 'SBC tempData.backgroundColor:' + JSON.stringify(tempData.backgroundColor));
               }
               if (contentColorIndex >= 0) {
                 cloneColorArr.SCC.splice(contentColorIndex, 1);
-              }else{
+              } else {
                 console.log(msgStr + 'SCC tempData.contentColor:' + JSON.stringify(tempData.contentColor));
               }
               console.log(msgStr + 'compareCount: ' + compareCount + ' ,length: ' + JSON.stringify(cloneColorArr.SCC.length) + '   ,cloneColorArr.SBC:' + JSON.stringify(cloneColorArr.SBC));
@@ -1169,14 +1169,17 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       let caseName = 'loadContentTest10';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      windowStage.loadContent(null, (err, data) => {
-        if (err && err.code) {
-          expectedError(err, caseName, 'windowStage.loadContent', done, 1003);
+      try {
+        windowStage.loadContent(null, (err, data) => {
           console.log(msgStr + 'windowStage.loadContent(pages/index/index.ets)' + JSON.stringify(err));
-        }
-        done();
-      });
+          expect(false).assertTrue();
+        });
+      } catch (err) {
+        console.log(msgStr + 'windowStage.loadContent(pages/index/index.ets) catch err' + JSON.stringify(err));
+        expect(err.code == 401).assertTrue();
+      }
       console.log(msgStr + 'end');
+      done();
     })
     /**
     * @tc.number     SUB_WINDOW_LOADCONTENT_JSAPI_011
@@ -1207,13 +1210,17 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       let caseName = 'loadContentTest12';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      windowStage.loadContent(null, abilityStorage, (err, data) => {
-        if (err && err.code) {
-          expectedError(err, caseName, 'windowStage.loadContent', done, 1003);
+      try {
+        windowStage.loadContent(null, abilityStorage, (err, data) => {
           console.log(msgStr + 'windowStage.loadContent(pages/index/index.ets)' + JSON.stringify(err));
-        }
-        done();
-      });
+          expect(false).assertTrue();
+
+        });
+      } catch (err) {
+        console.log(msgStr + 'windowStage.loadContent(pages/index/index.ets) catch err ' + JSON.stringify(err));
+        expect(err.code === 401).assertTrue();
+      }
+      done();
     })
     /**
     * @tc.number     SUB_WINDOW_CREATESUBWINDOW_JSAPI_003
@@ -1244,16 +1251,16 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       let caseName = 'createSubWindowTest4';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      windowStage.createSubWindow(null, (err, data) => {
-        if (err && err.code) {
-          expectedError(err, caseName, 'windowStage.createSubWindow', done, 1003);
+      try {
+        windowStage.createSubWindow(null, (err, data) => {
           console.log(msgStr + 'windowStage.createSubWindow(null) err=' + JSON.stringify(err));
-        } else {
           expect(false).assertTrue();
-          console.log(msgStr + 'windowStage.createSubWindow end data=' + JSON.stringify(data));
-        }
-        done();
-      });
+        });
+      } catch (err) {
+        expect(err.code === 401).assertTrue();
+        console.log(msgStr + 'windowStage.createSubWindow(null) catch err=' + JSON.stringify(err));
+      }
+      done();
     })
     /**
     * @tc.number     SUB_WINDOW_GETSUBWINDOW_JSAPI_002
@@ -1434,7 +1441,7 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
 
       let currentDeviceDefaultDpi;
       let currentDeviceDefault = null;
-      display.getDefaultDisplay(async(err, data) => {
+      display.getDefaultDisplay(async (err, data) => {
         if (err.code) {
           console.error('Failed to obtain the default display object. Code:  ' + JSON.stringify(err));
           return;
@@ -1442,16 +1449,16 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
         console.info('Succeeded in obtaining the default display object. Data:' + JSON.stringify(data));
         currentDeviceDefault = data;
         currentDeviceDefaultDpi = parseInt(currentDeviceDefault.densityDPI)
-        let dpiItem = [-80, 80, 1000, 160, 0, 320, 188.88, 0, 640, 300,currentDeviceDefaultDpi];
+        let dpiItem = [-80, 80, 1000, 160, 0, 320, 188.88, 0, 640, 300, currentDeviceDefaultDpi];
         for (let i = 0;i < dpiItem.length; i++) {
           await sleep(1000);
-          screens[0].setDensityDpi(dpiItem[i],(errDpi,dataDpi)=>{
+          screens[0].setDensityDpi(dpiItem[i], (errDpi, dataDpi) => {
             if (errDpi.code) {
-              console.error('Failed to set DensityDpi. Cause: ' + JSON.stringify(err)+ dpiItem[i]);
+              console.error('Failed to set DensityDpi. Cause: ' + JSON.stringify(err) + dpiItem[i]);
               return;
             }
             console.log(msgStr + 'screen.setDensityDpi success set DPI ' + dpiItem[i]);
-            display.getDefaultDisplay((error,result)=>{
+            display.getDefaultDisplay((error, result) => {
               if (error.code) {
                 console.error(msgStr + 'screen.setDensityDpi display.getDefaultDisplay failed');
                 return;
@@ -1482,15 +1489,15 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       });
       console.log(msgStr + 'windowStage.getMainWindow' + JSON.stringify(mainWin));
       expect(!!mainWin).assertTrue();
-      let orientationItem = ['UNSPECIFIED','LOCKED','PORTRAIT_UNSPECIFIED','PORTRAIT','LANDSCAPE','PORTRAIT_INVERTED','LANDSCAPE_INVERTED','AUTO_ROTATION','AUTO_ROTATION_PORTRAIT','AUTO_ROTATION_LANDSCAPE','AUTO_ROTATION_RESTRICTED','AUTO_ROTATION_PORTRAIT_RESTRICTED','AUTO_ROTATION_LANDSCAPE_RESTRICTED'];
+      let orientationItem = ['UNSPECIFIED', 'PORTRAIT', 'LANDSCAPE', 'PORTRAIT_INVERTED', 'LANDSCAPE_INVERTED', 'AUTO_ROTATION', 'AUTO_ROTATION_PORTRAIT', 'AUTO_ROTATION_LANDSCAPE', 'AUTO_ROTATION_RESTRICTED', 'AUTO_ROTATION_PORTRAIT_RESTRICTED', 'AUTO_ROTATION_LANDSCAPE_RESTRICTED', 'LOCKED'];
       for (let i = 0;i < orientationItem.length; i++) {
         await sleep(1000);
-        let orientation=ohosWindow.Orientation[orientationItem[i]]
-        await mainWin.setPreferredOrientation(orientation,(err,data) => {
-          if(err.code){
+        let orientation = ohosWindow.Orientation[orientationItem[i]]
+        await mainWin.setPreferredOrientation(orientation, (err, data) => {
+          if (err.code) {
             console.log(msgStr + 'window.setPreferredOrientation failed set error' + orientation);
           }
-          console.log(msgStr + 'success set window.setPreferredOrientation ' + orientation+JSON.stringify(data));
+          console.log(msgStr + 'success set window.setPreferredOrientation ' + orientation + JSON.stringify(data));
         })
       }
       console.log(msgStr + 'done ');
@@ -1510,19 +1517,19 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       });
       console.log(msgStr + 'windowStage.getMainWindow' + JSON.stringify(mainWin));
       expect(!!mainWin).assertTrue();
-      await mainWin.setForbidSplitMove(true,(err,data) => {
-        if(err.code){
+      await mainWin.setForbidSplitMove(true, (err, data) => {
+        if (err.code) {
           console.log(msgStr + 'failed set window.setForbidSplitMove drag is prohibited');
           return;
         }
-        console.log(msgStr + 'success set window.setForbidSplitMove drag is prohibited'+JSON.stringify(data));
+        console.log(msgStr + 'success set window.setForbidSplitMove drag is prohibited' + JSON.stringify(data));
       })
-      await mainWin.setForbidSplitMove(false,(err,data) => {
-        if(err.code){
+      await mainWin.setForbidSplitMove(false, (err, data) => {
+        if (err.code) {
           console.log(msgStr + 'failed set window.setForbidSplitMove you can drag it now');
           return;
         }
-        console.log(msgStr + 'success set window.setForbidSplitMove you can drag it now'+JSON.stringify(data));
+        console.log(msgStr + 'success set window.setForbidSplitMove you can drag it now' + JSON.stringify(data));
       })
       console.log(msgStr + 'done ');
       done();
@@ -1646,8 +1653,8 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
       dpClass.getCutoutInfo((err, data) => {
         if (err && err.code) {
           unexpectedError(err, caseName, 'displayClass.getCutoutInfo', done);
-        }else{
-          console.info(msgStr+'Succeeded in getting cutoutInfo. Data: ' + JSON.stringify(data));
+        } else {
+          console.info(msgStr + 'Succeeded in getting cutoutInfo. Data: ' + JSON.stringify(data));
           done();
         }
       })
@@ -1667,13 +1674,13 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
         if (err && err.code) {
           unexpectedError(err, caseName, 'ohosWindow.create ' + baseType, done);
         } else {
-          let tempWnd=data;
+          let tempWnd = data;
           console.log(msgStr + 'ohosWindow.create ' + baseType + ', tempWnd: ' + JSON.stringify(tempWnd));
           expect(!!tempWnd).assertTrue();
           tempWnd.showWithAnimation((error, animationData) => {
             if (error && error.code) {
               unexpectedError(error, caseName, 'Failed to show the window with animation', done);
-            }else {
+            } else {
               console.info('Succeeded in showing the window with animation. Data: ' + JSON.stringify(animationData));
               done();
             }
@@ -1700,11 +1707,11 @@ export default function windowCallbackTest(context, windowStage, abilityStorage)
         ohosWindow.find(wndId, (findErr, findWnd) => {
           if (findErr && findErr.code) {
             unexpectedError(findErr, caseName, 'Failed to hide the window with animation', done);
-          }else {
+          } else {
             findWnd.hideWithAnimation((err, data) => {
               if (err && err.code) {
                 unexpectedError(err, caseName, 'Failed to hide the window with animation', done);
-              }else {
+              } else {
                 console.info('Succeeded in hiding the window with animation. Data: ' + JSON.stringify(data));
                 done();
               }
