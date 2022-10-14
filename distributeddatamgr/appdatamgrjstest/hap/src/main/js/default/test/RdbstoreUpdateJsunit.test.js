@@ -37,7 +37,7 @@ describe('rdbStoreUpdateTest', function () {
         console.info(TAG + 'afterEach')
         await rdbStore.executeSql("DELETE FROM test");
         rdbStore = null
-        await dataRdb.deleteRdbStore("Delete.db");
+        await dataRdb.deleteRdbStore("UpdataTest.db");
     })
 
     afterAll(async function () {
@@ -79,9 +79,9 @@ describe('rdbStoreUpdateTest', function () {
                 "blobType": u8,
             }
             let predicates = await new dataRdb.RdbPredicates("test")
-            await predicates.equalTo("id", "1")
+            predicates.equalTo("id", "1")
             let updatePromise = rdbStore.update(valueBucket, predicates)
-            updatePromise.then(async (ret) => {
+            await updatePromise.then(async (ret) => {
                 await expect(1).assertEqual(ret);
                 await console.log(TAG + "update done: " + ret);
                 let resultSet = await rdbStore.query(predicates)
@@ -93,15 +93,15 @@ describe('rdbStoreUpdateTest', function () {
                 const salary = await resultSet.getDouble(resultSet.getColumnIndex("salary"))
                 const blobType = await resultSet.getBlob(resultSet.getColumnIndex("blobType"))
 
-                await expect(1).assertEqual(id);
-                await expect("lisi").assertEqual(name);
-                await expect(20).assertEqual(age);
-                await expect(200.5).assertEqual(salary);
-                await expect(4).assertEqual(blobType[0]);
-                await expect(5).assertEqual(blobType[1]);
-                await expect(6).assertEqual(blobType[2]);
+                expect(1).assertEqual(id);
+                expect("lisi").assertEqual(name);
+                expect(20).assertEqual(age);
+                expect(200.5).assertEqual(salary);
+                expect(4).assertEqual(blobType[0]);
+                expect(5).assertEqual(blobType[1]);
+                expect(6).assertEqual(blobType[2]);
                 console.log(TAG + "{id=" + id + ", name=" + name + ", age=" + age + ", salary=" + salary + ", blobType=" + blobType);
-                await expect(false).assertEqual(resultSet.goToNextRow())
+                expect(false).assertEqual(resultSet.goToNextRow())
                 resultSet = null
             }).catch((err) => {
                 console.log(TAG + "update error");
