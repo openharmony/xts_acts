@@ -337,10 +337,10 @@ describe('MultimodalInput_Device_test', function () {
   })
 
   /**
- * @tc.number MultimodalInputDevice_js_0100
- * @tc.name MultimodalInputDevice_off_test
- * @tc.desc inputdevice interface getDevice test
- */
+   * @tc.number MultimodalInputDevice_js_0100
+   * @tc.name MultimodalInputDevice_off_test
+   * @tc.desc inputdevice interface getDevice test
+   */
   it("MultimodalInputDevice_off_test", 0, function () {
     console.info(`MultimodalInputDevice_off_test enter`);
     function listener(data) {
@@ -352,6 +352,164 @@ describe('MultimodalInput_Device_test', function () {
     inputDevice.off("change", listener);
     console.info(`MultimodalInputDevice_off_test exit`);
   })
-  
+
+  /**
+   * @tc.number MultimodalInputDevice_js_0110
+   * @tc.name MultimodalInputDevice_GetDeviceList_test
+   * @tc.desc inputdevice interface getDeviceList test
+   */
+  it('inputDevice::getDeviceList_test-01', 0, function () {
+    console.info(`inputDevice::getDeviceList_async_test enter`);
+    try {
+      inputDevice.getDeviceList((err, data) => {
+        if (err) {
+          expect(false).assertTrue();
+        } else {
+          expect(data).assertInstanceOf('Array');
+        }
+        console.info(`inputDevice::getDeviceList_async_test exit`);
+      })
+    } catch (err) {
+      expect(false).assertTrue();
+    }
+
+  })
+
+  /**
+   * @tc.number MultimodalInputDevice_js_0120
+   * @tc.name MultimodalInputDevice_GetDeviceList_test
+   * @tc.desc inputdevice interface getDeviceList test
+   */
+  it('inputDevice::getDeviceList_test-02', 0, function () {
+    console.info(`inputDevice::getDeviceList_promise_test enter`);
+    try {
+      inputDevice.getDeviceList().then(data => {
+        expect(data).assertInstanceOf('Array');
+      }).catch(error => {
+        expect(false).assertTrue();
+      });
+    } catch (err) {
+      expect(false).assertTrue();
+    }
+    console.info(`inputDevice::getDeviceList_promise_test exit`);
+  })
+
+  /**
+   * @tc.number MultimodalInputDevice_js_0130
+   * @tc.name MultimodalInputDevice_GetDeviceInfo_test
+   * @tc.desc inputdevice interface getDeviceInfo test
+   */
+  it('inputDevice::getDeviceInfo_test-01', 0, function () {
+    console.info(`inputDevice::getDeviceInfo_async_test enter`);
+    try {
+      inputDevice.getDeviceList().then((data) => {
+        expect(data).assertInstanceOf('Array');
+        if (data.length() <= 0) {
+          return;
+        }
+        try {
+          inputDevice.getDeviceInfo(data[0], (err, res) => {
+            if (err) {
+              expect(false).assertTrue();
+              return;
+            }
+            let arr = [];
+            console.info(`getDeviceInfo:data ${JSON.stringify(res)}`);
+            arr = Object.keys(res);
+            expect(res.id).assertInstanceOf('Number');
+            expect(res.name).assertInstanceOf('String');
+            expect(res.sources).assertInstanceOf('Array');
+            expect(res.axisRanges).assertInstanceOf('Array');
+            expect(res.bus).assertInstanceOf('Number');
+            expect(res.product).assertInstanceOf('Number');
+            expect(res.vendor).assertInstanceOf('Number');
+            expect(res.version).assertInstanceOf('Number');
+            expect(res.phys).assertInstanceOf('String');
+            expect(res.uniq).assertInstanceOf('String');
+            expect(res).assertInstanceOf('Object');
+            for(let j = 0;j < res.axisRanges.length; j++ ){
+              expect(res.axisRanges[j].source == 'keyboard' || res.axisRanges[j].source == 'mouse'
+              || res.axisRanges[j].source == 'touchpad' || res.axisRanges[j].source == 'touchscreen'
+              || res.axisRanges[j].source == 'joystick' || res.axisRanges[j].source == 'trackball').assertTrue();
+              expect(res.axisRanges[j].axis == 'touchMajor' || res.axisRanges[j].axis == 'touchMinor'
+              || res.axisRanges[j].axis == 'orientation' || res.axisRanges[j].axis == 'x'
+              || res.axisRanges[j].axis == 'y' || res.axisRanges[j].axis == 'pressure'
+              || res.axisRanges[j].axis == 'toolMinor' || res.axisRanges[j].axis == 'touchMajor'
+              || res.axisRanges[j].axis == 'NULL').assertTrue();
+              expect(res.axisRanges[j].max).assertInstanceOf('Number');
+              expect(res.axisRanges[j]).assertInstanceOf('AxisRange');
+              expect(res.axisRanges[j].min).assertInstanceOf('Number');
+              expect(res.axisRanges[j].fuzz).assertInstanceOf('Number');
+              expect(res.axisRanges[j].flat).assertInstanceOf('Number');
+              expect(res.axisRanges[j].resolution).assertInstanceOf('Number');
+            }
+          })
+        } catch (err) {
+          expect(false).assertTrue();
+        }
+      })
+    } catch (err) {
+      expect(false).assertTrue();
+    }
+    console.info(`inputDevice::getDeviceInfo_async_test exit`);
+  })
+
+  /**
+   * @tc.number MultimodalInputDevice_js_0140
+   * @tc.name MultimodalInputDevice_GetDeviceInfo_test
+   * @tc.desc inputdevice interface getDeviceInfo test
+   */
+   it('inputDevice::getDeviceInfo_test-02', 0, function () {
+    console.info(`inputDevice::getDeviceInfo_promise_test enter`);
+    try {
+      inputDevice.getDeviceList().then((data) => {
+        expect(data).assertInstanceOf('Array');
+        if (data.length() <= 0) {
+          return;
+        }
+        try {
+          inputDevice.getDeviceInfo(data[0]).then((res) => {
+            let arr = [];
+            console.info(`getDeviceInfo:data ${JSON.stringify(res)}`);
+            arr = Object.keys(res);
+            expect(res.id).assertInstanceOf('Number');
+            expect(res.name).assertInstanceOf('String');
+            expect(res.sources).assertInstanceOf('Array');
+            expect(res.axisRanges).assertInstanceOf('Array');
+            expect(res.bus).assertInstanceOf('Number');
+            expect(res.product).assertInstanceOf('Number');
+            expect(res.vendor).assertInstanceOf('Number');
+            expect(res.version).assertInstanceOf('Number');
+            expect(res.phys).assertInstanceOf('String');
+            expect(res.uniq).assertInstanceOf('String');
+            expect(res).assertInstanceOf('Object');
+            for(let j = 0;j < res.axisRanges.length; j++ ){
+              expect(res.axisRanges[j].source == 'keyboard' || res.axisRanges[j].source == 'mouse'
+              || res.axisRanges[j].source == 'touchpad' || res.axisRanges[j].source == 'touchscreen'
+              || res.axisRanges[j].source == 'joystick' || res.axisRanges[j].source == 'trackball').assertTrue();
+              expect(res.axisRanges[j].axis == 'touchMajor' || res.axisRanges[j].axis == 'touchMinor'
+              || res.axisRanges[j].axis == 'orientation' || res.axisRanges[j].axis == 'x'
+              || res.axisRanges[j].axis == 'y' || res.axisRanges[j].axis == 'pressure'
+              || res.axisRanges[j].axis == 'toolMinor' || res.axisRanges[j].axis == 'touchMajor'
+              || res.axisRanges[j].axis == 'NULL').assertTrue();
+              expect(res.axisRanges[j].max).assertInstanceOf('Number');
+              expect(res.axisRanges[j]).assertInstanceOf('AxisRange');
+              expect(res.axisRanges[j].min).assertInstanceOf('Number');
+              expect(res.axisRanges[j].fuzz).assertInstanceOf('Number');
+              expect(res.axisRanges[j].flat).assertInstanceOf('Number');
+              expect(res.axisRanges[j].resolution).assertInstanceOf('Number');
+            }
+          }).catch(err => {
+            expect(false).assertTrue();
+          });
+        } catch (err) {
+          expect(false).assertTrue();
+        }
+      })
+    } catch (err) {
+      expect(false).assertTrue();
+    }
+    console.info(`inputDevice::getDeviceInfo_promise_test exit`);
+  })
 })
 }
