@@ -422,6 +422,51 @@ export default function applicationBundleJsunit() {
             });
          })
 
+        /**
+        * @tc.number: SUB_BMS_APPINFO_QUERY_0059
+        * @tc.name: getApplicationInfoNoMetaData
+        * @tc.desc: Check the return value of the interface
+        */
+        it('getApplicationInfoNoMetaData', 0, async function (done) {
+            await Bundle.getApplicationInfo(BUNDLE_OTHER, FLAG_DEFAULT ,userId).then((data) => {
+                console.info('noUserId promise data is: ' + data);
+              for (let item in data) {
+                console.info(item + ":" + JSON.stringify(data[item]));
+              }
+                getApplicationInfoSuccessOther_METADATA(data);
+                expect(JSON.stringify(data.metaData)).assertEqual("{}");
+                expect(JSON.stringify(data.metadata)).assertEqual("{}");
+            }).catch((error) => {
+                expect(error).assertFail();
+            });
+            Bundle.getApplicationInfo(BUNDLE_OTHER, FLAG_DEFAULT,userId, (err, data) => {
+                console.info('noUserId promise data is: ' + data);
+                expect(err.code).assertEqual(0);
+                getApplicationInfoSuccessOther_METADATA(data);
+                expect(JSON.stringify(data.metaData)).assertEqual("{}");
+                expect(JSON.stringify(data.metadata)).assertEqual("{}");
+                done();
+            });
+        });
+
+        /**
+         * @tc.number: SUB_BMS_APPINFO_QUERY_0005
+         * @tc.name: getApplicationInfoNotExistBundleName
+         * @tc.desc: Check the return value of the interface
+         */
+        it('getApplicationInfoNotExistBundleName', 0, async function (done) {
+          await Bundle.getApplicationInfo(BUNDLE_NOTEXIST, FLAG_DEFAULT, userId).then((data) => {
+            expect(data).assertFail();
+          }).catch((error) => {
+            expect(error.code).assertEqual(1);
+          });
+          await Bundle.getApplicationInfo(BUNDLE_NOTEXIST, FLAG_DEFAULT, userId, (err, data) => {
+            expect(err.code).assertEqual(1);
+            expect(JSON.stringify(data)).assertEqual(undefined);
+            done();
+          });
+        });
+
         function expectData(msg, data) {
             expect(typeof (data)).assertEqual('object');
             expect(typeof (data.name)).assertEqual('string');
@@ -554,6 +599,38 @@ export default function applicationBundleJsunit() {
           console.info('check end');
         }
 
-    });
+        function getApplicationInfoSuccessOther_METADATA(data) {
+            expect(data.name).assertEqual(BUNDLE_OTHER);
+            expect(data.codePath).assertEqual(PATH + '/' + BUNDLE_OTHER);
+            expect(data.accessTokenId).assertLarger(0);
+            expect(data.description).assertEqual('$string:entry_description');
+            expect(data.descriptionId).assertLarger(0);
+            expect(data.icon).assertEqual('$media:icon');
+            expect(data.iconId).assertLarger(0);
+            expect(data.iconIndex).assertLarger(0);
+            expect(data.iconIndex).assertEqual(data.iconId);
+            expect(data.label).assertEqual('$string:app_name');
+            expect(data.labelId).assertLarger(0);
+            expect(data.labelIndex).assertLarger(0);
+            expect(data.labelIndex).assertEqual(data.labelId);
+            expect(data.systemApp).assertFalse();
+            expect(data.supportedModes).assertEqual(0);
+            expect(data.process).assertEqual(BUNDLE_OTHER);
+            expect(data.entryDir).assertEqual(PATH + '/' + BUNDLE_OTHER + '/' + BUNDLE_OTHER + '.entry');
+            expect(data.permissions.length).assertEqual(0);
+            expect(data.moduleSourceDirs.length).assertEqual(1);
+            expect(data.moduleSourceDirs[0]).assertEqual(PATH + '/' + BUNDLE_OTHER + '/' + BUNDLE_OTHER + '.entry');
+            expect(data.moduleInfos.length).assertEqual(1);
+            expect(data.moduleInfos[0].moduleName).assertEqual('entry');
+            expect(data.moduleInfos[0].moduleSourceDir).assertEqual(PATH + '/' +
+            BUNDLE_OTHER + '/' + BUNDLE_OTHER + '.entry');
+            expect(data.enabled).assertTrue();
+            expect(data.uid).assertLarger(0);
+            expect(data.entityType).assertEqual('unspecified');
+            expect(data.removable).assertTrue();
+            expect(data.fingerprint).assertEqual("");
+            console.info('check end');
+        }
 
+      });
 }

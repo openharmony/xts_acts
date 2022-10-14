@@ -288,6 +288,42 @@ export default function getAllApplicationBundleTest() {
             });
         });
 
+        /**
+         * @tc.number: SUB_BMS_APPINFO_QUERY_0060
+         * @tc.name: getAllApplicationInfoNoMetaData
+         * @tc.desc: Check the return value of the interface
+         */
+        it('getAllApplicationInfoNoMetaData', 0, async function (done) {
+            await Bundle.getAllApplicationInfo(DEFAULT_FLAG,userId).then((data) => {
+                expect(data.length).assertLarger(10);
+                let flag = 0;
+                for(let i in data){
+                    if (data[i].name == BUNDLE_OTHER){
+                        flag = 1;
+                        getAllApplicationInfoSuccessOther(data[i]);
+                        expect(JSON.stringify(data[i].metaData)).assertEqual("{}");
+                    }
+                }
+                expect(flag).assertEqual(1);
+            }).catch((error) => {
+                expect(error).assertFail();
+            });
+            Bundle.getAllApplicationInfo(DEFAULT_FLAG,userId, (err, data) => {
+                expect(err.code).assertEqual(0);
+                expect(data.length).assertLarger(10);
+                let flag = 0;
+                for(let i in data){
+                    if (data[i].name == BUNDLE_OTHER){
+                        flag = 1;
+                        getAllApplicationInfoSuccessOther(data[i]);
+                        expect(JSON.stringify(data[i].metaData)).assertEqual("{}");
+                    }
+                }
+                expect(flag).assertEqual(1);
+                done();
+            });
+        });
+
         function expectData(msg, data) {
             console.info(msg + 'commonTest data length [' + data.length + ']');
             for (let i = 0; i < data.length; i++) {
@@ -385,6 +421,39 @@ export default function getAllApplicationBundleTest() {
             BUNDLE_OTHER + '/' + BUNDLE_OTHER + '.entry');
             expect(JSON.stringify(data.metaData)).assertEqual("{}");
             expect(JSON.stringify(data.metadata)).assertEqual("{}");
+            expect(data.enabled).assertTrue();
+            expect(data.uid).assertLarger(0);
+            expect(data.entityType).assertEqual('unspecified');
+            expect(data.removable).assertTrue();
+            expect(data.fingerprint).assertEqual("");
+            console.info('check end');
+        }
+
+        function getAllApplicationInfoSuccessOther(data) {
+            expect(data.name).assertEqual(BUNDLE_OTHER);
+            expect(data.codePath).assertEqual(PATH + '/' + BUNDLE_OTHER);
+            expect(data.accessTokenId).assertLarger(0);
+            expect(data.description).assertEqual('$string:entry_description');
+            expect(data.descriptionId).assertLarger(0);
+            expect(data.icon).assertEqual('$media:icon');
+            expect(data.iconId).assertLarger(0);
+            expect(data.iconIndex).assertLarger(0);
+            expect(data.iconIndex).assertEqual(data.iconId);
+            expect(data.label).assertEqual('$string:app_name');
+            expect(data.labelId).assertLarger(0);
+            expect(data.labelIndex).assertLarger(0);
+            expect(data.labelIndex).assertEqual(data.labelId);
+            expect(data.systemApp).assertFalse();
+            expect(data.supportedModes).assertEqual(0);
+            expect(data.process).assertEqual(BUNDLE_OTHER);
+            expect(data.entryDir).assertEqual(PATH + '/' + BUNDLE_OTHER + '/' + BUNDLE_OTHER + '.entry');
+            expect(data.permissions.length).assertEqual(0);
+            expect(data.moduleSourceDirs.length).assertEqual(1);
+            expect(data.moduleSourceDirs[0]).assertEqual(PATH + '/' + BUNDLE_OTHER + '/' + BUNDLE_OTHER + '.entry');
+            expect(data.moduleInfos.length).assertEqual(1);
+            expect(data.moduleInfos[0].moduleName).assertEqual('entry');
+            expect(data.moduleInfos[0].moduleSourceDir).assertEqual(PATH + '/' +
+            BUNDLE_OTHER + '/' + BUNDLE_OTHER + '.entry');
             expect(data.enabled).assertTrue();
             expect(data.uid).assertLarger(0);
             expect(data.entityType).assertEqual('unspecified');
