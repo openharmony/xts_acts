@@ -759,8 +759,11 @@ struct Index {
                             break;
                         }
                         case "emitGetCookieManager":{                                                                                 
-                            let getCookieManagerCalled = this.controller.getCookieManager().setCookie("https://weibo.com","a=b")
-                            Utils.emitEvent(getCookieManagerCalled,89)                                                              
+                            this.controller.getCookieManager().setCookie("https://weibo.com","a=b")
+                            setTimeout(()=>{    
+                                let getCookieManagerCalled =  this.controller.getCookieManager().getCookie('https://weibo.com')
+                                Utils.emitEvent(getCookieManagerCalled,89)                                                                                
+                            },3000)                                                                                     
                             break;
                         }
                         default:

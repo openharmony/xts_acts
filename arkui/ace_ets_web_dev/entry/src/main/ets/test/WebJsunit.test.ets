@@ -669,7 +669,7 @@ export default function webJsunit() {
      */
     it('getCookieManager',0,async function(done){
       emitKey="emitGetCookieManager";
-      Utils.registerEvent("getCookieManager",true,89,done);
+      Utils.registerEvent("getCookieManager","a=b",89,done);
       sendEventByKey('webcomponent',10,'');
     })
   })
