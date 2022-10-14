@@ -33,7 +33,7 @@ hctest_suite("ActsHuksHalFunctionTest") {
     "hks_mac_test.c",
     "hks_modify_key_test.c",
 
-    # "hks_others_test.c",
+    "hks_others_test.c",
     "hks_safe_cipher_key_test.c",
     "hks_safe_compare_key_test.c",
   ]
