@@ -1040,7 +1040,7 @@ describe('audioCapturer', function () {
     /**
      *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_0100
      *@tc.name      : AudioCapturer-Set1-Media
-     *@tc.desc      : AudioCapturer with parameter set 1
+     *@tc.desc      : AudioCapturer with parameter set 7
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
