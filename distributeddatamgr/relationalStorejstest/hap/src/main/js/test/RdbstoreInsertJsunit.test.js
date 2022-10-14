@@ -663,9 +663,9 @@ describe('rdbstoreInsertTest', function () {
             "blobType": u8,
         }
         const valueBuckets = [valueBucket1, valueBucket2, valueBucket3]
-        await rdbStore.executeSql(CREATE_TABLE_NAME + "callback1" + CREATE_TABLE).then(() => {
+        await rdbStore.executeSql(CREATE_TABLE_NAME + "callback1" + CREATE_TABLE).then(async() => {
             console.info(TAG + "Batch insert data start")
-            rdbStore.batchInsert("testcallback1", valueBuckets, async (err, data) => {
+            await rdbStore.batchInsert("testcallback1", valueBuckets, async (err, data) => {
                 if(err != null){
                     expect(false).assertTrue();
                 }else{
@@ -1068,7 +1068,6 @@ describe('rdbstoreInsertTest', function () {
      */
      it('testRdbStorebatchInsertCallback0007', 0, async function (done) {
         console.info(TAG + "************* testRdbStorebatchInsertCallback0007 start *************");
-        try{
             await rdbStore.executeSql(CREATE_TABLE_NAME + "Callback7" + CREATE_TABLE).then(async () => {
                 await rdbStore.batchInsert("testCallback7", (err,data) => {
                     console.info(TAG + "Affect row is " + data)
@@ -1084,10 +1083,6 @@ describe('rdbstoreInsertTest', function () {
             }).catch((err) => {
                 expect(null).assertFail();
             })
-        }catch(err){
-            console.info(TAG + "Batch insert data error:  " + err)
-            expect(null).assertFail();
-        }
         done()
         console.info(TAG + "************* testRdbStorebatchInsertCallback0007 end *************");
     })
