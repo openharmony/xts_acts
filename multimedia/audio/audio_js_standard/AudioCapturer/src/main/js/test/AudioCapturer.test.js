@@ -1040,7 +1040,7 @@ describe('audioCapturer', function () {
     /**
      *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_0100
      *@tc.name      : AudioCapturer-Set1-Media
-     *@tc.desc      : AudioCapturer with parameter set 7
+     *@tc.desc      : AudioCapturer with parameter set 1
      *@tc.size      : MEDIUM
      *@tc.type      : Function
      *@tc.level     : Level 2
@@ -1081,7 +1081,7 @@ describe('audioCapturer', function () {
             encodingType: 0
         }
         let AudioCapturerInfo = {
-            source: 1,
+            source: 0,
             capturerFlags: 0
         }
         let AudioCapturerOptions = {
@@ -1165,7 +1165,7 @@ describe('audioCapturer', function () {
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW,
         };
         let audioCapturerInfo96000 = {
-            source: audio.SourceType.SOURCE_TYPE_MIC,
+            source: audio.SourceType.SOURCE_TYPE_VOICE_RECOGNITION,
             capturerFlags: 0
         }
         let audioCapturerOptions96000 = {
