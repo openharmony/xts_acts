@@ -7206,6 +7206,721 @@ describe('audioRenderer', function () {
     })
 
     /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_8800
+     * @tc.name      : StreamUsage - STREAM_USAGE_VOICE_ASSISTANT
+     * @tc.desc      : StreamUsage - STREAM_USAGE_VOICE_ASSISTANT
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+        it('SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_8800', 2, async function (done) {
+
+        let AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+            channels: audio.AudioChannel.CHANNEL_1,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+        }
+
+        let AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_SPEECH,
+            usage: audio.StreamUsage.STREAM_USAGE_VOICE_ASSISTANT,
+            rendererFlags: 0
+        }
+
+        let AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        try {
+            readPath = 'StarWars10s-1C-44100-2SW.wav';
+            await getFdRead(readPath, done);
+            let resultFlag = await playbackPromise(AudioRendererOptions, filePath, audio.AudioScene.AUDIO_SCENE_VOICE_CHAT);
+            await sleep(100);
+            console.info('AudioFrameworkRenderLog: resultFlag : ' + resultFlag);
+            expect(resultFlag).assertTrue();
+            await closeFileDescriptor(readPath);
+        } catch (error) {
+            console.log("SUB_MULTIMEDIA_AUDIO_RENDERER_PLAY_AUDIO_8800 : error = " + error);
+            expect(false).assertTrue();
+        }
+        done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_INTERUPT_AUDIO_0100
+     * @tc.name      : STREAM_VOICE_CALL INTERRUPT STREAM_VOICE_ASSISTANT
+     * @tc.desc      : STREAM_VOICE_CALL INTERRUPT STREAM_VOICE_ASSISTANT
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_INTERUPT_AUDIO_0100', 2, async function (done) {
+        let interrput_flag = false;
+        let AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+            channels: audio.AudioChannel.CHANNEL_1,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+        }
+        // STREAM_VOICE_ASSISTANT
+        let AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_MUSIC,
+            usage: audio.StreamUsage.STREAM_USAGE_VOICE_ASSISTANT,
+            rendererFlags: 0
+        }
+
+        let AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        try {
+            let audioRen;
+            await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+                audioRen = data;
+                console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS data state: ' + Object.keys(data));
+                console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS data value: ' + JSON.stringify(data));
+            }).catch((err) => {
+                console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
+            });
+
+            audioRen.on('interrupt',async (interruptEvent)=>{
+                console.info("AudioFrameworkRenderLog: InterruptType : " + interruptEvent.eventType);
+                console.info("AudioFrameworkRenderLog: InterruptForceType : " + interruptEvent.forceType);
+                console.info("AudioFrameworkRenderLog: InterruptHint : " + interruptEvent.hintType);
+                if (interruptEvent.hintType >= 0) {
+                    console.info("AudioFrameworkRenderLog: on'interrupt' SUCCESS ");
+                    interrput_flag = true;
+                }
+            });
+
+            let a = await audioRen.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE);
+            console.info("AudioFrameworkRenderLog audioRen setInterruptMode(INDEPENDENT_MODE) success");
+
+            await audioRen.start().then(async function () {
+                console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
+            }).catch((err) => {
+                console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : ' + err.message);
+            });
+            await sleep(1000);
+            // STREAM_VOICE_CALL
+            let AudioRendererInfo_interrupt = {
+                content: audio.ContentType.CONTENT_TYPE_SPEECH,
+                usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+                rendererFlags: 0
+            }
+
+            let AudioRendererOptions_interrupt = {
+                streamInfo: AudioStreamInfo,
+                rendererInfo: AudioRendererInfo_interrupt
+            }
+
+            let audioRen_interrupt;
+            await audio.createAudioRenderer(AudioRendererOptions_interrupt).then(async function (data) {
+                audioRen_interrupt = data;
+                console.info('AudioFrameworkRenderLog: AudioRender2 Created : Success : Stream Type: SUCCESS data state: ' + Object.keys(data));
+                console.info('AudioFrameworkRenderLog: AudioRender2 Created : Success : Stream Type: SUCCESS data value: ' + JSON.stringify(data));
+            }).catch((err) => {
+                console.info('AudioFrameworkRenderLog: AudioRender2 Created : ERROR : ' + err.message);
+            });
+
+            let b = await audioRen_interrupt.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE);
+            console.info("AudioFrameworkRenderLog audioRen_interrupt setInterruptMode(INDEPENDENT_MODE) success");
+
+            await audioRen_interrupt.start().then(async function () {
+                console.info('AudioFrameworkRenderLog: renderInstant2 started :SUCCESS ');
+            }).catch((err) => {
+                console.info('AudioFrameworkRenderLog: renderInstant2 start :ERROR : ' + err.message);
+            });
+            await sleep(2000);
+            expect(interrput_flag).assertTrue();
+        }
+        catch (error) {
+            console.log("SUB_MULTIMEDIA_AUDIO_RENDERER_INTERUPT_AUDIO_0100 : error = " + error);
+            expect(false).assertTrue();
+        }
+        done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_INTERUPT_AUDIO_0200
+     * @tc.name      : STREAM_RING INTERRUPT STREAM_VOICE_ASSISTANT
+     * @tc.desc      : STREAM_RING INTERRUPT STREAM_VOICE_ASSISTANT
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_INTERUPT_AUDIO_0200', 2, async function (done) {
+        let interrput_flag = false;
+        let AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+            channels: audio.AudioChannel.CHANNEL_1,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+        }
+        // STREAM_VOICE_ASSISTANT
+        let AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_MUSIC,
+            usage: audio.StreamUsage.STREAM_USAGE_VOICE_ASSISTANT,
+            rendererFlags: 0
+        }
+
+        let AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        try {
+            let audioRen;
+            await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+                audioRen = data;
+                console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS data state: ' + Object.keys(data));
+                console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS data value: ' + JSON.stringify(data));
+            }).catch((err) => {
+                console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
+            });
+
+            audioRen.on('interrupt',async (interruptEvent)=>{
+                console.info("AudioFrameworkRenderLog: InterruptType : " + interruptEvent.eventType);
+                console.info("AudioFrameworkRenderLog: InterruptForceType : " + interruptEvent.forceType);
+                console.info("AudioFrameworkRenderLog: InterruptHint : " + interruptEvent.hintType);
+                if (interruptEvent.hintType >= 0) {
+                    console.info("AudioFrameworkRenderLog: on'interrupt' SUCCESS ");
+                    interrput_flag = true;
+                }
+            });
+
+            let a = await audioRen.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE);
+            console.info("AudioFrameworkRenderLog audioRen setInterruptMode(INDEPENDENT_MODE) success");
+
+            await audioRen.start().then(async function () {
+                console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
+            }).catch((err) => {
+                console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : ' + err.message);
+            });
+            await sleep(1000);
+            // STREAM_RING
+            let AudioRendererInfo_interrupt = {
+                content: audio.ContentType.CONTENT_TYPE_RINGTONE,
+                usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
+                rendererFlags: 0
+            }
+
+            let AudioRendererOptions_interrupt = {
+                streamInfo: AudioStreamInfo,
+                rendererInfo: AudioRendererInfo_interrupt
+            }
+
+            let audioRen_interrupt;
+            await audio.createAudioRenderer(AudioRendererOptions_interrupt).then(async function (data) {
+                audioRen_interrupt = data;
+                console.info('AudioFrameworkRenderLog: AudioRender2 Created : Success : Stream Type: SUCCESS data state: ' + Object.keys(data));
+                console.info('AudioFrameworkRenderLog: AudioRender2 Created : Success : Stream Type: SUCCESS data value: ' + JSON.stringify(data));
+            }).catch((err) => {
+                console.info('AudioFrameworkRenderLog: AudioRender2 Created : ERROR : ' + err.message);
+            });
+
+            let b = await audioRen_interrupt.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE);
+            console.info("AudioFrameworkRenderLog audioRen_interrupt setInterruptMode(INDEPENDENT_MODE) success");
+
+            await audioRen_interrupt.start().then(async function () {
+                console.info('AudioFrameworkRenderLog: renderInstant2 started :SUCCESS ');
+            }).catch((err) => {
+                console.info('AudioFrameworkRenderLog: renderInstant2 start :ERROR : ' + err.message);
+            });
+            await sleep(2000);
+            expect(interrput_flag).assertTrue();
+        }
+        catch (error) {
+            console.log("SUB_MULTIMEDIA_AUDIO_RENDERER_INTERUPT_AUDIO_0200 : error = " + error);
+            expect(false).assertTrue();
+        }
+        done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_INTERUPT_AUDIO_0300
+     * @tc.name      : STREAM_MUSIC INTERRUPT STREAM_VOICE_ASSISTANT
+     * @tc.desc      : STREAM_MUSIC INTERRUPT STREAM_VOICE_ASSISTANT
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_INTERUPT_AUDIO_0300', 2, async function (done) {
+        let interrput_flag = false;
+        let AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+            channels: audio.AudioChannel.CHANNEL_1,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+        }
+        // STREAM_VOICE_ASSISTANT
+        let AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_MUSIC,
+            usage: audio.StreamUsage.STREAM_USAGE_VOICE_ASSISTANT,
+            rendererFlags: 0
+        }
+
+        let AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        try {
+            let audioRen;
+            await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+                audioRen = data;
+                console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS data state: ' + Object.keys(data));
+                console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS data value: ' + JSON.stringify(data));
+            }).catch((err) => {
+                console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
+            });
+
+            audioRen.on('interrupt',async (interruptEvent)=>{
+                console.info("AudioFrameworkRenderLog: InterruptType : " + interruptEvent.eventType);
+                console.info("AudioFrameworkRenderLog: InterruptForceType : " + interruptEvent.forceType);
+                console.info("AudioFrameworkRenderLog: InterruptHint : " + interruptEvent.hintType);
+                if (interruptEvent.hintType >= 0) {
+                    console.info("AudioFrameworkRenderLog: on'interrupt' SUCCESS ");
+                    interrput_flag = true;
+                }
+            });
+
+            let a = await audioRen.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE);
+            console.info("AudioFrameworkRenderLog audioRen setInterruptMode(INDEPENDENT_MODE) success");
+
+            await audioRen.start().then(async function () {
+                console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
+            }).catch((err) => {
+                console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : ' + err.message);
+            });
+            await sleep(1000);
+            // STREAM_MUSIC
+            let AudioRendererInfo_interrupt = {
+                content: audio.ContentType.CONTENT_TYPE_MUSIC,
+                usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
+                rendererFlags: 0
+            }
+
+            let AudioRendererOptions_interrupt = {
+                streamInfo: AudioStreamInfo,
+                rendererInfo: AudioRendererInfo_interrupt
+            }
+
+            let audioRen_interrupt;
+            await audio.createAudioRenderer(AudioRendererOptions_interrupt).then(async function (data) {
+                audioRen_interrupt = data;
+                console.info('AudioFrameworkRenderLog: AudioRender2 Created : Success : Stream Type: SUCCESS data state: ' + Object.keys(data));
+                console.info('AudioFrameworkRenderLog: AudioRender2 Created : Success : Stream Type: SUCCESS data value: ' + JSON.stringify(data));
+            }).catch((err) => {
+                console.info('AudioFrameworkRenderLog: AudioRender2 Created : ERROR : ' + err.message);
+            });
+
+            let b = await audioRen_interrupt.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE);
+            console.info("AudioFrameworkRenderLog audioRen_interrupt setInterruptMode(INDEPENDENT_MODE) success");
+
+            await audioRen_interrupt.start().then(async function () {
+                console.info('AudioFrameworkRenderLog: renderInstant2 started :SUCCESS ');
+            }).catch((err) => {
+                console.info('AudioFrameworkRenderLog: renderInstant2 start :ERROR : ' + err.message);
+            });
+            await sleep(2000);
+            expect(interrput_flag).assertTrue();
+        }
+        catch (error) {
+            console.log("SUB_MULTIMEDIA_AUDIO_RENDERER_INTERUPT_AUDIO_0300 : error = " + error);
+            expect(false).assertTrue();
+        }
+        done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_INTERUPT_AUDIO_0400
+     * @tc.name      : STREAM_VOICE_ASSISTANT INTERRUPT STREAM_VOICE_ASSISTANT
+     * @tc.desc      : STREAM_VOICE_ASSISTANT INTERRUPT STREAM_VOICE_ASSISTANT
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_INTERUPT_AUDIO_0400', 2, async function (done) {
+        let interrput_flag = false;
+        let AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+            channels: audio.AudioChannel.CHANNEL_1,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+        }
+        // STREAM_VOICE_ASSISTANT
+        let AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_MUSIC,
+            usage: audio.StreamUsage.STREAM_USAGE_VOICE_ASSISTANT,
+            rendererFlags: 0
+        }
+
+        let AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        try {
+            let audioRen;
+            await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+                audioRen = data;
+                console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS data state: ' + Object.keys(data));
+                console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS data value: ' + JSON.stringify(data));
+            }).catch((err) => {
+                console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
+            });
+
+            audioRen.on('interrupt',async (interruptEvent)=>{
+                console.info("AudioFrameworkRenderLog: InterruptType : " + interruptEvent.eventType);
+                console.info("AudioFrameworkRenderLog: InterruptForceType : " + interruptEvent.forceType);
+                console.info("AudioFrameworkRenderLog: InterruptHint : " + interruptEvent.hintType);
+                if (interruptEvent.hintType >= 0) {
+                    console.info("AudioFrameworkRenderLog: on'interrupt' SUCCESS ");
+                    interrput_flag = true;
+                }
+            });
+
+            let a = await audioRen.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE);
+            console.info("AudioFrameworkRenderLog audioRen setInterruptMode(INDEPENDENT_MODE) success");
+
+            await audioRen.start().then(async function () {
+                console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
+            }).catch((err) => {
+                console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : ' + err.message);
+            });
+            await sleep(1000);
+            // STREAM_VOICE_ASSISTANT
+            let AudioRendererInfo_interrupt = {
+                content: audio.ContentType.CONTENT_TYPE_MUSIC,
+                usage: audio.StreamUsage.STREAM_USAGE_VOICE_ASSISTANT,
+                rendererFlags: 0
+            }
+
+            let AudioRendererOptions_interrupt = {
+                streamInfo: AudioStreamInfo,
+                rendererInfo: AudioRendererInfo_interrupt
+            }
+
+            let audioRen_interrupt;
+            await audio.createAudioRenderer(AudioRendererOptions_interrupt).then(async function (data) {
+                audioRen_interrupt = data;
+                console.info('AudioFrameworkRenderLog: AudioRender2 Created : Success : Stream Type: SUCCESS data state: ' + Object.keys(data));
+                console.info('AudioFrameworkRenderLog: AudioRender2 Created : Success : Stream Type: SUCCESS data value: ' + JSON.stringify(data));
+            }).catch((err) => {
+                console.info('AudioFrameworkRenderLog: AudioRender2 Created : ERROR : ' + err.message);
+            });
+
+            let b = await audioRen_interrupt.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE);
+            console.info("AudioFrameworkRenderLog audioRen_interrupt setInterruptMode(INDEPENDENT_MODE) success");
+
+            await audioRen_interrupt.start().then(async function () {
+                console.info('AudioFrameworkRenderLog: renderInstant2 started :SUCCESS ');
+            }).catch((err) => {
+                console.info('AudioFrameworkRenderLog: renderInstant2 start :ERROR : ' + err.message);
+            });
+            await sleep(2000);
+            expect(interrput_flag).assertTrue();
+        }
+        catch (error) {
+            console.log("SUB_MULTIMEDIA_AUDIO_RENDERER_INTERUPT_AUDIO_0400 : error = " + error);
+            expect(false).assertTrue();
+        }
+        done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_INTERUPT_AUDIO_0500
+     * @tc.name      : STREAM_VOICE_ASSISTANT INTERRUPT STREAM_VOICE_CALL
+     * @tc.desc      : STREAM_VOICE_ASSISTANT INTERRUPT STREAM_VOICE_CALL
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_INTERUPT_AUDIO_0500', 2, async function (done) {
+        let interrput_flag = false;
+        let AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+            channels: audio.AudioChannel.CHANNEL_1,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+        }
+        // STREAM_VOICE_CALL
+        let AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_SPEECH,
+            usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
+            rendererFlags: 0
+        }
+
+        let AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        try {
+            let audioRen;
+            await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+                audioRen = data;
+                console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS data state: ' + Object.keys(data));
+                console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS data value: ' + JSON.stringify(data));
+            }).catch((err) => {
+                console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
+            });
+
+            audioRen.on('interrupt',async (interruptEvent)=>{
+                console.info("AudioFrameworkRenderLog: InterruptType : " + interruptEvent.eventType);
+                console.info("AudioFrameworkRenderLog: InterruptForceType : " + interruptEvent.forceType);
+                console.info("AudioFrameworkRenderLog: InterruptHint : " + interruptEvent.hintType);
+                if (interruptEvent.hintType >= 0) {
+                    console.info("AudioFrameworkRenderLog: on'interrupt' SUCCESS ");
+                    interrput_flag = true;
+                }
+            });
+
+            let a = await audioRen.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE);
+            console.info("AudioFrameworkRenderLog audioRen setInterruptMode(INDEPENDENT_MODE) success");
+
+            await audioRen.start().then(async function () {
+                console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
+            }).catch((err) => {
+                console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : ' + err.message);
+            });
+            await sleep(1000);
+            // STREAM_VOICE_ASSISTANT
+            let AudioRendererInfo_interrupt = {
+                content: audio.ContentType.CONTENT_TYPE_MUSIC,
+                usage: audio.StreamUsage.STREAM_USAGE_VOICE_ASSISTANT,
+                rendererFlags: 0
+            }
+
+            let AudioRendererOptions_interrupt = {
+                streamInfo: AudioStreamInfo,
+                rendererInfo: AudioRendererInfo_interrupt
+            }
+
+            let audioRen_interrupt;
+            await audio.createAudioRenderer(AudioRendererOptions_interrupt).then(async function (data) {
+                audioRen_interrupt = data;
+                console.info('AudioFrameworkRenderLog: AudioRender2 Created : Success : Stream Type: SUCCESS data state: ' + Object.keys(data));
+                console.info('AudioFrameworkRenderLog: AudioRender2 Created : Success : Stream Type: SUCCESS data value: ' + JSON.stringify(data));
+            }).catch((err) => {
+                console.info('AudioFrameworkRenderLog: AudioRender2 Created : ERROR : ' + err.message);
+            });
+
+            let b = await audioRen_interrupt.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE);
+            console.info("AudioFrameworkRenderLog audioRen_interrupt setInterruptMode(INDEPENDENT_MODE) success");
+
+            await audioRen_interrupt.start().then(async function () {
+                console.info('AudioFrameworkRenderLog: renderInstant2 started :SUCCESS ');
+            }).catch((err) => {
+                console.info('AudioFrameworkRenderLog: renderInstant2 start :ERROR : ' + err.message);
+            });
+            await sleep(2000);
+            expect(interrput_flag).assertFalse();
+        }
+        catch (error) {
+            console.log("SUB_MULTIMEDIA_AUDIO_RENDERER_INTERUPT_AUDIO_0500 : error = " + error);
+            expect(false).assertTrue();
+        }
+        done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_INTERUPT_AUDIO_0600
+     * @tc.name      : STREAM_VOICE_ASSISTANT INTERRUPT STREAM_RING
+     * @tc.desc      : STREAM_VOICE_ASSISTANT INTERRUPT STREAM_RING
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_INTERUPT_AUDIO_0600', 2, async function (done) {
+        let interrput_flag = false;
+        let AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+            channels: audio.AudioChannel.CHANNEL_1,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+        }
+        // STREAM_RING
+        let AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_RINGTONE,
+            usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
+            rendererFlags: 0
+        }
+
+        let AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        try {
+            let audioRen;
+            await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+                audioRen = data;
+                console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS data state: ' + Object.keys(data));
+                console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS data value: ' + JSON.stringify(data));
+            }).catch((err) => {
+                console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
+            });
+
+            audioRen.on('interrupt',async (interruptEvent)=>{
+                console.info("AudioFrameworkRenderLog: InterruptType : " + interruptEvent.eventType);
+                console.info("AudioFrameworkRenderLog: InterruptForceType : " + interruptEvent.forceType);
+                console.info("AudioFrameworkRenderLog: InterruptHint : " + interruptEvent.hintType);
+                if (interruptEvent.hintType >= 0) {
+                    console.info("AudioFrameworkRenderLog: on'interrupt' SUCCESS ");
+                    interrput_flag = true;
+                }
+            });
+
+            let a = await audioRen.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE);
+            console.info("AudioFrameworkRenderLog audioRen setInterruptMode(INDEPENDENT_MODE) success");
+
+            await audioRen.start().then(async function () {
+                console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
+            }).catch((err) => {
+                console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : ' + err.message);
+            });
+            await sleep(1000);
+            // STREAM_VOICE_ASSISTANT
+            let AudioRendererInfo_interrupt = {
+                content: audio.ContentType.CONTENT_TYPE_MUSIC,
+                usage: audio.StreamUsage.STREAM_USAGE_VOICE_ASSISTANT,
+                rendererFlags: 0
+            }
+
+            let AudioRendererOptions_interrupt = {
+                streamInfo: AudioStreamInfo,
+                rendererInfo: AudioRendererInfo_interrupt
+            }
+
+            let audioRen_interrupt;
+            await audio.createAudioRenderer(AudioRendererOptions_interrupt).then(async function (data) {
+                audioRen_interrupt = data;
+                console.info('AudioFrameworkRenderLog: AudioRender2 Created : Success : Stream Type: SUCCESS data state: ' + Object.keys(data));
+                console.info('AudioFrameworkRenderLog: AudioRender2 Created : Success : Stream Type: SUCCESS data value: ' + JSON.stringify(data));
+            }).catch((err) => {
+                console.info('AudioFrameworkRenderLog: AudioRender2 Created : ERROR : ' + err.message);
+            });
+
+            let b = await audioRen_interrupt.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE);
+            console.info("AudioFrameworkRenderLog audioRen_interrupt setInterruptMode(INDEPENDENT_MODE) success");
+
+            await audioRen_interrupt.start().then(async function () {
+                console.info('AudioFrameworkRenderLog: renderInstant2 started :SUCCESS ');
+            }).catch((err) => {
+                console.info('AudioFrameworkRenderLog: renderInstant2 start :ERROR : ' + err.message);
+            });
+            await sleep(2000);
+            expect(interrput_flag).assertFalse();
+        }
+        catch (error) {
+            console.log("SUB_MULTIMEDIA_AUDIO_RENDERER_INTERUPT_AUDIO_0600 : error = " + error);
+            expect(false).assertTrue();
+        }
+        done();
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_INTERUPT_AUDIO_0700
+     * @tc.name      : STREAM_VOICE_ASSISTANT INTERRUPT STREAM_MUSIC
+     * @tc.desc      : STREAM_VOICE_ASSISTANT INTERRUPT STREAM_MUSIC
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_INTERUPT_AUDIO_0700', 2, async function (done) {
+        let interrput_flag = false;
+        let AudioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+            channels: audio.AudioChannel.CHANNEL_1,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+        }
+        // STREAM_MUSIC
+        let AudioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_MUSIC,
+            usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
+            rendererFlags: 0
+        }
+
+        let AudioRendererOptions = {
+            streamInfo: AudioStreamInfo,
+            rendererInfo: AudioRendererInfo
+        }
+
+        try {
+            let audioRen;
+            await audio.createAudioRenderer(AudioRendererOptions).then(async function (data) {
+                audioRen = data;
+                console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS data state: ' + Object.keys(data));
+                console.info('AudioFrameworkRenderLog: AudioRender Created : Success : Stream Type: SUCCESS data value: ' + JSON.stringify(data));
+            }).catch((err) => {
+                console.info('AudioFrameworkRenderLog: AudioRender Created : ERROR : ' + err.message);
+            });
+
+            audioRen.on('interrupt',async (interruptEvent)=>{
+                console.info("AudioFrameworkRenderLog: InterruptType : " + interruptEvent.eventType);
+                console.info("AudioFrameworkRenderLog: InterruptForceType : " + interruptEvent.forceType);
+                console.info("AudioFrameworkRenderLog: InterruptHint : " + interruptEvent.hintType);
+                if (interruptEvent.hintType >= 0) {
+                    console.info("AudioFrameworkRenderLog: on'interrupt' SUCCESS ");
+                    interrput_flag = true;
+                }
+            });
+
+            let a = await audioRen.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE);
+            console.info("AudioFrameworkRenderLog audioRen setInterruptMode(INDEPENDENT_MODE) success");
+
+            await audioRen.start().then(async function () {
+                console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
+            }).catch((err) => {
+                console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : ' + err.message);
+            });
+            await sleep(1000);
+            // STREAM_VOICE_ASSISTANT
+            let AudioRendererInfo_interrupt = {
+                content: audio.ContentType.CONTENT_TYPE_MUSIC,
+                usage: audio.StreamUsage.STREAM_USAGE_VOICE_ASSISTANT,
+                rendererFlags: 0
+            }
+
+            let AudioRendererOptions_interrupt = {
+                streamInfo: AudioStreamInfo,
+                rendererInfo: AudioRendererInfo_interrupt
+            }
+
+            let audioRen_interrupt;
+            await audio.createAudioRenderer(AudioRendererOptions_interrupt).then(async function (data) {
+                audioRen_interrupt = data;
+                console.info('AudioFrameworkRenderLog: AudioRender2 Created : Success : Stream Type: SUCCESS data state: ' + Object.keys(data));
+                console.info('AudioFrameworkRenderLog: AudioRender2 Created : Success : Stream Type: SUCCESS data value: ' + JSON.stringify(data));
+            }).catch((err) => {
+                console.info('AudioFrameworkRenderLog: AudioRender2 Created : ERROR : ' + err.message);
+            });
+
+            let b = await audioRen_interrupt.setInterruptMode(audio.InterruptMode.INDEPENDENT_MODE);
+            console.info("AudioFrameworkRenderLog audioRen_interrupt setInterruptMode(INDEPENDENT_MODE) success");
+
+            await audioRen_interrupt.start().then(async function () {
+                console.info('AudioFrameworkRenderLog: renderInstant2 started :SUCCESS ');
+            }).catch((err) => {
+                console.info('AudioFrameworkRenderLog: renderInstant2 start :ERROR : ' + err.message);
+            });
+            await sleep(2000);
+            expect(interrput_flag).assertTrue();
+        }
+        catch (error) {
+            console.log("SUB_MULTIMEDIA_AUDIO_RENDERER_INTERUPT_AUDIO_0700 : error = " + error);
+            expect(false).assertTrue();
+        }
+        done();
+    })
+
+    /**
      * @tc.number    : SUB_MULTIMEDIA_AUDIO_SETINTERRUPTMODE_0100
      * @tc.name      : SetInterruptMode mode 0 callback,is public share mode
      * @tc.desc      : SetInterruptMode mode 0 callback,is public share mode
