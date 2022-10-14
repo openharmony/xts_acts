@@ -97,7 +97,7 @@ lite_component("acts_component") {
 
   if (ohos_build_type == "debug" && ohos_test_args != "notest") {
     _all_features = ""
-    _product_json = rebase_path("${product_path}/config.json")
+    _product_json = rebase_path("${product_config_path}/config.json")
     foreach(one_feature, all_features) {
       _all_features = _all_features + one_feature + ","
     }
