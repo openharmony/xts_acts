@@ -66,7 +66,7 @@ export default function pasteBoardJEtsunitTest() {
               console.info('f_test1: primaryText = ' + primaryText);
 
               console.info('Checks pasteboard MAX_RECORD_NUM' + pasteboard.MAX_RECORD_NUM);
-              expect(pasteboard.MAX_RECORD_NUM == 128).assertTrue();
+              expect(pasteboard.MAX_RECORD_NUM == 512).assertTrue();
 
               console.info('Checks PasteDataProperty.localOnly')
               var pasteDataProperty = pasteData1.getProperty()
