@@ -1931,7 +1931,7 @@ describe('window_test', function () {
                 done();
             },(err) => {
                 console.log('screenshotTest setScreenActiveModeTest2 setScreenActiveMode -5 failed: err' + JSON.stringify(err));
-                expect(err.code).assertEqual(-1);
+                expect(err.code).assertEqual(1400003);
                 done();
             })
         })
