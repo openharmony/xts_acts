@@ -298,9 +298,9 @@ describe('CameraManagerTest', function () {
       * @tc.desc      : Create camera manager instance async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
-      * @tc.level     : Level 0
+      * @tc.level     : Level 2
     */
-    it('SUB_MULTIMEDIA_CAMERA_GET_CAMERA_MANAGER_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_GET_CAMERA_MANAGER_CALLBACK_0100', 2, async function (done) {
         console.info("--------------SUB_MULTIMEDIA_CAMERA_GET_CAMERA_MANAGER_0100--------------");
         cameraObj.getCameraManager(null, async (err, data) => {
             if (!err) {
@@ -324,9 +324,9 @@ describe('CameraManagerTest', function () {
       * @tc.desc      : Create camera manager instance promise api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
-      * @tc.level     : Level 0
+      * @tc.level     : Level 2
     */
-    it('SUB_MULTIMEDIA_CAMERA_GET_CAMERA_MANAGER_PROMISE_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_GET_CAMERA_MANAGER_PROMISE_0100', 2, async function (done) {
       console.info("--------------SUB_MULTIMEDIA_CAMERA_GET_CAMERA_MANAGER_PROMISE_0100--------------");
         let cameraManagerPromise = await cameraObj.getCameraManager(null);
         expect(isEmpty(cameraManagerPromise)).assertFalse();
@@ -341,12 +341,12 @@ describe('CameraManagerTest', function () {
       * @tc.desc      : Get camera from cameramanager to get array of camera async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
-      * @tc.level     : Level 0
+      * @tc.level     : Level 2
     */
-    it('SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_CALLBACK_0100', 2, async function (done) {
         console.info("--------------SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_CALLBACK_0100--------------");
         if (isEmpty(mCameraManager)) {
-            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_PROMISE_0100 cameraManager == null || undefined")
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_CALLBACK_0100 cameraManager == null || undefined")
             expect().assertFail();
         }
         mCameraManager.getSupportedCameras(async (err, data) => {
@@ -399,9 +399,9 @@ describe('CameraManagerTest', function () {
       * @tc.desc      : Get camera from cameramanager to get array of camera promise api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
-      * @tc.level     : Level 0
+      * @tc.level     : Level 2
     */
-    it('SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_PROMISE_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_PROMISE_0100', 2, async function (done) {
         console.info("--------------SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_PROMISE_0100--------------");
         if (isEmpty(mCameraManager)) {
             console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_PROMISE_0100 cameraManager == null || undefined")
@@ -445,9 +445,9 @@ describe('CameraManagerTest', function () {
       * @tc.desc      : Get supported preview formats from camera-0 camerainput async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
-      * @tc.level     : Level 0
+      * @tc.level     : Level 2
     */
-    it('SUB_MULTIMEDIA_CAMERA_GET_SUPPORTED_CAMERA_OUTPUT_CAPABILITY_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_GET_SUPPORTED_CAMERA_OUTPUT_CAPABILITY_CALLBACK_0100', 2, async function (done) {
         console.info("--------------SUB_MULTIMEDIA_CAMERA_GET_SUPPORTED_CAMERA_OUTPUT_CAPABILITY_CALLBACK_0100--------------");
         let camerasArray = mCameraDevicesArray;
         for (let i = 0; i < camerasArray.length; i++) {
@@ -494,9 +494,9 @@ describe('CameraManagerTest', function () {
       * @tc.desc      : Get supported preview formats from camera-0 camerainput promise api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
-      * @tc.level     : Level 0
+      * @tc.level     : Level 2
     */
-    it('SUB_MULTIMEDIA_CAMERA_GET_SUPPORTED_CAMERA_OUTPUT_CAPABILITY_PROMISE_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_GET_SUPPORTED_CAMERA_OUTPUT_CAPABILITY_PROMISE_0100', 2, async function (done) {
         console.info("--------------SUB_MULTIMEDIA_CAMERA_GET_SUPPORTED_CAMERA_OUTPUT_CAPABILITY_PROMISE_0100--------------");
         for (let i = 0; i < mCameraDevicesArray.length; i++) {
             let cameraOutputCap = await getSupportedOutputCapabilityInPromise(mCameraDevicesArray[i]);
@@ -542,9 +542,9 @@ describe('CameraManagerTest', function () {
       * @tc.desc      : Get supported preview formats from camera-0 camerainput promise api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
-      * @tc.level     : Level 0
+      * @tc.level     : Level 2
     */
-    it('SUB_MULTIMEDIA_CAMERA_PREVIEW_PROFILES_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_PREVIEW_PROFILES_0100', 2, async function (done) {
         console.info("--------------SUB_MULTIMEDIA_CAMERA_PREVIEW_PROFILES_0100--------------");
         let camerasArray = mCameraDevicesArray;
         for (let i = 0; i < camerasArray.length; i++) {
@@ -581,9 +581,9 @@ describe('CameraManagerTest', function () {
       * @tc.desc      : Get supported preview formats from camera-0 camerainput promise api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
-      * @tc.level     : Level 0
+      * @tc.level     : Level 2
     */
-    it('SUB_MULTIMEDIA_CAMERA_PHOTO_PROFILES_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_PROFILES_0100', 2, async function (done) {
         console.info("--------------SUB_MULTIMEDIA_CAMERA_PHOTO_PROFILES_0100--------------");
         let camerasArray = mCameraDevicesArray;
         for (let i = 0; i < camerasArray.length; i++) {
@@ -620,9 +620,9 @@ describe('CameraManagerTest', function () {
       * @tc.desc      : Get supported preview formats from camera-0 camerainput promise api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
-      * @tc.level     : Level 0
+      * @tc.level     : Level 2
     */
-    it('SUB_MULTIMEDIA_CAMERA_VIDEO_PROFILES_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_VIDEO_PROFILES_0100', 2, async function (done) {
         console.info("--------------SUB_MULTIMEDIA_CAMERA_VIDEO_PROFILES_0100--------------");
         let camerasArray = mCameraDevicesArray;
         for (let i = 0; i < camerasArray.length; i++) {
@@ -662,9 +662,9 @@ describe('CameraManagerTest', function () {
       * @tc.desc      : Create camerainput from camera-0 cameraId async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
-      * @tc.level     : Level 0
+      * @tc.level     : Level 2
     */
-    it('SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_INPUT_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_INPUT_CALLBACK_0100', 2, async function (done) {
         console.info("--------------SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_INPUT_CALLBACK_0100--------------");
         if (isEmpty(mCameraManager)) {
             console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_INPUT_CALLBACK_0100 cameraManager == null || undefined")
@@ -698,9 +698,9 @@ describe('CameraManagerTest', function () {
       * @tc.desc      : Create camerainput from camera-0 cameraId promise api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
-      * @tc.level     : Level 0
+      * @tc.level     : Level 2
     */
-    it('SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_INPUT_PROMISE_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_INPUT_PROMISE_0100', 2, async function (done) {
         console.info("--------------SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_INPUT_PROMISE_0100--------------");
         if (isEmpty(mCameraManager)) {
             console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_INPUT_PROMISE_0100 cameraManager == null || undefined")
@@ -729,9 +729,9 @@ describe('CameraManagerTest', function () {
       * @tc.desc      : Create camerainput from camera-0 cameraposition front & cameratype unspecified async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
-      * @tc.level     : Level 0
+      * @tc.level     : Level 2
     */
-    it('SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_PREVIEW_OUTPUT_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_PREVIEW_OUTPUT_CALLBACK_0100', 2, async function (done) {
         console.info("--------------SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_PREVIEW_OUTPUT_CALLBACK_0100--------------");
         let camerasArray = mCameraDevicesArray;
         for (let i = 0; i < camerasArray.length; i++) {
@@ -766,9 +766,9 @@ describe('CameraManagerTest', function () {
       * @tc.desc      : Create camerainput from camera-0 cameraposition front & cameratype unspecified async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
-      * @tc.level     : Level 0
+      * @tc.level     : Level 2
     */
-    it('SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_PREVIEW_OUTPUT_PROMISE_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_PREVIEW_OUTPUT_PROMISE_0100', 2, async function (done) {
         console.info("--------------SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_PREVIEW_OUTPUT_PROMISE_0100--------------");
         let camerasArray = mCameraDevicesArray;
         for (let i = 0; i < camerasArray.length; i++) {
@@ -805,9 +805,9 @@ describe('CameraManagerTest', function () {
       * @tc.desc      : Create camerainput from camera-0 cameraposition front & cameratype unspecified async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
-      * @tc.level     : Level 0
+      * @tc.level     : Level 2
     */
-    it('SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_PHOTO_OUTPUT_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_PHOTO_OUTPUT_CALLBACK_0100', 2, async function (done) {
         console.info("--------------SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_PHOTO_OUTPUT_CALLBACK_0100--------------");
         let camerasArray = mCameraDevicesArray;
         for (let i = 0; i < camerasArray.length; i++) {
@@ -845,9 +845,9 @@ describe('CameraManagerTest', function () {
       * @tc.desc      : Create camerainput from camera-0 cameraposition front & cameratype unspecified async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
-      * @tc.level     : Level 0
+      * @tc.level     : Level 2
     */
-    it('SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_PHOTO_OUTPUT_PROMISE_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_PHOTO_OUTPUT_PROMISE_0100', 2, async function (done) {
         console.info("--------------SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_PHOTO_OUTPUT_PROMISE_0100--------------");
         let camerasArray = mCameraDevicesArray;
         for (let i = 0; i < camerasArray.length; i++) {
@@ -884,9 +884,9 @@ describe('CameraManagerTest', function () {
       * @tc.desc      : Create camerainput from camera-0 cameraposition front & cameratype unspecified async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
-      * @tc.level     : Level 0
+      * @tc.level     : Level 2
     */
-    it('SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_VIDEO_OUTPUT_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_VIDEO_OUTPUT_CALLBACK_0100', 2, async function (done) {
         console.info("--------------SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_VIDEO_OUTPUT_CALLBACK_0100--------------");
         let camerasArray = mCameraDevicesArray;
         for (let i = 0; i < camerasArray.length; i++) {
@@ -924,9 +924,9 @@ describe('CameraManagerTest', function () {
       * @tc.desc      : Create camerainput from camera-0 cameraposition front & cameratype unspecified async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
-      * @tc.level     : Level 0
+      * @tc.level     : Level 2
     */
-    it('SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_VIDEO_OUTPUT_PROMISE_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_VIDEO_OUTPUT_PROMISE_0100', 2, async function (done) {
         console.info("--------------SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_VIDEO_OUTPUT_PROMISE_0100--------------");
         let camerasArray = mCameraDevicesArray;
         for (let i = 0; i < camerasArray.length; i++) {
@@ -963,9 +963,9 @@ describe('CameraManagerTest', function () {
       * @tc.desc      : Create CaptureSession instance api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
-      * @tc.level     : Level 0
+      * @tc.level     : Level 2
     */
-     it('SUB_MULTIMEDIA_CAMERA_CREATE_CAPTURE_SESSION_CALLBACK_0100', 0, async function (done) {
+     it('SUB_MULTIMEDIA_CAMERA_CREATE_CAPTURE_SESSION_CALLBACK_0100', 2, async function (done) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_CAPTURE_SESSION_CALLBACK_0100 to operate");
         let cameraSession;
         mCameraManager.createCaptureSession(async (err, data) => {
@@ -997,9 +997,9 @@ describe('CameraManagerTest', function () {
       * @tc.desc      : Create Capturesession instance promise api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
-      * @tc.level     : Level 0
+      * @tc.level     : Level 2
     */
-    it('SUB_MULTIMEDIA_CAMERA_CREATE_CAPTURE_SESSION_PROMISE_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_CREATE_CAPTURE_SESSION_PROMISE_0100', 2, async function (done) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_CAPTURE_SESSION_PROMISE_0100 to operate");
         let captureSessionPromise = await mCameraManager.createCaptureSession();
         if (isEmpty(captureSessionPromise)) {
@@ -1018,9 +1018,9 @@ describe('CameraManagerTest', function () {
       * @tc.desc      : camera status callback on CameraManager async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
-      * @tc.level     : Level 0
+      * @tc.level     : Level 2
     */
-    it('SUB_MULTIMEDIA_CAMERA_CAMERA_STATUS_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_CAMERA_CAMERA_STATUS_CALLBACK_0100', 2, async function (done) {
         if (isEmpty(mCameraManager)) {
             console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAMERA_STATUS_CALLBACK_0100 cameraManager == null || undefined")
             expect().assertFail();
