@@ -47,6 +47,14 @@ var subscriberInfo = {
 var caseDepBundles = [];
 var subscriber = null;
 
+const ERROR_CODE_INVALID_PARAM = 401;
+const ERROR_CODE_CALLER_RELEASED = 16200001;
+const ERROR_CODE_CLAAEE_INVALID = 16200002;
+const ERROR_CODE_FUNC_REGISTERED = 16200004;
+const ERROR_CODE_FUNC_NOT_EXIST = 16200005;
+const ERROR_CODE_INNER_ERROR = 16000050;
+const ERROR_CODE_TYPE_ERROR = 16000002;
+
 class MySequenceable {
   num: number = 0;
   str: String = "default";
@@ -588,19 +596,21 @@ export default function abilityTest() {
      */
     it('ACTS_CommonComponent_Call_1700', 0, async function (done) {
       console.log('ACTS_CommonComponent_Call_1700 begin');
-      var caller;
       var exceptionFlag = false;
 
-      try {
-        caller = await globalThis.globalThis.abilityContext.startAbilityByCall({
-          bundleName: systemAppCalleeABundleName,
-          abilityName: systemAppCalleeAThirdAbilityName,
-        });
-      } catch(err) {
-        console.log('ACTS_CommonComponent_Call_1700 exception' + err);
+      await globalThis.globalThis.abilityContext.startAbilityByCall({
+        bundleName: systemAppCalleeABundleName,
+        abilityName: systemAppCalleeAThirdAbilityName,
+      }).then(data => {
+        expect().assertFail();
+        done();
+      }).catch(err => {
+        console.log('ACTS_CommonComponent_Call_1700 call err.code: ' + JSON.stringify(err.code) +
+        ' err.msg: ' + JSON.stringify(err.message));
+        expect(err.code).assertEqual(ERROR_CODE_TYPE_ERROR);
         exceptionFlag = true;
-        expect(err.message).assertEqual("function request remote error");
-      }
+      });
+
       expect(exceptionFlag).assertEqual(true);
       done();
     })
@@ -655,8 +665,9 @@ export default function abilityTest() {
       try {
         globalThis.callee.on('', onTest);
       } catch (err) {
-        console.log('ACTS_CommonComponent_Call_3100 callee.on err' + err);
-        expect(err.message).assertEqual("function input parameter error");
+        console.log('ACTS_CommonComponent_Call_3100 call err.code: ' + JSON.stringify(err.code) +
+        ' err.msg: ' + JSON.stringify(err.message));
+        expect(err.code).assertEqual(ERROR_CODE_INVALID_PARAM);
         finishFlag = 1;
       }
 
@@ -680,8 +691,9 @@ export default function abilityTest() {
       try {
         globalThis.callee.on(null, onTest);
       } catch (err) {
-        console.log('ACTS_CommonComponent_Call_3200 callee.on err' + err);
-        expect(err.message).assertEqual("function input parameter error");
+        console.log('ACTS_CommonComponent_Call_3200 call err.code: ' + JSON.stringify(err.code) +
+        ' err.msg: ' + JSON.stringify(err.message));
+        expect(err.code).assertEqual(ERROR_CODE_INVALID_PARAM);
         finishFlag = 1;
       }
 
@@ -705,8 +717,9 @@ export default function abilityTest() {
       try {
         globalThis.callee.on(undefined, onTest);
       } catch (err) {
-        console.log('ACTS_CommonComponent_Call_3300 callee.on err' + err);
-        expect(err.message).assertEqual("function input parameter error");
+        console.log('ACTS_CommonComponent_Call_3300 call err.code: ' + JSON.stringify(err.code) +
+        ' err.msg: ' + JSON.stringify(err.message));
+        expect(err.code).assertEqual(ERROR_CODE_INVALID_PARAM);
         finishFlag = 1;
       }
 
@@ -726,8 +739,9 @@ export default function abilityTest() {
       try {
         globalThis.callee.off('');
       } catch (err) {
-        console.log('ACTS_CommonComponent_Call_3400 callee.off err' + err);
-        expect(err.message).assertEqual("function input parameter error");
+        console.log('ACTS_CommonComponent_Call_3400 call err.code: ' + JSON.stringify(err.code) +
+        ' err.msg: ' + JSON.stringify(err.message));
+        expect(err.code).assertEqual(ERROR_CODE_INVALID_PARAM);
         finishFlag = 1;
       }
 
@@ -747,8 +761,9 @@ export default function abilityTest() {
       try {
         globalThis.callee.off(null);
       } catch (err) {
-        console.log('ACTS_CommonComponent_Call_3500 callee.off err' + err);
-        expect(err.message).assertEqual("function input parameter error");
+        console.log('ACTS_CommonComponent_Call_3500 call err.code: ' + JSON.stringify(err.code) +
+        ' err.msg: ' + JSON.stringify(err.message));
+        expect(err.code).assertEqual(ERROR_CODE_INVALID_PARAM);
         finishFlag = 1;
       }
 
@@ -768,8 +783,9 @@ export default function abilityTest() {
       try {
         globalThis.callee.off(undefined);
       } catch (err) {
-        console.log('ACTS_CommonComponent_Call_3600 callee.off err' + err);
-        expect(err.message).assertEqual("function input parameter error");
+        console.log('ACTS_CommonComponent_Call_3600 call err.code: ' + JSON.stringify(err.code) +
+        ' err.msg: ' + JSON.stringify(err.message));
+        expect(err.code).assertEqual(ERROR_CODE_INVALID_PARAM);
         finishFlag = 1;
       }
 
@@ -788,8 +804,9 @@ export default function abilityTest() {
       try {
         globalThis.callee.on('testCall', "");
       } catch (err) {
-        console.log('ACTS_CommonComponent_Call_4300 call err' + err);
-        expect(err.message).assertEqual("function input parameter error");
+        console.log('ACTS_CommonComponent_Call_4300 call err.code: ' + JSON.stringify(err.code) +
+        ' err.msg: ' + JSON.stringify(err.message));
+        expect(err.code).assertEqual(ERROR_CODE_INVALID_PARAM);
         finishFlag = 1;
       }
 
@@ -808,8 +825,9 @@ export default function abilityTest() {
       try {
         globalThis.callee.on('testCall', null);
       } catch (err) {
-        console.log('ACTS_CommonComponent_Call_4400 call err' + err);
-        expect(err.message).assertEqual("function input parameter error");
+        console.log('ACTS_CommonComponent_Call_4400 call err.code: ' + JSON.stringify(err.code) +
+          ' err.msg: ' + JSON.stringify(err.message));
+        expect(err.code).assertEqual(ERROR_CODE_INVALID_PARAM);
         finishFlag = 1;
       }
 
@@ -828,8 +846,9 @@ export default function abilityTest() {
       try {
         globalThis.callee.on('testCall', undefined);
       } catch (err) {
-        console.log('ACTS_CommonComponent_Call_4500 call err' + err);
-        expect(err.message).assertEqual("function input parameter error");
+        console.log('ACTS_CommonComponent_Call_4500 call err.code: ' + JSON.stringify(err.code) +
+        ' err.msg: ' + JSON.stringify(err.message));
+        expect(err.code).assertEqual(ERROR_CODE_INVALID_PARAM);
         finishFlag = 1;
       }
 
@@ -861,8 +880,9 @@ export default function abilityTest() {
       try {
         globalThis.callee.on('ACTS_CommonComponent_Call_5000', testCallback_5100);
       } catch (err) {
-        console.log('ACTS_CommonComponent_Call_5000 call err' + err);
-        expect(err.message).assertEqual("function is registered");
+        console.log('ACTS_CommonComponent_Call_5000 call err.code: ' + JSON.stringify(err.code) +
+        ' err.msg: ' + JSON.stringify(err.message));
+        expect(err.code).assertEqual(ERROR_CODE_FUNC_REGISTERED);
         finishFlag = 1;
       }
 
@@ -897,8 +917,9 @@ export default function abilityTest() {
       try {
         globalThis.callee.off('ACTS_CommonComponent_Call_5100');
       } catch (err) {
-        console.log('ACTS_CommonComponent_Call_5100 call err' + err);
-        expect(err.message).assertEqual("function not registered");
+        console.log('ACTS_CommonComponent_Call_5100 call err.code: ' + JSON.stringify(err.code) +
+        ' err.msg: ' + JSON.stringify(err.message));
+        expect(err.code).assertEqual(ERROR_CODE_FUNC_NOT_EXIST);
         finishFlag = 1;
       }
 
@@ -914,17 +935,19 @@ export default function abilityTest() {
       */
     it('ACTS_CommonComponent_Call_5200', 0, async function (done) {
       console.log('ACTS_CommonComponent_Call_5200 begin');
-      let caller;
       let exceptionFlag = false;
 
-      try {
-        caller = await globalThis.globalThis.abilityContext.startAbilityByCall(null);
-        console.log('ACTS_CommonComponent_Call_5200 startAbilityByCall' + JSON.stringify(caller))
-      } catch(err) {
-        console.log('ACTS_CommonComponent_Call_5200 exception' + err);
-        exceptionFlag = true;
-        expect(err.message).assertEqual("function input parameter error");
-      }
+
+        await globalThis.globalThis.abilityContext.startAbilityByCall(null)
+          .then(data => {
+            expect().assertFail();
+            done();
+        }).catch(err => {
+            console.log('ACTS_CommonComponent_Call_5200 call err.code: ' + JSON.stringify(err.code) +
+            ' err.msg: ' + JSON.stringify(err.message));
+          expect(err.code).assertEqual(ERROR_CODE_INVALID_PARAM);
+          exceptionFlag = true;
+        });
 
       expect(exceptionFlag).assertEqual(true);
       done();
@@ -937,20 +960,20 @@ export default function abilityTest() {
       */
     it('ACTS_CommonComponent_Call_5300', 0, async function (done) {
       console.log('ACTS_CommonComponent_Call_5300 begin');
-      let caller;
       let exceptionFlag = false;
 
-      try {
-        caller = await globalThis.globalThis.abilityContext.startAbilityByCall({
-          bundleName: "",
-          abilityName: "",
-        });
-        console.log('ACTS_CommonComponent_Call_5300 startAbilityByCall' + JSON.stringify(caller))
-      } catch(err) {
-        console.log('ACTS_CommonComponent_Call_5300 exception' + err);
+      await globalThis.globalThis.abilityContext.startAbilityByCall({
+        bundleName: "",
+        abilityName: "",
+      }).then(data => {
+        expect().assertFail();
+        done();
+      }).catch(err => {
+        console.log('ACTS_CommonComponent_Call_5300 call err.code: ' + JSON.stringify(err.code) +
+        ' err.msg: ' + JSON.stringify(err.message));
+        expect(err.code).assertEqual(ERROR_CODE_INNER_ERROR);
         exceptionFlag = true;
-        expect(err.message).assertEqual("function request remote error");
-      }
+      });
 
       expect(exceptionFlag).assertEqual(true);
       done();
@@ -963,17 +986,18 @@ export default function abilityTest() {
       */
     it('ACTS_CommonComponent_Call_5400', 0, async function (done) {
       console.log('ACTS_CommonComponent_Call_5400 begin');
-      let caller;
       let exceptionFlag = false;
 
-      try {
-        caller = await globalThis.globalThis.abilityContext.startAbilityByCall(undefined);
-        console.log('ACTS_CommonComponent_Call_5400 startAbilityByCall' + JSON.stringify(caller))
-      } catch(err) {
-        console.log('ACTS_CommonComponent_Call_5400 exception' + err);
+      await globalThis.globalThis.abilityContext.startAbilityByCall(undefined)
+        .then(data => {
+          expect().assertFail();
+          done();
+      }).catch(err => {
+          console.log('ACTS_CommonComponent_Call_5400 call err.code: ' + JSON.stringify(err.code) +
+          ' err.msg: ' + JSON.stringify(err.message));
+        expect(err.code).assertEqual(ERROR_CODE_INVALID_PARAM);
         exceptionFlag = true;
-        expect(err.message).assertEqual("function input parameter error");
-      }
+      });
 
       expect(exceptionFlag).assertEqual(true);
       done();
