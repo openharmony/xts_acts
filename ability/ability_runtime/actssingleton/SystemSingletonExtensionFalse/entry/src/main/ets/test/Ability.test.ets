@@ -183,24 +183,31 @@ export default function singleusermodelTest() {
          */
         it('ACTS_ExtensionSingleUserModel_1600', 0, async function(done){
             console.log("ACTS_ExtensionSingleUserModel_1600====>callback start====>");
-            let connId;
 
-            console.debug("====>start connectAbilityWithAccount====>");
-            connId = globalThis.abilityContext.connectAbilityWithAccount(
-                {
-                    bundleName: "com.singleusermodel.actssingleusertest",
-                    abilityName: "ServiceAbility3",
-                    action: "StartAbilityPromise"
-                },
-                null,
-                {
-                    onConnect: onConnectCallbackC,
-                    onDisconnect: onDisconnectCallbackC,
-                    onFailed: onFailedCallbackC,
-                }
-            );
-            console.log('ACTS_ExtensionSingleUserModel_1600====>StartConnectNative ' +
-            'connectAbilityWithAccount connId : ' + connId);
+            try {
+                let connId;
+                console.debug("====>start connectAbilityWithAccount====>");
+                connId = globalThis.abilityContext.connectAbilityWithAccount(
+                    {
+                        bundleName: "com.singleusermodel.actssingleusertest",
+                        abilityName: "ServiceAbility3",
+                        action: "StartAbilityPromise"
+                    },
+                    null,
+                    {
+                        onConnect: onConnectCallbackC,
+                        onDisconnect: onDisconnectCallbackC,
+                        onFailed: onFailedCallbackC,
+                    }
+                );
+                console.log('ACTS_ExtensionSingleUserModel_1600====>StartConnectNative ' +
+                'connectAbilityWithAccount connId : ' + connId);
+            } catch (err) {
+                let e = err.toString()
+                let errLog = "Invalid input parameter"
+                console.debug("====>e====>" + e);
+                expect(e.indexOf(errLog) >= 0).assertTrue()
+            }
 
             setTimeout(async()=> {
                 let abilityDelegator = undefined
@@ -323,22 +330,31 @@ export default function singleusermodelTest() {
          */
         it('ACTS_ExtensionSingleUserModel_1900', 0, async function(done){
             console.log("ACTS_ExtensionSingleUserModel_1900====>callback start====>");
-            let connId;
-            connId = globalThis.abilityContext.connectAbilityWithAccount(
-                {
-                    bundleName: "com.singleusermodel.actssingleusertest",
-                    abilityName: "ServiceAbility5",
-                    action: "StartAbilityPromise"
-                },
-                undefined,
-                {
-                    onConnect: onConnectCallbackE,
-                    onDisconnect: onDisconnectCallbackE,
-                    onFailed: onFailedCallbackE,
-                }
-            );
-            console.log('ACTS_ExtensionSingleUserModel_1900====>StartConnectNative ' +
-            'connectAbilityWithAccount connId : ' + connId);
+
+            try {
+                let connId;
+                connId = globalThis.abilityContext.connectAbilityWithAccount(
+                    {
+                        bundleName: "com.singleusermodel.actssingleusertest",
+                        abilityName: "ServiceAbility5",
+                        action: "StartAbilityPromise"
+                    },
+                    undefined,
+                    {
+                        onConnect: onConnectCallbackE,
+                        onDisconnect: onDisconnectCallbackE,
+                        onFailed: onFailedCallbackE,
+                    }
+                );
+                console.log('ACTS_ExtensionSingleUserModel_1900====>StartConnectNative ' +
+                'connectAbilityWithAccount connId : ' + connId);
+            } catch (err) {
+                let e = err.toString()
+                let errLog = "Invalid input parameter"
+                console.debug("====>e====>" + e);
+                expect(e.indexOf(errLog) >= 0).assertTrue()
+            }
+
             setTimeout(async()=> {
                 let abilityDelegator = undefined
                 abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()

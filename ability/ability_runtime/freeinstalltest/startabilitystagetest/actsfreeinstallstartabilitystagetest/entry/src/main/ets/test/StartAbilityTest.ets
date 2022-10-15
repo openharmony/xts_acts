@@ -24,7 +24,9 @@ import Prompt from '@system.prompt';
 import abilityManager from '@ohos.application.abilityManager';
 import commonEvent from '@ohos.commonEvent';
 
-
+const SYSTEM_INNER_ERROR = 16000050
+const ERR_COMPONENT_NOF_FOUND = 16000001
+const ERR_NOT_TOP = 16000053
 export default function startAbilityTest(abilityContext) {
 
   describe('startAbilityTest', function () {
@@ -228,7 +230,7 @@ export default function startAbilityTest(abilityContext) {
         console.log(TAG + ": startAbility success. data: " + JSON.stringify(data));
       }).catch((error) => {
         console.log(TAG + ": startAbility fail. err: " + JSON.stringify(error));
-        expect(error.code == 4).assertTrue();
+        expect(error.code == SYSTEM_INNER_ERROR).assertTrue();
       });
       await sleep(2000);
       console.info("------------end FreeInstall_Stage_Local_StartAbility_0300-------------");
@@ -504,7 +506,7 @@ export default function startAbilityTest(abilityContext) {
         console.log(TAG + ": startAbility success. data: " + JSON.stringify(data));
       }).catch((error) => {
         console.log(TAG + ": startAbility fail. err: " + JSON.stringify(error));
-        expect(error.code == 1).assertTrue();
+        expect(error.code == ERR_COMPONENT_NOF_FOUND).assertTrue();
       });
       await sleep(2000);
       console.info("------------end FreeInstall_Stage_Local_StartAbility_1100-------------");
@@ -568,7 +570,7 @@ export default function startAbilityTest(abilityContext) {
         console.log(TAG + ": startAbility success. data: " + JSON.stringify(data));
       }).catch((error) => {
         console.log(TAG + ": startAbility fail. err: " + JSON.stringify(error));
-        expect(error.code == 1).assertTrue();
+        expect(error.code == ERR_COMPONENT_NOF_FOUND).assertTrue();
       });
       await sleep(2000);
       console.info("------------end FreeInstall_Stage_Local_StartAbility_1300-------------");
@@ -632,7 +634,7 @@ export default function startAbilityTest(abilityContext) {
         console.log(TAG + ": startAbility success. data: " + JSON.stringify(data));
       }).catch((error) => {
         console.log(TAG + ": startAbility fail. err: " + JSON.stringify(error));
-        expect(error.code == 1).assertTrue();
+        expect(error.code == ERR_COMPONENT_NOF_FOUND).assertTrue();
       });
       await sleep(2000);
       console.info("------------end FreeInstall_Stage_Local_StartAbility_1500-------------");
@@ -694,7 +696,7 @@ export default function startAbilityTest(abilityContext) {
         console.log(TAG + ": startAbility success. data: " + JSON.stringify(data));
       }).catch((error) => {
         console.log(TAG + ": startAbility fail. err: " + JSON.stringify(error));
-        expect(error.code == 1).assertTrue();
+        expect(error.code == ERR_COMPONENT_NOF_FOUND).assertTrue();
       });
       await sleep(2000);
       console.info("------------end FreeInstall_Stage_Local_StartAbility_1700-------------");
@@ -831,7 +833,7 @@ export default function startAbilityTest(abilityContext) {
         console.log(TAG + ": startAbility success. data: " + JSON.stringify(data));
       }).catch((error) => {
         console.log(TAG + ": startAbility fail. err: " + JSON.stringify(error));
-        expect(error.code == 13).assertTrue();
+        expect(error.code == ERR_NOT_TOP).assertTrue();
       });
       await sleep(2000);
       console.info("------------end FreeInstall_Stage_Local_StartAbility_2300-------------");
@@ -866,7 +868,7 @@ export default function startAbilityTest(abilityContext) {
         console.log(TAG + ": startAbility success. data: " + JSON.stringify(data));
       }).catch((error) => {
         console.log(TAG + ": startAbility fail. err: " + JSON.stringify(error));
-        expect(error.code == 13).assertTrue();
+        expect(error.code == ERR_NOT_TOP).assertTrue();
       });
       await sleep(2000);
       console.info("------------end FreeInstall_Stage_Local_StartAbility_2400-------------");
@@ -914,7 +916,7 @@ export default function startAbilityTest(abilityContext) {
         console.log(TAG + ": startAbility success. data: " + JSON.stringify(data));
       }).catch((error) => {
         console.log(TAG + ": startAbility fail. err: " + JSON.stringify(error));
-        expect(error.code == 3).assertTrue();
+        expect(error.code == SYSTEM_INNER_ERROR).assertTrue();
       });
       await sleep(2000);
       console.info("------------end FreeInstall_Stage_Local_StartAbility_2500-------------");
@@ -1010,7 +1012,7 @@ export default function startAbilityTest(abilityContext) {
         console.log(TAG + ": startAbility success. data: " + JSON.stringify(data));
       }).catch((error) => {
         console.log(TAG + ": startAbility fail. err: " + JSON.stringify(error));
-        expect(error.code == 4).assertTrue();
+        expect(error.code == SYSTEM_INNER_ERROR).assertTrue();
       });
       await sleep(2000);
       console.info("------------end FreeInstall_Stage_Local_StartAbility_3100-------------");
@@ -1049,7 +1051,7 @@ export default function startAbilityTest(abilityContext) {
         console.log(TAG + ": startAbility success. data: " + JSON.stringify(data));
       }).catch((error) => {
         console.log(TAG + ": startAbility fail. err: " + JSON.stringify(error));
-        expect(error.code == 1).assertTrue();
+        expect(error.code == SYSTEM_INNER_ERROR).assertTrue();
       });
       await sleep(2000);
       console.info("------------end FreeInstall_Stage_Local_StartAbility_3200-------------");
@@ -1077,7 +1079,7 @@ export default function startAbilityTest(abilityContext) {
         console.log(TAG + ": startAbility success. data: " + JSON.stringify(data));
       }).catch((error) => {
         console.log(TAG + ": startAbility fail. err: " + JSON.stringify(error));
-        expect(error.code == 1).assertTrue();
+        expect(error.code == SYSTEM_INNER_ERROR).assertTrue();
       });
       await sleep(2000);
       console.info("------------end FreeInstall_Stage_Local_StartAbility_3300-------------");
@@ -1181,7 +1183,7 @@ export default function startAbilityTest(abilityContext) {
         console.log(TAG + ": startAbility success. data: " + JSON.stringify(data));
       }).catch((error) => {
         console.log(TAG + ": startAbility fail. err: " + JSON.stringify(error));
-        expect(error.code == 13).assertTrue();
+        expect(error.code == ERR_NOT_TOP).assertTrue();
       });
       await sleep(2000);
       console.info("------------end FreeInstall_Stage_Local_StartAbility_1900-------------");
@@ -1228,7 +1230,7 @@ export default function startAbilityTest(abilityContext) {
         console.log(TAG + ": startAbility success. data: " + JSON.stringify(data));
       }).catch((error) => {
         console.log(TAG + ": startAbility fail. err: " + JSON.stringify(error));
-        expect(error.code == 13).assertTrue();
+        expect(error.code == ERR_NOT_TOP).assertTrue();
       });
       await sleep(2000);
       console.info("------------end FreeInstall_Stage_Local_StartAbility_2000-------------");

@@ -46,9 +46,13 @@ export default class MainAbility extends Ability {
 
   onForeground() {
     console.log("MainAbility3 onForeground")
-    globalThis.abilityContext3.terminateSelfWithResult({
-      resultCode: 1
-    })
+
+    try {
+        globalThis.abilityContext3.terminateSelfWithResult({
+            resultCode: 1
+          })
+    } catch (error) {
+    }
   }
 
   onBackground() {
