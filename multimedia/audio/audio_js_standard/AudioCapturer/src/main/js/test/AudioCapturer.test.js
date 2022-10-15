@@ -1711,6 +1711,34 @@ describe('audioCapturer', function () {
     })
 
     /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_1300
+     *@tc.name      : AudioRec-Set11 , SourceType set SOURCE_TYPE_VOICE_RECOGNITION
+     *@tc.desc      : record audio with parameter set 011
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+     it('SUB_MULTIMEDIA_AUDIO_VOIP_REC_VOICE_CHAT_PROMISE_1300', 2, async function (done) {
+        let audioStreamInfo64000 = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_64000,
+            channels: audio.AudioChannel.CHANNEL_2,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW,
+        };
+        let audioCapturerInfo64000 = {
+            source: audio.SourceType.SOURCE_TYPE_VOICE_RECOGNITION,
+            capturerFlags: 0
+        }
+        let audioCapturerOptions64000 = {
+            streamInfo: audioStreamInfo64000,
+            capturerInfo: audioCapturerInfo64000,
+        }
+
+        await getFd("capture_js-64000-2C-32B.pcm");
+        await recPromise(audioCapturerOptions64000, done);
+    })
+
+    /**
      *@tc.number    : SUB_MULTIMEDIA_AUDIO_RECORD_PROMISE_AUDIO_SCENE_DEFAULT_0100
      *@tc.name      : AudioRec-Set1
      *@tc.desc      : record audio with parameter set 1
