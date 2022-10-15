@@ -8,7 +8,7 @@
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or impligetProfileByAbilityEmptyAbilityCalled.
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
@@ -16,8 +16,8 @@
 import manager from '@ohos.bundle.bundleManager';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 
-const MODULE_NAME = "phone"
-const MODULE_NAME_TEST = "phone1"
+const MODULE_NAME = "testModule"
+const MODULE_NAME_TEST = "testModule1"
 const ABILITY_NAME = "ohos.acts.bundle.stage.test.MainAbility"
 const ABILITY_NAME1 = "ohos.acts.bundle.stage.test.MainAbility1"
 const ABILITY_NAME_TEST = "ohos.acts.bundle.stage.test.MainAbilityTest"
@@ -170,8 +170,9 @@ export default function getProfileByAbility() {
     */
     it('getProfileByAbilityCallback', 0, async function (done) {
       manager.getProfileByAbility(MODULE_NAME, ABILITY_NAME, METADATA_NAME, (err, data) => {
-        console.info('[getProfileByAbilityCallback] getApplicationInfo callback data is: ' + JSON.stringify(data));
+        console.info('[getProfileByAbilityCallback] getProfileByAbility callback data is: ' + JSON.stringify(data));
         expect(Array.isArray(data)).assertTrue();
+        expect(data.length).assertEqual(1);
         expect(typeof data[0]).assertEqual("string");
         expect(data[0]).assertEqual(PROFILE_JSON_STRING);
         done();
@@ -200,12 +201,15 @@ export default function getProfileByAbility() {
     */
     it('getProfileByAbilityEmptyMetaDataCall', 0, async function (done) {
       manager.getProfileByAbility(MODULE_NAME, ABILITY_NAME, '', (err, data) => {
-        console.info('[getProfileByAbilityEmptyMetaDataCall] getApplicationInfo callback data is: ' + JSON.stringify(data));
+        console.info('[getProfileByAbilityEmptyMetaDataCall] getProfileByAbility callback data is: ' + JSON.stringify(data));
         expect(Array.isArray(data)).assertTrue();
+        expect(data.length).assertEqual(3);
         expect(typeof data[0]).assertEqual("string");
         expect(data[0]).assertEqual(PROFILE_JSON_STRING);
         expect(typeof data[1]).assertEqual("string");
         expect(data[1]).assertEqual(PROFILE_JSON_STRING);
+        expect(typeof data[2]).assertEqual("string");
+        expect(data[2]).assertEqual(PROFILE_JSON_STRING);
         done();
       });
     })
@@ -218,8 +222,9 @@ export default function getProfileByAbility() {
     */
     it('getProfileByAbilityPromise', 0, async function (done) {
       await manager.getProfileByAbility(MODULE_NAME, ABILITY_NAME, METADATA_NAME).then(data => {
-        console.info('[getProfileByAbilityPromise] getApplicationInfo callback data is: ' + JSON.stringify(data));
+        console.info('[getProfileByAbilityPromise] getProfileByAbility callback data is: ' + JSON.stringify(data));
         expect(Array.isArray(data)).assertTrue();
+        expect(data.length).assertEqual(1);
         expect(typeof data[0]).assertEqual("string");
         expect(data[0]).assertEqual(PROFILE_JSON_STRING);
         done();
@@ -238,7 +243,7 @@ export default function getProfileByAbility() {
     */
     it('getProfileByAbilityInvalidMetaDataPro', 0, async function (done) {
       await manager.getProfileByAbility(MODULE_NAME, ABILITY_NAME, METADATA_NAME_TEST).then(data => {
-        console.info('[getProfileByAbilityInvalidMetaDataPro] getApplicationInfo callback data is: ' + JSON.stringify(data));
+        console.info('[getProfileByAbilityInvalidMetaDataPro] getProfileByAbility callback data is: ' + JSON.stringify(data));
         done()
       }).catch(err => {
         console.error('[getProfileByAbilityInvalidMetaDataPro]Operation failed. Cause: ' + JSON.stringify(err));
@@ -255,12 +260,15 @@ export default function getProfileByAbility() {
     */
     it('getProfileByAbilityEmptyMetaDataPro', 0, async function (done) {
       await manager.getProfileByAbility(MODULE_NAME, ABILITY_NAME, '').then(data => {
-        console.info('[getProfileByAbilityEmptyMetaDataPro] getApplicationInfo callback data is: ' + JSON.stringify(data));
+        console.info('[getProfileByAbilityEmptyMetaDataPro] getProfileByAbility callback data is: ' + JSON.stringify(data));
         expect(Array.isArray(data)).assertTrue();
+        expect(data.length).assertEqual(3);
         expect(typeof data[0]).assertEqual("string");
         expect(data[0]).assertEqual(PROFILE_JSON_STRING);
         expect(typeof data[1]).assertEqual("string");
         expect(data[1]).assertEqual(PROFILE_JSON_STRING);
+        expect(typeof data[2]).assertEqual("string");
+        expect(data[2]).assertEqual(PROFILE_JSON_STRING);
         done();
       }).catch(err => {
         console.error('[getProfileByAbilityEmptyMetaDataPro]Operation failed. Cause: ' + JSON.stringify(err));
@@ -277,12 +285,15 @@ export default function getProfileByAbility() {
     */
     it('getProfileByAbilityNoMetaDataPro', 0, async function (done) {
       await manager.getProfileByAbility(MODULE_NAME, ABILITY_NAME).then(data => {
-        console.info('[getProfileByAbilityNoMetaDataPro] getApplicationInfo callback data is: ' + JSON.stringify(data));
+        console.info('[getProfileByAbilityNoMetaDataPro] getProfileByAbility callback data is: ' + JSON.stringify(data));
         expect(Array.isArray(data)).assertTrue();
+        expect(data.length).assertEqual(3);
         expect(typeof data[0]).assertEqual("string");
         expect(data[0]).assertEqual(PROFILE_JSON_STRING);
         expect(typeof data[1]).assertEqual("string");
         expect(data[1]).assertEqual(PROFILE_JSON_STRING);
+        expect(typeof data[2]).assertEqual("string");
+        expect(data[2]).assertEqual(PROFILE_JSON_STRING);
         done();
       }).catch(err => {
         console.error('[getProfileByAbilityNoMetaDataPro]Operation failed. Cause: ' + JSON.stringify(err));
@@ -299,7 +310,7 @@ export default function getProfileByAbility() {
     */
     it('getProfileByAbilityNoProfilePro', 0, async function (done) {
       await manager.getProfileByAbility(MODULE_NAME, ABILITY_NAME1).then(data => {
-        console.info('[getProfileByAbilityNoProfilePro] getApplicationInfo callback data is: ' + JSON.stringify(data));
+        console.info('[getProfileByAbilityNoProfilePro] getProfileByAbility callback data is: ' + JSON.stringify(data));
         expect(data).assertFail()
         done();
       }).catch(err => {
@@ -317,7 +328,7 @@ export default function getProfileByAbility() {
     */
     it('getProfileByAbilityNotPrefixPro', 0, async function (done) {
       await manager.getProfileByAbility(MODULE_NAME, ABILITY_NAME, METADATA_NAME2).then(data => {
-        console.info('[getProfileByAbilityNotPrefixPro] getApplicationInfo callback data is: ' + JSON.stringify(data));
+        console.info('[getProfileByAbilityNotPrefixPro] getProfileByAbility callback data is: ' + JSON.stringify(data));
         expect(data).assertFail()
         done();
       }).catch(err => {
@@ -349,8 +360,9 @@ export default function getProfileByAbility() {
     */
     it('getProfileByAbilityNotSuffixPro', 0, async function (done) {
       await manager.getProfileByAbility(MODULE_NAME, ABILITY_NAME, METADATA_NAME3).then(data => {
-        console.info('[getProfileByAbilityNotSuffixPro] getApplicationInfo callback data is: ' + JSON.stringify(data));
+        console.info('[getProfileByAbilityNotSuffixPro] getProfileByAbility callback data is: ' + JSON.stringify(data));
         expect(Array.isArray(data)).assertTrue();
+        expect(data.length).assertEqual(1);
         expect(typeof data[0]).assertEqual("string");
         done();
       }).catch(err => {
@@ -368,8 +380,9 @@ export default function getProfileByAbility() {
     */
     it('getProfileByAbilityNotSuffixCall', 0, async function (done) {
       manager.getProfileByAbility(MODULE_NAME, ABILITY_NAME, METADATA_NAME3, (err, data) => {
-        console.info('[getProfileByAbilityNotSuffixCall] getApplicationInfo callback data is: ' + JSON.stringify(data));
+        console.info('[getProfileByAbilityNotSuffixCall] getProfileByAbility callback data is: ' + JSON.stringify(data));
         expect(Array.isArray(data)).assertTrue();
+        expect(data.length).assertEqual(1);
         expect(typeof data[0]).assertEqual("string");
         done();
       });

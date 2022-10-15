@@ -1,12 +1,12 @@
 {
     "string":  [
         {
-            "name": "phone_entry_dsc",
-            "value": "i am an entry for phone"
+            "name": "testModule_entry_dsc",
+            "value": "i am an entry for testModule"
         },
         {
-            "name": "phone_entry_main",
-            "value": "the phone entry ability"
+            "name": "testModule_entry_main",
+            "value": "the testModule entry ability"
         },
         {
             "name": "entry_label",

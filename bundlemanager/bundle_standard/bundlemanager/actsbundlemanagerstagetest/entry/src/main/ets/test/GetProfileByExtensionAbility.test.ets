@@ -16,8 +16,8 @@
 import manager from '@ohos.bundle.bundleManager';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 
-const MODULE_NAME = "phone"
-const MODULE_NAME_TEST = "phone1"
+const MODULE_NAME = "testModule"
+const MODULE_NAME_TEST = "testModule1"
 const ABILITY_NAME = "Form"
 const ABILITY_NAME1 = "Form1"
 const ABILITY_NAME_TEST = "FromTest"
@@ -170,8 +170,9 @@ export default function getProfileByExtensionAbility() {
     */
     it('getProfileByExtensionAbilityCallback', 0, async function (done) {
       manager.getProfileByExtensionAbility(MODULE_NAME, ABILITY_NAME, METADATA_NAME, (err, data) => {
-        console.info('[getProfileByExtensionAbilityCallback] getApplicationInfo callback data is: ' + JSON.stringify(data));
+        console.info('[getProfileByExtensionAbilityCallback] getProfileByExtensionAbility callback data is: ' + JSON.stringify(data));
         expect(Array.isArray(data)).assertTrue();
+        expect(data.length).assertEqual(1);
         expect(typeof data[0]).assertEqual("string");
         expect(data[0]).assertEqual(PROFILE_JSON_STRING);
         done();
@@ -200,12 +201,15 @@ export default function getProfileByExtensionAbility() {
     */
     it('getProfileByExtensionAbilityEmptyMetaDataCall', 0, async function (done) {
       manager.getProfileByExtensionAbility(MODULE_NAME, ABILITY_NAME, '', (err, data) => {
-        console.info('[getProfileByExtensionAbilityEmptyMetaDataCall] getApplicationInfo callback data is: ' + JSON.stringify(data));
+        console.info('[getProfileByExtensionAbilityEmptyMetaDataCall] getProfileByExtensionAbility callback data is: ' + JSON.stringify(data));
         expect(Array.isArray(data)).assertTrue();
+        expect(data.length).assertEqual(3);
         expect(typeof data[0]).assertEqual("string");
         expect(data[0]).assertEqual(PROFILE_JSON_STRING);
         expect(typeof data[1]).assertEqual("string");
         expect(data[1]).assertEqual(PROFILE_JSON_STRING);
+        expect(typeof data[2]).assertEqual("string");
+        expect(data[2]).assertEqual(PROFILE_JSON_STRING);
         done();
       });
     })
@@ -218,8 +222,9 @@ export default function getProfileByExtensionAbility() {
     */
     it('getProfileByExtensionAbilityPromise', 0, async function (done) {
       await manager.getProfileByExtensionAbility(MODULE_NAME, ABILITY_NAME, METADATA_NAME).then(data => {
-        console.info('[getProfileByExtensionAbilityPromise] getApplicationInfo callback data is: ' + JSON.stringify(data));
+        console.info('[getProfileByExtensionAbilityPromise] getProfileByExtensionAbility callback data is: ' + JSON.stringify(data));
         expect(Array.isArray(data)).assertTrue();
+        expect(data.length).assertEqual(1);
         expect(typeof data[0]).assertEqual("string");
         expect(data[0]).assertEqual(PROFILE_JSON_STRING);
         done();
@@ -238,7 +243,7 @@ export default function getProfileByExtensionAbility() {
     */
     it('getProfileByExtensionAbilityInvalidMetaDataPro', 0, async function (done) {
       await manager.getProfileByExtensionAbility(MODULE_NAME, ABILITY_NAME, METADATA_NAME_TEST).then(data => {
-        console.info('[getProfileByExtensionAbilityInvalidMetaDataPro] getApplicationInfo callback data is: ' + JSON.stringify(data));
+        console.info('[getProfileByExtensionAbilityInvalidMetaDataPro] getProfileByExtensionAbility callback data is: ' + JSON.stringify(data));
         expect().assertFail();
         done()
       }).catch(err => {
@@ -256,12 +261,15 @@ export default function getProfileByExtensionAbility() {
     */
     it('getProfileByExtensionAbilityEmptyMetaDataPro', 0, async function (done) {
       await manager.getProfileByExtensionAbility(MODULE_NAME, ABILITY_NAME, '').then(data => {
-        console.info('[getProfileByExtensionAbilityEmptyMetaDataPro] getApplicationInfo callback data is: ' + JSON.stringify(data));
+        console.info('[getProfileByExtensionAbilityEmptyMetaDataPro] getProfileByExtensionAbility callback data is: ' + JSON.stringify(data));
         expect(Array.isArray(data)).assertTrue();
+        expect(data.length).assertEqual(3);
         expect(typeof data[0]).assertEqual("string");
         expect(data[0]).assertEqual(PROFILE_JSON_STRING);
         expect(typeof data[1]).assertEqual("string");
         expect(data[1]).assertEqual(PROFILE_JSON_STRING);
+        expect(typeof data[2]).assertEqual("string");
+        expect(data[2]).assertEqual(PROFILE_JSON_STRING);
         done();
       }).catch(err => {
         console.error('[getProfileByExtensionAbilityEmptyMetaDataPro]Operation failed. Cause: ' + JSON.stringify(err));
@@ -278,12 +286,15 @@ export default function getProfileByExtensionAbility() {
     */
     it('getProfileByExtensionAbilityNoMetaDataPro', 0, async function (done) {
       await manager.getProfileByExtensionAbility(MODULE_NAME, ABILITY_NAME).then(data => {
-        console.info('[getProfileByExtensionAbilityNoMetaDataPro] getApplicationInfo callback data is: ' + JSON.stringify(data));
+        console.info('[getProfileByExtensionAbilityNoMetaDataPro] getProfileByExtensionAbility callback data is: ' + JSON.stringify(data));
         expect(Array.isArray(data)).assertTrue();
+        expect(data.length).assertEqual(3);
         expect(typeof data[0]).assertEqual("string");
         expect(data[0]).assertEqual(PROFILE_JSON_STRING);
         expect(typeof data[1]).assertEqual("string");
         expect(data[1]).assertEqual(PROFILE_JSON_STRING);
+        expect(typeof data[2]).assertEqual("string");
+        expect(data[2]).assertEqual(PROFILE_JSON_STRING);
         done();
       }).catch(err => {
         console.error('[getProfileByExtensionAbilityNoMetaDataPro]Operation failed. Cause: ' + JSON.stringify(err));
@@ -300,7 +311,7 @@ export default function getProfileByExtensionAbility() {
     */
     it('getProfileByExtensionAbilityNoProfilePro', 0, async function (done) {
       await manager.getProfileByExtensionAbility(MODULE_NAME, ABILITY_NAME1).then(data => {
-        console.info('[getProfileByExtensionAbilityNoProfilePro] getApplicationInfo callback data is: ' + JSON.stringify(data));
+        console.info('[getProfileByExtensionAbilityNoProfilePro] getProfileByExtensionAbility callback data is: ' + JSON.stringify(data));
         expect().assertFail();
         done();
       }).catch(err => {
@@ -318,7 +329,7 @@ export default function getProfileByExtensionAbility() {
     */
     it('getProfileByExtensionAbilityNotPrefixPro', 0, async function (done) {
       await manager.getProfileByExtensionAbility(MODULE_NAME, ABILITY_NAME, METADATA_NAME2).then(data => {
-        console.info('[getProfileByExtensionAbilityNotPrefixPro] getApplicationInfo callback data is: ' + JSON.stringify(data));
+        console.info('[getProfileByExtensionAbilityNotPrefixPro] getProfileByExtensionAbility callback data is: ' + JSON.stringify(data));
         expect().assertFail();
         done();
       }).catch(err => {
@@ -350,8 +361,9 @@ export default function getProfileByExtensionAbility() {
     */
     it('getProfileByExtensionAbilityNotSuffixPro', 0, async function (done) {
       await manager.getProfileByExtensionAbility(MODULE_NAME, ABILITY_NAME, METADATA_NAME3).then(data => {
-        console.info('[getProfileByExtensionAbilityNotSuffixPro] getApplicationInfo callback data is: ' + JSON.stringify(data));
+        console.info('[getProfileByExtensionAbilityNotSuffixPro] getProfileByExtensionAbility callback data is: ' + JSON.stringify(data));
         expect(Array.isArray(data)).assertTrue();
+        expect(data.length).assertEqual(1);
         expect(typeof data[0]).assertEqual("string");
         done();
       }).catch(err => {
@@ -369,8 +381,9 @@ export default function getProfileByExtensionAbility() {
     */
     it('getProfileByExtensionAbilityNotSuffixCall', 0, async function (done) {
       manager.getProfileByExtensionAbility(MODULE_NAME, ABILITY_NAME, METADATA_NAME3, (err, data) => {
-        console.info('[getProfileByExtensionAbilityNotSuffixCall] getApplicationInfo callback data is: ' + JSON.stringify(data));
+        console.info('[getProfileByExtensionAbilityNotSuffixCall] getProfileByExtensionAbility callback data is: ' + JSON.stringify(data));
         expect(Array.isArray(data)).assertTrue();
+        expect(data.length).assertEqual(1);
         expect(typeof data[0]).assertEqual("string");
         done();
       });
