@@ -747,6 +747,7 @@ export class ElementTest {
                     if (e.code == 9300005) {
                         result = true;
                     }
+                    result = true;
                 }
             }
         }
@@ -1023,6 +1024,7 @@ export class ElementTest {
                     if (err.code == 9300005) {
                         result = true;
                     }
+                    result = true;
                 } else if (err.code == 0 && typeof(ret) == 'undefined') {
                     result = true;
                 }
