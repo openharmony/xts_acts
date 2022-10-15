@@ -51,7 +51,7 @@ describe('AccessibleAbilityList', function () {
         console.info('AbilityList_0210');
         let abilityType = 'audible';
         accessibility.getAbilityLists(abilityType, abilityState, (err, data) => {
-            if (err.code != 0) {
+            if (err && err.code != 0) {
                 console.error(`AccessibleAbilityList: AbilityList_0210 has error: ${err.code}`);
                 expect(null).assertFail();
                 done();
@@ -74,7 +74,7 @@ describe('AccessibleAbilityList', function () {
         console.info('AbilityList_0220');
         let abilityType = 'generic';
         accessibility.getAbilityLists(abilityType, abilityState, (err, data) => {
-            if (err.code != 0) {
+            if (err && err.code != 0) {
                 console.error(`AccessibleAbilityList: AbilityList_0220 has error: ${err.code}`);
                 expect(null).assertFail();
                 done();
@@ -97,7 +97,7 @@ describe('AccessibleAbilityList', function () {
         console.info('AbilityList_0230');
         let abilityType = 'haptic';
         accessibility.getAbilityLists(abilityType, abilityState, (err, data) => {
-            if (err.code != 0) {
+            if (err && err.code != 0) {
                 console.error(`AccessibleAbilityList: AbilityList_0230 has error: ${err.code}`);
                 expect(null).assertFail();
                 done();
@@ -120,7 +120,7 @@ describe('AccessibleAbilityList', function () {
         console.info('AbilityList_0240');
         let abilityType = 'spoken';
         accessibility.getAbilityLists(abilityType, abilityState, (err, data) => {
-            if (err.code != 0) {
+            if (err && err.code != 0) {
                 console.error(`AccessibleAbilityList: AbilityList_0240 has error: ${err.code}`);
                 expect(null).assertFail();
                 done();
@@ -143,7 +143,7 @@ describe('AccessibleAbilityList', function () {
         console.info('AbilityList_0250');
         let abilityType = 'visual';
         accessibility.getAbilityLists(abilityType, abilityState, (err, data) => {
-            if (err.code != 0) {
+            if (err && err.code != 0) {
                 console.error(`AccessibleAbilityList: AbilityList_0250 has error: ${err.code}`);
                 expect(null).assertFail();
                 done();
@@ -166,7 +166,7 @@ describe('AccessibleAbilityList', function () {
         console.info('AbilityList_0260');
         let abilityType = 'all';
         accessibility.getAbilityLists(abilityType, abilityState, (err, data) => {
-            if (err.code != 0) {
+            if (err && err.code != 0) {
                 console.error(`AccessibleAbilityList: AbilityList_0260 has error: ${err.code}`);
                 expect(null).assertFail();
                 done();
@@ -189,7 +189,7 @@ describe('AccessibleAbilityList', function () {
         console.info('AbilityList_0270');
         let abilityType = '';
         accessibility.getAbilityLists(abilityType, abilityState, (err, data) => {
-            if (err.code != 0) {
+            if (err && err.code != 0) {
                 console.error(`AccessibleAbilityList: AbilityList_0270 has error: ${err.code}`);
                 expect(Array.isArray(data)).assertEqual(true);
                 done();
@@ -212,7 +212,7 @@ describe('AccessibleAbilityList', function () {
         console.info('AbilityList_0280');
         let abilityType = null;
         accessibility.getAbilityLists(abilityType, abilityState, (err, data) => {
-            if (err.code != 0) {
+            if (err && err.code != 0) {
                 console.error(`AccessibleAbilityList: AbilityList_0280 has error: ${err.code}`);
                 expect(Array.isArray(data)).assertEqual(true);
                 done();
@@ -235,7 +235,7 @@ describe('AccessibleAbilityList', function () {
         console.info('AbilityList_0290');
         let abilityState = 'enable';
         accessibility.getAbilityLists(abilityType, abilityState, (err, data) => {
-            if (err.code != 0) {
+            if (err && err.code != 0) {
                 console.error(`AccessibleAbilityList: AbilityList_0290 has error: ${err.code}`);
                 expect(null).assertFail();
                 done();
@@ -258,7 +258,7 @@ describe('AccessibleAbilityList', function () {
         console.info('AbilityList_0300');
         let abilityState = 'disable';
         accessibility.getAbilityLists(abilityType, abilityState, (err, data) => {
-            if (err.code != 0) {
+            if (err && err.code != 0) {
                 console.error(`AccessibleAbilityList: AbilityList_0300 has error: ${err.code}`);
                 expect(null).assertFail();
                 done();
@@ -281,7 +281,7 @@ describe('AccessibleAbilityList', function () {
         console.info('AbilityList_0310');
         let abilityState = 'install';
         accessibility.getAbilityLists(abilityType, abilityState, (err, data) => {
-            if (err.code != 0) {
+            if (err && err.code != 0) {
                 console.error(`AccessibleAbilityList: AbilityList_0310 has error: ${err.code}`);
                 expect(null).assertFail();
                 done();
@@ -304,7 +304,7 @@ describe('AccessibleAbilityList', function () {
         console.info('AbilityList_0320');
         let abilityState = '';
         accessibility.getAbilityLists(abilityType, abilityState, (err, data) => {
-            if (err.code != 0) {
+            if (err && err.code != 0) {
                 console.error(`AccessibleAbilityList: AbilityList_0320 has error: ${err.code}`);
                 expect(Array.isArray(data)).assertEqual(true);
                 done();
@@ -327,7 +327,7 @@ describe('AccessibleAbilityList', function () {
         console.info('AbilityList_0330');
         let abilityState = null;
         accessibility.getAbilityLists(abilityType, abilityState, (err, data) => {
-            if (err.code != 0) {
+            if (err && err.code != 0) {
                 console.error(`AccessibleAbilityList: AbilityList_0330 has error: ${err.code}`);
                 expect(Array.isArray(data)).assertEqual(true);
                 done();
@@ -470,49 +470,6 @@ describe('AccessibleAbilityList', function () {
         });
     })
 
-    /*
-    * @tc.number  AbilityList_0400
-    * @tc.name    AbilityList_0400
-    * @tc.desc    The parameters input are '' and 'install', test the getAbilityLists() function,
-    *             and the output is the list of AccessibilityAbilityInfo
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-    it('AbilityList_0400', 0, async function (done) {
-        console.info('AbilityList_0400');
-        let abilityType = '';
-        accessibility.getAbilityLists(abilityType, abilityState).then((result) => {
-            console.info(`AccessibleAbilityList: AbilityList_0400 result ${result.length}`);
-            expect(Array.isArray(result)).assertEqual(true);
-            done();
-        }).catch((err) => {
-            console.error(`AccessibleAbilityList: AbilityList_0400 has error: ${err}`);
-            expect(null).assertFail();
-            done();
-        });
-    })
-
-    /*
-    * @tc.number  AbilityList_0410
-    * @tc.name    AbilityList_0410
-    * @tc.desc    The parameters input are null and 'install', test the getAbilityLists() function,
-    *             and the output is the list of AccessibilityAbilityInfo
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-     it('AbilityList_0410', 0, async function (done) {
-        console.info('AbilityList_0410');
-        let abilityType = null;
-        accessibility.getAbilityLists(abilityType, abilityState).then((result) => {
-            console.info(`AccessibleAbilityList: AbilityList_0410 result ${result.length}`);
-            expect(Array.isArray(result)).assertEqual(true);
-            done();
-        }).catch((err) => {
-            console.error(`AccessibleAbilityList: AbilityList_0410 has error: ${err}`);
-            expect(null).assertFail();
-            done();
-        });
-    })
 
     /*
     * @tc.number  AbilityList_0420
@@ -575,50 +532,6 @@ describe('AccessibleAbilityList', function () {
             done();
         }).catch((err) => {
             console.error(`AccessibleAbilityList: AbilityList_0440 has error: ${err}`);
-            expect(null).assertFail();
-            done();
-        });
-    })
-
-    /*
-    * @tc.number  AbilityList_0450
-    * @tc.name    AbilityList_0450
-    * @tc.desc    The parameters input are 'all' and '', test the getAbilityLists() function,
-    *             and the output is the list of AccessibilityAbilityInfo
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-    it('AbilityList_0450', 0, async function (done) {
-        console.info('AbilityList_0450');
-        let abilityState = '';
-        accessibility.getAbilityLists(abilityType, abilityState).then((result) => {
-            console.info(`AccessibleAbilityList: AbilityList_0450 result ${result.length}`);
-            expect(Array.isArray(result)).assertEqual(true);
-            done();
-        }).catch((err) => {
-            console.error(`AccessibleAbilityList: AbilityList_0450 has error: ${err}`);
-            expect(null).assertFail();
-            done();
-        });
-    })
-
-    /*
-    * @tc.number  AbilityList_0460
-    * @tc.name    AbilityList_0460
-    * @tc.desc    The parameters input are 'all' and null, test the getAbilityLists() function,
-    *             and the output is the list of AccessibilityAbilityInfo
-    * @tc.size    SmallTest
-    * @tc.type    User
-    */
-    it('AbilityList_0460', 0, async function (done) {
-        console.info('AbilityList_0460');
-        let abilityState = null;
-        accessibility.getAbilityLists(abilityType, abilityState).then((result) => {
-            console.info(`AccessibleAbilityList: AbilityList_0460 result ${result.length}`);
-            expect(Array.isArray(result)).assertEqual(true);
-            done();
-        }).catch((err) => {
-            console.error(`AccessibleAbilityList: AbilityList_0460 has error: ${err}`);
             expect(null).assertFail();
             done();
         });

@@ -19,7 +19,7 @@ group("barrierfree") {
     deps = [
       "accessibilityconfig:ActsAccessibilityConfigTest",
       "accessibilityconfigreqreadpermission:ActsAccessibilityConfigReqReadPermissionTest",
-      "accessibilityconfigreqwritepermission:ActsAccessibilityConfigReqWritePermissionTest",
+      #"accessibilityconfigreqwritepermission:ActsAccessibilityConfigReqWritePermissionTest",
       "accessibilityelement:ActsAccessibilityElementTest",
       "accessibilityevent:ActsAccessibilityEventTest",
       "accessibilityextension:ActsAccessibilityExtensionTest",
@@ -30,6 +30,8 @@ group("barrierfree") {
       "accessiblecheckability:ActsAccessibleCheckAbilityTest",
       "accessibleregisterstate:ActsAccessibleRegisterStateTest",
       "accessiblesendevent:ActsAccessibleSendEventTest",
+      "accessibilityerrcode:ActsAccessibilityErrCodeTest",
+      "accessibilitysendaccessibilityevent:ActsAccessibilitySendAccessibilityEventTest",
       "accessibletest:actsaccessibletest",
       "targetProject/aceTest:aceTest",
     ]
