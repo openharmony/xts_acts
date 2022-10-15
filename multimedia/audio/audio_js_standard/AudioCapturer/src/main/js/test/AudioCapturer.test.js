@@ -1023,7 +1023,7 @@ describe('audioCapturer', function () {
             encodingType: 0
         }
         let AudioCapturerInfo = {
-            source: 1,
+            source: 3,
             capturerFlags: 0
         }
         let AudioCapturerOptions = {
@@ -1165,7 +1165,7 @@ describe('audioCapturer', function () {
             encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW,
         };
         let audioCapturerInfo96000 = {
-            source: audio.SourceType.SOURCE_TYPE_MIC,
+            source: audio.SourceType.SOURCE_TYPE_VOICE_RECOGNITION,
             capturerFlags: 0
         }
         let audioCapturerOptions96000 = {
