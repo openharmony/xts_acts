@@ -127,17 +127,17 @@ describe('CameraInputTest', function () {
     });
 
     /**
-          * @tc.number    : SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_ON_CALLBACK_0100
+          * @tc.number    : SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_ON_ERROR_0100
           * @tc.name      : callback Camera with cameraInput on api
           * @tc.desc      : callback Camera with cameraInput on api
           * @tc.size      : MEDIUM
           * @tc.type      : Function
           * @tc.level     : Level 0
         */
-     it('SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_ON_CALLBACK_0100', 0, async function (done) {
-        console.info("--------------SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_ON_CALLBACK_0100--------------");
+     it('SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_ON_ERROR_0100', 0, async function (done) {
+        console.info("--------------SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_ON_ERROR_0100--------------");
         if (isEmpty(mCameraManager)) {
-            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_ON_CALLBACK_0100 cameraManager == null || undefined");
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_ON_ERROR_0100 cameraManager == null || undefined");
             expect().assertFail();
         } else {
             let camerasArray = mCameraDevicesArray;
@@ -155,7 +155,7 @@ describe('CameraInputTest', function () {
                 });
             }
         }
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_ON_CALLBACK_0100 ends here");
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAMERA_INPUT_ON_ERROR_0100 ends here");
         await sleep(1000);
         done();
     });
