@@ -404,7 +404,7 @@ export default function mediaLibraryTestCallback(abilityContext) {
          * @tc.level     : Level 0
          */
         it('SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETFILEASSETS_007', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETFILEASSETS_006';
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CALLBACK_GETFILEASSETS_007';
             let currentFetchOps = imageAndVideoAndfileAndAudiofetchOp;
             let type = 'audio';
             let count = 4;
@@ -729,7 +729,7 @@ export default function mediaLibraryTestCallback(abilityContext) {
         });
 
         /**
-       * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CALLBACK_CREATEASSET_001
+       * @tc.number    : SUB_MEDIA_MEDIALIBRARY_CALLBACK_CREATEASSET_009
        * @tc.name      : createAsset
        * @tc.desc      : Create File Asset image (does not exist)
        * @tc.size      : MEDIUM
@@ -737,7 +737,7 @@ export default function mediaLibraryTestCallback(abilityContext) {
        * @tc.level     : Level 0
        */
         it('SUB_MEDIA_MEDIALIBRARY_CALLBACK_CREATEASSET_009', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CALLBACK_CREATEASSET_001';
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_CALLBACK_CREATEASSET_009';
             let currentFetchOps = fetchOps(testNum, 'Pictures/Static/', IMAGE_TYPE);
             let type = IMAGE_TYPE;
             let name = new Date().getTime() + '.jpg';

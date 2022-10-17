@@ -160,13 +160,13 @@ export default function fileAssetPromise2Test(abilityContext) {
         });
 
         /**
-                 * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_005
-                 * @tc.name      : commitModify
-                 * @tc.desc      : Modify uri
-                 * @tc.size      : MEDIUM
-                 * @tc.type      : Function
-                 * @tc.level     : Level 0
-                 */
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_005
+         * @tc.name      : commitModify
+         * @tc.desc      : Modify uri
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
         it('SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_005', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILEASSET_COMMITMODIFY_PROMISE_005'
             let fetchOp = nameFetchOps(testNum, 'Pictures/ModifyPro/', '06', IMAGE_TYPE);

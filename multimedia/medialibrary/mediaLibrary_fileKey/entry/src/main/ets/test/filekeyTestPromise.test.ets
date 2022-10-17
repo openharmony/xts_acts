@@ -239,67 +239,67 @@ export default function filekeyTestPromiseTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILE_KEY_PROMISE_0014
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILE_KEY_PROMISE_014
          * @tc.name      : getFileAssets
          * @tc.desc      : filekey artistOp
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FILE_KEY_PROMISE_0014', 0, async function (done) {
+        it('SUB_MEDIA_MEDIALIBRARY_FILE_KEY_PROMISE_014', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILE_KEY_PROMISE_014'
             await getFileAssetsBy(done, testNum, 'artist', ARTIST);
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILE_KEY_PROMISE_0015
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILE_KEY_PROMISE_015
          * @tc.name      : getFileAssets
          * @tc.desc      : filekey audioAlbumOp
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FILE_KEY_PROMISE_0015', 0, async function (done) {
+        it('SUB_MEDIA_MEDIALIBRARY_FILE_KEY_PROMISE_015', 0, async function (done) {
             let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILE_KEY_PROMISE_015'
             await getFileAssetsBy(done, testNum, 'audioAlbum', AUDIOALBUM);
         });
 
         /**
-        * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILE_KEY_PROMISE_0016
+        * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILE_KEY_PROMISE_016
         * @tc.name      : getFileAssets
         * @tc.desc      : filekey relative_path
         * @tc.size      : MEDIUM
         * @tc.type      : Function
         * @tc.level     : Level 0
         */
-        it('SUB_MEDIA_MEDIALIBRARY_FILE_KEY_PROMISE_0016', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILE_KEY_PROMISE_0016'
+        it('SUB_MEDIA_MEDIALIBRARY_FILE_KEY_PROMISE_016', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILE_KEY_PROMISE_016'
             await getFileAssetsBy(done, testNum, 'relativePath', RELATIVE_PATH);
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILE_KEY_PROMISE_0017
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILE_KEY_PROMISE_017
          * @tc.name      : getFileAssets
          * @tc.desc      : filekey display_name
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FILE_KEY_PROMISE_0017', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILE_KEY_PROMISE_0017'
+        it('SUB_MEDIA_MEDIALIBRARY_FILE_KEY_PROMISE_017', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILE_KEY_PROMISE_017'
             await getFileAssetsBy(done, testNum, 'displayName', DISPLAY_NAME);
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILE_KEY_PROMISE_0018
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FILE_KEY_PROMISE_018
          * @tc.name      : getFileAssets
          * @tc.desc      : filekey album_name
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 0
          */
-        it('SUB_MEDIA_MEDIALIBRARY_FILE_KEY_PROMISE_0018', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILE_KEY_PROMISE_0018'
+        it('SUB_MEDIA_MEDIALIBRARY_FILE_KEY_PROMISE_018', 0, async function (done) {
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FILE_KEY_PROMISE_018'
             try {
                 let albumName = 'ImageInfo'
                 let currentFetchOp = {

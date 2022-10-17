@@ -159,7 +159,7 @@ export default function fetchFileResultPromiseTest(abilityContext) {
          * @tc.level     : Level 0
          */
         it('SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETCOUNT_PROMISE_001_04', 0, async function (done) {
-            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETCOUNT_PROMISE_001_03'
+            let testNum = 'SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETCOUNT_PROMISE_001_04'
             let expectCount = 0
             let currentFetchOp = fetchOps(testNum, 'Documents/zeor/', FILE_TYPE)
             await checkAssetCount(done, testNum, currentFetchOp, expectCount)
@@ -378,7 +378,7 @@ export default function fetchFileResultPromiseTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETPOSITIONOBJECT_PROMISE_007_02
+         * @tc.number    : SUB_MEDIA_MEDIALIBRARY_FETCHRESULT_GETPOSITIONOBJECT_PROMISE_007_03
          * @tc.name      : getPositionObject
          * @tc.desc      : Get FetchResult, get position 1 object, check result
          * @tc.size      : MEDIUM
