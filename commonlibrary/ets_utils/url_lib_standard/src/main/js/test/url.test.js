@@ -16,11 +16,1163 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 import  Url from '@ohos.url'
 export default function UrlFunTest() {
 describe('UrlFunTest', function () {
+    
+    /**
+     * @tc.name: testParamsAppend001
+     * @tc.desc: Appends a specified key/value pair as a new search parameter.
+     */
+     it('testParamsAppend001', 0, function () {
+        var that = new Url.URL('http://username:password@host:8080/directory/file?foo=1&bar=2');
+        var params = new Url.URLParams(that.search);
+        params.append('ma','jk')
+        var result = params.toString()
+        expect(result).assertEqual('foo=1&bar=2&ma=jk')
+    })
+
+    /**
+     * @tc.name: testParamsAppend002
+     * @tc.desc: Appends a specified key/value pair as a new search parameter.
+     */
+    it('testParamsAppend002', 0, function () {
+        var that = new Url.URL('http://username:password@host:8080/directory/file?foo=1&bar=2');
+        var params = new Url.URLParams(that.search);
+        params.append("ma 大","jk￥")
+        var result = params.toString()
+        expect(result).assertEqual("foo=1&bar=2&ma+%E5%A4%A7=jk%EF%BF%A5")
+    })
+
+    /**
+     * @tc.name: testParamsAppend003
+     * @tc.desc: Appends a specified key/value pair as a new search parameter.
+     */
+    it('testParamsAppend003', 0, function () {
+        var that = new Url.URL('http://username:password@host:8080/directory/file?foo=1&bar=2');
+        var params = new Url.URLParams(that.search);
+        params.append("foo~!@#$%^&*()_+-=","jk")
+        var result = params.toString()
+        expect(result).assertEqual("foo=1&bar=2&foo%7E%21%40%23%24%25%5E%26*%28%29_%2B-%3D=jk")
+    })
+
+    /**
+     * @tc.name: testParamsAppend004
+     * @tc.desc: Appends a specified key/value pair as a new search parameter.
+     */
+    it('testParamsAppend004', 0, function () {
+        let that = new Url.URL('https://example.com?foo=1&bar=2')
+        let params = new Url.URLParams(that.search)
+        params.append("app","par")
+        var result = params.toString()
+        expect(result).assertEqual("foo=1&bar=2&app=par")
+    })
+
+    /**
+     * @tc.name: testParamsAppend005
+     * @tc.desc: Appends a specified key/value pair as a new search parameter.
+     */
+    it('testParamsAppend005', 0, function () {
+        let that = new Url.URL('https://example.com?foo=1&bar=2')
+        let params = new Url.URLParams(that.search)
+        params.append("123","456")
+        var result = params.toString()
+        expect(result).assertEqual("foo=1&bar=2&123=456")
+    })
+
+    /**
+     * @tc.name: testParamsAppend006
+     * @tc.desc: Appends throw BusinessError: Parameter error.
+     */
+    it('testParamsAppend006', 0, function () {
+        try {
+            let that = new Url.URL('https://example.com?foo=1&bar=2')
+            let params = new Url.URLParams(that.search)
+            params.append(123,"456")
+            expect(0).assertEqual(1)
+        } catch (err) {
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of 123 must be string`)
+            expect(err.code).assertEqual(401)
+            expect(err.message).assertEqual("Parameter error.The type of 123 must be string");
+        }
+    })
+
+    /**
+     * @tc.name: testParamsAppend007
+     * @tc.desc: Appends throw BusinessError: Parameter error.
+     */
+    it('testParamsAppend007', 0, function () {
+        try {
+            let that = new Url.URL('https://example.com?foo=1&bar=2')
+            let params = new Url.URLParams(that.search)
+            var a = '123'
+            var b = undefined;
+            params.append(a, b)
+            expect(0).assertEqual(1)
+        } catch (err) {
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of ${b} must be string`)
+            expect(err.code).assertEqual(401)
+            expect(err.message).assertEqual(`Parameter error.The type of ${b} must be string`);
+        }
+    })
+
+    /**
+     * @tc.name: testParamsDelete001
+     * @tc.desc: Deletes the given search parameter and its associated value,from the list of all search parameters.
+     */
+    it('testParamsDelete001', 0, function () {
+        let that = new Url.URL('https://example.com?foo=1&bar=2')
+        let params = new Url.URLParams(that.search)
+        params.delete("foo")
+        var result = params.toString()
+        expect(result).assertEqual("bar=2")
+    })
+
+    /**
+     * @tc.name: testParamsDelete002
+     * @tc.desc: Deletes the given search parameter and its associated value,from the list of all search parameters.
+     */
+    it('testParamsDelete002', 0, function () {
+        let that = new Url.URL('https://example.com?foo大=1&bar=2');
+        let params = new Url.URLParams(that.search);
+        params.delete('foo');
+        var result = params.toString();
+        expect(result).assertEqual("foo%E5%A4%A7=1&bar=2");
+    })
+
+    /**
+     * @tc.name: testParamsDelete003
+     * @tc.desc: Deletes the given search parameter and its associated value,from the list of all search parameters.
+     */
+    it('testParamsDelete003', 0, function () {
+        let that = new Url.URL('https://example.com?foo大=1&bar=2');
+        let params = new Url.URLParams(that.search);
+        params.delete("foo大");
+        var result = params.toString();
+        expect(result).assertEqual("bar=2")
+    })
+
+    /**
+     * @tc.name: testParamsDelete004
+     * @tc.desc: Deletes the given search parameter and its associated value,from the list of all search parameters.
+     */
+    it('testParamsDelete004', 0, function () {
+        let that = new Url.URL('https://example.com?foo=1&bar=2');
+        let params = new Url.URLParams(that.search);
+        params.delete('bar');
+        var result = params.toString();
+        expect(result).assertEqual("foo=1");
+    })
+
+    /**
+     * @tc.name: testParamsDelete005
+     * @tc.desc: Deletes the given search parameter and its associated value,from the list of all search parameters.
+     */
+    it('testParamsDelete005', 0, function () {
+        let that = new Url.URL('https://example.com?foo=1&bar=2');
+        let params = new Url.URLParams(that.search);
+        params.delete("faa");
+        var result = params.toString();
+        expect(result).assertEqual("foo=1&bar=2")
+    })
+
+    /**
+     * @tc.name: testParamsDelete006
+     * @tc.desc: Deletes throw BusinessError: Parameter error.
+     */
+    it('testParamsDelete006', 0, function () {
+        try {
+            let that = new Url.URL('https://example.com?foo=1&bar=2');
+            let params = new Url.URLParams(that.search);
+            params.delete();
+            expect(0).assertEqual(1)
+        } catch (err) {
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of ${arguments[0]} must be string`)
+            expect(err.code).assertEqual(401)
+            expect(err.message).assertEqual(`Parameter error.The type of ${arguments[0]} must be string`);
+        }
+    })
+
+    /**
+     * @tc.name: testParamsDelete007
+     * @tc.desc: Deletes throw BusinessError: Parameter error.
+     */
+    it('testParamsDelete007', 0, function () {
+        try {
+            let that = new Url.URL('https://example.com?foo=1&bar=2');
+            let params = new Url.URLParams(that.search);
+            params.delete(4);
+            expect(0).assertEqual(1)
+        } catch (err) {
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of 4 must be string`)
+            expect(err.code).assertEqual(401)
+            expect(err.message).assertEqual(`Parameter error.The type of 4 must be string`);
+        }
+    })
+    
+    /**
+     * @tc.name: testParamsEntries001
+     * @tc.desc: Returns an ES6 iterator. Each item of the iterator is a JavaScript Array.
+     */
+    it('testParamsEntries001', 0, function () {
+        let params = new Url.URLParams("key1=value1&key2=value2");
+
+        var i=0;
+        var arr={};
+        for(var pair of params.entries()) {
+            arr[i]=pair[0];
+            i++;
+            arr[i]=pair[1];
+            i++;
+        }
+        expect(arr[1]).assertEqual("value1");
+    })
+
+    /**
+     * @tc.name: testParamsEntries002
+     * @tc.desc: Returns an ES6 iterator. Each item of the iterator is a JavaScript Array.
+     */
+    it('testParamsEntries002', 0, function () {
+        let params = new Url.URLParams("key1=value1&key2=value2")
+        var i=0;
+        var arr={};
+        for(var pair of params.entries()) {
+            arr[i]=pair[0];
+            i++;
+            arr[i]=pair[1];
+            i++;
+        }
+        expect(arr[2]).assertEqual("key2")
+    })
+
+    /**
+     * @tc.name: testParamsEntries003
+     * @tc.desc: Returns an ES6 iterator. Each item of the iterator is a JavaScript Array.
+     */
+    it('testParamsEntries003', 0, function () {
+        let params = new Url.URLParams("key1=value1&key2=value2")
+        params.append("foo","jk")
+        var i=0;
+        var arr={};
+        for(var pair of params.entries()) {
+            arr[i]=pair[0];
+            i++;
+            arr[i]=pair[1];
+            i++;
+        }
+        expect(arr[5]).assertEqual("jk")
+    })
+
+    /**
+     * @tc.name: testParamsEntries004
+     * @tc.desc: Returns an ES6 iterator. Each item of the iterator is a JavaScript Array.
+     */
+    it('testParamsEntries004', 0, function () {
+        let params = new Url.URLParams("key1=value1&key2=value2")
+        var i=0;
+        var arr={};
+        for(var pair of params.entries()) {
+            arr[i]=pair[0];
+            i++;
+            arr[i]=pair[1];
+            i++;
+        }
+        expect(arr[3]).assertEqual("value2")
+    })
+
+    /**
+     * @tc.name: testParamsEntries005
+     * @tc.desc: Returns an ES6 iterator. Each item of the iterator is a JavaScript Array.
+     */
+    it('testParamsEntries005', 0, function () {
+        let params = new Url.URLParams("key1=value1&key2=value2")
+        params.append("jss","txt")
+        var i=0;
+        var arr={};
+        for(var pair of params.entries()) {
+            arr[i]=pair[0];
+            i++;
+            arr[i]=pair[1];
+            i++;
+        }
+        expect(arr[4]).assertEqual("jss")
+    })
+
+    /**
+     * @tc.name: testParams[Symbol.iterator]001
+     * @tc.desc: Returns an ES6 iterator. Each item of the iterator is a JavaScript Array.
+     */
+    it('testParams[Symbol.iterator]001', 0, function () {
+        let params = new Url.URLParams("key1=value1&key2=value2");
+        var i=0;
+        var arr={};
+        for(var pair of params[Symbol.iterator]()) {
+            arr[i]=pair[0];
+            i++;
+            arr[i]=pair[1];
+            i++;
+        }
+        expect(arr[1]).assertEqual("value1");
+    })
+
+    /**
+     * @tc.name: testParams[Symbol.iterator]002
+     * @tc.desc: Returns an ES6 iterator. Each item of the iterator is a JavaScript Array.
+     */
+    it('testParams[Symbol.iterator]002', 0, function () {
+        let params = new Url.URLParams("key1=value1&key2=value2")
+        var i=0;
+        var arr={};
+        for(var pair of params[Symbol.iterator]()) {
+            arr[i]=pair[0];
+            i++;
+            arr[i]=pair[1];
+            i++;
+        }
+        expect(arr[2]).assertEqual("key2")
+    })
+
+    /**
+     * @tc.name: testParams[Symbol.iterator]003
+     * @tc.desc: Returns an ES6 iterator. Each item of the iterator is a JavaScript Array.
+     */
+    it('testParams[Symbol.iterator]003', 0, function () {
+        let params = new Url.URLParams("key1=value1&key2=value2")
+        params.append("foo","jk")
+        var i=0;
+        var arr={};
+        for(var pair of params[Symbol.iterator]()) {
+            arr[i]=pair[0];
+            i++;
+            arr[i]=pair[1];
+            i++;
+        }
+        expect(arr[5]).assertEqual("jk")
+    })
+
+    /**
+     * @tc.name: testParams[Symbol.iterator]004
+     * @tc.desc: Returns an ES6 iterator. Each item of the iterator is a JavaScript Array.
+     */
+    it('testParams[Symbol.iterator]004', 0, function () {
+        let params = new Url.URLParams("key1=value1&key2=value2")
+        var i=0;
+        var arr={};
+        for(var pair of params[Symbol.iterator]()) {
+            arr[i]=pair[0];
+            i++;
+            arr[i]=pair[1];
+            i++;
+        }
+        expect(arr[3]).assertEqual("value2")
+    })
+
+    /**
+     * @tc.name: testParams[Symbol.iterator]005
+     * @tc.desc: Returns an ES6 iterator. Each item of the iterator is a JavaScript Array.
+     */
+    it('testParams[Symbol.iterator]005', 0, function () {
+        let params = new Url.URLParams("key1=value1&key2=value2")
+        params.append("jss","txt")
+        var i=0;
+        var arr={};
+        for(var pair of params[Symbol.iterator]()) {
+            arr[i]=pair[0];
+            i++;
+            arr[i]=pair[1];
+            i++;
+        }
+        expect(arr[4]).assertEqual("jss")
+    })
+
+    /**
+    * @tc.name: testParamsForEach001
+    * @tc.desc: Callback functions are used to traverse key-value pairs on the URLSearchParams instance object.
+    */
+    it('testParamsForEach001', 0, function () {
+        let params = new Url.URLParams("key1=value1&key2=value2")
+        var arr={};
+        var i = 0;
+        function func(value, key, SearchParams)
+        {
+            arr[i] = value + " " + key + " " + (params === SearchParams)
+            i++
+        }
+        params.forEach(func);
+        expect(arr[0]).assertEqual("value1 key1 true");
+    })
+
+   /**
+    * @tc.name: testParamsForEach002
+    * @tc.desc: Callback functions are used to traverse key-value pairs on the URLSearchParams instance object.
+    */
+    it('testParamsForEach002', 0, function () {
+        let params = new Url.URLParams("key1=value1&key2=value2");
+        var arr={};
+        var i = 0;
+        function func(value, key, SearchParams)
+        {
+            arr[i] = value + " " + key + " " + (params === SearchParams)
+            i++
+        }
+        params.forEach(func);
+        expect(arr[1]).assertEqual("value2 key2 true");
+    })
+
+    /**
+     * @tc.name: testParamsForEach003
+     * @tc.desc: Callback functions are used to traverse key-value pairs on the URLSearchParams instance object.
+     */
+    it('testParamsForEach003', 0, function () {
+        let params = new Url.URLParams("key1=value1&key2=value2");
+        params.append("foo","jk");
+        var arr={};
+        var i = 0;
+        function func(value, key, SearchParams)
+        {
+            arr[i] = value + " " + key + " " + (params === SearchParams)
+            i++
+        }
+        params.forEach(func);
+        expect(arr[2]).assertEqual("jk foo true");
+    })
+
+    /**
+     * @tc.name: testParamsForEach004
+     * @tc.desc: Callback functions are used to traverse key-value pairs on the URLSearchParams instance object.
+     */
+    it('testParamsForEach004', 0, function () {
+        let params = new Url.URLParams("foo=bar&jss=txt");
+        var arr={};
+        var i = 0;
+        function func(value, key, SearchParams)
+        {
+            arr[i] = value + " " + key + " " + (params === SearchParams)
+            i++
+        }
+        params.forEach(func);
+        expect(arr[1]).assertEqual("txt jss true");
+    })
+
+    /**
+     * @tc.name: testParamsForEach005
+     * @tc.desc: Callback functions are used to traverse key-value pairs on the URLSearchParams instance object.
+     */
+    it('testParamsForEach005', 0, function () {
+        let params = new Url.URLParams("foo=bar&jss=txt");
+        params.append("foo","jk");
+        var arr={};
+        var i = 0;
+        function func(value, key, SearchParams)
+        {
+            arr[i] = value + " " + key + " " + (params === SearchParams)
+            i++
+        }
+        params.forEach(func);
+        expect(arr[0]).assertEqual("bar foo true");
+    })
+
+    /**
+     * @tc.name: testParamsForEach006
+     * @tc.desc: forEach throw BusinessError: Parameter error.
+     */
+    it('testParamsForEach006', 0, function () {
+        try {
+            let params = new Url.URLParams("foo=bar&jss=txt");
+            var arr={};
+            var i = 0;
+            var func = [0, 2, 4, 6, 8];
+            params.forEach(func);
+            expect(0).assertEqual(1)
+        } catch(err) {
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of ${func} must be function`)
+            expect(err.code).assertEqual(401)
+            expect(err.message).assertEqual(`Parameter error.The type of ${func} must be function`);
+        }
+    })
+
+    /**
+     * @tc.name: testParamsGet001
+     * @tc.desc: Returns the first value associated to the given search parameter.
+     */
+    it('testParamsGet001', 0, function () {
+        let params = new Url.URLParams("key1=value1&key2=value2")
+        var result =  params.get("1")
+        expect(result).assertEqual(undefined)
+    })
+
+    /**
+     * @tc.name: testParamsGet002
+     * @tc.desc: Returns the first value associated to the given search parameter.
+     */
+    it('testParamsGet002', 0, function () {
+        let params = new Url.URLParams("key1=value1&key2=value2")
+        var result =  params.get("key2")
+        expect(result).assertEqual("value2")
+    })
+
+    /**
+     * @tc.name: testParamsGet003
+     * @tc.desc: Returns the first value associated to the given search parameter.
+     */
+    it('testParamsGet003', 0, function () {
+        let params = new Url.URLParams("key1=value1&key2=value2")
+        params.append("5","JKL")
+        var result =  params.get("5")
+        expect(result).assertEqual("JKL")
+    })
+
+    /**
+     * @tc.name: testParamsGet004
+     * @tc.desc: Returns the first value associated to the given search parameter.
+     */
+    it('testParamsGet004', 0, function () {
+        let params = new Url.URLParams("key1=value1&key2=value2")
+        var result =  params.get("key1")
+        expect(result).assertEqual("value1")
+    })
+
+    /**
+     * @tc.name: testParamsGet005
+     * @tc.desc: Returns the first value associated to the given search parameter.
+     */
+    it('testParamsGet005', 0, function () {
+        let params = new Url.URLParams("key1=value1&key2=value2")
+        params.append("jss","JL")
+        var result =  params.get("jss")
+        expect(result).assertEqual("JL")
+    })
+
+    /**
+     * @tc.name: testParamsGet006
+     * @tc.desc: get throw BusinessError: Parameter error.
+     */
+    it('testParamsGet005', 0, function () {
+        try{
+            let params = new Url.URLParams("key1=value1&key2=value2")
+            params.append("jss","JL")
+            var a = 666;
+            var result =  params.get(a)
+            expect(0).assertEqual(1)
+        }catch(err){
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of ${a} must be string`)
+            expect(err.code).assertEqual(401)
+            expect(err.message).assertEqual(`Parameter error.The type of ${a} must be string`);
+        }
+    })
+
+    /**
+     * @tc.name: testParamsGetAll001
+     * @tc.desc: Returns all key-value pairs associated with a given search parameter as an array.
+     */
+    it('testParamsGetAll001', 0, function () {
+        let params = new Url.URLParams("key1=value1&key2=value2")
+        params.append("key1","AAA")
+        var result =  params.getAll("key1")
+        expect(result.toString()).assertEqual("value1,AAA")
+    })
+
+    /**
+     * @tc.name: testParamsGetAll002
+     * @tc.desc: Returns all key-value pairs associated with a given search parameter as an array.
+     */
+    it('testParamsGetAll002', 0, function () {
+        let params = new Url.URLParams("key1=value1&8=DEF")
+        params.append("8","A8A")
+        var result =  params.getAll("8")
+        expect(result.toString()).assertEqual("DEF,A8A")
+    })
+
+    /**
+     * @tc.name: testParamsGetAll003
+     * @tc.desc: Returns all key-value pairs associated with a given search parameter as an array.
+     */
+    it('testParamsGetAll003', 0, function () {
+        let params = new Url.URLParams("key1=value1&key2=value2&key3=da")
+        params.append("key3","A3A")
+        var result =  params.getAll("key3")
+        expect(result.toString()).assertEqual("da,A3A")
+    })
+
+    /**
+     * @tc.name: testParamsGetAll004
+     * @tc.desc: Returns all key-value pairs associated with a given search parameter as an array.
+     */
+    it('testParamsGetAll004', 0, function () {
+        let params = new Url.URLParams("key1=value1&key2=value2&key3=大")
+        params.append("key3","A3A")
+        var result =  params.getAll("key4")
+        expect(result.toString()).assertEqual('')
+    })
+
+    /**
+     * @tc.name: testParamsGetAll005
+     * @tc.desc: Returns all key-value pairs associated with a given search parameter as an array.
+     */
+    it('testParamsGetAll005', 0, function () {
+        let params = new Url.URLParams("key1=value1&key2=value2&key3=大")
+        params.append("key3","A3A")
+        var result =  params.getAll("key2")
+        expect(result.toString()).assertEqual("value2")
+    })
+
+    /**
+     * @tc.name: testParamsGetAll006
+     * @tc.desc: getAll throw BusinessError: Parameter error.
+     */
+    it('testParamsGetAll006', 0, function () {
+        try {
+            let params = new Url.URLParams("key1=value1&key2=value2&key3=大")
+            params.append("key3","A3A")
+            var b = 666;
+            var result =  params.getAll(b)
+            expect(0).assertEqual(1)
+        } catch(err) {
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of ${b} must be string`)
+            expect(err.code).assertEqual(401)
+            expect(err.message).assertEqual(`Parameter error.The type of ${b} must be string`);
+        }
+    })
+
+    /**
+     * @tc.name: testParamsHas001
+     * @tc.desc: Returns a Boolean that indicates whether a parameter with the specified name exists.
+     */
+    it('testParamsHas001', 0, function () {
+        let params = new Url.URLParams("key1=value1&key2=value2&key3=大")
+        var result =  params.has("2")
+        expect(result).assertEqual(false)
+    })
+
+    /**
+     * @tc.name: testParamsHas002
+     * @tc.desc: Returns a Boolean that indicates whether a parameter with the specified name exists.
+     */
+    it('testParamsHas002', 0, function () {
+        let params = new Url.URLParams("小=value1&key2=value2&key3=大")
+        var result =  params.has("小")
+        expect(result).assertEqual(true)
+    })
+
+    /**
+     * @tc.name: testParamsHas003
+     * @tc.desc: Returns a Boolean that indicates whether a parameter with the specified name exists.
+     */
+    it('testParamsHas003', 0, function () {
+        let params = new Url.URLParams("小=value1&￥=value2&key3=大")
+        params.append("￥","ACA")
+        var result =  params.has("￥")
+        expect(result).assertEqual(true)
+    })
+
+    /**
+     * @tc.name: testParamsHas004
+     * @tc.desc: Returns a Boolean that indicates whether a parameter with the specified name exists.
+     */
+    it('testParamsHas004', 0, function () {
+        let params = new Url.URLParams("小=value1&key2=value2&key3=大")
+        var result =  params.has("无")
+        expect(result).assertEqual(false)
+    })
+
+    /**
+     * @tc.name: testParamsHas005
+     * @tc.desc: Returns a Boolean that indicates whether a parameter with the specified name exists.
+     */
+    it('testParamsHas005', 0, function () {
+        let params = new Url.URLParams("小=value1&￥=value2&key3=大")
+        params.append("￥","ACA")
+        var result =  params.has("￥11")
+        expect(result).assertEqual(false)
+    })
+
+    /**
+     * @tc.name: testParamsKeys001
+     * @tc.desc: Returns an iterator allowing to go through all keys contained in this object.
+     */
+    it('testParamsKeys001', 0, function () {
+        let params = new Url.URLParams("小=value1&￥=value2&key3=大");
+        var arr={};
+        var i = 0;
+        for(var key of params.keys()) {
+            arr[i] = key
+            i++
+        }
+        expect(arr[0]).assertEqual("小");
+    })
+
+    /**
+     * @tc.name: testParamsKeys002
+     * @tc.desc: Returns an iterator allowing to go through all keys contained in this object.
+     */
+    it('testParamsKeys002', 0, function () {
+        let params = new Url.URLParams("小=value1&￥=value2&key3=大");
+        var arr={};
+        var i = 0;
+        for(var key of params.keys()) {
+            arr[i] = key
+            i++
+        }
+        expect(arr[1]).assertEqual("￥");
+    })
+
+    /**
+     * @tc.name: testParamsKeys003
+     * @tc.desc: Returns an iterator allowing to go through all keys contained in this object.
+     */
+    it('testParamsKeys003', 0, function () {
+        let params = new Url.URLParams("小=value1&￥=value2&key3=大");
+        var arr={};
+        var i = 0;
+        for(var key of params.keys()) {
+            arr[i] = key
+            i++
+        }
+        expect(arr[2]).assertEqual("key3");
+    })
+
+    /**
+     * @tc.name: testParamsKeys001
+     * @tc.desc: Returns an iterator allowing to go through all keys contained in this object.
+     */
+    it('testParamsKeys004', 0, function () {
+        let params = new Url.URLParams("小=value1&￥=value2&key3=大&key4=六");
+        var arr={};
+        var i = 0;
+        for(var key of params.keys()) {
+            arr[i] = key
+            i++
+        }
+        expect(arr[3]).assertEqual("key4");
+    })
+
+    /**
+     * @tc.name: testParamsKeys005
+     * @tc.desc: Returns an iterator allowing to go through all keys contained in this object.
+     */
+    it('testParamsKeys005', 0, function () {
+        let params = new Url.URLParams("小=value1&￥=value2&key3=大&key4=六&key5=发");
+        var arr={};
+        var i = 0;
+        for(var key of params.keys()) {
+            arr[i] = key
+            i++
+        }
+        expect(arr[4]).assertEqual("key5");
+    })
+
+    /**
+     * @tc.name: testParamsSet001
+     * @tc.desc: Sets the value associated with a given search parameter to the given value.
+     * If there were several matching values, this method deletes the others.
+     * If the search parameter doesn't exist, this method creates it.
+     */
+    it('testParamsSet001', 0, function () {
+        let params = new Url.URLParams("1=value1&2=value2&key3=3");
+        // params.append("11","ACA");
+        params.set("11","CCC");
+        var res = params.toString();
+        expect(res).assertEqual("1=value1&2=value2&key3=3&11=CCC");
+    })
+
+    /**
+     * @tc.name: testParamsSet002
+     * @tc.desc: Sets the value associated with a given search parameter to the given value.
+     * If there were several matching values, this method deletes the others.
+     * If the search parameter doesn't exist, this method creates it.
+     */
+    it('testParamsSet002', 0, function () {
+        let params = new Url.URLParams("1=value1&2=value2&key3=3");
+        params.set('10','BBB');
+        var res = params.toString();
+        expect(res).assertEqual("1=value1&2=value2&key3=3&10=BBB");
+    })
+
+    /**
+     * @tc.name: testParamsSet003
+     * @tc.desc: Sets the value associated with a given search parameter to the given value.
+     * If there were several matching values, this method deletes the others.
+     * If the search parameter doesn't exist, this method creates it.
+     */
+    it('testParamsSet003', 0, function () {
+        let params = new Url.URLParams("1=value1&2=value2&key3=3");
+        params.set("ma 大" ,"10￥");
+        var res = params.toString();
+        expect(res).assertEqual("1=value1&2=value2&key3=3&ma+%E5%A4%A7=10%EF%BF%A5");
+    })
+
+    /**
+     * @tc.name: testParamsSet004
+     * @tc.desc: Sets the value associated with a given search parameter to the given value.
+     * If there were several matching values, this method deletes the others.
+     * If the search parameter doesn't exist, this method creates it.
+     */
+    it('testParamsSet004', 0, function () {
+        let params = new Url.URLParams("1=value1&2=value2&key3=3");
+        // params.append("1","ACA");
+        params.set("1","CCC");
+        var res = params.toString();
+        expect(res).assertEqual("1=CCC&2=value2&key3=3");
+    })
+
+    /**
+     * @tc.name: testParamsSet005
+     * @tc.desc: Sets the value associated with a given search parameter to the given value.
+     * If there were several matching values, this method deletes the others.
+     * If the search parameter doesn't exist, this method creates it.
+     */
+    it('testParamsSet005', 0, function () {
+        let params = new Url.URLParams("1=value1&2=value2&key3=3");
+        params.set('12','BBB');
+        var res = params.toString();
+        expect(res).assertEqual("1=value1&2=value2&key3=3&12=BBB");
+    })
+
+    /**
+     * @tc.name: testParamsSet006
+     * @tc.desc: Sets the value associated with a given search parameter to the given value.
+     * If there were several matching values, this method deletes the others.
+     * If the search parameter throw BusinessError: Parameter error.
+     */
+    it('testParamsSet006', 0, function () {
+        try {
+            let params = new Url.URLParams("1=value1&2=value2&key3=3");
+            var a = 12;
+            params.set(a,'BBB');
+            var res = params.toString();
+            expect(0).assertEqual(1);
+        } catch(err) {
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of ${a} must be string`)
+            expect(err.code).assertEqual(401)
+            expect(err.message).assertEqual(`Parameter error.The type of ${a} must be string`);
+        }
+    })
+
+    /**
+     * @tc.name: testParamsSet007
+     * @tc.desc: Sets the value associated with a given search parameter to the given value.
+     * If there were several matching values, this method deletes the others.
+     * If the search parameter throw BusinessError: Parameter error.
+     */
+    it('testParamsSet007', 0, function () {
+        try {
+            let params = new Url.URLParams("1=value1&2=value2&key3=3");
+            var b = undefined;
+            params.set('12', b);
+            var res = params.toString();
+            expect(0).assertEqual(1);
+        } catch(err) {
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of ${b} must be string`)
+            expect(err.code).assertEqual(401)
+            expect(err.message).assertEqual(`Parameter error.The type of ${b} must be string`);
+        }
+    })
+
+    /**
+     * @tc.name: testParamsSort001
+     * @tc.desc: Sort all key/value pairs contained in this object in place and return undefined.
+     */
+    it('testParamsSort001', 0, function () {
+        let params = new Url.URLParams("1=value1&3=value3&2=key2");
+        params.sort();
+        var res = params.toString();
+        expect(res).assertEqual("1=value1&2=key2&3=value3");
+    })
+
+    /**
+     * @tc.name: testParamsSort002
+     * @tc.desc: Sort all key/value pairs contained in this object in place and return undefined.
+     */
+    it('testParamsSort002', 0, function () {
+        let params = new Url.URLParams("a=value1&c=value2&b=key2");
+        params.sort();
+        var res = params.toString();
+        expect(res).assertEqual("a=value1&b=key2&c=value2");
+    })
+
+    /**
+     * @tc.name: testParamsSort003
+     * @tc.desc: Sort all key/value pairs contained in this object in place and return undefined.
+     */
+    it('testParamsSort003', 0, function () {
+        let params = new Url.URLParams("d=value1&c=value2&b=33");
+        params.append("a","ACA");
+        params.sort();
+        var res = params.toString();
+        expect(res).assertEqual("a=ACA&b=33&c=value2&d=value1");
+    })
+
+    /**
+     * @tc.name: testParamsSort004
+     * @tc.desc: Sort all key/value pairs contained in this object in place and return undefined.
+     */
+    it('testParamsSort004', 0, function () {
+        let params = new Url.URLParams("1=value1&3=value3&2=key2&4=key4");
+        params.sort();
+        var res = params.toString();
+        expect(res).assertEqual("1=value1&2=key2&3=value3&4=key4");
+    })
+
+    /**
+     * @tc.name: testParamsSort005
+     * @tc.desc: Sort all key/value pairs contained in this object in place and return undefined.
+     */
+    it('testParamsSort005', 0, function () {
+        let params = new Url.URLParams("a=value1&c=value2&4=key4&b=key2");
+        params.sort();
+        var res = params.toString();
+        expect(res).assertEqual("4=key4&a=value1&b=key2&c=value2");
+    })
+
+    /**
+     * @tc.name: testParamsValues001
+     * @tc.desc: Returns an iterator allowing to go through all values contained in this object.
+     */
+    it('testParamsValues001', 0, function () {
+        let params = new Url.URLParams("d=value1&c=value2&b=大")
+        var arr={}
+        var i = 0
+        for(var value  of params.values()) {
+            arr[i] = value
+            i++
+        }
+        expect(arr[0]).assertEqual("value1")
+    })
+
+    /**
+     * @tc.name: testParamsValues002
+     * @tc.desc: Returns an iterator allowing to go through all values contained in this object.
+     */
+    it('testParamsValues002', 0, function () {
+        let params = new Url.URLParams("d=value1&c=value2&b=大")
+        var arr={}
+        var i = 0
+        for(var value  of params.values()) {
+            arr[i] = value
+            i++
+        }
+        expect(arr[1]).assertEqual("value2")
+    })
+
+    /**
+     * @tc.name: testParamsValues003
+     * @tc.desc: Returns an iterator allowing to go through all values contained in this object.
+     */
+    it('testParamsValues003', 0, function () {
+        let params = new Url.URLParams("d=value1&c=value2&b=大")
+        params.append("a","ACA")
+        var arr={}
+        var i = 0
+        for(var value  of params.values()) {
+            arr[i] = value
+            i++
+        }
+        expect(arr[3]).assertEqual("ACA")
+    })
+
+    /**
+     * @tc.name: testParamsValues004
+     * @tc.desc: Returns an iterator allowing to go through all values contained in this object.
+     */
+    it('testParamsValues004', 0, function () {
+        let params = new Url.URLParams("d=value1&c=value2&b=大&4=key4")
+        var arr={}
+        var i = 0
+        for(var value  of params.values()) {
+            arr[i] = value
+            i++
+        }
+        expect(arr[3]).assertEqual("key4")
+    })
+
+    /**
+     * @tc.name: testParamsValues005
+     * @tc.desc: Returns an iterator allowing to go through all values contained in this object.
+     */
+    it('testParamsValues005', 0, function () {
+        let params = new Url.URLParams("d=value1&c=value2&b=大&4=key4&5=key5")
+        var arr={}
+        var i = 0
+        for(var value  of params.values()) {
+            arr[i] = value
+            i++
+        }
+        expect(arr[4]).assertEqual("key5")
+    })
+
+    /**
+     * @tc.name: testParamsToString001
+     * @tc.desc: Returns a query string suitable for use in a URL.
+     */
+    it('testParamsToString001', 0, function () {
+        let params = new Url.URLParams("d=value1&c=value2&b=大")
+        var result= params.toString()
+        expect(result).assertEqual("d=value1&c=value2&b=%E5%A4%A7")
+    })
+
+    /**
+     * @tc.name: testParamsToString002
+     * @tc.desc: Returns a query string suitable for use in a URL.
+     */
+    it('testParamsToString002', 0, function () {
+        let params = new Url.URLParams("d=value1&c=value2&b= 大")
+        params.append("1 12","QQQ")
+        var result= params.toString()
+        expect(result).assertEqual("d=value1&c=value2&b=+%E5%A4%A7&1+12=QQQ")
+    })
+
+    /**
+     * @tc.name: testParamsToString003
+     * @tc.desc: Returns a query string suitable for use in a URL.
+     */
+    it('testParamsToString003', 0, function () {
+        let params = new Url.URLParams("￥=)")
+        params.delete("5")
+        var result= params.toString()
+        expect(result).assertEqual("%EF%BF%A5=%29")
+    })
+
+    /**
+     * @tc.name: testParamsToString004
+     * @tc.desc: Returns a query string suitable for use in a URL.
+     */
+    it('testParamsToString004', 0, function () {
+        let params = new Url.URLParams("d=value1&c=value2&b=大&4=key4")
+        var result= params.toString()
+        expect(result).assertEqual("d=value1&c=value2&b=%E5%A4%A7&4=key4")
+    })
+
+    /**
+     * @tc.name: testParamsToString005
+     * @tc.desc: Returns a query string suitable for use in a URL.
+     */
+    it('testParamsToString005', 0, function () {
+        let params = new Url.URLParams("d=value1&c=value2&b= 大&4=key4&5=key5")
+        params.append("1 12","QQQ")
+        var result= params.toString()
+        expect(result).assertEqual("d=value1&c=value2&b=+%E5%A4%A7&4=key4&5=key5&1+12=QQQ")
+    })
+
+    /**
+     * @tc.name: testParamsConstruction001
+     * @tc.desc: A parameterized constructor used to create an URLSearchParams instance.
+     */
+    it('testParamsConstruction001', 0, function () {
+        let params = new Url.URLParams('?user=abc&query=xyz')
+        var result= params.toString()
+        expect(result).assertEqual("user=abc&query=xyz")
+    })
+
+    /**
+     * @tc.name: testParamsConstruction002
+     * @tc.desc: A parameterized constructor used to create an URLSearchParams instance.
+     */
+    it('testParamsConstruction002', 0, function () {
+        let params = new Url.URLParams({
+            user: 'abc',
+            query: ['first', 'second']
+        });
+        var result= params.toString()
+        expect(result).assertEqual("user=abc&query=first%2Csecond")
+    })
+
+    /**
+     * @tc.name: testParamsConstruction003
+     * @tc.desc: A parameterized constructor used to create an URLSearchParams instance.
+     */
+    it('testParamsConstruction003', 0, function () {
+        let params = new Url.URLParams([
+                ['user', 'abc'],
+                ['query', 'first'],
+                ['query', 'second'],
+        ]);
+        var result= params.toString()
+        expect(result).assertEqual("user=abc&query=first&query=second")
+    })
+
+    /**
+     * @tc.name: testParamsConstruction004
+     * @tc.desc: A parameterized constructor used to create an URLSearchParams instance.
+     */
+    it('testParamsConstruction004', 0, function () {
+        const map = new Map();
+        map.set('user', 'abc');
+        map.set('query', 'xyz');
+        let params = new Url.URLParams(map)
+        var result= params.toString()
+        expect(result).assertEqual("user=abc&query=xyz")
+    })
+
+    /**
+     * @tc.name: testParamsConstruction005
+     * @tc.desc: A parameterized constructor used to create an URLSearchParams instance.
+     */
+    it('testParamsConstruction005', 0, function () {
+        function* getQueryPairs() {
+            yield ['user', 'abc'];
+            yield ['query', 'first'];
+            yield ['query', 'second'];
+        }
+        let params = new Url.URLParams(getQueryPairs());
+        var result= params.toString()
+        expect(result).assertEqual("user=abc&query=first&query=second")
+    })
+
+    /**
+     * @tc.name: testParamsConstruction006
+     * @tc.desc: A parameterized constructor used to create an URLSearchParams instance.
+     */
+    it('testParamsConstruction006', 0, function () {
+        let params = new Url.URLParams()
+        params.append('abcde','fghki')
+        var paramsResult = params.toString()
+        expect(paramsResult).assertEqual('abcde=fghki')
+    })
+
+    /**
+     * @tc.name: testParamsConstruction007
+     * @tc.desc: A parameterized constructor used to create an URLSearchParams instance.
+     */
+    it('testParamsConstruction007', 0, function () {
+        let param
+        let params = new Url.URLParams(param)
+        params.append('abcde','fghki')
+        var paramsResult = params.toString()
+        expect(paramsResult).assertEqual('abcde=fghki')
+    })
+
+    /**
+     * @tc.name: testParamsConstruction008
+     * @tc.desc:  The type of init must be string two-dimensional array or object list throw error.
+     */
+    it('testParamsConstruction008', 0, function () {
+        try {
+            var param = 123456789;
+            let params = new Url.URLParams(param)
+        } catch(err) {
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of ${param} must be string`)
+            expect(err.code).assertEqual(401)
+            expect(err.message).assertEqual(`Parameter error.The type of ${param} must be string`);
+        }
+    })
+
+    /**
+     * @tc.name: testParamsConstruction009
+     * @tc.desc:  The type of init must be string two-dimensional array or object list throw error.
+     */
+    it('testParamsConstruction009', 0, function () {
+        try {
+            var param = [
+                ['user', 'abc', 'error'],
+              ];
+            let params = new Url.URLParams(param);
+        } catch(err) {
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of ${param} must be string[][]`)
+            expect(err.code).assertEqual(401)
+            expect(err.message).assertEqual(`Parameter error.The type of ${param} must be string[][]`);
+        }
+    })
 
     /**
      * @tc.name: testUrlAppend001
      * @tc.desc: Appends a specified key/value pair as a new search parameter.
-     * @tc.author: jiangkai
      */
     it('testUrlAppend001', 0, function () {
         var that = new Url.URL('http://username:password@host:8080/directory/file?foo=1&bar=2');
@@ -33,7 +1185,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlAppend002
      * @tc.desc: Appends a specified key/value pair as a new search parameter.
-     * @tc.author: jiangkai
      */
     it('testUrlAppend002', 0, function () {
         let that = new Url.URL('https://example.com?foo=1&bar=2')
@@ -46,7 +1197,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlAppend003
      * @tc.desc: Appends a specified key/value pair as a new search parameter.
-     * @tc.author: jiangkai
      */
     it('testUrlAppend003', 0, function () {
         let that = new Url.URL('https://example.com?foo=1&bar=2')
@@ -59,7 +1209,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlAppend004
      * @tc.desc: Appends a specified key/value pair as a new search parameter.
-     * @tc.author: jiangkai
      */
     it('testUrlAppend004', 0, function () {
         let that = new Url.URL('https://example.com?foo=1&bar=2')
@@ -72,7 +1221,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlAppend005
      * @tc.desc: Appends a specified key/value pair as a new search parameter.
-     * @tc.author: jiangkai
      */
     it('testUrlAppend005', 0, function () {
         let that = new Url.URL('https://example.com?foo=1&bar=2')
@@ -85,7 +1233,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlDelete001
      * @tc.desc: Deletes the given search parameter and its associated value,from the list of all search parameters.
-     * @tc.author: jiangkai
      */
     it('testUrlDelete001', 0, function () {
         let that = new Url.URL('https://example.com?foo=1&bar=2')
@@ -98,7 +1245,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlDelete002
      * @tc.desc: Deletes the given search parameter and its associated value,from the list of all search parameters.
-     * @tc.author: jiangkai
      */
     it('testUrlDelete002', 0, function () {
         let that = new Url.URL('https://example.com?foo大=1&bar=2');
@@ -111,7 +1257,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlDelete003
      * @tc.desc: Deletes the given search parameter and its associated value,from the list of all search parameters.
-     * @tc.author: jiangkai
      */
     it('testUrlDelete003', 0, function () {
         let that = new Url.URL('https://example.com?foo大=1&bar=2');
@@ -124,7 +1269,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlDelete004
      * @tc.desc: Deletes the given search parameter and its associated value,from the list of all search parameters.
-     * @tc.author: jiangkai
      */
     it('testUrlDelete004', 0, function () {
         let that = new Url.URL('https://example.com?foo=1&bar=2');
@@ -137,7 +1281,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlDelete005
      * @tc.desc: Deletes the given search parameter and its associated value,from the list of all search parameters.
-     * @tc.author: jiangkai
      */
     it('testUrlDelete005', 0, function () {
         let that = new Url.URL('https://example.com?foo=1&bar=2');
@@ -150,7 +1293,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlEntries001
      * @tc.desc: Returns an ES6 iterator. Each item of the iterator is a JavaScript Array.
-     * @tc.author: jiangkai
      */
     it('testUrlEntries001', 0, function () {
         let params = new Url.URLSearchParams("key1=value1&key2=value2");
@@ -169,7 +1311,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlEntries002
      * @tc.desc: Returns an ES6 iterator. Each item of the iterator is a JavaScript Array.
-     * @tc.author: jiangkai
      */
     it('testUrlEntries002', 0, function () {
         let params = new Url.URLSearchParams("key1=value1&key2=value2")
@@ -187,7 +1328,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlEntries003
      * @tc.desc: Returns an ES6 iterator. Each item of the iterator is a JavaScript Array.
-     * @tc.author: jiangkai
      */
     it('testUrlEntries003', 0, function () {
         let params = new Url.URLSearchParams("key1=value1&key2=value2")
@@ -206,7 +1346,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlEntries004
      * @tc.desc: Returns an ES6 iterator. Each item of the iterator is a JavaScript Array.
-     * @tc.author: jiangkai
      */
     it('testUrlEntries004', 0, function () {
         let params = new Url.URLSearchParams("key1=value1&key2=value2")
@@ -224,7 +1363,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlEntries005
      * @tc.desc: Returns an ES6 iterator. Each item of the iterator is a JavaScript Array.
-     * @tc.author: jiangkai
      */
     it('testUrlEntries005', 0, function () {
         let params = new Url.URLSearchParams("key1=value1&key2=value2")
@@ -243,7 +1381,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrl[Symbol.iterator]()001
      * @tc.desc: Returns an ES6 iterator. Each item of the iterator is a JavaScript Array.
-     * @tc.author: zhangyouyou
      */
     it('testUrl[Symbol.iterator]001', 0, function () {
         let params = new Url.URLSearchParams("key1=value1&key2=value2");
@@ -261,7 +1398,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrl[Symbol.iterator]()002
      * @tc.desc: Returns an ES6 iterator. Each item of the iterator is a JavaScript Array.
-     * @tc.author: zhangyouyou
      */
     it('testUrl[Symbol.iterator]()002', 0, function () {
         let params = new Url.URLSearchParams("key1=value1&key2=value2")
@@ -279,7 +1415,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrl[Symbol.iterator]()003
      * @tc.desc: Returns an ES6 iterator. Each item of the iterator is a JavaScript Array.
-     * @tc.author: zhangyouyou
      */
     it('testUrl[Symbol.iterator]()003', 0, function () {
         let params = new Url.URLSearchParams("key1=value1&key2=value2")
@@ -298,7 +1433,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrl[Symbol.iterator]()004
      * @tc.desc: Returns an ES6 iterator. Each item of the iterator is a JavaScript Array.
-     * @tc.author: zhangyouyou
      */
     it('testUrl[Symbol.iterator]()004', 0, function () {
         let params = new Url.URLSearchParams("key1=value1&key2=value2")
@@ -316,7 +1450,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrl[Symbol.iterator]()005
      * @tc.desc: Returns an ES6 iterator. Each item of the iterator is a JavaScript Array.
-     * @tc.author: zhangyouyou
      */
     it('testUrl[Symbol.iterator]()005', 0, function () {
         let params = new Url.URLSearchParams("key1=value1&key2=value2")
@@ -335,7 +1468,6 @@ describe('UrlFunTest', function () {
    /**
     * @tc.name: testUrlForEach001
     * @tc.desc: Callback functions are used to traverse key-value pairs on the URLSearchParams instance object.
-    * @tc.author: jiangkai
     */
     it('testUrlForEach001', 0, function () {
         let params = new Url.URLSearchParams("key1=value1&key2=value2")
@@ -353,7 +1485,6 @@ describe('UrlFunTest', function () {
    /**
     * @tc.name: testUrlForEach002
     * @tc.desc: Callback functions are used to traverse key-value pairs on the URLSearchParams instance object.
-    * @tc.author: jiangkai
     */
     it('testUrlForEach002', 0, function () {
         let params = new Url.URLSearchParams("key1=value1&key2=value2");
@@ -371,7 +1502,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlForEach003
      * @tc.desc: Callback functions are used to traverse key-value pairs on the URLSearchParams instance object.
-     * @tc.author: jiangkai
      */
     it('testUrlForEach003', 0, function () {
         let params = new Url.URLSearchParams("key1=value1&key2=value2");
@@ -390,7 +1520,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlForEach004
      * @tc.desc: Callback functions are used to traverse key-value pairs on the URLSearchParams instance object.
-     * @tc.author: jiangkai
      */
     it('testUrlForEach004', 0, function () {
         let params = new Url.URLSearchParams("foo=bar&jss=txt");
@@ -408,7 +1537,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlForEach005
      * @tc.desc: Callback functions are used to traverse key-value pairs on the URLSearchParams instance object.
-     * @tc.author: jiangkai
      */
     it('testUrlForEach005', 0, function () {
         let params = new Url.URLSearchParams("foo=bar&jss=txt");
@@ -427,7 +1555,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlGet001
      * @tc.desc: Returns the first value associated to the given search parameter.
-     * @tc.author: maxiaodong
      */
     it('testUrlGet001', 0, function () {
         let params = new Url.URLSearchParams("key1=value1&key2=value2")
@@ -438,7 +1565,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlGet002
      * @tc.desc: Returns the first value associated to the given search parameter.
-     * @tc.author: maxiaodong
      */
     it('testUrlGet002', 0, function () {
         let params = new Url.URLSearchParams("key1=value1&key2=value2")
@@ -449,7 +1575,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlGet003
      * @tc.desc: Returns the first value associated to the given search parameter.
-     * @tc.author: maxiaodong
      */
     it('testUrlGet003', 0, function () {
         let params = new Url.URLSearchParams("key1=value1&key2=value2")
@@ -461,7 +1586,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlGet004
      * @tc.desc: Returns the first value associated to the given search parameter.
-     * @tc.author: maxiaodong
      */
     it('testUrlGet004', 0, function () {
         let params = new Url.URLSearchParams("key1=value1&key2=value2")
@@ -472,7 +1596,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlGet005
      * @tc.desc: Returns the first value associated to the given search parameter.
-     * @tc.author: maxiaodong
      */
     it('testUrlGet005', 0, function () {
         let params = new Url.URLSearchParams("key1=value1&key2=value2")
@@ -484,7 +1607,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlGetAll001
      * @tc.desc: Returns all key-value pairs associated with a given search parameter as an array.
-     * @tc.author: maxiaodong
      */
     it('testUrlGetAll001', 0, function () {
         let params = new Url.URLSearchParams("key1=value1&key2=value2")
@@ -496,7 +1618,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlGetAll002
      * @tc.desc: Returns all key-value pairs associated with a given search parameter as an array.
-     * @tc.author: maxiaodong
      */
     it('testUrlGetAll002', 0, function () {
         let params = new Url.URLSearchParams("key1=value1&8=DEF")
@@ -508,7 +1629,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlGetAll003
      * @tc.desc: Returns all key-value pairs associated with a given search parameter as an array.
-     * @tc.author: maxiaodong
      */
     it('testUrlGetAll003', 0, function () {
         let params = new Url.URLSearchParams("key1=value1&key2=value2&key3=da")
@@ -520,7 +1640,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlGetAll004
      * @tc.desc: Returns all key-value pairs associated with a given search parameter as an array.
-     * @tc.author: maxiaodong
      */
     it('testUrlGetAll004', 0, function () {
         let params = new Url.URLSearchParams("key1=value1&key2=value2&key3=大")
@@ -532,7 +1651,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlGetAll005
      * @tc.desc: Returns all key-value pairs associated with a given search parameter as an array.
-     * @tc.author: maxiaodong
      */
     it('testUrlGetAll005', 0, function () {
         let params = new Url.URLSearchParams("key1=value1&key2=value2&key3=大")
@@ -544,7 +1662,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHas001
      * @tc.desc: Returns a Boolean that indicates whether a parameter with the specified name exists.
-     * @tc.author: maxiaodong
      */
     it('testUrlHas001', 0, function () {
         let params = new Url.URLSearchParams("key1=value1&key2=value2&key3=大")
@@ -555,7 +1672,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHas002
      * @tc.desc: Returns a Boolean that indicates whether a parameter with the specified name exists.
-     * @tc.author: maxiaodong
      */
     it('testUrlHas002', 0, function () {
         let params = new Url.URLSearchParams("小=value1&key2=value2&key3=大")
@@ -566,7 +1682,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHas003
      * @tc.desc: Returns a Boolean that indicates whether a parameter with the specified name exists.
-     * @tc.author: maxiaodong
      */
     it('testUrlHas003', 0, function () {
         let params = new Url.URLSearchParams("小=value1&￥=value2&key3=大")
@@ -578,7 +1693,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHas004
      * @tc.desc: Returns a Boolean that indicates whether a parameter with the specified name exists.
-     * @tc.author: maxiaodong
      */
     it('testUrlHas004', 0, function () {
         let params = new Url.URLSearchParams("小=value1&key2=value2&key3=大")
@@ -589,7 +1703,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHas005
      * @tc.desc: Returns a Boolean that indicates whether a parameter with the specified name exists.
-     * @tc.author: maxiaodong
      */
     it('testUrlHas005', 0, function () {
         let params = new Url.URLSearchParams("小=value1&￥=value2&key3=大")
@@ -601,7 +1714,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlKeys001
      * @tc.desc: Returns an iterator allowing to go through all keys contained in this object.
-     * @tc.author: maxiaodong
      */
     it('testUrlKeys001', 0, function () {
         let params = new Url.URLSearchParams("小=value1&￥=value2&key3=大");
@@ -617,7 +1729,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlKeys002
      * @tc.desc: Returns an iterator allowing to go through all keys contained in this object.
-     * @tc.author: maxiaodong
      */
     it('testUrlKeys002', 0, function () {
         let params = new Url.URLSearchParams("小=value1&￥=value2&key3=大");
@@ -633,7 +1744,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlKeys003
      * @tc.desc: Returns an iterator allowing to go through all keys contained in this object.
-     * @tc.author: maxiaodong
      */
     it('testUrlKeys003', 0, function () {
         let params = new Url.URLSearchParams("小=value1&￥=value2&key3=大");
@@ -649,7 +1759,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlKeys004
      * @tc.desc: Returns an iterator allowing to go through all keys contained in this object.
-     * @tc.author: maxiaodong
      */
     it('testUrlKeys004', 0, function () {
         let params = new Url.URLSearchParams("小=value1&￥=value2&key3=大&key4=六");
@@ -665,7 +1774,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlKeys005
      * @tc.desc: Returns an iterator allowing to go through all keys contained in this object.
-     * @tc.author: maxiaodong
      */
     it('testUrlKeys005', 0, function () {
         let params = new Url.URLSearchParams("小=value1&￥=value2&key3=大&key4=六&key5=发");
@@ -683,7 +1791,6 @@ describe('UrlFunTest', function () {
      * @tc.desc: Sets the value associated with a given search parameter to the given value.
      * If there were several matching values, this method deletes the others.
      * If the search parameter doesn't exist, this method creates it.
-     * @tc.author: maxiaodong
      */
     it('testUrlSet001', 0, function () {
         let params = new Url.URLSearchParams("1=value1&2=value2&key3=3");
@@ -698,7 +1805,6 @@ describe('UrlFunTest', function () {
      * @tc.desc: Sets the value associated with a given search parameter to the given value.
      * If there were several matching values, this method deletes the others.
      * If the search parameter doesn't exist, this method creates it.
-     * @tc.author: maxiaodong
      */
     it('testUrlSet002', 0, function () {
         let params = new Url.URLSearchParams("1=value1&2=value2&key3=3");
@@ -712,7 +1818,6 @@ describe('UrlFunTest', function () {
      * @tc.desc: Sets the value associated with a given search parameter to the given value.
      * If there were several matching values, this method deletes the others.
      * If the search parameter doesn't exist, this method creates it.
-     * @tc.author: maxiaodong
      */
     it('testUrlSet003', 0, function () {
         let params = new Url.URLSearchParams("1=value1&2=value2&key3=3");
@@ -726,7 +1831,6 @@ describe('UrlFunTest', function () {
      * @tc.desc: Sets the value associated with a given search parameter to the given value.
      * If there were several matching values, this method deletes the others.
      * If the search parameter doesn't exist, this method creates it.
-     * @tc.author: maxiaodong
      */
     it('testUrlSet004', 0, function () {
         let params = new Url.URLSearchParams("1=value1&2=value2&key3=3");
@@ -741,7 +1845,6 @@ describe('UrlFunTest', function () {
      * @tc.desc: Sets the value associated with a given search parameter to the given value.
      * If there were several matching values, this method deletes the others.
      * If the search parameter doesn't exist, this method creates it.
-     * @tc.author: maxiaodong
      */
     it('testUrlSet005', 0, function () {
         let params = new Url.URLSearchParams("1=value1&2=value2&key3=3");
@@ -753,7 +1856,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlSort001
      * @tc.desc: Sort all key/value pairs contained in this object in place and return undefined.
-     * @tc.author: maxiaodong
      */
     it('testUrlSort001', 0, function () {
         let params = new Url.URLSearchParams("1=value1&3=value3&2=key2");
@@ -765,7 +1867,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlSort002
      * @tc.desc: Sort all key/value pairs contained in this object in place and return undefined.
-     * @tc.author: maxiaodong
      */
     it('testUrlSort002', 0, function () {
         let params = new Url.URLSearchParams("a=value1&c=value2&b=key2");
@@ -777,7 +1878,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlSort003
      * @tc.desc: Sort all key/value pairs contained in this object in place and return undefined.
-     * @tc.author: maxiaodong
      */
     it('testUrlSort003', 0, function () {
         let params = new Url.URLSearchParams("d=value1&c=value2&b=33");
@@ -790,7 +1890,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlSort004
      * @tc.desc: Sort all key/value pairs contained in this object in place and return undefined.
-     * @tc.author: maxiaodong
      */
     it('testUrlSort004', 0, function () {
         let params = new Url.URLSearchParams("1=value1&3=value3&2=key2&4=key4");
@@ -802,7 +1901,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlSort005
      * @tc.desc: Sort all key/value pairs contained in this object in place and return undefined.
-     * @tc.author: maxiaodong
      */
     it('testUrlSort005', 0, function () {
         let params = new Url.URLSearchParams("a=value1&c=value2&4=key4&b=key2");
@@ -814,7 +1912,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlValues001
      * @tc.desc: Returns an iterator allowing to go through all values contained in this object.
-     * @tc.author: maxiaodong
      */
     it('testUrlValues001', 0, function () {
         let params = new Url.URLSearchParams("d=value1&c=value2&b=大")
@@ -830,7 +1927,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlValues002
      * @tc.desc: Returns an iterator allowing to go through all values contained in this object.
-     * @tc.author: maxiaodong
      */
     it('testUrlValues002', 0, function () {
         let params = new Url.URLSearchParams("d=value1&c=value2&b=大")
@@ -846,7 +1942,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlValues003
      * @tc.desc: Returns an iterator allowing to go through all values contained in this object.
-     * @tc.author: maxiaodong
      */
     it('testUrlValues003', 0, function () {
         let params = new Url.URLSearchParams("d=value1&c=value2&b=大")
@@ -863,7 +1958,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlValues004
      * @tc.desc: Returns an iterator allowing to go through all values contained in this object.
-     * @tc.author: maxiaodong
      */
     it('testUrlValues004', 0, function () {
         let params = new Url.URLSearchParams("d=value1&c=value2&b=大&4=key4")
@@ -879,7 +1973,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlValues005
      * @tc.desc: Returns an iterator allowing to go through all values contained in this object.
-     * @tc.author: maxiaodong
      */
     it('testUrlValues005', 0, function () {
         let params = new Url.URLSearchParams("d=value1&c=value2&b=大&4=key4&5=key5")
@@ -895,7 +1988,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlSearchParamsToString001
      * @tc.desc: Returns a query string suitable for use in a URL.
-     * @tc.author: maxiaodong
      */
     it('testUrlSearchParamsToString001', 0, function () {
         let params = new Url.URLSearchParams("d=value1&c=value2&b=大")
@@ -906,7 +1998,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlSearchParamsToString002
      * @tc.desc: Returns a query string suitable for use in a URL.
-     * @tc.author: maxiaodong
      */
     it('testUrlSearchParamsToString002', 0, function () {
         let params = new Url.URLSearchParams("d=value1&c=value2&b= 大")
@@ -918,7 +2009,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlSearchParamsToString003
      * @tc.desc: Returns a query string suitable for use in a URL.
-     * @tc.author: maxiaodong
      */
     it('testUrlSearchParamsToString003', 0, function () {
         let params = new Url.URLSearchParams("￥=)")
@@ -930,7 +2020,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlSearchParamsToString004
      * @tc.desc: Returns a query string suitable for use in a URL.
-     * @tc.author: maxiaodong
      */
     it('testUrlSearchParamsToString004', 0, function () {
         let params = new Url.URLSearchParams("d=value1&c=value2&b=大&4=key4")
@@ -941,7 +2030,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlSearchParamsToString005
      * @tc.desc: Returns a query string suitable for use in a URL.
-     * @tc.author: maxiaodong
      */
     it('testUrlSearchParamsToString005', 0, function () {
         let params = new Url.URLSearchParams("d=value1&c=value2&b= 大&4=key4&5=key5")
@@ -953,7 +2041,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlSearchParamsConstruction001
      * @tc.desc: A parameterized constructor used to create an URLSearchParams instance.
-     * @tc.author: zhangyouyou
      */
     it('testUrlSearchParamsConstruction001', 0, function () {
         let params = new Url.URLSearchParams('?user=abc&query=xyz')
@@ -964,7 +2051,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlSearchParamsConstruction002
      * @tc.desc: A parameterized constructor used to create an URLSearchParams instance.
-     * @tc.author: zhangyouyou
      */
     it('testUrlSearchParamsConstruction002', 0, function () {
         let params = new Url.URLSearchParams({
@@ -978,7 +2064,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlSearchParamsConstruction003
      * @tc.desc: A parameterized constructor used to create an URLSearchParams instance.
-     * @tc.author: zhangyouyou
      */
     it('testUrlSearchParamsConstruction003', 0, function () {
         let params = new Url.URLSearchParams([
@@ -993,7 +2078,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlSearchParamsConstruction004
      * @tc.desc: A parameterized constructor used to create an URLSearchParams instance.
-     * @tc.author: zhangyouyou
      */
     it('testUrlSearchParamsConstruction004', 0, function () {
         const map = new Map();
@@ -1007,7 +2091,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlSearchParamsConstruction005
      * @tc.desc: A parameterized constructor used to create an URLSearchParams instance.
-     * @tc.author: zhangyouyou
      */
     it('testUrlSearchParamsConstruction005', 0, function () {
         function* getQueryPairs() {
@@ -1023,7 +2106,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlSearchParamsConstruction006
      * @tc.desc: A parameterized constructor used to create an URLSearchParams instance.
-     * @tc.author: zhangyouyou
      */
     it('testUrlSearchParamsConstruction006', 0, function () {
         let params = new Url.URLSearchParams()
@@ -1035,7 +2117,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlSearchParamsConstruction007
      * @tc.desc: A parameterized constructor used to create an URLSearchParams instance.
-     * @tc.author: zhangyouyou
      */
     it('testUrlSearchParamsConstruction007', 0, function () {
         let param
@@ -1048,7 +2129,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlToString001
      * @tc.desc: Returns the serialized URL as a string.
-     * @tc.author: zhaoduwei
      */
     it('testUrlToString001', 0, function () {
         let params = new Url.URL('http://username:password@host:8080/directory/file?query#fragment')
@@ -1059,7 +2139,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlToString002
      * @tc.desc: Returns the serialized URL as a string.
-     * @tc.author: zhaoduwei
      */
     it('testUrlToString002', 0, function () {
         let params = new Url.URL('http://username:password@host:8080/directory/file')
@@ -1070,7 +2149,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlToString003
      * @tc.desc: Returns the serialized URL as a string.
-     * @tc.author: zhaoduwei
      */
     it('testUrlToString003', 0, function () {
         let params = new Url.URL('http://username:password@host:8080#fragment')
@@ -1081,7 +2159,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlToString004
      * @tc.desc: Returns the serialized URL as a string.
-     * @tc.author: zhaoduwei
      */
     it('testUrlToString004', 0, function () {
         let params = new Url.URL('http1://host/directory/file?query#fragment')
@@ -1092,7 +2169,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlToString005
      * @tc.desc: Returns the serialized URL as a string.
-     * @tc.author: zhaoduwei
      */
     it('testUrlToString005', 0, function () {
         let params = new Url.URL('http:host:8080/directory/file?query#fragment')
@@ -1103,7 +2179,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHref001
      * @tc.desc: Gets and sets the serialized URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlHref001', 0, function () {
         let params = new Url.URL('http://username:password@host:8080/directory/file?query#fragment')
@@ -1114,7 +2189,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHref002
      * @tc.desc: Gets and sets the serialized URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlHref002', 0, function () {
         let params = new Url.URL('http://host:8080/directory/file?query#fragment')
@@ -1125,7 +2199,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHref003
      * @tc.desc: Gets and sets the serialized URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlHref003', 0, function () {
         let params = new Url.URL('http://username:password@host:8080')
@@ -1136,7 +2209,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHref004
      * @tc.desc: Gets and sets the serialized URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlHref004', 0, function () {
         let params = new Url.URL('http://username:password@host:8080/directory/file?query#fragment')
@@ -1148,7 +2220,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHref005
      * @tc.desc: Gets and sets the serialized URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlHref005', 0, function () {
         let params = new Url.URL('http://username:password@host:8080/directory/file?query#fragment')
@@ -1160,7 +2231,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlOrigin001
      * @tc.desc: Gets the read-only serialization of the URL's origin.
-     * @tc.author: zhaoduwei
      */
     it('testUrlOrigin001', 0, function () {
         let params = new Url.URL('http://username:password@host:8080/directory/file?query#fragment')
@@ -1171,7 +2241,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlOrigin002
      * @tc.desc: Gets the read-only serialization of the URL's origin.
-     * @tc.author: zhaoduwei
      */
     it('testUrlOrigin002', 0, function () {
         let params = new Url.URL('http://username:password@host:11/directory/file?query#fragment')
@@ -1182,7 +2251,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlOrigin003
      * @tc.desc: Gets the read-only serialization of the URL's origin.
-     * @tc.author: zhaoduwei
      */
     it('testUrlOrigin003', 0, function () {
         let params = new Url.URL('http://username:password@host/directory/file?query#fragment')
@@ -1193,7 +2261,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlOrigin004
      * @tc.desc: Gets the read-only serialization of the URL's origin.
-     * @tc.author: zhaoduwei
      */
     it('testUrlOrigin004', 0, function () {
         let params = new Url.URL('http://username:password@aaaasshost:212/directory/file?query#fragment')
@@ -1204,7 +2271,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlOrigin005
      * @tc.desc: Gets the read-only serialization of the URL's origin.
-     * @tc.author: zhaoduwei
      */
     it('testUrlOrigin005', 0, function () {
         let params = new Url.URL('http://username:password@host22:100#fragment')
@@ -1215,7 +2281,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlProtocol001
      * @tc.desc: Gets and sets the protocol portion of the URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlProtocol001', 0, function () {
         let params = new Url.URL('http://username:password@host:8080/directory/file?query#fragment')
@@ -1226,7 +2291,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlProtocol002
      * @tc.desc: Gets and sets the protocol portion of the URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlProtocol002', 0, function () {
         let params = new Url.URL('http1://username:password@host:8080/directory/file?query#fragment')
@@ -1237,7 +2301,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlProtocol003
      * @tc.desc: Gets and sets the protocol portion of the URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlProtocol003', 0, function () {
         let params = new Url.URL('https://username:password@host:8080/directory/file?query#fragment')
@@ -1248,7 +2311,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlProtocol004
      * @tc.desc: Gets and sets the protocol portion of the URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlProtocol004', 0, function () {
         let params = new Url.URL('http://username:password@host:8080/directory/file?query#fragment')
@@ -1260,7 +2322,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlProtocol005
      * @tc.desc: Gets and sets the protocol portion of the URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlProtocol005', 0, function () {
         let params = new Url.URL('http://username:password@host:8080/directory/file?query#fragment')
@@ -1272,7 +2333,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlUsername001
      * @tc.desc: Gets and sets the username portion of the URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlUsername001', 0, function () {
         let params = new Url.URL('http://username:password@host:8080/directory/file?query#fragment')
@@ -1283,7 +2343,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlUsername002
      * @tc.desc: Gets and sets the username portion of the URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlUsername002', 0, function () {
         let params = new Url.URL('http://zhao:password@host:8080/directory/file?query#fragment')
@@ -1294,7 +2353,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlUsername003
      * @tc.desc: Gets and sets the username portion of the URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlUsername003', 0, function () {
         let params = new Url.URL('http://username:password@host:8080/directory/file?query#fragment')
@@ -1306,7 +2364,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlUsername004
      * @tc.desc: Gets and sets the username portion of the URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlUsername004', 0, function () {
         let params = new Url.URL('http://username:password@host:8080/directory/file?query#fragment')
@@ -1318,7 +2375,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlUsername005
      * @tc.desc: Gets and sets the username portion of the URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlUsername005', 0, function () {
         let params = new Url.URL('http://usme@host:8080/directory/file?query#fragment')
@@ -1329,7 +2385,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlPassword001
      * @tc.desc: Gets and sets the password portion of the URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlPassword001', 0, function () {
         let params = new Url.URL('http://username:11@host:8080/directory/file?query#fragment')
@@ -1340,7 +2395,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlPassword002
      * @tc.desc: Gets and sets the password portion of the URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlPassword002', 0, function () {
         let params = new Url.URL('http://username:23aa@host:8080/directory/file?query#fragment')
@@ -1351,7 +2405,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlPassword003
      * @tc.desc: Gets and sets the password portion of the URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlPassword003', 0, function () {
         let params = new Url.URL('http://username@host:8080/directory/file?query#fragment')
@@ -1362,7 +2415,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlPassword004
      * @tc.desc: Gets and sets the password portion of the URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlPassword004', 0, function () {
         let params = new Url.URL('http://username:password@host:8080/directory/file?query#fragment')
@@ -1374,7 +2426,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlPassword005
      * @tc.desc: Gets and sets the password portion of the URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlPassword005', 0, function () {
         let params = new Url.URL('http://username:password@host:8080/directory/file?query#fragment')
@@ -1386,7 +2437,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHost001
      * @tc.desc: Gets and sets the host portion of the URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlHost001', 0, function () {
         let params = new Url.URL('http://username:password@host:8080/directory/file?query#fragment')
@@ -1397,7 +2447,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHost002
      * @tc.desc: Gets and sets the host portion of the URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlHost002', 0, function () {
         let params = new Url.URL('http://username:password@hosthost/directory/file?query#fragment')
@@ -1408,7 +2457,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHost003
      * @tc.desc: Gets and sets the host portion of the URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlHost003', 0, function () {
         let params = new Url.URL('http://username:password@host:199/directory/file?query#fragment')
@@ -1419,7 +2467,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHost004
      * @tc.desc: Gets and sets the host portion of the URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlHost004', 0, function () {
         let params = new Url.URL('http://username:password@host:8080/directory/file?query#fragment')
@@ -1431,7 +2478,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHost005
      * @tc.desc: Gets and sets the host portion of the URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlHost005', 0, function () {
         let params = new Url.URL('http://username:password@host:8080/directory/file?query#fragment')
@@ -1443,7 +2489,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHostname001
      * @tc.desc: Gets and sets the host name portion of the URL，not include the port.
-     * @tc.author: zhaoduwei
      */
     it('testUrlHostname001', 0, function () {
         let params = new Url.URL('http://username:password@host:8080/directory/file?query#fragment')
@@ -1454,7 +2499,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHostname002
      * @tc.desc: Gets and sets the host name portion of the URL，not include the port.
-     * @tc.author: zhaoduwei
      */
     it('testUrlHostname002', 0, function () {
         let params = new Url.URL('http://username:password@host123:8080/directory/file?query#fragment')
@@ -1465,7 +2509,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHostname003
      * @tc.desc: Gets and sets the host name portion of the URL，not include the port.
-     * @tc.author: zhaoduwei
      */
     it('testUrlHostname003', 0, function () {
         let params = new Url.URL('http://username:password@885ssa:8080/directory/file?query#fragment')
@@ -1476,7 +2519,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHostname004
      * @tc.desc: Gets and sets the host name portion of the URL，not include the port.
-     * @tc.author: zhaoduwei
      */
     it('testUrlHostname004', 0, function () {
         let params = new Url.URL('http://username:password@host:8080/directory/file?query#fragment')
@@ -1488,7 +2530,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHostname005
      * @tc.desc: Gets and sets the host name portion of the URL，not include the port.
-     * @tc.author: zhaoduwei
      */
     it('testUrlHostname005', 0, function () {
         let params = new Url.URL('http://username:password@host:8080/directory/file?query#fragment')
@@ -1500,7 +2541,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlPort001
      * @tc.desc: Gets and sets the port portion of the URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlPort001', 0, function () {
         let params = new Url.URL('http://username:password@host:8080/directory/file?query#fragment')
@@ -1511,7 +2551,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlPort002
      * @tc.desc: Gets and sets the port portion of the URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlPort002', 0, function () {
         let params = new Url.URL('http://username:password@host:100/directory/file?query#fragment')
@@ -1522,7 +2561,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlPort003
      * @tc.desc: Gets and sets the port portion of the URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlPort003', 0, function () {
         let params = new Url.URL('http://username:password@host/directory/file?query#fragment')
@@ -1533,7 +2571,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlPort004
      * @tc.desc: Gets and sets the port portion of the URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlPort004', 0, function () {
         let params = new Url.URL('http://username:password@host:8080/directory/file?query#fragment')
@@ -1545,7 +2582,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlPort005
      * @tc.desc: Gets and sets the port portion of the URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlPort005', 0, function () {
         let params = new Url.URL('http://username:password@host:8080/directory/file?query#fragment')
@@ -1557,7 +2593,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlPathname001
      * @tc.desc: Gets and sets the path portion of the URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlPathname001', 0, function () {
         let params = new Url.URL('http://username:password@host:8080/directory/file?query#fragment')
@@ -1568,7 +2603,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlPathname002
      * @tc.desc: Gets and sets the path portion of the URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlPathname002', 0, function () {
         let params = new Url.URL('http://username:password@host:8080/directory?query#fragment')
@@ -1579,7 +2613,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlPathname003
      * @tc.desc: Gets and sets the path portion of the URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlPathname003', 0, function () {
         let params = new Url.URL('http://username:password@host:8080?query#fragment')
@@ -1590,7 +2623,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlPathname004
      * @tc.desc: Gets and sets the path portion of the URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlPathname004', 0, function () {
         let params = new Url.URL('http://username:password@host:8080/directory/file?query#fragment')
@@ -1602,7 +2634,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlPathname005
      * @tc.desc: Gets and sets the path portion of the URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlPathname005', 0, function () {
         let params = new Url.URL('http://username:password@host:8080/directory/file?query#fragment')
@@ -1614,7 +2645,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlSearch001
      * @tc.desc: Gets and sets the serialized query portion of the URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlSearch001', 0, function () {
         let params = new Url.URL('http://username:password@host:8080/directory/file?query=qqqq#fragment')
@@ -1625,7 +2655,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlSearch002
      * @tc.desc: Gets and sets the serialized query portion of the URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlSearch002', 0, function () {
         let params = new Url.URL('http://username:password@host:8080/directory/file?query=qqqq&ll=pp#fragment')
@@ -1636,7 +2665,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlSearch003
      * @tc.desc: Gets and sets the serialized query portion of the URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlSearch003', 0, function () {
         let params = new Url.URL('http://username:password@host:8080/directory/file?ppp9875=77#fragment')
@@ -1647,7 +2675,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlSearch004
      * @tc.desc: Gets and sets the serialized query portion of the URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlSearch004', 0, function () {
         let params = new Url.URL('http://username:password@host:8080/directory/file?query=qqqq#fragment')
@@ -1659,7 +2686,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlSearch005
      * @tc.desc: Gets and sets the serialized query portion of the URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlSearch005', 0, function () {
         let params = new Url.URL('http://username:password@host:8080/directory/file?query=qqqq#fragment')
@@ -1671,7 +2697,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHash001
      * @tc.desc: Gets and sets the fragment portion of the URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlHash001', 0, function () {
         let params = new Url.URL('http://username:password@host:8080/directory/file?query=pppppp#fragment')
@@ -1682,7 +2707,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHash002
      * @tc.desc: Gets and sets the fragment portion of the URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlHash002', 0, function () {
         let params = new Url.URL('http://username:password@host:8080/directory/file?query=pppppp#fragment')
@@ -1694,7 +2718,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHash003
      * @tc.desc: Gets and sets the fragment portion of the URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlHash003', 0, function () {
         let params = new Url.URL('http://username:password@host:8080/directory/file?query=pppppp#poiu')
@@ -1705,7 +2728,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHash004
      * @tc.desc: Gets and sets the fragment portion of the URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlHash004', 0, function () {
         let params = new Url.URL('http://username:password@host:8080/directory/file?query=pppppp')
@@ -1716,7 +2738,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlHash005
      * @tc.desc: Gets and sets the fragment portion of the URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlHash005', 0, function () {
         let params = new Url.URL('http://username:password@host:8080/directory/file?query=pppppp#fragment')
@@ -1728,7 +2749,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlSearchParams001
      * @tc.desc: Gets the SearchParams portion of the URL
-     * @tc.author: zhaoduwei
      */
      it('testUrlSearchParams001', 0, function () {
         var that = new Url.URL('http://username:password@host:8080/directory/file?foo=1&bar=2');
@@ -1740,7 +2760,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlSearchParams002
      * @tc.desc: Gets the SearchParams portion of the URL
-     * @tc.author: zhaoduwei
      */
     it('testUrlSearchParams002', 0, function () {
         let that = new Url.URL('https://example.com?foo=1&bar=2')
@@ -1753,7 +2772,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlSearchParams003
      * @tc.desc: Gets the SearchParams portion of the URL
-     * @tc.author: zhaoduwei
      */
     it('testUrlSearchParams003', 0, function () {
         let that = new Url.URL('https://example.com?d=value1&c=value2&b=大&4=key4')
@@ -1765,7 +2783,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlSearchParams004
      * @tc.desc: Gets the SearchParams portion of the URL
-     * @tc.author: zhaoduwei
      */
     it('testUrlSearchParams004', 0, function () {
         let that = new Url.URL('https://example.com?foo=1&bar=2')
@@ -1778,7 +2795,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlSearchParams005
      * @tc.desc: Gets the SearchParams portion of the URL
-     * @tc.author: zhaoduwei
      */
     it('testUrlSearchParams005', 0, function () {
         let that = new Url.URL('http://username:password@host:8080/directory/file?你好=china#qwer=da')
@@ -1790,7 +2806,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlToJson001
      * @tc.desc: Returns the serialized URL as a string.
-     * @tc.author: zhaoduwei
      */
     it('testUrlToJson001', 0, function () {
         let params = new Url.URL('http://username:password@host:8080/directory/file?query=pppppp#qwer=da')
@@ -1801,7 +2816,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlToJson002
      * @tc.desc: Returns the serialized URL as a string.
-     * @tc.author: zhaoduwei
      */
     it('testUrlToJson002', 0, function () {
         let params = new Url.URL('http://host:8080/directory/file?query=pppppp#qwer=da')
@@ -1812,7 +2826,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlToJson003
      * @tc.desc: Returns the serialized URL as a string.
-     * @tc.author: zhaoduwei
      */
     it('testUrlToJson003', 0, function () {
         let params = new Url.URL('http://username:password@host:8080')
@@ -1823,7 +2836,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlToJson004
      * @tc.desc: Returns the serialized URL as a string.
-     * @tc.author: zhaoduwei
      */
     it('testUrlToJson004', 0, function () {
         let params = new Url.URL('http11://username:password@host:8080?query=pppppp#qwer=da')
@@ -1834,7 +2846,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlToJson005
      * @tc.desc: Returns the serialized URL as a string.
-     * @tc.author: zhaoduwei
      */
     it('testUrlToJson005', 0, function () {
         let params = new Url.URL('http://username:password@host:8080/directory')
@@ -1845,7 +2856,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlIPv6001
      * @tc.desc: Gets and sets the serialized URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlIPv6001', 0, function () {
         let params = new Url.URL('http://[FEDC:BA98:7654:3210:FEDC:BA98:7654:3210]:80/index.html')
@@ -1856,7 +2866,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlIPv6002
      * @tc.desc: Gets and sets the serialized URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlIPv6002', 0, function () {
         let params = new Url.URL('http://[1080:0:0:0:8:800:200C:417A]/index.html')
@@ -1867,7 +2876,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlIPv6003
      * @tc.desc: Gets and sets the serialized URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlIPv6003', 0, function () {
         let params = new Url.URL('http://[::FFFF:129.144.52.38]:80/index.html')
@@ -1878,7 +2886,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlIPv4001
      * @tc.desc: Gets and sets the serialized URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlIPv4001', 0, function () {
         let params = new Url.URL('http://0377.0xff.255.1:80/index.html')
@@ -1889,7 +2896,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlIPv4002
      * @tc.desc: Gets and sets the serialized URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlIPv4002', 0, function () {
         let params = new Url.URL('http://0377.0xff.255.g/index.html')
@@ -1900,7 +2906,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlIPv4003
      * @tc.desc: Gets and sets the serialized URL.
-     * @tc.author: zhaoduwei
      */
     it('testUrlIPv4003', 0, function () {
         let params = new Url.URL('http://190.254.245.9:80/index.html')
@@ -1911,7 +2916,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlConstruction001
      * @tc.desc: URL constructor, which is used to instantiate a URL object.
-     * @tc.author: zhaoduwei
      */
     it('testUrlConstruction001', 0, function () {
         let params = new Url.URL('https://developer.mozilla.org',)
@@ -1922,7 +2926,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlConstruction002
      * @tc.desc: URL constructor, which is used to instantiate a URL object.
-     * @tc.author: zhaoduwei
      */
     it('testUrlConstruction002', 0, function () {
         let params = new Url.URL('https://developer.mozilla.org','flie:/developer.mozilla.org')
@@ -1933,7 +2936,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlConstruction003
      * @tc.desc: URL constructor, which is used to instantiate a URL object.
-     * @tc.author: zhaoduwei
      */
     it('testUrlConstruction003', 0, function () {
         let params = new Url.URL('https://developer.mozilla.org','ftp://www.example.com')
@@ -1944,7 +2946,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlConstruction004
      * @tc.desc: URL constructor, which is used to instantiate a URL object.
-     * @tc.author: zhaoduwei
      */
     it('testUrlConstruction004', 0, function () {
         let params = new Url.URL(' ', 'http://www.example.com')
@@ -1955,7 +2956,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlConstruction005
      * @tc.desc: URL constructor, which is used to instantiate a URL object.
-     * @tc.author: zhaoduwei
      */
     it('testUrlConstruction005', 0, function () {
         let params = new Url.URL('.', 'http://www.example.com')
@@ -1966,7 +2966,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlConstruction006
      * @tc.desc: URL constructor, which is used to instantiate a URL object.
-     * @tc.author: zhaoduwei
      */
     it('testUrlConstruction006', 0, function () {
         let params = new Url.URL('../h:', 'http://www.example.com')
@@ -1977,7 +2976,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlConstruction007
      * @tc.desc: URL constructor, which is used to instantiate a URL object.
-     * @tc.author: zhaoduwei
      */
     it('testUrlConstruction007', 0, function () {
         let params = new Url.URL('/sca/./path/path/../scasa/jjjjj', 'http://www.example.com')
@@ -1988,7 +2986,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlConstruction008
      * @tc.desc: URL constructor, which is used to instantiate a URL object.
-     * @tc.author: zhaoduwei
      */
     it('testUrlConstruction008', 0, function () {
         let params = new Url.URL('/../sca/./path/path/../scasa/jjjjj', 'http://www.example.com')
@@ -1999,7 +2996,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlConstruction009
      * @tc.desc: URL constructor, which is used to instantiate a URL object.
-     * @tc.author: zhaoduwei
      */
     it('testUrlConstruction009', 0, function () {
         let params = new Url.URL( '/../sca/./path/path/../scasa/jjjjj', 'file://www.example.com')
@@ -2010,7 +3006,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlConstruction010
      * @tc.desc: URL constructor, which is used to instantiate a URL object.
-     * @tc.author: zhaoduwei
      */
     it('testUrlConstruction010', 0, function () {
         let params = new Url.URL('/../sca/./path/path/../scasa/jjjjj', 'file1://www.example.com')
@@ -2021,7 +3016,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlConstruction011
      * @tc.desc: URL constructor, which is used to instantiate a URL object.
-     * @tc.author: zhaoduwei
      */
     it('testUrlConstruction011', 0, function () {
         let params = new Url.URL('htt1p://www.0902zy.cn/path?abc=123&def=456#yyyy')
@@ -2033,7 +3027,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlConstruction012
      * @tc.desc: URL constructor, which is used to instantiate a URL object.
-     * @tc.author: zhaoduwei
      */
     it('testUrlConstruction012', 0, function () {
         let params = new Url.URL('htt1p://www.0902zy.cn/path?abc=123&def=456#yyyy')
@@ -2045,7 +3038,6 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlConstruction013
      * @tc.desc: URL constructor, which is used to instantiate a URL object.
-     * @tc.author: zhaoduwei
      */
     it('testUrlConstruction013', 0, function () {
         let params = new Url.URL('htt1p://www.0902zy.cn/path?abc=123&def=456#yyyy')
@@ -2057,11 +3049,151 @@ describe('UrlFunTest', function () {
     /**
      * @tc.name: testUrlConstruction014
      * @tc.desc: URL constructor, which is used to instantiate a URL object.
-     * @tc.author: zhaoduwei
      */
     it('testUrlConstruction014', 0, function () {
         let params = new Url.URL('htt1p://www.0902zy.cn/path?abc=123&def=456#yyyy')
         var result = params.searchParams.toString();
         expect(result).assertEqual('abc=123&def=456')
+    })
+
+    /**
+     * @tc.name: testUrlparseURL001
+     * @tc.desc: URL constructor, which is used to instantiate a URL object.
+     */
+    it('testUrlparseURL001', 0, function () {
+        let params = new Url.URL()
+        params.parseURL('https://developer.mozilla.org',)
+        var result= params.href
+        expect(result).assertEqual('https://developer.mozilla.org/')
+    })
+
+    /**
+     * @tc.name: testUrlparseURL002
+     * @tc.desc: URL constructor, which is used to instantiate a URL object.
+     */
+    it('testUrlparseURL002', 0, function () {
+        let params = new Url.URL()
+        params.parseURL('https://developer.mozilla.org','flie:/developer.mozilla.org')
+        var result= params.href
+        expect(result).assertEqual('https://developer.mozilla.org/')
+    })
+
+    /**
+     * @tc.name: testUrlparseURL003
+     * @tc.desc: URL constructor, which is used to instantiate a URL object.
+     */
+    it('testUrlparseURL003', 0, function () {
+        let params = new Url.URL()
+        params.parseURL('https://developer.mozilla.org','ftp://www.example.com')
+        var result= params.href
+        expect(result).assertEqual('https://developer.mozilla.org/')
+    })
+
+    /**
+     * @tc.name: testUrlparseURL004
+     * @tc.desc: URL constructor, which is used to instantiate a URL object.
+     */
+    it('testUrlparseURL004', 0, function () {
+        let params = new Url.URL()
+        params.parseURL(' ', 'http://www.example.com')
+        var result= params.href
+        expect(result).assertEqual('http://www.example.com/')
+    })
+
+    /**
+     * @tc.name: testUrlparseURL005
+     * @tc.desc: URL constructor, which is used to instantiate a URL object.
+     */
+    it('testUrlparseURL005', 0, function () {
+        let params = new Url.URL()
+        params.parseURL('.', 'http://www.example.com')
+        var result= params.href
+        expect(result).assertEqual('http://www.example.com/')
+    })
+
+    /**
+     * @tc.name: testUrlparseURL006
+     * @tc.desc: URL constructor, which is used to instantiate a URL object.
+     */
+    it('testUrlparseURL006', 0, function () {
+        let params = new Url.URL()
+        params.parseURL('../h:', 'http://www.example.com')
+        var result= params.href
+        expect(result).assertEqual('http://www.example.com/h:')
+    })
+
+    /**
+     * @tc.name: testUrlparseURL007
+     * @tc.desc: URL constructor, BusinessError: Parameter error.
+     */
+    it('testUrlparseURL007', 0, function () {
+        try{
+            let params = new Url.URL()
+            var a = undefined
+            params.parseURL(a)
+            var result= params.href
+            expect(0).assertEqual(1)
+        } catch(err) {
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of ${a} must be string`)
+            expect(err.code).assertEqual(401)
+            expect(err.message).assertEqual(`Parameter error.The type of ${a} must be string`);
+        }
+    })
+
+    /**
+     * @tc.name: testUrlparseURL008
+     * @tc.desc: URL constructor, BusinessError: Parameter error.
+     */
+    it('testUrlparseURL008', 0, function () {
+        try{
+            let params = new Url.URL()
+            var a = 666;
+            var b = 666;
+            params.parseURL(a, b)
+            var result= params.href
+            expect(0).assertEqual(1)
+        } catch(err) {
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of ${a} must be string`)
+            expect(err.code).assertEqual(401)
+            expect(err.message).assertEqual(`Parameter error.The type of ${a} must be string`);
+        }
+    })
+
+    /**
+     * @tc.name: testUrlparseURL009
+     * @tc.desc: URL constructor, throw BusinessError:Parameter error.
+    */
+    it('testUrlparseURL009', 0, function () {
+        try{
+            let params = new Url.URL()
+            var a = '666666';
+            var b = 666666;
+            params.parseURL(a, b)
+            var result= params.href
+            expect(0).assertEqual(1)
+        } catch(err) {
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of ${b} must be string or URL`);
+            expect(err.code).assertEqual(401)
+            expect(err.message).assertEqual(`Parameter error.The type of ${b} must be string or URL`);
+        }
+    })
+
+    /**
+     * @tc.name: testUrlparseURL0010
+     * @tc.desc: URL constructor, throw BusinessError: Syntax Error. Invalid Url string.
+    */
+    it('testUrlparseURL0010', 0, function () {
+        try{
+            let params = new Url.URL()
+            var a = '666666';
+            var b = "666666";
+            params.parseURL(a, b)
+            var result= params.href
+            expect(0).assertEqual(1)
+        } catch(err) {
+            expect(err.toString()).assertEqual(`BusinessError: Syntax Error. Invalid Url string`)
+            expect(err.code).assertEqual(10200002)
+            expect(err.message).assertEqual(`Syntax Error. Invalid Url string`);
+        }
     })
 })}
