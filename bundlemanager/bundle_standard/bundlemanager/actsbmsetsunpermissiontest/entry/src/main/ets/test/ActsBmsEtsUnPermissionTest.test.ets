@@ -170,7 +170,7 @@ export default function actsBmsJsUnPermissionTest() {
          * @tc.name: getAbilityInfoUnPermissionSelf
          * @tc.desc: test getAbilityInfo
         */
-        it('getAbilityInfo_200', 0, async function (done) {
+        it('getAbilityInfoUnPermissionSelf', 0, async function (done) {
             await bundle.getAbilityInfo(SELF_BUNDLENAME, SELF_ABILITYNAME).then(res => {
                 console.info('actwsBundleManager getAbilityInfo promise success res:' + JSON.stringify(res));
                 for (const item in res) {

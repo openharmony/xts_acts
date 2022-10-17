@@ -4,7 +4,7 @@
         "type": "OHJSUnitTest",
         "test-timeout": "180000",
         "bundle-name": "ohos.acts.bundle.stage.test",
-        "module-name": "phone",
+        "module-name": "entry",
         "shell-timeout": "600000",
         "testcase-timeout": 70000
     },

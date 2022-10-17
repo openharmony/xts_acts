@@ -16,7 +16,7 @@
 import bundle from '@ohos.bundle';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 
-const MODULE_NAME = "phone"
+const MODULE_NAME = "entry"
 const MODULE_NAME_TEST = "phone1"
 const ABILITY_NAME = "Form"
 const ABILITY_NAME1 = "Form1"

@@ -1,6 +1,6 @@
 {
     "module": {
-        "name": "phone",
+        "name": "entry",
         "type": "entry",
         "srcEntrance": "./ets/Application/AbilityStage.ts",
         "description": "$string:phone_entry_dsc",
