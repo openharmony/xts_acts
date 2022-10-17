@@ -17,14 +17,14 @@ group("actssingleton") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "SystemSingleton:ActsSystemSingleton",
-      "SystemSingletonExtension:ActsSystemSingletonExtension",
-      "SystemSingletonExtensionFalse:ActsSystemSingletonExtensionFalse",
-      "SystemSingletonFalse:ActsSystemSingletonFalse",
-      "ThirdSingleton:ActsThirdSingleton",
-      "ThirdSingletonExtension:ActsThirdSingletonExtension",
-      "ThirdSingletonExtensionFalse:ActsThirdSingletonExtensionFalse",
-      "ThirdSingletonFalse:ActsThirdSingletonFalse",
+      "SystemSingleton:ActsSystemSingletonTest",
+      "SystemSingletonExtension:ActsSystemSingletonExtensionTest",
+      "SystemSingletonExtensionFalse:ActsSystemSingletonExtensionFalseTest",
+      "SystemSingletonFalse:ActsSystemSingletonFalseTest",
+      "ThirdSingleton:ActsThirdSingletonTest",
+      "ThirdSingletonExtension:ActsThirdSingletonExtensionTest",
+      "ThirdSingletonExtensionFalse:ActsThirdSingletonExtensionFalseTest",
+      "ThirdSingletonFalse:ActsThirdSingletonFalseTest",
     ]
   }
 }

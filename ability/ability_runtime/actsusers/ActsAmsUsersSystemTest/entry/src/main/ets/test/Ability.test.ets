@@ -74,12 +74,12 @@ export default function abilityTest() {
 
     console.debug("====>in ACTS_InterfaceMultiUsers====>");
     /*
-     * @tc.number  : ACTS_startAbility_0100
+     * @tc.number  : ACTS_startAbility_2000
      * @tc.name    : start new ability
      * @tc.desc    : Start an ability with the parameter startability with options succeeded.(promise)
      */
-    it('ACTS_StartAbility_0100', 0, async function (done) {
-      let TAG = 'ACTS_StartAbility_0100'
+    it('ACTS_startAbility_2000', 0, async function (done) {
+      let TAG = 'ACTS_startAbility_2000'
       let Subscriber
       var flag = true
       var startresult = false
@@ -121,7 +121,7 @@ export default function abilityTest() {
       function timeout() {
         if(flag == true) {
           expect().assertFail();
-          console.debug(TAG + 'ACTS_startAbility_0100 - timeout');
+          console.debug(TAG + 'ACTS_startAbility_2000 - timeout');
           commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
         }
       }
@@ -130,12 +130,12 @@ export default function abilityTest() {
     })
 
     /*
-     * @tc.number  : ACTS_startAbility_0200
+     * @tc.number  : ACTS_startAbility_2200
      * @tc.name    : start new ability
      * @tc.desc    : Start an ability with the parameter startability with options failed.(promise)
      */
-    it('ACTS_StartAbility_0200', 0, async function (done) {
-    let TAG = 'ACTS_StartAbility_0200'
+    it('ACTS_startAbility_2200', 0, async function (done) {
+    let TAG = 'ACTS_startAbility_2200'
       let Subscriber
       function SubscribeCallBack (err, data) {
         expect().assertFail();
@@ -168,7 +168,7 @@ export default function abilityTest() {
       }
 
       function timeout() {
-        console.debug(TAG + 'ACTS_startAbility_0200 - timeout');
+        console.debug(TAG + 'ACTS_startAbility_2200 - timeout');
         commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
       }
 
@@ -176,12 +176,12 @@ export default function abilityTest() {
     })
 
     /*
-     * @tc.number  : ACTS_startAbility_0300
+     * @tc.number  : ACTS_startAbility_2400
      * @tc.name    : start new ability
      * @tc.desc    : Start an ability with the parameter startability with options succeeded.(callback)
      */
-    it('ACTS_StartAbility_0300', 0, async function (done) {
-      let TAG = 'ACTS_StartAbility_0300'
+    it('ACTS_startAbility_2400', 0, async function (done) {
+      let TAG = 'ACTS_startAbility_2400'
       let Subscriber
       var flag = true
       var startresult = false
@@ -223,7 +223,7 @@ export default function abilityTest() {
       function timeout() {
         if(flag == true) {
           expect().assertFail();
-          console.debug(TAG + 'ACTS_startAbility_0300 - timeout');
+          console.debug(TAG + 'ACTS_startAbility_2400 - timeout');
           commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
         }
       }
@@ -233,12 +233,12 @@ export default function abilityTest() {
     })
 
     /*
-     * @tc.number  : ACTS_startAbility_0400
+     * @tc.number  : ACTS_startAbility_2600
      * @tc.name    : start new ability
      * @tc.desc    : Start an ability with the parameter startability with options failed.(callback)
      */
-    it('ACTS_StartAbility_0400', 0, async function (done) {
-      let TAG = 'ACTS_StartAbility_0400'
+    it('ACTS_startAbility_2600', 0, async function (done) {
+      let TAG = 'ACTS_startAbility_2600'
       let Subscriber
       function SubscribeCallBack (err, data) {
         expect().assertFail();
@@ -271,7 +271,7 @@ export default function abilityTest() {
       }
 
       function timeout() {
-        console.debug(TAG + 'ACTS_startAbility_0400 - timeout');
+        console.debug(TAG + 'ACTS_startAbility_2600 - timeout');
         commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
       }
 
@@ -280,12 +280,12 @@ export default function abilityTest() {
     })
 
     /*
-     * @tc.number  : ACTS_startAbility_0500
+     * @tc.number  : ACTS_startAbility_2800
      * @tc.name    : start new ability
      * @tc.desc    : Starting mainability2 with startability succeeded.(promise)
      */
-    it('ACTS_StartAbility_0500', 0, async function (done) {
-      let TAG = 'ACTS_StartAbility_0500'
+    it('ACTS_startAbility_2800', 0, async function (done) {
+      let TAG = 'ACTS_startAbility_2800'
       let Subscriber
       var flag = true
       var startresult = false
@@ -325,7 +325,7 @@ export default function abilityTest() {
       function timeout() {
         if(flag == true) {
           expect().assertFail();
-          console.debug(TAG + 'ACTS_startAbility_0100 - timeout');
+          console.debug(TAG + 'ACTS_startAbility_2800 - timeout');
           commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
         }
       }
@@ -334,12 +334,12 @@ export default function abilityTest() {
     })
 
     /*
-     * @tc.number  : ACTS_startAbility_0700
+     * @tc.number  : ACTS_startAbility_2900
      * @tc.name    : start new ability
      * @tc.desc    : Starting mainability2 with startability succeeded.(callback)
      */
-    it('ACTS_StartAbility_0700', 0, async function (done) {
-      let TAG = 'ACTS_StartAbility_0700'
+    it('ACTS_startAbility_2900', 0, async function (done) {
+      let TAG = 'ACTS_startAbility_2900'
       let Subscriber
       var flag = true
       var startresult = false
@@ -379,7 +379,7 @@ export default function abilityTest() {
       function timeout() {
         if(flag == true) {
           expect().assertFail();
-          console.debug(TAG + 'ACTS_startAbility_0300 - timeout');
+          console.debug(TAG + 'ACTS_startAbility_2900 - timeout');
           commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
         }
       }
@@ -389,12 +389,12 @@ export default function abilityTest() {
     })
 
     /*
-     * @tc.number  : ACTS_startAbility_0900
+     * @tc.number  : ACTS_startAbility_3000
      * @tc.name    : start new ability
      * @tc.desc    : Start an ability with the parameter startability with options succeeded.(promise)
      */
-    it('ACTS_StartAbility_0900', 0, async function (done) {
-      let TAG = 'ACTS_StartAbility_0900'
+    it('ACTS_startAbility_3000', 0, async function (done) {
+      let TAG = 'ACTS_startAbility_3000'
       let Subscriber
       var flag = true
       var startresult = false
@@ -433,7 +433,7 @@ export default function abilityTest() {
       function timeout() {
         if(flag == true) {
           expect().assertFail();
-          console.debug(TAG + 'ACTS_startAbility_0900 - timeout');
+          console.debug(TAG + 'ACTS_startAbility_3000 - timeout');
           commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
         }
       }
@@ -441,12 +441,12 @@ export default function abilityTest() {
       setTimeout(timeout, START_ABILITY_TIMEOUT);
     })
     /*
-     * @tc.number  : ACTS_startAbility_1000
+     * @tc.number  : ACTS_startAbility_3100
      * @tc.name    : start new ability
      * @tc.desc    : Start an ability with the parameter startability with options succeeded.(promise)
      */
-    it('ACTS_startAbility_1000', 0, async function (done) {
-      let TAG = 'ACTS_startAbility_1000'
+    it('ACTS_startAbility_3100', 0, async function (done) {
+      let TAG = 'ACTS_startAbility_3100'
       let Subscriber
       var flag = true
       var startresult = false
@@ -485,7 +485,7 @@ export default function abilityTest() {
       function timeout() {
         if(flag == true) {
           expect().assertFail();
-          console.debug(TAG + 'ACTS_startAbility_1000 - timeout');
+          console.debug(TAG + 'ACTS_startAbility_3100 - timeout');
           commonEvent.unsubscribe(Subscriber, UnSubscribeCallback)
         }
       }

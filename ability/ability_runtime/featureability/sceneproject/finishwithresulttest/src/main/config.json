@@ -17,8 +17,7 @@
     "package": "com.example.finishwithresulttest",
     "name": ".MyApplication",
     "deviceType": [
-      "default",
-      "phone"
+      "default"
     ],
     "distro": {
       "deliveryWithInstall": true,

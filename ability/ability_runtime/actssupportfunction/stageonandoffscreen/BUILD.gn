@@ -16,6 +16,7 @@ import("//test/xts/tools/build/suite.gni")
 ohos_hap_assist_suite("StageOnAndOffScreen") {
   hap_name = "StageOnAndOffScreen"
   hap_profile = "entry/src/main/module.json"
+  js_build_mode = "debug"
   testonly = true
   deps = [
     ":stageonandoffscreen_js_assets",

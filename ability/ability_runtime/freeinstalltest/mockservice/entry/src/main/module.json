@@ -6,8 +6,7 @@
     "description": "$string:entry_desc",
     "mainElement": "MainAbility",
     "deviceTypes": [
-      "default",
-      "phone"
+      "default"
     ],
     "requestPermissions": [ {"name": "ohos.permission.INSTALL_BUNDLE"}],
     "deliveryWithInstall": true,

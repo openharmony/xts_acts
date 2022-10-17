@@ -18,8 +18,7 @@
     "name": ".FormSTApp",
     "mainAbility": ".MainAbility",
     "deviceType": [
-      "default",
-      "phone"
+      "default"
     ],
     "distro": {
       "deliveryWithInstall": true,

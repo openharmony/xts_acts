@@ -17,8 +17,7 @@
         "package": "com.example.abilityrunninginfostest",
         "name": ".entry",
         "deviceType": [
-            "default",
-            "phone"
+            "default"
         ],
         "distro": {
             "deliveryWithInstall": true,

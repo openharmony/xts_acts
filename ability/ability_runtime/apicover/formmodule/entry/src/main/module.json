@@ -6,8 +6,7 @@
     "description": "$string:module1_desc",
     "mainElement": "ModuleAbility",
     "deviceTypes": [
-      "default",
-      "phone"
+      "default"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,

@@ -21,12 +21,12 @@
         {
             "type": "PushKit",
             "push": [
-                "ActsSystemSingletonExtension.hap->/system/ActsSystemSingletonExtension.hap"
+                "ActsSystemSingletonExtensionTest.hap->/system/ActsSystemSingletonExtensionTest.hap"
             ]
         },
 		{
             "test-file-name": [
-                "ActsSystemSingletonExtension.hap"
+                "ActsSystemSingletonExtensionTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

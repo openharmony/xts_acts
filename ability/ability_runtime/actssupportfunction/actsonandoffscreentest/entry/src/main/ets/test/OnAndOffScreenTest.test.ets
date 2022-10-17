@@ -13,11 +13,14 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import { BY,UiDriver,UiComponent } from '@ohos.uitest';
 import commonEvent from '@ohos.commonEvent';
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 import power from '@ohos.power';
 import backgroundTaskManager from '@ohos.backgroundTaskManager';
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 export default function OnAndOffScreenTest() {
 
@@ -53,12 +56,9 @@ export default function OnAndOffScreenTest() {
 
     async function slideScreen(TAG) {
       console.log(TAG + "slideScreen start");
-      var driver = UiDriver.create();
-      await driver.swipe(1000, 3000, 1000, 500).then((data) => {
-        console.log(TAG + "swipe : " + JSON.stringify(data));
-      }).catch((error) => {
-        console.log(TAG + "swipe error = " + JSON.stringify(error));
-      })
+      let cmd = 'uinput -T -d 300 600 -m 300 600 300 100 -u 300 100';
+      await executeShellCommand(cmd, TAG);
+      await sleep(500)
       console.log(TAG + "slideScreen end");
     }
 

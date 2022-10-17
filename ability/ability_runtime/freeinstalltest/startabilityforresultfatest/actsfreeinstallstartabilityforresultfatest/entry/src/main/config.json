@@ -20,7 +20,6 @@
     "mainAbility": ".MainAbility",
     "deviceType": [
       "default",
-      "phone",
       "tablet"
     ],
     "abilities": [

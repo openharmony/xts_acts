@@ -21,12 +21,12 @@
         {
             "type": "PushKit",
             "push": [
-                "ActsThirdSingletonExtensionFalse.hap->/data/ActsThirdSingletonExtensionFalse.hap"
+                "ActsThirdSingletonExtensionFalseTest.hap->/data/ActsThirdSingletonExtensionFalseTest.hap"
             ]
         },
 		{
             "test-file-name": [
-                "ActsThirdSingletonExtensionFalse.hap"
+                "ActsThirdSingletonExtensionFalseTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
