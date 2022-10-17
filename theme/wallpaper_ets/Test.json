@@ -14,6 +14,15 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
+        },
+        {
+            "type": "PushKit",
+            "pre-push": [
+                "mount -o rw,remount /"
+            ],
+            "push": [
+                "wp.png ->/system/etc/wp.png"
+            ]
         }
     ]
 }
