@@ -18,15 +18,15 @@ import bundle from '@ohos.bundle';
 
 const presetsCount = {
     ActsMediaLibraryAlbumTest: { albumsCount: 7, assetsCount: 19 },
+    ActsMediaLibraryBaseTest: { albumsCount: 11, assetsCount: 14 },
     ActsMediaLibraryFavoriteTest: { albumsCount: 6, assetsCount: 32 },
-    ActsMediaLibraryAlbumFileResultCb: { albumsCount: 5, assetsCount: 118 },
-    ActsMediaLibraryFileTest: { albumsCount: 6, assetsCount: 21 },
-    ActsMediaLibraryFileAssetTest: { albumsCount: 27, assetsCount: 72 },
-    ActsMediaLibraryFileAssetUri: { albumsCount: 3, assetsCount: 6 },
+    ActsMediaLibraryFileTest: { albumsCount: 6, assetsCount: 28 },
+    ActsMediaLibraryFileAssetTest: { albumsCount: 27, assetsCount: 100 },
     ActsMediaLibraryFileKeyTest: { albumsCount: 2, assetsCount: 2 },
-    ActsMediaLibraryFileResultTest: { albumsCount: 4, assetsCount: 13 },
-    ActsMediaLibraryGetThumbnail: { albumsCount: 3, assetsCount: 3 },
-    ActsMediaLibraryBaseTest: { albumsCount: 11, assetsCount: 11 },
+    ActsMediaLibraryFileResultTest: { albumsCount: 3, assetsCount: 112 },
+    ActsMediaLibraryGetThumbnailTest: { albumsCount: 3, assetsCount: 3 },
+    ActsMediaLibraryMediafetchoptionsTest: { albumsCount: 3, assetsCount: 8 },
+    ActsMediaLibraryTrashJsTest: { albumsCount: 6, assetsCount: 24 },
 }
 
 const IMAGE_TYPE = mediaLibrary.MediaType.IMAGE;
@@ -160,10 +160,15 @@ const checkPresetsAssets = async function (media, hapName) {
     let albumsCount = albumList.length;
     let fetchFileResult = await media.getFileAssets(allFetchOp());
     let assetsCount = await fetchFileResult.getCount();
-    console.info(`${hapName}:: assetsCount: ${assetsCount} albumsCount: ${albumsCount},
-            presetsassetsCount: ${presetsCount[hapName].assetsCount} 
-            presetsalbumsCount: ${presetsCount[hapName].albumsCount}`);
-    console.info('checkPresetsAssets end')
+    let presetsassetsCount = presetsCount[hapName].assetsCount;
+    let presetsalbumsCount = presetsCount[hapName].albumsCount;
+    if (assetsCount != presetsCount[hapName].assetsCount || albumsCount !=presetsCount[hapName].albumsCount) {
+        console.info(`${hapName} checkPresetsAssets failed; 
+            assetsCount : presetsassetsCount = ${assetsCount} : ${presetsassetsCount}
+            albumsCount : presetsalbumsCount = ${albumsCount} : ${presetsalbumsCount}`)
+    } else {
+        console.info(`${hapName} checkPresetsAssets passed`)
+    }
 }
 
 const checkAssetsCount = async function (done, testNum, fetchFileResult, expectCount) {

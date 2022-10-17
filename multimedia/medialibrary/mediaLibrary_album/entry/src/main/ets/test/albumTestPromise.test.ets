@@ -22,12 +22,10 @@ import {
     VIDEO_TYPE,
     AUDIO_TYPE,
     FILEKEY,
-    allFetchOp,
     idFetchOps,
     albumFetchOps,
     albumTwoTypesFetchOps,
     albumThreeTypesFetchOps,
-    checkPresetsAssets,
     checkAlbumsCount,
 } from '../../../../../../common';
 
@@ -36,7 +34,6 @@ export default function albumTestPromiseTest(abilityContext) {
         const media = mediaLibrary.getMediaLibrary(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
-            await checkPresetsAssets(media, 'ActsMediaLibraryAlbumTest');
         });
         beforeEach(function () {
             console.info('beforeEach case');

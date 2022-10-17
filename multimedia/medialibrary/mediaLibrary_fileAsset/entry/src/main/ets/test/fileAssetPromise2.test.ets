@@ -21,7 +21,6 @@ import {
     sleep,
     IMAGE_TYPE,
     FILEKEY,
-    checkPresetsAssets,
     checkAssetsCount,
     nameFetchOps,
 } from '../../../../../../common';
@@ -31,7 +30,6 @@ export default function fileAssetPromise2Test(abilityContext) {
         const media = mediaLibrary.getMediaLibrary(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
-            await checkPresetsAssets(media, 'ActsMediaLibraryFileAssetTest')
         });
         beforeEach(function () {
             console.info('beforeEach case');

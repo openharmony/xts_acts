@@ -23,7 +23,6 @@ import {
     AUDIO_TYPE,
     checkAlbumsCount,
     FILEKEY,
-    checkPresetsAssets,
     checkAssetsCount,
     fetchOps,
 } from '../../../../../../common';
@@ -35,7 +34,6 @@ export default function filekeyTestPromiseTest(abilityContext) {
 
         beforeAll(async function () {
             console.info('beforeAll case');
-            await checkPresetsAssets(media, 'ActsMediaLibraryFileKeyTest')
         });
         beforeEach(function () {
             console.info('beforeEach case');
