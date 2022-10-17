@@ -429,10 +429,6 @@ export default function applicationBundleJsunit() {
         */
         it('getApplicationInfoNoMetaData', 0, async function (done) {
             await Bundle.getApplicationInfo(BUNDLE_OTHER, FLAG_DEFAULT ,userId).then((data) => {
-                console.info('noUserId promise data is: ' + data);
-              for (let item in data) {
-                console.info(item + ":" + JSON.stringify(data[item]));
-              }
                 getApplicationInfoSuccessOther_METADATA(data);
                 expect(JSON.stringify(data.metaData)).assertEqual("{}");
                 expect(JSON.stringify(data.metadata)).assertEqual("{}");
@@ -440,7 +436,6 @@ export default function applicationBundleJsunit() {
                 expect(error).assertFail();
             });
             Bundle.getApplicationInfo(BUNDLE_OTHER, FLAG_DEFAULT,userId, (err, data) => {
-                console.info('noUserId promise data is: ' + data);
                 expect(err.code).assertEqual(0);
                 getApplicationInfoSuccessOther_METADATA(data);
                 expect(JSON.stringify(data.metaData)).assertEqual("{}");
