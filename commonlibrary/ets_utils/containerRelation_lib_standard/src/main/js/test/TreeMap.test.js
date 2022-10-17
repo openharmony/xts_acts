@@ -20,7 +20,6 @@ describe("TreeMapTest", function () {
   /**
    * @tc.name: testConstructor001
    * @tc.desc: Create an TreeMap instance. For example: let treeMap = new TreeMap().
-   * @tc.author: wangyong
    */
   it("testConstructor001", 0, function () {
     try {
@@ -36,7 +35,6 @@ describe("TreeMapTest", function () {
   /**
    * @tc.name: testSet002
    * @tc.desc: Add a pair of key value pairs to the TreeMap. For example: treeMap.set(0, "四").
-   * @tc.author: wangyong
    */
   it("testSet002", 0, function () {
     let treeMap = new TreeMap();
@@ -48,7 +46,6 @@ describe("TreeMapTest", function () {
   /**
    * @tc.name: testSet003
    * @tc.desc: Add a pair of key value pairs to the TreeMap. For example: treeMap.set(0, 8).
-   * @tc.author: wangyong
    */
   it("testSet003", 0, function () {
     let treeMap = new TreeMap();
@@ -60,7 +57,6 @@ describe("TreeMapTest", function () {
   /**
    * @tc.name: testSet004
    * @tc.desc: Add a pair of key value pairs to the TreeMap.
-   * @tc.author: wangyong
    */
   it("testSet004", 0, function () {
     let treeMap = new TreeMap();
@@ -73,7 +69,6 @@ describe("TreeMapTest", function () {
   /**
    * @tc.name: testSet005
    * @tc.desc: Add a pair of key value pairs to the TreeMap.
-   * @tc.author: wangyong
    */
   it("testSet005", 0, function () {
     let treeMap = new TreeMap();
@@ -86,7 +81,6 @@ describe("TreeMapTest", function () {
   /**
    * @tc.name: testSet006
    * @tc.desc: Add a pair of key value pairs to the TreeMap. For example: treeMap.set(2, "*").
-   * @tc.author: wangyong
    */
   it("testSet006", 0, function () {
     let treeMap = new TreeMap();
@@ -98,7 +92,6 @@ describe("TreeMapTest", function () {
   /**
    * @tc.name: testSet007
    * @tc.desc: Add a pair of key value pairs to the TreeMap. For example: treeMap.set(-2, 3.14).
-   * @tc.author: wangyong
    */
   it("testSet007", 0, function () {
     let treeMap = new TreeMap();
@@ -110,7 +103,6 @@ describe("TreeMapTest", function () {
   /**
    * @tc.name: testSet008
    * @tc.desc: Add a pair of key value pairs to the TreeMap. For example: treeMap.set(100, true).
-   * @tc.author: wangyong
    */
   it("testSet008", 0, function () {
     let treeMap = new TreeMap();
@@ -122,7 +114,6 @@ describe("TreeMapTest", function () {
   /**
    * @tc.name: testSet009
    * @tc.desc: Add a pair of key value pairs to the TreeMap. For example: treeMap.set(100, true).
-   * @tc.author: wangyong
    */
   it("testSet009", 0, function () {
     let treeMap = new TreeMap();
@@ -134,7 +125,6 @@ describe("TreeMapTest", function () {
   /**
    * @tc.name: testSet010
    * @tc.desc: Add a pair of key value pairs to the TreeMap. For example: treeMap.set("a", "四").
-   * @tc.author: wangyong
    */
   it("testSet010", 0, function () {
     let treeMap = new TreeMap();
@@ -146,7 +136,6 @@ describe("TreeMapTest", function () {
   /**
    * @tc.name: testSet011
    * @tc.desc: Add a pair of key value pairs to the TreeMap.
-   * @tc.author: wangyong
    */
   it("testSet011", 0, function () {
     let treeMap = new TreeMap();
@@ -161,7 +150,6 @@ describe("TreeMapTest", function () {
   /**
    * @tc.name: testHasKey012
    * @tc.desc: Determine whether the TreeMap contains the specified key. For example: treeMap.hasKey(1).
-   * @tc.author: wangyong
    */
   it("testHasKey012", 0, function () {
     let treeMap = new TreeMap();
@@ -176,7 +164,6 @@ describe("TreeMapTest", function () {
   /**
    * @tc.name: testHasValue013
    * @tc.desc: Determine whether the TreeMap contains the specified Value. For example: treeMap.hasValue("a").
-   * @tc.author: wangyong
    */
   it("testHasValue013", 0, function () {
     let treeMap = new TreeMap();
@@ -192,7 +179,6 @@ describe("TreeMapTest", function () {
   /**
    * @tc.name: testGet014
    * @tc.desc: Get the corresponding value through the key. For example: treeMap.get(1).
-   * @tc.author: wangyong
    */
   it("testGet014", 0, function () {
     let treeMap = new TreeMap();
@@ -206,7 +192,6 @@ describe("TreeMapTest", function () {
   /**
    * @tc.name: testGet015
    * @tc.desc: Get the corresponding value through the key. For example: treeMap.get(1).
-   * @tc.author: wangyong
    */
   it("testGet015", 0, function () {
     let treeMap = new TreeMap();
@@ -217,7 +202,6 @@ describe("TreeMapTest", function () {
   /**
    * @tc.name: testGet016
    * @tc.desc: Get the corresponding value through the key. For example: treeMap.get(0).
-   * @tc.author: wangyong
    */
   it("testGet016", 0, function () {
     let treeMap = new TreeMap();
@@ -231,7 +215,6 @@ describe("TreeMapTest", function () {
   /**
    * @tc.name: testGetFirstKey017
    * @tc.desc: Get the key that ranks first in the TreeMap instance. For example: treeMap.getFirstKey().
-   * @tc.author: wangyong
    */
   it("testGetFirstKey017", 0, function () {
     let treeMap = new TreeMap();
@@ -245,7 +228,6 @@ describe("TreeMapTest", function () {
   /**
    * @tc.name: testGetFirstKey018
    * @tc.desc: Get the key that ranks first in the TreeMap instance. For example: treeMap.getFirstKey().
-   * @tc.author: wangyong
    */
   it("testGetFirstKey018", 0, function () {
     let treeMap = new TreeMap();
@@ -256,7 +238,6 @@ describe("TreeMapTest", function () {
   /**
    * @tc.name: testGetLastKey019
    * @tc.desc: Get the last sorted key in the TreeMap instance. For example: treeMap.getLastKey().
-   * @tc.author: wangyong
    */
   it("testGetLastKey019", 0, function () {
     let treeMap = new TreeMap();
@@ -270,7 +251,6 @@ describe("TreeMapTest", function () {
   /**
    * @tc.name: testGetLastKey020
    * @tc.desc: Get the last sorted key in the TreeMap instance. For example: treeMap.getLastKey().
-   * @tc.author: wangyong
    */
   it("testGetLastKey020", 0, function () {
     let treeMap = new TreeMap();
@@ -281,7 +261,6 @@ describe("TreeMapTest", function () {
   /**
    * @tc.name: testSetAll021
    * @tc.desc: Copy key value pairs from one HashMap to another. For example: treeMap.setAll(treeMap1).
-   * @tc.author: wangyong
    */
   it("testSetAll021", 0, function () {
     let treeMap = new TreeMap();
@@ -303,7 +282,6 @@ describe("TreeMapTest", function () {
   /**
    * @tc.name: testRemove022
    * @tc.desc: Delete key value pairs according to key. For example: treeMap.remove(1).
-   * @tc.author: wangyong
    */
   it("testRemove022", 0, function () {
     let treeMap = new TreeMap();
@@ -317,7 +295,6 @@ describe("TreeMapTest", function () {
   /**
    * @tc.name: testRemove023
    * @tc.desc: Delete key value pairs according to key. For example: treeMap.remove(1).
-   * @tc.author: wangyong
    */
   it("testRemove023", 0, function () {
     let treeMap = new TreeMap();
@@ -329,7 +306,6 @@ describe("TreeMapTest", function () {
   /**
    * @tc.name: testClear024
    * @tc.desc: Clear all key value pairs in TreeMap. For example: treeMap.clear().
-   * @tc.author: wangyong
    */
   it("testClear024", 0, function () {
     let treeMap = new TreeMap();
@@ -344,7 +320,6 @@ describe("TreeMapTest", function () {
   /**
    * @tc.name: testClear025
    * @tc.desc: Clear all key value pairs in TreeMap. For example: treeMap.clear().
-   * @tc.author: wangyong
    */
   it("testClear025", 0, function () {
     let treeMap = new TreeMap();
@@ -363,7 +338,6 @@ describe("TreeMapTest", function () {
    * @tc.name: testGetLowerKey026
    * @tc.desc: Get a key that is a little lower than the specified key sort. 
    * For example: treeMap.getLowerKey(2).
-   * @tc.author: wangyong
    */
   it("testGetLowerKey026", 0, function () {
     let treeMap = new TreeMap();
@@ -379,7 +353,6 @@ describe("TreeMapTest", function () {
   /**
    * @tc.name: testGetLowerKey027
    * @tc.desc: Get a key that is a little lower than the specified key sort. For example: treeMap.getLowerKey(2).
-   * @tc.author: wangyong
    */
   it("testGetLowerKey027", 0, function () {
     let treeMap = new TreeMap();
@@ -390,7 +363,6 @@ describe("TreeMapTest", function () {
   /**
    * @tc.name: testGetHigherKey028
    * @tc.desc: Get a key that is a little higher than the specified key sort. For example: treeMap.getLowerKey(2).
-   * @tc.author: wangyong
    */
   it("testGetHigherKey028", 0, function () {
     let treeMap = new TreeMap();
@@ -406,7 +378,6 @@ describe("TreeMapTest", function () {
   /**
    * @tc.name: testGetHigherKey029
    * @tc.desc: Get a key that is a little higher than the specified key sort. For example: treeMap.getLowerKey(2).
-   * @tc.author: wangyong
    */
   it("testGetHigherKey029", 0, function () {
     let treeMap = new TreeMap();
@@ -417,7 +388,6 @@ describe("TreeMapTest", function () {
   /**
    * @tc.name: testKeys030
    * @tc.desc: Get a collection of all the keys in the TreeMap. For example: treeMap.keys().
-   * @tc.author: wangyong
    */
   it("testKeys030", 0, function () {
     let treeMap = new TreeMap();
@@ -437,7 +407,6 @@ describe("TreeMapTest", function () {
   /**
    * @tc.name: testValues031
    * @tc.desc: Get a collection of all the values in the TreeMap. For example: treeMap.values().
-   * @tc.author: wangyong
    */
   it("testValues031", 0, function () {
     let treeMap = new TreeMap();
@@ -457,7 +426,6 @@ describe("TreeMapTest", function () {
   /**
    * @tc.name: testReplace032
    * @tc.desc: Modify the corresponding value according to the specified key. For example: treeMap.replace(2, "B").
-   * @tc.author: wangyong
    */
   it("testReplace032", 0, function () {
     let treeMap = new TreeMap();
@@ -474,7 +442,6 @@ describe("TreeMapTest", function () {
   /**
    * @tc.name: testReplace033
    * @tc.desc: Modify the corresponding value according to the specified key. For example: treeMap.replace(2, "B").
-   * @tc.author: wangyong
    */
   it("testReplace033", 0, function () {
     let treeMap = new TreeMap();
@@ -488,7 +455,6 @@ describe("TreeMapTest", function () {
   /**
    * @tc.name: testLength034
    * @tc.desc: Get the number of key value pairs in the TreeMap instance. For example: treeMap.length.
-   * @tc.author: wangyong
    */
   it("testLength034", 0, function () {
     let treeMap = new TreeMap();
@@ -504,7 +470,6 @@ describe("TreeMapTest", function () {
   /**
    * @tc.name: testLength035
    * @tc.desc: Get the number of key value pairs in the TreeMap instance. For example: treeMap.length.
-   * @tc.author: wangyong
    */
   it("testLength035", 0, function () {
     let treeMap = new TreeMap();
@@ -515,7 +480,6 @@ describe("TreeMapTest", function () {
   /**
    * @tc.name: testForEach036
    * @tc.desc: Traverse all key value pairs in the TreeMap instance.
-   * @tc.author: wangyong
    */
   it("testForEach036", 0, function () {
     let treeMap = new TreeMap();
@@ -545,7 +509,6 @@ describe("TreeMapTest", function () {
   /**
    * @tc.name: testEntries037
    * @tc.desc: Get all key value pairs collection in TreeMap.
-   * @tc.author: wangyong
    */
   it("testEntries037", 0, function () {
     let treeMap = new TreeMap();
@@ -570,7 +533,6 @@ describe("TreeMapTest", function () {
   /**
    * @tc.name: testIterator038
    * @tc.desc: Traverse all key value pairs in the TreeMap instance.
-   * @tc.author: wangyong
    */
   it("testIterator038", 0, function () {
     let treeMap = new TreeMap();
@@ -592,7 +554,6 @@ describe("TreeMapTest", function () {
   /**
    * @tc.name: testIterator039
    * @tc.desc: Traverse all key value pairs in the TreeMap instance. For example: treeMap[Symbol.iterator]().
-   * @tc.author: wangyong
    */
   it("testIterator039", 0, function () {
     let treeMap = new TreeMap();
@@ -617,7 +578,6 @@ describe("TreeMapTest", function () {
   /**
    * @tc.name: testIsEmpty040
    * @tc.desc: Determine whether the TreeMap instance is empty. For example: treeMap.isEmpty().
-   * @tc.author: wangyong
    */                                                                                              
   it("testIsEmpty040", 0, function () {
     let treeMap = new TreeMap();
@@ -636,7 +596,6 @@ describe("TreeMapTest", function () {
   /**
    * @tc.name: testSetAll041
    * @tc.desc: Copy key value pairs from one HashMap to another. For example: treeMap.setAll([1, 2, 3]).
-   * @tc.author: liuganlin
    */
   it("testSetAll041", 0, function () {
     let treeMap = new TreeMap();

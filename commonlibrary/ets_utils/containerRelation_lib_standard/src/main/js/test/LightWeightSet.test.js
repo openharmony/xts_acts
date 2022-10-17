@@ -20,7 +20,6 @@ describe("LightWeightSetTest", function () {
   /**
    * @tc.name: testConstructor001
    * @tc.desc: Create an LightWeightSet instance. For example: let lightWeightSet = new LightWeightSet().
-   * @tc.author: wangyong
    */
   it("testConstructor001", 0, function () {
     try {
@@ -36,7 +35,6 @@ describe("LightWeightSetTest", function () {
   /**
    * @tc.name: testAdd002
    * @tc.desc: Add element to LightWeightSet instance. For example: lightWeightSet.add(1).
-   * @tc.author: wangyong
    */
   it("testAdd002", 0, function () {
     let lightWeightSet = new LightWeightSet();
@@ -48,7 +46,6 @@ describe("LightWeightSetTest", function () {
   /**
    * @tc.name: testAdd003
    * @tc.desc: Add element to LightWeightSet instance. For example: lightWeightSet.add("a").
-   * @tc.author: wangyong
    */
   it("testAdd003", 0, function () {
     let lightWeightSet = new LightWeightSet();
@@ -61,7 +58,6 @@ describe("LightWeightSetTest", function () {
    * @tc.name: testAdd004
    * @tc.desc: Add element to LightWeightSet instance. 
    * For example: let a = [1, 2, 3, 4]; lightWeightSet.add(a).
-   * @tc.author: wangyong
    */
   it("testAdd004", 0, function () {
     let lightWeightSet = new LightWeightSet();
@@ -75,7 +71,6 @@ describe("LightWeightSetTest", function () {
    * @tc.name: testAdd005
    * @tc.desc: Add element to LightWeightSet instance. 
    * For example: let a = {name: "lili", age: "13"}; lightWeightSet.add(a).
-   * @tc.author: wangyong
    */
   it("testAdd005", 0, function () {
     let lightWeightSet = new LightWeightSet();
@@ -88,7 +83,6 @@ describe("LightWeightSetTest", function () {
   /**
    * @tc.name: testAdd006
    * @tc.desc: Add element to LightWeightSet instance. For example: let c = false; lightWeightSet.add(c).
-   * @tc.author: wangyong
    */
   it("testAdd006", 0, function () {
     let lightWeightSet = new LightWeightSet();
@@ -101,7 +95,6 @@ describe("LightWeightSetTest", function () {
   /**
    * @tc.name: testLength007
    * @tc.desc: Get the number of element in the LightWeightSet instance. For example: lightWeightSet.length.
-   * @tc.author: wangyong
    */
   it("testLength007", 0, function () {
     let lightWeightSet = new LightWeightSet();
@@ -117,7 +110,6 @@ describe("LightWeightSetTest", function () {
   /**
    * @tc.name: testAddAll008
    * @tc.desc: Copy all element from one LightWeightSet to another.
-   * @tc.author: wangyong
    */
   it("testAddAll008", 0, function () {
     let lightWeightSet = new LightWeightSet();
@@ -145,7 +137,6 @@ describe("LightWeightSetTest", function () {
   /**
    * @tc.name: testHasAll009
    * @tc.desc: Judge whether a lightWeightSet contains all elements in another lightWeightSet.
-   * @tc.author: wangyong
    */
   it("testHasAll009", 0, function () {
     let lightWeightSet = new LightWeightSet();
@@ -164,7 +155,6 @@ describe("LightWeightSetTest", function () {
   /**
    * @tc.name: testHasAll010
    * @tc.desc: Judge whether a lightWeightSet contains all elements in another lightWeightSet.
-   * @tc.author: wangyong
    */
   it("testHasAll010", 0, function () {
     let lightWeightSet = new LightWeightSet();
@@ -182,7 +172,6 @@ describe("LightWeightSetTest", function () {
   /**
    * @tc.name: testHas011
    * @tc.desc: Judge whether a lightWeightSet contains all elements in another lightWeightSet.
-   * @tc.author: wangyong
    */
   it("testHas011", 0, function () {
     let lightWeightSet = new LightWeightSet();
@@ -200,7 +189,6 @@ describe("LightWeightSetTest", function () {
   /**
    * @tc.name: testEntries012
    * @tc.desc: Get all key value pairs collection in lightWeightSet.
-   * @tc.author: wangyong
    */
   it("testEntries012", 0, function () {
     let lightWeightSet = new LightWeightSet();
@@ -220,7 +208,6 @@ describe("LightWeightSetTest", function () {
   /**
    * @tc.name: testGetIndexOf013
    * @tc.desc: Get the index according to the specified element. For example: lightWeightSet.getIndexOf(2).
-   * @tc.author: wangyong
    */
   it("testGetIndexOf013", 0, function () {
     let lightWeightSet = new LightWeightSet();
@@ -236,7 +223,6 @@ describe("LightWeightSetTest", function () {
   /**
    * @tc.name: testIsEmpty014
    * @tc.desc: Determine whether the lightWeightSet instance is empty. For example: lightWeightSet.isEmpty().
-   * @tc.author: wangyong
    */
   it("testIsEmpty014", 0, function () {
     let lightWeightSet = new LightWeightSet();
@@ -252,7 +238,6 @@ describe("LightWeightSetTest", function () {
   /**
    * @tc.name: testRemove015
    * @tc.desc: Delete elements according to key. For example: lightWeightMap.remove(1).
-   * @tc.author: wangyong
    */
   it("testRemove015", 0, function () {
     let lightWeightSet = new LightWeightSet();
@@ -276,7 +261,6 @@ describe("LightWeightSetTest", function () {
   /**
    * @tc.name: testRemoveAt016
    * @tc.desc: Delete elements according to index. For example: lightWeightSet.removeAt(1).
-   * @tc.author: wangyong
    */
   it("testRemoveAt016", 0, function () {
     let lightWeightSet = new LightWeightSet();
@@ -300,7 +284,6 @@ describe("LightWeightSetTest", function () {
   /**
    * @tc.name: testClear017
    * @tc.desc: Clear all elements in LightWeightSet. For example: lightWeightSet.clear().
-   * @tc.author: wangyong
    */
   it("testClear017", 0, function () {
     let lightWeightSet = new LightWeightSet();
@@ -317,7 +300,6 @@ describe("LightWeightSetTest", function () {
   /**
    * @tc.name: testForEach018
    * @tc.desc: Traverse all elements in the LightWeightSet instance.
-   * @tc.author: wangyong
    */
   it("testForEach018", 0, function () {
     let lightWeightSet = new LightWeightSet();
@@ -340,7 +322,6 @@ describe("LightWeightSetTest", function () {
    * @tc.name: testToString019
    * @tc.desc: Use "," to splice the elements in the LightWeightSet instance into a string. 
    * For example: lightWeightSet.toString().
-   * @tc.author: wangyong
    */
   it("testToString019", 0, function () {
     let lightWeightSet = new LightWeightSet();
@@ -354,7 +335,6 @@ describe("LightWeightSetTest", function () {
   /**
    * @tc.name: testToArray020
    * @tc.desc: Convert an lightWeightSet instance to an array. For example: lightWeightSet.toArray().
-   * @tc.author: wangyong
    */
   it("testToArray020", 0, function () {
     let lightWeightSet = new LightWeightSet();
@@ -373,7 +353,6 @@ describe("LightWeightSetTest", function () {
   /**
    * @tc.name: testGetValueAt021
    * @tc.desc:  Get the element according to the corresponding index. For example: lightWeightSet.getValueAt(1).
-   * @tc.author: wangyong
    */
   it("testGetValueAt021", 0, function () {
     let lightWeightSet = new LightWeightSet();
@@ -389,7 +368,6 @@ describe("LightWeightSetTest", function () {
   /**
    * @tc.name: testIterator022
    * @tc.desc: Iterate over all elements in the LightWeightSet.
-   * @tc.author: wangyong
    */
   it("testIterator022", 0, function () {
     let lightWeightSet = new LightWeightSet();
@@ -411,7 +389,6 @@ describe("LightWeightSetTest", function () {
   /**
    * @tc.name: testValues023
    * @tc.desc: Get a collection of all the values in the LightWeightSet. For example: lightWeightSet.values().
-   * @tc.author: wangyong
    */
   it("testValues023", 0, function () {
     let lightWeightSet = new LightWeightSet();
@@ -431,7 +408,6 @@ describe("LightWeightSetTest", function () {
   /**
    * @tc.name: testAdd024
    * @tc.desc: Add element to LightWeightSet instance. For example: lightWeightSet.add(null).
-   * @tc.author: wangyong
    */
   it("testAdd024", 0, function () {
     let lightWeightSet = new LightWeightSet();
@@ -443,7 +419,6 @@ describe("LightWeightSetTest", function () {
   /**
    * @tc.name: testAdd025
    * @tc.desc: Add element to LightWeightSet instance. For example: lightWeightSet.add(1.23).
-   * @tc.author: wangyong
    */
   it("testAdd025", 0, function () {
     let lightWeightSet = new LightWeightSet();
@@ -455,7 +430,6 @@ describe("LightWeightSetTest", function () {
   /**
    * @tc.name: testHasAll026
    * @tc.desc: Judge whether a lightWeightSet contains all elements in another lightWeightSet.
-   * @tc.author: wangyong
    */
   it("testHasAll026", 0, function () {
     let lightWeightSet = new LightWeightSet();
@@ -474,7 +448,6 @@ describe("LightWeightSetTest", function () {
   /**
    * @tc.name: testHasAll027
    * @tc.desc: Judge whether a lightWeightSet contains all elements in another lightWeightSet.
-   * @tc.author: wangyong
    */
   it("testHasAll027", 0, function () {
     let lightWeightSet = new LightWeightSet();
@@ -493,7 +466,6 @@ describe("LightWeightSetTest", function () {
   /**
    * @tc.name: testRemove028
    * @tc.desc: Delete elements according to key. For example: lightWeightMap.remove(3).
-   * @tc.author: wangyong
    */
   it("testRemove028", 0, function () {
     let lightWeightSet = new LightWeightSet();
@@ -504,7 +476,6 @@ describe("LightWeightSetTest", function () {
   /**
    * @tc.name: testRemoveAt029
    * @tc.desc: Delete elements according to index. For example: lightWeightSet.removeAt(1).
-   * @tc.author: wangyong
    */
   it("testRemoveAt029", 0, function () {
     let lightWeightSet = new LightWeightSet();
@@ -516,7 +487,6 @@ describe("LightWeightSetTest", function () {
    * @tc.name: testIncreaseCapacityTo030
    * @tc.desc: Expand the LightWeightSet capacity to the specified value. 
    * For example: lightWeightSet.increaseCapacityTo(3).
-   * @tc.author: wangyong
    */
   it("testIncreaseCapacityTo030", 0, function () {
     let lightWeightSet = new LightWeightSet();
@@ -539,7 +509,6 @@ describe("LightWeightSetTest", function () {
    * @tc.name: testIncreaseCapacityTo031
    * @tc.desc: Expand the LightWeightSet capacity to the specified value. 
    * For example: lightWeightSet.increaseCapacityTo("qwe").
-   * @tc.author: wangyong
    */
   it("testIncreaseCapacityTo031", 0, function () {
     let lightWeightSet = new LightWeightSet();
@@ -561,7 +530,6 @@ describe("LightWeightSetTest", function () {
   /**
    * @tc.name: testRemoveAt032
    * @tc.desc: Delete elements according to index. For example: lightWeightSet.removeAt("a").
-   * @tc.author: wangyong
    */
   it("testRemoveAt032", 0, function () {
     let lightWeightSet = new LightWeightSet();
@@ -579,7 +547,6 @@ describe("LightWeightSetTest", function () {
    * @tc.name: testIncreaseCapacityTo033
    * @tc.desc: Expand the LightWeightSet capacity to the specified value. 
    * For example: lightWeightSet.increaseCapacityTo(20).
-   * @tc.author: wangyong
    */
   it("testIncreaseCapacityTo033", 0, function () {
     let lightWeightSet = new LightWeightSet();
@@ -595,7 +562,6 @@ describe("LightWeightSetTest", function () {
   /**
    * @tc.name: testGetValueAt034
    * @tc.desc: Get the element according to the corresponding index. For example: lightWeightSet.getValueAt("a").
-   * @tc.author: wangyong
    */
   it("testGetValueAt034", 0, function () {
     let lightWeightSet = new LightWeightSet();
@@ -617,7 +583,6 @@ describe("LightWeightSetTest", function () {
   /**
    * @tc.name: testIsEmpty035
    * @tc.desc: Determine whether the lightWeightSet instance is empty. For example: lightWeightSet.isEmpty().
-   * @tc.author: wangyong
    */
   it("testIsEmpty035", 0, function () {
     let lightWeightSet = new LightWeightSet();
@@ -634,7 +599,6 @@ describe("LightWeightSetTest", function () {
   /**
    * @tc.name: testAdd036
    * @tc.desc: Add element to LightWeightSet instance.
-   * @tc.author: wangyong
    */
   it("testAdd036", 0, function () {
     let lightWeightSet = new LightWeightSet();
@@ -650,7 +614,6 @@ describe("LightWeightSetTest", function () {
   /**
    * @tc.name: testAdd037
    * @tc.desc: Add element to LightWeightSet instance. For example: lightWeightSet.add("").
-   * @tc.author: wangyong
    */
   it("testAdd037", 0, function () {
     let lightWeightSet = new LightWeightSet();
@@ -662,7 +625,6 @@ describe("LightWeightSetTest", function () {
   /**
    * @tc.name: testAdd038
    * @tc.desc: Add element to LightWeightSet instance. For example: lightWeightSet.add("$").
-   * @tc.author: wangyong
    */
   it("testAdd038", 0, function () {
     let lightWeightSet = new LightWeightSet();
@@ -674,7 +636,6 @@ describe("LightWeightSetTest", function () {
   /**
    * @tc.name: testClear039
    * @tc.desc: Clear all elements in LightWeightSet. For example: lightWeightSet.clear().
-   * @tc.author: wangyong
    */
   it("testClear039", 0, function () {
     let lightWeightSet = new LightWeightSet();
@@ -693,7 +654,6 @@ describe("LightWeightSetTest", function () {
   /**
    * @tc.name: testRemove040
    * @tc.desc: Delete elements according to key. For example: lightWeightMap.remove("A").
-   * @tc.author: wangyong
    */
   it("testRemove040", 0, function () {
     let lightWeightSet = new LightWeightSet();
@@ -709,7 +669,6 @@ describe("LightWeightSetTest", function () {
   /**
    * @tc.name: testIterator41
    * @tc.desc: Iterate over all elements in the LightWeightSet.
-   * @tc.author: wangyong
    */
   it("testIterator41", 0, function () {
     let lightWeightSet = new LightWeightSet();
@@ -734,7 +693,6 @@ describe("LightWeightSetTest", function () {
   /**
    * @tc.name: testEqual42
    * @tc.desc: Compare lightweightmap and specified object for equality. For example: lightWeightSet.equal(obj).
-   * @tc.author: wangyong
    */
   it("testEqual42", 0, function () {
     let lightWeightSet = new LightWeightSet();
@@ -749,7 +707,6 @@ describe("LightWeightSetTest", function () {
   /**
    * @tc.name: testEqual43
    * @tc.desc: Compare lightweightmap and specified object for equality. For example: lightWeightSet.equal(obj).
-   * @tc.author: wangyong
    */
   it("testEqual43", 0, function () {
     let lightWeightSet = new LightWeightSet();
@@ -764,7 +721,6 @@ describe("LightWeightSetTest", function () {
   /**
    * @tc.name: testAddAll044
    * @tc.desc: Copy all element from one LightWeightSet to another.
-   * @tc.author: liuganlin
    */
   it("testAddAll044", 0, function () {
     let lightWeightSet = new LightWeightSet();
@@ -784,7 +740,6 @@ describe("LightWeightSetTest", function () {
   /**
    * @tc.name: testHasAll045
    * @tc.desc: Judge whether a lightWeightSet contains all elements in another lightWeightSet.
-   * @tc.author: liuganlin
    */
   it("testHasAll045", 0, function () {
     let lightWeightSet = new LightWeightSet();

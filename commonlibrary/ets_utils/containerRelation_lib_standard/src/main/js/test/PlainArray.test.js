@@ -20,7 +20,6 @@ describe("PlainArrayTest", function () {
   /**
    * @tc.name: testConstructor001
    * @tc.desc: Create an PlainArray instance. For example: let plainArray = new PlainArray().
-   * @tc.author: wangyong
    */
   it("testConstructor001", 0, function () {
     try {
@@ -35,7 +34,6 @@ describe("PlainArrayTest", function () {
   /**
    * @tc.name: testAdd002
    * @tc.desc: Add a pair of key value pairs to the PlainArray. For example: plainArray.add(1, "A").
-   * @tc.author: wangyong
    */
   it("testAdd002", 0, function () {
     let plainArray = new PlainArray();
@@ -47,7 +45,6 @@ describe("PlainArrayTest", function () {
   /**
    * @tc.name: testAdd003
    * @tc.desc: Add a pair of key value pairs to the PlainArray.
-   * @tc.author: wangyong
    */
   it("testAdd003", 0, function () {
     let plainArray = new PlainArray();
@@ -60,7 +57,6 @@ describe("PlainArrayTest", function () {
   /**
    * @tc.name: testAdd004
    * @tc.desc: Add a pair of key value pairs to the PlainArray.
-   * @tc.author: wangyong
    */
   it("testAdd004", 0, function () {
     let plainArray = new PlainArray();
@@ -73,7 +69,6 @@ describe("PlainArrayTest", function () {
   /**
    * @tc.name: testAdd005
    * @tc.desc: Add a pair of key value pairs to the PlainArray.
-   * @tc.author: wangyong
    */
   it("testAdd005", 0, function () {
     let plainArray = new PlainArray();
@@ -86,7 +81,6 @@ describe("PlainArrayTest", function () {
   /**
    * @tc.name: testAdd006
    * @tc.desc: Add a pair of key value pairs to the PlainArray.
-   * @tc.author: wangyong
    */
   it("testAdd006", 0, function () {
     let plainArray = new PlainArray();
@@ -98,7 +92,6 @@ describe("PlainArrayTest", function () {
   /**
    * @tc.name: testGet007
    * @tc.desc: Get the corresponding value through the key. For example: plainArray.get(4).
-   * @tc.author: wangyong
    */
   it("testGet007", 0, function () {
     let plainArray = new PlainArray();
@@ -116,7 +109,6 @@ describe("PlainArrayTest", function () {
   /**
    * @tc.name: testLength008
    * @tc.desc: Get the number of key value pairs in the PlainArray instance. For example: plainArray.length.
-   * @tc.author: wangyong
    */
   it("testLength008", 0, function () {
     let plainArray = new PlainArray();
@@ -134,7 +126,6 @@ describe("PlainArrayTest", function () {
   /**
    * @tc.name: testClone009
    * @tc.desc: Clone an PlainArray instance. For example: plainArray.clone().
-   * @tc.author: wangyong
    */
   it("testClone009", 0, function () {
     let plainArray = new PlainArray();
@@ -160,7 +151,6 @@ describe("PlainArrayTest", function () {
   /**
    * @tc.name: testClear010
    * @tc.desc: Clear all key value pairs in PlainArray. For example: plainArray.clear().
-   * @tc.author: wangyong
    */
   it("testClear010", 0, function () {
     let plainArray = new PlainArray();
@@ -182,7 +172,6 @@ describe("PlainArrayTest", function () {
   /**
    * @tc.name: testHas011
    * @tc.desc: Check whether the PlainArray contains a specified element. For example: plainArray.has(6).
-   * @tc.author: wangyong
    */
   it("testHas011", 0, function () {
     let plainArray = new PlainArray();
@@ -201,7 +190,6 @@ describe("PlainArrayTest", function () {
    * @tc.name: testGetIndexOfKey012
    * @tc.desc: Find the index of the key value pair according to the corresponding key. 
    * If no key is specified, return -1.
-   * @tc.author: wangyong
    */
   it("testGetIndexOfKey012", 0, function () {
     let plainArray = new PlainArray();
@@ -220,7 +208,6 @@ describe("PlainArrayTest", function () {
    * @tc.name: testGetIndexOfValue013
    * @tc.desc: Find the index of the key value pair according to the corresponding value. 
    * If no key is specified, return -1.
-   * @tc.author: wangyong
    */
   it("testGetIndexOfValue013", 0, function () {
     let plainArray = new PlainArray();
@@ -238,7 +225,6 @@ describe("PlainArrayTest", function () {
   /**
    * @tc.name: testIsEmpty014
    * @tc.desc: Determine whether the PlainArray instance is empty. For example: plainArray.isEmpty().
-   * @tc.author: wangyong
    */
   it("testIsEmpty014", 0, function () {
     let plainArray = new PlainArray();
@@ -257,7 +243,6 @@ describe("PlainArrayTest", function () {
    * @tc.name: testGetKeyAt015
    * @tc.desc: Find the key of the key value pair according to the corresponding index. 
    * For example: plainArray.getKeyAt(2).
-   * @tc.author: wangyong
    */
   it("testGetKeyAt015", 0, function () {
     let plainArray = new PlainArray();
@@ -273,7 +258,6 @@ describe("PlainArrayTest", function () {
   /**
    * @tc.name: testReMove016
    * @tc.desc: Delete key value pairs according to key. For example: plainArray.remove(2).
-   * @tc.author: wangyong
    */
   it("testReMove016", 0, function () {
     let plainArray = new PlainArray();
@@ -293,7 +277,6 @@ describe("PlainArrayTest", function () {
   /**
    * @tc.name: testReMoveAt017
    * @tc.desc: Delete key value pairs according to index. For example: plainArray.removeAt(2).
-   * @tc.author: wangyong
    */
   it("testReMoveAt017", 0, function () {
     let plainArray = new PlainArray();
@@ -312,7 +295,6 @@ describe("PlainArrayTest", function () {
    * @tc.name: testReMoveRangeFrom018
    * @tc.desc: Deletes the specified number of elements from the specified starting index. 
    * For example: plainArray.removeRangeFrom(2, 2).
-   * @tc.author: wangyong
    */
   it("testReMoveRangeFrom018", 0, function () {
     let plainArray = new PlainArray();
@@ -349,7 +331,6 @@ describe("PlainArrayTest", function () {
    * @tc.name: testSetValueAt019
    * @tc.desc: Modify the value of the key value pair according to the corresponding index. 
    * For example: plainArray.setValueAt(2, "V").
-   * @tc.author: wangyong
    */
   it("testSetValueAt019", 0, function () {
     let plainArray = new PlainArray();
@@ -378,7 +359,6 @@ describe("PlainArrayTest", function () {
    * @tc.name: testToString020
    * @tc.desc: Use "," to splice the elements in the LightWeightMap instance into a string. 
    * For example: plainArray.toString().
-   * @tc.author: wangyong
    */
   it("testToString020", 0, function () {
     let plainArray = new PlainArray();
@@ -394,7 +374,6 @@ describe("PlainArrayTest", function () {
   /**
    * @tc.name: testForEach021
    * @tc.desc: Traverse all key value pairs in the PlainArray instance.
-   * @tc.author: wangyong
    */
   it("testForEach021", 0, function () {
     let plainArray = new PlainArray();
@@ -416,7 +395,6 @@ describe("PlainArrayTest", function () {
   /**
    * @tc.name: testIterator022
    * @tc.desc: Iterate over all key value pairs in the PlainArray. 
-   * @tc.author: wangyong
    */
   it("testIterator022", 0, function () {
     let plainArray = new PlainArray();
@@ -436,7 +414,6 @@ describe("PlainArrayTest", function () {
    * @tc.name: testGetValueAt023
    * @tc.desc: Get the value of the key value pair according to the corresponding index. 
    * For example: plainArray.getValueAt(2).
-   * @tc.author: wangyong
    */
   it("testGetValueAt023", 0, function () {
     let plainArray = new PlainArray();
@@ -452,7 +429,6 @@ describe("PlainArrayTest", function () {
   /**
    * @tc.name: testAdd024
    * @tc.desc: Add a pair of key value pairs to the PlainArray.For example: plainArray.add(1, 3.1).
-   * @tc.author: wangyong
    */
   it("testAdd024", 0, function () {
     let plainArray = new PlainArray();
@@ -464,7 +440,6 @@ describe("PlainArrayTest", function () {
   /**
    * @tc.name: testAdd025
    * @tc.desc: Add a pair of key value pairs to the PlainArray.For example: plainArray.add(1, null).
-   * @tc.author: wangyong
    */
   it("testAdd025", 0, function () {
     let plainArray = new PlainArray();
@@ -476,7 +451,6 @@ describe("PlainArrayTest", function () {
   /**
    * @tc.name: testAdd026
    * @tc.desc: Add a pair of key value pairs to the PlainArray.For example: plainArray.add("a", null).
-   * @tc.author: wangyong
    */
   it("testAdd026", 0, function () {
     let plainArray = new PlainArray();
@@ -493,7 +467,6 @@ describe("PlainArrayTest", function () {
   /**
    * @tc.name: testGet027
    * @tc.desc: Get the corresponding value through the key. For example: plainArray.get(8).
-   * @tc.author: wangyong
    */
   it("testGet027", 0, function () {
     let plainArray = new PlainArray();
@@ -510,7 +483,6 @@ describe("PlainArrayTest", function () {
    * @tc.name: testGetIndexOfKey028
    * @tc.desc: Find the index of the key value pair according to the corresponding key. 
    * If no key is specified, return -1.
-   * @tc.author: wangyong
    */
   it("testGetIndexOfKey028", 0, function () {
     let plainArray = new PlainArray();
@@ -527,7 +499,6 @@ describe("PlainArrayTest", function () {
    * @tc.name: testGetIndexOfValue029
    * @tc.desc: Find the index of the key value pair according to the corresponding value. 
    * If no key is specified, return -1.
-   * @tc.author: wangyong
    */
   it("testGetIndexOfValue029", 0, function () {
     let plainArray = new PlainArray();
@@ -544,7 +515,6 @@ describe("PlainArrayTest", function () {
    * @tc.name: testGetKeyAt030
    * @tc.desc: Find the key of the key value pair according to the corresponding index. 
    * For example: plainArray.getKeyAt(50).
-   * @tc.author: wangyong
    */
   it("testGetKeyAt030", 0, function () {
     let plainArray = new PlainArray();
@@ -561,7 +531,6 @@ describe("PlainArrayTest", function () {
    * @tc.name: testGetValueAt031
    * @tc.desc: Find the value of the key value pair according to the corresponding index. 
    * For example: plainArray.getValueAt(50).
-   * @tc.author: wangyong
    */
   it("testGetValueAt031", 0, function () {
     let plainArray = new PlainArray();
@@ -583,7 +552,6 @@ describe("PlainArrayTest", function () {
   /**
    * @tc.name: testRemove032
    * @tc.desc: Delete key value pairs according to key. For example: plainArray.remove(2).
-   * @tc.author: wangyong
    */
   it("testRemove032", 0, function () {
     let plainArray = new PlainArray();
@@ -594,7 +562,6 @@ describe("PlainArrayTest", function () {
   /**
    * @tc.name: testRemoveAt033
    * @tc.desc: Delete key value pairs according to index. For example: plainArray.removeAt("a").
-   * @tc.author: wangyong
    */
   it("testRemoveAt033", 0, function () {
     let plainArray = new PlainArray();
@@ -612,7 +579,6 @@ describe("PlainArrayTest", function () {
    * @tc.name: testReMoveRangeFrom034
    * @tc.desc: Deletes the specified number of elements from the specified starting index. 
    * For example: plainArray.removeRangeFrom(0, 5).
-   * @tc.author: wangyong
    */
   it("testReMoveRangeFrom034", 0, function () {
     let plainArray = new PlainArray();
@@ -630,7 +596,6 @@ describe("PlainArrayTest", function () {
    * @tc.name: testSetValueAt035
    * @tc.desc: Modify the value of the key value pair according to the corresponding index. 
    * For example: plainArray.setValueAt(8, "V").
-   * @tc.author: wangyong
    */
   it("testSetValueAt035", 0, function () {
     let plainArray = new PlainArray();
@@ -652,7 +617,6 @@ describe("PlainArrayTest", function () {
   /**
    * @tc.name: testAdd036
    * @tc.desc: Add a pair of key value pairs to the PlainArray.
-   * @tc.author: wangyong
    */
   it("testAdd036", 0, function () {
     let plainArray = new PlainArray();
@@ -668,7 +632,6 @@ describe("PlainArrayTest", function () {
   /**
    * @tc.name: testAdd037
    * @tc.desc: Add a pair of key value pairs to the PlainArray.
-   * @tc.author: wangyong
    */
   it("testAdd037", 0, function () {
     let plainArray = new PlainArray();
@@ -684,7 +647,6 @@ describe("PlainArrayTest", function () {
   /**
    * @tc.name: testAdd038
    * @tc.desc: Add a pair of key value pairs to the PlainArray.
-   * @tc.author: wangyong
    */
   it("testAdd038", 0, function () {
     let plainArray = new PlainArray();
@@ -700,7 +662,6 @@ describe("PlainArrayTest", function () {
   /**
    * @tc.name: testAdd039
    * @tc.desc: Add a pair of key value pairs to the PlainArray.
-   * @tc.author: wangyong
    */
   it("testAdd039", 0, function () {
     let plainArray = new PlainArray();
@@ -721,7 +682,6 @@ describe("PlainArrayTest", function () {
   /**
    * @tc.name: testAdd040
    * @tc.desc: Add a pair of key value pairs to the PlainArray.
-   * @tc.author: wangyong
    */
   it("testAdd040", 0, function () {
     let plainArray = new PlainArray();
@@ -741,7 +701,6 @@ describe("PlainArrayTest", function () {
   /**
    * @tc.name: testAdd041
    * @tc.desc: Add a pair of key value pairs to the PlainArray.
-   * @tc.author: wangyong
    */
   it("testAdd041", 0, function () {
     let plainArray = new PlainArray();
@@ -759,7 +718,6 @@ describe("PlainArrayTest", function () {
   /**
    * @tc.name: testIterator042
    * @tc.desc: Iterate over all key value pairs in the PlainArray. 
-   * @tc.author: wangyong
    */
   it("testIterator042", 0, function () {
     let plainArray = new PlainArray();
@@ -784,7 +742,6 @@ describe("PlainArrayTest", function () {
   /**
    * @tc.name: testAdd043
    * @tc.desc: Add a pair of key value pairs to the PlainArray. For example: plainArray.add(1.23, "a").
-   * @tc.author: wangyong
    */
   it("testAdd043", 0, function () {
     let plainArray = new PlainArray();
@@ -804,7 +761,6 @@ describe("PlainArrayTest", function () {
   /**
    * @tc.name: testHas044
    * @tc.desc: Check whether the PlainArray contains a specified element. For example: plainArray.has("a").
-   * @tc.author: liuganlin
    */
   it("testHas044", 0, function () {
     let plainArray = new PlainArray();
@@ -826,7 +782,6 @@ describe("PlainArrayTest", function () {
   /**
    * @tc.name: testGet045
    * @tc.desc: Get the corresponding value through the key. For example: plainArray.get("a").
-   * @tc.author: liuganlin
    */
    it("testGet045", 0, function () {
     let plainArray = new PlainArray();
@@ -849,7 +804,6 @@ describe("PlainArrayTest", function () {
    * @tc.name: testGetIndexOfKey046
    * @tc.desc: Find the index of the key value pair according to the corresponding key. 
    * If no key is specified, return -1.
-   * @tc.author: liuganlin
    */
   it("testGetIndexOfKey046", 0, function () {
     let plainArray = new PlainArray();
@@ -872,7 +826,6 @@ describe("PlainArrayTest", function () {
    * @tc.name: testGetKeyAt047
    * @tc.desc: Find the key of the key value pair according to the corresponding index. 
    * For example: plainArray.getKeyAt("a").
-   * @tc.author: liuganlin
    */
   it("testGetKeyAt047", 0, function () {
     let plainArray = new PlainArray();
@@ -894,7 +847,6 @@ describe("PlainArrayTest", function () {
   /**
    * @tc.name: testReMoveAt048
    * @tc.desc: Delete key value pairs according to index. For example: plainArray.removeAt(12).
-   * @tc.author: liuganlin
    */
   it("testReMoveAt048", 0, function () {
     let plainArray = new PlainArray();
