@@ -1,9 +1,9 @@
 {
     "module": {
-        "name": "phone",
+        "name": "testModule",
         "type": "entry",
         "srcEntrance": "./ets/Application/AbilityStage.ts",
-        "description": "$string:phone_entry_dsc",
+        "description": "$string:testModule_entry_dsc",
         "mainElement": "MainAbility",
         "deviceTypes": [
             "default"
@@ -16,7 +16,7 @@
             {
                 "name": "ohos.acts.bundle.stage.test.MainAbility",
                 "srcEntrance": "./ets/MainAbility/MainAbility.ts",
-                "description": "$string:phone_entry_main",
+                "description": "$string:testModule_entry_main",
                 "icon": "$media:icon",
                 "label": "$string:entry_label",
                 "visible": true,
@@ -62,7 +62,7 @@
             {
                 "name": "ohos.acts.bundle.stage.test.MainAbility1",
                 "srcEntrance": "./ets/MainAbility/MainAbility.ts",
-                "description": "$string:phone_entry_main",
+                "description": "$string:testModule_entry_main",
                 "icon": "$media:icon",
                 "label": "$string:entry_label",
                 "visible": true,
