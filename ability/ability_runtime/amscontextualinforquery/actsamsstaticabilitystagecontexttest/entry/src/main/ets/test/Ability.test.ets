@@ -165,7 +165,7 @@ export default function abilityTest() {
             expect(data.supportedModes).assertEqual(0);
             expect(data.reqCapabilities.length).assertEqual(0);
             expect(data.deviceTypes.length).assertEqual(1);
-            expect(data.deviceTypes[0]).assertEqual("phone");
+            expect(data.deviceTypes[0]).assertEqual("default");
             expect(data.moduleName).assertEqual("com.example.staticabilitystagecontext")
             expect(data.mainAbilityName).assertEqual("com.example.staticabilitystagecontext.MainAbility");
             expect(data.installationFree).assertEqual(false);

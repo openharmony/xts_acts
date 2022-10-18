@@ -7,7 +7,6 @@
     "mainElement": "MainAbility1",
     "deviceTypes": [
       "default",
-      "phone",
       "tablet"
     ],
     "deliveryWithInstall": true,

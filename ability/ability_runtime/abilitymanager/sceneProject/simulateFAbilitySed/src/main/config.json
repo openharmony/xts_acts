@@ -17,8 +17,7 @@
     "package": "com.example.simulatefabilitysed",
     "name": ".MyApplication",
     "deviceType": [
-      "default",
-      "phone"
+      "default"
     ],
     "distro": {
       "deliveryWithInstall": true,

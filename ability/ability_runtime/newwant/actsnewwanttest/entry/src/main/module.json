@@ -1,86 +1,84 @@
 {
-    "module": {
-        "name": "phone",
-        "type": "entry",
-        "srcEntrance": "./ets/Application/AbilityStage.ts",
-        "description": "$string:phone_entry_dsc",
-        "mainElement": "MainAbility",
-        "deviceTypes": [
-      "default",
-            "phone"
-        ],
-        "deliveryWithInstall": true,
-        "installationFree": false,
-        "uiSyntax": "ets",
-        "pages": "$profile:main_pages",
-        "abilities": [
-            {
-                "name": "com.example.newwanttest.MainAbility",
-                "srcEntrance": "./ets/MainAbility/MainAbility.ts",
-                "description": "$string:phone_entry_main",
-                "icon": "$media:icon",
-                "label": "$string:entry_label",
-                "visible": true,
-                "orientation": "portrait",
-                "launchType": "singleton",
-                "skills": [
-                    {
-                        "actions": [
-                            "action.system.home"
-                        ],
-                        "entities":[
-                            "entity.system.home"
-                        ]
-                    }
-                ]
-            }
-        ],
-        "requestPermissions": [
+  "module": {
+    "name": "phone",
+    "type": "entry",
+    "srcEntrance": "./ets/Application/AbilityStage.ts",
+    "description": "$string:phone_entry_dsc",
+    "mainElement": "MainAbility",
+    "deviceTypes": [
+      "default"
+    ],
+    "deliveryWithInstall": true,
+    "installationFree": false,
+    "uiSyntax": "ets",
+    "pages": "$profile:main_pages",
+    "abilities": [
+      {
+        "name": "com.example.newwanttest.MainAbility",
+        "srcEntrance": "./ets/MainAbility/MainAbility.ts",
+        "description": "$string:phone_entry_main",
+        "icon": "$media:icon",
+        "label": "$string:entry_label",
+        "visible": true,
+        "orientation": "portrait",
+        "launchType": "singleton",
+        "skills": [
           {
-            "name":"ohos.permission.GET_BUNDLE_INFO_PRIVILEGED",
-            "reason":"need use ohos.permission.GET_BUNDLE_INFO_PRIVILEGED"
-          },
-          {
-            "name":"ohos.permission.GET_BUNDLE_INFO",
-            "reason":"need use ohos.permission.GET_BUNDLE_INFO"
-          },
-          {
-            "name":"ohos.permission.CHANGE_ABILITY_ENABLED_STATE",
-            "reason":"need use ohos.permission.CHANGE_ABILITY_ENABLED_STATE"
-          },
-          {
-            "name":"ohos.permission.REMOVE_CACHE_FILES",
-            "reason":"need use ohos.permission.REMOVE_CACHE_FILES"
-          },
-          {
-            "name":"ohos.permission.LISTEN_BUNDLE_CHANGE",
-            "reason":"need use ohos.permission.LISTEN_BUNDLE_CHANGE"
-          },
-          {
-            "name":"ohos.permission.INSTALL_BUNDLE",
-            "reason":"need use ohos.permission.INSTALL_BUNDLE"
-          },
-          {
-            "name":"ohos.permission.MANAGE_MISSIONS",
-            "reason":"need use ohos.permission.MANAGE_MISSIONS"
-          },
-          {
-            "name":"ohos.permission.GET_RUNNING_INFO",
-            "reason":"need use ohos.permission.GET_RUNNING_INFO"
-          },
-          {
-            "name":"ohos.permission.CLEAN_BACKGROUND_PROCESSES",
-            "reason":"need use ohos.permission.CLEAN_BACKGROUND_PROCESSES"
-          },
-          {
-            "name":"ohos.permission.CLEAN_APPLICATION_DATA",
-            "reason":"need use ohos.permission.CLEAN_APPLICATION_DATA"
-          },
-          {
-            "name":"ohos.permission.START_ABILITIES_FROM_BACKGROUND",
-            "reason":"need use ohos.permission.START_ABILITIES_FROM_BACKGROUND"
+            "actions": [
+              "action.system.home"
+            ],
+            "entities": [
+              "entity.system.home"
+            ]
           }
         ]
-
-    }
+      }
+    ],
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.GET_BUNDLE_INFO_PRIVILEGED",
+        "reason": "need use ohos.permission.GET_BUNDLE_INFO_PRIVILEGED"
+      },
+      {
+        "name": "ohos.permission.GET_BUNDLE_INFO",
+        "reason": "need use ohos.permission.GET_BUNDLE_INFO"
+      },
+      {
+        "name": "ohos.permission.CHANGE_ABILITY_ENABLED_STATE",
+        "reason": "need use ohos.permission.CHANGE_ABILITY_ENABLED_STATE"
+      },
+      {
+        "name": "ohos.permission.REMOVE_CACHE_FILES",
+        "reason": "need use ohos.permission.REMOVE_CACHE_FILES"
+      },
+      {
+        "name": "ohos.permission.LISTEN_BUNDLE_CHANGE",
+        "reason": "need use ohos.permission.LISTEN_BUNDLE_CHANGE"
+      },
+      {
+        "name": "ohos.permission.INSTALL_BUNDLE",
+        "reason": "need use ohos.permission.INSTALL_BUNDLE"
+      },
+      {
+        "name": "ohos.permission.MANAGE_MISSIONS",
+        "reason": "need use ohos.permission.MANAGE_MISSIONS"
+      },
+      {
+        "name": "ohos.permission.GET_RUNNING_INFO",
+        "reason": "need use ohos.permission.GET_RUNNING_INFO"
+      },
+      {
+        "name": "ohos.permission.CLEAN_BACKGROUND_PROCESSES",
+        "reason": "need use ohos.permission.CLEAN_BACKGROUND_PROCESSES"
+      },
+      {
+        "name": "ohos.permission.CLEAN_APPLICATION_DATA",
+        "reason": "need use ohos.permission.CLEAN_APPLICATION_DATA"
+      },
+      {
+        "name": "ohos.permission.START_ABILITIES_FROM_BACKGROUND",
+        "reason": "need use ohos.permission.START_ABILITIES_FROM_BACKGROUND"
+      }
+    ]
+  }
 }

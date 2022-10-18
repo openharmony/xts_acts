@@ -6,8 +6,7 @@
         "description": "$string:phone_entry_dsc",
         "mainElement": "com.example.staticextensioninfo.MainAbility",
         "deviceTypes": [
-            "default",
-            "phone"
+            "default"
         ],
         "deliveryWithInstall": true,
         "installationFree": false,

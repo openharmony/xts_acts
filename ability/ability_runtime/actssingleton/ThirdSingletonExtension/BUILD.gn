@@ -13,7 +13,7 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsThirdSingletonExtension") {
+ohos_js_hap_suite("ActsThirdSingletonExtensionTest") {
   hap_profile = "entry/src/main/module.json"
   js_build_mode = "debug"
   deps = [
@@ -22,7 +22,7 @@ ohos_js_hap_suite("ActsThirdSingletonExtension") {
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "ActsThirdSingletonExtension"
+  hap_name = "ActsThirdSingletonExtensionTest"
   subsystem_name = "ability"
   part_name = "ability_runtime"
 }

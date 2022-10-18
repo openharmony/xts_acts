@@ -17,8 +17,7 @@
         "package": "com.example.actscontext",
         "name": ".entry",
         "deviceType": [
-      "default",
-            "phone"
+            "default"
         ],
         "reqPermissions": [
             {

@@ -17,8 +17,7 @@
         "package": "com.amsst.fwkdataaccessor",
         "name": ".entry",
         "deviceType": [
-            "default",
-            "phone"
+            "default"
         ],
         "distro": {
             "deliveryWithInstall": true,

@@ -93,32 +93,32 @@ export default function abilityTest(abilityContext) {
 
 
     /*
-    * @tc.number: ACTS_StartAbility_0100
+    * @tc.number: ACTS_StartAbility_2100
     * @tc.name: Get the specified displayId to start Ability
     * @tc.desc: Verify Get displayId to start Ability
     */
-    it('ACTS_StartAbility_0100', 0, async function (done) {
-      console.log('ACTS_StartAbility_0100====<begin');
+    it('ACTS_StartAbility_2100', 0, async function (done) {
+      console.log('ACTS_StartAbility_2100====<begin');
       var subscriber;
       let id;
 
       function subscribeCallBack(err, data) {
-        console.debug("====>ACTS_StartAbility_0100 Subscribe CallBack data:====>" + JSON.stringify(data));
+        console.debug("====>ACTS_StartAbility_2100 Subscribe CallBack data:====>" + JSON.stringify(data));
 
         async function processInfoCheck(data) {
-          console.info('====> ACTS_StartAbility_0100=====>');
+          console.info('====> ACTS_StartAbility_2100=====>');
           expect(data.parameters['displayId']).assertEqual(15);
           expect(data.parameters['windowMode']).assertEqual(0);
           done();
         }
 
         if (data.event == "MultiInstanceStartFinish") {
-          console.info('====> ACTS_StartAbility_0100 start success=====>');
+          console.info('====> ACTS_StartAbility_2100 start success=====>');
           clearTimeout(id);
           processInfoCheck(data);
           commonEvent.unsubscribe(subscriber, unSubscribeCallback)
         } else if (data.event == "MultiInstanceStartNext") {
-          console.log('ACTS_StartAbility_0100 callBackSeq = ' + data.data);
+          console.log('ACTS_StartAbility_2100 callBackSeq = ' + data.data);
         }
       }
 
@@ -134,11 +134,11 @@ export default function abilityTest(abilityContext) {
 
       function timeout() {
         expect().assertFail();
-        console.log('ACTS_StartAbility_0100 timeout');
+        console.log('ACTS_StartAbility_2100 timeout');
       }
 
       id = setTimeout(timeout, START_ABILITY_TIMEOUT);
-      console.log('Start ACTS_StartAbility_0100 timer id : ' + id);
+      console.log('Start ACTS_StartAbility_2100 timer id : ' + id);
 
       startAbilityProcess(abilityContext, {
         windowMode: 0,
@@ -152,32 +152,32 @@ export default function abilityTest(abilityContext) {
     })
 
     /*
-    * @tc.number: ACTS_StartAbility_0200
+    * @tc.number: ACTS_StartAbility_2300
     * @tc.name: Get the specified displayId to start Ability
     * @tc.desc: Verify that the ability to start when displayId is a string
     */
-    it('ACTS_StartAbility_0200', 0, async function (done) {
-      console.log('ACTS_StartAbility_0200====<begin');
+    it('ACTS_StartAbility_2300', 0, async function (done) {
+      console.log('ACTS_StartAbility_2300====<begin');
       var subscriber;
       let id;
 
       function subscribeCallBack(err, data) {
-        console.debug("====>ACTS_StartAbility_0200 Subscribe CallBack data:====>" + JSON.stringify(data));
+        console.debug("====>ACTS_StartAbility_2300 Subscribe CallBack data:====>" + JSON.stringify(data));
 
         async function processInfoCheck(data) {
-          console.info('====> ACTS_StartAbility_0200=====>');
+          console.info('====> ACTS_StartAbility_2300=====>');
           expect(data.parameters['displayId']).assertEqual(0);
           expect(data.parameters['windowMode']).assertEqual(0);
           done();
         }
 
         if (data.event == "MultiInstanceStartFinish") {
-          console.info('====> ACTS_StartAbility_0200 start success=====>');
+          console.info('====> ACTS_StartAbility_2300 start success=====>');
           clearTimeout(id);
           processInfoCheck(data);
           commonEvent.unsubscribe(subscriber, unSubscribeCallback)
         } else if (data.event == "MultiInstanceStartNext") {
-          console.log('ACTS_StartAbility_0200 callBackSeq = ' + data.data);
+          console.log('ACTS_StartAbility_2300 callBackSeq = ' + data.data);
         }
       }
 
@@ -193,11 +193,11 @@ export default function abilityTest(abilityContext) {
 
       function timeout() {
         expect().assertFail();
-        console.log('ACTS_StartAbility_0200 timeout');
+        console.log('ACTS_StartAbility_2300 timeout');
       }
 
       id = setTimeout(timeout, START_ABILITY_TIMEOUT);
-      console.log('Start ACTS_StartAbility_0200 timer id : ' + id);
+      console.log('Start ACTS_StartAbility_2300 timer id : ' + id);
 
       startAbilityProcess(abilityContext, {
         windowMode: 0,
@@ -211,32 +211,32 @@ export default function abilityTest(abilityContext) {
     })
 
     /*
-    * @tc.number: ACTS_StartAbility_0300
+    * @tc.number: ACTS_StartAbility_2500
     * @tc.name: Get the specified displayId to start Ability
     * @tc.desc: Verify that the ability to start when the displayId is undefined
     */
-    it('ACTS_StartAbility_0300', 0, async function (done) {
-      console.log('ACTS_StartAbility_0300====<begin');
+    it('ACTS_StartAbility_2500', 0, async function (done) {
+      console.log('ACTS_StartAbility_2500====<begin');
       var subscriber;
       let id;
 
       function subscribeCallBack(err, data) {
-        console.debug("====>ACTS_StartAbility_0300 Subscribe CallBack data:====>" + JSON.stringify(data));
+        console.debug("====>ACTS_StartAbility_2500 Subscribe CallBack data:====>" + JSON.stringify(data));
 
         async function processInfoCheck(data) {
-          console.info('====> ACTS_StartAbility_0300=====>');
+          console.info('====> ACTS_StartAbility_2500=====>');
           expect(data.parameters['displayId']).assertEqual(0);
           expect(data.parameters['windowMode']).assertEqual(0);
           done();
         }
 
         if (data.event == "MultiInstanceStartFinish") {
-          console.info('====> ACTS_StartAbility_0300 start success=====>');
+          console.info('====> ACTS_StartAbility_2500 start success=====>');
           clearTimeout(id);
           processInfoCheck(data);
           commonEvent.unsubscribe(subscriber, unSubscribeCallback)
         } else if (data.event == "MultiInstanceStartNext") {
-          console.log('ACTS_StartAbility_0300 callBackSeq = ' + data.data);
+          console.log('ACTS_StartAbility_2500 callBackSeq = ' + data.data);
         }
       }
 
@@ -252,11 +252,11 @@ export default function abilityTest(abilityContext) {
 
       function timeout() {
         expect().assertFail();
-        console.log('ACTS_StartAbility_0300 timeout');
+        console.log('ACTS_StartAbility_2500 timeout');
       }
 
       id = setTimeout(timeout, START_ABILITY_TIMEOUT);
-      console.log('Start ACTS_StartAbility_0300 timer id : ' + id);
+      console.log('Start ACTS_StartAbility_2500 timer id : ' + id);
 
       startAbilityProcess(abilityContext, {
         windowMode: 0,
@@ -270,32 +270,32 @@ export default function abilityTest(abilityContext) {
     })
 
     /*
-    * @tc.number: ACTS_StartAbility_0400
+    * @tc.number: ACTS_StartAbility_2700
     * @tc.name: Get the specified displayId to start Ability
     * @tc.desc: Validation parameters want to filter the DISPLAY_ID of parameters
     */
-    it('ACTS_StartAbility_0400', 0, async function (done) {
-      console.log('ACTS_StartAbility_0400====<begin');
+    it('ACTS_StartAbility_2700', 0, async function (done) {
+      console.log('ACTS_StartAbility_2700====<begin');
       var subscriber;
       let id;
 
       function subscribeCallBack(err, data) {
-        console.debug("====>ACTS_StartAbility_0400 Subscribe CallBack data:====>" + JSON.stringify(data));
+        console.debug("====>ACTS_StartAbility_2700 Subscribe CallBack data:====>" + JSON.stringify(data));
 
         async function processInfoCheck(data) {
-          console.info('====> ACTS_StartAbility_0400=====>');
+          console.info('====> ACTS_StartAbility_2700=====>');
           expect(data.parameters['windowMode']).assertEqual(0);
           expect(data.parameters['displayId']).assertEqual(0);
           done();
         }
 
         if (data.event == "MultiInstanceStartFinish") {
-          console.info('====> ACTS_StartAbility_0400 start success=====>');
+          console.info('====> ACTS_StartAbility_2700 start success=====>');
           clearTimeout(id);
           processInfoCheck(data);
           commonEvent.unsubscribe(subscriber, unSubscribeCallback)
         } else if (data.event == "MultiInstanceStartNext") {
-          console.log('ACTS_StartAbility_0400 callBackSeq = ' + data.data);
+          console.log('ACTS_StartAbility_2700 callBackSeq = ' + data.data);
         }
       }
 
@@ -311,11 +311,11 @@ export default function abilityTest(abilityContext) {
 
       function timeout() {
         expect().assertFail();
-        console.log('ACTS_StartAbility_0400 timeout');
+        console.log('ACTS_StartAbility_2700 timeout');
       }
 
       id = setTimeout(timeout, START_ABILITY_TIMEOUT);
-      console.log('Start ACTS_StartAbility_0400 timer id : ' + id);
+      console.log('Start ACTS_StartAbility_2700 timer id : ' + id);
 
       startAbilityProcess(abilityContext, {}, {
         startId: 0,

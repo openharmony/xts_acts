@@ -7,7 +7,6 @@
     "mainElement": "TestAbility",
     "deviceTypes": [
       "default",
-      "phone",
       "tablet"
     ],
     "deliveryWithInstall": true,

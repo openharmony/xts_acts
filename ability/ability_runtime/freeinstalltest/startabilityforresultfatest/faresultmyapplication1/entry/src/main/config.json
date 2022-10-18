@@ -17,7 +17,6 @@
     "mainAbility": ".MainAbility1",
     "deviceType": [
       "default",
-      "phone",
       "tablet"
     ],
     "abilities": [

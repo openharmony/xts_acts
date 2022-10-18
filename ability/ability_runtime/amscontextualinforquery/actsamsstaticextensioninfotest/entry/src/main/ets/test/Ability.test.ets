@@ -127,7 +127,7 @@ export default function abilityTest() {
         expect(data.supportedModes).assertEqual(0);
         expect(data.reqCapabilities.length).assertEqual(0);
         expect(data.deviceTypes.length).assertEqual(1);
-        expect(data.deviceTypes[0]).assertEqual("phone");
+        expect(data.deviceTypes[0]).assertEqual("default");
         expect(data.moduleName).assertEqual("phone")
         expect(data.mainAbilityName).assertEqual("com.example.staticextensioninfo.MainAbility");
         expect(data.installationFree).assertEqual(false);
@@ -309,7 +309,7 @@ export default function abilityTest() {
         expect(data.supportedModes).assertEqual(0);
         expect(data.reqCapabilities.length).assertEqual(0);
         expect(data.deviceTypes.length).assertEqual(1);
-        expect(data.deviceTypes[0]).assertEqual("phone");
+        expect(data.deviceTypes[0]).assertEqual("default");
         expect(data.moduleName).assertEqual("phone")
         expect(data.mainAbilityName).assertEqual("com.example.staticextensioninfotest.MainAbility");
         expect(data.installationFree).assertEqual(false);

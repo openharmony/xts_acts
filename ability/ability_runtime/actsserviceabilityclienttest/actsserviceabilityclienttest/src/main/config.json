@@ -19,8 +19,7 @@
     "mainAbility": ".MainAbility",
     "srcPath":"",
     "deviceType": [
-      "default",
-      "phone"
+      "default"
     ],
     "distro": {
       "deliveryWithInstall": true,

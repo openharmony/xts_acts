@@ -17,8 +17,7 @@
         "package": "com.amsst.amsdatauriutils",
         "name": ".entry",
         "deviceType": [
-            "default",
-            "phone"
+            "default"
         ],
         "distro": {
             "deliveryWithInstall": true,
