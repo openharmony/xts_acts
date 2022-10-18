@@ -120,11 +120,11 @@ HWTEST_F(ActsCodecFormatNdkTest, SUB_MULTIMEDIA_MEDIA_CODEC_FORMAT_0200, TestSiz
     const char *floatKey = "float value key";
     const char *doubleKey = "double value key";
     const char *stringKey = "string value key";
+    const char *stringValue = "string_value";
     int32_t intValue = 1;
     int64_t longValue = 1;
     float floatValue = 1.0;
     double doubleValue = 1.0;
-    const char *stringValue = "string_value";
 
     OH_AVFormat *codecFormatIn = OH_AVFormat_Create();
     ASSERT_NE(nullptr, codecFormatIn);
