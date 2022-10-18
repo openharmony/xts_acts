@@ -37,18 +37,6 @@ void ActsCodecFormatNdkTest::TearDownTestCase() {}
 void ActsCodecFormatNdkTest::SetUp() {}
 void ActsCodecFormatNdkTest::TearDown() {}
 
-const int32_t intValue = 1;
-const int64_t longValue = 1;
-const float floatValue = 1.0;
-const double doubleValue = 1.0;
-const char *stringValue = "string_value";
-const char *intKey = "int value key";
-const char *longKey = "long value key";
-const char *floatKey = "float value key";
-const char *doubleKey = "double value key";
-const char *stringKey = "string value key";
-const char *bufferKey = "buffer value key";
-
 bool CheckDecDesc(map<string, int> InDesc, OH_AVFormat* OutDesc)
 {
     int32_t out ;
@@ -126,6 +114,17 @@ HWTEST_F(ActsCodecFormatNdkTest, SUB_MULTIMEDIA_MEDIA_CODEC_FORMAT_0100, TestSiz
  */
 HWTEST_F(ActsCodecFormatNdkTest, SUB_MULTIMEDIA_MEDIA_CODEC_FORMAT_0200, TestSize.Level1)
 {
+    const char *intKey = "int value key";
+    const char *longKey = "long value key";
+    const char *floatKey = "float value key";
+    const char *doubleKey = "double value key";
+    const char *stringKey = "string value key";
+    int32_t intValue = 1;
+    int64_t longValue = 1;
+    float floatValue = 1.0;
+    double doubleValue = 1.0;
+    const char *stringValue = "string_value";
+
     OH_AVFormat *codecFormatIn = OH_AVFormat_Create();
     ASSERT_NE(nullptr, codecFormatIn);
     OH_AVFormat *codecFormatOut = OH_AVFormat_Create();
@@ -166,6 +165,7 @@ HWTEST_F(ActsCodecFormatNdkTest, SUB_MULTIMEDIA_MEDIA_CODEC_FORMAT_0200, TestSiz
  */
 HWTEST_F(ActsCodecFormatNdkTest, SUB_MULTIMEDIA_MEDIA_CODEC_FORMAT_0300, TestSize.Level1)
 {
+    const char *bufferKey = "buffer value key";
     OH_AVFormat *codecFormatIn = OH_AVFormat_Create();
     ASSERT_NE(nullptr, codecFormatIn);
     OH_AVFormat *codecFormatOut = OH_AVFormat_Create();
@@ -184,6 +184,7 @@ HWTEST_F(ActsCodecFormatNdkTest, SUB_MULTIMEDIA_MEDIA_CODEC_FORMAT_0300, TestSiz
     for (int32_t i = 0; i < buffernum; i++) {
         ASSERT_EQ(buffer[i], addrout[i]);
     }
+    
     OH_AVFormat_Destroy(codecFormatIn);
     codecFormatIn = nullptr;
     OH_AVFormat_Destroy(codecFormatOut);
