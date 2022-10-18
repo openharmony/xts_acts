@@ -20,7 +20,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert001
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.author: lihucheng
      */
     it('testConvert001', 0, function () {
         let xml =
@@ -61,7 +60,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert002
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.author: lihucheng
      */
     it('testConvert002', 0, function () {
         let xml =
@@ -102,7 +100,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert003
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.author: lihucheng
      */
     it('testConvert003', 0, function () {
         let xml =
@@ -141,7 +138,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert004
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.author: lihucheng
      */
     it('testConvert004', 0, function () {
         let xml =
@@ -184,7 +180,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert005
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.author: lihucheng
      */
     it('testConvert005', 0, function () {
         let xml =
@@ -223,7 +218,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert006
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.author: lihucheng
      */
     it('testConvert006', 0, function () {
         let xml =
@@ -265,7 +259,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert007
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.author: lihucheng
      */
     it('testConvert007', 0, function () {
         let xml =
@@ -307,7 +300,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert008
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.author: lihucheng
      */
     it('testConvert008', 0, function () {
         let xml =
@@ -349,7 +341,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert09
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.author: lihucheng
      */
     it('testConvert09', 0, function () {
         let xml =
@@ -391,7 +382,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert010
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.author: lihucheng
      */
     it('testConvert010', 0, function () {
         let xml =
@@ -426,7 +416,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert011
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.author: lihucheng
      */
     it('testConvert011', 0, function () {
         let xml =
@@ -467,7 +456,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert012
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.author: lihucheng
      */
     it('testConvert012', 0, function () {
         let xml =
@@ -512,7 +500,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert013
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.author: lihucheng
      */
     it('testConvert013', 0, function () {
         let xml =
@@ -557,7 +544,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert014
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.author: lihucheng
      */
     it('testConvert014', 0, function () {
         let xml =
@@ -598,7 +584,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert015
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.author: lihucheng
      */
     it('testConvert015', 0, function () {
         let xml =
@@ -642,7 +627,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert016
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.author: lihucheng
      */
     it('testConvert016', 0, function () {
         let xml =
@@ -686,7 +670,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert017
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.author: lihucheng
      */
     it('testConvert017', 0, function () {
         let xml =
@@ -732,7 +715,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert018
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.author: lihucheng
      */
     it('testConvert018', 0, function () {
         let xml =
@@ -773,7 +755,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert019
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.author: lihucheng
      */
     it('testConvert019', 0, function () {
         let xml =
@@ -814,7 +795,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert020
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.author: lihucheng
      */
     it('testConvert020', 0, function () {
         let xml =
@@ -855,7 +835,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert021
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.author: lihucheng
      */
     it('testConvert021', 0, function () {
         let xml = '<?xml?>';
@@ -873,7 +852,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert022
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.author: lihucheng
      */
     it('testConvert022', 0, function () {
         let  xml = '<?xml version="1.0" encoding="utf-8"?>';
@@ -892,7 +870,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert023
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.author: lihucheng
      */
     it('testConvert023', 0, function () {
         let  xml = '<?xml?>\n<a/>';
@@ -910,7 +887,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert024
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.author: lihucheng
      */
     it('testConvert024', 0, function () {
         let  xml = '<?go there?>';
@@ -930,7 +906,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert025
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.author: lihucheng
      */
     it('testConvert025', 0, function () {
         let  xml = '<?go there?><?come here?>';
@@ -953,7 +928,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert026
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.author: lihucheng
      */
     it('testConvert026', 0, function () {
         let  xml = '<!-- \t Hello World! \t -->';
@@ -976,7 +950,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert027
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.author: lihucheng
      */
     it('testConvert027', 0, function () {
         let  xml = '<!-- \t Hello \t -->\n<!-- \t World \t -->';
@@ -1002,7 +975,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert028
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.author: lihucheng
      */
     it('testConvert028', 0, function () {
         let  xml = '<![CDATA[ \t <foo></bar> \t ]]>';
@@ -1024,7 +996,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert029
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.author: lihucheng
      */
     it('testConvert029', 0, function () {
         let  xml = '<![CDATA[ \t data]]><![CDATA[< > " and & \t ]]>';
@@ -1052,7 +1023,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert030
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.author: lihucheng
      */
     it('testConvert030', 0, function () {
         let  xml = '<a/>';
@@ -1071,7 +1041,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert031
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.author: lihucheng
      */
     it('testConvert031', 0, function () {
         let  xml = '<a/>\n<a/>';
@@ -1092,7 +1061,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert032
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.author: lihucheng
      */
     it('testConvert032', 0, function () {
         let  xml = '<a/>\n<b/>';
@@ -1113,7 +1081,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert033
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.author: lihucheng
      */
     it('testConvert033', 0, function () {
         let  xml = '<a x="hello"/>';
@@ -1133,7 +1100,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert034
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.author: lihucheng
      */
     it('testConvert034', 0, function () {
         let  xml = '<a x="1.234" y="It\'s"/>';
@@ -1154,7 +1120,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert035
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.author: lihucheng
      */
     it('testConvert035', 0, function () {
         let  xml = '<a> \t Hi \t </a>';
@@ -1176,7 +1141,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert036
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.author: lihucheng
      */
     it('testConvert036', 0, function () {
         let  xml = '<a>  Hi  There \t </a>';
@@ -1198,7 +1162,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert037
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.author: lihucheng
      */
     it('testConvert037', 0, function () {
         let  xml = '<a>\n\v<b/>\n</a>';
@@ -1219,7 +1182,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert038
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.author: lihucheng
      */
     it('testConvert038', 0, function () {
         let  xml = '<a>\n\v<b>\n\v\v<c/>\n\v</b>\n</a>';
@@ -1242,7 +1204,6 @@ describe('XmlTest', function () {
     /**
      * @tc.name: testConvert039
      * @tc.desc: To convert XML text to JavaScript object.
-     * @tc.author: lihucheng
      */
         it('testConvert039', 0, function () {
         let xml =
@@ -1281,4 +1242,59 @@ describe('XmlTest', function () {
         '"_text":"Play"}]}]}]}'
         expect(result).assertEqual(str1);
     })
+
+    /**
+     * @tc.name: testBusinessError001
+     * @tc.desc: To convert XML text to JavaScript object.
+     */
+        it('testBusinessError001', 0, function () {
+            try {
+                let xml = 123;
+                let conv = new convertxml.ConvertXML();
+                let options = {trim : false, declarationKey:"_declaration",
+                    instructionKey : "_instruction", attributesKey : "_attributes",
+                    textKey : "_text", cdataKey:"_cdata", doctypeKey : "_doctype",
+                    commentKey : "_comment", parentKey : "_parent", typeKey : "_type",
+                    nameKey : "_name", elementsKey : "_elements"}
+                conv.convertToJSObject(xml, options);
+            } catch (e) {
+                expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 123 must be string")
+            }
+        })
+
+    /**
+     * @tc.name: testBusinessError002
+     * @tc.desc: To convert XML text to JavaScript object.
+     */
+        it('testBusinessError002', 0, function () {
+            try {
+                let xml =
+                    '<?xml version="1.0" encoding="utf-8"?>' +
+                    '<note importance="high" logged="true">' +
+                    '    <title>Happy</title>' +
+                    '    <todo>Work</todo>' +
+                    '    <todo>Play</todo>' +
+                    '</note>';
+                let conv = new convertxml.ConvertXML();
+                let options = 123
+                conv.convertToJSObject(xml, options);
+            } catch (e) {
+                expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 123 must be object")
+            }
+        })
+
+    /**
+     * @tc.name: testBusinessError003
+     * @tc.desc: To convert XML text to JavaScript object.
+     */
+        it('testBusinessError003', 0, function () {
+            try {
+                let xml = 111;
+                let conv = new convertxml.ConvertXML();
+                let options = 123
+                conv.convertToJSObject(xml, options);
+            } catch (e) {
+                expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 111 must be string")
+            }
+        })
 })}
