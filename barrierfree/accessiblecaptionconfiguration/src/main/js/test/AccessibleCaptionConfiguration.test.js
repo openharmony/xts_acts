@@ -63,6 +63,40 @@ describe('AccessibleCaptionConfiguration', function () {
     done();
   })
 
+  /*
+   * @tc.number  CaptionConfiguration_0030
+   * @tc.name    CaptionConfiguration_0030
+   * @tc.desc    The parameter input is '', test the captionManager.on() function,
+   *             and return undefined 
+   * @tc.size    SmallTest
+   * @tc.type    User
+   */
+  it('CaptionConfiguration_0030', 0, async function (done) {
+    console.info('CaptionConfiguration_0030');
+    let captionManager = accessibility.getCaptionsManager();
+    let stateEventType = '';
+    let ret = captionManager.on(stateEventType, (data) => {});
+    expect(ret).assertEqual(undefined);
+    done();
+  })
+
+  /*
+   * @tc.number  CaptionConfiguration_0040
+   * @tc.name    CaptionConfiguration_0040
+   * @tc.desc    The parameter input is null, test the captionManager.on() function,
+   *             and return undefined 
+   * @tc.size    SmallTest
+   * @tc.type    User
+   */
+  it('CaptionConfiguration_0040', 0, async function (done) {
+    console.info('CaptionConfiguration_0040');
+    let captionManager = accessibility.getCaptionsManager();
+    let stateEventType = null;
+    let ret = captionManager.on(stateEventType, (data) => {});
+    expect(ret).assertEqual(undefined);
+    done();
+  })
+
    /*
    * @tc.number  CaptionConfiguration_0050
    * @tc.name    CaptionConfiguration_0050
@@ -92,6 +126,40 @@ describe('AccessibleCaptionConfiguration', function () {
     console.info('CaptionConfiguration_0060');
     let captionManager = accessibility.getCaptionsManager();
     let stateEventType = 'styleChange';
+    let ret = captionManager.off(stateEventType, (data) => {});
+    expect(ret).assertEqual(undefined);
+    done();
+  })
+
+  /*
+   * @tc.number  CaptionConfiguration_0070
+   * @tc.name    CaptionConfiguration_0070
+   * @tc.desc    The parameter input is '', test the captionManager.off() function,
+   *             and return undefined 
+   * @tc.size    SmallTest
+   * @tc.type    User
+   */
+  it('CaptionConfiguration_0070', 0, async function (done) {
+    console.info('CaptionConfiguration_0070');
+    let captionManager = accessibility.getCaptionsManager();
+    let stateEventType = '';
+    let ret = captionManager.off(stateEventType, (data) => {});
+    expect(ret).assertEqual(undefined);
+    done();
+  })
+
+  /*
+   * @tc.number  CaptionConfiguration_0080
+   * @tc.name    CaptionConfiguration_0080
+   * @tc.desc    The parameter input is null, test the captionManager.off() function,
+   *             and return undefined 
+   * @tc.size    SmallTest
+   * @tc.type    User
+   */
+  it('CaptionConfiguration_0080', 0, async function (done) {
+    console.info('CaptionConfiguration_0080');
+    let captionManager = accessibility.getCaptionsManager();
+    let stateEventType = null;
     let ret = captionManager.off(stateEventType, (data) => {});
     expect(ret).assertEqual(undefined);
     done();
