@@ -1,10 +1,10 @@
 /*
- * Copyright (c) 2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 
 #include <string>
 #include "securec.h"
@@ -184,7 +185,7 @@ HWTEST_F(ActsCodecFormatNdkTest, SUB_MULTIMEDIA_MEDIA_CODEC_FORMAT_0300, TestSiz
     for (int32_t i = 0; i < buffernum; i++) {
         ASSERT_EQ(buffer[i], addrout[i]);
     }
-    
+
     OH_AVFormat_Destroy(codecFormatIn);
     codecFormatIn = nullptr;
     OH_AVFormat_Destroy(codecFormatOut);
