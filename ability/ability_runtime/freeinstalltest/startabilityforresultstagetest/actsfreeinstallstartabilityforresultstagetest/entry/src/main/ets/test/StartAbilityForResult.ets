@@ -201,8 +201,8 @@ export default function StartAbilityForResult(abilityContext) {
       }).catch((error) => {
         console.error(' getTopAbility error: ' + JSON.stringify(error));
       });
-      console.log(" checkAbilityInfo deviceId : " + details1.ability.deviceId);
-      DeviceId = details1.ability.deviceId;
+      console.log(" checkAbilityInfo deviceId : " + details1.deviceId);
+      DeviceId = details1.deviceId;
       setTimeout(async () => {
         var str = {
           "deviceId": DeviceId,
