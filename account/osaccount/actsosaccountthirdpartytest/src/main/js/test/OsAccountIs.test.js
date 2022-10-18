@@ -208,7 +208,7 @@ export default function ActsOsAccountThirdPartyTest_third_1() {
             console.debug("====>get os AccountManager finish====");
             AccountManager.isOsAccountActived(undefined, (err, data)=>{
                 console.debug("====>ActsOsAccountIsActived_0700 err:" + JSON.stringify(err));
-                expect(err != 0).assertEqual(true)
+                expect(err.code != 0).assertEqual(true)
                 console.debug("====>receive isOsAccountActived data: " + JSON.stringify(data));
                 done();
             })
