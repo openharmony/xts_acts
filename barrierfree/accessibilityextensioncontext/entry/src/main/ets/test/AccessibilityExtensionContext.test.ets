@@ -86,7 +86,7 @@ export default function abilityTest() {
         /*
         * @tc.number  AccessibilityExtensionContextTest_setTargetBundleName_asyncCallback_1500
         * @tc.name    AccessibilityExtensionContextTest_setTargetBundleName_asyncCallback_1500
-        * @tc.desc    The parameter input is 'com.example.accessibleformextension', 
+        * @tc.desc    The parameter input is 'com.example.accessibilityxts', 
         *             test the setTargetBundleName() function,
         *             The result of setTargetBundleName() should be boolean type.
         * @tc.size    SmallTest
@@ -120,7 +120,7 @@ export default function abilityTest() {
         /*
         * @tc.number  AccessibilityExtensionContextTest_setTargetBundleName_asyncCallback_1600
         * @tc.name    AccessibilityExtensionContextTest_setTargetBundleName_asyncCallback_1600
-        * @tc.desc    The parameter input is 'com.example.accessibleformextension', 
+        * @tc.desc    The parameter input is 'com.example.accessibilityxts', 
         *             test the setTargetBundleName() function,
         *             The result of setTargetBundleName() should be boolean type.
         * @tc.size    SmallTest
@@ -154,7 +154,7 @@ export default function abilityTest() {
         /*
         * @tc.number  AccessibilityExtensionContextTest_setTargetBundleName_asyncCallback_1700
         * @tc.name    AccessibilityExtensionContextTest_setTargetBundleName_asyncCallback_1700
-        * @tc.desc    The parameter input is 'com.example.accessibleformextension', 
+        * @tc.desc    The parameter input is 'com.example.accessibilityxts', 
         *             test the setTargetBundleName() function,
         *             The result of setTargetBundleName() should be boolean type.
         * @tc.size    SmallTest
@@ -188,7 +188,7 @@ export default function abilityTest() {
         /*
         * @tc.number  AccessibilityExtensionContextTest_setTargetBundleName_asyncPromise_1800
         * @tc.name    AccessibilityExtensionContextTest_setTargetBundleName_asyncPromise_1800
-        * @tc.desc    The parameter input is 'com.example.accessibleformextension', 
+        * @tc.desc    The parameter input is 'com.example.accessibilityxts', 
         *             test the setTargetBundleName() function,
         *             The result of setTargetBundleName() should be boolean type.
         * @tc.size    SmallTest
@@ -222,7 +222,7 @@ export default function abilityTest() {
         /*
         * @tc.number  AccessibilityExtensionContextTest_setTargetBundleName_asyncPromise_1900
         * @tc.name    AccessibilityExtensionContextTest_setTargetBundleName_asyncPromise_1900
-        * @tc.desc    The parameter input is 'com.example.accessibleformextension', 
+        * @tc.desc    The parameter input is 'com.example.accessibilityxts', 
         *             test the setTargetBundleName() function,
         *             The result of setTargetBundleName() should be boolean type.
         * @tc.size    SmallTest
@@ -256,7 +256,7 @@ export default function abilityTest() {
         /*
         * @tc.number  AccessibilityExtensionContextTest_setTargetBundleName_asyncPromise_2000
         * @tc.name    AccessibilityExtensionContextTest_setTargetBundleName_asyncPromise_2000
-        * @tc.desc    The parameter input is 'com.example.accessibleformextension', 
+        * @tc.desc    The parameter input is 'com.example.accessibilityxts', 
         *             test the setTargetBundleName() function,
         *             The result of setTargetBundleName() should be boolean type.
         * @tc.size    SmallTest
