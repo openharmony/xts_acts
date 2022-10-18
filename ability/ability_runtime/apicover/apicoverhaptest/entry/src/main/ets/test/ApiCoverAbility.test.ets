@@ -24,9 +24,9 @@ import appManager from '@ohos.application.appManager'
 import applicationContext from '@ohos.application.context'
 import commonEvent from '@ohos.commonEvent';
 import ability from '@ohos.ability.ability'
-FormDimension
-var EXTENSION_INFO_ERR = 2097152
-var USERID_ERR = 2097177
+
+var EXTENSION_INFO_ERR = 16000001
+var CROSS_USER_DENY = 201
 var trueInfo;
 var array = new Array();
 function sleep(time) {
@@ -102,7 +102,7 @@ export default function ApiCoverTest() {
         expect("case execute failed").assertEqual("data");
       }).catch((error) => {
         console.error(`Ability: startServiceExtensionAbilityWithAccount failed: ${JSON.stringify(error)}`);
-        expect(USERID_ERR).assertEqual(error.code);
+        expect(CROSS_USER_DENY).assertEqual(error.code);
       })
       done()
     })
@@ -124,7 +124,7 @@ export default function ApiCoverTest() {
         expect("case execute failed").assertEqual(data);
       }).catch((error) => {
         console.error(`Ability: stopServiceExtensionAbilityWithAccount failed: ${JSON.stringify(error)}`);
-        expect(USERID_ERR).assertEqual(error.code);
+        expect(CROSS_USER_DENY).assertEqual(error.code);
       })
       done()
     })
@@ -193,7 +193,7 @@ export default function ApiCoverTest() {
       await globalThis.abilityContext.startServiceExtensionAbilityWithAccount(want, 999, (err, data) => {
         if (err.code) {
           console.error(`Ability: startServiceExtensionAbilityWithAccount failed: ${JSON.stringify(err)}`);
-          expect(USERID_ERR).assertEqual(err.code);
+          expect(CROSS_USER_DENY).assertEqual(err.code);
         } else {
           console.log(`Ability: startServiceExtensionAbilityWithAccount success: ${JSON.stringify(data)}`);
           expect("case execute failed").assertEqual(data);
@@ -217,7 +217,7 @@ export default function ApiCoverTest() {
       globalThis.abilityContext.stopServiceExtensionAbilityWithAccount(want, 999, (err, data) => {
         if (err.code) {
           console.error(`Ability: stopServiceExtensionAbilityWithAccount failed: ${JSON.stringify(err)}`);
-          expect(USERID_ERR).assertEqual(err.code);
+          expect(CROSS_USER_DENY).assertEqual(err.code);
         } else {
           console.log(`Ability: stopServiceExtensionAbilityWithAccount success: ${JSON.stringify(data)}`);
           expect("case execute failed").assertEqual(data);
