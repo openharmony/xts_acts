@@ -21,8 +21,7 @@ var abilityDelegatorArguments = undefined
 function translateParamsToString(parameters) {
     const keySet = new Set([
         '-s class', '-s notClass', '-s suite', '-s it',
-        '-s level', '-s testType', '-s size', '-s timeout',
-        '-s dryRun'
+        '-s level', '-s testType', '-s size', '-s timeout'
     ])
     let targetParams = '';
     for (const key in parameters) {
@@ -53,19 +52,14 @@ export default class OpenHarmonyTestRunner implements TestRunner {
         console.log('OpenHarmonyTestRunner onRun run')
         abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
         abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-        var testAbilityName = abilityDelegatorArguments.bundleName + '.MainAbility'
+        var testAbilityName = abilityDelegatorArguments.bundleName + '.TestAbility'
         let lMonitor = {
             abilityName: testAbilityName,
             onAbilityCreate: onAbilityCreateCallback,
         };
         abilityDelegator.addAbilityMonitor(lMonitor, addAbilityMonitorCallback)
-        var cmd = 'aa start -d 0 -a com.example.accessibilityxts.MainAbility' + ' -b ' + abilityDelegatorArguments.bundleName
+        var cmd = 'aa start -d 0 -a TestAbility' + ' -b ' + abilityDelegatorArguments.bundleName
         cmd += ' '+translateParamsToString(abilityDelegatorArguments.parameters)
-        var debug = abilityDelegatorArguments.parameters["-D"]
-        if (debug == 'true')
-        {
-            cmd += ' -D'
-        }
         console.info('cmd : '+cmd)
         abilityDelegator.executeShellCommand(cmd,
             (err: any, d: any) => {
