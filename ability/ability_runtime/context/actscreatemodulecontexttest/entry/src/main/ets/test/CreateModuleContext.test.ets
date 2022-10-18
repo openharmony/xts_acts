@@ -30,6 +30,8 @@ export default function actsCreateModuleContextTest() {
     it("SUB_AA_CreateModuleContext_0100", 0, async function (done) {
       console.info("SUB_AA_AbilityStage_0100 begin");
 
+      createModuleContext = null;
+
       createModuleContext =
         globalThis.abilityContext.createModuleContext("entry_test");
 
@@ -47,7 +49,9 @@ export default function actsCreateModuleContextTest() {
      * @tc.level: 3
      */
     it("SUB_AA_CreateModuleContext_0200", 0, async function (done) {
-      console.log("SUB_AA_AbilityStage_0100 begin");
+      console.log("SUB_AA_CreateModuleContext_0200 begin");
+
+      createModuleContext = null;
 
       createModuleContext =
         globalThis.abilityContext.createModuleContext("feature");
@@ -68,10 +72,19 @@ export default function actsCreateModuleContextTest() {
     it("SUB_AA_CreateModuleContext_0300", 0, async function (done) {
       console.info("SUB_AA_CreateModuleContext_0300 begin");
 
-      createModuleContext =
-        globalThis.abilityContext.createModuleContext("entry_assist");
+      createModuleContext = null;
 
-      expect(createModuleContext).assertUndefined();
+      try {
+        createModuleContext =
+          globalThis.abilityContext.createModuleContext("entry_assist");
+      } catch (err) {
+        let e = err.toString();
+        let errLog = "Invalid input parameter"
+        console.debug("====>e====>" + e);
+        expect(e.indexOf(errLog) >= 0).assertTrue();
+      }
+
+      expect(createModuleContext).assertEqual(null);
       done();
     });
 
@@ -84,10 +97,19 @@ export default function actsCreateModuleContextTest() {
     it("SUB_AA_CreateModuleContext_0400", 0, async function (done) {
       console.info("SUB_AA_CreateModuleContext_0400 begin");
 
-      createModuleContext =
-        globalThis.abilityContext.createModuleContext("abc");
+      createModuleContext = null;
 
-      expect(createModuleContext).assertUndefined();
+      try {
+        createModuleContext =
+          globalThis.abilityContext.createModuleContext("abc");
+      } catch (err) {
+        let e = err.toString();
+        let errLog = "Invalid input parameter"
+        console.debug("====>e====>" + e);
+        expect(e.indexOf(errLog) >= 0).assertTrue();
+      }
+
+      expect(createModuleContext).assertEqual(null);
       done();
     });
 
@@ -100,10 +122,20 @@ export default function actsCreateModuleContextTest() {
     it("SUB_AA_CreateModuleContext_0500", 0, async function (done) {
       console.info("SUB_AA_CreateModuleContext_0500 begin");
 
-      createModuleContext =
-        globalThis.abilityContext.createModuleContext(undefined);
+      createModuleContext = null;
 
-      expect(createModuleContext).assertUndefined();
+      try {
+        createModuleContext =
+          globalThis.abilityContext.createModuleContext(undefined);
+      } catch (err) {
+        let e = err.toString();
+        let errLog = "Invalid input parameter"
+        console.info("SUB_AA_CreateModuleContext_0500 createModuleContext is " + JSON.stringify(createModuleContext));
+        console.debug("====>e====>" + e);
+        expect(e.indexOf(errLog) >= 0).assertTrue();
+      }
+
+      expect(createModuleContext).assertEqual(null);
       done();
     });
 
@@ -116,6 +148,8 @@ export default function actsCreateModuleContextTest() {
      */
     it("SUB_AA_CreateModuleContext_0600", 0, async function (done) {
       console.info("SUB_AA_CreateModuleContext_0600 begin");
+
+      createModuleContext = null;
 
       createModuleContext =
         globalThis.abilityStageContext.createModuleContext("entry_test");
@@ -136,6 +170,8 @@ export default function actsCreateModuleContextTest() {
     it("SUB_AA_CreateModuleContext_0700", 0, async function (done) {
       console.info("SUB_AA_CreateModuleContext_0700 begin");
 
+      createModuleContext = null;
+
       createModuleContext =
         globalThis.abilityStageContext.createModuleContext("feature");
 
@@ -155,10 +191,19 @@ export default function actsCreateModuleContextTest() {
     it("SUB_AA_CreateModuleContext_0800", 0, async function (done) {
       console.info("SUB_AA_CreateModuleContext_0800 begin");
 
-      createModuleContext =
-        globalThis.abilityContext.createModuleContext("entry_assist");
+      createModuleContext = null;
 
-      expect(createModuleContext).assertUndefined();
+      try {
+        createModuleContext =
+          globalThis.abilityContext.createModuleContext("entry_assist");
+      } catch (err) {
+        let e = err.toString();
+        let errLog = "Invalid input parameter"
+        console.debug("====>e====>" + e);
+        expect(e.indexOf(errLog) >= 0).assertTrue();
+      }
+
+      expect(createModuleContext).assertEqual(null);
       done();
     });
 
@@ -171,10 +216,19 @@ export default function actsCreateModuleContextTest() {
     it("SUB_AA_CreateModuleContext_0900", 0, async function (done) {
       console.info("SUB_AA_CreateModuleContext_0900 begin");
 
-      createModuleContext =
-        globalThis.abilityContext.createModuleContext("createmodue");
+      createModuleContext = null;
 
-      expect(createModuleContext).assertUndefined();
+      try {
+        createModuleContext =
+          globalThis.abilityContext.createModuleContext("createmodue");
+      } catch (err) {
+        let e = err.toString();
+        let errLog = "Invalid input parameter"
+        console.debug("====>e====>" + e);
+        expect(e.indexOf(errLog) >= 0).assertTrue();
+      }
+
+      expect(createModuleContext).assertEqual(null);
       done();
     });
 
@@ -187,10 +241,20 @@ export default function actsCreateModuleContextTest() {
     it("SUB_AA_CreateModuleContext_1000", 0, async function (done) {
       console.info("SUB_AA_CreateModuleContext_1000 begin");
 
-      createModuleContext =
-        globalThis.abilityStageContext.createModuleContext(undefined);
+      createModuleContext = null;
 
-      expect(createModuleContext).assertUndefined();
+      try {
+        createModuleContext =
+          globalThis.abilityStageContext.createModuleContext(undefined);
+      } catch (err) {
+        let e = err.toString();
+        let errLog = "Invalid input parameter"
+        console.info("SUB_AA_CreateModuleContext_1000 createModuleContext is " + JSON.stringify(createModuleContext));
+        console.debug("====>e====>" + e);
+        expect(e.indexOf(errLog) >= 0).assertTrue();
+      }
+
+      expect(createModuleContext).assertEqual(null);
       done();
     });
   });
