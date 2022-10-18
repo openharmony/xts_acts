@@ -16,6 +16,7 @@
 #include "gtest/gtest.h"
 #include "audio_info.h"
 #include "av_common.h"
+#include "native_avcodec_base.h"
 #include "avcodec_video_encoder.h"
 #include "avcodec_video_decoder.h"
 #include "native_avmemory.h"
@@ -196,7 +197,12 @@ void VDecEncNdkSample::ResetEncParam()
 
 struct OH_AVCodec* VDecEncNdkSample::CreateVideoDecoderByMime(std::string mimetype)
 {
-    vdec_ = OH_VideoDecoder_CreateByMime(mimetype.c_str());
+    if (mimetype == "video/avc") {
+        cout << "mimetype == 'video/avc'" << endl;
+        vdec_ = OH_VideoDecoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_AVC);
+    } else {
+        vdec_ = OH_VideoDecoder_CreateByMime(mimetype.c_str());
+    }
     NDK_CHECK_AND_RETURN_RET_LOG(vdec_ != nullptr, nullptr, "Fatal: OH_VideoDecoder_CreateByMime");
     if (vcodecSignal_ == nullptr) {
         vcodecSignal_ = new VDecEncSignal();
@@ -231,6 +237,11 @@ struct OH_AVCodec* VDecEncNdkSample::CreateVideoDecoderByName(std::string name)
 int32_t VDecEncNdkSample::ConfigureDec(struct OH_AVFormat *format)
 {
     return OH_VideoDecoder_Configure(vdec_, format);
+}
+
+int32_t VDecEncNdkSample::SetParameterDec(struct OH_AVFormat *format)
+{
+    return OH_VideoDecoder_SetParameter(vdec_, format);
 }
 
 int32_t VDecEncNdkSample::PrepareDec()
@@ -485,7 +496,12 @@ void VDecEncNdkSample::OutputFuncDec()
         uint32_t index = vcodecSignal_->outQueueDec_.front();
         uint32_t outflag = vcodecSignal_->flagQueueDec_.front();
         if (outflag == 0) {
-            uint32_t ret = OH_VideoDecoder_RenderOutputData(vdec_, index);
+            uint32_t ret;
+            if (needRender) {
+                ret = OH_VideoDecoder_RenderOutputData(vdec_, index);
+            } else {
+                ret = OH_VideoDecoder_FreeOutputData(vdec_, index);
+            }
             if (ret == 0) {
                 decOutCnt_ += 1;
                 cout << "DEC OUT.: render output success, decOutCnt_ is " << decOutCnt_ << endl;
@@ -505,7 +521,11 @@ void VDecEncNdkSample::OutputFuncDec()
 
 struct OH_AVCodec* VDecEncNdkSample::CreateVideoEncoderByMime(std::string mimetype)
 {
-    venc_ = OH_VideoEncoder_CreateByMime(mimetype.c_str());
+    if (mimetype == "video/avc") {
+        venc_ = OH_VideoEncoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_AVC);
+    } else {
+        venc_ = OH_VideoEncoder_CreateByMime(mimetype.c_str());
+    }
     NDK_CHECK_AND_RETURN_RET_LOG(venc_ != nullptr, nullptr, "Fatal: OH_VideoEncoder_CreateByMime");
     
     if (vcodecSignal_ == nullptr) {
@@ -540,6 +560,11 @@ struct OH_AVCodec* VDecEncNdkSample::CreateVideoEncoderByName(std::string name)
 int32_t VDecEncNdkSample::ConfigureEnc(struct OH_AVFormat *format)
 {
     return OH_VideoEncoder_Configure(venc_, format);
+}
+
+int32_t VDecEncNdkSample::SetParameterEnc(struct OH_AVFormat *format)
+{
+    return OH_VideoEncoder_SetParameter(venc_, format);
 }
 
 struct VEncObject : public OH_AVCodec {

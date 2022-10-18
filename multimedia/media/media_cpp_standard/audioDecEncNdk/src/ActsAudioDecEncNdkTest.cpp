@@ -48,8 +48,11 @@ uint32_t ES_AAC_48000_32_1[] = {
     381, 375, 373, 349, 391, 357, 384, 395, 384, 380, 386, 372, 386, 383, 378, 385, 385, 
     384, 342, 390, 379, 387, 386, 393, 397, 362, 393, 394, 391, 383, 385, 377, 379, 381, 
     369, 375, 379, 346, 382, 356, 361, 366, 394, 393, 385, 362, 406, 399, 384, 377, 385};
+
 constexpr uint32_t ES_AAC_48000_32_1_Length = sizeof(ES_AAC_48000_32_1) / sizeof(uint32_t);
 const string MIME_TYPE_AAC = "audio/mp4a-latm";
+const string DECODER_AAC = "avdec_aac";
+const string ENCODER_AAC = "avenc_aac";
 constexpr uint32_t DEFAULT_SAMPLE_RATE = 44100;
 constexpr uint32_t DEFAULT_CHANNELS = 2;
 const char* READPATH = "/data/media/AAC_48000_32_1.aac";
@@ -107,8 +110,9 @@ HWTEST_F(ActsAudioDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_AUDIO_DEC_ENC_FUNCTION_010
     OH_AVFormat *AudioFormat = OH_AVFormat_Create();
     ASSERT_NE(nullptr, AudioFormat);
     ASSERT_EQ(true, SetFormat(AudioFormat, AudioParam));
+    OH_AVFormat_SetStringValue(AudioFormat, OH_MD_KEY_CODEC_MIME, OH_AVCODEC_MIMETYPE_AUDIO_AAC);
 
-    struct OH_AVCodec* audDec = aDecEncSample->CreateAudioDecoder(MIME_TYPE_AAC);
+    struct OH_AVCodec* audDec = aDecEncSample->CreateAudioDecoderByName(DECODER_AAC);
     ASSERT_NE(nullptr, audDec);
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->ConfigureDec(AudioFormat));
     OH_AVFormat *OutDescDec = OH_AudioDecoder_GetOutputDescription(audDec);
@@ -116,7 +120,7 @@ HWTEST_F(ActsAudioDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_AUDIO_DEC_ENC_FUNCTION_010
     ASSERT_EQ(true, CheckDecDesc(AudioParam, OutDescDec));
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->PrepareDec());
 
-    struct OH_AVCodec* audEnc = aDecEncSample->CreateAudioEncoder(MIME_TYPE_AAC);
+    struct OH_AVCodec* audEnc = aDecEncSample->CreateAudioEncoderByName(ENCODER_AAC);
     ASSERT_NE(nullptr, audEnc);
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->ConfigureEnc(AudioFormat));
     OH_AVFormat *OutDescEnc = OH_AudioEncoder_GetOutputDescription(audEnc);
@@ -127,7 +131,9 @@ HWTEST_F(ActsAudioDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_AUDIO_DEC_ENC_FUNCTION_010
     aDecEncSample->SetReadPath(READPATH, ES_AAC_48000_32_1, ES_AAC_48000_32_1_Length);
     aDecEncSample->SetSavePath("/data/media/AAC_48000_32_1_out1.aac");
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->StartEnc());
+    ASSERT_EQ(AV_ERR_OK, aDecEncSample->SetParameterEnc(AudioFormat));
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->StartDec());
+    ASSERT_EQ(AV_ERR_OK, aDecEncSample->SetParameterDec(AudioFormat));
 
     while (!aDecEncSample->GetEncEosState()) {};
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->StopDec());
@@ -150,17 +156,19 @@ HWTEST_F(ActsAudioDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_AUDIO_DEC_ENC_FUNCTION_020
 {
     ADecEncNdkSample *aDecEncSample = new ADecEncNdkSample();
 
-    struct OH_AVCodec* audDec = aDecEncSample->CreateAudioDecoder(MIME_TYPE_AAC);
+    struct OH_AVCodec* audDec = aDecEncSample->CreateAudioDecoderByMime(MIME_TYPE_AAC);
     ASSERT_NE(nullptr, audDec);
     OH_AVFormat *AudioFormat = OH_AVFormat_Create();
     ASSERT_NE(nullptr, AudioFormat);
     OH_AVFormat_SetIntValue(AudioFormat, OH_MD_KEY_AUD_CHANNEL_COUNT, DEFAULT_CHANNELS);
     OH_AVFormat_SetIntValue(AudioFormat, OH_MD_KEY_AUD_SAMPLE_RATE, DEFAULT_SAMPLE_RATE);
     OH_AVFormat_SetIntValue(AudioFormat, OH_MD_KEY_AUDIO_SAMPLE_FORMAT, AudioStandard::SAMPLE_S16LE);
+    OH_AVFormat_SetIntValue(AudioFormat, OH_MD_KEY_TRACK_TYPE, MEDIA_TYPE_AUD);
+
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->ConfigureDec(AudioFormat));
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->PrepareDec());
 
-    struct OH_AVCodec* audEnc = aDecEncSample->CreateAudioEncoder(MIME_TYPE_AAC);
+    struct OH_AVCodec* audEnc = aDecEncSample->CreateAudioEncoderByMime(MIME_TYPE_AAC);
     ASSERT_NE(nullptr, audEnc);
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->ConfigureEnc(AudioFormat));
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->PrepareEnc());
@@ -190,17 +198,19 @@ HWTEST_F(ActsAudioDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_AUDIO_DEC_ENC_FUNCTION_030
 {
     ADecEncNdkSample *aDecEncSample = new ADecEncNdkSample();
 
-    struct OH_AVCodec* audDec = aDecEncSample->CreateAudioDecoder(MIME_TYPE_AAC);
+    struct OH_AVCodec* audDec = aDecEncSample->CreateAudioDecoderByMime(MIME_TYPE_AAC);
     ASSERT_NE(nullptr, audDec);
     OH_AVFormat *AudioFormat = OH_AVFormat_Create();
     ASSERT_NE(nullptr, AudioFormat);
     OH_AVFormat_SetIntValue(AudioFormat, OH_MD_KEY_AUD_CHANNEL_COUNT, DEFAULT_CHANNELS);
     OH_AVFormat_SetIntValue(AudioFormat, OH_MD_KEY_AUD_SAMPLE_RATE, DEFAULT_SAMPLE_RATE);
     OH_AVFormat_SetIntValue(AudioFormat, OH_MD_KEY_AUDIO_SAMPLE_FORMAT, AudioStandard::SAMPLE_S16LE);
+    OH_AVFormat_SetIntValue(AudioFormat, OH_MD_KEY_PROFILE, AAC_PROFILE_LC);
+
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->ConfigureDec(AudioFormat));
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->PrepareDec());
 
-    struct OH_AVCodec* audEnc = aDecEncSample->CreateAudioEncoder(MIME_TYPE_AAC);
+    struct OH_AVCodec* audEnc = aDecEncSample->CreateAudioEncoderByMime(MIME_TYPE_AAC);
     ASSERT_NE(nullptr, audEnc);
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->ConfigureEnc(AudioFormat));
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->PrepareEnc());
@@ -228,7 +238,7 @@ HWTEST_F(ActsAudioDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_AUDIO_DEC_ENC_FUNCTION_040
 {
     ADecEncNdkSample *aDecEncSample = new ADecEncNdkSample();
 
-    struct OH_AVCodec* audDec = aDecEncSample->CreateAudioDecoder(MIME_TYPE_AAC);
+    struct OH_AVCodec* audDec = aDecEncSample->CreateAudioDecoderByMime(MIME_TYPE_AAC);
     ASSERT_NE(nullptr, audDec);
     OH_AVFormat *AudioFormat = OH_AVFormat_Create();
     ASSERT_NE(nullptr, AudioFormat);
@@ -238,7 +248,7 @@ HWTEST_F(ActsAudioDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_AUDIO_DEC_ENC_FUNCTION_040
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->ConfigureDec(AudioFormat));
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->PrepareDec());
 
-    struct OH_AVCodec* audEnc = aDecEncSample->CreateAudioEncoder(MIME_TYPE_AAC);
+    struct OH_AVCodec* audEnc = aDecEncSample->CreateAudioEncoderByMime(MIME_TYPE_AAC);
     ASSERT_NE(nullptr, audEnc);
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->ConfigureEnc(AudioFormat));
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->PrepareEnc());
@@ -248,7 +258,7 @@ HWTEST_F(ActsAudioDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_AUDIO_DEC_ENC_FUNCTION_040
 
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->StartEnc());
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->StartDec());
-    while (aDecEncSample->GetFrameCount() < 50) {};
+    while (aDecEncSample->GetFrameCount() < 350) {};
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->FlushDec());
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->FlushEnc());
     aDecEncSample->ReRead();
@@ -278,7 +288,7 @@ HWTEST_F(ActsAudioDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_AUDIO_DEC_ENC_FUNCTION_050
 {
     ADecEncNdkSample *aDecEncSample = new ADecEncNdkSample();
 
-    struct OH_AVCodec* audDec = aDecEncSample->CreateAudioDecoder(MIME_TYPE_AAC);
+    struct OH_AVCodec* audDec = aDecEncSample->CreateAudioDecoderByMime(MIME_TYPE_AAC);
     ASSERT_NE(nullptr, audDec);
     OH_AVFormat *AudioFormat = OH_AVFormat_Create();
     ASSERT_NE(nullptr, AudioFormat);
@@ -288,7 +298,7 @@ HWTEST_F(ActsAudioDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_AUDIO_DEC_ENC_FUNCTION_050
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->ConfigureDec(AudioFormat));
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->PrepareDec());
 
-    struct OH_AVCodec* audEnc = aDecEncSample->CreateAudioEncoder(MIME_TYPE_AAC);
+    struct OH_AVCodec* audEnc = aDecEncSample->CreateAudioEncoderByMime(MIME_TYPE_AAC);
     ASSERT_NE(nullptr, audEnc);
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->ConfigureEnc(AudioFormat));
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->PrepareEnc());
@@ -310,8 +320,6 @@ HWTEST_F(ActsAudioDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_AUDIO_DEC_ENC_FUNCTION_050
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->StartEnc());
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->StartDec());
     aDecEncSample->SetEosState(true);
-    sleep(2);
-    ASSERT_EQ(AV_ERR_OK, aDecEncSample->CalcuError());
 
     while (!aDecEncSample->GetEncEosState()) {};
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->ReleaseDec());
@@ -333,7 +341,7 @@ HWTEST_F(ActsAudioDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_AUDIO_DEC_ENC_FUNCTION_060
 {
     ADecEncNdkSample *aDecEncSample = new ADecEncNdkSample();
 
-    struct OH_AVCodec* audDec = aDecEncSample->CreateAudioDecoder(MIME_TYPE_AAC);
+    struct OH_AVCodec* audDec = aDecEncSample->CreateAudioDecoderByMime(MIME_TYPE_AAC);
     ASSERT_NE(nullptr, audDec);
     OH_AVFormat *AudioFormat = OH_AVFormat_Create();
     ASSERT_NE(nullptr, AudioFormat);
@@ -343,7 +351,7 @@ HWTEST_F(ActsAudioDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_AUDIO_DEC_ENC_FUNCTION_060
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->ConfigureDec(AudioFormat));
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->PrepareDec());
 
-    struct OH_AVCodec* audEnc = aDecEncSample->CreateAudioEncoder(MIME_TYPE_AAC);
+    struct OH_AVCodec* audEnc = aDecEncSample->CreateAudioEncoderByMime(MIME_TYPE_AAC);
     ASSERT_NE(nullptr, audEnc);
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->ConfigureEnc(AudioFormat));
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->PrepareEnc());
@@ -353,7 +361,7 @@ HWTEST_F(ActsAudioDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_AUDIO_DEC_ENC_FUNCTION_060
 
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->StartEnc());
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->StartDec());
-    while (aDecEncSample->GetFrameCount() < 50) {};
+    while (aDecEncSample->GetFrameCount() < 350) {};
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->StopDec());
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->StopEnc());
     aDecEncSample->ReRead();
@@ -385,7 +393,7 @@ HWTEST_F(ActsAudioDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_AUDIO_DEC_ENC_FUNCTION_070
 {
     ADecEncNdkSample *aDecEncSample = new ADecEncNdkSample();
 
-    struct OH_AVCodec* audDec = aDecEncSample->CreateAudioDecoder(MIME_TYPE_AAC);
+    struct OH_AVCodec* audDec = aDecEncSample->CreateAudioDecoderByMime(MIME_TYPE_AAC);
     ASSERT_NE(nullptr, audDec);
     OH_AVFormat *AudioFormat = OH_AVFormat_Create();
     ASSERT_NE(nullptr, AudioFormat);
@@ -395,7 +403,7 @@ HWTEST_F(ActsAudioDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_AUDIO_DEC_ENC_FUNCTION_070
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->ConfigureDec(AudioFormat));
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->PrepareDec());
 
-    struct OH_AVCodec* audEnc = aDecEncSample->CreateAudioEncoder(MIME_TYPE_AAC);
+    struct OH_AVCodec* audEnc = aDecEncSample->CreateAudioEncoderByMime(MIME_TYPE_AAC);
     ASSERT_NE(nullptr, audEnc);
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->ConfigureEnc(AudioFormat));
     ASSERT_EQ(AV_ERR_OK, aDecEncSample->PrepareEnc());
