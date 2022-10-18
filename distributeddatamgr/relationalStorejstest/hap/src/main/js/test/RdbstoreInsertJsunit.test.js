@@ -663,7 +663,7 @@ describe('rdbstoreInsertTest', function () {
             "blobType": u8,
         }
         const valueBuckets = [valueBucket1, valueBucket2, valueBucket3]
-        await rdbStore.executeSql(CREATE_TABLE_NAME + "callback1" + CREATE_TABLE).then(async() => {
+        await rdbStore.executeSql(CREATE_TABLE_NAME + "callback1" + CREATE_TABLE).then(async () => {
             console.info(TAG + "Batch insert data start")
             await rdbStore.batchInsert("testcallback1", valueBuckets, async (err, data) => {
                 if(err != null){
@@ -715,6 +715,7 @@ describe('rdbstoreInsertTest', function () {
                         console.info("BatchInsert1 error " + e);
                     }
                 }
+                done();
             })
             resultSet = null
         })
@@ -783,6 +784,7 @@ describe('rdbstoreInsertTest', function () {
                         console.info("BatchInsert2 error " + e);
                     }
                 }
+                done();
             })
         })
         
@@ -889,6 +891,7 @@ describe('rdbstoreInsertTest', function () {
                         console.info("BatchInsert1 error " + e);
                     }
                 }
+                done();
             })
         })
         resultSet = null
@@ -943,6 +946,7 @@ describe('rdbstoreInsertTest', function () {
                         console.info("BatchInsert1 error " + e);
                     }
                 }
+                done();
             })
         })
         resultSet = null;
@@ -1005,6 +1009,7 @@ describe('rdbstoreInsertTest', function () {
                         console.info("BatchInsert1 error " + e);
                     }
                 }
+                done();
             })
         })
         resultSet = null;
