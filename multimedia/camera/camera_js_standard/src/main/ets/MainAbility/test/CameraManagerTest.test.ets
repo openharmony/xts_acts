@@ -346,7 +346,7 @@ describe('CameraManagerTest', function () {
     it('SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_CALLBACK_0100', 2, async function (done) {
         console.info("--------------SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_CALLBACK_0100--------------");
         if (isEmpty(mCameraManager)) {
-            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_CALLBACK_0100 cameraManager == null || undefined")
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_CAMERAS_PROMISE_0100 cameraManager == null || undefined")
             expect().assertFail();
         }
         mCameraManager.getSupportedCameras(async (err, data) => {
