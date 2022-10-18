@@ -38,6 +38,27 @@ describe('AccessibleSendEvent', function () {
     /******************************************************************************** */
 
     /*
+    * @tc.number  SendEvent_null_0010
+    * @tc.name    SendEvent_null_0010
+    * @tc.desc    The parameter input is null, test the sendEvent() function
+    *             The result of sendEvent() should be equal to an error code with error
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+    it('SendEvent_null_0010', 0, async function (done) {
+        console.info('SendEvent_null_0010');
+        let event = null;
+
+        accessibility.sendEvent(event, (err, data) => {
+            console.info(`AccessibleSendEvent: SendEvent_null_0010 has error: ${err.code}`);
+            expect(err.code).assertEqual(-1);
+            console.info(`AccessibleSendEvent: SendEvent_null_0010 has data: ${data}`);
+            expect(data).assertEqual(undefined);
+            done();
+        })
+    })
+
+    /*
     * @tc.number  SendEvent_null_0020
     * @tc.name    SendEvent_null_0020
     * @tc.desc    The parameter input is null, test the sendEvent() function
@@ -55,9 +76,38 @@ describe('AccessibleSendEvent', function () {
             done();
         }).catch((err) => {
             console.info(`AccessibleSendEvent: SendEvent_null_0020 has error: ${err}`);
-            expect(true).assertTrue();
+            expect(err).assertEqual(undefined);
             done();
         });
+    })
+
+      /*
+    * @tc.number  SendEvent_construct_0010
+    * @tc.name    SendEvent_construct_0010
+    * @tc.desc    The parameter input is EventInfo, test the sendEvent() function
+    *             The result of sendEvent() should be equal to an error code with no error.
+    *             Another test point is to test whether the modified constructor (EventInfo)
+    *             works correctly.
+    * @tc.size    SmallTest
+    * @tc.type    User
+    */
+    it('SendEvent_construct_0010', 0, async function (done) {
+      console.info('SendEvent_construct_0010');
+      let jsonObj = {
+        type : eventType,
+        bundleName : bundleName,
+        triggerAction : triggerAction,
+      }
+
+      let event = new accessibility.EventInfo(jsonObj);
+
+      accessibility.sendEvent(event, (err, data) => {
+          console.info(`AccessibleSendEventTest: SendEvent_construct_0010 has error: ${err.code}`);
+          expect(err.code).assertEqual(0);
+          console.info(`AccessibleSendEventTest: SendEvent_construct_0010 has data: ${data}`);
+          expect(data).assertEqual(undefined);
+          done();
+      })
     })
 
     /*********************************************************************************************************** */
@@ -424,7 +474,7 @@ describe('AccessibleSendEvent', function () {
         done();
     }).catch((err) => {
         console.info(`AccessibleSendEvent: SendEvent_type_constructor_0120 has error: ${err}`);
-        expect(true).assertTrue();
+        expect(err).assertEqual(undefined);
         done();
     });
   })
@@ -458,7 +508,7 @@ describe('AccessibleSendEvent', function () {
         done();
     }).catch((err) => {
         console.info(`AccessibleSendEvent: SendEvent_type_constructor_0130 has error: ${err}`);
-        expect(true).assertTrue();
+        expect(err).assertEqual(undefined);
         done();
     });
   })
@@ -622,7 +672,7 @@ describe('AccessibleSendEvent', function () {
         done();
     }).catch((err) => {
         console.info(`AccessibleSendEvent: SendEvent_bundleName_constructor_0020 has error: ${err}`);
-        expect(true).assertTrue();
+        expect(err).assertEqual(undefined);
         done();
     });
   })
@@ -655,7 +705,7 @@ describe('AccessibleSendEvent', function () {
         done();
     }).catch((err) => {
         console.info(`AccessibleSendEvent: SendEvent_bundleName_constructor_0030 has error: ${err}`);
-        expect(true).assertTrue();
+        expect(err).assertEqual(undefined);
         done();
     });
   })
@@ -1495,7 +1545,7 @@ describe('AccessibleSendEvent', function () {
         done();
     }).catch((err) => {
         console.info(`AccessibleSendEvent: SendEvent_triggerAction_constructor_0170 has error: ${err}`);
-        expect(true).assertTrue();
+        expect(err).assertEqual(undefined);
         done();
     });
   })
@@ -1528,7 +1578,7 @@ describe('AccessibleSendEvent', function () {
         done();
     }).catch((err) => {
         console.info(`AccessibleSendEvent: SendEvent_triggerAction_constructor_0180 has error: ${err}`);
-        expect(true).assertTrue();
+        expect(err).assertEqual(undefined);
         done();
     });
   })

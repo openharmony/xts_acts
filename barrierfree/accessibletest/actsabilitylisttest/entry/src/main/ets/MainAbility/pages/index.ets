@@ -61,7 +61,7 @@ struct Index {
           .margin(5)
           .onClick((e) => {
             accessibility.getAbilityLists('all', 'enable', (err, data) => {
-              if (err && err.code != 0) {
+              if (err.code != 0) {
                 console.error(LOG_PREFIX + 'failed to getAbilityLists because ' + JSON.stringify(err))
                 return
               }
