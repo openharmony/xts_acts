@@ -1097,7 +1097,7 @@ describe('XmlSerializerXmlPullParserTest', function () {
             '        </h:tr>' +
             '    </h:table>' +
             '</note>';
-        var arrayBuffer = new ArrayBuffer(strXml.length*2);
+        var arrayBuffer = new ArrayBuffer(strXml.length);
         var bufView = new Uint8Array(arrayBuffer);
         var strLen = strXml.length;
         for (var i = 0; i < strLen; ++i) {
@@ -1166,7 +1166,7 @@ describe('XmlSerializerXmlPullParserTest', function () {
             '        </h:tr>' +
             '    </h:table>' +
             '</note>';
-        var arrayBuffer = new ArrayBuffer(strXml.length*2);
+        var arrayBuffer = new ArrayBuffer(strXml.length);
         var bufView = new Uint8Array(arrayBuffer);
         var strLen = strXml.length;
         for (var i = 0; i < strLen; ++i) {
@@ -1232,7 +1232,7 @@ describe('XmlSerializerXmlPullParserTest', function () {
             '        </h:tr>' +
             '    </h:table>' +
             '</note>';
-        var arrayBuffer = new ArrayBuffer(strXml.length*2);
+        var arrayBuffer = new ArrayBuffer(strXml.length);
         var bufView = new Uint8Array(arrayBuffer);
         var strLen = strXml.length;
         for (var i = 0; i < strLen; ++i) {
@@ -1299,7 +1299,7 @@ describe('XmlSerializerXmlPullParserTest', function () {
             '        </h:tr>' +
             '    </h:table>' +
             '</note>';
-        var arrayBuffer = new ArrayBuffer(strXml.length*2);
+        var arrayBuffer = new ArrayBuffer(strXml.length);
         var bufView = new Uint8Array(arrayBuffer);
         var strLen = strXml.length;
         for (var i = 0; i < strLen; ++i) {
@@ -1343,7 +1343,7 @@ describe('XmlSerializerXmlPullParserTest', function () {
             '        </h:tr>' +
             '    </h:table>' +
             '</note>';
-        var arrayBuffer = new ArrayBuffer(strXml.length*2);
+        var arrayBuffer = new ArrayBuffer(strXml.length);
         var bufView = new Uint8Array(arrayBuffer);
         var strLen = strXml.length;
         for (var i = 0; i < strLen; ++i) {
