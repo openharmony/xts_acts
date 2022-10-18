@@ -46,7 +46,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       'TYPE_VOLUME_OVERLAY': 6,
       'TYPE_NAVIGATION_BAR': 7,
       'TYPE_FLOAT': 8,
-      'TYPE_FLOAT_CAMERA':9
+      'TYPE_FLOAT_CAMERA': 9
     }
     var windowLayoutModeArr = [];
     var windowLayoutModeDic = {
@@ -1153,11 +1153,17 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       let caseName = 'loadContentTest4';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let load4 = await windowStage.loadContent(null).catch((err) => {
-        expectedError(err, caseName, 'tempWnd.loadContent', done, 1003);
-        console.log(msgStr + 'tempWnd.loadContent(pages/index/index.ets)' + JSON.stringify(err));
-      });
-      console.log(msgStr + 'tempWnd.loadContent end load5=' + JSON.stringify(load4));
+      try {
+        let load4 = await windowStage.loadContent(null).catch((err) => {
+          expect(false).assertTrue();
+          console.log(msgStr + 'tempWnd.loadContent(pages/index/index.ets)' + JSON.stringify(err));
+        });
+        console.log(msgStr + 'tempWnd.loadContent end load5=' + JSON.stringify(load4));
+      }
+      catch (err) {
+        console.log(msgStr + 'tempWnd.loadContent catch err=' + JSON.stringify(err));
+        expectedError(err.code, caseName, 'tempWnd.loadContent', done, 401);
+      }
       done();
     })
     /**
@@ -1169,11 +1175,17 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       let caseName = 'loadContentTest5';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let load5 = await windowStage.loadContent(null, abilityStorage).catch((err) => {
-        expectedError(err, caseName, 'tempWnd.loadContent', done, 1003);
-        console.log(msgStr + 'tempWnd.loadContent(pages/index/index.ets)' + JSON.stringify(err));
-      });
-      console.log(msgStr + 'tempWnd.loadContent end load5=' + JSON.stringify(load5));
+      try {
+        let load5 = await windowStage.loadContent(null, abilityStorage).catch((err) => {
+          expect(false).assertTrue();
+          console.log(msgStr + 'tempWnd.loadContent(pages/index/index.ets)' + JSON.stringify(err));
+        });
+        console.log(msgStr + 'tempWnd.loadContent end load5=' + JSON.stringify(load5));
+      }
+      catch (err) {
+        console.log(msgStr + 'tempWnd.loadContent catch err=' + JSON.stringify(err));
+        expectedError(err.code, caseName, 'tempWnd.loadContent', done, 401);
+      }
       done();
     })
     /**
@@ -1219,12 +1231,18 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       let caseName = 'createSubWindowTest2';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let subWindow = await windowStage.createSubWindow(null).catch((err) => {
-        expectedError(err, caseName, 'windowStage.createSubWindow', done, 1003);
-        console.log(msgStr + 'windowStage.createSubWindow(null) err=' + JSON.stringify(err));
-      });
-      console.log(msgStr + 'windowStage.createSubWindow end subWindow=' + JSON.stringify(subWindow));
-
+      try {
+        let subWindow = await windowStage.createSubWindow(null).catch((err) => {
+          expect(false).assertTrue();
+          console.log(msgStr + 'windowStage.createSubWindow(null) err=' + JSON.stringify(err));
+        });
+        console.log(msgStr + 'windowStage.createSubWindow end subWindow=' + JSON.stringify(subWindow));
+      }
+      catch (err) {
+        expectedError(err.code, caseName, 'windowStage.createSubWindow', done, 401);
+        console.log(msgStr + 'windowStage.createSubWindow catch err=' + JSON.stringify(err));
+      }
+      done();
     })
     /**
     * @tc.number     SUB_WINDOW_GETSUBWINDOW_JSAPI_001
@@ -1337,7 +1355,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       });
       console.log(msgStr + 'screen.setDensityDpi display.getDefaultDisplay current device' + JSON.stringify(currentDeviceDefault));
       let currentDeviceDefaultDpi = parseInt(currentDeviceDefault.densityDPI)
-      let dpiItem = [-80, 80, 1000, 160, 0, 320, 188.88, 0, 640, 300,currentDeviceDefaultDpi];
+      let dpiItem = [-80, 80, 1000, 160, 0, 320, 188.88, 0, 640, 300, currentDeviceDefaultDpi];
       for (let i = 0;i < dpiItem.length; i++) {
         await sleep(1000);
         await screens[0].setDensityDpi(dpiItem[i]).then(async () => {
@@ -1368,16 +1386,18 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       let mainWin = await windowStage.getMainWindow().catch(err => {
         unexpectedError(err, caseName, 'windowStage.getMainWindow', done);
       });
-      console.log(msgStr + 'windowStage.getMainWindow' + JSON.stringify(mainWin));
+      console.log(msgStr + 'windowStage.getMainWindow :' + JSON.stringify(mainWin));
       expect(!!mainWin).assertTrue();
-      let orientationItem = ['UNSPECIFIED', 'LOCKED', 'PORTRAIT_UNSPECIFIED', 'PORTRAIT', 'LANDSCAPE', 'PORTRAIT_INVERTED', 'LANDSCAPE_INVERTED', 'AUTO_ROTATION', 'AUTO_ROTATION_PORTRAIT', 'AUTO_ROTATION_LANDSCAPE', 'AUTO_ROTATION_RESTRICTED', 'AUTO_ROTATION_PORTRAIT_RESTRICTED', 'AUTO_ROTATION_LANDSCAPE_RESTRICTED'];
+      let orientationItem = ['UNSPECIFIED', 'PORTRAIT', 'LANDSCAPE', 'PORTRAIT_INVERTED', 'LANDSCAPE_INVERTED', 'AUTO_ROTATION', 'AUTO_ROTATION_PORTRAIT', 'AUTO_ROTATION_LANDSCAPE', 'AUTO_ROTATION_RESTRICTED', 'AUTO_ROTATION_PORTRAIT_RESTRICTED', 'AUTO_ROTATION_LANDSCAPE_RESTRICTED', 'LOCKED'];
       for (let i = 0;i < orientationItem.length; i++) {
         await sleep(1000);
         let orientation = ohosWindow.Orientation[orientationItem[i]]
+        console.log(msgStr + 'i : ' + i + ' ,orientation : ' + orientation);
+        console.log(msgStr + 'i : ' + i + ' ,ohosWindow.Orientation : ' + JSON.stringify(ohosWindow.Orientation));
         await mainWin.setPreferredOrientation(orientation).then(() => {
-          console.log(msgStr + 'success set window.setPreferredOrientation ' + orientation);
+          console.log(msgStr + 'success set window.setPreferredOrientation : ' + orientation);
         }).catch(err => {
-          console.log(msgStr + 'window.setPreferredOrientation failed set error' + orientation);
+          console.log(msgStr + 'window.setPreferredOrientation failed set error:' + orientation);
         });
       }
       console.log(msgStr + 'done ');
@@ -1441,9 +1461,10 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin context==' + JSON.stringify(context));
       let tempType = ohosWindow.WindowType.TYPE_DIALOG
-      let dialogTargetTouchTest1Win = await ohosWindow.create(context, 'dialogTargetTouchTest1', tempType).catch((err) => {
-        unexpectedError(err, caseName, 'ohosWindow.create', done);
-      })
+      let dialogTargetTouchTest1Win = await ohosWindow.create(context, 'dialogTargetTouchTest1', tempType)
+        .catch((err) => {
+          unexpectedError(err, caseName, 'ohosWindow.create', done);
+        })
       expect(!!dialogTargetTouchTest1Win).assertTrue();
       dialogTargetTouchTest1Win.destroy();
       done();
@@ -1460,7 +1481,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'begin ohosWindow==' + JSON.stringify(ohosWindow));
       let wndId = 'animationForShownTest1';
       let baseType = ohosWindow.WindowType.TYPE_SYSTEM_ALERT;
-      let tempWnd = await ohosWindow.create(context,wndId, baseType).catch((err) => {
+      let tempWnd = await ohosWindow.create(context, wndId, baseType).catch((err) => {
         unexpectedError(err, caseName, 'ohosWindow.create ' + baseType, done);
       });
       console.log(msgStr + 'ohosWindow.create ' + baseType + ', tempWnd: ' + tempWnd);
@@ -1503,7 +1524,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       dpClass.getCutoutInfo().then((data) => {
         console.info('Succeeded in getting cutoutInfo. Data: ' + JSON.stringify(data));
         done();
-      }).catch(err=>{
+      }).catch(err => {
         unexpectedError(err, caseName, 'displayClass.getCutoutInfo', done);
       });
     })
@@ -1518,16 +1539,16 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'begin context==' + JSON.stringify(context));
       let wndId = 'showWithAnimationTest1';
       let baseType = ohosWindow.WindowType.TYPE_FLOAT;
-      let tempWnd = await ohosWindow.create(context,wndId, baseType).catch((err) => {
+      let tempWnd = await ohosWindow.create(context, wndId, baseType).catch((err) => {
         unexpectedError(err, caseName, 'ohosWindow.create ' + baseType, done);
       });
       console.log(msgStr + 'ohosWindow.create ' + baseType + ', tempWnd: ' + JSON.stringify(tempWnd));
       expect(!!tempWnd).assertTrue();
-      console.info('showWithAnimationTest1 ****' + Reflect.has(tempWnd,'showWithAnimation'))
-      await tempWnd.showWithAnimation().then((data)=> {
+      console.info('showWithAnimationTest1 ****' + Reflect.has(tempWnd, 'showWithAnimation'))
+      await tempWnd.showWithAnimation().then((data) => {
         console.info('Succeeded in showing the window with animation. Data: ' + JSON.stringify(data));
         done();
-      }).catch((err)=>{
+      }).catch((err) => {
         unexpectedError(err, caseName, 'Failed to show the window with animation', done);
       })
     })
@@ -1542,7 +1563,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       console.log(msgStr + 'begin context==' + JSON.stringify(context));
       let wndId = 'hideWithAnimationTest1';
       let baseType = ohosWindow.WindowType.TYPE_FLOAT;
-      let tempWnd = await ohosWindow.create(context,wndId, baseType).catch((err) => {
+      let tempWnd = await ohosWindow.create(context, wndId, baseType).catch((err) => {
         unexpectedError(err, caseName, 'ohosWindow.create ' + baseType, done);
       });
       console.log(msgStr + 'ohosWindow.create ' + baseType + ', tempWnd: ' + JSON.stringify(tempWnd));
@@ -1552,13 +1573,13 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       });
       console.log(msgStr + 'find findWnd: ' + JSON.stringify(findWnd));
       expect(!!findWnd).assertTrue();
-      console.info('hideWithAnimationTest1 ****' + Reflect.has(findWnd,'hideWithAnimation'))
-      console.info('hideWithAnimationTest1 ****' + Reflect.has(findWnd,'destroy'))
+      console.info('hideWithAnimationTest1 ****' + Reflect.has(findWnd, 'hideWithAnimation'))
+      console.info('hideWithAnimationTest1 ****' + Reflect.has(findWnd, 'destroy'))
       let promise = findWnd.hideWithAnimation();
-      promise.then((data)=> {
+      promise.then((data) => {
         console.info('Succeeded in hiding the window with animation. Data: ' + JSON.stringify(data));
         done();
-      }).catch((err)=>{
+      }).catch((err) => {
         console.error('Failed to hide the window with animation. Cause: ' + JSON.stringify(err));
       })
     })
