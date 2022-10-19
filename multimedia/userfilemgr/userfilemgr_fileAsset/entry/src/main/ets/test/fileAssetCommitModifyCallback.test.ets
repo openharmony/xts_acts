@@ -15,6 +15,7 @@
 
 import userFileManager from '@ohos.filemanagement.userFileManager';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
+import dataSharePredicates from '@ohos.data.dataSharePredicates';
 
 import {
     sleep,
@@ -50,15 +51,18 @@ export default function fileAssetCommitModifyCallbackTest(abilityContext) {
         const checkCommitModify = async function (done, testNum, fetchOp, prop, val, isAudio) {
             try {
                 let fetchAssetResult;
+                let fileKey;
                 if (isAudio) {
                     fetchAssetResult = await userfilemgr.getAudioAssets(fetchOp);
+                    fileKey = userFileManager.AudioKey;
                 } else {
                     fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOp);
+                    fileKey = userFileManager.ImageVideoKey;
                 }
                 let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchAssetResult, 1);
                 if (!checkAssetCountPass) return;
                 const asset = await fetchAssetResult.getFirstObject();
-                const oldVal = asset.get(prop);
+                fetchAssetResult.close();
                 asset.set(prop, val);
                 await asset.commitModify(async (err) => {
                     if (err) {
@@ -67,9 +71,25 @@ export default function fileAssetCommitModifyCallbackTest(abilityContext) {
                         done();
                         return;
                     }
-                    asset.set(prop, oldVal.toString());
-                    await asset.commitModify();
-                    fetchAssetResult.close();
+                    let predicates = new dataSharePredicates.DataSharePredicates();
+                    predicates.equalTo(fileKey.URI, asset.get(fileKey.URI));
+                    let ops = {
+                        fetchColumns: [],
+                        predicates: predicates
+                    };
+                    let newResult;
+                    if (isAudio) {
+                        newResult = await userfilemgr.getAudioAssets(ops);
+                    } else {
+                        newResult = await userfilemgr.getPhotoAssets(ops);
+                    }
+                    let checkAssetCountPass = await checkAssetsCount(done, testNum, newResult, 1);
+                    if (!checkAssetCountPass) return;
+                    const newAsset = await newResult.getFirstObject();
+                    console.info(`${testNum} newAsset : ${newAsset}`)
+                    newResult.close();
+                    expect(newAsset.get(fileKey.DISPLAY_NAME)).assertEqual(val);
+                    console.info(`${testNum} DISPLAY_NAME : ${newAsset.get(fileKey.DISPLAY_NAME)}`)
                     done();
                 });
             } catch (error) {
@@ -82,16 +102,16 @@ export default function fileAssetCommitModifyCallbackTest(abilityContext) {
         /**
          * @tc.number    : SUB_USERFILE_MGR_FILEASSET_COMMITMODIFY_CALLBACK_01
          * @tc.name      : commitModify
-         * @tc.desc      : image asset modify displayName
+         * @tc.desc      : image asset modify title
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_FILEASSET_COMMITMODIFY_CALLBACK_01', 0, async function (done) {
+        it('SUB_USERFILE_MGR_FILEASSET_COMMITMODIFY_CALLBACK_01', 2, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_COMMITMODIFY_CALLBACK_01';
             let fetchOp = imageVideoNameFetchOps(testNum, 'Pictures/ModifyCb/', '01.jpg');
-            let prop = 'display_name';
-            let val = IMAGE_TYPE.toString() + '.jpg';
+            let prop = 'title';
+            let val = IMAGE_TYPE.toString();
             let isAudio = false;
             await checkCommitModify(done, testNum, fetchOp, prop, val, isAudio);
         });
@@ -99,34 +119,34 @@ export default function fileAssetCommitModifyCallbackTest(abilityContext) {
         /**
          * @tc.number    : SUB_USERFILE_MGR_FILEASSET_COMMITMODIFY_CALLBACK_02
          * @tc.name      : commitModify
-         * @tc.desc      : audio asset modify displayName
+         * @tc.desc      : video asset modify title
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_FILEASSET_COMMITMODIFY_CALLBACK_02', 0, async function (done) {
+        it('SUB_USERFILE_MGR_FILEASSET_COMMITMODIFY_CALLBACK_02', 2, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_COMMITMODIFY_CALLBACK_02';
-            let fetchOp = audioNameFetchOps(testNum, 'Audios/ModifyCb/', '01.mp3');
-            let prop = 'display_name';
-            let val = AUDIO_TYPE.toString() + '.mp3';
-            let isAudio = true;
+            let fetchOp = imageVideoNameFetchOps(testNum, 'Videos/ModifyCb/', '01.mp4');
+            let prop = 'title';
+            let val = VIDEO_TYPE.toString();
+            let isAudio = false;
             await checkCommitModify(done, testNum, fetchOp, prop, val, isAudio);
         });
 
         /**
          * @tc.number    : SUB_USERFILE_MGR_FILEASSET_COMMITMODIFY_CALLBACK_03
          * @tc.name      : commitModify
-         * @tc.desc      : video asset modify displayName
+         * @tc.desc      : audio asset modify title
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_FILEASSET_COMMITMODIFY_CALLBACK_03', 0, async function (done) {
+         it('SUB_USERFILE_MGR_FILEASSET_COMMITMODIFY_CALLBACK_03', 2, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_COMMITMODIFY_CALLBACK_03';
-            let fetchOp = imageVideoNameFetchOps(testNum, 'Videos/ModifyCb/', '01.mp4');
-            let prop = 'display_name';
-            let val = VIDEO_TYPE.toString() + '.mp4';
-            let isAudio = false;
+            let fetchOp = audioNameFetchOps(testNum, 'Audios/ModifyCb/', '01.mp3');
+            let prop = 'title';
+            let val = AUDIO_TYPE.toString();
+            let isAudio = true;
             await checkCommitModify(done, testNum, fetchOp, prop, val, isAudio);
         });
     });

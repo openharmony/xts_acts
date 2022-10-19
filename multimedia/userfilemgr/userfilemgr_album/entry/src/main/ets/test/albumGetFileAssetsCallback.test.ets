@@ -101,9 +101,9 @@ export default function albumGetFileAssetsCallback(abilityContext) {
          * @tc.desc      : Album getPhotoAssets
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 1
          */
-        it('SUB_USERFILE_MGR_ALBUM_GETPHOTOASSETS_CALLBACK_01', 0, async function (done) {
+        it('SUB_USERFILE_MGR_ALBUM_GETPHOTOASSETS_CALLBACK_01', 1, async function (done) {
             const testNum = 'SUB_USERFILE_MGR_ALBUM_GETPHOTOASSETS_CALLBACK_01';
             let currentFetchOp = albumFetchOps(testNum, 'Pictures/', 'Static');
             await getPhotoAssetsTest(done, testNum, currentFetchOp);
@@ -115,9 +115,9 @@ export default function albumGetFileAssetsCallback(abilityContext) {
          * @tc.desc      : invalid AlbumFetchOptions
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 3
          */
-        it('SUB_USERFILE_MGR_ALBUM_GETPHOTOASSETS_ERRCODE_CALLBACK_01', 0, async function (done) {
+        it('SUB_USERFILE_MGR_ALBUM_GETPHOTOASSETS_ERRCODE_CALLBACK_01', 3, async function (done) {
             const testNum = 'SUB_USERFILE_MGR_ALBUM_GETPHOTOASSETS_ERRCODE_CALLBACK_01';
             let currentFetchOp = albumFetchOps(testNum, 'Pictures/', 'Static');
             await getPhotoAssetsErrCodeTest(done, testNum, currentFetchOp);

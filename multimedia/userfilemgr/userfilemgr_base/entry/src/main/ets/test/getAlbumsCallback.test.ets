@@ -22,7 +22,6 @@ import {
     albumFetchOps,
     checkPresetsAssets,
     checkAssetsCount,
-    getPermission,
     isNum,
 } from '../../../../../../common';
 
@@ -32,7 +31,6 @@ export default function getAlbumsCallbackTest(abilityContext) {
         const userfilemgr = userFileManager.getUserFileMgr(abilityContext);
         beforeAll(async function () {
             console.info('beforeAll case');
-            await getPermission();
             await checkPresetsAssets(userfilemgr, 'ActsUserFileMgrAlbumJsTest');
         });
         beforeEach(function () {
@@ -135,9 +133,9 @@ export default function getAlbumsCallbackTest(abilityContext) {
          * @tc.desc      : getPhotoAlbums by relativePath && albumName, print all album info
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 1
          */
-        it('SUB_USERFILE_MGR_GETPHOTOALBUMS_CALLBACK_01', 0, async function (done) {
+        it('SUB_USERFILE_MGR_GETPHOTOALBUMS_CALLBACK_01', 1, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_GETPHOTOALBUMS_CALLBACK_01';
             let currentFetchOp = albumFetchOps(testNum, 'Pictures/', 'myAlbum');
             let relativePaths = 'Pictures/';
@@ -150,9 +148,9 @@ export default function getAlbumsCallbackTest(abilityContext) {
          * @tc.desc      : getPhotoAlbums by invalid
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 3
          */
-         it('SUB_USERFILE_MGR_GETPHOTOALBUMS_ERRCODE_CALLBACK_01', 0, async function (done) {
+         it('SUB_USERFILE_MGR_GETPHOTOALBUMS_ERRCODE_CALLBACK_01', 3, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_GETPHOTOALBUMS_ERRCODE_CALLBACK_01';
             await getPhotoAlbumsErrCodeTest(done, testNum);
         });
