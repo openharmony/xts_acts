@@ -20,7 +20,7 @@ config("utils_config") {
   include_dirs = [
     "//third_party/cJSON/",
     "//third_party/zlib/",
-    "//commonlibrary/c_utils/base/",
+    "//third_party/bounds_checking_function/",
   ]
 }
 
