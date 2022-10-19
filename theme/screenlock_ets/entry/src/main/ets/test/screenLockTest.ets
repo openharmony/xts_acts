@@ -1,4 +1,3 @@
-// @ts-nocheck
 /*
  * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -295,15 +294,10 @@ export default function screenLockJSUnit() {
             console.info("------------------start SUB_MISC_THEME_screenLock_API_0009-------------------");
             let flag = null;
             try{
-                flag = await screenLock.onSystemEvent((err, data) => {
+                flag = await screenLock.onSystemEvent((data) => {
                     console.info("SUB_MISC_THEME_screenLock_API_0009 screenLock.onSystemEvent start");
-                    if (err){
-                        console.info("SUB_MISC_THEME_screenLock_API_0009 screenLock.onSystemEvent err: " + JSON.stringify(err));
-                        expect().assertFalse();
-                        done();
-                    };
                     expect( data != null ).assertTrue();
-                    console.info("SUB_MISC_THEME_screenLock_API_0009 screenLock.onSystemEvent end" + data)
+                    console.info("SUB_MISC_THEME_screenLock_API_0009 screenLock.onSystemEvent end" + data);
                     done();
                 });
                 console.info("SUB_MISC_THEME_screenLock_API_0009 data: " + flag);
@@ -313,6 +307,63 @@ export default function screenLockJSUnit() {
                 done();
             }
             console.info("-----------------end SUB_MISC_THEME_screenLock_API_0009--------------------");
+            done()
+        });
+
+
+        /*
+        * @tc.number  SUB_MISC_THEME_screenLock_API_0010
+        * @tc.name    Test isLocked() to Checks whether the screen is currently locked.
+        * @tc.desc    Function test
+        * @tc.level   0
+        */
+        it('SUB_MISC_THEME_screenLock_API_0010', 0, async function (done) {
+            console.info('------------------SUB_MISC_THEME_screenLock_API_0010 start----------------------');
+            let lock = null;
+            try{
+                lock = screenLock.isLocked()
+                console.info('SUB_MISC_THEME_screenLock_API_0010 data : ' + JSON.stringify(lock));
+                if (typeof lock == "boolean") {
+                    expect(true).assertTrue();
+                    done()
+                }else{
+                    expect().assertFail();
+                    done()
+                }
+            }catch(err){
+                console.info('SUB_MISC_THEME_screenLock_API_0010 err : ' + JSON.stringify(err));
+                expect().assertFail();
+                done()
+            }
+            console.info('------------------SUB_MISC_THEME_screenLock_API_0010 end----------------------');
+            done()
+        });
+
+        /*
+        * @tc.number  SUB_MISC_THEME_screenLock_API_0011
+        * @tc.name    Test isSecure() to Checks whether the screen lock of the current device is secure.
+        * @tc.desc    Function test
+        * @tc.level   0
+        */
+        it('SUB_MISC_THEME_screenLock_API_0011', 0, async function (done) {
+            console.info('------------------SUB_MISC_THEME_screenLock_API_0011 start----------------------');
+            let secured = null;
+            try{
+                secured = screenLock.isSecure()
+                console.info('SUB_MISC_THEME_screenLock_API_0011 data : ' + JSON.stringify(secured));
+                if (typeof secured == "boolean") {
+                    expect(true).assertTrue();
+                    done()
+                }else{
+                    expect().assertFail();
+                    done()
+                }
+            }catch(err){
+                console.info('SUB_MISC_THEME_screenLock_API_0011 err : ' + JSON.stringify(err));
+                expect().assertFail();
+                done()
+            }
+            console.info('------------------SUB_MISC_THEME_screenLock_API_0011 end----------------------');
             done()
         });
     });
