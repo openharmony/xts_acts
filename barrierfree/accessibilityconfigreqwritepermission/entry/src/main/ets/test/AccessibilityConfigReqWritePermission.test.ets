@@ -38,8 +38,8 @@ export default function abilityTest() {
         it('AccessibilityConfigReqWritePermissionTest_get_asyncCallback_0300', 0, async function(done) {
             console.info('AccessibilityConfigReqWritePermissionTest_get_asyncCallback_0300');
             config.highContrastText.get((err, result) => {
-                if (err.code != 0) {
-                    expect(true).assertTrue();
+                if (err && err.code != 0) {
+                    expect(201).assertEqual(err.code);
                 } else {
                     console.error(`AccessibilityConfigReqWritePermissionTest_get_asyncCallback_0300 has no read permission`);
                     expect(null).assertFail();
@@ -62,6 +62,7 @@ export default function abilityTest() {
                 expect(null).assertFail();
                 done();
             }).catch((err) => {
+                expect(201).assertEqual(err.code);
                 done();
             });
         })
@@ -76,8 +77,8 @@ export default function abilityTest() {
         it('AccessibilityConfigReqWritePermissionTest_get_asyncCallback_0900', 0, async function(done) {
             console.info('AccessibilityConfigReqWritePermissionTest_get_asyncCallback_0900');
             config.invertColor.get((err, result) => {
-                if (err.code != 0) {
-                    expect(true).assertTrue();
+                if (err && err.code != 0) {
+                    expect(201).assertEqual(err.code);
                 } else {
                     console.error(`AccessibilityConfigReqWritePermissionTest_get_asyncCallback_0900 has no read permission`);
                     expect(null).assertFail();
@@ -100,6 +101,7 @@ export default function abilityTest() {
                 expect(null).assertFail();
                 done();
             }).catch((err) => {
+                expect(201).assertEqual(err.code);
                 done();
             });
         })
@@ -114,8 +116,8 @@ export default function abilityTest() {
         it('AccessibilityConfigReqWritePermissionTest_get_asyncCallback_1500', 0, async function(done) {
             console.info('AccessibilityConfigReqWritePermissionTest_get_asyncCallback_1500');
             config.contentTimeout.get((err, result) => {
-                if (err.code != 0) {
-                    expect(true).assertTrue();
+                if (err && err.code != 0) {
+                    expect(201).assertEqual(err.code);
                 } else {
                     console.error(`AccessibilityConfigReqWritePermissionTest_get_asyncCallback_1500 has no read permission`);
                     expect(null).assertFail();
@@ -138,6 +140,7 @@ export default function abilityTest() {
                 expect(null).assertFail();
                 done();
             }).catch((err) => {
+                expect(201).assertEqual(err.code);
                 done();
             });
         })
@@ -152,8 +155,8 @@ export default function abilityTest() {
         it('AccessibilityConfigReqWritePermissionTest_get_asyncCallback_2100', 0, async function(done) {
             console.info('AccessibilityConfigReqWritePermissionTest_get_asyncCallback_2100');
             config.animationOff.get((err, result) => {
-                if (err.code != 0) {
-                    expect(true).assertTrue();
+                if (err && err.code != 0) {
+                    expect(201).assertEqual(err.code);
                 } else {
                     console.error(`AccessibilityConfigReqWritePermissionTest_get_asyncCallback_2100 has no read permission`);
                     expect(null).assertFail();
@@ -176,6 +179,7 @@ export default function abilityTest() {
                 expect(null).assertFail();
                 done();
             }).catch((err) => {
+                expect(201).assertEqual(err.code);
                 done();
             });
         })
@@ -190,8 +194,8 @@ export default function abilityTest() {
         it('AccessibilityConfigReqWritePermissionTest_get_asyncCallback_2700', 0, async function(done) {
             console.info('AccessibilityConfigReqWritePermissionTest_get_asyncCallback_2700');
             config.brightnessDiscount.get((err, result) => {
-                if (err.code != 0) {
-                    expect(true).assertTrue();
+                if (err && err.code != 0) {
+                    expect(201).assertEqual(err.code);
                 } else {
                     console.error(`AccessibilityConfigReqWritePermissionTest_get_asyncCallback_2700 has no read permission`);
                     expect(null).assertFail();
@@ -214,6 +218,7 @@ export default function abilityTest() {
                 expect(null).assertFail();
                 done();
             }).catch((err) => {
+                expect(201).assertEqual(err.code);
                 done();
             });
         })
@@ -228,8 +233,8 @@ export default function abilityTest() {
         it('AccessibilityConfigReqWritePermissionTest_get_asyncCallback_5100', 0, async function(done) {
             console.info('AccessibilityConfigReqWritePermissionTest_get_asyncCallback_5100');
             config.mouseKey.get((err, result) => {
-                if (err.code != 0) {
-                    expect(true).assertTrue();
+                if (err && err.code != 0) {
+                    expect(201).assertEqual(err.code);
                 } else {
                     console.error(`AccessibilityConfigReqWritePermissionTest_get_asyncCallback_5100 has no read permission`);
                     expect(null).assertFail();}
@@ -251,6 +256,7 @@ export default function abilityTest() {
                 expect(null).assertFail();
                 done();
             }).catch((err) => {
+                expect(201).assertEqual(err.code);
                 done();
             });
         })
@@ -265,8 +271,8 @@ export default function abilityTest() {
         it('AccessibilityConfigReqWritePermissionTest_get_asyncCallback_5700', 0, async function(done) {
             console.info('AccessibilityConfigReqWritePermissionTest_get_asyncCallback_5700');
             config.mouseAutoClick.get((err, result) => {
-                if (err.code != 0) {
-                    expect(true).assertTrue();
+                if (err && err.code != 0) {
+                    expect(201).assertEqual(err.code);
                 } else {
                     console.error(`AccessibilityConfigReqWritePermissionTest_get_asyncCallback_5700 has no read permission`);
                     expect(null).assertFail();
@@ -289,6 +295,7 @@ export default function abilityTest() {
                 expect(null).assertFail();
                 done();
             }).catch((err) => {
+                expect(201).assertEqual(err.code);
                 done();
             });
         })
@@ -303,8 +310,8 @@ export default function abilityTest() {
         it('AccessibilityConfigReqWritePermissionTest_get_asyncCallback_6300', 0, async function(done) {
             console.info('AccessibilityConfigReqWritePermissionTest_get_asyncCallback_6300');
             config.shortkey.get((err, result) => {
-                if (err.code != 0) {
-                    expect(true).assertTrue();
+                if (err && err.code != 0) {
+                    eexpect(201).assertEqual(err.code);
                 } else {
                     console.error(`AccessibilityConfigReqWritePermissionTest_get_asyncCallback_6300 has no read permission`);
                     expect(null).assertFail();
@@ -327,6 +334,7 @@ export default function abilityTest() {
                 expect(null).assertFail();
                 done();
             }).catch((err) => {
+                expect(201).assertEqual(err.code);
                 done();
             });
         })
@@ -341,8 +349,8 @@ export default function abilityTest() {
         it('AccessibilityConfigReqWritePermissionTest_get_asyncCallback_6900', 0, async function(done) {
             console.info('AccessibilityConfigReqWritePermissionTest_get_asyncCallback_6900');
             config.shortkeyTarget.get((err, result) => {
-                if (err.code != 0) {
-                    expect(true).assertTrue();
+                if (err && err.code != 0) {
+                    expect(201).assertEqual(err.code);
                 } else {
                     console.error(`AccessibilityConfigReqWritePermissionTest_get_asyncCallback_6900 has no read permission`);
                     expect(null).assertFail();
@@ -365,6 +373,7 @@ export default function abilityTest() {
                 expect(null).assertFail();
                 done();
             }).catch((err) => {
+                expect(201).assertEqual(err.code);
                 done();
             });
         })
@@ -379,8 +388,8 @@ export default function abilityTest() {
         it('AccessibilityConfigReqWritePermissionTest_get_asyncCallback_8300', 0, async function(done) {
             console.info('AccessibilityConfigReqWritePermissionTest_get_asyncCallback_8300');
             config.daltonizationColorFilter.get((err, result) => {
-                if (err.code != 0) {
-                    expect(true).assertTrue();
+                if (err && err.code != 0) {
+                    expect(201).assertEqual(err.code);
                 } else {
                     console.error(`AccessibilityConfigReqWritePermissionTest_get_asyncCallback_8300 has no read permission`);
                     expect(null).assertFail();
@@ -403,6 +412,307 @@ export default function abilityTest() {
                 expect(null).assertFail();
                 done();
             }).catch((err) => {
+                expect(201).assertEqual(err.code);
+                done();
+            });
+        })
+
+        /*
+         * @tc.number  AccessibilityConfigReqWritePermissionTest_on_asyncCallback_0100
+         * @tc.name    AccessibilityConfigReqWritePermissionTest_on_asyncCallback_0100
+         * @tc.desc    Test highContrastText.on() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigReqWritePermissionTest_on_asyncCallback_0100', 0, async function(done) {
+            console.info('AccessibilityConfigReqWritePermissionTest_on_asyncCallback_0100');
+            config.highContrastText.on((err, result) => {
+                if (err && err.code != 0) {
+                    expect(201).assertEqual(err.code);
+                } else {
+                    console.error(`AccessibilityConfigReqWritePermissionTest_on_asyncCallback_0100 has no read permission`);
+                    expect(null).assertFail();
+                }
+                done();
+            });
+        })
+
+        /*
+         * @tc.number  AccessibilityConfigReqWritePermissionTest_on_asyncCallback_0200
+         * @tc.name    AccessibilityConfigReqWritePermissionTest_on_asyncCallback_0200
+         * @tc.desc    Test invertColor.on() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigReqWritePermissionTest_on_asyncCallback_0200', 0, async function(done) {
+            console.info('AccessibilityConfigReqWritePermissionTest_on_asyncCallback_0200');
+            config.invertColor.on((err, result) => {
+                if (err && err.code != 0) {
+                    expect(201).assertEqual(err.code);
+                } else {
+                    console.error(`AccessibilityConfigReqWritePermissionTest_on_asyncCallback_0200 has no read permission`);
+                    expect(null).assertFail();
+                }
+                done();
+            });
+        })
+
+        /*
+         * @tc.number  AccessibilityConfigReqWritePermissionTest_on_asyncCallback_0300
+         * @tc.name    AccessibilityConfigReqWritePermissionTest_on_asyncCallback_0300
+         * @tc.desc    Test daltonizationColorFilter.on() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigReqWritePermissionTest_on_asyncCallback_0300', 0, async function(done) {
+            console.info('AccessibilityConfigReqWritePermissionTest_on_asyncCallback_0300');
+            config.daltonizationColorFilter.on((err, result) => {
+                if (err && err.code != 0) {
+                    expect(201).assertEqual(err.code);
+                } else {
+                    console.error(`AccessibilityConfigReqWritePermissionTest_on_asyncCallback_0300 has no read permission`);
+                    expect(null).assertFail();
+                }
+                done();
+            });
+        })
+
+        /*
+         * @tc.number  AccessibilityConfigReqWritePermissionTest_on_asyncCallback_0400
+         * @tc.name    AccessibilityConfigReqWritePermissionTest_on_asyncCallback_0400
+         * @tc.desc    Test contentTimeout.on() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigReqWritePermissionTest_on_asyncCallback_0400', 0, async function(done) {
+            console.info('AccessibilityConfigReqWritePermissionTest_on_asyncCallback_0400');
+            config.contentTimeout.on((err, result) => {
+                if (err && err.code != 0) {
+                    expect(201).assertEqual(err.code);
+                } else {
+                    console.error(`AccessibilityConfigReqWritePermissionTest_on_asyncCallback_0400 has no read permission`);
+                    expect(null).assertFail();
+                }
+                done();
+            });
+        })
+
+        /*
+         * @tc.number  AccessibilityConfigReqWritePermissionTest_on_asyncCallback_0500
+         * @tc.name    AccessibilityConfigReqWritePermissionTest_on_asyncCallback_0500
+         * @tc.desc    Test animationOff.on() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigReqWritePermissionTest_on_asyncCallback_0500', 0, async function(done) {
+            console.info('AccessibilityConfigReqWritePermissionTest_on_asyncCallback_0500');
+            config.animationOff.on((err, result) => {
+                if (err && err.code != 0) {
+                    expect(201).assertEqual(err.code);
+                } else {
+                    console.error(`AccessibilityConfigReqWritePermissionTest_on_asyncCallback_0500 has no read permission`);
+                    expect(null).assertFail();
+                }
+                done();
+            });
+        })
+
+        /*
+         * @tc.number  AccessibilityConfigReqWritePermissionTest_on_asyncCallback_0600
+         * @tc.name    AccessibilityConfigReqWritePermissionTest_on_asyncCallback_0600
+         * @tc.desc    Test brightnessDiscount.on() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigReqWritePermissionTest_on_asyncCallback_0600', 0, async function(done) {
+            console.info('AccessibilityConfigReqWritePermissionTest_on_asyncCallback_0600');
+            config.brightnessDiscount.on((err, result) => {
+                if (err && err.code != 0) {
+                    expect(201).assertEqual(err.code);
+                } else {
+                    console.error(`AccessibilityConfigReqWritePermissionTest_on_asyncCallback_0600 has no read permission`);
+                    expect(null).assertFail();
+                }
+                done();
+            });
+        })
+
+        /*
+         * @tc.number  AccessibilityConfigReqWritePermissionTest_on_asyncCallback_0700
+         * @tc.name    AccessibilityConfigReqWritePermissionTest_on_asyncCallback_0700
+         * @tc.desc    Test screenMagnifier.on() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigReqWritePermissionTest_on_asyncCallback_0700', 0, async function(done) {
+            console.info('AccessibilityConfigReqWritePermissionTest_on_asyncCallback_0700');
+            config.screenMagnifier.on((err, result) => {
+                if (err && err.code != 0) {
+                    expect(201).assertEqual(err.code);
+                } else {
+                    console.error(`AccessibilityConfigReqWritePermissionTest_on_asyncCallback_0700 has no read permission`);
+                    expect(null).assertFail();
+                }
+                done();
+            });
+        })
+
+        /*
+         * @tc.number  AccessibilityConfigReqWritePermissionTest_on_asyncCallback_0800
+         * @tc.name    AccessibilityConfigReqWritePermissionTest_on_asyncCallback_0800
+         * @tc.desc    Test audioMono.on() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigReqWritePermissionTest_on_asyncCallback_0800', 0, async function(done) {
+            console.info('AccessibilityConfigReqWritePermissionTest_on_asyncCallback_0800');
+            config.audioMono.on((err, result) => {
+                if (err && err.code != 0) {
+                    expect(201).assertEqual(err.code);
+                } else {
+                    console.error(`AccessibilityConfigReqWritePermissionTest_on_asyncCallback_0800 has no read permission`);
+                    expect(null).assertFail();
+                }
+                done();
+            });
+        })
+
+        /*
+         * @tc.number  AccessibilityConfigReqWritePermissionTest_on_asyncCallback_0900
+         * @tc.name    AccessibilityConfigReqWritePermissionTest_on_asyncCallback_0900
+         * @tc.desc    Test audioBalance.on() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigReqWritePermissionTest_on_asyncCallback_0900', 0, async function(done) {
+            console.info('AccessibilityConfigReqWritePermissionTest_on_asyncCallback_0900');
+            config.audioBalance.on((err, result) => {
+                if (err && err.code != 0) {
+                    expect(201).assertEqual(err.code);
+                } else {
+                    console.error(`AccessibilityConfigReqWritePermissionTest_on_asyncCallback_0900 has no read permission`);
+                    expect(null).assertFail();
+                }
+                done();
+            });
+        })
+
+        /*
+         * @tc.number  AccessibilityConfigReqWritePermissionTest_on_asyncCallback_1000
+         * @tc.name    AccessibilityConfigReqWritePermissionTest_on_asyncCallback_1000
+         * @tc.desc    Test mouseKey.on() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigReqWritePermissionTest_on_asyncCallback_1000', 0, async function(done) {
+            console.info('AccessibilityConfigReqWritePermissionTest_on_asyncCallback_1000');
+            config.mouseKey.on((err, result) => {
+                if (err && err.code != 0) {
+                    expect(201).assertEqual(err.code);
+                } else {
+                    console.error(`AccessibilityConfigReqWritePermissionTest_on_asyncCallback_1000 has no read permission`);
+                    expect(null).assertFail();
+                }
+                done();
+            });
+        })
+
+        /*
+         * @tc.number  AccessibilityConfigReqWritePermissionTest_on_asyncCallback_1100
+         * @tc.name    AccessibilityConfigReqWritePermissionTest_on_asyncCallback_1100
+         * @tc.desc    Test mouseAutoClick.on() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigReqWritePermissionTest_on_asyncCallback_1100', 0, async function(done) {
+            console.info('AccessibilityConfigReqWritePermissionTest_on_asyncCallback_1100');
+            config.mouseAutoClick.on((err, result) => {
+                if (err && err.code != 0) {
+                    expect(201).assertEqual(err.code);
+                } else {
+                    console.error(`AccessibilityConfigReqWritePermissionTest_on_asyncCallback_1100 has no read permission`);
+                    expect(null).assertFail();
+                }
+                done();
+            });
+        })
+
+        /*
+         * @tc.number  AccessibilityConfigReqWritePermissionTest_on_asyncCallback_1200
+         * @tc.name    AccessibilityConfigReqWritePermissionTest_on_asyncCallback_1200
+         * @tc.desc    Test shortkey.on() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigReqWritePermissionTest_on_asyncCallback_1200', 0, async function(done) {
+            console.info('AccessibilityConfigReqWritePermissionTest_on_asyncCallback_1200');
+            config.shortkey.on((err, result) => {
+                if (err && err.code != 0) {
+                    expect(201).assertEqual(err.code);
+                } else {
+                    console.error(`AccessibilityConfigReqWritePermissionTest_on_asyncCallback_1200 has no read permission`);
+                    expect(null).assertFail();
+                }
+                done();
+            });
+        })
+
+        /*
+         * @tc.number  AccessibilityConfigReqWritePermissionTest_on_asyncCallback_1300
+         * @tc.name    AccessibilityConfigReqWritePermissionTest_on_asyncCallback_1300
+         * @tc.desc    Test shortkeyTarget.on() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigReqWritePermissionTest_on_asyncCallback_1300', 0, async function(done) {
+            console.info('AccessibilityConfigReqWritePermissionTest_on_asyncCallback_1300');
+            config.shortkeyTarget.on((err, result) => {
+                if (err && err.code != 0) {
+                    expect(201).assertEqual(err.code);
+                } else {
+                    console.error(`AccessibilityConfigReqWritePermissionTest_on_asyncCallback_1300 has no read permission`);
+                    expect(null).assertFail();
+                }
+                done();
+            });
+        })
+
+        /*
+         * @tc.number  AccessibilityConfigReqWritePermissionTest_on_asyncCallback_1400
+         * @tc.name    AccessibilityConfigReqWritePermissionTest_on_asyncCallback_1400
+         * @tc.desc    Test captions.on() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigReqWritePermissionTest_on_asyncCallback_1400', 0, async function(done) {
+            console.info('AccessibilityConfigReqWritePermissionTest_on_asyncCallback_1400');
+            config.captions.on((err, result) => {
+                if (err && err.code != 0) {
+                    expect(201).assertEqual(err.code);
+                } else {
+                    console.error(`AccessibilityConfigReqWritePermissionTest_on_asyncCallback_1400 has no read permission`);
+                    expect(null).assertFail();
+                }
+                done();
+            });
+        })
+
+        /*
+         * @tc.number  AccessibilityConfigReqWritePermissionTest_on_asyncCallback_1500
+         * @tc.name    AccessibilityConfigReqWritePermissionTest_on_asyncCallback_1500
+         * @tc.desc    Test captionsStyle.on() function in callback mode.
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityConfigReqWritePermissionTest_on_asyncCallback_1500', 0, async function(done) {
+            console.info('AccessibilityConfigReqWritePermissionTest_on_asyncCallback_1500');
+            config.captionsStyle.on((err, result) => {
+                if (err && err.code != 0) {
+                    expect(201).assertEqual(err.code);
+                } else {
+                    console.error(`AccessibilityConfigReqWritePermissionTest_on_asyncCallback_1500 has no read permission`);
+                    expect(null).assertFail();
+                }
                 done();
             });
         })

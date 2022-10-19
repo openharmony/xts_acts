@@ -16,6 +16,7 @@ import commonEvent from '@ohos.commonEvent';
 import accessibility from '@ohos.accessibility';
 
 const invalidString = 'xxx';
+const invalidValue = 1;
 
 export class ElementTest {
     private context = undefined;
@@ -604,7 +605,7 @@ export class ElementTest {
                 }
             } catch (e) {
                 console.info('ElementTest executeAttributeValuePromise ' + caseName + ' catch(e): ' + JSON.stringify(e));
-                if (input == invalidString) {
+                if (input == invalidString && e && e.code != 0) {
                     result = true;
                 }
             }
@@ -737,12 +738,15 @@ export class ElementTest {
                 console.info('ElementTest executePerformActionPromise ' + caseName + ' action: ' + action + ', args: ' + JSON.stringify(args));
                 let ret = await element.performAction(action, args);
                 console.info('ElementTest executePerformActionPromise ' + caseName + ' ret: ' + JSON.stringify(ret));
-                if (typeof(ret) == 'boolean') {
+                if (typeof(ret) == 'undefined') {
                     result = true;
                 }
             } catch (e) {
                 console.info('ElementTest executePerformActionPromise ' + caseName + ' catch(e): ' + JSON.stringify(e));
-                if (action == invalidString) {
+                if (e && e.code != 0) {
+                    if (e.code == 9300005 || e.code == 9300000) {
+                        result = true;
+                    }
                     result = true;
                 }
             }
@@ -795,7 +799,7 @@ export class ElementTest {
                 }
             } catch (e) {
                 console.info('ElementTest executeFindElementPromiseByFocusType ' + caseName + ' catch(e): ' + JSON.stringify(e));
-                if (condition == invalidString) {
+                if (condition == invalidString && e && e.code != 0) {
                     result = true;
                 }
             }
@@ -850,7 +854,9 @@ export class ElementTest {
             element.attributeNames((err, names) => {
                 console.info('ElementTest executeAttributeNamesCallback ' + caseName + ' err: ' + JSON.stringify(err));
                 console.info('ElementTest executeAttributeNamesCallback ' + caseName + ' names: ' + JSON.stringify(names));
-                if (err.code == 0 && Array.isArray(names)) {
+                if (err && err.code != 0) {
+                    result = false;
+                } else if (Array.isArray(names)) {
                     result = true;
                 }
                 this.publishCaseResult(caseName, result);
@@ -873,9 +879,9 @@ export class ElementTest {
             element.attributeValue(input, (err, value) => {
                 console.info('ElementTest executeAttributeValueCallback ' + caseName + ' err: ' + JSON.stringify(err));
                 console.info('ElementTest executeAttributeValueCallback ' + caseName + ' value: ' + JSON.stringify(value));
-                if (input == invalidString && err.code != 0) {
+                if (err && err.code != 0) {
                     result = true;
-                } else if (err.code == 0 && typeof(value) == outputType) {
+                } else if (typeof(value) == outputType) {
                     result = true;
                 } else {
                     console.warn('ElementTest executeAttributeValueCallback ' + caseName + ' valueType: ' + typeof(value));
@@ -899,10 +905,10 @@ export class ElementTest {
             element.attributeValue(input, (err, value) => {
                 console.info('ElementTest executeAttributeValueCallback ' + caseName + ' err: ' + JSON.stringify(err));
                 console.info('ElementTest executeAttributeValueCallback ' + caseName + ' value: ' + JSON.stringify(value));
-                if (err.code == 0 && typeof(value) == 'object' && typeof(value.left) == 'number'
+                if (typeof(value) == 'object' && typeof(value.left) == 'number'
                 && typeof(value.top) == 'number' && typeof(value.width) == 'number' && typeof(value.height) == 'number') {
                     result = true;
-                } else {
+                } else if (err) {
                     console.warn('ElementTest executeAttributeValueCallbackRect ' + caseName + ' valueType: ' + typeof(value));
                 }
                 this.publishCaseResult(caseName, result);
@@ -928,7 +934,9 @@ export class ElementTest {
                 target.attributeValue('triggerAction', (err, value) => {
                     console.info('ElementTest executeAttributeValueCallbackTriggerAction ' + caseName + ' err: ' + JSON.stringify(err));
                     console.info('ElementTest executeAttributeValueCallbackTriggerAction ' + caseName + ' valueType: ' + typeof(value));
-                    if (err.code == 0 && eventType == 'click' && typeof(value) == 'string') {
+                    if (err) {
+                        this.publishCaseResult(caseName, false);
+                    } else if (eventType == 'click' && typeof(value) == 'string') {
                         this.publishCaseResult(caseName, true);
                     }
                 });
@@ -960,7 +968,9 @@ export class ElementTest {
             element.attributeValue('rootElement', (err, value) => {
                 console.info('ElementTest executeAttributeValueCallback ' + caseName + ' err: ' + JSON.stringify(err));
                 console.info('ElementTest executeAttributeValueCallback ' + caseName + ' value: ' + JSON.stringify(value));
-                if (err.code == 0 && typeof(value) == 'object') {
+                if (err) {
+                    let result = false;
+                } else if (typeof(value) == 'object') {
                     result = true;
                 } else {
                     console.warn('ElementTest executeAttributeValueCallback ' + caseName + ' valueType: ' + typeof(value));
@@ -978,7 +988,9 @@ export class ElementTest {
             element.attributeValue(input, (err, value) => {
                 console.info('ElementTest executeAttributeValueCallbackArray ' + caseName + ' err: ' + JSON.stringify(err));
                 console.info('ElementTest executeAttributeValueCallbackArray ' + caseName + ' value: ' + JSON.stringify(value));
-                if (err.code == 0 && Array.isArray(value)) {
+                if (err) {
+                    let result = false;
+                } else if (Array.isArray(value)) {
                     if ((value.length == 0)||
                         (value.length > 0 && typeof(value[0]) == outputType)) {
                         result = true;
@@ -996,7 +1008,7 @@ export class ElementTest {
             element.actionNames((err, actions) => {
                 console.info('ElementTest executeActionNamesCallback ' + caseName + ' err: ' + JSON.stringify(err));
                 console.info('ElementTest executeActionNamesCallback ' + caseName + ' actions: ' + JSON.stringify(actions));
-                if (err.code == 0 && Array.isArray(actions)) {
+                if (Array.isArray(actions)) {
                     if ((actions.length == 0) ||
                         (actions.length > 0 && typeof(actions[0]) == 'string')) {
                         result = true;
@@ -1016,9 +1028,12 @@ export class ElementTest {
             element.performAction(action, args, (err, ret) => {
                 console.info('ElementTest executePerformActionCallback ' + caseName + ' err: ' + JSON.stringify(err));
                 console.info('ElementTest executePerformActionCallback ' + caseName + ' ret: ' + JSON.stringify(ret));
-                if (action == invalidString && err.code != 0) {
+                if (err && err.code != 0) {
+                    if (err.code == 9300005 || err.code == 9300000) {
+                        result = true;
+                    }
                     result = true;
-                } else if (err.code == 0 && typeof(ret) == 'boolean') {
+                } else if (typeof(ret) == 'undefined') {
                     result = true;
                 }
                 this.publishCaseResult(caseName, result);
@@ -1034,9 +1049,9 @@ export class ElementTest {
             element.findElement('content', condition, (err, found) => {
                 console.info('ElementTest executeFindElementCallbackByContent ' + caseName + ' err: ' + JSON.stringify(err));
                 console.info('ElementTest executeFindElementCallbackByContent ' + caseName + ' element: ' + JSON.stringify(found));
-                if (condition == invalidString && err.code != 0) {
+                if (condition == invalidString && err && err.code != 0) {
                     result = true;
-                } else if (err.code == 0 && Array.isArray(found)) {
+                } else if (Array.isArray(found)) {
                     if (found.length == 0 || typeof(found[0]) == 'object') {
                         result = true;
                     }
@@ -1058,9 +1073,9 @@ export class ElementTest {
             element.findElement('focusType', condition, (err, found) => {
                 console.info('ElementTest executeFindElementCallbackByFocusType ' + caseName + ' err: ' + JSON.stringify(err));
                 console.info('ElementTest executeFindElementCallbackByFocusType ' + caseName + ' element: ' + JSON.stringify(found));
-                if (condition == invalidString && err.code != 0) {
+                if (condition == invalidString && err && err.code != 0) {
                     result = true;
-                } else if (err.code == 0 && typeof(found) == 'object') {
+                } else if (typeof(found) == 'object') {
                     result = true;
                 }
                 this.publishCaseResult(caseName, result);
@@ -1085,7 +1100,7 @@ export class ElementTest {
                 console.info('ElementTest executeFindElementCallbackByFocusDirection ' + caseName + ' element: ' + JSON.stringify(found));
                 if (condition == invalidString && err.code != 0) {
                     result = true;
-                } else if (err.code == 0 && typeof(found) == 'object') {
+                } else if (typeof(found) == 'object') {
                     result = true;
                 }
                 this.publishCaseResult(caseName, result);
@@ -1106,7 +1121,9 @@ export class ElementTest {
             element.findElement('focusDirection', 'down', (err, found) => {
                 console.info('ElementTest executeFindElementCallback5900 ' + caseName + ' err: ' + JSON.stringify(err));
                 console.info('ElementTest executeFindElementCallback5900 ' + caseName + ' element: ' + JSON.stringify(found));
-                if (err.code == 0 && typeof(found) == 'object') {
+                if (err && err.code != 0) {
+
+                }if (typeof(found) == 'object') {
                     result = true;
                 }
                 this.publishCaseResult(caseName, result);

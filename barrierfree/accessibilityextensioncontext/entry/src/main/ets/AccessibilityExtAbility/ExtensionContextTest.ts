@@ -60,7 +60,7 @@ export class ExtensionContextTest {
 
         switch (caseName) {
             case 'AccessibilityExtensionContextTest_setTargetBundleName_asyncCallback_1500':
-                bundleName = ['com.example.accessibleformextension'];
+                bundleName = ['com.example.accessibilityxts'];
                 this.setTargetBundleNameCallback(caseName, bundleName);
                 break;
             case 'AccessibilityExtensionContextTest_setTargetBundleName_asyncCallback_1600':
@@ -71,7 +71,7 @@ export class ExtensionContextTest {
                 this.setTargetBundleNameCallback(caseName, bundleName);
                 break;
             case 'AccessibilityExtensionContextTest_setTargetBundleName_asyncPromise_1800':
-                bundleName = ['com.example.accessibleformextension'];
+                bundleName = ['com.example.accessibilityxts'];
                 this.setTargetBundleNamePromise(caseName, bundleName);
                 break;
             case 'AccessibilityExtensionContextTest_setTargetBundleName_asyncPromise_1900':
@@ -240,7 +240,7 @@ export class ExtensionContextTest {
     private async getDisPlayId() {
         let displayId = -1;
         display.getDefaultDisplay((err, data) => {
-            if (err.code != 0) {
+            if (err && err.code != 0) {
                 console.error("getDisPlayId getDefaultDisplay error");
             } else {
                 console.info("getDisPlayId getDefaultDisplay data.id: " + JSON.stringify(data.id));
@@ -268,8 +268,7 @@ export class ExtensionContextTest {
                 let tartgetNode = await rootNode.findElement('content', 'button1');
                 console.info("setAccessibilityFocus tartgetNode: " + JSON.stringify(tartgetNode));
                 if (tartgetNode) {
-                    isFocus = await tartgetNode[0].performAction("accessibilityFocus");
-                    console.info("setAccessibilityFocus isFocus: " + JSON.stringify(isFocus));
+                    await tartgetNode[0].performAction("accessibilityFocus");
                 }
             }
         }
@@ -284,8 +283,7 @@ export class ExtensionContextTest {
                 let tartgetNode = await rootNode.findElement('content', 'button1');
                 console.info("setAccessibilityFocus tartgetNode: " + JSON.stringify(tartgetNode));
                 if (tartgetNode) {
-                    isFocus = await tartgetNode[0].performAction("clearAccessibilityFocus");
-                    console.info("setAccessibilityFocus isFocus: " + JSON.stringify(isFocus));
+                    await tartgetNode[0].performAction("clearAccessibilityFocus");
                 }
             }
         }
@@ -295,9 +293,13 @@ export class ExtensionContextTest {
         let result = true;
         this.context.setTargetBundleName(bundleName, (err, res) => {
             console.info(caseName + " res: " + JSON.stringify(res));
-            if (err.code != 0) {
+            if (err && err.code != 0) {
                 console.error(caseName + " err: " + JSON.stringify(err.code));
-                result = false;
+                if ((bundleName.length == 0 || bundleName[0] == 'aaa') && err && err.code != 0) {
+                    result = true;
+                } else {
+                    result = false;
+                }
             }
             this.publishCaseResult(caseName, result);
         });
@@ -310,7 +312,11 @@ export class ExtensionContextTest {
             this.publishCaseResult(caseName, result);
         }).catch((error) => {
             console.error(caseName + " error: " + JSON.stringify(error));
-            result = false;
+            if ((bundleName.length == 0 || bundleName[0] == 'aaa') && error && error.code != 0) {
+                result = true;
+            } else {
+                result = false;
+            }
             this.publishCaseResult(caseName, result);
         });
     }
@@ -319,7 +325,7 @@ export class ExtensionContextTest {
         let result = false;
         this.context.getWindowRootElement(async (err, res) => {
             console.info(caseName + " res: " + JSON.stringify(res));
-            if (err.code != 0) {
+            if (err && err.code != 0) {
                 console.error(caseName + " err: " + JSON.stringify(err.code));
             }
             if (res == undefined) {
@@ -339,21 +345,16 @@ export class ExtensionContextTest {
         let result = false;
         if ((windowId == -1) || (windowId == 1000)){
             this.context.getWindowRootElement(-1, async (err, res) => {
-                console.info(caseName + " res: " + JSON.stringify(res));
-                if (err.code != 0) {
+                if (err && err.code != 0) {
                     console.error(caseName + " err: " + JSON.stringify(err.code));
-                    result = true
-                }
-                if (res == undefined) {
-                    console.error(caseName + " res is undefined");
-                    result = true
+                    result = true;
                 }
                 this.publishCaseResult(caseName, result); 
             });
         } else {
             this.context.getWindowRootElement(windowId, async (err, res) => {
                 console.info(caseName + " res: " + JSON.stringify(res));
-                if (err.code != 0) {
+                if (err && err.code != 0) {
                     console.error(caseName + " err: " + JSON.stringify(err.code));
                 }
                 if (res == undefined) {
@@ -374,12 +375,6 @@ export class ExtensionContextTest {
         let result = false;
         if ((windowId == -1) || (windowId == 1000)){
             this.context.getWindowRootElement(-1).then(async (res) => {
-                console.info(caseName + " res: " + JSON.stringify(res));
-                if (res == undefined) {
-                    console.error(caseName + " res is undefined");
-                    result = true;
-                }
-
                 this.publishCaseResult(caseName, result);
                 }).catch((error) => {
                     console.error(caseName + " error: " + JSON.stringify(error));
@@ -411,7 +406,7 @@ export class ExtensionContextTest {
         let result = false;
         this.context.getWindows((err, res) => {
             console.info(caseName + " res: " + JSON.stringify(res));
-            if (err.code != 0) {
+            if (err && err.code != 0) {
                 console.error(caseName + " err: " + JSON.stringify(err.code));
             }
             if (res == undefined) {
@@ -429,11 +424,11 @@ export class ExtensionContextTest {
     private async getWindowsByIdCallback(caseName: string, displayId: number) {
         let result = false;
         console.info(caseName + " displayId: " + JSON.stringify(displayId));
-        if (displayId == -1) {
-            this.context.getWindows(displayId, (err, res) => {
+        if (displayId == -1 || displayId == 100) {
+            this.context.getWindows(-1, (err, res) => {
                 console.info(caseName + " res: " + JSON.stringify(res));
                 if (err.code != 0) {
-                    console.error(caseName + " err: " + JSON.stringify(err.code));
+                console.error(caseName + " err: " + JSON.stringify(err.code));
                     result = true;
                 }
                 this.publishCaseResult(caseName, result);
@@ -441,7 +436,7 @@ export class ExtensionContextTest {
         } else {
             this.context.getWindows(displayId, (err, res) => {
                 console.info(caseName + " res: " + JSON.stringify(res));
-                if (err.code != 0) {
+                if (err && err.code != 0) {
                     console.error(caseName + " err: " + JSON.stringify(err.code));
                 }
                 if (res) {
@@ -458,18 +453,21 @@ export class ExtensionContextTest {
         let result = false;
         console.info(caseName + " displayId: " + JSON.stringify(displayId));
         if (displayId == -1) {
-            this.context.getWindows(-1, (err, res) => {
-                console.info(caseName + " res: " + JSON.stringify(res));
-                if (err.code != 0) {
-                    console.error(caseName + " err: " + JSON.stringify(err.code));
+            this.context.getWindows(displayId).then(async (res) => {
+                result = false;
+                this.publishCaseResult(caseName, result);
+            }).catch((err) => {
+                console.error(caseName + 'err:' + JSON.stringify(err));
+                if (err && err.code != 0) {
                     result = true;
                 }
                 this.publishCaseResult(caseName, result);
             });
+
         } else {
             this.context.getWindows(displayId, (err, res) => {
                 console.info(caseName + " res: " + JSON.stringify(res));
-                if (err.code != 0) {
+                if (err && err.code != 0) {
                     console.error(caseName + " err: " + JSON.stringify(err.code));
                 }
                 if (res) {
@@ -486,7 +484,7 @@ export class ExtensionContextTest {
         let result = false;
         this.context.getFocusElement((err, res) => {
             console.info(caseName + "res: " + JSON.stringify(res));
-            if (err.code != 0) {
+            if (err && err.code != 0) {
                 console.error(caseName + "err: " + JSON.stringify(err.code));
                 result = true;
             }
@@ -510,7 +508,7 @@ export class ExtensionContextTest {
                     }
                     this.publishCaseResult(caseName, result);
                 } else {
-                    if (err.code != 0) {
+                    if (err && err.code != 0) {
                         console.error(caseName + "err: " + JSON.stringify(err.code));
                         result = true;
                     }
@@ -523,7 +521,7 @@ export class ExtensionContextTest {
         } else {
             this.context.getFocusElement(false, (err, res) => {
                 console.info(caseName + "res: " + JSON.stringify(res));
-                if (err.code != 0) {
+                if (err && err.code != 0) {
                     console.error(caseName + "err: " + JSON.stringify(err.code));
                     result = true;
                 }
@@ -579,12 +577,8 @@ export class ExtensionContextTest {
         let result = false;
         if (gesturePath == undefined) {
             this.context.injectGesture(gesturePath, (err, res) => {
-                console.info(caseName + " res: " + JSON.stringify(res));
-                if (err.code != 0) {
+                if (err && err.code != 0) {
                     console.error(caseName + " err: " + JSON.stringify(err.code));
-                    result = true;
-                }
-                if (res == undefined) {
                     result = true;
                 }
                 this.publishCaseResult(caseName, result);
@@ -593,7 +587,7 @@ export class ExtensionContextTest {
             this.context.injectGesture(gesturePath, (err, res) => {
                 console.info(caseName + " res: " + JSON.stringify(res));
                 result = true;
-                if (err.code != 0) {
+                if (err && err.code != 0) {
                     console.error(caseName + " err: " + JSON.stringify(err.code));
                     result = false;
                 }
@@ -607,14 +601,12 @@ export class ExtensionContextTest {
         let result = false;
         if (gesturePath == undefined) {
             this.context.injectGesture(gesturePath).then((res) => {
-                console.info(caseName + " res: " + JSON.stringify(res));
-                if (res == undefined) {
-                    result = true;
-                }
                 this.publishCaseResult(caseName, result);
             }).catch ((err) => {
-                console.error(caseName + 'error:' + JSON.stringify(err));
-                result = true;
+                if (err && err.code != 0) {
+                    console.error(caseName + 'error:' + JSON.stringify(err));
+                    result = true;
+                }
                 this.publishCaseResult(caseName, result);
             });
         } else {
@@ -623,8 +615,10 @@ export class ExtensionContextTest {
                 result = true;
                 this.publishCaseResult(caseName, result);
             }).catch ((err) => {
-                console.error(caseName + 'error:' + JSON.stringify(err));
-                result = false;
+                if (err && err.code != 0) {
+                    console.error(caseName + 'error:' + JSON.stringify(err));
+                    result = true;
+                }
                 this.publishCaseResult(caseName, result);
             });
         }
