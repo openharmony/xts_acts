@@ -69,9 +69,9 @@ export default function albumCommitModifyPromise(abilityContext) {
          * @tc.desc      : album modify albumname
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_ALBUM_COMMITMODIFY_PROMISE_01', 0, async function (done) {
+        it('SUB_USERFILE_MGR_ALBUM_COMMITMODIFY_PROMISE_01', 2, async function (done) {
             const testNum = 'SUB_USERFILE_MGR_ALBUM_COMMITMODIFY_PROMISE_01';
             let currentFetchOp = albumFetchOps(testNum, 'Pictures/', 'DynamicPro');
             await albumCommitModify(done, testNum, currentFetchOp);

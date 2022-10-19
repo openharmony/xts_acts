@@ -38,6 +38,18 @@ export default function userFileMgrNoPermissionPromise(abilityContext) {
         afterAll(function () {
             console.info('afterAll case');
         });
+        
+        const getPhotoAlbumsTest = async function (done, testNum) {
+            try {
+                await userfilemgr.getPhotoAlbums(allFetchOp());
+                expect(false).assertTrue();
+                done();
+            } catch (error) {
+                console.info(`${testNum}, failed error: ${error}`)
+                expect(true).assertTrue();
+                done();
+            }
+        }
 
         const getPhotoAssetsTest = async function (done, testNum) {
             try {
@@ -51,9 +63,9 @@ export default function userFileMgrNoPermissionPromise(abilityContext) {
             }
         }
 
-        const getPhotoAlbumsTest = async function (done, testNum) {
+        const getAudioAssetsTest = async function (done, testNum) {
             try {
-                await userfilemgr.getPhotoAlbums(allFetchOp());
+                await userfilemgr.getAudioAssets(allFetchOp());
                 expect(false).assertTrue();
                 done();
             } catch (error) {
@@ -64,31 +76,42 @@ export default function userFileMgrNoPermissionPromise(abilityContext) {
         }
 
         /**
-         * @tc.number    : SUB_USERFILE_MGR_GETFILEASSETS_NOPERMISSION_PROMISE_01
-         * @tc.name      : getPhotoAssets
-         * @tc.desc      : getPhotoAssets(image) with no permission
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_USERFILE_MGR_GETFILEASSETS_NOPERMISSION_PROMISE_01', 0, async function (done) {
-            const testNum = 'SUB_USERFILE_MGR_GETFILEASSETS_NOPERMISSION_PROMISE_01';
-            await getPhotoAssetsTest(done, testNum);
-        });
-
-        //--------------------------------------------------------------------------------------
-
-        /**
          * @tc.number    : SUB_USERFILE_MGR_GETALBUMS_NOPERMISSION_PROMISE_01
          * @tc.name      : getPhotoAlbums
          * @tc.desc      : getPhotoAlbums with no permission
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 1
          */
-        it('SUB_USERFILE_MGR_GETALBUMS_NOPERMISSION_PROMISE_01', 0, async function (done) {
+        it('SUB_USERFILE_MGR_GETALBUMS_NOPERMISSION_PROMISE_01', 1, async function (done) {
             const testNum = 'SUB_USERFILE_MGR_GETALBUMS_NOPERMISSION_PROMISE_01';
             await getPhotoAlbumsTest(done, testNum);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_GETPHOTOASSETS_NOPERMISSION_PROMISE_01
+         * @tc.name      : getPhotoAssets
+         * @tc.desc      : getPhotoAssets with no permission
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 1
+         */
+        it('SUB_USERFILE_MGR_GETPHOTOASSETS_NOPERMISSION_PROMISE_01', 1, async function (done) {
+            const testNum = 'SUB_USERFILE_MGR_GETPHOTOASSETS_NOPERMISSION_PROMISE_01';
+            await getPhotoAssetsTest(done, testNum);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_GETAUDIOASSETS_NOPERMISSION_PROMISE_01
+         * @tc.name      : getAudioAssets
+         * @tc.desc      : getAudioAssets with no permission
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 1
+         */
+         it('SUB_USERFILE_MGR_GETAUDIOASSETS_NOPERMISSION_PROMISE_01', 1, async function (done) {
+            const testNum = 'SUB_USERFILE_MGR_GETAUDIOASSETS_NOPERMISSION_PROMISE_01';
+            await getAudioAssetsTest(done, testNum);
         });
     });
 }

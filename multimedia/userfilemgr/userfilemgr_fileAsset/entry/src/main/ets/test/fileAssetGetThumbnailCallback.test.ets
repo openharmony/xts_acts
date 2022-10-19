@@ -43,7 +43,7 @@ export default function fileAssetGetThumbnailCallbackTest(abilityContext) {
             console.info('afterAll case');
         });
 
-        async function testGetThumbnail(done, testNum, fetchOp, size, isAudio) {
+        async function getThumbnailTest(done, testNum, fetchOp, size, isAudio) {
             try {
                 let fetchAssetResult;
                 if (isAudio) {
@@ -92,6 +92,8 @@ export default function fileAssetGetThumbnailCallbackTest(abilityContext) {
                                 done();
                                 return;
                             }
+                            size.width = (size.width == undefined) ? 256 : Math.floor(size.width);
+                            size.height = (size.height == undefined) ? 256 : Math.floor(size.height);
                             console.info(`${testNum}:: width :${info.size.width} height :${info.size.height}`);
                             expect(info.size.width).assertEqual(size.width);
                             expect(info.size.height).assertEqual(size.height);
@@ -106,20 +108,49 @@ export default function fileAssetGetThumbnailCallbackTest(abilityContext) {
             }
         }
 
+        async function getThumbnailErrorSizeTest(done, testNum, fetchOp, size, isAudio) {
+            try {
+                let fetchAssetResult;
+                if (isAudio) {
+                    fetchAssetResult = await userfilemgr.getAudioAssets(fetchOp);
+                } else {
+                    fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOp);
+                }
+                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchAssetResult, 1);
+                if (!checkAssetCountPass) return;
+                let asset = await fetchAssetResult.getFirstObject();
+                fetchAssetResult.close();
+                asset.getThumbnail(size, async (err, pixelmap) => {
+                    if (err != undefined) {
+                        console.info(`${testNum}:: err1 :${err}`);
+                        expect(true).assertTrue();
+                        done();
+                        return;
+                    }
+                    expect(false).assertTrue();
+                    done();
+                })
+            } catch (error) {
+                console.info(`${testNum}:: error :${error}`);
+                expect(false).assertTrue();
+                done();
+            }
+        }
+
         /**
          * @tc.number    : SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_01_001
          * @tc.name      : getThumbnail
          * @tc.desc      : getThumbnail(image) by no arg
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_01_001', 0, async function (done) {
+        it('SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_01_001', 2, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_01_001';
             let dOp = imageVideoNameFetchOps(testNum, 'Pictures/Thumbnail/', '01.jpg');
             let size = 'default';
             let isAudio = false;
-            await testGetThumbnail(done, testNum, dOp, size, isAudio);
+            await getThumbnailTest(done, testNum, dOp, size, isAudio);
         });
 
         /**
@@ -128,78 +159,366 @@ export default function fileAssetGetThumbnailCallbackTest(abilityContext) {
          * @tc.desc      : getThumbnail(image) by { width: 128, height: 128 }
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_01_002', 0, async function (done) {
+        it('SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_01_002', 2, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_01_002';
             let dOp = imageVideoNameFetchOps(testNum, 'Pictures/Thumbnail/', '02.jpg');
             let size = { width: 128, height: 128 };
             let isAudio = false;
-            await testGetThumbnail(done, testNum, dOp, size, isAudio);
+            await getThumbnailTest(done, testNum, dOp, size, isAudio);
         });
 
         /**
-         * @tc.number    : SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_02_001
+         * @tc.number    : SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_01_003
          * @tc.name      : getThumbnail
-         * @tc.desc      : getThumbnail(audio) by no arg
+         * @tc.desc      : getThumbnail(image) by { width: 128 }
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_02_001', 0, async function (done) {
+         it('SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_01_003', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_01_003';
+            let dOp = imageVideoNameFetchOps(testNum, 'Pictures/Thumbnail/', '02.jpg');
+            let size = { width: 128 };
+            let isAudio = false;
+            await getThumbnailTest(done, testNum, dOp, size, isAudio);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_01_004
+         * @tc.name      : getThumbnail
+         * @tc.desc      : getThumbnail(image) by { height: 128 }
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+         it('SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_01_004', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_01_004';
+            let dOp = imageVideoNameFetchOps(testNum, 'Pictures/Thumbnail/', '02.jpg');
+            let size = { height: 128 };
+            let isAudio = false;
+            await getThumbnailTest(done, testNum, dOp, size, isAudio);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_01_005
+         * @tc.name      : getThumbnail
+         * @tc.desc      : getThumbnail(image) by { width: 1, height: 1 }
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+         it('SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_01_005', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_01_005';
+            let dOp = imageVideoNameFetchOps(testNum, 'Pictures/Thumbnail/', '02.jpg');
+            let size = { width: 1, height: 1 };
+            let isAudio = false;
+            await getThumbnailTest(done, testNum, dOp, size, isAudio);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_01_006
+         * @tc.name      : getThumbnail
+         * @tc.desc      : getThumbnail(image) by { width: 1.1, height: 1.1 }
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+         it('SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_01_006', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_01_006';
+            let dOp = imageVideoNameFetchOps(testNum, 'Pictures/Thumbnail/', '02.jpg');
+            let size = { width: 1.1, height: 1.1 };
+            let isAudio = false;
+            await getThumbnailTest(done, testNum, dOp, size, isAudio);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_01_007
+         * @tc.name      : getThumbnail
+         * @tc.desc      : getThumbnail(image) by { width: 0, height: 0 }
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+         it('SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_01_007', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_01_007';
+            let dOp = imageVideoNameFetchOps(testNum, 'Pictures/Thumbnail/', '02.jpg');
+            let size = { width: 0, height: 0 };
+            let isAudio = false;
+            await getThumbnailErrorSizeTest(done, testNum, dOp, size, isAudio);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_01_008
+         * @tc.name      : getThumbnail
+         * @tc.desc      : getThumbnail(image) by { width: -128, height: -128 }
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+         it('SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_01_008', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_01_008';
+            let dOp = imageVideoNameFetchOps(testNum, 'Pictures/Thumbnail/', '02.jpg');
+            let size = { width: -128, height: -128 };
+            let isAudio = false;
+            await getThumbnailErrorSizeTest(done, testNum, dOp, size, isAudio);
+        });
+        
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_02_001
+         * @tc.name      : getThumbnail
+         * @tc.desc      : getThumbnail(video) by no arg
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+        it('SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_02_001', 2, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_02_001';
-            let dOp = audioNameFetchOps(testNum, 'Audios/Thumbnail/', '01.mp3');
+            let dOp = imageVideoNameFetchOps(testNum, 'Videos/Thumbnail/', '01.mp4');
             let size = 'default';
-            let isAudio = true;
-            await testGetThumbnail(done, testNum, dOp, size, isAudio);
+            let isAudio = false;
+            await getThumbnailTest(done, testNum, dOp, size, isAudio);
         });
 
         /**
          * @tc.number    : SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_02_002
          * @tc.name      : getThumbnail
-         * @tc.desc      : getThumbnail(audio) by { width: 128, height: 128 }
+         * @tc.desc      : getThumbnail(video) by { width: 128, height: 128 }
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_02_002', 0, async function (done) {
+        it('SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_02_002', 2, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_02_002';
-            let dOp = audioNameFetchOps(testNum, 'Audios/Thumbnail/', '02.mp3');
+            let dOp = imageVideoNameFetchOps(testNum, 'Videos/Thumbnail/', '02.mp4');
             let size = { width: 128, height: 128 };
-            let isAudio = true;
-            await testGetThumbnail(done, testNum, dOp, size, isAudio);
+            let isAudio = false;
+            await getThumbnailTest(done, testNum, dOp, size, isAudio);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_02_003
+         * @tc.name      : getThumbnail
+         * @tc.desc      : getThumbnail(video) by { width: 128 }
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+         it('SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_02_003', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_02_003';
+            let dOp = imageVideoNameFetchOps(testNum, 'Videos/Thumbnail/', '02.mp4');
+            let size = { width: 128 };
+            let isAudio = false;
+            await getThumbnailTest(done, testNum, dOp, size, isAudio);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_02_004
+         * @tc.name      : getThumbnail
+         * @tc.desc      : getThumbnail(video) by { height: 128 }
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+         it('SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_02_004', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_02_004';
+            let dOp = imageVideoNameFetchOps(testNum, 'Videos/Thumbnail/', '02.mp4');
+            let size = { height: 128 };
+            let isAudio = false;
+            await getThumbnailTest(done, testNum, dOp, size, isAudio);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_02_005
+         * @tc.name      : getThumbnail
+         * @tc.desc      : getThumbnail(video) by { width: 1, height: 1 }
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+         it('SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_02_005', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_02_005';
+            let dOp = imageVideoNameFetchOps(testNum, 'Videos/Thumbnail/', '02.mp4');
+            let size = { width: 1, height: 1 };
+            let isAudio = false;
+            await getThumbnailTest(done, testNum, dOp, size, isAudio);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_02_006
+         * @tc.name      : getThumbnail
+         * @tc.desc      : getThumbnail(video) by { width: 1.1, height: 1.1 }
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+         it('SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_02_006', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_02_006';
+            let dOp = imageVideoNameFetchOps(testNum, 'Videos/Thumbnail/', '02.mp4');
+            let size = { width: 1.1, height: 1.1 };
+            let isAudio = false;
+            await getThumbnailTest(done, testNum, dOp, size, isAudio);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_02_007
+         * @tc.name      : getThumbnail
+         * @tc.desc      : getThumbnail(video) by { width: 0, height: 0 }
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+         it('SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_02_007', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_02_007';
+            let dOp = imageVideoNameFetchOps(testNum, 'Videos/Thumbnail/', '02.mp4');
+            let size = { width: 0, height: 0 };
+            let isAudio = false;
+            await getThumbnailErrorSizeTest(done, testNum, dOp, size, isAudio);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_02_008
+         * @tc.name      : getThumbnail
+         * @tc.desc      : getThumbnail(video) by { width: -128, height: -128 }
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+         it('SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_02_008', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_02_008';
+            let dOp = imageVideoNameFetchOps(testNum, 'Videos/Thumbnail/', '02.mp4');
+            let size = { width: -128, height: -128 };
+            let isAudio = false;
+            await getThumbnailErrorSizeTest(done, testNum, dOp, size, isAudio);
         });
 
         /**
          * @tc.number    : SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_03_001
          * @tc.name      : getThumbnail
-         * @tc.desc      : getThumbnail(video) by no arg
+         * @tc.desc      : getThumbnail(audio) by no arg
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_03_001', 0, async function (done) {
+         it('SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_03_001', 2, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_03_001';
-            let dOp = imageVideoNameFetchOps(testNum, 'Videos/Thumbnail/', '01.mp4');
+            let dOp = audioNameFetchOps(testNum, 'Audios/Thumbnail/', '01.mp3');
             let size = 'default';
-            let isAudio = false;
-            await testGetThumbnail(done, testNum, dOp, size, isAudio);
+            let isAudio = true;
+            await getThumbnailTest(done, testNum, dOp, size, isAudio);
         });
 
         /**
          * @tc.number    : SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_03_002
          * @tc.name      : getThumbnail
-         * @tc.desc      : getThumbnail(video) by { width: 128, height: 128 }
+         * @tc.desc      : getThumbnail(audio) by { width: 128, height: 128 }
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_03_002', 0, async function (done) {
+        it('SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_03_002', 2, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_03_002';
-            let dOp = imageVideoNameFetchOps(testNum, 'Videos/Thumbnail/', '02.mp4');
+            let dOp = audioNameFetchOps(testNum, 'Audios/Thumbnail/', '02.mp3');
             let size = { width: 128, height: 128 };
-            let isAudio = false;
-            await testGetThumbnail(done, testNum, dOp, size, isAudio);
+            let isAudio = true;
+            await getThumbnailTest(done, testNum, dOp, size, isAudio);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_03_003
+         * @tc.name      : getThumbnail
+         * @tc.desc      : getThumbnail(audio) by { width: 128 }
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+         it('SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_03_003', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_03_003';
+            let dOp = audioNameFetchOps(testNum, 'Audios/Thumbnail/', '02.mp3');
+            let size = { width: 128 };
+            let isAudio = true;
+            await getThumbnailTest(done, testNum, dOp, size, isAudio);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_03_004
+         * @tc.name      : getThumbnail
+         * @tc.desc      : getThumbnail(audio) by { height: 128 }
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+         it('SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_03_004', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_03_004';
+            let dOp = audioNameFetchOps(testNum, 'Audios/Thumbnail/', '02.mp3');
+            let size = { height: 128 };
+            let isAudio = true;
+            await getThumbnailTest(done, testNum, dOp, size, isAudio);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_03_005
+         * @tc.name      : getThumbnail
+         * @tc.desc      : getThumbnail(audio) by { width: 1, height: 1 }
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+         it('SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_03_005', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_03_005';
+            let dOp = audioNameFetchOps(testNum, 'Audios/Thumbnail/', '02.mp3');
+            let size = { width: 1, height: 1 };
+            let isAudio = true;
+            await getThumbnailTest(done, testNum, dOp, size, isAudio);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_03_006
+         * @tc.name      : getThumbnail
+         * @tc.desc      : getThumbnail(audio) by { width: 1.1, height: 1.1 }
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+         it('SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_03_006', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_03_006';
+            let dOp = audioNameFetchOps(testNum, 'Audios/Thumbnail/', '02.mp3');
+            let size = { width: 1.1, height: 1.1 };
+            let isAudio = true;
+            await getThumbnailTest(done, testNum, dOp, size, isAudio);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_03_007
+         * @tc.name      : getThumbnail
+         * @tc.desc      : getThumbnail(audio) by { width: 0, height: 0 }
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+         it('SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_03_007', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_03_007';
+            let dOp = audioNameFetchOps(testNum, 'Audios/Thumbnail/', '02.mp3');
+            let size = { width: 0, height: 0 };
+            let isAudio = true;
+            await getThumbnailErrorSizeTest(done, testNum, dOp, size, isAudio);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_03_008
+         * @tc.name      : getThumbnail
+         * @tc.desc      : getThumbnail(audio) by { width: -128, height: -128 }
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+         it('SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_03_008', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_FILEASSET_GETTHUMBNAIL_CALLBACK_03_008';
+            let dOp = audioNameFetchOps(testNum, 'Audios/Thumbnail/', '02.mp3');
+            let size = { width: -128, height: -128 };
+            let isAudio = true;
+            await getThumbnailErrorSizeTest(done, testNum, dOp, size, isAudio);
         });
     });
 }
