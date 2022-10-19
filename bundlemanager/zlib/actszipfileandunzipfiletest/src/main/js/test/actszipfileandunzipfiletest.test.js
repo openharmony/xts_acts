@@ -20,6 +20,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 
 var dir = "";
 var infos = "";
+var SRC_FILE_INVALID = 90001;
 export default function ActsZlibTest() {
 describe('ActsZlibTest', function () {
     beforeEach(async (done) => {
@@ -1093,6 +1094,153 @@ it('ACTS_ZipFile_5000', 0, async function (done) {
     });
     console.log("==================ACTS_ZipFile_5000 end==================");
     })
+
+/*
+* @tc.number: SUB_BMS_TOOL_ZLIB_0076
+* @tc.name: compressFile success
+* @tc.desc: inFile and out file is valid
+*/
+it('SUB_BMS_TOOL_ZLIB_0077', 0, async function (done) {
+  console.log("==================ACTS_compressFile_0100 start==================");
+  var path = dir + "/SUB_BMS_TOOL_ZLIB_0077.txt";
+  var zipDest = dir + "/SUB_BMS_TOOL_ZLIB_0077.zip";
+  var fd = fileio.openSync(path, 0o100 | 0o2, 0o666);
+  fileio.write(fd, infos).then(function (number) {
+    console.info("SUB_BMS_TOOL_ZLIB_0077 write data to file successfully :" + number);
+    var options = {};
+    options.level = zlib.CompressLevel.COMPRESS_LEVEL_DEFAULT_COMPRESSION;
+    console.info("SUB_BMS_TOOL_ZLIB_0077 start compressFile");
+    zlib.compressFile(path, zipDest, options).then((data) => {
+      console.log("SUB_BMS_TOOL_ZLIB_0077 data: " + data);
+      var zipStat = fileio.statSync(zipDest);
+      var isFile = zipStat.isFile();
+      expect(isFile).assertTrue();
+      var srcSize = fileio.statSync(path).size;
+      var destSize = zipStat.size;
+      expect(srcSize > destSize).assertTrue();
+      expect(data).assertEqual(null);
+      done();
+    }).catch((err) => {
+      console.log("SUB_BMS_TOOL_ZLIB_0077 zipFile fail: " + err);
+      expect(data).assertFail();
+    })
+  }).catch(function (err) {
+    console.info("SUB_BMS_TOOL_ZLIB_0077 write data to file failed with error:" + err);
+    expect(err).assertFail();
+    done();
+  });
+  console.log("==================SUB_BMS_TOOL_ZLIB_0077 end==================");
+})
+
+/*
+* @tc.number: SUB_BMS_TOOL_ZLIB_0077
+* @tc.name: compressFile src file is invalid
+* @tc.desc: inFile is not exist
+*/
+it('SUB_BMS_TOOL_ZLIB_0078', 0, async function (done) {
+  console.log("==================SUB_BMS_TOOL_ZLIB_0078 start==================");
+  var path ="nonexist.txt";
+  var zipDest = dir + "/SUB_BMS_TOOL_ZLIB_0078.zip"
+  var options = {};
+  options.level = zlib.CompressLevel.COMPRESS_LEVEL_NO_COMPRESSION;
+  zlib.compressFile(path, zipDest, options).then((data) => {
+    console.log("SUB_BMS_TOOL_ZLIB_0078 invalid src file success!")
+    expect(data).assertFail();
+    done();
+  }).catch((err) => {
+    console.log("SUB_BMS_TOOL_ZLIB_0078 zipFile fail: " + err);
+    expect(err.code).assertEqual(SRC_FILE_INVALID);
+    done();
+  })
+  console.log("==================SUB_BMS_TOOL_ZLIB_0078 end==================");
+})
+
+/*
+* @tc.number: SUB_BMS_TOOL_ZLIB_0077
+* @tc.name: decompressFile success
+* @tc.desc: inFile and out file is valid
+*/
+it('SUB_BMS_TOOL_ZLIB_0087', 0, async function (done) {
+  console.log("==================SUB_BMS_TOOL_ZLIB_0087 start==================");
+  var path = dir + "/SUB_BMS_TOOL_ZLIB_0087.txt";
+  var zipDest = dir + "/SUB_BMS_TOOL_ZLIB_0087.zip"
+  var unzipdir = dir + "/SUB_BMS_TOOL_ZLIB_0087";
+  var finalFile =  unzipdir + "/SUB_BMS_TOOL_ZLIB_0087.txt";
+  var options = {};
+  options.strategy = zlib.CompressStrategy.COMPRESS_STRATEGY_FIXED;
+  var fd = fileio.openSync(path, 0o100 | 0o2, 0o666);
+  fileio.write(fd, infos).then(function (number) {
+    console.info("SUB_BMS_TOOL_ZLIB_0087 write data to file successfully:" + number);
+    zlib.compressFile(path, zipDest, options).then(data => {
+      var zipStat = fileio.statSync(zipDest);
+      var isFile = zipStat.isFile();
+      expect(isFile).assertTrue();
+      var srcSize = fileio.statSync(path).size;
+      var destSize = zipStat.size;
+      expect(srcSize > destSize).assertTrue();
+      expect(data).assertEqual(null);
+      fileio.mkdir(unzipdir).then(function () {
+        console.info("SUB_BMS_TOOL_ZLIB_0087 mkdir successfully");
+        zlib.decompressFile(zipDest, unzipdir, options).then(data => {
+          console.log("SUB_BMS_TOOL_ZLIB_0087 data: " + data);
+          var zipStat = fileio.statSync(finalFile);
+          var isFile = zipStat.isFile();
+          expect(isFile).assertTrue();
+          expect(data).assertEqual(null);
+          done();
+        }).catch(err => {
+          console.log("decomepressFile fail: " + err);
+          expect(err).assertFail();
+          done();
+        })
+      }).catch(function (error) {
+        console.info("SUB_BMS_TOOL_ZLIB_0087 mkdir failed with error:" + error);
+        expect(error).assertFail();
+        done();
+      });
+    }).catch(err => {
+      console.log("compress fail: " + err);
+      expect(err).assertFail();
+      done();
+    })
+  }).catch(function (err) {
+    console.info("SUB_BMS_TOOL_ZLIB_0087 write data to file failed with error:" + err);
+    expect(err).assertFail();
+    done();
+  });
+  console.log("==================SUB_BMS_TOOL_ZLIB_0087 end==================");
+  })
+
+/*
+* @tc.number: ACTS_decompressFile_0200
+* @tc.name: decompressFile src file invalid
+* @tc.desc: inFile is empty
+*/
+it('SUB_BMS_TOOL_ZLIB_0088', 0, async function (done) {
+  console.log("==================SUB_BMS_TOOL_ZLIB_0088 start==================");
+  var zipDest = dir + "/noneexist.zip"
+  var unzipdir = dir + "/SUB_BMS_TOOL_ZLIB_0088";
+  var options = {};
+  options.strategy = zlib.CompressStrategy.COMPRESS_STRATEGY_FIXED;
+  fileio.mkdir(unzipdir).then(function () {
+    console.info("SUB_BMS_TOOL_ZLIB_0088 mkdir successfully");
+    zlib.decompressFile(zipDest, unzipdir, options).then(data => {
+      console.log("SUB_BMS_TOOL_ZLIB_0088 data: " + data);
+      expect(data).assertEqual(null);
+      done();
+    }).catch(err => {
+      console.log("decompress fail: " + err);
+      expect(err.code).assertEqual(SRC_FILE_INVALID);
+      done();
+    })
+  }).catch(function (error) {
+    console.info("SUB_BMS_TOOL_ZLIB_0088 mkdir failed with error:" + error);
+    expect(error).assertFail();
+    done();
+  });
+  console.log("==================SUB_BMS_TOOL_ZLIB_0088 end==================");
+  })
+
 })
 }
 
