@@ -91,6 +91,37 @@ export default function getFileAssetsCallbackTest(abilityContext) {
             }
         }
 
+        async function getNextObjectTest(done, testNum, fetchOp, isAudio) {
+            try {
+                let fetchAssetResult;
+                if (isAudio) {
+                    fetchAssetResult = await userfilemgr.getAudioAssets(fetchOp);
+                } else {
+                    fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOp);
+                }
+                let expectCount = 4;
+                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchAssetResult, expectCount);
+                if (!checkAssetCountPass) return;
+                await fetchAssetResult.getFirstObject();
+                fetchAssetResult.getNextObject(async (err, asset) => {
+                    if (err) {
+                        console.info(`${testNum} err : ${err}`)
+                        expect.assertFail();
+                        fetchAssetResult.close();
+                        done();
+                        return;
+                    }
+                    expect(asset != undefined).assertTrue();
+                    fetchAssetResult.close();
+                });
+                done();
+            } catch (error) {
+                console.info(`${testNum}:: error :${error}`);
+                expect(false).assertTrue();
+                done();
+            }
+        }
+
         async function getLastObjectTest(done, testNum, fetchOp, isAudio) {
             try {
                 let fetchAssetResult;
@@ -180,6 +211,44 @@ export default function getFileAssetsCallbackTest(abilityContext) {
             }
         }
 
+        async function fetchResultCloseTest(done, testNum, fetchOp, isAudio) {
+            try {
+                let fetchAssetResult;
+                if (isAudio) {
+                    fetchAssetResult = await userfilemgr.getAudioAssets(fetchOp);
+                } else {
+                    fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOp);
+                }
+                let expectCount = 4;
+                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchAssetResult, expectCount);
+                if (!checkAssetCountPass) return;
+                fetchAssetResult.close();
+                let count = 0;
+                try {
+                    fetchAssetResult.getCount();
+                } catch { count++ }
+                try {
+                    await fetchAssetResult.getFirstObject();
+                } catch { count++ }
+                try {
+                    await fetchAssetResult.getNextObject();
+                } catch { count++ }
+                try {
+                    await fetchAssetResult.getLastObject();
+                } catch { count++ }
+                try {
+                    await fetchAssetResult.getPositionObject(0);
+                } catch { count++ }
+                await sleep(1000)
+                expect(count).assertEqual(5);
+                done();
+            } catch (error) {
+                console.info(`${testNum} error ${error}`);
+                expect(false).assertTrue();
+                done();
+            }
+        }
+
         async function checkFileAssetAttr(done, testNum, fetchOp, type, isAudio) {
             try {
                 let fetchAssetResult;
@@ -246,109 +315,156 @@ export default function getFileAssetsCallbackTest(abilityContext) {
         }
 
         /**
-         * @tc.number    : SUB_USERFILE_MGR_GETPHOTOASSETS_CALLBACK_01_001
+         * @tc.number    : SUB_USERFILE_MGR_GETFIRSTOBJECT_CALLBACK_01
          * @tc.name      : getFirstObject
          * @tc.desc      : getFirstObject query image assets
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_GETPHOTOASSETS_CALLBACK_01_001', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_GETPHOTOASSETS_CALLBACK_01_001';
+        it('SUB_USERFILE_MGR_GETFIRSTOBJECT_CALLBACK_01', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETFIRSTOBJECT_CALLBACK_01';
             let currentFetchOps = imageVideoFetchOps(testNum, 'Pictures/Static/');
             let isAudio = false;
             await getFirstObjectTest(done, testNum, currentFetchOps, isAudio);
         });
 
         /**
-         * @tc.number    : SUB_USERFILE_MGR_GETAUDIOASSETS_CALLBACK_01_002
-         * @tc.name      : getFirstObject
-         * @tc.desc      : getFirstObject query audio assets
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_USERFILE_MGR_GETAUDIOASSETS_CALLBACK_01_002', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_GETAUDIOASSETS_CALLBACK_01_002';
-            let currentFetchOps = audioFetchOps(testNum, 'Audios/Static/');
-            let isAudio = true;
-            await getFirstObjectTest(done, testNum, currentFetchOps, isAudio);
-        });
-
-        /**
-         * @tc.number    : SUB_USERFILE_MGR_GETPHOTOASSETS_CALLBACK_01_003
+         * @tc.number    : SUB_USERFILE_MGR_GETFIRSTOBJECT_CALLBACK_02
          * @tc.name      : getFirstObject
          * @tc.desc      : getFirstObject query video assets
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_GETPHOTOASSETS_CALLBACK_01_003', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_GETPHOTOASSETS_CALLBACK_01_003';
+        it('SUB_USERFILE_MGR_GETFIRSTOBJECT_CALLBACK_02', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETFIRSTOBJECT_CALLBACK_02';
             let currentFetchOps = imageVideoFetchOps(testNum, 'Videos/Static/');
             let isAudio = false;
+            await getFirstObjectTest(done, testNum, currentFetchOps, isAudio);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_GETFIRSTOBJECT_CALLBACK_03
+         * @tc.name      : getFirstObject
+         * @tc.desc      : getFirstObject query audio assets
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+         it('SUB_USERFILE_MGR_GETFIRSTOBJECT_CALLBACK_03', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETFIRSTOBJECT_CALLBACK_03';
+            let currentFetchOps = audioFetchOps(testNum, 'Audios/Static/');
+            let isAudio = true;
             await getFirstObjectTest(done, testNum, currentFetchOps, isAudio);
         });
 
         //------------------------------------------------------------------------------
 
         /**
-         * @tc.number    : SUB_USERFILE_MGR_GETPHOTOASSETS_CALLBACK_02_001
+         * @tc.number    : SUB_USERFILE_MGR_GETNEXTOBJECT_CALLBACK_01
+         * @tc.name      : getNextObject
+         * @tc.desc      : getNextObject query image assets
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+         it('SUB_USERFILE_MGR_GETNEXTOBJECT_CALLBACK_01', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETNEXTOBJECT_CALLBACK_01';
+            let currentFetchOps = imageVideoFetchOps(testNum, 'Pictures/Static/');
+            let isAudio = false;
+            await getNextObjectTest(done, testNum, currentFetchOps, isAudio);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_GETNEXTOBJECT_CALLBACK_02
+         * @tc.name      : getNextObject
+         * @tc.desc      : getNextObject query video assets
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+        it('SUB_USERFILE_MGR_GETNEXTOBJECT_CALLBACK_02', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETNEXTOBJECT_CALLBACK_02';
+            let currentFetchOps = imageVideoFetchOps(testNum, 'Videos/Static/');
+            let isAudio = false;
+            await getNextObjectTest(done, testNum, currentFetchOps, isAudio);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_GETNEXTOBJECT_CALLBACK_03
+         * @tc.name      : getNextObject
+         * @tc.desc      : getNextObject query audio assets
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+         it('SUB_USERFILE_MGR_GETNEXTOBJECT_CALLBACK_03', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETNEXTOBJECT_CALLBACK_03';
+            let currentFetchOps = audioFetchOps(testNum, 'Audios/Static/');
+            let isAudio = true;
+            await getNextObjectTest(done, testNum, currentFetchOps, isAudio);
+        });
+
+        //------------------------------------------------------------------------------
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_GETLASTOBJECT_CALLBACK_01
          * @tc.name      : getLastObject
          * @tc.desc      : getLastObject query image assets
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_GETPHOTOASSETS_CALLBACK_02_001', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_GETPHOTOASSETS_CALLBACK_02_001';
+        it('SUB_USERFILE_MGR_GETLASTOBJECT_CALLBACK_01', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETLASTOBJECT_CALLBACK_01';
             let currentFetchOps = imageVideoFetchOps(testNum, 'Pictures/Static/');
             let isAudio = false;
             await getLastObjectTest(done, testNum, currentFetchOps, isAudio);
         });
 
         /**
-         * @tc.number    : SUB_USERFILE_MGR_GETAUDIOASSETS_CALLBACK_02_002
-         * @tc.name      : getLastObject
-         * @tc.desc      : getLastObject query audio assets
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_USERFILE_MGR_GETAUDIOASSETS_CALLBACK_02_002', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_GETAUDIOASSETS_CALLBACK_02_002';
-            let currentFetchOps = audioFetchOps(testNum, 'Audios/Static/');
-            let isAudio = true;
-            await getLastObjectTest(done, testNum, currentFetchOps, isAudio);
-        });
-
-        /**
-         * @tc.number    : SUB_USERFILE_MGR_GETPHOTOASSETS_CALLBACK_02_003
+         * @tc.number    : SUB_USERFILE_MGR_GETLASTOBJECT_CALLBACK_02
          * @tc.name      : getLastObject
          * @tc.desc      : getLastObject query video assets
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_GETPHOTOASSETS_CALLBACK_02_003', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_GETPHOTOASSETS_CALLBACK_02_003';
+        it('SUB_USERFILE_MGR_GETLASTOBJECT_CALLBACK_02', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETLASTOBJECT_CALLBACK_02';
             let currentFetchOps = imageVideoFetchOps(testNum, 'Videos/Static/');
             let isAudio = false;
+            await getLastObjectTest(done, testNum, currentFetchOps, isAudio);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_GETLASTOBJECT_CALLBACK_03
+         * @tc.name      : getLastObject
+         * @tc.desc      : getLastObject query audio assets
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+         it('SUB_USERFILE_MGR_GETLASTOBJECT_CALLBACK_03', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETLASTOBJECT_CALLBACK_03';
+            let currentFetchOps = audioFetchOps(testNum, 'Audios/Static/');
+            let isAudio = true;
             await getLastObjectTest(done, testNum, currentFetchOps, isAudio);
         });
 
         //------------------------------------------------------------------------------
 
         /**
-         * @tc.number    : SUB_USERFILE_MGR_GETPHOTOASSETS_CALLBACK_03_001
+         * @tc.number    : SUB_USERFILE_MGR_GETPOSITIONOBJECT_CALLBACK_01
          * @tc.name      : getPositionObject
          * @tc.desc      : getPositionObject query image assets
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_GETPHOTOASSETS_CALLBACK_03_001', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_GETPHOTOASSETS_CALLBACK_03_001';
+        it('SUB_USERFILE_MGR_GETPOSITIONOBJECT_CALLBACK_01', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETPOSITIONOBJECT_CALLBACK_01';
             let currentFetchOps = imageVideoFetchOps(testNum, 'Pictures/Static/');
             let pos = 0;
             let isAudio = false;
@@ -356,96 +472,145 @@ export default function getFileAssetsCallbackTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB_USERFILE_MGR_GETAUDIOASSETS_CALLBACK_03_002
-         * @tc.name      : getPositionObject
-         * @tc.desc      : getPositionObject query audio assets
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_USERFILE_MGR_GETAUDIOASSETS_CALLBACK_03_002', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_GETAUDIOASSETS_CALLBACK_03_002';
-            let currentFetchOps = audioFetchOps(testNum, 'Audios/Static/');
-            let pos = 0;
-            let isAudio = true;
-            await getPositionObjectTest(done, testNum, currentFetchOps, pos, isAudio);
-        });
-
-        /**
-         * @tc.number    : SUB_USERFILE_MGR_GETPHOTOASSETS_CALLBACK_03_003
+         * @tc.number    : SUB_USERFILE_MGR_GETPOSITIONOBJECT_CALLBACK_02
          * @tc.name      : getPositionObject
          * @tc.desc      : getPositionObject query video assets
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_GETPHOTOASSETS_CALLBACK_03_003', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_GETPHOTOASSETS_CALLBACK_03_003';
+        it('SUB_USERFILE_MGR_GETPOSITIONOBJECT_CALLBACK_02', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETPOSITIONOBJECT_CALLBACK_02';
             let currentFetchOps = imageVideoFetchOps(testNum, 'Videos/Static/');
             let pos = 0;
             let isAudio = false;
+            await getPositionObjectTest(done, testNum, currentFetchOps, pos, isAudio);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_GETPOSITIONOBJECT_CALLBACK_03
+         * @tc.name      : getPositionObject
+         * @tc.desc      : getPositionObject query audio assets
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+         it('SUB_USERFILE_MGR_GETPOSITIONOBJECT_CALLBACK_03', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETPOSITIONOBJECT_CALLBACK_03';
+            let currentFetchOps = audioFetchOps(testNum, 'Audios/Static/');
+            let pos = 0;
+            let isAudio = true;
             await getPositionObjectTest(done, testNum, currentFetchOps, pos, isAudio);
         });
 
         //-----------------------------------------------------------------------------------
 
         /**
-         * @tc.number    : SUB_USERFILE_MGR_GETPHOTOASSETS_CALLBACK_04_001
+         * @tc.number    : SUB_USERFILE_MGR_ISAFTERLAST_CALLBACK_01
          * @tc.name      : isAfterLast
          * @tc.desc      : isAfterLast query image assets
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_GETPHOTOASSETS_CALLBACK_04_001', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_GETPHOTOASSETS_CALLBACK_04_001';
+        it('SUB_USERFILE_MGR_ISAFTERLAST_CALLBACK_01', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_ISAFTERLAST_CALLBACK_01';
             let currentFetchOps = imageVideoFetchOps(testNum, 'Pictures/Static/');
             let isAudio = false;
             await isAfterLastTest(done, testNum, currentFetchOps, isAudio);
         });
-
+        
         /**
-         * @tc.number    : SUB_USERFILE_MGR_GETAUDIOASSETS_CALLBACK_04_002
-         * @tc.name      : isAfterLast
-         * @tc.desc      : isAfterLast query audio assets
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_USERFILE_MGR_GETAUDIOASSETS_CALLBACK_04_002', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_GETAUDIOASSETS_CALLBACK_04_002';
-            let currentFetchOps = audioFetchOps(testNum, 'Audios/Static/');
-            let isAudio = true;
-            await isAfterLastTest(done, testNum, currentFetchOps, isAudio);
-        });
-
-        /**
-         * @tc.number    : SUB_USERFILE_MGR_GETPHOTOASSETS_CALLBACK_04_003
+         * @tc.number    : SUB_USERFILE_MGR_ISAFTERLAST_CALLBACK_02
          * @tc.name      : isAfterLast
          * @tc.desc      : isAfterLast query video assets
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_GETPHOTOASSETS_CALLBACK_04_003', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_GETPHOTOASSETS_CALLBACK_04_003';
+        it('SUB_USERFILE_MGR_ISAFTERLAST_CALLBACK_02', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_ISAFTERLAST_CALLBACK_02';
             let currentFetchOps = imageVideoFetchOps(testNum, 'Videos/Static/');
             let isAudio = false;
             await isAfterLastTest(done, testNum, currentFetchOps, isAudio);
         });
 
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_ISAFTERLAST_CALLBACK_03
+         * @tc.name      : isAfterLast
+         * @tc.desc      : isAfterLast query audio assets
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+         it('SUB_USERFILE_MGR_ISAFTERLAST_CALLBACK_03', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_ISAFTERLAST_CALLBACK_03';
+            let currentFetchOps = audioFetchOps(testNum, 'Audios/Static/');
+            let isAudio = true;
+            await isAfterLastTest(done, testNum, currentFetchOps, isAudio);
+        });
+
+
         //------------------------------------------------------------------------------
 
         /**
-         * @tc.number    : SUB_USERFILE_MGR_GETPHOTOASSETS_CALLBACK_05_001
+         * @tc.number    : SUB_USERFILE_MGR_FETCHRESULT_CLOSE_CALLBACK_01
+         * @tc.name      : close
+         * @tc.desc      : when fetchResult close,fetchResult getAsset is undefined?
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+         it('SUB_USERFILE_MGR_FETCHRESULT_CLOSE_CALLBACK_01', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_FETCHRESULT_CLOSE_CALLBACK_01';
+            let currentFetchOps = imageVideoFetchOps(testNum, 'Pictures/Static/');
+            let isAudio = false;
+            await fetchResultCloseTest(done, testNum, currentFetchOps, isAudio);
+        });
+        
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_FETCHRESULT_CLOSE_CALLBACK_02
+         * @tc.name      : close
+         * @tc.desc      : when fetchResult close,fetchResult getAsset is undefined?
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+        it('SUB_USERFILE_MGR_FETCHRESULT_CLOSE_CALLBACK_02', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_FETCHRESULT_CLOSE_CALLBACK_02';
+            let currentFetchOps = imageVideoFetchOps(testNum, 'Videos/Static/');
+            let isAudio = false;
+            await fetchResultCloseTest(done, testNum, currentFetchOps, isAudio);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_FETCHRESULT_CLOSE_CALLBACK_03
+         * @tc.name      : close
+         * @tc.desc      : when fetchResult close,fetchResult getAsset is undefined?
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+         it('SUB_USERFILE_MGR_FETCHRESULT_CLOSE_CALLBACK_03', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_FETCHRESULT_CLOSE_CALLBACK_03';
+            let currentFetchOps = audioFetchOps(testNum, 'Audios/Static/');
+            let isAudio = true;
+            await fetchResultCloseTest(done, testNum, currentFetchOps, isAudio);
+        });
+
+
+        //------------------------------------------------------------------------------
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_GETPHOTOASSETS_CALLBACK_01
          * @tc.name      : getPhotoAssets
          * @tc.desc      : query image assets
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 1
          */
-        it('SUB_USERFILE_MGR_GETPHOTOASSETS_CALLBACK_05_001', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_GETPHOTOASSETS_CALLBACK_05_001';
+        it('SUB_USERFILE_MGR_GETPHOTOASSETS_CALLBACK_01', 1, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETPHOTOASSETS_CALLBACK_01';
             let currentFetchOps = imageVideoFetchOps(testNum, 'Pictures/Static/');
             let type = 'image';
             let isAudio = false;
@@ -453,34 +618,34 @@ export default function getFileAssetsCallbackTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB_USERFILE_MGR_GETAUDIOASSETS_CALLBACK_05_002
-         * @tc.name      : getAudioAssets
-         * @tc.desc      : query audio assets
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_USERFILE_MGR_GETAUDIOASSETS_CALLBACK_05_002', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_GETAUDIOASSETS_CALLBACK_05_002';
-            let currentFetchOps = audioFetchOps(testNum, 'Audios/Static/');
-            let type = 'audio';
-            let isAudio = true;
-            await checkFileAssetAttr(done, testNum, currentFetchOps, type, isAudio);
-        });
-
-        /**
-         * @tc.number    : SUB_USERFILE_MGR_GETPHOTOASSETS_CALLBACK_05_003
+         * @tc.number    : SUB_USERFILE_MGR_GETPHOTOASSETS_CALLBACK_02
          * @tc.name      : getPhotoAssets
          * @tc.desc      : query video assets
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 1
          */
-        it('SUB_USERFILE_MGR_GETPHOTOASSETS_CALLBACK_05_003', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_GETPHOTOASSETS_CALLBACK_05_003';
+         it('SUB_USERFILE_MGR_GETPHOTOASSETS_CALLBACK_02', 1, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETPHOTOASSETS_CALLBACK_02';
             let currentFetchOps = imageVideoFetchOps(testNum, 'Videos/Static/');
             let type = 'video';
             let isAudio = false;
+            await checkFileAssetAttr(done, testNum, currentFetchOps, type, isAudio);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_GETPHOTOASSETS_CALLBACK_03
+         * @tc.name      : getAudioAssets
+         * @tc.desc      : query audio assets
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 1
+         */
+        it('SUB_USERFILE_MGR_GETPHOTOASSETS_CALLBACK_03', 1, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETPHOTOASSETS_CALLBACK_03';
+            let currentFetchOps = audioFetchOps(testNum, 'Audios/Static/');
+            let type = 'audio';
+            let isAudio = true;
             await checkFileAssetAttr(done, testNum, currentFetchOps, type, isAudio);
         });
 
@@ -492,24 +657,24 @@ export default function getFileAssetsCallbackTest(abilityContext) {
          * @tc.desc      : invalid FetchOptions
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 3
          */
-        it('SUB_USERFILE_MGR_GETPHOTOASSETS_ERRCODE_CALLBACK_01', 0, async function (done) {
+        it('SUB_USERFILE_MGR_GETPHOTOASSETS_ERRCODE_CALLBACK_01', 3, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_GETPHOTOASSETS_ERRCODE_CALLBACK_01';
             let isAudio = false;
             await getFileAssetsErrCodeTest(done, testNum, isAudio);
         });
 
         /**
-         * @tc.number    : SUB_USERFILE_MGR_GETPHOTOASSETS_ERRCODE_CALLBACK_02
+         * @tc.number    : SUB_USERFILE_MGR_GETAUDIOASSETS_ERRCODE_CALLBACK_01
          * @tc.name      : getPhotoAssets
          * @tc.desc      : invalid FetchOptions
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 3
          */
-        it('SUB_USERFILE_MGR_GETPHOTOASSETS_ERRCODE_CALLBACK_02', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_GETPHOTOASSETS_ERRCODE_CALLBACK_02';
+        it('SUB_USERFILE_MGR_GETAUDIOASSETS_ERRCODE_CALLBACK_01', 3, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETAUDIOASSETS_ERRCODE_CALLBACK_01';
             let isAudio = true;
             await getFileAssetsErrCodeTest(done, testNum, isAudio);
         });

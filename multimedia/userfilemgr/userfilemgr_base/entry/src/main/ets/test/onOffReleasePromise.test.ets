@@ -22,6 +22,7 @@ import {
     imageVideoFetchOps,
     checkPresetsAssets,
     checkAssetsCount,
+    albumFetchOps,
 } from '../../../../../../common';
 
 
@@ -71,9 +72,7 @@ export default function onOffReleasePromiseTest(abilityContext) {
         const offTest = async (done, testNum, fetchOp, type, newName, isAudio) => {
             try {
                 let count = 0;
-                userfilemgr.on(type, () => {
-                    count++;
-                });
+                userfilemgr.on(type, () => { count++; });
                 let fetchAssetResult;
                 if (isAudio) {
                     fetchAssetResult = await userfilemgr.getAudioAssets(fetchOp);
@@ -98,15 +97,15 @@ export default function onOffReleasePromiseTest(abilityContext) {
         }
 
         /** 
-         * @tc.number    : SUB_USERFILE_MGR_ON_PROMISE_01
+         * @tc.number    : SUB_USERFILE_MGR_ON_01
          * @tc.name      : ON
-         * @tc.desc      : ON image ASSET
+         * @tc.desc      : ON imageChange
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_ON_PROMISE_01', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_ON_PROMISE_01';
+        it('SUB_USERFILE_MGR_ON_01', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_ON_01';
             let currentFetchOps = imageVideoFetchOps(testNum, 'Pictures/On/');
             let type = 'imageChange';
             let newName = 'imageChange.jpg';
@@ -115,15 +114,32 @@ export default function onOffReleasePromiseTest(abilityContext) {
         });
 
         /** 
-         * @tc.number    : SUB_USERFILE_MGR_ON_PROMISE_02
+         * @tc.number    : SUB_USERFILE_MGR_ON_02
          * @tc.name      : ON
-         * @tc.desc      : ON audio ASSET
+         * @tc.desc      : ON videoChange
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_ON_PROMISE_02', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_ON_PROMISE_02';
+        it('SUB_USERFILE_MGR_ON_02', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_ON_02';
+            let currentFetchOps = imageVideoFetchOps(testNum, 'Videos/On/');
+            let type = 'videoChange';
+            let newName = 'videoChange.mp4';
+            let isAudio = false;
+            await onTest(done, testNum, currentFetchOps, type, newName, isAudio)
+        });
+
+        /** 
+         * @tc.number    : SUB_USERFILE_MGR_ON_03
+         * @tc.name      : ON
+         * @tc.desc      : ON audioChange
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+         it('SUB_USERFILE_MGR_ON_03', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_ON_03';
             let currentFetchOps = audioFetchOps(testNum, 'Audios/On/');
             let type = 'audioChange';
             let newName = 'audioChange.mp3';
@@ -132,32 +148,50 @@ export default function onOffReleasePromiseTest(abilityContext) {
         });
 
         /** 
-         * @tc.number    : SUB_USERFILE_MGR_ON_PROMISE_03
+         * @tc.number    : SUB_USERFILE_MGR_ON_04
          * @tc.name      : ON
-         * @tc.desc      : ON video ASSET
+         * @tc.desc      : ON albumChange
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_ON_PROMISE_03', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_ON_PROMISE_03';
-            let currentFetchOps = imageVideoFetchOps(testNum, 'Videos/On/');
-            let type = 'videoChange';
-            let newName = 'videoChange.mp4';
-            let isAudio = false;
-            await onTest(done, testNum, currentFetchOps, type, newName, isAudio)
+         it('SUB_USERFILE_MGR_ON_04', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_ON_04';
+            try {
+                let currentFetchOps = albumFetchOps(testNum, 'Pictures/', 'On');
+                let type: userFileManager.ChangeEvent = 'albumChange';
+                let count = 0;
+                userfilemgr.on(type, () => { count++; });
+                const fetchAlbumResult = await userfilemgr.getPhotoAlbums(currentFetchOps);
+                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchAlbumResult, 1);
+                if (!checkAssetCountPass) return;
+                const album = await fetchAlbumResult.getFirstObject();
+                const oldName = album.albumName;
+                fetchAlbumResult.close();
+                album.albumName = type.toString();
+                await album.commitModify();
+                await sleep(1000);
+                expect(count > 0).assertTrue();
+                album.albumName = oldName;
+                await album.commitModify(); 
+                done();
+            } catch (error) {
+                console.info(`${testNum}:: error :${error}`);
+                expect(false).assertTrue();
+                done();
+            }
         });
 
         /**
-         * @tc.number    : SUB_USERFILE_MGR_OFF_PROMISE_01
+         * @tc.number    : SUB_USERFILE_MGR_OFF_01
          * @tc.name      : off
-         * @tc.desc      : off image ASSET
+         * @tc.desc      : off imageChange
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_OFF_PROMISE_01', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_OFF_PROMISE_01';
+        it('SUB_USERFILE_MGR_OFF_01', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_OFF_01';
             let currentFetchOps = imageVideoFetchOps(testNum, 'Pictures/Off/');
             let type = 'imageChange';
             let newName = 'imageChange.jpg';
@@ -166,32 +200,15 @@ export default function onOffReleasePromiseTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB_USERFILE_MGR_OFF_PROMISE_02
+         * @tc.number    : SUB_USERFILE_MGR_OFF_02
          * @tc.name      : off
-         * @tc.desc      : off audio ASSET
+         * @tc.desc      : off videoChange
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_OFF_PROMISE_02', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_OFF_PROMISE_02';
-            let currentFetchOps = audioFetchOps(testNum, 'Audios/Off/');
-            let type = 'audioChange';
-            let newName = 'audioChange.mp3';
-            let isAudio = true;
-            await offTest(done, testNum,currentFetchOps, type, newName, isAudio)
-        });
-
-        /**
-         * @tc.number    : SUB_USERFILE_MGR_OFF_PROMISE_03
-         * @tc.name      : off
-         * @tc.desc      : off video ASSET
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_USERFILE_MGR_OFF_PROMISE_03', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_OFF_PROMISE_03';
+        it('SUB_USERFILE_MGR_OFF_02', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_OFF_02';
             let currentFetchOps = imageVideoFetchOps(testNum, 'Videos/Off/');
             let type = 'videoChange';
             let newName = 'videoChange.mp4';
@@ -200,15 +217,87 @@ export default function onOffReleasePromiseTest(abilityContext) {
         });
 
         /**
-         * @tc.number    : SUB_USERFILE_MGR_PROMISE_PROMISE_01
+         * @tc.number    : SUB_USERFILE_MGR_OFF_03
+         * @tc.name      : off
+         * @tc.desc      : off audioChange
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+         it('SUB_USERFILE_MGR_OFF_03', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_OFF_03';
+            let currentFetchOps = audioFetchOps(testNum, 'Audios/Off/');
+            let type = 'audioChange';
+            let newName = 'audioChange.mp3';
+            let isAudio = true;
+            await offTest(done, testNum,currentFetchOps, type, newName, isAudio)
+        });
+
+        /** 
+         * @tc.number    : SUB_USERFILE_MGR_OFF_04
+         * @tc.name      : off
+         * @tc.desc      : off albumChange
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+         it('SUB_USERFILE_MGR_OFF_04', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_OFF_04';
+            try {
+                let currentFetchOps = albumFetchOps(testNum, 'Pictures/', 'Off');
+                let type: userFileManager.ChangeEvent = 'albumChange';
+                let count = 0;
+                userfilemgr.on(type, () => { count++; });
+                const fetchAlbumResult = await userfilemgr.getPhotoAlbums(currentFetchOps);
+                let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchAlbumResult, 1);
+                if (!checkAssetCountPass) return;
+                const album = await fetchAlbumResult.getFirstObject();
+                fetchAlbumResult.close();
+                album.albumName = type.toString();
+                userfilemgr.off(type);
+                await album.commitModify();
+                await sleep(1000);
+                expect(count).assertEqual(0);
+                done();
+            } catch (error) {
+                console.info(`${testNum}:: error :${error}`);
+                expect(false).assertTrue();
+                done();
+            }
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_RELEASE_CALLBACK_01
          * @tc.name      : release
          * @tc.desc      : Release MediaLibrary instance
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_PROMISE_PROMISE_01', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_PROMISE_PROMISE_01';
+        it('SUB_USERFILE_MGR_RELEASE_CALLBACK_01', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_RELEASE_CALLBACK_01';
+            try {
+                userfilemgr.release(() => {
+                    expect(true).assertTrue();
+                    done();
+                });
+            } catch (error) {
+                console.info(`${testNum}:: error :${error}`);
+                expect(false).assertTrue();
+                done();
+            }
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_RELEASE_01
+         * @tc.name      : release
+         * @tc.desc      : Release MediaLibrary instance
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+         it('SUB_USERFILE_MGR_RELEASE_01', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_RELEASE_PROMISE_01';
             try {
                 await userfilemgr.release();
                 expect(true).assertTrue();
