@@ -134,21 +134,21 @@ export default function singleusermodelTest() {
          */
         it('ACTS_SingleUserModel_1600', 0, async function (done) {
 
-            console.debug("====>start startAbilityWithAccount====>");
+            console.info("====>start startAbilityWithAccount====>");
             try {
                 await globalThis.abilityContext.startAbilityWithAccount(
                     {
                         bundleName: 'com.singleusermodel.actssingleusertest',
                         abilityName: 'SingleUserModel1600'
                     }, null).then((data) => {
-                        console.debug("====>startAbilityWithAccount 1600 end====>" + data);
+                        console.info("====>startAbilityWithAccount 1600 end====>" + data);
                     }).catch((err) => {
-                        console.debug("====>startAbilityWithAccount 1600 end====>" + err);
+                        console.info("====>startAbilityWithAccount 1600 end====>" + err);
                     })
             } catch (err) {
                 let e = err.toString()
-                let errLog = "Cannot read property then of undefined"
-                console.debug("====>e====>" + e);
+                let errLog = "Invalid input parameter"
+                console.info("ACTS_SingleUserModel_1600 ====>e====>" + e);
                 expect(e.indexOf(errLog) >= 0).assertTrue()
             }
             setTimeout(async () => {
@@ -176,7 +176,7 @@ export default function singleusermodelTest() {
                 console.debug('ACTS_SingleUserModel_1600====>timeout====>');
             }, START_ABILITY_TIMEOUT)
             setTimeout(() => {
-                console.debug('ACTS_SingleUserModel_1600====>done====>');
+                console.info('ACTS_SingleUserModel_1600====>done====>');
                 done();
             }, ABILITY_TIMEOUT)
         })
@@ -202,7 +202,7 @@ export default function singleusermodelTest() {
                     })
             } catch (err) {
                 let e = err.toString()
-                let errLog = "Cannot read property then of undefined"
+                let errLog = "Invalid input parameter"
                 console.debug("====>e====>" + e);
                 expect(e.indexOf(errLog) >= 0).assertTrue()
             }

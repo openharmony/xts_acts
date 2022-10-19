@@ -150,7 +150,7 @@ export default function singleusermodelTest() {
           })
       } catch (err) {
         let e = err.toString();
-        let errLog = "Cannot read property then of undefined"
+        let errLog = "Invalid input parameter"
         console.debug("====>e====>" + e);
         expect(e.indexOf(errLog) >= 0).assertTrue()
       }
@@ -252,7 +252,7 @@ export default function singleusermodelTest() {
           })
       } catch (err) {
         let e = err.toString();
-        let errLog = "Cannot read property then of undefined"
+        let errLog = "Invalid input parameter"
         console.debug("====>e====>" + e);
         expect(e.indexOf(errLog) >= 0).assertTrue()
       }
