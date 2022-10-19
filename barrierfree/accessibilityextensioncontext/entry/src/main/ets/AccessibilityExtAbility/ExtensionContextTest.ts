@@ -137,7 +137,9 @@ export class ExtensionContextTest {
                 break;
             case 'AccessibilityExtensionContextTest_getFocusElement_asyncCallback_3700':
                 await this.setAccessibilityFocus();
-                this.getFocusElementByTypeCallback(caseName, true, true);
+                setTimeout(async () => {
+                    this.getFocusElementByTypeCallback(caseName, true, true);
+                }, 1000);
                 break;
             case 'AccessibilityExtensionContextTest_getFocusElement_asyncCallback_3900':
                 await this.clearAccessibilityFocus();
@@ -145,7 +147,9 @@ export class ExtensionContextTest {
                 break;
             case 'AccessibilityExtensionContextTest_getFocusElement_asyncPromise_4100':
                 await this.setAccessibilityFocus();
-                this.getFocusElementByTypePromise(caseName, true, true);
+                setTimeout(async () => {
+                    this.getFocusElementByTypePromise(caseName, true, true);
+                }, 1000);
                 break;
             case 'AccessibilityExtensionContextTest_getFocusElement_asyncPromise_4300':
                 await this.clearAccessibilityFocus();
