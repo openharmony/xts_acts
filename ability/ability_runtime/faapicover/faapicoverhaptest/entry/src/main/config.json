@@ -54,6 +54,24 @@
           "type": "page",
           "visible": true,
           "launchType": "singleton"
+      },
+      {
+        "srcPath": "ServiceAbility",
+        "name": ".ServiceAbility",
+        "srcLanguage": "ets",
+        "icon": "$media:icon",
+        "description": "$string:ServiceAbility_desc",
+        "type": "service",
+        "visible": true
+      },
+      {
+        "srcPath": "ServiceAbility2",
+        "name": ".ServiceAbility2",
+        "srcLanguage": "ets",
+        "icon": "$media:icon",
+        "description": "$string:ServiceAbility2_desc",
+        "type": "service",
+        "visible": true
       }
     ],
     "distro": {
