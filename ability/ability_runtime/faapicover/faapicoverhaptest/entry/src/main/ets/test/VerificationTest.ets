@@ -307,8 +307,8 @@ export default function verificationTest(){
 
         let wantNum = {
           want: {
-            bundleName: 'ohos.acts.aafwk.test.faauxiliary',
-            abilityName: 'ohos.acts.aafwk.test.faauxiliary.ServiceAbility'
+            bundleName: 'com.example.faapicoverhaptest',
+            abilityName: 'com.example.faapicoverhaptest.ServiceAbility'
           }
         }
         await ability_featureAbility.startAbility(wantNum).then((data) => {
@@ -406,8 +406,8 @@ export default function verificationTest(){
           }
         };
         let wantNum = {
-          bundleName: 'ohos.acts.aafwk.test.faauxiliary',
-          abilityName: 'ohos.acts.aafwk.test.faauxiliary.ServiceAbility2'
+          bundleName: 'com.example.faapicoverhaptest',
+          abilityName: 'com.example.faapicoverhaptest.ServiceAbility2'
         }
         let num = ability_featureAbility.connectAbility(wantNum, options)
       } catch (err) {
