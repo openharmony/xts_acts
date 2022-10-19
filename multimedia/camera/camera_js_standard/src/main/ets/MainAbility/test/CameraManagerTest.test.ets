@@ -958,30 +958,30 @@ describe('CameraManagerTest', function () {
     })
 
     /**
-      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CREATE_CAPTURE_SESSION_MANAGER_CALLBACK_0100
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_MANAGER_CREATE_CAPTURE_SESSION_CALLBACK_0100
       * @tc.name      : Create CaptureSession instance api
       * @tc.desc      : Create CaptureSession instance api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 2
     */
-     it('SUB_MULTIMEDIA_CAMERA_CREATE_CAPTURE_SESSION_MANAGER_CALLBACK_0100', 2, async function (done) {
-        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_CAPTURE_SESSION_MANAGER_CALLBACK_0100 to operate");
+     it('SUB_MULTIMEDIA_CAMERA_MANAGER_CREATE_CAPTURE_SESSION_CALLBACK_0100', 2, async function (done) {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_MANAGER_CREATE_CAPTURE_SESSION_CALLBACK_0100 to operate");
         let cameraSession;
         mCameraManager.createCaptureSession(async (err, data) => {
             if (!err) {
                 console.info(TAG + "Entering createCaptureSession success");
                 if (isEmpty(data)) {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_CAPTURE_SESSION_MANAGER_CALLBACK_0100 data == null || undefined")
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_MANAGER_CREATE_CAPTURE_SESSION_CALLBACK_0100 data == null || undefined")
                     expect().assertFail();
                 } else {
                     cameraSession = data;
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_CAPTURE_SESSION_MANAGER_CALLBACK_0100 PASSED");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_MANAGER_CREATE_CAPTURE_SESSION_CALLBACK_0100 PASSED");
                 }
             } else {
                 expect().assertFail();
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_CAPTURE_SESSION_MANAGER_CALLBACK_0100 FAILED : " + err.message);
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_CAPTURE_SESSION_MANAGER_CALLBACK_0100 ends here");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_MANAGER_CREATE_CAPTURE_SESSION_CALLBACK_0100 FAILED : " + err.message);
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_MANAGER_CREATE_CAPTURE_SESSION_CALLBACK_0100 ends here");
             }
             await sleep(1000);
             done();
