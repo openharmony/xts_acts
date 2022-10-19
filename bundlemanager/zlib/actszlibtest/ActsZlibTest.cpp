@@ -18,6 +18,7 @@
 #include <cstdlib>
 #include <fstream>
 #include <gtest/gtest.h>
+#include <mutex>
 #include <securec.h>
 #include <sstream>
 #include <string>
@@ -38,9 +39,12 @@ static int SIX = 6;
 static int EIGHT = 8;
 static int GARBAGE_LEN = strlen(GARBAGE);
 static unsigned BUFFER_SIZE = 8192;
+std::mutex gzMutex_;
+std::mutex puMutex_;
 
 static unsigned pull(void *desc, unsigned char **buf)
 {
+    std::lock_guard<std::mutex> lock(puMutex_);
     static unsigned int next = 0;
     static unsigned char dat[] = {0x63, 0, 2, 0};
 
@@ -53,12 +57,14 @@ static unsigned pull(void *desc, unsigned char **buf)
 
 static int push(void *desc, unsigned char *buf, unsigned len)
 {
+    std::lock_guard<std::mutex> lock(puMutex_);
     buf += len;
     return desc != nullptr;      /* force error if desc not null */
 }
 
 static int TestGzPrintf(gzFile file, const char *format, ...)
 {
+    std::lock_guard<std::mutex> lock(gzMutex_);
     va_list va;
     int ret;
 
