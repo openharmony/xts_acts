@@ -46,6 +46,7 @@ describe('audioFramework', function () {
             console.info(`${TagFrmwk}: getAudioManger : FAIL`);
         }
     }
+
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
@@ -4902,7 +4903,7 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0100', 2,async function (done) {
-        let AudioRoutingManager = await audioManager.getRoutingManager();
+        let AudioRoutingManager = audioManager.getRoutingManager();
         AudioRoutingManager.getDevices(1, (err, value) => {
             // Getting all Output devices Enumb 1 = OUTPUT_DEVICES_FLAG
             console.info(`${TagFrmwk}: Callback: getDevices OUTPUT_DEVICES_FLAG`);
@@ -4936,7 +4937,7 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0200', 2,async function (done) {
-        let AudioRoutingManager = await audioManager.getRoutingManager();
+        let AudioRoutingManager = audioManager.getRoutingManager();
         AudioRoutingManager.getDevices(2, (err, value) => {
             // Getting all Input Devices ENUM 2 = INPUT_DEVICES_FLAG
             console.info(`${TagFrmwk}: Callback: getDevices INPUT_DEVICES_FLAG`);
@@ -4969,7 +4970,7 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0300', 2, async function (done) {
-        let AudioRoutingManager = await audioManager.getRoutingManager();
+        let AudioRoutingManager = audioManager.getRoutingManager();
         AudioRoutingManager.getDevices(3, (err, value) => {
             // Getting all devies connected 3 = ALL_DEVICES_FLAG
             console.info(`${TagFrmwk}: Callback: getDevices ALL_DEVICES_FLAG`);
@@ -5002,7 +5003,7 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0400', 2, async function (done) {
-        let AudioRoutingManager = await audioManager.getRoutingManager();
+        let AudioRoutingManager = audioManager.getRoutingManager();
         AudioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG, (err, value) => {
             console.info(`${TagFrmwk}: Callback: getDevices OUTPUT_DEVICES_FLAG`);
             if (err) {
@@ -5034,7 +5035,7 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0500', 2, async function (done) {
-        let AudioRoutingManager = await audioManager.getRoutingManager();
+        let AudioRoutingManager = audioManager.getRoutingManager();
         AudioRoutingManager.getDevices(audio.DeviceFlag.INPUT_DEVICES_FLAG, (err, value) => {
             console.info(`${TagFrmwk}: Callback: getDevices INPUT_DEVICES_FLAG`);
             if (err) {
@@ -5065,7 +5066,7 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0600', 2, async function (done) {
-        let AudioRoutingManager = await audioManager.getRoutingManager();
+        let AudioRoutingManager = audioManager.getRoutingManager();
         AudioRoutingManager.getDevices(audio.DeviceFlag.ALL_DEVICES_FLAG, (err, value) => {
             console.info(`${TagFrmwk}: Callback: getDevices ALL_DEVICES_FLAG`);
             if (err) {
@@ -5096,7 +5097,7 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0700', 2, async function (done) {
-        let AudioRoutingManager = await audioManager.getRoutingManager();
+        let AudioRoutingManager = audioManager.getRoutingManager();
         let value = await AudioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG);
         console.info(`${TagFrmwk}: Promise: getDevices OUTPUT_DEVICES_FLAG`);
         value.forEach(displayDeviceProp);
@@ -5108,229 +5109,6 @@ describe('audioFramework', function () {
             console.info(`${TagFrmwk}: Promise: getDevices:OUTPUT_DEVICES_FLAG : FAIL`);
             expect(false).assertTrue();
         }
-        done();
-    })
-
-    /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0800
-     *@tc.name      : getDevices - INPUT device - Promise - ENAME
-     *@tc.desc      : getDevices - INPUT device
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 2
-     */
-    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0800', 2, function (done) {
-        audioManager.getRoutingManager(async (err, AudioRoutingManager) => {
-            if (err) {
-                console.error(`${TagFrmwk}: Callback: failed to get RoutingManager ${err.message}`);
-                expect().assertFail();
-            } else {
-                let value = await AudioRoutingManager.getDevices(audio.DeviceFlag.INPUT_DEVICES_FLAG)
-                console.info(`${TagFrmwk}: Promise: getDevices INPUT_DEVICES_FLAG`);
-                value.forEach(displayDeviceProp);
-
-                if (dTValue != null && dRValue != null && devId > 0 && sRate != null && cCount != null &&
-                    cMask != null) {
-                    console.info(`${TagFrmwk}: Promise: getDevices : INPUT_DEVICES_FLAG :  PASS`);
-                    expect(true).assertTrue();
-                } else {
-                    console.info(`${TagFrmwk}: Promise: getDevices : INPUT_DEVICES_FLAG :  FAIL`);
-                    expect(false).assertTrue();
-                }
-            }
-            done();
-        });
-    })
-
-    /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0900
-     *@tc.name      : getDevices - ALL device - Promise - ENAME
-     *@tc.desc      : getDevices - ALL device
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 2
-     */
-    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0900', 2, function (done) {
-        audioManager.getRoutingManager(async (err, AudioRoutingManager) => {
-            if (err) {
-                console.error(`${TagFrmwk}:Callback:failed to get RoutingManager ${err.message}`);
-                expect().assertFail();
-            } else {
-                let value = await AudioRoutingManager.getDevices(audio.DeviceFlag.ALL_DEVICES_FLAG)
-                console.info(`${TagFrmwk}: Promise: getDevices ALL_DEVICES_FLAG`);
-                value.forEach(displayDeviceProp);
-
-                if (dTValue != null && dRValue != null && devId > 0 && sRate != null && cCount != null &&
-                    cMask != null) {
-                    console.info(`${TagFrmwk}: Promise: getDevices : ALL_DEVICES_FLAG :  PASS`);
-                    expect(true).assertTrue();
-                }
-                else {
-                    console.info(`${TagFrmwk}: Promise: getDevices : ALL_DEVICES_FLAG :  FAIL`);
-                    expect(false).assertTrue();
-                }
-            }
-            done();
-        });
-    })
-
-    /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0100
-     *@tc.name      : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0100
-     *@tc.desc      : micStateChange
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 2
-     */
-    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0100', 2, async function (done) {
-        try{
-            var routingManager = await audioManager.getRoutingManager();
-        }catch (err) {
-        console.error(`${TagFrmwk}:Callback:failed to get RoutingManager ${err.message}`);
-            expect(false).assertTrue();
-        }
-       let count = 0;
-       console.info('getRoutingManager Callback START.');
-       routingManager.on('micStateChange',async (micStateChange)=>{
-            count++;
-        })
-
-        try{
-            let data = await audioManager.isMicrophoneMute();
-            console.info('Promise isMicrophoneMute PASS:' + data);
-            await audioManager.setMicrophoneMute(data);
-            console.info('Promise setMicrophoneMute PASS.');
-            let data1 = await audioManager.isMicrophoneMute();
-            console.info('Promise isMicrophoneMute PASS.' + data1);
-        }catch (err) {
-            console.log('ERROR:'+JSON.stringify(err))
-            expect(false).assertTrue();
-            done();
-        }
-        await sleep(2000);
-        expect(count).assertEqual(0);
-        done();
-    })
-
-    /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0200
-     *@tc.name      : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0200
-     *@tc.desc      : micStateChange
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 2
-     */
-    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0200', 2, async function (done) {
-        try{
-            var routingManager = await audioManager.getRoutingManager();
-        }catch (err) {
-        console.error(`${TagFrmwk}:Callback:failed to get RoutingManager ${err.message}`);
-            expect(false).assertTrue();
-        }
-        console.info('getRoutingManager Callback START.');
-        let count = 0;
-        routingManager.on('micStateChange',async (micStateChange)=>{
-            console.info("Updated micState:" + JSON.stringify(micStateChange));
-            count++;
-        })
-
-       try{
-            let data = await audioManager.isMicrophoneMute();
-            console.info('Promise isMicrophoneMute PASS:' + data);
-            let micStatus = !data;
-            await audioManager.setMicrophoneMute(micStatus);
-            console.info('Promise setMicrophoneMute PASS:' + micStatus);
-       }catch (err) {
-            console.log('ERROR:'+JSON.stringify(err))
-            expect(false).assertTrue();
-            done();
-        }
-        await sleep(2000);
-	    expect(count).assertEqual(1);
-        done();
-    })
-
-    /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0300
-     *@tc.name      : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0300
-     *@tc.desc      : micStateChange
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 2
-     */
-    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0300', 2, async function (done) {
-        try{
-            var routingManager = await audioManager.getRoutingManager();
-        }catch (err) {
-            console.error(`${TagFrmwk}:Callback:failed to get RoutingManager ${err.message}`);
-            expect(false).assertTrue();
-        }
-        console.info('getRoutingManager Callback START.');
-        let count = 0;
-        routingManager.on('micStateChange',async (micStateChange)=>{
-            console.info("Updated micState:" + JSON.stringify(micStateChange));
-            count++;
-        })
-
-        try{
-            let data = await audioManager.isMicrophoneMute();
-            console.info('Promise isMicrophoneMute PASS:' + data);
-            let micStatus = !data;
-            await audioManager.setMicrophoneMute(micStatus);
-            console.info('Promise setMicrophoneMute PASS:' + micStatus);
-            await audioManager.setMicrophoneMute(!micStatus);
-            console.info('Promise setMicrophoneMute PASS:' + (!micStatus));
-        }catch (err) {
-            console.log('ERROR:'+JSON.stringify(err))
-            expect(false).assertTrue();
-            done();
-        }
-        await sleep(2000);
-        expect(count).assertEqual(2);
-        done();
-    })
-
-    /**
-     *@tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0400
-     *@tc.name      : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0400
-     *@tc.desc      : micStateChange
-     *@tc.size      : MEDIUM
-     *@tc.type      : Function
-     *@tc.level     : Level 2
-     */
-    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0400', 2, async function (done) {
-        try{
-            var routingManager = await audioManager.getRoutingManager();
-        }catch (err) {
-        console.error(`${TagFrmwk}:Callback:failed to get RoutingManager ${err.message}`);
-            expect(false).assertTrue();
-        }
-        let count = 0;
-        try {
-            console.info("enter SUB_AUDIO_MANAGER_micStateChange_004");
-            routingManager.on('micStateChange',async (micStateChange1)=>{
-                console.info("Updated micState--001:" + JSON.stringify(micStateChange1));
-                routingManager.on('micStateChange',async (micStateChange)=>{
-                    console.info("Updated micState--002:" + JSON.stringify(micStateChange));
-			 	    count++
-                })
-                let data = await audioManager.isMicrophoneMute();
-                console.info('Second Promise isMicrophoneMute PASS:' + data);
-                await audioManager.setMicrophoneMute(!data);
-                console.info('Second:Promise setMicrophoneMute PASS:' + (!data));
-            })
-            let data = await audioManager.isMicrophoneMute();
-            console.info('First Promise isMicrophoneMute PASS:' + data);
-            await audioManager.setMicrophoneMute(!data);
-            console.info('First:Promise setMicrophoneMute PASS:' + (!data));
-        } catch (err) {
-            console.log('ERROR:'+JSON.stringify(err))
-            expect(false).assertTrue();
-            done();
-        }
-
-        await sleep(2000);
-        expect(count).assertEqual(1);
         done();
     })
 
