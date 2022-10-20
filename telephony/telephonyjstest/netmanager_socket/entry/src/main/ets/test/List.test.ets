@@ -18,6 +18,7 @@ import connectionJsunit from './ConnectionJsunit.test.ets';
 import socketJsunit from './SocketJsunit.test.ets';
 import webSocketJsunit from './WebSocketJsunit.test.ets';
 import connectionSecondJsUnit from './ConnectionSecondJsUnit.test.ets';
+import networkManagerSocketTest from './NetworkManagerSocket.test'
 
 export default function testsuite() {
   //other
@@ -25,4 +26,5 @@ export default function testsuite() {
   webSocketJsunit();
   connectionJsunit();
   connectionSecondJsUnit();
+  networkManagerSocketTest();
 }
