@@ -89,6 +89,7 @@ struct OH_AVFormat* createFormat()
     OH_AVFormat_SetIntValue(DefaultFormat, OH_MD_KEY_HEIGHT, DEFAULT_HEIGHT);
     OH_AVFormat_SetIntValue(DefaultFormat, OH_MD_KEY_PIXEL_FORMAT, DEFAULT_PIXELFORMAT);
     OH_AVFormat_SetIntValue(DefaultFormat, OH_MD_KEY_FRAME_RATE, DEFAULT_FRAMERATE);
+    OH_AVFormat_SetStringValue(DefaultFormat, OH_MD_KEY_CODEC_MIME, OH_AVCODEC_MIMETYPE_VIDEO_AVC);
     return DefaultFormat;
 }
 }
@@ -101,13 +102,13 @@ struct OH_AVFormat* createFormat()
 HWTEST_F(ActsVideoDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_0100, TestSize.Level1)
 {
     VDecEncNdkSample *vDecEncSample = new VDecEncNdkSample();
-
     struct OH_AVCodec* videoDec = vDecEncSample->CreateVideoDecoderByMime(MIME_TYPE_AVC);
     ASSERT_NE(nullptr, videoDec);
+
     struct OH_AVCodec* videoEnc = vDecEncSample->CreateVideoEncoderByMime(MIME_TYPE_MPEG4);
     ASSERT_NE(nullptr, videoEnc);
     vDecEncSample->SetReadPath(READPATH);
-    vDecEncSample->SetSavePath("/data/media/video_001.es");
+    vDecEncSample->SetSavePath("/data/media/video_001.h264");
     
     OH_AVFormat *VideoFormat = OH_AVFormat_Create();
     ASSERT_NE(nullptr, VideoFormat);
@@ -118,6 +119,8 @@ HWTEST_F(ActsVideoDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_010
         {OH_MD_KEY_FRAME_RATE, DEFAULT_FRAMERATE},
     };
     ASSERT_EQ(true, SetFormat(VideoFormat, VideoParam));
+    OH_AVFormat_SetIntValue(VideoFormat, OH_MD_KEY_TRACK_TYPE, MEDIA_TYPE_VID);
+
     ASSERT_EQ(AV_ERR_OK, vDecEncSample->ConfigureDec(VideoFormat));
     OH_AVFormat *OutDescDec = OH_VideoDecoder_GetOutputDescription(videoDec);
     ASSERT_NE(nullptr, OutDescDec);
@@ -161,17 +164,20 @@ HWTEST_F(ActsVideoDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_020
     struct OH_AVCodec* videoEnc = vDecEncSample->CreateVideoEncoderByMime(MIME_TYPE_AVC);
     ASSERT_NE(nullptr, videoEnc);
     vDecEncSample->SetReadPath(READPATH);
-    vDecEncSample->SetSavePath("/data/media/video_002.es");
+    vDecEncSample->SetSavePath("/data/media/video_002.h264");
     
     OH_AVFormat *VideoFormat = createFormat();
     ASSERT_EQ(AV_ERR_OK, vDecEncSample->ConfigureDec(VideoFormat));
+    OH_AVFormat_SetIntValue(VideoFormat, OH_MD_KEY_VIDEO_ENCODE_BITRATE_MODE, CBR);
     ASSERT_EQ(AV_ERR_OK, vDecEncSample->ConfigureEnc(VideoFormat));
     ASSERT_EQ(AV_ERR_OK, vDecEncSample->GetSurface());
     ASSERT_EQ(AV_ERR_OK, vDecEncSample->SetOutputSurface());
     ASSERT_EQ(AV_ERR_OK, vDecEncSample->PrepareEnc());
     ASSERT_EQ(AV_ERR_OK, vDecEncSample->PrepareDec());
     ASSERT_EQ(AV_ERR_OK, vDecEncSample->StartEnc());
+    ASSERT_EQ(AV_ERR_OK, vDecEncSample->SetParameterDec(VideoFormat));
     ASSERT_EQ(AV_ERR_OK, vDecEncSample->StartDec());
+    ASSERT_EQ(AV_ERR_OK, vDecEncSample->SetParameterEnc(VideoFormat));
 
     while (!vDecEncSample->GetEncEosState()) {};
     ASSERT_EQ(AV_ERR_OK, vDecEncSample->ResetDec());
@@ -184,7 +190,6 @@ HWTEST_F(ActsVideoDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_020
     VideoFormat = nullptr;
     ASSERT_EQ(AV_ERR_OK, vDecEncSample->CalcuError());
 }
-
 
  /**
  * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_0300
@@ -200,9 +205,11 @@ HWTEST_F(ActsVideoDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_030
     struct OH_AVCodec* videoEnc = vDecEncSample->CreateVideoEncoderByMime(MIME_TYPE_AVC);
     ASSERT_NE(nullptr, videoEnc);
     vDecEncSample->SetReadPath(READPATH);
-    vDecEncSample->SetSavePath("/data/media/video_003.es");
+    vDecEncSample->SetSavePath("/data/media/video_003.h264");
     
     OH_AVFormat *VideoFormat = createFormat();
+    OH_AVFormat_SetIntValue(VideoFormat, OH_MD_KEY_PROFILE, AVC_PROFILE_BASELINE);
+
     ASSERT_EQ(AV_ERR_OK, vDecEncSample->ConfigureDec(VideoFormat));
     ASSERT_EQ(AV_ERR_OK, vDecEncSample->ConfigureEnc(VideoFormat));
     ASSERT_EQ(AV_ERR_OK, vDecEncSample->GetSurface());
@@ -237,9 +244,11 @@ HWTEST_F(ActsVideoDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_040
     ASSERT_NE(nullptr, videoEnc);
     vDecEncSample->SetReadPath(READPATH);
     vDecEncSample->SetEosState(false);
-    vDecEncSample->SetSavePath("/data/media/video_004.es");
+    vDecEncSample->SetSavePath("/data/media/video_004.h264");
     
     OH_AVFormat *VideoFormat = createFormat();
+    OH_AVFormat_SetIntValue(VideoFormat, OH_MD_KEY_PROFILE, AVC_PROFILE_HIGH);
+
     ASSERT_EQ(AV_ERR_OK, vDecEncSample->ConfigureDec(VideoFormat));
     ASSERT_EQ(AV_ERR_OK, vDecEncSample->ConfigureEnc(VideoFormat));
     ASSERT_EQ(AV_ERR_OK, vDecEncSample->GetSurface());
@@ -256,7 +265,7 @@ HWTEST_F(ActsVideoDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_040
     vDecEncSample->ResetDecParam();
     vDecEncSample->ResetEncParam();
     vDecEncSample->SetEosState(true);
-    vDecEncSample->SetSavePath("/data/media/video_004_2.es");
+    vDecEncSample->SetSavePath("/data/media/video_004_2.h264");
 
     ASSERT_EQ(AV_ERR_OK, vDecEncSample->StartEnc());
     ASSERT_EQ(AV_ERR_OK, vDecEncSample->StartDec());
@@ -287,9 +296,11 @@ HWTEST_F(ActsVideoDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_050
     ASSERT_NE(nullptr, videoEnc);
     vDecEncSample->SetReadPath(READPATH);
     vDecEncSample->SetEosState(false);
-    vDecEncSample->SetSavePath("/data/media/video_005.es");
+    vDecEncSample->SetSavePath("/data/media/video_005.h264");
     
     OH_AVFormat *VideoFormat = createFormat();
+    OH_AVFormat_SetIntValue(VideoFormat, OH_MD_KEY_PROFILE, AVC_PROFILE_MAIN);
+
     ASSERT_EQ(AV_ERR_OK, vDecEncSample->ConfigureDec(VideoFormat));
     ASSERT_EQ(AV_ERR_OK, vDecEncSample->ConfigureEnc(VideoFormat));
     ASSERT_EQ(AV_ERR_OK, vDecEncSample->GetSurface());
@@ -306,7 +317,7 @@ HWTEST_F(ActsVideoDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_050
     vDecEncSample->ReRead();
     vDecEncSample->ResetDecParam();
     vDecEncSample->ResetEncParam();
-    vDecEncSample->SetSavePath("/data/media/video_005_2.es");
+    vDecEncSample->SetSavePath("/data/media/video_005_2.h264");
     vDecEncSample->SetEosState(true);
     ASSERT_EQ(AV_ERR_OK, vDecEncSample->CalcuError());
     ASSERT_EQ(AV_ERR_OK, vDecEncSample->StartEnc());
@@ -338,7 +349,7 @@ HWTEST_F(ActsVideoDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_060
     ASSERT_NE(nullptr, videoEnc);
     vDecEncSample->SetReadPath(READPATH);
     vDecEncSample->SetEosState(false);
-    vDecEncSample->SetSavePath("/data/media/video_006.es");
+    vDecEncSample->SetSavePath("/data/media/video_006.h264");
     
     OH_AVFormat *VideoFormat = createFormat();
     ASSERT_EQ(AV_ERR_OK, vDecEncSample->ConfigureDec(VideoFormat));
@@ -357,7 +368,7 @@ HWTEST_F(ActsVideoDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_060
     vDecEncSample->ResetDecParam();
     vDecEncSample->ResetEncParam();
     vDecEncSample->SetEosState(true);
-    vDecEncSample->SetSavePath("/data/media/video_006_2.es");
+    vDecEncSample->SetSavePath("/data/media/video_006_2.h264");
     ASSERT_EQ(AV_ERR_OK, vDecEncSample->StartEnc());
     ASSERT_EQ(AV_ERR_OK, vDecEncSample->StartDec());
 
@@ -389,7 +400,7 @@ HWTEST_F(ActsVideoDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_070
     ASSERT_NE(nullptr, videoEnc);
     vDecEncSample->SetReadPath(READPATH);
     vDecEncSample->SetEosState(false);
-    vDecEncSample->SetSavePath("/data/media/video_007.es");
+    vDecEncSample->SetSavePath("/data/media/video_007.h264");
     
     OH_AVFormat *VideoFormat = createFormat();
     ASSERT_EQ(AV_ERR_OK, vDecEncSample->ConfigureDec(VideoFormat));
@@ -408,7 +419,7 @@ HWTEST_F(ActsVideoDecEncNdkTest, SUB_MULTIMEDIA_MEDIA_VIDEO_DEC_ENC_FUNCTION_070
     vDecEncSample->ReRead();
     vDecEncSample->ResetDecParam();
     vDecEncSample->ResetEncParam();
-    vDecEncSample->SetSavePath("/data/media/video_007_2.es");
+    vDecEncSample->SetSavePath("/data/media/video_007_2.h264");
     vDecEncSample->SetEosState(true);
     ASSERT_EQ(AV_ERR_OK, vDecEncSample->StartEnc());
     ASSERT_EQ(AV_ERR_OK, vDecEncSample->StartDec());
