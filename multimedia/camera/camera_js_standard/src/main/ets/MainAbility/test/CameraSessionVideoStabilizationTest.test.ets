@@ -40,10 +40,12 @@ let mFdPath;
 let mFdNumber;
 
 // CAMERA-0 letiables
-let mCameraInputArray;
-let mPreviewOutputArray;
-let mPhotoOutputArray;
-let mVideoOutputArray;
+let mCameraNum;
+
+let mCameraInput;
+let mPreviewOutput;
+let mPhotoOutput;
+let mVideoOutput;
 
 let mIsVideoStabilizationModeSupportedArray;
 
@@ -89,7 +91,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
         return false;
     }
 
-    async function getFd(pathName){
+    async function getFd(pathName) {
         let displayName = pathName;
         const mediaTest = mediaLibrary.getMediaLibrary();
         let fileKeyObj = mediaLibrary.FileKey;
@@ -97,27 +99,27 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
         let publicPath = await mediaTest.getPublicDirectory(mediaLibrary.DirectoryType.DIR_VIDEO);
         let dataUri = await mediaTest.createAsset(mediaType, displayName, publicPath);
         if (dataUri != undefined) {
-        let args = dataUri.id.toString();
-        let fetchOp = {
-            selections: fileKeyObj.ID + "=?",
-            selectionArgs: [args],
-        }
-        let fetchFileResult = await mediaTest.getFileAssets(fetchOp);
-        mFileAsset = await fetchFileResult.getAllObject();
-        mFdNumber = await mFileAsset[0].open('Rw');
-        mFdPath = "fd://" + mFdNumber.toString();
+            let args = dataUri.id.toString();
+            let fetchOp = {
+                selections: fileKeyObj.ID + "=?",
+                selectionArgs: [args],
+            }
+            let fetchFileResult = await mediaTest.getFileAssets(fetchOp);
+            mFileAsset = await fetchFileResult.getAllObject();
+            mFdNumber = await mFileAsset[0].open('Rw');
+            mFdPath = "fd://" + mFdNumber.toString();
         }
     }
-
+    
     async function closeFd() {
         if (mFileAsset != null) {
-        await mFileAsset[0].close(mFdNumber).then(() => {
-            console.info('[mediaLibrary] case close fd success');
-        }).catch((err) => {
-            console.info('[mediaLibrary] case close fd failed');
-        });
+                await mFileAsset[0].close(mFdNumber).then(() => {
+                console.info('[mediaLibrary] case close fd success');
+            }).catch((err) => {
+                console.info('[mediaLibrary] case close fd failed');
+            });
         } else {
-        console.info('[mediaLibrary] case fileAsset is null');
+            console.info('[mediaLibrary] case fileAsset is null');
         }
     }
 
@@ -132,6 +134,9 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
             let permissionName3 = 'ohos.permission.MEDIA_LOCATION';
             let permissionName4 = 'ohos.permission.READ_MEDIA';
             let permissionName5 = 'ohos.permission.WRITE_MEDIA';
+            let permissionName6 = 'ohos.permission.START_ABILIIES_FROM_BACKGROUND';
+            let permissionName7 = 'ohos.permission.START_INVISIBLE_ABILITY';
+            let permissionName8 = 'ohos.permission.ABILITY_BACKGROUND_COMMUNICATION';
             await atManager.grantUserGrantedPermission(tokenID, permissionName1, 1).then((result) => {
                 console.info('[permission] case grantUserGrantedPermission success :' + result);
             }).catch((err) => {
@@ -153,6 +158,21 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
                 console.info('[permission] case grantUserGrantedPermission failed :' + err);
             });
             await atManager.grantUserGrantedPermission(tokenID, permissionName5, 1).then((result) => {
+                console.info('[permission] case grantUserGrantedPermission success :' + result);
+            }).catch((err) => {
+                console.info('[permission] case grantUserGrantedPermission failed :' + err);
+            });
+            await atManager.grantUserGrantedPermission(tokenID, permissionName6, 1).then((result) => {
+                console.info('[permission] case grantUserGrantedPermission success :' + result);
+            }).catch((err) => {
+                console.info('[permission] case grantUserGrantedPermission failed :' + err);
+            });
+              await atManager.grantUserGrantedPermission(tokenID, permissionName7, 1).then((result) => {
+                console.info('[permission] case grantUserGrantedPermission success :' + result);
+            }).catch((err) => {
+                console.info('[permission] case grantUserGrantedPermission failed :' + err);
+            });
+              await atManager.grantUserGrantedPermission(tokenID, permissionName8, 1).then((result) => {
                 console.info('[permission] case grantUserGrantedPermission success :' + result);
             }).catch((err) => {
                 console.info('[permission] case grantUserGrantedPermission failed :' + err);
@@ -181,18 +201,30 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
         await getFd('CameraSessionVideoStabilization.mp4');
         mVideoConfig.url = mFdPath;
         media.createVideoRecorder((err, recorder) => {
-            console.info(TAG + 'Entering create video receiver')
-            mVideoRecorder = recorder
-            console.info(TAG + 'videoRecorder is :' + JSON.stringify(mVideoRecorder))
-            console.info(TAG + 'videoRecorder.prepare called.')
-            mVideoRecorder.prepare(mVideoConfig, (err) => {
-                console.info(TAG + 'videoRecorder.prepare success.')
-            })
-            mVideoRecorder.getInputSurface((err, id) => {
-                console.info(TAG + 'getInputSurface called')
-                mVideoSurface = id
-                console.info(TAG + 'getInputSurface surfaceId: ' + JSON.stringify(mVideoSurface))
-            })
+            if (!err) {
+                console.info(TAG + 'Entering create video receiver')
+                mVideoRecorder = recorder
+                console.info(TAG + 'videoRecorder is :' + JSON.stringify(mVideoRecorder))
+                console.info(TAG + 'videoRecorder.prepare called.')
+                mVideoRecorder.prepare(mVideoConfig, (err) => {
+                    if (!err) {
+                        console.info(TAG + 'videoRecorder.prepare success.')
+                        mVideoRecorder.getInputSurface((err, id) => {
+                            console.info(TAG + 'getInputSurface called')
+                            if (!err) {
+                                mVideoSurface = id
+                                console.info(TAG + 'getInputSurface surfaceId: ' + JSON.stringify(mVideoSurface))
+                            } else {
+                                console.info(TAG + 'getInputSurface FAILED')
+                            }
+                        })
+                    } else {
+                        console.info(TAG + 'prepare FAILED')
+                    }
+                })
+            } else {
+                console.info(TAG + 'createVideoRecorder FAILED')
+            }
         })
         console.log(TAG + 'Exit getVideoReceiveSurface')
     }
@@ -247,7 +279,13 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
             return false;
         }
 
-        console.info(TAG + "getCameraSupportDevicesArray is: " + mCameraDevicesArray.length);
+        //mCameraNum = 1;
+        mCameraNum = mCameraDevicesArray.length;
+
+        console.info(TAG + "getCameraSupportDevicesArray is: " + mCameraNum);
+
+        mIsVideoStabilizationModeSupportedArray = new Array(mCameraNum); 
+
         console.info('Exit getCameraSupportDevicesArray');
 
         return true;
@@ -315,144 +353,132 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
         await mCameraSession.release();
     }
 
-    async function createInputs() {
-        console.info('Enter createInputs');
+    async function createInput(idx:any) {
+        console.info('Enter createInput');
 
         if (isEmpty(mCameraDevicesArray)) {
             console.info(TAG + "Entering createInputs FAILED with NoCamera");
             return false;
         }
-
-        mCameraInputArray = new Array(mCameraDevicesArray.length);
-        mIsVideoStabilizationModeSupportedArray = new Array(mCameraDevicesArray.length); 
-
-        for (let i = 0; i < mCameraDevicesArray.length; i++) {
-            mCameraInputArray[i] = await mCameraManager.createCameraInput(mCameraDevicesArray[i]);
-            if (isEmpty(mCameraInputArray[i])) {
-                console.info(TAG + "createCameraInput FAILED");
-                return false;
-            }
-
-            mCameraInputArray[i].open(async (err) => {
-                console.info(TAG + "Entering mCameraInputArray open callback");
-                if (!err) {
-                    console.info(TAG + "Entering mCameraInputArray open PASSED ");
-                } else {
-                    console.info(TAG + "Entering mCameraInputArray open FAILED : " + err.message);
-                }
-            })
-
-            await sleep(2000);
-
-            console.info(i + 'th CameraInput is: ' + mCameraInputArray[i]);
+        
+        mCameraInput = await mCameraManager.createCameraInput(mCameraDevicesArray[idx]);
+        if (isEmpty(mCameraInput)) {
+            console.info(TAG + "createCameraInput FAILED");
+            return false;
         }
 
-        console.info('Exit createInputs');
+        mCameraInput.open(async (err) => {
+            console.info(TAG + "Entering mCameraInput open callback");
+            if (!err) {
+                console.info(TAG + "Entering mCameraInput open PASSED ");
+            } else {
+                console.info(TAG + "Entering mCameraInput open FAILED : " + err.message);
+            }
+        })
+
+        await sleep(100);
+
+        console.info(idx + 'th CameraInput is: ' + mCameraInput);
+
+        console.info('Exit createInput');
 
         return true;
     }
 
-    async function releaseInputs() {
-        console.info('Enter releaseInputs');
+    async function releaseInput() {
+        console.info('Enter releaseInput');
 
-        if (isEmpty(mCameraInputArray)) {
-            console.info(TAG + "Entering releaseInputs FAILED with NoCamera");
-            return true;
+        if (!isEmpty(mCameraInput)) {
+            await mCameraInput.close();
+            await mCameraInput.release();
         }
 
-        for (let i = 0; i < mCameraInputArray.length; i++) {
-            await mCameraInputArray[i].close();
-            await mCameraInputArray[i].release();
-        }
-
-        console.info('Exit releaseInputs');
+        console.info('Exit releaseInput');
 
         return true;
     }
 
-    async function createOutputs() {
-        console.info('Enter createOutputs');
+    async function createOutput(idx:any) {
+        console.info('Enter createOutput');
 
-        mPreviewOutputArray = new Array(mCameraDevicesArray.length);
-        mPhotoOutputArray = new Array(mCameraDevicesArray.length);
-        mVideoOutputArray = new Array(mCameraDevicesArray.length);
-
-        for (let i = 0; i < mCameraDevicesArray.length; i++) {
-            let cameraOutputCap = await mCameraManager.getSupportedOutputCapability(mCameraDevicesArray[i]);
-            if (!isEmpty(cameraOutputCap.previewProfiles)) {
-                console.info(TAG + "cameraOutputCap.previewProfiles.length: " + cameraOutputCap.previewProfiles.length);      
-                for (let j = 0; j < cameraOutputCap.previewProfiles.length; j++) {
-                    mPreviewOutputArray[i] = await mCameraManager.createPreviewOutput(cameraOutputCap.previewProfiles[j], surfaceId);
-                    if (!isEmpty(mPreviewOutputArray[i])) {
-                        break;
-                    }
-                }
-
-                if (isEmpty(mPreviewOutputArray[i])) {
-                    console.info(TAG + "createPreviewOutput FAILED");
+        let cameraOutputCap = await mCameraManager.getSupportedOutputCapability(mCameraDevicesArray[idx]);
+        if (!isEmpty(cameraOutputCap.previewProfiles)) {
+            console.info(TAG + "cameraOutputCap.previewProfiles.length: " + cameraOutputCap.previewProfiles.length);      
+            for (let i = 0; i < cameraOutputCap.previewProfiles.length; i++) {
+                mPreviewOutput = await mCameraManager.createPreviewOutput(cameraOutputCap.previewProfiles[i], surfaceId);
+                if (!isEmpty(mPreviewOutput)) {
+                    break;
                 }
             }
 
-            /*
-            if (!isEmpty(cameraOutputCap.photoProfiles)) {
-                console.info(TAG + "cameraOutputCap.photoProfiles.length: " + cameraOutputCap.photoProfiles.length);   
+            if (isEmpty(mPreviewOutput)) {
+                console.info(TAG + "createPreviewOutput FAILED");
+            }
+
+            console.info(TAG + "createPreviewOutput: " + mPreviewOutput);
+        }
+
+        if (!isEmpty(cameraOutputCap.photoProfiles)) {
+            console.info(TAG + "cameraOutputCap.photoProfiles.length: " + cameraOutputCap.photoProfiles.length);   
                 
-                for (let j = 0; j < cameraOutputCap.photoProfiles.length; j++) {
-                    mPhotoOutputArray[i] = await mCameraManager.createPhotoOutput(cameraOutputCap.photoProfiles[j], mPhoteSurface);
-                    if (!isEmpty(mPhotoOutputArray[i])) {
-                        break;
-                    }
+            for (let i = 0; i < cameraOutputCap.photoProfiles.length; i++) {
+                mPhotoOutput = await mCameraManager.createPhotoOutput(cameraOutputCap.photoProfiles[i], mPhoteSurface);
+                if (!isEmpty(mPhotoOutput)) {
+                    break;
                 }
-
-                if (isEmpty(mPhotoOutputArray[i])) {
-                    console.info(TAG + "createPhotoOutput FAILED");
-                }
-
-                console.info(TAG + "createPhotoOutput: " + mPhotoOutputArray[i]);
             }
 
-            if (!isEmpty(cameraOutputCap.videoProfiles)) {
-                console.info(TAG + "cameraOutputCap.videoProfiles.length: " + cameraOutputCap.videoProfiles.length); 
-                for (let j = 0; j < cameraOutputCap.videoProfiles.length; j++) {
-                    mVideoOutputArray[i] = await mCameraManager.createVideoOutput(cameraOutputCap.videoProfiles[j], mVideoSurface);
-                    if (!isEmpty(mVideoOutputArray[i])) {
+            if (isEmpty(mPhotoOutput)) {
+                    console.info(TAG + "createPhotoOutput FAILED");
+            }
+
+            console.info(TAG + "createPhotoOutput: " + mPhotoOutput);
+        }
+        /*
+        if (!isEmpty(cameraOutputCap.videoProfiles)) {
+            console.info(TAG + "cameraOutputCap.videoProfiles.length: " + cameraOutputCap.videoProfiles.length); 
+            for (let i = 0; i < cameraOutputCap.videoProfiles.length; i++) {
+                try {
+                    mVideoOutput = await mCameraManager.createVideoOutput(cameraOutputCap.videoProfiles[i], mVideoSurface);
+                    if (!isEmpty(mVideoOutput)) {
                         break;
                     }
                 }
-
-                if (isEmpty(mVideoOutputArray[i])) {
+                catch {
                     console.info(TAG + "createVideoOutput FAILED");
                 }
-
-                console.info(TAG + "createVideoOutput: " + mPhotoOutputArray[i]);  
             }
-            */
-        }
 
+            if (isEmpty(mVideoOutput)) {
+                console.info(TAG + "createVideoOutput FAILED");
+            }
+
+            console.info(TAG + "createVideoOutput: " + mVideoOutput);  
+        }
+        */
         console.info('Exit createOutputs');
 
         return true;
     }
 
-    async function releaseOutputs() {
-        for (let i = 0; i < mCameraDevicesArray.length; i++) {
-            if (!isEmpty(mPreviewOutputArray[i])) {
-                await mPreviewOutputArray[i].close();
-                await mPreviewOutputArray[i].release();
-            }
-    
-            /*
-            if (!isEmpty(mPhotoOutputArray[i])) {
-                await mPhotoOutputArray[i].close();
-                await mPhotoOutputArray[i].release();
-            }
-    
-            if (!isEmpty(mVideoOutputArray[i])) {
-                await mVideoOutputArray[i].close();
-                await mVideoOutputArray[i].release();
-            }
-            */
+    async function releaseOutput() {
+        console.info('Enter createOutput');
+
+        if (!isEmpty(mPreviewOutput)) {
+            await mPreviewOutput.stop();
+            await mPreviewOutput.release();
         }
+        
+        if (!isEmpty(mPhotoOutput)) {
+            await mPhotoOutput.release();
+        }
+        /*
+        if (!isEmpty(mVideoOutput)) {
+            await mVideoOutput.stop();
+            await mVideoOutput.release();
+        }
+        */
+        console.info('Exit createOutput');
         
         return true;
     }
@@ -460,27 +486,32 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
     async function startCameraSession(idx:any) {
         console.info(TAG + "Enter startCameraSession");
 
-        if (!isEmpty(mCameraInputArray[idx])) {
-            console.info(TAG + "Start to addInput");
-            await mCameraSession.addInput(mCameraInputArray[idx]);
-        }
-        
-        if (!isEmpty(mPreviewOutputArray[idx])) {
-            console.info(TAG + "Start to addOutput mPreviewOutput");
-            await mCameraSession.addOutput(mPreviewOutputArray[idx]);
-        }
-        
-        /*
-        if (!isEmpty(mPhotoOutputArray[idx])) {
-            console.info(TAG + "Start to addOutput mPhotoOutput");
-            await mCameraSession.addOutput(mPhotoOutputArray[idx]);
-        }
+        await createInput(idx);
+        await createOutput(idx);
 
-        if (!isEmpty(mVideoOutputArray[idx])) {
+        await sleep(1);
+
+        if (!isEmpty(mCameraInput)) {
+            console.info(TAG + "Start to addInput");
+            await mCameraSession.addInput(mCameraInput);
+        }
+        
+        if (!isEmpty(mPreviewOutput)) {
+            console.info(TAG + "Start to addOutput mPreviewOutput");
+            await mCameraSession.addOutput(mPreviewOutput);
+        }
+        
+        if (!isEmpty(mPhotoOutput)) {
+            console.info(TAG + "Start to addOutput mPhotoOutput");
+            await mCameraSession.addOutput(mPhotoOutput);
+        }
+        /*
+        if (!isEmpty(mVideoOutput)) {
             console.info(TAG + "Start to addOutput mVideoOutput");
-            await mCameraSession.addOutput(mVideoOutputArray[idx]);
+            await mCameraSession.addOutput(mVideoOutput);
         }
         */
+        await sleep(1);
 
         await commitCameraSessionConfig();
         await beginCameraSessionConfig();
@@ -502,7 +533,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
         return true;
     }
 
-    async function stopCameraSession(idx:any) {
+    async function stopCameraSession() {
         console.info(TAG + "Enter stopCameraSession");
         /*
         mCameraSession.stop(async (err) => {
@@ -517,27 +548,28 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
         await sleep(1000);
         */
 
-        if (!isEmpty(mCameraInputArray[idx])) {
+        if (!isEmpty(mCameraInput)) {
             console.info(TAG + "Start to removeInput input");
-            await mCameraSession.removeInput(mCameraInputArray[idx]);
+            await mCameraSession.removeInput(mCameraInput);
         }
 
-        if (!isEmpty(mPreviewOutputArray[idx])) {
+        if (!isEmpty(mPreviewOutput)) {
             console.info(TAG + "Start to removeOutput mPreviewOutput");
-            await mCameraSession.removeOutput(mPreviewOutputArray[idx]);
+            await mCameraSession.removeOutput(mPreviewOutput);
         }
-
-        /*
-        if (!isEmpty(mPhotoOutputArray[idx])) {
+        
+        if (!isEmpty(mPhotoOutput)) {
             console.info(TAG + "Start to removeOutput mPhotoOutput");
-            await mCameraSession.removeOutput(mPhotoOutputArray[idx]);
+            await mCameraSession.removeOutput(mPhotoOutput);
         }
-
-        if (!isEmpty(mVideoOutputArray[idx])) {
+        /*
+        if (!isEmpty(mVideoOutput)) {
             console.info(TAG + "Start to removeOutput mVideoOutput");
-            await mCameraSession.removeOutput(mVideoOutputArray[idx]);
+            await mCameraSession.removeOutput(mVideoOutput);
         }
         */
+        await releaseInput();
+        await releaseOutput();
 
         console.info(TAG + "Exit stopCameraSession");
 
@@ -555,8 +587,6 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
             await getCameraManagerInstance();
             await getCameraSupportDevicesArray();
             await createCameraSessionInstance();
-            await createInputs();
-            await createOutputs();
 
             console.info('Device type = ' + deviceInfo.deviceType);
 
@@ -573,8 +603,6 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
         })
 
         afterAll(function () {
-            releaseInputs();
-            releaseOutputs();
             releaseVideoReceiveSurface();
             releaseCameraSessionInstance();
             sleep(1000);
@@ -592,12 +620,12 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
          it('SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0100', 2, async function (done) {
             console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0100--------------");
 
-            if (isEmpty(mCameraInputArray)) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0100 FAILED with NoCamera");
+            if (mCameraNum == 0) {
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUmCameraNumPPORT_CALLBACK_0100 FAILED with NoCamera");
                 expect().assertFail();
                 done();
             } else {
-                for (let i = 0; i < mCameraInputArray.length; i++) {
+                for (let i = 0; i < mCameraNum; i++) {
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0100 start for camera[" + i + "]");
     
                     await startCameraSession(i);
@@ -626,7 +654,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
                     })
                     await sleep(1000);
                     
-                    await stopCameraSession(i);
+                    await stopCameraSession();
     
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0100 end for camera[" + i + "]");
                 }
@@ -647,12 +675,12 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
          it('SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0100', 2, async function (done) {
             console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0100--------------");
 
-            if (isEmpty(mCameraInputArray)) {
+            if (mCameraNum == 0) {
                 console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0100 FAILED with NoCamera");
                 expect().assertFail();
                 done();
             } else {
-                for (let i = 0; i < mCameraInputArray.length; i++) {
+                for (let i = 0; i < mCameraNum; i++) {
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0100 start for camera[" + i + "]");
     
                     await startCameraSession(i);
@@ -673,7 +701,7 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
     
                     await sleep(1000);
                     
-                    await stopCameraSession(i);
+                    await stopCameraSession();
     
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0100 end for camera[" + i + "]");
                 }
@@ -694,12 +722,12 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
          it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0100', 2, async function (done) {
             console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0100--------------");
 
-            if (isEmpty(mCameraInputArray)) {
+            if (mCameraNum == 0) {
                 console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0100 FAILED with NoCamera");
                 expect().assertFail();
                 done();
             } else {
-                for (let i = 0; i < mCameraInputArray.length; i++) {
+                for (let i = 0; i < mCameraNum; i++) {
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0100 start for camera[" + i + "]");
     
                     await startCameraSession(i);
@@ -732,15 +760,10 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
                         })
                         await sleep(500);
                     } else {
-                        if (deviceInfo.deviceType != 'default') {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0100 FAILED");
-                            expect().assertFail();
-                        } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0100 PASSED");
-                        }
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0100 PASSED");
                     }
                     
-                    await stopCameraSession(i);
+                    await stopCameraSession();
     
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0100 end for camera[" + i + "]");
                 }
@@ -761,12 +784,12 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
          it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0100', 2, async function (done) {
             console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0100--------------");
 
-            if (isEmpty(mCameraInputArray)) {
+            if (mCameraNum == 0) {
                 console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0100 FAILED with NoCamera");
                 expect().assertFail();
                 done();
             } else {
-                for (let i = 0; i < mCameraInputArray.length; i++) {
+                for (let i = 0; i < mCameraNum; i++) {
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0100 start for camera[" + i + "]");
     
                     await startCameraSession(i);
@@ -787,15 +810,10 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
                         }
                         await sleep(500);
                     } else {
-                        if (deviceInfo.deviceType != 'default') {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0100 FAILED");
-                            expect().assertFail();
-                        } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0100 PASSED");
-                        }
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0100 PASSED");
                     }
                     
-                    await stopCameraSession(i);
+                    await stopCameraSession();
     
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0100 end for camera[" + i + "]");
                 }
@@ -806,103 +824,103 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
         })
 
         /**
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0200
+        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0101
         * @tc.name      : Check capture session support video stabilization low mode with callback or not
         * @tc.desc      : Check capture session support video stabilization low mode with callback or not
         * @tc.size      : MEDIUM
         * @tc.type      : Function
         * @tc.level     : Level 2
         */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0200', 2, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0200--------------");
+         it('SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0101', 2, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0101--------------");
 
-            if (isEmpty(mCameraInputArray)) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0200 FAILED with NoCamera");
+            if (mCameraNum == 0) {
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0101 FAILED with NoCamera");
                 expect().assertFail();
                 done();
             } else {
-                for (let i = 0; i < mCameraInputArray.length; i++) {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0200 start for camera[" + i + "]");
+                for (let i = 0; i < mCameraNum; i++) {
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0101 start for camera[" + i + "]");
     
                     await startCameraSession(i);
     
                     mIsVideoStabilizationModeSupportedArray[i] = false;
     
                     mCameraSession.isVideoStabilizationModeSupported(cameraObj.VideoStabilizationMode.LOW, async (err, data) => {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0200 callback");
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0101 callback");
                         if (!err) {
                             if (data != null || data != undefined) {
                                 mIsVideoStabilizationModeSupportedArray[i] = data;
                                 if ((deviceInfo.deviceType != 'default') && (data == false)) {
-                                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0200 FAILED with isVideoStabilizationModeSupported is: " + data);
+                                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0101 FAILED with isVideoStabilizationModeSupported is: " + data);
                                     expect().assertFail();
                                 } else {
-                                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0200 PASSED with isVideoStabilizationModeSupported is: " + data);
+                                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0101 PASSED with isVideoStabilizationModeSupported is: " + data);
                                 }
                             } else {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0200 FAILED with isVideoStabilizationModeSupported is: " + data);
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0101 FAILED with isVideoStabilizationModeSupported is: " + data);
                                 expect().assertFail();
                             }
                         } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0200 FAILED : " + err.message);
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0101 FAILED : " + err.message);
                             expect().assertFail();
                         }
                     })
                     await sleep(1000);
                     
-                    await stopCameraSession(i);
+                    await stopCameraSession();
     
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0200 end for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0101 end for camera[" + i + "]");
                 }
     
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0200 ends here");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0101 ends here");
                 done();
             }
         })
 
         /**
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0200
+        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0101
         * @tc.name      : Check capture session support video stabilization low mode with promise or not
         * @tc.desc      : Check capture session support video stabilization low mode with promise or not
         * @tc.size      : MEDIUM
         * @tc.type      : Function
         * @tc.level     : Level 2
         */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0200', 2, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0200--------------");
+         it('SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0101', 2, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0101--------------");
 
-            if (isEmpty(mCameraInputArray)) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0200 FAILED with NoCamera");
+            if (mCameraNum == 0) {
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0101 FAILED with NoCamera");
                 expect().assertFail();
                 done();
             } else {
-                for (let i = 0; i < mCameraInputArray.length; i++) {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0200 start for camera[" + i + "]");
+                for (let i = 0; i < mCameraNum; i++) {
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0101 start for camera[" + i + "]");
     
                     await startCameraSession(i);
     
                     let isVideoStabilizationModeSupported = await mCameraSession.isVideoStabilizationModeSupported(cameraObj.VideoStabilizationMode.LOW);
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0200 finish");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0101 finish");
                     if (isVideoStabilizationModeSupported != null || isVideoStabilizationModeSupported != undefined) {
                         if ((deviceInfo.deviceType != 'default') && (isVideoStabilizationModeSupported == false)) {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0200 FAILED with isVideoStabilizationModeSupported is: " + isVideoStabilizationModeSupported);
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0101 FAILED with isVideoStabilizationModeSupported is: " + isVideoStabilizationModeSupported);
                             expect().assertFail();
                         } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0200 PASSED with isVideoStabilizationModeSupported is: " + isVideoStabilizationModeSupported);
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0101 PASSED with isVideoStabilizationModeSupported is: " + isVideoStabilizationModeSupported);
                         }
                     } else {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0200 FAILED with isVideoStabilizationModeSupported is: " + isVideoStabilizationModeSupported);
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0101 FAILED with isVideoStabilizationModeSupported is: " + isVideoStabilizationModeSupported);
                         expect().assertFail();
                     }    
     
                     await sleep(1000);
                     
-                    await stopCameraSession(i);
+                    await stopCameraSession();
     
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0200 end for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0101 end for camera[" + i + "]");
                 }
     
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0200 ends here");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0101 ends here");
                 done();
             }
         })
@@ -918,12 +936,12 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
          it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0101', 2, async function (done) {
             console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0101--------------");
 
-            if (isEmpty(mCameraInputArray)) {
+            if (mCameraNum == 0) {
                 console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0101 FAILED with NoCamera");
                 expect().assertFail();
                 done();
             } else {
-                for (let i = 0; i < mCameraInputArray.length; i++) {
+                for (let i = 0; i < mCameraNum; i++) {
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0101 start for camera[" + i + "]");
     
                     await startCameraSession(i);
@@ -956,15 +974,10 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
                         })
                         await sleep(500);
                     } else {
-                        if (deviceInfo.deviceType != 'default') {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0101 FAILED");
-                            expect().assertFail();
-                        } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0101 PASSED");
-                        }
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0101 PASSED");
                     }
                     
-                    await stopCameraSession(i);
+                    await stopCameraSession();
     
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0101 end for camera[" + i + "]");
                 }
@@ -975,728 +988,693 @@ export default function cameraSessionVideoStabilizationTest(surfaceId: any) {
         })
 
         /**
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0200
+        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0101
         * @tc.name      : Check capture session set video stabilization low mode with promise
         * @tc.desc      : Check capture session set video stabilization low mode with promise
         * @tc.size      : MEDIUM
         * @tc.type      : Function
         * @tc.level     : Level 2
         */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0200', 2, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0200--------------");
+         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0101', 2, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0101--------------");
 
-            if (isEmpty(mCameraInputArray)) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0200 FAILED with NoCamera");
+            if (mCameraNum == 0) {
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0101 FAILED with NoCamera");
                 expect().assertFail();
                 done();
             } else {
-                for (let i = 0; i < mCameraInputArray.length; i++) {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0200 start for camera[" + i + "]");
+                for (let i = 0; i < mCameraNum; i++) {
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0101 start for camera[" + i + "]");
     
                     await startCameraSession(i);
     
                     if (mIsVideoStabilizationModeSupportedArray[i] == true) {
                         await mCameraSession.setVideoStabilizationMode(cameraObj.VideoStabilizationMode.LOW);
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0200 finish");
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0200 PASSED with VideoStabilizationMode is: " + cameraObj.VideoStabilizationMode.LOW);  
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0101 finish");
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0101 PASSED with VideoStabilizationMode is: " + cameraObj.VideoStabilizationMode.LOW);  
                         await sleep(500);
 
                         let vdeoStabilizationMode = await mCameraSession.getActiveVideoStabilizationMode();
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0200 finish");
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0101 finish");
                         if (vdeoStabilizationMode == cameraObj.VideoStabilizationMode.LOW) {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0200 PASSED with VideoStabilizationMode is: " + vdeoStabilizationMode);
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0101 PASSED with VideoStabilizationMode is: " + vdeoStabilizationMode);
                         } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0200 FAILED with VideoStabilizationMode is: " + vdeoStabilizationMode);
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0101 FAILED with VideoStabilizationMode is: " + vdeoStabilizationMode);
                             expect().assertFail();
                         }
                         await sleep(500);
                     } else {
-                        if (deviceInfo.deviceType != 'default') {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0200 FAILED");
-                            expect().assertFail();
-                        } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0200 PASSED");
-                        }
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0101 PASSED");
                     }
                     
-                    await stopCameraSession(i);
+                    await stopCameraSession();
     
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0200 end for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0101 end for camera[" + i + "]");
                 }
     
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0200 ends here");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0101 ends here");
                 done();
             }
         })
 
         /**
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0300
+        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0102
         * @tc.name      : Check capture session support video stabilization middle mode with callback or not
         * @tc.desc      : Check capture session support video stabilization middle mode with callback or not
         * @tc.size      : MEDIUM
         * @tc.type      : Function
         * @tc.level     : Level 2
         */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0300', 2, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0300--------------");
+         it('SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0102', 2, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0102--------------");
 
-            if (isEmpty(mCameraInputArray)) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0300 FAILED with NoCamera");
+            if (mCameraNum == 0) {
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0102 FAILED with NoCamera");
                 expect().assertFail();
                 done();
             } else {
-                for (let i = 0; i < mCameraInputArray.length; i++) {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0300 start for camera[" + i + "]");
+                for (let i = 0; i < mCameraNum; i++) {
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0102 start for camera[" + i + "]");
     
                     await startCameraSession(i);
     
                     mIsVideoStabilizationModeSupportedArray[i] = false;
     
                     mCameraSession.isVideoStabilizationModeSupported(cameraObj.VideoStabilizationMode.MIDDLE, async (err, data) => {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0300 callback");
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0102 callback");
                         if (!err) {
                             if (data != null || data != undefined) {
                                 mIsVideoStabilizationModeSupportedArray[i] = data;
-                                if ((deviceInfo.deviceType != 'default') && (data == false)) {
-                                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0300 FAILED with isVideoStabilizationModeSupported is: " + data);
+                                if ((deviceInfo.deviceType != 'default' && deviceInfo.deviceType != 'tablet') && (data == false)) {
+                                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0102 FAILED with isVideoStabilizationModeSupported is: " + data);
                                     expect().assertFail();
                                 } else {
-                                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0300 PASSED with isVideoStabilizationModeSupported is: " + data);
+                                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0102 PASSED with isVideoStabilizationModeSupported is: " + data);
                                 }
                             } else {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0300 FAILED with isVideoStabilizationModeSupported is: " + data);
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0102 FAILED with isVideoStabilizationModeSupported is: " + data);
                                 expect().assertFail();
                             }
                         } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0300 FAILED : " + err.message);
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0102 FAILED : " + err.message);
                             expect().assertFail();
                         }
                     })
                     await sleep(1000);
                     
-                    await stopCameraSession(i);
+                    await stopCameraSession();
     
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0300 end for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0102 end for camera[" + i + "]");
                 }
     
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0300 ends here");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0102 ends here");
                 done();
             }
         })
 
         /**
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0300
+        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0102
         * @tc.name      : Check capture session support video stabilization middle mode with promise or not
         * @tc.desc      : Check capture session support video stabilization middle mode with promise or not
         * @tc.size      : MEDIUM
         * @tc.type      : Function
         * @tc.level     : Level 2
         */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0300', 2, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0300--------------");
+         it('SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0102', 2, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0102--------------");
 
-            if (isEmpty(mCameraInputArray)) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0300 FAILED with NoCamera");
+            if (mCameraNum == 0) {
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0102 FAILED with NoCamera");
                 expect().assertFail();
                 done();
             } else {
-                for (let i = 0; i < mCameraInputArray.length; i++) {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0300 start for camera[" + i + "]");
+                for (let i = 0; i < mCameraNum; i++) {
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0102 start for camera[" + i + "]");
     
                     await startCameraSession(i);
     
                     let isVideoStabilizationModeSupported = await mCameraSession.isVideoStabilizationModeSupported(cameraObj.VideoStabilizationMode.MIDDLE);
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0300 finish");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0102 finish");
                     if (isVideoStabilizationModeSupported != null || isVideoStabilizationModeSupported != undefined) {
-                        if ((deviceInfo.deviceType != 'default') && (isVideoStabilizationModeSupported == false)) {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0300 FAILED with isVideoStabilizationModeSupported is: " + isVideoStabilizationModeSupported);
+                        if ((deviceInfo.deviceType != 'default' && deviceInfo.deviceType != 'tablet') && (isVideoStabilizationModeSupported == false)) {
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0102 FAILED with isVideoStabilizationModeSupported is: " + isVideoStabilizationModeSupported);
                             expect().assertFail();
                         } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0300 PASSED with isVideoStabilizationModeSupported is: " + isVideoStabilizationModeSupported);
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0102 PASSED with isVideoStabilizationModeSupported is: " + isVideoStabilizationModeSupported);
                         }
                     } else {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0300 FAILED with isVideoStabilizationModeSupported is: " + isVideoStabilizationModeSupported);
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0102 FAILED with isVideoStabilizationModeSupported is: " + isVideoStabilizationModeSupported);
                         expect().assertFail();
                     }    
     
                     await sleep(1000);
                     
-                    await stopCameraSession(i);
+                    await stopCameraSession();
     
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0300 end for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0102 end for camera[" + i + "]");
                 }
     
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0300 ends here");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0102 ends here");
                 done();
             }
         })
 
         /**
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0300
+        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0102
         * @tc.name      : Check capture session set video stabilization middle mode with callback
         * @tc.desc      : Check capture session set video stabilization middle mode with callback
         * @tc.size      : MEDIUM
         * @tc.type      : Function
         * @tc.level     : Level 2
         */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0300', 2, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0300--------------");
+         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0102', 2, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0102--------------");
 
-            if (isEmpty(mCameraInputArray)) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0300 FAILED with NoCamera");
+            if (mCameraNum == 0) {
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0102 FAILED with NoCamera");
                 expect().assertFail();
                 done();
             } else {
-                for (let i = 0; i < mCameraInputArray.length; i++) {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0300 start for camera[" + i + "]");
+                for (let i = 0; i < mCameraNum; i++) {
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0102 start for camera[" + i + "]");
     
                     await startCameraSession(i);
     
                     if (mIsVideoStabilizationModeSupportedArray[i] == true) {
                         mCameraSession.setVideoStabilizationMode(cameraObj.VideoStabilizationMode.MIDDLE, async (err) => {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0300 callback");
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0102 callback");
                             if (!err) {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0300 PASSED with VideoStabilizationMode is: " + cameraObj.VideoStabilizationMode.MIDDLE);
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0102 PASSED with VideoStabilizationMode is: " + cameraObj.VideoStabilizationMode.MIDDLE);
                             } else {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0300 FAILED : " + err.message);
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0102 FAILED : " + err.message);
                                 expect().assertFail();
                             }
                         })
                         await sleep(500);
 
                         mCameraSession.getActiveVideoStabilizationMode(async (err, data) => {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0300 callback");
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0102 callback");
                             if (!err) {
                                 if (data == cameraObj.VideoStabilizationMode.MIDDLE) {
-                                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0300 PASSED with VideoStabilizationMode is: " + data);
+                                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0102 PASSED with VideoStabilizationMode is: " + data);
                                 } else {
-                                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0300 FAILED with VideoStabilizationMode is: " + data);
+                                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0102 FAILED with VideoStabilizationMode is: " + data);
                                     expect().assertFail();
                                 }
                             } else {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0300 FAILED : " + err.message);
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0102 FAILED : " + err.message);
                                 expect().assertFail();
                             }
                         })
                         await sleep(500);
                     } else {
-                        if (deviceInfo.deviceType != 'default') {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0300 FAILED");
-                            expect().assertFail();
-                        } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0300 PASSED");
-                        }
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0102 PASSED");
                     }
                     
-                    await stopCameraSession(i);
+                    await stopCameraSession();
     
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0300 end for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0102 end for camera[" + i + "]");
                 }
     
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0300 ends here");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0102 ends here");
                 done();
             }
         })
 
         /**
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0300
+        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0102
         * @tc.name      : Check capture session set video stabilization middle mode with promise
         * @tc.desc      : Check capture session set video stabilization middle mode with promise
         * @tc.size      : MEDIUM
         * @tc.type      : Function
         * @tc.level     : Level 2
         */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0300', 2, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0300--------------");
+         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0102', 2, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0102--------------");
 
-            if (isEmpty(mCameraInputArray)) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0300 FAILED with NoCamera");
+            if (mCameraNum == 0) {
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0102 FAILED with NoCamera");
                 expect().assertFail();
                 done();
             } else {
-                for (let i = 0; i < mCameraInputArray.length; i++) {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0300 start for camera[" + i + "]");
+                for (let i = 0; i < mCameraNum; i++) {
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0102 start for camera[" + i + "]");
     
                     await startCameraSession(i);
     
                     if (mIsVideoStabilizationModeSupportedArray[i] == true) {
                         await mCameraSession.setVideoStabilizationMode(cameraObj.VideoStabilizationMode.MIDDLE);
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0300 finish");
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0300 PASSED with VideoStabilizationMode is: " + cameraObj.VideoStabilizationMode.MIDDLE);  
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0102 finish");
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0102 PASSED with VideoStabilizationMode is: " + cameraObj.VideoStabilizationMode.MIDDLE);  
                         await sleep(500);
 
                         let vdeoStabilizationMode = await mCameraSession.getActiveVideoStabilizationMode();
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0300 finish");
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0102 finish");
                         if (vdeoStabilizationMode == cameraObj.VideoStabilizationMode.MIDDLE) {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0300 PASSED with VideoStabilizationMode is: " + vdeoStabilizationMode);
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0102 PASSED with VideoStabilizationMode is: " + vdeoStabilizationMode);
                         } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0300 FAILED with VideoStabilizationMode is: " + vdeoStabilizationMode);
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0102 FAILED with VideoStabilizationMode is: " + vdeoStabilizationMode);
                             expect().assertFail();
                         }
                         await sleep(500);
                     } else {
-                        if (deviceInfo.deviceType != 'default') {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0300 FAILED");
-                            expect().assertFail();
-                        } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0300 PASSED");
-                        }
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0102 PASSED");
                     }
                     
-                    await stopCameraSession(i);
+                    await stopCameraSession();
     
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0300 end for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0102 end for camera[" + i + "]");
                 }
     
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0300 ends here");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0102 ends here");
                 done();
             }
         })
 
         /**
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0400
+        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0103
         * @tc.name      : Check capture session support video stabilization high mode with callback or not
         * @tc.desc      : Check capture session support video stabilization high mode with callback or not
         * @tc.size      : MEDIUM
         * @tc.type      : Function
         * @tc.level     : Level 2
         */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0400', 2, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0400--------------");
+         it('SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0103', 2, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0103--------------");
 
-            if (isEmpty(mCameraInputArray)) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0400 FAILED with NoCamera");
+            if (mCameraNum == 0) {
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0103 FAILED with NoCamera");
                 expect().assertFail();
                 done();
             } else {
-                for (let i = 0; i < mCameraInputArray.length; i++) {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0400 start for camera[" + i + "]");
+                for (let i = 0; i < mCameraNum; i++) {
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0103 start for camera[" + i + "]");
     
                     await startCameraSession(i);
     
                     mIsVideoStabilizationModeSupportedArray[i] = false;
     
                     mCameraSession.isVideoStabilizationModeSupported(cameraObj.VideoStabilizationMode.HIGH, async (err, data) => {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0400 callback");
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0103 callback");
                         if (!err) {
                             if (data != null || data != undefined) {
                                 mIsVideoStabilizationModeSupportedArray[i] = data;
-                                if ((deviceInfo.deviceType != 'default') && (data == false)) {
-                                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0400 FAILED with isVideoStabilizationModeSupported is: " + data);
+                                if ((deviceInfo.deviceType != 'default' && deviceInfo.deviceType != 'tablet') && (data == false)) {
+                                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0103 FAILED with isVideoStabilizationModeSupported is: " + data);
                                     expect().assertFail();
                                 } else {
-                                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0400 PASSED with isVideoStabilizationModeSupported is: " + data);
+                                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0103 PASSED with isVideoStabilizationModeSupported is: " + data);
                                 }
                             } else {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0400 FAILED with isVideoStabilizationModeSupported is: " + data);
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0103 FAILED with isVideoStabilizationModeSupported is: " + data);
                                 expect().assertFail();
                             }
                         } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0400 FAILED : " + err.message);
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0103 FAILED : " + err.message);
                             expect().assertFail();
                         }
                     })
                     await sleep(1000);
                     
-                    await stopCameraSession(i);
+                    await stopCameraSession();
     
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0400 end for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0103 end for camera[" + i + "]");
                 }
     
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0400 ends here");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0103 ends here");
                 done();
             }
         })
 
         /**
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0400
+        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0103
         * @tc.name      : Check capture session support video stabilization high mode with promise or not
         * @tc.desc      : Check capture session support video stabilization high mode with promise or not
         * @tc.size      : MEDIUM
         * @tc.type      : Function
         * @tc.level     : Level 2
         */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0400', 2, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0400--------------");
+         it('SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0103', 2, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0103--------------");
 
-            if (isEmpty(mCameraInputArray)) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0400 FAILED with NoCamera");
+            if (mCameraNum == 0) {
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0103 FAILED with NoCamera");
                 expect().assertFail();
                 done();
             } else {
-                for (let i = 0; i < mCameraInputArray.length; i++) {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0400 start for camera[" + i + "]");
+                for (let i = 0; i < mCameraNum; i++) {
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0103 start for camera[" + i + "]");
     
                     await startCameraSession(i);
     
                     let isVideoStabilizationModeSupported = await mCameraSession.isVideoStabilizationModeSupported(cameraObj.VideoStabilizationMode.HIGH);
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0400 finish");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0103 finish");
                     if (isVideoStabilizationModeSupported != null || isVideoStabilizationModeSupported != undefined) {
-                        if ((deviceInfo.deviceType != 'default') && (isVideoStabilizationModeSupported == false)) {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0400 FAILED with isVideoStabilizationModeSupported is: " + isVideoStabilizationModeSupported);
+                        if ((deviceInfo.deviceType != 'default' && deviceInfo.deviceType != 'tablet') && (isVideoStabilizationModeSupported == false)) {
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0103 FAILED with isVideoStabilizationModeSupported is: " + isVideoStabilizationModeSupported);
                             expect().assertFail();
                         } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0400 PASSED with isVideoStabilizationModeSupported is: " + isVideoStabilizationModeSupported);
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0103 PASSED with isVideoStabilizationModeSupported is: " + isVideoStabilizationModeSupported);
                         }
                     } else {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0400 FAILED with isVideoStabilizationModeSupported is: " + isVideoStabilizationModeSupported);
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0103 FAILED with isVideoStabilizationModeSupported is: " + isVideoStabilizationModeSupported);
                         expect().assertFail();
                     }    
     
                     await sleep(1000);
                     
-                    await stopCameraSession(i);
+                    await stopCameraSession();
     
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0400 end for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0103 end for camera[" + i + "]");
                 }
     
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0400 ends here");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0103 ends here");
                 done();
             }
         })
 
         /**
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0400
+        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0103
         * @tc.name      : Check capture session set video stabilization high mode with callback
         * @tc.desc      : Check capture session set video stabilization high mode with callback
         * @tc.size      : MEDIUM
         * @tc.type      : Function
         * @tc.level     : Level 2
         */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0400', 2, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0400--------------");
+         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0103', 2, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0103--------------");
 
-            if (isEmpty(mCameraInputArray)) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0400 FAILED with NoCamera");
+            if (mCameraNum == 0) {
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0103 FAILED with NoCamera");
                 expect().assertFail();
                 done();
             } else {
-                for (let i = 0; i < mCameraInputArray.length; i++) {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0400 start for camera[" + i + "]");
+                for (let i = 0; i < mCameraNum; i++) {
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0103 start for camera[" + i + "]");
     
                     await startCameraSession(i);
     
                     if (mIsVideoStabilizationModeSupportedArray[i] == true) {
                         mCameraSession.setVideoStabilizationMode(cameraObj.VideoStabilizationMode.HIGH, async (err) => {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0400 callback");
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0103 callback");
                             if (!err) {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0400 PASSED with VideoStabilizationMode is: " + cameraObj.VideoStabilizationMode.HIGH);
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0103 PASSED with VideoStabilizationMode is: " + cameraObj.VideoStabilizationMode.HIGH);
                             } else {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0400 FAILED : " + err.message);
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0103 FAILED : " + err.message);
                                 expect().assertFail();
                             }
                         })
                         await sleep(500);
 
                         mCameraSession.getActiveVideoStabilizationMode(async (err, data) => {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0400 callback");
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0103 callback");
                             if (!err) {
                                 if (data == cameraObj.VideoStabilizationMode.HIGH) {
-                                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0400 PASSED with VideoStabilizationMode is: " + data);
+                                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0103 PASSED with VideoStabilizationMode is: " + data);
                                 } else {
-                                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0400 FAILED with VideoStabilizationMode is: " + data);
+                                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0103 FAILED with VideoStabilizationMode is: " + data);
                                     expect().assertFail();
                                 }
                             } else {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0400 FAILED : " + err.message);
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0103 FAILED : " + err.message);
                                 expect().assertFail();
                             }
                         })
                         await sleep(500);
                     } else {
-                        if (deviceInfo.deviceType != 'default') {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0400 FAILED");
-                            expect().assertFail();
-                        } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0400 PASSED");
-                        }
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0103 PASSED");
                     }
                     
-                    await stopCameraSession(i);
+                    await stopCameraSession();
     
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0400 end for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0103 end for camera[" + i + "]");
                 }
     
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0400 ends here");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0103 ends here");
                 done();
             }
         })
 
         /**
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0400
+        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0103
         * @tc.name      : Check capture session set video stabilization high mode with promise
         * @tc.desc      : Check capture session set video stabilization high mode with promise
         * @tc.size      : MEDIUM
         * @tc.type      : Function
         * @tc.level     : Level 2
         */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0400', 2, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0400--------------");
+         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0103', 2, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0103--------------");
 
-            if (isEmpty(mCameraInputArray)) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0400 FAILED with NoCamera");
+            if (mCameraNum == 0) {
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0103 FAILED with NoCamera");
                 expect().assertFail();
                 done();
             } else {
-                for (let i = 0; i < mCameraInputArray.length; i++) {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0400 start for camera[" + i + "]");
+                for (let i = 0; i < mCameraNum; i++) {
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0103 start for camera[" + i + "]");
     
                     await startCameraSession(i);
     
                     if (mIsVideoStabilizationModeSupportedArray[i] == true) {
                         await mCameraSession.setVideoStabilizationMode(cameraObj.VideoStabilizationMode.HIGH);
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0400 finish");
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0400 PASSED with VideoStabilizationMode is: " + cameraObj.VideoStabilizationMode.HIGH);  
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0103 finish");
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0103 PASSED with VideoStabilizationMode is: " + cameraObj.VideoStabilizationMode.HIGH);  
                         await sleep(500);
 
                         let vdeoStabilizationMode = await mCameraSession.getActiveVideoStabilizationMode();
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0400 finish");
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0103 finish");
                         if (vdeoStabilizationMode == cameraObj.VideoStabilizationMode.HIGH) {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0400 PASSED with VideoStabilizationMode is: " + vdeoStabilizationMode);
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0103 PASSED with VideoStabilizationMode is: " + vdeoStabilizationMode);
                         } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0400 FAILED with VideoStabilizationMode is: " + vdeoStabilizationMode);
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0103 FAILED with VideoStabilizationMode is: " + vdeoStabilizationMode);
                             expect().assertFail();
                         }
                         await sleep(500);
                     } else {
-                        if (deviceInfo.deviceType != 'default') {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0400 FAILED");
-                            expect().assertFail();
-                        } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0400 PASSED");
-                        }
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0103 PASSED");
                     }
                     
-                    await stopCameraSession(i);
+                    await stopCameraSession();
     
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0400 end for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0103 end for camera[" + i + "]");
                 }
     
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0400 ends here");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0103 ends here");
                 done();
             }
         })
 
         /**
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0500
+        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0104
         * @tc.name      : Check capture session support video stabilization auto mode with callback or not
         * @tc.desc      : Check capture session support video stabilization auto mode with callback or not
         * @tc.size      : MEDIUM
         * @tc.type      : Function
         * @tc.level     : Level 2
         */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0500', 2, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0500--------------");
+         it('SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0104', 2, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0104--------------");
 
-            if (isEmpty(mCameraInputArray)) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0500 FAILED with NoCamera");
+            if (mCameraNum == 0) {
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0104 FAILED with NoCamera");
                 expect().assertFail();
                 done();
             } else {
-                for (let i = 0; i < mCameraInputArray.length; i++) {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0500 start for camera[" + i + "]");
+                for (let i = 0; i < mCameraNum; i++) {
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0104 start for camera[" + i + "]");
     
                     await startCameraSession(i);
     
                     mIsVideoStabilizationModeSupportedArray[i] = false;
     
                     mCameraSession.isVideoStabilizationModeSupported(cameraObj.VideoStabilizationMode.AUTO, async (err, data) => {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0500 callback");
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0104 callback");
                         if (!err) {
                             if (data != null || data != undefined) {
                                 mIsVideoStabilizationModeSupportedArray[i] = data;
-                                if ((deviceInfo.deviceType != 'default') && (data == false)) {
-                                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0500 FAILED with isVideoStabilizationModeSupported is: " + data);
+                                if ((deviceInfo.deviceType != 'default' && deviceInfo.deviceType != 'tablet') && (data == false)) {
+                                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0104 FAILED with isVideoStabilizationModeSupported is: " + data);
                                     expect().assertFail();
                                 } else {
-                                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0500 PASSED with isVideoStabilizationModeSupported is: " + data);
+                                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0104 PASSED with isVideoStabilizationModeSupported is: " + data);
                                 }
                             } else {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0500 FAILED with isVideoStabilizationModeSupported is: " + data);
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0104 FAILED with isVideoStabilizationModeSupported is: " + data);
                                 expect().assertFail();
                             }
                         } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0500 FAILED : " + err.message);
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0104 FAILED : " + err.message);
                             expect().assertFail();
                         }
                     })
                     await sleep(1000);
                     
-                    await stopCameraSession(i);
+                    await stopCameraSession();
     
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0500 end for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0104 end for camera[" + i + "]");
                 }
     
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0500 ends here");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_CALLBACK_0104 ends here");
                 done();
             }
         })
 
         /**
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0500
+        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0104
         * @tc.name      : Check capture session support video stabilization auto mode with promise or not
         * @tc.desc      : Check capture session support video stabilization auto mode with promise or not
         * @tc.size      : MEDIUM
         * @tc.type      : Function
         * @tc.level     : Level 2
         */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0500', 2, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0500--------------");
+         it('SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0104', 2, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0104--------------");
 
-            if (isEmpty(mCameraInputArray)) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0500 FAILED with NoCamera");
+            if (mCameraNum == 0) {
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0104 FAILED with NoCamera");
                 expect().assertFail();
                 done();
             } else {
-                for (let i = 0; i < mCameraInputArray.length; i++) {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0500 start for camera[" + i + "]");
+                for (let i = 0; i < mCameraNum; i++) {
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0104 start for camera[" + i + "]");
     
                     await startCameraSession(i);
     
                     let isVideoStabilizationModeSupported = await mCameraSession.isVideoStabilizationModeSupported(cameraObj.VideoStabilizationMode.AUTO);
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0500 finish");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0104 finish");
                     if (isVideoStabilizationModeSupported != null || isVideoStabilizationModeSupported != undefined) {
-                        if ((deviceInfo.deviceType != 'default') && (isVideoStabilizationModeSupported == false)) {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0500 FAILED with isVideoStabilizationModeSupported is: " + isVideoStabilizationModeSupported);
+                        if ((deviceInfo.deviceType != 'default' && deviceInfo.deviceType != 'tablet') && (isVideoStabilizationModeSupported == false)) {
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0104 FAILED with isVideoStabilizationModeSupported is: " + isVideoStabilizationModeSupported);
                             expect().assertFail();
                         } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0500 PASSED with isVideoStabilizationModeSupported is: " + isVideoStabilizationModeSupported);
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0104 PASSED with isVideoStabilizationModeSupported is: " + isVideoStabilizationModeSupported);
                         }
                     } else {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0500 FAILED with isVideoStabilizationModeSupported is: " + isVideoStabilizationModeSupported);
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0104 FAILED with isVideoStabilizationModeSupported is: " + isVideoStabilizationModeSupported);
                         expect().assertFail();
                     }    
     
                     await sleep(1000);
                     
-                    await stopCameraSession(i);
+                    await stopCameraSession();
     
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0500 end for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0104 end for camera[" + i + "]");
                 }
     
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0500 ends here");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_VIDEO_STABILIZATION_MODE_SUPPORT_PROMISE_0104 ends here");
                 done();
             }
         })
 
         /**
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0500
+        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0104
         * @tc.name      : Check capture session set video stabilization auto mode with callback
         * @tc.desc      : Check capture session set video stabilization auto mode with callback
         * @tc.size      : MEDIUM
         * @tc.type      : Function
         * @tc.level     : Level 2
         */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0500', 2, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0500--------------");
+         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0104', 2, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0104--------------");
 
-            if (isEmpty(mCameraInputArray)) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0500 FAILED with NoCamera");
+            if (mCameraNum == 0) {
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0104 FAILED with NoCamera");
                 expect().assertFail();
                 done();
             } else {
-                for (let i = 0; i < mCameraInputArray.length; i++) {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0500 start for camera[" + i + "]");
+                for (let i = 0; i < mCameraNum; i++) {
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0104 start for camera[" + i + "]");
     
                     await startCameraSession(i);
     
                     if (mIsVideoStabilizationModeSupportedArray[i] == true) {
                         mCameraSession.setVideoStabilizationMode(cameraObj.VideoStabilizationMode.AUTO, async (err) => {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0500 callback");
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0104 callback");
                             if (!err) {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0500 PASSED with VideoStabilizationMode is: " + cameraObj.VideoStabilizationMode.AUTO);
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0104 PASSED with VideoStabilizationMode is: " + cameraObj.VideoStabilizationMode.AUTO);
                             } else {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0500 FAILED : " + err.message);
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0104 FAILED : " + err.message);
                                 expect().assertFail();
                             }
                         })
                         await sleep(500);
 
                         mCameraSession.getActiveVideoStabilizationMode(async (err, data) => {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0500 callback");
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0104 callback");
                             if (!err) {
                                 if (data == cameraObj.VideoStabilizationMode.AUTO) {
-                                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0500 PASSED with VideoStabilizationMode is: " + data);
+                                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0104 PASSED with VideoStabilizationMode is: " + data);
                                 } else {
-                                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0500 FAILED with VideoStabilizationMode is: " + data);
+                                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0104 FAILED with VideoStabilizationMode is: " + data);
                                     expect().assertFail();
                                 }
                             } else {
-                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0500 FAILED : " + err.message);
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0104 FAILED : " + err.message);
                                 expect().assertFail();
                             }
                         })
                         await sleep(500);
                     } else {
-                        if (deviceInfo.deviceType != 'default') {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0500 FAILED");
-                            expect().assertFail();
-                        } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0500 PASSED");
-                        }
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0104 PASSED");
                     }
                     
-                    await stopCameraSession(i);
+                    await stopCameraSession();
     
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0500 end for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0104 end for camera[" + i + "]");
                 }
     
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0500 ends here");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_CALLBACK_0104 ends here");
                 done();
             }
         })
 
         /**
-        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0500
+        * @tc.number    : SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0104
         * @tc.name      : Check capture session set video stabilization auto mode with promise
         * @tc.desc      : Check capture session set video stabilization auto mode with promise
         * @tc.size      : MEDIUM
         * @tc.type      : Function
         * @tc.level     : Level 2
         */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0500', 2, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0500--------------");
+         it('SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0104', 2, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0104--------------");
 
-            if (isEmpty(mCameraInputArray)) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0500 FAILED with NoCamera");
+            if (mCameraNum == 0) {
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0104 FAILED with NoCamera");
                 expect().assertFail();
                 done();
             } else {
-                for (let i = 0; i < mCameraInputArray.length; i++) {
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0500 start for camera[" + i + "]");
+                for (let i = 0; i < mCameraNum; i++) {
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0104 start for camera[" + i + "]");
     
                     await startCameraSession(i);
     
                     if (mIsVideoStabilizationModeSupportedArray[i] == true) {
                         await mCameraSession.setVideoStabilizationMode(cameraObj.VideoStabilizationMode.AUTO);
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0500 finish");
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0500 PASSED with VideoStabilizationMode is: " + cameraObj.VideoStabilizationMode.AUTO);  
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0104 finish");
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0104 PASSED with VideoStabilizationMode is: " + cameraObj.VideoStabilizationMode.AUTO);  
                         await sleep(500);
 
                         let vdeoStabilizationMode = await mCameraSession.getActiveVideoStabilizationMode();
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0500 finish");
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0104 finish");
                         if (vdeoStabilizationMode == cameraObj.VideoStabilizationMode.AUTO) {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0500 PASSED with VideoStabilizationMode is: " + vdeoStabilizationMode);
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0104 PASSED with VideoStabilizationMode is: " + vdeoStabilizationMode);
                         } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0500 FAILED with VideoStabilizationMode is: " + vdeoStabilizationMode);
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0104 FAILED with VideoStabilizationMode is: " + vdeoStabilizationMode);
                             expect().assertFail();
                         }
                         await sleep(500);
                     } else {
-                        if (deviceInfo.deviceType != 'default') {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0500 FAILED");
-                            expect().assertFail();
-                        } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0500 PASSED");
-                        }
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0104 PASSED");
                     }
                     
-                    await stopCameraSession(i);
+                    await stopCameraSession();
     
-                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0500 end for camera[" + i + "]");
+                    console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0104 end for camera[" + i + "]");
                 }
     
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0500 ends here");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_SET_GET_VIDEO_STABILIZATION_MODE_PROMISE_0104 ends here");
                 done();
             }
         })
