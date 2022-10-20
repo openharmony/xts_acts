@@ -206,13 +206,25 @@ const getPermission = async function (name) {
     let appInfo = await bundle.getApplicationInfo(name, 0, 100);
     let tokenID = appInfo.accessTokenId;
     let atManager = abilityAccessCtrl.createAtManager();
-    let result1 = await atManager.grantUserGrantedPermission(tokenID, "ohos.permission.MEDIA_LOCATION", 1);
-    let result2 = await atManager.grantUserGrantedPermission(tokenID, "ohos.permission.READ_MEDIA", 1);
-    let result3 = await atManager.grantUserGrantedPermission(tokenID, "ohos.permission.WRITE_MEDIA", 1);
+    try {
+        await atManager.grantUserGrantedPermission(tokenID, "ohos.permission.MEDIA_LOCATION", 1);
+    } catch (error) {
+        console.info('getPermission MEDIA_LOCATION failed')
+    }
+    try {
+        await atManager.grantUserGrantedPermission(tokenID, "ohos.permission.READ_MEDIA", 1);
+    } catch (error) {
+        console.info('getPermission READ_MEDIA failed')
+    }
+    try {
+        await atManager.grantUserGrantedPermission(tokenID, "ohos.permission.WRITE_MEDIA", 1);
+    } catch (error) {
+        console.info('getPermission WRITE_MEDIA failed')
+    }
     let isGranted1 = await atManager.verifyAccessToken(tokenID, "ohos.permission.MEDIA_LOCATION");
     let isGranted2 = await atManager.verifyAccessToken(tokenID, "ohos.permission.READ_MEDIA");
     let isGranted3 = await atManager.verifyAccessToken(tokenID, "ohos.permission.WRITE_MEDIA");
-    if (!(result1 == 0 && result2 == 0 && result3 == 0) || !(isGranted1 == 0 && isGranted2 == 0 && isGranted3 == 0)) {
+    if (!(isGranted1 == 0 && isGranted2 == 0 && isGranted3 == 0)) {
         console.info('getPermission failed')
     }
     console.info('getPermission end')

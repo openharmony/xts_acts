@@ -138,13 +138,41 @@ const getPermission = async function (name = 'ohos.acts.multimedia.userfilemgr')
     let appInfo = await bundle.getApplicationInfo('ohos.acts.multimedia.userfilemgr', 0, 100);
     let tokenID = appInfo.accessTokenId;
     let atManager = abilityAccessCtrl.createAtManager();
-    let result1 = await atManager.grantUserGrantedPermission(tokenID, "ohos.permission.MEDIA_LOCATION", 1);
-    let resultReadImageVideo = await atManager.grantUserGrantedPermission(tokenID, "ohos.permission.READ_IMAGEVIDEO", 1);
-    let resultReadAudio = await atManager.grantUserGrantedPermission(tokenID, "ohos.permission.READ_AUDIO", 1);
-    let resultReadDocument = await atManager.grantUserGrantedPermission(tokenID, "ohos.permission.READ_DOCUMENT", 1);
-    let resultWriteImageVideo = await atManager.grantUserGrantedPermission(tokenID, "ohos.permission.WRITE_IMAGEVIDEO", 1);
-    let resultWriteAudio = await atManager.grantUserGrantedPermission(tokenID, "ohos.permission.WRITE_AUDIO", 1);
-    let resultWriteDocument = await atManager.grantUserGrantedPermission(tokenID, "ohos.permission.WRITE_DOCUMENT", 1);
+    try {
+        await atManager.grantUserGrantedPermission(tokenID, "ohos.permission.MEDIA_LOCATION", 1);
+    } catch (error) {
+        console.info('getPermission MEDIA_LOCATION failed')
+    }
+    try {
+        await atManager.grantUserGrantedPermission(tokenID, "ohos.permission.READ_IMAGEVIDEO", 1);
+    } catch (error) {
+        console.info('getPermission READ_IMAGEVIDEO failed')
+    }
+    try {
+        await atManager.grantUserGrantedPermission(tokenID, "ohos.permission.READ_AUDIO", 1);
+    } catch (error) {
+        console.info('getPermission READ_AUDIO failed')
+    }
+    try {
+        await atManager.grantUserGrantedPermission(tokenID, "ohos.permission.READ_DOCUMENT", 1);
+    } catch (error) {
+        console.info('getPermission READ_DOCUMENT failed')
+    }
+    try {
+        await atManager.grantUserGrantedPermission(tokenID, "ohos.permission.WRITE_IMAGEVIDEO", 1);
+    } catch (error) {
+        console.info('getPermission WRITE_IMAGEVIDEO failed')
+    }
+    try {
+        await atManager.grantUserGrantedPermission(tokenID, "ohos.permission.WRITE_AUDIO", 1);
+    } catch (error) {
+        console.info('getPermission WRITE_AUDIO failed')
+    }
+    try {
+        await atManager.grantUserGrantedPermission(tokenID, "ohos.permission.WRITE_DOCUMENT", 1);
+    } catch (error) {
+        console.info('getPermission WRITE_DOCUMENT failed')
+    }
     let isGranted1 = await atManager.verifyAccessToken(tokenID, "ohos.permission.MEDIA_LOCATION");
     let isGrantedReadImageVideo = await atManager.verifyAccessToken(tokenID, "ohos.permission.READ_IMAGEVIDEO");
     let isGrantedReadAudio = await atManager.verifyAccessToken(tokenID, "ohos.permission.READ_AUDIO");
@@ -152,8 +180,7 @@ const getPermission = async function (name = 'ohos.acts.multimedia.userfilemgr')
     let isGrantedWriteImageVideo = await atManager.verifyAccessToken(tokenID, "ohos.permission.WRITE_IMAGEVIDEO");
     let isGrantedWriteAudio = await atManager.verifyAccessToken(tokenID, "ohos.permission.WRITE_AUDIO");
     let isGrantedWriteDocument = await atManager.verifyAccessToken(tokenID, "ohos.permission.WRITE_DOCUMENT");
-    if (result1 != 0 || isGranted1 !=0 || !(resultReadImageVideo == 0 && resultReadAudio == 0 && resultReadDocument == 0) ||
-        !(resultWriteImageVideo == 0 && resultWriteAudio == 0 && resultWriteDocument == 0) ||
+    if (isGranted1 !=0 ||
         !(isGrantedReadImageVideo == 0 && isGrantedReadAudio == 0 && isGrantedReadDocument == 0) ||
         !(isGrantedWriteImageVideo == 0 && isGrantedWriteAudio == 0 && isGrantedWriteDocument == 0)) {
         console.info('getPermission failed')
