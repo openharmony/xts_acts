@@ -41,18 +41,6 @@ let filesfetchOp = {
     selectionArgs: [fileType.toString(), 'Documents/'],
 };
 
-function checkAssetAttr(done, attr, testNum, asset, checkType) {
-    if (checkType && asset[attr] != checkType) {
-        console.info(`ASSET_PROMISE getFileAssets ${testNum} failed`);
-        expect(false).assertTrue();
-        done();
-    } else if (asset[attr] == undefined) {
-        console.info(`ASSET_PROMISE getFileAssets ${testNum} failed`);
-        expect(false).assertTrue();
-        done();
-    }
-}
-
 let path;
 let presetAsset;
 let displayName;
