@@ -773,15 +773,11 @@ ohos_resources("ace_demo_ets_resources") {
 
 FA_JS 模式适配指导请参考
 
-​                  [一. 标准系统FA-JS-旧框架编译Hap包指导 - Wiki - Gitee.com](https://gitee.com/openharmony/xts_acts/wikis/%E6%A0%87%E5%87%86%E7%B3%BB%E7%BB%9FFA&Stage%E6%A8%A1%E5%BC%8F%E9%80%82%E9%85%8D%E6%96%B0%E6%A1%86%E6%9E%B6%E6%8C%87%E5%AF%BC%E6%96%87%E6%A1%A3/%E4%B8%80.%20%E6%A0%87%E5%87%86%E7%B3%BB%E7%BB%9FFA-JS-%E6%97%A7%E6%A1%86%E6%9E%B6%E7%BC%96%E8%AF%91Hap%E5%8C%85%E6%8C%87%E5%AF%BC)
-
-​                  [三. 标准系统FA-JS模式XTS-旧框架-新框架适配 - Wiki - Gitee.com](https://gitee.com/openharmony/xts_acts/wikis/%E6%A0%87%E5%87%86%E7%B3%BB%E7%BB%9FFA&Stage%E6%A8%A1%E5%BC%8F%E9%80%82%E9%85%8D%E6%96%B0%E6%A1%86%E6%9E%B6%E6%8C%87%E5%AF%BC%E6%96%87%E6%A1%A3/%E4%B8%89.%20%E6%A0%87%E5%87%86%E7%B3%BB%E7%BB%9FFA-JS%E6%A8%A1%E5%BC%8FXTS-%E6%97%A7%E6%A1%86%E6%9E%B6-%E6%96%B0%E6%A1%86%E6%9E%B6%E9%80%82%E9%85%8D)
+​                  [标准系统FA-JS模式XTS适配](https://gitee.com/openharmony/xts_acts/wikis/%E6%A0%87%E5%87%86%E7%B3%BB%E7%BB%9FFA&Stage%E6%A8%A1%E5%BC%8F%E9%80%82%E9%85%8D%E6%96%B0%E6%A1%86%E6%9E%B6%E6%8C%87%E5%AF%BC%E6%96%87%E6%A1%A3/%E4%B8%89.%20%E6%A0%87%E5%87%86%E7%B3%BB%E7%BB%9FFA-JS%E6%A8%A1%E5%BC%8FXTS-%E6%97%A7%E6%A1%86%E6%9E%B6-%E6%96%B0%E6%A1%86%E6%9E%B6%E9%80%82%E9%85%8D)
 
 FA_TS 模式适配指导请参考 
 
-​                  [二. 标准系统FA-ETS-新框架编译Hap包指导 - Wiki - Gitee.com](https://gitee.com/openharmony/xts_acts/wikis/%E6%A0%87%E5%87%86%E7%B3%BB%E7%BB%9FFA&Stage%E6%A8%A1%E5%BC%8F%E9%80%82%E9%85%8D%E6%96%B0%E6%A1%86%E6%9E%B6%E6%8C%87%E5%AF%BC%E6%96%87%E6%A1%A3/%E4%BA%8C.%20%E6%A0%87%E5%87%86%E7%B3%BB%E7%BB%9FFA-ETS-%E6%96%B0%E6%A1%86%E6%9E%B6%E7%BC%96%E8%AF%91Hap%E5%8C%85%E6%8C%87%E5%AF%BC)
-
-​                  [四. 标准系统FA-TS模式XTS-旧框架-新框架适配 - Wiki - Gitee.com](https://gitee.com/openharmony/xts_acts/wikis/%E6%A0%87%E5%87%86%E7%B3%BB%E7%BB%9FFA&Stage%E6%A8%A1%E5%BC%8F%E9%80%82%E9%85%8D%E6%96%B0%E6%A1%86%E6%9E%B6%E6%8C%87%E5%AF%BC%E6%96%87%E6%A1%A3/%E5%9B%9B.%20%E6%A0%87%E5%87%86%E7%B3%BB%E7%BB%9FFA-TS%E6%A8%A1%E5%BC%8FXTS-%E6%97%A7%E6%A1%86%E6%9E%B6-%E6%96%B0%E6%A1%86%E6%9E%B6%E9%80%82%E9%85%8D)
+​                  [标准系统FA-TS模式XTS适配](https://gitee.com/openharmony/xts_acts/wikis/%E6%A0%87%E5%87%86%E7%B3%BB%E7%BB%9FFA&Stage%E6%A8%A1%E5%BC%8F%E9%80%82%E9%85%8D%E6%96%B0%E6%A1%86%E6%9E%B6%E6%8C%87%E5%AF%BC%E6%96%87%E6%A1%A3/%E5%9B%9B.%20%E6%A0%87%E5%87%86%E7%B3%BB%E7%BB%9FFA-TS%E6%A8%A1%E5%BC%8FXTS-%E6%97%A7%E6%A1%86%E6%9E%B6-%E6%96%B0%E6%A1%86%E6%9E%B6%E9%80%82%E9%85%8D)
 
 **以Stage 模式为例：**
 
@@ -932,9 +928,7 @@ ohos_resources("edm_resources") {
 
 Stage 模式适配指导请参考 
 
-​                          [五. 标准系统Stage模式-ETS-旧框架编译Hap包指导 - Wiki - Gitee.com](https://gitee.com/openharmony/xts_acts/wikis/%E6%A0%87%E5%87%86%E7%B3%BB%E7%BB%9FFA&Stage%E6%A8%A1%E5%BC%8F%E9%80%82%E9%85%8D%E6%96%B0%E6%A1%86%E6%9E%B6%E6%8C%87%E5%AF%BC%E6%96%87%E6%A1%A3/%E4%BA%94.%20%E6%A0%87%E5%87%86%E7%B3%BB%E7%BB%9FStage%E6%A8%A1%E5%BC%8F-ETS-%E6%97%A7%E6%A1%86%E6%9E%B6%E7%BC%96%E8%AF%91Hap%E5%8C%85%E6%8C%87%E5%AF%BC)
-
-​                          [六. 标准系统Stage模式XTS-旧框架-新框架适配 - Wiki - Gitee.com](https://gitee.com/openharmony/xts_acts/wikis/%E6%A0%87%E5%87%86%E7%B3%BB%E7%BB%9FFA&Stage%E6%A8%A1%E5%BC%8F%E9%80%82%E9%85%8D%E6%96%B0%E6%A1%86%E6%9E%B6%E6%8C%87%E5%AF%BC%E6%96%87%E6%A1%A3/%E5%85%AD.%20%E6%A0%87%E5%87%86%E7%B3%BB%E7%BB%9FStage%E6%A8%A1%E5%BC%8FXTS-%E6%97%A7%E6%A1%86%E6%9E%B6-%E6%96%B0%E6%A1%86%E6%9E%B6%E9%80%82%E9%85%8D)
+​                          [标准系统Stage模式XTS适配](https://gitee.com/openharmony/xts_acts/wikis/%E6%A0%87%E5%87%86%E7%B3%BB%E7%BB%9FFA&Stage%E6%A8%A1%E5%BC%8F%E9%80%82%E9%85%8D%E6%96%B0%E6%A1%86%E6%9E%B6%E6%8C%87%E5%AF%BC%E6%96%87%E6%A1%A3/%E5%85%AD.%20%E6%A0%87%E5%87%86%E7%B3%BB%E7%BB%9FStage%E6%A8%A1%E5%BC%8FXTS-%E6%97%A7%E6%A1%86%E6%9E%B6-%E6%96%B0%E6%A1%86%E6%9E%B6%E9%80%82%E9%85%8D)
 
 ### JS语言用例编译打包指导（适用于标准系统）<a name="section445519106559"></a>
 
