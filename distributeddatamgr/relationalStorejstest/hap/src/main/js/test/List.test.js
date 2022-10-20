@@ -14,7 +14,6 @@
 */
 import rdbStoreBackupRestoreCallbackTest from './RdbstoreBackupRestoreCallbackJsunit.test.js'
 import rdbStoreBackupRestoreWithFAContextTest from './RdbstoreBackupRestoreWithFAContextJsunit.test.js'
-import rdbstoreChangeEncryptKeyTest from './RdbstoreChangeEncryptKeyJsunit.test.js'
 import rdbStoreDeleteTest from './RdbstoreDeleteJsunit.test.js'
 import rdbStoreDistributedTest from './RdbStoreDistributedJsunit.test.js'
 import rdbstoreInsertTest from './RdbstoreInsertJsunit.test.js'
@@ -30,7 +29,6 @@ import rdbStoreEncryptionTest from './RdbstoreEncryptionJsunit.test.js'
 export default function testsuite() {
 rdbStoreBackupRestoreCallbackTest()
 rdbStoreBackupRestoreWithFAContextTest()
-rdbstoreChangeEncryptKeyTest()
 rdbStoreDeleteTest()
 rdbStoreDistributedTest()
 rdbstoreInsertTest()
