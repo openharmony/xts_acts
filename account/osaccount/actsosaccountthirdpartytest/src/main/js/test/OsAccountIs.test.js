@@ -17,8 +17,6 @@ import distributedAccount from '@ohos.account.distributedAccount'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
 const TIMEOUT = 1000;
-const ERR_OSACCOUNT_KIT_IS_OS_ACCOUNT_ACTIVED_ERROR = 4587542;
-const ERR_OSACCOUNT_KIT_IS_OS_ACCOUNT_VERIFIED_ERROR = 4587545;
 export default function ActsOsAccountThirdPartyTest_third_1() {
     describe('ActsOsAccountThirdPartyTest_third_1', function () {
 
@@ -132,7 +130,7 @@ export default function ActsOsAccountThirdPartyTest_third_1() {
             var nonExistLocalId = 1000;
             AccountManager.isOsAccountActived(nonExistLocalId, (err)=>{
                 console.debug("====>isOsAccountActived err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(ERR_OSACCOUNT_KIT_IS_OS_ACCOUNT_ACTIVED_ERROR);
+                expect(err.code !=0 ).assertEqual(true);
                 console.debug("====>ActsOsAccountIsActived_0300 end");
                 done();
             })
@@ -153,7 +151,7 @@ export default function ActsOsAccountThirdPartyTest_third_1() {
             }
             catch(err){
                 console.debug("====>isOsAccountActived err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(ERR_OSACCOUNT_KIT_IS_OS_ACCOUNT_ACTIVED_ERROR);
+                expect(err.code !=0 ).assertEqual(true);
                 console.debug("====>ActsOsAccountIsActived_0400 end");
                 done();
             }
@@ -208,7 +206,7 @@ export default function ActsOsAccountThirdPartyTest_third_1() {
             console.debug("====>get os AccountManager finish====");
             AccountManager.isOsAccountActived(undefined, (err, data)=>{
                 console.debug("====>ActsOsAccountIsActived_0700 err:" + JSON.stringify(err));
-                expect(err != 0).assertEqual(true)
+                expect(err.code != 0).assertEqual(true)
                 console.debug("====>receive isOsAccountActived data: " + JSON.stringify(data));
                 done();
             })
@@ -225,7 +223,7 @@ export default function ActsOsAccountThirdPartyTest_third_1() {
             console.debug("====>ActsOsAccountIsActived_0800 get os AccountManager finish====");
             AccountManager.isOsAccountActived(undefined).then((data)=>{
                 console.debug("====>ActsOsAccountIsActived_0800 get active status is: " + JSON.stringify(data));
-                done()
+                done();
             }).catch((err)=>{
                 console.debug("====>ActsOsAccountIsActived_0800 err:" + JSON.stringify(err))
                 expect(err != 0).assertEqual(true);
@@ -439,7 +437,7 @@ export default function ActsOsAccountThirdPartyTest_third_1() {
             var osAccountLocalId = 1000;
             AccountManager.isOsAccountVerified(osAccountLocalId, (err)=>{
                 console.debug("====>isOsAccountVerified err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(ERR_OSACCOUNT_KIT_IS_OS_ACCOUNT_VERIFIED_ERROR);
+                expect(err.code !=0 ).assertEqual(true);
                 console.debug("====>ActsOsAccountIsVerified_0900 end====");
                 done();
             })
@@ -460,7 +458,7 @@ export default function ActsOsAccountThirdPartyTest_third_1() {
             }
             catch(err){
                 console.debug("====>isOsAccountVerified err:" + JSON.stringify(err));
-                expect(err.code).assertEqual(ERR_OSACCOUNT_KIT_IS_OS_ACCOUNT_VERIFIED_ERROR);
+                expect(err.code !=0 ).assertEqual(true);
                 console.debug("====>ActsOsAccountIsVerified_1000 end====");
                 done();
             }

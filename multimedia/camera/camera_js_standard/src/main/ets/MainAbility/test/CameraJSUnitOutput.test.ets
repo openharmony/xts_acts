@@ -342,28 +342,28 @@ export default function cameraJSUnitOutput(surfaceId: any) {
 
 
     /**
-      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_INPUT_PROMISE_0100
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_OUTPUT_PROMISE_0100
       * @tc.name      : Create previewOutput instance async api
       * @tc.desc      : Create previewOutput instance async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 2
     */
-    it('SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_INPUT_PROMISE_0100', 2, async function (done) {
-      console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_INPUT_PROMISE_0100--------------");
+    it('SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_OUTPUT_PROMISE_0100', 2, async function (done) {
+      console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_OUTPUT_PROMISE_0100--------------");
       if (isEmpty(cameraManager)) {
         console.info(TAG + "Entering CREATE_CAMERA_INPUT cameraManager == null || undefined")
         expect().assertFail();
       } else {
         cameraInput = await cameraManager.createCameraInput(cameraDevicesArray[0]);
         if (isEmpty(cameraInput)) {
-          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_INPUT_PROMISE_0100 FAILED");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_OUTPUT_PROMISE_0100 FAILED");
         }
         cameraInput.open(async (err) => {
           if (!err) {
-            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_INPUT_PROMISE_0100 open callback");
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_OUTPUT_PROMISE_0100 open callback");
           } else {
-            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_INPUT_PROMISE_0100 FAILED: " + err.message);
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_OUTPUT_PROMISE_0100 FAILED: " + err.message);
           }
           await sleep(1000);
           done();

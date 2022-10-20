@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 
+import deleteCallbackTest from './deleteCallback.test.ets'
+import deletePromiseTest from './deletePromise.test.ets'
 import getAlbumsCallbackTest from './getAlbumsCallback.test.ets'
 import getAlbumsPromiseTest from './getAlbumsPromise.test.ets'
 import getFileAssetsCallbackTest from './getFileAssetsCallback.test.ets'
@@ -20,6 +22,8 @@ import getFileAssetsPromiseTest from './getFileAssetsPromise.test.ets'
 import getUserFileMgrTest from './getUserFileMgr.test.ets'
 import onOffReleasePromiseTest from './onOffReleasePromise.test.ets'
 export default function testsuite(abilityContext) {
+  deleteCallbackTest(abilityContext)
+  deletePromiseTest(abilityContext)
   getAlbumsCallbackTest(abilityContext)
   getAlbumsPromiseTest(abilityContext)
   getFileAssetsCallbackTest(abilityContext)

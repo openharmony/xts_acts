@@ -229,5 +229,119 @@ describe('PowerManagerRunningLockTest', function () {
             }
         })
     })
+
+     /**
+     * @tc.number SUB_PowerSystem_PowerManager_JSTest_0210
+     * @tc.name Create_Running_Lock_Promise_JSTest0210
+     * @tc.desc Create lock, hold lock, unlock
+     */
+      it('Create_Running_Lock_Promise_JSTest0210', 0, async function (done) {
+        try {
+            let isExec = false;
+            runningLock.create("Create_Running_Lock_Promise_JSTest0210", runningLock.RunningLockType.BACKGROUND)
+                .then((error, runninglock) => {
+                    isExec = true;
+                    expect(typeof error === "undefined").assertTrue();
+                    expect(runninglock !== null).assertTrue();
+                    let holding = runninglock.isHolding();
+                    console.info('Create_Running_Lock_Promise_JSTest0210 holding false:' + holding);
+                    expect(holding).assertFalse();
+                    runninglock.hold(1000); // hold 1000ms
+                    holding = runninglock.isHolding();
+                    console.info('Create_Running_Lock_Promise_JSTest0210 holding true:' + holding);
+                    expect(holding).assertTrue();
+                    runninglock.unhold();
+                    expect(runninglock.isHolding()).assertFalse();
+                }).finally(() => {
+                    expect(isExec).assertTrue();
+                })
+        } catch (e) {
+            console.info('Create_Running_Lock_Promise_JSTest0210 error:' + e);
+            expect().assertFail();
+        }
+        done();
+    })
+
+    // New interface
+    /**
+     * @tc.number SUB_PowerSystem_PowerManager_JSTest_0220
+     * @tc.name Create_Running_Lock_Promise_Invalid_JSTest0220
+     * @tc.desc Create lock input invalid value
+     */
+    it('Create_Running_Lock_Promise_Invalid_JSTest0220', 0, async function (done) {
+        try {
+            runningLock.create(0, runningLock.RunningLockType.BACKGROUND)
+                .then((error, runninglock) => {
+                    expect().assertFail();
+                })
+        } catch (e) {
+            console.info('Create_Running_Lock_Promise_Invalid_JSTest0220 code:' + e.code + "msg:" + e.message);
+            // 401: Invalid input parameter
+            expect(e.code === 401).assertTrue();
+        }
+        done();
+    })
+
+    /**
+     * @tc.number SUB_PowerSystem_PowerManager_JSTest_0230
+     * @tc.name Create_Running_Lock_Callback_JSTest0230
+     * @tc.desc Create lock, hold lock, unlock
+     */
+    it('Create_Running_Lock_Callback_JSTest0230', 0, async function (done) {
+        try {
+            runningLock.create("Create_Running_Lock_Callback_JSTest0230", runningLock.RunningLockType.BACKGROUND,
+                (error, runninglock) => {
+                    expect(typeof error === "undefined").assertTrue();
+                    expect(runninglock !== null).assertTrue();
+                    runninglock.hold(1000); // hold 1000ms
+                    let holding = runninglock.isHolding();
+                    console.info('Create_Running_Lock_Callback_JSTest0230 holding true:' + holding);
+                    expect(holding).assertTrue();
+                    runninglock.unhold();
+                    holding = runninglock.isHolding();
+                    expect(holding).assertFalse();
+                    console.info('Create_Running_Lock_Callback_JSTest0230 holding false:' + holding);
+                });
+        } catch (e) {
+            console.info('Create_Running_Lock_Callback_JSTest0230 error:' + e);
+            expect().assertFail();
+        }
+        done();
+    })
+
+    /**
+     * @tc.number SUB_PowerSystem_PowerManager_JSTest_0240
+     * @tc.name Create_Running_Lock_Callback_Invalid_JSTest0240
+     * @tc.desc Create lock input invalid value
+     */
+    it('Create_Running_Lock_Callback_Invalid_JSTest0240', 0, async function (done) {
+        try {
+            runningLock.create("Create_Running_Lock_Callback_Invalid_JSTest0240", "invalid",
+                (error, runninglock) => {
+                    expect().assertFail();
+                });
+        } catch (e) {
+            console.info('Create_Running_Lock_Callback_Invalid_JSTest0240 code:' + e.code + "msg:" + e.message);
+            // 401: Invalid input parameter
+            expect(e.code === 401).assertTrue();
+        }
+        done();
+    })
+
+    /**
+     * @tc.number SUB_PowerSystem_PowerManager_JSTest_0250
+     * @tc.name Is_Supported_JSTest0250
+     * @tc.desc Checks whether the specified RunningLockType is supported.
+     */
+         it('Is_Supported_JSTest0250', 0, async function (done) {
+            try {
+                let background = runningLock.isSupported(runningLock.RunningLockType.BACKGROUND)
+                expect(background).assertTrue();
+            } catch (e) {
+                console.info('Is_Supported_JSTest0250 code:' + e);
+                expect().assertFail();
+            }
+            done();
+        })
 })
 }

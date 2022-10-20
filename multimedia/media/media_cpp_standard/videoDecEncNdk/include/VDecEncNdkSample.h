@@ -30,6 +30,7 @@
 #include "ndktest_log.h"
 #include "native_avmagic.h"
 #include "surface.h"
+#include "native_avcodec_base.h"
 #include "native_avcodec_videodecoder.h"
 #include "native_avcodec_videoencoder.h"
 
@@ -69,6 +70,7 @@ public:
     struct OH_AVCodec* CreateVideoDecoderByMime(std::string mimetype);
     struct OH_AVCodec* CreateVideoDecoderByName(std::string name);
     int32_t ConfigureDec(struct OH_AVFormat *format);
+    int32_t SetParameterDec(struct OH_AVFormat *format);
     int32_t SetOutputSurface();
     int32_t PrepareDec();
     int32_t StartDec();
@@ -80,6 +82,7 @@ public:
     struct OH_AVCodec* CreateVideoEncoderByMime(std::string mimetype);
     struct OH_AVCodec* CreateVideoEncoderByName(std::string name);
     int32_t ConfigureEnc(struct OH_AVFormat *format);
+    int32_t SetParameterEnc(struct OH_AVFormat *format);
     int32_t GetSurface();
     int32_t PrepareEnc();
     int32_t StartEnc();
@@ -108,6 +111,7 @@ public:
     bool isDecOutputEOS = false;
     bool isEncOutputEOS = false;
     bool setEos = true;
+    bool needRender = true;
 
 private:
     OHNativeWindow *nativeWindow_;

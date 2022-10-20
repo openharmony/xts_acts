@@ -54,6 +54,7 @@ export default function fileAssetFavoriteCallbackTest(abilityContext) {
                 let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchAssetResult, 1);
                 if (!checkAssetCountPass) return;
                 let asset = await fetchAssetResult.getFirstObject();
+                console.info(`${testNum} asset: ${asset}`);
                 asset.isFavorite(async (err, isFavorite) => {
                     if (err) {
                         expect(false).assertTrue();
@@ -82,8 +83,6 @@ export default function fileAssetFavoriteCallbackTest(abilityContext) {
                 let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchAssetResult, 1);
                 if (!checkAssetCountPass) return;
                 const asset = await fetchAssetResult.getFirstObject();
-                let isFavorite = await asset.isFavorite();
-                console.info(`${testNum} isFavorite: ${isFavorite}`);
                 asset.favorite(true, async (err) => {
                     if(err) {
                         console.info(`${testNum} failed err: ${err}`);
@@ -140,9 +139,9 @@ export default function fileAssetFavoriteCallbackTest(abilityContext) {
          * @tc.desc      : isFavorite(image) result false
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_01_001', 0, async function (done) {
+        it('SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_01_001', 2, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_01_001';
             let currentFetchOp = imageVideoNameFetchOps(testNum, 'Pictures/FavCb/', '01.jpg');
             let isAudio = false;
@@ -155,9 +154,9 @@ export default function fileAssetFavoriteCallbackTest(abilityContext) {
          * @tc.desc      : favorite(image) by true
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_01_002', 0, async function (done) {
+        it('SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_01_002', 2, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_01_002';
             let currentFetchOp = imageVideoNameFetchOps(testNum, 'Pictures/FavCb/', '02.jpg');
             let isAudio = false;
@@ -170,9 +169,9 @@ export default function fileAssetFavoriteCallbackTest(abilityContext) {
          * @tc.desc      : favorite(image) by false
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_01_003', 0, async function (done) {
+        it('SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_01_003', 2, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_01_003';
             let currentFetchOp = imageVideoNameFetchOps(testNum, 'Pictures/FavCb/', '03.jpg');
             let isAudio = false;
@@ -182,90 +181,90 @@ export default function fileAssetFavoriteCallbackTest(abilityContext) {
         /**
          * @tc.number    : SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_02_001
          * @tc.name      : isFavorite
-         * @tc.desc      : isFavorite(audio) result false
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_02_001', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_02_001';
-            let currentFetchOp = audioNameFetchOps(testNum, 'Audios/FavCb/', '01.mp3');
-            let isAudio = true;
-            await favoriteDefaultState(done, testNum, currentFetchOp, isAudio);
-        });
-
-        /**
-         * @tc.number    : SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_02_002
-         * @tc.name      : favorite
-         * @tc.desc      : favorite(audio) by true
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_02_002', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_02_002';
-            let currentFetchOp = audioNameFetchOps(testNum, 'Audios/FavCb/', '02.mp3');
-            let isAudio = true;
-            await favoriteByTrue(done, testNum, currentFetchOp, isAudio);
-        });
-
-        /**
-         * @tc.number    : SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_02_003
-         * @tc.name      : favorite
-         * @tc.desc      : favorite(audio) by false
-         * @tc.size      : MEDIUM
-         * @tc.type      : Function
-         * @tc.level     : Level 0
-         */
-        it('SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_02_003', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_02_003';
-            let currentFetchOp = audioNameFetchOps(testNum, 'Audios/FavCb/', '03.mp3');
-            let isAudio = true;
-            await favoriteByFalse(done, testNum, currentFetchOp, isAudio);
-        });
-
-        /**
-         * @tc.number    : SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_03_001
-         * @tc.name      : isFavorite
          * @tc.desc      : isFavorite(video) result false
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_03_001', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_03_001';
+        it('SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_02_001', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_02_001';
             let currentFetchOp = imageVideoNameFetchOps(testNum, 'Videos/FavCb/', '01.mp4');
             let isAudio = false;
             await favoriteDefaultState(done, testNum, currentFetchOp, isAudio);
         });
 
         /**
-         * @tc.number    : SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_03_002
+         * @tc.number    : SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_02_002
          * @tc.name      : favorite
          * @tc.desc      : favorite(video) by true
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_03_002', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_03_002';
+        it('SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_02_002', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_02_002';
             let currentFetchOp = imageVideoNameFetchOps(testNum, 'Videos/FavCb/', '02.mp4');
             let isAudio = false;
             await favoriteByTrue(done, testNum, currentFetchOp, isAudio);
         });
 
         /**
-         * @tc.number    : SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_03_003
+         * @tc.number    : SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_02_003
          * @tc.name      : favorite
          * @tc.desc      : favorite(video) by false
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_03_003', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_03_003';
+        it('SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_02_003', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_02_003';
             let currentFetchOp = imageVideoNameFetchOps(testNum, 'Videos/FavCb/', '03.mp4');
             let isAudio = false;
+            await favoriteByFalse(done, testNum, currentFetchOp, isAudio);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_03_001
+         * @tc.name      : isFavorite
+         * @tc.desc      : isFavorite(audio) result false
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+         it('SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_03_001', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_03_001';
+            let currentFetchOp = audioNameFetchOps(testNum, 'Audios/FavCb/', '01.mp3');
+            let isAudio = true;
+            await favoriteDefaultState(done, testNum, currentFetchOp, isAudio);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_03_002
+         * @tc.name      : favorite
+         * @tc.desc      : favorite(audio) by true
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+        it('SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_03_002', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_03_002';
+            let currentFetchOp = audioNameFetchOps(testNum, 'Audios/FavCb/', '02.mp3');
+            let isAudio = true;
+            await favoriteByTrue(done, testNum, currentFetchOp, isAudio);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_03_003
+         * @tc.name      : favorite
+         * @tc.desc      : favorite(audio) by false
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+        it('SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_03_003', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_FILEASSET_FAVORITE_CALLBACK_03_003';
+            let currentFetchOp = audioNameFetchOps(testNum, 'Audios/FavCb/', '03.mp3');
+            let isAudio = true;
             await favoriteByFalse(done, testNum, currentFetchOp, isAudio);
         });
     });
