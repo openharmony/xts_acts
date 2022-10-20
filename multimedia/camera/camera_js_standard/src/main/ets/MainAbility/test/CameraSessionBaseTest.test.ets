@@ -86,7 +86,7 @@ export default function cameraSessionTest(surfaceId: any) {
         return false;
     }
 
-    async function getFd(pathName){
+    async function getFd(pathName) {
         let displayName = pathName;
         const mediaTest = mediaLibrary.getMediaLibrary();
         let fileKeyObj = mediaLibrary.FileKey;
@@ -94,25 +94,25 @@ export default function cameraSessionTest(surfaceId: any) {
         let publicPath = await mediaTest.getPublicDirectory(mediaLibrary.DirectoryType.DIR_VIDEO);
         let dataUri = await mediaTest.createAsset(mediaType, displayName, publicPath);
         if (dataUri != undefined) {
-        let args = dataUri.id.toString();
-        let fetchOp = {
-            selections: fileKeyObj.ID + "=?",
-            selectionArgs: [args],
-        }
-        let fetchFileResult = await mediaTest.getFileAssets(fetchOp);
-        mFileAsset = await fetchFileResult.getAllObject();
-        mFdNumber = await mFileAsset[0].open('Rw');
-        mFdPath = "fd://" + mFdNumber.toString();
+            let args = dataUri.id.toString();
+            let fetchOp = {
+                selections: fileKeyObj.ID + "=?",
+                selectionArgs: [args],
+            }
+            let fetchFileResult = await mediaTest.getFileAssets(fetchOp);
+            mFileAsset = await fetchFileResult.getAllObject();
+            mFdNumber = await mFileAsset[0].open('Rw');
+            mFdPath = "fd://" + mFdNumber.toString();
         }
     }
-
+    
     async function closeFd() {
         if (mFileAsset != null) {
-        await mFileAsset[0].close(mFdNumber).then(() => {
-            console.info('[mediaLibrary] case close fd success');
-        }).catch((err) => {
-            console.info('[mediaLibrary] case close fd failed');
-        });
+                await mFileAsset[0].close(mFdNumber).then(() => {
+                console.info('[mediaLibrary] case close fd success');
+            }).catch((err) => {
+                console.info('[mediaLibrary] case close fd failed');
+            });
         } else {
             console.info('[mediaLibrary] case fileAsset is null');
         }
@@ -129,7 +129,7 @@ export default function cameraSessionTest(surfaceId: any) {
             let permissionName3 = 'ohos.permission.MEDIA_LOCATION';
             let permissionName4 = 'ohos.permission.READ_MEDIA';
             let permissionName5 = 'ohos.permission.WRITE_MEDIA';
-            let permissionName6 = 'ohos.permission.START_ABILITIES_FROM_BACKGROUND';
+            let permissionName6 = 'ohos.permission.START_ABILIIES_FROM_BACKGROUND';
             let permissionName7 = 'ohos.permission.START_INVISIBLE_ABILITY';
             let permissionName8 = 'ohos.permission.ABILITY_BACKGROUND_COMMUNICATION';
             await atManager.grantUserGrantedPermission(tokenID, permissionName1, 1).then((result) => {
@@ -196,18 +196,30 @@ export default function cameraSessionTest(surfaceId: any) {
         await getFd('CameraSessionBase.mp4');
         mVideoConfig.url = mFdPath;
         media.createVideoRecorder((err, recorder) => {
-            console.info(TAG + 'Entering create video receiver')
-            mVideoRecorder = recorder
-            console.info(TAG + 'videoRecorder is :' + JSON.stringify(mVideoRecorder))
-            console.info(TAG + 'videoRecorder.prepare called.')
-            mVideoRecorder.prepare(mVideoConfig, (err) => {
-                console.info(TAG + 'videoRecorder.prepare success.')
-                mVideoRecorder.getInputSurface((err, id) => {
-                    console.info(TAG + 'getInputSurface called')
-                    mVideoSurface = id
-                    console.info(TAG + 'getInputSurface surfaceId: ' + JSON.stringify(mVideoSurface))
+            if (!err) {
+                console.info(TAG + 'Entering create video receiver')
+                mVideoRecorder = recorder
+                console.info(TAG + 'videoRecorder is :' + JSON.stringify(mVideoRecorder))
+                console.info(TAG + 'videoRecorder.prepare called.')
+                mVideoRecorder.prepare(mVideoConfig, (err) => {
+                    if (!err) {
+                        console.info(TAG + 'videoRecorder.prepare success.')
+                        mVideoRecorder.getInputSurface((err, id) => {
+                            console.info(TAG + 'getInputSurface called')
+                            if (!err) {
+                                mVideoSurface = id
+                                console.info(TAG + 'getInputSurface surfaceId: ' + JSON.stringify(mVideoSurface))
+                            } else {
+                                console.info(TAG + 'getInputSurface FAILED')
+                            }
+                        })
+                    } else {
+                        console.info(TAG + 'prepare FAILED')
+                    }
                 })
-            })
+            } else {
+                console.info(TAG + 'createVideoRecorder FAILED')
+            }
         })
         console.log(TAG + 'Exit getVideoReceiveSurface')
     }
