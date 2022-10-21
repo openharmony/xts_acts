@@ -16,6 +16,7 @@
 #include "hks_mac_test.h"
 
 #include <hctest.h>
+#include <unistd.h>
 
 #include "hks_api.h"
 #include "hks_param.h"
@@ -167,7 +168,7 @@ static int32_t BaseTestMac(uint32_t index)
             g_testMacParams[index].keyParams.blobDataSize);
     } else {
         if (g_testMacParams[index].keyAliasParams.blobExist) {
-            ret = GenerateKey(&key, &(g_testMacParams[index].keyAliasParams),
+            ret = HuksGenerateKey(&key, &(g_testMacParams[index].keyAliasParams),
                 &g_testMacParams[index].genKeyParamSetParams, NULL);
         } else {
             ret = TestConstuctBlob(&key,

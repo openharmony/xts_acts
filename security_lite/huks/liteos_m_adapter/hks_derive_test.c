@@ -15,6 +15,7 @@
 
 
 #include <hctest.h>
+#include <unistd.h>
 
 #include "hks_derive_test.h"
 
@@ -180,7 +181,7 @@ static int32_t BaseTestDerive(uint32_t index)
         ret = GenerateLocalRandomKey(&keyAlias, &g_testDeriveParams[index].localKeyParams);
     } else {
         if (g_testDeriveParams[index].keyAliasParams.blobExist) {
-            ret = GenerateKey(&keyAlias, &g_testDeriveParams[index].keyAliasParams,
+            ret = HuksGenerateKey(&keyAlias, &g_testDeriveParams[index].keyAliasParams,
                 &g_testDeriveParams[index].genKeyParamSetParams, NULL);
         } else {
             ret = TestConstuctBlob(&keyAlias,
