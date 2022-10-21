@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import workScheduler from '@ohos.workScheduler'
+import workScheduler from '@ohos.resourceschedule.workScheduler'
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
@@ -64,10 +64,12 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 networkType: workScheduler.NetworkType.NETWORK_TYPE_MOBILE
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun001 workInfo networkType :" + workInfo.networkType);
-            expect(res).assertEqual(true);
-            done();
+            try{
+                expect(workScheduler.startWork(workInfo)).assertNull();
+                done()
+            }catch(error){
+                console.info("----------------error: " + error.code);
+            }
         })
     
         /*
@@ -84,10 +86,12 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 networkType: workScheduler.NetworkType.NETWORK_TYPE_WIFI
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun002 workInfo networkType :" + workInfo.networkType);
-            expect(res).assertEqual(true);
-            done();
+            try{
+                expect(workScheduler.startWork(workInfo)).assertNull();
+                done()
+            }catch(error){
+                console.info("----------------error: " + error.code);
+            }
         })
     
         /*
@@ -104,10 +108,12 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 networkType: workScheduler.NetworkType.NETWORK_TYPE_BLUETOOTH
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun003 workInfo networkType :" + workInfo.networkType);
-            expect(res).assertEqual(true);
-            done();
+            try{
+                expect(workScheduler.startWork(workInfo)).assertNull();
+                done()
+            }catch(error){
+                console.info("----------------error: " + error.code);
+            }
         })
     
         /*
@@ -124,10 +130,12 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 networkType: workScheduler.NetworkType.NETWORK_TYPE_WIFI_P2P
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun004 workInfo networkType :" + workInfo.networkType);
-            expect(res).assertEqual(true);
-            done();
+            try{
+                expect(workScheduler.startWork(workInfo)).assertNull();
+                done()
+            }catch(error){
+                console.info("----------------error: " + error.code);
+            }
         })
     
         /*
@@ -144,10 +152,12 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 networkType: workScheduler.NetworkType.NETWORK_TYPE_ETHERNET
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun005 workInfo networkType :" + workInfo.networkType);
-            expect(res).assertEqual(true);
-            done();
+            try{
+                expect(workScheduler.startWork(workInfo)).assertNull();
+                done()
+            }catch(error){
+                console.info("----------------error: " + error.code);
+            }
         })
     
         /*
@@ -165,10 +175,12 @@ export default function WorkSchedulerMgrApiTest() {
                 isCharging: true,
                 chargerType: workScheduler.ChargingType.CHARGING_PLUGGED_ANY
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun006 workInfo ChargingType :" + workInfo.chargerType);
-            expect(res).assertEqual(true);
-            done();
+            try{
+                expect(workScheduler.startWork(workInfo)).assertNull();
+                done()
+            }catch(error){
+                console.info("----------------error: " + error.code);
+            }
         })
     
         /*
@@ -186,10 +198,12 @@ export default function WorkSchedulerMgrApiTest() {
                 isCharging: true,
                 chargerType: workScheduler.ChargingType.CHARGING_PLUGGED_USB
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun007 workInfo ChargingType :" + workInfo.chargerType);
-            expect(res).assertEqual(true);
-            done();
+            try{
+                expect(workScheduler.startWork(workInfo)).assertNull();
+                done()
+            }catch(error){
+                console.info("----------------error: " + error.code);
+            }
         })
     
         /*
@@ -207,10 +221,12 @@ export default function WorkSchedulerMgrApiTest() {
                 isCharging: false,
                 chargerType: workScheduler.ChargingType.CHARGING_PLUGGED_WIRELESS
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun008 workInfo ChargingType :" + workInfo.chargerType);
-            expect(res).assertEqual(true);
-            done();
+            try{
+                expect(workScheduler.startWork(workInfo)).assertNull();
+                done()
+            }catch(error){
+                console.info("----------------error: " + error.code);
+            }
         })
     
         /*
@@ -227,10 +243,12 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 batteryStatus: workScheduler.BatteryStatus.BATTERY_STATUS_OKAY
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun009 workInfo BatteryStatus :" + workInfo.batteryStatus);
-            expect(res).assertEqual(true);
-            done();
+            try{
+                expect(workScheduler.startWork(workInfo)).assertNull();
+                done()
+            }catch(error){
+                console.info("----------------error: " + error.code);
+            }
         })
     
         /*
@@ -247,10 +265,12 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 batteryStatus: workScheduler.BatteryStatus.BATTERY_STATUS_LOW_OR_OKAY
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun010 workInfo BatteryStatus :" + workInfo.batteryStatus);
-            expect(res).assertEqual(true);
-            done();
+            try{
+                expect(workScheduler.startWork(workInfo)).assertNull();
+                done()
+            }catch(error){
+                console.info("----------------error: " + error.code);
+            }
         })
     
         /*
@@ -267,10 +287,12 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 storageRequest: workScheduler.StorageRequest.STORAGE_LEVEL_LOW
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun011 workInfo StorageRequest :" + workInfo.storageRequest);
-            expect(res).assertEqual(true);
-            done();
+            try{
+                expect(workScheduler.startWork(workInfo)).assertNull();
+                done()
+            }catch(error){
+                console.info("----------------error: " + error.code);
+            }
         })
     
         /*
@@ -287,10 +309,12 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 storageRequest: workScheduler.StorageRequest.STORAGE_LEVEL_OKAY
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun012 workInfo StorageRequest :" + workInfo.storageRequest);
-            expect(res).assertEqual(true);
-            done();
+            try{
+                expect(workScheduler.startWork(workInfo)).assertNull();
+                done()
+            }catch(error){
+                console.info("----------------error: " + error.code);
+            }
         })
     
         /*
@@ -307,10 +331,12 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 storageRequest: workScheduler.StorageRequest.STORAGE_LEVEL_LOW_OR_OKAY
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun013 workInfo StorageRequest :" + workInfo.storageRequest);
-            expect(res).assertEqual(true);
-            done();
+            try{
+                expect(workScheduler.startWork(workInfo)).assertNull();
+                done()
+            }catch(error){
+                console.info("----------------error: " + error.code);
+            }
         })
     
         /*
@@ -338,12 +364,12 @@ export default function WorkSchedulerMgrApiTest() {
                 isDeepIdle: true,
                 idleWaitTime: 3000
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun014 start workScheduler result:" + res);
-            expect(res).assertEqual(true);
-            setTimeout(()=>{
-                done();
-            }, 500);
+            try{
+                expect(workScheduler.startWork(workInfo)).assertNull();
+                done()
+            }catch(error){
+                console.info("----------------error: " + error.code);
+            }
         })
     
         /*
@@ -367,12 +393,12 @@ export default function WorkSchedulerMgrApiTest() {
                 isPersisted: false,
                 isDeepIdle: false
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun015 start workScheduler result:" + res);
-            expect(res).assertEqual(true);
-            setTimeout(()=>{
-                done();
-            }, 500);
+            try{
+                expect(workScheduler.startWork(workInfo)).assertNull();
+                done()
+            }catch(error){
+                console.info("----------------error: " + error.code);
+            }
         })
     
         /*
@@ -389,10 +415,13 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 networkType: 0
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun016 start workScheduler result:" + res);
-            expect(res).assertEqual(false);
-            done();
+            try{
+                workScheduler.startWork(workInfo);
+            }catch(error){
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("401");
+                done();
+            }
         })
     
         /*
@@ -409,10 +438,13 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 networkType: 0
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun017 start workScheduler result:" + res);
-            expect(res).assertEqual(false);
-            done();
+            try{
+                workScheduler.startWork(workInfo);
+            }catch(error){
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("401");
+                done();
+            }
         })
     
         /*
@@ -428,10 +460,13 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 networkType: 0
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun018 start workScheduler result:" + res);
-            expect(res).assertEqual(false);
-            done();
+            try{
+                workScheduler.startWork(workInfo);
+            }catch(error){
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("401");
+                done();
+            }
         })
     
         /*
@@ -448,10 +483,13 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 networkType: 0
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun019 start workScheduler result:" + res);
-            expect(res).assertEqual(false);
-            done();
+            try{
+                workScheduler.startWork(workInfo);
+            }catch(error){
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("401");
+                done();
+            }
         })
     
         /*
@@ -468,10 +506,13 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 networkType: 0
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun020 start workScheduler result:" + res);
-            expect(res).assertEqual(false);
-            done();
+            try{
+                workScheduler.startWork(workInfo);
+            }catch(error){
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("9700004");
+                done();
+            }
         })
     
         /*
@@ -488,10 +529,13 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 networkType: 0
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun021 start workScheduler result:" + res);
-            expect(res).assertEqual(false);
-            done();
+            try{
+                workScheduler.startWork(workInfo);
+            }catch(error){
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("401");
+                done();
+            }
         })
     
         /*
@@ -508,10 +552,13 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: 123,
                 networkType: 0
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun022 start workScheduler result:" + res);
-            expect(res).assertEqual(false);
-            done();
+            try{
+                workScheduler.startWork(workInfo);
+            }catch(error){
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("401");
+                done();
+            }
         })
     
         /*
@@ -528,10 +575,13 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "",
                 networkType: 0
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun023 start workScheduler result:" + res);
-            expect(res).assertEqual(false);
-            done();
+            try{
+                workScheduler.startWork(workInfo);
+            }catch(error){
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("401");
+                done();
+            }
         })
     
         /*
@@ -548,10 +598,12 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: " ",
                 networkType: 0
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun024 start workScheduler result:" + res);
-            expect(res).assertEqual(true);
-            done();
+            try{
+                expect(workScheduler.startWork(workInfo)).assertNull();
+                done()
+            }catch(error){
+                console.info("----------------error: " + error.code);
+            }
         })
     
         /*
@@ -568,10 +620,13 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: null,
                 networkType: 0
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun025 start workScheduler result:" + res);
-            expect(res).assertEqual(false);
-            done();
+            try{
+                workScheduler.startWork(workInfo);
+            }catch(error){
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("401");
+                done();
+            }
         })
     
         /*
@@ -588,10 +643,13 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 networkType: -1
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun026 start workScheduler result:" + res);
-            expect(res).assertEqual(false);
-            done();
+            try{
+                workScheduler.startWork(workInfo);
+            }catch(error){
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("401");
+                done();
+            }
         })
     
         /*
@@ -608,10 +666,13 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 networkType: 6
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun027 start workScheduler result:" + res);
-            expect(res).assertEqual(false);
-            done();
+            try{
+                workScheduler.startWork(workInfo);
+            }catch(error){
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("401");
+                done();
+            }
         })
     
         /*
@@ -629,10 +690,12 @@ export default function WorkSchedulerMgrApiTest() {
                 isCharging: true,
                 chargerType: -1
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun028 start workScheduler result:" + res);
-            expect(res).assertEqual(true);
-            done();
+            try{
+                expect(workScheduler.startWork(workInfo)).assertNull();
+                done()
+            }catch(error){
+                console.info("----------------error: " + error.code);
+            }
         })
     
         /*
@@ -650,10 +713,12 @@ export default function WorkSchedulerMgrApiTest() {
                 isCharging: false,
                 chargerType: 4
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun029 start workScheduler result:" + res);
-            expect(res).assertEqual(true);
-            done();
+            try{
+                expect(workScheduler.startWork(workInfo)).assertNull();
+                done()
+            }catch(error){
+                console.info("----------------error: " + error.code);
+            }
         })
     
         /*
@@ -671,10 +736,13 @@ export default function WorkSchedulerMgrApiTest() {
                 isCharging: 1,
                 chargerType: 0
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun030 start workScheduler result:" + res);
-            expect(res).assertEqual(false);
-            done();
+            try{
+                workScheduler.startWork(workInfo);
+            }catch(error){
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("401");
+                done();
+            }
         })
     
         /*
@@ -692,10 +760,13 @@ export default function WorkSchedulerMgrApiTest() {
                 isCharging: "true",
                 chargerType: 0
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun031 start workScheduler result:" + res);
-            expect(res).assertEqual(false);
-            done();
+            try{
+                workScheduler.startWork(workInfo);
+            }catch(error){
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("401");
+                done();
+            }
         })
     
         /*
@@ -712,10 +783,13 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 chargerType: 0
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun032 start workScheduler result:" + res);
-            expect(res).assertEqual(false);
-            done();
+            try{
+                workScheduler.startWork(workInfo);
+            }catch(error){
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("401");
+                done();
+            }
         })
     
         /*
@@ -732,10 +806,13 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 batteryLevel: -1
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun033 start workScheduler result:" + res);
-            expect(res).assertEqual(false);
-            done();
+            try{
+                workScheduler.startWork(workInfo);
+            }catch(error){
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("401");
+                done();
+            }
         })
     
         /*
@@ -752,10 +829,12 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 batteryLevel: 0
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun034 start workScheduler result:" + res);
-            expect(res).assertEqual(true);
-            done();
+            try{
+                expect(workScheduler.startWork(workInfo)).assertNull();
+                done()
+            }catch(error){
+                console.info("----------------error: " + error.code);
+            }
         })
     
         /*
@@ -772,10 +851,12 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 batteryLevel: 100
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun035 start workScheduler result:" + res);
-            expect(res).assertEqual(true);
-            done();
+            try{
+                expect(workScheduler.startWork(workInfo)).assertNull();
+                done()
+            }catch(error){
+                console.info("----------------error: " + error.code);
+            }
         })
     
         /*
@@ -792,10 +873,13 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 batteryLevel: 101
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun036 start workScheduler result:" + res);
-            expect(res).assertEqual(false);
-            done();
+            try{
+                workScheduler.startWork(workInfo);
+            }catch(error){
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("401");
+                done();
+            }
         })
     
         /*
@@ -812,10 +896,13 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 batteryStatus: -1
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun037 start workScheduler result:" + res);
-            expect(res).assertEqual(false);
-            done();
+            try{
+                workScheduler.startWork(workInfo);
+            }catch(error){
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("401");
+                done();
+            }
         })
     
         /*
@@ -832,10 +919,13 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 batteryStatus: 3
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun038 start workScheduler result:" + res);
-            expect(res).assertEqual(false);
-            done();
+            try{
+                workScheduler.startWork(workInfo);
+            }catch(error){
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("401");
+                done();
+            }
         })
     
         /*
@@ -852,10 +942,13 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 storageRequest: -1
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun039 start workScheduler result:" + res);
-            expect(res).assertEqual(false);
-            done();
+            try{
+                workScheduler.startWork(workInfo);
+            }catch(error){
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("401");
+                done();
+            }
         })
     
         /*
@@ -872,10 +965,13 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 storageRequest: 3
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun040 start workScheduler result:" + res);
-            expect(res).assertEqual(false);
-            done();
+            try{
+                workScheduler.startWork(workInfo);
+            }catch(error){
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("401");
+                done();
+            }
         })
     
         /*
@@ -893,10 +989,13 @@ export default function WorkSchedulerMgrApiTest() {
                 isRepeat: true,
                 repeatCycleTime: -1
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun041 start workScheduler result:" + res);
-            expect(res).assertEqual(false);
-            done();
+            try{
+                workScheduler.startWork(workInfo);
+            }catch(error){
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("401");
+                done();
+            }
         })
     
         /*
@@ -914,10 +1013,13 @@ export default function WorkSchedulerMgrApiTest() {
                 isRepeat: true,
                 repeatCycleTime: 1140000
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun042 start workScheduler result:" + res);
-            expect(res).assertEqual(false);
-            done();
+            try{
+                workScheduler.startWork(workInfo);
+            }catch(error){
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("9700005");
+                done();
+            }
         })
     
         /*
@@ -934,10 +1036,13 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 repeatCycleTime: 1200000
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun043 start workScheduler result:" + res);
-            expect(res).assertEqual(false);
-            done();
+            try{
+                workScheduler.startWork(workInfo);
+            }catch(error){
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("401");
+                done();
+            }
         })
     
         /*
@@ -955,10 +1060,13 @@ export default function WorkSchedulerMgrApiTest() {
                 isRepeat: true,
                 repeatCount: 1
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun044 start workScheduler result:" + res);
-            expect(res).assertEqual(false);
-            done();
+            try{
+                workScheduler.startWork(workInfo);
+            }catch(error){
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("401");
+                done();
+            }
         })
     
         /*
@@ -976,10 +1084,13 @@ export default function WorkSchedulerMgrApiTest() {
                 isRepeat: "false",
                 repeatCycleTime: 1200000
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun045 start workScheduler result:" + res);
-            expect(res).assertEqual(false);
-            done();
+            try{
+                workScheduler.startWork(workInfo);
+            }catch(error){
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("401");
+                done();
+            }
         })
     
         /*
@@ -997,10 +1108,12 @@ export default function WorkSchedulerMgrApiTest() {
                 repeatCycleTime: 1200000,
                 repeatCount: 0
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun046 start workScheduler result:" + res);
-            expect(res).assertEqual(true);
-            done();
+            try{
+                expect(workScheduler.startWork(workInfo)).assertNull();
+                done()
+            }catch(error){
+                console.info("----------------error: " + error.code);
+            }
         })
     
         /*
@@ -1018,10 +1131,13 @@ export default function WorkSchedulerMgrApiTest() {
                 repeatCycleTime: 1200000,
                 repeatCount: -1
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun047 start workScheduler result:" + res);
-            expect(res).assertEqual(false);
-            done();
+            try{
+                workScheduler.startWork(workInfo);
+            }catch(error){
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("401");
+                done();
+            }
         })
     
         /*
@@ -1040,10 +1156,13 @@ export default function WorkSchedulerMgrApiTest() {
                 repeatCycleTime: 1200000,
                 repeatCount: -1
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun048 start workScheduler result:" + res);
-            expect(res).assertEqual(false);
-            done();
+            try{
+                workScheduler.startWork(workInfo);
+            }catch(error){
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("401");
+                done();
+            }
         })
     
         /*
@@ -1060,10 +1179,13 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 repeatCount: 2
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun049 start workScheduler result:" + res);
-            expect(res).assertEqual(false);
-            done();
+            try{
+                workScheduler.startWork(workInfo);
+            }catch(error){
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("401");
+                done();
+            }
         })
     
         /*
@@ -1080,10 +1202,13 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 isPersisted: "true"
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun050 start workScheduler result:" + res);
-            expect(res).assertEqual(false);
-            done();
+            try{
+                workScheduler.startWork(workInfo);
+            }catch(error){
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("401");
+                done();
+            }
         })
     
         /*
@@ -1100,10 +1225,13 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 isPersisted: 1
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun051 start workScheduler result:" + res);
-            expect(res).assertEqual(false);
-            done();
+            try{
+                workScheduler.startWork(workInfo);
+            }catch(error){
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("401");
+                done();
+            }
         })
     
         /*
@@ -1120,10 +1248,13 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 isDeepIdle: "false"
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun052 start workScheduler result:" + res);
-            expect(res).assertEqual(false);
-            done();
+            try{
+                workScheduler.startWork(workInfo);
+            }catch(error){
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("401");
+                done();
+            }
         })
     
         /*
@@ -1140,10 +1271,13 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 isDeepIdle: 1
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("testStartWorkFun053 start workScheduler result:" + res);
-            expect(res).assertEqual(false);
-            done();
+            try{
+                workScheduler.startWork(workInfo);
+            }catch(error){
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("401");
+                done();
+            }
         })
     
         /*
@@ -1160,19 +1294,14 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 networkType: 0
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("start workScheduler result:" + res);
-            expect(res).assertEqual(true);
-            try{
-                if (res === true) {
-                    let stopRes = workScheduler.stopWork(workInfo, "true");
-                    console.info("testStopWorkFun001 stop workScheduler result:" + stopRes);
-                    expect(stopRes).assertEqual(false)
-                }
-            }catch(error){
-                console.info("testStopWorkFun001 stop workScheduler fail, " + error);
+            try {
+                workScheduler.startWork(workInfo);
+                workScheduler.stopWork(workInfo, "true");
+            } catch (error) {
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("401");
+                done();
             }
-            done();
         })
     
         /*
@@ -1188,20 +1317,15 @@ export default function WorkSchedulerMgrApiTest() {
                 bundleName: "ohos.acts.resourceschedule.workscheduler.js.function",
                 abilityName: "com.mytest.abilityName",
                 networkType: 0
-            }
-            let res = workScheduler.startWork(workInfo);
-            console.info("start workScheduler result:" + res);
-            expect(res).assertEqual(true);
-            try{
-                if (res === true) {
-                    let stopRes = workScheduler.stopWork(workInfo, 111);
-                    console.info("testStopWorkFun002 stop workScheduler result:" + stopRes);
-                    expect(stopRes).assertEqual(false)
-                }
-            }catch(error){
-                console.info("testStopWorkFun002 stop workScheduler fail, " + error);
-            }
-            done();
+            };
+            try {
+                workScheduler.startWork(workInfo);
+                workScheduler.stopWork(workInfo, 111);
+            } catch (error) {
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("401");
+                done();
+            };
         })
     
         /*
@@ -1218,19 +1342,14 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 networkType: 0
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("start workScheduler result:" + res);
-            expect(res).assertEqual(true);
-            try{
-                if (res === true) {
-                    let stopRes = workScheduler.stopWork(workInfo, null);
-                    console.info("testStopWorkFun003 stop workScheduler result:" + stopRes);
-                    expect(stopRes).assertEqual(false)
-                }
-            }catch(error){
-                console.info("testStopWorkFun003 stop workScheduler fail, " + error);
+            try {
+                workScheduler.startWork(workInfo);
+                workScheduler.stopWork(workInfo, null);
+            } catch (error) {
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("401");
+                done();
             }
-            done();
         })
     
         /*
@@ -1247,19 +1366,14 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 networkType: 0
             }
-            let res = workScheduler.startWork(workInfo);
-            console.info("start workScheduler result:" + res);
-            expect(res).assertEqual(true);
-            try{
-                if (res === true) {
-                    let stopRes = workScheduler.stopWork(workInfo);
-                    console.info("testStopWorkFun004 stop workScheduler result:" + stopRes);
-                    expect(stopRes).assertEqual(false)
-                }
-            }catch(error){
-                console.info("testStopWorkFun004 stop workScheduler fail, " + error);
+            try {
+                workScheduler.startWork(workInfo);
+                workScheduler.stopWork(workInfo);
+            } catch (error) {
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("401");
+                done();
             }
-            done();
         })
     
         /*
@@ -1282,15 +1396,14 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 networkType: 0
             }
-            let res = workScheduler.startWork(workInfo1);
-            console.info("start workScheduler result:" + res);
-            expect(res).assertEqual(true);
-            if (res === true) {
-                let stopRes = workScheduler.stopWork(workInfo2,true);
-                console.info("testStopWorkFun005 stop workScheduler result:" + stopRes);
-                expect(stopRes).assertEqual(false)
+            try {
+                workScheduler.startWork(workInfo1);
+                workScheduler.stopWork(workInfo2, true)
+            } catch (error) {
+                console.info("----------------error: " + error.code)
+                expect(error.code).assertEqual("9700004");
+                done();
             }
-            done();
         })
     
         /*
@@ -1313,15 +1426,14 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 networkType: 0
             }
-            let res = workScheduler.startWork(workInfo1);
-            console.info("start workScheduler result:" + res);
-            expect(res).assertEqual(true);
-            if (res === true) {
-                let stopRes = workScheduler.stopWork(workInfo2,false);
-                console.info("testStopWorkFun006 stop workScheduler result:" + stopRes);
-                expect(stopRes).assertEqual(false)
+            try {
+                workScheduler.startWork(workInfo1);
+                workScheduler.stopWork(workInfo2, false)
+            } catch (error) {
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("9700004");
+                done();
             }
-            done();
         })
     
         /*
@@ -1344,15 +1456,14 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 networkType: 0
             }
-            let res = workScheduler.startWork(workInfo1);
-            console.info("start workScheduler result:" + res);
-            expect(res).assertEqual(true);
-            if (res === true) {
-                let stopRes = workScheduler.stopWork(workInfo2,true);
-                console.info("testStopWorkFun007 stop workScheduler result:" + stopRes);
-                expect(stopRes).assertEqual(false)
+            try {
+                workScheduler.startWork(workInfo1);
+                workScheduler.stopWork(workInfo2, true)
+            } catch (error) {
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("9700004");
+                done()
             }
-            done();
         })
     
         /*
@@ -1375,15 +1486,14 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 networkType: 0
             }
-            let res = workScheduler.startWork(workInfo1);
-            console.info("start workScheduler result:" + res);
-            expect(res).assertEqual(true);
-            if (res === true) {
-                let stopRes = workScheduler.stopWork(workInfo2,false);
-                console.info("testStopWorkFun008 stop workScheduler result:" + stopRes);
-                expect(stopRes).assertEqual(false)
+            try {
+                workScheduler.startWork(workInfo1);
+                workScheduler.stopWork(workInfo2, false)
+            } catch (error) {
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("9700004");
+                done();
             }
-            done();
         })
     
         /*
@@ -1406,20 +1516,13 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.bundleName",
                 networkType: 0
             }
-            let res = workScheduler.startWork(workInfo1);
-            console.info("start workScheduler result:" + res);
-            expect(res).assertEqual(true);
-            if (res === true) {
-                let stopRes = workScheduler.stopWork(workInfo2,true);
-                if(stopRes === false){
-                    console.info("testStopWorkFun009 stop workScheduler result:" + stopRes);
-                    expect(stopRes).assertEqual(false)
-                }else{
-                    console.info("testStopWorkFun009 stop workScheduler result:" + stopRes);
-                    expect(stopRes).assertEqual(true)
-                }    
+            try {
+                workScheduler.startWork(workInfo1);
+                expect(workScheduler.stopWork(workInfo2, true)).assertNull();
+                done()
+            } catch (error) {
+                console.info("----------------error: " + error.code);
             }
-            done();
         })
     
         /*
@@ -1434,28 +1537,21 @@ export default function WorkSchedulerMgrApiTest() {
                 workId: 1,
                 bundleName: "ohos.acts.resourceschedule.workscheduler.js.function",
                 abilityName: "com.mytest.abilityName",
-                networkType: 0
+                networkType: 2
             }
             let workInfo2 = {
                 workId: 1,
                 bundleName: "ohos.acts.resourceschedule.workscheduler.js.function",
                 abilityName: "com.mytest.bundleName",
-                networkType: 0
+                networkType: 2
             }
-            let res = workScheduler.startWork(workInfo1);
-            console.info("start workScheduler result:" + res);
-            expect(res).assertEqual(true);
-            if (res === true) {
-                let stopRes = workScheduler.stopWork(workInfo2,false);
-                if(stopRes === false){
-                    console.info("testStopWorkFun010 stop workScheduler result:" + stopRes);
-                    expect(stopRes).assertEqual(false)
-                }else{
-                    console.info("testStopWorkFun010 stop workScheduler result:" + stopRes);
-                    expect(stopRes).assertEqual(true)
-                }    
+            try {
+                workScheduler.startWork(workInfo1);
+                expect(workScheduler.stopWork(workInfo2, false)).assertNull();
+                done()
+            } catch (error) {
+                console.info("----------------error: " + error.code);
             }
-            done();
         })
     
         /*
@@ -1478,15 +1574,13 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 networkType: 2
             }
-            let res = workScheduler.startWork(workInfo1);
-            console.info("start workScheduler result:" + res);
-            expect(res).assertEqual(true);
-            if (res === true) {
-                let stopRes = workScheduler.stopWork(workInfo2,true); 
-                console.info("testStopWorkFun011 stop workScheduler result:" + stopRes);
-                expect(stopRes).assertEqual(true)
+            try {
+                workScheduler.startWork(workInfo1);
+                expect(workScheduler.stopWork(workInfo2, true)).assertNull();
+                done()
+            } catch (error) {
+                console.info("----------------error: " + error.code);
             }
-            done();
         })
     
         /*
@@ -1511,15 +1605,13 @@ export default function WorkSchedulerMgrApiTest() {
                 isCharging: true,
                 chargerType: 1
             }
-            let res = workScheduler.startWork(workInfo1);
-            console.info("start workScheduler result:" + res);
-            expect(res).assertEqual(true);
-            if (res === true) {
-                let stopRes = workScheduler.stopWork(workInfo2,true); 
-                console.info("testStopWorkFun012 stop workScheduler result:" + stopRes);
-                expect(stopRes).assertEqual(true)
+            try {
+                workScheduler.startWork(workInfo1);
+                expect(workScheduler.stopWork(workInfo2, true)).assertNull();
+                done()
+            } catch (error) {
+                console.info("----------------error: " + error.code);
             }
-            done();
         })
     
         /*
@@ -1542,15 +1634,13 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 batteryStatus: 1
             }
-            let res = workScheduler.startWork(workInfo1);
-            console.info("start workScheduler result:" + res);
-            expect(res).assertEqual(true);
-            if (res === true) {
-                let stopRes = workScheduler.stopWork(workInfo2,false); 
-                console.info("testStopWorkFun013 stop workScheduler result:" + stopRes);
-                expect(stopRes).assertEqual(true)
+            try {
+                workScheduler.startWork(workInfo1);
+                expect(workScheduler.stopWork(workInfo2, false)).assertNull();
+                done()
+            } catch (error) {
+                console.info("----------------error: " + error.code)
             }
-            done();
         })
     
         /*
@@ -1573,15 +1663,13 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 storageRequest: 1
             }
-            let res = workScheduler.startWork(workInfo1);
-            console.info("start workScheduler result:" + res);
-            expect(res).assertEqual(true);
-            if (res === true) {
-                let stopRes = workScheduler.stopWork(workInfo2,false); 
-                console.info("testStopWorkFun014 stop workScheduler result:" + stopRes);
-                expect(stopRes).assertEqual(true)
+            try {
+                workScheduler.startWork(workInfo1);
+                expect(workScheduler.stopWork(workInfo2, false)).assertNull();
+                done()
+            } catch (error) {
+                console.info("----------------error: " + error.code)
             }
-            done();
         })
     
         /*
@@ -1606,15 +1694,13 @@ export default function WorkSchedulerMgrApiTest() {
                 networkType: 0,
                 isPersisted: false
             }
-            let res = workScheduler.startWork(workInfo1);
-            console.info("start workScheduler result:" + res);
-            expect(res).assertEqual(true);
-            if (res === true) {
-                let stopRes = workScheduler.stopWork(workInfo2,true); 
-                console.info("testStopWorkFun015 stop workScheduler result:" + stopRes);
-                expect(stopRes).assertEqual(true)
+            try {
+                workScheduler.startWork(workInfo1);
+                expect(workScheduler.stopWork(workInfo2, false)).assertNull();
+                done()
+            } catch (error) {
+                console.info("----------------error: " + error.code)
             }
-            done();
         })
     
         /*
@@ -1639,15 +1725,13 @@ export default function WorkSchedulerMgrApiTest() {
                 isRepeat: true,
                 repeatCycleTime: 1500000
             }
-            let res = workScheduler.startWork(workInfo1);
-            console.info("start workScheduler result:" + res);
-            expect(res).assertEqual(true);
-            if (res === true) {
-                let stopRes = workScheduler.stopWork(workInfo2,true); 
-                console.info("testStopWorkFun016 stop workScheduler result:" + stopRes);
-                expect(stopRes).assertEqual(true)
+            try {
+                workScheduler.startWork(workInfo1);
+                expect(workScheduler.stopWork(workInfo2, false)).assertNull();
+                done()
+            } catch (error) {
+                console.info("----------------error: " + error.code)
             }
-            done();
         })
     
         /*
@@ -1664,12 +1748,16 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 storageRequest: workScheduler.StorageRequest.STORAGE_LEVEL_OKAY
             }
-            let res = workScheduler.startWork(workInfo);
-                expect(res).assertEqual(true)
-            workScheduler.getWorkStatus(10, (err, res) => {
-                if (err) {
-                    console.info('testGetWorkStatusFun001 getWorkStatuscallback fail because:' + err.code);
-                    expect(err.code).assertLarger(0)
+            try {
+                workScheduler.startWork(workInfo)
+            } catch (error) {
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("401");
+            };
+            workScheduler.getWorkStatus(10, (error, res) => {
+                if (error) {
+                    console.info('testGetWorkStatusFun001 getWorkStatuscallback fail because:' + error.code);
+                    expect(error.code).assertLarger(0)
                 } else {
                     for (let item in res) {
                         console.info('testGetWorkStatusFun001 getWorkStatuscallback success,' + item + ' is:' + 
@@ -1698,17 +1786,21 @@ export default function WorkSchedulerMgrApiTest() {
                 storageRequest: workScheduler.StorageRequest.STORAGE_LEVEL_OKAY,
                 batteryLevel: 15
             }
-            let res = workScheduler.startWork(workInfo);
-            expect(res).assertEqual(true)
+            try {
+                workScheduler.startWork(workInfo);
+            } catch (error) {
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("401");
+            };
             workScheduler.getWorkStatus(10).then((res) => {
                 for (let item in res) {
                     console.info('testGetWorkStatusFun002 getWorkStatuscallback success,' + item + ' is:' + 
                     res[item]);
                 }
                 expect(res).assertInstanceOf('Object')
-            }).catch((err) => {
-                console.info('testGetWorkStatusFun002 getWorkStatuscallback fail because:' + err.code);
-                expect(err.code).assertLarger(0)
+            }).catch((error) => {
+                console.info('testGetWorkStatusFun002 getWorkStatuscallback fail because:' + error.code);
+                expect(error.code).assertLarger(0)
             })
             setTimeout(()=>{
                 done();
@@ -1730,8 +1822,12 @@ export default function WorkSchedulerMgrApiTest() {
                 storageRequest: workScheduler.StorageRequest.STORAGE_LEVEL_OKAY,
                 batteryLevel: 15
             }
-            let res = workScheduler.startWork(workInfo);
-            expect(res).assertEqual(true)
+            try {
+                workScheduler.startWork(workInfo);
+            } catch (error) {
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("401");
+            };
             try{
                 workScheduler.getWorkStatus(undefined).then((res) => {
                     for (let item in res) {
@@ -1739,9 +1835,9 @@ export default function WorkSchedulerMgrApiTest() {
                         res[item]);
                     }
                     expect(res).assertInstanceOf('Object')
-                }).catch((err) => {
-                    console.info('testGetWorkStatusFun003 getWorkStatuspromise fail because:' + err.code);
-                    expect(err.code).assertLarger(0)
+                }).catch((error) => {
+                    console.info('testGetWorkStatusFun003 getWorkStatuspromise fail because:' + error.code);
+                    expect(error.code).assertLarger(0)
                 })
             }catch(error){
                 console.info('testGetWorkStatusFun003 getWorkStatuspromise fail because:' + error);
@@ -1766,8 +1862,12 @@ export default function WorkSchedulerMgrApiTest() {
                 storageRequest: workScheduler.StorageRequest.STORAGE_LEVEL_OKAY,
                 batteryLevel: 15
             }
-            let res = workScheduler.startWork(workInfo);
-            expect(res).assertEqual(true)
+            try {
+                workScheduler.startWork(workInfo);
+            } catch (error) {
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("401");
+            };
             try{
                 workScheduler.getWorkStatus('9').then((res) => {
                     for (let item in res) {
@@ -1775,9 +1875,9 @@ export default function WorkSchedulerMgrApiTest() {
                         res[item]);
                     }
                     expect(res).assertInstanceOf('Object')
-                }).catch((err) => {
-                    console.info('testGetWorkStatusFun004 getWorkStatuspromise fail because:' + err.code);
-                    expect(err.code).assertLarger(0)
+                }).catch((error) => {
+                    console.info('testGetWorkStatusFun004 getWorkStatuspromise fail because:' + error.code);
+                    expect(error.code).assertLarger(0)
                 })
             }catch(error){
                 console.info('testGetWorkStatusFun004 getWorkStatuspromise fail because:' + error);
@@ -1801,12 +1901,16 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 storageRequest: workScheduler.StorageRequest.STORAGE_LEVEL_OKAY,
             }
-            let res = workScheduler.startWork(workInfo);
-            expect(res).assertEqual(true)
-            workScheduler.obtainAllWorks((err, res) =>{
-                if (err) {
-                    console.info('testObtainAllWorksFun001 obtainAllWorks callback fail, because:' + err.code);
-                    expect(err.code).assertLarger(0)
+            try {
+                workScheduler.startWork(workInfo);
+            } catch (error) {
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("401");
+            };
+            workScheduler.obtainAllWorks((error, res) =>{
+                if (error) {
+                    console.info('testObtainAllWorksFun001 obtainAllWorks callback fail, because:' + error.code);
+                    expect(error.code).assertLarger(0)
                 } else {
                     console.info('testObtainAllWorksFun001 obtainAllWorks callback success, data is:' + 
                     JSON.stringify(res));
@@ -1831,15 +1935,19 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 storageRequest: workScheduler.StorageRequest.STORAGE_LEVEL_OKAY,
             }
-            let res = workScheduler.startWork(workInfo);
-            expect(res).assertEqual(true)
+            try {
+                workScheduler.startWork(workInfo);
+            } catch (error) {
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("401");
+            };
             workScheduler.stopAndClearWorks();
             workScheduler.obtainAllWorks().then((res) => {
                 console.info('testObtainAllWorksFun002 obtainAllWorks promise success, data is:' + 
                 JSON.stringify(res));
-            }).catch((err) => {
-                console.info('testObtainAllWorksFun002 obtainAllWorks promise failed, because:' + err.code);
-                expect(err.code).assertLarger(0)
+            }).catch((error) => {
+                console.info('testObtainAllWorksFun002 obtainAllWorks promise failed, because:' + error.code);
+                expect(error.code).assertLarger(0)
             })
             setTimeout(()=>{
                 done();
@@ -1859,8 +1967,12 @@ export default function WorkSchedulerMgrApiTest() {
                 abilityName: "com.mytest.abilityName",
                 storageRequest: workScheduler.StorageRequest.STORAGE_LEVEL_OKAY
             }
-            let res = workScheduler.startWork(workInfo);
-            expect(res).assertEqual(true)
+            try {
+                workScheduler.startWork(workInfo);
+            } catch (error) {
+                console.info("----------------error: " + error.code);
+                expect(error.code).assertEqual("401");
+            };
             let stopRes1 = workScheduler.stopAndClearWorks();
             let stopRes2 = workScheduler.stopAndClearWorks();
             if(stopRes1 === true){
@@ -1877,10 +1989,10 @@ export default function WorkSchedulerMgrApiTest() {
          */
         it("testIsLastWorkTimeOutFun001", 0, async function (done) {
             console.info('----------------------testIsLastWorkTimeOutFun001---------------------------');
-            workScheduler.isLastWorkTimeOut(-1, (err, res) =>{
-                if (err) {
-                    console.info('testIsLastWorkTimeOutFun001 isLastWorkTimeOut callback fail, because:' + err.code);
-                    expect(err.code).assertLarger(0)
+            workScheduler.isLastWorkTimeOut(-1, (error, res) =>{
+                if (error) {
+                    console.info('testIsLastWorkTimeOutFun001 isLastWorkTimeOut callback fail, because:' + error.code);
+                    expect(error.code).assertLarger(0)
                 } else {
                     console.info('testIsLastWorkTimeOutFun001 isLastWorkTimeOut callback success, data is:' + res);
                     expect(res).assertInstanceOf('Boolean')
@@ -1903,9 +2015,9 @@ export default function WorkSchedulerMgrApiTest() {
                     console.info('testIsLastWorkTimeOutFun003 isLastWorkTimeOut promise success, data is:' + res);
                     expect(res).assertInstanceOf('Boolean')
                 })
-                .catch(err => {
-                    console.info('testIsLastWorkTimeOutFun003 isLastWorkTimeOut promise fail, because:' + err.code);
-                    expect(err.code).assertLarger(0)
+                .catch(error => {
+                    console.info('testIsLastWorkTimeOutFun003 isLastWorkTimeOut promise fail, because:' + error.code);
+                    expect(error.code).assertLarger(0)
             });
             }catch(error){
                 console.info('testIsLastWorkTimeOutFun003 isLastWorkTimeOut promise fail ,' + error);
@@ -1915,7 +2027,7 @@ export default function WorkSchedulerMgrApiTest() {
             }, 500);
         })
     
-        /*
+        /*testStartWorkFun020
          * @tc.number    SUB_RESOURCESCHEDULE_WORKSCHEDULE_TASK_XTS_151
          * @tc.name      testIsLastWorkTimeOutFun004
          * @tc.desc      test isLastWorkTimeOut promise parameter workId is NullType. 
@@ -1927,9 +2039,9 @@ export default function WorkSchedulerMgrApiTest() {
                     console.info('testIsLastWorkTimeOutFun004 isLastWorkTimeOut promise success, data is:' + res);
                     expect(res).assertInstanceOf('Boolean')
                 })
-                .catch(err => {
-                    console.info('testIsLastWorkTimeOutFun004 isLastWorkTimeOut promise fail, because:' + err.code);
-                    expect(err.code).assertLarger(0)
+                .catch(error => {
+                    console.info('testIsLastWorkTimeOutFun004 isLastWorkTimeOut promise fail, because:' + error.code);
+                    expect(error.code).assertLarger(0)
             });
             }catch(error){
                 console.info('testIsLastWorkTimeOutFun004 isLastWorkTimeOut promise fail ,' + error);
