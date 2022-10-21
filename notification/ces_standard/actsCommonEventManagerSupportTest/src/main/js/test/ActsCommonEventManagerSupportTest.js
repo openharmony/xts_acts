@@ -165,20 +165,6 @@ export default function ActsCommonEventManagerSupportTest() {
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_1000
-     * @tc.name      : commonEventManager.Support
-     * @tc.desc      : Distributed account
-     */
-    // it('SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_1000', 0, async  function () {
-    //   console.info(`${TAG} SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_1000 START`)
-    //   expect(commonEventManager.Support.COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGIN).assertEqual('common.event.DISTRIBUTED_ACCOUNT_LOGIN')
-    //   expect(commonEventManager.Support.COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGOUT).assertEqual('common.event.DISTRIBUTED_ACCOUNT_LOGOUT')
-    //   expect(commonEventManager.Support.COMMON_EVENT_DISTRIBUTED_ACCOUNT_TOKEN_INVALID).assertEqual('common.event.DISTRIBUTED_ACCOUNT_TOKEN_INVALID')
-    //   expect(commonEventManager.Support.COMMON_EVENT_DISTRIBUTED_ACCOUNT_LOGOFF).assertEqual('common.event.DISTRIBUTED_ACCOUNT_LOGOFF')
-    //   console.info(`${TAG} SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_1000 END`)
-    // })
-
-    /*
      * @tc.number    : SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_1100
      * @tc.name      : commonEventManager.Support
      * @tc.desc      : WIFI state
@@ -228,6 +214,8 @@ export default function ActsCommonEventManagerSupportTest() {
       expect(commonEventManager.Support.COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_SDP_RESULT).assertEqual('usual.event.bluetooth.remotedevice.SDP_RESULT')
       expect(commonEventManager.Support.COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_UUID_VALUE).assertEqual('usual.event.bluetooth.remotedevice.UUID_VALUE')
       expect(commonEventManager.Support.COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_REQ).assertEqual('usual.event.bluetooth.remotedevice.PAIRING_REQ')
+      expect(commonEventManager.Support.COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_PAIRING_CANCEL).assertEqual('usual.event.bluetooth.remotedevice.PAIRING_CANCEL')
+      expect(commonEventManager.Support.COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REQ).assertEqual('usual.event.bluetooth.remotedevice.CONNECT_REQ')
       expect(commonEventManager.Support.COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_REPLY).assertEqual('usual.event.bluetooth.remotedevice.CONNECT_REPLY')
       expect(commonEventManager.Support.COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_CONNECT_CANCEL).assertEqual('usual.event.bluetooth.remotedevice.CONNECT_CANCEL')
       console.info(`${TAG} SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_1200 END`)
