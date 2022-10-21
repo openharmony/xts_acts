@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-// import fileIO from '@ohos.file.fs';
+
 import {
     fileio, fileIO, FILE_CONTENT, prepareFile, nextFileName, isIntNum, isBoolean,
     describe, it, expect,
@@ -43,7 +43,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = fileIO.statSync(fd);
       expect(stat2 !== null).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
     } catch (e) {
       console.log('fileio_statv9_sync_000 has failed for ' + e.message + ', code: ' + e.code);
@@ -77,7 +76,6 @@ describe('fileIO_fs_stat', function () {
     }
   });
 
-
   /**
    * @tc.number SUB_DF_FILEIO_STAT_INO_0000
    * @tc.name fileIO_stat_sync_ino_000
@@ -100,7 +98,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = fileIO.statSync(fd);
       expect(isIntNum(stat2.ino)).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
     } catch (e) {
       console.info('fileIO_stat_sync_ino_000 has failed for ' + e.message + ', code: ' + e.code);
@@ -130,7 +127,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = fileIO.statSync(fd);
       expect(isIntNum(stat2.mode)).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
     } catch (e) {
       console.info('fileIO_stat_sync_mode_000 has failed for ' + e.message + ', code: ' + e.code);
@@ -160,7 +156,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = fileIO.statSync(fd);
       expect(isIntNum(stat2.uid)).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
     } catch (e) {
       console.log('fileIO_stat_sync_uid_000 has failed for ' + e.message + ', code: ' + e.code);
@@ -190,7 +185,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = fileIO.statSync(fd);
       expect(isIntNum(stat2.gid)).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
     } catch (e) {
       console.log('fileIO_stat_sync_gid_000 has failed for ' + e.message + ', code: ' + e.code);
@@ -220,7 +214,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = fileIO.statSync(fd);
       expect(isIntNum(stat2.size)).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
     } catch (e) {
       console.log('fileIO_stat_sync_size_000 has failed for ' + e.message + ', code: ' + e.code);
@@ -250,7 +243,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = fileIO.statSync(fd);
       expect(isIntNum(stat2.blksize)).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
     } catch (e) {
       console.log('fileIO_stat_sync_blksize_000 has failed for ' + e.message + ', code: ' + e.code);
@@ -280,7 +272,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = fileIO.statSync(fd);
       expect(isIntNum(stat2.atime)).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
     } catch (e) {
       console.log('fileIO_stat_sync_atime_000 has failed for ' + e.message + ', code: ' + e.code);
@@ -310,7 +301,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = fileIO.statSync(fd);
       expect(isIntNum(stat2.mtime)).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
     } catch (e) {
       console.log('fileIO_stat_sync_mtime_000 has failed for ' + e.message + ', code: ' + e.code);
@@ -340,7 +330,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = fileIO.statSync(fd);
       expect(isIntNum(stat2.ctime)).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
     } catch (e) {
       console.log('fileIO_stat_sync_ctime_000 has failed for ' + e.message + ', code: ' + e.code);
@@ -371,7 +360,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = fileIO.statSync(fd);
       expect(isBoolean(stat2.isBlockDevice())).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
     } catch (e) {
       console.log('fileIO_stat_sync_is_block_device_000 has failed for ' + e.message + ', code: ' + e.code);
@@ -402,7 +390,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = fileIO.statSync(fd);
       expect(stat2.isBlockDevice() === false).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
     } catch (e) {
       console.log('fileIO_stat_sync_is_block_device_001 has failed for ' + e.message + ', code: ' + e.code);
@@ -483,7 +470,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = fileIO.statSync(fd);
       expect(isBoolean(stat2.isCharacterDevice())).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
     } catch (e) {
       console.log('fileIO_stat_sync_is_character_device_000 has failed for ' + e.message + ', code: ' + e.code);
@@ -513,7 +499,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = fileIO.statSync(fd);
       expect(stat2.isCharacterDevice() === false).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
     } catch (e) {
       console.log('fileIO_stat_sync_is_character_device_001 has failed for ' + e.message + ', code: ' + e.code);
@@ -545,7 +530,7 @@ describe('fileIO_fs_stat', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_STAT_SYNC_ISCHARACTER_DEVICE_0020
+   * @tc.number SUB_DF_FILEIO_STAT_SYNC_ISCHARACTER_DEVICE_0030
    * @tc.name fileIO_stat_sync_is_character_device_003
    * @tc.desc Test Stat.statsync_IsCharacterDevice() interfaces.
    * @tc.size MEDIUM
@@ -591,7 +576,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = fileIO.statSync(fd);
       expect(isBoolean(stat2.isDirectory())).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
     } catch (e) {
       console.log('fileIO_stat_sync_is_directory_000 has failed for ' + e.message + ', code: ' + e.code);
@@ -621,7 +605,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = fileIO.statSync(fd);
       expect(stat2.isDirectory() === false).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
     } catch (e) {
       console.log('fileIO_stat_sync_is_directory_001 has failed for ' + e.message + ', code: ' + e.code);
@@ -651,7 +634,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = fileIO.statSync(fd);
       expect(stat2.isDirectory()).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.rmdirSync(dpath) == null).assertTrue();
     } catch (e) {
       console.log('fileIO_stat_sync_is_directory_002 has failed for ' + e.message + ', code: ' + e.code);
@@ -702,7 +684,6 @@ describe('fileIO_fs_stat', function () {
       expect(fileio.closeSync(fd) == null).assertTrue();
       expect(null).assertFail();
     } catch (e) {
-
       expect(fileio.rmdirSync(dpath) == null).assertTrue();
       expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
     }
@@ -730,7 +711,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = fileIO.statSync(fd);
       expect(isBoolean(stat2.isFIFO())).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
     } catch (e) {
       console.log('fileIO_stat_sync_is_fifo_000 has failed for ' + e.message + ', code: ' + e.code);
@@ -760,7 +740,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = fileIO.statSync(fd);
       expect(stat2.isFIFO() === false).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
     } catch (e) {
       console.log('fileIO_stat_sync_is_fifo_001 has failed for ' + e.message + ', code: ' + e.code);
@@ -792,7 +771,7 @@ describe('fileIO_fs_stat', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_STAT_SYNC_ISFIFO_0020
+   * @tc.number SUB_DF_FILEIO_STAT_SYNC_ISFIFO_0030
    * @tc.name fileIO_stat_sync_is_fifo_003
    * @tc.desc Test Stat.statsync_isFIFO() interfaces.
    * @tc.size MEDIUM
@@ -837,7 +816,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = fileIO.statSync(fd);
       expect(isBoolean(stat2.isFile())).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
     } catch (e) {
       console.log('fileIO_stat_sync_is_file_000 has failed for ' + e.message + ', code: ' + e.code);
@@ -867,7 +845,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = fileIO.statSync(fd);
       expect(stat2.isFile()).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
     } catch (e) {
       console.log('fileIO_stat_sync_is_file_001 has failed for ' + e.message + ', code: ' + e.code);
@@ -897,7 +874,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = fileIO.statSync(fd);
       expect(stat2.isFile() === false).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.rmdirSync(dpath) == null).assertTrue();
     } catch (e) {
       console.log('fileIO_stat_sync_is_file_002 has failed for ' + e.message + ', code: ' + e.code);
@@ -929,7 +905,7 @@ describe('fileIO_fs_stat', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_STAT_SYNC_ISFILE_0030
+   * @tc.number SUB_DF_FILEIO_STAT_SYNC_ISFILE_0040
    * @tc.name fileIO_stat_sync_is_file_004
    * @tc.desc Test Stat.statsync_isFile() interfaces.
    * @tc.size MEDIUM
@@ -974,7 +950,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = fileIO.statSync(fd);
       expect(isBoolean(stat2.isSocket())).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
     } catch (e) {
       console.log('fileIO_stat_sync_is_socket_000 has failed for ' + e.message + ', code: ' + e.code);
@@ -1004,7 +979,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = fileIO.statSync(fd);
       expect(stat2.isSocket() === false).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
     } catch (e) {
       console.log('fileIO_stat_sync_is_socket_001 has failed for ' + e.message + ', code: ' + e.code);
@@ -1036,7 +1010,7 @@ describe('fileIO_fs_stat', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_STAT_SYNC_ISSOCKET_0020
+   * @tc.number SUB_DF_FILEIO_STAT_SYNC_ISSOCKET_0030
    * @tc.name fileIO_stat_sync_is_socket_003
    * @tc.desc Test Stat.statsync_isSocket() interfaces.
    * @tc.size MEDIUM
@@ -1081,7 +1055,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = fileIO.statSync(fd);
       expect(isBoolean(stat2.isSymbolicLink())).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
     } catch (e) {
       console.log('fileIO_stat_sync_is_symbolic_link_000 has failed for ' + e.message + ', code: ' + e.code);
@@ -1111,7 +1084,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = fileIO.statSync(fd);
       expect(stat2.isSymbolicLink() === false).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
     } catch (e) {
       console.log('fileIO_stat_sync_is_symbolic_link_001 has failed for ' + e.message + ', code: ' + e.code);
@@ -1143,7 +1115,7 @@ describe('fileIO_fs_stat', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_STAT_SYNC_ISSYMBOLICLINK_0020
+   * @tc.number SUB_DF_FILEIO_STAT_SYNC_ISSYMBOLICLINK_0030
    * @tc.name fileIO_stat_sync_is_symbolic_link_003
    * @tc.desc Test Stat.isSymbolicLink() interfaces.
    * @tc.size MEDIUM
@@ -1190,7 +1162,6 @@ describe('fileIO_fs_stat', function () {
         expect(stat2 !== null).assertTrue();
         expect(fileio.closeSync(fd) == null).assertTrue();
       });
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
       done();
     } catch (e) {
@@ -1200,7 +1171,7 @@ describe('fileIO_fs_stat', function () {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_STAT_ASYNC_0000
+   * @tc.number SUB_DF_FILEIO_STAT_ASYNC_0010
    * @tc.name fileIO_stat_async_001
    * @tc.desc Test Stat.statAsync() interface.
    * This interface shall work properly in normal case when providing the callback async model.
@@ -1226,7 +1197,7 @@ describe('fileIO_fs_stat', function () {
 
 
   /**
-   * @tc.number SUB_DF_FILEIO_STAT_ASYNC_0000
+   * @tc.number SUB_DF_FILEIO_STAT_ASYNC_0020
    * @tc.name fileIO_stat_async_002
    * @tc.desc Test Stat.statAsync() interface.
    * This interface shall work properly in normal case when providing the callback async model.
@@ -1272,7 +1243,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = await fileIO.stat(fd);
       expect(isIntNum(stat2.ino)).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
       done();
     } catch (e) {
@@ -1302,7 +1272,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = await fileIO.stat(fd);
       expect(isIntNum(stat2.mode)).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
       done();
     } catch (e) {
@@ -1332,7 +1301,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = await fileIO.stat(fd);
       expect(isIntNum(stat2.uid)).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
       done();
     } catch (e) {
@@ -1362,7 +1330,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = await fileIO.stat(fd);
       expect(isIntNum(stat2.gid)).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
       done();
     } catch (e) {
@@ -1392,7 +1359,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = await fileIO.stat(fd);
       expect(isIntNum(stat2.size)).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
       done();
     } catch (e) {
@@ -1423,7 +1389,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = await fileIO.stat(fd);
       expect(isIntNum(stat2.atime)).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
       done();
     } catch (e) {
@@ -1454,7 +1419,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = await fileIO.stat(fd);
       expect(isIntNum(stat2.mtime)).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
       done();
     } catch (e) {
@@ -1484,7 +1448,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = await fileIO.stat(fd);
       expect(isIntNum(stat2.ctime)).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
       done();
     } catch (e) {
@@ -1514,7 +1477,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = await fileIO.stat(fd);
       expect(isBoolean(stat2.isBlockDevice())).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
       done();
     } catch (e) {
@@ -1544,7 +1506,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = await fileIO.stat(fd);
       expect(stat2.isBlockDevice() === false).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
       done();
     } catch (e) {
@@ -1574,7 +1535,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = await fileIO.stat(fd);
       expect(isBoolean(stat2.isCharacterDevice())).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
       done();
     } catch (e) {
@@ -1604,7 +1564,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = await fileIO.stat(fd);
       expect(stat2.isCharacterDevice() === false).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
       done();
     } catch (e) {
@@ -1634,7 +1593,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = await fileIO.stat(fd);
       expect(isBoolean(stat2.isDirectory())).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
       done();
     } catch (e) {
@@ -1664,7 +1622,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = await fileIO.stat(fd);
       expect(stat2.isDirectory() === false).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
       done();
     } catch (e) {
@@ -1694,7 +1651,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = await fileIO.stat(fd);
       expect(stat2.isDirectory()).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.rmdirSync(dpath) == null).assertTrue();
       done();
     } catch (e) {
@@ -1724,7 +1680,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = await fileIO.stat(fd);
       expect(isBoolean(stat2.isFIFO())).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
       done();
     } catch (e) {
@@ -1754,7 +1709,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = await fileIO.stat(fd);
       expect(stat2.isFIFO() === false).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
       done();
     } catch (e) {
@@ -1784,7 +1738,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = await fileIO.stat(fd);
       expect(isBoolean(stat2.isFile())).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
       done();
     } catch (e) {
@@ -1814,7 +1767,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = await fileIO.stat(fd);
       expect(stat2.isFile()).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
       done();
     } catch (e) {
@@ -1844,7 +1796,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = await fileIO.stat(fd);
       expect(stat2.isFile() === false).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.rmdirSync(dpath) == null).assertTrue();
       done();
     } catch (e) {
@@ -1874,7 +1825,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = await fileIO.stat(fd);
       expect(isBoolean(stat2.isSocket())).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
       done();
     } catch (e) {
@@ -1932,7 +1882,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = await fileIO.stat(fd);
       expect(isBoolean(stat2.isSymbolicLink())).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
       done();
     } catch (e) {
@@ -1962,7 +1911,6 @@ describe('fileIO_fs_stat', function () {
       let stat2 = await fileIO.stat(fd);
       expect(stat2.isSymbolicLink() === false).assertTrue();
       expect(fileio.closeSync(fd) == null).assertTrue();
-
       expect(fileio.unlinkSync(fpath) == null).assertTrue();
       done();
     } catch (e) {
@@ -1971,6 +1919,15 @@ describe('fileIO_fs_stat', function () {
     }
   });
 
+  /**
+   * @tc.number SUB_DF_FILEIO_STAT_SYNC_APPEND_FILE_SYNC_0000
+   * @tc.name fileIO_stat_sync_append_file_sync_000
+   * @tc.desc Test Stat.statSync() interface.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
+   */
   it('fileio_test_append_file_sync_000', 0, async function (done) {
     let fpath = await nextFileName('fileio_test_append_file_sync_000');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
@@ -1994,6 +1951,15 @@ describe('fileIO_fs_stat', function () {
     done();
   });
 
+  /**
+   * @tc.number SUB_DF_FILEIO_STAT_SYNC_APPEND_FILE_SYNC_0010
+   * @tc.name fileIO_stat_sync_append_file_sync_001
+   * @tc.desc Test Stat.statSync() interface.
+   * @tc.size MEDIUM
+   * @tc.type Functoin
+   * @tc.level Level 0
+   * @tc.require
+   */
   it('fileio_test_append_file_sync_001', 0, async function (done) {
     let fpath = await nextFileName('fileio_test_append_file_sync_001');
     expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();

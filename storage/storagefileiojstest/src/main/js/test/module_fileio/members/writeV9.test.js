@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-// import fileIO from '@ohos.file.fs';
+
 import {
   fileio, fileIO, FILE_CONTENT, nextFileName, isIntNum,
   describe, it, expect,
@@ -205,7 +205,7 @@ import {
   /**
    * @tc.number SUB_DF_FILEIO_WRITE_ASYNC_0000
    * @tc.name fileIO_test_write_async_000
-   * @tc.desc Test writeAsync() interfaces.
+   * @tc.desc Test write() interfaces.
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 0
@@ -230,7 +230,7 @@ import {
   /**
    * @tc.number SUB_DF_FILEIO_WRITE_ASYNC_0010
    * @tc.name fileIO_test_write_async_001
-   * @tc.desc Test writeAsync() interfaces.
+   * @tc.desc Test write() interfaces.
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 0
@@ -258,7 +258,7 @@ import {
   /**
    * @tc.number SUB_DF_FILEIO_WRITE_ASYNC_0020
    * @tc.name fileIO_test_write_async_002
-   * @tc.desc Test writeAsync() interfaces.
+   * @tc.desc Test write() interfaces.
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 0
@@ -287,7 +287,7 @@ import {
   /**
    * @tc.number SUB_DF_FILEIO_WRITE_ASYNC_0030
    * @tc.name fileIO_test_write_async_003
-   * @tc.desc Test writeAsync() interfaces.
+   * @tc.desc Test write() interfaces.
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 0
@@ -317,7 +317,7 @@ import {
   /**
    * @tc.number SUB_DF_FILEIO_WRITE_ASYNC_0040
    * @tc.name fileIO_test_write_async_004
-   * @tc.desc Test writeAsync() interfaces.
+   * @tc.desc Test write() interfaces.
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 0
@@ -330,13 +330,14 @@ import {
       let fd = fileio.openSync(fpath, 0o102, 0o664);
       expect(isIntNum(fd)).assertTrue();
       await fileIO.write(fd, new ArrayBuffer(4096), function (
-          error,
-          bytesWritten
+        error,
+        bytesWritten
       ) {
-        expect(bytesWritten == 4096).assertTrue();
-        expect(fileio.closeSync(fd) == null).assertTrue();
-        expect(fileio.unlinkSync(fpath) == null).assertTrue();
-      });
+          expect(bytesWritten == 4096).assertTrue();
+          expect(fileio.closeSync(fd) == null).assertTrue();
+          expect(fileio.unlinkSync(fpath) == null).assertTrue();
+        }
+      );
       done();
     } catch (e) {
       console.log('fileIO_test_write_async_004 has failed for ' + e.message + ', code: ' + e.code);
@@ -347,7 +348,7 @@ import {
   /**
    * @tc.number SUB_DF_FILEIO_WRITE_ASYNC_0050
    * @tc.name fileIO_test_write_async_005
-   * @tc.desc Test writeAsync() interfaces.
+   * @tc.desc Test write() interfaces.
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 0
@@ -365,11 +366,11 @@ import {
         {
           length: 5,
         }, function (error, bytesWritten) {
-        expect(bytesWritten == 5).assertTrue();
-        expect(fileio.closeSync(fd) == null).assertTrue();
-        expect(fileio.unlinkSync(fpath) == null).assertTrue();
-        done();
-      }
+          expect(bytesWritten == 5).assertTrue();
+          expect(fileio.closeSync(fd) == null).assertTrue();
+          expect(fileio.unlinkSync(fpath) == null).assertTrue();
+          done();
+        }
       );
     } catch (e) {
       console.log('fileIO_test_write_async_005 has failed for ' + e.message + ', code: ' + e.code);
@@ -380,7 +381,7 @@ import {
   /**
    * @tc.number SUB_DF_FILEIO_WRITE_ASYNC_0060
    * @tc.name fileIO_test_write_async_006
-   * @tc.desc Test writeAsync() interfaces.
+   * @tc.desc Test write() interfaces.
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 0
@@ -399,11 +400,11 @@ import {
           length: 5,
           offset: 5,
         }, function (error, bytesWritten) {
-        expect(bytesWritten == 5).assertTrue();
-        expect(fileio.closeSync(fd) == null).assertTrue();
-        expect(fileio.unlinkSync(fpath) == null).assertTrue();
-        done();
-      }
+          expect(bytesWritten == 5).assertTrue();
+          expect(fileio.closeSync(fd) == null).assertTrue();
+          expect(fileio.unlinkSync(fpath) == null).assertTrue();
+          done();
+        }
       );
     } catch (e) {
       console.log('fileIO_test_write_async_006 has failed for ' + e.message + ', code: ' + e.code);
@@ -414,7 +415,7 @@ import {
   /**
    * @tc.number SUB_DF_FILEIO_WRITE_ASYNC_0070
    * @tc.name fileIO_test_write_async_007
-   * @tc.desc Test writeAsync() interfaces.
+   * @tc.desc Test write() interfaces.
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 0
@@ -434,18 +435,16 @@ import {
           offset: 5,
           encoding: 'utf-8',
         }, function (error, bytesWritten) {
-        expect(bytesWritten == 5).assertTrue();
-        expect(fileio.closeSync(fd) == null).assertTrue();
-        expect(fileio.unlinkSync(fpath) == null).assertTrue();
-        done();
-      }
+          expect(bytesWritten == 5).assertTrue();
+          expect(fileio.closeSync(fd) == null).assertTrue();
+          expect(fileio.unlinkSync(fpath) == null).assertTrue();
+          done();
+        }
       );
     } catch (e) {
       console.log('fileIO_test_write_async_007 has failed for ' + e.message + ', code: ' + e.code);
       expect(null).assertFail();
     }
   });
-
 });
 }
-
