@@ -91,6 +91,30 @@ describe('I18nTest', function () {
     })
 
     /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_2110
+    * @tc.name getSystemLanguages test
+    * @tc.desc check the getSystemLanguages
+    */
+    it('i18n_test_2110', 0, function () {
+        let value = I18n.System.getSystemLanguages();
+        let len = value.length;
+        console.log('i18n_test_2110 ' + len);
+        expect(len).assertLarger(0);
+    })
+
+    /* *
+    * @tc.number SUB_GLOBAL_I18N_JS_2120
+    * @tc.name getSystemCountries with en param
+    * @tc.desc check the getSystemCountries
+    */
+    it('i18n_test_2120', 0, function () {
+        let value = I18n.System.getSystemCountries('en');
+        let len = value.length;
+        console.log('i18n_test_2120 ' + len);
+        expect(len).assertLarger(0);
+    })
+
+    /* *
     * @tc.number SUB_GLOBAL_I18N_JS_2310
     * @tc.name isSuggested with zh param
     * @tc.desc check the isSuggested
