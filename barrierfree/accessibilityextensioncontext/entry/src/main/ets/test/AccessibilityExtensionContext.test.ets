@@ -1016,39 +1016,6 @@ export default function abilityTest() {
         })
 
         /*
-        * @tc.number  AccessibilityExtensionContextTest_gestureInject_asyncCallback_4900
-        * @tc.name    AccessibilityExtensionContextTest_gestureInject_asyncCallback_4900
-        * @tc.desc    The parameter input is gesturePath, test the gestureInject() function.
-        *             The result of gestureInject() should be boolean type.
-        * @tc.size    SmallTest
-        * @tc.type    User
-        */
-        it('AccessibilityExtensionContextTest_gestureInject_asyncCallback_4900', 0, async function (done) {
-            let caseName = 'AccessibilityExtensionContextTest_gestureInject_asyncCallback_4900';
-            console.info(caseName + 'start');
-
-            if (isConnect) {
-                publishCaseExecute(caseName);
-
-                setTimeout(() => {
-                    if (caseResult != undefined) {
-                        console.info(caseName + ':' + caseResult.data);
-                        expect(passStr).assertEqual(caseResult.data);
-                        expect(caseName).assertEqual(caseResult.parameters.case);
-                    } else {
-                        console.info(caseName + ': caseResult is undefined');
-                        expect(null).assertFail();
-                    }
-                    done();
-                }, 3000);
-            } else {
-                console.error(caseName + ': extension not connected');
-                expect(null).assertFail();
-                done();
-            }
-        })
-
-        /*
         * @tc.number  AccessibilityExtensionContextTest_gestureInject_asyncPromise_5000
         * @tc.name    AccessibilityExtensionContextTest_gestureInject_asyncPromise_5000
         * @tc.desc    The parameter input is gesturePath, test the gestureInject() function.
@@ -1157,39 +1124,6 @@ export default function abilityTest() {
         */
         it('AccessibilityExtensionContextTest_gestureInject_asyncPromise_5300', 0, async function (done) {
             let caseName = 'AccessibilityExtensionContextTest_gestureInject_asyncPromise_5300';
-            console.info(caseName + 'start');
-
-            if (isConnect) {
-                publishCaseExecute(caseName);
-
-                setTimeout(() => {
-                    if (caseResult != undefined) {
-                        console.info(caseName + ':' + caseResult.data);
-                        expect(passStr).assertEqual(caseResult.data);
-                        expect(caseName).assertEqual(caseResult.parameters.case);
-                    } else {
-                        console.info(caseName + ': caseResult is undefined');
-                        expect(null).assertFail();
-                    }
-                    done();
-                }, 3000);
-            } else {
-                console.error(caseName + ': extension not connected');
-                expect(null).assertFail();
-                done();
-            }
-        })
-
-        /*
-        * @tc.number  AccessibilityExtensionContextTest_gestureInject_asyncPromise_5400
-        * @tc.name    AccessibilityExtensionContextTest_gestureInject_asyncPromise_5400
-        * @tc.desc    The parameter input is gesturePath, test the gestureInject() function.
-        *             The result of gestureInject() should be boolean type.
-        * @tc.size    SmallTest
-        * @tc.type    User
-        */
-        it('AccessibilityExtensionContextTest_gestureInject_asyncPromise_5400', 0, async function(done) {
-            let caseName = 'AccessibilityExtensionContextTest_gestureInject_asyncPromise_5400';
             console.info(caseName + 'start');
 
             if (isConnect) {
