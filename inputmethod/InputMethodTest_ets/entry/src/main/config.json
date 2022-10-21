@@ -65,6 +65,11 @@
         "launchType": "standard"
       }
     ],
+    "reqPermissions": [
+      {
+        "name": "ohos.permission.CONNECT_IME_ABILITY"
+      }
+    ],
     "js": [
       {
         "mode": {

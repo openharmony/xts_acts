@@ -18,10 +18,11 @@
         {
             "type": "PushKit",
             "pre-push": [
-                "mount -o rw,remount /"
+                "mount -o rw,remount /",
+                "mkdir -p /data/app/el2/100/base/com.acts.theme.wallpapertest/haps"
             ],
             "push": [
-                "wp.png ->/system/etc/wp.png"
+                "./resource./wallpaper/wp.png ->/data/app/el2/100/base/com.acts.theme.wallpapertest/haps/wp.png"
             ]
         }
     ]

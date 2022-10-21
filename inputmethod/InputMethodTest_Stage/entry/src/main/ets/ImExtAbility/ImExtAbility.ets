@@ -71,7 +71,6 @@ export default class ImExtAbility extends inputMethodExtensionAbility {
     }).catch((err) => {
       console.info('startAbility004 terminateSelf fail: ' + JSON.stringify(err));
     })
-
   }
 
   onDestroy() {
