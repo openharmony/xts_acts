@@ -20,6 +20,13 @@ const TAG = 'ets_apiLack_add';
 @Entry
 @Component
 export default struct CommonColorMode {
+
+  // popup构造器定义弹框内容
+  @Builder popupBuilder() {
+    Row({ space: 2 }) {
+      Text('Custom Popup').fontSize(10)
+    }.width(100).height(50).padding(5)
+  }
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear CommonColorMode start`)
   }
@@ -27,10 +34,44 @@ export default struct CommonColorMode {
   aboutToDisappear() {
     Log.showInfo(TAG, `aboutToDisAppear CommonColorMode end`)
   }
+  onLayout(children, constraint) {
+    Log.showInfo(TAG, `onLayout start` + JSON.stringify(children));
+    children[0].borderInfo = {
+      borderWidth: 20,
+      margin: 30,
+      padding: 20
+    }
+    children[0].constraint = {
+      maxWidth: 200
+    }
+    children[0].layout({
+      position: {
+         x:20,
+         y:20
+      },
+      constraint: {
+        maxWidth: 200
+      }
+    })
+  }
+  onMeasure(children, constraint) {
+    Log.showInfo(TAG, `onMeasurestart`)
+
+
+  }
 
   @Styles normalStyles() {
     .backgroundColor("#0A59F7")
+
   }
+  // add
+  configuration : Configuration = {
+
+    colorMode: "$000",
+
+    fontScale: 23
+  }
+
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -48,6 +89,10 @@ export default struct CommonColorMode {
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
         .key("fontScaleText")
+        .bindPopup(true,{
+             message:"23",
+             showInSubWindow:true
+        }).
 
       Text("common-OnFinish")
         .width(320)
@@ -66,7 +111,10 @@ export default struct CommonColorMode {
           onFinish: () => {
             Log.showInfo(TAG, 'animation onFinish success')
           }
-        })
+        }).bindPopup(true,{
+          builder:this.popupBuilder,
+          showInSubWindow:true
+      })
 
       Text("common-MotionPath")
         .width(320)

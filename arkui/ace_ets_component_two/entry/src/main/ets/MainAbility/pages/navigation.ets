@@ -132,7 +132,7 @@ struct NavigationExample {
       .titleMode(NavigationTitleMode.Free)
       .hideTitleBar(false)
       .hideBackButton(false)
-      .onTitleModeChanged((titleModel: NavigationTitleMode) => {
+      .onTitleModeChange((titleModel: NavigationTitleMode) => {
         console.log('titleMode')
       })
       .toolBar({ items: [
