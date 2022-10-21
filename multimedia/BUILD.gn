@@ -21,6 +21,7 @@ group("multimedia") {
       "audio/audio_js_standard/AudioCapturerChangeInfo:audio_capturerchangeInfo_js_hap",
       "audio/audio_js_standard/AudioEventManagement:audio_eventmanagement_js_hap",
       "audio/audio_js_standard/AudioRendererChangeInfo:audio_rendererchangeInfo_js_hap",
+      "audio/audio_js_standard/AudioTonePlayer:audio_tone_player_js_hap",
       "audio/audio_js_standard/audioManager:audio_manager_js_hap",
       "audio/audio_js_standard/audioRenderer:audio_renderer_js_hap",
       "audio/audio_js_standard/audioVoip:audio_voip_js_hap",
