@@ -32,9 +32,6 @@ describe("HitraceMeterTest", function () {
             console.info("DFX_DFR_HitraceMeter_0100 " + i.toString() + " startTrace start");
             hiTraceMeter.startTrace("test-" + i.toString(), 111 + i, 5000);
             console.info("DFX_DFR_HitraceMeter_0100 " + i.toString() + "startTrace end");
-
-            //            await msleep(3000);
-
             console.info("DFX_DFR_HitraceMeter_0100 " + i.toString() + " finishTrace start");
             hiTraceMeter.finishTrace("test-" + i.toString(), 111 + i);
             console.info("DFX_DFR_HitraceMeter_0100 " + i.toString() + "finishTrace end");
