@@ -20,7 +20,7 @@ import dataSharePredicates from '@ohos.data.dataSharePredicates';
 
 const presetsCount = {
     ActsUserFileMgrAlbumJsTest: { albumsCount: 3, assetsCount: 3 },
-    ActsUserFileMgrBaseJsTest: { albumsCount: 9, assetsCount: 18 },
+    ActsUserFileMgrBaseJsTest: { albumsCount: 18, assetsCount: 33 },
     ActsUserFileMgrFileAssetJsTest: { albumsCount: 45, assetsCount: 87 },
 }
 

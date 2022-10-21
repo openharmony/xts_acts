@@ -115,9 +115,9 @@ export default function getAlbumsPromiseTest(abilityContext) {
          * @tc.desc      : getPhotoAlbums by relativePath && albumName, print all album info
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 1
          */
-        it('SUB_USERFILE_MGR_GETPHOTOALBUMS_PROMISE_01', 0, async function (done) {
+        it('SUB_USERFILE_MGR_GETPHOTOALBUMS_PROMISE_01', 1, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_GETPHOTOALBUMS_PROMISE_01';
             let currentFetchOp = albumFetchOps(testNum, 'Pictures/', 'myAlbum');
             let relativePaths = 'Pictures/';
@@ -130,9 +130,9 @@ export default function getAlbumsPromiseTest(abilityContext) {
          * @tc.desc      : getPhotoAlbums by invalid
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 3
          */
-         it('SUB_USERFILE_MGR_GETPHOTOALBUMS_ERRCODE_PROMISE_01', 0, async function (done) {
+         it('SUB_USERFILE_MGR_GETPHOTOALBUMS_ERRCODE_PROMISE_01', 3, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_GETPHOTOALBUMS_ERRCODE_PROMISE_01';
             await getPhotoAlbumsErrCodeTest(done, testNum);
         });

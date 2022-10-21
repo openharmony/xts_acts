@@ -44,7 +44,7 @@ export default function fileAssetFileKeyTest(abilityContext) {
             console.info('afterAll case');
         });
 
-        const AUDIOKEY = userFileManager.AudioKey;
+        const AudioKey = userFileManager.AudioKey;
         const ImageVideoKey = userFileManager.ImageVideoKey;
         const AlbumKey = userFileManager.AlbumKey;
 
@@ -161,44 +161,75 @@ export default function fileAssetFileKeyTest(abilityContext) {
         }
 
         /**
+         * @tc.number    : SUB_USERFILE_MGR_GETPHOTOALBUMSBYKEY_01
+         * @tc.name      : AlbumKey
+         * @tc.desc      : AlbumKey.URI
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+         it('SUB_USERFILE_MGR_GETPHOTOALBUMSBYKEY_01', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETPHOTOALBUMSBYKEY_01';
+            let type = 'albumUri';
+            let fileKey = AlbumKey.URI;
+            await getAlbumsByKey(done, testNum, type, fileKey);
+        })
+
+        /**
          * @tc.number    : SUB_USERFILE_MGR_GETPHOTOALBUMSBYKEY_02
+         * @tc.name      : AlbumKey
+         * @tc.desc      : AlbumKey.FILE_TYPE
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+         it('SUB_USERFILE_MGR_GETPHOTOALBUMSBYKEY_02', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETPHOTOALBUMSBYKEY_02';
+            let type = 'fileType';
+            let fileKey = AlbumKey.FILE_TYPE;
+            await getAlbumsByKey(done, testNum, type, fileKey);
+        })
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_GETPHOTOALBUMSBYKEY_03
          * @tc.name      : AlbumKey
          * @tc.desc      : AlbumKey.ALBUM_NAME
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_GETPHOTOALBUMSBYKEY_02', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_GETPHOTOALBUMSBYKEY_02';
+        it('SUB_USERFILE_MGR_GETPHOTOALBUMSBYKEY_03', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETPHOTOALBUMSBYKEY_03';
             let type = 'albumName';
             let fileKey = AlbumKey.ALBUM_NAME;
             await getAlbumsByKey(done, testNum, type, fileKey);
         })
+
         /**
-         * @tc.number    : SUB_USERFILE_MGR_GETPHOTOALBUMSBYKEY_03
+         * @tc.number    : SUB_USERFILE_MGR_GETPHOTOALBUMSBYKEY_04
          * @tc.name      : AlbumKey
          * @tc.desc      : AlbumKey.DATE_ADDED
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_GETPHOTOALBUMSBYKEY_03', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_GETPHOTOALBUMSBYKEY_03';
+        it('SUB_USERFILE_MGR_GETPHOTOALBUMSBYKEY_04', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETPHOTOALBUMSBYKEY_04';
             let type = 'dateAdded';
             let fileKey = AlbumKey.DATE_ADDED;
             await getAlbumsByKey(done, testNum, type, fileKey);
         });
 
         /**
-         * @tc.number    : SUB_USERFILE_MGR_GETPHOTOALBUMSBYKEY_04
+         * @tc.number    : SUB_USERFILE_MGR_GETPHOTOALBUMSBYKEY_05
          * @tc.name      : AlbumKey
          * @tc.desc      : AlbumKey.DATE_MODIFIED
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_GETPHOTOALBUMSBYKEY_04', 0, async function (done) {
-            let testNum = 'SUB_USERFILE_MGR_GETPHOTOALBUMSBYKEY_04';
+        it('SUB_USERFILE_MGR_GETPHOTOALBUMSBYKEY_05', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETPHOTOALBUMSBYKEY_05';
             let type = 'dateModified';
             let fileKey = AlbumKey.DATE_MODIFIED;
             await getAlbumsByKey(done, testNum, type, fileKey);
@@ -207,14 +238,28 @@ export default function fileAssetFileKeyTest(abilityContext) {
         //------------------------------------------------------------------------------
 
         /**
+         * @tc.number    : SUB_USERFILE_MGR_GETPHOTOASSETSBYKEY_01
+         * @tc.name      : ImageVideoKey
+         * @tc.desc      : ImageVideoKey.URI
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+         it('SUB_USERFILE_MGR_GETPHOTOASSETSBYKEY_01', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETPHOTOASSETSBYKEY_01';
+            let fileKey = ImageVideoKey.URI;
+            await getPhotoAssetsByKey(done, testNum, fileKey);
+        });
+
+        /**
          * @tc.number    : SUB_USERFILE_MGR_GETPHOTOASSETSBYKEY_02
          * @tc.name      : ImageVideoKey
          * @tc.desc      : ImageVideoKey.FILE_TYPE
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_GETPHOTOASSETSBYKEY_02', 0, async function (done) {
+        it('SUB_USERFILE_MGR_GETPHOTOASSETSBYKEY_02', 2, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_GETPHOTOASSETSBYKEY_02';
             let fileKey = ImageVideoKey.FILE_TYPE;
             await getPhotoAssetsByKey(done, testNum, fileKey);
@@ -226,9 +271,9 @@ export default function fileAssetFileKeyTest(abilityContext) {
          * @tc.desc      : ImageVideoKey.DISPLAY_NAME
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_GETPHOTOASSETSBYKEY_03', 0, async function (done) {
+        it('SUB_USERFILE_MGR_GETPHOTOASSETSBYKEY_03', 2, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_GETPHOTOASSETSBYKEY_03';
             let fileKey = ImageVideoKey.DISPLAY_NAME;
             await getPhotoAssetsByKey(done, testNum, fileKey);
@@ -240,9 +285,9 @@ export default function fileAssetFileKeyTest(abilityContext) {
          * @tc.desc      : ImageVideoKey.DATE_ADDED
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_GETPHOTOASSETSBYKEY_04', 0, async function (done) {
+        it('SUB_USERFILE_MGR_GETPHOTOASSETSBYKEY_04', 2, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_GETPHOTOASSETSBYKEY_04';
             let fileKey = ImageVideoKey.DATE_ADDED;
             await getPhotoAssetsByKey(done, testNum, fileKey);
@@ -254,9 +299,9 @@ export default function fileAssetFileKeyTest(abilityContext) {
          * @tc.desc      : ImageVideoKey.DATE_MODIFIED
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_GETPHOTOASSETSBYKEY_05', 0, async function (done) {
+        it('SUB_USERFILE_MGR_GETPHOTOASSETSBYKEY_05', 2, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_GETPHOTOASSETSBYKEY_05';
             let fileKey = ImageVideoKey.DATE_MODIFIED;
             await getPhotoAssetsByKey(done, testNum, fileKey);
@@ -268,9 +313,9 @@ export default function fileAssetFileKeyTest(abilityContext) {
          * @tc.desc      : ImageVideoKey.TITLE
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_GETPHOTOASSETSBYKEY_06', 0, async function (done) {
+        it('SUB_USERFILE_MGR_GETPHOTOASSETSBYKEY_06', 2, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_GETPHOTOASSETSBYKEY_06';
             let fileKey = ImageVideoKey.TITLE;
             await getPhotoAssetsByKey(done, testNum, fileKey);
@@ -282,9 +327,9 @@ export default function fileAssetFileKeyTest(abilityContext) {
          * @tc.desc      : ImageVideoKey.DURATION
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_GETPHOTOASSETSBYKEY_07', 0, async function (done) {
+        it('SUB_USERFILE_MGR_GETPHOTOASSETSBYKEY_07', 2, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_GETPHOTOASSETSBYKEY_07';
             let fileKey = ImageVideoKey.DURATION;
             await getPhotoAssetsByKey(done, testNum, fileKey);
@@ -296,9 +341,9 @@ export default function fileAssetFileKeyTest(abilityContext) {
          * @tc.desc      : ImageVideoKey.WIDTH
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_GETPHOTOASSETSBYKEY_08', 0, async function (done) {
+        it('SUB_USERFILE_MGR_GETPHOTOASSETSBYKEY_08', 2, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_GETPHOTOASSETSBYKEY_08';
             let fileKey = ImageVideoKey.WIDTH;
             await getPhotoAssetsByKey(done, testNum, fileKey);
@@ -310,9 +355,9 @@ export default function fileAssetFileKeyTest(abilityContext) {
          * @tc.desc      : ImageVideoKey.HEIGHT
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_GETPHOTOASSETSBYKEY_09', 0, async function (done) {
+        it('SUB_USERFILE_MGR_GETPHOTOASSETSBYKEY_09', 2, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_GETPHOTOASSETSBYKEY_09';
             let fileKey = ImageVideoKey.HEIGHT;
             await getPhotoAssetsByKey(done, testNum, fileKey);
@@ -324,9 +369,9 @@ export default function fileAssetFileKeyTest(abilityContext) {
          * @tc.desc      : ImageVideoKey.DATE_TAKEN
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_GETPHOTOASSETSBYKEY_010', 0, async function (done) {
+        it('SUB_USERFILE_MGR_GETPHOTOASSETSBYKEY_010', 2, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_GETPHOTOASSETSBYKEY_010';
             let fileKey = ImageVideoKey.DATE_TAKEN;
             await getPhotoAssetsByKey(done, testNum, fileKey);
@@ -338,9 +383,9 @@ export default function fileAssetFileKeyTest(abilityContext) {
          * @tc.desc      : ImageVideoKey.ORIENTATION
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_GETPHOTOASSETSBYKEY_011', 0, async function (done) {
+        it('SUB_USERFILE_MGR_GETPHOTOASSETSBYKEY_011', 2, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_GETPHOTOASSETSBYKEY_011';
             let fileKey = ImageVideoKey.ORIENTATION;
             await getPhotoAssetsByKey(done, testNum, fileKey);
@@ -352,9 +397,9 @@ export default function fileAssetFileKeyTest(abilityContext) {
          * @tc.desc      : ImageVideoKey.FAVORITE
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_GETPHOTOASSETSBYKEY_012', 0, async function (done) {
+        it('SUB_USERFILE_MGR_GETPHOTOASSETSBYKEY_012', 2, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_GETPHOTOASSETSBYKEY_012';
             let fileKey = ImageVideoKey.FAVORITE;
             await getPhotoAssetsByKey(done, testNum, fileKey);
@@ -363,114 +408,128 @@ export default function fileAssetFileKeyTest(abilityContext) {
         //----------------------------------------------------------------------------
 
         /**
-         * @tc.number    : SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_02
-         * @tc.name      : AUDIOKEY
-         * @tc.desc      : AUDIOKEY.DISPLAY_NAME
+         * @tc.number    : SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_01
+         * @tc.name      : AudioKey
+         * @tc.desc      : AudioKey.URI
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_02', 0, async function (done) {
+         it('SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_01', 2, async function (done) {
+            let testNum = 'SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_01';
+            let fileKey = AudioKey.URI;
+            await getAudioAssetsByKey(done, testNum, fileKey);
+        });
+
+        /**
+         * @tc.number    : SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_02
+         * @tc.name      : AudioKey
+         * @tc.desc      : AudioKey.DISPLAY_NAME
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+         */
+        it('SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_02', 2, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_02';
-            let fileKey = AUDIOKEY.DISPLAY_NAME;
+            let fileKey = AudioKey.DISPLAY_NAME;
             await getAudioAssetsByKey(done, testNum, fileKey);
         });
 
         /**
          * @tc.number    : SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_03
-         * @tc.name      : AUDIOKEY
-         * @tc.desc      : AUDIOKEY.DATE_ADDED
+         * @tc.name      : AudioKey
+         * @tc.desc      : AudioKey.DATE_ADDED
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_03', 0, async function (done) {
+        it('SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_03', 2, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_03';
-            let fileKey = AUDIOKEY.DATE_ADDED;
+            let fileKey = AudioKey.DATE_ADDED;
             await getAudioAssetsByKey(done, testNum, fileKey);
         });
 
         /**
          * @tc.number    : SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_04
-         * @tc.name      : AUDIOKEY
-         * @tc.desc      : AUDIOKEY.DATE_MODIFIED
+         * @tc.name      : AudioKey
+         * @tc.desc      : AudioKey.DATE_MODIFIED
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_04', 0, async function (done) {
+        it('SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_04', 2, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_04';
-            let fileKey = AUDIOKEY.DATE_MODIFIED;
+            let fileKey = AudioKey.DATE_MODIFIED;
             await getAudioAssetsByKey(done, testNum, fileKey);
         });
 
         /**
          * @tc.number    : SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_05
-         * @tc.name      : AUDIOKEY
-         * @tc.desc      : AUDIOKEY.TITLE
+         * @tc.name      : AudioKey
+         * @tc.desc      : AudioKey.TITLE
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_05', 0, async function (done) {
+        it('SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_05', 2, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_05';
-            let fileKey = AUDIOKEY.TITLE;
+            let fileKey = AudioKey.TITLE;
             await getAudioAssetsByKey(done, testNum, fileKey);
         });
 
         /**
          * @tc.number    : SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_06
-         * @tc.name      : AUDIOKEY
-         * @tc.desc      : AUDIOKEY.ARTIST
+         * @tc.name      : AudioKey
+         * @tc.desc      : AudioKey.ARTIST
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_06', 0, async function (done) {
+        it('SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_06', 2, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_06';
-            let fileKey = AUDIOKEY.ARTIST;
+            let fileKey = AudioKey.ARTIST;
             await getAudioAssetsByKey(done, testNum, fileKey);
         });
 
         /**
          * @tc.number    : SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_07
-         * @tc.name      : AUDIOKEY
-         * @tc.desc      : AUDIOKEY.AUDIOALBUM
+         * @tc.name      : AudioKey
+         * @tc.desc      : AudioKey.AUDIOALBUM
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_07', 0, async function (done) {
+        it('SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_07', 2, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_07';
-            let fileKey = AUDIOKEY.AUDIOALBUM;
+            let fileKey = AudioKey.AUDIOALBUM;
             await getAudioAssetsByKey(done, testNum, fileKey);
         });
 
         /**
          * @tc.number    : SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_08
-         * @tc.name      : AUDIOKEY
-         * @tc.desc      : AUDIOKEY.DURATION
+         * @tc.name      : AudioKey
+         * @tc.desc      : AudioKey.DURATION
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_08', 0, async function (done) {
+        it('SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_08', 2, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_08';
-            let fileKey = AUDIOKEY.DURATION;
+            let fileKey = AudioKey.DURATION;
             await getAudioAssetsByKey(done, testNum, fileKey);
         });
 
         /**
          * @tc.number    : SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_09
-         * @tc.name      : AUDIOKEY
-         * @tc.desc      : AUDIOKEY.FAVORITE
+         * @tc.name      : AudioKey
+         * @tc.desc      : AudioKey.FAVORITE
          * @tc.size      : MEDIUM
          * @tc.type      : Function
-         * @tc.level     : Level 0
+         * @tc.level     : Level 2
          */
-        it('SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_09', 0, async function (done) {
+        it('SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_09', 2, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_GETAUDIOASSETSBYKEY_09';
-            let fileKey = AUDIOKEY.FAVORITE;
+            let fileKey = AudioKey.FAVORITE;
             await getAudioAssetsByKey(done, testNum, fileKey);
         });
     });
