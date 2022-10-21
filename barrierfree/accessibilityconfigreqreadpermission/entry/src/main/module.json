@@ -13,8 +13,8 @@
         "uiSyntax": "ets",
         "pages": "$profile:main_pages",
         "abilities": [{
-            "name": "TestAbility",
-            "srcEntrance": "./ets/TestAbility/TestAbility.ts",
+            "name": "com.example.accessibilityxts.MainAbility",
+            "srcEntrance": "./ets/MainAbility/MainAbility.ts",
             "description": "$string:phone_entry_main",
             "icon": "$media:icon",
             "label": "$string:entry_label",
@@ -29,7 +29,21 @@
                 ]
             }]
         }],
-
+        "extensionAbilities": [
+            {
+                "name": "AccessibilityExtAbility",
+                "srcEntrance": "./ets/AccessibilityExtAbility/AccessibilityExtAbility.ts",
+                "label": "$string:Accessibility_label",
+                "description": "$string:Accessibility_desc",
+                "type": "accessibility",
+                "metadata": [
+                {
+                    "name": "ohos.accessibleability",
+                    "resource": "$profile:accessibility_config"
+                }
+                ],
+                "permissions": ["ohos.permission.GET_BUNDLE_INFO"]
+            }],
         "requestPermissions": [{
             "name": "ohos.permission.READ_ACCESSIBILITY_CONFIG",
             "reason": "need use ohos.permission.READ_ACCESSIBILITY_CONFIG"
