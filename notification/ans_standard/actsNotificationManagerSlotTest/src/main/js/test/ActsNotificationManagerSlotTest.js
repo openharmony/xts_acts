@@ -1207,17 +1207,6 @@ export default function ActsNotificationManagerSlotTest() {
     it('SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_4700', 0, async function (done) {
       console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_4700 START')
 
-//      await notificationManager.addSlot(notificationManager.SlotType.UNKNOWN_TYPE, (err) => {
-//        if (err) {
-//          console.info(`${TAG} addSlot UNKNOWN_TYPE err: + ${err}`)
-//          expect(false).assertTrue()
-//          done()
-//        } else {
-//          console.info(`${TAG} addSlot UNKNOWN_TYPE success`)
-//          expect(true).assertTrue()
-//        }
-//      })
-
       await notificationManager.addSlot(notificationManager.SlotType.SOCIAL_COMMUNICATION, (err) => {
         if (err) {
           console.info(`${TAG} addSlot SOCIAL_COMMUNICATION err: + ${err}`)
@@ -1287,17 +1276,6 @@ export default function ActsNotificationManagerSlotTest() {
      */
     it('SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_4800', 0, async function (done) {
       console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_SLOT_TEST_4800 START')
-
-      //      await notificationManager.addSlot(notificationManager.SlotType.UNKNOWN_TYPE, (err) => {
-      //        if (err) {
-      //          console.info(`${TAG} addSlot UNKNOWN_TYPE err: + ${err}`)
-      //          expect(false).assertTrue()
-      //          done()
-      //        } else {
-      //          console.info(`${TAG} addSlot UNKNOWN_TYPE success`)
-      //          expect(true).assertTrue()
-      //        }
-      //      })
 
       await notificationManager.addSlot(notificationManager.SlotType.SOCIAL_COMMUNICATION, (err) => {
         if (err) {
