@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-// import fileIO from '@ohos.file.fs';
+
 import {
   fileio, fileIO, FILE_CONTENT, prepareFile, nextFileName, isIntNum,
   describe, it, expect,
@@ -184,7 +184,7 @@ import {
   /**
    * @tc.number SUB_DF_FILEIO_READ_ASYNC_0000
    * @tc.name fileIO_test_read_async_000
-   * @tc.desc Test readAsync() interfaces.
+   * @tc.desc Test read() interfaces.
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 0
@@ -211,7 +211,7 @@ import {
   /**
    * @tc.number SUB_DF_FILEIO_READ_ASYNC_0010
    * @tc.name fileIO_test_read_async_001
-   * @tc.desc Test readAsync() interfaces.
+   * @tc.desc Test read() interfaces.
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 0
@@ -239,7 +239,7 @@ import {
   /**
    * @tc.number SUB_DF_FILEIO_READ_ASYNC_0020
    * @tc.name fileIO_test_read_async_002
-   * @tc.desc Test readAsync() interfaces.
+   * @tc.desc Test read() interfaces.
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 0
@@ -266,7 +266,7 @@ import {
   /**
    * @tc.number SUB_DF_FILEIO_READ_ASYNC_0030
    * @tc.name fileIO_test_read_async_003
-   * @tc.desc Test readAsync() interfaces.
+   * @tc.desc Test read() interfaces.
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 0
@@ -295,7 +295,7 @@ import {
   /**
    * @tc.number SUB_DF_FILEIO_READ_ASYNC_0040
    * @tc.name fileIO_test_read_async_004
-   * @tc.desc Test readAsync() interface.
+   * @tc.desc Test read() interface.
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 0
@@ -324,7 +324,7 @@ import {
   /**
    * @tc.number SUB_DF_FILEIO_READ_ASYNC_0050
    * @tc.name fileIO_test_read_async_005
-   * @tc.desc Test readAsync() interfaces.
+   * @tc.desc Test read() interfaces.
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 0
@@ -353,7 +353,7 @@ import {
   /**
    * @tc.number SUB_DF_FILEIO_READ_ASYNC_0060
    * @tc.name fileIO_test_read_async_006
-   * @tc.desc Test readAsync() interfaces.
+   * @tc.desc Test read() interfaces.
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 0
@@ -369,6 +369,5 @@ import {
       done();
     }
   });
-
 });
 }

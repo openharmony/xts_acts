@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-// import fileIO from '@ohos.file.fs';
+
 import {
   fileio, fileIO, FILE_CONTENT, prepareFile, nextFileName, isIntNum,
   describe, it, expect,
@@ -24,7 +24,7 @@ import {
   /**
    * @tc.number SUB_DF_FILEIO_TRUNCATE_ASYNC_0000
    * @tc.name fileIO_truncate_async_000
-   * @tc.desc Test the truncateAsync() interface that receives the fpath parameter.
+   * @tc.desc Test the truncate() interface that receives the fpath parameter.
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 0
@@ -53,7 +53,7 @@ import {
   /**
    * @tc.number SUB_DF_FILEIO_TRUNCATE_ASYNC_0010
    * @tc.name fileIO_truncate_async_001
-   * @tc.desc Test the truncateAsync() interface that receives the fd parameter.
+   * @tc.desc Test the truncate() interface that receives the fd parameter.
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 0
@@ -83,7 +83,7 @@ import {
   /**
    * @tc.number SUB_DF_FILEIO_TRUNCATE_ASYNC_0020
    * @tc.name fileIO_truncate_async_002
-   * @tc.desc Test the truncateAsync() interface that receives the fpath parameter.
+   * @tc.desc Test the truncate() interface that receives the fpath parameter.
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 0
@@ -119,7 +119,7 @@ import {
   /**
    * @tc.number SUB_DF_FILEIO_TRUNCATE_ASYNC_0030
    * @tc.name fileIO_truncate_async_003
-   * @tc.desc Test the truncateAsync() interface that receives the fd parameter.
+   * @tc.desc Test the truncate() interface that receives the fd parameter.
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 0
@@ -154,7 +154,7 @@ import {
   /**
    * @tc.number SUB_DF_FILEIO_TRUNCATE_ASYNC_0040
    * @tc.name fileIO_truncate_async_004
-   * @tc.desc Test the truncateAsync() interface that receives the fpath parameter.
+   * @tc.desc Test the truncate() interface that receives the fpath parameter.
    * @tc.size MEDIUM
    * @tc.type Functoin
    * @tc.level Level 0
@@ -200,7 +200,7 @@ import {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_TRUNCATE_SYNC_0000
+   * @tc.number SUB_DF_FILEIO_TRUNCATE_SYNC_0010
    * @tc.name fileIO_test_truncate_sync_001
    * @tc.desc Test the truncateSync() interface that receives the fd parameter.
    * @tc.size MEDIUM
@@ -228,7 +228,7 @@ import {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_TRUNCATE_SYNC_0010
+   * @tc.number SUB_DF_FILEIO_TRUNCATE_SYNC_0020
    * @tc.name fileIO_test_truncate_sync_002
    * @tc.desc Test the truncateSync() interface that receives the fpath parameter.
    * @tc.size MEDIUM
@@ -249,7 +249,7 @@ import {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_TRUNCATE_SYNC_0010
+   * @tc.number SUB_DF_FILEIO_TRUNCATE_SYNC_0030
    * @tc.name fileIO_test_truncate_sync_003
    * @tc.desc Test the truncateSync() interface that receives the fd parameter.
    * @tc.size MEDIUM
@@ -276,7 +276,7 @@ import {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_TRUNCATE_SYNC_0020
+   * @tc.number SUB_DF_FILEIO_TRUNCATE_SYNC_0040
    * @tc.name fileIO_test_truncate_sync_004
    * @tc.desc Test truncateSync() interfaces.
    * @tc.size MEDIUM
@@ -294,8 +294,8 @@ import {
   });
 
   /**
-   * @tc.number SUB_DF_FILEIO_TRUNCATE_SYNC_0020
-   * @tc.name fileio_test_truncate_sync_v9_005
+   * @tc.number SUB_DF_FILEIO_TRUNCATE_SYNC_0050
+   * @tc.name fileio_test_truncate_sync_005
    * @tc.desc Test truncateSync() interfaces.
    * @tc.size MEDIUM
    * @tc.type Functoin
@@ -312,7 +312,6 @@ import {
       expect(!!e).assertTrue();
     }
   });
-
 });
 }
 
