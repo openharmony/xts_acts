@@ -34,7 +34,7 @@ let options = {
     protocols: [socket.Protocol.TLSv12, socket.Protocol.TLSv13],
     useRemoteCipherPrefer: true,
     signatureAlgorithms: "rsa_pss_rsae_sha256:ECDSA+SHA256",
-    cipherSuites: "AES256-SHA256"
+    cipherSuite: "AES256-SHA256"
   },
 }
 
@@ -88,7 +88,7 @@ export default function networkManagerSocketTest() {
         expect(options.secureOptions.protocols[1] == "TLSv1.3").assertEqual(true);
         expect(options.secureOptions.useRemoteCipherPrefer != undefined).assertEqual(true);
         expect(options.secureOptions.signatureAlgorithms != undefined).assertEqual(true);
-        expect(options.secureOptions.cipherSuites != undefined).assertEqual(true);
+        expect(options.secureOptions.cipherSuite != undefined).assertEqual(true);
         expect(socket.X509CertRawData == undefined).assertEqual(true);
         if (err == undefined) {
           expect().assertFail();
