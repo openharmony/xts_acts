@@ -15,6 +15,7 @@
 
 
 #include <hctest.h>
+#include <unistd.h>
 
 #include "hks_derive_test.h"
 

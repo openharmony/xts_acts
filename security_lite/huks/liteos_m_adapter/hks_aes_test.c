@@ -17,9 +17,12 @@
 
 #include "hks_api.h"
 #include "hks_param.h"
+#include "hks_test_aes.h"
 #include "securec.h"
 #include "cmsis_os2.h"
 #include "ohos_types.h"
+
+#include <unistd.h>
 
 #define TEST_TASK_STACK_SIZE      0x2000
 #define WAIT_TO_TEST_DONE         4

@@ -16,6 +16,7 @@
 #ifndef _CUT_AUTHENTICATE_
 
 #include <hctest.h>
+#include <unistd.h>
 
 #include "hks_api.h"
 #include "hks_param.h"
