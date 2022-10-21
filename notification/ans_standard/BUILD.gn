@@ -18,6 +18,7 @@ group("ans_standard") {
     deps = [
       "actsNotificationDistributedTest:ActsNotificationDistributedTest",
       "actsNotificationPublishTest:ActsNotificationPublishTest",
+      "actsNotificationSecondaryDirectory:ActsNotificationSecondaryDirectory",
       "actsNotificationShowTest:ActsNotificationShowTest",
       "actsNotificationSlotTest:ActsNotificationSlotTest",
       "actsNotificationWantAgentTest:ActsNotificationWantAgentTest",
