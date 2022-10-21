@@ -100,7 +100,8 @@
           "pages/search",
           "pages/scrollBar",
           "pages/ohosRouterA",
-          "pages/ohosRouterB"
+          "pages/ohosRouterB",
+          "pages/WaterflowDemo"
         ],
         "name": ".MainAbility",
         "window": {

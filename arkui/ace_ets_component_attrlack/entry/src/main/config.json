@@ -115,7 +115,8 @@
           "pages/responseType",
           "pages/hoverEffect",
           "pages/hitTestMode",
-          "pages/color"
+          "pages/color",
+		  "pages/navigation_lack"
         ],
         "name": ".MainAbility",
         "window": {

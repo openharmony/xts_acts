@@ -21,6 +21,8 @@ const TAG = 'ets_apiLack_add';
 @Component
 export default
 struct LoadingProgressCircular {
+  @State circular:LoadingProgressStyle = LoadingProgressStyle.Circular;
+  @State orbital:LoadingProgressStyle = LoadingProgressStyle.Orbital;
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear LoadingProgressCircular start`)
   }
@@ -63,6 +65,7 @@ struct LoadingProgressCircular {
       Text('Orbital LoadingProgress ').fontSize(9).fontColor(0xCCCCCC).width('100%')
       LoadingProgress()
         .color(Color.Blue)
+
     }.width("100%").height("100%")
   }
 }
