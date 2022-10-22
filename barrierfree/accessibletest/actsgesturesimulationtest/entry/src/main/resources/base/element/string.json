@@ -1,0 +1,24 @@
+{
+  "string": [
+    {
+      "name": "entry_desc",
+      "value": "GestureSimulationTest entry"
+    },
+    {
+      "name": "MainAbility_desc",
+      "value": "GestureSimulationTest MainAbility"
+    },
+    {
+      "name": "MainAbility_label",
+      "value": "GestureSimulationTest"
+    },
+    {
+      "name": "description_serviceability",
+      "value": "Gesture后台服务"
+    },
+    {
+      "name": "form_description",
+      "value": "Gesture辅助应用"
+    }
+  ]
+}
