@@ -19,6 +19,7 @@ group("actsaccessibletest") {
     deps = [
       "actsabilitylisttest:ActsAbilityListTest",
       "actscaptionconfigurationtest:ActsCaptionConfigurationTest",
+      "actsgesturesimulationtest:ActsGestureSimulationTest",
       "sceneProject/accessibilityAudibleAbility:accessibilityAudibleAbility",
       "sceneProject/accessibilityGenericAbility:accessibilityGenericAbility",
       "sceneProject/accessibilityHapticAbility:accessibilityHapticAbility",
