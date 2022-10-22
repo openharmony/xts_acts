@@ -390,33 +390,6 @@ export default function CaptionConfigurationTest() {
     });
 
     /**
-    * @tc.number: CaptionConfiguration_0120
-    * @tc.name: Call api:getcaptionsmanager() to set the caption parameter.
-    * @tc.desc: Call api:getcaptionsmanager() to set the caption parameter.
-    */
-    it('CaptionConfiguration_0120', 1, async function (done) {
-      const caseName = "CaptionConfiguration_0120";
-      const logF = LOG + caseName;
-      registerOn = false;
-      setTimeout(() => {
-        CaptionConfigurationOn(caseName, undefined);
-      }, 1000);
-      setTimeout(() => {
-        excuteCase(caseName);
-      }, 2000);
-      setTimeout(() => {
-        var isSucceedTarget: boolean = false;
-        if (backList.indexOf(caseName + '_on_target_change_extra_success') != -1) {
-          isSucceedTarget = true;
-        }
-        expect(isSucceedTarget).assertEqual(true);
-        expect(registerOn).assertEqual(false);
-        console.info(logF + ' isSucceed : ' + (isSucceedTarget));
-        done();
-      }, 8000);
-    });
-
-    /**
     * @tc.number: CaptionConfiguration_0130
     * @tc.name: Call api:getcaptionsmanager() to set the caption parameter.
     * @tc.desc: Call api:getcaptionsmanager() to set the caption parameter.
