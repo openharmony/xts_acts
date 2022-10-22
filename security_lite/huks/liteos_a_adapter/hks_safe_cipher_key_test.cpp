@@ -22,7 +22,6 @@
 #include "hks_test_curve25519.h"
 #include "hks_test_file_operator.h"
 #include "hks_test_mem.h"
-#include <stdlib.h>
 
 #include "securec.h"
 
