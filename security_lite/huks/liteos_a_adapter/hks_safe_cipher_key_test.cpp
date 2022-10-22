@@ -22,6 +22,7 @@
 #include "hks_test_curve25519.h"
 #include "hks_test_file_operator.h"
 #include "hks_test_mem.h"
+#include <stdlib.h>
 
 #include "securec.h"
 
@@ -85,8 +86,8 @@ HWTEST_F(HksSafeCipherKeyTest, HksSafeCipherKeyTest001, TestSize.Level1)
 
     struct HksBlob X25519PubKey1 = { .size = HKS_CURVE25519_KEY_SIZE_256, .data = nullptr};
     struct HksBlob X25519PubKey2 = { .size = HKS_CURVE25519_KEY_SIZE_256, .data = nullptr};
-    X25519PubKey1.data = (uint8_t *)HksMalloc(X25519PubKey1.size);
-    X25519PubKey2.data = (uint8_t *)HksMalloc(X25519PubKey2.size);
+    X25519PubKey1.data = (uint8_t *)malloc(X25519PubKey1.size);
+    X25519PubKey2.data = (uint8_t *)malloc(X25519PubKey2.size);
 
     ret = HksExportPublicKey(&newAliasOne, null, &X25519PubKey1);
     EXPECT_EQ(ret, 0)<<"export alies1 fail";
