@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 import sensor from '@system.sensor'
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestType, Size, Level } from '@ohos/hypium'
 
 export default function SensorJsTest_sensor_28() {
@@ -49,66 +50,52 @@ describe("SensorJsTest_sensor_28", function () {
         console.info('afterEach caled')
     })
 
-    let errMessages = ['The number of parameters is not valid', 'UnsubscribeSensor failed',
-    'Wrong argument type, should be object'];
-
-    let errMessage;
-
-     /*
+    /*
      * @tc.number:SUB_SensorsSystem_SubscribeCompass_JSTest_0010
      * @tc.name: subscribeCompass_SensorJsTest001
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeCompass_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, function (done) {
+    it("subscribeCompass_SensorJsTest001", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         console.info('----------------------subscribeCompass_SensorJsTest001---------------------------');
         sensor.subscribeCompass({
+            interval: 'game',
             success: function (data) {
-                console.info("subscribeCompass_SensorJsTest001 success:" + JSON.stringify(data));
-                expect(typeof (data.direction)).assertEqual("number");
+                console.info("subscribeCompass_SensorJsTest001 success" + JSON.stringify(data));
+				expect(typeof (data.direction)).assertEqual("number");
             },
             fail: function (data, code) {
-                console.error('subscribeCompass_SensorJsTest001 failed. Code: ' + code + '; Data: ' + data);
-                expect(false).assertTrue();
+                console.log("subscribeCompass_SensorJsTest001 is failed, data: " + data + ", code: " + code);
+                expect(data).assertEqual('subscribe fail');
+                expect(code).assertEqual(1001);
+				done()
             },
         });
         setTimeout(() => {
-            try {
-                sensor.unsubscribeCompass();
-            } catch (error) {
-                console.info('subscribeCompass_SensorJsTest001_unsubscribeCompass error' + error);
-                expect(false).assertTrue();
-            }
-            setTimeout(() => {
-                expect(true).assertTrue();
-                done();
-            }, 500);
+            sensor.unsubscribeCompass();
+            done();
         }, 1000);
     })
 
-    /*
+   /*
      * @tc.number:SUB_SensorsSystem_SubscribeCompass_JSTest_0020
      * @tc.name: subscribeCompass_SensorJsTest002
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeCompass_SensorJsTest002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
+    it("subscribeCompass_SensorJsTest002", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------subscribeCompass_SensorJsTest002---------------------------');
-        try {
-            sensor.subscribeCompass({
-                success: function (data) {
-                    console.info("subscribeCompass_SensorJsTest002 success:" + JSON.stringify(data));
-                    expect(typeof (data.direction)).assertEqual("number");
-                },
-                fail: function (data, code) {
-                    console.error('subscribeCompass_SensorJsTest002 failed. Code: ' + code + '; Data: ' + data);
-                    expect(false).assertTrue();
-                },
-            }, 25);
-        } catch (error) {
-            errMessage = error.toString().slice(19, 56);
-            console.info('subscribeCompass_SensorJsTest002 error:' + error);
-            expect(errMessage).assertEqual(errMessages[0]);
-            done();
-        }
+        sensor.subscribeCompass({
+            interval: 'ui',
+            success: function (data) {
+                console.info("subscribeCompass_SensorJsTest002 success" + JSON.stringify(data));
+				expect(typeof (data.direction)).assertEqual("number");
+            },
+            fail: function (data, code) {
+                console.log("subscribeCompass_SensorJsTest002 is failed, data: " + data + ", code: " + code);
+                expect(data).assertEqual('subscribe fail');
+                expect(code).assertEqual(1001);
+				done()
+            },
+        });
     })
 
     /*
@@ -116,26 +103,21 @@ describe("SensorJsTest_sensor_28", function () {
      * @tc.name: subscribeCompass_SensorJsTest003
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeCompass_SensorJsTest003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
+    it("subscribeCompass_SensorJsTest003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------subscribeCompass_SensorJsTest003---------------------------');
         sensor.subscribeCompass({
+            interval: 'normal',
             success: function (data) {
-                console.info("subscribeCompass_SensorJsTest003 success:" + JSON.stringify(data));
-                expect(typeof (data.direction)).assertEqual("number");
+                console.info("subscribeCompass_SensorJsTest003 success" + JSON.stringify(data));
+				expect(typeof (data.direction)).assertEqual("number");
+            },
+            fail: function (data, code) {
+                console.log("subscribeCompass_SensorJsTest003 is failed, data: " + data + ", code: " + code);
+                expect(data).assertEqual('subscribe fail');
+                expect(code).assertEqual(1001);
+				done()
             },
         });
-        setTimeout(() => {
-            try {
-                sensor.unsubscribeCompass();
-            } catch (error) {
-                console.info('subscribeCompass_SensorJsTest003_unsubscribeLight error' + error);
-                expect(false).assertTrue();
-            }
-            setTimeout(() => {
-                expect(true).assertTrue();
-                done();
-            }, 500);
-        }, 1000);
     })
 
     /*
@@ -143,26 +125,35 @@ describe("SensorJsTest_sensor_28", function () {
      * @tc.name: subscribeCompass_SensorJsTest004
      * @tc.desc:Verification results of the incorrect parameters of the test interface.
      */
-    it("subscribeCompass_SensorJsTest004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
+    it("subscribeCompass_SensorJsTest004", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------subscribeCompass_SensorJsTest004---------------------------');
-        try {
-            sensor.subscribeCompass({
-                success: function (data) {
-                    console.info("subscribeCompass_SensorJsTest004 success:" + JSON.stringify(data));
-                    expect(typeof (data.direction)).assertEqual("number");
-                },
-                fail: function (data, code) {
-                    console.error('subscribeCompass_SensorJsTest004 failed. Code: ' + code + '; Data: ' + data);
-                    expect(false).assertTrue();
-                },
-            }, function () {
-            }, 25);
-        } catch (error) {
-            errMessage = error.toString().slice(19, 56);
-            console.info('subscribeCompass_SensorJsTest004 error:' + error);
-            expect(errMessage).assertEqual(errMessages[0]);
-            done();
-        }
+        sensor.subscribeCompass({
+            interval: 'normal',
+            success: function (data) {
+                console.info("subscribeCompass_SensorJsTest004 success" + JSON.stringify(data));
+				expect(typeof (data.direction)).assertEqual("number");
+            },
+            fail: function (data, code) {
+                console.log("subscribeCompass_SensorJsTest004 is failed, data: " + data + ", code: " + code);
+                expect(data).assertEqual('subscribe fail');
+                expect(code).assertEqual(1001);
+            },
+        });
+
+        sensor.subscribeCompass({
+            interval: 'normal',
+            success: function (data) {
+                console.info("subscribeCompass_SensorJsTest004_1 success" + JSON.stringify(data));
+				expect(typeof (data.direction)).assertEqual("number");
+				done()
+            },
+            fail: function (data, code) {
+                console.log("subscribeCompass_SensorJsTest004_1 is failed, data: " + data + ", code: " + code);
+                expect(data).assertEqual('subscribe fail');
+                expect(code).assertEqual(1001);
+				done()
+            },
+        });
     })
 
     /*
@@ -172,14 +163,19 @@ describe("SensorJsTest_sensor_28", function () {
      */
     it("subscribeCompass_SensorJsTest005", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------subscribeCompass_SensorJsTest005---------------------------');
-        try {
-            sensor.unsubscribeCompass('xxx');
-        } catch (error) {
-            errMessage = error.toString().slice(21, 58);
-            console.info('subscribeCompass_SensorJsTest005 error:' + error);
-            expect(errMessage).assertEqual(errMessages[0]);
-            done();
-        }
+        sensor.subscribeCompass({
+            interval: 'xxx',
+            success: function (data) {
+                console.info("subscribeCompass_SensorJsTest005 success" + JSON.stringify(data));
+				expect(typeof (data.direction)).assertEqual("number");
+            },
+            fail: function (data, code) {
+                console.log("subscribeCompass_SensorJsTest005 is failed, data: " + data + ", code: " + code);
+                expect(data).assertEqual('subscribe fail');
+                expect(code).assertEqual(1001);
+				done()
+            },
+        });
     })
 
     /*
@@ -189,118 +185,19 @@ describe("SensorJsTest_sensor_28", function () {
      */
     it("subscribeCompass_SensorJsTest006", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------subscribeCompass_SensorJsTest006---------------------------');
-        try {
-            sensor.subscribeCompass();
-        } catch (error) {
-            errMessage = error.toString().slice(19, 56);
-            console.info('subscribeCompass_SensorJsTest006 error:' + error);
-            expect(errMessage).assertEqual(errMessages[0]);
-            done();
-        }
-    })
-
-    /*
-     * @tc.number:SUB_SensorsSystem_SubscribeCompass_JSTest_0070
-     * @tc.name: subscribeCompass_SensorJsTest007
-     * @tc.desc:Verification results of the incorrect parameters of the test interface.
-     */
-    it("subscribeCompass_SensorJsTest007", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------subscribeCompass_SensorJsTest007---------------------------');
-        try {
-            sensor.subscribeCompass('xxx');
-        } catch (error) {
-            errMessage = error.toString().slice(19, 56);
-            console.info('subscribeCompass_SensorJsTest007 error:' + error);
-            expect(errMessage).assertEqual(errMessages[2]);
-            done();
-        }
-    })
-
-    /*
-     * @tc.number:SUB_SensorsSystem_SubscribeCompass_JSTest_0080
-     * @tc.name: subscribeCompass_SensorJsTest008
-     * @tc.desc:Verification results of the incorrect parameters of the test interface.
-     */
-    it("subscribeCompass_SensorJsTest008", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
-        console.info('----------------------subscribeCompass_SensorJsTest008---------------------------');
         sensor.subscribeCompass({
+            interval: 'normal',
             success: function (data) {
-                console.info("subscribeCompass_SensorJsTest008 success:" + JSON.stringify(data));
-                expect(typeof (data.direction)).assertEqual("number");
-            },
-            fail: function (data, code) {
-                console.error('subscribeCompass_SensorJsTest008 failed. Code: ' + code + '; Data: ' + data);
-                expect(false).assertTrue();
-            },
-        });
-        sensor.subscribeCompass({
-            success: function (data) {
-                console.info("subscribeCompass_SensorJsTest008_1 success:" + JSON.stringify(data));
-                expect(typeof (data.direction)).assertEqual("number");
-            },
-            fail: function (data, code) {
-                console.error('subscribeCompass_SensorJsTest008_1 failed. Code: ' + code + '; Data: ' + data);
-                expect(false).assertTrue();
-            },
-        });
-        setTimeout(() => {
-            try {
-                sensor.unsubscribeCompass();
-            } catch (error) {
-                console.info('subscribeCompass_SensorJsTest008_unsubscribeCompass error' + error);
-                expect(false).assertTrue();
-            }
-            setTimeout(() => {
-                expect(true).assertTrue();
+                console.info("subscribeCompass_SensorJsTest006 success" + JSON.stringify(data));
+				expect(typeof (data.direction)).assertEqual("number");
                 done();
-            }, 500);
-        }, 1000);
-    })
-
-    /*
-     * @tc.number:SUB_SensorsSystem_SubscribeCompass_JSTest_0090
-     * @tc.name: subscribeCompass_SensorJsTest009
-     * @tc.desc:Verification results of the incorrect parameters of the test interface.
-     */
-    it("subscribeCompass_SensorJsTest009", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('----------------------subscribeCompass_SensorJsTest009---------------------------');
-        try {
-            sensor.unsubscribeCompass();
-        } catch (error) {
-            errMessage = error.toString().slice(21, 45);
-            console.info('subscribeCompass_SensorJsTest009 error:' + error);
-            expect(errMessage).assertEqual(errMessages[1]);
-            done();
-        }
-    })
-
-    /*
-     * @tc.number:SUB_SensorsSystem_SubscribeCompass_JSTest_0100
-     * @tc.name: subscribeCompass_SensorJsTest010
-     * @tc.desc:Verification results of the incorrect parameters of the test interface.
-     */
-    it("subscribeCompass_SensorJsTest010", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
-        console.info('----------------------subscribeCompass_SensorJsTest010---------------------------');
-        sensor.subscribeCompass({
-            success: function (data) {
-                console.info("subscribeCompass_SensorJsTest010 success:" + JSON.stringify(data));
-                expect(typeof (data.direction)).assertEqual("number");
             },
             fail: function (data, code) {
-                console.error('subscribeCompass_SensorJsTest010 failed. Code: ' + code + '; Data: ' + data);
-                expect(false).assertTrue();
+                console.log("subscribeCompass_SensorJsTest006 is failed, data: " + data + ", code: " + code);
+                expect(data).assertEqual('subscribe fail');
+                expect(code).assertEqual(1001);
+				done()
             },
         });
-        try {
-            sensor.unsubscribeCompass();
-        } catch (error) {
-            console.info('subscribeLight_SensorJsTest010_unsubscribeLight error' + error);
-        }
-        setTimeout(() => {
-            expect(true).assertTrue();
-            done();
-        }, 500);
     })
-})
-
-    }
+})}
