@@ -89,16 +89,16 @@ HWTEST_F(HksSafeCipherKeyTest, HksSafeCipherKeyTest001, TestSize.Level1)
     X25519PubKey1.data = (uint8_t *)malloc(X25519PubKey1.size);
     X25519PubKey2.data = (uint8_t *)malloc(X25519PubKey2.size);
 
-    ret = HksExportPublicKey(&newAliasOne, null, &X25519PubKey1);
+    ret = HksExportPublicKey(&newAliasOne, nullptr, &X25519PubKey1);
     EXPECT_EQ(ret, 0)<<"export alies1 fail";
-    ret = HksExportPublicKey(&newAliasTwo, null, &X25519PubKey1);
+    ret = HksExportPublicKey(&newAliasTwo, nullptr, &X25519PubKey2);
     EXPECT_EQ(ret, 0)<<"export alies2 fail";
     ret = memcmp(X25519PubKey1.data, X25519PubKey2.data, HKS_CURVE25519_KEY_SIZE_256);
     EXPECT_NE(ret, 0);
 
-    ret = HksDeleteKey(&newAliasOne, NULL);
+    ret = HksDeleteKey(&newAliasOne, nullptr);
     EXPECT_EQ(ret, 0);
-    ret = HksDeleteKey(&newAliasTwo, NULL);
+    ret = HksDeleteKey(&newAliasTwo, nullptr);
     EXPECT_EQ(ret, 0);
 }
 #endif /* _CUT_AUTHENTICATE_ */
