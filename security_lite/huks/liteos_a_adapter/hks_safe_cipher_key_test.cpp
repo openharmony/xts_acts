@@ -81,7 +81,7 @@ HWTEST_F(HksSafeCipherKeyTest, HksSafeCipherKeyTest001, TestSize.Level1)
 
     struct HksBlob newAliasTwo = { strlen("test_ed25519_2"), (uint8_t *)"test_ed25519_2" };
     ret = TestImportEd25519(newAliasTwo, &pubKeyInfo);
-    EXPECT_EQ(ret, 0);    
+    EXPECT_EQ(ret, 0);
 
     struct HksBlob X25519PubKey1 = { .size = HKS_CURVE25519_KEY_SIZE_256, .data = nullptr};
     struct HksBlob X25519PubKey2 = { .size = HKS_CURVE25519_KEY_SIZE_256, .data = nullptr};
