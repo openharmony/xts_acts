@@ -58,24 +58,24 @@ struct OhosRouterA {
         .margin({top: 20})
         .onClick(() => {
           try {
-            routery.pushUrl({
-              url: 'pages/routerpage2',
-              params: {
-                data1: 'message',
-                data2: {
-                  data3: [123, 456, 789]
-                },
-              },
-            }, (err) => {
-              if (err) {
-                console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
-                return;
-              }
-              console.info('pushUrl success');
-            });
-          } catch (error) {
-            console.error(`pushUrl args error code is ${error.code}, message is ${error.message}`);
-          };
+			  routery.pushUrl({
+				url: 'pages/routerpage2',
+				params: {
+				  data1: 'message',
+				  data2: {
+					data3: [123, 456, 789]
+				  },
+				},
+			  })
+				.then(() => {
+				  // success
+				})
+				.catch(err => {
+				  console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
+				})
+			} catch (error) {
+			  console.error(`pushUrl args error code is ${error.code}, message is ${error.message}`);
+			};
         });
       Button('pushUrl')
       .key('pushButtonA1')
@@ -84,48 +84,48 @@ struct OhosRouterA {
       .margin({top: 20})
       .onClick(() => {
         try {
-          routery.pushUrl({
-            url: 'pages/routerpage2',
-            params: {
-              data1: 'message',
-              data2: {
-                data3: [123, 456, 789]
-              },
-            },
-          }, (err) => {
-            if (err) {
-              console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
-              return;
-            }
-            console.info('pushUrl success');
-          });
-        } catch (error) {
-          console.error(`pushUrl args error code is ${error.code}, message is ${error.message}`);
-        };
+		  routery.pushUrl({
+			url: 'pages/routerpage2',
+			params: {
+			  data1: 'message',
+			  data2: {
+				data3: [123, 456, 789]
+			  },
+			},
+		  }, routery.RouterMode.Standard)
+			.then(() => {
+			  // success
+			})
+			.catch(err => {
+			  console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
+			})
+		} catch (error) {
+		  console.error(`pushUrl args error code is ${error.code}, message is ${error.message}`);
+		};
       });
 
-      Button('replaceUrl')
-      .key('pushButtonA1')
+      Button('replaceUr2')
+      .key('pushButtonA2')
       .backgroundColor('#FF0B8FE2')
       .fontSize(20)
       .margin({top: 20})
       .onClick(() => {
         try {
-          routery.replaceUrl({
-            url: 'pages/detail',
-            params: {
-              data1: 'message',
-            },
-          }, routery.RouterMode.Standard, (err) => {
-            if (err) {
-              console.error(`replaceUrl failed, code is ${err.code}, message is ${err.message}`);
-              return;
-            }
-            console.info('replaceUrl success');
-          });
-        } catch (error) {
-          console.error(`replaceUrl args error code is ${error.code}, message is ${error.message}`);
-        };
+		  routery.replaceUrl({
+			url: 'pages/detail',
+			params: {
+			  data1: 'message',
+			},
+		  }, routery.RouterMode.Standard)
+			.then(() => {
+			  // success
+			})
+			.catch(err => {
+			  console.error(`replaceUrl failed, code is ${err.code}, message is ${err.message}`);
+			})
+		} catch (error) {
+		  console.error(`replaceUrl args error code is ${error.code}, message is ${error.message}`);
+		};
       });
       Button('replaceUrl')
       .key('pushButtonA1')
@@ -134,21 +134,21 @@ struct OhosRouterA {
       .margin({top: 20})
       .onClick(() => {
         try {
-          routery.replaceUrl({
-            url: 'pages/detail',
-            params: {
-              data1: 'message',
-            },
-          }, (err) => {
-            if (err) {
-              console.error(`replaceUrl failed, code is ${err.code}, message is ${err.message}`);
-              return;
-            }
-            console.info('replaceUrl success');
-          });
-        } catch (error) {
-          console.error(`replaceUrl args error code is ${error.code}, message is ${error.message}`);
-        };
+		  routery.replaceUrl({
+			url: 'pages/detail',
+			params: {
+			  data1: 'message',
+			},
+		  })
+			.then(() => {
+			  // success
+			})
+			.catch(err => {
+			  console.info(`replaceUrl failed, code is ${err.code}, message is ${err.message}`);
+			})
+		} catch (error) {
+		  console.info(`replaceUrl args error code is ${error.code}, message is ${error.message}`);
+		};
         });
 
       Button('clear')

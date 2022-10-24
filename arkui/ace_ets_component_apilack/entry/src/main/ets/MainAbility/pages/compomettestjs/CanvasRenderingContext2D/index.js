@@ -398,6 +398,31 @@
          ctx.rotateZ(10);
          ctx.fillRect(10, 10, 30, 30);
      },
+	 functionTouch30() {
+         const el =this.$refs.function15;
+         const ctx = el.getContext('2d');
+         ctx.fillRect(10, 10, 30, 30);
+         ctx.rotateZ(10);
+         ctx.fillRect(10, 10, 30, 30);
+     },
+	 functionTouch31() { 
+		 let mat = new Matix2D();
+		 mat.multiply();
+		 let stack = new StackAttribute();
+		 stack.alignContent();
+         const el =this.$refs.function15;
+         const ctx = el.getContext('2d');
+         ctx.fillRect(10, 10, 30, 30);
+         ctx.multiply();
+         ctx.fillRect(10, 10, 30, 30);
+     },
+	 functionTouch32() {
+        const el =this.$refs.function15;
+        const ctx = el.getContext('2d');
+        ctx.fillRect(10, 10, 30, 30);
+        ctx.translateZ(50);
+        ctx.fillRect(10, 10, 30, 30);
+    },
 
 
  }
