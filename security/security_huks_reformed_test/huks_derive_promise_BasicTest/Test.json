@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsHuksDeriveBasicPromiseJSApiTest.hap"
+                "ActsHuksDeriveBasicPromiseJSApiTestReform.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
