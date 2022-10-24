@@ -14,6 +14,7 @@
  */
 import hidebug from '@ohos.hidebug'
 import fileio from '@ohos.fileio'
+import process from '@ohos.process'
 import featureAbility from '@ohos.ability.featureAbility'
 import {describe, it, expect} from '@ohos/hypium'
 
@@ -408,6 +409,91 @@ describe('HidebugJsTest', function () {
         })
         console.log('************* DFX_DFR_Hiprofiler_Interface_1000 Test end*************');
     });
-    
+
+    /*
+     * @tc.number    : DFX_DFR_Hiprofiler_Interface_1800
+     * @tc.name      : startJsCpuProfiling/stopJsCpuProfiling with normal parameter
+     * @tc.desc      : startJsCpuProfiling/stopJsCpuProfiling
+     */
+     it('DFX_DFR_Hiprofiler_Interface_1800', 0, function() {
+        console.log('************* DFX_DFR_Hiprofiler_Interface_1800 Test start*************');
+        try {
+            let timestamp = Date.now();
+            let filename = "cpuprofiler_" + timestamp.toString();
+            hidebug.startJsCpuProfiling(filename);
+            for (var i = 0; i < 3; i++) {
+                hidebug.getSharedDirty();
+            }
+            hidebug.stopJsCpuProfiling();
+            var pid = process.pid;
+            let path = "/proc/" + pid + "/root/data/storage/el2/base/files/" + filename + ".json";
+            let data = fileio.readTextSync(path);
+            if (data.includes("napi")) {
+                expect(true).assertTrue();
+            } else {
+                expect(false).assertTrue();
+            }
+        } catch (err) {
+            console.error('DFX_DFR_Hiprofiler_Interface_1800 has failed for ' + err);
+            expect(false).assertTrue();
+        }
+        console.log('************* DFX_DFR_Hiprofiler_Interface_1800 Test end*************');
+    });
+
+    /*
+     * @tc.number    : DFX_DFR_Hiprofiler_Interface_1900
+     * @tc.name      : startJsCpuProfiling/stopJsCpuProfiling with abnormal parameter
+     * @tc.desc      : startJsCpuProfiling/stopJsCpuProfiling
+     */
+     it('DFX_DFR_Hiprofiler_Interface_1900', 0, function() {
+        console.log('************* DFX_DFR_Hiprofiler_Interface_1900 Test start*************');
+        try {
+            hidebug.startJsCpuProfiling();
+            for (var i = 0; i < 3; i++) {
+                hidebug.getSharedDirty();
+            }
+            hidebug.stopJsCpuProfiling();
+        } catch (error) {
+            console.info(error.code);
+            console.info(error.message);
+            expect(error.code == 401).assertTrue();
+        }
+        console.log('************* DFX_DFR_Hiprofiler_Interface_1900 Test end*************');
+    });
+
+    /*
+     * @tc.number    : DFX_DFR_Hiprofiler_Interface_2000
+     * @tc.name      : dumpJsHeapData with normal parameter
+     * @tc.desc      : dumpJsHeapData
+     */
+     it('DFX_DFR_Hiprofiler_Interface_2000', 0, function() {
+        console.log('************* DFX_DFR_Hiprofiler_Interface_2000 Test start*************');
+        try {
+            hidebug.dumpJsHeapData("heapData");
+            expect(true).assertTrue();
+        } catch (error) {
+            console.info(error.code);
+            console.info(error.message);
+        }
+        console.log('************* DFX_DFR_Hiprofiler_Interface_2000 Test end*************');
+    });
+
+    /*
+     * @tc.number    : DFX_DFR_Hiprofiler_Interface_2100
+     * @tc.name      : dumpJsHeapData with abnormal parameter
+     * @tc.desc      : dumpJsHeapData
+     */
+     it('DFX_DFR_Hiprofiler_Interface_2100', 0, function() {
+        console.log('************* DFX_DFR_Hiprofiler_Interface_2100 Test start*************');
+        try {
+            hidebug.dumpJsHeapData();
+        } catch (error) {
+            console.info(error.code);
+            console.info(error.message);
+            expect(error.code == 401).assertTrue();
+        }
+        console.log('************* DFX_DFR_Hiprofiler_Interface_2100 Test end*************');
+    });
+
 })
 }
