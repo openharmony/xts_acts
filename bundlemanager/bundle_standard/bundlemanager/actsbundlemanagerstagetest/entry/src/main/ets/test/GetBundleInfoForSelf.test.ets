@@ -101,8 +101,6 @@ export default function getBundleInfoForSelf() {
         expect(data.appInfo.icon).assertEqual("$media:icon");
         expect(data.appInfo.iconId).assertLarger(0);
         expect(data.appInfo.process).assertEqual(BUNDLE_NAME);
-        expect(data.appInfo.moduleSourceDirs.length).assertEqual(1);
-        expect(data.appInfo.moduleSourceDirs[0]).assertEqual(SOURCE_DIR);
         expect(data.appInfo.entryDir).assertEqual(SOURCE_DIR);
         expect(data.appInfo.codePath).assertEqual("/data/app/el1/bundle/public/ohos.acts.bundle.stage.test");
         expect(data.appInfo.removable).assertTrue(0);
@@ -155,8 +153,6 @@ export default function getBundleInfoForSelf() {
         expect(data.appInfo.icon).assertEqual("$media:icon");
         expect(data.appInfo.iconId).assertLarger(0);
         expect(data.appInfo.process).assertEqual(BUNDLE_NAME);
-        expect(data.appInfo.moduleSourceDirs.length).assertEqual(1);
-        expect(data.appInfo.moduleSourceDirs[0]).assertEqual(SOURCE_DIR);
         expect(data.appInfo.entryDir).assertEqual(SOURCE_DIR);
         expect(data.appInfo.codePath).assertEqual("/data/app/el1/bundle/public/ohos.acts.bundle.stage.test");
         expect(data.appInfo.removable).assertTrue(0);
@@ -712,8 +708,6 @@ export default function getBundleInfoForSelf() {
       expect(data.appInfo.icon).assertEqual("$media:icon");
       expect(data.appInfo.iconId).assertLarger(0);
       expect(data.appInfo.process).assertEqual(BUNDLE_NAME);
-      expect(data.appInfo.moduleSourceDirs.length).assertEqual(1);
-      expect(data.appInfo.moduleSourceDirs[0]).assertEqual(SOURCE_DIR);
       expect(data.appInfo.entryDir).assertEqual(SOURCE_DIR);
       expect(data.appInfo.codePath).assertEqual("/data/app/el1/bundle/public/ohos.acts.bundle.stage.test");
       expect(data.appInfo.removable).assertTrue(0);
