@@ -376,5 +376,67 @@ export default function requestUploadJSUnit() {
       done();
     });
 
+    /**
+     * @tc.number    SUB_REQUEST_UPLOAD_API_DELETE_0001
+     * @tc.desc      Delete the upload task.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_REQUEST_UPLOAD_API_DELETE_0001', 0, async function (done) {
+      console.info("-----------------------SUB_REQUEST_UPLOAD_API_DELETE_0001 is starting-----------------------");
+      try {
+        request.upload(uploadConfig, (data) => {
+          uploadTask = data;
+          console.info("SUB_REQUEST_UPLOAD_API_DELETE_0001 uploadTask: " + uploadTask);
+          expect(uploadTask != undefined).assertEqual(true);
+          uploadTask.delete((err, data) => {
+            if (err) {
+              console.error('SUB_REQUEST_UPLOAD_API_DELETE_0001 Failed to delete the uploadTask task.');
+              expect().assertFail();
+            }
+            console.info('SUB_REQUEST_UPLOAD_API_DELETE_0001 uploadTask task delete success.');
+            expect(typeof data == "boolean").assertTrue();
+          });
+        })
+      } catch (error) {
+        console.error('SUB_REQUEST_UPLOAD_API_DELETE_0001 delete catch error' + error);
+        expect().assertFail();
+      }
+      console.info("-----------------------SUB_REQUEST_UPLOAD_API_DELETE_0001 end-----------------------");
+      done();
+    });
+
+    /**
+     * @tc.number    SUB_REQUEST_UPLOAD_API_DELETE_0002
+     * @tc.desc      Delete the upload task.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_REQUEST_UPLOAD_API_DELETE_0002', 0, async function (done) {
+      console.info("-----------------------SUB_REQUEST_UPLOAD_API_DELETE_0002 is starting-----------------------");
+      try {
+        request.upload(uploadConfig, (data) => {
+          uploadTask = data;
+          console.info("SUB_REQUEST_UPLOAD_API_DELETE_0002 uploadTask: " + uploadTask);
+          expect(uploadTask != undefined).assertEqual(true);
+          uploadTask.delete().then(data => {
+            console.info('SUB_REQUEST_UPLOAD_API_DELETE_0002 uploadTask task delete success.');
+            expect(data == true).assertTrue();
+          }).catch((err) => {
+            console.info('SUB_REQUEST_UPLOAD_API_DELETE_0002 Failed to delete the uploadTask task.');
+            expect().assertFail();
+          })
+        })
+      } catch (error) {
+        console.error('SUB_REQUEST_UPLOAD_API_DELETE_0002 delete catch error');
+        expect().assertFail();
+      }
+      console.info("-----------------------SUB_REQUEST_UPLOAD_API_DELETE_0002 end-----------------------");
+      done();
+    });
+
+
   })
 }
