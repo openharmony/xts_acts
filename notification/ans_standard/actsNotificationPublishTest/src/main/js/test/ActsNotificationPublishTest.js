@@ -15,11 +15,493 @@
 
 import notification from '@ohos.notification'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import image from '@ohos.multimedia.image'
+import wantAgent from '@ohos.wantAgent'
 
 export default function ActsNotificationPublishTest() {
   describe('SUB_NOTIFICATION_ANS_Publish_TEST', function () {
     let TAG = 'SUB_NOTIFICATION_ANS_Publish_TEST ===>'
     console.info(TAG + 'SUB_NOTIFICATION_ANS_Publish_TEST START')
+
+    let wantAgentData = {}
+
+    let picture_opts = {
+      size: {
+        height: 25,
+        width: 2
+      },
+      pixelFormat: 4,
+      editable: true,
+      alphaType: 0,
+      scaleMode: 1
+    }
+    
+    let picture_buffer = new ArrayBuffer(picture_opts.size.height * picture_opts.size.width * 4)
+    let notification_picture = undefined
+
+    image.createPixelMap(picture_buffer, picture_opts, (err, pixelMap) => {
+      if (err) {
+        console.info(`${TAG} createPixelMap err: ${err}`)
+      } else {
+        if (notification_picture == undefined) {
+          console.info(`${TAG} createPixelMap err: ${err}`)
+          return
+        }
+      }
+    })
+
+    // wantAgent
+    let WantAgentInfo = {
+      wants: [
+        {
+          deviceId: "deviceId",
+          bundleName: "com.example.actsnotificationSecondDirectory",
+          abilityName: "com.example.actsnotificationSecondDirectory.MainAbility",
+          action: "action1",
+          entities: ["entity1"],
+          type: "MIMETYPE",
+          uri: "key={true,true,false}",
+          parameters:
+          {
+            mykey0: 2222,
+            mykey1: [1, 2, 3],
+            mykey2: "[1, 2, 3]",
+            mykey3: "ssssssssssssssssssssssssss",
+            mykey4: [false, true, false],
+            mykey5: ["qqqqq", "wwwwww", "aaaaaaaaaaaaaaaaa"],
+            mykey6: true,
+          }
+        }
+      ],
+      operationType: wantAgent.OperationType.START_ABILITIES,
+      requestCode: 0,
+      wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
+    }
+
+    wantAgent.getWantAgent(WantAgentInfo, (err, data) => {
+      if (err.code) {
+        console.info(`${TAG} getWantAgent AsyncCallback err: ${err.code}`)
+      } else {
+        console.info(`${TAG} getWantAgent AsyncCallback success: ${JSON.stringify(data)}`)
+        wantAgentData = data
+      }
+    })
+
+    afterEach(async function (done) {
+      console.info(`${TAG} afterEach START`)
+      await notification.cancelAll((err) => {
+        if (err.code) {
+          console.info(`${TAG} cancelAll notification err: ${err.code}`)
+          expect(false).assertTrue()
+          done()
+        } else {
+          console.info(`${TAG} cancelAll notification success`)
+          expect(true).assertTrue()
+          done()
+        }
+      })
+      console.info(`${TAG} afterEach END`)
+    })
+
+    
+    /*
+     * @tc.number    : SUB_NOTIFICATION_ANS_PUBLISH_TEST_0100
+     * @tc.name      : function publish(request: NotificationRequest, callback: AsyncCallback<void>): void
+     * @tc.desc      : Publishes a notification
+     */
+    it('SUB_NOTIFICATION_ANS_PUBLISH_TEST_0100', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_0100 START`)
+      let notificationRequest = {
+        content: {
+          contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+          id: 1,
+          normal: {
+            title: 'testTitle',
+            text: 'testText',
+            additionalText: 'testAdditionalText'
+          },
+        },
+        slotType: notification.SlotType.SOCIAL_COMMUNICATION,
+        isOngoing: true,
+        isUnremovable: true,
+        deliveryTime: 0,
+        tapDismissed: true,
+        autoDeletedTime: 500,
+        wantAgent: wantAgentData,
+        extraInfo: {
+          'testKey': 'testValue'
+        },
+      }
+
+      notification.publish(notificationRequest, (err, data) => {
+        if (err.code) {
+          console.info(`${TAG} notification publish AsyncCallback err: ${err.code}`)
+          expect(false).assertTrue()
+          done()
+        } else {
+          console.log(`${TAG} notification publish AsyncCallback success: ${data}`)
+          expect(true).assertTrue()
+          done()
+        }
+      })
+
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_0100 END`)
+    })
+
+    
+    /*
+     * @tc.number    : SUB_NOTIFICATION_ANS_PUBLISH_TEST_0200
+     * @tc.name      : function publish(request: NotificationRequest): Promise<void>
+     * @tc.desc      : Publishes a notification
+     */
+    it('SUB_NOTIFICATION_ANS_PUBLISH_TEST_0200', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_0100 START`)
+      let notificationRequest = {
+        content: {
+          contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+          id: 1,
+          normal: {
+            title: 'testTitle',
+            text: 'testText',
+            additionalText: 'testAdditionalText'
+          },
+        },
+        slotType: notification.SlotType.SOCIAL_COMMUNICATION,
+        isOngoing: true,
+        isUnremovable: true,
+        deliveryTime: 0,
+        tapDismissed: true,
+        autoDeletedTime: 500,
+        wantAgent: wantAgentData,
+        extraInfo: {
+          'testKey': 'testValue'
+        },
+      }
+
+      notification.publish(notificationRequest).then(data => {
+        console.log(`${TAG} notification publish AsyncCallback success: ${data}`)
+        expect(true).assertTrue()
+        done()
+      }).catch(err => {
+        console.info(`${TAG} notification publish AsyncCallback err: ${err.code}`)
+        expect(false).assertTrue()
+        done()
+      })
+
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_0200 END`)
+    })
+
+    /*
+     * @tc.number    : SUB_NOTIFICATION_ANS_PUBLISH_TEST_0500
+     * @tc.name      : function publish(request: NotificationRequest, callback: AsyncCallback<void>): void
+     * @tc.desc      : Publishes a notification
+     */
+    it('SUB_NOTIFICATION_ANS_PUBLISH_TEST_0500', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_0100 START`)
+      let notificationRequest = {
+        content: {
+          contentType: notification.ContentType.NOTIFICATION_CONTENT_LONG_TEXT,
+          id: 1,
+          normal: {
+            title: 'testTitle',
+            text: 'testText',
+            additionalText: 'testAdditionalText'
+          },
+          longText: {
+            title: 'testLongTextTitle',
+            text: 'testLongTextText',
+            additionalText: 'testLongTextAdditionalText',
+            longText: 'testLongTextLongText',
+            briefText: 'testLongTextBriefText',
+            expandedTitle: 'testLongTextExpandedTitle'
+          },
+        },
+        slotType: notification.SlotType.CONTENT_INFORMATION,
+        isOngoing: true,
+        isUnremovable: true,
+        deliveryTime: 0,
+        tapDismissed: true,
+        autoDeletedTime: 500,
+        wantAgent: wantAgentData,
+        extraInfo: {
+          'testKey': 'testValue'
+        },
+      }
+
+      notification.publish(notificationRequest, (err, data) => {
+        if (err.code) {
+          console.info(`${TAG} notification publish AsyncCallback err: ${err.code}`)
+          expect(false).assertTrue()
+          done()
+        } else {
+          console.log(`${TAG} notification publish AsyncCallback success: ${data}`)
+          expect(true).assertTrue()
+          done()
+        }
+      })
+
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_0500 END`)
+    })
+
+    /*
+     * @tc.number    : SUB_NOTIFICATION_ANS_PUBLISH_TEST_0600
+     * @tc.name      : function publish(request: NotificationRequest): Promise<void>
+     * @tc.desc      : Publishes a notification
+     */
+    it('SUB_NOTIFICATION_ANS_PUBLISH_TEST_0600', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_0100 START`)
+      let notificationRequest = {
+        content: {
+          contentType: notification.ContentType.NOTIFICATION_CONTENT_LONG_TEXT,
+          id: 1,
+          normal: {
+            title: 'testTitle',
+            text: 'testText',
+            additionalText: 'testAdditionalText'
+          },
+          longText: {
+            title: 'testLongTextTitle',
+            text: 'testLongTextText',
+            additionalText: 'testLongTextAdditionalText',
+            longText: 'testLongTextLongText',
+            briefText: 'testLongTextBriefText',
+            expandedTitle: 'testLongTextExpandedTitle'
+          },
+        },
+        slotType: notification.SlotType.CONTENT_INFORMATION,
+        isOngoing: true,
+        isUnremovable: true,
+        deliveryTime: 0,
+        tapDismissed: true,
+        autoDeletedTime: 500,
+        wantAgent: wantAgentData,
+        extraInfo: {
+          'testKey': 'testValue'
+        },
+      }
+
+      notification.publish(notificationRequest).then(data => {
+        console.log(`${TAG} notification publish AsyncCallback success: ${data}`)
+        expect(true).assertTrue()
+        done()
+      }).catch(err => {
+        console.info(`${TAG} notification publish AsyncCallback err: ${err.code}`)
+        expect(false).assertTrue()
+        done()
+      })
+
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_0600 END`)
+    })
+
+    /*
+     * @tc.number    : SUB_NOTIFICATION_ANS_PUBLISH_TEST_0700
+     * @tc.name      : function publish(request: NotificationRequest, callback: AsyncCallback<void>): void
+     * @tc.desc      : Publishes a notification
+     */
+    it('SUB_NOTIFICATION_ANS_PUBLISH_TEST_0700', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_0100 START`)
+      let notificationRequest = {
+        content: {
+          contentType: notification.ContentType.NOTIFICATION_CONTENT_MULTILINE,
+          id: 1,
+          normal: {
+            title: 'testTitle',
+            text: 'testText',
+            additionalText: 'testAdditionalText'
+          },
+          multiLine: {
+            title: 'testMultiLineTitle',
+            text: 'testMultiLineText',
+            additionalText: 'testMultiLineAdditionalText',
+            longTitle: 'testMultiLineLongText',
+            briefText: 'testMultiLineBriefText',
+            lines: ['firstLine', 'secondLine', 'thirdLine']
+          },
+        },
+        slotType: notification.SlotType.OTHER_TYPES,
+        isOngoing: true,
+        isUnremovable: true,
+        deliveryTime: 0,
+        tapDismissed: true,
+        autoDeletedTime: 500,
+        wantAgent: wantAgentData,
+        extraInfo: {
+          'testKey': 'testValue'
+        },
+      }
+
+      notification.publish(notificationRequest, (err, data) => {
+        if (err.code) {
+          console.info(`${TAG} notification publish AsyncCallback err: ${err.code}`)
+          expect(false).assertTrue()
+          done()
+        } else {
+          console.log(`${TAG} notification publish AsyncCallback success: ${data}`)
+          expect(true).assertTrue()
+          done()
+        }
+      })
+
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_0700 END`)
+    })
+
+    /*
+     * @tc.number    : SUB_NOTIFICATION_ANS_PUBLISH_TEST_0800
+     * @tc.name      : function publish(request: NotificationRequest): Promise<void>
+     * @tc.desc      : Publishes a notification
+     */
+    it('SUB_NOTIFICATION_ANS_PUBLISH_TEST_0800', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_0100 START`)
+      let notificationRequest = {
+        content: {
+          contentType: notification.ContentType.NOTIFICATION_CONTENT_MULTILINE,
+          id: 1,
+          normal: {
+            title: 'testTitle',
+            text: 'testText',
+            additionalText: 'testAdditionalText'
+          },
+          multiLine: {
+            title: 'testMultiLineTitle',
+            text: 'testMultiLineText',
+            additionalText: 'testMultiLineAdditionalText',
+            longTitle: 'testMultiLineLongText',
+            briefText: 'testMultiLineBriefText',
+            lines: ['firstLine', 'secondLine', 'thirdLine']
+          },
+        },
+        slotType: notification.SlotType.OTHER_TYPES,
+        isOngoing: false,
+        isUnremovable: false,
+        deliveryTime: 0,
+        tapDismissed: false,
+        autoDeletedTime: 500,
+        wantAgent: wantAgentData,
+        extraInfo: {
+          'testKey': 'testValue'
+        },
+      }
+
+      notification.publish(notificationRequest).then(data => {
+        console.log(`${TAG} notification publish AsyncCallback success: ${data}`)
+        expect(true).assertTrue()
+        done()
+      }).catch(err => {
+        console.info(`${TAG} notification publish AsyncCallback err: ${err.code}`)
+        expect(false).assertTrue()
+        done()
+      })
+
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_0800 END`)
+    })
+
+    /*
+     * @tc.number    : SUB_NOTIFICATION_ANS_PUBLISH_TEST_1100
+     * @tc.name      : function publish(request: NotificationRequest, callback: AsyncCallback<void>): void
+     * @tc.desc      : Publishes a notification
+     */
+    it('SUB_NOTIFICATION_ANS_PUBLISH_TEST_1100', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_0100 START`)
+      let notificationRequest = {
+        content: {
+          contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+          id: 1,
+          normal: {
+            title: 'testTitle',
+            text: 'testText',
+            additionalText: 'testAdditionalText'
+          },
+        },
+        color: 255,
+        colorEnabled: true,
+        isAlertOnce: true,
+        isStopwatch: true,
+        isCountDown: true,
+        isFloatingIcon: true,
+        label: 'notificationPublishTestLabel',
+        badgeIconStyle: 6,
+        showDeliveryTime: true,
+        actionButtons: [
+          {
+            title: 'actionButtonsTitle',
+            wantAgent: wantAgentData,
+            extras: {
+              'testActionButtonKey': 'testActionButtonValue',
+            },
+            userInput: {
+              inputKey: 'testInputKey'
+            }
+          }
+        ],
+      }
+
+      notification.publish(notificationRequest, (err, data) => {
+        if (err.code) {
+          console.info(`${TAG} notification publish AsyncCallback err: ${err.code}`)
+          expect(false).assertTrue()
+          done()
+        } else {
+          console.log(`${TAG} notification publish AsyncCallback success: ${data}`)
+          expect(true).assertTrue()
+          done()
+        }
+      })
+
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_1100 END`)
+    })
+
+    /*
+     * @tc.number    : SUB_NOTIFICATION_ANS_PUBLISH_TEST_1200
+     * @tc.name      : function publish(request: NotificationRequest): Promise<void>
+     * @tc.desc      : Publishes a notification
+     */
+    it('SUB_NOTIFICATION_ANS_PUBLISH_TEST_1200', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_0100 START`)
+      let notificationRequest = {
+        content: {
+          contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+          id: 1,
+          normal: {
+            title: 'testTitle',
+            text: 'testText',
+            additionalText: 'testAdditionalText'
+          },
+        },
+        color: 255,
+        colorEnabled: true,
+        isAlertOnce: true,
+        isStopwatch: true,
+        isCountDown: true,
+        isFloatingIcon: true,
+        label: 'notificationPublishTestLabel',
+        badgeIconStyle: 6,
+        showDeliveryTime: true,
+        actionButtons: [
+          {
+            title: 'actionButtonsTitle',
+            wantAgent: wantAgentData,
+            extras: {
+              'testActionButtonKey': 'testActionButtonValue',
+            },
+            userInput: {
+              inputKey: 'testInputKey'
+            }
+          }
+        ],
+      }
+
+      notification.publish(notificationRequest).then(data => {
+        console.log(`${TAG} notification publish AsyncCallback success: ${data}`)
+        expect(true).assertTrue()
+        done()
+      }).catch(err => {
+        console.info(`${TAG} notification publish AsyncCallback err: ${err.code}`)
+        expect(false).assertTrue()
+        done()
+      })
+
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_1200 END`)
+    })
 
     /*
      * @tc.number    : SUB_NOTIFICATION_ANS_CANCEL_TEST_0100
