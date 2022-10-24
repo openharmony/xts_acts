@@ -20,7 +20,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 
 var dir = "";
 var infos = "";
-var SRC_FILE_INVALID = 90001;
+var SRC_FILE_INVALID = 900001;
 export default function ActsZlibTest() {
 describe('ActsZlibTest', function () {
     beforeEach(async (done) => {
