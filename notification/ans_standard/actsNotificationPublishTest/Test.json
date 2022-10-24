@@ -18,7 +18,7 @@
         {
             "type":"ShellKit",
             "run-command":[
-                "anm setting -e com.example.actsnotificationpublish:0:true"
+                "anm setting -e com.example.actsnotificationpublish:0:1"
             ],
             "cleanup-apps":true
         }
