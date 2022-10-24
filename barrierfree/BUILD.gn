@@ -24,6 +24,7 @@ group("barrierfree") {
       "accessibilityevent:ActsAccessibilityEventTest",
       "accessibilityextension:ActsAccessibilityExtensionTest",
       "accessibilityextensioncontext:ActsAccessibilityExtensionContextTest",
+      "accessibilityextensioncontextcaperrcode:ActsAccessibilityExtensionContextCapErrCodeTest",
       "accessibilitygestureevent:ActsAccessibilityGestureEventTest",
       "accessibilitysendaccessibilityevent:ActsAccessibilitySendAccessibilityEventTest",
       "accessibleabilitylist:ActsAccessibleAbilityListTest",

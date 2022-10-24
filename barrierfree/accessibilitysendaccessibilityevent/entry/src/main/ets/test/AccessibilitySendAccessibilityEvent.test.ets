@@ -35,31 +35,6 @@ export default function abilityTest() {
         })
     
         /*
-        * @tc.number  SendAccessibilityEvent_null_0200
-        * @tc.name    SendAccessibilityEvent_null_0200
-        * @tc.desc    The parameter input is null, test the sendAccessibilityEvent() function
-        *             The result of sendAccessibilityEvent() should be equal to a rejected promise of 401 err.
-        * @tc.size    SmallTest
-        * @tc.type    User
-        */
-        it('SendAccessibilityEvent_null_0200', 0, async function (done) {
-            console.info('SendAccessibilityEvent_null_0200');
-            let event = null;
-
-            accessibility.sendAccessibilityEvent(event).then((result) => {           
-                console.error(`AccessibilitySendAccessibilityEvent: SendAccessibilityEvent_null_0200 result ${result}`);
-                expect(null).assertFail();            
-                done();
-            }).catch((err) => {
-                if (err && err.code != 0) {
-                    console.info(`AccessibilitySendAccessibilityEvent: SendAccessibilityEvent_null_0200 has error: ${err}`);
-                    expect(true).assertTrue();
-                    done();
-                }
-            });
-        })
-
-        /*
         * @tc.number  SendAccessibilityEvent_0300
         * @tc.name    SendAccessibilityEvent_0300
         * @tc.desc    The parameter eventType input is accessibilityFocus, test the sendAccessibilityEvent()

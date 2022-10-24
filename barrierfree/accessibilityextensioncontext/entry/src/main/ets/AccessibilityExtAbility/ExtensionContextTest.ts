@@ -137,7 +137,9 @@ export class ExtensionContextTest {
                 break;
             case 'AccessibilityExtensionContextTest_getFocusElement_asyncCallback_3700':
                 await this.setAccessibilityFocus();
-                this.getFocusElementByTypeCallback(caseName, true, true);
+                setTimeout(async () => {
+                    this.getFocusElementByTypeCallback(caseName, true, true);
+                }, 1000);
                 break;
             case 'AccessibilityExtensionContextTest_getFocusElement_asyncCallback_3900':
                 await this.clearAccessibilityFocus();
@@ -145,7 +147,9 @@ export class ExtensionContextTest {
                 break;
             case 'AccessibilityExtensionContextTest_getFocusElement_asyncPromise_4100':
                 await this.setAccessibilityFocus();
-                this.getFocusElementByTypePromise(caseName, true, true);
+                setTimeout(async () => {
+                    this.getFocusElementByTypePromise(caseName, true, true);
+                }, 1000);
                 break;
             case 'AccessibilityExtensionContextTest_getFocusElement_asyncPromise_4300':
                 await this.clearAccessibilityFocus();
@@ -174,10 +178,6 @@ export class ExtensionContextTest {
                                         new GesturePoint(1000, 1000));
                 this.gestureInjectCallback(caseName, gesturePath);
                 break;
-            case 'AccessibilityExtensionContextTest_gestureInject_asyncCallback_4900':
-                gesturePath = undefined;
-                this.gestureInjectCallback(caseName, gesturePath);
-                break;
             case 'AccessibilityExtensionContextTest_gestureInject_asyncPromise_5000':
                 gesturePath = new GesturePath(100);
                 gesturePath.points.push(new GesturePoint(10, 10));
@@ -199,10 +199,6 @@ export class ExtensionContextTest {
                 gesturePath.points.push(new GesturePoint(50, 50),
                                         new GesturePoint(100, 100),
                                         new GesturePoint(1000, 1000));
-                this.gestureInjectPromise(caseName, gesturePath);
-                break;
-            case 'AccessibilityExtensionContextTest_gestureInject_asyncPromise_5400':
-                gesturePath = undefined;
                 this.gestureInjectPromise(caseName, gesturePath);
                 break;
             default:
@@ -575,52 +571,30 @@ export class ExtensionContextTest {
 
     private async gestureInjectCallback(caseName: string, gesturePath: object) {
         let result = false;
-        if (gesturePath == undefined) {
-            this.context.injectGesture(gesturePath, (err, res) => {
-                if (err && err.code != 0) {
-                    console.error(caseName + " err: " + JSON.stringify(err.code));
-                    result = true;
-                }
-                this.publishCaseResult(caseName, result);
-            });
-        } else {
-            this.context.injectGesture(gesturePath, (err, res) => {
-                console.info(caseName + " res: " + JSON.stringify(res));
-                result = true;
-                if (err && err.code != 0) {
-                    console.error(caseName + " err: " + JSON.stringify(err.code));
-                    result = false;
-                }
-                this.publishCaseResult(caseName, result);
-            });
-        }
+        this.context.injectGesture(gesturePath, (err, res) => {
+            console.info(caseName + " res: " + JSON.stringify(res));
+            result = true;
+            if (err && err.code != 0) {
+                console.error(caseName + " err: " + JSON.stringify(err.code));
+                result = false;
+            }
+            this.publishCaseResult(caseName, result);
+        });
     }
 
  
     private async gestureInjectPromise(caseName: string, gesturePath: object) {
         let result = false;
-        if (gesturePath == undefined) {
-            this.context.injectGesture(gesturePath).then((res) => {
-                this.publishCaseResult(caseName, result);
-            }).catch ((err) => {
-                if (err && err.code != 0) {
-                    console.error(caseName + 'error:' + JSON.stringify(err));
-                    result = true;
-                }
-                this.publishCaseResult(caseName, result);
-            });
-        } else {
-            this.context.injectGesture(gesturePath).then((res) => {
-                console.info(caseName + " res: " + JSON.stringify(res));
+        this.context.injectGesture(gesturePath).then((res) => {
+            console.info(caseName + " res: " + JSON.stringify(res));
+            result = true;
+            this.publishCaseResult(caseName, result);
+        }).catch ((err) => {
+            if (err && err.code != 0) {
+                console.error(caseName + 'error:' + JSON.stringify(err));
                 result = true;
-                this.publishCaseResult(caseName, result);
-            }).catch ((err) => {
-                if (err && err.code != 0) {
-                    console.error(caseName + 'error:' + JSON.stringify(err));
-                    result = true;
-                }
-                this.publishCaseResult(caseName, result);
-            });
-        }
+            }
+            this.publishCaseResult(caseName, result);
+        });
     }
 }
