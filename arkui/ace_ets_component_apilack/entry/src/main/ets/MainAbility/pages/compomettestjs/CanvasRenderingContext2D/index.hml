@@ -227,6 +227,14 @@
                 方法30
             </text>
             <canvas style="width: 100%; height: 60px;margin-top: 5px;" ref="function30"></canvas>
+		<text class="sub-title">
+                方法31
+            </text>
+            <canvas style="width: 100%; height: 60px;margin-top: 5px;" ref="function30"></canvas>
+		<text class="sub-title">
+                方法32
+            </text>
+            <canvas style="width: 100%; height: 60px;margin-top: 5px;" ref="function30"></canvas>
         </div>
 
     </div>

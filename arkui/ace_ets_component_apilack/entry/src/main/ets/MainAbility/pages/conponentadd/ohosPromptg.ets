@@ -70,35 +70,10 @@ struct promptExample {
             },
           });
         })
-      Button('showActionMenu1')
-        .key('button3')
-        .backgroundColor('#ffe20b48')
-        .fontSize(20)
-        .margin({top: 20})
-        .onClick(()=>{
-          prompt.showDialog({
-            title: 'Title Info',
-            message: 'Message Info',
-            buttons: [
-              {
-                text:  this.text,
-                color: this.color,
-              },
-            ],
-          })
-            .then(data => {
-              console.info('showDialog success, click button: ' + data.tapIndex);
-              Utils.emitEvent('sucessful',422)
 
-            })
-            .catch(data => {
-              console.info('showDialog error: ' + data.errMsg);
-            });
-
-        })
-      Button('showDialog1')
-        .key('button4')
-        .backgroundColor('#ffe20b56')
+      Button('protshowDialog')
+        .key('buttonp')
+        .backgroundColor('#FF0B8FE2')
         .fontSize(20)
         .margin({top: 20})
         .onClick(()=> {
@@ -107,47 +82,159 @@ struct promptExample {
             message: 'Message Info',
             buttons: [
               {
-                text:  this.text,
-                color: this.color,
+                text: 'button1',
+                color: '#000000',
               },
+              {
+                text: 'button2',
+                color: '#000000',
+              }
             ],
           })
             .then(data => {
-              console.info('showDialog success, click button: ' + data.tapIndex);
-              Utils.emitEvent('sucessful',422)
-
+              console.info('showDialog success, click button: ' + data.index);
             })
-            .catch(data => {
-              console.info('showDialog error: ' + data.errMsg);
-            });
+            .catch(err => {
+              console.info('showDialog error: ' + err);
+            })
         })
-
- 
-
-      Button('showActionMenu2')
-        .key('button6')
-        .backgroundColor('#ffe20b48')
+      Button('protshowDialog')
+        .key('buttonp')
+        .backgroundColor('#FF0B8FE2')
         .fontSize(20)
         .margin({top: 20})
-        .onClick(()=>{
-          promptAction.showDialog({
-            title: 'Title Info',
+        .onClick(()=> {
+          prompt.showDialog({
+            title: 'showDialog Title Info',
             message: 'Message Info',
             buttons: [
               {
-                text:  this.text,
-                color: this.color,
+                text: 'button1',
+                color: '#000000',
               },
-            ],
+              {
+                text: 'button2',
+                color: '#000000',
+              }
+            ]
+          }, (err, data) => {
+            if (err) {
+              console.info('showDialog err: ' + err);
+              return;
+            }
+            console.info('showDialog success callback, click button: ' + data.index);
+          });
+
+      Button('protshowActionMenu1')
+        .key('buttons1')
+        .backgroundColor('#FF0B8FE2')
+        .fontSize(20)
+        .margin({top: 20})
+        .onClick(()=> {
+          prompt.showActionMenu({
+            title: 'Title Info',
+            buttons: [
+              {
+                text: 'item1',
+                color: '#666666',
+              },
+              {
+                text: 'item2',
+                color: '#000000',
+              },
+            ]
+          }, (err, data) => {
+            if (err) {
+              console.info('showActionMenu err: ' + err);
+              return;
+            }
+            console.info('showActionMenu success callback, click button: ' + data.index);
+          });
+
+
+      Button('protshowActionMenu2')
+        .key('buttons2')
+        .backgroundColor('#FF0B8FE2')
+        .fontSize(20)
+        .margin({top: 20})
+        .onClick(()=> {
+          prompt.showActionMenu({
+            title: 'showActionMenu Title Info',
+            buttons: [
+              {
+                text: 'item1',
+                color: '#666666',
+              },
+              {
+                text: 'item2',
+                color: '#000000',
+              },
+            ]
           })
             .then(data => {
-              console.info('showDialog success, click button: ' + data.tapIndex);
-              Utils.emitEvent('sucessful',422)
-
+              console.info('showActionMenu success, click button: ' + data.index);
             })
-            .catch(data => {
-              console.info('showDialog error: ' + data.errMsg);
-            });
+            .catch(err => {
+              console.info('showActionMenu error: ' + err);
+            })
+
+
+
+
+
+
+        })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+in({top: 20})
+        .onClick(()=>{
+            prompt.showActionMenu({
+			  title: 'showActionMenu Title Info',
+			  buttons: [
+				{
+				  text: 'item1',
+				  color: '#666666',
+				},
+				{
+				  text: 'item2',
+				  color: '#000000',
+				},
+			  ]
+			})
+			  .then(data => {
+				console.info('showActionMenu success, click button: ' + data.index);
+			  })
+			  .catch(err => {
+				console.info('showActionMenu error: ' + err);
+			  })
         })
 
       Button('showDialog2')
