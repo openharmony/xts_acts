@@ -17,6 +17,7 @@ group("ans_standard") {
   if (is_standard_system) {
     deps = [
       "actsNotificationDistributedTest:ActsNotificationDistributedTest",
+      "actsNotificationManagerSlotTest:ActsNotificationManagerSlotTest",
       "actsNotificationPublishTest:ActsNotificationPublishTest",
       "actsNotificationShowTest:ActsNotificationShowTest",
       "actsNotificationSlotTest:ActsNotificationSlotTest",
