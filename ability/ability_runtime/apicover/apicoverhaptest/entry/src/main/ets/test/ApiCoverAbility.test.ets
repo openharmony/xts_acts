@@ -16,6 +16,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 
 import formProvider from '@ohos.application.formProvider';
 import FormInfo from '@ohos.application.formInfo';
+import formInfoNew from '@ohos.app.form.formInfo';
 import formError from '@ohos.application.formError';
 import formHost from '@ohos.application.formHost';
 import errorManager from '@ohos.application.errorManager';
@@ -23,10 +24,13 @@ import abilityConstant from '@ohos.application.AbilityConstant'
 import appManager from '@ohos.application.appManager'
 import applicationContext from '@ohos.application.context'
 import commonEvent from '@ohos.commonEvent';
-import ability from '@ohos.ability.ability'
+import ability from '@ohos.ability.ability';
+import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
 var EXTENSION_INFO_ERR = 16000001
+var INNER_ERROR = 16000050
 var CROSS_USER_DENY = 201
+var INVALID_PARAM = 401
 var trueInfo;
 var array = new Array();
 function sleep(time) {
@@ -227,6 +231,120 @@ export default function ApiCoverTest() {
     })
 
     /*
+     * @tc.number  SUB_AA_ABILITY_Extension_API_009
+     * @tc.name    connectServiceExtensionAbility with invalid want.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_AA_ABILITY_Extension_API_009', 0, async function (done) {
+      console.log(`SUB_AA_ABILITY_Extension_API_009 start`);
+      let want = {
+        bundleName: "com.example.extensionapitest1",
+        abilityName: "FirstExtension"
+      };
+      let options = {
+        onConnect: function (elementName, proxy) {
+          console.log("onConnect");
+        },
+        onDisconnect: function () {
+          console.log("onDisconnect");
+        },
+        onFailed: function () {
+          console.log("onFailed");
+        }
+      }
+      try {
+        let id = globalThis.abilityContext.connectServiceExtensionAbility(want, options);
+        console.log(`connectServiceExtensionAbility id: ${id}`);
+      } catch (err) {
+        console.log(`connectServiceExtensionAbility catch code: ${err.code}, message: ${err.message}`);
+        expect().assertFail();
+      }
+      done();
+    })
+
+    /*
+     * @tc.number  SUB_AA_ABILITY_Extension_API_010
+     * @tc.name    disconnectServiceExtensionAbility with invalid connectionId.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_AA_ABILITY_Extension_API_010', 0, async function (done) {
+      console.log(`SUB_AA_ABILITY_Extension_API_010 start`);
+      try {
+        globalThis.abilityContext.disconnectServiceExtensionAbility(undefined, (err, data) => {
+          console.log(`disconnectServiceExtensionAbility, err: ${JSON.stringify(err)}, data: ${JSON.stringify(data)}`);
+          expect(err.code).assertEqual(INNER_ERROR);
+          done();
+        })
+      } catch (err) {
+        console.log(`disconnectServiceExtensionAbility catch code: ${err.code}, message: ${err.message}`);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /*
+     * @tc.number  SUB_AA_ABILITY_Extension_API_011
+     * @tc.name    disconnectServiceExtensionAbility with invalid connectionId.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_AA_ABILITY_Extension_API_011', 0, async function (done) {
+      console.log(`SUB_AA_ABILITY_Extension_API_011 start`);
+      try {
+        globalThis.abilityContext.disconnectServiceExtensionAbility(undefined).then((err, data) => {
+          console.log(`disconnectServiceExtensionAbility, err: ${JSON.stringify(err)}, data: ${JSON.stringify(data)}`);
+          expect(err.code).assertEqual(INNER_ERROR);
+        });
+      } catch (err) {
+        console.log(`disconnectServiceExtensionAbility catch code: ${err.code}, message: ${err.message}`);
+        expect().assertFail();
+      }
+      done();
+    })
+
+    /*
+     * @tc.number  SUB_AA_ABILITY_Extension_API_012
+     * @tc.name    killProcessesBySelf with invalid param.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_AA_ABILITY_Extension_API_012', 0, async function (done) {
+      try {
+        globalThis.abilityContext.getApplicationContext().killProcessesBySelf();
+        globalThis.abilityContext.getApplicationContext().killProcessesBySelf((err, data) => {
+            console.log(`killProcessesBySelf, err: ${JSON.stringify(err)}, data: ${JSON.stringify(data)}`);
+        })
+        let abilityDelegator: abilityDelegatorRegistry.AbilityDelegator;
+        abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+        let abilityDelegatorArgs: abilityDelegatorRegistry.AbilityDelegatorArgs;
+        abilityDelegatorArgs = abilityDelegatorRegistry.getArguments();
+        let abilityMonitor: abilityDelegatorRegistry.AbilityMonitor = {
+          abilityName: "FirstExtension"
+        }
+        abilityDelegator.addAbilityMonitor(abilityMonitor, (err, data) => {
+          console.log(`printMsg, err: ${JSON.stringify(err)}, data: ${JSON.stringify(data)}`);
+        })
+        abilityDelegator.printMsg(undefined);
+        abilityDelegator.printMsg(undefined, (err, data) => {
+          console.log(`printMsg, err: ${JSON.stringify(err)}, data: ${JSON.stringify(data)}`);
+        });
+        let shellCmdResult: abilityDelegatorRegistry.ShellCmdResult;
+        shellCmdResult = await abilityDelegator.executeShellCmd(undefined);
+        abilityDelegator.executeShellCmd(undefined, 0, (err, data) => {
+          console.log(`executeShellCmd, err: ${JSON.stringify(err)}, data: ${JSON.stringify(data)}`);
+        });
+        abilityDelegator.executeShellCmd(undefined, (err, data) => {
+          console.log(`executeShellCmd, err: ${JSON.stringify(err)}, data: ${JSON.stringify(data)}`);
+        });
+      } catch (err) {
+        console.log(`catch code: ${err.code}, message: ${err.message}`);
+      }
+      done();
+    })
+
+    /*
      * @tc.number  SUB_AA_AMS_Context_0100
      * @tc.name    Get the resource and path of the context.
      * @tc.desc    Function test
@@ -345,6 +463,52 @@ export default function ApiCoverTest() {
       expect(3).assertEqual(FormInfo.FormDimension.Dimension_2_4)
       expect(4).assertEqual(FormInfo.FormDimension.Dimension_4_4)
       expect(5).assertEqual(FormInfo.FormDimension.Dimension_2_1)
+      expect(1).assertEqual(FormInfo.FormType.JS);
+      expect(2).assertEqual(FormInfo.FormType.eTS);
+      expect(1).assertEqual(FormInfo.VisibilityType.FORM_VISIBLE);
+      expect(2).assertEqual(FormInfo.VisibilityType.FORM_INVISIBLE);
+      done();
+    });
+
+    /*
+     * @tc.number  SUB_AA_Form_provider_TestFormInfo_0200
+     * @tc.name     Get all FormInfo types
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_AA_Form_provider_TestFormInfo_0200', 0, async function (done) {
+      console.info("SUB_AA_Form_provider_TestFormInfo_0200");
+      expect("ohos.extra.param.key.form_dimension").assertEqual(formInfoNew.FormParam.DIMENSION_KEY)
+      expect("ohos.extra.param.key.form_height").assertEqual(formInfoNew.FormParam.HEIGHT_KEY)
+      expect("ohos.extra.param.key.module_name").assertEqual(formInfoNew.FormParam.MODULE_NAME_KEY)
+      expect("ohos.extra.param.key.form_width").assertEqual(formInfoNew.FormParam.WIDTH_KEY)
+      expect("ohos.extra.param.key.form_name").assertEqual(formInfoNew.FormParam.NAME_KEY)
+      expect("ohos.extra.param.key.form_temporary").assertEqual(formInfoNew.FormParam.TEMPORARY_KEY)
+      expect("ohos.extra.param.key.form_identity").assertEqual(formInfoNew.FormParam.IDENTITY_KEY)
+      expect("ohos.extra.param.key.bundle_name").assertEqual(formInfoNew.FormParam.BUNDLE_NAME_KEY)
+      expect("ohos.extra.param.key.ability_name").assertEqual(formInfoNew.FormParam.ABILITY_NAME_KEY)
+      expect(0).assertEqual(formInfoNew.FormState.DEFAULT)
+      expect(1).assertEqual(formInfoNew.FormState.READY)
+      expect(-1).assertEqual(formInfoNew.FormState.UNKNOWN)
+      expect(0).assertEqual(formInfoNew.ColorMode.MODE_DARK)
+      expect(1).assertEqual(formInfoNew.ColorMode.MODE_LIGHT)
+      console.info("SUB_AA_Form_provider_TestFormInfo_0200:" + formInfoNew.FormDimension.Dimension_2_1);
+      expect(1).assertEqual(formInfoNew.FormDimension.Dimension_1_2)
+      expect(2).assertEqual(formInfoNew.FormDimension.Dimension_2_2)
+      expect(3).assertEqual(formInfoNew.FormDimension.Dimension_2_4)
+      expect(4).assertEqual(formInfoNew.FormDimension.Dimension_4_4)
+      expect(5).assertEqual(formInfoNew.FormDimension.Dimension_2_1)
+      expect(1).assertEqual(formInfoNew.FormType.JS);
+      expect(2).assertEqual(formInfoNew.FormType.eTS);
+      expect(1).assertEqual(formInfoNew.VisibilityType.FORM_VISIBLE);
+      expect(2).assertEqual(formInfoNew.VisibilityType.FORM_INVISIBLE);
+      let formStateInfo: formInfoNew.FormStateInfo = {
+        formState: formInfoNew.FormState.READY,
+        want: {
+          bundleName: "com.example.extensionapitest",
+          abilityName: "FirstExtension"
+        }
+      }
       done();
     });
 
