@@ -94,6 +94,7 @@ export default function Http2Test() {
                 let httpRequestOptions ={
                     method: net_http.RequestMethod.GET,
                     extraData: null,
+                    expectDataType: net_Http.HttpDataType.STRING,
                     header: "content-type': 'application/json",
                     readTimeout: 6000,
                     connectTimeout: 6000,
@@ -103,6 +104,7 @@ export default function Http2Test() {
                 httpRequest.request("https://httpbin/anything", httpRequestOptions, (err,data) => {
                     console.info(CaseName + Json.stringify(err)+ "data"+ Json.stringify(data));
                     expect(data.responseCode === net_http.ResponseCode.Ok).assertTrue();
+                    expect(data.resultType == net_Http.HttpDataType.STRING).assertTrue();
                     done();
                 });
             } catch(err){
