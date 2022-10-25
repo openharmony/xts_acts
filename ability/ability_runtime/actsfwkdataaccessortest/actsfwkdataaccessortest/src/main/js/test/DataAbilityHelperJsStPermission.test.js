@@ -18,7 +18,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 
 export default function ActsDataAbilityHelperPermissionTest() {
 describe('ActsDataAbilityHelperPermissionTest', function () {
-    let dataAbilityUri = ("dataability:///com.example.myapplication.DataAbility3");
+    let dataAbilityUri = ("dataability:///com.example.myapplication.TestDataAbility3");
     let DAHelper;
 
     beforeAll(async (done) => {
