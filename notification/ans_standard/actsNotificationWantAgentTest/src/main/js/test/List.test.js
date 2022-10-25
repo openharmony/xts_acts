@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 import ActsNotificationWantAgentTest from './ActsNotificationWantAgentTest.js'
+import ActsNotificationWantAgentNewTest from './ActsNotificationWantAgentNewTest.js'
 export default function testsuite() {
      ActsNotificationWantAgentTest()
+     ActsNotificationWantAgentNewTest()
 }
