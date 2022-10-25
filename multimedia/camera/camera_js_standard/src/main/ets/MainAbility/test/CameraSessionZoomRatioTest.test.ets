@@ -710,7 +710,7 @@ export default function cameraSessionZoomRatioTest(surfaceId: any) {
                         }    
                     }
                     catch {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_ZOOM_RATIO_RANGE_CALLBACK_0100 PASSED");
+                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_GET_ZOOM_RATIO_RANGE_PROMISE_0100 PASSED");
                     }
     
                     await sleep(1000);
