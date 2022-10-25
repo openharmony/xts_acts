@@ -40,6 +40,7 @@ struct promptExample {
             ],
             success: function(data) {
               console.log('dialog success callback，click button : ' + data.tapIndex);
+              Utils.emitEvent(this.text,404)
             },
             fail: function(data) {
               console.log('dialog fail callback' + data.errMsg);
@@ -63,6 +64,7 @@ struct promptExample {
             ],
             success: function(data) {
               console.log('dialog success callback，click button : ' + data.index);
+              Utils.emitEvent(this.text,404)
             },
             cancel: function() {
               console.log('dialog cancel callback');
@@ -97,7 +99,6 @@ struct promptExample {
                   console.info('showDialog error: ' + err);
                 })
         })
-
       Button('showActionMenu2')
         .key('button6')
         .backgroundColor('#ffe20b48')
@@ -118,6 +119,7 @@ struct promptExample {
 			  ]
 			})
 			  .then(data => {
+        Utils.emitEvent(this.text,404)
 				console.info('showActionMenu success, click button: ' + data.index);
 			  })
 			  .catch(err => {
@@ -185,7 +187,6 @@ struct promptExample {
         .fontSize(20)
         .margin({top: 20})
         .onClick(()=> {
-
           try {
             promptAction.showActionMenu({
               title: 'showActionMenu Title Info',
@@ -211,6 +212,7 @@ struct promptExample {
           };
 
         })
+
       Button('showDialog2')
         .key('button5')
         .backgroundColor('#ffe20b56')
@@ -241,10 +243,6 @@ struct promptExample {
             console.error(`showActionMenu args error code is ${error.code}, message is ${error.message}`);
           };
         })
-
-
-
-
     }
   }
 }

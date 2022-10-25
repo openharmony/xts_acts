@@ -23,6 +23,8 @@ let loadedUrl;
 @Entry
 @Component
 struct Index {
+    controllerhandler :ControllerHandler  = new ControllerHandler();
+    fullscreenexithandler ：FullScreenExitHandler  = new FullScreenExitHandler();
     ConsoleMessage:ConsoleMessage=new ConsoleMessage();
     webconTextmenuparam:webConTextMenuParam = new webConTextMenuParam();
     controllerhader: ControllerHandler = new ControllerHandler();
@@ -111,6 +113,9 @@ struct Index {
                 this.handler.constructor();
                 this.handler.exitFullScreen();
             })
+            .onFileSelectorShow((event) => {
+                this.handler = event.handler;
+            })
             .onSslErrorEventReceive((event) => {
                 AlertDialog.show({
                     title: 'onSslErrorEventReceive',
@@ -133,9 +138,9 @@ struct Index {
                 })
                 return true;
                 })
-      .onFullScreenEnter((event) => {
-        this.handler = event.handler;
-      })
+            .onFullScreenEnter((event) => {
+                this.handler = event.handler;
+            })
             Row(){
                 Button("web click").key('webcomponent').onClick(async ()=>{
                     console.info("key==>"+this.str)
@@ -616,6 +621,62 @@ struct Index {
                                                                        
                             },3000)
                             break;
+                        }
+
+                        case "emitfullscreenexithandler":{                           
+                            setTimeout(()=>{   
+                                fullscreenexithandler.constructor()                                                                              
+                                Utils.emitEvent('succesful',69)                                                                                
+                                       
+                            },3000)
+                            break;
+                        }
+                        case "emitcontrollerhandler":{                           
+                            setTimeout(()=>{   
+                                controllerhandler.constructor()                                                                              
+                                Utils.emitEvent('succesful',69)                                                                                
+                                       
+                            },3000)
+                            break;
+                        }
+                        case "emitwebconTextmenuparam":{                           
+                            setTimeout(()=>{   
+                                webconTextmenuparam.constructor()                                                                              
+                                Utils.emitEvent('succesful',69)                                                                                
+                                       
+                            },3000)
+                            break;
+                        }
+
+                        case "emitportsonMessageEvent":{                           
+                            setTimeout(()=>{   
+                                this.ports[0].onMessageEvent((result: string) => {
+                                    console.log("received message from html5, on message:" + result);
+                                    Utils.emitEvent('succesful',69)
+                                })  
+                                },3000)  
+                                break;                                                                                                                                                                                                       
+                            }
+
+                        case "emitportsonMessageEvent":{                           
+                            setTimeout(()=>{   
+                                this.ports[0].onMessageEvent((result: string) => {
+                                    console.log("received message from html5, on message:" + result);
+                                    Utils.emitEvent('succesful',69)
+                                })  
+                                },3000)  
+                                break;                                                                                                                                                                                                       
+                            }
+                        case "emitportsonMessageEvent":{                           
+                            setTimeout(()=>{   
+                                this.ports[0].onMessageEvent((result: string) => {
+                                    console.log("received message from html5, on message:" + result);
+                                    Utils.emitEvent('succesful',69)
+                                })  
+                                },3000)  
+                                break;                                                                                                                                                                                                       
+                            }
+
                         }
 
                         default:
