@@ -37,7 +37,7 @@ describe('resMgrTest', function () {
     * @tc.desc    get the resource manager in callback mode with bundlename
     */
     it('getResourceManager_test_002', 0, async function (done) {
-        resmgr.getResourceManager('com.ohos.settings', (error, mgr) => {
+        resmgr.getResourceManager('com.ohos.contacts', (error, mgr) => {
             expect(mgr !== null).assertTrue();
         })
         done();
@@ -61,7 +61,7 @@ describe('resMgrTest', function () {
     * @tc.desc    get the resource manager in promise mode with bundlename
     */
     it('getResourceManager_test_004', 0, async function (done) {
-        resmgr.getResourceManager('com.ohos.settings').then(mgr => {
+        resmgr.getResourceManager('com.ohos.contacts').then(mgr => {
             expect(mgr !== null).assertTrue();
         })
         done();
