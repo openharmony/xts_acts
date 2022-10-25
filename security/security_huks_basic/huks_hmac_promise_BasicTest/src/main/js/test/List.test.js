@@ -14,8 +14,6 @@
  */
 
 import SecurityHuksHmacBasicPromiseJsunit from './HMAC/SecurityHuksHmacBasicPromiseJsunit.test.js'
-import SecurityHuksFaceFingerNormalJsunit from './HMAC/SecurityHuksFaceFingerNormalJsunit.test.js'
 export default function testsuite() {
 SecurityHuksHmacBasicPromiseJsunit()
-SecurityHuksFaceFingerNormalJsunit()
 }
