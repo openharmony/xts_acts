@@ -351,7 +351,7 @@ describe('continuationManagerTest', function() {
             });
         } catch (e) {
             console.info("testRegisterContinuation002 " + e);
-            expect(err.code == 401).assertTrue();
+            expect(e.code == 401).assertTrue();
             done();
         }
     })
@@ -694,7 +694,7 @@ describe('continuationManagerTest', function() {
             done();
         } catch (e) {
             console.info("testUnregisterContinuation002 " + e);
-            expect(err.code == 401).assertTrue();
+            expect(e.code == 401).assertTrue();
             done();
         }
     })
@@ -800,13 +800,13 @@ describe('continuationManagerTest', function() {
      */
     it('testOn003', 0, async function(done) {
         try {
-            continuationManager.on("deviceSelected", 999, function (data) {
+            continuationManager.on("deviceSelected", "invalid token", function (data) {
                 expect(data == undefined).assertTrue();
             })
             done();
         } catch (e) {
             console.info("testOn003 " + e);
-            expect(e.code == 16600002).assertTrue();
+            expect(e.code != 401).assertTrue();
             done();
         }
     })
@@ -818,13 +818,13 @@ describe('continuationManagerTest', function() {
      */
     it('testOn004', 0, async function(done) {
         try {
-            continuationManager.on("deviceUnselected", 999, function (data) {
+            continuationManager.on("deviceUnselected", "invalid token", function (data) {
                 expect(data == undefined).assertTrue();
             });
             done();
         } catch (e) {
             console.info("testOn004 " + e);
-            expect(e.code == 16600002).assertTrue();
+            expect(e.code == 401).assertTrue();
             done();
         }
     })
@@ -872,11 +872,11 @@ describe('continuationManagerTest', function() {
      */
     it('testOff003', 0, async function(done) {
         try {
-            continuationManager.off("deviceSelected", 999);
+            continuationManager.off("deviceSelected", "invalid token");
             done();
         } catch (e) {
             console.info("testOff003 " + e);
-            expect(e.code == 16600002).assertTrue();
+            expect(e.code == 401).assertTrue();
             done();
         }
     })
@@ -888,11 +888,11 @@ describe('continuationManagerTest', function() {
      */
     it('testOff004', 0, async function(done) {
         try {
-            continuationManager.off("deviceUnselected", 999);
+            continuationManager.off("deviceUnselected", "invalid token");
             done();
         } catch (e) {
             console.info("testOff004 " + e);
-            expect(e.code == 16600002).assertTrue();
+            expect(e.code == 401).assertTrue();
             done();
         }
     })
@@ -1170,7 +1170,7 @@ describe('continuationManagerTest', function() {
             done();
         } catch (e) {
             console.info("testStartContinuationDeviceManager003 " + e);
-            eexpect(e.code == 401).assertTrue();
+            expect(e.code == 401).assertTrue();
             done();
         }
     })
@@ -1486,7 +1486,7 @@ describe('continuationManagerTest', function() {
             done();
         } catch (e) {
             console.info("testUpdateContinuationState002 " + e);
-            expect(err.code == 401).assertTrue();
+            expect(e.code == 401).assertTrue();
             done();
         }
     })
