@@ -34,7 +34,6 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
     var systemWindowValueArr = [];
     var systemWindowTypeArr = [];
     var systemWindowTypeDicArr = [];
-    var windowModeArr=['UNDEFINED','FULLSCREEN','PRIMARY','SECONDARY','FLOATING']
     var systemWindowTypeDic = {
       'TYPE_SYSTEM_ALERT': 1,
       'TYPE_INPUT_METHOD': 2,
@@ -197,7 +196,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
         let tempType = Number(ohosWindow.WindowType[systemWindowTypeDicArr[i]])
         let windId = 'createWindowTest1' + i;
         console.log(msgStr + 'ohosWindow.createWindow:  ' + tempType + ' start');
-        let windowConfig = {name: windId, windowType: tempType, ctx: context};
+        let windowConfig = {name: windId, windowType: tempType, ctx: context, displayId: -1, parentId: -1};
         try{
           let tempWnd = await ohosWindow.createWindow(windowConfig).catch((err) => {
             console.log(msgStr + 'ohosWindow.createWindow ' + tempType + 'catched, err: ' + JSON.stringify(err));
@@ -214,15 +213,15 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
     })
 
     /**
-    * @tc.number     SUB_WINDOW_CREATEWINDOW_JSAPI_004
-    * @tc.name       Test createWindowTest4
+    * @tc.number     SUB_WINDOW_CREATEWINDOW_JSAPI_002
+    * @tc.name       Test createWindowTest2
     * @tc.desc       Verify the scenario of creating a window with duplicate IDs
     */
-    it('createWindowTest4', 0, async function (done) {
-      let caseName = 'createWindowTest4';
+    it('createWindowTest2', 0, async function (done) {
+      let caseName = 'createWindowTest2';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowId = 'createWindowSameidsTest4'
+      let windowId = 'createWindowSameidsTest2'
       let windowConfig = {name: windowId, windowType: 1, ctx: context};
       try{
         let ohosData = await ohosWindow.createWindow(windowConfig).catch((err) => {
@@ -246,12 +245,12 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
 
     })
     /**
-     * @tc.number     SUB_WINDOW_CREATEWINDOW_JSAPI_005
-     * @tc.name       Test createWindowTest5
+     * @tc.number     SUB_WINDOW_CREATEWINDOW_JSAPI_004
+     * @tc.name       Test createWindowTest4
      * @tc.desc       Verify the scenario of creating the application type window
      */
-    it('createWindowTest5', 0, done => {
-      let caseName = 'createWindowTest5';
+    it('createWindowTest4', 0, done => {
+      let caseName = 'createWindowTest4';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin context==' + JSON.stringify(context));
       let loopCount = appWindowTypeArr.length;
@@ -259,7 +258,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       for (let i = 0; i < loopCount; i++) {
         sleep(500)
         let tempType = ohosWindow.WindowType.TYPE_APP;
-        let windId = 'createWindowTest5' + i;
+        let windId = 'createWindowTest4' + i;
         console.log(msgStr + 'ohosWindow.createWindow ' + tempType + ' start');
         let windowConfig = {name: windId, windowType: tempType, ctx: context};
         try{
@@ -280,18 +279,18 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       done();
     })
     /**
-     * @tc.number     SUB_WINDOW_CREATEWINDOW_JSAPI_006
-     * @tc.name       Test createWindowTest6
+     * @tc.number     SUB_WINDOW_CREATEWINDOW_JSAPI_005
+     * @tc.name       Test createWindowTest5
      * @tc.desc       Verify the scenario of creating the system type window
      */
-    it('createWindowTest6', 0, done => {
-      let caseName = 'createWindowTest6';
+    it('createWindowTest5', 0, done => {
+      let caseName = 'createWindowTest5';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let loopCount = systemWindowTypeArr.length;
       console.log('jsunittest loopCount: ' + loopCount);
       let tempType = ohosWindow.WindowType.TYPE_SYSTEM_ALERT;
-      let windId = 'createWindowTest6';
+      let windId = 'createWindowTest5';
       console.log(msgStr + 'ohosWindow.createWindow ' + tempType + ' start');
       let windowConfig = {name: windId, windowType: tempType, ctx: context};
       try{
@@ -317,15 +316,15 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       };
     })
     /**
-     * @tc.number     SUB_WINDOW_CREATEWINDOW_JSAPI_008
-     * @tc.name       Test createWindowTest8
+     * @tc.number     SUB_WINDOW_CREATEWINDOW_JSAPI_006
+     * @tc.name       Test createWindowTest6
      * @tc.desc       Verify the scenario of creating a window with duplicate IDs
      */
-    it('createWindowTest8', 0, done => {
-      let caseName = 'createWindowTest8';
+    it('createWindowTest6', 0, done => {
+      let caseName = 'createWindowTest6';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowId = 'createWindowSameidTest8'
+      let windowId = 'createWindowSameidTest6'
       let winsowConfig = {name: windowId, windowType:1, ctx: context};
       try{
         ohosWindow.createWindow(winsowConfig, (err, data) => {
@@ -397,10 +396,6 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       let caseName = 'getWindowAvoidAreaTest2';
       let msgStr = 'jsunittest ' + caseName + ' ';
       try{
-//        let tempWnd = await ohosWindow.getLastWindow(context).catch((err)=>{
-//          console.error('Failed to obtain the top window. Cause: ' + JSON.stringify(err));
-//          unexpectedError(err, caseName, 'ohosWindow.getLastWindow', done);
-//        })
         let tempWnd = windowStage.getMainWindowSync();
         expect(tempWnd != null).assertTrue();
         try {
@@ -521,7 +516,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       };
     })
     /**
-    * @tc.number     SUB_WINDOW_FINDWINDOW_JSAPI_001
+    * @tc.number     SUB_WINDOW_GETLASTWINDOW_JSAPI_001
     * @tc.name       Test getLastWindowTest1
     * @tc.desc       Get the final show window
     */
@@ -1661,6 +1656,8 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
     * @tc.desc       Test window.setWindowMode API function test.
     */
     it('setWindowModeTest1', 0, function (done) {
+      //['UNDEFINED','FULLSCREEN','PRIMARY','SECONDARY','FLOATING']
+      let windowModeArr=['FULLSCREEN','PRIMARY','SECONDARY','FLOATING']
       let caseName = 'setWindowModeTest1';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let sumCount=0
@@ -1678,11 +1675,10 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
               sumCount++
               console.info(msgStr +'Succeeded in setting the window mode. count: '+sumCount);
               console.info(msgStr +'Succeeded in setting the window mode. loopCount.length: '+loopCount.length);
-              if(sumCount==loopCount.length-1) done();
+              if(sumCount==loopCount.length) done();
             }).catch((err)=>{
               console.log(msgStr +'currentType: '+tempType)
               console.error(msgStr +'Failed to set the window mode. Cause: ' + JSON.stringify(err));
-              if(tempType == 1) return;
               unexpectedError(err, caseName, 'tempWnd.setWindowType', done);
             });
           } catch (exception) {
@@ -1699,6 +1695,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
     * @tc.desc       Verify the scenario where the normal window mode is set
     */
     it('setWindowModeTest2', 0, function (done) {
+      let windowModeArr=['FULLSCREEN','PRIMARY','SECONDARY','FLOATING']
       let caseName = 'setWindowModeTest2';
       let msgStr = 'jsunittest ' + caseName + ' ';
       let sumCount=0
@@ -1716,13 +1713,90 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
               if (err && err.code) {
                 console.log(msgStr +'currentType: '+tempType)
                 console.error(msgStr +'Failed to set the window mode. Cause: ' + JSON.stringify(err));
-                if(tempType == 1) return;
                 unexpectedError(err, caseName, 'tempWnd.setWindowType', done);
               } else {
                 sumCount++
                 console.info(msgStr +'Succeeded in setting the window mode. count: '+sumCount);
                 console.info(msgStr +'Succeeded in setting the window mode. loopCount.length: '+loopCount.length);
-                if(sumCount==loopCount.length-1) done();
+                if(sumCount==loopCount.length) done();
+              }
+            })
+          }  catch (exception) {
+            console.error(msgStr +'try catch Failed to set the window mode. Cause: ' + JSON.stringify(exception));
+          };
+        }
+      } catch (exception) {
+        console.error(msgStr +'try catch Failed to create the window. Cause: ' + JSON.stringify(exception));
+      };
+    })
+    /**
+    * @tc.number     SUB_WINDOW_SETWINDOWMODE_JSAPI_003
+    * @tc.name       Test setWindowModeTest3
+    * @tc.desc       Test window.setWindowMode API function test.
+    */
+    it('setWindowModeTest3', 0, function (done) {
+      let windowModeArr=['UNDEFINED']
+      let caseName = 'setWindowModeTest3';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      let sumCount=0
+      try {
+        let tempWnd = windowStage.getMainWindowSync();
+        expect(!!tempWnd).assertTrue();
+        let loopCount = windowModeArr;
+        console.log(msgStr + 'ohosWindow.windowType' + JSON.stringify(loopCount))
+        for (let i = 0; i < loopCount.length; i++) {
+          sleep(500)
+          let tempType = ohosWindow.WindowMode[loopCount[i]];
+          console.log(msgStr + 'tempWnd.setWindowMode ' + tempType + ' start');
+          try {
+            tempWnd.setWindowMode(tempType).then(()=> {
+              sumCount++
+              console.info(msgStr +'Succeeded in setting the window mode. count: '+sumCount);
+              console.info(msgStr +'Succeeded in setting the window mode. loopCount.length: '+loopCount.length);
+            }).catch((err)=>{
+              console.log(msgStr +'currentType: '+tempType)
+              console.error(msgStr +'Failed to set the window mode. Cause: ' + JSON.stringify(err));
+              expect(err.code==401).assertTrue();
+              done();
+            });
+          } catch (exception) {
+            console.error(msgStr +'try catch Failed to set the window mode. Cause: ' + JSON.stringify(exception));
+          };
+        }
+      } catch (exception) {
+        console.error('try catch Failed to obtain the getMainWindowSync. Cause: ' + JSON.stringify(exception));
+      };
+    })
+    /**
+    * @tc.number     SUB_WINDOW_SETWINDOWMODE_JSAPI_004
+    * @tc.name       Test setWindowModeTest4
+    * @tc.desc       Verify the scenario where the normal window mode is set
+    */
+    it('setWindowModeTest4', 0, function (done) {
+      let windowModeArr=['UNDEFINED']
+      let caseName = 'setWindowModeTest4';
+      let msgStr = 'jsunittest ' + caseName + ' ';
+      let sumCount=0
+      try{
+        let wnd = windowStage.getMainWindowSync();
+        expect(!!wnd).assertTrue();
+        let loopCount = windowModeArr;
+        console.log(msgStr + 'ohosWindow.windowType' + JSON.stringify(loopCount))
+        for (let i = 0; i < loopCount.length; i++) {
+          sleep(500)
+          let tempType = ohosWindow.WindowMode[loopCount[i]];
+          console.log(msgStr + 'tempWnd.setWindowMode ' + tempType + ' start');
+          try{
+            wnd.setWindowMode(tempType, (err, data) => {
+              if (err && err.code) {
+                console.log(msgStr +'currentType: '+tempType)
+                console.error(msgStr +'Failed to set the window mode. Cause: ' + JSON.stringify(err));
+                expect(err.code==401).assertTrue();
+                done();
+              } else {
+                sumCount++
+                console.info(msgStr +'Succeeded in setting the window mode. count: '+sumCount);
+                console.info(msgStr +'Succeeded in setting the window mode. loopCount.length: '+loopCount.length);
               }
             })
           }  catch (exception) {
