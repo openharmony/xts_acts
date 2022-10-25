@@ -2240,13 +2240,24 @@ describe('deviceKvStoreCallbackTest', function () {
      * @tc.name Test Js Api DeviceKvStore.9.CloseResultSet() testcase 004
      */
     it('SUB_DDM_DKV_DEVICESTORE_CLOSERESULTSET_0400', 0, async function (done) {
-        console.info('SUB_DDM_DKV_DEVICESTORE_CLOSERESULTSET_0400');
+        console.info('SUB_DDM_DKV_DEVICESTORE_CLOSERESULTSET_0400 start');
+        let errorInfo = undefined;
         try {
+            kvStore.closeResultSet(1, function(err, data){
+                if(err != null){
+                    console.error('SUB_DDM_DKV_DEVICESTORE_CLOSERESULTSET_0400 e ' + `, error code is ${err.code}, message is ${err.message}`)
+                }else{
+                    console.info('SUB_DDM_DKV_DEVICESTORE_CLOSERESULTSET_0400 success(callback)');
+                    expect(null).assertFail();
+                }
+            })
             console.info('SUB_DDM_DKV_DEVICESTORE_CLOSERESULTSET_0400 success');
         }catch(e) {
             console.error('SUB_DDM_DKV_DEVICESTORE_CLOSERESULTSET_0400 e ' + `, error code is ${e.code}, message is ${e.message}`);
-            expect(null).assertFail();
+            errorInfo = e
+            expect(e.code).assertEqual("401");
         }
+        expect(errorInfo != undefined).assertTrue();
         done();
     })
 
@@ -2413,7 +2424,6 @@ describe('deviceKvStoreCallbackTest', function () {
                     done();
                 });
             });
-            console.info('SUB_DDM_DKV_DEVICESTORE_GETENTRIES_0100 success');
             console.info('SUB_DDM_DKV_DEVICESTORE_GETENTRIES_0200 success');
         }catch(e) {
             console.error('SUB_DDM_DKV_DEVICESTORE_GETENTRIES_0200 e ' + `, error code is ${e.code}, message is ${e.message}`);
