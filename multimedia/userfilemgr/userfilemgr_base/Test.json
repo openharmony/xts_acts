@@ -31,9 +31,9 @@
         {
             "type": "ShellKit",
             "run-command": [
-                "mkdir -pv /storage/media/100/local/files/Pictures/{Static,On,Off,myAlbum,deleteCb,deletePro}",
-                "mkdir -pv /storage/media/100/local/files/Videos/{Static,On,Off,myAlbum,deleteCb,deletePro}",
-                "mkdir -pv /storage/media/100/local/files/Audios/{Static,On,Off,myAlbum,deleteCb,deletePro}",
+                "mkdir -pv /storage/media/100/local/files/Pictures/{Static,onAsset,offAsset,onAlbum,offAlbum,myAlbum,deleteCb,deletePro}",
+                "mkdir -pv /storage/media/100/local/files/Videos/{Static,onAsset,offAsset,onAlbum,offAlbum,myAlbum,deleteCb,deletePro}",
+                "mkdir -pv /storage/media/100/local/files/Audios/{Static,onAsset,offAsset,onAlbum,offAlbum,myAlbum,deleteCb,deletePro}",
                 
                 "for d in Static; do for i in $$(seq 4); do cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/$$d/0$$i.jpg; done;done;",
                 "for d in Static; do for i in $$(seq 4); do cp /storage/media/100/local/temp/01.mp3 /storage/media/100/local/files/Audios/$$d/0$$i.mp3; done;done;",
@@ -41,9 +41,9 @@
                 "for d in deleteCb deletePro; do for i in $$(seq 2); do cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/$$d/0$$i.jpg; done;done;",
                 "for d in deleteCb deletePro; do for i in $$(seq 2); do cp /storage/media/100/local/temp/01.mp3 /storage/media/100/local/files/Audios/$$d/0$$i.mp3; done;done;",
                 "for d in deleteCb deletePro; do for i in $$(seq 2); do cp /storage/media/100/local/temp/01.mp4 /storage/media/100/local/files/Videos/$$d/0$$i.mp4; done;done;",
-                "for d in On Off myAlbum; do for i in $$(seq 1); do cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/$$d/0$$i.jpg; done;done;",
-                "for d in On Off myAlbum; do for i in $$(seq 1); do cp /storage/media/100/local/temp/01.mp3 /storage/media/100/local/files/Audios/$$d/0$$i.mp3; done;done;",
-                "for d in On Off myAlbum; do for i in $$(seq 1); do cp /storage/media/100/local/temp/01.mp4 /storage/media/100/local/files/Videos/$$d/0$$i.mp4; done;done;",
+                "for d in onAsset offAsset onAlbum offAlbum myAlbum; do for i in $$(seq 1); do cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/$$d/0$$i.jpg; done;done;",
+                "for d in onAsset offAsset onAlbum offAlbum myAlbum; do for i in $$(seq 1); do cp /storage/media/100/local/temp/01.mp3 /storage/media/100/local/files/Audios/$$d/0$$i.mp3; done;done;",
+                "for d in onAsset offAsset onAlbum offAlbum myAlbum; do for i in $$(seq 1); do cp /storage/media/100/local/temp/01.mp4 /storage/media/100/local/files/Videos/$$d/0$$i.mp4; done;done;",
                 
                 "chmod -R 777 /storage/media/100/local/files/*",
                 "chmod -R 777 /data/service/el2/100/hmdfs/account/files/*",

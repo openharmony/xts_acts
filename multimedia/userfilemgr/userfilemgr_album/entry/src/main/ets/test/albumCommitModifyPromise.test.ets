@@ -15,6 +15,7 @@
 
 import userFileManager from '@ohos.filemanagement.userFileManager';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
+import dataSharePredicates from '@ohos.data.dataSharePredicates';
 
 import {
     sleep,
@@ -50,11 +51,24 @@ export default function albumCommitModifyPromise(abilityContext) {
                 const albumCountPass = await checkAssetsCount(done, testNum, fetchAlbumResult, expectAlbumCount);
                 if (!albumCountPass) return;
                 const album = await fetchAlbumResult.getFirstObject();
+                const oldName = album.albumName;
+                const albumUri = album.albumUri;
                 const newName = 'newAlbumNamePromise';
                 fetchAlbumResult.close();
                 album.albumName = newName;
                 await album.commitModify();
-                expect(true).assertTrue();
+                let predicates = new dataSharePredicates.DataSharePredicates();
+                predicates.equalTo(userFileManager.AlbumKey.URI.toString(), albumUri);
+                let ops = {
+                    predicates: predicates
+                };
+                const newResult = await userfilemgr.getPhotoAlbums(ops);
+                const checkAlbumCountPass = await checkAssetsCount(done, testNum, newResult, expectAlbumCount);
+                if (!checkAlbumCountPass) return;
+                const newAlbum = await newResult.getFirstObject();
+                expect(newAlbum.albumName).assertEqual(newName);
+                newAlbum.albumName = oldName;
+                await newAlbum.commitModify();
                 done();
             } catch (error) {
                 console.info(`${testNum}, failed error: ${error}`)

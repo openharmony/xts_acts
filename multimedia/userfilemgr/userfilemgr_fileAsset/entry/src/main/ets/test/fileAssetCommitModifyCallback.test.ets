@@ -86,10 +86,8 @@ export default function fileAssetCommitModifyCallbackTest(abilityContext) {
                     let checkAssetCountPass = await checkAssetsCount(done, testNum, newResult, 1);
                     if (!checkAssetCountPass) return;
                     const newAsset = await newResult.getFirstObject();
-                    console.info(`${testNum} newAsset : ${newAsset}`)
                     newResult.close();
-                    expect(newAsset.get(fileKey.DISPLAY_NAME)).assertEqual(val);
-                    console.info(`${testNum} DISPLAY_NAME : ${newAsset.get(fileKey.DISPLAY_NAME)}`)
+                    expect(newAsset.get(fileKey.TITLE)).assertEqual(val);
                     done();
                 });
             } catch (error) {
