@@ -23,27 +23,34 @@ export default {
         this.title = this.$t('strings.world');
     },
     onShow() {
-        console.info('ServiceAbility onStart');
-        var accountMgr = account_appAccount.createAppAccountManager();
-        console.info('ServiceAbility lcc addAccount 01 onStart');
-        accountMgr.addAccount("zhangsan", "",(data)=>{
-            console.info('ServiceAbility lcc enableAppAccess 01 onStart');
-            accountMgr.enableAppAccess("zhangsan", "com.example.actsaccounttest");
-            console.info('ServiceAbility lcc addAccount 02 onStart');
-            accountMgr.addAccount("lisi", "",(err)=>{
-                console.info('ServiceAbility lcc enableAppAccess 02 onStart');
-                accountMgr.enableAppAccess("lisi", "com.example.actsaccounttest");
-                console.info('ServiceAbility lcc addAccount 03 onStart');
-                accountMgr.addAccount("wangwu", "",(err)=>{
-                    console.info('ServiceAbility lcc enableAppAccess 03 onStart');
-                    accountMgr.enableAppAccess("wangwu", "com.example.actsaccounttest",(err)=>{
+        console.info('====>ServiceAbility onStart');
+        var accountMgr = account_appAccount.createAppAccountManager();        
+        accountMgr.createAccount("zhangsan", async(data)=>{
+            console.info('====>ServiceAbility addAccount 01 onStart');
+            console.info('====>ServiceAbility setAppAccess actsaccounttest zhangsan');
+            await accountMgr.setAppAccess("zhangsan", "com.example.actsaccounttest", true);
+            console.info('====>ServiceAbility setAppAccess actsaccountoperatetest zhangsan');
+            await accountMgr.setAppAccess("zhangsan", "com.example.actsaccountoperatetest", true);
+            console.info('====>ServiceAbility lcc addAccount 02 onStart');
+            accountMgr.createAccount("lisi", async (err)=>{
+                console.info('====>ServiceAbility setAppAccess actsaccounttest lisi');
+                await accountMgr.setAppAccess("lisi", "com.example.actsaccounttest", true);
+                console.info('====>ServiceAbility setAppAccess actsaccountoperatetest lisi');
+                await accountMgr.setAppAccess("lisi", "com.example.actsaccountoperatetest", true);
+                console.info('====>ServiceAbility lcc addAccount 03 onStart');
+                accountMgr.createAccount("wangwu", async (err)=>{
+                    console.info('====>ServiceAbility lcc enableAppAccess 03 onStart');
+                    console.info('====>ServiceAbility setAppAccess actsaccounttest wangwu');
+                    await accountMgr.setAppAccess("wangwu", "com.example.actsaccounttest", true)
+                    console.info('====>ServiceAbility setAppAccess actsaccountoperatetest wangwu');
+                    accountMgr.setAppAccess("wangwu", "com.example.actsaccountoperatetest", true, (err)=>{
                         featureAbility.terminateSelf();
-                        console.info('ServiceAbility add end');
+                        console.info('====>ServiceAbility add end');
                     });
                 });
             });
         });
-        console.info('ServiceAbility onStart end');
+        console.info('====>ServiceAbility onStart end');
     },
     onReady() {
     },
