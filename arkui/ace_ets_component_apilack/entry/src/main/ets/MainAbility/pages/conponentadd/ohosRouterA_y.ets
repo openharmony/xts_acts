@@ -196,12 +196,13 @@ struct OhosRouterA {
         .fontSize(20)
         .margin({top: 20})
         .onClick(() => {
-          routery.push({
-            uri: 'pages/ohosRouterB',
-            params: {
-              data: 'B Page'
+          try {
+            router.enableBackPageAlert({            
+              message: 'Message Info'        
+            });
+            } catch(error) {
+            console.error(`enableBackPageAlert failed, code is ${error.code}, message is ${error.message}`);
             }
-          });
         });
 
       Button('disableAlertBeforeBackPage')
