@@ -52,7 +52,7 @@ export default function fileAssetCommitModifyPromiseTest(abilityContext) {
                 let fileKey;
                 if (isAudio) {
                     fetchAssetResult = await userfilemgr.getAudioAssets(fetchOp);
-                    fileKey.userFileManager.AudioKey;
+                    fileKey = userFileManager.AudioKey;
                 } else {
                     fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOp);
                     fileKey = userFileManager.ImageVideoKey;
@@ -78,10 +78,8 @@ export default function fileAssetCommitModifyPromiseTest(abilityContext) {
                 checkAssetCountPass = await checkAssetsCount(done, testNum, newResult, 1);
                 if (!checkAssetCountPass) return;
                 const newAsset = await newResult.getFirstObject();
-                console.info(`${testNum} newAsset : ${newAsset}`)
                 newResult.close();
-                expect(newAsset.get(fileKey.DISPLAY_NAME)).assertEqual(val);
-                console.info(`${testNum} DISPLAY_NAME : ${newAsset.get(fileKey.DISPLAY_NAME)}`)
+                expect(newAsset.get(fileKey.TITLE)).assertEqual(val);
                 done();
             } catch (error) {
                 console.info(`${testNum} error : ${error}`);

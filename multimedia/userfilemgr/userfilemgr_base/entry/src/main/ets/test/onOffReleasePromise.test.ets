@@ -18,8 +18,8 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 
 import {
     sleep,
-    audioFetchOps,
-    imageVideoFetchOps,
+    audioNameFetchOps,
+    imageVideoNameFetchOps,
     checkPresetsAssets,
     checkAssetsCount,
     albumFetchOps,
@@ -106,7 +106,7 @@ export default function onOffReleasePromiseTest(abilityContext) {
          */
         it('SUB_USERFILE_MGR_ON_01', 2, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_ON_01';
-            let currentFetchOps = imageVideoFetchOps(testNum, 'Pictures/On/');
+            let currentFetchOps = imageVideoNameFetchOps(testNum, 'Pictures/onAsset/', '01.jpg');
             let type = 'imageChange';
             let newName = 'imageChange.jpg';
             let isAudio = false;
@@ -123,7 +123,7 @@ export default function onOffReleasePromiseTest(abilityContext) {
          */
         it('SUB_USERFILE_MGR_ON_02', 2, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_ON_02';
-            let currentFetchOps = imageVideoFetchOps(testNum, 'Videos/On/');
+            let currentFetchOps = imageVideoNameFetchOps(testNum, 'Videos/onAsset/', '01.mp4');
             let type = 'videoChange';
             let newName = 'videoChange.mp4';
             let isAudio = false;
@@ -140,7 +140,7 @@ export default function onOffReleasePromiseTest(abilityContext) {
          */
          it('SUB_USERFILE_MGR_ON_03', 2, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_ON_03';
-            let currentFetchOps = audioFetchOps(testNum, 'Audios/On/');
+            let currentFetchOps = audioNameFetchOps(testNum, 'Audios/onAsset/', '01.mp3');
             let type = 'audioChange';
             let newName = 'audioChange.mp3';
             let isAudio = true;
@@ -155,10 +155,10 @@ export default function onOffReleasePromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 2
          */
-         it('SUB_USERFILE_MGR_ON_04', 2, async function (done) {
+        it('SUB_USERFILE_MGR_ON_04', 2, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_ON_04';
             try {
-                let currentFetchOps = albumFetchOps(testNum, 'Pictures/', 'On');
+                let currentFetchOps = albumFetchOps(testNum, 'Pictures/', 'onAlbum');
                 let type: userFileManager.ChangeEvent = 'albumChange';
                 let count = 0;
                 userfilemgr.on(type, () => { count++; });
@@ -173,7 +173,7 @@ export default function onOffReleasePromiseTest(abilityContext) {
                 await sleep(1000);
                 expect(count > 0).assertTrue();
                 album.albumName = oldName;
-                await album.commitModify(); 
+                await album.commitModify();
                 done();
             } catch (error) {
                 console.info(`${testNum}:: error :${error}`);
@@ -192,7 +192,7 @@ export default function onOffReleasePromiseTest(abilityContext) {
          */
         it('SUB_USERFILE_MGR_OFF_01', 2, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_OFF_01';
-            let currentFetchOps = imageVideoFetchOps(testNum, 'Pictures/Off/');
+            let currentFetchOps = imageVideoNameFetchOps(testNum, 'Pictures/offAsset/', '01.jpg');
             let type = 'imageChange';
             let newName = 'imageChange.jpg';
             let isAudio = false;
@@ -209,7 +209,7 @@ export default function onOffReleasePromiseTest(abilityContext) {
          */
         it('SUB_USERFILE_MGR_OFF_02', 2, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_OFF_02';
-            let currentFetchOps = imageVideoFetchOps(testNum, 'Videos/Off/');
+            let currentFetchOps = imageVideoNameFetchOps(testNum, 'Videos/offAsset/', '01.mp4');
             let type = 'videoChange';
             let newName = 'videoChange.mp4';
             let isAudio = false;
@@ -226,7 +226,7 @@ export default function onOffReleasePromiseTest(abilityContext) {
          */
          it('SUB_USERFILE_MGR_OFF_03', 2, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_OFF_03';
-            let currentFetchOps = audioFetchOps(testNum, 'Audios/Off/');
+            let currentFetchOps = audioNameFetchOps(testNum, 'Audios/offAsset/', '01.mp3');
             let type = 'audioChange';
             let newName = 'audioChange.mp3';
             let isAudio = true;
@@ -241,10 +241,10 @@ export default function onOffReleasePromiseTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 2
          */
-         it('SUB_USERFILE_MGR_OFF_04', 2, async function (done) {
+        it('SUB_USERFILE_MGR_OFF_04', 2, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_OFF_04';
             try {
-                let currentFetchOps = albumFetchOps(testNum, 'Pictures/', 'Off');
+                let currentFetchOps = albumFetchOps(testNum, 'Pictures/', 'offAlbum');
                 let type: userFileManager.ChangeEvent = 'albumChange';
                 let count = 0;
                 userfilemgr.on(type, () => { count++; });
@@ -252,12 +252,15 @@ export default function onOffReleasePromiseTest(abilityContext) {
                 let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchAlbumResult, 1);
                 if (!checkAssetCountPass) return;
                 const album = await fetchAlbumResult.getFirstObject();
+                const oldName = album.albumName
                 fetchAlbumResult.close();
                 album.albumName = type.toString();
                 userfilemgr.off(type);
                 await album.commitModify();
                 await sleep(1000);
                 expect(count).assertEqual(0);
+                album.albumName = oldName;
+                await album.commitModify();
                 done();
             } catch (error) {
                 console.info(`${testNum}:: error :${error}`);

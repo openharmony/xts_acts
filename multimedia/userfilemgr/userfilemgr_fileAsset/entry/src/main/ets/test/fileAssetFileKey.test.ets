@@ -51,7 +51,7 @@ export default function fileAssetFileKeyTest(abilityContext) {
         const getAlbumsByKey = async function (done, testNum, type, fileKey) {
             try {
                 let expectAlbumNum = 1;
-                let fetchOps = albumFetchOps(testNum, 'Pictures/', 'Static');
+                let fetchOps = albumFetchOps(testNum, 'Pictures/', 'FileKey');
                 let fetchAlbumResult = await userfilemgr.getPhotoAlbums(fetchOps);
                 let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchAlbumResult, expectAlbumNum);
                 if (!checkAssetCountPass) return;
@@ -73,10 +73,13 @@ export default function fileAssetFileKeyTest(abilityContext) {
                         return;
                     }
                     const fetchCount = newAlbumResult.getCount();
+                    if (fetchCount <= 0) {
+                        expect(false).assertTrue();
+                        done();
+                        return;
+                    }
                     const currentAlbum = await newAlbumResult.getFirstObject();
                     expect(currentAlbum[type]).assertEqual(album[type]);
-                    expect(fetchCount > 0).assertTrue();
-                    console.info(`${testNum} newAlbum : ${currentAlbum[type]} count: ${fetchCount}`)
                     newAlbumResult.close();
                     done();
                 });
@@ -90,7 +93,7 @@ export default function fileAssetFileKeyTest(abilityContext) {
         const getPhotoAssetsByKey = async function (done, testNum, fileKey) {
             try {
                 let expectAssetNum = 1;
-                let fetchOps = imageVideoFetchOps(testNum, 'Pictures/Static/');
+                let fetchOps = imageVideoFetchOps(testNum, 'Pictures/FileKey/');
                 let fetchAssetResult = await userfilemgr.getPhotoAssets(fetchOps);
                 let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchAssetResult, expectAssetNum);
                 if (!checkAssetCountPass) return;
@@ -112,9 +115,13 @@ export default function fileAssetFileKeyTest(abilityContext) {
                         return;
                     }
                     const fetchCount = newAssetResult.getCount();
+                    if (fetchCount <= 0) {
+                        expect(false).assertTrue();
+                        done();
+                        return;
+                    }
                     const currentAsset = await newAssetResult.getFirstObject();
                     expect(currentAsset.get(fileKey)).assertEqual(asset.get(fileKey));
-                    expect(fetchCount > 0).assertTrue();
                     done();
                 });
             } catch (error) {
@@ -127,7 +134,7 @@ export default function fileAssetFileKeyTest(abilityContext) {
         const getAudioAssetsByKey = async function (done, testNum, fileKey) {
             try {
                 let expectAssetNum = 1;
-                let fetchOps = audioFetchOps(testNum, 'Audios/Static/');
+                let fetchOps = audioFetchOps(testNum, 'Audios/FileKey/');
                 let fetchAssetResult = await userfilemgr.getAudioAssets(fetchOps);
                 let checkAssetCountPass = await checkAssetsCount(done, testNum, fetchAssetResult, expectAssetNum);
                 if (!checkAssetCountPass) return;
@@ -148,9 +155,13 @@ export default function fileAssetFileKeyTest(abilityContext) {
                         return;
                     }
                     const fetchCount = newAssetResult.getCount();
+                    if (fetchCount <= 0) {
+                        expect(false).assertTrue();
+                        done();
+                        return;
+                    }
                     const currentAsset = await newAssetResult.getFirstObject();
                     expect(currentAsset.get(fileKey)).assertEqual(asset.get(fileKey));
-                    expect(fetchCount > 0).assertTrue();
                     done();
                 });
             } catch (error) {
@@ -168,7 +179,7 @@ export default function fileAssetFileKeyTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 2
          */
-         it('SUB_USERFILE_MGR_GETPHOTOALBUMSBYKEY_01', 2, async function (done) {
+        it('SUB_USERFILE_MGR_GETPHOTOALBUMSBYKEY_01', 2, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_GETPHOTOALBUMSBYKEY_01';
             let type = 'albumUri';
             let fileKey = AlbumKey.URI;
@@ -183,7 +194,7 @@ export default function fileAssetFileKeyTest(abilityContext) {
          * @tc.type      : Function
          * @tc.level     : Level 2
          */
-         it('SUB_USERFILE_MGR_GETPHOTOALBUMSBYKEY_02', 2, async function (done) {
+        it('SUB_USERFILE_MGR_GETPHOTOALBUMSBYKEY_02', 2, async function (done) {
             let testNum = 'SUB_USERFILE_MGR_GETPHOTOALBUMSBYKEY_02';
             let type = 'fileType';
             let fileKey = AlbumKey.FILE_TYPE;
