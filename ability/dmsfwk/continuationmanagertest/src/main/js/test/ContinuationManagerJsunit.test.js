@@ -806,7 +806,7 @@ describe('continuationManagerTest', function() {
             done();
         } catch (e) {
             console.info("testOn003 " + e);
-            expect(e.code != 401).assertTrue();
+            expect(e.code == 401).assertTrue();
             done();
         }
     })
