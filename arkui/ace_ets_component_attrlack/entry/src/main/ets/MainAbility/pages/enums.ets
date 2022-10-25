@@ -36,6 +36,13 @@ struct EnumsCancel {
 
   @State mouseText: string = 'MouseText'
 
+
+  @State fit:RelateType = RelateType.FIT;
+  @State fill:RelateType = RelateType.FILL;
+  @State mainonly:TitleHeight = TitleHeight.MainOnly;
+  @State MainWithSub:TitleHeight = TitleHeight.MainWithSub;
+  @State Block:HitTestMode  = HitTestMode.Block;
+
   @Styles pressedStyles() {
     .backgroundColor('red')
     .opacity(1)

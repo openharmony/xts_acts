@@ -1,0 +1,256 @@
+/*
+ * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+import events_emitter from '@ohos.events.emitter';
+import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
+import { Hypium } from '@ohos/hypium';
+import testsuite from '../../test/List.test';
+import Utils from '../../test/Utils';
+import web_webview from '@ohos.web.webview';
+
+
+
+
+@Entry
+@Component
+struct Index {
+    // add
+    @State isVoid: boolean = true;
+    handler: FullScreenExitHandler = null;
+    @State atio: number = 150;
+    ports: WebMessagePort[] = null;
+    testObj = {
+        test: (data1, data2, data3) => {
+            console.log("data1:" + data1);
+            console.log("data2:" + data2);
+            console.log("data3:" + data3);
+            return "AceString";
+        },
+        toString: () => {
+            console.log('toString' + "interface instead.");
+        }
+    }
+
+    message = new ConsoleMessage("1","12",23,MessageLevel.Debug);
+
+
+    controller:WebController = new WebController()
+    responseweb: WebResourceResponse = new WebResourceResponse()
+    @State str:string="emitStoreWebArchive"
+
+
+    onPageShow(){
+        let valueChangeEvent={
+            eventId:10,
+            priority:events_emitter.EventPriority.LOW
+        }
+        events_emitter.on(valueChangeEvent,this.valueChangeCallBack)
+    }
+    private valueChangeCallBack=(eventData)=>{
+        console.info("web page valueChangeCallBack");
+        if(eventData != null){
+             console.info("valueChangeCallBack:"+   JSON.stringify(eventData));
+             if(eventData.data.ACTION != null){
+                 this.str = eventData.data.ACTION;
+             }
+        }
+    }
+    private jsObj={
+        test:(res)=>{
+            Utils.emitEvent(res,102);
+        },
+        toString:(str)=>{
+            console.info("ets toString:"+String(str));
+        },
+        register:(res)=>{
+            Utils.emitEvent(res,86);
+            return "web222"
+        }
+    }
+    aboutToAppear(){
+        let abilityDelegator: any
+        abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+        let abilityDelegatorArguments: any
+        abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+        console.info('start run testcase!!!')
+        Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite) 
+    }
+    build(){
+        Column() {
+            // add api9
+            Web({ src: 'www.baidu.com', controller: this.controller })
+                .multiWindowAccess(true).key('multiwindow')
+                .onWindowExit(() => {
+                    console.log("onWindowExit...");
+                    setTimeout(()=>{
+                        Utils.emitEvent(this.isVoid,800)
+                    },1000)
+                }).
+               onWindowNew((event) => {
+                console.log("onWindowNew...");
+                var popController: WebController = new WebController();
+                event.handler.setWebController(popController);
+                setTimeout(()=>{
+                    Utils.emitEvent(this.isVoid,801)
+                },1000)
+
+               }).onFullScreenEnter((event) => {
+                 console.log("onFullScreenEnter...");
+                 this.handler = event.handler;
+                 setTimeout(()=>{
+                    Utils.emitEvent(this.isVoid,802)
+                },1000)
+               }).onFullScreenExit(() => {
+                  console.info("onFullScreenExit...");
+                  this.handler.exitFullScreen();
+                })
+
+            Web({ src: 'www.baidu.com', controller: this.controller }).key('web2')
+                .onSslErrorEventReceive((event) => {
+                    AlertDialog.show({
+                        title: 'onSslErrorEventReceive',
+                        message: 'text',
+                        primaryButton: {
+                            value: 'confirm',
+                            action: () => {
+                                event.handler.handleConfirm();
+                            }
+                        },
+                        secondaryButton: {
+                            value: 'cancel',
+                            action: () => {
+                                event.handler.handleCancel();
+                            }
+                        },
+                        cancel: () => {
+                            event.handler.handleCancel();
+                        }
+                    })
+                    setTimeout(()=>{
+                        Utils.emitEvent(this.isVoid,803)
+                    },1000)
+                    return true;
+                }).textZoomAtio(this.atio).tableData(true)
+                .javaScriptProxy({
+                    object: this.testObj,
+                    name: "objName",
+                    methodList: ["test", "toString"],
+                    controller: this.controller,
+                 }).onConsole((event) => {
+                      console.log('getMessage:' + event.message.getMessage());
+                      console.log('getSourceId:' + event.message.getSourceId());
+                      console.log('getLineNumber:' + event.message.getLineNumber());
+                     console.log('getMessageLevel:' + event.message.getMessageLevel());
+                    return false;
+                })
+
+            Button("web click").key('webcomponentapi9').onClick(async ()=>{
+                console.info("key==>"+this.str)
+                switch(this.str){
+                    // add
+                    case "emitGeturl":
+                         let url = this.controller.getUrl();
+                         Utils.emitEvent(url,810);
+                         break;
+                    case "emitclearClientAuthenticationCache":
+                        this.controller.clearClientAuthenticationCache();
+                        Utils.emitEvent(this.isVoid,811);
+                        break;
+                    case "emitclearSslCache":
+                        this.controller.clearSslCache();
+                        Utils.emitEvent(this.isVoid,812);
+                        break;
+                    case "emitsearchNext":
+                        this.controller.searchNext(true);
+                        Utils.emitEvent(this.isVoid,813);
+                        break;
+                    case "emitclearMatches":
+                        this.controller.clearMatches();
+                        Utils.emitEvent(this.isVoid,814);
+                        break;
+                    case "emitDefaultUserAgent":
+                        let usrAgent = this.controller.getDefaultUserAgent();
+                        Utils.emitEvent(usrAgent,815);
+                        break;
+                    case "emitgetWebId":
+                        let webId = this.controller.getWebId();
+                        Utils.emitEvent(webId,816);
+                        break;
+                    case "emitpostMessage":
+                        var sendPortArray = new Array(this.ports[1]);
+                        var msgEvent = new WebMessageEvent();
+                        msgEvent.setData("__init_port__");
+                        msgEvent.setPorts(sendPortArray);
+                        this.controller.postMessage({message: msgEvent, uri: "*"});
+                        break;
+                    case "emitcreateWebMessagePorts":
+                        this.ports = this.controller.createWebMessagePorts();
+                        console.info("createWebMessagePorts size:" + this.ports.length)
+                        Utils.emitEvent(this.ports.length,817);
+                        break;
+                    case "emitdeleteSessionCookie":
+                        web_webview.WebCookieManager.deleteSessionCookie();
+                        Utils.emitEvent(this.isVoid,818);
+                        break;
+                    case "emitdeleteExpiredCookie":
+                        web_webview.WebCookieManager.deleteExpiredCookie();
+                        Utils.emitEvent(this.isVoid,810);
+                        break;
+                    case "emitexistCookie":
+                        let vaue = web_webview.WebCookieManager.existCookie();
+                        Utils.emitEvent(vaue,820);
+                        break;
+                    case "emitgetCookie":
+                        let value = web_webview.WebCookieManager.getCookie('www.baidu.com');
+                        console.info("value: " + value);
+                        Utils.emitEvent(value,821);
+                        break;
+
+                    case "emitsetCookie":
+                        let value02 = web_webview.WebCookieManager.setCookie('www.baidu.com','a=b');
+                        console.info("value: " + value02);
+                        Utils.emitEvent(value02,822);
+                        break;
+
+                    case "emitsaveCookie":
+                        web_webview.WebCookieManager.saveCookie();
+                        Utils.emitEvent(this.isVoid,823);
+                        break;
+                    case "emitputAcceptFileURICookieEnabled":
+                        web_webview.WebCookieManager.putAcceptFileURICookieEnabled(false)
+                        Utils.emitEvent(this.isVoid,824);
+                        break;
+                    case "emitputAcceptThirdPartyCookieEnabled":
+                        web_webview.WebCookieManager.putAcceptThirdPartyCookieEnabled(false)
+                        Utils.emitEvent(this.isVoid,825);
+                        break;
+
+                    case "emitisFileURICookieAllowed":
+                        let isAll = web_webview.WebCookieManager.isFileURICookieAllowed();
+                        Utils.emitEvent(isAll,826);
+                        break;
+                    case "emitisThirdPartyCookieAllowed":
+                        let isThirdParty = web_webview.WebCookieManager.isThirdPartyCookieAllowed();
+                        Utils.emitEvent(isThirdParty,827);
+                        break;
+
+
+                    default:
+                        console.info("can not match case")
+                }
+            })
+        }
+
+    }
+}

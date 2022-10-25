@@ -19,21 +19,21 @@ const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-export default struct FeatureAbilityAbilityName {
+export default struct FeatureAbilityStartAbility {
   aboutToAppear() {
-    Log.showInfo(TAG, `aboutToAppear FeatureAbilityAbilityName start`)
+    Log.showInfo(TAG, `aboutToAppear FeatureAbilityStartAbility start`)
   }
 
   aboutToDisappear() {
-    Log.showInfo(TAG, `aboutToDisAppear FeatureAbilityAbilityName end`)
+    Log.showInfo(TAG, `aboutToDisAppear FeatureAbilityStartAbility end`)
   }
 
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
 
-      Text("featureAbility-SubscribeMessageResponse-DeviceId")
+      Text("featureAbility-StartAbility")
         .width(320)
-        .height(50)
+        .height(70)
         .fontSize(20)
         .opacity(1)
         .align(Alignment.TopStart)
@@ -43,21 +43,185 @@ export default struct FeatureAbilityAbilityName {
         .padding(10)
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
-        .key("subscribeMessageResponseDeviceIdText")
+        .key("startAbilityText")
         .onClick(() => {
-          FeatureAbility.subscribeMsg({
-            success: (data) => {
-              console.log(`deviceId: ${data.deviceId}`)
+          FeatureAbility.startAbility({
+            bundleName: "com.example.testapp",
+            abilityName: "com.example.testApp.MainAbility"
+          })
+        })
+
+      Text("featureAbility-StartAbilityForResult")
+        .width(320)
+        .height(70)
+        .fontSize(20)
+        .opacity(1)
+        .align(Alignment.TopStart)
+        .fontColor(0xCCCCCC)
+        .lineHeight(25)
+        .border({ width: 1 })
+        .padding(10)
+        .textAlign(TextAlign.Center)
+        .textOverflow({ overflow: TextOverflow.None })
+        .key("startAbilityForResultText")
+        .onClick(() => {
+          FeatureAbility.startAbilityForResult({
+            bundleName: "com.example.testapp",
+            abilityName: "com.example.testApp.MainAbility" })
+        })
+
+      Text("featureAbility-FinishWithResult")
+        .width(320)
+        .height(70)
+        .fontSize(20)
+        .opacity(1)
+        .align(Alignment.TopStart)
+        .fontColor(0xCCCCCC)
+        .lineHeight(25)
+        .border({ width: 1 })
+        .padding(10)
+        .textAlign(TextAlign.Center)
+        .textOverflow({ overflow: TextOverflow.None })
+        .key("finishWithResultText")
+        .onClick(() => {
+          FeatureAbility.finishWithResult({ code: 200, result: null })
+        })
+
+      Text("featureAbility-GetDeviceList")
+        .width(320)
+        .height(70)
+        .fontSize(20)
+        .opacity(1)
+        .align(Alignment.TopStart)
+        .fontColor(0xCCCCCC)
+        .lineHeight(25)
+        .border({ width: 1 })
+        .padding(10)
+        .textAlign(TextAlign.Center)
+        .textOverflow({ overflow: TextOverflow.None })
+        .key("getDeviceListText")
+        .onClick(() => {
+          FeatureAbility.getDeviceList(1)
+        })
+
+      Text("featureAbility-CallAbility")
+        .width(320)
+        .height(70)
+        .fontSize(20)
+        .opacity(1)
+        .align(Alignment.TopStart)
+        .fontColor(0xCCCCCC)
+        .lineHeight(25)
+        .border({ width: 1 })
+        .padding(10)
+        .textAlign(TextAlign.Center)
+        .textOverflow({ overflow: TextOverflow.None })
+        .key("callAbilityText")
+        .onClick(() => {
+          FeatureAbility.callAbility({
+            bundleName: "com.example.testapp",
+            abilityName: "com.example.testApp.MainAbility",
+            messageCode: 200,
+            abilityType: 1
+          })
+        })
+
+      Text("featureAbility-ContinueAbility")
+        .width(320)
+        .height(70)
+        .fontSize(20)
+        .opacity(1)
+        .align(Alignment.TopStart)
+        .fontColor(0xCCCCCC)
+        .lineHeight(25)
+        .border({ width: 1 })
+        .padding(10)
+        .textAlign(TextAlign.Center)
+        .textOverflow({ overflow: TextOverflow.None })
+        .key("continueAbilityText")
+        .onClick(() => {
+          FeatureAbility.continueAbility()
+        })
+
+      Text("featureAbility-SubscribeAbilityEvent")
+        .width(320)
+        .height(70)
+        .fontSize(20)
+        .opacity(1)
+        .align(Alignment.TopStart)
+        .fontColor(0xCCCCCC)
+        .lineHeight(25)
+        .border({ width: 1 })
+        .padding(10)
+        .textAlign(TextAlign.Center)
+        .textOverflow({ overflow: TextOverflow.None })
+        .key("subscribeAbilityEventText")
+        .onClick(() => {
+          FeatureAbility.subscribeAbilityEvent({
+            bundleName: "com.example.testapp",
+            abilityName: "com.example.testApp.MainAbility",
+            messageCode: 200,
+            abilityType: 1
+          }, () => {
+          })
+        })
+
+      Text("featureAbility-UnsubscribeAbilityEvent")
+        .width(320)
+        .height(70)
+        .fontSize(20)
+        .opacity(1)
+        .align(Alignment.TopStart)
+        .fontColor(0xCCCCCC)
+        .lineHeight(25)
+        .border({ width: 1 })
+        .padding(10)
+        .textAlign(TextAlign.Center)
+        .textOverflow({ overflow: TextOverflow.None })
+        .key("unsubscribeAbilityEventText")
+        .onClick(() => {
+          FeatureAbility.unsubscribeAbilityEvent({
+            bundleName: "com.example.testapp",
+            abilityName: "com.example.testApp.MainAbility",
+            messageCode: 200,
+            abilityType: 1
+          })
+        })
+
+      Text("featureAbility-SendMsg")
+        .width(320)
+        .height(70)
+        .fontSize(20)
+        .opacity(1)
+        .align(Alignment.TopStart)
+        .fontColor(0xCCCCCC)
+        .lineHeight(25)
+        .border({ width: 1 })
+        .padding(10)
+        .textAlign(TextAlign.Center)
+        .textOverflow({ overflow: TextOverflow.None })
+        .key("sendMsgText")
+        .onClick(() => {
+          FeatureAbility.sendMsg({
+            deviceId: '1001',
+            bundleName: "com.example.testapp",
+            abilityName: "com.example.testApp.MainAbility",
+            message: 'success',
+            success: () => {
+              Log.showInfo(TAG, `FeatureAbility.sendMsg success`)
             },
             fail: (data, code) => {
-              console.log(`data: ${data} code: ${code}`)
+              Log.showInfo(TAG, `FeatureAbility.sendMsg fail: data: ${data},code: ${code}`)
+            },
+            complete: () => {
+              Log.showInfo(TAG, `FeatureAbility.sendMsg complete`)
             }
           })
         })
 
-      Text("featureAbility-SubscribeMessageResponse-AbilityName")
+      Text("featureAbility-SubscribeMsg")
         .width(320)
-        .height(50)
+        .height(70)
         .fontSize(20)
         .opacity(1)
         .align(Alignment.TopStart)
@@ -67,21 +231,21 @@ export default struct FeatureAbilityAbilityName {
         .padding(10)
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
-        .key("subscribeMessageResponseAbilityNameText")
+        .key("subscribeMsgText")
         .onClick(() => {
           FeatureAbility.subscribeMsg({
             success: (data) => {
-              console.log(`deviceId: ${data.abilityName}`)
+              Log.showInfo(TAG, `FeatureAbility.subscribeMsg success: data: ${JSON.stringify(data)}`)
             },
             fail: (data, code) => {
-              console.log(`data: ${data} code: ${code}`)
+              Log.showInfo(TAG, `FeatureAbility.subscribeMsg fail: data: ${data},code: ${code}`)
             }
           })
         })
 
-      Text("featureAbility-CallAbilityParam-AbilityName")
+      Text("featureAbility-UnsubscribeMsg")
         .width(320)
-        .height(50)
+        .height(70)
         .fontSize(20)
         .opacity(1)
         .align(Alignment.TopStart)
@@ -91,24 +255,14 @@ export default struct FeatureAbilityAbilityName {
         .padding(10)
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
-        .key("callAbilityParamAbilityNameText")
+        .key("unsubscribeMsgText")
         .onClick(() => {
-          FeatureAbility.callAbility({
-            bundleName: 'com.example.hiaceservice',
-            abilityName: 'com.example.hiaceservice.ComputeServiceAbility',
-            messageCode: 1001,
-            data: {
-              firstNum: 1024,
-              secondNum: 2048
-            },
-            abilityType: 0,
-            syncOption: 0
-          })
+          FeatureAbility.unsubscribeMsg()
         })
 
-      Text("featureAbility-CallAbilityParam-MessageCode")
+      Text("featureAbility-StartAbility")
         .width(320)
-        .height(50)
+        .height(70)
         .fontSize(20)
         .opacity(1)
         .align(Alignment.TopStart)
@@ -118,24 +272,24 @@ export default struct FeatureAbilityAbilityName {
         .padding(10)
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
-        .key("callAbilityParamMessageCodeText")
+        .key("featureAbility-StartAbility")
         .onClick(() => {
-          FeatureAbility.callAbility({
-            bundleName: 'com.example.hiaceservice',
-            abilityName: 'com.example.hiaceservice.ComputeServiceAbility',
-            messageCode: 1001,
-            data: {
-              firstNum: 1024,
-              secondNum: 2048
-            },
-            abilityType: 0,
-            syncOption: 0
-          })
+          FeatureAbility.startAbility(
+            {
+
+              bundleName :"com.example.myapplication",
+              abilityName : "com.example.entry.secondAbility",
+              entities:['a','b'],
+              url:""
+            }
+          ).then((data) => {
+            console.info("==========================>startAbility=======================>");
+          });
         })
 
-      Text("featureAbility-CallAbilityParam-AbilityType")
+      Text("featureAbility-startAbilityForResult")
         .width(320)
-        .height(50)
+        .height(70)
         .fontSize(20)
         .opacity(1)
         .align(Alignment.TopStart)
@@ -145,24 +299,23 @@ export default struct FeatureAbilityAbilityName {
         .padding(10)
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
-        .key("callAbilityParamAbilityTypeText")
+        .key("featureAbility-startAbilityForResult")
         .onClick(() => {
-          FeatureAbility.callAbility({
-            bundleName: 'com.example.hiaceservice',
-            abilityName: 'com.example.hiaceservice.ComputeServiceAbility',
-            messageCode: 1001,
-            data: {
-              firstNum: 1024,
-              secondNum: 2048
+          FeatureAbility.startAbilityForResult(
+            {
+              bundleName :"com.example.myapplication",
+              abilityName : "com.example.entry.secondAbility",
+              entities:['a','b'],
+              url:""
             },
-            abilityType: 0,
-            syncOption: 0
-          })
+          ).then((data) => {
+            console.info("==========================>startAbilityForResult=======================>");
+          });
         })
 
-      Text("featureAbility-CallAbilityParam-SyncOption")
+      Text("featureAbility-finishWithResult")
         .width(320)
-        .height(50)
+        .height(70)
         .fontSize(20)
         .opacity(1)
         .align(Alignment.TopStart)
@@ -172,24 +325,19 @@ export default struct FeatureAbilityAbilityName {
         .padding(10)
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
-        .key("callAbilityParamSyncOptionText")
+        .key("featureAbility-finishWithResult")
         .onClick(() => {
-          FeatureAbility.callAbility({
-            bundleName: 'com.example.hiaceservice',
-            abilityName: 'com.example.hiaceservice.ComputeServiceAbility',
-            messageCode: 1001,
-            data: {
-              firstNum: 1024,
-              secondNum: 2048
-            },
-            abilityType: 0,
-            syncOption: 0
-          })
+          FeatureAbility.finishWithResult({
+            code:20002,
+            result:{}
+          }).then((data) => {
+            console.info("==========================>startAbilityForResult=======================>");
+          });
         })
 
-      Text("featureAbility-SubscribeAbilityEventParam-AbilityName")
+      Text("featureAbility-getDeviceList")
         .width(320)
-        .height(50)
+        .height(70)
         .fontSize(20)
         .opacity(1)
         .align(Alignment.TopStart)
@@ -199,23 +347,103 @@ export default struct FeatureAbilityAbilityName {
         .padding(10)
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
-        .key("subscribeAbilityEventParamAbilityNameText")
+        .key("featureAbility-finishWithResult")
+        .onClick(() => {
+          FeatureAbility.getDeviceList(23).then((data) => {
+            console.info("==========================>startAbilityForResult=======================>");
+          });
+        })
+
+      Text("featureAbility-getDeviceList")
+        .width(320)
+        .height(70)
+        .fontSize(20)
+        .opacity(1)
+        .align(Alignment.TopStart)
+        .fontColor(0xCCCCCC)
+        .lineHeight(25)
+        .border({ width: 1 })
+        .padding(10)
+        .textAlign(TextAlign.Center)
+        .textOverflow({ overflow: TextOverflow.None })
+        .key("featureAbility-finishWithResult")
+        .onClick(() => {
+          FeatureAbility.getDeviceList(23).then((data) => {
+            console.info("==========================>startAbilityForResult=======================>");
+          });
+        })
+
+      Text("featureAbility-callAbility")
+        .width(320)
+        .height(70)
+        .fontSize(20)
+        .opacity(1)
+        .align(Alignment.TopStart)
+        .fontColor(0xCCCCCC)
+        .lineHeight(25)
+        .border({ width: 1 })
+        .padding(10)
+        .textAlign(TextAlign.Center)
+        .textOverflow({ overflow: TextOverflow.None })
+        .key("featureAbility-callAbility")
+        .onClick(() => {
+             FeatureAbility.callAbility({
+               bundleName: "com.example.myapplication",
+               abilityName: "com.example.entry.secondAbility",
+               messageCode: 50,
+               abilityType: 12
+             }).then((data) => {
+               console.info("==========================>startAbilityForResult=======================>");
+             });
+        })
+
+      Text("featureAbility-continueAbility")
+        .width(320)
+        .height(70)
+        .fontSize(20)
+        .opacity(1)
+        .align(Alignment.TopStart)
+        .fontColor(0xCCCCCC)
+        .lineHeight(25)
+        .border({ width: 1 })
+        .padding(10)
+        .textAlign(TextAlign.Center)
+        .textOverflow({ overflow: TextOverflow.None })
+        .key("featureAbility-continueAbility")
+        .onClick(() => {
+          FeatureAbility.continueAbility().then((data) => {
+            console.info("==========================>startAbilityForResult=======================>");
+          });
+        })
+      Text("featureAbility-subscribeAbilityEvent")
+        .width(320)
+        .height(70)
+        .fontSize(20)
+        .opacity(1)
+        .align(Alignment.TopStart)
+        .fontColor(0xCCCCCC)
+        .lineHeight(25)
+        .border({ width: 1 })
+        .padding(10)
+        .textAlign(TextAlign.Center)
+        .textOverflow({ overflow: TextOverflow.None })
+        .key("featureAbility-subscribeAbilityEvent")
         .onClick(() => {
           FeatureAbility.subscribeAbilityEvent({
-            bundleName: 'com.example.hiaceservice',
-            abilityName: 'com.example.hiaceservice.ComputeServiceAbility',
-            messageCode: 1005,
-            abilityType: 0,
-            syncOption: 0
-          }, (callbackData) => {
-            var callbackJson = JSON.parse(callbackData);
-            console.info('eventData is: ' + JSON.stringify(callbackJson.data));
-          })
+            bundleName: "ss",
+            abilityName: "d",
+            messageCode: 50,
+            abilityType: 60,
+            syncOption:20
+          },() => {
+            console.info("hello subscribeAbilityEvent")
+          }).then((data) => {
+            console.info("==========================>startAbilityForResult=======================>");
+          });
         })
-
-      Text("featureAbility-SubscribeAbilityEventParam-MessageCode")
+      Text("featureAbility-unsubscribeAbilityEvent")
         .width(320)
-        .height(50)
+        .height(70)
         .fontSize(20)
         .opacity(1)
         .align(Alignment.TopStart)
@@ -225,175 +453,17 @@ export default struct FeatureAbilityAbilityName {
         .padding(10)
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
-        .key("subscribeAbilityEventParammessageCodeText")
+        .key("featureAbility-unsubscribeAbilityEvent")
         .onClick(() => {
-          FeatureAbility.subscribeAbilityEvent({
-            bundleName: 'com.example.hiaceservice',
-            abilityName: 'com.example.hiaceservice.ComputeServiceAbility',
-            messageCode: 1005,
-            abilityType: 0,
-            syncOption: 0
-          }, (callbackData) => {
-            var callbackJson = JSON.parse(callbackData);
-            console.info('eventData is: ' + JSON.stringify(callbackJson.data));
-          })
-        })
-
-      Text("featureAbility-SubscribeAbilityEventParam-AbilityType")
-        .width(320)
-        .height(50)
-        .fontSize(20)
-        .opacity(1)
-        .align(Alignment.TopStart)
-        .fontColor(0xCCCCCC)
-        .lineHeight(25)
-        .border({ width: 1 })
-        .padding(10)
-        .textAlign(TextAlign.Center)
-        .textOverflow({ overflow: TextOverflow.None })
-        .key("subscribeAbilityEventParamAbilityTypeText")
-        .onClick(() => {
-          FeatureAbility.subscribeAbilityEvent({
-            bundleName: 'com.example.hiaceservice',
-            abilityName: 'com.example.hiaceservice.ComputeServiceAbility',
-            messageCode: 1005,
-            abilityType: 0,
-            syncOption: 0
-          }, (callbackData) => {
-            var callbackJson = JSON.parse(callbackData);
-            console.info('eventData is: ' + JSON.stringify(callbackJson.data));
-          })
-        })
-
-      Text("featureAbility-SubscribeAbilityEventParam-SyncOption")
-        .width(320)
-        .height(50)
-        .fontSize(20)
-        .opacity(1)
-        .align(Alignment.TopStart)
-        .fontColor(0xCCCCCC)
-        .lineHeight(25)
-        .border({ width: 1 })
-        .padding(10)
-        .textAlign(TextAlign.Center)
-        .textOverflow({ overflow: TextOverflow.None })
-        .key("subscribeAbilityEventParamSyncOptionText")
-        .onClick(() => {
-          FeatureAbility.subscribeAbilityEvent({
-            bundleName: 'com.example.hiaceservice',
-            abilityName: 'com.example.hiaceservice.ComputeServiceAbility',
-            messageCode: 1005,
-            abilityType: 0,
-            syncOption: 0
-          }, (callbackData) => {
-            var callbackJson = JSON.parse(callbackData);
-            console.info('eventData is: ' + JSON.stringify(callbackJson.data));
-          })
-        })
-
-
-      Text("featureAbility-SendMessageOptions-DeviceId")
-        .width(320)
-        .height(50)
-        .fontSize(20)
-        .opacity(1)
-        .align(Alignment.TopStart)
-        .fontColor(0xCCCCCC)
-        .lineHeight(25)
-        .border({ width: 1 })
-        .padding(10)
-        .textAlign(TextAlign.Center)
-        .textOverflow({ overflow: TextOverflow.None })
-        .key("sendMessageOptionsDeviceIdText")
-        .onClick(() => {
-          FeatureAbility.sendMsg({
-            deviceId: '1001',
-            bundleName: 'com.example.hiaceservice',
-            abilityName: 'com.example.hiaceservice.ComputeServiceAbility'
-          })
-        })
-
-      Text("featureAbility-SendMessageOptions-AbilityName")
-        .width(320)
-        .height(50)
-        .fontSize(20)
-        .opacity(1)
-        .align(Alignment.TopStart)
-        .fontColor(0xCCCCCC)
-        .lineHeight(25)
-        .border({ width: 1 })
-        .padding(10)
-        .textAlign(TextAlign.Center)
-        .textOverflow({ overflow: TextOverflow.None })
-        .key("sendMessageOptionsAbilityNameText")
-        .onClick(() => {
-          FeatureAbility.sendMsg({
-            deviceId: '1001',
-            bundleName: 'com.example.hiaceservice',
-            abilityName: 'com.example.hiaceservice.ComputeServiceAbility'
-          })
-        })
-
-      Text("featureAbility-RequestParams-AbilityName")
-        .width(320)
-        .height(50)
-        .fontSize(20)
-        .opacity(1)
-        .align(Alignment.TopStart)
-        .fontColor(0xCCCCCC)
-        .lineHeight(25)
-        .border({ width: 1 })
-        .padding(10)
-        .textAlign(TextAlign.Center)
-        .textOverflow({ overflow: TextOverflow.None })
-        .key("requestParamsAbilityNameText")
-        .onClick(() => {
-          FeatureAbility.startAbility({
-            bundleName: 'com.example.hiaceservice',
-            abilityName: 'com.example.hiaceservice.ComputeServiceAbility'
-          })
-        })
-
-      Text("featureAbility-Entities")
-        .width(320)
-        .height(50)
-        .fontSize(20)
-        .opacity(1)
-        .align(Alignment.TopStart)
-        .fontColor(0xCCCCCC)
-        .lineHeight(25)
-        .border({ width: 1 })
-        .padding(10)
-        .textAlign(TextAlign.Center)
-        .textOverflow({ overflow: TextOverflow.None })
-        .key("entitiesText")
-        .onClick(() => {
-          FeatureAbility.startAbility({
-            bundleName: 'com.example.hiaceservice',
-            abilityName: 'com.example.hiaceservice.ComputeServiceAbility',
-            entities: ["this is a test"]
-          })
-        })
-
-      Text("featureAbility-DeviceType")
-        .width(320)
-        .height(50)
-        .fontSize(20)
-        .opacity(1)
-        .align(Alignment.TopStart)
-        .fontColor(0xCCCCCC)
-        .lineHeight(25)
-        .border({ width: 1 })
-        .padding(10)
-        .textAlign(TextAlign.Center)
-        .textOverflow({ overflow: TextOverflow.None })
-        .key("deviceTypeText")
-        .onClick(() => {
-          FeatureAbility.startAbility({
-            bundleName: 'com.example.hiaceservice',
-            abilityName: 'com.example.hiaceservice.ComputeServiceAbility',
-            deviceType: 1001
-          })
+          FeatureAbility.unsubscribeAbilityEvent({
+            bundleName: "d",
+            abilityName: "s",
+            messageCode: 20,
+            abilityType: 30,
+            syncOption: 40
+          }).then((data) => {
+            console.info("==========================>startAbilityForResult=======================>");
+          });
         })
 
     }.width("100%").height("100%")

@@ -138,6 +138,23 @@ export default struct Common_ts_ets_apiStaticClear {
             console.info("PersistProp emit action state err: " + JSON.stringify(err.message))
           }
         })
+      Text("common_ts_ets_api-clear")
+        .width(320)
+        .height(70)
+        .fontSize(20)
+        .opacity(1)
+        .align(Alignment.TopStart)
+        .fontColor(0xCCCCCC)
+        .lineHeight(25)
+        .border({ width: 1 })
+        .padding(10)
+        .textAlign(TextAlign.Center)
+        .textOverflow({ overflow: TextOverflow.None })
+        .key("staticClearText")
+        .onClick(() => {
+          AppStorage.clear()
+        })
+
 
     }.width("100%").height("100%")
   }
