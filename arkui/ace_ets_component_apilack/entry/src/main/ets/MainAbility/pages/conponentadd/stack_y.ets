@@ -14,27 +14,25 @@
  */
 
 import Log from '../common/Log.ets';
-
 const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
 export default
-struct LoadingProgressCircular {
-  @State circular:LoadingProgressStyle = LoadingProgressStyle.Circular;
-  @State orbital:LoadingProgressStyle = LoadingProgressStyle.Orbital;
+struct StackAlignContent {
+
   aboutToAppear() {
-    Log.showInfo(TAG, `aboutToAppear LoadingProgressCircular start`)
+    Log.showInfo(TAG, `aboutToAppear StackAlignContent start`)
   }
 
-  aboutToDisappear() {
-    Log.showInfo(TAG, `aboutToDisAppear LoadingProgressCircular end`)
+  aboutToDisappear(){
+    Log.showInfo(TAG, `aboutToDisAppear StackAlignContent end`)
   }
 
-  build() {
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+  build(){
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
 
-      Text("loadingProgress-Circular")
+      Text("stack-AlignContent")
         .width(100)
         .height(70)
         .fontSize(20)
@@ -46,28 +44,25 @@ struct LoadingProgressCircular {
         .padding(10)
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
-        .key("CircularText")
+        .key("alignContentText")
 
-      Text("loadingProgress-Orbital")
-        .width(100)
-        .height(70)
-        .fontSize(20)
-        .opacity(1)
-        .align(Alignment.TopStart)
-        .fontColor(0xCCCCCC)
-        .lineHeight(25)
-        .border({ width: 1 })
-        .padding(10)
-        .textAlign(TextAlign.Center)
-        .textOverflow({ overflow: TextOverflow.None })
-        .key("OrbitalText")
 
-      Text('Orbital LoadingProgress ').fontSize(9).fontColor(0xCCCCCC).width('100%')
-      LoadingProgress()
-        .color(Color.Blue)
-
+      Stack({ alignContent: Alignment.Bottom }) {
+        Text('First child, show in bottom')
+          .width('95%')
+          .width('90%')
+          .height('100%')
+          .backgroundColor(0xd2cab3)
+          .align(Alignment.Top)
+        Text('Second child, show in top')
+          .width('70%')
+          .height('60%')
+          .backgroundColor(0xc1cbac)
+          .align(Alignment.Top)
+      }.key("Stack")
+      .width('100%').height(150).margin({ top: 5 })
+    
     }.width("100%").height("100%")
   }
 }
-
 

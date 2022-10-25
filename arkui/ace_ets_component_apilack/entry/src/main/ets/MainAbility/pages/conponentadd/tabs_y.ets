@@ -14,27 +14,27 @@
  */
 
 import Log from '../common/Log.ets';
-
 const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
 export default
-struct LoadingProgressCircular {
-  @State circular:LoadingProgressStyle = LoadingProgressStyle.Circular;
-  @State orbital:LoadingProgressStyle = LoadingProgressStyle.Orbital;
+struct TabsBarPosition {
+
+  private controller: TabsController = new TabsController()
+
   aboutToAppear() {
-    Log.showInfo(TAG, `aboutToAppear LoadingProgressCircular start`)
+    Log.showInfo(TAG, `aboutToAppear TabsBarPosition start`)
   }
 
-  aboutToDisappear() {
-    Log.showInfo(TAG, `aboutToDisAppear LoadingProgressCircular end`)
+  aboutToDisappear(){
+    Log.showInfo(TAG, `aboutToDisAppear TabsBarPosition end`)
   }
 
-  build() {
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+  build(){
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center,justifyContent:FlexAlign.Center }){
 
-      Text("loadingProgress-Circular")
+      Text("tabs-BarPosition")
         .width(100)
         .height(70)
         .fontSize(20)
@@ -46,28 +46,28 @@ struct LoadingProgressCircular {
         .padding(10)
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
-        .key("CircularText")
+        .key("barPositionText")
 
-      Text("loadingProgress-Orbital")
-        .width(100)
-        .height(70)
-        .fontSize(20)
-        .opacity(1)
-        .align(Alignment.TopStart)
-        .fontColor(0xCCCCCC)
-        .lineHeight(25)
-        .border({ width: 1 })
-        .padding(10)
-        .textAlign(TextAlign.Center)
-        .textOverflow({ overflow: TextOverflow.None })
-        .key("OrbitalText")
 
-      Text('Orbital LoadingProgress ').fontSize(9).fontColor(0xCCCCCC).width('100%')
-      LoadingProgress()
-        .color(Color.Blue)
+      Tabs({ barPosition: BarPosition.Start, controller: this.controller }) {
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor(Color.Pink)
+        }.tabBar('pink')
 
+        TabContent() {
+          Column().width('100%').height('100%').backgroundColor(Color.Yellow)
+        }.tabBar('yellow')
+
+      }
+      .key("barPositionTabs")
+      .vertical(true).scrollable(true).barMode(BarMode.Fixed)
+      .barWidth(70).barHeight(150).animationDuration(400)
+      .onChange((index: number) => {
+        console.info(index.toString())
+      })
+      .width('90%').backgroundColor(0xF5F5F5)
+    
     }.width("100%").height("100%")
   }
 }
-
 
