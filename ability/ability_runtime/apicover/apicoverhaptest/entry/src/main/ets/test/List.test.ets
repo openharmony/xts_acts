@@ -14,6 +14,7 @@
  */
 
 import apiCoverAbility from './ApiCoverAbility.test'
+import newApiCoverAbility from './NewApiCoverAbility.test'
 import verificationTest from './VerificationTest'
 import wantAgentCover from './WantAgentCover.test'
 import contextEnvironmentTest from './ContextEnvironmentTest.test';
@@ -21,6 +22,7 @@ import contextEnvironmentTest from './ContextEnvironmentTest.test';
 export default function List() {
 
   apiCoverAbility()
+  newApiCoverAbility()
   verificationTest()
   wantAgentCover()
   contextEnvironmentTest(globalThis.applicationContext)
