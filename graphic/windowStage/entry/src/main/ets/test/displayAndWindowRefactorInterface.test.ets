@@ -196,7 +196,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
         let tempType = Number(ohosWindow.WindowType[systemWindowTypeDicArr[i]])
         let windId = 'createWindowTest1' + i;
         console.log(msgStr + 'ohosWindow.createWindow:  ' + tempType + ' start');
-        let windowConfig = {name: windId, windowType: tempType, ctx: context};
+        let windowConfig = {name: windId, windowType: tempType, ctx: context, displayId: -1, parentId: -1};
         try{
           let tempWnd = await ohosWindow.createWindow(windowConfig).catch((err) => {
             console.log(msgStr + 'ohosWindow.createWindow ' + tempType + 'catched, err: ' + JSON.stringify(err));
@@ -213,15 +213,15 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
     })
 
     /**
-    * @tc.number     SUB_WINDOW_CREATEWINDOW_JSAPI_004
-    * @tc.name       Test createWindowTest4
+    * @tc.number     SUB_WINDOW_CREATEWINDOW_JSAPI_002
+    * @tc.name       Test createWindowTest2
     * @tc.desc       Verify the scenario of creating a window with duplicate IDs
     */
-    it('createWindowTest4', 0, async function (done) {
-      let caseName = 'createWindowTest4';
+    it('createWindowTest2', 0, async function (done) {
+      let caseName = 'createWindowTest2';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowId = 'createWindowSameidsTest4'
+      let windowId = 'createWindowSameidsTest2'
       let windowConfig = {name: windowId, windowType: 1, ctx: context};
       try{
         let ohosData = await ohosWindow.createWindow(windowConfig).catch((err) => {
@@ -245,12 +245,12 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
 
     })
     /**
-     * @tc.number     SUB_WINDOW_CREATEWINDOW_JSAPI_005
-     * @tc.name       Test createWindowTest5
+     * @tc.number     SUB_WINDOW_CREATEWINDOW_JSAPI_004
+     * @tc.name       Test createWindowTest4
      * @tc.desc       Verify the scenario of creating the application type window
      */
-    it('createWindowTest5', 0, done => {
-      let caseName = 'createWindowTest5';
+    it('createWindowTest4', 0, done => {
+      let caseName = 'createWindowTest4';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin context==' + JSON.stringify(context));
       let loopCount = appWindowTypeArr.length;
@@ -258,7 +258,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       for (let i = 0; i < loopCount; i++) {
         sleep(500)
         let tempType = ohosWindow.WindowType.TYPE_APP;
-        let windId = 'createWindowTest5' + i;
+        let windId = 'createWindowTest4' + i;
         console.log(msgStr + 'ohosWindow.createWindow ' + tempType + ' start');
         let windowConfig = {name: windId, windowType: tempType, ctx: context};
         try{
@@ -279,18 +279,18 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       done();
     })
     /**
-     * @tc.number     SUB_WINDOW_CREATEWINDOW_JSAPI_006
-     * @tc.name       Test createWindowTest6
+     * @tc.number     SUB_WINDOW_CREATEWINDOW_JSAPI_005
+     * @tc.name       Test createWindowTest5
      * @tc.desc       Verify the scenario of creating the system type window
      */
-    it('createWindowTest6', 0, done => {
-      let caseName = 'createWindowTest6';
+    it('createWindowTest5', 0, done => {
+      let caseName = 'createWindowTest5';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let loopCount = systemWindowTypeArr.length;
       console.log('jsunittest loopCount: ' + loopCount);
       let tempType = ohosWindow.WindowType.TYPE_SYSTEM_ALERT;
-      let windId = 'createWindowTest6';
+      let windId = 'createWindowTest5';
       console.log(msgStr + 'ohosWindow.createWindow ' + tempType + ' start');
       let windowConfig = {name: windId, windowType: tempType, ctx: context};
       try{
@@ -316,15 +316,15 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       };
     })
     /**
-     * @tc.number     SUB_WINDOW_CREATEWINDOW_JSAPI_008
-     * @tc.name       Test createWindowTest8
+     * @tc.number     SUB_WINDOW_CREATEWINDOW_JSAPI_006
+     * @tc.name       Test createWindowTest6
      * @tc.desc       Verify the scenario of creating a window with duplicate IDs
      */
-    it('createWindowTest8', 0, done => {
-      let caseName = 'createWindowTest8';
+    it('createWindowTest6', 0, done => {
+      let caseName = 'createWindowTest6';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let windowId = 'createWindowSameidTest8'
+      let windowId = 'createWindowSameidTest6'
       let winsowConfig = {name: windowId, windowType:1, ctx: context};
       try{
         ohosWindow.createWindow(winsowConfig, (err, data) => {
@@ -516,7 +516,7 @@ export default function displayAndWindowRefactorInterfaceTest(context, windowSta
       };
     })
     /**
-    * @tc.number     SUB_WINDOW_FINDWINDOW_JSAPI_001
+    * @tc.number     SUB_WINDOW_GETLASTWINDOW_JSAPI_001
     * @tc.name       Test getLastWindowTest1
     * @tc.desc       Get the final show window
     */
