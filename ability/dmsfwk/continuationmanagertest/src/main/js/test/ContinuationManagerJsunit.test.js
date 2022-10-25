@@ -310,6 +310,259 @@ describe('continuationManagerTest', function() {
     })
 
     /**
+     * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_REGISTER_0100
+     * @tc.name [JS-API9]ContinuationManager.registerContinuation().
+     * @tc.desc Test Js Api ContinuationManager.registerContinuation() testcase 001
+     */
+    it('testRegisterContinuation001', 0, async function(done) {
+        try {
+            console.info("testRegisterContinuation001Begin ");
+            continuationManager.registerContinuation(function (err, data) {
+                expect(err.code == 0).assertTrue();
+                expect(data - token == 1).assertTrue();
+                done();
+            });
+        } catch (e) {
+            console.info("testRegisterContinuation001 " + e);
+            expect(null).assertFail();
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_REGISTER_0200
+     * @tc.name [JS-API9]ContinuationManager.registerContinuation().
+     * @tc.desc Test Js Api ContinuationManager.registerContinuation() testcase 002
+     */
+    it('testRegisterContinuation002', 0, async function(done) {
+        try {
+            let continuationExtraParams = {
+                deviceType: [],
+                targetBundle: "",
+                description: "",
+                filter: "",
+                continuationMode: null,
+                authInfo: {}
+            };
+            continuationManager.registerContinuation(continuationExtraParams, function(err, data){
+                console.info("testRegisterContinuation002 " + err.message);
+                expect(err.code == 401).assertTrue();
+                done();
+            });
+        } catch (e) {
+            console.info("testRegisterContinuation002 " + e);
+            expect(err.code == 401).assertTrue();
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_REGISTER_0300
+     * @tc.name [JS-API9]ContinuationManager.registerContinuation().
+     * @tc.desc Test Js Api ContinuationManager.registerContinuation() testcase 003
+     */
+    it('testRegisterContinuation003', 0, async function(done) {
+        try {
+            let continuationExtraParams = {
+                deviceType: ["00E"],
+                targetBundle: "ohos.example.test",
+                description: "description",
+                filter: {"name": "authInfo","length": 8},
+                continuationMode: 10,
+                authInfo: {"name": "authInfo","length": 8}
+            };
+            continuationManager.registerContinuation(continuationExtraParams, function(err, data) {
+                expect(err.code == 401).assertTrue();
+                console.info("testRegisterContinuation003 "+ err);
+                done();
+            });
+        } catch (e) {
+            console.info("testRegisterContinuation003 " + e);
+            expect(null).assertFail();
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_REGISTER_0400
+     * @tc.name [JS-API9]ContinuationManager.registerContinuation().
+     * @tc.desc Test Js Api ContinuationManager.registerContinuation() testcase 004
+     */
+    it('testRegisterContinuation004', 0, async function(done) {
+        try {
+            let continuationExtraParams = {
+                deviceType: ["00E"],
+                targetBundle: "ohos.example.test",
+                description: "description",
+                filter: {"name": "authInfo","length": 8},
+                continuationMode: continuationManager.ContinuationMode.COLLABORATION_MULTIPLE,
+                authInfo: {"name": "authInfo","length": 8}
+            };
+            continuationManager.registerContinuation(continuationExtraParams, function(err, data) {
+                expect(err.code == 0).assertTrue();
+                expect(data - token == 1).assertTrue();
+                done();
+            });
+        } catch (e) {
+            console.info("testRegisterContinuation004 " + e);
+            expect(null).assertFail();
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_REGISTER_0500
+     * @tc.name [JS-API9]ContinuationManager.registerContinuation().
+     * @tc.desc Test Js Api ContinuationManager.registerContinuation() testcase 005
+     */
+    it('testRegisterContinuation005', 0, async function(done) {
+        try {
+            let continuationExtraParams = {
+                deviceType: ["00E"],
+                targetBundle: "ohos.example.test",
+                description: "description",
+                filter: {"name": "authInfo","length": 8},
+                continuationMode: continuationManager.ContinuationMode.COLLABORATION_SINGLE,
+                authInfo: {"name": "authInfo","length": 8}
+            };
+            continuationManager.registerContinuation(continuationExtraParams, function(err, data) {
+                expect(err.code == 0).assertTrue();
+                expect(data - token == 1).assertTrue();
+                done();
+            });
+        } catch (e) {
+            console.info("testRegisterContinuation005 " + e);
+            expect(null).assertFail();
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_REGISTER_0600
+     * @tc.name [JS-API9]ContinuationManager.registerContinuation().
+     * @tc.desc Test Js Api ContinuationManager.registerContinuation() testcase 006
+     */
+    it('testRegisterContinuation006', 0, async function(done) {
+        try {
+            let continuationExtraParams = {
+                deviceType: ["00E"],
+                targetBundle: "ohos.example.test",
+                description: "description",
+                filter: {"name": "authInfo","length": 8},
+                continuationMode: continuationManager.ContinuationMode.COLLABORATION_SINGLE,
+                authInfo: {"name": "authInfo","length": 8}
+            };
+            continuationManager.registerContinuation(continuationExtraParams).then((data) => {
+                expect(data - token == 1).assertTrue();
+            }).catch((err) => {
+                expect(err.code == 16600002).assertTrue();
+            });
+        } catch (e) {
+            console.info("testRegisterContinuation006 " + e);
+            expect(null).assertFail();
+        }
+        done();
+    })
+
+    /**
+     * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_REGISTER_0700
+     * @tc.name [JS-API9]ContinuationManager.registerContinuation().
+     * @tc.desc Test Js Api ContinuationManager.registerContinuation() testcase 007
+     */
+    it('testRegisterContinuation007', 0, async function(done) {
+        try {
+            let continuationExtraParams = {
+                deviceType: ["00E"],
+                description: "description",
+                filter: {"name": "authInfo","length": 8},
+                continuationMode: continuationManager.ContinuationMode.COLLABORATION_MULTIPLE,
+                authInfo: {"name": "authInfo","length": 8}
+            };
+            continuationManager.registerContinuation(continuationExtraParams).then((data) => {
+                expect(data - token == 1).assertTrue();
+            }).catch((err) => {
+                expect(err.code == 16600002).assertTrue();
+            });
+        } catch (e) {
+            console.info("testRegisterContinuation007 " + e);
+            expect(null).assertFail();
+        }
+        done();
+    })
+
+    /**
+     * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_REGISTER_0800
+     * @tc.name [JS-API9]ContinuationManager.registerContinuation().
+     * @tc.desc Test Js Api ContinuationManager.registerContinuation() testcase 008
+     */
+    it('testRegisterContinuation008', 0, async function(done) {
+        try {
+            let continuationExtraParams = {
+                deviceType: [],
+                description: "",
+                filter: "",
+                continuationMode: null,
+                authInfo: {}
+            };
+            continuationManager.registerContinuation(continuationExtraParams).then((data) => {
+                expect(data - token != 1).assertTrue();
+            }).catch((err) => {
+                expect(err.code == 401).assertTrue();
+            });
+        } catch (e) {
+            console.info("testRegisterContinuation008 " + e);
+            expect(e.code == 401).assertTrue();
+        }
+        done();
+    })
+
+    /**
+     * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_REGISTER_0900
+     * @tc.name [JS-API9]ContinuationManager.registerContinuation().
+     * @tc.desc Test Js Api ContinuationManager.registerContinuation() testcase 009
+     */
+    it('testRegisterContinuation009', 0, async function(done) {
+        try {
+            let continuationExtraParams = {
+                deviceType: ["00E"],
+                description: "description",
+                filter: {"name": "authInfo","length": 8},
+                continuationMode: 10,
+                authInfo: {"name": "authInfo","length": 8}
+            };
+            continuationManager.registerContinuation(continuationExtraParams).then((data) => {
+                expect(data - token != 1).assertTrue();
+            }).catch((err) => {
+                expect(err.code == 16600002).assertTrue();
+            });
+            done();
+        } catch (e) {
+            console.info("testRegisterContinuation009 " + e);
+            expect(null).assertFail();
+            done();
+        }
+    })
+    
+    /**
+     * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_REGISTER_1000
+     * @tc.name [JS-API9]ContinuationManager.registerContinuation().
+     * @tc.desc Test Js Api ContinuationManager.registerContinuation() testcase 010
+     */
+    it('testRegisterContinuation010', 0, async function(done) {
+        try {
+            continuationManager.registerContinuation().then((data) => {
+                expect(data - token == 1).assertTrue();
+            }).catch((err) => {
+                expect(err.code == 16600002).assertTrue();
+            });
+        } catch (e) {
+            console.info("testRegisterContinuation010 " + e);
+            expect(null).assertFail();
+        }
+        done();
+    })
+    
+    /**
      * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_UNREGISTER_0100
      * @tc.name [JS-API8]ContinuationManager.unregister().
      * @tc.desc Test Js Api ContinuationManager.unregister() testcase 001
@@ -407,6 +660,102 @@ describe('continuationManagerTest', function() {
         }
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_UNREGISTER_0100
+     * @tc.name [JS-API9]ContinuationManager.unregisterContinuation().
+     * @tc.desc Test Js Api ContinuationManager.unregisterContinuation() testcase 001
+     */
+    it('testUnregisterContinuation001', 0, async function(done) {
+        try {
+            continuationManager.unregisterContinuation(token, function (err, data) {
+                expect(err.code == 0).assertTrue();
+                expect(data == undefined).assertTrue();
+            })
+            done();
+        } catch (e) {
+            console.info("testUnregisterContinuation001 " + e);
+            expect(null).assertFail();
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_UNREGISTER_0200
+     * @tc.name [JS-API9]ContinuationManager.unregisterContinuation().
+     * @tc.desc Test Js Api ContinuationManager.unregisterContinuation() testcase 002
+     */
+    it('testUnregisterContinuation002', 0, async function(done) {
+        try {
+            continuationManager.unregisterContinuation("invalid token", function (err, data) {
+                console.info("testUnregisterContinuation002 " + data);
+                expect(err.code == 401).assertTrue();
+                expect(data == undefined).assertTrue();
+            })
+            done();
+        } catch (e) {
+            console.info("testUnregisterContinuation002 " + e);
+            expect(err.code == 401).assertTrue();
+            done();
+        }
+    })
+
+    /**
+    * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_UNREGISTER_0300
+    * @tc.name [JS-API9]ContinuationManager.unregisterContinuation().
+    * @tc.desc Test Js Api ContinuationManager.unregisterContinuation() testcase 003
+    */
+    it('testUnregisterContinuation003', 0, async function(done) {
+        try {
+            continuationManager.unregisterContinuation(300, function (err, data) {
+                expect(err.code == 16600002).assertTrue();
+                expect(data == undefined).assertTrue();
+            })
+            done();
+        } catch (e) {
+            console.info("testUnregisterContinuation003 " + e);
+            expect(null).assertFail();
+            done();
+        }
+    })
+
+
+    /**
+    * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_UNREGISTER_0400
+    * @tc.name [JS-API9]ContinuationManager.unregisterContinuation().
+    * @tc.desc Test Js Api ContinuationManager.unregisterContinuation() testcase 004
+    */
+    it('testUnregisterContinuation004', 0, async function(done) {
+        try {
+            continuationManager.unregisterContinuation(300, function (data) {
+                expect(data.code == 16600002).assertTrue();
+            })
+            done();
+        } catch (e) {
+            console.info("testUnregisterContinuation004 " + e);
+            expect(null).assertFail();
+            done();
+        }
+    })
+
+    
+    /**
+    * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_UNREGISTER_0500
+    * @tc.name [JS-API9]ContinuationManager.unregisterContinuation().
+    * @tc.desc Test Js Api ContinuationManager.unregisterContinuation() testcase 005
+    */
+    it('testUnregisterContinuation005', 0, async function(done) {
+        try {
+            continuationManager.unregisterContinuation(token, function (data) {
+                console.info("testUnregisterContinuation005 " + JSON.stringify(data));
+                expect(data.code == 0).assertTrue();
+            })
+            done();
+        } catch (e) {
+            console.info("testUnregisterContinuation005 " + e);
+            expect(null).assertFail();
+            done();
+        }
+    })
 
     /**
      * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_ON_0100
@@ -451,13 +800,13 @@ describe('continuationManagerTest', function() {
      */
     it('testOn003', 0, async function(done) {
         try {
-            continuationManager.on("deviceConnect", token, function (data) {
+            continuationManager.on("deviceSelected", 999, function (data) {
                 expect(data == undefined).assertTrue();
             })
             done();
         } catch (e) {
             console.info("testOn003 " + e);
-            expect(null).assertFail();
+            expect(e.code == 16600002).assertTrue();
             done();
         }
     })
@@ -469,13 +818,13 @@ describe('continuationManagerTest', function() {
      */
     it('testOn004', 0, async function(done) {
         try {
-            continuationManager.on("deviceDisconnect", token, function (data) {
+            continuationManager.on("deviceUnselected", 999, function (data) {
                 expect(data == undefined).assertTrue();
             });
             done();
         } catch (e) {
             console.info("testOn004 " + e);
-            expect(null).assertFail();
+            expect(e.code == 16600002).assertTrue();
             done();
         }
     })
@@ -493,7 +842,7 @@ describe('continuationManagerTest', function() {
             done();
         } catch (e) {
             console.info("testOff001 " + e);
-            expect(e.toString().includes("must be string")).assertTrue();
+            expect(e.code == 401).assertTrue();
             done();
         }
     })
@@ -511,7 +860,7 @@ describe('continuationManagerTest', function() {
             done();
         } catch (e) {
             console.info("testOff002 " + e);
-            expect(e.toString().includes("must be string")).assertTrue();
+            expect(e.code == 401).assertTrue();
             done();
         }
     })
@@ -523,10 +872,11 @@ describe('continuationManagerTest', function() {
      */
     it('testOff003', 0, async function(done) {
         try {
+            continuationManager.off("deviceSelected", 999);
             done();
         } catch (e) {
             console.info("testOff003 " + e);
-            expect(e.toString().includes("Callback is not registered")).assertTrue();
+            expect(e.code == 16600002).assertTrue();
             done();
         }
     })
@@ -538,11 +888,11 @@ describe('continuationManagerTest', function() {
      */
     it('testOff004', 0, async function(done) {
         try {
-            continuationManager.off("deviceDisconnect", token);
+            continuationManager.off("deviceUnselected", 999);
             done();
         } catch (e) {
             console.info("testOff004 " + e);
-            expect(e.toString().includes("Callback is not registered")).assertTrue();
+            expect(e.code == 16600002).assertTrue();
             done();
         }
     })
@@ -762,6 +1112,220 @@ describe('continuationManagerTest', function() {
     })
 
     /**
+     * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_STARTDEVICEMANAGER_0100
+     * @tc.name [JS-API9]ContinuationManager.startContinuationDeviceManager().
+     * @tc.desc Test Js Api ContinuationManager.startContinuationDeviceManager() testcase 001
+     */
+    it('testStartContinuationDeviceManager001', 0, async function(done) {
+        try {
+            continuationManager.startContinuationDeviceManager(token, function (err, data) {
+                expect(err.code != 0).assertTrue();
+                expect(data == undefined).assertTrue();
+            });
+            done();
+        } catch (e) {
+            console.info("testStartContinuationDeviceManager001 " + e);
+            expect(null).assertFail();
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_STARTDEVICEMANAGER_0200
+     * @tc.name [JS-API9]ContinuationManager.startContinuationDeviceManager().
+     * @tc.desc Test Js Api ContinuationManager.startContinuationDeviceManager() testcase 002
+     */
+    it('testStartContinuationDeviceManager002', 0, async function(done) {
+        try {
+            continuationManager.startContinuationDeviceManager("invalid token", function (err, data) {
+                expect(err.code == 401).assertTrue();
+                expect(data == undefined).assertTrue();
+            });
+            done();
+        } catch (e) {
+            console.info("testStartContinuationDeviceManager002 " + e);
+            expect(e.code == 401).assertTrue();
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_STARTDEVICEMANAGER_0300
+     * @tc.name [JS-API9]ContinuationManager.startContinuationDeviceManager().
+     * @tc.desc Test Js Api ContinuationManager.startContinuationDeviceManager() testcase 003
+     */
+    it('testStartContinuationDeviceManager003', 0, async function(done) {
+        try {
+            let continuationExtraParams = {
+                deviceType: ["00E"],
+                description: "description",
+                filter: {"name": "authInfo","length": 8},
+                continuationMode: continuationManager.ContinuationMode.COLLABORATION_MULTIPLE,
+                authInfo: {"name": "authInfo","length": 8}
+            };
+            continuationManager.startContinuationDeviceManager("invalid token", continuationExtraParams, function (err, data) {
+                expect(err.code == 401).assertTrue();
+                expect(data == undefined).assertTrue();
+            });
+            done();
+        } catch (e) {
+            console.info("testStartContinuationDeviceManager003 " + e);
+            eexpect(e.code == 401).assertTrue();
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_STARTDEVICEMANAGER_0400
+     * @tc.name [JS-API9]ContinuationManager.startContinuationDeviceManager().
+     * @tc.desc Test Js Api ContinuationManager.startContinuationDeviceManager() testcase 004
+     */
+    it('testStartContinuationDeviceManager004', 0, async function(done) {
+        try {
+            let continuationExtraParams = {
+                deviceType: ["00E"],
+                description: "description",
+                filter: {"name": "authInfo","length": 8},
+                continuationMode: continuationManager.ContinuationMode.COLLABORATION_MULTIPLE,
+                authInfo: {"name": "authInfo","length": 8}
+            };
+            continuationManager.startContinuationDeviceManager(52, continuationExtraParams, function (err, data) {
+                console.info("testStartContinuationDeviceManager004 " + err.code);
+                expect(err.code == 16600002).assertTrue();
+                expect(data == undefined).assertTrue();
+            });
+            done();
+        } catch (e) {
+            console.info("testStartContinuationDeviceManager004 " + e);
+            expect(null).assertFail();
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_STARTDEVICEMANAGER_0500
+     * @tc.name [JS-API9]ContinuationManager.startContinuationDeviceManager().
+     * @tc.desc Test Js Api ContinuationManager.startContinuationDeviceManager() testcase 005
+     */
+    it('testStartContinuationDeviceManager005', 0, async function(done) {
+        try {
+            let continuationExtraParams = {
+                deviceType: ["00E"],
+                description: "description",
+                filter: {"name": "authInfo","length": 8},
+                continuationMode: 30,
+                authInfo: {"name": "authInfo","length": 8}
+            };
+            continuationManager.startContinuationDeviceManager(token, continuationExtraParams, function (err, data) {
+                console.info("testStartContinuationDeviceManager005 " + err.code);
+                expect(err.code == 401).assertTrue();
+                expect(data == undefined).assertTrue();
+            });
+            done();
+        } catch (e) {
+            console.info("testStartContinuationDeviceManager005 " + e);
+            expect(null).assertFail();
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_STARTDEVICEMANAGER_0600
+     * @tc.name [JS-API9]ContinuationManager.startContinuationDeviceManager().
+     * @tc.desc Test Js Api ContinuationManager.startContinuationDeviceManager() testcase 006
+     */
+    it('testStartContinuationDeviceManager006', 0, async function(done) {
+        try {
+            let continuationExtraParams = {
+            };
+            continuationManager.startContinuationDeviceManager(token, continuationExtraParams, function (err, data) {
+                console.info("testStartContinuationDeviceManager006 " + err.code);
+                expect(err.code != 0).assertTrue();
+                expect(data == undefined).assertTrue();
+            });
+            done();
+        } catch (e) {
+            console.info("testStartContinuationDeviceManager006 " + e);
+            expect(null).assertFail();
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_STARTDEVICEMANAGER_0700
+     * @tc.name [JS-API9]ContinuationManager.startContinuationDeviceManager().
+     * @tc.desc Test Js Api ContinuationManager.startContinuationDeviceManager() testcase 007
+     */
+    it('testStartContinuationDeviceManager007', 0, async function(done) {
+        try {
+            let continuationExtraParams = {
+                deviceType: ["00E"],
+                description: "description",
+                filter: {"name": "authInfo","length": 8},
+                continuationMode: continuationManager.ContinuationMode.COLLABORATION_MUTIPLE,
+                authInfo: {"name": "authInfo","length": 8}
+            };
+            continuationManager.startContinuationDeviceManager(token, continuationExtraParams, function (err, data) {
+                expect(err.code != 0).assertTrue();
+                expect(data == undefined).assertTrue();
+            });
+            done();
+        } catch (e) {
+            console.info("testStartContinuationDeviceManager007 " + e);
+            expect(null).assertFail();
+            done();
+        }
+    })
+    
+    /**
+     * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_STARTDEVICEMANAGER_0800
+     * @tc.name [JS-API9]ContinuationManager.startContinuationDeviceManager().
+     * @tc.desc Test Js Api ContinuationManager.startContinuationDeviceManager() testcase 008
+     */
+    it('testStartContinuationDeviceManager008', 0, async function(done) {
+        try {
+            let continuationExtraParams = {
+                deviceType: ["00E"],
+                description: "description",
+                filter: {"name": "authInfo","length": 8},
+                continuationMode: continuationManager.ContinuationMode.COLLABORATION_SINGLE,
+                authInfo: {"name": "authInfo","length": 8}
+            };
+            continuationManager.startContinuationDeviceManager(token, continuationExtraParams).then((data) => {
+                expect(data == undefined).assertTrue();
+            }).catch((err) => {
+                expect(err.code == 16600002).assertTrue();
+            });
+            done();
+        } catch (e) {
+            console.info("testStartContinuationDeviceManager008 " + e);
+            expect(null).assertFail();
+            done();
+        }
+    })
+
+        
+    /**
+     * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_STARTDEVICEMANAGER_0900
+     * @tc.name [JS-API9]ContinuationManager.startContinuationDeviceManager().
+     * @tc.desc Test Js Api ContinuationManager.startContinuationDeviceManager() testcase 009
+     */
+    it('testStartContinuationDeviceManager009', 0, async function(done) {
+        try {
+            continuationManager.startContinuationDeviceManager(token).then((data) => {
+                expect(data == undefined).assertTrue();
+            }).catch((err) => {
+                expect(err.code == 16600002).assertTrue();
+            });
+            done();
+        } catch (e) {
+            console.info("testStartContinuationDeviceManager009 " + e);
+            expect(null).assertFail();
+            done();
+        }
+    })
+
+    /**
      * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_UPDATECONNECTSTATUS_0100
      * @tc.name [JS-API8]ContinuationManager.updateConnectStatus().
      * @tc.desc Test Js Api ContinuationManager.updateConnectStatus() testcase 001
@@ -888,5 +1452,128 @@ describe('continuationManagerTest', function() {
         }
     })
 
+    /**
+     * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_UPDATECONNECTSTATUS_0100
+     * @tc.name [JS-API9]ContinuationManager.updateContinuationState().
+     * @tc.desc Test Js Api ContinuationManager.updateContinuationState() testcase 001
+     */
+    it('testUpdateContinuationState001', 0, async function(done) {
+        try {
+            continuationManager.updateContinuationState(token, TEST_DEVICE_ID, TEST_CONNECT_STATUS, function (err, data) {
+                expect(err.code != 0).assertTrue();
+                expect(data == undefined).assertTrue();
+            });
+            done();
+        } catch (e) {
+            console.info("testUpdateContinuationState001 " + e);
+            expect(null).assertFail();  
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_UPDATECONNECTSTATUS_0200
+     * @tc.name [JS-API9]ContinuationManager.updateContinuationState().
+     * @tc.desc Test Js Api ContinuationManager.updateContinuationState() testcase 002
+     */
+    it('testUpdateContinuationState002', 0, async function(done) {
+        try {
+            continuationManager.updateContinuationState("invalid token", TEST_DEVICE_ID, TEST_CONNECT_STATUS, function (err, data) {
+                console.info("testUpdateContinuationState002 " + err.code);
+                expect(err.code == 401).assertTrue();
+                expect(data == undefined).assertTrue();
+            });
+            done();
+        } catch (e) {
+            console.info("testUpdateContinuationState002 " + e);
+            expect(err.code == 401).assertTrue();
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_UPDATECONNECTSTATUS_0300
+     * @tc.name [JS-API9]ContinuationManager.updateContinuationState().
+     * @tc.desc Test Js Api ContinuationManager.updateContinuationState() testcase 003
+     */
+    it('testUpdateContinuationState003', 0, async function(done) {
+        try {
+            continuationManager.updateContinuationState(token, TEST_DEVICE_ID, -2, function (err, data) {
+                console.info("testUpdateContinuationState003 " + err.code);
+                expect(err.code == 401).assertTrue();
+                expect(data == undefined).assertTrue();
+            });
+            done();
+        } catch (e) {
+            console.info("testUpdateContinuationState003 " + e);
+            expect(null).assertFail();
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_UPDATECONNECTSTATUS_0400
+     * @tc.name [JS-API9]ContinuationManager.updateContinuationState().
+     * @tc.desc Test Js Api ContinuationManager.updateContinuationState() testcase 004
+     */
+     it('testUpdateContinuationState004', 0, async function(done) {
+        try {
+            console.info('testUpdateContinuationState004 begin');
+            continuationManager.updateContinuationState(token, TEST_DEVICE_ID, 
+                continuationManager.DeviceConnectState.IDLE).then((data) => {
+                expect(data == undefined).assertTrue();
+            }).catch((err) => {
+                expect(err.code == 16600002).assertTrue();
+            });
+            done();
+        } catch (e) {
+            console.info("testUpdateContinuationState004 " + e);
+            expect(null).assertFail();
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_UPDATECONNECTSTATUS_0500
+     * @tc.name [JS-API9]ContinuationManager.updateContinuationState().
+     * @tc.desc Test Js Api ContinuationManager.updateContinuationState() testcase 005
+     */
+    it('testUpdateContinuationState005', 0, async function(done) {
+        try {
+            console.info('testUpdateContinuationState005 begin');
+            continuationManager.updateContinuationState(token, TEST_DEVICE_ID, 
+                continuationManager.DeviceConnectState.CONNECTING).then((data) => {
+                expect(data == undefined).assertTrue();
+            }).catch((err) => {
+                expect(err.code == 16600002).assertTrue();
+            });
+            done();
+        } catch (e) {
+            console.info("testUpdateContinuationState005 " + e);
+            expect(null).assertFail();
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_UPDATECONNECTSTATUS_0600
+     * @tc.name [JS-API9]ContinuationManager.updateContinuationState().
+     * @tc.desc Test Js Api ContinuationManager.updateContinuationState() testcase 006
+     */
+    it('testUpdateContinuationState006', 0, async function(done) {
+        try {
+            continuationManager.updateContinuationState(token, TEST_DEVICE_ID, 
+                continuationManager.DeviceConnectState.DISCONNECTING).then((data) => {
+                expect(data == undefined).assertTrue();
+            }).catch((err) => {
+                expect(err.code == 16600002).assertTrue();
+            });
+            done();
+        } catch (e) {
+            console.info("testUpdateContinuationState006 " + e);
+            expect(null).assertFail();
+            done();
+        }
+    })
 
 })}
