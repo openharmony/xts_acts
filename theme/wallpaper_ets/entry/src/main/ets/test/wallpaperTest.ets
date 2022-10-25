@@ -14,12 +14,12 @@
  */
 import wallpaper from '@ohos.wallpaper';
 import image from '@ohos.multimedia.image';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
 const WALLPAPER_SYSTEM = 0;
 const WALLPAPER_LOCKSCREEN = 1;
-let imageSourceSystem = '/system/etc/wp.png';
-let imageSourceLockscreen = '/system/etc/wp.png';
+let imageSourceSystem = '/data/storage/el2/base/haps/wp.png';
+let imageSourceLockscreen = '/data/storage/el2/base/haps/wp.png';
 
 export default function wallpaperJSUnit() {
     describe('WallpaperJsunitTest', function () {
@@ -1050,7 +1050,7 @@ export default function wallpaperJSUnit() {
         */
         it('testSetImageCallBack101', 0, async function (done) {
             console.info('------------------testSetImageCallBack101 start----------------------');
-            let wallpaperPath = "/system/etc/wp.png";
+            let wallpaperPath = "/data/storage/el2/base/haps/wp.png";
             try{
                 wallpaper.setImage(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error, data) => {
                     if (error) {
@@ -1078,7 +1078,7 @@ export default function wallpaperJSUnit() {
         */
         it('testSetImageCallBack102', 0, async function (done) {
             console.info('------------------testSetImageCallBack102 start----------------------');
-            let wallpaperPath = "/system/etc/wp.png";
+            let wallpaperPath = "/data/storage/el2/base/haps/wp.png";
             try{
                 wallpaper.setImage(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_LOCKSCREEN, (error, data) => {
                     if (error) {
@@ -1147,7 +1147,7 @@ export default function wallpaperJSUnit() {
         */
         it('testSetImagePromise101', 0, async function (done) {
             console.info('------------------testSetImagePromise101 start----------------------');
-            let wallpaperPath = "/system/etc/wp.png";
+            let wallpaperPath = "/data/storage/el2/base/haps/wp.png";
             try{
                 wallpaper.setImage(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM).then((data) => {
                     console.log(`testSetImagePromise101 success to setImage.`);
@@ -1174,7 +1174,7 @@ export default function wallpaperJSUnit() {
         */
         it('testSetImagePromise102', 0, async function (done) {
             console.info('------------------testSetImagePromise102 start----------------------');
-            let wallpaperPath = "/system/etc/wp.png";
+            let wallpaperPath = "/data/storage/el2/base/haps/wp.png";
             try{
                 wallpaper.setImage(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_LOCKSCREEN).then((data) => {
                     console.log(`testSetImagePromise102 success to setImage.`);

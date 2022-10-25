@@ -23,7 +23,7 @@ ohos_js_hap_suite("ActsInputMethodEtsTest") {
   ets2abc = true
   subsystem_name = "inputmethod"
   part_name = "imf"
-  certificate_profile = "./signature/openharmony_sx.p7b"
+  certificate_profile = "./signature/ActInputMethodEtsAPITest.p7b"
   hap_name = "ActsInputMethodEtsTest"
 }
 ohos_js_assets("inputMethod_ets_assets") {

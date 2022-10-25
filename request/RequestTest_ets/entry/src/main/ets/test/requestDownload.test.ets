@@ -673,5 +673,313 @@ export default function requestDownloadJSUnit() {
       done();
     });
 
+    /**
+     * @tc.number SUB_REQUEST_DOWNLOAD_API_DELETE_0001
+     * @tc.desc Delete the download task.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_REQUEST_DOWNLOAD_API_DELETE_0001', 0, async function (done) {
+      console.info("-----------------------SUB_REQUEST_DOWNLOAD_API_delete_0001 is starting-----------------------");
+      try {
+        request.download(downloadConfig, (data) => {
+          downloadTask = data;
+          console.info("SUB_REQUEST_DOWNLOAD_API_DELETE_0001 downloadTask: " + downloadTask);
+          expect(downloadTask != undefined).assertEqual(true);
+          downloadTask.delete((err, data) => {
+            if (err) {
+              console.error('SUB_REQUEST_DOWNLOAD_API_DELETE_0001 Failed to delete the download task.');
+              expect().assertFail();
+            }
+            console.info('SUB_REQUEST_DOWNLOAD_API_DELETE_0001 Download task delete success.');
+            expect(typeof data == "boolean").assertTrue();
+          });
+        })
+      } catch (error) {
+        console.error('SUB_REQUEST_DOWNLOAD_API_DELETE_0001 delete catch error' + error);
+        expect().assertFail();
+      }
+      console.info("-----------------------SUB_REQUEST_DOWNLOAD_API_DELETE_0001 end-----------------------");
+      done();
+    });
+
+    /**
+     * @tc.number SUB_REQUEST_DOWNLOAD_API_DELETE_0002
+     * @tc.desc Delete the download task.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_REQUEST_DOWNLOAD_API_DELETE_0002', 0, async function (done) {
+      console.info("-----------------------SUB_REQUEST_DOWNLOAD_API_DELETE_0002 is starting-----------------------");
+      try {
+        request.download(downloadConfig, (data) => {
+          downloadTask = data;
+          console.info("SUB_REQUEST_DOWNLOAD_API_DELETE_0002 downloadTask: " + downloadTask);
+          expect(downloadTask != undefined).assertEqual(true);
+          downloadTask.delete().then(data => {
+            console.info('SUB_REQUEST_DOWNLOAD_API_DELETE_0002 Download task delete success.');
+            expect(data == true).assertTrue();
+          }).catch((err) => {
+            console.info('SUB_REQUEST_DOWNLOAD_API_DELETE_0002 Failed to delete the download task.');
+            expect().assertFail();
+          })
+        })
+      } catch (error) {
+        console.error('SUB_REQUEST_DOWNLOAD_API_DELETE_0002 delete catch error');
+        expect().assertFail();
+      }
+      console.info("-----------------------SUB_REQUEST_DOWNLOAD_API_DELETE_0002 end-----------------------");
+      done();
+    });
+
+    /**
+     * @tc.number SUB_REQUEST_DOWNLOAD_API_SUSPEND_0001
+     * @tc.desc Suspend the download task
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_REQUEST_DOWNLOAD_API_SUSPEND_0001', 0, async function (done) {
+      console.info("-----------------------SUB_REQUEST_DOWNLOAD_API_SUSPEND_0001 is starting-----------------------");
+      try {
+        request.download(downloadConfig, (data) => {
+          downloadTask = data;
+          console.info("SUB_REQUEST_DOWNLOAD_API_SUSPEND_0001 downloadTask: " + downloadTask);
+          expect(downloadTask != undefined).assertEqual(true);
+          downloadTask.suspend((err, data) => {
+            if (err) {
+              console.error('SUB_REQUEST_DOWNLOAD_API_SUSPEND_0001 Failed to suspend the download task.');
+              expect().assertFail();
+            }
+            console.info('SUB_REQUEST_DOWNLOAD_API_SUSPEND_0001 Download task suspend success.');
+            expect(data == true).assertTrue();
+          });
+        })
+      }
+      catch(error) {
+        console.error('SUB_REQUEST_DOWNLOAD_API_SUSPEND_0001 suspend catch error' + error);
+        expect().assertFail();
+      }
+      console.info("-----------------------SUB_REQUEST_DOWNLOAD_API_SUSPEND_0001 end-----------------------");
+      done();
+    });
+
+    /**
+     * @tc.number SUB_REQUEST_DOWNLOAD_API_SUSPEND_0002
+     * @tc.desc Suspend the download task
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_REQUEST_DOWNLOAD_API_SUSPEND_0002', 0, async function (done) {
+      console.info("-----------------------SUB_REQUEST_DOWNLOAD_API_SUSPEND_0002 is starting-----------------------");
+      try {
+        request.download(downloadConfig, (data) => {
+          downloadTask = data;
+          console.info("SUB_REQUEST_DOWNLOAD_API_SUSPEND_0002 downloadTask: " + downloadTask);
+          expect(downloadTask != undefined).assertEqual(true);
+          downloadTask.suspend().then(data => {
+            console.info('SUB_REQUEST_DOWNLOAD_API_SUSPEND_0001 Download task suspend success.');
+            expect(data == true).assertTrue();
+          }).catch((err) => {
+            console.info('SUB_REQUEST_DOWNLOAD_API_SUSPEND_0002 Failed to suspend the download task.');
+            expect().assertFail();
+          })
+        })
+      }
+      catch(error){
+        console.error('SUB_REQUEST_DOWNLOAD_API_SUSPEND_0001 suspend catch error' + error);
+        expect().assertFail();
+      }
+      console.info("-----------------------SUB_REQUEST_DOWNLOAD_API_SUSPEND_0002 end-----------------------");
+      done();
+    });
+
+    /**
+     * @tc.number SUB_REQUEST_DOWNLOAD_API_RESTORE_0001
+     * @tc.desc Restore the download task
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_REQUEST_DOWNLOAD_API_RESTORE_0001', 0, async function (done) {
+      console.info("-----------------------SUB_REQUEST_DOWNLOAD_API_RESTORE_0001 is starting-----------------------");
+      try{
+        request.download(downloadConfig, (data) => {
+          downloadTask = data;
+          console.info("SUB_REQUEST_DOWNLOAD_API_RESTORE_0001 downloadTask: " + downloadTask);
+          expect(downloadTask != undefined).assertEqual(true);
+          downloadTask.restore((err, data) => {
+            if (err) {
+              console.error('SUB_REQUEST_DOWNLOAD_API_RESTORE_0001 Failed to restore the download task.');
+              expect().assertFail();
+            }
+            console.info('SUB_REQUEST_DOWNLOAD_API_RESTORE_0001 Download  restore success.');
+            expect(data == true).assertTrue();
+          });
+        });
+      }catch(error){
+        console.error('SUB_REQUEST_DOWNLOAD_API_RESTORE_0001 restore catch error' + error);
+        expect().assertFail();
+      }
+      console.info("-----------------------SUB_REQUEST_DOWNLOAD_API_RESTORE_0001 end-----------------------");
+      done();
+    });
+
+    /**
+     * @tc.number SUB_REQUEST_DOWNLOAD_API_RESTORE_0002
+     * @tc.desc Restore the download task
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_REQUEST_DOWNLOAD_API_RESTORE_0002', 0, async function (done) {
+      console.info("-----------------------SUB_REQUEST_DOWNLOAD_API_RESTORE_0002 is starting-----------------------");
+      try{
+        request.download(downloadConfig, (data) => {
+          downloadTask = data;
+          console.info("SUB_REQUEST_DOWNLOAD_API_RESTORE_0002 downloadTask: " + downloadTask);
+          expect(downloadTask != undefined).assertEqual(true);
+          downloadTask.restore().then(data => {
+            console.info('SUB_REQUEST_DOWNLOAD_API_RESTORE_0002 Download task restore.');
+            expect(data == true).assertTrue();
+          }).catch((err) => {
+            console.info('SUB_REQUEST_DOWNLOAD_API_RESTORE_0002 Failed to restore the download task.');
+            expect().assertFail();
+          });
+        });
+      }catch(error){
+        console.error('SUB_REQUEST_DOWNLOAD_API_RESTORE_0001 restore catch error' + error);
+        expect().assertFail();
+      }
+      console.info("-----------------------SUB_REQUEST_DOWNLOAD_API_RESTORE_0002 end-----------------------");
+      done();
+    });
+
+    /**
+     * @tc.number SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0001
+     * @tc.desc Get the download task info
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0001', 0, async function (done) {
+      console.info("---------------------SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0001 is starting---------------------");
+      try{
+        request.download(downloadConfig, (data) => {
+          downloadTask = data;
+          console.info("SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0001 downloadTask: " + downloadTask);
+          expect(downloadTask != undefined).assertEqual(true);
+          downloadTask.getTaskInfo((err, data) => {
+            if (err) {
+              console.error('SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0001 Failed to getTaskInfo the download task.');
+              expect().assertFail();
+            }
+            console.info('SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0001 Download getTaskInfo success.');
+            expect(typeof data == "object").assertTrue();
+          });
+        });
+      }catch(error){
+        console.error('SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0001 getTaskInfo catch error' + error);
+        expect().assertFail();
+      }
+      console.info("-----------------------SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0001 end-----------------------");
+      done();
+    });
+
+    /**
+     * @tc.number SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0002
+     * @tc.desc Get the download task info
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0002', 0, async function (done) {
+      console.info("-------------------SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0002 is starting----------------------");
+      try{
+        request.download(downloadConfig, (data) => {
+          downloadTask = data;
+          console.info("SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0002 downloadTask: " + downloadTask);
+          expect(downloadTask != undefined).assertEqual(true);
+          downloadTask.getTaskInfo().then(data => {
+            console.info('SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0002 Download task getTaskInfo success.');
+            expect(typeof data == "object").assertTrue();
+          }).catch((err) => {
+            console.error('SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0002 Failed to getTaskInfo the download task.');
+            expect().assertFail();
+          });
+        });
+      }catch(error){
+        console.error('SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0001 getTaskInfo catch error' + error);
+        expect().assertFail();
+      }
+      console.info("-----------------------SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0002 end-----------------------");
+      done();
+    });
+
+    /**
+     * @tc.number SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0001
+     * @tc.desc Get mimetype of the download task
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0001', 0, async function (done) {
+      console.info("---------------------SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0001 is starting---------------------");
+      try{
+        request.download(downloadConfig, (data) => {
+          downloadTask = data;
+          console.info("SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0001 downloadTask: " + downloadTask);
+          expect(downloadTask != undefined).assertEqual(true);
+          downloadTask.getTaskMimeType((err, data) => {
+            if (err) {
+              console.error('SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0001 Failed to getTaskMimeType the download task.');
+              expect().assertFail();
+            }
+            console.info('SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0001 Download task getTaskMimeType success.');
+            expect(typeof data == "string").assertTrue();
+          });
+        });
+      }catch(error){
+        console.error('SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0001 getTaskMimeType catch error' + error);
+        expect().assertFail();
+      }
+      console.info("-----------------------SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0001 end-----------------------");
+      done();
+    });
+
+    /**
+     * @tc.number SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0002
+     * @tc.desc Get mimetype of the download task
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0002', 0, async function (done) {
+      console.info("-------------------SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0002 is starting----------------------");
+      try{
+        request.download(downloadConfig, (data) => {
+          downloadTask = data;
+          console.info("SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0002 downloadTask: " + downloadTask);
+          expect(downloadTask != undefined).assertEqual(true);
+          downloadTask.getTaskMimeType().then(data => {
+            console.info('SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0002 Download getTaskMimeType success.');
+            expect(typeof data == "string").assertTrue();
+          }).catch((err) => {
+            console.error('SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0002 Failed to getTaskMimeType the download task.');
+            expect().assertFail();
+          });
+        });
+      }catch(error){
+        console.error('SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0001 getTaskMimeType catch error' + error);
+        expect().assertFail();
+      }
+      console.info("-----------------------SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0002 end-----------------------");
+      done();
+    });
+
+
   })
 }

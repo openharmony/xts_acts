@@ -33,6 +33,59 @@ export default function screenLockJSUnit() {
                 return;
             }
         }
+    
+       /*
+        * @tc.number  SUB_MISC_THEME_screenLock_API_0012
+        * @tc.name    Test unlock() to  Unlocks the screen.
+        * @tc.desc    Function test
+        * @tc.level   0
+        */
+        it('SUB_MISC_THEME_screenLock_API_0012', 0, async function (done) {
+            console.info('------------------SUB_MISC_THEME_screenLock_API_0012 start----------------------');
+            try{
+                screenLock.unlock((error, data) => {
+                    if (error) {
+                        console.error(`SUB_MISC_THEME_screenLock_API_0012 failed because: ` + JSON.stringify(error));
+                        expect().assertFail();
+                        done();
+                    }
+                    console.log(`SUB_MISC_THEME_screenLock_API_0012 success.`);
+                    expect(true).assertTrue();
+                    done();
+                });
+            }catch(err){
+                console.info('SUB_MISC_THEME_screenLock_API_0012 catch err : ' + JSON.stringify(err));
+                expect().assertFail();
+                done();
+            }
+            console.info('------------------SUB_MISC_THEME_screenLock_API_0012 end----------------------');
+        })
+
+        /*
+        * @tc.number  SUB_MISC_THEME_screenLock_API_0013
+        * @tc.name    Test unlock() to  Unlocks the screen.
+        * @tc.desc    Function test
+        * @tc.level   0
+        */
+        it('SUB_MISC_THEME_screenLock_API_0013', 0, async function (done) {
+            console.info('------------------SUB_MISC_THEME_screenLock_API_0013 start----------------------');
+            try{
+                screenLock.unlock().then((data) => {
+                    console.log(`SUB_MISC_THEME_screenLock_API_0013 success.`);
+                    expect(true).assertTrue();
+                    done();
+                }).catch( err => {
+                    console.error(`SUB_MISC_THEME_screenLock_API_0013 failed because: ` + JSON.stringify(err));
+                    expect().assertFail();
+                    done();
+                });
+            }catch(err){
+                console.info('SUB_MISC_THEME_screenLock_API_0013 catch err : ' + JSON.stringify(err));
+                expect().assertFail();
+                done();
+            }
+            console.info('------------------SUB_MISC_THEME_screenLock_API_0013 end----------------------');
+        });
 
         /*
          * @tc.number    SUB_MISC_THEME_screenLock_API_0001
