@@ -24,29 +24,14 @@ struct ClipAndMaskExample {
   @State maskType: CommonShapeMethod= new Rect({ width: 280, height: 280 });
   @State clipType: CommonShapeMethod= new Circle({ width: 280, height: 280 });
   polygonInterface:PolygonInterface = Polygon
-
+  circle : CircleInterface = Circle
+  line: LineInterface = Line
+  ellsple :EllipseInterface = Ellipse
   pathInterface : PathInterface = Path
-
   shape:ShapeInterface = Shape
-
   rect: RectInterface = Rect
-
   polylineInterface:PolylineInterface = Polyline
 
-  
-  ellsple: EllipseAttribute = new Ellipse({
-      width:'150px',
-      height: '150px'
-  })
-  circle : CircleAttribute = new Circle({
-    width:'150px',
-    height: '150px'
-  })
-
-  line : LineAttribute = new Line({
-    width:'15px',
-    height: '15px'
-  })
   private stateChangCallBack = (eventData) => {
     if (eventData != null) {
       console.info("shapeClipping page state change called:" + JSON.stringify(eventData));
