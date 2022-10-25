@@ -24,6 +24,7 @@ describe('UsbCoreJsFunctionsTestEx', function () {
 
   var gDeviceList
   var portCurrentMode
+  var invalidCode = 0;
 
   beforeAll(function () {
     console.log('*************Usb Unit UsbCoreJsFunctionsTestEx Begin*************');
@@ -575,6 +576,43 @@ describe('UsbCoreJsFunctionsTestEx', function () {
   })
 
   /**
+   * @tc.number    : SUB_USB_JS_1040
+   * @tc.name      : connectDevice
+   * @tc.desc      : 反向测试 请求权限 参数类型错误
+   */
+   it('SUB_USB_JS_1040', 0, function () {
+    console.info('usb SUB_USB_JS_1040 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
+    if (gDeviceList.length == 0) {
+      console.info('usb case get_device_list is null')
+      expect(false).assertTrue();
+      return
+    }
+    var isRight = usb.hasRight(gDeviceList[0].name);
+    if (!isRight) {
+      usb.requestRight(gDeviceList[0].name).then(hasRight => {
+        console.info('usb 1040 requestRight hasRight:' + hasRight);
+      }).catch(error => {
+        console.info('usb 1040 requestRight error:' + error);
+      });
+      CheckEmptyUtils.sleep(5000)
+    }
+    try {
+      var maskCode = usb.connectDevice("invalid");
+      console.info('usb case connectDevice return: ' + maskCode);
+      expect(false).assertTrue();
+    } catch (err) {
+      console.info('catch err code: ' + err.code + ' message: ' + err.message);
+      expect(err.code).assertEqual(401);
+      console.info('usb SUB_USB_JS_1040 :  PASS');
+    }
+  })
+
+  /**
    * @tc.number    : SUB_USB_JS_0720
    * @tc.name      : hasRight
    * @tc.desc      : 反向测试 给错误设备名字
@@ -632,6 +670,34 @@ describe('UsbCoreJsFunctionsTestEx', function () {
 
     console.info('usb SUB_USB_JS_0730 :  PASS');
     expect(true).assertTrue();
+  })
+
+  /**
+   * @tc.number    : SUB_USB_JS_1020
+   * @tc.name      : hasRight
+   * @tc.desc      : 反向测试 权限查询 参数类型错误
+   */
+   it('SUB_USB_JS_1020', 0, function () {
+    console.info('usb SUB_USB_JS_1020 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
+    if (gDeviceList.length == 0) {
+      console.info('usb case get_device_list is null')
+      expect(false).assertTrue();
+      return
+    }
+    try {
+      var maskCode = usb.hasRight(invalidCode);
+      console.info('usb case hasRight return: ' + maskCode);
+      expect(false).assertTrue();
+    } catch (err) {
+      console.info('catch err code: ' + err.code + ' message: ' + err.message);
+      expect(err.code).assertEqual(401);
+      console.info('usb SUB_USB_JS_1020 :  PASS');
+    }
   })
 
   /**
@@ -698,6 +764,143 @@ describe('UsbCoreJsFunctionsTestEx', function () {
       });
       CheckEmptyUtils.sleep(5000);
     }
+  })
+
+  /**
+   * @tc.number    : SUB_USB_JS_1030
+   * @tc.name      : requestRight
+   * @tc.desc      : 反向测试 请求权限 参数类型错误
+   */
+   it('SUB_USB_JS_1030', 0, function () {
+    console.info('usb SUB_USB_JS_1030 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
+    if (gDeviceList.length == 0) {
+      console.info('usb case get_device_list is null')
+      expect(false).assertTrue();
+      return
+    }
+    try {
+      var maskCode = usb.requestRight(invalidCode);
+      console.info('usb case requestRight return: ' + maskCode);
+      expect(false).assertTrue();
+    } catch (err) {
+      console.info('catch err code: ' + err.code + ' message: ' + err.message);
+      expect(err.code).assertEqual(401);
+      console.info('usb SUB_USB_JS_1030 :  PASS');
+    }
+    CheckEmptyUtils.sleep(5000);
+  })
+
+  /**
+   * @tc.number    : SUB_USB_JS_1010
+   * @tc.name      : getDevices
+   * @tc.desc      : 反向测试 获取设备列表 参数类型错误
+   */
+   it('SUB_USB_JS_1010', 0, function () {
+    console.info('usb SUB_USB_JS_1010 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
+    try {
+      var maskCode = usb.getDevices("invalid");
+      console.info('usb case getDevices return: ' + maskCode);
+      expect(false).assertTrue();
+    } catch (err) {
+      console.info('catch err code: ' + err.code + ' message: ' + err.message);
+      expect(err.code).assertEqual(401);
+      console.info('usb SUB_USB_JS_1010 :  PASS');
+    }
+  })
+
+  /**
+   * @tc.number    : SUB_USB_JS_1050
+   * @tc.name      : closePipe
+   * @tc.desc      : 反向测试 关闭设备 参数类型错误
+   */
+   it('SUB_USB_JS_1050', 0, function () {
+    console.info('usb SUB_USB_JS_1050 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
+    if (gDeviceList.length == 0) {
+      console.info('usb case get_device_list is null')
+      expect(false).assertTrue();
+      return
+    }
+    try {
+      var maskCode = usb.closePipe("invalid");
+      console.info('usb case closePipe return: ' + maskCode);
+      expect(false).assertTrue();
+    } catch (err) {
+      console.info('catch err code: ' + err.code + ' message: ' + err.message);
+      expect(err.code).assertEqual(401);
+      console.info('usb SUB_USB_JS_1050 :  PASS');
+    }
+  })
+
+  /**
+   * @tc.number    : SUB_USB_JS_1060
+   * @tc.name      : getRawDescriptor
+   * @tc.desc      : 反向测试 关闭设备 参数类型错误
+   */
+   it('SUB_USB_JS_1060', 0, function () {
+    console.info('usb SUB_USB_JS_1060 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
+    if (gDeviceList.length == 0) {
+      console.info('usb case get_device_list is null')
+      expect(false).assertTrue();
+      return
+    }
+    try {
+      var maskCode = usb.getRawDescriptor("invalid");
+      console.info('usb case getRawDescriptor return: ' + maskCode);
+      expect(false).assertTrue();
+    } catch (err) {
+      console.info('catch err code: ' + err.code + ' message: ' + err.message);
+      expect(err.code).assertEqual(401);
+      console.info('usb SUB_USB_JS_1060 :  PASS');
+    }
+  })
+
+  /**
+   * @tc.number    : SUB_USB_JS_1090
+   * @tc.name      : removeRight
+   * @tc.desc      : 反向测试 移除权限 参数类型错误
+   */
+   it('SUB_USB_JS_1090', 0, function () {
+    console.info('usb SUB_USB_JS_1090 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
+    if (gDeviceList.length == 0) {
+      console.info('usb case get_device_list is null')
+      expect(false).assertTrue();
+      return
+    }
+    try {
+      var maskCode = usb.removeRight(invalidCode);
+      console.info('usb case removeRight return: ' + maskCode);
+      expect(false).assertTrue();
+    } catch (err) {
+      console.info('catch err code: ' + err.code + ' message: ' + err.message);
+      expect(err.code).assertEqual(401);
+      console.info('usb SUB_USB_JS_1090 :  PASS');
+    }
+    CheckEmptyUtils.sleep(5000);
   })
 })
 }

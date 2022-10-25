@@ -100,13 +100,14 @@ describe('UsbFunctionsJsFunctionsTest', function () {
   /**
    * @tc.number    : SUB_USB_JS_1000
    * @tc.name      : getCurrentFunctions
-   * @tc.desc      : 反向测试 获取当前设备模式
+   * @tc.desc      : 反向测试 获取当前设备模式 入参错误(无参接口传参)
    */
   it('SUB_USB_JS_1000', 0, function () {
     console.info('usb SUB_USB_JS_1000 begin');
     try {
       var maskCode = usb.getCurrentFunctions("invalid");
       console.info('usb case getCurrentFunctions return: ' + maskCode);
+      expect(false).assertTrue();
     } catch (err) {
       console.info('catch err code: ' + err.code + ' message: ' + err.message);
       expect(err.code).assertEqual(401);
