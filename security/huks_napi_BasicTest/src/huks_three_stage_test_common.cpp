@@ -15,15 +15,6 @@
 
 #include "huks_three_stage_test_common.h"
 
-// OH_Huks_Result {
-//     /** Result code. */
-//     int32_t errorCode;
-//     /** Description of the result code. */
-//     const char *errorMsg;
-//     /** Other data returned. */
-//     uint8_t *data;
-// }
-
 OH_Huks_Result InitParamSet(
     struct OH_Huks_ParamSet **paramSet,
     const struct OH_Huks_Param *params,
