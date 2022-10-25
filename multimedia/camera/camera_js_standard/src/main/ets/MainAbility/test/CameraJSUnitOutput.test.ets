@@ -113,23 +113,35 @@ export default function cameraJSUnitOutput(surfaceId: any) {
     }
   }
 
-
   async function getvideosurface() {
     await getFd('CameraOutput.mp4');
-    videoConfig.url = fdPath;
+      videoConfig.url = fdPath;
     media.createVideoRecorder((err, recorder) => {
-      console.info(TAG + 'createVideoRecorder called')
-      videoRecorder = recorder
-      console.info(TAG + 'videoRecorder is :' + JSON.stringify(videoRecorder))
-      console.info(TAG + 'videoRecorder.prepare called.')
-      videoRecorder.prepare(videoConfig, (err) => {
-        console.info(TAG + 'videoRecorder.prepare success.')
-      })
-      videoRecorder.getInputSurface((err, id) => {
-        console.info(TAG + 'getInputSurface called')
-        videoSurfaceId = id
-        console.info(TAG + 'getInputSurface surfaceId: ' + JSON.stringify(videoSurfaceId))
-      })
+      if (!err) {
+        console.info(TAG + 'createVideoRecorder called')
+        videoRecorder = recorder
+        console.info(TAG + 'videoRecorder is :' + JSON.stringify(videoRecorder))
+        console.info(TAG + 'videoRecorder.prepare called.')
+        videoRecorder.prepare(videoConfig, (err) => {
+          if (!err) {
+            console.info(TAG + 'videoRecorder.prepare success.')
+            videoRecorder.getInputSurface((err, id) => {
+              console.info(TAG + 'getInputSurface called')
+              if (!err) {
+                videoSurfaceId = id
+                console.info(TAG + 'getInputSurface surfaceId: ' + JSON.stringify(videoSurfaceId))
+              } else {
+                console.info(TAG + 'getInputSurface FAILED')
+              }
+            })
+          } else {
+            console.info(TAG + 'prepare FAILED')
+          }
+        })
+      }
+      else {
+        console.info(TAG + 'createVideoRecorder FAILED')
+      }
     })
   }
 
@@ -164,7 +176,7 @@ export default function cameraJSUnitOutput(surfaceId: any) {
       let permissionName3 = 'ohos.permission.MEDIA_LOCATION';
       let permissionName4 = 'ohos.permission.READ_MEDIA';
       let permissionName5 = 'ohos.permission.WRITE_MEDIA';
-      let permissionName6 = 'ohos.permission.START_ABILITIES_FROM_BACKGROUND';
+      let permissionName6 = 'ohos.permission.START_ABILIIES_FROM_BACKGROUND';
       let permissionName7 = 'ohos.permission.START_INVISIBLE_ABILITY';
       let permissionName8 = 'ohos.permission.ABILITY_BACKGROUND_COMMUNICATION';
       await atManager.grantUserGrantedPermission(tokenID, permissionName1, 1).then((result) => {
@@ -342,28 +354,28 @@ export default function cameraJSUnitOutput(surfaceId: any) {
 
 
     /**
-      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_INPUT_PROMISE_0100
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_OUTPUT_PROMISE_0100
       * @tc.name      : Create previewOutput instance async api
       * @tc.desc      : Create previewOutput instance async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 2
     */
-    it('SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_INPUT_PROMISE_0100', 2, async function (done) {
-      console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_INPUT_PROMISE_0100--------------");
+    it('SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_OUTPUT_PROMISE_0100', 2, async function (done) {
+      console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_OUTPUT_PROMISE_0100--------------");
       if (isEmpty(cameraManager)) {
         console.info(TAG + "Entering CREATE_CAMERA_INPUT cameraManager == null || undefined")
         expect().assertFail();
       } else {
         cameraInput = await cameraManager.createCameraInput(cameraDevicesArray[0]);
         if (isEmpty(cameraInput)) {
-          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_INPUT_PROMISE_0100 FAILED");
+          console.info(TAG + "SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_OUTPUT_PROMISE_0100 FAILED");
         }
         cameraInput.open(async (err) => {
           if (!err) {
-            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_INPUT_PROMISE_0100 open callback");
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_OUTPUT_PROMISE_0100 open callback");
           } else {
-            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_INPUT_PROMISE_0100 FAILED: " + err.message);
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_CAMERA_OUTPUT_PROMISE_0100 FAILED: " + err.message);
           }
           await sleep(1000);
           done();

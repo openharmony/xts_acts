@@ -78,8 +78,12 @@
         "reason": "use ohos.permission.READ_MEDIA"
       },
       {
-        "name": "ohos.permission.START_ABILITIES_FROM_BACKGROUND",
-        "reason": "use ohos.permission.START_ABILITIES_FROM_BACKGROUND"
+        "name": "ohos.permission.WRITE_MEDIA",
+        "reason": "use ohos.permission.WRITE_MEDIA"
+      },
+      {
+        "name": "ohos.permission.START_ABILIIES_FROM_BACKGROUND",
+        "reason": "use ohos.permission.START_ABILIIES_FROM_BACKGROUND"
       },
       {
         "name": "ohos.permission.START_INVISIBLE_ABILITY",
