@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from 'hypium/index';
+import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium';
 import inputMethod from '@ohos.inputmethod';
 
 export default function inputMethodJSUnit() {
@@ -161,7 +160,7 @@ export default function inputMethodJSUnit() {
      */
     it('inputmethod_test_showSoftKeyboard_001', 0, async function (done) {
       let inputMethodCtrl = inputMethod.getInputMethodController()
-      inputMethodCtrl.showSoftKeyboard((data)=>{
+      inputMethodCtrl.showSoftKeyboard((err, data)=>{
         if(data == undefined){
           console.info("showSoftKeyboard callbace success" );
           expect(true).assertTrue();
@@ -201,7 +200,7 @@ export default function inputMethodJSUnit() {
      */
     it('inputmethod_test_hideSoftKeyboard_001', 0, async function (done) {
       let inputMethodCtrl = inputMethod.getInputMethodController()
-      inputMethodCtrl.hideSoftKeyboard((data)=>{
+      inputMethodCtrl.hideSoftKeyboard((err, data)=>{
         if(data == undefined){
           console.info("hideSoftKeyboard callbace success" );
           expect(true).assertTrue();
@@ -251,45 +250,47 @@ export default function inputMethodJSUnit() {
     });
 
     /*
-     * @tc.number  inputmethod_test_listInputMethod_001
+     * @tc.number  inputmethod_test_getInputMethods_001
      * @tc.name    param enable :
      *             if true, collect enabled input methods.
      * @tc.desc    Function test
      * @tc.level   2
      */
-    it('inputmethod_test_listInputMethod_001', 0, async function (done) {
+    it('inputmethod_test_getInputMethods_001', 0, async function (done) {
       let inputMethodSetting = inputMethod.getInputMethodSetting();
-      console.info("inputmethod_test_listInputMethod_001 result:" + JSON.stringify(inputMethodSetting));
-      inputMethodSetting.listInputMethod(true, (err, arr) => {
+      console.info("inputmethod_test_getInputMethods_001 result:" + JSON.stringify(inputMethodSetting));
+      inputMethodSetting.getInputMethods(true, (err, arr) => {
         if (err) {
-          console.error("inputmethod_test_listInputMethod_001 failed because: " + JSON.stringify(err));
+          console.error("inputmethod_test_getInputMethods_001 failed because: " + JSON.stringify(err));
           expect().assertFail();
         };
-        console.info("inputmethod_test_listInputMethod_001 listInputMethod result---" + JSON.stringify(arr));
+        console.info("inputmethod_test_getInputMethods_001 listInputMethod result---" + JSON.stringify(arr));
         expect(arr != null).assertTrue();
       });
       done();
     });
 
     /*
-     * @tc.number  inputmethod_test_listInputMethod_002
+     * @tc.number  inputmethod_test_getInputMethods_002
      * @tc.name    param enable :
      *             if false, collect disabled input methods.
      * @tc.desc    Function test
      * @tc.level   2
      */
-    it('inputmethod_test_listInputMethod_002', 0, async function (done) {
+    it('inputmethod_test_getInputMethods_002', 0, async function (done) {
       let inputMethodSetting = inputMethod.getInputMethodSetting();
-      console.info("inputmethod_test_listInputMethod_002 result:" + JSON.stringify(inputMethodSetting));
-      inputMethodSetting.listInputMethod(false, (err, arr) => {
+      console.info("inputmethod_test_getInputMethods_002 result:" + JSON.stringify(inputMethodSetting));
+      inputMethodSetting.getInputMethods(false, (err, arr) => {
         if (err) {
-          console.error("inputmethod_test_listInputMethod_002 failed because: " + JSON.stringify(err));
+          console.error("inputmethod_test_getInputMethods_002 failed because: " + JSON.stringify(err));
           expect().assertFail();
         };
-        console.info("inputmethod_test_listInputMethod_002 listInputMethod result---" + JSON.stringify(arr));
+        console.info("inputmethod_test_getInputMethods_002 listInputMethod result---" + JSON.stringify(arr));
         expect(arr != null).assertTrue();
       });
       done();
     });
-  })
-}
+
+
+  });
+};
