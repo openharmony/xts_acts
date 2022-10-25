@@ -14,6 +14,7 @@
  */
 import featureAbility from '@ohos.ability.featureAbility'
 import wantconstant from '@ohos.ability.wantConstant'
+import wantConstantNew from '@ohos.app.ability.wantConstant'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import commonEvent from '@ohos.commonEvent'
 import particleAbility from '@ohos.ability.particleAbility'
@@ -149,6 +150,48 @@ describe('ActsFeatureAbilityTest', function () {
         expect(wantconstant.Entity.ENTITY_VOICE).assertEqual("entity.system.voice");
         expect(wantconstant.Entity.ENTITY_BROWSABLE).assertEqual("entity.system.browsable");
         expect(wantconstant.Entity.ENTITY_VIDEO).assertEqual("entity.system.video");
+        done();
+    })
+
+
+    /**
+     * @tc.number: ACTS_wantConstant_0200
+     * @tc.name: wantConstant : Check specific enum
+     * @tc.desc: Check the return type of the interface (by Promise)
+     */
+    it('ACTS_wantConstant_0200', 0, async function (done) {
+        expect(wantConstantNew.Action.ACTION_HOME).assertEqual("ohos.want.action.home");
+        expect(wantConstantNew.Action.ACTION_DIAL).assertEqual("ohos.want.action.dial");
+        expect(wantConstantNew.Action.ACTION_SEARCH).assertEqual("ohos.want.action.search");
+        expect(wantConstantNew.Action.ACTION_WIRELESS_SETTINGS).assertEqual("ohos.settings.wireless");
+        expect(wantConstantNew.Action.ACTION_MANAGE_APPLICATIONS_SETTINGS)
+            .assertEqual("ohos.settings.manage.applications");
+        expect(wantConstantNew.Action.ACTION_APPLICATION_DETAILS_SETTINGS)
+            .assertEqual("ohos.settings.application.details");
+        expect(wantConstantNew.Action.ACTION_SET_ALARM).assertEqual("ohos.want.action.setAlarm");
+        expect(wantConstantNew.Action.ACTION_SHOW_ALARMS).assertEqual("ohos.want.action.showAlarms");
+        expect(wantConstantNew.Action.ACTION_SNOOZE_ALARM).assertEqual("ohos.want.action.snoozeAlarm");
+        expect(wantConstantNew.Action.ACTION_DISMISS_ALARM).assertEqual("ohos.want.action.dismissAlarm");
+        expect(wantConstantNew.Action.ACTION_DISMISS_TIMER).assertEqual("ohos.want.action.dismissTimer");
+        expect(wantConstantNew.Action.ACTION_SEND_SMS).assertEqual("ohos.want.action.sendSms");
+        expect(wantConstantNew.Action.ACTION_CHOOSE).assertEqual("ohos.want.action.choose");
+        expect(wantConstantNew.Action.ACTION_SELECT).assertEqual("ohos.want.action.select");
+        expect(wantConstantNew.Action.ACTION_SEND_DATA).assertEqual("ohos.want.action.sendData");
+        expect(wantConstantNew.Action.ACTION_SEND_MULTIPLE_DATA).assertEqual("ohos.want.action.sendMultipleData");
+        expect(wantConstantNew.Action.ACTION_SCAN_MEDIA_FILE).assertEqual("ohos.want.action.scanMediaFile");
+        expect(wantConstantNew.Action.ACTION_VIEW_DATA).assertEqual("ohos.want.action.viewData");
+        expect(wantConstantNew.Action.ACTION_EDIT_DATA).assertEqual("ohos.want.action.editData");
+        expect(wantConstantNew.Action.INTENT_PARAMS_INTENT).assertEqual("ability.want.params.INTENT");
+        expect(wantConstantNew.Action.INTENT_PARAMS_TITLE).assertEqual("ability.want.params.TITLE");
+        expect(wantConstantNew.Action.ACTION_FILE_SELECT).assertEqual("ohos.action.fileSelect");
+        expect(wantConstantNew.Action.PARAMS_STREAM).assertEqual("ability.params.stream");
+        expect(wantConstantNew.Action.ACTION_APP_ACCOUNT_AUTH).assertEqual("account.appAccount.action.auth");
+
+        expect(wantConstantNew.Entity.ENTITY_HOME).assertEqual("entity.system.home");
+        expect(wantConstantNew.Entity.ENTITY_DEFAULT).assertEqual("entity.system.default");
+        expect(wantConstantNew.Entity.ENTITY_VOICE).assertEqual("entity.system.voice");
+        expect(wantConstantNew.Entity.ENTITY_BROWSABLE).assertEqual("entity.system.browsable");
+        expect(wantConstantNew.Entity.ENTITY_VIDEO).assertEqual("entity.system.video");
         done();
     })
 
