@@ -504,7 +504,7 @@ export default function getBundleInfoForSelf() {
         expect(data.reqPermissionDetails[0].usedScene.abilities.length).assertEqual(1);
         expect(data.reqPermissionDetails[0].usedScene.abilities[0]).assertEqual("MainAbility");
         expect(data.reqPermissionDetails[0].usedScene.when).assertEqual("inuse");
-        expect(data.permissionGrantStates[0]).assertEqual(-1);
+        expect(data.permissionGrantStates[0]).assertEqual(0);
         expect(data.signatureInfo).assertEqual(null);
         done();
       }).catch(err => {
@@ -534,7 +534,7 @@ export default function getBundleInfoForSelf() {
         expect(data.reqPermissionDetails[0].usedScene.abilities.length).assertEqual(1);
         expect(data.reqPermissionDetails[0].usedScene.abilities[0]).assertEqual("MainAbility");
         expect(data.reqPermissionDetails[0].usedScene.when).assertEqual("inuse");
-        expect(data.permissionGrantStates[0]).assertEqual(-1);
+        expect(data.permissionGrantStates[0]).assertEqual(0);
         expect(data.signatureInfo).assertEqual(null);
         expect(err).assertEqual(null);
         done();
