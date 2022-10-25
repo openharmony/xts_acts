@@ -15,6 +15,8 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import commonEvent from '@ohos.commonEvent'
 import config from '@ohos.accessibility.config'
+import { GesturePath } from '@ohos.accessibility.GesturePath';
+import { GesturePoint } from '@ohos.accessibility.GesturePoint';
 
 function publishCaseExecute(caseName: string) {
     let commonEventPublishData = {
@@ -653,6 +655,35 @@ export default function abilityTest() {
                 expect(null).assertFail();
                 done();
             }
+        })
+
+        /*
+         * @tc.number  AccessibilityGestureEventTest_1700
+         * @tc.name    AccessibilityGestureEventTest_1700
+         * @tc.desc    test positionX positionX
+         * @tc.size    SmallTest
+         * @tc.type    User
+         */
+        it('AccessibilityGestureEventTest_1700', 0, async function (done) {
+            let caseName = 'AccessibilityGestureEventTest_1700';
+            console.info(caseName + 'start');
+
+            let gesturePoint = new GesturePoint(676, 735);
+            expect(gesturePoint.positionX == 676).assertTrue();
+            expect(gesturePoint.positionY == 735).assertTrue();
+
+            let gesturePath = new GesturePath(100);
+            expect(gesturePath.durationTime == 100).assertTrue();
+
+            gesturePath.points.push(new GesturePoint(676, 735),
+                new GesturePoint(567, 729),
+                new GesturePoint(444, 719),
+                new GesturePoint(255, 714),
+                new GesturePoint(153, 715),
+                new GesturePoint(15, 729));
+            expect(gesturePath.points.length == 6).assertTrue();
+			console.info(caseName + 'start');
+            done();
         })
     })
 }
