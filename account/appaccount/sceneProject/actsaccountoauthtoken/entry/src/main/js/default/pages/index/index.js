@@ -22,15 +22,30 @@ class MyAuthenticator extends appAccount.Authenticator
     authenticate(name, authType, callerBundleName, options, callback) {
         var randNumber = Math.ceil(Math.random()*10000)
         var newTokenData = "service/authenticate/tokenInfo" + randNumber;
-        console.log("Service authenticate name: " + name + ", authType: " + authType + ", options: "+ JSON.stringify(options));
+        console.log("====>Service authenticate name: " + name + ", authType: " + authType + ", options: "+ JSON.stringify(options));
         callback.onResult(0, {"name":name,"authType":authType,"token":newTokenData});
     }
 
     addAccountImplicitly(authType, callerBundleName, options, callback) {
-        console.log("Service addAccountImplicitly authType: " + authType + " callerBundleName: " + callerBundleName  + "options: "+ JSON.stringify(options));
+        console.log("====>Service addAccountImplicitly authType: " + authType + " callerBundleName: " + callerBundleName  + "options: "+ JSON.stringify(options));
         callback.onRequestRedirected({
-            bundleName: "com.huawei.openharmonyappdemo.service",
-            abilityName: "com.huawei.openharmonyappdemo.service.settingAbility",
+            bundleName: "com.ohos.openharmonyappdemo.service",
+            abilityName: "com.ohos.openharmonyappdemo.service.settingAbility",
+        });
+    }
+
+    auth(name, authType, callerBundleName,  callback) {
+        var randNumber = Math.ceil(Math.random()*10000)
+        var newTokenData = "service/authenticate/tokenInfo" + randNumber;
+        console.log("====>Service authenticate name: " + name + ", authType: " + authType);
+        callback.onResult(0, {"name":name,"authType":authType,"token":newTokenData});
+    }
+
+    createAccountImplicitly(options, callback) {
+        console.log("====>Service createAccountImplicitly options: "+ JSON.stringify(options));
+        callback.onRequestRedirected({
+            bundleName: "com.ohos.openharmonyappdemo.service",
+            abilityName: "com.ohos.openharmonyappdemo.service.settingAbility",
         });
     }
 }

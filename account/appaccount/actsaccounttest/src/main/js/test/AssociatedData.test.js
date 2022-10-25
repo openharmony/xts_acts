@@ -1120,7 +1120,6 @@ export default function ActsAccountAssociatedData() {
                         console.debug("====>getAssociatedData 2900 err:" + JSON.stringify(err));
                         console.debug("====>getAssociatedData 2900 data:" + JSON.stringify(data));
                         expect(err.code != 0).assertEqual(true);
-                        expect(data).assertEqual(null);
                         console.debug("====>ActsAccountAssociatedData_2900 end====");
                         done();
                     });

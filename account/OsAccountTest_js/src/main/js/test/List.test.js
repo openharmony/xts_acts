@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import AccountTest from './OsAccount.test.js'
+import ActsDAGetSetTest from './ActsDSGetSet.test.js'
 
 export default function testsuite() {
     AccountTest()
+    ActsDAGetSetTest()
 }

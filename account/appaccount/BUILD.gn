@@ -17,11 +17,15 @@ group("appaccount_hap") {
   testonly = true
   if (is_standard_system) {
     deps = [
+      "actsaccountoperatetest:ActsAccountOperateTest",
       "actsaccounttest:ActsAccountTest",
       "actsaccounttstest:ActsAccountTsTest",
+      "actsgetaccountsbyowner:ActsGetAccountsByOwnerTest",
       "actsgetallaccounts:ActsGetAllAccountsTest",
+      "actssetcheckdatasyncenable:ActsSetCheckDataSyncEnableTest",
       "actssetchecksyncenable:ActsSetCheckSyncEnableTest",
       "getallaccessibleaccounts:accessibleaccounts",
+      "getallaccounts:getallaccounts",
       "sceneProject:appaccount_scene",
     ]
   }
