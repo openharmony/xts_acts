@@ -106,6 +106,9 @@
         },
         {
           "name":"ohos.permission.START_INVISIBLE_ABILITY"
+        },
+        {
+          "name":"ohos.permission.UPDATE_CONFIGURATION"
         }
       ]
     }
