@@ -28,6 +28,8 @@
 #define TEST_TASK_STACK_SIZE      0x2000
 #define WAIT_TO_TEST_DONE         4
 
+#include <unistd.h>
+
 static osPriority_t g_setPriority;
 
 /*

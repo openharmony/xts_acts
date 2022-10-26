@@ -16,9 +16,9 @@
 #ifndef _CUT_AUTHENTICATE_
 
 #include "hks_safe_compare_key_test.h"
-
+#include "hks_mem.h"
 #include <hctest.h>
-
+#include <unistd.h>
 #include "hks_api.h"
 #include "hks_param.h"
 #include "hks_test_api_performance.h"
@@ -197,13 +197,13 @@ static int32_t CompareKeyData(struct HksBlob *keyAliasOne, struct HksBlob *keyAl
     g_storageImageBuffer.size = sizeOne;
 
     int32_t offset1;
-    int ret = GetKeyOffsetByKeyAlias(keyAliasOne, &offset1);
+    int ret = GetKeyOffsetByKeyAlias(keyAliasOne, (uint32_t *)(&offset1));
     TEST_ASSERT_TRUE(ret == 0);
 
     struct HksStoreKeyInfo *keyInfo1 = (struct HksStoreKeyInfo *)(g_storageImageBuffer.data + offset1);
 
     int32_t offset2;
-    ret = GetKeyOffsetByKeyAlias(keyAliasTwo, &offset2);
+    ret = GetKeyOffsetByKeyAlias(keyAliasTwo, (uint32_t *)(&offset2));
     TEST_ASSERT_TRUE(ret == 0);
 
     struct HksStoreKeyInfo *keyInfo2 = (struct HksStoreKeyInfo *)(g_storageImageBuffer.data + offset2);

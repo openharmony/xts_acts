@@ -26,6 +26,8 @@
 #include "cmsis_os2.h"
 #include "ohos_types.h"
 
+#include <unistd.h>
+
 #define HKS_TEST_MAC_REE_KEY_SIZE_32 32
 #define HKS_DEFAULT_MAC_SRCDATA_SIZE 253
 #define HKS_DEFAULT_MAC_SHA256_SIZE 32
