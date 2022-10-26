@@ -16,7 +16,8 @@
   "module": {
     "mainAbility": ".MainAbility",
     "deviceType": [
-      "default"
+        "default",
+        "tablet"
     ],
     "reqPermissions": [
       {
