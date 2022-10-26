@@ -20,26 +20,6 @@ let challenge = stringToUint8Array("challenge_data");
 let versionInfo = stringToUint8Array("version_info");
 let keyAliasString = "key attest";
 
-function attestKey(srcKeyAlies, HuksOptions) {
-  return new Promise((resolve, reject) => {
-    huks.attestKey(srcKeyAlies, HuksOptions, function (err, data) {
-      try {
-        if (err.code !== 0) {
-          console.log(
-            "test generateKey err information: " + JSON.stringify(err)
-          );
-          reject(err);
-        } else {
-          resolve(data);
-        }
-      } catch (e) {
-        console.log("test generateKey err information: " + JSON.stringify(e));
-        reject(e);
-      }
-    });
-  });
-}
-
 function publicAttestKey(srcKeyAlies, HuksOptions) {
   return new Promise((resolve, reject) => {
     try {
@@ -417,6 +397,7 @@ export default function SecurityHuksFaceFingerNormalJsunit() {
         await huks.attestKeyItem(aliasString, options)
           .then((data) => {
             console.info(`promise: attestKeyItem success, data = ${JSON.stringify(data)}`);
+            expect(data.certChains != null).assertTrue();
           })
           .catch(error => {
             console.error(`promise: attestKeyItem failed, code: ${error.code}, msg: ${error.message}`);
