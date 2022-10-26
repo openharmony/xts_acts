@@ -32,7 +32,10 @@ export default function imeAbilityTest(abilityContext) {
       console.info('beforeEach: switchInputMethod to kikakeyboard.');
       let serviceAbilityProperty = {
         packageName: "com.example.kikakeyboard",
-        methodId: "ServiceExtAbility"
+        methodId: "ServiceExtAbility",
+        name:"com.example.kikakeyboard",
+        id:"ServiceExtAbility",
+        extra:{}
       }
 
       inputMethod.switchInputMethod(serviceAbilityProperty).then((data)=>{
@@ -61,6 +64,9 @@ export default function imeAbilityTest(abilityContext) {
       let imExtAbilityProperty = {
         packageName : "com.acts.imeability.test",
         methodId : "com.acts.imeability.test.ImExtAbility",
+        name:"com.acts.imeability.test",
+        id:"com.acts.imeability.test.ImExtAbility",
+        extra:{}
       }
 
       inputMethod.switchInputMethod(imExtAbilityProperty).then((data)=>{
@@ -86,6 +92,9 @@ export default function imeAbilityTest(abilityContext) {
       let imExtAbilityProperty = {
         packageName : "com.acts.imeability.test",
         methodId : "com.acts.imeability.test.ImExtAbility",
+        name:"com.acts.imeability.test",
+        id:"com.acts.imeability.test.ImExtAbility",
+        extra:{}
       }
 
       inputMethod.switchInputMethod(imExtAbilityProperty).then((data)=>{

@@ -22,7 +22,7 @@
                 "mkdir -p /data/app/el2/100/base/com.acts.theme.wallpapertest/haps"
             ],
             "push": [
-                "./resource./wallpaper/wp.png ->/data/app/el2/100/base/com.acts.theme.wallpapertest/haps/wp.png"
+                "./resource/wallpaper/wp.png ->/data/app/el2/100/base/com.acts.theme.wallpapertest/haps/wp.png"
             ]
         }
     ]

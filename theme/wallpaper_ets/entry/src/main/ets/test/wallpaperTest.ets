@@ -14,7 +14,7 @@
  */
 import wallpaper from '@ohos.wallpaper';
 import image from '@ohos.multimedia.image';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index';
 
 const WALLPAPER_SYSTEM = 0;
 const WALLPAPER_LOCKSCREEN = 1;
@@ -913,7 +913,7 @@ export default function wallpaperJSUnit() {
             console.info('------------------testGetMinWidthSync101 start----------------------');
             let number = null;
             try{
-                number = wallpaper.getMinHeightSync()
+                number = wallpaper.getMinWidthSync()
                 console.info('wallpaperXTS ===> testGetMinWidthSync101 data : ' + JSON.stringify(number));
                 if (typeof number == "number") {
                     expect(true).assertTrue();
