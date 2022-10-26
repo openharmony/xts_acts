@@ -508,7 +508,7 @@ char *GetCurrentPath()
 int CheckFsMount(const char *topDir, const char *topDirMountInfo)
 {
     const int lenMax = 100;
-    int len;
+    int len = 0;
     char buf[lenMax] = {0};
     const char mountInfoFile[] = "/proc/mounts";
     // check topDir exist
