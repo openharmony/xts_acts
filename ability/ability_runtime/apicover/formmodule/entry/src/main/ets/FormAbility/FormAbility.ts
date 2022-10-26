@@ -1,12 +1,15 @@
 import FormExtensionAbility from '@ohos.app.form.FormExtensionAbility';
 import formBindingData from '@ohos.app.form.formBindingData';
 import formInfo from '@ohos.app.form.formInfo';
+import common from '@ohos.app.ability.common';
 
 export default class FormModuleAbility extends FormExtensionAbility {
     onAddForm(want) {
         // Called to return a FormBindingData object.
         console.info("FormAbility onAddForm")
         globalThis.abilityContext = this.context;
+        let formExtensionAbilities: common.FormExtensionContext = this.context;
+        let extensionAbilities: common.ExtensionContext = this.context;
         let formData = {
         };
         return formBindingData.createFormBindingData(formData);

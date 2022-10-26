@@ -918,6 +918,68 @@ export default function ActsNotificationWantAgentNewTest() {
       })
       console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_3100 END`)
     })
+
+    /*
+      * @tc.number    : SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_3200
+      * @tc.name      : function trigger(agent: WantAgent, triggerInfo: TriggerInfo, callback?: Callback<CompleteData>): void
+      * @tc.desc      : Triggers a WantAgent
+      */
+    it('SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_3200', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_3200 START`)
+      WantAgentInfo.operationType = wantAgent.OperationType.START_ABILITY
+      WantAgentInfo.wantAgentFlags = wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG
+      wantAgent.getWantAgent(WantAgentInfo, (err, data) => {
+        if (err.code) {
+          console.info(`${TAG} getWantAgent AsyncCallback err: ${err.code}`)
+          expect(false).assertTrue()
+          done()
+        } else {
+          WantAgent = data
+          console.info(`${TAG} getWantAgent AsyncCallback success: ${JSON.stringify(data)}`)
+
+          let triggerInfo = {
+            code: 0,
+            want: {
+              deviceId: "deviceId",
+              bundleName: "com.example.actsnotificationwantagent",
+              abilityName: "com.example.actsnotificationwantagent.MainAbility",
+              action: "action1",
+              entities: ["entity1"],
+              type: "MIMETYPE",
+              uri: "key={true,true,false}",
+              parameters:
+                  {
+                    myKey0: 2222,
+                    myKey1: [1, 2, 3],
+                    myKey2: "[1, 2, 3]",
+                    myKey3: "notification",
+                    myKey4: [false, true, false],
+                    myKey5: ["ANS", "WANT", "AGENT"],
+                    myKey6: true,
+                  }
+            },
+            permission: '',
+            extraInfo: {
+              test: 'this is a test value'
+            }
+          }
+          wantAgent.trigger(WantAgent, triggerInfo, (err, data) => {
+            console.info(`${TAG} trigger Callback success: ${JSON.stringify(data)}`)
+            expect(err.code).assertEqual(0)
+            expect(typeof(data.wantAgent)).assertEqual('object')
+            expect(data.finalCode).assertEqual(0)
+            expect(data.finalData).assertEqual('')
+            expect(typeof(data.extraInfo)).assertEqual('object')
+            expect(data.want.deviceId).assertEqual('deviceId')
+            expect(data.want.bundleName).assertEqual('com.example.actsnotificationwantagent')
+            expect(data.want.abilityName).assertEqual('com.example.actsnotificationwantagent.MainAbility')
+            done()
+          })
+        }
+      })
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_GET_WANT_AGENT_NEW_TEST_3200 END`)
+    })
+
     console.info(TAG + 'SUB_NOTIFICATION_ANS_WANT_AGENT_NEW_TEST END')
   })
 }
