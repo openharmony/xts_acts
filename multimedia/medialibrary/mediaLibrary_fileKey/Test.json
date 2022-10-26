@@ -50,6 +50,11 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
+        },
+        {
+            "teardown-command":[
+                "hilog -b X -D 0xD002B70"
+            ]
         }
     ]
 }
