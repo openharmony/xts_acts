@@ -719,7 +719,7 @@ describe('rdbstoreInsertTest', function () {
             })
             resultSet = null
         })
-        
+        await sleep(2000)
         done()
         console.info(TAG + "************* testRdbStorebatchInsertCallback0001 end *************");
     })
@@ -787,7 +787,7 @@ describe('rdbstoreInsertTest', function () {
                 done();
             })
         })
-        
+        await sleep(2000)
         resultSet = null
         done()
         console.info(TAG + "************* testRdbStorebatchInsertCallback0002 end *************");
@@ -836,14 +836,11 @@ describe('rdbstoreInsertTest', function () {
                         const name = resultSet.getString(resultSet.getColumnIndex("name"))
                         const age = resultSet.getLong(resultSet.getColumnIndex("age"))
                         const salary = resultSet.getDouble(resultSet.getColumnIndex("salary"))
-                        console.info(TAG + "id=" + id + ", name=" + name + ", age=" + age + ", salary=" + salary + ", blobType=" + blobType);
+                        console.info(TAG + "id=" + id + ", name=" + name + ", age=" + age + ", salary=" + salary);
                         expect(1).assertEqual(id);
                         expect("zhangsan").assertEqual(name)
                         expect(18).assertEqual(age)
                         expect(100.5).assertEqual(salary)
-                        expect(1).assertEqual(blobType[0])
-                        expect(2).assertEqual(blobType[1])
-                        expect(3).assertEqual(blobType[2])
                     } catch (e) {
                         console.info("BatchInsert1 error " + e);
                     }
@@ -857,7 +854,7 @@ describe('rdbstoreInsertTest', function () {
                         const name = resultSet.getString(resultSet.getColumnIndex("name"))
                         const age = resultSet.getLong(resultSet.getColumnIndex("age"))
                         const salary = resultSet.getDouble(resultSet.getColumnIndex("salary"))
-                        console.info(TAG + "id=" + id + ", name=" + name + ", age=" + age + ", salary=" + salary + ", blobType=" + blobType);
+                        console.info(TAG + "id=" + id + ", name=" + name + ", age=" + age + ", salary=" + salary);
                         expect(2).assertEqual(id);
                         expect("lisi").assertEqual(name)
                         expect(23).assertEqual(age)
@@ -879,7 +876,7 @@ describe('rdbstoreInsertTest', function () {
                             const name = resultSet.getString(resultSet.getColumnIndex("name"))
                             const age = resultSet.getLong(resultSet.getColumnIndex("age"))
                             const salary = resultSet.getDouble(resultSet.getColumnIndex("salary"))
-                            console.info(TAG + "id=" + id + ", name=" + name + ", age=" + age + ", salary=" + salary + ", blobType=" + blobType);
+                            console.info(TAG + "id=" + id + ", name=" + name + ", age=" + age + ", salary=" + salary);
                             expect(4).assertEqual(id);
                             expect("zhangmaowen").assertEqual(name)
                             expect(25).assertEqual(age)
@@ -894,6 +891,7 @@ describe('rdbstoreInsertTest', function () {
                 done();
             })
         })
+        await sleep(2000)
         resultSet = null
         done();
         console.info(TAG + "************* testRdbStorebatchInsertCallback0003 end *************");
@@ -934,14 +932,11 @@ describe('rdbstoreInsertTest', function () {
                         const name = resultSet.getString(resultSet.getColumnIndex("name"))
                         const age = resultSet.getLong(resultSet.getColumnIndex("age"))
                         const salary = resultSet.getDouble(resultSet.getColumnIndex("salary"))
-                        console.info(TAG + "id=" + id + ", name=" + name + ", age=" + age + ", salary=" + salary + ", blobType=" + blobType);
+                        console.info(TAG + "id=" + id + ", name=" + name + ", age=" + age + ", salary=" + salary);
                         expect(56).assertEqual(id);
                         expect("zhangsan55").assertEqual(name)
                         expect(55).assertEqual(age)
                         expect(56).assertEqual(salary)
-                        expect(1).assertEqual(blobType[0])
-                        expect(2).assertEqual(blobType[1])
-                        expect(3).assertEqual(blobType[2])
                     } catch (e) {
                         console.info("BatchInsert1 error " + e);
                     }
@@ -949,6 +944,7 @@ describe('rdbstoreInsertTest', function () {
                 done();
             })
         })
+        await sleep(2000)
         resultSet = null;
         done()
         console.info(TAG + "************* testRdbStorebatchInsertCallback0004 end *************");
@@ -1012,6 +1008,7 @@ describe('rdbstoreInsertTest', function () {
                 done();
             })
         })
+        await sleep(2000)
         resultSet = null;
         done();
         console.info(TAG + "************* testRdbStorebatchInsertCallback0005 end *************");
@@ -1060,7 +1057,7 @@ describe('rdbstoreInsertTest', function () {
                 expect(null).assertFail();
             }
         })
-        
+        await sleep(2000)
         done()
         console.info(TAG + "************* testRdbStorebatchInsertCallback0006 end *************");
     })
@@ -1071,23 +1068,24 @@ describe('rdbstoreInsertTest', function () {
      * @tc.number SUB_DDM_AppDataFWK_JSRDB_BatchInsert_Callback_0700
      * @tc.desc rdb insert test
      */
-     it('testRdbStorebatchInsertCallback0007', 0, async function (done) {
+    it('testRdbStorebatchInsertCallback0007', 0, async function (done) {
         console.info(TAG + "************* testRdbStorebatchInsertCallback0007 start *************");
-            await rdbStore.executeSql(CREATE_TABLE_NAME + "Callback7" + CREATE_TABLE).then(async () => {
-                await rdbStore.batchInsert("testCallback7", (err,data) => {
-                    console.info(TAG + "Affect row is " + data)
-                    if(err != null){
-                        expect(null).assertFail();
-                    }else{
-                        expect(data).assertEqual(-1)
-                    }
-                }).then((data) => {
-                    console.info(TAG + "Batch insert fail ,affect row number is: " + data)
+        await rdbStore.executeSql(CREATE_TABLE_NAME + "Callback7" + CREATE_TABLE).then(async () => {
+            await rdbStore.batchInsert("testCallback7", (err,data) => {
+                console.info(TAG + "Affect row is " + data)
+                if(err != null){
+                    expect(null).assertFail();
+                }else{
                     expect(data).assertEqual(-1)
-                })
-            }).catch((err) => {
-                expect(null).assertFail();
+                }
+            }).then((data) => {
+                console.info(TAG + "Batch insert fail ,affect row number is: " + data)
+                expect(data).assertEqual(-1)
             })
+        }).catch((err) => {
+            expect(null).assertFail();
+        })
+        await sleep(2000)
         done()
         console.info(TAG + "************* testRdbStorebatchInsertCallback0007 end *************");
     })

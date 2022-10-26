@@ -2462,12 +2462,20 @@ describe('deviceKvStorePromiseTest', function () {
      */
     it('SUB_DDM_DKV_DEVICEKVSTORE_CLOSERESULTSET_PROMISE_0400', 0, async function (done) {
         console.info('SUB_DDM_DKV_DEVICEKVSTORE_CLOSERESULTSET_PROMISE_0400');
+        let errorInfo = undefined;
         try {
+            await kvStore.closeResultSet(1).then(() => {
+                console.info('SUB_DDM_DKV_DEVICEKVSTORE_CLOSERESULTSET_PROMISE_0400 success(promise)')
+            }).catch((err) => {
+                console.error('SUB_DDM_DKV_DEVICEKVSTORE_CLOSERESULTSET_PROMISE_0400 e ')
+            })
             console.info('SUB_DDM_DKV_DEVICEKVSTORE_CLOSERESULTSET_PROMISE_0400 success');
         }catch(e) {
             console.error('SUB_DDM_DKV_DEVICEKVSTORE_CLOSERESULTSET_PROMISE_0400 e ' + `, error code is ${e.code}, message is ${e.message}`);
-            expect(null).assertFail();
+            errorInfo = e
+            expect(e.code).assertEqual("401");
         }
+        expect(errorInfo != undefined).assertTrue();
         done();
     })
 

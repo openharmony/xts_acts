@@ -20,6 +20,11 @@ import KVManagerPromiseTest from './KvManagerKVPromiseJsTest.js'
 import KvStoreResultSetTest from './KvStoreResultSetKVJsTest.js'
 import queryTest from './QueryKVJsTest.js'
 import SingleKvStoreCallbackTest from './SingleKvStoreKVCallbackJsTest.js'
+import FieldNodeTest from './FieldNodeJsTest.js'
+import kvStoreBackupCallbackJsunittest from './KvStoreBackupCallbackJsTest.js'
+import kvStoreBackupPromiseJsunittest from './KvStoreBackupPromiseJsTest.js'
+import schemaTest from './SchemaJsTest.js'
+import singleKvStoreEnumTest from './SingleKvStoreEnumJsTest.js'
 export default function testsuite() {
     SingleKvStorePromiseTest()
     deviceKvStoreCallbackTest()
@@ -29,4 +34,9 @@ export default function testsuite() {
     KvStoreResultSetTest()
     queryTest()
     SingleKvStoreCallbackTest()
+    FieldNodeTest()
+    kvStoreBackupCallbackJsunittest()
+    kvStoreBackupPromiseJsunittest()
+    schemaTest()
+    singleKvStoreEnumTest()
 }
