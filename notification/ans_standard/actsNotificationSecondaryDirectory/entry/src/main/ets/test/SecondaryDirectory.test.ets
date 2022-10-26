@@ -484,4 +484,47 @@ describe('secondaryDirectoryTest', function () {
         }
         console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0900 END`);
     });
+
+    /*
+     * @tc.number: SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_1000
+     * @tc.name: BundleOption
+     * @tc.desc: use BundleOption type
+     */
+    it('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_1000', 0, async function (done) {
+        console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_1000 START`);
+
+        let bundleOpt: notify.BundleOption = {
+            bundle: "com.example.secondaryDirectory",
+            uid: 101001
+        }
+        console.info(`${TAG} BundleOption bundle:uid = ${bundleOpt.bundle}${bundleOpt.uid}`);
+        expect(typeof bundleOpt.bundle == 'string').assertTrue()
+        expect(typeof bundleOpt.uid == 'number').assertTrue()
+        expect(bundleOpt.bundle).assertEqual("com.example.secondaryDirectory")
+        expect(bundleOpt.uid).assertEqual(101001)
+        done()
+        console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_1000 END`);
+    });
+
+    /*
+     * @tc.number: SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_1100
+     * @tc.name: NotificationFlags
+     * @tc.desc: use NotificationFlags type
+     */
+    it('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_1100', 0, async function (done) {
+        console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_1100 START`);
+
+        let flags: notify.NotificationFlags = {
+            soundEnabled: 1,
+            vibrationEnabled: 2
+        }
+        console.info(`${TAG} NotificationFlags soundEnabled:vibrationEnabled
+            = ${flags.soundEnabled}${flags.vibrationEnabled}`);
+        expect(typeof flags.soundEnabled == 'number').assertTrue()
+        expect(typeof flags.vibrationEnabled == 'number').assertTrue()
+        expect(flags.soundEnabled).assertEqual(1)
+        expect(flags.vibrationEnabled).assertEqual(2)
+        done()
+        console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_1100 END`);
+    });
 }) }
