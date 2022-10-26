@@ -19,6 +19,7 @@
     "mainAbility": "ohos.image.napitest.MainAbility",
 
     "deviceType": [
+      "tablet",
       "default",
       "phone"
     ],

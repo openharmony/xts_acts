@@ -17,6 +17,7 @@
         "package": "com.example.actsnotificationdistributed",
         "name": ".entry",
         "deviceType": [
+      "tablet",
       "default",
             "phone"
         ],

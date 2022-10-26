@@ -16,6 +16,7 @@
         "package": "ohos.resmgr.test",
         "name": ".entry",
         "deviceType": [
+      "tablet",
       "default",
             "phone"
         ],

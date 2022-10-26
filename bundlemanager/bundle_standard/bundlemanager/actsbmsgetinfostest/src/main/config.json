@@ -17,6 +17,7 @@
         "package": "com.example.actsbmsgetinfostest",
         "name": ".entry",
         "deviceType": [
+      "tablet",
       "default",
             "default"
         ],

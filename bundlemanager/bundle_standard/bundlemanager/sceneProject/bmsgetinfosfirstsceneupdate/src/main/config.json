@@ -21,6 +21,7 @@
     "mainAbility": "com.example.third1.MainAbility",
     "colorMode": "dark",
     "deviceType": [
+      "tablet",
       "default",
       "default"
     ],

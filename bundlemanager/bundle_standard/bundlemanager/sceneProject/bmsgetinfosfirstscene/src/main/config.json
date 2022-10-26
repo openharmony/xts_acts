@@ -20,6 +20,7 @@
     "name": "com.example.third1.BmsThirdBundle1",
     "colorMode": "light",
     "deviceType": [
+      "tablet",
       "default",
       "default"
     ],

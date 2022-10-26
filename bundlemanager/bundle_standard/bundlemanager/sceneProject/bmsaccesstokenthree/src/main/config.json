@@ -17,6 +17,7 @@
     "package": "com.example.bmsaccesstoken2",
     "name": ".MyApplication2",
     "deviceType": [
+      "tablet",
       "default",
       "default"
     ],

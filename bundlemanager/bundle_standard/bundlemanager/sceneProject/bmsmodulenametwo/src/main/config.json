@@ -17,6 +17,7 @@
     "package": "com.example.bmsmodulenamedfeature",
     "name": "MyApplication2",
     "deviceType": [
+      "tablet",
       "default",
       "default"
     ],

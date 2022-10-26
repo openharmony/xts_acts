@@ -17,6 +17,7 @@
         "package": "com.example.actscommoneventsupport",
         "name": ".entry",
         "deviceType": [
+      "tablet",
             "phone"
         ],
         "distro": {

@@ -17,6 +17,7 @@
     "package": "com.example.actsaccounttest",
     "name": ".MyApplication",
     "deviceType": [
+      "tablet",
       "default",
       "phone"
     ],

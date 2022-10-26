@@ -19,6 +19,7 @@
     "mainAbility": "com.open.harmony.settings.MainAbility",
     "srcPath": "",
     "deviceType": [
+      "tablet",
       "default",
       "phone"
     ],

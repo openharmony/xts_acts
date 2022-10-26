@@ -47,6 +47,7 @@
             }
         ],
         "deviceType": [
+      "tablet",
       "default",
             "tablet"
         ],
