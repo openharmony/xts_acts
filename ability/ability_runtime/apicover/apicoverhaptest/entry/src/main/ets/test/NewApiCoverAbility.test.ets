@@ -14,6 +14,7 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
+import abilityManager from '@ohos.app.ability.abilityManager';
 import errorManager from '@ohos.app.ability.errorManager';
 
 function sleep(time) {
@@ -71,6 +72,100 @@ export default function ApiCoverTest() {
           done();
         }).catch((err)=>{
           expect(err.code).assertEqual(401)
+          done();
+        })
+      } catch (error) {
+        expect().assertFail()
+        done();
+      }
+    });
+
+    /*
+     * @tc.number  SUB_AA_GetTopAbility_0100
+     * @tc.name    Test getTopAbility.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_AA_GetTopAbility_0100', 0, async function (done) {
+      try {
+        await abilityManager.getTopAbility().then((data)=>{
+          expect(true).assertTrue();
+          done();
+        }).catch((err)=>{
+          expect().assertFail()
+          done();
+        })
+      } catch (error) {
+        expect().assertFail()
+        done();
+      }
+    });
+
+    /*
+     * @tc.number  SUB_AA_GetAbilityRunningInfo_0100
+     * @tc.name    Test getAbilityRunningInfo.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_AA_GetAbilityRunningInfo_0100', 0, async function (done) {
+      try {
+        await abilityManager.getAbilityRunningInfos().then((data)=>{
+          expect(true).assertTrue();
+          done();
+        }).catch((err)=>{
+          expect().assertFail()
+          done();
+        })
+      } catch (error) {
+        expect().assertFail()
+        done();
+      }
+    });
+
+    /*
+     * @tc.number  SUB_AA_GetExtensionRunningInfos_0100
+     * @tc.name    Test getExtensionRunningInfos.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_AA_GetExtensionRunningInfos_0100', 0, async function (done) {
+      try {
+        let upperLimit = 1;
+        await abilityManager.getExtensionRunningInfos(upperLimit).then((data)=>{
+          expect(true).assertTrue();
+          done();
+        }).catch((err)=>{
+          expect().assertFail()
+          done();
+        })
+      } catch (error) {
+        expect().assertFail()
+        done();
+      }
+    });
+
+    /*
+     * @tc.number  SUB_AA_UpdateConfiguration_0100
+     * @tc.name    Test updateConfiguration.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_AA_UpdateConfiguration_0100', 0, async function (done) {
+      try {
+        // init for repeat test
+        var configInit = {
+          language: 'english'
+        }
+        await abilityManager.updateConfiguration(configInit, (err,data)=>{});
+
+        var config = {
+          language: 'chinese'
+        }
+        await abilityManager.updateConfiguration(config).then((data)=>{
+          expect(true).assertTrue();
+          done();
+        }).catch((err)=>{
+          expect().assertFail()
           done();
         })
       } catch (error) {
