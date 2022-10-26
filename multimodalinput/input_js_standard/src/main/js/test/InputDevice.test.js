@@ -18,6 +18,17 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestT
 export default function MultimodalInput_Device_test() {
   describe('MultimodalInput_Device_test', function () {
 
+    const errCode = {
+      COMMON_PARAMETER_CODE : 401
+    }
+    const errMsg = {
+      PARAMETER_COUNT_MSG : `Parameter count error`,
+      PARAMETER_TYPE_MSG : `Parameter error. The type of type must be string.`,
+      PARAMETER_DEVICEID_TYPE_MSG : `Parameter error. The type of deviceId must be number.`,
+      PARAMETER_LISTENER_TYPE_MSG : `Parameter error. The type of listener must be function.`,
+      PARAMETER_CALLBACK_TYPE_MSG : `Parameter error. The type of callback must be function.`
+    }
+
     // 参数正确,返回一个数组
     it('inputDevice::getDeviceIds_test-01', 0, function () {
       console.info(`inputDevice::getDeviceIds_test-01 enter`);
@@ -211,7 +222,7 @@ export default function MultimodalInput_Device_test() {
       try {
         inputDevice.getKeyboardType(-1);
       } catch (error) {
-        expect(error.message).assertEqual("getKeyboardType: \"The second parameter type is wrong\"");
+        expect(error.message).assertEqual("Invalid input device id");
       }
       console.info(`inputDevice::getKeyboardType_test-02 exit`);
     });
@@ -568,6 +579,221 @@ export default function MultimodalInput_Device_test() {
         expect(false).assertTrue();
       }
       console.info(`inputDevice::getDeviceInfo_promise_test exit`);
+    })
+
+    /**
+     * @tc.number MultimodalInputDevice_js_0150
+     * @tc.name MultimodalInputDevice_GetkeyboardType_Exception_test_01
+     * @tc.desc inputdevice interface getKeyboardType exception test
+     */
+    it("MultimodalInputDevice_GetkeyboardType_Exception_test_01", 0, function () {
+      console.info(`MultimodalInputDevice_GetkeyboardType_Exception_test_01 enter`);
+      try {
+        inputDevice.getKeyboardType();
+      } catch (error) {
+        console.info(`GetkeyboardType_Exception_test_01: ${JSON.stringify(error, [`code`, `message`])}`);
+        expect(error.code).assertEqual(errCode.COMMON_PARAMETER_CODE);
+        expect(error.message).assertEqual(errMsg.PARAMETER_COUNT_MSG);
+      }
+      console.info("MultimodalInputDevice_GetkeyboardType_Exception_test_01 exit");
+    })
+
+    /**
+     * @tc.number MultimodalInputDevice_js_0160
+     * @tc.name MultimodalInputDevice_GetkeyboardType_Exception_test_02
+     * @tc.desc inputdevice interface getKeyboardType exception test
+     */
+    it("MultimodalInputDevice_GetkeyboardType_Exception_test_02", 0, function () {
+      console.info("MultimodalInputDevice_GetkeyboardType_Exception_test_02 enter");
+      try {
+        inputDevice.getKeyboardType(`id`).then((data) => {
+          console.info(`GetkeyboardType_Exception_test_02 success`);
+          expect(true).assertTrue();
+        }, (error) => {
+          console.info(`GetkeyboardType_Exception_test_02 failed, err=${JSON.stringify(error)}`);
+          expect(false).assertTrue();
+        });
+      } catch (error) {
+        console.info(`GetkeyboardType_Exception_test_02: ${JSON.stringify(error, [`code`, `message`])}`);
+        expect(error.code).assertEqual(errCode.COMMON_PARAMETER_CODE);
+        expect(error.message).assertEqual(errMsg.PARAMETER_DEVICEID_TYPE_MSG);
+      }
+      console.info("MultimodalInputDevice_GetkeyboardType_Exception_test_02 exit");
+    })
+
+    /**
+     * @tc.number MultimodalInputDevice_js_0170
+     * @tc.name MultimodalInputDevice_SupportKeys_Exception_test_01
+     * @tc.desc inputdevice interface supportKeys exception test
+     */
+    it("MultimodalInputDevice_SupportKeys_Exception_test_01", 0, function () {
+      console.info("MultimodalInputDevice_SupportKeys_Exception_test_01 enter");
+      try {
+        inputDevice.supportKeys((error, data) => {
+          if (error) {
+            console.info(`SupportKeys_Exception_test_01 failed, err=${JSON.stringify(error)}`);
+            expect(false).assertTrue();
+          } else {
+            console.info(`SupportKeys_Exception_test_01 success`);
+            expect(true).assertTrue();
+          }
+        })
+      } catch (error) {
+        console.info(`SupportKeys_Exception_test_01: ${JSON.stringify(error, [`code`, `message`])}`);
+        expect(error.code).assertEqual(errCode.COMMON_PARAMETER_CODE);
+        expect(error.message).assertEqual(errMsg.PARAMETER_COUNT_MSG);
+      }
+      console.info("MultimodalInputDevice_SupportKeys_Exception_test_01 exit");
+    })
+
+    /**
+     * @tc.number MultimodalInputDevice_js_0180
+     * @tc.name MultimodalInputDevice_SupportKeys_Exception_test_02
+     * @tc.desc inputdevice interface supportKeys exception test
+     */
+    it("MultimodalInputDevice_SupportKeys_Exception_test_02", 0, function () {
+      console.info("MultimodalInputDevice_SupportKeys_Exception_test_02 enter");
+      try {
+        inputDevice.supportKeys(`id`, [17, 22, 2055], (error, data) => {
+          if (error) {
+            console.info(`SupportKeys_Exception_test_02 failed, err=${JSON.stringify(error)}`);
+            expect(false).assertTrue();
+          } else {
+            console.info(`SupportKeys_Exception_test_02 success`);
+            expect(true).assertTrue();
+          }
+        })
+      } catch (error) {
+        console.info(`SupportKeys_Exception_test_02: ${JSON.stringify(error, [`code`, `message`])}`);
+        expect(error.code).assertEqual(errCode.COMMON_PARAMETER_CODE);
+        expect(error.message).assertEqual(errMsg.PARAMETER_DEVICEID_TYPE_MSG);
+      }
+      console.info("MultimodalInputDevice_SupportKeys_Exception_test_02 exit");
+    })
+
+    /**
+     * @tc.number MultimodalInputDevice_js_0190
+     * @tc.name MultimodalInputDevice_GetDeviceInfo_Exception_test_01
+     * @tc.desc inputdevice interface getDeviceInfo exception test
+     */
+    it("MultimodalInputDevice_GetDeviceInfo_Exception_test_01", 0, function () {
+      console.info("MultimodalInputDevice_GetDeviceInfo_Exception_test_01 enter");
+      try {
+        inputDevice.getDeviceInfo();
+      } catch (error) {
+        console.info(`GetDeviceInfo_Exception_test_01: ${JSON.stringify(error, [`code`, `message`])}`);
+        expect(error.code).assertEqual(errCode.COMMON_PARAMETER_CODE);
+        expect(error.message).assertEqual(errMsg.PARAMETER_COUNT_MSG);
+      }
+      console.info("MultimodalInputDevice_GetDeviceInfo_Exception_test_01 exit");
+    })
+
+    /**
+     * @tc.number MultimodalInputDevice_js_0200
+     * @tc.name MultimodalInputDevice_GetDeviceInfo_Exception_test_02
+     * @tc.desc inputdevice interface getDeviceInfo exception test
+     */
+    it("MultimodalInputDevice_GetDeviceInfo_Exception_test_02", 0, function () {
+      console.info("MultimodalInputDevice_GetDeviceInfo_Exception_test_02 enter");
+      try {
+        inputDevice.getDeviceList().then((data) => {
+          expect(data).assertInstanceOf('Array');
+          if (data.length <= 0) {
+            return;
+          }
+          try {
+            inputDevice.getDeviceInfo(`data[0]`).then((res) => {
+              console.info(`GetDeviceInfo_Exception_test_02 success`);
+              expect(true).assertTrue();
+            }).catch(error => {
+              console.info(`GetDeviceInfo_Exception_test_02 failed, err=${JSON.stringify(error)}`);
+              expect(false).assertTrue();
+            });
+          } catch (error) {
+            console.info(`GetDeviceInfo_Exception_test_02: ${JSON.stringify(error, [`code`, `message`])}`);
+            expect(error.code).assertEqual(errCode.COMMON_PARAMETER_CODE);
+            expect(error.message).assertEqual(errMsg.PARAMETER_DEVICEID_TYPE_MSG);
+          }
+        })
+      } catch (error) {
+        expect(false).assertTrue();
+      }
+      console.info("MultimodalInputDevice_GetDeviceInfo_Exception_test_02 exit");
+    })
+
+    /**
+     * @tc.number MultimodalInputDevice_js_0210
+     * @tc.name MultimodalInputDevice_GetDeviceList_Exception_test
+     * @tc.desc inputdevice interface getDeviceList exception test
+     */
+    it("MultimodalInputDevice_GetDeviceList_Exception_test", 0, function () {
+      console.info("MultimodalInputDevice_GetDeviceList_Exception_test enter");
+      try {
+        inputDevice.getDeviceList(null);
+      } catch (error) {
+        console.info(`GetDeviceList_Exception_test_01: ${JSON.stringify(error, [`code`, `message`])}`);
+        expect(error.code).assertEqual(errCode.COMMON_PARAMETER_CODE);
+        expect(error.message).assertEqual(errMsg.PARAMETER_CALLBACK_TYPE_MSG);
+      }
+      console.info(`MultimodalInputDevice_GetDeviceList_Exception_test exit`);
+    })
+
+    /**
+     * @tc.number MultimodalInputDevice_js_0220
+     * @tc.name MultimodalInputDevice_On_Exception_test
+     * @tc.desc inputdevice interface on test
+     */
+    it("MultimodalInputDevice_On_Exception_test", 0, function () {
+      console.info(`MultimodalInputDevice_On_Exception_test enter`);
+      try {
+        inputDevice.on();
+      } catch (error) {
+        console.info(`On_Exception_test: ${JSON.stringify(error, [`code`, `message`])}`);
+        expect(error.code).assertEqual(errCode.COMMON_PARAMETER_CODE);
+        expect(error.message).assertEqual(errMsg.PARAMETER_COUNT_MSG);
+      }
+
+      try {
+        inputDevice.on(-1, (data) => {
+          if (error) {
+            console.info(`On_Exception_test failed, err=${JSON.stringify(error)}`);
+            expect(false).assertTrue();
+          } else {
+            console.info(`On_Exception_test success`);
+            expect(true).assertTrue();
+          }
+        });
+      } catch (error) {
+        console.info(`On_Exception_test: ${JSON.stringify(error, [`code`, `message`])}`);
+        expect(error.code).assertEqual(errCode.COMMON_PARAMETER_CODE);
+        expect(error.message).assertEqual(errMsg.PARAMETER_TYPE_MSG);
+      }
+      console.info(`MultimodalInputDevice_On_Exception_test exit`);
+    })
+
+    /**
+     * @tc.number MultimodalInputDevice_js_0230
+     * @tc.name MultimodalInputDevice_Off_Exception_test
+     * @tc.desc inputdevice interface off test
+     */
+    it("MultimodalInputDevice_Off_Exception_test", 0, function () {
+      console.info(`MultimodalInputDevice_Off_Exception_test enter`);
+      try {
+        inputDevice.off();
+      } catch (error) {
+        console.info(`Off_Exception_test: ${JSON.stringify(error, [`code`, `message`])}`);
+        expect(error.code).assertEqual(errCode.COMMON_PARAMETER_CODE);
+        expect(error.message).assertEqual(errMsg.PARAMETER_COUNT_MSG);
+      }
+
+      try {
+        inputDevice.off('change', null);
+      } catch (error) {
+        console.info(`Off_Exception_test: ${JSON.stringify(error, [`code`, `message`])}`);
+        expect(error.code).assertEqual(errCode.COMMON_PARAMETER_CODE);
+        expect(error.message).assertEqual(errMsg.PARAMETER_LISTENER_TYPE_MSG);
+      }
+      console.info(`MultimodalInputDevice_Off_Exception_test exit`);
     })
   })
 }
