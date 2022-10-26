@@ -6,8 +6,8 @@
         "description": "$string:testModule_entry_dsc",
         "mainElement": "ohos.acts.bundle.stage.test.MainAbility",
         "deviceTypes": [
-            "tablet",
-            "default"
+            "default",
+            "tablet"
         ],
         "deliveryWithInstall": true,
         "installationFree": false,
@@ -69,7 +69,7 @@
                 "label": "$string:entry_label",
                 "visible": true,
                 "launchType": "standard",
-                "orientation": "portrait",
+                "orientation": "landscape",
                 "skills": []
             },
             {
@@ -80,7 +80,95 @@
                 "label": "$string:entry_label",
                 "visible": true,
                 "launchType": "specified",
-                "orientation": "portrait",
+                "orientation": "landscape_inverted",
+                "skills": []
+            },
+            {
+                "name": "ohos.acts.bundle.stage.test.MainAbility3",
+                "srcEntrance": "./ets/MainAbility/MainAbility.ts",
+                "description": "$string:testModule_entry_main",
+                "icon": "$media:icon",
+                "label": "$string:entry_label",
+                "visible": true,
+                "launchType": "specified",
+                "orientation": "portrait_inverted",
+                "skills": []
+            },
+            {
+                "name": "ohos.acts.bundle.stage.test.MainAbility4",
+                "srcEntrance": "./ets/MainAbility/MainAbility.ts",
+                "description": "$string:testModule_entry_main",
+                "icon": "$media:icon",
+                "label": "$string:entry_label",
+                "visible": true,
+                "launchType": "specified",
+                "orientation": "auto_rotation",
+                "skills": []
+            },
+            {
+                "name": "ohos.acts.bundle.stage.test.MainAbility5",
+                "srcEntrance": "./ets/MainAbility/MainAbility.ts",
+                "description": "$string:testModule_entry_main",
+                "icon": "$media:icon",
+                "label": "$string:entry_label",
+                "visible": true,
+                "launchType": "specified",
+                "orientation": "auto_rotation_landscape",
+                "skills": []
+            },
+            {
+                "name": "ohos.acts.bundle.stage.test.MainAbility6",
+                "srcEntrance": "./ets/MainAbility/MainAbility.ts",
+                "description": "$string:testModule_entry_main",
+                "icon": "$media:icon",
+                "label": "$string:entry_label",
+                "visible": true,
+                "launchType": "specified",
+                "orientation": "auto_rotation_portrait",
+                "skills": []
+            },
+            {
+                "name": "ohos.acts.bundle.stage.test.MainAbility7",
+                "srcEntrance": "./ets/MainAbility/MainAbility.ts",
+                "description": "$string:testModule_entry_main",
+                "icon": "$media:icon",
+                "label": "$string:entry_label",
+                "visible": true,
+                "launchType": "specified",
+                "orientation": "auto_rotation_restricted",
+                "skills": []
+            },
+            {
+                "name": "ohos.acts.bundle.stage.test.MainAbility8",
+                "srcEntrance": "./ets/MainAbility/MainAbility.ts",
+                "description": "$string:testModule_entry_main",
+                "icon": "$media:icon",
+                "label": "$string:entry_label",
+                "visible": true,
+                "launchType": "specified",
+                "orientation": "auto_rotation_landscape_restricted",
+                "skills": []
+            },
+            {
+                "name": "ohos.acts.bundle.stage.test.MainAbility9",
+                "srcEntrance": "./ets/MainAbility/MainAbility.ts",
+                "description": "$string:testModule_entry_main",
+                "icon": "$media:icon",
+                "label": "$string:entry_label",
+                "visible": true,
+                "launchType": "specified",
+                "orientation": "auto_rotation_portrait_restricted",
+                "skills": []
+            },
+            {
+                "name": "ohos.acts.bundle.stage.test.MainAbility10",
+                "srcEntrance": "./ets/MainAbility/MainAbility.ts",
+                "description": "$string:testModule_entry_main",
+                "icon": "$media:icon",
+                "label": "$string:entry_label",
+                "visible": true,
+                "launchType": "specified",
+                "orientation": "locked",
                 "skills": []
             }
         ],
