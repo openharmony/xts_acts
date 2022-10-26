@@ -17,6 +17,7 @@
     "package": "com.example.js",
     "name": ".MyApplication",
     "deviceType": [
+      "tablet",
       "default",
       "default"
     ],

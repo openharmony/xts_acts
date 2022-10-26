@@ -6,8 +6,8 @@
         "description": "$string:testModule_entry_dsc",
         "mainElement": "ohos.acts.bundle.stage.test.MainAbility",
         "deviceTypes": [
-            "default",
-            "tablet"
+            "tablet",
+            "default"
         ],
         "deliveryWithInstall": true,
         "installationFree": false,

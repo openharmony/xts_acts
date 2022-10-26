@@ -20,6 +20,7 @@
     "name": ".BmsSystemBundle1",
     "mainAbility": "com.example.system2.MainAbility",
     "deviceType": [
+      "tablet",
       "default",
       "default"
     ],

@@ -17,6 +17,7 @@
     "package": "com.example.myapplication",
     "name": ".MyApplication",
     "deviceType": [
+      "tablet",
       "default",
       "default"
     ],

@@ -20,6 +20,7 @@
     "name": ".BmsThirdBundle3",
     "colorMode": "auto",
     "deviceType": [
+      "tablet",
       "default",
       "default"
     ],

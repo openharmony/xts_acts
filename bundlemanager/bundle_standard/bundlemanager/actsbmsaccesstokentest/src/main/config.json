@@ -17,6 +17,7 @@
         "package": "com.example.actsbmsaccesstokentest",
         "name": ".entry",
         "deviceType": [
+      "tablet",
       "default",
             "default"
         ],

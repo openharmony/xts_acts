@@ -18,6 +18,7 @@
     "mainAbility": "com.example.bmsmainabilitysecondscene.MainAbility",
     "name": ".MyApplication",
     "deviceType": [
+      "tablet",
       "default",
       "default"
     ],

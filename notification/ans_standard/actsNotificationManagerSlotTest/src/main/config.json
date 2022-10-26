@@ -17,6 +17,7 @@
         "package": "com.example.actsnotificationmanagerslot",
         "name": ".entry",
         "deviceType": [
+      "tablet",
       "default",
             "phone"
         ],
