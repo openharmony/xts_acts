@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "com.example.actsgetallaaccounts",
+    "bundleName": "com.example.actsgetallaccounts",
     "vendor": "example",
     "version": {
       "code": 1,
@@ -14,7 +14,7 @@
   },
   "deviceConfig": {},
   "module": {
-    "package": "com.example.actsgetallaaccounts",
+    "package": "com.example.actsgetallaccounts",
     "name": ".entry",
     "mainAbility": ".MainAbility",
     "srcPath":"",

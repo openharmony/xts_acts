@@ -31,13 +31,13 @@ export default {
         console.debug("====>creat scene manager finish====");
         var enableBundle = "com.example.actsaccountpressure";
         console.debug("====>add first account start====");
-        appAccountManager.addAccount("account_name_scene_first", (err)=>{
+        appAccountManager.createAccount("account_name_scene_first", (err)=>{
             console.debug("====>add first account err:" + JSON.stringify(err));
-            appAccountManager.enableAppAccess("account_name_scene_first", enableBundle, (err)=>{
+            appAccountManager.setAppAccess("account_name_scene_first", enableBundle, true, (err)=>{
                 console.debug("====>enableAppAccess first account err:" + JSON.stringify(err));
-                appAccountManager.addAccount("account_name_scene_second", (err)=>{
+                appAccountManager.createAccount("account_name_scene_second", (err)=>{
                     console.debug("====>add second account err:" + JSON.stringify(err));
-                    appAccountManager.enableAppAccess("account_name_scene_second", enableBundle, (err)=>{
+                    appAccountManager.setAppAccess("account_name_scene_second", enableBundle, true, (err)=>{
                         console.debug("====>enableAppAccess second account err:" + JSON.stringify(err));
                         featureAbility.terminateSelf(
                             (err, data)=>{

@@ -35,20 +35,25 @@ export default {
         var appAccountManager = account.createAppAccountManager();
         console.debug("====>creat second scene manager finish====");
         var enableBundle = "com.example.actsgetallaccessiblemultiple";
+        var enableBundle_2 = "com.example.getmultipleaccountstest"
         console.debug("====>add second account start====");
-        appAccountManager.addAccount("account_name_scene_second_first", (err)=>{
+        appAccountManager.createAccount("account_name_scene_second_first", (err)=>{
             console.debug("====>add second account err:" + JSON.stringify(err));
-            appAccountManager.enableAppAccess("account_name_scene_second_first", enableBundle, (err)=>{
+            appAccountManager.setAppAccess("account_name_scene_second_first", enableBundle, true, (err)=>{
                 console.debug("====>enableAppAccess second account err:" + JSON.stringify(err));
-                appAccountManager.addAccount("account_name_scene_second_second", (err)=>{
-                    console.debug("====>add second account err:" + JSON.stringify(err));
-                    appAccountManager.enableAppAccess("account_name_scene_second_second", enableBundle, (err)=>{
-                        console.debug("====>enableAppAccess second account err:" + JSON.stringify(err));
-                        sleep(3000);
-                        featureAbility.terminateSelf(
-                            (err, data)=>{
-                                console.debug('====>Terminate Ability Success====')
-                        });
+                appAccountManager.setAppAccess("account_name_scene_second_first", enableBundle_2, true, (err) => {
+                    appAccountManager.createAccount("account_name_scene_second_second", (err)=>{
+                        console.debug("====>add second account err:" + JSON.stringify(err));
+                        appAccountManager.setAppAccess("account_name_scene_second_second", enableBundle, true, (err)=>{
+                            appAccountManager.setAppAccess("account_name_scene_second_second", enableBundle_2, true, (err) => {
+                                console.debug("====>enableAppAccess second account err:" + JSON.stringify(err));
+                                sleep(3000);
+                                featureAbility.terminateSelf(
+                                    (err, data)=>{
+                                        console.debug('====>Terminate Ability Success====')
+                                });
+                            })
+                        })
                     })
                 })
             })  

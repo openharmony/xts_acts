@@ -35,6 +35,18 @@ export default function ActsAccountAppAccess() {
         beforeAll(async function (done) {            
             done();
         });
+        beforeEach(async function (done) {            
+            console.debug("====>afterEach start====");
+            var appAccountManager = account.getAccountManager();
+            var accounts = await appAccountManager.getAllAccountByOwner(owner)
+            for (i=0;i<accounts.length;i++){
+                var localName = accounts[i].name
+                if(localName != 'zhangsan'){
+                    await appAccountManager.removeOsAccount(localName)
+                }
+            }
+            done();
+        });
         /*
         * @tc.number    : ActsAccountCheckAccountLabels_0100
         * @tc.name      : Check Account Labels callback form
@@ -347,8 +359,7 @@ export default function ActsAccountAppAccess() {
                 appAccountManager.setAccountCredential(name, "PIN", '123456',  (err, data)=>{
                     console.debug("====>ActsAccountDeleteAccountCredential_0100 setAccountCredential_err:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
-                    console.debug("====>ActsAccountDeleteAccountCredential_0100 setAccountCredential_data:" + JSON.stringify(data));  
-                    appAccountManager.getAccountCredential(name, "PIN", (err) =>{
+                    appAccountManager.getAccountCredential(name, "PIN", (err, data) =>{
                         console.debug("====>ActsAccountDeleteAccountCredential_0100 getAccountCredential_err:" + JSON.stringify(err))
                         expect(err).assertEqual(null);
                         console.debug("====>ActsAccountDeleteAccountCredential_0100 getAccountCredential_success:" + JSON.stringify(data));
@@ -386,9 +397,9 @@ export default function ActsAccountAppAccess() {
                 console.debug("====>ActsAccountDeleteAccountCredential_0200 add_account_success");
                 appAccountManager.setAccountCredential(name, "PIN", '123456').then(() =>{
                     console.debug("====>ActsAccountDeleteAccountCredential_0200 setAccountCredential_success");
-                    appAccountManager.getAccountCredential(name, "PIN").then((data) =>{
+                    appAccountManager.getAccountCredential(name,  "PIN").then((data) =>{
                         console.debug("====>ActsAccountDeleteAccountCredential_0200 getAccountCredential_data:" + JSON.stringify(data));
-                        appAccountManager.deleteAccountCredential(name, "PIN").then((data) =>{
+                        appAccountManager.deleteAccountCredential(name,  "PIN").then((data) =>{
                             console.debug("====>ActsAccountDeleteAccountCredential_0200 data:" + JSON.stringify(data));                
                             try{
                                 appAccountManager.deleteAccount(name)
@@ -436,24 +447,24 @@ export default function ActsAccountAppAccess() {
                 console.debug("====>ActsAccountVerifyCredential_0100 add_account_err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
                 appAccountManager.verifyCredential(name, owner, options, {
-                onResult:(resultCode, resultData)=>{
-                    console.debug("====>ActsAccountVerifyCredential_0100 verifyCredential_resultcode:" + JSON.stringify(resultCode));
-                    expect(resultCode).assertEqual(0)
-                    console.debug("====>ActsAccountVerifyCredential_0100 verifyCredential_resultData:" + JSON.stringify(resultData));
-                    expect(resultData.booleanResult).assertEqual(true) 
-                    try{
-                        appAccountManager.deleteAccount(name)
-                        console.debug('====>ActsAccountVerifyCredential_0100 deleteAccount_success')
-                        done();
-                    }                               
-                    catch{
-                        console.debug('====>ActsAccountVerifyCredential_0100 deleteAccount_err')
-                        expect().assertFail()
-                    }    
-                    done(); 
-                    },
-                onRequestRedirected:null,
-                onRequestContinued: function(){ 
+                    onResult:(resultCode, resultData)=>{
+                        console.debug("====>ActsAccountVerifyCredential_0100 verifyCredential_resultcode:" + JSON.stringify(resultCode));
+                        expect(resultCode).assertEqual(0)
+                        console.debug("====>ActsAccountVerifyCredential_0100 verifyCredential_resultData:" + JSON.stringify(resultData));
+                        expect(resultData.booleanResult).assertEqual(true) 
+                        try{
+                            appAccountManager.deleteAccount(name)
+                            console.debug('====>ActsAccountVerifyCredential_0100 deleteAccount_success')
+                            done();
+                        }                               
+                        catch{
+                            console.debug('====>ActsAccountVerifyCredential_0100 deleteAccount_err')
+                            expect().assertFail()
+                        }    
+                        done(); 
+                        },
+                        onRequestRedirected:null,
+                        onRequestContinued: function(){ 
                     console.debug("====>ActsAccountVerifyCredential_0100 verifyCredential_onRequestContinued")
                     }   
                 });
@@ -473,30 +484,35 @@ export default function ActsAccountAppAccess() {
             appAccountManager.addAccount(name, (err)=>{
                 console.debug("====>ActsAccountVerifyCredential_0200 add_account_err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
-                console.debug("====>ActsAccountVerifyCredential_0200 add_account_err:" + JSON.stringify(err));
-                expect(err).assertEqual(null);
-                appAccountManager.verifyCredential(name, owner,  {
-                onResult:(resultCode, resultData)=>{
-                    console.debug("====>ActsAccountVerifyCredential_0200 verifyCredential_resultcode:" + JSON.stringify(resultCode));
-                    expect(resultCode).assertEqual(0)
-                    console.debug("====>ActsAccountVerifyCredential_0200 verifyCredential_resultData:" + JSON.stringify(resultData));
-                    expect(resultData.booleanResult).assertEqual(false) 
-                    try{
-                        appAccountManager.deleteAccount(name)
-                        console.debug('====>ActsAccountVerifyCredential_0200 deleteAccount_success')
-                        done();
-                    }                               
-                    catch{
-                        console.debug('====>ActsAccountVerifyCredential_0200 deleteAccount_err')
-                        expect().assertFail()
-                    }    
-                    done(); 
-                    },
-                    onRequestRedirected:null,
-                    onRequestContinued: function(){ 
-                        console.debug("====>ActsAccountVerifyCredential_0200 verifyCredential_onRequestContinued")
-                    }   
-                });
+                console.debug("====>ActsAccountVerifyCredential_0200 add_account_data:" + JSON.stringify(data));
+                try{
+                    appAccountManager.verifyCredential(name, owner, {
+                        onResult:(resultCode, resultData)=>{
+                            console.debug("====>ActsAccountVerifyCredential_0200 verifyCredential_resultcode:" + JSON.stringify(resultCode));
+                            expect(resultCode).assertEqual(0)
+                            console.debug("====>ActsAccountVerifyCredential_0200 verifyCredential_resultData:" + JSON.stringify(resultData));
+                            expect(resultData.booleanResult).assertEqual(false) 
+                            try{
+                                appAccountManager.deleteAccount(name)
+                                console.debug('====>ActsAccountVerifyCredential_0200 deleteAccount_success')
+                                done();
+                            }                               
+                            catch{
+                                console.debug('====>ActsAccountVerifyCredential_0200 deleteAccount_err')
+                                expect().assertFail()
+                            }    
+                            done(); 
+                            },
+                        onRequestRedirected:null,
+                        onRequestContinued: function(){ 
+                            console.debug("====>ActsAccountVerifyCredential_0200 verifyCredential_onRequestContinued")
+                        }   
+                    });
+                }catch(err){
+                    console.debug('====>====>ActsAccountVerifyCredential_0200 err:'+JSON.stringify(err))
+                    expect().assertFail();
+                    done();
+                }                
             });            
         });
 

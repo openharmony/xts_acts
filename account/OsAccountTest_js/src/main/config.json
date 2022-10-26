@@ -37,6 +37,10 @@
       {
         "name": "ohos.permission.MANAGE_LOCAL_ACCOUNTS",
         "reason": "ceshi"
+      },
+      {
+        "name": "ohos.permission.MANAGE_DISTRIBUTED_ACCOUNTS",
+        "reason": "ceshi"
       }
     ],
     "abilities": [
