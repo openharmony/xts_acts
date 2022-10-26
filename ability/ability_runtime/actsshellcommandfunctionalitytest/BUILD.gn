@@ -17,8 +17,8 @@ group("actsshellcommandfunctionalitytest") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "ActskillProcessWithAccountCloseTest:ActSkillProcessWithAccountCloseTest",
-      "ExecuteShellCommand:ExecuteShellCommand",
+      "ActsExecuteShellCommandTest:ActsExecuteShellCommandTest",
+      "ActsKillProcessWithAccountCloseRelyHap:ActsKillProcessWithAccountCloseRelyHap",
     ]
   }
 }
