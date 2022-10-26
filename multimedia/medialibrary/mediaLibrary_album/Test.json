@@ -49,6 +49,9 @@
                 "hilog -b D -D 0xD002B70", 
                 "scanner",
                 "sleep 10"
+            ],
+            "teardown-command":[
+                "hilog -b X -D 0xD002B70"
             ]
         },
         {
@@ -57,11 +60,6 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-        },
-        {
-            "teardown-command":[
-                "hilog -b X -D 0xD002B70"
-            ]
         }
     ]
 }
