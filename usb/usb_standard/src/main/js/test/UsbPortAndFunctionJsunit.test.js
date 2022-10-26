@@ -212,6 +212,5 @@ describe('UsbPortAndFunctionsJsFunctionsTest', function () {
     console.info('usb SUB_USB_JS_0020 host 1 1:  PASS');
     expect(true).assertTrue();
   })
-
 })
 }

@@ -20,6 +20,8 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 export default function UsbFunctionsJsFunctionsTestEx() {
 describe('UsbFunctionsJsFunctionsTestEx', function () {
 
+  var invalidCode = 0;
+
   beforeAll(function () {
     console.log('*************Usb Unit UsbFunctionsJsFunctionsTestEx Begin*************');
     var Version = usb.getVersion()
@@ -156,6 +158,24 @@ describe('UsbFunctionsJsFunctionsTestEx', function () {
   })
 
   /**
+   * @tc.number    : SUB_USB_JS_1160
+   * @tc.name      : usbFunctionsToString
+   * @tc.desc      : 反向测试 掩码转化成描述字符 参数类型错误
+   */
+   it('SUB_USB_JS_1160', 0, function () {
+    console.info('usb SUB_USB_JS_1160 begin');
+    try {
+      var maskCode = usb.usbFunctionsToString("invalid");
+      console.info('usb case usbFunctionsToString return: ' + maskCode);
+      expect(false).assertTrue();
+    } catch (err) {
+      console.info('catch err code: ' + err.code + ' message: ' + err.message);
+      expect(err.code).assertEqual(401);
+      console.info('usb SUB_USB_JS_1160 :  PASS');
+    }
+  })
+
+  /**
    * @tc.number    : SUB_USB_JS_0860
    * @tc.name      : usbFunctionsFromString
    * @tc.desc      : 正向测试 'none' 返回 0
@@ -253,5 +273,22 @@ describe('UsbFunctionsJsFunctionsTestEx', function () {
     console.info('usb SUB_USB_JS_0920 :  PASS');
   })
 
+  /**
+   * @tc.number    : SUB_USB_JS_1170
+   * @tc.name      : usbFunctionsFromString
+   * @tc.desc      : 反向测试 描述字符转换成掩码 参数类型错误
+   */
+   it('SUB_USB_JS_1170', 0, function () {
+    console.info('usb SUB_USB_JS_1170 begin');
+    try {
+      var maskCode = usb.usbFunctionsFromString(invalidCode);
+      console.info('usb case usbFunctionsFromString return: ' + maskCode);
+      expect(false).assertTrue();
+    } catch (err) {
+      console.info('catch err code: ' + err.code + ' message: ' + err.message);
+      expect(err.code).assertEqual(401);
+      console.info('usb SUB_USB_JS_1170 :  PASS');
+    }
+  })
 })
 }
