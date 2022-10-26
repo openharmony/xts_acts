@@ -1373,7 +1373,6 @@ export default function UiTest() {
             let driver = Driver.create()
             await driver.delayMs(waitUiReadyMs)
             await driver.setDisplayRotation(DisplayRotation.ROTATION_180)
-            await driver.delayMs(2000)
             let rotation = await driver.getDisplayRotation()
             if (rotation == DisplayRotation.ROTATION_180) {
                 console.info('The device is displayed in vertical on default')
@@ -1429,8 +1428,6 @@ export default function UiTest() {
             let driver = Driver.create()
             await driver.setDisplayRotation(DisplayRotation.ROTATION_180)
             let rotation = await driver.getDisplayRotation()
-            await driver.setDisplayRotation(DisplayRotation.ROTATION_180)
-            await driver.delayMs(waitUiReadyMs)
             await driver.setDisplayRotationEnabled(true)
             await driver.setDisplayRotation(DisplayRotation.ROTATION_90)
             await driver.delayMs(waitUiReadyMs)
@@ -1443,6 +1440,7 @@ export default function UiTest() {
                 expect(rotation2 == DisplayRotation.ROTATION_0)
                 console.info('The device is displayed in horizontal on default')
             }
+            await stopApplication('com.uitestScene.acts')
         })
 
         /*
