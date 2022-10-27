@@ -19,7 +19,6 @@ group("startup_standard") {
     deps = [
       "deviceinfo:startup_deviceinfo_js_test",
       "syscap_ndk:startup_syscapability_js_test",
-      "systemparamter:startup_sysparam_js_test",
     ]
   }
 }
