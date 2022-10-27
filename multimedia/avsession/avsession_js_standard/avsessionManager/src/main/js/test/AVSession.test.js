@@ -1048,6 +1048,138 @@ export default function AVSession() {
         })
 
         /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1200
+         * @tc.name      : SETAVPLAYBACKSTATE_1200
+         * @tc.desc      : Testing set playbackstate - promise
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1200', 0, async function (done) {
+            let PlaybackState12 = {
+                state: avSession.PlaybackState.PLAYBACK_STATE_INITIAL,
+            };
+            await session.setAVPlaybackState(PlaybackState12).then(() => {
+                console.info('TestLog: Set playbackState successfully');
+                expect(false).assertTrue();
+            }).catch((err) => {
+                console.info(`TestLog: Set playbackState error: code: ${err.code}, message: ${err.message}`);
+                expect(true).assertTrue();
+            });
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1300
+         * @tc.name      : SETAVPLAYBACKSTATE_1300
+         * @tc.desc      : Testing set playbackstate - promise
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1300', 0, async function (done) {
+            let PlaybackState13 = {
+                state: avSession.PlaybackState.PLAYBACK_STATE_PREPARE,
+            };
+            await session.setAVPlaybackState(PlaybackState13).then(() => {
+                console.info('TestLog: Set playbackState successfully');
+                expect(false).assertTrue();
+            }).catch((err) => {
+                console.info(`TestLog: Set playbackState error: code: ${err.code}, message: ${err.message}`);
+                expect(true).assertTrue();
+            });
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1400
+         * @tc.name      : SETAVPLAYBACKSTATE_1400
+         * @tc.desc      : Testing set playbackstate - promise
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1400', 0, async function (done) {
+            let PlaybackState14 = {
+                state: avSession.PlaybackState.PLAYBACK_STATE_PAUSE,
+            };
+            await session.setAVPlaybackState(PlaybackState14).then(() => {
+                console.info('TestLog: Set playbackState successfully');
+                expect(false).assertTrue();
+            }).catch((err) => {
+                console.info(`TestLog: Set playbackState error: code: ${err.code}, message: ${err.message}`);
+                expect(true).assertTrue();
+            });
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1500
+         * @tc.name      : SETAVPLAYBACKSTATE_1500
+         * @tc.desc      : Testing set playbackstate - promise
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1500', 0, async function (done) {
+            let PlaybackState15 = {
+                state: avSession.PlaybackState.PLAYBACK_STATE_FAST_FORWARD,
+            };
+            await session.setAVPlaybackState(PlaybackState15).then(() => {
+                console.info('TestLog: Set playbackState successfully');
+                expect(false).assertTrue();
+            }).catch((err) => {
+                console.info(`TestLog: Set playbackState error: code: ${err.code}, message: ${err.message}`);
+                expect(true).assertTrue();
+            });
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1600
+         * @tc.name      : SETAVPLAYBACKSTATE_1600
+         * @tc.desc      : Testing set playbackstate - promise
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1600', 0, async function (done) {
+            let PlaybackState16 = {
+                state: avSession.PlaybackState.PLAYBACK_STATE_REWIND,
+            };
+            await session.setAVPlaybackState(PlaybackState16).then(() => {
+                console.info('TestLog: Set playbackState successfully');
+                expect(false).assertTrue();
+            }).catch((err) => {
+                console.info(`TestLog: Set playbackState error: code: ${err.code}, message: ${err.message}`);
+                expect(true).assertTrue();
+            });
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1700
+         * @tc.name      : SETAVPLAYBACKSTATE_1700
+         * @tc.desc      : Testing set playbackstate - promise
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_SETAVPLAYBACKSTATE_PROMISE_1700', 0, async function (done) {
+            let PlaybackState17 = {
+                state: avSession.PlaybackState.PLAYBACK_STATE_STOP,
+            };
+            await session.setAVPlaybackState(PlaybackState17).then(() => {
+                console.info('TestLog: Set playbackState successfully');
+                expect(false).assertTrue();
+            }).catch((err) => {
+                console.info(`TestLog: Set playbackState error: code: ${err.code}, message: ${err.message}`);
+                expect(true).assertTrue();
+            });
+            done();
+        })
+
+        /* *
          * @tc.number    : SUB_MULTIMEDIA_AVSESSION_SETLAUNCHABILITY_PROMISE_0100
          * @tc.name      : SETLAUNCHABILITY_0100
          * @tc.desc      : Testing set LaunchAbility - promise
