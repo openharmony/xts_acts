@@ -23,7 +23,6 @@ import cameraSessionVideoStabilizationTest from './CameraSessionVideoStabilizati
 import cameraSessionBaseTest from './CameraSessionBaseTest.test.ets'
 import cameraInputTest from './CameraInputTest.test.ets'
 import cameraManagerTest from './CameraManagerTest.test.ets'
-import cameraManagerMuteTest from './CameraManagerMuteTest.test.ets'
 
 let TAG = 'CameraModuleTest: '
 
@@ -31,7 +30,6 @@ export default function cameraKit(surfaceId: any) {
   console.info(TAG + 'Entering cameraKit')
   console.info(TAG + 'surfaceId: ' + surfaceId)
 
-  cameraManagerMuteTest(surfaceId)
   cameraInputTest(surfaceId)
   cameraJSUnitOutput(surfaceId)
   cameraSessionFlashTest(surfaceId)
