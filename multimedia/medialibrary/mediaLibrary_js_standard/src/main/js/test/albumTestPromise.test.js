@@ -423,10 +423,18 @@ describe('albumTestPromise.test.js', async function () {
             selectionArgs: [videoType.toString()],
         };
         try {
-            const albumList = await media.getAlbums(fileHasArgsfetchOp4);
-            console.info('GETALBUMASSETS_PROMISE_002_07 length:' + albumList.length);
-            expect(albumList.length == 0).assertTrue();
-            done();
+            media.getAlbums(fileHasArgsfetchOp4).then((albumList) => {
+                expect(false).assertTrue();
+                done();
+            }).catch((err) => {
+                if (err != undefined) {
+                    expect(true).assertTrue();
+                    done();
+                    return;
+                }
+                expect(false).assertTrue();
+                done();
+            })
         } catch (error) {
             console.info('ALBUM_PROMISE getFileAssets 002_07 passed');
             expect(false).assertTrue();
@@ -449,10 +457,18 @@ describe('albumTestPromise.test.js', async function () {
         };
 
         try {
-            const albumList = await media.getAlbums(fileHasArgsfetchOp5);
-            console.info('GETALBUMASSETS_PROMISE_002_08 length:' + albumList.length);
-            expect(albumList.length == 0).assertTrue();
-            done();
+            media.getAlbums(fileHasArgsfetchOp5).then((albumList) => {
+                expect(false).assertTrue();
+                done();
+            }).catch((err) => {
+                if (err != undefined) {
+                    expect(true).assertTrue();
+                    done();
+                    return;
+                }
+                expect(false).assertTrue();
+                done();
+            })
         } catch (error) {
             console.info('ALBUM_PROMISE getFileAssets 002_08 passed');
             expect(false).assertTrue();
