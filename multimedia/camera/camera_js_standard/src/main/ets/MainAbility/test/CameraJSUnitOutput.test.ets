@@ -61,10 +61,14 @@ let cameraInput;
 let previewOutput;
 let photoOutput;
 let videoOutput;
+let metadataOutput;
 let videoSurfaceId;
 let fdPath;
 let fileAsset;
 let fdNumber;
+
+let mMetadataObjectTypeArray;
+let mMetadataObjectArray;
 
 export default function cameraJSUnitOutput(surfaceId: any) {
 
@@ -461,8 +465,8 @@ export default function cameraJSUnitOutput(surfaceId: any) {
 
     /**
       * @tc.number    : SUB_MULTIMEDIA_CAMERA_CREATE_VIDEO_OUTPUT_CALLBACK_0100
-      * @tc.name      : Create previewOutput instance async api
-      * @tc.desc      : Create previewOutput instance async api
+      * @tc.name      : Create videoOutput instance async api
+      * @tc.desc      : Create videoOutput instance async api
       * @tc.size      : MEDIUM
       * @tc.type      : Function
       * @tc.level     : Level 1
@@ -493,6 +497,52 @@ export default function cameraJSUnitOutput(surfaceId: any) {
           await sleep(1000);
           done();
         })
+      }
+      await sleep(1000);
+      done();
+    })
+
+
+    /**
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_CREATE_METADATA_OUTPUT_CALLBACK_0100
+      * @tc.name      : Create metadataOutput instance async api
+      * @tc.desc      : Create metadataOutput instance async api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 1
+    */
+     it('SUB_MULTIMEDIA_CAMERA_CREATE_METADATA_OUTPUT_CALLBACK_0100', 1, async function (done) {
+      console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_CREATE_METADATA_OUTPUT_CALLBACK_0100--------------");
+      if (isEmpty(cameraManager)) {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_METADATA_OUTPUT_CALLBACK_0100 cameraManager == null || undefined")
+        expect().assertFail();
+      } else {
+        let cameraOutputCap = await getSupportedOutputCapabilityInPromise(cameraDevicesArray[0]);
+        console.info("SUB_MULTIMEDIA_CAMERA_CREATE_METADATA_OUTPUT_CALLBACK_0100 camera:" + cameraDevicesArray[0].cameraId);
+        expect(isEmpty(cameraOutputCap)).assertFalse();
+        mMetadataObjectTypeArray = cameraOutputCap.supportedMetadataObjectTypes;
+        if (isEmpty(mMetadataObjectTypeArray)) {
+          console.info("SUB_MULTIMEDIA_CAMERA_CREATE_METADATA_OUTPUT_CALLBACK_0100 end with mMetadataObjectTypeArray is null");
+        } else {
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_METADATA_OUTPUT_CALLBACK_0100 start createVideoOutput")
+          cameraManager.createMetadataOutput(mMetadataObjectTypeArray, async (err, data) => {
+            if (!err) {
+              if (!isEmpty(data)) {
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_METADATA_OUTPUT_CALLBACK_0100 success");
+                metadataOutput = data;
+              } else {
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_METADATA_OUTPUT_CALLBACK_0100, data == null || undefined");
+              }
+              
+            } else {
+              console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_METADATA_OUTPUT_CALLBACK_0100 FAILED: " + err.message);
+              expect().assertFail();
+            }
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CREATE_METADATA_OUTPUT_CALLBACK_0100 ends here");
+            await sleep(1000);
+            done();
+          })
+        }
       }
       await sleep(1000);
       done();
@@ -739,6 +789,311 @@ export default function cameraJSUnitOutput(surfaceId: any) {
     })
 
 
+    /**
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_ON_AVAILABLE_METADATA_OUTPUT_CALLBACK_0100
+      * @tc.name      : Start metadataOutput type async api
+      * @tc.desc      : Start metadataOutput type async api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 1
+    */
+     it('SUB_MULTIMEDIA_CAMERA_ON_AVAILABLE_METADATA_OUTPUT_CALLBACK_0100', 1, async function (done) {
+      console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_ON_AVAILABLE_METADATA_OUTPUT_CALLBACK_0100--------------");
+      if (isEmpty(metadataOutput)) {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ON_AVAILABLE_METADATA_OUTPUT_CALLBACK_0100 metadataOutput == null || undefined")
+      } else {
+        metadataOutput.on('metadataObjectsAvailable', async (err, data) => {
+          if (!err) {
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ON_AVAILABLE_METADATA_OUTPUT_CALLBACK_0100 is not error");
+            expect(isEmpty(data)).assertFalse();
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ON_AVAILABLE_METADATA_OUTPUT_CALLBACK_0100 success");
+            mMetadataObjectArray = data;
+          } else {
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ON_AVAILABLE_METADATA_OUTPUT_CALLBACK_0100 FAILED: " + err.message);
+            expect().assertFail();
+          }
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ON_AVAILABLE_METADATA_OUTPUT_CALLBACK_0100 ends here");
+          await sleep(1000);
+        })
+
+      }
+      await sleep(1000);
+      done();
+    })
+
+
+    /**
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_START_METADATA_OUTPUT_CALLBACK_0100
+      * @tc.name      : Start metadataOutput type async api
+      * @tc.desc      : Start metadataOutput type async api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 1
+    */
+     it('SUB_MULTIMEDIA_CAMERA_START_METADATA_OUTPUT_CALLBACK_0100', 1, async function (done) {
+      console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_START_METADATA_OUTPUT_CALLBACK_0100--------------");
+      if (isEmpty(metadataOutput)) {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_START_METADATA_OUTPUT_CALLBACK_0100 metadataOutput == null || undefined")
+      } else {
+        metadataOutput.start(async (err) => {
+          if (!err) {
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_START_METADATA_OUTPUT_CALLBACK_0100 success");
+          } else {
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_START_METADATA_OUTPUT_CALLBACK_0100 FAILED: " + err.message);
+            expect().assertFail();
+          }
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_START_METADATA_OUTPUT_CALLBACK_0100 ends here");
+          await sleep(1000);
+        })
+      }
+      await sleep(1000);
+      done();
+    })
+
+
+    /**
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_METADATA_TYPE_CALLBACK_0100
+      * @tc.name      : Start metadataOutput type async api
+      * @tc.desc      : Start metadataOutput type async api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 1
+    */
+     it('SUB_MULTIMEDIA_CAMERA_GET_METADATA_TYPE_CALLBACK_0100', 1, async function (done) {
+      console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_GET_METADATA_TYPE_CALLBACK_0100--------------");
+      if (isEmpty(mMetadataObjectArray)) {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_METADATA_TYPE_CALLBACK_0100 metadataOutput == null || undefined")
+      } else {
+        mMetadataObjectArray[0].getType(async (err, data) => {
+          if (!err) {
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_METADATA_TYPE_CALLBACK_0100 success, type : " + data);
+          } else {
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_METADATA_TYPE_CALLBACK_0100 FAILED: " + err.message);
+            expect().assertFail();
+          }
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_METADATA_TYPE_CALLBACK_0100 ends here");
+          await sleep(1000);
+        })
+      }
+      await sleep(1000);
+      done();
+    })
+
+
+    /**
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_METADATA_TYPE_PROMISE_0100
+      * @tc.name      : Start metadataOutput type async api
+      * @tc.desc      : Start metadataOutput type async api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 1
+    */
+     it('SUB_MULTIMEDIA_CAMERA_GET_METADATA_TYPE_PROMISE_0100', 1, async function (done) {
+      console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_GET_METADATA_TYPE_PROMISE_0100--------------");
+      if (isEmpty(mMetadataObjectArray)) {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_METADATA_TYPE_PROMISE_0100 metadataOutput == null || undefined")
+      } else {
+        let type = mMetadataObjectArray[0].getType().then((result) => {
+          console.info('SUB_MULTIMEDIA_CAMERA_GET_METADATA_TYPE_PROMISE_0100 success :' + result);
+        }).catch((err) => {
+          console.info('SUB_MULTIMEDIA_CAMERA_GET_METADATA_TYPE_PROMISE_0100 failed :' + err);
+        });
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_METADATA_TYPE_PROMISE_0100 success, type : " + type);
+      }
+      await sleep(1000);
+      done();
+    })
+
+
+    /**
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_METADATA_TIMESTAMP_CALLBACK_0100
+      * @tc.name      : Start metadataOutput timestamp async api
+      * @tc.desc      : Start metadataOutput timestamp async api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 1
+    */
+     it('SUB_MULTIMEDIA_CAMERA_GET_METADATA_TIMESTAMP_CALLBACK_0100', 1, async function (done) {
+      console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_GET_METADATA_TIMESTAMP_CALLBACK_0100--------------");
+      if (isEmpty(mMetadataObjectArray)) {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_METADATA_TIMESTAMP_CALLBACK_0100 metadataOutput == null || undefined")
+      } else {
+        mMetadataObjectArray[0].getTimestamp(async (err, data) => {
+          if (!err) {
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_METADATA_TIMESTAMP_CALLBACK_0100 success, timeStamp : " + data);
+          } else {
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_METADATA_TIMESTAMP_CALLBACK_0100 FAILED: " + err.message);
+            expect().assertFail();
+          }
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_METADATA_TIMESTAMP_CALLBACK_0100 ends here");
+          await sleep(1000);
+        })
+      }
+      await sleep(1000);
+      done();
+    })
+
+
+    /**
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_METADATA_TIMESTAMP_PROMISE_0100
+      * @tc.name      : Start metadataOutput timestamp async api
+      * @tc.desc      : Start metadataOutput timestamp async api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 1
+    */
+     it('SUB_MULTIMEDIA_CAMERA_GET_METADATA_TIMESTAMP_PROMISE_0100', 1, async function (done) {
+      console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_GET_METADATA_TIMESTAMP_PROMISE_0100--------------");
+      if (isEmpty(mMetadataObjectArray)) {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_METADATA_TIMESTAMP_PROMISE_0100 metadataOutput == null || undefined")
+      } else {
+        let timeStamp = mMetadataObjectArray[0].getTimestamp().then((result) => {
+          console.info('SUB_MULTIMEDIA_CAMERA_GET_METADATA_TIMESTAMP_PROMISE_0100 success :' + result);
+        }).catch((err) => {
+          console.info('SUB_MULTIMEDIA_CAMERA_GET_METADATA_TIMESTAMP_PROMISE_0100 failed :' + err);
+        });
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_METADATA_TIMESTAMP_PROMISE_0100 success, timeStamp : " + timeStamp);
+      }
+      await sleep(1000);
+      done();
+    })
+
+
+    /**
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_METADATA_BOUNDING_BOX_CALLBACK_0100
+      * @tc.name      : Start metadataOutput bounding box async api
+      * @tc.desc      : Start metadataOutput bounding box async api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 1
+    */
+     it('SUB_MULTIMEDIA_CAMERA_GET_METADATA_BOUNDING_BOX_CALLBACK_0100', 1, async function (done) {
+      console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_GET_METADATA_BOUNDING_BOX_CALLBACK_0100--------------");
+      if (isEmpty(mMetadataObjectArray)) {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_METADATA_BOUNDING_BOX_CALLBACK_0100 metadataOutput == null || undefined")
+      } else {
+        mMetadataObjectArray[0].getBoundingBox(async (err, data) => {
+          if (!err) {
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_METADATA_BOUNDING_BOX_CALLBACK_0100 success, boundingBox : " + data.width + "x" + data.height);
+          } else {
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_METADATA_BOUNDING_BOX_CALLBACK_0100 FAILED: " + err.message);
+            expect().assertFail();
+          }
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_METADATA_BOUNDING_BOX_CALLBACK_0100 ends here");
+          await sleep(1000);
+          done();
+        })
+
+      }
+      await sleep(1000);
+      done();
+    })
+
+
+    /**
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_GET_METADATA_BOUNDING_BOX_PROMISE_0100
+      * @tc.name      : Start metadataOutput bounding box async api
+      * @tc.desc      : Start metadataOutput bounding box async api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 1
+    */
+     it('SUB_MULTIMEDIA_CAMERA_GET_METADATA_BOUNDING_BOX_PROMISE_0100', 1, async function (done) {
+      console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_GET_METADATA_BOUNDING_BOX_PROMISE_0100--------------");
+      if (isEmpty(mMetadataObjectArray)) {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_METADATA_BOUNDING_BOX_PROMISE_0100 metadataOutput == null || undefined")
+      } else {
+        let boundingBox = mMetadataObjectArray[0].getBoundingBox().then((result) => {
+          console.info('SUB_MULTIMEDIA_CAMERA_GET_METADATA_BOUNDING_BOX_PROMISE_0100 success :' + result);
+        }).catch((err) => {
+          console.info('SUB_MULTIMEDIA_CAMERA_GET_METADATA_BOUNDING_BOX_PROMISE_0100 failed :' + err);
+        });
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_GET_METADATA_BOUNDING_BOX_PROMISE_0100 success, boundingBox : " + boundingBox.width + "x" + boundingBox.height);
+      }
+      await sleep(1000);
+      done();
+    })
+
+
+    /**
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_STOP_METADATA_OUTPUT_CALLBACK_0100
+      * @tc.name      : Stop metadataOutput type async api
+      * @tc.desc      : Stop metadataOutput type async api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 1
+    */
+     it('SUB_MULTIMEDIA_CAMERA_STOP_METADATA_OUTPUT_CALLBACK_0100', 1, async function (done) {
+      console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_STOP_METADATA_OUTPUT_CALLBACK_0100--------------");
+      if (isEmpty(metadataOutput)) {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_STOP_METADATA_OUTPUT_CALLBACK_0100 metadataOutput == null || undefined")
+      } else {
+        metadataOutput.stop(async (err) => {
+          if (!err) {
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_STOP_METADATA_OUTPUT_CALLBACK_0100 success");
+          } else {
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_STOP_METADATA_OUTPUT_CALLBACK_0100 FAILED: " + err.message);
+            expect().assertFail();
+          }
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_STOP_METADATA_OUTPUT_CALLBACK_0100 ends here");
+          await sleep(1000);
+          done();
+        })
+      }
+      await sleep(1000);
+      done();
+    })
+
+
+    /**
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_START_METADATA_OUTPUT_PROMISE_0100
+      * @tc.name      : Start metadataOutput sync api
+      * @tc.desc      : Start metadataOutput sync api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 1
+    */
+     it('SUB_MULTIMEDIA_CAMERA_START_METADATA_OUTPUT_PROMISE_0100', 1, async function (done) {
+      console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_START_METADATA_OUTPUT_PROMISE_0100--------------");
+      if (isEmpty(metadataOutput)) {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_START_METADATA_OUTPUT_PROMISE_0100 metadataOutput == null || undefined")
+      } else {
+        metadataOutput.start().then((result) => {
+          console.info('SUB_MULTIMEDIA_CAMERA_START_METADATA_OUTPUT_PROMISE_0100 success :' + result);
+        }).catch((err) => {
+          console.info('SUB_MULTIMEDIA_CAMERA_START_METADATA_OUTPUT_PROMISE_0100 failed :' + err);
+        });
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_START_METADATA_OUTPUT_PROMISE_0100 ends here");
+      }
+      await sleep(1000);
+      done();
+    })
+
+
+    /**
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_STOP_METADATA_OUTPUT_PROMISE_0100
+      * @tc.name      : Stop metadataOutput sync api
+      * @tc.desc      : Stop metadataOutput aync api
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 1
+    */
+     it('SUB_MULTIMEDIA_CAMERA_STOP_METADATA_OUTPUT_PROMISE_0100', 1, async function (done) {
+      console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_STOP_METADATA_OUTPUT_PROMISE_0100--------------");
+      if (isEmpty(metadataOutput)) {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_STOP_METADATA_OUTPUT_PROMISE_0100 metadataOutput == null || undefined")
+      } else {
+        metadataOutput.stop().then((result) => {
+          console.info('SUB_MULTIMEDIA_CAMERA_STOP_METADATA_OUTPUT_PROMISE_0100 success :' + result);
+        }).catch((err) => {
+          console.info('SUB_MULTIMEDIA_CAMERA_STOP_METADATA_OUTPUT_PROMISE_0100 failed :' + err);
+        });
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_STOP_METADATA_OUTPUT_PROMISE_0100 ends here");
+      }
+      await sleep(1000);
+      done();
+    })
+
 
     /**
       * @tc.number    : SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_START_CALLBACK_0100
@@ -980,6 +1335,93 @@ export default function cameraJSUnitOutput(surfaceId: any) {
       await sleep(1000);
       done();
     })
+
+
+
+    /**
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_IS_MIRROR_SUPPORTED_PROMISE_0100
+      * @tc.name      : check photoOutput is mirror supported with promise mode
+      * @tc.desc      : check photoOutput is mirror supported with promise mode
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 1
+    */
+     it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_IS_MIRROR_SUPPORTED_PROMISE_0100', 1, async function (done) {
+      console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_IS_MIRROR_SUPPORTED_PROMISE_0100--------------");
+      if (isEmpty(photoOutput)) {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_IS_MIRROR_SUPPORTED_PROMISE_0100 photoOutput == null || undefined")
+        expect().assertFail();
+      } else {
+        let isMirrorSupportedFlag = await photoOutput.isMirrorSupported().then((result) => {
+          console.info('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_IS_MIRROR_SUPPORTED_PROMISE_0100 success :' + result);
+        }).catch((err) => {
+            console.info('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_IS_MIRROR_SUPPORTED_PROMISE_0100 failed :' + err);
+        });
+
+        console.info('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_IS_MIRROR_SUPPORTED_PROMISE_0100 isMirrorSupportedFlag = ' + isMirrorSupportedFlag);
+      }
+      await sleep(1000);
+      done();
+    })
+
+
+    /**
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_IS_MIRROR_SUPPORTED_CALLBACK_0100
+      * @tc.name      : check photoOutput is mirror supported with callback mode
+      * @tc.desc      : check photoOutput is mirror supported with callback mode
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 1
+    */
+     it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_IS_MIRROR_SUPPORTED_CALLBACK_0100', 1, async function (done) {
+      console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_IS_MIRROR_SUPPORTED_CALLBACK_0100--------------");
+      if (isEmpty(photoOutput)) {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_IS_MIRROR_SUPPORTED_CALLBACK_0100 photoOutput == null || undefined")
+        expect().assertFail();
+      } else {
+        photoOutput.isMirrorSupported(async (err, data) => {
+          if (!err) {
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_IS_MIRROR_SUPPORTED_CALLBACK_0100 success, isMirrorSupportedFlag = ", data);
+            expect(true).assertTrue();
+          } else {
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_IS_MIRROR_SUPPORTED_CALLBACK_0100 FAILED: " + err.message);
+            expect().assertFail();
+          }
+          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_IS_MIRROR_SUPPORTED_CALLBACK_0100 ends here");
+          await sleep(1000);
+          done();
+        })
+      }
+      await sleep(1000);
+      done();
+    })
+
+
+
+    /**
+      * @tc.number    : SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CAPTURE_DEFAULT_PROMISE_0100
+      * @tc.name      : photoOutput capture with promise mode
+      * @tc.desc      : photoOutput capture with promise mode
+      * @tc.size      : MEDIUM
+      * @tc.type      : Function
+      * @tc.level     : Level 1
+    */
+    it('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CAPTURE_DEFAULT_PROMISE_0100', 1, async function (done) {
+      console.info(TAG + " --------------SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CAPTURE_DEFAULT_PROMISE_0100--------------");
+      if (isEmpty(photoOutput)) {
+        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CAPTURE_DEFAULT_PROMISE_0100 photoOutput == null || undefined")
+        expect().assertFail();
+      } else {
+        await photoOutput.capture().then((result) => {
+          console.info('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CAPTURE_DEFAULT_PROMISE_0100 success :' + result);
+        }).catch((err) => {
+            console.info('SUB_MULTIMEDIA_CAMERA_PHOTO_OUTPUT_CAPTURE_DEFAULT_PROMISE_0100 failed :' + err);
+        });
+      }
+      await sleep(1000);
+      done();
+    })
+
 
 
     /**

@@ -32,7 +32,7 @@ let mCameraManager;
 let mCameraDevicesArray;
 let mCameraSession;
 
-let mPhoteSurface;
+let mPhotoSurface;
 let mVideoRecorder;
 let mVideoSurface;
 let mFileAsset;
@@ -238,8 +238,8 @@ export default function cameraSessionExposureTest(surfaceId: any) {
         console.log(TAG + 'before receiver check')
         if (receiver !== undefined) {
             console.log(TAG + 'Photo receiver is created successfully')
-            mPhoteSurface = await receiver.getReceivingSurfaceId()
-            console.log(TAG + 'Photo received id: ' + JSON.stringify(mPhoteSurface))
+            mPhotoSurface = await receiver.getReceivingSurfaceId()
+            console.log(TAG + 'Photo received id: ' + JSON.stringify(mPhotoSurface))
         } else {
             console.log(TAG + 'Photo receiver is created failed')
         }
@@ -473,7 +473,7 @@ export default function cameraSessionExposureTest(surfaceId: any) {
             console.info(TAG + "cameraOutputCap.photoProfiles.length: " + cameraOutputCap.photoProfiles.length);   
                 
             for (let i = 0; i < cameraOutputCap.photoProfiles.length; i++) {
-                mPhotoOutput = await mCameraManager.createPhotoOutput(cameraOutputCap.photoProfiles[i], mPhoteSurface);
+                mPhotoOutput = await mCameraManager.createPhotoOutput(cameraOutputCap.photoProfiles[i], mPhotoSurface);
                 if (!isEmpty(mPhotoOutput)) {
                     break;
                 }
@@ -1126,11 +1126,11 @@ export default function cameraSessionExposureTest(surfaceId: any) {
         * @tc.type      : Function
         * @tc.level     : Level 2
         */
-         it('SUB_MULTIMEDIA_CAMERA_SESSION_IS_EXPOSURE_MODE_SUPPORT_PROMISE_0102', 2, async function (done) {
+         it('SUB_MULTIMEDIA_CAMERA_SESSION_IS_EXPOSURE_MODE_SUPPORT_PROMISE_0101', 2, async function (done) {
             console.info("--------------SUB_MULTIMEDIA_CAMERA_SESSION_IS_EXPOSURE_MODE_SUPPORT_PROMISE_0102--------------");
 
             if (mCameraNum == 0) {
-                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_EXPOSURE_MODE_SUPPORT_PROMISE_0102 FAILED with NoCamera");
+                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_IS_EXPOSURE_MODE_SUPPORT_PROMISE_0101 FAILED with NoCamera");
                 expect().assertFail();
                 done();
             } else {
