@@ -15,8 +15,10 @@
 import TransientTaskJsTest from './BackgroundTaskMagrJs.test.js'
 import ContinuousTaskJsTest from './ContinuousTaskJsunit.test.js'
 import ShortTaskMgrApiTest from './ShortTaskMgrJs.test.js'
+import ShortTimeTasksJSTest from './ShortTimeTaskJS.test.js'
 export default function testsuite() {
 TransientTaskJsTest()
 ContinuousTaskJsTest()
 ShortTaskMgrApiTest()
+ShortTimeTasksJSTest()
 }
