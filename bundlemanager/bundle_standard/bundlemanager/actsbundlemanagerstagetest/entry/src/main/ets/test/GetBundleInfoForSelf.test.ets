@@ -266,11 +266,13 @@ export default function getBundleInfoForSelf() {
       await bundle.getBundleInfoForSelf(
         bundle.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE | bundle.BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY
       ).then(data => {
-        console.info("AbilityPro" + JSON.stringify(data.hapModulesInfo[0].abilitiesInfo[0]));
+        for (let count = 0; count < 11; count++) {
+          console.info(count + "AbilityPro::" + JSON.stringify(data.hapModulesInfo[0].abilitiesInfo[count]));
+        }
         checkCommonBundleInfo(data);
         checkCommonHapModuleInfo(data);
         expect(data.appInfo).assertEqual(null);
-        expect(data.hapModulesInfo[0].abilitiesInfo.length).assertEqual(3);
+        expect(data.hapModulesInfo[0].abilitiesInfo.length).assertEqual(11);
         expect(data.hapModulesInfo[0].abilitiesInfo[0].bundleName).assertEqual(BUNDLE_NAME);
         expect(data.hapModulesInfo[0].abilitiesInfo[0].moduleName).assertEqual("testModule");
         expect(data.hapModulesInfo[0].abilitiesInfo[0].name).assertEqual("ohos.acts.bundle.stage.test.MainAbility");
@@ -283,13 +285,15 @@ export default function getBundleInfoForSelf() {
         expect(data.hapModulesInfo[0].abilitiesInfo[0].process).assertEqual("");
         expect(data.hapModulesInfo[0].abilitiesInfo[0].isVisible).assertTrue();
         expect(data.hapModulesInfo[0].abilitiesInfo[0].type).assertEqual(1);
-        expect(data.hapModulesInfo[0].abilitiesInfo[0].orientation).assertEqual(2);
+        expect(data.hapModulesInfo[0].abilitiesInfo[0].orientation).assertEqual(bundle.DisplayOrientation.PORTRAIT);
         expect(data.hapModulesInfo[0].abilitiesInfo[0].launchType).assertEqual(bundle.LaunchType.SINGLETON);
         expect(data.hapModulesInfo[0].abilitiesInfo[0].permissions.length).assertEqual(0);
         expect(data.hapModulesInfo[0].abilitiesInfo[0].readPermission).assertEqual("");
         expect(data.hapModulesInfo[0].abilitiesInfo[0].writePermission).assertEqual("");
         expect(data.hapModulesInfo[0].abilitiesInfo[0].uri).assertEqual("");
         expect(data.hapModulesInfo[0].abilitiesInfo[0].deviceTypes.length).assertEqual(2);
+        console.info("AbilityPro" + JSON.stringify(data.hapModulesInfo[0].abilitiesInfo[0].deviceTypes[0]));
+        console.info("AbilityPro" + JSON.stringify(data.hapModulesInfo[0].abilitiesInfo[0].deviceTypes[1]));
         expect(data.hapModulesInfo[0].abilitiesInfo[0].deviceTypes[0]).assertEqual("default");
         expect(data.hapModulesInfo[0].abilitiesInfo[0].deviceTypes[1]).assertEqual("tablet");
         expect(data.hapModulesInfo[0].abilitiesInfo[0].applicationInfo).assertEqual(null);
@@ -310,10 +314,44 @@ export default function getBundleInfoForSelf() {
         expect(data.hapModulesInfo[0].abilitiesInfo[0].windowSize.minWindowHeight).assertEqual(0);
         expect(data.hapModulesInfo[0].abilitiesInfo[1].name).assertEqual("ohos.acts.bundle.stage.test.MainAbility1");
         expect(data.hapModulesInfo[0].abilitiesInfo[1].launchType).assertEqual(bundle.LaunchType.STANDARD);
-        expect(data.hapModulesInfo[0].abilitiesInfo[2].name).assertEqual("ohos.acts.bundle.stage.test.MainAbility2");
-        expect(data.hapModulesInfo[0].abilitiesInfo[2].launchType).assertEqual(bundle.LaunchType.SPECIFIED);
+        expect(data.hapModulesInfo[0].abilitiesInfo[1].orientation).assertEqual(bundle.DisplayOrientation.LANDSCAPE);
+        expect(data.hapModulesInfo[0].abilitiesInfo[2].name).assertEqual("ohos.acts.bundle.stage.test.MainAbility10");
+        expect(data.hapModulesInfo[0].abilitiesInfo[2].orientation).assertEqual(bundle.DisplayOrientation.LOCKED);
+        expect(data.hapModulesInfo[0].abilitiesInfo[3].name).assertEqual("ohos.acts.bundle.stage.test.MainAbility2");
+        expect(data.hapModulesInfo[0].abilitiesInfo[3].launchType).assertEqual(bundle.LaunchType.SPECIFIED);
+        expect(data.hapModulesInfo[0].abilitiesInfo[3].orientation)
+          .assertEqual(bundle.DisplayOrientation.LANDSCAPE_INVERTED);
+        expect(data.hapModulesInfo[0].abilitiesInfo[4].name).assertEqual("ohos.acts.bundle.stage.test.MainAbility3");
+        expect(data.hapModulesInfo[0].abilitiesInfo[4].orientation)
+          .assertEqual(bundle.DisplayOrientation.PORTRAIT_INVERTED);
+        expect(data.hapModulesInfo[0].abilitiesInfo[5].name).assertEqual("ohos.acts.bundle.stage.test.MainAbility4");
+        expect(data.hapModulesInfo[0].abilitiesInfo[5].orientation)
+          .assertEqual(bundle.DisplayOrientation.AUTO_ROTATION);
+        expect(data.hapModulesInfo[0].abilitiesInfo[6].name).assertEqual("ohos.acts.bundle.stage.test.MainAbility5");
+        expect(data.hapModulesInfo[0].abilitiesInfo[6].orientation)
+          .assertEqual(bundle.DisplayOrientation.AUTO_ROTATION_LANDSCAPE);
+        expect(data.hapModulesInfo[0].abilitiesInfo[7].name).assertEqual("ohos.acts.bundle.stage.test.MainAbility6");
+        expect(data.hapModulesInfo[0].abilitiesInfo[7].orientation)
+          .assertEqual(bundle.DisplayOrientation.AUTO_ROTATION_PORTRAIT);
+        expect(data.hapModulesInfo[0].abilitiesInfo[8].name).assertEqual("ohos.acts.bundle.stage.test.MainAbility7");
+        expect(data.hapModulesInfo[0].abilitiesInfo[8].orientation)
+          .assertEqual(bundle.DisplayOrientation.AUTO_ROTATION_RESTRICTED);
+        expect(data.hapModulesInfo[0].abilitiesInfo[9].name).assertEqual("ohos.acts.bundle.stage.test.MainAbility8");
+        expect(data.hapModulesInfo[0].abilitiesInfo[9].orientation)
+          .assertEqual(bundle.DisplayOrientation.AUTO_ROTATION_LANDSCAPE_RESTRICTED);
+        expect(data.hapModulesInfo[0].abilitiesInfo[10].name).assertEqual("ohos.acts.bundle.stage.test.MainAbility9");
+        expect(data.hapModulesInfo[0].abilitiesInfo[10].orientation)
+          .assertEqual(bundle.DisplayOrientation.AUTO_ROTATION_PORTRAIT_RESTRICTED);
         checkCommonAbilityInfo(data.hapModulesInfo[0].abilitiesInfo[1])
         checkCommonAbilityInfo(data.hapModulesInfo[0].abilitiesInfo[2])
+        checkCommonAbilityInfo(data.hapModulesInfo[0].abilitiesInfo[3])
+        checkCommonAbilityInfo(data.hapModulesInfo[0].abilitiesInfo[4])
+        checkCommonAbilityInfo(data.hapModulesInfo[0].abilitiesInfo[5])
+        checkCommonAbilityInfo(data.hapModulesInfo[0].abilitiesInfo[6])
+        checkCommonAbilityInfo(data.hapModulesInfo[0].abilitiesInfo[7])
+        checkCommonAbilityInfo(data.hapModulesInfo[0].abilitiesInfo[8])
+        checkCommonAbilityInfo(data.hapModulesInfo[0].abilitiesInfo[9])
+        checkCommonAbilityInfo(data.hapModulesInfo[0].abilitiesInfo[10])
         expect(data.hapModulesInfo[0].extensionAbilitiesInfo.length).assertEqual(0);
         expect(data.hapModulesInfo[0].metadata.length).assertEqual(0);
         expect(data.reqPermissionDetails.length).assertEqual(0);
@@ -337,11 +375,10 @@ export default function getBundleInfoForSelf() {
         bundle.BundleFlag.GET_BUNDLE_INFO_WITH_HAP_MODULE | bundle.BundleFlag.GET_BUNDLE_INFO_WITH_ABILITY,
         (err, data) => {
           console.info("AbilityCal" + JSON.stringify(data.hapModulesInfo[0].abilitiesInfo[0]));
-          console.info("AbilityCal" + JSON.stringify(data.hapModulesInfo[0].abilitiesInfo[1]));
           checkCommonBundleInfo(data);
           checkCommonHapModuleInfo(data);
           expect(data.appInfo).assertEqual(null);
-          expect(data.hapModulesInfo[0].abilitiesInfo.length).assertEqual(3);
+          expect(data.hapModulesInfo[0].abilitiesInfo.length).assertEqual(11);
           expect(data.hapModulesInfo[0].abilitiesInfo[0].bundleName).assertEqual(BUNDLE_NAME);
           expect(data.hapModulesInfo[0].abilitiesInfo[0].moduleName).assertEqual("testModule");
           expect(data.hapModulesInfo[0].abilitiesInfo[0].name).assertEqual("ohos.acts.bundle.stage.test.MainAbility");
@@ -354,13 +391,15 @@ export default function getBundleInfoForSelf() {
           expect(data.hapModulesInfo[0].abilitiesInfo[0].process).assertEqual("");
           expect(data.hapModulesInfo[0].abilitiesInfo[0].isVisible).assertTrue();
           expect(data.hapModulesInfo[0].abilitiesInfo[0].type).assertEqual(1);
-          expect(data.hapModulesInfo[0].abilitiesInfo[0].orientation).assertEqual(2);
+          expect(data.hapModulesInfo[0].abilitiesInfo[0].orientation).assertEqual(bundle.DisplayOrientation.PORTRAIT);
           expect(data.hapModulesInfo[0].abilitiesInfo[0].launchType).assertEqual(bundle.LaunchType.SINGLETON);
           expect(data.hapModulesInfo[0].abilitiesInfo[0].permissions.length).assertEqual(0);
           expect(data.hapModulesInfo[0].abilitiesInfo[0].readPermission).assertEqual("");
           expect(data.hapModulesInfo[0].abilitiesInfo[0].writePermission).assertEqual("");
           expect(data.hapModulesInfo[0].abilitiesInfo[0].uri).assertEqual("");
           expect(data.hapModulesInfo[0].abilitiesInfo[0].deviceTypes.length).assertEqual(2);
+          console.info("AbilityPro" + JSON.stringify(data.hapModulesInfo[0].abilitiesInfo[0].deviceTypes[0]));
+          console.info("AbilityPro" + JSON.stringify(data.hapModulesInfo[0].abilitiesInfo[0].deviceTypes[1]));
           expect(data.hapModulesInfo[0].abilitiesInfo[0].deviceTypes[0]).assertEqual("default");
           expect(data.hapModulesInfo[0].abilitiesInfo[0].deviceTypes[1]).assertEqual("tablet");
           expect(data.hapModulesInfo[0].abilitiesInfo[0].applicationInfo).assertEqual(null);
@@ -381,10 +420,44 @@ export default function getBundleInfoForSelf() {
           expect(data.hapModulesInfo[0].abilitiesInfo[0].windowSize.minWindowHeight).assertEqual(0);
           expect(data.hapModulesInfo[0].abilitiesInfo[1].name).assertEqual("ohos.acts.bundle.stage.test.MainAbility1");
           expect(data.hapModulesInfo[0].abilitiesInfo[1].launchType).assertEqual(bundle.LaunchType.STANDARD);
-          expect(data.hapModulesInfo[0].abilitiesInfo[2].name).assertEqual("ohos.acts.bundle.stage.test.MainAbility2");
-          expect(data.hapModulesInfo[0].abilitiesInfo[2].launchType).assertEqual(bundle.LaunchType.SPECIFIED);
+          expect(data.hapModulesInfo[0].abilitiesInfo[1].orientation).assertEqual(bundle.DisplayOrientation.LANDSCAPE);
+          expect(data.hapModulesInfo[0].abilitiesInfo[2].name).assertEqual("ohos.acts.bundle.stage.test.MainAbility10");
+          expect(data.hapModulesInfo[0].abilitiesInfo[2].orientation).assertEqual(bundle.DisplayOrientation.LOCKED);
+          expect(data.hapModulesInfo[0].abilitiesInfo[3].name).assertEqual("ohos.acts.bundle.stage.test.MainAbility2");
+          expect(data.hapModulesInfo[0].abilitiesInfo[3].launchType).assertEqual(bundle.LaunchType.SPECIFIED);
+          expect(data.hapModulesInfo[0].abilitiesInfo[3].orientation)
+            .assertEqual(bundle.DisplayOrientation.LANDSCAPE_INVERTED);
+          expect(data.hapModulesInfo[0].abilitiesInfo[4].name).assertEqual("ohos.acts.bundle.stage.test.MainAbility3");
+          expect(data.hapModulesInfo[0].abilitiesInfo[4].orientation)
+            .assertEqual(bundle.DisplayOrientation.PORTRAIT_INVERTED);
+          expect(data.hapModulesInfo[0].abilitiesInfo[5].name).assertEqual("ohos.acts.bundle.stage.test.MainAbility4");
+          expect(data.hapModulesInfo[0].abilitiesInfo[5].orientation)
+            .assertEqual(bundle.DisplayOrientation.AUTO_ROTATION);
+          expect(data.hapModulesInfo[0].abilitiesInfo[6].name).assertEqual("ohos.acts.bundle.stage.test.MainAbility5");
+          expect(data.hapModulesInfo[0].abilitiesInfo[6].orientation)
+            .assertEqual(bundle.DisplayOrientation.AUTO_ROTATION_LANDSCAPE);
+          expect(data.hapModulesInfo[0].abilitiesInfo[7].name).assertEqual("ohos.acts.bundle.stage.test.MainAbility6");
+          expect(data.hapModulesInfo[0].abilitiesInfo[7].orientation)
+            .assertEqual(bundle.DisplayOrientation.AUTO_ROTATION_PORTRAIT);
+          expect(data.hapModulesInfo[0].abilitiesInfo[8].name).assertEqual("ohos.acts.bundle.stage.test.MainAbility7");
+          expect(data.hapModulesInfo[0].abilitiesInfo[8].orientation)
+            .assertEqual(bundle.DisplayOrientation.AUTO_ROTATION_RESTRICTED);
+          expect(data.hapModulesInfo[0].abilitiesInfo[9].name).assertEqual("ohos.acts.bundle.stage.test.MainAbility8");
+          expect(data.hapModulesInfo[0].abilitiesInfo[9].orientation)
+            .assertEqual(bundle.DisplayOrientation.AUTO_ROTATION_LANDSCAPE_RESTRICTED);
+          expect(data.hapModulesInfo[0].abilitiesInfo[10].name).assertEqual("ohos.acts.bundle.stage.test.MainAbility9");
+          expect(data.hapModulesInfo[0].abilitiesInfo[10].orientation)
+            .assertEqual(bundle.DisplayOrientation.AUTO_ROTATION_PORTRAIT_RESTRICTED);
           checkCommonAbilityInfo(data.hapModulesInfo[0].abilitiesInfo[1])
           checkCommonAbilityInfo(data.hapModulesInfo[0].abilitiesInfo[2])
+          checkCommonAbilityInfo(data.hapModulesInfo[0].abilitiesInfo[3])
+          checkCommonAbilityInfo(data.hapModulesInfo[0].abilitiesInfo[4])
+          checkCommonAbilityInfo(data.hapModulesInfo[0].abilitiesInfo[5])
+          checkCommonAbilityInfo(data.hapModulesInfo[0].abilitiesInfo[6])
+          checkCommonAbilityInfo(data.hapModulesInfo[0].abilitiesInfo[7])
+          checkCommonAbilityInfo(data.hapModulesInfo[0].abilitiesInfo[8])
+          checkCommonAbilityInfo(data.hapModulesInfo[0].abilitiesInfo[9])
+          checkCommonAbilityInfo(data.hapModulesInfo[0].abilitiesInfo[10])
           expect(data.hapModulesInfo[0].extensionAbilitiesInfo.length).assertEqual(0);
           expect(data.hapModulesInfo[0].metadata.length).assertEqual(0);
           expect(data.reqPermissionDetails.length).assertEqual(0);
@@ -639,6 +712,7 @@ export default function getBundleInfoForSelf() {
           expect(data.permissionGrantStates.length).assertEqual(0);
           expect(data.signatureInfo).assertEqual(null);
           expect(err).assertEqual(null);
+          expect(bundle.ExtensionAbilityType.UNSPECIFIED).assertEqual(255);
           done();
         })
     })
@@ -974,6 +1048,8 @@ export default function getBundleInfoForSelf() {
       expect(data.hapModulesInfo[0].descriptionId).assertLarger(0);
       expect(data.hapModulesInfo[0].mainElementName).assertEqual(ABILITY_NAME);
       expect(data.hapModulesInfo[0].deviceTypes.length).assertEqual(2);
+      console.info("checkComm" + JSON.stringify(data.hapModulesInfo[0].deviceTypes[0]));
+      console.info("checkComm" + JSON.stringify(data.hapModulesInfo[0].deviceTypes[1]));
       expect(data.hapModulesInfo[0].deviceTypes[0]).assertEqual("default");
       expect(data.hapModulesInfo[0].deviceTypes[1]).assertEqual("tablet");
       expect(data.hapModulesInfo[0].installationFree).assertFalse();
@@ -994,12 +1070,13 @@ export default function getBundleInfoForSelf() {
       expect(data.process).assertEqual("");
       expect(data.isVisible).assertTrue();
       expect(data.type).assertEqual(1);
-      expect(data.orientation).assertEqual(2);
       expect(data.permissions.length).assertEqual(0);
       expect(data.readPermission).assertEqual("");
       expect(data.writePermission).assertEqual("");
       expect(data.uri).assertEqual("");
       expect(data.deviceTypes.length).assertEqual(2);
+      console.info("checkComm" + JSON.stringify(data.deviceTypes[0]));
+      console.info("checkComm" + JSON.stringify(data.deviceTypes[1]));
       expect(data.deviceTypes[0]).assertEqual("default");
       expect(data.deviceTypes[1]).assertEqual("tablet");
       expect(data.applicationInfo).assertEqual(null);
