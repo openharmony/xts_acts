@@ -68,7 +68,7 @@ class MyAuthenticator extends account_appAccount.Authenticator {
         let newAccountName = "createNewAccountName"
         appAccountMgr.createAccount(newAccountName, (err) => {
             let authResult = {
-                accountInfo: {
+                account: {
                     name: newAccountName,
                     owner: "com.example.accountauthenticator"
                 }
@@ -80,7 +80,7 @@ class MyAuthenticator extends account_appAccount.Authenticator {
     auth(name, authType, options, callback) {
         console.log(TAG + "name: " + name + "authType: " + authType + ", options: " + JSON.stringify(options))
         let authResult = {
-            accountInfo: {
+            account: {
                 name: name,
                 owner: "com.example.accountauthenticator"
             },
