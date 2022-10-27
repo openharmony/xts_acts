@@ -1559,12 +1559,16 @@ describe('rdbResultSetTest', function () {
     it('testIsColumnNull0003', 0, async function (done) {
         console.info(TAG + '************* testIsColumnNull0003 start *************');
         {
+            let errInfo = undefined;
             let predicates = await new dataRdb.RdbPredicates('test')
             let resultSet = await rdbStore.query(predicates)
-            {
+            try{
                 resultSet.goToRow(5)
                 expect(false).assertEqual(resultSet.isColumnNull(2))
+            }catch(err){
+                errInfo = err
             }
+            expect(errInfo.code).assertEqual("14800012")
             resultSet = null;
             done();
             console.info(TAG + '************* testIsColumnNull0003 end *************');
@@ -1653,15 +1657,20 @@ describe('rdbResultSetTest', function () {
      */
     it('testGetColumnIndex0004', 0, async function (done) {
         console.info(TAG + '************* testGetColumnIndex0004 start *************');
-        {
-            let predicates = await new dataRdb.RdbPredicates('test')
-            let resultSet = await rdbStore.query(predicates)
-            expect(-1).assertEqual(resultSet.getColumnIndex(''))
-
-            resultSet = null;
-            done();
-            console.info(TAG + '************* testGetColumnIndex0004 end *************');
+        let errInfo = undefined;
+        let predicates = await new dataRdb.RdbPredicates('test')
+        let resultSet = await rdbStore.query(predicates)
+        try{
+            let resultSetresult = resultSet.getColumnIndex('')
+            expect(-1).assertEqual(resultSetresult)
+        }catch(err){
+            errInfo = err
         }
+        expect(errInfo.code).assertEqual("401")
+        resultSet = null;
+        done();
+        console.info(TAG + '************* testGetColumnIndex0004 end *************');
+        
     })
 
     /**
