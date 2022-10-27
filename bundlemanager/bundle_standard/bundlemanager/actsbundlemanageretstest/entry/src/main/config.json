@@ -19,8 +19,8 @@
     "srcPath": "",
     "mainAbility": "com.open.harmony.packagemag.MainAbility",
     "deviceType": [
-      "tablet",
-      "default"
+      "default",
+      "tablet"
     ],
     "reqPermissions": [
       {

@@ -31,16 +31,16 @@ export default function getBundleInfoForSelf() {
       ).then(data => {
         console.info("AbilityPro" + JSON.stringify(data.hapModulesInfo[0].abilitiesInfo[0]));
         expect(data.hapModulesInfo[0].abilitiesInfo.length).assertEqual(5);
-        expect(data.hapModulesInfo[0].abilitiesInfo[0].type).assertEqual(3);
-        expect(data.hapModulesInfo[0].abilitiesInfo[0].orientation).assertEqual(0);
-        expect(data.hapModulesInfo[0].abilitiesInfo[1].type).assertEqual(1);
-        expect(data.hapModulesInfo[0].abilitiesInfo[1].orientation).assertEqual(3);
-        expect(data.hapModulesInfo[0].abilitiesInfo[2].type).assertEqual(1);
-        expect(data.hapModulesInfo[0].abilitiesInfo[2].orientation).assertEqual(0);
-        expect(data.hapModulesInfo[0].abilitiesInfo[3].type).assertEqual(2);
-        expect(data.hapModulesInfo[0].abilitiesInfo[3].orientation).assertEqual(0);
-        expect(data.hapModulesInfo[0].abilitiesInfo[4].type).assertEqual(1);
-        expect(data.hapModulesInfo[0].abilitiesInfo[4].orientation).assertEqual(0);
+        expect(data.hapModulesInfo[0].abilitiesInfo[0].type).assertEqual(bundle.AbilityType.DATA);
+        expect(data.hapModulesInfo[0].abilitiesInfo[0].orientation).assertEqual(bundle.DisplayOrientation.UNSPECIFIED);
+        expect(data.hapModulesInfo[0].abilitiesInfo[1].type).assertEqual(bundle.AbilityType.PAGE);
+        expect(data.hapModulesInfo[0].abilitiesInfo[1].orientation).assertEqual(bundle.DisplayOrientation.FOLLOW_RECENT);
+        expect(data.hapModulesInfo[0].abilitiesInfo[2].type).assertEqual(bundle.AbilityType.PAGE);
+        expect(data.hapModulesInfo[0].abilitiesInfo[2].orientation).assertEqual(bundle.DisplayOrientation.UNSPECIFIED);
+        expect(data.hapModulesInfo[0].abilitiesInfo[3].type).assertEqual(bundle.AbilityType.SERVICE);
+        expect(data.hapModulesInfo[0].abilitiesInfo[3].orientation).assertEqual(bundle.DisplayOrientation.UNSPECIFIED);
+        expect(data.hapModulesInfo[0].abilitiesInfo[4].type).assertEqual(bundle.AbilityType.PAGE);
+        expect(data.hapModulesInfo[0].abilitiesInfo[4].orientation).assertEqual(bundle.DisplayOrientation.UNSPECIFIED);
         console.info("AbilityPro11" + JSON.stringify(data.hapModulesInfo[0].abilitiesInfo[0]));
         done();
       }).catch(err => {
