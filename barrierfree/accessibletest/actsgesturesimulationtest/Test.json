@@ -19,6 +19,9 @@
         {
         "type": "ShellKit",
         "run-command": [
+            "power-shell wakeup",
+            "power-shell setmode 602",
+            "uinput -T -m 500 1000 500 500 400",
             "param set persist.ace.testmode.enabled 1"
         ],
         "teardown-command":[

@@ -19,6 +19,8 @@
         {
             "type": "ShellKit",
             "run-command": [
+                "power-shell wakeup",
+                "power-shell setmode 602",
                 "param set persist.ace.testmode.enabled 1"
             ]
         }
