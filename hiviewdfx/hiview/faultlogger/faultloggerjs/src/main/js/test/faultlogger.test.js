@@ -280,7 +280,7 @@ describe("FaultlogJsTest", function () {
     /**
      *
      * @tc.name: DFX_DFR_Faultlogger_Interface_0600
-     * @tc.desc: 检验函数参数输入错误时程序是否会崩溃
+     * @tc.desc: 检验query函数正常入参
      * @tc.require: AR000GICT2
      */
     it('DFX_DFR_Faultlogger_Interface_0600', 0, function () {
@@ -288,6 +288,7 @@ describe("FaultlogJsTest", function () {
         try {
             let ret = faultlogger.query("faultloggertestsummary06");
             console.info("DFX_DFR_Faultlogger_Interface_0600 ret == " + ret);
+            expect(ret).assertTrue();
             return;
         } catch(err) {
             console.info(err.code);
@@ -299,7 +300,7 @@ describe("FaultlogJsTest", function () {
     /**
      *
      * @tc.name: DFX_DFR_Faultlogger_Interface_0700
-     * @tc.desc: 检验函数参数输入错误时程序是否会崩溃
+     * @tc.desc: 检验query函数入参数量为2时程序是否会崩溃
      * @tc.require: AR000GICT2
      */
     it('DFX_DFR_Faultlogger_Interface_0700', 0, function () {
@@ -318,7 +319,7 @@ describe("FaultlogJsTest", function () {
     /**
      *
      * @tc.name: DFX_DFR_Faultlogger_Interface_0800
-     * @tc.desc: 检验函数参数输入错误时程序是否会崩溃
+     * @tc.desc: 检验query函数入参为空时程序是否会崩溃
      * @tc.require: AR000GICT2
      */
     it('DFX_DFR_Faultlogger_Interface_0800', 0, function () {
@@ -364,7 +365,7 @@ describe("FaultlogJsTest", function () {
             await msleep(1000);
 
             console.info("--------DFX_DFR_Faultlogger_Interface_0900 4" + "----------");
-            let ret = await faultlogger.querySelfFaultLog(faultlogger.FaultType.JS_CRASH);
+            let ret = await faultlogger.query(faultlogger.FaultType.JS_CRASH);
             console.info("DFX_DFR_Faultlogger_Interface_0900 ret == " + ret.length);
             if (ret.length > 0) {
                 expect(true).assertTrue();
@@ -406,7 +407,7 @@ describe("FaultlogJsTest", function () {
             await msleep(1000);
 
             console.info("--------DFX_DFR_Faultlogger_Interface_1000 4" + "----------");
-            let ret = await faultlogger.querySelfFaultLog(faultlogger.FaultType.APP_FREEZE);
+            let ret = await faultlogger.query(faultlogger.FaultType.APP_FREEZE);
             console.info("DFX_DFR_Faultlogger_Interface_1000 ret == " + ret.length);
             expect(ret.length).assertEqual(loopTimes);
             for (let i = 0; i < loopTimes; i++) {
@@ -469,7 +470,7 @@ describe("FaultlogJsTest", function () {
                 }
                 done();
             }
-            faultlogger.querySelfFaultLog(faultlogger.FaultType.CPP_CRASH, queryFaultLogCallback);
+            faultlogger.query(faultlogger.FaultType.CPP_CRASH, queryFaultLogCallback);
             return;
         } catch (err) {
             console.info(err);
