@@ -4,8 +4,8 @@
         "type": "OHJSUnitTest",
         "test-timeout": "300000",
         "shell-timeout": "300000",
-        "bundle-name": "com.huawei.keystoretest",
-        "package-name": "com.huawei.keystoretest",
+        "bundle-name": "com.example.keystoretest",
+        "package-name": "com.example.keystoretest",
         "testcase-timeout": 1500000
     },
     "kits": [
