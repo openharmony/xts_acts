@@ -96,6 +96,7 @@ describe('bluetoothhostTest1', function() {
     it('SUB_COMMUNICATION_BLUETOOTH_BR_LocalName_0100', 0, async function (done) {
         let result = bluetooth.setLocalName(Btname.LETTERS_TEST);
         expect(result).assertTrue();
+        await sleep(1000);
         let getNewName = bluetooth.getLocalName();
         console.info('[bluetooth_js] LocalName_0100 NewName = '+ JSON.stringify(getNewName));
         expect(true).assertEqual(Btname.LETTERS_TEST == getNewName);
@@ -114,6 +115,7 @@ describe('bluetoothhostTest1', function() {
     it('SUB_COMMUNICATION_BLUETOOTH_BR_LocalName_0200', 0, async function (done) {
         let result = bluetooth.setLocalName(Btname.CHINESES_TEST);
         expect(result).assertTrue();
+        await sleep(1000);
         let getNewName = bluetooth.getLocalName();
         console.info('[bluetooth_js] LocalName_0200 NewName = '+ JSON.stringify(getNewName));
         expect(true).assertEqual(Btname.CHINESES_TEST == getNewName);
@@ -132,6 +134,7 @@ describe('bluetoothhostTest1', function() {
     it('SUB_COMMUNICATION_BLUETOOTH_BR_LocalName_0300', 0, async function (done) {
         let result = bluetooth.setLocalName(Btname.NUM_TEST);
         expect(result).assertTrue();
+        await sleep(1000);
         let getNewName = bluetooth.getLocalName();
         console.info('[bluetooth_js] LocalName_0300 NewName = '+ JSON.stringify(getNewName));
         expect(true).assertEqual(Btname.NUM_TEST == getNewName);
@@ -150,6 +153,7 @@ describe('bluetoothhostTest1', function() {
     it('SUB_COMMUNICATION_BLUETOOTH_BR_LocalName_0400', 0, async function (done) {
         let result = bluetooth.setLocalName(Btname.SYMBOL_TEST);
         expect(result).assertTrue();
+        await sleep(1000);
         let getNewName = bluetooth.getLocalName();
         console.info('[bluetooth_js] LocalName_0400 NewName = '+ JSON.stringify(getNewName));
         expect(true).assertEqual(Btname.SYMBOL_TEST == getNewName);
@@ -169,6 +173,7 @@ describe('bluetoothhostTest1', function() {
         let newName = 'my bluetooth';
         let result = bluetooth.setLocalName(newName);
         expect(result).assertTrue();
+        await sleep(1000);
         let getNewName = bluetooth.getLocalName();
         console.info('[bluetooth_js] LocalName_0500 NewName = '+ JSON.stringify(getNewName));
         expect(true).assertEqual(newName == getNewName);
@@ -188,6 +193,7 @@ describe('bluetoothhostTest1', function() {
         let newName = 'bluetooth1234ABCDEFGH';
         let result = bluetooth.setLocalName(newName);
         expect(result).assertTrue();
+        await sleep(1000);
         let getNewName = bluetooth.getLocalName();
         console.info('[bluetooth_js] LocalName_0600 NewName = '+ JSON.stringify(getNewName));
         expect(true).assertEqual(newName == getNewName);
@@ -207,6 +213,7 @@ describe('bluetoothhostTest1', function() {
         let newName = '蓝牙设备bluetooth';
         let result = bluetooth.setLocalName(newName);
         expect(result).assertTrue();
+        await sleep(1000);
         let getNewName = bluetooth.getLocalName();
         console.info('[bluetooth_js] LocalName_0700 NewName = '+ JSON.stringify(getNewName));
         expect(true).assertEqual(newName == getNewName);
@@ -225,6 +232,7 @@ describe('bluetoothhostTest1', function() {
      it('SUB_COMMUNICATION_BLUETOOTH_BR_LocalName_0800', 0, async function (done) {
         let result = bluetooth.setLocalName(Btname.MIXES4);
         expect(result).assertTrue();
+        await sleep(1000);
         let getNewName = bluetooth.getLocalName();
         console.info('[bluetooth_js] LocalName_0800 NewName = '+ JSON.stringify(getNewName));
         expect(true).assertEqual(Btname.MIXES4 == getNewName);
@@ -243,6 +251,7 @@ describe('bluetoothhostTest1', function() {
     it('SUB_COMMUNICATION_BLUETOOTH_BR_LocalName_0900', 0, async function (done) {
         let result = bluetooth.setLocalName(Btname.MIXES2);
         expect(result).assertTrue();
+        await sleep(1000);
         let getNewName = bluetooth.getLocalName();
         console.info('[bluetooth_js] LocalName_0900 NewName = '+ JSON.stringify(getNewName));
         expect(true).assertEqual(Btname.MIXES2 == getNewName);
@@ -261,6 +270,7 @@ describe('bluetoothhostTest1', function() {
     it('SUB_COMMUNICATION_BLUETOOTH_BR_LocalName_1000', 0, async function (done) {
         let result = bluetooth.setLocalName(Btname.MIXES3);
         expect(result).assertTrue();
+        await sleep(1000);
         let getNewName = bluetooth.getLocalName();
         console.info('[bluetooth_js] LocalName_1000 NewName = '+ JSON.stringify(getNewName));
         expect(true).assertEqual(Btname.MIXES3 == getNewName);
@@ -280,6 +290,7 @@ describe('bluetoothhostTest1', function() {
         let newName = '蓝牙设备123';
         let result = bluetooth.setLocalName(newName);
         expect(result).assertTrue();
+        await sleep(1000);
         let getNewName = bluetooth.getLocalName();
         console.info('[bluetooth_js] LocalName_1100 NewName = '+ JSON.stringify(getNewName));
         expect(true).assertEqual(newName == getNewName);
@@ -299,6 +310,7 @@ describe('bluetoothhostTest1', function() {
         let newName = '蓝牙设备bluetooth12';
         let result = bluetooth.setLocalName(newName);
         expect(result).assertTrue();
+        await sleep(1000);
         let getNewName = bluetooth.getLocalName();
         console.info('[bluetooth_js] LocalName1200 NewName = '+ JSON.stringify(getNewName));
         expect(true).assertEqual(newName == getNewName);
@@ -317,6 +329,7 @@ describe('bluetoothhostTest1', function() {
       it('SUB_COMMUNICATION_BLUETOOTH_BR_LocalName_1300', 0, async function (done) {
         let result = bluetooth.setLocalName(Btname.MIXES6);
         expect(result).assertTrue();
+        await sleep(1000);
         let getNewName = bluetooth.getLocalName();
         console.info('[bluetooth_js] LocalName_1300 NewName = '+ JSON.stringify(getNewName));
         expect(true).assertEqual(Btname.MIXES6 == getNewName);
@@ -335,6 +348,7 @@ describe('bluetoothhostTest1', function() {
     it('SUB_COMMUNICATION_BLUETOOTH_BR_LocalName_1400', 0, async function (done) {
         let result = bluetooth.setLocalName(Btname.MIXES);
         expect(result).assertTrue();
+        await sleep(1000);
         let getNewName = bluetooth.getLocalName();
         console.info('[bluetooth_js] LocalName_1400 NewName = '+ JSON.stringify(getNewName));
         expect(true).assertEqual(Btname.MIXES == getNewName);
@@ -354,6 +368,7 @@ describe('bluetoothhostTest1', function() {
     it('SUB_COMMUNICATION_BLUETOOTH_BR_LocalName_1500', 0, async function (done) {
         let result = bluetooth.setLocalName(Btname.MIXES5);
         expect(result).assertTrue();
+        await sleep(1000);
         let getNewName = bluetooth.getLocalName();
         console.info('[bluetooth_js] LocalName_1500 NewName = '+ JSON.stringify(getNewName));
         expect(true).assertEqual(Btname.MIXES5 == getNewName);
@@ -372,6 +387,7 @@ describe('bluetoothhostTest1', function() {
     it('SUB_COMMUNICATION_BLUETOOTH_BR_LocalName_1600', 0, async function (done) {
         let result = bluetooth.setLocalName(Btname.NUM_TEST1);
         expect(result).assertTrue();
+        await sleep(1000);
         let getNewName = bluetooth.getLocalName();
         console.info('[bluetooth_js] LocalName_1600 NewName = '+ JSON.stringify(getNewName));
         expect(true).assertEqual(Btname.NUM_TEST1 == getNewName);
@@ -390,6 +406,7 @@ describe('bluetoothhostTest1', function() {
     it('SUB_COMMUNICATION_BLUETOOTH_BR_LocalName_1700', 0, async function (done) {
         let result = bluetooth.setLocalName(Btname.MIXES7);
         expect(result).assertTrue();
+        await sleep(1000);
         let getNewName = bluetooth.getLocalName();
         console.info('[bluetooth_js] LocalName_1700 NewName = '+ JSON.stringify(getNewName));
         expect(false).assertEqual(Btname.MIXES7 == getNewName);
@@ -409,6 +426,7 @@ describe('bluetoothhostTest1', function() {
         let name = bluetooth.getLocalName();
         let set = bluetooth.setLocalName('');
         expect(set).assertFalse();
+        await sleep(1000);
         let localName = bluetooth.getLocalName();
         expect(true).assertTrue(localName==name);
         console.info('[bluetooth_js] getLocalName1800=' + JSON.stringify(localName));
@@ -431,11 +449,13 @@ describe('bluetoothhostTest1', function() {
         let newName = 'bluetoothtest';
         let result = bluetooth.setLocalName(newName);
         expect(result).assertTrue();
+        await sleep(1000);
         let getNewName = bluetooth.getLocalName();
         console.info('[bluetooth_js] LocalName_1900 NewName = '+ JSON.stringify(getNewName));
         expect(true).assertEqual(newName == getNewName);
         let result1=bluetooth.setLocalName(localName);
         expect(result1).assertTrue();
+        await sleep(1000);
         let getLocalName = bluetooth.getLocalName();
         console.info('[bluetooth_js] LocalNam1900 localName ='+ JSON.stringify(getLocalName));
         expect(true).assertEqual(localName == getLocalName);
@@ -444,5 +464,6 @@ describe('bluetoothhostTest1', function() {
 
 })
 }
+
 
 
