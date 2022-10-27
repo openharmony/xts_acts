@@ -30,7 +30,7 @@ export default function ActsAccountChangeOnOff() {
                 console.info(`sleep #{time} over ...`)
             })
         }
-        beforeAll(async function (done) {            
+        beforeAll(async function (done) { 
             done();
         });
 
