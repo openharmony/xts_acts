@@ -333,6 +333,7 @@ int32_t __attribute__((weak)) HksStoreKeyBlob(const struct HksBlob *processName,
     (void)storageType;
     (void)keyBlob;
     return HKS_SUCCESS;
+}
 
 static void ExecHksModifyKeyTest001(void const *argument)
 {
