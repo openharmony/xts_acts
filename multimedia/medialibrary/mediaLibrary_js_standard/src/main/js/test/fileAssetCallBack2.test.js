@@ -137,16 +137,10 @@ describe('fileAssetCallBack2.test.js', async function () {
     it('SUB_MEDIA_FILEASSET_commitModify_callback_003', 0, async function (done) {
         try {
             const path1 = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_IMAGE);
-
-            const path2 = await media.getPublicDirectory(mediaLibrary.DirectoryType.DIR_VIDEO);
-
             const fetchFileResult = await media.getFileAssets(imagesfetchOp);
             const asset = await fetchFileResult.getFirstObject();
             let relativePath = asset.relativePath;
-            let newrelativePath = path1;
-            if (relativePath == path1) {
-                newrelativePath = path2;
-            }
+            let newrelativePath = path1 + "new/";
 
             asset.relativePath = newrelativePath;
             const id = asset.id;
