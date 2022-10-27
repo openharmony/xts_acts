@@ -593,7 +593,7 @@ int32_t BaseTestCipher(uint32_t times, uint32_t index, uint32_t performTimes)
         g_testCipherParams[index].genKeyParamSetParams.keyStorageFlag == HKS_STORAGE_TEMP) {
         ret = GenerateLocalRandomKey(&keyAlias, &g_testCipherParams[index].localKeyParams);
     } else {
-        ret = GenerateKey(&keyAlias, &g_testCipherParams[index].keyAliasParams,
+        ret = HuksGenerateKey(&keyAlias, &g_testCipherParams[index].keyAliasParams,
             &g_testCipherParams[index].genKeyParamSetParams, &g_testCipherParams[index].genKeyParamSetParamsOut);
     }
     HKS_TEST_ASSERT(ret == 0);
@@ -648,7 +648,7 @@ int32_t BaseTestEncrypt(uint32_t times, uint32_t index, uint32_t performTimes)
         ret = GenerateLocalRandomKey(&keyAlias, &g_testEncryptParams[index].localKeyParams);
     } else {
         if (g_testEncryptParams[index].keyAliasParams.blobExist) {
-            ret = GenerateKey(&keyAlias, &g_testEncryptParams[index].keyAliasParams,
+            ret = HuksGenerateKey(&keyAlias, &g_testEncryptParams[index].keyAliasParams,
                 &g_testEncryptParams[index].genKeyParamSetParams, NULL);
         } else {
             ret = TestConstuctBlob(&keyAlias,
@@ -700,7 +700,7 @@ int32_t BaseTestDecrypt(uint32_t times, uint32_t index, uint32_t performTimes)
         ret = GenerateLocalRandomKey(&keyAlias, &g_testDecryptParams[index].localKeyParams);
     } else {
         if (g_testDecryptParams[index].keyAliasParams.blobExist) {
-            ret = GenerateKey(&keyAlias, &g_testDecryptParams[index].keyAliasParams,
+            ret = HuksGenerateKey(&keyAlias, &g_testDecryptParams[index].keyAliasParams,
                 &g_testDecryptParams[index].genKeyParamSetParams, NULL);
         } else {
             ret = TestConstuctBlob(&keyAlias,

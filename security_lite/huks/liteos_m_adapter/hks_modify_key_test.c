@@ -30,6 +30,8 @@
 #include "cmsis_os2.h"
 #include "ohos_types.h"
 
+#include <unistd.h>
+
 #define DEFAULT_AES_CIPHER_PLAIN_SIZE 1000
 #define AES_DEFAULT_GCM_NONCE_LENGTH 12
 #define AES_DEFAULT_AAD_LEN 4

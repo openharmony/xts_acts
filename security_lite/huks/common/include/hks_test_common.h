@@ -412,7 +412,7 @@ int32_t TestConstructHashParamSet(
     bool paramSetExist,
     bool setDigest, uint32_t digest);
 
-int32_t GenerateKey(struct HksBlob **keyAlias, const struct HksTestBlobParams *keyAliasParams,
+int32_t HuksGenerateKey(struct HksBlob **keyAlias, const struct HksTestBlobParams *keyAliasParams,
     const struct HksTestGenKeyParamsParamSet *genKeyParamSetParams,
     const struct HksTestGenKeyParamsParamSetOut *genKeyParamSetParamsOut);
 

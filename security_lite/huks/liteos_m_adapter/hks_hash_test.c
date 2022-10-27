@@ -28,6 +28,8 @@
 #include "cmsis_os2.h"
 #include "ohos_types.h"
 
+#include <unistd.h>
+
 #define DEFAULT_SRC_DATA_SIZE 200
 #define DIGEST_SHA256_HASH_SIZE 32
 #define TEST_TASK_STACK_SIZE      0x2000
