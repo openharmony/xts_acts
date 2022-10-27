@@ -64,8 +64,10 @@ public:
     ADecEncNdkSample() = default;
     ~ADecEncNdkSample();
 
-    struct OH_AVCodec* CreateAudioDecoder(std::string mimetype);
+    struct OH_AVCodec* CreateAudioDecoderByMime(std::string mimetype);
+    struct OH_AVCodec* CreateAudioDecoderByName(std::string name);
     int32_t ConfigureDec(struct OH_AVFormat *format);
+    int32_t SetParameterDec(struct OH_AVFormat *format);
     int32_t PrepareDec();
     int32_t StartDec();
     int32_t StopDec();
@@ -73,8 +75,10 @@ public:
     int32_t ResetDec();
     int32_t ReleaseDec();
 
-    struct OH_AVCodec* CreateAudioEncoder(std::string mimetype);
+    struct OH_AVCodec* CreateAudioEncoderByMime(std::string mimetype);
+    struct OH_AVCodec* CreateAudioEncoderByName(std::string name);
     int32_t ConfigureEnc(struct OH_AVFormat *format);
+    int32_t SetParameterEnc(struct OH_AVFormat *format);
     int32_t PrepareEnc();
     int32_t StartEnc();
     int32_t StopEnc();
