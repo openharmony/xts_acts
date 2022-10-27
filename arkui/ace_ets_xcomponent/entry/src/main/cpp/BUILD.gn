@@ -36,9 +36,7 @@ ohos_shared_library("nativerender") {
     "./render/plugin_render.cpp",
   ]
 
-  if (!(product_name == "m40")) {
-    stl = "c++_shared"
-  }
+  stl = "c++_shared"
 
   include_dirs = [
     ".",
