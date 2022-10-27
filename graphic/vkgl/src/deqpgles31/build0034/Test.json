@@ -21,7 +21,10 @@
             ],
             "push": [
                 "ActsDeqpgles31TestSuite0034->/data/local/tmp/ActsDeqpgles31TestSuite0034",
+                "../../../common/common/libdeqp_ohos_platform.z.so->/system/lib",
                 "../../../common/common/librosen_context.z.so->/system/lib",
+                "../../../graphic/graphic_standard/libdeqp_SPIRV.z.so->/system/lib",
+                "../../../graphic/graphic_standard/libdeqp_SPVRemapper.z.so->/system/lib",
                 "../../../../../test/xts/acts/graphic/vkgl/data/gl_cts.tar.gz->/data/local/tmp/gl_cts.tar.gz"
             ],
             "type": "PushKit"
