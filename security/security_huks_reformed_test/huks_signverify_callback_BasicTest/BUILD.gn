@@ -21,7 +21,7 @@ ohos_js_hap_suite("hukssignverify_callback_basic_js_test") {
   subsystem_name = "security"
   part_name = "huks"
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsHuksSignVerifyBasicCallbackJSApiTestReform"
+  hap_name = "ActsHuksSignVerifyBasicCallbackJSApiReformedTest"
 }
 ohos_js_assets("huks_js_assets") {
   js2abc = true
