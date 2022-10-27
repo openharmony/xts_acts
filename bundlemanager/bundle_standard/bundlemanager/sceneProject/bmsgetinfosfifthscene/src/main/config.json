@@ -18,9 +18,8 @@
     "name": ".BmsThirdBundle5",
     "mainAbility": "com.example.third5.AMainAbility",
     "deviceType": [
-      "tablet",
       "default",
-      "default"
+      "tablet"
     ],
     "distro": {
       "deliveryWithInstall": true,

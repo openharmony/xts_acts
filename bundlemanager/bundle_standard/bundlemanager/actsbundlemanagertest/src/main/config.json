@@ -17,9 +17,8 @@
         "package": "com.example.actsbundlemanagertest",
         "name": ".entry",
         "deviceType": [
-      "tablet",
-      "default",
-            "default"
+            "default",
+            "tablet"
         ],
         "distro": {
             "deliveryWithInstall": true,

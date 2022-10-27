@@ -47,8 +47,7 @@
             }
         ],
         "deviceType": [
-      "tablet",
-      "default",
+            "default",
             "tablet"
         ],
         "mainAbility": "com.example.l2jsdemo.MainAbility",

@@ -18,9 +18,8 @@
     "mainAbility": "com.example.bmsmainabilityfirstscene.MainAbility",
     "name": ".MyApplication",
     "deviceType": [
-      "tablet",
       "default",
-      "default"
+      "tablet"
     ],
     "distro": {
       "deliveryWithInstall": true,
