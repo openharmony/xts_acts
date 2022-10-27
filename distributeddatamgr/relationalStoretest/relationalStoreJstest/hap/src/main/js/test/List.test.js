@@ -26,19 +26,21 @@ import rdbstoreTransactionTest from './RdbstoreTransactionJsunit.test.js'
 import rdbStoreUpdateTest from './RdbstoreUpdateJsunit.test.js'
 import rdbstoreQueryTest from './RdbstoreQuery.test.js'
 import rdbStoreEncryptionTest from './RdbstoreEncryptionJsunit.test.js'
+import rdbStorePredicatesComplexFiledTest from './RdbstorePredicatesComplexFiledJsunit.test.js'
 export default function testsuite() {
-rdbStoreBackupRestoreCallbackTest()
-rdbStoreBackupRestoreWithFAContextTest()
-rdbStoreDeleteTest()
-rdbStoreDistributedTest()
-rdbstoreInsertTest()
-rdbStorePredicatesJoinTest()
-rdbPredicatesTest()
-rdbStoreTest()
-rdbResultSetTest()
-rdbstoreStoreExcuteSqlTest()
-rdbstoreTransactionTest()
-rdbStoreUpdateTest()
-rdbstoreQueryTest()
-rdbStoreEncryptionTest()
+    rdbStoreBackupRestoreCallbackTest()
+    rdbStoreBackupRestoreWithFAContextTest()
+    rdbStoreDeleteTest()
+    rdbStoreDistributedTest()
+    rdbstoreInsertTest()
+    rdbStorePredicatesJoinTest()
+    rdbPredicatesTest()
+    rdbStoreTest()
+    rdbResultSetTest()
+    rdbstoreStoreExcuteSqlTest()
+    rdbstoreTransactionTest()
+    rdbStoreUpdateTest()
+    rdbstoreQueryTest()
+    rdbStoreEncryptionTest()
+    rdbStorePredicatesComplexFiledTest()
 }

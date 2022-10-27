@@ -128,8 +128,7 @@ describe('rdbStoreTest', function () {
         storePromise.then(async (store) => {
             try {
                 await store.executeSql(CREATE_TABLE_TEST);
-                let deletePromise = dataRdb.deleteRdbStore("rdbstore.db")
-                deletePromise.then(()=>{
+                await dataRdb.deleteRdbStore("rdbstore.db").then(()=>{
                     console.info(TAG + "deleteRdbStore promise done" + store);
                     expect(true).assertTrue();
                 })

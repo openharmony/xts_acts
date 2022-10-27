@@ -318,6 +318,7 @@ describe('rdbStoreDeleteTest', function () {
      */
     it('testRdbStoreDelete0006', 0, async function (done) {
         console.info(TAG + '************* testRdbStoreDelete0006 start *************');
+        let errInfo = undefined;
         let u8 = new Uint8Array([1, 2, 3])
         {
             const valueBucket = {
@@ -347,7 +348,7 @@ describe('rdbStoreDeleteTest', function () {
             await rdbStore.insert('test', valueBucket)
         }
         //删除
-        {
+        try{
             let predicates = await new dataRdb.RdbPredicates('')
             let deletePromise = rdbStore.delete(predicates)
             deletePromise.then(async (ret) => {
@@ -356,7 +357,10 @@ describe('rdbStoreDeleteTest', function () {
             }).catch((err) => {
                 console.info(TAG + 'delete with null')
             })
+        }catch(err){
+            errInfo = err
         }
+        expect(errInfo.code).assertEqual("401")
         done()
         console.info(TAG + '************* testRdbStoreDelete0006 end *************');
     })
