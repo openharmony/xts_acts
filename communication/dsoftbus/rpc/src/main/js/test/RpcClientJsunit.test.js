@@ -9679,7 +9679,68 @@ export default function actsRpcClientJsTest() {
                 expect(error.code != errCode).assertTrue();
             }
             console.info("---------------------end SUB_Softbus_IPC_Compatibility_IPCSkeleton_01700---------------------------");
-        })           
+        })
+        
+        /*
+        * @tc.number  SUB_Softbus_IPC_Compatibility_IPCSkeleton_01800
+        * @tc.name    restoreCallingIdentity Interface flags input parameter boundary value verification
+        * @tc.desc    Function test
+        * @tc.level   0
+        */
+        it("SUB_Softbus_IPC_Compatibility_IPCSkeleton_01800", 0,async function(){
+            console.info("---------------------start SUB_Softbus_IPC_Compatibility_IPCSkeleton_01800---------------------------");
+            try{
+                let id = "";
+                rpc.IPCSkeleton.restoreCallingIdentity(id);
+                console.info("SUB_Softbus_IPC_Compatibility_IPCSkeleton_01800 restoreCallingIdentity is success");
+            } catch (error) {
+                console.info("SUB_Softbus_IPC_Compatibility_IPCSkeleton_01800:error = " + error);
+                expect(error == null).assertTrue();
+            }
+            console.info("---------------------end SUB_Softbus_IPC_Compatibility_IPCSkeleton_01800---------------------------");
+        });
+
+        /*
+        * @tc.number  SUB_Softbus_IPC_Compatibility_IPCSkeleton_01900
+        * @tc.name    restoreCallingIdentity Interface flags input parameter 0 value verification
+        * @tc.desc    Function test
+        * @tc.level   0
+        */
+        it("SUB_Softbus_IPC_Compatibility_IPCSkeleton_01900", 0,async function(){
+            console.info("---------------------start SUB_Softbus_IPC_Compatibility_IPCSkeleton_01900---------------------------");
+            try{
+                let id = 0;
+                rpc.IPCSkeleton.restoreCallingIdentity(id);
+                console.info("SUB_Softbus_IPC_Compatibility_IPCSkeleton_01900 restoreCallingIdentity is success");
+            } catch (error) {
+                console.info("SUB_Softbus_IPC_Compatibility_IPCSkeleton_01900:error = " + error);
+                expect(error == null).assertTrue();
+            }
+            console.info("---------------------end SUB_Softbus_IPC_Compatibility_IPCSkeleton_01900---------------------------");
+        });
+
+        /*
+        * @tc.number  SUB_Softbus_IPC_Compatibility_IPCSkeleton_02000
+        * @tc.name    restoreCallingIdentity Interface flags input parameter null value verification
+        * @tc.desc    Function test
+        * @tc.level   0
+        */
+        it("SUB_Softbus_IPC_Compatibility_IPCSkeleton_02000", 0,async function(){
+            console.info("---------------------start SUB_Softbus_IPC_Compatibility_IPCSkeleton_02000---------------------------");
+            try{
+                let id = "";
+                for (let i = 0; i < (40*K - 1); i++){
+                    id += "a";
+                }
+                console.info("SUB_Softbus_IPC_Compatibility_IPCSkeleton_02000 id length is: " + id.length);
+                rpc.IPCSkeleton.restoreCallingIdentity(id);
+                console.info("SUB_Softbus_IPC_Compatibility_IPCSkeleton_02000 restoreCallingIdentity is success");
+            } catch (error) {
+                console.info("SUB_Softbus_IPC_Compatibility_IPCSkeleton_02000:error = " + error);
+                expect(error == null).assertTrue();
+            }
+            console.info("---------------------end SUB_Softbus_IPC_Compatibility_IPCSkeleton_02000---------------------------");
+        });        
         console.info("-----------------------SUB_Softbus_IPC_Compatibility_MessageParce_Test is end-----------------------");
     });
 }
