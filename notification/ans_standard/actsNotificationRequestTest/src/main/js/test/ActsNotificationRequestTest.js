@@ -34,7 +34,7 @@ export default function ActsNotificationRequestTest() {
       await sleep(2000)
       console.info(`${TAG} UiDriver start`)
       let button = await driver.findComponent(BY.text('允许'))
-      console.info(TAG + 'button is ' + JSON.stringify(button))//null
+      console.info(`${TAG} button is ${JSON.stringify(button)}`)
       await sleep(5000)
       await button.click()
     }
@@ -59,12 +59,12 @@ export default function ActsNotificationRequestTest() {
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_PUBLISH_TEST_0100
+     * @tc.number    : SUB_NOTIFICATION_ANS_REQUEST_TEST_0100
      * @tc.name      : function publish(request: NotificationRequest, callback: AsyncCallback<void>): void
      * @tc.desc      : publish a notification after requestEnableNotification
      */
-    it('SUB_NOTIFICATION_ANS_PUBLISH_TEST_0100', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_PUBLISH_TEST_0100 START`)
+    it('SUB_NOTIFICATION_ANS_REQUEST_TEST_0100', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_REQUEST_TEST_0100 START`)
       let notificationRequest = {
         id: 1,
         content: {
@@ -87,16 +87,16 @@ export default function ActsNotificationRequestTest() {
           done()
         }
       })
-      console.info(`${TAG} SUB_NOTIFICATION_PUBLISH_TEST_0100 END`)
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_REQUEST_TEST_0100 END`)
     })
 
     /*
-     * @tc.number    : SUB_NOTIFICATION_ANS_PUBLISH_TEST_0200
+     * @tc.number    : SUB_NOTIFICATION_ANS_REQUEST_TEST_0200
      * @tc.name      : function publish(request: NotificationRequest): Promise<void>
      * @tc.desc      : publish a notification after requestEnableNotification
      */
-    it('SUB_NOTIFICATION_ANS_PUBLISH_TEST_0200', 0, async function (done) {
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_0200 START`)
+    it('SUB_NOTIFICATION_ANS_REQUEST_TEST_0200', 0, async function (done) {
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_REQUEST_TEST_0200 START`)
       let notificationRequest = {
         id: 1,
         content: {
@@ -117,7 +117,7 @@ export default function ActsNotificationRequestTest() {
         expect(false).assertTrue()
         done()
       })
-      console.info(`${TAG} SUB_NOTIFICATION_ANS_PUBLISH_TEST_0200 END`)
+      console.info(`${TAG} SUB_NOTIFICATION_ANS_REQUEST_TEST_0200 END`)
     })
     console.info(TAG + 'SUB_NOTIFICATION_ANS_REQUEST_TEST END')
   })
