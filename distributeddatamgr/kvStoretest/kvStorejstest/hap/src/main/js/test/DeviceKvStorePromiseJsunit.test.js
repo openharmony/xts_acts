@@ -2339,12 +2339,21 @@ describe('deviceKvStorePromiseTest', function () {
      */
     it('testDeviceKvStoreCloseResultSet004', 0, async function (done) {
         console.info('testDeviceKvStoreCloseResultSet004');
+        let errorInfo = undefined;
         try {
+            await kvStore.closeResultSet(1).then(() => {
+                console.info('testDeviceKvStoreCloseResultSet004 success');
+                expect(null).assertFail();
+            }).catch(err => {
+                console.info('testDeviceKvStoreCloseResultSet004 err ' + err);
+                errorInfo = err
+            })
             console.info('testDeviceKvStoreCloseResultSet004 success');
         }catch(e) {
             console.info('testDeviceKvStoreCloseResultSet004 e ' + e);
-            expect(null).assertFail();
+            errorInfo = e
         }
+        expect(errorInfo != undefined).assertTrue();
         done();
     })
 
