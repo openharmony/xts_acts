@@ -16,6 +16,7 @@
     "package": "com.example.mypowerdisplayapp",
     "srcPath":"",
     "deviceType": [
+      "tablet",
       "default",
       "phone"
     ],

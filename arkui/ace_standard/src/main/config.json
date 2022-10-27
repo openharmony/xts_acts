@@ -17,6 +17,7 @@
     "name": ".MyApplication",
     "mainAbility": "com.example.aceceshi.MainAbility",
     "deviceType": [
+      "tablet",
       "default",
       "phone"
     ],

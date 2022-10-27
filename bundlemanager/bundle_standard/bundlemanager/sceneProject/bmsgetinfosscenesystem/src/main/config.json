@@ -21,7 +21,7 @@
     "mainAbility": "com.example.system1.MainAbility",
     "deviceType": [
       "default",
-      "default"
+      "tablet"
     ],
     "distro": {
       "deliveryWithInstall": true,

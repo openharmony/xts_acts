@@ -21,7 +21,7 @@
     "colorMode": "light",
     "deviceType": [
       "default",
-      "default"
+      "tablet"
     ],
     "distro": {
       "deliveryWithInstall": true,

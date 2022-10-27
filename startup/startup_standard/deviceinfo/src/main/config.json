@@ -16,6 +16,7 @@
         "package": "ohos.acts.startup.js.function",
         "name": ".entry",
         "deviceType": [
+      "tablet",
       "default",
             "phone"
         ],
