@@ -21,5 +21,8 @@ hctest_suite("ActsBootstrapTest") {
     "src",
     "//utils/native/native_lite/include",
   ]
-  cflags = [ "-Wno-error" ]
+
+  if (board_toolchain_type != "iccarm") {
+    cflags = [ "-Wno-error" ]
+  }
 }
