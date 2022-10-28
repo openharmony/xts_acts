@@ -105,19 +105,19 @@ export default function ActsGetMultipleAccounts() {
             if (dataMap.has("accessibleAccount_this_application_first")) {
                 let data = dataMap.get("accessibleAccount_this_application_first");
                 console.debug("====>fifth account owner is: " + data);
-                expect(data).assertEqual("com.example.actsgetallaccessiblemultiple");
+                expect(data).assertEqual("com.example.getmultipleaccountstest");
             }
             expect(dataMap.has("accessibleAccount_this_application_second")).assertTrue();
             if (dataMap.has("accessibleAccount_this_application_second")) {
                 let data = dataMap.get("accessibleAccount_this_application_second");
                 console.debug("====>sixth account owner is: " + data);
-                expect(data).assertEqual("com.example.actsgetallaccessiblemultiple");
+                expect(data).assertEqual("com.example.getmultipleaccountstest");
             }
             expect(dataMap.has("accessibleAccount_this_application_third")).assertTrue();
             if (dataMap.has("accessibleAccount_this_application_third")) {
                 let data = dataMap.get("accessibleAccount_this_application_third");
                 console.debug("====>seventh account owner is: " + data);
-                expect(data).assertEqual("com.example.actsgetallaccessiblemultiple");
+                expect(data).assertEqual("com.example.getmultipleaccountstest");
             }
             console.debug("====>delete account start====");
             await appAccountManager.removeAccount("accessibleAccount_this_application_first");
