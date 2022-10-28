@@ -39,7 +39,7 @@
             ]
           }
         ],
-        "name": "com.example.actsaccountOauthtoken.MainAbility",
+        "name": "com.example.actsaccountoauthtoken.MainAbility",
         "icon": "$media:icon",
         "description": "$string:mainability_description",
         "label": "$string:app_name",

@@ -3,8 +3,8 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "60000",
-        "bundle-name": "com.example.actsgetallaaccounts",
-        "package-name": "com.example.actsgetallaaccounts",
+        "bundle-name": "com.example.actsgetallaccounts",
+        "package-name": "com.example.actsgetallaccounts",
         "shell-timeout": "60000"
     },
     "kits": [

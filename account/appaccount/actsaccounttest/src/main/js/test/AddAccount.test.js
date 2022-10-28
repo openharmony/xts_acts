@@ -352,11 +352,12 @@ export default function ActsAccountAddAccount() {
             var specialStr = " ";
             try{
                 await appAccountManager.addAccount(specialStr, "account_extraInfo_promise_eighth");
+                expect().assertFail();
+                done();
             }
             catch(err){
-                console.debug("====>add Account ActsAccountAddAccount_1600 err:" + JSON.stringify(err));
-                expect(err.code != 0).assertEqual(true);
-                console.debug("====>ActsAccountAddAccount_1600 end====");
+                console.debug("====>add Account ActsAccountAddAccount_1600 throw_err:" + JSON.stringify(err));
+                expect(err.code != 0 ).assertEqual(true);
                 done();
             }
         });

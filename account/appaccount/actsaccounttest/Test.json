@@ -14,7 +14,8 @@
                 "ActsAccountSceneAppAccess.hap",
                 "ActsAccountSceneOnOff.hap",
                 "ActsAccountOauthtoken.hap",
-                "ActsAccountAuthenticator.hap"
+                "ActsAccountAuthenticator.hap",
+                "ActsAccountOperateTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

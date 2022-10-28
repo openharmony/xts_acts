@@ -23,6 +23,12 @@ const ACCOUNT_TEST_ONOFF_DELETE = 4
 const ACCOUNT_TEST_ONOFF_DELETEONLY = 5
 const ACCOUNT_TEST_ONOFF_DISABLE = 6
 const ACCOUNT_TEST_ONOFF_DISABLEONLY = 7
+const ACCOUNT_TEST_ONOFF_CUSTOMDATA = 8
+const ACCOUNT_TEST_ONOFF_SETCREDENTIAL = 9
+const ACCOUNT_TEST_ONOFF_REMOVE = 10
+const ACCOUNT_TEST_ONOFF_REMOVEONLY = 11
+const ACCOUNT_TEST_ONOFF_SETDISABLE = 12
+const ACCOUNT_TEST_ONOFF_SETDISABLEONLY = 13
 const injectRef = Object.getPrototypeOf(global) || global
 injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')
 
@@ -44,8 +50,10 @@ export default {
         function publishCallback(err){
             console.debug("====>publish call back scene err:" + JSON.stringify(err));
             console.debug("====>scene off start====");
-            appAccountManager.off('change', function (){
-                console.debug("====>scene off finish====");
+            appAccountManager.off('accountChange', function (){
+                appAccountManager.off('change', function (){
+                    console.debug("====>scene off finish====");
+                });
             });
             featureAbility.terminateSelf()
         }
@@ -98,6 +106,29 @@ export default {
             }
         }
 
+        function changeOnCustomData(data){
+            console.debug("====>receive change 0200 data:" + JSON.stringify(data));
+            try{
+                if(data[0].owner == "com.example.actsaccountoperatetest" && data[0].name == "onoff_cunstomdata"){
+                    var commonEventPublishData = {
+                        data: "SUCCESS"
+                    }
+                    commonevent.publish("account_on_change_cuntomdata", commonEventPublishData, publishCallback);
+                }else{
+                    var commonEventPublishData = {
+                        data: "FAIL"
+                    }
+                    commonevent.publish("account_on_change_customdata", commonEventPublishData, publishCallback);
+                }
+            }
+            catch(err){
+                var commonEventPublishData = {
+                    data: "FAIL"
+                }
+                commonevent.publish("account_on_change_customdata", commonEventPublishData, publishCallback);
+            }
+        }
+
         function changeOnCredential(data){
             console.debug("====>receive change 0300 data:" + JSON.stringify(data));
             try{
@@ -118,6 +149,29 @@ export default {
                     data: "FAIL"
                 }
                 commonevent.publish("account_on_change_credential", commonEventPublishData, publishCallback);
+            }
+        }
+
+        function changeOnSetCredential(data){
+            console.debug("====>receive change 0300 data:" + JSON.stringify(data));
+            try{
+                if(data[0].owner == "com.example.actsaccountoperatetest" && data[0].name == "onoff_setcredential"){
+                    var commonEventPublishData = {
+                        data: "SUCCESS"
+                    }
+                    commonevent.publish("account_on_change_setcredential", commonEventPublishData, publishCallback);
+                }else{
+                    var commonEventPublishData = {
+                        data: "FAIL"
+                    }
+                    commonevent.publish("account_on_change_setcredential", commonEventPublishData, publishCallback);
+                }
+            }
+            catch(err){
+                var commonEventPublishData = {
+                    data: "FAIL"
+                }
+                commonevent.publish("account_on_change_setcredential", commonEventPublishData, publishCallback);
             }
         }
 
@@ -144,6 +198,29 @@ export default {
             }
         }
 
+        function changeOnRemoverAnother(data){
+            console.debug("====>receive change 0400 data:" + JSON.stringify(data));
+            try{
+                if(data[0].owner == "com.example.actsaccountoperatetest" && data[0].name == "onoff_removeFir"){
+                    var commonEventPublishData = {
+                        data: "SUCCESS"
+                    }
+                    commonevent.publish("account_on_remove_another", commonEventPublishData, publishCallback);
+                }else{
+                    var commonEventPublishData = {
+                        data: "FAIL"
+                    }
+                    commonevent.publish("account_on_remove_another", commonEventPublishData, publishCallback);
+                }
+            }
+            catch(err){
+                var commonEventPublishData = {
+                    data: "FAIL"
+                }
+                commonevent.publish("account_on_remove_another", commonEventPublishData, publishCallback);
+            }
+        }
+
         function changeOnDelete(data){
             console.debug("====>receive change 0500 data:" + JSON.stringify(data));
             try{
@@ -164,6 +241,29 @@ export default {
                     data: "FAIL"
                 }
                 commonevent.publish("account_on_change_delete", commonEventPublishData, publishCallback);
+            }
+        }
+
+        function changeOnRemove(data){
+            console.debug("====>receive change 0500 data:" + JSON.stringify(data));
+            try{
+                if(data.length == 0){
+                    var commonEventPublishData = {
+                        data: "SUCCESS"
+                    }
+                    commonevent.publish("account_on_change_remove", commonEventPublishData, publishCallback);
+                }else{
+                    var commonEventPublishData = {
+                        data: "FAIL"
+                    }
+                    commonevent.publish("account_on_change_remove", commonEventPublishData, publishCallback);
+                }
+            }
+            catch(err){
+                var commonEventPublishData = {
+                    data: "FAIL"
+                }
+                commonevent.publish("account_on_change_remove", commonEventPublishData, publishCallback);
             }
         }
 
@@ -190,6 +290,29 @@ export default {
             }
         }
 
+        function changeOnSetAnotherDisable(data){
+            console.debug("====>receive change 1200 data:" + JSON.stringify(data));
+            try{
+                if(data[0].owner == "com.example.actsaccountoperatetest" && data[0].name == "onoff_disableFir"){
+                    var commonEventPublishData = {
+                        data: "SUCCESS"
+                    }
+                    commonevent.publish("account_on_set_another_disable", commonEventPublishData, publishCallback);
+                }else{
+                    var commonEventPublishData = {
+                        data: "FAIL"
+                    }
+                    commonevent.publish("account_on_set_another_disable", commonEventPublishData, publishCallback);
+                }
+            }
+            catch(err){
+                var commonEventPublishData = {
+                    data: "FAIL"
+                }
+                commonevent.publish("account_on_set_another_disable", commonEventPublishData, publishCallback);
+            }
+        }
+
         function changeOnDisable(data){
             console.debug("====>receive change 0700 data:" + JSON.stringify(data));
             try{
@@ -210,6 +333,29 @@ export default {
                     data: "FAIL"
                 }
                 commonevent.publish("account_on_change_disable", commonEventPublishData, publishCallback);
+            }
+        }
+
+        function changeOnSetDisable(data){
+            console.debug("====>receive change 1300 data:" + JSON.stringify(data));
+            try{
+                if(data.length == 0){
+                    var commonEventPublishData = {
+                        data: "SUCCESS"
+                    }
+                    commonevent.publish("account_on_set_disable", commonEventPublishData, publishCallback);
+                }else{
+                    var commonEventPublishData = {
+                        data: "FAIL"
+                    }
+                    commonevent.publish("account_on_set_disable", commonEventPublishData, publishCallback);
+                }
+            }
+            catch(err){
+                var commonEventPublishData = {
+                    data: "FAIL"
+                }
+                commonevent.publish("account_on_set_disable", commonEventPublishData, publishCallback);
             }
         }
 
@@ -245,6 +391,30 @@ export default {
                 case ACCOUNT_TEST_ONOFF_DISABLEONLY:
                     console.debug("====>receive event 0700 event:" + data.event);
                     appAccountManager.on('change', ["com.example.actsaccounttest"], changeOnDisable);
+                    break;
+                case ACCOUNT_TEST_ONOFF_CUSTOMDATA:
+                    console.debug("====>receive event 0800 event:" + data.event);
+                    appAccountManager.on('accountChange', ["com.example.actsaccountoperatetest"], changeOnCustomData);
+                    break;
+                case ACCOUNT_TEST_ONOFF_SETCREDENTIAL:
+                    console.debug("====>receive event 0900 event:" + data.event);
+                    appAccountManager.on('accountChange', ["com.example.actsaccountoperatetest"], changeOnSetCredential);
+                    break;
+                case ACCOUNT_TEST_ONOFF_REMOVE:
+                    console.debug("====>receive event 1000 event:" + data.event);
+                    appAccountManager.on('accountChange', ["com.example.actsaccountoperatetest"], changeOnRemoverAnother);
+                    break;
+                case ACCOUNT_TEST_ONOFF_REMOVEONLY:
+                    console.debug("====>receive event 1100 event:" + data.event);
+                    appAccountManager.on('accountChange', ["com.example.actsaccountoperatetest"], changeOnRemove);
+                    break;
+                case ACCOUNT_TEST_ONOFF_SETDISABLE:
+                    console.debug("====>receive event 1200 event:" + data.event);
+                    appAccountManager.on('accountChange', ["com.example.actsaccountoperatetest"], changeOnSetAnotherDisable);
+                    break;
+                case ACCOUNT_TEST_ONOFF_SETDISABLEONLY:
+                    console.debug("====>receive event 1300 event:" + data.event);
+                    appAccountManager.on('accountChange', ["com.example.actsaccountoperatetest"], changeOnSetDisable);
                     break;
                 default:
                     console.debug("====>receive event enter default====");

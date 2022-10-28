@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import oauthTokenInfoTest from './OAuthTokenInfoTest.test.ets'
+import authTokenInfoTest from './AuthTokenInfoTest.test.ets'
 
 export default function testsuite() {
     oauthTokenInfoTest()
+    authTokenInfoTest()
 }
