@@ -69,11 +69,11 @@ describe("SensorJsTest_sensor_41", function () {
 	
 	/*
      * @tc.number:SUB_SensorsSystem_AMBIENT_LIGHT_JSTest_0140
-     * @tc.name: newAmbient_Light_SensorJsTest027
+     * @tc.name: newAmbient_Light_SensorJsTest014
      * @tc.desc: Functional Use Cases
      */
-    it("newAmbient_Light_SensorJsTest027", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-        console.info('---------newAmbient_Light_SensorJsTest027--------------');
+    it("newAmbient_Light_SensorJsTest014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        console.info('---------newAmbient_Light_SensorJsTest014--------------');
         sensor.on(sensor.SensorId.AMBIENT_LIGHT, callback);
         setTimeout(()=>{
             sensor.off(sensor.SensorId.AMBIENT_LIGHT);
@@ -83,19 +83,19 @@ describe("SensorJsTest_sensor_41", function () {
 
 	/*
      * @tc.number:SUB_SensorsSystem_AMBIENT_LIGHT_JSTest_0150
-     * @tc.name: newAmbient_Light_SensorJsTest028
+     * @tc.name: newAmbient_Light_SensorJsTest015
      * @tc.desc: Illegal ID passed in
      */
-    it("newAmbient_Light_SensorJsTest028", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------newAmbient_Light_SensorJsTest028--------------');
+    it("newAmbient_Light_SensorJsTest015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------newAmbient_Light_SensorJsTest015--------------');
         function onSensorCallback(data) {
-            console.info('newAmbient_Light_SensorJsTest028 callback in');
+            console.info('newAmbient_Light_SensorJsTest015 callback in');
             expect(false).assertTrue();
         }
         try {
             sensor.on(invalid, onSensorCallback);
         } catch (error) {
-            console.info("newAmbient_Light_SensorJsTest028 error:" + error);
+            console.info("newAmbient_Light_SensorJsTest015 error:" + error);
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
@@ -104,29 +104,29 @@ describe("SensorJsTest_sensor_41", function () {
 
 	/*
      * @tc.number:SUB_SensorsSystem_AMBIENT_LIGHT_JSTest_0160
-     * @tc.name: newAmbient_Light_SensorJsTest029
+     * @tc.name: newAmbient_Light_SensorJsTest016
      * @tc.desc: For normal scenarios
      */
-    it("newAmbient_Light_SensorJsTest029", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------SensorJsTest003--------------');
+    it("newAmbient_Light_SensorJsTest016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------newAmbient_Light_SensorJsTest016--------------');
         sensor.on(sensor.SensorId.AMBIENT_LIGHT, callback, {'interval': 100000000});
         setTimeout(()=>{
-            console.info('---------newAmbient_Light_SensorJsTest029 off in--------------');
+            console.info('---------newAmbient_Light_SensorJsTest016 off in--------------');
             sensor.off(sensor.SensorId.AMBIENT_LIGHT);
-            console.info('---------newAmbient_Light_SensorJsTest029 off end--------------');
+            console.info('---------newAmbient_Light_SensorJsTest016 off end--------------');
             done();
         }, 500);
     })
 
 	/*
      * @tc.number:SUB_SensorsSystem_AMBIENT_LIGHT_JSTest_0170
-     * @tc.name: newAmbient_Light_SensorJsTest030
+     * @tc.name: newAmbient_Light_SensorJsTest017
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("newAmbient_Light_SensorJsTest030", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
-        console.info('---------newAmbient_Light_SensorJsTest030--------------');
+    it("newAmbient_Light_SensorJsTest017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
+        console.info('---------newAmbient_Light_SensorJsTest017--------------');
         function onSensorCallback(data) {
-            console.info('newAmbient_Light_SensorJsTest030  callback in');
+            console.info('newAmbient_Light_SensorJsTest017  callback in');
 			expect(typeof (data.intensity)).assertEqual("number");
 			expect(typeof (data.timestamp)).assertEqual("number");
             done();
@@ -134,14 +134,14 @@ describe("SensorJsTest_sensor_41", function () {
         try {
             sensor.on(sensor.SensorId.AMBIENT_LIGHT, onSensorCallback, {'interval': 100000000}, 5);
         } catch (error) {
-            console.info("newAmbient_Light_SensorJsTest030 error:" +error);
+            console.info("newAmbient_Light_SensorJsTest017 error:" +error);
             expect(false).assertTrue();
             done();
         }
         setTimeout(()=>{
-            console.info('---------newAmbient_Light_SensorJsTest030 off in--------------');
+            console.info('---------newAmbient_Light_SensorJsTest017 off in--------------');
             sensor.off(sensor.SensorId.AMBIENT_LIGHT);
-            console.info('---------newAmbient_Light_SensorJsTest030 off end--------------');
+            console.info('---------newAmbient_Light_SensorJsTest017 off end--------------');
             done();
         }, 500);
     })
