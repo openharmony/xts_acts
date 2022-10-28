@@ -17,9 +17,8 @@
     "package": "com.example.vendor1",
     "name": ".BmsVendorBundle1",
     "deviceType": [
-      "tablet",
       "default",
-      "default"
+      "tablet"
     ],
     "distro": {
       "deliveryWithInstall": true,
