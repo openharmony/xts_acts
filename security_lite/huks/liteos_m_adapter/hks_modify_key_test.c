@@ -293,7 +293,7 @@ int32_t BaseTestCipherProcess(const struct HksBlob *keyAlias, uint32_t index)
         }
         /* 3. decrypt */
         struct CipherDecryptStructure testDecryptStruct = {
-            keyAlias, &g_testCipherParams[index], cipherData,
+            (struct HksBlob *)(keyAlias), &g_testCipherParams[index], cipherData,
             &decryptedData, ivData, nonceData, aadData, 1
         };
         ret = DecryptCipher(&testDecryptStruct);
@@ -332,6 +332,7 @@ int32_t __attribute__((weak)) HksStoreKeyBlob(const struct HksBlob *processName,
     (void)keyAlias;
     (void)storageType;
     (void)keyBlob;
+    return HKS_SUCCESS;
 }
 
 static void ExecHksModifyKeyTest001(void const *argument)
