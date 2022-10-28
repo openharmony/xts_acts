@@ -114,8 +114,11 @@ export default function inputMethodJSUnit() {
     it('inputmethod_test_switchInputMethod_001', 0, async function (done) {
       console.info("************* inputmethod_test_switchInputMethod_001 Test start*************");
       let inputMethodProperty = {
-        packageName:"com.example.kikakeyboard",
-        methodId:"ServiceExtAbility"
+        packageName: "com.example.kikakeyboard",
+        methodId: "ServiceExtAbility",
+        name:"com.example.kikakeyboard",
+        id:"ServiceExtAbility",
+        extra:{}
       }
       inputMethod.switchInputMethod(inputMethodProperty).then(data => {
         console.info("inputmethod_test_switchInputMethod_001 data:" + data)
@@ -137,8 +140,11 @@ export default function inputMethodJSUnit() {
     it('inputmethod_test_switchInputMethod_002', 0, async function (done) {
       console.info("************* inputmethod_test_switchInputMethod_002 Test start*************");
       let inputMethodProperty = {
-        packageName:"com.example.kikakeyboard",
-        methodId:"ServiceExtAbility"
+        packageName: "com.example.kikakeyboard",
+        methodId: "ServiceExtAbility",
+        name:"com.example.kikakeyboard",
+        id:"ServiceExtAbility",
+        extra:{}
       }
       inputMethod.switchInputMethod(inputMethodProperty, (err, data)=>{
         if(err){

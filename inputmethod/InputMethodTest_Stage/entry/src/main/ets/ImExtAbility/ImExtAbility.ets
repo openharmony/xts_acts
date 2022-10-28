@@ -26,51 +26,26 @@ export default class ImExtAbility extends inputMethodExtensionAbility {
     console.info("inputMethodExtensionAbility want.abilityName is: " + want.abilityName);
 
     console.info("---------------------------1-----------------------------");
-    this.context.startAbility(want, (data)=>{
-      console.info("startAbility001 inputMethodExtensionAbility start successfully." + JSON.stringify(data));
-    })
+    try{
+      this.context.destroy((err, data)=>{
+        if(err){
+          console.info('destroy001 destroy fail: ' + JSON.stringify(err));
+        }
+        console.info("destroy001 inputMethodExtensionAbility destroy successfully." + JSON.stringify(data));
+      })
+    }catch(error){
+      console.info('destroy001 destroy catch error: ' + JSON.stringify(error));
+    }
 
-    this.context.terminateSelf((err) => {
-      console.info('startAbility001 terminateSelf success' + JSON.stringify(err));
-    });
-
-
-    console.info("---------------------------2-----------------------------");
-    this.context.startAbility(want,options,(data) => {
-      console.info("startAbility002 inputMethodExtensionAbility start successfully." + JSON.stringify(data));
-    })
-
-    this.context.terminateSelf().then((data) => {
-      console.info("startAbility002 terminateSelf success:." + JSON.stringify(data));
-    }).catch((err) => {
-      console.info('startAbility002 terminateSelf fail: ' + JSON.stringify(err));
-    })
-
-    console.info("---------------------------3-----------------------------");
-    this.context.startAbility(want).then((data) => {
-      console.info("startAbility003 inputMethodExtensionAbility start successfully." + JSON.stringify(data));
-    }).catch((err) => {
-      console.info('startAbility003 failed:' + JSON.stringify(err));
-    })
-
-    this.context.terminateSelf().then((data) => {
-      console.info("startAbility003 terminateSelf success:." + JSON.stringify(data));
-    }).catch((err) => {
-      console.info('startAbility003 terminateSelf fail: ' + JSON.stringify(err));
-    })
-
-    console.info("---------------------------4-----------------------------");
-    this.context.startAbility(want, options).then((data) => {
-      console.info("startAbility004 inputMethodExtensionAbility start successfully." + JSON.stringify(data));
-    }).catch((err) => {
-      console.info('startAbility004 failed:' + JSON.stringify(err));
-    })
-
-    this.context.terminateSelf().then((data) => {
-      console.info("startAbility004 terminateSelf success:." + JSON.stringify(data));
-    }).catch((err) => {
-      console.info('startAbility004 terminateSelf fail: ' + JSON.stringify(err));
-    })
+    try{
+      this.context.destroy().then((data) => {
+        console.info("destroy002 terminateSelf success:." + JSON.stringify(data));
+      }).catch((err) => {
+        console.info('destroy002 terminateSelf fail: ' + JSON.stringify(err));
+      })
+    }catch(error){
+      console.info('destroy002 destroy catch error: ' + JSON.stringify(error));
+    }
   }
 
   onDestroy() {

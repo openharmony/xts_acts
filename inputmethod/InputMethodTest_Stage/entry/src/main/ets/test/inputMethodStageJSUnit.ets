@@ -314,8 +314,11 @@ export default function inputMethodStageJSUnit() {
     it('inputMethod_test_switchCurrentInputMethodAndSubtype_001', 0, async function (done) {
       console.info("************* inputMethod_test_switchCurrentInputMethodAndSubtype_001 Test start*************");
       let inputMethodProperty = {
-        packageName:"com.example.kikakeyboard",
-        methodId:"ServiceExtAbility"
+        packageName: "com.example.kikakeyboard",
+        methodId: "ServiceExtAbility",
+        name:"com.example.kikakeyboard",
+        id:"ServiceExtAbility",
+        extra:{}
       }
       let inputMethodSubProperty : subtype = {
         id: "com.example.kikakeyboard",
@@ -356,8 +359,11 @@ export default function inputMethodStageJSUnit() {
     it('inputMethod_test_switchCurrentInputMethodAndSubtype_002', 0, async function (done) {
       console.info("************* inputMethod_test_switchCurrentInputMethodAndSubtype_002 Test start*************");
       let inputMethodProperty = {
-        packageName:"com.example.kikakeyboard",
-        methodId:"ServiceExtAbility"
+        packageName: "com.example.kikakeyboard",
+        methodId: "ServiceExtAbility",
+        name:"com.example.kikakeyboard",
+        id:"ServiceExtAbility",
+        extra:{}
       }
       let inputMethodSubProperty : subtype = {
         id: "com.example.kikakeyboard",
@@ -505,7 +511,7 @@ export default function inputMethodStageJSUnit() {
       try {
         console.info("inputMethod_test_showOptionalInputMethods_002 result:" + JSON.stringify(inputMethodSetting));
         inputMethodSetting.showOptionalInputMethods().then((data) => {
-          console.info("inputMethod_test_showOptionalInputMethods_002 showOptionalInputMethods catch error: " + JSON.stringify(data));
+          console.info("inputMethod_test_showOptionalInputMethods_002 showOptionalInputMethods success data is: " + JSON.stringify(data));
           expect(true).assertTrue();
           done();
         }).catch(err => {
