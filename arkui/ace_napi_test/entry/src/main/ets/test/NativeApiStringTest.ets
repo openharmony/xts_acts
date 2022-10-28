@@ -16,7 +16,7 @@
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "hypium/index"
 
-import testString from 'libteststring.so'
+import napitest from 'libnapitest.so'
 
 
 export default function nativeApiStringJsunit() {
@@ -50,7 +50,7 @@ export default function nativeApiStringJsunit() {
      */
     it('napiStringTest001', 0, async function (done) {
       console.info('napiStringTest001 START');
-      value = testString.TestLatin1(empty)
+      value = napitest.TestLatin1(empty)
       console.info('napiStringTest001 testString result is: ' + value);
       expect(value).assertEqual(empty)
       done();
