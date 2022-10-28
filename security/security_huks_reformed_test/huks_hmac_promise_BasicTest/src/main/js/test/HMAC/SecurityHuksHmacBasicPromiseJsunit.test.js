@@ -218,7 +218,7 @@ async function update(handle, HuksOptions) {
 
 export default function SecurityHuksHmacBasicPromiseJsunit() {
   describe("SecurityHuksHmacBasicPromiseJsunit", function () {
-    it("testHmac101", 0, async function (done) {
+    it("testReformedHmac101", 0, async function (done) {
       const srcKeyAlies = "testHmacDigestSHA1KeyAlias101";
       let HuksOptions = {
         properties: new Array(
@@ -232,7 +232,7 @@ export default function SecurityHuksHmacBasicPromiseJsunit() {
       done();
     });
 
-    it("testHmac102", 0, async function (done) {
+    it("testReformedHmac102", 0, async function (done) {
       const srcKeyAlies = "testHmacDigestSHA1KeyAlias102";
       let HuksOptions = {
         properties: new Array(
@@ -246,7 +246,7 @@ export default function SecurityHuksHmacBasicPromiseJsunit() {
       done();
     });
 
-    it("testHmac103", 0, async function (done) {
+    it("testReformedHmac103", 0, async function (done) {
       const srcKeyAlies = "testHmacDigestSHA1KeyAlias103";
       let HuksOptions = {
         properties: new Array(
@@ -260,7 +260,7 @@ export default function SecurityHuksHmacBasicPromiseJsunit() {
       done();
     });
 
-    it("testHmac104", 0, async function (done) {
+    it("testReformedHmac104", 0, async function (done) {
       const srcKeyAlies = "testHmacDigestSHA1KeyAlias104";
       let HuksOptions = {
         properties: new Array(
@@ -274,7 +274,7 @@ export default function SecurityHuksHmacBasicPromiseJsunit() {
       done();
     });
 
-    it("testHmacSM3101", 0, async function (done) {
+    it("testReformedHmacSM3101", 0, async function (done) {
       let srcKeyAlies = "testHmacDigestSM3KeyAlias001";
       let HuksOptions = {
         properties: new Array(
@@ -289,7 +289,7 @@ export default function SecurityHuksHmacBasicPromiseJsunit() {
       done();
     });
 
-    it("testHmacSM3102", 0, async function (done) {
+    it("testReformedHmacSM3102", 0, async function (done) {
       let srcKeyAlies = "testHmacDigestSM3KeyAlias002";
       let HuksOptions = {
         properties: new Array(
@@ -303,7 +303,7 @@ export default function SecurityHuksHmacBasicPromiseJsunit() {
       done();
     });
 
-    it("testHmacSM3103", 0, async function (done) {
+    it("testReformedHmacSM3103", 0, async function (done) {
       let srcKeyAlies = "testHmacDigestSM3KeyAlias003";
       let HuksOptions = {
         properties: new Array(
@@ -317,7 +317,7 @@ export default function SecurityHuksHmacBasicPromiseJsunit() {
       done();
     });
 
-    it("testHmacSM3104", 0, async function (done) {
+    it("testReformedHmacSM3104", 0, async function (done) {
       let srcKeyAlies = "testHmacDigestSM3KeyAlias004";
       let HuksOptions = {
         properties: new Array(

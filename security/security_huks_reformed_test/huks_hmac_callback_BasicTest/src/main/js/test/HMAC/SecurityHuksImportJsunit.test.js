@@ -658,7 +658,7 @@ async function TestImportWrappedKeyX25519Func(alias, wrappingAlias, genOptions, 
 
 export function SecurityHuksImportJsunit() {
     describe('SecurityHuksImportJsunit', function () {
-        it('HUKS_Basic_Capability_Import_0100_reformed', 0, async function (done) {
+        it('HUKS_Basic_Capability_Import_Reformed_0100', 0, async function (done) {
             const srcKeyAlies = 'HUKS_Basic_Capability_Import_0100';
             let HuksOptions = {
                 properties: new Array(
@@ -677,7 +677,7 @@ export function SecurityHuksImportJsunit() {
             done();
         });
 
-        it('HUKS_Basic_Capability_Import_0200_reformed', 0, async function (done) {
+        it('HUKS_Basic_Capability_Import_Reformed_0200', 0, async function (done) {
             const srcKeyAlies = 'HUKS_Basic_Capability_Import_0200';
             let HuksOptions = {
                 properties: new Array(
@@ -704,7 +704,7 @@ export function SecurityHuksImportJsunit() {
             done();
         });
 
-        it('HUKS_Basic_Capability_Import_0300_reformed', 0, async function (done) {
+        it('HUKS_Basic_Capability_Import_Reformed_0300', 0, async function (done) {
             const srcKeyAlies1 = 'HUKS_Basic_Capability_Import_0300';
             const srcKeyAlies2 = 'HUKS_Basic_Capability_Import_0300Wrap';
             let genOptionsECC = makeImportECCOptions();
@@ -715,7 +715,7 @@ export function SecurityHuksImportJsunit() {
             done();
         });
 
-        it('HUKS_Basic_Capability_Import_0400_reformed', 0, async function (done) {
+        it('HUKS_Basic_Capability_Import_Reformed_0400', 0, async function (done) {
             const srcKeyAlies1 = 'HUKS_Basic_Capability_Import_0400';
             const srcKeyAlies2 = 'HUKS_Basic_Capability_Import_0400Wrap';
             let genOptionsX25519 = makeImportX25519Options();
@@ -726,7 +726,7 @@ export function SecurityHuksImportJsunit() {
             done();
         });
 
-        it('HUKS_Basic_Capability_Import_0500_reformed', 0, async function (done) {
+        it('HUKS_Basic_Capability_Import_Reformed_0500', 0, async function (done) {
             const srcKeyAlies = 'HUKS_Basic_Capability_Import_0500';
             let HuksOptions = {
                 properties: new Array(
@@ -744,7 +744,7 @@ export function SecurityHuksImportJsunit() {
             done();
         });
 
-        it('HUKS_Basic_Capability_Import_0600_reformed', 0, async function (done) {
+        it('HUKS_Basic_Capability_Import_Reformed_0600', 0, async function (done) {
             const srcKeyAlies = 'HUKS_Basic_Capability_Import_0600';
             let HuksOptions = {
                 properties: new Array(
@@ -762,7 +762,7 @@ export function SecurityHuksImportJsunit() {
             done();
         });
 
-        it('HUKS_Basic_Capability_Import_0700_reformed', 0, async function (done) {
+        it('HUKS_Basic_Capability_Import_Reformed_0700', 0, async function (done) {
             const srcKeyAlies = 'HUKS_Basic_Capability_Import_0700';
             let HuksOptions = {
                 properties: new Array(
@@ -780,7 +780,7 @@ export function SecurityHuksImportJsunit() {
             done();
         });
 
-        it('HUKS_Basic_Capability_Import_0800_reformed', 0, async function (done) {
+        it('HUKS_Basic_Capability_Import_Reformed_0800', 0, async function (done) {
             const srcKeyAlies = 'HUKS_Basic_Capability_Import_0800';
             let HuksOptions = {
                 properties: new Array(
@@ -807,7 +807,7 @@ export function SecurityHuksImportJsunit() {
             done();
         });
 
-        it('HUKS_Basic_Capability_Import_0900_reformed', 0, async function (done) {
+        it('HUKS_Basic_Capability_Import_Reformed_0900', 0, async function (done) {
             const srcKeyAlies = 'HUKS_Basic_Capability_Import_0900';
             let HuksOptions = {
                 properties: new Array(
@@ -826,7 +826,7 @@ export function SecurityHuksImportJsunit() {
             done();
         });
 
-        it('HUKS_Basic_Capability_Import_1000_reformed', 0, async function (done) {
+        it('HUKS_Basic_Capability_Import_Reformed_1000', 0, async function (done) {
             const srcKeyAlies = 'HUKS_Basic_Capability_Import_1000';
             let HuksOptions = {
                 properties: new Array(
@@ -845,7 +845,7 @@ export function SecurityHuksImportJsunit() {
             done();
         });
 
-        it('HUKS_Basic_Capability_Import_1100_reformed', 0, async function (done) {
+        it('HUKS_Basic_Capability_Import_Reformed_1100', 0, async function (done) {
             const srcKeyAlies = 'HUKS_Basic_Capability_Import_1100';
             let HuksOptions = {
                 properties: new Array(
@@ -864,7 +864,7 @@ export function SecurityHuksImportJsunit() {
             done();
         });
 
-        it('HUKS_Basic_Capability_Import_1200_reformed', 0, async function (done) {
+        it('HUKS_Basic_Capability_Import_Reformed_1200', 0, async function (done) {
             const srcKeyAlies = 'HUKS_Basic_Capability_Import_1200';
             let HuksOptions = {
                 properties: new Array(
@@ -883,7 +883,7 @@ export function SecurityHuksImportJsunit() {
             done();
         });
 
-        it('HUKS_Basic_Capability_Import_1300_reformed', 0, async function (done) {
+        it('HUKS_Basic_Capability_Import_Reformed_1300', 0, async function (done) {
             const srcKeyAlies = 'HUKS_Basic_Capability_Import_1300';
             let HuksOptions = {
                 properties: new Array(
@@ -902,7 +902,7 @@ export function SecurityHuksImportJsunit() {
             done();
         });
 
-        it('HUKS_Basic_Capability_Import_1400_reformed', 0, async function (done) {
+        it('HUKS_Basic_Capability_Import_Reformed_1400', 0, async function (done) {
             const srcKeyAlies = 'HUKS_Basic_Capability_Import_1400';
             let HuksOptions = {
                 properties: new Array(
@@ -921,7 +921,7 @@ export function SecurityHuksImportJsunit() {
             done();
         });
 
-        it('HUKS_Basic_Capability_Import_1500_reformed', 0, async function (done) {
+        it('HUKS_Basic_Capability_Import_Reformed_1500', 0, async function (done) {
             const srcKeyAlies = 'HUKS_Basic_Capability_Import_1500';
             let HuksOptions = {
                 properties: new Array(
@@ -937,7 +937,7 @@ export function SecurityHuksImportJsunit() {
             done();
         });
 
-        it('HUKS_Basic_Capability_Import_1600_reformed', 0, async function (done) {
+        it('HUKS_Basic_Capability_Import_Reformed_1600', 0, async function (done) {
             const srcKeyAlies = 'HUKS_Basic_Capability_Import_1600';
             let HuksOptions = {
                 properties: new Array(
@@ -954,7 +954,7 @@ export function SecurityHuksImportJsunit() {
             done();
         });
 
-        it('HUKS_Basic_Capability_Import_1700_reformed', 0, async function (done) {
+        it('HUKS_Basic_Capability_Import_Reformed_1700', 0, async function (done) {
             const srcKeyAlies = 'HUKS_Basic_Capability_Import_1700';
             let HuksOptions = {
                 properties: new Array(
@@ -971,7 +971,7 @@ export function SecurityHuksImportJsunit() {
             done();
         });
 
-        it('HUKS_Basic_Capability_Import_1800_reformed', 0, async function (done) {
+        it('HUKS_Basic_Capability_Import_Reformed_1800', 0, async function (done) {
             const srcKeyAlies = 'HUKS_Basic_Capability_Import_1800';
             let HuksOptions = {
                 properties: new Array(
@@ -988,7 +988,7 @@ export function SecurityHuksImportJsunit() {
             done();
         });
 
-        it('HUKS_Basic_Capability_Import_1900_reformed', 0, async function (done) {
+        it('HUKS_Basic_Capability_Import_Reformed_1900', 0, async function (done) {
             const srcKeyAlies = 'HUKS_Basic_Capability_Import_1900';
             let HuksOptions = {
                 properties: new Array(
@@ -1005,7 +1005,7 @@ export function SecurityHuksImportJsunit() {
             done();
         });
 
-        it('HUKS_Basic_Capability_Import_2000_reformed', 0, async function (done) {
+        it('HUKS_Basic_Capability_Import_Reformed_2000', 0, async function (done) {
             const srcKeyAlies = 'HUKS_Basic_Capability_Import_2000';
             let HuksOptions = {
                 properties: new Array(
@@ -1024,7 +1024,7 @@ export function SecurityHuksImportJsunit() {
             done();
         });
 
-        it('HUKS_Basic_Capability_Import_2100_reformed', 0, async function (done) {
+        it('HUKS_Basic_Capability_Import_Reformed_2100', 0, async function (done) {
             const srcKeyAlies = 'HUKS_Basic_Capability_Import_2100';
             let HuksOptions = {
                 properties: new Array(
@@ -1043,7 +1043,7 @@ export function SecurityHuksImportJsunit() {
             done();
         });
 
-        it('HUKS_Basic_Capability_Import_2200_reformed', 0, async function (done) {
+        it('HUKS_Basic_Capability_Import_Reformed_2200', 0, async function (done) {
             const srcKeyAlies = 'HUKS_Basic_Capability_Import_2200';
             let HuksOptions = {
                 properties: new Array(
@@ -1062,7 +1062,7 @@ export function SecurityHuksImportJsunit() {
             done();
         });
 
-        it('HUKS_Basic_Capability_Import_2300_reformed', 0, async function (done) {
+        it('HUKS_Basic_Capability_Import_Reformed_2300', 0, async function (done) {
             const srcKeyAlies = 'HUKS_Basic_Capability_Import_2300';
             let HuksOptions = {
                 properties: new Array(
@@ -1081,7 +1081,7 @@ export function SecurityHuksImportJsunit() {
             done();
         });
 
-        it('HUKS_Basic_Capability_Import_2400_reformed', 0, async function (done) {
+        it('HUKS_Basic_Capability_Import_Reformed_2400', 0, async function (done) {
             const srcKeyAlies = 'HUKS_Basic_Capability_Import_2400';
             let HuksOptions = {
                 properties: new Array(
@@ -1100,7 +1100,7 @@ export function SecurityHuksImportJsunit() {
             done();
         });
 
-        it('HUKS_Basic_Capability_Import_2500_reformed', 0, async function (done) {
+        it('HUKS_Basic_Capability_Import_Reformed_2500', 0, async function (done) {
             const srcKeyAlies = 'HUKS_Basic_Capability_Import_2500';
             let HuksOptions = {
                 properties: new Array(
@@ -1117,7 +1117,7 @@ export function SecurityHuksImportJsunit() {
             done();
         });
 
-        it('HUKS_Basic_Capability_Import_2600_reformed', 0, async function (done) {
+        it('HUKS_Basic_Capability_Import_Reformed_2600', 0, async function (done) {
             const srcKeyAlies1 = 'HUKS_Basic_Capability_Import_2600';
             const srcKeyAlies2 = 'HUKS_Basic_Capability_Import_2600Wrap';
             let genOptionsECC = makeImportECCOptions();
@@ -1129,7 +1129,7 @@ export function SecurityHuksImportJsunit() {
             done();
         });
 
-        it('HUKS_Basic_Capability_Import_2700_reformed', 0, async function (done) {
+        it('HUKS_Basic_Capability_Import_Reformed_2700', 0, async function (done) {
             const srcKeyAlies1 = 'HUKS_Basic_Capability_Import_2700_ECC';
             const srcKeyAlies2 = 'HUKS_Basic_Capability_Import_2700_ECCWrap';
             const srcKeyAlies4 = 'HUKS_Basic_Capability_Import_2700_X25519Wrap';
@@ -1159,7 +1159,7 @@ export function SecurityHuksImportJsunit() {
             done();
         });
 
-        it('HUKS_Basic_Capability_Import_2800_reformed', 0, async function (done) {
+        it('HUKS_Basic_Capability_Import_Reformed_2800', 0, async function (done) {
             const srcKeyAlies = 'HUKS_Basic_Capability_Import_2800';
             let HuksOptions = {
                 properties: new Array(
@@ -1176,7 +1176,7 @@ export function SecurityHuksImportJsunit() {
             done();
         });
 
-        it('HUKS_Basic_Capability_Import_2900_reformed', 0, async function (done) {
+        it('HUKS_Basic_Capability_Import_Reformed_2900', 0, async function (done) {
             const srcKeyAlies = 'HUKS_Basic_Capability_Import_2900';
             let HuksOptions = {
                 properties: new Array(
@@ -1193,7 +1193,7 @@ export function SecurityHuksImportJsunit() {
             done();
         });
 
-        it('HUKS_Basic_Capability_Import_3000_reformed', 0, async function (done) {
+        it('HUKS_Basic_Capability_Import_Reformed_3000', 0, async function (done) {
             const srcKeyAlies = 'HUKS_Basic_Capability_Import_3000';
             let HuksOptions = {
                 properties: new Array(
@@ -1209,7 +1209,7 @@ export function SecurityHuksImportJsunit() {
             done();
         });
 
-        it('HUKS_Basic_Capability_Import_3100_reformed', 0, async function (done) {
+        it('HUKS_Basic_Capability_Import_Reformed_3100', 0, async function (done) {
             const srcKeyAlies = 'HUKS_Basic_Capability_Import_3100';
             let HuksOptions = {
                 properties: new Array(

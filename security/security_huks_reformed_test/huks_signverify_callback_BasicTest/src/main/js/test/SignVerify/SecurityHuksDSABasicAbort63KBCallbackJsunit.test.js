@@ -21,7 +21,7 @@ let srcData63 = Data.Data63b;
 let srcData63Kb = stringToUint8Array(srcData63);
 export default function SecurityHuksDSABasicAbort63KBCallbackJsunit() {
 describe('SecurityHuksDSABasicAbort63KBCallbackJsunit', function () {
-  it('testSignVerifyDSA002_reformed', 0, async function (done) {
+  it('testReformedSignVerifyDSA002', 0, async function (done) {
     const srcKeyAlies = 'testSignVerifyDSASIGNSHA1KeyAlias002';
     let HuksOptions = {
       properties: new Array(

@@ -34,7 +34,7 @@ let HuksOptions63kb = {
 };
 export default function SecurityHuksDerivePBKDF2BasicAbort63KBPromiseJsunit() {
 describe('SecurityHuksDerivePBKDF2BasicAbort63KBPromiseJsunit', function () {
-  it('testDerivePBKDF2102_reformed', 0, async function (done) {
+  it('testReformedDerivePBKDF2102', 0, async function (done) {
     const srcKeyAliesFirst = 'testDerivePBKDF2Size128SHA256Abort63KBDeriveKeyAlias_01_101';
     let huksOptionsFinish = {
       properties: new Array(
