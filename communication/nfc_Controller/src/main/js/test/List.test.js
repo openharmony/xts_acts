@@ -14,11 +14,18 @@
  */
 
 import nfcControllerTest from './nfc.Controller.js'
+import nfcIsoDepTagTest from './nfc.IsoDepTag.js'
+import nfcMifareClassicTag from './nfc.MifareClassicTag.js'
+import nfcTagABFVTest from './nfc.tagABFV.js'
 import parameter from '@ohos.systemparameter';
 let info = parameter.getSync("const.SystemCapability.Communication.NFC.Core" ,"false");
 export default function testsuite() {
 if (info != "false")
 {
     nfcControllerTest();
+    nfcIsoDepTagTest();
+    nfcMifareClassicTag();
+    nfcTagABFVTest();
 }
 }
+
