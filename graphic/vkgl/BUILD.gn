@@ -128,13 +128,6 @@ group("VKGLCTSTest") {
     "src/khrgles31/build0004:ActsKhrgles31TestSuite0004",
     "src/khrgles32/build0001:ActsKhrgles32TestSuite0001",
     "src/khrgles32/build0002:ActsKhrgles32TestSuite0002",
-    "src/khrgles32single/build0001:ActsKhrgles32singleTestSuite0001",
-    "src/khrgles32single/build0002:ActsKhrgles32singleTestSuite0002",
-    "src/khrgles32single/build0003:ActsKhrgles32singleTestSuite0003",
-    "src/khrgles32single/build0004:ActsKhrgles32singleTestSuite0004",
-    "src/khrgles32single/build0005:ActsKhrgles32singleTestSuite0005",
-    "src/khrgles32single/build0006:ActsKhrgles32singleTestSuite0006",
-    "src/khrgles32single/build0007:ActsKhrgles32singleTestSuite0007",
     "src/khrglesext/build0001:ActsKhrglesextTestSuite0001",
   ]
 }

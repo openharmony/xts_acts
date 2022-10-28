@@ -14,15 +14,17 @@
             "post-push" : [
                 "chmod -R 777 /data/local/tmp/*",
                 "mkdir /data/local/tmp/gl_cts",
-                "tar zxvf /data/local/tmp/gl_cts.tar.gz -C /data/local/tmp/gl_cts",
                 "cp -r /data/local/tmp/gl_cts/data/gles2 /data/local/tmp",
                 "cp -r /data/local/tmp/gl_cts/data/gles3 /data/local/tmp",
                 "cp -r /data/local/tmp/gl_cts/data/gles31 /data/local/tmp"
             ],
             "push": [
                 "ActsDeqpgles3TestSuite0010->/data/local/tmp/ActsDeqpgles3TestSuite0010",
+                "../../../common/common/libdeqp_ohos_platform.z.so->/system/lib",
                 "../../../common/common/librosen_context.z.so->/system/lib",
-                "../../../../../test/xts/acts/graphic/vkgl/data/gl_cts.tar.gz->/data/local/tmp/gl_cts.tar.gz"
+                "../../../graphic/graphic_standard/libdeqp_SPIRV.z.so->/system/lib",
+                "../../../graphic/graphic_standard/libdeqp_SPVRemapper.z.so->/system/lib",
+                "../../../../../third_party/VK-GL-CTS/external/openglcts/data->/data/local/tmp/gl_cts"
             ],
             "type": "PushKit"
         },
