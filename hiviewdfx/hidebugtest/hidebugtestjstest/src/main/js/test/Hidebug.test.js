@@ -191,7 +191,7 @@ describe('HidebugJsTest', function () {
      * @tc.name      : startProfiling with overlong parameter
      * @tc.desc      : Start CPU Profiling.
      */
-    it('cDFX_DFR_Hiprofiler_Interface_1300', 0, function() {
+    it('DFX_DFR_Hiprofiler_Interface_1300', 0, function() {
         console.log('************* DFX_DFR_Hiprofiler_Interface_1300 Test start*************');
         let path = '/data/app/el2/100/base/com.hidebug.test/files/undefined.json'
         try {
