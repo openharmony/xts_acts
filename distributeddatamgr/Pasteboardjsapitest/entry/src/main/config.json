@@ -18,6 +18,7 @@
     "name": ".MyApplication",
     "mainAbility": "com.acts.distributeddatamgr.pasteboardtest.MainAbility",
     "deviceType": [
+      "tablet",
       "default",
       "phone"
     ],

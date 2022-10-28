@@ -17,6 +17,7 @@
     "package": "com.example.actsaccountsceneaccessible",
     "name": ".MyApplication",
     "deviceType": [
+      "tablet",
       "default",
       "phone"
     ],

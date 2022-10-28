@@ -2124,10 +2124,17 @@ describe('deviceKvStoreCallbackTest', function () {
     it('testDeviceKvStoreCloseResultSet104', 0, async function (done) {
         console.info('testDeviceKvStoreCloseResultSet104');
         try {
+            kvStore.closeResultSet(1, (err, data) => {
+                if(err != null){
+                    console.info('testDeviceKvStoreCloseResultSet104 e ' + err);
+                }else{
+                    console.info('testDeviceKvStoreCloseResultSet104 success(callback)');
+                    expect(null).assertFail();
+                }
+            })
             console.info('testDeviceKvStoreCloseResultSet104 success');
         }catch(e) {
             console.info('testDeviceKvStoreCloseResultSet104 e ' + e);
-            expect(null).assertFail();
         }
         done();
     })

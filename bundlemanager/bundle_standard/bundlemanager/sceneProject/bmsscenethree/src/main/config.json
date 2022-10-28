@@ -45,7 +45,7 @@
     ],
     "deviceType": [
       "default",
-      "default"
+      "tablet"
     ],
     "distro": {
       "moduleType": "feature",

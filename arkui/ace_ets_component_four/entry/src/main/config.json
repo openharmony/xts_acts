@@ -18,6 +18,7 @@
     "name": ".MyApplication",
     "mainAbility": "com.open.harmony.acetestfour.MainAbility",
     "deviceType": [
+      "tablet",
       "default",
       "phone"
     ],

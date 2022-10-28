@@ -81,13 +81,12 @@ export default function abilityTest() {
       let id;
       let connId;
 
-
       function subscribeCallBack(err, data) {
         console.debug("====>ACTS_ConnectAbility_0100 7 CallBack data:====>" + JSON.stringify(data));
         clearTimeout(id);
         expect(data.event).assertEqual("AMS_ConnectAbility_0100_commonEvent");
         console.debug("====>ACTS_ConnectAbility_0100 5  ");
-        globalThis.abilityContext.disconnectAbility(
+        globalThis.abilityContext.disconnectServiceExtensionAbility(
           connId,
           (error, data) => {
             console.log('featureAbilityTest DisconnectAbility result errCode : ' + error.code + " data: " + data)
@@ -97,7 +96,6 @@ export default function abilityTest() {
         commonEvent.unsubscribe(subscriber, unSubscribeCallback)
 
       }
-
 
       commonEvent.createSubscriber(subscriberInfoStartAbility_0100).then(async (data) => {
         console.debug("====>ACTS_ConnectAbility_0100 2  Subscriber1====>");
@@ -114,7 +112,7 @@ export default function abilityTest() {
         expect().assertFail();
         console.debug('AMS_ConnectAbility_0100 timeout');
         commonEvent.unsubscribe(subscriber, unSubscribeCallback)
-        globalThis.abilityContext.disconnectAbility(
+        globalThis.abilityContext.disconnectServiceExtensionAbility(
           connId,
           (error, data) => {
             console.log('featureAbilityTest DisconnectAbility result errCode : ' + error.code + " data: " + data)
@@ -139,7 +137,7 @@ export default function abilityTest() {
 
       id = setTimeout(timeout, START_ABILITY_TIMEOUT);
       console.debug("====>ACTS_ConnectAbility_0100 3  ");
-      connId = await globalThis.abilityContext.connectAbility(
+      connId = await globalThis.abilityContext.connectServiceExtensionAbility(
         {
           bundleName: "com.example.actsconnectabilitysystemabilitytest",
           abilityName: "com.example.actsconnectabilitysystemabilitytest.ServiceAbility",
@@ -152,7 +150,6 @@ export default function abilityTest() {
         }
       );
       console.debug("====>ACTS_ConnectAbility_0100 4  ");
-
     })
 
     /*

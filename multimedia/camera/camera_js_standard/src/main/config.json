@@ -18,6 +18,7 @@
     "name": ".MyApplication",
     "mainAbility": "com.open.harmony.multimedia.cameratest.MainAbility",
     "deviceType": [
+      "tablet",
       "default",
       "phone"
     ],

@@ -16,6 +16,7 @@
         "package": "ohos.acts.startup.syscap.function",
         "name": ".entry",
         "deviceType": [
+      "tablet",
       "default",
             "phone"
         ],

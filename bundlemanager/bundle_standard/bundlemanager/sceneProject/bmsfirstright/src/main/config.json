@@ -52,7 +52,7 @@
             }
         ],
         "deviceType": [
-      "default",
+            "default",
             "tablet"
         ],
         "mainAbility": "com.example.l3jsdemo.MainAbility",

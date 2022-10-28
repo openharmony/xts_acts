@@ -44,6 +44,7 @@ describe('ActsGetWantTest', function () {
                     mykey3: "str",
                     mykey4: [false, true, false],
                     mykey5: ["str", "STR", "helloopenharmony"],
+                    mykey6: {"subKey1":"STRING", "subKey2":10, "subKey3":true},
                 },
             }
         }).then((data) => {
@@ -64,6 +65,9 @@ describe('ActsGetWantTest', function () {
             expect(data.want.parameters.mykey5[0]).assertEqual("str");
             expect(data.want.parameters.mykey5[1]).assertEqual("STR");
             expect(data.want.parameters.mykey5[2]).assertEqual("helloopenharmony");
+            expect(data.want.parameters.mykey6["subKey1"]).assertEqual("STRING");
+            expect(data.want.parameters.mykey6["subKey2"]).assertEqual(10);
+            expect(data.want.parameters.mykey6["subKey3"]).assertEqual(true);
             setTimeout(()=>{
                 done();
             }, TIMEOUT_NUMBER);

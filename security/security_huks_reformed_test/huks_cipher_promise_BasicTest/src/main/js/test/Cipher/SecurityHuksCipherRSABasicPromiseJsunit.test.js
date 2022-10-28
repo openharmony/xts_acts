@@ -94,6 +94,7 @@ async function publicInitFunc(srcKeyAlies, HuksOptions) {
       .then((data) => {
         console.info(`promise: doInit success, data = ${JSON.stringify(data)}`);
         handle = data.handle;
+        expect(data.challenge == undefined).assertTrue();
       })
       .catch(error => {
         console.error(`promise: doInit key failed, code: ${error.code}, msg: ${error.message}`);

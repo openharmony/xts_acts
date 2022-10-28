@@ -16,6 +16,7 @@
         "package": "ohos.perf.test",
         "name": ".entry",
         "deviceType": [
+      "tablet",
       "default",
             "phone"
         ],

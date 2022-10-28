@@ -52,7 +52,7 @@ describe('bluetoothBLETest1', function() {
     beforeAll(function () {
         console.info('beforeAll called')
         gattServer = bluetooth.BLE.createGattServer();
-        gattClient = bluetooth.BLE.createGattClientDevice("00:00:00:00:00:00");
+        gattClient = bluetooth.BLE.createGattClientDevice("11:22:33:44:55:66");
     })
     beforeEach(async function(done) {
         console.info('beforeEach called')
@@ -85,10 +85,7 @@ describe('bluetoothBLETest1', function() {
              +'deviceId:' + deviceId + 'status:' + status);
             expect(true).assertEqual(BLEConnectChangedState !=null);
           }
-          
-        let gattServer = bluetooth.BLE.createGattServer();
         await gattServer.on("connectStateChange", Connected);
-        let gattClient = bluetooth.BLE.createGattClientDevice("11:22:33:44:55:66");
         let ret = gattClient.connect();
         await sleep(2000);
         console.info('[bluetooth_js] gattClient connect' + ret)
@@ -105,8 +102,7 @@ describe('bluetoothBLETest1', function() {
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('SUB_COMMUNICATION_BLUETOOTH_BLE_AddService_0100', 0, async function (done) {                     
-        let gattServer = bluetooth.BLE.createGattServer();
+    it('SUB_COMMUNICATION_BLUETOOTH_BLE_AddService_0100', 0, async function (done) { 
         let service = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
             isPrimary: true, includeServices: []};
         let ret = gattServer.addService(service);
@@ -129,7 +125,6 @@ describe('bluetoothBLETest1', function() {
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_AddService_0200', 0, async function (done) {
-        let gattServer = bluetooth.BLE.createGattServer();
         let descriptors = [];
         let arrayBuffer = new ArrayBuffer(8);
         let descV = new Uint8Array(arrayBuffer);
@@ -168,7 +163,6 @@ describe('bluetoothBLETest1', function() {
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_AddService_0300', 0, async function (done) {
-        let gattServer = bluetooth.BLE.createGattServer();                                
         let descriptors = [];
         let arrayBuffer = new ArrayBuffer(8);
         let descV = new Uint8Array(arrayBuffer);
@@ -211,7 +205,6 @@ describe('bluetoothBLETest1', function() {
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_AddService_0400', 0, async function (done) {
-        let gattServer = bluetooth.BLE.createGattServer();
         let characteristics = [];
         let arrayBufferC = new ArrayBuffer(8);
         let cccV = new Uint8Array(arrayBufferC);
@@ -242,7 +235,6 @@ describe('bluetoothBLETest1', function() {
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_AddService_0500', 0, async function (done) {
-        let gattServer = bluetooth.BLE.createGattServer();
         let descriptors = [];
         let arrayBuffer = new ArrayBuffer(8);
         let descV = new Uint8Array(arrayBuffer);
@@ -281,7 +273,6 @@ describe('bluetoothBLETest1', function() {
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_AddService_0600', 0, async function (done) {
-        let gattServer = bluetooth.BLE.createGattServer();
         let descriptors = [];
         let arrayBuffer = new ArrayBuffer(8);
         let descV = new Uint8Array(arrayBuffer);
@@ -326,7 +317,6 @@ describe('bluetoothBLETest1', function() {
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_AddService_0700', 0, async function (done) {
-        let gattServer = bluetooth.BLE.createGattServer();
         let descriptors = [];
         let arrayBuffer = new ArrayBuffer(8);
         let descV = new Uint8Array(arrayBuffer);
@@ -365,7 +355,6 @@ describe('bluetoothBLETest1', function() {
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_AddService_0800', 0, async function (done) {
-        let gattServer = bluetooth.BLE.createGattServer();
         let descriptors = [];
         let arrayBuffer = new ArrayBuffer(8);
         let descV = new Uint8Array(arrayBuffer);
@@ -404,7 +393,6 @@ describe('bluetoothBLETest1', function() {
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_AddService_0900', 0, async function (done) {
-        let gattServer = bluetooth.BLE.createGattServer();
         let descriptors = [];
         let arrayBuffer = new ArrayBuffer(8);
         let descV = new Uint8Array(arrayBuffer);
@@ -443,7 +431,6 @@ describe('bluetoothBLETest1', function() {
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_AddService_1000', 0, async function (done) {
-        let gattServer = bluetooth.BLE.createGattServer();
         let descriptors = [];
         let arrayBuffer = new ArrayBuffer(8);
         let descV = new Uint8Array(arrayBuffer);
@@ -482,7 +469,6 @@ describe('bluetoothBLETest1', function() {
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_AddService_1100', 0, async function (done) {
-        let gattServer = bluetooth.BLE.createGattServer();
         let descriptors = [];
         let arrayBuffer = new ArrayBuffer(8);
         let descV = new Uint8Array(arrayBuffer);
@@ -519,7 +505,6 @@ describe('bluetoothBLETest1', function() {
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_AddService_1200', 0, async function (done) {
-        let gattServer = bluetooth.BLE.createGattServer();
         let descriptors = [];
         let arrayBuffer = new ArrayBuffer(8);
         let descV = new Uint8Array(arrayBuffer);
@@ -557,7 +542,6 @@ describe('bluetoothBLETest1', function() {
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_RemoveService_0100', 0, async function (done) {
-        let gattServer = bluetooth.BLE.createGattServer();
         let gattService = {serviceUuid:'00001810-0000-1000-8000-00805F9B34FB', 
                  isPrimary: true,includeServices:[]};
         let gattService1 = {serviceUuid:'00001888-0000-1000-8000-00805f9b34fb',
@@ -569,7 +553,7 @@ describe('bluetoothBLETest1', function() {
         console.info('[bluetooth_js] bluetooth addService2 result : ' + retN);
         expect(retN).assertTrue();
         await sleep(1000);
-        let ret1=gattServer.removeService('00001888-0000-1000-8000-00805f9b34fb');
+        let ret1=gattServer.removeService('00001810-0000-1000-8000-00805F9B34FB');
         console.info('[bluetooth_js]removeService ret:'+ret1);
         expect(ret1).assertTrue();
         done();
@@ -584,7 +568,6 @@ describe('bluetoothBLETest1', function() {
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_RemoveService_0200', 0, async function (done) {
-        let gattServer = bluetooth.BLE.createGattServer();
         let ret1=gattServer.removeService('00001800-0000-1000-8000-00805f9b3442');
         console.info('[bluetooth_js]removeService ret:'+ret1);
         expect(ret1).assertFalse();
@@ -600,7 +583,6 @@ describe('bluetoothBLETest1', function() {
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_RemoveService_0300', 0, async function (done) {
-        let gattServer = bluetooth.BLE.createGattServer();
         let descriptors = [];
         let arrayBuffer = new ArrayBuffer(8);
         let descV = new Uint8Array(arrayBuffer);
@@ -629,7 +611,7 @@ describe('bluetoothBLETest1', function() {
         expect(ret1).assertTrue();
         let ret2=gattServer.removeService('00001810-0000-1000-8000-00805F9B34FB');
         await sleep(1000);
-        console.info('[bluetooth_js]removeService ret:'+ret2);
+        console.info('[bluetooth_js]removeService1 ret:'+ret2);
         expect(ret2).assertFalse();
         done();
     })
@@ -752,4 +734,5 @@ describe('bluetoothBLETest1', function() {
 
 })
 }
+
 

@@ -16,6 +16,7 @@
         "package": "ohos.acts.resourceschedule.taskmgr.js.function",
         "name": ".entry",
         "deviceType": [
+      "tablet",
       "default",
             "phone"
         ],
