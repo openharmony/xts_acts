@@ -69,11 +69,11 @@ describe("SensorJsTest_sensor_50", function () {
 	
 	/*
      * @tc.number:SUB_SensorsSystem_SIGNIFICANT_MOTION_JSTest_0120
-     * @tc.name: newSignificant_Motion_SensorJsTest023
+     * @tc.name: newSignificant_Motion_SensorJsTest012
      * @tc.desc: Functional Use Cases
      */
-    it("newSignificant_Motion_SensorJsTest023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-        console.info('---------newSignificant_Motion_SensorJsTest023--------------');
+    it("newSignificant_Motion_SensorJsTest012", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        console.info('---------newSignificant_Motion_SensorJsTest012--------------');
         sensor.on(sensor.SensorId.SIGNIFICANT_MOTION, callback);
         setTimeout(()=>{
             sensor.off(sensor.SensorId.SIGNIFICANT_MOTION);
@@ -83,19 +83,19 @@ describe("SensorJsTest_sensor_50", function () {
 
 	/*
      * @tc.number:SUB_SensorsSystem_SIGNIFICANT_MOTION_JSTest_0130
-     * @tc.name: newSignificant_Motion_SensorJsTest024
+     * @tc.name: newSignificant_Motion_SensorJsTest013
      * @tc.desc: Illegal ID passed in
      */
-    it("newSignificant_Motion_SensorJsTest024", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------newSignificant_Motion_SensorJsTest024--------------');
+    it("newSignificant_Motion_SensorJsTest013", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------newSignificant_Motion_SensorJsTest013--------------');
         function onSensorCallback(data) {
-            console.info('newSignificant_Motion_SensorJsTest024 callback in');
+            console.info('newSignificant_Motion_SensorJsTest013 callback in');
             expect(false).assertTrue();
         }
         try {
             sensor.on(invalid, onSensorCallback);
         } catch (error) {
-            console.info("newSignificant_Motion_SensorJsTest024 error:" + error);
+            console.info("newSignificant_Motion_SensorJsTest013 error:" + error);
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
@@ -104,53 +104,53 @@ describe("SensorJsTest_sensor_50", function () {
 
 	/*
      * @tc.number:SUB_SensorsSystem_SIGNIFICANT_MOTION_JSTest_0140
-     * @tc.name: newSignificant_Motion_SensorJsTest025
+     * @tc.name: newSignificant_Motion_SensorJsTest014
      * @tc.desc: For normal scenarios
      */
-    it("newSignificant_Motion_SensorJsTest025", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------newSignificant_Motion_SensorJsTest025--------------');
+    it("newSignificant_Motion_SensorJsTest014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------newSignificant_Motion_SensorJsTest014--------------');
         sensor.on(sensor.SensorId.SIGNIFICANT_MOTION, callback, {'interval': 100000000});
         setTimeout(()=>{
-            console.info('---------newSignificant_Motion_SensorJsTest025 off in--------------');
+            console.info('---------newSignificant_Motion_SensorJsTest014 off in--------------');
             sensor.off(sensor.SensorId.SIGNIFICANT_MOTION);
-            console.info('---------newSignificant_Motion_SensorJsTest025 off end--------------');
+            console.info('---------newSignificant_Motion_SensorJsTest014 off end--------------');
             done();
         }, 500);
     })
 
 	/*
      * @tc.number:SUB_SensorsSystem_SIGNIFICANT_MOTION_JSTest_0150
-     * @tc.name: newSignificant_Motion_SensorJsTest026
+     * @tc.name: newSignificant_Motion_SensorJsTest015
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("newSignificant_Motion_SensorJsTest026", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
-        console.info('---------newSignificant_Motion_SensorJsTest026--------------');
+    it("newSignificant_Motion_SensorJsTest015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
+        console.info('---------newSignificant_Motion_SensorJsTest015--------------');
         function onSensorCallback(data) {
-            console.info('newSignificant_Motion_SensorJsTest026  callback in');
+            console.info('newSignificant_Motion_SensorJsTest015  callback in');
 			expect(typeof (data.scalar)).assertEqual("number");
 			expect(typeof (data.timestamp)).assertEqual("number");
         }
         try {
             sensor.on(sensor.SensorId.SIGNIFICANT_MOTION, onSensorCallback, {'interval': 100000000}, 5);
         } catch (error) {
-            console.info("newSignificant_Motion_SensorJsTest026 error:" +error);
+            console.info("newSignificant_Motion_SensorJsTest015 error:" +error);
             expect(false).assertTrue();
             done();
         }
         setTimeout(()=>{
-            console.info('---------newSignificant_Motion_SensorJsTest026 off in--------------');
+            console.info('---------newSignificant_Motion_SensorJsTest015 off in--------------');
             sensor.off(sensor.SensorId.SIGNIFICANT_MOTION);
-            console.info('---------newSignificant_Motion_SensorJsTest026 off end--------------');
+            console.info('---------newSignificant_Motion_SensorJsTest015 off end--------------');
             done();
         }, 500);
     })
 
 	/*
      * @tc.number:SUB_SensorsSystem_SIGNIFICANT_MOTION_JSTest_0160
-     * @tc.name: newSignificant_Motion_SensorJsTest027
+     * @tc.name: newSignificant_Motion_SensorJsTest016
      * @tc.desc: Once Normal Subscription Scenario Use Case
      */
-    it("newSignificant_Motion_SensorJsTest027", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+    it("newSignificant_Motion_SensorJsTest016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         sensor.once(sensor.SensorId.SIGNIFICANT_MOTION, callback);
         setTimeout(()=>{
             expect(true).assertTrue();
@@ -216,18 +216,18 @@ describe("SensorJsTest_sensor_50", function () {
 
 	/*
      * @tc.number:SUB_SensorsSystem_SIGNIFICANT_MOTION_JSTest_0200
-     * @tc.name: newnewSignificant_Motion_SensorJsTest020
+     * @tc.name: newSignificant_Motion_SensorJsTest020
      * @tc.desc:SensorId1000000 of incoming exception
      */
-    it("newnewSignificant_Motion_SensorJsTest020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+    it("newSignificant_Motion_SensorJsTest020", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         function onSensorCallback(data) {
-            console.info('newnewSignificant_Motion_SensorJsTest020 on error');
+            console.info('newSignificant_Motion_SensorJsTest020 on error');
             expect(false).assertTrue();
         }
         try {
             sensor.off(1000000, onSensorCallback);
         } catch (error) {
-            console.info("newnewSignificant_Motion_SensorJsTest020 error:" +error);
+            console.info("newSignificant_Motion_SensorJsTest020 error:" +error);
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
             done();

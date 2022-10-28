@@ -22,6 +22,7 @@ describe("SensorJsTest_sensor_49", function () {
         expect(typeof (data.x)).assertEqual("number");
         expect(typeof (data.y)).assertEqual("number");
         expect(typeof (data.z)).assertEqual("number");
+        expect(typeof (data.w)).assertEqual("number");
         expect(typeof (data.timestamp)).assertEqual("number");
     }
 
@@ -30,6 +31,7 @@ describe("SensorJsTest_sensor_49", function () {
         expect(typeof (data.x)).assertEqual("number");
         expect(typeof (data.y)).assertEqual("number");
         expect(typeof (data.z)).assertEqual("number");
+        expect(typeof (data.w)).assertEqual("number");
         expect(typeof (data.timestamp)).assertEqual("number");
     }
 
@@ -73,11 +75,11 @@ describe("SensorJsTest_sensor_49", function () {
 	
 	/*
      * @tc.number:SUB_SensorsSystem_ROTATION_VECTOR_JSTest_0140
-     * @tc.name:newRotatingVector_SensorJsTest027
+     * @tc.name:newRotatingVector_SensorJsTest014
      * @tc.desc: Functional Use Cases
      */
-    it("newRotatingVector_SensorJsTest027", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
-        console.info('---------newRotatingVector_SensorJsTest027--------------');
+    it("newRotatingVector_SensorJsTest014", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
+        console.info('---------newRotatingVector_SensorJsTest014--------------');
         sensor.on(sensor.SensorId.ROTATION_VECTOR, callback);
         setTimeout(()=>{
             sensor.off(sensor.SensorId.ROTATION_VECTOR);
@@ -87,19 +89,19 @@ describe("SensorJsTest_sensor_49", function () {
 
 	/*
      * @tc.number:SUB_SensorsSystem_ROTATION_VECTOR_JSTest_0150
-     * @tc.name:newRotatingVector_SensorJsTest028
+     * @tc.name:newRotatingVector_SensorJsTest015
      * @tc.desc: Illegal ID passed in
      */
-    it("newRotatingVector_SensorJsTest028", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------newRotatingVector_SensorJsTest028--------------');
+    it("newRotatingVector_SensorJsTest015", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------newRotatingVector_SensorJsTest015--------------');
         function onSensorCallback(data) {
-            console.info('newRotatingVector_SensorJsTest028 callback in');
+            console.info('newRotatingVector_SensorJsTest015 callback in');
             expect(false).assertTrue();
         }
         try {
             sensor.on(invalid, onSensorCallback);
         } catch (error) {
-            console.info("newRotatingVector_SensorJsTest028 error:" + error);
+            console.info("newRotatingVector_SensorJsTest015 error:" + error);
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG);
             done();
@@ -108,45 +110,46 @@ describe("SensorJsTest_sensor_49", function () {
 
 	/*
      * @tc.number:SUB_SensorsSystem_ROTATION_VECTOR_JSTest_0160
-     * @tc.name:newRotatingVector_SensorJsTest029
+     * @tc.name:newRotatingVector_SensorJsTest016
      * @tc.desc: For normal scenarios
      */
-    it("newRotatingVector_SensorJsTest029", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
-        console.info('---------newRotatingVector_SensorJsTest029--------------');
+    it("newRotatingVector_SensorJsTest016", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        console.info('---------newRotatingVector_SensorJsTest016--------------');
         sensor.on(sensor.SensorId.ROTATION_VECTOR, callback, {'interval': 100000000});
         setTimeout(()=>{
-            console.info('---------newRotatingVector_SensorJsTest029 off in--------------');
+            console.info('---------newRotatingVector_SensorJsTest016 off in--------------');
             sensor.off(sensor.SensorId.ROTATION_VECTOR);
-            console.info('---------newRotatingVector_SensorJsTest029 off end--------------');
+            console.info('---------newRotatingVector_SensorJsTest016 off end--------------');
             done();
         }, 500);
     })
 
 	/*
      * @tc.number:SUB_SensorsSystem_ROTATION_VECTOR_JSTest_0170
-     * @tc.name:newRotatingVector_SensorJsTest030
+     * @tc.name:newRotatingVector_SensorJsTest017
      * @tc.desc:Verification results of the incorrect parameters of the test interface
      */
-    it("newRotatingVector_SensorJsTest030", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
-        console.info('---------newRotatingVector_SensorJsTest030--------------');
+    it("newRotatingVector_SensorJsTest017", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, function (done) {
+        console.info('---------newRotatingVector_SensorJsTest017--------------');
         function onSensorCallback(data) {
-            console.info('newRotatingVector_SensorJsTest030  callback in');
+            console.info('newRotatingVector_SensorJsTest017  callback in');
             expect(typeof (data.x)).assertEqual("number");
 			expect(typeof (data.y)).assertEqual("number");
 			expect(typeof (data.z)).assertEqual("number");
+			expect(typeof (data.w)).assertEqual("number");			
 			expect(typeof (data.timestamp)).assertEqual("number");
         }
         try {
             sensor.on(sensor.SensorId.ROTATION_VECTOR, onSensorCallback, {'interval': 100000000}, 5);
         } catch (error) {
-            console.info("newRotatingVector_SensorJsTest030 error:" +error);
+            console.info("newRotatingVector_SensorJsTest017 error:" +error);
             expect(false).assertTrue();
             done();
         }
         setTimeout(()=>{
-            console.info('---------newRotatingVector_SensorJsTest030 off in--------------');
+            console.info('---------newRotatingVector_SensorJsTest017 off in--------------');
             sensor.off(sensor.SensorId.ROTATION_VECTOR);
-            console.info('---------newRotatingVector_SensorJsTest030 off end--------------');
+            console.info('---------newRotatingVector_SensorJsTest017 off end--------------');
             done();
         }, 500);
     })
@@ -196,6 +199,7 @@ describe("SensorJsTest_sensor_49", function () {
             expect(typeof (data.x)).assertEqual("number");
 			expect(typeof (data.y)).assertEqual("number");
 			expect(typeof (data.z)).assertEqual("number");
+			expect(typeof (data.w)).assertEqual("number");				
 			expect(typeof (data.timestamp)).assertEqual("number");
             done();
         }
@@ -245,18 +249,18 @@ describe("SensorJsTest_sensor_49", function () {
 
 	/*
      * @tc.number:SUB_SensorsSystem_ROTATION_VECTOR_JSTest_0230
-     * @tc.name: newnewRotatingVector_SensorJsTest023
+     * @tc.name: newRotatingVector_SensorJsTest023
      * @tc.desc:SensorId1000000 of incoming exception
      */
-    it("newnewRotatingVector_SensorJsTest023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+    it("newRotatingVector_SensorJsTest023", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         function onSensorCallback(data) {
-            console.info('newnewRotatingVector_SensorJsTest023 on error');
+            console.info('newRotatingVector_SensorJsTest023 on error');
             expect(false).assertTrue();
         }
         try {
             sensor.off(1000000, onSensorCallback);
         } catch (error) {
-            console.info("newnewRotatingVector_SensorJsTest023 error:" +error);
+            console.info("newRotatingVector_SensorJsTest023 error:" +error);
             expect(error.code).assertEqual(PARAMETER_ERROR_CODE)
             expect(error.message).assertEqual(PARAMETER_ERROR_MSG)
             done();
@@ -274,6 +278,7 @@ describe("SensorJsTest_sensor_49", function () {
             expect(typeof (data.x)).assertEqual("number");
 			expect(typeof (data.y)).assertEqual("number");
 			expect(typeof (data.z)).assertEqual("number");
+			expect(typeof (data.w)).assertEqual("number");				
 			expect(typeof (data.timestamp)).assertEqual("number");
         });
         sensor.on(sensor.SensorId.ROTATION_VECTOR, (data)=>{
@@ -281,6 +286,7 @@ describe("SensorJsTest_sensor_49", function () {
             expect(typeof (data.x)).assertEqual("number");
 			expect(typeof (data.y)).assertEqual("number");
 			expect(typeof (data.z)).assertEqual("number");
+			expect(typeof (data.w)).assertEqual("number");				
 			expect(typeof (data.timestamp)).assertEqual("number");
         });
         setTimeout(()=>{
@@ -319,6 +325,7 @@ describe("SensorJsTest_sensor_49", function () {
             expect(typeof (data.x)).assertEqual("number");
 			expect(typeof (data.y)).assertEqual("number");
 			expect(typeof (data.z)).assertEqual("number");
+			expect(typeof (data.w)).assertEqual("number");				
 			expect(typeof (data.timestamp)).assertEqual("number");
         }, {'interval': 100000000});
         sensor.once(sensor.SensorId.ROTATION_VECTOR, (data)=>{
@@ -326,6 +333,7 @@ describe("SensorJsTest_sensor_49", function () {
             expect(typeof (data.x)).assertEqual("number");
 			expect(typeof (data.y)).assertEqual("number");
 			expect(typeof (data.z)).assertEqual("number");
+			expect(typeof (data.w)).assertEqual("number");				
 			expect(typeof (data.timestamp)).assertEqual("number");
         });
         setTimeout(()=>{
@@ -348,6 +356,7 @@ describe("SensorJsTest_sensor_49", function () {
             expect(typeof (data.x)).assertEqual("number");
 			expect(typeof (data.y)).assertEqual("number");
 			expect(typeof (data.z)).assertEqual("number");
+			expect(typeof (data.w)).assertEqual("number");				
 			expect(typeof (data.timestamp)).assertEqual("number");
         }, {'interval': 100000000});
         sensor.on(sensor.SensorId.ROTATION_VECTOR, (data)=>{
@@ -355,6 +364,7 @@ describe("SensorJsTest_sensor_49", function () {
             expect(typeof (data.x)).assertEqual("number");
 			expect(typeof (data.y)).assertEqual("number");
 			expect(typeof (data.z)).assertEqual("number");
+			expect(typeof (data.w)).assertEqual("number");				
 			expect(typeof (data.timestamp)).assertEqual("number");
         }, {'interval': 100000000});
         setTimeout(()=>{
