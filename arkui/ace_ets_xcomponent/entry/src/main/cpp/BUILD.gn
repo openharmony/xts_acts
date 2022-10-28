@@ -35,9 +35,9 @@ ohos_shared_library("nativerender") {
     "./render/egl_core.cpp",
     "./render/plugin_render.cpp",
   ]
-
-  stl = "c++_shared"
-
+  if (use_musl) {
+    stl = "c++_shared"
+  }
   include_dirs = [
     ".",
     "./common",
