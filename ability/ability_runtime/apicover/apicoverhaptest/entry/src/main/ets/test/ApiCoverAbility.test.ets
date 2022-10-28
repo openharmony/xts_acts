@@ -315,7 +315,7 @@ export default function ApiCoverTest() {
       try {
         let info: appManager.ProcessRunningInfo;
         let stageContext: common.AbilityStageContext = globalThis.stageContext;
-        let abilityContext: common.AbilityContext = globalThis.abilityContext;
+        let abilityContext: common.UIAbilityContext = globalThis.abilityContext;
         let appContext: common.ApplicationContext = abilityContext.getApplicationContext();
         let baseContext: common.BaseContext = stageContext;
         let context: common.Context = stageContext;
@@ -340,18 +340,7 @@ export default function ApiCoverTest() {
         abilityDelegator.addAbilityMonitor(abilityMonitor, (err, data) => {
           console.log(`printMsg, err: ${JSON.stringify(err)}, data: ${JSON.stringify(data)}`);
         })
-        abilityDelegator.printMsg(undefined);
-        abilityDelegator.printMsg(undefined, (err, data) => {
-          console.log(`printMsg, err: ${JSON.stringify(err)}, data: ${JSON.stringify(data)}`);
-        });
         let shellCmdResult: abilityDelegatorRegistry.ShellCmdResult;
-        shellCmdResult = await abilityDelegator.executeShellCmd(undefined);
-        abilityDelegator.executeShellCmd(undefined, 0, (err, data) => {
-          console.log(`executeShellCmd, err: ${JSON.stringify(err)}, data: ${JSON.stringify(data)}`);
-        });
-        abilityDelegator.executeShellCmd(undefined, (err, data) => {
-          console.log(`executeShellCmd, err: ${JSON.stringify(err)}, data: ${JSON.stringify(data)}`);
-        });
       } catch (err) {
         console.log(`catch code: ${err.code}, message: ${err.message}`);
       }
