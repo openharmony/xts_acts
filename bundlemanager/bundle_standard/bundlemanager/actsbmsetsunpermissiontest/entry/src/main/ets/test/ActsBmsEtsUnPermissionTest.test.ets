@@ -197,38 +197,6 @@ export default function actsBmsJsUnPermissionTest() {
             });
         });
 
-        /*
-        * @tc.number: SUB_BMS_APPINFO_EXTENSION_0019
-        * @tc.name: queryExtensionAbilityInfosUnPermission
-        * @tc.desc: test queryExtensionAbilityInfos no permission
-        */
-        it('queryExtensionAbilityInfosUnPermission', 0, async function (done) {
-            await bundle.queryExtensionAbilityInfos(
-                {
-                    "bundleName": BUNDLE_NAME1,
-                    "abilityName": ABILITY_NAME1
-                }, bundle.ExtensionAbilityType.FORM, bundle.ExtensionFlag.GET_EXTENSION_INFO_DEFAULT,
-                userId).then(data => {
-                    expect(data).assertFail();
-                }).catch(err => {
-                    expect(err).assertEqual(1);
-                });
-            bundle.queryExtensionAbilityInfos(
-                {
-                    "bundleName": BUNDLE_NAME1,
-                    "abilityName": ABILITY_NAME1
-                }, bundle.ExtensionAbilityType.FORM, bundle.ExtensionFlag.GET_EXTENSION_INFO_DEFAULT,
-                userId, (err, data) => {
-                    if (err) {
-                        expect(err).assertEqual(1);
-                        done();
-                        return;
-                    }
-                    expect(data).assertFail();
-                    done();
-                })
-        })
-
         async function checkAbilityInfo(data) {
             console.info("checkAbilityInfo start !!!");
             expect(data.bundleName).assertEqual("com.example.actsbmsetsunpermissiontest");
@@ -255,7 +223,6 @@ export default function actsBmsJsUnPermissionTest() {
             expect(data.writePermission).assertEqual("");
             expect(data.targetAbility).assertEqual("");
             expect(data.metaData.length).assertEqual(0);
-            expect(data.metadata.length).assertEqual(0);
             checkApplicationInfo(data.applicationInfo);
             console.log("---checkAbilityInfo_other End---  ");
         }
@@ -269,19 +236,13 @@ export default function actsBmsJsUnPermissionTest() {
             expect(info.descriptionId).assertEqual(0);
             expect(info.icon).assertEqual("$media:icon");
             expect(info.iconId > 0).assertTrue();
-            expect(info.iconIndex > 0).assertTrue();
-            expect(info.iconIndex).assertEqual(info.iconId);
             expect(info.label).assertEqual("$string:entry_MainAbility");
             expect(info.labelId > 0).assertTrue();
-            expect(info.labelIndex > 0).assertTrue();
-            expect(info.labelIndex).assertEqual(info.labelId);
             expect(info.systemApp).assertEqual(false);
             expect(info.entryDir).assertEqual("/data/app/el1/bundle/public/com.example.actsbmsetsunpermissiontest/com.example.actsbmsetsunpermissiontest");
             expect(info.supportedModes).assertEqual(0);
             expect(info.process).assertEqual("com.example.actsbmsetsunpermissiontest");
             expect(info.moduleSourceDirs[0]).assertEqual("/data/app/el1/bundle/public/com.example.actsbmsetsunpermissiontest/com.example.actsbmsetsunpermissiontest");
-            expect(JSON.stringify(info.metadata)).assertEqual("{}");
-            expect(JSON.stringify(info.metadata)).assertEqual("{}");
             expect(info.enabled).assertEqual(true);
             expect(info.uid).assertLarger(0);
             expect(info.entityType).assertEqual("unspecified");
