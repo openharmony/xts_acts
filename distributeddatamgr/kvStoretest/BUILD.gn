@@ -16,9 +16,6 @@ import("//test/xts/tools/build/suite.gni")
 group("kvStoretest") {
   testonly = true
   if (is_standard_system) {
-    deps = [
-      "kvStoreStagetest:ActsKvStoreStageTest",
-      "kvStorejstest/hap:kvStore_js_test",
-    ]
+    deps = [ "kvStorejstest/hap:kvStore_js_test" ]
   }
 }
