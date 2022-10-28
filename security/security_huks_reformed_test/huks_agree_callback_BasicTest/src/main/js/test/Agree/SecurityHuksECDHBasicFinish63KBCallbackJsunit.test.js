@@ -36,7 +36,7 @@ let HuksOptions63kb = {
 
 export default function SecurityHuksECDHBasicFinish63KBCallbackJsunit() {
 describe('SecurityHuksECDHBasicFinish63KBCallbackJsunit', function () {
-  it('testAgreeEDCH101_reformed', 0, async function (done) {
+  it('testReformedAgreeEDCH001', 0, async function (done) {
     const srcKeyAliesFirst = 'testAgreeECDHSize224Finish63KBAgreeKeyAlias_01_001';
     const srcKeyAliesSecond = 'testAgreeECDHSize224Finish63KBAgreeKeyAlias_02_001';
     let huksOptionsFinish = {

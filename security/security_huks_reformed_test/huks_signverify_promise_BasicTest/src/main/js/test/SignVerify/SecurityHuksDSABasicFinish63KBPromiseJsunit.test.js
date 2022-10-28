@@ -22,7 +22,7 @@ let srcData63Kb = stringToUint8Array(srcData63);
 let finishOutData;
 export default function SecurityHuksDSABasicFinish63KBPromiseJsunit() {
 describe('SecurityHuksDSABasicFinish63KBPromiseJsunit', function () {
-  it('testSignVerifyDSA101_reformed', 0, async function (done) {
+  it('testReformedSignVerifyDSA101', 0, async function (done) {
     const srcKeyAlies = 'testSignVerifyDSASIGNSHA1KeyAlias101';
     let HuksOptions = {
       properties: new Array(

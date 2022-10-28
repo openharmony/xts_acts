@@ -129,7 +129,7 @@ function deleteKeyItem(srcKeyAlies, HuksOptions) {
 export default function securityHuksExportSupportJsunit() {
   describe('securityHuksExportSupportJsunit', function () {
     // HKS_SUPPORT_SM4_CBC_NOPADDING
-    it('HUKS_Basic_Capability_Export_0100_reformed', 0, async function (done) {
+    it('HUKS_Basic_Capability_Export_Reformed_0100', 0, async function (done) {
       let srcKeyAlies = "HUKS_Basic_Capability_Export_0100";
       let HuksOptions = {
         properties: new Array(
@@ -148,7 +148,7 @@ export default function securityHuksExportSupportJsunit() {
       done();
     });
 
-    it('HUKS_Basic_Capability_Export_0200_reformed', 0, async function (done) {
+    it('HUKS_Basic_Capability_Export_Reformed_0200', 0, async function (done) {
       let srcKeyAlies = "HUKS_Basic_Capability_Export_0200";
       let HuksOptions = {
         properties: new Array(
@@ -167,7 +167,7 @@ export default function securityHuksExportSupportJsunit() {
       done();
     });
 
-    it('HUKS_Basic_Capability_Export_0300_reformed', 0, async function (done) {
+    it('HUKS_Basic_Capability_Export_Reformed_0300', 0, async function (done) {
       let srcKeyAlies = "HUKS_Basic_Capability_Export_0300";
       let HuksOptions = {
         properties: new Array(
@@ -186,7 +186,7 @@ export default function securityHuksExportSupportJsunit() {
       done();
     });
 
-    it('HUKS_Basic_Capability_Export_0400_reformed', 0, async function (done) {
+    it('HUKS_Basic_Capability_Export_Reformed_0400', 0, async function (done) {
       let srcKeyAlies = "HUKS_Basic_Capability_Export_0400";
       let HuksOptions = {
         properties: new Array(
@@ -205,7 +205,7 @@ export default function securityHuksExportSupportJsunit() {
       done();
     });
 
-    it('HUKS_Basic_Capability_Export_0500_reformed', 0, async function (done) {
+    it('HUKS_Basic_Capability_Export_Reformed_0500', 0, async function (done) {
       let srcKeyAlies = "HUKS_Basic_Capability_Export_0500";
       let HuksOptions = {
         properties: new Array(
@@ -224,7 +224,7 @@ export default function securityHuksExportSupportJsunit() {
       done();
     });
 
-    it('HUKS_Basic_Capability_Export_0600_reformed', 0, async function (done) {
+    it('HUKS_Basic_Capability_Export_Reformed_0600', 0, async function (done) {
       let srcKeyAlies = "HUKS_Basic_Capability_Export_0600";
       let HuksOptions = {
         properties: new Array(
@@ -243,7 +243,7 @@ export default function securityHuksExportSupportJsunit() {
       done();
     });
 
-    it('HUKS_Basic_Capability_Export_0700_reformed', 0, async function (done) {
+    it('HUKS_Basic_Capability_Export_Reformed_0700', 0, async function (done) {
       let srcKeyAlies = "HUKS_Basic_Capability_Export_0700";
       let HuksOptions = {
         properties: new Array(
@@ -260,7 +260,7 @@ export default function securityHuksExportSupportJsunit() {
       done();
     });
 
-    it('HUKS_Basic_Capability_Export_0800_reformed', 0, async function (done) {
+    it('HUKS_Basic_Capability_Export_Reformed_0800', 0, async function (done) {
       let srcKeyAlies = "HUKS_Basic_Capability_Export_0800";
       let HuksOptions = {
         properties: new Array(
@@ -277,7 +277,7 @@ export default function securityHuksExportSupportJsunit() {
       done();
     });
 
-    it('HUKS_Basic_Capability_Export_0900_reformed', 0, async function (done) {
+    it('HUKS_Basic_Capability_Export_Reformed_0900', 0, async function (done) {
       let srcKeyAlies = "HUKS_Basic_Capability_Export_0900";
       let HuksOptions = {
         properties: new Array(
@@ -294,7 +294,7 @@ export default function securityHuksExportSupportJsunit() {
       done();
     });
 
-    it('HUKS_Basic_Capability_Export_1000_reformed', 0, async function (done) {
+    it('HUKS_Basic_Capability_Export_Reformed_1000', 0, async function (done) {
       let srcKeyAlies = "HUKS_Basic_Capability_Export_1000";
       let HuksOptions = {
         properties: new Array(
@@ -311,7 +311,7 @@ export default function securityHuksExportSupportJsunit() {
       done();
     });
 
-    it('HUKS_Basic_Capability_Export_1100_reformed', 0, async function (done) {
+    it('HUKS_Basic_Capability_Export_Reformed_1100', 0, async function (done) {
       let srcKeyAlies = "HUKS_Basic_Capability_Export_1100";
       let HuksOptions = {
         properties: new Array(
@@ -330,7 +330,7 @@ export default function securityHuksExportSupportJsunit() {
       done();
     });
 
-    it('HUKS_Basic_Capability_Export_1200_reformed', 0, async function (done) {
+    it('HUKS_Basic_Capability_Export_Reformed_1200', 0, async function (done) {
       let srcKeyAlies = "HUKS_Basic_Capability_Export_1200";
       let HuksOptions = {
         properties: new Array(
@@ -349,7 +349,7 @@ export default function securityHuksExportSupportJsunit() {
       done();
     });
 
-    it('HUKS_Basic_Capability_Export_1300_reformed', 0, async function (done) {
+    it('HUKS_Basic_Capability_Export_Reformed_1300', 0, async function (done) {
       let srcKeyAlies = "HUKS_Basic_Capability_Export_1300";
       let HuksOptions = {
         properties: new Array(
@@ -368,7 +368,7 @@ export default function securityHuksExportSupportJsunit() {
       done();
     });
 
-    it('HUKS_Basic_Capability_Export_1400_reformed', 0, async function (done) {
+    it('HUKS_Basic_Capability_Export_Reformed_1400', 0, async function (done) {
       let srcKeyAlies = "HUKS_Basic_Capability_Export_1400";
       let HuksOptions = {
         properties: new Array(
@@ -387,7 +387,7 @@ export default function securityHuksExportSupportJsunit() {
       done();
     });
 
-    it('HUKS_Basic_Capability_Export_1500_reformed', 0, async function (done) {
+    it('HUKS_Basic_Capability_Export_Reformed_1500', 0, async function (done) {
       let srcKeyAlies = "HUKS_Basic_Capability_Export_1500";
       let HuksOptions = {
         properties: new Array(
@@ -404,7 +404,7 @@ export default function securityHuksExportSupportJsunit() {
       done();
     });
 
-    it('HUKS_Basic_Capability_Export_1600_reformed', 0, async function (done) {
+    it('HUKS_Basic_Capability_Export_Reformed_1600', 0, async function (done) {
       let srcKeyAlies = "HUKS_Basic_Capability_Export_1600";
       let HuksOptions = {
         properties: new Array(
@@ -423,7 +423,7 @@ export default function securityHuksExportSupportJsunit() {
       done();
     });
 
-    it('HUKS_Basic_Capability_Export_1700_reformed', 0, async function (done) {
+    it('HUKS_Basic_Capability_Export_Reformed_1700', 0, async function (done) {
       let srcKeyAlies = "HUKS_Basic_Capability_Export_1700";
       let HuksOptions = {
         properties: new Array(
@@ -440,7 +440,7 @@ export default function securityHuksExportSupportJsunit() {
       done();
     });
 
-    it('HUKS_Basic_Capability_Export_1800_reformed', 0, async function (done) {
+    it('HUKS_Basic_Capability_Export_Reformed_1800', 0, async function (done) {
       let srcKeyAlies = "HUKS_Basic_Capability_Export_1800";
       let HuksOptions = {
         properties: new Array(
@@ -457,7 +457,7 @@ export default function securityHuksExportSupportJsunit() {
       done();
     });
 
-    it('HUKS_Basic_Capability_Export_2000_reformed', 0, async function (done) {
+    it('HUKS_Basic_Capability_Export_Reformed_2000', 0, async function (done) {
       const srcKeyAlies = '****'
       let HuksOptions = {
         properties: new Array(

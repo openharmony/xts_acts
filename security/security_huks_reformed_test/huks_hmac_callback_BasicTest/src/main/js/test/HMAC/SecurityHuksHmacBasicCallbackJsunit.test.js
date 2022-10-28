@@ -269,7 +269,7 @@ async function publicHmacGenFunc(srcKeyAlies, HuksOptions, thirdInderfaceName) {
 
 export function SecurityHuksHmacCallbackJsunit() {
   describe("SecurityHuksHmacCallbackJsunit", function () {
-    it("testHmacSHA1001", 0, async function (done) {
+    it("testReformedHmacSHA1001", 0, async function (done) {
       let srcKeyAlies = "testHmacDigestSHA1KeyAlias001";
       let HuksOptions = {
         properties: new Array(
@@ -284,7 +284,7 @@ export function SecurityHuksHmacCallbackJsunit() {
       done();
     });
 
-    it("testHmacSHA1002", 0, async function (done) {
+    it("testReformedHmacSHA1002", 0, async function (done) {
       let srcKeyAlies = "testHmacDigestSHA1KeyAlias002";
       let HuksOptions = {
         properties: new Array(
@@ -297,7 +297,7 @@ export function SecurityHuksHmacCallbackJsunit() {
       await publicHmacGenFunc(srcKeyAlies, HuksOptions, "abort");
       done();
     });
-    it("testHmacSHA1003", 0, async function (done) {
+    it("testReformedHmacSHA1003", 0, async function (done) {
       let srcKeyAlies = "testHmacDigestSHA1KeyAlias003";
       let HuksOptions = {
         properties: new Array(
@@ -310,7 +310,7 @@ export function SecurityHuksHmacCallbackJsunit() {
       await publicHmacGenFunc(srcKeyAlies, HuksOptions, "finish");
       done();
     });
-    it("testHmacSHA1004", 0, async function (done) {
+    it("testReformedHmacSHA1004", 0, async function (done) {
       let srcKeyAlies = "testHmacDigestSHA1KeyAlias004";
       let HuksOptions = {
         properties: new Array(
@@ -323,7 +323,7 @@ export function SecurityHuksHmacCallbackJsunit() {
       await publicHmacGenFunc(srcKeyAlies, HuksOptions, "abort");
       done();
     });
-    it("testHmacSM3001", 0, async function (done) {
+    it("testReformedHmacSM3001", 0, async function (done) {
       let srcKeyAlies = "testHmacDigestSM3KeyAlias001";
       let HuksOptions = {
         properties: new Array(
@@ -338,7 +338,7 @@ export function SecurityHuksHmacCallbackJsunit() {
       done();
     });
 
-    it("testHmacSM3002", 0, async function (done) {
+    it("testReformedHmacSM3002", 0, async function (done) {
       let srcKeyAlies = "testHmacDigestSM3KeyAlias002";
       let HuksOptions = {
         properties: new Array(
@@ -351,7 +351,7 @@ export function SecurityHuksHmacCallbackJsunit() {
       await publicHmacGenFunc(srcKeyAlies, HuksOptions, "abort");
       done();
     });
-    it("testHmacSM3003", 0, async function (done) {
+    it("testReformedHmacSM3003", 0, async function (done) {
       let srcKeyAlies = "testHmacDigestSM3KeyAlias003";
       let HuksOptions = {
         properties: new Array(
@@ -364,7 +364,7 @@ export function SecurityHuksHmacCallbackJsunit() {
       await publicHmacGenFunc(srcKeyAlies, HuksOptions, "finish");
       done();
     });
-    it("testHmacSM3004", 0, async function (done) {
+    it("testReformedHmacSM3004", 0, async function (done) {
       let srcKeyAlies = "testHmacDigestSM3KeyAlias004";
       let HuksOptions = {
         properties: new Array(

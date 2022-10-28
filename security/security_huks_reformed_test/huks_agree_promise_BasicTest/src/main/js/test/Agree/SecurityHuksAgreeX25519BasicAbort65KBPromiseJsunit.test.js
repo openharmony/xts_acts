@@ -36,7 +36,7 @@ let HuksOptions65kb = {
 
 export default function SecurityHuksAgreeX25519BasicAbort65KBPromiseJsunit() {
 describe('SecurityHuksAgreeX25519BasicAbort65KBPromiseJsunit', function () {
-  it('testAgreeX25519104_reformed', 0, async function (done) {
+  it('testReformedAgreeX25519104', 0, async function (done) {
     const srcKeyAliesFirst = 'testAgreeX25519Size256Abort65KBAgreeKeyAlias_01_101';
     const srcKeyAliesSecond = 'testAgreeX25519Size256Abort65KBAgreeKeyAlias_02_101';
     let huksOptionsFinish = {
