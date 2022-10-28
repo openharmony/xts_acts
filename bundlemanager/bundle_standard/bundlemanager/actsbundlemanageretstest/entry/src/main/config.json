@@ -52,6 +52,7 @@
           }
         ],
         "visible": true,
+        "orientation": "unspecified",
         "srcPath": "MainAbility",
         "name": ".MainAbility",
         "srcLanguage": "ets",
@@ -81,6 +82,28 @@
         "srcLanguage": "ets",
         "description": "$string:description_serviceability",
         "type": "service"
+      },
+      {
+        "name": ".DataAbility",
+        "srcLanguage": "ets",
+        "srcPath": "MainAbility",
+        "icon": "$media:icon",
+        "description": "$string:DataAbility_desc",
+        "type": "data",
+        "uri": "dataability://com.open.harmony.packagemag.DataAbility"
+      },
+      {
+        "orientation": "followRecent",
+        "formsEnabled": false,
+        "name": ".FollowRecentAbility",
+        "srcLanguage": "ets",
+        "srcPath": "MainAbility",
+        "icon": "$media:icon",
+        "description": "$string:PageAbility1_desc",
+        "label": "$string:PageAbility1_label",
+        "type": "page",
+        "visible": true,
+        "launchType": "standard"
       }
     ],
     "js": [

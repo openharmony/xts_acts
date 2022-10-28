@@ -29,8 +29,10 @@ import getWindowPorperties from './getWindowProperties.test.ets';
 import GetSecondModuleTest from './GetSecondModule.test.ets';
 import GetInfoSync from './GetInfoSync.test.ets';
 import GetResourceTest from './GetResourceTest.test.ets';
+import getBundleInfoForSelf from './GetBundleInfoForSelf.test.ets';
 
 export default function testsuite() {
+  getBundleInfoForSelf();
   getBundleArchiveInfo();
   queryExtensionAbilityInfos();
   getAbilityIcon();
