@@ -1295,6 +1295,33 @@ static napi_value runScript(napi_env env, napi_callback_info info) {
     return result;
 }
 
+static napi_value TestLatin1(napi_env env, napi_callback_info info) {
+    size_t argc = 1;
+    napi_value args[1];
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, NULL, NULL));
+
+    NAPI_ASSERT(env, argc >= 1, "Wrong number of arguments");
+
+    napi_valuetype valuetype;
+    NAPI_CALL(env, napi_typeof(env, args[0], &valuetype));
+
+    NAPI_ASSERT(env, valuetype == napi_string,
+            "Wrong type of argment. Expects a string.");
+
+    char buffer[128];
+    size_t buffer_size = 128;
+    size_t copied;
+
+    NAPI_CALL(env,
+            napi_get_value_string_latin1(env, args[0], buffer, buffer_size, &copied));
+
+    napi_value output;
+    NAPI_CALL(env, napi_create_string_latin1(env, buffer, copied, &output));
+
+    return output;
+}
+
+
 EXTERN_C_START
 
 static napi_value Init(napi_env env, napi_value exports) {
@@ -1368,6 +1395,7 @@ static napi_value Init(napi_env env, napi_value exports) {
     DECLARE_NAPI_FUNCTION("createPromise", createPromise),
     DECLARE_NAPI_FUNCTION("resolveAndRejectDeferred", resolveAndRejectDeferred),
     DECLARE_NAPI_FUNCTION("isPromise", isPromise),
+    DECLARE_NAPI_FUNCTION("TestLatin1", TestLatin1),
     DECLARE_NAPI_FUNCTION("runScript", runScript), };
 
     NAPI_CALL(env, napi_define_properties(env, exports, sizeof(properties) / sizeof(*properties), properties));
