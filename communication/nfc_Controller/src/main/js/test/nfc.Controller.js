@@ -18,56 +18,6 @@ import tag from '@ohos.nfc.tag';
 import controller from '@ohos.nfc.controller';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
-
-let aTag = {
-    "uid": "15273952",
-    "technology": [1, 2],
-    "extrasData": [
-        {
-            "sak": 0x08, "atqa": "B000"
-        },
-        {
-            "appData": "A0C0", "protocolInfo": "131F"
-        }
-    ],
-    "tagRfDiscId": 1,
-};
-
-let vTag = {
-    "uid": "17293952",
-    "technology": [ 5 ],
-    "extrasData": [{"responseFlags": 0xA0, "dsfId": 0x13}],
-    "tagRfDiscId": 1,
-};
-
-let bTag = {
-    "uid": "15273952",
-    "technology": [1, 2],
-    "extrasData": [
-        {
-            "sak": 0x08, "atqa": "B000"
-        },
-        {
-            "appData": "A0C0", "protocolInfo": "131F"
-        }
-    ],
-    "tagRfDiscId": 1,
-};
-
-let fTag = {
-    "uid": "15273952",
-    "technology": [2, 4],
-    "extrasData": [
-        {
-            "appData": "A0C0", "protInfo": "131F"
-        },
-        {
-            "systemCode": "A0C0", "pmm": "131F"
-        }
-    ],
-    "tagRfDiscId": 1,
-};
-
 function sleep(delay) { // delay x ms
     let start = (new Date()).getTime();
     while ((new Date()).getTime() - start < delay) {
@@ -195,63 +145,8 @@ export default function nfcControllerTest() {
                 expect(error!=null).assertTrue();
             }
         })
-    
-        /**
-         * @tc.number SUB_COMMUNICATION_NFC_getTag_js_0700
-         * @tc.name Test getNfcATagapi
-         * @tc.desc Obtaining an NFC Type A Tag Object
-         * @tc.size since 7
-         * @tc.type Function
-         * @tc.level Level 2
-         */
-        it('SUB_COMMUNICATION_NFC_getTag_js_0700', 0, function ()  {
-            let taga = tag.getNfcATag(aTag);
-            expect(taga !=null).assertTrue();
-            console.info('aTag is--<-!!!->' + JSON.stringify(taga));
-        })   
-    
-        /**
-         * @tc.number SUB_COMMUNICATION_NFC_getTag_js_0800
-         * @tc.name Test getNfcVTagapi
-         * @tc.desc Obtaining an NFC Type V Tag Object
-         * @tc.size since 7
-         * @tc.type Function
-         * @tc.level Level 2
-         */
-        it('SUB_COMMUNICATION_NFC_getTag_js_0800', 0, function ()  {
-            let tagV = tag.getNfcVTag(vTag);
-            expect(vTag !=null).assertTrue();
-            console.info('vTag is--<-!!!->' + JSON.stringify(tagV));
-        })   
-    
-        /**
-         * @tc.number SUB_COMMUNICATION_NFC_getTag_js_0900
-         * @tc.name Test getNfcBTagapi
-         * @tc.desc Obtaining an NFC Type B Tag Object
-         * @tc.size since 7
-         * @tc.type Function
-         * @tc.level Level 2
-         */
-        it('SUB_COMMUNICATION_NFC_getTag_js_0900', 0, function ()  {
-            let tagB = tag.getNfcBTag(bTag);
-            expect(tagB !=null).assertTrue();
-            console.info('bTag is--<-!!!->' + JSON.stringify(tagB));
-        })   
-    
-        /**
-         * @tc.number SUB_COMMUNICATION_NFC_getTag_js_1000
-         * @tc.name Test getNfcFTagapi
-         * @tc.desc Obtaining an NFC Type F Tag Object
-         * @tc.size since 7
-         * @tc.type Function
-         * @tc.level Level 2
-         */
-        it('SUB_COMMUNICATION_NFC_getTag_js_1000', 0, function ()  {
-            let tagF = tag.getNfcFTag(fTag);
-            expect(tagF !=null).assertTrue();
-            console.info('fTag is--<-!!!->' + JSON.stringify(tagF));
-        })
         console.log("*************[nfc_test] start nfc js unit test end*************");
     })
 }
+
 
