@@ -16,6 +16,7 @@
         "package": "com.hidebug.test",
         "name": ".entry",
         "deviceType": [
+      "tablet",
       "default",
             "phone"
         ],

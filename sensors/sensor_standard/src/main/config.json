@@ -16,6 +16,7 @@
         "package": "ohos.acts.sensors.sensor.function",
         "name": ".entry",
         "deviceType": [
+      "tablet",
       "default",
             "phone"
         ],

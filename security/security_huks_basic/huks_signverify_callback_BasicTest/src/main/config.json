@@ -18,6 +18,7 @@
         "name": ".entry",
         "mainAbility": ".MainAbility",
         "deviceType": [
+      "tablet",
       "default",
             "phone"
         ],

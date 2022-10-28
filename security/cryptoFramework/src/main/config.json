@@ -17,7 +17,12 @@
     "package": "com.openharmony.cryptoFramework",
     "name": ".entry",
     "mainAbility": ".MainAbility",
-    "deviceType": ["phone", "tablet", "tv", "wearable"],
+    "deviceType": [
+      "default",
+      "tablet",
+      "tv",
+      "wearable"
+    ],
     "distro": {
       "deliveryWithInstall": true,
       "moduleName": "entry",
