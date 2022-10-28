@@ -181,7 +181,7 @@ describe('MultimodalInput_Device_test', function () {
     try {
       inputDevice.getKeyboardType(-1);
     } catch (error) {
-      expect(error.message).assertEqual("getKeyboardType: \"The second parameter type is wrong\"");
+      expect(error.message).assertEqual("Invalid input device id");
     }
     console.info(`inputDevice::getKeyboardType_test-02 exit`);
   });

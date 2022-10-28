@@ -18,6 +18,7 @@
     "name": ".MyApplication",
     "mainAbility": "com.open.harmony.webview.MainAbility",
     "deviceType": [
+      "tablet",
       "default",
       "phone"
     ],

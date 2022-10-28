@@ -8,6 +8,7 @@
     "description": "$string:entry_desc",
     "mainElement": "MainAbility",
     "deviceTypes": [
+      "tablet",
       "default",
       "phone"
     ],

@@ -152,7 +152,7 @@ export default function textClockJsunit() {
       let strJson = getInspectorByKey('textClock');
       let obj = JSON.parse(strJson);
       console.info("[textClockTest06] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.format).assertEqual('20');
+      expect(obj.$attrs.format).assertEqual('hms');
       console.info('textClockTest06 END');
       done();
     });

@@ -16,6 +16,7 @@
         "package": "ohos.acts.hiviewdfx.hiappevent.function",
         "name": ".entry",
         "deviceType": [
+      "tablet",
       "default",
             "phone"
         ],

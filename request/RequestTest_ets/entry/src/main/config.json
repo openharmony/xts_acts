@@ -18,6 +18,7 @@
     "name": ".MyApplication",
     "mainAbility": "com.acts.requesttest.MainAbility",
     "deviceType": [
+      "tablet",
       "default",
       "phone"
     ],

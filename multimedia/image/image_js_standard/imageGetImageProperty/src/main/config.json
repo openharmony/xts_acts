@@ -57,6 +57,7 @@
             }
         ],
         "deviceType": [
+      "tablet",
             "phone",
             "tablet",
             "tv",

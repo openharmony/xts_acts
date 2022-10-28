@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsHuksSignVerifyBasicCallbackJSApiTestReform.hap"
+                "ActsHuksSignVerifyBasicCallbackJSApiReformedTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

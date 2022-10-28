@@ -17,6 +17,7 @@
     "package": "com.example.actsaccountaccessiblefirst",
     "name": ".MyApplication",
     "deviceType": [
+      "tablet",
       "default",
       "phone"
     ],

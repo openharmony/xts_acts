@@ -1002,5 +1002,186 @@ export default function abilityTest() {
       expect(exceptionFlag).assertEqual(true);
       done();
     })
+
+    /**
+     * @tc.number: ACTS_CommonComponent_Call_5500
+     * @tc.name: The callee exits abnormally after the caller requests the call to be called successfully.
+     * @tc.desc: Verify that the caller can register the server's death listener.
+     */
+    it('ACTS_CommonComponent_Call_5500', 0, async function (done) {
+      console.log('ACTS_CommonComponent_Call_5500 begin');
+
+      function releaseCallback(data) {
+        console.log('ACTS_CommonComponent_Call_5500 releaseCallBack:' + data);
+        expect(data).assertEqual("died");
+        done();
+      }
+
+      let bundleNameCallee = "com.example.systemappcalleea";
+      let abilityNameCallee = "com.example.systemappcalleea.MainAbility";
+      let want = {
+        bundleName: bundleNameCallee,
+        abilityName: abilityNameCallee,
+      }
+      let caller = await globalThis.globalThis.abilityContext.startAbilityByCall(want);
+      if (typeof caller !== "object" || caller == null) {
+        console.log('ACTS_CommonComponent_Call_5500 startAbilityByCall fail');
+        expect().assertFail();
+      }
+      try {
+        caller.on('release', releaseCallback);
+      } catch (e) {
+        console.log('ACTS_CommonComponent_Call_5500 Caller onRelease fail ' + e);
+        expect().assertFail();
+      }
+      await appManager.killProcessesByBundleName(bundleNameCallee);
+    })
+
+    /**
+     * @tc.number: ACTS_CommonComponent_Call_5600
+     * @tc.name: The callee exits abnormally after the caller requests the call to be called successfully.
+     * @tc.desc: Verify that the caller can unregister the server's death listener.
+     */
+    it('ACTS_CommonComponent_Call_5600', 0, async function (done) {
+      console.log('ACTS_CommonComponent_Call_5600 begin');
+
+      function releaseCallback(data) {
+        console.log('ACTS_CommonComponent_Call_5600 releaseCallBack:' + data);
+        expect(data).assertEqual("died");
+        done();
+      }
+
+      let bundleNameCallee = "com.example.systemappcalleea";
+      let abilityNameCallee = "com.example.systemappcalleea.MainAbility";
+      let want = {
+        bundleName: bundleNameCallee,
+        abilityName: abilityNameCallee,
+      }
+      let caller = await globalThis.globalThis.abilityContext.startAbilityByCall(want);
+      if (typeof caller !== "object" || caller == null) {
+        console.log('ACTS_CommonComponent_Call_5600 startAbilityByCall fail');
+        expect().assertFail();
+      }
+      try {
+        caller.off('release', releaseCallback);
+      } catch (e) {
+        console.log('ACTS_CommonComponent_Call_5600 Caller onRelease fail ' + e);
+        expect().assertFail();
+        done();
+      }
+      await appManager.killProcessesByBundleName(bundleNameCallee);
+      done();
+    })
+
+    /**
+     * @tc.number: ACTS_CommonComponent_Call_5700
+     * @tc.name: The callee exits abnormally after the caller requests the call to be called successfully.
+     * @tc.desc: Verify that the caller can unregister the server's death listener.
+     */
+    it('ACTS_CommonComponent_Call_5700', 0, async function (done) {
+      console.log('ACTS_CommonComponent_Call_5700 begin');
+
+      function releaseCallback(data) {
+        console.log('ACTS_CommonComponent_Call_5700 releaseCallBack:' + data);
+        expect(data).assertEqual("died");
+        done();
+      }
+
+      let bundleNameCallee = "com.example.systemappcalleea";
+      let abilityNameCallee = "com.example.systemappcalleea.MainAbility";
+      let want = {
+        bundleName: bundleNameCallee,
+        abilityName: abilityNameCallee,
+      }
+      let caller = await globalThis.globalThis.abilityContext.startAbilityByCall(want);
+      if (typeof caller !== "object" || caller == null) {
+        console.log('ACTS_CommonComponent_Call_5700 startAbilityByCall fail');
+        expect().assertFail();
+      }
+      let flag = false;
+      try {
+        caller.off('release');
+      } catch (e) {
+        console.log('ACTS_CommonComponent_Call_5700 Caller onRelease fail ' + e);
+        flag = true;
+      }
+      await appManager.killProcessesByBundleName(bundleNameCallee);
+      expect(flag).assertEqual(true);
+      done();
+    })
+
+    /**
+     * @tc.number: ACTS_CommonComponent_Call_5800
+     * @tc.name: The callee exits abnormally after the caller requests the call to be called successfully.
+     * @tc.desc: Verify that the caller can unregister the server's death listener.
+     */
+    it('ACTS_CommonComponent_Call_5800', 0, async function (done) {
+      console.log('ACTS_CommonComponent_Call_5800 begin');
+
+      function releaseCallback(data) {
+        console.log('ACTS_CommonComponent_Call_5800 releaseCallBack:' + data);
+        expect(data).assertEqual("died");
+        done();
+      }
+
+      let bundleNameCallee = "com.example.systemappcalleea";
+      let abilityNameCallee = "com.example.systemappcalleea.MainAbility";
+      let want = {
+        bundleName: bundleNameCallee,
+        abilityName: abilityNameCallee,
+      }
+      let caller = await globalThis.globalThis.abilityContext.startAbilityByCall(want);
+      if (typeof caller !== "object" || caller == null) {
+        console.log('ACTS_CommonComponent_Call_5800 startAbilityByCall fail');
+        expect().assertFail();
+      }
+      let flag = false;
+      try {
+        caller.off('Not release', releaseCallback);
+      } catch (e) {
+        console.log('ACTS_CommonComponent_Call_5800 Caller onRelease fail ' + e);
+        flag = true;
+      }
+      await appManager.killProcessesByBundleName(bundleNameCallee);
+      expect(flag).assertEqual(true);
+      done();
+    })
+
+    /**
+     * @tc.number: ACTS_CommonComponent_Call_5900
+     * @tc.name: The callee exits abnormally after the caller requests the call to be called successfully.
+     * @tc.desc: Verify that the caller can unregister the server's death listener.
+     */
+    it('ACTS_CommonComponent_Call_5900', 0, async function (done) {
+      console.log('ACTS_CommonComponent_Call_5900 begin');
+
+      function releaseCallback(data) {
+        console.log('ACTS_CommonComponent_Call_5900 releaseCallBack:' + data);
+        expect(data).assertEqual("died");
+        done();
+      }
+
+      let bundleNameCallee = "com.example.systemappcalleea";
+      let abilityNameCallee = "com.example.systemappcalleea.MainAbility";
+      let want = {
+        bundleName: bundleNameCallee,
+        abilityName: abilityNameCallee,
+      }
+      let caller = await globalThis.globalThis.abilityContext.startAbilityByCall(want);
+      if (typeof caller !== "object" || caller == null) {
+        console.log('ACTS_CommonComponent_Call_5900 startAbilityByCall fail');
+        expect().assertFail();
+      }
+      let flag = false;
+      try {
+        caller.off('Not release');
+      } catch (e) {
+        console.log('ACTS_CommonComponent_Call_5900 Caller onRelease fail ' + e);
+        flag = true;
+      }
+      await appManager.killProcessesByBundleName(bundleNameCallee);
+      expect(flag).assertEqual(true);
+      done();
+    })
   })
 }

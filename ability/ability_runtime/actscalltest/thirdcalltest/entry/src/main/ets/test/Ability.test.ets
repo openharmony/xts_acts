@@ -88,8 +88,8 @@ export default function abilityTest() {
 
     /**
      * @tc.number: ACTS_CommonComponent_Call_1100
-     * @tc.name: The parameter "method" of the Caller.callWithResult function is an empty string.
-     * @tc.desc: Verify that the parameter "method" of the Caller.callWithResult function is an empty string.
+     * @tc.name: The thirdApp is not allowed to startAbilityByCall.
+     * @tc.desc: Verify that the thirdApp is not allowed to startAbilityByCall.
      */
     it('ACTS_CommonComponent_Call_1100', 0, async function (done) {
       console.log('ACTS_CommonComponent_Call_1100 begin');
@@ -111,8 +111,8 @@ export default function abilityTest() {
 
     /**
      * @tc.number: ACTS_CommonComponent_Call_1500
-     * @tc.name: The parameter "method" of the Caller.callWithResult function is an empty string.
-     * @tc.desc: Verify that the parameter "method" of the Caller.callWithResult function is an empty string.
+     * @tc.name: The thirdApp is not allowed to startAbilityByCall.
+     * @tc.desc: Verify that the thirdApp is not allowed to startAbilityByCall.
      */
     it('ACTS_CommonComponent_Call_1500', 0, async function (done) {
       console.log('ACTS_CommonComponent_Call_1500 begin');
@@ -122,20 +122,20 @@ export default function abilityTest() {
       }
       globalThis.abilityContext.startAbilityByCall(want)
         .then(data => {
-          console.info(`ACTS_CommonComponent_Call_1100 startAbilityByCall SUCCESS`);
+          console.info(`ACTS_CommonComponent_Call_1500 startAbilityByCall SUCCESS`);
           expect().assertFail();
           done();
         })
         .catch(error => {
-          console.info(`ACTS_CommonComponent_Call_1100 startAbilityByCall Catch`);
+          console.info(`ACTS_CommonComponent_Call_1500 startAbilityByCall Catch`);
           done();
         });
     })
 
     /**
      * @tc.number: ACTS_CommonComponent_Call_1600
-     * @tc.name: The parameter "method" of the Caller.callWithResult function is an empty string.
-     * @tc.desc: Verify that the parameter "method" of the Caller.callWithResult function is an empty string.
+     * @tc.name: The thirdApp is not allowed to startAbilityByCall.
+     * @tc.desc: Verify that the thirdApp is not allowed to startAbilityByCall.
      */
     it('ACTS_CommonComponent_Call_1600', 0, async function (done) {
       console.log('ACTS_CommonComponent_Call_1600 begin');
@@ -145,12 +145,12 @@ export default function abilityTest() {
       }
       globalThis.abilityContext.startAbilityByCall(want)
         .then(data => {
-          console.info(`ACTS_CommonComponent_Call_1100 startAbilityByCall SUCCESS`);
+          console.info(`ACTS_CommonComponent_Call_1600 startAbilityByCall SUCCESS`);
           expect().assertFail();
           done();
         })
         .catch(error => {
-          console.info(`ACTS_CommonComponent_Call_1100 startAbilityByCall Catch`);
+          console.info(`ACTS_CommonComponent_Call_1600 startAbilityByCall Catch`);
           done();
         });
     })
