@@ -48,7 +48,7 @@ export default function singleusermodelTest() {
 
             console.debug("====>start connectAbilityWithAccount====>");
 
-            connId = globalThis.abilityContext.connectAbilityWithAccount(
+            connId = globalThis.abilityContext.connectServiceExtensionAbilityWithAccount(
                 {
                     bundleName: "com.singleusermodel.actssingleusertest",
                     abilityName: "ServiceAbility1",
@@ -86,7 +86,7 @@ export default function singleusermodelTest() {
                     console.info('executeShellCommand : err : ' + JSON.stringify(err));
                 })
                 console.debug('ACTS_ExtensionSingleUserModel_0500====>timeout====>');
-                await globalThis.abilityContext.disconnectAbility(connId).then((data) => {
+                await globalThis.abilityContext.disconnectServiceExtensionAbility(connId).then((data) => {
                     console.debug("====>data is====>" + JSON.stringify(data));
                 })
             }, START_ABILITY_TIMEOUT);
