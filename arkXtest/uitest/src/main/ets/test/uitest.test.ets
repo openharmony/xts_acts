@@ -1542,8 +1542,8 @@ export default function UiTest() {
             try {
                 await window1.split()
                 await driver.delayMs(waitUiReadyMs)
-                let window2 = await driver.findWindow({bundleName:'com.ohos.systemui'})
-                expect(window2 == null).assertTrue()
+                let bar = await driver.findComponent(ON.type('DecorBar'))
+                expect(bar == null).assertTrue()
             }
             catch (err) {
                 if (err.message == 'this device can not support this action') {
