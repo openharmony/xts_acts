@@ -32,7 +32,7 @@ let mCameraManager;
 let mCameraDevicesArray;
 let mCameraSession;
 
-let mPhoteSurface;
+let mPhotoSurface;
 let mVideoRecorder;
 let mVideoSurface;
 let mFileAsset;
@@ -190,8 +190,8 @@ export default function cameraSessionZoomRatioTest(surfaceId: any) {
         console.log(TAG + 'before receiver check')
         if (receiver !== undefined) {
             console.log(TAG + 'Photo receiver is created successfully')
-            mPhoteSurface = await receiver.getReceivingSurfaceId()
-            console.log(TAG + 'Photo received id: ' + JSON.stringify(mPhoteSurface))
+            mPhotoSurface = await receiver.getReceivingSurfaceId()
+            console.log(TAG + 'Photo received id: ' + JSON.stringify(mPhotoSurface))
         } else {
             console.log(TAG + 'Photo receiver is created failed')
         }
@@ -426,7 +426,7 @@ export default function cameraSessionZoomRatioTest(surfaceId: any) {
             console.info(TAG + "cameraOutputCap.photoProfiles.length: " + cameraOutputCap.photoProfiles.length);   
                 
             for (let i = 0; i < cameraOutputCap.photoProfiles.length; i++) {
-                mPhotoOutput = await mCameraManager.createPhotoOutput(cameraOutputCap.photoProfiles[i], mPhoteSurface);
+                mPhotoOutput = await mCameraManager.createPhotoOutput(cameraOutputCap.photoProfiles[i], mPhotoSurface);
                 if (!isEmpty(mPhotoOutput)) {
                     break;
                 }
