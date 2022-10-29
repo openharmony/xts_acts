@@ -244,7 +244,7 @@ async function publicCipherFunc(
 
 export default function SecurityHuksCipherRSABasicPromiseJsunit() {
   describe('SecurityHuksCipherRSABasicPromiseJsunit', function () {
-    it('testCipherRSA101_reformed', 0, async function (done) {
+    it('testReformedCipherRSA101', 0, async function (done) {
       const srcKeyAlies = 'testCipherRSASize512PADDINGNONESHA256KeyAlias101';
       const newSrcKeyAlies = 'testCipherRSASize512PADDINGNONESHA256NewKeyAlias101';
       genHuksOptions.properties.splice(3, 1, HuksCipherRSA.HuksKeyRSABLOCKMODEECB);
@@ -278,7 +278,7 @@ export default function SecurityHuksCipherRSABasicPromiseJsunit() {
       done();
     });
 
-    it('testCipherRSA102_reformed', 0, async function (done) {
+    it('testReformedCipherRSA102', 0, async function (done) {
       const srcKeyAlies = 'testCipherRSASize512PADDINGNONESHA256KeyAlias102';
       const newSrcKeyAlies = 'testCipherRSASize512PADDINGNONESHA256NewKeyAlias101';
       let HuksOptions = {
@@ -296,7 +296,7 @@ export default function SecurityHuksCipherRSABasicPromiseJsunit() {
       done();
     });
 
-    it('testCipherRSA103_reformed', 0, async function (done) {
+    it('testReformedCipherRSA103', 0, async function (done) {
       const srcKeyAlies = 'testCipherRSASize512PADDINGNONESHA256KeyAlias103';
       const newSrcKeyAlies = 'testCipherRSASize512PADDINGNONESHA256NewKeyAlias103';
       let HuksOptions = {
@@ -326,7 +326,7 @@ export default function SecurityHuksCipherRSABasicPromiseJsunit() {
       done();
     });
 
-    it('testCipherRSA104_reformed', 0, async function (done) {
+    it('testReformedCipherRSA104', 0, async function (done) {
       const srcKeyAlies = 'testCipherRSASize512PADDINGNONESHA256KeyAlias104';
       const newSrcKeyAlies = 'testCipherRSASize512PADDINGNONESHA256NewKeyAlias104';
       let HuksOptions = {

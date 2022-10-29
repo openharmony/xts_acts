@@ -41,7 +41,7 @@ describe('SecurityHuksAgreeECDHBasicFinish65KBPromiseJsunit', function () {
     console.info('test beforeEach called');
   });
 
-  it('testAgreeECDH103_reformed', 0, async function (done) {
+  it('testReformedAgreeECDH103', 0, async function (done) {
     const srcKeyAliesFirst = 'testAgreeECDHSize224Finish65KBAgreeKeyAlias_01_101';
     const srcKeyAliesSecond = 'testAgreeECDHSize224Finish65KBAgreeKeyAlias_02_101';
     let huksOptionsFinish = {
