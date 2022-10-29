@@ -147,7 +147,7 @@ export default function AccountTest() {
         })
 
         /**
-        * @tc.number     SUB_Account_distributedAccount_JS_API_0500
+        * @tc.number     SUB_Account_distributedAccount_JS_API_0200
         * @tc.name       Test distributedAccount.updateOsAccountDistributedInfo by callback.
         * @tc.desc       Test distributedAccount.updateOsAccountDistributedInfo API functionality by callback.
         */
@@ -182,7 +182,7 @@ export default function AccountTest() {
         * @tc.name       Test distributedAccount.updateOsAccountDistributedInfo by callback.
         * @tc.desc       Test distributedAccount.updateOsAccountDistributedInfo API functionality by callback.
         */
-        it('account_updateOsAccountDistributedInfo_test003', 0, function () {
+        it('account_updateOsAccountDistributedInfo_test003', 0, async function (done) {
             const accountAbility = account.getDistributedAccountAbility()
             let data = null
             let obj = {
@@ -195,7 +195,7 @@ export default function AccountTest() {
                 console.debug("====>account_updateOsAccountDistributedInfo_test003 update_err:" + JSON.stringify(result))
                 accountAbility.queryOsAccountDistributedInfo(obj).then(function (data) {
                     console.debug("====>account_updateOsAccountDistributedInfo_test003 data:" + JSON.stringify(data))
-                    expect(data.name).assertNull()
+                    expect(data.name).assertEqual("ohosAnonymousName")
                     done();
                 })
             });
@@ -206,7 +206,7 @@ export default function AccountTest() {
         * @tc.name       Test distributedAccount.updateOsAccountDistributedInfo by callback.
         * @tc.desc       Test distributedAccount.updateOsAccountDistributedInfo API functionality by callback.
         */
-        it('account_updateOsAccountDistributedInfo_test004', 0, function () {
+        it('account_updateOsAccountDistributedInfo_test004', 0, async function (done) {
             const accountAbility = account.getDistributedAccountAbility()
             let obj = {
                 id: '12345',
@@ -227,7 +227,7 @@ export default function AccountTest() {
                         event: 'Ohos.account.event.LOGOFF'
                     };
                     accountAbility.updateOsAccountDistributedInfo(obj).then(function (err) {
-                        expect(err).assert(undefined)
+                        expect(err).assertEqual(undefined)
                         done();
                     });
                 });

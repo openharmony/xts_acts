@@ -33,7 +33,21 @@ export default function ActsAccountAppAccess() {
                 console.info(`sleep #{time} over ...`)
             })
         }
-        beforeAll(async function (done) {            
+        beforeAll(async function (done) {       
+            await featureAbility.startAbility(
+                {
+                    want:
+                    {
+                        deviceId: "",
+                        bundleName: "com.example.accountauthenticator",
+                        abilityName: "com.example.accountauthenticator.MainAbility",
+                        action: "action1",
+                        parameters:
+                        {},
+                    },
+                },
+            )          
+            await sleep(1500)     
             done();
         });
         /*
@@ -575,25 +589,11 @@ export default function ActsAccountAppAccess() {
 
         /*
         * @tc.number    : ActsAccountSelectAccountByOptions_0100
-        * @tc.name      : Verify Credential callback form
+        * @tc.name      : selectAccountsByOptions callback form
         * @tc.desc      : 
         */
 
         it('ActsAccountSelectAccountByOptions_0100', 0, async function (done) {  
-            await featureAbility.startAbility(
-                {
-                    want:
-                    {
-                        deviceId: "",
-                        bundleName: "com.example.accountauthenticator",
-                        abilityName: "com.example.accountauthenticator.MainAbility",
-                        action: "action1",
-                        parameters:
-                        {},
-                    },
-                },
-            )          
-            await sleep(1000)
             console.debug("====>ActsAccountSelectAccountByOptions_0100 start====");
             var appAccountManager = account.createAppAccountManager();
             var select_options = {allowedAccounts:[{"name":name,"owner":owner}]}
@@ -624,25 +624,11 @@ export default function ActsAccountAppAccess() {
 
         /*
         * @tc.number    : ActsAccountSelectAccountByOptions_0100
-        * @tc.name      : Verify Credential callback form
+        * @tc.name      : selectAccountsByOptions callback form
         * @tc.desc      : 
         */
 
         it('ActsAccountSelectAccountByOptions_0200', 0, async function (done) {
-            await featureAbility.startAbility(
-                {
-                    want:
-                    {
-                        deviceId: "",
-                        bundleName: "com.example.accountauthenticator",
-                        abilityName: "com.example.accountauthenticator.MainAbility",
-                        action: "action1",
-                        parameters:
-                        {},
-                    },
-                },
-            )
-            await sleep(1000)
             console.debug("====>ActsAccountSelectAccountByOptions_0200 start====");
             var appAccountManager = account.createAppAccountManager();
             var select_options = {allowedOwners: [owner]}
@@ -674,25 +660,11 @@ export default function ActsAccountAppAccess() {
 
         /*
         * @tc.number    : ActsAccountSelectAccountByOptions_0100
-        * @tc.name      : Verify Credential callback form
+        * @tc.name      : selectAccountsByOptions callback form
         * @tc.desc      : 
         */
 
         it('ActsAccountSelectAccountByOptions_0300', 0, async function (done) {
-            await featureAbility.startAbility(
-                {
-                    want:
-                    {
-                        deviceId: "",
-                        bundleName: "com.example.accountauthenticator",
-                        abilityName: "com.example.accountauthenticator.MainAbility",
-                        action: "action1",
-                        parameters:
-                        {},
-                    },
-                },
-            )
-            await sleep(1500)
             console.debug("====>ActsAccountSelectAccountByOptions_0300 start====");
             var appAccountManager = account.createAppAccountManager();
             var options = {requiredLabels: ["male", "30-40"]}
@@ -721,5 +693,57 @@ export default function ActsAccountAppAccess() {
             });        
         }); 
         
+        /*
+        * @tc.number    : ActsAccountCreateAccountImplicitly_0100
+        * @tc.name      : createAccountImplicitly callback form, options
+        * @tc.desc      : 
+        */
+
+        it('ActsAccountCreateAccountImplicitly_0100', 0, async function (done) {
+            console.debug("====>ActsAccountCreateAccountImplicitly_0100 start====");
+            var appAccountManager = account.createAppAccountManager();
+            var options = {authType: "PIN"}
+            console.debug("====>start finish====");
+            appAccountManager.createAccountImplicitly("com.example.accountauthenticator", options, {
+                onResult: async (resultCode, resultData)=>{
+                    console.debug("====>ActsAccountCreateAccountImplicitly_0100 resultcode:" + JSON.stringify(resultCode));
+                    expect(resultCode).assertEqual(0)
+                    console.debug("====>ActsAccountCreateAccountImplicitly_0100 resultData:" + JSON.stringify(resultData));
+                    expect(resultData.account.name).assertEqual("createNewAccountName") 
+                    expect(resultData.account.owner).assertEqual("com.example.accountauthenticator")
+                    done();
+                    },
+                onRequestRedirected:null,
+                onRequestContinued: function(){ 
+                    console.debug("====>ActsAccountCreateAccountImplicitly_0100 onRequestContinued")
+                    }  
+            });            
+        });
+
+        /*
+        * @tc.number    : ActsAccountCreateAccountImplicitly_0200
+        * @tc.name      : createAccountImplicitly callback form, options
+        * @tc.desc      : 
+        */
+
+        it('ActsAccountCreateAccountImplicitly_0200', 0, async function (done) {
+            console.debug("====>ActsAccountCreateAccountImplicitly_0100 start====");
+            var appAccountManager = account.createAppAccountManager();
+            console.debug("====>start finish====");
+            appAccountManager.createAccountImplicitly("com.example.accountauthenticator", {
+                onResult: async (resultCode, resultData)=>{
+                    console.debug("====>ActsAccountCreateAccountImplicitly_0200 resultcode:" + JSON.stringify(resultCode));
+                    expect(resultCode).assertEqual(0)
+                    console.debug("====>ActsAccountCreateAccountImplicitly_0200 resultData:" + JSON.stringify(resultData));
+                    expect(resultData.account.name).assertEqual("createNewAccountName") 
+                    expect(resultData.account.owner).assertEqual("com.example.accountauthenticator")
+                    done();
+                    },
+                onRequestRedirected:null,
+                onRequestContinued: function(){ 
+                    console.debug("====>ActsAccountCreateAccountImplicitly_0200 onRequestContinued")
+                    }  
+            });            
+        });
     })
 }
