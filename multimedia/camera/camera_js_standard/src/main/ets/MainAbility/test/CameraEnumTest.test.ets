@@ -12,8 +12,8 @@ export default function cameraEnumTest(surfaceId: any) {
         return false;
     }
 
-    describe('CameraInputTest', function () {
-        console.info(TAG + '----------CameraInputTest--------------');
+    describe('CameraEnumTest', function () {
+        console.info(TAG + '----------CameraEnumTest--------------');
 
         beforeAll(async function () {
             console.info('beforeAll case');
@@ -33,61 +33,368 @@ export default function cameraEnumTest(surfaceId: any) {
 
 
         /**
-          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAPOSITION__0100
+          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_CAMERASTATUS_0100
+          * @tc.name      : Camera CameraStatus Eunm
+          * @tc.desc      : Camera CameraStatus Eunm
+          * @tc.size      : MEDIUM
+          * @tc.type      : Function
+          * @tc.level     : Level 2
+        */
+        it('SUB_MULTIMEDIA_CAMERA_ENUM_CAMERASTATUS_0100', 2, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_CAMERASTATUS_0100--------------");
+            expect(camera.CameraStatus.CAMERA_STATUS_APPEAR == 0).assertTrue();
+            expect(camera.CameraStatus.CAMERA_STATUS_DISAPPEAR == 1).assertTrue();
+            expect(camera.CameraStatus.CAMERA_STATUS_AVAILABLE == 2).assertTrue();
+            expect(camera.CameraStatus.CAMERA_STATUS_UNAVAILABLE == 3).assertTrue();
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_CAMERASTATUS_0100 ends here");
+            done();
+        })
+
+
+
+
+        /**
+          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAPOSITION_0100
           * @tc.name      : Camera CameraPosition Eunm
           * @tc.desc      : Camera CameraPosition Eunm
           * @tc.size      : MEDIUM
           * @tc.type      : Function
           * @tc.level     : Level 2
         */
-        it('SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAPOSITION__0100', 2, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAPOSITION__0100--------------");
-            expect(isEmpty(camera.CameraPosition.CAMERA_POSITION_UNSPECIFIED)).assertFail();
-            expect(isEmpty(camera.CameraPosition.CAMERA_POSITION_BACK)).assertFail();
-            expect(isEmpty(camera.CameraPosition.CAMERA_POSITION_FRONT)).assertFail();
-            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAPOSITION__0100 ends here");
+        it('SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAPOSITION_0100', 2, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAPOSITION_0100--------------");
+            expect(camera.CameraPosition.CAMERA_POSITION_UNSPECIFIED == 0).assertTrue();
+            expect(camera.CameraPosition.CAMERA_POSITION_BACK == 1).assertTrue();
+            expect(camera.CameraPosition.CAMERA_POSITION_FRONT == 2).assertTrue();
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAPOSITION_0100 ends here");
             done();
         })
 
 
         /**
-         * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_CAMERATYPE__0100
+         * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_CAMERATYPE_0100
          * @tc.name      : Camera CameraType Eunm
          * @tc.desc      : Camera CameraType Eunm
          * @tc.size      : MEDIUM
          * @tc.type      : Function
          * @tc.level     : Level 2
         */
-        it('SUB_MULTIMEDIA_CAMERA_ENUM_CAMERATYPE__0100', 2, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_CAMERATYPE__0100--------------");
-            expect(isEmpty(camera.CameraType.CAMERA_TYPE_UNSPECIFIED)).assertFail();
-            expect(isEmpty(camera.CameraType.CAMERA_TYPE_WIDE_ANGLE)).assertFail();
-            expect(isEmpty(camera.CameraType.CAMERA_TYPE_ULTRA_WIDE)).assertFail();
-            expect(isEmpty(camera.CameraType.CAMERA_TYPE_TELEPHOTO)).assertFail();
-            expect(isEmpty(camera.CameraType.CAMERA_TYPE_TRUE_DEPTH)).assertFail();
-            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_CAMERATYPE__0100 ends here");
+        it('SUB_MULTIMEDIA_CAMERA_ENUM_CAMERATYPE_0100', 2, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_CAMERATYPE_0100--------------");
+            expect(camera.CameraType.CAMERA_TYPE_UNSPECIFIED == 0).assertTrue();
+            expect(camera.CameraType.CAMERA_TYPE_WIDE_ANGLE == 1).assertTrue();
+            expect(camera.CameraType.CAMERA_TYPE_ULTRA_WIDE == 2).assertTrue();
+            expect(camera.CameraType.CAMERA_TYPE_TELEPHOTO == 3).assertTrue();
+            expect(camera.CameraType.CAMERA_TYPE_TRUE_DEPTH == 4).assertTrue();
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_CAMERATYPE_0100 ends here");
             done();
         })
 
 
 
         /**
-          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_CONNECTIONTYPE__0100
+          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_CONNECTIONTYPE_0100
           * @tc.name      : Camera ConnectionType Eunm
           * @tc.desc      : Camera ConnectionType Eunm
           * @tc.size      : MEDIUM
           * @tc.type      : Function
           * @tc.level     : Level 2
         */
-         it('SUB_MULTIMEDIA_CAMERA_ENUM_CONNECTIONTYPE__0100', 2, async function (done) {
-            console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_CONNECTIONTYPE__0100--------------");
-            expect(isEmpty(camera.ConnectionType.CAMERA_CONNECTION_BUILT_IN)).assertFail();
-            expect(isEmpty(camera.ConnectionType.CAMERA_CONNECTION_USB_PLUGIN)).assertFail();
-            expect(isEmpty(camera.ConnectionType.CAMERA_CONNECTION_REMOTE)).assertFail();
-            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_CONNECTIONTYPE__0100 ends here");
+        it('SUB_MULTIMEDIA_CAMERA_ENUM_CONNECTIONTYPE_0100', 2, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_CONNECTIONTYPE_0100--------------");
+            expect(camera.ConnectionType.CAMERA_CONNECTION_BUILT_IN == 0).assertTrue();
+            expect(camera.ConnectionType.CAMERA_CONNECTION_USB_PLUGIN == 1).assertTrue();
+            expect(camera.ConnectionType.CAMERA_CONNECTION_REMOTE == 2).assertTrue();
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_CONNECTIONTYPE_0100 ends here");
             done();
-        })  
+        })
 
+
+
+        /**
+          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAINPUTERRORCODE_0100
+          * @tc.name      : Camera CameraInputErrorCode Eunm
+          * @tc.desc      : Camera CameraInputErrorCode Eunm
+          * @tc.size      : MEDIUM
+          * @tc.type      : Function
+          * @tc.level     : Level 2
+        */
+        it('SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAINPUTERRORCODE_0100', 2, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAINPUTERRORCODE_0100--------------");
+            expect(camera.CameraInputErrorCode.ERROR_UNKNOWN == -1).assertTrue();
+            expect(camera.CameraInputErrorCode.ERROR_NO_PERMISSION == 0).assertTrue();
+            expect(camera.CameraInputErrorCode.ERROR_DEVICE_PREEMPTED == 1).assertTrue();
+            expect(camera.CameraInputErrorCode.ERROR_DEVICE_DISCONNECTED == 2).assertTrue();
+            expect(camera.CameraInputErrorCode.ERROR_DEVICE_IN_USE == 3).assertTrue();
+            expect(camera.CameraInputErrorCode.ERROR_DRIVER_ERROR == 4).assertTrue();
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAINPUTERRORCODE_0100 ends here");
+            done();
+        })
+
+
+        /**
+          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAFORMAT_0100
+          * @tc.name      : Camera CameraFormat Eunm
+          * @tc.desc      : Camera CameraFormat Eunm
+          * @tc.size      : MEDIUM
+          * @tc.type      : Function
+          * @tc.level     : Level 2
+        */
+        it('SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAFORMAT_0100', 2, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAFORMAT_0100--------------");
+            expect(camera.CameraFormat.CAMERA_FORMAT_RGBA_8888 == 3).assertTrue();
+            expect(camera.CameraFormat.CAMERA_FORMAT_YUV_420_SP == 1003).assertTrue();
+            expect(camera.CameraFormat.CAMERA_FORMAT_JPEG == 2000).assertTrue();
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_CAMERAFORMAT_0100 ends here");
+            done();
+        })
+
+
+        /**
+          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_FLASHMODE_0100
+          * @tc.name      : Camera FlashMode Eunm
+          * @tc.desc      : Camera FlashMode Eunm
+          * @tc.size      : MEDIUM
+          * @tc.type      : Function
+          * @tc.level     : Level 2
+        */
+        it('SUB_MULTIMEDIA_CAMERA_ENUM_FLASHMODE_0100', 2, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_FLASHMODE_0100--------------");
+            expect(camera.FlashMode.FLASH_MODE_CLOSE == 0).assertTrue();
+            expect(camera.FlashMode.FLASH_MODE_OPEN == 1).assertTrue();
+            expect(camera.FlashMode.FLASH_MODE_AUTO == 2).assertTrue();
+            expect(camera.FlashMode.FLASH_MODE_ALWAYS_OPEN == 3).assertTrue();
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_FLASHMODE_0100 ends here");
+            done();
+        })
+
+
+
+        /**
+          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_EXPOSUREMODE_0100
+          * @tc.name      : Camera ExposureMode Eunm
+          * @tc.desc      : CameraExposureMode  Eunm
+          * @tc.size      : MEDIUM
+          * @tc.type      : Function
+          * @tc.level     : Level 2
+        */
+        it('SUB_MULTIMEDIA_CAMERA_ENUM_EXPOSUREMODE_0100', 2, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_EXPOSUREMODE_0100--------------");
+            expect(camera.ExposureMode.EXPOSURE_MODE_LOCKED == 0).assertTrue();
+            expect(camera.ExposureMode.EXPOSURE_MODE_AUTO == 1).assertTrue();
+            expect(camera.ExposureMode.EXPOSURE_MODE_CONTINUOUS_AUTO == 2).assertTrue();
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_EXPOSUREMODE_0100 ends here");
+            done();
+        })
+
+        /**
+          * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_FOCUSMODE_0100
+          * @tc.name      : Camera FocusMode  Eunm
+          * @tc.desc      : Camera FocusMode  Eunm
+          * @tc.size      : MEDIUM
+          * @tc.type      : Function
+          * @tc.level     : Level 2
+        */
+        it('SUB_MULTIMEDIA_CAMERA_ENUM_FOCUSMODE_0100', 2, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_FOCUSMODE_0100--------------");
+            expect(camera.FocusMode.FOCUS_MODE_MANUAL == 0).assertTrue();
+            expect(camera.FocusMode.FOCUS_MODE_CONTINUOUS_AUTO == 1).assertTrue();
+            expect(camera.FocusMode.FOCUS_MODE_AUTO == 2).assertTrue();
+            expect(camera.FocusMode.FOCUS_MODE_LOCKED == 3).assertTrue();
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_FOCUSMODE_0100 ends here");
+            done();
+        })
+
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_FOCUSSTATE_0100
+         * @tc.name      : Camera FocusState Eunm
+         * @tc.desc      : Camera FocusState Eunm
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+       */
+        it('SUB_MULTIMEDIA_CAMERA_ENUM_FOCUSSTATE_0100', 2, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_FOCUSSTATE_0100--------------");
+            expect(camera.FocusState.FOCUS_STATE_SCAN == 0).assertTrue();
+            expect(camera.FocusState.FOCUS_STATE_FOCUSED == 1).assertTrue();
+            expect(camera.FocusState.FOCUS_STATE_UNFOCUSED == 2).assertTrue();
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_FOCUSSTATE_0100 ends here");
+            done();
+        })
+
+
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_VIDEOSTABILIZATIONMODE_0100
+         * @tc.name      : Camera VideoStabilizationMode Eunm
+         * @tc.desc      : Camera VideoStabilizationMode Eunm
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+       */
+        it('SUB_MULTIMEDIA_CAMERA_ENUM_VIDEOSTABILIZATIONMODE_0100', 2, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_VIDEOSTABILIZATIONMODE_0100--------------");
+            expect(camera.VideoStabilizationMode.OFF == 0).assertTrue();
+            expect(camera.VideoStabilizationMode.LOW == 1).assertTrue();
+            expect(camera.VideoStabilizationMode.MIDDLE == 2).assertTrue();
+            expect(camera.VideoStabilizationMode.HIGH == 3).assertTrue();
+            expect(camera.VideoStabilizationMode.AUTO == 4).assertTrue();
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_VIDEOSTABILIZATIONMODE_0100 ends here");
+            done();
+        })
+
+
+
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_CAPTURESESSIONERRORCODE_0100
+         * @tc.name      : Camera CaptureSessionErrorCode  Eunm
+         * @tc.desc      : Camera CaptureSessionErrorCode  Eunm
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+       */
+        it('SUB_MULTIMEDIA_CAMERA_ENUM_CAPTURESESSIONERRORCODE_0100', 2, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_CAPTURESESSIONERRORCODE_0100--------------");
+            expect(camera.CaptureSessionErrorCode.ERROR_UNKNOWN == -1).assertTrue();
+            expect(camera.CaptureSessionErrorCode.ERROR_INSUFFICIENT_RESOURCES == 0).assertTrue();
+            expect(camera.CaptureSessionErrorCode.ERROR_TIMEOUT == 1).assertTrue();
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_CAPTURESESSIONERRORCODE_0100 ends here");
+            done();
+        })
+
+
+
+
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_PREVIEWOUTPUTERRORCODE_0100
+         * @tc.name      : Camera PreviewOutputErrorCode  Eunm
+         * @tc.desc      : Camera PreviewOutputErrorCode  Eunm
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+       */
+        it('SUB_MULTIMEDIA_CAMERA_ENUM_PREVIEWOUTPUTERRORCODE_0100', 2, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_PREVIEWOUTPUTERRORCODE_0100--------------");
+            expect(camera.PreviewOutputErrorCode.ERROR_UNKNOWN == -1).assertTrue();
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_PREVIEWOUTPUTERRORCODE_0100 ends here");
+            done();
+        })
+
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_IMAGEROTATION_0100
+         * @tc.name      : Camera ImageRotation Eunm
+         * @tc.desc      : Camera ImageRotation Eunm
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+       */
+        it('SUB_MULTIMEDIA_CAMERA_ENUM_IMAGEROTATION_0100', 2, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_IMAGEROTATION_0100--------------");
+            expect(camera.ImageRotation.ROTATION_0 == 0).assertTrue();
+            expect(camera.ImageRotation.ROTATION_90 == 90).assertTrue();
+            expect(camera.ImageRotation.ROTATION_180 == 180).assertTrue();
+            expect(camera.ImageRotation.ROTATION_270 == 270).assertTrue();
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_IMAGEROTATION_0100 ends here");
+            done();
+        })
+
+
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_QUALITYLEVEL_0100
+         * @tc.name      : Camera QualityLevel Eunm
+         * @tc.desc      : Camera QualityLevel Eunm
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+       */
+        it('SUB_MULTIMEDIA_CAMERA_ENUM_QUALITYLEVEL_0100', 2, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_QUALITYLEVEL_0100--------------");
+            expect(camera.QualityLevel.QUALITY_LEVEL_HIGH == 0).assertTrue();
+            expect(camera.QualityLevel.QUALITY_LEVEL_MEDIUM == 1).assertTrue();
+            expect(camera.QualityLevel.QUALITY_LEVEL_LOW == 2).assertTrue();
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_QUALITYLEVEL_0100 ends here");
+            done();
+        })
+
+
+
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_PHOTOOUTPUTERRORCODE_0100
+         * @tc.name      : Camera PhotoOutputErrorCode Eunm
+         * @tc.desc      : Camera PhotoOutputErrorCode Eunm
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+       */
+        it('SUB_MULTIMEDIA_CAMERA_ENUM_PHOTOOUTPUTERRORCODE_0100', 2, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_PHOTOOUTPUTERRORCODE_0100--------------");
+            expect(camera.PhotoOutputErrorCode.ERROR_UNKNOWN == -1).assertTrue();
+            expect(camera.PhotoOutputErrorCode.ERROR_DRIVER_ERROR == 0).assertTrue();
+            expect(camera.PhotoOutputErrorCode.ERROR_INSUFFICIENT_RESOURCES == 1).assertTrue();
+            expect(camera.PhotoOutputErrorCode.ERROR_TIMEOUT == 2).assertTrue();
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_PHOTOOUTPUTERRORCODE_0100 ends here");
+            done();
+        })
+
+
+
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_VIDEOOUTPUTERRORCODE_0100
+         * @tc.name      : Camera VideoOutputErrorCode Eunm
+         * @tc.desc      : Camera VideoOutputErrorCode Eunm
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+       */
+        it('SUB_MULTIMEDIA_CAMERA_ENUM_VIDEOOUTPUTERRORCODE_0100', 2, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_VIDEOOUTPUTERRORCODE_0100--------------");
+            expect(camera.VideoOutputErrorCode.ERROR_UNKNOWN == -1).assertTrue();
+            expect(camera.VideoOutputErrorCode.ERROR_DRIVER_ERROR == 0).assertTrue();
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_VIDEOOUTPUTERRORCODE_0100 ends here");
+            done();
+        })
+
+
+
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_METADATAOBJECTTYPE_0100
+         * @tc.name      : Camera MetadataObjectType Eunm
+         * @tc.desc      : Camera MetadataObjectType Eunm
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+       */
+        it('SUB_MULTIMEDIA_CAMERA_ENUM_METADATAOBJECTTYPE_0100', 2, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_METADATAOBJECTTYPE_0100--------------");
+            expect(camera.MetadataObjectType.FACE_DETECTION == 0).assertTrue();
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_METADATAOBJECTTYPE_0100 ends here");
+            done();
+        })
+
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_CAMERA_ENUM_METADATAOUTPUTERRORCODE_0100
+         * @tc.name      : Camera MetadataOutputErrorCode Eunm
+         * @tc.desc      : Camera MetadataOutputErrorCode Eunm
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 2
+       */
+        it('SUB_MULTIMEDIA_CAMERA_ENUM_METADATAOUTPUTERRORCODE_0100', 2, async function (done) {
+            console.info("--------------SUB_MULTIMEDIA_CAMERA_ENUM_METADATAOUTPUTERRORCODE_0100--------------");
+            expect(camera.MetadataOutputErrorCode.ERROR_UNKNOWN == -1).assertTrue();
+            expect(camera.MetadataOutputErrorCode.ERROR_INSUFFICIENT_RESOURCES == 0).assertTrue();
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_ENUM_METADATAOUTPUTERRORCODE_0100 ends here");
+            done();
+        })
 
 
     })
