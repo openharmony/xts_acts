@@ -44,9 +44,9 @@ export default function ActsAccountCustomData() {
 
         /*
         * @tc.number    : ActsAccountCustomData_0100
-        * @tc.name      : The correct calls setAssociatedData and getAssociatedData get the value
+        * @tc.name      : The correct calls setAssociatedData and getCustomData get the value
         * @tc.desc      : The setAssociatedData setting valueis called when the forwarding parameters
-        *                 are correct, and then getAssociatedData is called for the value(callback)
+        *                 are correct, and then getCustomData is called for the value(callback)
         */
         it('ActsAccountCustomData_0100', 0, async function (done) {
             console.debug("====>ActsAccountCustomData_0100 start====");
@@ -58,9 +58,9 @@ export default function ActsAccountCustomData() {
                 appAccountManager.setAssociatedData("account_name_0100", "key1", "value1", (err)=>{
                     console.debug("====>setAssociatedData ActsAccountCustomData_0100 err:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
-                    appAccountManager.getAssociatedData("account_name_0100", "key1", (err, data)=>{
-                        console.debug("====>getAssociatedData 0100 err:" + JSON.stringify(err));
-                        console.debug("====>getAssociatedData 0100 data:" + JSON.stringify(data));
+                    appAccountManager.getCustomData("account_name_0100", "key1", (err, data)=>{
+                        console.debug("====>getCustomData 0100 err:" + JSON.stringify(err));
+                        console.debug("====>getCustomData 0100 data:" + JSON.stringify(data));
                         expect(err).assertEqual(null);
                         expect(data).assertEqual("value1");
                         appAccountManager.removeAccount("account_name_0100", (err)=>{
@@ -76,9 +76,9 @@ export default function ActsAccountCustomData() {
 
         /*
         * @tc.number    : ActsAccountCustomData_0200
-        * @tc.name      : The correct calls setAssociatedData and getAssociatedData get the value
+        * @tc.name      : The correct calls setAssociatedData and getCustomData get the value
         * @tc.desc      : The setAssociatedData setting value is called when the forwarding parameters
-        *                 are correct, and then getAssociatedData is called for the value(promise)
+        *                 are correct, and then getCustomData is called for the value(promise)
         */
         it('ActsAccountCustomData_0200', 0, async function (done) {
             console.debug("====>ActsAccountCustomData_0200 start====");
@@ -102,16 +102,16 @@ export default function ActsAccountCustomData() {
                 expect().assertFail();
                 done();
             }
-            console.debug("====>getAssociatedData ActsAccountCustomData_0200 start====");
+            console.debug("====>getCustomData ActsAccountCustomData_0200 start====");
             try{
-                var data = await appAccountManager.getAssociatedData("account_name_0200", "key2");
+                var data = await appAccountManager.getCustomData("account_name_0200", "key2");
             }
             catch(err){
-                console.error("====>getAssociatedData ActsAccountCustomData_0200 err:" + JSON.stringify(err));
+                console.error("====>getCustomData ActsAccountCustomData_0200 err:" + JSON.stringify(err));
                 expect().assertFail();
                 done();
             }
-            console.debug("====>getAssociatedData ActsAccountCustomData_0200 data:" + JSON.stringify(data));
+            console.debug("====>getCustomData ActsAccountCustomData_0200 data:" + JSON.stringify(data));
             expect(data).assertEqual("value2");
             console.debug("====>delete account ActsAccountCustomData_0200 start====");
             try{
@@ -129,7 +129,7 @@ export default function ActsAccountCustomData() {
         /*
         * @tc.number    : ActsAccountCustomData_0300
         * @tc.name      : Get it directly without setting value
-        * @tc.desc      : Call getAssociatedData directly to get value without calling setAssociatedData(callback)
+        * @tc.desc      : Call getCustomData directly to get value without calling setAssociatedData(callback)
         */
         it('ActsAccountCustomData_0300', 0, async function (done) {
             console.debug("====>ActsAccountCustomData_0300 start====");
@@ -138,9 +138,9 @@ export default function ActsAccountCustomData() {
             appAccountManager.createAccount("account_name_0300", (err)=>{
                 console.debug("====>add account ActsAccountCustomData_0300 err:" + JSON.stringify(err));
                 expect(err).assertEqual(null);
-                appAccountManager.getAssociatedData("account_name_0300", "key3", (err, data)=>{
-                    console.debug("====>getAssociatedData 0300 err:" + JSON.stringify(err));
-                    console.debug("====>getAssociatedData 0300 data:" + JSON.stringify(data));
+                appAccountManager.getCustomData("account_name_0300", "key3", (err, data)=>{
+                    console.debug("====>getCustomData 0300 err:" + JSON.stringify(err));
+                    console.debug("====>getCustomData 0300 data:" + JSON.stringify(data));
                     expect(err.code != 0).assertEqual(true);
                     expect(data).assertEqual(null);
                     appAccountManager.removeAccount("account_name_0300", (err)=>{
@@ -156,7 +156,7 @@ export default function ActsAccountCustomData() {
         /*
         * @tc.number    : ActsAccountCustomData_0400
         * @tc.name      : Get it directly without setting value
-        * @tc.desc      : Call getAssociatedData directly to get value without calling setAssociatedData(promise)
+        * @tc.desc      : Call getCustomData directly to get value without calling setAssociatedData(promise)
         */
         it('ActsAccountCustomData_0400', 0, async function (done) {
             console.debug("====>ActsAccountCustomData_0400 start====");
@@ -172,13 +172,13 @@ export default function ActsAccountCustomData() {
                 done();
             }
             try{
-                await appAccountManager.getAssociatedData("account_name_0400", "key4");
-                console.error("====>getAssociatedData fail ActsAccountCustomData_0400====");
+                await appAccountManager.getCustomData("account_name_0400", "key4");
+                console.error("====>getCustomData fail ActsAccountCustomData_0400====");
                 expect().assertFail();
                 done();
             }
             catch(err){
-                console.debug("====>getAssociatedData ActsAccountCustomData_0400 err:" + JSON.stringify(err));
+                console.debug("====>getCustomData ActsAccountCustomData_0400 err:" + JSON.stringify(err));
                 expect(err.code != 0).assertEqual(true);
                 console.debug("====>delete account ActsAccountCustomData_0400 start====");
                 try{
@@ -196,9 +196,9 @@ export default function ActsAccountCustomData() {
 
         /*
         * @tc.number    : ActsAccountCustomData_0500
-        * @tc.name      : Call getAssociatedData to get value when passing in the error parameter
+        * @tc.name      : Call getCustomData to get value when passing in the error parameter
         * @tc.desc      : After calling setAssociatedData setting value correctly,
-        *                 call the getAssociatedData of the pass error to check if you get the value(callback)
+        *                 call the getCustomData of the pass error to check if you get the value(callback)
         */
         it('ActsAccountCustomData_0500', 0, async function (done) {
             console.debug("====>ActsAccountCustomData_0500 start====");
@@ -210,9 +210,9 @@ export default function ActsAccountCustomData() {
                 appAccountManager.setAssociatedData("account_name_0500", "key5", "value5", (err)=>{
                     console.debug("====>setAssociatedData ActsAccountCustomData_0500 err:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
-                    appAccountManager.getAssociatedData("account_name_0500", "keyerr", (err, data)=>{
-                        console.debug("====>getAssociatedData 0500 err:" + JSON.stringify(err));
-                        console.debug("====>getAssociatedData 0500 data:" + JSON.stringify(data));
+                    appAccountManager.getCustomData("account_name_0500", "keyerr", (err, data)=>{
+                        console.debug("====>getCustomData 0500 err:" + JSON.stringify(err));
+                        console.debug("====>getCustomData 0500 data:" + JSON.stringify(data));
                         expect(err.code != 0).assertEqual(true);
                         appAccountManager.removeAccount("account_name_0500", (err)=>{
                             console.debug("====>delete Account 0500 err:" + JSON.stringify(err));
@@ -227,9 +227,9 @@ export default function ActsAccountCustomData() {
 
         /*
         * @tc.number    : ActsAccountCustomData_0600
-        * @tc.name      : Call getAssociatedData to get value when passing in the error parameter
+        * @tc.name      : Call getCustomData to get value when passing in the error parameter
         * @tc.desc      : After calling setAssociatedData setting value correctly,
-        *                 call the getAssociatedData of the pass error to check if you get the value(promise)
+        *                 call the getCustomData of the pass error to check if you get the value(promise)
         */
         it('ActsAccountCustomData_0600', 0, async function (done) {
             console.debug("====>ActsAccountCustomData_0600 start====");
@@ -246,10 +246,10 @@ export default function ActsAccountCustomData() {
             }
             await appAccountManager.setAssociatedData("account_name_0600", "key6", "value6");
             try{
-                var data = await appAccountManager.getAssociatedData("account_name_0600", "keyerr");
+                var data = await appAccountManager.getCustomData("account_name_0600", "keyerr");
             }
             catch(err){
-                console.debug("====>getAssociatedData 0600 err:" + JSON.stringify(err));
+                console.debug("====>getCustomData 0600 err:" + JSON.stringify(err));
                 expect(err.code != 0).assertEqual(true);
                 console.debug("====>delete account ActsAccountCustomData_0600 start====");
                 try{
@@ -267,9 +267,9 @@ export default function ActsAccountCustomData() {
 
         /*
         * @tc.number    : ActsAccountCustomData_0700
-        * @tc.name      : Whether getAssociatedData can get the correct value when calling setAssociatedData multiple times
+        * @tc.name      : Whether getCustomData can get the correct value when calling setAssociatedData multiple times
         * @tc.desc      : When the first setAssociatedData is called and the second setAssociatedData
-        *                 is called,the setting of the value is different if the call getAssociatedData
+        *                 is called,the setting of the value is different if the call getCustomData
         *                 can get the second value(callback)
         */
         it('ActsAccountCustomData_0700', 0, async function (done) {
@@ -285,9 +285,9 @@ export default function ActsAccountCustomData() {
                     appAccountManager.setAssociatedData("account_name_0700", "key7", "newvalue7", (err)=>{
                         console.debug("====>setAssociatedDatafir second time 0700 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
-                        appAccountManager.getAssociatedData("account_name_0700", "key7", (err, data)=>{
-                            console.debug("====>getAssociatedData 0700 err:" + JSON.stringify(err));
-                            console.debug("====>getAssociatedData 0700 data:" + JSON.stringify(data));
+                        appAccountManager.getCustomData("account_name_0700", "key7", (err, data)=>{
+                            console.debug("====>getCustomData 0700 err:" + JSON.stringify(err));
+                            console.debug("====>getCustomData 0700 data:" + JSON.stringify(data));
                             expect(err).assertEqual(null);
                             expect(data).assertEqual("newvalue7");
                             appAccountManager.removeAccount("account_name_0700", (err)=>{
@@ -304,9 +304,9 @@ export default function ActsAccountCustomData() {
 
         /*
         * @tc.number    : ActsAccountCustomData_0800
-        * @tc.name      : Whether getAssociatedData can get the correct value when calling setAssociatedData multiple times
+        * @tc.name      : Whether getCustomData can get the correct value when calling setAssociatedData multiple times
         * @tc.desc      : When the first setAssociatedData is called and the second setAssociatedData
-        *                 is called,the setting of the value is different if the call getAssociatedData
+        *                 is called,the setting of the value is different if the call getCustomData
         *                 can get the second value(promise)
         */
         it('ActsAccountCustomData_0800', 0, async function (done) {
@@ -330,14 +330,14 @@ export default function ActsAccountCustomData() {
                 done();
             }
             try{
-                var data = await appAccountManager.getAssociatedData("account_name_0800", "key8");
+                var data = await appAccountManager.getCustomData("account_name_0800", "key8");
             }
             catch(err){
-                console.error("====>getAssociatedData ActsAccountCustomData_0800 err:" + JSON.stringify(err));
+                console.error("====>getCustomData ActsAccountCustomData_0800 err:" + JSON.stringify(err));
                 expect().assertFail();
                 done();
             }
-            console.debug("====>getAssociatedData ActsAccountCustomData_0800 data:" + JSON.stringify(data));
+            console.debug("====>getCustomData ActsAccountCustomData_0800 data:" + JSON.stringify(data));
             expect(data).assertEqual("newvalue8");
             console.debug("====>delete account ActsAccountCustomData_0800 start====");
             try{
@@ -354,9 +354,9 @@ export default function ActsAccountCustomData() {
 
         /*
         * @tc.number    : ActsAccountCustomData_0900
-        * @tc.name      : Whether getAssociatedData can get the correct value when calling setAssociatedData multiple times
+        * @tc.name      : Whether getCustomData can get the correct value when calling setAssociatedData multiple times
         * @tc.desc      : When the first setAssociatedData is called and the second setAssociatedData
-        *                 is called,the setting of the value is same if the call getAssociatedData
+        *                 is called,the setting of the value is same if the call getCustomData
         *                 can get the second value(callback)
         */
         it('ActsAccountCustomData_0900', 0, async function (done) {
@@ -372,9 +372,9 @@ export default function ActsAccountCustomData() {
                     appAccountManager.setAssociatedData("account_name_0900", "key9", "value9", (err)=>{
                         console.debug("====>setAssociatedData second time 0900 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
-                        appAccountManager.getAssociatedData("account_name_0900", "key9", (err, data)=>{
-                            console.debug("====>getAssociatedData 0900 err:" + JSON.stringify(err));
-                            console.debug("====>getAssociatedData 0900 data:" + JSON.stringify(data));
+                        appAccountManager.getCustomData("account_name_0900", "key9", (err, data)=>{
+                            console.debug("====>getCustomData 0900 err:" + JSON.stringify(err));
+                            console.debug("====>getCustomData 0900 data:" + JSON.stringify(data));
                             expect(err).assertEqual(null);
                             expect(data).assertEqual("value9");
                             appAccountManager.removeAccount("account_name_0900", (err)=>{
@@ -391,9 +391,9 @@ export default function ActsAccountCustomData() {
 
         /*
         * @tc.number    : ActsAccountCustomData_1000
-        * @tc.name      : Whether getAssociatedData can get the correct value when calling setAssociatedData multiple times
+        * @tc.name      : Whether getCustomData can get the correct value when calling setAssociatedData multiple times
         * @tc.desc      : When the first setAssociatedData is called and the second setAssociatedData
-        *                 is called,the setting of the value is same if the call getAssociatedData
+        *                 is called,the setting of the value is same if the call getCustomData
         *                 can get the second value(promise)
         */
         it('ActsAccountCustomData_1000', 0, async function (done) {
@@ -419,14 +419,14 @@ export default function ActsAccountCustomData() {
                 done();
             }
             try{
-                var data = await appAccountManager.getAssociatedData("account_name_1000", "key10");
+                var data = await appAccountManager.getCustomData("account_name_1000", "key10");
             }
             catch(err){
-                console.error("====>getAssociatedData ActsAccountCustomData_1000 err:" + JSON.stringify(err));
+                console.error("====>getCustomData ActsAccountCustomData_1000 err:" + JSON.stringify(err));
                 expect().assertFail();
                 done();
             }
-            console.debug("====>getAssociatedData 1000 data:" + JSON.stringify(data));
+            console.debug("====>getCustomData 1000 data:" + JSON.stringify(data));
             expect(data).assertEqual("value10");
             console.debug("====>delete account ActsAccountCustomData_1000 start====");
             try{
@@ -443,9 +443,9 @@ export default function ActsAccountCustomData() {
 
         /*
         * @tc.number    : ActsAccountCustomData_1100
-        * @tc.name      : Call multiple setAssociatedData calls multiple times getAssociatedData gets the value separately
+        * @tc.name      : Call multiple setAssociatedData calls multiple times getCustomData gets the value separately
         * @tc.desc      : Call setAssociatedData setting value again after calling setAssociatedData setting
-        *                 different value, and then call getAssociatedData twice to get the set value(callback)
+        *                 different value, and then call getCustomData twice to get the set value(callback)
         */
         it('ActsAccountCustomData_1100', 0, async function (done) {
             console.debug("====>ActsAccountCustomData_1100 start====");
@@ -460,14 +460,14 @@ export default function ActsAccountCustomData() {
                     appAccountManager.setAssociatedData("account_name_1100", "key11_second", "value11_second", (err)=>{
                         console.debug("====>setAssociatedData second time 1100 err:" + JSON.stringify(err));
                         expect(err).assertEqual(null);
-                        appAccountManager.getAssociatedData("account_name_1100", "key11_first", (err,data)=>{
-                            console.debug("====>getAssociatedData key11_first 1100 err:" + JSON.stringify(err));
-                            console.debug("====>getAssociatedData key11_first 1100 data:" + JSON.stringify(data));
+                        appAccountManager.getCustomData("account_name_1100", "key11_first", (err,data)=>{
+                            console.debug("====>getCustomData key11_first 1100 err:" + JSON.stringify(err));
+                            console.debug("====>getCustomData key11_first 1100 data:" + JSON.stringify(data));
                             expect(err).assertEqual(null);
                             expect(data).assertEqual("value11_first");
-                            appAccountManager.getAssociatedData("account_name_1100", "key11_second", (err,data)=>{
-                                console.debug("====>getAssociatedData key11_second 1100 err:" + JSON.stringify(err));
-                                console.debug("====>getAssociatedData key11_second 1100 data:" + JSON.stringify(data));
+                            appAccountManager.getCustomData("account_name_1100", "key11_second", (err,data)=>{
+                                console.debug("====>getCustomData key11_second 1100 err:" + JSON.stringify(err));
+                                console.debug("====>getCustomData key11_second 1100 data:" + JSON.stringify(data));
                                 expect(err).assertEqual(null);
                                 expect(data).assertEqual("value11_second");
                                 appAccountManager.removeAccount("account_name_1100", (err)=>{
@@ -484,9 +484,9 @@ export default function ActsAccountCustomData() {
 
         /*
         * @tc.number    : ActsAccountCustomData_1200
-        * @tc.name      : Call multiple setAssociatedData calls multiple times getAssociatedData gets the value separately
+        * @tc.name      : Call multiple setAssociatedData calls multiple times getCustomData gets the value separately
         * @tc.desc      : Call setAssociatedData setting value again after calling setAssociatedData setting
-        *                 different value, and then call getAssociatedData twice to get the set value(promise)
+        *                 different value, and then call getCustomData twice to get the set value(promise)
         */
         it('ActsAccountCustomData_1200', 0, async function (done) {
             console.debug("====>ActsAccountCustomData_1200 start====");
@@ -511,17 +511,17 @@ export default function ActsAccountCustomData() {
                 done();
             }
             try{
-                var dataFir = await appAccountManager.getAssociatedData("account_name_1200", "key12_first");
-                var dataSec = await appAccountManager.getAssociatedData("account_name_1200", "key12_second");
+                var dataFir = await appAccountManager.getCustomData("account_name_1200", "key12_first");
+                var dataSec = await appAccountManager.getCustomData("account_name_1200", "key12_second");
             }
             catch(err){
-                console.error("====>getAssociatedData ActsAccountCustomData_1200 err:" + JSON.stringify(err));
+                console.error("====>getCustomData ActsAccountCustomData_1200 err:" + JSON.stringify(err));
                 expect().assertFail();
                 done();
             }
-            console.debug("====>ActsAccountCustomData_1200 getAssociatedData dataFir:" + JSON.stringify(dataFir));
+            console.debug("====>ActsAccountCustomData_1200 getCustomData dataFir:" + JSON.stringify(dataFir));
             expect(dataFir).assertEqual("value12_first");
-            console.debug("====>ActsAccountCustomData_1200 getAssociatedData dataSec:" + JSON.stringify(dataSec));
+            console.debug("====>ActsAccountCustomData_1200 getCustomData dataSec:" + JSON.stringify(dataSec));
             expect(dataSec).assertEqual("value12_second");
             console.debug("====>delete account ActsAccountCustomData_1200 start====");
             try{
@@ -673,8 +673,8 @@ export default function ActsAccountCustomData() {
 
         /*
         * @tc.number    : ActsAccountCustomData_1700
-        * @tc.name      : setAssociatedData and getAssociatedData are called when the argument is spaced
-        * @tc.desc      : Call setAssociatedData and then getAssociatedData when the incoming key is a space(callback)
+        * @tc.name      : setAssociatedData and getCustomData are called when the argument is spaced
+        * @tc.desc      : Call setAssociatedData and then getCustomData when the incoming key is a space(callback)
         */
         it('ActsAccountCustomData_1700', 0, async function (done) {
             console.debug("====>ActsAccountCustomData_1700 start====");
@@ -686,9 +686,9 @@ export default function ActsAccountCustomData() {
                 appAccountManager.setAssociatedData("account_name_1700", " ", "value17", (err)=>{
                     console.debug("====>ActsAccountCustomData_1700 setAssociatedData:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
-                    appAccountManager.getAssociatedData("account_name_1700", " ", (err, data)=>{
-                        console.debug("====>getAssociatedData 1700 err:" + JSON.stringify(err));
-                        console.debug("====>getAssociatedData 1700 data:" + JSON.stringify(data));
+                    appAccountManager.getCustomData("account_name_1700", " ", (err, data)=>{
+                        console.debug("====>getCustomData 1700 err:" + JSON.stringify(err));
+                        console.debug("====>getCustomData 1700 data:" + JSON.stringify(data));
                         expect(err).assertEqual(null);
                         expect(data).assertEqual("value17");
                         appAccountManager.removeAccount("account_name_1700", (err)=>{
@@ -704,8 +704,8 @@ export default function ActsAccountCustomData() {
 
         /*
         * @tc.number    : ActsAccountCustomData_1800
-        * @tc.name      : setAssociatedData and getAssociatedData are called when the argument is spaced
-        * @tc.desc      : Call setAssociatedData and then getAssociatedData when the incoming key is a space(promise)
+        * @tc.name      : setAssociatedData and getCustomData are called when the argument is spaced
+        * @tc.desc      : Call setAssociatedData and then getCustomData when the incoming key is a space(promise)
         */
         it('ActsAccountCustomData_1800', 0, async function (done) {
             console.debug("====>ActsAccountCustomData_1800 start====");
@@ -722,14 +722,14 @@ export default function ActsAccountCustomData() {
             }
             await appAccountManager.setAssociatedData("account_name_1800", " ", "value18");
             try{
-                var data = await appAccountManager.getAssociatedData("account_name_1800", " ");
+                var data = await appAccountManager.getCustomData("account_name_1800", " ");
             }
             catch(err){
                 console.error("====>setAssociatedData ActsAccountCustomData_1800 fail err:" + JSON.stringify(err));
                 expect().assertFail();
                 done();
             }
-            console.debug("====>getAssociatedData ActsAccountCustomData_1800 data:" + JSON.stringify(data));
+            console.debug("====>getCustomData ActsAccountCustomData_1800 data:" + JSON.stringify(data));
             expect(data).assertEqual("value18");
             console.debug("====>delete account ActsAccountCustomData_1800 start====");
             try{
@@ -746,8 +746,8 @@ export default function ActsAccountCustomData() {
 
         /*
         * @tc.number    : ActsAccountCustomData_1900
-        * @tc.name      : setAssociatedData and getAssociatedData are called when the argument is spaced
-        * @tc.desc      : Call setAssociatedData and then getAssociatedData when the incoming value is null(callback)
+        * @tc.name      : setAssociatedData and getCustomData are called when the argument is spaced
+        * @tc.desc      : Call setAssociatedData and then getCustomData when the incoming value is null(callback)
         */
         it('ActsAccountCustomData_1900', 0, async function (done) {
             console.debug("====>ActsAccountCustomData_1900 start====");
@@ -759,9 +759,9 @@ export default function ActsAccountCustomData() {
                 appAccountManager.setAssociatedData("account_name_1900", "key19", "", (err)=>{
                     console.debug("====>setAssociatedData ActsAccountCustomData_1900 err:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
-                    appAccountManager.getAssociatedData("account_name_1900", "key19", (err, data)=>{
-                        console.debug("====>getAssociatedData 1900 err:" + JSON.stringify(err));
-                        console.debug("====>getAssociatedData 1900 data:" + JSON.stringify(data));
+                    appAccountManager.getCustomData("account_name_1900", "key19", (err, data)=>{
+                        console.debug("====>getCustomData 1900 err:" + JSON.stringify(err));
+                        console.debug("====>getCustomData 1900 data:" + JSON.stringify(data));
                         expect(err).assertEqual(null);
                         expect(data).assertEqual("");
                         appAccountManager.removeAccount("account_name_1900", (err)=>{
@@ -777,8 +777,8 @@ export default function ActsAccountCustomData() {
 
         /*
         * @tc.number    : ActsAccountCustomData_2000
-        * @tc.name      : setAssociatedData and getAssociatedData are called when the argument is spaced
-        * @tc.desc      : Call setAssociatedData and then getAssociatedData when the incoming value is null(promise)
+        * @tc.name      : setAssociatedData and getCustomData are called when the argument is spaced
+        * @tc.desc      : Call setAssociatedData and then getCustomData when the incoming value is null(promise)
         */
         it('ActsAccountCustomData_2000', 0, async function (done) {
             console.debug("====>ActsAccountCustomData_2000 start====");
@@ -802,14 +802,14 @@ export default function ActsAccountCustomData() {
                 done();
             }
             try{
-                var data = await appAccountManager.getAssociatedData("account_name_2000", "key20");
+                var data = await appAccountManager.getCustomData("account_name_2000", "key20");
             }
             catch(err){
-                console.error("====>getAssociatedData 2000 err:" + JSON.stringify(err));
+                console.error("====>getCustomData 2000 err:" + JSON.stringify(err));
                 expect().assertFail();
                 done();
             }
-            console.debug("====>getAssociatedData ActsAccountCustomData_2000 data:" + JSON.stringify(data));
+            console.debug("====>getCustomData ActsAccountCustomData_2000 data:" + JSON.stringify(data));
             expect(data).assertEqual("");
             console.debug("====>delete account ActsAccountCustomData_2000 start====");
             try{
@@ -896,8 +896,8 @@ export default function ActsAccountCustomData() {
 
         /*
         * @tc.number    : ActsAccountCustomData_2300
-        * @tc.name      : setAssociatedData and getAssociatedData are called when the argument is spaced
-        * @tc.desc      : Call setAssociatedData and then getAssociatedData when the incoming value is a space(callback)
+        * @tc.name      : setAssociatedData and getCustomData are called when the argument is spaced
+        * @tc.desc      : Call setAssociatedData and then getCustomData when the incoming value is a space(callback)
         */
         it('ActsAccountCustomData_2300', 0, async function (done) {
             console.debug("====>ActsAccountCustomData_2300 start====");
@@ -909,9 +909,9 @@ export default function ActsAccountCustomData() {
                 appAccountManager.setAssociatedData("account_name_2300", "key23", " ", (err)=>{
                     console.debug("====>setAssociatedData ActsAccountCustomData_2300 err:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
-                    appAccountManager.getAssociatedData("account_name_2300", "key23", (err, data)=>{
-                        console.debug("====>getAssociatedData 2300 err:" + JSON.stringify(err));
-                        console.debug("====>getAssociatedData 2300 data:" + JSON.stringify(data));
+                    appAccountManager.getCustomData("account_name_2300", "key23", (err, data)=>{
+                        console.debug("====>getCustomData 2300 err:" + JSON.stringify(err));
+                        console.debug("====>getCustomData 2300 data:" + JSON.stringify(data));
                         expect(err).assertEqual(null);
                         expect(data).assertEqual(" ");
                         appAccountManager.removeAccount("account_name_2300", (err)=>{
@@ -927,8 +927,8 @@ export default function ActsAccountCustomData() {
 
         /*
         * @tc.number    : ActsAccountCustomData_2400
-        * @tc.name      : setAssociatedData and getAssociatedData are called when the argument is spaced
-        * @tc.desc      : Call setAssociatedData and then getAssociatedData when the incoming value is a space(promise)
+        * @tc.name      : setAssociatedData and getCustomData are called when the argument is spaced
+        * @tc.desc      : Call setAssociatedData and then getCustomData when the incoming value is a space(promise)
         */
         it('ActsAccountCustomData_2400', 0, async function (done) {
             console.debug("====>ActsAccountCustomData_2400 start====");
@@ -945,14 +945,14 @@ export default function ActsAccountCustomData() {
             }
             await appAccountManager.setAssociatedData("account_name_2400", "key24", " ");
             try{
-                var data = await appAccountManager.getAssociatedData("account_name_2400", "key24");
+                var data = await appAccountManager.getCustomData("account_name_2400", "key24");
             }
             catch(err){
-                console.error("====>getAssociatedData 2400 fail err:" + JSON.stringify(err));
+                console.error("====>getCustomData 2400 fail err:" + JSON.stringify(err));
                 expect().assertFail();
                 done();
             }
-            console.debug("====>getAssociatedData 2400 err:" + JSON.stringify(data));
+            console.debug("====>getCustomData 2400 err:" + JSON.stringify(data));
             expect(data).assertEqual(" ");
             console.debug("====>delete account ActsAccountCustomData_2400 start====");
             try{
@@ -969,8 +969,8 @@ export default function ActsAccountCustomData() {
 
         /*
         * @tc.number    : ActsAccountCustomData_2500
-        * @tc.name      : setAssociatedData and getAssociatedData are called when the argument is spaced
-        * @tc.desc      : Call setAssociatedData and then getAssociatedData when the incoming name is null(callback)
+        * @tc.name      : setAssociatedData and getCustomData are called when the argument is spaced
+        * @tc.desc      : Call setAssociatedData and then getCustomData when the incoming name is null(callback)
         */
         it('ActsAccountCustomData_2500', 0, async function (done) {
             console.debug("====>ActsAccountCustomData_2500 start====");
@@ -994,8 +994,8 @@ export default function ActsAccountCustomData() {
 
         /*
         * @tc.number    : ActsAccountCustomData_2600
-        * @tc.name      : setAssociatedData and getAssociatedData are called when the argument is spaced
-        * @tc.desc      : Call setAssociatedData and then getAssociatedData when the incoming name is null(promise)
+        * @tc.name      : setAssociatedData and getCustomData are called when the argument is spaced
+        * @tc.desc      : Call setAssociatedData and then getCustomData when the incoming name is null(promise)
         */
         it('ActsAccountCustomData_2600', 0, async function (done) {
             console.debug("====>ActsAccountCustomData_2600 start====");
@@ -1103,8 +1103,8 @@ export default function ActsAccountCustomData() {
 
         /*
         * @tc.number    : ActsAccountCustomData_2900
-        * @tc.name      : setAssociatedData and getAssociatedData are called when the argument is spaced
-        * @tc.desc      : Call setAssociatedData and then getAssociatedData when the incoming name is a space(callback)
+        * @tc.name      : setAssociatedData and getCustomData are called when the argument is spaced
+        * @tc.desc      : Call setAssociatedData and then getCustomData when the incoming name is a space(callback)
         */
         it('ActsAccountCustomData_2900', 0, async function (done) {
             console.debug("====>ActsAccountCustomData_2900 start====");
@@ -1116,9 +1116,9 @@ export default function ActsAccountCustomData() {
                 appAccountManager.setAssociatedData(" ", "key29", "value29", (err)=>{
                     console.debug("====>setAssociatedData ActsAccountCustomData_2900 err:" + JSON.stringify(err));
                     expect(err.code != 0).assertEqual(true);
-                    appAccountManager.getAssociatedData(" ", "key29", (err, data)=>{
-                        console.debug("====>getAssociatedData 2900 err:" + JSON.stringify(err));
-                        console.debug("====>getAssociatedData 2900 data:" + JSON.stringify(data));
+                    appAccountManager.getCustomData(" ", "key29", (err, data)=>{
+                        console.debug("====>getCustomData 2900 err:" + JSON.stringify(err));
+                        console.debug("====>getCustomData 2900 data:" + JSON.stringify(data));
                         expect(err.code != 0).assertEqual(true);
                         expect(data).assertEqual(null);
                         console.debug("====>ActsAccountCustomData_2900 end====");
@@ -1130,8 +1130,8 @@ export default function ActsAccountCustomData() {
 
         /*
         * @tc.number    : ActsAccountCustomData_3000
-        * @tc.name      : setAssociatedData and getAssociatedData are called when the argument is spaced
-        * @tc.desc      : Call setAssociatedData and then getAssociatedData when the incoming name is a space(promise)
+        * @tc.name      : setAssociatedData and getCustomData are called when the argument is spaced
+        * @tc.desc      : Call setAssociatedData and then getCustomData when the incoming name is a space(promise)
         */
         it('ActsAccountCustomData_3000', 0, async function (done) {
             console.debug("====>ActsAccountCustomData_3000 start====");
@@ -1150,10 +1150,10 @@ export default function ActsAccountCustomData() {
                     console.error("====>setAssociatedData ActsAccountCustomData_3000 err:" + JSON.stringify(err));
                     expect(err.code != 0).assertEqual(true);
                     try{
-                        await appAccountManager.getAssociatedData(" ", "key30");
+                        await appAccountManager.getCustomData(" ", "key30");
                     }
                     catch(err){
-                        console.error("====>getAssociatedData ActsAccountCustomData_3000 err:" + JSON.stringify(err));
+                        console.error("====>getCustomData ActsAccountCustomData_3000 err:" + JSON.stringify(err));
                         expect(err.code != 0).assertEqual(true);
                         console.debug("====>ActsAccountCustomData_3000 end====");
                         done();
@@ -1165,9 +1165,9 @@ export default function ActsAccountCustomData() {
 
         /*
         * @tc.number    : ActsAccountCustomData_3100
-        * @tc.name      : The correct calls setAssociatedData and getAssociatedData get the value
+        * @tc.name      : The correct calls setAssociatedData and getCustomData get the value
         * @tc.desc      : The setAssociatedData setting valueis called when the forwarding parameters
-        *                 are correct, and then getAssociatedData is called for the value(callback)
+        *                 are correct, and then getCustomData is called for the value(callback)
         */
         it('ActsAccountCustomData_3100', 0, async function (done) {
             console.debug("====>ActsAccountCustomData_3100 start====");
@@ -1179,8 +1179,8 @@ export default function ActsAccountCustomData() {
                 appAccountManager.setAssociatedData("account_name_3100", "key31", "value31", (err)=>{
                     console.debug("====>setAssociatedData ActsAccountCustomData_3100 err:" + JSON.stringify(err));
                     expect(err).assertEqual(null);
-                    var result = appAccountManager.getAssociatedDataSync("account_name_3100", "key31")
-                    console.debug("====>getAssociatedData ActsAccountCustomData_3100 result:" + JSON.stringify(result));
+                    var result = appAccountManager.getCustomDataSync("account_name_3100", "key31")
+                    console.debug("====>getCustomData ActsAccountCustomData_3100 result:" + JSON.stringify(result));
                     expect(result).assertEqual("value31");
                     appAccountManager.removeAccount("account_name_3100", (err)=>{
                         console.debug("====>delete Account 0100 err:" + JSON.stringify(err));
