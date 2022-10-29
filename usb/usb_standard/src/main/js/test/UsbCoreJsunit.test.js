@@ -459,7 +459,7 @@ describe('UsbCoreJsFunctionsTest', function () {
   /**
    * @tc.number    : SUB_USB_JS_1070
    * @tc.name      : getFileDescriptor
-   * @tc.desc      : 反向测试 关闭设备 传入错误参数
+   * @tc.desc      : 反向测试 获取文件描述符 参数类型错误
    */
    it('SUB_USB_JS_1070', 0, function () {
     console.info('usb SUB_USB_JS_1070 begin');
@@ -476,12 +476,41 @@ describe('UsbCoreJsFunctionsTest', function () {
     gPipe = usb.connectDevice(gDeviceList[0])
     try {
       var maskCode = usb.getFileDescriptor("invalid");
-      console.info('usb case getFileDescriptor return: ' + maskCode);
+      console.info('usb 1070 case getFileDescriptor return: ' + maskCode);
       expect(false).assertTrue();
     } catch (err) {
-      console.info('catch err code: ' + err.code + ' message: ' + err.message);
+      console.info('usb 1070 catch err code: ' + err.code + ' message: ' + err.message);
       expect(err.code).assertEqual(401);
       console.info('usb SUB_USB_JS_1070 :  PASS');
+    }
+  })
+
+  /**
+   * @tc.number    : SUB_USB_JS_1230
+   * @tc.name      : getFileDescriptor
+   * @tc.desc      : 反向测试 获取文件描述符 参数个数错误，必要参数未传入
+   */
+   it('SUB_USB_JS_1230', 0, function () {
+    console.info('usb SUB_USB_JS_1230 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
+    if (gDeviceList.length == 0) {
+      console.info('usb case get_device_list is null')
+      expect(false).assertTrue();
+      return
+    }
+    gPipe = usb.connectDevice(gDeviceList[0])
+    try {
+      var maskCode = usb.getFileDescriptor();
+      console.info('usb 1230 case getFileDescriptor return: ' + maskCode);
+      expect(false).assertTrue();
+    } catch (err) {
+      console.info('usb 1230 catch err code: ' + err.code + ' message: ' + err.message);
+      expect(err.code).assertEqual(401);
+      console.info('usb SUB_USB_JS_1230 :  PASS');
     }
   })
 })

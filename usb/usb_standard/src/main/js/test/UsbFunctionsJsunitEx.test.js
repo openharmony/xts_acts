@@ -166,12 +166,30 @@ describe('UsbFunctionsJsFunctionsTestEx', function () {
     console.info('usb SUB_USB_JS_1160 begin');
     try {
       var maskCode = usb.usbFunctionsToString("invalid");
-      console.info('usb case usbFunctionsToString return: ' + maskCode);
+      console.info('usb 1160 case usbFunctionsToString return: ' + maskCode);
       expect(false).assertTrue();
     } catch (err) {
-      console.info('catch err code: ' + err.code + ' message: ' + err.message);
+      console.info('usb 1160 catch err code: ' + err.code + ' message: ' + err.message);
       expect(err.code).assertEqual(401);
       console.info('usb SUB_USB_JS_1160 :  PASS');
+    }
+  })
+
+  /**
+   * @tc.number    : SUB_USB_JS_1360
+   * @tc.name      : usbFunctionsToString
+   * @tc.desc      : 反向测试 掩码转化成描述字符 参数个数错误，必要参数未传入
+   */
+   it('SUB_USB_JS_1360', 0, function () {
+    console.info('usb SUB_USB_JS_1360 begin');
+    try {
+      var maskCode = usb.usbFunctionsToString();
+      console.info('usb 1360 case usbFunctionsToString return: ' + maskCode);
+      expect(false).assertTrue();
+    } catch (err) {
+      console.info('usb 1360 catch err code: ' + err.code + ' message: ' + err.message);
+      expect(err.code).assertEqual(401);
+      console.info('usb SUB_USB_JS_1360 :  PASS');
     }
   })
 
@@ -282,12 +300,30 @@ describe('UsbFunctionsJsFunctionsTestEx', function () {
     console.info('usb SUB_USB_JS_1170 begin');
     try {
       var maskCode = usb.usbFunctionsFromString(invalidCode);
-      console.info('usb case usbFunctionsFromString return: ' + maskCode);
+      console.info('usb 1170 case usbFunctionsFromString return: ' + maskCode);
       expect(false).assertTrue();
     } catch (err) {
-      console.info('catch err code: ' + err.code + ' message: ' + err.message);
+      console.info('usb 1170 catch err code: ' + err.code + ' message: ' + err.message);
       expect(err.code).assertEqual(401);
       console.info('usb SUB_USB_JS_1170 :  PASS');
+    }
+  })
+
+  /**
+   * @tc.number    : SUB_USB_JS_1370
+   * @tc.name      : usbFunctionsFromString
+   * @tc.desc      : 反向测试 描述字符转换成掩码 参数个数错误，必要参数未传入
+   */
+   it('SUB_USB_JS_1370', 0, function () {
+    console.info('usb SUB_USB_JS_1370 begin');
+    try {
+      var maskCode = usb.usbFunctionsFromString();
+      console.info('usb 1370 case usbFunctionsFromString return: ' + maskCode);
+      expect(false).assertTrue();
+    } catch (err) {
+      console.info('usb 1370 catch err code: ' + err.code + ' message: ' + err.message);
+      expect(err.code).assertEqual(401);
+      console.info('usb SUB_USB_JS_1370 :  PASS');
     }
   })
 })
