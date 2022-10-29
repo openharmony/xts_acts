@@ -8137,4 +8137,76 @@ describe('audioRenderer', function () {
             done();
         }
     })
+
+    /*
+   * @tc.name:SUB_MULTIMEDIA_AUDIO_getAudioStreamId_0600
+   * @tc.desc:getAudioStreamId mode 2,set it to default SHARE_MODE
+   * @tc.type: FUNC
+   * @tc.require: Issue Number
+   */
+       it("SUB_MULTIMEDIA_AUDIO_getAudioStreamId_0100", 2, async function (done) {
+        let audioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_1,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+        }
+        let audioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_MUSIC,
+            usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
+            rendererFlags: 0
+        }
+        let audioRendererOptions = {
+            streamInfo: audioStreamInfo,
+            rendererInfo: audioRendererInfo
+        }
+        let audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
+        try {
+            let data = await audioRenderer.getAudioStreamId();
+            console.info(`${TagFrmwkRender}: SUB_MULTIMEDIA_AUDIO_getAudioStreamId_0100 OUT OF BORDER PROMISE: SUCCESS ${data}`);
+            expect(true).assertTrue();
+            done();
+        } catch (err) {
+            console.info(`${TagFrmwkRender}: SUB_MULTIMEDIA_AUDIO_getAudioStreamId_0100 OUT OF BORDER PROMISE: ERROR: ${err.message}`);
+            expect(false).assertTrue();
+            done();
+        }
+    })
+    
+    /*
+     * @tc.name:SUB_MULTIMEDIA_AUDIO_getAudioStreamId_0200
+     * @tc.desc:getAudioStreamId callback,is independent mode
+     * @tc.type: FUNC
+     * @tc.require: Issue Number
+     */
+    it("SUB_MULTIMEDIA_AUDIO_getAudioStreamId_0200", 2, async function (done) {
+        let audioStreamInfo = {
+            samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+            channels: audio.AudioChannel.CHANNEL_1,
+            sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+            encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+        }
+        let audioRendererInfo = {
+            content: audio.ContentType.CONTENT_TYPE_MUSIC,
+            usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
+            rendererFlags: 0
+        }
+        let audioRendererOptions = {
+            streamInfo: audioStreamInfo,
+            rendererInfo: audioRendererInfo
+        }
+        let audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
+        await audioRenderer.getAudioStreamId((err, data) => {
+            if (err) {
+                console.info(`${TagFrmwkRender}: SetInterruptMode INDEPENDENT_MODE CALLBACK: error: ${err.message}`);
+                expect(false).assertTrue();
+                done();
+                return;
+            }
+            console.info(`${TagFrmwkRender}: SetInterruptMode INDEPENDENT_MODE CALLBACK: SUCCESS ${data}`);
+            expect(true).assertTrue();
+            done();
+        })
+    })
+
 })
