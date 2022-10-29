@@ -24,43 +24,82 @@ function sleep(delay) { // delay x ms
     }
 }
 
-let MifareClassicType = {
-    TYPE_UNKNOWN : -1,
-    TYPE_CLASSIC : 0,
-    TYPE_PLUS : 1,
-    TYPE_PRO : 2,
-}
+let NdefRecord = {
+    NFC_A : 1,
+    NFC_B : 2,
+    ISO_DEP	 : 3,
+    NFC_F : 4,
+    NFC_V : 5,
+    NDEF : 6,
+    MIFARE_CLASSIC : 8,
+    MIFARE_ULTRALIGHT : 9,
+    NDEF_FORMATABLE : 10,
+};
 
-let MifareTagSize = {
-    MC_SIZE_MINI : 320,
-    MC_SIZE_1K : 1024,
-    MC_SIZE_2K : 2048,
-    MC_SIZE_4K : 4096,	
-}
+let NfcForumType = {
+    NFC_FORUM_TYPE_1 : 1,
+    NFC_FORUM_TYPE_2 : 2,
+    NFC_FORUM_TYPE_3 : 3,
+    NFC_FORUM_TYPE_4 : 4,
+    MIFARE_CLASSIC : 101,
+};
 
-let mifareclassicTaginfo = {
+let aTag = {
     "uid": [0x01, 0x02, 0x03, 0x04],
-    "technology": [1, 8],
+    "technology": [1],
     "extrasData": [
         {
             "Sak": 0x08, "Atqa": "B000",
         },
-        {
-            
-        },
     ],
     "tagRfDiscId": 1,
 };
-let mifareClassic = null;
-export default function nfcMifareClassicTag() {
-    describe('nfcMifareClassicTag', function () {
+
+let bTag = {
+    "uid": [0x01, 0x02, 0x03, 0x04],
+    "technology": [2],
+    "extrasData": [
+        {
+            "AppData": "A0C0", "ProtocolInfo": "131F",
+        }
+    ],
+    "tagRfDiscId": 1,
+};
+
+let fTag = {
+    "uid": [0x01, 0x02, 0x03, 0x04],
+    "technology": [4],
+    "extrasData": [
+        {
+            "SystemCode": "A0C0", "Pmm": "131F",
+        }
+    ],
+    "tagRfDiscId": 1,
+};
+
+let vTag = {
+    "uid": [0x01, 0x02, 0x03, 0x04],
+    "technology": [ 5 ],
+    "extrasData": [
+        {
+            "ResponseFlags": 0x09, "DsfId": 0x13,
+        }
+    ],
+    "tagRfDiscId": 1,
+};
+
+let Want = {
+    "uid" : '01020304',
+    "technology" : [1],
+    "tagRfDiscId" :1,
+    "Sak": 0x08, 
+    "Atqa": "B000",
+}
+
+export default function nfcTagABFVTest() {
+    describe('nfcTagABFVTest', function () {
         beforeAll(function () {
             console.info('[NFC_test]beforeAll called')
-            try{
-                mifareClassic = tag.getMifareClassic(mifareclassicTaginfo);
-            }catch(error){
-                console.info('beforeAll mifareClassic error' + error)
-            }
         })
         beforeEach(function() {
             console.info('[NFC_test]beforeEach called')
@@ -71,478 +110,268 @@ export default function nfcMifareClassicTag() {
         afterAll(function () {
             console.info('[NFC_test]afterAll called')
         })
-
             
-
         /**
-         * @tc.number SUB_Communication_NFC_mifareClassic_js_0100
-         * @tc.name testauthenticateSector
-         * @tc.desc Test authenticateSector api by callback.
-         * @tc.size MEDIUM
-         * @ since 7
+         * @tc.number SUB_Communication_NFC_nfctage_js_0100
+         * @tc.name Test getNfcATag
+         * @tc.desc This interface is used to obtain the NFC A tag object.
+         * @tc.size since 7
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_Communication_NFC_mifareClassic_js_0100', 0, async function (done) {
-            let sectorIndex = 1; 
-            let key = [0x04, 0x05];  
-            await mifareClassic.authenticateSector(sectorIndex, key, true).then((data) => {
-                console.info("mifareClassic authenticateSector1 data: " + data + "json1:" + JSON.stringify(data));
-                expect(data).assertTrue();
-                done();
-            }).catch((err)=> {
-                console.info("mifareClassic authenticateSector1 err: " + err);
-                expect(true).assertEqual(true);
-                done();
-            });
-            sleep(3000);
-        })
-            
-
-        /**
-         * @tc.number SUB_Communication_NFC_mifareClassic_js_0200
-         * @tc.name testauthenticateSector
-         * @tc.desc Test authenticateSector api.
-         * @tc.size MEDIUM
-         * @ since 7
-         * @tc.type Function
-         * @tc.level Level 2
-         */
-        it('SUB_Communication_NFC_mifareClassic_js_0200', 0, async function (done) {
-            let sectorIndex = 1; 
-            let key = [0x04, 0x05];  
-            mifareClassic.authenticateSector(sectorIndex, key, true, (err, data)=> {
-                if (err) {
-                    console.info("mifareClassic authenticateSector2 err: " + err);
-                    expect(true).assertEqual(true);
-                } else {
-                    console.info("mifareClassic authenticateSector2 data: " + data + "json2:" + JSON.stringify(data));
-                    expect(data).assertTrue();
-                }
-            });
-            sleep(3000);
-            done();
-        })
-            
-
-        /**
-         * @tc.number SUB_Communication_NFC_mifareClassic_js_0300
-         * @tc.name testreadSingleBlock
-         * @tc.desc Test readSingleBlock api.
-         * @tc.size MEDIUM
-         * @ since 7
-         * @tc.type Function
-         * @tc.level Level 2
-         */
-        it('SUB_Communication_NFC_mifareClassic_js_0300', 0, async function (done) {
-            let mifareClassic;
+        it('SUB_Communication_NFC_nfctage_js_0100', 0, function ()  {
+            let NfcATag ;
             try{
-                mifareClassic = tag.getMifareClassic(mifareclassicTaginfo);
+                NfcATag = tag.getNfcATag(aTag);
             }catch(error){
-                console.info('beforeAll mifareClassic error' + error)
+                console.info('SUB_Communication_NFC_nfctage_js_0100 error' + error)
             }
-            let blockIndex = 1; 
-            await mifareClassic.readSingleBlock(blockIndex).then((data) => {
-                console.info("mifareClassic readSingleBlock1 data: " + data + "json3:" + JSON.stringify(data));
-                expect(data).assertInstanceOf('Array')
-                done();
-            }).catch((err)=> {
-                console.info("mifareClassic readSingleBlock1 err: " + err);
-                expect(true).assertEqual(true);
-                done();
-            });
-            sleep(3000);
-        })
-            
+            expect(NfcATag != null).assertTrue();
+            expect(NfcATag instanceof Object).assertTrue();
+            console.info('aTag is--<-!!!->' + JSON.stringify(NfcATag));
+        }) 
 
         /**
-         * @tc.number SUB_Communication_NFC_mifareClassic_js_0400
-         * @tc.name testreadSingleBlock
-         * @tc.desc Test readSingleBlock api.
-         * @tc.size MEDIUM
-         * @ since 7
+         * @tc.number SUB_Communication_NFC_nfctage_js_0200
+         * @tc.name Test getNfcBTag
+         * @tc.desc This interface is used to obtain the NFC B tag object.
+         * @tc.size since 7
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_Communication_NFC_mifareClassic_js_0400', 0, async function (done) {
-            let blockIndex = 1; 
-            mifareClassic.readSingleBlock(blockIndex, (err, data)=> {
-                if (err) {
-                    console.info("mifareClassic readSingleBlock2 err: " + err);
-                    expect(true).assertEqual(true);
-                } else {
-                    console.info("mifareClassic readSingleBlock2 data: " + data+ "json4:" + JSON.stringify(data));
-                    expect(data).assertInstanceOf('Array')
-                }
-            });
-            done();
-        })
-            
+        it('SUB_Communication_NFC_nfctage_js_0200', 0, function ()  {
+            let NfcBTag ;
+            try{
+                NfcBTag = tag.getNfcBTag(bTag);
+            }catch(error){
+                console.info('SUB_Communication_NFC_nfctage_js_0200 error' + error)
+            }
+            expect(NfcBTag != null).assertTrue();
+            expect(NfcBTag instanceof Object).assertTrue();
+            console.info('bTag is--<-!!!->' + JSON.stringify(NfcBTag));
+        }) 
 
         /**
-         * @tc.number SUB_Communication_NFC_mifareClassic_js_0500
-         * @tc.name testwriteSingleBlock
-         * @tc.desc Test writeSingleBlock api.
-         * @tc.size MEDIUM
-         * @ since 7
+         * @tc.number SUB_Communication_NFC_nfctage_js_0300
+         * @tc.name Test getNfcFTag
+         * @tc.desc This interface is used to obtain the NFC F tag object.
+         * @tc.size since 7
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_Communication_NFC_mifareClassic_js_0500', 0, async function (done) {
-            let blockIndex = 1;
-            let rawData = [0x0a, 0x14]; 
-            await mifareClassic.writeSingleBlock(blockIndex, rawData).then((data) => {
-                console.info("mifareClassic writeSingleBlock1 data: " + data + "json5:" + JSON.stringify(data));
-                expect(data).assertTrue();
-                done();
-            }).catch((err)=> {
-                console.info("mifareClassic writeSingleBlock1 err: " + err);
-                expect(true).assertEqual(true);
-                done();
-            });
-            sleep(3000);
-        })
-            
+        it('SUB_Communication_NFC_nfctage_js_0300', 0, function ()  {
+            let NfcFTag ;
+            try{
+                NfcFTag = tag.getNfcFTag(fTag);
+            }catch(error){
+                console.info('SUB_Communication_NFC_nfctage_js_0300 error' + error)
+            }
+            expect(NfcFTag != null).assertTrue();
+            expect(NfcFTag instanceof Object).assertTrue();
+            console.info('fTag is--<-!!!->' + JSON.stringify(NfcFTag));
+        }) 
 
         /**
-         * @tc.number SUB_Communication_NFC_mifareClassic_js_0600
-         * @tc.name testwriteSingleBlock
-         * @tc.desc Test writeSingleBlock api.
-         * @tc.size MEDIUM
-         * @ since 7
+         * @tc.number SUB_Communication_NFC_nfctage_js_0400
+         * @tc.name Test getNfcVTag
+         * @tc.desc This interface is used to obtain the NFC V tag object.
+         * @tc.size since 7
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_Communication_NFC_mifareClassic_js_0600', 0, async function (done) {
-            let blockIndex = 1; 
-            let rawData = [0x0a, 0x14]; 
-            mifareClassic.writeSingleBlock(blockIndex, rawData, (err, data)=> {
-                if (err) {
-                    console.info("mifareClassic writeSingleBlock2 err: " + err);
-                    expect(true).assertEqual(true);
-                } else {
-                    console.info("mifareClassic writeSingleBlock2 data: " + data + "json6:" + JSON.stringify(data));
-                    expect(data).assertTrue();
-                }
-            });
-            sleep(3000);
-            done();
-        })
-            
+        it('SUB_Communication_NFC_nfctage_js_0400', 0, function ()  {
+            let NfcVTag ;
+            try{
+                NfcVTag = tag.getNfcVTag(vTag);
+            }catch(error){
+                console.info('SUB_Communication_NFC_nfctage_js_0400 error' + error)
+            }
+            expect(NfcVTag != null).assertTrue();
+            expect(NfcVTag instanceof Object).assertTrue();
+            console.info('vTag is--<-!!!->' + JSON.stringify(NfcVTag));
+        }) 
 
         /**
-         * @tc.number SUB_Communication_NFC_mifareClassic_js_0700
-         * @tc.name testincrementBlock
-         * @tc.desc Test incrementBlock api.
-         * @tc.size MEDIUM
-         * @ since 7
+         * @tc.number SUB_Communication_NFC_nfctage_js_0500
+         * @tc.name Test getsak_taga
+         * @tc.desc Obtains the SAK value of the NFC-A tag.
+         * @tc.size since 7
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_Communication_NFC_mifareClassic_js_0700', 0, async function (done) {
-            let blockIndex = 1; 
-            let value = 0x20;
-            await mifareClassic.incrementBlock(blockIndex, value).then((data) => {
-                console.info("mifareClassic incrementBlock1 data: " + data + "json7:" + JSON.stringify(data));
-                expect(data).assertInstanceOf('Number')
-                done();
-            }).catch((err)=> {
-                console.info("mifareClassic incrementBlock1 err: " + err);
-                expect(true).assertEqual(true);
-                done();
-            });
-            sleep(3000);
+        it('SUB_Communication_NFC_nfctage_js_0500', 0, function ()  {
+            let NfcATag ;
+            try{
+                NfcATag = tag.getNfcATag(aTag);
+            }catch(error){
+                console.info('SUB_Communication_NFC_nfctage_js_0500 error' + error)
+            }
+            let sak = NfcATag.getSak(); 
+            expect(sak).assertInstanceOf('Number');
+            console.info('[nfc_js] test sak data>:' + sak);
         })
-            
 
         /**
-         * @tc.number SUB_Communication_NFC_mifareClassic_js_0800
-         * @tc.name testincrementBlock
-         * @tc.desc Test incrementBlock api.
-         * @tc.size MEDIUM
-         * @ since 7
+         * @tc.number SUB_Communication_NFC_nfctage_js_0600
+         * @tc.name Test getAtqa_taga
+         * @tc.desc Obtains the Atqa value of the NFC-A tag.
+         * @tc.size since 7
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_Communication_NFC_mifareClassic_js_0800', 0, async function (done) {
-            let blockIndex = 1; 
-            let value = 0x20;
-            mifareClassic.incrementBlock(blockIndex, value, (err, data)=> {
-                if (err) {
-                    console.info("mifareClassic incrementBlock2 err: " + err);
-                    expect(true).assertEqual(true);
-                } else {
-                    console.info("mifareClassic incrementBlock2 data: " + data + "json8:" + JSON.stringify(data));
-                    expect(data).assertInstanceOf('Number')
-                }
-            });
-            sleep(3000);
-            done();
+        it('SUB_Communication_NFC_nfctage_js_0600', 0, function ()  {
+            let NfcATag ;
+            try{
+                NfcATag = tag.getNfcATag(aTag);
+            }catch(error){
+                console.info('SUB_Communication_NFC_nfctage_js_0600 error' + error)
+            }
+            let Atqa = NfcATag.getAtqa(); 
+            expect(Atqa).assertInstanceOf('Array');
+            console.info('[nfc_js] test Atqa data>:' + Atqa);
         })
-            
 
         /**
-         * @tc.number SUB_Communication_NFC_mifareClassic_js_0900
-         * @tc.name testdecrementBlock
-         * @tc.desc Test decrementBlock api.
-         * @tc.size MEDIUM
-         * @ since 7
+         * @tc.number SUB_Communication_NFC_nfctage_js_0700
+         * @tc.name Test getAppData_tagB
+         * @tc.desc Obtains the AppData value of the NFC-B tag.
+         * @tc.size since 7
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_Communication_NFC_mifareClassic_js_0900', 0, async function (done) {
-            let blockIndex = 1; 
-            let value = 0x20;
-            await mifareClassic.decrementBlock(blockIndex, value).then((data) => {
-                console.info("mifareClassic decrementBlock1 data: " + data + "json9:" + JSON.stringify(data));
-                expect(data).assertInstanceOf('Number')
-                done();
-            }).catch((err)=> {
-                console.info("mifareClassic decrementBlock1 err: " + err);
-                expect(true).assertEqual(true);
-                done();
-            });
-            sleep(3000);
+        it('SUB_Communication_NFC_nfctage_js_0700', 0, function ()  {
+            let NfcBTag ;
+            try{
+                NfcBTag = tag.getNfcBTag(bTag);
+            }catch(error){
+                console.info('SUB_Communication_NFC_nfctage_js_0700 error' + error)
+            }
+            let AppData = NfcBTag.getRespAppData(); 
+            expect(AppData).assertInstanceOf('Array');
+            console.info('[nfc_js] test AppData data>:' + AppData);
         })
-            
 
         /**
-         * @tc.number SUB_Communication_NFC_mifareClassic_js_1000
-         * @tc.name testdecrementBlock
-         * @tc.desc Test decrementBlock api.
-         * @tc.size MEDIUM
-         * @ since 7
+         * @tc.number SUB_Communication_NFC_nfctage_js_0800
+         * @tc.name Test getRespProtocol_tagB
+         * @tc.desc Obtains the Protocol value of the NFC-B tag.
+         * @tc.size since 7
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_Communication_NFC_mifareClassic_js_1000', 0, async function (done) {
-            let blockIndex = 1; 
-            let value = 0x20;
-            mifareClassic.decrementBlock(blockIndex, value, (err, data)=> {
-                if (err) {
-                    console.info("mifareClassic decrementBlock2 err: " + err);
-                    expect(true).assertEqual(true);
-                } else {
-                    console.info("mifareClassic decrementBlock2 data: " + data + "json10:" + JSON.stringify(data));
-                    expect(data).assertInstanceOf('Number')
-                }
-            });
-            sleep(3000);
-            done();
+         it('SUB_Communication_NFC_nfctage_js_0800', 0, function ()  {
+            let NfcBTag ;
+            try{
+                NfcBTag = tag.getNfcBTag(bTag);
+            }catch(error){
+                console.info('SUB_Communication_NFC_nfctage_js_0800 error' + error)
+            }
+            let Protocol = NfcBTag.getRespProtocol(); 
+            expect(Protocol).assertInstanceOf('Array');
+            console.info('[nfc_js] test Protocol data>:' + Protocol);
         })
-            
 
         /**
-         * @tc.number SUB_Communication_NFC_mifareClassic_js_1100
-         * @tc.name testtransferToBlock
-         * @tc.desc Test transferToBlock api.
-         * @tc.size MEDIUM
-         * @ since 7
+         * @tc.number SUB_Communication_NFC_nfctage_js_0900
+         * @tc.name Test getSystemCode_tagF
+         * @tc.desc Obtains the SystemCode value of the NFC-F tag.
+         * @tc.size since 7
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_Communication_NFC_mifareClassic_js_1100', 0, async function (done) {
-            let blockIndex = 1; 
-            await mifareClassic.transferToBlock(blockIndex).then((data) => {
-                console.info("mifareClassic transferToBlock1 data: " + data + "json9:" + JSON.stringify(data));
-                expect(data).assertInstanceOf('Number')
-                done();
-            }).catch((err)=> {
-                console.info("mifareClassic transferToBlock1 err: " + err);
-                expect(true).assertEqual(true);
-                done();
-            });
-            sleep(3000);
+         it('SUB_Communication_NFC_nfctage_js_0900', 0, function ()  {
+            let NfcFTag ;
+            try{
+                NfcFTag = tag.getNfcFTag(fTag);
+            }catch(error){
+                console.info('SUB_Communication_NFC_nfctage_js_0900 error' + error)
+            }
+            let SystemCode = NfcFTag.getSystemCode(); 
+            expect(SystemCode).assertInstanceOf('Array');
+            console.info('[nfc_js] test SystemCode data>:' + SystemCode);
         })
-            
 
         /**
-         * @tc.number SUB_Communication_NFC_mifareClassic_js_1200
-         * @tc.name testtransferToBlock
-         * @tc.desc Test transferToBlock api.
-         * @tc.size MEDIUM
-         * @ since 7
+         * @tc.number SUB_Communication_NFC_nfctage_js_1000
+         * @tc.name Test getPmm_tagF
+         * @tc.desc Obtains the getPmm value of the NFC-F tag.
+         * @tc.size since 7
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_Communication_NFC_mifareClassic_js_1200', 0, async function (done) {
-            let blockIndex = 1; 
-            mifareClassic.transferToBlock(blockIndex, (err, data)=> {
-                if (err) {
-                    console.info("mifareClassic transferToBlock2 err: " + err);
-                    expect(true).assertEqual(true);
-                } else {
-                    console.info("mifareClassic transferToBlock2 data: " + data + "json10:" + JSON.stringify(data));
-                    expect(data).assertInstanceOf('Number')
-                }
-            });
-            sleep(3000);
-            done();
+        it('SUB_Communication_NFC_nfctage_js_1000', 0, function ()  {
+            let NfcFTag ;
+            try{
+                NfcFTag = tag.getNfcFTag(fTag);
+            }catch(error){
+                console.info('SUB_Communication_NFC_nfctage_js_1000 error' + error)
+            }
+            let Pmm = NfcFTag.getPmm(); 
+            expect(Pmm).assertInstanceOf('Array');
+            console.info('[nfc_js] test Pmm data>:' + Pmm);
         })
-            
 
         /**
-         * @tc.number SUB_Communication_NFC_mifareClassic_js_1300
-         * @tc.name testrestoreFromBlock
-         * @tc.desc Test restoreFromBlock api.
-         * @tc.size MEDIUM
-         * @ since 7
+         * @tc.number SUB_Communication_NFC_nfctage_js_1100
+         * @tc.name Test getResponseFlags_tagV
+         * @tc.desc Obtains the ResponseFlags value of the NFC-V tag.
+         * @tc.size since 7
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_Communication_NFC_mifareClassic_js_1300', 0, async function (done) {
-            let blockIndex = 1; 
-            await mifareClassic.restoreFromBlock(blockIndex).then((data) => {
-                console.info("mifareClassic restoreFromBlock1 data: " + data + "json11:" + JSON.stringify(data));
-                expect(data).assertInstanceOf('Number')
-                done();
-            }).catch((err)=> {
-                console.info("mifareClassic restoreFromBlock1 err: " + err);
-                expect(true).assertEqual(true);
-                done();
-            });
-            sleep(3000);
+        it('SUB_Communication_NFC_nfctage_js_1100', 0, function ()  {
+            let NfcVTag ;
+            try{
+                NfcVTag = tag.getNfcVTag(vTag);
+            }catch(error){
+                console.info('SUB_Communication_NFC_nfctage_js_1100 error' + error)
+            }
+            let ResponseFlags = NfcVTag.getResponseFlags(); 
+            expect(ResponseFlags).assertInstanceOf('Number');
+            console.info('[nfc_js] test ResponseFlags data>:' + ResponseFlags);
         })
-            
 
         /**
-         * @tc.number SUB_Communication_NFC_mifareClassic_js_1400
-         * @tc.name testrestoreFromBlock
-         * @tc.desc Test restoreFromBlock api.
-         * @tc.size MEDIUM
-         * @ since 7
+         * @tc.number SUB_Communication_NFC_nfctage_js_1200
+         * @tc.name Test getDsfId_tagV
+         * @tc.desc Obtains the DsfId value of the NFC-V tag.
+         * @tc.size since 7
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_Communication_NFC_mifareClassic_js_1400', 0, async function (done) {
-            let blockIndex = 1; 
-            mifareClassic.restoreFromBlock(blockIndex, (err, data)=> {
-                if (err) {
-                    console.info("mifareClassic restoreFromBlock2 err: " + err);
-                    expect(true).assertEqual(true);
-                } else {
-                    console.info("mifareClassic restoreFromBlock2 data: " + data + "json12:" + JSON.stringify(data));
-                    expect(data).assertInstanceOf('Number')
-                }
-            });
-            sleep(3000);
-            done();
+        it('SUB_Communication_NFC_nfctage_js_1200', 0, function ()  {
+            let NfcVTag ;
+            try{
+                NfcVTag = tag.getNfcVTag(vTag);
+            }catch(error){
+                console.info('SUB_Communication_NFC_nfctage_js_1200 error' + error)
+            }
+            let DsfId = NfcVTag.getDsfId(); 
+            expect(DsfId).assertInstanceOf('Number');
+            console.info('[nfc_js] test DsfId data>:' + DsfId);
         })
-            
 
         /**
-         * @tc.number SUB_Communication_NFC_mifareClassic_js_1500
-         * @tc.name testgetSectorCount
-         * @tc.desc Test getSectorCount api.
-         * @tc.size MEDIUM
-         * @ since 7
+         * @tc.number SUB_Communication_NFC_nfctage_js_1300
+         * @tc.name Test getTagInfo
+         * @tc.desc Obtains the DsfId value of the taginfo.
+         * @tc.size since 7
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_Communication_NFC_mifareClassic_js_1500', 0, function ()  {
-            let sectorCount = mifareClassic.getSectorCount();
-            console.info("mifareClassic sectorCount: " + sectorCount);
-            expect(sectorCount).assertInstanceOf('Number')
+        it('SUB_Communication_NFC_nfctage_js_1300', 0, function ()  {
+            let TagInfo ;
+            try{
+                TagInfo = tag.getTagInfo(Want);
+                console.info('SUB_Communication_NFC_nfctage_js1111111' + TagInfo)
+                expect(TagInfo instanceof Object).assertTrue();
+            }catch(error){
+                console.info('SUB_Communication_NFC_nfctage_js_1300 error' + error)
+                expect(true).assertTrue();
+            }
+            console.info('[nfc_js] test TagInfo data>:' + TagInfo);
         })
-            
 
-        /**
-         * @tc.number SUB_Communication_NFC_mifareClassic_js_1600
-         * @tc.name testgetBlockCountInSector
-         * @tc.desc Test getBlockCountInSector api.
-         * @tc.size MEDIUM
-         * @ since 7
-         * @tc.type Function
-         * @tc.level Level 2
-         */
-        it('SUB_Communication_NFC_mifareClassic_js_1600', 0, function ()  {
-            let blockCountInSector = mifareClassic.getBlockCountInSector();
-            console.info("mifareClassic blockCountInSector: " + blockCountInSector);
-            expect(blockCountInSector).assertInstanceOf('Number')
-        })
-            
-
-        /**
-         * @tc.number SUB_Communication_NFC_mifareClassic_js_1700
-         * @tc.name testgetType
-         * @tc.desc Test getType api.
-         * @tc.size MEDIUM
-         * @ since 7
-         * @tc.type Function
-         * @tc.level Level 2
-         */
-        it('SUB_Communication_NFC_mifareClassic_js_1700', 0, function ()  {
-            let getType = mifareClassic.getType();
-            console.info("mifareClassic getType: " + getType);
-            expect(true).assertTrue(getType >= -1);
-        })
-            
-
-        /**
-         * @tc.number SUB_Communication_NFC_mifareClassic_js_1800
-         * @tc.name testgetTagSize
-         * @tc.desc Test getTagSize api.
-         * @tc.size MEDIUM
-         * @ since 7
-         * @tc.type Function
-         * @tc.level Level 2
-         */
-        it('SUB_Communication_NFC_mifareClassic_js_1800', 0, function ()  {
-            let tagSize = mifareClassic.getTagSize();
-            console.info("mifareClassic tagSize: " + tagSize);
-            expect(tagSize).assertInstanceOf('Number')
-        })
-            
-
-        /**
-         * @tc.number SUB_Communication_NFC_mifareClassic_js_1900
-         * @tc.name testisEmulatedTag
-         * @tc.desc Test isEmulatedTag api.
-         * @tc.size MEDIUM
-         * @ since 7
-         * @tc.type Function
-         * @tc.level Level 2
-         */
-        it('SUB_Communication_NFC_mifareClassic_js_1900', 0, function ()  {
-            let isEmulatedTag = mifareClassic.isEmulatedTag();
-            console.info("mifareClassic isEmulatedTag: " + isEmulatedTag);
-            expect(false).assertEqual(isEmulatedTag);
-        })
-            
-
-        /**
-         * @tc.number SUB_Communication_NFC_mifareClassic_js_2000
-         * @tc.name testgetBlockIndex
-         * @tc.desc Test getBlockIndex api.
-         * @tc.size MEDIUM
-         * @ since 7
-         * @tc.type Function
-         * @tc.level Level 2
-         */
-        it('SUB_Communication_NFC_mifareClassic_js_2000', 0, function ()  {
-            let sectorIndex = 1; 
-            let blockIndex = mifareClassic.getBlockIndex(sectorIndex);
-            console.info("mifareClassic blockIndex: " + blockIndex);
-            expect(true).assertTrue(blockIndex >= 0);
-        })
-            
-
-        /**
-         * @tc.number SUB_Communication_NFC_mifareClassic_js_2100
-         * @tc.name testgetSectorIndex
-         * @tc.desc Test getSectorIndex api.
-         * @tc.size MEDIUM
-         * @ since 7
-         * @tc.type Function
-         * @tc.level Level 2
-         */
-        it('SUB_Communication_NFC_mifareClassic_js_2100', 0, function ()  {
-            let blockIndex = 1; 
-            let sectorIndex = mifareClassic.getSectorIndex(blockIndex);
-            console.info("mifareClassic sectorIndex: " + sectorIndex);
-            expect(true).assertTrue(sectorIndex >= 0);
-        })
-        
         console.info("*************[nfc_test] start nfc js unit test end*************");
     })
 }

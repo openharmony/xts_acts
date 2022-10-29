@@ -19,6 +19,7 @@ import nfcIsoDepTagTest from './nfc.IsoDepTag.js'
 import nfcMifareClassicTag from './nfc.MifareClassicTag.js'
 import nfcMifareUltralightTag from './nfc.MifareUltralightTag.js'
 import nfcTagABFVTest from './nfc.TagABFV.js'
+import nfcNDEFTagTest from './nfc.NDEFTag.js'
 import parameter from '@ohos.systemparameter';
 let info = parameter.getSync("const.SystemCapability.Communication.NFC.Core" ,"false");
 export default function testsuite() {
@@ -30,6 +31,7 @@ if (info != "false")
     nfcMifareClassicTag();
     nfcMifareUltralightTag();
     nfcTagABFVTest();
+    nfcNDEFTagTest();
 }
 }
 

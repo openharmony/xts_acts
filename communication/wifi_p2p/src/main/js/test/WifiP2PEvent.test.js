@@ -198,3 +198,4 @@ export default function actsWifiEventTest() {
         console.log("*************[wifi_test] start wifi js unit test end*************");
     })
 }
+

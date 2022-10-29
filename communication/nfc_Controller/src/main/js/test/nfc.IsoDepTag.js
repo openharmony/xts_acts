@@ -44,6 +44,12 @@ let NfcForumType = {
     MIFARE_CLASSIC : 101,
 };
 
+let FeatureType = {
+    HCE : 0,
+    UICC : 0,
+    ESE : 0,
+}
+
 let isoDepTaginfo = {
     "uid": [0x01, 0x02, 0x03, 0x04],
     "technology": [1, 3],
@@ -57,13 +63,13 @@ let isoDepTaginfo = {
     ],
     "tagRfDiscId": 1,
 };
-let isoDep ;
+let IsoDepTag ;
 export default function nfcIsoDepTagTest() {
     describe('nfcIsoDepTagTest', function () {
         beforeAll(function () {
             console.info('[NFC_test]beforeAll called')
             try{
-                isoDep = tag.getIsoDep(isoDepTaginfo);
+                IsoDepTag = tag.getIsoDep(isoDepTaginfo);
             }catch(error){
                 console.info('getIsoDep is ->' + error)
             }
@@ -87,7 +93,7 @@ export default function nfcIsoDepTagTest() {
          * @tc.level Level 2
          */
         it('SUB_Communication_NFC_nfcIsoDep_js_0100', 0, function ()  { 
-            let ResponseFlags = isoDep.getHistoricalBytes(); 
+            let ResponseFlags = IsoDepTag.getHistoricalBytes(); 
             expect(ResponseFlags).assertInstanceOf('Array')
             console.info('[nfc_js] test ResponseFlags data>:' + ResponseFlags);
         })
@@ -101,7 +107,7 @@ export default function nfcIsoDepTagTest() {
          * @tc.level Level 2
          */
         it('SUB_Communication_NFC_nfcIsoDep_js_0200', 0, function ()  {
-            let HiLayerResponse = isoDep.getHiLayerResponse(); 
+            let HiLayerResponse = IsoDepTag.getHiLayerResponse(); 
             expect(HiLayerResponse).assertInstanceOf('Array')
             console.info('[nfc_js] test ResponseFlags data>:' + HiLayerResponse);
         })
@@ -115,7 +121,7 @@ export default function nfcIsoDepTagTest() {
          * @tc.level Level 2
          */
         it('SUB_Communication_NFC_nfcIsoDep_js_0300', 0, async function (done) {
-            await isoDep.isExtendedApduSupported().then((data) => {
+            await IsoDepTag.isExtendedApduSupported().then((data) => {
                 expect(false).assertEqual(data);
                 console.info("isoDep isExtendedApduSupported data: " + data);
                 done();
@@ -135,7 +141,7 @@ export default function nfcIsoDepTagTest() {
          * @tc.level Level 2
          */
         it('SUB_Communication_NFC_nfcIsoDep_js_0400', 0, async function (done) {
-            isoDep.isExtendedApduSupported((err, data)=> {
+            IsoDepTag.isExtendedApduSupported((err, data)=> {
                 if (err) {
                     expect().assertFail();
                     console.info("isoDep isExtendedApduSupported err: " + err);
@@ -145,6 +151,25 @@ export default function nfcIsoDepTagTest() {
                 }
             });
             done();
+        })
+
+        /**
+         * @tc.number SUB_Communication_NFC_nfccardEmulationnfc_js_0500
+         * @tc.name Test cardEmulationnfc
+         * @tc.desc Whether to support a certain type of card emulation.
+         * @tc.size since 9
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+         it('SUB_Communication_NFC_nfccardEmulationnfc_js_0500', 0, function ()  {
+            let cardEmulationnfc ;
+            try{
+                cardEmulationnfc = cardEmulation.isSupported(FeatureType.ESE);
+                console.info('cardEmulationnfc type ->' + cardEmulationnfc )
+                expect(cardEmulationnfc).assertFalse();
+            }catch(error){
+                console.info('cardEmulationnfc error' + error)
+            }
         })
 
         console.info("*************[nfc_test] start nfc js unit test end*************");

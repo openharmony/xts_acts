@@ -38,12 +38,26 @@ let mifareUltralightTaginfo = {
     "tagRfDiscId": 1,
 };
 
+let MifareUltralightType = {
+    TYPE_UNKOWN : 0x04,
+    TYPE_ULTRALIGHT : 1,
+    TYPE_ULTRALIGHT_C : 2,
+}
+
+let MifareUltralightTag = null;
+
 export default function nfcMifareUltralightTag() {
     describe('nfcMifareUltralightTag', function () {
         beforeAll(function () {
             console.info('[NFC_test]beforeAll called')
         })
         beforeEach(function() {
+            try{
+                MifareUltralightTag = tag.getMifareUltralight(mifareUltralightTaginfo);
+                console.info(' mifareUltralight is' + mifareUltralight)
+            }catch(error){
+                console.info(' mifareUltralight error' + error)
+            }
             console.info('[NFC_test]beforeEach called')
         })
         afterEach(function () {
@@ -58,20 +72,15 @@ export default function nfcMifareUltralightTag() {
          * @tc.name testreadMultiplePages
          * @tc.desc Test readMultiplePages api by promise.
          * @tc.size MEDIUM
-         * @ since 7
+         * @ since 9
          * @tc.type Function
          * @tc.level Level 2
          */
         it('SUB_Communication_NFC_mifareUltralight_0100', 0, async function (done) {
-            let mifareUltralight;
-            try{
-                mifareUltralight = tag.getMifareUltralight(mifareUltralightTaginfo);
-                console.info(' mifareUltralight is' + mifareUltralight)
-            }catch(error){
-                console.info(' mifareUltralight error' + error)
-            }
+
+
             let pageIndex = 1;
-            await mifareUltralight.readMultiplePages(pageIndex).then((data) => {
+            await MifareUltralightTag.readMultiplePages(pageIndex).then((data) => {
                 console.info("mifareUltralight readMultiplePages1 data: " + data + "json1:" + JSON.stringify(data));
                 expect(true).assertTrue(data >= 0);
                 done();
@@ -88,19 +97,13 @@ export default function nfcMifareUltralightTag() {
          * @tc.name testreadMultiplePages
          * @tc.desc Test readMultiplePages api by callback.
          * @tc.size MEDIUM
-         * @ since 7
+         * @ since 9
          * @tc.type Function
          * @tc.level Level 2
          */
         it('SUB_Communication_NFC_mifareUltralight_0200', 0, async function (done) {
-            let mifareUltralight;
-            try{
-                mifareUltralight = tag.getMifareUltralight(mifareUltralightTaginfo);
-            }catch(error){
-                console.info(' mifareUltralight error' + error)
-            }
             let pageIndex = 1;
-            mifareUltralight.readMultiplePages(pageIndex, (err, data)=> {
+            MifareUltralightTag.readMultiplePages(pageIndex, (err, data)=> {
                 if (err) {
                     console.info("mifareUltralight readMultiplePages2 err: " + err);
                     expect(true).assertEqual(true);
@@ -115,82 +118,15 @@ export default function nfcMifareUltralightTag() {
 
         /**
          * @tc.number SUB_Communication_NFC_mifareUltralight_0300
-         * @tc.name testwriteSinglePages
-         * @tc.desc Test writeSinglePages api by promise.
-         * @tc.size MEDIUM
-         * @ since 7
-         * @tc.type Function
-         * @tc.level Level 2
-         */
-        it('SUB_Communication_NFC_mifareUltralight_0300', 0, async function (done) {
-            let mifareUltralight;
-            try{
-                mifareUltralight = tag.getMifareUltralight(mifareUltralightTaginfo);
-            }catch(error){
-                console.info(' mifareUltralight error' + error)
-            }
-            let pageIndex = 1;
-            let datatype = [0x01, 0x02];
-            await mifareUltralight.writeSinglePage(pageIndex, datatype).then((data) => {
-                console.info("mifareUltralight writeSinglePages1 data: " + data + "json1:" + JSON.stringify(data));
-                expect(true).assertTrue(data >= 0);
-                done();
-            }).catch((err)=> {
-                console.info("mifareUltralight writeSinglePages1 err: " + err);
-                expect(true).assertEqual(true);
-                done();
-            });
-            sleep(3000);
-        })
-            
-        /**
-         * @tc.number SUB_Communication_NFC_mifareUltralight_0400
-         * @tc.name testwriteSinglePages
-         * @tc.desc Test writeSinglePages api by callback.
-         * @tc.size MEDIUM
-         * @ since 7
-         * @tc.type Function
-         * @tc.level Level 2
-         */
-        it('SUB_Communication_NFC_mifareUltralight_0400', 0, async function (done) {
-            let mifareUltralight;
-            try{
-                mifareUltralight = tag.getMifareUltralight(mifareUltralightTaginfo);
-            }catch(error){
-                console.info(' mifareUltralight error' + error)
-            }
-            let pageIndex = 1;
-            let datatype = [0x01, 0x02];
-            mifareUltralight.writeSinglePage(pageIndex, datatype, (err, data)=> {
-                if (err) {
-                    console.info("mifareUltralight writeSinglePages2 err: " + err);
-                    expect(true).assertEqual(true);
-                } else {
-                    console.info("mifareUltralight writeSinglePages2 data: " + data + "json2:" + JSON.stringify(data));
-                    expect(true).assertTrue(data >= 0);
-                }
-            });
-            sleep(3000);
-            done();
-        })
-
-        /**
-         * @tc.number SUB_Communication_NFC_mifareUltralight_0500
          * @tc.name testgetType
          * @tc.desc Gets the type of Mifare Ultralight label
          * @tc.size MEDIUM
-         * @ since 7
+         * @ since 9
          * @tc.type Function
          * @tc.level Level 2
          */
         it('SUB_Communication_NFC_mifareUltralight_0500', 0, function ()  {
-            let mifareUltralight;
-            try{
-                mifareUltralight = tag.getMifareUltralight(mifareUltralightTaginfo);
-            }catch(error){
-                console.info(' mifareUltralight error' + error)
-            }
-            let getType = mifareUltralight.getType();
+            let getType = MifareUltralightTag.getType();
             console.info("mifareUltralight getType: " + getType);
             expect(true).assertTrue(getType >= -1);
         })
