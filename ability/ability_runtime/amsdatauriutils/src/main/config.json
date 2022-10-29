@@ -17,7 +17,8 @@
         "package": "com.amsst.amsdatauriutils",
         "name": ".entry",
         "deviceType": [
-            "default"
+            "default",
+            "tablet"
         ],
         "distro": {
             "deliveryWithInstall": true,
