@@ -14,7 +14,6 @@
  */
 import account from '@ohos.account.appAccount'
 import featureAbility from '@ohos.ability.featureAbility'
-import app from '../../../../../../../../../getallaccounts/getallaccountsnoparameter/src/main/js/TestAbility/app'
 
 const injectRef = Object.getPrototypeOf(global) || global
 injectRef.regeneratorRuntime = require('@babel/runtime/regenerator')

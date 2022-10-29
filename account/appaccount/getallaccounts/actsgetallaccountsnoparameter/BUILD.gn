@@ -13,14 +13,14 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("GetAllAccountsNoParameter") {
+ohos_js_hap_suite("ActsGetAllAccountsNoParameter") {
   hap_profile = "./src/main/config.json"
   deps = [
     ":hjs_demo_js_assets",
     ":hjs_demo_resources",
   ]
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "GetAllAccountsNoParameter"
+  hap_name = "ActsGetAllAccountsNoParameter"
   subsystem_name = "account"
   part_name = "os_account"
 }
