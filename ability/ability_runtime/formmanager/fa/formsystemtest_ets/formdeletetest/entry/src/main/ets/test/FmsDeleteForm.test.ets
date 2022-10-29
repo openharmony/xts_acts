@@ -610,6 +610,7 @@ export default function test() {
          */
         it(`FMS_deleteForm_0700_1`, 0, async (done) => {
             const tcNumber = `FMS_deleteForm_0700_1`;
+            let currentTime = new Date().getTime()
             let formId;
             let formIdB;
             let supplyFlag = false;
@@ -638,7 +639,13 @@ export default function test() {
                 console.info(`${tcNumber} delPublishCallbackB`);
                 console.info(`${tcNumber} delPublishCallbackB end`);
                 console.info(`${tcNumber} end`);
-                done();
+                await systemTime.setTime(currentTime).then((data)=>{
+                    console.info(`${tcNumber} setTime  ${JSON.stringify(data)}`);
+                    done();
+                }).catch((error)=>{
+                    console.info(`${tcNumber} setTime  ${JSON.stringify(error)}`);
+                    done();
+                })
             }
 
             async function deleteFormB() {
