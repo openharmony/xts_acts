@@ -106,7 +106,6 @@ describe("SensorJsTest_sensor_31", function () {
     it("subscribeLight_SensorJsTest003", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         console.info('----------------------subscribeLight_SensorJsTest003---------------------------');
         sensor.subscribeLight({
-            interval: 'normal',
             success: function (data) {
                 console.info("subscribeLight_SensorJsTest003 success" + JSON.stringify(data));
 				expect(typeof (data.intensity)).assertEqual("number");
@@ -170,6 +169,7 @@ describe("SensorJsTest_sensor_31", function () {
             success: function (data) {
                 console.info("subscribeLight_SensorJsTest005 success" + JSON.stringify(data));
 				expect(typeof (data.intensity)).assertEqual("number");
+				done();
             },
             fail: function (data, code) {
                 console.log("subscribeLight_SensorJsTest005 is failed, data: " + data + ", code: " + code);

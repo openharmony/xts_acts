@@ -15,6 +15,7 @@
 import SystemParameterTest from './SensorOnOffTest.test.js'
 import SensorJsTest_sensor_2 from './SensorGeomagneticTest.test.js'
 import SensorJsTest_sensor_1 from './SensorGeneralalgorithm.test.js'
+import SensorJsTest_sensor_60 from './SensorOnOffTest.test_newSensorGeomagnetic.js'
 import SensorJsTest_sensor_3 from './SensorOnOffTest.test_oldAccelerometer.js'
 import SensorJsTest_sensor_25 from './Subscribe_subscribeAccelerometer.js'
 import SensorJsTest_sensor_39 from './SensorOnOffTest.test_newAccelerometer.js'
@@ -22,6 +23,7 @@ import SensorJsTest_sensor_39 from './SensorOnOffTest.test_newAccelerometer.js'
 export default function testsuite() {
 SensorJsTest_sensor_1()
 SensorJsTest_sensor_2()
+SensorJsTest_sensor_60()
 SystemParameterTest()
 SensorJsTest_sensor_3()
 SensorJsTest_sensor_25()
