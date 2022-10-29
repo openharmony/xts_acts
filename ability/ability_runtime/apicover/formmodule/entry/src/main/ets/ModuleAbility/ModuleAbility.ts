@@ -1,8 +1,7 @@
-import Ability from '@ohos.app.ability.Ability'
-import AbilityConstant
-    from "../../../../../../../../../../../../interface/sdk-js/api/@ohos.app.ability.AbilityConstant";
+import UIAbility from '@ohos.app.ability.UIAbility'
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 
-export default class ModuleAbility extends Ability {
+export default class ModuleAbility extends UIAbility {
     onCreate(want, launchParam) {
         console.log("[Demo] MainAbility onCreate")
         globalThis.abilityWant = want;
@@ -53,5 +52,4 @@ export default class ModuleAbility extends Ability {
         console.log("[Demo] MainAbility onDump: " + JSON.stringify(param))
         return ["MainAbility"]
     }
-
 };
