@@ -60,7 +60,7 @@ export default function nfcControllerTest() {
                 let openNfcswitch = controller.openNfc();
                 sleep(5000);
                 console.info('[nfc_js] open Nfc switch ->' + openNfcswitch);
-                expect(openNfcswitch===undefined ||  openNfcswitch===true).assertTrue();
+                expect(openNfcswitch).assertTrue();
             }catch(error) {
                 console.info('[nfc_js] Failed to enable the switch ->' + error);
                 expect(error != null).assertTrue();
@@ -139,7 +139,7 @@ export default function nfcControllerTest() {
             try {
                 let closeNfc = controller.closeNfc();
                 console.info('[nfc_js] clocse Nfc switch ->' + closeNfc);
-                expect(closeNfc===undefined ||  closeNfc===true).assertTrue();
+                expect(closeNfc).assertTrue();
             }catch(error) {
                 console.info('[nfc_js] Failed to disable the switch ->' + error );
                 expect(error!=null).assertTrue();

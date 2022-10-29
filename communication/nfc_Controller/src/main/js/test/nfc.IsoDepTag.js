@@ -79,7 +79,7 @@ export default function nfcIsoDepTagTest() {
         })
 
         /**
-         * @tc.number SUB_Communication_NFC_nfctage_js_0010
+         * @tc.number SUB_Communication_NFC_nfcIsoDep_js_0100
          * @tc.name Test getHistoricalBytes IsoDep
          * @tc.desc Obtains the history bytes of a label.
          * @tc.size since 9
@@ -93,7 +93,7 @@ export default function nfcIsoDepTagTest() {
         })
 
         /**
-         * @tc.number SUB_Communication_NFC_nfctage_js_0010
+         * @tc.number SUB_Communication_NFC_nfcIsoDep_js_0200
          * @tc.name Test getHiLayerResponse IsoDep
          * @tc.desc HiLayer response byte for obtaining the tag.
          * @tc.size since 9
@@ -107,7 +107,7 @@ export default function nfcIsoDepTagTest() {
         })
 
         /**
-         * @tc.number SUB_Communication_NFC_nfctage_js_0010
+         * @tc.number SUB_Communication_NFC_nfcIsoDep_js_0300
          * @tc.name Test isExtendedApduSupported IsoDep
          * @tc.desc Check whether extended APDUs are supported.Promise
          * @tc.size since 9
@@ -127,7 +127,7 @@ export default function nfcIsoDepTagTest() {
         })
 
         /**
-         * @tc.number SUB_Communication_NFC_nfctage_js_0010
+         * @tc.number SUB_Communication_NFC_nfcIsoDep_js_0400
          * @tc.name Test isExtendedApduSupported IsoDep
          * @tc.desc Check whether extended APDUs are supported.callback
          * @tc.size since 9
