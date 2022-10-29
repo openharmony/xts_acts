@@ -58,7 +58,7 @@ export default function nfcATagSessionTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_Communication_NFC_nfcAtage_js_0001', 0, function ()  {
+        it('SUB_Communication_NFC_nfcAtage_js_0100', 0, function ()  {
             let NfcConnected;
             try{
                 NfcConnected = tag.getNfcATag(aTag).connectTag();
@@ -70,7 +70,7 @@ export default function nfcATagSessionTest() {
         })
 
         /**
-         * @tc.number SUB_Communication_NFC_nfcAtage_js_0002
+         * @tc.number SUB_Communication_NFC_nfcAtage_js_0200
          * @tc.name testreset
          * @tc.desc Test reset api.
          * @tc.size MEDIUM
@@ -78,7 +78,7 @@ export default function nfcATagSessionTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_Communication_NFC_nfcAtage_js_0002', 0, function ()  {
+        it('SUB_Communication_NFC_nfcAtage_js_0200', 0, function ()  {
             try{
                 tag.getNfcATag(aTag).reset();
                 expect(true).assertTrue();
@@ -89,7 +89,7 @@ export default function nfcATagSessionTest() {
         })
 
         /**
-         * @tc.number SUB_Communication_NFC_nfcAtage_js_0003
+         * @tc.number SUB_Communication_NFC_nfcAtage_js_0300
          * @tc.name testisTagConnected
          * @tc.desc Test isTagConnected api by callback.
          * @tc.size MEDIUM
@@ -97,7 +97,7 @@ export default function nfcATagSessionTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_Communication_NFC_nfcAtage_js_0003', 0, function ()  {
+        it('SUB_Communication_NFC_nfcAtage_js_0300', 0, function ()  {
             let isNfcConnected;
             try{
                 isNfcConnected = tag.getNfcATag(aTag).isTagConnected();
@@ -109,7 +109,7 @@ export default function nfcATagSessionTest() {
         })
 
         /**
-         * @tc.number SUB_Communication_NFC_nfcAtage_js_0004
+         * @tc.number SUB_Communication_NFC_nfcAtage_js_0400
          * @tc.name testgetMaxSendLength
          * @tc.desc Test getMaxSendLength api.
          * @tc.size MEDIUM
@@ -117,7 +117,7 @@ export default function nfcATagSessionTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_Communication_NFC_nfcAtage_js_0004', 0, function ()  {
+        it('SUB_Communication_NFC_nfcAtage_js_0400', 0, function ()  {
             let mazSendLen;
             try{
                 mazSendLen  = tag.getNfcATag(aTag).getMaxSendLength();
@@ -130,7 +130,7 @@ export default function nfcATagSessionTest() {
         })
 
         /**
-         * @tc.number SUB_Communication_NFC_nfcAtage_js_0005
+         * @tc.number SUB_Communication_NFC_nfcAtage_js_0500
          * @tc.name testsetSendDataTimeout
          * @tc.desc Test setSendDataTimeout api.
          * @tc.size MEDIUM
@@ -138,7 +138,7 @@ export default function nfcATagSessionTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_Communication_NFC_nfcAtage_js_0005', 0, function ()  {
+        it('SUB_Communication_NFC_nfcAtage_js_0500', 0, function ()  {
             let settime;
             try{
                 settime  = tag.getNfcATag(aTag).setSendDataTimeout(1000);
@@ -150,7 +150,7 @@ export default function nfcATagSessionTest() {
         })
 
         /**
-         * @tc.number SUB_Communication_NFC_nfcAtage_js_0006
+         * @tc.number SUB_Communication_NFC_nfcAtage_js_0600
          * @tc.name testgetSendDataTimeout
          * @tc.desc Test getSendDataTimeout api.
          * @tc.size MEDIUM
@@ -158,7 +158,7 @@ export default function nfcATagSessionTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_Communication_NFC_nfcAtage_js_0006', 0, function ()  {
+        it('SUB_Communication_NFC_nfcAtage_js_0600', 0, function ()  {
             let gettime;
             try{
                 gettime  = tag.getNfcATag(aTag).getSendDataTimeout();
@@ -171,7 +171,7 @@ export default function nfcATagSessionTest() {
         })
 
         /**
-         * @tc.number SUB_Communication_NFC_nfcAtage_js_0007
+         * @tc.number SUB_Communication_NFC_nfcAtage_js_0700
          * @tc.name testsendData
          * @tc.desc Test sendData api by peomise.
          * @tc.size MEDIUM
@@ -179,7 +179,7 @@ export default function nfcATagSessionTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_Communication_NFC_nfcAtage_js_0007', 0, async function (done) {
+        it('SUB_Communication_NFC_nfcAtage_js_0700', 0, async function (done) {
             let sendDatas = [0x01, 0x02, 0x03, 0x04];
             await tag.getNfcATag(aTag).sendData(sendDatas).then((data) => {
                 console.log("nfcAtage sendData1 data: " + data + "json1:" + JSON.stringify(data));
@@ -192,7 +192,7 @@ export default function nfcATagSessionTest() {
         })
 
         /**
-         * @tc.number SUB_Communication_NFC_nfcAtage_js_0008
+         * @tc.number SUB_Communication_NFC_nfcAtage_js_0800
          * @tc.name testsendData
          * @tc.desc Test sendData api by callback.
          * @tc.size MEDIUM
@@ -200,7 +200,7 @@ export default function nfcATagSessionTest() {
          * @tc.type Function
          * @tc.level Level 2
          */
-        it('SUB_Communication_NFC_nfcAtage_js_0008', 0, async function (done) {
+        it('SUB_Communication_NFC_nfcAtage_js_0800', 0, async function (done) {
             let sendDatas = [0x01, 0x02, 0x03, 0x04];
             tag.getNfcATag(aTag).sendData(sendDatas, (err, data)=> {
                 if (err) {
