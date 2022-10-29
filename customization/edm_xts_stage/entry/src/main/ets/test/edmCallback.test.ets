@@ -170,7 +170,7 @@ export default function edmCallbackTest() {
             expect(isEnabled).assertTrue();
 
             try {
-                var retValue = await enterpriseDeviceManager.disableAdmin(WANT1, DEFAULT_USER_ID);
+                await enterpriseDeviceManager.disableAdmin(WANT1, DEFAULT_USER_ID);
                 console.log('enterpriseDeviceManager.disableAdmin over');
             } catch (error) {
                 expect(error != null).assertTrue();
@@ -247,9 +247,11 @@ export default function edmCallbackTest() {
         let dsmgr = await enterpriseDeviceManager.getDeviceSettingsManager();
         expect(dsmgr !== null).assertTrue();
         console.log('before setDateTime');
-        await dsmgr.setDateTime(SELFWANT, 1526003846000, OnReceiveEvent);
-        async function OnReceiveEvent() {
+        let currentTime = new Date().getTime();
+        await dsmgr.setDateTime(SELFWANT, currentTime, OnReceiveEvent);
+        async function OnReceiveEvent(error) {
             await enterpriseDeviceManager.disableSuperAdmin(SELFHAPNAME);
+            expect(error === null).assertTrue();
             done();
         }
     })

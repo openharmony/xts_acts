@@ -284,7 +284,10 @@ export default function edmPromiseTest() {
         let dsmgr = await enterpriseDeviceManager.getDeviceSettingsManager();
         expect(dsmgr !== null).assertTrue();
         console.log('before setDateTime');
-        await dsmgr.setDateTime(SELFWANT, 1526003846000);
+        let currentTime = new Date().getTime();
+        await dsmgr.setDateTime(SELFWANT, currentTime).catch((error)=>{
+            expect(error === null).assertTrue();
+        })
         await enterpriseDeviceManager.disableSuperAdmin(SELFHAPNAME);
         done();
     })
