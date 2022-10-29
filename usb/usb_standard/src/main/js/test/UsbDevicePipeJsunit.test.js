@@ -283,7 +283,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   /**
    * @tc.number    : SUB_USB_JS_0740
    * @tc.name      : setConfiguration
-   * @tc.desc      : 设置设备接口
+   * @tc.desc      : 设置设备配置
    */
   it('SUB_USB_JS_0740', 0, function () {
     console.info('usb SUB_USB_JS_0740 begin');
@@ -312,7 +312,7 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
   /**
    * @tc.number    : SUB_USB_JS_0750
    * @tc.name      : setConfiguration
-   * @tc.desc      : 反向测试 设置设备接口
+   * @tc.desc      : 反向测试 设置设备配置
    */
   it('SUB_USB_JS_0750', 0, function () {
     console.info('usb SUB_USB_JS_0750 begin');
@@ -653,12 +653,40 @@ describe('UsbDevicePipeJsFunctionsTest', function () {
     }
     try {
       var maskCode = usb.controlTransfer("invalid");
-      console.info('usb case controlTransfer return: ' + maskCode);
+      console.info('usb 1140 case controlTransfer return: ' + maskCode);
       expect(false).assertTrue();
     } catch (err) {
-      console.info('catch err code: ' + err.code + ' message: ' + err.message);
+      console.info('usb 1140 catch err code: ' + err.code + ' message: ' + err.message);
       expect(err.code).assertEqual(401);
       console.info('usb SUB_USB_JS_1140 :  PASS');
+    }
+  })
+
+  /**
+   * @tc.number    : SUB_USB_JS_1300
+   * @tc.name      : controlTransfer
+   * @tc.desc      : 反向测试 控制传输 参数个数错误，必要参数未传入
+   */
+   it('SUB_USB_JS_1300', 0, function () {
+    console.info('usb SUB_USB_JS_1300 begin');
+    if (portCurrentMode == 1) {
+      console.info('usb case get_device port is device')
+      expect(false).assertFalse();
+      return
+    }
+    var testParam = getTransferTestParam()
+    if (testParam.inEndpoint == null || testParam.interface == null || testParam.outEndpoint == null) {
+      expect(false).assertTrue();
+      return
+    }
+    try {
+      var maskCode = usb.controlTransfer();
+      console.info('usb 1300 case controlTransfer return: ' + maskCode);
+      expect(false).assertTrue();
+    } catch (err) {
+      console.info('usb 1300 catch err code: ' + err.code + ' message: ' + err.message);
+      expect(err.code).assertEqual(401);
+      console.info('usb SUB_USB_JS_1300 :  PASS');
     }
   })
 })
