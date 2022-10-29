@@ -12,9 +12,23 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
+import featureAbility from '@ohos.ability.featureAbility';
+
+async function requestPermission() {
+    try {
+        let context = featureAbility.getContext();
+        await context.requestPermissionsFromUser(['ohos.permission.DISTRIBUTED_DATASYNC'], 666, (data) => {
+            console.info('TestApplication requestPermission data: ' + JSON.stringify(data));
+        });
+    } catch (err) {
+        console.error('TestApplication permission' + JSON.stringify(err));
+    }
+}
+
 export default {
     onCreate() {
         console.info('TestApplication onCreate');
+        requestPermission();
     },
     onDestroy() {
         console.info('TestApplication onDestroy');
