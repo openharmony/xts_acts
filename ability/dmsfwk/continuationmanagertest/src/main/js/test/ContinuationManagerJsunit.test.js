@@ -1466,7 +1466,7 @@ describe('continuationManagerTest', function() {
             done();
         } catch (e) {
             console.info("testUpdateContinuationState001 " + e);
-            expect(e.code == 401).assertTrue();
+            expect(null).assertFail();
             done();
         }
     })
@@ -1506,7 +1506,7 @@ describe('continuationManagerTest', function() {
             done();
         } catch (e) {
             console.info("testUpdateContinuationState003 " + e);
-            expect(e.code == 401).assertTrue();
+            expect(null).assertFail();
             done();
         }
     })
@@ -1528,7 +1528,7 @@ describe('continuationManagerTest', function() {
             done();
         } catch (e) {
             console.info("testUpdateContinuationState004 " + e);
-            expect(e.code == 401).assertTrue();
+            expect(null).assertFail();
             done();
         }
     })
@@ -1550,7 +1550,7 @@ describe('continuationManagerTest', function() {
             done();
         } catch (e) {
             console.info("testUpdateContinuationState005 " + e);
-            expect(e.code == 401).assertTrue();
+            expect(null).assertFail();
             done();
         }
     })
@@ -1571,7 +1571,7 @@ describe('continuationManagerTest', function() {
             done();
         } catch (e) {
             console.info("testUpdateContinuationState006 " + e);
-            expect(e.code == 401).assertTrue();
+            expect(null).assertFail();
             done();
         }
     })
