@@ -106,10 +106,10 @@ describe('UsbFunctionsJsFunctionsTest', function () {
     console.info('usb SUB_USB_JS_1000 begin');
     try {
       var maskCode = usb.getCurrentFunctions("invalid");
-      console.info('usb case getCurrentFunctions return: ' + maskCode);
+      console.info('usb 1000 case getCurrentFunctions return: ' + maskCode);
       expect(false).assertTrue();
     } catch (err) {
-      console.info('catch err code: ' + err.code + ' message: ' + err.message);
+      console.info('usb 1000 catch err code: ' + err.code + ' message: ' + err.message);
       expect(err.code).assertEqual(401);
       console.info('usb SUB_USB_JS_1000 :  PASS');
     }
