@@ -240,7 +240,6 @@ describe('ActsBundleManagerTest', function () {
         expect(datainfo.reqPermissions.length).assertEqual(0);
         expect(datainfo.reqPermissionStates.length).assertEqual(0);
         expect(datainfo.reqPermissionDetails.length).assertEqual(0);
-        expect(datainfo.extensionAbilityInfo.length).assertEqual(0);
         expect(datainfo.appInfo.name).assertEqual(NAME1);
         expect(datainfo.appInfo.description).assertEqual(APPLICATION_DESCRIPTION);
         expect(datainfo.appInfo.descriptionId >= 0).assertTrue();
@@ -285,7 +284,6 @@ describe('ActsBundleManagerTest', function () {
             expect(datainfo.reqPermissions.length).assertEqual(0);
             expect(datainfo.reqPermissionStates.length).assertEqual(0);
             expect(datainfo.reqPermissionDetails.length).assertEqual(0);
-            expect(datainfo.extensionAbilityInfo.length).assertEqual(0);
             expect(datainfo.appInfo.name).assertEqual(NAME1);
             expect(datainfo.appInfo.description).assertEqual(APPLICATION_DESCRIPTION);
             expect(datainfo.appInfo.descriptionId >= 0).assertTrue();
@@ -627,10 +625,6 @@ describe('ActsBundleManagerTest', function () {
                 expect(datainfo[i].description.length >= 0).assertTrue();
                 expect(datainfo[i].icon.length).assertLarger(0);
                 expect(datainfo[i].label.length).assertLarger(0);
-                expect(datainfo[i].iconIndex).assertLarger(0);
-                expect(datainfo[i].labelIndex).assertLarger(0);
-                expect(datainfo[i].iconIndex).assertEqual(datainfo[i].iconId);
-                expect(datainfo[i].labelIndex).assertEqual(datainfo[i].labelId);
             }
             expect(datainfo[i].moduleSourceDirs.length).assertLarger(0);
             expect(datainfo[i].moduleInfos.length).assertLarger(0);
@@ -1830,18 +1824,9 @@ describe('ActsBundleManagerTest', function () {
     it('AbilityTypeTest_0100', 0, async function (done) {
         expect(demo.AbilitySubType.CA).assertEqual(1);
         expect(demo.AbilityType.UNKNOWN).assertEqual(0);
-        expect(demo.ExtensionAbilityType.WORK_SCHEDULER).assertEqual(1);
-        expect(demo.ExtensionAbilityType.INPUT_METHOD).assertEqual(2);
-        expect(demo.ExtensionAbilityType.ACCESSIBILITY).assertEqual(4);
-        expect(demo.ExtensionAbilityType.DATA_SHARE).assertEqual(5);
-        expect(demo.ExtensionAbilityType.FILE_SHARE).assertEqual(6);
-        expect(demo.ExtensionAbilityType.STATIC_SUBSCRIBER).assertEqual(7);
-        expect(demo.ExtensionAbilityType.WALLPAPER).assertEqual(8);
-        expect(demo.ExtensionAbilityType.BACKUP).assertEqual(9);
         expect(demo.ColorMode.AUTO_MODE).assertEqual(-1);
         expect(demo.ColorMode.DARK_MODE).assertEqual(0);
         expect(demo.ColorMode.LIGHT_MODE).assertEqual(1);
-        expect(demo.BundleFlag.GET_BUNDLE_WITH_HASH_VALUE).assertEqual(48);
         done();
     })
 })

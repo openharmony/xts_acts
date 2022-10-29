@@ -16,6 +16,7 @@
 import ServiceExtensionAbility from '@ohos.application.ServiceExtensionAbility';
 import rpc from '@ohos.rpc'
 import bundle from "@ohos.bundle";
+import freeInstall from '@ohos.bundle.freeInstall';
 
 var result = {
     transactId: "-1",
@@ -355,7 +356,7 @@ async function serviceInstall(transactId: string, remoteObj: any) {
             sendcode = -5;
         }
         console.info('ServiceAbility serviceCenter install. code:' + sendcode);
-        bundle.setModuleUpgradeFlag(targetbundleName, targetmoduleName, 0)
+        freeInstall.setHapModuleUpgradeFlag(targetbundleName, targetmoduleName, 0)
          .then((data) => {
             console.info('ServiceAbility serviceCenter install flag bundleName : ' + JSON.stringify(targetbundleName)
             + ', moduleName : ' + JSON.stringify(targetmoduleName));
@@ -374,7 +375,7 @@ async function serviceInstall(transactId: string, remoteObj: any) {
 
 async function serviceCheckUpdate(transactId: string, remoteObj: any) {
     console.info('ServiceAbility serviceCenter serviceCheckUpdate start');
-    bundle.setModuleUpgradeFlag(targetbundleName, targetmoduleName, 1)
+    freeInstall.setHapModuleUpgradeFlag(targetbundleName, targetmoduleName, 1)
         .then((data) => {
             console.info('ServiceAbility serviceCenter UpgradeFlag bundleName value: ' + JSON.stringify(targetbundleName));
             console.info('ServiceAbility serviceCenter UpgradeFlag moduleName value: ' + JSON.stringify(targetmoduleName));

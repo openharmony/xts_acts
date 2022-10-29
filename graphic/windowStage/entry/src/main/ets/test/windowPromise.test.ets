@@ -1388,7 +1388,7 @@ export default function windowPromiseTest(context, windowStage, abilityStorage) 
       });
       console.log(msgStr + 'windowStage.getMainWindow :' + JSON.stringify(mainWin));
       expect(!!mainWin).assertTrue();
-      let orientationItem = ['UNSPECIFIED', 'PORTRAIT', 'LANDSCAPE', 'PORTRAIT_INVERTED', 'LANDSCAPE_INVERTED', 'AUTO_ROTATION', 'AUTO_ROTATION_PORTRAIT', 'AUTO_ROTATION_LANDSCAPE', 'AUTO_ROTATION_RESTRICTED', 'AUTO_ROTATION_PORTRAIT_RESTRICTED', 'AUTO_ROTATION_LANDSCAPE_RESTRICTED', 'LOCKED'];
+      let orientationItem = ['UNSPECIFIED', 'PORTRAIT', 'LANDSCAPE'];
       for (let i = 0;i < orientationItem.length; i++) {
         await sleep(1000);
         let orientation = ohosWindow.Orientation[orientationItem[i]]

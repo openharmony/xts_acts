@@ -58,67 +58,6 @@
                 "startWindowIcon": "$media:icon",
 				"orientation": "portrait",
 				"supportWindowMode": ["floating"]
-			},
-			{
-                "name": "MainAbility4",
-                "srcEntrance": "./ets/MainAbility/MainAbility.ts",
-                "startWindowIcon": "$media:icon",
-				"orientation": "landscape_inverted",
-				"supportWindowMode": ["fullscreen", "split", "floating"]
-			},
-			{
-                "name": "MainAbility5",
-                "srcEntrance": "./ets/MainAbility/MainAbility.ts",
-                "startWindowIcon": "$media:icon",
-				"orientation": "portrait_inverted",
-				"maxWindowRatio": 3.5
-			},
-			{
-                "name": "MainAbility6",
-                "srcEntrance": "./ets/MainAbility/MainAbility.ts",
-                "startWindowIcon": "$media:icon",
-				"orientation": "auto_rotation",
-				"minWindowRatio": 0.5
-			},
-			{
-                "name": "MainAbility7",
-                "srcEntrance": "./ets/MainAbility/MainAbility.ts",
-                "startWindowIcon": "$media:icon",
-				"orientation": "auto_rotation_landscape",
-				"maxWindowWidth": 2560
-			},
-			{
-                "name": "MainAbility8",
-                "srcEntrance": "./ets/MainAbility/MainAbility.ts",
-                "startWindowIcon": "$media:icon",
-				"orientation": "auto_rotation_portrait",
-				"minWindowWidth": 1400
-			},
-			{
-				"name": "MainAbility9",
-				"srcEntrance": "./ets/MainAbility/MainAbility.ts",
-				"startWindowIcon": "$media:icon",
-				"orientation": "auto_rotation_restricted",
-				"maxWindowHeight": 300
-			},
-			{
-				"name": "MainAbility10",
-				"srcEntrance": "./ets/MainAbility/MainAbility.ts",
-				"startWindowIcon": "$media:icon",
-				"orientation": "auto_rotation_landscape_restricted",
-				"minWindowHeight": 200
-			},
-			{
-				"name": "MainAbility11",
-				"srcEntrance": "./ets/MainAbility/MainAbility.ts",
-				"startWindowIcon": "$media:icon",
-				"orientation": "auto_rotation_portrait_restricted"
-			},
-			{
-				"name": "MainAbility12",
-				"srcEntrance": "./ets/MainAbility/MainAbility.ts",
-				"startWindowIcon": "$media:icon",
-				"orientation": "locked"
 			}
         ],
         "extensionAbilities": [
