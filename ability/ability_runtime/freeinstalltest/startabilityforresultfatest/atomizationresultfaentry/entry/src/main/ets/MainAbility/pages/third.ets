@@ -19,6 +19,7 @@ import wantConstant from '@ohos.ability.wantConstant'
 import Prompt from '@system.prompt';
 import RemoteDeviceModel from '../model/getRemoteDeviceModel.ets';
 import bundleManager from '@ohos.bundle';
+import freeInstall from '@ohos.bundle.freeInstall';
 
 const BUNDLE_NAME = 'com.example.qianyiyingyong.hmservice';
 const ABILITY_NAME = 'com.example.qianyiyingyong.MainAbility';
@@ -228,7 +229,7 @@ struct Third {
 
   async updateModuleUpgradeFlag(tag, type1) {
     console.info(tag + ' startAbility fAStartAbilityPromise START' + JSON.stringify(type1));
-    await bundleManager.setModuleUpgradeFlag("com.example.qianyiyingyong.hmservice",type1,1);
+    await freeInstall.setHapModuleUpgradeFlag("com.example.qianyiyingyong.hmservice", type1, 1);
     console.info(tag + ' startAbility fAStartAbilityPromise END');
   }
 
