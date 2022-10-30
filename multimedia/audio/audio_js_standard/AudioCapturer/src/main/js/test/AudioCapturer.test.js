@@ -2416,6 +2416,108 @@ describe('audioCapturer', function () {
     })
 
     /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_REC_PR_VOICE_CHAT_GET_CAPTURER_StreamId_ENUM_0100
+     *@tc.name      : AudioRec-Set1
+     *@tc.desc      : record audio with parameter set 1
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+     it('SUB_MULTIMEDIA_AUDIO_REC_PR_VOICE_CHAT_GET_CAPTURER_StreamId_ENUM_0100', 2, async function (done) {
+        let audioStreamInfo44100 = {
+            samplingRate: 44100,
+            channels: 1,
+            sampleFormat: 1,
+            encodingType: 0,
+        };
+        let audioCapturerInfo44100 = {
+            source: 0,
+            capturerFlags: 0
+        }
+        let AudioCapturerOptions = {
+            streamInfo: audioStreamInfo44100,
+            capturerInfo: audioCapturerInfo44100,
+        }
+
+        let audioCap;
+        try {
+            audioCap = await audio.createAudioCapturer(AudioCapturerOptions);
+        } catch (err) {
+            console.log(`${Tag} createAudioCapturer err: ${JSON.stringify(err)}`);
+            expect(false).assertTrue();
+            return done();
+        }
+
+        try {
+            let audioParamsGet = await audioCap.getAudioStreamId();
+            console.info(`${Tag} SUB_MULTIMEDIA_AUDIO_REC_PR_VOICE_CHAT_GET_CAPTURER_StreamId_ENUM_0100: Capturer CapturerInfo: ${JSON.stringify(audioParamsGet)}`);
+        } catch (err) {
+            console.log(`${Tag} SUB_MULTIMEDIA_AUDIO_REC_PR_VOICE_CHAT_GET_CAPTURER_StreamId_ENUM_0100 err: ${JSON.stringify(err)}`);
+            expect(false).assertTrue();
+        }
+
+        try {
+            await audioCap.release();
+        } catch (err) {
+            console.log(`${Tag} SUB_MULTIMEDIA_AUDIO_REC_PR_VOICE_CHAT_GET_CAPTURER_StreamId_ENUM_0100 err: ${JSON.stringify(err)}`);
+            expect(false).assertTrue();
+        }
+        done();
+    })
+
+      /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_REC_PR_VOICE_CHAT_GET_CAPTURER_StreamId_ENUM_0200
+     *@tc.name      : AudioRec-Set1
+     *@tc.desc      : record audio with parameter set 1
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+     it('SUB_MULTIMEDIA_AUDIO_REC_PR_VOICE_CHAT_GET_CAPTURER_StreamId_ENUM_0200', 2, async function (done) {
+        let audioStreamInfo44100 = {
+            samplingRate: 44100,
+            channels: 1,
+            sampleFormat: 1,
+            encodingType: 0,
+        };
+        let audioCapturerInfo44100 = {
+            source: 0,
+            capturerFlags: 0
+        }
+        let AudioCapturerOptions = {
+            streamInfo: audioStreamInfo44100,
+            capturerInfo: audioCapturerInfo44100,
+        }
+
+        let audioCap;
+        try {
+            audioCap = await audio.createAudioCapturer(AudioCapturerOptions);
+        } catch (err) {
+            console.log(`${Tag} createAudioCapturer err: ${JSON.stringify(err)}`);
+            expect(false).assertTrue();
+            return done();
+        }
+        await audioCap.getAudioStreamId((err, data) => {
+            if (err) {
+                console.info(`${TagFrmwkRender}: SUB_MULTIMEDIA_AUDIO_REC_PR_VOICE_CHAT_GET_CAPTURER_StreamId_ENUM_0200 CALLBACK: error: ${err.message}`);
+                expect(false).assertTrue();
+                done();
+                return;
+            }
+            console.info(`${TagFrmwkRender}:SUB_MULTIMEDIA_AUDIO_REC_PR_VOICE_CHAT_GET_CAPTURER_StreamId_ENUM_0200 CALLBACK: SUCCESS ${data}`);
+            expect(true).assertTrue();
+            done();
+        })
+        try {
+            await audioCap.release();
+        } catch (err) {
+            console.log(`${Tag} SUB_MULTIMEDIA_AUDIO_REC_PR_VOICE_CHAT_GET_CAPTURER_StreamId_ENUM_0200 err: ${JSON.stringify(err)}`);
+            expect(false).assertTrue();
+        }
+        done();
+    })
+
+    /**
      *@tc.number    : SUB_MULTIMEDIA_AUDIO_REC_VOICE_CHAT_PR_ENUM_AUDIO_STREAM_INFO_INVALID_0100
      *@tc.name      : AudioRec-Set1
      *@tc.desc      : record audio with parameter set 1

@@ -3565,15 +3565,15 @@ describe('audioFramework', function () {
             });
             await audioManager.isDeviceActive(audio.ActiveDeviceType.SPEAKER).then(function (value) {
                 if (flag == true && value == false) {
-                    console.info(`SUB_MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_0100 isDeviceActive : SPEAKER: Deactivate : PASS :${value } flag is ${flag}`);
+                    console.info(`SUB_MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_0100 isDeviceActive : SPEAKER: Deactivate : PASS :${value} flag is ${flag}`);
                     expect(true).assertTrue();
                 }
                 else if (flag == false && value == true) {
-                    console.info(`SUB_MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_0100 isDeviceActive : SPEAKER: Deactivate : PASS :${value } flag is ${flag}`);
+                    console.info(`SUB_MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_0100 isDeviceActive : SPEAKER: Deactivate : PASS :${value} flag is ${flag}`);
                     expect(true).assertTrue();
                 }
                 else {
-                    console.info(`SUB_MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_0100 isDeviceActive : SPEAKER: Deactivate : fail :${value } flag is ${flag}`);
+                    console.info(`SUB_MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_0100 isDeviceActive : SPEAKER: Deactivate : fail :${value} flag is ${flag}`);
                     expect(false).assertTrue();
                 }
             }).catch((err) => {
@@ -3622,7 +3622,7 @@ describe('audioFramework', function () {
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_0300', 2,async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_0300', 2, async function (done) {
         let flag = true
         let outputDeviceDescription = await audioManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG);
         console.info(`SUB_MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_0300 outputDeviceDescription is ${JSON.stringify(outputDeviceDescription)}`);
@@ -3641,14 +3641,14 @@ describe('audioFramework', function () {
                         console.error(`${TagFrmwk}: Device Test: Callback : isDeviceActive : SPEAKER: Deactivate: Error: ${err.message}`);
                         expect(false).assertTrue();
                     } else if (value == false && flag == true) {
-                        console.info(`${TagFrmwk}: Device Test: Callback : isDeviceActive : SPEAKER: Deactivate : PASS :${value } flag is ${flag}`);
+                        console.info(`${TagFrmwk}: Device Test: Callback : isDeviceActive : SPEAKER: Deactivate : PASS :${value} flag is ${flag}`);
                         expect(true).assertTrue();
                     } else if (value == true && flag == false) {
-                        console.info(`${TagFrmwk}: Device Test: Callback : isDeviceActive : SPEAKER: Deactivate : PASS :${value } flag is ${flag}`);
+                        console.info(`${TagFrmwk}: Device Test: Callback : isDeviceActive : SPEAKER: Deactivate : PASS :${value} flag is ${flag}`);
                         expect(true).assertTrue();
                     }
                     else {
-                        console.info(`SUB_MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_0300 ${TagFrmwk}: Device Test: Callback : isDeviceActive : SPEAKER: Deactivate : FAIL :${value } flag is ${flag}`);
+                        console.info(`SUB_MULTIMEDIA_AUDIO_MANAGER_SETDEVICEACTIVE_0300 ${TagFrmwk}: Device Test: Callback : isDeviceActive : SPEAKER: Deactivate : FAIL :${value} flag is ${flag}`);
                         expect(false).assertTrue();
                     }
                     done();
@@ -4901,7 +4901,7 @@ describe('audioFramework', function () {
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0100', 2,async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0100', 2, async function (done) {
         let AudioRoutingManager = await audioManager.getRoutingManager();
         AudioRoutingManager.getDevices(1, (err, value) => {
             // Getting all Output devices Enumb 1 = OUTPUT_DEVICES_FLAG
@@ -4935,7 +4935,7 @@ describe('audioFramework', function () {
      *@tc.type      : Function
      *@tc.level     : Level 2
      */
-    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0200', 2,async function (done) {
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_GETDEVICES_0200', 2, async function (done) {
         let AudioRoutingManager = await audioManager.getRoutingManager();
         AudioRoutingManager.getDevices(2, (err, value) => {
             // Getting all Input Devices ENUM 2 = INPUT_DEVICES_FLAG
@@ -5175,6 +5175,111 @@ describe('audioFramework', function () {
     })
 
     /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_isCommunicationDeviceActive_0100
+     *@tc.name      : isCommunicationDeviceActive - OUTPUT device - Promise - ENAME
+     *@tc.desc      : isCommunicationDeviceActive - OUTPUT device
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+     it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_isCommunicationDeviceActive_0100', 2, async function (done) {
+        try {
+            let AudioRoutingManager = await audioManager.getRoutingManager();
+            let value = await AudioRoutingManager.isCommunicationDeviceActive(2);
+            if (value != null && value != undefined) {
+                console.info(`${TagFrmwkRender}: SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_isCommunicationDeviceActive_0100 OUT OF BORDER PROMISE: SUCCESS ${value}`);
+                expect(true).assertTrue();
+                done();
+            }
+            else {
+                console.info(`${TagFrmwkRender}: SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_isCommunicationDeviceActive_0100 OUT OF BORDER PROMISE: FAIL ${value}`);
+                expect(false).assertTrue();
+                done();
+            }
+
+        } catch (err) {
+            console.info(`${TagFrmwkRender}: SUB_MULTIMEDIA_AUDIO_getAudioStreamId_0100 OUT OF BORDER PROMISE: ERROR: ${err.message}`);
+            expect(false).assertTrue();
+            done();
+        }
+    })
+
+    /**
+ *@tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_isCommunicationDeviceActive_0200
+ *@tc.name      : isCommunicationDeviceActive - OUTPUT device - Promise - ENAME
+ *@tc.desc      : isCommunicationDeviceActive - OUTPUT device
+ *@tc.size      : MEDIUM
+ *@tc.type      : Function
+ *@tc.level     : Level 2
+ */
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_isCommunicationDeviceActive_0200', 2, async function (done) {
+        let AudioRoutingManager = await audioManager.getRoutingManager();
+        await AudioRoutingManager.isCommunicationDeviceActive(2, (err, value) => {
+            if (err) {
+                console.info(`${TagFrmwk}: Promise:SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_isCommunicationDeviceActive_0200 : FAIL ${err}`);
+                expect(false).assertTrue();
+                done();
+            }
+            else {
+                if (value != null && value != undefined) {
+                    console.info(`${TagFrmwkRender}: SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_isCommunicationDeviceActive_0200 OUT OF BORDER PROMISE: SUCCESS ${value}`);
+                    expect(true).assertTrue();
+                    done();
+                }
+                else {
+                    console.info(`${TagFrmwkRender}: SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_isCommunicationDeviceActive_0200 OUT OF BORDER PROMISE: FAIL ${value}`);
+                    expect(false).assertTrue();
+                    done();
+                }
+            }
+        });
+    })
+
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_setCommunicationDevice_0100
+     *@tc.name      : setCommunicationDevice - OUTPUT device - Promise - ENAME
+     *@tc.desc      : setCommunicationDevice - OUTPUT device
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_setCommunicationDevice_0100', 2, async function (done) {
+        try {
+            let AudioRoutingManager = await audioManager.getRoutingManager();
+            await AudioRoutingManager.setCommunicationDevice(2, true);
+            expect(true).assertTrue();
+        } catch (err) {
+            console.info(`${TagFrmwkRender}: SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_setCommunicationDevice_0100 OUT OF BORDER PROMISE: ERROR: ${err.message}`);
+            expect(false).assertTrue();
+        }
+        done();
+    })
+
+    /**
+ *@tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_setCommunicationDevice_0200
+ *@tc.name      : isCommunicationDeviceActive - OUTPUT device - Promise - ENAME
+ *@tc.desc      : isCommunicationDeviceActive - OUTPUT device
+ *@tc.size      : MEDIUM
+ *@tc.type      : Function
+ *@tc.level     : Level 2
+ */
+    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_setCommunicationDevice_0200', 2, async function (done) {
+        let AudioRoutingManager = await audioManager.getRoutingManager();
+        await AudioRoutingManager.setCommunicationDevice(2, true, (err) => {
+            if (err) {
+                console.info(`${TagFrmwk}: Promise:SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_setCommunicationDevice_0200 : FAIL ${err}`);
+                expect(false).assertTrue();
+            }
+            else {
+                console.info(`${TagFrmwk}: Promise:SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_setCommunicationDevice_0200 : PASS`);
+                expect(true).assertTrue();
+            }
+        });
+        done();
+    })
+
+    /**
      *@tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0100
      *@tc.name      : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0100
      *@tc.desc      : micStateChange
@@ -5183,27 +5288,29 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0100', 2, async function (done) {
-        try{
+        try {
             var routingManager = await audioManager.getRoutingManager();
-        }catch (err) {
-        console.error(`${TagFrmwk}:Callback:failed to get RoutingManager ${err.message}`);
+        } catch (err) {
+            console.error(`${TagFrmwk}:Callback:failed to get RoutingManager ${err.message}`);
             expect(false).assertTrue();
         }
-       let count = 0;
-       console.info('getRoutingManager Callback START.');
-       routingManager.on('micStateChange',async (micStateChange)=>{
+        let count = 0;
+        console.info('getRoutingManager Callback START.');
+        routingManager.on('micStateChange', async (micStateChange) => {
+            
+            console.info('micStateChange is '+micStateChange.mute);
             count++;
         })
 
-        try{
+        try {
             let data = await audioManager.isMicrophoneMute();
             console.info('Promise isMicrophoneMute PASS:' + data);
             await audioManager.setMicrophoneMute(data);
             console.info('Promise setMicrophoneMute PASS.');
             let data1 = await audioManager.isMicrophoneMute();
             console.info('Promise isMicrophoneMute PASS.' + data1);
-        }catch (err) {
-            console.log('ERROR:'+JSON.stringify(err))
+        } catch (err) {
+            console.log('ERROR:' + JSON.stringify(err))
             expect(false).assertTrue();
             done();
         }
@@ -5221,32 +5328,32 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0200', 2, async function (done) {
-        try{
+        try {
             var routingManager = await audioManager.getRoutingManager();
-        }catch (err) {
-        console.error(`${TagFrmwk}:Callback:failed to get RoutingManager ${err.message}`);
+        } catch (err) {
+            console.error(`${TagFrmwk}:Callback:failed to get RoutingManager ${err.message}`);
             expect(false).assertTrue();
         }
         console.info('getRoutingManager Callback START.');
         let count = 0;
-        routingManager.on('micStateChange',async (micStateChange)=>{
+        routingManager.on('micStateChange', async (micStateChange) => {
             console.info("Updated micState:" + JSON.stringify(micStateChange));
             count++;
         })
 
-       try{
+        try {
             let data = await audioManager.isMicrophoneMute();
             console.info('Promise isMicrophoneMute PASS:' + data);
             let micStatus = !data;
             await audioManager.setMicrophoneMute(micStatus);
             console.info('Promise setMicrophoneMute PASS:' + micStatus);
-       }catch (err) {
-            console.log('ERROR:'+JSON.stringify(err))
+        } catch (err) {
+            console.log('ERROR:' + JSON.stringify(err))
             expect(false).assertTrue();
             done();
         }
         await sleep(2000);
-	    expect(count).assertEqual(1);
+        expect(count).assertEqual(1);
         done();
     })
 
@@ -5259,20 +5366,20 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0300', 2, async function (done) {
-        try{
+        try {
             var routingManager = await audioManager.getRoutingManager();
-        }catch (err) {
+        } catch (err) {
             console.error(`${TagFrmwk}:Callback:failed to get RoutingManager ${err.message}`);
             expect(false).assertTrue();
         }
         console.info('getRoutingManager Callback START.');
         let count = 0;
-        routingManager.on('micStateChange',async (micStateChange)=>{
+        routingManager.on('micStateChange', async (micStateChange) => {
             console.info("Updated micState:" + JSON.stringify(micStateChange));
             count++;
         })
 
-        try{
+        try {
             let data = await audioManager.isMicrophoneMute();
             console.info('Promise isMicrophoneMute PASS:' + data);
             let micStatus = !data;
@@ -5280,8 +5387,8 @@ describe('audioFramework', function () {
             console.info('Promise setMicrophoneMute PASS:' + micStatus);
             await audioManager.setMicrophoneMute(!micStatus);
             console.info('Promise setMicrophoneMute PASS:' + (!micStatus));
-        }catch (err) {
-            console.log('ERROR:'+JSON.stringify(err))
+        } catch (err) {
+            console.log('ERROR:' + JSON.stringify(err))
             expect(false).assertTrue();
             done();
         }
@@ -5299,20 +5406,20 @@ describe('audioFramework', function () {
      *@tc.level     : Level 2
      */
     it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0400', 2, async function (done) {
-        try{
+        try {
             var routingManager = await audioManager.getRoutingManager();
-        }catch (err) {
-        console.error(`${TagFrmwk}:Callback:failed to get RoutingManager ${err.message}`);
+        } catch (err) {
+            console.error(`${TagFrmwk}:Callback:failed to get RoutingManager ${err.message}`);
             expect(false).assertTrue();
         }
         let count = 0;
         try {
             console.info("enter SUB_AUDIO_MANAGER_micStateChange_004");
-            routingManager.on('micStateChange',async (micStateChange1)=>{
+            routingManager.on('micStateChange', async (micStateChange1) => {
                 console.info("Updated micState--001:" + JSON.stringify(micStateChange1));
-                routingManager.on('micStateChange',async (micStateChange)=>{
+                routingManager.on('micStateChange', async (micStateChange) => {
                     console.info("Updated micState--002:" + JSON.stringify(micStateChange));
-			 	    count++
+                    count++
                 })
                 let data = await audioManager.isMicrophoneMute();
                 console.info('Second Promise isMicrophoneMute PASS:' + data);
@@ -5324,7 +5431,7 @@ describe('audioFramework', function () {
             await audioManager.setMicrophoneMute(!data);
             console.info('First:Promise setMicrophoneMute PASS:' + (!data));
         } catch (err) {
-            console.log('ERROR:'+JSON.stringify(err))
+            console.log('ERROR:' + JSON.stringify(err))
             expect(false).assertTrue();
             done();
         }
@@ -5363,4 +5470,257 @@ describe('audioFramework', function () {
         await sleep(50);
         done();
     })
+
+    /**
+    *@tc.number    : SUB_MULTIMEDIA_AUDIO_ERRORS_0100'
+    *@tc.name      : AUDIO_ERRORS
+    *@tc.desc      : AUDIO_ERRORS
+    *@tc.size      : MEDIUM
+    *@tc.type      : Function
+    *@tc.level     : Level 2
+    */
+    it('SUB_MULTIMEDIA_AUDIO_ERRORS_0100', 2, async function (done) {
+        expect(audio.AudioErrors.ERROR_INVALID_PARAM).assertEqual(6800101);
+        expect(audio.AudioErrors.ERROR_NO_MEMORY).assertEqual(6800102);
+        expect(audio.AudioErrors.ERROR_ILLEGAL_STATE).assertEqual(6800103);
+        expect(audio.AudioErrors.ERROR_UNSUPPORTED).assertEqual(6800104);
+        expect(audio.AudioErrors.ERROR_TIMEOUT).assertEqual(6800105);
+        expect(audio.AudioErrors.ERROR_STREAM_LIMIT).assertEqual(6800201);
+        expect(audio.AudioErrors.ERROR_SYSTEM).assertEqual(6800301);
+        await sleep(50);
+        done();
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_DEFAULT_VOLUME_GROUP_ID_0100'
+     *@tc.name      : DEFAULT_VOLUME_GROUP_ID
+     *@tc.desc      : DEFAULT_VOLUME_GROUP_ID
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_DEFAULT_VOLUME_GROUP_ID_0100', 2, async function (done) {
+        expect(audio.DEFAULT_VOLUME_GROUP_ID).assertEqual(1);
+        expect(audio.DEFAULT_INTERRUPT_GROUP_ID).assertEqual(1);
+        await sleep(50);
+        done();
+    })
+    /**
+  * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETMINVOLUME_0100
+  * @tc.name      : getMinVolume - RINGTONE - Callback
+  * @tc.desc      : getMinVolume
+  * @tc.size      : MEDIUM
+  * @tc.type      : Function
+  * @tc.level     : Level 2
+  */
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_GETMINVOLUME_0100', 2, async function (done) {
+        try {
+            let audioVolumeManager = audioManager.getVolumeManager();
+            let volumeGroupInfos = await audioVolumeManager.getVolumeGroupInfos(audio.LOCAL_NETWORK_ID);
+            let groupId_ = volumeGroupInfos[0].groupId;
+            let audioGroupManager = await audioVolumeManager.getVolumeGroupManager(groupId_);
+            audioGroupManager.getMinVolume(audio.AudioVolumeType.RINGTONE, (err, data) => {
+                if (err) {
+                    console.error(`AudioFrameworkTest: failed to getMinVolume : Callback:  ${err.message}`);
+                    expect(false).assertTrue();
+                }
+                else {
+                    if (data == minVol) {
+                        console.info('AudioFrameworkTest: callback : Ringtone getMinVolume: PASS :' + data);
+                        expect(true).assertTrue();
+                    }
+                    else {
+                        console.info('AudioFrameworkTest: callback : Ringtone getMinVolume: FAIL :' + data);
+                        expect(false).assertTrue();
+                    }
+                }
+                done();
+            });
+        } catch (err) {
+            console.info('AudioFrameworkTest: getVolumeGroupManager : err:' + err.message);
+            expect(false).assertTrue();
+            done();
+        }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_MUTE_0100
+     * @tc.name      : mute - RINGTONE - Promise
+     * @tc.desc      : mute - RINGTONE - Promise
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_MUTE_0100', 2, async function (done) {
+        try {
+            let audioVolumeManager = audioManager.getVolumeManager();
+            let volumeGroupInfos = await audioVolumeManager.getVolumeGroupInfos(audio.LOCAL_NETWORK_ID);
+            let groupId_ = volumeGroupInfos[0].groupId;
+            let audioGroupManager = await audioVolumeManager.getVolumeGroupManager(groupId_);
+            audioGroupManager.mute(audio.AudioVolumeType.RINGTONE, false).then(function () {
+                console.log('AudioFrameworkTest: Set Stream GroupManager Mute: RINGTONE: Promise: FALSE');
+                audioGroupManager.isMute(audio.AudioVolumeType.RINGTONE).then(function (data) {
+                    if (data == false) {
+                        console.log(`AudioFrameworkTest: Promise:
+                            Is Stream GroupManager Mute RINGTONE: FALSE: PASS:`+ data);
+                        expect(true).assertTrue();
+                    }
+                    else {
+                        console.log(`AudioFrameworkTest: Promise:
+                            Is Stream GroupManager Mute RINGTONE: FALSE: FAIL: `+ data);
+                        expect(false).assertTrue();
+                    }
+                    done();
+                });
+            }).catch((err) => {
+                console.info(`AudioFrameworkTest: Promise:
+                    Is Stream GroupManager Mute RINGTONE: FALSE: ERROR:` + err.message);
+                expect(false).assertTrue();
+                done();
+            });
+        } catch (err) {
+            console.info('AudioFrameworkTest: getGroupManager mute : parameter err:' + err.message);
+            expect(false).assertTrue();
+            done();
+        }
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ONVOLUMECHANGE_0100
+     *@tc.name      : OnVolumeChange - setVolume - MEDIA
+     *@tc.desc      : OnVolumeChange - setVolume - MEDIA
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ONVOLUMECHANGE_0100', 2, async function (done) {
+        let audioVolumeManager = audioManager.getVolumeManager();
+        let volumeGroupInfos = await audioVolumeManager.getVolumeGroupInfos(audio.LOCAL_NETWORK_ID);
+        let groupId_ = volumeGroupInfos[0].groupId;
+        let audiogroupManager = await audioVolumeManager.getVolumeGroupManager(groupId_);
+        audioVolumeManager.on('volumeChange', (VolumeEvent) => {
+            console.log(`${TagFrmwk}: Volume Change Event is called`);
+            switch (VolumeEvent.volumeType) {
+                case audio.AudioVolumeType.MEDIA:
+                    console.info(`${TagFrmwk}: Audio VolumeEvent is : ${VolumeEvent}`);
+                    if (VolumeEvent.volume == lowVol) {
+                        console.info(`${TagFrmwk}: MEDIA CallBack : PASS : ${VolumeEvent.volume}`);
+                        expect(true).assertTrue();
+                    }
+                    break;
+                default:
+                    console.info(`${TagFrmwk}: Audio VolumeEvent is : ${VolumeEvent}`);
+                    expect(false).assertTrue();
+                    break;
+            }
+            done();
+        });
+        try {
+            await audiogroupManager.setVolume(audioMedia, lowVol);
+            console.info('setVolume success')
+        } catch (err) {
+            console.log('err :' + err.message)
+            expect(false).assertTrue();
+            done();
+        }
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SETRINGERMODE_0100
+     *@tc.name      : setRingerMode - Normal Mode - Promise - ENAME
+     *@tc.desc      : setRingerMode - Set Ring more to Normal Mode
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SETRINGERMODE_0100', 2, async function (done) {
+        try {
+            let audioVolumeManager = audioManager.getVolumeManager();
+            let volumeGroupInfos = await audioVolumeManager.getVolumeGroupInfos(audio.LOCAL_NETWORK_ID);
+            let groupId_ = volumeGroupInfos[0].groupId;
+            let audiogroupManager = await audioVolumeManager.getVolumeGroupManager(groupId_);
+            await audiogroupManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_NORMAL);
+            let value = await audiogroupManager.getRingerMode();
+            if (value == audio.AudioRingMode.RINGER_MODE_NORMAL) {
+                console.info(`${TagFrmwk}: Promise: setRingerMode RINGER_MODE_NORMAL: PASS :${value}`);
+                expect(true).assertTrue();
+            } else {
+                console.info(`${TagFrmwk}: Promise: setRingerMode RINGER_MODE_NORMAL: FAIL :${value}`);
+                expect(false).assertTrue();
+            }
+        } catch (err) {
+            console.log('err :' + err.message);
+            expect(false).assertTrue();
+        }
+        done();
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ONRINGMODECHANGE_0100
+     *@tc.name      : OnRingMode - RINGER_MODE_NORMAL
+     *@tc.desc      : OnRingMode - RINGER_MODE_NORMAL
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_ONRINGMODECHANGE_0100', 2, async function (done) {
+        let audioVolumeManager = audioManager.getVolumeManager();
+        let volumeGroupInfos = await audioVolumeManager.getVolumeGroupInfos(audio.LOCAL_NETWORK_ID);
+        let groupId_ = volumeGroupInfos[0].groupId;
+        let audiogroupManager = await audioVolumeManager.getVolumeGroupManager(groupId_);
+        audiogroupManager.on('ringerModeChange', (AudioRingMode) => {
+            console.log(`${TagFrmwk}: ringerMode Change Event is called`);
+            switch (AudioRingMode) {
+                case audio.AudioRingMode.RINGER_MODE_NORMAL:
+                    console.info(`${TagFrmwk}: Audio ringerMode is : ${AudioRingMode}`);
+                    console.info(`${TagFrmwk}: MEDIA CallBack : PASS : ${AudioRingMode}`);
+                    expect(true).assertTrue();
+                    break;
+                default:
+                    console.info(`${TagFrmwk}: Audio VolumeEvent is : ${AudioRingMode}`);
+                    expect(false).assertTrue();
+                    break;
+            }
+            done();
+        });
+        try {
+            await audiogroupManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_NORMAL);
+            console.info('setRingerMode success')
+        } catch (err) {
+            console.log('err :' + err.message)
+            expect(false).assertTrue();
+            done();
+        }
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SETMICROPHONEMUTE_0100
+     *@tc.name      : setMicrophoneMute - true - Promise
+     *@tc.desc      : Enable mic mute
+     *@tc.size      : MEDIUM
+     *@tc.type      : Function
+     *@tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_AUDIO_VOLUME_GROUP_MANAGER_SETMICROPHONEMUTE_0100', 1, async function (done) {
+        try {
+            let audioVolumeManager = audioManager.getVolumeManager();
+            let volumeGroupInfos = await audioVolumeManager.getVolumeGroupInfos(audio.LOCAL_NETWORK_ID);
+            let groupId_ = volumeGroupInfos[0].groupId;
+            let audiogroupManager = await audioVolumeManager.getVolumeGroupManager(groupId_);
+            await audiogroupManager.setMicrophoneMute(true);
+            let data = await audiogroupManager.isMicrophoneMute();
+            if (data == true) {
+                console.log(`${TagFrmwk}: Promise: isMicrophoneMute: TRUE: PASS:${data}`);
+                expect(true).assertTrue();
+            } else {
+                console.log(`${TagFrmwk}: Promise: isMicrophoneMute: TRUE: FAIL: ${data}`);
+                expect(false).assertTrue();
+            }
+        } catch (err) {
+            console.log('err :' + err.message);
+            expect(false).assertTrue();
+        }
+        done();
+    })
+
 })
