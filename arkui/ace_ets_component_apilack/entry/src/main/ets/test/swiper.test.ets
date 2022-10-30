@@ -28,7 +28,7 @@ export default function swiperCurveJsunit() {
         router.clear();
         let pages = router.getState();
         console.info("get swiper state success " + JSON.stringify(pages));
-        if (!("swiper" == pages.name)) {
+        if (!("swiper" == pages.name)) 
           console.info("get swiper state success " + JSON.stringify(pages.name));
           let result = await router.push(options);
           await Utils.sleep(2000);
@@ -74,7 +74,7 @@ export default function swiperCurveJsunit() {
       console.info("[testswiperCurve0002] component cachedCount strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Swiper');
-      expect(obj.$attrs.cachedCount).assertEqual("2");
+      expect(obj.$attrs.cachedCount).assertEqual(2);
       console.info("[testswiperCurve0002] cachedCount value :" + obj.$attrs.cachedCount);
       done();
     });

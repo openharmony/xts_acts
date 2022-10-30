@@ -1,3 +1,4 @@
+// @ts-nocheck
 /*
  * Copyright (c) 2021 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -40,7 +41,7 @@ struct WebComponent {
         .padding(20)
         .blur(2)
         .userAgent("Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36")
-        .fileFromUrlAccess(true)
+       // .fileFromUrlAccess(true)
         .initialScale(2)
         .webDebuggingAccess(true)
         .onPrompt((event) => {
@@ -129,44 +130,52 @@ struct WebComponent {
         console.info('onScaleChange newScale: ', event.newScale);
       })
         .onHttpErrorReceive((event) => {
-          console.log('url:' + event.request.getRequestUrl());
-          console.log('isMainFrame:' + event.request.isMainFrame());
-          console.log('isRedirect:' + event.request.isRedirect());
-          console.log('isRequestGesture:' + event.request.isRequestGesture());
-          console.log('getResponseData:' + event.response.getResponseData());
-          console.log('getResponseEncoding:' + event.response.getResponseEncoding());
-          console.log('getResponseMimeType:' + event.response.getResponseMimeType());
-          console.log('getResponseCode:' + event.response.getResponseCode());
-          console.log('getReasonMessage:' + event.response.getReasonMessage());
-          console.log('setResponseData:' + event.response.setResponseData("ResponseData"));
-          console.log('setReasonMessage:' + event.response.setReasonMessage("success"));
-          console.log('setResponseCode:' + event.response.setResponseCode(200));
-          console.log('setResponseEncoding:' + event.response.setResponseEncoding("UTF-8"));
-          console.log('setResponseMimeType:' + event.response.setResponseMimeType("application/json"));
-          console.log('setResponseHeader:' + event.response.setResponseHeader([]));
-          console.log('web getExtra:' + this.controller.getHitTestValue().getExtra());
-          console.log('web getType:' + this.controller.getHitTestValue().getType());
-          console.log('web getCookieManager:' + this.controller.getCookieManager());
-          console.log('web getCookie:' + this.controller.getCookieManager().getCookie("www.baidu.com"));
-          console.log('web existCookie:' + this.controller.getCookieManager().existCookie());
-          console.log('web deleteEntireCookie:' + this.controller.getCookieManager().deleteEntireCookie());
-          console.log('web deleteExpiredCookie:' + this.controller.getCookieManager().deleteExpiredCookie());
-          console.log('web deleteSessionCookie:' + this.controller.getCookieManager().deleteSessionCookie());
-          console.log('web isCookieAllowed:' + this.controller.getCookieManager().isCookieAllowed());
-          console.log('web isFileURICookieAllowed:' + this.controller.getCookieManager().isFileURICookieAllowed());
-          console.log('web isThirdPartyCookieAllowed:' + this.controller.getCookieManager().isThirdPartyCookieAllowed());
-          console.log('web putAcceptCookieEnabled:' + this.controller.getCookieManager().putAcceptCookieEnabled(true));
-          console.log('web putAcceptFileURICookieEnabled:' + this.controller.getCookieManager().putAcceptFileURICookieEnabled(true));
-          console.log('web putAcceptThirdPartyCookieEnabled:' + this.controller.getCookieManager().putAcceptThirdPartyCookieEnabled(true));
-          console.log('web saveCookieSync:' + this.controller.getCookieManager().saveCookieSync());
-          console.log('web zoomIn:' + this.controller.zoomIn());
-          console.log('web zoomOut:' + this.controller.zoomOut());
-          console.log('web zoom:' + this.controller.zoom(2));
-          console.log('web getWebId:' + this.controller.getWebId());
-          console.log('web getDefaultUserAgent:' + this.controller.getDefaultUserAgent());
-          console.log('web getTitle:' + this.controller.getTitle());
-          console.log('web getPageHeight:' + this.controller.getPageHeight());
-          console.log('web backOrForward:' + this.controller.backOrForward(2));
+          try {
+            console.log('url:' + event.request.getRequestUrl());
+            console.log('isMainFrame:' + event.request.isMainFrame());
+            console.log('isRedirect:' + event.request.isRedirect());
+            console.log('isRequestGesture:' + event.request.isRequestGesture());
+            console.log('getResponseData:' + event.response.getResponseData());
+            console.log('getResponseEncoding:' + event.response.getResponseEncoding());
+            console.log('getResponseMimeType:' + event.response.getResponseMimeType());
+            console.log('getResponseCode:' + event.response.getResponseCode());
+            console.log('getReasonMessage:' + event.response.getReasonMessage());
+            console.log('setResponseData:' + event.response.setResponseData("ResponseData"));
+            console.log('setReasonMessage:' + event.response.setReasonMessage("success"));
+            console.log('setResponseCode:' + event.response.setResponseCode(200));
+            console.log('setResponseEncoding:' + event.response.setResponseEncoding("UTF-8"));
+            console.log('setResponseMimeType:' + event.response.setResponseMimeType("application/json"));
+            console.log('setResponseHeader:' + event.response.setResponseHeader([]));
+            console.log('web getExtra:' + this.controller.getHitTestValue().getExtra());
+            console.log('web getType:' + this.controller.getHitTestValue().getType());
+            console.log('web getCookieManager:' + this.controller.getCookieManager());
+            console.log('web getCookie:' + this.controller.getCookieManager().getCookie("www.baidu.com"));
+            console.log('web existCookie:' + this.controller.getCookieManager().existCookie());
+            console.log('web deleteEntireCookie:' + this.controller.getCookieManager().deleteEntireCookie());
+            console.log('web deleteExpiredCookie:' + this.controller.getCookieManager().deleteExpiredCookie());
+            console.log('web deleteSessionCookie:' + this.controller.getCookieManager().deleteSessionCookie());
+            console.log('web isCookieAllowed:' + this.controller.getCookieManager().isCookieAllowed());
+            console.log('web isFileURICookieAllowed:' + this.controller.getCookieManager().isFileURICookieAllowed());
+            console.log('web isThirdPartyCookieAllowed:' + this.controller.getCookieManager()
+              .isThirdPartyCookieAllowed());
+            console.log('web putAcceptCookieEnabled:' + this.controller.getCookieManager()
+              .putAcceptCookieEnabled(true));
+            console.log('web putAcceptFileURICookieEnabled:' + this.controller.getCookieManager()
+              .putAcceptFileURICookieEnabled(true));
+            console.log('web putAcceptThirdPartyCookieEnabled:' + this.controller.getCookieManager()
+              .putAcceptThirdPartyCookieEnabled(true));
+            console.log('web saveCookieSync:' + this.controller.getCookieManager().saveCookieSync());
+            console.log('web zoomIn:' + this.controller.zoomIn());
+            console.log('web zoomOut:' + this.controller.zoomOut());
+            console.log('web zoom:' + this.controller.zoom(2));
+            console.log('web getWebId:' + this.controller.getWebId());
+            console.log('web getDefaultUserAgent:' + this.controller.getDefaultUserAgent());
+            console.log('web getTitle:' + this.controller.getTitle());
+            console.log('web getPageHeight:' + this.controller.getPageHeight());
+            console.log('web backOrForward:' + this.controller.backOrForward(2));
+          } catch (error) {
+            console.info('the error is ' + JSON.stringify(error));
+          }
 
 
           let result = event.request.getRequestHeader();
