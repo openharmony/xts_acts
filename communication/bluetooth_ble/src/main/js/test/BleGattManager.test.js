@@ -388,7 +388,7 @@ describe('bluetoothBLETest', function() {
         let characteristic = {serviceUuid: '00001810-0000-1000-8000-00805F9B34FB',
             characteristicUuid: '00001820-0000-1000-8000-00805F9B34FB',
             characteristicValue: arrayBufferCCC, descriptors:descriptors};
-        gattClient.readCharacteristicValue(characteristic).then((object) => {
+        await gattClient.readCharacteristicValue(characteristic).then((data) => {
             if (object != null) {
                 expect(true).assertEqual(true);
             } else {
