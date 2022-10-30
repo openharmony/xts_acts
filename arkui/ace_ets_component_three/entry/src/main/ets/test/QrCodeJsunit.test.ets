@@ -183,7 +183,8 @@ export default function qrCodeJsunit() {
       var strJson = getInspectorByKey('QrCodeColor');
       var obj = JSON.parse(strJson);
       console.info("[test_qrCode_006] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.backgroundColor).assertEqual('#FF000000');
+      // 非法入参默认初始值
+      expect(obj.$attrs.backgroundColor).assertEqual('#FFFFFFFF');
       done();
     });
 

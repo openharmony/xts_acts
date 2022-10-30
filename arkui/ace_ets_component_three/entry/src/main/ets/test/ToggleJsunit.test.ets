@@ -153,7 +153,8 @@ export default function ToggleJsunit() {
       let strJsonNew = getInspectorByKey('toggle');
       let objNew = JSON.parse(strJsonNew);
       console.info("testToggle06 component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.selectedColor).assertEqual('#FF000000');
+      // 非法入参默认初始值
+      expect(objNew.$attrs.selectedColor).assertEqual('#33007DFF');
       console.info('testToggle06 END');
       done();
     });
@@ -179,7 +180,7 @@ export default function ToggleJsunit() {
       let strJsonNew = getInspectorByKey('toggle');
       let objNew = JSON.parse(strJsonNew);
       console.info("testToggle07 component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.selectedColor).assertEqual('#FF000000');
+      expect(objNew.$attrs.selectedColor).assertEqual('#33007DFF');
       console.info('testToggle07 END');
       done();
     });
