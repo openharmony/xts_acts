@@ -35,6 +35,11 @@ let wifiSecurityType = {
     WIFI_SEC_TYPE_WEP: 2,
     WIFI_SEC_TYPE_PSK: 3,
     WIFI_SEC_TYPE_SAE: 4,
+    WIFI_SEC_TYPE_EAP: 5,
+    WIFI_SEC_TYPE_EAP_SUITE_B: 6,
+    WIFI_SEC_TYPE_OWE:7 ,
+    WIFI_SEC_TYPE_WAPI_CERT:8 ,
+    WIFI_SEC_TYPE_WAPI_PSK:9 ,
 }
 
 let connState = {
@@ -443,4 +448,5 @@ export default function actsWifiCandidateNetWorkTest() {
         })
     })
 }
+
 
