@@ -72,6 +72,10 @@ describe("SensorJsTest_sensor_32", function () {
                 console.log('subscribeOnBodyState_SensorJsTest001 is completed');
             }
         });
+		setTimeout(() => {
+			sensor.unsubscribeOnBodyState();
+          done();
+        }, 1000);
     })
 
     /*
