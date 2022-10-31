@@ -32,9 +32,9 @@ let NdefRecord = {
     NFC_F : 4,
     NFC_V : 5,
     NDEF : 6,
+    NDEF_FORMATABLE : 7,
     MIFARE_CLASSIC : 8,
     MIFARE_ULTRALIGHT : 9,
-    NDEF_FORMATABLE : 10,
 };
 
 let NfcForumType = {
@@ -48,7 +48,7 @@ let NfcForumType = {
 let TnfType= {
     TNF_EMPTY : 0x0,
     TNF_WELL_KNOWN : 0x01,
-    TNF_MEDIA	: 0x02,
+    TNF_MEDIA : 0x02,
     TNF_ABSOLUTE_URI : 0x03,
     TNF_EXT_APP : 0x04,
     TNF_UNKNOWN : 0x05,
@@ -82,7 +82,7 @@ let FeatureType = {
 
 let NdefFormatableTag = {
     "uid": [0x01, 0x02, 0x03, 0x04],
-    "technology": [1, 10],
+    "technology": [1, 7],
     "extrasData": [
         {
             "Sak": 0x08, "Atqa": "B000",
@@ -132,7 +132,7 @@ export default function nfcNDEFTagTest() {
             if (NdefTag!= undefined){
                 console.info("ndefRecords is object1 " );
                 try{
-                    ndefMessage = NdefTag.createNdefMessage(rawData);
+                    ndefMessage = tag.ndef.createNdefMessage(rawData);
                     expect(ndefMessage !=null).assertTrue();
                     expect(ndefMessage instanceof Object).assertTrue();
                     console.info("[NFC_test]ndef ndefMessage1: " + ndefMessage);
@@ -166,7 +166,7 @@ export default function nfcNDEFTagTest() {
             if (NdefTag!= undefined){
                 console.info("ndefRecords is object2" );
                 try{
-                    let ndefMessage = NdefTag.createNdefMessage(rawData);
+                    let ndefMessage = tag.ndef.createNdefMessage(rawData);
                     console.info("[NFC_test]ndefMessage result: ");
                     if (ndefMessage != null && ndefMessage != undefined) {
                         console.info("[NFC_test]ndef 1111111111: " );
@@ -209,7 +209,7 @@ export default function nfcNDEFTagTest() {
             if (NdefTag != undefined){
                 console.info("ndefRecords is object3 " );
                 try{
-                    ndefMessage = NdefTag.createNdefMessage(ndefRecords);
+                    ndefMessage = tag.ndef.createNdefMessage(ndefRecords);
                     if (ndefMessage != null && ndefMessage != undefined) {
                         console.info("[NFC_test]ndef ndefMessage1113: " + ndefMessage);
                         expect(ndefMessage != null).assertTrue();
@@ -377,7 +377,10 @@ export default function nfcNDEFTagTest() {
             }catch(error){
                 console.info('SUB_Communication_NFC_nfcNDEF_js_0900 error' + error)
             }
-            let ndefMessage = NdefTag.createNdefMessage([0x01, 0x02]);
+            let rawData = [
+                0xD1, 0x01, 0x03, 0x54, 0x4E, 0x46, 0x43
+            ];
+            let ndefMessage = tag.ndef.createNdefMessage(rawData);
             await NdefTag.writeNdef(ndefMessage).then((data) => {
                 expect(data).assertInstanceOf('Number')
                 console.info("[NFC_test]ndef writeNdef1 data: " + data);
@@ -405,7 +408,10 @@ export default function nfcNDEFTagTest() {
             }catch(error){
                 console.info('SUB_Communication_NFC_nfcNDEF_js_1000 error' + error)
             }
-            let ndefMessage = NdefTag.createNdefMessage([0x01, 0x02]);
+            let rawData = [
+                0xD1, 0x01, 0x03, 0x54, 0x4E, 0x46, 0x43
+            ];
+            let ndefMessage = tag.ndef.createNdefMessage(rawData);
             NdefTag.writeNdef(ndefMessage, (err, data)=> {
                 if (err) {
                     console.info("[NFC_test]ndef writeNdef2 err: " + err);
@@ -532,7 +538,7 @@ export default function nfcNDEFTagTest() {
                 console.info('SUB_Communication_NFC_nfcNDEF_js_1600 error' + error)
             }
             let rawData = [0xD1, 0x01, 0x03, 0x54, 0x4E, 0x46, 0x43]; 
-            let ndefmessage = NdefTag.createNdefMessage(rawData);
+            let ndefmessage = tag.ndef.createNdefMessage(rawData);
             let NdefFormatable = tag.getNdefFormatable(NdefFormatableTag);
             await NdefFormatable.format(ndefmessage).then(() => {
                 console.info("[NFC_test]ndefFormatable format1 ");
@@ -558,7 +564,7 @@ export default function nfcNDEFTagTest() {
                 console.info('SUB_Communication_NFC_nfcNDEF_js_1700 error' + error)
             }
             let rawData = [0xD1, 0x01, 0x03, 0x54, 0x4E, 0x46, 0x43]; 
-            let ndefmessage = NdefTag.createNdefMessage(rawData);
+            let ndefmessage = tag.ndef.createNdefMessage(rawData);
             let NdefFormatable = tag.getNdefFormatable(NdefFormatableTag);
             NdefFormatable.format(ndefmessage, (err, data)=> {
                 if (err) {
@@ -589,7 +595,7 @@ export default function nfcNDEFTagTest() {
             let rawData = [
                 0xD1, 0x01, 0x03, 0x54, 0x4E, 0x46, 0x43
             ];
-            let ndefmessage = NdefTag.createNdefMessage(rawData);
+            let ndefmessage = tag.ndef.createNdefMessage(rawData);
             let NdefFormatable = tag.getNdefFormatable(NdefFormatableTag);
             await NdefFormatable.formatReadOnly(ndefmessage).then(() => {
                 console.info("[NFC_test]ndefFormatable formatReadOnly1 " + data);
@@ -617,7 +623,7 @@ export default function nfcNDEFTagTest() {
             let rawData = [
                 0xD1, 0x01, 0x03, 0x54, 0x4E, 0x46, 0x43
             ];
-            let ndefmessage = NdefTag.createNdefMessage(rawData);
+            let ndefmessage = tag.ndef.createNdefMessage(rawData);
             let NdefFormatable = tag.getNdefFormatable(NdefFormatableTag);
             NdefFormatable.formatReadOnly(ndefmessage, (err, data)=> {
                 if (err) {
@@ -650,9 +656,9 @@ export default function nfcNDEFTagTest() {
             if (NdefTag!= undefined){
                 console.info("makeUriRecord is object3" );
                 try{
-                    let ndefMessage = NdefTag.createNdefMessage(rawData);
+                    let ndefMessage = tag.ndef.createNdefMessage(rawData);
                     console.info("[NFC_test]ndefMessage result: " + JSON.stringify(ndefMessage));
-                    let makeRecords = ndefMessage.makeUriRecord("D4010354787473");
+                    let makeRecords = tag.ndef.makeUriRecord("D4010354787473");
                     console.info("[NFC_test]makeUriRecord result: " + JSON.stringify(makeRecords));
                     expect(JSON.stringify(makeRecords)!=null).assertTrue();
              
@@ -683,9 +689,9 @@ export default function nfcNDEFTagTest() {
             if (NdefTag!= undefined){
                 console.info("makeTextRecord is object4" );
                 try{
-                    let ndefMessage = NdefTag.createNdefMessage(rawData);
+                    let ndefMessage = tag.ndef.createNdefMessage(rawData);
                     console.info("[NFC_test]ndefMessage result1: " + JSON.stringify(ndefMessage));
-                    let makeTRecords = ndefMessage.makeTextRecord("test112HW","test");
+                    let makeTRecords = tag.ndef.makeTextRecord("test112HW","test");
                     console.info("[NFC_test]makeTextRecord result1: " + JSON.stringify(makeTRecords));
                     expect(JSON.stringify(makeTRecords)!=null).assertTrue();
             
@@ -716,9 +722,9 @@ export default function nfcNDEFTagTest() {
             if (NdefTag!= undefined){
                 console.info("makeMimeRecord is object5" );
                 try{
-                    let ndefMessage = NdefTag.createNdefMessage(rawData);
+                    let ndefMessage = tag.ndef.createNdefMessage(rawData);
                     console.info("[NFC_test]ndefMessage result2: " + JSON.stringify(ndefMessage));
-                    let makeMRecords = ndefMessage.makeMimeRecord("BYTE" , "0112");
+                    let makeMRecords = tag.ndef.makeMimeRecord("BYTE" , "0112");
                     console.info("[NFC_test]makeMimeRecord result2: " + JSON.stringify(makeMRecords));
                     expect(JSON.stringify(makeMRecords)!=null).assertTrue();
             
@@ -749,9 +755,9 @@ export default function nfcNDEFTagTest() {
             if (NdefTag!= undefined){
                 console.info("makeExternalRecord is object6" );
                 try{
-                    let ndefMessage = NdefTag.createNdefMessage(rawData);
+                    let ndefMessage = tag.ndef.createNdefMessage(rawData);
                     console.info("[NFC_test]ndefMessage result3: " + JSON.stringify(ndefMessage));
-                    let makeERecords = ndefMessage.makeExternalRecord("NFC","NFCtest",[0x01, 0x02]);
+                    let makeERecords = tag.ndef.makeExternalRecord("NFC","NFCtest",[0x01, 0x02]);
                     console.info("[NFC_test]makeExternalRecord result13: " + JSON.stringify(makeERecords));
                     expect(makeERecords instanceof Object).assertTrue();
                 }catch(error){
@@ -781,9 +787,9 @@ export default function nfcNDEFTagTest() {
             if (NdefTag!= undefined){
                 console.info("messageToBytes is object7" );
                 try{
-                    let ndefMessage = NdefTag.createNdefMessage(rawData);
+                    let ndefMessage = tag.ndef.createNdefMessage(rawData);
                     console.info("[NFC_test]ndefMessage result4: " + JSON.stringify(ndefMessage));
-                    let makeERecords = ndefMessage.messageToBytes(ndefMessage);
+                    let makeERecords = tag.ndef.messageToBytes(ndefMessage);
                     console.info("[NFC_test]messageToBytes result4: " + JSON.stringify(makeERecords));
                     expect(makeERecords).assertInstanceOf('Array')
                 }catch(error){
