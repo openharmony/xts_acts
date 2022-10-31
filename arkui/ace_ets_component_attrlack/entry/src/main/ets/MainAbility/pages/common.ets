@@ -92,7 +92,7 @@ export default struct CommonColorMode {
         .bindPopup(true,{
              message:"23",
              showInSubWindow:true
-        }).
+        })
 
       Text("common-OnFinish")
         .width(320)
