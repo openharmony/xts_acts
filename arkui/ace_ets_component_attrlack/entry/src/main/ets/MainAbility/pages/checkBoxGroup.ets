@@ -22,7 +22,7 @@ const TAG = 'ets_apiLack_add';
 @Component
 export default
 struct CheckBoxGroupPart {
-  @State SelectStatus: SelectStatus = SelectStatus.Part
+
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear CheckBoxGroupPart start`)
   }
@@ -84,11 +84,9 @@ struct CheckBoxGroupPart {
             console.info("Part emit action state err: " + JSON.stringify(err.message))
           }
           Utils.sleep(1000);
-          
           if(itemName.status === SelectStatus.Part){
             console.info("CheckboxGroup SelectStatus.Part")
-          } 
-
+          }
         })
       Text('select all').fontSize(20)
       Checkbox({name: 'checkbox1',  group: 'checkboxGroup'})

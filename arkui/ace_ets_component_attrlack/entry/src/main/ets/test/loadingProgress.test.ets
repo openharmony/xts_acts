@@ -60,9 +60,9 @@ export default function loadingProgressCircularJsunit() {
       expect(obj.$attrs.color).assertEqual(undefined);
       expect(obj.$attrs.width).assertEqual('100.00vp');
       expect(obj.$attrs.margin).assertEqual('5.00vp');
-      console.info("[gwxtestloadingProgressCircular0011] color value :" + obj.$attrs.color);
-      console.info("[gwxtestloadingProgressCircular0011] width value :" + obj.$attrs.width);
-      console.info("[gwxtestloadingProgressCircular0011] margin value :" + obj.$attrs.margin);
+      console.info("[testloadingProgressCircular0011] color value :" + obj.$attrs.color);
+      console.info("[testloadingProgressCircular0011] width value :" + obj.$attrs.width);
+      console.info("[testloadingProgressCircular0011] margin value :" + obj.$attrs.margin);
       done();
     });
 

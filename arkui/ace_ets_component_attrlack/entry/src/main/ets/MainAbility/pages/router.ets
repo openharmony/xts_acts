@@ -13,9 +13,8 @@
  * limitations under the License.
  */
 
-
 import router from '@ohos.router'
-import uiAppearance from '@ohos.uiAppearance';
+// import uiAppearance from '@ohos.uiAppearance';
 
 import Log from '../common/Log.ets';
 
@@ -27,7 +26,7 @@ export default
 struct RouterStandard {
 
 
-   async  routePage() {
+  async  routePage() {
     let options = {
       url: 'pages/page1',
       params: {
@@ -106,6 +105,7 @@ struct RouterStandard {
         .onClick(() => {
           this.routeSinglePage()
         })
+
          Text('这是第一页')
         .fontSize(50)
         .fontWeight(FontWeight.Bold)
@@ -123,3 +123,4 @@ struct RouterStandard {
     }.width("100%").height("100%")
   }
 }
+
