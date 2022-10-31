@@ -110,7 +110,7 @@ describe('ActsFeatureAbilityTest', function () {
         setTimeout(function () {
             console.log("ACTS_wantConstant afterEach end");
             done();
-        }, 500);
+        }, 2000);
     })
 
     /**
