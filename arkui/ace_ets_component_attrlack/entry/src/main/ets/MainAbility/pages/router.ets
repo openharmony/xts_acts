@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+
 import router from '@ohos.router'
 import uiAppearance from '@ohos.uiAppearance';
 
@@ -26,7 +27,7 @@ export default
 struct RouterStandard {
 
 
-  async  routePage() {
+   async  routePage() {
     let options = {
       url: 'pages/page1',
       params: {
@@ -37,7 +38,7 @@ struct RouterStandard {
       }
     }
     try {
-      await router.push(options,router.RouterMode.Standard)
+      await router.push(options)
     } catch (err) {
       console.info(`Standard Page fail callback, code: ${err.code}, msg: ${err.msg}`)
     }
@@ -54,7 +55,7 @@ struct RouterStandard {
       }
     }
     try {
-      await router.push(options,router.RouterMode.Single)
+      await router.push(options)
     } catch (err) {
       console.info(`Single Page fail callback, code: ${err.code}, msg: ${err.msg}`)
     }
@@ -105,7 +106,6 @@ struct RouterStandard {
         .onClick(() => {
           this.routeSinglePage()
         })
-
          Text('这是第一页')
         .fontSize(50)
         .fontWeight(FontWeight.Bold)
@@ -123,4 +123,3 @@ struct RouterStandard {
     }.width("100%").height("100%")
   }
 }
-

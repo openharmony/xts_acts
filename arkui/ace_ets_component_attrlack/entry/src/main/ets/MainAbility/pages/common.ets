@@ -92,7 +92,7 @@ export default struct CommonColorMode {
         .bindPopup(true,{
              message:"23",
              showInSubWindow:true
-        }).
+        })
 
       Text("common-OnFinish")
         .width(320)
@@ -134,7 +134,7 @@ export default struct CommonColorMode {
             path: ''
           }
         })
-
+//
       Text("common-Middle")
         .width(320)
         .height(40)
@@ -151,7 +151,7 @@ export default struct CommonColorMode {
         .alignRules({
           middle: { anchor: 'string', align: HorizontalAlign.Center }
         })
-
+//
       Text("common-Area")
         .width(320)
         .height(40)
@@ -187,6 +187,7 @@ export default struct CommonColorMode {
             console.info("areaValue emit action state err: " + JSON.stringify(err.message))
           }
         })
+//        
       Text("common-Repeat")
         .width(320)
         .height(40)
@@ -210,7 +211,7 @@ export default struct CommonColorMode {
           repeat: RepeatMode.Repeat,
           fill: false
         });
-
+//
       Text("common-Space")
         .width(320)
         .height(40)
@@ -234,7 +235,7 @@ export default struct CommonColorMode {
           repeat: RepeatMode.Space,
           fill: false
         });
-
+//
       Text("common-Thin")
         .width(320)
         .height(40)
@@ -249,7 +250,7 @@ export default struct CommonColorMode {
         .textOverflow({ overflow: TextOverflow.None })
         .key("ThinText")
         .backgroundBlurStyle(BlurStyle.Thin)
-
+//
       Text("common-Thick")
         .width(320)
         .height(40)
@@ -264,7 +265,7 @@ export default struct CommonColorMode {
         .textOverflow({ overflow: TextOverflow.None })
         .key("ThickText")
         .backgroundBlurStyle(BlurStyle.Thick)
-
+//
       Text("common-Slice")
         .width(320)
         .height(40)
@@ -288,7 +289,7 @@ export default struct CommonColorMode {
           repeat: RepeatMode.Stretch,
           fill: false
         });
-
+//
       Text("common-Outset")
         .width(320)
         .height(40)
@@ -314,7 +315,7 @@ export default struct CommonColorMode {
           outset: 2
         });
 
-
+//
       Text("common-Touches")
         .width(320)
         .height(40)
@@ -350,7 +351,7 @@ export default struct CommonColorMode {
             console.info("touchesValue emit action state err: " + JSON.stringify(err.message))
           }
         })
-
+//
       Text("common-ChangedTouches")
         .width(320)
         .height(40)

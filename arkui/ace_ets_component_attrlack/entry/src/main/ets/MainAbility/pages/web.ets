@@ -38,7 +38,8 @@ struct WebEditText {
         .height(500)
         .padding(20)
         .blur(2)
-        .fileFromUrlAccess(true)
+        //修改
+        //.fileFromUrlAccess(true)
         .initialScale(2)
         .webDebuggingAccess(true)
         .onRenderExited((event) => {

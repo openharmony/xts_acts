@@ -58,7 +58,7 @@ export default function colorEnumJsunit() {
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Text');
       console.info("[testcolorTransparent0001] fontColor value :" + obj.$attrs.fontColor);
-      expect(obj.$attrs.fontColor).assertEqual("#FF000000");
+      expect(obj.$attrs.fontColor).assertEqual("#00000000");
       done();
     });
   })
