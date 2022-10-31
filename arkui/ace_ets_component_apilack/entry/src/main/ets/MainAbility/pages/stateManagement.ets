@@ -75,8 +75,8 @@ struct StateManagementGetShared {
           } catch (err) {
             console.info("setAndLink emit action state err: " + JSON.stringify(err.message))
           }
-          storage1.setAndLink("storageSimpleProp",48)
-          console.log("storage1.setAndLink('PropA',48) :" + this.simpleVarName )
+         // storage1.setAndLink("storageSimpleProp",48)
+         // console.log("storage1.setAndLink('PropA',48) :" + this.simpleVarName )
         })
 
       Text(`Parent from LocalStorage ${ this.simpleVarName }`)
@@ -97,8 +97,8 @@ struct StateManagementGetShared {
           } catch (err) {
             console.info("setOrCreate emit action state err: " + JSON.stringify(err.message))
           }
-          storage1.setOrCreate("storageSimpleProp",47)
-          console.log("storageSimpleProp setOrCreate is :  " + this.simpleVarName)
+         // storage1.setOrCreate("storageSimpleProp",47)
+          // console.log("storageSimpleProp setOrCreate is :  " + this.simpleVarName)
         })
 
       Text(`Parent from LocalStorage ${ this.simpleVarName }`)
@@ -120,8 +120,8 @@ struct StateManagementGetShared {
             console.info("setAndProp emit action state err: " + JSON.stringify(err.message))
           }
 
-          storage1.setAndProp("storageSimpleProp",49)
-          console.log("storageSimpleProp setAndProp is :  " + this.simpleVarName)
+         // storage1.setAndProp("storageSimpleProp",49)
+        //console.log("storageSimpleProp setAndProp is :  " + this.simpleVarName)
         })
     
     }.width("100%").height("100%")

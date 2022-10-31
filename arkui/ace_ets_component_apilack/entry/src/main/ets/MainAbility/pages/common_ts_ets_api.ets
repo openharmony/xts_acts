@@ -71,7 +71,7 @@ export default struct Common_ts_ets_apiStaticClear {
         .textOverflow({ overflow: TextOverflow.None })
         .key("staticClearText")
         .onClick(() => {
-          AppStorage.staticClear()
+          AppStorage.Clear()
         })
 
       Text("common_ts_ets_api-EnvProp")
@@ -152,7 +152,7 @@ export default struct Common_ts_ets_apiStaticClear {
         .textOverflow({ overflow: TextOverflow.None })
         .key("staticClearText")
         .onClick(() => {
-          AppStorage.clear()
+          AppStorage.Clear()
         })
 
 

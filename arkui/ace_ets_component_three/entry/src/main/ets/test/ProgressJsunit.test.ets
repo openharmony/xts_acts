@@ -283,7 +283,8 @@ export default function progressJsunit() {
       let strJson = getInspectorByKey('LPValue');
       let obj = JSON.parse(strJson);
       console.info("testProgress_1000 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.value).assertEqual("-5.000000");
+      // 非法入参默认初始值
+      expect(obj.$attrs.value).assertEqual("0.000000");
       console.info('testProgress_1000 END');
       done();
     });
@@ -313,7 +314,8 @@ export default function progressJsunit() {
       let strJson = getInspectorByKey('LPValue');
       let obj = JSON.parse(strJson);
       console.info("testProgress_1100 component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.value).assertEqual("121212121.000000");
+      // 非法入参默认初始值
+      expect(obj.$attrs.value).assertEqual("100.000000");
       console.info('testProgress_1100 END');
       done();
     });
