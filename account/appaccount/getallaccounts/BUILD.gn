@@ -17,8 +17,8 @@ group("getallaccounts") {
   testonly = true
   if (is_standard_system) {
     deps = [
-      "getallaccountsnoparameter:GetAllAccountsNoParameter",
-      "getmultipleaccounts:GetMultipleAccountsTest",
+      "actsgetallaccountsnoparameter:ActsGetAllAccountsNoParameter",
+      "actsgetmultipleaccounts:ActsGetMultipleAccountsTest",
     ]
   }
 }
