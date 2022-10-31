@@ -37,7 +37,9 @@
                 "hilog -Q pidoff",
                 "hilog -b D"
             ],
-            "teardown-command": []
+            "teardown-command": [
+                "hilog -b X"
+            ]
         }
     ]
 }

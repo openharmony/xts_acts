@@ -35,7 +35,8 @@ describe('audioVoip', function () {
     beforeAll(async function () {
         console.info(`AudioFrameworkTest: beforeAll: Prerequisites at the test suite level`);
         let permissionName1 = 'ohos.permission.MICROPHONE';
-        let permissionNameList = [permissionName1];
+        let permissionName2 = 'ohos.permission.MANAGE_AUDIO_CONFIG';
+        let permissionNameList = [permissionName1,permissionName2];
         let appName = 'ohos.acts.multimedia.audio.audiovoip';
         await audioTestBase.applyPermission(appName, permissionNameList);
         await sleep(100);
