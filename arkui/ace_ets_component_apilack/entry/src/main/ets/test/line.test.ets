@@ -108,7 +108,7 @@ export default function lineNeJsunit() {
       console.info("[testlineNe0006] component height strJson:" + strJson);
       let obj = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Shape');
-      expect(obj.$attrs.height).assertEqual("200.00");
+      expect(obj.$attrs.height).assertEqual("200.00vp");
       console.info("[testlineNe0006] height value :" + obj.$attrs.height);
       done();
     });

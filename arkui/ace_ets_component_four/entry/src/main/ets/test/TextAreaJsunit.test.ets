@@ -90,7 +90,8 @@ export default function textAreaJsunit() {
       let strJson = getInspectorByKey('textArea');
       let obj = JSON.parse(strJson);
       console.info("[textAreaTest03] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.fontColor).assertEqual('#FF000000');
+      // 适配开发侧非法入参修改
+      expect(obj.$attrs.fontColor).assertEqual('#FF182432');
       console.info('textAreaTest03 END');
       done();
     });
