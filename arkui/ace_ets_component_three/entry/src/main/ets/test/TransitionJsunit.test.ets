@@ -101,7 +101,8 @@ export default function transitionJsunit() {
       let strJsonNew = getInspectorByKey('button');
       let objNew = JSON.parse(strJsonNew);
       console.info("transitionTest_0300 component objNew is: " + JSON.stringify(objNew));
-      expect(objNew.$attrs.opacity).assertEqual(2);
+      //非法入参默认初始值
+      expect(objNew.$attrs.opacity).assertEqual(1);
       console.info('transitionTest_0300 END');
       done();
     });
