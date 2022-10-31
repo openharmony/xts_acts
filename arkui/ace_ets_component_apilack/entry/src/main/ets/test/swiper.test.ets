@@ -28,7 +28,7 @@ export default function swiperCurveJsunit() {
         router.clear();
         let pages = router.getState();
         console.info("get swiper state success " + JSON.stringify(pages));
-        if (!("swiper" == pages.name)) 
+        if (!("swiper" == pages.name)) {
           console.info("get swiper state success " + JSON.stringify(pages.name));
           let result = await router.push(options);
           await Utils.sleep(2000);
