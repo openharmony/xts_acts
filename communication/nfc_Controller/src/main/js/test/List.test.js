@@ -13,18 +13,22 @@
  * limitations under the License.
  */
 
+import nfcATagSessionTest from './nfc.ATagSession.js'
 import nfcControllerTest from './nfc.Controller.js'
 import nfcIsoDepTagTest from './nfc.IsoDepTag.js'
 import nfcMifareClassicTag from './nfc.MifareClassicTag.js'
-import nfcTagABFVTest from './nfc.tagABFV.js'
+import nfcMifareUltralightTag from './nfc.MifareUltralightTag.js'
+import nfcTagABFVTest from './nfc.TagABFV.js'
 import parameter from '@ohos.systemparameter';
 let info = parameter.getSync("const.SystemCapability.Communication.NFC.Core" ,"false");
 export default function testsuite() {
 if (info != "false")
 {
+    nfcATagSessionTest();
     nfcControllerTest();
     nfcIsoDepTagTest();
     nfcMifareClassicTag();
+    nfcMifareUltralightTag();
     nfcTagABFVTest();
 }
 }
