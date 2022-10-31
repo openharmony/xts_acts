@@ -100,7 +100,8 @@ describe('audioFramework', function () {
         let permissionName1 = 'ohos.permission.MICROPHONE';
         let permissionName2 = 'ohos.permission.ACCESS_NOTIFICATION_POLICY';
         let permissionName3 = 'ohos.permission.MODIFY_AUDIO_SETTINGS';
-        let permissionNameList = [permissionName1, permissionName2, permissionName3];
+        let permissionName4 = 'ohos.permission.MANAGE_AUDIO_CONFIG';
+        let permissionNameList = [permissionName1, permissionName2, permissionName3,permissionName4];
         let appName = 'ohos.acts.multimedia.audio.audiomanager';
         await audioTestBase.applyPermission(appName, permissionNameList);
         await sleep(100);

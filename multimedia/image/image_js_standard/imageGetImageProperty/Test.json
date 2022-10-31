@@ -40,7 +40,8 @@
                 "chmod 777 /data/app/el2/100/base/ohos.acts.multimedia.image.GetImageProperty/haps/entry/files/test_exif.jpg"
             ],
             "teardown-command": [
-                "rm -rf /data/app/el2/100/base/ohos.acts.multimedia.image.GetImageProperty/haps/entry/files/*"
+                "rm -rf /data/app/el2/100/base/ohos.acts.multimedia.image.GetImageProperty/haps/entry/files/*",
+                "hilog -b X"
             ]
         }
     ]
