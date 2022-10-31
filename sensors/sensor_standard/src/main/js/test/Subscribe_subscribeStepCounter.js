@@ -72,6 +72,10 @@ describe("SensorJsTest_sensor_34", function () {
                 console.log('subscribeStepCounter_SensorJsTest001 is completed');
             }
         });
+		setTimeout(() => {
+          sensor.unsubscribeStepCounter();
+          done();
+        }, 1000);
     })
 
     /*
