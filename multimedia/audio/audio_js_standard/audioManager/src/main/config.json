@@ -89,7 +89,11 @@
       {
         "name": "ohos.permission.MODIFY_AUDIO_SETTINGS",
         "reason": "use ohos.permission.MODIFY_AUDIO_SETTINGS"
-      }
+      },
+      {
+          "name": "ohos.permission.MANAGE_AUDIO_CONFIG",
+          "reason": "use ohos.permission.MANAGE_AUDIO_CONFIG"
+        }
     ]
   }
 }

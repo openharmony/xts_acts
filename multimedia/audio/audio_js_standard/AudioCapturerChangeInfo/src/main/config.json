@@ -80,7 +80,12 @@
         {
           "name": "ohos.permission.MICROPHONE",
           "reason": "use ohos.permission.MICROPHONE"
-        }
+        },
+        {
+            "name": "ohos.permission.MANAGE_AUDIO_CONFIG",
+            "reason": "use ohos.permission.MANAGE_AUDIO_CONFIG"
+          }
+        
       ]
   }
 }
