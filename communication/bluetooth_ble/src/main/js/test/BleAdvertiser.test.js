@@ -21,7 +21,6 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 export default function bluetoothBLETest2() {
 describe('bluetoothBLETest2', function() {
     let gattServer = null;
-    let gattClient = null;
     function sleep(delay) {
         return new Promise(resovle => setTimeout(resovle, delay))
     }
@@ -53,7 +52,6 @@ describe('bluetoothBLETest2', function() {
     beforeAll(function () {
         console.info('beforeAll called')
         gattServer = bluetooth.BLE.createGattServer();
-        gattClient = bluetooth.BLE.createGattClientDevice("00:00:00:00:00:00");
     })
     beforeEach(async function (done) {
         console.info('beforeEach called')
@@ -79,7 +77,6 @@ describe('bluetoothBLETest2', function() {
      * @tc.level Level 0
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_AdvertiseData_0100', 0, async function (done) {
-          let gattServer =bluetooth.BLE.createGattServer();
           let manufactureValueBuffer = new Uint8Array(4);
           manufactureValueBuffer[0] = 1;
           manufactureValueBuffer[1] = 2;
@@ -136,7 +133,6 @@ describe('bluetoothBLETest2', function() {
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_AdvertiseData_0200', 0, async function (done) {
-          let gattServer =bluetooth.BLE.createGattServer();
           let manufactureValueBuffer = new Uint8Array(4);
           manufactureValueBuffer[0] = 1;
           manufactureValueBuffer[1] = 2;
@@ -192,8 +188,7 @@ describe('bluetoothBLETest2', function() {
      * @tc.type Function
      * @tc.level Level 3
      */
-    it('SUB_COMMUNICATION_BLUETOOTH_BLE_AdvertiseData_0300', 0, async function (done) {
-          let gattServer =bluetooth.BLE.createGattServer();
+    it('SUB_COMMUNICATION_BLUETOOTH_BLE_AdvertiseData_0300', 0, async function (done) { 
           let manufactureValueBuffer = new Uint8Array(4);
           manufactureValueBuffer[0] = 1;
           manufactureValueBuffer[1] = 2;
@@ -250,7 +245,6 @@ describe('bluetoothBLETest2', function() {
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_AdvertiseData_0400', 0, async function (done) {
-          let gattServer =bluetooth.BLE.createGattServer();
           let manufactureValueBuffer = new Uint8Array(4);
           manufactureValueBuffer[0] = 1;
           manufactureValueBuffer[1] = 2;
@@ -307,7 +301,6 @@ describe('bluetoothBLETest2', function() {
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_AdvertiseData_0500', 0, async function (done) {
-          let gattServer =bluetooth.BLE.createGattServer();
           let manufactureValueBuffer = new Uint8Array(4);
           manufactureValueBuffer[0] = 1;
           manufactureValueBuffer[1] = 2;
@@ -364,7 +357,6 @@ describe('bluetoothBLETest2', function() {
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_AdvertiseData_0800', 0, async function (done) {
-          let gattServer =bluetooth.BLE.createGattServer();
           let manufactureValueBuffer = new Uint8Array(4);
           manufactureValueBuffer[0] = 1;
           manufactureValueBuffer[1] = 2;
@@ -421,7 +413,6 @@ describe('bluetoothBLETest2', function() {
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_AdvertiseData_0900', 0, async function (done) {
-          let gattServer =bluetooth.BLE.createGattServer();
           let manufactureValueBuffer = new Uint8Array(4);
           manufactureValueBuffer[0] = 1;
           manufactureValueBuffer[1] = 2;
@@ -478,7 +469,6 @@ describe('bluetoothBLETest2', function() {
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_AdvertiseData_1000', 0, async function (done) {
-          let gattServer =bluetooth.BLE.createGattServer();
           let manufactureValueBuffer = new Uint8Array(4);
           manufactureValueBuffer[0] = 1;
           manufactureValueBuffer[1] = 2;
@@ -535,7 +525,6 @@ describe('bluetoothBLETest2', function() {
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_AdvertiseData_1100', 0, async function (done) {
-          let gattServer =bluetooth.BLE.createGattServer();
           let manufactureValueBuffer = new Uint8Array(4);
           manufactureValueBuffer[0] = 1;
           manufactureValueBuffer[1] = 2;
@@ -592,7 +581,6 @@ describe('bluetoothBLETest2', function() {
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_AdvertiseData_1200', 0, async function (done) {
-           let gattServer =bluetooth.BLE.createGattServer();
           let manufactureValueBuffer = new Uint8Array(4);
           manufactureValueBuffer[0] = 1;
           manufactureValueBuffer[1] = 2;
@@ -649,7 +637,6 @@ describe('bluetoothBLETest2', function() {
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_AdvertiseData_1400', 0, async function (done) {
-          let gattServer =bluetooth.BLE.createGattServer();
           let manufactureValueBuffer = new Uint8Array(4);
           manufactureValueBuffer[0] = 1;
           manufactureValueBuffer[1] = 2;
@@ -706,7 +693,6 @@ describe('bluetoothBLETest2', function() {
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_AdvertiseData_1500', 0, async function (done) {
-          let gattServer =bluetooth.BLE.createGattServer();
           let manufactureValueBuffer = new Uint8Array(4);
           manufactureValueBuffer[0] = 1;
           manufactureValueBuffer[1] = 2;
@@ -763,7 +749,6 @@ describe('bluetoothBLETest2', function() {
      * @tc.level Level 1
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_AdvertiseData_1600', 0, async function (done) {
-          let gattServer =bluetooth.BLE.createGattServer();
           let manufactureValueBuffer = new Uint8Array(4);
           manufactureValueBuffer[0] = 1;
           manufactureValueBuffer[1] = 2;
@@ -820,7 +805,6 @@ describe('bluetoothBLETest2', function() {
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_AdvertiseData_1800', 0, async function (done) {
-          let gattServer =bluetooth.BLE.createGattServer();
           let manufactureValueBuffer = new Uint8Array(4);
           manufactureValueBuffer[0] = 1;
           manufactureValueBuffer[1] = 2;
@@ -877,7 +861,6 @@ describe('bluetoothBLETest2', function() {
      * @tc.level Level 2
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_AdvertiseData_1900', 0, async function (done) {
-          let gattServer =bluetooth.BLE.createGattServer();
           let manufactureValueBuffer = new Uint8Array(4);
           manufactureValueBuffer[0] = 1;
           manufactureValueBuffer[1] = 2;
@@ -929,7 +912,6 @@ describe('bluetoothBLETest2', function() {
      * @tc.level Level 3
      */
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_AdvertiseData_2100', 0, async function (done) {
-          let gattServer =bluetooth.BLE.createGattServer();
           let manufactureValueBuffer = new Uint8Array(4);
           manufactureValueBuffer[0] = 1;
           manufactureValueBuffer[1] = 2;
@@ -982,7 +964,6 @@ describe('bluetoothBLETest2', function() {
     it('SUB_COMMUNICATION_BLUETOOTH_BLE_StartAdvertise_0400', 0, function () {
         let isRet = true;
         try{
-            let gattServer =bluetooth.BLE.createGattServer();
             gattServer.stopAdvertising();
             expect(isRet).assertTrue();
         }catch(error){
@@ -995,4 +976,3 @@ describe('bluetoothBLETest2', function() {
 })
 
 }
-
