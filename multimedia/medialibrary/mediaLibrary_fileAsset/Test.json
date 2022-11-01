@@ -38,7 +38,7 @@
                 "for d in RW_cb R_cb W_cb RW R W openClose; do for i in $$(seq 2); do cp /storage/media/100/local/temp/01.mp3 /storage/media/100/local/files/Audios/$$d/0$$i.mp3; done;done;",
                 "for d in RW_cb R_cb W_cb RW R W openClose; do for i in $$(seq 2); do cp /storage/media/100/local/temp/01.mp4 /storage/media/100/local/files/Videos/$$d/0$$i.mp4; done;done;",
                 "for d in RW_cb R_cb W_cb RW R W openClose; do for i in $$(seq 2); do cp /storage/media/100/local/temp/01.dat /storage/media/100/local/files/Documents/$$d/0$$i.dat; done;done;",
-                "for d in ModifyCb ModifyPro; do for i in $$(seq 7); do cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/$$d/0$$i.jpg; done;done;",
+                "for d in ModifyCb ModifyPro; do for i in $$(seq 15); do cp /storage/media/100/local/temp/01.jpg /storage/media/100/local/files/Pictures/$$d/0$$i.jpg; done;done;",
                 "for d in ModifyCb ModifyPro; do for i in $$(seq 5); do cp /storage/media/100/local/temp/01.mp3 /storage/media/100/local/files/Audios/$$d/0$$i.mp3; done;done;",
                 "for d in ModifyCb ModifyPro; do for i in $$(seq 5); do cp /storage/media/100/local/temp/01.mp4 /storage/media/100/local/files/Videos/$$d/0$$i.mp4; done;done;",
                 "for d in ModifyCb ModifyPro; do for i in $$(seq 5); do cp /storage/media/100/local/temp/01.dat /storage/media/100/local/files/Documents/$$d/0$$i.dat; done;done;",
