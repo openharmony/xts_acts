@@ -213,6 +213,43 @@ export default function requestUploadJSUnit() {
       console.info("-----------------------SUB_REQUEST_UPLOAD_API_0005 end-----------------------");
       done();
     });
+    
+    /**
+     * @tc.number    SUB_REQUEST_UPLOAD_API_0006
+     * @tc.name      Test requestUploadTest type = TIMER_TYPE_REALTIME
+     * @tc.desc      Test requestUploadTest API functionality.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_REQUEST_UPLOAD_API_0006', 0, async function (done) {
+      console.info("-----------------------SUB_REQUEST_UPLOAD_API_0006 is starting-----------------------");
+      try {
+        console.info("SUB_REQUEST_UPLOAD_API_0006 request.EXCEPTION_PERMISSION:" + request.EXCEPTION_PERMISSION);
+        expect(request.EXCEPTION_PERMISSION).assertEqual(201);
+        console.info("SUB_REQUEST_UPLOAD_API_0006 request.EXCEPTION_PARAMCHECK:" + request.EXCEPTION_PARAMCHECK);
+        expect(request.EXCEPTION_PARAMCHECK).assertEqual(401);
+        console.info("SUB_REQUEST_UPLOAD_API_0006 request.EXCEPTION_UNSUPPORTED:" + request.EXCEPTION_UNSUPPORTED);
+        expect(request.EXCEPTION_UNSUPPORTED).assertEqual(801);
+        console.info("SUB_REQUEST_UPLOAD_API_0006 request.EXCEPTION_FILEIO:" + request.EXCEPTION_FILEIO);
+        expect(request.EXCEPTION_FILEIO).assertEqual(13400001);
+        console.info("SUB_REQUEST_UPLOAD_API_0006 request.EXCEPTION_FILEPATH:" + request.EXCEPTION_FILEPATH);
+        expect(request.EXCEPTION_FILEPATH).assertEqual(13400002);
+        console.info("SUB_REQUEST_UPLOAD_API_0006 request.EXCEPTION_SERVICE:" + request.EXCEPTION_SERVICE);
+        expect(request.EXCEPTION_SERVICE).assertEqual(13400003);
+        console.info("SUB_REQUEST_UPLOAD_API_0006 request.EXCEPTION_OTHERS:" + request.EXCEPTION_OTHERS);
+        expect(request.EXCEPTION_OTHERS).assertEqual(13499999);
+        console.info("SUB_REQUEST_UPLOAD_API_0006 request.ERROR_OFFLINE:" + request.ERROR_OFFLINE);
+        expect(request.ERROR_OFFLINE).assertEqual(9);
+        console.info("SUB_REQUEST_UPLOAD_API_0006 request.ERROR_UNSUPPORTED_NETWORK_TYPE:" + request.ERROR_UNSUPPORTED_NETWORK_TYPE);
+        expect(request.ERROR_UNSUPPORTED_NETWORK_TYPE).assertEqual(10);
+      } catch (err) {
+        expect(true).assertEqual(true);
+        console.error("SUB_REQUEST_UPLOAD_API_0006 error: " + err);
+      }
+      console.info("-----------------------SUB_REQUEST_UPLOAD_API_0006 end-----------------------");
+      done();
+    });
 
     /**
      * @tc.number    SUB_REQUEST_UPLOAD_API_CALLBACK_0001
