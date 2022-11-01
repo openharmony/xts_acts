@@ -11,11 +11,7 @@
         {
             "type": "ShellKit",
             "run-command": [
-                "setenforce 0",
-                "power-shell setmode 602",
-                "hilog -Q pidoff",
-                "hilog -Q domainoff",
-                "hilog -b D"
+                "power-shell setmode 602"
             ]
         },
         {

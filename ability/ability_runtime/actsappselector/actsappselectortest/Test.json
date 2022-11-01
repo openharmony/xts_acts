@@ -12,12 +12,8 @@
         {
             "type": "ShellKit",
             "run-command": [
-                "setenforce 0",
                 "power-shell setmode 602",
-                "param set persist.ace.testmode.enabled 1",
-                "hilog -Q pidoff",
-                "hilog -Q domainoff",
-                "hilog -b D"
+                "param set persist.ace.testmode.enabled 1"
             ]
         },
         {
