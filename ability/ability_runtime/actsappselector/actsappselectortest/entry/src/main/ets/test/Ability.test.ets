@@ -92,9 +92,8 @@ export default function abilityTest() {
           console.debug("ACTS_AppSelectorTest_3200 startAbility " +
             JSON.stringify(error) + "," + JSON.stringify(data));
           console.debug("ACTS_AppSelectorTest_3200 startAbility end");
-
-          let component = await driver.findComponent(BY.text('imagearelyhap'))
-          let button = await component.getBounds()
+          await sleep(4000);
+          let button = await driver.findComponent(BY.text('imagearelyhap').enabled(true))
           console.log("ACTS_AppSelectorTest_3200 button " + JSON.stringify(button));
 
           await sleep(1000);
@@ -107,9 +106,10 @@ export default function abilityTest() {
                 JSON.stringify(error) + "," + JSON.stringify(data));
               console.debug("ACTS_AppSelectorTest_3200 startAbility end");
 
-              await sleep(5000);
               commonEvent.subscribe(subscriber, SubscribeCallBack)
-              await driver.click(button.leftX, button.topY);
+              await sleep(6000);
+              await button.click();
+              await sleep(2000);
             })
         })
 
@@ -265,11 +265,14 @@ export default function abilityTest() {
         })
       await sleep(2000);
       console.log("ACTS_AppSelectorTest_0300 findComponent");
+      await sleep(2000);
       let button = await driver.findComponent(BY.text('textbrelyhap.com.example').enabled(true))
       console.log("ACTS_AppSelectorTest_0300 button " + JSON.stringify(button));
       subscriber = await commonEvent.createSubscriber(subscriberInfo);
       commonEvent.subscribe(subscriber, SubscribeCallBack)
+      await sleep(4000);
       await button.click();
+      await sleep(1000);
 
       async function SubscribeCallBack(err, data) {
         console.log('ACTS_AppSelectorTest_0300 SubscribeCallBack');
@@ -325,11 +328,14 @@ export default function abilityTest() {
 
           subscriber = await commonEvent.createSubscriber(subscriberInfo);
           commonEvent.subscribe(subscriber, SubscribeCallBack)
-          await sleep(1000);
+          await sleep(2000);
           console.log("ACTS_AppSelectorTest_0400 findComponent");
+          await sleep(2000);
           let button = await driver.findComponent(BY.text('imagebrelyhap').enabled(true))
           console.log("ACTS_AppSelectorTest_0400 button " + JSON.stringify(button));
+          await sleep(4000);
           await button.click();
+          await sleep(2000);
         })
       async function SubscribeCallBack(err, data) {
         console.log('ACTS_AppSelectorTest_0400 bundleName = ' + data.parameters.bundleName);
@@ -383,11 +389,14 @@ export default function abilityTest() {
           console.debug("ACTS_AppSelectorTest_0500 startAbility end");
 
           commonEvent.subscribe(subscriber, SubscribeCallBack)
-          await sleep(1000);
+          await sleep(2000);
           console.log("ACTS_AppSelectorTest_0500 findComponent");
+          await sleep(2000);
           let button = await driver.findComponent(BY.text('imagegrelyhap').enabled(true))
           console.log("ACTS_AppSelectorTest_0500 button " + JSON.stringify(button));
+          await sleep(4000);
           await button.click();
+          await sleep(2000);
         })
 
       async function SubscribeCallBack(err, data) {
@@ -401,6 +410,8 @@ export default function abilityTest() {
         expect(data.parameters.bundleName).assertEqual("imagegrelyhap");
         expect(data.parameters.type).assertEqual("image/png");
         expect(data.parameters.uri).assertEqual("filePath");
+
+
         commonEvent.unsubscribe(subscriber, UnSubscribeCallBack)
       }
 
@@ -445,19 +456,11 @@ export default function abilityTest() {
           console.debug("ACTS_AppSelectorTest_0600 startAbility end");
 
           commonEvent.subscribe(subscriber, SubscribeCallBack)
+          await sleep(4000);
+          await driver.swipe(529, 921, 185, 921)
+          await sleep(4000);
+          await driver.click(142,749);
           await sleep(2000);
-          let component = await driver.findComponent(BY.text("texthrelyhap.com.example"))
-          let rectSerial = await component.getBounds()
-          component = await driver.findComponent(BY.text("texterelyhap.com.example"))
-          let rectAlias = await component.getBounds()
-          console.log("ACTS_AppSelectorTest_0600 rectSerial " + JSON.stringify(rectSerial));
-          console.log("ACTS_AppSelectorTest_0600 rectAlias " + JSON.stringify(rectAlias));
-
-          await driver.swipe(rectSerial.leftX, rectSerial.topY, rectAlias.leftX, rectAlias.topY)
-          console.log("ACTS_AppSelectorTest_0600 findComponent");
-          let button = await driver.findComponent(BY.text('textirelyhap.com.example').enabled(true))
-          console.log("ACTS_AppSelectorTest_0600 button " + JSON.stringify(button));
-          await button.click();
         })
 
       async function SubscribeCallBack(err, data) {
@@ -505,18 +508,20 @@ export default function abilityTest() {
           console.debug("ACTS_AppSelectorTest_0700 startAbility " +
             JSON.stringify(error) + "," + JSON.stringify(data));
           console.debug("ACTS_AppSelectorTest_0700 startAbility end");
-          await sleep(2000);
+          commonEvent.subscribe(subscriber, SubscribeCallBack)
+          await sleep(4000);
           let button = await driver.findComponent(BY.text('imagebrelyhap').enabled(true))
           console.log("ACTS_AppSelectorTest_0700 button " + JSON.stringify(button));
-          let component = await driver.findComponent(BY.text("使用以下方式打开"))
-          let rectSerial = await component.getBounds()
+          await sleep(4000);
+          let rectSerial = await driver.findComponent(BY.text('使用以下方式打开').enabled(true))
           console.log("ACTS_AppSelectorTest_0700 rectSerial " + JSON.stringify(rectSerial));
-          await driver.click(rectSerial.leftX, rectSerial.topY);
+          await rectSerial.click();
           await sleep(2000);
           console.log("ACTS_AppSelectorTest_0700 findComponent");
 
+          await sleep(4000);
           await button.click();
-          commonEvent.subscribe(subscriber, SubscribeCallBack)
+          await sleep(2000);
         })
 
       async function SubscribeCallBack(err, data) {
@@ -563,11 +568,13 @@ export default function abilityTest() {
           console.debug("ACTS_AppSelectorTest_0800 startAbility " +
             JSON.stringify(error) + "," + JSON.stringify(data));
           console.debug("ACTS_AppSelectorTest_0800 startAbility end");
-          await sleep(2000);
+          await sleep(4000);
           console.log("ACTS_AppSelectorTest_0800 findComponent");
           let button = await driver.findComponent(BY.text('取消').enabled(true))
           console.log("ACTS_AppSelectorTest_0800 button " + JSON.stringify(button));
+          await sleep(4000);
           await button.click();
+          await sleep(2000);
           done();
 
         })
@@ -607,7 +614,9 @@ export default function abilityTest() {
       console.log("ACTS_AppSelectorTest_0900 findComponent");
       let button = await driver.findComponent(BY.text('textbrelyhap.com.example').enabled(true))
       console.log("ACTS_AppSelectorTest_0900 button " + JSON.stringify(button));
+      await sleep(4000);
       await button.click();
+      await sleep(4000);
 
       async function SubscribeCallBack(err, data) {
         console.log('ACTS_AppSelectorTest_0900 bundleName = ' + data.parameters.bundleName);
@@ -654,12 +663,14 @@ export default function abilityTest() {
           console.log("ACTS_AppSelectorTest_1000 startAbilityForResult " +
             JSON.stringify(error) + "," + JSON.stringify(data));
         })
-      await sleep(2000);
+      await sleep(4000);
       console.log("ACTS_AppSelectorTest_1000 findComponent");
       let button = await driver.findComponent(BY.text('textbrelyhap.com.example').enabled(true))
       console.log("ACTS_AppSelectorTest_1000 button " + JSON.stringify(button));
-      await button.click();
       commonEvent.subscribe(subscriber, SubscribeCallBack)
+      await sleep(4000);
+      await button.click();
+      await sleep(2000);
 
       async function SubscribeCallBack(err, data) {
         console.log('ACTS_AppSelectorTest_1000 bundleName = ' + data.parameters.bundleName);
@@ -677,9 +688,12 @@ export default function abilityTest() {
       async function UnSubscribeCallBack() {
         console.log("ACTS_AppSelectorTest_1000 UnSubscribeCallBack");
         try {
+          await sleep(2000);
           let close = await driver.findComponent(BY.text('取消').enabled(true))
           console.log("ACTS_AppSelectorTest_1000 cantOpen2 " + JSON.stringify(close));
-          expect(close == null).assertTrue();
+          await sleep(4000);
+          await close.click();
+          await sleep(2000);
           done();
         } catch (err) {
           console.debug("ACTS_AppSelectorTest_1000 catch err: " + JSON.stringify(err));
@@ -716,14 +730,17 @@ export default function abilityTest() {
           console.debug("ACTS_AppSelectorTest_1800 startAbility end");
 
 
-          await sleep(2000);
+          await sleep(4000);
           console.log("ACTS_AppSelectorTest_1800 findComponent");
           let cantOpen1 = await driver.findComponent(BY.text('无法打开此文件').enabled(true))
           console.log("ACTS_AppSelectorTest_1800 cantOpen1 " + JSON.stringify(cantOpen1));
           expect(cantOpen1 != null).assertTrue();
+          await sleep(4000);
           let button = await driver.findComponent(BY.text('知道了').enabled(true))
           console.debug("ACTS_ANROptimization_1800 button: " + JSON.stringify(button))
+          await sleep(4000);
           await button.click();
+          await sleep(2000);
           done();
         })
     })
@@ -752,14 +769,17 @@ export default function abilityTest() {
           console.debug("ACTS_AppSelectorTest_1900 startAbility " +
             JSON.stringify(error) + "," + JSON.stringify(data));
           console.debug("ACTS_AppSelectorTest_1900 startAbility end");
-          await sleep(2000);
+          await sleep(4000);
           console.log("ACTS_AppSelectorTest_1900 findComponent");
           let cantOpen1 = await driver.findComponent(BY.text('无法打开此文件').enabled(true))
           console.log("ACTS_AppSelectorTest_1900 cantOpen1 " + JSON.stringify(cantOpen1));
           expect(cantOpen1 != null).assertTrue();
+          await sleep(4000);
           let button = await driver.findComponent(BY.text('知道了').enabled(true))
           console.debug("ACTS_AppSelectorTest_1900 button: " + JSON.stringify(button))
+          await sleep(4000);
           await button.click();
+          await sleep(2000);
           done();
         })
     })
@@ -869,12 +889,14 @@ export default function abilityTest() {
         }, async (error, data) => {
           console.log("ACTS_AppSelectorTest_2300 startAbility " +
             JSON.stringify(error) + "," + JSON.stringify(data));
-          expect(error.code).assertEqual(1);
-          await sleep(2000);
+          expect(error.code).assertEqual(16000050);
+          await sleep(4000);
           let button = await driver.findComponent(BY.text('知道了').enabled(true))
           console.debug("ACTS_AppSelectorTest_2300 button: " + JSON.stringify(button))
           console.debug("ACTS_AppSelectorTest_2300 click");
+          await sleep(4000);
           await button.click();
+          await sleep(2000);
           done();
         })
     })
@@ -902,12 +924,14 @@ export default function abilityTest() {
         }, async (error, data) => {
           console.log("ACTS_AppSelectorTest_2400 startAbility " +
             JSON.stringify(error) + "," + JSON.stringify(data));
-          expect(error.code).assertEqual(1);
-          await sleep(2000);
+          expect(error.code).assertEqual(16000050);
+          await sleep(4000);
           let button = await driver.findComponent(BY.text('知道了').enabled(true))
           console.debug("ACTS_AppSelectorTest_2400 button: " + JSON.stringify(button))
           console.debug("ACTS_AppSelectorTest_2400 click");
+          await sleep(4000);
           await button.click();
+          await sleep(2000);
           done();
         })
     })
@@ -935,12 +959,14 @@ export default function abilityTest() {
         }, async (error, data) => {
           console.log("ACTS_AppSelectorTest_2500 startAbility " +
             JSON.stringify(error) + "," + JSON.stringify(data));
-          expect(error.code).assertEqual(1);
-          await sleep(2000);
+          expect(error.code).assertEqual(16000050);
+          await sleep(4000);
           let button = await driver.findComponent(BY.text('知道了').enabled(true))
           console.debug("ACTS_AppSelectorTest_2500 button: " + JSON.stringify(button))
           console.debug("ACTS_AppSelectorTest_2500 click");
+          await sleep(4000);
           await button.click();
+          await sleep(2000);
           done();
         })
     })
@@ -1066,12 +1092,14 @@ export default function abilityTest() {
           console.debug("ACTS_AppSelectorTest_2800 startAbility " +
             JSON.stringify(error) + "," + JSON.stringify(data));
           console.debug("ACTS_AppSelectorTest_2800 startAbility end");
-          await sleep(2000);
+          await sleep(4000);
           console.log("ACTS_AppSelectorTest_2800 findComponent");
           let button = await driver.findComponent(BY.text('imagecrelyhap').enabled(true))
           console.log("ACTS_AppSelectorTest_2800 button " + JSON.stringify(button));
-          await button.click();
           commonEvent.subscribe(subscriber, SubscribeCallBack)
+          await sleep(4000);
+          await button.click();
+          await sleep(2000);
         })
 
       async function SubscribeCallBack(err, data) {
@@ -1215,12 +1243,14 @@ export default function abilityTest() {
           console.debug("ACTS_AppSelectorTest_3100 startAbility " +
             JSON.stringify(error) + "," + JSON.stringify(data));
           console.debug("ACTS_AppSelectorTest_3100 startAbility end");
-          await sleep(2000);
+          await sleep(4000);
           console.log("ACTS_AppSelectorTest_3100 findComponent");
           let button = await driver.findComponent(BY.text('imagefrelyhap').enabled(true))
           console.log("ACTS_AppSelectorTest_3100 button " + JSON.stringify(button));
-          await button.click();
           commonEvent.subscribe(subscriber, SubscribeCallBack)
+          await sleep(4000);
+          await button.click();
+          await sleep(2000);
         })
 
       async function SubscribeCallBack(err, data) {
@@ -1269,11 +1299,13 @@ export default function abilityTest() {
           console.log("ACTS_AppSelectorManual startAbility " +
             JSON.stringify(error) + "," + JSON.stringify(data));
         })
-      await sleep(2000);
+      await sleep(4000);
       console.log("ACTS_AppSelectorTest_3400 findComponent");
       let button = await driver.findComponent(BY.text('imagearelyhap').enabled(true))
       console.log("ACTS_AppSelectorTest_3400 button " + JSON.stringify(button));
+      await sleep(4000);
       await button.click();
+      await sleep(2000);
       async function SubscribeCallBack(err, data) {
         console.log('ACTS_AppSelectorTest_3400 bundleName = ' + data.parameters.bundleName);
         console.log('ACTS_AppSelectorTest_3400 abilityName = ' + data.parameters.abilityName);
@@ -1320,11 +1352,13 @@ export default function abilityTest() {
           console.log("ACTS_AppSelectorManual startAbility " +
             JSON.stringify(error) + "," + JSON.stringify(data));
         })
-      await sleep(2000);
+      await sleep(4000);
       console.log("ACTS_AppSelectorTest_3500 findComponent");
       let button = await driver.findComponent(BY.text('imagebrelyhap').enabled(true))
       console.log("ACTS_AppSelectorTest_3500 button " + JSON.stringify(button));
+      await sleep(4000);
       await button.click();
+      await sleep(2000);
       async function SubscribeCallBack(err, data) {
         console.log('ACTS_AppSelectorTest_3500 bundleName = ' + data.parameters.bundleName);
         console.log('ACTS_AppSelectorTest_3500 abilityName = ' + data.parameters.abilityName);
@@ -1415,9 +1449,8 @@ export default function abilityTest() {
           console.log("ACTS_AppSelectorTest_3700 startAbility " +
             JSON.stringify(error) + "," + JSON.stringify(data));
         })
-      await sleep(2000);
-      let component = await driver.findComponent(BY.text('imagearelyhap'))
-      let button = await component.getBounds()
+      await sleep(4000);
+      let button = await driver.findComponent(BY.text('imagearelyhap').enabled(true))
       console.log("ACTS_AppSelectorTest_3700 button " + JSON.stringify(button));
 
       var cmd = 'bm uninstall -n com.example.appselectorrelyhap ';
@@ -1427,8 +1460,9 @@ export default function abilityTest() {
           console.info('ACTS_AppSelectorTest_3700 executeShellCommand : err : ' + JSON.stringify(err));
           console.info('ACTS_AppSelectorTest_3700 executeShellCommand : stdResult : ' + d.stdResult);
           console.info('ACTS_AppSelectorTest_3700 executeShellCommand : exitCode : ' + d.exitCode);
+          await sleep(4000);
+          await button.click();
           await sleep(2000);
-          await driver.click(button.leftX, button.topY);
           done();
         })
     })
@@ -1463,11 +1497,13 @@ export default function abilityTest() {
           })
         
         commonEvent.subscribe(subscriber, SubscribeCallBack);
-        await sleep(3000);
+        await sleep(4000);
         console.log("ACTS_AppSelectorTest_3300 findComponent");
         let button = await driver.findComponent(BY.text('imagearelyhap').enabled(true))
         console.log("ACTS_AppSelectorTest_3300 button " + JSON.stringify(button));
+        await sleep(4000);
         await button.click();
+        await sleep(2000);
 
         async function SubscribeCallBack(err, data) {
           console.log('ACTS_AppSelectorTest_3300 bundleName = ' + data.parameters.bundleName);
