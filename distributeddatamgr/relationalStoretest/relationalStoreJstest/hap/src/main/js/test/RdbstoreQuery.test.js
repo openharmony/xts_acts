@@ -155,16 +155,15 @@ export default function rdbstoreQueryTest(){
         */
         it('RdbRemoteQueryPromiseTest0010', 0, async function (done){  
             console.info(TAG + "RdbRemoteQueryPromiseTest0010 start")
+            let errInfo = undefined
             let predicates = new dataRdb.RdbPredicates("test");
             predicates.equalTo("name", "zhangsan")
-            await rdbStore.remoteQuery(localDeviceId,"test",predicates,["name","age","salary"]).then( (resultSet) => {
-                console.info(TAG + "Remote query success")
-                expect(false).assertTrue();
-            }).catch((err) => {
-                console.info(TAG + "Remote query error: " + err)
-                expect(true).assertTrue();
-            })
-            
+            try{
+                rdbStore.remoteQuery(localDeviceId,"test",predicates,["name","age","salary"])
+            }catch(err){
+                errInfo = err
+            }
+            expect(errInfo.code).assertEqual("401")
             done();
             console.info(TAG + "RdbRemoteQueryPromiseTest0010 end")
         })
