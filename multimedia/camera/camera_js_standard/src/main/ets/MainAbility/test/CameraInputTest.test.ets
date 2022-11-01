@@ -262,23 +262,32 @@ export default function CameraInputTest(surfaceId) {
     async function createOutput(idx:any) {
         console.info('Enter createOutput');
 
-        let cameraOutputCap = await mCameraManager.getSupportedOutputCapability(mCameraDevicesArray[idx]);
-        if (!isEmpty(cameraOutputCap.previewProfiles)) {
-            console.info(TAG + "cameraOutputCap.previewProfiles.length: " + cameraOutputCap.previewProfiles.length);      
-            for (let i = 0; i < cameraOutputCap.previewProfiles.length; i++) {
-                mPreviewOutput = await mCameraManager.createPreviewOutput(cameraOutputCap.previewProfiles[i], surfaceId);
-                if (!isEmpty(mPreviewOutput)) {
-                    break;
+        let cameraOutputCap = null;
+        await mCameraManager.getSupportedOutputCapability(mCameraDevicesArray[idx]).then((result) => {
+            console.info('getSupportedOutputCapability success');
+            cameraOutputCap = result;
+        }).catch((err) => {
+            console.info('getSupportedOutputCapability failed, err = ' + err.message);
+        });
+
+        if (!isEmpty(cameraOutputCap)) {
+            if (!isEmpty(cameraOutputCap.previewProfiles)) {
+                console.info(TAG + "cameraOutputCap.previewProfiles.length: " + cameraOutputCap.previewProfiles.length);      
+                for (let i = 0; i < cameraOutputCap.previewProfiles.length; i++) {
+                    mPreviewOutput = await mCameraManager.createPreviewOutput(cameraOutputCap.previewProfiles[i], surfaceId);
+                    if (!isEmpty(mPreviewOutput)) {
+                        break;
+                    }
                 }
+    
+                if (isEmpty(mPreviewOutput)) {
+                    console.info(TAG + "createPreviewOutput FAILED");
+                }
+    
+                console.info(TAG + "createPreviewOutput: " + mPreviewOutput);
             }
-
-            if (isEmpty(mPreviewOutput)) {
-                console.info(TAG + "createPreviewOutput FAILED");
-            }
-
-            console.info(TAG + "createPreviewOutput: " + mPreviewOutput);
         }
-
+        
         console.info('Exit createOutputs');
 
         return true;
