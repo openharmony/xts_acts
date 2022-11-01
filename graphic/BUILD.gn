@@ -20,9 +20,13 @@ group("graphic") {
       "graphicColorSpace:ActsColorSpaceManagerTest",
       "graphicnapidrawingtest:ActsGraphicNapiDrawingTest",
       "graphicnapitest:ActsGraphicNapiTest",
+
+      #"vkgl:VKGLCTSTest",
+      "vkgl:cpvkgl",
       "webGL:webGL_hap_test",
       "windowStage:ActsWindowStageTest",
       "windowstandard:window_hap_test",
+      "//third_party/VK-GL-CTS/framework/platform:glcts",
     ]
   } else {
     deps = [
