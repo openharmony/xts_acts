@@ -20,11 +20,11 @@
             ],
             "push": [
                 "ActsDeqpgles2TestSuite0001->/data/local/tmp/ActsDeqpgles2TestSuite0001",
-                "../../../common/common/libdeqp_ohos_platform.z.so->/system/lib",
-                "../../../common/common/librosen_context.z.so->/system/lib",
-                "../../../graphic/graphic_standard/libdeqp_SPIRV.z.so->/system/lib",
-                "../../../graphic/graphic_standard/libdeqp_SPVRemapper.z.so->/system/lib",
-                "../../../../../third_party/VK-GL-CTS/external/openglcts/data->/data/local/tmp/gl_cts"
+                "vkgldata/libdeqp_ohos_platform.z.so->/system/lib",
+                "vkgldata/librosen_context.z.so->/system/lib",
+                "vkgldata/libdeqp_SPIRV.z.so->/system/lib",
+                "vkgldata/libdeqp_SPVRemapper.z.so->/system/lib",
+                "vkgldata/data->/data/local/tmp/gl_cts"
             ],
             "type": "PushKit"
         },
