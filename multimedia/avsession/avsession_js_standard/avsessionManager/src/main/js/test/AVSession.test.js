@@ -1061,10 +1061,25 @@ export default function AVSession() {
             };
             await session.setAVPlaybackState(PlaybackState12).then(() => {
                 console.info('TestLog: Set playbackState successfully');
-                expect(false).assertTrue();
+                expect(true).assertTrue();
             }).catch((err) => {
                 console.info(`TestLog: Set playbackState error: code: ${err.code}, message: ${err.message}`);
-                expect(true).assertTrue();
+                expect(false).assertTrue();
+            });
+
+            await sleep(500);
+
+            await controller.getAVPlaybackState().then((data) => {
+                if (data.state === 0) {
+                    console.info('TestLog: Get State successfully');
+                    expect(true).assertTrue();
+                } else {
+                    console.info('TestLog: Get State failed');
+                    expect(false).assertTrue();
+                }
+            }).catch((err) => {
+                console.info(`TestLog: Get State error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
             });
             done();
         })
@@ -1083,10 +1098,25 @@ export default function AVSession() {
             };
             await session.setAVPlaybackState(PlaybackState13).then(() => {
                 console.info('TestLog: Set playbackState successfully');
-                expect(false).assertTrue();
+                expect(true).assertTrue();
             }).catch((err) => {
                 console.info(`TestLog: Set playbackState error: code: ${err.code}, message: ${err.message}`);
-                expect(true).assertTrue();
+                expect(false).assertTrue();
+            });
+
+            await sleep(500);
+
+            await controller.getAVPlaybackState().then((data) => {
+                if (data.state === 1) {
+                    console.info('TestLog: Get State successfully');
+                    expect(true).assertTrue();
+                } else {
+                    console.info('TestLog: Get State failed');
+                    expect(false).assertTrue();
+                }
+            }).catch((err) => {
+                console.info(`TestLog: Get State error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
             });
             done();
         })
@@ -1105,10 +1135,25 @@ export default function AVSession() {
             };
             await session.setAVPlaybackState(PlaybackState14).then(() => {
                 console.info('TestLog: Set playbackState successfully');
-                expect(false).assertTrue();
+                expect(true).assertTrue();
             }).catch((err) => {
                 console.info(`TestLog: Set playbackState error: code: ${err.code}, message: ${err.message}`);
-                expect(true).assertTrue();
+                expect(false).assertTrue();
+            });
+
+            await sleep(500);
+
+            await controller.getAVPlaybackState().then((data) => {
+                if (data.state === 3) {
+                    console.info('TestLog: Get State successfully');
+                    expect(true).assertTrue();
+                } else {
+                    console.info('TestLog: Get State failed');
+                    expect(false).assertTrue();
+                }
+            }).catch((err) => {
+                console.info(`TestLog: Get State error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
             });
             done();
         })
@@ -1127,10 +1172,25 @@ export default function AVSession() {
             };
             await session.setAVPlaybackState(PlaybackState15).then(() => {
                 console.info('TestLog: Set playbackState successfully');
-                expect(false).assertTrue();
+                expect(true).assertTrue();
             }).catch((err) => {
                 console.info(`TestLog: Set playbackState error: code: ${err.code}, message: ${err.message}`);
-                expect(true).assertTrue();
+                expect(false).assertTrue();
+            });
+
+            await sleep(500);
+
+            await controller.getAVPlaybackState().then((data) => {
+                if (data.state === 4) {
+                    console.info('TestLog: Get State successfully');
+                    expect(true).assertTrue();
+                } else {
+                    console.info('TestLog: Get State failed');
+                    expect(false).assertTrue();
+                }
+            }).catch((err) => {
+                console.info(`TestLog: Get State error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
             });
             done();
         })
@@ -1149,10 +1209,25 @@ export default function AVSession() {
             };
             await session.setAVPlaybackState(PlaybackState16).then(() => {
                 console.info('TestLog: Set playbackState successfully');
-                expect(false).assertTrue();
+                expect(true).assertTrue();
             }).catch((err) => {
                 console.info(`TestLog: Set playbackState error: code: ${err.code}, message: ${err.message}`);
-                expect(true).assertTrue();
+                expect(false).assertTrue();
+            });
+
+            await sleep(500);
+
+            await controller.getAVPlaybackState().then((data) => {
+                if (data.state === 5) {
+                    console.info('TestLog: Get State successfully');
+                    expect(true).assertTrue();
+                } else {
+                    console.info('TestLog: Get State failed');
+                    expect(false).assertTrue();
+                }
+            }).catch((err) => {
+                console.info(`TestLog: Get State error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
             });
             done();
         })
@@ -1171,10 +1246,25 @@ export default function AVSession() {
             };
             await session.setAVPlaybackState(PlaybackState17).then(() => {
                 console.info('TestLog: Set playbackState successfully');
-                expect(false).assertTrue();
+                expect(true).assertTrue();
             }).catch((err) => {
                 console.info(`TestLog: Set playbackState error: code: ${err.code}, message: ${err.message}`);
-                expect(true).assertTrue();
+                expect(false).assertTrue();
+            });
+
+            await sleep(500);
+
+            await controller.getAVPlaybackState().then((data) => {
+                if (data.state === 6) {
+                    console.info('TestLog: Get State successfully');
+                    expect(true).assertTrue();
+                } else {
+                    console.info('TestLog: Get State failed');
+                    expect(false).assertTrue();
+                }
+            }).catch((err) => {
+                console.info(`TestLog: Get State error: code: ${err.code}, message: ${err.message}`);
+                expect(false).assertTrue();
             });
             done();
         })
