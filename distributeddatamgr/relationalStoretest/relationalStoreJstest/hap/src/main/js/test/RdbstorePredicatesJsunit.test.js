@@ -2179,11 +2179,16 @@ describe('rdbPredicatesTest', function () {
      */
     it('testIndexedBy0001', 0, async function (done) {
         console.info(TAG + "************* testIndexedBy0001 start *************");
-        let predicates = await new dataRdb.RdbPredicates("AllDataType");
-        predicates.like("stringValue", "ABCDEFGHIJKLMN").indexedBy(["characterValue"]);
-        let result = await rdbStore.query(predicates);
-        expect(3).assertEqual(result.rowCount);
-        result = null
+        let errInfo = undefined
+        try{
+            let predicates = await new dataRdb.RdbPredicates("AllDataType");
+            predicates.like("stringValue", "ABCDEFGHIJKLMN").indexedBy(["characterValue"]);
+            let result = await rdbStore.query(predicates);
+            expect(3).assertEqual(result.rowCount);
+        }catch(err){
+            errInfo = err
+        }
+        expect(errInfo.code).assertEqual("401")
         done();
         console.info(TAG + "************* testIndexedBy0001 end *************");
     })
@@ -2195,11 +2200,16 @@ describe('rdbPredicatesTest', function () {
      */
     it('testIndexedBy0002', 0, async function (done) {
         console.info(TAG + "************* testIndexedBy0002 start *************");
-        let predicates = await new dataRdb.RdbPredicates("AllDataType");
-        predicates.like("stringValue", "ABCDEFGHIJKLMN").indexedBy(["characterValueX"]);
-        let result = await rdbStore.query(predicates);
-        expect(3).assertEqual(result.rowCount);
-        result = null
+        let errInfo = undefined
+        try{
+            let predicates = await new dataRdb.RdbPredicates("AllDataType");
+            predicates.like("stringValue", "ABCDEFGHIJKLMN").indexedBy(["characterValueX"]);
+            let result = await rdbStore.query(predicates);
+            expect(3).assertEqual(result.rowCount);
+        }catch(err){
+            errInfo = err
+        }
+        expect(errInfo.code).assertEqual("401")
         done();
         console.info(TAG + "************* testIndexedBy0002 end *************");
     })

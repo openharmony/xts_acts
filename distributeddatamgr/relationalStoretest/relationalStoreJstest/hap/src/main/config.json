@@ -16,7 +16,6 @@
         "package": "ohos.acts.relationalStorejstest",
         "name": ".entry",
         "deviceType": [
-      "tablet",
       "default",
             "phone"
         ],

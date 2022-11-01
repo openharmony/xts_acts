@@ -318,16 +318,21 @@ describe('rdbStoreDistributedTest', function () {
      */
     it('testRdbStoreDistributedCallback0011', 0, async function (done) {
         console.info(TAG + "************* testRdbStoreDistributedCallback0011 start *************");
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
         let predicates = new dataRdb.RdbPredicates("employee")
         predicates = predicates.inDevices("12345678abcd");
         rdbStore.sync(dataRdb.SyncMode.SYNC_MODE_PUSH, predicates,(err,ret)=>{
             console.info(TAG + "sync push success");
             expect(rdbStore).assertEqual(rdbStore);
+            rdbStore.sync(dataRdb.SyncMode.SYNC_MODE_PULL, predicates,(err,ret)=>{
+                console.info(TAG + "sync push success");
+                expect(rdbStore).assertEqual(rdbStore);
+            });
+            done();
         });
-        rdbStore.sync(dataRdb.SyncMode.SYNC_MODE_PULL, predicates,(err,ret)=>{
-            console.info(TAG + "sync push success");
-            expect(rdbStore).assertEqual(rdbStore);
-        });
+        await sleep(2000)
         done();
         console.info(TAG + "************* testRdbStoreDistributedCallback0011 end *************");
     })
@@ -370,10 +375,16 @@ describe('rdbStoreDistributedTest', function () {
      * @tc.desc obtainDistributedTableName test
      */
     it('testRdbStoreDistributed0014', 0, async function (done){
-        await rdbStore.obtainDistributedTableName("deviceId", "EMPLOYEE", function (err, tableName) {
-            expect(err != null).assertTrue();
-            console.info('ObtainDistributedTableName failed, Unauthorized.' + err)
-        })
+        let errInfo = undefined;
+        try{
+            rdbStore.obtainDistributedTableName(["deviceId"], "EMPLOYEE", function (err, tableName) {
+                expect(err != null).assertTrue();
+                console.info('ObtainDistributedTableName failed, Unauthorized.' + err)
+            })
+        }catch(err){
+            errInfo = err
+        }
+        expect(errInfo.code).assertEqual("401")
         done();
     })
 
@@ -388,14 +399,13 @@ describe('rdbStoreDistributedTest', function () {
             "name": STORE_NAME,
         }
         rdbStore = await dataRdb.getRdbStore(config, 1);
-        let promise = rdbStore.obtainDistributedTableName("deviceId", "EMPLOYEE")
-        promise.then((tableName)=>{
-            expect(tableName != "EMPLOYEE").assertTrue();
-            console.info('ObtainDistributedTableName')
-        }).catch((err)=>{
-            expect(null).assertFail();
-            console.info('ObtainDistributedTableName failed, Unauthorized.' + err)
-        })
+        let errInfo = undefined
+        try{
+            rdbStore.obtainDistributedTableName(["deviceId"], "EMPLOYEE")
+        }catch(err){
+            errInfo = err
+        }
+        expect(errInfo.code).assertEqual("401")
         done();
     })
 	

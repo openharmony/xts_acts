@@ -157,6 +157,7 @@ describe('rdbstoreInsertTest', function () {
      */
     it('testRdbStoreInsert0003', 0, async function (done) {
         console.info(TAG + "************* testRdbStoreInsert0003 start *************");
+        let errInfo = undefined;
         var u8 = new Uint8Array([1, 2, 3])
         {
             const valueBucket = {
@@ -165,14 +166,12 @@ describe('rdbstoreInsertTest', function () {
                 "salary": 100.5,
                 "blobType": u8,
             }
-            let insertPromise = rdbStore.insert(null, valueBucket)
-            insertPromise.then(async (ret) => {
-                expect(1).assertEqual(ret)
-                console.info(TAG + "insert first done: " + ret)
-                expect(null).assertFail()
-            }).catch((err) => {
-                console.info(TAG + "insert with null table")
-            })
+            try{
+                rdbStore.insert(null, valueBucket)
+            }catch(err){
+                errInfo = err
+            }
+            expect(errInfo.code).assertEqual("401")
         }
         done()
         console.info(TAG + "************* testRdbStoreInsert0003 end   *************");
@@ -576,6 +575,7 @@ describe('rdbstoreInsertTest', function () {
      it('testRdbStorebatchInsertPromise0006', 0, async function (done) {
         console.info(TAG + "************* testRdbStorebatchInsertPromise0006 start *************");
         await rdbStore.executeSql(CREATE_TABLE_NAME + "6" + CREATE_TABLE)
+        let errInfo = undefined;
         var u8 = new Uint8Array([1, 2, 3])
         const valueBucket1 = {
             "name": "zhangsan",
@@ -597,16 +597,12 @@ describe('rdbstoreInsertTest', function () {
         }
         const valueBuckets = [valueBucket1, valueBucket2, valueBucket3]
         try{
-            await rdbStore.batchInsert("test6","valueBuckets").then((number) => {
-                console.info(TAG + "Affect row is " + number)
-                expect(number).assertEqual(-1)
-            }).catch((err) =>{
-                expect(err == null).assertTrue();
-            })
+            await rdbStore.batchInsert("test6","valueBuckets")
         }catch(err){
             console.info(TAG + "Batch insert data error:  " + err)
-            expect(null).assertFail();;
+            errInfo = err
         }
+        expect(errInfo.code).assertEqual("401")
         done()
         console.info(TAG + "************* testRdbStorebatchInsertPromise0006 end *************");
     })
@@ -618,18 +614,15 @@ describe('rdbstoreInsertTest', function () {
      */
      it('testRdbStorebatchInsertPromise0007', 0, async function (done) {
         console.info(TAG + "************* testRdbStorebatchInsertPromise0007 start *************");
+        let errInfo = undefined;
         await rdbStore.executeSql(CREATE_TABLE_NAME + "7" + CREATE_TABLE)
         try{
-            await rdbStore.batchInsert("test7").then((number) => {
-                console.info(TAG + "BatchInsert without data,affect row number is " + number)
-                expect(number).assertEqual(0)
-            }).catch((err) =>{
-                expect(err == null).assertTrue();
-            })
+            await rdbStore.batchInsert("test7")
         }catch(err){
             console.info(TAG + "Batch insert data error:  " + err)
-            expect(null).assertFail();
+            errInfo = err
         }
+        expect(errInfo.code).assertEqual("401")
         done()
         console.info(TAG + "************* testRdbStorebatchInsertPromise0007 end *************");
     })
@@ -1021,7 +1014,7 @@ describe('rdbstoreInsertTest', function () {
      */
      it('testRdbStorebatchInsertCallback0006', 0, async function (done) {
         console.info(TAG + "************* testRdbStorebatchInsertCallback0006 start *************");
-        
+        let errInfo = undefined;
         var u8 = new Uint8Array([1, 2, 3])
         const valueBucket1 = {
             "name": "zhangsan",
@@ -1054,10 +1047,10 @@ describe('rdbstoreInsertTest', function () {
                 })
             }catch(err){
                 console.info(TAG + "Batch insert data error:  " + err)
-                expect(null).assertFail();
+                errInfo = err
             }
         })
-        await sleep(2000)
+        expect(errInfo.code).assertEqual("401")
         done()
         console.info(TAG + "************* testRdbStorebatchInsertCallback0006 end *************");
     })
@@ -1070,22 +1063,24 @@ describe('rdbstoreInsertTest', function () {
      */
     it('testRdbStorebatchInsertCallback0007', 0, async function (done) {
         console.info(TAG + "************* testRdbStorebatchInsertCallback0007 start *************");
+        let errInfo = undefined;
         await rdbStore.executeSql(CREATE_TABLE_NAME + "Callback7" + CREATE_TABLE).then(async () => {
-            await rdbStore.batchInsert("testCallback7", (err,data) => {
-                console.info(TAG + "Affect row is " + data)
-                if(err != null){
-                    expect(null).assertFail();
-                }else{
-                    expect(data).assertEqual(-1)
-                }
-            }).then((data) => {
-                console.info(TAG + "Batch insert fail ,affect row number is: " + data)
-                expect(data).assertEqual(-1)
-            })
+            try{
+                await rdbStore.batchInsert("testCallback7", (err,data) => {
+                    console.info(TAG + "Affect row is " + data)
+                    if(err != null){
+                        expect(null).assertFail();
+                    }else{
+                        expect(data).assertEqual(-1)
+                    }
+                })
+            }catch(err){
+                errInfo = err
+            }
         }).catch((err) => {
             expect(null).assertFail();
         })
-        await sleep(2000)
+        expect(errInfo.code).assertEqual("401")
         done()
         console.info(TAG + "************* testRdbStorebatchInsertCallback0007 end *************");
     })
