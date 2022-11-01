@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
 import app from '@system.app'
 import worker from "@ohos.worker"
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
@@ -1682,37 +1681,26 @@ describe('threadWorkerTest', function () {
        a message that cannot be serialized. The event handler is executed in the host thread
      */
     it('threadWorker_onmessageerror_test_002', 0, async function (done) {
-        try {
-            var ss = new worker.ThreadWorker("workers/newworker_008.js")
-            var res = 0
-            var flag = false
+        var ss = new worker.ThreadWorker("workers/newworker_008.js")
+        var res = 0
+        var flag = false
     
-            ss.onexit = function() {
-                flag = true
-            }
-    
-            ss.onmessageerror = function (e) {
-                flag = true
-                res++
-            }
-            function foo() {
-            }
-            ss.postMessage(foo)
-            while (!flag) {
-                await promiseCase()
-            }
-        } catch (error) {
-            flag = false
-            ss.postMessage("terminate")
-            while (!flag) {
-                await promiseCase()
-            }
-            expect(res).assertEqual(1)
-            expect(error.name).assertEqual("BusinessError")
-            let msg = "Serializing an uncaught exception failed, failed to serialize message."
-            expect(error.message).assertEqual(msg)
-            done()
+        ss.onexit = function() {
+            flag = true
+            res++
         }
+
+        ss.onmessageerror = function (e) {
+            flag = true
+        }
+        function foo() {
+        }
+        ss.postMessage(foo)
+        while (!flag) {
+            await promiseCase()
+        }
+        expect(res).assertEqual(1)
+        done()
     })
 
     // check new second worker is ok
