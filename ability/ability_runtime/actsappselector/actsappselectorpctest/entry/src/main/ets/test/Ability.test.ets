@@ -132,11 +132,13 @@ export default function abilityTest() {
 
           commonEvent.subscribe(subscriber, SubscribeCallBack)
 
-          await sleep(2000);
+          await sleep(4000);
           console.log("ACTS_AppSelectorTest_1200 findComponent");
           let button = await driver.findComponent(BY.text('imagearelyhap').enabled(true))
           console.log("ACTS_AppSelectorTest_1200 button " + JSON.stringify(button));
+          await sleep(4000);
           await button.click();
+          await sleep(2000);
         })
 
       async function SubscribeCallBack(err, data) {
@@ -195,7 +197,9 @@ export default function abilityTest() {
           console.log("ACTS_AppSelectorTest_1300 findComponent");
           let button = await driver.findComponent(BY.text('imagearelyhap').enabled(true))
           console.log("ACTS_AppSelectorTest_1300 button " + JSON.stringify(button));
+          await sleep(4000);
           await button.click();
+          await sleep(2000);
         })
 
       async function SubscribeCallBack(err, data) {
@@ -227,10 +231,10 @@ export default function abilityTest() {
       console.log("ACTS_AppSelectorTest_1400 --- start")
       cmdInstall = 'bm install -p /data/ActsImageAEntryRelyHap.hap;bm install -p /data/ActsImageBFeatureRelyHap.hap;' +
         'bm install -p /data/ActsImageCEntryRelyHap.hap;bm install -p /data/ActsImageDRelyHap.hap;' +
-        'bm install -p /data/ActsImageERelyHap.hap;bm install -p /data/ActsImageGRelyHap.hap;' +
+        'bm install -p /data/ActsImageERelyHap.hap;bm install -p /data/ActsImageFRelyHap.hap;bm install -p /data/ActsImageGRelyHap.hap;' +
         'bm install -p /data/ActsImageHRelyHap.hap;bm install -p /data/ActsImageIRelyHap.hap;'
       cmdUninstall = "bm uninstall -n imagearelyhap;bm uninstall -n imagebrelyhap;bm uninstall -n imagecrelyhap;" +
-        "bm uninstall -n imagedrelyhap;bm uninstall -n imageerelyhap;bm uninstall -n imagegrelyhap;" +
+        "bm uninstall -n imagedrelyhap;bm uninstall -n imageerelyhap;bm uninstall -n imagefrelyhap;bm uninstall -n imagegrelyhap;" +
         "bm uninstall -n imagehrelyhap;bm uninstall -n imageirelyhap;"
 
       console.log('ACTS_AppSelectorTest_1400 cmd = ' + cmdInstall);
@@ -251,20 +255,12 @@ export default function abilityTest() {
           console.debug("ACTS_AppSelectorTest_1400 startAbility end");
 
           await sleep(2000);
-          let component = await driver.findComponent(BY.text("imagedrelyhap"))
-          let rectSerial = await component.getBounds()
-          component = await driver.findComponent(BY.text("imagearelyhap"))
-          let rectAlias = await component.getBounds()
-          console.log("ACTS_AppSelectorTest_1400 rectSerial " + JSON.stringify(rectSerial));
-          console.log("ACTS_AppSelectorTest_1400 rectAlias " + JSON.stringify(rectAlias));
-
-          await driver.swipe(rectSerial.leftX, rectSerial.topY, rectAlias.leftX, rectAlias.topY)
-          await sleep(3000);
-          console.log("ACTS_AppSelectorTest_1400 findComponent");
-          let button = await driver.findComponent(BY.text('imagegrelyhap').enabled(true))
-          console.log("ACTS_AppSelectorTest_1400 button " + JSON.stringify(button));
-          await button.click();
           commonEvent.subscribe(subscriber, SubscribeCallBack)
+          await sleep(4000);
+          await driver.swipe(529, 921, 185, 921)
+          await sleep(4000);
+          await driver.click(142,749);
+          await sleep(2000);
         })
       async function SubscribeCallBack(err, data) {
         console.log('ACTS_AppSelectorTest_1400 bundleName = ' + data.parameters.bundleName);
@@ -274,7 +270,7 @@ export default function abilityTest() {
         console.log('ACTS_AppSelectorTest_1400 event = ' + data.event);
         expect(data.event).assertEqual("AppSelector");
         expect(data.parameters.abilityName).assertEqual("MainAbility");
-        expect(data.parameters.bundleName).assertEqual("imagegrelyhap");
+        expect(data.parameters.bundleName).assertEqual("imagehrelyhap");
         expect(data.parameters.type).assertEqual("image/png");
         expect(data.parameters.uri).assertEqual("filePath");
         commonEvent.unsubscribe(subscriber, UnSubscribeCallBack)
@@ -313,19 +309,17 @@ export default function abilityTest() {
           console.debug("ACTS_AppSelectorTest_1500 startAbility end");
           await sleep(2000);
           commonEvent.subscribe(subscriber, SubscribeCallBack)
-          let component1 = await driver.findComponent(BY.text("使用以下方式打开"))
-          let text = await component1.getBounds()
-          console.log("ACTS_AppSelectorTest_1500 rectSerial " + JSON.stringify(text));
+          let button1 = await driver.findComponent(BY.text('使用以下方式打开').enabled(true))
+          console.log("ACTS_AppSelectorTest_1500 rectSerial " + JSON.stringify(button1));
+          await sleep(4000);
+          let button2 = await driver.findComponent(BY.text('imagebrelyhap').enabled(true))
+          console.log("ACTS_AppSelectorTest_1500 rectSerial " + JSON.stringify(button2));
 
-
-          let component2 = await driver.findComponent(BY.text("imagebrelyhap"))
-          let button = await component2.getBounds()
-          console.log("ACTS_AppSelectorTest_1500 rectSerial " + JSON.stringify(button));
-
+          await sleep(4000);
+          await button1.click();
+          await sleep(4000);
+          await button2.click();
           await sleep(2000);
-          await driver.click(text.leftX, text.topY);
-          await sleep(2000);
-          await driver.click(button.leftX, button.topY);
         })
 
       async function SubscribeCallBack(err, data) {
@@ -377,6 +371,7 @@ export default function abilityTest() {
           console.log("ACTS_AppSelectorTest_1600 findComponent");
           let button = await driver.findComponent(BY.text('取消').enabled(true))
           console.log("ACTS_AppSelectorTest_1600 button " + JSON.stringify(button));
+          await sleep(4000);
           await button.click();
 
           try {
@@ -424,7 +419,9 @@ export default function abilityTest() {
             expect(cantOpen1 != null).assertTrue();
             let button = await driver.findComponent(BY.text('知道了').enabled(true))
             console.debug("ACTS_AppSelectorTest_1700 button: " + JSON.stringify(button))
+            await sleep(4000);
             await button.click();
+            await sleep(2000);
 
             await sleep(1000);
             console.debug("ACTS_AppSelectorTest_1700 findComponent");
