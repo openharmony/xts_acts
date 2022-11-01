@@ -18,7 +18,8 @@
     "name": ".entry",
     "mainAbility": "com.amsst.actsstserviceabilityclientcasetest.MainAbility",
     "deviceType": [
-      "default"
+        "default",
+        "tablet"
     ],
     "distro": {
       "deliveryWithInstall": true,
