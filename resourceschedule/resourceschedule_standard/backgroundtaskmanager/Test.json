@@ -23,19 +23,8 @@
             ]
         },
         {
-            "type": "PushKit",
-            "push": [
-                "ContinuousTaskRelyHap.hap->/data/test/ContinuousTaskRelyHap.hap"
-            ]
-        },
-        {
             "type": "ShellKit",
-            "run-command": [
-                "bm install -p /data/test/ContinuousTaskRelyHap.hap",
-                "aa start -a com.example.continuoustaskserver.MainAbility -b com.example.continuoustaskserver"
-            ],
             "teardown-command": [
-                "bm uninstall -n com.example.continuoustaskserver",
                 "rm -rf data/test"
             ]
         }
