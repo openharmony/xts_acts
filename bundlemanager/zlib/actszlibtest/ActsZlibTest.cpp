@@ -31,7 +31,7 @@ using namespace testing::ext;
 namespace {
 static const char DICTIONARY[] = "hello";
 static const char GARBAGE[] = "garbage";
-static thread_local const char TESTFILE[] = "foo.gz";
+static const char TESTFILE[] = "foo.gz";
 static thread_local char HELLO[] = "hello, hello!";
 static unsigned int CALLOC_SIZE = 1;
 static int ONE = 1;
