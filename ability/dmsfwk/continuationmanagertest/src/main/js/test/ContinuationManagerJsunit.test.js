@@ -661,6 +661,27 @@ describe('continuationManagerTest', function() {
     })
 
     /**
+    * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_UNREGISTER_0600
+    * @tc.name [JS-API8]ContinuationManager.unregister().
+    * @tc.desc Test Js Api ContinuationManager.unregister() testcase 006
+    */
+    it('testUnregister006', 0, async function(done) {
+        try {
+            continuationManager.unregister(token).then((data) => {
+                console.info("testUnregister006 " + JSON.stringify(data));
+                expect(data.code == 0).assertTrue();
+            }).catch((err) => {
+                expect(null).assertFail();
+            });
+            done();
+        } catch (e) {
+            console.info("testUnregister006 " + e);
+            expect(null).assertFail();
+            done();
+        }
+    })
+
+    /**
      * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_UNREGISTER_0100
      * @tc.name [JS-API9]ContinuationManager.unregisterContinuation().
      * @tc.desc Test Js Api ContinuationManager.unregisterContinuation() testcase 001
@@ -752,6 +773,27 @@ describe('continuationManagerTest', function() {
             done();
         } catch (e) {
             console.info("testUnregisterContinuation005 " + e);
+            expect(null).assertFail();
+            done();
+        }
+    })
+
+    /**
+    * @tc.number SUB_DISTRIBUTEDSCHEDULE_CONTINUATIONMANAGER_UNREGISTERCONTINUATION_0600
+    * @tc.name [JS-API8]ContinuationManager.unregisterContinuation().
+    * @tc.desc Test Js Api ContinuationManager.unregisterContinuation() testcase 006
+    */
+     it('testUnregisterContinuation006', 0, async function(done) {
+        try {
+            continuationManager.unregisterContinuation(token).then((data) => {
+                console.info("testUnregisterContinuation006 " + JSON.stringify(data));
+                expect(data.code == 0).assertTrue();
+            }).catch((err) => {
+                expect(null).assertFail();
+            });
+            done();
+        } catch (e) {
+            console.info("testUnregisterContinuation006 " + e);
             expect(null).assertFail();
             done();
         }
