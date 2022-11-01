@@ -65,7 +65,7 @@ describe('audioInterrupt', function () {
 
     beforeAll(function () {
         console.info('audioRenderInterrupt: beforeAll: Prerequisites at the test suite level');
-        getcreateAVSession();
+        // getcreateAVSession();
     })
 
     beforeEach(async function () {
@@ -150,7 +150,8 @@ describe('audioInterrupt', function () {
         //     console.info('activated == false')
         //     return;
         // }
-        await audioRen.start().then(async function () {
+        console.info('AudioFrameworkRenderLog: AudioRenderer : STATE : ' + audioRen.state);
+        await audioRen.start().then(() => {
             console.info('AudioFrameworkRenderLog: renderInstant started :SUCCESS ');
         }).catch((err) => {
             console.info('AudioFrameworkRenderLog: renderInstant start :ERROR : ' + err.message);
