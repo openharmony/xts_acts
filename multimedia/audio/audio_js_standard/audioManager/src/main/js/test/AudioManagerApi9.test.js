@@ -1057,7 +1057,7 @@ describe('audioManagerApi9', function () {
     */
    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0100', 2, async function (done) {
        try {
-           let volumManager = await audioManager.getVolumeManager();
+           let volumManager = audioManager.getVolumeManager();
            let VolumeGroupManager = await volumManager.getVolumeGroupManager();
        } catch (err) {
            console.error(`${TagFrmwk}:Callback:failed to get RoutingManager ${err.message}`);
@@ -1098,7 +1098,7 @@ describe('audioManagerApi9', function () {
     */
    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0200', 2, async function (done) {
        try {
-           let volumManager = await audioManager.getVolumeManager();
+           let volumManager = audioManager.getVolumeManager();
            let VolumeGroupManager = await volumManager.getVolumeGroupManager();
        } catch (err) {
            console.error(`${TagFrmwk}:Callback:failed to get RoutingManager ${err.message}`);
@@ -1137,7 +1137,7 @@ describe('audioManagerApi9', function () {
     */
    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0300', 2, async function (done) {
        try {
-           let volumManager = await audioManager.getVolumeManager();
+           let volumManager = audioManager.getVolumeManager();
            let VolumeGroupManager = await volumManager.getVolumeGroupManager();
        } catch (err) {
            console.error(`${TagFrmwk}:Callback:failed to get RoutingManager ${err.message}`);
@@ -1178,7 +1178,7 @@ describe('audioManagerApi9', function () {
     */
    it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0400', 2, async function (done) {
        try {
-           let volumManager = await audioManager.getVolumeManager();
+           let volumManager = audioManager.getVolumeManager();
            let VolumeGroupManager = await volumManager.getVolumeGroupManager();
        } catch (err) {
            console.error(`${TagFrmwk}:Callback:failed to getVolumeGroupManager ${err.message}`);
