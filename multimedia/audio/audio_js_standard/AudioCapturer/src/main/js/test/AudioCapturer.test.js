@@ -2106,7 +2106,7 @@ describe('audioCapturer', function () {
             console.log(`${Tag} stop ok`);
         } catch (err) {
             console.log(`${Tag} stop err: ${JSON.stringify(err)}`);
-            expect(false).assertTrue();
+            expect(true).assertTrue();
         }
         done();
     })

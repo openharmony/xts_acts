@@ -1045,6 +1045,172 @@ describe('audioManagerApi9', function () {
                 });
             }
         });
-    })
+    }) 
+    
+    /**
+    *@tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0100
+    *@tc.name      : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0100
+    *@tc.desc      : micStateChange
+    *@tc.size      : MEDIUM
+    *@tc.type      : Function
+    *@tc.level     : Level 2
+    */
+   it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0100', 2, async function (done) {
+       try {
+           let volumManager = await audioManager.getVolumeManager();
+           let VolumeGroupManager = await volumManager.getVolumeGroupManager();
+       } catch (err) {
+           console.error(`${TagFrmwk}:Callback:failed to get RoutingManager ${err.message}`);
+           expect(false).assertTrue();
+       }
+       let count = 0;
+       console.info('getVolumeGroupManager Callback START.');
+       VolumeGroupManager.on('micStateChange', async (micStateChange) => {
+           
+           console.info('micStateChange is '+micStateChange.mute);
+           count++;
+       })
+
+       try {
+           let data = await audioManager.isMicrophoneMute();
+           console.info('Promise isMicrophoneMute PASS:' + data);
+           await audioManager.setMicrophoneMute(data);
+           console.info('Promise setMicrophoneMute PASS.');
+           let data1 = await audioManager.isMicrophoneMute();
+           console.info('Promise isMicrophoneMute PASS.' + data1);
+       } catch (err) {
+           console.log('ERROR:' + JSON.stringify(err))
+           expect(false).assertTrue();
+           done();
+       }
+       await sleep(2000);
+       expect(count).assertEqual(0);
+       done();
+   })
+
+   /**
+    *@tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0200
+    *@tc.name      : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0200
+    *@tc.desc      : micStateChange
+    *@tc.size      : MEDIUM
+    *@tc.type      : Function
+    *@tc.level     : Level 2
+    */
+   it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0200', 2, async function (done) {
+       try {
+           let volumManager = await audioManager.getVolumeManager();
+           let VolumeGroupManager = await volumManager.getVolumeGroupManager();
+       } catch (err) {
+           console.error(`${TagFrmwk}:Callback:failed to get RoutingManager ${err.message}`);
+           expect(false).assertTrue();
+       }
+       console.info('getVolumeGroupManager Callback START.');
+       let count = 0;
+       VolumeGroupManager.on('micStateChange', async (micStateChange) => {
+           console.info("Updated micState:" + JSON.stringify(micStateChange));
+           count++;
+       })
+
+       try {
+           let data = await audioManager.isMicrophoneMute();
+           console.info('Promise isMicrophoneMute PASS:' + data);
+           let micStatus = !data;
+           await audioManager.setMicrophoneMute(micStatus);
+           console.info('Promise setMicrophoneMute PASS:' + micStatus);
+       } catch (err) {
+           console.log('ERROR:' + JSON.stringify(err))
+           expect(false).assertTrue();
+           done();
+       }
+       await sleep(2000);
+       expect(count).assertEqual(1);
+       done();
+   })
+
+   /**
+    *@tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0300
+    *@tc.name      : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0300
+    *@tc.desc      : micStateChange
+    *@tc.size      : MEDIUM
+    *@tc.type      : Function
+    *@tc.level     : Level 2
+    */
+   it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0300', 2, async function (done) {
+       try {
+           let volumManager = await audioManager.getVolumeManager();
+           let VolumeGroupManager = await volumManager.getVolumeGroupManager();
+       } catch (err) {
+           console.error(`${TagFrmwk}:Callback:failed to get RoutingManager ${err.message}`);
+           expect(false).assertTrue();
+       }
+       console.info('getVolumeGroupManager Callback START.');
+       let count = 0;
+       VolumeGroupManager.on('micStateChange', async (micStateChange) => {
+           console.info("Updated micState:" + JSON.stringify(micStateChange));
+           count++;
+       })
+
+       try {
+           let data = await audioManager.isMicrophoneMute();
+           console.info('Promise isMicrophoneMute PASS:' + data);
+           let micStatus = !data;
+           await audioManager.setMicrophoneMute(micStatus);
+           console.info('Promise setMicrophoneMute PASS:' + micStatus);
+           await audioManager.setMicrophoneMute(!micStatus);
+           console.info('Promise setMicrophoneMute PASS:' + (!micStatus));
+       } catch (err) {
+           console.log('ERROR:' + JSON.stringify(err))
+           expect(false).assertTrue();
+           done();
+       }
+       await sleep(2000);
+       expect(count).assertEqual(2);
+       done();
+   })
+
+   /**
+    *@tc.number    : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0400
+    *@tc.name      : SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0400
+    *@tc.desc      : micStateChange
+    *@tc.size      : MEDIUM
+    *@tc.type      : Function
+    *@tc.level     : Level 2
+    */
+   it('SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0400', 2, async function (done) {
+       try {
+           let volumManager = await audioManager.getVolumeManager();
+           let VolumeGroupManager = await volumManager.getVolumeGroupManager();
+       } catch (err) {
+           console.error(`${TagFrmwk}:Callback:failed to getVolumeGroupManager ${err.message}`);
+           expect(false).assertTrue();
+       }
+       let count = 0;
+       try {
+           console.info("enter SUB_MULTIMEDIA_AUDIO_ROUTING_MANAGER_MICSTATECHANGE_0400");
+           VolumeGroupManager.on('micStateChange', async (micStateChange1) => {
+               console.info("Updated micState--001:" + JSON.stringify(micStateChange1));
+               VolumeGroupManager.on('micStateChange', async (micStateChange) => {
+                   console.info("Updated micState--002:" + JSON.stringify(micStateChange));
+                   count++
+               })
+               let data = await audioManager.isMicrophoneMute();
+               console.info('Second Promise isMicrophoneMute PASS:' + data);
+               await audioManager.setMicrophoneMute(!data);
+               console.info('Second:Promise setMicrophoneMute PASS:' + (!data));
+           })
+           let data = await audioManager.isMicrophoneMute();
+           console.info('First Promise isMicrophoneMute PASS:' + data);
+           await audioManager.setMicrophoneMute(!data);
+           console.info('First:Promise setMicrophoneMute PASS:' + (!data));
+       } catch (err) {
+           console.log('ERROR:' + JSON.stringify(err))
+           expect(false).assertTrue();
+           done();
+       }
+
+       await sleep(2000);
+       expect(count).assertEqual(1);
+       done();
+   })
 
 })
