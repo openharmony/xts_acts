@@ -25,22 +25,8 @@ describe('audioRendererChange', function () {
     console.info(`${Tag} : Create AudioManger Object JS Framework`);
 
     beforeAll(async function () {
-        await AUDIOMANAGER.getStreamManager().then(function (data) {
-            audioStreamManager = data;
-            console.info(`${Tag} : Get AudioStream Manager : Success `);
-        }).catch((err) => {
-            console.info(`${Tag} : Get AudioStream Manager : ERROR : ${err.message}`);
-        });
-
-        AUDIOMANAGER.getStreamManager((err, data) => {
-            if (err) {
-                console.error(`${Tag} : Get AudioStream Manager : ERROR :  ${err.message}`);
-            }
-            else {
-                audioStreamManagerCB = data;
-                console.info(`${Tag} : Get AudioStream Manager : Success `);
-            }
-        });
+        audioStreamManager = AUDIOMANAGER.getStreamManager();
+        audioStreamManagerCB = AUDIOMANAGER.getStreamManager();
         await sleep(1000);
 
         console.info(`${Tag} : beforeAll: Prerequisites at the test suite level`);
