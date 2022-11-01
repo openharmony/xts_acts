@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-// @ts-nocheck
+
 import storageStatistics from "@ohos.storageStatistics";
 import { describe, it, expect } from "@ohos/hypium"
 import {isIntNum, isNegativeNum, isInclude} from "./Common";
@@ -67,53 +67,13 @@ export default function storageStatisticsTest() {
     /**
      * @tc.number SUB_DF_STORAGE_STATISTICS_GET_CURRENT_BUNDLE_STATS_0020
      * @tc.name storage_statistics_test_get_current_bundle_stats_async_002
-     * @tc.desc Test getCurrentBundleStats() interfaces, When the parameter type is wrong.
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 0
-     * @tc.require
-     */
-    it("storage_statistics_test_get_current_bundle_stats_async_002", 0, async function (done) {
-      try {
-        await storageStatistics.getCurrentBundleStats("1");
-      } catch (error) {
-        console.log("storage_statistics_test_get_current_bundle_stats_async_002 has failed for " + error);
-        expect(isInclude(error, "The callback shall be a function")).assertTrue();
-        done();
-      }
-    });
-
-    /**
-     * @tc.number SUB_DF_STORAGE_STATISTICS_GET_CURRENT_BUNDLE_STATS_0030
-     * @tc.name storage_statistics_test_get_current_bundle_stats_async_003
-     * @tc.desc Test getCurrentBundleStats() interfaces, When there are redundant parameters.
-     * @tc.size MEDIUM
-     * @tc.type Function
-     * @tc.level Level 0
-     * @tc.require
-     */
-    it("storage_statistics_test_get_current_bundle_stats_async_003", 0, async function (done) {
-      try {
-        storageStatistics.getCurrentBundleStats("", (error, bundleStat) => {
-
-        });
-      } catch (error) {
-        console.log("storage_statistics_test_get_current_bundle_stats_async_003 has failed for " + error);
-        expect(isInclude(error, "Number of arguments unmatched")).assertTrue();
-        done();
-      }
-    });
-
-    /**
-     * @tc.number SUB_DF_STORAGE_STATISTICS_GET_CURRENT_BUNDLE_STATS_0040
-     * @tc.name storage_statistics_test_get_current_bundle_stats_async_004
      * @tc.desc Test getCurrentBundleStats() interfaces,Concurrent requests.
      * @tc.size MEDIUM
      * @tc.type Function
      * @tc.level Level 0
      * @tc.require
      */
-    it("storage_statistics_test_get_current_bundle_stats_async_004", 0, async function (done) {
+    it("storage_statistics_test_get_current_bundle_stats_async_002", 0, async function (done) {
       try {
         const delay = function delay() {
           return new Promise((resolve, reject) => {
@@ -136,7 +96,7 @@ export default function storageStatisticsTest() {
           done();
         });
       } catch (error) {
-        console.log("storage_statistics_test_get_current_bundle_stats_async_004 has failed for " + error);
+        console.log("storage_statistics_test_get_current_bundle_stats_async_002 has failed for " + error);
       }
     })
   });
