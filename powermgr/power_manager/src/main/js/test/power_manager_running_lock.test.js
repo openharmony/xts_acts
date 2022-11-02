@@ -26,7 +26,7 @@ describe('PowerManagerRunningLockTest', function () {
      * @tc.name Running_Lock_Lock_JSTest0010
      * @tc.desc Prevents the system from hibernating and sets the lock duration (deprecated since 9)
      */
-     it('Running_Lock_Lock_JSTest0010', 0, async function (done) {
+    it('Running_Lock_Lock_JSTest0010', 0, async function (done) {
         await runningLock.createRunningLock("Running_Lock_Lock_JSTest0010", runningLock.RunningLockType.BACKGROUND)
             .then(runninglock => {
                 expect(runninglock !== null).assertTrue();
