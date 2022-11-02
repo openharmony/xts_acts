@@ -781,18 +781,21 @@ export default function cameraJSUnitOutput(surfaceId: any) {
         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_ADD_METADATA_OUTPUT_CALLBACK_0100 captureSession == null || undefined")
         expect().assertFail();
       } else {
-        captureSession.addOutput(metadataOutput, async (err) => {
-          if (!err) {
-            expect(true).assertTrue();
-            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_ADD_METADATA_OUTPUT_CALLBACK_0100 success");
-          } else {
-            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_ADD_METADATA_OUTPUT_CALLBACK_0100 FAILED: " + err.message);
-            expect().assertFail();
-          }
-          console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_ADD_METADATA_OUTPUT_CALLBACK_0100 ends here");
-          await sleep(1000);
-          done();
-        })
+        if (!isEmpty(metadataOutput)) {
+          captureSession.addOutput(metadataOutput, async (err) => {
+            if (!err) {
+              expect(true).assertTrue();
+              console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_ADD_METADATA_OUTPUT_CALLBACK_0100 success");
+            } else {
+              console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_ADD_METADATA_OUTPUT_CALLBACK_0100 FAILED: " + err.message);
+              expect().assertFail();
+            }
+            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_CAPTURE_SESSION_ADD_METADATA_OUTPUT_CALLBACK_0100 ends here");
+            await sleep(1000);
+            done();
+          })
+        }
+        
       }
       await sleep(1000);
       done();
