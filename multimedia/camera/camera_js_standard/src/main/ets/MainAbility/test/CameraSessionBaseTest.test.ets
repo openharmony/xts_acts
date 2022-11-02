@@ -1046,37 +1046,39 @@ export default function cameraSessionTest(surfaceId: any) {
 
                     await createInput(i);
                     await createOutput(i);
+
+                    if (!isEmpty(mPreviewOutput) && !isEmpty(mPhotoOutput)) {
+                        mCameraSession.addInput(mCameraInput, async (err) => {
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_INPUT_CALLBACK_0100 callback");
+                            if (!err) {
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_INPUT_CALLBACK_0100 PASSED");
+                            } else {
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_INPUT_CALLBACK_0100 FAILED : " + err.message);
+                                expect().assertFail();
+                            }
+                        })
+                        await mCameraSession.addOutput(mPreviewOutput);
+                        await mCameraSession.addOutput(mPhotoOutput);
+                        await sleep(500);
     
-                    mCameraSession.addInput(mCameraInput, async (err) => {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_INPUT_CALLBACK_0100 callback");
-                        if (!err) {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_INPUT_CALLBACK_0100 PASSED");
-                        } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_INPUT_CALLBACK_0100 FAILED : " + err.message);
-                            expect().assertFail();
-                        }
-                    })
-                    await mCameraSession.addOutput(mPreviewOutput);
-                    await mCameraSession.addOutput(mPhotoOutput);
-                    await sleep(500);
-
-                    await commitCameraSessionConfig();
-                    await sleep(1);
-                    await beginCameraSessionConfig();
-                    await sleep(1);
-
-                    mCameraSession.removeInput(mCameraInput, async (err) => {
-                        console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_INPUT_CALLBACK_0100 callback");
-                        if (!err) {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_INPUT_CALLBACK_0100 PASSED");
-                        } else {
-                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_INPUT_CALLBACK_0100 FAILED : " + err.message);
-                            expect().assertFail();
-                        }
-                    })
-                    await mCameraSession.removeOutput(mPreviewOutput);
-                    await mCameraSession.removeOutput(mPhotoOutput);
-                    await sleep(500);
+                        await commitCameraSessionConfig();
+                        await sleep(1);
+                        await beginCameraSessionConfig();
+                        await sleep(1);
+    
+                        mCameraSession.removeInput(mCameraInput, async (err) => {
+                            console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_INPUT_CALLBACK_0100 callback");
+                            if (!err) {
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_INPUT_CALLBACK_0100 PASSED");
+                            } else {
+                                console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_INPUT_CALLBACK_0100 FAILED : " + err.message);
+                                expect().assertFail();
+                            }
+                        })
+                        await mCameraSession.removeOutput(mPreviewOutput);
+                        await mCameraSession.removeOutput(mPhotoOutput);
+                        await sleep(500);
+                    }
 
                     await releaseInput();
                     await releaseOutput();
@@ -1112,20 +1114,22 @@ export default function cameraSessionTest(surfaceId: any) {
                     await createInput(i);
                     await createOutput(i);
     
-                    await mCameraSession.addInput(mCameraInput);
-                    await mCameraSession.addOutput(mPreviewOutput);
-                    await mCameraSession.addOutput(mPhotoOutput);
-                    await sleep(500);
+                    if (!isEmpty(mPreviewOutput) && !isEmpty(mPhotoOutput)) {
+                        await mCameraSession.addInput(mCameraInput);
+                        await mCameraSession.addOutput(mPreviewOutput);
+                        await mCameraSession.addOutput(mPhotoOutput);
+                        await sleep(500);
 
-                    await commitCameraSessionConfig();
-                    await sleep(1);
-                    await beginCameraSessionConfig();
-                    await sleep(1);
-    
-                    await mCameraSession.removeInput(mCameraInput);
-                    await mCameraSession.removeOutput(mPreviewOutput);
-                    await mCameraSession.removeOutput(mPhotoOutput);
-                    await sleep(500);
+                        await commitCameraSessionConfig();
+                        await sleep(1);
+                        await beginCameraSessionConfig();
+                        await sleep(1);
+        
+                        await mCameraSession.removeInput(mCameraInput);
+                        await mCameraSession.removeOutput(mPreviewOutput);
+                        await mCameraSession.removeOutput(mPhotoOutput);
+                        await sleep(500);
+                    }
 
                     await releaseInput();
                     await releaseOutput();
@@ -1158,7 +1162,7 @@ export default function cameraSessionTest(surfaceId: any) {
                 await createInput(0);
                 await createOutput(0);
 
-                if (!isEmpty(mPreviewOutput)) {
+                if (!isEmpty(mPreviewOutput) && !isEmpty(mPhotoOutput)) {
                     mCameraSession.addOutput(mPreviewOutput, async (err) => {
                         console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_CALLBACK_0100 add callback");
                         if (!err) {
@@ -1222,7 +1226,7 @@ export default function cameraSessionTest(surfaceId: any) {
                 await createInput(0);
                 await createOutput(0);
 
-                if (!isEmpty(mPreviewOutput)) {
+                if (!isEmpty(mPreviewOutput) && !isEmpty(mPhotoOutput)) {
                     await mCameraSession.addOutput(mPreviewOutput);
                     await mCameraSession.addOutput(mPhotoOutput);
                     console.info(TAG + "Entering SUB_MULTIMEDIA_CAMERA_SESSION_ADD_REMOVE_OUTPUT_PROMISE_0100 add PASSED");
