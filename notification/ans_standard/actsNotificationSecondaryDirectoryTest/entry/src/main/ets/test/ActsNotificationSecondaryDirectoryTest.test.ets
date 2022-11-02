@@ -13,16 +13,36 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
-import notify from '@ohos.notificationManager'
+import notificationManager from '@ohos.notificationManager'
 import WantAgent from '@ohos.wantAgent'
 import image from '@ohos.multimedia.image'
 
-var timeout = 1000;
-
-export default function secondaryDirectoryTest() {
-describe('secondaryDirectoryTest', function () {
+export default function ActsNotificationSecondaryDirectoryTest() {
+describe('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST', function () {
     let TAG = 'SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST ===>'
     console.info(TAG + 'SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST START')
+
+    afterEach(async function (done) {
+        console.info(`${TAG} afterEach START`)
+        try{
+            await notificationManager.cancelAll((err) => {
+                if (err) {
+                    console.info(`${TAG} cancelAll notification errCode: ${err.code}, errMes: ${err.message}`)
+                    expect(false).assertTrue()
+                    done()
+                } else {
+                    console.info(`${TAG} cancelAll notification success`)
+                    expect(true).assertTrue()
+                    done()
+                }
+            });
+        } catch (err) {
+            console.info(`${TAG} cancelAll notification errCode: ${err.code}, errMes: ${err.message}`)
+            expect(false).assertTrue()
+            done()
+        }
+        console.info(`${TAG} afterEach END`)
+      })
 
     /*
      * @tc.number: SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0100
@@ -32,24 +52,24 @@ describe('secondaryDirectoryTest', function () {
     it('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0100', 0, async function (done) {
         console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0100 START`);
 
-        let basicContent: notify.NotificationBasicContent = {
+        let basicContent: notificationManager.NotificationBasicContent = {
             title: "test_title",
             text: "test_text",
             additionalText: "test_Publish"
         }
-        let notifyContent: notify.NotificationContent = {
-            contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+        let notifyContent: notificationManager.NotificationContent = {
+            contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
             normal: basicContent
         }
 
-        let notificationRequest : notify.NotificationRequest = {
+        let notificationRequest : notificationManager.NotificationRequest = {
             content: notifyContent,
             id: 1
         }
 
         console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0100 PUBLISH`);
         try{
-            await notify.publish(notificationRequest, (err) => {
+            await notificationManager.publish(notificationRequest, (err) => {
                 if (err) {
                     console.info(`${TAG} publish AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
                     expect(false).assertTrue()
@@ -77,7 +97,7 @@ describe('secondaryDirectoryTest', function () {
     it('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0200', 0, async function (done) {
         console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0200 START`);
 
-        let longContentText: notify.NotificationLongTextContent = {
+        let longContentText: notificationManager.NotificationLongTextContent = {
             title: "test_title",
             text: "test_text",
             additionalText: "test_Publish",
@@ -86,19 +106,19 @@ describe('secondaryDirectoryTest', function () {
             expandedTitle: "expandedTitle123456"
         }
 
-        let notifyContent: notify.NotificationContent = {
-            contentType: notify.ContentType.NOTIFICATION_CONTENT_LONG_TEXT,
+        let notifyContent: notificationManager.NotificationContent = {
+            contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_LONG_TEXT,
             longText: longContentText
         }
 
-        let notificationRequest : notify.NotificationRequest = {
+        let notificationRequest : notificationManager.NotificationRequest = {
             content: notifyContent,
             id: 2,
-            slotType: notify.SlotType.SERVICE_INFORMATION,
+            slotType: notificationManager.SlotType.SERVICE_INFORMATION,
         }
 
         try{
-            await notify.publish(notificationRequest, (err) => {
+            await notificationManager.publish(notificationRequest, (err) => {
                 if (err) {
                     console.info(`${TAG} publish AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
                     expect(false).assertTrue()
@@ -125,25 +145,25 @@ describe('secondaryDirectoryTest', function () {
     it('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0300', 0, async function (done) {
         console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0300 START`);
 
-        let basicContent: notify.NotificationBasicContent = {
+        let basicContent: notificationManager.NotificationBasicContent = {
             title: "test_title",
             text: "test_text",
             additionalText: "test_Publish"
         }
 
-        let notifyContent: notify.NotificationContent = {
-            contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+        let notifyContent: notificationManager.NotificationContent = {
+            contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
             normal: basicContent
         }
 
-        let notificationRequest : notify.NotificationRequest = {
+        let notificationRequest : notificationManager.NotificationRequest = {
             content: notifyContent,
             id: 3
         }
 
         console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0300 PUBLISH`);
         try{
-            await notify.publish(notificationRequest, (err) => {
+            await notificationManager.publish(notificationRequest, (err) => {
                 if (err) {
                     console.info(`${TAG} publish AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
                     expect(false).assertTrue()
@@ -170,7 +190,7 @@ describe('secondaryDirectoryTest', function () {
     it('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0400', 0, async function (done) {
         console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0400 START`);
 
-        let multiLineContent: notify.NotificationMultiLineContent = {
+        let multiLineContent: notificationManager.NotificationMultiLineContent = {
             title: "test_title",
             text: "test_text",
             briefText: "notificationMultiLineContent_title",
@@ -178,19 +198,19 @@ describe('secondaryDirectoryTest', function () {
             lines: ["thrive", "democracy", "civilization", "harmonious"]
         }
 
-        let notifyContent: notify.NotificationContent = {
-            contentType: notify.ContentType.NOTIFICATION_CONTENT_MULTILINE,
+        let notifyContent: notificationManager.NotificationContent = {
+            contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_MULTILINE,
             multiLine: multiLineContent
         }
 
-        let notificationRequest : notify.NotificationRequest = {
+        let notificationRequest : notificationManager.NotificationRequest = {
             content: notifyContent,
             id: 4
         }
 
         console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0400 PUBLISH`);
         try{
-            await notify.publish(notificationRequest, (err) => {
+            await notificationManager.publish(notificationRequest, (err) => {
                 if (err) {
                     console.info(`${TAG} publish AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
                     expect(false).assertTrue()
@@ -232,27 +252,27 @@ describe('secondaryDirectoryTest', function () {
 
         let wantAgentData = await WantAgent.getWantAgent(agentInfo);
 
-        let basicContent: notify.NotificationBasicContent = {
+        let basicContent: notificationManager.NotificationBasicContent = {
             title: "test_title",
             text: "test_text",
             additionalText: "test_Publish"
         }
-        let notifyContent: notify.NotificationContent = {
-            contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+        let notifyContent: notificationManager.NotificationContent = {
+            contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
             normal: basicContent
         }
 
-        let userInputContent: notify.NotificationUserInput = {
+        let userInputContent: notificationManager.NotificationUserInput = {
             inputKey: 'test_NotificationUserInput',
         }
 
-        let actionButton: notify.NotificationActionButton = {
+        let actionButton: notificationManager.NotificationActionButton = {
             title:"buttonA",
             wantAgent: wantAgentData,
             userInput: userInputContent
         }
 
-        let notificationRequest : notify.NotificationRequest = {
+        let notificationRequest : notificationManager.NotificationRequest = {
             content: notifyContent,
             actionButtons: [
                 actionButton
@@ -262,7 +282,7 @@ describe('secondaryDirectoryTest', function () {
 
         console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0500 PUBLISH`);
         try{
-            await notify.publish(notificationRequest, (err) => {
+            await notificationManager.publish(notificationRequest, (err) => {
                 if (err) {
                     console.info(`${TAG} publish AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
                     expect(false).assertTrue()
@@ -289,17 +309,17 @@ describe('secondaryDirectoryTest', function () {
     it('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0600', 0, async function (done) {
         console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0600 START`);
 
-        let basicContent: notify.NotificationBasicContent = {
+        let basicContent: notificationManager.NotificationBasicContent = {
             title: "test_title",
             text: "test_text",
             additionalText: "test_Publish"
         }
-        let notifyContent: notify.NotificationContent = {
-            contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+        let notifyContent: notificationManager.NotificationContent = {
+            contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
             normal: basicContent
         }
 
-        let notifyTemplate: notify.NotificationTemplate = {
+        let notifyTemplate: notificationManager.NotificationTemplate = {
             name: 'downloadTemplate',
             data: {
                 title: 'file',
@@ -308,7 +328,7 @@ describe('secondaryDirectoryTest', function () {
             }
         }
 
-        let notificationRequest : notify.NotificationRequest = {
+        let notificationRequest : notificationManager.NotificationRequest = {
             content: notifyContent,
             template: notifyTemplate,
             id: 6
@@ -316,7 +336,7 @@ describe('secondaryDirectoryTest', function () {
 
         console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0600 PUBLISH`);
         try{
-            await notify.publish(notificationRequest, (err) => {
+            await notificationManager.publish(notificationRequest, (err) => {
                 if (err) {
                     console.info(`${TAG} publish AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
                     expect(false).assertTrue()
@@ -343,23 +363,23 @@ describe('secondaryDirectoryTest', function () {
     it('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0700', 0, async function (done) {
         console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0700 START`);
 
-        let options: notify.DistributedOptions = {
+        let options: notificationManager.DistributedOptions = {
             isDistributed: false,
             supportDisplayDevices: ["0"],
             supportOperateDevices: ["0"]
         }
 
-        let basicContent: notify.NotificationBasicContent = {
+        let basicContent: notificationManager.NotificationBasicContent = {
             title: "test_title",
             text: "test_text",
             additionalText: "test_Publish"
         }
-        let notifyContent: notify.NotificationContent = {
-            contentType: notify.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
+        let notifyContent: notificationManager.NotificationContent = {
+            contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
             normal: basicContent
         }
 
-        let notificationRequest : notify.NotificationRequest = {
+        let notificationRequest : notificationManager.NotificationRequest = {
             content: notifyContent,
             distributedOption: options,
             id: 7
@@ -367,7 +387,7 @@ describe('secondaryDirectoryTest', function () {
 
         console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0700 PUBLISH`);
         try{
-            await notify.publish(notificationRequest, (err) => {
+            await notificationManager.publish(notificationRequest, (err) => {
                 if (err) {
                     console.info(`${TAG} publish AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
                     expect(false).assertTrue()
@@ -409,7 +429,7 @@ describe('secondaryDirectoryTest', function () {
         await image.createPixelMap(picture_buffer, picture_opts, (err, pixelMap)=>{
             console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0800 pixelMap: ${pixelMap}`);
 
-            let longContentPicture: notify.NotificationPictureContent = {
+            let longContentPicture: notificationManager.NotificationPictureContent = {
                 title: "test_title",
                 text: "test_text",
                 additionalText: "test_Publish",
@@ -418,19 +438,19 @@ describe('secondaryDirectoryTest', function () {
                 picture: pixelMap
             }
 
-            let notifyContent: notify.NotificationContent = {
-                contentType: notify.ContentType.NOTIFICATION_CONTENT_PICTURE,
+            let notifyContent: notificationManager.NotificationContent = {
+                contentType: notificationManager.ContentType.NOTIFICATION_CONTENT_PICTURE,
                 picture: longContentPicture
             }
 
-            let notificationRequest : notify.NotificationRequest = {
+            let notificationRequest : notificationManager.NotificationRequest = {
                 content: notifyContent,
                 id: 3
             }
 
             console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0800 PUBLISH`);
             try{
-                notify.publish(notificationRequest, (err) => {
+                notificationManager.publish(notificationRequest, (err) => {
                     if (err) {
                         console.info(`${TAG} publish AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
                         expect(false).assertTrue()
@@ -459,16 +479,16 @@ describe('secondaryDirectoryTest', function () {
         console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_0900 START`);
 
         try{
-            await notify.addSlot(notify.SlotType.SOCIAL_COMMUNICATION, (err) => {
+            await notificationManager.addSlot(notificationManager.SlotType.SOCIAL_COMMUNICATION, (err) => {
                 console.info(`${TAG} addSlot success`)
                 if (err) {
                     console.info(`${TAG} addSlot err: ${err.code}, errMes: ${err.message}`)
                     expect(false).assertTrue()
                     done()
                 } else {
-                    notify.getSlots().then((NotificationSlot) => {
+                    notificationManager.getSlots().then((NotificationSlot) => {
                         console.info(`${TAG} getSlots success:` + JSON.stringify(NotificationSlot))
-                        expect(NotificationSlot[0].type).assertEqual(notify.SlotType.SOCIAL_COMMUNICATION)
+                        expect(NotificationSlot[0].type).assertEqual(notificationManager.SlotType.SOCIAL_COMMUNICATION)
                         done()
                     }).catch((err) => {
                         console.info(`${TAG} getSlots failed err: + ${err.code}`)
@@ -493,7 +513,7 @@ describe('secondaryDirectoryTest', function () {
     it('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_1000', 0, async function (done) {
         console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_1000 START`);
 
-        let bundleOpt: notify.BundleOption = {
+        let bundleOpt: notificationManager.BundleOption = {
             bundle: "com.example.secondaryDirectory",
             uid: 101001
         }
@@ -514,7 +534,7 @@ describe('secondaryDirectoryTest', function () {
     it('SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_1100', 0, async function (done) {
         console.info(`${TAG} SUB_NOTIFICATION_ANS_SECONDARY_DIRECTORY_TEST_1100 START`);
 
-        let flags: notify.NotificationFlags = {
+        let flags: notificationManager.NotificationFlags = {
             soundEnabled: 1,
             vibrationEnabled: 2
         }
