@@ -43,6 +43,13 @@ describe('VideoRecorderAPICallbackTest', function () {
     let fdPath;
     let fdObject;
     let cameraID = 0;
+    let playerSurfaceId = '';
+    let pageId = 0;
+    let videoProfiles;
+    let previewProfiles;
+    let previewOutput;
+    const pagePath1 = 'pages/surfaceTest/surfaceTest';
+    const pagePath2 = 'pages/surfaceTest2/surfaceTest2';
     let events = require('events');
     let eventEmitter = new events.EventEmitter();
 
@@ -79,11 +86,29 @@ describe('VideoRecorderAPICallbackTest', function () {
             console.info('[camera] case getCameraManager failed');
             return;
         }
-        cameras = await cameraManager.getCameras();
+        await cameraManager.getSupportedCameras().then((cameraDevices)=> {
+            cameras = cameraDevices;
+        }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
         if (cameras != null) {
             console.info('[camera] case getCameras success');
         } else {
             console.info('[camera] case getCameras failed');
+        }
+        await cameraManager.getSupportedOutputCapability(cameras[0]).then((cameraoutputcapability) => {
+            console.info('[camera] case getSupportedOutputCapability success');
+            videoProfiles = cameraoutputcapability.videoProfiles;
+            videoProfiles[0].size.height = 480;
+            videoProfiles[0].size.width = 640;
+            previewProfiles = cameraoutputcapability.previewProfiles;
+            previewProfiles[0].size.height = 480;
+            previewProfiles[0].size.width = 640;
+        }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback)
+        if (previewProfiles[0].format == camera.CameraFormat.CAMERA_FORMAT_YUV_420_SP) {
+            console.info('[camera] case format is VIDEO_SOURCE_TYPE_SURFACE_YUV');
+            videoConfig.videoSourceType = media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_YUV;
+        } else {
+            console.info('[camera] case format is VIDEO_SOURCE_TYPE_SURFACE_ES');
+            videoConfig.videoSourceType = media.VideoSourceType.VIDEO_SOURCE_TYPE_SURFACE_ES;
         }
         fdObject = await mediaTestBase.getFd('recorder_callback_api.mp4');
         fdPath = "fd://" + fdObject.fdNumber.toString();
@@ -91,7 +116,12 @@ describe('VideoRecorderAPICallbackTest', function () {
         console.info('beforeAll case');
     })
 
-    beforeEach(function () {
+    beforeEach(async function () {
+        await mediaTestBase.toNewPage(pagePath1, pagePath2, pageId);
+        pageId = (pageId + 1) % 2;
+        await mediaTestBase.msleepAsync(1000).then(
+            () => {}, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
+        playerSurfaceId = globalThis.value;
         surfaceID = null;
         console.info('beforeEach case');
     })
@@ -101,7 +131,7 @@ describe('VideoRecorderAPICallbackTest', function () {
     })
 
     afterAll(async function () {
-        await mediaTestBase.closeFd();
+        await mediaTestBase.closeFd(fdObject.fileAsset, fdObject.fdNumber);
         console.info('afterAll case');
     })
 
@@ -123,13 +153,15 @@ describe('VideoRecorderAPICallbackTest', function () {
 
     eventEmitter.on(START_STREEAM, async (videoRecorder, steps, done) => {
         steps.shift();
-        videoOutput = await camera.createVideoOutput(surfaceID);
+        videoOutput = await cameraManager.createVideoOutput(videoProfiles[0], surfaceID);
         if (videoOutput == null) {
             console.info('[camera] case createVideoOutput failed');
         } else {
             console.info('[camera] case createVideoOutput success');
         }
-        captureSession = await videoRecorderBase.initCaptureSession(videoOutput, cameraManager, cameras, cameraID);
+        previewOutput = await cameraManager.createPreviewOutput(previewProfiles[0], playerSurfaceId)
+        captureSession = await videoRecorderBase.initCaptureSession(videoOutput, cameraManager,
+            cameras[0], previewOutput);
         await videoOutput.start().then(() => {
             console.info('[camera] case videoOutput start success');
         });
@@ -141,10 +173,6 @@ describe('VideoRecorderAPICallbackTest', function () {
         await videoOutput.stop().then(() => {
             console.info('[camera] case videoOutput stop success');
         });
-        await videoOutput.release().then(() => {
-            console.info('[camera] case videoOutput release success');
-        });
-        videoOutput = undefined;
         await videoRecorderBase.stopCaptureSession(captureSession);
         toNextStep(videoRecorder, steps, done);
     });
