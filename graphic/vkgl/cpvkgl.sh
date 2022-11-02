@@ -17,6 +17,7 @@ set -e
 
 mkdir -p  "suites/acts/testcases/vkgldata"
 cp -rf "../../third_party/VK-GL-CTS/external/openglcts/data" "suites/acts/testcases/vkgldata"
+tar czvf "vkgldata.tar.gz" -C "suites/acts/testcases/vkgldata" "data"
 cp -rf "common/common/libdeqp_ohos_platform.z.so" "suites/acts/testcases/vkgldata"
 cp -rf "common/common/librosen_context.z.so" "suites/acts/testcases/vkgldata"
 cp -rf "graphic/graphic_standard/libdeqp_SPIRV.z.so" "suites/acts/testcases/vkgldata"
