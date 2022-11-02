@@ -14,6 +14,7 @@
  */
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+
 import wifi from '@ohos.wifi'
 
 function sleep(delay) {

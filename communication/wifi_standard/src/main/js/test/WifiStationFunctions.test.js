@@ -76,7 +76,7 @@ export default function actsWifiFunctionsTest() {
 
         /**
         * @tc.number SUB_Communication_WiFi_XTS_Sta_0002
-        * @tc.name testGetScanInfos
+        * @tc.name testgetScanInfos
         * @tc.desc Test getScanInfos promise and callback API functionality.
         * @tc.type Function
         * @tc.level Level 0
@@ -308,7 +308,7 @@ export default function actsWifiFunctionsTest() {
 
         /**
         * @tc.number SUB_Communication_WiFi_XTS_Sta_0034
-        * @tc.name testGetScanInfosSync
+        * @tc.name testgetScanInfosSync
         * @tc.desc Test getScanInfos Sync API functionality.
         * @tc.type Function
         * @tc.level Level 0
@@ -324,4 +324,6 @@ export default function actsWifiFunctionsTest() {
         console.log("*************[wifi_test] start wifi js unit test end*************");
         })
 }
+
+
 

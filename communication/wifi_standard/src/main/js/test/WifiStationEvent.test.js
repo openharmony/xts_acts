@@ -17,6 +17,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 
 import wifi from '@ohos.wifi'
 
+
 function sleep(delay) {
     return new Promise(resovle => setTimeout(resovle, delay))
 }
@@ -165,4 +166,5 @@ export default function actsWifiEventTest() {
         console.log("*************[wifi_test] start wifi js unit test end*************");
         })
 }
+
 
